@@ -23,8 +23,10 @@
                             description="The field on which query to be performed. 
                             e.g. it can be AccountId from which Case records will be fetched."/>
             <property name="additionalCriteria" label="Additional Criteria" type="String" default=" Core_MDF_Active_Ind__c=true "/> 
-            <property name="tableHeader" label="Table Header" type="String" default=""/>
+            <property name="tableHeader" label="Table Header" type="String" default=""/><!--15511-->
             <property name="sharingFlag" label="Sharing Flag" type="String" default="true"/> 
+            <!-- Ealay New Properties -->
+            <property name="restrictFieldVisiblityObjectAPIName" label="Restrict Field Object APIName" type="String" /> <!-- Remove while pushing Properties -->
             <property name="restrictFieldVisiblityFieldAPIName" label="Restrict Field Visiblity" type="String"  /> 
             <property name="restrictFieldVisiblityCriteriaFieldAPIName" label= "Restrict Field Visiblity Criteria" type="String"  />
             <property name="hideColumnIfNoData" label= "Hide Column If No Data" type="String"
@@ -35,6 +37,8 @@
                             description="Combines the conditions above by their position number (1-based). Supports AND, OR and parentheses for grouping. Leave blank to AND all conditions. Example: 1 AND (2 OR 3)"/>
             <property name="messageBelowTable" label= "Message Below Table" type="String"
                             description="Optional. Field API name whose distinct values across all rows are consolidated and shown as text below the table. Example: Core_MDF_Footer_Message__c"/>
+            <property name="compStartDate" type="String" label="Date (YYYY-MM-DD)" description="Enter a date in YYYY-MM-DD format"/><!--Naveen/Pass Market Date-->
+            <!-- Ealay New Properties -->
         </targetConfig>
         <targetConfig targets="lightningCommunity__Default">
             <property name="recordId" label="recordId" type="String" default="{!recordId}"/> 
@@ -47,8 +51,10 @@
                             description="The field on which query to be performed. 
                             e.g. it can be AccountId from which Case records will be fetched."/>
             <property name="additionalCriteria" label="Additional Criteria" type="String" default=" Core_MDF_Active_Ind__c=true "/>
-            <property name="tableHeader" label="Table Header" type="String" default=""/>
-            <property name="sharingFlag" label="Sharing Flag" type="String" default="true"/>   
+            <property name="tableHeader" label="Table Header" type="String" default=""/><!--15511-->
+            <property name="sharingFlag" label="Sharing Flag" type="String" default="true"/> 
+            <!-- Ealay New Properties --> 
+             <property name="restrictFieldVisiblityObjectAPIName" label="Restrict Field Object APIName" type="String" /> <!-- Remove while pushing Properties -->  
             <property name="restrictFieldVisiblityFieldAPIName" label="Restrict Field Visiblity" type="String"  /> 
             <property name="restrictFieldVisiblityCriteriaFieldAPIName " label="Restrict Field Visiblity Criteria " type="String" /> 
             <property name="hideColumnIfNoData" label= "Hide Column If No Data" type="String"
@@ -59,6 +65,8 @@
                             description="Optional. Combines the conditions above by their position number (1-based). Supports AND, OR and parentheses for grouping. Leave blank to AND all conditions. Example: 1 AND (2 OR 3)"/>
             <property name="messageBelowTable" label= "Message Below Table" type="String"
                             description="Optional. Field API name whose distinct values across all rows are consolidated and shown as text below the table. Example: Core_MDF_Footer_Message__c"/>
+            <property name="compStartDate" type="String" label="Date (YYYY-MM-DD)" description="Enter a date in YYYY-MM-DD format"/><!--Naveen/Pass Market Date-->
+            <!-- Ealay New Properties -->
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

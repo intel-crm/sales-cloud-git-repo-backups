@@ -11,7 +11,7 @@ Modification Log :
 *****************************************************************************************************************************************************************************************************/
 @isTest
 public class Core_Salesout_Search_Controller_Test {
-    /*static testMethod void salesoutSearchCoverageTest() { 
+    static testMethod void salesoutSearchCoverageTest() { 
 
        User currentUser = [SELECT Id, Name FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1];
 
@@ -260,11 +260,5 @@ public class Core_Salesout_Search_Controller_Test {
         // STOP Test
         test.stopTest();
     
-    }*/
-    
-    static testMethod void testEmptyClass() {
-        Test.startTest();
-        Core_Salesout_Search_Controller utility = new Core_Salesout_Search_Controller();
-        Test.stopTest();
     }
 }

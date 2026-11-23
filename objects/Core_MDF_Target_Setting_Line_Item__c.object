@@ -199,7 +199,7 @@
             <filterItems>
                 <field>Account.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c</field>
                 <operation>equals</operation>
-                <value>Datacenter</value>
+                <value>Data Center CoMarketing Fund</value>
             </filterItems>
             <filterItems>
                 <field>Account.Core_MDF_Is_Top_Account_Ind__c</field>
@@ -209,6 +209,7 @@
             <isOptional>false</isOptional>
         </lookupFilter>
         <referenceTo>Account</referenceTo>
+        <relationshipLabel>Spending Targets Line Items</relationshipLabel>
         <relationshipName>Forecast_Line_Items</relationshipName>
         <required>false</required>
         <trackHistory>true</trackHistory>
@@ -398,11 +399,6 @@
                     <label>KOREA</label>
                 </value>
                 <value>
-                    <fullName>MACAU</fullName>
-                    <default>false</default>
-                    <label>MACAU</label>
-                </value>
-                <value>
                     <fullName>MEXICO</fullName>
                     <default>false</default>
                     <label>MEXICO</label>
@@ -426,6 +422,16 @@
                     <fullName>UNITED STATES</fullName>
                     <default>false</default>
                     <label>UNITED STATES</label>
+                </value>
+                <value>
+                    <fullName>MACAU</fullName>
+                    <default>false</default>
+                    <label>MACAU</label>
+                </value>
+                <value>
+                    <fullName>MAINLAND CHINA</fullName>
+                    <default>false</default>
+                    <label>MAINLAND CHINA</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -561,7 +567,7 @@
         <fullName>Core_MDF_Focus_Area_nm__c</fullName>
         <label>Focus Area</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -741,6 +747,12 @@
                     <label>Security</label>
                 </value>
                 <value>
+                    <fullName>Test 1</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Test 1</label>
+                </value>
+                <value>
                     <fullName>Workstation</fullName>
                     <default>false</default>
                     <label>Workstation</label>
@@ -778,13 +790,25 @@
         <fullName>Core_MDF_Region_nm__c</fullName>
         <label>Region</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
             <restricted>true</restricted>
             <valueSetName>Core_MDF_Host_Region</valueSetName>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Spending_Targets_Id__c</fullName>
+        <description>Field to store the Id of Spending Targets</description>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Spending_Targets_Version__r.Core_MDF_Spending_Targets__r.Id</formula>
+        <label>Spending Targets Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_Spending_Targets_Record_Name__c</fullName>
@@ -847,6 +871,31 @@
     </fields>
     <label>Spending Targets Line Item</label>
     <listViews>
+        <fullName>Account_Plan</fullName>
+        <columns>Core_MDF_All_Accounts_nm__c</columns>
+        <columns>Core_MDF_Account__c</columns>
+        <columns>Core_MDF_Budget_Type_nm__c</columns>
+        <columns>Core_MDF_Focus_Area_nm__c</columns>
+        <columns>Core_MDF_Region_nm__c</columns>
+        <columns>Core_MDF_Amount__c</columns>
+        <columns>NAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Budget_Type_nm__c</field>
+            <operation>equals</operation>
+            <value>Account Plan</value>
+        </filters>
+        <label>Account Plan</label>
+    </listViews>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Country_Name_nm__c</columns>
+        <columns>Core_MDF_Country_nm__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
         <fullName>Core_MDF_CCF_Target_Setting_Line_Item</fullName>
         <columns>Core_MDF_Target_Setting__c</columns>
         <columns>NAME</columns>
@@ -863,7 +912,7 @@
             <operation>equals</operation>
             <value>Core_MDF_Target_Setting_Line_Item__c.Core_MDF_Client_Co_Marketing_Fund</value>
         </filters>
-        <label>CCF Target Setting Line Item</label>
+        <label>CCF Spending Targets Line Item</label>
         <sharedTo>
             <group>Core_MDF_CCP_CCF_INTERNAL_ALL</group>
         </sharedTo>
@@ -879,16 +928,55 @@
         <columns>Core_MDF_Region_nm__c</columns>
         <columns>Core_MDF_Amount__c</columns>
         <columns>Core_MDF_Campaign_Name__c</columns>
+        <columns>Core_MDF_Priority_Percentage__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>RECORDTYPE</field>
             <operation>equals</operation>
             <value>Core_MDF_Target_Setting_Line_Item__c.Core_MDF_Data_Center_Co_Marketing_Fund</value>
         </filters>
-        <label>DCF Target Setting Line Item</label>
+        <label>DCF Spending Targets Line Item</label>
         <sharedTo>
             <group>Core_MDF_CCP_DCF_INTERNAL_ALL</group>
         </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_IPA_Target_Setting_Line_Item</fullName>
+        <columns>NAME</columns>
+        <filterScope>Mine</filterScope>
+        <label>IPA Spending Targets Line Item</label>
+    </listViews>
+    <listViews>
+        <fullName>Proposal_II_MDF</fullName>
+        <columns>Core_MDF_All_Accounts_nm__c</columns>
+        <columns>Core_MDF_Budget_Type_nm__c</columns>
+        <columns>Core_MDF_Focus_Area_nm__c</columns>
+        <columns>Core_MDF_Region_nm__c</columns>
+        <columns>Core_MDF_Amount__c</columns>
+        <columns>NAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Budget_Type_nm__c</field>
+            <operation>equals</operation>
+            <value>Proposal II MDF</value>
+        </filters>
+        <label>Proposal II MDF</label>
+    </listViews>
+    <listViews>
+        <fullName>Proposal_I_MDF</fullName>
+        <columns>Core_MDF_All_Accounts_nm__c</columns>
+        <columns>Core_MDF_Budget_Type_nm__c</columns>
+        <columns>Core_MDF_Focus_Area_nm__c</columns>
+        <columns>Core_MDF_Region_nm__c</columns>
+        <columns>Core_MDF_Amount__c</columns>
+        <columns>NAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Budget_Type_nm__c</field>
+            <operation>equals</operation>
+            <value>Proposal I MDF</value>
+        </filters>
+        <label>Proposal I MDF</label>
     </listViews>
     <nameField>
         <displayFormat>FLI-{0000000}</displayFormat>
@@ -995,6 +1083,10 @@
             </values>
             <values>
                 <fullName>MACAU</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MAINLAND CHINA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1278,6 +1370,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>MAINLAND CHINA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>MEXICO</fullName>
                 <default>false</default>
             </values>
@@ -1487,10 +1583,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Business Client Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>CCF 1%2E0</fullName>
                 <default>false</default>
             </values>
@@ -1639,6 +1731,10 @@
             </values>
             <values>
                 <fullName>MACAU</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MAINLAND CHINA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1827,6 +1923,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Workstation</fullName>
                 <default>false</default>
             </values>
@@ -1916,4 +2016,30 @@
         <errorMessage>Region is Mandatory for CCF and DCF Programs.</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Core_MDF_AccessTop_Accounts</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Top Accounts Forecast</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/lightning/r/Report/00ODz000000nmUFMAY/view?queryScope=userFolders</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Core_MDF_All_Other_Accounts</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>All Other Accounts</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/lightning/r/Report/00ODz000000nmRBMAY/view?queryScope=userFolders</url>
+    </webLinks>
 </CustomObject>

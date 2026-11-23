@@ -10,7 +10,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Business Owners/SMB</masterLabel>
-        <translation><!-- Business Owners/SMB --></translation>
+        <translation>Geschäftsinhaber/KMU </translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Business owners</masterLabel>
@@ -30,7 +30,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Consultant/Influencer</masterLabel>
-        <translation><!-- Consultant/Influencer --></translation>
+        <translation>Consultant/Influencer</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Consumer</masterLabel>
@@ -94,7 +94,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Gaming</masterLabel>
-        <translation><!-- Gaming --></translation>
+        <translation>Gaming</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Government</masterLabel>
@@ -210,7 +210,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Solutions Architect</masterLabel>
-        <translation><!-- Solutions Architect --></translation>
+        <translation>Solutions Architect</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sr. Business Decision Maker</masterLabel>
@@ -223,6 +223,10 @@
     <valueTranslation>
         <masterLabel>Technical Influencer</masterLabel>
         <translation>Technik-Influencer</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Test LOV Target Audience</masterLabel>
+        <translation><!-- Test LOV Target Audience --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Unmanaged Small Business</masterLabel>

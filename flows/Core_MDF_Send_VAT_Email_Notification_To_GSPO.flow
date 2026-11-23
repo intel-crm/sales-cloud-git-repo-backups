@@ -15,6 +15,7 @@
             </value>
         </inputParameters>
         <nameSegment>Core_MDF_EmailToGSPO</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <name>checkVATClaimCount</name>
@@ -34,6 +35,7 @@
             </value>
         </inputParameters>
         <nameSegment>Core_MDF_VatUtility</nameSegment>
+        <offset>0</offset>
         <outputParameters>
             <assignToReference>BooleanValue</assignToReference>
             <name>output</name>
@@ -94,7 +96,7 @@
         <name>check_status_program_region_and_budget_type</name>
         <label>check status program region and budget type</label>
         <locationX>359</locationX>
-        <locationY>413</locationY>
+        <locationY>415</locationY>
         <defaultConnector>
             <targetReference>NotCompletedEMEARetailMDFPaymentRun</targetReference>
         </defaultConnector>

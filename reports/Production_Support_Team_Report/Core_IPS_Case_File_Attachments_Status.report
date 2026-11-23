@@ -7,10 +7,10 @@
         <field>Case.IPS_Case_Attachments__r$Name</field>
     </columns>
     <columns>
-        <field>Case$Core_Product_Organization__c</field>
+        <field>Case$Core_IPS_Product_Org_Number__c</field>
     </columns>
     <columns>
-        <field>Case.IPS_Case_Attachments__r$CreatedDate</field>
+        <field>Case$Core_Product_Organization__c</field>
     </columns>
     <columns>
         <field>Case$Owner</field>
@@ -43,6 +43,9 @@
         <field>Case$CreatedDate</field>
     </columns>
     <columns>
+        <field>Case$MaritzCX__Respondent_Email__c</field>
+    </columns>
+    <columns>
         <field>Case$SuppliedEmail</field>
     </columns>
     <columns>
@@ -68,13 +71,6 @@
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>Pending</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case$Status</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>New,Open,​Open,​​Open,Escalated,On Hold,CEP On Hold,CEP Waiting for Customer,CEP Action Plan Created,CEP Action Plan Executed,Assigned,Awaiting Requestor’s Info,Awaiting Resolution Confirmation</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

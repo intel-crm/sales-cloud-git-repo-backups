@@ -39,14 +39,13 @@
             <name>Core_OppTM_Org</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>User.IsActive</field>
             <operation>equals</operation>
             <value>True</value>
         </criteriaItems>
         <description>Sets values on the Opportunity Team member record when created</description>
-        <failedMigrationToolVersion>242.5</failedMigrationToolVersion>
         <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
@@ -55,7 +54,7 @@
             <name>Core_Opp_Notify_TeamMember_On_Addition</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Sends an email to the opportunity team member when added to the opportunity team.</description>
         <formula>CreatedById  &lt;&gt;  Id</formula>
         <triggerType>onCreateOnly</triggerType>
@@ -66,7 +65,7 @@
             <name>Core_Opp_TM_OSC_Update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Update Core_OSC_Snapshot upon team member creation.</description>
         <formula>ISNULL( Core_OSC_Snapshot__c )</formula>
         <triggerType>onAllChanges</triggerType>

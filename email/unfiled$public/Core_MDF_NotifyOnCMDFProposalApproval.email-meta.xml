@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>44.0</apiVersion>
+    <available>true</available>
+    <description>Channel MDF Manager and External CMDF Proposal Manager will be notified when proposal is Approved</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_NotifyOnCMDFProposalApproval</name>
+    <style>none</style>
+    <subject>Proposal Approved</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

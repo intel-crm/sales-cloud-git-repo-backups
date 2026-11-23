@@ -39,16 +39,16 @@
     </columns>
     <crossFilters>
         <criteriaItems>
-            <column>Core_BU_Short_Name_Old__c</column>
+            <column>Core_BU_Short_Name__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
             <value>IOTG</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Core_BU_Product_Segment_Old__c</column>
+            <column>Core_BU_Product_Segment__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
-            <value>IoT-RBHE</value>
+            <value>IoT-Retail</value>
         </criteriaItems>
         <operation>with</operation>
         <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
@@ -88,7 +88,7 @@
         <field>Account.Core_Sales_Groups__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>IOTG Pending 2020 Retail by sales group</name>
+    <name>IOTG Pending 2019 Retail by sales group</name>
     <params>
         <name>terr</name>
         <value>all</value>

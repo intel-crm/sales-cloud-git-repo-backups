@@ -4,7 +4,7 @@
         <name>DeleteBSL</name>
         <label>DeleteBSL</label>
         <locationX>176</locationX>
-        <locationY>732</locationY>
+        <locationY>660</locationY>
         <actionName>Core_MDF_BatchSchedularArchival</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -15,6 +15,7 @@
             </value>
         </inputParameters>
         <nameSegment>Core_MDF_BatchSchedularArchival</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <apiVersion>53.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
@@ -22,7 +23,7 @@
         <name>ListOfbatchSchedulers</name>
         <label>ListOfbatchSchedulers</label>
         <locationX>264</locationX>
-        <locationY>516</locationY>
+        <locationY>468</locationY>
         <assignmentItems>
             <assignToReference>BatchIds</assignToReference>
             <operator>Add</operator>
@@ -35,13 +36,14 @@
         </connector>
     </assignments>
     <description>Delete Batch scheduler line items if line item count for Batch scheduler is more than 5000(Delete from 5001)</description>
+    <environments>Default</environments>
     <interviewLabel>Core_MDF_DeleteBatchschedulerLineItems {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_MDF_DeleteBatchschedulerLineItems</label>
     <loops>
         <name>IteratingBS</name>
         <label>IteratingBS</label>
         <locationX>176</locationX>
-        <locationY>396</locationY>
+        <locationY>360</locationY>
         <collectionReference>Batch_Scheduler_Records</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -74,7 +76,7 @@
         <name>Batch_Scheduler_Records</name>
         <label>Batch Scheduler Records</label>
         <locationX>176</locationX>
-        <locationY>276</locationY>
+        <locationY>252</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>IteratingBS</targetReference>
@@ -84,7 +86,7 @@
             <field>Core_MDF_Line_Items_Count_Nbr__c</field>
             <operator>GreaterThan</operator>
             <value>
-                <numberValue>5000.0</numberValue>
+                <numberValue>4000.0</numberValue>
             </value>
         </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
@@ -102,18 +104,18 @@
             <field>Core_MDF_Line_Items_Count_Nbr__c</field>
             <operator>GreaterThan</operator>
             <value>
-                <numberValue>5000.0</numberValue>
+                <numberValue>4000.0</numberValue>
             </value>
         </filters>
         <object>Core_MDF_Batch_Scheduler__c</object>
         <schedule>
             <frequency>Daily</frequency>
             <startDate>2021-11-29</startDate>
-            <startTime>05:00:00.000Z</startTime>
+            <startTime>02:20:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <variables>
         <name>Batches</name>
         <dataType>SObject</dataType>

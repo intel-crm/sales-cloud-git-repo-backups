@@ -7,7 +7,7 @@
         <default>false</default>
         <label>Qualify</label>
         <closed>false</closed>
-        <forecastCategory>Omitted</forecastCategory>
+        <forecastCategory>Pipeline</forecastCategory>
         <probability>15</probability>
         <won>false</won>
     </standardValue>
@@ -27,7 +27,7 @@
         <default>false</default>
         <label>Develop</label>
         <closed>false</closed>
-        <forecastCategory>BestCase</forecastCategory>
+        <forecastCategory>Pipeline</forecastCategory>
         <probability>50</probability>
         <won>false</won>
     </standardValue>
@@ -37,7 +37,7 @@
         <default>false</default>
         <label>Design</label>
         <closed>false</closed>
-        <forecastCategory>Forecast</forecastCategory>
+        <forecastCategory>Pipeline</forecastCategory>
         <probability>75</probability>
         <won>false</won>
     </standardValue>
@@ -118,7 +118,7 @@
         <default>false</default>
         <label>Group Open</label>
         <closed>false</closed>
-        <forecastCategory>Omitted</forecastCategory>
+        <forecastCategory>Pipeline</forecastCategory>
         <probability>0</probability>
         <won>false</won>
     </standardValue>

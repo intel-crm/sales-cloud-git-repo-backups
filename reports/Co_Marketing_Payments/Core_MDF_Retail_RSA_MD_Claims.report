@@ -34,7 +34,7 @@
     <description>Program-Retail
 Budget Type-RSA MD</description>
     <filter>
-        <booleanFilter>(1 OR (3 AND 4)) AND 2 AND 5 AND 6 AND 7 AND 8 AND 9</booleanFilter>
+        <booleanFilter>(1 OR (3 AND 4)) AND 2 AND 5 AND 6 AND 7 AND 8 AND 9 AND 10</booleanFilter>
         <criteriaItems>
             <column>PartnerFundClaim$Core_MDF_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -82,7 +82,7 @@ Budget Type-RSA MD</description>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,EMEA,PRC,APJ,ASMO,INDIA</value>
+            <value>,EMEA,PRC,APJ,ASMO</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundClaim$Core_MDF_Sub_Region_Cd__c</column>

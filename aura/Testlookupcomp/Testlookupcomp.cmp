@@ -1,0 +1,14 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="ownerSearchString" type="String"/>
+    <aura:attribute name="ownerSearchCriteria" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="userIdList" type="Id[]"/>				
+    <aura:attribute name="vdUserList" type="Id"/>		
+    <c:Core_MDF_LightningSObjectLookUp aura:id="ownerId" label="Owner"
+                                       pluralLabel="Owners" sObjectAPIName="User"
+                                       instanceId="ownerId" helpText="This is help text"
+                                       listIconSVGPath="/resource/Core_MDF_SLDS262/icons/standard-sprite/svg/symbols.svg#client"
+                                       listIconClass="slds-icon-standard-user" searchString="{!v.ownerSearchString}"
+                                       returnFields="Name,Email" filterCriteria="{!'IsActive = true AND ' + v.ownerSearchCriteria +''}"/>
+    
+</aura:component>

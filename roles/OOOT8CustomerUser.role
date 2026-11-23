@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>OOO T8 Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Inactive_Accounts_Role</parentRole>
+    <parentRole>OOOT8CustomerManager</parentRole>
 </Role>

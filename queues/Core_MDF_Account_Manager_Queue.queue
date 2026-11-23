@@ -3,6 +3,11 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <name>Account Manager Queue</name>
+    <queueMembers>
+        <users>
+            <user>tavishix.kero@intel.com</user>
+        </users>
+    </queueMembers>
     <queueSobject>
         <sobjectType>PartnerFundClaim</sobjectType>
     </queueSobject>

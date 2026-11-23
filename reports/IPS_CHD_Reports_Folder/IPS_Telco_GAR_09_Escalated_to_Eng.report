@@ -93,15 +93,30 @@
         <sourceColumnName>Case.Core_IPS_Escalated_Level__c</sourceColumnName>
         <useOther>true</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Front Line Support</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Consult with Front Line Support</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Consult with Domain Expert</sourceValue>
+            </sourceValues>
             <value>Front Line</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Escalate to Domain Expert</sourceValue>
+            </sourceValues>
             <sourceValues>
                 <sourceValue>Domain Expert</sourceValue>
             </sourceValues>
             <value>Domain Expert</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Development/Engineering</sourceValue>
+            </sourceValues>
             <value>Engineering</value>
         </values>
     </buckets>
@@ -228,7 +243,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>guolei,lixiahua,hujiang,leungk,ngandy,tangyin,yanpingz,yanji,yangkarl,liangtao</value>
+            <value>guolei,lixiahua,hujiang,leungk,ngandy,tangyin,yanpingz</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -241,7 +256,7 @@
     <groupingsDown>
         <dateGranularity>Month</dateGranularity>
         <field>CLOSED_DATEONLY</field>
-        <sortOrder>Desc</sortOrder>
+        <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>IPS Telco GAR 09 - Escalated to Eng</name>
     <params>

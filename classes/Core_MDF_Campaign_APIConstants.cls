@@ -1,5 +1,6 @@
 /**
  * Centralized constants for Campaign REST API.
+ * Reference pattern: Core_MDF_PFR_RestAPIConstants.
  */
 public class Core_MDF_Campaign_APIConstants {
     // --------------------------------------------------
@@ -12,15 +13,6 @@ public class Core_MDF_Campaign_APIConstants {
     public static final String FIELD_DISPLAY_PARAM = 'fielddisplay';
     public static final String FIELD_DISPLAY_LABEL = 'label';
     public static final String FIELD_DISPLAY_TECHNICAL_NAME = 'technicalname';
-
-    // --------------------------------------------------
-    // Campaign Field Mapping Constants
-    // Why needed: Keep special-case field mapping consistent and reusable.
-    // --------------------------------------------------
-    public static final String LEGACY_CAMPAIGN_PROGRAM_FIELD = 'Core_MDF_Program__c';
-    public static final String CAMPAIGN_PROGRAM_NAME_FIELD = 'Core_MDF_Channel_Program__r.Name';
-    public static final String LEGACY_CAMPAIGN_ACCOUNT_FIELD = 'Core_MDF_Account__c';
-    public static final String CAMPAIGN_ACCOUNT_NAME_FIELD = 'Core_MDF_Account__r.Name';
 
     // --------------------------------------------------
     // Response Payload Key Constants

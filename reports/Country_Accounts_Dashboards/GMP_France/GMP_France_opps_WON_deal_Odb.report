@@ -1,5 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_46438790</developerName>
+        <masterLabel>Role - GMP UK or other</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>ROLLUP_DESCRIPTION</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Adrian Criddle</sourceValue>
+            </sourceValues>
+            <value>Adrian Criddle</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Graham Palmer</sourceValue>
+            </sourceValues>
+            <value>Graham Palmer</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Iain Beckingham</sourceValue>
+            </sourceValues>
+            <value>Iain Beckingham</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Ian Jones</sourceValue>
+            </sourceValues>
+            <value>Ian Jones</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Jennifer Shileika</sourceValue>
+            </sourceValues>
+            <value>Jennifer Shileika</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Simon Wilyman</sourceValue>
+            </sourceValues>
+            <value>Simon Wilyman</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Graham Copperwheat</sourceValue>
+            </sourceValues>
+            <value>Graham Copperwheat</value>
+        </values>
+    </buckets>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
         <backgroundColor2>#FFFFFF</backgroundColor2>
@@ -27,6 +78,9 @@
         <titleColor>#000000</titleColor>
         <titleSize>18</titleSize>
     </chart>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
     <columns>
         <field>OPPORTUNITY_ID</field>
     </columns>
@@ -78,7 +132,7 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>ROLLUP_DESCRIPTION</field>
+        <field>BucketField_46438790</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>

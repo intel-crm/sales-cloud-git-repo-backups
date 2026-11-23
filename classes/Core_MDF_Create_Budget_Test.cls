@@ -7,12 +7,12 @@
 * ---------------------------------------------------------------------------------------------------------------------------------------
 * Intel - SM         02-June-2020                    Created to test IPA Budget Creation
 *****************************************************************************************************************************************/
-@isTest 
+@isTest
 public class Core_MDF_Create_Budget_Test {
     
      // test method for data setup
     @TestSetup static void setUpData(){
-        List<Account> acctList = new List<Account>();  
+        List<Account> acctList = new List<Account>();
         List<User> userList = new List<User>();
 
         List<String> bypassFunctionKeys = new List<String>();
@@ -63,7 +63,8 @@ public class Core_MDF_Create_Budget_Test {
         List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
 
         ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Intel Partner Alliance','Intel Partner Alliance', true);
-
+        // Highlight: Unused Local Variable - 14285
+        //Id campaign_RecordType_IPA = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
                 
          // Creating a map of profile name and profile Id
         Map<String,Id> profileToId = new Map<String,Id>();
@@ -125,10 +126,10 @@ public class Core_MDF_Create_Budget_Test {
         permSetAssgnLst.add(assignViewAllPermissionSet);
         system.runAs(usr){
             Database.insert(permSetAssgnLst);
-            	
+                
         }
-        
-
+        // Highlight: Unused Local Variable - 14285
+        //Id acctRecord_Type = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Core_Partner_Account_Group').getRecordTypeId();
         Account acc = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test IPA Accounttest', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);//changed 2nd parameter
         acc.Core_MDF_CoMarketingActive__c = true;//changed to true
         //Test.startTest();
@@ -145,7 +146,6 @@ public class Core_MDF_Create_Budget_Test {
         // Updating Accounts 
         acc1.isPartner = true;
         Database.update(acc1);
-        
         Account acc2Parent = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Account 2 parent', cp.Id, Core_MDF_CCP_TestDataUtility.account_Record_Type, acc1.Id, false);//changed record type from Intel to Acc
         acc2Parent.Core_Geo__c='';
         acc2Parent.Core_Sub_Geo__c='';
@@ -179,7 +179,7 @@ public class Core_MDF_Create_Budget_Test {
             Database.insert(grpList);  
         
             
-			 // Creating Group Member
+             // Creating Group Member
             List<GroupMember> grpMemList = new List<GroupMember>();
             GroupMember ipaExtGrpMem1 = new GroupMember();
             ipaExtGrpMem1.UserOrGroupId = usr2.Id;
@@ -261,7 +261,6 @@ public class Core_MDF_Create_Budget_Test {
         campToBeUpdated.add(camp);
         
         Database.update(campToBeUpdated);
-        
         pfr.Core_MDF_Fund_Request_Status__c = 'Planned';
         pfr.Core_MDF_Reimbursement_Rate_pct__c ='100%';
         pfrToBeUpdated.add(pfr);
@@ -269,8 +268,8 @@ public class Core_MDF_Create_Budget_Test {
         Database.update(pfrToBeUpdated);
         Core_MDF_CCP_TestDataUtility.insertCurrencyExchangeRates();        
         Test.stopTest();
-        
-
+        // Highlight: Unused Local Variable - 14285
+        //List<Core_MDF_Bank__c> listBank = new List<Core_MDF_Bank__c>();
         
         Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(acc1.Id, 'Core_MDF_Intel_Partner_Alliance', false,'1231231230');
         bank.Core_MDF_Intel_Company_Code__c = '650';
@@ -289,6 +288,7 @@ public class Core_MDF_Create_Budget_Test {
 
         //Do Account Bank Mapping for 'bank' and ABM 
         //Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc2.Id,bank.Id,true);
+      
         Core_MDF_CCP_TestDataUtility.createMDFConfigurationData();
         Core_Trigger_Executions__c setting = new Core_Trigger_Executions__c();
         setting.Core_Active__c = true;
@@ -336,7 +336,6 @@ public class Core_MDF_Create_Budget_Test {
             executionClaimVat.add(claimFunctionalityNameTriggerExecution3);
         
             Database.insert(executionClaimVat);
-        
         Core_MDF_Configuration__c mdfRecTypes = new Core_MDF_Configuration__c();
         mdfRecTypes.name='Payment_Run_RecordTypes_MDF';
         mdfRecTypes.Core_MDF_Value__c='Client_Co_Marketing_Fund_MDF,Data_Center_Co_Marketing_Fund_MDF';
@@ -348,10 +347,11 @@ public class Core_MDF_Create_Budget_Test {
 
         Test.startTest();
         User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
-
+        // Highlight: Unused Local Variable - 14285
+         //User ipaPayAdm = [SELECT Id,Email from User where Email='testPayment@example.com' limit 1];
             System.runAs(sysAdminUser)
             {
-				List<Campaign> campToBeUpdated = new List<Campaign>();
+                List<Campaign> campToBeUpdated = new List<Campaign>();
                 Campaign camp  = [Select Id, Name, StartDate, EndDate, Description, Core_MDF_Budget__c,Core_MDF_Account__c,Core_MDF_Account__r.Core_MDF_Active_Ind__c,Core_MDF_Channel_Program__c,
                                   Core_MDF_Budget_Type_txt__c,Core_MDF_Total_Campaign_Cost_Amt__c,Core_MDF_Reimbursement_Amt__c,Core_MDF_Program__c
                                   from Campaign where Name = 'Test IPA Camp' limit 1];
@@ -359,7 +359,7 @@ public class Core_MDF_Create_Budget_Test {
                                    Core_MDF_Budget_Type_txt__c,Core_MDF_Total_Campaign_Cost_Amt__c,Core_MDF_Reimbursement_Amt__c,Core_MDF_Program__c
                                    from Campaign where Name = 'Test Campaign - Cancelled2' limit 1];
                 
-             	campToBeUpdated.add(camp);  
+                campToBeUpdated.add(camp);  
                 campToBeUpdated.add(camp2); 
                 Map<Campaign,PartnerMarketingBudget> campBudgetMap = new Map<Campaign,PartnerMarketingBudget>();
                 campBudgetMap=Core_MDF_Create_Budget.manageBudget(campToBeUpdated);

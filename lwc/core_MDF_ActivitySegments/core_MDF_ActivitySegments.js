@@ -35,8 +35,8 @@ export default class Core_MDF_ActivitySegments extends LightningElement {
     @api recordId;
     @api activityAmount;
     @api isCommunity;
+    @api actTactics;
     @api isOutcomeBased=false; // atribute to control which error message to show for SPIF amount validation
-    @api useOutcomeBasedSpifError = false; //Indu IPA Proposal
 
     @track selectedSegment;
     @track segmentNameList = [];
@@ -73,7 +73,7 @@ export default class Core_MDF_ActivitySegments extends LightningElement {
     noSPIFErrorMsg = Core_MDF_ErrIfNoSegment;
     
     get spifAmountErrMsg() {
-        return this.isOutcomeBased || this.useOutcomeBasedSpifError ? Core_MDF_OutcomeBased_SPIF_Amount_ErrMsg : Core_MDF_SPIF_Amount_ErrMsg;
+        return this.isOutcomeBased ? Core_MDF_OutcomeBased_SPIF_Amount_ErrMsg : Core_MDF_SPIF_Amount_ErrMsg;
     }
 
     customLabelValueMap = new Map();
@@ -124,6 +124,7 @@ export default class Core_MDF_ActivitySegments extends LightningElement {
                             }
                         }
                         this.approvedProdIdSet = new Set(prodIds);
+                        console.log('this.approvedProdIdSet---',this.approvedProdIdSet);
                     }
                 })
                 .catch(e => {
@@ -223,11 +224,13 @@ export default class Core_MDF_ActivitySegments extends LightningElement {
                     let productIdSet = [];
                         let productsNameStr='';
                         let productsFamilyNameStr = '';
+                        console.log('approved prod->'+this.approvedProdIdSet);
                     for(let j=0;j<products.length;j++) {
 
                                     if(this.approvedProdIdSet !== undefined && this.approvedProdIdSet !== null && this.approvedProdIdSet !== '' && this.approvedProdIdSet.size > 0 && !this.approvedProdIdSet.has( products[j].Core_MDF_Product_id__c) ) {
                                         continue;
                                     }
+                        console.log('outside continuw');
                         let prod = {};
                                     /*if(segment.Core_MDF_Segment_Name_nm__c == 'Processors' && products[j].Core_Processor_Number_Nm__c !== undefined) {
                                         prod = {
@@ -245,6 +248,7 @@ export default class Core_MDF_ActivitySegments extends LightningElement {
                                         };
                                     //}
                         selectedRecords = [...selectedRecords, prod];
+                        console.log('products [J]-----',products[j].Core_MDF_Product_id__c);
                         productIdSet = [...productIdSet, products[j].Core_MDF_Product_id__c];
                                     productsNameStr += products[j].Core_MDF_Product_Name_txt__c + '\n';
                                     if(!productsFamilyNameStr.includes(products[j].Core_MDF_Product_Family__c)) {
@@ -466,8 +470,9 @@ export default class Core_MDF_ActivitySegments extends LightningElement {
     }
 
     @api isFormValid() {
-        this.isValid = false;
-        return this.template.querySelector("c-core_-m-d-f_-activity-segment-mapping").isFormValid();
+        const segmentForm = this.template.querySelector("c-core_-m-d-f_-activity-segment-mapping");
+        this.isValid = segmentForm ? segmentForm.isFormValid() : false;
+        return this.isValid;
     }
 
     showEditSegmentCmp(event) {

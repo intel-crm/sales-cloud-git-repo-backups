@@ -65,7 +65,10 @@ public class Core_MDF_CCP_UtilityClass_Test {
                 Core_MDF_CCP_UtilityClass.getErrorDetails(e);
                 Core_MDF_CCP_UtilityClass.logError(e);
                 Core_MDF_CCP_UtilityClass.logErrorWithAdditionalMessage(e, 'Test Error');
-                Core_MDF_CCP_UtilityClass.logErrorWithAdditionalMessage(e, 'Test Error');                
+                Core_MDF_CCP_UtilityClass.isWarningVisible();
+                Core_MDF_CCP_UtilityClass.logErrorWithPE(e);
+                Core_MDF_CCP_UtilityClass.logErrorWithSeverity('test error','Campaign','Low');
+                Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(new Map<String, Object>{'exception'=>e});
             }
       }
     
@@ -270,6 +273,8 @@ public class Core_MDF_CCP_UtilityClass_Test {
         List<String> failedRecordDetails = Core_MDF_CCP_UtilityClass.collectDmlFailureDetails(recordIds, results);
         Test.stopTest();
 
-        System.assertEquals(1,failedRecordDetails.size(),'One failure should be returned.');        
+        System.assertEquals(1,failedRecordDetails.size(),'One failure should be returned.');
+        //System.assert(failedRecordDetails[0].contains(String.valueOf(acc.Id)),'Failure details should contain the Account Id.');
+        //System.assert(failedRecordDetails[0].contains('REQUIRED_FIELD_MISSING'),'Failure details should contain the error status code.');
     }
 }

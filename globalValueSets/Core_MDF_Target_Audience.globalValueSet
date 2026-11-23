@@ -66,11 +66,6 @@
         <label>DIY</label>
     </customValue>
     <customValue>
-        <fullName>Edge Customers (edge computing)</fullName>
-        <default>false</default>
-        <label>Edge Customers (edge computing)</label>
-    </customValue>
-    <customValue>
         <fullName>Education</fullName>
         <default>false</default>
         <label>Education</label>
@@ -84,11 +79,6 @@
         <fullName>Employees</fullName>
         <default>false</default>
         <label>Employees</label>
-    </customValue>
-    <customValue>
-        <fullName>Enterprise</fullName>
-        <default>false</default>
-        <label>Enterprise</label>
     </customValue>
     <customValue>
         <fullName>Enthusiast Gaming</fullName>
@@ -149,11 +139,6 @@
         <fullName>Line of Business</fullName>
         <default>false</default>
         <label>Line of Business</label>
-    </customValue>
-    <customValue>
-        <fullName>Consumer - Mainstream</fullName>
-        <default>false</default>
-        <label>Consumer - Mainstream</label>
     </customValue>
     <customValue>
         <fullName>Mainstream Consumer (Overwhelmed)</fullName>
@@ -271,9 +256,24 @@
         <label>System Integrators</label>
     </customValue>
     <customValue>
+        <fullName>Unmanaged Small Business</fullName>
+        <default>false</default>
+        <label>Unmanaged Small Business</label>
+    </customValue>
+    <customValue>
         <fullName>Technical Influencer</fullName>
         <default>false</default>
         <label>Technical Influencer</label>
+    </customValue>
+    <customValue>
+        <fullName>Edge Customers (edge computing)</fullName>
+        <default>false</default>
+        <label>Edge Customers (edge computing)</label>
+    </customValue>
+    <customValue>
+        <fullName>Enterprise</fullName>
+        <default>false</default>
+        <label>Enterprise</label>
     </customValue>
     <customValue>
         <fullName>Consumer - Premium</fullName>
@@ -281,9 +281,14 @@
         <label>Consumer - Premium</label>
     </customValue>
     <customValue>
-        <fullName>Unmanaged Small Business</fullName>
+        <fullName>Test LOV Target Audience</fullName>
         <default>false</default>
-        <label>Unmanaged Small Business</label>
+        <label>Test LOV Target Audience</label>
+    </customValue>
+    <customValue>
+        <fullName>Consumer - Mainstream</fullName>
+        <default>false</default>
+        <label>Consumer - Mainstream</label>
     </customValue>
     <customValue>
         <fullName>Large Business (1000 + Employees)</fullName>
@@ -292,34 +297,22 @@
         <label>Large Business (1000 + Employees)</label>
     </customValue>
     <customValue>
-        <fullName>Small Business (1 - 1000 Employees)</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Small Business (1 - 1000 Employees)</label>
-    </customValue>
-    <customValue>
         <fullName>LOB</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>LOB</label>
     </customValue>
     <customValue>
+        <fullName>Small Business (1 - 1000 Employees)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Small Business (1 - 1000 Employees)</label>
+    </customValue>
+    <customValue>
         <fullName>ITDM</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>ITDM</label>
-    </customValue>
-    <customValue>
-        <fullName>Mid Market / Large Enterprise</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Mid Market / Large Enterprise</label>
-    </customValue>
-    <customValue>
-        <fullName>Business Owners/SMB </fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Business Owners/SMB </label>
     </customValue>
     <description>Store Target Audience values</description>
     <masterLabel>Target Audience</masterLabel>

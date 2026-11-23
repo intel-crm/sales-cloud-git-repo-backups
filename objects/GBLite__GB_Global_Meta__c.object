@@ -200,18 +200,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>GBLite__Original_Record_Id__c</fullName>
-        <caseSensitive>false</caseSensitive>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>Original Record Id</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>true</unique>
-    </fields>
-    <fields>
         <fullName>GBLite__Picklist_Meta__c</fullName>
         <deprecated>false</deprecated>
         <label>Picklist Meta</label>
@@ -384,23 +372,5 @@
     <pluralLabel>GB Global Meta</pluralLabel>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
-    <validationRules>
-        <fullName>GBLite__Prevent_Update_of_Original_Record_Id</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(
-NOT(ISBLANK(PRIORVALUE(GBLite__Original_Record_Id__c))), ISCHANGED(GBLite__Original_Record_Id__c),
-OR(
-ISPICKVAL(GBLite__Type__c, &quot;Action&quot;),
-ISPICKVAL(GBLite__Type__c, &quot;Custom Code - Global CSS&quot;),
-ISPICKVAL(GBLite__Type__c, &quot;Custom Code - Global JavaScript&quot;),
-ISPICKVAL(GBLite__Type__c, &quot;Custom Code - CSS&quot;),
-ISPICKVAL(GBLite__Type__c, &quot;Custom Code - JavaScript&quot;),
-ISPICKVAL(GBLite__Type__c, &quot;Theme - Global&quot;),
-ISPICKVAL(GBLite__Type__c, &quot;Theme - Grid&quot;)
-)
-)</errorConditionFormula>
-        <errorDisplayField>GBLite__Original_Record_Id__c</errorDisplayField>
-        <errorMessage>You cannot edit the Original Record Id field.</errorMessage>
-    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

@@ -40,7 +40,8 @@ public class Core_MDF_PFA_Trigger_Test {
         //Creating Contact for Partner User
         Contact conRecord1 = Core_MDF_CCP_TestDataUtility.createContact(acc1.Id,true);
         Contact conRecord2 = Core_MDF_CCP_TestDataUtility.createContact(acc1.Id,true);
-
+        // Highlight: Unused Local Variable - 14285 // Suma
+            //Contact conRecord3 = Core_MDF_CCP_TestDataUtility.createContact(acc1.Id,true);
         
         List<Core_AGS_Role__c> agsRoleList = new List<Core_AGS_Role__c>();
         
@@ -79,7 +80,7 @@ public class Core_MDF_PFA_Trigger_Test {
         Core_Contact_Entitlement__c contactEntitlementCCFClaimSub2 = Core_MDF_CCP_TestDataUtility.createContactEntitlement(conRecord2.Id,entitlementCCFClaimSub.Id ,true,'Complete', false);
         contEntList.add(contactEntitlementCCFClaimSub2);
  
-       // Database.insert(contEntList);  
+        Database.insert(contEntList);  
         
         //Creating Case on the Account
         Case case1 = new Case(AccountId=acc.Id);

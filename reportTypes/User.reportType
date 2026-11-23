@@ -472,7 +472,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>UserRole.RollupDescription</field>
+            <field>Partner_License_Reclaimed__c</field>
             <table>User</table>
         </columns>
         <masterLabel>Users</masterLabel>

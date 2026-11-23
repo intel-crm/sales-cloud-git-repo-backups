@@ -195,6 +195,8 @@ Accenture – Alka            04/03/2019         Created.
     
     
     
+    
+    
     @isTest static void testMethod1() {
         
         //User usr=[Select id from User where LastName = 'Test User' Limit 1];
@@ -295,7 +297,6 @@ Accenture – Alka            04/03/2019         Created.
         Test.StopTest();  
         }
     }
-    
     @isTest
     static void caseProcess(){
         //User usr=[Select id from User where LastName = 'Test User' Limit 1];
@@ -376,4 +377,5 @@ Accenture – Alka            04/03/2019         Created.
         }
         Test.stopTest();
     }
+ 
 }

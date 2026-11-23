@@ -38,6 +38,14 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_All_Other_EMEA_Ind__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Geo_Code_cd__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Geo_Sales_Org_Code_cd__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

@@ -1132,4 +1132,8 @@ status. Please recall the approval request to change the owner. --></errorMessag
         <label><!-- Core_Recall_Approval --></label>
         <name>Core_Recall_Approval</name>
     </webLinks>
+    <webLinks>
+        <label><!-- Core_SM_Submit_for_Approval --></label>
+        <name>Core_SM_Submit_for_Approval</name>
+    </webLinks>
 </CustomObjectTranslation>

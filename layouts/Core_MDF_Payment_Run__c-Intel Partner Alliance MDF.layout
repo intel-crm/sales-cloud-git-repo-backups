@@ -29,6 +29,18 @@
                 <field>Core_MDF_ErrorDetails_Txt__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Note__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Run_For_All_Accounts__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Payment_run_for_Accounts__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Payment_Nature_nm__c</field>
             </layoutItems>

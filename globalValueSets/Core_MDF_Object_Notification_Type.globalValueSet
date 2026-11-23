@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Case-&gt;Audit Review</fullName>
+        <default>false</default>
+        <label>Case-&gt;Audit Review</label>
+    </customValue>
+    <customValue>
+        <fullName>PartnerFundClaim-&gt;PIC Completion</fullName>
+        <default>false</default>
+        <label>PartnerFundClaim-&gt;PIC Completion</label>
+    </customValue>
+    <customValue>
+        <fullName>PartnerFundClaim-&gt;PIC Failure</fullName>
+        <default>false</default>
+        <label>PartnerFundClaim-&gt;PIC Failure</label>
+    </customValue>
+    <customValue>
+        <fullName>PartnerFundClaim-&gt;PIC Review Request</fullName>
+        <default>false</default>
+        <label>PartnerFundClaim-&gt;PIC Review Request</label>
+    </customValue>
+    <customValue>
+        <fullName>PartnerFundRequest-&gt;Activity Approval Request</fullName>
+        <default>false</default>
+        <label>PartnerFundRequest-&gt;Activity Approval Request</label>
+    </customValue>
+    <customValue>
+        <fullName>PartnerFundRequest-&gt;Activity Status Update</fullName>
+        <default>false</default>
+        <label>PartnerFundRequest-&gt;Activity Status Update</label>
+    </customValue>
+    <customValue>
+        <fullName>PartnerFundRequest-&gt;Ready For Claim</fullName>
+        <default>false</default>
+        <label>PartnerFundRequest-&gt;Ready For Claim</label>
+    </customValue>
+    <masterLabel>Object -&gt; Notification Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

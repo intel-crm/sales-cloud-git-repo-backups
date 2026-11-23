@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.Core_CIM_ID__c</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_COUNTRY_CODE</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Military_Aerospace_and_Government__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_D_B_Industry_1__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_D_B_Industry_2__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_D_B_Industry_3__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_D_B_Industry_4__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_D_B_Industry_5__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_D_B_Industry_6__c</field>
+    </columns>
+    <columns>
+        <field>DUE_DATE</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6</booleanFilter>
+        <criteriaItems>
+            <column>Account.Core_D_B_Industry_1__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Small Arms</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_D_B_Industry_2__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Small Arms</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_D_B_Industry_3__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>small arms</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_D_B_Industry_4__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>small arms</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_D_B_Industry_5__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>small arms</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_D_B_Industry_6__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>small arms</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>CIM-GOLD-DnB</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

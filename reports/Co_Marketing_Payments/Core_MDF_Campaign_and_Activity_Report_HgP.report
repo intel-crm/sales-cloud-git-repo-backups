@@ -173,7 +173,7 @@
     </columns>
     <description>Co-Marketing Campaign and Activity Report</description>
     <filter>
-        <booleanFilter>1 AND (2 OR (3 AND 4)) AND 5 AND 6 AND 7 AND 8 AND 9</booleanFilter>
+        <booleanFilter>1 AND (2 OR (3 AND 4)) AND 5 AND 6 AND 7 AND 8 AND 9 AND 10</booleanFilter>
         <criteriaItems>
             <column>PartnerFundRequest$Campaign.Status</column>
             <columnToColumn>false</columnToColumn>
@@ -221,7 +221,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Client CoMarketing Fund,Client CoMarketing Fund Boost,Data Center CoMarketing Fund,Ecosystem Extension Fund,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,CoGTM</value>
+            <value>,Client CoMarketing Fund,Client,Client CoMarketing Fund Boost,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Ecosystem Extension Fund,Data Center CoMarketing Fund,CoGTM</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Ultimate_Account_Name__c</column>
@@ -235,7 +235,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Business Client Acceleration - MDF,CCF 1.0,Client Specialties MDF,Cloud,Data Center Specialties MDF,Data Centric Acceleration - MDF,DCF 1.0,Global Ericsson Acceleration - MDF,Global IBM Acceleration - MDF,Global Microsoft Acceleration - MDF,Global Nokia Acceleration - MDF,Global Red Hat Acceleration - MDF,Global SAP Acceleration - MDF,Global SAS Acceleration - MDF,Global Suse Acceleration - MDF,Global VMware Acceleration - MDF,IoT Premier - MDF,IoT Targeted - MDF,ODM Growth Plan - Client MDF,ISV Scale Acceleration - MDF,MDF,MDF+,OEM CMP,Optane Specialties MDF,Red Hat &quot;Amplify&quot; - MDF,Retail MDF,RSA MD,Service Provider CMP,SOEM Client MDF,SOEM Data Center MDF,VMWare Amplify - MDF,Account Plan,Proposal I MDF,Proposal II MDF,Co-Engineering</value>
+            <value>,Client Specialties MDF,Data Centric Acceleration - MDF,IoT Premier - MDF,IoT Targeted - MDF,MDF,MDF+,ODM Growth Plan - Client MDF,OEM CMP,Retail MDF,RSA MD,Service Provider CMP,SOEM Client MDF,SOEM Data Center MDF,Account Plan,Proposal I MDF,Proposal II MDF,Business Client Acceleration - MDF,Cloud,CCF 1.0,DCF 1.0,Co-Engineering</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_Is_Outcome_Based_Ind__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

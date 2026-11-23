@@ -168,51 +168,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_IPS_BES_ExtCommentID__c</fullName>
-        <externalId>true</externalId>
-        <label>External Comment ID</label>
-        <length>250</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_IPS_BES_Promote_Status__c</fullName>
-        <label>Promote Status</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>In Progress</fullName>
-                    <default>false</default>
-                    <label>In Progress</label>
-                </value>
-                <value>
-                    <fullName>Failed</fullName>
-                    <default>false</default>
-                    <label>Failed</label>
-                </value>
-                <value>
-                    <fullName>Done</fullName>
-                    <default>false</default>
-                    <label>Done</label>
-                </value>
-                <value>
-                    <fullName>Sent Successfully</fullName>
-                    <default>false</default>
-                    <label>Sent Successfully</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
         <fullName>Core_IPS_BgColor__c</fullName>
         <label>Background Color</label>
         <required>false</required>
@@ -391,11 +346,6 @@
                     <fullName>Partner - Agent</fullName>
                     <default>false</default>
                     <label>Partner - Agent</label>
-                </value>
-                <value>
-                    <fullName>System</fullName>
-                    <default>false</default>
-                    <label>System</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -658,25 +608,6 @@
         <active>true</active>
         <label>Case comment</label>
         <picklistValues>
-            <picklist>Core_IPS_BES_Promote_Status__c</picklist>
-            <values>
-                <fullName>Done</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Failed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sent Successfully</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Core_IPS_Case_Comment_Source__c</picklist>
             <values>
                 <fullName>API</fullName>
@@ -764,10 +695,6 @@
                 <fullName>Partner - DFAE</fullName>
                 <default>false</default>
             </values>
-            <values>
-                <fullName>System</fullName>
-                <default>false</default>
-            </values>
         </picklistValues>
         <picklistValues>
             <picklist>Core_IPS_Migrated_Note_Type__c</picklist>
@@ -823,12 +750,5 @@
         <searchResultsAdditionalFields>CREATED_DATE</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
-    <validationRules>
-        <fullName>IPS_Altera_Go_Live_Comment_Restriction</fullName>
-        <active>true</active>
-        <description>Restricting the user to add comments on a cases with Altera products during migration</description>
-        <errorConditionFormula>AND($Label.IPS_Altera_Go_Live= &apos;True&apos;,Core_IPS_Case__r.Core_IPS_Product_Org_Number__c = &apos;025&apos;,  $User.Id  &lt;&gt;  $Label.Altera_Bypass_UserId )</errorConditionFormula>
-        <errorMessage>Not allowed to create or update record related to Org 025</errorMessage>
-    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

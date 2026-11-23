@@ -71,5 +71,8 @@
          <aura:if isTrue="{!not(empty(v.accounthasOpenEscalations))}">
             <p>{!v.accounthasOpenEscalations}</p><br/>  
         </aura:if>
+
+       
+
     </aura:if>
 </aura:component>

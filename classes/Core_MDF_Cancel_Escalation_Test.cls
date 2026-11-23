@@ -10,7 +10,6 @@ public class Core_MDF_Cancel_Escalation_Test {
         insert systemAdmin;
         
         
-        
         List<ChannelProgram> cpList=new List<ChannelProgram>();
         ChannelProgram ipaCP = Core_MDF_CCP_TestDataUtility.createProgram ('Intel Partner Alliance','Intel Partner Alliance', false);
         ChannelProgram ccfCp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', false);
@@ -63,7 +62,7 @@ public class Core_MDF_Cancel_Escalation_Test {
             Set<String> myset1 = new Set<String>();
             List<String> result1 = new List<String>();
             myset1.addAll(bypassFunctionKeys);
-            result1.addAll(myset1);
+             result1.addAll(myset1);
             
             Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
             
@@ -101,8 +100,8 @@ public class Core_MDF_Cancel_Escalation_Test {
             Account ipaCoMarketingAccount = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('IPA Co-Marketing Account', ipaCP.id, Core_MDF_CCP_TestDataUtility.Account_Record_Type,ipaUltimateAccount.id, false);           
             ipaCoMarketingAccount.Core_Geo__c = 'APJ';
             insert ipaCoMarketingAccount;
-            
-
+            // Highlight: Unused Local Variable - 14285
+            //Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Acc New 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
             
             List<Account> accountList = new List<Account>();
             Account ccfVc = Core_MDF_CCP_TestDataUtility.createAccount ('Co-marketing CCF Test Account', 
@@ -156,7 +155,6 @@ public class Core_MDF_Cancel_Escalation_Test {
             pgm.Core_MDF_Source_Txt__c = 'test';
             pgm.Core_MDF_AccountIdGroupName__c = ccpIntelAccount.Id+'PGM_TEST';
             database.insert(pgm);
-            
             Core_MDF_Partner_Node_User_Mapping__c pnumRecord = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(ccfVc.Id,usr1.Id,true);
             
             string budgetType = Core_MDF_CCP_ConstantClass.PR_MDF_BUDGET_TYPE;
@@ -165,7 +163,7 @@ public class Core_MDF_Cancel_Escalation_Test {
             ipaCampaignForAP.Core_MDF_Proposal_Based_Ind__c = true;
             ipaCampaignForAP.Status = 'Pending Review';
             ipaCampaignForAP.Core_Approval_Status__c = 'Price Reviewer';
-            ipaCampaignForAP.Core_MDF_Technology__c=''; // Added by sumalatha
+            ipaCampaignForAP.Core_MDF_Technology__c='';
             database.insert(ipaCampaignForAP);
             
             Id recordTypeIdPMB = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByName().get('CoMarketing').getRecordTypeId();
@@ -173,7 +171,7 @@ public class Core_MDF_Cancel_Escalation_Test {
             opalbudget.Core_MDF_Budget_Type__c='MDF';
             opalbudget.Core_MDF_Budget_Type_Txt__c='MDF';
             System.runAs(systemAdmin){
-                insert opalbudget;
+               insert opalbudget;
             }
             
             PartnerFundAllocation pfaRecordOpal = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('TestPFA3',opalbudget, ccfVc, 199999, false);
@@ -204,7 +202,8 @@ public class Core_MDF_Cancel_Escalation_Test {
             }
             Test.startTest();
             List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
-
+            // Highlight: Unused Local Variable - 14285
+            //PartnerFundRequest ipaPFR = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today().addDays(1),System.today().addDays(10),true);
             
             PartnerFundRequest MDFpfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                               Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(ccfVc.id),null,null,'INDIA','Small Business','Desktop',
@@ -227,8 +226,8 @@ public class Core_MDF_Cancel_Escalation_Test {
             MDFpfr.Core_MDF_Fund_Request_Status__c = 'Planned';
             MDFpfr.Core_MDF_MDFReimbursement_Amt__c = 1000;
             MDFpfr.RequestedAmount = 1000;
-            MDFpfr.Core_MDF_ActivityCategory__c=''; // Added by sumalatha
-            MDFpfr.Core_MDF_Activity_Types__c=''; // Added by sumalatha
+            MDFpfr.Core_MDF_ActivityCategory__c='';
+            MDFpfr.Core_MDF_Activity_Types__c='';
             pfrList.add(MDFpfr);
             System.runAs(systemAdmin){
                 insert pfrList;
@@ -301,7 +300,7 @@ public class Core_MDF_Cancel_Escalation_Test {
             
             
             esc3.Core_MDF_Claim_Number_id__c = Claim1.id;
-            //database.update(esc3);// 14285 Suma
+            //database.update(esc3);// 14285
             
             esc4.Core_MDF_Claim_Number_id__c = claim2.id;
             //database.update(esc4);//14285 Suma

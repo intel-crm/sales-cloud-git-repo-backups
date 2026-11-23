@@ -16,6 +16,7 @@ public without sharing class Core_MDF_Payment_ServiceHandler {
     public static List<PartnerFundClaim> claimsToUpdateEFTNbr = new List<PartnerFundClaim>();
     //paymentStatus
     public static final string paymentStatus = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Paid');
+    //public static final string pendingPaymentStatus = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Pending_Payment');
     //Storing the Payment Run Record Types in the below list
     public static final List<String> paymentRecordTypes = Core_MDF_CustomLabelConfig.getTextList('Core_MDF_Payment_Record_Types',',');
 
@@ -49,8 +50,12 @@ public without sharing class Core_MDF_Payment_ServiceHandler {
         return isUpdated;
     }
     //checks if EFT Number on payment is updated and payment status is paid
+    /* Any intermediate updates on payment, won't be reflect on claim=> because of multiple(2) DML updates.
+       EFT Number will be synchronized from payment to claim only when payment status is 'paid'
+    */
     public static boolean isEFTNbrUpdated(Core_MDF_Payment__c oldPmtRec, Core_MDF_Payment__c newPmtRec) {
         Boolean isUpdated = false;
+
         if(oldPmtRec.Core_MDF_EFT_Nbr__c != newPmtRec.Core_MDF_EFT_Nbr__c && newPmtRec.Core_MDF_Payment_Status_Txt__c == paymentStatus
             && oldPmtRec.Core_MDF_Payment_Status_Txt__c == newPmtRec.Core_MDF_Payment_Status_Txt__c) {
             isUpdated = true;

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;h2&gt;Newsletters&lt;/h2&gt;
+&lt;div style=&quot;height:1em;&quot;&gt;&lt;/div&gt;
+	&lt;div class=&quot;link&quot;&gt;
+		&lt;p class=&quot;cta-item&quot;&gt;Access editions of Co-Marketing newsletters below. &amp;nbsp&lt;a class=&quot;text&quot; target=&quot;_blank&quot; href=&quot;https://www.intel.com/content/dam/ccp/us/en/secure/ccf-dcf-common/faq.pdf&quot;&gt;&lt;span class=&quot;&quot;&gt;Newsletter Frequently Asked Questions&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+	&lt;/div&gt;</value>
+                </componentInstanceProperties>
+                <componentName>forceCommunity:htmlBlock</componentName>
+                <identifier>forceCommunity_htmlBlock</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>header</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;h3&gt;Client Co-Marketing Fund (CCF) Newsletters&lt;/h3&gt;
+			&lt;div class=&quot;storytelling-links&quot;&gt;
+				&lt;div class=&quot;storytellingitems&quot;&gt;
+					 &lt;div id=&quot;storyTellingItems-1&quot; class=&quot;component&quot; data-component=&quot;storyTellingItems&quot; data-component-id=&quot;1&quot;&gt;
+						 &lt;div style=&quot;height:1em;&quot;&gt;&lt;/div&gt;
+						&lt;div class=&quot;link&quot;&gt;
+							&lt;p class=&quot;cta-item&quot;&gt;&lt;a class=&quot;text&quot; target=&quot;_blank&quot; href=&quot;https://www.intel.com/content/dam/ccp/us/en/secure/ccf/march-2019-program-update.pdf&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;›&lt;/button&gt;&lt;span class=&quot;&quot;&gt;April 2019&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+						&lt;/div&gt;						
+					&lt;div style=&quot;height:1em;&quot;&gt;&lt;/div&gt;
+						&lt;div class=&quot;link&quot;&gt;
+							&lt;p class=&quot;cta-item&quot;&gt;&lt;a class=&quot;text&quot; target=&quot;_blank&quot; href=&quot;https://www.intel.com/content/dam/ccp/us/en/secure/ccf/june-2019-program-update.pdf&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;›&lt;/button&gt;&lt;span class=&quot;&quot;&gt;June 2019&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+						&lt;/div&gt;						
+			       &lt;div style=&quot;height:1em;&quot;&gt;&lt;/div&gt;
+						&lt;div class=&quot;link&quot;&gt;
+							&lt;p class=&quot;cta-item&quot;&gt;&lt;a class=&quot;text&quot; target=&quot;_blank&quot; href=&quot;https://www.intel.com/content/dam/ccp/us/en/secure/ccf/sept-2019-program-update.pdf&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;›&lt;/button&gt;&lt;span class=&quot;&quot;&gt;October 2019&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+						&lt;/div&gt;
+                   &lt;div style=&quot;height:1em;&quot;&gt;&lt;/div&gt;
+						&lt;div class=&quot;link&quot;&gt;
+							&lt;p class=&quot;cta-item&quot;&gt;&lt;a class=&quot;text&quot; target=&quot;_blank&quot; href=&quot;https://www.intel.com/content/dam/ccp/us/en/secure/ccf/apr-2020-program-update.pdf&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;›&lt;/button&gt;&lt;span class=&quot;&quot;&gt;April 2020&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+				   		&lt;/div&gt;
+                    &lt;div style=&quot;height:1em;&quot;&gt;&lt;/div&gt;
+						&lt;div class=&quot;link&quot;&gt;
+							&lt;p class=&quot;cta-item&quot;&gt;&lt;a class=&quot;text&quot; target=&quot;_blank&quot; href=&quot;https://www.intel.com/content/dam/ccp/us/en/secure/ccf/jul-2020-program-update.pdf&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;›&lt;/button&gt;&lt;span class=&quot;&quot;&gt;July 2020&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+				   		&lt;/div&gt;
+                    &lt;/div&gt;	
+				&lt;/div&gt;	
+		&lt;/div&gt;</value>
+                </componentInstanceProperties>
+                <componentName>forceCommunity:htmlBlock</componentName>
+                <identifier>forceCommunity_htmlBlock2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;h3&gt;Data Center Co-Marketing Fund (DCF) Newsletters&lt;/h3&gt;
+&lt;div class=&quot;storytelling-links&quot;&gt;
+    &lt;div class=&quot;storytellingitems&quot;&gt;
+        &lt;div id=&quot;storyTellingItems-1&quot; class=&quot;component&quot; data-component=&quot;storyTellingItems&quot; data-component-id=&quot;1&quot;&gt;
+            &lt;div style=&quot;height:1em;&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;link&quot;&gt;
+                &lt;p class=&quot;cta-item&quot;&gt;&lt;a class=&quot;text&quot; target=&quot;_blank&quot; href=&quot;https://www.intel.com/content/dam/ccp/us/en/secure/dcf/march-2019-program-update.pdf&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;›&lt;/button&gt;&lt;span class=&quot;&quot;&gt;April 2019&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+            &lt;/div&gt;       
+            &lt;div style=&quot;height:1em;&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;link&quot;&gt;
+                &lt;p class=&quot;cta-item&quot;&gt;&lt;a class=&quot;text&quot; target=&quot;_blank&quot; href=&quot;https://www.intel.com/content/dam/ccp/us/en/secure/dcf/june-2019-program-update.pdf&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;›&lt;/button&gt;&lt;span class=&quot;&quot;&gt;June 2019&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+            &lt;/div&gt;    
+            &lt;div style=&quot;height:1em;&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;link&quot;&gt;
+                &lt;p class=&quot;cta-item&quot;&gt;&lt;a class=&quot;text&quot; target=&quot;_blank&quot; href=&quot;https://www.intel.com/content/dam/ccp/us/en/secure/dcf/sept-2019-program-update.pdf&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;›&lt;/button&gt;&lt;span class=&quot;&quot;&gt;October 2019&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div style=&quot;height:1em;&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;link&quot;&gt;
+                &lt;p class=&quot;cta-item&quot;&gt;&lt;a class=&quot;text&quot; target=&quot;_blank&quot; href=&quot;https://www.intel.com/content/dam/ccp/us/en/secure/dcf/apr-2020-program-update.pdf&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;›&lt;/button&gt;&lt;span class=&quot;&quot;&gt;April 2020&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</value>
+                </componentInstanceProperties>
+                <componentName>forceCommunity:htmlBlock</componentName>
+                <identifier>forceCommunity_htmlBlock3</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>content</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <name>footer</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <appendable>enabled</appendable>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>description</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>metaTags</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Newsletters</value>
+                </componentInstanceProperties>
+                <componentName>forceCommunity:seoAssistant</componentName>
+                <identifier>forceCommunity_seoAssistant</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>sfdcHiddenRegion</name>
+        <prependable>enabled</prependable>
+        <replaceable>enabled</replaceable>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Newsletters</masterLabel>
+    <template>
+        <name>siteforce:sldsOneColLayout</name>
+    </template>
+    <type>CommAppPage</type>
+</FlexiPage>

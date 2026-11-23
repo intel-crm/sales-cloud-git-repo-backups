@@ -13,15 +13,6 @@
         <field>OpportunityLineItem.Core_Account_Name__c</field>
     </columns>
     <columns>
-        <field>Account.Core_Account_Country__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Sales_Groups__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_ODM__c</field>
-    </columns>
-    <columns>
         <field>STAGE_NAME</field>
     </columns>
     <columns>
@@ -86,33 +77,10 @@
         <field>TOTAL_PRICE</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>AMOUNT</field>
-    </columns>
-    <columns>
         <field>OpportunityLineItem.Core_Design_Registration_Product_Id__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Status_Update__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Architecture_Conversion__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Loss_Cancel_Reason__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Loss_Cancel_Details__c</field>
-    </columns>
-    <columns>
-        <field>CREATED_DATE</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Approved_Date__c</field>
-    </columns>
-    <columns>
-        <field>FK_CREATED_DATE</field>
     </columns>
     <description>List of all Opportunities converted from Design Registrations.</description>
     <format>Tabular</format>

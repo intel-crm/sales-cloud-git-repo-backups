@@ -1,0 +1,19 @@
+<br/>
+{ <br/>
+
+     "Operation": "Add", <br/>
+
+     "Entitlement": "Resource & Design Center Collaboration Spaces", <br/>
+
+     "EmailAddress": "{!Contact.Email}", <br/>
+
+     "LoginId": "{!Contact.Core_Login_Id__c}",<br/>
+
+     "SFDCAccountId": "{!Account.Id}", <br/>
+
+     "SFDCAccountName": "{!Account.Name}", <br/>
+
+     "EntitlementLink":"{!$Label.Core_RDC_Environment_URL}/{!Core_Contact_Entitlement__c.Id}"<br/>
+
+    
+}

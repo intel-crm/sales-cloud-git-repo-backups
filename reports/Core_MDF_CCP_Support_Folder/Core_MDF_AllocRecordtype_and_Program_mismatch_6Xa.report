@@ -29,14 +29,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Client</value>
+            <value>Client Co-Marketing Fund</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerMarketingBudget.PartnerFundAllocations$Core_MDF_Program_Txt__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Datacenter</value>
+            <value>Data Center Co-Marketing Fund</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerMarketingBudget.PartnerFundAllocations$Core_MDF_Program_Txt__c</column>

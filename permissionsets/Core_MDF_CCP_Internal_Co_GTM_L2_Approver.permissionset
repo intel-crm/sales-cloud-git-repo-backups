@@ -21,6 +21,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Core_MDF_AuditDocumentHelper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_MDF_BatchStageClaimController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -162,7 +166,15 @@
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
+        <name>CCP_Attributes_Map__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
         <name>Core_MDF_AdjustmentOrEscalationClaim__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>Core_MDF_Approval_Object_List__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
@@ -170,7 +182,15 @@
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
+        <name>Core_MDF_BulkClaimTemplateParticulars__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
         <name>Core_MDF_CCP_Activity_Budget_Cap_Window__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>Core_MDF_CCP_Claim_Window__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
@@ -194,15 +214,23 @@
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
+        <name>Core_MDF_ListView_Group_Mapping__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
         <name>Core_MDF_ObjRecType_Budget_FieldSetMap__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
-        <name>Core_MDF_PFR_Event_Rule__mdt</name>
+        <name>Core_MDF_POP_Document_Types__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
         <name>Core_MDF_ProgramGeoGroupMap__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>Core_MDF_Standard_Object_for_Sharing__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
@@ -1017,6 +1045,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Account.LID__LinkedIn_Company_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Account.MaritzCX__Active__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1137,17 +1170,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Campaign.Core_MDF_Approval_Campaign_Txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Campaign.Core_MDF_Approval_Stage_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Campaign.Core_MDF_Audience__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1167,42 +1190,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Campaign.Core_MDF_Campaign_Cancel_Txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Campaign.Core_MDF_Campaign_IPA_Path_Status__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Campaign.Core_MDF_Campaign_Reference_Number__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Campaign.Core_MDF_Campaign_Scoring_txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Campaign.Core_MDF_Channel_Program__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Campaign.Core_MDF_Comments_Internal_Only__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Campaign.Core_MDF_Comments__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Campaign.Core_MDF_Completed_Approval_Level_Nm__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1216,38 +1204,8 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Campaign.Core_MDF_Ecosystem_Partner_Nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Campaign.Core_MDF_Focus_Area_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Campaign.Core_MDF_Host_Region_cd__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>Campaign.Core_MDF_IPA_Co_Engineering_Campaign_ind__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Campaign.Core_MDF_IPA_Priority_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Campaign.Core_MDF_Industry_Nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Campaign.Core_MDF_Initiative_nm__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1262,16 +1220,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Campaign.Core_MDF_Key_Performance_Indicator__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Campaign.Core_MDF_Last_Rejected_Level_Nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Campaign.Core_MDF_MMID__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1281,18 +1229,8 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>Campaign.Core_MDF_Market__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>false</editable>
         <field>Campaign.Core_MDF_Member_Acceptor_id__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Campaign.Core_MDF_Messaging__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1347,32 +1285,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Campaign.Core_MDF_Proposal_Based_Ind__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Campaign.Core_MDF_Proposal_Score_nbr__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Campaign.Core_MDF_Reason_for_Back_Dating_Nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Campaign.Core_MDF_Region_cd__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Campaign.Core_MDF_ReimbursementRate_pct__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Campaign.Core_MDF_Reimbursement_Amount_Amt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1392,17 +1305,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Campaign.Core_MDF_Supports_legacy_program__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Campaign.Core_MDF_Technology__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Campaign.Core_MDF_Terminal_Rejection_Ind__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1411,18 +1314,8 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>Campaign.Core_MDF_Use_Case_Nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>false</editable>
         <field>Campaign.Core_MDF_Volume_txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Campaign.Description</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2207,6 +2100,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Contact.LID__LinkedIn_Company_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.LID__LinkedIn_Member_Token__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Contact.LeadSource</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2577,21 +2480,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Core_MDF_Claim_Payment_Link__c.Core_MDF_Payment_Run_Number_Nbr__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Claim_Payment_Link__c.Core_MDF_Reimbursable_Local_Amt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Claim_Payment_Link__c.Core_MDF_Reimbursement_Amount_Amt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Core_MDF_Claim_Payment_Link__c.Core_MDF_Requested_Reimbursement_Amt__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2652,11 +2540,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.CampaignId__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Core_MDF_Custom_Picklist__c.Core_MDF_Account__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2672,37 +2555,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Activity_Classification_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Activity_Description__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Activity_SubType_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Core_MDF_Custom_Picklist__c.Core_MDF_Activity_Types__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Attribution_Variance_Neg_txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Attribution_Variance_Pos_txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Audience__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2712,57 +2565,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Brand_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Budget_Amount_Local_amt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Budget_Currency_cd__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Budget_Type_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Campaign_Reimbursement_Rate_txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Campaign_Scoring_txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Comments_Internal_Only__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Comments__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Core_MDF_Custom_Picklist__c.Core_MDF_Contact_Name_And_Email_txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Country_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Custom_Reimbursement_Rate_pct__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2772,87 +2575,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Deployment_Quantity_nbr__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Domain_Type_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_EcosystemPartner_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Ecosystem_Partner_Nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Core_MDF_Custom_Picklist__c.Core_MDF_End_Date__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Event_Format_Nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_External_Visibility_Date__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Focus_Area_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Fund_Request_Status__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Hero_Product__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Core_MDF_Custom_Picklist__c.Core_MDF_IPA_Co_Engineering_Campaign_ind__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_IPA_Priority_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Industry_Multi_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Industry_Nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Initiative_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Integrated_Campaign_Details__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Integrated_Campaign__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2867,26 +2595,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Key_Marketing_Indicator_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Key_Performance_Indicator__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Lead_Quantity_nbr__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_MDFReimbursement_Amt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Core_MDF_Custom_Picklist__c.Core_MDF_MMID__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2897,17 +2605,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Market__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Core_MDF_Custom_Picklist__c.Core_MDF_Member_Acceptor_id__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Messaging__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2932,11 +2630,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Other_Quantity_nbr__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Core_MDF_Custom_Picklist__c.Core_MDF_Other_Reason_Name_txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2947,32 +2640,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Priorities__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Priority_2_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Priority_3_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Core_MDF_Custom_Picklist__c.Core_MDF_Priority__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Priority_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_ProductType__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2997,57 +2665,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_ReasonforPastDatedActivity_Nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Region_cd__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_ReimbursementRate_pct__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Reimbursement_Amt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Reimbursement_Rate__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Reimbursement_Rate_pct__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Reimbursement_Rate_txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Core_MDF_Custom_Picklist__c.Core_MDF_Start_Date__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Strategic_Marketing_Fund_Ind__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_TargetAudience__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_TargetAudience_nm__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3062,37 +2680,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Core_MDF_Use_Case_Nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Core_MDF_Custom_Picklist__c.Core_MDF_Volume_txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Description__c</field>
+        <field>Core_MDF_Escalation__c.Core_MDF_Account_txt_del__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.EndDate__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Name__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.StartDate__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Custom_Picklist__c.Title__c</field>
+        <field>Core_MDF_Escalation__c.Core_MDF_Activity_Name_url__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3403,6 +3001,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_Activity_Classification_nm__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_Budget_Type_txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3752,11 +3355,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>PartnerFundClaim.Core_MDF_Account_Name_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_Activity_Category__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3848,6 +3446,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_Campaign_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Claim_Cancellation_Reason_txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4526,6 +4129,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>PartnerFundRequest.Core_MDF_Maximum_Intel_Investment_amt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>PartnerFundRequest.Core_MDF_Member_Acceptor_Id__c</field>
         <readable>true</readable>
@@ -4698,6 +4306,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>PartnerFundRequest.Core_MDF_Others_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_Outcome_Region_nm__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5336,14 +4949,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <recordType>Core_MDF_Custom_Picklist__c.Core_MDF_Co_GTM</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>Core_MDF_Custom_Picklist__c.Core_MDF_Intel_Partner_Alliance_Account_Based</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>Core_MDF_Custom_Picklist__c.Core_MDF_Intel_Partner_Alliance_Proposal_Based</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>

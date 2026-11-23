@@ -22,7 +22,6 @@
     <aura:attribute name="isNewContact" default="false" type="Boolean"/>
     <aura:handler event="c:Core_Contact_Creation_DisplayEvent" action="{!c.passEmailFromSavedContactToDisplay}"/>
     <aura:attribute name="isComarketing" default="false" type="Boolean"/>
-    <aura:attribute type="Boolean" name="isShowSpinner" default="false"/>
     <!-- start of PAGE HEADER -->
     <lightning:layout class="slds-page-header slds-page-header--object-home" horizontalAlign="spread" >
         
@@ -88,9 +87,6 @@
                             <div class="slds-text-color--error noResultFoundSec"> {!$Label.c.Core_MDF_NoResult}</div>
                         </aura:if>
                         <!--### display all records of searchResult attribute by aura:iteration ###-->
-                        <aura:if isTrue="{!v.isShowSpinner}"> 
-                        <lightning:spinner alternativeText="Loading" size="medium" />
-                        <aura:set attribute="else">
                         <aura:iteration items="{!v.searchResult}" var="staff">
                             <tr>
                                 <td>
@@ -111,8 +107,6 @@
                                 </td>
                             </tr>
                         </aura:iteration>
-                        </aura:set>
-                    </aura:if>
                     </tbody>
                 </table>
                 

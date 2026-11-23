@@ -91,7 +91,7 @@ public without sharing class Core_MDF_HoldCriteriaListProcessHelper {
                                                                               Core_MDF_Escalation_Id__r.Core_MDF_Escalation_Type_nm__c,
                                                                               Core_MDF_Escalation_Id__r.Core_MDF_Do_not_Auto_Create_Claim_Ind__c,
                                                                               Core_MDF_VAT_Hold_Ind__c,Core_MDF_VAT_Eligibility_Ind__c,Core_MDF_Bank__c,Core_MDF_Aud_chk_completed_Ind__c,
-									      Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c, Core_MDF_Document_Hold_Ind__c, Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c, Request.Core_MDF_Is_Outcome_Based_Ind__c //Roshan
+																			  Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c, Core_MDF_Document_Hold_Ind__c, Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c, Request.Core_MDF_Is_Outcome_Based_Ind__c //Roshan - Super Activity changes
                                                                               FROM partnerfundClaim where ID IN:clmIds]);
         
         //creating all sets based on incoming claims newClaimsTobeProcessed
@@ -116,6 +116,7 @@ public without sharing class Core_MDF_HoldCriteriaListProcessHelper {
         //Dynamic SOQL for filtering all the Criteria Rules
         String criteriaRuleQuery = 'SELECT Id,Name,Core_MDF_UltimateAccount_Id__c,Core_MDF_Effective_Dt__c,Core_MDF_Ineffective_Dt__c,Core_MDF_Program_id__c,Core_MDF_Threshold_Amt__c,Core_MDF_Activity_Category_Txt__c,Core_MDF_Region_Country_txt__c,Core_MDF_Activity_Category_Type_Txt__c,Core_MDF_Geo_Txt__c FROM Core_MDF_Hold_Criteria__c WHERE (Core_MDF_UltimateAccount_Id__c IN:ultimateAccSet OR Core_MDF_Program_id__c IN:channelProgramSet OR Core_MDF_Activity_Category_Txt__c INCLUDES('+actCategoryString+') OR Core_MDF_Activity_Category_Type_Txt__c INCLUDES('+categorytoCategoryTypeString+') OR Core_MDF_Region_Country_txt__c INCLUDES('+geoCountryString+') OR Core_MDF_Geo_Txt__c INCLUDES('+geoString+') ) AND (Core_MDF_Effective_Dt__c <= TODAY AND Core_MDF_Ineffective_Dt__c > TODAY )';
         
+
         List<Core_MDF_Hold_Criteria__c> filteredCriteriaRecordsList = new List<Core_MDF_Hold_Criteria__c>();
         // Query the Criteria Rule Records only if the above prepared collections are not empty
         if(ultimateAccSet.size() > 0 || activityCategorySet.size() > 0 || channelProgramSet.size() > 0 || geoCountrySet.size() > 0 || activityCategoryTypeSet.size() > 0 || geoSet.size() > 0)
@@ -123,17 +124,24 @@ public without sharing class Core_MDF_HoldCriteriaListProcessHelper {
             filteredCriteriaRecordsList = Database.query(criteriaRuleQuery);
         } 
          
+        
         for(PartnerFundClaim claimRecord : newClaimMap.values())
         {    
-            if(isClaimEligibleForCriteriaHold(claimRecord))
-            {
+            //ATHR - Deeply Nested if 16209
+            if(!isClaimEligibleForCriteriaHold(claimRecord)) continue;
+            //if(isClaimEligibleForCriteriaHold(claimRecord))
+            //{
                 for(Core_MDF_Hold_Criteria__c criteria : filteredCriteriaRecordsList)
                 {
-                    if(
+                    if(claimRecord.Core_MDF_Criteria_Hold_Ref_No_Txt__c != null && claimRecord.Core_MDF_Criteria_Hold_Ref_No_Txt__c.contains(criteria.Name)){
+                        continue;
+                    }
+                    //ATHR - Deeply Nested if 16209
+                    /*if(
                         ((claimRecord.Core_MDF_Criteria_Hold_Ref_No_Txt__c != null && !((claimRecord.Core_MDF_Criteria_Hold_Ref_No_Txt__c).contains(criteria.name)))
                           || (claimRecord.Core_MDF_Criteria_Hold_Ref_No_Txt__c == null)
                         )
-                    ){
+                    ){*/
                         if(
                             (   
                                 (claimRecord.LastModifiedDate).date() >= criteria.Core_MDF_Effective_Dt__c 
@@ -163,9 +171,9 @@ public without sharing class Core_MDF_HoldCriteriaListProcessHelper {
                             prepareClaimForCriteriaHold(claimRecord,criteria);
                             break;
                         }
-                    }            
+                    //}            
                 } 
-            }          
+            //}          
         }
         return newClaimMap.values();
      
@@ -237,4 +245,24 @@ public without sharing class Core_MDF_HoldCriteriaListProcessHelper {
         commaSeperatedString = commaSeperatedString.removeEnd(',');
         return commaSeperatedString;
     } 
+
+    /***************************************************************************************************** 
+    Method Name:        getCommaSeperatedStringFromMap
+    @return  :          String
+    @parameters:        Map - Activity Category -> Activity Category->Activity Type 
+    Description:        This function is used to return the comma seperated string based on the input Map;
+                        which is used to query the Criteria Rule Records
+    @Added By:          Accenture - JV - 05/20/2019
+    Modified By:        Date:       Changes: 
+    // Commenting this as this is unused with fix of DE83250
+    *****************************************************************************************************
+    public static String getCommaSeperatedStringFromMap(Map<String,String> categorytoCategoryTypeMap)
+    {         
+        String categorytoCategoryTypeString = '';
+        for(String categorytoCategoryType : categorytoCategoryTypeMap.values()){
+            categorytoCategoryTypeString += '\''+categorytoCategoryType+'\',';
+        }
+        categorytoCategoryTypeString = categorytoCategoryTypeString.removeEnd(',');
+        return categorytoCategoryTypeString;
+    } */
 }

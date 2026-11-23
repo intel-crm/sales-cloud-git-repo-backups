@@ -52,9 +52,6 @@
         <field>Opportunity.Core_Low_Velocity__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Compliance_Status__c</field>
-    </columns>
-    <columns>
         <field>STAGE_NAME</field>
     </columns>
     <columns>
@@ -80,20 +77,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Qualify,Define,Develop,Design</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Compliance_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>On Hold – Review in Progress,On Hold – Government Authorization Needed</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Export_Compliance_Block__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>1</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

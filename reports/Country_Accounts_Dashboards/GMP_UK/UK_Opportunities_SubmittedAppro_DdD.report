@@ -1,37 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <buckets>
-        <bucketType>text</bucketType>
-        <developerName>BucketField_97356019</developerName>
-        <masterLabel>Deal or Design</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <sourceColumnName>OpportunityLineItem.Core_Opp_OpportunityType__c</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>Deal: Scale-enable</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Deal: Sell-through</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Deal: Sell-to</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Deal: Sell-with</sourceValue>
-            </sourceValues>
-            <value>Deal</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Design: Original</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Design: Secondary</sourceValue>
-            </sourceValues>
-            <value>Design</value>
-        </values>
-    </buckets>
     <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
@@ -97,12 +65,9 @@
     <columns>
         <field>ACCOUNT_NAME</field>
     </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Opp_OpportunityType__c</field>
-    </columns>
     <description>Shows opportunities submitted or approved for 2018 UK direct team and OSG</description>
     <filter>
-        <booleanFilter>(1 AND 2 AND 3 AND 4 AND 5)</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND (5 OR 6)</booleanFilter>
         <criteriaItems>
             <column>ACCOUNT_RECORDTYPE</column>
             <columnToColumn>false</columnToColumn>
@@ -132,11 +97,18 @@
             <value>EMEA</value>
         </criteriaItems>
         <criteriaItems>
+            <column>User.Core_User_Coverage__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>OSC</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>ROLLUP_DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>EMP of Adrian Criddle,EMP of Iain Beckingham,EMP of Ian Jones,EMP of Jennifer Shileika,EMP of Graham Copperwheat,EMP of Jas Bhogal,EMP of Nina Woolvett,EMP of Richard George,EMP of Christine Harrison</value>
+            <value>EMP of Adrian Criddle,EMP of Graham Palmer,EMP of Iain Beckingham,EMP of Ian Jones,EMP of Jennifer Shileika,EMP of Simon Wilyman,EMP of Graham Copperwheat</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -146,11 +118,6 @@
         <field>Opportunity.Core_Approval_Status__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>BucketField_97356019</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>FULL_NAME</field>

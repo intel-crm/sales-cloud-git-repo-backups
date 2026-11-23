@@ -10,6 +10,7 @@
         var emailAddress = event.getParam("emailAddress");
         //var isClearEntitlements = event.getParam("isClearEntitlements");
         //alert('here');
+        console.log('setContactId > emailAddress  = '+ emailAddress);
         component.set('v.email', emailAddress);    
     },
 
@@ -21,8 +22,8 @@
     
     save: function(component, event, helper){
         //alert('save');
-        component.set("v.loaded",true);
         var userId = $A.get("$SObjectType.CurrentUser.Id");
+        console.log('save > userId " = '+ userId);
         helper.saveCont(component, userId);       
     },
     

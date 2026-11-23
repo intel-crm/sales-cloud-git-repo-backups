@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DebugLevel xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apexCode>DEBUG</apexCode>
+    <apexCode>FINE</apexCode>
     <apexProfiling>INFO</apexProfiling>
     <callout>INFO</callout>
     <database>INFO</database>
     <label>Sri_Debug</label>
-    <nba>INFO</nba>
+    <nba>NONE</nba>
     <system>DEBUG</system>
     <validation>INFO</validation>
     <visualforce>INFO</visualforce>
     <wave>INFO</wave>
-    <workflow>INFO</workflow>
+    <workflow>WARN</workflow>
 </DebugLevel>

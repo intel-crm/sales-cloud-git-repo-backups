@@ -146,7 +146,6 @@
             <drillToDetailEnabled>false</drillToDetailEnabled>
             <enableHover>true</enableHover>
             <expandOthers>false</expandOthers>
-            <footer>Current and Previous FY</footer>
             <groupingColumn>BucketField_40617595</groupingColumn>
             <groupingColumn>Case.Core_Case_Closure__c</groupingColumn>
             <groupingSortProperties/>
@@ -175,7 +174,6 @@
             <drillToDetailEnabled>false</drillToDetailEnabled>
             <enableHover>true</enableHover>
             <expandOthers>false</expandOthers>
-            <footer>Current and Previous FY</footer>
             <groupingColumn>BucketField_40617595</groupingColumn>
             <groupingColumn>Case.Core_Case_Closure__c</groupingColumn>
             <groupingSortProperties/>
@@ -260,7 +258,6 @@
             <drillToDetailEnabled>false</drillToDetailEnabled>
             <enableHover>true</enableHover>
             <expandOthers>false</expandOthers>
-            <footer>Current and Previous FY</footer>
             <groupingColumn>BucketField_87080259</groupingColumn>
             <groupingColumn>BucketField_34782821</groupingColumn>
             <groupingSortProperties/>
@@ -289,7 +286,6 @@
             <drillToDetailEnabled>false</drillToDetailEnabled>
             <enableHover>true</enableHover>
             <expandOthers>false</expandOthers>
-            <footer>Current and Previous FY</footer>
             <groupingColumn>BucketField_87080259</groupingColumn>
             <groupingColumn>BucketField_34782821</groupingColumn>
             <groupingSortProperties/>
@@ -299,7 +295,6 @@
             <showValues>false</showValues>
             <sortBy>RowLabelAscending</sortBy>
             <sortLegendValues>false</sortLegendValues>
-            <title>Tool Issues -Age by closure reason count</title>
             <useReportChart>false</useReportChart>
         </components>
     </middleSection>

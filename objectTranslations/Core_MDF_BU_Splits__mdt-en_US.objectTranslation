@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CCP Bu Split</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CCP Bu Splits</value>
+    </caseValues>
+    <fields>
+        <label><!-- Business Unit Name --></label>
+        <name>Core_MDF_BU_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Brand --></label>
+        <name>Core_MDF_Brand__c</name>
+        <picklistValues>
+            <masterLabel>Accelerated by Intel®</masterLabel>
+            <translation><!-- Accelerated by Intel® --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Altera®</masterLabel>
+            <translation><!-- Altera® --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FlexRAN™</masterLabel>
+            <translation><!-- FlexRAN™ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gaudi</masterLabel>
+            <translation><!-- Gaudi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Atom Processor</masterLabel>
+            <translation><!-- Intel Atom Processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Atom®</masterLabel>
+            <translation><!-- Intel Atom® --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Unite®</masterLabel>
+            <translation><!-- Intel Unite® --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel vPro® platform</masterLabel>
+            <translation><!-- Intel vPro® platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel vPro®, An Intel® Evo™ Design</masterLabel>
+            <translation><!-- Intel vPro®, An Intel® Evo™ Design --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Agilex™</masterLabel>
+            <translation><!-- Intel® Agilex™ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Arc™</masterLabel>
+            <translation><!-- Intel® Arc™ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Arria®</masterLabel>
+            <translation><!-- Intel® Arria® --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Celeron ®</masterLabel>
+            <translation><!-- Intel® Celeron ® --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Core™ 3 Processor</masterLabel>
+            <translation><!-- Intel® Core™ 3 Processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Core™ 5 Processor</masterLabel>
+            <translation><!-- Intel® Core™ 5 Processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Core™ 7 Processor</masterLabel>
+            <translation><!-- Intel® Core™ 7 Processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Core™ Processor Family</masterLabel>
+            <translation><!-- Intel® Core™ Processor Family --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Core™ Ultra</masterLabel>
+            <translation><!-- Intel® Core™ Ultra --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Core™ Ultra 5 Processor</masterLabel>
+            <translation><!-- Intel® Core™ Ultra 5 Processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Core™ Ultra 7 Processor</masterLabel>
+            <translation><!-- Intel® Core™ Ultra 7 Processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Core™ Ultra 9 Processor</masterLabel>
+            <translation><!-- Intel® Core™ Ultra 9 Processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Core™ Ultra Processor Family</masterLabel>
+            <translation><!-- Intel® Core™ Ultra Processor Family --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Core™ i3 Processor</masterLabel>
+            <translation><!-- Intel® Core™ i3 Processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Core™ i5 Processor</masterLabel>
+            <translation><!-- Intel® Core™ i5 Processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Core™ i5 vPro® Essentials</masterLabel>
+            <translation><!-- Intel® Core™ i5 vPro® Essentials --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Core™ i5 vPro® Processor</masterLabel>
+            <translation><!-- Intel® Core™ i5 vPro® Processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Core™ i7 Processor</masterLabel>
+            <translation><!-- Intel® Core™ i7 Processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Core™ i7 vPro® Essentials</masterLabel>
+            <translation><!-- Intel® Core™ i7 vPro® Essentials --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Core™ i7 vPro® Processor</masterLabel>
+            <translation><!-- Intel® Core™ i7 vPro® Processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Core™ i9 Processor</masterLabel>
+            <translation><!-- Intel® Core™ i9 Processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Core™ i9 vPro® Essentials</masterLabel>
+            <translation><!-- Intel® Core™ i9 vPro® Essentials --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Core™ i9 vPro® Processor</masterLabel>
+            <translation><!-- Intel® Core™ i9 vPro® Processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Corporate Logo</masterLabel>
+            <translation><!-- Intel® Corporate Logo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Cyclone®</masterLabel>
+            <translation><!-- Intel® Cyclone® --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Data Center GPU</masterLabel>
+            <translation><!-- Intel® Data Center GPU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Data Center GPU Flex Series</masterLabel>
+            <translation><!-- Intel® Data Center GPU Flex Series --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Ethernet</masterLabel>
+            <translation><!-- Intel® Ethernet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Evo™ Edition</masterLabel>
+            <translation><!-- Intel® Evo™ Edition --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Evo™ platform</masterLabel>
+            <translation><!-- Intel® Evo™ platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Evo™ powered by Core™ i5 processor</masterLabel>
+            <translation><!-- Intel® Evo™ powered by Core™ i5 processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Evo™ powered by Core™ i7 processor</masterLabel>
+            <translation><!-- Intel® Evo™ powered by Core™ i7 processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Gaudi®</masterLabel>
+            <translation><!-- Intel® Gaudi® --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Infrastructure Power Manager</masterLabel>
+            <translation><!-- Intel® Infrastructure Power Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® IoT Market Ready Solutions</masterLabel>
+            <translation><!-- Intel® IoT Market Ready Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® IoT RFP Ready Kit</masterLabel>
+            <translation><!-- Intel® IoT RFP Ready Kit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Iris® Xe Graphics</masterLabel>
+            <translation><!-- Intel® Iris® Xe Graphics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® MAX®</masterLabel>
+            <translation><!-- Intel® MAX® --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Movidius™</masterLabel>
+            <translation><!-- Intel® Movidius™ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® NUC</masterLabel>
+            <translation><!-- Intel® NUC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Optane™ PMem</masterLabel>
+            <translation><!-- Intel® Optane™ PMem --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Partner Alliance</masterLabel>
+            <translation><!-- Intel® Partner Alliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Partner Alliance (IoT version)</masterLabel>
+            <translation><!-- Intel® Partner Alliance (IoT version) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Processor (N/U Series)</masterLabel>
+            <translation><!-- Intel® Processor (N/U Series) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® RealSense™</masterLabel>
+            <translation><!-- Intel® RealSense™ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® SGX</masterLabel>
+            <translation><!-- Intel® SGX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Select Solutions</masterLabel>
+            <translation><!-- Intel® Select Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Server GPU</masterLabel>
+            <translation><!-- Intel® Server GPU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Silicon Photonics</masterLabel>
+            <translation><!-- Intel® Silicon Photonics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Stratix®</masterLabel>
+            <translation><!-- Intel® Stratix® --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Tiber™</masterLabel>
+            <translation><!-- Intel® Tiber™ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Tofino™</masterLabel>
+            <translation><!-- Intel® Tofino™ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Unison™</masterLabel>
+            <translation><!-- Intel® Unison™ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Xeon® Bronze Processor</masterLabel>
+            <translation><!-- Intel® Xeon® Bronze Processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Xeon® D Processor</masterLabel>
+            <translation><!-- Intel® Xeon® D Processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Xeon® E Processor</masterLabel>
+            <translation><!-- Intel® Xeon® E Processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Xeon® Gold Processor</masterLabel>
+            <translation><!-- Intel® Xeon® Gold Processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Xeon® Platinum Processor</masterLabel>
+            <translation><!-- Intel® Xeon® Platinum Processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Xeon® Processor</masterLabel>
+            <translation><!-- Intel® Xeon® Processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Xeon® Silver Processor</masterLabel>
+            <translation><!-- Intel® Xeon® Silver Processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Xeon® W processor</masterLabel>
+            <translation><!-- Intel® Xeon® W processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® eASIC</masterLabel>
+            <translation><!-- Intel® eASIC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OpenVINO™</masterLabel>
+            <translation><!-- OpenVINO™ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ponte Vecchio</masterLabel>
+            <translation><!-- Ponte Vecchio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Xeon HBM</masterLabel>
+            <translation><!-- Xeon HBM --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type__c</name>
+        <picklistValues>
+            <masterLabel>Account Plan</masterLabel>
+            <translation><!-- Account Plan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Client Acceleration - MDF</masterLabel>
+            <translation><!-- Business Client Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG Market Accelerate</masterLabel>
+            <translation><!-- CCG Market Accelerate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Market Accelerate</masterLabel>
+            <translation><!-- Client Market Accelerate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Specialties MDF</masterLabel>
+            <translation><!-- Client Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCG MAF</masterLabel>
+            <translation><!-- DCG MAF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Market Accelerate</masterLabel>
+            <translation><!-- Data Center Market Accelerate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Specialties MDF</masterLabel>
+            <translation><!-- Data Center Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Centric Acceleration - MDF</masterLabel>
+            <translation><!-- Data Centric Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Datacenter Market Accelerate</masterLabel>
+            <translation><!-- Datacenter Market Accelerate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Ericsson Acceleration - MDF</masterLabel>
+            <translation><!-- Global Ericsson Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global IBM Acceleration - MDF</masterLabel>
+            <translation><!-- Global IBM Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Microsoft Acceleration - MDF</masterLabel>
+            <translation><!-- Global Microsoft Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Nokia Acceleration - MDF</masterLabel>
+            <translation><!-- Global Nokia Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Red Hat Acceleration - MDF</masterLabel>
+            <translation><!-- Global Red Hat Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global SAP Acceleration - MDF</masterLabel>
+            <translation><!-- Global SAP Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global SAS Acceleration - MDF</masterLabel>
+            <translation><!-- Global SAS Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Suse Acceleration - MDF</masterLabel>
+            <translation><!-- Global Suse Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global VMware Acceleration - MDF</masterLabel>
+            <translation><!-- Global VMware Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISV Scale Acceleration - MDF</masterLabel>
+            <translation><!-- ISV Scale Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Rise Technology Initiative</masterLabel>
+            <translation><!-- Intel Rise Technology Initiative --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT Premier - MDF</masterLabel>
+            <translation><!-- IoT Premier - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT Targeted - MDF</masterLabel>
+            <translation><!-- IoT Targeted - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ODM Growth Plan - Client MDF</masterLabel>
+            <translation><!-- ODM Growth Plan - Client MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optane Specialties MDF</masterLabel>
+            <translation><!-- Optane Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proposal I MDF</masterLabel>
+            <translation><!-- Proposal I MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proposal II MDF</masterLabel>
+            <translation><!-- Proposal II MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Red Hat &quot;Amplify&quot; - MDF</masterLabel>
+            <translation><!-- Red Hat &quot;Amplify&quot; - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOEM Client MDF</masterLabel>
+            <translation><!-- SOEM Client MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOEM Data Center MDF</masterLabel>
+            <translation><!-- SOEM Data Center MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scale Acceleration - MDF</masterLabel>
+            <translation><!-- Scale Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scale Market Accelerate - MDF</masterLabel>
+            <translation><!-- Scale Market Accelerate - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VMWare Amplify - MDF</masterLabel>
+            <translation><!-- VMWare Amplify - MDF --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Default BU --></label>
+        <name>Core_MDF_Default_BU__c</name>
+    </fields>
+    <fields>
+        <label><!-- Effective End Date --></label>
+        <name>Core_MDF_Effective_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Effective Start Date --></label>
+        <name>Core_MDF_Effective_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fields --></label>
+        <name>Core_MDF_Field_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Focus Area --></label>
+        <name>Core_MDF_Focus_Area__c</name>
+        <picklistValues>
+            <masterLabel>Client Computing</masterLabel>
+            <translation><!-- Client Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center</masterLabel>
+            <translation><!-- Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Networking &amp; Intelligent Edge</masterLabel>
+            <translation><!-- Networking &amp; Intelligent Edge --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- isActive --></label>
+        <name>Core_MDF_IsActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Type --></label>
+        <name>Core_MDF_Product_Type__c</name>
+        <picklistValues>
+            <masterLabel>2-in-1</masterLabel>
+            <translation><!-- 2-in-1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>All-in-one</masterLabel>
+            <translation><!-- All-in-one --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Appliance</masterLabel>
+            <translation><!-- Appliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chromebook</masterLabel>
+            <translation><!-- Chromebook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud</masterLabel>
+            <translation><!-- Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Component</masterLabel>
+            <translation><!-- Component --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Desktop</masterLabel>
+            <translation><!-- Desktop --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Edge Gateway</masterLabel>
+            <translation><!-- Edge Gateway --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA Programmable Solution</masterLabel>
+            <translation><!-- FPGA Programmable Solution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HPC</masterLabel>
+            <translation><!-- HPC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hyper Converged Solutions</masterLabel>
+            <translation><!-- Hyper Converged Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intelligent Edge/IoT</masterLabel>
+            <translation><!-- Intelligent Edge/IoT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mini PC</masterLabel>
+            <translation><!-- Mini PC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mini PC/NUC</masterLabel>
+            <translation><!-- Mini PC/NUC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Motherboard</masterLabel>
+            <translation><!-- Motherboard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Motherboard - Desktop</masterLabel>
+            <translation><!-- Motherboard - Desktop --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Motherboard - Notebook</masterLabel>
+            <translation><!-- Motherboard - Notebook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Networking &amp; Telecommunications</masterLabel>
+            <translation><!-- Networking &amp; Telecommunications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Notebook</masterLabel>
+            <translation><!-- Notebook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Programmable Solution</masterLabel>
+            <translation><!-- Programmable Solution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Server</masterLabel>
+            <translation><!-- Server --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service</masterLabel>
+            <translation><!-- Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software</masterLabel>
+            <translation><!-- Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution</masterLabel>
+            <translation><!-- Solution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage</masterLabel>
+            <translation><!-- Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workstation - Fixed</masterLabel>
+            <translation><!-- Workstation - Fixed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workstation - Mobile</masterLabel>
+            <translation><!-- Workstation - Mobile --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program__c</name>
+        <picklistValues>
+            <masterLabel>Channel MDF</masterLabel>
+            <translation><!-- Channel MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Partner Alliance</masterLabel>
+            <translation><!-- Intel Partner Alliance --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Proposal Based Indicator --></label>
+        <name>Core_MDF_Proposal_Based_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Split Percent --></label>
+        <name>Core_MDF_Split_Percent__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

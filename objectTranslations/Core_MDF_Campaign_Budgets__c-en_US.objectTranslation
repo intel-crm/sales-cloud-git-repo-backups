@@ -13,6 +13,10 @@
         <name>Core_MDF_Active_ind__c</name>
     </fields>
     <fields>
+        <label><!-- Available Budget Amount --></label>
+        <name>Core_MDF_Available_Budget_Amount__c</name>
+    </fields>
+    <fields>
         <label><!-- Campaign Spending Limit (USD) --></label>
         <name>Core_MDF_Budget_Amt__c</name>
     </fields>
@@ -29,6 +33,10 @@
         <label><!-- Campaign --></label>
         <name>Core_MDF_Campaign_Id__c</name>
         <relationshipLabel><!-- Campaign Budgets --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Consumed Budget Amount --></label>
+        <name>Core_MDF_Consumed_Budget_Amount__c</name>
     </fields>
     <fields>
         <label><!-- End Date --></label>
@@ -80,6 +88,10 @@
         <picklistValues>
             <masterLabel>80%</masterLabel>
             <translation><!-- 80% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>82%</masterLabel>
+            <translation><!-- 82% --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>85%</masterLabel>

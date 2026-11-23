@@ -1,0 +1,23 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,force:hasRecordId,lightning:isUrlAddressable" access="global">
+	<!-- Aura Attributes -->
+    <aura:attribute name="selBudgetType" type="String"/>
+    <aura:attribute name="flag" type="Boolean" default="false"/>
+    <aura:attribute name="budgetTypeVal" type="String[]"/>
+    
+    <!--URL Navigation -->
+    <lightning:navigation aura:id="navService"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <!--{!v.flag}
+    <h1>TestComp1</h1>-->
+    <lightning:button label="Navigate to Target Component" onclick="{!c.maketrue}" />
+    <aura:if isTrue="{!v.flag}">
+        <lightning:select aura:id="NewForm" name="BudgetType" value="{!v.selBudgetType}" label="Budget Type" required="true" >
+            <aura:iteration items="{!v.budgetTypeVal}" var="item">
+                <option value="{!item.key}">
+                    {!item.value}
+                </option>        
+            </aura:iteration>                          
+        </lightning:select>
+    </aura:if>
+</aura:component>

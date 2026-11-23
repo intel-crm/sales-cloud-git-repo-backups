@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Core_MDF_Partner_Group_Mapping__c$Core_MDF_Account__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Partner_Group_Mapping__c$Core_MDF_Account__c.Core_CIM_ID__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Partner_Group_Mapping__c$Core_MDF_Account__c.Id</field>
+    </columns>
+    <description>Co-Marketing Accounts</description>
+    <filter>
+        <criteriaItems>
+            <column>Core_MDF_Partner_Group_Mapping__c$Core_MDF_Account__c.Core_MDF_CoMarketingActive__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_MDF_Partner_Group_Mapping__c$Core_MDF_Type_of_Access__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>External</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Core_MDF_Partner_Group_Mapping__c$Core_MDF_Channel_Program__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Co-Marketing Accounts</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Co_Marketing_Accounts__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Core_MDF_Partner_Group_Mapping__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

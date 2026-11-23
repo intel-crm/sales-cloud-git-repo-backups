@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_MDF_Claim_Prediction_Subscribe_Test</testClassName>
+    <testClassName>Core_MDF_Claim_Utility_Test</testClassName>
+    <testClassName>Core_MDF_ClaimInsertForEinPred_Test</testClassName>
+    <testClassName>Core_MDF_ClaimReviewCaseProcess_Test</testClassName>
+    <testClassName>Core_MDF_ClaimReviewCaseShare_Test</testClassName>
+    <testClassName>Core_MDF_ClaimReviewChecklist_Test</testClassName>
+    <testClassName>Core_MDF_ClaimsAutoClosureBatch_Test</testClassName>
+    <testClassName>Core_MDF_ClaimSelectionForAudit_Test</testClassName>
+    <testClassName>Core_MDF_ClmRecovery_ServiceHandlerTest</testClassName>
+    <testClassName>Core_MDF_PartnerFundClaim_Test</testClassName>
+    <testClassName>Core_MDF_PFC_IPAClaim_Test</testClassName>
+    <testClassName>Core_MDF_PFC_RetailClaim_Test</testClassName>
+    <testClassName>Core_MDF_PIC_SendEmailToClaimOwner_Test</testClassName>
+    <testClassName>Core_MDF_PIC_TestClass</testClassName>
+    <testClassName>Core_MDF_PICReviewDetails_controllerTest</testClassName>
+    <testClassName>Core_MDF_PICReviewHelper_Test</testClassName>
+    <testClassName>Core_MDF_PICReviewScreen_Controller_Test</testClassName>
+    <testClassName>Core_MDF_Process_PAF_Claim_Test</testClassName>
+    <testClassName>Core_MDF_ProcessCCP_Claim_Test</testClassName>
+    <testClassName>Core_MDF_ProcessClaimPredictionTest</testClassName>
+    <testClassName>Core_MDF_ProcessClmSbmClosureTest</testClassName>
+    <testClassName>Core_MDF_RecoveryClmReportViewCtrl_Test</testClassName>
+</ApexTestSuite>

@@ -11,7 +11,7 @@
         <name>Core_Legacy_ID__c</name>
         <value xsi:nil="true"/>
     </customFields>
-    <name>PRC All Sales Groups</name>
+    <name>PRC-Read</name>
     <opportunityAccessLevel>Read</opportunityAccessLevel>
     <parentTerritory>SMG_WW_Read</parentTerritory>
     <ruleAssociations>

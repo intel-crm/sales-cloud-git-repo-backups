@@ -8,7 +8,8 @@
             var state = response.getState();
             if (state == "SUCCESS") {
             var result = response.getReturnValue();            
-            	component.set("v.recordtypeDeveloperName", result); 
+            	component.set("v.recordtypeDeveloperName", result);
+                console.log('**recordtype**',component.get("v.recordtypeDeveloperName")); 
             helper.fetchRecordInfo(component, event);
             }else{
                 var errorMessage = $A.get("$Label.c.Core_MDF_ApplicationErrorMessage");

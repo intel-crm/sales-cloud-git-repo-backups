@@ -10,4 +10,15 @@
         </matchingRuleItems>
         <ruleStatus>Active</ruleStatus>
     </matchingRules>
+    <matchingRules>
+        <fullName>Core_MDF_IPA_Budget_Cap_Overlapping_Rule</fullName>
+        <description>IPA Budget Cap Overlapping Rule</description>
+        <label>IPA Budget Cap Overlapping Rule</label>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>Core_MDF_Budget_Type_Cap_Key__c</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
+        <ruleStatus>Active</ruleStatus>
+    </matchingRules>
 </MatchingRules>

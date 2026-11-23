@@ -154,6 +154,17 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
+        <fullName>Core_MDF_AccountIdKey_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>AccountIdKey</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Account_Id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <description>Reference to Comarketing Accounts</description>

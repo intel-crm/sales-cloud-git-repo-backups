@@ -1,0 +1,16 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+        <!--Style-->
+    <aura:html tag="style">
+        <!--To remove blue border-->
+        .slds-fade-in-open{
+        outline:none;
+        }
+    </aura:html>
+    <ltng:require styles="{!$Resource.Core_MDF_SLDS262 + '/styles/salesforce-lightning-design-system.css'}" />
+    <div role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <!--Account Domain LWC-->
+            <c:accountDomainMapping/>
+        </div>
+    </div>
+</aura:component>

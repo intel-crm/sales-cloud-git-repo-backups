@@ -28,15 +28,6 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>Opportunity.Core_Consumption_Market__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Oppty_Count__c</field>
-    </columns>
-    <columns>
-        <field>CLOSE_DATE</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>QUANTITY</field>
     </columns>
@@ -49,7 +40,7 @@
         <field>AMOUNT</field>
     </columns>
     <filter>
-        <booleanFilter>(1 AND 2)</booleanFilter>
+        <booleanFilter>1 AND 2</booleanFilter>
         <criteriaItems>
             <column>PRODUCT_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -106,8 +97,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

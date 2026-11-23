@@ -1,0 +1,65 @@
+<template>
+<!-- 
+    <lightning-card  title="CCP Picklist Finder">
+        <p class="slds-p-horizontal_small">
+            <lightning-combobox
+            name="ObjectName"
+            label="Object"
+            value={selectedObject}
+            placeholder="Select Object"
+            options={objectOptions}
+            onchange={handleObjectNameChange} ></lightning-combobox>
+        </p>
+        <p class="slds-p-horizontal_small">
+            <lightning-combobox
+            name="RecordTypeName"
+            label="Record Types"
+            value={selectedRecordType}
+            placeholder="Select Record Type"
+            options={recordTypeOptions}
+            onchange={handleRecordTypeChange} ></lightning-combobox>
+        </p>
+
+        <p class="slds-p-horizontal_small">
+            <lightning-combobox
+            name="Picklist"
+            label="Picklist Fields"
+            value={selectedPicklist}
+            placeholder="Select Field"
+            options={picklistFieldsOptions}
+            onchange={handleFieldChange} ></lightning-combobox>
+        </p>
+
+
+       
+        <div slot="footer">
+            Picklist values for: <b>{selectedObject}</b>     Record type: <b>{selectedRecordType}</b>     Field: <b>{selectedPicklist}</b>
+            <div if:false={isLoaded} class="slds-is-relative">
+                <lightning-spinner alternative-text="Loading..." variant="brand">
+                </lightning-spinner>
+            </div>
+            <p if:true={isLoaded}>
+                <template for:each={picklistValues} for:item="val">
+                    <p key={val}>{val}</p>
+                </template>
+            </p>
+            
+            
+        </div>
+    </lightning-card>
+</template>
+-->
+<lightning-card title="CCP PICKLIST DEPENDENCY FINDER">
+        <p class="slds-p-horizontal_small">Click on any of the below objects->record type->fields to get the values
+        </p>
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+          
+          <template if:true={treeList}>
+            <div class="slds-p-around_medium lgc-bg">
+             <lightning-tree items={treeList} header="Objects" onselect={handleClick} selected-item={selected} show-checkbox={showCheckbox} ></lightning-tree>
+            <!--<lightning-tree-grid>items={treeList} header="Objects" onselect={handleClick} selected-item={selected}></lightning-tree-grid>-->
+            </div>
+          </template>
+        </div>
+      </lightning-card>
+</template>

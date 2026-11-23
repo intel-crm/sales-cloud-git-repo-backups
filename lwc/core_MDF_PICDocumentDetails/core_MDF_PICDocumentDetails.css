@@ -54,8 +54,50 @@
 .slds-table th.srNO-col {
     width: 5%;  /* Adjust the percentage as per your needs */
 }
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    background-color: white; /* White background */
+    padding: 5px 10px;
+    font-size: 10px; /* Font size set to 10px */
+    margin-top: 10px;
+    border-radius: 15px; /* Rounded corners */
+    position: relative; /* Necessary for the pseudo-element */
+    color: #4f4c4c; /* Light grey text color */
+}
+
+.pill::before {
+    content: ''; /* Necessary for pseudo-element */
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: 15px; /* Rounded corners for the gradient border */
+    background: linear-gradient(45deg, #6a11cb, #2575fc, #00d2ff); /* Gradient border */
+    z-index: -1; /* Place behind the pill */
+}
+
+.pill-icon {
+    margin-right: 5px;
+}
+
 .pill-text-ai-prediction {
     font-weight: normal; /* Non-bold text */
+}
+
+.pill-text-ai-response {
+    font-weight: normal; /* Non-bold text */
+}
+
+.no-border-textarea textarea {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    resize: none;
+    overflow: hidden;
 }
 .informative-text {
     color:  #0176d3;
@@ -75,6 +117,7 @@
     position: relative;
     z-index: 9999;
 }
+
 /* AI Response Color Coding */
 .ai-response-yes {
     color:   #007744;
@@ -158,4 +201,6 @@
     max-height: 250px;
     word-wrap: break-word;
     text-align: left;
+    //width: 300px;
+    //max-width: 500px !important;
 }

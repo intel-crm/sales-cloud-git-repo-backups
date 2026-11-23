@@ -8,6 +8,7 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Member Budget</displayNameOverride>
             <field>Core_MDF_AccountCompany__c</field>
             <table>PartnerMarketingBudget</table>
         </columns>
@@ -18,6 +19,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Budget Amount</displayNameOverride>
             <field>Amount</field>
             <table>PartnerMarketingBudget</table>
         </columns>
@@ -193,6 +195,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Program Name Budget</displayNameOverride>
             <field>Core_MDF_Program_Nm__c</field>
             <table>PartnerMarketingBudget</table>
         </columns>
@@ -223,5 +226,33 @@
             <table>PartnerMarketingBudget</table>
         </columns>
         <masterLabel>Partner Marketing Budgets</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Maximum_Approved_Budget_Amt__c</field>
+            <table>PartnerMarketingBudget</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Co_Marketing_ind__c</field>
+            <table>PartnerMarketingBudget</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Co_Selling_ind__c</field>
+            <table>PartnerMarketingBudget</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Revenue_Segment_nm__c</field>
+            <table>PartnerMarketingBudget</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Intermediate_Budget__c</field>
+            <table>PartnerMarketingBudget</table>
+        </columns>
+        <masterLabel>Budgets</masterLabel>
     </sections>
 </ReportType>

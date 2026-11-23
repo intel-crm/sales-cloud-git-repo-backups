@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <excludeButtons>DataDotComAccountInsights</excludeButtons>
-    <excludeButtons>DataDotComClean</excludeButtons>
-    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>DisableCustomerPortalAccount</excludeButtons>
     <excludeButtons>DisablePartnerPortalAccount</excludeButtons>
@@ -27,6 +24,10 @@
                 <behavior>Readonly</behavior>
                 <field>ParentId</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_B2B_AcctGrpCMF_Link__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>
@@ -41,6 +42,44 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_MDF_Account_Onboarding__c.Core_MDF_Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_MDF_Account_Onboarding__c.Core_MDF_Works_For__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_MDF_Partnership_Score__c.Core_MDF_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>ACCOUNT.NAME</fields>
+        <fields>Core_Prime_Account_Name__c</fields>
+        <fields>Core_Sales_Groups__c</fields>
+        <fields>Core_Account_Country__c</fields>
+        <fields>Core_Alt_Language_State_Province__c</fields>
+        <fields>Core_Geo__c</fields>
+        <fields>CORE.USERS.FIRST_NAME</fields>
+        <fields>CORE.USERS.LAST_NAME</fields>
+        <relatedList>Account.Core_Direct_Primary_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Test_Recovery_Mapping__c.Core_MDF_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>ACCOUNT.NAME</fields>
+        <fields>Core_Prime_Account_Name__c</fields>
+        <fields>Core_Sales_Groups__c</fields>
+        <fields>Core_Account_Country__c</fields>
+        <fields>Core_Alt_Language_State_Province__c</fields>
+        <fields>Core_Geo__c</fields>
+        <fields>CORE.USERS.FIRST_NAME</fields>
+        <fields>CORE.USERS.LAST_NAME</fields>
+        <relatedList>Account.Core_MDF_Virtual_Corp_Account_Id__c</relatedList>
+    </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

@@ -226,6 +226,7 @@ public without sharing class Core_MDF_AccountABACheck {
                         unifiedIdToBenefitList.get(unifiedId).addAll(accountIdToBenefitMap.get(accId));
                     }
                 }
+                system.debug('unifiedIdToBenefitList@@@' + unifiedIdToBenefitList);
                 
             }                                        
             //ABA: {1141415jhayeqJK87={MDFPRPCCP}}
@@ -249,7 +250,7 @@ public without sharing class Core_MDF_AccountABACheck {
                     if (applicableBenefitsFromMdt.containsKey(benifit)) {
                         for (String budgetType : applicableBenefitsFromMdt.get(benifit)) {
                             if (validBudgetTypeOptions.containsKey(budgetType)) {
-                            	budgetTypeMap.put(budgetType, validBudgetTypeOptions.get(budgetType));
+                                budgetTypeMap.put(budgetType, validBudgetTypeOptions.get(budgetType));
                             }
                         }
                     }
@@ -273,20 +274,18 @@ public without sharing class Core_MDF_AccountABACheck {
         try{
             
             for(String recType : recTypeList) {
-                if(!Test.isRunningTest()){
-                    Map<String, Object> jsonResponse = Core_Intel_customPicklistController.customPicklistFetcher(recType);
-                    Map<String, List<String>> returnData = Core_MDF_Smart_Picklist_Maintainence.parseDependentPicklistValues(jsonResponse, fieldAPI);
-                    if(returnData != null && returnData.size() > 0) {
-                        budgetTypesList.addAll(returnData.get(program));
-                        
-                    }
-                }else{
-                    budgetTypesList.addAll(new List<String>{'Account Plan', 'Proposal I MDF', 'Proposal II MDF'});
+                Map<String, Object> jsonResponse = Core_Intel_customPicklistController.customPicklistFetcher(recType);
+                Map<String, List<String>> returnData = Core_MDF_Smart_Picklist_Maintainence.parseDependentPicklistValues(jsonResponse, fieldAPI);
+                if(returnData != null && returnData.size() > 0) {
+                    budgetTypesList.addAll(returnData.get(program));
+                    
                 }
             }
             
         }
-        catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);throw new AuraHandledException(e.getMessage());
+        catch(Exception e){
+            Core_MDF_CCP_UtilityClass.logError(e);
+            throw new AuraHandledException(e.getMessage());
         }
         
         return budgetTypesList;

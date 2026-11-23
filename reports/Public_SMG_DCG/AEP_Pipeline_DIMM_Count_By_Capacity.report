@@ -54,35 +54,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Apache pass dimm,Barlow Pass,persistent memory</value>
+            <value>Apache pass dimm,persistent memory</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Deal: Sell-through,Deal: Sell-to</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Yes</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Exclude_From_KPIs__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>INDUSTRY</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Consulting</value>
+            <value>Deal: Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -92,7 +71,7 @@
         <field>PRODUCT_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>20  PMM Deal Pipeline Unit # By Capacity</name>
+    <name>AEP Deal Pipeline Unit Count By Capacity</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -116,6 +95,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURRENTQ</interval>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

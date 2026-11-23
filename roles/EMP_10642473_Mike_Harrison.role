@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Brian Gonzalez</description>
+    <description>EMP of Cigdem Ertem</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_10642473_Mike_Harrison</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_10656489_Brian_Gonzalez</parentRole>
+    <parentRole>EMP_10689515_Cigdem_Ertem</parentRole>
 </Role>

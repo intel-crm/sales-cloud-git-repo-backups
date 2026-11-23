@@ -24,8 +24,11 @@
         });
         action.setCallback(this, function(response){
             var storeResponse = response.getReturnValue();
+            console.log('populatePicklists > '+ JSON.stringify(storeResponse));
+            //console.log($);
             try{
                 $(storeResponse).each(function(index,entry){
+                    console.log('entry = '+ JSON.stringify(entry));
                     if(entry.picklistName !=null && entry.picklistName == 'Salutation' ){//Salutation
                         component.set("v.salutationList", entry.valueList);  
                     }
@@ -34,6 +37,7 @@
                     }*/
                 });
             }catch(error){
+                console.log(error);
             }
             
             
@@ -52,13 +56,17 @@
         });
         action.setCallback(this, function(response){
             var storeResponse = response.getReturnValue();
+            console.log('populatePicklists > '+ JSON.stringify(storeResponse));
+            //console.log($);
             try{
                 $(storeResponse).each(function(index,entry){
+                    console.log('entry = '+ JSON.stringify(entry));
                     if(entry.picklistName !=null && entry.picklistName == 'MailingCountryCode'){
                         component.set("v.contryList", entry.valueList);
                     }
                 });
             }catch(error){
+                console.log(error);
             }
             
             
@@ -80,14 +88,12 @@
         var region = component.get("v.region");
         var accId = component.find("myAccSelect").get("v.value");
         if (accId == 'Search Accounts'){
-            component.set("v.loaded",false);
             $('#errorMessageDiv').html($A.get("$Label.c.Core_MDF_Account_error"));
             //component.set("errorMessageDiv", 'Please select appropriate account.');
             //alert('Please select appropriate account');
         }
-        else if(first_name == null || first_name == '' || last_name == null || last_name == '' || email == null || email == '' || country == null || country == ''|| (last_name == null && email == null && first_name == null && country == null))
+        else if(first_name == null || last_name == null || email == null || (last_name == null && email == null && first_name == null ))
         {
-            component.set("v.loaded",false);
             $('#errorMessageDiv').html($A.get("$Label.c.Core_MDF_Required_Information")); 
         }
             else{
@@ -110,19 +116,15 @@
         action.setCallback(this, function(response){
             var storeResponse = response.getReturnValue();
             if(storeResponse == false){
-                component.set("v.loaded",false);
                 $('#errorMessageDiv').html($A.get("$Label.c.Core_MDF_Cannot_Createcontact")); 
             }
             if(storeResponse == true){
-                component.set("v.loaded",false);
                 $('#errorMessageDiv').html($A.get("$Label.c.Core_MDF_Contact_Success")
 );
-                //this.navigateToGrantAccessPage(component);
+                this.navigateToGrantAccessPage(component);
                 var evt = $A.get("e.c:Core_Contact_Creation_DisplayEvent");
                 evt.setParams({"passEmail": email});
-                /*var email2 = component.get("v.email"); */
                 evt.fire();
-                
             }
         });
         $A.enqueueAction(action); 

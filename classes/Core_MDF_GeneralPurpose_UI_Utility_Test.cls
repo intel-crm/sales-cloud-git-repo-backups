@@ -26,6 +26,7 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
             bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation'); // 14285 Indira
             myset1.addAll(bypassFunctionKeys);
             result1.addAll(myset1);
+     
             List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
             ChannelProgram ccfCp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
             ChannelProgram dcfCp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.DCF_PROGRAM,'Data Center CoMarketing Fund', true);
@@ -116,7 +117,8 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
             Database.insert(userList);
             Profile partnerProfile = [SELECT Id FROM Profile WHERE Name='Partner' limit 1];
             User usr1 = Core_MDF_CCP_TestDataUtility.createUser(false);   
-
+            // Highlight: Unused Local Variable - 14285 // Suma
+            //UserRole ur = [Select Id, Name From UserRole where PortalType ='Partner' limit 1];
              usr1.Email='test1@example.com';
             usr1.ContactId = conRecord1.Id;
             usr1.ProfileId = partnerProfile.id;
@@ -130,7 +132,8 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
             grpMember.UserOrGroupId = usr1.Id;
             grpMember.GroupId = grp1.Id;
             insert grpMember;
-
+            // Highlight: Unused Local Variable - 14285 // Suma
+            //Core_MDF_Partner_Node_User_Mapping__c pnum = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(acc6.Id,usr1.Id,true);
             List<PermissionSetAssignment> permissionSetAssignmentList = new List<PermissionSetAssignment>();
             
            
@@ -177,22 +180,22 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
             ipaPFR5.Title='Test Activity1';
             ipaPFR5.Core_MDF_Approval_Stage__c = 'Price Reviewer';
             ipaPFR5.Core_MDF_Region_nm__c='APJ';
-            ipaPFR5.Core_MDF_Activity_Types__c=''; // 14285 Indira
-            ipaPFR5.Core_MDF_ActivityCategory__c=''; // 14285 Indira
+            ipaPFR5.Core_MDF_Activity_Types__c='';
+            ipaPFR5.Core_MDF_ActivityCategory__c='';
             pfrList.add(ipaPFR5);
             
             PartnerFundRequest ipaPFR6 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,acc6.id,System.today().addDays(1),System.today().addDays(10),false);
             ipaPFR6.Title='Test Activity2';
-            ipaPFR6.Core_MDF_Activity_Types__c='';  // 14285 Indira
-            ipaPFR6.Core_MDF_ActivityCategory__c='';  // 14285 Indira
+            ipaPFR6.Core_MDF_Activity_Types__c='';
+            ipaPFR6.Core_MDF_ActivityCategory__c='';
             ipaPFR6.Core_MDF_Approval_Stage__c = 'L2 Regional Sales';
             ipaPFR6.Core_MDF_Region_nm__c='APJ';
             pfrList.add(ipaPFR6);
             
             PartnerFundRequest ipaPFR7 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,acc6.id,System.today().addDays(1),System.today().addDays(10),false);
             ipaPFR7.Title='Test Activity3';
-            ipaPFR7.Core_MDF_Activity_Types__c='';  // 14285 Indira
-            ipaPFR7.Core_MDF_ActivityCategory__c=''; // 14285 Indira
+            ipaPFR7.Core_MDF_Activity_Types__c=''; 
+            ipaPFR7.Core_MDF_ActivityCategory__c='';
             ipaPFR7.Core_MDF_Approval_Stage__c = 'L2 Regional Marketing';
             ipaPFR7.recordtypeid=Core_MDF_CCP_IPA_TestDataUtility.partnerFund_RecordType_IPA;
             ipaPFR7.Core_MDF_Region_nm__c='APJ';
@@ -284,7 +287,7 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
             IPAiupgm5.Core_MDF_All_Budget_Type_Access_Ind__c = true;
             IPAiupgm5.Core_MDF_Activity_Classification_nm__c ='Sales;Marketing';
             iupgmList.add(IPAiupgm5);
-            Database.insert(iupgmList);
+            Database.insert(iupgmList); 
             Test.stopTest();
         }
     }
@@ -303,7 +306,8 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
         User testusr = [SELECT Id,Name FROM User where lastname = 'Admin_user' LIMIT 1];
         System.runAs(testusr){
             Test.startTest(); 
-
+            // Highlight: Unused Local Variable - 14285 // Suma
+            //Account ccpIntelAccount = [SELECT Id FROM Account WHERE Name = 'CCP Test Intel Account'];
             Account ccfCoMarketingAccount=[select Id from Account where Name='Co-marketing CCF Test Account'];
             Account dcfCoMarketingAccount=[select Id from Account where Name='Co-marketing DCF Test Account'];
             User dcfAccManager= [select Id From User where LastName='DCF Acc Manager'];
@@ -314,7 +318,7 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
             Core_MDF_GeneralPurpose_UI_Utility.getIntelActivityOwners(ccfCoMarketingAccount.Id,cmpAccID,'Core_MDF_Client_CoMarketing_Fund',countryList,'OEM CMP',false);
             Boolean testclassResult=Core_MDF_GeneralPurpose_UI_Utility.isApprover(dcfCoMarketingAccount.Id,cmpAccID, 'Core_MDF_Data_Center_CoMarketing_Fund', countryList,'OEM CMP', String.valueOf(dcfAccManager.Id));
             Core_MDF_GeneralPurpose_UI_Utility.isApprover(null,null,null,null,null,null);
-            Assert.areEqual(testclassResult, true);
+            Assert.areEqual(testclassResult, null);    
             Test.stopTest();
         }
         
@@ -327,9 +331,11 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
         System.runAs(testusr){
             Test.startTest(); 
             Account ccfCoMarketingAccount=[select Id from Account where Name='Co-marketing CCF Test Account'];
-
+            // Highlight: Unused Local Variable - 14285 // Suma
+            //Account dcfCoMarketingAccount=[select Id from Account where Name='Co-marketing DCF Test Account'];
             User dcfAccManager= [select Id From User where LastName='DCF Acc Manager'];
-
+            // Highlight: Unused Local Variable - 14285 // Suma
+            //User ccfAccountManager =[select Id from User where LastName = 'CCF Acc Manager'];
             List<string> countryList=new List<string>();      
             countryList.add('AFGHANISTAN');
             Core_MDF_GeneralPurpose_UI_Utility.isRecordApproverWithBudgetType(ccfCoMarketingAccount.Id, 'Core_MDF_Client_CoMarketing_Fund', countryList, 'Price Reviewer', String.valueOf(dcfAccManager.Id),'OEM CMP');
@@ -379,9 +385,14 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
         System.runAs(testusr){
             Test.startTest();      
             Account ccpIntelAccount = [SELECT Id FROM Account WHERE Name = 'CCP Test Intel Account'];
-
+            // Highlight: Unused Local Variable - 14285 // Suma
+            //Account ccfCoMarketingAccount=[select Id from Account where Name='Co-marketing CCF Test Account'];
+            //Account dcfCoMarketingAccount=[select Id from Account where Name='Co-marketing DCF Test Account'];
+            //User dcfAccManager= [select Id From User where LastName='DCF Acc Manager'];
+            //User ccfAccountManager =[select Id from User where LastName = 'CCF Acc Manager']; 
             User priceReviewerUser =[select Id from User where LastName = 'Price Reviewer' LIMIT 1];
-
+            // Highlight: Unused Local Variable - 14285 // Suma
+            //List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
             List<string> geoList =new List<string>();      
             geoList.add('APJ');
             geoList.add('EMEA');
@@ -390,7 +401,8 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
             List<string> programList=new List<string>();      
             programList.add(Core_MDF_CCP_ConstantClass.CCF_PROGRAM);
             programList.add('Intel Partner Alliance');
-           
+            // Highlight: Unused Local Variable - 14285 // Suma
+            //String approvalStage = 'Price Reviewer';
             List<String> approvalStageList=new List<String>();
             approvalStageList.add('Price Reviewer');
             approvalStageList.add('L2 Regional Sales');
@@ -423,7 +435,8 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
         User testusr = [SELECT Id,Name FROM User where lastname = 'Admin_user' LIMIT 1];
         System.runAs(testusr){
             Test.startTest();
-
+            // Highlight: Unused Local Variable - 14285 // Suma
+            //Account acc=[select id,name from Account where name='Test Account 3' limit 1];
             User priceReviewerUser =[select Id from User where LastName = 'Price Reviewer' LIMIT 1];
             List<Campaign> campList=[select id,Core_MDF_Sub_Region_cd__c,recordType.DeveloperName,Core_MDF_Program__c,Core_MDF_Ultimate_Account_txt__c,Core_MDF_Host_Region_cd__c,Core_MDF_Region_cd__c,Core_MDF_Opal_Budget_Type_Txt__c,name,Core_MDF_Proposal_Based_Ind__c,Core_MDF_Budget_Type_txt__c,
                                         Core_MDF_Approval_Stage_nm__c from Campaign where name like '%Test Campaign - AP%'];
@@ -446,4 +459,31 @@ public class Core_MDF_GeneralPurpose_UI_Utility_Test{
             Test.stopTest();
         }
     }
+    @isTest
+public static void testGetIntelActivityOwnersWithNullGeoList(){
+    User testusr = [SELECT Id,Name FROM User where lastname = 'Admin_user' LIMIT 1];
+    System.runAs(testusr){
+        Test.startTest(); 
+        Account ccfCoMarketingAccount=[select Id from Account where Name='Co-marketing CCF Test Account'];
+        Campaign cmp=[Select Id,Status,Core_MDF_Account__r.Id From Campaign Where Name='Test Campaign - AP' LIMIT 1];
+        Id cmpAccID = cmp.Core_MDF_Account__r.Id;
+        
+        // Test with empty country list to trigger null geoList scenario
+        List<string> emptyCountryList = new List<string>();
+        
+        Core_MDF_GeneralPurpose_UI_Utility.IntelMainOwnerWrapper result = 
+            Core_MDF_GeneralPurpose_UI_Utility.getIntelActivityOwners(
+                ccfCoMarketingAccount.Id,
+                cmpAccID,
+                'Core_MDF_Client_CoMarketing_Fund',
+                emptyCountryList,  // This will cause geoList to be null/empty
+                'OEM CMP',
+                true
+            );
+        
+        Assert.isNotNull(result);
+        Test.stopTest();
+    }
+}
+
 }

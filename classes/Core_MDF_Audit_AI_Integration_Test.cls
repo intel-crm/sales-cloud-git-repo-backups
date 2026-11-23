@@ -12,6 +12,8 @@ public class Core_MDF_Audit_AI_Integration_Test {
     // Constants for program and budget type to avoid string literals
     private static final String PROGRAM_CCF = 'Client CoMarketing Fund';
     private static final String BUDGET_TYPE_CCF = 'OEM CMP';
+    
+       
     // Simple HTTP mock to control sendCDBPayload() outcome
     private class SuccessHttpMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
@@ -157,6 +159,8 @@ public class Core_MDF_Audit_AI_Integration_Test {
             pfr.Core_MDF_ActivityCategory__c = 'Outcome-Based';
             insert pfr;
             
+           	
+             
             // Create PartnerFundClaim
             PartnerFundClaim claim = Core_MDF_CCP_TestDataUtility.createClaim(
                 'AI Integration Test Claim',
@@ -266,7 +270,9 @@ public class Core_MDF_Audit_AI_Integration_Test {
                                AND Status = 'Open'];
         Set<Id> caseIdSet = new Set<Id>();
         
+        System.debug('Test Case found: ' + testCases.size());
         for(Case caseRec : testCases) {
+            System.debug('Test Case: ' + caseRec.Id + ', Activity Category: ' + caseRec.Core_MDF_Activity_Category__c);
             caseIdSet.add(caseRec.Id);
         }
         
@@ -352,7 +358,9 @@ public class Core_MDF_Audit_AI_Integration_Test {
         List<Core_CDB_Integration_Log__c> logs = [SELECT Id, Core_Log_Status_Nm__c, Core_Retry_Number_Nbr__c FROM Core_CDB_Integration_Log__c 
             WHERE Core_Record_Id__c IN :caseIdSet AND Core_Integration_Type__c = 'MDF AI Audit' ORDER BY Core_Retry_Number_Nbr__c DESC
         ];
+        system.debug('TEST CLASS LOGS:'+logs);
         System.assertEquals('AI Processing Failed', updatedScorecards[0].Core_MDF_AI_Processing_Status_Nm__c,'Scorecard should be updated to AI Processing Failed after 3rd retry failure');
+
      }
     // Mock HTTP Response Generator for successful responses
     public class MockHttpResponseGenerator implements HttpCalloutMock {

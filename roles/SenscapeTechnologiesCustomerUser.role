@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>Senscape Technologies Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>SenscapeTechnologiesCustomerManager</parentRole>
 </Role>

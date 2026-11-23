@@ -1625,7 +1625,13 @@ pfc.Core_MDF_Claim_Review_Case__r.Core_MDF_Adjustment_Amount_USD_Amt__c != NULL 
     public static void validateEscalationWithCampaign(Map<String, String> campaignIdToBudgetIdMap, Map<String, String> pfrToCampBudgetKeyMap, 
                                                       Map<String, Decimal> cmpIdBudgetIdBudgetTypeToAmountMap, List<Core_MDF_Escalation__c> escalationList,
                                                       Map<String, Boolean> programMap, Set<Id> ipaEEFRMFCampaignIdSet, Map<Id, Core_MDF_Escalation__c> escalationOldMap){
-                                                          
+        system.debug('@@@@campaignIdToBudgetIdMap: ' + campaignIdToBudgetIdMap);
+        system.debug('@@@@pfrToCampBudgetKeyMap: ' + pfrToCampBudgetKeyMap);
+        system.debug('@@@@cmpIdBudgetIdBudgetTypeToAmountMap: ' + cmpIdBudgetIdBudgetTypeToAmountMap);
+        system.debug('@@@@escalationList: ' + escalationList);
+        system.debug('@@@@programMap: ' + programMap);
+        system.debug('@@@@ipaEEFRMFCampaignIdSet: ' + ipaEEFRMFCampaignIdSet);
+        system.debug('@@@@escalationOldMap: ' + escalationOldMap);
         //Map contains sum of all the activities amount against CampaignId+BudgetId+BudgetType
         Map<String, Decimal> budgetAgainstAmountMap = new Map<String, Decimal>(); 
         Map<String, Decimal> budgetAgainstInContMap = new Map<String, Decimal>();
@@ -1665,9 +1671,13 @@ pfc.Core_MDF_Claim_Review_Case__r.Core_MDF_Adjustment_Amount_USD_Amt__c != NULL 
                                                                WHERE Core_MDF_Budget_Name_Id__c IN: campaignIdToBudgetIdMap.values() 
                                                                AND Core_MDF_Campaign_Id__c IN: campaignIdToBudgetIdMap.keyset()]){
                     String budgetType = String.ValueOf(campBudget.Core_MDF_Budget_Type_Nm__c);
+                    system.debug('@@@@budgetType: ' + budgetType);
                     budgetType = budgetType.replaceAll('\\s+', '');
+                    system.debug('@@@@budgetType1: ' + budgetType);
                     String cmpIdBudgetIdBudgetType = String.ValueOf(campBudget.Core_MDF_Campaign_Id__c) + campBudget.Core_MDF_Budget_Name_Id__c + budgetType;
-                    cmpIdBudgetIdBudgetTypeToAmountMap.put(cmpIdBudgetIdBudgetType, campBudget.Core_MDF_Reimbursement_Amt__c);            
+                    system.debug('@@@@cmpIdBudgetIdBudgetType: ' + cmpIdBudgetIdBudgetType);
+                    cmpIdBudgetIdBudgetTypeToAmountMap.put(cmpIdBudgetIdBudgetType, campBudget.Core_MDF_Reimbursement_Amt__c);
+                    system.debug('@@@@cmpIdBudgetIdBudgetTypeToAmountMap: ' + cmpIdBudgetIdBudgetTypeToAmountMap);
                 }
             }
             
@@ -1678,39 +1688,53 @@ pfc.Core_MDF_Claim_Review_Case__r.Core_MDF_Adjustment_Amount_USD_Amt__c != NULL 
                                           AND Core_MDF_Fund_Request_Status__c != 'Cancelled']){
                                           //Querying for all activities related to the campaign
                 String budgetType = String.ValueOf(pfr.Core_MDF_Budget_Type_nm__c);
+                system.debug('@@@@budgetType: ' + budgetType);
                 budgetType = string.isNotBlank(budgetType) ? budgetType.replaceAll('\\s+', '') : '';
+                system.debug('@@@@budgetType2: ' + budgetType);
                 String cmpIdBudgetIdBudgetType = String.ValueOf(pfr.CampaignId) + pfr.BudgetId + budgetType;
+                system.debug('@@@@cmpIdBudgetIdBudgetType: ' + cmpIdBudgetIdBudgetType);
                 String campaignIdBudgetType = string.valueOf(pfr.CampaignId) + budgetType;
-                
+                system.debug('@@@@campaignIdBudgetType: ' + campaignIdBudgetType);
 				//Boolean isCmpBudget = false;
                 Boolean isCmpOrEEFBudget = false;
                 Decimal pfrAmount = pfr.Amount != null ? pfr.Amount : 0.0;
+                system.debug('@@@@pfrAmount: ' + pfrAmount);
                 Decimal pfrIntelCont = pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c != null ? pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c : 0.0;
+                system.debug('@@@@pfrIntelCont: ' + pfrIntelCont);
                 budgetAgainstInContMap.put(pfr.Id, pfrIntelCont);
+                system.debug('@@@@budgetAgainstInContMap: ' + budgetAgainstInContMap);
                 budgetAgainstIndPfrAmtMap.put(pfr.Id, pfrAmount);
+                system.debug('@@@@budgetAgainstIndPfrAmtMap: ' + budgetAgainstIndPfrAmtMap);
                 if((cmpBudgetTypeList != null && cmpBudgetTypeList.contains(pfr.Core_MDF_Budget_Type_nm__c)) || pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.PFR_EEF_PROGRAM){
                     isCmpOrEEFBudget = true;
                     if(pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_CLOSED_STATUS){
                         //cmpBudgetPfrMap.put(pfr.Id,pfr);
                         cmpEEFBudgetPfrMap.put(pfr.Id,pfr);
+                        system.debug('@@@@cmpEEFBudgetPfrMap: ' + cmpEEFBudgetPfrMap);
                     }   
                 }
                                                                                                 if((budgetAgainstAmountMap.containsKey(cmpIdBudgetIdBudgetType) || budgetAgainstAmountMap.containsKey(campaignIdBudgetType))
                                                                                                  && pfr.Amount != null){
                                                                                                     decimal amount = 0;
                                                                                                     Decimal existingAmt = isRetailOrAccountBased(pfr) ? budgetAgainstAmountMap.get(campaignIdBudgetType) : budgetAgainstAmountMap.get(cmpIdBudgetIdBudgetType);
+                                                                                                    system.debug('@@@@existingAmt: ' + existingAmt);
                                                                                                     amount += existingAmt != null ? existingAmt : 0;
+                                                                                                    system.debug('@@@@amount1: ' + amount);
                                                      if(isCmpOrEEFBudget){
                                                                                                     if(pfr.Core_MDF_Fund_Request_Status__c != Core_MDF_CCP_ConstantClass.PFR_CLOSED_STATUS && pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c != null){ 
                                                                                                        amount += pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c;
+                                                                                                       system.debug('@@@@amount2: ' + amount);
                                                                                                     }
                                                                                                  }else{
                                                                                                      amount += pfr.Amount;
+                                                                                                     system.debug('@@@@amount3: ' + amount);
                                                                                                  }
                                                                                                     if(isRetailOrAccountBased(pfr)){
-                                                                                                        budgetAgainstAmountMap.put(campaignIdBudgetType, amount);//map to store total of amounts on pfr for each camp+budgettype
+                                                                                                        budgetAgainstAmountMap.put(campaignIdBudgetType, amount);
+                                                                                                        system.debug('@@@@budgetAgainstAmountMap: ' + budgetAgainstAmountMap);//map to store total of amounts on pfr for each camp+budgettype
                                                                                                     } else {
                                                                                                         budgetAgainstAmountMap.put(cmpIdBudgetIdBudgetType, amount);
+                                                                                                        system.debug('@@@@budgetAgainstAmountMap: ' + budgetAgainstAmountMap);
                                                                                                     }
                 }else{
                     if(pfr.Amount != null){
@@ -1718,14 +1742,18 @@ pfc.Core_MDF_Claim_Review_Case__r.Core_MDF_Adjustment_Amount_USD_Amt__c != NULL 
                         if(isCmpOrEEFBudget){
                             if(pfr.Core_MDF_Fund_Request_Status__c != Core_MDF_CCP_ConstantClass.PFR_CLOSED_STATUS && pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c != null){ 
                                 amount += pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c;
+                                system.debug('@@@@amount4: ' + amount);
                             }
                         }else{
                             amount += pfr.Amount;
+                            system.debug('@@@@amount5: ' + amount);
                         }
                                                                                                         if(isRetailOrAccountBased(pfr)){
-                                                                                                            budgetAgainstAmountMap.put(campaignIdBudgetType, amount);// map to store total of amounts on pfr for each camp+budgettype
+                                                                                                            budgetAgainstAmountMap.put(campaignIdBudgetType, amount);
+                                                                                                            system.debug('@@@@budgetAgainstAmountMap0: ' + budgetAgainstAmountMap);// map to store total of amounts on pfr for each camp+budgettype
                         } else {
                            budgetAgainstAmountMap.put(cmpIdBudgetIdBudgetType, amount);
+                           system.debug('@@@@budgetAgainstAmountMap: ' + budgetAgainstAmountMap);
                         }}
                                                                                                 }
                                                                                             }
@@ -1740,6 +1768,7 @@ pfc.Core_MDF_Claim_Review_Case__r.Core_MDF_Adjustment_Amount_USD_Amt__c != NULL 
                     ID pfrID =(Id)pfc.get('Id');    
                     Decimal pfrClaimedAmount =(Decimal)pfc.get('amt');
                     pfrToClaimAmtMap.put(pfrID,pfrClaimedAmount);
+                    system.debug('@@@@pfrToClaimAmtMap: ' + pfrToClaimAmtMap);
                 }
                 for(AggregateResult esc : [SELECT Core_MDF_Co_Marketing_Activity_id__c Id,sum(Core_MDF_Approved_Amount_amt__c)amt
                                            FROM Core_MDF_Escalation__c
@@ -1749,6 +1778,7 @@ pfc.Core_MDF_Claim_Review_Case__r.Core_MDF_Adjustment_Amount_USD_Amt__c != NULL 
                     ID pfrID =(Id)esc.get('Id');
                     Decimal pfrEscAmount =(Decimal)esc.get('amt');
                     pfrToEscalationAmtMap.put(pfrID,pfrEscAmount); 
+                    system.debug('@@@@pfrToEscalationAmtMap: ' + pfrToEscalationAmtMap);
                 }
             }
             
@@ -1758,20 +1788,29 @@ pfc.Core_MDF_Claim_Review_Case__r.Core_MDF_Adjustment_Amount_USD_Amt__c != NULL 
                 Decimal totalClaimEscConsumedAmt = 0.0;
                 Decimal amount = 0.0;
                 String budgetType = String.ValueOf(pfr.Core_MDF_Budget_Type_nm__c);
+                system.debug('@@@@budgetType12: ' + budgetType);
                 budgetType = string.isNotBlank(budgetType) ? budgetType.replaceAll('\\s+', '') : '';
+                system.debug('@@@@budgetType13: ' + budgetType);
                 String cmpIdBudgetIdBudgetType = String.ValueOf(pfr.CampaignId) + pfr.BudgetId + budgetType;
+                system.debug('@@@@cmpIdBudgetIdBudgetType34 ' + cmpIdBudgetIdBudgetType);
                 if(pfr.Amount != null){
                     totalEscAmt = pfrToEscalationAmtMap.containskey(pfr.Id) ? pfrToEscalationAmtMap.get(pfr.Id) : 0;
+                    system.debug('@@@@totalEscAmt ' + totalEscAmt);
                     totalClaimedAmt = pfrToClaimAmtMap.containskey(pfr.Id) ? pfrToClaimAmtMap.get(pfr.Id) : 0;
+                    system.debug('@@@@totalClaimedAmt ' + totalClaimedAmt);
                     totalClaimEscConsumedAmt = totalEscAmt + totalClaimedAmt;
+                    system.debug('@@@@totalClaimEscConsumedAmt ' + totalClaimEscConsumedAmt);
                     amount = totalClaimEscConsumedAmt >= pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c
                             ? pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c : totalClaimEscConsumedAmt;
+                            system.debug('@@@@amount6 ' + amount);
                     budgetAgainstIndPfrAmtMap.put(pfr.Id, amount);
                     if(budgetAgainstAmountMap.containsKey(cmpIdBudgetIdBudgetType)){
                         amount += budgetAgainstAmountMap.get(cmpIdBudgetIdBudgetType);
                         budgetAgainstAmountMap.put(cmpIdBudgetIdBudgetType, amount);
+                        system.debug('@@@@budgetAgainstAmountMap: ' + budgetAgainstAmountMap);
                     }else{
                         budgetAgainstAmountMap.put(cmpIdBudgetIdBudgetType, amount); 
+                        system.debug('@@@@budgetAgainstAmountMap1: ' + budgetAgainstAmountMap);
                     }                                                                        
                 }
             }
@@ -1783,13 +1822,14 @@ pfc.Core_MDF_Claim_Review_Case__r.Core_MDF_Adjustment_Amount_USD_Amt__c != NULL 
                 String mapKey = '';
                 if(pfrToCampBudgetKeyMap.containsKey(escalation.Core_MDF_Co_Marketing_Activity_id__c)){
                     mapKey = pfrToCampBudgetKeyMap.get(escalation.Core_MDF_Co_Marketing_Activity_id__c);
+                    system.debug('@@@@mapKey: ' + mapKey);
                     if(cmpIdBudgetIdBudgetTypeToAmountMap.containsKey(mapKey)){
                         totalAmount += cmpIdBudgetIdBudgetTypeToAmountMap.get(mapKey);
-                                                                          //Amount on campaign
+                         system.debug('@@@@totalAmount: ' + totalAmount);                                                 //Amount on campaign
                     }
                     if(budgetAgainstAmountMap.containsKey(mapKey)){
                         allocationAmount += budgetAgainstAmountMap.get(mapKey);
-                                                                          //sum of amounts on activity
+                          system.debug('@@@@allocationAmount: ' + allocationAmount);                                                //sum of amounts on activity
                     }
                 }
                 
@@ -1804,21 +1844,29 @@ pfc.Core_MDF_Claim_Review_Case__r.Core_MDF_Adjustment_Amount_USD_Amt__c != NULL 
                 }
                 
                 avalabileAmount = totalAmount - allocationAmount;
+                system.debug('@@@@diffAmount: ' + diffAmount);
+                system.debug('@@@@avalabileAmount: ' + avalabileAmount);
                 if(avalabileAmount < diffAmount){
                     escalation.addError(Label.Core_MDF_OPAL_Amount_Validation_Error);
                 } else { 
                    if(escalationList.size() > 1 && String.isNotBlank(mapKey)){
                         String pfrId = String.valueOf(escalation.Core_MDF_Co_Marketing_Activity_id__c);
+                        system.debug('@@@@pfrId: ' + pfrId);
                         allocationAmount = allocationAmount - budgetAgainstIndPfrAmtMap.get(pfrId);
+                        system.debug('@@@@allocationAmount: ' + allocationAmount);
                         Decimal pfrFinalAmt = budgetAgainstIndPfrAmtMap.get(pfrId) + diffAmount; 
+                        system.debug('@@@@pfrFinalAmt: ' + pfrFinalAmt);
                         if(pfrFinalAmt >= budgetAgainstInContMap.get(pfrId)){ 
                             allocationAmount += budgetAgainstInContMap.get(pfrId);
                             budgetAgainstIndPfrAmtMap.put(pfrId, budgetAgainstInContMap.get(pfrId));
                         } else {
                             budgetAgainstIndPfrAmtMap.put(pfrId, pfrFinalAmt);
+                            system.debug('@@@@budgetAgainstIndPfrAmtMap: ' + budgetAgainstIndPfrAmtMap);
                             allocationAmount += pfrFinalAmt; 
+                            system.debug('@@@@allocationAmount: ' + allocationAmount);
                         }
                         budgetAgainstAmountMap.put(mapKey, allocationAmount);
+                        system.debug('@@@@budgetAgainstAmountMap: ' + budgetAgainstAmountMap);
                 	}
                 }   
             }

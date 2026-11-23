@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <formulas>
+        <name>Core_MDF_Update_AccountIdBankIdMappingFormula</name>
+        <dataType>String</dataType>
+        <expression>$Record.Core_MDF_Account__c + $Record.Core_MDF_Bank__c</expression>
+    </formulas>
+    <interviewLabel>Core_MDF_Update_AccountIdBankIdMapping {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_MDF_Update_AccountIdBankIdMapping</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>It updates AccountIdBankIdMapping field with Account and Bank ids.</description>
+        <name>Core_MDF_Update_AccountIdBankIdMapping</name>
+        <label>Update_AccountIdBankIdMapping</label>
+        <locationX>456</locationX>
+        <locationY>383</locationY>
+        <inputAssignments>
+            <field>Core_MDF_AccountIdBankIdMapping__c</field>
+            <value>
+                <elementReference>Core_MDF_Update_AccountIdBankIdMappingFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>330</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Core_MDF_Update_AccountIdBankIdMapping</targetReference>
+        </connector>
+        <object>Core_MDF_Account_Bank_Mapping__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

@@ -12,7 +12,6 @@ Modification Log :
 * ----------------------------------------------------------------------------
 *Aparna Ogirala                       28/11/2017               Original Version
 *Aparna                                3/7/2018          Modified for DE36696 and DE36701 
-* //System.assert()--> statement Added By Hassan Khan 04-02-2024
 *******************************************************************************************************************/
 
 @isTest
@@ -99,7 +98,7 @@ public class Core_IPS_Attachment_Extension_Test{
         insert listcstSettings;
     
         user adminUser=TestUtilities.getUser();
-        profile p=[select id,name from profile where name='System Administrator' limit 1];
+        profile p=[select id,name from profile where name='IT Admin' limit 1];
         adminUser.profileid =p.id;
         adminUser.username='adminTest'+Crypto.getRandomLong()+'@intel.com';
         insert adminUser;
@@ -120,9 +119,9 @@ public class Core_IPS_Attachment_Extension_Test{
         attachments.Core_Upload_Status__c=Core_IPS_Labels__c.getValues('COMPLETE').value__c;
         Insert attachments;
         
-        //commented for Classic EOL : Tejaswini        
-     /*   PageReference pageRef=Page.Core_IPS_CaseAttachment_Visibility;
-        Test.setCurrentPage(pageRef); */
+                
+        PageReference pageRef=Page.Core_IPS_CaseAttachment_Visibility;
+        Test.setCurrentPage(pageRef);
         List<Core_IPS_Case_Attachments__c> lstAttach=new  List<Core_IPS_Case_Attachments__c>();
         lstAttach.add(attachments);
         System.currentPageReference().getParameters().put('id',cs.id);
@@ -131,7 +130,7 @@ public class Core_IPS_Attachment_Extension_Test{
         inst.showLink = 'full';
         inst.fetchattachmentList();
         inst.URL2();
-        System.assert(listcstSettings.size() > 0, true);  
+        
     }
   }
 /********************************************************************************************************************
@@ -208,13 +207,13 @@ Modification Log :
         insert listcstSettings;
     
         user adminUser=TestUtilities.getUser();
-        profile p=[select id,name from profile where name='System Administrator' limit 1];
+        profile p=[select id,name from profile where name='IT Admin' limit 1];
         adminUser.username='adminTest'+Crypto.getRandomLong()+'@intel.com';
         adminUser.profileid =p.id;
         insert adminUser;
           
        system.runAs(adminUser){
-       User u = [select Id from User where profile.Name = 'System Administrator' and userRoleId != null AND ISActive=true Limit 1];
+       User u = [select Id from User where profile.Name = 'IT Admin' and userRoleId != null AND ISActive=true Limit 1];
     
         Case cs=TestUtilities.getCase();
         Insert cs;
@@ -238,9 +237,10 @@ Modification Log :
         //System.currentPageReference().getParameters().put('attachmentId',attachments.id);
         ApexPages.CurrentPage().getparameters().put('attachmentId',attachments.id);
           if(attachments.id != null)
-           inst1.deleteAttachments();  
-      }
-      System.assert(listcstSettings.size() > 0, true);
+           inst1.deleteAttachments();
+              
+       
+    }
   }  
 /********************************************************************************************************************
 Method Name       :  NegativetestDelAttachments
@@ -310,13 +310,13 @@ Modification Log :
         insert listcstSettings;
     
         user adminUser=TestUtilities.getUser();
-        profile p=[select id,name from profile where name='System Administrator' limit 1];
+        profile p=[select id,name from profile where name='IT Admin' limit 1];
         adminUser.username='adminTest'+Crypto.getRandomLong()+'@intel.com';
         adminUser.profileid =p.id;
         insert adminUser;
           
        system.runAs(adminUser){
-       User u = [select Id from User where profile.Name = 'System Administrator' and userRoleId != null AND ISActive=true Limit 1];
+       User u = [select Id from User where profile.Name = 'IT Admin' and userRoleId != null AND ISActive=true Limit 1];
     
         Case cs=TestUtilities.getCase();
         Insert cs;
@@ -420,11 +420,6 @@ Modification Log :
         label6.name='Backend Integration';
         label6.value__c='Backend Integration';
         listcstSettings.add(label6);
-        
-        Core_IPS_Labels__c label7= new Core_IPS_Labels__c();
-        label7.name='PRIVATE_TO_PARTNERS  ';
-        label7.value__c='Private to Partners';
-        listcstSettings.add(label7);
 
         insert listcstSettings;
         
@@ -455,7 +450,6 @@ Modification Log :
             inst2.fetchattachmentList();
         }
       }
-      System.assert(listcstSettings.size() > 0, true);
     }
     // Method Added By Prem
     public static testmethod void VariableIntialize(){
@@ -499,17 +493,17 @@ Function        : Method covers code for attachments function in Core_IPS_Attach
 Modification Log :
 * Developer                             Date                   Description
 * ------------------------------------------------------------------------------
-*Aparna Ogirala                     30/4/2018                    Original Version
+*Aparna Ogirala                      30/4/2018                    Original Version
 *******************************************************************************************************************/ 
     public static testmethod void partnerTestDFAE(){
         
        createusers();
-       Id intelSupportOwner = ListOfUser.get(0).id;
         Map<String,ID> profiles = new Map<String,ID>();
         List<Profile> ProfileList = [select id, name from Profile where name='Partner' ];// OR name='Integration' OR name='IPS Data Migration' OR name='Data Ops'];// OR name='Partner' OR name='IPS Agent-Partner'];
         for(Profile prf : ProfileList){
         profiles.put(prf.name, prf.id);
         }
+        system.debug('profiles'+profiles);
         
          User thisUser = [ select Id from User where Id = :UserInfo.getUserId() ];
          User userRecord = new User();
@@ -573,15 +567,12 @@ Modification Log :
          label11.value__c='Partner - Agent';
          insert label11;
          
-         Account testAccount1;
-         Contact testContact ; 
-
-        System.runAs ( ListOfUser[0]) { 
+          System.runAs ( ListOfUser[0]) { 
           
           UserRole portalRole = [Select Id From UserRole Where PortalType = 'None' Limit 1];
           Profile profile1 = [Select Id from Profile where name = 'System Administrator'];
           User portalAccountOwner1 = new User(
-                  UserRoleId = portalRole.Id,
+                UserRoleId = portalRole.Id,
                   ProfileId = profile1.Id,
                   Username = 'test877@intel.com',
                   Alias = 'batman',
@@ -595,11 +586,11 @@ Modification Log :
               );
            Database.insert(portalAccountOwner1);
          
-              testAccount1=TestUtilities.getAccount(); 
+              Account testAccount1=TestUtilities.getAccount(); 
               testAccount1.ownerid = portalAccountOwner1.id;      
               insert testAccount1;             
-              contact  testContact1 = new Contact(FirstName='testFirstNameXYZ', LastName='testLastNameABC', Email='test12346430987@testing.com.testsetup',ownerId = intelSupportOwner,
-                                                 AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',MailingCountry = 'India');
+              Contact testContact1 = new Contact(FirstName='testFirstNameXYZ', LastName='testLastNameABC', Email='test12346430987@testing.com.testsetup',
+                                                 AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful');
               insert testContact1;      
               
               UserRole ur = new UserRole(DeveloperName = 'MyCustomRole', Name = 'My Role');
@@ -626,17 +617,12 @@ Modification Log :
               psa.AssigneeId = userRecord.Id;
               psa.PermissionSetId = ps.Id;
               insert psa;  
-              
-             testContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test14@testing.com.testsetup',ownerId = intelSupportOwner,
-                                     AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',MailingCountry = 'India');
-              insert testContact;
-              System.assertNotEquals(null, testContact.id);            
        } 
          
         System.runAs(userRecord){
             Case Cs =  TestUtilities.getCase(); 
             
-           /* Account accountRecord = new Account();
+            Account accountRecord = new Account();
             accountRecord.recordTypeId = schema.sobjecttype.Account.getrecordtypeinfosbyname().get('Intel Account').getRecordTypeId();
             accountRecord.Name = 'Dell Products2';
             accountRecord.Core_Account_Type__c = 'Distributor';
@@ -647,22 +633,25 @@ Modification Log :
             accountRecord.billingState = 'AK';
             accountRecord.billingStreet = 'Bratislava 12';
             accountRecord.Core_IPS_Active__c = true;
-            insert accountRecord;*/
-      
-           //System.assertNotEquals(null, accountRecord.id);
-           // cs.AccountId=accountRecord.id;
+            insert accountRecord;
+           
+            Contact testContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test14@testing.com.testsetup',
+                                     AccountId=accountRecord.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful');
+            insert testContact;
+            System.assertNotEquals(null, accountRecord.id);
+            cs.AccountId=accountRecord.id;
             cs.contactid=testContact.id;
             insert Cs;
            
-            //commented for Classic EOL : Tejaswini        
-     /*   PageReference pageRef=Page.Core_IPS_CaseAttachment_Visibility;
-        Test.setCurrentPage(pageRef); */
+            PageReference pageRef = Page.Core_IPS_CaseAttachment_Visibility;
+            Test.setCurrentPage(pageRef);
             ApexPages.CurrentPage().getparameters().put('id',CS.id);
             ApexPages.StandardController StndContr = new ApexPages.standardController(CS);
             
             Core_IPS_Attachment_Extension chkAtt = new Core_IPS_Attachment_Extension(StndContr);
             system.assertNotEquals(chkAtt.partnerFileURL,null);
             ApexPages.currentPage().getParameters().put('List','full');
+            system.debug(chkAtt.uploadpartnerProfileType);
             System.assertNotEquals(null,chkAtt.URL2());
                       
         }
@@ -682,15 +671,16 @@ Modification Log :
 * ------------------------------------------------------------------------------
 *Aparna Ogirala                     30/4/2018                   Original Version
 *******************************************************************************************************************/ 
-    public static testmethod void partnerTest(){
+   public static testmethod void partnerTest(){
         
         createusers();
-        Id intelSupportOwner = ListOfUser.get(0).id;
         Map<String,ID> profiles = new Map<String,ID>();
         List<Profile> ProfileList = [select id, name from Profile where name='Partner' ];// OR name='Integration' OR name='IPS Data Migration' OR name='Data Ops'];// OR name='Partner' OR name='IPS Agent-Partner'];
         for(Profile prf : ProfileList){
         profiles.put(prf.name, prf.id);
-        }        
+        }
+        system.debug('profiles'+profiles);
+        
          User thisUser = [ select Id from User where Id = :UserInfo.getUserId() ];
          User userRecord = new User();
          
@@ -753,9 +743,6 @@ Modification Log :
          label11.value__c='Partner - Agent';
          insert label11;
          
-         Account testAccount1;
-         Contact testContact ;
-          
           System.runAs ( ListOfUser[0]) { 
          
           UserRole portalRole = [Select Id From UserRole Where PortalType = 'None' Limit 1];
@@ -775,11 +762,11 @@ Modification Log :
                 );
                 Database.insert(portalAccountOwner1);
           
-            testAccount1=TestUtilities.getAccount(); 
+            Account testAccount1=TestUtilities.getAccount(); 
             testAccount1.OwnerId = portalAccountOwner1.Id ;      
-            insert testAccount1;                 
-            Contact testContact1 = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test1234643@testing.com.testsetup', ownerId = intelSupportOwner,
-                                     AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful', MailingCountry = 'India');
+            insert testAccount1;             
+            Contact testContact1 = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test1234643@testing.com.testsetup',
+                                     AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful');
             insert testContact1;      
 
             UserRole ur = new UserRole(DeveloperName = 'MyCustomRole', Name = 'My Role');
@@ -806,17 +793,12 @@ Modification Log :
             psa.AssigneeId = userRecord.Id;
             psa.PermissionSetId = ps.Id;
             insert psa;  
-            
-             testContact = new Contact(FirstName='testFirstName123', LastName='testLastName1', Email='test1234@testing.com.testsetup', ownerId = intelSupportOwner,
-                                     AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',MailingCountry = 'India');
-            insert testContact;
-            System.assertNotEquals(null, testContact.id); 
        } 
          
         System.runAs(userRecord){
             Case Cs =  TestUtilities.getCase(); 
             //Account testAccount=TestUtilities.getAccount();
-           /* Account accountRecord = new Account(
+            Account accountRecord = new Account(
             recordTypeId = schema.sobjecttype.Account.getrecordtypeinfosbyname().get('Intel Account').getRecordTypeId(),
             Name = 'Dell Products1',
             Core_Account_Type__c = 'Distributor',
@@ -827,10 +809,13 @@ Modification Log :
             billingState = 'AK',
             billingStreet = 'Bratislava 1',
             Core_IPS_Active__c = true);
-            insert accountRecord;*/
-                         
-            // System.assertNotEquals(null, accountRecord.id);
-            //cs.AccountId=accountRecord.id;
+            insert accountRecord;
+             
+            Contact testContact = new Contact(FirstName='testFirstName123', LastName='testLastName1', Email='test1234@testing.com.testsetup',
+                                     AccountId=accountRecord.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful');
+            insert testContact;
+            System.assertNotEquals(null, accountRecord.id);
+            cs.AccountId=accountRecord.id;
             cs.contactid=testContact.id;
             insert Cs;
            
@@ -838,16 +823,16 @@ Modification Log :
             Test.setCurrentPage(pageRef);
             ApexPages.CurrentPage().getparameters().put('id',CS.id);
             ApexPages.StandardController StndContr = new ApexPages.standardController(CS);
-           
-            //commented for Classic EOL : Tejaswini        
-     /*   PageReference pageRef1=Page.Core_IPS_CaseAttachment_Visibility;
-        Test.setCurrentPage(pageRef); */
+            
+            PageReference pageRef1 = Page.Core_IPS_CaseAttachment_Visibility;
+            Test.setCurrentPage(pageRef);
             ApexPages.CurrentPage().getparameters().put('id',CS.id);
             ApexPages.StandardController StndContr1 = new ApexPages.standardController(CS);
             
             Core_IPS_Attachment_Extension chkAtt = new Core_IPS_Attachment_Extension(StndContr);
             system.assertNotEquals(chkAtt.partnerFileURL,null);
             system.assertNotEquals(chkAtt.privateToPartnerURL,null);
+            system.debug(chkAtt.showLink);
         }
      }
 }

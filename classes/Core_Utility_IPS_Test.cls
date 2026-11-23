@@ -595,6 +595,7 @@ public class Core_Utility_IPS_Test{
             } 
         }
         catch(Exception e){
+          System.debug(System.Label.Core_Exception+e.getMessage());
         }    
     }
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This is the metadata which stores string value pairs and can replace custom labels with no translation.</description>
+    <fields>
+        <fullName>Core_MDF_Category__c</fullName>
+        <description>Category of string values</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Category</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Value__c</fullName>
+        <description>Contains string values for a specific key.</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Value</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <label>Core_MDF_CustomLabel</label>
+    <pluralLabel>Core_MDF_CustomLabel</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

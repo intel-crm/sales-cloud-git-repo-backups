@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <available>false</available>
+    <description>Escalation Approved Email Template</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Escalation Approval Email Template VF</name>
+    <style>none</style>
+    <subject>Status Change for your {!Core_MDF_Escalation__c.Core_MDF_Escalation_Type_nm__c} Escalation Request ID: {!Core_MDF_Escalation__c.Name}</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

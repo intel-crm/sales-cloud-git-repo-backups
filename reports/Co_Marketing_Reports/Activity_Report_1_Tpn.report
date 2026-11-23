@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_AccountCompany__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Request</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Request.CreatedDate</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Ad_Run_Start_Date__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CDF1</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>PartnerFundClaim.Core_MDF_Ad_Run_Start_Date__c - DATEVALUE(PartnerFundClaim.Request.CreatedDate)</calculatedFormula>
+        <dataType>Double</dataType>
+        <developerName>CDF1</developerName>
+        <label>Activity Date Difference</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PartnerFundClaim$Request.Core_MDF_Activity_Number__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>#Days activity opened prior to occurring</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Claim_and_Activity_Report_Type__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PartnerFundClaim$Core_MDF_Activity_End_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

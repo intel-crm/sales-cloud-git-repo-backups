@@ -209,7 +209,8 @@ public without sharing class Core_IPS_Core_Question_Handler
                  quesList.add(ques.Id);   
                 }
             } 
-            if(quesList!=null && quesList.size()>0){
+            if(Core_IPS_Response__c.SObjectType.getDescribe().isQueryable()){
+                 if(quesList!=null && quesList.size()>0){
                 //FLS check added-Venugopal
                 if(Core_IPS_Response__c.SObjectType.getDescribe().isAccessible()){
           		respList=[Select Id,Core_IPS_Case__c,Core_IPS_Answer__c,Core_IPS_Question_Master__c from Core_IPS_Response__c where Core_IPS_Question_Master__c In: quesList];
@@ -217,7 +218,9 @@ public without sharing class Core_IPS_Core_Question_Handler
                 if(respList!=null && respList.size()>0){
                     Core_IPS_Response_Handler.updateEDQfilteringFieldOnCase(respList);
                 }
-            }          
+            }
+            }
+           
             
         }catch(Exception ex){ }
     }
@@ -392,6 +395,7 @@ public without sharing class Core_IPS_Core_Question_Handler
         }
         
     }
+    
     /***************************************************************************************************
     Method Name         : updateReportingName
     Method Type         : void
@@ -423,6 +427,7 @@ public without sharing class Core_IPS_Core_Question_Handler
                     Core_IPS_Question__c newCq =new Core_IPS_Question__c();
                     /*US1021248 - 05/26/2021 - Vishal - FLS Check for security vulnerability --*/
                        newCq.id=cq.id;
+                   
                   //  if (Schema.sObjectType.Core_IPS_Question__c.fields.Core_IPS_Reporting_Name__c.isUpdateable()) {
                         newCq.Core_IPS_Reporting_Name__c = cq.Name;
                    // }
@@ -443,4 +448,5 @@ public without sharing class Core_IPS_Core_Question_Handler
             update newListUpd;
         }        
     }
+
 }

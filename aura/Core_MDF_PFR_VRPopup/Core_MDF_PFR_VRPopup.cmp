@@ -1,0 +1,58 @@
+<!-- This Component is for showing the popups based on the Activity Category, Amount and Type--> 
+<aura:component >
+    <!--Attribute Initialization -->
+    <aura:attribute name="EventMessage" type="String" default="" description="It takes the content to be shown in popup"/>
+    <aura:attribute name="Accept" type="String" description="It checks if it is Elc popup or Event Popup"/>
+    <aura:attribute name="Ignore" type="String" description="It checks if it is Elc popup or Event Popup"/>
+    <aura:attribute name="doApply" type="Boolean" default="false" description="First Question" />
+    <aura:attribute name="PicklistValue" type="String" description="Picklist selection"/>
+    <!--Event Register for click of YES/NO -->
+     <aura:registerEvent name="VREvent" type="c:Core_MDF_PopupButtonClick"/>    
+    <!-- Event Reminder Model Box Start -->
+    <!--<aura:if istrue="{!isOpen}">-->
+        <div aura:id="modalIdForNewRecord" role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <div class="slds-modal__header">
+                    <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.handleNo}">
+                        X<span class="slds-assistive-text">Cancel</span>
+                    </button>
+                    <h2 id="header43" class="slds-text-heading--medium">Variable Reimbursement Rate</h2>
+                </div>
+                
+                <div class="slds-modal__content slds-p-around--medium">
+                    <div class="slds-grid slds-wrap">
+                        <lightning:layout horizontalAlign="center" verticalAlign="center">
+                            <lightning:layoutItem flexibility="auto" padding="around-small">
+                                <p align="justify">
+                                    THE SELECTED COMBINATION OF ACTIVITY CAT, TYPE, BRAND QUALIFIES FOR AN INCENTIVE. DO YOU WANT TO APPLY IT?
+                                   
+                                    
+                                </p> 
+                            </lightning:layoutItem>
+                            
+                        </lightning:layout>
+                    </div>                   
+                </div>
+                <div class="slds-modal__footer">
+                    <div align="center">                        
+                     <aura:if isTrue="{!v.doApply == false}"> 
+                        <div align="center">
+                        <lightning:select value="{!v.PicklistValue}" name="Competitive Elements" label="Do you want to use VR??" disabled = "{!v.disabled}" onchange="{!c.handleResponse}">
+                            <option value="No">{!$Label.c.Core_MDF_DQNo}</option>
+                            <option value="Yes">{!$Label.c.Core_MDF_DQYes}</option>
+                        </lightning:select>
+                        </div>
+                      </aura:if> 
+                        <aura:if isTrue="{!v.doApply}">
+                        <div align="center">
+                            <lightning:button variant="Success" label="OPT IN" onclick="{!c.handleYes}"/>
+                            <lightning:button variant="Destructive" label="CANCEL" onclick="{!c.handleNo}"/>
+                    	</div>
+                        </aura:if>
+                    </div>   
+                </div>
+            </div>
+        </div>  
+        <div aura:id="backdropIdForNewRecord" class="slds-backdrop slds-backdrop--open"></div>
+    <!--</aura:if>    -->
+</aura:component>

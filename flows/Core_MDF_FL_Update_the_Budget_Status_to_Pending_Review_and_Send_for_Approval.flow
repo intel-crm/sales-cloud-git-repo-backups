@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Approval_Process_for_Co_GTM</name>
         <label>Approval Process for Co-GTM</label>
-        <locationX>1153</locationX>
-        <locationY>50</locationY>
+        <locationX>1106</locationX>
+        <locationY>614</locationY>
         <actionName>submit</actionName>
         <actionType>submit</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -25,10 +25,36 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
     <actionCalls>
+        <name>Approval_Process_for_Co_Inv</name>
+        <label>Approval Process for Co-Inv</label>
+        <locationX>1422</locationX>
+        <locationY>757</locationY>
+        <actionName>submit</actionName>
+        <actionType>submit</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>objectId</name>
+            <value>
+                <elementReference>vBudgetId</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>processDefinitionNameOrId</name>
+            <value>
+                <elementReference>Co_Inv_Budget_ApprovalProcessId</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <nameSegment>submit</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
         <name>Core_MDF_Approval_Process_for_EEF</name>
         <label>Approval Process for EEF</label>
-        <locationX>1201</locationX>
-        <locationY>248</locationY>
+        <locationX>842</locationX>
+        <locationY>614</locationY>
         <actionName>submit</actionName>
         <actionType>submit</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -52,8 +78,8 @@
         <description>this is to call the IPA program Approval flow</description>
         <name>Core_MDF_Approval_process_for_IPA</name>
         <label>Approval process for IPA</label>
-        <locationX>934</locationX>
-        <locationY>189</locationY>
+        <locationX>578</locationX>
+        <locationY>614</locationY>
         <actionName>submit</actionName>
         <actionType>submit</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -79,8 +105,8 @@
     <actionCalls>
         <name>Core_MDF_Approval_process_for_MDF_MDF_Budget_Type</name>
         <label>Approval process for MDF/MDF+ Budget Type</label>
-        <locationX>1171</locationX>
-        <locationY>526</locationY>
+        <locationX>314</locationX>
+        <locationY>614</locationY>
         <actionName>submit</actionName>
         <actionType>submit</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -106,8 +132,8 @@
     <actionCalls>
         <name>Core_MDF_Submit_Budget_for_Approval</name>
         <label>Submit Budget for Approval</label>
-        <locationX>933</locationX>
-        <locationY>667</locationY>
+        <locationX>2822</locationX>
+        <locationY>614</locationY>
         <actionName>submit</actionName>
         <actionType>submit</actionType>
         <connector>
@@ -136,8 +162,8 @@
     <actionCalls>
         <name>Notify_CCF_FinanceManagers</name>
         <label>Notify CCF Finance Managers</label>
-        <locationX>80</locationX>
-        <locationY>953</locationY>
+        <locationX>1634</locationX>
+        <locationY>938</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -165,8 +191,8 @@
     <actionCalls>
         <name>Notify_CCFB_Finance_Managers</name>
         <label>Notify CCFB Finance Managers</label>
-        <locationX>1617</locationX>
-        <locationY>948</locationY>
+        <locationX>3482</locationX>
+        <locationY>830</locationY>
         <actionName>PartnerMarketingBudget.Core_MDF_CCFB_Budget_Email_Alert</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -182,8 +208,8 @@
     <actionCalls>
         <name>Notify_DCF_Finance_Managers</name>
         <label>Notify DCF Finance Managers</label>
-        <locationX>346</locationX>
-        <locationY>1055</locationY>
+        <locationX>1898</locationX>
+        <locationY>938</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -211,8 +237,8 @@
     <actionCalls>
         <name>Notify_RMF_APJ_FinanceManagers</name>
         <label>Notify RMF APJ Finance Managers</label>
-        <locationX>615</locationX>
-        <locationY>1231</locationY>
+        <locationX>2162</locationX>
+        <locationY>938</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -231,7 +257,7 @@
         <inputParameters>
             <name>templateName</name>
             <value>
-                <stringValue>Core_MDF_NotifyBudgetApprovers</stringValue>
+                <stringValue>Notify RMF APJ Finance Managers</stringValue>
             </value>
         </inputParameters>
         <nameSegment>Core_MDF_GenericClassToSendMail</nameSegment>
@@ -240,8 +266,8 @@
     <actionCalls>
         <name>Notify_RMF_ASMO_LAR_FinanceManagers</name>
         <label>Notify RMF ASMO LAR Finance Managers</label>
-        <locationX>1191</locationX>
-        <locationY>1248</locationY>
+        <locationX>3218</locationX>
+        <locationY>938</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -269,8 +295,8 @@
     <actionCalls>
         <name>Notify_RMF_ASMO_NAR_FinanceManagers</name>
         <label>Notify RMF ASMO NAR Finance Managers</label>
-        <locationX>1047</locationX>
-        <locationY>1560</locationY>
+        <locationX>2954</locationX>
+        <locationY>938</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -298,8 +324,8 @@
     <actionCalls>
         <name>Notify_RMF_EMEA_FinanceManagers</name>
         <label>Notify RMF EMEA Finance Managers</label>
-        <locationX>765</locationX>
-        <locationY>1564</locationY>
+        <locationX>2426</locationX>
+        <locationY>938</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -327,8 +353,8 @@
     <actionCalls>
         <name>Notify_RMF_PRC_FinanceManagers</name>
         <label>Notify RMF PRC Finance Managers</label>
-        <locationX>899</locationX>
-        <locationY>1559</locationY>
+        <locationX>2690</locationX>
+        <locationY>938</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -356,8 +382,8 @@
     <actionCalls>
         <name>Notify_SPCF_Finance_Managers</name>
         <label>Notify SPCF Finance Managers</label>
-        <locationX>1748</locationX>
-        <locationY>858</locationY>
+        <locationX>3746</locationX>
+        <locationY>830</locationY>
         <actionName>PartnerMarketingBudget.Core_MDF_SPCF_Budget_Email_Alert</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -376,8 +402,8 @@
         <description>To check whether the given budget belongs to RMF,CCFB,SPCF,OEMCMP,SPCMP or Legacy Budget Types</description>
         <name>Check_for_Other_Budget_Types</name>
         <label>Check for Other Budget Types</label>
-        <locationX>925</locationX>
-        <locationY>861</locationY>
+        <locationX>2822</locationX>
+        <locationY>722</locationY>
         <defaultConnectorLabel>Other Budget Types</defaultConnectorLabel>
         <rules>
             <name>CCF_Non_MDF_MDF</name>
@@ -624,8 +650,8 @@
         <description>Check whether it is a MDF/MDF+ Budget type</description>
         <name>Check_whether_it_is_a_MDF_MDF_Budget_type</name>
         <label>Check whether it is a MDF/MDF+ Budget type</label>
-        <locationX>926</locationX>
-        <locationY>415</locationY>
+        <locationX>1568</locationX>
+        <locationY>506</locationY>
         <defaultConnector>
             <targetReference>Core_MDF_Submit_Budget_for_Approval</targetReference>
         </defaultConnector>
@@ -718,13 +744,28 @@
             </connector>
             <label>Co-GTM</label>
         </rules>
+        <rules>
+            <name>Core_MDF_Co_Inv</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Fetch_Budget.Core_MDF_Program_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Label.Core_MDF_Co_Inv_program_name</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Approval_Process_for_Co_Inv</targetReference>
+            </connector>
+            <label>Co-Inv</label>
+        </rules>
     </decisions>
     <decisions>
         <description>To Check whether the given budget is an IPA Proposal Based Budget</description>
         <name>Check_whether_it_is_an_IPA_Proposal_Based_Budget</name>
         <label>Check whether it is an IPA Proposal Based Budget</label>
-        <locationX>406</locationX>
-        <locationY>407</locationY>
+        <locationX>809</locationX>
+        <locationY>290</locationY>
         <defaultConnector>
             <targetReference>Core_MDF_Update_the_Budget_Status_to_Pending_Review</targetReference>
         </defaultConnector>
@@ -751,6 +792,11 @@
         <name>Co_GTM_Budget_ApprovalProcessId</name>
         <dataType>String</dataType>
         <expression>{!$Label.Core_MDF_Co_GTM_Budget_ApprovalProcess}</expression>
+    </formulas>
+    <formulas>
+        <name>Co_Inv_Budget_ApprovalProcessId</name>
+        <dataType>String</dataType>
+        <expression>{!$Label.Core_MDF_Co_Inv_Budget_ApprovalProcess}</expression>
     </formulas>
     <formulas>
         <name>EEF_ApprovalProcess_Name</name>
@@ -798,8 +844,8 @@
         <description>Capture Error message from trigger and insert log entry</description>
         <name>Core_MDF_Log_Entry</name>
         <label>LogEntry</label>
-        <locationX>615</locationX>
-        <locationY>680</locationY>
+        <locationX>4274</locationX>
+        <locationY>506</locationY>
         <inputAssignments>
             <field>Core_Details__c</field>
             <value>
@@ -854,8 +900,8 @@
     <recordLookups>
         <name>Fetch_Budget</name>
         <label>Fetch Budget</label>
-        <locationX>176</locationX>
-        <locationY>405</locationY>
+        <locationX>809</locationX>
+        <locationY>182</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_whether_it_is_an_IPA_Proposal_Based_Budget</targetReference>
@@ -876,8 +922,8 @@
         <description>Get Public Group for CCF Finance Manager Queue Group</description>
         <name>Get_CCF_Finance_Manager_Queue_Group</name>
         <label>Get CCF Finance Manager Queue Group</label>
-        <locationX>94</locationX>
-        <locationY>797</locationY>
+        <locationX>1634</locationX>
+        <locationY>830</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Notify_CCF_FinanceManagers</targetReference>
@@ -897,8 +943,8 @@
     <recordLookups>
         <name>Get_DCF_Finance_Manager_Queue_Group</name>
         <label>Get DCF Finance Manager Queue Group</label>
-        <locationX>343</locationX>
-        <locationY>899</locationY>
+        <locationX>1898</locationX>
+        <locationY>830</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Notify_DCF_Finance_Managers</targetReference>
@@ -918,8 +964,8 @@
     <recordLookups>
         <name>Get_RMF_APJ_Finance_Manager_Queue_Group</name>
         <label>Get RMF APJ Finance Manager Queue Group</label>
-        <locationX>616</locationX>
-        <locationY>1070</locationY>
+        <locationX>2162</locationX>
+        <locationY>830</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Notify_RMF_APJ_FinanceManagers</targetReference>
@@ -939,8 +985,8 @@
     <recordLookups>
         <name>Get_RMF_ASMO_LAR_Finance_Manager_Queue_Group</name>
         <label>Get RMF ASMO LAR Finance Manager Queue Group</label>
-        <locationX>1191</locationX>
-        <locationY>1084</locationY>
+        <locationX>3218</locationX>
+        <locationY>830</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Notify_RMF_ASMO_LAR_FinanceManagers</targetReference>
@@ -960,8 +1006,8 @@
     <recordLookups>
         <name>Get_RMF_ASMO_NAR_Finance_Manager_Queue_Group</name>
         <label>Get RMF ASMO NAR Finance Manager Queue Group</label>
-        <locationX>1046</locationX>
-        <locationY>1390</locationY>
+        <locationX>2954</locationX>
+        <locationY>830</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Notify_RMF_ASMO_NAR_FinanceManagers</targetReference>
@@ -981,8 +1027,8 @@
     <recordLookups>
         <name>Get_RMF_EMEA_Finance_Manager_Queue_Group</name>
         <label>Get RMF EMEA Finance Manager Queue Group</label>
-        <locationX>768</locationX>
-        <locationY>1387</locationY>
+        <locationX>2426</locationX>
+        <locationY>830</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Notify_RMF_EMEA_FinanceManagers</targetReference>
@@ -1002,8 +1048,8 @@
     <recordLookups>
         <name>Get_RMF_PRC_Finance_Manager_Queue_Group</name>
         <label>Get RMF PRC Finance Manager Queue Group</label>
-        <locationX>904</locationX>
-        <locationY>1388</locationY>
+        <locationX>2690</locationX>
+        <locationY>830</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Notify_RMF_PRC_FinanceManagers</targetReference>
@@ -1023,8 +1069,8 @@
     <recordUpdates>
         <name>Core_MDF_Update_the_Budget_Status_to_Pending_Review</name>
         <label>Update the Budget Status to Pending Review and IsIgnoreValidation to true</label>
-        <locationX>615</locationX>
-        <locationY>402</locationY>
+        <locationX>1568</locationX>
+        <locationY>398</locationY>
         <connector>
             <targetReference>Check_whether_it_is_a_MDF_MDF_Budget_type</targetReference>
         </connector>
@@ -1057,8 +1103,8 @@
         <description>To Update Ignore Validations to True for IPA Budget</description>
         <name>Update_Ignore_Validation_to_True</name>
         <label>Update Ignore Validation to True</label>
-        <locationX>414</locationX>
-        <locationY>641</locationY>
+        <locationX>50</locationX>
+        <locationY>398</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -1076,8 +1122,8 @@
         <object>PartnerMarketingBudget</object>
     </recordUpdates>
     <start>
-        <locationX>50</locationX>
-        <locationY>257</locationY>
+        <locationX>683</locationX>
+        <locationY>48</locationY>
         <connector>
             <targetReference>Fetch_Budget</targetReference>
         </connector>

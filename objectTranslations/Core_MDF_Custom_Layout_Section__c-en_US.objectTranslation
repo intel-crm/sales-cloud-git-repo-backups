@@ -16,6 +16,10 @@
             <translation><!-- Account Based --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Cloud</masterLabel>
+            <translation><!-- Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Proposal Based</masterLabel>
             <translation><!-- Proposal Based --></translation>
         </picklistValues>
@@ -33,11 +37,31 @@ Ex: [{&quot;prmissionSetName&quot; : &quot;Core_MDF_CCP_Internal_IPA_Acct_Mgr&qu
         <name>Core_MDF_ButtonsVisibilityOnStatus_txt__c</name>
     </fields>
     <fields>
+        <label><!-- External API Sample Payload --></label>
+        <name>Core_MDF_External_API_Sample_Payload_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Field View --></label>
         <name>Core_MDF_Field_View_nm__c</name>
         <picklistValues>
             <masterLabel>API Create</masterLabel>
             <translation><!-- API Create --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>API Detail</masterLabel>
+            <translation><!-- API Detail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>API List</masterLabel>
+            <translation><!-- API List --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>API List View</masterLabel>
+            <translation><!-- API List View --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>API Update</masterLabel>
+            <translation><!-- API Update --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Compact Layout</masterLabel>
@@ -49,8 +73,16 @@ Ex: [{&quot;prmissionSetName&quot; : &quot;Core_MDF_CCP_Internal_IPA_Acct_Mgr&qu
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Filter Criteria --></label>
+        <name>Core_MDF_Filter_Criteria_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Hide If No Value --></label>
         <name>Core_MDF_Hide_If_No_Value_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- List API Record Count Limit --></label>
+        <name>Core_MDF_List_API_Record_Count_Limit_nbr__c</name>
     </fields>
     <fields>
         <label><!-- No Of Columns --></label>

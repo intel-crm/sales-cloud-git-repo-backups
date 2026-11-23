@@ -1,10 +1,6 @@
 <template>
     <lightning-card title={title}>
-
-        <!-- Roshan - commented old code to enable overflow only for picklist
-        <div class={scrollWrapperClass} onfocusin={handleCellFocus} onfocusout={handleCellBlur}>  -->
-            
-        <div class={scrollWrapperClass}>
+        <div class={scrollWrapperClass} onfocusin={handleCellFocus}>
         <table class="slds-table slds-table_cell-buffer slds-table_bordered">
             <thead>
                 <tr>
@@ -108,7 +104,6 @@
                                             </lightning-input>
                                         </div>
                                         <div if:true={col.typeIsPicklist} class="slds-p-top_large">
-                                            <!-- Roshan - enable overflow only for picklist -->
                                             <lightning-combobox
                                                 value={col.value}
                                                 data-row-id={record._key}

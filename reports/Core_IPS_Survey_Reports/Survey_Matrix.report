@@ -36,6 +36,13 @@
             <value></value>
         </criteriaItems>
         <criteriaItems>
+            <column>Case.Core_IPS_Product_Org1__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Org-006</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Core_IPS_Response__c.Core_IPS_Question__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -52,7 +59,7 @@
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>CASE_NUMBER</field>
+        <field>Case.Core_IPS_Assigned_Queue__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Survey Matrix</name>
@@ -71,6 +78,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <interval>INTERVAL_THISMONTH</interval>
+        <interval>INTERVAL_CURPREVQ</interval>
     </timeFrameFilter>
 </Report>

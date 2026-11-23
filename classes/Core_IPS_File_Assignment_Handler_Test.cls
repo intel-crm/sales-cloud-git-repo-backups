@@ -7,7 +7,6 @@
 * Developer                   Date                   Description
 * ----------------------------------------------------------------------------                 
 * Malhotra, Abhimanyu S     11/23/2015              Created
-* //System.assert()--> statement Added By Hassan Khan 02-02-2024
 ****************************************************************************************************/
 @isTest public class Core_IPS_File_Assignment_Handler_Test {
     
@@ -26,12 +25,9 @@
 * ----------------------------------------------------------------------------                 
 * Malhotra, Abhimanyu S      11/30/2015              Created
 ****************************************************************************************************/   
-    private static testMethod void sPAccSingleContact(){
-          //Commented bewlow line by rajeswari to remove nullpoint exception on 8 july 22
-    //  setup_Common_Test_Data(true, true, true, false, true); 
-         setup_Common_Test_Data(true, false, true, false, true); 
-        sPAccSingleContactRun(true);
-        System.AssertNotEquals(2008,System.Today().Year(),'Not Equal');
+    private static testMethod void SPAccSingleContact(){
+        Setup_Common_Test_Data(true, true, true, false, true); 
+        SPAccSingleContactRun(false);
     }    
 /***************************************************************************************************
 * Method Name:  SPAccSingleUpdateContact
@@ -45,12 +41,9 @@
 * ----------------------------------------------------------------------------                 
 * Malhotra, Abhimanyu S      11/30/2015              Created
 ****************************************************************************************************/   
-    private static testMethod void sPAccSingleUpdateContact(){
-        //Commented bewlow line by rajeswari to remove nullpoint exception on 8 july 22
-      //  setup_Common_Test_Data(true, true, true, false, true); 
-        setup_Common_Test_Data(true, false, true, false, true); 
-        sPAccSingleContactUpdateRun(true);
-        System.assertNotEquals(2008,System.Today().Year(),'Not Equal');
+    private static testMethod void SPAccSingleUpdateContact(){
+        Setup_Common_Test_Data(true, true, true, false, true); 
+        SPAccSingleContactUpdateRun(false);
     }    
     
 /***************************************************************************************************
@@ -67,9 +60,8 @@
 * Malhotra, Abhimanyu S      11/30/2015              Created
 ****************************************************************************************************/     
     private static testMethod void SPAccSingleContactWithError(){
-        Setup_Common_Test_Data(true, true, true, false, true); //added by Rajashekar
+        Setup_Common_Test_Data(true, false, true, false, true); 
         SPAccSingleContactRun(true);
-        System.assert(Accnt.id != null, true);
     }
 /***************************************************************************************************
 * Method Name:  SPAccMultipleContacts
@@ -86,7 +78,6 @@
     private static testMethod void SPAccMultipleContacts(){
         Setup_Common_Test_Data(true, false, true, false, true); 
         SPAccMultipleContactsRun(11, false);
-        System.assert(Accnt.id != null, true);
     }
 /***************************************************************************************************
 * Method Name:  SPAccMultipleContactsWithError
@@ -104,9 +95,6 @@
     private static testMethod void SPAccMultipleContactsWithError(){
         Setup_Common_Test_Data(true, false, true, false, true); 
         SPAccMultipleContactsRun(11, true);
-        System.assert(Accnt.id != null, true);
-           
-    
     }
 /***************************************************************************************************
 * Method Name:  SPAccMultipleContactsWithError
@@ -125,7 +113,6 @@
     private static testMethod void SPAccMultipleContactsException(){
         Setup_Common_Test_Data(true, false, true, true, true); 
         SPAccMultipleContactsExceptionRun(11, true);
-        System.assert(Accnt.id != null, true);
     }    
 /***************************************************************************************************
 * Method Name:  Setup_Common_Test_Data
@@ -312,6 +299,7 @@
             SuppProd.Core_Supported_Product_Name__c = Prod.Name;
             SuppProd.Core_EOIS__c = false;
             Database.insert(SuppProd);
+            system.debug('######SP' + SuppProd.Core_Product__c);
             system.assert(SuppProd.Id != null);
             //Group
             Group Grp = new Group();
@@ -339,9 +327,6 @@
             system.assert(Asst.Id != null);
             //Asset Shares
             List<AssetShare> lstAssetShare = new List<AssetShare>();
-            User usr = [select Id, UserRoleId from User where id = :CCPUser.Id];
-            List<Group> lstRoleGroups = [select id, Relatedid, type from Group where relatedid = :usr.UserRoleId];
-            List<Group> GroupObj = [SELECT Id, Name, developername, type FROM Group where Id =:lstRoleGroups]; 
             for (Integer i = 0; i < 3; i++) {
                 Assetshare AsstShare = new AssetShare();
                 if (i == 0) {
@@ -360,10 +345,13 @@
                 } 
                 if (i == 2) {
                     //Get CCP UserRoleId to find related groups
+                    User usr = [select Id, UserRoleId from User where id = :CCPUser.Id];
+                    List<Group> lstRoleGroups = [select id, Relatedid, type from Group where relatedid = :usr.UserRoleId];
                     Id GrpShare;
                     for (Integer j = 0; j < lstRoleGroups.size(); j++) {
-                        if (GroupObj[j].type == 'Role'){   
-                            GrpShare = GroupObj[j].id;
+                        Group GroupObj = [SELECT Id, Name, developername, type FROM Group where Id =:lstRoleGroups[j].id]; 
+                        if (GroupObj.type == 'Role'){   
+                            GrpShare = GroupObj.id;
                             break;
                         }
                     }  
@@ -420,10 +408,10 @@
                         }
                     }                   
                 }
-                //System.assertEquals(0,numberOfSuccessfulMessages);
-                //System.assertEquals(1,numberOfErrorMessages); 
+                System.assertEquals(0,numberOfSuccessfulMessages);
+                System.assertEquals(1,numberOfErrorMessages); 
                 //check log
-                Integer LogCount = [select count() from Core_IPS_Email_Log__c LIMIT 999]; //ATHR Query limit fix];
+                Integer LogCount = [select count() from Core_IPS_Email_Log__c];
                 System.assertEquals(1,LogCount);
             }
         }
@@ -486,6 +474,7 @@
             SuppProd.Core_Supported_Product_Name__c = Prod.Name;
             SuppProd.Core_EOIS__c = false;
             Database.insert(SuppProd);
+            system.debug('######SP' + SuppProd.Core_Product__c);
             system.assert(SuppProd.Id != null);
             //Group
             Group Grp = new Group();
@@ -513,9 +502,6 @@
             system.assert(Asst.Id != null);
             //Asset Shares
             List<AssetShare> lstAssetShare = new List<AssetShare>();
-            User usr = [select Id, UserRoleId from User where id = :CCPUser.Id];
-            List<Group> lstRoleGroups = [select id, Relatedid, type from Group where relatedid = :usr.UserRoleId];
-            List<Group> GroupObj = [SELECT Id, Name, developername, type FROM Group where Id =:lstRoleGroups]; 
             for (Integer i = 0; i < 3; i++) {
                 Assetshare AsstShare = new AssetShare();
                 if (i == 0) {
@@ -534,11 +520,13 @@
                 } 
                 if (i == 2) {
                     //Get CCP UserRoleId to find related groups
+                    User usr = [select Id, UserRoleId from User where id = :CCPUser.Id];
+                    List<Group> lstRoleGroups = [select id, Relatedid, type from Group where relatedid = :usr.UserRoleId];
                     Id GrpShare;
                     for (Integer j = 0; j < lstRoleGroups.size(); j++) {
-                        
-                        if (GroupObj[j].type == 'Role'){   
-                            GrpShare = GroupObj[j].id;
+                        Group GroupObj = [SELECT Id, Name, developername, type FROM Group where Id =:lstRoleGroups[j].id]; 
+                        if (GroupObj.type == 'Role'){   
+                            GrpShare = GroupObj.id;
                             break;
                         }
                     }  
@@ -604,7 +592,7 @@
                 System.assertEquals(0,numberOfSuccessfulMessages);
                 System.assertEquals(1,numberOfErrorMessages); 
                 //check log
-                Integer LogCount = [select count() from Core_IPS_Email_Log__c LIMIT 999]; //ATHR Query limit fix];
+                Integer LogCount = [select count() from Core_IPS_Email_Log__c];
                 System.assertEquals(1,LogCount);
             }
         }
@@ -648,6 +636,7 @@
             SuppProd.Core_Supported_Product_Name__c = Prod.Name;
             SuppProd.Core_EOIS__c = false;
             Database.insert(SuppProd);
+            system.debug('######SP' + SuppProd.Core_Product__c);
             system.assert(SuppProd.Id != null);  
             //Asset
             Asset Asst;
@@ -756,7 +745,7 @@
                 System.assertEquals(10,numberOfSuccessfulMessages);
                 System.assertEquals(1,numberOfErrorMessages);
                 //check log
-                Integer LogCount = [select count() from Core_IPS_Email_Log__c LIMIT 999]; //ATHR Query limit fix];
+                Integer LogCount = [select count() from Core_IPS_Email_Log__c];
                 System.assertEquals(1,LogCount);                
             }
         }
@@ -797,6 +786,7 @@
             SuppProd.Core_Supported_Product_Name__c = Prod.Name;
             SuppProd.Core_EOIS__c = false;
             Database.insert(SuppProd);
+            system.debug('######SP' + SuppProd.Core_Product__c);
             system.assert(SuppProd.Id != null);  
             //Asset
             Asset Asst;

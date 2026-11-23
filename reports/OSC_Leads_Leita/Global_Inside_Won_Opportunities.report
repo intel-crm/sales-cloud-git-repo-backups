@@ -51,9 +51,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Opportunity_Count__c</field>
     </columns>
-    <columns>
-        <field>OPPORTUNITY_ID</field>
-    </columns>
     <description>RT: Optys</description>
     <filter>
         <criteriaItems>
@@ -119,6 +116,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Opportunity.Core_Date_Submitted_for_Approval__c</dateColumn>
-        <interval>INTERVAL_PREVCURY</interval>
+        <interval>INTERVAL_PREVCURFY</interval>
     </timeFrameFilter>
 </Report>

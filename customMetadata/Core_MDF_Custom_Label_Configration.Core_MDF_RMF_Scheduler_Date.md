@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">15,21,28</value>
+        <value xsi:type="xsd:string">15,21,28,3,4,5,11</value>
     </values>
 </CustomMetadata>

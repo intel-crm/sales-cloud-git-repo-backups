@@ -52,7 +52,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>startsWith</operator>
-            <value>GM Info 3.5</value>
+            <value>GM</value>
         </criteriaItems>
         <criteriaItems>
             <column>FK_NAME</column>
@@ -67,13 +67,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>HARMAN</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_Sub_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Close-Pending</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

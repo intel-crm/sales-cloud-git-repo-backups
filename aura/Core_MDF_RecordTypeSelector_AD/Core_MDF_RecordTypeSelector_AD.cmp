@@ -1,0 +1,126 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:actionOverride" 
+                access="global" 
+                controller="Core_MDF_PFR_RecordTypeSelector">
+    <aura:html tag="style">
+        <!--To remove blue border-->
+        .slds-button__icon_large,.slds-button__icon--large {
+    		width: 0rem;
+		}
+        .slds-fade-in-open{
+        outline:none;
+        }        
+    </aura:html>
+    <!-- Handler function for fetching value on the load of the component -->
+    <aura:handler name="init" value="{!this}" action="{!c.fetchListOfRecordTypes}"/> 
+    <aura:attribute name="checkCommunityAttribute" type="Boolean" default ="false" />
+    <aura:attribute name="checkSaveandNew" type="Boolean" default ="false" 
+                    description="Stores the value of save and new attribute coming from Core_Intel_Create_Edit_PFR component"/>
+    <!-- Attribute Initialization -->
+    <aura:attribute name="lstOfRecordType" type="String[]" 
+                    description="This attribute holds the list of record type which is used for the option iteration" />
+    <aura:attribute name="mapOfRecordType" type="Map" 
+                    description="This attribute holds the Map of record types(String recordTypeDevelopername , ID recordTypeId) from the server side method"/>
+    <aura:attribute name="mapOfRecordTypeDevName" type="Map" 
+                    description="This attribute holds the Map of record types(String recordTypeDevelopername , String recordTypelabelname) from the server side method"/>
+    <aura:attribute name="recTypeWrapperList" type="Object"
+                    description="This attributes holds the value returned from server call "/>
+    <aura:attribute name="selrecordtype" type="string" default="" 
+                    description="This attribute holds the selected record type id to be passed to child component"/>
+    <aura:attribute name="selrecordtypeName" type="string" default="" 
+                    description="This attribute holds the selected record type name to be passed to child component"/>
+    <aura:attribute name="selrecordtypeDeveloperName" type="string" default="" 
+                    description="This attribute holds the selected record type name to be passed to child component"/>
+    <aura:attribute name="checkForSingleRecordType" type="Boolean" default ="false" />
+    
+    <!-- Changes for Create Claim-->
+    <!--<aura:handler name="init" value="{!this}" action="{!c.doInit}"/-->
+    <aura:attribute name="isPfrUrl" type="Boolean" default="false"/>
+    <!--To hold batch stage record ID-->
+    <aura:attribute name="batchRecordId" type="Id"/>
+    <!-- Checks if record type is selected or not to render the child component -->
+    <!--<aura:if isTrue="{!or(empty(v.selrecordtype) , v.checkForSingleRecordType == false)}">-->
+    <aura:if isTrue="{!(empty(v.selrecordtype))}">    
+        <!-- Model Box Start -->
+        <div aura:id="modalIdForNewRecord" role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Heading (Header of the Modal) -->
+                <div class="slds-modal__header">
+                    <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeModal}">
+                        X<span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
+                    </button>
+                    <!--Start: Changes for Create Claim if-else-->
+                    <aura:if isTrue="{!v.isPfrUrl}">
+                        <h2 id="header43" class="slds-text-heading--medium">{!$Label.c.Core_MDF_NewPartnerFundRequest}</h2>
+                        <aura:set attribute="else">
+                            <h2 id="header43" class="slds-text-heading--medium">{!$Label.c.Core_MDF_CreateClaim}</h2>
+                        </aura:set>
+                    </aura:if>
+                    <!--End: Changes for Create Claim -->
+                </div>
+                <!-- Recordtype selection (Body of the Modal) -->
+                <div class="slds-modal__content slds-p-around--medium">
+                    <div class="slds-grid slds-wrap">
+                        <lightning:layout horizontalAlign="center" verticalAlign="center">
+                            <lightning:layoutItem flexibility="auto" padding="around-small">
+                                <!-- select to hold all available record type names list -->
+                                <lightning:select aura:id="recordTypePickList" name="selectRecordType" label="{!$Label.c.Core_MDF_Select_a_Record_Type}">
+                                    <option value="" text="{!$Label.c.Core_MDF_PFR_None_Translation}"/>
+                                    <aura:iteration items="{!v.lstOfRecordType}" var="item">
+                                        <!--<option value="{!item}" text="{!item}"/>-->
+                                        <option value="{!item.value}" text="{!item.label}"/>
+                                    </aura:iteration>
+                                </lightning:select>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                    </div>                   
+                </div>
+                <!-- SAVE AND CANCEL (Footer of the Modal) -->
+                <div class="slds-modal__footer">
+                    <lightning:button class="slds-button slds-button--neutral" onclick="{!c.closeModal}">{!$Label.c.Core_MDF_Cancel}</lightning:button>
+                    <lightning:button class="slds-button slds-button--brand" onclick="{!c.createRecord}">{!$Label.c.Core_MDF_Next}</lightning:button>
+                </div>
+            </div>
+        </div>
+        <!--To Prevent BackDrop, If coming from Batch Stage Record Detail Page-->
+        <aura:if isTrue="{!!v.batchRecordId}">
+        <div aura:id="backdropIdForNewRecord" class="slds-backdrop slds-backdrop--open"></div>
+        </aura:if>
+            <aura:set attribute="else">
+            <!-- Call for the child component (Record Page)-->
+            <aura:if isTrue="{!v.checkCommunityAttribute}" >
+                <div aura:id="modalIdForCommuntityRecord" role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-modal_large slds-slide-up-saving">
+                    <div class="slds-modal__container">
+                        <!-- Heading (Header of the Modal) -->
+                        <div class="slds-modal__header">
+                            <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeModal}">
+                                X<span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
+                            </button>
+                        </div>
+                        <div class="slds-modal__content slds-p-around--medium">
+                            <c:Core_Intel_createEditPFR recordtype="{!v.selrecordtype}" recordtypeName="{!v.selrecordtypeName}" 
+                                                        recordtypeDeveloperName="{!v.selrecordtypeDeveloperName}" 
+                                                        checkNewCommunityAttribute ="{!v.checkCommunityAttribute}"/>
+                        </div>
+                        <div class="slds-modal__footer"></div>
+                    </div>
+                </div>
+                <!--To Prevent BackDrop, If coming from Batch Stage Record Detail Page-->
+                <aura:if isTrue="{!!v.batchRecordId}">
+                <div aura:id="backdropIdForNewRecord" class="slds-backdrop slds-backdrop--open"></div>
+                </aura:if>
+                    <aura:set attribute="else">
+                    <!--Start: Changes for Create Claim - if-else -->
+                    <aura:if isTrue="{!v.isPfrUrl}">
+                        <c:Core_Intel_createEditPFR recordtype="{!v.selrecordtype}" recordtypeName="{!v.selrecordtypeName}" 
+                                                    recordtypeDeveloperName = "{!v.selrecordtypeDeveloperName}" />
+                        <aura:set attribute="else">                            
+                            <c:Core_MDF_PFC_Create_AD recordtype="{!v.selrecordtype}" recordtypeName="{!v.selrecordtypeName}" 
+                                                    recordtypeDeveloperName = "{!v.selrecordtypeDeveloperName}" batchRecordId = "{!v.batchRecordId}" />
+                        </aura:set>
+                    </aura:if>
+                    <!--End: Changes for Create Claim -->
+                </aura:set>
+            </aura:if>
+        </aura:set>
+    </aura:if>            
+</aura:component>

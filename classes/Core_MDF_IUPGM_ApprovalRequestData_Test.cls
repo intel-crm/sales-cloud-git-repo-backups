@@ -3,7 +3,8 @@ public class Core_MDF_IUPGM_ApprovalRequestData_Test {
     
     @TestSetup
     static void createTestData(){
-
+        // Highlight: Unused Local Variable - 14285 // Suma
+        //Profile ccpCoreProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1]; 
         User user2 = Core_MDF_CCP_TestDataUtility.createUser(false);       
         user2.LastName = 'Test Budget User';
         insert user2; 
@@ -119,9 +120,9 @@ public class Core_MDF_IUPGM_ApprovalRequestData_Test {
         OemCmpPfr1.Core_MDF_Channel_Partner_Led__c = True;
         OemCmpPfr1.Core_MDF_Approval_Step_Completed__c = 0;
         //US - TWC702-14285: Worked on this test class (no logic/structure change)
-        OemCmpPfr1.Core_MDF_ActivityCategory__c = ''; //by sumalatha
+        OemCmpPfr1.Core_MDF_ActivityCategory__c = '';//Purchase Incentive
         //US - TWC702-14285: Worked on this test class (no logic/structure change)
-        OemCmpPfr1.Core_MDF_Activity_Types__c = ''; //by sumalatha
+        OemCmpPfr1.Core_MDF_Activity_Types__c = '';//Buyer - Bundle Offer 
         OemCmpPfr1.Core_MDF_Reimbursement_Rate_txt__c = '100%';
         OemCmpPfr1.Core_MDF_Reimbursement_Rate_pct__c='100%'; 
         OemCmpPfr1.RequestedAmount = 1001;
@@ -170,7 +171,7 @@ public class Core_MDF_IUPGM_ApprovalRequestData_Test {
         User systemAdmin = [Select Id from User where LastName = 'SystemAdmin'];
         system.runAs(systemAdmin){
             List<string> objectList = new List<string>();
-            Set<string> programNameSet = new Set<string>{'Client'};
+            Set<string> programNameSet = new Set<string>{'Client'};//14285 Suma
             Set<string> approvalStageSet = new Set<string>{'Price Reviewer'};
                     
             Core_MDF_IUPGM_ApprovalRequest.ParamWrapper paramWrap = new Core_MDF_IUPGM_ApprovalRequest.ParamWrapper();
@@ -182,7 +183,7 @@ public class Core_MDF_IUPGM_ApprovalRequestData_Test {
             List<PartnerFundRequest> pfrList = Core_MDF_IUPGM_ApprovalRequestData.getPfrRecordData(paramWrap);
             Test.stopTest();
             //Assert.areEqual('Test Activity OEMCMP1',pfrList[0].Title);
-           
+            
             // US - TWC702-14285: Unit Test Method should include System.Assert   
             System.assertEquals(1, pfrList.size(), 'Should return 1 PartnerFundRequest record');
             System.assertEquals('Test Activity OEMCMP1', pfrList[0].Title, 'Title should match expected value');
@@ -214,7 +215,8 @@ public class Core_MDF_IUPGM_ApprovalRequestData_Test {
     static void getPIRecordDataTest(){
         User systemAdmin = [Select Id from User where LastName = 'SystemAdmin'];
         system.runAs(systemAdmin){
-
+            // Highlight: Unused Local Variable - 14285 // Suma
+            //List<string> objectList = new List<string>();
             Set<string> objRecIds = new Set<string>();
             List<PartnerFundRequest> pfrList = [select Id,Title from PartnerFundRequest];
             

@@ -5,6 +5,7 @@
     <excludeButtons>Clone</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>IsotopeSubscription</excludeButtons>
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>PrintableView</excludeButtons>
     <excludeButtons>RecordShareHierarchy</excludeButtons>
     <excludeButtons>Share</excludeButtons>
@@ -18,6 +19,14 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Name</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>TEST_POP_NA__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Test_Recovery_Issue__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -204,7 +213,7 @@
                 <field>Core_MDF_Highlight_Partner_Review_Ind__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_MDF_AI_Recommend_Investigation_Ind__c</field>
             </layoutItems>
         </layoutColumns>
@@ -259,6 +268,10 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_MDF_Partner_Gradient_Detail__c.Core_MDF_Scorecard_Id__c</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>

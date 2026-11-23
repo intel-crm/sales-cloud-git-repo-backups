@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
+        <field>RECORDTYPE</field>
+    </columns>
+    <columns>
         <field>Account.Core_Account_Coverage__c</field>
     </columns>
     <columns>
@@ -11,9 +14,6 @@
     </columns>
     <columns>
         <field>ACCOUNT.NAME</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_BU_Focus__c</field>
     </columns>
     <columns>
         <field>Account.Core_Sales_Groups__c</field>
@@ -31,6 +31,9 @@
         <field>ADDRESS1_COUNTRY_CODE</field>
     </columns>
     <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
         <field>Account.Core_CIM_ID__c</field>
     </columns>
     <columns>
@@ -38,9 +41,6 @@
     </columns>
     <columns>
         <field>Account.Core_Headquarter_Parent_DUNS__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Domestic_Ultimate_DUNS__c</field>
     </columns>
     <columns>
         <field>Account.Core_Global_Ultimate_DUNS__c</field>
@@ -62,7 +62,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>vodafone</value>
+            <value>siemens,honeywell,GE</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

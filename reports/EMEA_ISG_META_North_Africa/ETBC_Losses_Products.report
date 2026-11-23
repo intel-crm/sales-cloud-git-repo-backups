@@ -49,14 +49,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterThan</operator>
-            <value>1/1/2020</value>
+            <value>1/1/2019</value>
         </criteriaItems>
         <criteriaItems>
             <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Korcan,Pieterse</value>
+            <value>Korcan</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

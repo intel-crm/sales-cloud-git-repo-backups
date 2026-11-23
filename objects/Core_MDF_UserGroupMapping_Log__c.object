@@ -185,6 +185,11 @@
                     <label>Add</label>
                 </value>
                 <value>
+                    <fullName>Inactive User</fullName>
+                    <default>false</default>
+                    <label>Inactive User</label>
+                </value>
+                <value>
                     <fullName>Marketing User Update</fullName>
                     <default>false</default>
                     <label>Marketing User Update</label>
@@ -348,21 +353,16 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>Core_MDF_User_id__c</columns>
+        <columns>Core_MDF_Works_For_Account_id__c</columns>
         <columns>Core_MDF_Contact_id__c</columns>
         <columns>Core_MDF_Account_id__c</columns>
         <columns>Core_MDF_Channel_Program_id__c</columns>
-        <columns>Core_MDF_Works_For_Account_id__c</columns>
         <columns>Core_MDF_Processed_dtm__c</columns>
         <columns>Core_MDF_Group_id__c</columns>
         <columns>Core_MDF_Action_nm__c</columns>
         <columns>Core_MDF_Status_nm__c</columns>
         <columns>Core_MDF_Error_Message_txt__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_MDF_Contact_id__c</field>
-            <operation>equals</operation>
-            <value>Anshika Singh</value>
-        </filters>
         <label>All</label>
     </listViews>
     <nameField>

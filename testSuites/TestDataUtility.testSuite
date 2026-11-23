@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_MDF_ActivityStatusTrigger_Test</testClassName>
+    <testClassName>Core_MDF_AdjustmentOwnerUpdate_Test</testClassName>
+    <testClassName>Core_MDF_AdjustmentRequest_Test</testClassName>
+    <testClassName>Core_MDF_AuditSelectionHelper_Test</testClassName>
+    <testClassName>Core_MDF_BankAccountTriggerHandler_Test</testClassName>
+    <testClassName>Core_MDF_BankTrigger_Test</testClassName>
+    <testClassName>Core_MDF_BudgetTransfer_Test</testClassName>
+    <testClassName>Core_MDF_BulkClaimServerController_Test</testClassName>
+    <testClassName>Core_MDF_Claim_Utility_Test</testClassName>
+    <testClassName>Core_MDF_ClaimActivityHelper_Test</testClassName>
+    <testClassName>Core_MDF_ClaimReviewCaseProcess_Test</testClassName>
+    <testClassName>Core_MDF_CloseActivity_Test</testClassName>
+    <testClassName>Core_MDF_ECM_Trigger_Test</testClassName>
+    <testClassName>Core_MDF_ECMCreationController_Test</testClassName>
+    <testClassName>Core_MDF_Escalation_ServiceHandler_Test</testClassName>
+    <testClassName>Core_MDF_FileUploadController_Test</testClassName>
+    <testClassName>Core_MDF_HistoryController_Test</testClassName>
+    <testClassName>Core_MDF_InactiveAccount_Test</testClassName>
+    <testClassName>Core_MDF_PartnerFundClaim_Test</testClassName>
+    <testClassName>Core_MDF_PFC_Cancel_Test</testClassName>
+    <testClassName>Core_MDF_PFC_Close_Adjustment_Test</testClassName>
+    <testClassName>Core_MDF_Process_PAF_Claim_Test</testClassName>
+    <testClassName>Core_MDF_ProcessCCP_Claim_Test</testClassName>
+    <testClassName>Core_MDF_ProcessCCPEscalation_Test</testClassName>
+    <testClassName>Core_MDF_UpdateActivityFields_Test</testClassName>
+    <testClassName>Core_MDF_UpdateAllocationIdOnPFR_Test</testClassName>
+</ApexTestSuite>

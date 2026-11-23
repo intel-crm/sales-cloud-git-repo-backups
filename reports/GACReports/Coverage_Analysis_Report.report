@@ -13,9 +13,6 @@
         <field>PartnerFundRequest.PartnerFundClaims$CreatedDate</field>
     </columns>
     <columns>
-        <field>PartnerFundRequest.PartnerFundClaims.PIC_Reviews__r$Core_MDF_Review_Date_dt__c</field>
-    </columns>
-    <columns>
         <field>PartnerFundRequest.PartnerFundClaims$Core_MDF_Payment_Id__c.Core_MDF_Payment_Sent_Dt__c</field>
     </columns>
     <columns>
@@ -26,9 +23,6 @@
     </columns>
     <columns>
         <field>PartnerFundRequest.PartnerFundClaims$Core_MDF_AccountCompany__c</field>
-    </columns>
-    <columns>
-        <field>PartnerFundRequest.PartnerFundClaims$Core_MDF_Claim_Ref_Number__c</field>
     </columns>
     <columns>
         <field>PartnerFundRequest.PartnerFundClaims$Core_MDF_Claim_Review_Case__c</field>
@@ -69,6 +63,15 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>PartnerFundRequest.PartnerFundClaims$Amount</field>
     </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_ATF_Flag_nm__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest.PartnerFundClaims.PIC_Reviews__r$Core_MDF_Review_Date_dt__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest.PartnerFundClaims.PIC_Reviews__r$Core_MDF_Review_Status_nm__c</field>
+    </columns>
     <description>Report used in Bi-Weekly Audit Coverage Analysis</description>
     <filter>
         <criteriaItems>
@@ -90,7 +93,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
-            <value>Cancelled,Denied,Pending Documents,PIC Pending,Resubmission Required,Resubmission Window Closed,Void</value>
+            <value>Cancelled,Pending Documents,PIC Pending,Resubmission Required,Resubmission Window Closed,Void</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$ChannelPartner.Core_MDF_Channel_Program__c.Core_MDF_Technical_Program_Name__c</column>
@@ -104,11 +107,16 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Completed</value>
+            <value>,Completed,Failed</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Tabular</format>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PartnerFundRequest.PartnerFundClaims$Core_MDF_Claim_Ref_Number__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <name>Coverage Analysis Report</name>
     <params>
         <name>co</name>
@@ -123,8 +131,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>PartnerFundRequest.PartnerFundClaims$CreatedDate</dateColumn>
-        <endDate>2026-12-31</endDate>
+        <endDate>2025-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2024-01-01</startDate>
+        <startDate>2021-01-01</startDate>
     </timeFrameFilter>
 </Report>

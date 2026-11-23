@@ -19,18 +19,12 @@
         component.set("v.modalHeader", '');
         component.set("v.isShowHeaderFooter", false);
         component.set("v.isDefaultQuickAction", false);
-	 var objectDetailsMap = component.get("v.hiddenFieldsMap");
-        if(quickAction == 'Sharing'){
-            var getId = component.get("v.recordId");
-            var urlEvent = $A.get("e.force:navigateToURL");
-                        urlEvent.setParams({
-                            "url": "/p/share/CampaignSharingDetail?parentId="+getId
-                        });
-                        urlEvent.fire();
-        }
-        else if (type != 'Update a Record') {
+        var objectDetailsMap = component.get("v.hiddenFieldsMap");
+        if (type != 'Update a Record') {
             if (quickAction == 'Clone') {
                 component.set("v.openCmp", 'Clone');
+            }else if(quickAction == 'Summary'){
+                component.set("v.openCmp", 'Summary');
             }
             else if (quickAction == 'Create Activity') {
                 component.set("v.openCmp", 'Create Activity');
@@ -54,26 +48,44 @@
                 component.set("v.openCmp", 'Cancel Claim');
             }else if(quickAction == 'Release Hold'){
                 component.set("v.openCmp", 'Release Hold');
-            }else if(quickAction == 'Complete PIC Review'){  //Roshan - added for Outcome based
+            }else if(quickAction == 'Complete PIC Review'){  //added for Outcome based
                 component.set("v.openCmp", 'Complete PIC Review');
-            }else if(quickAction == 'Submit For PIC'){  //Roshan - added for Outcome based
+            }else if(quickAction == 'Submit For PIC'){  //added for Outcome based
                 component.set("v.openCmp", 'Submit For PIC');
-            }else if(quickAction == 'Submit for Payment Clearance'){  
+            }else if(quickAction == 'Submit for Payment Clearance'){  //Anushya - added for IPA Final Outcome based
                 component.set("v.openCmp", 'Submit for Payment Clearance');
-            }else if(quickAction == 'Manual Audit'){  //Roshan - added for Outcome based
+            } else if(quickAction == 'Recall to Payment Clearance'){ //TWC3117-19154
+                component.set("v.openCmp", 'Recall to Payment Clearance'); //TWC3117-19154
+                component.set("v.modalHeader", 'Recall to Payment Clearance'); //TWC3117-19154
+                component.set("v.isShowHeaderFooter", true); //TWC3117-19154
+                component.set("v.errorMessage", ''); //TWC3117-19154
+            }else if(quickAction == 'Manual Audit'){  //Anushya - added for IPA Final Outcome based
                 component.set("v.openCmp", 'Manual Audit');
-            }else if(quickAction == 'Complete Payment Clearance Processing'){
+            }else if(quickAction == 'Complete Payment Clearance Processing'){  //Tavishi - added for IPA Final Outcome based
                 component.set("v.openCmp", 'Complete Payment Clearance Processing');
+            }else if(quickAction == 'Cancel VAT'){  //Roshan - TWC3117-19010
+                component.set("v.openCmp", 'Cancel VAT');
             }
             if(quickAction != 'Create Claim'){
-                component.set("v.openModalForLtCmp", true);
+                if(component.get("v.isNotifyOwner")!= true ){
+                    component.set("v.openModalForLtCmp", true);
+                }                
             }
         } else if (type == 'Update a Record') {
             component.set("v.openCmp", 'Update');
             component.set("v.openModalForUpdateButton", true);
             component.set("v.modalHeader", quickAction);
-            
+            console.log('quickAction',quickAction);	    
 	    
+	    /*if(quickAction == 'Cancel Campaign'){
+                //component.set("v.modalBody", 'Campaign');
+                component.set("v.modalPopConfMessage",objectDetailsMap.get("Cancel Alert"));
+                component.set("v.fieldValue", 'Cancelled');
+            } else {
+                component.set("v.modalPopConfMessage", objectDetailsMap.get("Approval Alert"));
+                //component.set("v.modalBody", 'Proposal');
+                component.set("v.fieldValue", 'Pending Review');
+            }*/
         switch (quickAction) {
             case 'Cancel Campaign':
                 component.set("v.modalPopConfMessage",objectDetailsMap.get("Cancel Alert"));
@@ -83,7 +95,7 @@
                 component.set("v.modalPopConfMessage", objectDetailsMap.get("Approval Alert"));
                 component.set("v.fieldValue", 'Pending Review');
                 break;
-            case 'Notify Partner': 
+            case 'Notify Partner': //Swati
                 component.set("v.modalPopConfMessage","Confirm if you want to notify the claim submitter?");
                 component.set("v.isNotifyOwner",true);
                 break;
@@ -93,7 +105,8 @@
         }
         }
     },
-    
+      
+                    
     logErrors: function(component, errorMessage, objName) {
         let applicationErrorMessage = $A.get("$Label.c.Core_MDF_ApplicationErrorMessage");
         let action = component.get("c.logErrors");
@@ -102,6 +115,7 @@
             objName: objName
         });
         action.setCallback(this, function (res) {
+            console.log('res 211', res);
             let state = res.getState();
             if (state === "SUCCESS") {
                 this.fireToastEvent(component,applicationErrorMessage, "5000", "error");

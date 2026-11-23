@@ -3,7 +3,6 @@
     <excludeButtons>Clone</excludeButtons>
     <excludeButtons>DataDotComClean</excludeButtons>
     <excludeButtons>RequestUpdate</excludeButtons>
-    <excludeButtons>RequestUseSfdc</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <headers>PersonalTagging</headers>
     <layoutSections>
@@ -38,19 +37,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_Profession__c</field>
+                <field>Core_Job_Function__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Primary_Contact__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_Sales_Do_Not_Contact_Ind__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_Do_Not_Contact_Dtm__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -59,8 +50,8 @@
                 <field>Core_Preferred_Communication__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_Preferred_Language__c</field>
+                <behavior>Readonly</behavior>
+                <field>Core_Do_Not_Contact__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -69,14 +60,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>RecordTypeId</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_Do_Not_Contact__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_Marketing_Do_Not_Contact_Dtm__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -108,14 +91,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_IPS_Email_Opt_Out__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MINDS__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_Country_Region__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -167,6 +142,10 @@
         <label>Master Data Information</label>
         <layoutColumns>
             <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Login_Id__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_eRPM_Person_Id__c</field>
             </layoutItems>
@@ -182,27 +161,15 @@
                 <behavior>Edit</behavior>
                 <field>Core_Republish_OBM_s__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>External_User_State__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>External_User_State_Change_Date_Times__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_Enterprise_Id__c</field>
-            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Login_Status__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_Deletion_Reason__c</field>
+                <field>Core_Enterprise_Id__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -213,24 +180,6 @@
                 <field>Core_AGS_Integration_Message__c</field>
             </layoutItems>
         </layoutColumns>
-        <style>TwoColumnsLeftToRight</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Internal Entitlement Status</label>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_Entitlement_Assignment_Status__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_Entitlement_Assignment_Message__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
@@ -324,6 +273,11 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
+            <actionName>CallHighlightAction</actionName>
+            <actionType>ProductivityAction</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>EmailHighlightAction</actionName>
             <actionType>ProductivityAction</actionType>
             <sortOrder>1</sortOrder>
@@ -337,11 +291,6 @@
             <actionName>FeedItem.ContentNote</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>3</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>CallHighlightAction</actionName>
-            <actionType>ProductivityAction</actionType>
-            <sortOrder>0</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>NewTask</actionName>
@@ -373,19 +322,6 @@
         </relatedContentItems>
     </relatedContent>
     <relatedLists>
-        <fields>CASES.CASE_NUMBER</fields>
-        <fields>CASES.SUBJECT</fields>
-        <fields>CASES.PRIORITY</fields>
-        <fields>CASES.CREATED_DATE</fields>
-        <fields>Core_Severity__c</fields>
-        <fields>CASES.STATUS</fields>
-        <fields>OWNER_NAME</fields>
-        <fields>Core_Intel_Sup_Owner__c</fields>
-        <fields>ASSET.NAME</fields>
-        <fields>CASES.RECORDTYPE</fields>
-        <relatedList>RelatedCaseList</relatedList>
-    </relatedLists>
-    <relatedLists>
         <fields>OPPORTUNITY.NAME</fields>
         <fields>OPPORTUNITY.STAGE_NAME</fields>
         <fields>OPPORTUNITY.AMOUNT</fields>
@@ -399,43 +335,30 @@
         <relatedList>RelatedContactAccountRelationList</relatedList>
     </relatedLists>
     <relatedLists>
-        <relatedList>RelatedContentNoteList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <relatedList>RelatedNoteList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>PRM_Account_Id__c</fields>
-        <fields>PRM_Partner_Role_UI__c</fields>
-        <fields>PRM_Relationship_Id__c</fields>
-        <fields>PRM_Start_Date_Dt__c</fields>
-        <fields>PRM_End_Date_Dt__c</fields>
-        <fields>PRM_InActive_Ind__c</fields>
-        <fields>PRM_Status_Nm__c</fields>
-        <fields>PRM_Record_Link__c</fields>
-        <relatedList>PRM_Account_Contact_Relationship__c.PRM_Contact_Id__c</relatedList>
+        <fields>CASES.CASE_NUMBER</fields>
+        <fields>CASES.SUBJECT</fields>
+        <fields>CASES.PRIORITY</fields>
+        <fields>CASES.CREATED_DATE</fields>
+        <fields>Core_Severity__c</fields>
+        <fields>CASES.STATUS</fields>
+        <fields>OWNER_NAME</fields>
+        <fields>Core_Intel_Sup_Owner__c</fields>
+        <fields>ASSET.NAME</fields>
+        <fields>CASES.RECORDTYPE</fields>
+        <relatedList>RelatedCaseList</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Core_Display_Nm__c</fields>
         <fields>Core_Entitlement_Id__c</fields>
-        <fields>Core_Entitlement_Type__c</fields>
+        <fields>Core_Type__c</fields>
         <fields>Core_Category__c</fields>
         <fields>Core_Entitlement_Help_Txt__c</fields>
         <fields>Core_Status__c</fields>
+        <fields>Core_Ops_Status__c</fields>
         <fields>Core_Selected__c</fields>
-        <fields>Core_Update_Reason__c</fields>
         <fields>Core_Source__c</fields>
+        <fields>Core_Update_Reason__c</fields>
         <relatedList>Core_Contact_Entitlement__c.Core_Contact_Id__c</relatedList>
-        <sortField>Core_Entitlement_Type__c</sortField>
-        <sortOrder>Desc</sortOrder>
-    </relatedLists>
-    <relatedLists>
-        <fields>A_E_Integration_Type_Txt__c</fields>
-        <fields>A_E_Integration_Error_Txt__c</fields>
-        <fields>A_E_Error_Description_Txt__c</fields>
-        <fields>A_E_Next_Steps_Txt__c</fields>
-        <relatedList>A_E_Integration_Status_Detail__c.A_E_Contact_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>TASK.SUBJECT</fields>
@@ -446,6 +369,12 @@
         <fields>TASK.PRIORITY</fields>
         <fields>CORE.USERS.FULL_NAME</fields>
         <relatedList>RelatedActivityList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <relatedList>RelatedContentNoteList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <relatedList>RelatedNoteList</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>TASK.SUBJECT</fields>
@@ -470,35 +399,13 @@
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>Core_Message_Type__c</fields>
-        <fields>ACM_Integration_Queue__c</fields>
-        <fields>Inbound_Message__c</fields>
         <fields>Outbound_Message__c</fields>
+        <fields>Inbound_Message__c</fields>
         <fields>Core_Inbound_Message_Status__c</fields>
         <fields>CREATEDBY_USER</fields>
-        <fields>CREATED_DATE</fields>
         <relatedList>Contact_Message__c.Contact__c</relatedList>
         <sortField>NAME</sortField>
         <sortOrder>Desc</sortOrder>
-    </relatedLists>
-    <relatedLists>
-        <fields>CAMPAIGN.NAME</fields>
-        <fields>CM.STATUS</fields>
-        <fields>MKT_Initiative_nm__c</fields>
-        <fields>MKT_Campaign_Brief_Details_Formula_Txt__c</fields>
-        <relatedList>RelatedCampaignList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>Sales_License_Generation_Req_Log__c.Sales_License_Contact__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>ER_Customer_Master_File_Group__c</fields>
-        <fields>ER_Account__c</fields>
-        <fields>NAME</fields>
-        <fields>ER_Active__c</fields>
-        <fields>ER_Active_CMF_Count_Formula__c</fields>
-        <fields>ER_End_Date__c</fields>
-        <relatedList>ER_ContactGroupAssociation__c.ER_Contact__c</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

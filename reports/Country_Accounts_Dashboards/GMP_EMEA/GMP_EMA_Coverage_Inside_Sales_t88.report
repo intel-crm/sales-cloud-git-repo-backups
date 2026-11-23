@@ -72,14 +72,21 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Inside SDR,Inside LDR,Inside SDM,Inside Sales</value>
+            <value>OSC</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Account.Core_Sales_Groups__c</column>
+            <column>ADDRESS1_COUNTRY_CODE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>FRA,DEU,RUS,RU,GBR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Geo__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>GMP EMEA Sales Territory</value>
+            <value>EMEA</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -128,11 +128,14 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Core_MDF_Claim_Btach_Record_RecordPage</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -329,16 +332,14 @@
         </valueSet>
     </fields>
     <fields>
-        <fullName>Core_MDF_Budget_Type__c</fullName>
-        <label>Budget Type</label>
-        <required>false</required>
+        <fullName>Core_MDF_Claim_Attributes_JSON_txt__c</fullName>
+        <description>Stores claim attributes in JSON format.</description>
+        <label>Claim Attributes JSON</label>
+        <length>31072</length>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetName>Core_MDF_Budget_Types</valueSetName>
-        </valueSet>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Core_MDF_Claim_Comment_txt__c</fullName>
@@ -651,32 +652,10 @@ $Label.Core_MDF_Intel_System_User
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_Program__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_MDF_Batch_ID__r.Core_MDF_Program_Id__r.Name</formula>
-        <label>Program</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Reimbursement_Percent_Nbr__c</fullName>
         <externalId>false</externalId>
         <label>Reimbursement Rate (%)</label>
         <length>20</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Reimbursement_Percent__c</fullName>
-        <externalId>false</externalId>
-        <label>Reimbursement Rate (%)</label>
-        <length>5</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -707,6 +686,15 @@ $Label.Core_MDF_Intel_System_User
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Retry_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>To allow to reprocess a failed record</description>
+        <label>Retry Indicator</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_MDF_Review_Hold_Rule_Nm__c</fullName>
@@ -822,7 +810,7 @@ $Label.Core_MDF_Intel_System_User
         <columns>Core_MDF_Claim_Reference_Nbr__c</columns>
         <columns>Core_MDF_Activity_Nbr__c</columns>
         <columns>Core_MDF_Total_Amt__c</columns>
-        <columns>CREATEDBY_USER</columns>
+        <columns>Core_MDF_CreatedBy_Nm__c</columns>
         <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
@@ -834,18 +822,13 @@ $Label.Core_MDF_Intel_System_User
         <columns>Core_MDF_Claim_Nm__c</columns>
         <columns>Core_MDF_Activity_Nbr__c</columns>
         <columns>Core_MDF_Message_txt__c</columns>
-        <columns>CREATEDBY_USER</columns>
+        <columns>Core_MDF_CreatedBy_Nm__c</columns>
         <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_MDF_Processing_Status_Nm__c</field>
             <operation>equals</operation>
             <value>Failed</value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Activity_Nbr__c</field>
-            <operation>equals</operation>
-            <value>68784</value>
         </filters>
         <label>Claim Batches - Failed</label>
     </listViews>
@@ -856,9 +839,8 @@ $Label.Core_MDF_Intel_System_User
         <columns>Core_MDF_Claim_Reference_Nbr__c</columns>
         <columns>Core_MDF_Activity_Nbr__c</columns>
         <columns>Core_MDF_Total_Amt__c</columns>
-        <columns>CREATEDBY_USER</columns>
+        <columns>Core_MDF_CreatedBy_Nm__c</columns>
         <columns>CREATED_DATE</columns>
-        <columns>Core_MDF_Processing_Status_Nm__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_MDF_Processing_Status_Nm__c</field>
@@ -1341,6 +1323,10 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Banner%2FDisplay Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Benchmarking</fullName>
                 <default>false</default>
             </values>
@@ -1458,6 +1444,517 @@ $Label.Core_MDF_Intel_System_User
             </values>
             <values>
                 <fullName>Intelligent Point-of-Sale %28iPOS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Joint Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lead Generation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lead Nurturing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF Recepient - Owned</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF Recipient Demonstrations %28External%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Magazine and Newspaper</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Magazine%2FNewspaper</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member Owned Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member Participation in Third-Party Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member Website Online Display</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Migration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Newsletter</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NonPartner%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offer - Bundle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offer - Contest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offer - Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offer - Sweepstakes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offer - Target</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online Ad - Retargeting Banner Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online Display</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online Marketing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online Video Spot</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Audio%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Broadcast%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Digital%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Event%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28OOH%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Out Of Home%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Print%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Production%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Sales Readiness%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Tech Exploration%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Technical Sales%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Video%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Out-of-Store Promotion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outcome-Based</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Personnel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Podcast</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Poster%2FSign%2FBanner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Promotion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Promotion - Non-Retail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Promotion - Retail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proof of Concept</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Radio</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Radio Ad - out of store</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SPIF - Contest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SPIF - Meeting Target</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SPIF - Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SPIF - Target</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SPIF - Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Search %28SEM%29 Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Search %28SEM%29 Graphic Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Search %28SEM%29 Text Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Search Engine Marketing %28SEM%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seed Unit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller - Contest SPIF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller - Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller - Per Instance SPIF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller - Per Unit SPIF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller - Target SPIF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Graphic Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Online Display</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Post</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Text Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Video Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Streaming</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>System Demo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TV</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Telemarketing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Television</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Text Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Third Party Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Third-party%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Thirdparty%2Ecom - Blog Post</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Thirdparty%2Ecom - Retargeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Thirdparty%2Ecom - SEM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Thirdparty%2Ecom - Social Post</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Training Incentive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Training%2FMeeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trial Instance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Video Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Video Screen</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Web Content</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Web Page</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>iREP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Activity_Type__c</picklist>
+            <values>
+                <fullName>Affiliate%2F Referral Programs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Banner Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Banner%2FDisplay Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benchmarking</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benchmarks</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Billboard%2FTransit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Buyer - Bundle Offer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Buyer - Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Buyer - Reward%2FFrequency</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Buyer - Sweepstakes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Case Study</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Catalog%2FBrochure</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Channel Partner Online Display</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Channel Partner Owned Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Channel Partner Participation in Third-Party Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Channel Partner Website Online Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cinema</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cloud%2FPlatform Trial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Collateral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Collateral - Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Content</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Content Creation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deal Investment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Demo Hardware</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Demo Hardware%2FCloud Instance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Digital Video Screen</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Direct Mail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Display%2FVideo Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EcosystemPartner%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Engineering</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Graphic Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In store Point of Sale - IPOS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In-Store Promotion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IndustryPartner%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Insert%2FOutsert%2FFlyer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intelligent Point-of-Sale %28iPOS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Joint Engineering%2FOptimization</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1681,6 +2178,14 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Search %28SEM%29 Graphic Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Search %28SEM%29 Text Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Search Engine Marketing %28SEM%29</fullName>
                 <default>false</default>
             </values>
@@ -1697,6 +2202,10 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Seller - Per Instance SPIF</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Seller - Per Unit SPIF</fullName>
                 <default>false</default>
             </values>
@@ -1709,11 +2218,27 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Social Graphic Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Social Online Display</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Social Post</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Text Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Video Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solution Development</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1777,6 +2302,10 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Video Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Video Screen</fullName>
                 <default>false</default>
             </values>
@@ -1785,342 +2314,7 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>iREP</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Activity_Type__c</picklist>
-            <values>
-                <fullName>Affiliate%2F Referral Programs</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Banner Ad</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Billboard%2FTransit</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Buyer - Bundle Offer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Buyer - Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Buyer - Reward%2FFrequency</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Buyer - Sweepstakes</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Case Study</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Catalog%2FBrochure</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Channel Partner Online Display</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Channel Partner Owned Event</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Channel Partner Participation in Third-Party Event</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Channel Partner Website Online Ad</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cinema</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Collateral</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Collateral - Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Content Creation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Demo Hardware</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Demo Hardware%2FCloud Instance</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Digital Video Screen</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Direct Mail</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Email</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Graphic Ad</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In store Point of Sale - IPOS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In-Store Promotion</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IndustryPartner%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Insert%2FOutsert%2FFlyer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intelligent Point-of-Sale %28iPOS%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Joint Event</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lead Generation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lead Nurturing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDF Recepient - Owned</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDF Recipient Demonstrations %28External%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Magazine and Newspaper</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Magazine%2FNewspaper</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Member Event</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Member Owned Event</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Member Participation in Third-Party Event</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Member Website Online Display</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Member%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Newsletter</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NonPartner%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Online Ad - Retargeting Banner Ad</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Online Display</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Online Marketing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Online Video Spot</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other %28Broadcast%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other %28Event%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other %28OOH%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other %28Out Of Home%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other %28Sales Readiness%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other %28Tech Exploration%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Out-of-Store Promotion</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Outcome-Based</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Personnel</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Podcast</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Poster%2FSign%2FBanner</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Promotion</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Proof of Concept</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Radio</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Radio Ad - out of store</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SPIF - Meeting Target</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Search Engine Marketing %28SEM%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seed Unit</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seller - Contest SPIF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seller - Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seller - Per Unit SPIF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seller - Target SPIF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Social Online Display</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Social Post</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Streaming</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TV</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Telemarketing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Television</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Text Ad</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Third Party Event</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Third-party%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Thirdparty%2Ecom - Blog Post</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Thirdparty%2Ecom - Retargeting</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Thirdparty%2Ecom - SEM</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Thirdparty%2Ecom - Social Post</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Training%2FMeeting</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Video Screen</fullName>
+                <fullName>Web Page</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2134,76 +2328,9 @@ $Label.Core_MDF_Intel_System_User
                 <fullName>0</fullName>
                 <default>false</default>
             </values>
-            <values>
-                <fullName>10</fullName>
-                <default>false</default>
-            </values>
         </picklistValues>
         <picklistValues>
             <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
-            <values>
-                <fullName>Business Client Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CCF 1%2E0</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Client Specialties MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DCF 1%2E0</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Data Centric Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel MDF Account Based2</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDF%2B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OEM CMP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RSA MD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Retail MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SOEM Client MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SOEM Data Center MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Service Provider CMP</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Type__c</picklist>
-            <values>
-                <fullName>Business Client Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
             <values>
                 <fullName>CCF 1%2E0</fullName>
                 <default>false</default>
@@ -2324,10 +2451,6 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>BELARUS</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>BELGIUM</fullName>
                 <default>false</default>
             </values>
@@ -2361,6 +2484,10 @@ $Label.Core_MDF_Intel_System_User
             </values>
             <values>
                 <fullName>BRAZIL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BRITISH VIRGIN ISLANDS</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2652,10 +2779,6 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>LEBANON</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>LESOTHO</fullName>
                 <default>false</default>
             </values>
@@ -2753,10 +2876,6 @@ $Label.Core_MDF_Intel_System_User
             </values>
             <values>
                 <fullName>MOZAMBIQUE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MYANMAR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2896,10 +3015,6 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>SOMALIA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>SOUTH AFRICA</fullName>
                 <default>false</default>
             </values>
@@ -3004,10 +3119,6 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>VENEZUELA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>VIETNAM</fullName>
                 <default>false</default>
             </values>
@@ -3017,10 +3128,6 @@ $Label.Core_MDF_Intel_System_User
             </values>
             <values>
                 <fullName>WESTERN SAHARA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>YEMEN</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3380,10 +3487,6 @@ $Label.Core_MDF_Intel_System_User
             </values>
             <values>
                 <fullName>TWD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>UAH</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3904,6 +4007,10 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Banner%2FDisplay Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Benchmarking</fullName>
                 <default>false</default>
             </values>
@@ -4009,6 +4116,521 @@ $Label.Core_MDF_Intel_System_User
             </values>
             <values>
                 <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Graphic Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In store Point of Sale - IPOS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In-Store Promotion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IndustryPartner%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Insert%2FOutsert%2FFlyer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intelligent Point-of-Sale %28iPOS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Joint Engineering%2FOptimization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Joint Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lead Generation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lead Nurturing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF Recepient - Owned</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF Recipient Demonstrations %28External%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Magazine and Newspaper</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Magazine%2FNewspaper</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member Owned Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member Participation in Third-Party Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member Website Online Display</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Migration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Newsletter</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NonPartner%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offer - Bundle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offer - Contest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offer - Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offer - Sweepstakes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offer - Target</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online Ad - Retargeting Banner Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online Display</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online Marketing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online Video Spot</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Audio%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Broadcast%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Digital%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Event%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28OOH%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Out Of Home%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Print%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Production%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Sales Readiness%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Tech Exploration%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Technical Sales%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Video%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Out-of-Store Promotion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outcome-Based</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Personnel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Podcast</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Poster%2FSign%2FBanner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Promotion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Promotion - Non-Retail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Promotion - Retail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proof of Concept</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Radio</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Radio Ad - out of store</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SPIF - Contest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SPIF - Meeting Target</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SPIF - Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SPIF - Target</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SPIF - Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Search %28SEM%29 Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Search %28SEM%29 Graphic Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Search %28SEM%29 Text Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Search Engine Marketing %28SEM%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seed Unit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller - Contest SPIF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller - Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller - Per Instance SPIF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller - Per Unit SPIF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller - Target SPIF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Graphic Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Online Display</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Post</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Text Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Video Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solution Development</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Streaming</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>System Demo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TV</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Telemarketing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Television</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Text Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Third Party Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Third-party%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Thirdparty%2Ecom - Blog Post</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Thirdparty%2Ecom - Retargeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Thirdparty%2Ecom - SEM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Thirdparty%2Ecom - Social Post</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Training Incentive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Training%2FMeeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trial Instance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Video Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Video Screen</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Web Content</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Web Page</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>iREP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Activity_Type__c</picklist>
+            <values>
+                <fullName>Affiliate%2F Referral Programs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Banner Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Banner%2FDisplay Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benchmarking</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benchmarks</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Billboard%2FTransit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Buyer - Bundle Offer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Buyer - Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Buyer - Reward%2FFrequency</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Buyer - Sweepstakes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Case Study</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Catalog%2FBrochure</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Channel Partner Online Display</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Channel Partner Owned Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Channel Partner Participation in Third-Party Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Channel Partner Website Online Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cinema</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cloud%2FPlatform Trial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Collateral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Collateral - Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Content</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Content Creation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deal Investment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Demo Hardware</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Demo Hardware%2FCloud Instance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Digital Video Screen</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Direct Mail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Display%2FVideo Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EcosystemPartner%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Engineering</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4260,6 +4882,14 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Search %28SEM%29 Graphic Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Search %28SEM%29 Text Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Search Engine Marketing %28SEM%29</fullName>
                 <default>false</default>
             </values>
@@ -4292,11 +4922,23 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Social Graphic Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Social Online Display</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Social Post</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Text Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Video Ad</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4364,6 +5006,10 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Video Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Video Screen</fullName>
                 <default>false</default>
             </values>
@@ -4372,342 +5018,7 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>iREP</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Activity_Type__c</picklist>
-            <values>
-                <fullName>Affiliate%2F Referral Programs</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Banner Ad</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Billboard%2FTransit</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Buyer - Bundle Offer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Buyer - Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Buyer - Reward%2FFrequency</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Buyer - Sweepstakes</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Case Study</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Catalog%2FBrochure</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Channel Partner Online Display</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Channel Partner Owned Event</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Channel Partner Participation in Third-Party Event</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Channel Partner Website Online Ad</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cinema</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Collateral</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Collateral - Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Content Creation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Demo Hardware</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Demo Hardware%2FCloud Instance</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Digital Video Screen</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Direct Mail</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Email</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Graphic Ad</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In store Point of Sale - IPOS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In-Store Promotion</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IndustryPartner%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Insert%2FOutsert%2FFlyer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intelligent Point-of-Sale %28iPOS%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Joint Event</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lead Generation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lead Nurturing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDF Recepient - Owned</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDF Recipient Demonstrations %28External%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Magazine and Newspaper</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Magazine%2FNewspaper</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Member Event</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Member Owned Event</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Member Participation in Third-Party Event</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Member Website Online Display</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Member%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Newsletter</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NonPartner%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Online Ad - Retargeting Banner Ad</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Online Display</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Online Marketing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Online Video Spot</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other %28Broadcast%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other %28Event%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other %28OOH%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other %28Out Of Home%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other %28Sales Readiness%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other %28Tech Exploration%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Out-of-Store Promotion</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Outcome-Based</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Personnel</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Podcast</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Poster%2FSign%2FBanner</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Promotion</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Proof of Concept</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Radio</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Radio Ad - out of store</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SPIF - Meeting Target</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Search Engine Marketing %28SEM%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seed Unit</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seller - Contest SPIF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seller - Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seller - Per Unit SPIF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seller - Target SPIF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Social Online Display</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Social Post</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Streaming</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TV</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Telemarketing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Television</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Text Ad</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Third Party Event</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Third-party%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Thirdparty%2Ecom - Blog Post</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Thirdparty%2Ecom - Retargeting</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Thirdparty%2Ecom - SEM</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Thirdparty%2Ecom - Social Post</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Training%2FMeeting</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Video Screen</fullName>
+                <fullName>Web Page</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4728,21 +5039,6 @@ $Label.Core_MDF_Intel_System_User
         </picklistValues>
         <picklistValues>
             <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
-            <values>
-                <fullName>RSA MD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Retail MDF</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Type__c</picklist>
-            <values>
-                <fullName>Business Client Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
             <values>
                 <fullName>CCF 1%2E0</fullName>
                 <default>false</default>
@@ -4776,23 +5072,11 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>IoT Premier - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IoT Targeted - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>MDF</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>MDF%2B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ODM Growth Plan - Client MDF</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4887,10 +5171,6 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>BELARUS</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>BELGIUM</fullName>
                 <default>false</default>
             </values>
@@ -4924,6 +5204,10 @@ $Label.Core_MDF_Intel_System_User
             </values>
             <values>
                 <fullName>BRAZIL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BRITISH VIRGIN ISLANDS</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5215,10 +5499,6 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>LEBANON</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>LESOTHO</fullName>
                 <default>false</default>
             </values>
@@ -5316,10 +5596,6 @@ $Label.Core_MDF_Intel_System_User
             </values>
             <values>
                 <fullName>MOZAMBIQUE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MYANMAR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5459,10 +5735,6 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>SOMALIA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>SOUTH AFRICA</fullName>
                 <default>false</default>
             </values>
@@ -5567,10 +5839,6 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>VENEZUELA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>VIETNAM</fullName>
                 <default>false</default>
             </values>
@@ -5580,10 +5848,6 @@ $Label.Core_MDF_Intel_System_User
             </values>
             <values>
                 <fullName>WESTERN SAHARA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>YEMEN</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5946,10 +6210,6 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>UAH</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>USD</fullName>
                 <default>false</default>
             </values>
@@ -6009,23 +6269,7 @@ $Label.Core_MDF_Intel_System_User
         <picklistValues>
             <picklist>Core_MDF_ActivityCategory__c</picklist>
             <values>
-                <fullName>Broadcast</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Digital Media</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Event</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Incentive</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lead Management</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6033,47 +6277,7 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>Out of Home</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Out of Home Media</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Paid Social Media</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Print</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Print Media</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Purchase Incentive</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sales Incentive</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sales Readiness</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Search Engine Marketing %28SEM%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Search Performance</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tech Exploration</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6674,6 +6878,18 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Banner%2FDisplay Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benchmarking</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benchmarks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Billboard%2FTransit</fullName>
                 <default>false</default>
             </values>
@@ -6722,6 +6938,10 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Cloud%2FPlatform Trial</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Collateral</fullName>
                 <default>false</default>
             </values>
@@ -6730,7 +6950,15 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Content</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Content Creation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deal Investment</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6750,7 +6978,19 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Display%2FVideo Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EcosystemPartner%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Engineering</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6775,6 +7015,10 @@ $Label.Core_MDF_Intel_System_User
             </values>
             <values>
                 <fullName>Intelligent Point-of-Sale %28iPOS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Joint Engineering%2FOptimization</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6826,11 +7070,39 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Migration</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Newsletter</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>NonPartner%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offer - Bundle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offer - Contest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offer - Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offer - Rewards</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offer - Sweepstakes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offer - Target</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6850,7 +7122,15 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Other %28Audio%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28Broadcast%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Digital%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6866,6 +7146,14 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Other %28Print%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Production%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28Sales Readiness%29</fullName>
                 <default>false</default>
             </values>
@@ -6874,7 +7162,19 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Other %28Technical Sales%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28Video%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Out-of-Store Promotion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outcome-Based</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6894,6 +7194,14 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Promotion - Non-Retail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Promotion - Retail</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Proof of Concept</fullName>
                 <default>false</default>
             </values>
@@ -6906,7 +7214,39 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>SPIF - Contest</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>SPIF - Meeting Target</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SPIF - Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SPIF - Target</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SPIF - Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Search %28SEM%29 Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Search %28SEM%29 Graphic Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Search %28SEM%29 Text Ad</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6926,11 +7266,23 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Seller - Per Instance SPIF</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Seller - Per Unit SPIF</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Seller - Target SPIF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Graphic Ad</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6942,7 +7294,27 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Social Text Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Video Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solution Development</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Streaming</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>System Demo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TV</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6982,11 +7354,31 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Training Incentive</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Training%2FMeeting</fullName>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Trial Instance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Video Ad</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Video Screen</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Web Content</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Web Page</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -7000,76 +7392,9 @@ $Label.Core_MDF_Intel_System_User
                 <fullName>0</fullName>
                 <default>false</default>
             </values>
-            <values>
-                <fullName>10</fullName>
-                <default>false</default>
-            </values>
         </picklistValues>
         <picklistValues>
             <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
-            <values>
-                <fullName>Business Client Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CCF 1%2E0</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Client Specialties MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DCF 1%2E0</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Data Centric Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel MDF Account Based2</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDF%2B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OEM CMP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RSA MD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Retail MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SOEM Client MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SOEM Data Center MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Service Provider CMP</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Type__c</picklist>
-            <values>
-                <fullName>Business Client Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
             <values>
                 <fullName>CCF 1%2E0</fullName>
                 <default>false</default>
@@ -7190,10 +7515,6 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>BELARUS</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>BELGIUM</fullName>
                 <default>false</default>
             </values>
@@ -7227,6 +7548,10 @@ $Label.Core_MDF_Intel_System_User
             </values>
             <values>
                 <fullName>BRAZIL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BRITISH VIRGIN ISLANDS</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -7518,10 +7843,6 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>LEBANON</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>LESOTHO</fullName>
                 <default>false</default>
             </values>
@@ -7619,10 +7940,6 @@ $Label.Core_MDF_Intel_System_User
             </values>
             <values>
                 <fullName>MOZAMBIQUE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MYANMAR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -7762,10 +8079,6 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>SOMALIA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>SOUTH AFRICA</fullName>
                 <default>false</default>
             </values>
@@ -7870,10 +8183,6 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>VENEZUELA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>VIETNAM</fullName>
                 <default>false</default>
             </values>
@@ -7883,10 +8192,6 @@ $Label.Core_MDF_Intel_System_User
             </values>
             <values>
                 <fullName>WESTERN SAHARA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>YEMEN</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -8249,10 +8554,6 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>UAH</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>USD</fullName>
                 <default>false</default>
             </values>
@@ -8332,16 +8633,28 @@ $Label.Core_MDF_Intel_System_User
         <searchResultsAdditionalFields>Core_MDF_Claim_Reference_Nbr__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_MDF_Activity_Nbr__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_MDF_Total_Amt__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>CREATEDBY_USER</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_CreatedBy_Nm__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CREATED_DATE</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Core_MDF_Restrict_VATPerUpdateFor420</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(TEXT(Core_MDF_Bank_Id__r.Core_MDF_Intel_Company_Code__c) ==&apos;420&apos;, ISCHANGED( Core_MDF_Applicable_VAT_Percentage_nm__c ))</errorConditionFormula>
+        <errorMessage>The applicable VAT Percentage is not editable for the selected Bank.</errorMessage>
+    </validationRules>
     <validationRules>
         <fullName>Core_MDF_Succesful_StageCannot_Be_Edited</fullName>
         <active>true</active>
         <description>Claim Batch Stage with Successful status cannot be edited</description>
         <errorConditionFormula>NOT(ISBLANK( PRIORVALUE(Core_MDF_Claim_Reference_Nbr__c) ))  &amp;&amp; TEXT(Core_MDF_Processing_Status_Nm__c ) == $Label.Core_MDF_Claim_Batch_Successful</errorConditionFormula>
         <errorMessage>Claim Batch Record cannot be edited in its current status</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Validate_VATPercentageFor650</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND( TEXT(Core_MDF_Bank_Id__r.Core_MDF_Intel_Company_Code__c) ==&apos;650&apos;, ISCHANGED( Core_MDF_Applicable_VAT_Percentage_nm__c )  ,NOT(Contains( $CustomMetadata.Core_MDF_Custom_Label_Configration__mdt.Core_MDF_ApplicableVATPercentageFor650.Core_MDF_Value_Txt__c ,TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c))))</errorConditionFormula>
+        <errorMessage>Applicable VAT Percentage (Mandatory only for Retail MDF Budget type when your Bank’s location is Japan. Supported values are 0, 8, 10.</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

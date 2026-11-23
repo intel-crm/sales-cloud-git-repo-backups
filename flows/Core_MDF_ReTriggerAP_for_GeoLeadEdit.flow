@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>50.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>myUniquelyDummyAssignment</name>
+        <label>myUniquelyDummyAssignment</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>myUniquelyDummyVariable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>fakeVal</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>Re-Trigger the Retail AP when Geo Lead edits some of the fields which he can edit</description>
+    <interviewLabel>Core_MDF_ReTriggerAP_for_GeoLeadEdit-1_InterviewLabel</interviewLabel>
+    <label>Core_MDF_ReTriggerAP_for_GeoLeadEdit</label>
+    <processType>Workflow</processType>
+    <startElementReference>myUniquelyDummyAssignment</startElementReference>
+    <status>InvalidDraft</status>
+    <variables>
+        <name>myUniquelyDummyVariable</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

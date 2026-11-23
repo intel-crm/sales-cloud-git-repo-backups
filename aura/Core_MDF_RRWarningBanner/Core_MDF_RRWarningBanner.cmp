@@ -1,0 +1,19 @@
+<aura:component controller="Core_MDF_PartnerFundRequestCreatePage"
+                implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes"
+                access="global">
+
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="showBanner" type="Boolean" default="false"/>
+
+    <aura:handler name="init"
+                  value="{!this}"
+                  action="{!c.doInit}"/>
+
+    <aura:if isTrue="{!v.showBanner}">
+        <div class="rrWarning">
+                {!$Label.c.Core_MDF_RR_Recalculation_Warning}
+            
+        </div>
+    </aura:if>
+
+</aura:component>

@@ -7,23 +7,21 @@ Modification Log :
 * Developer             Date              Description
 * ----------------------------------------------------------------------------                 
 * Dave Hood             04/11/2016        Initial version
-* Biswa                 05/20/2024        Replaced CIM ID with Unified ID
 ***************************************************************************************************************/
 @RestResource(urlMapping='/Opportunity/Search')
-global without sharing class Core_OpportunityNameSearch {
+global class Core_OpportunityNameSearch {
 
     global class OpportunityInfo {
         @testVisible String Id = '';
         @testVisible String Name = '';
         @testVisible String AccountName = '';
-        //@testVisible String AccountCIMId = ''; 
-        @testVisible String AccountUnifiedId = '';
+        @testVisible String AccountCIMId = '';
         
-        OpportunityInfo(String oppId, String oppName, String acctName, String acctUnifiedId) {
+        OpportunityInfo(String oppId, String oppName, String acctName, String acctCIMId) {
             Id = oppId;
             Name = oppName;
-            AccountName = acctName; 
-            AccountUnifiedId = acctUnifiedId;//AccountCIMId = acctCIMId;
+            AccountName = acctName;
+            AccountCIMId = acctCIMId;
         }
     }
 
@@ -47,7 +45,7 @@ global without sharing class Core_OpportunityNameSearch {
         RestResponse res = RestContext.response;
         Boolean isSalesforceUser = true;
         List<OpportunityInfo> opptyInfoToReturn = new List<OpportunityInfo>();
-        boolean ucdSwitch = Core_CRM_Utility.isUCDSwitchOn(); //TWC4767-3431 - implementation of UCD and CIM logic switch
+        
         Id userId;
         List<User> matchingUserIds = [select Id from User where Core_WWID__c = :wwid and IsActive = true];
         
@@ -69,18 +67,19 @@ global without sharing class Core_OpportunityNameSearch {
         
         if (searchString.left(3) == '006') {
             // Search by ID, which can be one or multiple
-            List<String> oppIds = searchString.split(',');
-            matchingOpptys = [select Id, Name, Account.Name, Account.Core_CIM_ID__c, Account.Core_Business_Party_Id__c from Opportunity where Id in :oppIds];
+            List<Id> oppIds = searchString.split(',');
+            matchingOpptys = [select Id, Name, Account.Name, Account.Core_CIM_ID__c from Opportunity where Id in :oppIds];
         }
         else {
             // Search across all opportunities in the system for the given search string.
             // Note: for the Opportunity object, "NAME FIELDS" is only the Name field.
             matchingOpptys = [FIND :searchString IN NAME FIELDS
-                              RETURNING Opportunity(Id, Name, Account.Name,Account.Core_CIM_ID__c, Account.Core_Business_Party_Id__c)][0];
+                              RETURNING Opportunity(Id, Name, Account.Name, Account.Core_CIM_ID__c)][0];
         }
 
         if (matchingOpptys.size() > 10) {
             // Return an error, saying they need to be more specific
+            System.debug('##### Error: search string returned more than 10 records. Please search on something more specific.');
             res.statusCode = 413;
             return null;
         }
@@ -91,14 +90,9 @@ global without sharing class Core_OpportunityNameSearch {
                 Map<Id,String[]> opptyIdMap = new Map<Id,String[]>();
                 
                 for (Opportunity oppty : matchingOpptys) {
+                    System.debug('##### Matching Opportunity Name: ' + oppty.Name + ', Account Name: ' + oppty.Account.Name);
                     matchingOpptyIds.add(oppty.Id);
-                    //if(ucdSwitch == true) {
-                    if(String.isNotBlank(oppty.Account.Core_Business_Party_Id__c)) { //TWC4767-3983
-                        opptyIdMap.put(oppty.Id, new List<String>{oppty.Name, oppty.Account.Name, oppty.Account.Core_Business_Party_Id__c});
-                    }
-                    else{ //TWC4767-3983
-                        opptyIdMap.put(oppty.Id, new List<String>{oppty.Name, oppty.Account.Name, oppty.Account.Core_CIM_ID__c});
-                    }
+                    opptyIdMap.put(oppty.Id, new List<String>{oppty.Name, oppty.Account.Name, oppty.Account.Core_CIM_ID__c});
                 }
                 
                 // Query the user's access to the set of opportunity IDs
@@ -122,13 +116,7 @@ global without sharing class Core_OpportunityNameSearch {
             }
             else {
                 for (Opportunity oppty : matchingOpptys) {
-                    //if(ucdSwitch == true) { //TWC4767-3983
-                    if(String.isNotBlank(oppty.Account.Core_Business_Party_Id__c)) {
-                        opptyInfoToReturn.add(new OpportunityInfo(oppty.Id, '', oppty.Account.Name, oppty.Account.Core_Business_Party_Id__c));
-                    }
-                    else { //TWC4767-3983
-                        opptyInfoToReturn.add(new OpportunityInfo(oppty.Id, '', oppty.Account.Name, oppty.Account.Core_CIM_ID__c));
-                    }
+                    opptyInfoToReturn.add(new OpportunityInfo(oppty.Id, '', oppty.Account.Name, oppty.Account.Core_CIM_ID__c));
                 }
                 res.statusCode = 200;
                 return opptyInfoToReturn;

@@ -983,7 +983,7 @@
         <name>Get_IPA_Queue_Id</name>
         <label>Get IPA Queue Id</label>
         <locationX>1606</locationX>
-        <locationY>316</locationY>
+        <locationY>315</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Send_Reminder_to_IPA_APJ_Payment_Admin</targetReference>
@@ -1353,9 +1353,11 @@
         </filters>
         <object>Core_MDF_Claim_VAT_Info__c</object>
         <schedule>
+            <dayOfMonthToRun>0</dayOfMonthToRun>
             <frequency>Daily</frequency>
+            <frequencyNumber>0</frequencyNumber>
             <startDate>2020-10-20</startDate>
-            <startTime>09:15:00.000Z</startTime>
+            <startTime>07:50:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>

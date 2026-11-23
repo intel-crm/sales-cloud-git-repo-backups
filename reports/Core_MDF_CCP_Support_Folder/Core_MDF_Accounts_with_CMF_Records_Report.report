@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account$Core_MDF_CoMarketing_Ultimate_Account__c</field>
+    </columns>
+    <columns>
+        <field>Account$Core_MDF_Channel_Program__c</field>
+    </columns>
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account.Comarketing_CMF_Map__r$Core_MDF_Ship_To_Number_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account.Comarketing_CMF_Map__r$Core_MDF_Sold_To_Number_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account.Comarketing_CMF_Map__r$Core_MDF_Sales_Org_cd__c</field>
+    </columns>
+    <columns>
+        <field>Account.Comarketing_CMF_Map__r$Core_MDF_Distribution_Channel_cd__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Comarketing_CMF_Map__r$Core_MDF_Active_Ind__c</field>
+    </columns>
+    <crossFilters>
+        <criteriaItems>
+            <column>Core_MDF_Active_Ind__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <operation>without</operation>
+        <primaryTableColumn>Account$Id</primaryTableColumn>
+        <relatedTable>Core_MDF_Comarketing_CMF_Map__c</relatedTable>
+        <relatedTableJoinColumn>Core_MDF_Account_Id__c</relatedTableJoinColumn>
+    </crossFilters>
+    <description>Accounts with CMF Records Report</description>
+    <filter>
+        <booleanFilter>1 AND 3 AND ((2 AND 5) OR 4)</booleanFilter>
+        <criteriaItems>
+            <column>Account$RecordType</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account.Core_MDF_Co_Marketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Core_MDF_Payment_Type_nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Customer (Pass Through),Distributor (Credit Memo)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Core_MDF_Channel_Program__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Intel Partner Alliance</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Core_MDF_Payment_Type_NodeLevel_nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Customer (Pass Through),Distributor (Credit Memo)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Core_MDF_Payment_Type_NodeLevel_nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Accounts Without CMF Records Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_MDF_Accounts_without_CMF_Records__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Account$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

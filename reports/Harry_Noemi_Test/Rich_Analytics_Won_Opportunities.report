@@ -9,17 +9,16 @@
             <axisBinding>y</axisBinding>
             <column>OpportunityLineItem.Core_KPI_Total_Price__c</column>
         </chartSummaries>
-        <chartType>HorizontalBarGrouped</chartType>
+        <chartType>Funnel</chartType>
         <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>true</expandOthers>
+        <expandOthers>false</expandOthers>
         <groupingColumn>ACCOUNT_NAME</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
-        <secondaryGroupingColumn>STAGE_NAME</secondaryGroupingColumn>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
-        <showValues>true</showValues>
+        <showValues>false</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
@@ -58,8 +57,20 @@
     <columns>
         <field>QUANTITY</field>
     </columns>
+    <crossFilters>
+        <criteriaItems>
+            <column>Name</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Milan Spalevic,Rich Sutherland</value>
+        </criteriaItems>
+        <operation>with</operation>
+        <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
+        <relatedTable>OpportunityTeamMember-User</relatedTable>
+        <relatedTableJoinColumn>Opportunity</relatedTableJoinColumn>
+    </crossFilters>
     <filter>
-        <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+        <booleanFilter>(1 OR 2 OR 3 OR 4) AND 5</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Solution_Area__c</column>
             <columnToColumn>false</columnToColumn>
@@ -72,7 +83,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>DCG Enterprise Analytics Deal # (On-Prem),DCG Enterprise Analytics Deal # Workloads (Off-Prem)</value>
+            <value>DCG Enterprise Analytics Deal # (On-Prem),DCG Enterprise Analytics Deal # Workloads (Off-Prem),Analytics</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Solution_Detail__c</column>
@@ -87,6 +98,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
             <value>Analytics - Sales &amp; Marketing,Analytics - Data Monetization Services including AIaaS,Analytics - IT / Cloud,Analytics - RAN,Analytics - Core,Select Solutions - Genomics Analytics,Visual Cloud - Media Analytics</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Dimension Data</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

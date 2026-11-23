@@ -60,13 +60,13 @@ public without sharing class Core_MDF_SurePay_Batch implements Database.Batchabl
         
         list<PartnerFundClaim> claimsToBeUpdated = new list<PartnerFundClaim>();
         //Map<Id,PartnerFundClaim> mapOfPAFClaim = new Map<Id,PartnerFundClaim>();
-        Map<Id,PartnerFundClaim> mapOfNonPAFClaims = new Map<Id,PartnerFundClaim>();
+        //Map<Id,PartnerFundClaim> mapOfNonPAFClaims = new Map<Id,PartnerFundClaim>();  //ATHR Comment - 17214 (unused local variable)
         set<id> caseIds = new set<id>();
-        set<String> qtrSet = new set<String>();
+        //set<String> qtrSet = new set<String>();  //ATHR Comment - 17214 (unused local variable)
         ClaimDetails claimDetails = new ClaimDetails();
         Decimal recoveryAmt = 0;
         List<Core_MDF_Recovery_Request__c> recoveryReqListTobeInserted = new List<Core_MDF_Recovery_Request__c>();
-        List<Core_MDF_Recovery_Request__c> recoveryReqListTobeReturned = new List<Core_MDF_Recovery_Request__c>();
+        //List<Core_MDF_Recovery_Request__c> recoveryReqListTobeReturned = new List<Core_MDF_Recovery_Request__c>();  //ATHR Comment - 17214 (unused local variable)
         
         List<Core_MDF_Recovery__c> recoveryListTobeInserted = new List<Core_MDF_Recovery__c>();
         Savepoint sp = Database.setSavepoint();

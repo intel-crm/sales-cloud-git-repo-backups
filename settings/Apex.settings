@@ -6,8 +6,8 @@
     <enableApexCtrlImplicitWithSharingPref>false</enableApexCtrlImplicitWithSharingPref>
     <enableApexPropertyGetterPref>false</enableApexPropertyGetterPref>
     <enableAsyncApexElasticExecutions>false</enableAsyncApexElasticExecutions>
-    <enableAuraApexCtrlAuthUserAccessCheckPref>false</enableAuraApexCtrlAuthUserAccessCheckPref>
-    <enableAuraApexCtrlGuestUserAccessCheckPref>false</enableAuraApexCtrlGuestUserAccessCheckPref>
+    <enableAuraApexCtrlAuthUserAccessCheckPref>true</enableAuraApexCtrlAuthUserAccessCheckPref>
+    <enableAuraApexCtrlGuestUserAccessCheckPref>true</enableAuraApexCtrlGuestUserAccessCheckPref>
     <enableBlockPackagedApexExecAnon>false</enableBlockPackagedApexExecAnon>
     <enableCompileOnDeploy>false</enableCompileOnDeploy>
     <enableDebugLogsDuringDeployment>false</enableDebugLogsDuringDeployment>

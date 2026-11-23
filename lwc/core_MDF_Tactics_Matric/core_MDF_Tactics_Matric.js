@@ -16,6 +16,18 @@ export default class Core_MDF_Tactics_Matric extends LightningElement {
     @api editable = false;
     @api activityId;// Activity Id
     @api recordId;//Claim Id
+    @api objectName;
+
+    // Roshan - Tactics POC
+    _prefillClaimAttributes = [];
+    @api
+    get prefillClaimAttributes() {
+        return this._prefillClaimAttributes;
+    }
+    set prefillClaimAttributes(value) {
+        this._prefillClaimAttributes = Array.isArray(value) ? value : [];
+        this.applyPrefillValues();
+    }
 
     // Tracked properties for custom labels
     @track tactics = tactics;
@@ -59,7 +71,20 @@ export default class Core_MDF_Tactics_Matric extends LightningElement {
                             }))
                         };
                     });
+
+                    // Roshan - Tactics POC
+                    this.applyPrefillValues();
+
                 }
+                //AI PIC
+                /*if (this.objectName == 'PartnerFundClaim') {
+                    let tacticMetricsOnLoad = this.getAllMatricValueforRecordcreation();
+                    console.log('initial tactics metrics',tacticMetricsOnLoad);
+                    const tacticMetricsEvent = new CustomEvent('tacticMetricsEvent', {detail : {tacticMetricsOnLoad}});
+                    this.dispatchEvent(tacticMetricsEvent);
+                }*/
+                
+                
             })
             .catch((error) => {
                 console.error('Apex error:', error);
@@ -166,5 +191,37 @@ export default class Core_MDF_Tactics_Matric extends LightningElement {
 
         console.log('Generated Payload:', JSON.stringify(claimAttributesObj));
         return claimAttributesObj;
+    }
+
+    // Roshan - Tactics POC
+    applyPrefillValues() {
+        if (!this.data.length || !this._prefillClaimAttributes.length) {
+            return;
+        }
+
+        this.data = this.data.map((item) => {
+            const updatedKpis = item.kpis.map((kpi) => {
+                const matchingClaimAttribute = this._prefillClaimAttributes.find((attribute) =>
+                    attribute.Core_MDF_Type_nm__c === 'KPI - Claim' &&
+                    attribute.Core_MDF_Tactics_nm__c === item.tacticLabelForRecordCreation &&
+                    attribute.Core_MDF_Field_Name_nm__c === kpi.tacticMetricsLabelForRecordCreation
+                );
+
+                if (!matchingClaimAttribute) {
+                    return kpi;
+                }
+
+                return {
+                    ...kpi,
+                    claimAttributeValue: matchingClaimAttribute.Core_MDF_Field_Value_nbr__c,
+                    kpiClaimAttributesId: matchingClaimAttribute.Id || kpi.kpiClaimAttributesId
+                };
+            });
+
+            return {
+                ...item,
+                kpis: updatedKpis
+            };
+        });
     }
 }

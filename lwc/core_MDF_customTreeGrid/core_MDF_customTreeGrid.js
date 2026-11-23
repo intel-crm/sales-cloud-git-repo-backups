@@ -23,6 +23,7 @@ export default class Core_MDF_customTreeGrid extends LightningElement {
     helpText = Core_MDF_Help_Text_SPIF_Search_Screen;
     
     connectedCallback() {
+        console.log('data-->'+JSON.stringify(this.treeData));
         if(this.isSearchEnabled === undefined || this.isSearchEnabled === null || this.isSearchEnabled === '') {
             this.isSearchEnabled = false;
         }
@@ -35,7 +36,7 @@ export default class Core_MDF_customTreeGrid extends LightningElement {
         if(this.disableAll === undefined || this.disableAll === null || this.disableAll === '') {
             this.disableAll = false;
         }
-        if(this.treeData !== undefined && this.treeData !== null && this.treeData !== '') {
+        if(this.treeData !== undefined && (this.treeData !== null || this.treeData == null ) && this.treeData !== '') {
             if(this.isSearchEnabled) {
                 this.originalDataTreeData = this.treeData;
             }
@@ -81,6 +82,7 @@ export default class Core_MDF_customTreeGrid extends LightningElement {
     }
 
     getSelectedRow(event) {
+        debugger;
         let isAllCheckboxSelected = false;
         let parentRowsSet = new Set(this.parentChildMap.keys());
         if(!event.target.checked) {
@@ -101,7 +103,7 @@ export default class Core_MDF_customTreeGrid extends LightningElement {
             }
             if(event.target.name != "selectAll") {
                 if(!this.selectedRows.includes(event.target.name)) {
-                    this.selectedRows = [...this.selectedRows, event.target.name];
+                    this.selectedRows = [...this.selectedRows, event.target.name];//CA
                 }
                 if(parentRowsSet != null && parentRowsSet.has(event.target.name)) {
                     this.selectChildRows(event.target.name,'add');
@@ -114,6 +116,7 @@ export default class Core_MDF_customTreeGrid extends LightningElement {
             selectAllCheckBox.checked = isAllCheckboxSelected;
         }
         this.selectedRecords = [];
+        console.log('selected rows--',this.selectedRows.length);
         for(let j=0;j<this.selectedRows.length;j++) {
             if(this.childRecordsMap.get(this.selectedRows[j]) != null ) {
                 let obj = {...this.childRecordsMap.get(this.selectedRows[j])};
@@ -204,13 +207,15 @@ export default class Core_MDF_customTreeGrid extends LightningElement {
     }
 
     searchData(event) {
+        debugger;
         let searchKey = event.target.value;
         let dataWrapper = [];
         let fieldToSearch = this.fieldToSearch;
         if(searchKey != null && searchKey.length > 2) { // Only proceed with search if searchKey has at least 3 characters
             //resetting the tree data value, in case previous search returned blank
             this.treeData = this.originalDataTreeData;
-            for(let i=0; i<this.treeData.length; i++) {
+            console.log('TREE DATA---',JSON.stringify(this.treeData));
+                    for(let i=0; i<this.treeData.length; i++) {
                         let childDataWrapper = [];
                         if(this.treeData[i]._children !== null && this.treeData[i]._children !== undefined) {
                             childDataWrapper = this.treeData[i]._children.filter((item) => item[fieldToSearch].toLowerCase().includes(searchKey.toLowerCase()));
@@ -236,8 +241,10 @@ export default class Core_MDF_customTreeGrid extends LightningElement {
         }else{
             scrollablediv.className ='spifScreen';
         }
+        console.log('this.selectedRows', this.selectedRows);
         if(this.selectedRows.length >= 1){
             this.selectedRows.forEach(item => {
+                console.log('item from selected row', item);
                 var selectedChild = this.template.querySelector(`[data-id="${item}"]`);
                 if(selectedChild != null && selectedChild != undefined){
                     selectedChild.checked = true;

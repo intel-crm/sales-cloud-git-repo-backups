@@ -7,6 +7,12 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
+        <field>EMPLOYEES</field>
+    </columns>
+    <columns>
+        <field>SALES</field>
+    </columns>
+    <columns>
         <field>ACCOUNT_ID</field>
     </columns>
     <columns>
@@ -19,6 +25,9 @@
         <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Sales_Group__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Sales_Groups__c</field>
     </columns>
     <columns>
@@ -26,6 +35,12 @@
     </columns>
     <columns>
         <field>INDUSTRY</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Tier__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_ISG_Tier__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Solution_Focus__c</field>
@@ -43,7 +58,7 @@
         <field>QUANTITY</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Status__c</field>
@@ -85,7 +100,7 @@
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>2019-2021 US rev by BU</name>
+    <name>2017-2019 US rev by BU</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -107,12 +122,12 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>OpportunityLineItem.Core_KPI_Date__c</sortColumn>
-    <sortOrder>Desc</sortOrder>
+    <sortColumn>ACCOUNT_OWNER</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2021-02-17</endDate>
+        <endDate>2019-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2018-12-30</startDate>
+        <startDate>2017-01-01</startDate>
     </timeFrameFilter>
 </Report>

@@ -1,0 +1,103 @@
+<template>
+    <!--Spinner will be displayed till loading of data-->
+    <template if:true={isSpinner}>
+        <div class="spinner">
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </div>
+    </template>
+    <template if:true={hasdata}>
+        <template if:false={isSpinner}> 
+            <lightning-layout>
+                <!--PartnerFundAllocations Icon & Header Name to be displayed-->
+                <lightning-layout-item flexibility="auto">
+                    <div class="slds-float_left">
+                        <lightning-icon icon-name="standard:partner_fund_allocation" class="icn slds-m-bottom_none">
+                        </lightning-icon>
+                        <span class="slds-text-heading_medium slds-m-left_small"><b>{label.pfaDetails}</b></span>
+                    </div>
+                </lightning-layout-item>
+                <!--Export menu button for exporting data to csv/xls-->
+                <lightning-layout-item>
+                    <div class="slds-float_right">
+                        <lightning-button-menu alternative-text="Show menu" variant="border-filled"
+                            icon-name="utility:download" onselect={handleSelectedExport} label = "Export  ">
+                            <lightning-menu-item value="ExportToExcel" label="Export Excel"></lightning-menu-item>
+                            <lightning-menu-item value="ExportToCsv" label="Export CSV"></lightning-menu-item>
+                        </lightning-button-menu>
+
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+            <lightning-layout>
+                <!--Count of records will be displayed-->
+                <lightning-layout-item flexibility="auto">
+                    <div class="slds-float-left slds-m-top_small"></br>
+                        <span class="slds-m-bottom_x-small">{allocToDisplay.length} {label.itemsToDisplay}</span></div>
+                </lightning-layout-item>
+                <!--To display combo box for filtering records based on budget Types-->
+                <lightning-layout-item>
+                    <div class="slds-float_right slds-m-bottom_small" style="width:200px;">
+                       <c-core_-m-d-f_-multi-select-picklist picklistlabel="Program" values ={programList}
+                       onselectionofvalue={onValueSelect} no-of-values-got-selected-lable="programs selected"></c-core_-m-d-f_-multi-select-picklist>
+                    </div> 
+                    <div class="slds-float_right slds-m-bottom_small" style="width:200px;">
+                      <!--  <lightning-combobox name="filter" value={selectedValue} options={options}
+                            onchange={handlePicklistChange} placeholder={label.selectBudgetType}>
+                        </lightning-combobox>
+                    </div> -->
+                    <!--<div class="slds-show slds-col slds-size_1-of-2 slds-p-around_small">-->
+                     <c-core_-m-d-f_-multi-select-picklist picklistlabel="Budget Types" values ={budgetList}
+                     onselectionofvalue={onValueSelect} no-of-values-got-selected-lable="budget types selected"></c-core_-m-d-f_-multi-select-picklist>
+                
+                    </div> 
+                </lightning-layout-item>
+            </lightning-layout>
+            <!--Datatable with sorting and on row selection commented slds-m-around_x-small @4:42P.M-->
+           <!-- <div class="slds-scrollable slds-border_left slds-border_right slds-border_bottom"
+                style="height:25rem;overflow-y: hidden">-->
+                <div class="slds-box" style="height: 200px;">
+                <lightning-datatable class="slds-table_header-fixed_container slds-scrollable_x slds-border_top"
+                    data={allocToDisplay} columns={columns} key-field="Id" hide-checkbox-column=true
+                    onsort={handleSortdata} sorted-by={sortBy} sorted-direction={sortDirection} show-row-number-column
+                    enable-infinite-loading load-more-offset="5" onloadmore={loadMoreData} >
+       
+                </lightning-datatable>
+            </div>
+            {loadMoreStatus}
+            <br />
+            <!-- Calling paginator component -->
+           <!--<template if:true={showTable}>
+                <c-paginator records={allocList} total-records={allocList.length}
+                    onpaginatorchange={handlePaginatorChange}>
+                </c-paginator>
+            </template>-->
+       </template> 
+    </template>
+    <!-- In case of no data,to display header & icon along with error message -->
+    <template if:false={hasdata}>
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item flexibility="auto" size="12" padding="around-small">
+                <div class="slds-float_left">
+                    <lightning-icon icon-name="standard:partner_fund_allocation" class="icn slds-m-bottom_none">
+                    </lightning-icon>
+                    <span class="slds-text-heading_medium slds-m-left_small"><b>{label.pfaDetails}</b></span>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="auto" size="12" padding="around-small">
+                <div class="slds-float-left">
+                    <span>{allocToDisplay.length} {label.itemsToDisplay}</span>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="auto" size="12"></lightning-layout-item>
+            <lightning-layout-item flexibility="auto" size="12">
+                <div class="slds-align_absolute-center slds-m-top_xx-large">
+                    <p style="text-align :center;"><b>{label.noRecords}</b></p>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-small"></lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-small"></lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-small"></lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-small"></lightning-layout-item>
+        </lightning-layout>
+</template>
+</template>

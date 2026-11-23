@@ -5,5 +5,10 @@
         <sharedTo>AllInternalUsers</sharedTo>
         <sharedToType>Organization</sharedToType>
     </folderShares>
+    <folderShares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>11531123@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
     <name># Core - Pipeline Quality</name>
 </DashboardFolder>

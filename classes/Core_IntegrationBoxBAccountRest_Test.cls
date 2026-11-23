@@ -1,9 +1,7 @@
 @isTest
 private class Core_IntegrationBoxBAccountRest_Test {
-    
     private static testmethod void testIntegrationBoxBAccountRest() {
         Account testAccount = createTestAccount();
-        insert new Core_ACM_Control_Execution__c(Name='IntegrationBoxBAccountRest',IsActive__c = true);
         Test.startTest();
 
             RestResponse res = new RestResponse();

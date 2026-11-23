@@ -24,10 +24,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_User_Type__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_Send_Notification_Ind__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

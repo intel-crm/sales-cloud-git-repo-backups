@@ -50,6 +50,10 @@
         <name>Core_MDF_Comment_txt__c</name>
     </fields>
     <fields>
+        <label><!-- Created By --></label>
+        <name>Core_MDF_CreatedBy_nm__c</name>
+    </fields>
+    <fields>
         <label><!-- External Id --></label>
         <name>Core_MDF_External_Id__c</name>
     </fields>
@@ -110,6 +114,10 @@
         <name>Core_MDF_Issue_TraditionalChinese_txt__c</name>
     </fields>
     <fields>
+        <label><!-- Last Modified By --></label>
+        <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
+    </fields>
+    <fields>
         <label><!-- Is Manual Response Equal AI Response? --></label>
         <name>Core_MDF_ManualResp_Equal_AIResp_Ind__c</name>
     </fields>
@@ -119,21 +127,34 @@
         <relationshipLabel><!-- PIC Review Details --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Parent Question --></label>
+        <name>Core_MDF_Parent_Question__c</name>
+        <relationshipLabel><!-- PIC Review Details (Parent Question) --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Check --></label>
         <name>Core_MDF_QuestionEnglish_txt__c</name>
     </fields>
     <fields>
         <label><!-- Question --></label>
         <name>Core_MDF_Question_id__c</name>
-        <relationshipLabel><!-- PIC Review Details --></relationshipLabel>
+        <relationshipLabel><!-- PIC Review Details (Question) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Response --></label>
         <name>Core_MDF_Response_txt__c</name>
     </fields>
     <fields>
+        <label><!-- Tactic --></label>
+        <name>Core_MDF_Tactic_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Tactics --></label>
         <name>Core_MDF_Tactics_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- test_formula_concat_4 --></label>
+        <name>test_formula_concat_4__c</name>
     </fields>
     <nameFieldLabel><!-- PIC Review Detail Name --></nameFieldLabel>
 </CustomObjectTranslation>

@@ -4,74 +4,93 @@
         <field>FULL_NAME</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Technical_Owner__c</field>
+        <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>CLOSE_DATE</field>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
+    <columns>
+        <field>QUANTITY</field>
+    </columns>
+    <columns>
+        <field>UNIT_PRICE</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>TOTAL_PRICE</field>
     </columns>
     <columns>
-        <field>STAGE_NAME</field>
+        <field>SERVICE_DATE</field>
     </columns>
     <columns>
-        <field>CREATED_DATE</field>
+        <field>SERVICE_MONTH</field>
     </columns>
     <columns>
-        <field>QUANTITY</field>
+        <field>PRODUCT_DESCRIPTION</field>
     </columns>
     <columns>
-        <field>PRODUCT_NAME</field>
+        <field>PRODUCT_PRICE</field>
     </columns>
     <columns>
-        <field>ADDRESS1_CITY</field>
+        <field>PRODUCT_CUSTOMER_ID</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Architecture_Conversion__c</field>
+        <field>PRODUCT_ACTIVE</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
     </columns>
     <filter>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
+            <operator>equals</operator>
             <value>IOTG</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Sales_Groups__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>UK</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Design Win,Production Win</value>
+            <value>Qualify,Define,Develop,Design</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <column>Opportunity.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Design: Original,Design: Secondary</value>
+            <value>GMP UK Sales Group</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>ACCOUNT_NAME</field>
+        <field>OpportunityLineItem.Core_Vertical_Market__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OPPORTUNITY_NAME</field>
+        <dateGranularity>FiscalQuarter</dateGranularity>
+        <field>CLOSE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>IOTG Pending 2019</name>
@@ -95,7 +114,7 @@
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
-    <showSubTotals>false</showSubTotals>
+    <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
         <interval>INTERVAL_CURFY</interval>

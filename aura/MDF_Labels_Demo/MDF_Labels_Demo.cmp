@@ -1,0 +1,7 @@
+<aura:component controller="MDFCustomLabels">
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>   
+    <aura:attribute name="labelsMap" type="Map" />
+   <div>
+       {!v.labelsMap.Create_Retail}
+    </div>
+</aura:component>

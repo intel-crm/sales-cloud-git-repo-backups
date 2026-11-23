@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>Mobile Techno Corp Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>MobileTechnoCorpCustomerManager</parentRole>
 </Role>

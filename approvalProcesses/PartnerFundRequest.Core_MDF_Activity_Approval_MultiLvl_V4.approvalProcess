@@ -101,11 +101,7 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>Core_MDF_Approver_9__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_8__c</name>
+                <name>Core_MDF_Approver_6__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -113,19 +109,11 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_6__c</name>
+                <name>Core_MDF_Approver_8__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_10__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_1__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_2__c</name>
+                <name>Core_MDF_Approver_9__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -133,11 +121,23 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
+                <name>Core_MDF_Approver_4__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
                 <name>Core_MDF_Approver_3__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_4__c</name>
+                <name>Core_MDF_Approver_2__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_1__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_10__c</name>
                 <type>relatedUserField</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
@@ -201,7 +201,31 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
+                <name>Core_MDF_Approver_2__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_9__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_5__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_4__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
                 <name>Core_MDF_Approver_10__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_3__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_8__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -210,30 +234,6 @@
             </approver>
             <approver>
                 <name>Core_MDF_Approver_7__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_9__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_2__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_5__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_3__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_4__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_8__c</name>
                 <type>relatedUserField</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
@@ -296,23 +296,7 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>Core_MDF_Approver_9__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_2__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_5__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
                 <name>Core_MDF_Approver_3__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_4__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -320,7 +304,7 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_6__c</name>
+                <name>Core_MDF_Approver_8__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -328,11 +312,27 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_1__c</name>
+                <name>Core_MDF_Approver_6__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_8__c</name>
+                <name>Core_MDF_Approver_4__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_9__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_5__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_2__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_1__c</name>
                 <type>relatedUserField</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
@@ -448,7 +448,7 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>Core_MDF_Approver_7__c</name>
+                <name>Core_MDF_Approver_6__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -456,19 +456,7 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_1__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
                 <name>Core_MDF_Approver_5__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_2__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_9__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -476,7 +464,15 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
+                <name>Core_MDF_Approver_1__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
                 <name>Core_MDF_Approver_10__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_2__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -484,7 +480,11 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_6__c</name>
+                <name>Core_MDF_Approver_9__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_7__c</name>
                 <type>relatedUserField</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
@@ -678,19 +678,11 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>Core_MDF_Approver_7__c</name>
+                <name>Core_MDF_Approver_2__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
                 <name>Core_MDF_Approver_10__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_1__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_2__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -702,6 +694,18 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
+                <name>Core_MDF_Approver_7__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_6__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_8__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
                 <name>Core_MDF_Approver_4__c</name>
                 <type>relatedUserField</type>
             </approver>
@@ -710,11 +714,7 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_8__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_6__c</name>
+                <name>Core_MDF_Approver_1__c</name>
                 <type>relatedUserField</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
@@ -1023,27 +1023,7 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>Core_MDF_Approver_5__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
                 <name>Core_MDF_Approver_2__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_9__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_8__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_7__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_6__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -1051,7 +1031,27 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
+                <name>Core_MDF_Approver_5__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_4__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_8__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
                 <name>Core_MDF_Approver_3__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_9__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_6__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -1059,7 +1059,7 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_4__c</name>
+                <name>Core_MDF_Approver_7__c</name>
                 <type>relatedUserField</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
@@ -1165,7 +1165,7 @@
         </rejectionActions>
     </approvalStep>
     <description>Approval Process flow to handle the activity approval process</description>
-    <emailTemplate>Testt/Core_MDF_NotifyActivityApprovers</emailTemplate>
+    <emailTemplate>unfiled$public/Core_MDF_NotifyActivityApprovers</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <booleanFilter>(1 OR 2 OR 3 OR (4 AND 5 )) AND 6</booleanFilter>

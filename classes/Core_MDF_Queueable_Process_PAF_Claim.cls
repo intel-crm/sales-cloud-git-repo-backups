@@ -21,7 +21,15 @@ public class Core_MDF_Queueable_Process_PAF_Claim implements Queueable {
         Set<Id> recordTypeSet = Core_MDF_Claim_Utility.getRecordTypeSet(claimRecordTypeMap);
         //Fetching all claims related to the allocations having status pending available fund or submitted
         //Adding bank hold clause as query was causing lock issue for claims which are being put on bank hold
-        Map<Id,PartnerFundClaim> claimMap = new Map<Id,PartnerFundClaim>([SELECT Id, ChannelPartnerId,Core_MDF_Status__c, Status,Core_MDF_Currency__c, Core_MDF_Type_Txt__c,Core_MDF_Program__c,Core_MDF_Has_Sub_Claims_Ind__c,Core_MDF_Claim_EvalInProgress_Ind__c 
+        // Map<Id,PartnerFundClaim> claimMap = new Map<Id,PartnerFundClaim>([SELECT Id, ChannelPartnerId,Core_MDF_Status__c, Status,Core_MDF_Currency__c, Core_MDF_Type_Txt__c,Core_MDF_Claim_EvalInProgress_Ind__c 
+        //                                                                   FROM partnerFundClaim 
+        //                                                                   WHERE AllocationId IN: allocationIds 
+        //                                                                   AND (RecordTypeId IN:recordTypeSet)
+        //                                                                   AND (Core_MDF_Status__c =: Label.Core_MDF_Status_Pending_Available_Fund OR Core_MDF_Status__c =:Label.Core_MDF_Status_Submitted)
+        //                                                                   AND (Core_MDF_Bank__r.Core_MDF_ESD_Hold_Indicator__c != true) AND (Core_MDF_Bank__r.Core_MDF_Hold_Payments_from_AP_file_ind__c != 'Yes')
+        //                                                                  ]);
+
+        Map<Id,PartnerFundClaim> claimMap = new Map<Id,PartnerFundClaim>([SELECT Id, ChannelPartnerId,Core_MDF_Status__c, Status,Core_MDF_Currency__c, Core_MDF_Type_Txt__c,Core_MDF_Program__c,Core_MDF_Claim_EvalInProgress_Ind__c, Core_MDF_Has_Sub_Claims_Ind__c   //Roshan - Super Claim PIC
                                                                          FROM partnerFundClaim 
                                                                          WHERE AllocationId IN: allocationIds 
                                                                          AND (RecordTypeId IN:recordTypeSet)

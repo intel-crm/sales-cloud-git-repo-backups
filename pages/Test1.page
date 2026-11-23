@@ -1,0 +1,5 @@
+<apex:page standardController="Core_MDF_Partner_Node_User_Mapping__c" recordSetVar="accountusers" >
+    <div id="lightning" >
+        test
+    </div>
+</apex:page>

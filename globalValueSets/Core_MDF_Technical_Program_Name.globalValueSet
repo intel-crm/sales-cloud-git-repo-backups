@@ -11,16 +11,6 @@
         <label>Client Co-Marketing Fund Boost</label>
     </customValue>
     <customValue>
-        <fullName>CoGTM</fullName>
-        <default>false</default>
-        <label>Co-GTM</label>
-    </customValue>
-    <customValue>
-        <fullName>Data Center CoMarketing Fund</fullName>
-        <default>false</default>
-        <label>Datacenter</label>
-    </customValue>
-    <customValue>
         <fullName>Intel Partner Alliance</fullName>
         <default>false</default>
         <label>Intel Partner Alliance</label>
@@ -41,11 +31,44 @@
         <label>Ecosystem Extension Fund</label>
     </customValue>
     <customValue>
+        <fullName>Data Center CoMarketing Fund</fullName>
+        <default>false</default>
+        <label>Datacenter</label>
+    </customValue>
+    <customValue>
+        <fullName>CoGTM</fullName>
+        <default>false</default>
+        <label>Co-GTM</label>
+    </customValue>
+    <customValue>
+        <fullName>CoInv</fullName>
+        <default>false</default>
+        <label>Co-Inv</label>
+    </customValue>
+    <customValue>
+        <fullName>Ecosystem Growth Fund</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Ecosystem Growth Fund</label>
+    </customValue>
+    <customValue>
         <fullName>Channel MDF</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>Channel MDF</label>
     </customValue>
+    <customValue>
+        <fullName>Data Center</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Data Center</label>
+    </customValue>
+    <customValue>
+        <fullName>Client</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Client</label>
+    </customValue>
     <masterLabel>Technical Program Name</masterLabel>
-    <sorted>true</sorted>
+    <sorted>false</sorted>
 </GlobalValueSet>

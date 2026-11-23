@@ -42,11 +42,13 @@ public with sharing class Core_RestAPI_CaseCommentV1_Handler{
         mUserProfieName.put('Sales Rep-BB-Dual IPS','Intel Technical Specialist');
         mUserProfieName.put('Sales Rep-BB', 'Intel Sales Representative');
         mUserProfieName.put('Sales Ops','Intel Sales Representative');
+        System.debug('Core_RestAPI_CaseCommentV1_Handler URI '+RestContext.request.requestURI  );
         
     }
     
     
     public Core_RestAPI_Response getCaseComments(){ 
+        System.debug(' Core_RestAPI_CaseCommentV1_Handler getCaseComments Entered  \n ');
         try{ 
             //Validations if need to be handled in util class       
             boolean isRequestValid = doValidations(); 
@@ -59,20 +61,24 @@ public with sharing class Core_RestAPI_CaseCommentV1_Handler{
         }catch(Exception e){ 
             Core_RestAPI_Util.processException( e, ERROR_CODE_500, response, apiName, entryTime); 
         }finally{ 
+            System.debug('Core_RestAPI_CaseComment_Handler Logging transaction and returning the response '+response); 
             if(String.isBlank(response.code)) 
                 response.code = SUCCESS_CODE_200; 
             Core_RestAPI_LoggingUtil.logTransaction(entryTime, response); 
         } 
+        System.debug(' Core_RestAPI_CaseComment_Handler getCaseComments Exiting ');
         return response;
     }
     
     //Validate the data , Incase of error set the error code to 
     @testVisible private Boolean doValidations(){
+        System.debug('Core_RestAPI_CaseComment_Handler doValidations Invoked ');
         Boolean isRequestValid = true;
         if(!CASE_NUMBER.isNumeric() || CASE_NUMBER.length() != 8){
             Core_RestAPI_Util.processException(null ,MALFORMED_INPUT_9011, response, apiName, entryTime); 
             isRequestValid = false;
         }else if(Core_RestAPI_Util.isRequestURIValid(CaseCommentV1_URI) == false){
+            system.debug('inside isRequestValid ==>> '+isRequestValid );
             Core_RestAPI_Util.processException(null , INVALID_URI_404, response, apiName, entryTime);   
             isRequestValid = false;
         } 
@@ -98,11 +104,13 @@ public with sharing class Core_RestAPI_CaseCommentV1_Handler{
         public  List<CaseCommentWrapper> getCaseComments() {
             
             
+            System.debug(' Core_RestAPI_CaseComment_Handler processRequest Entering SOQL  \n '+GET_CASE_COMMENTS_SOQL);
             List<Core_IPS_Case_Comments__c > lstCaseComment = Database.query(GET_CASE_COMMENTS_SOQL);
             if(!lstCaseComment.isEmpty()){
                 Map<String,List<Core_IPS_Case_Comments__c>> mIdCreatedBy = new Map<String,List<Core_IPS_Case_Comments__c>>();
                 for(Core_IPS_Case_Comments__c  objCaseComment : lstCaseComment){
                     mIdCreatedBy.put(objCaseComment.Id,new List<Core_IPS_Case_Comments__c>{objCaseComment});
+                    System.debug('mIdCreatedBy-->'+mIdCreatedBy);
                 }   
                 for(String str : mIdCreatedBy.KeySet()){
                     List<Core_IPS_Case_Comments__c> lstCreatedByComment = mIdCreatedBy.get(str);
@@ -114,6 +122,7 @@ public with sharing class Core_RestAPI_CaseCommentV1_Handler{
                     
                     for(Core_IPS_Case_Comments__c objCaseComment : lstCreatedByComment){
                         CreatedByWrapper objCreatedBy = new CreatedByWrapper();
+                        System.debug('AuthorType'+objCaseComment.Core_IPS_Comment_Author_Type__c);
                         if(objCaseComment.Core_IPS_Comment_Author_Type__c== 'Customer' || objCaseComment.Core_IPS_Comment_Author_Type__c== 'Partner'){
                             objCreatedBy.createdByName = objCaseComment.CreatedBy_Name__c;
                             objCreatedBy.createdDate = objCaseComment.CreatedDate;
@@ -136,6 +145,7 @@ public with sharing class Core_RestAPI_CaseCommentV1_Handler{
                     //caseCommentOuter.response.successContent.add(objCsCommtWrap);
                 }
             } 
+            System.debug('processRequest response.successContent '+wrprList);
             return wrprList;
         }
     }   

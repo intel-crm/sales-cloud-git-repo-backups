@@ -11,215 +11,211 @@
 @isTest(SeeAllData = false)
 public class Core_MDF_PFC_Close_Adjustment_Test {
     
-    @TestSetup static void setUpData(){        
-        List<Account> toBeUpdated = new List<Account>();
+    @TestSetup static void setUpData(){
         
-        // Creating channel program with utility class
-        ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
-        ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.RMF_PROGRAM,'Retail Marketing Funds', true);
+        Profile sysAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator'];
         
-        // Creating Account with utility class
-        Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
+        Account accRecord = Core_MDF_CCP_TestDataUtility.createAccount ('Intel Test Account ', NULL, Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);   
+        accRecord.BillingCity = 'Test City';         
+        accRecord.BillingCountry= 'AUS';
+        accRecord.BillingStreet= 'Test Street';
+        Database.insert(accRecord);   
         
-        Account acc2 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Account 2', cp1.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, acc1.Id, true);
         
-        Account acc3 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Account 3', cp1.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, acc2.Id, true);
-        
-        // Updating Accounts 
-        acc1.isPartner = true;
-        acc2.isPartner = true;
-        acc3.isPartner = true;
-        toBeUpdated.add(acc1);
-        toBeUpdated.add(acc2);
-        toBeUpdated.add(acc3);
-        Database.update(toBeUpdated);
-        
-        Contact conRecord1 = Core_MDF_CCP_TestDataUtility.createContact(acc1.Id,true);
-        Id profileId = [SELECT Id FROM Profile WHERE Name='Partner' limit 1].Id;
-        Profile ccpCoreProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1];
-        Id sysAdmProfileId = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1].Id;
-        
-        PermissionSet clmCaseRevPS = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_Claim_Case_Reviewer' LIMIT 1];
-        PermissionSet clmSubmitter = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_External_Claim_Submitter' LIMIT 1];
+        //Creating Contact for Partner User
+        List<Contact> contactList = new List<Contact>();
+        Contact conRecord1 = Core_MDF_CCP_TestDataUtility.createContact(accRecord.Id,false);
+        Contact conRecord2 = Core_MDF_CCP_TestDataUtility.createContact(accRecord.Id,false);
+        contactList.add(conRecord1);
+        contactList.add(conRecord2);
+        Database.insert(contactList);
         
         // Creating User with utility class 
-        List<User> usrList = new List<User>();
-        User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
+        List<user> userList = new List<User>();
+        User usr = Core_MDF_CCP_TestDataUtility.createUser(false);        
+        usr.LastName = 'System Adm';
+        usr.ProfileId = sysAdminProfile.Id;
+        usr.isActive = true;
         usr.Email = 'sysadmin@example.com';
-        usr.ProfileId = sysAdmProfileId;
-        usrList.add(usr);
+        //Database.insert(usr);
         
+        Id profileId = [SELECT Id FROM Profile WHERE Name='Partner' limit 1].Id;
         User usr1 = Core_MDF_CCP_TestDataUtility.createUser(false);        
         usr1.Email='test1@example.com';
         usr1.ContactId = conRecord1.Id;
         usr1.ProfileId = profileId;
         usr1.isActive = true;
-        usrList.add(usr1);
+        //Database.insert(usr1);
         
-        User claimCase = Core_MDF_CCP_TestDataUtility.createUser(false);
-        claimCase.Email = 'clmcase@example.com';
-        claimCase.Profile = ccpCoreProfile;
-        usrList.add(claimCase);
+        Profile ccpProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access'];
+       // Highlight: Unused Local Variable
+       // UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
         
         User usr2 = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr2.ProfileId = ccpCoreProfile.Id;
+        usr2.ProfileId = ccpProfile.Id;
         usr2.Email='test1vd@intel.com';
         usr2.isActive = true;
         usr2.UserPermissionsMarketingUser=true;
-        usrList.add(usr2);
-        Database.insert(usrList);        
+        //  usr1.UserRoleId = usRole.Id;
+        //Database.insert(usr2);
+        userList.add(usr);
+        userList.add(usr1);
+        userList.add(usr2);
+        Database.insert(userList);
         
-        List<PermissionSetAssignment> lstPSAssignment = new List<PermissionSetAssignment>();
-        PermissionSetAssignment assignPermissionSetObj = Core_MDF_CCP_TestDataUtility.createPermissionSetAssignment(usr1.Id,clmSubmitter.Id,false);
-        lstPSAssignment.add(assignPermissionSetObj);
-        PermissionSetAssignment assignPermissionSetObj1 = Core_MDF_CCP_TestDataUtility.createPermissionSetAssignment(claimCase.Id,clmCaseRevPS.Id,false);
-        lstPSAssignment.add(assignPermissionSetObj1);
+        List<ChannelProgram> channelProgramList = new List<ChannelProgram>();
+        ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', false);
+        ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.DCF_PROGRAM,'Data Center CoMarketing Fund', false);
+        channelProgramList.add(cp);
+        channelProgramList.add(cp1);
+        Database.insert(channelProgramList);
         
-        system.runAs(usr){
-            Database.insert(lstPSAssignment);
-        }
+        // Creating Intel Account with utility class
+        Account dellCorpAccount = Core_MDF_CCP_TestDataUtility.createAccount('Dell Corporation', cp.Id,Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);   
+        dellCorpAccount.BillingCity = 'Test City';         
+        dellCorpAccount.BillingCountry= 'AUS';
+        dellCorpAccount.BillingStreet= 'Test Street';
+        Database.insert(dellCorpAccount); 
+        //dellCorpAccount.IsPartner = true;
+        //Database.update(dellCorpAccount);
+         
+        // Creating Co-marketing Account with utility class
+        Account dellCCFVirtualCorp = Core_MDF_CCP_TestDataUtility.createAccount ('Dell CCF Virtual Corp', cp.Id,Core_MDF_CCP_TestDataUtility.Account_Record_Type, false);
+        dellCCFVirtualCorp.Core_MDF_Parent_Fund_Account__c = dellCorpAccount.Id;
+        dellCCFVirtualCorp.Core_MDF_CoMarketingActive__c = true;
+        Database.insert(dellCCFVirtualCorp);
         
-        Core_MDF_CCP_TestDataUtility.insertCurrencyExchangeRates();
-        List<Core_Trigger_Executions__c> triggerExecutionList = new List<Core_Trigger_Executions__c>();
-        
-        Core_Trigger_Executions__c groupIdForAccountNode = new Core_Trigger_Executions__c();
-        groupIdForAccountNode.name = 'Core_MDF_createGroupForAccountNode';
-        groupIdForAccountNode.Core_Object__c = 'Account';
-        groupIdForAccountNode.Core_Trigger_Events__c = 'After Insert';
-        groupIdForAccountNode.Core_Active__c = TRUE;
-        groupIdForAccountNode.Core_Description__c = 'To Create Group for each account';
-        groupIdForAccountNode.Core_Class_Name__c = 'Core_AccountHandler';
-        // insert 
-        triggerExecutionList.add(groupIdForAccountNode);
-        
-        Core_Trigger_Executions__c shareAccountsWithGroups = new Core_Trigger_Executions__c();
-        shareAccountsWithGroups.name = 'Core_MDF_ShareAccountsWithGroups';
-        shareAccountsWithGroups.Core_Object__c = 'Account';
-        shareAccountsWithGroups.Core_Trigger_Events__c = 'After Insert';
-        shareAccountsWithGroups.Core_Active__c = TRUE;
-        shareAccountsWithGroups.Core_Description__c = 'To Create Group for each account';
-        shareAccountsWithGroups.Core_Class_Name__c = 'Core_AccountHandler';
-        triggerExecutionList.add(shareAccountsWithGroups);
-        
-        //Added by Ealisha to bypass the PFR sharing from triggerhandler
-        Core_Trigger_Executions__c te = new Core_Trigger_Executions__c();
-        te.name = 'ShareActivityWithInternalUsers_Bypass';
-        te.Core_Object__c = 'PartnerFundRequest';
-        te.Core_Trigger_Events__c = 'After Update';
-        te.Core_Active__c = true;
-        te.Core_Description__c = 'To bypass the PFR Internal User Sharing';
-        te.Core_Class_Name__c = 'Core_MDF_PartnerRequestTriggerHandler';
-        triggerExecutionList.add(te);
-        
-        Database.insert(triggerExecutionList);
-        
-        List<String> bypassFunctionKeys = new List<String>();
-        bypassFunctionKeys.add('Bypass_Duplicate_Budget_Check');
-        bypassFunctionKeys.add('Bypass_GeoBased_Budget_Sharing');
-        bypassFunctionKeys.add('Bypass_Allocation_Reservation');
-        bypassFunctionKeys.add('Bypass_GeoBased_Allocation_Sharing');
-        bypassFunctionKeys.add('Bypass_Duplicate_Bank_Check');
-        bypassFunctionKeys.add('Bypass_Bank_Internal_Sharing');
-        bypassFunctionKeys.add('Bypass_Bank_External_Sharing');
-        bypassFunctionKeys.add('Bypass_Bank_ABM_Sharing');
-        bypassFunctionKeys.add('Bypass_ABM_Internal_Sharing');
-        bypassFunctionKeys.add('Bypass_ABM_External_Sharing');
-        bypassFunctionKeys.add('Bypass_ABM_NodeGroup_Sharing');        
-        bypassFunctionKeys.add('byPassShareUnshareCampaignRecord');
-        bypassFunctionKeys.add('byPassCampaignAndRelatedRecords');
-        bypassFunctionKeys.add('Bypass_PaymentRun_Duplicate_Check');
-        bypassFunctionKeys.add('Bypass_Claims_Duplicate_Check');
-        bypassFunctionKeys.add('Bypass_Claims_Sharing_Internal_Users');
-        //bypassFunctionKeys.add('Bypass_ClaimAdjReq_Share_On_Owner_Chng');
-        //bypassFunctionKeys.add('Bypass_ClaimAdjReq_Share_Internal_Usrs');
-        //bypassFunctionKeys.add('Bypass_ClaimAdjReq_Share_External_Usrs');
-        //bypassFunctionKeys.add('Bypass_Claim_AdjReq_Amount_Validation');
-        bypassFunctionKeys.add('Bypass_Claims_Amt_vs_Budget_Amt_Check');        
-        bypassFunctionKeys.add('Bypass_Claims_ABM_Validation');
-        bypassFunctionKeys.add('Bypass_Claims_Sharing_Partner_Users');
-        bypassFunctionKeys.add('Bypass_Payment_Doc_InvFileVAT_Validate');
-        bypassFunctionKeys.add('Bypass_Bank_Program_InActivation_Check');
-        bypassFunctionKeys.add('Bypass_Claims_Amt_vs_Camp_Amt_Check');
-        bypassFunctionKeys.add('Bypass_Claim_OwnerLang_EmailTemp');
-        bypassFunctionKeys.add('Bypass_StampingOfActySubType_Check');
-        bypassFunctionKeys.add('Bypass_Claims_Sharing_On_Owner_Change');
-        bypassFunctionKeys.add('Bypass_UpdateActivityFields');
-        bypassFunctionKeys.add('Bypass_ValidateActivityWithCampaign');
-        bypassFunctionKeys.add('Bypass_MDF_Budget_Access');
-        bypassFunctionKeys.add('Core_MDF_XMLToXLSGenerationFlag');
-        bypassFunctionKeys.add('Core_MDF_StringToXLSGenerationFlag');
-        bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
-        bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
-        bypassFunctionKeys.add('byPass_Cancel_Activity');
-        bypassFunctionKeys.add('Core_MDF_Bypass_ATFBatchUpdate');
-        bypassFunctionKeys.add('Bypass_PaymentsBulkAPISharing');
-        bypassFunctionKeys.add('ByPass_BlockLegacyBudgetCreation');             
-        Set<String> myset1 = new Set<String>();
-        List<String> result1 = new List<String>();
-        myset1.addAll(bypassFunctionKeys);
-        result1.addAll(myset1);
-        
-        List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
-        
-        PartnerMarketingBudget pbm = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 2', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 30000, 
-                                                                               System.today(), System.today().addDays(364), false);
-        pbm.Core_MDF_Budget_Type_Txt__c = 'OEM CMP';
-        
-        database.insert(pbm);
-        
-        PartnerFundAllocation pfa = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test PFA', pbm, acc2, 30000, true);
-        
-        Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 12','Gaming','Intel® Core™ i7 Processor', 'Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today().addDays(-30), System.today().addDays(300), 10000, 'Always Connected PC', acc2.Id,'Desktop', false);
-        
-        camp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
-        system.runAs(usr){
-            Database.insert(camp);
-        } 
-        Test.startTest();
-        PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,pfa,pbm,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast','Radio','Draft', false);
-        testPartnerFundRequestRecord.Amount = testPartnerFundRequestRecord.RequestedAmount;
-        testPartnerFundRequestRecord.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
-        testPartnerFundRequestRecord.Title = 'indiaActivity';
-        testPartnerFundRequestRecord.Status = 'Approved';
-        testPartnerFundRequestRecord.Core_MDF_Start_Date__c = system.today().addDays(-20);
-        testPartnerFundRequestRecord.Core_MDF_End_Date__c = system.today().addDays(30);
-        testPartnerFundRequestRecord.Core_MDF_Reimbursement_Rate_pct__c = '50%';
-        testPartnerFundRequestRecord.Core_MDF_Reimbursement_Rate_txt__c = '50%';
-        system.runAs(usr){
-            Database.insert(testPartnerFundRequestRecord);
-        }
-        Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(acc1.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1231231230');
-        
-        Core_MDF_Account_Bank_Mapping__c accountBankMap = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc2.Id, bank.Id, true);
+        Group grp = new Group();
+        grp.name = 'PGM_TEST';
+        Database.insert(grp);
         Core_MDF_Configuration__c execution1 = new Core_MDF_Configuration__c();
         execution1.Name = 'ALLOWED_PRG_FOR_RUS_NOTIF';
         execution1.Core_MDF_Category__c = 'Bank Document Hold Logic';
         execution1.Core_MDF_Value__c = 'Retail Marketing Funds,Intel Partner Alliance';
-        insert execution1;
-        List<PartnerFundClaim> pfcList = new List<PartnerFundClaim>();
-        PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim for Neg Adj', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, 
-                                                                           testPartnerFundRequestRecord.Id, System.today().addDays(-10), System.today().addDays(-1), 5000.00, System.today().addDays(-1), bank.Id, false);
-        claim1.Status = Label.Core_MDF_Status_Approved;
-        claim1.Core_MDF_Status__c = Label.Core_MDF_Status_Pending_Available_Fund; //'Pending Available Fund';
-        pfcList.add(claim1);
-        PartnerFundClaim indiaClaim = Core_MDF_CCP_TestDataUtility.createClaim('India Claim', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, testPartnerFundRequestRecord.Id, System.today().addDays(-10), System.today().addDays(-1), 500.00, System.today().addDays(-1),bank.Id, false);  
-        pfcList.add(indiaClaim);
-        system.runAs(claimCase){
-            Database.insert(pfcList);
-        }
+        insert execution1; 
+        Core_MDF_CCP_TestDataUtility.createPartnerGroupMapping(dellCorpAccount.Id,'Internal',dellCorpAccount.Id,cp.Id,'PGM_TEST',true);        
         
-        List<Core_Trigger_Executions__c> executionAdjRequest = new List<Core_Trigger_Executions__c>();
-        Core_Trigger_Executions__c adjustmentRequestClaimTriggerExecution = new Core_Trigger_Executions__c();
-        adjustmentRequestClaimTriggerExecution.Core_Active__c = true;
-        adjustmentRequestClaimTriggerExecution.Core_Class_Name__c = 'Core_MDF_AdjustmentReq_ServiceHandler';
-        adjustmentRequestClaimTriggerExecution.Core_Trigger_Events__c = 'before insert';
-        adjustmentRequestClaimTriggerExecution.Core_Object__c = 'Core_MDF_Adjustment_Request__c';
-        adjustmentRequestClaimTriggerExecution.Name = 'createAdjustment';
-        adjustmentRequestClaimTriggerExecution.Core_Description__c = 'Negative claim is getting created from Adustemt Request';
-        executionAdjRequest.add(adjustmentRequestClaimTriggerExecution);
+       /* Account dellCCFAPAC = Core_MDF_CCP_TestDataUtility.createAccount ('Dell CCF APAC', cp.Id,Core_MDF_CCP_TestDataUtility.Account_Record_Type,  false);
+        dellCCFAPAC.Core_MDF_Parent_Fund_Account__c = dellCCFVirtualCorp.Id;
+        dellCCFAPAC.Core_MDF_CoMarketingActive__c = true;
+        Database.insert(dellCCFAPAC); */
         
-        Database.insert(executionAdjRequest);
+        
+        Account dellCCFAPACIndia = Core_MDF_CCP_TestDataUtility.createAccount ('Dell CCF APAC India', cp.Id,Core_MDF_CCP_TestDataUtility.Account_Record_Type, false);
+        dellCCFAPACIndia.Core_MDF_Parent_Fund_Account__c = dellCCFVirtualCorp.Id;
+        dellCCFAPACIndia.Core_MDF_Auto_Transfer_Account__c = dellCCFVirtualCorp.ID;
+        dellCCFAPACIndia.Core_MDF_Enabled_Auto_Transfer__c = True;
+        dellCCFAPACIndia.Core_MDF_CoMarketingActive__c = true;
+        Database.insert(dellCCFAPACIndia);
+        
+        //Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(dellCCFAPACIndia.Id, usr1.Id, true);
+        //adding bypass feature to bypass access validation
+            List<String> bypassFunctionKeys = new List<String>();
+            bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
+            bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
+            bypassFunctionKeys.add('Bypass_Duplicate_Budget_Check');
+           bypassFunctionKeys.add('Bypass_Claims_Duplicate_Check');
+            bypassFunctionKeys.add('Bypass_Claims_Amt_vs_Budget_Amt_Check');
+         bypassFunctionKeys.add('Bypass_ClaimAdjReq_Share_Internal_Usrs');
+         bypassFunctionKeys.add('Bypass_Claims_ABM_Validation');
+         bypassFunctionKeys.add('Bypass_Claims_Amt_vs_Camp_Amt_Check');
+         bypassFunctionKeys.add('Bypass_Claims_Sharing_Partner_Users');
+         bypassFunctionKeys.add('Bypass_ClaimAdjReq_Share_External_Usrs');
+         bypassFunctionKeys.add('Bypass_Claims_Sharing_On_Owner_Change');
+         bypassFunctionKeys.add('Bypass_Claim_AdjReq_Amount_Validation');
+         bypassFunctionKeys.add('Bypass_ClaimAdjReq_Share_On_Owner_Chng');
+         bypassFunctionKeys.add('Bypass_Claims_Sharing_Internal_Users');
+         bypassFunctionKeys.add('Bypass_Claim_OwnerLang_EmailTemp');
+            Set<String> myset1 = new Set<String>();
+            List<String> result1 = new List<String>();
+            myset1.addAll(bypassFunctionKeys);
+            result1.addAll(myset1);
+            
+            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
+        //Id recordTypeIdPMB = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByName().get('CoMarketing').getRecordTypeId();
+        // Create PMB for the above Account 
+        
+        /*List<Core_Trigger_Executions__c> transactions = new List<Core_Trigger_Executions__c>();
+            transactions.addAll(Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_Duplicate_Budget_Check','Bypass_GeoBased_Budget_Sharing','Bypass_MDF_Budget_Access','Bypass_MDF_Budget_Access_Validation'}, true, false));
+            Database.insert(transactions);*/
+        
+        PartnerMarketingBudget  pmbRecord = Core_MDF_CCP_TestDataUtility.createBudget('Dell PMB',Core_MDF_CCP_TestDataUtility.Budget_Record_Type,dellCCFVirtualCorp.Id,
+                                                                                      cp.Id,100000,System.today().addDays(-15),System.today().addDays(15),false);
+        pmbRecord.Core_MDF_Budget_Type_Txt__c = 'OEM CMP';
+        insert pmbRecord;
+        /*system.runas(usr){
+            pmbRecord.Core_MDF_Budget_Status__c='Approved';
+            Database.update(pmbRecord);
+            //pmbRecord.Core_MDF_Budget_Status__c = 'Released';
+            //update pmbRecord;
+        }*/
+        
+        // Create PFA records for the above accounts :
+        List<PartnerFundAllocation> pfaList = new List<PartnerFundAllocation>();
+        PartnerFundAllocation pfaDellCCFVirtualCorp = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('pfaDellCCFVirtualCorp',pmbRecord, dellCCFVirtualCorp, 1000,false);
+        pfaList.add(pfaDellCCFVirtualCorp);
+        
+        PartnerFundAllocation pfaDellCCFIndia = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('pfaDellCCFIndia',pmbRecord, dellCCFAPACIndia, 1000,false);
+        pfaList.add(pfaDellCCFIndia);        
+        Database.insert(pfaList);
+        
+        Core_MDF_Bank__c indiaBank = Core_MDF_CCP_TestDataUtility.createBank(dellCorpAccount.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1231231230');
+        //Core_MDF_Account_Bank_Mapping__c accountBankMap = Core_MDF_CCP_TestDataUtility.createAccountBankMap(dellCCFAPACIndia.Id, indiaBank.Id, true);
+        
+        
+        
+        ////Core_MDF_CCP_TestDataUtility.createTriggerExecutionRecords();
+        
+        
+        ////Core_MDF_CCP_TestDataUtility.insertCurrencyExchangeRates();
+        
+        /*Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount aObj = new Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount();
+        Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount bObj = new Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount();
+        Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount cObj = new Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount();
+        List<Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount> listvar = new List<Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount>();
+        
+        aObj.inputCurrency ='ZMK';
+        aObj.inputAmount = 250.00;
+        aObj.inputDate= System.today();
+        bObj.inputCurrency ='INR';
+        bObj.inputAmount = 350.00;
+        bObj.inputDate= System.today();
+        cObj.inputCurrency ='USD';
+        cObj.inputAmount = 350.00;
+        cObj.inputDate= System.today();
+        listvar.add(aObj);
+        listvar.add(bObj);
+        listvar.add(cObj);
+        Core_MDF_CCP_Multicurrency.getUSDExchangeRateBasedOnDate(listvar);   */
+        
+        Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 12','Gaming','Intel® Corporate Logo','Yes', 
+                                                                    Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', 
+                                                                    System.today()-1, System.today()+20, 10000, 'Consumer Chromebook', dellCCFVirtualCorp.Id, '2-in-1', false);
+        camp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP'; 
+        database.insert(camp);
+        Test.startTest();
+        PartnerFundRequest indiaActivity = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
+                                                                                                 string.valueof(dellCCFAPACIndia.id),pfaDellCCFIndia,pmbRecord,
+                                                                                                 'BRAZIL','Consumer','Desktop','Intel® Corporate Logo','Audio','Podcast','Draft'
+                                                                                                 ,false);
+        indiaActivity.Title = 'indiaActivity';
+        indiaActivity.Core_MDF_Activity_Description__c = 'indiaActivity';
+        indiaActivity.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
+        indiaActivity.Core_MDF_Start_Date__c = System.today()-1;
+        indiaActivity.Core_MDF_End_Date__c = System.today();
+        indiaActivity.RequestedAmount = 100;
+        indiaActivity.Core_MDF_Channel_Partner_Led__c = True;
+        indiaActivity.Amount=100;
+        indiaActivity.Core_MDF_Reimbursement_Rate_txt__c = '25%';
+        Database.insert(indiaActivity);       
+        
+        /*PartnerFundClaim indiaClaim3 = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, indiaActivity.Id, System.today(), System.today(), 5000.00, System.today(), indiaBank.Id, false);
+        indiaClaim3.Status = Label.Core_MDF_Status_Approved;
+        indiaClaim3.Core_MDF_Status__c = Label.Core_MDF_Status_Payment_Due;
+        Insert indiaClaim3;*/
+        
         Test.stopTest();
+        
     }
     
     @isTest static void userHasPermission(){
@@ -230,33 +226,117 @@ public class Core_MDF_PFC_Close_Adjustment_Test {
             Boolean userDoesnotHaveAcess = Core_MDF_PFC_Close_Adjustment.hasAccess();
             System.assertEquals(false, userDoesnotHaveAcess);
             
+            //PermissionSet claimCaseReviewerPermissionSet = [SELECT Id, Name FROM PermissionSet where Name = 'Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager'];        
+            //PermissionSetAssignment  psa = new PermissionSetAssignment(PermissionSetId = claimCaseReviewerPermissionSet.Id, AssigneeId = intUser.Id);
+            //insert psa;
+            
             PermissionSet financeMgr = [SELECT Id, Name FROM PermissionSet where Name = 'Core_MDF_CCP_Internal_Finance_Manager'];        
             PermissionSetAssignment  fm = new PermissionSetAssignment(PermissionSetId = financeMgr.Id, AssigneeId = intUser.Id);
             insert fm;
         }
         
-        System.runAs(intUser){            
-            Boolean userHasAcess = Core_MDF_PFC_Close_Adjustment.hasAccess();
+        System.runAs(intUser){
+           // Highlight: Unused Local Variable          
+          /*  Boolean userHasAcess = */ Core_MDF_PFC_Close_Adjustment.hasAccess();
            
             //System.assertEquals(true, userHasAcess);
         }
         test.stopTest();
     }
     
+    //Paid Claim connot be close
     @isTest 
     static void  testPaidClaimEligibleForClose(){
         
-        User clmCaseuser = [SELECT Id,Email from User where Email='clmcase@example.com' limit 1];
+        //ChannelProgram cp = [SELECT ID From ChannelProgram where Name = 'Client Co-Marketing Fund'];
+        //ChannelProgram cp1 = [SELECT ID From ChannelProgram where Name = 'Data Center Co-Marketing Fund'];
+        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
+        //User extUser = [SELECT Id,Email from User where Email='test1@example.com' limit 1];
         
-        //PartnerFundRequest indiaActivity = [SELECT Id,Title,Core_MDF_Start_Date__c,Core_MDF_End_Date__c from PartnerFundRequest where Title='indiaActivity' limit 1];        
-        //Core_MDF_Bank__c indiaBank = [Select ID from Core_MDF_Bank__c limit 1];
-        List<PartnerFundClaim> claimListToBeProcessed = new List<PartnerFundClaim>();
+        PartnerFundRequest indiaActivity = [SELECT Id,Title,Core_MDF_Start_Date__c,Core_MDF_End_Date__c from PartnerFundRequest where Title='indiaActivity' limit 1];        
+        Core_MDF_Bank__c indiaBank = [Select ID from Core_MDF_Bank__c limit 1];
+        // Highlight: Unused Local Variable
+       // List<PartnerFundClaim> claimListToBeProcessed = new List<PartnerFundClaim>();
        
-        System.runAs(clmCaseuser){           
+        System.runAs(sysAdminUser){           
             Test.startTest();
+            PartnerFundClaim indiaClaim = Core_MDF_CCP_TestDataUtility.createClaim('India Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF, 
+                                                                                   indiaActivity.Id, 
+                                                                                   indiaActivity.Core_MDF_Start_Date__c, indiaActivity.Core_MDF_Start_Date__c, 
+                                                                                   101, 
+                                                                                   System.today(), indiaBank.ID, false);
+            indiaClaim.Core_MDF_Currency__c = 'USD';
+            insert indiaClaim;
+            /*PartnerFundClaim indiaClaim2 = Core_MDF_CCP_TestDataUtility.createClaim('India Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF, 
+                                                                                    indiaActivity.Id, 
+                                                                                    indiaActivity.Core_MDF_Start_Date__c, indiaActivity.Core_MDF_Start_Date__c, 
+                                                                                    100, 
+                                                                                    System.today(), indiaBank.ID, false);
             
             
-            PartnerFundClaim claim1 = [Select Id, OwnerId from PartnerFundClaim  limit 1];
+            indiaClaim2.Core_MDF_Currency__c = 'USD';
+            PartnerFundClaim indiaClaim3 = Core_MDF_CCP_TestDataUtility.createClaim('India Claim1', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF, 
+                                                                                    indiaActivity.Id, 
+                                                                                    indiaActivity.Core_MDF_Start_Date__c, indiaActivity.Core_MDF_Start_Date__c, 
+                                                                                    100, 
+                                                                                    System.today(), indiaBank.ID, false);
+            indiaClaim3.Core_MDF_Currency__c = 'USD';
+            
+            claimListToBeProcessed.add(indiaClaim);
+            claimListToBeProcessed.add(indiaClaim2);
+            claimListToBeProcessed.add(indiaClaim3);*/
+            //test code begins
+            //List<PartnerFundClaim> claimListToBeProcessed2 = new List<PartnerFundClaim>();            
+            //List<PartnerFundClaim> claimListToBeProcessed3 = new List<PartnerFundClaim>();
+            //claimListToBeProcessed2.add(indiaClaim2);
+            //claimListToBeProcessed3.add(indiaClaim3);
+            //test code ends
+            
+          
+            //Database.insert(claimListToBeProcessed);
+            //Test.stopTest();
+            //test code begins
+            //Database.insert(claimListToBeProcessed2);
+            //Database.insert(claimListToBeProcessed3);
+            //test code ends
+            /*Core_MDF_Adjustment_Request__c adjustment1 = new Core_MDF_Adjustment_Request__c();          
+            adjustment1.Core_MDF_Reference_Claim_Nbr__c = indiaClaim.Id;
+            adjustment1.Core_MDF_Amount_Amt__c = 10;
+            adjustment1.Core_MDF_Reason_Cd__c = 'Claim Review Results (Negative)';
+          
+            Database.insert(adjustment1);
+            
+            Core_Trigger_Executions__c setting = new Core_Trigger_Executions__c();
+            setting.Core_Active__c = true;
+            setting.Core_Class_Name__c = 'Core_MDF_AdjustmentClaimOffsetProcess';
+            setting.Core_Description__c = 'Demo Description';
+            setting.Core_Object__c = 'Core_MDF_Payment_Run__c';
+            setting.Core_Trigger_Events__c = 'after insert';
+            setting.name = 'Core_MDF_AdjustmentClaimOffsetProcess';
+            insert setting;
+            
+            //Test.stopTest();
+            
+            ChannelProgram cp = [SELECT ID From ChannelProgram where Name = 'Client Co-Marketing Fund'];
+            ChannelProgram cp1 = [SELECT ID From ChannelProgram where Name = 'Data Center Co-Marketing Fund'];
+            Core_MDF_Payment_Run__c payRunRecord = new Core_MDF_Payment_Run__c();
+            payRunRecord.Core_MDF_ScheduleRun_Dtm__c= DateTime.Now().addMinutes(1);
+            payRunRecord.Core_MDF_Geo_Txt__c = 'ASMO';
+            payRunRecord.Core_MDF_Program_Id__c  = cp.Id;
+            Database.insert(payRunRecord);
+            System.assertNotEquals(payRunRecord.Id,null); 
+            
+            Core_MDF_Payment_Run__c payRunRecord1 = new Core_MDF_Payment_Run__c();
+            payRunRecord1.Core_MDF_ScheduleRun_Dtm__c= DateTime.Now().addMinutes(1);
+            payRunRecord1.Core_MDF_Geo_Txt__c = 'ASMO';
+            payRunRecord1.Core_MDF_Program_Id__c  = cp1.Id;
+            Database.insert(payRunRecord1);
+            System.assertNotEquals(payRunRecord1.Id,null);
+            
+            PartnerFundClaim claim1 = [Select Id, OwnerId from PartnerFundClaim where Title = 'India Claim1' limit 1];
+            PartnerFundClaim claim2 = [Select Id, OwnerId from PartnerFundClaim where Title = '[Adjustment] India Claim1' limit 1];*/
+            
+            PartnerFundClaim claim1 = [Select Id, OwnerId from PartnerFundClaim where Title = 'India Claim' limit 1];
             claim1.Core_MDF_Status__c='Paid';
             update claim1;
             
@@ -264,14 +344,110 @@ public class Core_MDF_PFC_Close_Adjustment_Test {
                      
             system.assertNotEquals(paidClaimCannotClose, NULL); 
             Test.stopTest();
-        }         
+        } 
+        
     }
+    
+    @isTest 
+    static void  testForCloseClaim(){
+        // Highlight: Unused Local Variable
+       // ChannelProgram cp = [SELECT ID From ChannelProgram where Name =:Core_MDF_CCP_ConstantClass.CCF_PROGRAM];  
+        
+        //ChannelProgram cp1 = [SELECT ID From ChannelProgram where Name = 'Data Center Co-Marketing Fund'];
+        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
+        /*User extUser = [SELECT Id,Email from User where Email='test1@example.com' limit 1];
+        User intUser = [SELECT Id,Email from User where Email='test1vd@intel.com' limit 1];
+        Group grp = [SELECT Id, Name, DeveloperName FROM Group where DeveloperName = 'Core_MDF_CCP_Claim_Case_Reviewer_Q_Group'];
+        Group grp2 = [SELECT Id, Name, DeveloperName FROM Group where DeveloperName = 'Core_All_Users_CCP_Internal'];*/
+        
+        PartnerFundRequest indiaActivity = [SELECT Id,Title,Core_MDF_Start_Date__c,Core_MDF_End_Date__c from PartnerFundRequest where Title='indiaActivity' limit 1];        
+       
+        Id indiaBank = [Select ID from Core_MDF_Bank__c limit 1].id; 
+        // Highlight: Unused Local Variable 
+       // List<PartnerFundClaim> claimListToBeProcessed = new List<PartnerFundClaim>();
+        
+        System.runAs(sysAdminUser){
+            
+           /* PermissionSet claimCaseReviewerPermissionSet = [SELECT Id, Name FROM PermissionSet where Name = 'Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager'];        
+            PermissionSetAssignment  psa = new PermissionSetAssignment(PermissionSetId = claimCaseReviewerPermissionSet.Id, AssigneeId = intUser.Id);
+            insert psa;
+            
+            GroupMember grpMem = new GroupMember();
+            grpMem.GroupId = grp.Id;
+            grpMem.UserOrGroupId = intUser.Id;
+            GroupMember grpMem2 = new GroupMember();
+            grpMem2.GroupId = grp2.Id;
+            grpMem2.UserOrGroupId = intUser.Id;
+            Database.insert(grpMem2);*/
+            Test.startTest();
+            PartnerFundClaim indiaClaim3 = Core_MDF_CCP_TestDataUtility.createClaim('India Claim1', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF, 
+                                                                                    indiaActivity.Id, 
+                                                                                    indiaActivity.Core_MDF_Start_Date__c, indiaActivity.Core_MDF_Start_Date__c, 
+                                                                                    200, 
+                                                                                    System.today(), indiaBank, false);
+            indiaClaim3.Core_MDF_Currency__c = 'USD';
+            indiaClaim3.Core_MDF_Claim_Previous_Status__c ='Pending Available Fund';
+            indiaClaim3.Core_MDF_Status__c ='Pending Available Fund';
+            
+            Database.insert(indiaClaim3);
+            
+            Core_MDF_Adjustment_Request__c adjustment1 = new Core_MDF_Adjustment_Request__c();          
+            adjustment1.Core_MDF_Reference_Claim_Nbr__c = indiaClaim3.Id;
+            adjustment1.Core_MDF_Amount_Amt__c = 50;
+            adjustment1.Core_MDF_Reason_Cd__c = 'Duplicate Claim';            
+            Database.insert(adjustment1);            
+            // Highlight: Unused Local Variable 
+           // List<PartnerFundClaim> pfc = new List<PartnerFundClaim>();
+            PartnerFundClaim claim1 = [Select Id, OwnerId from PartnerFundClaim where Title = 'India Claim1']; //100$
+            
+            PartnerFundClaim claim2 = [Select Id, OwnerId from PartnerFundClaim where Title = '[Adjustment] India Claim1' limit 1]; //$50
+            
+            /*claim1.Amount = 50;
+            claim2.Amount = -50;
+            pfc.add(claim1);
+            pfc.add(claim2);
+            Database.update(pfc);*/
+            //Test.stopTest();
+
+            Core_MDF_Claim_Offset__c offset1 = new Core_MDF_Claim_Offset__c();
+            offset1.Core_MDF_Offset_Claim_Nbr__c = claim1.Id;
+            offset1.Core_MDF_Adjustment_Claim_Nbr__c = claim2.Id;
+            offset1.Core_MDF_Offset_Amount_Amt__c = 50;
+            Database.insert(offset1);
+            Test.stopTest();
+            //PartnerFundClaimShare sharewithIntUser = new PartnerFundClaimShare(ParentId = claim2.Id, UserOrGroupId = intUser.Id, AccessLevel = 'Edit');
+            //Database.insert(sharewithIntUser);    
+        //}
+        //System.runAs(intUser){
+            
+            Core_MDF_PFC_Close_Adjustment.eligibilityToCloseWrapper eligibilityToClose = new Core_MDF_PFC_Close_Adjustment.eligibilityToCloseWrapper(); 
+            eligibilityToClose.hasAccess = true;  
+            
+            //PartnerFundClaim claim2 = [Select Id, OwnerId from PartnerFundClaim where Title = '[Adjustment] India Claim1' limit 1]; 
+          
+            List<id> claimList = new List<id>();
+            claimList.add(claim2.Id);
+            
+            Core_MDF_PFC_Close_Adjustment.eligibilityToCloseWrapper partialOffsetClaim2 = Core_MDF_PFC_Close_Adjustment.claimEligibleForClose(claim2.Id);
+            
+            System.AssertEquals(false,eligibilityToClose.restrictClaimWithoutOffset);
+            System.AssertEquals(false,eligibilityToClose.claimCannotBeClose);
+            system.assertNotEquals(partialOffsetClaim2, NULL); 
+            
+        }
+       // }
+        
+     }
     
     @isTest 
     static void  testAdjClaimWithCancelledSts(){
         Test.startTest();
-        
+        // Highlight: Unused Local Variable 
+        //ChannelProgram cp = [SELECT ID From ChannelProgram where Name =: Core_MDF_CCP_ConstantClass.CCF_PROGRAM];
+       // ChannelProgram cp1 = [SELECT ID From ChannelProgram where Name =: Core_MDF_CCP_ConstantClass.DCF_PROGRAM];
         User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
+        // Highlight: Unused Local Variable
+       // User extUser = [SELECT Id,Email from User where Email='test1@example.com' limit 1];
         User intUser = [SELECT Id,Email from User where Email='test1vd@intel.com' limit 1];
         Group grp = [SELECT Id, Name, DeveloperName FROM Group where DeveloperName = 'Core_MDF_CCP_Claim_Case_Reviewer_Q_Group'];
         Group grp2 = [SELECT Id, Name, DeveloperName FROM Group where DeveloperName = 'Core_All_Users_CCP_Internal'];
@@ -279,8 +455,8 @@ public class Core_MDF_PFC_Close_Adjustment_Test {
         PartnerFundRequest indiaActivity = [SELECT Id,Title,Core_MDF_Start_Date__c,Core_MDF_End_Date__c from PartnerFundRequest where Title='indiaActivity' limit 1];
         
         Core_MDF_Bank__c indiaBank = [Select ID from Core_MDF_Bank__c limit 1];
-        
-        List<PartnerFundClaim> claimListToBeProcessed = new List<PartnerFundClaim>();
+       // Highlight: Unused Local Variable
+       // List<PartnerFundClaim> claimListToBeProcessed = new List<PartnerFundClaim>();
         
         System.runAs(sysAdminUser){
             
@@ -296,31 +472,357 @@ public class Core_MDF_PFC_Close_Adjustment_Test {
             grpMem2.UserOrGroupId = intUser.Id;
             Database.insert(grpMem2);
             
-
-            PartnerFundClaim claim1 = [Select Id, OwnerId from PartnerFundClaim where Title = 'India Claim' limit 1];
-            claim1.Core_MDF_Status__c='Cancelled';
-            update claim1;
-            List<PartnerFundClaim> pfcList = new List<PartnerFundClaim>();
-            pfcList.add(claim1);
-            List<Id> pfcIdList = new List<Id>();
-            pfcIdList.add(claim1.Id);
-            Core_MDF_PFC_Close_Adjustment.updateClaimCloseStatus(pfcList);
-            Core_MDF_PFC_Close_Adjustment.closeClaims(pfcIdList);
-            PartnerFundClaimShare sharewithIntUser = new PartnerFundClaimShare(ParentId = claim1.Id, UserOrGroupId = intUser.Id, AccessLevel = 'Edit');
+            PartnerFundClaim indiaClaim3 = Core_MDF_CCP_TestDataUtility.createClaim('India Claim1', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF, 
+                                                                                    indiaActivity.Id, 
+                                                                                    indiaActivity.Core_MDF_Start_Date__c, indiaActivity.Core_MDF_Start_Date__c, 
+                                                                                    50, 
+                                                                                    System.today(), indiaBank.ID, false);
+            indiaClaim3.Core_MDF_Currency__c ='USD';
+            indiaClaim3.Core_MDF_Status__c ='Cancelled';
+            Database.insert(indiaClaim3);    
+            
+            PartnerFundClaimShare sharewithIntUser = new PartnerFundClaimShare(ParentId = indiaClaim3.Id, UserOrGroupId = intUser.Id, AccessLevel = 'Edit');
             Database.insert(sharewithIntUser);    
         }
         System.runAs(intUser){            
             Core_MDF_PFC_Close_Adjustment.eligibilityToCloseWrapper eligibilityToClose = new Core_MDF_PFC_Close_Adjustment.eligibilityToCloseWrapper(); 
             
-            PartnerFundClaim claim2 = [Select Id, OwnerId from PartnerFundClaim limit 1]; 
+            PartnerFundClaim claim2 = [Select Id, OwnerId from PartnerFundClaim where Title = 'India Claim1' limit 1]; 
             
             List<id> claimList = new List<id>();
             claimList.add(claim2.Id);
+            // Highlight: Unused Local Variable 
+           /* Core_MDF_PFC_Close_Adjustment.eligibilityToCloseWrapper claimWithCancelledSts = */ Core_MDF_PFC_Close_Adjustment.claimEligibleForClose(claim2.Id);
             
-            Core_MDF_PFC_Close_Adjustment.eligibilityToCloseWrapper claimWithCancelledSts = Core_MDF_PFC_Close_Adjustment.claimEligibleForClose(claim2.Id);
+            //System.AssertEquals(true,eligibilityToClose.hasAccess);
             System.AssertEquals(false,eligibilityToClose.claimCannotBeClose);
             System.AssertEquals(false,eligibilityToClose.isPAF);
         }        
         Test.stopTest();
     }
+    
+    @isTest 
+    static void  testCloseAdjWithoutOffset(){
+        
+        //ChannelProgram cp = [SELECT ID From ChannelProgram where Name = 'Client Co-Marketing Fund'];
+        //ChannelProgram cp1 = [SELECT ID From ChannelProgram where Name = 'Data Center Co-Marketing Fund'];
+        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
+        /*User extUser = [SELECT Id,Email from User where Email='test1@example.com' limit 1];
+        User intUser = [SELECT Id,Email from User where Email='test1vd@intel.com' limit 1];
+        Group grp = [SELECT Id, Name, DeveloperName FROM Group where DeveloperName = 'Core_MDF_CCP_Claim_Case_Reviewer_Q_Group'];
+        Group grp2 = [SELECT Id, Name, DeveloperName FROM Group where DeveloperName = 'Core_All_Users_CCP_Internal'];*/
+        
+        PartnerFundRequest indiaActivity = [SELECT Id,Title,Core_MDF_Start_Date__c,Core_MDF_End_Date__c from PartnerFundRequest where Title='indiaActivity' limit 1];
+        Core_MDF_Bank__c indiaBank = [Select ID from Core_MDF_Bank__c limit 1];
+        // Highlight: Unused Local Variable
+       // List<PartnerFundClaim> claimListToBeProcessed = new List<PartnerFundClaim>();
+        
+        System.runAs(sysAdminUser){
+            
+            /*PermissionSet claimCaseReviewerPermissionSet = [SELECT Id, Name FROM PermissionSet where Name = 'Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager'];        
+            PermissionSetAssignment  psa = new PermissionSetAssignment(PermissionSetId = claimCaseReviewerPermissionSet.Id, AssigneeId = intUser.Id);
+            insert psa;
+            
+            GroupMember grpMem = new GroupMember();
+            grpMem.GroupId = grp.Id;
+            grpMem.UserOrGroupId = intUser.Id;
+            GroupMember grpMem2 = new GroupMember();
+            grpMem2.GroupId = grp2.Id;
+            grpMem2.UserOrGroupId = intUser.Id;
+            Database.insert(grpMem2);*/
+            Test.startTest();
+            PartnerFundClaim indiaClaim3 = Core_MDF_CCP_TestDataUtility.createClaim('India Claim1', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF, 
+                                                                                    indiaActivity.Id, 
+                                                                                    indiaActivity.Core_MDF_Start_Date__c, indiaActivity.Core_MDF_Start_Date__c, 
+                                                                                    500, 
+                                                                                    System.today(), indiaBank.ID, false);
+            indiaClaim3.Core_MDF_Currency__c = 'USD';
+            indiaClaim3.Core_MDF_Claim_Previous_Status__c ='Pending Available Fund';
+            indiaClaim3.Core_MDF_Status__c ='Pending Available Fund';
+            Database.insert(indiaClaim3);
+            System.debug('indiaClaim3'+indiaClaim3.id);
+           
+            Core_MDF_Adjustment_Request__c adjustment1 = new Core_MDF_Adjustment_Request__c();   
+            adjustment1.Core_MDF_Reference_Claim_Nbr__c = indiaClaim3.Id;
+            adjustment1.Core_MDF_Amount_Amt__c = 20;
+            adjustment1.Core_MDF_Reason_Cd__c = 'Duplicate Claim';            
+            Database.insert(adjustment1); 
+            System.debug('adjustment1'+adjustment1);
+            test.stopTest();
+           // Highlight: Unused Local Variable
+           // List<PartnerFundClaim> pfc = new List<PartnerFundClaim>();
+          // PartnerFundClaim claim1 = [Select Id, OwnerId from PartnerFundClaim where Title = 'India Claim1'];
+            
+            //PartnerFundClaim claim2 = [Select Id, OwnerId from PartnerFundClaim where Title = '[Adjustment] India Claim1' limit 1]; 
+            /*claim2.Core_MDF_Type_Txt__c = 'Adjustment';
+            pfc.add(claim2);
+            Database.update(pfc);*/
+            
+            //PartnerFundClaimShare sharewithIntUser = new PartnerFundClaimShare(ParentId = claim2.Id, UserOrGroupId = intUser.Id, AccessLevel = 'Edit');
+            //Database.insert(sharewithIntUser);            
+       // }        
+       // System.runAs(intUser){
+            PartnerFundClaim adjClaimWithoutOffset = [Select Id,Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c from PartnerFundClaim where Title = '[Adjustment] India Claim1' limit 1]; 
+            // Unit Test Method should include System.Assert
+            System.assertNotEquals(null,adjClaimWithoutOffset.Id,'Adjustment claim Id should be populated');
+            
+            //Test.stopTest(); 
+           // Highlight: Unused Local Variable
+           /* Core_MDF_PFC_Close_Adjustment.eligibilityToCloseWrapper adjustmentClaimWithoutOffset = */ Core_MDF_PFC_Close_Adjustment.claimEligibleForClose(adjClaimWithoutOffset.Id);      
+                        
+            //system.assertNotEquals(adjustmentClaimWithoutOffset, NULL);  
+        }
+       
+    }
+    
+    @isTest 
+    static void  testclaimCannotBeClose(){
+        
+        //ChannelProgram cp = [SELECT ID From ChannelProgram where Name = 'Client Co-Marketing Fund'];
+        //ChannelProgram cp1 = [SELECT ID From ChannelProgram where Name = 'Data Center Co-Marketing Fund'];
+        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
+       /* User extUser = [SELECT Id,Email from User where Email='test1@example.com' limit 1];
+        User intUser = [SELECT Id,Email from User where Email='test1vd@intel.com' limit 1];
+        Group grp = [SELECT Id, Name, DeveloperName FROM Group where DeveloperName = 'Core_MDF_CCP_Claim_Case_Reviewer_Q_Group'];
+        Group grp2 = [SELECT Id, Name, DeveloperName FROM Group where DeveloperName = 'Core_All_Users_CCP_Internal'];*/
+        
+        PartnerFundRequest indiaActivity = [SELECT Id,Title,Core_MDF_Start_Date__c,Core_MDF_End_Date__c from PartnerFundRequest where Title='indiaActivity' limit 1];        
+        Core_MDF_Bank__c indiaBank = [Select ID from Core_MDF_Bank__c limit 1];
+        // Highlight: Unused Local Variable
+       // List<PartnerFundClaim> claimListToBeProcessed = new List<PartnerFundClaim>();
+        
+        System.runAs(sysAdminUser){
+            
+            /*PermissionSet claimCaseReviewerPermissionSet = [SELECT Id, Name FROM PermissionSet where Name = 'Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager'];        
+            PermissionSetAssignment  psa = new PermissionSetAssignment(PermissionSetId = claimCaseReviewerPermissionSet.Id, AssigneeId = intUser.Id);
+            insert psa;
+            
+            GroupMember grpMem = new GroupMember();
+            grpMem.GroupId = grp.Id;
+            grpMem.UserOrGroupId = intUser.Id;
+            GroupMember grpMem2 = new GroupMember();
+            grpMem2.GroupId = grp2.Id;
+            grpMem2.UserOrGroupId = intUser.Id;
+            Database.insert(grpMem2);*/
+            
+            PartnerFundClaim indiaClaim3 = Core_MDF_CCP_TestDataUtility.createClaim('India Claim1', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF, 
+                                                                                    indiaActivity.Id, 
+                                                                                    indiaActivity.Core_MDF_Start_Date__c, indiaActivity.Core_MDF_Start_Date__c, 
+                                                                                    500, 
+                                                                                    System.today(), indiaBank.ID, false);
+            indiaClaim3.Core_MDF_Currency__c = 'USD';
+            indiaClaim3.Core_MDF_Claim_Previous_Status__c ='Pending Available Fund';
+            indiaClaim3.Core_MDF_Status__c ='Pending Available Fund';
+            
+            Test.startTest();
+            Database.insert(indiaClaim3);
+            
+            Core_MDF_Adjustment_Request__c adjustment1 = new Core_MDF_Adjustment_Request__c();          
+            adjustment1.Core_MDF_Reference_Claim_Nbr__c = indiaClaim3.Id;
+            adjustment1.Core_MDF_Amount_Amt__c = 2;
+            adjustment1.Core_MDF_Reason_Cd__c = 'Duplicate Claim'; 
+            Database.insert(adjustment1);   
+          // Highlight: Unused Local Variable
+          //  List<PartnerFundClaim> pfc = new List<PartnerFundClaim>();
+             
+            PartnerFundClaim claim1 = [Select Id, OwnerId from PartnerFundClaim where Title = 'India Claim1'];
+            Test.stopTest();
+             
+            claim1.Core_MDF_Status__c ='Cancelled';
+            //pfc.add(claim2);
+            
+            Database.update(claim1);
+            
+            /*PartnerFundClaimShare sharewithIntUser = new PartnerFundClaimShare(ParentId = claim2.Id, UserOrGroupId = intUser.Id, AccessLevel = 'Edit');
+            Database.insert(sharewithIntUser);    */        
+        //}
+        //System.runAs(intUser){
+            //PartnerFundClaim claimCannotBeClose = [Select Id,Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c from PartnerFundClaim where Title = '[Adjustment] India Claim1' limit 1]; 
+            //claimCannotBeClose.Core_MDF_Status__c ='Cancelled';
+            //Database.update(claimCannotBeClose);
+            Core_MDF_PFC_Close_Adjustment.eligibilityToCloseWrapper adjustmentClaimCannotBeClose = Core_MDF_PFC_Close_Adjustment.claimEligibleForClose(claim1.Id);      
+                        
+            system.assertNotEquals(adjustmentClaimCannotBeClose, NULL);  
+        }
+    } 
+    
+   /* @isTest static void validateAdjustmentOffset1(){ 
+        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
+        PartnerFundRequest indiaActivity = [SELECT Id,Title,Core_MDF_Start_Date__c,Core_MDF_End_Date__c from PartnerFundRequest where Title='indiaActivity' limit 1];
+        Core_MDF_Bank__c indiaBank = [Select ID from Core_MDF_Bank__c limit 1];
+        System.runAs(sysAdminUser){
+            Test.startTest();
+            //create claim
+            PartnerFundClaim indiaClaim3 = Core_MDF_CCP_TestDataUtility.createClaim('Test indiaClaim3', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF, 
+                                                                                    indiaActivity.Id, 
+                                                                                    indiaActivity.Core_MDF_Start_Date__c, indiaActivity.Core_MDF_Start_Date__c, 
+                                                                                    5000, 
+                                                                                    System.today(), indiaBank.ID, false);
+            indiaClaim3.Core_MDF_Currency__c = 'USD';
+            indiaClaim3.Core_MDF_Claim_Previous_Status__c ='Pending Available Fund';
+            indiaClaim3.Core_MDF_Status__c ='Pending Available Fund';
+            Database.insert(indiaClaim3);
+            
+            Core_MDF_Adjustment_Request__c adjustment1 = new Core_MDF_Adjustment_Request__c();          
+            adjustment1.Core_MDF_Reference_Claim_Nbr__c = indiaClaim3.Id;
+            adjustment1.Core_MDF_Amount_Amt__c = 2000;
+            adjustment1.Core_MDF_Reason_Cd__c = 'Claim Review Results (Negative)';            
+            Database.insert(adjustment1);
+            
+            PartnerFundClaim claim1 = [Select Id, Amount, Core_MDF_Status__c from PartnerFundClaim where Title = 'Test indiaClaim3' limit 1];
+            PartnerFundClaim claim2 = [Select Id,Core_MDF_Type_Txt__c, Core_MDF_Total_Invoice_Amount_Local__c, Amount, Core_MDF_Status__c from PartnerFundClaim where Title = '[Adjustment] Test indiaClaim3' limit 1];   
+            
+            system.AssertEquals('Adjustment',claim2.Core_MDF_Type_Txt__c);
+            system.AssertEquals(Label.Core_MDF_Claim_Status_Pending_Available_Fund,claim2.Core_MDF_Status__c);
+            
+            Core_MDF_PFC_Close_Adjustment.eligibilityToCloseWrapper isAdjustmentType = Core_MDF_PFC_Close_Adjustment.claimEligibleForClose(claim2.Id);      
+            system.AssertEquals(false ,isAdjustmentType.restrictClaimWithoutOffset);
+            
+            Test.stopTest(); 
+        }
+    }*/
+    @isTest 
+    static void validateAdjustmentOffset1(){ 
+        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
+        PartnerFundRequest indiaActivity = [SELECT Id,Title,Core_MDF_Start_Date__c,Core_MDF_End_Date__c from PartnerFundRequest where Title='indiaActivity' limit 1];
+        
+       
+        Core_MDF_Bank__c indiaBank = [Select ID from Core_MDF_Bank__c limit 1];
+        System.runAs(sysAdminUser){
+            
+           
+            //create claim
+            PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('TestAdjClaim', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF, 
+                                                                                    indiaActivity.Id, 
+                                                                                    indiaActivity.Core_MDF_Start_Date__c, indiaActivity.Core_MDF_Start_Date__c, 
+                                                                                    5000, 
+                                                                                    System.today(), indiaBank.ID, false);
+            claim1.Core_MDF_Currency__c = 'USD';
+            claim1.Core_MDF_Claim_Previous_Status__c ='Pending Available Fund';
+            claim1.Core_MDF_Status__c ='Pending Available Fund';
+            
+            Database.insert(claim1);
+           
+            Core_MDF_Adjustment_Request__c adjustment1 = new Core_MDF_Adjustment_Request__c();          
+            adjustment1.Core_MDF_Reference_Claim_Nbr__c = claim1.Id;
+            adjustment1.Core_MDF_Amount_Amt__c = 2000;
+            adjustment1.Core_MDF_Reason_Cd__c = 'Duplicate Claim'; 
+            test.startTest();
+                   
+            Database.insert(adjustment1);
+            
+            
+            List<Id> claimIdList = new List<Id>();
+          
+            //PartnerFundClaim claim1 = [Select Id, Amount, Core_MDF_Status__c from PartnerFundClaim where Title = 'TestAdjClaim' limit 1];
+            Core_MDF_Adjustment_Request__c adj1 = [Select Id,Core_MDF_Adjustment_Claim_Nbr__c, Core_MDF_Reference_Claim_Nbr__c,Core_MDF_Reference_Claim_Nbr__r.Title,Core_MDF_Reference_Claim_Nbr__r.Core_MDF_Type_Txt__c 
+                                                  FROM Core_MDF_Adjustment_Request__c where Core_MDF_Reference_Claim_Nbr__r.Id=:claim1.Id];
+            
+            //claimIdList.add(claim1.Id);
+            Test.stopTest();
+            boolean  isclosed = Core_MDF_PFC_Close_Adjustment.closeClaims(claimIdList);
+            system.AssertEquals(true,isclosed);
+            
+            PartnerFundClaim claim2 = [Select Id,Core_MDF_Type_Txt__c, Core_MDF_Total_Invoice_Amount_Local__c, Amount, Core_MDF_Status__c from PartnerFundClaim where Id=:adj1.Core_MDF_Adjustment_Claim_Nbr__c];   
+            
+            system.AssertEquals('Adjustment',claim2.Core_MDF_Type_Txt__c);
+            system.AssertEquals(Label.Core_MDF_Claim_Status_Pending_Available_Fund,claim2.Core_MDF_Status__c);
+            claimIdList.add(claim2.Id);
+           
+            
+            Core_MDF_PFC_Close_Adjustment.eligibilityToCloseWrapper isAdjustmentType = Core_MDF_PFC_Close_Adjustment.claimEligibleForClose(adj1.Core_MDF_Reference_Claim_Nbr__r.Id);      
+            system.AssertEquals(false ,isAdjustmentType.restrictClaimWithoutOffset);
+            
+            //system.AssertEquals(true ,eligibilityToClose.adjustmentClaimType);
+           
+            
+            /*Core_MDF_Claim_Offset__c offset1 = new Core_MDF_Claim_Offset__c();
+            offset1.Core_MDF_Offset_Claim_Nbr__c = claim1.Id;
+            offset1.Core_MDF_Adjustment_Claim_Nbr__c = adj1.Core_MDF_Reference_Claim_Nbr__c;
+            offset1.Core_MDF_Offset_Amount_Amt__c = 50;
+          
+            Database.insert(offset1);*/
+            
+            boolean  isclosed1 = Core_MDF_PFC_Close_Adjustment.closeClaims(claimIdList);
+            system.AssertEquals(true,isclosed1);
+            /*List<PartnerFundClaim> claimToBeClosed = new List<PartnerFundClaim>();
+            claimToBeClosed.add(claim2);
+            Core_MDF_PFC_Close_Adjustment.updateClaimCloseStatus(claimToBeClosed);
+            */
+           
+        }
+    }
+    
+     @isTest 
+    static void validateAdjustmentOffset2(){ 
+        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
+        
+        PartnerFundRequest indiaActivity = [SELECT Id,Title,Core_MDF_Start_Date__c,Core_MDF_End_Date__c from PartnerFundRequest where Title='indiaActivity' limit 1];
+        
+        Core_MDF_Bank__c indiaBank = [Select ID from Core_MDF_Bank__c limit 1];
+        System.runAs(sysAdminUser){
+            //68
+            Test.startTest();
+            PartnerFundClaim indiaClaim3 = Core_MDF_CCP_TestDataUtility.createClaim('India Claim1', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF, 
+                                                                                    indiaActivity.Id, 
+                                                                                    indiaActivity.Core_MDF_Start_Date__c, indiaActivity.Core_MDF_Start_Date__c, 
+                                                                                    5000, 
+                                                                                    System.today(), indiaBank.ID, false);
+            indiaClaim3.Core_MDF_Currency__c = 'USD';
+            indiaClaim3.Core_MDF_Claim_Previous_Status__c ='Pending Available Fund';
+            indiaClaim3.Core_MDF_Status__c ='Pending Available Fund';
+            Database.insert(indiaClaim3);
+             
+            Core_MDF_Adjustment_Request__c adjustment1 = new Core_MDF_Adjustment_Request__c();          
+            adjustment1.Core_MDF_Reference_Claim_Nbr__c = indiaClaim3.Id;
+            adjustment1.Core_MDF_Amount_Amt__c = 2000;
+            adjustment1.Core_MDF_Reason_Cd__c = 'Duplicate Claim';  
+            
+            Database.insert(adjustment1); 
+            Test.stopTest();
+            
+            //List<Id> pfcId = new List<Id>();
+            PartnerFundClaim claim1 = [Select Id, OwnerId from PartnerFundClaim where Title = 'India Claim1']; //100$
+            PartnerFundClaim claim2 = [Select Id from PartnerFundClaim where Title = '[Adjustment] India Claim1' limit 1]; //$50
+             
+            claim2.Amount = -500;
+            claim2.Core_MDF_Status__c = Label.Core_MDF_Status_Pending_Available_Fund;
+            claim1.Core_MDF_Status__c = Label.Core_MDF_Status_Paid;
+            List<PartnerFundClaim> claims = new List<PartnerFundClaim>();
+            claims.add(claim1);
+            claims.add(claim2);
+            database.update(claims);
+           
+            
+            //PartnerFundClaim claim3 = [Select Id, Amount, Core_MDF_Status__c, OwnerId from PartnerFundClaim where Title = 'India Claim1' limit 1];
+            //PartnerFundClaim claim4 = [Select Id, Core_MDF_Type_txt__c, Core_MDF_Total_Invoice_Amount_Local__c, Amount, Core_MDF_Status__c, OwnerId from PartnerFundClaim where Title = '[Adjustment] India Claim1' limit 1];
+          
+           // pfcId.add(claim1.Id);
+            
+            
+            Core_MDF_Claim_Offset__c offset1 = new Core_MDF_Claim_Offset__c();
+            offset1.Core_MDF_Offset_Claim_Nbr__c = claim1.Id;
+            offset1.Core_MDF_Adjustment_Claim_Nbr__c = claim2.Id;
+            offset1.Core_MDF_Offset_Amount_Amt__c = 1000;
+            Database.insert(offset1);
+           // pfcId.add(claim2.Id);            
+           
+            
+            //Core_MDF_Claim_Offset__c offset = [select id,Core_MDF_Adjustment_Claim_Nbr__c from Core_MDF_Claim_Offset__c where Core_MDF_Adjustment_Claim_Nbr__c= :claim2.Id]; 
+            
+            //select id,Core_MDF_Adjustment_Claim_Nbr__c,Core_MDF_Adjustment_Claim_Nbr__r.Core_MDF_Status__c 
+            //from Core_MDF_Claim_Offset__c  where Core_MDF_Adjustment_Claim_Nbr__r.Core_MDF_Status__c='Pending Available Fund' 
+            //boolean  isclosed1 = Core_MDF_PFC_Close_Adjustment.closeClaims(pfcId);
+            //system.AssertEquals(true,isclosed1);
+            //
+            List<Id> closeClaims = new List<Id>();
+            closeClaims.add(claim2.id);
+            
+            boolean partialOffsetClaim = Core_MDF_PFC_Close_Adjustment.closeClaims(closeClaims);
+            system.AssertEquals(true,partialOffsetClaim);
+            
+           //Test.stopTest();
+        }
+    }
+    
 }

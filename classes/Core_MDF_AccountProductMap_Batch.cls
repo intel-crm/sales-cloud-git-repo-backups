@@ -62,6 +62,13 @@ public without sharing class Core_MDF_AccountProductMap_Batch implements Databas
                 
                 if((string.isNotBlank(accountId) && accountId == apm.Core_MDF_Account__c) || (isAllAccount && apm.Core_MDF_All_Account_Ind__c && apm.Core_MDF_Active_ind__c)) {
                     //Avoid Deeply Nested IF Statements
+                    // if(selectedProdIds.isEmpty() || (!selectedProdIds.isEmpty() && !selectedProdIds.contains(apm.Core_MDF_Product__c))) {
+                    //     apm.Core_MDF_Active_ind__c = false;
+                    //     upsertKeyToAccProdMap.put(programProduct_key,apm);
+                    //     if(isAllAccount && apm.Core_MDF_All_Account_Ind__c){
+                    //         productsToRemoveSet.add(apm.Core_MDF_Product__c);
+                    //     }
+                    // }
                     Boolean selectedProdIdsCheck = (selectedProdIds.isEmpty() || (!selectedProdIds.isEmpty() && !selectedProdIds.contains(apm.Core_MDF_Product__c)));
                     if(selectedProdIdsCheck) {
                         apm.Core_MDF_Active_ind__c = false;
@@ -103,23 +110,47 @@ public without sharing class Core_MDF_AccountProductMap_Batch implements Databas
                             upsertKeyToAccProdMap.put(programProduct_key,apm);
                         }
                     }
+                    
+                    //US - TWC702-14285 - Begin
                     if(!existingAccIdSet.isEmpty() && isAllAccount){
                         for(Id accId: existingAccIdSet){
                             string programProduct_Acc_key = program + productId + accId + 'No';
                             if(!existingAccProdMap.containsKey(programProduct_Acc_key)){
                                 upsertKeyToAccProdMap.put(programProduct_Acc_key,Core_MDF_AccountProductMappingController.createAccountProdMapInstance(accId,false,productId,program,true));
-                            }else{
-                                if(existingAccProdMap.containsKey(programProduct_Acc_key) && !existingAccProdMap.get(programProduct_Acc_key).Core_MDF_Active_ind__c ){
-                                    Core_MDF_Account_Product_Mapping__c apm = existingAccProdMap.get(programProduct_Acc_key);
-                                    apm.Core_MDF_Active_ind__c = true;
-                                    upsertKeyToAccProdMap.put(programProduct_Acc_key,apm);
-                                }
+                                continue;
+                            }
+
+                            // Case 2: Key exists but is inactive
+                            Core_MDF_Account_Product_Mapping__c apm = existingAccProdMap.get(programProduct_Acc_key);
+                            if(!apm.Core_MDF_Active_ind__c) {
+                                apm.Core_MDF_Active_ind__c = true;
+                                upsertKeyToAccProdMap.put(programProduct_Acc_key,apm);
                             }
                         }
                     }
+                    //US - TWC702-14285 - End
                 }
             } 
             //Avoid Deeply Nested IF Statements
+            // if(upsertKeyToAccProdMap != null && !upsertKeyToAccProdMap.values().isEmpty()) {
+            //     if(upsertKeyToAccProdMap.values().size() < 9000){
+
+            //         Database.upsertResult[] srList = Database.upsert(upsertKeyToAccProdMap.values(),false); 
+                     
+            //         for (Database.upsertResult sr : srList) {
+            //             if(!sr.isSuccess()) {
+            //                 List<string> errorMsgs = new List<string>();
+            //                 for(Database.Error err : sr.getErrors()) { string errorMsg = err.getStatusCode() + ': ' + err.getFields() + ': ' + err.getMessage();
+            //                                                           errorMsgs.add(errorMsg);
+            //                                                          }
+            //                 if(sr.getId() != null){apmIdToErrorsMap.put(sr.getId(),errorMsgs);   
+            //                 }
+            //             }
+            //         }
+            //         if(apmIdToErrorsMap != null && !apmIdToErrorsMap.values().isEmpty()) {createLogEntry(apmIdToErrorsMap);
+            //         }
+            //     }
+            // } 
             if(upsertKeyToAccProdMap != null && !upsertKeyToAccProdMap.values().isEmpty() && upsertKeyToAccProdMap.values().size() < 9000) {
                     Database.upsertResult[] srList = Database.upsert(upsertKeyToAccProdMap.values(),false); 
                     for (Database.upsertResult sr : srList) {

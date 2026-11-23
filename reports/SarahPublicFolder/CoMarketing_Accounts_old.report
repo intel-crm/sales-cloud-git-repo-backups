@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account$Core_MDF_Parent_Fund_Account__c</field>
+    </columns>
+    <columns>
+        <field>Account$Core_CIM_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account$Core_MDF_Parent_Fund_Account__c.Id</field>
+    </columns>
+    <description>Co-Marketing Accounts</description>
+    <filter>
+        <criteriaItems>
+            <column>Account$Core_MDF_Parent_Fund_Account__c.Core_MDF_CoMarketingActive__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account$Core_MDF_Channel_Program__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Co-Marketing Accounts_Old</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CoMarketing_Accounts_Old__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Account$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

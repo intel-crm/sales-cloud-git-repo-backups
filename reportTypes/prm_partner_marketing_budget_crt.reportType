@@ -123,17 +123,37 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Last_ModifiedBy_Nm__c</field>
-            <table>PartnerMarketingBudget</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Owner_Nm__c</field>
             <table>PartnerMarketingBudget</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Last_ModifiedBy_Nm__c</field>
+            <table>PartnerMarketingBudget</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_IsApprovalProcessBypassed_Ind__c</field>
+            <table>PartnerMarketingBudget</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Budget_Consumption__c</field>
+            <table>PartnerMarketingBudget</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Budget_Type_Report_txt__c</field>
+            <table>PartnerMarketingBudget</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Geo__c</field>
+            <table>PartnerMarketingBudget</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Sub_Geo__c</field>
             <table>PartnerMarketingBudget</table>
         </columns>
         <columns>
@@ -149,11 +169,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Program_Nm__c</field>
-            <table>PartnerMarketingBudget</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Approver_10__c</field>
             <table>PartnerMarketingBudget</table>
         </columns>
         <columns>
@@ -203,7 +218,22 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Approver_10__c</field>
+            <table>PartnerMarketingBudget</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Ultimate_Account_Id__c</field>
+            <table>PartnerMarketingBudget</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Test_validation_Rule__c</field>
+            <table>PartnerMarketingBudget</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Budget_External_Id__c</field>
             <table>PartnerMarketingBudget</table>
         </columns>
         <columns>
@@ -214,6 +244,31 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_budget_ref_nbr__c</field>
+            <table>PartnerMarketingBudget</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Maximum_Approved_Budget_Amt__c</field>
+            <table>PartnerMarketingBudget</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Co_Marketing_ind__c</field>
+            <table>PartnerMarketingBudget</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Co_Selling_ind__c</field>
+            <table>PartnerMarketingBudget</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Revenue_Segment_nm__c</field>
+            <table>PartnerMarketingBudget</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Intermediate_Budget__c</field>
             <table>PartnerMarketingBudget</table>
         </columns>
         <masterLabel>Budgets</masterLabel>

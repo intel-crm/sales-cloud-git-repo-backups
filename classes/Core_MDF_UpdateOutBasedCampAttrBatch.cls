@@ -9,12 +9,30 @@
 * Schedule Class   : Core_MDF_UpdateOutBasedCampAttr_Sch (currently its scheduled for every hour)
 * Modification Log :
 * Developer            Date               Description
+
+// Roshan - TWC3117-18808 
+Id jobId = Database.executeBatch(new Core_MDF_UpdateOutBasedCampAttrBatch(true), 200);
+System.debug('jobId@@@' + jobId);
+
 *****************************************************************************************************************************************/
 public class Core_MDF_UpdateOutBasedCampAttrBatch implements Database.Batchable<SObject>, Database.Stateful {
 
     // The key is either a Campaign ID for proposal-based claims or a PartnerFundRequest ID for outcome-based claims.
     private Map<Id, Decimal> parentIdToLatestQtyNbrMap = new Map<Id, Decimal>();
     private Map<Id, DateTime> parentIdToLatestHistoryDateMap = new Map<Id, DateTime>();
+
+    // Roshan - TWC3117-18808
+    private Boolean isHistoricalRun = false;
+    private Integer activityOutcomesForUpdate = 0;
+    private Integer campaignOutcomesForUpdate = 0;
+    private Integer recordsUpdated = 0;
+    private Integer recordsFailed = 0;
+
+    public Core_MDF_UpdateOutBasedCampAttrBatch() {}
+
+    public Core_MDF_UpdateOutBasedCampAttrBatch(Boolean isHistoricalRun) {
+        this.isHistoricalRun = isHistoricalRun == true;
+    }
 
     private class ClaimAttriutesWrapper {
         Id parentId;
@@ -25,8 +43,13 @@ public class Core_MDF_UpdateOutBasedCampAttrBatch implements Database.Batchable<
     }
 
     public Iterable<SObject> start(Database.BatchableContext bc) {
-        DateTime oneWeekAgo = Date.today().addDays(-7);
-        DateTime oneYearAgo = System.now().addYears(-1);
+
+        // Roshan - TWC3117-18808
+        // DateTime oneWeekAgo = Date.today().addDays(-7);
+        // DateTime oneYearAgo = System.now().addYears(-1);
+        DateTime minDate = DateTime.newInstanceGmt(2015, 1, 1);
+        DateTime oneWeekAgo = isHistoricalRun ? minDate : Date.today().addDays(-7);
+        DateTime oneYearAgo = isHistoricalRun ? minDate : System.now().addYears(-1);
 
         // Field history (PartnerFundClaimHistory) records cannot be created in Apex test context,
         // so in tests drive the batch using the related claim records directly. This lets
@@ -85,12 +108,22 @@ public class Core_MDF_UpdateOutBasedCampAttrBatch implements Database.Batchable<
                 }
             }
         }
+        activityOutcomesForUpdate += outcomesToUpdate.size();
+        campaignOutcomesForUpdate += campaignOutcomesToUpdate.size();
 
-        if (!outcomesToUpdate.isEmpty()) {
-            try { Database.update(outcomesToUpdate, false); } catch (Exception e) { Core_MDF_CCP_UtilityClass.logError(e); }
+        if (!isHistoricalRun) {
+            if (!outcomesToUpdate.isEmpty()) {
+                try { countResults(Database.update(outcomesToUpdate, false)); } catch (Exception e) { Core_MDF_CCP_UtilityClass.logError(e); }
+            }
+            if (!campaignOutcomesToUpdate.isEmpty()) {
+                try { countResults(Database.update(campaignOutcomesToUpdate, false)); } catch (Exception e) { Core_MDF_CCP_UtilityClass.logError(e); }
+            }
         }
-        if (!campaignOutcomesToUpdate.isEmpty()) {
-            try { Database.update(campaignOutcomesToUpdate, false); } catch (Exception e) { Core_MDF_CCP_UtilityClass.logError(e); }
+    }
+
+    private void countResults(List<Database.SaveResult> results) {
+        for (Database.SaveResult result : results) {
+            if (result.isSuccess()) { recordsUpdated++; } else { recordsFailed++; }
         }
     }
 
@@ -139,5 +172,32 @@ public class Core_MDF_UpdateOutBasedCampAttrBatch implements Database.Batchable<
         }
     }
 
-    public void finish(Database.BatchableContext bc) {}
+    // Roshan - TWC3117-18808 
+    public void finish(Database.BatchableContext bc) {
+        if (isHistoricalRun) { sendCompletionEmail(bc.getJobId()); }
+    }
+
+    private void sendCompletionEmail(Id jobId) {
+        try {
+            AsyncApexJob job = [SELECT Status, CreatedBy.Email FROM AsyncApexJob WHERE Id = :jobId];
+
+            String body = 'Job Id: ' + jobId + '\n'
+                + 'Status: ' + job.Status + '\n'
+                + 'Activity Outcomes for update: ' + activityOutcomesForUpdate + '\n'
+                + 'Campaign Outcomes for update: ' + campaignOutcomesForUpdate + '\n'
+                + 'Total records: ' + (activityOutcomesForUpdate + campaignOutcomesForUpdate) + '\n'
+                + 'Records updated: ' + recordsUpdated + '\n'
+                + 'Records failed: ' + recordsFailed;
+
+            Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+            mail.setToAddresses(new List<String>{ job.CreatedBy.Email });
+            mail.setSubject('Outcome Attribute Sync Batch - ' + job.Status);
+            mail.setOrgWideEmailAddressId(Label.Core_MDF_OrgWideId);
+            mail.setPlainTextBody(body);
+            mail.setSaveAsActivity(false);
+            Messaging.sendEmail(new List<Messaging.SingleEmailMessage>{ mail });
+        } catch (Exception e) {
+            Core_MDF_CCP_UtilityClass.logError(e);
+        }
+    }
 }

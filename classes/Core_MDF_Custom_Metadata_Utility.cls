@@ -9,7 +9,10 @@
 * Accenture – Batthieni Gayathri        10/03/2024                   To fetch Core_MDF_CCP_Custom_Metadata_Utility__c records.
 *****************************************************************************************************************************************/
 public Without Sharing class Core_MDF_Custom_Metadata_Utility {
+
+
     public static List<sObject> getCustomObjectRecords(String whereClause) {
+        System.debug('where clause*****'+whereClause);
          List<sObject> queryResults = new List<sObject>();
          Set<String> queryStringFields = new Set<String>();
         try{
@@ -29,9 +32,9 @@ public Without Sharing class Core_MDF_Custom_Metadata_Utility {
                     String sanitizedWhereClause = String.escapeSingleQuotes(whereClause).replaceAll('\\\\','');
                     queryString += ' WHERE ' + sanitizedWhereClause ;
                 }
-
+            System.debug('queryString******'+queryString);
                 queryResults = Database.query(queryString);
-
+            System.debug('queryResults************'+queryResults);
             //}
         }catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);} 
         return queryResults;
@@ -49,10 +52,12 @@ public Without Sharing class Core_MDF_Custom_Metadata_Utility {
 *****************************************************************************************************************************************/    
     public static List<sObject> getCustomObjectRecordsUsingDynamicQuery(String query){
         Core_MDF_CCP_Custom_Metadata_Utility__c[] queryResults;
-
+        // Highlight: Unused Local Variable - 14285
+       // String strLabel = '';
         try{
             String sanitizedQuery = String.escapeSingleQuotes(query).replaceAll('\\\\','');
             if(sanitizedQuery != Null){
+                System.debug('sanitizedQuery----'+sanitizedQuery);
                 queryResults = Database.query(sanitizedQuery);
             } 
         }catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);} 

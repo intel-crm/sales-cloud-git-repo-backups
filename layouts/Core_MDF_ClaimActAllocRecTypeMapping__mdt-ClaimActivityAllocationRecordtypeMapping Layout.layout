@@ -32,6 +32,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Core_MDF_Budget_Cap_RecType_DevName_Txt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Core_MDF_Enable_Fund_Reservation_chk__c</field>
             </layoutItems>
             <layoutItems>

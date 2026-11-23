@@ -54,14 +54,13 @@ import exceptionName from '@salesforce/label/c.Core_MDF_Exception_Name';
 import exceptionReason from '@salesforce/label/c.Core_MDF_Exception_Reason';
 import exceptionActCatType from '@salesforce/label/c.Core_MDF_Exception_Activity_Category_Type';
 import potentialExceptions from '@salesforce/label/c.Core_MDF_Potential_Exceptions';
+import Core_MDF_Minimum_Forecast_Volume_nbr__c from '@salesforce/schema/Core_MDF_Activity_Segment_Mapping__c.Core_MDF_Minimum_Forecast_Volume_nbr__c';
 import claimStatusPaymentClearanceProcessing from '@salesforce/label/c.Core_MDF_Claim_Status_Payment_Clearance_Processing';//Swati-PIC Pending Label update
 import paymentClearanceProcessingHeader from '@salesforce/label/c.Core_MDF_Payment_Clearance_Processing_Header';//16654
 import ipaProgram from '@salesforce/label/c.Core_MDF_IPA_Technical_program_name';
-import outComeBasedCampaignName from '@salesforce/label/c.Core_MDF_OutcomeBasedCampaign_Name';
-import picReviewScreenAccordionTitleOutcomeBased from '@salesforce/label/c.Core_MDF_PIC_Review_Accordion_Title_Outcome_Based';
-import OutcomeBasedInternalLink from '@salesforce/label/c.Core_MDF_Outcome_Internal_Link';  
-
-
+import outComeBasedCampaignName from '@salesforce/label/c.Core_MDF_OutcomeBasedCampaign_Name'; //anushya TWC3117-16718 
+import picReviewScreenAccordionTitleOutcomeBased from '@salesforce/label/c.Core_MDF_PIC_Review_Accordion_Title_Outcome_Based'; //anushya TWC3117-16718 
+import OutcomeBasedInternalLink from '@salesforce/label/c.Core_MDF_Outcome_Internal_Link';  //anushya TWC3117-16718 
 export default class Core_MDF_PicReviewScreen extends NavigationMixin(LightningElement) {
     @api claimRecordData;
     @api recordId;
@@ -77,6 +76,7 @@ export default class Core_MDF_PicReviewScreen extends NavigationMixin(LightningE
     completeClaimResponse;
     claimAndActivityDetails;
     hasClaimRecordData = false;
+    hasExceptionData = false;
     messageForNonEligibleUsers;
     isNonEligibleForPIC;
     showSpinner = false;
@@ -85,9 +85,8 @@ export default class Core_MDF_PicReviewScreen extends NavigationMixin(LightningE
     potentialExceptionsLabel = potentialExceptions;
     exceptionNameLabel = exceptionName;
     exceptionReasonLabel = exceptionReason;
-    exceptionActCatTypeLabel = exceptionActCatType;
+    exceptionActCatTypeLabel = exceptionActCatType; 
     isOutcomeBasedSuperClaim = false;
-
     /**
      * This object contains the claim field api name and its label as key value pair. It is checked against claimRecorddata to display in the claim and activity details accordion
      */
@@ -99,7 +98,7 @@ export default class Core_MDF_PicReviewScreen extends NavigationMixin(LightningE
         Core_MDF_Reimbursable_Transaction_Amount__c, Core_MDF_Requested_Reimbursement_Amt__c, Amount, claimStatusPICPending, claimTitle, applicationError, claimStatusPaidAndPICPending, Core_MDF_3rd_Party_POP_Doc_Required_Ind__c, escalationName, claimStatusPaymentClearanceProcessing, ipaProgram
     };
 
-    picLabel = { picReviewScreenHeader, noClaimData, messageForNonPICPendingStatus, messageForNonPICReviewerLabel, picReviewScreenAccordionTitle, applicationErrorText, activity, escalation, paymentClearanceProcessingHeader, picReviewScreenAccordionTitleOutcomeBased };//16654
+    picLabel = { picReviewScreenHeader, noClaimData, messageForNonPICPendingStatus, messageForNonPICReviewerLabel, picReviewScreenAccordionTitle, applicationErrorText, activity, escalation, paymentClearanceProcessingHeader, picReviewScreenAccordionTitleOutcomeBased };//16654 //anushya TWC3117-16718 
 
     @wire(checkUserPermissionSet, { userId: Id })
     wiredUserPermissions(response) {
@@ -133,11 +132,14 @@ export default class Core_MDF_PicReviewScreen extends NavigationMixin(LightningE
             this.claimRecordData = data;
             this.hasClaimRecordData = true;
             this.claimReferenceId = this.claimRecordData.Core_MDF_Claim_Ref_Number__c;
+
             if(this.claimRecordData.Core_MDF_Program__c == 'Retail Marketing Funds') {
                 this.claimAccountId = this.claimRecordData.ChannelPartnerId;
             } else {
                 this.claimAccountId = this.claimRecordData.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Id;
             }
+            
+            //this.claimAccountId = this.claimRecordData.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Id;
             if (this.isPICReviewer && (this.claimRecordData.Core_MDF_Status__c.toLowerCase() === this.claimLabel.claimStatusPICPending.toLowerCase()) || (this.claimRecordData.Core_MDF_Status__c.toLowerCase() === this.claimLabel.claimStatusPaidAndPICPending.toLowerCase()) || (this.claimRecordData.Core_MDF_Status__c.toLowerCase() === this.claimLabel.claimStatusPaymentClearanceProcessing.toLowerCase())) { 
                 this.eligibleForPIC = true;
                 this.generateNavigationUrls();
@@ -147,6 +149,7 @@ export default class Core_MDF_PicReviewScreen extends NavigationMixin(LightningE
                 this.showSpinner = false;
             }
             this.isOutcomeBasedSuperClaim = this.claimRecordData.Core_MDF_Program__c === this.claimLabel.ipaProgram && this.claimRecordData.Core_MDF_OutcomeBased_Ind__c && this.claimRecordData.Core_MDF_Campaign_Id__c == null;//16654
+            console.log('OutcomeBased: ',this.isOutcomeBasedSuperClaim);
         } else if(error) {
             this.hasClaimRecordData = false;
             this.showSpinner = false;
@@ -154,11 +157,33 @@ export default class Core_MDF_PicReviewScreen extends NavigationMixin(LightningE
     }
 
     //to fetch the exception data from the apex controller
+    // @wire(fetchExceptionsByClaimId, { claimId: '$recordId', corpAccountRecordId: '$claimAccountId' })
+    // wiredExceptions({ data, error }) {
+    //     if (data && data != {}) {
+    //         let exceptions = Object.values(data);
+
+    //         exceptions.map(ex => {
+    //             //let exceptionRecordURL = this.orgBaseURLLabel+ex.Id+"/view";
+    //             let exceptionRecordURL = this.orgBaseURLLabel+this.exceptionObjLabel+"/"+ex.Id+"/view";
+    //             let final = Object.assign({}, ex, {exceptionRecordURL: exceptionRecordURL});
+    //            console.log("exceptionURL", final);
+
+    //            this.exceptions.push(final);
+    //         });
+
+    //     } else if (error) {
+    //         console.error(error);
+    //     }
+    //     this.showSpinner = false;
+    // }
+
     @wire(fetchExceptionsByClaimId, { claimId: '$recordId', corpAccountRecordId: '$claimAccountId' })
     wiredExceptions({ data, error }) {
         if (data && data != {}) {
             this.exceptions = Object.values(data);
+            this.hasExceptionData = true;
         } else if (error) {
+            this.hasExceptionData = false;
             console.error(error);
         }
         this.showSpinner = false;
@@ -232,7 +257,7 @@ export default class Core_MDF_PicReviewScreen extends NavigationMixin(LightningE
         this.showClaimAndActivityDetails = false;
         refreshApex(this.completeClaimResponse);
         this.isClaimRefreshed = true;
-    }
+    }    
 
     //To get Claim and activity details to display in the expandable section
     getClaimAndActivityDetails() {
@@ -240,20 +265,28 @@ export default class Core_MDF_PicReviewScreen extends NavigationMixin(LightningE
         for (const key in claimData) {
             let header = Object.keys(this.claimLabel).find(label => label === key);
            //Activity Name
-           
+           //anushya TWC3117-16407
             if (this.isOutcomeBasedSuperClaim && this.skipFieldsForOutcomeBased.includes(key)) {
                 continue;
             }
+            //anushya TWC3117-16407
             if (key.toLowerCase() === this.picLabel.activity.toLowerCase()) {
-                //this.claimAndActivityDetails.push({ key: this.claimLabel.activityName, value: `<a href=${this.activityUrl} target='_blank'>${claimData[key].Title}</a>`, show: claimData[key].Title ? true: false });               
+                console.log('this.isOutcomeBasedSuperClaim==='+this.isOutcomeBasedSuperClaim);
+                console.log('this.claimLabel==='+JSON.stringify(this.claimLabel));
+
+                //this.claimAndActivityDetails.push({ key: this.claimLabel.activityName, value: `<a href=${this.activityUrl} target='_blank'>${claimData[key].Title}</a>`, show: claimData[key].Title ? true: false });
+                //anushya TWC3117-16718
                 const activityLabel = this.isOutcomeBasedSuperClaim ? outComeBasedCampaignName : this.claimLabel.activityName;
                 const activityValue = this.isOutcomeBasedSuperClaim
                                         ? `<a href="${OutcomeBasedInternalLink + this.claimRecordData.RequestId}" target="_blank">${claimData[key].Title}</a>`
                                         : `<a href=${this.activityUrl} target='_blank'>${claimData[key].Title}</a>`;
 
                 this.claimAndActivityDetails.push({ key: activityLabel, value: activityValue, show: claimData[key].Title ? true: false });
+                //anushya TWC3117-16718
             
             }
+            
+
             //Escalation Name
             else if (key.toLowerCase() === this.picLabel.escalation.toLowerCase()) {
                 this.claimAndActivityDetails.push({ key: this.claimLabel.escalationName, value: `<a href=${this.escalationUrl} target='_blank'>${claimData[key].Name}</a>`, show: claimData[key].Name ? true: false });
@@ -284,16 +317,22 @@ export default class Core_MDF_PicReviewScreen extends NavigationMixin(LightningE
     hideSpinner(event) {
         this.showSpinner = !event.detail.hide;
     }
+    //16654
     get headerLabel() {
+        console.log('TableHeader:',this.isOutcomeBasedSuperClaim);
         return this.isOutcomeBasedSuperClaim ? this.picLabel.paymentClearanceProcessingHeader : this.picLabel.picReviewScreenHeader;
     }
+    //anushya TWC3117-16718
     get accordionTitle() {
         return this.isOutcomeBasedSuperClaim
             ? this.picLabel.picReviewScreenAccordionTitleOutcomeBased
             : this.picLabel.picReviewScreenAccordionTitle;
     }
+    //anushya TWC3117-16718
+
+    //anushya TWC3117-16407
     get skipFieldsForOutcomeBased() {
         return ['Core_MDF_Activity_Category__c', 'Core_MDF_Activity_Types__c'];
     }
-    
+    //anushya TWC3117-16407
 }

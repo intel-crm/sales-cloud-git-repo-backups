@@ -16,16 +16,28 @@
         <label><!-- Feature BU --></label>
         <name>Core_Feature_BU__c</name>
         <picklistValues>
+            <masterLabel>ADG</masterLabel>
+            <translation><!-- ADG --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>CCG</masterLabel>
             <translation><!-- CCG --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>CCG ECG</masterLabel>
-            <translation><!-- CCG ECG --></translation>
+            <masterLabel>CORP</masterLabel>
+            <translation><!-- CORP --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>DCAI</masterLabel>
-            <translation><!-- DCAI --></translation>
+            <masterLabel>DCG</masterLabel>
+            <translation><!-- DCG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IOTG</masterLabel>
+            <translation><!-- IOTG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSG</masterLabel>
+            <translation><!-- NSG --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>NTG</masterLabel>

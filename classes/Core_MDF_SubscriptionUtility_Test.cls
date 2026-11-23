@@ -18,8 +18,8 @@ public class Core_MDF_SubscriptionUtility_Test {
         usr2.profileId = profileToId.get('System Administrator');
         usr2.IsActive = true;
         Insert usr2;
-
-        User usr = [Select ID from User where Email ='testPayment@intel.com' Limit 1];
+       // Highlight: Unused Local Variable - Indira
+      //  User usr = [Select ID from User where Email ='testPayment@intel.com' Limit 1];
         
         PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_CSC_Claim_Submitter' LIMIT 1];
         PermissionSet ps1 = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Generic_Access' LIMIT 1];

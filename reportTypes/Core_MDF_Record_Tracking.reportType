@@ -60,6 +60,11 @@
             <field>Core_MDF_Target_Record_Id__c</field>
             <table>Core_MDF_Record_Tracking__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Execution_InProgress_Ind__c</field>
+            <table>Core_MDF_Record_Tracking__c</table>
+        </columns>
         <masterLabel>Record Trackings</masterLabel>
     </sections>
 </ReportType>

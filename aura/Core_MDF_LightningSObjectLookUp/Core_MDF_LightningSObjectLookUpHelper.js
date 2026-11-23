@@ -1,4 +1,17 @@
 ({
+    doInit : function (component,event,helper) {                
+        // Show the Lookup pill
+        var lookupValue = component.find("lookup").get("v.value");
+        console.log('Insidelightningsobjectlookup***lookupValue***'+lookupValue);        
+        if(lookupValue != ''){        
+            var lookupPill = component.find("lookup-pill");
+            $A.util.addClass(lookupPill, 'slds-show');
+            $A.util.removeClass(lookupPill, 'slds-hide');
+            var lookup= component.find("lookup");
+            $A.util.addClass(lookup, 'slds-hide');
+            $A.util.removeClass(lookup, 'slds-show');
+        }
+    },
     /**
      * Perform the SObject search via an Apex Controller
      */
@@ -13,6 +26,7 @@
         //var lookupPill = cmp.find("lookup-pill"); 
         // Clear any errors and destroy the old lookup items container
         inputElement.set('v.errors', null);
+        console.log('Inside doSearch:::');
         // We need at least 2 characters for an effective search
         if (typeof searchString === 'undefined' || searchString.length < 2)
         {
@@ -32,13 +46,15 @@
         
         // Get the API Name
         var sObjectAPIName = cmp.get('v.sObjectAPIName');
-
+    
         // Create an Apex action
         var action = cmp.get('c.lookup');
 
         // Mark the action as abortable, this is to prevent multiple events from the keyup executing
         action.setAbortable();
+        console.log('Parameters are ::::'+searchString + ' '+sObjectAPIName + ' '+returnFields + ' '+filterCriteria);
         // Set the parameters
+        
         action.setParams({ "searchString" : searchString, 
                            "sObjectAPIName" : sObjectAPIName,
                           "fieldsToReturn" : returnFields,
@@ -59,13 +75,15 @@
                     cmp.set('v.matches', null);
                     return;
                 }
-                
+                console.log('InsideLightningsobjectLookup');
                 // Store the results
                 cmp.set('v.matches', matches);
+                
             }
             else if (state === "ERROR") // Handle any error by reporting it
             {
                 var errors = response.getError();
+                console.log("errors:::",errors);
                 if (errors) 
                 {
                     if (errors[0] && errors[0].message) 
@@ -93,8 +111,13 @@
 
         // The Object label is the inner text)
         var objectLabel = event.currentTarget.innerText;
+       // var objectLabel = event.currentTarget.getAttribute("innerText");
 
-        // Log the Object Id and Label to the console        
+        // Log the Object Id and Label to the console
+        console.log('event.currentTarget=' ,event.currentTarget);
+        console.log('objectId=' + objectId);
+        console.log('objectLabel=' + objectLabel);
+                
         // Create the UpdateLookupId event
         var updateEvent = cmp.getEvent("updateLookupIdEvent");
         
@@ -111,28 +134,35 @@
 
         // Expose the same selection to a Flow screen without changing legacy event consumers.
         cmp.set("v.selectedId", objectId);
+		console.log('after fire');
         // Update the Searchstring with the Label
         cmp.set("v.searchString", objectLabel);
-
+		console.log('after search string');
         // Hide the Lookup List
         var lookupList = cmp.find("lookuplist");
+        console.log('after lookuplist');
         $A.util.addClass(lookupList, 'slds-hide');
         $A.util.removeClass(lookupList, 'slds-show');
         
         // Hide the Input Element
         var inputElement = cmp.find('lookup');
+         console.log('after lookup');
         $A.util.addClass(inputElement, 'slds-hide');
         $A.util.removeClass(inputElement, 'slds-show');
         // Show the Lookup pill
         var lookupPill = cmp.find("lookup-pill");
+         console.log('after lookup-pill');
         $A.util.addClass(lookupPill, 'slds-show');
         $A.util.removeClass(lookupPill, 'slds-hide'); 
         // Lookup Div has selection //Major Security Scan :NameChanged "inputElement->inputDivElement"
         var inputDivElement = cmp.find('lookup-div');
+         console.log('after lookup-div');
         $A.util.addClass(inputDivElement, 'slds-has-selection');
-		
+		console.log('Before clearIcon');
         var clearIcon = cmp.find("clearIcon"); 
-        $A.util.addClass(clearIcon, 'slds-hide'); 
+        console.log('After clearIcon');
+        $A.util.addClass(clearIcon, 'slds-hide');
+        console.log('End clearIcon');
 
     },
 
@@ -141,6 +171,7 @@
      */
     clearSelection : function(cmp) {
         // Create the ClearLookupId event
+        console.log('cmp::::'+cmp);
         var clearEvent = cmp.getEvent("clearLookupIdEvent");
 
         // Get the Instance Id of the Component
@@ -213,12 +244,14 @@
 
     },
     clearSelection2 : function(cmp) {
+        console.log('Lno : 225 Inside clear Selection2'+cmp.get('v.instanceId'));
         //added by amit pundir -DMG
         // Create the ClearLookupId event
         var clearEvent = cmp.getEvent("clearLookupIdEvent");
-
+         console.log('Lno : 229 after getting clearEvent Id');
         // Get the Instance Id of the Component
         var instanceId = cmp.get('v.instanceId');
+        console.log('Lno : 232 instance id');
         // Populate the event with the Instance Id
         clearEvent.setParams({
             "instanceId" : instanceId
@@ -281,7 +314,8 @@
         var clearIcon = cmp.find("clearIcon");
         $A.util.addClass(clearIcon, 'slds-hide');
         $A.util.removeClass(clearIcon, 'slds-show');
-       
+        console.log('here');
+        
         var inputElement = cmp.find('lookup-div');
         $A.util.addClass(inputElement, 'slds-has-selection');
 

@@ -12,8 +12,8 @@ Modification Log :
 * Ashwin Dash               02/12/2018              DE35986 : 6QPS accept Quantity with Comma and ensured negative values should not be added in quantity
 * Ashwin Dash               04/03/2018              US102131 : 6QPS: Ensure Delegate Manager Can Approve 6QPS
 * Ashwin Dash               11/27/2018              US229893 : LEx Enhancements
-* Sougata Sarkar            02/11/2019              US227105 : Clickjack : Vulnerable IPS securit,y Clickjack and Security Score Card
-* Sougata Sarkar            02/18/2019              US231051 : 6QPS: Ability to recall 6QPS
+* Sougata Sarkar     		02/11/2019              US227105 : Clickjack : Vulnerable IPS securit,y Clickjack and Security Score Card
+* Sougata Sarkar			02/18/2019              US231051 : 6QPS: Ability to recall 6QPS
 *************************************************************************************/
 
 public with sharing class Core_FC_ProductSchedule_ExtController {
@@ -32,12 +32,10 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
     public boolean flag{get;set;}
     public boolean oliPresentFlag{get;set;}
     public static final Set<String> Core_Status = new Set<String>{'Lost','Cancelled','Deleted','On Hold','Production Lost','Production Cancelled'};
-        public boolean clearFlag{get;set;}
+    public boolean clearFlag{get;set;}
     public boolean isOwner{get;set;}
     public boolean isManager{get;set;}
-    //Added by Kavyashree HR(Infosys Team) for the US819403
-    public boolean isTechOwnerManager{get;set;}
-    public boolean isSubmitChk{get;set;}   
+    public boolean isSubmitChk{get;set;}
     public boolean noManager{get;set;}
     public boolean isAllZero{get;set;}
     public boolean addQtrCheck{get;set;}
@@ -45,14 +43,10 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
     public List<String> qtrSubmitMsg{get;set;}
     public boolean isAddQuarter{get;set;}
     public boolean isAdmin{get;set;}
-    public boolean isDisabled{get;set;}
-    public boolean isCountcheck{get;set;}
-    public boolean isCount{get;set;}
     public boolean isRecall{get;set;}
     public List<Core_Opp_FC_Prod_Schedule__c> lastApprovedProdList{get;set;}
     public boolean isClassic{get;set;}
     public boolean isNewPage{get;set;}
-    public boolean isForecastAvailable{get;set;}
     
     //Constructor
     public Core_FC_ProductSchedule_ExtController(ApexPages.StandardController cont) {
@@ -60,22 +54,18 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
         //US102131 : 6QPS: Ensure Delegate Manager Can Approve 6QPS - Added Owner's manager's delegated approver -- Ashwin
         this.opptyObj1 = [SELECT id, Name, Core_FC_Recall_Count__c, OwnerId, Owner.Name, Account.Name, Owner.ManagerId, Owner.email, Owner.Manager.email, Owner.Manager.DelegatedApproverId, Owner.DelegatedApproverId, Core_Technical_Owner__c, Core_Technical_Owner__r.ManagerId, Core_Technical_Owner__r.Manager.email FROM Opportunity WHERE id = :opptyObj.Id LIMIT 1];
         this.qtrSubmitMsg = Label.Core_FC_SubmitMessage.split(';');
-        //system.debug('opptyObj1.Owner.Manager.DelegatedApproverId '+opptyObj1.Owner.Manager.DelegatedApproverId);
         if(opptyObj1.Owner.Manager.DelegatedApproverId != null && String.valueOf(opptyObj1.Owner.Manager.DelegatedApproverId) != '')
             delegatedApp = [SELECT id, name, email FROM User WHERE id = :opptyObj1.Owner.Manager.DelegatedApproverId LIMIT 1];
         else    
             delegatedApp = null;
         productSortedForecastMap = new Map<Id, List<Core_Opp_FC_Prod_Schedule__c>>();
         forecastTable = new List<displayWrapper>();
-        isForecastAvailable = true;
         oliPresentFlag = false;
         qtrNameList = new List<String>();
         colorList = new List<String>();
         editAll = false; 
         flag = false;
         isAddQuarter = false;
-        isCountcheck = false;
-        isCount=false;
         showMoreRecords = false;  //Add logic to show a link to more records - future enhancement
         productSortedForecastMap = getProdSortForecastMapMethod();  //Populating ProductSortedForecastMap.
         if(UserInfo.getUserId() == opptyObj1.OwnerId || UserInfo.getUserId() == opptyObj1.Core_Technical_Owner__c){
@@ -93,22 +83,13 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
         }else{
             isManager = false;
         }
-        //Start- Added by Kavyashree HR(Infosys Team) for the US819403
-        if(UserInfo.getUserId() == opptyObj1.Core_Technical_Owner__r.ManagerId || String.valueOf(opptyObj1.Core_Technical_Owner__r.ManagerId) == ''){
-            isTechOwnerManager = true;
-        }else{
-            isTechOwnerManager = false;
-        }
-        //End- Added by Kavyashree HR(Infosys Team) for the US819403
         if(!productSortedForecastMap.isEmpty()){
             forecastTable = getDispWrapperTableMethod(productSortedForecastMap, qtrNameList);
         }else{
-            isForecastAvailable = false;
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.INFO,System.Label.Core_FC_No_6QPS_Message));
             List<OpportunityLineItem> oliPresentList = [SELECT id, Quantity, OpportunityId FROM OpportunityLineItem WHERE OpportunityId = :opptyObj.Id];
             if(!oliPresentList.isEmpty()){
                 oliPresentFlag = true;
-            }else{
-                ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.INFO,System.Label.Core_FC_No_6QPS_Message));
             }
         }       
         Map<String, List<Core_Opp_FC_Prod_Schedule__c>> qtrFCMap = getQtrSortedForecastRec(qtrNameList, productSortedForecastMap);
@@ -127,18 +108,6 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
                 isAdmin = true;
             }
         }
-        
-        //US566461 : 6QPS : Oppty : New button to clear 6QPS quarter data
-        //Core_Profiles_which_can_remove_the_Quantities
-        isDisabled = true;
-        List<String> profileNames1 = Label.Core_Profiles_which_can_remove_the_Quantities.split(',');
-        List<Profile> profileList1 = [select Id, Name from Profile where Name IN: profileNames1];
-        for(Profile prof : profileList1){
-            if(prof.id == UserInfo.getProfileId()){
-                isDisabled = False;
-            }
-        }
-        
         boolean isApprovedFC = getIsApprovedFC(productSortedForecastMap);
         if(isApprovedFC){
             if(isAdmin && (opptyObj1.Core_FC_Recall_Count__c == null || opptyObj1.Core_FC_Recall_Count__c < 2)){
@@ -169,8 +138,8 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
         if(editMode == 'true'){
             editAll = true;
         }
-        //END : Changes for US229893 : LEx Enhancements - Ashwin
-        
+		//END : Changes for US229893 : LEx Enhancements - Ashwin
+		
         //US227105 : Clickjack : Vulnerable IPS securit,y Clickjack and Security Score Card - Start
         String isQuarter = 'false';
         isQuarter = ApexPages.currentPage().getParameters().get('isAddQuarter');
@@ -189,6 +158,13 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
             isNewPage = true;
         }
         //US227105 : Clickjack : Vulnerable IPS securit,y Clickjack and Security Score Card - End
+    }
+    
+    //Redirect to Opportunity record page
+    public PageReference redirectToOppRec(){
+        PageReference pgRef = new PageReference('/'+opptyObj1.Id);
+        pgRef.setRedirect(true);
+        return pgRef;
     }
     
     //US231051 : 6QPS: Ability to recall 6QPS - Start
@@ -210,6 +186,7 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
                 }
             }
             lastApprovedProdList.add(lastAppProd);
+            system.debug('lastAppProdList '+lastApprovedProdList);
         }
         return isApproved;
     }
@@ -217,7 +194,7 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
     //Recall last approved quarter
     public pageReference recallLastApprovedFC(){
         updateAppRejClass appRejObj = new updateAppRejClass();
-        
+                
         List<Core_Opp_FC_Prod_Schedule__c> fcProdList = new List<Core_Opp_FC_Prod_Schedule__c>();
         for(Core_Opp_FC_Prod_Schedule__c fcProd : lastApprovedProdList){
             Core_Opp_FC_Prod_Schedule__c fcProduct = new Core_Opp_FC_Prod_Schedule__c();
@@ -240,7 +217,7 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
         update obj;
         String globalUrl = String.valueOf(System.URL.getSalesforceBaseUrl().toExternalForm());
         PageReference pgRef;
-        pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+obj.Id+'&isNew=TRUE');
+        pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+obj.Id);
         pgRef.setRedirect(true);
         if(isClassic){
             return null;
@@ -332,10 +309,11 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
     public void deleteAllBlankQuantity(){
         Id oppObjId = ApexPages.currentPage().getParameters().get('Id');
         if(oppObjId != null){
-            List<Core_Opp_FC_Prod_Schedule__c> updateIsDeleted = [SELECT id, Name, Core_Opp_FC_isdeleted__c, lastModifiedDate FROM Core_Opp_FC_Prod_Schedule__c WHERE Core_Opp_FC_Opportunity__c =: ApexPages.currentPage().getParameters().get('Id') AND Core_Opp_FC_isdeleted__c = true ORDER BY lastModifiedDate DESC];
-            List<Core_Opp_FC_Prod_Schedule__c> deleteBlankQty = [SELECT id, Name, Core_Opp_FC_isdeleted__c, Core_Opp_FC_Quantity__c, lastModifiedDate FROM Core_Opp_FC_Prod_Schedule__c WHERE Core_Opp_FC_Opportunity__c =: ApexPages.currentPage().getParameters().get('Id') AND Core_Opp_FC_isdeleted__c = false AND Core_Opp_FC_Quantity__c = null ORDER BY lastModifiedDate DESC];
+            List<Core_Opp_FC_Prod_Schedule__c> updateIsDeleted = [SELECT id, Name, Core_Opp_FC_isdeleted__c, lastModifiedDate FROM Core_Opp_FC_Prod_Schedule__c WHERE Core_Opp_FC_Opportunity__c = :oppObjId AND Core_Opp_FC_isdeleted__c = true ORDER BY lastModifiedDate DESC];
+            List<Core_Opp_FC_Prod_Schedule__c> deleteBlankQty = [SELECT id, Name, Core_Opp_FC_isdeleted__c, Core_Opp_FC_Quantity__c, lastModifiedDate FROM Core_Opp_FC_Prod_Schedule__c WHERE Core_Opp_FC_Opportunity__c = :oppObjId AND Core_Opp_FC_isdeleted__c = false AND Core_Opp_FC_Quantity__c = null ORDER BY lastModifiedDate DESC];
             Integer size = deleteBlankQty.size();
             if(size != null && size > 0){
+                System.debug('$$$ delete -'+deleteBlankQty);
                 for(Integer i=0; i<size; i++){
                     updateIsDeleted[i].Core_Opp_FC_isdeleted__c = false;
                 }           
@@ -353,22 +331,22 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
     
     public pageReference editAllMethod(){
         //editAll = true;
-        //START : Changes for US229893 : LEx Enhancements open Edit in fresh page - Ashwin
+	//START : Changes for US229893 : LEx Enhancements open Edit in fresh page - Ashwin
         String globalUrl = String.valueOf(System.URL.getSalesforceBaseUrl().toExternalForm());
-        PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&edit=true&isNew=TRUE');
+        PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&edit=true');
         pgRef.setRedirect(true);
         if(isClassic){
             return null;
         }else{
             return pgRef;
         }
-        //END : Changes for US229893 : LEx Enhancements open Edit in fresh page - Ashwin
+	//END : Changes for US229893 : LEx Enhancements open Edit in fresh page - Ashwin
     }
-    
-    public void cancelQuarter(){
+    public PageReference cancelMethod(){
         editAll = false;
         updateAppRejClass appRejObj = new updateAppRejClass();
         if(flag){
+            System.debug('### Deleted List - '+insertForeCastList);
             if(!insertForeCastList.isEmpty()){
                 try{
                     delete insertForeCastList;
@@ -386,18 +364,9 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
             forecastTable = getDispWrapperTableMethod(psFCMap, qtrNameList);    
         }
         flag = false;
-    }
-    
-    public void cancelRecentFC(){
-        if(ApexPages.currentPage().getParameters().get('isAddQuarter') == 'true'){
-            cancelQuarter();
-        }
-    }
-    
-    public PageReference cancelMethod(){
-        cancelQuarter();
         String globalUrl = String.valueOf(System.URL.getSalesforceBaseUrl().toExternalForm());
         PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&isNew=true');
+        System.debug('***Pg - '+pgRef);
         pgRef.setRedirect(true);
         return pgRef;
     }
@@ -418,6 +387,7 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
                 prodSortForecastMap.put(fc.Core_Opp_Line_Item_RecordID__c, tempList);
             }      
         }
+        System.debug('*** ProdMap - '+prodSortForecastMap);
         return prodSortForecastMap;
     }
     
@@ -482,6 +452,7 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
         }
         qNameList.addAll(quarterNameSet);
         colorList.addAll(colorNameSet);
+        System.debug('***--- Color '+colorList);
         return fcTable;     
     }
     
@@ -495,9 +466,6 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
         Set<String> oliSet = new Set<String>();
         for(displayWrapper dw : forecastTable){
             for(Integer i=0; i<dw.fcObjList.size(); i++){
-                if(dw.viewQuantityList[i] == null || dw.viewQuantityList[i] == ''){
-                    dw.viewQuantityList[i] = String.valueOf(0);
-                }
                 String modValue = dw.viewQuantityList[i].remove(',');
                 if((dw.fcObjList[i].Core_Opp_FC_Quantity__c == null && dw.viewQuantityList[i] == '' ) || (modValue).trim() == '' || !isNumeric(modValue) || Decimal.valueOf(modValue).precision() > 10){
                     count++;
@@ -551,10 +519,10 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
         forecastTable = new List<displayWrapper>();
         Map<Id, List<Core_Opp_FC_Prod_Schedule__c>> psFCMap =  getProdSortForecastMapMethod(); 
         forecastTable = getDispWrapperTableMethod(psFCMap, qtrNameList);
-        //System.debug('### New Table Values - '+forecastTable);  
+        System.debug('### New Table Values - '+forecastTable);  
         //PageReference pgRef = ApexPages.CurrentPage();
         String globalUrl = String.valueOf(System.URL.getSalesforceBaseUrl().toExternalForm());
-        PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&isNew=TRUE');
+        PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id);
         pgRef.setRedirect(true);
         if(isClassic){
             return null;
@@ -586,7 +554,7 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
                 fcObject1.Core_Opp_Line_Item_RecordID__c = productSortedForecastMap.get(item)[num].Core_Opp_Line_Item_RecordID__c;
                 fcObject1.Core_Opp_FC_Product__c = productSortedForecastMap.get(item)[num].Core_Opp_FC_Product__c;
                 fcObject1.Core_Opp_FC_Quarter_Date__c = productSortedForecastMap.get(item)[num].Core_Opp_FC_Quarter_Date__c.addMonths(3);
-                fcObject1.Core_Opp_FC_Quantity__c = 0;
+                fcObject1.Core_Opp_FC_Quantity__c = null;
                 //Added for deletion of product
                 if(productSortedForecastMap.get(item)[num].Core_Opp_FC_Approval_Status__c == 'Pending'){
                     fcObject1.Core_Opp_FC_Quantity__c = 0;
@@ -594,9 +562,6 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
                 }
                 fcObject1.Core_Opp_FC_isdeleted__c = productSortedForecastMap.get(item)[num].Core_Opp_FC_isdeleted__c;
                 fcObject1.Core_FC_4Q_Shed_Quantity__c = productSortedForecastMap.get(item)[num].Core_FC_4Q_Shed_Quantity__c;
-
-                //US664775 : (Implementation of US621437) SPIKE : Report: Blank BU Short Name Implemented By Gopala Krishna Ch 30/06/2020
-                fcObject1.Core_FC_BU_Short_Name__c = productSortedForecastMap.get(item)[num].Core_FC_BU_Short_Name__c;
                 fcObject1.Core_FC_Last_Modified_Date__c = null;
                 fcObject1.Core_FC_Vendor__c = productSortedForecastMap.get(item)[num].Core_FC_Vendor__c;
                 fcObject1.Core_Opp_FC_Prod_Sales_Price__c = productSortedForecastMap.get(item)[num].Core_Opp_FC_Prod_Sales_Price__c;
@@ -619,7 +584,7 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
                         Approval.LockResult[] lrList = Approval.lock(toLockRecords,false);
                     }
                 }Catch(Exception e){
-                    PMP_Utility.logError(e, 'Core_FC_ProductSchedule_ExtController.addQuarterMethod');
+                    System.debug('Insert Exception - '+e.getMessage());
                     excpt = e.getMessage();
                     count1++;
                 }
@@ -634,9 +599,11 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
                 //update updateForeCastList;
                 appRejObj.approve(updateForeCastList);
             }
+            System.debug('*** return not working');
             qtrNameList = new List<String>();
             Map<Id, List<Core_Opp_FC_Prod_Schedule__c>> psFCMap =  getProdSortForecastMapMethod(); 
             forecastTable = getDispWrapperTableMethod(psFCMap, qtrNameList);        
+            System.debug('$$$ New Table Values - '+forecastTable);
         }
     }
     
@@ -658,9 +625,17 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
         return ReturnValue;
     }
     
-    public void migrate6QPSMethod(){
+    public PageReference migrate6QPSMethod(){
         List<OpportunityLineItem> oliPresentMap = [SELECT id, Quantity, OpportunityId, Core_Vendor__c, Core_Status__c, Product2Id FROM OpportunityLineItem WHERE OpportunityId = :opptyObj.Id];
-            Core_OpportunityLineItemHandler.insertForecastRecords(oliPresentMap,new List<Core_Opp_FC_Prod_Schedule__c>(),true);
+        Core_OpportunityLineItemHandler.insertForecastRecords(oliPresentMap, true);
+        String globalUrl = String.valueOf(System.URL.getSalesforceBaseUrl().toExternalForm());
+        PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id);
+        pgRef.setRedirect(true);
+        if(isClassic){
+            return null;
+        }else{
+            return pgRef;
+        }
     }
     
     public PageReference clearQuantities(){
@@ -713,44 +688,16 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
         List<OpportunityShare> opptyShareList = new List<OpportunityShare>();
         List<OpportunityShare> delegateUserShareList = new List<OpportunityShare>();
         updateAppRejClass appRejObj = new updateAppRejClass();
-        //START - DE73263 : Getting error while approving scheduled quarter for opportunity products -Gopala Krishna CH
-        Map<Id,OpportunityShare> oppShareMap=new Map<Id,OpportunityShare>();
-        Set<ID> userIdList= new Set<ID>();
-        ID mangerid=opptyObj1.Owner.ManagerId;
-        if(mangerid != NULL){
-            userIdList.add(mangerid);
-        }
-        ID techMgrId=opptyObj1.Core_Technical_Owner__r.ManagerId;
-        if(techMgrId != NULL){
-            userIdList.add(techMgrId);
-        }
         
         if(delegatedApp != null){
-            userIdList.add(delegatedApp.Id);
-            // delegateUserShareList = [SELECT Id, OpportunityId, UserOrGroupId, OpportunityAccessLevel, RowCause FROM OpportunityShare WHERE UserOrGroupId = :delegatedApp.Id AND OpportunityId = :opptyObj1.Id];
-        } 
-        for(OpportunityShare oppUserShareList : [SELECT Id, OpportunityId, UserOrGroupId, OpportunityAccessLevel, RowCause FROM OpportunityShare WHERE OpportunityId = :opptyObj1.Id]){
-            oppShareMap.put(oppUserShareList.UserOrGroupId,oppUserShareList);
+            delegateUserShareList = [SELECT Id, OpportunityId, UserOrGroupId, OpportunityAccessLevel, RowCause FROM OpportunityShare WHERE UserOrGroupId = :delegatedApp.Id AND OpportunityId = :opptyObj1.Id];
+        }       
+        
+        if((delegateUserShareList == null || delegateUserShareList.isEmpty()) && opptyObj1 != null && delegatedApp != null){
+            opptyShareList.add(new OpportunityShare(OpportunityId=opptyObj1.Id, UserOrGroupId=delegatedApp.Id, OpportunityAccessLevel='Edit'));
+            appRejObj.insertOpptyShare(opptyShareList);         
         }
-        if(userIdList.size() > 0 && ! userIdList.isempty()){
-            for(Id usId : userIdList){                
-                if(oppShareMap.containskey(usId)){
-                }
-                else{
-                    opptyShareList.add(new OpportunityShare(OpportunityId=opptyObj1.Id, UserOrGroupId=usId, OpportunityAccessLevel='Edit'));
-                }
-                //Added by Kavyashree HR(Infosys Team) for the US819403
-                if(usId == techMgrId && usId != opptyObj1.OwnerId){
-                    opptyShareList.add(new OpportunityShare(OpportunityId=opptyObj1.Id, UserOrGroupId=usId, OpportunityAccessLevel='Edit'));
-                }
-            }
-        }
-        appRejObj.insertOpptyShare(opptyShareList);
-        //END - DE73263 : Getting error while approving scheduled quarter for opportunity products -Gopala Krishna CH
-        /*  if((delegateUserShareList == null || delegateUserShareList.isEmpty()) && opptyObj1 != null && delegatedApp != null){
-opptyShareList.add(new OpportunityShare(OpportunityId=opptyObj1.Id, UserOrGroupId=delegatedApp.Id, OpportunityAccessLevel='Edit'));
-appRejObj.insertOpptyShare(opptyShareList);
-}*/
+        
         if(noManager){
             ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'The submitter has No Manager.'));
             return null;
@@ -793,7 +740,7 @@ appRejObj.insertOpptyShare(opptyShareList);
                     lockRecord.addAll(tempList1);
                     
                 }           
-                if(!tempList2.isEmpty() || Test.isRunningTest()){
+                if(!tempList2.isEmpty()){                   
                     //lockRecord.addAll(tempList2);             
                     for(Core_Opp_FC_Prod_Schedule__c fc3 : tempList2){
                         if(fc3.Core_Opp_FC_Approval_Status__c != 'Pending'){
@@ -809,17 +756,13 @@ appRejObj.insertOpptyShare(opptyShareList);
                 //}
             }
             toList.add(opptyObj1.owner.Manager.email);
-            //Added by Kavyashree HR(Infosys Team) for the US819403
-            if(opptyObj1.Core_Technical_Owner__r.ManagerId!= null){
-                toList.add(opptyObj1.Core_Technical_Owner__r.Manager.email);
-            }
             if(delegatedApp != null){
                 toList.add(delegatedApp.email);
             }
-            //System.debug('***toList- '+toList);
+            System.debug('***toList- '+toList);
             ccList.add(opptyObj1.owner.email);
-            //System.debug('****ccList- '+ccList);
-            //System.debug('****LockRecord- '+lockRecord);
+            System.debug('****ccList- '+ccList);
+            System.debug('****LockRecord- '+lockRecord);
             Savepoint sp = Database.setSavepoint();
             try{
                 if(!lockRecord.isEmpty()){                  
@@ -835,7 +778,7 @@ appRejObj.insertOpptyShare(opptyShareList);
             }
         }
         String globalUrl = String.valueOf(System.URL.getSalesforceBaseUrl().toExternalForm());
-        PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&isNew=TRUE');
+        PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id);
         pgRef.setRedirect(true);
         if(isClassic){
             return null;
@@ -848,10 +791,9 @@ appRejObj.insertOpptyShare(opptyShareList);
     public void sendEmail(List<String> toAddList, List<String> ccAddList, Opportunity opptyObj, String qtrSubmitted){
         String[] toAdd = new String[]{};
         String[] ccAdd = new String[]{};
-        String fromEmailAddress = System.Label.Core_SetFromEmailAddress;
-                for(String str : toAddList){
-                    toAdd.add(str);
-                }
+        for(String str : toAddList){
+            toAdd.add(str);
+        }
         for(String str1 : ccAddList){
             ccAdd.add(str1);
         }
@@ -865,11 +807,10 @@ appRejObj.insertOpptyShare(opptyShareList);
         Core_Sales_Opp_Internal_URL__mdt urlValue = [SELECT developerName, masterlabel, Core_Opp_URLValue__c FROM Core_Sales_Opp_Internal_URL__mdt WHERE developerName = 'Core_Url' LIMIT 1];
         String globalUrl = String.valueOf(urlValue.Core_Opp_URLValue__c);
         email.setHtmlBody('Hello, <br/><br/>'+opptyObj.Owner.Name+', has requested for 6QPS approval for the below Opportunity. <br/><br/> Account Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+opptyObj.Account.name+'<br/> Opportunity Name: &nbsp;'+opptyObj.Name+'<br/><br/> '+globalUrl+'/'+opptyObj.Id+'<br/><br/>');
-        email.setOrgWideEmailAddressId(fromEmailAddress);
         try{
             Messaging.sendEmail(new Messaging.SingleEmailMessage[] { email });
         }catch(exception e){
-            PMP_Utility.logError(e, 'Core_FC_ProductSchedule_ExtController.sendEmail');
+            System.debug('***Exception caught - '+e.getMessage());
             throw e;
         }
     }
@@ -889,7 +830,7 @@ appRejObj.insertOpptyShare(opptyShareList);
                 }
             }
         }
-        if(!tobeApprovedList.isEmpty() || Test.isRunningTest()){
+        if(!tobeApprovedList.isEmpty()){
             //update tobeApprovedList;
             appRejObj.approve(tobeApprovedList);
             //Decreased the FC Recall Count in opportunity
@@ -899,22 +840,13 @@ appRejObj.insertOpptyShare(opptyShareList);
             update obj;
         }
         String globalUrl = String.valueOf(System.URL.getSalesforceBaseUrl().toExternalForm());
-        // PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&isNew=TRUE');
-
-        //US664677-Security Scan Fix Startes
-        PageReference pgRef;
-        if(opptyObj.Id !=null && String.valueOf(opptyObj.Id).startsWith('006') && !String.valueOf(opptyObj.Id).contains('/')){
-                  pgRef = new PageReference('/'+'apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&isNew=TRUE');
-
-        }
-         //US664677-Security Scan Fix Ends
-            pgRef.setRedirect(true);
+        PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id);
+        pgRef.setRedirect(true);
         if(isClassic){
             return null;
         }else{
             return pgRef;
         }
-
     }
     
     public PageReference rejectionMethod(){
@@ -935,16 +867,8 @@ appRejObj.insertOpptyShare(opptyShareList);
             //update tobeRejectedList;
             appRejObj.reject(tobeRejectedList);
         }
-      //  String globalUrl = String.valueOf(System.URL.getSalesforceBaseUrl().toExternalForm());
-       // PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&isNew=TRUE');
-
-        //US664677-Security Scan Fix Startes
-        PageReference pgRef;
-        if(opptyObj.Id !=null && String.valueOf(opptyObj.Id).startsWith('006') && !String.valueOf(opptyObj.Id).contains('/')){
-                  pgRef = new PageReference('/'+'apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&isNew=TRUE');
-
-        }
-         //US664677-Security Scan Fix Ends
+        String globalUrl = String.valueOf(System.URL.getSalesforceBaseUrl().toExternalForm());
+        PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id);
         pgRef.setRedirect(true);
         if(isClassic){
             return null;
@@ -953,45 +877,15 @@ appRejObj.insertOpptyShare(opptyShareList);
         }
     }
     
-    public void removeQuantities(){
-        
-        Map<String, List<Core_Opp_FC_Prod_Schedule__c>> qtrFCMap1 = getQtrSortedForecastRec(qtrNameList, productSortedForecastMap);
-        List<Core_Opp_FC_Prod_Schedule__c> OppFcProdList1=new List<Core_Opp_FC_Prod_Schedule__c>();
-        for(String qtr : qtrFCMap1.keySet()){
-            for(Core_Opp_FC_Prod_Schedule__c fc : qtrFCMap1.get(qtr)){
-                if(fc.Core_Opp_FC_Approval_Status__c == 'Submitted' || fc.Core_Opp_FC_Approval_Status__c == 'Approved'){
-                    isCountcheck = true;
-                }
-                else{
-                    OppFcProdList1.add(fc);
-                }
-            }
-        }
-        
-        if(isCountcheck == False){
-            if(OppFcProdList1.size() > 0 )
-            {
-                delete OppFcProdList1;
-                isCount = true;
-                //forecastTable = new List<displayWrapper>();
-            } 
-            
-            else{
-                // ApexPages.AddMessage(new ApexPages.Message(ApexPages.Severity.CONFIRM,'Record Created Successfully.Thank you!'));
-            }
-        }
-        
-    }
-    
     /*public boolean checkNoFalseRecords(Id oliId){
-List<Core_Opp_FC_Prod_Schedule__c> checkList = [SELECT id, Core_Opp_FC_isdeleted__c FROM Core_Opp_FC_Prod_Schedule__c WHERE Core_Opp_Line_Item_RecordID__c = :oliId AND Core_Opp_FC_isdeleted__c = true];
-if(checkList == null || checkList.isEmpty()){
-return true;
-}else{
-return false;
-}
-return false;
-}*/
+        List<Core_Opp_FC_Prod_Schedule__c> checkList = [SELECT id, Core_Opp_FC_isdeleted__c FROM Core_Opp_FC_Prod_Schedule__c WHERE Core_Opp_Line_Item_RecordID__c = :oliId AND Core_Opp_FC_isdeleted__c = true];
+        if(checkList == null || checkList.isEmpty()){
+            return true;
+        }else{
+            return false;
+        }
+        return false;
+    }*/
     
     public class displayWrapper{
         //public Decimal forecastedQuantity{get;set;}
@@ -1001,7 +895,7 @@ return false;
         public List<String> schedQRList{get;set;}
         public List<revenueQuantityWrapper> schedQtyRevList{get;set;}
         public revenueQuantityWrapper totalQtyRev{get;set;}
-        
+
         
         public displayWrapper(List<Core_Opp_FC_Prod_Schedule__c> fcObjList){
             //this.forecastedQuantity = countTotalQuantity(fcObjList);

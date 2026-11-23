@@ -127,7 +127,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>excludes</operator>
-            <value>IT Infrastructure,Cloud Infrastructure,NFV Other,Visual Cloud,NFV Workload</value>
+            <value>IT Infrastructure,Cloud Infrastructure,Analytics,NFV Other,Visual Cloud,NFV Workload</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Solution_Detail__c</column>

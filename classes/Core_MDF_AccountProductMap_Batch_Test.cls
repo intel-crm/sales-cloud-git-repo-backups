@@ -2,8 +2,8 @@
 public class Core_MDF_AccountProductMap_Batch_Test {
     @isTest
     private static void createUpdateAccountAndProductMappingRecordsTest() {
-       // Highlight: Unused Local Variable
-       // ChannelProgram retailCP = Core_MDF_CCP_TestDataUtility.createProgram ('Retail Marketing Funds','Retail Marketing Funds', true);
+       // Highlight: Unused Local Variable - Indira
+      //  ChannelProgram retailCP = Core_MDF_CCP_TestDataUtility.createProgram ('Retail Marketing Funds','Retail Marketing Funds', true);
         
         Account retailIntelAcc = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Retail Intel Account', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
         retailIntelAcc.Core_Geo__c = 'APJ';

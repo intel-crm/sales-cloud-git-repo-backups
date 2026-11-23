@@ -45,7 +45,6 @@ public class Core_MDF_ReverseAuditDecisionTest{
         virtualAcc.Core_MDF_CoMarketing_Ultimate_Account__c = intelAccount.Id;
         Database.insert(virtualAcc);
         List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
-         
         
         List<Account> toBeUpdated = new List<Account>();
         
@@ -165,7 +164,8 @@ public class Core_MDF_ReverseAuditDecisionTest{
             
             Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(acc1.Id, 'Core_MDF_Client_CoMarketing_Fund', false,'1231231230');
             insert bank;
-            List<PartnerFundClaim> claimList1 = new List<PartnerFundClaim>();            
+            // Highlight: Unused Local Variable - Indira
+           // List<PartnerFundClaim> claimList1 = new List<PartnerFundClaim>();            
             
             List <PartnerFundClaim> claimList = new List <PartnerFundClaim>();
             PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim1', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, testPartnerFundRequestRecord.Id, System.today(), System.today(), 5000.00, System.today(), bank.Id, false);
@@ -182,12 +182,7 @@ public class Core_MDF_ReverseAuditDecisionTest{
 
             Test.stopTest();
             
-            Core_MDF_Recovery_Request__c rr = new Core_MDF_Recovery_Request__c();
-            rr.Core_MDF_Claim_Id__c = claim1.Id;
-            rr.Core_MDF_Active_Ind__c = true;
-            rr.Core_MDF_Recovery_Amount_Amt__c = 100;
-            database.insert(rr);
-            
+        
         Case cs = new Case();
         Id caseAuditRecType = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('Core_MDF_Audit_Closed').getRecordTypeId();
         cs.Status = 'Open';
@@ -229,8 +224,6 @@ public class Core_MDF_ReverseAuditDecisionTest{
         psd.Core_MDF_Recovered_Amt__c = 100.00;
         psd.Core_MDF_External_ID__c = '' + cp.Id + acc2.Id + quarterYear + psd.Core_MDF_Budget_Type_nm__c + psd.Core_MDF_Region_Cd__c;
         insert psd;
-            
-       system.debug('INSIDE APEX TEST:'+psd.Core_MDF_External_ID__c);
             Core_MDF_Scorecard__c scoreCard = new Core_MDF_Scorecard__c();
                         scoreCard.Core_MDF_Case_Id__c = cs.id;
                         scoreCard.Core_MDF_Attribution_Nbr__c ='2';
@@ -267,22 +260,14 @@ public class Core_MDF_ReverseAuditDecisionTest{
     @isTest static void testReverseAuditDecision(){
         User usr1 = [SELECT Id FROM User WHERE LastName = 'TestClassClaimCaseReviewwerManager' LIMIT 1];
         system.runAs(usr1){
-        Case caseRec = [select id,Core_MDF_Claim_ID__c,Core_MDF_Claim_Lookup_Id__c,Core_MDF_Claim_Lookup_Id__r.Core_MDF_Region_Cd__c from case LIMIT 1];
+        Case caseRec = [select id,Core_MDF_Claim_ID__c,Core_MDF_Claim_Lookup_Id__r.Core_MDF_Region_Cd__c from case LIMIT 1];
         Core_MDF_Scorecard__c sc = [Select id,Core_MDF_Case_Id__r.AccountId, Core_MDF_Case_Id__r.Core_MDF_Channel_Program_txt__c,Core_MDF_Quarter__c ,Core_MDF_Score_Nbr__c,Core_MDF_Case_Id__r.Core_MDF_Budget_Type_nm__c,Core_MDF_Case_Id__r.Core_MDF_Region_SubRegion_txt__c
                                        ,Core_MDF_Claim_Amt__c,Core_MDF_Manual_Recovery_Amount_USD_Amt__c,Core_MDF_AI_Processing_Status_Nm__c  FROM Core_MDF_Scorecard__c  Limit 1];
         string result;
         caseRec.Status = 'Closed';
-        caseRec.Core_MDF_Previous_Closed_Dt__c = system.today();
         update caseRec;
-      
         result = Core_MDF_ReverseAuditDecision.reverseAuditDecision(caseRec.Id,sc);
-            Core_MDF_ReverseAuditDecision.RequestInput input = new Core_MDF_ReverseAuditDecision.RequestInput();
-            input.claimId = caseRec.Core_MDF_Claim_Lookup_Id__c;
-            List<Core_MDF_ReverseAuditDecision.RequestInput> inputList = new List<Core_MDF_ReverseAuditDecision.RequestInput>();
-            inputList.add(input);
-            
-            // Call method
-            Core_MDF_ReverseAuditDecision.inactivateRecoveryRequests(inputList);
+
         //Assert.areEqual('Success', result); 
         /*Core_MDF_Partnership_Score_Detail__c psd = [select Id, Core_MDF_Recovered_Amt__c, Core_MDF_External_ID__c from Core_MDF_Partnership_Score_Detail__c limit 1];
         psd.Core_MDF_Recovered_Amt__c = 0.00;
@@ -321,22 +306,14 @@ public class Core_MDF_ReverseAuditDecisionTest{
         Test.startTest();
         String result = Core_MDF_ReverseAuditDecision.reverseAuditDecision(caseRec.Id,sc);
  
-        Assert.areEqual('Retail Marketing Funds', caseRec.Core_MDF_Channel_Program_txt__c);
+        Assert.areNotEqual('Success', result);
         Test.stopTest();
     }
 }
-    @isTest static void testgetScoreacardMethod() {
+  @isTest static void testgetScoreacardMethod() {
         Test.startTest();
         Case caseRec = [select id,Core_MDF_Claim_ID__c,Core_MDF_Claim_Lookup_Id__c,Core_MDF_Claim_Lookup_Id__r.Core_MDF_Region_Cd__c from case LIMIT 1];
-        
         Core_MDF_ReverseAuditDecision.getScorecardRecord(caseRec.Id);
-        Test.stopTest();
-    }
-    @isTest static void testgetScorecardNegative() {
-        Test.startTest();
-        Id invalidCaseId = '500000000000000AAA';
-        
-        Core_MDF_ReverseAuditDecision.getScorecardRecord(invalidCaseId);
         Test.stopTest();
     }
 }

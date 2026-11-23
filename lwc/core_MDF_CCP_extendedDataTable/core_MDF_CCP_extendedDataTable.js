@@ -175,15 +175,18 @@ export default class Core_MDF_CCP_extendedDataTable extends LightningElement {
        console.log('Inside connectedIncident is '+(this.incident));
        this.getReadOnlyDatatable();
        this.isLoadingTable = true;
-				console.time("EditMethod");
+       console.time("EditMethod");
     }
+
     //Function that calls getReadOnlyDatatable apex method and stores the return result
     getReadOnlyDatatable(){
-				console.time("ReadMethod");
+        console.time("ReadMethod");
         getReadOnlyDatatable({objectName : this.objectName,selectedFields : this.selectedFields,selectedIds : this.selectedIds})  
         .then(result => {
-						console.timeEnd("ReadMethod");
+            console.timeEnd("ReadMethod");
+            console.time("ReadOnly");
             let data =JSON.parse(JSON.stringify(result));
+            console.log('Data',data);
             let sObjectRelatedFieldListValues = [];
             this.ops=data;
             console.log('getReadOnlyDatatable-->data'+JSON.stringify(data.lstDataTableData));
@@ -193,6 +196,7 @@ export default class Core_MDF_CCP_extendedDataTable extends LightningElement {
            {
                 const finalSobjectRow = {}
                 let rowIndexes = Object.keys(row); 
+                console.log('rowIndexes',rowIndexes);
                 rowIndexes.forEach((rowIndex) => 
                 {
                     const relatedFieldValue = row[rowIndex];
@@ -207,7 +211,9 @@ export default class Core_MDF_CCP_extendedDataTable extends LightningElement {
                 });
                 finalSobjectRow.IdLink ='/'+ row["Id"];
                 sObjectRelatedFieldListValues.push(finalSobjectRow);
+                console.log('sObjectRelatedFieldListValues',sObjectRelatedFieldListValues);
             }
+            console.log('sObjectRelatedFieldListValues--->',sObjectRelatedFieldListValues);
             //sharing table
            
             this.sharingMapValues = new Map(Object.entries(data.lstSharingTableData));
@@ -222,6 +228,7 @@ export default class Core_MDF_CCP_extendedDataTable extends LightningElement {
             this.readOnlydataCols.push(...sharingCol);
             this.readOnlyfinalSObjectDataList = sObjectRelatedFieldListValues;
             this.isLoadingTable = false;
+            console.timeEnd("ReadOnly");
         })
         .catch(error => {
             console.log(error);
@@ -232,8 +239,10 @@ export default class Core_MDF_CCP_extendedDataTable extends LightningElement {
     wiredData( value) {
         this.wiredRecords = value; // track the provisioned value
         const { data, error } = value;
+        console.log('DataEdittable',data);
+       console.time("Editable");
         if (data) {
-						console.timeEnd("EditMethod");
+            console.timeEnd("EditMethod");
             let sObjectRelatedFieldListValues = [];
             
            for (let row of data.lstDataTableData) 
@@ -275,7 +284,7 @@ export default class Core_MDF_CCP_extendedDataTable extends LightningElement {
             console.log('finalSObjectDataList-->Obj'+ this.finalSObjectDataList);
             console.log('finalSObjectDataList-->Obj'+JSON.stringify( this.finalSObjectDataList));
             console.log( this.DataTableResponseWrappper);
-           
+         console.timeEnd("Editable");
          
         } else if (error) {
             console.error('Error:', error);
@@ -418,6 +427,54 @@ export default class Core_MDF_CCP_extendedDataTable extends LightningElement {
     handleSelection(event){
 
     }
+    /*handleCellChange(event) {
+        event.preventDefault();
+         console.log('event.detail.draftValues',event.detail.draftValues);
+         console.log('event.detail.draftValuesString'+JSON.stringify(event.detail.draftValues));
+        let draftValuesTemp = event.detail.draftValues;
+        console.log('draftValuesTemp',draftValuesTemp);
+        console.log('this.draftValues@@@',this.draftValues);
+        let draftValueChanged = false;
+        let copyDraftValues = JSON.parse(JSON.stringify(this.draftValues));
+        console.log('copyDraftValues@@@',copyDraftValues);
+        let draftValuesAdd = [];
+        copyDraftValues.forEach((item) => {
+            let rec={};
+            draftValuesTemp.forEach((updateItems) => {
+                if (item.Id === updateItems.Id) {
+                    for (let field in draftValuesTemp) {
+                        item[field] = draftValuesTemp[field];
+                    }
+                   // draftValueChanged = true;
+                }else{
+                    draftValuesAdd.push(updateItems);
+                }
+            })
+        });
+        console.log('draftValuesAdd::'+JSON.stringify(draftValuesAdd));
+        if (copyDraftValues.length === 0) {
+            this.draftValues = [...draftValuesTemp];
+            console.log('copyDraftValues == null');
+        }
+        else if (draftValuesAdd.length > 0) {
+            let draftFinal =[];
+            copyDraftValues.forEach((item) => {
+                let rec={};
+                draftFinal.push(item);
+            });
+            draftValuesAdd.forEach((item) => {
+                draftFinal.push(item);
+            });
+          // let draftFinal = Object.assign(copyDraftValues, draftValuesAdd);
+           console.log('draftFinal::',JSON.stringify(draftFinal));
+            this.draftValues = [...draftFinal];
+        } else {
+            console.log('copyDraftValues != null');
+            this.draftValues = [...copyDraftValues];
+        }
+        
+        console.log('UpdatedDraft::'+JSON.stringify(this.draftValues));
+    }*/
     handleCellChange(event) {
         event.preventDefault();
         let draftValuesTemp = event.detail.draftValues;
@@ -426,8 +483,11 @@ export default class Core_MDF_CCP_extendedDataTable extends LightningElement {
         });
     }
     updateDraftValues(updateItem) {
+        console.log('this.draftValues@@@',this.draftValues);
+        console.log('tupdateItem@@@'+JSON.stringify(updateItem));
         let draftValueChanged = false;
         let copyDraftValues = JSON.parse(JSON.stringify(this.draftValues));
+        console.log('copyDraftValues@@@',copyDraftValues);
         copyDraftValues.forEach((item) => {
             if (item.Id === updateItem.Id) {
                 for (let field in updateItem) {

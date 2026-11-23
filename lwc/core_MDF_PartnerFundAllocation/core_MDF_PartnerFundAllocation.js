@@ -146,6 +146,7 @@ export default class Core_MDF_PartnerFundAllocation extends LightningElement {
     toggleHelpText() {
         this.helpTextClass = this.helpTextClass == 'slds-popover slds-nubbin_left-top-corner slds-popover_large slds-fall-into-ground slds-hide helpTextStyle' ? "slds-popover slds-nubbin_left-top-corner slds-popover_large slds-rise-from-ground helpTextStyle" : "slds-popover slds-nubbin_left-top-corner slds-popover_large slds-fall-into-ground slds-hide helpTextStyle"
     }
+    dynamicWidth = ""
     //sorting logic
     handleSortdata(event) {
         // field name
@@ -190,7 +191,6 @@ export default class Core_MDF_PartnerFundAllocation extends LightningElement {
         this.isLoaded = true;
         this.countr = 0;
         let programs = [];
-
         if (this.selectedbudgetTypeValues.value.length >= 1 && !(this.selectedProgramValues.value != null && this.selectedProgramValues.value != '' && this.selectedProgramValues.value != 'undefined')) {
             this.filterFlag = 'budget';
         }

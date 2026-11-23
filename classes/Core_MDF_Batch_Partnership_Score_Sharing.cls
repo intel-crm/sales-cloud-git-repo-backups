@@ -17,6 +17,7 @@ global Class Core_MDF_Batch_Partnership_Score_Sharing implements Database.Batcha
     //Constructor to receive list of partnership records
     global Core_MDF_Batch_Partnership_Score_Sharing(List<Core_MDF_Partnership_Score__c> partnershipScoreList){
         this.partnershipScoreSharingList=partnershipScoreList;
+        
     }
     global Database.QueryLocator start(Database.BatchableContext BC) 
     {

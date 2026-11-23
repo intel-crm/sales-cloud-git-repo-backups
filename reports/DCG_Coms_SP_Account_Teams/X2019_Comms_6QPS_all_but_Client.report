@@ -75,13 +75,6 @@
             <operator>notEqual</operator>
             <value>PSG</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Core_Opp_FC_Prod_Schedule__c.Core_FC_BU_Short_Name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>NSG</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
@@ -100,7 +93,7 @@
         <field>Core_Opp_FC_Prod_Schedule__c.Core_FC_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2020-Comms 6QPS -all but Client</name>
+    <name>2019-Comms 6QPS -all but Client</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -124,8 +117,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Approved_Date__c</dateColumn>
-        <endDate>2020-12-26</endDate>
+        <endDate>2019-12-28</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2019-12-29</startDate>
+        <startDate>2018-12-30</startDate>
     </timeFrameFilter>
 </Report>

@@ -400,6 +400,11 @@
         <type>Checkbox</type>
     </fields>
     <label>Exception Account Mapping</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>EAM-{000000000}</displayFormat>
         <label>Exception Account Mapping Name</label>
@@ -418,7 +423,6 @@
         <active>true</active>
         <description>Once user creates an exception account mapping with an account, user cant update that account</description>
         <errorConditionFormula>ISCHANGED(Core_MDF_Account_id__c)</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Account_id__c</errorDisplayField>
         <errorMessage>Cannot update account</errorMessage>
     </validationRules>
     <validationRules>

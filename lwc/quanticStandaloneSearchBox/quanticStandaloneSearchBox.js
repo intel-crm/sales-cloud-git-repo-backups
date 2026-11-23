@@ -114,13 +114,6 @@ export default class QuanticStandaloneSearchBox extends NavigationMixin(
   isInitialized;
   /** @type {Suggestion[]} */
   suggestions = [];
-  get suggestions() {
-    return this.state.suggestions.map((s, index) => ({
-      key: index,
-      rawValue: s.rawValue,
-      value: s.highlightedValue,
-    }));
-  }
 
   /** @type {string} */
   get standaloneEngineId() {

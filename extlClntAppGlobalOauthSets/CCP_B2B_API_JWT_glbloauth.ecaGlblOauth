@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <callbackUrl>https://test.salesforce.com/services/oauth2/callback</callbackUrl>
+    <certificate>MIIDazCCAlOgAwIBAgIUB9kZeHuyf5sj2uNN0e65i544LN4wDQYJKoZIhvcNAQEL
+BQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM
+GEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yNjA1MTEwOTA5MjJaFw0yNzA1
+MTEwOTA5MjJaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw
+HwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB
+AQUAA4IBDwAwggEKAoIBAQDBq9sTXgiu3sAVz5DCXrCDKsCdZ2O3e7a2PWjAcIvr
+jPvn78/M9/PTLQETwWwCmoNxQJB8wse+qUexsWUxnnVUmsFkQvln56vGWem/ZMb4
+H2VI0DaA9MWMx0wRy7znxVvd/lROQKWv/eSRgVhNWgaKZPPuhj5MrHbjOewP5Fkd
+OOS5GUdy1v+flPVGO7SNI39vLQHvuPD7mIAR16HbmY+yU0GIA2sRJqNS0G8oBDK7
+209uI9t56ubPymjsW5jfcQkcg8egiHTfV3IEaPigBBI+MS7R6jyCkTtuHp4pKAfE
+k3L/r3mrRd8koZ10iYU8z39ReMBSmz/5SA+74zp8MQa7AgMBAAGjUzBRMB0GA1Ud
+DgQWBBQgT4AdHdsIi3ow1HWzDRjxuvdNlTAfBgNVHSMEGDAWgBQgT4AdHdsIi3ow
+1HWzDRjxuvdNlTAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQCv
+VXj1N+DLe8OsYcupC6OhdP6lXCdD4HOneTLmbb53NzF8BeXpmQb3cBH/MCsZXn4F
+ltxskS8j80Xuj2dVTRRk0pDam1QvyH/JFrTuoobT7NDahQH3nxOrEyDQQFL14aTc
+jXmgSx1tlgLK31s/R8/b//iVIQPs1b2TalcxBPpP655aTSy2EcnTZ62jVtjIVQZs
+xHmGDTPJNm5lvD9bh+bDrumCcNHzk2VqT5+lZZglY8Zpcm1n2PFXILpDq8s2sMHj
+pwhTQq91kKoAYVnlQxPzhfe/UwbptNapbXMu0F5SoRmi2ChukC8URwWu0fyaysM9
+YwwbccLNVHgsXP3AE0Bi</certificate>
+    <consumerKey>3MVG9ahGHqp.k2_yt2nTHU9QGHKwTiHvgG0oZ.p1imx7GEcggRqdlbQJas7_A9ta4b500.vqRU8.4KnlXM74X</consumerKey>
+    <externalClientApplication>CCP_B2B_API_JWT</externalClientApplication>
+    <isClientCredentialsFlowEnabled>false</isClientCredentialsFlowEnabled>
+    <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>
+    <isCodeCredPostOnly>false</isCodeCredPostOnly>
+    <isConsumerSecretOptional>false</isConsumerSecretOptional>
+    <isDPopEnabled>false</isDPopEnabled>
+    <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+    <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+    <isIntrospectAllTokens>false</isIntrospectAllTokens>
+    <isMtlsEnabled>false</isMtlsEnabled>
+    <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+    <isPkceRequired>true</isPkceRequired>
+    <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+    <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+    <isSecretRequiredForTokenExchange>true</isSecretRequiredForTokenExchange>
+    <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+    <label>CCP_B2B_API_JWT_glbloauth</label>
+    <shouldRotateConsumerKey>false</shouldRotateConsumerKey>
+    <shouldRotateConsumerSecret>false</shouldRotateConsumerSecret>
+</ExtlClntAppGlobalOauthSettings>

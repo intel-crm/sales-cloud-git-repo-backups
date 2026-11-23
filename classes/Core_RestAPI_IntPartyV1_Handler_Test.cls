@@ -18,8 +18,10 @@ public class Core_RestAPI_IntPartyV1_Handler_Test {
         
         Test.startTest();
         Core_RestAPI_TestUtilities.getCustomerUsersWithAccountsAndContacts('RestApiUnitTest', 1, 1,0,1,'IPS External Customer', 0);
+        System.debug(' Core_RestAPI_IntPartyV1_Handler_Test Account '+[Select Name FROM Account] + ' Contact '+[Select Name FROM Contact]);
         
         commUser = [Select Name FROM User WHERE ContactId IN (Select Id FROM Contact) ];
+        System.debug(' Core_RestAPI_IntPartyV1_Handler_Test User '+commUser);
         //Insert 5 cases for admin User & 5 cases for Community User
         System.runAs(adminUser){
             List<case> caseList = Core_RestAPI_TestUtilities.getListOfCases(2);
@@ -28,11 +30,14 @@ public class Core_RestAPI_IntPartyV1_Handler_Test {
                 Case objCase = caseList[i];
                 objCase.OwnerId = adminUser.Id;
             } 
+            system.debug('i value'+i);
             //inserting 10 records of project for Admin user and Community user
             insert caseList;
+            System.debug('Print the insert cases'+caseList);
             //Insert interested parties to the case
             List<Core_IPS_Case_Interested_Party__c> intPartyList = Core_RestAPI_TestUtilities.getInternalInterestedParties(4, 'External');
             List<Core_IPS_Case_Interested_Party__c> extPartyList = Core_RestAPI_TestUtilities.getInternalInterestedParties(2, 'Internal');
+            System.debug('\n intPartyList '+intPartyList+'\n extPartyList '+extPartyList);
             for(Core_IPS_Case_Interested_Party__c ip : intPartyList){
                 //Added cases to commUser1
                 ip.Case__c = caseList[0].Id;
@@ -47,6 +52,7 @@ public class Core_RestAPI_IntPartyV1_Handler_Test {
             insert extPartyList;
         }
         Test.stopTest();
+        System.debug(' +++++++++++++++++++++++++++ Core_RestAPI_IntPartyV1_Handler_Test  Test Data Setup COmpleted +++++++++++++++++++++++++++ \n\n\n\n\n\n');
     }
     
     
@@ -58,10 +64,12 @@ public class Core_RestAPI_IntPartyV1_Handler_Test {
         requestObj.requestUri ='/v1.0/cases/';
         requestObj.httpMethod = 'GET';
         RestContext.request = requestObj;
+        System.debug(' RestContext.request '+RestContext.request);
         
         Core_RestAPI_InterestedPartyV1_Handler handler = new Core_RestAPI_InterestedPartyV1_Handler(System.now(), 'Core_RestAPI_InterestedPartyV1_Handler'); 
         Core_RestAPI_Response response = handler.getInterestedParties();  
         System.assertNotEquals(null, response);
+        System.debug(' >>> response '+response);
         
     }
     
@@ -79,6 +87,7 @@ public class Core_RestAPI_IntPartyV1_Handler_Test {
         }catch(Exception e){
             exceptionThrown = false;   
         }
+        System.debug(' >>> test_getCases_Negative >>>  response '+finalResponse);
         System.assertNotEquals(null, finalResponse);
         System.assertEquals(true, exceptionThrown, 'Handler not thrown any exception if false');
         
@@ -104,6 +113,7 @@ public class Core_RestAPI_IntPartyV1_Handler_Test {
             requestObj.requestUri ='/v1.0/cases/';
             requestObj.httpMethod = 'GET';
             RestContext.request = requestObj;
+            System.debug(' RestContext.request '+RestContext.request);
             
             
             Core_RestAPI_InterestedPartyV1_Handler handler = new Core_RestAPI_InterestedPartyV1_Handler(System.now(), 'Core_RestAPI_InterestedPartyV1_Handler'); 

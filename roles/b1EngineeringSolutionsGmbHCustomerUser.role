@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>b1 Engineering Solutions GmbH Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>b1EngineeringSolutionsGmbHCustomerManager</parentRole>
 </Role>

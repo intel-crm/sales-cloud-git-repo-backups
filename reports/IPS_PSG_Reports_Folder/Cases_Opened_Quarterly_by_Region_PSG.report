@@ -326,13 +326,11 @@
             <axisBinding>y</axisBinding>
             <column>RowCount</column>
         </chartSummaries>
-        <chartType>VerticalColumnStacked</chartType>
+        <chartType>VerticalColumn</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
         <groupingColumn>CREATED_DATEONLY</groupingColumn>
-        <legendPosition>Right</legendPosition>
         <location>CHART_TOP</location>
-        <secondaryGroupingColumn>Account.Core_Geo__c</secondaryGroupingColumn>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -390,7 +388,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Case.Core_AAQC_Case_recordType</value>
+            <value>Case.Core_AAQC_Case_recordType,Case.CEP_Case</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
@@ -405,13 +403,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Invalid</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT.NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>IPS Test Account</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -1,0 +1,64 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" controller="test_STF_FileUpload" >
+<aura:attribute name="showUploadFileSection" type="Boolean" default="false" description="To display Upload files and Manage Document button" />    
+<aura:attribute name="disableManageDocumentButton" default="true" type="boolean"/>
+<aura:attribute name="isModalOpen" type="boolean" default="false"/>
+<aura:attribute name="myAttribute" type="String" default="Hello World"/>
+<aura:attribute name="URL" type="string"/>
+<lightning:button variant="neutral" onclick="{!c.openSFT}"
+                            label="Upload File"
+                            title="Uplaod File"
+                            />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+<!-- <lightning:button variant="neutral"
+                            label="{!$Label.c.Core_MDF_Manage_Document_Button_Label}"
+                            title="{!$Label.c.Core_MDF_Manage_Document_Button_Label}"
+                            disabled="{!v.disableManageDocumentButton}" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> -->
+    
+
+    
+<aura:if isTrue="{!v.isModalOpen}">    
+        <!-- Modal/Popup Box starts here-->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box Header-->
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close"
+                                          onclick="{! c.closeModal }"
+                                          alternativeText="close"
+                                          variant="bare-inverse"
+                                          class="slds-modal__close"/>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Document Upload</h2>
+                </header>
+                <!--Modal/Popup Box Body-->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <center>
+                <lightning:button variant="neutral" 
+                    label="Return to Claim"
+                    title="Return to Claim"
+                    onclick="{! c.closeModal }"
+                /></center>
+
+                <aura:if isTrue="{!v.showUploadFileSection}">
+                    <iframe width="100%" height="200px" frameborder="true" scrolling="false" src="{!v.URL}"/>
+                </aura:if>
+                <center>
+                <lightning:button variant="neutral" 
+                    label="Done"
+                    title="Done"
+                    onclick="{! c.auditDocInsertion }"
+                /></center>
+                </div>
+                <!--Modal/Popup Box Footer-->
+                <footer class="slds-modal__footer">
+                    
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>  
+
+    
+    
+    
+</aura:component>

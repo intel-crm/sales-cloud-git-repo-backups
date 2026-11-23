@@ -10,7 +10,7 @@ import hasExternalActivitySubmitter from '@salesforce/customPermission/Core_MDF_
 import hasIPAAccountManager from '@salesforce/customPermission/Core_MDF_CCP_Internal_IPA_Acct_Mgr';
 import hasClaimCaseReviewer from '@salesforce/customPermission/Core_MDF_CCP_Internal_Claim_Case_Reviewer';
 import hasClaimCaseReviewerManager from '@salesforce/customPermission/Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager';
-import hasExternalIPAClaimSubmitter from '@salesforce/customPermission/Core_MDF_IPAClaimSubmitter';
+import hasExternalClaimSubmitter from '@salesforce/customPermission/Core_MDF_CCP_Claim_Submitter';
 import mdfFileRepository from '@salesforce/label/c.Core_MDF_File_Repository';
 import DocumentUploadDisabledMessage from '@salesforce/label/c.Core_MDF_DocumentUploadDisabledMessage';
 import NoMDFDocumentsUploadedMessage from '@salesforce/label/c.Core_MDF_NoMDFDocumentsUploadedMessage';
@@ -68,7 +68,7 @@ export default class Core_MDF_FileRepository extends LightningElement {
     isModalOpen = false;
 
     get hasFileManageAccess() {
-        return hasExternalActivitySubmitter || hasIPAAccountManager || hasClaimCaseReviewer || hasClaimCaseReviewerManager || hasExternalIPAClaimSubmitter;
+        return hasExternalActivitySubmitter || hasIPAAccountManager || hasClaimCaseReviewer || hasClaimCaseReviewerManager || hasExternalClaimSubmitter;
     }
 
     renderedCallback() {

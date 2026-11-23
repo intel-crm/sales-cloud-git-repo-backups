@@ -13,9 +13,6 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Opportunity_Type__c</field>
-    </columns>
-    <columns>
         <field>AMOUNT</field>
     </columns>
     <columns>
@@ -55,18 +52,18 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Coverage__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>OSC</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Dzul,Tomala,Jadwiszczok,Smelkova,Eran Gal,Alex Garea,Galin Dimov,Katarzyna Bielak</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Qualify,Define,Develop,Design</value>
+            <value>Dzul,Tomala,Jadwiszczok,Smelkova,Eran Gal,Alex Garea,Janicki</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -83,7 +80,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Pipeline EMEA - Opp&amp;Prod - Pending</name>
@@ -109,7 +106,7 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
+        <dateColumn>CLOSE_DATE</dateColumn>
         <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

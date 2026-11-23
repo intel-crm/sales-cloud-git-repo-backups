@@ -6,7 +6,7 @@
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>Mapeos de cuentas de excepción</value>
+        <value>Exception Account Mappings</value>
     </caseValues>
     <fields>
         <label>Cuenta</label>
@@ -34,7 +34,7 @@
         <name>Core_MDF_Exception_Status_txt__c</name>
     </fields>
     <fields>
-        <label>Excepción</label>
+        <label><!-- Exception --></label>
         <name>Core_MDF_Exception_id__c</name>
         <relationshipLabel>Mapeos de cuentas de excepción</relationshipLabel>
     </fields>

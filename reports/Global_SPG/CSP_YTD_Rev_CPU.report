@@ -18,6 +18,21 @@
                 <sourceValue>Agriculture</sourceValue>
             </sourceValues>
             <sourceValues>
+                <sourceValue>Apparel</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Banking</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Biotechnology</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Chemicals</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Communications</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>Construction</sourceValue>
             </sourceValues>
             <sourceValues>
@@ -26,11 +41,44 @@
             <sourceValues>
                 <sourceValue>Education</sourceValue>
             </sourceValues>
+            <sourceValues>
+                <sourceValue>Electronics</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Energy</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Engineering</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Entertainment</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Environmental</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Finance</sourceValue>
+            </sourceValues>
             <value>CloudSP</value>
         </values>
         <values>
             <sourceValues>
+                <sourceValue>Food &amp; Beverage</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>Government</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Healthcare</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hospitality</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Insurance</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Machinery</sourceValue>
             </sourceValues>
             <sourceValues>
                 <sourceValue>Manufacturing</sourceValue>
@@ -42,7 +90,25 @@
                 <sourceValue>Not For Profit</sourceValue>
             </sourceValues>
             <sourceValues>
+                <sourceValue>Others</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Recreation</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>Retail</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Shipping</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Technology</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Transportation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Utilities</sourceValue>
             </sourceValues>
             <value>Other</value>
         </values>

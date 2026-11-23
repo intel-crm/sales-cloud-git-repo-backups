@@ -1,0 +1,56 @@
+<apex:page renderAs="pdf" controller="POCControllerClass" >
+    
+        <head>
+
+     <style>
+        table.gridtable {
+       font-family: verdana,arial,sans-serif;
+       font-size:11px;
+        color:#333333;
+        border-width: 1px;
+         border-color: #666666;
+     }
+        table.gridtable th {
+         border-width: 1px;
+       padding: 8px;
+       border-style: solid;
+       border-color: #666666;
+      font-weight:bold;
+
+     }
+    table.gridtable td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #ffffff;
+     }
+     </style> 
+	 </head>    
+    
+     <h2> Please find below list of all Vat Documents to be reviewed</h2><br/> <br/> 
+	 <table  Id="header" style="width:100%; " border ="1">     
+         <tr>
+             <td style="width:50%">Claim Number</td>
+             <td style="width: 50%;">Vat Document Links</td>
+         </tr>
+		<apex:repeat value="{!vats}" var="vat" id="theRepeat1">
+            <tr>
+                <td>
+                	{!vat}
+            	</td>
+                <td>
+                    <apex:repeat value="{!strings}" var="string" id="theRepeat">
+                 
+                                <a href="{!string}" >Click Here</a>
+                 
+                    </apex:repeat>
+            	</td>
+        	</tr>
+		</apex:repeat>
+                       
+        
+
+</table>
+
+</apex:page>

@@ -13,20 +13,20 @@
         <name>Core_MDF_Active_Ind__c</name>
     </fields>
     <fields>
-        <help>ベースライン期間は、このキャンペーン以前の時点で基準値が取得または推定された時期を指します。例:このキャンペーンが8月に終了し、基準値が前年の8月に取得された場合、最初の選択肢を選びます。ベースライン値がゼロの場合は、最初の選択肢を選びます。</help>
-        <label>基準期間</label>
+        <help><!-- The Baseline Period describes a point in time prior to this campaign when the Baseline Value was captured or estimated. Example: if this campaign will end in August, and the Baseline Value was captured in the previous August, choose the first option. If the Baseline Value is zero, choose the first option. --></help>
+        <label><!-- Baseline Period --></label>
         <name>Core_MDF_Baseline_Period_nm__c</name>
         <picklistValues>
             <masterLabel>Same period as this campaign, one half before</masterLabel>
-            <translation>このキャンペーンと同じ期間で、その半分前のことです</translation>
+            <translation><!-- Same period as this campaign, one half before --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Same period as this campaign, one quarter before</masterLabel>
-            <translation>このキャンペーンと同じ期間、四半期前のことです</translation>
+            <translation><!-- Same period as this campaign, one quarter before --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Same period as this campaign, one year before</masterLabel>
-            <translation>このキャンペーンと同じ時期、1年前のことです</translation>
+            <translation><!-- Same period as this campaign, one year before --></translation>
         </picklistValues>
     </fields>
     <fields>

@@ -9,6 +9,10 @@
         <value>Customer Disclaimers</value>
     </caseValues>
     <fields>
+        <label><!-- Group Id --></label>
+        <name>Core_MDF_Group_Id_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- NDA Acceptance Date --></label>
         <name>NDA_Acceptance_Date_dtm__c</name>
     </fields>

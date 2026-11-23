@@ -1,0 +1,43 @@
+<apex:page docType="html-5.0" standardStylesheets="false" showHeader="true" sidebar="true">
+    <apex:slds />
+    <style>
+        body {
+            font-family: Salesforce Sans, Arial, sans-serif;
+        }
+        .activityFormContainer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .recordTypeHeader {
+            background-color: #f3f3f3;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border-left: 4px solid #0070d2;
+        }
+        .recordTypeTitle {
+            font-size: 18px;
+            font-weight: bold;
+            color: #001e3e;
+        }
+        .recordTypeDescription {
+            font-size: 14px;
+            color: #565656;
+            margin-top: 5px;
+        }
+    </style>
+    
+    <div class="slds-container slds-container--large activityFormContainer">
+        <div class="recordTypeHeader">
+            <div class="recordTypeTitle">Create Outcome Based Activity - Datacenter</div>
+            <div class="recordTypeDescription">
+                Use this form to create a new Outcome Based Activity for Datacenter record type. 
+                Fill in all required fields and provide necessary details about the activity.
+            </div>
+        </div>
+        <div style="margin-top: 20px; padding: 20px; border: 1px solid #d8dae0; border-radius: 4px;">
+            <p>Please navigate to the component directly or use the Outcome Based Activity form through the standard interface.</p>
+        </div>
+    </div>
+</apex:page>

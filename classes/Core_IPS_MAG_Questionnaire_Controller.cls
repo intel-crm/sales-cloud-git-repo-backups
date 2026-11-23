@@ -8,7 +8,7 @@
 * Sugandha                   17/08/2018              Created (US# US148915 I15)
 ****************************************************************************************************/ 
 
-public without sharing class Core_IPS_MAG_Questionnaire_Controller {
+public class Core_IPS_MAG_Questionnaire_Controller {
     public List<Wrap_Question> lstQuestions  {get; set;}
     Public String selectedAnswerOrder {get; set;}
     Public Boolean isEditable {get; set;}
@@ -23,12 +23,10 @@ public without sharing class Core_IPS_MAG_Questionnaire_Controller {
     
     public  Core_IPS_MAG_Questionnaire_Controller(ApexPages.StandardController controller){ 
         selectedTextVal = ''; 
-        if(!Test.isRunningTest()) {
+        if(!Test.isRunningTest())
             controller.addFields(new List<String>{'Status','Core_Sub_Status__c'}); 
-        }
-            // Unencoded Formulas in Script Tags XSS Fix - TWC745-7251
-        caseId = ApexPages.currentPage().getParameters().get('Id')?.escapeHtml4();
         
+        caseId = ApexPages.currentPage().getParameters().get('Id');
         newCase = (Case)controller.getRecord();     
         isEditable = False;
         //To display Error message when caseid is null
@@ -51,13 +49,10 @@ public without sharing class Core_IPS_MAG_Questionnaire_Controller {
         Map<Id,List<Core_IPS_Answer__c>> mapQuesId2Answers = new Map<Id,List<Core_IPS_Answer__c>>();
         
         //List of all the MAG Questions
-        //FLS Check Added - Yasasvi
-        if(Core_IPS_Question__c.SObjectType.getDescribe().isAccessible()){
-            lstQuestion = new List<Core_IPS_Question__c>([SELECT Id,Name,Core_IPS_Datatype__c,Core_IPS_Environment_Detail_Answer__c,Core_IPS_Question__c,
-                                                          Core_IPS_Required__c,Core_IPS_Order_No__c,Core_IPS_Environment_Detail_Answer__r.Core_IPS_Answer__c 
-                                                          FROM Core_IPS_Question__c WHERE RecordType.DeveloperName='Core_IPS_MAG_Question' AND
-                                                          Core_IPS_Status__c='Active' ORDER BY Core_IPS_Order_No__c ]);
-        }
+        lstQuestion = new List<Core_IPS_Question__c>([SELECT Id,Name,Core_IPS_Datatype__c,Core_IPS_Environment_Detail_Answer__c,Core_IPS_Question__c,
+                                                      Core_IPS_Required__c,Core_IPS_Order_No__c,Core_IPS_Environment_Detail_Answer__r.Core_IPS_Answer__c 
+                                                      FROM Core_IPS_Question__c WHERE RecordType.DeveloperName='Core_IPS_MAG_Question' AND
+                                                      Core_IPS_Status__c='Active' ORDER BY Core_IPS_Order_No__c]);
         //In case there are no MAG Questions, Show Error Message
         if(lstQuestion.size() == 0){
             showError = True;
@@ -66,30 +61,25 @@ public without sharing class Core_IPS_MAG_Questionnaire_Controller {
         }
         
         //Map of answers record wrt Question Id
-        //FLS Check Added - Yasasvi
-        if(Core_IPS_Answer__c.SObjectType.getDescribe().isAccessible()){
-            for(Core_IPS_Answer__c objAnswer : [SELECT Id,Core_IPS_Answer__c,Core_IPS_Question__c
-                                                FROM Core_IPS_Answer__c WHERE Core_IPS_Question__c IN :lstQuestion AND Core_IPS_Status__c='Active' 
-                                                ORDER BY Core_IPS_Order_No__c,Name ASC]) 
-            {
-                mapId2Answers.put(objAnswer.id,objAnswer);
-                Id quesId = objAnswer.Core_IPS_Question__c;
-                if(!mapQuesId2Answers.containsKey(quesId)) {
-                    mapQuesId2Answers.put(quesId, new List<Core_IPS_Answer__c>());
-                    
-                }
-                mapQuesId2Answers.get(quesId).add(objAnswer);
+        for(Core_IPS_Answer__c objAnswer : [SELECT Id,Core_IPS_Answer__c,Core_IPS_Question__c
+                                            FROM Core_IPS_Answer__c WHERE Core_IPS_Question__c IN :lstQuestion AND Core_IPS_Status__c='Active' 
+                                            ORDER BY Core_IPS_Order_No__c,Name ASC]) 
+        {
+            mapId2Answers.put(objAnswer.id,objAnswer);
+            Id QuesId = objAnswer.Core_IPS_Question__c;
+            if(!mapQuesId2Answers.containsKey(QuesId)) {
+                mapQuesId2Answers.put(QuesId, new List<Core_IPS_Answer__c>());
+                
             }
+            mapQuesId2Answers.get(QuesId).add(objAnswer);
         }
         
         //List of Responses on Case
-        //FLS Check Added - Yasasvi
-        if(Core_IPS_Response__c.SObjectType.getDescribe().isAccessible()) {
-               lstResponses = [SELECT Id,Core_IPS_Answer_Master__c,Core_IPS_Question_Master__c,Core_IPS_Case__c,
-                               Core_IPS_Answer_Master__r.Core_IPS_Answer__c, Core_IPS_Question_Master__r.Core_IPS_Datatype__c,
-                               Core_IPS_Answer__c,Core_IPS_Question_Master__r.Core_IPS_Order_No__c,Core_IPS_Question_Master__r.Core_IPS_Environment_Detail_Answer__c
-                               FROM Core_IPS_Response__c WHERE Core_IPS_Case__c = :caseId AND Core_IPS_Question_Master__r.RecordType.DeveloperName='Core_IPS_MAG_Question'];
-           }
+        lstResponses = [SELECT Id,Core_IPS_Answer_Master__c,Core_IPS_Question_Master__c,Core_IPS_Case__c,
+                        Core_IPS_Answer_Master__r.Core_IPS_Answer__c, Core_IPS_Question_Master__r.Core_IPS_Datatype__c,
+                        Core_IPS_Answer__c,Core_IPS_Question_Master__r.Core_IPS_Order_No__c,Core_IPS_Question_Master__r.Core_IPS_Environment_Detail_Answer__c
+                        FROM Core_IPS_Response__c WHERE Core_IPS_Case__c = :caseId AND Core_IPS_Question_Master__r.RecordType.DeveloperName='Core_IPS_MAG_Question'];
+        
         //adding all Responses in a list of String wrt questions
         for(Core_IPS_Response__c response:lstResponses){ 
             if(!mapQues2AnswerStrMap.containsKey(response.Core_IPS_Question_Master__c)) {
@@ -146,6 +136,7 @@ Modification Log :
            mapQuesOrderToAnswer.get(order-1).Contains(mapOrderToquestion.get(order))){
                showDependentQues = False;
            }
+        system.debug('order'+showDependentQues);
         return showDependentQues;
     }
     
@@ -162,16 +153,22 @@ Modification Log :
 * Sugandha                    17/08/2018              Created 
 *********************************************************/    
     public void renderMSPDepQues(){
-        String query = 'SELECT id,Core_IPS_Answer__c, Core_IPS_Question__r.Core_IPS_Order_No__c FROM Core_IPS_Answer__c';
+        system.debug('selectedTextVal::'+selectedTextVal );
+        String Query = 'SELECT id,Core_IPS_Answer__c, Core_IPS_Question__r.Core_IPS_Order_No__c FROM Core_IPS_Answer__c';
         if(selectedTextVal != '' && Pattern.compile( '[a-zA-Z0-9]{15}|[a-zA-Z0-9]{18}' ).matcher(selectedTextVal ).matches()){
-            query = query + ' WHERE id =:selectedTextVal LIMIT 1';
-        } else {
-            query = query + ' WHERE Core_IPS_Answer__c =:selectedTextVal LIMIT 1';
+            Query = Query + ' WHERE id =:selectedTextVal LIMIT 1';
         }
-        List<Core_IPS_Answer__c> lstAns = Database.query(query);
+        else
+             Query = Query + ' WHERE Core_IPS_Answer__c =:selectedTextVal LIMIT 1';
+        
+        system.debug('query'+Query);
+        
+        List<Core_IPS_Answer__c> lstAns = Database.query(Query);
          String  ansId;
         if(lstAns != null && lstAns.size()>0 && selectedTextVal != ''){
             selectedAnswerOrder = String.valueOf(lstAns[0].Core_IPS_Question__r.Core_IPS_Order_No__c);
+            system.debug('order::'+selectedAnswerOrder);
+            
             for(SelectOption opt: lstQuestions[Integer.ValueOf(selectedAnswerOrder)-1].options){
                 if(opt.getLabel().containsIgnoreCase(Core_IPS_Helper_Utility.getIPSLabel('Core_IPS_MSP_None_Option'))){
                     ansId = opt.getValue(); 
@@ -243,7 +240,7 @@ Modification Log :
         
     }
     
-/*****************************************************************************
+    /*********************************************************
 Version     : 1.0 
 Created Date: 17/08/2018
 Input Parameters: NA.
@@ -254,16 +251,16 @@ Modification Log :
 * Developer                   Date                   Description
 * ----------------------------------------------------------------------------                 
 * Sugandha                    17/08/2018              Created 
-* Sumukh                      08/05/2019              Modified for US340992
-*******************************************************************************/
+*********************************************************/
     public pagereference saveAnswer(){        
-        List<Core_IPS_Response__c> lstRespToUpsert = new List<Core_IPS_Response__c>();       
+        List<Core_IPS_Response__c> lstRespToUpsert = new List<Core_IPS_Response__c>();
         Boolean allRespEmpty = True;
         try{
             if(lstQuestions.size()>0)
             {
                 for(Wrap_Question ques : lstQuestions){
                     //For Multiselect picklist questions responses records will be same as no of ans selected 1:n
+                    system.debug('ques.dependentQues::'+ques.dependentQues+'ques.required::'+ques.required+'ques.selectedValues::'+ques.selectedValues);
                     if(ques.answerType == 'Multiselect Picklist'){
                         if(!ques.dependentQues && ques.required && (ques.selectedValues.isEmpty() || ques.selectedValues == null)){
                             ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.Error, Core_IPS_Helper_Utility.getIPSLabel('Core_IPS_MAG_Required_Field_Err')));
@@ -282,10 +279,7 @@ Modification Log :
                         if((ques.selectedValues.isEmpty() || ques.selectedValues == null))
                         {
                             Core_IPS_Response__c res = new Core_IPS_Response__c();
-                            // FLS check Added - Yasasvi
-                            if (Schema.sObjectType.Core_IPS_Response__c.fields.Core_IPS_Case__c.isCreateable()) {
-                                res.Core_IPS_Case__c = caseId.escapeHtml4();
-                            }
+                            res.Core_IPS_Case__c = caseId;
                             res.Core_IPS_Question_Master__c = ques.questionId; 
                             lstRespToUpsert.add(res);
                         }
@@ -293,19 +287,15 @@ Modification Log :
                     //For other question type respone will 1:1
                     else{
                         Core_IPS_Response__c res = new Core_IPS_Response__c();
-                       // FLS check Added - Yasasvi  
-                        if (Schema.sObjectType.Core_IPS_Response__c.fields.Core_IPS_Case__c.isCreateable()) {
-                            res.Core_IPS_Case__c = caseId.escapeHtml4();
-                        }
+                        res.Core_IPS_Case__c = caseId;
                         res.Core_IPS_Question_Master__c = ques.questionId;
                         if(!ques.dependentQues && ques.required && (ques.answer == '' || ques.answer == null)){
                             ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.Error, Core_IPS_Helper_Utility.getIPSLabel('Core_IPS_MAG_Required_Field_Err')));
                             return null;                            
                         }
                         if((String.isEmpty(ques.answer) || String.isBlank(ques.answer)) ){
-                            if(allRespEmpty) {
-                                allRespEmpty = True;
-                            }
+                            if(allRespEmpty)
+                            allRespEmpty = True;
                         }
                         else{
                             if(ques.answerType == 'textarea' || ques.answerType == 'text'){                            
@@ -318,46 +308,32 @@ Modification Log :
                                 allRespEmpty = False;
                             }
                         }
-                        lstRespToUpsert.add(res);                        
-                    }                     
-                    newCase.Core_IPS_GEC_Request_Status__c = Core_IPS_Labels__c.getValues('MINDS_Questionnaire_Completed').value__c; // Added by Sumukh for US340992             
+                        lstRespToUpsert.add(res);
+                    }  
                 }
                 if(allRespEmpty)
-                {                                     
-                   if(newCase!=null){
-                    update newCase; // Added by Sumukh for US340992
-                    }                    
+                {
                     return new PageReference('/' + caseId);
                 }
                 //usert responses           
                 else if(lstRespToUpsert.size()>0)
                 {
-                    insert lstRespToUpsert;                   
-                    if(newCase!=null){
-                    update newCase;  // Added by Sumukh for US340992  
-                     }
-                                  
+                    insert lstRespToUpsert;
                     if(lstResponses.size()>0)
                         delete lstResponses;
                     //Redirect back to Case upon save
                     return new PageReference('/' + caseId);
                 } 
-                        
-           }
-            
+            }
         }
-        catch(DMLException e){ 
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error,e.getdmlMessage(0)));
-        }
-        catch(Exception ex){
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error,Core_IPS_Helper_Utility.getIPSLabel('Core_IPS_Mag_Excep_Msg')));
-        }                       
+        catch(DMLException e){ ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error,e.getdmlMessage(0)));}
+        catch(Exception ex){system.debug('Line No::'+ex.getLineNumber()+'Exception::'+ex.getMessage());ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error,Core_IPS_Helper_Utility.getIPSLabel('Core_IPS_Mag_Excep_Msg')));}                       
       
         return null;
     }
     
-    public pagereference cancelOperation(){
-        return new PageReference('/' + caseId.escapeHtml4());
+    public pagereference CancelOperation(){
+        return new PageReference('/' + caseId);
     }
     
     public class Wrap_Question{

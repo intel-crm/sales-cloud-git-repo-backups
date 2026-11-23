@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>SPEKTRA SCHWINGUNGSTECHNIK Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>SPEKTRASCHWINGUNGSTECHNIKCustomerManager</parentRole>
 </Role>

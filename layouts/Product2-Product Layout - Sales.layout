@@ -57,19 +57,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_IQR_Visible__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_Intel_vPro_Platform_Eligibility__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_StableImagePlatformProgVer_Ind__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Deactivation_Date__c</field>
+                <field>Core_Processor_Number_Nm__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -219,7 +207,8 @@
         <relatedList>RelatedPricebookEntryList</relatedList>
     </relatedLists>
     <relatedLists>
-        <relatedList>RelatedEntityHistoryList</relatedList>
+        <fields>NAME</fields>
+        <relatedList>Core_MDF_Segment_Product_Mapping__c.Core_MDF_Product_id__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

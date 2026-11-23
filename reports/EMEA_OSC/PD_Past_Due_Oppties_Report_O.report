@@ -1,40 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <chart>
-        <backgroundColor1>#FFFFFF</backgroundColor1>
-        <backgroundColor2>#FFFFFF</backgroundColor2>
-        <backgroundFadeDir>Diagonal</backgroundFadeDir>
-        <chartSummaries>
-            <aggregate>Sum</aggregate>
-            <axisBinding>y</axisBinding>
-            <column>AMOUNT</column>
-        </chartSummaries>
-        <chartType>Donut</chartType>
-        <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>false</expandOthers>
-        <groupingColumn>OWNER_MANAGER</groupingColumn>
-        <legendPosition>Bottom</legendPosition>
-        <location>CHART_BOTTOM</location>
-        <showAxisLabels>true</showAxisLabels>
-        <showPercentage>false</showPercentage>
-        <showTotal>true</showTotal>
-        <showValues>true</showValues>
-        <size>Medium</size>
-        <summaryAxisRange>Auto</summaryAxisRange>
-        <textColor>#000000</textColor>
-        <textSize>12</textSize>
-        <titleColor>#000000</titleColor>
-        <titleSize>18</titleSize>
-    </chart>
+    <columns>
+        <field>OWNER_MANAGER</field>
+    </columns>
+    <columns>
+        <field>CREATED</field>
+    </columns>
     <columns>
         <field>OPPORTUNITY_NAME</field>
-    </columns>
-    <columns>
-        <field>CLOSE_DATE</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Average</aggregateTypes>
-        <field>Opportunity.Core_Time_Till_Opportunity_Decision_Date__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -45,13 +18,31 @@
         <field>Opportunity.Core_Push_Counter__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Sales_Groups__c</field>
+        <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
-        <field>LAST_UPDATE</field>
+        <field>Opportunity.Core_Product_Application__c</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Past_Due__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_ID</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_ID</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+        <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>jaroslaw tomala,krzysztof janicki,yulia smelkova,eran gal,mariusz jadwiszczok,Alex Garea</value>
+        </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -73,39 +64,24 @@
             <operator>equals</operator>
             <value>Not Submitted</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>OWNER_MANAGER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>alex garea,jaroslaw tomala,korcan erguder,galin dimov,katarzyna bielak,gosia dzul,yulia smelkova,eran gal,mariusz jadwiszczok</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Yes</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OWNER_MANAGER</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>ACCOUNT_NAME</field>
+        <field>CLOSE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Past Due - EMEA Inside Sales</name>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Sales_Groups__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>[PD] Past Due Oppties Report (O)</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -126,7 +102,7 @@
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
-    <showSubTotals>false</showSubTotals>
+    <showSubTotals>true</showSubTotals>
     <sortColumn>AMOUNT</sortColumn>
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>

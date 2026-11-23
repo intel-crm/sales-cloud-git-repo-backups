@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <HomePageComponent xmlns="http://soap.sforce.com/2006/04/metadata">
-    <body>&lt;div class=&quot;flexipageComponent&quot; style=&quot;text-align: start;&quot;&gt;
-&lt;div class=&quot;slds-card__body&quot;&gt;
-&lt;div class=&quot;flexipageComponent&quot; style=&quot;text-align: start;&quot;&gt;
-&lt;div class=&quot;slds-card__body&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;span style=&quot;font-family: Calibri,sans-serif;&quot;&gt;&lt;strong&gt;&lt;span style=&quot;color: #00b0f0;&quot;&gt;DID YOU MISS IT?&lt;/span&gt;&lt;/strong&gt; WW29 Sales Excellence Office hours recordings are available now! Click &lt;a href=&quot;https://salescrm.intel.com/sales-excellence-office-hours/&quot; style=&quot;color: #0563c1; text-decoration: underline;&quot;&gt;HERE&lt;/a&gt; to view and access past topics.&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-family: Calibri,sans-serif;&quot;&gt;&lt;strong&gt;&lt;span style=&quot;color: #00b0f0;&quot;&gt;COMING SOON! &lt;/span&gt;&lt;/strong&gt; Don’t miss upcoming Sales Excellence Office hours on Getting Started with Seismic in WW35, Seismic Features in WW37, and training on the Groove Outlook Integration coming in WW36.  Click &lt;a href=&quot;https://salescrm.intel.com/sales-excellence-office-hours/&quot; style=&quot;color: #0563c1; text-decoration: underline;&quot;&gt;HERE&lt;/a&gt; to add these sessions to your calendar!&lt;/span&gt;&lt;/span&gt;&lt;br&gt; &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;flexipageComponent&quot; style=&quot;text-align: start;&quot;&gt;
-&lt;div class=&quot;slds-card__body slds-card__body--inner&quot;&gt;
-&lt;div class=&quot;oneAlohaPage&quot;&gt; &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</body>
+    <body>&lt;b&gt;&lt;span&gt;&lt;span style=&quot;color: #00B050;&quot;&gt;&lt;span style=&quot;font-family: arial,sans-serif;&quot;&gt;&lt;span style=&quot;font-size: 12.0pt;&quot;&gt;Attention:&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/b&gt;&lt;span&gt;&lt;span style=&quot;color: #080707;&quot;&gt;&lt;span style=&quot;font-family: arial,sans-serif;&quot;&gt;&lt;span style=&quot;font-size: 12.0pt;&quot;&gt; LEX (Lightning) will soon be the default Sales CRM user experience. Please ensure that you are using Chrome, Firefox or Safari. Learn more at &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;font-family: arial,sans-serif;&quot;&gt;&lt;span style=&quot;font-size: 12.0pt;&quot;&gt;&lt;a href=&quot;http://goto.intel.com/lex&quot; target=&quot;_blank&quot;&gt;&lt;span style=&quot;text-decoration: none;&quot;&gt;&lt;span style=&quot;color: #006DCC;&quot;&gt;http://goto.intel.com/lex&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-family: arial,helvetica,sans-serif;&quot;&gt;&lt;img alt=&quot;User-added image&quot; src=&quot;https://soco.intel.com/resources/statics/614756/User-Experience-on-IE-after-WW20_6.png?a=1556812545230&quot;&gt;&lt;/img&gt;&lt;/span&gt;&lt;br&gt; </body>
     <pageComponentType>htmlArea</pageComponentType>
     <width>wide</width>
 </HomePageComponent>

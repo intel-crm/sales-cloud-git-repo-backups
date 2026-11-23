@@ -1,0 +1,59 @@
+/**
+ * @description CSS stylesheet for Filter Dropdown LWC component
+ * 
+ * Styling:
+ * - Uses Lightning Design System (SLDS) spacing and utilities
+ * - Responsive design
+ * - Accessibility considerations (focus states, contrast)
+ * - Smooth transitions and hover effects
+ */
+
+:host {
+    --slds-c-form-element-spacing-block-start: var(--slds-spacing-medium);
+    --slds-c-form-element-spacing-block-end: var(--slds-spacing-medium);
+}
+
+.filter-dropdown {
+    width: 100%;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .filter-dropdown {
+        font-size: var(--slds-font-size-text-base);
+    }
+}
+
+/* Loading spinner customization */
+.slds-spinner_container {
+    min-height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Additional spacing for help text */
+.slds-form-element__help {
+    display: block;
+    margin-top: var(--slds-spacing-x-small);
+    font-size: var(--slds-font-size-text-x-small);
+}
+
+/* Error state styling */
+.slds-text-color_error {
+    padding: var(--slds-spacing-x-small) var(--slds-spacing-small);
+    border-radius: var(--slds-border-radius-medium);
+    background-color: rgba(255, 0, 0, 0.05);
+}
+
+/* Focus state for accessibility */
+:host ::part(form-element-input):focus {
+    outline: 2px solid var(--slds-c-button-neutral-text-color, #0070d2);
+    outline-offset: 2px;
+}
+
+/* Disabled state */
+.filter-dropdown[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

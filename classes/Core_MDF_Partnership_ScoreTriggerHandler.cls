@@ -41,10 +41,14 @@ public without sharing class Core_MDF_Partnership_ScoreTriggerHandler extends Tr
     public override void afterInsert() {
         Integer PartnershipSharingSyncBatchSize=Integer.valueOf(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PartnershipSharingSyncBatchSize'));
         Integer PartnershipShareASyncBatchSize=Integer.valueOf(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PartnershipShareASyncBatchSize'));
-        if (isActive('Core_MDF_PartnershipScore_After_Insert')){
+        //ATHR - Deeply Nested if 16209
+        if(!isActive('Core_MDF_PartnershipScore_After_Insert')) return;
+        if(System.isBatch()) return;
+        if(Core_MDF_Utility.byPassFeature('Core_MDF_BypassPartnership_Sharing')) return;
+        /*if (isActive('Core_MDF_PartnershipScore_After_Insert')){
             if(!system.isbatch())
             {
-                if(!Core_MDF_Utility.byPassFeature('Core_MDF_BypassPartnership_Sharing')){
+                if(!Core_MDF_Utility.byPassFeature('Core_MDF_BypassPartnership_Sharing')){*/
                     //calling batch class if there are more than one records are inserted
                     if(trigger.new.size()>PartnershipSharingSyncBatchSize){ 
                         Core_MDF_Batch_Partnership_Score_Sharing batchInstance=new Core_MDF_Batch_Partnership_Score_Sharing((List<Core_MDF_Partnership_Score__c>) Trigger.new);
@@ -54,20 +58,23 @@ public without sharing class Core_MDF_Partnership_ScoreTriggerHandler extends Tr
                     {
                         Core_MDF_Partnership_ScoreServiceHandler.partnershipscoreSharingMainMethod((List<Core_MDF_Partnership_Score__c>) Trigger.new);
                     }
-                }
+                /*}
                 
             }
-        }
+        }*/
     }
     public override void afterUpdate(){
-        if (isActive('Core_MDF_PartnershipScore_After_Update')){
-            if(!system.isbatch()){
+        //ATHR - Deeply Nested if 16209
+        if(!isActive('Core_MDF_PartnershipScore_After_Update')) return;
+        if(System.isBatch()) return;
+        /*if (isActive('Core_MDF_PartnershipScore_After_Update')){
+            if(!system.isbatch()){*/
                 //resharePartnershipScoreRecords will do the sharing after checking if owner is updated 
                 if(!Core_MDF_Utility.byPassFeature('Core_MDF_BypassSharingAfterOwnerUpdate')){
                     Core_MDF_Partnership_ScoreServiceHandler.resharePartnershipScoreRecords((Map<Id,Core_MDF_Partnership_Score__c>) Trigger.oldMap,
                                                                    (Map<Id,Core_MDF_Partnership_Score__c>) Trigger.newMap);
                 }
-            }
-        }
+            //}
+        //}
     }
 }

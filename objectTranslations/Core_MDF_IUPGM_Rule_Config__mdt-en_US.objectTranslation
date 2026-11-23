@@ -9,108 +9,108 @@
         <value>IUPGM Rule Configurations</value>
     </caseValues>
     <fields>
-        <label><!-- AGS Role Name --></label>
-        <name>Core_MDF_AGS_Role_Name__c</name>
-    </fields>
-    <fields>
-        <label><!-- Account Required --></label>
-        <name>Core_MDF_Account_Required__c</name>
-    </fields>
-    <fields>
-        <label><!-- Activity Classification Required --></label>
-        <name>Core_MDF_Activity_Classification_Req__c</name>
+        <label><!-- Action --></label>
+        <name>Core_MDF_Action__c</name>
+        <picklistValues>
+            <masterLabel>ACTIVATE</masterLabel>
+            <translation><!-- ACTIVATE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CREATE</masterLabel>
+            <translation><!-- CREATE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ERROR</masterLabel>
+            <translation><!-- ERROR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SKIP</masterLabel>
+            <translation><!-- SKIP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UPDATE</masterLabel>
+            <translation><!-- UPDATE --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- All Accounts --></label>
         <name>Core_MDF_All_Accounts__c</name>
         <picklistValues>
-            <masterLabel>NO_ONLY</masterLabel>
-            <translation><!-- NO_ONLY --></translation>
+            <masterLabel>ANY</masterLabel>
+            <translation><!-- ANY --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>YES_NO</masterLabel>
-            <translation><!-- YES_NO --></translation>
+            <masterLabel>NO</masterLabel>
+            <translation><!-- NO --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>YES_ONLY</masterLabel>
-            <translation><!-- YES_ONLY --></translation>
+            <masterLabel>YES</masterLabel>
+            <translation><!-- YES --></translation>
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- All Budget Type Available --></label>
-        <name>Core_MDF_All_Budget_Type_Available__c</name>
+        <label><!-- Budget Mode --></label>
+        <name>Core_MDF_Budget_Mode__c</name>
+        <picklistValues>
+            <masterLabel>ANY</masterLabel>
+            <translation><!-- ANY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FULL</masterLabel>
+            <translation><!-- FULL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NONE</masterLabel>
+            <translation><!-- NONE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PARTIAL</masterLabel>
+            <translation><!-- PARTIAL --></translation>
+        </picklistValues>
     </fields>
     <fields>
-        <label><!-- Approval Region Options --></label>
-        <name>Core_MDF_Approval_Region_Options__c</name>
-    </fields>
-    <fields>
-        <label><!-- Approval Region Required --></label>
-        <name>Core_MDF_Approval_Region_Required__c</name>
-    </fields>
-    <fields>
-        <label><!-- Budget Required When False --></label>
-        <name>Core_MDF_Budget_Required_When_False__c</name>
-    </fields>
-    <fields>
-        <label><!-- Geo Budget Mapping --></label>
-        <name>Core_MDF_Geo_Budget_Mapping__c</name>
-    </fields>
-    <fields>
-        <label><!-- IUPGM Required --></label>
-        <name>Core_MDF_IUPGM_Required__c</name>
-    </fields>
-    <fields>
-        <label><!-- IUPGM Role Name --></label>
-        <name>Core_MDF_IUPGM_Role_Name__c</name>
-    </fields>
-    <fields>
-        <label><!-- Core_MDF_Is_Active --></label>
-        <name>Core_MDF_Is_Active__c</name>
-    </fields>
-    <fields>
-        <help><!-- Comma-separated keywords. More matches = higher recommendation score. --></help>
-        <label><!-- Keywords --></label>
-        <name>Core_MDF_Keywords__c</name>
-    </fields>
-    <fields>
-        <label><!-- Permission Set Name --></label>
-        <name>Core_MDF_Permission_Set_Name__c</name>
+        <label><!-- Priority --></label>
+        <name>Core_MDF_Priority__c</name>
     </fields>
     <fields>
         <label><!-- Program --></label>
         <name>Core_MDF_Program__c</name>
     </fields>
     <fields>
-        <help><!-- JSON map of Region to AGS role. Leave blank to use the single AGS Role Name. --></help>
-        <label><!-- Region AGS Role Map --></label>
-        <name>Core_MDF_Region_AGS_Role_Map__c</name>
+        <label><!-- Record Exists --></label>
+        <name>Core_MDF_Record_Exists__c</name>
+        <picklistValues>
+            <masterLabel>NO</masterLabel>
+            <translation><!-- NO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YES</masterLabel>
+            <translation><!-- YES --></translation>
+        </picklistValues>
     </fields>
     <fields>
-        <label><!-- Region Options --></label>
-        <name>Core_MDF_Region_Options__c</name>
+        <label><!-- Region Mode --></label>
+        <name>Core_MDF_Region_Mode__c</name>
+        <picklistValues>
+            <masterLabel>ANY</masterLabel>
+            <translation><!-- ANY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FULL</masterLabel>
+            <translation><!-- FULL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NONE</masterLabel>
+            <translation><!-- NONE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PARTIAL</masterLabel>
+            <translation><!-- PARTIAL --></translation>
+        </picklistValues>
     </fields>
     <fields>
-        <label><!-- Role Label --></label>
-        <name>Core_MDF_Role_Label__c</name>
-    </fields>
-    <fields>
-        <help><!-- Brief description of the role purpose for chatbot role recommendation. --></help>
-        <label><!-- Role Purpose --></label>
-        <name>Core_MDF_Role_Purpose__c</name>
-    </fields>
-    <fields>
-        <label><!-- Skip PS Check --></label>
-        <name>Core_MDF_Skip_PS_Check__c</name>
-    </fields>
-    <fields>
-        <help><!-- Describe when this role should be used. Supports keyword-based role recommendation. --></help>
-        <label><!-- Use Cases --></label>
-        <name>Core_MDF_Use_Cases__c</name>
-    </fields>
-    <fields>
-        <label><!-- WW Only --></label>
-        <name>Core_MDF_WW_Only__c</name>
+        <label><!-- Role --></label>
+        <name>Core_MDF_Role__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

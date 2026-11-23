@@ -25,9 +25,6 @@
     <columns>
         <field>Opportunity.Core_Sales_Groups__c</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Consumption_Market__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -43,13 +40,6 @@
             <operator>equals</operator>
             <value>Crystal Ridge</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>INDUSTRY</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Consulting</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -63,7 +53,7 @@
         <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2020 Optane Design Pipeline By QTR/Stage</name>
+    <name>AEP Design Pipeline By QTR/Stage</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -87,6 +77,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

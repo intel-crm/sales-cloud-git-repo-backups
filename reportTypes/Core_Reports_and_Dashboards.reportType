@@ -130,16 +130,6 @@
             <field>CreatedBy.Alias</field>
             <table>Report</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CreatedBy.Id</field>
-            <table>Report</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CreatedBy.User_loggedIN__c</field>
-            <table>Report</table>
-        </columns>
         <masterLabel>Reports</masterLabel>
     </sections>
     <sections>

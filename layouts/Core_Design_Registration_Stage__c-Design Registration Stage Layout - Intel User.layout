@@ -212,7 +212,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>PCC_End_Customer_Country__c</field>
+                <field>Core_End_Customer_Country_Nm__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>

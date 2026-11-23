@@ -2,15 +2,15 @@
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseValues>
         <plural>false</plural>
-        <value>Account Number</value>
+        <value>preventManualVCInsertion</value>
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>Account Number</value>
+        <value>preventManualVCInsertion</value>
     </caseValues>
     <fields>
-        <label><!-- Max Account Number --></label>
-        <name>PRM_Max_Account_Number__c</name>
+        <label><!-- Manual VC Insertion --></label>
+        <name>Manual_VC_Insertion__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

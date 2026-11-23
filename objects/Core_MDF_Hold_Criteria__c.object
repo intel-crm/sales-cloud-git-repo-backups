@@ -146,7 +146,7 @@
     <description>Hold Criteria List object holds the rules for the claims which are put on to hold</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
-    <enableFeeds>true</enableFeeds>
+    <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>false</enableReports>
@@ -160,7 +160,6 @@
         <inlineHelpText>The activity category on the rule. Select either activity category or activity type(s). Selecting activity category will apply the rule to all activity types that are part of the activity category</inlineHelpText>
         <label>Activity Category</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
@@ -176,7 +175,6 @@
         <inlineHelpText>The activity type(s) the rule should apply to. Select either activity category or activity type(s)</inlineHelpText>
         <label>Activity Type</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
@@ -192,7 +190,6 @@
         <inlineHelpText>The date when the rule comes into effect</inlineHelpText>
         <label>Effective Date</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
@@ -203,7 +200,6 @@
         <inlineHelpText>The Geo, the rule should apply  to; Select either Geo or Region/Country. Selecting a geo will apply the rule to all countries that are part of the geo.</inlineHelpText>
         <label>Geo</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
@@ -219,7 +215,6 @@
         <inlineHelpText>The date when the rule becomes ineffective</inlineHelpText>
         <label>Ineffective Date</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
@@ -234,7 +229,6 @@
         <relationshipLabel>Hold Criteria List</relationshipLabel>
         <relationshipName>Hold_List_Criteria</relationshipName>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -245,7 +239,6 @@
         <inlineHelpText>The country or countries the rule applies to. Select either Geo or Region/Country.</inlineHelpText>
         <label>Country/Region</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
@@ -263,7 +256,6 @@
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
@@ -287,7 +279,6 @@
         <relationshipLabel>Hold Criteria List (Company)</relationshipLabel>
         <relationshipName>Hold_List_Criteria</relationshipName>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -334,7 +325,6 @@
             <value>TODAY</value>
         </filters>
         <label>Active Hold Criteria List</label>
-        <language>en_US</language>
         <sharedTo>
             <group>CORE_MDF_CCP_CCFB_All</group>
             <group>CORE_MDF_CCP_CCF_ALL</group>
@@ -347,7 +337,6 @@
     <nameField>
         <displayFormat>{0000}</displayFormat>
         <label>Hold Criteria ID</label>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>AutoNumber</type>
     </nameField>
@@ -363,6 +352,16 @@
         <searchResultsAdditionalFields>CREATEDBY_USER</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Core_MDF_ActCategory_ActCategoryType_Val</fullName>
+        <active>false</active>
+        <description>You can only select activity at category level or Activity type level</description>
+        <errorConditionFormula>AND(
+NOT(ISBLANK(Core_MDF_Activity_Category_Type_Txt__c)) ,
+NOT(ISBLANK(Core_MDF_Activity_Category_Txt__c)) 
+)</errorConditionFormula>
+        <errorMessage>Select either activity category or activity type(s)</errorMessage>
+    </validationRules>
     <validationRules>
         <fullName>Core_MDF_EffectiveDate</fullName>
         <active>true</active>
@@ -408,6 +407,16 @@ AND( ISCHANGED(Core_MDF_Effective_Dt__c), Core_MDF_Effective_Dt__c &lt; TODAY())
   TODAY()) 
 )</errorConditionFormula>
         <errorMessage>Criteria Rule cannot be edited</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Region_RegionCountry_Val</fullName>
+        <active>false</active>
+        <description>Rule can only apply at either Region level or Country level</description>
+        <errorConditionFormula>AND(
+NOT(ISBLANK(Core_MDF_Region_Country_txt__c)), 
+NOT(ISBLANK(Core_MDF_Geo_Txt__c))
+)</errorConditionFormula>
+        <errorMessage>Select either Geo or Region/Country.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_SelectMinOneField_Validation</fullName>

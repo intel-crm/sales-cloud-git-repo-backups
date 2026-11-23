@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Core_MDF_AllBudgetTypes_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This will be checked if all budget types to be considered for the given program.</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>All Budget Types</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_BudgetTypes_Txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Budget Types</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Program_Txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Program</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_activityAvlAmtValidationReq_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Activity Avl Amt Validation Reqd</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_isActive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>isActive</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>Core_MDF_Program_BudgetType_Config</label>
+    <pluralLabel>Program BudgetType configuration</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

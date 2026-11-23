@@ -9,6 +9,10 @@
         <value>Documentos de análise de caso</value>
     </caseValues>
     <fields>
+        <label><!-- AI Processing Completed --></label>
+        <name>Core_MDF_AI_Processing_Completed_Ind__c</name>
+    </fields>
+    <fields>
         <label><!-- App Document Types --></label>
         <name>Core_MDF_App_Document_Types_nm__c</name>
         <picklistValues>
@@ -41,6 +45,10 @@
         <label><!-- Claim Batch Record --></label>
         <name>Core_MDF_Claim_Batch_Record__c</name>
         <relationshipLabel><!-- Case Review Documents --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Claim Document AI Response --></label>
+        <name>Core_MDF_Claim_Document_AI_Response_txt__c</name>
     </fields>
     <fields>
         <label><!-- Claim --></label>
@@ -80,6 +88,10 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Document Upload Status --></label>
+        <name>Core_MDF_Document_Upload_Status_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Download Document Title --></label>
         <name>Core_MDF_Download_Document_Title_txt__c</name>
     </fields>
@@ -93,6 +105,7 @@
         <name>Core_MDF_Ext_Document_Name__c</name>
     </fields>
     <fields>
+        <help><!-- Download File Name Could be Shorter if its exceeding System Limit. --></help>
         <label>Nome do documento</label>
         <name>Core_MDF_Int_Document_Name__c</name>
     </fields>
@@ -124,10 +137,26 @@
         <label>Tipos de documentos selecionados</label>
         <name>Core_MDF_Selected_Document_Types_txt__c</name>
     </fields>
+    <fields>
+        <label><!-- Encoded Document Title Long Text --></label>
+        <name>Encoded_Document_Title_Long_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- Test Field --></label>
+        <name>Test_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- testSFTFileUploadId --></label>
+        <name>testSFTFileUploadId__c</name>
+    </fields>
     <gender>Feminine</gender>
     <nameFieldLabel><!-- Audit Document Name --></nameFieldLabel>
     <validationRules>
         <errorMessage>Não é possível inserir/atualizar Documentos sem o Tipo de Documento (POC, POA, POE).</errorMessage>
         <name>Core_MDF_DocumentType_Selection_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- At least one file type should must be selected for each file. --></errorMessage>
+        <name>Core_MDF_File_Select_Check</name>
     </validationRules>
 </CustomObjectTranslation>

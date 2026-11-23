@@ -1,9 +1,9 @@
 public with sharing class Core_ContactAudienceList {
-    	//Getting the contacts whose audience list has to be updated
+      //Getting the contacts whose audience list has to be updated
         public static List<Contact> populateAudienceList(List <Core_Contact_Entitlement__c> contactEntitlementList){
-		List<Contact> finalAudienceList = new List<Contact>();
+    List<Contact> finalAudienceList = new List<Contact>();
         List<Contact> returnedAudienceList = new List<Contact>();
-		Map<String, Contact> contactIdContactMap = new Map<String, Contact>();
+    Map<String, Contact> contactIdContactMap = new Map<String, Contact>();
         try{
         //fetching the Entitlements ids from custom label
         String Core_Entitlement_Id_Label = System.Label.Core_Entitlement_Id;
@@ -46,14 +46,14 @@ public with sharing class Core_ContactAudienceList {
         }catch(Exception e){
             System.debug('Exception = '+e.getMessage());
         }
-		
-		finalAudienceList = contactIdContactMap.values();
+    
+    finalAudienceList = contactIdContactMap.values();
         return finalAudienceList;
     }
     
       //Updating the audience list of those contacts who are having Partner Portal - Leads,Partner Portal - IPS,Intel Partner FAE,Partner Portal - DDR
       private static Map<String, Contact> setAudienceList(String entitlementId, String entitlementName, List<Core_Contact_Entitlement__c>contactEntitlementList,
-	  Map<String, Contact> contactIdContactMap){
+    Map<String, Contact> contactIdContactMap){
         
         List<Id> contactIds = new List<Id>();
         
@@ -73,24 +73,24 @@ public with sharing class Core_ContactAudienceList {
         
             }
         }
-		
-		for(Contact contactToBeUpdated : contactListToBeUpdated){
-			if(!contactIdContactMap.containsKey(contactToBeUpdated.Id)){
-				contactIdContactMap.put(contactToBeUpdated.Id, contactToBeUpdated);
+    
+    for(Contact contactToBeUpdated : contactListToBeUpdated){
+      if(!contactIdContactMap.containsKey(contactToBeUpdated.Id)){
+        contactIdContactMap.put(contactToBeUpdated.Id, contactToBeUpdated);
  
-			}else{
-				if(contactIdContactMap.get(contactToBeUpdated.Id) != null){
+      }else{
+        if(contactIdContactMap.get(contactToBeUpdated.Id) != null){
                     if(!String.isBlank(contactIdContactMap.get(contactToBeUpdated.Id).Core_Audience_List__c) 
-                       	&& !contactIdContactMap.get(contactToBeUpdated.Id).Core_Audience_List__c.contains(entitlementName)){
+                         && !contactIdContactMap.get(contactToBeUpdated.Id).Core_Audience_List__c.contains(entitlementName)){
                             contactToBeUpdated.Core_Audience_List__c = contactIdContactMap.get(contactToBeUpdated.Id).Core_Audience_List__c +';'+ 
                                 entitlementName;
-                        	contactIdContactMap.put(contactToBeUpdated.Id, contactToBeUpdated);
+                          contactIdContactMap.put(contactToBeUpdated.Id, contactToBeUpdated);
                     }
                     
-				}
-			}
-			
-		}
+        }
+      }
+      
+    }
         return contactIdContactMap;
        
     }

@@ -64,13 +64,20 @@ Modified By:        Date:      Changes:
             //Created Account instance to update account fields.
             Account accVar =  [SELECT Core_MDF_Active_Ind__c, Core_MDF_Parent_Fund_Account__r.RecordType.Developername FROM Account WHERE Core_MDF_Parent_Fund_Account__c!= null AND id =: accId LIMIT 1];
             
-            if(accVar!=NULL){
+            //ATHR - Deeply Nested if 16209
+            if(accVar == null) return acctWrap;
+            //if(accVar!=NULL){
                 //Checking for different validations on Account
                 acctWrap.isTopVirtualNode = isTopVirtualNode(accVar);
-                if(!acctWrap.isTopVirtualNode){
+                //ATHR - Deeply Nested if 16209
+                if(acctWrap.isTopVirtualNode) return acctWrap;
+                //if(!acctWrap.isTopVirtualNode){
                     acctWrap.isDeactivated = isDeactivatedAccount(accVar);
-                    if(!acctWrap.isDeactivated){
+                    //ATHR - Deeply Nested if 16209
+                    if(acctWrap.isDeactivated) return acctWrap;
+                    //if(!acctWrap.isDeactivated){
                         acctWrap.isAutoTransferAccount = isAutoTransAcct(accVar);
+                        
                         acctWrap.hasAllocation = isAllocationAvailable(accVar);
                         acctWrap.hasBankmappings = hasAccntBankMappings(accVar);
                         
@@ -80,16 +87,16 @@ Modified By:        Date:      Changes:
                         
                         claimAcctWrap = isClaimsAssociated(accVar);
                         acctWrap.hasActiveClaims = claimAcctWrap.hasActiveClaims;
-                        acctWrap.claimCount = claimAcctWrap.claimCount;                        
+                        acctWrap.claimCount = claimAcctWrap.claimCount;                   
                         //For open Escalations
                         acctWrap.hasOpenEscalationRecords = hasOpenEscalations(accVar);
 
                         campAcctWrap = isCampaignsAssociated(accVar);
                         acctWrap.hasCampaigns = campAcctWrap.hasCampaigns;
                         acctWrap.campaignCount = campAcctWrap.campaignCount;  
-                    }
-                } 
-            }
+                    //}
+                //} 
+            //}
             //When account is valid for Inactivation, Account Active field will be updated
             if((!acctWrap.isTopVirtualNode) && (!acctWrap.isDeactivated) && (!acctWrap.isAutoTransferAccount) && (!acctWrap.hasAllocation) && (!acctWrap.hasActiveClaims) && (!acctWrap.hasActivities) && (!acctWrap.hasBankmappings) && (!acctWrap.hasOpenEscalationRecords) && (!acctWrap.hasCampaigns)){
                 accVar.Core_MDF_Active_Ind__c = false;
@@ -97,8 +104,7 @@ Modified By:        Date:      Changes:
             }
             return acctWrap;  
         }
-        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);
-            return null;}
+        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);return null;}
     }
     /****************************************************************************************************** 
 Method Name:        isUserEligibiletoInactivate
@@ -115,8 +121,7 @@ Modified By:        Date:      Changes:
             Boolean hasCustomPermission = FeatureManagement.checkPermission(Label.Core_MDF_Account_Inactivation_Deletion_Access);
             return hasCustomPermission;
         } 
-        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);
-            return null;}
+        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);return null;}
     } 
     /****************************************************************************************************** 
 Method Name:        isTopVirtualNode
@@ -135,8 +140,7 @@ Modified By:        Date:      Changes:
             }
             return FALSE;
         }
-        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);
-            return null;}
+        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);return null;}
     }
     /****************************************************************************************************** 
 Method Name:        isDeactivatedAccount
@@ -155,8 +159,7 @@ Modified By:        Date:      Changes:
             }
             return FALSE;
         }
-        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);
-            return null;}
+        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);return null;}
     }
     /****************************************************************************************************** 
 Method Name:        isAutoTransAcct 
@@ -176,8 +179,7 @@ Modified By:        Date:      Changes:
             }
             return FALSE;
         }
-        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);
-            return null;}
+        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);return null;}
     }
     /****************************************************************************************************** 
 Method Name:        isAllocationAvailable
@@ -222,8 +224,7 @@ Modified By:        Date:      Changes:
             }
             return result;           
         }
-        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);
-        return null;}
+        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);return null;}
     }
     /****************************************************************************************************** 
 Method Name:        isClaimsAssociated
@@ -254,8 +255,7 @@ Modified By:        Date:      Changes:
             }
             return claimWrapper;
         }
-        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);
-        return null;}  
+        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);return null;}  
     } 
     /****************************************************************************************************** 
 Method Name:        isActivitiesAssociated
@@ -286,8 +286,7 @@ Modified By:        Date:      Changes:
             }
             return activitiesWrap;
         }
-        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);
-        return null;} 
+        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);return null;} 
     }    
     /****************************************************************************************************** 
 Method Name:        hasAccntBankMappings
@@ -316,8 +315,7 @@ Modified By:        Date:      Changes:
             }
             return hasBankMappingRecord;
         }
-        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);
-        return null;}
+        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);return null;}
     }
     
     /****************************************************************************************************** 
@@ -337,6 +335,7 @@ Modified By:        Date:      Changes:
                 where ((RecordType.DeveloperName =: Label.Core_MDF_LateClaim_RecordType and Core_MDF_Co_Marketing_Activity_id__c != null and Core_MDF_Co_Marketing_Activity_id__r.ChannelPartnerId =: accountVar.Id) OR
                        (RecordType.DeveloperName =: Label.Core_MDF_ClaimCaseReviewResult_RecordType  and Core_MDF_Case_ID_Number_id__c != null and Core_MDF_Case_ID_Number_id__r.AccountId =: accountVar.Id)) AND Core_MDF_Claim_Number_id__c = NULL AND Core_MDF_Escalation_Status_nm__c != : Label.Core_MDF_Exception_Cancelled_Status AND Core_MDF_Escalation_Status_nm__c != : Label.Core_MDF_Exception_Denied_Status
             ]);
+           
             if(mapOfOpenEsclations!=null && mapOfOpenEsclations.size()>0){
                 //open escalation
                 return hasOpenEscalationRecord = TRUE;
@@ -376,7 +375,6 @@ Public static AccountInactivationWrapper isCampaignsAssociated(Account acountVar
         }
         return campaignsWrap;
     }
-    catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);
-     return null;} 
+    catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);return null;} 
 }  
 }

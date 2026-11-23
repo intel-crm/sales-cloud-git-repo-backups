@@ -7,36 +7,140 @@ Modification Log :
 * Rishabh Srivastava     09/01/2026    Original version
 **********************************/
 public without sharing class Core_MDF_Activity_Purpose_Controller {
-    @AuraEnabled(cacheable=true)
-    public static List<ActivityOutcomeWrapper> getActivityOutcomes(Id activityId) {
-        List<ActivityOutcomeWrapper> wrapperList = new List<ActivityOutcomeWrapper>();
-        Map<String, String> baselineLocalizedValueLabel =Core_MDF_Tactics_Controller.getLocalizedPicklistLabels('Core_MDF_Activity_Outcome__c',new List<String>{ 'Core_MDF_Baseline_Period_nm__c' });
-        
-        if (activityId == null) return wrapperList;
-        
-        for (Core_MDF_Activity_Outcome__c record : [ select Id, toLabel(Core_MDF_Outcome_Metric_nm__c),Core_MDF_Active_Ind__c, Core_MDF_Baseline_Value_nbr__c, Core_MDF_Goal_Value_nbr__c, 
-                                                    Core_MDF_Result_Value_nbr__c,Core_MDF_Baseline_Period_nm__c, Core_MDF_Activity_Id__c,Core_MDF_Activity_Description__c,Core_MDF_Activity_Id__r.Core_MDF_Is_Outcome_Based_Ind__c,
-                                                    Core_MDF_Activity_Id__r.Core_MDF_Brand_nm__c,Core_MDF_Activity_Id__r.Core_MDF_Technology_txt__c
-                                                    from Core_MDF_Activity_Outcome__c 
-                                                    WHERE Core_MDF_Activity_Id__c = :activityId
-                                                    AND Core_MDF_Active_Ind__c = TRUE
-                                                   ]) {
-                                                       ActivityOutcomeWrapper OutcomeWrapper = new ActivityOutcomeWrapper();
-                                                       OutcomeWrapper.outcomeMetric = record.Core_MDF_Outcome_Metric_nm__c;
-                                                       OutcomeWrapper.baselineValue = record.Core_MDF_Baseline_Value_nbr__c != null ? String.valueOf(record.Core_MDF_Baseline_Value_nbr__c) : '';
-                                                       OutcomeWrapper.goalValue = record.Core_MDF_Goal_Value_nbr__c != null ? String.valueOf(record.Core_MDF_Goal_Value_nbr__c) : '';
-                                                       OutcomeWrapper.baseLinePeriod = baselineLocalizedValueLabel.get(record.Core_MDF_Baseline_Period_nm__c);
-                                                       OutcomeWrapper.Description=PrepareDyanmicText(record.Core_MDF_Baseline_Value_nbr__c,record.Core_MDF_Goal_Value_nbr__c,record.Core_MDF_Activity_Id__r.Core_MDF_Brand_nm__c,
-                                                                                                     record.Core_MDF_Activity_Id__r.Core_MDF_Technology_txt__c,baselineLocalizedValueLabel.get(record.Core_MDF_Baseline_Period_nm__c));
-                                                       OutcomeWrapper.resultValue = record.Core_MDF_Result_Value_nbr__c != null ? String.valueOf(record.Core_MDF_Result_Value_nbr__c) : '';
-                                                       OutcomeWrapper.isOutcomebaseActivity= record.Core_MDF_Activity_Id__r.Core_MDF_Is_Outcome_Based_Ind__c;
-                                                       wrapperList.add(OutcomeWrapper);
-                                                   }
-        
-        
-        return wrapperList;
+private static String localizeMultiSelectValues(String values, Map<String,String> localizedValueLabel) {
+    if (String.isBlank(values)) {
+        return '';
     }
-     /***************************************************************************************************
+
+    List<String> localizedValues = new List<String>();
+
+    for (String value : values.split(';')) {
+        String trimmedValue = value.trim();
+
+        localizedValues.add(
+            localizedValueLabel.containsKey(trimmedValue)
+            ? localizedValueLabel.get(trimmedValue)
+            : trimmedValue
+        );
+    }
+
+    return String.join(localizedValues, ', ');
+}
+
+@AuraEnabled(cacheable=true)
+public static List<ActivityOutcomeWrapper> getActivityOutcomes(Id activityId) {
+    List<ActivityOutcomeWrapper> wrapperList = new List<ActivityOutcomeWrapper>();
+    Map<String, String> baselineLocalizedValueLabel =
+        Core_MDF_Tactics_Controller.getLocalizedPicklistLabels(
+            'Core_MDF_Activity_Outcome__c',
+            new List<String>{ 'Core_MDF_Baseline_Period_nm__c' }
+        );
+    Map<String, String> outcomeLocalizedValueLabel =
+        Core_MDF_Tactics_Controller.getLocalizedPicklistLabels(
+            'Core_MDF_Activity_Outcome__c',
+            new List<String>{ 'Core_MDF_Outcome_Metric_nm__c' }
+        );
+    Map<String, String> brandLocalizedValueLabel =
+        Core_MDF_Tactics_Controller.getLocalizedPicklistLabels(
+            'Core_MDF_Activity_Outcome__c',
+            new List<String>{ 'Core_MDF_Brand_nm__c' }
+        );
+    Map<String, String> technologyLocalizedValueLabel =
+        Core_MDF_Tactics_Controller.getLocalizedPicklistLabels(
+            'Core_MDF_Activity_Outcome__c',
+            new List<String>{ 'Core_MDF_Technology_txt__c' }
+        );
+
+    if (activityId == null) return wrapperList;
+
+    for (Core_MDF_Activity_Outcome__c record : [
+        SELECT Id,
+               Core_MDF_Outcome_Metric_nm__c,
+               Core_MDF_Outcome_Type_nm__c,
+               Core_MDF_Brand_nm__c,
+               Core_MDF_Technology_txt__c,
+               Core_MDF_Other_Brands_Technologies_txt__c,
+               Core_MDF_Active_Ind__c,
+               Core_MDF_Baseline_Value_nbr__c,
+               Core_MDF_Goal_Value_nbr__c,
+               Core_MDF_Result_Value_nbr__c,
+               Core_MDF_Baseline_Period_nm__c,
+               Core_MDF_Activity_Id__c,
+               Core_MDF_Activity_Description__c,
+               Core_MDF_Activity_Id__r.Core_MDF_Is_Outcome_Based_Ind__c,
+               Core_MDF_Activity_Id__r.Core_MDF_Brand_nm__c,
+               Core_MDF_Activity_Id__r.Core_MDF_Technology_txt__c
+        FROM Core_MDF_Activity_Outcome__c
+        WHERE Core_MDF_Activity_Id__c = :activityId
+        AND Core_MDF_Active_Ind__c = TRUE
+    ]) {
+        ActivityOutcomeWrapper OutcomeWrapper = new ActivityOutcomeWrapper();
+
+        String localizedBaselinePeriod =
+            baselineLocalizedValueLabel.containsKey(record.Core_MDF_Baseline_Period_nm__c)
+            ? baselineLocalizedValueLabel.get(record.Core_MDF_Baseline_Period_nm__c)
+            : record.Core_MDF_Baseline_Period_nm__c;
+
+        String brandValuesForPurpose;
+        String technologyValuesForPurpose;
+
+        if (String.isNotBlank(record.Core_MDF_Outcome_Type_nm__c)) {
+            brandValuesForPurpose = record.Core_MDF_Brand_nm__c;
+            technologyValuesForPurpose = record.Core_MDF_Technology_txt__c;
+        } else {
+            brandValuesForPurpose = record.Core_MDF_Activity_Id__r.Core_MDF_Brand_nm__c;
+            technologyValuesForPurpose = record.Core_MDF_Activity_Id__r.Core_MDF_Technology_txt__c;
+        }
+
+        OutcomeWrapper.outcomeMetricApi = record.Core_MDF_Outcome_Metric_nm__c;
+        OutcomeWrapper.outcomeMetric =
+            outcomeLocalizedValueLabel.containsKey(record.Core_MDF_Outcome_Metric_nm__c)
+            ? outcomeLocalizedValueLabel.get(record.Core_MDF_Outcome_Metric_nm__c)
+            : record.Core_MDF_Outcome_Metric_nm__c;
+        OutcomeWrapper.outcomeType = record.Core_MDF_Outcome_Type_nm__c;
+        OutcomeWrapper.brandValues = brandValuesForPurpose;
+        OutcomeWrapper.technologyValues = technologyValuesForPurpose;
+        OutcomeWrapper.brandDisplayValues =
+            localizeMultiSelectValues(brandValuesForPurpose, brandLocalizedValueLabel);
+        OutcomeWrapper.technologyDisplayValues =
+            localizeMultiSelectValues(
+                technologyValuesForPurpose,
+                technologyLocalizedValueLabel
+            );
+        OutcomeWrapper.otherBrandsTechnologies =
+            record.Core_MDF_Other_Brands_Technologies_txt__c;
+        OutcomeWrapper.baselineValue =
+            record.Core_MDF_Baseline_Value_nbr__c != null
+            ? String.valueOf(record.Core_MDF_Baseline_Value_nbr__c)
+            : '';
+        OutcomeWrapper.goalValue =
+            record.Core_MDF_Goal_Value_nbr__c != null
+            ? String.valueOf(record.Core_MDF_Goal_Value_nbr__c)
+            : '';
+        OutcomeWrapper.baseLinePeriod = localizedBaselinePeriod;
+        OutcomeWrapper.Description =
+            PrepareDyanmicText(
+                record.Core_MDF_Baseline_Value_nbr__c,
+                record.Core_MDF_Goal_Value_nbr__c,
+                brandValuesForPurpose,
+                technologyValuesForPurpose,
+                localizedBaselinePeriod
+            );
+        OutcomeWrapper.resultValue =
+            record.Core_MDF_Result_Value_nbr__c != null
+            ? String.valueOf(record.Core_MDF_Result_Value_nbr__c)
+            : '';
+        OutcomeWrapper.isOutcomebaseActivity =
+            record.Core_MDF_Activity_Id__r.Core_MDF_Is_Outcome_Based_Ind__c;
+
+        wrapperList.add(OutcomeWrapper);
+    }
+
+    return wrapperList;
+}
+
+
+/***************************************************************************************************
 Method Name:  saveActivityOutcome 
 Version     : 1.0 
 Created Date: 18/11/2025
@@ -60,10 +164,22 @@ Modification Log :
             
             // Map existing active outcomes for this activity
             Map<String, Core_MDF_Activity_Outcome__c> existingOutcomeMap = new Map<String, Core_MDF_Activity_Outcome__c>();
-            for (Core_MDF_Activity_Outcome__c existing : [SELECT Id, Core_MDF_Outcome_Metric_nm__c, Core_MDF_Active_Ind__c FROM Core_MDF_Activity_Outcome__c WHERE Core_MDF_Activity_Id__c = :activityId
-                                                         ]) {
-                                                             existingOutcomeMap.put(existing.Core_MDF_Outcome_Metric_nm__c, existing);
-                                                         }
+            for (Core_MDF_Activity_Outcome__c existing : [
+    SELECT Id,
+           Core_MDF_Outcome_Metric_nm__c,
+           Core_MDF_Outcome_Type_nm__c,
+           Core_MDF_Active_Ind__c
+    FROM Core_MDF_Activity_Outcome__c
+    WHERE Core_MDF_Activity_Id__c = :activityId
+]) {
+    existingOutcomeMap.put(
+        getOutcomeKey(
+            existing.Core_MDF_Outcome_Type_nm__c,
+            existing.Core_MDF_Outcome_Metric_nm__c
+        ),
+        existing
+    );
+}
             
             List<Core_MDF_Activity_Outcome__c> recordsToUpsert = new List<Core_MDF_Activity_Outcome__c>();
             Set<String> incomingOutcomes = new Set<String>();
@@ -72,11 +188,14 @@ Modification Log :
             if (outcomeWrapperList != null && !outcomeWrapperList.isEmpty()) {
                 for (ActivityOutcomeWrapper wrapper : outcomeWrapperList) {
                     if (String.isNotBlank(wrapper.outcomeMetric)) {
-                        incomingOutcomes.add(wrapper.outcomeMetric);
+                        //incomingOutcomes.add(wrapper.outcomeMetric);
+
+                        String outcomeKey = getOutcomeKey(wrapper.outcomeType,wrapper.outcomeMetric);
+                        incomingOutcomes.add(outcomeKey);
                         
                         Core_MDF_Activity_Outcome__c record;
-                        if (existingOutcomeMap.containsKey(wrapper.outcomeMetric)) {
-                            record = existingOutcomeMap.get(wrapper.outcomeMetric);
+                        if (existingOutcomeMap.containsKey(outcomeKey)) {
+                            record = existingOutcomeMap.get(outcomeKey);
                         } else {
                             record = new Core_MDF_Activity_Outcome__c();
                             record.Core_MDF_Activity_Id__c = activityId;
@@ -96,14 +215,35 @@ Modification Log :
                             : null;
                         record.Core_MDF_Activity_Description__c = wrapper.Description;
                         recordsToUpsert.add(record);
+
+                        if (String.isNotBlank(wrapper.outcomeType)) {
+                            record.Core_MDF_Outcome_Type_nm__c = wrapper.outcomeType;
+                            record.Core_MDF_Brand_nm__c =
+                                String.isNotBlank(wrapper.brandValues)
+                                ? wrapper.brandValues
+                                : null;
+                            record.Core_MDF_Technology_txt__c =
+                                String.isNotBlank(wrapper.technologyValues)
+                                ? wrapper.technologyValues
+                                : null;
+                            record.Core_MDF_Other_Brands_Technologies_txt__c =
+                                String.isNotBlank(wrapper.otherBrandsTechnologies)
+                                ? wrapper.otherBrandsTechnologies
+                                : null;
+                        }
                     }
                 }
             }
             
             // Deactivate any removed outcomes
             for (Core_MDF_Activity_Outcome__c existingOutcome : existingOutcomeMap.values()) {
-                if (!incomingOutcomes.contains(existingOutcome.Core_MDF_Outcome_Metric_nm__c)
-                    && existingOutcome.Core_MDF_Active_Ind__c) {
+                String existingOutcomeKey = getOutcomeKey(
+                        existingOutcome.Core_MDF_Outcome_Type_nm__c,
+                        existingOutcome.Core_MDF_Outcome_Metric_nm__c
+                    );
+
+                    if (!incomingOutcomes.contains(existingOutcomeKey)
+                        && existingOutcome.Core_MDF_Active_Ind__c) {
                         existingOutcome.Core_MDF_Active_Ind__c = false;
                         recordsToUpsert.add(existingOutcome);
                     }
@@ -233,15 +373,48 @@ Modification Log :
         }
     }
 
+    @AuraEnabled(cacheable=true)
+public static Boolean isActivityPurposeVisible(Id activityId) {
+    if (activityId == null) {
+        return true;
+    }
+
+    List<PartnerFundRequest> activityList = [
+        SELECT Core_MDF_Activity_Level_nm__c
+        FROM PartnerFundRequest
+        WHERE Id = :activityId
+        LIMIT 1
+    ];
+
+    if (activityList.isEmpty()) {
+        return true;
+    }
+
+    return activityList[0].Core_MDF_Activity_Level_nm__c != 'Sub Activity';
+}
+
+private static String getOutcomeKey(String outcomeType, String outcomeMetric) {
+    return String.isNotBlank(outcomeType)
+        ? outcomeType + '|' + outcomeMetric
+        : outcomeMetric;
+}
+
     
     
     public class ActivityOutcomeWrapper {
         @AuraEnabled public String Description { get; set; }
         @AuraEnabled public String outcomeMetric { get; set; }
+        @AuraEnabled public String outcomeMetricApi { get; set; }
+        @AuraEnabled public String outcomeType { get; set; }
+        @AuraEnabled public String brandValues { get; set; }
+        @AuraEnabled public String technologyValues { get; set; }
+        @AuraEnabled public String brandDisplayValues { get; set; }
+        @AuraEnabled public String technologyDisplayValues { get; set; }
+        @AuraEnabled public String otherBrandsTechnologies { get; set; }
         @AuraEnabled public String baselineValue { get; set; }
         @AuraEnabled public String goalValue { get; set; }
         @AuraEnabled public String baseLinePeriod { get; set; }
-        @AuraEnabled public String resultValue { get; set; } 
-        @AuraEnabled public Boolean isOutcomebaseActivity { get; set; } 
+        @AuraEnabled public String resultValue { get; set; }
+        @AuraEnabled public Boolean isOutcomebaseActivity { get; set; }
     }
 }

@@ -191,7 +191,7 @@ private class Core_MDF_Batch_UpdateClaimstoPaid_Test {
             Database.insert(auditDocList);                
         }
     
-        Core_MDF_PartnerFundClaim.saveClaim(claimRSAMd, auditDocList, null, null, false, null, false, null, false);   
+        Core_MDF_PartnerFundClaim.saveClaim(claimRSAMd, auditDocList,null,null, false, null, false, null, false);   
         
         
         
@@ -211,7 +211,7 @@ private class Core_MDF_Batch_UpdateClaimstoPaid_Test {
             retailPayRunRecord.Core_MDF_Geo_Txt__c = 'APJ';
             retailPayRunRecord.Core_MDF_Start_Dt__c = System.today().addDays(-5);                                                       
             retailPayRunRecord.Core_MDF_End_Dt__c = System.today().addDays(5);
-            retailPayRunRecord.Core_MDF_Budget_Type_Txt__c = 'RSA MD';
+            retailPayRunRecord.Core_MDF_Budget_Type_Txt__c = 'Retail MDF';
             retailPayRunRecord.Core_MDF_Program_Id__c  = retailCP.Id;
             Database.insert(retailPayRunRecord); 
             
@@ -231,11 +231,11 @@ private class Core_MDF_Batch_UpdateClaimstoPaid_Test {
         Test.stopTest();
         paymentRecord.Core_MDF_Payment_Status_Txt__c = 'paid';
         paymentRecord.Core_MDF_RMF_Actual_Payment_Amt__c = 50;
-        paymentRecord.Core_MDF_Budget_Type_Nm__c='RSA MD';
+        paymentRecord.Core_MDF_Budget_Type_Nm__c='Retail MDF';
         database.update(paymentRecord);
         Map<Id, Core_MDF_Payment__c> map1 = new Map<Id, Core_MDF_Payment__c>();
         map1.put(paymentRecord.Id, paymentRecord);
-        // Highlight: Unused Local Variable
+        // Highlight: Unused Local Variable - Indira
        /* Id batchJobId = */ Database.executeBatch(new Core_MDF_Batch_RollbackPaidPaymentClaims(map1),200); 
     }
 }

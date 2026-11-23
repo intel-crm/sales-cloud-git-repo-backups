@@ -943,6 +943,9 @@
         <field>Case.Core_Hot_Issue__c</field>
     </columns>
     <columns>
+        <field>Case.Core_Hot_Issue_Qts_6__c</field>
+    </columns>
+    <columns>
         <field>Case.Core_Intel_Sup_Owner__c</field>
     </columns>
     <columns>

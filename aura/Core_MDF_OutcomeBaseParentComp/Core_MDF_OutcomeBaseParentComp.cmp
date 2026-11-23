@@ -1,0 +1,47 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+                access="global" Controller="Core_MDF_OutcomeBasedCmpgn_ParentComp">
+    
+    <aura:attribute name="title" type="String" default="Outcome-Based Campaigns"/>
+    <aura:attribute name="listviewpage" type="Boolean" default="true"/>
+    
+    <aura:attribute name="recordId" type="String"/>
+    
+    <!-- IPA Record Type attributes -->
+    <aura:attribute name="selrecordtype" type="String"/>
+    <aura:attribute name="selrecordtypeName" type="String"/>
+    <aura:attribute name="selrecordtypeDeveloperName" type="String"/>
+    
+    <aura:attribute name="recordTypesFetched" type="Boolean" default="false"/>
+    <aura:attribute name="showNewButton" type="Boolean" default="false"/>
+    <aura:attribute name="externalper" type="Boolean" default="false"/>
+    
+    <lightning:navigation aura:id="navService" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    
+    <aura:handler event="c:ReopenOutcomebaseCompEvt" action="{!c.handleReopenOverlay}"/>
+
+	
+    
+    
+
+    <aura:if isTrue="{!v.listviewpage}">
+        <lightning:card title="{!$Label.c.Core_MDF_OutcomeBased_Campaign_Page_Header}" iconName="standard:partner_fund_request">
+            <aura:set attribute="actions">
+                <aura:if isTrue="{!and(v.showNewButton, v.recordTypesFetched)}">
+                    <lightning:button variant="brand"
+                                      label="{!$Label.c.Core_MDF_New}"
+                                      title="New IPA Campaign"
+                                      onclick="{!c.openModal}"/>
+                </aura:if>
+            </aura:set>
+        </lightning:card>
+        
+        <lightning:card>
+            <div class="slds-p-around_medium">
+                <c:core_MDF_outcomebasedtablwc />
+            </div>
+        </lightning:card>
+    </aura:if>
+    
+</aura:component>

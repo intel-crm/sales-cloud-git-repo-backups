@@ -6,8 +6,8 @@
 * Developer                     Date                          Description
 * ---------------------------------------------------------------------------------------------------------------------------------------
 * Accenture – Shridhar K        04/02/2019                    Created Core_MDF_ProcessCCP_Case 
-* Intel - NP					01/08/2019					  Added lines of code to prevent Case from being Compliant/Non-Compliant 
-*															  if Checklist is incomplete	
+* Intel - NP                    01/08/2019                    Added lines of code to prevent Case from being Compliant/Non-Compliant 
+*                                                             if Checklist is incomplete    
 * Accenture - Harika            30/07/2020                    US742525 Populating Claim Case Reviewer Field Value if any edits happen on case
 *****************************************************************************************************************************************/
 public without sharing class Core_MDF_ProcessCCP_Case {
@@ -36,7 +36,6 @@ Accenture – Shridhar K        03/28/2019                   Created.
                    for(String recTypeDevName: Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCP_Case_RecordType_DevName').Split(';')){
                        ccpCaseRecordTypeIdList.add(Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get(recTypeDevName).getRecordTypeId());
                    }
-                   
                    Set<Id> reviewrManagerSet = new Set<Id>();
                    Set<Id> caseReviwerSet = new Set<Id>();
                    Map<id,case> ccpCaseList = new Map<id,case>();
@@ -56,9 +55,10 @@ Accenture – Shridhar K        03/28/2019                   Created.
                            //Added for Checklist completion check  
                            if(isUpdate && (cs.Core_MDF_Review_Case_Status__c == 'Compliant' || cs.Core_MDF_Review_Case_Status__c =='Non-compliant' || cs.Core_MDF_Review_Case_Status__c=='Review Completed')){
                                ccpCaseList.put(cs.id,cs);}
-                           
+                       
                            //US527005: Added for Data entry correction reason to be shown as concatenated value- added by Ealisha
                            if((cs.Core_MDF_Data_Entry_Correction__c && (cs.Core_MDF_Data_Correction_Note_Txt__c != null || cs.Core_MDF_Data_Entry_Correction_Cd__c != null ))){                        
+                               
                                cs.Core_MDF_Data_Entry_CorrectionReason_Txt__c = 
                                    ((cs.Core_MDF_Data_Entry_Correction_Cd__c != null) ? cs.Core_MDF_Data_Entry_Correction_Cd__c + '^ ' : '' );
                                cs.Core_MDF_Data_Entry_CorrectionReason_Txt__c = 
@@ -68,6 +68,7 @@ Accenture – Shridhar K        03/28/2019                   Created.
                            }
                            else{
                                cs.Core_MDF_Data_Entry_CorrectionReason_Txt__c = '';
+                               
                            }
                            
                            // Added below lines to check if any of the audit field is updated 
@@ -77,6 +78,7 @@ Accenture – Shridhar K        03/28/2019                   Created.
                                oldMap.get(cs.Id).Core_MDF_Internal_Case_Closure_Notes__c != cs.Core_MDF_Internal_Case_Closure_Notes__c || oldMap.get(cs.Id).Core_MDF_Data_Entry_Correction__c != cs.Core_MDF_Data_Entry_Correction__c ||
                                oldMap.get(cs.Id).Core_MDF_Data_Entry_Correction_Cd__c != cs.Core_MDF_Data_Entry_Correction_Cd__c || oldMap.get(cs.Id).Core_MDF_Data_Correction_Note_Txt__c != cs.Core_MDF_Data_Correction_Note_Txt__c ||
                                oldMap.get(cs.Id).Core_MDF_More_Documentation_Required__c != cs.Core_MDF_More_Documentation_Required__c || oldMap.get(cs.Id).Core_MDF_ReasonForMoreDocumentation__c != cs.Core_MDF_ReasonForMoreDocumentation__c)){
+                              
                                    caseReviwerSet.add(reviewerId);
                                    caseListForUpdate.add(cs);
                                    profileCheck = TRUE;  
@@ -84,6 +86,7 @@ Accenture – Shridhar K        03/28/2019                   Created.
                            
                            if((isInsert && cs.Core_MDF_Claim_Case_Reviewer_Lookup__c != null) || 
                               (isUpdate && cs.Core_MDF_Claim_Case_Reviewer_Lookup__c != null && oldMap.containsKey(cs.Id) && oldMap.get(cs.Id).Core_MDF_Claim_Case_Reviewer_Lookup__c != cs.Core_MDF_Claim_Case_Reviewer_Lookup__c)){
+                                 
                                   caseReviwerSet.add(cs.Core_MDF_Claim_Case_Reviewer_Lookup__c);
                                   caseListForUpdate.add(cs);
                               }
@@ -137,7 +140,7 @@ Accenture – Shridhar K        03/28/2019                   Created.
                }
            }
     }
-    
+
     //Roshan - TWC3117-18451 - append date and maintain history for closure note fields
     public static void maintainClosureNotes(Case newCase, Map<Id, Case> oldMap) {
 
@@ -166,14 +169,21 @@ Accenture – Shridhar K        03/28/2019                   Created.
         }
 
         // Internal Case Closure Note logic
-        String internalHistory = removeCurrentDraftNote(oldCase.Core_MDF_Internal_Case_Closure_Notes__c, oldCase.Core_MDF_AddInternalCaseClosureNotes_txt__c);
+        //Roshan - TWC3117-19150
+        // String internalHistory = removeCurrentDraftNote(oldCase.Core_MDF_Internal_Case_Closure_Notes__c, oldCase.Core_MDF_AddInternalCaseClosureNotes_txt__c);
         if (isClosing) {
             // case is closed: append the date
-            newCase.Core_MDF_Internal_Case_Closure_Notes__c = String.isBlank(newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c) ? internalHistory : prependNoteEntry(internalHistory, stampNoteWithCurrentDate(newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c));
+            //Roshan - TWC3117-19150
+            // newCase.Core_MDF_Internal_Case_Closure_Notes__c = String.isBlank(newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c) ? internalHistory : prependNoteEntry(internalHistory, stampNoteWithCurrentDate(newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c));
+            if (String.isNotBlank(newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c)) {
+                newCase.Core_MDF_Internal_Case_Closure_Notes__c = stampNoteWithCurrentDate(newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c);
+            }
             newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c = null;
         } else if (newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c != oldCase.Core_MDF_AddInternalCaseClosureNotes_txt__c) {
             // update new note if provided
-            newCase.Core_MDF_Internal_Case_Closure_Notes__c = prependNoteEntry(internalHistory, String.isBlank(newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c) ? null : newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c.trim());
+            //Roshan - TWC3117-19150
+            // newCase.Core_MDF_Internal_Case_Closure_Notes__c = prependNoteEntry(internalHistory, String.isBlank(newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c) ? null : newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c.trim());
+            newCase.Core_MDF_Internal_Case_Closure_Notes__c = String.isBlank(newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c) ? null : newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c.trim();
         }
     }
 
@@ -187,14 +197,15 @@ Accenture – Shridhar K        03/28/2019                   Created.
         return entry.trim() + '\n' + NOTE_DIVIDER + '\n' + existingHistory.trim();
     }
 
+    //Roshan - TWC3117-19150
     // returns the historic note without the current draft and divider
-    private static String removeCurrentDraftNote(String accumulatedNote, String draftNote) {
-        if (String.isBlank(accumulatedNote) || String.isBlank(draftNote)) { return accumulatedNote; }
-        if (accumulatedNote.trim() == draftNote.trim()) { return null; }
+    // private static String removeCurrentDraftNote(String accumulatedNote, String draftNote) {
+    //     if (String.isBlank(accumulatedNote) || String.isBlank(draftNote)) { return accumulatedNote; }
+    //     if (accumulatedNote.trim() == draftNote.trim()) { return null; }
 
-        String currentNoteWithDivider = draftNote.trim() + '\n' + NOTE_DIVIDER + '\n';
-        return accumulatedNote.trim().startsWith(currentNoteWithDivider) ? accumulatedNote.trim().substring(currentNoteWithDivider.length()) : accumulatedNote;
-    }
+    //     String currentNoteWithDivider = draftNote.trim() + '\n' + NOTE_DIVIDER + '\n';
+    //     return accumulatedNote.trim().startsWith(currentNoteWithDivider) ? accumulatedNote.trim().substring(currentNoteWithDivider.length()) : accumulatedNote;
+    // }
     
     //Method calculates the Checklist completion percentage of a given case
     public static Map<id,decimal> validateChecklistCompletion(set<id> caseList){
@@ -222,6 +233,13 @@ Accenture – Shridhar K        03/28/2019                   Created.
     ******************************************************************************************************/
     @InvocableMethod
     public static void createRecoveryDashboardRecords(List<Case> caseList){
+        //Set<Id> nodeAccIds = new Set<Id>();
+        //List<Case> rmfCaseList = new List<Case>();
+        //On Review completion of RMF Cases, notifying RMF account managers
+        if(!caseList.isEmpty()){
+            //notifyRMFAcctManagersOnReviewCompletion(caseList);
+            //notifyRecoveryAdminsOnReviewCompletion(caseList);
+        }
         if(Core_Trigger_Executions__c.getValues('Core_MDF_Bypass_Recovery_Dashboard') == null || !Core_Trigger_Executions__c.getValues('Core_MDF_Bypass_Recovery_Dashboard').Core_Active__c || 
            (Core_MDF_Custom_Label_Configration__mdt.getInstance('Core_MDF_L3_Bypass_Users').Core_MDF_Value_Txt__c !=null && !Core_MDF_Custom_Label_Configration__mdt.getInstance('Core_MDF_L3_Bypass_Users').Core_MDF_Value_Txt__c.contains(UserInfo.getUserName()))){
             
@@ -229,6 +247,10 @@ Accenture – Shridhar K        03/28/2019                   Created.
                 List<Id> caseIdList = new List<Id>();
                 for(Case c : caseList){
                     caseIdList.add(c.Id);
+                        /*if(c.Core_MDF_Channel_Program_txt__c == Label.Core_MDF_Retail_Program_Name){
+                            nodeAccIds.add(c.AccountId);
+                            rmfCaseList.add(c);
+                       }*/
                 }
 
                 Map<Id, String> caseIdToQuarter = new Map<Id, String>();
@@ -335,11 +357,12 @@ Accenture – Shridhar K        03/28/2019                   Created.
                     Id parentPsdId = psdKeyToPsdId.containsKey(currentToPreviousQtrPsdKey.get(psdKey)) ? psdKeyToPsdId.get(currentToPreviousQtrPsdKey.get(psdKey)) : null;
                     Core_MDF_Partnership_Score_Detail__c previousQuarterPsd = psdKeyToPsdRecordMap.containsKey(currentToPreviousQtrPsdKey.get(psdKey)) ? psdKeyToPsdRecordMap.get(currentToPreviousQtrPsdKey.get(psdKey)) : new Core_MDF_Partnership_Score_Detail__c();
                     Core_MDF_Scorecard__c scoreCard = psdKeyToScoreCardMap.get(psdKey);
-                    
+                                                           
                     Core_MDF_Partnership_Score_Detail__c newPsd = new Core_MDF_Partnership_Score_Detail__c();
                     newPsd.Core_MDF_External_ID__c = '' + psIdTopsKeyMap.get(psId) + (nodeAccountProgramSet.contains(scorecard.Core_MDF_Case_Id__r.Core_MDF_Channel_Program_txt__c) ? String.valueOf(scorecard.Core_MDF_Case_Id__r.AccountId) : '') + scorecard.Core_MDF_Case_Id__r.Core_MDF_Budget_Type_nm__c + scorecard.Core_MDF_Case_Id__r.Core_Account_Geo__c;
                     newPsd.Core_MDF_Partnership_Score_Id__c = psId;
                     if(previousQuarterPsd != null){ // Populate previous Quarter values
+                        //newPsd.Core_MDF_Carry_Over_Amt__c = previousQuarterPsd.Core_MDF_Balance_Amount_Amt__c;
                         newPsd.Core_MDF_Partnership_Score_Detail_Id__c = previousQuarterPsd.Id;
                     }
                     
@@ -389,6 +412,39 @@ Accenture – Shridhar K        03/28/2019                   Created.
                 if(!recoveryDashboardListToUpsert.isEmpty()){
                     Database.upsert(recoveryDashboardListToUpsert, false);
                 }
+                //On Review completion of RMF Cases, notifying RMF account managers
+                /*if(!rmfCaseList.isEmpty() && !nodeAccIds.isEmpty()){
+                    notifyRMFAcctManagersOnReviewCompletion(rmfCaseList,nodeAccIds);
+                }*/
+    
+                /*//Check for the existing Recovery Dashboard record
+                Map<String, Core_MDF_Recovery_Dashboard__c> keyTorecoveryDashboardMap = new Map<String, Core_MDF_Recovery_Dashboard__c>();
+                for(Core_MDF_Recovery_Dashboard__c recoveryDashboard : [SELECT Id, Core_MDF_Partnership_Score_Id__c, Core_MDF_Scorecard_Id__c, Core_MDF_Scorecard_Id__r.Core_MDF_Case_Id__r.Account.Core_MDF_Channel_Program__c, Core_MDF_Scorecard_Id__r.Core_MDF_Case_Id__r.Account.Core_MDF_CoMarketing_Ultimate_Account__c, Core_MDF_Scorecard_Id__r.Core_MDF_Quarter__c, Core_MDF_Active_Ind__c 
+                                                                            FROM Core_MDF_Recovery_Dashboard__c 
+                                                                            WHERE Core_MDF_Scorecard_Id__c IN: scoreCardIdToRecordMap.values()]){
+                    String key = '' + recoveryDashboard.Core_MDF_Scorecard_Id__r.Core_MDF_Case_Id__r.Account.Core_MDF_Channel_Program__c + recoveryDashboard.Core_MDF_Scorecard_Id__r.Core_MDF_Case_Id__r.Account.Core_MDF_CoMarketing_Ultimate_Account__c + recoveryDashboard.Core_MDF_Scorecard_Id__r.Core_MDF_Quarter__c + recoveryDashboard.Core_MDF_Scorecard_Id__c;
+                    keyTorecoveryDashboardMap.put(key, recoveryDashboard);
+                }
+                
+                
+
+                //Iternate over the Scorecard to prepare Recovery Dashboard record to Upsert
+                List<Core_MDF_Recovery_Dashboard__c> recoveryDashboardListToUpsert = new List<Core_MDF_Recovery_Dashboard__c>();
+                for(Core_MDF_Scorecard__c scorecard : scoreCardIdToRecordMap.values()){
+                    String key = '' + scorecard.Core_MDF_Case_Id__r.Account.Core_MDF_Channel_Program__c + scorecard.Core_MDF_Case_Id__r.Account.Core_MDF_CoMarketing_Ultimate_Account__c + scorecard.Core_MDF_Quarter__c;
+                    String keyWithscoreCardId = key + scorecard.Id;
+                    if(keyToParternshipScoreIdMap.containsKey(key) && String.isNotBlank(keyToParternshipScoreIdMap.get(key))){
+                        if(!keyTorecoveryDashboardMap.containsKey(keyWithscoreCardId)){
+                            recoveryDashboardListToUpsert.add(new Core_MDF_Recovery_Dashboard__c(Core_MDF_Partnership_Score_Id__c = keyToParternshipScoreIdMap.get(key), Core_MDF_Scorecard_Id__c = scorecard.Id));
+                        }
+                    }
+                }
+                
+                
+                //Upsert Recovery Dashboard record
+                if(!recoveryDashboardListToUpsert.isEmpty()){
+                    Database.upsert(recoveryDashboardListToUpsert, false);
+                }*/
             }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}
         }
     }
@@ -411,4 +467,151 @@ Accenture – Shridhar K        03/28/2019                   Created.
         quarterInteger = quarterInteger == 1 ? 4 : quarterInteger - 1;
         return 'Q' + quarterInteger + ' ' + yearInteger;
     }
+/*****************************************************************************************************                              
+Method Name   :        notifyRMFAcctManagersOnReviewCompletion                               
+@return       :        void                         
+@parameters   :        List<Case>
+Description   :        to notify RMF Account managers on Review Completion
+Added By      :        AN - Accenture - 06/05/2024
+Modified By   :        Date:           Changes:                                 
+******************************************************************************************************/
+    /*public static void notifyRMFAcctManagersOnReviewCompletion(List<Case> caseList){
+        Set<Id> nodeAccIds = new Set<Id>();
+        List<Case> rmfCaseList = new List<Case>();
+        List<Core_MDF_GenericClassToSendMail.MailParams> emailInputList = new List<Core_MDF_GenericClassToSendMail.MailParams>();  
+        //node account to user Id Map 
+        Map<Id,List<Id>> nodeAccIdUserIdMap = new Map<Id,List<Id>>();
+        try{
+            for(Case c : caseList){
+                if(c.Core_MDF_Channel_Program_txt__c == Label.Core_MDF_Retail_Program_Name){
+                    nodeAccIds.add(c.AccountId);
+                    rmfCaseList.add(c);
+                }
+            }
+            //To get RMF account managers having IUPGM with the node accounts 
+            nodeAccIdUserIdMap = Core_MDF_PIC_SendEmailToClaimOwner.getRMFAccManagers(nodeAccIds);
+            
+            if(!rmfCaseList.isEmpty()){
+                for(Case rmfcs:rmfCaseList){       
+                    if(nodeAccIdUserIdMap != null && nodeAccIdUserIdMap.containsKey(rmfcs.AccountId)){
+                        Core_MDF_GenericClassToSendMail.MailParams sendEmailToExt = new Core_MDF_GenericClassToSendMail.MailParams();
+                        sendEmailToExt.recordId = rmfcs.Id;
+                        sendEmailToExt.templateName = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_NotifyRMFActMgrOnReviewComp');
+                        sendEmailToExt.userIdList = nodeAccIdUserIdMap.get(rmfcs.AccountId);
+                        sendEmailToExt.sendDiff = false;
+                        emailInputList.add(sendEmailToExt);
+                    }
+                }
+            }
+            
+            
+            if(emailInputList!=null && emailInputList.size()>0){
+                Core_MDF_GenericClassToSendMail.sendEmailMethod(emailInputList);
+            }
+        }
+        catch(Exception e){
+            Core_MDF_CCP_UtilityClass.logErrorinLogObject(Core_MDF_CCP_UtilityClass.getErrorDetails(e),'Exception occured in notifyRMFAcctManagersOnReviewCompletion method');
+        }      
+        
+    }*/
+    /*****************************************************************************************************                              
+    Method Name   :        notifyRecoveryAdminsOnReviewCompletion                               
+    @return       :        void                         
+    @parameters   :        List<Case>
+    Description   :        to notify Recovery Administators on Review Completion
+    Added By      :        AN - Accenture - 06/05/2024
+    Modified By   :        Date:           Changes:                                 
+    ******************************************************************************************************/
+    public static void notifyRecoveryAdminsOnReviewCompletion(List<Case> caseList){
+        try{
+            List<Id> nodeAccSet = new List<Id>();
+            List<Core_MDF_GenericClassToSendMail.MailParams> emailInputList = new List<Core_MDF_GenericClassToSendMail.MailParams>();  
+            for(Case cs:caseList){
+                nodeAccSet.add(cs.AccountId);
+            }
+            
+            Map<Id,List<Id>> accToRecoveryAdmUsrIdMap = new Map<Id,List<Id>>();
+            accToRecoveryAdmUsrIdMap = getnodeAccToRecoveryAdmUserId(nodeAccSet);
+            
+            if(!caseList.isEmpty()){
+                for(Case cs:caseList){       
+                    if(accToRecoveryAdmUsrIdMap != null && accToRecoveryAdmUsrIdMap.containsKey(cs.AccountId)){
+                        Core_MDF_GenericClassToSendMail.MailParams sendEmailToExt = new Core_MDF_GenericClassToSendMail.MailParams();
+                        sendEmailToExt.recordId = cs.Id;
+                        sendEmailToExt.templateName = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_NotifyRMFActMgrOnReviewComp');
+                        sendEmailToExt.userIdList = accToRecoveryAdmUsrIdMap.get(cs.AccountId);
+                        sendEmailToExt.sendDiff = false;
+                        emailInputList.add(sendEmailToExt);
+                    }
+                }
+            }
+            
+            if(emailInputList!=null && emailInputList.size()>0){
+                Core_MDF_GenericClassToSendMail.sendEmailMethod(emailInputList);
+            }
+        }
+        catch(Exception e){
+            Core_MDF_CCP_UtilityClass.logErrorinLogObject(Core_MDF_CCP_UtilityClass.getErrorDetails(e),'Exception occured in notifyRecoveryAdminsOnReviewCompletion method');
+        }
+
+    }
+    /*****************************************************************************************************                              
+    Method Name   :        getnodeAccToRecoveryAdmUserId                               
+    @return       :        void                         
+    @parameters   :        Set<Id>
+    Description   :        to get recovery admins of the node account
+    Added By      :        AN - Accenture - 06/05/2024
+    Modified By   :        Date:           Changes:                                 
+    ******************************************************************************************************/
+    public static Map<Id,List<Id>> getnodeAccToRecoveryAdmUserId(List<Id> accIdSet){
+        Map<Id,Set<Id>> accIdUserIdSetMap = new Map<Id,Set<Id>>();
+        Map<Id,String> accIdProgramNameMap = new Map<Id,String>();
+        Set<Id> userIdSet = new Set<Id>();
+        Map<Id,List<Id>> accIdRecoveryAdmUserIdSetMap = new Map<Id,List<Id>>();
+        List<Id> userWithRequiredPermissionSet = new List<Id>();
+        List<String> permissionSetNameList = new List<String>{'Core_MDF_CCP_CCF_External_Recovery_Administrator','Core_MDF_CCP_DCF_External_Recovery_Administrator','Core_MDF_CCP_IPA_External_Recovery_Administrator','Core_MDF_CCP_RMF_External_Recovery_Administrator'};
+        if(accIdSet != NULL && accIdSet.Size() > 0){
+            for(Core_MDF_Partner_Node_User_Mapping__c pnum : [SELECT Id, Core_MDF_Account__c, Core_MDF_User__c, Core_MDF_Account__r.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c
+                                                              FROM Core_MDF_Partner_Node_User_Mapping__c
+                                                              WHERE Core_MDF_Account__c IN: accIdSet AND
+                                                              Core_MDF_User__r.IsActive = TRUE AND
+                                                              Core_MDF_Active_Ind__c = TRUE]){
+                userIdSet.add(pnum.Core_MDF_User__c);
+                accIdProgramNameMap.put(pnum.Core_MDF_Account__c,pnum.Core_MDF_Account__r.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c);
+                if(accIdUserIdSetMap.containsKey(pnum.Core_MDF_Account__c)){
+                    accIdUserIdSetMap.get(pnum.Core_MDF_Account__c).add(pnum.Core_MDF_User__c);
+                }else{
+                    accIdUserIdSetMap.put(pnum.Core_MDF_Account__c,new Set<Id>{pnum.Core_MDF_User__c});
+                }
+            }
+        }
+        
+            
+        //if(permissionSetNameList != NULL && permissionSetNameList.Size() > 0){
+        for(Id accId:accIdSet){
+           
+            for(PermissionSetAssignment psa : [SELECT Id, PermissionSet.Name,AssigneeId
+                                               FROM PermissionSetAssignment
+                                               WHERE AssigneeId IN: accIdUserIdSetMap.get(accId) AND
+                                               PermissionSet.Name IN: permissionSetNameList]){
+                                                 
+                
+                if(String.valueOf(accIdProgramNameMap.get(accId)) == 'Client CoMarketing Fund' && String.valueOf(psa.PermissionSet.Name) == 'Core_MDF_CCP_CCF_External_Recovery_Administrator' || 
+                   String.valueOf(accIdProgramNameMap.get(accId)) == 'Data Center CoMarketing Fund' && String.valueOf(psa.PermissionSet.Name) == 'Core_MDF_CCP_DCF_External_Recovery_Administrator' || 
+                   String.valueOf(accIdProgramNameMap.get(accId)) == 'Intel Partner Alliance' &&  String.valueOf(psa.PermissionSet.Name) == 'Core_MDF_CCP_IPA_External_Recovery_Administrator' || 
+                   String.valueOf(accIdProgramNameMap.get(accId)) == 'Retail Marketing Funds' &&  String.valueOf(psa.PermissionSet.Name) == 'Core_MDF_CCP_RMF_External_Recovery_Administrator')
+                userWithRequiredPermissionSet.add(psa.AssigneeId); 
+                if(accIdRecoveryAdmUserIdSetMap.containsKey(accId)){
+                    accIdRecoveryAdmUserIdSetMap.get(accId).add(psa.AssigneeId);
+                }else{
+                    accIdRecoveryAdmUserIdSetMap.put(accId,new List<Id>{psa.AssigneeId});
+                }                                 
+            }
+        }
+       
+        //return userWithRequiredPermissionSet;
+        
+        return accIdRecoveryAdmUserIdSetMap;
+    }
+   
 }

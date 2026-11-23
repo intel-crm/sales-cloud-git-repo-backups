@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Patrick Gu</description>
+    <description>EMP of Charles Shi</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11539237_Ursula_Ying</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_11450514_Patrick_Gu</parentRole>
+    <parentRole>EMP_11304501_Charles_Shi</parentRole>
 </Role>

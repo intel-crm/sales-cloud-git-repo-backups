@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>5G/RAN</fullName>
+        <default>false</default>
+        <label>5G/RAN</label>
+    </customValue>
+    <customValue>
+        <fullName>5G Infrastructure</fullName>
+        <default>false</default>
+        <label>5G Infrastructure</label>
+    </customValue>
+    <customValue>
+        <fullName>Advanced Analytics</fullName>
+        <default>false</default>
+        <label>Advanced Analytics</label>
+    </customValue>
+    <customValue>
+        <fullName>AI </fullName>
+        <default>false</default>
+        <label>AI </label>
+    </customValue>
+    <customValue>
+        <fullName>AI / Big Data</fullName>
+        <default>false</default>
+        <label>AI / Big Data</label>
+    </customValue>
+    <customValue>
+        <fullName>Always Connected PC</fullName>
+        <default>false</default>
+        <label>Always Connected PC</label>
+    </customValue>
+    <customValue>
+        <fullName>Analytics</fullName>
+        <default>false</default>
+        <label>Analytics</label>
+    </customValue>
+    <customValue>
+        <fullName>Artificial Intelligence</fullName>
+        <default>false</default>
+        <label>Artificial Intelligence</label>
+    </customValue>
+    <customValue>
+        <fullName>Automotive</fullName>
+        <default>false</default>
+        <label>Automotive</label>
+    </customValue>
+    <customValue>
+        <fullName>Cloud (Public, Private, hybrid, multi)</fullName>
+        <default>false</default>
+        <label>Cloud (Public, Private, hybrid, multi)</label>
+    </customValue>
+    <customValue>
+        <fullName>Cloud Services</fullName>
+        <default>false</default>
+        <label>Cloud Services</label>
+    </customValue>
+    <customValue>
+        <fullName>Consumer Chromebook</fullName>
+        <default>false</default>
+        <label>Consumer Chromebook</label>
+    </customValue>
+    <customValue>
+        <fullName>Consumer Client</fullName>
+        <default>false</default>
+        <label>Consumer Client</label>
+    </customValue>
+    <customValue>
+        <fullName>Consumer Intel Optane</fullName>
+        <default>false</default>
+        <label>Consumer Intel Optane</label>
+    </customValue>
+    <customValue>
+        <fullName>Consumer Modern PCs</fullName>
+        <default>false</default>
+        <label>Consumer Modern PCs</label>
+    </customValue>
+    <customValue>
+        <fullName>Consumer refresh of latest gen processors</fullName>
+        <default>false</default>
+        <label>Consumer refresh of latest gen processors</label>
+    </customValue>
+    <customValue>
+        <fullName>Creator marketing</fullName>
+        <default>false</default>
+        <label>Creator marketing</label>
+    </customValue>
+    <customValue>
+        <fullName>Datacenter Modernization</fullName>
+        <default>false</default>
+        <label>Datacenter Modernization</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital Workplace</fullName>
+        <default>false</default>
+        <label>Digital Workplace</label>
+    </customValue>
+    <customValue>
+        <fullName>Edge</fullName>
+        <default>false</default>
+        <label>Edge</label>
+    </customValue>
+    <customValue>
+        <fullName>Edge Computing </fullName>
+        <default>false</default>
+        <label>Edge Computing </label>
+    </customValue>
+    <customValue>
+        <fullName>Extend Platform Leadership</fullName>
+        <default>false</default>
+        <label>Extend Platform Leadership</label>
+    </customValue>
+    <customValue>
+        <fullName>FPGA Accelerators</fullName>
+        <default>false</default>
+        <label>FPGA Accelerators</label>
+    </customValue>
+    <customValue>
+        <fullName>Gaming</fullName>
+        <default>false</default>
+        <label>Gaming</label>
+    </customValue>
+    <customValue>
+        <fullName>Gaming marketing</fullName>
+        <default>false</default>
+        <label>Gaming marketing</label>
+    </customValue>
+    <customValue>
+        <fullName>High Performance Computing</fullName>
+        <default>false</default>
+        <label>High Performance Computing</label>
+    </customValue>
+    <customValue>
+        <fullName>HPC </fullName>
+        <default>false</default>
+        <label>HPC </label>
+    </customValue>
+    <customValue>
+        <fullName>Hybrid Cloud</fullName>
+        <default>false</default>
+        <label>Hybrid Cloud</label>
+    </customValue>
+    <customValue>
+        <fullName>Infrastructure Modernization</fullName>
+        <default>false</default>
+        <label>Infrastructure Modernization</label>
+    </customValue>
+    <customValue>
+        <fullName>In-Memory Database/Optane Pmem</fullName>
+        <default>false</default>
+        <label>In-Memory Database/Optane Pmem</label>
+    </customValue>
+    <customValue>
+        <fullName>Instore innovation</fullName>
+        <default>false</default>
+        <label>Instore innovation</label>
+    </customValue>
+    <customValue>
+        <fullName>Instore merchandise</fullName>
+        <default>false</default>
+        <label>Instore merchandise</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel/RSP Advocacy</fullName>
+        <default>false</default>
+        <label>Intel/RSP Advocacy</label>
+    </customValue>
+    <customValue>
+        <fullName>Internet of Things</fullName>
+        <default>false</default>
+        <label>Internet of Things</label>
+    </customValue>
+    <customValue>
+        <fullName>IREP</fullName>
+        <default>false</default>
+        <label>IREP</label>
+    </customValue>
+    <customValue>
+        <fullName>Mainstream PCs</fullName>
+        <default>false</default>
+        <label>Mainstream PCs</label>
+    </customValue>
+    <customValue>
+        <fullName>Managed Biz vPro</fullName>
+        <default>false</default>
+        <label>Managed Biz vPro</label>
+    </customValue>
+    <customValue>
+        <fullName>Managed Business Intel Optane</fullName>
+        <default>false</default>
+        <label>Managed Business Intel Optane</label>
+    </customValue>
+    <customValue>
+        <fullName>Managed SMB/Large Enterprise</fullName>
+        <default>false</default>
+        <label>Managed SMB/Large Enterprise</label>
+    </customValue>
+    <customValue>
+        <fullName>Media Services</fullName>
+        <default>false</default>
+        <label>Media Services</label>
+    </customValue>
+    <customValue>
+        <fullName>Modern Mobile Devices</fullName>
+        <default>false</default>
+        <label>Modern Mobile Devices</label>
+    </customValue>
+    <customValue>
+        <fullName>Network Cloud (NFV/SDN)</fullName>
+        <default>false</default>
+        <label>Network Cloud (NFV/SDN)</label>
+    </customValue>
+    <customValue>
+        <fullName>Network Transformation</fullName>
+        <default>false</default>
+        <label>Network Transformation</label>
+    </customValue>
+    <customValue>
+        <fullName>Next Gen IaaS</fullName>
+        <default>false</default>
+        <label>Next Gen IaaS</label>
+    </customValue>
+    <customValue>
+        <fullName>NP-Consumer</fullName>
+        <default>false</default>
+        <label>NP-Consumer</label>
+    </customValue>
+    <customValue>
+        <fullName>NP-Gaming</fullName>
+        <default>false</default>
+        <label>NP-Gaming</label>
+    </customValue>
+    <customValue>
+        <fullName>NP-Managed SMB/Large Enterprise</fullName>
+        <default>false</default>
+        <label>NP-Managed SMB/Large Enterprise</label>
+    </customValue>
+    <customValue>
+        <fullName>NP-Small Business</fullName>
+        <default>false</default>
+        <label>NP-Small Business</label>
+    </customValue>
+    <customValue>
+        <fullName>Online Performance</fullName>
+        <default>false</default>
+        <label>Online Performance</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Ramping Adjacencies</fullName>
+        <default>false</default>
+        <label>Ramping Adjacencies</label>
+    </customValue>
+    <customValue>
+        <fullName>Refresh for vPro</fullName>
+        <default>false</default>
+        <label>Refresh for vPro</label>
+    </customValue>
+    <customValue>
+        <fullName>RXT engagement</fullName>
+        <default>false</default>
+        <label>RXT engagement</label>
+    </customValue>
+    <customValue>
+        <fullName>Server Refresh</fullName>
+        <default>false</default>
+        <label>Server Refresh</label>
+    </customValue>
+    <customValue>
+        <fullName>Small Business</fullName>
+        <default>false</default>
+        <label>Small Business</label>
+    </customValue>
+    <customValue>
+        <fullName>Storage</fullName>
+        <default>false</default>
+        <label>Storage</label>
+    </customValue>
+    <customValue>
+        <fullName>Target demand gen</fullName>
+        <default>false</default>
+        <label>Target demand gen</label>
+    </customValue>
+    <customValue>
+        <fullName>Telecom Transformation</fullName>
+        <default>false</default>
+        <label>Telecom Transformation</label>
+    </customValue>
+    <customValue>
+        <fullName>Unite</fullName>
+        <default>false</default>
+        <label>Unite</label>
+    </customValue>
+    <customValue>
+        <fullName>Vision</fullName>
+        <default>false</default>
+        <label>Vision</label>
+    </customValue>
+    <customValue>
+        <fullName>Visual Cloud</fullName>
+        <default>false</default>
+        <label>Visual Cloud</label>
+    </customValue>
+    <customValue>
+        <fullName>Windows 10 Refresh</fullName>
+        <default>false</default>
+        <label>Windows 10 Refresh</label>
+    </customValue>
+    <customValue>
+        <fullName>Win Intel Preference</fullName>
+        <default>false</default>
+        <label>Win Intel Preference</label>
+    </customValue>
+    <customValue>
+        <fullName>Win Performance &amp; Sell Up</fullName>
+        <default>false</default>
+        <label>Win Performance &amp; Sell Up</label>
+    </customValue>
+    <customValue>
+        <fullName>Win Screen w IPOS</fullName>
+        <default>false</default>
+        <label>Win Screen w IPOS</label>
+    </customValue>
+    <customValue>
+        <fullName>Win Volume</fullName>
+        <default>false</default>
+        <label>Win Volume</label>
+    </customValue>
+    <customValue>
+        <fullName>Workload Consolidation</fullName>
+        <default>false</default>
+        <label>Workload Consolidation</label>
+    </customValue>
+    <customValue>
+        <fullName>Workplace Transformation </fullName>
+        <default>false</default>
+        <label>Workplace Transformation </label>
+    </customValue>
+    <customValue>
+        <fullName>Workstation</fullName>
+        <default>false</default>
+        <label>Workstation</label>
+    </customValue>
+    <customValue>
+        <fullName>None</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>None</label>
+    </customValue>
+    <masterLabel>Priority #3</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

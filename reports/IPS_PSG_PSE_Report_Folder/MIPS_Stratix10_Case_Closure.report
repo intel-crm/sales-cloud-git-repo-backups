@@ -412,6 +412,9 @@
         <field>Case.Core_IPS_Date_Time_Close_Pending__c</field>
     </columns>
     <columns>
+        <field>CLOSED_DATE</field>
+    </columns>
+    <columns>
         <field>Case.Core_IPS_Case_Escalated_Date__c</field>
     </columns>
     <columns>
@@ -432,7 +435,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Case.Core_AAQC_Case_recordType</value>
+            <value>Case.Core_AAQC_Case_recordType,Case.CEP_Case</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
@@ -462,26 +465,12 @@
             <operator>equals</operator>
             <value>Closed</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_Case_Closure__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_Case_Closure__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Solution Provided</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Month</dateGranularity>
-        <field>CLOSED_DATE</field>
+        <field>CREATED_DATEONLY</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -510,6 +499,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_PREVCURY</interval>
+        <endDate>2019-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2018-05-01</startDate>
     </timeFrameFilter>
 </Report>

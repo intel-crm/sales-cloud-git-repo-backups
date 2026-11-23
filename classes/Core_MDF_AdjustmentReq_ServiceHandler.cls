@@ -145,6 +145,8 @@ Modified By:        Intel  - Areefa  - 01/Jul/2019  - Escalation Id stamp to Pos
      
         Set<String> adjReasonSet = new Set<String>();
         List<Core_MDF_AdjustmentOrEscalationClaim__mdt> reasonAndTypeList = new List<Core_MDF_AdjustmentOrEscalationClaim__mdt>();
+       // List<Core_MDF_Custom_Label_Configration__mdt> reasonAndTypeList = new List<Core_MDF_Custom_Label_Configration__mdt>();
+
         // Get all the Adjustment request where Adjustment Claim is null 
         List<Core_MDF_Adjustment_Request__c> adjReqToBeProcessed = new List<Core_MDF_Adjustment_Request__c>();
         //Don't migrate this code with try/catch block, put your changes on top of devint code - START
@@ -156,6 +158,14 @@ Modified By:        Intel  - Areefa  - 01/Jul/2019  - Escalation Id stamp to Pos
         }
         for(Core_MDF_Adjustment_Request__c adjReq : adjReqToBeProcessed)
         {
+           /* if(adjReq.Core_MDF_Adjustment_Status_nm__c == Label.Core_MDF_Status_Cancelled)
+            {
+                adjReq.addError('Adjustment cannot be created in Cancelled status');
+            }
+            else{
+                    adjReq.Core_MDF_Adjustment_Status_nm__c = Label.Core_MDF_Status_Approved;
+            }*/
+            
             claimIdSet.add(adjReq.Core_MDF_Reference_Claim_Nbr__c);
             adjReasonSet.add(adjReq.Core_MDF_Reason_Cd__c);
         }
@@ -164,33 +174,51 @@ Modified By:        Intel  - Areefa  - 01/Jul/2019  - Escalation Id stamp to Pos
         if(matricesAPISet != null && matricesAPISet.size()>0){
           metricfieldsForQuery = string.join(new List<String>(matricesAPISet),',');
         }
+        
         // 2. Query all claims - Changed into dynamic query as we have to assign metrices field values dynamically on auto created claim by referring its reference claim 
         if(claimIdSet!=null && claimIdSet.size()>0){
-            String query ='SELECT Id,Title,Owner.isActive,Request.Title,Core_MDF_Program__c,Core_MDF_Activity_Status_nm__c,Request.Core_MDF_Activity_Number__c,Core_MDF_Activity_SubType_nm__c,Core_MDF_AccountCompany__c,Core_MDF_Claim_Ref_Number__c,Core_MDF_Reimbursement_Percent__c,Core_MDF_VAT_Opt_In__c,Core_MDF_VAT_Eligibility_Ind__c, Core_MDF_Applicable_VAT_Percentage_nm__c, Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Country_Location_nm__c,Core_MDF_Ad_Run_End_Date__c, Core_MDF_Media_Vehicle__c,Core_MDF_Invoice_Date__c,Core_MDF_Bank__r.Name,RecordTypeId,Core_MDF_Processing_Preference_nm__c';
+            String query ='SELECT Id,Title,Owner.isActive,Request.Title,Core_MDF_Program__c,Core_MDF_Activity_Status_nm__c,Request.Core_MDF_Activity_Number__c,Core_MDF_Activity_SubType_nm__c,Core_MDF_AccountCompany__c,Core_MDF_Claim_Ref_Number__c,Core_MDF_Reimbursement_Percent__c,Core_MDF_VAT_Opt_In__c,Core_MDF_VAT_Eligibility_Ind__c, Core_MDF_Applicable_VAT_Percentage_nm__c, Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Country_Location_nm__c,Core_MDF_Ad_Run_End_Date__c, Core_MDF_Media_Vehicle__c,Core_MDF_Invoice_Date__c,Core_MDF_Bank__r.Name,RecordTypeId,Core_MDF_Processing_Preference_nm__c ';
         //Check if metricfieldsForQuery is not null
         if(!String.isBlank(metricfieldsForQuery)){
           query+= ',' +metricfieldsForQuery;
         }
+        
 		query += ' FROM PartnerFundClaim WHERE Id IN :claimIdSet AND Core_MDF_Activity_Status_nm__c = \'In-Progress\' ';
-        claimsList=Database.query(query);   
+        claimsList=Database.query(query);
         claimMap = new Map<Id,PartnerFundClaim> (claimsList);                      
         }
+        System.debug('claimMap contains' +claimMap);
         if (adjReqToBeProcessed != null && !adjReqToBeProcessed.isEmpty()) {
-            for (Core_MDF_Adjustment_Request__c ar : adjReqToBeProcessed) { 
-                if (claimMap.get(ar.Core_MDF_Reference_Claim_Nbr__c) == null) {
-                	ar.addError('Adjustment can be created on claims associated to activities that are in an "In Progress" state only');
+            for (Core_MDF_Adjustment_Request__c ar : adjReqToBeProcessed) {              
+                if (claimMap.get(ar.Core_MDF_Reference_Claim_Nbr__c) == null) {    
+                ar.addError('Adjustment can be created on claims associated to activities that are in an "In Progress" state only');
                 }       
             }
         }
         //3. Retrived all metadata
         if(adjReasonSet!=null && adjReasonSet.size()>0){
-            reasonAndTypeList = [SELECT Core_MDF_Reason_txt__c,Core_MDF_Type_txt__c FROM Core_MDF_AdjustmentOrEscalationClaim__mdt WHERE Core_MDF_Reason_txt__c IN :adjReasonSet];
+            reasonAndTypeList = [SELECT Core_MDF_Reason_txt__c,Core_MDF_Type_txt__c  
+                                 FROM Core_MDF_AdjustmentOrEscalationClaim__mdt
+                                 WHERE Core_MDF_Reason_txt__c IN :adjReasonSet];
         }
         
         //4. Mapping Type and reason
         for(Core_MDF_AdjustmentOrEscalationClaim__mdt reasonType : reasonAndTypeList){
             claimReasonTypeMap.put(reasonType.Core_MDF_Reason_txt__c,reasonType.Core_MDF_Type_txt__c);
-        }    
+        }  
+        //Core_MDF_AdjustmentOrEscalationClaim__mdt optimization-Swati
+        /*if(adjReasonSet!=null && adjReasonSet.size()>0){
+            reasonAndTypeList = [SELECT Core_MDF_Value_Txt__c, Core_MDF_Value2_Txt__c 
+                                 FROM Core_MDF_Custom_Label_Configration__mdt 
+                                 WHERE Core_MDF_Category_Txt__c = 'Adjustment Or Escalation Claim' AND Core_MDF_Value_Txt__c IN :adjReasonSet];
+        }
+        
+        //4. Mapping Type and reason
+        for(Core_MDF_Custom_Label_Configration__mdt reasonType : reasonAndTypeList){
+            claimReasonTypeMap.put(reasonType.Core_MDF_Value_Txt__c,reasonType.Core_MDF_Value2_Txt__c);
+        }  */
+        
+
         // 5. Preparing list of Negative and Postive AdjustmentRequest
         List<Core_MDF_Adjustment_Request__c> negativeAdjustmentLst = new List<Core_MDF_Adjustment_Request__c>(); // List holds negtive Adjustment
         List<Core_MDF_Adjustment_Request__c> postiveAdjustmentLst = new List<Core_MDF_Adjustment_Request__c>();  // List holds postive Adjustment       
@@ -247,17 +275,16 @@ Modified By:        Intel  - Areefa  - 01/Jul/2019  - Escalation Id stamp to Pos
         if(adjustmentRequestList!=null && adjustmentRequestList.size()>0 &&
            adjClaimList!=null && adjClaimList.size()>0 &&
            adjClaimToAdjReqMap!=null && adjClaimToAdjReqMap.size()>0 &&
-           adjRequestIdToAdjClaimMap!=null && adjRequestIdToAdjClaimMap.size()>0){               
-              
+           adjRequestIdToAdjClaimMap!=null && adjRequestIdToAdjClaimMap.size()>0){ 
+ 
                insertAdjClaimAndDisplayErrorOnAdjRequest(adjustmentRequestList,adjClaimList,adjClaimToAdjReqMap,adjRequestIdToAdjClaimMap);
            
            }
         }
         catch(Exception e){
-           
           string errorMessage = Core_MDF_CCP_UtilityClass.getErrorDetails(e);
            
-			            
+            
             if(!String.isBlank(errorMessage) && errorMessage.contains(Label.Core_MDF_Retail_Claim_Amount_ShdBeWithIn_ActyBudgetAmt)){
                 adjustmentRequestList[0].addError(Label.Core_MDF_Retail_Claim_Amount_ShdBeWithIn_ActyBudgetAmt);
             }
@@ -298,12 +325,15 @@ Modified By:        Intel  - Areefa  - 01/Jul/2019  - Escalation Id stamp to Pos
             //claim.Core_MDF_Campaign_Id__c = claim.Core_MDF_Campaign_Id__c;              // Added for Campaign CAP Validation we need campaign field
             newClaim.Core_MDF_VAT_Opt_In__c = claim.Core_MDF_VAT_Opt_In__c;                // Updating VAT Opt In Value with Reference Claim VAT Opt In Field
             newClaim.Core_MDF_Applicable_VAT_Percentage_nm__c = claim.Core_MDF_Applicable_VAT_Percentage_nm__c;  
+            //newClaim.Core_MDF_Bank__c = null;
+            
+            //newClaim.Core_MDF_Processing_Preference_nm__c = claim.Core_MDF_Processing_Preference_nm__c;
             
             return newClaim; }catch (Exception e) { Core_MDF_CCP_UtilityClass.logError(e); return null; }
     }
     public static Map<Id,Id> getReferenceClaimWithOwnerIds(Set<Id> claimIds){
         Map<Id,Id> mapOfRefClaimIdsWithOwnerIds = new Map<Id,Id>();
-		if(claimIds!=null && claimIds.size()>0){
+        if(claimIds!=null && claimIds.size()>0){
             List<PartnerFundClaim> partnerFundClaimList = [Select Id,OwnerId from partnerFundClaim where Id IN:claimIds];
             for(PartnerFundClaim pfc : partnerFundClaimList){
                 mapOfRefClaimIdsWithOwnerIds.put(pfc.Id,pfc.OwnerId);
@@ -316,8 +346,8 @@ Modified By:        Intel  - Areefa  - 01/Jul/2019  - Escalation Id stamp to Pos
     public static void createNegativeAdjustments(List<Core_MDF_Adjustment_Request__c> negativeAdjustmentList)  
     {        
         
-	//Roshan - Added changes for "Reclaiming SF Partner License"
         //Map of exisitng user
+        //Roshan - Added changes for "Reclaiming SF Partner License"
         Map<Id,User> userIdToUserMap =New Map<Id,User>([Select id,LanguageLocaleKey,Partner_License_Reclaimed__c from User where Id IN:refClaimIdToClaimOwnerIdMap.values()]);
         try
         {
@@ -328,6 +358,9 @@ Modified By:        Intel  - Areefa  - 01/Jul/2019  - Escalation Id stamp to Pos
                 // To populate Owner Language Locale over claim field by referring to LanguageLocaleKey of reference claim owner.
                 if(refClaimIdToClaimOwnerIdMap.containsKey(adjReq.Core_MDF_Reference_Claim_Nbr__c)){
                     //To check if reference claim owner is Active
+                    
+                    system.debug('claimMap@@@' + claimMap);
+                    //Roshan - Added changes for "Reclaiming SF Partner License"
                     if(!claimMap.get(adjReq.Core_MDF_Reference_Claim_Nbr__c).Owner.isActive && !userIdToUserMap.get(refClaimIdToClaimOwnerIdMap.get(adjReq.Core_MDF_Reference_Claim_Nbr__c)).Partner_License_Reclaimed__c){
                         String referenceOwnerInactive = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Ref_Claim_Owner_Inactive');
                         adjReq.addError(referenceOwnerInactive);  
@@ -339,13 +372,14 @@ Modified By:        Intel  - Areefa  - 01/Jul/2019  - Escalation Id stamp to Pos
                             adjReq.addError(referenceOwnerInvalid);
                         }
                         else{
-                        //to store owner's language locale key
-                        newNegativeClaim.Core_MDF_Owner_LanguageLocaleKey_Cd__c =
-                        userIdToUserMap.containsKey(refClaimIdToClaimOwnerIdMap.get(adjReq.Core_MDF_Reference_Claim_Nbr__c)) ?
-                        userIdToUserMap.get(refClaimIdToClaimOwnerIdMap.get(adjReq.Core_MDF_Reference_Claim_Nbr__c)).LanguageLocaleKey : Label.Core_English_Language_Locale_Key;
+                            //to store owner's language locale key
+                            newNegativeClaim.Core_MDF_Owner_LanguageLocaleKey_Cd__c =
+                                userIdToUserMap.containsKey(refClaimIdToClaimOwnerIdMap.get(adjReq.Core_MDF_Reference_Claim_Nbr__c)) ?
+                                userIdToUserMap.get(refClaimIdToClaimOwnerIdMap.get(adjReq.Core_MDF_Reference_Claim_Nbr__c)).LanguageLocaleKey : Label.Core_English_Language_Locale_Key;
                         }  
                     }
-                  }               
+                }
+                
                 newNegativeClaim = negativeClaim(newNegativeClaim);                                
                 adjClaimList.add(newNegativeClaim); 
                 // Attach newly created NegativeClaim object to an AdjRequest
@@ -500,7 +534,7 @@ Modified By:        Date:       Changes:
         Map<Core_MDF_Adjustment_Request__c,String> adjReqToErrorMessageMap = new Map<Core_MDF_Adjustment_Request__c,String>();
         //Set of succeed adjustment claims Id
         Set<Id> succeedAdjClaimIdSet = new Set<Id>();        
-        //Inserting Negative/Positive claims 
+        //Inserting Negative/Positive claims          
           Database.saveResult[] finalAdjClaimResultList = database.insert(adjClaimList, true); 
             for(Integer index=0;index<adjClaimList.size();index++){
                 if(finalAdjClaimResultList[index] !=null && adjClaimList[index]!=null){
@@ -568,6 +602,7 @@ Modified By:        Date:       Changes:
                     claimToBeCancelled.Status = Label.Core_MDF_Status_Rejected;
                     listOfClaimsToBeCancelled.add(claimToBeCancelled);
                     if(partnerFundClaimMap.get(adjRequest.Core_MDF_Adjustment_Claim_Nbr__c).Core_MDF_VAT_Eligibility_Ind__c){ VatToBeCancelled.add(claimToBeCancelled.Id);}
+                   // VatToBeCancelled.addAll(partnerFundClaimMap.get(adjRequest.Core_MDF_Adjustment_Claim_Nbr__c).Core_MDF_VAT_Eligibility_Ind__c  ? new Set<Id>{ claimToBeCancelled.Id } : null); //ATHR Fix- Deeply nested if
                    
                 }
            // } //ATHR Comment

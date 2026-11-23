@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="Status Change for your Escalation" recipientType="User" relatedToType="Core_MDF_Escalation__c">
+<messaging:plainTextEmailBody >
+Congratulations!
+This is your new Visualforce Email Template.
+</messaging:plainTextEmailBody>
+</messaging:emailTemplate>

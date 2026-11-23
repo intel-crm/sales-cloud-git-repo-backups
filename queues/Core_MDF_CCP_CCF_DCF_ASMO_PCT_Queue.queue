@@ -2,7 +2,7 @@
 <Queue xmlns="http://soap.sforce.com/2006/04/metadata">
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
-    <name>CCP CCF_DCF ASMO PCT Queue</name>
+    <name>CCP Client_Datacenter ASMO PCT Queue</name>
     <queueMembers>
         <publicGroups>
             <publicGroup>Core_MDF_CCP_CCF_DCF_ASMO_PCT_Grp</publicGroup>

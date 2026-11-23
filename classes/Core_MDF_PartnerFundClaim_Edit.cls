@@ -20,7 +20,7 @@
      *******************************************************************************************************/
     @AuraEnabled
     public static ClaimCountryDetailsWrapper fetchClaimById(String recordId){
-		 try{
+         try{
         Id recId = recordId;
         PartnerFundClaim claim;
         List<PartnerFundClaim> claimList = new List<PartnerFundClaim>();
@@ -30,12 +30,13 @@
                                 Core_MDF_Brand_nm__c,Core_MDF_Target_Audience__c,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Ad_Run_End_Date__c,Core_MDF_Intel_Manual_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,
                                 Core_MDF_Media_Vehicle__c,Core_MDF_Bank__c,Core_MDF_Bank__r.Name,Core_MDF_Bank__r.Core_MDF_Bank_Status__c,Core_MDF_Bank__r.Core_MDF_Bank_Alias_Name__c,Core_MDF_Invoice_Number__c,Core_MDF_Invoice_Date__c,
                                 Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Currency__c,toLabel(Core_MDF_Currency__c) Currency_Label,
-                                Core_MDF_OtherCostsnotReimbursable_Local__c,Core_MDF_Taxes_Local__c,Core_MDF_Claim_Comments__c,Core_MDF_Duplicate_Claim__c,Core_MDF_FlaggedForAudit__c,Core_MDF_NoOfImpressions_Nbr__c,Core_MDF_NoOfEngagements_Nbr__c,Core_MDF_No_of_Leads_nbr__c,Core_MDF_NoOfTrialActivations_Nbr__c,RecordType.DeveloperName,
+                                Core_MDF_OtherCostsnotReimbursable_Local__c,Core_MDF_Taxes_Local__c,Core_MDF_Claim_Comments__c,Core_MDF_Duplicate_Claim__c,Core_MDF_FlaggedForAudit__c,Core_MDF_NoOfImpressions_Nbr__c,Core_MDF_NoOfEngagements_Nbr__c,Core_MDF_NoOfTrialActivations_Nbr__c,RecordType.DeveloperName,Core_MDF_No_of_Leads_nbr__c,
                                 Core_MDF_VAT_Hold_Ind__c,Core_MDF_VAT_Eligibility_Ind__c,Core_MDF_Escalation_Id__c,Core_MDF_Escalation_Id__r.Name,Core_MDF_Type_Txt__c,Request.Core_MDF_Fund_Request_Status__c,RequestId, Request.Core_MDF_Country_nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Claim_Review_Case__c,Core_MDF_Program__c,
                                 Request.Campaign.Name,Request.Campaign.Description,Core_MDF_Activity_SubType_nm__c,toLabel(Core_MDF_Activity_SubType_nm__c) LocalizedActivitySubType,Request.Core_MDF_POP_Requirements_txt__c,Core_MDF_Claim_Submitter_Id__c,Core_MDF_Claim_Submitter_Id__r.name,Core_MDF_Claim_Submitter_Id__r.contact.Email,Core_MDF_Claim_Submitter_Id__r.Email,Core_MDF_Proposal_Based_Ind__c,
                                 Request.ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,Request.Core_MDF_Brand_nm__c,Request.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Id,Core_MDF_VAT_Opt_In__c,Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c,Core_MDF_Document_Hold_Ind__c, Core_MDF_Document_Hold_Eligibility_Ind__c, Core_MDF_PIC_Review_Completed__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Ultimate_Account_ID__c, Core_MDF_Log_Info_txt__c,
-                                Request.ChannelPartner.Core_MDF_Channel_Program__r.Name, Core_MDF_Legacy_Claim_Ind__c, Createddate, Core_MDF_Applicable_VAT_Percentage_nm__c, Core_MDF_Paid_By_Payment_Type_nm__c, Core_MDF_Campaign_Id__r.Core_MDF_Terminal_Rejection_Ind__c, Request.Core_MDF_NEX_Ind__c, Request.Core_MDF_Key_Marketing_Indicator_nm__c, Request.Core_MDF_Deployment_Quantity_nbr__c, Request.Core_MDF_Lead_Quantity_nbr__c, Request.Core_MDF_Other_Quantity_nbr__c, Core_MDF_OutcomeBased_Ind__c,Request.Core_MDF_Proposal_Based_Ind__c,
-				Core_MDF_CSP_Intel_Based_Revenue_amt__c, Core_MDF_Processing_Preference_nm__c, Request.Core_MDF_Is_Outcome_Based_Ind__c,Request.Core_MDF_Activity_Description__c,Request.Core_MDF_Parent_Activity_Id__c,Request.Core_MDF_Activity_Level_nm__c,Core_MDF_Claim_Id__c
+                                Request.ChannelPartner.Core_MDF_Channel_Program__r.Name, Core_MDF_Legacy_Claim_Ind__c, Createddate, Core_MDF_Applicable_VAT_Percentage_nm__c, Core_MDF_Paid_By_Payment_Type_nm__c, Core_MDF_Campaign_Id__r.Core_MDF_Terminal_Rejection_Ind__c, Request.Core_MDF_NEX_Ind__c, Request.Core_MDF_Key_Marketing_Indicator_nm__c, Request.Core_MDF_Deployment_Quantity_nbr__c, Request.Core_MDF_Lead_Quantity_nbr__c, Request.Core_MDF_Other_Quantity_nbr__c, 
+                                Request.Core_MDF_Domain_Type_nm__c, Core_MDF_Processing_Preference_nm__c,
+                     			Core_MDF_OutcomeBased_Ind__c,Request.Core_MDF_Proposal_Based_Ind__c,Request.Core_MDF_Is_Outcome_Based_Ind__c,Request.Core_MDF_Activity_Description__c,Request.Core_MDF_Parent_Activity_Id__c,Request.Core_MDF_Activity_Level_nm__c,Core_MDF_Claim_Id__c, Request.Core_MDF_Attribution_Requirements_txt__c, Core_MDF_Budget_Type_Options_Nm__c, Amount  //15268
                                 FROM PartnerFundClaim WHERE Id=:recId LIMIT 1];
         //added querying 2 fields by Vaishali for owner change//Request.ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,Request.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Id
         }
@@ -45,7 +46,7 @@
          else{
             claim = null;     
          }
-
+		System.debug('@@Claimlist:'+claimList[0]);
         return prepareWrapper(claim);
         }catch(Exception e)
         {Core_MDF_CCP_UtilityClass.logError(e);
@@ -103,15 +104,16 @@
         Id recId = recordId;
         PartnerFundClaim pfc = [SELECT Id,Title,Request.Title,Request.Core_MDF_Region_nm__c,Request.Core_MDF_Activity_Number__c,Core_MDF_AccountCompany__c,ChannelPartner.Id,ChannelPartner.name,Core_MDF_Reimbursement_Percent__c,Core_MDF_Activity_Category__c,
                                 Core_MDF_Activity_Types__c,Core_MDF_Activity_Start_Date__c,Core_MDF_Activity_End_Date__c,Request.Core_MDF_Budget_Type_nm__c,
-                                Core_MDF_Brand_nm__c,Core_MDF_Target_Audience__c,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Ad_Run_End_Date__c,Core_MDF_Proposal_Based_Ind__c,
+                                Core_MDF_Brand_nm__c,Core_MDF_Target_Audience__c,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Ad_Run_End_Date__c,Core_MDF_Proposal_Based_Ind__c,Core_MDF_No_of_Leads_nbr__c,
                                 Core_MDF_Media_Vehicle__c,Core_MDF_Bank__c,Core_MDF_Bank__r.Name,Core_MDF_Bank__r.Core_MDF_Bank_Status__c,Core_MDF_Bank__r.Core_MDF_Bank_Alias_Name__c,Core_MDF_Invoice_Number__c,Core_MDF_Invoice_Date__c,
                                 Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Currency__c,toLabel(Core_MDF_Currency__c) Currency_Label,
-                                Core_MDF_OtherCostsnotReimbursable_Local__c,Core_MDF_Taxes_Local__c,Core_MDF_Claim_Comments__c,Core_MDF_NoOfImpressions_Nbr__c,Core_MDF_NoOfEngagements_Nbr__c,Core_MDF_No_of_Leads_nbr__c,Core_MDF_NoOfTrialActivations_Nbr__c,RecordType.DeveloperName,
+                                Core_MDF_OtherCostsnotReimbursable_Local__c,Core_MDF_Taxes_Local__c,Core_MDF_Claim_Comments__c,Core_MDF_NoOfImpressions_Nbr__c,Core_MDF_NoOfEngagements_Nbr__c,Core_MDF_NoOfTrialActivations_Nbr__c,RecordType.DeveloperName,
                                 Core_MDF_Type_Txt__c,Core_MDF_Country_Location_nm__c,Request.Core_MDF_Country_nm__c,RequestId,Core_MDF_Program__c,Core_MDF_Claim_Submitter_Id__c,Core_MDF_Claim_Submitter_Id__r.name,
                                 Request.ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,Request.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Id,Core_MDF_Ultimate_Account_ID__c,
                                 Request.Campaign.Name,Request.Core_MDF_Brand_nm__c,Request.Campaign.Description,Core_MDF_Activity_SubType_nm__c,toLabel(Core_MDF_Activity_SubType_nm__c) LocalizedActivitySubType,Request.Core_MDF_POP_Requirements_txt__c,Core_MDF_VAT_Opt_In__c,Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c,Request.ChannelPartner.Core_MDF_Channel_Program__r.Name,
                                 Core_MDF_Paid_By_Payment_Type_nm__c, Request.ChannelPartner.Core_MDF_Payment_Type_nm__c, Request.ChannelPartner.Core_MDF_Payment_Type_NodeLevel_nm__c,Core_MDF_Campaign_Id__r.Core_MDF_Terminal_Rejection_Ind__c, Request.Core_MDF_Fund_Request_Status__c,
-				Request.Core_MDF_NEX_Ind__c, Request.Core_MDF_Key_Marketing_Indicator_nm__c, Request.Core_MDF_Deployment_Quantity_nbr__c, Request.Core_MDF_Lead_Quantity_nbr__c, Request.Core_MDF_Other_Quantity_nbr__c,Core_MDF_CSP_Intel_Based_Revenue_amt__c, Core_MDF_Processing_Preference_nm__c, Request.Core_MDF_Is_Outcome_Based_Ind__c,Core_MDF_OutcomeBased_Ind__c,Request.Core_MDF_Activity_Description__c,Request.Core_MDF_Parent_Activity_Id__c,Request.Core_MDF_Activity_Level_nm__c FROM PartnerFundClaim WHERE Id=:recId LIMIT 1];
+                                Request.Core_MDF_NEX_Ind__c, Request.Core_MDF_Key_Marketing_Indicator_nm__c, Request.Core_MDF_Deployment_Quantity_nbr__c, Request.Core_MDF_Lead_Quantity_nbr__c, Request.Core_MDF_Other_Quantity_nbr__c,
+                                Request.Core_MDF_Domain_Type_nm__c, Core_MDF_Processing_Preference_nm__c,Request.Core_MDF_Proposal_Based_Ind__c,Request.Core_MDF_Is_Outcome_Based_Ind__c,Core_MDF_OutcomeBased_Ind__c,Request.Core_MDF_Activity_Description__c,Request.Core_MDF_Parent_Activity_Id__c,Request.Core_MDF_Activity_Level_nm__c, Request.Core_MDF_Attribution_Requirements_txt__c, Core_MDF_Budget_Type_Options_Nm__c, Amount FROM PartnerFundClaim WHERE Id=:recId LIMIT 1];//15268
         //added querying 2 fields by Vaishali for owner change//Request.ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,Request.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Id  
         return prepareWrapper(pfc);
     }
@@ -130,7 +132,11 @@
         List<String> restrictedPFRStatusesToCreateClaim = Core_MDF_CCP_ConstantClass.NRE_RESTRICTED_PFR_STATUSES_TO_CREATE_CLAIM;
         Map<String, String> countryOptionsMap = new Map<String, string>();
        countryOptionsMap = Core_MDF_PartnerFundClaim.getPickListvalues('PartnerFundClaim','Core_MDF_Country_Location_nm__c');
-        if(pfc != NULL){
+        //ATHR - Deeply Nested if 16209
+        if(pfc == null){
+        	return claimCountryDetailsWrap;
+    	}
+        //if(pfc != NULL){
            for(PartnerFundRequest pfr : [SELECT Id,toLabel(Core_MDF_Country_nm__c) countryNameLocalized,Core_MDF_Country_nm__c,toLabel(Core_MDF_Activity_SubType_nm__c) LocalizedActivitySubType, Core_MDF_Activity_SubType_nm__c,toLabel(Core_MDF_Budget_Type_nm__c) LocalizedBudgetType, Core_MDF_Program__c, Core_MDF_Fund_Request_Status__c from PartnerFundRequest where Id =:pfc.RequestId limit 1]){
                if(pfr.Core_MDF_Program__c != 'Co-GTM') {
                    Map<String,String> countryNewMap = new Map<String,String>();
@@ -165,7 +171,7 @@
                    claimCountryDetailsWrap.hasRestrictedStatusToCreateClaim = true;
                }
             }
-        }
+        //}
         return claimCountryDetailsWrap;
         
     }
@@ -251,6 +257,7 @@ Description:        Identify whether it is an External User
             }
         } catch (Exception ex) {Core_MDF_CCP_UtilityClass.logError(ex);}
         return hasAccessToEditClaim;
+        
     }
     
     public class ClaimCountryDetailsWrapper {

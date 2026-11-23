@@ -63,9 +63,11 @@ public class Core_Log_Entry {
             /* Custom label to enable/disable tracking of specific Severities. */
             String strSeverityTracked = Label.Core_App_Logging_Tracked_Severities;
             strSeverity = !String.IsBlank(strSeverity) ? strSeverity : '';
+            system.debug('**** strSeverityTracked: ' + strSeverityTracked);
       
             String strScopeTracked = Label.Core_App_Logging_Tracked_Scopes;
             strScope = !String.IsBlank(strScope) ? strScope : '';
+            system.debug('**** strScopeTracked: ' + strScopeTracked);
 
             if(strScopeTracked == '0') return '';
             
@@ -74,7 +76,7 @@ public class Core_Log_Entry {
             if(strSeverityTracked.containsIgnoreCase(strSeverity) && (strScopeTracked.containsIgnoreCase(strScope))) {
                 blInsert = true;
             }
-
+      blInsert = true;
             /* Before inserting log entry, check governor limits */
             boolean blGovernorLimitHit = false;
 
@@ -90,11 +92,13 @@ public class Core_Log_Entry {
                                      'DML Stmts Remaining: ' + intDMLStmtsRemaining + ', ' +
                                      'DML Rows Buffer: ' + intDMLRowsBuffer + ', ' +
                                      'DML Rows Remaining: ' + intDMLRowsRemaining;
+                system.debug('**** strDMLStats: ' + strDMLStats);
                 
                 //Check the limits.  Subtracting 2 because the buffer amount is what should be left behind and allow
                 //for the limits error record.
                 if(((intDMLStmtsRemaining - 2)< intDMLStmtBuffer) || ((intDMLRowsRemaining - 2) < intDMLRowsBuffer)) {
                     blGovernorLimitHit = true;
+                    system.debug('**** blGovernorLimitHit: ' + blGovernorLimitHit);
 
                     // Replace log entry values with limits error
                     //strLogEntryName = 'App Logging Hit Limits';
@@ -133,13 +137,13 @@ public class Core_Log_Entry {
                 strSeverity = String.isNotBlank(strSeverity) ? strSeverity.Left(20) : '';
                 strMessage = String.isNotBlank(strMessage) ? strMessage.Left(255) : '';
                 strInvocationID = String.isNotBlank(strInvocationID) ? strInvocationID.Left(255) : '';
-                strDetailsAndEx = String.isNotBlank(strDetailsAndEx) ? strDetailsAndEx.Left(131072) : '';
+                strDetailsAndEx = String.isNotBlank(strDetailsAndEx) ? strDetailsAndEx.Left(32768) : '';
                 strObjectId = String.isNotBlank(strObjectId) ? strObjectId.Left(36) : '';
                 strObjectType = String.isNotBlank(strObjectType) ? strObjectType.Left(255) : '';
                 strTags = String.isNotBlank(strTags) ? strTags.Left(255) : '';
                 
                 Core_Log_Entry__c objCLE = new Core_Log_Entry__c(
-                	//Name = strLogEntryName, // From Service Cloud
+                  //Name = strLogEntryName, // From Service Cloud
                     Core_Origin__c = strOrigin,
                     Core_Project__c = strProject,
                     Core_Scope__c = strScope,
@@ -153,16 +157,19 @@ public class Core_Log_Entry {
                     Core_sObjectType__c = strObjectType,
                     Core_Tags__c = strTags
                 );
+                system.debug('***** Core_Log_Entry__c: ' + objCLE);
 
                 insert objCLE;
 
                 if(blGovernorLimitHit) {
                     blStopLogging = true;
+                    system.debug('***** blStopLogging: ' + blStopLogging);
                 }
 
                 return objCLE.Id;
             }            
         } catch(Exception e) {
+            System.debug('*** App Logging Failed ' + e.getMessage());
             //Do not rethrow and cause error to propagate.
         }
         return null;
@@ -205,24 +212,9 @@ public class Core_Log_Entry {
             //return core_Log_Entry('Log Limits', strScope, strOrigin, 'Info',  strMessage, strDetails, null);
             return core_Log_Entry(strOrigin, strProject, strScope, 'Info',  strMessage, strDetails, null, null, null);
         } catch (Exception e) {
+            System.debug('*** logEntryWithLimits failed ' + e.getMessage());
             //Do not rethrow and cause error to propagate.           
         }
         return null;
     }*/
-    /****************************************************************************************
-*  Discription: Creates log entry for failed records
-* Parameter: List of log entry records
-*******************************************************************************************/
-    
-    Public static void createLogEntries(List<Core_Log_Entry__c> listOfLogEntries){
-        Map<String, Core_LogEntry_Switch__c> logSwitch = Core_LogEntry_Switch__c.getall();
-        
-        // insert a log entry
-        if(!listOfLogEntries.isEmpty() && !logSwitch.isEmpty()){
-            if(logSwitch.get('Core_DDR_LogEntry_Check') != null && logSwitch.get('Core_DDR_LogEntry_Check').Is_Selected__c){
-                insert listOfLogEntries;
-            }
-        }
-        
-    }
 }

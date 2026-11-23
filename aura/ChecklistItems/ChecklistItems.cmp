@@ -1,0 +1,126 @@
+<aura:component>
+    <aura:attribute name="checklist" type="Core_MDF_Claim_Case_Checklist__c" access="public"/>
+    <aura:attribute name="checklisttype" type="String" default=""/>
+    <aura:attribute name="rowIndex" type="Integer" default="0"/>
+    <aura:attribute name="complaintIds" type="String[]" default="" access="global"/>
+    <aura:attribute name="nonComplaintIds" type="String[]" default="" access="global"/>
+    <aura:attribute name="naIds" type="String[]" default="" access="global"/>   
+    <aura:attribute name="Complaint" type="String" default="Complaint"/>
+    <aura:attribute name="NonComplaint" type="String" default="Non-Complaint"/>
+    <aura:attribute name="NA" type="String" default="NA"/>
+    <aura:attribute name="checklistMap" type="Map" default=""/>
+    <aura:attribute name="impactAmount" type="Map" default=""/>
+    <aura:attribute name="commentCopy" type="Map" default=""/>
+    <aura:attribute name="status" type="String" default=""/>
+    <aura:attribute name="underReview" type="String" default="Under Review"/>
+    
+    
+    <table class="slds-table slds-table--bordered">
+        <thead>
+            <tr class="slds-line-height_reset">
+                <th scope="col">
+                    <div>Checklist Items</div>
+                </th>
+                <th scope="col">
+                    <div>Complaint</div>
+                </th>
+                <th scope="col">
+                    <div>Non Complaint</div>
+                </th>
+                <th scope="col">
+                    <div>NA</div>
+                </th>
+                <th scope="col">
+                    <div>Impact Amount(USD)</div>
+                </th>
+                <th scope="col">
+                    <div>Comment Copy</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.checklist}" var="item" indexVar="index">
+                <aura:if isTrue="{!item.Core_MDF_Checklist_Category__c == v.checklisttype}">
+                    <tr>
+                        <td>
+                            <div class="slds-grow slds-cell-wrap">{#item.Core_MDF_Checklist_Line_Number__c}. {#item.Core_MDF_Checklist_Item__c}
+                            <lightning:helptext content="{!item.Core_MDF_Checklist_Description__c}"/>
+                        </div>
+                        </td>
+                        <td>
+                            <aura:if isTrue="{!v.status == v.underReview}">
+                                <aura:if isTrue="{!item.Core_MDF_Checklist_Status__c == v.Complaint}">
+                                    <lightning:input aura:id="complaint" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}" checked="true"/>
+                                <aura:set attribute="else">
+                                    <lightning:input aura:id="complaint" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}"/>
+                                </aura:set>
+                                </aura:if>   
+                            </aura:if>
+                            
+                            <aura:if isTrue="{!v.status != v.underReview}">
+                                <aura:if isTrue="{!item.Core_MDF_Checklist_Status__c == v.Complaint}">
+                                    <lightning:input aura:id="complaint" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}" checked="true" disabled="true"/>
+                                <aura:set attribute="else">
+                                    <lightning:input aura:id="complaint" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}" disabled="true"/>
+                                </aura:set>
+                                </aura:if>   
+                            </aura:if> 
+                        </td>
+                        <td>
+                            <aura:if isTrue="{!v.status == v.underReview}">
+                                <aura:if isTrue="{!item.Core_MDF_Checklist_Status__c == v.NonComplaint}">
+                                    <lightning:input aura:id="noncomplaint" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}" checked="true"/>
+                                <aura:set attribute="else">
+                                    <lightning:input aura:id="noncomplaint" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}"/>
+                                </aura:set>
+                                </aura:if>   
+                            </aura:if>
+                            <aura:if isTrue="{!v.status != v.underReview}">
+                                <aura:if isTrue="{!item.Core_MDF_Checklist_Status__c == v.NonComplaint}">
+                                    <lightning:input aura:id="noncomplaint" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}" checked="true" disabled="true"/>
+                                <aura:set attribute="else">
+                                    <lightning:input aura:id="noncomplaint" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}" disabled="true"/>
+                                </aura:set>
+                                </aura:if>   
+                            </aura:if>
+                        </td>
+                        <td>
+                            <aura:if isTrue="{!v.status == v.underReview}">
+                                <aura:if isTrue="{!item.Core_MDF_Checklist_Status__c == v.NA}">
+                                    <lightning:input aura:id="na" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}" checked="true"/>
+                                <aura:set attribute="else">
+                                    <lightning:input aura:id="na" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}"/>
+                                </aura:set>
+                                </aura:if>   
+                            </aura:if>
+                            <aura:if isTrue="{!v.status != v.underReview}">
+                                <aura:if isTrue="{!item.Core_MDF_Checklist_Status__c == v.NA}">
+                                    <lightning:input aura:id="na" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}" checked="true" disabled="true"/>
+                                <aura:set attribute="else">
+                                    <lightning:input aura:id="na" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}" disabled="true"/>
+                                </aura:set>
+                                </aura:if>   
+                            </aura:if>
+                        </td>
+                        <td>
+                            <aura:if isTrue="{!v.status == v.underReview}">
+                                <lightning:input aura:id="impactamount" name="{!item.Id}" type="number" formatter="currency" min="1" value="{!item.Core_MDF_Impact_Amount__c}" onchange="{!c.recordImpactAmount}"/>
+                            <aura:set attribute="else">
+                                <lightning:input aura:id="impactamount" name="{!item.Id}" type="number" formatter="currency" min="1" value="{!item.Core_MDF_Impact_Amount__c}" onchange="{!c.recordImpactAmount}" disabled="true"/>
+                            </aura:set>
+                            </aura:if>
+                        </td>
+                        <td>
+                            <aura:if isTrue="{!v.status == v.underReview}">
+                                <lightning:textarea  aura:id="commentcopy" name="{!item.Id}" type="string" value="{!item.Core_MDF_Comment__c}" onchange="{!c.recordComments}"/>
+                            <aura:set attribute="else">
+                                <lightning:textarea  aura:id="commentcopy" name="{!item.Id}" type="string" value="{!item.Core_MDF_Comment__c}" onchange="{!c.recordComments}" disabled="true"/>
+                            </aura:set>
+                            </aura:if>
+                        </td>
+                    </tr> 
+                </aura:if>    
+            </aura:iteration>
+        </tbody>
+    </table>
+</aura:component>

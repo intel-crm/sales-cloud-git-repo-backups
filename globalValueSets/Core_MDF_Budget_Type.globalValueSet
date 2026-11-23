@@ -101,22 +101,9 @@
         <label>Co-Engineering</label>
     </customValue>
     <customValue>
-        <fullName>CCG Market Accelerate</fullName>
+        <fullName>Co-Investment</fullName>
         <default>false</default>
-        <isActive>false</isActive>
-        <label>CCG Market Accelerate</label>
-    </customValue>
-    <customValue>
-        <fullName>Datacenter Market Accelerate</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Datacenter Market Accelerate</label>
-    </customValue>
-    <customValue>
-        <fullName>Scale Acceleration - MDF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Scale Acceleration - MDF</label>
+        <label>Co-Investment</label>
     </customValue>
     <customValue>
         <fullName>Data Center Specialties MDF</fullName>
@@ -125,28 +112,10 @@
         <label>Data Center Specialties MDF</label>
     </customValue>
     <customValue>
-        <fullName>IPA Account Based1</fullName>
+        <fullName>Scale Acceleration - MDF</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>IPA Account Based1</label>
-    </customValue>
-    <customValue>
-        <fullName>Scale Market Accelerate - MDF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Scale Market Accelerate - MDF</label>
-    </customValue>
-    <customValue>
-        <fullName>ODM Growth Plan- MDF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>ODM Growth Plan- MDF</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel MDF Account Based1</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Intel MDF Account Based1</label>
+        <label>Scale Acceleration - MDF</label>
     </customValue>
     <customValue>
         <fullName>Optane Specialties MDF</fullName>
@@ -245,22 +214,28 @@
         <label>VMWare Amplify - MDF</label>
     </customValue>
     <customValue>
-        <fullName>Acc 1</fullName>
+        <fullName>Intel MDF Account Based1</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Acc 1</label>
+        <label>Intel MDF Account Based1</label>
     </customValue>
     <customValue>
-        <fullName>Prop 1</fullName>
+        <fullName>ODM Growth Plan- MDF</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Prop 1</label>
+        <label>ODM Growth Plan- MDF</label>
     </customValue>
     <customValue>
-        <fullName>DCG MAF</fullName>
+        <fullName>Scale Market Accelerate - MDF</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>DCG MAF</label>
+        <label>Scale Market Accelerate - MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>IPA Account Based1</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>IPA Account Based1</label>
     </customValue>
     <description>Retail and IPA Budget Types</description>
     <masterLabel>Budget Type</masterLabel>

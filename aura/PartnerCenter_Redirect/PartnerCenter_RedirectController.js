@@ -1,7 +1,7 @@
 ({
 	doInit: function(cmp)  {
           try{	
-              
+               console.log('url from site---',window.location.href);
               	 var localizedUrlLabel = $A.get("$Label.c.Core_Localized_URL");
               	 var sameWindowLabel = $A.get("$Label.c.Core_Same_Window");
               	 var newWindowLabel = $A.get("$Label.c.Core_New_Window");
@@ -23,10 +23,10 @@
                             	window.open(''+localizedUrlLabel+'','_self');
                             	window.history.back();
                         }
-                            else{
-                               window.open(''+localizedUrlLabel+'');// opening in a new tab for community user
-                            	window.history.back(); 
-                            }
+                        else{
+                           window.open(''+localizedUrlLabel+'');// opening in a new tab for community user
+                        window.history.back(); 
+                        }
                     }
        
               	});    

@@ -1,0 +1,46 @@
+{
+  "appPageId" : "1f1f0c88-2082-47fd-848d-f4bfea5157f2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "98a7a734-d15f-4d6b-b484-aad56c8d754e",
+  "label" : "Scorecard List",
+  "regions" : [ {
+    "id" : "f809d2e7-4cbf-4391-a828-60e6543dc6ed",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "{!filterId}",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "{!objectName}",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "9b6041bd-dd80-4626-93b7-2c6f290a4fc6",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "272da7ae-67a1-42fa-8f40-eeef48ffd9f3",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "d26c3d97-4f54-4368-b27c-ba9f275853d2",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "list-a5U"
+}

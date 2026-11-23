@@ -177,7 +177,7 @@ public without sharing class Core_MDF_CCP_GenericUtility_Test {
             ChannelProgram rmfCP = Core_MDF_CCP_TestDataUtility.createProgram ('Retail Marketing Funds','Retail Marketing Funds', false);    
             cpList.add(rmfCP);
             insert cpList;
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
            /* String ccfProgramName = */  Core_MDF_CCP_GenericUtility.getProgramLabel('Client CoMarketing Fund');
            /* String dcfProgramName = */  Core_MDF_CCP_GenericUtility.getProgramLabel('Data Center CoMarketing Fund');
            /* String ccfbProgramName = */ Core_MDF_CCP_GenericUtility.getProgramLabel('Client CoMarketing Fund Boost');
@@ -203,7 +203,7 @@ public without sharing class Core_MDF_CCP_GenericUtility_Test {
             accList.add(acc2);
             accList.add(acc3);
             insert accList;
-           // Highlight: Unused Local Variable
+           // Highlight: Unused Local Variable - Indira
            /* string budgetType = */ Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount); 
 
             
@@ -456,7 +456,7 @@ public without sharing class Core_MDF_CCP_GenericUtility_Test {
                 Core_MDF_CCP_GenericUtility.createShareRecForInternalPGMgrps('Account', recordPGMShareList);
             }
         }catch(Exception e){}
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
        // List<user> users = [select Id,Contact.Core_Audience_List__c from user where Email = 'test1@example.com' limit 1];
         
         
@@ -478,7 +478,7 @@ public without sharing class Core_MDF_CCP_GenericUtility_Test {
         Core_MDF_CCP_GenericUtility.deletePFRShareForExternal(wrapperAct);
         Core_MDF_CCP_GenericUtility.deleteExternalShareForActivity(wrapperAct);
         Core_MDF_CCP_GenericUtility.getPickListvalues('PartnerFundRequest', 'Core_MDF_Brand_nm__c');
-        // Highlight: Unused Local Variable
+        // Highlight: Unused Local Variable - Indira
        // String fields = ' Id,PermissionSet.Name,PermissionSetGroup.DeveloperName,PermissionSet.Profile.Name,PermissionSet.Id ';
        // String whereClause = ' PermissionSet.Profile.Name =\'' + 'IT Admin' +'\' ';  
       

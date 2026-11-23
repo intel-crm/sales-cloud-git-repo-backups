@@ -5,6 +5,11 @@
         <visible>true</visible>
     </applicationVisibilities>
     <description>Provides access to the Trail Tracker app</description>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Bank_Legal_Entity_Code_cd__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Trail Tracker User</label>
 </PermissionSet>

@@ -9,6 +9,10 @@
         <value>Comarketing CMF Map</value>
     </caseValues>
     <fields>
+        <label><!-- AccountIdKey --></label>
+        <name>Core_MDF_AccountIdKey_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Account --></label>
         <name>Core_MDF_Account_Id__c</name>
         <relationshipLabel><!-- Comarketing CMF Map --></relationshipLabel>

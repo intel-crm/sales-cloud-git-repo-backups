@@ -26,13 +26,23 @@ created By: Namratha        Date: 8th April 2024
                                                             
                                                             try{
                                                                 objectDataWrapper recordData = new objectDataWrapper();
+                                                                // Highlight: Unused Local Variable - 14285
+                                                                // Map<String, String> resultMap = new Map<String, String>();
+                                                                // List<String> returnMap = new List<String>();
                                                                 List<SObject> lstRecords = new List<SObject>();
                                                                 String sanitizedStrFields = String.escapeSingleQuotes(strFields);
-                                                                 reqFields = '';
+                                                                reqFields = '';
+                                                                system.debug('@@@reqFields'+reqFields);
+                                                                system.debug('@@@relatedobjectApiName'+relatedobjectApiName);
+                                                                system.debug('@@@criteriaField'+criteriaField);
+                                                                system.debug('@@@criteriaFieldValue'+criteriaFieldValue);
+                                                                system.debug('@@@additionalCriteria'+additionalCriteria);
                                                                 List<String> inputFieldsList = sanitizedStrFields.split(',');
                                                                 String userType = UserInfo.getUserType();
                                                                 recordData.userType = userType;
-                                                                       Schema.DescribeSObjectResult objectDescribe = Schema.getGlobalDescribe().get(relatedobjectApiName).getDescribe();
+                                                                // Highlight: Unused Local Variable - 14285
+                                                                // String inputFields;
+                                                                Schema.DescribeSObjectResult objectDescribe = Schema.getGlobalDescribe().get(relatedobjectApiName).getDescribe();
                                                                 isCustomObject = objectDescribe.isCustom();
                                                                 Map<String, Schema.SObjectField> MapofField = objectDescribe.fields.getMap();
                                                                 recordData.objectLabel = objectDescribe.getLabel();

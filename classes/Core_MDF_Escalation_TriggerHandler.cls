@@ -8,7 +8,6 @@
 *****************************************************************************************************************************************/
 public class Core_MDF_Escalation_TriggerHandler extends TriggerHandler{
 
-    public static Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll(); 
     boolean initializeEsclations= isActive('Core_MDF_Set_Channel_Program');
     boolean shareEscalationFlag = isActive('Core_MDF_Share_Escalations');
     boolean esclationApprovalAction = isActive('Core_MDF_Escalation_Approval_Action'); 

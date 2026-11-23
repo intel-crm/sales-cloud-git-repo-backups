@@ -27,7 +27,7 @@
         <div class="slds-card__body compact-filter-body-tight">
             <div class="slds-grid slds-wrap slds-gutters">
                 <!-- Status Filter -->
-                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-5">
                     <lightning-combobox
                         name="statusFilter"
                         label={Status}
@@ -38,7 +38,7 @@
                     </lightning-combobox>
                 </div>
                 
-                <!-- Program Filter 
+                <!-- Program Filter -->
                 <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-5">
                     <lightning-combobox
                         name="programFilter"
@@ -49,8 +49,8 @@
                         onchange={handleProgramChange}>
                     </lightning-combobox>
                 </div>
-                -->
-                <!-- Budget Filter 
+
+                <!-- Budget Filter -->
                 <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-5">
                     <lightning-combobox
                         name="budgetFilter"
@@ -61,9 +61,9 @@
                         onchange={handleBudgetChange}>
                     </lightning-combobox>
                 </div>
-                -->
+
                 <!-- Account Lookup Filter -->
-<div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+<div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-5">
     <div class="slds-form-element">
         <label class="slds-form-element__label" for="account-lookup">{Account}</label>
         <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
@@ -124,7 +124,7 @@
 </div>
                 
                 <!-- Search Filter -->
-                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-5">
                     <div class="search-input-container">
                         <lightning-input
                             type="search"

@@ -2,6 +2,9 @@
     // Function Called On Change of the date fields on the Form to construct campaign lookup filter
     createAdditionalfilter : function(component, event, helper) {
         //Variable Reimbursement Rate changes
+        // Akash CCF DCF - Validate the selected start date
+        var startDate = event.getSource().get("v.value");
+        helper.validateStartDate(component, startDate);
         helper.resetHelper(component);
         var checkStartDate = component.get("v.newPFR.Core_MDF_Start_Date__c");
         var recordTypeDeveloperName = component.get("v.recordtypeDeveloperName");
@@ -34,6 +37,23 @@
        component.set("v.startDate", component.get("v.newPFR.Core_MDF_Start_Date__c"));
        
     } ,
+    // Akash CCF DCF - Navigate to the Outcome Based Campaigns page
+    openOutcomeBasedCampaign: function(component, event, helper) {
+        var navService = component.find("navService");
+        var communityUrl = component.get("v.externalper");
+        var pageReference = communityUrl ? {
+            type: 'comm__namedPage',
+            attributes: {
+                name: 'Outcomebased_Campaigns_list_view__c'
+            }
+        } : {
+            type: 'standard__navItemPage',
+            attributes: {
+                apiName: 'Core_MDF_Outcome_Based_Campaigns'
+            }
+        };
+        navService.navigate(pageReference);
+    },
     //Test code start
         
     //Function called for filtering country values
@@ -1368,6 +1388,20 @@
             component.set("v.newPFR.CampaignId",component.get("v.selectedLookUpRecord").Id); 
             component.set("v.newPFR.Core_MDF_Event_Name_nm__c",component.get("v.selActivityEventName"));
             component.set("v.newPFR.Core_MDF_Domain_Type_nm__c",component.get("v.SelDomainType"));
+            // ✅ ADD THIS BLOCK - Stamp Activity Classification for Innovation category
+    var actCategory = component.get("v.SelCategory");
+    var recTypeName = component.get("v.recordtypeDeveloperName");
+    var ccfRecType = $A.get("$Label.c.Core_MDF_PFR_CCF");
+    var dcfRecType = $A.get("$Label.c.Core_MDF_PFR_DCF");
+    var rmfRecType = $A.get("$Label.c.Core_MDF_PFR_Retail");
+
+    if ((recTypeName == ccfRecType || recTypeName == dcfRecType || recTypeName == rmfRecType) 
+        && actCategory == 'Innovation') {
+        component.set("v.newPFR.Core_MDF_Activity_Classification_nm__c", 'Co-Engineering');
+    } else {
+        component.set("v.newPFR.Core_MDF_Activity_Classification_nm__c", '');
+    }
+    // ✅ END OF ADDED BLOCK
             //if(helper.isNotBlank(component.get("v.activityOwner")) && !component.get("v.externalper") && !component.get("v.primaryaccper")){
 			      var selectedApprovers = component.get("v.selectedApproverOptions");
             if (helper.isNotBlank(selectedApprovers) && selectedApprovers.length > 0) {
@@ -1391,6 +1425,7 @@
                 component.set("v.SelOtherChannelPartner",'');
                 component.set("v.SelChannelPartner",'');
             }
+
             //POP and Attribution Requirments changes if activity type is not other.
             var activityType = component.get("v.SelActivityType");
             var otherActTypes = $A.get("$Label.c.Core_MDF_OtherActivityTypes");
@@ -2857,6 +2892,15 @@
         helper.resetHelper(component);
         helper.fetchActType(component);
         helper.fetchApprovers(component);
+        // ✅ ADD THIS BLOCK - Auto-fill backend field based on Category    
+        var selectedCategory = component.get("v.SelCategory");    
+        //var eventActivityCategories = $A.get("$Label.c.Core_MDF_Event_Activity_Category").split(';');    
+        if (selectedCategory === 'Innovation') {        // Auto-fill the backend field        
+        component.set("v.newPFR.Core_MDF_Activity_Classification_nm__c", 'Co-Engineering');
+        } 
+        else {        // Clear the backend field if category is changed to something else        
+        component.set("v.newPFR.Core_MDF_Activity_Classification_nm__c", '');    }    
+        // ✅ END OF ADDED BLOCK    //
         
         //if selected category is 'Digital 2025' then fectching values for Domain Type field
         if (!($A.util.isEmpty(component.get("v.SelCategory")))) {

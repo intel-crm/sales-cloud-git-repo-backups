@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
     <fieldOverrides>
+        <field>Core_MDF_Campaign_IPA_Path_Status__c</field>
+        <formula>If(ISPICKVAL( Campaign.Core_MDF_Program__c,&quot;Intel Partner Alliance&quot;),&quot;Cancelled&quot;,&quot;&quot;)</formula>
+    </fieldOverrides>
+    <fieldOverrides>
         <field>Status</field>
         <literalValue>Cancelled</literalValue>
     </fieldOverrides>

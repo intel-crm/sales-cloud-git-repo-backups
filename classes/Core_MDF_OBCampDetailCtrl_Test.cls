@@ -161,19 +161,19 @@ private class Core_MDF_OBCampDetailCtrl_Test {
         PartnerFundRequest requestRecord = getRequestRecord();
 
         System.assertEquals(false,
-            Core_MDF_OutcomeBasedCampDetailCntllr.checkUserRecordAccess(null, 'PartnerFundRequest').hasAccess
+            Core_MDF_OutcomeBasedCampDetailCntllr.checkUserRecordAccess(null, 'PartnerFundRequest').get('hasAccess')
         );
         System.assertEquals(false,
-            Core_MDF_OutcomeBasedCampDetailCntllr.checkUserRecordAccess(requestRecord.Id, null).hasAccess
+            Core_MDF_OutcomeBasedCampDetailCntllr.checkUserRecordAccess(requestRecord.Id, null).get('hasAccess')
         );
         System.assertEquals(false,
-            Core_MDF_OutcomeBasedCampDetailCntllr.checkUserRecordAccess(requestRecord.Id, 'Does_Not_Exist__c').hasAccess
+            Core_MDF_OutcomeBasedCampDetailCntllr.checkUserRecordAccess(requestRecord.Id, 'Does_Not_Exist__c').get('hasAccess')
         );
         System.assertEquals(true,
-            Core_MDF_OutcomeBasedCampDetailCntllr.checkUserRecordAccess(requestRecord.Id, 'PartnerFundRequest').hasAccess
+            Core_MDF_OutcomeBasedCampDetailCntllr.checkUserRecordAccess(requestRecord.Id, 'PartnerFundRequest').get('hasAccess')
         );
         System.assertEquals(false,
-            Core_MDF_OutcomeBasedCampDetailCntllr.checkUserRecordAccess('abc', 'PartnerFundRequest').hasAccess
+            Core_MDF_OutcomeBasedCampDetailCntllr.checkUserRecordAccess('abc', 'PartnerFundRequest').get('hasAccess')
         );
     }
 

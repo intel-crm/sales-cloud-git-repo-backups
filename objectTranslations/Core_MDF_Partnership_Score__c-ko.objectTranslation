@@ -5,9 +5,17 @@
         <value>파트너십 점수</value>
     </caseValues>
     <fields>
+        <label><!-- Account ID --></label>
+        <name>Core_MDF_AccountID_id__c</name>
+    </fields>
+    <fields>
         <label>계좌</label>
         <name>Core_MDF_Account_Id__c</name>
         <relationshipLabel><!-- Partnership Score --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_MDF_Account_nm__c</name>
     </fields>
     <fields>
         <label><!-- Aggregate Claim Score --></label>
@@ -24,8 +32,12 @@
     </fields>
     <fields>
         <help>총 회수 금액 - 회수된 금액</help>
-        <label>회수되지 않은 잔액</label>
+        <label>잔액</label>
         <name>Core_MDF_Balance_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Balance Amount --></label>
+        <name>Core_MDF_Balance_Amt_del__c</name>
     </fields>
     <fields>
         <label><!-- Carry Over Amount --></label>
@@ -36,7 +48,10 @@
         <name>Core_MDF_Carry_Over_Amt__c</name>
     </fields>
     <fields>
-        <help><!-- Channel Program Display only field --></help>
+        <label><!-- Carry Over from Previous Qtr --></label>
+        <name>Core_MDF_Carry_Over_from_Previous_Qtr__c</name>
+    </fields>
+    <fields>
         <label><!-- Channel Program Display --></label>
         <name>Core_MDF_Channel_Program_Display__c</name>
     </fields>
@@ -47,7 +62,7 @@
     </fields>
     <fields>
         <help><!-- Channel Program Display only field --></help>
-        <label>채널 프로그램</label>
+        <label><!-- Channel Program --></label>
         <name>Core_MDF_Channel_Program_txt__c</name>
     </fields>
     <fields>
@@ -60,9 +75,17 @@
         <name>Core_MDF_Final_Recovery_Amount_Amt__c</name>
     </fields>
     <fields>
+        <label><!-- Final Recovery Amount New --></label>
+        <name>Core_MDF_Final_Recovery_Amount_New__c</name>
+    </fields>
+    <fields>
         <help>해당 분기에 대한 총 회수 금액 + 이전 분기 이월 금액</help>
         <label>최종 회수 금액</label>
         <name>Core_MDF_Final_Recovery_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Identification Key --></label>
+        <name>Core_MDF_Identification_Key_Id__c</name>
     </fields>
     <fields>
         <label><!-- IsRecordShared --></label>
@@ -106,6 +129,10 @@
         <name>Core_MDF_Partnership_Score_Nbr__c</name>
     </fields>
     <fields>
+        <label><!-- Past PS --></label>
+        <name>Core_MDF_Past_PartershipScore__c</name>
+    </fields>
+    <fields>
         <label><!-- Petty Rule Applied? --></label>
         <name>Core_MDF_Petty_Rule_Applied_Ind__c</name>
     </fields>
@@ -124,6 +151,10 @@
     <fields>
         <label>회수 금액</label>
         <name>Core_MDF_Recovered_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recovered Amount Old --></label>
+        <name>Core_MDF_Recovered_Amt_del__c</name>
     </fields>
     <fields>
         <label><!-- Recovery Amount --></label>
@@ -230,6 +261,10 @@
         <name>Core_MDF_Zone_nm__c</name>
     </fields>
     <nameFieldLabel><!-- Partnership Score Name --></nameFieldLabel>
+    <recordTypes>
+        <label><!-- Partnership Score RecordType --></label>
+        <name>Partnership_Score_RecordType</name>
+    </recordTypes>
     <validationRules>
         <errorMessage><!-- Fields cannot be Updated (Account, program, Quarter Year) --></errorMessage>
         <name>Core_MDF_Non_Editable_Fields_on_Update</name>

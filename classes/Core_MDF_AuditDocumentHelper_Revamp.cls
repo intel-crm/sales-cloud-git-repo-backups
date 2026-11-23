@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @group             : 
+ * @last modified on  : 11-14-2025
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+**/
 public without sharing class Core_MDF_AuditDocumentHelper_Revamp {
 
     /*************************************************************************************************************
@@ -9,11 +16,14 @@ public without sharing class Core_MDF_AuditDocumentHelper_Revamp {
 	Modified By :        Date:       Changes: 
     **************************************************************************************************************/
     @AuraEnabled
-    public static auditDocumentDetailsWrapper getAuditDocumentDetailsWrapper(Id recordId, Boolean outComeBasedFlag){ 
+    public static auditDocumentDetailsWrapper getAuditDocumentDetailsWrapper(Id recordId, Boolean outComeBasedFlag){ //anushya TWC3117-14374, Id partnerFundReqId
+        system.debug('@@recordId='+recordId);
         auditDocumentDetailsWrapper auditDocWrapper = new auditDocumentDetailsWrapper();
         List<Core_MDF_Audit_Document__c> auditDocList = new List<Core_MDF_Audit_Document__c>();
         List<String> claimStatusesList = System.Label.Core_MDF_Claim_Statuses_for_enabling_disabling_Buttons.split(';');
+        system.debug('@@claimStatusesList='+claimStatusesList);
         List<String> claimSubmitterPSList = Label.Core_MDF_External_Claim_Submitter.split(';');
+        system.debug('@@claimSubmitterPSList='+claimSubmitterPSList);
         PartnerFundClaim pfc = new PartnerFundClaim();
         Case caseDetail = new case();
         String sObjectName;
@@ -26,7 +36,7 @@ public without sharing class Core_MDF_AuditDocumentHelper_Revamp {
         Boolean isClaimEdit = false;
         Boolean isBulkClaim = false;
         Boolean isThirdPartyClaim = false;
-        Boolean isOutcomeBased = false;
+        Boolean isOutcomeBased = false; //Aditya - TWC3117-16550
         List<String> docUploadBasedOnClaimStatus = new List<String>{'Draft', 'Resubmission Required'};//for NRE
         try {
                 // check the user details and enable component
@@ -38,10 +48,9 @@ public without sharing class Core_MDF_AuditDocumentHelper_Revamp {
                 }
                 //if(FeatureManagement.checkPermission(Label.Core_MDF_UploadDocs_Access)){
                 else{
-                    if(recordId == null) { //added && anushya TWC3117-14374
+                    if(recordId == null) { 
                         isClaimCreate = true;
                         enableDocumentUploadSection = true;
-                        //pfr = getPFRData(partnerFundReqId); //anushya TWC3117-14374
                         isOutcomeBased = outComeBasedFlag; //anushya TWC3117-14374
 
                     }
@@ -49,6 +58,7 @@ public without sharing class Core_MDF_AuditDocumentHelper_Revamp {
                     else{
                         //get object name
                         sObjectName = recordId.getSObjectType().getDescribe().getName();
+                        system.debug('@@sObjectName='+sObjectName);
                         if(sObjectName == Label.Core_MDF_PFCText) {
                             isClaimEdit = true;
                             //get claim data
@@ -56,9 +66,11 @@ public without sharing class Core_MDF_AuditDocumentHelper_Revamp {
                             //get Audit Documents -claim edit/claim detail page
                             if(pfc != null){
                                 claimStatus = pfc.Core_MDF_Status__c;
+                                system.debug('@@claimStatus=='+claimStatus);
                                 isThirdPartyClaim = pfc.Core_MDF_3rd_Party_POP_Doc_Required_Ind__c;
+                                system.debug('calling getAuditDocumentDetails');
                                 auditDocList = getAuditDocumentDetails(recordId);
-                                isOutcomeBased = pfc.Request.Core_MDF_Is_Outcome_Based_Ind__c; 
+                                isOutcomeBased = pfc.Request.Core_MDF_Is_Outcome_Based_Ind__c; //Aditya - TWC3117-16550
                             }
                         
                             //Enable upload button based on Claim Status and PIC Review Completion
@@ -113,6 +125,7 @@ public without sharing class Core_MDF_AuditDocumentHelper_Revamp {
                 auditDocWrapper.isThirdPartyClaim = isThirdPartyClaim;
                 auditDocWrapper.disableDocumentUploadSection = disableDocumentUploadSection;
                 auditDocWrapper.isOutComeBased = isOutcomeBased;
+            system.debug('@@disableDocumentUploadSection='+disableDocumentUploadSection);
         } catch (Exception e) {
             Core_MDF_CCP_UtilityClass.logError(e);
             throw new AuraHandledException(e.getMessage());
@@ -138,6 +151,22 @@ public without sharing class Core_MDF_AuditDocumentHelper_Revamp {
                                 FROM PartnerFundClaim WHERE Id =: claimId limit 1];
         return pfc;
     }
+
+    //anushya TWC3117-14374
+    /*************************************************************************************************************
+    Method Name : getPFRData
+    @return     : PartnerFundRequest Record
+    @parameters : PartnerFundRequestId
+    Description : This method is to return the partner fund request based on the request Id
+    @Added By   : Accenture - 19-03-2026
+	Modified By :        Date:       Changes: 
+    **************************************************************************************************************/
+    public static PartnerFundRequest getPFRData(Id reqId) {
+        PartnerFundRequest pfr = new PartnerFundRequest();
+        pfr = [SELECT Id, Core_MDF_Is_Outcome_Based_Ind__c FROM PartnerFundRequest WHERE Id =: reqId limit 1];
+        return pfr;
+    }
+    //anushya TWC3117-14374
 
     /*************************************************************************************************************
     Method Name : getAuditDocumentDetails
@@ -227,27 +256,29 @@ public without sharing class Core_MDF_AuditDocumentHelper_Revamp {
                                             Core_MDF_Manaul_Audit_Staging_Ind__c,Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c, 
                                             Core_MDF_Criteria_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c, 
                                             Core_MDF_VAT_Hold_Ind__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_Bank_Doc_Hold_Ind__c, Core_MDF_Eligible_for_PIC__c, Core_MDF_Budget_Type_Nm__c, Core_MDF_Budget_Type_Options_Nm__c, Core_MDF_Program__c, Core_MDF_OutcomeBased_Ind__c, Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,
-                                            Core_MDF_Ad_Run_Start_Date__c, Core_MDF_Ad_Run_End_Date__c, Core_MDF_Reimbursable_TransactionAmt_Loc__c, Core_MDF_Total_Invoice_Amount_Local__c, Core_MDF_Currency__c, Core_MDF_Activity_Types__c, CreatedDate,Request.Core_MDF_Is_Outcome_Based_Ind__c
+                                            Core_MDF_Ad_Run_Start_Date__c, Core_MDF_Ad_Run_End_Date__c, Core_MDF_Reimbursable_TransactionAmt_Loc__c, Core_MDF_Total_Invoice_Amount_Local__c, Core_MDF_Currency__c, Core_MDF_Activity_Types__c, CreatedDate,Request.Core_MDF_Is_Outcome_Based_Ind__c, Request.Core_MDF_Activity_Description__c, Request.Core_MDF_POP_Requirements_txt__c, Request.Core_MDF_Attribution_Requirements_txt__c, Amount
                                             FROM PartnerFundClaim 
-                                            WHERE Id =:recId];//query updated for AI PIC
+                                            WHERE Id =:recId];//query updated for AI PIC //Pic-Pop Changes Anushya
                 }//ATHR Fix- Deeply nested if                    
                     //Changing of status when documents are submitted                        
                 if(pfc!=null && switchClaimStatusToPICPending && (pfc.Core_MDF_Status__c == label.Core_MDF_Claim_Status_Resubmission_Required || pfc.Core_MDF_Status__c == label.Core_MDF_Claim_Status_Pending_Documents || pfc.Core_MDF_Status__c == Core_MDF_CCP_ConstantClass.PENDING_ACCOUNT_MANAGER_CLARIFICATION))//ATHR Fix- Deeply nested if
-                        {
+                    {
+                            //pfc.Core_MDF_Status__c =  label.Core_MDF_Claim_Status_PIC_Pending; //Pic-Pop Changes Anushya
                             pfc.Core_MDF_Status__c = pfc.Request.Core_MDF_Is_Outcome_Based_Ind__c == TRUE ? Label.Core_MDF_Claim_Status_Payment_Clearance_Processing : Label.Core_MDF_Claim_Status_PIC_Pending; //Pic-Pop Changes Anushya
+
                             pfc.Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c  = null;
                             pfc.Core_MDF_Legacy_Reminder_txt__c = '';
                             Database.update(pfc);  
-                        }
+                    }
                         
                         // For post payment Manual Audit
                 if(pfc!=null && switchClaimStatusToPICPending&& (pfc.Core_MDF_Status__c == label.Core_MDF_Claim_Status_Paid_and_Pending_Documents  || pfc.Core_MDF_Status__c == label.Core_MDF_Claim_Status_Paid_and_Resubmission_Required))//ATHR Fix- Deeply nested if
-                        {
-                            pfc.Core_MDF_Status__c =  label.Core_MDF_Claim_Status_Paid_and_PIC_Pending;
+                    {
+                            pfc.Core_MDF_Status__c =  label.Core_MDF_Claim_Status_Paid_and_PIC_Pending; 
                             pfc.Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c  = null;
                             pfc.Core_MDF_Legacy_Reminder_txt__c = ''; 
                             Database.update(pfc);   
-                }
+                    }
                 claimIdToClaimRecMap.put(pfc.Id, pfc);
             }
 
@@ -264,7 +295,8 @@ public without sharing class Core_MDF_AuditDocumentHelper_Revamp {
             try 
             {
                  if(!(Core_MDF_Claim_Utility.bypassCDBCalloutValidationCheck('Core_MDF_ProcessClaimsWithAIForPICReview','Core_MDF_Bypass_AI_CDB_CallForClaims'))) {
-
+                    List<String> aiPICEnabledPgms = Label.Core_MDF_AI_POP_Validation_EnabledPrograms.split(';');
+                    //if(pfc.CreatedDate > Date.valueOf(Label.Core_MDF_DateToEnableAIPIC) && !pfc.Core_MDF_OutcomeBased_Ind__c && aiPICEnabledPgms.contains(pfc.Core_MDF_Program__c) && (switchClaimStatusToPICPending || pfc.Core_MDF_Status__c == Label.Core_MDF_Claim_Status_PIC_Pending)) {//Add a bypass flag
                     if(Core_MDF_Claim_Utility.isClaimEligibleForAICDBCallout(pfc)) {
                         Core_MDF_AI_Integration_Outbound.generateAIResponseForPICProcess(claimIdToClaimRecMap, 'update');            
                     }
@@ -322,6 +354,7 @@ public without sharing class Core_MDF_AuditDocumentHelper_Revamp {
         List<ContentDocument> contentDocumentIdToDelete = new List<ContentDocument>();
         try{
             if (String.isNotBlank(docId)){
+                docId = '069Dz000002Pn3yIAC';
                 Id documentId = Id.valueOf(docId);
                 removeDocIdfromAITracking(documentId);
                 contentDocumentIdToDelete = [SELECT Id FROM ContentDocument WHERE Id =: docId];
@@ -363,10 +396,12 @@ public without sharing class Core_MDF_AuditDocumentHelper_Revamp {
             } else {
                 wrapper.isClaimAvailableForPIC = false;
             }
+
         } catch (Exception e) { Core_MDF_CCP_UtilityClass.logError(e); throw new AuraHandledException(e.getMessage()); }
 
         return wrapper;
     }
+
 
     /*************************************************************************************************************
     Method Name : isValidThirdPartyPOPClaim
@@ -450,6 +485,7 @@ public without sharing class Core_MDF_AuditDocumentHelper_Revamp {
             }
         }
     }
+
      /*************************************************************************************************************
     Method Name : getClaimAndUserDetails
     @return     : True/False
@@ -465,6 +501,7 @@ public without sharing class Core_MDF_AuditDocumentHelper_Revamp {
             wrapper.isValidClaimUser = FeatureManagement.checkPermission(Label.Core_MDF_SubmitForPICAccess);
             if(wrapper.isValidClaimUser) {
                 ClaimPICStatusWrapper picWrapper = checkClaimStatusForPICProcess(claimId);
+
                 wrapper.isClaimEligibleForPIC = picWrapper.isClaimAvailableForPIC;
                 wrapper.isOutComeBased = picWrapper.isOutcomeBased;
                 wrapper.AreDocsAvailable = fetchAuditDocuments(claimId);
@@ -531,7 +568,7 @@ public without sharing class Core_MDF_AuditDocumentHelper_Revamp {
         try {
             pfc = [select Id, Core_MDF_Status__c, Core_MDF_Budget_Type_Nm__c, Core_MDF_Budget_Type_Options_Nm__c, Core_MDF_Program__c, Core_MDF_OutcomeBased_Ind__c, Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,
                     Core_MDF_Ad_Run_Start_Date__c, Core_MDF_Ad_Run_End_Date__c, Core_MDF_Reimbursable_TransactionAmt_Loc__c, Core_MDF_Total_Invoice_Amount_Local__c, Core_MDF_Currency__c,
-                    Core_MDF_Activity_Types__c,createdDate, Request.Core_MDF_Is_Outcome_Based_Ind__c from PartnerFundClaim where Id =: claimId limit 1];//query updated for AI PIC
+                    Core_MDF_Activity_Types__c,createdDate, Request.Core_MDF_Is_Outcome_Based_Ind__c, request.Core_MDF_Activity_Description__c, request.Core_MDF_POP_Requirements_txt__c, request.Core_MDF_Attribution_Requirements_txt__c, Amount from PartnerFundClaim where Id =: claimId limit 1];//query updated for AI PIC
 
             if(pfc.Core_MDF_Status__c == Label.Core_MDF_Claim_Status_Resubmission_Required || pfc.Core_MDF_Status__c == Label.Core_MDF_Claim_Status_Pending_Documents || pfc.Core_MDF_Status__c == Core_MDF_CCP_ConstantClass.PENDING_ACCOUNT_MANAGER_CLARIFICATION) {
 
@@ -552,7 +589,8 @@ public without sharing class Core_MDF_AuditDocumentHelper_Revamp {
             {
                 if(!(Core_MDF_Claim_Utility.bypassCDBCalloutValidationCheck('Core_MDF_ProcessClaimsWithAIForPICReview','Core_MDF_Bypass_AI_CDB_CallForClaims'))) {
                     claimIdToClaimRecMap.put(claimId, pfc);
-                    
+                    List<String> aiPICEnabledPgms = Label.Core_MDF_AI_POP_Validation_EnabledPrograms.split(';');
+                    //if(pfc.CreatedDate > Date.valueOf(Label.Core_MDF_DateToEnableAIPIC) && !pfc.Core_MDF_OutcomeBased_Ind__c && aiPICEnabledPgms.contains(pfc.Core_MDF_Program__c) &&  pfc.Core_MDF_Status__c == Label.Core_MDF_Claim_Status_PIC_Pending) {//Add a bypass
                     if(Core_MDF_Claim_Utility.isClaimEligibleForAICDBCallout(pfc)) {
                         Core_MDF_AI_Integration_Outbound.generateAIResponseForPICProcess(claimIdToClaimRecMap, 'update');  
                     }
@@ -560,6 +598,7 @@ public without sharing class Core_MDF_AuditDocumentHelper_Revamp {
             } catch (Exception e) {
                 Core_MDF_CCP_UtilityClass.logError(e);
             }
+           
         } catch (Exception e) {Core_MDF_CCP_UtilityClass.logError(e);throw new AuraHandledException(e.getMessage());}
     
     }
@@ -582,7 +621,7 @@ public without sharing class Core_MDF_AuditDocumentHelper_Revamp {
                 }
                 if(!aiTrackList.isEmpty() && aiTrackList.size() > 0){
                     update aiTrackList;
-            }
+                }
         }
     }
 
@@ -616,9 +655,9 @@ public without sharing class Core_MDF_AuditDocumentHelper_Revamp {
         @AuraEnabled
         public Boolean isBulkClaim{get;set;}
         @AuraEnabled
-        public Boolean isThirdPartyClaim{get;set;}
+        public Boolean isThirdPartyClaim{get;set;}   
         @AuraEnabled
-        public Boolean isOutComeBased{get;set;} 
+        public Boolean isOutComeBased{get;set;}  //Aditya - TWC3117-16550
     }
 
     // audit document wrapper - claim detail page
@@ -634,7 +673,6 @@ public without sharing class Core_MDF_AuditDocumentHelper_Revamp {
         @AuraEnabled public string ruleId;
         @AuraEnabled public boolean isThirdPartyPOP; 
     }
-    //as part of WW05 ,Pop Document metadata clean up
     public class submitForPICWrapper{
         @AuraEnabled
         public Boolean isValidClaimUser;

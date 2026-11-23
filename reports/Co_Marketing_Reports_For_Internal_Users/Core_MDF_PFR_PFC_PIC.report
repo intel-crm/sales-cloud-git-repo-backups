@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <block>
+        <blockInfo>
+            <blockId>B0</blockId>
+            <joinTable>PartnerFundRequest</joinTable>
+        </blockInfo>
+        <columns>
+            <field>PartnerFundRequest$Name</field>
+        </columns>
+        <columns>
+            <field>PartnerFundRequest$Core_MDF_Program__c</field>
+        </columns>
+        <columns>
+            <field>PartnerFundRequest$Core_MDF_Budget_Type_nm__c</field>
+        </columns>
+        <columns>
+            <field>PartnerFundRequest$Core_MDF_Fund_Request_Status__c</field>
+        </columns>
+        <columns>
+            <field>PartnerFundRequest.PartnerFundClaims$Name</field>
+        </columns>
+        <columns>
+            <field>PartnerFundRequest.PartnerFundClaims$Core_MDF_Status__c</field>
+        </columns>
+        <columns>
+            <aggregateTypes>Sum</aggregateTypes>
+            <field>PartnerFundRequest.PartnerFundClaims$Core_MDF_Eligible_for_PIC__c</field>
+        </columns>
+        <columns>
+            <aggregateTypes>Sum</aggregateTypes>
+            <field>PartnerFundRequest.PartnerFundClaims$Core_MDF_Latest_Review_Cycle_Number_nbr__c</field>
+        </columns>
+        <filter>
+            <criteriaItems>
+                <column>PartnerFundRequest$Core_MDF_Fund_Request_Status__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value>In-Progress</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>PartnerFundRequest.PartnerFundClaims$Core_MDF_Status__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value>PIC Pending</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>PartnerFundRequest$Core_MDF_Program__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value>Client Co-Marketing Fund</value>
+            </criteriaItems>
+        </filter>
+        <format>Tabular</format>
+        <name>Co-Marketing Activities with cla block 1</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>Co_Marketing_Activities_with_claim__c</reportType>
+        <scope>organization</scope>
+        <showGrandTotal>true</showGrandTotal>
+        <showSubTotals>true</showSubTotals>
+        <timeFrameFilter>
+            <dateColumn>PartnerFundRequest$Core_MDF_Start_Date__c</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <blockInfo>
+        <blockId xsi:nil="true"/>
+        <joinTable>PartnerFundRequest</joinTable>
+    </blockInfo>
+    <format>MultiBlock</format>
+    <name>Core_MDF_PFR_PFC_PIC</name>
+    <params>
+        <name>lsk</name>
+        <value>1</value>
+    </params>
+    <reportType>Co_Marketing_Activities_with_claim__c</reportType>
+    <showDetails>true</showDetails>
+</Report>

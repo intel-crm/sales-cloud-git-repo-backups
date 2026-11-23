@@ -1,0 +1,21 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    <!-- 
+    /**
+    * Webkul Software.
+    *
+    * @category  Webkul
+    * @author    Webkul
+    * @copyright Copyright (c) 2010-2016 Webkul Software Private Limited (https://webkul.com)
+    * @license   https://store.webkul.com/license.html
+    */
+    -->
+    <ltng:require scripts="{!$Resource.loadAvaamoJSfile}"></ltng:require>
+    <aura:attribute name="externalList" type="Array" ></aura:attribute>
+    <div>
+        <p> Click on button...</p>
+        <lightning:button label="Load Bot"
+                          variant="brand"
+                          onclick="{!c.loadbot}">
+        </lightning:button>        
+    </div>
+</aura:component>

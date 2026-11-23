@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Notify Internal user for closed activity for batch process</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_Close_Activity_Auto</name>
+    <style>none</style>
+    <subject>Notification : Number of Activities Closed  - ##Closed</subject>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -2,51 +2,6 @@
 <StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <sorted>true</sorted>
     <standardValue>
-        <fullName>Accepted</fullName>
-        <default>false</default>
-        <label>Accepted</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Attended</fullName>
-        <default>false</default>
-        <label>Attended</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Attended On Demand</fullName>
-        <default>false</default>
-        <label>Attended On Demand</label>
-    </standardValue>
-    <standardValue>
-        <fullName>checkedin</fullName>
-        <default>false</default>
-        <label>checkedin</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Clicked</fullName>
-        <default>false</default>
-        <label>Clicked</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Clicked Email</fullName>
-        <default>false</default>
-        <label>Clicked Email</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Declined</fullName>
-        <default>false</default>
-        <label>Declined</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Demo Attended</fullName>
-        <default>false</default>
-        <label>Demo Attended</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Demo Requested</fullName>
-        <default>false</default>
-        <label>Demo Requested</label>
-    </standardValue>
-    <standardValue>
         <fullName>Downloaded Content</fullName>
         <default>false</default>
         <label>Downloaded Content</label>
@@ -62,26 +17,6 @@
         <label>Envoyé</label>
     </standardValue>
     <standardValue>
-        <fullName>Events Attended</fullName>
-        <default>false</default>
-        <label>Events Attended</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Events Registered</fullName>
-        <default>false</default>
-        <label>Events Registered</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Executive Event Attended</fullName>
-        <default>false</default>
-        <label>Executive Event Attended</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Form Submitted</fullName>
-        <default>false</default>
-        <label>Form Submitted</label>
-    </standardValue>
-    <standardValue>
         <fullName>Geantwortet</fullName>
         <default>false</default>
         <label>Geantwortet</label>
@@ -92,39 +27,19 @@
         <label>Gesendet</label>
     </standardValue>
     <standardValue>
-        <fullName>Invited</fullName>
+        <fullName>In Person Class</fullName>
         <default>false</default>
-        <label>Invited</label>
+        <label>In Person Class</label>
     </standardValue>
     <standardValue>
-        <fullName>Meeting Booked</fullName>
+        <fullName>Inviato</fullName>
         <default>false</default>
-        <label>Meeting Booked</label>
+        <label>Inviato</label>
     </standardValue>
     <standardValue>
-        <fullName>Member</fullName>
+        <fullName>Online Course</fullName>
         <default>false</default>
-        <label>Member</label>
-    </standardValue>
-    <standardValue>
-        <fullName>No Show</fullName>
-        <default>false</default>
-        <label>No Show</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Page Viewed</fullName>
-        <default>false</default>
-        <label>Page Viewed</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Pending</fullName>
-        <default>false</default>
-        <label>Pending</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Registered</fullName>
-        <default>false</default>
-        <label>Registered</label>
+        <label>Online Course</label>
     </standardValue>
     <standardValue>
         <fullName>Répondu</fullName>
@@ -147,64 +62,24 @@
         <label>Respondido</label>
     </standardValue>
     <standardValue>
+        <fullName>Risposta</fullName>
+        <default>false</default>
+        <label>Risposta</label>
+    </standardValue>
+    <standardValue>
         <fullName>Sent</fullName>
         <default>false</default>
         <label>Sent</label>
     </standardValue>
     <standardValue>
-        <fullName>Visited Booth</fullName>
+        <fullName>Test</fullName>
         <default>false</default>
-        <label>Visited Booth</label>
+        <label>Test</label>
     </standardValue>
     <standardValue>
-        <fullName>Webinar Attended</fullName>
+        <fullName>Test 2</fullName>
         <default>false</default>
-        <label>Webinar Attended</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Webinar On Demand Viewed</fullName>
-        <default>false</default>
-        <label>Webinar On Demand Viewed</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Webinar Registered</fullName>
-        <default>false</default>
-        <label>Webinar Registered</label>
-    </standardValue>
-    <standardValue>
-        <fullName>WeChat Chat Menu</fullName>
-        <default>false</default>
-        <label>WeChat Chat Menu</label>
-    </standardValue>
-    <standardValue>
-        <fullName>WeChat Forward</fullName>
-        <default>false</default>
-        <label>WeChat Forward</label>
-    </standardValue>
-    <standardValue>
-        <fullName>WeChat Link Clicked</fullName>
-        <default>false</default>
-        <label>WeChat Link Clicked</label>
-    </standardValue>
-    <standardValue>
-        <fullName>WeChat Page Viewed</fullName>
-        <default>false</default>
-        <label>WeChat Page Viewed</label>
-    </standardValue>
-    <standardValue>
-        <fullName>WeChat Scan Code</fullName>
-        <default>false</default>
-        <label>WeChat Scan Code</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Отправлено</fullName>
-        <default>false</default>
-        <label>Отправлено</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Получен ответ</fullName>
-        <default>false</default>
-        <label>Получен ответ</label>
+        <label>Test 2</label>
     </standardValue>
     <standardValue>
         <fullName>レスポンスあり</fullName>

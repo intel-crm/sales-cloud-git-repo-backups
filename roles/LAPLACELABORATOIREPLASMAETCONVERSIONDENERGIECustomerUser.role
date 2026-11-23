@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>LAPLACE-LABORATOIRE PLASMA ET CONVERSION D&apos;ENERGIE Customer User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>LAPLACE-LABORATOIRE PLASMA ET CONVERSION D&apos;ENERGIE Customer User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>LAPLACELABORATOIREPLASMAETCONVERSIONDENERGIECustomerManager</parentRole>
+</Role>

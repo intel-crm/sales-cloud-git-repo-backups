@@ -76,7 +76,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Client,Datacenter,Client Co-Marketing Fund Boost,Service Provider Co-Marketing Fund</value>
+            <value>Client Co-Marketing Fund,Data Center Co-Marketing Fund,Client Co-Marketing Fund Boost,Service Provider Co-Marketing Fund</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -98,4 +98,8 @@
     <showSubTotals>false</showSubTotals>
     <sortColumn>Case.Partner_Fund_Claims__r$Core_MDF_Status__c</sortColumn>
     <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Case.Partner_Fund_Claims__r$Core_MDF_StartTime_dtm__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
 </Report>

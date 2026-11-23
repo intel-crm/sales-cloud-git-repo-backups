@@ -60,8 +60,15 @@ global void execute(Database.BatchableContext bc, List<PartnerFundClaim> claimOb
     global void finish(Database.BatchableContext context) {
         try {
             if(iupgmUserIdSet != null && iupgmUserIdSet.size() > 0){
-                // calling batch to send email and log entries      
-                Core_MDF_Email_NotificationLoggingBatch emailNotifyLogBatch = new Core_MDF_Email_NotificationLoggingBatch(iupgmUserIdSet,null,Core_MDF_CCP_ConstantClass.Outcome_Claim_Rejection_Notification,null);
+            // Create BatchParams wrapper with the required parameters
+            Core_MDF_Email_NotificationLoggingBatch.BatchParams params = new Core_MDF_Email_NotificationLoggingBatch.BatchParams();
+            params.intUserIdList = iupgmUserIdSet;
+            params.extUserIdList = null;  // or new Set<Id>() if you prefer
+            params.templateName = Core_MDF_CCP_ConstantClass.Outcome_Claim_Rejection_Notification;
+            params.objName = null;  // Set this to appropriate object name if needed
+            
+            // calling batch to send email and log entries      
+            Core_MDF_Email_NotificationLoggingBatch emailNotifyLogBatch = new Core_MDF_Email_NotificationLoggingBatch(params);
                 //  custom metadata with batch size value 
                 Integer batchSize = Core_MDF_CustomLabelConfig.getIntegerValues('Core_MDF_CP_NotifyLogBatchSize');
                 Id batchInstanceId = Database.executeBatch(emailNotifyLogBatch,batchSize); 

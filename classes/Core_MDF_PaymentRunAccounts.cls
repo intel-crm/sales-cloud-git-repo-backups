@@ -26,7 +26,14 @@ Modified By:        Date:       Changes:
         listOfIUPGMRoleValues = getIUPGMRolePickListValues();
         // Method to check If logged In User has IUPGM Required role
         loggedInUserHasIUPGMReqdRole = checkLoggedInUserhasReqdRole(listOfIUPGMRoleValues);
-        if(loggedInUserHasIUPGMReqdRole){
+        //ATHR - Deeply Nested if 16209
+        if(!loggedInUserHasIUPGMReqdRole){
+            iupgmWrap.allAccountsAccess = iupgmAllAccountsFlag;
+            iupgmWrap.selectedAccIdsInIUPGM = allMappedAccountIds;
+            iupgmWrap.selectedAccNamesInIUPGM = allMappedAccountNames;
+            return iupgmWrap;
+        }
+        //f(loggedInUserHasIUPGMReqdRole){
             //List<String> channelProgramsList = new List<String>();
             // Querying All Accounts that are mapped with the logged In User through IUPGM
             iupgmList = [SELECT Core_MDF_Account_id__c,Core_MDF_Program_nm__c,Core_MDF_All_Accounts_cd__c,Core_MDF_Account_id__r.Name, Core_MDF_Account_id__r.Core_MDF_CoMarketingActive__c,Core_MDF_Account_id__r.RecordType.DeveloperName, Core_MDF_Account_id__r.Core_MDF_CoMarketing_Ultimate_Account__c,Core_MDF_User_id__c FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c WHERE Core_MDF_User_id__c =: Userinfo.getUserId() AND Core_MDF_User_id__r.IsActive = true AND Core_MDF_Active_Ind__c = true];
@@ -35,18 +42,19 @@ Modified By:        Date:       Changes:
                 // Adding Ultimate Accounts in a Set
                 for(Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm : iupgmList){
                     // If All Accounts field on iupgm is set to Yes then set the boolean to true and Add the Programs into List
-                    if(iupgm.Core_MDF_All_Accounts_cd__c != Label.Core_MDF_NonTranslateYes){ 
-                        if(iupgm.Core_MDF_Account_id__c != NULL && iupgm.Core_MDF_Account_id__r.RecordType.DeveloperName != 'Core_MDF_Co_Marketing'){
+                    //ATHR - Deeply Nested if 16209
+                    if(iupgm.Core_MDF_All_Accounts_cd__c != Label.Core_MDF_NonTranslateYes && iupgm.Core_MDF_Account_id__c != NULL && iupgm.Core_MDF_Account_id__r.RecordType.DeveloperName != 'Core_MDF_Co_Marketing'){ 
+                        //if(iupgm.Core_MDF_Account_id__c != NULL && iupgm.Core_MDF_Account_id__r.RecordType.DeveloperName != 'Core_MDF_Co_Marketing'){
                             allMappedAccountIds.add(iupgm.Core_MDF_Account_id__c);
                             allMappedAccountNames.add(iupgm.Core_MDF_Account_id__r.Name);
-                        }
+                        //}
                     }
                     else{
                         iupgmAllAccountsFlag = true;
                     }
                 }
             } 
-        }        
+        //}        
         iupgmWrap.allAccountsAccess = iupgmAllAccountsFlag;
         iupgmWrap.selectedAccIdsInIUPGM = allMappedAccountIds;
         iupgmWrap.selectedAccNamesInIUPGM = allMappedAccountNames;
@@ -73,7 +81,7 @@ Method Name:        checkLoggedInUserhasReqdRole
 Description:        Method to Check If Logged In User has IUPGM Required Role
 @Added By:          Accenture - NK - 26-09-2021
 Modified By:        Date:       Changes: 
-******************************************************************************************************/    
+******************************************************************************************************/
     public static Boolean checkLoggedInUserhasReqdRole(List<String> iupgmRoleValues){
         Boolean loggedInUserHasIUPGMReqdRole = false;
         List<PermissionSetAssignment> iupgmPermissionSetsAssigned = new List<PermissionSetAssignment>();
@@ -116,7 +124,8 @@ Modified By:        Date:       Changes:
          List<Core_MDF_Partner_Group_Mapping__c> pgms =new List<Core_MDF_Partner_Group_Mapping__c>();
         if(!AccIds.isEmpty())
         {
-         pgms = [Select Id,Core_MDF_Account__c,Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c from Core_MDF_Partner_Group_Mapping__c where Core_MDF_Account__c IN :AccIds AND Core_MDF_Inactive_Ind__c = false AND Core_MDF_Type_of_Access__c='External'AND Core_MDF_Account__r.Core_MDF_CoMarketingActive__c=true ]; 
+         //pgms = [Select Id,Core_MDF_Account__c,Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c from Core_MDF_Partner_Group_Mapping__c where Core_MDF_Account__c IN :AccIds AND Core_MDF_Inactive_Ind__c = false AND Core_MDF_Type_of_Access__c='External'AND Core_MDF_CoMarketingActive_Ind__c=true ]; 
+         pgms = Core_MDF_PGM_Utility.fetchExternalPGMRecords(null,AccIds,null,null,null,true);
         }
         If(pgms != Null && pgms.size()>0)
         {

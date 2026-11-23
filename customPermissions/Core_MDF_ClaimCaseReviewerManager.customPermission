@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>custom permission for claim case reviewer manager</description>
+    <description>To identify if user is Claim Case reviewer or Manager</description>
     <isLicensed>false</isLicensed>
     <label>ClaimCaseReviewerManager</label>
 </CustomPermission>

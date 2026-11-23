@@ -272,12 +272,6 @@
             </tr><br></br>
             
             </table></center>
-        
-        <!--Test-	<center><lightning:button class="slds-button slds-button_brand" type="submit" label="Manage Criteria Rule" onclick="{!c.callComponent}" /></center>-->
-        
- 	
-        
-        
         <center>
             <lightning:button class="slds-button slds-button_brand" type="submit" label="Cancel" onclick="{!c.cancel}" />
             <lightning:button class="slds-button slds-button_brand" type="submit" label="Save" onclick="{!c.create}" />

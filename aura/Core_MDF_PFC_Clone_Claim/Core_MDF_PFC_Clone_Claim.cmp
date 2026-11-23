@@ -10,26 +10,30 @@
     <aura:attribute name="accessErrorMsg" type="String" default=""/>
     <aura:attribute name="recordId" type="String" default=""/>
 
+    <!-- RP - cancel button for clone access error from custom compact layout -->
     <aura:attribute name="isCustomComp" type="boolean" default="false" description="Indicates whether this component is rendered from standard quick action or from custom compact layout"/>
     <aura:registerEvent name="closeModalEvent" type="c:Core_MDF_closeModalEvent"/>
      
    
 <!-- Component Starting If User Has Read & Edit Access -->
     <aura:if isTrue ="{!v.hasCloneAccess}" >
-         <div><c:Core_MDF_PFC_EditSwitch  isClone ="{!v.isCloneClaim}" recordId ="{!v.recordId}"/></div> 
-        <aura:set attribute="else">            
+         <div><c:Core_MDF_PFC_EditSwitch  isClone ="{!v.isCloneClaim}" recordId ="{!v.recordId}"/></div>
+        <aura:set attribute="else">
                 <div class = "slds-align_absolute-center">
                     <lightning:card title="" class="{!if(v.accessErrorMsg != '' ,'slds-show slds-text-heading_small','slds-hide')}">
                         {!v.accessErrorMsg}
                     </lightning:card>
                 </div>
+ 
+                <!-- RP - cancel button for clone access error from custom compact layout -->
                 <aura:if isTrue="{!v.isCustomComp}">
                     <footer class="slds-modal__footer slds-p-top_x-large">
                         <lightning:button variant="brand" label="{!$Label.c.Core_MDF_Cancel_Button}" title="{!$Label.c.Core_MDF_Cancel_Button}" onclick="{!c.closeQuickAction}" class="slds-m-left_x-small"/>
                     </footer>
                 </aura:if>
+                
         </aura:set>
-    </aura:if>  
+    </aura:if>
    
 
 </aura:component>

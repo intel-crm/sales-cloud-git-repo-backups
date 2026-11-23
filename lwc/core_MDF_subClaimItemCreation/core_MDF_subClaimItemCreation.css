@@ -1,10 +1,10 @@
 .table-wrapper {
     overflow-x: auto;
-    width: 100%; 
+    width: 100%; /* Ensures table fits within parent container */
 }
 table {
-    width: 100%;  
-    max-width: 100%;  
+    width: 100%;  /* Ensure it takes up the available width */
+    max-width: 100%;  /* Prevents table from exceeding container */
     table-layout: fixed;
     overflow-x: auto;
 }
@@ -13,7 +13,7 @@ table {
     min-height: 2rem;
 }
 .col-account-node {
-  width: 40%;
+  width: 40%; /* adjust as needed */
   max-width: 40%;
 }
 .cell-account-node {
@@ -21,7 +21,7 @@ table {
   max-width: 40%;
 }
 .truncate {
-  display: block;
+  display: block; /* ensure it honors parent width */
   width: 100%;
   max-width: 100%;
   white-space: nowrap;

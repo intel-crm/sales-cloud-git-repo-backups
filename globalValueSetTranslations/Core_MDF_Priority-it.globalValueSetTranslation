@@ -14,7 +14,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>5G/RAN</masterLabel>
-        <translation><!-- 5G/RAN --></translation>
+        <translation>5G/RAN</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>AI &amp; Machine Learning</masterLabel>
@@ -107,6 +107,10 @@
     <valueTranslation>
         <masterLabel>Commercial - SMB</masterLabel>
         <translation>Commerciale - PMI</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Commercial Client</masterLabel>
+        <translation><!-- Commercial Client --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Commercial Evo (non-vPro)</masterLabel>
@@ -206,7 +210,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Edge Computing</masterLabel>
-        <translation><!-- Edge Computing --></translation>
+        <translation>Edge computing </translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Edge Infrastructure Platforms/MEC</masterLabel>
@@ -226,7 +230,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Enterprise IT</masterLabel>
-        <translation>IT enterprise</translation>
+        <translation><!-- Enterprise IT --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Extend Platform Leadership</masterLabel>
@@ -258,11 +262,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>HPC </masterLabel>
-        <translation><!-- HPC  --></translation>
+        <translation>HPC </translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>High Performance Computing</masterLabel>
-        <translation><!-- High Performance Computing --></translation>
+        <translation>High Performance Computing</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>IOT Digital Transformation</masterLabel>
@@ -303,6 +307,10 @@
     <valueTranslation>
         <masterLabel>Machine Learning</masterLabel>
         <translation><!-- Machine Learning --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mainstream Client</masterLabel>
+        <translation><!-- Mainstream Client --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mainstream PCs</masterLabel>
@@ -379,6 +387,14 @@
     <valueTranslation>
         <masterLabel>Other</masterLabel>
         <translation>Altro</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Physical AI</masterLabel>
+        <translation><!-- Physical AI --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Premium Client</masterLabel>
+        <translation><!-- Premium Client --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Private Wireless Networks</masterLabel>

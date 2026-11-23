@@ -12,6 +12,7 @@ public without sharing class Core_MDF_Tactics_Matric_Controller {
             tacticMap = getTacticMappingsByActivityId(activityId, picklistValueToLocalizedLabelMap); // This Method call in case of Create and Clone
         }
 
+        system.debug('ListOfKpisValue::' + tacticMap.values());
         return tacticMap.values();
     }
 	// This Method Call in case of Edit and when showing on detail page
@@ -31,6 +32,7 @@ public without sharing class Core_MDF_Tactics_Matric_Controller {
                 : mapping.Core_MDF_Tactics_nm__c;
 
             TacticKpiWrapper wrapper;
+            system.debug('program@@@' + mapping.Core_MDF_Claim_Id__r.Core_MDF_Program__c);
             if (tacticMap.containsKey(tacticName)) {
                 wrapper = tacticMap.get(tacticName);
             } else {

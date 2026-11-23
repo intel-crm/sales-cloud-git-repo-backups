@@ -60,6 +60,11 @@
         <field>Core_MDF_Claim_Case_Checklist__c.Core_MDF_Impact_Amount__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Bank_Legal_Entity_Code_cd__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>CCP Review Investigator</label>
     <license>Salesforce</license>

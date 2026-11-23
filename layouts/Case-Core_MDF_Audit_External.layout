@@ -37,8 +37,8 @@
                 <field>Core_MDF_Channel_Program_txt__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_IPS_Case_Owner__c</field>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Earlier_Quarter_Closed_Dt__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

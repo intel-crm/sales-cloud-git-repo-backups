@@ -45,6 +45,10 @@
         <translation>Запланировано</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>Rejected</masterLabel>
+        <translation><!-- Rejected --></translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>Revision Required</masterLabel>
         <translation>Требуется пересмотр</translation>
     </valueTranslation>

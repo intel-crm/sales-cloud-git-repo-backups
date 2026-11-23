@@ -49,8 +49,10 @@ Accenture SS         19-06-2019          Exception Trigger Service Handler metho
                    }else if(excpOnUpdate.Core_MDF_Select_All_Accounts_ind__c == true &&
                    (excpOnUpdate.Core_MDF_Budget_Type_nm__c != excpOldMap.get(excpOnUpdate.id).Core_MDF_Budget_Type_nm__c
                    || excpOnUpdate.Core_MDF_Select_All_Accounts_ind__c != excpOldMap.get(excpOnUpdate.id).Core_MDF_Select_All_Accounts_ind__c
-                   || excpOnUpdate.Core_MDF_Country_Region_nm__c != excpOldMap.get(excpOnUpdate.id).Core_MDF_Country_Region_nm__c || excpOnUpdate.OwnerId != excpOldMap.get(excpOnUpdate.id).OwnerId 
-                   || excpOnUpdate.Core_MDF_Select_All_Country_ind__c != excpOldMap.get(excpOnUpdate.id).Core_MDF_Select_All_Country_ind__c)){excpAllAccNewMap.put(excpOnUpdate.id,excpOnUpdate);
+                   || excpOnUpdate.Core_MDF_Country_Region_nm__c != excpOldMap.get(excpOnUpdate.id).Core_MDF_Country_Region_nm__c 
+                   || excpOnUpdate.OwnerId != excpOldMap.get(excpOnUpdate.id).OwnerId 
+                   || excpOnUpdate.Core_MDF_Select_All_Country_ind__c != excpOldMap.get(excpOnUpdate.id).Core_MDF_Select_All_Country_ind__c)){
+                       excpAllAccNewMap.put(excpOnUpdate.id,excpOnUpdate);
                    }
             }
             List<Core_MDF_Exception__Share> exceptionShareList = new List<Core_MDF_Exception__Share>();
@@ -67,7 +69,8 @@ Accenture SS         19-06-2019          Exception Trigger Service Handler metho
                 for(Core_MDF_Exception_Account_Mapping__Share exceptionAccMapShareRecord : [SELECT Id, ParentId, UserOrGroupId, AccessLevel, RowCause
                                                                       FROM Core_MDF_Exception_Account_Mapping__Share
                                                                       WHERE Parent.Core_MDF_Exception_id__c IN :excpNewMap.keySet()AND
-                                                                      RowCause =: Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_RowCause_Manual')]){exceptionAccMapShareList.add(exceptionAccMapShareRecord);
+                                                                      RowCause =: Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_RowCause_Manual')]){
+                                                                          exceptionAccMapShareList.add(exceptionAccMapShareRecord);
                                                                       }
             }
             
@@ -75,7 +78,8 @@ Accenture SS         19-06-2019          Exception Trigger Service Handler metho
                 Core_MDF_Expt_AccMap_ServiceHandler.deleteShareRecord(exceptionShareList);
             }
             
-             if(exceptionAccMapShareList != NULL && !exceptionAccMapShareList.isEmpty()){Core_MDF_Expt_AccMap_ServiceHandler.deleteShareRecord(exceptionAccMapShareList);
+             if(exceptionAccMapShareList != NULL && !exceptionAccMapShareList.isEmpty()){
+                Core_MDF_Expt_AccMap_ServiceHandler.deleteShareRecord(exceptionAccMapShareList);
             }
             
             Map<Id,Core_MDF_Exception_Account_Mapping__c> newMapEAM = new Map<Id,Core_MDF_Exception_Account_Mapping__c>(
@@ -83,10 +87,12 @@ Accenture SS         19-06-2019          Exception Trigger Service Handler metho
                                                                        FROM Core_MDF_Exception_Account_Mapping__c 
                                                                        WHERE Core_MDF_Exception_id__c IN: excpNewMap.keySet()]);
             
-            if(newMapEAM!= null && !newMapEAM.isEmpty()){Core_MDF_Expt_AccMap_ServiceHandler.shareEAM(newMapEAM);
+            if(newMapEAM!= null && !newMapEAM.isEmpty()){
+                Core_MDF_Expt_AccMap_ServiceHandler.shareEAM(newMapEAM);
             }
         }
-        catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);throw new CustomException(system.label.Core_MDF_ApplicationErrorMessage);}
+        catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);
+                           throw new CustomException(system.label.Core_MDF_ApplicationErrorMessage);}
     }
 
     /*****************************************************************************************************
@@ -153,7 +159,8 @@ Accenture-Bharath         05-10-2020      US623829 - To Update all the Approvers
         If(excepIdProcessInstId != null && excepIdProcessInstId.size() > 0){
             for(ProcessInstanceStep piStep : [SELECT Id,ActorId,Actor.Name,StepStatus,ProcessInstanceId,Comments FROM ProcessInstanceStep 
                                               WHERE ProcessInstanceId IN: excepIdProcessInstId.values() ORDER BY CreatedDate ASC]){
-                                                  if(piAndListofPiStepMap.containsKey(piStep.ProcessInstanceId) && piStep !=null){piAndListofPiStepMap.get(piStep.ProcessInstanceId).add(piStep);
+                                                  if(piAndListofPiStepMap.containsKey(piStep.ProcessInstanceId) && piStep !=null){
+                                                      piAndListofPiStepMap.get(piStep.ProcessInstanceId).add(piStep);
                                                   }else{
                                                       if(piStep != null){
                                                           piAndListofPiStepMap.put(piStep.ProcessInstanceId, new List<ProcessInstanceStep>{piStep});}
@@ -171,7 +178,8 @@ Accenture-Bharath         05-10-2020      US623829 - To Update all the Approvers
                         for(ProcessInstanceStep pistep: piAndListofPiStepMap.get(processInstanceId)){
                             if(String.isBlank(approverComments) && pistep.Comments != null){
                                 approverComments = pistep.Actor.Name+' - '+pistep.Comments;
-                            }else if(String.isNotBlank(approverComments) && pistep.Comments != null){approverComments = approverComments +'\n'+pistep.Actor.Name+' - '+pistep.Comments;
+                            }else if(String.isNotBlank(approverComments) && pistep.Comments != null){
+                                approverComments = approverComments +'\n'+pistep.Actor.Name+' - '+pistep.Comments;
                             }
                         }
                         excep.Core_MDF_Approver_1_Comments_Txt__c = approverComments;
@@ -183,7 +191,8 @@ Accenture-Bharath         05-10-2020      US623829 - To Update all the Approvers
                 if(toUpdateExceptionRecs != null && toUpdateExceptionRecs.size() > 0){
                     Update toUpdateExceptionRecs;
                 }
-            }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);
+            }catch(Exception e){
+                Core_MDF_CCP_UtilityClass.logError(e);
             }
         }
     }
@@ -200,7 +209,7 @@ Accenture-Bharath         05-10-2020      US623829 - To Update all the Approvers
                         'Core_MDF_Field_4_txt__c, ' +
                         'Core_MDF_Field_7_txt__c ' +
                         'FROM Core_MDF_CCP_Custom_Metadata_Utility__c ' +
-                        'WHERE Core_MDF_Category__c = \'' + String.escapeSingleQuotes(Core_MDF_CCP_ConstantClass.OPAL_CATEGORY) + '\' ' +
+                        'WHERE Core_MDF_Category__c = \'' + String.escapeSingleQuotes(Core_MDF_CCP_ConstantClass.OPAL_CATEGORY) + '\' ' + 
                         'AND Core_MDF_Is_Active_Ind__c = TRUE ' + 
                         'AND Core_MDF_Field_4_txt__c != NULL';
 
@@ -215,7 +224,8 @@ WHERE (Active_ind__c = True AND Core_MDF_Supported_Budget_Type_1_txt__c != NULL)
     //supportedBudgetTypes = String.isBlank(mtd.Core_MDF_Supported_Budget_Type_2_txt__c) ? mtd.Core_MDF_Supported_Budget_Type_1_txt__c : mtd.Core_MDF_Supported_Budget_Type_1_txt__c +';'+mtd.Core_MDF_Supported_Budget_Type_2_txt__c;        
     supportedBudgetTypes = String.isBlank(mtd.Core_MDF_Field_7_txt__c) ? mtd.Core_MDF_Field_4_txt__c : mtd.Core_MDF_Field_4_txt__c +';'+mtd.Core_MDF_Field_7_txt__c; 
     actCatTypeBTMap.put(mtd.Core_MDF_Field_5_txt__c, supportedBudgetTypes);
-    if(!actCatTypeBTMapVar.containsKey(mtd.Core_MDF_Field_5_txt__c)){actCatTypeBTMapVar.put(mtd.Core_MDF_Field_5_txt__c, new Set<String>());
+    if(!actCatTypeBTMapVar.containsKey(mtd.Core_MDF_Field_5_txt__c)){
+        actCatTypeBTMapVar.put(mtd.Core_MDF_Field_5_txt__c, new Set<String>());
     }
     actCatTypeBTMapVar.get(mtd.Core_MDF_Field_5_txt__c).add(supportedBudgetTypes);
     
@@ -238,10 +248,13 @@ WHERE (Active_ind__c = True AND Core_MDF_Supported_Budget_Type_1_txt__c != NULL)
                 supportedBT = actCatTypeBTMap.get(expActCatType);               
                 supportedBTSet = actCatTypeBTMapVar.get(expActCatType);
                 String budgetString;
-                if(supportedBTSet!=null){budgetString = String.join(new List<String>(supportedBTSet), ';');
+                if(supportedBTSet!=null){
+                    budgetString = String.join(new List<String>(supportedBTSet), ';');
                 }
                 for(String expBudgetType: expn.Core_MDF_Budget_Type_nm__c.split(';')){ 
-                    if(budgetString !=null && budgetString.contains(expBudgetType)){isActCatTypeApplicable = true;break;
+                    if(budgetString !=null && budgetString.contains(expBudgetType)){                 
+                        isActCatTypeApplicable = true;
+                        break;
                     }
                 }
                 if(!isActCatTypeApplicable){
@@ -262,12 +275,15 @@ Accenture Bishanka         25/7/2023      Method to call validation logic for ex
     public static void exceptionDataValidation(List<Core_MDF_Exception__c> newExceptionList)
     {
         Core_MDF_Exception_Utility.ExceptionUserIUPGMWrapper exptUserIUPGMWrap = Core_MDF_Exception_Utility.getIUPGMDataForExceptionUser();
+        //ExceptionDataSetWrapper excpWrapper = prepareDataSetForValidation(newExceptionList);
         
         // Check if any error related to Account or Program or Country associated to user is present on the record or not
         for(Core_MDF_Exception__c expt : newExceptionList)
         {
             if(expt.Core_MDF_Select_All_Accounts_ind__c){
-              if(!isExceptionReviewer()){expt.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ExceptionSelectAllAccounts_Err'));
+            //validateException(expt, exptUserIUPGMWrap, excpWrapper);
+              if(!isExceptionReviewer()){
+                    expt.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ExceptionSelectAllAccounts_Err'));
                }
             }
         }
@@ -341,7 +357,9 @@ Modified By - Akash 28/02/2025
                                                                                  programToCategoryValuesMap.get(categoryMappingRecord.Core_MDF_Program_txt__c).add(categoryMappingRecord.Core_MDF_Category_Name_txt__c);
                                                                              }
         }
-        catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);throw e;
+        catch(Exception e){
+            Core_MDF_CCP_UtilityClass.logError(e);
+            throw e;
         }
         return programToCategoryValuesMap;
     }
@@ -357,10 +375,17 @@ Accenture Akanksha         17/9/2024      Method to prepare Map of Ultimate Exce
         
         String CO_MARKETING_ACCOUNT = Core_MDF_CCP_ConstantClass.CO_MARKETING_ACCOUNT;
         String INTEL_ACCOUNT = Core_MDF_CCP_ConstantClass.INTEL_ACCOUNT;
+        
+        // Highlight: Unused Local Variable - 14285 - Indira
+         // String PRIMARY_PARTNER = Core_MDF_CCP_ConstantClass.PRIMARY_PARTNER;
+         // List<Core_MDF_Exception__c> listOfException = new List<Core_MDF_Exception__c>();
+        
+        
+        //Map<Id,List<string>> accIdToPartnerTypeMap = new Map<Id,List<string>>();
         try{
-            
+            //US - TWC702-14285: Flatten nested IFs (no logic change) - Original code is commented
+            //if(accIdToPartnerTypeMap.isEmpty()){
                 //US - TWC702-14285: Flatten nested IFs (no logic change) - Begin
-		//Since it is a void method, return simply exits the method and returns control back to the caller.
                 if(!accIdToPartnerTypeMap.isEmpty()){ 
                     return;
                 }
@@ -369,11 +394,13 @@ Accenture Akanksha         17/9/2024      Method to prepare Map of Ultimate Exce
                 for(Core_MDF_Exception__c itrOnExcep : exceptionList){
                     //compare the program name and check if the exception account is not null
                     if(itrOnExcep.Core_MDF_Program_nm__c == Label.Core_MDF_EEF_RecordType && itrOnExcep.Core_MDF_Account_id__c != NULL && 
-                       (oldExceptionMap == NULL || ( oldExceptionMap != NULL && oldExceptionMap.containsKey(itrOnExcep.Id) && itrOnExcep.Core_MDF_Account_id__c != oldExceptionMap.get(itrOnExcep.Id).Core_MDF_Account_id__c))){
+                       (oldExceptionMap == NULL || ( oldExceptionMap != NULL && oldExceptionMap.containsKey(itrOnExcep.Id) &&
+                                                    itrOnExcep.Core_MDF_Account_id__c != oldExceptionMap.get(itrOnExcep.Id).Core_MDF_Account_id__c))){
                                                         //prepare a map of Exception Account and List of Exceptions
                                                         if(!ultimateAccountIdToExceptionMap.containskey(itrOnExcep.Core_MDF_Account_id__c)){
                                                             ultimateAccountIdToExceptionMap.put(itrOnExcep.Core_MDF_Account_id__c, new List<Core_MDF_Exception__c>{itrOnExcep});
-                                                        }else{ultimateAccountIdToExceptionMap.get(itrOnExcep.Core_MDF_Account_id__c).add(itrOnExcep);
+                                                        }else{
+                                                            ultimateAccountIdToExceptionMap.get(itrOnExcep.Core_MDF_Account_id__c).add(itrOnExcep);
                                                         }  
                                                     }
                 }
@@ -391,7 +418,8 @@ Accenture Akanksha         17/9/2024      Method to prepare Map of Ultimate Exce
                                        }
                 }
           //  }
-        }catch(Exception ex){Core_MDF_CCP_UtilityClass.logError(ex);
+        }catch(Exception ex){
+            Core_MDF_CCP_UtilityClass.logError(ex);
         } 
     }
     /****************************************************************************************************************************************
@@ -412,12 +440,14 @@ Accenture Akanksha         17/9/2024      Method to call validate accounts on th
                     for(Core_MDF_Exception__c excep: ultimateAccountIdToExceptionMap.get(accId)){
                         //accIdToPartnerTypeMap - map being populated in the beforeInsert Trigger.
                         //The Map will store - key as Exception Ultimate AccountId and value as Partner Type
-                        if(validateAccount(excep,accIdToPartnerTypeMap,hasPrimaryPermission)){excep.addError(NO_ACCESS_ERROR_MSG);
+                        if(validateAccount(excep,accIdToPartnerTypeMap,hasPrimaryPermission)){
+                            excep.addError(NO_ACCESS_ERROR_MSG);
                         }
                     }
                 }
             }
-        }catch(Exception ex){Core_MDF_CCP_UtilityClass.logError(ex);
+        }catch(Exception ex){
+            Core_MDF_CCP_UtilityClass.logError(ex);
         }
         
     }
@@ -433,7 +463,8 @@ Accenture Akanksha         17/9/2024      Method to call validate accounts on th
                     //if the User doesnot have the Primary Account Manager Custom Permission and is trying to add a Primary account on the exception record throw error.
                     isInvalidAccount = true;
                 }  
-        }catch(Exception ex){Core_MDF_CCP_UtilityClass.logError(ex);
+        }catch(Exception ex){
+            Core_MDF_CCP_UtilityClass.logError(ex);
         }
         
         return isInvalidAccount;
@@ -460,9 +491,13 @@ Accenture Mohit         12/20/2024      Method to share exceptions with external
         Set<Id> rmfAccIdSet = new Set<Id>();
         Map<Id,Id> accIdGrpIdMap = new Map<Id,Id>();
         List<Core_MDF_Exception_Account_Mapping__c> listRmfExpt = new List<Core_MDF_Exception_Account_Mapping__c>();
+        // Highlight: Unused Local Variable - 14285 - Indira 
+        // List<Core_MDF_Exception__c> listExptNonRmf = new List<Core_MDF_Exception__c>();
         Set< Core_MDF_Exception__Share > exptShareSet = new Set< Core_MDF_Exception__Share >();
         Set< Core_MDF_Exception_Account_Mapping__Share > exptAccMapShareSet = new Set< Core_MDF_Exception_Account_Mapping__Share >();
         Set<id> exceptionChannelPrgIdsSet = new Set<Id>();
+        // Highlight: Unused Local Variable - 14285 - Indira
+        // Set<Id> intelAccSet = new Set<Id>();
         Set<Id> intelAccountIdSet = new Set<Id>();
         String CO_MARKETING_ACCOUNT = Core_MDF_CCP_ConstantClass.CO_MARKETING_ACCOUNT;
         Map<Id , Core_MDF_Exception_Account_Mapping__c> eefExceptionMap= new Map<Id , Core_MDF_Exception_Account_Mapping__c>();
@@ -505,17 +540,23 @@ Accenture Mohit         12/20/2024      Method to share exceptions with external
         if(excpNewMap != null && !excpNewMap.isEmpty()){
             for(Core_MDF_Exception__Share exceptionShareRecord : [SELECT Id, ParentId, UserOrGroupId, AccessLevel, RowCause
                                                                   FROM Core_MDF_Exception__Share
-                                                                  WHERE ParentId IN :excpNewMap.keySet() AND RowCause = 'Exception_External_Sharing__c']){exceptionShareList.add(exceptionShareRecord);
+                                                                  WHERE ParentId IN :excpNewMap.keySet() AND
+                                                                  RowCause = 'Exception_External_Sharing__c']){
+                                                                      exceptionShareList.add(exceptionShareRecord);
                                                                   }
             for(Core_MDF_Exception_Account_Mapping__Share exceptionAccMapShareRecord : [SELECT Id, ParentId, UserOrGroupId, AccessLevel, RowCause
                                                                       FROM Core_MDF_Exception_Account_Mapping__Share
-                                                                      WHERE Parent.Core_MDF_Exception_id__c IN: excpNewMap.keySet() AND RowCause ='Core_MDF_EAM_External_Sharing__c']){exceptionAccMapShareList.add(exceptionAccMapShareRecord);  
+                                                                      WHERE Parent.Core_MDF_Exception_id__c IN: excpNewMap.keySet()  AND
+                                                                      RowCause ='Core_MDF_EAM_External_Sharing__c']){
+                                                                                          exceptionAccMapShareList.add(exceptionAccMapShareRecord);  
                                                                                         }
         }
         
-        if(exceptionShareList != NULL && !exceptionShareList.isEmpty()){delete exceptionShareList;
+        if(exceptionShareList != NULL && !exceptionShareList.isEmpty()){
+                delete exceptionShareList;
         }
-        if(exceptionAccMapShareList != NULL && !exceptionAccMapShareList.isEmpty()){delete exceptionAccMapShareList;
+        if(exceptionAccMapShareList != NULL && !exceptionAccMapShareList.isEmpty()){
+                delete exceptionAccMapShareList;
         }
         //Avoid using Soql / Sosl queries without filters and limits
        /* for(Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem : ([SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c, Core_MDF_Entitlement_Name__c
@@ -552,7 +593,8 @@ Accenture Mohit         12/20/2024      Method to share exceptions with external
             Core_MDF_Expt_AccMap_ServiceHandler.ExceptionEEFDataWrapper excpEEFWrapper = Core_MDF_Expt_AccMap_ServiceHandler.prepareDataForEEFSharing(eefExceptionMap.values(),accIdToPartnerTypeMap);
             system.debug('accIdToPartnerTypeMap-->'+accIdToPartnerTypeMap);
             intelAccountIdSet = excpEEFWrapper.intelAccountIdSet;//set to store the Intel Account id of Primary and Activating accounts.
-            mapOfExpIdToActAccId = excpEEFWrapper.mapOfExpIdToActAccId; mapOfExpIdToPrimaryAccId = excpEEFWrapper.mapOfExpIdToPrimaryAccId; 
+            mapOfExpIdToActAccId = excpEEFWrapper.mapOfExpIdToActAccId; 
+            mapOfExpIdToPrimaryAccId = excpEEFWrapper.mapOfExpIdToPrimaryAccId; 
         }
         //Iterating over account specific exception
         //All account exception sharing is achieved from sharing rule
@@ -574,26 +616,41 @@ Accenture Mohit         12/20/2024      Method to share exceptions with external
                     }
                     
                     Set< Core_MDF_Exception_Account_Mapping__c > exptSet = new Set< Core_MDF_Exception_Account_Mapping__c >{expt};
-                    If(expt.Core_MDF_Program_txt__c == Label.Core_MDF_EEF_RecordType){
-                            
-                            
-                        // US - TWC702-14285: Flatten nested IFs (no logic change) - Begin new flattened code with duplicate fix
+                        if(expt.Core_MDF_Program_txt__c == Label.Core_MDF_EEF_RecordType){
+// US - TWC702-14285: Flatten nested IFs (no logic change) - Begin original code commented
+                        /*
+                        //preparing the channelprgIdAccIdSet for EEF Activating Account
+                        if(!mapOfExpIdToActAccId.isEmpty() && mapOfExpIdToActAccId.size()>0){
+                            for(Id accId : mapOfExpIdToActAccId.get(expt.Core_MDF_Exception_id__c)){
+                                channelPrgIdAccId.add((String)channelProgramNameIdMap.get(channelProgramNameMap.get(expt.Core_MDF_Program_txt__c)) + (String)accId);
+                    
+                            }   
+                        }
+                        
+                        //preparing the channelprgIdAccIdSet for EEF Priamary Account
+                        if(!mapOfExpIdToPrimaryAccId.isEmpty() && mapOfExpIdToPrimaryAccId.size()>0){
+                            for(Id accId : mapOfExpIdToPrimaryAccId.get(expt.Core_MDF_Exception_id__c)){
+                                channelPrgIdAccId.add((String)channelProgramNameIdMap.get(channelProgramNameMap.get(expt.Core_MDF_Program_txt__c)) + (String)accId);
+                            }
+                        }
+                        */
+                        // US - TWC702-14285: Flatten nested IFs (no logic change) - End original code
+                        // US - TWC702-14285: Flatten nested IFs (no logic change) - Begin new flattened code
+                        // Combine both ID lists into a single collection to eliminate duplicate loop structures
+						List<Id> associatedAccountIds = new List<Id>();
 
-                        // Combine both ID lists into a single Set collection to automatically eliminate duplicate structures/loops
-                        Set<Id> associatedAccountIds = new Set<Id>();
+						List<Id> activatingAccs = mapOfExpIdToActAccId.get(expt.Core_MDF_Exception_id__c);
+						if (activatingAccs != null) associatedAccountIds.addAll(activatingAccs);
 
-			List<Id> activatingAccs = mapOfExpIdToActAccId.get(expt.Core_MDF_Exception_id__c);
-			if (activatingAccs != null) associatedAccountIds.addAll(activatingAccs);
+						List<Id> primaryAccs = mapOfExpIdToPrimaryAccId.get(expt.Core_MDF_Exception_id__c);
+						if (primaryAccs != null) associatedAccountIds.addAll(primaryAccs);
 
-			List<Id> primaryAccs = mapOfExpIdToPrimaryAccId.get(expt.Core_MDF_Exception_id__c);
-			if (primaryAccs != null) associatedAccountIds.addAll(primaryAccs);
+						// Single, flat loop with no nested if statements
+						for (Id accId : associatedAccountIds) {
+    						channelPrgIdAccId.add((String)channelProgramNameIdMap.get(channelProgramNameMap.get(expt.Core_MDF_Program_txt__c)) + (String)accId);
+						}
 
-                        // Single, flat loop iterating over unique Account IDs
-			for (Id accId : associatedAccountIds) {
-    				channelPrgIdAccId.add((String)channelProgramNameIdMap.get(channelProgramNameMap.get(expt.Core_MDF_Program_txt__c)) + (String)accId);
-			}
-
-                        // US - TWC702-14285: Flatten nested IFs (no logic change) - End new flattened code with duplicate fix
+                        // US - TWC702-14285: Flatten nested IFs (no logic change) - End new flattened code
                     }
                     channelPrgIdAccId.add((String)channelProgramNameIdMap.get(channelProgramNameMap.get(expt.Core_MDF_Program_txt__c)) + (string)expt.Core_MDF_Account_id__c);   
                     
@@ -602,7 +659,8 @@ Accenture Mohit         12/20/2024      Method to share exceptions with external
                     
                     
                     for(String cpIdAccId : channelPrgIdAccId){
-                        if(channelPrgIdAccIdExptSetMap.containskey(cpIdAccId)){channelPrgIdAccIdExptSetMap.get(cpIdAccId).add(expt);
+                        if(channelPrgIdAccIdExptSetMap.containskey(cpIdAccId)){
+                            channelPrgIdAccIdExptSetMap.get(cpIdAccId).add(expt);
                         }else{
                             channelPrgIdAccIdExptSetMap.put(cpIdAccId,exptSet); 
                         }
@@ -612,7 +670,8 @@ Accenture Mohit         12/20/2024      Method to share exceptions with external
                     intelAccountIdSet.add(expt.Core_MDF_Account_id__c);
                     
                 }else{
-                    rmfAccIdSet.add(expt.Core_MDF_Account_id__c);listRmfExpt.add(expt);
+                    rmfAccIdSet.add(expt.Core_MDF_Account_id__c);
+                    listRmfExpt.add(expt);
                 }
             }
         }
@@ -654,12 +713,14 @@ Accenture Mohit         12/20/2024      Method to share exceptions with external
         
         if(!exptShareSet.isEmpty()){
         List <Core_MDF_Exception__Share> exptShareList = new List< Core_MDF_Exception__Share >();
-        exptShareList.addAll(exptShareSet);database.insert(exptShareList,false);
+        exptShareList.addAll(exptShareSet);
+        database.insert(exptShareList,false);
         }
         
         if(!exptAccMapShareSet.isEmpty()){
         List <Core_MDF_Exception_Account_Mapping__Share> exptAccMapShareList = new List< Core_MDF_Exception_Account_Mapping__Share >();
-        exptAccMapShareList.addAll(exptAccMapShareSet);database.insert(exptAccMapShareList,false);
+        exptAccMapShareList.addAll(exptAccMapShareSet);
+        database.insert(exptAccMapShareList,false);
         }
         
     }

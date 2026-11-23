@@ -4,7 +4,7 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_KPI_Date__c</field>
@@ -49,7 +49,7 @@
         <field>INDUSTRY</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Status__c</field>

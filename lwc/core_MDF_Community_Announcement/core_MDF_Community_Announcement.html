@@ -1,0 +1,18 @@
+<template>
+    <div class="slds-theme_default">
+        <div class="slds-grid slds-wrap">
+            <template for:each={AnnouncementUI} for:item="obj">
+                <div key={obj.Id} class="slds-col slds-size_1-of-1" style="height:4em;">
+                     <p class="ribbon">Announcement</p>
+                    <div style="width:60%;padding-top:3px;border-radius:15px;background-color:#2980B9;">
+                        
+                        <marquee> <p class="header"> {obj.contentLabel}</p></marquee>
+                    </div>
+                    
+                   
+                </div>
+                
+            </template>
+            </div>
+        </div>
+</template>

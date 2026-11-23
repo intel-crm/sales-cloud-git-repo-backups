@@ -34,12 +34,26 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
+            <value>Design Win</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Yazawa</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
             <value>Cancelled</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>Yaz all opportunities after 2021</name>
+    <name>Yaz pipeline 2019 as owner</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -65,8 +79,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2025-12-31</endDate>
+        <endDate>2019-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2021-01-01</startDate>
+        <startDate>2019-01-01</startDate>
     </timeFrameFilter>
 </Report>

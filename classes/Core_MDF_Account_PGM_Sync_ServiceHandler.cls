@@ -13,18 +13,14 @@ public without sharing class Core_MDF_Account_PGM_Sync_ServiceHandler {
     private static Core_MDF_ChannelProgram__mdt channelProgramDetailsOfIPA = Core_MDF_ChannelProgram__mdt.getInstance('Intel_Partner_Alliance');
     private static string externalType = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_External');
     private static String ipaTechnicalProgramName = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name');
-
     private static Map<Id,Core_MDF_Partner_Group_Mapping__c> pgmToActivateExistingMap = new Map<Id,Core_MDF_Partner_Group_Mapping__c>();
     private static List<Core_MDF_Partner_Group_Mapping__c> pgmToCreateList = new List<Core_MDF_Partner_Group_Mapping__c>();
-
     private static Map<Id, List<String>> nonCoMarkRecordIdToActionsMap = new Map<Id, List<String>>();
     private static Set<Id> nonCoMarkAccountIdsToSendEmail = new Set<Id>();
-
     private static Map<Id, List<String>> recordIdToFieldValuesMap = new Map<Id, List<String>>();
     private static Map<Id,String> recordIdToAccountNameMap = new Map<Id,String>();
     private static List<String> actionList = new List<String>();
     private static String actions = '';
-    //added by JK to replace prime id with UCD id field
     public static boolean isUnifiedIdEnabled = Core_MDF_CustomLabelConfig.getBooleanValues('Core_MDF_UnifiedIdCheck');
     public static String isUnifiedIdOrPrimeIdErrorMessage = 'Unified ID';
     public static List<Core_MDF_BudgetType_Benefit_Mappings__c> budgetTypeBenefitMapping = new List<Core_MDF_BudgetType_Benefit_Mappings__c>();
@@ -145,7 +141,7 @@ public without sharing class Core_MDF_Account_PGM_Sync_ServiceHandler {
 
         Map<Id, Account> newAccountMap = new Map<Id, Account>();
         Map<Id,String> accountIdsToUnifiedIdToIgnoreMap = new Map<Id,String>();//changed from accountIdsToPrimeIdToIgnoreMap to accountIdsToUnifiedIdToIgnoreMap
-        //added by JK to replace primeID with Unified Id field
+
         String accountIdSetQuery = '(\''+String.join(new List<Id>(accountIdSet), '\', \'') + '\')';
         String whereClause = ' Id IN '+accountIdSetQuery;
         List<Account> accounts = Core_MDF_Account_Utility.fetchAccounts(whereClause);
@@ -216,7 +212,6 @@ public without sharing class Core_MDF_Account_PGM_Sync_ServiceHandler {
                         nonCoMarkRecordIdToActionsMap = addAsaOrIpaAffiliationActions(nonCoMarkRecordIdToActionsMap, acc, wrapper.recordId, 'MDF Benefit record', newStatus, wrapper.status);
                     }
                 }
-
 
                 //IPA Affiliation
                 if(accountIdToIpaAffilicationRecsMap.containsKey(acc.Id) && accountIdToIpaAffilicationRecsMap.get(acc.Id).size() > 0){
@@ -315,7 +310,7 @@ public without sharing class Core_MDF_Account_PGM_Sync_ServiceHandler {
 
         //Send email to Co-Marketing Active accounts
         if(recordIdToFieldValuesMap != null && !recordIdToFieldValuesMap.isEmpty()){
-
+            
             //To By-pass the email sending
             //if(!Core_MDF_Utility.byPassFeature('Bypass_AccountPgmSyncEmailNotification')){
             //ATHR Fix - Deeply nested if
@@ -484,9 +479,13 @@ public without sharing class Core_MDF_Account_PGM_Sync_ServiceHandler {
         //String primeIdOrUnifiedField = isUnifiedIdEnabled?'Core_MDF_Account__r.Core_Unified_Global_Customer_BP_Id__c':'Core_MDF_Account__r.Core_Prime_Id__c';
         String primeIdOrUnifiedField = 'Core_MDF_Account__r.Core_Unified_Global_Customer_BP_Id__c';
 		Set<Id> finalAccountIds = finalIntelAccountIdToUnifiedIdMap.keySet();
-        String PgmQuery = 'SELECT Id, Core_MDF_Account__c,Core_MDF_CoMarketingActive_Ind__c, Core_MDF_Account__r.Name, Core_MDF_Channel_Program__c, Core_MDF_Group_Id__c, Core_MDF_Group_Name__c,  Core_MDF_Inactive_Ind__c,'+primeIdOrUnifiedField+' FROM Core_MDF_Partner_Group_Mapping__c '+
-       ' WHERE (('+primeIdOrUnifiedField+' IN: UnifiedIdSet AND Core_MDF_CoMarketingActive_Ind__c = true) OR (Core_MDF_Account__c IN:finalAccountIds AND Core_MDF_CoMarketingActive_Ind__c = false))'+
-       ' AND Core_MDF_Type_of_Access__c =: externalType AND Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c =: ipaTechnicalProgramName ORDER BY Core_MDF_CoMarketingActive_Ind__c DESC';
+        
+        //ATHR-Untrusted/Unescaped Variable Fixed: Use proper SOQL query construction to avoid untrusted variables in DML query
+        String PgmQuery = 'SELECT Id, Core_MDF_Account__c,Core_MDF_CoMarketingActive_Ind__c, Core_MDF_Account__r.Name, Core_MDF_Channel_Program__c, Core_MDF_Group_Id__c, Core_MDF_Group_Name__c,  Core_MDF_Inactive_Ind__c,' + primeIdOrUnifiedField + ' FROM Core_MDF_Partner_Group_Mapping__c ';
+        PgmQuery += 'WHERE ((' + primeIdOrUnifiedField + ' IN :UnifiedIdSet AND Core_MDF_CoMarketingActive_Ind__c = true) OR (Core_MDF_Account__c IN :finalAccountIds AND Core_MDF_CoMarketingActive_Ind__c = false)) ';
+        PgmQuery += 'AND Core_MDF_Type_of_Access__c = :externalType AND Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c = :ipaTechnicalProgramName ';
+        PgmQuery += 'ORDER BY Core_MDF_CoMarketingActive_Ind__c DESC';
+        
         for(Core_MDF_Partner_Group_Mapping__c pgm : Database.Query(PgmQuery)){
             //String pgmprimeIdOrUnifiedField = isUnifiedIdEnabled?pgm.Core_MDF_Account__r.Core_Unified_Global_Customer_BP_Id__c:pgm.Core_MDF_Account__r.Core_Prime_Id__c;
             String pgmprimeIdOrUnifiedField = pgm.Core_MDF_Account__r.Core_Unified_Global_Customer_BP_Id__c;
@@ -646,7 +645,6 @@ public without sharing class Core_MDF_Account_PGM_Sync_ServiceHandler {
 
         return filteredIntelAccountIds;
     }
-
 
     /*****************************************************************************************************                              
     Method Name   :        createKeyAndValues                                

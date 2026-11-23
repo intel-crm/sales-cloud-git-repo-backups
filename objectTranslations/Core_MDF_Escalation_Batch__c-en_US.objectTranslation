@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Escalation Batch</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Escalation Batches</value>
+    </caseValues>
+    <fields>
+        <label><!-- Escalation Type --></label>
+        <name>Core_MDF_Escalation_Type__c</name>
+        <picklistValues>
+            <masterLabel>Budget</masterLabel>
+            <translation><!-- Budget --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim Case Review Result</masterLabel>
+            <translation><!-- Claim Case Review Result --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Late Claim</masterLabel>
+            <translation><!-- Late Claim --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Processing</masterLabel>
+            <translation><!-- Processing --></translation>
+        </picklistValues>
+    </fields>
+    <recordTypes>
+        <label><!-- Default Escalation Bulk Record Type --></label>
+        <name>Core_MDF_Default_Escalation_Bulk_Record_Type</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- New Bulk Escalation --></label>
+        <name>Core_MDF_New_Bulk_Escalation</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

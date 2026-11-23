@@ -1,7 +1,7 @@
 <apex:page standardController="Case" extensions="Core_AAQC_Case_Close_Onemail" showheader="false" sidebar="false" >
 <apex:slds />
 <apex:form id="theFormId">
-<apex:image id="Logo" style="width:100%;height:50%;" value="https://intel.file.force.com/servlet/servlet.ImageServer?id=0151J000003hHA5QAM&oid=00Do0000000aRcf&lastMod=1543355524000" />    
+<apex:image id="Logo" style="width:100%;height:50%;" value="https://intel--c.na74.content.force.com/servlet/servlet.ImageServer?id=0153F000000F2QC&oid=00D3F0000000Nmr&lastMod=1543355524000" />    
 <apex:pageBlock >
     <apex:pageBlockButtons id="buttonSessionId" location="top">
             <apex:actionStatus id="spinnerStatus">

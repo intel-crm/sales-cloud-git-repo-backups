@@ -63,20 +63,13 @@
     <columns>
         <field>Opportunity.Core_ISV_OSV__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Status__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Deal: Sell-through,Deal: Sell-to</value>
+            <value>Deal: Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Commissionable__c</column>
@@ -100,25 +93,18 @@
             <value>0</value>
         </criteriaItems>
         <criteriaItems>
+            <column>QUANTITY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>12</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Qualify,Define,Develop,Design,Design Win,Production Win</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>win approved</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>INDUSTRY</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Consulting</value>
+            <value>Qualify,Define,Develop,Design</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -130,10 +116,15 @@
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Consumption_Market__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
         <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2020 - DCGS KPI Optane PM Deal $</name>
+    <name>2019 - DCGS KPI Optane (AEP) Deal #</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -157,6 +148,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

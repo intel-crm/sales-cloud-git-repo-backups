@@ -6,6 +6,10 @@
     </applicationVisibilities>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
+        <name>CCP_Attributes_Map__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
         <name>Contact_Entitlement_Subordinates_Removal__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
@@ -14,7 +18,15 @@
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
+        <name>Core_Lex_AlertMessage__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
         <name>Core_MDF_AdjustmentOrEscalationClaim__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>Core_MDF_Approval_Object_List__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
@@ -22,7 +34,15 @@
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
+        <name>Core_MDF_BulkClaimTemplateParticulars__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
         <name>Core_MDF_CCP_Activity_Budget_Cap_Window__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>Core_MDF_CCP_Claim_Window__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
@@ -50,15 +70,19 @@
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
+        <name>Core_MDF_ListView_Group_Mapping__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
         <name>Core_MDF_ObjRecType_Budget_FieldSetMap__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
-        <name>Core_MDF_PFR_Event_Rule__mdt</name>
+        <name>Core_MDF_ProgramGeoGroupMap__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
-        <name>Core_MDF_ProgramGeoGroupMap__mdt</name>
+        <name>Core_MDF_Standard_Object_for_Sharing__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
@@ -892,6 +916,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.Jigsaw</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.LID__LinkedIn_Company_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2256,6 +2285,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Contact.LID__LinkedIn_Company_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.LID__LinkedIn_Member_Token__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Contact.LeadSource</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2696,21 +2735,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Core_MDF_Claim_Payment_Link__c.Core_MDF_Payment_Run_Number_Nbr__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Claim_Payment_Link__c.Core_MDF_Reimbursable_Local_Amt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Claim_Payment_Link__c.Core_MDF_Reimbursement_Amount_Amt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Core_MDF_Claim_Payment_Link__c.Core_MDF_Requested_Reimbursement_Amt__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2742,6 +2766,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_MDF_Currency_Exchange_Rates__c.Core_MDF_Unique_Key__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Account_txt_del__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Activity_Name_url__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3111,16 +3145,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_Activity_Classification_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_All_Budget_Type_Access_Ind__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_Approval_Region_nm__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3290,12 +3314,12 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Core_MDF_Partner_Node_User_Mapping__c.Core_MDF_Account__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Core_MDF_Partner_Node_User_Mapping__c.Core_MDF_Active_Ind__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3315,7 +3339,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Core_MDF_Partner_Node_User_Mapping__c.Core_MDF_User__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3866,6 +3890,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Claim_Cancellation_Reason_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_Claim_Comments__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4410,6 +4439,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_Geo_Nm__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>PartnerFundRequest.Core_MDF_Government_Nexus__c</field>
         <readable>true</readable>
@@ -4481,6 +4515,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_Maximum_Intel_Investment_amt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PartnerFundRequest.Core_MDF_Member_Acceptor_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4512,6 +4551,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PartnerFundRequest.Core_MDF_Other_Reason_nm_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_Outcome_Region_nm__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4873,9 +4917,9 @@
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
-        <allowCreate>false</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>false</allowEdit>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>ChannelProgram</object>
@@ -5083,9 +5127,9 @@
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
-        <allowCreate>true</allowCreate>
+        <allowCreate>false</allowCreate>
         <allowDelete>false</allowDelete>
-        <allowEdit>true</allowEdit>
+        <allowEdit>false</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>Core_MDF_Partner_Node_User_Mapping__c</object>

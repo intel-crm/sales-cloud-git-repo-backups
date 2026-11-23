@@ -28,7 +28,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>IPS Agent,Org Admin</value>
+            <value>IPS Agent</value>
         </criteriaItems>
         <criteriaItems>
             <column>ROLE</column>

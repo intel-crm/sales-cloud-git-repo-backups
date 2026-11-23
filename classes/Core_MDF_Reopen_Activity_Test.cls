@@ -44,7 +44,8 @@ public class Core_MDF_Reopen_Activity_Test {
         
         profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
         Profile ccpCoreProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1];
-
+        // Highlight: Unused Local Variable - 14285
+        //UserRole usRole1 = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
         
         List<User> usrList=new List<User>();
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
@@ -72,8 +73,8 @@ public class Core_MDF_Reopen_Activity_Test {
         usrList.add(usr9);
         database.insert(usrList);
         
-        
-
+        // Highlight: Unused Local Variable - 14285
+        //List<ChannelProgram> cpList = new List<ChannelProgram>();
         ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
         ChannelProgram cpRetail = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.RMF_PROGRAM,'Retail Marketing Funds', true);
         ChannelProgram ipaCP = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.IPA_PROGRAM,'Intel Partner Alliance', true);
@@ -1787,7 +1788,41 @@ public static void testValidateOutcomeBasedSubActivityScenarios(){
     }
     Test.stopTest();			
 }
-
+ /*   @IsTest
+    static void testhasAnySubActivityWithZeroAllocation(){
+        User usr = [select id from User where lastname='Budget Loader CCPTest' limit 1];
+    User user1 = [select id,email from User where email='ccfaccntmngr@example.com' limit 1];
+    
+    System.runAs(usr){
+        PermissionSet psFinance = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr' LIMIT 1];
+        insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = psFinance.Id);
+    }
+	//PartnerFundRequest subActivity;
+ Account acc = [select id from Account where Core_MDF_Parent_Fund_Account__c != null limit 1];
+        Campaign camp = [select id from Campaign limit 1];
+        PartnerMarketingBudget budget = [select id from PartnerMarketingBudget limit 1];
+        PartnerFundAllocation allocation = [select id from PartnerFundAllocation limit 1];
+		List<String> claimCloseStatus = new List<String>{'Closed'};
+        // Create sub-activity
+        PartnerFundRequest subActivity = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc.Id,allocation,
+                                                                                              budget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
+                                                                                              'Member Participation in Third-Party Event','Draft',false);
+        subActivity.RequestedAmount = 50;
+        subActivity.Title='TESTHandleOutcomeBasedSub';
+        subActivity.Core_MDF_Fund_Request_Status__c = 'Closed';
+        subActivity.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
+        subActivity.Core_MDF_Activity_Closure_Type__c = 'Manual';
+        subActivity.Core_MDF_Is_Outcome_Based_Ind__c = true;
+        subActivity.Core_MDF_Activity_Level_nm__c = 'Sub Activity';
+        //subActivity.Core_MDF_Parent_Activity_Id__c = parentActivity.Id;
+        subActivity.Core_MDF_ToBeClosedDate__c = System.today()-5;
+        subActivity.Core_MDF_Activity_Types__c = '';
+        insert subActivity;
+        Test.startTest();
+        Id parentId = subActivity.Core_MDF_Parent_Activity_Id__c;
+        List<Core_MDF_Reopen_Activity.SubActivityValidationResult> Sbvr = Core_MDF_Reopen_Activity.validateOutcomeBasedSubActivities(parentId,Null,Null);
+        Test.stopTest();
+    }*/
     
     @isTest
     static void testSubActivityValidationResultWrapperCoverage() {

@@ -45,19 +45,22 @@
                         <apex:outputPanel rendered="{!relatedTo.Core_MDF_Program__c != $Label.Core_MDF_Co_GTM_program_name}">
                             <li>{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,$Label.Core_MDF_OutcomeBasedCampaign_Number & ':',$Label.Core_MDF_Activity)}&nbsp;{!RelatedTo.Request.Core_MDF_Activity_Number__c}</li>
                             <li>{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,$Label.Core_MDF_OutcomeBasedCampaign_Name & ':',$Label.Core_MDF_EmailTemp_Claim_Activity_Name)}
-                                <apex:outputLink rendered="{!relatedTo.Core_MDF_Owner_UserType_Txt__c == 'PowerPartner'}"
+                            <apex:outputLink rendered="{!relatedTo.Core_MDF_Owner_UserType_Txt__c == 'PowerPartner'}"
                                 value="{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,
                                             $Label.Core_MDF_Outcome_Community_Link + RelatedTo.RequestId,
                                             $Label.Core_MDF_PFRCommunityLink + RelatedTo.RequestId)}">
                                 {!RelatedTo.Request.Title}
-                                </apex:outputLink>
-                                <apex:outputLink rendered="{!relatedTo.Core_MDF_Owner_UserType_Txt__c == 'Standard'}"
+                            </apex:outputLink>
+                            <apex:outputLink rendered="{!relatedTo.Core_MDF_Owner_UserType_Txt__c == 'Standard'}"
                                 value="{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,
                                             $Label.Core_MDF_Outcome_Internal_Link + RelatedTo.RequestId,
                                             $Label.Core_MDF_PFRDetailLink + RelatedTo.RequestId)}">
-                                    {!RelatedTo.Request.Title}
-                                </apex:outputLink>
-                            </li>
+                                {!RelatedTo.Request.Title}
+                            </apex:outputLink>
+                        </li>
+
+
+
                             <li>{!$Label.Core_MDF_EmailTemp_Budget_Type} {!RelatedTo.Core_MDF_Budget_Type_Options_Nm__c}</li>
                         </apex:outputPanel>
                         

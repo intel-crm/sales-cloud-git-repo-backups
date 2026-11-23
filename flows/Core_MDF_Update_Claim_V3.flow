@@ -21,6 +21,7 @@
             </value>
         </inputParameters>
         <nameSegment>Core_MDF_Claim_Utility</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <description>Check_for_Vat_and_Take_Action</description>
@@ -44,6 +45,7 @@
             </value>
         </inputParameters>
         <nameSegment>Core_MDF_Vat_Utility</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <description>Deny_Claim_and_Vat_Info</description>
@@ -67,8 +69,9 @@
             </value>
         </inputParameters>
         <nameSegment>Core_MDF_Vat_Utility</nameSegment>
+        <offset>0</offset>
     </actionCalls>
-    <apiVersion>49.0</apiVersion>
+    <apiVersion>63.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>assignClaimToCollection</name>
@@ -419,6 +422,7 @@
         </rules>
     </decisions>
     <description>New Flow inculding PIC and Case status changes</description>
+    <environments>Default</environments>
     <formulas>
         <name>varAdjustmentRequestComments</name>
         <dataType>String</dataType>
@@ -515,7 +519,7 @@
             <targetReference>checkClaimId</targetReference>
         </connector>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>AdjustmentReqCollection</name>
         <dataType>SObject</dataType>

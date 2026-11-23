@@ -8,7 +8,7 @@
  * ----------------------------------------------------------------------------------
  */
 @RestResource(urlMapping='/v1.0/partnercenter/campaign/*')
-global without sharing class Core_MDF_Campaign_Details_RestAPI{
+global without sharing class Core_MDF_Campaign_Details_RestAPI {
 
     private static final Map<String, Map<String, String>> FIELD_LABEL_CACHE_BY_OBJECT = new Map<String, Map<String, String>>();
 
@@ -25,7 +25,7 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
             if (!fieldDisplayMode.isValid) {
                 sendAndTrackError(
                     response,
-                    Core_MDF_Campaign_APIConstants.CODE_7005_INVALID_FIELD_DISPLAY,
+                    Core_MDF_Campaign_APIUtil.CODE_7005_INVALID_FIELD_DISPLAY,
                     buildInvalidFieldDisplayDetails(fieldDisplayMode.invalidParameter),
                     fieldDisplayMode.invalidValue
                 );
@@ -35,12 +35,12 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
             Boolean useFieldLabels = fieldDisplayMode.useLabels;
 
             if (String.isBlank(campaignId)) {
-                sendAndTrackError(response, Core_MDF_Campaign_APIConstants.CODE_7002_CAMPAIGN_ID_EMPTY, null);
+                sendAndTrackError(response, Core_MDF_Campaign_APIUtil.CODE_7002_CAMPAIGN_ID_EMPTY, null);
                 return;
             }
 
             if (!isValidCampaignId(campaignId)) {
-                sendAndTrackError(response, Core_MDF_Campaign_APIConstants.CODE_7004_INVALID_CAMPAIGN_ID, null);
+                sendAndTrackError(response, Core_MDF_Campaign_APIUtil.CODE_7004_INVALID_CAMPAIGN_ID, null);
                 return;
             }
 
@@ -48,21 +48,21 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
             if (details == null) {
                 // Treat null as permission error instead of "not found"
                 // In multi-account scenarios, inaccessible records = permission denied
-                sendAndTrackError(response, Core_MDF_Campaign_APIConstants.CODE_7008_INSUFFICIENT_PERMISSIONS, null);
+                sendAndTrackError(response, Core_MDF_Campaign_APIUtil.CODE_7008_INSUFFICIENT_PERMISSIONS, null);
                 return;
             }
 
-            sendSuccessResponse(details, Core_MDF_Campaign_APIConstants.MSG_CAMPAIGN_DETAILS_RETRIEVED, Core_MDF_Campaign_APIConstants.SUCCESS_200);
-            response.statusCode = Core_MDF_Campaign_APIConstants.SUCCESS_200;
+            sendSuccessResponse(details, Core_MDF_Campaign_APIUtil.MSG_CAMPAIGN_DETAILS_RETRIEVED, Core_MDF_Campaign_APIUtil.SUCCESS_200);
+            response.statusCode = Core_MDF_Campaign_APIUtil.SUCCESS_200;
             response.isSuccess = true;
         } catch (Exception ex) {
             if (ex instanceof Core_MDF_CCP_RestAPI_Utility.AccessDeniedException) {
-                sendAndTrackError(response, Core_MDF_Campaign_APIConstants.CODE_7008_INSUFFICIENT_PERMISSIONS, null);
+                sendAndTrackError(response, Core_MDF_Campaign_APIUtil.CODE_7008_INSUFFICIENT_PERMISSIONS, null);
                 logErrors = new List<String>{ ex.getMessage() };
             } else {
                 Core_MDF_CCP_UtilityClass.logError(ex);
                 logErrors = new List<String>{ ex.getMessage(), ex.getStackTraceString() };
-                sendAndTrackError(response, Core_MDF_Campaign_APIConstants.CODE_7003_CAMPAIGN_INTERNAL_SERVER_ERROR, null);
+                sendAndTrackError(response, Core_MDF_Campaign_APIUtil.CODE_7003_CAMPAIGN_INTERNAL_SERVER_ERROR, null);
             }
         } finally {
             Core_MDF_RestAPI_Logger.LogRequest logReq = new Core_MDF_RestAPI_Logger.LogRequest();
@@ -127,9 +127,9 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
         // Retrieve campaign details via standard REST API with configured field filtering
         // REST API call will detect permission errors (403) and throw AccessDeniedException
         Map<String, Object> filteredCampaignData = Core_MDF_CCP_RestAPI_Utility.getFilteredRecord(
-            Core_MDF_Campaign_APIConstants.CAMPAIGN_OBJECT_API_NAME,
+            Core_MDF_Campaign_APIUtil.CAMPAIGN_OBJECT_API_NAME,
             campaignId,
-            Core_MDF_Campaign_APIConstants.DEFAULT_CAMPAIGN_DISPLAY_FIELDS
+            Core_MDF_Campaign_APIUtil.DEFAULT_CAMPAIGN_DISPLAY_FIELDS
         );
 
         if (filteredCampaignData == null) {
@@ -141,8 +141,8 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
         responseData.details = useFieldLabels
             ? applyCampaignFieldLabels(filteredCampaignData)
             : filteredCampaignData;
-        responseData.budgets = queryChildRecords(Core_MDF_Campaign_APIConstants.CAMPAIGN_BUDGETS_OBJECT_API, campaignId, useFieldLabels);
-        responseData.outcomes = queryChildRecords(Core_MDF_Campaign_APIConstants.CAMPAIGN_OUTCOMES_OBJECT_API, campaignId, useFieldLabels);
+        responseData.budgets = queryChildRecords(Core_MDF_Campaign_APIUtil.CAMPAIGN_BUDGETS_OBJECT_API, campaignId, useFieldLabels);
+        responseData.outcomes = queryChildRecords(Core_MDF_Campaign_APIUtil.CAMPAIGN_OUTCOMES_OBJECT_API, campaignId, useFieldLabels);
 
         return responseData;
     }
@@ -157,7 +157,7 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
     private static List<Map<String, Object>> queryChildRecords(String objectApiName, String campaignId, Boolean useFieldLabels) {
         List<SObject> rows;
         List<String> queryFieldApiNames = new List<String>();
-        Boolean isBudgetObject = objectApiName == Core_MDF_Campaign_APIConstants.CAMPAIGN_BUDGETS_OBJECT_API;
+        Boolean isBudgetObject = objectApiName == Core_MDF_Campaign_APIUtil.CAMPAIGN_BUDGETS_OBJECT_API;
 
         // Hardcoded field selections for each child object type - explicit for performance
         if (isBudgetObject) {
@@ -172,9 +172,9 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
                 FROM Core_MDF_Campaign_Budgets__c
                 WHERE Core_MDF_Active_Ind__c=true AND Core_MDF_Campaign_Id__c = :campaignId
                   AND (Core_MDF_Budget_Type_Nm__c = null OR Core_MDF_Budget_Type_Nm__c NOT IN ('MDF', 'MDF+'))
-                                    LIMIT :Core_MDF_Campaign_APIConstants.MAX_CHILD_ROWS
+                                    LIMIT :Core_MDF_Campaign_APIUtil.MAX_CHILD_ROWS
             ];
-        } else if (objectApiName == Core_MDF_Campaign_APIConstants.CAMPAIGN_OUTCOMES_OBJECT_API) {
+        } else if (objectApiName == Core_MDF_Campaign_APIUtil.CAMPAIGN_OUTCOMES_OBJECT_API) {
             queryFieldApiNames.addAll(new List<String>{
                 'Core_MDF_Outcomes_nm__c',
                 'Core_MDF_Goal_Quantity_nbr__c',
@@ -187,7 +187,7 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
                        Core_MDF_Quantity_nbr__c, Core_MDF_Outcome_Criteria_txt__c,Core_MDF_Initial_Baseline_Quantity_nbr__c
                 FROM Core_MDF_Campaign_Outcomes__c
                 WHERE Core_MDF_Active_Ind__c=true AND Core_MDF_Campaign_Id__c = :campaignId
-                LIMIT :Core_MDF_Campaign_APIConstants.MAX_CHILD_ROWS
+                LIMIT :Core_MDF_Campaign_APIUtil.MAX_CHILD_ROWS
             ];
         } else {
             return new List<Map<String, Object>>();
@@ -243,7 +243,7 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
         }
 
         Map<String, String> labelByApiName = getConfiguredFieldLabelMap(
-            Core_MDF_Campaign_APIConstants.CAMPAIGN_OBJECT_API_NAME,
+            Core_MDF_Campaign_APIUtil.CAMPAIGN_OBJECT_API_NAME,
             new List<String>(campaignData.keySet())
         );
         for (String fieldApiName : campaignData.keySet()) {
@@ -299,7 +299,7 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
 
         Map<String, String> labelsByApiName = new Map<String, String>();
         for (Core_MDF_Custom_Layout_Configurations__c config : [
-            SELECT Core_MDF_Field_API_Name_txt__c, Core_MDF_Field_Label_txt__c
+            SELECT Core_MDF_Field_API_Name_txt__c, Core_MDF_Field_Label_txt__c, Core_MDF_Record_Name_nm__c
             FROM Core_MDF_Custom_Layout_Configurations__c
             WHERE Core_MDF_Object_API_Name_txt__c = :objectApiName
               AND API_Visibility__c = true
@@ -309,24 +309,24 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
                 continue;
             }
 
-            String fieldApiName = config.Core_MDF_Field_API_Name_txt__c.trim();
-            if (objectApiName == Core_MDF_Campaign_APIConstants.CAMPAIGN_OBJECT_API_NAME &&
-                fieldApiName == Core_MDF_Campaign_APIConstants.LEGACY_CAMPAIGN_PROGRAM_FIELD) {
-                fieldApiName = Core_MDF_Campaign_APIConstants.CAMPAIGN_PROGRAM_NAME_FIELD;
-            } else if (objectApiName == Core_MDF_Campaign_APIConstants.CAMPAIGN_OBJECT_API_NAME &&
-                fieldApiName == Core_MDF_Campaign_APIConstants.LEGACY_CAMPAIGN_ACCOUNT_FIELD) {
-                fieldApiName = Core_MDF_Campaign_APIConstants.CAMPAIGN_ACCOUNT_NAME_FIELD;
-            }
+            String rawFieldApiName = config.Core_MDF_Field_API_Name_txt__c.trim();
+            // Prefer the configured lookup display path (Core_MDF_Record_Name_nm__c) over the raw field API name.
+            String lookupFieldApiName = String.isNotBlank(config.Core_MDF_Record_Name_nm__c)
+                ? config.Core_MDF_Record_Name_nm__c.trim()
+                : null;
 
             String fieldLabel = String.isBlank(config.Core_MDF_Field_Label_txt__c)
-                ? fieldApiName
+                ? (lookupFieldApiName != null ? lookupFieldApiName : rawFieldApiName)
                 : config.Core_MDF_Field_Label_txt__c.trim();
 
-            // Deterministic duplicate handling: keep the first row from ordered results.
-            if (labelsByApiName.containsKey(fieldApiName)) {
-                continue;
+            // Map both the raw field name and the lookup display path so the label resolves
+            // regardless of which key format the filtered record data ends up using.
+            if (!labelsByApiName.containsKey(rawFieldApiName)) {
+                labelsByApiName.put(rawFieldApiName, fieldLabel);
             }
-            labelsByApiName.put(fieldApiName, fieldLabel);
+            if (lookupFieldApiName != null && !labelsByApiName.containsKey(lookupFieldApiName)) {
+                labelsByApiName.put(lookupFieldApiName, fieldLabel);
+            }
         }
 
         FIELD_LABEL_CACHE_BY_OBJECT.put(objectApiName, labelsByApiName);
@@ -373,7 +373,7 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
             if (String.isBlank(paramKey)) {
                 continue;
             }
-            if (Core_MDF_Campaign_APIConstants.FIELD_DISPLAY_PARAM == normalizeFieldDisplayToken(paramKey)) {
+            if (Core_MDF_Campaign_APIUtil.FIELD_DISPLAY_PARAM == normalizeFieldDisplayToken(paramKey)) {
                 fieldParam = params.get(paramKey);
                 continue;
             }
@@ -389,16 +389,16 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
         }
 
         String normalizedValue = normalizeFieldDisplayToken(fieldParam);
-        if (Core_MDF_Campaign_APIConstants.FIELD_DISPLAY_LABEL == normalizedValue) {
+        if (Core_MDF_Campaign_APIUtil.FIELD_DISPLAY_LABEL == normalizedValue) {
             mode.useLabels = true;
             return mode;
         }
-        if (Core_MDF_Campaign_APIConstants.FIELD_DISPLAY_TECHNICAL_NAME == normalizedValue) {
+        if (Core_MDF_Campaign_APIUtil.FIELD_DISPLAY_TECHNICAL_NAME == normalizedValue) {
             return mode;
         }
 
         mode.isValid = false;
-        mode.invalidParameter = Core_MDF_Campaign_APIConstants.FIELD_DISPLAY_PARAM;
+        mode.invalidParameter = Core_MDF_Campaign_APIUtil.FIELD_DISPLAY_PARAM;
         mode.invalidValue = fieldParam;
 
         return mode;
@@ -426,12 +426,12 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
             }
 
             String requestUri = RestContext.request.requestURI;
-            Integer segmentIndex = requestUri.indexOf(Core_MDF_Campaign_APIConstants.CAMPAIGN_SEGMENT);
+            Integer segmentIndex = requestUri.indexOf(Core_MDF_Campaign_APIUtil.CAMPAIGN_SEGMENT);
             if (segmentIndex == -1) {
                 return null;
             }
 
-            String campaignIdPart = requestUri.substring(segmentIndex + Core_MDF_Campaign_APIConstants.CAMPAIGN_SEGMENT.length());
+            String campaignIdPart = requestUri.substring(segmentIndex + Core_MDF_Campaign_APIUtil.CAMPAIGN_SEGMENT.length());
             Integer queryIndex = campaignIdPart.indexOf('?');
             if (queryIndex != -1) {
                 campaignIdPart = campaignIdPart.substring(0, queryIndex);
@@ -463,7 +463,7 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
         Integer idLength = normalized.length();
 
         // Salesforce IDs are 15 or 18 characters
-        if (idLength != Core_MDF_Campaign_APIConstants.SALESFORCE_ID_LENGTH_15 && idLength != Core_MDF_Campaign_APIConstants.SALESFORCE_ID_LENGTH_18) {
+        if (idLength != Core_MDF_Campaign_APIUtil.SALESFORCE_ID_LENGTH_15 && idLength != Core_MDF_Campaign_APIUtil.SALESFORCE_ID_LENGTH_18) {
             return false;
         }
 
@@ -477,7 +477,7 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
             String idString = String.valueOf(typedId);
 
             // Campaign object has key prefix 701
-            return idString.startsWith(Core_MDF_Campaign_APIConstants.CAMPAIGN_KEY_PREFIX);
+            return idString.startsWith(Core_MDF_Campaign_APIUtil.CAMPAIGN_KEY_PREFIX);
         } catch (Exception ex) {
             Core_MDF_CCP_UtilityClass.logError(ex);
             return false;
@@ -498,7 +498,7 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
 
     /**
      * Send success response with campaign data.
-     * Uses standard Core_MDF_Campaign_APIResponse wrapper.
+     * Uses standard Core_MDF_APIResponse wrapper.
      * Response structure: { isSuccess, success, details }
      * 
      * @param data Campaign details and related child records
@@ -517,14 +517,14 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
                 CampaignDetailsData campaignData = (CampaignDetailsData) data;
                 detailsMap = new Map<String, Object>();
                 detailsMap.put('details', campaignData.details);
-                detailsMap.put(Core_MDF_Campaign_APIConstants.RESPONSE_KEY_CAMPAIGN_BUDGETS, campaignData.budgets);
-                detailsMap.put(Core_MDF_Campaign_APIConstants.RESPONSE_KEY_CAMPAIGN_PURPOSE, campaignData.outcomes);
+                detailsMap.put(Core_MDF_Campaign_APIUtil.RESPONSE_KEY_CAMPAIGN_BUDGETS, campaignData.budgets);
+                detailsMap.put(Core_MDF_Campaign_APIUtil.RESPONSE_KEY_CAMPAIGN_PURPOSE, campaignData.outcomes);
             } else {
                 detailsMap = (Map<String, Object>) data;
             }
 
             // Create standard API response
-            Core_MDF_Campaign_APIResponse apiResponse = new Core_MDF_Campaign_APIResponse();
+            Core_MDF_APIResponse apiResponse = new Core_MDF_APIResponse();
             apiResponse.setSuccessInfo(message, code);
             apiResponse.details = detailsMap;
 
@@ -532,13 +532,13 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
             RestContext.response = response;
         } catch (Exception ex) {
             Core_MDF_CCP_UtilityClass.logError(ex);
-            sendMinimalErrorResponse(String.valueOf(Core_MDF_Campaign_APIConstants.HTTP_STATUS_500));
+            sendMinimalErrorResponse(String.valueOf(Core_MDF_Campaign_APIUtil.HTTP_STATUS_500));
         }
     }
 
     /**
      * Send error response.
-     * Uses standard Core_MDF_Campaign_APIResponse wrapper.
+     * Uses standard Core_MDF_APIResponse wrapper.
      * Response structure: { isSuccess, error, details }
      * 
      * @param code HTTP error code as string (e.g., '7004')
@@ -565,7 +565,7 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
             RestResponse response = RestContext.response != null ? RestContext.response : new RestResponse();
             CampaignErrorConfig errorConfig = getCampaignErrorConfig(code);
             if (errorConfig == null) {
-                sendMinimalErrorResponse(String.valueOf(Core_MDF_Campaign_APIConstants.HTTP_STATUS_500));
+                sendMinimalErrorResponse(String.valueOf(Core_MDF_Campaign_APIUtil.HTTP_STATUS_500));
                 return;
             }
             response.statusCode = errorConfig.httpStatusCode;
@@ -580,7 +580,7 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
             }
 
             // Create standard API error response
-            Core_MDF_Campaign_APIResponse apiResponse = new Core_MDF_Campaign_APIResponse();
+            Core_MDF_APIResponse apiResponse = new Core_MDF_APIResponse();
             apiResponse.setErrorInfo(responseMessage, errorConfig.code);
             apiResponse.details = details;
 
@@ -588,7 +588,7 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
             RestContext.response = response;
         } catch (Exception ex) {
             Core_MDF_CCP_UtilityClass.logError(ex);
-            sendMinimalErrorResponse(String.valueOf(Core_MDF_Campaign_APIConstants.HTTP_STATUS_500));
+            sendMinimalErrorResponse(String.valueOf(Core_MDF_Campaign_APIUtil.HTTP_STATUS_500));
         }
     }
    
@@ -598,11 +598,11 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
    
     private static Map<String, Object> buildInvalidFieldDisplayDetails(String invalidParameter) {
         return new Map<String, Object>{
-            'parameter' => String.isBlank(invalidParameter) ? Core_MDF_Campaign_APIConstants.FIELD_DISPLAY_PARAM : invalidParameter,
-            'expectedParameter' => Core_MDF_Campaign_APIConstants.FIELD_DISPLAY_PARAM,
+            'parameter' => String.isBlank(invalidParameter) ? Core_MDF_Campaign_APIUtil.FIELD_DISPLAY_PARAM : invalidParameter,
+            'expectedParameter' => Core_MDF_Campaign_APIUtil.FIELD_DISPLAY_PARAM,
             'allowedValues' => new List<String>{
-                Core_MDF_Campaign_APIConstants.FIELD_DISPLAY_LABEL,
-                Core_MDF_Campaign_APIConstants.FIELD_DISPLAY_TECHNICAL_NAME
+                Core_MDF_Campaign_APIUtil.FIELD_DISPLAY_LABEL,
+                Core_MDF_Campaign_APIUtil.FIELD_DISPLAY_TECHNICAL_NAME
             }
         };
     }
@@ -610,7 +610,7 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
     private static void setErrorTracking(CampaignDetailsResponse response) {
         response.statusCode = (RestContext.response != null && RestContext.response.statusCode != null)
             ? String.valueOf(RestContext.response.statusCode)
-            : String.valueOf(Core_MDF_Campaign_APIConstants.HTTP_STATUS_500);
+            : String.valueOf(Core_MDF_Campaign_APIUtil.HTTP_STATUS_500);
         response.isSuccess = false;
     }
 
@@ -620,9 +620,9 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
         }
 
         try {
-            Core_MDF_RestAPI_Logger.ErrorConfig loggerConfig = Core_MDF_RestAPI_Logger.getErrorConfigDetails(
+            Core_MDF_RestAPI_Logger.ErrorConfig loggerConfig = Core_MDF_RestAPI_Logger.getCachedErrorConfigDetails(
                 errorCode,
-                Core_MDF_Campaign_APIConstants.RESPONSE_CODE_CATEGORY_CAMPAIGN
+                Core_MDF_Campaign_APIUtil.RESPONSE_CODE_CATEGORY_CAMPAIGN
             );
             if (loggerConfig == null) {
                 return null;
@@ -659,7 +659,7 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
             minimalResponse.put('isSuccess', false);
             minimalResponse.put('error', new Map<String, String>{
                 'code' => statusCodeStr,
-                'message' => Core_MDF_Campaign_APIConstants.ERROR_MESSAGE_CONFIG_MISSING
+                'message' => Core_MDF_Campaign_APIUtil.ERROR_MESSAGE_CONFIG_MISSING
             });
             response.responseBody = Blob.valueOf(JSON.serialize(minimalResponse));
             RestContext.response = response;
@@ -676,12 +676,13 @@ global without sharing class Core_MDF_Campaign_Details_RestAPI{
      * @param code Status code as string
      * @return Parsed Integer status code, or HTTP_STATUS_500 on error
      */
+    
     private static Integer parseStatusCode(String code) {
         try {
-            return String.isBlank(code) ? Core_MDF_Campaign_APIConstants.HTTP_STATUS_500 : Integer.valueOf(code);
+            return String.isBlank(code) ? Core_MDF_Campaign_APIUtil.HTTP_STATUS_500 : Integer.valueOf(code);
         } catch (Exception ex) {
             Core_MDF_CCP_UtilityClass.logError(ex);
-            return Core_MDF_Campaign_APIConstants.HTTP_STATUS_500;
+            return Core_MDF_Campaign_APIUtil.HTTP_STATUS_500;
         }
     }
 

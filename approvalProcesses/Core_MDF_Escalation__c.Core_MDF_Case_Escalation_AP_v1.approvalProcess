@@ -28,7 +28,12 @@
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
         </assignedApprover>
         <entryCriteria>
-            <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Client CoMarketing Fund&apos;) &amp;&amp; (Core_MDF_Total_Dollar_Impact_amt__c  &lt;= 100000)</formula>
+            <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Client CoMarketing Fund&apos;) &amp;&amp; 
+(
+(Core_MDF_Total_Dollar_Impact_amt__c &lt;= 100000) || 
+((Core_MDF_Total_Dollar_Impact_amt__c &gt; 100000) &amp;&amp; (Core_MDF_Total_Dollar_Impact_amt__c &lt;= 1000000)) ||
+(Core_MDF_Total_Dollar_Impact_amt__c &gt; 1000000)
+)</formula>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
         <label>CCF Case Amt &lt;= $100k route to CCF FM Que L1</label>
@@ -519,7 +524,7 @@
         </rejectBehavior>
     </approvalStep>
     <description>Escalation Approval flow for Claim Case Review Result Record Type</description>
-    <emailTemplate>Testt/Core_MDF_Escalation_Email_Template_for_Approvers_Queue</emailTemplate>
+    <emailTemplate>unfiled$public/Core_MDF_Escalation_Email_Template_for_Approvers_Queue</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <criteriaItems>

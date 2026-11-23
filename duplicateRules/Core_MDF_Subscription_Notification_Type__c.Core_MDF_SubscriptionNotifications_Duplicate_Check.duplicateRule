@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DuplicateRule xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <actionOnInsert>Block</actionOnInsert>
+    <actionOnUpdate>Block</actionOnUpdate>
+    <alertText>Use one of these records?</alertText>
+    <description xsi:nil="true"/>
+    <duplicateRuleFilter>
+        <booleanFilter xsi:nil="true"/>
+        <duplicateRuleFilterItems>
+            <field>Core_MDF_Active_Ind__c</field>
+            <operation>equals</operation>
+            <value>true</value>
+            <sortOrder>1</sortOrder>
+            <table>Core_MDF_Subscription_Notification_Type__c</table>
+        </duplicateRuleFilterItems>
+    </duplicateRuleFilter>
+    <duplicateRuleMatchRules>
+        <matchRuleSObjectType>Core_MDF_Subscription_Notification_Type__c</matchRuleSObjectType>
+        <matchingRule>Core_MDF_SubsNotification_Duplicate_Check_Matching_Rule</matchingRule>
+        <objectMapping xsi:nil="true"/>
+    </duplicateRuleMatchRules>
+    <isActive>false</isActive>
+    <masterLabel>Core_MDF_SubscriptionNotifications_Duplicate_Check</masterLabel>
+    <securityOption>EnforceSharingRules</securityOption>
+    <sortOrder>1</sortOrder>
+</DuplicateRule>

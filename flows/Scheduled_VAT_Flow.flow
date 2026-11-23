@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>first_Reminder_Alert</name>
+        <label>first_Reminder_Alert</label>
+        <locationX>50</locationX>
+        <locationY>516</locationY>
+        <actionName>Core_MDF_Claim_VAT_Info__c.Core_MDF_NotifyClaimSubOnInvoiceReminder</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>recordIdList</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_MDF_Claim_VAT_Info__c.Core_MDF_NotifyClaimSubOnInvoiceReminder</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_5th_day_Reminder_Email</name>
+        <label>Send 5th day Reminder Email</label>
+        <locationX>314</locationX>
+        <locationY>516</locationY>
+        <actionName>Core_MDF_GenericClassToSendMail</actionName>
+        <actionType>apex</actionType>
+        <inputParameters>
+            <name>groupId</name>
+            <value>
+                <elementReference>$Record.Core_MDF_Claim_Id__r.Request.ChannelPartner.Core_MDF_Group_Id__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendDiff</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>templateName</name>
+            <value>
+                <stringValue>Core_MDF_FinalRemToRSMForVAT</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_MDF_GenericClassToSendMail</nameSegment>
+    </actionCalls>
+    <apiVersion>50.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_Dates</name>
+        <label>Check Dates</label>
+        <locationX>314</locationX>
+        <locationY>396</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>check_First_Reminder_Date</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_MDF_First_Reminder_Date_Dtm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>today</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>first_Reminder_Alert</targetReference>
+            </connector>
+            <label>check First Reminder Date</label>
+        </rules>
+        <rules>
+            <name>check_Second_Reminder_Date</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_MDF_Second_Reminder_Date_Dtm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>today</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_5th_day_Reminder_Email</targetReference>
+            </connector>
+            <label>check Second Reminder Date</label>
+        </rules>
+    </decisions>
+    <formulas>
+        <name>today</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()</expression>
+    </formulas>
+    <interviewLabel>Scheduled VAT Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Scheduled VAT Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Records</name>
+        <label>Get Records</label>
+        <locationX>314</locationX>
+        <locationY>276</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_Dates</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Core_MDF_Status_Txt__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Pending Documents</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Status_Txt__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Revision Required</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Core_MDF_Claim_VAT_Info__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Records</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Core_MDF_Status_Txt__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Pending Documents</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Status_Txt__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Revision Required</stringValue>
+            </value>
+        </filters>
+        <object>Core_MDF_Claim_VAT_Info__c</object>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2020-10-16</startDate>
+            <startTime>03:05:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Obsolete</status>
+    <textTemplates>
+        <name>InternalUsersType</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>InternalUsers</text>
+    </textTemplates>
+    <textTemplates>
+        <name>Template_Subject</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Final Reminder:VAT Documentation Needed for Claim #&amp;nbsp;{!$Record.Core_MDF_Claim_Id__r.Core_MDF_Claim_Ref_Number__c}&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>TemplateBody</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Dear Member,
+    Your claim has been selected for a VAT Invoice review. Please submit the documents for your claim.
+    
+    Claim # {!$Record.Core_MDF_Claim_Id__r.Core_MDF_Claim_Ref_Number__c}
+    Activity Name:{!$Record.Core_MDF_Claim_Id__r.Request.Title}
+    Campaign Name:{!$Record.Core_MDF_Claim_Id__r.Core_MDF_Campaign_Id__r.Name}
+    Activity Type:{!$Record.Core_MDF_Claim_Id__r.Core_MDF_Activity_Types__c}
+    Country / Region:{!$Record.Core_MDF_Claim_Id__r.Core_MDF_Country_Location_nm__c}
+    Document Submission Link: &lt;a href=&quot;{!$Label.Core_MDF_PFRCommunityLink}{!$Record.Id}&quot;&gt;{!$Record.Name}   
+    Thank you,
+    Intel Global Partner Marketing Team</text>
+    </textTemplates>
+    <variables>
+        <name>recordIdList</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <elementReference>$Record.Id</elementReference>
+        </value>
+    </variables>
+</Flow>

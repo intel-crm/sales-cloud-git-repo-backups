@@ -4,7 +4,13 @@
     overflow: hidden;
     white-space: nowrap;
 }
- 
+/* .THIS .table-align tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light shade for even rows */
+/*}
+
+.THIS .table-align tr:nth-child(odd) {
+    background-color: #ffffff; /* White or lighter shade for odd rows */
+/*} */
 
 .THIS .spnr{
     Z-index : 10000 !important;

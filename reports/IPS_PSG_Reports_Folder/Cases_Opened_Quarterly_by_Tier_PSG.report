@@ -384,7 +384,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Case.Core_AAQC_Case_recordType</value>
+            <value>Case.Core_AAQC_Case_recordType,Case.CEP_Case</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
@@ -400,20 +400,13 @@
             <operator>notEqual</operator>
             <value>Invalid</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT.NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>IPS Test Account</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Month</dateGranularity>
+        <dateGranularity>Quarter</dateGranularity>
         <field>CREATED_DATEONLY</field>
-        <sortOrder>Desc</sortOrder>
+        <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
@@ -431,11 +424,13 @@
     </params>
     <reportType>CaseList</reportType>
     <scope>organization</scope>
-    <showDetails>false</showDetails>
+    <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_PREVCUR2Y</interval>
+        <endDate>2019-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-01-01</startDate>
     </timeFrameFilter>
 </Report>

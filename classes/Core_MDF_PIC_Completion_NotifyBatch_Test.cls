@@ -53,8 +53,7 @@ public class Core_MDF_PIC_Completion_NotifyBatch_Test {
         bypassFunctionKeys.add('Bypass_Bank_ABM_Sharing');
         bypassFunctionKeys.add('Bypass_ABM_Internal_Sharing');
         bypassFunctionKeys.add('Bypass_ABM_External_Sharing');
-        bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation');
-
+        
         
         Set<String> myset1 = new Set<String>();
         List<String> result1 = new List<String>();
@@ -165,7 +164,7 @@ public class Core_MDF_PIC_Completion_NotifyBatch_Test {
             PermissionSet ccfAccMgr = [SELECT Id, Name From PermissionSet WHERE Name='Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr' LIMIT 1];
             insert new PermissionSetAssignment(AssigneeId = testUser.id, PermissionSetId = ccfAccMgr.Id);
         }
-        Core_MDF_Int_Users_Partner_Geo_Mapping__c ccfIupgm = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
+        /*Core_MDF_Int_Users_Partner_Geo_Mapping__c ccfIupgm = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
         ccfIupgm.Core_MDF_Account_id__c = ccpIntelAccount.Id;
         ccfIupgm.Core_MDF_Program_nm__c = 'Client CoMarketing Fund';
         ccfIupgm.Core_MDF_Region_Sub_Region_nm__c = 'EMEA';
@@ -173,8 +172,8 @@ public class Core_MDF_PIC_Completion_NotifyBatch_Test {
         ccfIupgm.Core_MDF_Role_nm__c='Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr';
         ccfIupgm.Core_MDF_All_Accounts_cd__c = 'No';
         System.runAs(testUser){
-            insert ccfIupgm;
-        }
+         //insert ccfIupgm;
+        }*/ //14285
         Id recordTypeIdPMB = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByName().get('CoMarketing').getRecordTypeId();
         PartnerMarketingBudget opalbudget = Core_MDF_CCP_TestDataUtility.createBudget('TestOpalPMB',recordTypeIdPMB,ccfacc.Id,ccfCp.Id,12345678,System.today().addDays(-90),System.today().addDays(+90),false);
         opalbudget.Core_MDF_Budget_Type__c='MDF';
@@ -263,7 +262,7 @@ public class Core_MDF_PIC_Completion_NotifyBatch_Test {
         }
         MDFpfr.Core_MDF_Fund_Request_Status__c='In-Progress';
         System.runAs(testUser){
-            update MDFpfr;
+           update MDFpfr;
         }
         system.runAs(testUser)
         {

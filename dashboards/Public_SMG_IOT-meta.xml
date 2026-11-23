@@ -6,6 +6,11 @@
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>11531123@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
         <accessLevel>View</accessLevel>
         <sharedTo>All_Users_Sales_Internal</sharedTo>
         <sharedToType>Group</sharedToType>

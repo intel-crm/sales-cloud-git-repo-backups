@@ -1,0 +1,137 @@
+<template>
+<lightning-card title="Claims to Recover From">   
+    <template if:true={hasData}>
+        <lightning-button variant="brand"
+        label="Export to CSV"
+        onclick={exportToCSV}
+        slot="actions"></lightning-button>
+    </template> 
+    <div class="slds-p-around_x-small">
+        <template if:true={hasData}>
+            <div class="slds-scrollable" style="height:500px;">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr class="">
+                            <th class="slds-size_3-of-10" scope="col">
+                                <div class="slds-truncate" title="Row"></div>
+                            </th>
+                            <th class="slds-size_1-of-10" scope="col">
+                                <lightning-input onchange={allSelected} type="checkbox"></lightning-input>
+                            </th>
+                            <th class="slds-size_3-of-10" scope="col">
+                                <div class="slds-truncate" title="Claim #">Claim #</div>
+                            </th>
+                            <th class="slds-size_3-of-10" scope="col">
+                                <div class="slds-truncate" title="Budget Type">Budget Type</div>
+                            </th>
+                            <th class="slds-size_3-of-10" scope="col">
+                                <div class="slds-truncate" title="Geo">Geo</div>
+                            </th>
+                            <th class="slds-size_3-of-10" scope="col">
+                                <div class="slds-truncate" title="Country">Country</div>
+                            </th>
+                            <th class="slds-size_3-of-10" scope="col">
+                                <div class="slds-truncate" title="Claim Status">Claim Status</div>
+                            </th>
+                            <th class="slds-size_3-of-10" scope="col">
+                                <div class="slds-truncate" title="Activity Category">Activity Category</div>
+                            </th>
+                            <th class="slds-size_3-of-10" scope="col">
+                                <div class="slds-truncate" title="Activity Type">Activity Type</div>
+                            </th>
+                            <th class="slds-size_3-of-10" scope="col">
+                                <div class="slds-truncate" title="Claim Amount">Claim Amount</div>
+                            </th>
+                            <th class="slds-size_3-of-10" scope="col">
+                                <div class="slds-truncate" title="Recovery Amount">Recovery Amount</div>
+                            </th>
+                            <th class="slds-size_3-of-10" scope="col">
+                                <div class="slds-truncate" title="Balance Amount">Balance Amount</div>
+                            </th>
+                            <th class="slds-size_3-of-10" scope="col">
+                                <div class="slds-truncate" title="CommentsCountry">Comments</div>
+                            </th>
+                        </tr>
+                    </thead>
+                <tbody>
+                    <template for:each = {resultList} for:item = "con">
+                        <tr key={con.Id} class="tableRows"> 
+                            <td class="slds-size_3-of-10">
+                                <div></div>
+                            </td>                      
+                                <td class="slds-size_1-of-10">
+                                <template if:true={con.selected}>
+                                <div>
+                                    <lightning-input type="checkbox" onchange={checkboxActions} value={con.claimID} data-id={con.Id} checked disabled={isDisabled}></lightning-input>
+                                </div>
+                                </template>
+                                <template if:false={con.selected}>
+                                <div>
+                                    <lightning-input type="checkbox" onchange={checkboxActions} value={con.claimID} data-id={con.Id} disabled={isDisabled}></lightning-input>
+                                </div>
+                                </template>    
+                                </td>
+                            <td class="slds-size_3-of-10">
+                                <div>{con.claimID}</div>
+                            </td>
+                            <td class="slds-size_3-of-10">
+                                <div>{con.budgetType}</div>
+                            </td>
+                            <td class="slds-size_3-of-10">
+                                <div>{con.geo}</div>
+                            </td>
+                            <td class="slds-size_3-of-10">
+                                <div>{con.country}</div>
+                            </td>
+                            <td class="slds-size_3-of-10">
+                                <div>{con.clmStatus}</div>
+                            </td>
+                            <td class="slds-size_3-of-10">
+                                <div>{con.actCategory}</div>
+                            </td>
+                            <td class="slds-size_3-of-10">
+                                <div>{con.actType}</div>
+                            </td>
+                            <td class="slds-size_3-of-10">
+                                <span class="dollars">{con.claimAmt}</span>
+                            </td>
+                            <td class="slds-size_3-of-10">
+                               
+                                    <lightning-input type="number" 
+                                    class="recoveryCmp"
+                                    key={con.key} 
+                                    data-id={con.Id} 
+                                    name="input1" 
+                                    label="Name" 
+                                    onchange={recoveryInputActions}
+                                    value={con.recoveryAmount} 
+                                    variant="label-hidden"
+                                    step="0.01"
+                                    disabled={isDisabled}></lightning-input>
+                              
+                            </td>
+                            <td class="slds-size_3-of-10">
+                                <template if:true={con.balanceAmt}>
+                                    <span class="dollars">{con.balanceAmt}</span>
+                                </template>
+                                
+                            </td>
+                            <td class="slds-size_3-of-10">
+                                <lightning-input key={con.key} 
+                                data-id={con.Id} 
+                                name="input1" 
+                                label="Name" 
+                                value={con.comments} 
+                                variant="label-hidden"
+                                onchange={commentActions}
+                                disabled={isDisabled}></lightning-input>
+                            </td>
+                        </tr>
+                    </template>
+                    </tbody>
+                </table>
+                </div>                
+            </template>               
+        </div>
+</lightning-card>
+</template>

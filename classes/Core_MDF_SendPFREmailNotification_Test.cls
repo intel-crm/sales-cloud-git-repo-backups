@@ -4,8 +4,8 @@ public class Core_MDF_SendPFREmailNotification_Test {
     @TestSetup 
     static void createTestData(){
        
-        
-
+        // Highlight: Unused Local Variable - 14285 // Suma
+        //profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
         User testUser = Core_MDF_CCP_TestDataUtility.createUser(false);    
         testUser.LastName = 'User Test';
@@ -86,7 +86,8 @@ public class Core_MDF_SendPFREmailNotification_Test {
             database.insert(cpList);
             
             List<Account> accList = new List<Account>();
-
+            // Highlight: Unused Local Variable - 14285 // Suma
+            //Account accIntel = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Acc New 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
             Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, 
                                                                             false);
             acc1.Core_Account_Type__c = 'Reseller';            
@@ -315,6 +316,7 @@ public class Core_MDF_SendPFREmailNotification_Test {
     System.assertEquals('Revision Required', pfr.Core_MDF_Fund_Request_Status__c, 'Partner Fund Request status should be updated to Revision Required');
     System.assertEquals(0, pfr.Core_MDF_Approval_Step_Completed__c, 'Approval step should be reset to 0');
     }
+    
     @isTest
     public static void sendEmailInt(){
         User user = [SELECT Id,email FROM User WHERE email = 'ccfaccntmngr@example.com' limit 1];

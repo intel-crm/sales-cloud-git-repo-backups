@@ -16,7 +16,7 @@
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
-        <showValues>true</showValues>
+        <showValues>false</showValues>
         <size>Huge</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
@@ -37,7 +37,7 @@
     </filter>
     <format>Matrix</format>
     <groupingsDown>
-        <dateGranularity>Month</dateGranularity>
+        <dateGranularity>Week</dateGranularity>
         <field>CLOSED_DATEONLY</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>

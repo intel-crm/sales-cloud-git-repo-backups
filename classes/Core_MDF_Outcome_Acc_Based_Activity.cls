@@ -70,7 +70,7 @@ public without sharing class Core_MDF_Outcome_Acc_Based_Activity {
     @AuraEnabled
     public static void saveAccountAllocations(Id activityId, Object accountAllocationValues) {
         try {
-            PartnerFundRequest parentActivity = [Select Id, Title, Core_MDF_Activity_Description__c, Core_MDF_Start_Date__c, Core_MDF_End_Date__c, Core_MDF_Focus_Area_nm__c, RecordTypeId, Core_MDF_Budget_Type_nm__c, Core_MDF_Maximum_Intel_Investment_amt__c, Core_MDF_Country_nm__c, Core_MDF_Brand_nm__c, Core_MDF_Tactics_nm__c,Core_MDF_TargetAudience_nm__c, Core_MDF_Initiative_nm__c,Core_MDF_EcosystemPartner_nm__c, Core_MDF_Technology_txt__c,Core_MDF_Outcomes_nm__c, Core_MDF_Priority_nm__c, Core_MDF_Priority_2_nm__c,
+            PartnerFundRequest parentActivity = [Select Id, Title, Core_MDF_Activity_Description__c, Core_MDF_Start_Date__c, Core_MDF_End_Date__c, Core_MDF_Focus_Area_nm__c, RecordTypeId, Core_MDF_Budget_Type_nm__c, Core_MDF_Maximum_Intel_Investment_amt__c, Core_MDF_Country_nm__c, Core_MDF_Brand_nm__c, Core_MDF_Tactics_nm__c,Core_MDF_TargetAudience_nm__c,Core_MDF_TargetAudience__c,Core_MDF_Priorities__c, Core_MDF_Initiative_nm__c,Core_MDF_EcosystemPartner_nm__c, Core_MDF_Technology_txt__c,Core_MDF_Outcomes_nm__c, Core_MDF_Priority_nm__c, Core_MDF_Priority_2_nm__c,
                 Core_MDF_ProductType__c,Core_MDF_BU_Split__c,Core_MDF_BU1_Split_Percent_nbr__c,Core_MDF_Activity_Number__c , Core_MDF_Outcome_Region_nm__c, Core_MDF_Fund_Request_Status__c, RequestedAmount, AllocationId, Status, Core_MDF_Reimbursement_Rate_txt__c,Core_MDF_Budget_Amount_Local_amt__c,Core_MDF_Exchange_Rate_ptc__c,Core_MDF_Region_nm__c From PartnerFundRequest Where Id = :activityId];
             List<AccountAllocationWrapper> wrapperList =(List<AccountAllocationWrapper>) JSON.deserialize(JSON.serialize(accountAllocationValues),List<AccountAllocationWrapper>.class);
             
@@ -250,6 +250,8 @@ public without sharing class Core_MDF_Outcome_Acc_Based_Activity {
             nodeActivity.Core_MDF_Brand_nm__c = parentActivity.Core_MDF_Brand_nm__c;
             nodeActivity.Core_MDF_Tactics_nm__c = parentActivity.Core_MDF_Tactics_nm__c;
             nodeActivity.Core_MDF_TargetAudience_nm__c = parentActivity.Core_MDF_TargetAudience_nm__c;
+            nodeActivity.Core_MDF_TargetAudience__c = parentActivity.Core_MDF_TargetAudience__c;
+            nodeActivity.Core_MDF_Priorities__c = parentActivity.Core_MDF_Priorities__c;
             nodeActivity.Core_MDF_Initiative_nm__c = parentActivity.Core_MDF_Initiative_nm__c;
             nodeActivity.Core_MDF_EcosystemPartner_nm__c = parentActivity.Core_MDF_EcosystemPartner_nm__c;
             nodeActivity.Core_MDF_Technology_txt__c = parentActivity.Core_MDF_Technology_txt__c;
@@ -359,6 +361,8 @@ public without sharing class Core_MDF_Outcome_Acc_Based_Activity {
             newActivity.Core_MDF_Brand_nm__c != oldActivity.Core_MDF_Brand_nm__c ||
             newActivity.Core_MDF_Tactics_nm__c != oldActivity.Core_MDF_Tactics_nm__c ||
             newActivity.Core_MDF_TargetAudience_nm__c != oldActivity.Core_MDF_TargetAudience_nm__c ||
+            newActivity.Core_MDF_TargetAudience__c != oldActivity.Core_MDF_TargetAudience__c ||
+            newActivity.Core_MDF_Priorities__c != oldActivity.Core_MDF_Priorities__c ||
             newActivity.Core_MDF_Initiative_nm__c != oldActivity.Core_MDF_Initiative_nm__c ||
             newActivity.Core_MDF_EcosystemPartner_nm__c != oldActivity.Core_MDF_EcosystemPartner_nm__c ||
             newActivity.Core_MDF_Technology_txt__c != oldActivity.Core_MDF_Technology_txt__c ||
@@ -373,7 +377,8 @@ public without sharing class Core_MDF_Outcome_Acc_Based_Activity {
             newActivity.Core_MDF_Exchange_Rate_ptc__c != oldActivity.Core_MDF_Exchange_Rate_ptc__c ||
             newActivity.Core_MDF_Budget_Amount_Local_amt__c != oldActivity.Core_MDF_Budget_Amount_Local_amt__c ||
             newActivity.RequestedAmount != oldActivity.RequestedAmount ||
-            newActivity.Core_MDF_Region_nm__c != oldActivity.Core_MDF_Region_nm__c
+            newActivity.Core_MDF_Region_nm__c != oldActivity.Core_MDF_Region_nm__c ||
+            newActivity.Status != oldActivity.Status
         );
     }
 
@@ -491,6 +496,8 @@ public without sharing class Core_MDF_Outcome_Acc_Based_Activity {
         updatedSubActivity.Core_MDF_Brand_nm__c = parentActivity.Core_MDF_Brand_nm__c;
         updatedSubActivity.Core_MDF_Tactics_nm__c = parentActivity.Core_MDF_Tactics_nm__c;
         updatedSubActivity.Core_MDF_TargetAudience_nm__c = parentActivity.Core_MDF_TargetAudience_nm__c;
+        updatedSubActivity.Core_MDF_TargetAudience__c = parentActivity.Core_MDF_TargetAudience__c;
+        updatedSubActivity.Core_MDF_Priorities__c = parentActivity.Core_MDF_Priorities__c;
         updatedSubActivity.Core_MDF_Initiative_nm__c = parentActivity.Core_MDF_Initiative_nm__c;
         updatedSubActivity.Core_MDF_EcosystemPartner_nm__c = parentActivity.Core_MDF_EcosystemPartner_nm__c;
         updatedSubActivity.Core_MDF_Technology_txt__c = parentActivity.Core_MDF_Technology_txt__c;
@@ -506,6 +513,7 @@ public without sharing class Core_MDF_Outcome_Acc_Based_Activity {
         updatedSubActivity.Core_MDF_Budget_Amount_Local_amt__c = parentActivity.Core_MDF_Budget_Amount_Local_amt__c;
         updatedSubActivity.RequestedAmount = parentActivity.RequestedAmount;
         updatedSubActivity.Core_MDF_Region_nm__c = parentActivity.Core_MDF_Region_nm__c;
+        updatedSubActivity.Status = parentActivity.Status;
         return updatedSubActivity;
     }
 

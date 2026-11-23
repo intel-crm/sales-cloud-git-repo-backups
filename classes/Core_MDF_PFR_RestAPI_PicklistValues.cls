@@ -138,18 +138,23 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
             response.ReimbursementRate = getReimbursementRateValues(campaignRecord);
             response.SegmentProduct = getSegmentProductValues(campaignRecord);
             response.AccountDetails = getAccountDetails(campaignRecord);
-            response.MemberAcceptorUserDetailsStructured = getMemberAcceptorUsersStructured(campaignRecord);
 
-             Account requestedAccount = null;
+            // Get Member Acceptor and Intel Approver users
+            // Priority 1: Use optional acct-name parameter if provided (query only that account, no children)
+            // Priority 2: Use campaign's associated account if campaignId provided (query that account AND its children)
+            Account requestedAccount = null;
             Boolean includeChildAccounts = false;  // Default: don't include child accounts
             
             String accountName = RestContext.request.params.get('acct-name');
             if (String.isNotBlank(accountName)) {
                 List<Account> matchingAccounts = queryAccountsByName(accountName);
                 if (!matchingAccounts.isEmpty()) {
+                    response.MemberAcceptorUserDetails = getMemberAcceptorUsers(matchingAccounts, false);
                     response.IntelApproverUserDetails = getIntelApproverUsers(matchingAccounts, campaignRecord);
                 }
             } else if (campaignRecord != null && String.isNotBlank(campaignRecord.Core_MDF_Account__c)) {
+                response.MemberAcceptorUserDetails = getMemberAcceptorUsers(campaignRecord.Core_MDF_Account__c, false);
+                // Get account from campaign's ultimate account field if no acct-name provided
                 try {
                     String campaignAccountId = campaignRecord.Core_MDF_Account__c;
                     List<Account> campaignAccounts = [
@@ -166,13 +171,17 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
                         includeChildAccounts = true;
                     }
                 } catch (Exception e) {
-                    System.debug('Exception=='+e.getLineNumber());
+                    // Silently fail if account lookup fails
                 }
             }
+            //if (requestedAccount == null) {
+                //Account ultimateAccount = resolveUltimateAccount(requestedAccount);
+                //response.IntelApproverUserDetails = getIntelApproverUsers(ultimateAccount.Id, campaignRecord);
+            //}
             if (String.isBlank(accountName) && requestedAccount != null) {
-                //response.MemberAcceptorUserDetails = memberAcceptorUsersDetails(campaignRecord);
-                String ultimateAccount = resolveUltimateAccount(requestedAccount);
-                response.IntelApproverUserDetails = getIntelApproverUsers(ultimateAccount, campaignRecord);
+                response.MemberAcceptorUserDetails = getMemberAcceptorUsers(requestedAccount.Id, includeChildAccounts);
+                Account ultimateAccount = resolveUltimateAccount(requestedAccount);
+                response.IntelApproverUserDetails = getIntelApproverUsers(ultimateAccount.Id, campaignRecord);
             }
             response.isSuccess = true;
             response.code = '200';
@@ -507,27 +516,38 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
     /**
      * Resolves the ultimate account by traversing the hierarchy
      */
-    private static String resolveUltimateAccount(Account requestedAccount) {
+    private static Account resolveUltimateAccount(Account requestedAccount) {
         if (requestedAccount == null) {
             return null;
         }
-        
-        List<Account> lstAccount =[SELECT Id,Name,Core_MDF_CoMarketing_Ultimate_Account__c from Account where Id=: requestedAccount.id];
-        Id utlimateAcId = requestedAccount.id;
-        if(!lstAccount.isEmpty()) utlimateAcId = lstAccount[0].Core_MDF_CoMarketing_Ultimate_Account__c != null ? lstAccount[0].Core_MDF_CoMarketing_Ultimate_Account__c : lstAccount[0].id;
-        
-        return utlimateAcId;
+        if (requestedAccount.Core_MDF_CoMarketing_Ultimate_Account__c != null) {
+            return new Account(
+                Id = requestedAccount.Core_MDF_CoMarketing_Ultimate_Account__c,
+                Name = requestedAccount.Core_MDF_CoMarketing_Ultimate_Account__r.Name
+            );
+        }
+
+        Id currentAccountId = requestedAccount.Id;
+        Account currentAccount = requestedAccount;
+        Integer depth = 0;
+        while (currentAccount.ParentId != null && depth < 10) {
+            currentAccount = [SELECT Id, Name, ParentId FROM Account WHERE Id = :currentAccount.ParentId LIMIT 1];
+            currentAccountId = currentAccount.Id;
+            depth++;
+        }
+        return currentAccountId == requestedAccount.Id ? requestedAccount : currentAccount;
     }
-    
+
     /**
-     * Gets Member Acceptor users in structured format grouped by Account Name (similar to SegmentProduct)
-     * Returns List of maps with structure: {"Account Name": "...", "allowed values": [{userId, name}, ...]}
+     * Gets Member Acceptor users for an account and optionally its child accounts
+     * @param accountId The account ID to search
+     * @param includeChildAccounts Whether to include child accounts in the search
      */
     @TestVisible
-    private static List<Map<String, Object>> getMemberAcceptorUsersStructured(Campaign campaignDetail) {
-        List<Map<String, Object>> structuredUsers = new List<Map<String, Object>>();
-        if (campaignDetail == null) {
-            return structuredUsers;
+    private static List<MemberAcceptorUserDetail> getMemberAcceptorUsers(Id accountId, Boolean includeChildAccounts) {
+        List<MemberAcceptorUserDetail> userDetails = new List<MemberAcceptorUserDetail>();
+        if (accountId == null) {
+            return userDetails;
         }
 
         String submitterPermissionSetName = Core_MDF_CustomLabelConfig.getTextValues(EXTERNAL_SUBMITTER_PERMISSION_SET);
@@ -536,107 +556,89 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
         }
 
         try {
+            // Build set of account IDs to search
             Set<Id> accountIds = new Set<Id>();
-            if (String.isNotBlank(campaignDetail.Core_MDF_Account__c)) {
-                accountIds.add(campaignDetail.Core_MDF_Account__c);
-            }
-            Campaign objCmp =[select id,Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c from campaign where id=:campaignDetail.id limit 1];
-            // Include direct child and related accounts tied to the campaign account.
-            // This ensures only accounts with member acceptor mappings are returned,
-            // while skipping accounts that do not have a mapping.
-            List<Account> relatedAccounts = [
-                SELECT id
+            accountIds.add(accountId);
+            
+            // Get child accounts if requested
+            if (includeChildAccounts) {
+                List<Account> childAccounts = [
+                    SELECT Id
                     FROM Account
-                    WHERE Core_MDF_CoMarketing_Ultimate_Account__c = : objCmp.Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c //'0012i00000Ke2jfAAB' //campaignDetail.Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c
-                    AND Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c =: campaignDetail.Core_MDF_Program__c
-                    AND Core_MDF_Active_Ind__c =: true
-                    LIMIT 5000
-            ];
-
-            for (Account relatedAccount : relatedAccounts) {
-                if (relatedAccount.Id != null) {
-                    accountIds.add(relatedAccount.Id);
+                    WHERE ParentId = :accountId
+                    LIMIT 50
+                ];
+                for (Account child : childAccounts) {
+                    accountIds.add(child.Id);
                 }
             }
-
-            if (accountIds.isEmpty()) {
-                return structuredUsers;
-            }
-
-            List<Core_MDF_Partner_Node_User_Mapping__c> memberAcceptorMappings = [
-                SELECT Core_MDF_Account__c,
-                       Core_MDF_Account__r.Name,
-                       Core_MDF_User__c,
-                       Core_MDF_User__r.Name
+            
+            // Query Member Acceptor users from requested account and child accounts
+            Map<Id, Core_MDF_Partner_Node_User_Mapping__c> accountUsersById = new Map<Id, Core_MDF_Partner_Node_User_Mapping__c>();
+            for (Core_MDF_Partner_Node_User_Mapping__c mapping : [
+                SELECT Id, Core_MDF_User__c, Core_MDF_User__r.Name
                 FROM Core_MDF_Partner_Node_User_Mapping__c
                 WHERE Core_MDF_Account__c IN :accountIds
-                  AND Core_MDF_Active_Ind__c = true
                   AND Core_MDF_User__c != null
                   AND Core_MDF_User__r.IsActive = true
+                  AND Core_MDF_Active_Ind__c = true
                   AND Core_MDF_User__r.UserType = :PARTNER_COMMUNITY_USER_TYPE
-            ];
-
-            if (memberAcceptorMappings.isEmpty()) {
-                return structuredUsers;
+            ]) {
+                accountUsersById.put(mapping.Core_MDF_User__c, mapping);
             }
 
-            Set<Id> userIdsForPermissionCheck = new Set<Id>();
-            for (Core_MDF_Partner_Node_User_Mapping__c memberMapping : memberAcceptorMappings) {
-                if (memberMapping.Core_MDF_User__c != null) {
-                    userIdsForPermissionCheck.add(memberMapping.Core_MDF_User__c);
-                }
-            }
-
-            Set<Id> permittedUserIds = new Set<Id>();
-            try {
-                for (PermissionSetAssignment psa : [
-                    SELECT AssigneeId
-                    FROM PermissionSetAssignment
-                    WHERE AssigneeId IN :userIdsForPermissionCheck
-                      AND PermissionSet.Name = :submitterPermissionSetName
-                ]) {
-                    permittedUserIds.add(psa.AssigneeId);
-                }
-            } catch (QueryException e) {
-                // PermissionSetAssignment not queryable in this context; return mapped users anyway.
-            }
-
-            Map<String, List<Map<String, String>>> usersByAccountName = new Map<String, List<Map<String, String>>>();
-            for (Core_MDF_Partner_Node_User_Mapping__c memberMapping : memberAcceptorMappings) {
-                if (memberMapping.Core_MDF_User__c == null || memberMapping.Core_MDF_Account__r == null || String.isBlank(memberMapping.Core_MDF_Account__r.Name)) {
-                    continue;
+            if (!accountUsersById.isEmpty()) {
+                Set<Id> permittedUserIds = new Set<Id>();
+                try {
+                    for (PermissionSetAssignment psa : [
+                        SELECT AssigneeId
+                        FROM PermissionSetAssignment
+                        WHERE AssigneeId IN :accountUsersById.keySet()
+                          AND PermissionSet.Name = :submitterPermissionSetName
+                    ]) {
+                        permittedUserIds.add(psa.AssigneeId);
+                    }
+                } catch (QueryException e) {
+                    // PermissionSetAssignment not queryable in this context, return users anyway
                 }
 
-                if (!permittedUserIds.isEmpty() && !permittedUserIds.contains(memberMapping.Core_MDF_User__c)) {
-                    continue;
+                for (Core_MDF_Partner_Node_User_Mapping__c userRecord : accountUsersById.values()) {
+                    if (permittedUserIds.isEmpty() || permittedUserIds.contains(userRecord.Core_MDF_User__c)) {
+                        userDetails.add(new MemberAcceptorUserDetail(userRecord.Core_MDF_User__c, userRecord.Core_MDF_User__r.Name));
+                    }
                 }
-
-                String accountName = memberMapping.Core_MDF_Account__r.Name;
-                if (!usersByAccountName.containsKey(accountName)) {
-                    usersByAccountName.put(accountName, new List<Map<String, String>>());
-                }
-
-                usersByAccountName.get(accountName).add(new Map<String, String>{
-                    'userId' => String.valueOf(memberMapping.Core_MDF_User__c),
-                    'name' => memberMapping.Core_MDF_User__r.Name
-                });
-            }
-
-            List<String> sortedAccountNames = new List<String>(usersByAccountName.keySet());
-            sortedAccountNames.sort();
-
-            for (String accountName : sortedAccountNames) {
-                structuredUsers.add(new Map<String, Object>{
-                    'Account Name' => accountName,
-                    'allowed values' => usersByAccountName.get(accountName)
-                });
             }
         } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
+            // Silently fail - return empty list
         }
-        return structuredUsers;
+        return userDetails;
+    }
+    @TestVisible
+    private static List<MemberAcceptorUserDetail> getMemberAcceptorUsers(List<Account> accounts, Boolean includeChildAccounts) {
+        List<MemberAcceptorUserDetail> userDetails = new List<MemberAcceptorUserDetail>();
+        Set<Id> addedUserIds = new Set<Id>();
+        if (accounts == null || accounts.isEmpty()) {
+            return userDetails;
+        }
+
+        for (Account accountRecord : accounts) {
+            for (MemberAcceptorUserDetail userDetail : getMemberAcceptorUsers(accountRecord.Id, includeChildAccounts)) {
+                if (addedUserIds.add(userDetail.userId)) {
+                    userDetails.add(userDetail);
+                }
+            }
+        }
+        return userDetails;
     }
 
+    @TestVisible
+    private static List<MemberAcceptorUserDetail> getMemberAcceptorUsers(Id accountId) {
+        return getMemberAcceptorUsers(accountId, false);
+    }
+
+    /**
+     * Gets Intel Approver users for the ultimate account
+     */
     @TestVisible
     private static List<UserDetail> getIntelApproverUsers(Id ultimateAccountId) {
         return getIntelApproverUsers(ultimateAccountId, null);
@@ -660,8 +662,8 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
                 return new List<UserDetail>();
             }
 
-            String ultimateAccount = resolveUltimateAccount(campaignAccounts[0]);
-            return ultimateAccount == null ? new List<UserDetail>() : getIntelApproverUsers(ultimateAccount, campaignRecord);
+            Account ultimateAccount = resolveUltimateAccount(campaignAccounts[0]);
+            return ultimateAccount == null ? new List<UserDetail>() : getIntelApproverUsers(ultimateAccount.Id, campaignRecord);
         } catch (Exception e) {
             Core_MDF_CCP_UtilityClass.logError(e);
             return new List<UserDetail>();
@@ -690,10 +692,11 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
                 if (String.isNotBlank(trimmedCountry)) {
                     campaignCountries.add(trimmedCountry);
                 }
-            }
+            }System.debug('1-=-=-=-=-dfgfg='+allowedRegions);
             
             if (!campaignCountries.isEmpty()) {
                 allowedRegions = getRegionsForCountries(campaignCountries);
+                System.debug('-=-=-=-=-dfgfg='+allowedRegions);
             }
         }
 
@@ -741,7 +744,7 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
         }
         return userDetails;
     }
-     @TestVisible
+    @TestVisible
     private static List<UserDetail> getIntelApproverUsers(List<Account> accounts, Campaign campaignRecord) {
         List<UserDetail> userDetails = new List<UserDetail>();
         Set<Id> addedUserIds = new Set<Id>();
@@ -750,11 +753,11 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
         }
 
         for (Account accountRecord : accounts) {
-            String ultimateAccount = resolveUltimateAccount(accountRecord);
+            Account ultimateAccount = resolveUltimateAccount(accountRecord);
             if (ultimateAccount == null) {
                 continue;
             }
-            for (UserDetail userDetail : getIntelApproverUsers(ultimateAccount, campaignRecord)) {
+            for (UserDetail userDetail : getIntelApproverUsers(ultimateAccount.Id, campaignRecord)) {
                 if (addedUserIds.add(userDetail.userId)) {
                     userDetails.add(userDetail);
                 }
@@ -870,6 +873,8 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
             fieldValues.values.addAll(activePfrValues);
         }
         
+        
+        
         return fieldValues;
     }
 
@@ -954,7 +959,60 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
         }
     }
 
-    
+    /**
+     * Retrieves ALL Priority values from Core_MDF_PFRCustomPicklist__c filtered by record type (CCF or DCF).
+     * Returns ONLY values from the custom picklist object - no other sources.
+     * Combines values from all three priority fields (Priority, Priority #2, Priority #3).
+     * 
+     * @param programType Program type ('CCF', 'DCF', or null)
+     * @return Set of all Priority values for this program
+     */
+  /*  private static Set<String> getPriorityValuesFromCustomPicklist(String programType) {
+        Set<String> priorities = new Set<String>();
+        
+        try {
+            if (!Core_MDF_PFRCustomPicklist__c.SObjectType.getDescribe().isAccessible()) {
+                return priorities;
+            }
+            
+            // Determine record type names: CCF = Client Co-Marketing Fund, DCF = Data Center Co-Marketing Fund
+            List<String> recordTypeNames = new List<String>();
+            if (programType == 'CCF') {
+                recordTypeNames.add('Client Co-Marketing Fund');
+            } else if (programType == 'DCF') {
+                recordTypeNames.add('Data Center Co-Marketing Fund');
+            } else if (String.isBlank(programType)) {
+                // If no program specified, include both CCF and DCF
+                recordTypeNames.add('Client Co-Marketing Fund');
+                recordTypeNames.add('Data Center Co-Marketing Fund');
+            }
+            
+            // Query Core_MDF_PFRCustomPicklist__c and extract all distinct Priority values from all 3 priority fields
+            List<Core_MDF_PFRCustomPicklist__c> customPicklistRecords = [
+                SELECT Core_MDF_Priority__c, Core_MDF_Priority_2_nm__c, Core_MDF_Priority_3_nm__c
+                FROM Core_MDF_PFRCustomPicklist__c
+                WHERE Core_MDF_Program__c IN :recordTypeNames
+                WITH USER_MODE
+            ];
+            
+            for (Core_MDF_PFRCustomPicklist__c record : customPicklistRecords) {
+                if (!String.isBlank(record.Core_MDF_Priority__c)) {
+                    priorities.add(record.Core_MDF_Priority__c);
+                }
+                if (!String.isBlank(record.Core_MDF_Priority_2_nm__c)) {
+                    priorities.add(record.Core_MDF_Priority_2_nm__c);
+                }
+                if (!String.isBlank(record.Core_MDF_Priority_3_nm__c)) {
+                    priorities.add(record.Core_MDF_Priority_3_nm__c);
+                }
+            }
+            
+        } catch (Exception e) {
+            Core_MDF_CCP_UtilityClass.logError(e);
+        }
+        
+        return priorities;
+    }  */
 
     /**
      * Returns the program type (CCF or DCF) from the campaign record.
@@ -1268,8 +1326,7 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
             return segmentProducts;
         }
 
-        // String program = Core_MDF_CCP_GenericUtility.getTechnicalProgramName(campaignRecord.Core_MDF_Program__c);
-        String program = campaignRecord.Core_MDF_Program__c;
+        String program = Core_MDF_CCP_GenericUtility.getTechnicalProgramName(campaignRecord.Core_MDF_Program__c);
         Core_MDF_ActivitySegmentMapping.SystemOperations sysOp = new Core_MDF_ActivitySegmentMapping.SystemOperations();
         String accountId = sysOp.getUltimateAccountId(campaignRecord.Core_MDF_Account__c);
         if (String.isBlank(accountId)) {
@@ -1283,35 +1340,12 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
             }
             processedSegments.add(segment.toLowerCase());
 
-            /*Map<Id, String> productNamesById = new Map<Id, String>();
+            Map<Id, String> productNamesById = new Map<Id, String>();
             try {
                 List<Core_MDF_Account_Product_Mapping__c> apmList = sysOp.getAccountProductMappings(segment, accountId, program);
                 for (Core_MDF_Account_Product_Mapping__c apm : apmList) {
                     if (apm.Core_MDF_Product__c != null && apm.Core_MDF_Product__r != null && String.isNotBlank(apm.Core_MDF_Product__r.Name)) {
                         productNamesById.put(apm.Core_MDF_Product__c, apm.Core_MDF_Product__r.Name);
-                    }
-                }
-            } catch (Exception e) {
-                Core_MDF_CCP_UtilityClass.logError(e);
-            }*/
-            Map<Id, String> productNamesById = new Map<Id, String>();
-            
-            try {
-                List<Product2> products =
-                    Core_MDF_ActivitySegmentMapping.getProductMappingForSegment(
-                        segment,
-                        accountId,
-                        program
-                    );
-            
-                if (products != null) {
-                    for (Product2 product : products) {
-                        if (
-                            product.Id != null &&
-                            String.isNotBlank(product.Name)
-                        ) {
-                            productNamesById.put(product.Id, product.Name);
-                        }
                     }
                 }
             } catch (Exception e) {
@@ -1380,7 +1414,7 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
 
             Set<Id> addedAccountIds = new Set<Id>();
             for (Account accountRecord : accounts) {
-                if(accountRecord.Core_MDF_Virtual_Corp_Account_Id__c != null && addedAccountIds.add(accountRecord.Core_MDF_Virtual_Corp_Account_Id__c)) {
+                if(accountRecord.Core_MDF_Virtual_Corp_Account_Id__c != null) {
                     allowedValues.add(new Map<String, String>{
                         'Name' => accountRecord.Core_MDF_Virtual_Corp_Account_Id__r.Name,
                         'ID'   => String.valueOf(
@@ -1400,6 +1434,7 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
         } catch (Exception e) {
             Core_MDF_CCP_UtilityClass.logError(e);
         }
+        System.debug('3allowedValues'+allowedValues);
         accountDetails.add(new Map<String, Object>{
             'AllowedValues' => allowedValues
         });
@@ -1723,6 +1758,16 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
         
         return activeValues;
     }
+
+    /**
+     * Filters picklist values based on program type by querying Core_MDF_PFRCustomPicklist__c records.
+     * This allows for program-specific (CCF vs DCF) control over which values are active.
+     * 
+     * @param fieldName Field API name
+     * @param allActiveValues All values marked as active in the schema
+     * @param programType Program type ('CCF' or 'DCF')
+     * @return Filtered set of active values for the specified program
+     */
     private static Set<String> filterPicklistValuesByProgram(String fieldName, Set<String> allActiveValues, String programType) {
         Set<String> programActiveValues = allActiveValues;
         
@@ -1763,14 +1808,7 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
     /**
      * Indicates whether the campaign categories include any pre-2025 variants.
      */
-    private static Boolean campaignHasPre2025Category(Campaign campaignRecord) {
-        if (campaignRecord == null || String.isBlank(campaignRecord.Core_MDF_Activity_Category__c)) return true;
-        for (String cat : campaignRecord.Core_MDF_Activity_Category__c.split(';')) {
-            if (cat.trim().contains('(Pre-2025)')) return true;
-        }
-        return false;
-    }
-
+    
     private static void sendResponse(Integer statusCode, PicklistValuesResponse response) {
         RestContext.response.statusCode = statusCode;
         RestContext.response.addHeader('Content-Type', 'application/json');
@@ -1795,7 +1833,7 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
         writeNullableObjectField(generator, 'Reimbursement Rate', response.ReimbursementRate);
         writeNullableObjectField(generator, 'SegmentProduct', response.SegmentProduct);
         writeNullableObjectField(generator, 'AccountDetails', response.AccountDetails);
-        writeNullableObjectField(generator, 'MemberAcceptor UserDetails', response.MemberAcceptorUserDetailsStructured);
+        writeNullableObjectField(generator, 'MemberAcceptor UserDetails', response.MemberAcceptorUserDetails);
         writeNullableObjectField(generator, 'IntelApprover UserDetails', response.IntelApproverUserDetails);
         generator.writeEndObject();
         return generator.getAsString();
@@ -1823,7 +1861,6 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
         public List<Map<String, Object>> SegmentProduct { get; set; }
         public List<Map<String, Object>> AccountDetails { get; set; }
         public List<MemberAcceptorUserDetail> MemberAcceptorUserDetails { get; set; }
-        public List<Map<String, Object>> MemberAcceptorUserDetailsStructured { get; set; }
         public List<UserDetail> IntelApproverUserDetails { get; set; }
 
         public PicklistValuesResponse() {
@@ -1833,7 +1870,6 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
             SegmentProduct = new List<Map<String, Object>>();
             AccountDetails = new List<Map<String, Object>>();
             MemberAcceptorUserDetails = new List<MemberAcceptorUserDetail>();
-            MemberAcceptorUserDetailsStructured = new List<Map<String, Object>>();
             IntelApproverUserDetails = new List<UserDetail>();
         }
     }
@@ -1851,11 +1887,10 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
     global class MemberAcceptorUserDetail {
         public Id userId { get; set; }
         public String name { get; set; }
-        public String accName { get; set; }
-        public MemberAcceptorUserDetail(Id userId, String name,String accname) {
+
+        public MemberAcceptorUserDetail(Id userId, String name) {
             this.userId = userId;
             this.name = name;
-            this.accName = accName;
         }
     }
 
@@ -1951,5 +1986,4 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
         }
         return false;
     }
-
 }

@@ -3,9 +3,9 @@
 * Version     : 1.0
 * Created Date: 09-02-2022
 * Modification Log :
-* Developer            	Date               	Description
+* Developer             Date                Description
 ------------------------------------------------------------------------------------------------------------------------------------------
-*Accenture - NK			09-02-2022			Service Class for handling trigger related functions on Partner Node User Mapping object.
+*Accenture - NK         09-02-2022          Service Class for handling trigger related functions on Partner Node User Mapping object.
 ******************************************************************************************************************************************/
 
 public without sharing class Core_MDF_PNUM_Mapping_ServiceHandler {
@@ -25,13 +25,13 @@ public without sharing class Core_MDF_PNUM_Mapping_ServiceHandler {
     public static Map<Id,Id> accNodeToProgramMap = new Map<Id,Id>();
     
     /************************************************************************************************************ 
-    Method Name:       	addUsersToNodeGroup
-    Parameters:			newPNUMList (Trigger.New from PNUM trigger)
-    Description:       	Method to add users to respective node group on PNUM creation
-    @Added By:         	Accenture-NK  - 09-02-2022
-    Modified By:       	Date:      - Changes: 
+    Method Name:        addUsersToNodeGroup
+    Parameters:         newPNUMList (Trigger.New from PNUM trigger)
+    Description:        Method to add users to respective node group on PNUM creation
+    @Added By:          Accenture-NK  - 09-02-2022
+    Modified By:        Date:      - Changes: 
     *************************************************************************************************************/     
-	public static Map<Id,GroupMember> addUsersToNodeGroup(List<Core_MDF_Partner_Node_User_Mapping__c> newPNUMList){
+    public static Map<Id,GroupMember> addUsersToNodeGroup(List<Core_MDF_Partner_Node_User_Mapping__c> newPNUMList){
         Map<Id,Id> accIdToGroupIdMap = new Map<Id,Id>();
         Set<Id> accIdSet = new Set<Id>();
         Map<Id,GroupMember> pnumIdTogroupMemList = new Map<Id,GroupMember>();
@@ -51,16 +51,16 @@ public without sharing class Core_MDF_PNUM_Mapping_ServiceHandler {
                 pnumIdTogroupMemList.put(pnum.Id, groupMem);
             }
         }
-
+       
         return pnumIdTogroupMemList;
     }
 
     /************************************************************************************************************ 
-    Method Name:       	removeUsersFromNodeGroup
-    Parameters:			newPNUMList (Trigger.New from PNUM trigger)
-    Description:       	Method to remove users from respective node group on PNUM deletion/inactivation.
-    @Added By:         	Accenture-NK  - 09-02-2022
-    Modified By:       	Date:      - Changes: 
+    Method Name:        removeUsersFromNodeGroup
+    Parameters:         newPNUMList (Trigger.New from PNUM trigger)
+    Description:        Method to remove users from respective node group on PNUM deletion/inactivation.
+    @Added By:          Accenture-NK  - 09-02-2022
+    Modified By:        Date:      - Changes: 
     *************************************************************************************************************/ 
     public static Map<Id,Id> removeUsersFromNodeGroup(List<Core_MDF_Partner_Node_User_Mapping__c> newPNUMList){
         Map<String,Id> userIdGroupIdToPnumIdMap = new Map<String,Id>();
@@ -92,11 +92,11 @@ public without sharing class Core_MDF_PNUM_Mapping_ServiceHandler {
     }
 
     /************************************************************************************************************ 
-    Method Name:       	removeAndAddUsersToNodeGroup
-    Parameters:			newPNUMList (Trigger.New from PNUM trigger), 
-    Description:       	Method to remove and add users to respective node group on PNUM update.
-    @Added By:         	Accenture-JB  - 02/22/2022
-    Modified By:       	Date:      - Changes: 
+    Method Name:        removeAndAddUsersToNodeGroup
+    Parameters:         newPNUMList (Trigger.New from PNUM trigger), 
+    Description:        Method to remove and add users to respective node group on PNUM update.
+    @Added By:          Accenture-JB  - 02/22/2022
+    Modified By:        Date:      - Changes: 
     *************************************************************************************************************/ 
     public static void removeAndAddUsersToNodeGroup(List<Core_MDF_Partner_Node_User_Mapping__c> newPNUMList, List<Core_MDF_Partner_Node_User_Mapping__c> oldPNUMList){
         
@@ -111,14 +111,14 @@ public without sharing class Core_MDF_PNUM_Mapping_ServiceHandler {
     }
 
     /************************************************************************************************************ 
-    Method Name:       	addUsersToNodeGroupOnInsert
-    Parameters:			newPNUMList (Trigger.New from PNUM trigger), 
-    Description:       	Method to add users to respective node group on PNUM insert.
-    @Added By:         	Accenture-JB  - 02/22/2022
-    Modified By:       	Date:      - Changes: 
+    Method Name:        addUsersToNodeGroupOnInsert
+    Parameters:         newPNUMList (Trigger.New from PNUM trigger), 
+    Description:        Method to add users to respective node group on PNUM insert.
+    @Added By:          Accenture-JB  - 02/22/2022
+    Modified By:        Date:      - Changes: 
     *************************************************************************************************************/ 
     public static void addUsersToNodeGroupOnInsert(List<Core_MDF_Partner_Node_User_Mapping__c> newPNUMList){
-        
+       
         Map<Id,GroupMember> GroupMemberList= addUsersToNodeGroup(newPNUMList);
         if(GroupMemberList != null && !GroupMemberList.isEmpty()){
             System.enqueueJob(new Core_MDF_Add_GroupMembers_Queueable(GroupMemberList));
@@ -126,11 +126,11 @@ public without sharing class Core_MDF_PNUM_Mapping_ServiceHandler {
     }
 
     /************************************************************************************************************ 
-    Method Name:       	removeUsersFromNodeGroupOnDelete
-    Parameters:			newPNUMList (Trigger.New from PNUM trigger), 
-    Description:       	Method to remove users from respective node group on PNUM deletion/inactivation.
-    @Added By:         	Accenture-JB  - 02/22/2022
-    Modified By:       	Date:      - Changes: 
+    Method Name:        removeUsersFromNodeGroupOnDelete
+    Parameters:         newPNUMList (Trigger.New from PNUM trigger), 
+    Description:        Method to remove users from respective node group on PNUM deletion/inactivation.
+    @Added By:          Accenture-JB  - 02/22/2022
+    Modified By:        Date:      - Changes: 
     *************************************************************************************************************/ 
     public static void removeUsersFromNodeGroupOnDelete(List<Core_MDF_Partner_Node_User_Mapping__c> oldPNUMList){
         
@@ -301,12 +301,18 @@ public without sharing class Core_MDF_PNUM_Mapping_ServiceHandler {
         Map<String,String> ultimateAccToGroupMap = new Map<String,String>();
         //External Access Type
         String extAccessType = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PGM_Ext_AccessType');
-        
+        system.debug('newPNUMappingList::'+newPNUMappingList);
         //quering existing PGM and preparing map
-        for (Core_MDF_Partner_Group_Mapping__c  pgm : [Select id,Core_MDF_Account__c,Core_MDF_Channel_Program__c,Core_MDF_Group_Name__c from Core_MDF_Partner_Group_Mapping__c where Core_MDF_Type_of_Access__c =: extAccessType and Core_MDF_Inactive_Ind__c = false and Core_MDF_Account__c IN: (accNodeToUltimateAccMap.values()) and Core_MDF_Channel_Program__c IN: (accNodeToProgramMap.values())]){
+        for (Core_MDF_Partner_Group_Mapping__c  pgm : [Select id,Core_MDF_Account__c,Core_MDF_Channel_Program__c,Core_MDF_Group_Name__c 
+                                                       from Core_MDF_Partner_Group_Mapping__c 
+                                                       where Core_MDF_Type_of_Access__c =: extAccessType 
+                                                       and Core_MDF_Inactive_Ind__c = false 
+                                                       and Core_MDF_Account__c IN: (accNodeToUltimateAccMap.values()) 
+                                                       and Core_MDF_Channel_Program__c IN: (accNodeToProgramMap.values())]){
             //acc+progrm  > group name
             ultimateAccToGroupMap.put(pgm.Core_MDF_Account__c+'-'+pgm.Core_MDF_Channel_Program__c,pgm.Core_MDF_Group_Name__c);
         }
+        system.debug('ultimateAccToGroupMap::'+ultimateAccToGroupMap);
         //quering existing Group Member and preparing map
         for(GroupMember groupMember : [Select Id,UserOrGroupId,GroupId,Group.DeveloperName from GroupMember where UserOrGroupId IN : userIdSet]){
             if(userToGroupsMap.containsKey(groupMember.UserOrGroupId)){
@@ -315,6 +321,7 @@ public without sharing class Core_MDF_PNUM_Mapping_ServiceHandler {
                 userToGroupsMap.put(groupMember.UserOrGroupId, new List<String>{groupMember.Group.DeveloperName});
             }
         }
+        system.debug('userToGroupsMap::'+userToGroupsMap);
         //Looping all incoming PNUM's
         //Showing error if account group and user group does not match
         for(Core_MDF_Partner_Node_User_Mapping__c pnum : newPNUMappingList){
@@ -323,13 +330,19 @@ public without sharing class Core_MDF_PNUM_Mapping_ServiceHandler {
             }
             //get ultimate account based on account
             Id ultimateAccount = accNodeToUltimateAccMap.containsKey(pnum.Core_MDF_Account__c) ? accNodeToUltimateAccMap.get(pnum.Core_MDF_Account__c) : null;
+            system.debug('ultimateAccount::'+ultimateAccount);
             //get account channel program based on account
             Id accountProgram = accNodeToProgramMap.containsKey(pnum.Core_MDF_Account__c) ? accNodeToProgramMap.get(pnum.Core_MDF_Account__c) : null;
+            system.debug('accountProgram::'+accountProgram);
             //get group name based on ultimate account and program
             String groupName = ultimateAccToGroupMap.containsKey(ultimateAccount+'-'+accountProgram) ? ultimateAccToGroupMap.get(ultimateAccount+'-'+accountProgram) : null;
-           
+            system.debug('groupName::'+groupName);
             //get list of groups corresponding to user
             List<String> groupList = userToGroupsMap.containsKey(pnum.Core_MDF_User__c) ? userToGroupsMap.get(pnum.Core_MDF_User__c) : null;
+            system.debug('groupList::'+groupList);
+            system.debug('check1::'+groupList == null);
+            system.debug('check2::'+!String.isBlank(groupName));
+            system.debug('check3::'+!groupList.contains(groupName));
             if(groupList == null || (!String.isBlank(groupName) && groupList!=null && groupList.size()>0 && !groupList.contains(groupName))){
             pnum.addError(Label.Core_MDF_CrossAccountToUserMappingError);
             }
@@ -496,7 +509,7 @@ public without sharing class Core_MDF_PNUM_Mapping_ServiceHandler {
     Added By:           Accenture - SB - 07/31/2018
     Modified By:        Accenture - Krishna Kulkarni - 12/13/2019
     ******************************************************************************************************/
-    public static void deleteObjectShareRecords(List<Core_MDF_Partner_Node_User_Mapping__c> oldPNUMappingList, Map<Id, Core_MDF_Partner_Node_User_Mapping__c> newPNUMappingMap, boolean isDeleteDuringEdit) {
+     public static void deleteObjectShareRecords(List<Core_MDF_Partner_Node_User_Mapping__c> oldPNUMappingList, Map<Id, Core_MDF_Partner_Node_User_Mapping__c> newPNUMappingMap, boolean isDeleteDuringEdit) {
         List<Id> accountIdList = new List<Id>();
         try{
             for(Core_MDF_Partner_Node_User_Mapping__c pnuMappingRecord : oldPNUMappingList) {
@@ -529,6 +542,7 @@ public without sharing class Core_MDF_PNUM_Mapping_ServiceHandler {
         
         accountIdUserIdListMap.clear();
     }
+
 
     /*****************************************************************************************************
     Method Name:        deleteCaseShareRecords
@@ -636,4 +650,5 @@ public without sharing class Core_MDF_PNUM_Mapping_ServiceHandler {
             }
         }catch(Exception e) {Core_MDF_CCP_UtilityClass.logError(e); throw e;}
     }
-}
+    
+ }

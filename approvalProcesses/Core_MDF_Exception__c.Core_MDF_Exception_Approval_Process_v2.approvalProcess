@@ -240,7 +240,7 @@
     </finalRejectionActions>
     <finalRejectionRecordLock>false</finalRejectionRecordLock>
     <label>Core_MDF_Exception Approval Process_v2</label>
-    <processOrder>1</processOrder>
+    <processOrder>2</processOrder>
     <recordEditability>AdminOrCurrentApprover</recordEditability>
     <showApprovalHistory>false</showApprovalHistory>
 </ApprovalProcess>

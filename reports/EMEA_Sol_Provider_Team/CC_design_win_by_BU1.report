@@ -18,24 +18,39 @@
         <sourceColumnName>Opportunity.Core_Product_Application__c</sourceColumnName>
         <useOther>true</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Energy - Other</sourceValue>
+            </sourceValues>
             <value>Energy</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Automotive - Other</sourceValue>
+            </sourceValues>
             <value>Transportation</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Industrial - Other</sourceValue>
+            </sourceValues>
             <value>Industrial</value>
         </values>
         <values>
             <value>Medical</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Smart Home</sourceValue>
+            </sourceValues>
             <value>Smart Home</value>
         </values>
         <values>
             <value>Retail</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Blade SBC (Single Board Computer)</sourceValue>
+            </sourceValues>
             <value>Emb Other</value>
         </values>
     </buckets>
@@ -51,7 +66,7 @@
         <chartType>HorizontalBarGrouped</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
+        <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
         <secondaryGroupingColumn>STAGE_NAME</secondaryGroupingColumn>
@@ -151,7 +166,7 @@
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>

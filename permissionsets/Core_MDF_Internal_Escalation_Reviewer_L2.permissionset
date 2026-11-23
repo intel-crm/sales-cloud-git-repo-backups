@@ -763,6 +763,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.LID__LinkedIn_Company_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account.MaritzCX__Active__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1193,27 +1198,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Core_MDF_Claim_Payment_Link__c.Core_MDF_Payment_Run_Number_Nbr__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Claim_Payment_Link__c.Core_MDF_Reimbursable_Local_Amt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Claim_Payment_Link__c.Core_MDF_Reimbursement_Amount_Amt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Core_MDF_Claim_Payment_Link__c.Core_MDF_Requested_Reimbursement_Amt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_MDF_Claim_Payment_Link__c.Core_MDF_Unique_Key_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Account_txt_del__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Activity_Name_url__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1568,11 +1568,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>PartnerFundClaim.Core_MDF_Account_Name_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_Activity_Category__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1674,6 +1669,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_Cap_Type_nm__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Claim_Cancellation_Reason_txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1863,11 +1863,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>PartnerFundClaim.Core_MDF_NoOfLeads_Nbr__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_NoOfTrialActivations_Nbr__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1879,6 +1874,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_No_of_Emails_Opened_nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_No_of_Leads_nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_No_of_Recipients_nbr__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1899,11 +1904,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_Number_of_RSPs_nbr__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PartnerFundClaim.Core_MDF_Number_of_Recipient_nbr__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2328,6 +2328,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_Maximum_Intel_Investment_amt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PartnerFundRequest.Core_MDF_Member_Acceptor_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2339,6 +2344,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PartnerFundRequest.Core_MDF_Metrics_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_Outcome_Region_nm__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2587,10 +2597,30 @@
     <objectPermissions>
         <allowCreate>false</allowCreate>
         <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Core_MDF_Claim_Payment_Link__c</object>
+        <viewAllFields>false</viewAllFields>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>Core_MDF_Escalation__c</object>
+        <viewAllFields>false</viewAllFields>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Core_MDF_Payment__c</object>
         <viewAllFields>false</viewAllFields>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>

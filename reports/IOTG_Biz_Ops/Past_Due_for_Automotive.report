@@ -25,7 +25,7 @@
     </columns>
     <crossFilters>
         <criteriaItems>
-            <column>Core_BU_Short_Name_Old__c</column>
+            <column>Core_BU_Short_Name__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
             <value>PSG</value>
@@ -70,7 +70,7 @@
         <field>CLOSE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Past Due for Automotive 2020</name>
+    <name>Past Due for Automotive</name>
     <params>
         <name>terr</name>
         <value>all</value>

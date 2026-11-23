@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>50.0</apiVersion>
+    <available>true</available>
+    <description>Send Email to RMF Geo approvers when PFR status Changed to Revision Required from Pending Approval</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_StatusUpdate_GeoApprovers</name>
+    <style>none</style>
+    <subject>Activity #  is Pending Approval and is now ready for your Acceptance</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

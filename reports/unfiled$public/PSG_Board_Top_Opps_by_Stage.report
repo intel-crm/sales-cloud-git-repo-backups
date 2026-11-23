@@ -205,7 +205,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>BD-,DK-,N3000</value>
+            <value>BD-,DK-</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <callbackUrl>https://test.salesforce.com/services/oauth2/callback</callbackUrl>
+    <certificate>MIIDazCCAlOgAwIBAgIUYDkGHpykBjAPoWxldciDJF94iYswDQYJKoZIhvcNAQEL
+BQAwRTELMAkGA1UEBhMCSU4xEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM
+GEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yNjA2MDkxMjMzMTdaFw0yNzA2
+MDkxMjMzMTdaMEUxCzAJBgNVBAYTAklOMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw
+HwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB
+AQUAA4IBDwAwggEKAoIBAQCzcEdlJxxpNAmhsHU6KaMcngNNFL+OYKsEblcrEymW
+94SnjLr5pfGAnx08aO65kwAVn3x0VEEsXuMprSyfgyS0dNO5ugQkt/NLiBqKv8tw
+mGP3CeLNwbDN9GR3R+36T4ib3MV/an/Ij3AXodTxB8tqNcMmqot5/UIoTtAenfIB
+zOc/tbOdV478cZlMH/7h2hdMn+ZrQFIX6IV6fdVy6qbyiLOj8LLiiqJH9ADwRJq4
+jocFRjWvNjg09CoCK+vD2YeJg55aafZQ4WiSkJ+SM26OOFA10TZt+r3T2QBz/LLB
+Wf1FWQGzqQxHQSeZGbhrfEaFQxStlKKDKDz45mfeFSchAgMBAAGjUzBRMB0GA1Ud
+DgQWBBT1ImTK57LuqOO55E4wEPHMmoLRgTAfBgNVHSMEGDAWgBT1ImTK57LuqOO5
+5E4wEPHMmoLRgTAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQBB
+og3A0DB3UU0SsBDQGT5/PsR3wZDwAeenJcWkppY74C/Y9OBubNobKfu8xQztut9q
+f0bQg1bY5M2/0PkapFMNiwQe2DRZ6wat5CgGlVvClk3kfbQuj9Omnxh+JMyjc2e7
+ET8Ey2FENbDFRPhzLPmPn0nlO0+kwmVaA8nCID1bJykbL1flFft590UOOCmT2rf3
++W2TZwUT/n5R6FM3LbjfIsMITqVly8nH4wKmmROvMIl9+FrudCEEsHTne18tiJA6
+RFZZ4vKTXhALZ3L/PMokj3gTO7hQBMMnRD8E/rFnp2lSefWCIEkGcBkQLdGat6Fm
+6VG+VAHZ2WEzf9F804JY</certificate>
+    <consumerKey>3MVG9ahGHqp.k2_yt2nTHU9QGHLHFG0aR5HtKYM62ovBbacar6YsOkqxpLkqCMwlItCRSABl7ISgNfGWb74kO</consumerKey>
+    <externalClientApplication>Weezer_PFR_B2B</externalClientApplication>
+    <isClientCredentialsFlowEnabled>true</isClientCredentialsFlowEnabled>
+    <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>
+    <isCodeCredPostOnly>false</isCodeCredPostOnly>
+    <isConsumerSecretOptional>false</isConsumerSecretOptional>
+    <isDPopEnabled>false</isDPopEnabled>
+    <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+    <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+    <isIntrospectAllTokens>false</isIntrospectAllTokens>
+    <isMtlsEnabled>false</isMtlsEnabled>
+    <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+    <isPkceRequired>false</isPkceRequired>
+    <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+    <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+    <isSecretRequiredForTokenExchange>true</isSecretRequiredForTokenExchange>
+    <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+    <label>Weezer_PFR_B2B_glbloauth</label>
+    <shouldRotateConsumerKey>false</shouldRotateConsumerKey>
+    <shouldRotateConsumerSecret>false</shouldRotateConsumerSecret>
+</ExtlClntAppGlobalOauthSettings>

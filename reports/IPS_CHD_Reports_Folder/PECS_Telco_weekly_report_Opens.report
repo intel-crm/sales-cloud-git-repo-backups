@@ -149,8 +149,8 @@
             <column>Case.Core_IPS_Assigned_Queue__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Telco</value>
+            <operator>startsWith</operator>
+            <value>CHD - Telco</value>
         </criteriaItems>
         <criteriaItems>
             <column>OPEN</column>

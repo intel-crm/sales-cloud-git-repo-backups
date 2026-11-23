@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>test lookup</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>test lookup</value>
+    </caseValues>
+    <fields>
+        <label><!-- Balance Amount --></label>
+        <name>Balance_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Carry Over Amount --></label>
+        <name>Carry_Over_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Carry over from Prev Qtr --></label>
+        <name>Carry_over_from_Prev_Qtr__c</name>
+    </fields>
+    <fields>
+        <label><!-- test lookup --></label>
+        <name>test_lookup__c</name>
+        <relationshipLabel><!-- test lookup --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Dummy Replaced value This MSG is replaced from Github var --></errorMessage>
+        <name>Dummy_rule_by_DK</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -32,6 +32,18 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_GeoSubGeo_Budget_Type_nm__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_MDF_Check_Last_Modified_Date__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_MDF_Days_After_Modified__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Intel_Account__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

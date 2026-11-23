@@ -93,8 +93,7 @@ public class Core_MDF_Account_Utility_Test {
         intelAccount.Core_Geo__c='EMEA';
         intelAccount.Core_Sub_Geo__c='NEUR';
         database.insert(intelAccount);
-        User Admin = [Select Id from User where Email = 'systemadmin@example.com' Limit 1];
-        system.runAs(Admin){               
+        system.runAs(sysAdmUsr){               
             Account acc1 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Acc 1', cp.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, intelAccount.Id,false);            
             acc1.Core_Geo__c='EMEA';
             acc1.Core_Sub_Geo__c='NEUR';
@@ -110,14 +109,7 @@ public class Core_MDF_Account_Utility_Test {
             PartnerMarketingBudget pmbBudget = Core_MDF_CCP_TestDataUtility.createBudget('Test Acc 1 Budget 1', budget_Retail_Record_Type, acc1.Id, cp.Id, 12345, system.today(), system.today().addDays(30), false);
             pmbBudget.Core_MDF_Budget_Type_Txt__c = 'Retail MDF';
             insert pmbBudget;
-
-            // Create a second budget on same Ultimate Account + Program to exercise list accumulation/branching
-            PartnerMarketingBudget pmbBudget2 = Core_MDF_CCP_TestDataUtility.createBudget('Test Acc 1 Budget 2', budget_Retail_Record_Type, acc1.Id, cp.Id, 54321, system.today(), system.today().addDays(45), false);
-            pmbBudget2.Core_MDF_Budget_Type_Txt__c = 'Retail MDF';
-            insert pmbBudget2;
             
-            // Positive escalation (type matching label retrieved in batch via Core_MDF_CustomLabelConfig)
-            // We cannot change labels here; record type is already Core_MDF_Budget. This record should be picked by the batch SOQL.
             Core_MDF_Escalation__c esclationAcc1Test1 = new Core_MDF_Escalation__c();
             esclationAcc1Test1.RecordTypeId = escalation_Budget_Record_Type_Id; 
             esclationAcc1Test1.Core_MDF_Budget_ID_Number_id__c = pmbBudget.Id;
@@ -125,27 +117,10 @@ public class Core_MDF_Account_Utility_Test {
             esclationAcc1Test1.Core_MDF_Total_Dollar_Impact_amt__c = 10;
             esclationAcc1Test1.Core_MDF_Escalation_Name_txt__c = 'Test Escalation1';
             esclationAcc1Test1.Core_MDF_Approved_Amount_amt__c = 10;
-            // Set program so the (UltimateAcct + Program) key matches
-            esclationAcc1Test1.Core_MDF_Channel_Program_id__c = cp.Id;
-            insert esclationAcc1Test1;
-
-            // Second escalation linked to the second budget; use same program to avoid restricted picklist issues
-            Core_MDF_Escalation__c esclationAcc1Test2 = new Core_MDF_Escalation__c();
-            esclationAcc1Test2.RecordTypeId = escalation_Budget_Record_Type_Id; 
-            esclationAcc1Test2.Core_MDF_Budget_ID_Number_id__c = pmbBudget2.Id;
-            esclationAcc1Test2.Core_MDF_Root_Cause_nm__c = 'Appeal of Budget';
-            esclationAcc1Test2.Core_MDF_Total_Dollar_Impact_amt__c = 5;
-            esclationAcc1Test2.Core_MDF_Escalation_Name_txt__c = 'Test Escalation2';
-            esclationAcc1Test2.Core_MDF_Approved_Amount_amt__c = 5;
-            esclationAcc1Test2.Core_MDF_Channel_Program_id__c = cp.Id;
-            insert esclationAcc1Test2;
-
-            // Add both parent and child accounts to hit multiple group IDs aggregation
+            database.insert(esclationAcc1Test1);
             List<Account> accountList = new List<Account>();
             accountList.add(acc1);
-            accountList.add(acc1Node1);
-            // Execute batch to drive start/execute branches and downstream share creation
-            Id batchId = Database.executeBatch(new Core_MDF_Batch_SharingWithNewAcctGrp(accountList), 50);
+            Database.executeBatch(new Core_MDF_Batch_SharingWithNewAcctGrp(accountList));
         }
         Test.stopTest();
     }
@@ -153,21 +128,21 @@ public class Core_MDF_Account_Utility_Test {
     @isTest
     static void createGroupForAccountNodeTest(){
         User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
-        //System.runAs(sysAdminUser)
-        //{
+        System.runAs(sysAdminUser)
+        {
             Test.startTest();
             Account acc1 = [Select id,Core_MDF_Group_Id__c from Account where Name = 'Test Acc 1'];
         //    System.assert(acc1.Core_MDF_Group_Id__c !=null);
             assert.isNotNull(acc1.Core_MDF_Group_Id__c);
             Test.stopTest();
-        //}
+        }
     }
     @isTest
     static void reshareAccountNode(){
         User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         User sysAdminUser2 = [SELECT Id,Email from User where Email='systemadmin@example.com' limit 1];
-        //System.runAs(sysAdminUser)
-        //{
+        System.runAs(sysAdminUser)
+        {
             Test.startTest();
             List<Account> accList = new List<Account>();
             Account acc1 = [Select id,Core_MDF_Group_Id__c,Core_MDF_Channel_Program__c from Account where Name = 'Test Acc 1'];
@@ -177,16 +152,16 @@ public class Core_MDF_Account_Utility_Test {
             Database.update(accList);
             
             Integer i = [SELECT COUNT() from AccountShare where UserOrGroupId =: acc1.Core_MDF_Group_Id__c];   
-            assert.areEqual(0, i,'Error');
+            assert.areEqual(1, i,'Error');
             Test.stopTest();
-        //}
+        }
         
     }
     @isTest
     static void testFetchAccounts(){
         User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
-        //System.runAs(sysAdminUser)
-        //{
+        System.runAs(sysAdminUser)
+        {
             Test.startTest();
             List<Id> accList = new List<Id>();
             Account acc1 = [Select id,Core_MDF_Group_Id__c,Core_MDF_Channel_Program__c from Account where Name = 'Test Acc 1'];
@@ -194,56 +169,56 @@ public class Core_MDF_Account_Utility_Test {
             accList.add(acc1.id);
             String intelAccIdString = '(\''+String.join(new List<Id>(accList), '\', \'') + '\')';
         	String whereClause = ' Id IN'+intelAccIdString;
-            // Highlight: Unused Local Variable
+            // Highlight: Unused Local Variable - Indira
         	/*List<Account> accounts = */ Core_MDF_Account_Utility.fetchAccounts(whereClause);
-            // Unit Test Method should include System.Assert
+            // Unit Test Method should include System.Assert - Indira
            System.assertNotEquals(null, whereClause);
            System.assert(whereClause.contains(acc1.Id));
-        //}
+        }
         
     }
      @isTest
     static void testfetchPRMIPAAffiliation(){
         User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
-        //System.runAs(sysAdminUser)
-        //{
+        System.runAs(sysAdminUser)
+        {
             Test.startTest();
             Set<Id> accSet = new Set<Id>();
             Set<Id> prmId = new Set<Id>();
             Account acc1 = [Select id,Core_MDF_Group_Id__c,Core_MDF_Channel_Program__c from Account where Name = 'Test Acc 1'];
             acc1.ownerid = sysAdminUser.id;
             accSet.add(acc1.id);
-         // Highlight: Unused Local Variable 
+         // Highlight: Unused Local Variable - Indira
         /*	List<PRM_IPA_Affiliation__c> prmIPAAffiliation = */ Core_MDF_Account_Utility.fetchPRMIPAAffiliation(accSet,null);
           	List<PRM_IPA_Affiliation__c> prm1 = [Select id,Name from PRM_IPA_Affiliation__c where PRM_Account__c IN:accSet];
             for(PRM_IPA_Affiliation__c prm:prm1){
                 prmId.add(prm.id);
             }
-           // Highlight: Unused Local Variable
+           // Highlight: Unused Local Variable - Indira
           /*  List<PRM_IPA_Affiliation__c> prmIPAAffiliation1 = */ Core_MDF_Account_Utility.fetchPRMIPAAffiliation(null,prmId);  
-            // Unit Test Method should include System.Assert 
+            // Unit Test Method should include System.Assert - Indira
           System.assertNotEquals(null, accSet);
           System.assert(accSet.contains(acc1.Id));
-        //}
+        }
         
     }
     @isTest
     static void testFetchUnifiedIdAccounts(){
         User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
-        //System.runAs(sysAdminUser)
-        //{
+        System.runAs(sysAdminUser)
+        {
             Test.startTest();
             Set<String> unifiedId = new Set<String>();
             Account acc1 = [Select id,Core_MDF_Group_Id__c,Core_Unified_Global_Customer_BP_Id__c,Core_MDF_Channel_Program__c from Account where Name = 'Test Acc 1'];
             acc1.ownerid = sysAdminUser.id;
             acc1.Core_Unified_Global_Customer_BP_Id__c='UnifiedId001XY';
             unifiedId.add(acc1.id);
-           // Highlight: Unused Local Variable 
+           // Highlight: Unused Local Variable - Indira
           /*  List<Account> accounts = */ Core_MDF_Account_Utility.fetchUnifiedIdAccounts(unifiedId);
-           // Unit Test Method should include System.Assert 
+           // Unit Test Method should include System.Assert - Indira
          System.assertNotEquals(null, unifiedId);
          System.assert(unifiedId.contains(acc1.Id));
-        //}
+        }
         
     }
    

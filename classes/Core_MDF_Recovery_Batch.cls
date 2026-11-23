@@ -89,6 +89,8 @@ public without sharing class Core_MDF_Recovery_Batch implements Database.Batchab
         this.isRecReq_RecvryDone = isRecReq_RecvryDone;
         this.isPreSelClaim_RecvryDone = isPreSelClaim_RecvryDone;
         this.finalRecoveryList = new List<RecoveryRecoveryRequestWrap>();
+		//System.debug('Data after run : '+pgm);
+        
     }   
     
     //List<String> regionList = regions.split(',');
@@ -117,7 +119,8 @@ public without sharing class Core_MDF_Recovery_Batch implements Database.Batchab
         public boolean isRecReq_RecvryDone ;
         public boolean isPreSelClaim_RecvryDone ;
         public string expliciteAccIds;
-    }
+   }
+    
     
     public static string determinePreviousQuartYear(date dateToBeconverted){
         string result;

@@ -54,6 +54,7 @@ Modified By:        Date:      Changes:
                                                                        from Core_MDF_ObjRecType_Budget_FieldSetMap__mdt LIMIT 1000]){
                                                                            mapOfRecordTypes.put(recTypeMetaData.Core_MDF_Activity_RecordType_txt__c,recTypeMetaData.Core_MDF_Claim_RecordType_txt__c);  
                                                                        }
+        System.debug('MDT OPtimisation mapOfRecordTypes '+ mapOfRecordTypes);
         return mapOfRecordTypes;   
     }    
 }

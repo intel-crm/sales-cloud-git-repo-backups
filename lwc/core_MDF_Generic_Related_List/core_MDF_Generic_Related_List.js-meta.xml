@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+	<apiVersion>57</apiVersion>
+	<isExposed>true</isExposed>
+	<masterLabel>core_MDF_Generic_Related_List</masterLabel>
+	<description>To display Related objects details on a detail page</description>
+	<targets>
+		<target>lightning__HomePage</target>
+		<target>lightning__RecordPage</target>
+		<target>lightning__AppPage</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Page_Layout</target>
+        <target>lightningCommunity__Default</target>
+	</targets>
+	<targetConfigs>
+        <targetConfig targets="lightning__RecordPage,lightning__AppPage,lightning__HomePage">
+            <property name="relatedobjectApiName" label="Related Object API Name" type="String" default="Core_MDF_Camp_to_ActPartner__c"/>
+            <property name="strFields" label="Fields" type="String" default="Core_MDF_Activating_Partner_Account_id__c,Core_MDF_Activating_Partner_Account_id__r.Name"/>
+            <property name="criteriaFieldAPIName" label="Reference FieldAPIName" type="String" default="Core_MDF_Campaign_Id__c"
+                            description="The field on which query to be performed. 
+                            e.g. it can be AccountId from which Case records will be fetched."/>
+            <property name="additionalCriteria" label="Additional Criteria" type="String" default=" Core_MDF_Active_Ind__c=true "/> 
+            <!-- Ealay -->
+            <property name="restrictColumnVisiblity" label="Restrict Column Visiblity" type="String" default="Core_MDF_Initial_Baseline_Quantity_nbr__c"/> <!-- Remove while pushing Properties -->
+            <property name="restrictColumnVisiblityCriteria" label="Restrict Column Visiblity Criteria" type="String" default="Core_MDF_CampOutcomeOpt_In_Ind__c = true"/> <!-- Remove while pushing Properties -->
+             <!-- Ealay -->
+        </targetConfig>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="recordId" label="recordId" type="String" default="{!recordId}"/> 
+            <property name="relatedobjectApiName" label="Related Object API Name" type="String" default="Core_MDF_Camp_to_ActPartner__c"/>
+            <property name="strFields" label="Fields" type="String" default="Core_MDF_Activating_Partner_Account_id__c,Core_MDF_Activating_Partner_Account_id__r.Name"/>
+            <property name="criteriaFieldAPIName" label="Reference FieldAPIName" type="String" default="Core_MDF_Campaign_Id__c"
+                            description="The field on which query to be performed. 
+                            e.g. it can be AccountId from which Case records will be fetched."/>
+            <property name="additionalCriteria" label="Additional Criteria" type="String" default=" Core_MDF_Active_Ind__c=true "/> 
+            <!-- Ealay -->
+            <property name="restrictColumnVisiblity" label="Restrict Column Visiblity" type="String" default="Core_MDF_Initial_Baseline_Quantity_nbr__c"/> <!-- Remove while pushing Properties -->
+            <property name="restrictColumnVisiblityCriteria" label="Restrict Column Visiblity Criteria" type="String" default="Core_MDF_CampOutcomeOpt_In_Ind__c = true"/> <!-- Remove while pushing Properties -->
+             <!-- Ealay -->
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

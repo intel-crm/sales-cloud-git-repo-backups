@@ -13,6 +13,16 @@
         <name>Core_MDF_CCP_Special_Report_Viewer</name>
     </customPermissions>
     <description>This Permission set is for all CCP external users to get access to Special reports.</description>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Bank_Legal_Entity_Code_cd__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_Activity_Closure_Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>CCP External Special Report Viewer</label>
     <license>Partner Community</license>

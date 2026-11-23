@@ -91,8 +91,8 @@ System.debug('lstOfContacts **** = ' + lstOfContacts);
                                                                 Core_MDF_Partner_Group_Mapping__c
                                                                 where Core_MDF_Account__c = :loggdInUserAccountId 
                                                                 AND Core_MDF_Account__c in :accIds
-                                                                AND Core_MDF_Inactive_Ind__c = false
-                                                                AND Core_MDF_Group_Id__c in :loggedInUserGroupIds];
+                                                                AND Core_MDF_Group_Id__c in :loggedInUserGroupIds
+																AND Core_MDF_Inactive_Ind__c = false];
             
             System.debug(logLevel, 'usertype = '+ usertype);
             

@@ -77,10 +77,10 @@ public class Core_MDF_CCP_IPA_TestDataUtility {
         
         Core_Account_Group_Member__c agm = new Core_Account_Group_Member__c(Core_Partner_Account_Id__c=pagAcc.Id,Core_Intel_Account_Id__c=intelAcc.Id);
         insert agm;
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
        // Id ultimateAcctId = (acc.Core_MDF_Parent_Fund_Account__c != null ? acc.Core_MDF_Parent_Fund_Account__c : acc.Id);
         
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
        // ChannelProgram cp = [Select id,Name from ChannelProgram where Name = 'Intel Partner Alliance' limit 1];    
        
         PRM_BatchCustomSetting__c bcss = new PRM_BatchCustomSetting__c();
@@ -112,13 +112,19 @@ public class Core_MDF_CCP_IPA_TestDataUtility {
                 
         /*Core_MDF_BudgetType_Benefit_Mappings__c mdtRec = [select Core_MDF_Budget_Type__c from 
                                                            Core_MDF_BudgetType_Benefit_Mappings__c 
+                                                          where Core_MDF_Partner_Benefit__c='Business Client Acceleration - MDF' Limit 1];
+       Core_MDF_BudgetType_Benefit_Mappings__c mdtRec = [select Core_MDF_Budget_Type__c from 
+                                                           Core_MDF_BudgetType_Benefit_Mappings__c 
                                                           where Core_MDF_Partner_Benefit__c='Business Client Acceleration - MDF' Limit 1];*/
-       Core_MDF_BudgetType_Benefit_Mappings__c mdtRec = new Core_MDF_BudgetType_Benefit_Mappings__c();
+        Core_MDF_BudgetType_Benefit_Mappings__c mdtRec = new Core_MDF_BudgetType_Benefit_Mappings__c();
        mdtRec.Name = 'Test';
        mdtRec.Core_MDF_Budget_Type__c = 'Business Client Acceleration - MDF';
        insert mdtRec;
        
+      //  return mdtRec.Core_MDF_Budget_Type__c;
+        
         return mdtRec.Core_MDF_Budget_Type__c;
+        
     }
     
     
@@ -136,13 +142,13 @@ public class Core_MDF_CCP_IPA_TestDataUtility {
         
         Core_Account_Group_Member__c agm = new Core_Account_Group_Member__c(Core_Partner_Account_Id__c=pagAcc.Id,Core_Intel_Account_Id__c=intelAcc.Id);
         insert agm;
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
        // Id ultimateAcctId = (acc.Core_MDF_Parent_Fund_Account__c != null ? acc.Core_MDF_Parent_Fund_Account__c : acc.Id);
         
-        // Highlight: Unused Local Variable
+        // Highlight: Unused Local Variable - Indira
        // ChannelProgram cp = [Select id,Name from ChannelProgram where Name = 'Intel Partner Alliance' limit 1];    
        
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
        // List<PRM_PartnerBenefit__c> pbList = new List<PRM_PartnerBenefit__c>();
         
         PRM_BatchCustomSetting__c bcss = new PRM_BatchCustomSetting__c();

@@ -170,7 +170,6 @@ public class Core_MDF_UpdateBankDetails_Test {
 
         Core_Integration_Inbound_Message__c quotePayLoad = new Core_Integration_Inbound_Message__c();
         quotePayLoad.Core_Message_Type__c = 'Quote';
-        quotePayLoad.Core_Source_System__c = 'AGS';
         insert quotePayLoad;
         System.assert(quotePayLoad.Core_Message_Type__c == 'Quote');
     }

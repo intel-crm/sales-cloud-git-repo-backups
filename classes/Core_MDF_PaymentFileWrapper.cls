@@ -20,10 +20,31 @@ public class Core_MDF_PaymentFileWrapper {
     public String materialCode = '';
     public String shipToNumber ='';
     public String soldToNumber ='';
-    //WW42 added to hold costCenter
-     public String costCenter ='';
-    //WW05 to hold gl Account
+
+    //new Changes
+    public String invoiceType ='';
+    public String refNumber ='';
+    public String relevantQtr ='';
+    public String comments = '';
+    public String programId = '';
+    public String supplierName ='';
+    public String supplierNumber ='';
+    public String legalEntityCode ='';
+    public String paymentMethodCode ='';
+    public String headerDescription ='';
+    public String paymentCurrency ='';
+    public String taxCode ='';
+    public String lineItemDescription ='';
+    public String supplierCity ='';
+    public String supplierCountry ='';
+    public String supplierRegion ='';
+    public String supplierPostalCode ='';
+    public String salesOrgCode ='';
+    public String geoCode ='';
+    public String costCenter ='';
+    public String approverWWID ='';
     public String glAccount = '';
+
     //Only for IPA and RMF(Retail MDF)
     public Boolean isRecoveryIncluded = false;
     public Boolean includeOnlyClaimAmountForPayment = false;

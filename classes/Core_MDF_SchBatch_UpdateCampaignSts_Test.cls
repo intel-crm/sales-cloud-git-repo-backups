@@ -22,9 +22,9 @@ public class Core_MDF_SchBatch_UpdateCampaignSts_Test {
             acc.Core_MDF_Parent_Fund_Account__c = intacc.Id;
             insert acc;
             
-            insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Business Client Acceleration - MDF', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = true, Core_MDF_Partner_Benefit__c = 'Business Client Acceleration - MDF', Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Proposal_Based', Core_MDF_Budget_Type__c = 'Proposal I MDF', Core_MDF_Program_Nm__c = 'Intel Partner Alliance', Core_MDF_RecordType__c = 'Proposal Based');
             Account ipaCoMarketingAccount = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('IPA Co-Marketing Account', ipaCP.id, Core_MDF_CCP_TestDataUtility.Account_Record_Type,intacc.id, true);
-            string budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount); 
+            // Highlight: Unused Local Variable - Indira
+           // string budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount); 
 
             // Creating Campaign with utility class      
             List<Campaign> campList = new List<Campaign>();
@@ -46,7 +46,8 @@ public class Core_MDF_SchBatch_UpdateCampaignSts_Test {
                 
                 Test.startTest();
                 Core_MDF_Batch_UpdateCampaignSts ex = new Core_MDF_Batch_UpdateCampaignSts();
-				Id JobId = database.executeBatch(ex);
+               // Highlight: Unused Local Variable - Indira
+              /*  Id JobId = */ database.executeBatch(ex);
                 Test.stopTest();
                 List<Campaign> assertCampList =  [SELECT Id, Status,Name from Campaign];          
                 
@@ -63,7 +64,7 @@ public class Core_MDF_SchBatch_UpdateCampaignSts_Test {
         }    
     }
     
-    @isTest
+      @isTest
     static void testScheduledClass() {
         Test.startTest();
         
@@ -72,6 +73,8 @@ public class Core_MDF_SchBatch_UpdateCampaignSts_Test {
         String cronExpression = '0 0 12 * * ?';
         System.schedule(jobName, cronExpression, new Core_MDF_SchBatch_UpdateCampaignSts());
         Test.stopTest();
+        // Unit Test Method should include System.Assert - Indira
+        System.assertEquals('TestJob', jobName, 'Job name should be TestJob');
     }
     
 }

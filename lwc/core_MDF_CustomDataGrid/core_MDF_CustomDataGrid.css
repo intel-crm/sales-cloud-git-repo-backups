@@ -1,0 +1,16 @@
+/* Style the asterisk (*) in the column header */
+th.slds-text-heading--label.required-column::before {
+    content: "*";
+    color: red;
+    font-weight: bold;
+}
+
+/* Optional: Adjust any other styles for required columns */
+.required-column {
+    font-weight: bold;
+}
+
+.slds-cell-wrap {
+    white-space: normal !important;
+    word-break: break-word;
+}

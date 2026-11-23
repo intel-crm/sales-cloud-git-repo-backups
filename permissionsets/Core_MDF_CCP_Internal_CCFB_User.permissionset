@@ -5,6 +5,16 @@
         <name>Core_MDF_CCP_Internal_CCFB_User</name>
     </customPermissions>
     <description>Internal User for CCFB program</description>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Bank_Legal_Entity_Code_cd__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_Activity_Closure_Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>CCP Internal CCFB User</label>
     <license>Salesforce</license>
@@ -12,4 +22,12 @@
         <recordType>PartnerFundAllocation.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>PartnerMarketingBudget.Core_MDF_Co_Marketing</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <tabSettings>
+        <tab>standard-PartnerMarketingBudget</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
 </PermissionSet>

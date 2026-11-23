@@ -24,8 +24,6 @@ public with sharing class Core_MDF_POP_Details {
     @AuraEnabled(cacheable=true)   
     public static POPWrapper getPOPvalues(String popDetail) {   
         Map<String, Object> queryVariabels = (Map<String, Object>) JSON.deserializeUntyped(popDetail);
-              
-        
         String strLabel = '';
         String strHeader = '';
         String recordId=(String)queryVariabels.get('recordId');
@@ -49,9 +47,9 @@ public with sharing class Core_MDF_POP_Details {
                 //To get original value of record id unescaping sanitizeRecdId
                 sanitizeRecdId = sanitizeRecdId.unescapeHtml4();
                 sanitizedObjname = String.escapeSingleQuotes(objectApiName);
-                fetchActCatType();   
+                fetchActCatType();
             }
-            strLabel = fetchPOPMetadata();      
+            strLabel = fetchPOPMetadata();
             strHeader = fetchLabel(displayLabel);
             
             /* US851171 - [RMF Activity] - Claiming Deadline Text in POP Requirement Section - Start */
@@ -66,7 +64,6 @@ public with sharing class Core_MDF_POP_Details {
         POPWrapper obj = new POPWrapper();
         obj.datamap = strLabel;
         obj.displayHeader = strHeader;
-        
         return obj;
     }
     
@@ -93,17 +90,14 @@ Vivek K                      09/16/2020        Created.
         
         if(String.isNotBlank(strCat) && String.isNotBlank(strtype) && String.isNotBlank(strProgram)) {
             strQuery = 'SELECT Id,' + strProgram + ',' + strCat + ',' + strtype + ',' + strSType +' FROM ' + sanitizedObjname + ' WHERE Id=:sanitizeRecdId';   
-            
             SObject pfObj = Database.query(strQuery) ;
-            
             if(pfObj!=null) {
                 strActCatVal = String.valueOf(pfObj.get(strCat)) ;
                 strActTypeVal = String.valueOf(pfObj.get(strtype)) ;  
                 strProgramName = String.valueOf(pfObj.get(strProgram));
-                strActSubTypeVal =  String.valueOf(pfObj.get(strSType));              
+                strActSubTypeVal =  String.valueOf(pfObj.get(strSType));    
             }
         }
-        
     }
     
     /****************************************************************************************************************************************
@@ -179,7 +173,6 @@ Vivek K                      09/06/2020        Created.
                     ' from Core_MDF_History_Header_Translation__mdt where DeveloperName=\''
                     +String.escapeSingleQuotes(displayHeader)+'\'';
                 String v1 = query;
-            
                 langTrans=Database.query(v1);
                 if(langTrans != null && langTrans.size() > 0 /*&& langTrans[0].get(colToBeQueried) != null*/) {
                     

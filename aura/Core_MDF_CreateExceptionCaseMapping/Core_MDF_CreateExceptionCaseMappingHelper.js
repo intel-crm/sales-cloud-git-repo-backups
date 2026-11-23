@@ -1,6 +1,7 @@
 ({
     //this method will be used to load all the matching exceptions. This is called from loadExceptionList method from the controller js
     onLoad: function(component, event) {
+        console.log('Testing Error');
         //call apex class method
         var action = component.get('c.fetchUserType');
         action.setCallback(this, function(response) {

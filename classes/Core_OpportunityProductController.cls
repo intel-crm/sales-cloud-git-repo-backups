@@ -242,7 +242,7 @@ public with sharing class Core_OpportunityProductController
                    lstDivisionShortNames.add(new SelectOption(System.Label.Core_None_Value,System.Label.Core_None_Value));
             }
            
-          
+           System.debug(lstDivisionShortNames);
            
            // Validating the group code and group short name of the product related to opportunity product
            if(sProductGroups!= NULL && sProductGroups != '' && sProductGroups.IndexOf(';') > 0 && sProductGroupShortNames != NULL && 
@@ -300,7 +300,7 @@ public with sharing class Core_OpportunityProductController
                mapGroupCodeGroupShortName.put(sProductGroups,sProductGroupShortNames);
                mapGroupShortNameGroupCode.put(sProductGroupShortNames,sProductGroups);
                
-               
+               System.debug(sSelectedGroup);
                
                if(sSelectedGroup != NULL)
                {
@@ -363,7 +363,8 @@ public with sharing class Core_OpportunityProductController
         }
        
        // Updating the list of Opportunity Product records
-       Database.SaveResult[] srList = Database.update(lstOpportunityLineItemUpdate, false);      
+       Database.SaveResult[] srList = Database.update(lstOpportunityLineItemUpdate, false);
+       
        Integer iDatabaseUpdateIndex = 0; 
          
        // Capturing the logs for error records
@@ -372,10 +373,12 @@ public with sharing class Core_OpportunityProductController
             if (!sr.isSuccess()) 
             {
                 for(Database.Error err : sr.getErrors()) 
-                {                
+                {
                     lstOpportunityLineItemUpdate.get(iDatabaseUpdateIndex).addError(err.getMessage());
                     
-                    
+                    System.debug('The following error has occurred.');                    
+                    System.debug(err.getStatusCode() + ': ' + err.getMessage());
+                    System.debug('Lead fields that affected this error: ' + err.getFields());
                 }
             }
             iDatabaseUpdateIndex++;

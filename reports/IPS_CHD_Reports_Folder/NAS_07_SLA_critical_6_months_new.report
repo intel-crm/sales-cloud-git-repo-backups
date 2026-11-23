@@ -95,12 +95,6 @@
             <sourceValues>
                 <sourceValue>Clark Liao</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>Gary C Wang</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Spencer Hsu</sourceValue>
-            </sourceValues>
             <value>NAS</value>
         </values>
     </buckets>
@@ -195,7 +189,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Clark Liao,Steve Chiu,Chin-Wu Lin,Gary C Wang,Spencer Hsu</value>
+            <value>Clark Liao,Steve Chiu,Chin-Wu Lin</value>
         </criteriaItems>
         <criteriaItems>
             <column>PRIORITY</column>

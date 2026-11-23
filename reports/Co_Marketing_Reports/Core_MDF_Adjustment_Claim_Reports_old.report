@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <block>
+        <blockInfo>
+            <blockId>B1</blockId>
+            <joinTable>PartnerFundClaim</joinTable>
+        </blockInfo>
+        <columns>
+            <field>PartnerFundClaim$Name</field>
+        </columns>
+        <columns>
+            <field>PartnerFundClaim$Core_MDF_Program__c</field>
+        </columns>
+        <columns>
+            <field>PartnerFundClaim$Amount</field>
+        </columns>
+        <columns>
+            <aggregateTypes>Sum</aggregateTypes>
+            <field>PartnerFundClaim$Core_MDF_Total_Invoice_Amount_Local__c</field>
+        </columns>
+        <filter>
+            <criteriaItems>
+                <column>PartnerFundClaim$Core_MDF_Type_Txt__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value>Adjustment</value>
+            </criteriaItems>
+        </filter>
+        <format>Summary</format>
+        <name>Adjustment Claim Report Type block 1</name>
+        <params>
+            <name>co</name>
+            <value>0</value>
+        </params>
+        <reportType>Core_MDF_Adjustment_Claim_Report_Type__c</reportType>
+        <scope>organization</scope>
+        <showGrandTotal>true</showGrandTotal>
+        <showSubTotals>true</showSubTotals>
+        <timeFrameFilter>
+            <dateColumn>PartnerFundClaim$CreatedDate</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <blockInfo>
+        <blockId xsi:nil="true"/>
+        <joinTable>PartnerFundClaim</joinTable>
+    </blockInfo>
+    <format>MultiBlock</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PartnerFundClaim$Core_MDF_AccountCompany__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PartnerFundClaim$Core_MDF_Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PartnerFundClaim$Core_MDF_Claim_Ref_Number__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Adjustment Claim Reports_Old</name>
+    <params>
+        <name>lsk</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_MDF_Adjustment_Claim_Report_Type__c</reportType>
+    <showDetails>true</showDetails>
+</Report>

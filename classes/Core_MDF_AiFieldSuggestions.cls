@@ -174,6 +174,8 @@ public with sharing class Core_MDF_AiFieldSuggestions {
             HttpRequest req = buildAIRequest(systemMessage, prompt, endpoint, maxTokens, temperature, timeoutMs);
             Http http = new Http();
             HttpResponse res = http.send(req);
+            system.debug('@@@response: ' + res.getBody());
+            system.debug('@@@response1: ' + req.getBody());
             if (res.getStatusCode() == 200) {
                 Map<String, Object> responseBody = (Map<String, Object>) JSON.deserializeUntyped(res.getBody());
                 result = parseAIResponse(responseBody);
@@ -293,7 +295,35 @@ public with sharing class Core_MDF_AiFieldSuggestions {
             'brands', 'technologies'
         };
         // Single-value picklist fields
+        // outcomeMetrics is included here because the UI only allows one selection,
+        // even though the underlying field is a multi-select picklist.
         List<String> singleFields = new List<String>{ 'focusArea', 'priority' };
+
+        // outcomeMetrics: validate against available options and cap to exactly one value.
+        // The AI may return an array or a single string — handle both cases.
+        Object outcomeAiValue = aiResult.get('outcomeMetrics');
+        Object outcomeAvailable = availablePicklistValues.get('outcomeMetrics');
+        if (outcomeAvailable instanceof List<Object>) {
+            Set<String> validOutcomeOptions = new Set<String>();
+            for (Object opt : (List<Object>) outcomeAvailable) {
+                if (opt instanceof String) validOutcomeOptions.add((String) opt);
+            }
+            String resolvedOutcome = null;
+            if (outcomeAiValue instanceof List<Object>) {
+                // AI returned an array — take the first valid entry
+                for (Object val : (List<Object>) outcomeAiValue) {
+                    if (val instanceof String && validOutcomeOptions.contains((String) val)) {
+                        resolvedOutcome = (String) val;
+                        break;
+                    }
+                }
+            } else if (outcomeAiValue instanceof String && validOutcomeOptions.contains((String) outcomeAiValue)) {
+                resolvedOutcome = (String) outcomeAiValue;
+            }
+            // Always store as a single-element list (or empty) so downstream LWC code
+            // that expects List<String> for outcomeMetrics continues to work correctly.
+            aiResult.put('outcomeMetrics', resolvedOutcome != null ? new List<String>{ resolvedOutcome } : new List<String>());
+        }
 
         // Fields that also require the value to appear (normalized) in the source content.
         // Tactics and country are intentionally excluded — they support keyword inference.
@@ -396,8 +426,10 @@ public with sharing class Core_MDF_AiFieldSuggestions {
             'Client Computing', 'Data Center', 'Networking & Telco', 'Edge'
         };
         Map<String, String> focusAreaPatterns = new Map<String, String>{
+            // Explicit labels + Intel product/brand keywords mirroring the JS determineFocusAreaFromDescription()
+            //Akash - 2807
             'Client Computing'   => '(?i)\\bclient\\s+computing\\b|\\bclient-computing\\b|\\bclientcomputing\\b',
-            'Data Center'        => '(?i)\\bdata\\s+center\\b|\\bdatacenter\\b|\\bdata-center\\b',
+            'Data Center'        => '(?i)\\bdata\\s+cent(?:er|re)\\b|\\bdatacent(?:er|re)\\b|\\bdata-cent(?:er|re)\\b',
             'Networking & Telco' => '(?i)\\bnetworking\\s*&\\s*telco\\b|\\bnetworking\\s+and\\s+telco\\b',
             'Edge'               => '(?i)\\bedge\\b'
         };
@@ -415,16 +447,23 @@ public with sharing class Core_MDF_AiFieldSuggestions {
     
     private static Map<String, Object> makeAICallout(String description, Map<String, Object> availablePicklistValues) {
         String prompt = buildAIPrompt(description, availablePicklistValues);
+        system.debug('AI Prompt:DESC ' + prompt);
         return executeAICallout(prompt, availablePicklistValues, description);
     }
 
     private static Map<String, Object> makeAICalloutForFile(String fileContent, Map<String, Object> availablePicklistValues, List<String> fileNames) {
         String prompt = buildFileAIPrompt(fileContent, availablePicklistValues, fileNames);
+        // Pass null so sanitizePicklistFields skips the content-check layer (Layer 2)
+        // for file input — file text is too large and produces too many false matches.
+        system.debug('AI Prompt:File ' + prompt);
         return executeAICallout(prompt, availablePicklistValues, null);
     }
 
     private static Map<String, Object> makeCombinedAICallout(String combinedContent, Map<String, Object> availablePicklistValues, Boolean hasDescription, Boolean hasFiles, List<String> fileNames) {
         String prompt = buildCombinedAIPrompt(combinedContent, availablePicklistValues, hasDescription, hasFiles, fileNames);
+        // Pass null so sanitizePicklistFields skips the content-check layer (Layer 2)
+        // for combined input — file portion causes too many false keyword matches.
+        system.debug('AI Prompt:Combined ' + prompt);
         return executeAICallout(prompt, availablePicklistValues, combinedContent);
     }
 
@@ -568,9 +607,11 @@ public with sharing class Core_MDF_AiFieldSuggestions {
                 allJsonFields.add(requiredField);
             }
         }
+        // outcomeMetrics is excluded from arrayFields — the UI allows only one selection,
+        // so it is rendered as a single "exact_match_or_null" string in the JSON schema.
         Set<String> arrayFields = new Set<String>{
             'country','targetAudience','brands','technologies',
-            'initiatives','ecosystemPartners','productTypes','tactics','outcomeMetrics'
+            'initiatives','ecosystemPartners','productTypes','tactics'
         };
         Set<String> objectFields = new Set<String>{
             'account','tacticMetrics','goalValues'
@@ -667,9 +708,7 @@ public with sharing class Core_MDF_AiFieldSuggestions {
             rulesRec.Core_MDF_Field_5_txt__c, rulesRec.Core_MDF_Field_6_txt__c,
             rulesRec.Core_MDF_Field_7_txt__c, rulesRec.Core_MDF_Field_8_txt__c,
             rulesRec.Core_MDF_Field_9_txt__c, rulesRec.Core_MDF_Field_10_txt__c,
-            rulesRec.Core_MDF_Field_11_txt__c, rulesRec.Core_MDF_Field_12_txt__c,
-            rulesRec.Core_MDF_Field_13_txt__c, rulesRec.Core_MDF_Field_14_txt__c,
-            rulesRec.Core_MDF_Field_15_txt__c, rulesRec.Core_MDF_Field_16_txt__c
+            rulesRec.Core_MDF_Field_11_txt__c, rulesRec.Core_MDF_Field_12_txt__c
         };
         Integer ruleNum = 1;
         for (String rule : ruleFields) {

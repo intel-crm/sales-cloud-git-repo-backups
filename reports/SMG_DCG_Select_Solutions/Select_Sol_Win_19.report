@@ -83,14 +83,11 @@
         <field>Opportunity.Core_Opportunity_Count__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_Status__c</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>AMOUNT</field>
     </columns>
     <filter>
-        <booleanFilter>(1 AND 2 AND 3 AND (4 OR 5)) AND 6</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND (5 OR 6)</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Opp_OpportunityType__c</column>
             <columnToColumn>false</columnToColumn>
@@ -104,6 +101,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>approve,win</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>lost,cancelled,hold</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Exclude_From_KPIs__c</column>
@@ -125,13 +129,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
             <value>Intel Select Solutions Influence (Select Like)</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Production Win,approve,win</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

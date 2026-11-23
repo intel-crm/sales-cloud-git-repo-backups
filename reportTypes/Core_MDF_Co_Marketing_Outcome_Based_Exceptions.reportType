@@ -129,7 +129,22 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Approver_2_Comments_Txt__c</field>
+            <table>Core_MDF_Exception__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Budget_Type_nm__c</field>
+            <table>Core_MDF_Exception__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Supports_legacy_program__c</field>
+            <table>Core_MDF_Exception__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Test_MultiSelect__c</field>
             <table>Core_MDF_Exception__c</table>
         </columns>
         <columns>
@@ -139,7 +154,17 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Host_Region_nm__c</field>
+            <table>Core_MDF_Exception__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Notes_txt__c</field>
+            <table>Core_MDF_Exception__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Technical_Program_Name_txt__c</field>
             <table>Core_MDF_Exception__c</table>
         </columns>
         <columns>
@@ -150,6 +175,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Expose_Externally_ind__c</field>
+            <table>Core_MDF_Exception__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Is_Create_Clone__c</field>
             <table>Core_MDF_Exception__c</table>
         </columns>
         <masterLabel>Exceptions</masterLabel>

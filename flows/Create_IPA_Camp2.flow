@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <apiVersion>50.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <dynamicChoiceSets>
+        <name>Budget_types</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Core_MDF_Budget_Type_txt__c</picklistField>
+        <picklistObject>Campaign</picklistObject>
+    </dynamicChoiceSets>
+    <interviewLabel>Create IPA Camp2 {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Select Budget Type</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>Select_Budget_Type</name>
+        <label>Select Budget Type</label>
+        <locationX>607</locationX>
+        <locationY>169</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Budget_Type</name>
+            <choiceReferences>Budget_types</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Budget Type</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <helpText>&lt;p&gt;Select any of the applicable budget type for the Account.&lt;/p&gt;</helpText>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <helpText>&lt;p&gt;Select any budget types applicable for the Account selected.&lt;/p&gt;</helpText>
+        <showFooter>false</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>490</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Select_Budget_Type</targetReference>
+        </connector>
+    </start>
+    <status>Obsolete</status>
+</Flow>

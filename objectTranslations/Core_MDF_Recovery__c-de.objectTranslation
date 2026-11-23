@@ -3,42 +3,42 @@
     <caseValues>
         <caseType>Nominative</caseType>
         <plural>false</plural>
-        <value><!-- Recovery --></value>
+        <value>Recovery</value>
     </caseValues>
     <caseValues>
         <caseType>Nominative</caseType>
         <plural>true</plural>
-        <value><!-- Recovery --></value>
+        <value>Recovery</value>
     </caseValues>
     <caseValues>
         <caseType>Accusative</caseType>
         <plural>false</plural>
-        <value><!-- Recovery --></value>
+        <value>Recovery</value>
     </caseValues>
     <caseValues>
         <caseType>Accusative</caseType>
         <plural>true</plural>
-        <value><!-- Recovery --></value>
+        <value>Recovery</value>
     </caseValues>
     <caseValues>
         <caseType>Genitive</caseType>
         <plural>false</plural>
-        <value><!-- Recovery --></value>
+        <value>Recovery</value>
     </caseValues>
     <caseValues>
         <caseType>Genitive</caseType>
         <plural>true</plural>
-        <value><!-- Recovery --></value>
+        <value>Recovery</value>
     </caseValues>
     <caseValues>
         <caseType>Dative</caseType>
         <plural>false</plural>
-        <value><!-- Recovery --></value>
+        <value>Recovery</value>
     </caseValues>
     <caseValues>
         <caseType>Dative</caseType>
         <plural>true</plural>
-        <value><!-- Recovery --></value>
+        <value>Recovery</value>
     </caseValues>
     <fields>
         <label>Betrag (USD)</label>
@@ -55,6 +55,10 @@
         <relationshipLabel><!-- Recoveries --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Quarter Year --></label>
+        <name>Core_MDF_Quarter_Year_Nm__c</name>
+    </fields>
+    <fields>
         <label><!-- Recovered Budget --></label>
         <name>Core_MDF_Recovered_Budget_Nm__c</name>
     </fields>
@@ -62,6 +66,10 @@
         <label>Begleichen, dann bezahlt werden</label>
         <name>Core_MDF_Sure_Pay_Ind__c</name>
     </fields>
-    
+    <gender>Neuter</gender>
     <nameFieldLabel><!-- Recovery Number --></nameFieldLabel>
+    <validationRules>
+        <errorMessage><!-- you cannot create recovery. --></errorMessage>
+        <name>Test_To_Be_Deleted</name>
+    </validationRules>
 </CustomObjectTranslation>

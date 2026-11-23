@@ -30,7 +30,6 @@ public class Core_IPS_Internal_Case_Controller_Test {
     static Case CaseRecordSA = new Case();
     static case caseRecordSA2 = new Case();//Ashutosh - US106566 
     static Case CaseRecord1 = new Case();
-    static List<Account> ListOfAccounts = new List<Account> ();
     /***************************************************************************************************
     Method Name:  getRecords
     Method Type: Void Method
@@ -75,7 +74,7 @@ public class Core_IPS_Internal_Case_Controller_Test {
         insert ipsLabel;
         
         // Create Account Record
-       // List<Account> ListOfAccounts = new List<Account> ();
+        List<Account> ListOfAccounts = new List<Account> ();
         Account AccountRec1 = TestUtilities.getAccount();
         AccountRec1.Core_IPS_Active__c = true;
         AccountRec1.ownerid = ListOfInternalSfUsers.get(0).id;
@@ -377,7 +376,7 @@ public class Core_IPS_Internal_Case_Controller_Test {
     
     static void insertCoreResponse(Id caseId) {
         List<Core_IPS_Response__c> lstResponse = new List<Core_IPS_Response__c>();
-        for(Core_IPS_Question__c objQues : [SELECT Id,Core_IPS_Datatype__c,(SELECT Id, Core_IPS_Answer__c FROM Core_Answers__r LIMIT 1) FROM Core_IPS_Question__c LIMIT 999]) { //ATHR Query limit fix
+        for(Core_IPS_Question__c objQues : [SELECT Id,Core_IPS_Datatype__c,(SELECT Id, Core_IPS_Answer__c FROM Core_Answers__r LIMIT 1) FROM Core_IPS_Question__c]) {
             for(Core_IPS_Answer__c objAns : objQues.Core_Answers__r) {
                 Core_IPS_Response__c objResponse = new Core_IPS_Response__c();
                 objResponse.Core_IPS_Case__c = caseId;
@@ -390,7 +389,6 @@ public class Core_IPS_Internal_Case_Controller_Test {
             }
         }
         insert lstResponse;
-        System.AssertEquals(lstResponse.size()>0, true);
     }
     
     /***************************************************************************************************
@@ -411,13 +409,14 @@ public class Core_IPS_Internal_Case_Controller_Test {
         getRecords(1);
         //CaseRecord = new Case(); Commented By Manoj
         // Setting the Visualforce Page
-        // commented for classic EOL-Tejaswini
-      /*  PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
-        Test.setCurrentPage(InternalCaseCreationPage); */
+        PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
+        Test.setCurrentPage(InternalCaseCreationPage);
         // Assigning parameters in the URL
         ApexPages.currentPage().getParameters().put('mode','asset');        
         RecordType RT = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'IPS_Case_Create'];
         ApexPages.currentPage().getParameters().put('rType', String.valueOf(RT.Id).left(15));
+        //system.debug('ListOfIpsProjects --' + ListOfIpsProjects);
+        //system.debug('ListOfAssets --' + ListOfAssets);
         ApexPages.currentPage().getParameters().put('projectId', ListOfIpsProjects.get(0).Id);
         ApexPages.currentPage().getParameters().put('productId', ListOfAssets.get(0).Id);
         /*ApexPages.currentPage().getParameters().put('accountId', ListOfAccounts.get(0).Id);
@@ -425,9 +424,8 @@ public class Core_IPS_Internal_Case_Controller_Test {
         projacc.Core_Account__c = ListOfAccounts.get(0).Id;
         projacc.Core_IPS_Project__c = ListOfIpsProjects.get(0).Id;
         insert projacc;
-        */
+        System.debug('projacc-->'+projacc);*/
         // instantiate the Controller - Core_IPS_Internal_Case_Controller Apex Class
-        //ApexPages.currentPage().getParameters().put('accountId', ListOfAccounts.get(0).Id);
         Core_IPS_Internal_Case_Controller ipsInternalCaseController = new Core_IPS_Internal_Case_Controller(new ApexPages.StandardController(CaseRecord));
         ipsInternalCaseController.objectSelected ='Contact';
         ipsInternalCaseController.LookupChange();  
@@ -439,6 +437,7 @@ public class Core_IPS_Internal_Case_Controller_Test {
         ipsInternalCaseController.categorySelected = caseCat.id;//Added By Manoj
         ipsInternalCaseController.subCategorySelected = subCategory.Id;//Added By Manoj
         ipsInternalCaseController.getEnvironmentDets();
+        system.debug('envDetails - 4' + ipsInternalCaseController.envDetails+'----SubEnv Details---'+ipsInternalCaseController.subCatenvDetList);
         //Added by karthick - US113683
         if(ipsInternalCaseController.envDetails[0] !=null && ipsInternalCaseController.envDetails[0].pplaceholder !=null )
             ipsInternalCaseController.envDetails[0].selectedValue = ipsInternalCaseController.envDetails[0].pplaceholder.get(1).getValue();
@@ -458,34 +457,33 @@ public class Core_IPS_Internal_Case_Controller_Test {
         }
         ipsInternalCaseController.clearEnvDetails();
         ipsInternalCaseController.errormessage('I100');
-        //ipsInternalCaseController.rerenderGECFieldsToIntUsrsForMAGAcc();
+        ipsInternalCaseController.rerenderGECFieldsToIntUsrsForMAGAcc();
         ipsInternalCaseController.resetProduct();
         ipsInternalCaseController.DisplayPriorityReason();
         ipsInternalCaseController.BindEvent();      
         
         ipsInternalCaseController.selectedProductId = ListOfAssets.get(0).Id;
         ipsInternalCaseController.getEnvironmentOptions();
-        System.AssertEquals(RT!=null, true);
     }
     
     static testmethod void InsertCaseRecord_selfAssigned(){
         getRecords(1);
         //CaseRecord = new Case(); Commented By Manoj
         // Setting the Visualforce Page
-        // commented for classic EOL -Tejaswini
-   /*     PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
-        Test.setCurrentPage(InternalCaseCreationPage); */
+        PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
+        Test.setCurrentPage(InternalCaseCreationPage);
         // Assigning parameters in the URL
         ApexPages.currentPage().getParameters().put('mode','edit');        
         RecordType RT = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'Core_IPS_Case_Create_Self_Assigned'];
         ApexPages.currentPage().getParameters().put('rType', String.valueOf(RT.Id).left(15));
+        system.debug('ListOfIpsProjects --' + ListOfIpsProjects);
+        system.debug('ListOfAssets --' + ListOfAssets);
         //ApexPages.currentPage().getParameters().put('projectId', ListOfIpsProjects.get(0).Id);
         //ApexPages.currentPage().getParameters().put('productId', ListOfAssets.get(0).Id);
         // instantiate the Controller - Core_IPS_Internal_Case_Controller Apex Class
         Core_IPS_Internal_Case_Controller ipsInternalCaseController = new Core_IPS_Internal_Case_Controller(new ApexPages.StandardController(CaseRecordSA));
         ipsInternalCaseController.objectSelected = 'Product';
         ipsInternalCaseController.selectedSAProductId = ListOfSupportedProduct.get(0).Id;
-        
         ipsInternalCaseController.LookupChange();  
         ipsInternalCaseController.clearProject();
         ipsInternalCaseController.getCountriesOptions();
@@ -495,6 +493,7 @@ public class Core_IPS_Internal_Case_Controller_Test {
         ipsInternalCaseController.categorySelected = caseCat.id;
         ipsInternalCaseController.subCategorySelected = subCategory.Id;
         ipsInternalCaseController.getEnvironmentDets();
+        system.debug('envDetails - 4' + ipsInternalCaseController.envDetails+'----SubEnv Details---'+ipsInternalCaseController.subCatenvDetList);
         //Added by karthick - US113683
         if(ipsInternalCaseController.envDetails[0] !=null && ipsInternalCaseController.envDetails[0].pplaceholder !=null )
             ipsInternalCaseController.envDetails[0].selectedValue= ipsInternalCaseController.envDetails[0].pplaceholder.get(0).getValue();
@@ -511,11 +510,11 @@ public class Core_IPS_Internal_Case_Controller_Test {
         }
         ipsInternalCaseController.clearEnvDetails();
         ipsInternalCaseController.errormessage('I100');
-        //ipsInternalCaseController.rerenderGECFieldsToIntUsrsForMAGAcc();
+        ipsInternalCaseController.rerenderGECFieldsToIntUsrsForMAGAcc();
         ipsInternalCaseController.resetProduct();
         ipsInternalCaseController.DisplayPriorityReason();
         ipsInternalCaseController.BindEvent();
-        System.AssertEquals(RT!=null, true);
+        
     }
     
     /***************************************************************************************************
@@ -534,23 +533,10 @@ public class Core_IPS_Internal_Case_Controller_Test {
     ****************************************************************************************************/
     static testmethod void EditCase(){
         getRecords(3);
-        //System.RunAs(ListOfInternalSfUsers.get(0)){
-         Map<String,ID> profiles = new Map<String,ID>();
-        List<Profile> ProfileList = [select id, name from Profile where name = 'IT Admin'];
-        for(Profile prf : ProfileList){
-            profiles.put(prf.name, prf.id);
-        }
-        // Create Users
-        List<User> ListOfUser = TestUtilities.getListOfUser(1);
-        for(User Usr : ListOfUser){
-            Usr.ProfileID =  profiles.get('IT Admin');
-        }
-        insert ListOfUser;
-        System.runAs(ListOfUser.get(0)) {
+        System.RunAs(ListOfInternalSfUsers.get(0)){
         // Setting the Visualforce Page
-        // commented for classic EOL-Tejaswini
-    /*    PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
-        Test.setCurrentPage(InternalCaseCreationPage);*/
+        PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
+        Test.setCurrentPage(InternalCaseCreationPage);
         // Assigning parameters in the URL
         ApexPages.currentPage().getParameters().put('mode','edit');
         //ApexPages.currentPage().getParameters().put('rType','012210000004IHR');
@@ -563,38 +549,25 @@ public class Core_IPS_Internal_Case_Controller_Test {
          
         Core_IPS_Internal_Case_Controller ipsInternalCaseController = new Core_IPS_Internal_Case_Controller(new ApexPages.StandardController(CaseRecord));
         ipsInternalCaseController.objectSelected ='Contact';
-        ipsInternalCaseController.mindsOption ='Yes';
-        ipsInternalCaseController.countrySelected ='India';
-        //ipsInternalCaseController.GECAnswer1 ='Yes';
-            ipsInternalCaseController.showGECFields = True; //added by ABhishek
-        //ipsInternalCaseController.addGECRecords();
+        system.debug('envDetails - ' + ipsInternalCaseController.envDetails);
+        ipsInternalCaseController.GECAnswer2 ='Yes';
+        ipsInternalCaseController.GECAnswer3 ='Yes';
+        ipsInternalCaseController.GECAnswer1 ='Yes';
+        ipsInternalCaseController.showGECFields = True; //added by ABhishek
+        ipsInternalCaseController.addGECRecords();
         ipsInternalCaseController.LookupChange(); 
         ipsInternalCaseController.getEnvDetails();
         ipsInternalCaseController.saveCaseDetails();
-            System.AssertEquals(RT!=null, true);
         } 
     }
     
     static testmethod void EditCase2() {
         getRecords(3);
-        //System.RunAs(ListOfInternalSfUsers.get(0)){
-         Map<String,ID> profiles = new Map<String,ID>();
-        List<Profile> ProfileList = [select id, name from Profile where name = 'IT Admin'];
-        for(Profile prf : ProfileList){
-            profiles.put(prf.name, prf.id);
-        }
-        // Create Users
-        List<User> ListOfUser = TestUtilities.getListOfUser(1);
-        for(User Usr : ListOfUser){
-            Usr.ProfileID =  profiles.get('IT Admin');
-        }
-        insert ListOfUser;
-		System.runAs(ListOfUser.get(0)) {
+        System.RunAs(ListOfInternalSfUsers.get(0)){
             insertCoreResponse(CaseRecord.Id);
             // Setting the Visualforce Page
-            // commented for classic EOL - Tejaaswini
-        /*    PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
-            Test.setCurrentPage(InternalCaseCreationPage); */
+            PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
+            Test.setCurrentPage(InternalCaseCreationPage);
             ApexPages.currentPage().getParameters().put('mode','edit');
             ApexPages.currentPage().getParameters().put('id', CaseRecord.Id);
             CaseRecord.AssetId = ListOfAssets.get(0).Id;
@@ -606,7 +579,6 @@ public class Core_IPS_Internal_Case_Controller_Test {
             ipsInternalCaseController.selectedProject;
             ipsInternalCaseController.supProduct;
             ipsInternalCaseController.displayForCust;*/
-            System.AssertEquals(CaseRecord!=null, true);
         } 
     }
     
@@ -623,27 +595,13 @@ public class Core_IPS_Internal_Case_Controller_Test {
     * ----------------------------------------------------------------------------                 
     * Abhishek Ekbote           08/02/2016                 Created
     * Amritesh                  01/19/2018               Modified
-    * Farooq                    01/05/2020               Modified
     ****************************************************************************************************/
     static testmethod void EditCase_SA(){
         getRecords(4);
-        //System.RunAs(ListOfInternalSfUsers.get(0)){
-         Map<String,ID> profiles = new Map<String,ID>();
-        List<Profile> ProfileList = [select id, name from Profile where name = 'IT Admin'];
-        for(Profile prf : ProfileList){
-            profiles.put(prf.name, prf.id);
-        }
-        // Create Users
-        List<User> ListOfUser = TestUtilities.getListOfUser(1);
-        for(User Usr : ListOfUser){
-            Usr.ProfileID =  profiles.get('IT Admin');
-        }
-        insert ListOfUser;
-        System.runAs(ListOfUser.get(0)) {
+        System.RunAs(ListOfInternalSfUsers.get(0)){
         // Setting the Visualforce Page
-        // Commented for Classic EOL -Tejaswini
-    /*    PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
-        Test.setCurrentPage(InternalCaseCreationPage);*/
+        PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
+        Test.setCurrentPage(InternalCaseCreationPage);
         // Assigning parameters in the URL
         ApexPages.currentPage().getParameters().put('mode','edit');
         //ApexPages.currentPage().getParameters().put('rType','012210000004IHR');
@@ -654,11 +612,11 @@ public class Core_IPS_Internal_Case_Controller_Test {
         // instantiate the Controller - Core_IPS_Internal_Case_Controller Apex Class
         Core_IPS_Internal_Case_Controller ipsInternalCaseController = new Core_IPS_Internal_Case_Controller(new ApexPages.StandardController(CaseRecordSA));
         ipsInternalCaseController.objectSelected = 'Contact';
-        ApexPages.currentPage().getParameters().put('paramId', CaseRecordSA.ContactId);    
+        system.debug('envDetails - 1' + ipsInternalCaseController.envDetails);
+            
         ipsInternalCaseController.LookupChange();
         ipsInternalCaseController.getEnvDetails();
         ipsInternalCaseController.saveCaseDetails();
-        System.AssertEquals(RT!=null, true);
         } 
     }
     
@@ -678,9 +636,8 @@ public class Core_IPS_Internal_Case_Controller_Test {
     static testmethod void testLookupChange(){
         getRecords(1);
         // Setting the Visualforce Page
-        // // Commented for Classic EOL -Tejaswini
-      /*  PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
-        Test.setCurrentPage(InternalCaseCreationPage); */
+        PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
+        Test.setCurrentPage(InternalCaseCreationPage);
         // Assigning parameters in the URL
         ApexPages.currentPage().getParameters().put('mode','edit');
         //ApexPages.currentPage().getParameters().put('rType','012210000004IHR');
@@ -691,17 +648,17 @@ public class Core_IPS_Internal_Case_Controller_Test {
         // instantiate the Controller - Core_IPS_Internal_Case_Controller Apex Class
         Core_IPS_Internal_Case_Controller ipsInternalCaseController = new Core_IPS_Internal_Case_Controller(new ApexPages.StandardController(CaseRecord));
         ipsInternalCaseController.objectSelected ='Product';
+        system.debug('envDetails - ' + ipsInternalCaseController.envDetails);
         ipsInternalCaseController.LookupChange();
         ipsInternalCaseController.getEnvDetails();
-         System.AssertEquals(RT != null, true);
+        
     }
     
     
     static testmethod void cancelAction(){   
         // Setting the Visualforce Page
-        // // Commented for Classic EOL -Tejaswini
-  /*      PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
-        Test.setCurrentPage(InternalCaseCreationPage); */
+        PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
+        Test.setCurrentPage(InternalCaseCreationPage);
         // Assigning parameters in the URL
         ApexPages.currentPage().getHeaders().put('referer','test');
         ApexPages.currentPage().getParameters().put('retURL','test');
@@ -709,7 +666,6 @@ public class Core_IPS_Internal_Case_Controller_Test {
         Core_IPS_Internal_Case_Controller ipsInternalCaseController = new Core_IPS_Internal_Case_Controller(new ApexPages.StandardController(CaseRecord));
         ipsInternalCaseController.PageInit();
         ipsInternalCaseController.CancelAction();
-        System.AssertEquals(CaseRecord!=null, true);
     }
     
     //modified by amritesh US8534
@@ -718,14 +674,12 @@ public class Core_IPS_Internal_Case_Controller_Test {
         System.RunAs(ListOfInternalSfUsers.get(0)){
             Test.startTest();
             // Setting the Visualforce Page
-            // // Commented for Classic EOL -Tejaswini
-        /*    PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
-            Test.setCurrentPage(InternalCaseCreationPage); */
+            PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
+            Test.setCurrentPage(InternalCaseCreationPage);
             // Assigning parameters in the URL
             ApexPages.currentPage().getParameters().put('mode','asset');
             RecordType RT = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'IPS_Case_Create'];
             ApexPages.currentPage().getParameters().put('rType',RT.Id);
-            ApexPages.currentPage().getParameters().put('projectId', ListOfIpsProjects.get(0).Id);
             ApexPages.currentPage().getParameters().put('productId', ListOfAssets.get(0).Id);
             Core_IPS_Internal_Case_Controller ipsInternalCaseController = new Core_IPS_Internal_Case_Controller(new ApexPages.StandardController(CaseRecord));
             ipsInternalCaseController.objectSelected ='Product';
@@ -757,7 +711,6 @@ public class Core_IPS_Internal_Case_Controller_Test {
             ipsInternalCaseController.validateEnvironmentDetails();
             
             Test.stopTest();
-             System.AssertEquals(RT!=null, true);
         }
     }
     
@@ -767,14 +720,13 @@ public class Core_IPS_Internal_Case_Controller_Test {
         System.RunAs(ListOfInternalSfUsers.get(0)){
             Test.startTest();
             // Setting the Visualforce Page
-            // Commented for Classic EOL -Tejaswini
-       /*     PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
-            Test.setCurrentPage(InternalCaseCreationPage); */
+            PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
+            Test.setCurrentPage(InternalCaseCreationPage);
             // Assigning parameters in the URL
             ApexPages.currentPage().getParameters().put('mode','asset');
             RecordType RT = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'IPS_Case_Create'];
             ApexPages.currentPage().getParameters().put('rType',RT.Id);
-            ApexPages.currentPage().getParameters().put('projectId', ListOfIpsProjects.get(0).Id);
+            //ApexPages.currentPage().getParameters().put('projectId', ListOfIpsProjects.get(0).Id);
             ApexPages.currentPage().getParameters().put('productId', ListOfAssets.get(0).Id);
             Core_IPS_Internal_Case_Controller ipsInternalCaseController = new Core_IPS_Internal_Case_Controller(new ApexPages.StandardController(CaseRecord));
             ipsInternalCaseController.objectSelected ='Product';
@@ -821,7 +773,6 @@ public class Core_IPS_Internal_Case_Controller_Test {
             ipsInternalCaseController.validateCaseRelatedInformation();
             
             Test.stopTest();
-             System.AssertEquals(RT!=null, true);
         }
     }
     
@@ -831,14 +782,13 @@ public class Core_IPS_Internal_Case_Controller_Test {
         System.RunAs(ListOfInternalSfUsers.get(0)) {
             Test.startTest();
             // Setting the Visualforce Page
-            // Commented for Classic EOL -Tejaswini
-       /*     PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
-            Test.setCurrentPage(InternalCaseCreationPage); */
+            PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
+            Test.setCurrentPage(InternalCaseCreationPage);
             // Assigning parameters in the URL
             ApexPages.currentPage().getParameters().put('mode','asset');
             RecordType RT = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'IPS_Case_Create'];
             ApexPages.currentPage().getParameters().put('rType',RT.Id);
-            ApexPages.currentPage().getParameters().put('projectId', ListOfIpsProjects.get(0).Id);
+            //ApexPages.currentPage().getParameters().put('projectId', ListOfIpsProjects.get(0).Id);
             ApexPages.currentPage().getParameters().put('productId', ListOfAssets.get(0).Id);
             Core_IPS_Internal_Case_Controller ipsInternalCaseController = new Core_IPS_Internal_Case_Controller(new ApexPages.StandardController(CaseRecord));
             ipsInternalCaseController.objectSelected ='Product';
@@ -863,7 +813,6 @@ public class Core_IPS_Internal_Case_Controller_Test {
             
             ipsInternalCaseController.selectedSAProductId = '';
             ipsInternalCaseController.validateInternalCase();
-             System.AssertEquals(RT!=null, true);
         }
     }
     
@@ -889,14 +838,13 @@ public class Core_IPS_Internal_Case_Controller_Test {
             
             Test.startTest();
             // Setting the Visualforce Page
-            // Commented for Classic EOL -Tejaswini
-           /*PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
-            Test.setCurrentPage(InternalCaseCreationPage); */
+            PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
+            Test.setCurrentPage(InternalCaseCreationPage);
             // Assigning parameters in the URL
             ApexPages.currentPage().getParameters().put('mode','asset');
             RecordType RT = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'IPS_Case_Create'];
             ApexPages.currentPage().getParameters().put('rType',RT.Id);
-            ApexPages.currentPage().getParameters().put('projectId', ListOfIpsProjects.get(0).Id);
+            //ApexPages.currentPage().getParameters().put('projectId', ListOfIpsProjects.get(0).Id);
             ApexPages.currentPage().getParameters().put('productId', ListOfAssets.get(0).Id);
             Core_IPS_Internal_Case_Controller ipsInternalCaseController = new Core_IPS_Internal_Case_Controller(new ApexPages.StandardController(CaseRecord1));
             ipsInternalCaseController.objectSelected ='Project';
@@ -909,12 +857,11 @@ public class Core_IPS_Internal_Case_Controller_Test {
             ipsInternalCaseController.DisplayPSAPSO();
             ipsInternalCaseController.LookupChange();
             ipsInternalCaseController.projSelected ='';
-            //ipsInternalCaseController.projSelected_Old=ListOfIpsProjects.get(0).Id;
+            ipsInternalCaseController.projSelected_Old=ListOfIpsProjects.get(0).Id;
             ipsInternalCaseController.LookupChange();
             ipsInternalCaseController.isResetProductRelInfo=true;
-            //ipsInternalCaseController.selectedSupProduct_Old=ListOfIpsProjects.get(0).Id;
+            ipsInternalCaseController.selectedSupProduct_Old=ListOfIpsProjects.get(0).Id;
             ipsInternalCaseController.LookupChange();
-            System.AssertEquals(RT!=null, true);
         }
     }
     static testmethod void validatePSAPSO1(){
@@ -934,24 +881,17 @@ public class Core_IPS_Internal_Case_Controller_Test {
         System.RunAs(ListOfInternalSfUsers[0]){
         insert contactRecord;}
             
-        Core_IPS_Account__c accountRecord = new Core_IPS_Account__c();
-        accountRecord.Core_Account__c = AccountRec1.Id;
-        accountRecord.Core_IPS_Project__c = ListOfIpsProjects.get(0).Id;
-        insert accountRecord;
-            
         System.RunAs(ListOfInternalSfUsers.get(0)) {
             Test.startTest();
             // Setting the Visualforce Page
-            // Commented for Classic EOL -Tejaswini
-        /*    PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
-            Test.setCurrentPage(InternalCaseCreationPage); */
+            PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
+            Test.setCurrentPage(InternalCaseCreationPage);
             // Assigning parameters in the URL
             ApexPages.currentPage().getParameters().put('mode','asset');
             RecordType RT = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'IPS_Case_Create'];
             ApexPages.currentPage().getParameters().put('rType',RT.Id);
             ApexPages.currentPage().getParameters().put('projectId', ListOfIpsProjects.get(0).Id);
             ApexPages.currentPage().getParameters().put('productId', ListOfAssets.get(0).Id);
-            ApexPages.currentPage().getParameters().put('accountId', accountRecord.Id); 
             Core_IPS_Internal_Case_Controller ipsInternalCaseController = new Core_IPS_Internal_Case_Controller(new ApexPages.StandardController(CaseRecord));
             //ipsInternalCaseController.objectSelected ='Product';
             ipsInternalCaseController.cs = CaseRecord;
@@ -962,19 +902,20 @@ public class Core_IPS_Internal_Case_Controller_Test {
             update a;
             ipsInternalCaseController.selectedProductId = a.id;
             ipsInternalCaseController.PopulateAssetProj();
-            System.AssertEquals(RT!=null, true);
         }
     }
     /*Ashutosh - US106566*/
     static testMethod  void testProjectBasedNAC(){
         getRecords(1);
-        // Commented for Classic EOL -Tejaswini
-    /*    PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
-        Test.setCurrentPage(InternalCaseCreationPage); */
+        
+        PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
+        Test.setCurrentPage(InternalCaseCreationPage);
         // Assigning parameters in the URL
         ApexPages.currentPage().getParameters().put('mode','edit');        
         RecordType RT = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'Core_IPS_Case_Create_Self_Assigned'];
         ApexPages.currentPage().getParameters().put('rType', String.valueOf(RT.Id).left(15));
+        system.debug('ListOfIpsProjects --' + ListOfIpsProjects);
+        system.debug('ListOfAssets --' + ListOfAssets);
         ApexPages.currentPage().getParameters().put('projectId', ListOfIpsProjects.get(0).Id);
         ApexPages.currentPage().getParameters().put('productId', ListOfAssets.get(0).Id);
         // instantiate the Controller - Core_IPS_Internal_Case_Controller Apex Class
@@ -997,6 +938,7 @@ public class Core_IPS_Internal_Case_Controller_Test {
         ipsInternalCaseController.categorySelected = caseCat.id;
         ipsInternalCaseController.subCategorySelected = subCategory.Id;
         ipsInternalCaseController.getEnvironmentDets();
+        system.debug('envDetails - 4' + ipsInternalCaseController.envDetails+'----SubEnv Details---'+ipsInternalCaseController.subCatenvDetList);
         //Added by karthick - US113683
         if(ipsInternalCaseController.envDetails[0] !=null && ipsInternalCaseController.envDetails[0].pplaceholder !=null )
             ipsInternalCaseController.envDetails[0].selectedValue= ipsInternalCaseController.envDetails[0].pplaceholder.get(0).getValue();
@@ -1008,30 +950,16 @@ public class Core_IPS_Internal_Case_Controller_Test {
         ipsInternalCaseController.validateEnvironmentDetails();
         ipsInternalCaseController.renderErrorFlag = True; 
         ipsInternalCaseController.saveCaseDetails();
-        System.AssertEquals(RT!=null, true);
+        
     }
     
     static testmethod void CopyCase() {
         getRecords(3);
-        //System.RunAs(ListOfInternalSfUsers.get(0)){
-         Map<String,ID> profiles = new Map<String,ID>();
-        List<Profile> ProfileList = [select id, name from Profile where name = 'IT Admin'];
-        for(Profile prf : ProfileList){
-            profiles.put(prf.name, prf.id);
-        }
-        // Create Users
-        List<User> ListOfUser = TestUtilities.getListOfUser(1);
-        for(User Usr : ListOfUser){
-            Usr.ProfileID =  profiles.get('IT Admin');
-        }
-        insert ListOfUser;
-        System.runAs(ListOfUser.get(0)) {
+        System.RunAs(ListOfInternalSfUsers.get(0)){
             insertCoreResponse(CaseRecord.Id);
-            Test.startTest();
             // Setting the Visualforce Page
-            // Commented for Classic EOL -Tejaswini
-         /*   PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
-            Test.setCurrentPage(InternalCaseCreationPage); */
+            PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
+            Test.setCurrentPage(InternalCaseCreationPage);
             ApexPages.currentPage().getParameters().put('mode','copy');
             ApexPages.currentPage().getParameters().put('id', CaseRecord.Id);
             CaseRecord.AssetId = ListOfAssets.get(0).Id;
@@ -1048,13 +976,9 @@ public class Core_IPS_Internal_Case_Controller_Test {
             //ipsInternalCaseController.showGECFields=true;
             /*Boolean val=ipsInternalCaseController.validateGecDetails();
             ipsInternalCaseController.copyInterestedParties();*/
-            ipsInternalCaseController.mindsOption ='No';
-        	ipsInternalCaseController.countrySelected ='India';
             ipsInternalCaseController.copyInterestedParties();
             ipsInternalCaseController.saveCaseDetails();
             ipsInternalCaseController.cancelProductRelInfo();
-            Test.stopTest();   
-            System.AssertEquals(CaseRecord!=null, true);
         } 
     }
     
@@ -1073,23 +997,10 @@ public class Core_IPS_Internal_Case_Controller_Test {
     ****************************************************************************************************/
     static testmethod void copyGEC_MAG_Case(){
         getRecords(3);
-       // System.RunAs(ListOfInternalSfUsers.get(0)){
-         Map<String,ID> profiles = new Map<String,ID>();
-        List<Profile> ProfileList = [select id, name from Profile where name = 'IT Admin'];
-        for(Profile prf : ProfileList){
-            profiles.put(prf.name, prf.id);
-        }
-        // Create Users
-        List<User> ListOfUser = TestUtilities.getListOfUser(1);
-        for(User Usr : ListOfUser){
-            Usr.ProfileID =  profiles.get('IT Admin');
-        }
-        insert ListOfUser;
-        System.runAs(ListOfUser.get(0)) {
+        System.RunAs(ListOfInternalSfUsers.get(0)){
         // Setting the Visualforce Page
-        // Commented for Classic EOL -Tejaswini
-   /*     PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
-        Test.setCurrentPage(InternalCaseCreationPage); */
+        PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
+        Test.setCurrentPage(InternalCaseCreationPage);
         // Assigning parameters in the URL
         ApexPages.currentPage().getParameters().put('mode','copy');
         //ApexPages.currentPage().getParameters().put('rType','012210000004IHR');
@@ -1102,15 +1013,15 @@ public class Core_IPS_Internal_Case_Controller_Test {
          
         Core_IPS_Internal_Case_Controller ipsInternalCaseController = new Core_IPS_Internal_Case_Controller(new ApexPages.StandardController(CaseRecord));
         ipsInternalCaseController.objectSelected ='Contact';
+              system.debug('envDetails - ' + ipsInternalCaseController.envDetails);
         ipsInternalCaseController.showGECFields = True;
         ipsInternalCaseController.GECAnswer1 ='Yes';
         ipsInternalCaseController.GECAnswer2 ='Yes';
         ipsInternalCaseController.GECAnswer3 ='Argentina';
-        //ipsInternalCaseController.addGECRecords();
+        ipsInternalCaseController.addGECRecords();
         ipsInternalCaseController.LookupChange(); 
         ipsInternalCaseController.getEnvDetails();
         ipsInternalCaseController.saveCaseDetails();
-            System.AssertEquals(CaseRecord!=null, true);
         } 
     }
     
@@ -1129,23 +1040,10 @@ public class Core_IPS_Internal_Case_Controller_Test {
     ****************************************************************************************************/
     static testmethod void copyNonGEC_MAG_Case(){
         getRecords(3);
-        //System.RunAs(ListOfInternalSfUsers.get(0)){
-         Map<String,ID> profiles = new Map<String,ID>();
-        List<Profile> ProfileList = [select id, name from Profile where name = 'IT Admin'];
-        for(Profile prf : ProfileList){
-            profiles.put(prf.name, prf.id);
-        }
-        // Create Users
-        List<User> ListOfUser = TestUtilities.getListOfUser(1);
-        for(User Usr : ListOfUser){
-            Usr.ProfileID =  profiles.get('IT Admin');
-        }
-        insert ListOfUser;
-        System.runAs(ListOfUser.get(0)) {
+        System.RunAs(ListOfInternalSfUsers.get(0)){
         // Setting the Visualforce Page
-        
-    /*    PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
-        Test.setCurrentPage(InternalCaseCreationPage); */
+        PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
+        Test.setCurrentPage(InternalCaseCreationPage);
         // Assigning parameters in the URL
         ApexPages.currentPage().getParameters().put('mode','copy');
         //ApexPages.currentPage().getParameters().put('rType','012210000004IHR');
@@ -1158,15 +1056,15 @@ public class Core_IPS_Internal_Case_Controller_Test {
          
         Core_IPS_Internal_Case_Controller ipsInternalCaseController = new Core_IPS_Internal_Case_Controller(new ApexPages.StandardController(CaseRecord));
         ipsInternalCaseController.objectSelected ='Contact';
+              system.debug('envDetails - ' + ipsInternalCaseController.envDetails);
         ipsInternalCaseController.showGECFields = True;
         ipsInternalCaseController.GECAnswer1 ='No';
         ipsInternalCaseController.GECAnswer2 ='No';
         ipsInternalCaseController.GECAnswer3 ='Argentina';
-        //ipsInternalCaseController.addGECRecords();
+        ipsInternalCaseController.addGECRecords();
         ipsInternalCaseController.LookupChange(); 
         ipsInternalCaseController.getEnvDetails();
         ipsInternalCaseController.saveCaseDetails();
-            System.AssertEquals(CaseRecord!=null, true);
         } 
     }
 
@@ -1196,9 +1094,8 @@ public class Core_IPS_Internal_Case_Controller_Test {
        
         System.RunAs(ListOfInternalSfUsers.get(0)){
         // Setting the Visualforce Page
-        
-    /*    PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
-        Test.setCurrentPage(InternalCaseCreationPage); */
+        PageReference InternalCaseCreationPage = Page.Core_IPS_Internal_Case_Creation;
+        Test.setCurrentPage(InternalCaseCreationPage);
         // Assigning parameters in the URL
         ApexPages.currentPage().getParameters().put('mode','edit');
         //ApexPages.currentPage().getParameters().put('rType','012210000004IHR');
@@ -1210,13 +1107,12 @@ public class Core_IPS_Internal_Case_Controller_Test {
         Core_IPS_Internal_Case_Controller ipsInternalCaseController = new Core_IPS_Internal_Case_Controller(new ApexPages.StandardController(CaseRecordSA));
         ipsInternalCaseController.objectSelected = 'Project';
          ipsInternalCaseController.selectedSAProductId = spRec.Id;
-         ipsInternalCaseController.LookupChange();
+        ipsInternalCaseController.LookupChange(); 
         ipsInternalCaseController.getEnvDetails();
         ipsInternalCaseController.saveCaseDetails();
         } 
-         System.AssertEquals(productRecord!=null, true);
-       }
-    
+    }
+
     
     //end
     

@@ -14,8 +14,7 @@
                                    <p>          {!$Label.Core_MDF_EmailTemp_Claim_Body1}
                                                 &nbsp;{!RelatedTo.Core_MDF_Claim_Ref_Number__c}
                                                 {!IF(RelatedTo.Core_MDF_Program__c = $Label.Core_MDF_Co_GTM_program_name, $Label.Core_MDF_PIC_Email_Claim_Cogtm_Body,$Label.Core_MDF_PIC_EmailTemp_Claim_Body)} &nbsp; 
-                                               
-                                               <apex:outputLink value="{!$Label.Core_MDF_PFRDetailLink+RelatedTo.Id}">{!$Label.Core_MDF_EmailTemp_Claim_URL1}</apex:outputLink>
+                                               <apex:outputLink value="{!$Label.Core_MDF_PFRDetailLink+IF(NOT(ISBLANK(RelatedTo.Core_MDF_Claim_Id__c)),RelatedTo.Core_MDF_Claim_Id__r.Id,RelatedTo.Id)}">{!$Label.Core_MDF_EmailTemp_Claim_URL1}</apex:outputLink>
                                                       
                                                 {!$Label.Core_MDF_EmailTemp_Claim_Body3}          <br/>
                                                 <ul>

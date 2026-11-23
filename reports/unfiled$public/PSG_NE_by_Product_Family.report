@@ -186,13 +186,15 @@
         <chartSummaries>
             <aggregate>Sum</aggregate>
             <axisBinding>y</axisBinding>
-            <column>EXP_AMOUNT</column>
+            <column>TOTAL_PRICE</column>
         </chartSummaries>
-        <chartType>VerticalColumn</chartType>
+        <chartType>VerticalColumnStacked</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>BucketField_82354991</groupingColumn>
+        <groupingColumn>CLOSE_DATE</groupingColumn>
+        <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>BucketField_82354991</secondaryGroupingColumn>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -236,10 +238,6 @@
     <columns>
         <field>BucketField_96858621</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>EXP_AMOUNT</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>PRODUCT_NAME</column>
@@ -266,6 +264,11 @@
     </filter>
     <format>Summary</format>
     <groupingsDown>
+        <dateGranularity>FiscalQuarter</dateGranularity>
+        <field>CLOSE_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>BucketField_82354991</field>
         <sortOrder>Asc</sortOrder>
@@ -290,7 +293,7 @@
     </params>
     <params>
         <name>co</name>
-        <value>0</value>
+        <value>1</value>
     </params>
     <reportType>OpportunityProduct</reportType>
     <roleHierarchyFilter>SMG</roleHierarchyFilter>

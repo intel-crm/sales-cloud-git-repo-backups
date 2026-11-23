@@ -710,64 +710,6 @@
             <rowIndex>25</rowIndex>
             <rowSpan>7</rowSpan>
         </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>9</colSpan>
-            <columnIndex>0</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <componentType>FlexTable</componentType>
-                <dashboardFilterColumns>
-                    <column>Opportunity.Core_Opportunity_Owner__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Opportunity.Core_Technical_Owner__c</column>
-                </dashboardFilterColumns>
-                <flexComponentProperties>
-                    <decimalPrecision>-1</decimalPrecision>
-                    <flexTableColumn>
-                        <reportColumn>OpportunityTeamMember.Core_Account_Name__c</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>OWNER_FULL_NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>Opportunity.Core_Technical_Owner__c</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>MEMBER_NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>OPPORTUNITY.NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableSortInfo>
-                        <sortColumn>OpportunityTeamMember.Core_Account_Name__c</sortColumn>
-                        <sortOrder>1</sortOrder>
-                    </flexTableSortInfo>
-                    <hideChatterPhotos>true</hideChatterPhotos>
-                    <useReportTableSetting>false</useReportTableSetting>
-                </flexComponentProperties>
-                <groupingSortProperties/>
-                <header>SE Opportunity Team Member Role</header>
-                <report>unfiled$public/SE_Opportunity_Team_Member_Role</report>
-            </dashboardComponent>
-            <rowIndex>32</rowIndex>
-            <rowSpan>4</rowSpan>
-        </dashboardGridComponents>
         <numberOfColumns>9</numberOfColumns>
         <rowHeight>80</rowHeight>
     </dashboardGridLayout>

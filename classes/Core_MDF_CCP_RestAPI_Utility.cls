@@ -1,25 +1,13 @@
-/**
- * ----------------------------------------------------------------------------------
- * Class Name      : Core_MDF_CCP_RestAPI_Utility
- * Author          : <YourName>
- * Created Date    : Jun 4, 2026
- * Last Modified By: <YourName>
- * Last Modified On: Jun 15, 2026
- * Description     : Utility class for CCP REST APIs to fetch records and return metadata-driven, record-type-aware filtered field responses 
- */
 public without sharing class Core_MDF_CCP_RestAPI_Utility {
 
     private static final String SF_INSTANCE_URL = URL.getOrgDomainURL().toExternalForm();
     private static final String SF_API_VERSION = '66.0';
     private static final String API_VERSION = '1.0';
     private static final String USER_TYPE = 'External User';
-    private static final String LEGACY_CAMPAIGN_PROGRAM_FIELD = 'Core_MDF_Program__c';
-    private static final String CAMPAIGN_PROGRAM_NAME_FIELD = 'Core_MDF_Channel_Program__r.Name';
-    private static final String LEGACY_CAMPAIGN_ACCOUNT_FIELD = 'Core_MDF_Account__c';
-    private static final String CAMPAIGN_ACCOUNT_NAME_FIELD = 'Core_MDF_Account__r.Name';
     private static final Map<String, Set<String>> FIELD_CACHE = new Map<String, Set<String>>();
     private static final Map<String, Map<String, String>> FIELD_LABEL_CACHE = new Map<String, Map<String, String>>();
-
+    private static final Map<String, Set<String>> LOOKUP_FIELD_CACHE = new Map<String, Set<String>>();
+    public static Decimal MAX_RECORD_LIMIT;
     /**
      * Fetch object record from Salesforce standard REST API and apply field filtering.
      * Returns null when API call fails or an exception occurs.
@@ -79,6 +67,10 @@ public without sharing class Core_MDF_CCP_RestAPI_Utility {
         Map<String, Object> filteredData = new Map<String, Object>();
 
         Set<String> displayFields = normalizeDisplayFields(objectApiName, getDisplayFields(objectApiName, recordId, defaultDisplayFields));
+        // Any field with a configured Core_MDF_Record_Name_nm__c must be shown regardless of record-type/user-type matching.
+        displayFields.addAll(getConfiguredLookupFields(objectApiName));
+        // Field paths from config can differ only by casing (e.g. ".Name" vs ".name"); collapse those to one entry.
+        displayFields = dedupeFieldPathsIgnoreCase(displayFields);
         enrichMissingRelationshipFields(objectApiName, recordId, fullResponse, displayFields);
 
         for (String fieldName : displayFields) {
@@ -89,6 +81,35 @@ public without sharing class Core_MDF_CCP_RestAPI_Utility {
         }
 
         return filteredData;
+    }
+
+    /**
+     * Collapse field paths that are identical except for casing (Set<String> equality is case-sensitive)
+     * so the same field never appears twice in the response under different casing.
+     *
+     * @param fieldPaths Field paths to dedupe.
+     * @return Set with one entry per case-insensitive field path.
+     */
+    private static Set<String> dedupeFieldPathsIgnoreCase(Set<String> fieldPaths) {
+        Set<String> deduped = new Set<String>();
+        Set<String> seenLowercase = new Set<String>();
+        if (fieldPaths == null) {
+            return deduped;
+        }
+
+        for (String fieldPath : fieldPaths) {
+            if (String.isBlank(fieldPath)) {
+                continue;
+            }
+            String lowercaseKey = fieldPath.toLowerCase();
+            if (seenLowercase.contains(lowercaseKey)) {
+                continue;
+            }
+            seenLowercase.add(lowercaseKey);
+            deduped.add(fieldPath);
+        }
+
+        return deduped;
     }
 
     /**
@@ -157,7 +178,7 @@ public without sharing class Core_MDF_CCP_RestAPI_Utility {
 
         try {
             List<Core_MDF_Custom_Layout_Configurations__c> configs = [
-                SELECT Core_MDF_Field_API_Name_txt__c, Core_MDF_Field_Label_txt__c
+                SELECT Core_MDF_Field_API_Name_txt__c, Core_MDF_Field_Label_txt__c, Core_MDF_Record_Name_nm__c
                 FROM Core_MDF_Custom_Layout_Configurations__c
                 WHERE Core_MDF_Object_API_Name_txt__c = :objectApiName
                   AND Core_MDF_User_Type_nm__c = :USER_TYPE
@@ -169,7 +190,7 @@ public without sharing class Core_MDF_CCP_RestAPI_Utility {
             // Fallback query without USER_TYPE filter
             if (configs.isEmpty()) {
                 configs = [
-                    SELECT Core_MDF_Field_API_Name_txt__c, Core_MDF_Field_Label_txt__c
+                    SELECT Core_MDF_Field_API_Name_txt__c, Core_MDF_Field_Label_txt__c, Core_MDF_Record_Name_nm__c
                     FROM Core_MDF_Custom_Layout_Configurations__c
                     WHERE Core_MDF_Object_API_Name_txt__c = :objectApiName
                       AND Core_MDF_Record_Type_Name_txt__c = :recordTypeName
@@ -182,7 +203,10 @@ public without sharing class Core_MDF_CCP_RestAPI_Utility {
             Map<String, String> fieldLabelsByApiName = new Map<String, String>();
             for (Core_MDF_Custom_Layout_Configurations__c config : configs) {
                 if (String.isNotBlank(config.Core_MDF_Field_API_Name_txt__c)) {
-                    String fieldApiName = normalizeConfiguredFieldPath(objectApiName, config.Core_MDF_Field_API_Name_txt__c.trim());
+                    // Prefer the configured lookup display path (Core_MDF_Record_Name_nm__c) over the raw field API name.
+                    String fieldApiName = String.isNotBlank(config.Core_MDF_Record_Name_nm__c)
+                        ? config.Core_MDF_Record_Name_nm__c.trim()
+                        : normalizeConfiguredFieldPath(objectApiName, config.Core_MDF_Field_API_Name_txt__c.trim());
                     displayFields.add(fieldApiName);
                     if (String.isNotBlank(config.Core_MDF_Field_Label_txt__c)) {
                         fieldLabelsByApiName.put(fieldApiName, config.Core_MDF_Field_Label_txt__c.trim());
@@ -241,6 +265,7 @@ public without sharing class Core_MDF_CCP_RestAPI_Utility {
     public static void clearFieldConfigCache() {
         FIELD_CACHE.clear();
         FIELD_LABEL_CACHE.clear();
+        LOOKUP_FIELD_CACHE.clear();
     }
 
     /**
@@ -253,6 +278,43 @@ public without sharing class Core_MDF_CCP_RestAPI_Utility {
      */
     private static String buildCacheKey(String objectApiName, String recordTypeName) {
         return objectApiName + '::' + recordTypeName;
+    }
+
+    /**
+     * Load every field path configured via Core_MDF_Record_Name_nm__c for the object, independent
+     * of record type/user type, so configured lookup fields are always fetched and displayed.
+     *
+     * @param objectApiName API name of object.
+     * @return Set of configured lookup field paths (e.g. Core_MDF_Account__r.Name).
+     */
+    private static Set<String> getConfiguredLookupFields(String objectApiName) {
+        if (String.isBlank(objectApiName)) {
+            return new Set<String>();
+        }
+
+        if (LOOKUP_FIELD_CACHE.containsKey(objectApiName)) {
+            return LOOKUP_FIELD_CACHE.get(objectApiName);
+        }
+
+        Set<String> lookupFields = new Set<String>();
+        try {
+            for (Core_MDF_Custom_Layout_Configurations__c config : [
+                SELECT Core_MDF_Record_Name_nm__c
+                FROM Core_MDF_Custom_Layout_Configurations__c
+                WHERE Core_MDF_Object_API_Name_txt__c = :objectApiName
+                  AND Core_MDF_Record_Name_nm__c != null
+                  AND API_Visibility__c = true
+            ]) {
+                if (String.isNotBlank(config.Core_MDF_Record_Name_nm__c)) {
+                    lookupFields.add(config.Core_MDF_Record_Name_nm__c.trim());
+                }
+            }
+        } catch (QueryException qe) {
+            Core_MDF_CCP_UtilityClass.logError(qe);
+        }
+
+        LOOKUP_FIELD_CACHE.put(objectApiName, lookupFields);
+        return lookupFields;
     }
 
     /**
@@ -324,16 +386,6 @@ public without sharing class Core_MDF_CCP_RestAPI_Utility {
         if (String.isBlank(fieldPath)) {
             return fieldPath;
         }
-
-        if (objectApiName == Core_MDF_Campaign_APIConstants.CAMPAIGN_OBJECT_API_NAME) {
-            if (fieldPath == LEGACY_CAMPAIGN_PROGRAM_FIELD) {
-                return CAMPAIGN_PROGRAM_NAME_FIELD;
-            }
-            if (fieldPath == LEGACY_CAMPAIGN_ACCOUNT_FIELD) {
-                return CAMPAIGN_ACCOUNT_NAME_FIELD;
-            }
-        }
-
         return fieldPath;
     }
 
@@ -358,18 +410,40 @@ public without sharing class Core_MDF_CCP_RestAPI_Utility {
             String soql = 'SELECT ' + String.join(missingRelationshipFields, ', ') +
                 ' FROM ' + objectApiName + ' WHERE Id = :recordId LIMIT 1';
             SObject recordRow = Database.query(soql);
-            if (recordRow == null) {
-                return;
-            }
-
-            for (String fieldPath : missingRelationshipFields) {
-                FieldPathResult resolvedValue = resolveSObjectFieldPath(recordRow, fieldPath);
-                if (resolvedValue.found) {
-                    putFieldPath(sourceData, fieldPath, resolvedValue.value);
-                }
-            }
+            applyRelationshipFieldsFromRecord(recordRow, missingRelationshipFields, sourceData);
         } catch (Exception ex) {
+            // Combined query can fail (e.g. two relationship paths ending in the same field name,
+            // "duplicate field selected"), so fall back to fetching each configured field individually
+            // rather than losing every lookup field in the response.
             Core_MDF_CCP_UtilityClass.logError(ex);
+            fetchRelationshipFieldsIndividually(objectApiName, recordId, missingRelationshipFields, sourceData);
+        }
+    }
+
+    private static void applyRelationshipFieldsFromRecord(SObject recordRow, List<String> fieldPaths, Map<String, Object> sourceData) {
+        if (recordRow == null || fieldPaths == null) {
+            return;
+        }
+        for (String fieldPath : fieldPaths) {
+            FieldPathResult resolvedValue = resolveSObjectFieldPath(recordRow, fieldPath);
+            if (resolvedValue.found) {
+                putFieldPath(sourceData, fieldPath, resolvedValue.value);
+            }
+        }
+    }
+
+    private static void fetchRelationshipFieldsIndividually(String objectApiName, String recordId, List<String> fieldPaths, Map<String, Object> sourceData) {
+        if (fieldPaths == null) {
+            return;
+        }
+        for (String fieldPath : fieldPaths) {
+            try {
+                String soql = 'SELECT ' + fieldPath + ' FROM ' + objectApiName + ' WHERE Id = :recordId LIMIT 1';
+                SObject recordRow = Database.query(soql);
+                applyRelationshipFieldsFromRecord(recordRow, new List<String>{ fieldPath }, sourceData);
+            } catch (Exception ex) {
+                Core_MDF_CCP_UtilityClass.logError(ex);
+            }
         }
     }
 
@@ -481,6 +555,133 @@ public without sharing class Core_MDF_CCP_RestAPI_Utility {
         }
 
         return currentValue;
+    }
+
+
+    /**
+     * Returns response fields, filter fields, allowed operators and labels for an object,
+     * section field-view LIKE pattern (fieldViewPattern = API%Filter) and record type (recordTypeName = Client).
+     */
+    public static FieldConfiguration loadFieldConfiguration(String objectApiName, String fieldViewPattern, String recordTypeName) {
+        List<Core_MDF_Custom_Layout_Configurations__c> configurations = new List<Core_MDF_Custom_Layout_Configurations__c>();
+        try {
+            // Attempt to retrieve layout configurations for the specified object, field view pattern, and record type.
+            configurations = getLayoutConfigurations(objectApiName, fieldViewPattern, recordTypeName);
+        } catch (Exception ex) {
+            // A failed query yields an empty configuration, so callers get a clear invalid-field error.
+            Core_MDF_CCP_UtilityClass.logError(ex);
+        }
+        // Build and return the field configuration based on the retrieved layout configurations.
+        return buildFieldConfiguration(configurations);
+    }
+
+    /** Returns API-visible external-user configuration rows for an object, section field-view LIKE pattern (blank = API%Filter) and record type (blank = Client). */
+    public static List<Core_MDF_Custom_Layout_Configurations__c> getLayoutConfigurations(
+        String objectApiName,
+        String fieldViewPattern,
+        String recordTypeName
+    ) {
+        String objectFilter = String.isBlank(objectApiName) ? '' : objectApiName.trim();
+        String fieldViewFilter = String.isBlank(fieldViewPattern) ? fieldViewPattern : fieldViewPattern.trim();
+        String recordTypeFilter = String.isBlank(recordTypeName) ? recordTypeName : recordTypeName.trim();
+        return [
+            SELECT id,Name,Core_MDF_Field_API_Name_txt__c, Core_MDF_Field_Label_txt__c, Core_MDF_Record_Name_nm__c,Core_MDF_API_Required_Ind__c,Core_MDF_API_Error_Code__c,Core_MDF_Hidden_Ind__c,
+                   API_Visibility__c, Core_MDF_List_Api_Filter_Field_Ind__c, Core_MDF_List_Api_Filter_Operator_nm__c,
+                   Core_MDF_Record_Type_Name_txt__c,Core_MDF_Budget_Type_nm__c,
+                   Core_MDF_Section_id__r.Core_MDF_List_API_Record_Count_Limit_nbr__c
+            FROM Core_MDF_Custom_Layout_Configurations__c
+            WHERE Core_MDF_Object_API_Name_txt__c = :objectFilter
+              AND Core_MDF_User_Type_nm__c = :Core_MDF_CCP_ConstantClass.CONFIG_USER_TYPE
+              AND Core_MDF_Record_Type_Name_txt__c = :recordTypeFilter
+              AND API_Visibility__c = true
+              AND Core_MDF_Section_id__r.Core_MDF_Field_View_nm__c LIKE :fieldViewFilter
+        ];
+    }
+
+    /**
+     * Builds a FieldConfiguration from configuration rows. Each row adds its API field and, for lookups,
+     * its record-name path. The configured label maps to the field path (lookup labels map to the record-name path).
+     * Example: the label "Account" maps to "Core_MDF_Account__r.Name".
+     * Hidden fields are omitted from the response label map, while filter mappings are controlled independently
+     * by the list API filter flag.
+     */
+    @TestVisible
+    private static FieldConfiguration buildFieldConfiguration(List<Core_MDF_Custom_Layout_Configurations__c> configurations) {
+        FieldConfiguration config = new FieldConfiguration();
+        if (configurations != null && !configurations.isEmpty() && configurations[0].Core_MDF_Section_id__r != null) {
+            MAX_RECORD_LIMIT = configurations[0].Core_MDF_Section_id__r.Core_MDF_List_API_Record_Count_Limit_nbr__c;
+        }
+          // Iterate over each configuration row to populate the field configuration.
+        for (Core_MDF_Custom_Layout_Configurations__c cfg : configurations) {
+            String apiPath = cfg.Core_MDF_Field_API_Name_txt__c?.trim();
+            String recordNamePath = cfg.Core_MDF_Record_Name_nm__c?.trim();
+            String label = cfg.Core_MDF_Field_Label_txt__c?.trim();
+            Boolean isLookup = String.isNotBlank(recordNamePath);
+            Boolean isFilter = cfg.Core_MDF_List_Api_Filter_Field_Ind__c == true;
+           
+            // Determine if the field is hidden.
+                 Boolean isHidden = cfg.Core_MDF_Hidden_Ind__c == true;
+         // Add the API field and, if applicable, the record name path as configured fields.
+                addConfiguredField(config, apiPath, isFilter, cfg.Core_MDF_List_Api_Filter_Operator_nm__c);
+         // Add the record name path as a configured field if this is a lookup.
+                 addConfiguredField(config, recordNamePath, isFilter, cfg.Core_MDF_List_Api_Filter_Operator_nm__c);
+
+            // Labels: the main label points to the record name for lookups, otherwise to the API field.
+            String labeledPath = isLookup ? recordNamePath : apiPath;
+            String idLabel = isLookup && String.isNotBlank(label) ? label + ' Id' : null;
+            if (!isHidden) {
+                // Hidden fields are excluded from responses.
+                addIfMissing(config.responseFieldApiNameToLabel, labeledPath, label);
+            }
+            if (isFilter) {
+                // Add the field to the filter mapping if it is filterable.
+                addIfMissing(config.filterFieldLabelToApiName, label, labeledPath);
+            }
+        }
+        system.debug('Built field configuration: ' + config);
+       // Return the fully built field configuration.
+        return config;
+    }
+
+    /** Adds one field path as a response field and, when filterable, as a filter field with its ';'-separated operators. */
+    private static void addConfiguredField(FieldConfiguration config, String fieldPath, Boolean isFilter, String operators) {
+        if (String.isBlank(fieldPath)) {
+            return;
+        }
+        config.responseFieldApiNames.add(fieldPath);
+        if (!isFilter) {
+            return;
+        }
+        String fieldKey = fieldPath.toLowerCase();
+        config.allowedFilterFields.add(fieldPath);
+        // Initialize the set of allowed operators for this field if not already present.
+        if (!config.operatorsByField.containsKey(fieldKey)) {
+            config.operatorsByField.put(fieldKey, new Set<String>());
+        }
+        // Add each operator to the set of allowed operators for this field.
+        for (String operator : String.isBlank(operators) ? new List<String>() : operators.split(';')) {
+            if (String.isNotBlank(operator)) {
+                config.operatorsByField.get(fieldKey).add(operator.trim().toUpperCase());
+            }
+        }
+    }
+
+    /** Adds key (lowercased) -> value only when both are set and the key is new, so the first row wins. */
+    private static void addIfMissing(Map<String, String> target, String key, String value) {
+       // Only add the key-value pair if both key and value are set and the key is not already present.
+        if (String.isNotBlank(key) && String.isNotBlank(value) && !target.containsKey(key.toLowerCase())) {
+           // Add the key-value pair to the map, using the lowercase key.
+            target.put(key.toLowerCase(), value);
+        }
+    }
+
+    /** Field configuration for one object. Filled by buildFieldConfiguration; map keys are lowercase. */
+    public class FieldConfiguration {
+        public Set<String> responseFieldApiNames = new Set<String>();                      // Fields selected in the response.
+        public Set<String> allowedFilterFields = new Set<String>();                        // Fields allowed in filters.
+        public Map<String, String> filterFieldLabelToApiName = new Map<String, String>();  // Configured filter label -> API name.
+        public Map<String, Set<String>> operatorsByField = new Map<String, Set<String>>(); // Filter field -> allowed operators.
+        public Map<String, String> responseFieldApiNameToLabel = new Map<String, String>{ 'id' => 'Id' }; // API name -> response label.
     }
 
     /**

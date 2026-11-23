@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Core_MDF_Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_By_Pass_Bulk__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Check this to by pass bulk approval for this object</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>By Pass Bulk</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Compact_Field_Properties__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Compact Field Properties</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Conditional_Field__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Conditional Field</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Detail_Field_Properties__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Detail Field Properties</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Detail_Propertie__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Detail Propertie</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Details_Properties__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Details Properties</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Name__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field Name</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Propertie__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field Propertie</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Properties__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field Properties</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Fields_API_Name__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Fields API Name</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Fields_Name__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Fields Name</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Icon_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Icon Name</label>
+        <length>150</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Navigate_Standard_Page_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Navigate Standard Page</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Object_Label_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Object Label Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Object_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Object Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_PrgorRecType__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Program Record Type</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Program__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Program</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Record_Propertie__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Record Propertie</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Record_Properties__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Record Properties</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Sorted_By__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Sorted By</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Table_View_Field_Properties__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Table View Field Properties</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Title_Field__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Title Field</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>CCP Approval Req Object Configuration</label>
+    <pluralLabel>CCP Approval Req Object Configuratios</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

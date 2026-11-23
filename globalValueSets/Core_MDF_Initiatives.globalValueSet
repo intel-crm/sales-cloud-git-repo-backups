@@ -6,9 +6,29 @@
         <label>AI Inference</label>
     </customValue>
     <customValue>
+        <fullName>AI Inference – Datacenter</fullName>
+        <default>false</default>
+        <label>AI Inference – Datacenter</label>
+    </customValue>
+    <customValue>
         <fullName>AI Inferencing</fullName>
         <default>false</default>
         <label>AI Inferencing</label>
+    </customValue>
+    <customValue>
+        <fullName>AI Inferencing –  Edge</fullName>
+        <default>false</default>
+        <label>AI Inferencing –  Edge</label>
+    </customValue>
+    <customValue>
+        <fullName>Client Mainstream Mini PC</fullName>
+        <default>false</default>
+        <label>Client Mainstream Mini PC</label>
+    </customValue>
+    <customValue>
+        <fullName>Cloud Networking - Data &amp; Security</fullName>
+        <default>false</default>
+        <label>Cloud Networking - Data &amp; Security</label>
     </customValue>
     <customValue>
         <fullName>Connectivity</fullName>
@@ -46,6 +66,11 @@
         <label>Early Access / Product Launch</label>
     </customValue>
     <customValue>
+        <fullName>Edge Compute and Modularity</fullName>
+        <default>false</default>
+        <label>Edge Compute and Modularity</label>
+    </customValue>
+    <customValue>
         <fullName>Enterprise Cloud Networking &amp; Security</fullName>
         <default>false</default>
         <label>Enterprise Cloud Networking &amp; Security</label>
@@ -54,6 +79,11 @@
         <fullName>eSports</fullName>
         <default>false</default>
         <label>eSports</label>
+    </customValue>
+    <customValue>
+        <fullName>Extend Platform Leadership</fullName>
+        <default>false</default>
+        <label>Extend Platform Leadership</label>
     </customValue>
     <customValue>
         <fullName>Fixed/Wireless Access</fullName>
@@ -66,6 +96,11 @@
         <label>Gamer Days</label>
     </customValue>
     <customValue>
+        <fullName>Gaming Enthusiast</fullName>
+        <default>false</default>
+        <label>Gaming Enthusiast</label>
+    </customValue>
+    <customValue>
         <fullName>High Performance Compute</fullName>
         <default>false</default>
         <label>High Performance Compute</label>
@@ -76,24 +111,34 @@
         <label>High Speed Connectivity</label>
     </customValue>
     <customValue>
+        <fullName>Intel® Partner Alliance AI Accelerator</fullName>
+        <default>false</default>
+        <label>Intel® Partner Alliance AI Accelerator</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Partner Alliance Edge Accelerator</fullName>
+        <default>false</default>
+        <label>Intel® Partner Alliance Edge Accelerator</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Partner Alliance Networking Accelerator</fullName>
+        <default>false</default>
+        <label>Intel® Partner Alliance Networking Accelerator</label>
+    </customValue>
+    <customValue>
         <fullName>Intel Accelerated (Solutions)</fullName>
         <default>false</default>
         <label>Intel Accelerated (Solutions)</label>
     </customValue>
     <customValue>
-        <fullName>IRTI: Education</fullName>
+        <fullName>IoT Edge AI - IoT/Vision/Video</fullName>
         <default>false</default>
-        <label>IRTI: Education</label>
+        <label>IoT Edge AI - IoT/Vision/Video</label>
     </customValue>
     <customValue>
-        <fullName>IRTI: Social Equity &amp; Human Rights</fullName>
+        <fullName>IoT Edge AI - Networking/Security</fullName>
         <default>false</default>
-        <label>IRTI: Social Equity &amp; Human Rights</label>
-    </customValue>
-    <customValue>
-        <fullName>IRTI: Climate &amp; Sustainability</fullName>
-        <default>false</default>
-        <label>IRTI: Climate &amp; Sustainability</label>
+        <label>IoT Edge AI - Networking/Security</label>
     </customValue>
     <customValue>
         <fullName>IRTI: Accessibility</fullName>
@@ -101,9 +146,29 @@
         <label>IRTI: Accessibility</label>
     </customValue>
     <customValue>
+        <fullName>IRTI: Climate &amp; Sustainability</fullName>
+        <default>false</default>
+        <label>IRTI: Climate &amp; Sustainability</label>
+    </customValue>
+    <customValue>
+        <fullName>IRTI: Education</fullName>
+        <default>false</default>
+        <label>IRTI: Education</label>
+    </customValue>
+    <customValue>
         <fullName>IRTI: Health &amp; Life Sciences</fullName>
         <default>false</default>
         <label>IRTI: Health &amp; Life Sciences</label>
+    </customValue>
+    <customValue>
+        <fullName>IRTI: Social Equity &amp; Human Rights</fullName>
+        <default>false</default>
+        <label>IRTI: Social Equity &amp; Human Rights</label>
+    </customValue>
+    <customValue>
+        <fullName>Leading Edge FPGA</fullName>
+        <default>false</default>
+        <label>Leading Edge FPGA</label>
     </customValue>
     <customValue>
         <fullName>Manageability</fullName>
@@ -116,6 +181,11 @@
         <label>Managed Services</label>
     </customValue>
     <customValue>
+        <fullName>Market Ready Solution/RFP Ready Kit</fullName>
+        <default>false</default>
+        <label>Market Ready Solution/RFP Ready Kit</label>
+    </customValue>
+    <customValue>
         <fullName>Multi/Hybrid Cloud Networking (SASE)</fullName>
         <default>false</default>
         <label>Multi/Hybrid Cloud Networking (SASE)</label>
@@ -126,14 +196,44 @@
         <label>Multi-Access Edge Computing</label>
     </customValue>
     <customValue>
+        <fullName>Networking - 5G</fullName>
+        <default>false</default>
+        <label>Networking - 5G</label>
+    </customValue>
+    <customValue>
+        <fullName>Networking - private wireless networks</fullName>
+        <default>false</default>
+        <label>Networking - private wireless networks</label>
+    </customValue>
+    <customValue>
+        <fullName>Networking - Radio Access Networks/vRAN/oRAN</fullName>
+        <default>false</default>
+        <label>Networking - Radio Access Networks/vRAN/oRAN</label>
+    </customValue>
+    <customValue>
+        <fullName>Networking - Visual Cloud/Video</fullName>
+        <default>false</default>
+        <label>Networking - Visual Cloud/Video</label>
+    </customValue>
+    <customValue>
+        <fullName>None</fullName>
+        <default>false</default>
+        <label>None</label>
+    </customValue>
+    <customValue>
+        <fullName>On Prem Networking – Data &amp; Security</fullName>
+        <default>false</default>
+        <label>On Prem Networking – Data &amp; Security</label>
+    </customValue>
+    <customValue>
         <fullName>P5G &amp; MEC​</fullName>
         <default>false</default>
         <label>P5G &amp; MEC​</label>
     </customValue>
     <customValue>
-        <fullName>Private Wireless Networks</fullName>
+        <fullName>Private Wireless Networks</fullName>
         <default>false</default>
-        <label>Private Wireless Networks</label>
+        <label>Private Wireless Networks</label>
     </customValue>
     <customValue>
         <fullName>Radio Access Networks (RAN)</fullName>
@@ -156,6 +256,11 @@
         <label>Solution Aggregation</label>
     </customValue>
     <customValue>
+        <fullName>Solution Scale (IPA Accelerators)</fullName>
+        <default>false</default>
+        <label>Solution Scale (IPA Accelerators)</label>
+    </customValue>
+    <customValue>
         <fullName>Solution Scale (MRS/RRK and AI ISV PW)</fullName>
         <default>false</default>
         <label>Solution Scale (MRS/RRK and AI ISV PW)</label>
@@ -166,6 +271,16 @@
         <label>Sustainability</label>
     </customValue>
     <customValue>
+        <fullName>Test Initiative</fullName>
+        <default>false</default>
+        <label>Test Initiative</label>
+    </customValue>
+    <customValue>
+        <fullName>Test LOV Initiatives</fullName>
+        <default>false</default>
+        <label>Test LOV Initiatives</label>
+    </customValue>
+    <customValue>
         <fullName>Visual Cloud</fullName>
         <default>false</default>
         <label>Visual Cloud</label>
@@ -174,21 +289,6 @@
         <fullName>vRAN</fullName>
         <default>false</default>
         <label>vRAN</label>
-    </customValue>
-    <customValue>
-        <fullName>Wireless Core</fullName>
-        <default>false</default>
-        <label>Wireless Core</label>
-    </customValue>
-    <customValue>
-        <fullName>Leading Edge FPGA</fullName>
-        <default>false</default>
-        <label>Leading Edge FPGA</label>
-    </customValue>
-    <customValue>
-        <fullName>Extend Platform Leadership</fullName>
-        <default>false</default>
-        <label>Extend Platform Leadership</label>
     </customValue>
     <customValue>
         <fullName>Win Intel Preference</fullName>
@@ -206,113 +306,11 @@
         <label>Win Volume</label>
     </customValue>
     <customValue>
-        <fullName>None</fullName>
+        <fullName>Wireless Core</fullName>
         <default>false</default>
-        <label>None</label>
-    </customValue>
-    <customValue>
-        <fullName>Client Mainstream Mini PC</fullName>
-        <default>false</default>
-        <label>Client Mainstream Mini PC</label>
-    </customValue>
-    <customValue>
-        <fullName>Gaming Enthusiast</fullName>
-        <default>false</default>
-        <label>Gaming Enthusiast</label>
-    </customValue>
-    <customValue>
-        <fullName>Edge Compute and Modularity</fullName>
-        <default>false</default>
-        <label>Edge Compute and Modularity</label>
-    </customValue>
-    <customValue>
-        <fullName>Networking - 5G</fullName>
-        <default>false</default>
-        <label>Networking - 5G</label>
-    </customValue>
-    <customValue>
-        <fullName>IoT Edge AI - Networking/Security</fullName>
-        <default>false</default>
-        <label>IoT Edge AI - Networking/Security</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Partner Alliance Edge Accelerator</fullName>
-        <default>false</default>
-        <label>Intel® Partner Alliance Edge Accelerator</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Partner Alliance AI Accelerator</fullName>
-        <default>false</default>
-        <label>Intel® Partner Alliance AI Accelerator</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Partner Alliance Networking Accelerator</fullName>
-        <default>false</default>
-        <label>Intel® Partner Alliance Networking Accelerator</label>
-    </customValue>
-    <customValue>
-        <fullName>On Prem Networking – Data &amp; Security</fullName>
-        <default>false</default>
-        <label>On Prem Networking – Data &amp; Security</label>
-    </customValue>
-    <customValue>
-        <fullName>Cloud Networking - Data &amp; Security</fullName>
-        <default>false</default>
-        <label>Cloud Networking - Data &amp; Security</label>
-    </customValue>
-    <customValue>
-        <fullName>Networking - private wireless networks</fullName>
-        <default>false</default>
-        <label>Networking - private wireless networks</label>
-    </customValue>
-    <customValue>
-        <fullName>Networking - Radio Access Networks/vRAN/oRAN</fullName>
-        <default>false</default>
-        <label>Networking - Radio Access Networks/vRAN/oRAN</label>
-    </customValue>
-    <customValue>
-        <fullName>Market Ready Solution/RFP Ready Kit</fullName>
-        <default>false</default>
-        <label>Market Ready Solution/RFP Ready Kit</label>
-    </customValue>
-    <customValue>
-        <fullName>Networking - Visual Cloud/Video</fullName>
-        <default>false</default>
-        <label>Networking - Visual Cloud/Video</label>
-    </customValue>
-    <customValue>
-        <fullName>IoT Edge AI - IoT/Vision/Video</fullName>
-        <default>false</default>
-        <label>IoT Edge AI - IoT/Vision/Video</label>
-    </customValue>
-    <customValue>
-        <fullName>AI Inference – Datacenter</fullName>
-        <default>false</default>
-        <label>AI Inference – Datacenter</label>
-    </customValue>
-    <customValue>
-        <fullName>AI Inferencing – Edge</fullName>
-        <default>false</default>
-        <label>AI Inferencing – Edge</label>
-    </customValue>
-    <customValue>
-        <fullName>Solution Scale (IPA Accelerators)</fullName>
-        <default>false</default>
-        <label>Solution Scale (IPA Accelerators)</label>
-    </customValue>
-    <customValue>
-        <fullName>On Prem Networking - Data &amp; Security</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>On Prem Networking - Data &amp; Security</label>
-    </customValue>
-    <customValue>
-        <fullName>Security</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Security</label>
+        <label>Wireless Core</label>
     </customValue>
     <description>This holds all picklist values for Initiatives</description>
     <masterLabel>Initiatives</masterLabel>
-    <sorted>true</sorted>
+    <sorted>false</sorted>
 </GlobalValueSet>

@@ -2,7 +2,7 @@
 <Queue xmlns="http://soap.sforce.com/2006/04/metadata">
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>true</doesSendEmailToMembers>
-    <name>IPS - IAGS</name>
+    <name>IPS - SSG</name>
     <queueMembers>
         <publicGroups>
             <publicGroup>Core_IPS_Org_023</publicGroup>

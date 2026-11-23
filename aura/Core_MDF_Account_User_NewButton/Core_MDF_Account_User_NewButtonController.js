@@ -1,6 +1,6 @@
 ({
     //Function called on click of handle check
-    handleClick : function (component, event, helper) {
+    handleClick : function (component, event, helper) {        
         component.set("v.CheckNew",true);
         var toggleButton = component.find("newButton");
         $A.util.toggleClass(toggleButton, "toggle");
@@ -8,9 +8,9 @@
     
     // Function Called on the load of the component
     checkObjectPermission: function(component, event, helper) {
-      var action = component.get("c.checkSObjectCreatePermission");
+         var action = component.get("c.checkSObjectCreatePermission");
         //pass the object name here for which you want
-        //to fetch check the permission
+        //to fetch check the permission        
         action.setParams({
             "objectName" : "Core_MDF_Partner_Node_User_Mapping__c"
         });

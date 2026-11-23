@@ -2,7 +2,7 @@ public without sharing class Core_MDF_AccountSearchController {
 
     @AuraEnabled
     public static AccountWrapper searchAccounts(Id accountId) {
-		
+		Map<String,String> prgmAbbNameMap = new Map<String,String>();
         if (accountId == null) {
             return null;
         }
@@ -10,24 +10,29 @@ public without sharing class Core_MDF_AccountSearchController {
         try {
             Account acc = [
                 SELECT Id, Name, BillingCountry, BillingState, BillingPostalCode,Core_Unified_Global_Customer_BP_Id__c, Core_MDF_CoMarketingActive__c,Core_MDF_CoMarketingAgency__c,Core_Intel_Partner_Alliance_PartnerGroup__c FROM Account WHERE Id = :accountId LIMIT 1];
-            
+            for(Core_MDF_ChannelProgram__mdt cpm : [SELECT Core_MDF_Abbreviated_ProgramName_txt__c, Core_MDF_Technical_Program_Name__c
+                                                    FROM Core_MDF_ChannelProgram__mdt WHERE Core_MDF_Technical_Program_Name__c != 'All Campaign Fields'])
+            {
+                prgmAbbNameMap.put(cpm.Core_MDF_Technical_Program_Name__c,cpm.Core_MDF_Abbreviated_ProgramName_txt__c);
+            }
             Set<String> programNames = new Set<String>();
 			Map<String, String> pgmNameToVCMap = new Map<String, String>();
             for (Core_MDF_Partner_Group_Mapping__c pgm : [SELECT Core_MDF_Account__r.Name,Core_MDF_Works_For__c, Core_MDF_Works_For__r.Name, Core_MDF_Virtual_Corp_nm__r.Name, Core_MDF_Channel_Program__r.Name, Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c FROM Core_MDF_Partner_Group_Mapping__c WHERE Core_MDF_Account__c = :accountId AND Core_MDF_Inactive_Ind__c = FALSE AND Core_MDF_Type_of_Access__c = 'External' ORDER BY Core_MDF_Channel_Program__r.Name]) {
                 if (pgm.Core_MDF_Channel_Program__r != null) {
                     programNames.add(pgm.Core_MDF_Channel_Program__r.Name);                    
                 }
-                String vcName = pgm.Core_MDF_Virtual_Corp_nm__c != null ? pgm.Core_MDF_Virtual_Corp_nm__r.Name : null;
+                String abbreviatedCode = prgmAbbNameMap.get(pgm.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c);
+                String vcName = pgm.Core_MDF_Virtual_Corp_nm__c != null ? pgm.Core_MDF_Virtual_Corp_nm__r.Name : pgm.Core_MDF_Works_For__c != null ? abbreviatedCode + '-' + pgm.Core_MDF_Works_For__r.Name : abbreviatedCode + '-' + pgm.Core_MDF_Account__r.Name;
                 pgmNameToVCMap.put(pgm.Core_MDF_Channel_Program__r.Name,vcName); 
             }            
             String programs = programNames.isEmpty()? null: String.join(new List<String>(programNames), ', ');
                         
             // Program Map from Label
             Map<String, String> programToRT = getProgramToRecordTypeMap();
-			
+			system.debug('programToRT::'+programToRT);
+            
             /*List<String> programList = new List<String>(programToRT.keySet());
             programList.sort();*/
-	    
             // All programs configured in label
             Set<String> configuredPrograms = programToRT.keySet();
             

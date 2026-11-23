@@ -6,7 +6,7 @@ Modification Log :
 * ----------------------------------------------------------------------------    
 * Aayushi                              20/04/2018             Created for US102838
 *****************************************************************************************************/
-public without sharing class Core_IPS_IntelSupportTeam_Handler {
+public class Core_IPS_IntelSupportTeam_Handler {
     
     /***************************************************************************************************
 Version     : 1.0 
@@ -27,11 +27,9 @@ Modification Log :
 * Aayushi                        23/04/2018              Created
 ****************************************************************************************************/
     public static void insertInternalGroupMember(List<Core_IPS_Intel_Support_Team__c>  newList){
-        Map<Id,Core_IPS_Project__c> projMap = new Map<Id,Core_IPS_Project__c>();
-        List<Core_IPS_Project__c> projList = new List<Core_IPS_Project__c>();
-        if(!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('internalProjectGroup')) {
-            return;
-        }
+        Map<Id,Core_IPS_Project__c> projMap=new Map<Id,Core_IPS_Project__c>();
+        List<Core_IPS_Project__c> projList=new List<Core_IPS_Project__c>();
+        if(!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('internalProjectGroup'))        { return;}
         try{
             if(newList!=null && newList.size()>0){
                 List<Core_IPS_Intel_Support_Team__c> istMemberList=new List<Core_IPS_Intel_Support_Team__c>();
@@ -44,21 +42,25 @@ Modification Log :
                     }
                 }
                 if(Core_IPS_Project__c.SObjectType.getDescribe().isAccessible()){
-                    projList = [Select id,name,Core_IPS_InternalGroupId__c,Core_IPS_Unique_Project_Number__c from Core_IPS_Project__c where id IN: istMemberProj ];
+                projList = [Select id,name,Core_IPS_InternalGroupId__c,Core_IPS_Unique_Project_Number__c from Core_IPS_Project__c where id IN: istMemberProj ];
                 }
                 if(projList!=null && projList.size()>0){
                     Core_IPS_Project_Handler.internalProjectGroup(projList);   
                 }
                 if(Core_IPS_Project__c.SObjectType.getDescribe().isAccessible()){
-                    projMap = new Map<Id,Core_IPS_Project__c>([Select id,name,Core_IPS_InternalGroupId__c,Core_IPS_Unique_Project_Number__c from Core_IPS_Project__c where id IN: istMemberProj ]);
+                projMap = new Map<Id,Core_IPS_Project__c>([Select id,name,Core_IPS_InternalGroupId__c,Core_IPS_Unique_Project_Number__c from Core_IPS_Project__c where id IN: istMemberProj ]);
                 }
                 if(istMemberList!=null && istMemberList.size()>0){
                     List<GroupMember> listGroupMembersToInsert= new List<GroupMember>();
                     for(Core_IPS_Intel_Support_Team__c istMember:istMemberList){
                         String GroupId=projMap.get(istMember.Core_IPS_Project__c).Core_IPS_InternalGroupId__c;
                         GroupMember GM = new GroupMember();
-                        GM.GroupId = GroupId;
-                        GM.UserorGroupId = istMember.Core_IPS_User__c;
+                        //if (Schema.sObjectType.GroupMember.fields.GroupId.isCreateable()) { /*--US1038641--06/26/2021--Haritha--FLS Check for security vulnerability--*/
+                            GM.GroupId = GroupId;
+                       // }
+                        //if (Schema.sObjectType.GroupMember.fields.UserorGroupId.isCreateable()) { /*--US1038641--06/26/2021--Haritha--FLS Check for security vulnerability--*/
+                            GM.UserorGroupId = istMember.Core_IPS_User__c;
+                        //}
                         listGroupMembersToInsert.add(GM);
                     }  
                     if(!listGroupMembersToInsert.isEmpty()){
@@ -67,7 +69,7 @@ Modification Log :
                     }
                 }
             }  
-        }  catch(Exception ex){   }
+        }  catch(Exception ex){       }
     }
     
     /***************************************************************************************************
@@ -91,8 +93,18 @@ Modification Log :
 ****************************************************************************************************/    
     @future
     public static void insertGroupMember(String listGroupMemberStr){
+        Boolean creategroup=false;
         List<GroupMember> listGroupMembers = (List<GroupMember>)JSON.deserialize(listGroupMemberStr, List<GroupMember>.class);
-        if(listGroupMembers!=null && listGroupMembers.size()>0){
+        for(GroupMember groupmemberItem : listGroupMembers){
+            if(groupmemberItem.GroupId== null)
+            {
+                creategroup = true;
+            }
+            else{
+                creategroup = false;
+            }
+        }
+        if(listGroupMembers!=null && listGroupMembers.size()>0 && creategroup==false){
             insert listGroupMembers;
         }
     }
@@ -120,7 +132,10 @@ Modification Log :
     public static void delGroupMember(String listGroupMemberStr){
         List<GroupMember> listGroupMembers = (List<GroupMember>)JSON.deserialize(listGroupMemberStr, List<GroupMember>.class);
         if(listGroupMembers!=null && listGroupMembers.size()>0){
-            delete listGroupMembers;
+            /*US1038641 - 06/23/2021 - Yamini - CRUD Delete Check for security vulnerability --*/
+            if (GroupMember.sObjectType.getDescribe().isDeletable()) {    
+              delete listGroupMembers;
+            }
         }
     }
     /***************************************************************************************************
@@ -162,17 +177,23 @@ Modification Log :
                         }
                     }
                 } 
-                // TWC745-9117 - Avoid Deeply Nested IF Statements Kamala
-                if((projId!=null && projId.size()>0) &&(Core_IPS_Project__c.SObjectType.getDescribe().isAccessible())){
-                        projMap = new Map<Id,Core_IPS_Project__c>([Select id,name,Core_IPS_InternalGroupId__c,Core_IPS_Unique_Project_Number__c from Core_IPS_Project__c where id IN: projId ]);
+                if(projId!=null && projId.size()>0){
+                    if(Core_IPS_Project__c.SObjectType.getDescribe().isAccessible()){
+                    projMap = new Map<Id,Core_IPS_Project__c>([Select id,name,Core_IPS_InternalGroupId__c,Core_IPS_Unique_Project_Number__c from Core_IPS_Project__c where id IN: projId ]);
+                    }
                 }   
                 if(istMemberListAdd!=null && istMemberListAdd.size()>0){
                     List<GroupMember> listGroupMembersToInsert= new List<GroupMember>();
                     for(Core_IPS_Intel_Support_Team__c istMember:istMemberListAdd){
                         String GroupId=projMap.get(istMember.Core_IPS_Project__c).Core_IPS_InternalGroupId__c;
                         GroupMember GM = new GroupMember();
+                        /*US1021249 - 05/27/2021 - yamini - FLS Check for security vulnerability --*/
+                       // if (Schema.sObjectType.GroupMember.fields.GroupId.isCreateable()) {
                         GM.GroupId = GroupId;
+                       // }
+                        if (Schema.sObjectType.GroupMember.fields.UserorGroupId.isCreateable()) {
                         GM.UserorGroupId = istMember.Core_IPS_User__c;
+                        }
                         listGroupMembersToInsert.add(GM);
                     }  
                     if(!listGroupMembersToInsert.isEmpty()){
@@ -199,7 +220,8 @@ Modification Log :
                 }
                 
             }
-        }catch(Exception ex){ }
+        }catch(Exception ex){
+        }
     }
     /***************************************************************************************************
 Version     : 1.0 
@@ -247,7 +269,8 @@ Modification Log :
                     delGroupMember(listGroupMemberStr1);
                 }
             }    
-        }catch(Exception ex){}
+        }catch(Exception ex){
+        }
         
     }   
     
@@ -264,12 +287,12 @@ Modification Log :
 * Developer                   Date                   Description
 * ----------------------------------------------------------------------------                 
 * Rakesh Marka                   23/05/2018              User Story--US107411 
-* Aayushi Singhal				15/02/2019			 Modified DE32193
+* Aayushi Singhal        15/02/2019       Modified DE32193
 ****************************************************************************************************/  
     
     // Method to insert a record in InterestedParties using Intel Support Team
     public static void interestedParties_IntelSupportTeam(List<Core_IPS_Intel_Support_Team__c> newList) {
-        Map<Id,Core_IPS_Project__c> mapIST2ProjectId;
+         Map<Id,Core_IPS_Project__c> mapIST2ProjectId;
         if(!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('interestedParties_IntelSupportTeam'))
             return;
         
@@ -283,9 +306,9 @@ Modification Log :
         }
         if(setProjectId!=null && setProjectId.size()>0){
             if(Contact.SObjectType.getDescribe().isAccessible()){
-                mapIST2ProjectId = new Map<Id,Core_IPS_Project__c>([SELECT Id, Core_IPS_Enable_ISTasInterested_Parties__c FROM Core_IPS_Project__c WHERE Core_IPS_Enable_ISTasInterested_Parties__c=true AND Id IN :setProjectId]);     
+                 mapIST2ProjectId = new Map<Id,Core_IPS_Project__c>([SELECT Id, Core_IPS_Enable_ISTasInterested_Parties__c FROM Core_IPS_Project__c WHERE Core_IPS_Enable_ISTasInterested_Parties__c=true AND Id IN :setProjectId]);     
             }
-        if(mapIST2ProjectId!=null && mapIST2ProjectId.size()>0){
+                if(mapIST2ProjectId!=null && mapIST2ProjectId.size()>0){
             //start modification for DE32193
            // List<case> lstCase = new List<Case>([SELECT Id from Case WHERE Core_IPS_Project_Case__c IN :mapIST2ProjectId.keySet() and Status!='Closed']);
             interestedPartyList=createInterestedParty(mapIST2ProjectId.keySet());
@@ -321,14 +344,14 @@ Modification Log :
     
     // Removing Interested parties using intel support team status 
     public static void removeRelatedIpsOnStatusChangeForIST(List<Core_IPS_Intel_Support_Team__c> intelSupportTeamList,Map<Id,Core_IPS_Intel_Support_Team__c> oldMap){
-        List<case> cistList = new List<case>();
+        List<case> cistList=new  List<case>();
         if(!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('removeRelatedIpsOnStatusChangeForIST'))
         {return;}
         
         set<Id> project_map=new set<Id>();     
         Map<id,id> caseMap=new Map<id,id>();
         List<Core_IPS_Case_Interested_Party__c> cipListToBeInserted = new List<Core_IPS_Case_Interested_Party__c>();    
-        if(intelSupportTeamList.size()>0){          
+        if(intelSupportTeamList.size()>0){   
             for(Core_IPS_Intel_Support_Team__c cp:intelSupportTeamList){  
                 if(oldMap.get(cp.id).Status__c!=cp.Status__c && cp.Status__c=='Inactive'){ 
                     project_map.add(cp.Core_IPS_Project__c);
@@ -341,7 +364,7 @@ Modification Log :
         }
         if(project_map.size()>0){
             if(Case.SObjectType.getDescribe().isAccessible()){
-                cistList=[select id,CaseNumber,Core_IPS_Project_Case__c from case where Core_IPS_Project_Case__c In:project_map and status!='closed'];      
+            cistList=[select id,CaseNumber,Core_IPS_Project_Case__c from case where Core_IPS_Project_Case__c In:project_map and status!='closed'];      
             }
             if(cistList.size()>0){ 
                 for(Core_IPS_Intel_Support_Team__c intelNewList:intelSupportTeamList){     
@@ -354,8 +377,10 @@ Modification Log :
             } 
         }
         if(caseMap.size()>0 && caseMap!=null){
+            /*US1038641 - 06/23/2021 - Yamini - CRUD Delete Check for security vulnerability --*/
+            if (Core_IPS_Case_Interested_Party__c.sObjectType.getDescribe().isDeletable()) {
             delete [select id from Core_IPS_Case_Interested_Party__c where Case__c in : caseMap.keySet() and User__c in:caseMap.values() and Core_IPS_Project_Interested_Party__c=true];
-            
+            }
         }
         
     }
@@ -373,7 +398,7 @@ Modification Log :
 * Developer                   Date                   Description
 * ----------------------------------------------------------------------------                 
 * Rakesh Marka                   13/06/2018              User Story--US107411
-* Aayushi Singhal				 15/02/2019				 DE32193
+* Aayushi Singhal         15/02/2019         DE32193
 ****************************************************************************************************/  
     
     
@@ -470,10 +495,13 @@ Modification Log :
         if(Case.SObjectType.getDescribe().isAccessible()){
         for(Case objCase : [SELECT Id,Core_Intel_Sup_Owner__c,Core_IPS_Project_Case__c FROM Case WHERE Core_IPS_Project_Case__c IN :mapProjectId2RemovedISO4Case.KeySet() AND Status IN ('New','Open')]) {
             if(mapProjectId2RemovedISO4Case.get(objCase.Core_IPS_Project_Case__c).contains(objCase.Core_Intel_Sup_Owner__c)) {
+                /*US1021249 - 05/27/2021 - yamini - FLS Check for security vulnerability --*/
+               // if (Schema.sObjectType.Case.fields.Core_Intel_Sup_Owner__c.isUpdateable()) {
                 objCase.Core_Intel_Sup_Owner__c = null;
+               // }
                 lstCase2RemoveISO.add(objCase);
-            } 
-        }           
+            }            
+        }
         }
         if(mapProjectId2RemoveISO.size()>0) update mapProjectId2RemoveISO.values();            
         if(lstCase2RemoveISO.size()>0) update lstCase2RemoveISO;
@@ -518,13 +546,13 @@ Created Date: 14 Feb 2019
 Input Parameters: Set of Project Id
 Transactions: 
 Description : This method is used to create Interested Party records but is not inserted in database, 
-			  records are inserted in Queueable class
+        records are inserted in Queueable class
 Used in     : Core_IPS_Project_Handler, Core_IPS_IntelSupportTeam_Handler
 
 Modification Log :
 * Developer                   Date                   Description
 * ----------------------------------------------------------------------------                 
-* Aayushi Singhal             14/02/2019       		 DE32193
+* Aayushi Singhal             14/02/2019            DE32193
 ****************************************************************************************************/ 
     
     public static List<Core_IPS_Case_Interested_Party__c> createInterestedParty(Set<Id> projIdSet) {
@@ -539,9 +567,9 @@ Modification Log :
             if(Core_IPS_Intel_Support_Team__c.SObjectType.getDescribe().isAccessible()){
                 istList=[Select Id,Core_IPS_User__c,Add_as_Case_Interested_Party__c,Core_IPS_Project__c,Status__c FROM Core_IPS_Intel_Support_Team__c WHERE Core_IPS_Project__c IN :projIdSet AND Status__c='Active' AND Core_IPS_User__r.IsActive=true and Add_as_Case_Interested_Party__c=true]; 
             }
-            if(Core_IPS_Intel_Support_Team__c.SObjectType.getDescribe().isAccessible()){
-                caseList=[Select Id,Core_IPS_Project_Case__c from Case WHERE Core_IPS_Project_Case__c IN :projIdSet and Status!='Closed' ];
-            }
+             if(Core_IPS_Intel_Support_Team__c.SObjectType.getDescribe().isAccessible()){
+            caseList=[Select Id,Core_IPS_Project_Case__c from Case WHERE Core_IPS_Project_Case__c IN :projIdSet and Status!='Closed' ];
+             }
             if(caseList!=null && caseList.size()>0){
                 for(Case cs: caseList){
                     if(!projCaseMap.containsKey(cs.Core_IPS_Project_Case__c)){
@@ -559,15 +587,9 @@ Modification Log :
                 }
             }
             if(Core_IPS_Case_Interested_Party__c.SObjectType.getDescribe().isAccessible()){
-                // APEX GURU - SOQL FIX
-                Map<Id, case> caseListMap = new Map<Id, case>();
-                if(caseList!=null && caseList.size()>0){
-                    caseListMap = new Map<Id, case>(caseList);
-                }
-               // for(Core_IPS_Case_Interested_Party__c objIP : [SELECT Id,User__c,Case__c FROM Core_IPS_Case_Interested_Party__c WHERE Case__c IN :caseList]) {
-                  for(Core_IPS_Case_Interested_Party__c objIP : [SELECT Id,User__c,Case__c FROM Core_IPS_Case_Interested_Party__c WHERE Case__c IN :caseListMap.keyset()]) {
-               setExistingIP.add(objIP.User__c + ';' + objIP.Case__c);
-                }
+            for(Core_IPS_Case_Interested_Party__c objIP : [SELECT Id,User__c,Case__c FROM Core_IPS_Case_Interested_Party__c WHERE Case__c IN :caseList]) {
+            setExistingIP.add(objIP.User__c + ';' + objIP.Case__c);
+        }
             }
             for(Id projId: projIdSet){
                 if(projISTMap!=null && projISTMap.get(projId)!=null){

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>50.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Update_VAT_fields_0</name>
+        <label>Update VAT  fields</label>
+        <locationX>50</locationX>
+        <locationY>373</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_MDF_Document_Requested_Dtm__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Set_Document_Requested_Date_to_Now</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Core_MDF_First_Reminder_Date_Dtm__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>First_Reminder_Date</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Core_MDF_Second_Reminder_Date_Dtm__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Second_Reminder_Date</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Update_VAT_fields_0_0</name>
+        <label>Update VAT  fields</label>
+        <locationX>314</locationX>
+        <locationY>373</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_MDF_Document_Requested_Dtm__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Set_Document_Requested_Date_to_Now</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Core_MDF_First_Reminder_Date_Dtm__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>First_Reminder_Date</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Core_MDF_Second_Reminder_Date_Dtm__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Second_Reminder_Date</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <name>Core_MDF_Checking_status_of_VAT</name>
+        <label>Checking status of VAT</label>
+        <locationX>314</locationX>
+        <locationY>253</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_status_is_Pending_Document</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_MDF_Status_Txt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pending Documents</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_VAT_fields_0</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>If status is Pending Document</label>
+        </rules>
+        <rules>
+            <name>Core_MDF_If_status_is_Revision_Required</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_MDF_Status_Txt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Revision Required</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_VAT_fields_0_0</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>If status is Revision Required</label>
+        </rules>
+    </decisions>
+    <formulas>
+        <name>First_Reminder_Date</name>
+        <dataType>Date</dataType>
+        <expression>CASE( 
+  MOD( DATEVALUE({!Set_Document_Requested_Date_to_Now})- DATE( 1900, 1, 7 ), 7 ),
+  3, DATEVALUE({!Set_Document_Requested_Date_to_Now})+ 2 + 3,
+  4,  DATEVALUE({!Set_Document_Requested_Date_to_Now})+ 2 + 3,
+  5,  DATEVALUE({!Set_Document_Requested_Date_to_Now})+ 2 + 3,
+  6,  DATEVALUE({!Set_Document_Requested_Date_to_Now})+ 1 + 3,
+   DATEVALUE({!Set_Document_Requested_Date_to_Now})+ 3
+)</expression>
+    </formulas>
+    <formulas>
+        <name>FirstReminderDate</name>
+        <dataType>DateTime</dataType>
+        <expression> {!Set_Document_Requested_Date_to_Now}+ 3</expression>
+    </formulas>
+    <formulas>
+        <name>Second_Reminder_Date</name>
+        <dataType>Date</dataType>
+        <expression>CASE( 
+  MOD( DATEVALUE({!Set_Document_Requested_Date_to_Now})- DATE( 1900, 1, 7 ), 7 ),
+  3, DATEVALUE({!Set_Document_Requested_Date_to_Now})+ 2 + 5,
+  4,  DATEVALUE({!Set_Document_Requested_Date_to_Now})+ 2 + 5,
+  5,  DATEVALUE({!Set_Document_Requested_Date_to_Now})+ 2 + 5,
+  6,  DATEVALUE({!Set_Document_Requested_Date_to_Now})+ 1 + 5,
+   DATEVALUE({!Set_Document_Requested_Date_to_Now})+ 5
+)</expression>
+    </formulas>
+    <formulas>
+        <name>SecondReminderDate</name>
+        <dataType>DateTime</dataType>
+        <expression>{!Set_Document_Requested_Date_to_Now}+5</expression>
+    </formulas>
+    <formulas>
+        <name>Set_Document_Requested_Date_to_Now</name>
+        <dataType>DateTime</dataType>
+        <expression>NOW()</expression>
+    </formulas>
+    <interviewLabel>Core_MDF_BeforeInsertUpdateVATInfo {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_MDF_BeforeInsertUpdateVATInfo</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_MDF_Checking_status_of_VAT</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>1 OR 2</filterLogic>
+        <filters>
+            <field>Core_MDF_Status_Txt__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Pending Documents</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Status_Txt__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Revision Required</stringValue>
+            </value>
+        </filters>
+        <object>Core_MDF_Claim_VAT_Info__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

@@ -17,15 +17,17 @@ export default class Core_MDF_CCP_lwcMultiselectPicklist extends LightningElemen
     @track noResultMessage;
 
     connectedCallback() {
+        console.time("MultiselectPicklistStart");
         this.dropdown = false;
         var optionData = this.options ? (JSON.parse(JSON.stringify(this.options))) : null;
+       // console.log('optionData',optionData);
         if(optionData){
             for(var i = 0; i < optionData.length; i++) {
                 optionData[i].isVisible = true;
             }
         }
         var values = this.value ? (JSON.parse(JSON.stringify(this.value))) : null;
-     
+       // console.log('values',values);
         if(values) {
             var count = 0;
             for(var i = 0; i < optionData.length; i++) {
@@ -35,10 +37,13 @@ export default class Core_MDF_CCP_lwcMultiselectPicklist extends LightningElemen
                     }  
             }
                 this.searchString = count + ' Option(s) Selected';
-          
+               // console.log('searchString',this.searchString);
         }
         this.values = values;
+        console.timeEnd("MultiselectPicklistStart");
         this.optionData = optionData;
+     //   console.log('this.optionData',this.optionData);
+     //   console.log('values',this.values);
     }
 
     selectOptions() {

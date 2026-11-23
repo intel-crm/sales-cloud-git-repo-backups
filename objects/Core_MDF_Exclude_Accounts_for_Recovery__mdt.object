@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Core_MDF_Account_Id__c</fullName>
+        <description>To score ultimate account ids which needs to be excluded for recovery</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Account Id</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Channel_Program__c</fullName>
+        <description>Store&apos;s the channel program</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Channel Program</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Client CoMarketing Fund</fullName>
+                    <default>true</default>
+                    <label>Client CoMarketing Fund</label>
+                </value>
+                <value>
+                    <fullName>Client CoMarketing Fund Boost</fullName>
+                    <default>false</default>
+                    <label>Client CoMarketing Fund Boost</label>
+                </value>
+                <value>
+                    <fullName>Data Center CoMarketing Fund</fullName>
+                    <default>false</default>
+                    <label>Data Center CoMarketing Fund</label>
+                </value>
+                <value>
+                    <fullName>Intel Partner Alliance</fullName>
+                    <default>false</default>
+                    <label>Intel Partner Alliance</label>
+                </value>
+                <value>
+                    <fullName>Retail Marketing Funds</fullName>
+                    <default>false</default>
+                    <label>Retail Marketing Funds</label>
+                </value>
+                <value>
+                    <fullName>Service Provider CoMarketing Fund</fullName>
+                    <default>false</default>
+                    <label>Service Provider CoMarketing Fund</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Exclude Accounts for Recovery</label>
+    <pluralLabel>Exclude Accounts for Recoveries</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

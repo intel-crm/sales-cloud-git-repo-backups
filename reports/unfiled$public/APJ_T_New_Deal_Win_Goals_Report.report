@@ -7,9 +7,6 @@
         <field>CUST_OWNER_NAME</field>
     </columns>
     <columns>
-        <field>Core_Goal__c.Core_Goal_Category__c</field>
-    </columns>
-    <columns>
         <field>Core_Goal__c.Core_Goal_Status__c</field>
     </columns>
     <columns>
@@ -40,7 +37,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Sachin Anand,Siew May Cheow,Alastair Duncan,Swee Hoon Chan,Vineet Giri,Andrew Ridley,Hc Hwang,Fransiskus Leonardus,Avinash Rajah,Jovern Lim,Paul Haines,Patricia Dy Lee,Nileshni Santiago,Duc Dang</value>
+            <value>Sachin Anand,Siew May Cheow,Alastair Duncan,Swee Hoon Chan,Vineet Giri,Andrew Ridley,Hc Hwang,Fransiskus Leonardus,Avinash Rajah</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>ABB OY PROSESSITEOLLISUUS WEB IMAGI Customer User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>ABB OY PROSESSITEOLLISUUS WEB IMAGI Customer User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>ABBOYPROSESSITEOLLISUUSWEBIMAGICustomerManager</parentRole>
+</Role>

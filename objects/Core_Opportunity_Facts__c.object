@@ -154,17 +154,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
-    <fields>
-        <fullName>Core_AI_Content_in_System__c</fullName>
-        <externalId>false</externalId>
-        <label>AI Content in System</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Core_Ambient_Temp_Req__c</fullName>
         <description>Compute descriptive feature</description>
@@ -290,26 +280,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Consumer_Sales_Category__c</fullName>
-        <externalId>false</externalId>
-        <label>Consumer Sales Category</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Consumer_Sales_System__c</fullName>
-        <externalId>false</externalId>
-        <label>Consumer Sales System</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Contains_2_1__c</fullName>
         <externalId>false</externalId>
         <label>Contains 2:1</label>
@@ -423,16 +393,6 @@
         <fullName>Core_Distributor__c</fullName>
         <externalId>false</externalId>
         <label>Distributor</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Dynamic_Tuning_Technology__c</fullName>
-        <externalId>false</externalId>
-        <label>Dynamic Tuning Technology</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -650,16 +610,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Intended_Usage__c</fullName>
-        <externalId>false</externalId>
-        <label>Intended Usage</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Interface_Protocol_IP__c</fullName>
         <externalId>false</externalId>
         <label>Interface Protocol IP</label>
@@ -740,16 +690,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Memory_Config_Dual_Channel_128b__c</fullName>
-        <externalId>false</externalId>
-        <label>Memory Config(Dual-Channel 128b)</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Memory_DSP_and_Embedded_IP__c</fullName>
         <externalId>false</externalId>
         <label>Memory DSP and Embedded IP</label>
@@ -764,16 +704,6 @@
         <description>US210682 for reporting</description>
         <externalId>false</externalId>
         <label>Modern Standby</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Multi_boarded__c</fullName>
-        <externalId>false</externalId>
-        <label>Multi boarded</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -1093,16 +1023,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Single_Rail_Power_Supply__c</fullName>
-        <externalId>false</externalId>
-        <label>Single Rail Power Supply</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Socket_Count__c</fullName>
         <externalId>false</externalId>
         <label>Socket Count</label>
@@ -1156,16 +1076,6 @@
         <fullName>Core_Stylus__c</fullName>
         <externalId>false</externalId>
         <label>Stylus</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Sustainability_Compliance__c</fullName>
-        <externalId>false</externalId>
-        <label>Sustainability Compliance</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>

@@ -1,4 +1,4 @@
-trigger Core_Opp_KPI on Core_Opportunity_KPI__c (after insert, after update,after delete, before insert, before update, before delete) {
+trigger Core_Opp_KPI on Core_Opportunity_KPI__c (after insert, after delete, before insert, before update, before delete) {
     
     map<String, Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
 
@@ -11,31 +11,23 @@ trigger Core_Opp_KPI on Core_Opportunity_KPI__c (after insert, after update,afte
     if(trigger.isDelete && trigger.isAfter && fullRefreshSetting.IsFullRefresh__c == false){
         handler.createKpiHistory(trigger.old, 'Delete');
     }
-    if(trigger.isUpdate && trigger.isAfter && fullRefreshSetting.IsFullRefresh__c == false){
-        handler.createKpiHistory(trigger.new, 'Update');
-    }
-  	/*
-  	 * Commented as per this story [TWC4767-2118]
-    if(trigger.isAfter){
+    
+    //US176263 : SMG 2019: DWG- Update DWG Logic for 2019 [Production Deployment WW04.3]
+    if(trigger.isBefore){
         if(trigger.isInsert){
-        if(mapFunctionalityNameTriggerExecution.containsKey('UpdateKPIRevenueOnDWG') && mapFunctionalityNameTriggerExecution.get('UpdateKPIRevenueOnDWG').Core_Active__c){
-            Core_Opp_KPI_Handler.updateDWGOnInstUpdtDelOppKPI(trigger.new, trigger.oldMap, 'insert');
-          
+            if(mapFunctionalityNameTriggerExecution.containsKey('beforeupdateinsertGoalKPI') && mapFunctionalityNameTriggerExecution.get('beforeupdateinsertGoalKPI').Core_Active__c){
+                Core_Opp_KPI_Handler.updDWGonInstUpdtKPI(trigger.new, trigger.oldMap, false);
             }
         }
         if(trigger.isUpdate){
-          if(mapFunctionalityNameTriggerExecution.containsKey('UpdateKPIRevenueOnDWG') && mapFunctionalityNameTriggerExecution.get('UpdateKPIRevenueOnDWG').Core_Active__c){
-            Core_Opp_KPI_Handler.updateDWGOnInstUpdtDelOppKPI(trigger.new, trigger.oldMap, 'update');
-           
+            if(mapFunctionalityNameTriggerExecution.containsKey('beforeupdateinsertGoalKPI') && mapFunctionalityNameTriggerExecution.get('beforeupdateinsertGoalKPI').Core_Active__c){
+                Core_Opp_KPI_Handler.updDWGonInstUpdtKPI(trigger.new, trigger.oldMap, false);
             }
         }
         if(trigger.isDelete){
-             
-          if(mapFunctionalityNameTriggerExecution.containsKey('UpdateKPIRevenueOnDWG') && mapFunctionalityNameTriggerExecution.get('UpdateKPIRevenueOnDWG').Core_Active__c){
-            Core_Opp_KPI_Handler.updateDWGOnInstUpdtDelOppKPI(trigger.new, trigger.oldMap, 'delete');
-          
+            if(mapFunctionalityNameTriggerExecution.containsKey('beforeupdateinsertGoalKPI') && mapFunctionalityNameTriggerExecution.get('beforeupdateinsertGoalKPI').Core_Active__c){
+                Core_Opp_KPI_Handler.updDWGonInstUpdtKPI(trigger.new, trigger.oldMap, true);
             }
         }
-        
-    }*/
+    }
 }

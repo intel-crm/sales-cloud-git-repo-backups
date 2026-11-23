@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_MDF_AdjustmentRequest_Test</testClassName>
+    <testClassName>Core_MDF_AuditSelectionHelper_Test</testClassName>
+    <testClassName>Core_MDF_Batch_SendEmailToGSPO_Test</testClassName>
+    <testClassName>Core_MDF_Batch_UpdateClaimstoPaid_Test</testClassName>
+    <testClassName>Core_MDF_Budget_Utility_Test</testClassName>
+    <testClassName>Core_MDF_Bulk_Transaction_Test</testClassName>
+    <testClassName>Core_MDF_BulkClaimServerController_Test</testClassName>
+    <testClassName>Core_MDF_BulkPOPUploadController_Test</testClassName>
+    <testClassName>Core_MDF_Claim_Prediction_Subscribe_Test</testClassName>
+    <testClassName>Core_MDF_ClaimSelectionForAudit_Test</testClassName>
+    <testClassName>Core_MDF_ContentVersion_Test</testClassName>
+    <testClassName>Core_MDF_Create_CCP_Cases_Test</testClassName>
+    <testClassName>Core_MDF_HoldCriteriaList_Test</testClassName>
+    <testClassName>Core_MDF_PartnerNodeUserMapping_Test</testClassName>
+    <testClassName>Core_MDF_PaymentRun_Test</testClassName>
+    <testClassName>Core_MDF_PaymentServiceHandler_Test</testClassName>
+    <testClassName>Core_MDF_PFC_Cancel_Test</testClassName>
+    <testClassName>Core_MDF_PFC_RetailClaim_Test</testClassName>
+    <testClassName>Core_MDF_PFC_ThirdPartyPOP_TestClass</testClassName>
+    <testClassName>Core_MDF_PFC_VAT_ServiceHandlerTest</testClassName>
+    <testClassName>Core_MDF_PFC_VAT_Test</testClassName>
+    <testClassName>Core_MDF_PIC_TestClass</testClassName>
+    <testClassName>Core_MDF_ProcessCCP_BudgetCap_Test</testClassName>
+    <testClassName>Core_MDF_ProcessCCP_Claim_Test</testClassName>
+    <testClassName>Core_MDF_Recovery_Helper_Test</testClassName>
+    <testClassName>Core_MDF_ReleaseHold_Test</testClassName>
+    <testClassName>Core_MDF_RMF_SchNotification_Batch_Test</testClassName>
+    <testClassName>Core_MDF_Rules_Engine_Test</testClassName>
+</ApexTestSuite>

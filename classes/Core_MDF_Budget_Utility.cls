@@ -23,8 +23,11 @@ Intel - SM - 07/04/2020
     public static void unlockBudget(List<PartnerMarketingBudget> budgetList){
         try
         {	
+            // Highlight: Unused Local Variable - 14285
+           // Approval.UnlockResult[] unlockResultLst = Approval.unlock(budgetList, true);
             Approval.unlock(budgetList, true);
-            update budgetList; Approval.lock(budgetList, true);
+            update budgetList; 
+            Approval.lock(budgetList, true);
         }
         catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);throw e;}
     }  

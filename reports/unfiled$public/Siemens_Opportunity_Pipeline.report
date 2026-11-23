@@ -35,6 +35,34 @@
             <value>Mature</value>
         </values>
     </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <aggregate>Sum</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>AMOUNT</column>
+        </chartSummaries>
+        <chartType>HorizontalBarStacked</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CLOSE_DATE</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_TOP</location>
+        <secondaryGroupingColumn>STAGE_NAME</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <title>Siemens Design Pipeline</title>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
     <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
@@ -43,19 +71,16 @@
         <field>AMOUNT</field>
     </columns>
     <columns>
-        <field>CLOSE_DATE</field>
+        <field>CLOSE_DATE2</field>
     </columns>
     <columns>
-        <field>STAGE_NAME</field>
+        <field>Opportunity.Core_First_Customer_Ship_Date__c</field>
     </columns>
     <columns>
         <field>PROBABILITY</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Opportunity_Products__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Volume__c</field>
+        <field>FULL_NAME</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Technical_Owner__c</field>
@@ -64,7 +89,10 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
-        <field>OPPORTUNITY_ID</field>
+        <field>Opportunity.Core_Opportunity_Products__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Volume__c</field>
     </columns>
     <description>Siemens Opportunities</description>
     <filter>
@@ -79,30 +107,37 @@
             <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
-            <operator>notEqual</operator>
-            <value>joerg matschke,angelo lo cicero,doriane</value>
+            <operator>equals</operator>
+            <value>Jost Henning Eid,christian schmidt,thomas dietrich,piyush khurana,jani Heikkinen,elena filatova</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Opp_Prime_Account_Name__c</column>
+            <column>ACCOUNT_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Siemens</value>
+            <value>siemens</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>design</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>FULL_NAME</field>
+        <dateGranularity>FiscalQuarter</dateGranularity>
+        <field>CLOSE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Approval_Status__c</field>
-        <sortOrder>Asc</sortOrder>
+        <field>STAGE_NAME</field>
+        <sortOrder>Desc</sortOrder>
     </groupingsDown>
-    <name>Siemens Opportunity Pipeline</name>
+    <name>Siemens Design Win Pipeline</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -124,10 +159,12 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>CLOSE_DATE</sortColumn>
+    <sortColumn>CLOSE_DATE2</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURNEXTY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

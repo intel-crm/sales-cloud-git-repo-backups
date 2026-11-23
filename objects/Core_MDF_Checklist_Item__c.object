@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Metadata to store the Checklist Categories, Questions and Description.</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_MDF_Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <label>Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Budget_Type_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Budget Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Case_Review_Findings__c</fullName>
+        <description>The field is used to store the message to be displayed to the Claim Submitter if any one of the Checklist value is made Non-Complaint.</description>
+        <label>NA: Case Review Findings</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Checklist_Channel_Program_Txt__c</fullName>
+        <description>Stores the Channel Program of Checklist</description>
+        <externalId>false</externalId>
+        <label>Channel Program</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Checklist_Label__c</fullName>
+        <label>Checklist Label</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Checklist_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Checklist Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Claim_Case_Review_Findings__c</fullName>
+        <description>This field stores the Non-Compliant values for Checklist</description>
+        <externalId>false</externalId>
+        <label>Claim Case Review Findings</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Line_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Line Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Checklist Item</label>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -35,19 +35,24 @@
       // Set isModalOpen attribute to false  
        component.set("v.clonePFRComponent", false);
    },
+
+   //IPA-Jegan
+   //Handle this event that's firing from Create_Campaign.js LWC Component
    handleOutcomeChange:function(component, event, helper) {
         var boolValue = event.getParam('value');
         component.set('v.outcomeBasedOptInInd', boolValue);
+       console.log('outcomeBasedOptInInd::'+component.get('v.outcomeBasedOptInInd'));
         if(!component.get('v.outcomeBasedOptInInd')){
             component.set('v.activityToAttributeList', []);
         }
         helper.activityValidation(component, event);
    },
+
    //US1082871: [IPA MDF] - Campaign - Clone a Proposal - get record editted through event and update the main list with updated details of activity
     getActivityRecEditted: function(component, event, helper) {
-       
-        if(event.getParam("detail") != undefined && event.getParam("detail") != null){
-             component.set("v.pfrEditRecord", event.getParam("detail"));
+        let pfrData = JSON.parse(JSON.stringify(event.getParam("detail")));
+        if(pfrData != undefined && pfrData != null){
+             component.set("v.pfrEditRecord", pfrData);
             if(event.getParam("buSplitDetail") != undefined && event.getParam("buSplitDetail") != null){
                 //component.get("v.updatedBuSplitFormula",event.getParam("buSplitDetail"));
                 component.set("v.pfrEditRecord.Core_MDF_BU_Percent_txt__c",event.getParam("buSplitDetail"));
@@ -55,6 +60,8 @@
             if(event.getParam("isMetricsBlank") != undefined && event.getParam("isMetricsBlank") != null){
                 component.set("v.pfrEditRecord.isBlankMetrics",event.getParam("isMetricsBlank"));
             }
+
+            //IPA-Jegan
             if(event.getParam("isBlankTacticMetrics") != undefined && event.getParam("isBlankTacticMetrics") != null){
                 //var outcomeBased = component.get('v.updatedCampaignObj.Core_MDF_CampOutcomeOpt_In_Ind__c');
                 var outcomeBasedOptInInd = component.get('v.outcomeBasedOptInInd');
@@ -121,7 +128,7 @@
             }
             component.set("v.pfrList", holdUpdatedData);
 
-
+            //IPA-Jegan
             if(component.get('v.outcomeBasedOptInInd')){
                 helper.formActivityToActivityAttributes(component, event);
             }
@@ -247,5 +254,23 @@
             component.set("v.updatedCampaignObj", campFieldValues);
         }
 
+    },
+   updateActivityListClone: function(component, event, helper) {
+        const updatedActList = event.getParam('activityList');//v.pfrList
+        let oldActivityList =  component.get('v.pfrList');
+        let updatedAct;
+        let updatedActivityID;
+        updatedActList.forEach(actClone => {
+			//global list
+			const index = oldActivityList.findIndex(pfrClone => pfrClone.Id === actClone.Id);
+			if (index !== -1) {
+                updatedAct = actClone;
+                updatedActivityID = actClone.Id;
+				oldActivityList[index] = actClone;
+			}
+		});
+		component.set('v.pfrList', oldActivityList);
+        let findChildComp=component.find('childCampaignCmp');
+        findChildComp.callChildMethodCampaign(updatedAct,updatedActivityID);
     },
 })

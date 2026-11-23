@@ -1,4 +1,4 @@
-<apex:page controller="Core_IPS_CommEmailOptController" sidebar="false"  showHeader="false" id="page"> 
+<apex:page controller="Core_IPS_CommEmailOptController" sidebar="false" showHeader="false" id="page">
     <apex:form id="form">
         <style>
             #Status{
@@ -43,48 +43,8 @@
         * html #opaque {
             position: absolute;
         }
-       /*Start--US254983--Trade Compliance Settings under My Settings tab*/
-        .bPageBlock .detailList tr:nth-child(2) .labelCol {
-            width: 61%;
-            vertical-align: middle;
-            text-align: left;
-            padding-right: 0;
-            padding-left: 35px;
-            color: #000;
-            font-size: 100%;
-        }
-        .bPageBlock .detailList tr:nth-child(2) .labelCol label {
-            font-weight: normal;
-        }
-        .bPageBlock .detailList .data2Col fieldset {
-            padding-left: 0;
-        }
-        .bPageBlock .detailList tr:nth-child(4) .detailList .labelCol {
-            width: 2%;
-            text-align: left;
-            padding-right: 0;
-            padding-left: 25px;
-            color: #000;
-            font-size: 100%;
-            font-weight: normal;
-        }
-        .bPageBlock .detailList tr:nth-child(4) .detailList .data2Col{
-            position: relative;
-            padding-left: 4px;
-        }
-        .bPageBlock .detailList tr:nth-child(4) .detailList .data2Col:before {
-            content: '';
-            background-color: #c00;
-            position: absolute;
-            left: 0px;
-            width: 3px;
-            height: 17px;
-            top: 6px;
-            bottom: 1px;            
-        }
-        /*End--US254983--Trade Compliance Settings under My Settings tab*/
         </style>
-        <apex:Message id="Message"/>
+        <apex:messages id="Message"/>
           <div id="opaque"/>
         <div id="spinner">
             <p align="center" style='{font-family:"Arial", Helvetica, sans-serif; font-size:20px;}'><apex:image value="/img/loading.gif"/>&nbsp;Please wait</p>
@@ -92,17 +52,9 @@
         <script> 
             document.getElementById('page:form:Message').style='color:red';
             function afterSave(statusMessage) {
-               
-               if(statusMessage=='Updated Successfully'){
-                   document.getElementById('Status').innerHTML='<b>'+statusMessage+'</b>';
+               document.getElementById('Status').innerHTML='<b>'+statusMessage+'</b>';
+               if(statusMessage=='Updated Successfully')
                    window.parent.location.reload();
-                   }
-                /*Start--US254983--Trade Compliance Settings under My Settings tab*/    
-                else{
-                    document.getElementById('Status').innerHTML='<b style="color:red;">'+statusMessage+'</b>';
-                }
-               /*End--US254983--Trade Compliance Settings under My Settings tab*/  
-                 
             }
             function showSpinner()
             {
@@ -111,51 +63,19 @@
                 console.log('called');
                 popUp.style.display = 'block';  
             }
-         /*Start--US254983--Trade Compliance Settings under My Settings tab*/   
-         function hideSpinner()
-            {
-                document.getElementById('opaque').style.display='none';
-                var popUp = document.getElementById('spinner');
-                console.log('called');
-                popUp.style.display = 'none';
-            }
-        /*End--US254983--Trade Compliance Settings under My Settings tab*/
         </script>
-        
-        <apex:actionFunction name="SubmitChoice" action="{!SubmitChoice}" oncomplete="hideSpinner();afterSave('{!statusMessage}');" rerender="Message" />
+        <apex:actionFunction name="SubmitChoice" action="{!SubmitChoice}" oncomplete="afterSave('{!statusMessage}');"  />
         <apex:pageBlock >
             <div id='Status'></div>
             <apex:pageBlockButtons >
-                 <apex:commandButton onclick="SubmitChoice();showSpinner();return false;"  value="Submit" oncomplete="hideSpinner();"/>
+                 <apex:commandButton onclick="SubmitChoice();showSpinner();return false;"  value="Submit" />
                 <apex:commandButton value="Cancel" action="{!Cancel}" onclick="window.parent.location.reload();"/>
             </apex:pageBlockButtons>
-            
-            <!--Start--US254983--Trade Compliance Settings under My Settings tab-->
-             <apex:pageBlockSection title="{!$Label.Core_IPS_TradeCompliancePreferences_SecHeader}"  collapsible="true" columns="1">
+            <!--<apex:pageBlockSection title="{!$Label.Core_IPS_PreferencesMessage_SecHeader}" collapsible="true" columns="1">
                 <apex:pageBlockSectionItem >
-                <apex:outputlabel value="{!$Label.Core_IPS_TradeComplianceMessage}" style="align:center;" />
+                <apex:outputlabel value="{!$Label.Core_IPS_EmailOptMessage}" style="align:center;" />
                 </apex:pageBlockSectionItem>
-                <apex:pageBlockSectionItem >
-                    <apex:outputlabel value="{!$Label.Core_IPS_TradeCompliance}" />
-                       <apex:selectRadio value="{!radioCheckbox}"  > 
-                         <apex:selectOption itemValue="true" itemLabel=" Yes " /> 
-                         <apex:selectOption itemValue="false" itemLabel=" No " />
-                        </apex:selectRadio>
-                </apex:pageBlockSectionItem>
-                
-                <apex:pageBlockSectionItem >
-                    <apex:outputlabel value="{!$Label.Core_IPS_TradePrimary}" />
-                </apex:pageBlockSectionItem>
-                <apex:pageBlockSection columns="1">
-                <apex:pageBlockSectionItem >
-                    <apex:outputlabel value="{!$Label.Core_IPS_CountryOrRegion}"/>
-                    <apex:selectList id="countries" value="{!selectedCountry}" size="1" required="true" >
-                        <apex:selectOptions value="{!countries}"/>
-                    </apex:selectList>
-                </apex:pageBlockSectionItem>
-                </apex:pageBlockSection>
-                 </apex:pageBlockSection>
-                 <!--End--US254983--Trade Compliance Settings under My Settings tab-->
+            </apex:pageBlockSection>-->
             
             <apex:pageBlockSection title="{!$Label.Core_IPS_EmailPreferences_SecHeader}" rendered="{!EmailOptIn}" collapsible="true" columns="1">
                 <apex:pageBlockSectionItem >

@@ -18,7 +18,7 @@
             <operation>notEqual</operation>
             <value>[empty]</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_MDF_UGMLog_All_Employee_Read_Write</fullName>
@@ -26,7 +26,7 @@
         <description>This User Group Mapping Log Sharing Rule would provide  READ/WRITE Access to All Active Users to all Intel Employees</description>
         <label>UGMLog All Employee Read Write</label>
         <sharedTo>
-            <group>Core_All_Employees_Group</group>
+            <group>All_Employees_Group</group>
         </sharedTo>
         <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
@@ -39,6 +39,6 @@
             <operation>notEqual</operation>
             <value>[empty]</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
 </SharingRules>

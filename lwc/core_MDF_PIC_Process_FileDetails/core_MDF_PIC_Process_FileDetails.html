@@ -1,0 +1,72 @@
+<template>
+    <!--<div style="display: flex;" class="slds-m-top_large">
+        <div class="slds-m-right_medium slds-size_1-of-2">
+            <table class="slds-table slds-table_bordered"  border="1" aria-label="audit-document-list">
+                <thead >
+                    <tr class="slds-line-height_reset">
+                        <th class="slds-size_1-of-4" scope="col">File Type</th>
+                        <th class="slds-size_1-of-4" scope="col">File Name</th>
+                        <th class="slds-size_1-of-4" scope="col">Uploaded By</th>
+                        <th class="slds-size_1-of-4" scope="col">Uploaded Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={auditDocuments} for:item="auditDoc" for:index="indexVar">
+                        <tr key={auditDoc.Id}>
+                            <td class="slds-size_1-of-4"><lightning-formatted-rich-text value={auditDoc.fileType}></lightning-formatted-rich-text></td>
+                            <td class="slds-size_1-of-4"><lightning-formatted-rich-text value={auditDoc.fileNames}></lightning-formatted-rich-text></td>
+                            <td class="slds-size_1-of-4">{auditDoc.uploadedBy}</td>
+                            <td class="slds-size_1-of-4">
+                                <lightning-formatted-date-time value={auditDoc.uploadedDate} year="numeric" month="short" day="2-digit" weekday="long">
+                                </lightning-formatted-date-time>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div> -->
+  
+<!-- Dummy files affected table-->
+   <!-- <div class="slds-size_1-of-2">
+    <table class="slds-table slds-table_bordered" border="1" aria-label="audit-document-list">
+        <thead >
+            <tr class="slds-line-height_reset">
+                <th class="slds-size_1-of-4" scope="col">Questions</th>
+                <th class="slds-size_1-of-4" scope="col">Response</th>
+                <th class="slds-size_1-of-4" scope="col">Files affected</th>
+            </tr>
+        </thead>
+        <tbody>
+            <template for:each={questionMetadata} for:item="qnMdt">
+                <tr key={qnMdt.key}>
+                    <td class="slds-size_1-of-4">{qnMdt.label}</td>
+                    <td class="slds-size_1-of-4">
+                        <lightning-combobox
+                            name={qnMdt.key}
+                            label="Response"
+                            value={qnMdt.response}
+                            placeholder="Select Progress"
+                            options={options}
+                            onchange={handleChange}>
+                        </lightning-combobox>
+                    </td>
+                    <td  class="slds-size_1-of-4">
+                            <div class="slds-float_right slds-var-m-bottom_small adjustWidth">
+                                <c-core_-m-d-f_-multi-select-picklist picklistlabel="Please select a file" values ={qnMdt.fileNames} data-id="fileSelection" class="multiSelectFiles" 
+                            onselect={fetchSelectedValues} utilised-module={claimLabel}></c-core_-m-d-f_-multi-select-picklist>
+                             </div>                        
+                    </td>
+                </tr>
+            </template>
+        </tbody>
+    </table>
+   </div>
+</div> -->
+
+    <template if:true={showSpinner}>
+        <lightning-spinner style="position: fixed;" alternative-text="Loading..."></lightning-spinner>
+    </template>
+    <template if:true={showButton}>
+        <lightning-button label="Test Save" onclick={handleSave} disabled={disableSave} variant="brand"></lightning-button>
+    </template>
+</template>

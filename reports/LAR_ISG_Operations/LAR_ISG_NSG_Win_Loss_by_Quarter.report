@@ -19,10 +19,10 @@
         <field>CREATED_DATE</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>PRODUCT_NAME</field>
@@ -141,7 +141,7 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>OpportunityLineItem.Core_BU_Product_Segment_Old__c</sortColumn>
+    <sortColumn>OpportunityLineItem.Core_BU_Product_Segment__c</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>

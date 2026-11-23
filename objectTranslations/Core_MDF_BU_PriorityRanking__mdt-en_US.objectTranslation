@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CCP BU PriorityRanking</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CCP BU PrioritiyRankings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Ranking --></label>
+        <name>Core_MDF_Ranking_nbr__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

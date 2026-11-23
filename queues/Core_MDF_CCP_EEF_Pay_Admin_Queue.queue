@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>wsm-postmaster@intel.com.invalid</email>
+    <name>AGS_CCP EEF Pay Admin Queue</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Core_MDF_CCP_EEF_Pay_Admin</publicGroup>
+        </publicGroups>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>PartnerFundClaim</sobjectType>
+    </queueSobject>
+</Queue>

@@ -4,9 +4,6 @@
         <field>SALUTATION</field>
     </columns>
     <columns>
-        <field>CREATED_DATE</field>
-    </columns>
-    <columns>
         <field>CONTACT_CREATED</field>
     </columns>
     <columns>
@@ -57,23 +54,6 @@
     <columns>
         <field>ACCOUNT.NAME</field>
     </columns>
-    <filter>
-        <criteriaItems>
-            <column>CONTACT_CREATED</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Matthew Harrison,Angela Baroni,Cooper Prescott,Melissa Gonzalez,Jeff Berghammer</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER_FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Matthew Harrison</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Tabular</format>
     <name>Contact List &amp; Email</name>
     <params>

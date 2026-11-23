@@ -85,6 +85,7 @@
         <name>Core_MDF_Bank_Location__c</name>
     </fields>
     <fields>
+        <help><!-- Bank name as per Enterprise Supplier Data for the matching Supplier Number --></help>
         <label>은행 이름</label>
         <name>Core_MDF_Bank_Name__c</name>
     </fields>
@@ -115,6 +116,10 @@
     <fields>
         <label><!-- Country --></label>
         <name>Core_MDF_Country_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created By --></label>
+        <name>Core_MDF_Created_By_nm__c</name>
     </fields>
     <fields>
         <help><!-- The currency used by Supplier database for this bank. --></help>
@@ -202,6 +207,19 @@
         <name>Core_MDF_INTRMD_BNK_ST_NM__c</name>
     </fields>
     <fields>
+        <label><!-- Inactivate By Program --></label>
+        <name>Core_MDF_Inactivate_By_Program_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive Date --></label>
+        <name>Core_MDF_Inactivate_Date_dt__c</name>
+    </fields>
+    <fields>
+        <help>비활성 상태에 놓인 은행은 더 이상 환급 요청 대상 은행으로 이용할 수 없습니다. 진행 중인 클레임이 있는 경우 은행을 비활성화할 수 없습니다. </help>
+        <label><!-- Inactive Date --></label>
+        <name>Core_MDF_Inactive_Date_dt__c</name>
+    </fields>
+    <fields>
         <label><!-- Inactive by Program --></label>
         <name>Core_MDF_Inactive_by_Program_nm__c</name>
         <picklistValues>
@@ -268,6 +286,10 @@
         <name>Core_MDF_Intermediary_Indicator__c</name>
     </fields>
     <fields>
+        <label><!-- Last Modified By --></label>
+        <name>Core_MDF_Last_Modified_By_nm__c</name>
+    </fields>
+    <fields>
         <label>참고</label>
         <name>Core_MDF_Note__c</name>
     </fields>
@@ -278,6 +300,10 @@
     <fields>
         <label><!-- ORIG_APP_SYS_CD --></label>
         <name>Core_MDF_ORIG_APP_SYS_CD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner --></label>
+        <name>Core_MDF_Owner_nm__c</name>
     </fields>
     <fields>
         <help>고객에게 지불이 될 통화입니다.</help>
@@ -316,6 +342,10 @@
             <translation><!-- Co-GTM --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Co-Inv</masterLabel>
+            <translation><!-- Co-Inv --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Datacenter</masterLabel>
             <translation>데이터 센터 공동 마케팅 기금(DCF)</translation>
         </picklistValues>
@@ -340,6 +370,10 @@
         <help>일치하는 공급자 번호에 해당하는 기업 공급자 데이터에 따른 은행 라우팅 번호.</help>
         <label>라우팅 번호</label>
         <name>Core_MDF_Routing_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supplier Number Currency Program --></label>
+        <name>Core_MDF_SupplierNumCurrencyProgram_cd__c</name>
     </fields>
     <fields>
         <label><!-- Supplier City --></label>
@@ -430,6 +464,10 @@
             <translation><!-- 8% --></translation>
         </picklistValues>
     </fields>
+    <fields>
+        <label><!-- New --></label>
+        <name>New__c</name>
+    </fields>
     <nameFieldLabel>은행 이름</nameFieldLabel>
     <recordTypes>
         <description><!-- Record Type when bank status is Active --></description>
@@ -476,6 +514,14 @@
     <validationRules>
         <errorMessage><!-- This bank is in Inactive status and cannot currently be edited --></errorMessage>
         <name>Core_MDF_InactiveBank_Uneditable_AP_Hold</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Select Inactive by Program with Inactive Date --></errorMessage>
+        <name>Core_MDF_Inactive_Bank_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Inactive Date cannot be in future --></errorMessage>
+        <name>Core_MDF_Inactive_Bank_Date_in_Future</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Client/Datacenter/SPCF/CCFB can only select Legal Entity 100. --></errorMessage>
@@ -528,6 +574,10 @@
     <validationRules>
         <errorMessage><!-- Selected Account is not a Comarketing Account. --></errorMessage>
         <name>Core_MDF_ValidateAccountOnBank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter valid Account Number and Supplier Number --></errorMessage>
+        <name>Core_MDF_errorIfNotNumber</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Enter Valid Account Number --></errorMessage>

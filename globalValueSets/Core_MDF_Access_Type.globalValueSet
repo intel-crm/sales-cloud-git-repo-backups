@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Comarketing - Profile</fullName>
+        <default>false</default>
+        <label>Comarketing - Profile</label>
+    </customValue>
+    <customValue>
+        <fullName>Comarketing - Permission Set</fullName>
+        <default>false</default>
+        <label>Comarketing - Permission Set</label>
+    </customValue>
+    <customValue>
+        <fullName>Comarketing - Permission Set Group</fullName>
+        <default>false</default>
+        <label>Comarketing - Permission Set Group</label>
+    </customValue>
+    <customValue>
+        <fullName>Comarketing - Custom Permission</fullName>
+        <default>false</default>
+        <label>Comarketing - Custom Permission</label>
+    </customValue>
+    <customValue>
+        <fullName>CRM - Permission Set</fullName>
+        <default>false</default>
+        <label>CRM - Permission Set</label>
+    </customValue>
+    <customValue>
+        <fullName>CRM - Profile</fullName>
+        <default>false</default>
+        <label>CRM - Profile</label>
+    </customValue>
+    <customValue>
+        <fullName>CRM - Permission Set Group</fullName>
+        <default>false</default>
+        <label>CRM - Permission Set Group</label>
+    </customValue>
+    <customValue>
+        <fullName>CRM - Custom Permission</fullName>
+        <default>false</default>
+        <label>CRM - Custom Permission</label>
+    </customValue>
+    <masterLabel>Access Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

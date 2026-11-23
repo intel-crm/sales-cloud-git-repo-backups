@@ -4,6 +4,7 @@ import getRelatedRecords from '@salesforce/apex/Core_MDF_GenericRelatedListContr
 import getFieldLabels from '@salesforce/apex/Core_MDF_GenericRelatedListController.getFieldLabels';
 
 export default class GenericRelatedList extends NavigationMixin(LightningElement) {
+
     @api recordId;
     @api childObjectApi;
     @api relationshipField;
@@ -61,11 +62,15 @@ export default class GenericRelatedList extends NavigationMixin(LightningElement
         });
     }
 
+    // -------------------------------
+    // PUBLIC PROPERTY (FIELDS)
+    // -------------------------------
     @api
     set fields(value) {
         this._fields = value;
         this.buildColumns();
     }
+
     get fields() {
         return this._fields;
     }
@@ -88,6 +93,10 @@ export default class GenericRelatedList extends NavigationMixin(LightningElement
             this.recordId = path[index + 1];
         }
     }
+
+    // -------------------------------
+    // FETCH RELATED RECORDS
+    // -------------------------------
     @wire(getRelatedRecords, {
         childObjectApi: '$childObjectApi',
         relationshipField: '$relationshipField',
@@ -102,8 +111,26 @@ export default class GenericRelatedList extends NavigationMixin(LightningElement
         }
     }
 
-    
+    // -------------------------------
+    // NAVIGATION
+    // -------------------------------
+    // handleRowAction(event) {
+
+    //     const row = event.detail.row;
+    //     const recordId = row.Id;
+    //     const recordTitle = row.Title || '';
+
+    //     if (window.location.pathname.includes('/partnerfundclaim/')) {
+    //         return;
+    //     }
+
+    //     const baseUrl = window.location.origin;
+    //     const targetUrl = `${baseUrl}/Partnercenter/s/partnerfundclaim/${recordId}/${encodeURIComponent(recordTitle)}`;
+
+    //     window.location.href = targetUrl;
+    // }
     handleRowAction(event) {
+
    const recordId = event.detail.row.Id;
 
     this[NavigationMixin.GenerateUrl]({
@@ -116,6 +143,5 @@ export default class GenericRelatedList extends NavigationMixin(LightningElement
         window.open(url, '_blank');
     });
 }
-
 
 }

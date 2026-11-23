@@ -26,6 +26,7 @@
     <aura:attribute name="partnerMapping" type="String" default="" /> 
     <aura:attribute name="vitualCorpToNodeAcc" type="object" default="[]" />
     <aura:attribute name="NodeAccountsList" type="Id[]" default="[]" />
+    <!--<aura:attribute name="virCopToNodeAccMap" type="Core_MDF_Campaign_QuickActionController.VirtualCorpAccWrapper" default="[]"></aura:attribute>-->
     <aura:html tag="style">
         <!--To remove blue border-->
         .slds-slide-up-saving{
@@ -41,7 +42,7 @@
 	<!--Register Event-->
     <aura:registerEvent name="closeModalAndLogErrorMessageEvent" type="c:Core_MDF_CloseModalAndLogErrorMessageEvent"/>
        
-    <aura:if isTrue="{!v.fieldSetLoaded}">
+    <aura:if isTrue="{!v.fieldSetLoaded}"> 
         <aura:if isTrue="{!v.hasEditAccess}">
             <aura:if isTrue="{!v.isCommunity}">
       		 <c:core_MDF_Create_Campaign recordId="{!v.recordId}" mode="{!v.mode}" recordTypeId="{!v.recordTypeId}" recordTypeName="{!v.recordTypeName}" recordTypeDeveloperName="{!v.recordTypeDeveloperName}" objectApiName="Campaign" fieldSetName="{!v.fieldSetName}" status="{!v.campaignStatus}" campaignRecordFromCampaignEdit="{!v.campaignRecord}" oncloseModal="{!c.handleSaveSuccess}" activityListEdit="{!v.pfrList}" vitualCorpToNodeAcc="{!v.vitualCorpToNodeAcc}" NodeAccountsList="{!v.NodeAccountsList}" onapplicationerror="{!c.closeModalAndDisplayErrorMsg}"  ontoastMessageEvent="{!c.showStickyToastMessage}"></c:core_MDF_Create_Campaign>
@@ -68,6 +69,7 @@
                         <div class="slds-modal__header">
                             <br/>
                             <div class="slds-text-heading_medium">Edit {!v.campaignName}</div>
+                            <!-- <lightning:buttonIcon iconName="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" onclick="{!c.prevPage}" alternativeText="Close" /> -->
                             <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick="{!c.prevPage}">
                                 <lightning:icon iconName="utility:close" alternativeText="Close" size="small" />
                                 <span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>

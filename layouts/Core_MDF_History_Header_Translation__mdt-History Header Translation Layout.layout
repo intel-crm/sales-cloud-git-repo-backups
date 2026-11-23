@@ -8,10 +8,6 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>Core_MDF_History_Header_Translation_nm__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
                 <field>MasterLabel</field>
             </layoutItems>
             <layoutItems>
@@ -21,6 +17,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_MDF_obj_nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>Core_MDF_History_Header_Translation_nm__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -64,9 +64,6 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
-    <miniLayout>
-        <fields>Core_MDF_History_Header_Translation_nm__c</fields>
-    </miniLayout>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>

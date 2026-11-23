@@ -16,6 +16,8 @@ public without sharing class Core_MDF_Campaign_QuickActionController {
     public static String CMP_CCFB_RECORDTYPE = Core_MDF_CCP_ConstantClass.CMP_CCFB_RECORDTYPE;
     public static String CMP_RMF_RECORDTYPE = Core_MDF_CCP_ConstantClass.CMP_RMF_RECORDTYPE;
     public static String CMP_EEF_RECORDTYPE = Core_MDF_CCP_ConstantClass.CMP_EEF_RECORDTYPE;
+    public static string accRecType = Core_MDF_CCP_ConstantClass.ACCOUNT_RECORD_TYPE;
+    public static string EEF_PROGRAM = Core_MDF_CCP_ConstantClass.EEF_PROGRAM;
     public static string CMP_CO_GTM_RECORDTYPE = Core_MDF_CCP_ConstantClass.CMP_CO_GTM_RECORDTYPE;
     /****************************************************************
      * Method Name      : loadCampaignRecord
@@ -26,11 +28,14 @@ public without sharing class Core_MDF_Campaign_QuickActionController {
     *****************************************************************/
     @AuraEnabled
     public static Campaign loadCampaignRecord(String recordId) {
+        List<Campaign> recordObjList;
+        if(String.isBlank(recordId)) return null;
         String sanitiziedCampaignId = String.escapeSingleQuotes(recordId);
-        String sQuery = 'SELECT Id, Name, RecordTypeId, RecordType.Name, RecordType.DeveloperName, Status,Core_MDF_Proposal_Based_Ind__c,Core_MDF_Market__c,Core_MDF_Claims_Created_Ind__c,Core_MDF_Opal_Budget_Type_Txt__c,Core_MDF_Account__r.Core_MDF_Active_Ind__c ';
+        String sQuery = 'SELECT Id, Name, RecordTypeId, RecordType.Name, RecordType.DeveloperName, Status,Core_MDF_Proposal_Based_Ind__c,Core_MDF_Market__c,Core_MDF_Claims_Created_Ind__c,Core_MDF_Opal_Budget_Type_Txt__c,Core_MDF_Account__r.Core_MDF_Active_Ind__c,Core_MDF_Partner_Mapping_Txt__c ';
         sQuery += ' FROM Campaign WHERE Id =:sanitiziedCampaignId ';
-        Campaign recordObj = Database.query(sQuery);
-        return recordObj;
+        recordObjList = Database.query(sQuery);
+        if(recordObjList.isEmpty()) return null;
+        return recordObjList[0];
     }
     /*@AuraEnabled
     public static RecordType loadIPARecTypeInfo() {
@@ -49,10 +54,10 @@ public without sharing class Core_MDF_Campaign_QuickActionController {
     
     @AuraEnabled
     public static String getRtFieldSetMappings(String objectName, String recordTypeDeveloperName){            
-        
-        //Metadata disposition - changed text field references to picklist fields
+        //return [SELECT Core_MDF_FieldSet_API_Name__c FROM Core_MDF_RecordType_FieldSet_Mapping__mdt WHERE Core_MDF_Object_API_Name__c =:objectName AND Core_MDF_RecordType_Developer_Name__c = :recordTypeDeveloperName].Core_MDF_FieldSet_API_Name__c;
+        //Metadata disposition - RP
         return [SELECT Core_MDF_Field_Set_API_Name_nm__c FROM Core_MDF_RecordType_FieldSet_Mapping__mdt WHERE Core_MDF_Object_API_Name_nm__c = :objectName AND Core_MDF_Record_Type_DeveloperName_nm__c = :recordTypeDeveloperName].Core_MDF_Field_Set_API_Name_nm__c;   
-    } 
+    }
     
     @AuraEnabled
     public static Boolean checkForCloneAccess(String recordTypeDeveloperName, String campaignStatus) {
@@ -65,8 +70,7 @@ public without sharing class Core_MDF_Campaign_QuickActionController {
                                  ((recordTypeDeveloperName == CMP_CO_GTM_RECORDTYPE) && (FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Co_GTM_Account_Manager') ||
                                  FeatureManagement.checkPermission('Core_MDF_CCP_External_Co_GTM_Project_Submitter')))
                                  ) ? true : false; 
-       return hasCloneAccess;
-        
+       return hasCloneAccess;        
     }
     
     @AuraEnabled
@@ -76,16 +80,18 @@ public without sharing class Core_MDF_Campaign_QuickActionController {
         Boolean hasRecordEditAccess = true;  
         
         try {
-        //Check whether user has edit access for the record
-        if(recTypeDevloperName == Label.Core_MDF_EEF_RecordType) {
-            hasRecordEditAccess = Core_MDF_checkSObjectCRUDPermission.checkRecordEditAccess(campaignId);
-        }        
-        //Check Whether user has field access
-        editableFieldsList = Core_MDF_CampaignCreatePage.getFieldEditibilityMapping(objectName, recTypeDevloperName, status, campaignId, proposalBasedIndicator, claimAssociatedIndicator);
-        if(hasRecordEditAccess && editableFieldsList != null && !editableFieldsList.isEmpty() && editableFieldsList.size() > 0 && (status !='Cancelled'|| recTypeDevloperName == CMP_CO_GTM_RECORDTYPE)) {
-            hasRecAndFieldEditAccess = true;
-        } 
-        } catch(Exception e){
+            //Check whether user has edit access for the record
+            if(recTypeDevloperName == Label.Core_MDF_EEF_RecordType) {
+                hasRecordEditAccess = Core_MDF_checkSObjectCRUDPermission.checkRecordEditAccess(campaignId);
+            }        
+        
+            //Check Whether user has field access
+            editableFieldsList = Core_MDF_CampaignCreatePage.getFieldEditibilityMapping(objectName, recTypeDevloperName, status, campaignId, proposalBasedIndicator, claimAssociatedIndicator);
+
+            if(hasRecordEditAccess && editableFieldsList != null && !editableFieldsList.isEmpty() && editableFieldsList.size() > 0 && (status !='Cancelled'|| recTypeDevloperName == CMP_CO_GTM_RECORDTYPE)) {
+                hasRecAndFieldEditAccess = true;
+            } 
+        } catch(Exception e) {
             Core_MDF_CCP_UtilityClass.logError(e);
             throw new AuraHandledException(e.getMessage());
         }       
@@ -129,7 +135,7 @@ public without sharing class Core_MDF_Campaign_QuickActionController {
              sQuery += fs + ',';
          }
        
-          sQuery += 'ChannelPartner.Core_MDF_Virtual_Corp_Account_Id__c, Campaign.Name,Campaign.StartDate, Campaign.EndDate,RecordType.Name,RecordType.DeveloperName,Id, tolabel(Campaign.Core_MDF_Opal_Budget_Type_Txt__c) localizedBudType,Campaign.Core_MDF_Proposal_Based_Ind__c,Campaign.Core_MDF_IPA_Priority_nm__c,Campaign.Core_MDF_Industry_Nm__c,Campaign.Core_MDF_Product_Type__c,Campaign.Core_MDF_Ecosystem_Partner_Nm__c,Campaign.Core_MDF_Brand__c,Campaign.Core_MDF_Audience__c,Campaign.Core_MDF_Initiative_nm__c,Campaign.Core_MDF_Focus_Area_nm__c,Core_MDF_Activity_Reimbursement_Amt_nbr__c,ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,ChannelPartner.Core_MDF_Channel_Program__c, Campaign.Core_MDF_Market__c, Campaign.Core_MDF_Reimbursement_Rate__c,Campaign.Core_MDF_ReimbursementRate_pct__c,Campaign.Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__r.name,Campaign.Core_MDF_Opal_Budget_Type_Txt__c,Budget.StartDate,Budget.EndDate, Campaign.Core_MDF_CampOutcomeOpt_In_Ind__c FROM PartnerFundRequest WHERE CampaignId =:campaignId ';
+          sQuery += 'ChannelPartner.Core_MDF_Virtual_Corp_Account_Id__c,Campaign.Core_MDF_Partner_Mapping_Txt__c, Campaign.Name,Campaign.StartDate, Campaign.EndDate,RecordType.Name,RecordType.DeveloperName,Id, tolabel(Campaign.Core_MDF_Opal_Budget_Type_Txt__c) localizedBudType,Campaign.Core_MDF_Proposal_Based_Ind__c,Campaign.Core_MDF_IPA_Priority_nm__c,Campaign.Core_MDF_Industry_Nm__c,Campaign.Core_MDF_Product_Type__c,Campaign.Core_MDF_Ecosystem_Partner_Nm__c,Campaign.Core_MDF_Brand__c,Campaign.Core_MDF_Audience__c,Campaign.Core_MDF_Initiative_nm__c,Campaign.Core_MDF_Focus_Area_nm__c,Core_MDF_Activity_Reimbursement_Amt_nbr__c,ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,ChannelPartner.Core_MDF_Channel_Program__c, Campaign.Core_MDF_Market__c, Campaign.Core_MDF_Reimbursement_Rate__c,Campaign.Core_MDF_ReimbursementRate_pct__c,Campaign.Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__r.name,Campaign.Core_MDF_Opal_Budget_Type_Txt__c,Budget.StartDate,Budget.EndDate, Campaign.Core_MDF_CampOutcomeOpt_In_Ind__c FROM PartnerFundRequest WHERE CampaignId =:campaignId ';
           //TWC3117-7922 [IPA] - [Proposal Based] - Don't clone Cancelled activity
           if(mode == 'clone') {
             sQuery += ' and Core_MDF_Fund_Request_Status__c!=:pfrCancelledStatus ';
@@ -174,4 +180,62 @@ public without sharing class Core_MDF_Campaign_QuickActionController {
         return Core_Intel_customPicklistController.customPicklistFetcher(rec);
         
     }
+
+    /****************************************************************************************************** 
+    Method Name:        getVirtualCorpAccounts
+    @return       :     VirtualCorpAccWrapper
+    @parameters   :     Set<Id>
+    Description   :     get list of virtual corp accounts
+    created By: Namratha        Date: 23rd April 2024   
+    ******************************************************************************************************/
+    /*@AuraEnabled
+    public static  VirtualCorpAccWrapper getVirtualCorpAccounts (String virtualCorps) {
+        List<Id> selectedAccounts = new List<Id>();  
+        selectedAccounts = virtualCorps.split(';');
+   
+        VirtualCorpAccWrapper vObj = new VirtualCorpAccWrapper();
+        List<Account> accountsList = new List<Account>();
+        List<Id> NodeAccountsList = new List<Id>();
+        Set<Id> NodeAccountSet = new Set<Id>();
+        Map<Id,List<Id>> vitualCorpToNodeAcc = new Map<Id,List<Id>>();
+        for(Id accId: selectedAccounts){
+            List<Id> nodeAccList = new List<Id>();
+            nodeAccList.add(accId);
+            vitualCorpToNodeAcc.put(accId,nodeAccList);
+        }
+        try{
+            accountsList = [select Id, Core_MDF_Virtual_Corp_Account_Id__c, RecordType.DeveloperName, Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c from Account where Core_MDF_Virtual_Corp_Account_Id__c in :selectedAccounts and RecordType.DeveloperName =:accRecType and Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c =: EEF_PROGRAM];
+       
+            if(accountsList!=null && !accountsList.isEmpty()){
+                for(Account acc: accountsList){
+                    if(acc.Core_MDF_Virtual_Corp_Account_Id__c == null && String.isEmpty(acc.Core_MDF_Virtual_Corp_Account_Id__c)){
+                        List<Id> nodeAccList = new List<Id>();
+                        nodeAccList.add(acc.Id);
+                        vitualCorpToNodeAcc.put(acc.Id, nodeAccList);
+                    }
+                    NodeAccountSet.add(acc.Id);
+                    if(vitualCorpToNodeAcc != null  && vitualCorpToNodeAcc.containsKey(acc.Core_MDF_Virtual_Corp_Account_Id__c)){          
+                        vitualCorpToNodeAcc.get(acc.Core_MDF_Virtual_Corp_Account_Id__c).add(acc.Id);
+                    }else{
+                        List<Id> nodeAccList = new List<Id>();
+                        nodeAccList.add(acc.Id);
+                        vitualCorpToNodeAcc.put(acc.Core_MDF_Virtual_Corp_Account_Id__c,nodeAccList);
+                    }
+                }
+            }
+            NodeAccountsList.addAll(NodeAccountSet);
+            vObj.NodeAccountsList = NodeAccountsList;
+            vObj.vitualCorpToNodeAcc = vitualCorpToNodeAcc;
+          
+        }
+        catch(Exception e){
+            Core_MDF_CCP_UtilityClass.logError(e);
+            throw new AuraHandledException(e.getMessage());
+        }
+        return vObj;
+    }
+    public class VirtualCorpAccWrapper {
+        @AuraEnabled public List<Id> NodeAccountsList = new List<Id>();
+        @AuraEnabled public Map<Id,List<Id>> vitualCorpToNodeAcc = new Map<Id,List<Id>>();
+    }*/
 }

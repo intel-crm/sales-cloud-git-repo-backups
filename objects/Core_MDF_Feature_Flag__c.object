@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Flag to control the feature based on criteria</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_MDF_Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Field to control Active/Inactive of records</description>
+        <label>Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Effective_Date__c</fullName>
+        <description>Field to represent since when the functionality is enabled (Should be always less than Ineffective Date)</description>
+        <label>Effective Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Ineffective_Date__c</fullName>
+        <description>Field to represent since when the functionality is enabled (Should be always less than Ineffective Date)</description>
+        <label>Ineffective Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Required_Permission__c</fullName>
+        <externalId>false</externalId>
+        <label>Required Permission</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_User_Geo__c</fullName>
+        <externalId>false</externalId>
+        <label>User Geo</label>
+        <length>25</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_User_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>User Type</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Feature Flag</label>
+    <visibility>Public</visibility>
+</CustomObject>

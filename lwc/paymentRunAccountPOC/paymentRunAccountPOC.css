@@ -1,0 +1,9 @@
+.accordion_decoration{
+    text-decoration: none !important;
+}
+THIS.slds-accordion__summary-heading.slds-button:focus{
+    text-decoration: none !important;
+}
+THIS.slds-accordion__summary-heading.section-control.slds-button.slds-button_reset.slds-accordion__summary-action.slds-button:focus{
+    text-decoration: none !important;
+}

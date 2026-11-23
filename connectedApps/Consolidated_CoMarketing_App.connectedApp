@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>ealisha.chatterjee@intel.com</contactEmail>
+    <label>Consolidated CoMarketing App</label>
+    <oauthConfig>
+        <callbackUrl>https://apis-stage.intel.com/v1/auth/token</callbackUrl>
+        <consumerKey>3MVG9ahGHqp.k2_yt2nTHU9QGHK2_rTP5FQ4Pxw6hrwZUOeq32i4HJDwjKt2jcrXFgbt1uwNdwkbjBbx1FAdh</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isDPopEnabled>false</isDPopEnabled>
+        <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+        <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isIpBindingEnabled>false</isIpBindingEnabled>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPKImTLSEnabled>false</isPKImTLSEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Api</scopes>
+        <scopes>Web</scopes>
+        <scopes>OpenID</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

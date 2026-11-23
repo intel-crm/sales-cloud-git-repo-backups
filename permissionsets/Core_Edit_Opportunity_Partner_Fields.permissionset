@@ -6,6 +6,11 @@
         <field>Core_Opportunity_Partner__c.Core_Joint_Opportunity__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Bank_Legal_Entity_Code_cd__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Edit Opportunity Partner Fields</label>
     <license>Salesforce</license>

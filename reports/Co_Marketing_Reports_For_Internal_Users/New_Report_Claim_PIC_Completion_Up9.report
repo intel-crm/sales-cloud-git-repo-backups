@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PartnerFundClaim$Name</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim.PIC_Reviews__r$Name</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim.PIC_Reviews__r.PIC_Review_Results__r$Name</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Id</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim.PIC_Reviews__r$Core_MDF_Review_Date_dt__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Program__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+        <criteriaItems>
+            <column>PartnerFundClaim.PIC_Reviews__r$Core_MDF_Review_Date_dt__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>LAST_WEEK</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundClaim$Core_MDF_Program__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Client Co-Marketing Fund</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundClaim$Core_MDF_Program__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Data Center Co-Marketing Fund</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>New Report - Claim PIC Completion</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Claims_with_PIC_Reviews_with_PIC_Review_Results__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PartnerFundClaim$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

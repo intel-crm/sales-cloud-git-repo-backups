@@ -19,8 +19,6 @@ global without sharing class Core_IntegrationUtility {
         public String loginId          = '';
         public String enterpriseId     = '';
         public String identityStatus   = '';
-        public string deleteStatusReason     = '';//TWC2056-3485
-        public string isIdentityDeleted     = '';//TWC2056-3485
         public String inactIndicator   = '';
         public String isDeleteIndicator= '';
 
@@ -120,7 +118,7 @@ global without sharing class Core_IntegrationUtility {
     }
 
     // Class to hold the XML Account message from ERPM
-    /*public class ERPM_Account {
+    public class ERPM_Account {
 
         public String erpmAccountNumber = '';
         public String cimId             = '';
@@ -157,7 +155,7 @@ global without sharing class Core_IntegrationUtility {
         public String website           = '';
         public String employeeGrp       = '';
         // ----------- #REGION :: eRPM Code Changes :: END   ------------- //
-    }*/
+    }
 
     // Class to hold the ERPM "Blackbox" response -- basically success or failure of our
     // attempt to set up user/entitlements/etc. in ERPM
@@ -309,8 +307,7 @@ global without sharing class Core_IntegrationUtility {
     }
 
     // Class to wrap contacts in the format Box B needs them
-    //This method is no more in Use and related class is being EOL
-   global class BoxB_ContactWrapper {
+    global class BoxB_ContactWrapper {
 
         public String CST_ID            = '';
         public String INTRNL_LGN_ID     = '';

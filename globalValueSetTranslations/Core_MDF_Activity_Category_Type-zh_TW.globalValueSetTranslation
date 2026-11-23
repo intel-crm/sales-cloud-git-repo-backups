@@ -2,15 +2,15 @@
 <GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <valueTranslation>
         <masterLabel>Audio 2025-&gt;Other (Audio)</masterLabel>
-        <translation>音訊 2025-&gt;其他（音訊）</translation>
+        <translation><!-- Audio 2025-&gt;Other (Audio) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Audio 2025-&gt;Podcast</masterLabel>
-        <translation>音訊 2025-&gt;播客</translation>
+        <translation><!-- Audio 2025-&gt;Podcast --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Audio 2025-&gt;Radio</masterLabel>
-        <translation>音訊 2025-&gt;電台</translation>
+        <translation><!-- Audio 2025-&gt;Radio --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Audio-&gt;Other (Audio)</masterLabel>
@@ -66,27 +66,27 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Buyer Incentive 2025-&gt;Offer - Bundle</masterLabel>
-        <translation>買方獎勵 2025-&gt;優惠 - 捆綁包</translation>
+        <translation><!-- Buyer Incentive 2025-&gt;Offer - Bundle --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Buyer Incentive 2025-&gt;Offer - Contest</masterLabel>
-        <translation>買方獎勵 2025-&gt;優惠 - 競賽</translation>
+        <translation><!-- Buyer Incentive 2025-&gt;Offer - Contest --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Buyer Incentive 2025-&gt;Offer - Other</masterLabel>
-        <translation>買方獎勵 2025-&gt;優惠 - 其他</translation>
+        <translation><!-- Buyer Incentive 2025-&gt;Offer - Other --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Buyer Incentive 2025-&gt;Offer - Rewards</masterLabel>
-        <translation>買方獎勵 2025-&gt;優惠 - 獎勵</translation>
+        <translation><!-- Buyer Incentive 2025-&gt;Offer - Rewards --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Buyer Incentive 2025-&gt;Offer - Sweepstakes</masterLabel>
-        <translation>買方獎勵 2025-&gt;優惠 - 抽獎活動</translation>
+        <translation><!-- Buyer Incentive 2025-&gt;Offer - Sweepstakes --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Buyer Incentive 2025-&gt;Offer - Target</masterLabel>
-        <translation>買方獎勵 2025-&gt;優惠 - 目標</translation>
+        <translation><!-- Buyer Incentive 2025-&gt;Offer - Target --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Buyer Incentive-&gt;Offer - Bundle</masterLabel>
@@ -114,11 +114,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Display/Video Ad</masterLabel>
-        <translation>數位 2025-&gt;展示型/視頻廣告</translation>
+        <translation><!-- Digital 2025-&gt;Display/Video Ad --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Email</masterLabel>
-        <translation>數位 2025-&gt;電子信箱</translation>
+        <translation><!-- Digital 2025-&gt;Email --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Lead Generation</masterLabel>
@@ -126,23 +126,23 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Other (Digital)</masterLabel>
-        <translation>數位 2025-&gt;其他（數位）</translation>
+        <translation><!-- Digital 2025-&gt;Other (Digital) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Search (SEM) Ad</masterLabel>
-        <translation>數位 2025-&gt;搜索（SEM）廣告</translation>
+        <translation><!-- Digital 2025-&gt;Search (SEM) Ad --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Social Ad</masterLabel>
-        <translation>數位 2025-&gt;社交廣告</translation>
+        <translation><!-- Digital 2025-&gt;Social Ad --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Social Post</masterLabel>
-        <translation>數位 2025-&gt;社群媒體貼文</translation>
+        <translation><!-- Digital 2025-&gt;Social Post --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Web Content</masterLabel>
-        <translation>數位 2025-&gt;網站內容</translation>
+        <translation><!-- Digital 2025-&gt;Web Content --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital Media (Pre-2025)-&gt;Channel Partner Website Online Ad</masterLabel>
@@ -199,10 +199,6 @@
     <valueTranslation>
         <masterLabel>Digital Media-&gt;Email</masterLabel>
         <translation>數位媒體-&gt; 電子郵件</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media-&gt;IndustryPartner.com</masterLabel>
-        <translation><!-- Digital Media-&gt;IndustryPartner.com --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital Media-&gt;Member Website Online Display</masterLabel>
@@ -298,15 +294,15 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Event 2025-&gt;Joint Event</masterLabel>
-        <translation>活動 2025-&gt;聯合活動</translation>
+        <translation><!-- Event 2025-&gt;Joint Event --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Event 2025-&gt;Other (Event)</masterLabel>
-        <translation>活動 2025-&gt;其他（活動）</translation>
+        <translation><!-- Event 2025-&gt;Other (Event) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Event 2025-&gt;Third Party Event</masterLabel>
-        <translation>活動 2025-&gt;第三方活動</translation>
+        <translation><!-- Event 2025-&gt;Third Party Event --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Event-&gt;Channel Partner Owned Event</masterLabel>
@@ -393,6 +389,10 @@
         <translation><!-- Innovation -&gt;Engineering --></translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>Lead Generation</masterLabel>
+        <translation><!-- Lead Generation --></translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>Lead Management (Pre-2025)-&gt;Lead Generation</masterLabel>
         <translation>潛在客戶管理（2025 年前）-&gt;領導時代</translation>
     </valueTranslation>
@@ -454,19 +454,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home 2025-&gt;Billboard/Transit</masterLabel>
-        <translation>戶外廣告 2025-&gt;看板／大眾運輸</translation>
+        <translation><!-- Out of Home 2025-&gt;Billboard/Transit --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home 2025-&gt;Cinema</masterLabel>
-        <translation>戶外廣告 2025-&gt;電影院</translation>
+        <translation><!-- Out of Home 2025-&gt;Cinema --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Out of Home 2025-&gt;Other (Out Of Home)</masterLabel>
-        <translation>戶外廣告 2025-&gt;其他（戶外廣告）</translation>
+        <masterLabel>Out of Home 2025-&gt;Other (Out of Home)</masterLabel>
+        <translation><!-- Out of Home 2025-&gt;Other (Out of Home) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home 2025-&gt;Video Screen</masterLabel>
-        <translation>戶外廣告 2025-&gt;影片螢幕</translation>
+        <translation><!-- Out of Home 2025-&gt;Video Screen --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home Media (Pre-2025)-&gt;Billboard/Transit</masterLabel>
@@ -542,15 +542,15 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Print 2025-&gt;Collateral</masterLabel>
-        <translation>平面廣告 2025-&gt;文宣品</translation>
+        <translation><!-- Print 2025-&gt;Collateral --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Print 2025-&gt;Magazine/Newspaper</masterLabel>
-        <translation>平面廣告 2025-&gt;雜誌／報紙</translation>
+        <translation><!-- Print 2025-&gt;Magazine/Newspaper --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Print 2025-&gt;Other (Print)</masterLabel>
-        <translation>平面廣告 2025-&gt;其他（平面廣告）</translation>
+        <translation><!-- Print 2025-&gt;Other (Print) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Print Media (Pre-2025)-&gt;Catalog/Brochure</masterLabel>
@@ -614,11 +614,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Production 2025-&gt;Content</masterLabel>
-        <translation>生產 2025-&gt;內容</translation>
+        <translation><!-- Production 2025-&gt;Content --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Production 2025-&gt;Other (Production)</masterLabel>
-        <translation>生產 2025-&gt;其他（生產）</translation>
+        <translation><!-- Production 2025-&gt;Other (Production) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Production-&gt;Content</masterLabel>
@@ -754,31 +754,31 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness 2025-&gt;Collateral</masterLabel>
-        <translation>銷售整備 2025-&gt;文宣品</translation>
+        <translation><!-- Sales Readiness 2025-&gt;Collateral --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness 2025-&gt;Other (Sales Readiness)</masterLabel>
-        <translation>銷售整備 2025-&gt;其他（銷售整備）</translation>
+        <translation><!-- Sales Readiness 2025-&gt;Other (Sales Readiness) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness 2025-&gt;Personnel</masterLabel>
-        <translation>銷售整備 2025-&gt;人員</translation>
+        <translation><!-- Sales Readiness 2025-&gt;Personnel --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness 2025-&gt;Promotion - Non-Retail</masterLabel>
-        <translation>銷售整備 2025-&gt;促銷 – 非零售</translation>
+        <translation><!-- Sales Readiness 2025-&gt;Promotion - Non-Retail --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness 2025-&gt;Promotion - Retail</masterLabel>
-        <translation>銷售整備 2025-&gt;促銷 – 零售</translation>
+        <translation><!-- Sales Readiness 2025-&gt;Promotion - Retail --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness 2025-&gt;Training Incentive</masterLabel>
-        <translation>銷售整備 2025-&gt;培訓獎勵</translation>
+        <translation><!-- Sales Readiness 2025-&gt;Training Incentive --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness 2025-&gt;Training/Meeting</masterLabel>
-        <translation>銷售整備 2025-&gt;訓練／會議</translation>
+        <translation><!-- Sales Readiness 2025-&gt;Training/Meeting --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness-&gt;Collateral</masterLabel>
@@ -874,19 +874,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Seller Incentive 2025-&gt;SPIF - Contest</masterLabel>
-        <translation>賣家獎勵 2025-&gt;SPIF - 競賽</translation>
+        <translation><!-- Seller Incentive 2025-&gt;SPIF - Contest --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Seller Incentive 2025-&gt;SPIF - Other</masterLabel>
-        <translation>賣家獎勵 2025-&gt;SPIF - 其他</translation>
+        <translation><!-- Seller Incentive 2025-&gt;SPIF - Other --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Seller Incentive 2025-&gt;SPIF - Target</masterLabel>
-        <translation>賣家獎勵 2025-&gt;SPIF - 目標</translation>
+        <translation><!-- Seller Incentive 2025-&gt;SPIF - Target --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Seller Incentive 2025-&gt;SPIF - Volume</masterLabel>
-        <translation>賣家獎勵 2025-&gt;SPIF - 體積</translation>
+        <translation><!-- Seller Incentive 2025-&gt;SPIF - Volume --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Seller Incentive-&gt;SPIF - Contest</masterLabel>
@@ -994,43 +994,43 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Benchmarking</masterLabel>
-        <translation>技術銷售 2025-&gt;評測基準</translation>
+        <translation><!-- Technical Sales 2025-&gt;Benchmarking --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Case Study</masterLabel>
-        <translation>技術銷售 2025-&gt;個案研究</translation>
+        <translation><!-- Technical Sales 2025-&gt;Case Study --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Migration</masterLabel>
-        <translation>技術銷售 2025-&gt;移轉</translation>
+        <translation><!-- Technical Sales 2025-&gt;Migration --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Other (Technical Sales)</masterLabel>
-        <translation>技術銷售 2025-&gt;其他（技術銷售）</translation>
+        <translation><!-- Technical Sales 2025-&gt;Other (Technical Sales) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Proof of Concept</masterLabel>
-        <translation>技術銷售 2025-&gt;概念性驗證</translation>
+        <translation><!-- Technical Sales 2025-&gt;Proof of Concept --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Sales Event</masterLabel>
-        <translation>技術銷售 2025-&gt;銷售活動</translation>
+        <translation><!-- Technical Sales 2025-&gt;Sales Event --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Seed Unit</masterLabel>
-        <translation>技術銷售 2025-&gt;種子機型</translation>
+        <translation><!-- Technical Sales 2025-&gt;Seed Unit --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;System Demo</masterLabel>
-        <translation>技術銷售 2025-&gt;系統演示</translation>
+        <translation><!-- Technical Sales 2025-&gt;System Demo --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Telemarketing</masterLabel>
-        <translation>技術銷售 2025-&gt;電話行銷</translation>
+        <translation><!-- Technical Sales 2025-&gt;Telemarketing --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Trial Instance</masterLabel>
-        <translation>技術銷售 2025-&gt;試用實例</translation>
+        <translation><!-- Technical Sales 2025-&gt;Trial Instance --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales-&gt;Benchmarking</masterLabel>
@@ -1074,15 +1074,15 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Video 2025-&gt;Other (Video)</masterLabel>
-        <translation>影片 2025-&gt;其他（影片）</translation>
+        <translation><!-- Video 2025-&gt;Other (Video) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Video 2025-&gt;Streaming</masterLabel>
-        <translation>影片 2025-&gt;直播</translation>
+        <translation><!-- Video 2025-&gt;Streaming --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Video 2025-&gt;Television</masterLabel>
-        <translation>影片 2025-&gt;電視</translation>
+        <translation><!-- Video 2025-&gt;Television --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Video-&gt;Other (Video)</masterLabel>

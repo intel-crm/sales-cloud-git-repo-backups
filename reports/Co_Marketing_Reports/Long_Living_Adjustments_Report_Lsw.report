@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PartnerFundClaim$Name</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Request.ChannelPartner.Name</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Region_Cd__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$CreatedDate</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CDF1</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PartnerFundClaim$Amount</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PartnerFundClaim$Core_MDF_Total_Invoice_Amount_Local__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>TODAY() - DATEVALUE(PartnerFundClaim.CreatedDate)</calculatedFormula>
+        <dataType>Double</dataType>
+        <developerName>CDF1</developerName>
+        <label>Adjustment Due days</label>
+        <scale>0</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>PartnerFundClaim$Core_MDF_Type_Txt__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Adjustment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundClaim$Core_MDF_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Pending Available Fund</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PartnerFundClaim$Core_MDF_AccountCompany__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Long Living Adjustments Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Claim_with_Activity__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PartnerFundClaim$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

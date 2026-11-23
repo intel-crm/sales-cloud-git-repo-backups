@@ -23,8 +23,9 @@ public without sharing class Core_MDF_Reopen_Activity {
         Map<Id,String> accIdRegMap = new Map<Id,String>();
         Boolean hasPermission = false;
         string budgetType,program;
-        
-       Date activityCloseDate;
+        // Highlight: Unused Local Variable - 14285
+        // date actCloseDays; 
+        Date activityCloseDate;
         Decimal claimedAmount = 0.0;
         Decimal escAmount = 0.0;
         Decimal totalConsumedAmt = 0.0;
@@ -50,6 +51,17 @@ public without sharing class Core_MDF_Reopen_Activity {
             if(pfrList != null && !pfrList.isEmpty()){
                 budgetType =  pfrList[0].Core_MDF_Budget_Type_nm__c;
                 program = pfrList[0].Core_MDF_Is_Outcome_Based_Ind__c == true ? pfrList[0].Core_MDF_Program__c : pfrList[0].campaign.Core_MDF_Program__c; // Rishabh
+
+                // Outcome-based CCF/DCF store the short program name on the PFR, while
+                // Core_MDF_Program_Budget_RecordType__mdt is keyed on the technical name.
+                //Akash-CCF/DCF
+                if (pfrList[0].Core_MDF_Is_Outcome_Based_Ind__c == true) {
+                    if (program == Core_MDF_CCP_ConstantClass.CCF_PROGRAM) {
+                        program = Core_MDF_CCP_ConstantClass.CCF_TECHNICAL_PROGRAM_NAME;
+                    } else if (program == Core_MDF_CCP_ConstantClass.DCF_PROGRAM) {
+                        program = Core_MDF_CCP_ConstantClass.DCF_TECHNICAL_PROGRAM_NAME;
+                    }
+                }
                 
                 if(pfrList[0].Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_Program_Name')){
                     accIdRegMap.put(pfrList[0].ChannelPartnerId,pfrList[0].ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Core_Geo__c);
@@ -80,25 +92,39 @@ public without sharing class Core_MDF_Reopen_Activity {
                     }
                 }
             }
-            
-            if(programbudgetRecordType != null && !programbudgetRecordType.isEmpty()){
-                
-		        if(pfrList[0].Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.EEF_PROGRAM){
-                    eligiblePS.add((string)programbudgetRecordType[0].Core_MDF_Account_Manager_PS_API_Name__c);
-                }
-                if(UserInfo.getUserType() == 'PowerPartner'){
-                    if(FeatureManagement.checkPermission('Core_MDF_CCP_External_Activity_Submitter') || FeatureManagement.checkPermission('Core_MDF_CCP_External_IPA_Activity_Manager') || FeatureManagement.checkPermission('Core_MDF_CCP_External_IPA_Proposal_Manager') || FeatureManagement.checkPermission('Core_MDF_CCP_EEF_Activating_Partner_User')){hasPermission = true;}
-                }else {
-                    List<PermissionSetAssignment> permissionAssign = [SELECT Id,AssigneeId, PermissionSet.Name
-                                                                      FROM PermissionSetAssignment
-                                                                      WHERE AssigneeId =: UserInfo.getUserId() and PermissionSet.Name In: eligiblePS];
-                    
-                    if(permissionAssign != null && !permissionAssign.isEmpty()){
-                        hasPermission = true;
-                    }
-                }
-            }
-            
+            // US - TWC702-14285: Flatten nested IFs (no logic change)
+           if (programbudgetRecordType == null || programbudgetRecordType.isEmpty()) {
+               // Refactored:  Guard clause: nothing to evaluate
+           } else {
+               // Add PS from record type for non-EEF programs
+               if (pfrList[0].Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.EEF_PROGRAM) {
+                   eligiblePS.add((String) programbudgetRecordType[0].Core_MDF_Account_Manager_PS_API_Name__c);
+               }
+               
+               // Guard pattern on user type
+               if (UserInfo.getUserType() == 'PowerPartner') {
+                   // Short-circuit permission evaluation for PowerPartner
+                   Boolean anyExternalPerm =
+                       FeatureManagement.checkPermission('Core_MDF_CCP_External_Activity_Submitter')
+                       || FeatureManagement.checkPermission('Core_MDF_CCP_External_IPA_Activity_Manager')
+                       || FeatureManagement.checkPermission('Core_MDF_CCP_External_IPA_Proposal_Manager')
+                       || FeatureManagement.checkPermission('Core_MDF_CCP_EEF_Activating_Partner_User');
+                   if (anyExternalPerm) {
+                       hasPermission = true;
+                   }
+               } else {
+                   // Internal user path using eligible permission sets
+                   List<PermissionSetAssignment> permissionAssign = [
+                       SELECT Id, AssigneeId, PermissionSet.Name
+                       FROM PermissionSetAssignment
+                       WHERE AssigneeId = :UserInfo.getUserId()
+                       AND PermissionSet.Name IN :eligiblePS
+                   ];
+                   if (permissionAssign != null && !permissionAssign.isEmpty()) {
+                       hasPermission = true;
+                   }
+               }
+           }
             if(pfrList != null && !pfrList.isEmpty()){
                 string eligiblebudgetString = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ReOpen_Eligible_Budget_Types');
                 eligibleBudgets = eligiblebudgetString.split(';');
@@ -159,7 +185,6 @@ public without sharing class Core_MDF_Reopen_Activity {
                         && pfrList[0].Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.EEF_PROGRAM){
                             returnMsg = System.Label.Core_MDF_Activities_Exceeds_The_Allocated_Budget;
                         }
-                //Check $ available in campaign budget
                 else if(pfrList[0].Core_MDF_Budget_Type_nm__c != Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_RSAMD_UnTranslated')){
                         returnMsg = validateActivityWithCampaign(pfrList[0]);
                 }
@@ -169,92 +194,93 @@ public without sharing class Core_MDF_Reopen_Activity {
                 }
                 
                 //Calculate amount to be claimed - Enhanced for outcome-based activities
-                string claimStatus = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ClaimStatus_ActivityClose');
-                if(returnMsg == 'success'){
+                String claimStatus = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ClaimStatus_ActivityClose');
+
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                if (returnMsg != 'success') {
+                    //   Refactored:  Guard: skip calculation if validation already failed
+                } else {
                     claimCloseStatus = claimStatus.split(';');
-                    
-                    // Check if this is an outcome-based parent activity
-                    if(isOutcomeBasedParentActivity(pfrList[0])) {
-                        // For outcome-based activities, validate each sub-activity individually
-                        List<SubActivityValidationResult> subActivityResults = validateOutcomeBasedSubActivities(activityId, claimCloseStatus, pfrList[0]);
-                        
-                        // Check if any sub-activity has validation errors
+
+                    // Outcome-based parent path
+                    if (isOutcomeBasedParentActivity(pfrList[0])) {
+                        List<SubActivityValidationResult> subActivityResults =
+                            validateOutcomeBasedSubActivities(activityId, claimCloseStatus, pfrList[0]);
+
                         Boolean hasValidationError = false;
                         String validationErrorMsg = '';
                         Decimal totalParentReimbursementAmt = 0;
                         Decimal totalParentAvailableAmt = 0;
                         Decimal totalParentClaimedAmount = 0;
                         Decimal totalParentEscAmount = 0;
-                        
-                        for(SubActivityValidationResult result : subActivityResults) {
-                            if(result.hasError) {
+
+                        for (SubActivityValidationResult result : subActivityResults) {
+                            if (result.hasError) {
                                 hasValidationError = true;
                                 validationErrorMsg = result.errorMessage;
-                                break; // Stop at first error
+                                break;
                             }
                             totalParentReimbursementAmt += result.reimbursementAmount;
                             totalParentAvailableAmt += result.availableAmount;
                             totalParentClaimedAmount += result.claimedAmount;
                             totalParentEscAmount += result.escAmount;
                         }
-                        
-                        if(hasValidationError) {
+
+                        if (hasValidationError) {
                             returnMsg = validationErrorMsg;
                         } else {
-                            // Set parent activity values as sum of all sub-activities
                             reimbursementAmt = totalParentReimbursementAmt;
                             totalAvailableAmt = totalParentAvailableAmt;
                             reopenWrap.intelContribution = reimbursementAmt;
                             reopenWrap.pendingClaimableAmount = totalAvailableAmt;
                             reopenWrap.totalClaimAmount = totalParentClaimedAmount + totalParentEscAmount;
                         }
+                        // Done with outcome-based branch
                     } else {
-                        // Regular activity calculation (existing logic)
-                        List<AggregateResult> pfcAmountList = [SELECT RequestId Id ,sum(Amount)amt 
-                                                               FROM PartnerFundClaim 
-                                                               WHERE RequestId =: activityId AND Core_MDF_Status__c IN: claimCloseStatus AND Core_MDF_Type_Txt__c =: TYPE_CLAIM
-                                                               AND Core_MDF_Escalation_Id__c = null  
-                                                               GROUP BY RequestId];
+                        // Regular activity calculation (existing logic) with guard-style flow
+                        List<AggregateResult> pfcAmountList = [
+                            SELECT RequestId Id, SUM(Amount) amt
+                            FROM PartnerFundClaim
+                            WHERE RequestId = :activityId
+                              AND Core_MDF_Status__c IN :claimCloseStatus
+                              AND Core_MDF_Type_Txt__c = :TYPE_CLAIM
+                              AND Core_MDF_Escalation_Id__c = null
+                            GROUP BY RequestId
+                        ];
 
+                        List<AggregateResult> escAmountList = [
+                            SELECT Core_MDF_Co_Marketing_Activity_id__c Id, SUM(Core_MDF_Approved_Amount_amt__c) amt
+                            FROM Core_MDF_Escalation__c
+                            WHERE Core_MDF_Co_Marketing_Activity_id__c = :activityId
+                              AND Core_MDF_Escalation_Status_nm__c = :ESC_APPROVED_STATUS
+                            GROUP BY Core_MDF_Co_Marketing_Activity_id__c
+                        ];
 
-                    List<AggregateResult> escAmountList = [SELECT Core_MDF_Co_Marketing_Activity_id__c Id,sum(Core_MDF_Approved_Amount_amt__c)amt
-                                                           FROM Core_MDF_Escalation__c
-                                                           WHERE Core_MDF_Co_Marketing_Activity_id__c =: activityId 
-                                                           AND Core_MDF_Escalation_Status_nm__c =: ESC_APPROVED_STATUS
-                                                           GROUP BY Core_MDF_Co_Marketing_Activity_id__c];
-                                                   
-                                                   
-                    
-                    if( pfcAmountList != null && !pfcAmountList.isEmpty()){
-                        claimedAmount = (Decimal)pfcAmountList[0].get('amt');
-                    }
-
-                        if(escAmountList != null && !escAmountList.isEmpty()){
-                            escAmount = (Decimal)escAmountList[0].get('amt');
+                        if (pfcAmountList != null && !pfcAmountList.isEmpty()) {
+                            claimedAmount = (Decimal) pfcAmountList[0].get('amt');
                         }
-                        
-                        if(pfrList[0].Allocation.Core_MDF_Available_Activity_Alloc_Amt__c != null){
-                            allocationAvailAmt = pfrList[0].Allocation.Core_MDF_Available_Activity_Alloc_Amt__c;   
+                        if (escAmountList != null && !escAmountList.isEmpty()) {
+                            escAmount = (Decimal) escAmountList[0].get('amt');
                         }
-                        
-                        if(pfrList[0].Core_MDF_Activity_Reimbursement_Amt_nbr__c != null && pfrList[0].Amount != null){
+                        if (pfrList[0].Allocation.Core_MDF_Available_Activity_Alloc_Amt__c != null) {
+                            allocationAvailAmt = pfrList[0].Allocation.Core_MDF_Available_Activity_Alloc_Amt__c;
+                        }
+                        if (pfrList[0].Core_MDF_Activity_Reimbursement_Amt_nbr__c != null && pfrList[0].Amount != null) {
                             reimbursementAmt = pfrList[0].Core_MDF_Activity_Reimbursement_Amt_nbr__c;
-                            reopenWrap.intelContribution = pfrList[0].Core_MDF_Activity_Reimbursement_Amt_nbr__c;    
+                            reopenWrap.intelContribution = pfrList[0].Core_MDF_Activity_Reimbursement_Amt_nbr__c;
                         }
 
                         totalConsumedAmt = claimedAmount + escAmount;
-                        totalConsumedAmt = totalConsumedAmt >= reimbursementAmt ? reimbursementAmt : totalConsumedAmt;
-                    
+                        totalConsumedAmt = (totalConsumedAmt >= reimbursementAmt) ? reimbursementAmt : totalConsumedAmt;
+
                         reopenWrap.intelContribution = reimbursementAmt;
 
-                       Decimal availableAmount = 0;
-                       availableAmount = (reimbursementAmt - totalConsumedAmt);
-                    
-                        if(availableAmount <= 0){
+                        Decimal availableAmount = (reimbursementAmt - totalConsumedAmt);
+                        if (availableAmount <= 0) {
                             returnMsg = System.Label.Core_MDF_Claims_Exceeds_The_Activity_Spending_Limit;
                         }
-                    
-                        if((availableAmount > allocationAvailAmt) 
+
+                        if ((availableAmount > allocationAvailAmt) 
                            && pfrList[0].Core_MDF_Budget_Type_nm__c != Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_RSAMD_UnTranslated')
                            && !cmpBudgetType.contains(pfrList[0].Core_MDF_Budget_Type_nm__c)
                            && !(multipleBTProg.contains(pfrList[0].Core_MDF_Program__c) && pfrList[0].Core_MDF_Proposal_Based_Ind__c == True)
@@ -264,15 +290,15 @@ public without sharing class Core_MDF_Reopen_Activity {
                         }else{
                             totalAvailableAmt = availableAmount;
                         }
-                        
-                        reopenWrap.pendingClaimableAmount = totalAvailableAmt;
-                        reopenWrap.totalClaimAmount = totalConsumedAmt;
+                            reopenWrap.pendingClaimableAmount = totalAvailableAmt;
+                            reopenWrap.totalClaimAmount = totalConsumedAmt;
+                        }
                     }
                 }
                 
             }
             
-        }catch(Exception ex){returnMsg = ex.getMessage();
+        catch(Exception ex){returnMsg = ex.getMessage();
                             }
         
         
@@ -358,9 +384,11 @@ public without sharing class Core_MDF_Reopen_Activity {
     @AuraEnabled
     public static string reOpenActivity(string actId){
         string returnMsg = '';
-
+        // Highlight: Unused Local Variable - 14285
+        // Map<Id,String> accIdRegMap = new Map<Id,String>();
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
- 
+        // Highlight: Unused Local Variable - 14285
+        // Map<String,Date> quarterEndMap = new Map<String,Date>(); 
         
         try{
             String reopenStatus = System.Label.Core_MDF_ATF_Reopen_Status;
@@ -520,8 +548,9 @@ public without sharing class Core_MDF_Reopen_Activity {
         
         return activity;
     }
+
     
-    Public static Date getCloseDate(PartnerFundRequest pfr){
+      Public static Date getCloseDate(PartnerFundRequest pfr){
         string program = pfr.Core_MDF_Program__c;
         boolean isProposalBased =pfr.Core_MDF_Proposal_Based_Ind__c;
         Integer dateCount = 0;
@@ -547,7 +576,7 @@ public without sharing class Core_MDF_Reopen_Activity {
         }
         
         return activityCloseDate;
-    }    
+    }   
     
     //Used Only for RMF to calculate EndDate based on Quarter EndDate.
     Public static Map<String,Date> getActClosureDate(List<PartnerFundRequest> pfrList){
@@ -593,257 +622,268 @@ public without sharing class Core_MDF_Reopen_Activity {
     Modified By :   Aswin Selvaraj            Date:07/Feb/2024  Changes:Enhanced the camp full stack validation to support EEF program
     ****************************************************************************/
     public static string validateActivityWithCampaign(PartnerFundRequest pfr){
-        
-        string returnMsg = 'success';
-        Map<Id, PartnerFundRequest> cmpEEFBudgetPfrMap = new Map<Id, PartnerFundRequest>();
-        Map <Id,Decimal> pfrToClaimAmtMap = new Map<Id,Decimal>();
-        Map <Id,Decimal> pfrToEscalationAmtMap = new Map<Id,Decimal>();
-        string IPA_PROG = Core_MDF_CCP_ConstantClass.IPA_PROGRAM;
-        
-        Map<String,Id> campaignIdBudgetTypeToBudgetIdMap = new Map<String,Id>();
-        Map<String,Decimal> budgetAgainstAmountMap = new Map<String,Decimal>();
-        Set<Id> ipaAccBasedRMFEEFCampIdSet = new Set<Id>();
-        Set<Id> campaignIdSet = new Set<Id>();
-        List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
-        
-        List<String> cmpBudgetTypeList = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CMP_BudgetType') != null 
-            ? Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CMP_BudgetType').split(';') : null;
-        
-        Map<String,Decimal> cmpIdBudgetIdBudgetTypeToAmountMap = new Map<String,Decimal>();
-        List<String> opalBudgetTypeList = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_OPAL_BudgetTypes').Split(';');
-        List<string> pfcCloseStatus = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ClaimStatus_ActivityAutoClose').split(';');
-        List<Campaign> campReimbAmount = new List<Campaign>();
-        
-        Decimal eefAmount = 0;
-        Decimal rmfAmount = 0;
-        Decimal pfrCampaignAmtAccount = 0;
-        Decimal pfrCampAmount = 0;
-        
-        Boolean isRMF = false;
-        Boolean isEEF = false;
-        Boolean isIPAAccountBased = false;
-        Boolean isIPARetailEEF =false;
-        Boolean checkCampaignError = false;
-        
-        try{
-            if(opalBudgetTypeList.contains(pfr.Core_MDF_Budget_Type_nm__c)){
-                String campaignIdBudgetType = string.valueOf(pfr.CampaignId)+pfr.Core_MDF_Budget_Type_nm__c;
-                campaignIdBudgetTypeToBudgetIdMap.put(campaignIdBudgetType, pfr.BudgetId);
-                checkCampaignError = true;
-                campaignIdSet.add(pfr.CampaignId);
-            }
-            else if(isRetailAccountBasedOrEEF(pfr)){
-                String campaignIdBudgetType = string.valueOf(pfr.CampaignId)+pfr.Core_MDF_Budget_Type_nm__c;
-                campaignIdBudgetTypeToBudgetIdMap.put(campaignIdBudgetType, pfr.BudgetId);
-                pfrCampAmount =  pfr.Core_MDF_Campaign_Amount__c;                                                                     
-                checkCampaignError = true;
-                isIPARetailEEF = true; 
-                ipaAccBasedRMFEEFCampIdSet.add(pfr.CampaignId);
-            }
-            /*else if(pfr.Core_MDF_Program__c == IPA_PROG && !pfr.Core_MDF_Proposal_Based_Ind__c){
-                isIPAAccountBased = true;
-                String campaignIdBudgetType = string.valueOf(pfr.CampaignId)+pfr.Core_MDF_Budget_Type_nm__c;
-                campaignIdBudgetTypeToBudgetIdMap.put(campaignIdBudgetType, pfr.BudgetId);
-                pfrCampaignAmtAccount =(Decimal)pfr.Campaign.Core_MDF_Reimbursement_Amt__c;
-                checkCampaignError = true;
-                ipaAccBasedRMFEEFCampIdSet.add(pfr.CampaignId);
-            }
-            else if(pfr.Core_MDF_Budget_Type_nm__c == 'Retail MDF'){                                                              
-                String campaignIdBudgetType = string.valueOf(pfr.CampaignId)+pfr.Core_MDF_Budget_Type_nm__c;
-                campaignIdBudgetTypeToBudgetIdMap.put(campaignIdBudgetType, pfr.BudgetId);
-                rmfAmount =  pfr.Core_MDF_Campaign_Amount__c;                                                                     
-                checkCampaignError = true;isRMF = true; 
-                ipaAccBasedRMFEEFCampIdSet.add(pfr.CampaignId);
-            } 
-            else if(pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM){                                                              
-                String campaignIdBudgetType = string.valueOf(pfr.CampaignId)+pfr.Core_MDF_Budget_Type_nm__c;
-                campaignIdBudgetTypeToBudgetIdMap.put(campaignIdBudgetType, pfr.BudgetId);
-                eefAmount =  pfr.Core_MDF_Campaign_Amount__c;                                                                     
-                checkCampaignError = true;isEEF = true; 
-                ipaAccBasedRMFEEFCampIdSet.add(pfr.CampaignId);
-            }*/ 
-            
-            if(campaignIdBudgetTypeToBudgetIdMap != NULL && campaignIdBudgetTypeToBudgetIdMap.Size() > 0){
-                Map<Id, Decimal> allocationInDraftState = new Map<Id, Decimal>();
-                Map<Id, Decimal> finalAllocationAmountMap = new Map<Id, Decimal>();
-                map<Id, Decimal> allocationIdToAllocatedAmountMap = new Map<Id,Decimal>();
-                
-                
-                if(/*!isRMF && !isIPAAccountBased && !isEEF*/ !isIPARetailEEF){  
-                    for(Core_MDF_Campaign_Budgets__c campBudget : [SELECT Id, Core_MDF_Reimbursement_Amt__c, Core_MDF_Budget_Type_Nm__c,
-                                                                   Core_MDF_Campaign_Id__c,Core_MDF_Budget_Name_Id__c
-                                                                   FROM Core_MDF_Campaign_Budgets__c
-                                                                   WHERE Core_MDF_Budget_Name_Id__c IN: campaignIdBudgetTypeToBudgetIdMap.values() AND
-                                                                   Core_MDF_Campaign_Id__c =: pfr.CampaignId]){
-                                                                       String cmpIdBudgetIdBudgetType = String.ValueOf(campBudget.Core_MDF_Campaign_Id__c) + campBudget.Core_MDF_Budget_Name_Id__c + campBudget.Core_MDF_Budget_Type_Nm__c;
-                                                                       cmpIdBudgetIdBudgetTypeToAmountMap.put(cmpIdBudgetIdBudgetType, campBudget.Core_MDF_Reimbursement_Amt__c);             
-                                                                   }
-                    
-                }
-                
-                for(PartnerFundRequest pfrObj : [SELECT Id, BudgetId, ChannelPartnerId, Core_MDF_Activity_Reimbursement_Amt_nbr__c,Core_MDF_Fund_Request_Status__c, CampaignId, Core_MDF_Budget_Type_nm__c,Amount, Core_MDF_Proposal_Based_Ind__c,Core_MDF_Program__c
-                                                 FROM PartnerFundRequest
-                                                 WHERE ((BudgetId IN: campaignIdBudgetTypeToBudgetIdMap.values() AND CampaignId IN: campaignIdSet)
-                                                        OR CampaignId IN: ipaAccBasedRMFEEFCampIdSet)
-                                                 AND Core_MDF_Fund_Request_Status__c != 'Cancelled' AND Id !=: pfr.Id]){
-                                                     //looping through other activities for the campaign
-                                                     String cmpIdBudgetIdBudgetType = String.ValueOf(pfrObj.CampaignId) + pfrObj.BudgetId + pfrObj.Core_MDF_Budget_Type_nm__c;
-                                                     String campaignIdBudgetType = string.valueOf(pfrObj.CampaignId) + pfrObj.Core_MDF_Budget_Type_nm__c;
-                                                     Boolean isCmpEEFBudget = false;
-                                                     
-                                                     if((cmpBudgetTypeList != null && cmpBudgetTypeList.contains(pfrObj.Core_MDF_Budget_Type_nm__c)) || 
-                                                       pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM){
-                                                         isCmpEEFBudget = true;
-                                                        
-                                                         if(pfrObj.Core_MDF_Fund_Request_Status__c == 'Closed'){
-                                                             cmpEEFBudgetPfrMap.put(pfrObj.Id,pfrObj);
-                                                         }   
-                                                     }
-                                                     if((budgetAgainstAmountMap.containsKey(cmpIdBudgetIdBudgetType) ||  budgetAgainstAmountMap.containsKey(campaignIdBudgetType))
-                                                        && pfrObj.Amount != null){
-                                                            decimal amount = 0;
-                                                            if((pfrObj.Core_MDF_Program__c == IPA_PROG && pfrObj.Core_MDF_Proposal_Based_Ind__c == false) || 
-                                                               pfr.Core_MDF_Budget_Type_nm__c == 'Retail MDF'){
-                                                                amount += budgetAgainstAmountMap.get(campaignIdBudgetType);// map to store total of amounts on pfr for each camp+budgettype
-                                                            } else {
-                                                                amount += budgetAgainstAmountMap.get(cmpIdBudgetIdBudgetType);
-                                                            }
-                                                            if(isCmpEEFBudget){
-                                                                if(pfrObj.Core_MDF_Fund_Request_Status__c != 'Closed'){ 
-                                                                    amount += pfrObj.Core_MDF_Activity_Reimbursement_Amt_nbr__c;
-                                                                }
-                                                            }else{
-                                                                amount += pfrObj.Amount;
-                                                            } 
-                                                            
-                                                            if((pfrObj.Core_MDF_Program__c == IPA_PROG && pfrObj.Core_MDF_Proposal_Based_Ind__c == false) || 
-                                                               pfr.Core_MDF_Budget_Type_nm__c == 'Retail MDF'){
-                                                                budgetAgainstAmountMap.put(campaignIdBudgetType, amount);// map to store total of amounts on pfr for each camp+budgettype
-                                                            } else {
-                                                         budgetAgainstAmountMap.put(cmpIdBudgetIdBudgetType, amount);
-                                                            }
-                                                         
-                                                     }else{
-                                                         if(pfrObj.Amount != null){
-                                                             decimal amount = 0;
-                                                             if(isCmpEEFBudget){
-                                                                 if(pfrObj.Core_MDF_Fund_Request_Status__c != 'Closed'){
-                                                                     amount = pfrObj.Core_MDF_Activity_Reimbursement_Amt_nbr__c;
-                                                                 }
-                                                             }else{
-                                                                 amount = pfrObj.Amount;
-                                                             } 
-                                                                
-                                                                if((pfrObj.Core_MDF_Program__c == IPA_PROG && pfrObj.Core_MDF_Proposal_Based_Ind__c == false) || 
-                                                               		pfr.Core_MDF_Budget_Type_nm__c == 'Retail MDF'){
-                                                                    budgetAgainstAmountMap.put(campaignIdBudgetType, amount);// map to store total of amounts on pfr for each camp+budgettype
-                                                                } else {
-                                                             budgetAgainstAmountMap.put(cmpIdBudgetIdBudgetType, amount);
-                                                                }
-                                                             
-                                                         }    
-                                                     }
-                                                 }
-                
-                
-                if(cmpEEFBudgetPfrMap != NULL && cmpEEFBudgetPfrMap.keyset() != null && !cmpEEFBudgetPfrMap.isEmpty()){
-                    
-                    for(AggregateResult pfc : [SELECT RequestId Id ,sum(Amount)amt
-                                               FROM PartnerFundClaim 
-                                               WHERE RequestId IN:cmpEEFBudgetPfrMap.keyset() AND Core_MDF_Status__c IN:pfcCloseStatus  
-                                               AND Core_MDF_Type_Txt__c =: TYPE_CLAIM AND Core_MDF_Escalation_Id__c = null 
-                                               GROUP BY RequestId]){ 
-                                                   ID pfrID =(Id)pfc.get('Id');    
-                                                   Decimal pfrClaimedAmount =(Decimal)pfc.get('amt');
-                                                   pfrToClaimAmtMap.put(pfrID,pfrClaimedAmount);
-                                               }
-                    
-                    for(AggregateResult esc : [SELECT Core_MDF_Co_Marketing_Activity_id__c Id,sum(Core_MDF_Approved_Amount_amt__c)amt
-                                               FROM Core_MDF_Escalation__c
-                                               WHERE Core_MDF_Co_Marketing_Activity_id__c IN:cmpEEFBudgetPfrMap.keyset() AND Core_MDF_Escalation_Status_nm__c =: ESC_APPROVED_STATUS
-                                               GROUP BY Core_MDF_Co_Marketing_Activity_id__c]){
-                                                   ID pfrID =(Id)esc.get('Id');
-                                                   Decimal pfrEscAmount =(Decimal)esc.get('amt');
-                                                   pfrToEscalationAmtMap.put(pfrID,pfrEscAmount); 
-                                               }
-                    
-                    
-                    for(PartnerFundRequest pfrObj: cmpEEFBudgetPfrMap.Values()){
-                        decimal totalEscAmt = 0.0;
-                        decimal totalClaimedAmt = 0.0;
-                        decimal totalClaimEscConsumedAmt = 0.0;
-                        decimal amount = 0.0;
-
-                        String cmpIdBudgetIdBudgetType = String.ValueOf(pfrObj.CampaignId) + pfrObj.BudgetId + pfrObj.Core_MDF_Budget_Type_nm__c;
-                        if(pfrObj.Amount != null){
-                            totalEscAmt = pfrToEscalationAmtMap.containskey(pfrObj.Id) ? pfrToEscalationAmtMap.get(pfrObj.Id) : 0;
-                            totalClaimedAmt = pfrToClaimAmtMap.containskey(pfrObj.Id) ? pfrToClaimAmtMap.get(pfrObj.Id) : 0;
-                            totalClaimEscConsumedAmt = totalEscAmt + totalClaimedAmt;
-                            amount = totalClaimEscConsumedAmt >= pfrObj.Core_MDF_Activity_Reimbursement_Amt_nbr__c
-                                ? pfrObj.Core_MDF_Activity_Reimbursement_Amt_nbr__c : totalClaimEscConsumedAmt;
-
-                            if(budgetAgainstAmountMap.containsKey(cmpIdBudgetIdBudgetType)){
-                               amount += budgetAgainstAmountMap.get(cmpIdBudgetIdBudgetType);
-                                budgetAgainstAmountMap.put(cmpIdBudgetIdBudgetType, amount);
-                            }else{
-                                budgetAgainstAmountMap.put(cmpIdBudgetIdBudgetType, amount); 
-                            }                                                                        
-                        }
-                    }
-                    
-                }
-
-                string campaignBudgetkey = pfr.CampaignId+pfr.Core_MDF_Budget_Type_nm__c;
-                String campaignIdBudgetType = string.valueOf(pfr.CampaignId) + pfr.Core_MDF_Budget_Type_nm__c;
-                if(campaignIdBudgetTypeToBudgetIdMap.containsKey(campaignBudgetkey) && campaignIdBudgetTypeToBudgetIdMap.get(campaignBudgetkey) != NULL){
-                    
-                    Id budgetId = pfr.BudgetId;                  
-                    String cmpIdBudgetIdBudgetType = String.ValueOf(pfr.CampaignId) + pfr.BudgetId + pfr.Core_MDF_Budget_Type_nm__c;
-                    
-                    decimal amountOnBudget = 0;
-                    if(isIPARetailEEF){
-                        amountOnBudget = pfrCampAmount;
-                    }
-                    /*if(isRMF){
-                        amountOnBudget =   rmfAmount  ; 
-                    }
-                    else if(isIPAAccountBased){
-                        amountOnBudget = pfrCampaignAmtAccount;
-                    }
-                    else if(isEEF){
-                        amountOnBudget = eefAmount;
-                    }*/
-                    else{
-                        amountOnBudget  =  cmpIdBudgetIdBudgetTypeToAmountMap.get(cmpIdBudgetIdBudgetType);                
-                    }
-                    decimal existingPfrAmount = 0;
-                    if(((pfr.Core_MDF_Program__c == IPA_PROG && pfr.Core_MDF_Proposal_Based_Ind__c == false) || 
-                       pfr.Core_MDF_Budget_Type_nm__c == 'Retail MDF')
-                       && budgetAgainstAmountMap.containsKey(campaignIdBudgetType)){
-                           existingPfrAmount += budgetAgainstAmountMap.get(campaignIdBudgetType);//sum of amount on other activities
-                       } else {
-                           if(budgetAgainstAmountMap.containsKey(cmpIdBudgetIdBudgetType)){
-                               existingPfrAmount += budgetAgainstAmountMap.get(cmpIdBudgetIdBudgetType);
-                           }
-                       }
-                    
-                    decimal currentActivityAmount = pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c;
-                    decimal finalAmountForCompare = existingPfrAmount != NULL ? 
-                        (existingPfrAmount + currentActivityAmount) : currentActivityAmount;
-                    
-                    if(finalAmountForCompare > amountOnBudget && checkCampaignError){+
-                        returnMsg = Label.Core_MDF_OPAL_Amount_Validation_Error;
-                    }
-                } 
-            }  
+    
+    string returnMsg = 'success';
+    Map<Id, PartnerFundRequest> cmpEEFBudgetPfrMap = new Map<Id, PartnerFundRequest>();
+    Map <Id,Decimal> pfrToClaimAmtMap = new Map<Id,Decimal>();
+    Map <Id,Decimal> pfrToEscalationAmtMap = new Map<Id,Decimal>();
+    string IPA_PROG = Core_MDF_CCP_ConstantClass.IPA_PROGRAM;
+    
+    Map<String,Id> campaignIdBudgetTypeToBudgetIdMap = new Map<String,Id>();
+    Map<String,Decimal> budgetAgainstAmountMap = new Map<String,Decimal>();
+    Set<Id> ipaAccBasedRMFEEFCampIdSet = new Set<Id>();
+    Set<Id> campaignIdSet = new Set<Id>();
+    List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
+    
+    List<String> cmpBudgetTypeList = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CMP_BudgetType') != null 
+        ? Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CMP_BudgetType').split(';') : null;
+    
+    Map<String,Decimal> cmpIdBudgetIdBudgetTypeToAmountMap = new Map<String,Decimal>();
+    List<String> opalBudgetTypeList = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_OPAL_BudgetTypes').Split(';');
+    List<string> pfcCloseStatus = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ClaimStatus_ActivityAutoClose').split(';');
+    List<Campaign> campReimbAmount = new List<Campaign>();
+    
+    Decimal eefAmount = 0;
+    Decimal rmfAmount = 0;
+    Decimal pfrCampaignAmtAccount = 0;
+    Decimal pfrCampAmount = 0;
+    
+    Boolean isRMF = false;
+    Boolean isEEF = false;
+    Boolean isIPAAccountBased = false;
+    Boolean isIPARetailEEF =false;
+    Boolean checkCampaignError = false;
+    
+    try{
+        if(opalBudgetTypeList.contains(pfr.Core_MDF_Budget_Type_nm__c)){
+            String campaignIdBudgetType = string.valueOf(pfr.CampaignId)+pfr.Core_MDF_Budget_Type_nm__c;
+            campaignIdBudgetTypeToBudgetIdMap.put(campaignIdBudgetType, pfr.BudgetId);
+            checkCampaignError = true;
+            campaignIdSet.add(pfr.CampaignId);
         }
-        catch(Exception e){
-            Core_MDF_CCP_UtilityClass.logError(e); returnMsg = e.getMessage();
+        
+        else if(isRetailAccountBasedOrEEF(pfr)){
+            String campaignIdBudgetType = string.valueOf(pfr.CampaignId)+pfr.Core_MDF_Budget_Type_nm__c;
+            campaignIdBudgetTypeToBudgetIdMap.put(campaignIdBudgetType, pfr.BudgetId);
+            pfrCampAmount =  pfr.Core_MDF_Campaign_Amount__c;                                                                     
+            checkCampaignError = true;
+            isIPARetailEEF = true; 
+            ipaAccBasedRMFEEFCampIdSet.add(pfr.CampaignId);
+        }
+        /*else if(pfr.Core_MDF_Program__c == IPA_PROG && !pfr.Core_MDF_Proposal_Based_Ind__c){
+            isIPAAccountBased = true;
+            String campaignIdBudgetType = string.valueOf(pfr.CampaignId)+pfr.Core_MDF_Budget_Type_nm__c;
+            campaignIdBudgetTypeToBudgetIdMap.put(campaignIdBudgetType, pfr.BudgetId);
+            pfrCampaignAmtAccount =(Decimal)pfr.Campaign.Core_MDF_Reimbursement_Amt__c;
+            checkCampaignError = true;
+            ipaAccBasedRMFEEFCampIdSet.add(pfr.CampaignId);
+        }
+        else if(pfr.Core_MDF_Budget_Type_nm__c == 'Retail MDF'){                                                              
+            String campaignIdBudgetType = string.valueOf(pfr.CampaignId)+pfr.Core_MDF_Budget_Type_nm__c;
+            campaignIdBudgetTypeToBudgetIdMap.put(campaignIdBudgetType, pfr.BudgetId);
+            rmfAmount =  pfr.Core_MDF_Campaign_Amount__c;                                                                     
+            checkCampaignError = true;isRMF = true; 
+            ipaAccBasedRMFEEFCampIdSet.add(pfr.CampaignId);
         } 
+        else if(pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM){                                                              
+            String campaignIdBudgetType = string.valueOf(pfr.CampaignId)+pfr.Core_MDF_Budget_Type_nm__c;
+            campaignIdBudgetTypeToBudgetIdMap.put(campaignIdBudgetType, pfr.BudgetId);
+            eefAmount =  pfr.Core_MDF_Campaign_Amount__c;                                                                     
+            checkCampaignError = true;isEEF = true; 
+            ipaAccBasedRMFEEFCampIdSet.add(pfr.CampaignId);
+        }*/ 
         
-        return returnMsg;
+        // US - TWC702-14285: Flatten nested IFs (no logic change)
+        // Refactored: Added early return to reduce nesting instead of wrapping everything in if
+        if(campaignIdBudgetTypeToBudgetIdMap == NULL || campaignIdBudgetTypeToBudgetIdMap.Size() == 0){
+            return returnMsg;
+        }
         
+        Map<Id, Decimal> allocationInDraftState = new Map<Id, Decimal>();
+        Map<Id, Decimal> finalAllocationAmountMap = new Map<Id, Decimal>();
+        map<Id, Decimal> allocationIdToAllocatedAmountMap = new Map<Id,Decimal>();
+        
+        
+        if(/*!isRMF && !isIPAAccountBased && !isEEF*/ !isIPARetailEEF){  
+            for(Core_MDF_Campaign_Budgets__c campBudget : [SELECT Id, Core_MDF_Reimbursement_Amt__c, Core_MDF_Budget_Type_Nm__c,
+                                                           Core_MDF_Campaign_Id__c,Core_MDF_Budget_Name_Id__c
+                                                           FROM Core_MDF_Campaign_Budgets__c
+                                                           WHERE Core_MDF_Budget_Name_Id__c IN: campaignIdBudgetTypeToBudgetIdMap.values() AND
+                                                           Core_MDF_Campaign_Id__c =: pfr.CampaignId]){
+                                                               String cmpIdBudgetIdBudgetType = String.ValueOf(campBudget.Core_MDF_Campaign_Id__c) + campBudget.Core_MDF_Budget_Name_Id__c + campBudget.Core_MDF_Budget_Type_Nm__c;
+                                                               cmpIdBudgetIdBudgetTypeToAmountMap.put(cmpIdBudgetIdBudgetType, campBudget.Core_MDF_Reimbursement_Amt__c);             
+                                                           }
+            
+        }
+        
+        for(PartnerFundRequest pfrObj : [SELECT Id, BudgetId, ChannelPartnerId, Core_MDF_Activity_Reimbursement_Amt_nbr__c,Core_MDF_Fund_Request_Status__c, CampaignId, Core_MDF_Budget_Type_nm__c,Amount, Core_MDF_Proposal_Based_Ind__c,Core_MDF_Program__c
+                                         FROM PartnerFundRequest
+                                         WHERE ((BudgetId IN: campaignIdBudgetTypeToBudgetIdMap.values() AND CampaignId IN: campaignIdSet)
+                                                OR CampaignId IN: ipaAccBasedRMFEEFCampIdSet)
+                                         AND Core_MDF_Fund_Request_Status__c != 'Cancelled' AND Id !=: pfr.Id]){
+                                             //looping through other activities for the campaign
+                                             String cmpIdBudgetIdBudgetType = String.ValueOf(pfrObj.CampaignId) + pfrObj.BudgetId + pfrObj.Core_MDF_Budget_Type_nm__c;
+                                             String campaignIdBudgetType = string.valueOf(pfrObj.CampaignId) + pfrObj.Core_MDF_Budget_Type_nm__c;
+                                             Boolean isCmpEEFBudget = false;
+                                             
+                                             if((cmpBudgetTypeList != null && cmpBudgetTypeList.contains(pfrObj.Core_MDF_Budget_Type_nm__c)) || 
+                                               pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM){
+                                                 isCmpEEFBudget = true;
+                                                
+                                                 if(pfrObj.Core_MDF_Fund_Request_Status__c == 'Closed'){
+                                                     cmpEEFBudgetPfrMap.put(pfrObj.Id,pfrObj);
+                                                 }   
+                                             }
+                                             // US - TWC702-14285: Flatten nested IFs (no logic change)
+                                             // Refactored: Added early continue to reduce nesting instead of wrapping in if
+                                             if(pfrObj.Amount == null) continue;
+                                             
+                                             decimal amount = 0;
+                                             if((budgetAgainstAmountMap.containsKey(cmpIdBudgetIdBudgetType) ||  budgetAgainstAmountMap.containsKey(campaignIdBudgetType))){
+                                                if((pfrObj.Core_MDF_Program__c == IPA_PROG && pfrObj.Core_MDF_Proposal_Based_Ind__c == false) || 
+                                                   pfr.Core_MDF_Budget_Type_nm__c == 'Retail MDF'){
+                                                    amount += budgetAgainstAmountMap.get(campaignIdBudgetType);// map to store total of amounts on pfr for each camp+budgettype
+                                                } else {
+                                                    amount += budgetAgainstAmountMap.get(cmpIdBudgetIdBudgetType);
+                                                }
+                                                if(isCmpEEFBudget){
+                                                    if(pfrObj.Core_MDF_Fund_Request_Status__c != 'Closed'){ 
+                                                        amount += pfrObj.Core_MDF_Activity_Reimbursement_Amt_nbr__c;
+                                                    }
+                                                }else{
+                                                    amount += pfrObj.Amount;
+                                                } 
+                                                
+                                                if((pfrObj.Core_MDF_Program__c == IPA_PROG && pfrObj.Core_MDF_Proposal_Based_Ind__c == false) || 
+                                                   pfr.Core_MDF_Budget_Type_nm__c == 'Retail MDF'){
+                                                    budgetAgainstAmountMap.put(campaignIdBudgetType, amount);// map to store total of amounts on pfr for each camp+budgettype
+                                                } else {
+                                             budgetAgainstAmountMap.put(cmpIdBudgetIdBudgetType, amount);
+                                                }
+                                             }else{
+                                                 if(isCmpEEFBudget){
+                                                     if(pfrObj.Core_MDF_Fund_Request_Status__c != 'Closed'){
+                                                         amount = pfrObj.Core_MDF_Activity_Reimbursement_Amt_nbr__c;
+                                                     }
+                                                 }else{
+                                                     amount = pfrObj.Amount;
+                                                 } 
+                                                    
+                                                    if((pfrObj.Core_MDF_Program__c == IPA_PROG && pfrObj.Core_MDF_Proposal_Based_Ind__c == false) || 
+                                                           pfr.Core_MDF_Budget_Type_nm__c == 'Retail MDF'){
+                                                        budgetAgainstAmountMap.put(campaignIdBudgetType, amount);// map to store total of amounts on pfr for each camp+budgettype
+                                                    } else {
+                                                 budgetAgainstAmountMap.put(cmpIdBudgetIdBudgetType, amount);
+                                                    }
+                                             }
+                                         }
+        
+        // US - TWC702-14285: Flatten nested IFs (no logic change)
+        // Refactored: Added early return to reduce nesting instead of wrapping everything in if
+        if(cmpEEFBudgetPfrMap == NULL || cmpEEFBudgetPfrMap.keyset() == null || cmpEEFBudgetPfrMap.isEmpty()){
+            // Skip to final validation
+        } else {
+            
+            for(AggregateResult pfc : [SELECT RequestId Id ,sum(Amount)amt
+                                       FROM PartnerFundClaim 
+                                       WHERE RequestId IN:cmpEEFBudgetPfrMap.keyset() AND Core_MDF_Status__c IN:pfcCloseStatus  
+                                       AND Core_MDF_Type_Txt__c =: TYPE_CLAIM AND Core_MDF_Escalation_Id__c = null 
+                                       GROUP BY RequestId]){ 
+                                           ID pfrID =(Id)pfc.get('Id');    
+                                           Decimal pfrClaimedAmount =(Decimal)pfc.get('amt');
+                                           pfrToClaimAmtMap.put(pfrID,pfrClaimedAmount);
+                                       }
+            
+            for(AggregateResult esc : [SELECT Core_MDF_Co_Marketing_Activity_id__c Id,sum(Core_MDF_Approved_Amount_amt__c)amt
+                                       FROM Core_MDF_Escalation__c
+                                       WHERE Core_MDF_Co_Marketing_Activity_id__c IN:cmpEEFBudgetPfrMap.keyset() AND Core_MDF_Escalation_Status_nm__c =: ESC_APPROVED_STATUS
+                                       GROUP BY Core_MDF_Co_Marketing_Activity_id__c]){
+                                           ID pfrID =(Id)esc.get('Id');
+                                           Decimal pfrEscAmount =(Decimal)esc.get('amt');
+                                           pfrToEscalationAmtMap.put(pfrID,pfrEscAmount); 
+                                       }
+            
+            
+            for(PartnerFundRequest pfrObj: cmpEEFBudgetPfrMap.Values()){
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                // Refactored: Added early continue to reduce nesting
+                if(pfrObj.Amount == null) continue;
+                
+                decimal totalEscAmt = 0.0;
+                decimal totalClaimedAmt = 0.0;
+                decimal totalClaimEscConsumedAmt = 0.0;
+                decimal amount = 0.0;
+
+                String cmpIdBudgetIdBudgetType = String.ValueOf(pfrObj.CampaignId) + pfrObj.BudgetId + pfrObj.Core_MDF_Budget_Type_nm__c;
+                totalEscAmt = pfrToEscalationAmtMap.containskey(pfrObj.Id) ? pfrToEscalationAmtMap.get(pfrObj.Id) : 0;
+                totalClaimedAmt = pfrToClaimAmtMap.containskey(pfrObj.Id) ? pfrToClaimAmtMap.get(pfrObj.Id) : 0;
+                totalClaimEscConsumedAmt = totalEscAmt + totalClaimedAmt;
+                amount = totalClaimEscConsumedAmt >= pfrObj.Core_MDF_Activity_Reimbursement_Amt_nbr__c
+                    ? pfrObj.Core_MDF_Activity_Reimbursement_Amt_nbr__c : totalClaimEscConsumedAmt;
+
+                if(budgetAgainstAmountMap.containsKey(cmpIdBudgetIdBudgetType)){
+                   amount += budgetAgainstAmountMap.get(cmpIdBudgetIdBudgetType);
+                    budgetAgainstAmountMap.put(cmpIdBudgetIdBudgetType, amount);
+                }else{
+                    budgetAgainstAmountMap.put(cmpIdBudgetIdBudgetType, amount); 
+                }                                                                        
+            }
+            
+        }
+
+        string campaignBudgetkey = pfr.CampaignId+pfr.Core_MDF_Budget_Type_nm__c;
+        String campaignIdBudgetType = string.valueOf(pfr.CampaignId) + pfr.Core_MDF_Budget_Type_nm__c;
+        // US - TWC702-14285: Flatten nested IFs (no logic change)
+        // Refactored: Added early return to reduce nesting instead of wrapping everything in if
+        if(!campaignIdBudgetTypeToBudgetIdMap.containsKey(campaignBudgetkey) || campaignIdBudgetTypeToBudgetIdMap.get(campaignBudgetkey) == NULL){
+            return returnMsg;
+        }
+        
+        Id budgetId = pfr.BudgetId;                  
+        String cmpIdBudgetIdBudgetType = String.ValueOf(pfr.CampaignId) + pfr.BudgetId + pfr.Core_MDF_Budget_Type_nm__c;
+        
+        decimal amountOnBudget = 0;
+        if(isIPARetailEEF){
+            amountOnBudget = pfrCampAmount;
+        }
+        /*if(isRMF){
+            amountOnBudget =   rmfAmount  ; 
+        }
+        else if(isIPAAccountBased){
+            amountOnBudget = pfrCampaignAmtAccount;
+        }
+        else if(isEEF){
+            amountOnBudget = eefAmount;
+        }*/
+        else{
+            amountOnBudget  =  cmpIdBudgetIdBudgetTypeToAmountMap.get(cmpIdBudgetIdBudgetType);                
+        }
+        decimal existingPfrAmount = 0;
+        if(((pfr.Core_MDF_Program__c == IPA_PROG && pfr.Core_MDF_Proposal_Based_Ind__c == false) || 
+           pfr.Core_MDF_Budget_Type_nm__c == 'Retail MDF')
+           && budgetAgainstAmountMap.containsKey(campaignIdBudgetType)){
+               existingPfrAmount += budgetAgainstAmountMap.get(campaignIdBudgetType);//sum of amount on other activities
+           } else {
+               if(budgetAgainstAmountMap.containsKey(cmpIdBudgetIdBudgetType)){
+                   existingPfrAmount += budgetAgainstAmountMap.get(cmpIdBudgetIdBudgetType);
+               }
+           }
+        
+        decimal currentActivityAmount = pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c;
+        decimal finalAmountForCompare = existingPfrAmount != NULL ? 
+            (existingPfrAmount + currentActivityAmount) : currentActivityAmount;
+        
+        if(finalAmountForCompare > amountOnBudget && checkCampaignError){
+            returnMsg = Label.Core_MDF_OPAL_Amount_Validation_Error;
+        }
     }
+    catch(Exception e){
+        Core_MDF_CCP_UtilityClass.logError(e); returnMsg = e.getMessage();
+    } 
+    
+    return returnMsg;
+    
+}
 
     /*****************************************************************************
     Method Name :   validatePfrWithAllocationForAutoTransfer

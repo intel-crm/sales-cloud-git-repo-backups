@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This is used to create AllocationShare record for both Internal Account Managers group for a particular program and External users.</description>
+    <masterLabel>Core_MDF_CreatePFAforInternalAndExternalAccountManager</masterLabel>
+</FlowDefinition>

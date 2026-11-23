@@ -17,12 +17,12 @@ global class Core_Lead_SLA_SendEmailBatch implements Database.Batchable<sobject>
         String status = 'Accepted';
         String leadRecType = Schema.SObjectType.Lead.getRecordTypeInfosByName().get('Partner Lead').getRecordTypeId();
         String query = 'Select id, Status, Core_SendEmail__c, Core_SendEmail4__c, Core_SAL_Four_Weeks_Datetime__c, Core_SAL_Four_Weeks_Weekend_Calculation__c, Core_SAL_Email_Trigger_Date__c, Core_SAL_Weekend_Email_Trigger_Date__c From Lead WHERE Status =: stage AND Core_Lead_Status__c =: status AND Core_DateToSendMail__c =: finalDate AND recordTypeId !=: leadRecType AND (Core_SendEmail__c = false OR Core_SendEmail4__c = false)';
-        
+        system.debug('query '+query);
         return Database.getQueryLocator(query);
     }
     
     global void execute (Database.BatchableContext BC, List<Lead> leadList) {
-        
+        system.debug('leadList '+leadList);
         List<Lead> filteredLeadList = new List<Lead>();
         Datetime dt = Datetime.now();
         date myDate = date.newInstance(dT.year(), dT.month(), dT.day());

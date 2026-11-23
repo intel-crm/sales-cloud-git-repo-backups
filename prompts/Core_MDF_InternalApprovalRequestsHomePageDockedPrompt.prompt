@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Internal Approval Requests HomePage Docked Prompt</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>Show Action</actionButtonLabel>
+        <actionButtonLink>/lightning/app/c__Core_MDF_CoMarketing/page/home?0.promptId=Core_MDF_InternalApprovalRequestsHomePageDockedPrompt</actionButtonLink>
+        <body>&lt;ul&gt;&lt;li&gt;Navigate to &lt;a href=&quot;/lightning/n/Core_MDF_Approval_Requests&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Internal Approval Requests&lt;/a&gt; tab to approve single or multiple approval requests in your queue.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</body>
+        <customApplication>Core_MDF_CoMarketing</customApplication>
+        <delayDays>1</delayDays>
+        <description>This is added to notify users about the new feature to approve / reject requests in bulk.</description>
+        <displayType>DockedComposer</displayType>
+        <header>What&apos;s New?</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Internal Approval Requests HomePage Docked Prompt</masterLabel>
+        <publishedDate>2023-02-08</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2023-02-07</startDate>
+        <targetPageKey1>home</targetPageKey1>
+        <targetPageType>standard__namedPage</targetPageType>
+        <timesToDisplay>30</timesToDisplay>
+        <title>Best Way to Approve/Reject Requests</title>
+        <uiFormulaRule>
+            <criteria>
+                <leftValue>{!$User.Profile.Key}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>custom_ccp - core access</rightValue>
+            </criteria>
+        </uiFormulaRule>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>SpecificProfiles</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

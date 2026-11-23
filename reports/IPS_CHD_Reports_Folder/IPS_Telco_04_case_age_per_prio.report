@@ -130,12 +130,6 @@
         <field>Case.Core_IPS_Last_Update__c</field>
     </columns>
     <columns>
-        <field>Case.Core_Next_Response_Due_Date__c</field>
-    </columns>
-    <columns>
-        <field>MILESTONESTATUS</field>
-    </columns>
-    <columns>
         <field>OWNER</field>
     </columns>
     <columns>
@@ -177,13 +171,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Closed,Close-Pending</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_CaseType__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Feature Request</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

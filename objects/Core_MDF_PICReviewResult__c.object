@@ -130,7 +130,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>PIC_Review_Detail_Record_Page</content>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -138,7 +138,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>PIC_Review_Detail_Record_Page</content>
-        <formFactor>Large</formFactor>
+        <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -155,7 +155,7 @@
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
-    <enableSearch>false</enableSearch>
+    <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
@@ -191,6 +191,7 @@
     <fields>
         <fullName>Core_MDF_AI_PIC_Review_Detail_Id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
+        <description>This field is used to store AI PIC Review Detail Id for respective Manual PIC Review Detail</description>
         <label>AI PIC Review Detail Id</label>
         <referenceTo>Core_MDF_PICReviewResult__c</referenceTo>
         <relationshipLabel>PIC Review Details</relationshipLabel>
@@ -245,9 +246,22 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
+        <fullName>Core_MDF_CreatedBy_nm__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISPICKVAL(CreatedBy.Profile.UserType,&apos;PowerPartner&apos;),
+CreatedBy.FirstName &amp; &apos; &apos; &amp; CreatedBy.LastName,
+$Label.Core_MDF_Intel_System_User)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Created By</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_External_Id__c</fullName>
         <caseSensitive>false</caseSensitive>
-        <description>Used for integration purpose. The value will be concatenation of PIC Review Id and Question Id</description>
         <externalId>true</externalId>
         <label>External Id</label>
         <length>45</length>
@@ -421,6 +435,22 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_MDF_Last_ModifiedBy_Nm__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+ISPICKVAL(LastModifiedBy.Profile.UserType,&apos;PowerPartner&apos;),
+LastModifiedBy.FirstName &amp; &apos; &apos; &amp; LastModifiedBy.LastName,
+$Label.Core_MDF_Intel_System_User
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Last Modified By</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_ManualResp_Equal_AIResp_Ind__c</fullName>
         <description>Stores Boolean based on Manual Response Vs AI Response</description>
         <formula>IF(AND(LOWER(Core_MDF_Response_txt__c) = LOWER(Core_MDF_AI_PIC_Review_Detail_Id__r.Core_MDF_Response_txt__c), Core_MDF_PIC_Review_id__r.Core_MDF_AI_PIC_Review_Ind__c = FALSE),true,false)</formula>
@@ -441,6 +471,27 @@
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>true</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Parent_Question__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Parent Question</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Core_MDF_PICReviewQuestion__c.Core_MDF_Parent_Question__c</field>
+                <operation>notEqual</operation>
+                <value>Null</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Core_MDF_PICReviewQuestion__c</referenceTo>
+        <relationshipLabel>PIC Review Details (Parent Question)</relationshipLabel>
+        <relationshipName>PIC_Review_Details</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>Core_MDF_QuestionEnglish_txt__c</fullName>
@@ -477,6 +528,16 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_MDF_Tactic_txt__c</fullName>
+        <description>This field is used for IPA outcome based.</description>
+        <label>Tactic</label>
+        <length>1000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Tactics_nm__c</fullName>
         <label>Tactics</label>
         <required>false</required>
@@ -488,6 +549,17 @@
             <valueSetName>Core_MDF_Tactics</valueSetName>
         </valueSet>
         <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>test_formula_concat_4__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Question_id__r.Core_MDF_Question_English_txt__c +  Core_MDF_Question_id__r.Core_MDF_Question_French_txt__c +  Core_MDF_Question_id__r.Core_MDF_Question_Italian_txt__c +  Core_MDF_Question_id__r.Core_MDF_Issue_Simplified_Chinese_txt__c</formula>
+        <label>test_formula_concat_4</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <label>PIC Review Detail</label>
     <nameField>

@@ -5,4 +5,9 @@
     <confirmationTokenRequired>false</confirmationTokenRequired>
     <description>Grid that uses Grid buddy for managing tasks</description>
     <label>My Tasks</label>
+    <packageVersions>
+        <majorNumber>5</majorNumber>
+        <minorNumber>9</minorNumber>
+        <namespace>GBLite</namespace>
+    </packageVersions>
 </ApexPage>

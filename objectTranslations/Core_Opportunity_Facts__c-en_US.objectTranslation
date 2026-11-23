@@ -9,10 +9,6 @@
         <value>Opportunity Facts</value>
     </caseValues>
     <fields>
-        <label><!-- AI Content in System --></label>
-        <name>Core_AI_Content_in_System__c</name>
-    </fields>
-    <fields>
         <label><!-- Ambient Temp Req --></label>
         <name>Core_Ambient_Temp_Req__c</name>
     </fields>
@@ -61,14 +57,6 @@
         <name>Core_Consumer_Factor_Login__c</name>
     </fields>
     <fields>
-        <label><!-- Consumer Sales Category --></label>
-        <name>Core_Consumer_Sales_Category__c</name>
-    </fields>
-    <fields>
-        <label><!-- Consumer Sales System --></label>
-        <name>Core_Consumer_Sales_System__c</name>
-    </fields>
-    <fields>
         <label><!-- Contains 2:1 --></label>
         <name>Core_Contains_2_1__c</name>
     </fields>
@@ -115,10 +103,6 @@
     <fields>
         <label><!-- Distributor --></label>
         <name>Core_Distributor__c</name>
-    </fields>
-    <fields>
-        <label><!-- Dynamic Tuning Technology --></label>
-        <name>Core_Dynamic_Tuning_Technology__c</name>
     </fields>
     <fields>
         <label><!-- EMS --></label>
@@ -205,10 +189,6 @@
         <name>Core_Intel_QAT_BW_Gbps__c</name>
     </fields>
     <fields>
-        <label><!-- Intended Usage --></label>
-        <name>Core_Intended_Usage__c</name>
-    </fields>
-    <fields>
         <label><!-- Interface Protocol IP --></label>
         <name>Core_Interface_Protocol_IP__c</name>
     </fields>
@@ -241,20 +221,12 @@
         <name>Core_Low_Power_Connectivity__c</name>
     </fields>
     <fields>
-        <label><!-- Memory Config(Dual-Channel 128b) --></label>
-        <name>Core_Memory_Config_Dual_Channel_128b__c</name>
-    </fields>
-    <fields>
         <label><!-- Memory DSP and Embedded IP --></label>
         <name>Core_Memory_DSP_and_Embedded_IP__c</name>
     </fields>
     <fields>
         <label><!-- Modern Standby --></label>
         <name>Core_Modern_Standby__c</name>
-    </fields>
-    <fields>
-        <label><!-- Multi boarded --></label>
-        <name>Core_Multi_boarded__c</name>
     </fields>
     <fields>
         <label><!-- New ID? --></label>
@@ -381,10 +353,6 @@
         <name>Core_Service_Providers_Telco__c</name>
     </fields>
     <fields>
-        <label><!-- Single Rail Power Supply --></label>
-        <name>Core_Single_Rail_Power_Supply__c</name>
-    </fields>
-    <fields>
         <label><!-- Socket Count --></label>
         <name>Core_Socket_Count__c</name>
     </fields>
@@ -407,10 +375,6 @@
     <fields>
         <label><!-- Stylus --></label>
         <name>Core_Stylus__c</name>
-    </fields>
-    <fields>
-        <label><!-- Sustainability Compliance --></label>
-        <name>Core_Sustainability_Compliance__c</name>
     </fields>
     <fields>
         <label><!-- System Integrator --></label>

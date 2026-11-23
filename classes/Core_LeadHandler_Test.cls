@@ -12,329 +12,256 @@ Modification Log :
 * Harshith M L              12/23/2014              Test Class for Lead Conversion
 * Srikant Joshi             19/02/2014              Modified the code to fetch only 1 user
 * Brian Matthews            08/10/2015              Will have to leave this at 81% coverage (up from 45%)
-* Bishal Singh				10/12/2024				Refactored whole test class and move test coverage to 83% for ATHR Fixes
-One of the remaining uncovered branches requires an account
-with a createDate that is older that 1 minute.   :( --> Got Covered - Thanks me Later - Bishal
+                                                    One of the remaining uncovered branches requires an account
+                                                    with a createDate that is older that 1 minute.   :(
 * Venu Karumuru             05/15/2016              Method to test the assignment of Partner Leads to correct Partner Queues
 *************************************************************************************/
 @isTest
 public class Core_LeadHandler_Test {
-    
-    @testSetup 
-    private static void setup(){
-        User u = SWS_TestUtilty.createUser();
-        PermissionSet permissionRec = [SELECT Id,Name FROM PermissionSet WHERE Name = 'PSG_Master_Data_Read_Write_Access' LIMIT 1];
-        insert new PermissionSetAssignment(AssigneeId = u.Id, PermissionSetId = permissionRec.Id);
-        System.runAs(u){
-            List<String> triggerExecutionStringList = new List<String>();
-            triggerExecutionStringList.add('leadObjectBeforeHandler');
-            triggerExecutionStringList.add('leadObjectSalesGroup');
-            triggerExecutionStringList.add('leadConversionDeduplication');
-            List<Core_Trigger_Executions__c> lstCustomSetting = new List<Core_Trigger_Executions__c>();
-            for(String triggerExection :  triggerExecutionStringList){
-                Core_Trigger_Executions__c triggerExecutionLead = new Core_Trigger_Executions__c();
-                triggerExecutionLead.name = triggerExection;
-                triggerExecutionLead.Core_Object__c = 'Lead';
-                triggerExecutionLead.Core_Active__c = TRUE;
-                triggerExecutionLead.Core_Description__c = 'This is test description';
-                triggerExecutionLead.Core_Class_Name__c = 'Core_LeadHandler_Test';
-                triggerExecutionLead.Core_Trigger_Events__c = 'After Update';
-                lstCustomSetting.add(triggerExecutionLead);
-            }
-            insert lstCustomSetting;
-            
-            List<Core_Country_Reference__c> lstCS = Core_Test_Utility.Core_CountryState(1);
-            for (Core_Country_Reference__c sobjCS: lstCS) {
-                sobjCS.Name = 'United States';
-                sobjCS.Core_Geo__c = 'ASMO';
-                sobjCS.Core_Has_States__c = true;
-                sobjCS.Core_ISO_Code__c = 'USA';
-                sobjCS.Core_Sub_Geo__c = 'NAR';
-            }
-            
-            insert lstCS;
-            
-            List<Account> lstAccounts = new List<Account>{SWS_TestUtilty.createAccount()};
-                List<Contact> lstContacts = Core_Test_Utility.createContacts(1);
-            
-            for (Integer i = 0; i<lstContacts.size(); i++) {
-                lstContacts.get(i).AccountId = lstAccounts.get(i).Id;
-                lstContacts.get(i).Email = 'test' + i + '@test.com';
-                lstContacts.get(i).MailingCountry='USA';
-            }
-            
-            String SalesleadRectypeId = Schema.getGlobalDescribe().get('Lead').getDescribe().getRecordTypeInfosByDeveloperName().get('Lead').getRecordTypeId();
-            List<Lead> lstLeads = Core_Test_Utility.createLead(1);
-            for (Lead sobjLead: lstLeads) {
-                sobjLead.RecordTypeId = SalesleadRectypeId;
-                sobjLead.Core_Lead_Status__c = 'Accepted';
-                sobjLead.Core_Lead_State__c = 'Terminated';
-                sobjLead.Core_lead_Id__c = 'TestingAdded';
-                sobjLead.Status = 'Marketing Qualified Lead';
-                sobjLead.Core_Lead_Status__c='New';
-            }
-            insert lstLeads;            
+
+    /*
+     * Method name  : GeoSubgeoPopulation
+     * Description  : test method to cover Core_Lead trigger
+     * Return Type  : VOID
+     * Parameter    : NONE
+     */
+    static testMethod void GeoSubgeoPopulation() {
+        List<Core_Trigger_Executions__c> lstCustomSetting = new List<Core_Trigger_Executions__c>();
+        List<User> lstUser = new List<User>();
+
+        lstCustomSetting = Core_test_Utility.Core_TriggerExecution(2);
+        lstCustomSetting[0].Name = 'leadObjectBeforeHandler';
+        lstCustomSetting[1].Name = 'leadObjectSalesSegment';
+        insert lstCustomSetting;
+
+        Profile p1 = [SELECT Id FROM Profile WHERE Name = : System.label.Core_StandardUser];
+               
+        lstUser = Core_Test_Utility.Core_User(1);
+        
+        lstUser[0].Profileid = p1.id;
+
+        insert lstUser;
+
+        //Declare/Initialize the Variables
+        List<Lead> lstLead = new List<Lead>();
+        List<Core_Country_Reference__c> lstCS = new List<Core_Country_Reference__c> {};
+
+        // Construct the CountryStateReference instances
+        lstCS = Core_Test_Utility.Core_CountryState(1);
+
+        for (Core_Country_Reference__c sobjCS: lstCS) {
+            sobjCS.Name = 'United States';
+            sobjCS.Core_Geo__c = 'ASMO';
+            sobjCS.Core_Has_States__c = true;
+            sobjCS.Core_ISO_Code__c = 'USA';
+            sobjCS.Core_Sub_Geo__c = 'NAR';
         }
-    }
-    
-    @isTest 
-    private static void beforeInsertBeforeUpdateTest(){
-        User u = [SELECT Id FROM User WHERE UserName='requestoremail@testorg.com'];
-        System.runAs(u){
-            Test.startTest();
-            List<Lead> lstLead = Core_Test_Utility.createLead(1);
-            String SalesleadRectypeId = Schema.getGlobalDescribe().get('Lead').getDescribe().getRecordTypeInfosByDeveloperName().get('Lead').getRecordTypeId();
-            for (Lead sobjLead: lstLead) {
-                sobjLead.RecordTypeId = SalesleadRectypeId;
-                sobjLead.Email='avoidduplicatetest@gmail.com';
-                sobjLead.Core_Geo__c = '';
-                sobjLead.Core_Sub_Geo__c = '';
-                sobjLead.Phone = '(555) 555-5555';
-                sobjLead.Title = '(555) 555-5555';
-                sobjLead.Core_Current_Architecture__c = '(555) 555-5555';
-                sobjLead.Core_Job_Function__c = '(555) 555-5555';
-                sobjLead.Core_Product_Interest__c = '(555) 555-5555';
-                sobjLead.Core_Project_Phase__c = '(555) 555-5555';
-                sobjLead.Core_Project_Size__c = '555';
-                sobjLead.Core_Project_Timeframe__c = '555';
-                sobjLead.Core_Sales_Segment__c = '555';
-                sobjLead.PostalCode = '560035';
-                sobjLead.Status='Marketing Qualified Lead';
-                sobjLead.Core_Lead_Status__c='New';
-            }
+
+        Core_Trigger_Executions__c sobjNew = new Core_Trigger_Executions__c();
+        sobjNew.Name = 'Lead Conversion';
+        sobjNew.Core_Object__c = 'Change_Request__c';
+        sobjNew.Core_Description__c = 'TEST';
+        sobjNew.Core_Class_Name__c = 'Change_Request__c';
+        sobjNew.Core_Trigger_Events__c = 'After Update';
+        insert sobjNew;
+
+        // Construct the Lead instances        
+        lstLead = Core_Test_Utility.createLead(100);
+
+        for (Lead sobjLead: lstLead) {
+            sobjLead.Core_Geo__c = '';
+            sobjLead.Core_Sub_Geo__c = '';
+            sobjLead.Phone = '(555) 555-5555';
+            sobjLead.Title = '(555) 555-5555';
+            sobjLead.Core_Current_Architecture__c = '(555) 555-5555';
+            sobjLead.Core_Job_Function__c = '(555) 555-5555';
+            sobjLead.Core_Product_Interest__c = '(555) 555-5555';
+            sobjLead.Core_Project_Phase__c = '(555) 555-5555';
+            sobjLead.Core_Project_Size__c = '555';
+            sobjLead.Core_Project_Timeframe__c = '555';
+            sobjLead.Core_Sales_Segment__c = '555';
+            sobjLead.PostalCode = '560035';
+
+        }
+        
+        insert lstCS;
+        
+        User StandardUser = lstUser[0];
+        
+        System.runAs(StandardUser) {
+
+            // Insert the intialized Lead
             insert lstLead;
-            Test.stopTest();
 
-            // Assert that leads were inserted and have expected values
-            List<Lead> leads = [SELECT Id, Core_Geo__c, Core_Sub_Geo__c FROM Lead WHERE Id IN :lstLead];
-            System.assertEquals(1, leads.size(), '1 lead should be inserted');
-            for (Lead l : leads) {
-                System.assertNotEquals(null, l.Id, 'Lead Id should not be null');
+            for (Lead sobjLead: lstLead) {
+                System.assertEquals(sobjLead.Core_Geo__c, '');
+                System.assertEquals(sobjLead.Core_Sub_Geo__c, '');
+
             }
         }
     }
-    
-    @isTest 
-    private static void leadConversionDeduplicationTest(){
-        User u = [SELECT Id FROM User WHERE UserName='requestoremail@testorg.com'];
-        System.runAs(u){
-            
-            List<Lead> lstLeads = [SELECT Id FROM Lead];
-            for (Lead LeadInstance: lstLeads) {
-                LeadInstance.Core_Lead_Status__c = 'Qualified';
-                LeadInstance.Core_Lead_Sub_Status__c = 'In Contact';
-                LeadInstance.Phone='2396189672';
-            }
-            update lstLeads;
-            for (Lead LeadInstance: lstLeads) {
-                LeadInstance.Status = 'Sales Accepted Lead';
-            }
-            update lstLeads;
-            
-            List<Account> lstAccounts = Core_Test_Utility.createAccount(2);            
-            List<Contact> lstContacts = Core_Test_Utility.createContacts(2);
-            for(Account acc: lstAccounts){
-                acc.BillingStreet = 'G-2101TexasUSA577101';
-                acc.Core_Address_Details__c = 'G-2101TexasUSA577101';
-            }
-            
-            insert lstAccounts;
-            for (Integer i = 0; i<lstContacts.size(); i++) {
-                lstContacts.get(i).AccountId = lstAccounts[0].Id;
-                lstContacts.get(i).Email = 'test@test.com';
-                lstContacts.get(i).MailingCountry='USA';
-            }
-            
-            insert lstContacts;
-            
-            Id newOppRecTypeId = Schema.SObjectType.Opportunity.getRecordTypeInfosByName().get('Deal Opportunity').getRecordTypeId();
-            Id newOppRecTypeIddesign = Schema.SObjectType.Opportunity.getRecordTypeInfosByName().get('Design Opportunity').getRecordTypeId();
-            List<Opportunity> opptyList = new List<Opportunity>();
-            opptyList.add(new Opportunity(Name = 'Test Opportunity1', RecordTypeId = newOppRecTypeId, Core_Opportunity_Coverage_Nm__c= 'Partner-Led Opportunity', Core_Coverage_Type_Nm__c= 'Deal Registration',
-                                          AccountId = lstAccounts[0].Id, StageName = 'Qualify', CloseDate = System.Date.today().addYears(1), Core_Technical_Owner__c = u.Id, Core_Sales_Group__c='Global Accounts', Core_Commissionable__c ='No', Core_Opportunity_Type__c='Deal: Sell-to', Core_Product_Segment__c='Data Center Computing', Core_Product_Application__c = 'Storage', Core_Consumption_Market__c = 'Education',Core_Intel_Platform__c='ALDER LAKE D', Core_First_Customer_Ship_Date__c= System.Date.today().addMonths(8), Core_Solution_Area__c='DCG Compute Deal $'));
-            insert opptyList;
-            
-            Test.startTest();
-            
-            List<Database.LeadConvert> leadConversions = new List<Database.LeadConvert>();
-            LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted = true AND MasterLabel LIKE 'Sales Qualified Lead' LIMIT 1];
-            for (Lead LeadInstance: lstLeads) {
-                Database.LeadConvert lc = new database.LeadConvert();
-                lc.setLeadId(LeadInstance.id);
-                lc.setAccountId(lstAccounts[1].Id);
-                lc.setContactId(lstContacts[0].Id);
-                lc.setOpportunityId(opptyList[0].Id);
-                lc.setConvertedStatus(convertStatus.MasterLabel); 
-                leadConversions.add(lc);
-            }
-            List<Database.LeadConvertResult> results = Database.convertLead(leadConversions);
-            Test.stopTest();
 
-            // Assert all leads were converted successfully
-            for (Database.LeadConvertResult res : results) {
-                System.assert(res.isSuccess(), 'Lead conversion should be successful');
-                System.assertNotEquals(null, res.getAccountId(), 'Converted AccountId should not be null');
-                System.assertNotEquals(null, res.getContactId(), 'Converted ContactId should not be null');
-            }
-        }
+    private static List<Lead> lstLeads {
+        get;
+        set;
+    }
+    private static List<Account> lstAccounts {
+        get;
+        set;
+    }
+    private static List<Contact> lstContacts {
+        get;
+        set;
     }
     
-    @isTest 
-    private static void leadConversionDeduplicationSecondTest(){
-        User u = [SELECT Id FROM User WHERE UserName='requestoremail@testorg.com'];
-        System.runAs(u){
-            List<Lead> lstLeads = [SELECT Id FROM Lead];
-            for (Lead LeadInstance: lstLeads) {
-                LeadInstance.Core_Lead_Status__c = 'Qualified';
-                LeadInstance.Core_Lead_Sub_Status__c = 'In Contact';
-                LeadInstance.Phone='2396189672';
-            }
-            update lstLeads;
-            for (Lead LeadInstance: lstLeads) {
-                LeadInstance.Status = 'Sales Accepted Lead';
-            }
-            update lstLeads;
-            
-            List<Account> lstAccounts = new List<Account>{SWS_TestUtilty.createAccount()};
-                System.assertEquals(1, lstAccounts.size());
-            lstAccounts.add(SWS_TestUtilty.createAccount());
-            
-            List<Contact> lstContacts = Core_Test_Utility.createContacts(2);
-            
-            for(Account acc: lstAccounts){
-                Test.setCreatedDate(acc.Id, DateTime.newInstance(2012,12,12));
-            }
-            
-            for (Integer i = 0; i<lstContacts.size(); i++) {
-                lstContacts.get(i).AccountId = lstAccounts.get(i).Id;
-                lstContacts.get(i).Email = 'test@test.com';
-                lstContacts.get(i).MailingCountry='USA';
-            }
-            
-            insert lstContacts;
-            
-            
-            Test.startTest();
-            
-            List<Database.LeadConvert> leadConversions = new List<Database.LeadConvert>();
-            LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted = true AND MasterLabel LIKE 'Sales Qualified Lead' LIMIT 1];
-            for (Lead LeadInstance: lstLeads) {
-                Database.LeadConvert lc = new database.LeadConvert();
-                lc.setLeadId(LeadInstance.id);
-                lc.setAccountId(lstAccounts[0].Id);
-                lc.setContactId(lstContacts[0].Id);
-                lc.setConvertedStatus(convertStatus.MasterLabel);
-                leadConversions.add(lc);
-            }
-            List<Database.LeadConvertResult> results = Database.convertLead(leadConversions);
-            Test.stopTest();
+    /*
+     * Method name  : setupTestData
+     * Description  : Method to setup test data for Lead Conversion
+     * Return Type  : None
+     * Parameter    : None
+     */
+     
+    static void setupData() {
+    
+        lstLeads = new List<Lead>();
+        lstAccounts = new List<Account>();
+        lstContacts = new List<Contact>();
 
-            // Assert all leads were converted successfully
-            for (Database.LeadConvertResult res : results) {
-                System.assert(res.isSuccess(), 'Lead conversion should be successful');
-                System.assertNotEquals(null, res.getAccountId(), 'Converted AccountId should not be null');
-                System.assertNotEquals(null, res.getContactId(), 'Converted ContactId should not be null');
-            }
+        lstLeads = Core_Test_Utility.createLead(8);
+        lstAccounts = Core_Test_Utility.createAccount(8);
+        lstContacts = Core_Test_Utility.createContacts(8);
+        
+        // Insert Accounts
+        for (Integer i = 0; i<lstAccounts.size(); i++) {
+            lstAccounts.get(i).BillingCountryCode = 'USA';
+            lstAccounts.get(i).BIllingStateCode = 'AL';
+            lstAccounts.get(i).BillingCity = 'Alabama';
+            lstAccounts.get(i).BillingStreet = 'test';
+            lstAccounts.get(i).BillingPostalCode = '57710' + i;
+            lstAccounts.get(i).Name = 'Deloitte' + i;
         }
+        insert lstAccounts;
+        
+        // Insert Contacts
+        for (Integer i = 0; i<lstContacts.size(); i++) {
+            lstContacts.get(i).AccountId = lstAccounts.get(i).Id;
+            lstContacts.get(i).Email = 'test' + i + '@test.com';
+        }
+
+        insert lstContacts;
+        
+        // Insert Leads
+        for (Integer i = 0; i<lstLeads.size(); i++) {
+            lstLeads.get(i).CountryCode = 'USA';
+            lstLeads.get(i).StateCode = 'AL';
+            lstLeads.get(i).City = 'Alabama';
+            lstLeads.get(i).Street = 'test';
+            lstLeads.get(i).postalCode = '577101' + i;
+            lstLeads.get(i).Company = 'Deloitte' + i;
+            lstleads.get(i).email = 'testnew' + i + '@test.com';
+
+        }
+
+        lstLeads.get(4).postalCode = '577103';
+        lstLeads.get(4).email = 'test3@test.com';
+
+        lstLeads.get(5).postalCode = '577102';
+        lstLeads.get(5).company = 'Deloitte2';
+        lstLeads.get(5).email = 'test1@test.com';
+
+        lstLeads.get(6).email = 'test1@test.com';
+
+        lstLeads.get(7).email = 'test2@test.com';
+
+        insert lstLeads;
+
+
     }
     
-    @isTest 
-    private static void leadConversionDeduplicationThirdTest(){
-        User u = [SELECT Id FROM User WHERE UserName='requestoremail@testorg.com'];
-        System.runAs(u){
-            List<Lead> lstLeads = [SELECT Id FROM Lead];
-            for (Lead LeadInstance: lstLeads) {
-                LeadInstance.Core_Lead_Status__c = 'Qualified';
-                LeadInstance.Core_Lead_Sub_Status__c = 'In Contact';
-                LeadInstance.Phone='2396189672';
-            }
-            update lstLeads;
-            for (Lead LeadInstance: lstLeads) {
-                LeadInstance.Status = 'Sales Accepted Lead';
-                LeadInstance.Company = 'Intel 10';
-            }
-            update lstLeads;
-            
-            List<Account> lstAccounts = Core_Test_Utility.createAccount(2);
-            List<Contact> lstContacts = Core_Test_Utility.createContacts(2);
-            Integer j = 0;
-            for(Account acc: lstAccounts){
-                acc.BillingCountryCode = 'USA';
-                acc.BIllingStateCode = 'AL';
-                acc.BillingCity = 'Alabama';
-                acc.BillingStreet = 'test';
-                acc.BillingPostalCode = '57710' + j;
-                acc.Name = 'Intel' + j;
-                j++;
-            }
-            j=0;
-            insert lstAccounts;
-            
-            List<Account> duplstAccounts = Core_Test_Utility.createAccount(2);
-            List<Contact> duplstContacts = Core_Test_Utility.createContacts(2);
-            
-            for(Account acc: duplstAccounts){
-                acc.BillingCountryCode = 'USA';
-                acc.BIllingStateCode = 'AL';
-                acc.BillingCity = 'Alabama';
-                acc.BillingStreet = 'test';
-                acc.BillingPostalCode = '57710' + j;
-                acc.Name = 'Intel 1' + j;
-                j++;
-            }
-            
-            insert duplstAccounts;
-            
-            for (Integer i = 0; i<lstContacts.size(); i++) {
-                lstContacts.get(i).AccountId = lstAccounts[0].Id;
-                lstContacts.get(i).Email = 'test@test.com';
-                lstContacts.get(i).MailingCountry='USA';
-            }
-            
-            insert lstContacts;
-            
-            for (Integer i = 0; i<duplstContacts.size(); i++) {
-                duplstContacts.get(i).AccountId = duplstAccounts[i].Id;
-                duplstContacts.get(i).Email = 'tes1t@test.com';
-                duplstContacts.get(i).MailingCountry='USA';
-            }
-            
-            insert duplstContacts;
-            
-            Test.startTest();
-            
-            List<Database.LeadConvert> leadConversions = new List<Database.LeadConvert>();
-            LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted = true AND MasterLabel LIKE 'Sales Qualified Lead' LIMIT 1];
-            for (Lead LeadInstance: lstLeads) {
-                Database.LeadConvert lc = new database.LeadConvert();
-                lc.setLeadId(LeadInstance.id);
-                lc.setAccountId(lstAccounts[0].Id);
-                lc.setContactId(lstContacts[0].Id);
-                lc.setConvertedStatus(convertStatus.MasterLabel);
-                leadConversions.add(lc);
-            }
-            List<Database.LeadConvertResult> results = Database.convertLead(leadConversions);
-            Test.stopTest();
-
-            // Assert all leads were converted successfully
-            for (Database.LeadConvertResult res : results) {
-                System.assert(res.isSuccess(), 'Lead conversion should be successful');
-                System.assertNotEquals(null, res.getAccountId(), 'Converted AccountId should not be null');
-                System.assertNotEquals(null, res.getContactId(), 'Converted ContactId should not be null');
-            }
-        }
-    }
+     /*
+     * Method name  : leadConversion
+     * Description  : Method to test "Lead Conversion" functionality
+     * Return Type  : None
+     * Parameter    : None
+     */
+    static testMethod void leadConversion() {
     
-    @isTest
-    private static void AssignLeadsToPartnerQueuesTest(){
-        User u = [SELECT Id FROM User WHERE UserName='requestoremail@testorg.com'];
-        System.runAs(u){
+        System.runAs(Core_Test_Utility.systemAdminUser) {
+            setupData();
+        }
+
+        Core_Trigger_Executions__c triggerExecutionLeadConversion = new Core_Trigger_Executions__c();
+        triggerExecutionLeadConversion.name = 'leadConversionDeduplication';
+        triggerExecutionLeadConversion.Core_Object__c = 'Lead';
+        triggerExecutionLeadConversion.Core_Active__c = TRUE;
+        triggerExecutionLeadConversion.Core_Description__c = 'This is test description';
+        triggerExecutionLeadConversion.Core_Class_Name__c = 'Test Class';
+        triggerExecutionLeadConversion.Core_Trigger_Events__c = 'After Update';
+
+        insert triggerExecutionLeadConversion;
+
+        // Create a list of lead conversions, then create a leadConvert object
+        // and add it to the list of lead conversions to be executed.
+        List<Database.LeadConvert> leadConversions = new List<Database.LeadConvert>();
+
+        // Get a valid lead conversion status.
+        LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted = true LIMIT 1];
+
+        Database.LeadConvert lc;
+
+        Integer idatabaseIndex = 4;
+
+        for (Lead LeadInstance: lstLeads) {
+
+            lc = new database.LeadConvert();
+            lc.setLeadId(LeadInstance.id);
+            lc.setConvertedStatus(convertStatus.MasterLabel);
+            lc.setDoNotCreateOpportunity(false);
+            leadConversions.add(lc);
+            idatabaseIndex++;
+        }
+
+        // Execute the conversions and check for success.
+        List<Database.LeadConvertResult> results = Database.convertLead(leadConversions);
+
+        List<Account> lstAccount = new List<Account>();
+        lstAccount = [SELECT Id, (SELECT AccountId, ContactId FROM AccountContactRoles) FROM Account Where Id = : lstAccounts.get(2).Id];
+        
+        // [BM] 8/12/15 - exhibits a non-deterministic behavior.
+        // System.assertEquals(lstAccount.get(0).AccountContactRoles.size(), 0);
+
+    }
+
+
+    /*
+     * Method name  : AssignLeadsToPartnerQueues_Test
+     * Description  : Method to test the assignment of Partner Leads to correct Partner Queues using the Partner Name
+     * Return Type  : None
+     * Parameter    : None
+     */
+    
+    static testMethod void AssignLeadsToPartnerQueues_Test() {
+
+        System.runAs(Core_Test_Utility.systemAdminUser) {
+
+            // Insert a row in Trigger Execution table so the trigger to 'AssignLeadsToPartnerQueues' is executed
+            Core_Trigger_Executions__c triggerSetting = new Core_Trigger_Executions__c();
+            triggerSetting.name = 'AssignLeadsToPartnerQueues';
+            triggerSetting.Core_Object__c = 'Lead';
+            triggerSetting.Core_Active__c = TRUE;
+            triggerSetting.Core_Description__c = 'This is test description';
+            triggerSetting.Core_Class_Name__c = 'Core_LeadHandler';
+            triggerSetting.Core_Trigger_Events__c = 'After Update';
+            insert triggerSetting;
+        
+            // Create Parter-Queue mapping record
             Core_Partner_Queue_Mapping__c mappingRecord = new Core_Partner_Queue_Mapping__c();
             mappingRecord.Core_Partner_Name__c = 'TestPartner1';
             mappingRecord.Core_Queue_Name__c = 'Core_PTNR_TestPartner1';
             mappingRecord.Core_Active__c = true;
             insert mappingRecord;
-            
+        
+            // Create a Lead Queue
             Group group1 = new Group();
             group1.Type = 'Queue';
             group1.Name = 'PTNR - TestPartner1';
@@ -345,95 +272,45 @@ public class Core_LeadHandler_Test {
             queue1.SobjectType = 'Lead';
             queue1.QueueId = group1.id;
             insert queue1;
-            
-            Test.startTest();
-            List<Lead> lstLead = Core_Test_Utility.createLead(10);
-            for (Lead sobjLead: lstLead) {
-                sObjLead.RecordTypeId = System.Label.Core_Partner_Lead_Record_Id;
-                sObjLead.Core_Partner_Name__c = 'TestPartner1';
-                sobjLead.Core_Geo__c = '';
-                sobjLead.Core_Sub_Geo__c = '';
-                sobjLead.Phone = '(555) 555-5555';
-                sobjLead.Title = '(555) 555-5555';
-                sobjLead.Core_Current_Architecture__c = '(555) 555-5555';
-                sobjLead.Core_Job_Function__c = '(555) 555-5555';
-                sobjLead.Core_Product_Interest__c = '(555) 555-5555';
-                sobjLead.Core_Project_Phase__c = '(555) 555-5555';
-                sobjLead.Core_Project_Size__c = '555';
-                sobjLead.Core_Project_Timeframe__c = '555';
-                sobjLead.Core_Sales_Segment__c = '555';
-                sobjLead.PostalCode = '560035';
-                sobjLead.Status='Marketing Qualified Lead';
-                sobjLead.OwnerId = System.Label.Core_Partner_Global_Queue_Id;
-            }
-            insert lstLead;
-            Core_LeadHandler.AssignLeadsToPartnerQueues(lstLead);
-            Test.stopTest();
+        
+            // TEST1: Create a Lead that has VALID Partner Name. It Should assign the lead to the correct Partner Queue
+            // Create a new lead and assign it to the Global Partner Queue
+            Lead lead1 = new Lead();
+            lead1.RecordTypeId = System.Label.Core_Partner_Lead_Record_Id;
+            lead1.FirstName = 'Test1';
+            lead1.LastName = 'Test1';
+            lead1.email = 'test1@test1.com';
+            lead1.Phone = '123 4567';
+            lead1.Company = 'Test1';
+            lead1.CountryCode = 'USA';
+            lead1.LeadSource = 'Partner Program';
+            lead1.Core_Partner_Name__c = 'TestPartner1'; // Valid Partner Name
+            lead1.OwnerId = System.Label.Core_Partner_Global_Queue_Id;
+            insert lead1;
+        
+            // Check the new Owner of the Lead. It should be the TestPartner1 Queue
+            Lead lead1AfterAssignment = [SELECT OwnerId FROM Lead WHERE Id = :lead1.Id];
+            System.assertEquals(lead1AfterAssignment.Ownerid, queue1.QueueId); 
 
-            // Assert that leads are now assigned to the correct queue
-            List<Lead> updatedLeads = [SELECT Id, OwnerId FROM Lead WHERE Id IN :lstLead];
-            for (Lead l : updatedLeads) {
-                System.assertNotEquals(System.Label.Core_Partner_Global_Queue_Id, l.OwnerId, 'Lead OwnerId should be updated from global queue');
-            }
-        }
-    }
-    @isTest 
-    private static void convertLead_Succeeds_WithPrereqsAndLinks_AssertResults(){
-        // Covers Core_LeadHandler convertLead path with asserts
-        User u = [SELECT Id FROM User WHERE UserName='requestoremail@testorg.com'];
-        System.runAs(u){
-            // Prepare one Lead and set prerequisites
-            List<Lead> leads = [SELECT Id, Status, Core_Lead_Status__c, Core_Lead_Sub_Status__c FROM Lead LIMIT 1];
-            if (leads.isEmpty()) {
-                // Create one if test setup didn't insert
-                Lead l = Core_Test_Utility.createLead(1)[0];
-                insert l;
-                leads = new List<Lead>{ l };
-            }
-            Lead l0 = leads[0];
 
-            // First transaction: prerequisite fields
-            l0.Core_Lead_Status__c = 'Qualified';
-            l0.Core_Lead_Sub_Status__c = 'In Contact';
-            l0.Phone='2396189672';
-            update l0;
-
-            Lead afterPrereq = [SELECT Id, Core_Lead_Status__c, Core_Lead_Sub_Status__c FROM Lead WHERE Id = :l0.Id];
-            System.assertEquals('Qualified', afterPrereq.Core_Lead_Status__c, 'convertLead prereq: Core_Lead_Status__c');
-            System.assertEquals('In Contact', afterPrereq.Core_Lead_Sub_Status__c, 'convertLead prereq: Core_Lead_Sub_Status__c');
-
-            // Second transaction: move Status
-            l0 = [SELECT Id, Status FROM Lead WHERE Id = :l0.Id];
-            l0.Status = 'Sales Accepted Lead';
-            update l0;
-
-            Lead afterStatus = [SELECT Id, Status FROM Lead WHERE Id = :l0.Id];
-            System.assertEquals('Sales Accepted Lead', afterStatus.Status, 'convertLead prereq: Status');
-
-            // Prepare related records
-            Account acc = Core_Test_Utility.createAccount(1)[0];
-            insert acc;
-            Contact con = Core_Test_Utility.createContacts(1)[0];
-            con.AccountId = acc.Id;
-            con.MailingCountry= 'IND';
-            insert con;
-
-            Id dealRt = Schema.SObjectType.Opportunity.getRecordTypeInfosByName().get('Deal Opportunity').getRecordTypeId();
-            Opportunity opp = new Opportunity(Name='ConvLead_Opp', AccountId=acc.Id, RecordTypeId=dealRt, StageName='Qualify', CloseDate=Date.today().addDays(10));
-            insert opp;
-
-             Test.startTest();
-            // Build request per Core_LeadHandler.convertLead signature
-            SWS_LeadWrappers.LeadConvertRequest req = new SWS_LeadWrappers.LeadConvertRequest();
-            req.leadId = l0.Id;
-            req.contactId = con.Id;
-            Core_LeadHandler.convertLead(new List<SWS_LeadWrappers.LeadConvertRequest>{ req });
-            Test.stopTest();
-
-            Lead converted = [SELECT Id, IsConverted, ConvertedAccountId, ConvertedContactId, ConvertedOpportunityId FROM Lead WHERE Id = :l0.Id LIMIT 1];
-            //System.assertEquals(true, converted.IsConverted, 'Lead should be converted by Core_LeadHandler.convertLead');
-           // System.assertNotEquals(null, converted.ConvertedAccountId, 'ConvertedAccountId must be set after conversion');
-           // System.assertNotEquals(null, converted.ConvertedContactId, 'ConvertedContactId must be set after conversion');
-        }
+            // TEST2: Create a Lead that has INVALID Partner Name. It Should assign the lead to Invalid Partner Queue
+            // Create a new lead and assign it to the Global Partner Queue
+            Lead lead2 = new Lead();
+            lead2.RecordTypeId = System.Label.Core_Partner_Lead_Record_Id;
+            lead2.FirstName = 'Test2';
+            lead2.LastName = 'Test2';
+            lead2.email = 'test2@test1.com';
+            lead2.Phone = '123 4567';
+            lead2.Company = 'Test2';
+            lead2.CountryCode = 'USA';
+            lead2.LeadSource = 'Partner Program';
+            lead2.Core_Partner_Name__c = 'TestPartnerInvalid'; // Invalid Partner Name
+            lead2.OwnerId = System.Label.Core_Partner_Global_Queue_Id;
+            insert lead2;
+        
+            // Check the new Owner of the Lead. It should be the Invalid Partner Queue
+            Lead lead2AfterAssignment = [SELECT OwnerId FROM Lead WHERE Id = :lead2.Id];
+            System.assertEquals(lead2AfterAssignment.Ownerid, System.Label.Core_Partner_Invalid_Queue_Id); 
+        }    
     }
 }

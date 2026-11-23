@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <classAccesses>
+        <apexClass>Copy_Core_MDF_PFR_RecordTypeSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_Intel_customLookupController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -13,15 +17,15 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Core_MDF_AuditDocumentHelper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_MDF_AuditDocumentHelper_Revamp</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>Core_MDF_BulkPOPUploadController</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Core_MDF_CampaignCreatePage</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -38,6 +42,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>Core_MDF_CustomLayoutConfig_Controller</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_CustomMultiSelect</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -138,11 +146,23 @@
     </classAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
+        <name>CCP_MDF_POP_Translation__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
         <name>Core_MDF_CCP_Payment_File_Particulars__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
+        <name>Core_MDF_CCP_Segment_Field__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
         <name>Core_MDF_POP_Document_Types_Revamp__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>Core_MDF_POP_Document_Types__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
@@ -158,11 +178,7 @@
     </customMetadataTypeAccesses>
     <customPermissions>
         <enabled>true</enabled>
-        <name>Core_MDF_CCP_Account_Recovery_Manager</name>
-    </customPermissions>
-    <customPermissions>
-        <enabled>true</enabled>
-        <name>Core_MDF_User_With_Activity_Access</name>
+        <name>Core_MDF_EEF_Recovery_Administrator</name>
     </customPermissions>
     <description>External Recovery Administrator that would have edit access on Recoveries Tab</description>
     <fieldPermissions>
@@ -323,6 +339,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.Core_Alt_Language_State_Province__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.Core_Alt_Language_country__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.Core_Alternate_Language_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -872,6 +898,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Account.Core_Uncover_Marked_for_Clean_Up__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Account.Core_Year_Started__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -902,7 +933,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Account.IsExcludedFromRealign</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Account.Jigsaw</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.LID__LinkedIn_Company_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1063,11 +1104,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Case.Core_MDF_Adjustment_Amount_USD_Amt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Case.Core_MDF_Adjustment_Amount_USD__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1287,11 +1323,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Case.Core_MDF_Requested_Reimbursement_Amount__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Case.Core_MDF_Review_Case_Status__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1333,11 +1364,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>ChannelProgram.Core_MDF_Technical_Program_Name__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_PFRCustomPicklist__c.Core_MDF_Domain_Type_nm__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1388,6 +1414,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_MDF_Partnership_Score__c.Core_MDF_Aggregate_Claim_Score_Nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Partnership_Score__c.Core_MDF_Balance_Amt_del__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1517,7 +1548,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Core_MDF_Scorecard__c.Core_MDF_Engagement_Comments_Txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Core_MDF_Scorecard__c.Core_MDF_Engagement_Nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Scorecard__c.Core_MDF_Engagement_PV_Ind__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1612,6 +1653,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Bank_Legal_Entity_Code_cd__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_Bank__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1642,7 +1688,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_CPA_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_CSP_Intel_Based_Revenue_Amt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_CTA_txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1653,6 +1709,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_Claim_Batch_Stage__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Claim_Cancellation_Reason_txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1682,6 +1743,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Collateral_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_Country_Location__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1702,7 +1768,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Criteria_Hold_No_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_Currency__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Distribution_txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1742,6 +1818,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Engagement_Nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Estimated_Ad_Size_nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_Excess_Requested_Amount__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1753,6 +1839,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_FlaggedForAudit__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_How_many_screens_nbr__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1782,6 +1873,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Magazine_Newspaper_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_Media_Vehicle__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1807,7 +1903,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>PartnerFundClaim.Core_MDF_NoOfLeads_Nbr__c</field>
+        <field>PartnerFundClaim.Core_MDF_NoOfProdPageURLs_Nbr__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1817,7 +1913,57 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_No_Dedicated_Resources_nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_No_of_Emails_Opened_nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_No_of_Leads_nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_No_of_Recipients_nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Number_of_Circulation_nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Number_of_Clicks_nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Number_of_Delivered_nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Number_of_Devices_nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Number_of_RSPs_nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_Number_of_Reviews_nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Number_of_Stores_nbr__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1857,6 +2003,21 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Percentage_of_Intel_Devices_pct__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Placement_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Processing_Preference_nm__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_Program__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1868,6 +2029,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_Quarter_Year_Txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_ROAS_txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1897,6 +2063,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Runs_per_hour_nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_Status__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1907,12 +2078,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_TV_Channel_s_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_Target_Audience__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_Taxes_Local__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Time_video_to_last_txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1933,6 +2114,31 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_Type_Txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Type_of_Page_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Type_of_Resource_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_URL_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_URLs_w_Live_CPU_Badges_nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Where_to_take_place_txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2047,6 +2253,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_Budget_Type_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PartnerFundRequest.Core_MDF_Channel_Partner_Led__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2068,11 +2279,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PartnerFundRequest.Core_MDF_CreatedBy__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PartnerFundRequest.Core_MDF_Domain_Type_nm__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2108,6 +2314,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_Geo_Nm__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2167,6 +2378,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_Maximum_Intel_Investment_amt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PartnerFundRequest.Core_MDF_Member_Acceptor_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2178,6 +2394,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PartnerFundRequest.Core_MDF_Other_Channel_Partner__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_Outcome_Region_nm__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_Owner_Language_txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2207,6 +2433,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_PriorValueStatusForExternalUser__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PartnerFundRequest.Core_MDF_Priorities__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2223,6 +2454,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PartnerFundRequest.Core_MDF_Region_nm__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_Region_txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2257,6 +2493,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_Sub_Region_nm__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PartnerFundRequest.Core_MDF_TargetAudience__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2273,6 +2514,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PartnerFundRequest.Core_MDF_Ultimate_Account_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_Unified_Global_Name_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_Unified_Global_id__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2384,16 +2635,6 @@
         <allowEdit>false</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
-        <object>Core_MDF_Recovery__c</object>
-        <viewAllFields>false</viewAllFields>
-        <viewAllRecords>false</viewAllRecords>
-    </objectPermissions>
-    <objectPermissions>
-        <allowCreate>false</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>false</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>false</modifyAllRecords>
         <object>Core_MDF_Scorecard__c</object>
         <viewAllFields>false</viewAllFields>
         <viewAllRecords>false</viewAllRecords>
@@ -2418,6 +2659,10 @@
         <viewAllFields>false</viewAllFields>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
+    <tabSettings>
+        <tab>Recovery_Dashboard</tab>
+        <visibility>Available</visibility>
+    </tabSettings>
     <userPermissions>
         <enabled>true</enabled>
         <name>RunReports</name>

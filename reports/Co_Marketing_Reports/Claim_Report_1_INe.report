@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PartnerFundClaim$Name</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Request.ChannelPartner</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Invoice_Date__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>Claim Report 1</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>PartnerFundClaim_Reports__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PartnerFundClaim$Core_MDF_Activity_End_Date__c</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

@@ -9,10 +9,9 @@
         }); 
         action.setCallback(this, function(response){
             
-            if (response.getState() == "SUCCESS" && response.getReturnValue() != null){ 
+            if (response.getState() == "SUCCESS" && response.getReturnValue() != null){
                 
                 var result = response.getReturnValue();
-                
                 component.set("v.Spinner", false); 
                 var chkPerm = result.usrHasPer;
                 if(chkPerm){
@@ -33,6 +32,7 @@
                 else{                    
                     component.set("v.chkbox",false);
                 } 
+                component.set("v.programName",result.programName);
             }
         }),
         $A.enqueueAction(action);

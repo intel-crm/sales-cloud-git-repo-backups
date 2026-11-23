@@ -9,5 +9,8 @@
     <navType>Standard</navType>
     <tabs>standard-home</tabs>
     <tabs>standard-DataMgmtPolicy</tabs>
+    <tabs>Core_MDF_Exception_Account_Mapping__c</tabs>
+    <tabs>Core_MDF_Campaign_Outcomes__c</tabs>
+    <tabs>Support_Ticket__c</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

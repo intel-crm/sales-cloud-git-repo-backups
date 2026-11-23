@@ -15,6 +15,7 @@ public with sharing class Core_Case_ActionController{
   public Core_Case_ActionController(ApexPages.StandardController controller){
       this.controller = controller;
     retURL = ApexPages.currentPage().getParameters().get('retURL');
+    system.debug('retURL => '+retURL);
     if(retURL == null || retURL == '')
     {
        retURL = '/500/o';
@@ -29,7 +30,7 @@ public with sharing class Core_Case_ActionController{
     isMasterRecordType=false;
     //[Jan/21/2016 - Abhishek Arya - Added below code to get the default recordtype in case rtype is null above.]
     // in case it's null, the user has only one record type available.
-    
+    system.debug('rType1 => '+rType);
     if(ApexPages.currentPage().getParameters().get('RecordType') == null) {
         //String usrProfileName = [select Profile.Name from User where id = :Userinfo.getUserId()].Profile.Name;
         String userType = UserInfo.getUserType();
@@ -58,7 +59,8 @@ public with sharing class Core_Case_ActionController{
       for(RecordType rt: rtList){
           recordTypesByName.put(rt.developerName, rt.Id);
       }
-      
+      system.debug('rType2 => '+rType);
+      system.debug('retURL2 => '+retURL);
       for(StandardActionRedirection__c action: sCaseActionList){
           if(action.Profile_del__c <> null && action.Profile_del__c==u.profile.name){
                    ref= new PageReference(action.URI__c + retURL );    
@@ -74,6 +76,7 @@ public with sharing class Core_Case_ActionController{
                 return ref;        
           }
       }
+
       String defPageReference;
       if(isMasterRecordType)
           defPageReference = '/500/e?nooverride=1&retURL=' + retURL;
@@ -85,6 +88,7 @@ public with sharing class Core_Case_ActionController{
       else if(contactId!=null && contactId!=''){
         defPageReference=defPageReference+'&def_contact_id='+contactId;
       }
+           system.debug('defPageReference:: 3'+defPageReference);
       return new PageReference(defPageReference);
   }
   
@@ -97,5 +101,10 @@ public with sharing class Core_Case_ActionController{
               sCaseActionList.add(sAction);
           }
       }
+      system.debug('sCaseActionList::'+sCaseActionList);      
+  }
+
+  public void displayErrorMessage(){
+    ApexPages.addmessage(new ApexPages.message(ApexPages.severity.ERROR,'Not allowed to create for this Record Type'));
   }
 }

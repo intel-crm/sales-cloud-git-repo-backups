@@ -1,0 +1,12 @@
+<messaging:emailTemplate subject="Audit is Due" recipientType="User" relatedToType="Core_MDF_InternalAudit__c">
+    <messaging:htmlEmailBody >
+        
+<p>Audit is Due on {!MONTH(relatedTo.Audit_End_Date__c)}/{!DAY(relatedTo.Audit_End_Date__c)}/{!YEAR(relatedTo.Audit_End_Date__c)} &nbsp;</p>
+
+Please click on Following link to View.
+<p>
+Click &nbsp; <apex:outputLink value="{!$Label.Core_MDF_Internal_Audit_Community_Link+RelatedTo.Id}">{!$Label.Core_MDF_EmailTemp_Claim_URL1}
+</apex:outputLink></p>
+
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

@@ -24,7 +24,7 @@
         <criteriaItems>
             <field>Core_MDF_Program__c</field>
             <operation>equals</operation>
-            <value>Client CoMarketing Fund</value>
+            <value>Client</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -67,9 +67,24 @@
         <criteriaItems>
             <field>Core_MDF_Program__c</field>
             <operation>equals</operation>
-            <value>Data Center CoMarketing Fund</value>
+            <value>Datacenter</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CORE_MDF_ACCOUNT_BANK_MAPPING_EEF</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Sharing Account bank mapping records based on the program</description>
+        <label>ACCOUNT BANK MAPPING EEF</label>
+        <sharedTo>
+            <group>Core_MDF_Int_EEF_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Ecosystem Extension Fund</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>CORE_MDF_ACCOUNT_BANK_MAPPING_SPCF</fullName>
@@ -83,20 +98,6 @@
             <field>Core_MDF_Program__c</field>
             <operation>equals</operation>
             <value>Service Provider CoMarketing Fund</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_ACCOUNT_BANK_MAPPING_EEF</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>ACCOUNT BANK MAPPING EEF</label>
-        <sharedTo>
-            <group>Core_MDF_Int_EEF_ALL</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Program__c</field>
-            <operation>equals</operation>
-            <value>Ecosystem Extension Fund</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

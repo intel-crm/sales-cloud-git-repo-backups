@@ -1,0 +1,18 @@
+<aura:component controller="Core_MDF_PartnerFundClaim_Edit" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:actionOverride"  access="global">
+
+    <!-- This component acts as a Switch between CoMarketing Edit functionality and Standard Edit Functionality-->
+
+    <!-- Check the record type of the Incoming  Record Id -->
+    <aura:attribute name="simpleNewClaim" type="PartnerFundClaim"/>
+    <aura:attribute name="recordId" type="String" default=""/>   
+    
+    <!-- Attribute to Store Clone Button value and pass to "Core_MDF_PFC_Create" to component -->
+    <aura:attribute name="isClone" type="Boolean" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+            
+    <aura:if isTrue="{!not(empty(v.simpleNewClaim.Id))}">
+    	<c:Core_MDF_PFC_Create_AD simpleNewClaim = "{!v.simpleNewClaim}" isCloneClaim ="{!v.isClone}" />       
+    </aura:if>
+
+</aura:component>

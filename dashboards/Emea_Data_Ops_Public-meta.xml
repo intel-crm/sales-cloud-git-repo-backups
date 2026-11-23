@@ -6,24 +6,44 @@
         <sharedToType>Organization</sharedToType>
     </folderShares>
     <folderShares>
-        <accessLevel>EditAllContents</accessLevel>
-        <sharedTo>11408655@intel.com.crm</sharedTo>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>11798148@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
         <accessLevel>EditAllContents</accessLevel>
-        <sharedTo>12326008@intel.com.crm</sharedTo>
+        <sharedTo>11723317@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
         <accessLevel>View</accessLevel>
-        <sharedTo>12318791@intel.com.crm</sharedTo>
+        <sharedTo>10101734@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>EditAllContents</accessLevel>
+        <sharedTo>10660615@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>11850552@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>10571372@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>11275393@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
         <accessLevel>View</accessLevel>
-        <sharedTo>All_Users_Sales_Internal</sharedTo>
-        <sharedToType>Group</sharedToType>
+        <sharedTo>11068272@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
     </folderShares>
     <name>Emea Data Ops Public</name>
 </DashboardFolder>

@@ -10,9 +10,6 @@
         <field>Case.Core_Promote_Status__c</field>
     </columns>
     <columns>
-        <field>Case.Core_IPS_Backend_System__c</field>
-    </columns>
-    <columns>
         <field>Core_IPS_Case_Comments__c.Core_IPS_Public__c</field>
     </columns>
     <columns>
@@ -44,6 +41,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Done</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Backend_System__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>ISVC</value>
         </criteriaItems>
         <criteriaItems>
             <column>CUST_CREATED_NAME</column>

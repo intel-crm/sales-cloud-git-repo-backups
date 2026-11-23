@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <classAccesses>
+        <apexClass>Allocation_VisibilityController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Copy_Core_MDF_PFR_RecordTypeSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_Intel_customLookupController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -17,11 +25,11 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>Core_MDF_APIDocumentationController</apexClass>
+        <apexClass>Core_MDF_AccountABACheck</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>Core_MDF_AccountABACheck</apexClass>
+        <apexClass>Core_MDF_AccountDomainMapping</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -77,10 +85,6 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>Core_MDF_AiFieldSuggestions</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>Core_MDF_ApprovalCriteriaHelper</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -93,6 +97,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Core_MDF_ApprovalURL</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_MDF_AuditCaseProcess</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -101,7 +109,23 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Core_MDF_AuditDocumentHelper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_MDF_AuditDocumentHelper_Revamp</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_AuditDocumentHelper_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_AuditSelectionHelper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_AuditSelectionHelper_Test</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -169,7 +193,19 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Core_MDF_Batch_AuditRetry</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_Batch_PFCSharing</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_MDF_Batch_PaymentFileGenerator</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_Batch_RetryCaseCreation</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -389,6 +425,18 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Core_MDF_ClaimSelectionForAuditScheduler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_ClaimSelectionForAudit_Batch</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_ClaimSelectionForAudit_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_MDF_ClaimStage_ServiceHandler</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -421,6 +469,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Core_MDF_Community_Announcement</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_MDF_CreateBatchShareRecords</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -442,6 +494,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>Core_MDF_CustomLayoutConfig_Controller</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_CustomMultiSelect</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -478,6 +534,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>Core_MDF_DetermineEmailRecipients_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_DownloadReport</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -613,10 +673,6 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>Core_MDF_GenericRelatedListCntller_Test</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>Core_MDF_GenericRelatedListController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -666,6 +722,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>Core_MDF_IPA_AccountUserMapping_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_IPA_Camp_Functionality_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_IPA_ExtProposalApproval</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -746,18 +810,6 @@
     </classAccesses>
     <classAccesses>
         <apexClass>Core_MDF_OutcomeBasedCmpgnTab</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Core_MDF_OutcomeBasedCmpgnTab_Test</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Core_MDF_OutcomeBasedCmpgn_ParentComp</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Core_MDF_OutcomeBasedCmpgn_ParentTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -894,6 +946,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>Core_MDF_PNUM_Deletion</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_PNUMappingServiceHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_PNUMappingTriggerHandler</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1109,11 +1169,19 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Core_MDF_RetrieveAccountHierarchy</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_MDF_SchBatch_UpdateCampaignSts</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>Core_MDF_SchBatch_UpdateCampaignSts_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_Sch_RetryCaseCreation_Test</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1126,6 +1194,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>Core_MDF_Scheduler_Multicurrency_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_Scheduler_RetryCaseCreation</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1165,10 +1237,6 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>Core_MDF_Tactics_Matric_Controller_Test</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>Core_MDF_UGMLog</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -1194,6 +1262,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>Core_MDF_UpdateBankDetails_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_UploadBulkEscalation</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1237,6 +1309,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>ListWithoutHeaderController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>UCD_AccountRecordTypeController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -1246,7 +1322,23 @@
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
+        <name>CCP_Attributes_Map__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>CCP_MDF_POP_Translation__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
         <name>Core_MDF_AdjustmentOrEscalationClaim__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>Core_MDF_Approval_Object_List__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>Core_MDF_BU_Splits__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
@@ -1254,7 +1346,15 @@
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
+        <name>Core_MDF_BulkClaimTemplateParticulars__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
         <name>Core_MDF_CCP_Activity_Budget_Cap_Window__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>Core_MDF_CCP_Claim_Window__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
@@ -1267,6 +1367,22 @@
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
         <name>Core_MDF_CCP_Payment_File_Particulars__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>Core_MDF_CCP_Record_Types__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>Core_MDF_CCP_Segment_Field__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>Core_MDF_CCP_Select_Partners_Config__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>Core_MDF_CCP_Submission_Window__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
@@ -1298,15 +1414,23 @@
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
+        <name>Core_MDF_ListView_Group_Mapping__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>Core_MDF_OPAL_Category_Type_Mapping__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
         <name>Core_MDF_ObjRecType_Budget_FieldSetMap__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
-        <name>Core_MDF_PFR_Event_Rule__mdt</name>
+        <name>Core_MDF_POP_Document_Types_Revamp__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
-        <name>Core_MDF_POP_Document_Types_Revamp__mdt</name>
+        <name>Core_MDF_POP_Document_Types__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
@@ -1315,6 +1439,10 @@
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
         <name>Core_MDF_RecordType_FieldSet_Mapping__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>Core_MDF_Standard_Object_for_Sharing__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
@@ -1350,11 +1478,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_MDF_PFRCustomPicklist__c.Core_MDF_Program__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_PFRCustomPicklist__c.Core_MDF_Tactics_nm__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>

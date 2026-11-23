@@ -2,7 +2,7 @@
 	// Function called on the upload finish to fetch Ids and files name and toast message
     handleUploadFinished : function(component, event, helper) {
         var uploadedFiles = event.getParam("files");
-        
+
         var documentids = [];
         var contents = component.get("v.contentdocumentids");
         
@@ -42,13 +42,14 @@
             "message": "File "+fileName+" Uploaded successfully."
         });
         toastEvent.fire();
+        
     },
     
     // Function called on the load of the compoent
     doInit : function(component, event, helper) {
+        //console.log('filData---->' , component.get("v.filedata"));
     	var userId = $A.get("$SObjectType.CurrentUser.Id");
         component.set("v.userInfo",userId);
-        
         var fileTypesLabel = "";
         fileTypesLabel = $A.get("$Label.c.Core_MDF_AllowedFileTypes");
         var fileTypes = fileTypesLabel.split(",");
@@ -56,13 +57,37 @@
         
         component.set('v.errormsg','');
         component.set('v.iserror',false);
-        if(component.get("v.filedata")== null){
+        //if(component.get("v.filedata") == null){
             helper.loadDocuments(component);
-        }
+        //}
+        //console.log("Inside Activity file upload Doint ::: ");
         if(component.get("v.activityBudgetType") != undefined && component.get("v.activityBudgetType") != null && !$A.util.isEmpty(component.get("v.activityBudgetType")) && $A.get("$Label.c.Core_MDF_FileUpload_BudgetTypes").includes(component.get("v.activityBudgetType"))){
             component.set("v.opalFileUploadBudgetTypes",true);
+            //console.log("Inside Activity file upload Doint ::: If condition ");
+            //console.log("Check1"+component.get("v.recordtypeDeveloperName"));
         }
 	},
+//     triggerAISuggestions: function(component, event, helper) {
+//     // Prevent action if loading
+//     if (component.get("v.isLoadingAI")) {
+//         return;
+//     }
+    
+//     // Fire the component event to parent
+//     var aiEvent = component.getEvent("aiSuggestionEvent");
+//     aiEvent.setParams({
+//         "triggerAI": true
+//     });
+//     aiEvent.fire();
+// },
+
+// Method to update loading state from parent
+setAILoadingState: function(component, event, helper) {
+    var params = event.getParam('arguments');
+    if (params) {
+        component.set("v.isLoadingAI", params.isLoading);
+    }
+},
     deleteSelected : function(component,event,helper){
         var userconfrm = confirm($A.get("$Label.c.Core_MDF_Delete_Confirm"));
         if (userconfrm)

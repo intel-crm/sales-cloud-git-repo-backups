@@ -14,6 +14,10 @@
         <relationshipLabel><!-- Batch Scheduler Line Items --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Count --></label>
+        <name>Core_MDF_Count_Nbr__c</name>
+    </fields>
+    <fields>
         <label><!-- Error Message --></label>
         <name>Core_MDF_Error_Message__c</name>
     </fields>
@@ -26,18 +30,8 @@
         <name>Core_MDF_Job_Id_Txt__c</name>
     </fields>
     <fields>
-        <help><!-- Number of Errors/Failures from Async Apex Job --></help>
-        <label><!-- Number of errors --></label>
-        <name>Core_MDF_Number_of_errors__c</name>
-    </fields>
-    <fields>
         <label><!-- Scheduled Time --></label>
         <name>Core_MDF_Scheduled_Time_Dt__c</name>
-    </fields>
-    <fields>
-        <help><!-- Status Detail from Async Apex job --></help>
-        <label><!-- Status Detail --></label>
-        <name>Core_MDF_Status_Detail__c</name>
     </fields>
     <fields>
         <label><!-- Status --></label>

@@ -111,6 +111,7 @@ public without sharing class Core_MDF_Recovery_Utility {
                 }
                 
             }
+            System.debug('testAmey 114PSDupdate '+partnerScoreDetailtoAmtMap.keySet());
             Map<Id,Core_MDF_Partnership_Score_Detail__c> scoreDetailMap = new Map<Id,Core_MDF_Partnership_Score_Detail__c>([Select id, Core_MDF_Recovered_Amt__c
                                                                                                                             from Core_MDF_Partnership_Score_Detail__c
                                                                                                                             where id in :partnerScoreDetailtoAmtMap.keySet()]);
@@ -461,18 +462,18 @@ public without sharing class Core_MDF_Recovery_Utility {
                 recoveryNodeAccess = true;
             }
             if(accProgwithRecoverySet.contains(key) && 
-            ((!(psTProgramMap.get(psa.PermissionSet.name) == ipaProg || psTProgramMap.get(psa.PermissionSet.name) == rmfProg)) 
-             || ((psTProgramMap.get(psa.PermissionSet.name) == ipaProg || psTProgramMap.get(psa.PermissionSet.name) == rmfProg) && recoveryNodeAccess))){
-            RecoveryAdminProgramMapping admPgmMap = new RecoveryAdminProgramMapping();
-            user usr = new user();
-            usr.id=psa.AssigneeId;
-            usr.LanguageLocaleKey=psa.Assignee.LanguageLocaleKey;
-            usr.email=psa.Assignee.Email;
-            admPgmMap.user = usr;
-            admPgmMap.program = psTProgramMap.get(psa.PermissionSet.name);
-            admPgmMap.programId = pgmNameToIdMap.get(psTProgramMap.get(psa.PermissionSet.name));
-            admPgmMapList.add(admPgmMap);
-        }
+               ((!(psTProgramMap.get(psa.PermissionSet.name) == ipaProg || psTProgramMap.get(psa.PermissionSet.name) == rmfProg)) 
+                || ((psTProgramMap.get(psa.PermissionSet.name) == ipaProg || psTProgramMap.get(psa.PermissionSet.name) == rmfProg) && recoveryNodeAccess))){
+                    RecoveryAdminProgramMapping admPgmMap = new RecoveryAdminProgramMapping();
+                    user usr = new user();
+                    usr.id=psa.AssigneeId;
+                    usr.LanguageLocaleKey=psa.Assignee.LanguageLocaleKey;
+                    usr.email=psa.Assignee.Email;
+                    admPgmMap.user = usr;
+                    admPgmMap.program = psTProgramMap.get(psa.PermissionSet.name);
+                    admPgmMap.programId = pgmNameToIdMap.get(psTProgramMap.get(psa.PermissionSet.name));
+                    admPgmMapList.add(admPgmMap);
+                }
         }
         return admPgmMapList;
     }
@@ -493,6 +494,54 @@ public without sharing class Core_MDF_Recovery_Utility {
         return finalDate;
     }
 
+    /*public static void notifyIAHPullFinished(List<Core_MDF_Partnership_Score_Detail__c> psdList, String quarterYear){
+        try {
+
+            system.debug('email triggered@@@');
+            String recipientConfig = 'roshanx.o.prasad@intel.com';
+            if (String.isBlank(recipientConfig)) { return; }
+
+            Integer recordCount = psdList == null ? 0 : psdList.size();
+            Set<String> programs = new Set<String>();
+            if (psdList != null) {
+                for (Core_MDF_Partnership_Score_Detail__c psd : psdList) {
+                    if (String.isNotBlank(psd.Core_MDF_Program_Nm__c)) { programs.add(psd.Core_MDF_Program_Nm__c); }
+                }
+            }
+
+            List<String> programNames = new List<String>();
+            programNames.addAll(programs);
+            programNames.sort();
+
+            String reportQuarter = String.isNotBlank(quarterYear) ? quarterYear : Core_MDF_ReverseAuditDecision.determineQuartYear(System.today());
+            String reportUrl = URL.getOrgDomainUrl().toExternalForm() + '/lightning/r/Report/00Odh0000075JHJEA2/view?fv0=' + EncodingUtil.urlEncode(reportQuarter, 'UTF-8');
+            String reportLink = '<p><a href="' + reportUrl + '">Open the IAH Pull PSD Validation Exceptions report</a></p>';
+
+            String body = '<html><body style="font-family:Arial,sans-serif;font-size:13px;">'
+                + '<h2>IAH Pull Finished - ' + reportQuarter + '</h2>'
+                + '<table cellpadding="6" cellspacing="0" border="1" style="border-collapse:collapse;">'
+                + '<tr><td><b>Completed at</b></td><td>' + System.now().format() + '</td></tr>'
+                + '<tr><td><b>PSD records</b></td><td>' + recordCount + '</td></tr>'
+                + '</td></tr></table>'
+                + reportLink
+                + '</body></html>';
+
+            Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+            mail.setToAddresses(recipientConfig.split(','));
+            mail.setSubject(Label.Core_MDF_SFDC_Environment + ': IAH Pull Finished - ' + reportQuarter);
+            mail.setHtmlBody(body);
+            mail.setOrgWideEmailAddressId(Label.Core_MDF_OrgWideId);
+            mail.setSaveAsActivity(false);
+
+            if (!Test.isRunningTest()) {
+                system.debug('email sent@@@');
+                Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
+            }
+        } catch (Exception ex) {
+            Core_MDF_CCP_UtilityClass.logError(ex);
+        }
+    }*/
+
     public static Core_MDF_Batch_Scheduler__c prepareBatchSchedulerInstance(String program, DateTime scheduleTime, String recoveryDate){
         Core_MDF_Batch_Scheduler__c customSch = new Core_MDF_Batch_Scheduler__c();
         customSch.Core_MDF_Object_JSON_Txt__c = '{"program" : "' + program + '","action" : "SendEmail","recoveryDate" : "' + recoveryDate + '"}';
@@ -507,7 +556,13 @@ public without sharing class Core_MDF_Recovery_Utility {
     }
 
     public static void notifyRecoveryAdmin(List<String> psNameList,Map<String,String> programToRecoveryDateMap, List<Core_MDF_Partnership_Score_Detail__c> psdRecList){        
+        System.debug('@@@psNameList:'+psNameList);
+        System.debug('@@@psdRecList'+psdRecList);
         List<Core_MDF_Recovery_Utility.RecoveryAdminProgramMapping> userProgramWrapList = Core_MDF_Recovery_Utility.getRecoveryAdmins(psNameList, psdRecList);
+        System.debug('@@@'+userProgramWrapList);
+        for(Core_MDF_Recovery_Utility.RecoveryAdminProgramMapping a : userProgramWrapList){
+            System.debug('@@@'+a);
+        }
         if(userProgramWrapList != null){
             List<Messaging.SingleEmailMessage> emailMessageList = new List< Messaging.SingleEmailMessage>();
             for(Core_MDF_Recovery_Utility.RecoveryAdminProgramMapping userProgramWrap : userProgramWrapList){
@@ -549,15 +604,12 @@ public without sharing class Core_MDF_Recovery_Utility {
             Messaging.sendEmail(emailMessageList);
             }
         }
-
-        
     }
-    public static void sendRecoveryDashboardNotification(List<String> psNameList,String quarterAndYear, List<Core_MDF_Partnership_Score_Detail__c> psdRecList){
-        
-        List<Core_MDF_Recovery_Utility.RecoveryAdminProgramMapping> userProgramWrapList = Core_MDF_Recovery_Utility.getRecoveryAdmins(psNameList, psdRecList);
-        if(userProgramWrapList != null){
+    public static void sendRecoveryDashboardNotification(List<String> psNameList,String quarterAndYear, List<Core_MDF_Partnership_Score_Detail__c> psdRecList){        
+        List<Core_MDF_Recovery_Utility.RecoveryAdminProgramMapping> userProgramWrapperList = Core_MDF_Recovery_Utility.getRecoveryAdmins(psNameList, psdRecList);
+        if(userProgramWrapperList != null){
             List<Messaging.SingleEmailMessage> emailMessageList = new List< Messaging.SingleEmailMessage>();
-            for(Core_MDF_Recovery_Utility.RecoveryAdminProgramMapping userProgramWrap : userProgramWrapList){
+            for(Core_MDF_Recovery_Utility.RecoveryAdminProgramMapping userProgramWrap : userProgramWrapperList){
                 Messaging.SingleEmailMessage dashboardMail = new Messaging.SingleEmailMessage();
                 String[] dashboardMailToAddresses = new String[] {userProgramWrap.user.email};
                 String dashboardMailSubject = '';
@@ -593,7 +645,7 @@ public without sharing class Core_MDF_Recovery_Utility {
 	Description:        This method is used to send email to inform internal account managers on recovery data load
 	Added By:           Accenture - Vikas Soni - 10/01/2025
 	Modified By:        Date:       Changes:
-    *******************************************************************************************************/
+	*******************************************************************************************************/
 
     public static void notifyInternalActManagersOnRecoveryDataLoad(List<String> psNameList, List<String> psNamesToExcludeForEmail, Map<String, String> programToRecoveryDateMap, Set<String> programNamesSet, List<Core_MDF_Partnership_Score_Detail__c> psdRecList, String notificationType, Boolean isPermissionSetAssignmentBased){
         try {
@@ -647,7 +699,9 @@ public without sharing class Core_MDF_Recovery_Utility {
                             mail.setTargetObjectId(usr.Id);
                             mail.setSaveAsActivity(false);
                             mail.setOrgWideEmailAddressId(Label.Core_MDF_OrgWideId);
+                            //uncomment only for testing if(usr.Email == 'vikasx.soni@intel.com'){
                             emailMessageList.add(mail);
+                            //}                            
                         }
                     }
                 }
@@ -659,7 +713,6 @@ public without sharing class Core_MDF_Recovery_Utility {
             Core_MDF_CCP_UtilityClass.logError(e);
         }
     }
-
     /******************************************************************************************************
 	Method Name:        getProgramAndAccountSpecificAccountManagers
 	@return:            map of programid-accountid-users
@@ -667,7 +720,7 @@ public without sharing class Core_MDF_Recovery_Utility {
 	Description:        This helper method is used to support 'notifyInternalActManagersOnRecoveryDataLoad'
 	Added By:           Accenture - Vikas Soni - 10/01/2025
 	Modified By:        Date:       Changes:
-    *******************************************************************************************************/
+	*******************************************************************************************************/
     public static Map<String, Map<String, Set<User>>> getProgramAndAccountSpecificAccountManagers(List<String> psNameList, List<String> psNamesToExcludeForEmail, Set<String> programNamesSet, List<Core_MDF_Partnership_Score_Detail__c> psdRecList, String notificationType, Boolean isPermissionSetAssignmentBased){
         String key;
         Set<Id> accountIdsForIUPGMSet = new Set<Id>();
@@ -682,39 +735,48 @@ public without sharing class Core_MDF_Recovery_Utility {
         //to prepare iaccId-Program to Account Name map
         for(Core_MDF_Partnership_Score_Detail__c psd : psdRecList){
             key = String.valueOf(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__c) + String.valueOf(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Account_Id__c);
-            if(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Account_Id__c != null){
-                programIdToProgramNameMap.put(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__c, psd.Core_MDF_Program_Nm__c);
-                accountIdToAccountNameMap.put(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Account_Id__c, psd.Core_MDF_Account_Id__c);
-                accountIdsForIUPGMSet.add(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Account_Id__c);
-                accIdWithPrgKeyToAccNameMap.put(key, psd.Core_MDF_Account_Id__c);
-                channelProgramIdsForIUPGMQuery.add(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__c);
-                
-                //for IPA or RMF programs only: prepare intelAccountId-Program to Node Account Name map
-                if(programsForNodeAccountCheck.contains(psd.Core_MDF_Program_Nm__c) && psd.Core_MDF_Node_Account_Id__c != null){
-                    //for RMF only key will have nodeAccountId-Program as in IUPGM we have node account id stored for RMF
-                    if(psd.Core_MDF_Program_Nm__c == Core_MDF_CCP_ConstantClass.RMF_PROGRAM){
-                        key = String.valueOf(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__c) + String.valueOf(psd.Core_MDF_Node_Account_Id__c);
-                        accountIdsForIUPGMSet.add(psd.Core_MDF_Node_Account_Id__c);
-                    }
-                    accIdWithPrgKeyToAccNameMap.put(key, psd.Core_MDF_Node_Account_Id__r.Name);
-                    accountIdToAccountNameMap.put(psd.Core_MDF_Node_Account_Id__c, psd.Core_MDF_Node_Account_Id__r.Name);
+
+            //ATHR Comment - 17214 (deeply nested ifs)
+            //if(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Account_Id__c != null){
+
+            //ATHR Fix - 17214
+            if(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Account_Id__c == null) continue;
+            
+            programIdToProgramNameMap.put(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__c, psd.Core_MDF_Program_Nm__c);
+            accountIdToAccountNameMap.put(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Account_Id__c, psd.Core_MDF_Account_Id__c);
+            accountIdsForIUPGMSet.add(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Account_Id__c);
+            accIdWithPrgKeyToAccNameMap.put(key, psd.Core_MDF_Account_Id__c);
+            channelProgramIdsForIUPGMQuery.add(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__c);
+            
+            //for IPA or RMF programs only: prepare intelAccountId-Program to Node Account Name map
+            if(programsForNodeAccountCheck.contains(psd.Core_MDF_Program_Nm__c) && psd.Core_MDF_Node_Account_Id__c != null){
+                //for RMF only key will have nodeAccountId-Program as in IUPGM we have node account id stored for RMF
+                if(psd.Core_MDF_Program_Nm__c == Core_MDF_CCP_ConstantClass.RMF_PROGRAM){
+                    key = String.valueOf(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__c) + String.valueOf(psd.Core_MDF_Node_Account_Id__c);
+                    accountIdsForIUPGMSet.add(psd.Core_MDF_Node_Account_Id__c);
                 }
-                
-                //prepare map for Core_MDF_All_Accounts_cd__c == 'Yes' in IUPGM
-                Boolean isRMFProgram = psd.Core_MDF_Program_Nm__c == Core_MDF_CCP_ConstantClass.RMF_PROGRAM ? true : false;
-                String accountKey = isRMFProgram ? psd.Core_MDF_Node_Account_Id__c : psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Account_Id__c;
-                String accountValue = String.isNotBlank(psd.Core_MDF_Node_Account_Id__c) ? psd.Core_MDF_Node_Account_Id__c : psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Account_Id__c;
-                if(programIdToAccountIdtoNodeAccountIdSet.containsKey(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__c)){
-                    if(programIdToAccountIdtoNodeAccountIdSet.get(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__c).containsKey(accountKey)){
-                        programIdToAccountIdtoNodeAccountIdSet.get(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__c).get(accountKey).add(accountValue);
-                    }else{
-                        programIdToAccountIdtoNodeAccountIdSet.get(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__c).put(accountKey, new Set<String>{accountValue});
-                    }
-                }else{
-                    Map<String, Set<String>> intelAccountIdToAccountValue = new Map<String, Set<String>>{accountKey => new Set<String>{accountValue}};
-                        programIdToAccountIdtoNodeAccountIdSet.put(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__c, intelAccountIdToAccountValue);
-                }
+                accIdWithPrgKeyToAccNameMap.put(key, psd.Core_MDF_Node_Account_Id__r.Name);
+                accountIdToAccountNameMap.put(psd.Core_MDF_Node_Account_Id__c, psd.Core_MDF_Node_Account_Id__r.Name);
             }
+            
+            //prepare map for Core_MDF_All_Accounts_cd__c == 'Yes' in IUPGM
+            Boolean isRMFProgram = psd.Core_MDF_Program_Nm__c == Core_MDF_CCP_ConstantClass.RMF_PROGRAM ? true : false;
+            String accountKey = isRMFProgram ? psd.Core_MDF_Node_Account_Id__c : psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Account_Id__c;
+            String accountValue = String.isNotBlank(psd.Core_MDF_Node_Account_Id__c) ? psd.Core_MDF_Node_Account_Id__c : psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Account_Id__c;
+            if(programIdToAccountIdtoNodeAccountIdSet.containsKey(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__c)){
+                if(programIdToAccountIdtoNodeAccountIdSet.get(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__c).containsKey(accountKey)){
+                    programIdToAccountIdtoNodeAccountIdSet.get(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__c).get(accountKey).add(accountValue);
+                }else{
+                    programIdToAccountIdtoNodeAccountIdSet.get(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__c).put(accountKey, new Set<String>{accountValue});
+                }
+            }else{
+                Map<String, Set<String>> intelAccountIdToAccountValue = new Map<String, Set<String>>{accountKey => new Set<String>{accountValue}};
+                    programIdToAccountIdtoNodeAccountIdSet.put(psd.Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__c, intelAccountIdToAccountValue);
+            }
+
+            //ATHR Comment - 17214 (deeply nested ifs)    
+            //}
+
         }
         Core_MDF_CCP_GenericUtility.QueryIUPGMRecordsWrapper queryIUPGMRecordsWrapperObj = new Core_MDF_CCP_GenericUtility.QueryIUPGMRecordsWrapper();
         queryIUPGMRecordsWrapperObj.psNameList = psNameList;
@@ -754,12 +816,16 @@ public without sharing class Core_MDF_Recovery_Utility {
 	Description:        This helper method is used to support 'getProgramAndAccountSpecificAccountManagers'
 	Added By:           Accenture - Vikas Soni - 10/01/2025
 	Modified By:        Date:       Changes:
-    *******************************************************************************************************/
+	*******************************************************************************************************/
     public static Map<String, Map<String, Set<User>>> prepareAccountManagerNotificationMap(Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm, Map<String, Map<String, Set<User>>> programToAccountToUsersMap, Map<String, Set<String>> accountIdToNodeAccountIdMap, User userRecord){
         Set<String> intelOrNodeAccountIdList = new Set<String>();
         intelOrNodeAccountIdList = accountIdToNodeAccountIdMap.get(iupgm.Core_MDF_Account_id__c);
         
-        if(intelOrNodeAccountIdList != null){
+        //if(intelOrNodeAccountIdList != null){
+        if (intelOrNodeAccountIdList == null) { //ATHR Fix WW19
+            return programToAccountToUsersMap;
+        }
+
             for(String intelOrNodeAccountId : intelOrNodeAccountIdList){
                 if(programToAccountToUsersMap.containsKey(iupgm.Core_MDF_Channel_Program_Id__c)){
                     if(programToAccountToUsersMap.get(iupgm.Core_MDF_Channel_Program_Id__c).containsKey(intelOrNodeAccountId)){
@@ -771,14 +837,14 @@ public without sharing class Core_MDF_Recovery_Utility {
                     programToAccountToUsersMap.put(iupgm.Core_MDF_Channel_Program_Id__c, new Map<String, Set<User>>{intelOrNodeAccountId => new Set<User>{userRecord}});
                 }
             }
-        }
+        //}
         
         return programToAccountToUsersMap;
     }
 
     public static Set<String> getExcludeAccounts(String program){
         Map<String,String> programExcludeAccountMdtMap = Core_MDF_CCP_ConstantClass.Program_ExcludeAccountMdtMap;
-        Set<String> excludeAccIdSet = new Set<String>(); // acc ids to be excluded for recovery
+        Set<String> excludeAccIdSet = new Set<String>();
         List<String> mdtDevNameList = new List<String>();
         String mdt = programExcludeAccountMdtMap.get(program);
         mdtDevNameList.add(mdt);

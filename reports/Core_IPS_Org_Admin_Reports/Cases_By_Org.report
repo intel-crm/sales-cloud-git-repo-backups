@@ -8,14 +8,13 @@
             <axisBinding>y</axisBinding>
             <column>RowCount</column>
         </chartSummaries>
-        <chartType>Pie</chartType>
+        <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>false</expandOthers>
+        <expandOthers>true</expandOthers>
         <groupingColumn>Case.Core_Product_Organization__c</groupingColumn>
-        <legendPosition>OnChart</legendPosition>
         <location>CHART_TOP</location>
         <showAxisLabels>true</showAxisLabels>
-        <showPercentage>true</showPercentage>
+        <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
         <showValues>true</showValues>
         <size>Large</size>
@@ -46,6 +45,16 @@
     <columns>
         <field>ACCOUNT.NAME</field>
     </columns>
+    <filter>
+        <criteriaItems>
+            <column>STATUS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>New,Open,​Open,​​Open</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
     <format>Summary</format>
     <groupingsDown>
         <aggregateType>RowCount</aggregateType>
@@ -71,6 +80,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

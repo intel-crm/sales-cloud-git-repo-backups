@@ -69,19 +69,15 @@
         </approvalActions>
         <assignedApprover>
             <approver>
+                <name>Core_MDF_Approver_2__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
                 <name>Core_MDF_Approver_5__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_7__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
                 <name>Core_MDF_Approver_4__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_8__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -93,7 +89,15 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_2__c</name>
+                <name>Core_MDF_Approver_8__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_7__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_6__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -104,14 +108,11 @@
                 <name>Core_MDF_Approver_10__c</name>
                 <type>relatedUserField</type>
             </approver>
-            <approver>
-                <name>Core_MDF_Approver_6__c</name>
-                <type>relatedUserField</type>
-            </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
         </assignedApprover>
         <description>Geo lead approval when amount &lt; 25k and PCT is not applicable</description>
         <entryCriteria>
+            <booleanFilter>1 AND 2 AND 4 AND 5 AND 3</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
@@ -170,19 +171,7 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>Core_MDF_Approver_5__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_7__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
                 <name>Core_MDF_Approver_4__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_8__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -190,11 +179,11 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_9__c</name>
+                <name>Core_MDF_Approver_2__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_2__c</name>
+                <name>Core_MDF_Approver_7__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -206,13 +195,26 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
+                <name>Core_MDF_Approver_9__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_8__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
                 <name>Core_MDF_Approver_6__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_5__c</name>
                 <type>relatedUserField</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
         </assignedApprover>
         <description>Geo lead approval when amount &lt; 25k and PCT is  applicable</description>
         <entryCriteria>
+            <booleanFilter>1 AND 2 AND 4 AND 5 AND 3</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
@@ -281,7 +283,7 @@
         </assignedApprover>
         <description>APJ Price Review for amount &lt;25k</description>
         <entryCriteria>
-            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+            <booleanFilter>1 AND 2 AND 4 AND 5 AND 6 AND 3</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
@@ -654,23 +656,23 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>Core_MDF_Approver_7__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_5__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
                 <name>Core_MDF_Approver_4__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_8__c</name>
+                <name>Core_MDF_Approver_10__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_3__c</name>
+                <name>Core_MDF_Approver_1__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_6__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_7__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -682,15 +684,15 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_1__c</name>
+                <name>Core_MDF_Approver_8__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_10__c</name>
+                <name>Core_MDF_Approver_3__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_6__c</name>
+                <name>Core_MDF_Approver_5__c</name>
                 <type>relatedUserField</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
@@ -918,7 +920,7 @@
         </assignedApprover>
         <description>APJ Price Review for amount &gt;=25k and &lt;250k</description>
         <entryCriteria>
-            <booleanFilter>1 AND 2 AND 3 AND 4  AND 6 AND 7 AND (5 OR (8 AND 9))</booleanFilter>
+            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
@@ -953,16 +955,6 @@
                 <field>PartnerFundRequest.Core_MDF_Region_nm__c</field>
                 <operation>equals</operation>
                 <value>APJ</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>PartnerFundRequest.Core_MDF_After_the_Fact_Approved_ind__c</field>
-                <operation>equals</operation>
-                <value>True</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>PartnerFundRequest.Core_MDF_Approval_Step_Completed__c</field>
-                <operation>equals</operation>
-                <value>1</value>
             </criteriaItems>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
@@ -1583,7 +1575,7 @@
         </assignedApprover>
         <description>APJ Price Review for amount &gt;=250k</description>
         <entryCriteria>
-            <booleanFilter>1 AND 2 AND 4 AND 5 AND 6 AND ( 3 OR (7 AND 8))</booleanFilter>
+            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
@@ -1613,16 +1605,6 @@
                 <field>PartnerFundRequest.Core_MDF_Region_nm__c</field>
                 <operation>equals</operation>
                 <value>APJ</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>PartnerFundRequest.Core_MDF_After_the_Fact_Approved_ind__c</field>
-                <operation>equals</operation>
-                <value>True</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>PartnerFundRequest.Core_MDF_Approval_Step_Completed__c</field>
-                <operation>equals</operation>
-                <value>1</value>
             </criteriaItems>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
@@ -1996,6 +1978,10 @@
         <allowDelegate>false</allowDelegate>
         <approvalActions>
             <action>
+                <name>Core_MDF_Increment_step_counter</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
                 <name>Core_MDF_Reset_ATF_Approval_Reqd_Ind</name>
                 <type>FieldUpdate</type>
             </action>
@@ -2095,7 +2081,7 @@
         </rejectionActions>
     </approvalStep>
     <description>Approval Process flow to handle the activity approval process</description>
-    <emailTemplate>Testt/Core_MDF_NotifyActivityApprovers</emailTemplate>
+    <emailTemplate>unfiled$public/Core_MDF_NotifyActivityApprovers</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <booleanFilter>(1 OR 2 OR 3 OR (4 AND 5 )) AND 6</booleanFilter>
@@ -2217,7 +2203,7 @@
     </finalRejectionActions>
     <finalRejectionRecordLock>false</finalRejectionRecordLock>
     <label>Core_MDF_RMF_Activity_Approval_Process</label>
-    <processOrder>2</processOrder>
+    <processOrder>3</processOrder>
     <recallActions>
         <action>
             <name>Core_MDF_Clear_Approver_1</name>

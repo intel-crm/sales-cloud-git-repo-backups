@@ -24,8 +24,8 @@
     <fieldUpdates>
         <fullName>Core_MDF_Update_the_Bank_Program_Value</fullName>
         <field>Core_MDF_Program_Value__c</field>
-        <formula>IF(INCLUDES(Core_MDF_Program__c, &quot;Core_MDF_Client_CoMarketing_Fund&quot;),&quot;Client;&quot;,NULL)+
-IF(INCLUDES(Core_MDF_Program__c, &quot;Core_MDF_Data_Center_CoMarketing_Fund&quot;),&quot;Datacenter;&quot;,NULL)+
+        <formula>IF(INCLUDES(Core_MDF_Program__c, &quot;Core_MDF_Client_CoMarketing_Fund&quot;),&quot;Client Co-Marketing Fund;&quot;,NULL)+
+IF(INCLUDES(Core_MDF_Program__c, &quot;Core_MDF_Data_Center_CoMarketing_Fund&quot;),&quot;Data Center Co-Marketing Fund;&quot;,NULL)+
 IF(INCLUDES(Core_MDF_Program__c, &quot;Core_MDF_Service_Provider_CoMarketing_Fund&quot;),&quot;Service Provider Co-Marketing Fund;&quot;,NULL)+
 IF(INCLUDES(Core_MDF_Program__c, &quot;Core_MDF_Client_CoMarketing_Fund_Boost&quot;),&quot;Client Co-Marketing Fund Boost;&quot;,NULL)+
 IF(INCLUDES(Core_MDF_Program__c, &quot;Core_MDF_Retail_Marketing_Funds&quot;),&quot;Retail Marketing Funds;&quot;,NULL)+

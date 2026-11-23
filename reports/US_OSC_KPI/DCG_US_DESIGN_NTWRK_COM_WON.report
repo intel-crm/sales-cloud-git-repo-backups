@@ -78,7 +78,7 @@
     <columns>
         <field>OpportunityLineItem.Core_Opp_Approved_Oppty_Coverage__c</field>
     </columns>
-    <description>DCG Design Dashboard</description>
+    <description>RT: Optys w/ Product</description>
     <filter>
         <criteriaItems>
             <column>Opportunity.Core_Sales_Groups__c</column>
@@ -88,11 +88,18 @@
             <value>US Sales Group</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>DCG</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Win Approved,Production Win,Production Lost,Production Cancelled</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -115,20 +122,6 @@
             <operator>equals</operator>
             <value>Comms Infra. / Networking</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Design Win,Production Win,Production Lost,Production Cancelled</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Yes</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -138,7 +131,7 @@
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
-        <dateGranularity>Quarter</dateGranularity>
+        <dateGranularity>FiscalQuarter</dateGranularity>
         <field>OpportunityLineItem.Core_KPI_Date__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
@@ -147,7 +140,7 @@
         <field>OPPORTUNITY_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>US DESIGN DCG Networking $ WON</name>
+    <name>DCG US DESIGN NTWRK COM $ WON</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -173,6 +166,6 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_PREVCURY</interval>
+        <interval>INTERVAL_PREVCURFY</interval>
     </timeFrameFilter>
 </Report>

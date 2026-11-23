@@ -2,7 +2,8 @@
 public class Core_MDF_Custom_Metadata_Utility_Test {
     @IsTest
     static void testMethodName() {
-
+        // Highlight: Unused Local Variable - 14285 //Suma
+        //string categoryName = 'KPI';
         string whereClause = 'Core_MDF_Program__c = \'Retail Marketing Funds\' AND Core_MDF_Field_1_txt__c = \'Sales Readiness\' AND Core_MDF_Field_2_txt__c = \'In-Store Promotion\' AND Core_MDF_Field_4_txt__c != NULL AND Core_MDF_Sub_Category__c = \'PartnerFundRequest\'  AND Core_MDF_Checkbox_Field_3_Ind__c = false Order by Core_MDF_Sort_Order_Nbr__c  limit 1';
         Test.startTest();
         List<sObject> result = Core_MDF_Custom_Metadata_Utility.getCustomObjectRecords(whereClause);

@@ -19,7 +19,7 @@
         <field>PRODUCT_NAME</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -50,7 +50,7 @@
             <value>tomala,huzjak,smelkova,jadwiszczok,janicki,gal</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>

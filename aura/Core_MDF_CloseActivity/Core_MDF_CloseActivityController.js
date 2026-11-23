@@ -1,10 +1,12 @@
 ({
-  // method called on click of inactivate account button
-  doInit: function(component, event, helper) {
+    // method called on click of inactivate account button
+    doInit: function(component, event, helper) {
         var pageReference = component.get("v.pageReference");
+        console.log('pageReference--> ', pageReference);
         if(pageReference != null){
             component.set("v.recordId", pageReference.state.c__recordId);
         }
+        console.log('recordId--> ', component.get("v.recordId"));
         helper.incloseactivity(component, event, helper);
         helper.checkOutcomebaseActivity(component, event, helper);
     },
@@ -16,6 +18,7 @@
         var recordId = component.get("v.recordId");
         var communityBaseUrl = $A.get("$Label.c.Core_MDF_PFRCommunityLink");
         var path = window.location.pathname;
+        
         if (isOutcome) {
             var isCommunity = path.includes('/s/');
             if (isCommunity) {
@@ -25,7 +28,7 @@
                 window.location.href =
                     '/lightning/n/Core_MDF_Outcome_Based_Campaign_Detail?c__recordId=' + recordId;
             }
-        }
+        } 
         else {
             var navEvt = $A.get("e.force:navigateToSObject");
             if (navEvt) {

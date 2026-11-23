@@ -2,9 +2,9 @@
     <!--This tag sets PIC Review Screen's width and height-->
     <aura:html tag="style">
         .slds-modal__container {
-            height:max-content;
+        	height:max-content;
             max-width:90% !important;
-            width:auto !important
+            width:auto !important;
         }
         
         .slds-modal__content {
@@ -17,8 +17,13 @@
         .cuf-content {
             padding: 0 0px !important;
         }
-    </aura:html>    
-    <aura:registerEvent name="closeModalEvent" type="c:Core_MDF_closeModalEvent"/><!--Naveen close popup explicitly-->
-    <!--lwc component pic review screen-->
-    <c:core_MDF_PicReviewScreen recordId = "{!v.recordId}" onhidepicreviewscreen="{!c.hidePicReviewScreen}"></c:core_MDF_PicReviewScreen>
+
+       
+    </aura:html>
+    <aura:registerEvent name="closeModalEvent" type="c:Core_MDF_closeModalEvent"/><!--Naveen-->
+     <!--lwc component pic review screen-->
+     <!-- <div style="max-height: 500px;"><c:core_MDF_PicReviewScreen recordId = "{!v.recordId}" onhidepicreviewscreen="{!c.hidePicReviewScreen}"></c:core_MDF_PicReviewScreen></div> -->
+    
+     <c:core_MDF_PicReviewScreen recordId = "{!v.recordId}" onhidepicreviewscreen="{!c.hidePicReviewScreen}"></c:core_MDF_PicReviewScreen>
+    
 </aura:component>

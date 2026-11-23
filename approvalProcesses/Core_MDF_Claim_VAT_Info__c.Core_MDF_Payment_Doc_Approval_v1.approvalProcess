@@ -370,7 +370,7 @@
         </action>
     </initialSubmissionActions>
     <label>Claim Payment Document Approval</label>
-    <processOrder>1</processOrder>
+    <processOrder>2</processOrder>
     <recallActions>
         <action>
             <name>Core_MDF_VAT_Recall_Status_Update</name>

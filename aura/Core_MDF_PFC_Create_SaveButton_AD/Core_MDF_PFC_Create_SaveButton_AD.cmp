@@ -1,0 +1,45 @@
+<aura:component controller="Core_MDF_PartnerFundClaim" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,lightning:actionOverride,force:lightningQuickActionWithoutHeader">
+    <!--To hold claim object-->
+    <aura:attribute name="simpleNewClaim" type="PartnerFundClaim"/>
+    <!--To hold document object-->
+    <aura:attribute name="auditDocument" type="Core_MDF_Audit_Document__c[]"/>
+    <!--Flag to check claim is in edit process or not-->
+    <aura:attribute name="isClaimEdit" type="boolean"/>
+    <!--Spinner-->
+    <aura:attribute name="Spinner" type="boolean" default="false" />
+    <!--Current process step-->
+    <aura:attribute name="currentStep" type="string"/>
+    <!--Event to check whcih button clicked Back/Next-->
+    <aura:registerEvent name="ManageButtonEvent" type="c:Core_MDF_ManageButtonActionEvent"/>
+    <!--Event to get error message-->
+    <aura:registerEvent name="DisplayErrorMessageEvent" type="c:Core_MDF_DisplayGenericErrorEvent"/>
+    <aura:attribute name="isClaimEditable" type="boolean"/>
+    <aura:if isTrue="{!v.Spinner}">
+        <lightning:spinner alternativeText="Loading" size="medium" variant="brand" />
+    </aura:if>
+    <aura:if isTrue="{!v.isClaimEditable}">
+        <lightning:button disabled="{!v.currentStep != '1' ? '' : 'disabled'}"
+                          variant="neutral" 
+                          label="{!$Label.c.Core_MDF_Back_Button}"
+                          title="{!$Label.c.Core_MDF_Back_Button}"
+                          onclick="{!c.moveBack }"/>
+        
+        
+        <aura:if isTrue="{!v.currentStep != '2'}">
+            <lightning:button variant="brand" 
+                              label="{!$Label.c.Core_MDF_Next_Button}"
+                              title="{!$Label.c.Core_MDF_Next_Button}"
+                              onclick="{! c.moveNext }"/>
+            
+        </aura:if>
+        
+        <aura:if isTrue="{!v.currentStep == '2'}"> 
+            <lightning:button class="slds-float--right" variant="brand" aura:id="finishButton" label="{!$Label.c.Core_MDF_Save_Button}"
+                              title="{!$Label.c.Core_MDF_Save_Button}" onclick="{! c.finish }" disabled="{!v.isSaveDisabled}" />
+        </aura:if>
+        <aura:set attribute="else">
+            <lightning:button class="slds-float--right" variant="brand" aura:id="cancelButton" label="{!$Label.c.Core_MDF_Cancel_Button}"
+                              title="{!$Label.c.Core_MDF_Cancel_Button}" onclick="{!c.closeModalEvent}" />
+        </aura:set>
+    </aura:if>
+</aura:component>

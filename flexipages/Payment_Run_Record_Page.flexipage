@@ -15,6 +15,10 @@
                     <name>hideChatterActions</name>
                     <value>false</value>
                 </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideSlackAction</name>
+                    <value>false</value>
+                </componentInstanceProperties>
                 <componentName>force:highlightsPanel</componentName>
                 <identifier>force_highlightsPanel</identifier>
             </componentInstance>
@@ -92,7 +96,7 @@
                 <fieldItem>Record.Core_MDF_Geo_Txt__c</fieldItem>
                 <identifier>RecordCore_MDF_Geo_Txt__cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+                    <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>NE</operator>
@@ -102,6 +106,11 @@
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>NE</operator>
                         <rightValue>Client MDF</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.RecordType.Name}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Ecosystem Extension Fund</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.RecordType.Name}</leftValue>
@@ -402,7 +411,7 @@
                 <fieldItem>Record.Core_MDF_Run_For_All_Accounts__c</fieldItem>
                 <identifier>RecordCore_MDF_Run_For_All_Accounts_cField2</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>EQUAL</operator>
@@ -412,6 +421,11 @@
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Client MDF</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.RecordType.Name}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Ecosystem Extension Fund</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.RecordType.Name}</leftValue>
@@ -430,7 +444,7 @@
                 <fieldItem>Record.Core_MDF_Account_Id__c</fieldItem>
                 <identifier>RecordCore_MDF_Account_Id_cField1</identifier>
                 <visibilityRule>
-                    <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+                    <booleanFilter>(1 OR 2 OR 3) AND 4</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>EQUAL</operator>
@@ -440,6 +454,11 @@
                         <leftValue>{!Record.RecordType.Name}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Datacenter MDF</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.RecordType.Name}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Ecosystem Extension Fund</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.Core_MDF_Is_OOC_Payment_Ind__c}</leftValue>
@@ -841,6 +860,10 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>tabs</name>
                     <value>maintabs</value>

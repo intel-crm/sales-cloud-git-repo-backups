@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">Region should be same as its Parent Account.</value>
+        <value xsi:type="xsd:string">Region cannot be empty for the selected Program Or Region should be same as its Parent Account.</value>
     </values>
 </CustomMetadata>

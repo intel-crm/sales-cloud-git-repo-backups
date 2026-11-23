@@ -25,18 +25,5 @@
         <label><!-- Inactive Indicator --></label>
         <name>PRM_InActive_Ind__c</name>
     </fields>
-    <fields>
-        <label><!-- Specialty Criteria --></label>
-        <name>PRM_Specialty_Criteria_Id__c</name>
-        <relationshipLabel><!-- Account Specialty Qualitative Criteria --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Start Date --></label>
-        <name>PRM_Start_Date_Dt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Value --></label>
-        <name>PRM_Value_Txt__c</name>
-    </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

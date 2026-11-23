@@ -25,11 +25,11 @@ public without sharing class Core_MDF_Process_PAF_Claim{
           // Assign CoMarketing Record Types for Claims
           // Set<Id> recordTypeSet = Core_MDF_Claim_Utility.getRecordTypeSet(claimRecordTypeMap);
         
-        Map<Id,PartnerFundClaim> claimMap = new Map<Id,PartnerFundClaim>([SELECT Id, ChannelPartnerId,Core_MDF_Status__c, Status,Core_MDF_Currency__c, Core_MDF_Type_Txt__c,Core_MDF_Program__c,Core_MDF_Has_Sub_Claims_Ind__c,Core_MDF_Claim_EvalInProgress_Ind__c 
+        Map<Id,PartnerFundClaim> claimMap = new Map<Id,PartnerFundClaim>([SELECT Id, ChannelPartnerId,Core_MDF_AuditSelectionInProgress__c,Core_MDF_Status__c, Status,Core_MDF_Currency__c, Core_MDF_Type_Txt__c,Core_MDF_Program__c,Core_MDF_Has_Sub_Claims_Ind__c,Core_MDF_Claim_EvalInProgress_Ind__c 
                                                                           FROM partnerFundClaim 
                                                                           WHERE AllocationId IN: allocationIds 
                                                                           //AND (RecordTypeId IN:recordTypeSet)
-                                                                          AND (Core_MDF_Status__c =: Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Pending_Available_Fund') OR Core_MDF_Status__c =:Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Submitted'))
+                                                                          AND (Core_MDF_Status__c =: Label.Core_MDF_Status_Pending_Available_Fund OR Core_MDF_Status__c =:Label.Core_MDF_Status_Submitted)
                                                                           ]);
 
         if(claimMap!=null && claimMap.size()>0){

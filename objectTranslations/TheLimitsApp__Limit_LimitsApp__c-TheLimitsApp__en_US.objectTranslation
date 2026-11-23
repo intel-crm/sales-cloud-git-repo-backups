@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Limit</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Limits</value>
+    </caseValues>
+    <fields>
+        <label><!-- ActiveScratchOrgs_Max --></label>
+        <name>TheLimitsApp__ActiveScratchOrgs_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- ActiveScratchOrgs_Remaining --></label>
+        <name>TheLimitsApp__ActiveScratchOrgs_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- AnalyticsExternalDataSizeMB_Max --></label>
+        <name>TheLimitsApp__AnalyticsExternalDataSizeMB_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- AnalyticsExternalDataSizeMB_Remaining --></label>
+        <name>TheLimitsApp__AnalyticsExternalDataSizeMB_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- ConcurrentAsyncGetReportInstances_Max --></label>
+        <name>TheLimitsApp__ConcurrentAsyncGetReportInstances_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- ConcurrentAsyncGetReportInstances_Remain --></label>
+        <name>TheLimitsApp__ConcurrentAsyncGetReportInstances_Remain__c</name>
+    </fields>
+    <fields>
+        <label><!-- ConcurrentSyncReportRuns_Max --></label>
+        <name>TheLimitsApp__ConcurrentSyncReportRuns_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- ConcurrentSyncReportRuns_Remaining --></label>
+        <name>TheLimitsApp__ConcurrentSyncReportRuns_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyApiRequests_Max --></label>
+        <name>TheLimitsApp__DailyApiRequests_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyApiRequests_Remaining --></label>
+        <name>TheLimitsApp__DailyApiRequests_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyAsyncApexExecutions_Max --></label>
+        <name>TheLimitsApp__DailyAsyncApexExecutions_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyAsyncApexExecutions_Remaining --></label>
+        <name>TheLimitsApp__DailyAsyncApexExecutions_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyAsyncApexTests_Max --></label>
+        <name>TheLimitsApp__DailyAsyncApexTests_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyAsyncApexTests_Remaining --></label>
+        <name>TheLimitsApp__DailyAsyncApexTests_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyBulkApiBatches_Max --></label>
+        <name>TheLimitsApp__DailyBulkApiBatches_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyBulkApiBatches_Remaining --></label>
+        <name>TheLimitsApp__DailyBulkApiBatches_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyBulkV2QueryFileStorageMB_Max --></label>
+        <name>TheLimitsApp__DailyBulkV2QueryFileStorageMB_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyBulkV2QueryFileStorageMB_Remaining --></label>
+        <name>TheLimitsApp__DailyBulkV2QueryFileStorageMB_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyBulkV2QueryJobs_Max --></label>
+        <name>TheLimitsApp__DailyBulkV2QueryJobs_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyBulkV2QueryJobs_Remaining --></label>
+        <name>TheLimitsApp__DailyBulkV2QueryJobs_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyDeliveredPlatformEvents_Max --></label>
+        <name>TheLimitsApp__DailyDeliveredPlatformEvents_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyDeliveredPlatformEvents_Remaining --></label>
+        <name>TheLimitsApp__DailyDeliveredPlatformEvents_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyDurableGenericStreamingApiEvents_Ma --></label>
+        <name>TheLimitsApp__DailyDurableGenericStreamingApiEvents_Ma__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyDurableGenericStreamingApiEvents_Re --></label>
+        <name>TheLimitsApp__DailyDurableGenericStreamingApiEvents_Re__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyDurableStreamingApiEvents_Max --></label>
+        <name>TheLimitsApp__DailyDurableStreamingApiEvents_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyDurableStreamingApiEvents_Remaining --></label>
+        <name>TheLimitsApp__DailyDurableStreamingApiEvents_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyFunctionsApiCallLimit_Max --></label>
+        <name>TheLimitsApp__DailyFunctionsApiCallLimit_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyFunctionsApiCallLimit_Remaining --></label>
+        <name>TheLimitsApp__DailyFunctionsApiCallLimit_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyGenericStreamingApiEvents_Max --></label>
+        <name>TheLimitsApp__DailyGenericStreamingApiEvents_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyGenericStreamingApiEvents_Remaining --></label>
+        <name>TheLimitsApp__DailyGenericStreamingApiEvents_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyScratchOrgs_Max --></label>
+        <name>TheLimitsApp__DailyScratchOrgs_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyScratchOrgs_Remaining --></label>
+        <name>TheLimitsApp__DailyScratchOrgs_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyStandardVolumePlatformEvents_Max --></label>
+        <name>TheLimitsApp__DailyStandardVolumePlatformEvents_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyStandardVolumePlatformEvents_Remain --></label>
+        <name>TheLimitsApp__DailyStandardVolumePlatformEvents_Remain__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyStreamingApiEvents_Max --></label>
+        <name>TheLimitsApp__DailyStreamingApiEvents_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyStreamingApiEvents_Remaining --></label>
+        <name>TheLimitsApp__DailyStreamingApiEvents_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyWorkflowEmails_Max --></label>
+        <name>TheLimitsApp__DailyWorkflowEmails_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- DailyWorkflowEmails_Remaining --></label>
+        <name>TheLimitsApp__DailyWorkflowEmails_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- DataStorageMB_Max --></label>
+        <name>TheLimitsApp__DataStorageMB_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- DataStorageMB_Remaining --></label>
+        <name>TheLimitsApp__DataStorageMB_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- DurableStreamingApiConcurrentClients_Max --></label>
+        <name>TheLimitsApp__DurableStreamingApiConcurrentClients_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- DurableStreamingApiConcurrentClients_Rem --></label>
+        <name>TheLimitsApp__DurableStreamingApiConcurrentClients_Rem__c</name>
+    </fields>
+    <fields>
+        <label><!-- FileStorageMB_Max --></label>
+        <name>TheLimitsApp__FileStorageMB_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- FileStorageMB_Remaining --></label>
+        <name>TheLimitsApp__FileStorageMB_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- HourlyAsyncReportRuns_Max --></label>
+        <name>TheLimitsApp__HourlyAsyncReportRuns_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- HourlyAsyncReportRuns_Remaining --></label>
+        <name>TheLimitsApp__HourlyAsyncReportRuns_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- HourlyDashboardRefreshes_Max --></label>
+        <name>TheLimitsApp__HourlyDashboardRefreshes_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- HourlyDashboardRefreshes_Remaining --></label>
+        <name>TheLimitsApp__HourlyDashboardRefreshes_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- HourlyDashboardResults_Max --></label>
+        <name>TheLimitsApp__HourlyDashboardResults_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- HourlyDashboardResults_Remaining --></label>
+        <name>TheLimitsApp__HourlyDashboardResults_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- HourlyDashboardStatuses_Max --></label>
+        <name>TheLimitsApp__HourlyDashboardStatuses_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- HourlyDashboardStatuses_Remaining --></label>
+        <name>TheLimitsApp__HourlyDashboardStatuses_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- HourlyLongTermIdMapping_Max --></label>
+        <name>TheLimitsApp__HourlyLongTermIdMapping_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- HourlyLongTermIdMapping_Remaining --></label>
+        <name>TheLimitsApp__HourlyLongTermIdMapping_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- HourlyODataCallout_Max --></label>
+        <name>TheLimitsApp__HourlyODataCallout_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- HourlyODataCallout_Remaining --></label>
+        <name>TheLimitsApp__HourlyODataCallout_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- HourlyPSVPlatformEvents_Max --></label>
+        <name>TheLimitsApp__HourlyPSVPlatformEvents_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- HourlyPSVPlatformEvents_Rem --></label>
+        <name>TheLimitsApp__HourlyPSVPlatformEvents_Rem__c</name>
+    </fields>
+    <fields>
+        <label><!-- HourlyPublishedPlatformEvents_Max --></label>
+        <name>TheLimitsApp__HourlyPublishedPlatformEvents_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- HourlyPublishedPlatformEvents_Remaining --></label>
+        <name>TheLimitsApp__HourlyPublishedPlatformEvents_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- HourlyShortTermIdMapping_Max --></label>
+        <name>TheLimitsApp__HourlyShortTermIdMapping_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- HourlyShortTermIdMapping_Remaining --></label>
+        <name>TheLimitsApp__HourlyShortTermIdMapping_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- HourlySyncReportRuns_Max --></label>
+        <name>TheLimitsApp__HourlySyncReportRuns_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- HourlySyncReportRuns_Remaining --></label>
+        <name>TheLimitsApp__HourlySyncReportRuns_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- HourlyTimeBasedWorkflow_Max --></label>
+        <name>TheLimitsApp__HourlyTimeBasedWorkflow_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- HourlyTimeBasedWorkflow_Remaining --></label>
+        <name>TheLimitsApp__HourlyTimeBasedWorkflow_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- Latest --></label>
+        <name>TheLimitsApp__Latest__c</name>
+    </fields>
+    <fields>
+        <label><!-- MassEmail_Max --></label>
+        <name>TheLimitsApp__MassEmail_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- MassEmail_Remaining --></label>
+        <name>TheLimitsApp__MassEmail_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- Minutes Since Created --></label>
+        <name>TheLimitsApp__Minutes_Since_Created__c</name>
+    </fields>
+    <fields>
+        <label><!-- MonthlyPlatformEventsUsageEntitlement_Ma --></label>
+        <name>TheLimitsApp__MonthlyPlatformEventsUsageEntitlement_Ma__c</name>
+    </fields>
+    <fields>
+        <label><!-- MonthlyPlatformEventsUsageEntitlement_Re --></label>
+        <name>TheLimitsApp__MonthlyPlatformEventsUsageEntitlement_Re__c</name>
+    </fields>
+    <fields>
+        <label><!-- MonthlyPlatformEvents_Max --></label>
+        <name>TheLimitsApp__MonthlyPlatformEvents_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- MonthlyPlatformEvents_Remaining --></label>
+        <name>TheLimitsApp__MonthlyPlatformEvents_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- Newest --></label>
+        <name>TheLimitsApp__Newest__c</name>
+    </fields>
+    <fields>
+        <label><!-- Package2VersionCreatesWOV_Max --></label>
+        <name>TheLimitsApp__Package2VersionCreatesWOV_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- Package2VersionCreatesWOV_Rem --></label>
+        <name>TheLimitsApp__Package2VersionCreatesWOV_Rem__c</name>
+    </fields>
+    <fields>
+        <label><!-- Package2VersionCreates_Max --></label>
+        <name>TheLimitsApp__Package2VersionCreates_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- Package2VersionCreates_Remaining --></label>
+        <name>TheLimitsApp__Package2VersionCreates_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- PrivateConnectOutboundCalloutHourly_Max --></label>
+        <name>TheLimitsApp__PrivateConnectOutboundCalloutHourly_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- PrivateConnectOutboundCalloutHourly_Rem --></label>
+        <name>TheLimitsApp__PrivateConnectOutboundCalloutHourly_Rem__c</name>
+    </fields>
+    <fields>
+        <label><!-- SingleEmail_Max --></label>
+        <name>TheLimitsApp__SingleEmail_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- SingleEmail_Remaining --></label>
+        <name>TheLimitsApp__SingleEmail_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- StreamingApiConcurrentClients_Max --></label>
+        <name>TheLimitsApp__StreamingApiConcurrentClients_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- StreamingApiConcurrentClients_Remaining --></label>
+        <name>TheLimitsApp__StreamingApiConcurrentClients_Remaining__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

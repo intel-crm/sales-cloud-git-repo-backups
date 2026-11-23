@@ -36,11 +36,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Partner_License_Reclaimed__c</field>
+                <field>Core_Enable_Sales_Navigator_App__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_User_Fields_Merged__c</field>
+                <behavior>Edit</behavior>
+                <field>Partner_License_Reclaimed__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

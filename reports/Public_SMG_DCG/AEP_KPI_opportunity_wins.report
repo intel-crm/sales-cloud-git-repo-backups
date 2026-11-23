@@ -13,9 +13,6 @@
         <field>EXP_AMOUNT</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Opportunity_U_Base__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Approved_Date__c</field>
     </columns>
     <columns>
@@ -33,12 +30,6 @@
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>crystal ridge</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_Status__c</column>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>Win Approved,Production Win,Production Lost,Production Cancelled</value>
         </criteriaItems>
         <operation>with</operation>
         <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
@@ -58,14 +49,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Deal: Sell-through,Deal: Sell-to</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_OEM__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value></value>
+            <value>Deal: Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

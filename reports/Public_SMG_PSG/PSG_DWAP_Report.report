@@ -4,9 +4,6 @@
         <field>Account.Core_Geo__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Sales_Groups__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Business_Unit_Territory__c</field>
     </columns>
     <columns>

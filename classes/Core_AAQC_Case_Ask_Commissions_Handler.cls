@@ -5,7 +5,7 @@
 * Version Updates : 
 *   
 * Date          By                    User-Story    Details 
-* 10-Nob-18     Rob Robertson         US110979		Created	
+* 10-Nob-18     Rob Robertson         US110979    Created  
 ********************/
 public  class Core_AAQC_Case_Ask_Commissions_Handler {
 
@@ -94,16 +94,16 @@ public  class Core_AAQC_Case_Ask_Commissions_Handler {
     }
 
     public static boolean ShareCaseWithManager(Case myCase){
-		return ShareUnshareCaseWithManager(myCase,true);
+    return ShareUnshareCaseWithManager(myCase,true);
     }
     
     public static boolean UnShareCaseWithManager(Case myCase){
-		return ShareUnshareCaseWithManager(myCase,false);
+    return ShareUnshareCaseWithManager(myCase,false);
     }
     
     public static boolean ShareUnshareCaseWithManager(Case myCase,boolean isShare){
         if(myCase == null){
-        	system.debug('Core_AAQC_Case_Ask_Commissions_Handler ShareUnshareCaseWithManager: myCase is null');
+          system.debug('Core_AAQC_Case_Ask_Commissions_Handler ShareUnshareCaseWithManager: myCase is null');
             return false;
         }
         
@@ -113,15 +113,15 @@ public  class Core_AAQC_Case_Ask_Commissions_Handler {
         system.debug('managers' + managers);
         
         if(managers == null || managers.size() != 1){
-        	system.debug('Core_AAQC_Case_Ask_Commissions_Handler ShareUnshareCaseWithManager: Manager Not Found.  Manager: ' + managers);
+          system.debug('Core_AAQC_Case_Ask_Commissions_Handler ShareUnshareCaseWithManager: Manager Not Found.  Manager: ' + managers);
             return false;
         }
         else{
-	       	system.debug('Core_AAQC_Case_Ask_Commissions_Handler ShareUnshareCaseWithManager: ManagerId: ' + managers[0].ManagerId);
+           system.debug('Core_AAQC_Case_Ask_Commissions_Handler ShareUnshareCaseWithManager: ManagerId: ' + managers[0].ManagerId);
         }
         
         if(isShare)
-			return ShareCase(myCase.Id, managers[0].ManagerId);     
+      return ShareCase(myCase.Id, managers[0].ManagerId);     
         else
             return UnShareCase(myCase.Id, managers[0].ManagerId);     
     }
@@ -131,12 +131,12 @@ public  class Core_AAQC_Case_Ask_Commissions_Handler {
         system.debug('Core_AAQC_Case_Ask_Commissions_Handler ShareCase caseId ' + caseId + ' ShareWithId ' + shareWithId);
 
         if (caseId == null){
-	        system.debug('Core_AAQC_Case_Ask_Commissions_Handler ShareCase caseId is null');
+          system.debug('Core_AAQC_Case_Ask_Commissions_Handler ShareCase caseId is null');
             return false;
         }
         
         if (shareWithId == null){
-	        system.debug('Core_AAQC_Case_Ask_Commissions_Handler ShareCase shareWithId is null');
+          system.debug('Core_AAQC_Case_Ask_Commissions_Handler ShareCase shareWithId is null');
             return false;
         }
         
@@ -176,12 +176,12 @@ public  class Core_AAQC_Case_Ask_Commissions_Handler {
         system.debug('Core_AAQC_Case_Ask_Commissions_Handler UnShareCase caseId ' + caseId + ' ShareWithId ' + shareWithId);
 
         if (caseId == null){
-	        system.debug('Core_AAQC_Case_Ask_Commissions_Handler UnShareCase caseId is null');
+          system.debug('Core_AAQC_Case_Ask_Commissions_Handler UnShareCase caseId is null');
             return false;
         }
         
         if (shareWithId == null){
-	        system.debug('Core_AAQC_Case_Ask_Commissions_Handler UnShareCase shareWithId is null');
+          system.debug('Core_AAQC_Case_Ask_Commissions_Handler UnShareCase shareWithId is null');
             return false;
         }
         
@@ -202,7 +202,7 @@ public  class Core_AAQC_Case_Ask_Commissions_Handler {
         
 
         if (caseShares == null || caseShares.size() != 1){
-	        system.debug('Core_AAQC_Case_Ask_Commissions_Handler UnShareCase caseShares not found ' + caseShares);
+          system.debug('Core_AAQC_Case_Ask_Commissions_Handler UnShareCase caseShares not found ' + caseShares);
             return false;
         }
         

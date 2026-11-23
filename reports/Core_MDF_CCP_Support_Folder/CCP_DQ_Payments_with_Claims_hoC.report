@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Core_MDF_Payment__c.Partner_Fund_Claims__r$Name</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Payment__c.Partner_Fund_Claims__r$Core_MDF_Status__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Payment__c$Name</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Payment__c$Core_MDF_Payment_Status_Txt__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Payment__c.Partner_Fund_Claims__r$Request.ChannelPartner</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Payment__c.Partner_Fund_Claims__r$Request.ChannelPartner.Core_MDF_Channel_Program__c.Core_MDF_Technical_Program_Name__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>(1 AND 2) OR (3 AND 4)</booleanFilter>
+        <criteriaItems>
+            <column>Core_MDF_Payment__c.Partner_Fund_Claims__r$Core_MDF_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Paid</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_MDF_Payment__c$Core_MDF_Payment_Status_Txt__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Paid</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_MDF_Payment__c.Partner_Fund_Claims__r$Core_MDF_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Pending Payment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_MDF_Payment__c$Core_MDF_Payment_Status_Txt__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Pending Payment</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>CCP_DQ Payments with Claims</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Co_Marketing_Payments_with_Claim__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Core_MDF_Payment__c$Core_MDF_Payment_Sent_Dt__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

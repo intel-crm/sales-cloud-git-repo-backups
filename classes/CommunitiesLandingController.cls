@@ -9,4 +9,10 @@ public with sharing class CommunitiesLandingController {
     }
     
     public CommunitiesLandingController() {}
+    
+    public PageReference forwardToCustomAuthPage() {
+        String startUrl = System.currentPageReference().getParameters().get('startURL');
+        system.debug('startUrl:'+startUrl);
+        return new PageReference(Site.getPathPrefix() + '/Core_MDF_CustomerDisclaimer?startURL=' + EncodingUtil.urlEncode(startURL, 'UTF-8'));
+    }
 }

@@ -127,6 +127,13 @@
         <type>Default</type>
     </actionOverrides>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Test_without_Budget_Header</fullName>
+        <fields>Title</fields>
+        <fields>Amount</fields>
+        <fields>ChannelPartnerId</fields>
+        <label>Test without Budget Header</label>
+    </compactLayouts>
     <enableFeeds>true</enableFeeds>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
@@ -136,7 +143,7 @@
     </fields>
     <fields>
         <fullName>BudgetId</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>Lookup</type>
     </fields>
@@ -147,16 +154,23 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_Allocation_Consumption__c</fullName>
+        <description>Percentage of Allocation Consumption</description>
+        <externalId>false</externalId>
+        <formula>IF(Amount &gt; 0, IMAGE(&quot;/img/samples/color_red.gif&quot;,&quot;Amount Consumed&quot;,10,(( TotalApprovedFcs /Amount)*100)) &amp;
+IMAGE(&quot;/img/samples/color_green.gif&quot;,&quot;Amount Available&quot;,10, 100 - ((TotalApprovedFcs /Amount)*100)) &amp;
+&quot; &quot; &amp;  TEXT(ROUND(((TotalApprovedFcs /Amount)*100),2)) &amp; &quot;%&quot;, &quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>This field represents percentage of allocation consumed by claims submitted for the budget period that are in either Payment Due, Pending Payment or Paid Status.</inlineHelpText>
+        <label>Allocation Consumption %</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Available_Activity_Alloc_Amt__c</fullName>
-        <formula>IF(OR(AND(OR( RecordType.DeveloperName = &apos;Core_MDF_Client_CoMarketing_Fund&apos;,
-RecordType.DeveloperName = &apos;Core_MDF_Data_Center_CoMarketing_Fund&apos;,
-RecordType.DeveloperName = &apos;Core_MDF_Retail_Marketing_Funds&apos;,
-RecordType.DeveloperName = &apos;Core_MDF_Ecosystem_Extension_Fund&apos;),
-OR(Core_MDF_Budget_Type__c = &apos;OEM CMP&apos;,Core_MDF_Budget_Type__c = &apos;MDF&apos;,Core_MDF_Budget_Type__c = &apos;MDF+&apos;,
-Core_MDF_Budget_Type__c = &apos;Service Provider CMP&apos;,Core_MDF_Budget_Type__c = &apos;Retail MDF&apos;,Core_MDF_Budget_Type__c =&apos;Cloud&apos;)),
-(Budget.RecordType.DeveloperName = &apos;Core_MDF_IPA_Account_Based&apos;)) ,
-IF((Amount - Core_MDF_Total_Activity_Allocated_Amount__c)&gt;0,(Amount - Core_MDF_Total_Activity_Allocated_Amount__c),0)
-,0)</formula>
+        <formula>IF(OR(AND(OR( RecordType.DeveloperName = &apos;Core_MDF_Client_CoMarketing_Fund&apos;, RecordType.DeveloperName = &apos;Core_MDF_Data_Center_CoMarketing_Fund&apos;, RecordType.DeveloperName = &apos;Core_MDF_Retail_Marketing_Funds&apos;, RecordType.DeveloperName = &apos;Core_MDF_Ecosystem_Extension_Fund&apos;), OR(Core_MDF_Budget_Type__c = &apos;OEM CMP&apos;,Core_MDF_Budget_Type__c = &apos;MDF&apos;,Core_MDF_Budget_Type__c = &apos;MDF+&apos;, Core_MDF_Budget_Type__c = &apos;Service Provider CMP&apos;,Core_MDF_Budget_Type__c = &apos;Retail MDF&apos;,Core_MDF_Budget_Type__c =&apos;Cloud&apos;)), OR(Budget.RecordType.DeveloperName = &apos;Core_MDF_IPA_Account_Based&apos;, Budget.RecordType.DeveloperName = &apos;Core_MDF_Co_Inv&apos;)) , IF((Amount - Core_MDF_Total_Activity_Allocated_Amount__c)&gt;0,(Amount - Core_MDF_Total_Activity_Allocated_Amount__c),0) ,0)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <inlineHelpText>Amount available for Activity creation</inlineHelpText>
         <label>Activity Available Amount</label>
@@ -168,7 +182,7 @@ IF((Amount - Core_MDF_Total_Activity_Allocated_Amount__c)&gt;0,(Amount - Core_MD
     </fields>
     <fields>
         <fullName>Core_MDF_Available_Allocation_Amount__c</fullName>
-        <formula>Amount - TotalApprovedFcs</formula>
+        <formula>Amount  -  TotalApprovedFcs</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <inlineHelpText>Amount available for Claim creation</inlineHelpText>
         <label>Claim Available Amount</label>
@@ -239,6 +253,7 @@ $Label.Core_MDF_Intel_System_User
     </fields>
     <fields>
         <fullName>Core_MDF_Intel_Account_Name_Txt__c</fullName>
+        <description>Field used to fetch the Ultimate account from the account node</description>
         <externalId>false</externalId>
         <formula>ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Name</formula>
         <label>Intel Account Name</label>
@@ -279,6 +294,7 @@ $Label.Core_MDF_Intel_System_User
     </fields>
     <fields>
         <fullName>Core_MDF_Program_Txt__c</fullName>
+        <description>Field used to fetch the Program for the respective account</description>
         <externalId>false</externalId>
         <formula>ChannelPartner.Core_MDF_Channel_Program__r.Name</formula>
         <label>Program</label>
@@ -341,15 +357,12 @@ $Label.Core_MDF_Intel_System_User
         <columns>ChannelPartner</columns>
         <columns>Description</columns>
         <columns>Amount</columns>
-        <columns>Core_MDF_Available_Allocation_Amount__c</columns>
-        <columns>Core_MDF_Claim_Reserved_Amount_Amt__c</columns>
-        <columns>Core_MDF_Total_Activity_Allocated_Amount__c</columns>
-        <columns>Core_MDF_Available_Activity_Alloc_Amt__c</columns>
-        <columns>Core_MDF_Intel_Account_Name_Txt__c</columns>
-        <columns>TotalApprovedFcs</columns>
-        <columns>TotalApprovedFrs</columns>
-        <columns>TotalReimbursedFcs</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>ChannelPartner</field>
+            <operation>equals</operation>
+            <value>Dell Virtual Corp_Child</value>
+        </filters>
         <label>All Partner Fund Allocations</label>
     </listViews>
     <listViews>
@@ -360,16 +373,16 @@ $Label.Core_MDF_Intel_System_User
         <columns>ChannelPartner</columns>
         <columns>Description</columns>
         <columns>Amount</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Name</field>
-            <operation>contains</operation>
-            <value>2022 Q1 MDF Budget</value>
-        </filters>
+        <filterScope>Mine</filterScope>
         <label>My Partner Fund Allocations</label>
     </listViews>
     <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
     <recordTypeTrackHistory>true</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Core_MDF_BudType_Based_Allocation_Record_Type</fullName>
+        <active>true</active>
+        <label>Budget Type Based Allocation Record Type</label>
+    </recordTypes>
     <recordTypes>
         <fullName>Core_MDF_Channel_MDF</fullName>
         <active>true</active>
@@ -379,6 +392,7 @@ $Label.Core_MDF_Intel_System_User
     <recordTypes>
         <fullName>Core_MDF_Client_CoMarketing_Fund</fullName>
         <active>true</active>
+        <compactLayoutAssignment>Test_without_Budget_Header</compactLayoutAssignment>
         <label>Client CoMarketing Fund</label>
     </recordTypes>
     <recordTypes>
@@ -391,6 +405,12 @@ $Label.Core_MDF_Intel_System_User
         <active>true</active>
         <description>Record Type for Co-GTM</description>
         <label>Co-GTM</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Co_Inv</fullName>
+        <active>true</active>
+        <description>Record Type for Co-Inv</description>
+        <label>Co-Inv</label>
     </recordTypes>
     <recordTypes>
         <fullName>Core_MDF_Data_Center_CoMarketing_Fund</fullName>
@@ -442,11 +462,25 @@ $Label.Core_MDF_Intel_System_User
     </searchLayouts>
     <sharingModel>Private</sharingModel>
     <validationRules>
+        <fullName>Available_Amount_Cannot_be_lesser_than_0</fullName>
+        <active>false</active>
+        <description>Available_Amount_Cannot_be_lesser_than_0</description>
+        <errorConditionFormula>Core_MDF_Available_Allocation_Amount__c &lt; 0</errorConditionFormula>
+        <errorMessage>Available Amount Cannot be lesser than 0</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Core_MDF_AllocAmt_Cannot_be_lesserthan_0</fullName>
         <active>true</active>
         <description>To Validate that Allocation Amount cannot be lesser than 0</description>
         <errorConditionFormula>Amount  &lt; 0</errorConditionFormula>
         <errorMessage>Allocation Amount Cannot be lesser than 0</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Test_ALlocation_update</fullName>
+        <active>false</active>
+        <errorConditionFormula>TotalApprovedFcs &gt; Amount</errorConditionFormula>
+        <errorDisplayField>TotalApprovedFcs</errorDisplayField>
+        <errorMessage>Not Possible</errorMessage>
     </validationRules>
     <webLinks>
         <fullName>Core_MDF_Export_List_View</fullName>

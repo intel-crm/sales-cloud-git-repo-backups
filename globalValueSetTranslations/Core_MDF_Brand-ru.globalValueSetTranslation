@@ -62,7 +62,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel Atom Processor</masterLabel>
-        <translation><!-- Intel Atom Processor --></translation>
+        <translation>Процессор Intel Atom</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel Atom®</masterLabel>
@@ -82,11 +82,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel vPro®</masterLabel>
-        <translation><!-- Intel vPro® --></translation>
+        <translation>Intel vPro®, An Intel® Evo™ Design</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel vPro® platform</masterLabel>
-        <translation><!-- Intel vPro® platform --></translation>
+        <translation>Платформа Intel vPro®</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel vPro®, An Intel® Evo™ Design</masterLabel>
@@ -186,7 +186,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ Processor Family</masterLabel>
-        <translation><!-- Intel® Core™ Processor Family --></translation>
+        <translation>Семейство процессоров Intel® Core™</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ Ultra</masterLabel>
@@ -226,7 +226,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ i3 Processor</masterLabel>
-        <translation><!-- Intel® Core™ i3 Processor --></translation>
+        <translation>Процессор Intel® Core™ i3</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ i3 processor with Intel® Hybrid Technology</masterLabel>
@@ -238,7 +238,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ i5 Processor</masterLabel>
-        <translation><!-- Intel® Core™ i5 Processor --></translation>
+        <translation>Процессор Intel® Core™ i5</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ i5 Processor with Radeon™ RX Vega M graphics</masterLabel>
@@ -258,7 +258,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ i5 vPro® Processor</masterLabel>
-        <translation><!-- Intel® Core™ i5 vPro® Processor --></translation>
+        <translation>Процессор Intel® Core™ i5 vPro®</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ i5 vPro® Processor with Radeon™ RX Vega M graphics</masterLabel>
@@ -278,7 +278,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ i7 Processor</masterLabel>
-        <translation><!-- Intel® Core™ i7 Processor --></translation>
+        <translation>Процессор Intel® Core™ i7</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ i7 Processor Extreme Edition</masterLabel>
@@ -298,7 +298,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ i7 vPro® Processor</masterLabel>
-        <translation><!-- Intel® Core™ i7 vPro® Processor --></translation>
+        <translation>Процессор Intel® Core™ i7 vPro®</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ i7 vPro® Processor with Radeon™ RX Vega M graphics</masterLabel>
@@ -318,7 +318,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ i9 Processor</masterLabel>
-        <translation><!-- Intel® Core™ i9 Processor --></translation>
+        <translation>Процессор Intel® Core™ i9</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ i9 X-Series Processor</masterLabel>
@@ -330,7 +330,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ i9 vPro® Processor</masterLabel>
-        <translation><!-- Intel® Core™ i9 vPro® Processor --></translation>
+        <translation>Процессор Intel® Core™ i9 vPro®</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ i9+ Processor</masterLabel>
@@ -350,7 +350,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Corporate Logo</masterLabel>
-        <translation><!-- Intel® Corporate Logo --></translation>
+        <translation>Логотип корпорации Intel®</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Cyclone®</masterLabel>
@@ -378,7 +378,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Evo™ platform</masterLabel>
-        <translation><!-- Intel® Evo™ platform --></translation>
+        <translation>Платформа Intel® Evo™</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Evo™ platform powered by Intel® Core™ vPro® processor</masterLabel>
@@ -386,11 +386,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Evo™ powered by Core™ i5 processor</masterLabel>
-        <translation><!-- Intel® Evo™ powered by Core™ i5 processor --></translation>
+        <translation>Intel® Evo™ на базе процессора Core™ i5</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Evo™ powered by Core™ i7 processor</masterLabel>
-        <translation><!-- Intel® Evo™ powered by Core™ i7 processor --></translation>
+        <translation>Intel® Evo™ на базе процессора Core™ i7</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Evo™ vPro® platform</masterLabel>
@@ -399,6 +399,10 @@
     <valueTranslation>
         <masterLabel>Intel® Gaudi®</masterLabel>
         <translation><!-- Intel® Gaudi® --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Geti™</masterLabel>
+        <translation><!-- Intel® Geti™ --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Infrastructure Power Manager</masterLabel>
@@ -434,7 +438,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Market Ready Solutions</masterLabel>
-        <translation><!-- Intel® Market Ready Solutions --></translation>
+        <translation>Готовые решения Intel®</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Movidius™</masterLabel>
@@ -458,7 +462,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Optane™ PMem</masterLabel>
-        <translation><!-- Intel® Optane™ PMem --></translation>
+        <translation>Энергонезависимая память Intel® Optane™</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Optane™ Solid State Drives</masterLabel>
@@ -486,7 +490,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Processor (N/U Series)</masterLabel>
-        <translation><!-- Intel® Processor (N/U Series) --></translation>
+        <translation>Процессор Intel® (серия N/U)</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® RFP Ready Kits</masterLabel>
@@ -498,7 +502,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Robotics</masterLabel>
-        <translation>® Intel Robotics</translation>
+        <translation><!-- Intel® Robotics --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® SGX</masterLabel>
@@ -510,7 +514,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Select Solutions</masterLabel>
-        <translation><!-- Intel® Select Solutions --></translation>
+        <translation>Специализированные решения Intel®</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Server GPU</masterLabel>
@@ -554,7 +558,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® Bronze Processor</masterLabel>
-        <translation><!-- Intel® Xeon® Bronze Processor --></translation>
+        <translation>Процессор Intel® Xeon® Bronze</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® D Processor</masterLabel>
@@ -566,19 +570,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® Gold Processor</masterLabel>
-        <translation><!-- Intel® Xeon® Gold Processor --></translation>
+        <translation>Процессор Intel® Xeon® Gold</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® Platinum Processor</masterLabel>
-        <translation><!-- Intel® Xeon® Platinum Processor --></translation>
+        <translation>Процессор Intel® Xeon® Platinum</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® Processor</masterLabel>
-        <translation><!-- Intel® Xeon® Processor --></translation>
+        <translation>Процессор Intel® Xeon®</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® Silver Processor</masterLabel>
-        <translation><!-- Intel® Xeon® Silver Processor --></translation>
+        <translation>Процессор Intel® Xeon® Silver</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® W processor</masterLabel>
@@ -603,6 +607,10 @@
     <valueTranslation>
         <masterLabel>Ponte Vecchio</masterLabel>
         <translation><!-- Ponte Vecchio --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Test LOV Brand</masterLabel>
+        <translation><!-- Test LOV Brand --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Teton Glacier</masterLabel>

@@ -106,7 +106,7 @@
                                 </template>
                                 <template if:true={showAvailableBudgets}>
                                     <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
-                                        <lightning-dual-listbox name="availableBudgetValues" label="Campaign Budgets"
+                                        <lightning-dual-listbox name="availableBudgetValues" label="Campaign Budgets" class="availableBudgetValues"
                                             source-label={availableBudgetsLabel} selected-label="Selected Budgets"
                                             options={availableBudgetValues} value={selectedCmpBudgets} onchange={onBudgetSelection} required = "true" size={picklistSize.availableBudgetValues}>
                                         </lightning-dual-listbox>

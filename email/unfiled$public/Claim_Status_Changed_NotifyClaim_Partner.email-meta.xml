@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <available>true</available>
+    <description>External claim submitter will receives an email if Claim status changes to Review Completed</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Claim_Status_Changed_NotifyClaim_Partner</name>
+    <style>none</style>
+    <subject>Claim Case Score for Claim  is</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

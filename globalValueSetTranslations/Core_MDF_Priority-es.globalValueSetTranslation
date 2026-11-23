@@ -14,7 +14,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>5G/RAN</masterLabel>
-        <translation><!-- 5G/RAN --></translation>
+        <translation>5G/RAN</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>AI &amp; Machine Learning</masterLabel>
@@ -42,7 +42,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>AI </masterLabel>
-        <translation><!-- AI  --></translation>
+        <translation>IA </translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Advanced Analytics</masterLabel>
@@ -54,7 +54,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Analytics</masterLabel>
-        <translation><!-- Analytics --></translation>
+        <translation>Análisis</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Apple Compete Commercial</masterLabel>
@@ -78,7 +78,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Automotive</masterLabel>
-        <translation><!-- Automotive --></translation>
+        <translation>Automoción</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Cloud</masterLabel>
@@ -86,7 +86,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Cloud (Public, Private, hybrid, multi)</masterLabel>
-        <translation><!-- Cloud (Public, Private, hybrid, multi) --></translation>
+        <translation>Nube (pública, privada, híbrida, multi)</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Cloud Services</masterLabel>
@@ -107,6 +107,10 @@
     <valueTranslation>
         <masterLabel>Commercial - SMB</masterLabel>
         <translation>Comercial: pyme</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Commercial Client</masterLabel>
+        <translation><!-- Commercial Client --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Commercial Evo (non-vPro)</masterLabel>
@@ -150,7 +154,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Consumer Client</masterLabel>
-        <translation><!-- Consumer Client --></translation>
+        <translation>Cliente consumidor</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Consumer Evo</masterLabel>
@@ -186,7 +190,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Datacenter Modernization</masterLabel>
-        <translation><!-- Datacenter Modernization --></translation>
+        <translation>Modernización de centro de datos</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Design Win vs. Comp</masterLabel>
@@ -198,7 +202,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital Workplace</masterLabel>
-        <translation><!-- Digital Workplace --></translation>
+        <translation>Lugar de trabajo digital</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Edge</masterLabel>
@@ -226,7 +230,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Enterprise IT</masterLabel>
-        <translation>TI para empresas</translation>
+        <translation><!-- Enterprise IT --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Extend Platform Leadership</masterLabel>
@@ -238,7 +242,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>FPGA Accelerators</masterLabel>
-        <translation><!-- FPGA Accelerators --></translation>
+        <translation>Aceleradores de FPGA</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Fixed/Wireless Access</masterLabel>
@@ -258,7 +262,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>HPC </masterLabel>
-        <translation><!-- HPC  --></translation>
+        <translation>HPC </translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>High Performance Computing</masterLabel>
@@ -270,11 +274,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>IREP</masterLabel>
-        <translation><!-- IREP --></translation>
+        <translation>IREP</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>In-Memory Database/Optane Pmem</masterLabel>
-        <translation><!-- In-Memory Database/Optane Pmem --></translation>
+        <translation>Base de datos en memoria/Optane Pmem</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Infrastructure Modernization</masterLabel>
@@ -286,11 +290,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Instore innovation</masterLabel>
-        <translation><!-- Instore innovation --></translation>
+        <translation>Innovación en tienda</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Instore merchandise</masterLabel>
-        <translation><!-- Instore merchandise --></translation>
+        <translation>Mercancías en tienda</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel/RSP Advocacy</masterLabel>
@@ -303,6 +307,10 @@
     <valueTranslation>
         <masterLabel>Machine Learning</masterLabel>
         <translation><!-- Machine Learning --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mainstream Client</masterLabel>
+        <translation><!-- Mainstream Client --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mainstream PCs</masterLabel>
@@ -374,11 +382,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Online Performance</masterLabel>
-        <translation><!-- Online Performance --></translation>
+        <translation>Rendimiento en línea</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Other</masterLabel>
         <translation>Otros</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Physical AI</masterLabel>
+        <translation><!-- Physical AI --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Premium Client</masterLabel>
+        <translation><!-- Premium Client --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Private Wireless Networks</masterLabel>
@@ -386,7 +402,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>RXT engagement</masterLabel>
-        <translation><!-- RXT engagement --></translation>
+        <translation>Participación RXT</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Radio Access Networks</masterLabel>
@@ -426,7 +442,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Target demand gen</masterLabel>
-        <translation><!-- Target demand gen --></translation>
+        <translation>Generación de demanda de objetivo</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technology Adoption</masterLabel>
@@ -434,15 +450,15 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Telecom Transformation</masterLabel>
-        <translation><!-- Telecom Transformation --></translation>
+        <translation>Transformación de las telecomunicaciones</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Unite</masterLabel>
-        <translation><!-- Unite --></translation>
+        <translation>Unite</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Vision</masterLabel>
-        <translation><!-- Vision --></translation>
+        <translation>Visión</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Visual Cloud</masterLabel>
@@ -458,7 +474,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Win Screen w IPOS</masterLabel>
-        <translation><!-- Win Screen w IPOS --></translation>
+        <translation>Pantalla de Windows con IPOS</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Win Volume</masterLabel>
@@ -466,15 +482,15 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Windows 10 Refresh</masterLabel>
-        <translation><!-- Windows 10 Refresh --></translation>
+        <translation>Actualización de Windows 10</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Workload Consolidation</masterLabel>
-        <translation><!-- Workload Consolidation --></translation>
+        <translation>Consolidación de la carga de trabajo</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Workplace Transformation </masterLabel>
-        <translation><!-- Workplace Transformation  --></translation>
+        <translation>Transformación del lugar de trabajo </translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Workstation</masterLabel>

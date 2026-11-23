@@ -1,16 +1,24 @@
 /******************************************************************************************************
 * Class Name  : Core_MDF_BudgetTransferHandler_EXT
 * Modification Log :
-* Modified By:         	Date                Description
-* Accenture- VD			05-02-2019   		Added check for SPCF Record Type 
-* Accenture- HP			07-02-2019   		Modified check for SPCF Record Type 
+* Modified By:          Date                Description
+* Accenture- VD         05-02-2019          Added check for SPCF Record Type 
+* Accenture- HP         07-02-2019          Modified check for SPCF Record Type 
 * -----------------------------------------------------------------------------------------------------
 *******************************************************************************************************/
 public without sharing class Core_MDF_BudgetTransferHandler_EXT {
     
     @AuraEnabled
-    public static String transferAllocationAmount(String partnerFrom,String partnerTo,String pbmId,Decimal amount, string typeOfTransfer)
+    //    public static String transferAllocationAmount(String partnerFrom,String partnerTo,String pbmId,Decimal amount, string typeOfTransfer) //14285
+    public static String transferAllocationAmount(TransferRequestWrapper req)
     {
+        // Convert wrapper parameters to local variables
+        String partnerFrom = req.partnerFrom;
+        String partnerTo = req.partnerTo;
+        String pbmId = req.pbmId;
+        Decimal amount = req.amount;
+        String typeOfTransfer = req.typeOfTransfer;
+        
         String transactionStatus='';
         // Adding the below Savepoint incase any technical error occurs, rollback till this point
         Savepoint sp = Database.setSavepoint();
@@ -37,7 +45,7 @@ public without sharing class Core_MDF_BudgetTransferHandler_EXT {
                 
                 String allocationRecTypeDevName = mapProgramToRecordTypeAPI.get(program);               
                 recordtype = Schema.SObjectType.PartnerFundAllocation.getRecordTypeInfosByDeveloperName().get(allocationRecTypeDevName).getRecordTypeId();
-			
+            
             pfaFrom= [SELECT Amount
                       FROM PartnerFundAllocation 
                       WHERE BudgetId=:pbmId AND ChannelPartnerId=:partnerFrom
@@ -108,5 +116,14 @@ public without sharing class Core_MDF_BudgetTransferHandler_EXT {
             Database.rollback(sp);Core_MDF_CCP_UtilityClass.logError(e);return transactionStatus = Label.Core_MDF_ApplicationErrorMessage;
         }
         return transactionStatus;
-    }    
+    }
+    
+    // Wrapper class for transferAllocationAmount method parameters
+    public class TransferRequestWrapper {
+        @AuraEnabled public String partnerFrom;
+        @AuraEnabled public String partnerTo;
+        @AuraEnabled public String pbmId;
+        @AuraEnabled public Decimal amount;
+        @AuraEnabled public String typeOfTransfer;
+    }
 }

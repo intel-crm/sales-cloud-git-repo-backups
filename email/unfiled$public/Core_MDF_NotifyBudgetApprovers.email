@@ -1,0 +1,34 @@
+<messaging:emailTemplate renderUsingSystemContextWithoutSharing="true"
+                         subject="Approval Request"
+                         relatedToType="PartnerMarketingBudget"
+                         recipientType="User">
+<messaging:htmlEmailBody >
+<html>
+<body>
+
+<p><span>{!$Label.Core_MDF_EmailTemp_DearIntelemployee} </span></p>
+<p>{!relatedTo.LastModifiedBy.Name}&nbsp;has requested your approval for the following item: <strong><a href="{!$Label.Core_MDF_PFRDetailLink+RelatedTo.Id}">{!RelatedTo.Title}</a></strong></p>
+<p>Please click this link to approve or reject this record.</p>
+
+<div>Thank you,</div>
+<div>Intel® Partner Investment Center</div>
+
+<div style="font-size:11px;font-family:Calibri">
+                    <p>
+                        <i>  {!$Label.Core_MDF_EmailTemp_Claim_Footer1}
+                            <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> {!$Label.Core_MDF_EmailTemp_Claim_URL2} </a>
+                            {!$Label.Core_MDF_EmailTemp_Claim_Footer2}<br/><br/>
+                        </i>
+                        {!$Label.Core_MDF_EmailTemp_Claim_Footer3}
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> {!$Label.Core_MDF_EmailTemp_Claim_URL2} </a>
+                        {!$Label.Core_MDF_EmailTemp_Claim_Footer4}<br/><br/>
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Home}" > {!$Label.Core_MDF_EmailTemp_Footer3} </a> | 
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Trademarks}"> {!$Label.Core_MDF_EmailTemp_Footer4} </a> | 
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Privacy}"> {!$Label.Core_MDF_EmailTemp_Footer5} </a> |
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Cookies}"> {!$Label.Core_MDF_EmailTemp_Footer6} </a>
+                    </p>
+</div>         
+</body>
+</html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

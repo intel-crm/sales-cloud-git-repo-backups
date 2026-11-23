@@ -174,6 +174,11 @@
                     <default>false</default>
                     <label>Proposal Based</label>
                 </value>
+                <value>
+                    <fullName>Cloud</fullName>
+                    <default>false</default>
+                    <label>Cloud</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -198,6 +203,15 @@ Ex: [{&quot;prmissionSetName&quot; : &quot;Core_MDF_CCP_Internal_IPA_Acct_Mgr&qu
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_External_API_Sample_Payload_txt__c</fullName>
+        <label>External API Sample Payload</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Core_MDF_Field_View_nm__c</fullName>
@@ -225,8 +239,39 @@ Ex: [{&quot;prmissionSetName&quot; : &quot;Core_MDF_CCP_Internal_IPA_Acct_Mgr&qu
                     <default>false</default>
                     <label>API Create</label>
                 </value>
+                <value>
+                    <fullName>API Update</fullName>
+                    <default>false</default>
+                    <label>API Update</label>
+                </value>
+                <value>
+                    <fullName>API List</fullName>
+                    <default>false</default>
+                    <label>API List</label>
+                </value>
+                <value>
+                    <fullName>API Detail</fullName>
+                    <default>false</default>
+                    <label>API Detail</label>
+                </value>
+                <value>
+                    <fullName>API List View</fullName>
+                    <default>false</default>
+                    <label>API List View</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Filter_Criteria_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Filter Criteria</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_Hide_If_No_Value_Ind__c</fullName>
@@ -235,6 +280,19 @@ Ex: [{&quot;prmissionSetName&quot; : &quot;Core_MDF_CCP_Internal_IPA_Acct_Mgr&qu
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_List_API_Record_Count_Limit_nbr__c</fullName>
+        <description>This will set the record count Limit for List API.</description>
+        <externalId>false</externalId>
+        <label>List API Record Count Limit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_No_Of_Columns_nm__c</fullName>
@@ -405,6 +463,19 @@ Ex: [{&quot;prmissionSetName&quot; : &quot;Core_MDF_CCP_Internal_IPA_Acct_Mgr&qu
         <visibleLines>3</visibleLines>
     </fields>
     <label>Custom Layout Section</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Record_Type_Name_txt__c</columns>
+        <columns>Core_MDF_Object_Name_txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Object_Name_txt__c</field>
+            <operation>equals</operation>
+            <value>PartnerFundClaim</value>
+        </filters>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>CLS-{0000}</displayFormat>
         <label>Custom Layout Section Name</label>

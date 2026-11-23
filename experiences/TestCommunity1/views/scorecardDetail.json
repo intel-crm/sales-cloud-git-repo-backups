@@ -1,0 +1,205 @@
+{
+  "appPageId" : "1f1f0c88-2082-47fd-848d-f4bfea5157f2",
+  "componentName" : "siteforce:sldsThreeCol444Layout",
+  "dataProviders" : [ ],
+  "id" : "095eb472-5711-464d-8b1b-a88883dd79d2",
+  "label" : "Scorecard Detail",
+  "regions" : [ {
+    "id" : "745b1ee6-d116-4275-9af3-12edd2cb780b",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Scorecard__c.Id",
+        "reportId" : "TestReportChart",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "e3c76e99-e362-4fad-88fd-c16ca3a1f134",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Scorecard__c.Id",
+        "reportId" : "TestReportChart",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "1719c97d-880d-4ef0-a0ca-39a6b9cba05e",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Scorecard__c.Id",
+        "reportId" : "TestReportChart",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "a911d2c3-2e3f-4d64-b3d3-3810968aabdd",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Scorecard__c.Id",
+        "reportId" : "TestReportChart",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "47c79cad-d49c-4f2f-83f8-392af373cc7d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "0a245841-bd25-4675-99dc-cf4918677c48",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "4434a3c1-0caf-4f0a-a1dd-63b11d803b81",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "70d5491e-63df-43a5-9a63-f99788478c1b",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "92d088f9-bb33-4ab9-b441-ab1c7093b670",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Scorecard__c.Id",
+        "reportId" : "TestReportChart",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "57b4e2ca-42e0-4bc9-8846-7f1d1baef270",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Scorecard__c.Id",
+        "reportId" : "TestReportChart",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "b0ec5304-f6ec-47eb-9b5c-ecbeb60b71ba",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Scorecard__c.Id",
+        "reportId" : "TestReportChart",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "a0013735-f466-4d53-9a47-2248ee382567",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Scorecard__c.Id",
+        "reportId" : "TestReportChart",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "4a145200-0e5f-48eb-a789-7a8e3e6f75fc",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "1e2fab5b-c96c-4fb2-a48d-0f415016e285",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Scorecard__c.Id",
+        "reportId" : "TestReportChart",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "5c13c96f-4fc4-40b5-bb95-d54270a602ed",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Scorecard__c.Id",
+        "reportId" : "TestReportChart",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "0cd3a6ad-302a-4824-87fb-0f32d69f93da",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Scorecard__c.Id",
+        "reportId" : "TestReportChart",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "40803597-6cf7-4a07-b5c8-67327eb9dc1a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Scorecard__c.Id",
+        "reportId" : "TestReportChart",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "b550d21f-43b9-456a-b7da-052ddd09e61f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "5e40316f-9625-4c21-9e04-7c81c4ff6dc3",
+    "regionName" : "sidebarAlt",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-a5U"
+}

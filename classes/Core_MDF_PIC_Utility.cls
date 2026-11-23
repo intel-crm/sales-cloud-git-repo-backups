@@ -10,14 +10,14 @@ public without sharing class Core_MDF_PIC_Utility {
     public static List<PartnerFundClaim> vatClaims = new List<PartnerFundClaim>();
     
     public static Boolean isPICCompleted(PartnerFundClaim newclaim,PartnerFundClaim oldClaim){
-        
+       
           if(oldClaim !=null && (newclaim.Core_MDF_PIC_Review_Completed__c && !oldClaim.Core_MDF_PIC_Review_Completed__c))// && newclaim.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PIC_Pending')
                   { 
                        return true;
                    }else{ return false;} 
             
         }
-    public static void checkForHoldIndAndUpdateStatus(Map<Id, PartnerFundClaim> newClaimMap, Map<Id,PartnerFundClaim> oldClaimMap)
+    public static void checkForHoldIndAndUpdateStatus(Map<Id, PartnerFundClaim> newClaimMap, Map<Id,PartnerFundClaim> oldClaimMap)  //before update
     {
         List<String> listOfInvalidStatusForHoldCheckOnUpdate = Core_MDF_CustomLabelConfig.getTextList('Core_MDF_ClaimStatusExcludedForHoldCheck');
         List<string> opalBudgetTypes = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_OPAL_BudgetTypes').split(';');
@@ -29,16 +29,18 @@ public without sharing class Core_MDF_PIC_Utility {
         //To check the documents are uploaded for a Claim
         Map<Id,Boolean> claimIdToDocuemntStatusMap = Core_MDF_Audit_Rules_Processing.checkPOPDocuments(new List<Id>(newClaimMap.keySet()));
 
+        //Set<Id> superClaimsToHold = new Set<Id>();  //Roshan - Super Claim PIC
+
         for(PartnerFundClaim newclaim : newClaimMap.values())
         {
-           
+
+            if(isLegacy(newclaim) && !newclaim.Core_MDF_Eligible_for_PIC__c){
             
-            if(isLegacy(newclaim) && !newclaim.Core_MDF_Eligible_for_PIC__c)
-            {
                 //excluding final statuses in hold check
-                if(listOfInvalidStatusForHoldCheckOnUpdate!=null && !listOfInvalidStatusForHoldCheckOnUpdate.contains(newclaim.Core_MDF_Status__c) && isHoldApplicable(newclaim))
-                {
+                if(listOfInvalidStatusForHoldCheckOnUpdate!=null && !listOfInvalidStatusForHoldCheckOnUpdate.contains(newclaim.Core_MDF_Status__c) && isHoldApplicable(newclaim)){
+                
                     newclaim.Core_MDF_Status__c = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Hold');
+
                     if(newclaim.Core_MDF_Reprocess_Claim__c == true)
                     {
                         newclaim.Core_MDF_Reprocess_Claim__c = false;
@@ -46,13 +48,12 @@ public without sharing class Core_MDF_PIC_Utility {
                     //Added to uncheck reprocess claim checkbox to avoid conflict with validation rule
                 }
             }
-
-            // Roshan - added program check for cogtm
             else if(newClaim.Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM && newclaim.Core_MDF_Eligible_for_PIC__c && isPICCompleted(newclaim, oldClaimMap.get(newclaim.id)) && isHoldApplicable(newclaim)) {
                 newclaim.Core_MDF_Status__c = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Hold');
             }
             else if(newClaim.Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM && newclaim.Core_MDF_Eligible_for_PIC__c && isPICCompleted(newclaim, oldClaimMap.get(newclaim.id)) && !isHoldApplicable(newclaim) && newclaim.Core_MDF_Status__c != 'Paid') {
                 newclaim.Core_MDF_Status__c = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Submitted');
+
             }
             else if(newClaim.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM && newclaim.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Submitted') && oldClaimMap.get(newclaim.id).Core_MDF_Status__c != Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Hold'))
                 
@@ -60,6 +61,13 @@ public without sharing class Core_MDF_PIC_Utility {
             	newclaim.Core_MDF_Status__c = isHoldApplicable(newclaim) ? Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Hold') : Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Submitted');
                 
             }
+
+
+            //Roshan - Super Claim PIC
+            // if (newclaim.Core_MDF_Claim_Id__c != null && newclaim.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Hold')) {
+            //     system.debug('insideNew@@@');
+            //     superClaimsToHold.add(newclaim.Core_MDF_Claim_Id__c);
+            // }
 
             //Related to Manual Audit
             //Once Legacy claim status updated to Paid from Pending Payment and if the Manaul Audit Staging flag is true
@@ -87,12 +95,22 @@ public without sharing class Core_MDF_PIC_Utility {
                 newclaim.Core_MDF_Audit_Type__c = rowCauseManual;
             }
         }
+
+        //Roshan - Super Claim PIC
+        // if (!superClaimsToHold.isEmpty()) {
+        //     List<PartnerFundClaim> superClaims = [SELECT Id, Core_MDF_Status__c FROM PartnerFundClaim WHERE Id IN :superClaimsToHold AND Core_MDF_Status__c != :Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Hold')];
+        //     for (PartnerFundClaim sc : superClaims) {
+        //         system.debug('scID@@@' + sc.Id);
+        //         sc.Core_MDF_Status__c = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Hold');
+        //     }
+        // }
+
         if(vatClaims != null && vatClaims.size()>0){
             Core_MDF_Claim_VAT_Process.updateclaimVATInfo(vatClaims);
         }
     }
-    
-	//Roshan - Super Claim PIC 
+
+    //Roshan - Super Claim PIC - updated for Super/Sub claims
     public static boolean isHoldApplicable(PartnerFundClaim newclaim)
     {
         boolean isHold = false;
@@ -131,7 +149,8 @@ public without sharing class Core_MDF_PIC_Utility {
         }
         return isHold;
     }
-      
+    
+    
     public static boolean isLegacy(PartnerFundClaim claim)
     {
         if(((claim.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCF_Program_Name') || claim.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_DCF_Program_Name'))

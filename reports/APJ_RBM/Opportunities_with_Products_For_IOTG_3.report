@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>ACCOUNT_NAME</field>
+        <field>OpportunityLineItem.Core_Opp_OpportunityType__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Intel_Platform__c</field>
@@ -14,9 +14,6 @@
     </columns>
     <columns>
         <field>PRODUCT_NAME</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Consumption_Market__c</field>
     </columns>
     <columns>
         <field>AMOUNT</field>
@@ -59,7 +56,10 @@
         <field>PRODUCT_ACTIVE</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Product2.Core_Platform_Name__c</field>
@@ -69,7 +69,14 @@
     </columns>
     <filter>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_KPI_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>12/29/2018</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -87,17 +94,17 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Product_Segment__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
         <field>Account.Core_Sales_Groups__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_Opp_OpportunityType__c</field>
+        <field>Opportunity.Core_Consumption_Market__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Product_Segment__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Opportunities with Products - For IOTG 3</name>
@@ -123,7 +130,7 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

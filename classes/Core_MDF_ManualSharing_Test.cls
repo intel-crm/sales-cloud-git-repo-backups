@@ -22,7 +22,7 @@ public without sharing class Core_MDF_ManualSharing_Test {
         dellCorpAccount.IsPartner = true;
         Database.update(dellCorpAccount);    
         Account intelAcc = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
-    
+		
         //Creating Contact for Partner User
         Contact conRecord1 = Core_MDF_CCP_TestDataUtility.createContact(dellCorpAccount.Id,true);            
 
@@ -30,7 +30,7 @@ public without sharing class Core_MDF_ManualSharing_Test {
         
         List<User> userList = new List<User>();
         List<Account> acctList = new List<Account>();
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
        // List<PermissionSetAssignment> permissionSetAssignmentList = new List<PermissionSetAssignment>();
         
         //Creating User with utility class 
@@ -61,7 +61,7 @@ public without sharing class Core_MDF_ManualSharing_Test {
         system.runAs(usr){
             database.insert(psa1);
             PermissionSet eefBudManager = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_Internal_EEF_Budget_Manager' LIMIT 1];
-        insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = eefBudManager.Id);
+		    insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = eefBudManager.Id);
         }
         
         List<ChannelProgram> cpList = new List<ChannelProgram>();      
@@ -121,16 +121,16 @@ public without sharing class Core_MDF_ManualSharing_Test {
         listAcct.add(dellDCFAPAC);
         
         Account eefPrimaryVirtualCorp = Core_MDF_CCP_TestDataUtility.createAccount ('EEF Primary Virtual Corp', eefCP.Id,Core_MDF_CCP_TestDataUtility.Account_Record_Type, false);                           
-    eefPrimaryVirtualCorp.Core_MDF_Parent_Fund_Account__c = dellCorpAccount.Id;
+		eefPrimaryVirtualCorp.Core_MDF_Parent_Fund_Account__c = dellCorpAccount.Id;
         eefPrimaryVirtualCorp.Core_MDF_Partner_Type_nm__c ='Primary Partner';
-    insert eefPrimaryVirtualCorp;
+		insert eefPrimaryVirtualCorp;
         //listAcct.add(eefPrimaryVirtualCorp);
         
         Account eefActivatingVirtualCorp = Core_MDF_CCP_TestDataUtility.createAccount ('EEF Activating Virtual Corp', eefCP.Id,Core_MDF_CCP_TestDataUtility.Account_Record_Type, false);                           
-    eefActivatingVirtualCorp.Core_MDF_Parent_Fund_Account__c = intelAcc.Id;
+		eefActivatingVirtualCorp.Core_MDF_Parent_Fund_Account__c = intelAcc.Id;
         eefActivatingVirtualCorp.Core_MDF_Partner_Type_nm__c ='Activating Partner';
-    insert eefActivatingVirtualCorp;
-    //listAcct.add(eefActivatingVirtualCorp);
+		insert eefActivatingVirtualCorp;
+		//listAcct.add(eefActivatingVirtualCorp);
 
         Database.insert(listAcct);
 
@@ -303,7 +303,7 @@ public without sharing class Core_MDF_ManualSharing_Test {
         PartnerMarketingBudget pbmEef = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget EEF', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, eefPrimaryVirtualCorp.Id, eefCp.Id, 30000, System.today()-30, System.today()+30, false);
 
         system.runAs(usr){
-     insert pbmEef;
+		 insert pbmEef;
         }
         List<Core_MDF_Budget_Transfer_Log__c> btlList = new List<Core_MDF_Budget_Transfer_Log__c>();
         
@@ -377,8 +377,8 @@ public without sharing class Core_MDF_ManualSharing_Test {
         User usr =[select id,email from user where email ='sysadmin@example.com' Limit 1 ];
         system.runAs(usr){
               List<Core_MDF_Budget_Transfer_Log__c> accountTransferList = [SELECT ID, Core_MDF_Source_Account__c,Core_MDF_Source_Account__r.Core_MDF_Channel_Program__r.Name,Core_MDF_Target_Account__c From Core_MDF_Budget_Transfer_Log__c where Core_MDF_Source_Account__c =: account.Id];
-        Core_MDF_ManualSharing.sharingAccountTransfer(accountTransferList);
-      Assert.isTrue(accountTransferList!=null);
+			  Core_MDF_ManualSharing.sharingAccountTransfer(accountTransferList);
+			Assert.isTrue(accountTransferList!=null);
         }
 
 
@@ -396,7 +396,7 @@ public without sharing class Core_MDF_ManualSharing_Test {
         User usr2 = [SELECT ID From User where Email = 'sysadmin2@example.com'];
         
         Core_MDF_Budget_Transfer_Log__c atl = [SELECT ID,Core_MDF_Target_Account__c, Core_MDF_Source_Account__c From Core_MDF_Budget_Transfer_Log__c where Core_MDF_Source_Account__c =: account.Id];
-        // Highlight: Unused Local Variable
+        // Highlight: Unused Local Variable - Indira
        // Core_MDF_Budget_Transfer_Log__c atl2 = [SELECT ID,Core_MDF_Target_Account__c, Core_MDF_Source_Account__c From Core_MDF_Budget_Transfer_Log__c where Core_MDF_Source_Account__c =: account3.Id]; 
         List<Core_MDF_Budget_Transfer_Log__c> accountTransferList = [SELECT ID, Core_MDF_Source_Account__c,Core_MDF_Source_Account__r.Core_MDF_Channel_Program__r.Name,Core_MDF_Target_Account__c From Core_MDF_Budget_Transfer_Log__c where Core_MDF_Source_Account__c =: account1.Id];
         
@@ -417,7 +417,7 @@ public without sharing class Core_MDF_ManualSharing_Test {
         if(i > 1){
             shareFlag = true;
         } 
-     Assert.isTrue(accountTransferList!=null);
+		 Assert.isTrue(accountTransferList!=null);
         Test.stopTest();        
     }
     
@@ -458,6 +458,6 @@ public without sharing class Core_MDF_ManualSharing_Test {
             shareFlag = true;
         } 
            Assert.isTrue(shareFlag);
-      Test.stopTest();        
+			Test.stopTest();        
     }
 }

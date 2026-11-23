@@ -8,7 +8,7 @@
 * Accenture - Krishna      10/24/2019          Class for handling Partner Node User Mapping object bulk record creation/deletion from LWC.
 * Intel   - Areefa    05/12/2020      Return null value removed and add return result
 * Intel   - Areefa    05/29/2020      add new method for create and Edit access check
-* Intel   - Sarah	   03/02/2021	   added code to filter the user's list for Internal users to pick up only users from the relevant groups.
+* Intel   - Sarah     03/02/2021      added code to filter the user's list for Internal users to pick up only users from the relevant groups.
 *****************************************************************************************************************************************/
 //DO NOT REMOVE WITH SHARING
 public with sharing class Core_MDF_LWC_AccountUserController {
@@ -37,24 +37,23 @@ Added By:           Accenture - KK - 10/24/2019
             query = 'Select Id,'+sanitizedSearchFieldName+' FROM '+sanitizedSearchObjectName+' WHERE '+sanitizedSearchFieldName+' LIKE \'%' + sanitizedValue + '%\' AND RecordType.DeveloperName = :recordType AND Core_MDF_Active_Ind__c = true AND Core_MDF_Channel_Program__c = :sanitizedProgramName order by name';
         }else if(sanitizedSearchObjectName == 'User') {
             //Checking if internal user is performing the action
-            if(!(userType == Label.Core_MDF_Partner_User_Type))
-            {
+            if(!(userType == Label.Core_MDF_Partner_User_Type)){
                 Set<Id> grpId = new Set<Id>();
                 //getting all the pgms of the selected program
-                for(Core_MDF_Partner_Group_Mapping__c pgm : [Select id, Core_MDF_Group_Id__c, Core_MDF_Account__c,Core_MDF_Channel_Program__c from Core_MDF_Partner_Group_Mapping__c
-                                                             where Core_MDF_Channel_Program__c = :sanitizedProgramName and Core_MDF_Type_of_Access__c = 'External' and Core_MDF_Inactive_Ind__c = false])
+                for(Core_MDF_Partner_Group_Mapping__c pgm : [Select id, Core_MDF_Group_Id__c from Core_MDF_Partner_Group_Mapping__c
+                                                             where Core_MDF_Channel_Program__c = :sanitizedProgramName and Core_MDF_Type_of_Access__c = 'External' and Core_MDF_Inactive_Ind__c = false]) //HP:ATHR Fix
                 {
                     grpId.add(pgm.Core_MDF_Group_Id__c);
                 }
                 Set<Id> userId = new Set<Id>();
                 //getting all the users from the selected programs groups
-                if(grpId != null && grpId.size()>0)
-                {
-                    for(GroupMember member : [Select id, UserOrGroupId from GroupMember where GroupId IN :grpId])
-                    {
+                if(grpId != null && grpId.size()>0){
+                   
+                    for(GroupMember member : [Select id, UserOrGroupId from GroupMember where GroupId IN :grpId]){
                         userId.add(member.UserOrGroupId);
                     }
                     //added this userId as a filter in the query
+                    //query = 'Select Id,'+sanitizedSearchFieldName+' FROM '+sanitizedSearchObjectName+' WHERE '+sanitizedSearchFieldName+' LIKE \'%' + sanitizedValue + '%\' AND UserType = :partnerUser AND ' +'(\''+'IsActive = true or Partner_License_Reclaimed__c = true' + '\')'+' AND Id IN :userId';
                     query = 'SELECT Id, ' + sanitizedSearchFieldName + ' FROM ' + sanitizedSearchObjectName + ' WHERE ' + sanitizedSearchFieldName + ' LIKE \'%' + sanitizedValue + '%\' AND UserType = :partnerUser AND (IsActive = true OR Partner_License_Reclaimed__c = true) AND Id IN :userId';
                     
                 }
@@ -65,13 +64,13 @@ Added By:           Accenture - KK - 10/24/2019
                 query = 'Select Id,'+sanitizedSearchFieldName+' FROM '+sanitizedSearchObjectName+' WHERE '+sanitizedSearchFieldName+' LIKE \'%' + sanitizedValue + '%\' AND UserType = :partnerUser AND (IsActive = true or Partner_License_Reclaimed__c = true )';
             }  
         }
+        System.debug('query-----'+query);
         if(String.isNotEmpty(sanitizedValue) && String.isNotEmpty(query)) {
             for(sObject record : Database.Query(query)) {
                 String fieldvalue = (String)record.get(sanitizedSearchFieldName);
                 sObjectResultList.add(new SObjectResult(fieldvalue, record.Id));
             }
         }
-        
         return sObjectResultList;
     }
     /*****************************************************************************************************
@@ -127,6 +126,7 @@ Added By:           Accenture - KK - 10/24/2019
     @AuraEnabled
     public static UserInfoWrapper findSelectedUsers(Id accountId) {
         try{
+            system.debug('findSelectedUsers');
             UserInfoWrapper userInfoWrap = new UserInfoWrapper();
             string userType = UserInfo.getUserType();
             //map to show at left
@@ -143,7 +143,7 @@ Added By:           Accenture - KK - 10/24/2019
             if(!(userType == Label.Core_MDF_Partner_User_Type))
             {
                 //Getting the ultimate Account of the selected Account
-                List<Account> ultimateAcc = [Select id, Core_MDF_CoMarketing_Ultimate_Account__c, Core_MDF_Channel_Program__c from Account where Id = :accountId limit 1];
+                List<Account> ultimateAcc = [Select id, Core_MDF_CoMarketing_Ultimate_Account__c, Core_MDF_Channel_Program__c from Account where Id = :accountId order by name limit 1];
                 //Getting the corresponding pgm to get the group of the selected account and program
                 //check list size
                 List<Core_MDF_Partner_Group_Mapping__c> pgm = [Select id, Core_MDF_Group_Id__c, Core_MDF_Account__c,Core_MDF_Channel_Program__c from Core_MDF_Partner_Group_Mapping__c
@@ -218,8 +218,11 @@ Added By:           Accenture - KK - 10/24/2019
             List<Id> usrListToCreateAccountUsers = new List<Id>();
             List<Id> toDeleteAccountUsers = new List<Id>();
             Map<Id, Core_MDF_Partner_Node_User_Mapping__c> userIdToAccountUserMap = new Map<Id, Core_MDF_Partner_Node_User_Mapping__c>();
+            
+            
             list<string> listOfPgmGroupName = new list<string>();
             set<Id> userIdIspartOfPgm= new set<Id>();
+            
             Core_MDF_Partner_Node_User_Mapping__c createAccountUserInstance;
             List<Core_MDF_Partner_Node_User_Mapping__c> createAccountUserList = new List<Core_MDF_Partner_Node_User_Mapping__c>();
             List<Core_MDF_Partner_Node_User_Mapping__c> existingAccountUserList = [select Id, Core_MDF_Account__c,Core_MDF_Active_Ind__c, Core_MDF_User__c, Core_MDF_User__r.Name,
@@ -265,8 +268,6 @@ Added By:           Accenture - KK - 10/24/2019
                 if(!objectListToBeProcessed.contains(usrId) && userIdIspartOfPgm.contains(usrId)) {
                     usrListToDeleteAccountUsers.add(usrId);
                 }
-                
-                
             }
             //To make UserId To UserName Map for final exception
             List<User> tempUserList = [select Id, Name from user where id in:usrListToDeleteAccountUsers];
@@ -281,7 +282,6 @@ Added By:           Accenture - KK - 10/24/2019
                     }
                 }
             }
-            
             //Creating Account User List to insert & Collect user Ids for exception handling
             for(Id usrId: objectListToBeProcessed) {
                 if(!userIdToAccountUserMap.KeySet().contains(usrId)) {
@@ -407,7 +407,9 @@ Added By:           Accenture - KK - 10/24/2019
             }
             //inserting account user list
             if(createAccountUserList != null && !createAccountUserList.isEmpty()) {
+                System.debug('372'+ Limits.getLimitDMLRows());
                 srList = database.upsert(createAccountUserList, false);
+                System.debug('374'+ Limits.getLimitDMLRows());
                 List<id> idList = new List<id>();
                 List<String> errorStringList = new List<String>();
                 for (Database.upsertResult sr : srList) {
@@ -463,6 +465,7 @@ Added By:           Accenture - KK - 10/24/2019
 ******************************************************************************************************/
     @AuraEnabled
     public static UserInfoWrapper findSelectedAccounts(Id userId, String programName) {
+        system.debug('findSelectedAccounts');
         UserInfoWrapper userInfoWrap = new UserInfoWrapper();
         //map to show at left
         Map<Id, String> totalAccountIdToAccountNameMap = new Map<Id, String>();
@@ -474,6 +477,7 @@ Added By:           Accenture - KK - 10/24/2019
         }
         //To get total accounts
         for(Account accRecord: [SELECT Id, Name, Core_MDF_Parent_Fund_Account__r.Name FROM Account Where RecordType.DeveloperName =: Label.Core_MDF_Co_Marketing_Record_Type_Developer_Name  AND Core_MDF_Active_Ind__c = true AND Core_MDF_Channel_Program__c =:programName]) {
+            system.debug('accRecord select account'+accRecord);
             totalAccountIdToAccountNameMap.put(accRecord.Id, accRecord.Name+' - '+accRecord.Core_MDF_Parent_Fund_Account__r.Name);
         }
         userInfoWrap.toShowAtLeft = totalAccountIdToAccountNameMap;

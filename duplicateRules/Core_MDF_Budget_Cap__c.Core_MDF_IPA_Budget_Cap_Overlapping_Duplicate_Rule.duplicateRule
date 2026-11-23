@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DuplicateRule xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <actionOnInsert>Block</actionOnInsert>
+    <actionOnUpdate>Block</actionOnUpdate>
+    <alertText>Budget Type Cap already exist.</alertText>
+    <description>IPA Budget Cap overlapping duplicate rule.</description>
+    <duplicateRuleFilter>
+        <booleanFilter xsi:nil="true"/>
+        <duplicateRuleFilterItems>
+            <field>RecordType</field>
+            <operation>contains</operation>
+            <value>IPA Budget Type Cap</value>
+            <sortOrder>1</sortOrder>
+            <table>Core_MDF_Budget_Cap__c</table>
+        </duplicateRuleFilterItems>
+    </duplicateRuleFilter>
+    <duplicateRuleMatchRules>
+        <matchRuleSObjectType>Core_MDF_Budget_Cap__c</matchRuleSObjectType>
+        <matchingRule>Core_MDF_IPA_Budget_Cap_Overlapping_Rule</matchingRule>
+        <objectMapping xsi:nil="true"/>
+    </duplicateRuleMatchRules>
+    <isActive>true</isActive>
+    <masterLabel>Core_MDF_IPA_Budget_Cap_Overlapping_Duplicate_Rule</masterLabel>
+    <securityOption>EnforceSharingRules</securityOption>
+    <sortOrder>2</sortOrder>
+</DuplicateRule>

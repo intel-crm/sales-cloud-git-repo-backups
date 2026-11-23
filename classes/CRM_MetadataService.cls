@@ -1,4 +1,4 @@
-public class CRM_MetadataService {
+public without sharing class CRM_MetadataService {
 	
 	public static String SOAP_M_URI = 'http://soap.sforce.com/2006/04/metadata';
     

@@ -67,8 +67,9 @@
         }
         $A.enqueueAction(action);
     },
-
+    
     getResourceName : function(component) {
+        debugger;
         // call apex method to fetch list view dynamically
         var action = component.get("c.getResourceName");
         var url = window.location.href;
@@ -118,6 +119,7 @@
     },
     
     loadNDAPerRes: function(component) {
+        debugger;
         var r = component.get("v.resourceIdForDisplay");
         var resourceName=r.pop();
         var resToContentMap = component.get("v.resToContentMap");
@@ -136,6 +138,7 @@
     },
     
     loadNDABody: function(component,disclaimerDetails) {
+        debugger;
         var resourceIdForDisplay = [];
         var resourceIdForStore = [];
         for(var i = 0; i < disclaimerDetails.length; i++){
@@ -156,6 +159,7 @@
     },
     pageReload: function (url) {
         setTimeout(() => {
+            console.log('window.location.href', window.location.href);
             if(window.location.href.includes(url)) {
                 window.location.reload(true);
             }

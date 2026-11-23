@@ -1,0 +1,84 @@
+<messaging:emailTemplate renderUsingSystemContextWithoutSharing="true"
+                     subject="{!$Label.Core_MDF_Email_Activity} # {!RelatedTo.Core_MDF_Activity_Number__c} {!$Label.Core_MDF_Email_Is} {!RelatedTo.Core_MDF_Fund_Request_Status__c } {!$Label.Core_MDF_Email_And } {!IF((RelatedTo.Core_MDF_Fund_Request_Status__c == 'Pending Approval' ) ,$Label.Core_MDF_Pending_Approval_subject,'')}{!IF((RelatedTo.Core_MDF_Fund_Request_Status__c == 'Planned' ) ,$Label.Core_MDF_Planned_subject,'')} "
+                                 
+                     relatedToType="PartnerFundRequest" language="{!recipient.LanguageLocaleKey}" recipientType="User">
+<messaging:htmlEmailBody >
+<html>
+    <body>
+        <div style="font-size:14px;font-family:Calibri">  
+                <p>
+                    <span style="color: #ff0000;">
+                        <strong>
+                                 {!IF((RelatedTo.Core_MDF_Fund_Request_Status__c == 'Pending Approval' ) ,$Label.Core_MDF_RMF_Action_Req_txt,'')}
+                                 {!IF((RelatedTo.Core_MDF_Fund_Request_Status__c == 'Planned' ) ,$Label.Core_MDF_RMF_Action_Req_txt,'')}
+                                 
+                        </strong>
+                     </span>
+                 </p>
+                 
+               
+                    <p><span>{!$Label.Core_MDF_EmailTemp_DearIntelPartner} </span></p>
+                    
+                    <p><span>
+                       {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body1 } {!RelatedTo.Core_MDF_Program__c} {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body2 } {!RelatedTo.Core_MDF_Activity_Number__c} {!$Label.Core_MDF_RMF_EmailTemp_StatusUpdate_Body3 } {!RelatedTo.Core_MDF_PriorValueOfStatus__c } {!$Label.Core_MDF_RMF_EmailTemp_StatusUpdate_Body4} {!RelatedTo.Core_MDF_Fund_Request_Status__c}
+                       {!IF((RelatedTo.Core_MDF_Fund_Request_Status__c == 'Pending Approval'  ) ,$Label.Core_MDF_RMF_Pending_Approval_Dynamic_text1,'')}
+                       {!IF((RelatedTo.Core_MDF_Fund_Request_Status__c == 'Planned' ) ,$Label.Core_MDF_RMF_Planned_Dynamic_text1,'')}
+                       
+                   
+                             
+                       </span>
+                    </p>
+                    
+                    <p><span>
+                        <strong><a href="{!RelatedTo.Core_MDF_PFRRecordCommunityLink__c}">{!$Label.Core_MDF_Click_here}</a>&nbsp;</strong>
+                        {!$Label.Core_MDF_RMF_EmailTemp_StatusUpdate_Body4}
+                        {!IF((RelatedTo.Core_MDF_Fund_Request_Status__c == 'Pending Approval'  ) ,$Label.Core_MDF_RMF_Pending_Approval_Dynamic_text2,'')}
+                        {!IF((RelatedTo.Core_MDF_Fund_Request_Status__c == 'Planned' ) ,$Label.Core_MDF_RMF_Planned_Dynamic_text2,'')}
+                        
+                     </span>
+                    </p>
+   
+            <p><span>&nbsp;</span></p>
+            <p>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_Member} {!RelatedTo.Core_MDF_Ultimate_Account_Name__c}</p>
+            <p>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_EmailTemp_Campaign} {!RelatedTo.Core_MDF_UpdateCampaign__c}</p>
+            <p>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_Activity} {!RelatedTo.Core_MDF_Activity_Number__c}</p>
+            <p><span>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_Audit_Creation_Field4}&nbsp;<apex:outputField value="{!RelatedTo.Core_MDF_Activity_Types__c}" /></span></p>
+             <p>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_EmailTemp_Budget_Amt} {!RelatedTo.Core_MDF_Budget_Amount_Local_amt__c}</p>
+            <p>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_EmailTemp_BudgetType} {!RelatedTo.Core_MDF_Budget_Type_nm__c}</p>
+            <p>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_Country_Location}&nbsp;<apex:outputField value="{!RelatedTo.Core_MDF_Country_nm__c}" /></p>
+            <p><span>&nbsp;</span></p>
+              
+            
+            
+            
+            <p><span>
+               {!$Label.Core_MDF_RMF_EmailTemp_StatusUpdate_Body5} 
+                <apex:outputText value="{0, date, MMMM d','  yyyy}"> <apex:param value="{!RelatedTo.Core_MDF_ToBeClosedDate__c}" /> </apex:outputText> .
+            </span>
+            </p>        
+            <p><span>&nbsp;</span></p>
+            
+            <p><span>
+               {!$Label.Core_MDF_RMF_EmailTemp_StatusUpdate_Body6}  <strong><a href="https://comarketingsupport@intel.com">comarketingsupport@intel.com</a>&nbsp;</strong>
+            </span>
+            </p>
+            <p><span>&nbsp;</span></p>
+                     
+
+<p></p>
+<p>{!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}</p>
+        <p><span>{!$Label.Core_MDF_Email_Signature}</span></p>
+<p><span>&nbsp;</span></p>
+
+<div style="font-family: Calibri;font-size: 11px;">
+<p><em>{!$Label.Core_MDF_IPA_EmailTemp_Footer1}</em>&nbsp;<em>{!$Label.Core_MDF_IPA_EmailTemp_Footer2}&nbsp;<strong><a href="https://intelinside.intel.com/Support?AppSignOn=Yes">{!$Label.Core_MDF_IPA_EmailTemp_Footer3}</a>&nbsp;</strong>{!$Label.Core_MDF_IPA_EmailTemp_Footer4}</em></p>
+<p>{!$Label.Core_MDF_EmailTemp_Claim_Footer3}&nbsp;<strong><a href="https://intelinside.intel.com/Support?AppSignOn=Yes">{!$Label.Core_MDF_IPA_EmailTemp_Footer3}</a>&nbsp;</strong>{!$Label.Core_MDF_EmailTemp_Claim_Footer4}</p>
+<p><a href="https://www.intel.com/content/www/us/en/homepage.html">{!$Label.Core_MDF_EmailTemp_Footer3}</a>&nbsp;|&nbsp;<a href="https://www.intel.com/content/www/us/en/legal/trademarks.html">{!$Label.Core_MDF_EmailTemp_Footer4}&nbsp;</a>|&nbsp;<a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html?elqTrackId=d66a216e5b8b472c80e421c11f79cbc2&amp;amp;elqaid=13991&amp;amp;elqat=2">{!$Label.Core_MDF_EmailTemp_Footer5}</a>&nbsp;|&nbsp;<a href="http://www.intel.com/cookies">{!$Label.Core_MDF_EmailTemp_Footer6}</a>&nbsp;</p>
+<p></p>
+
+         </div>
+         </div>
+    </body>
+</html>    
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

@@ -11,12 +11,16 @@ export default class Core_MDF_CCP_lwcPicklist extends LightningElement {
     @track optionData;
 
    connectedCallback(){
+    console.time('PicklistStart');
+    console.log('this.options',this.options);
     var optionData = this.options ? (JSON.parse(JSON.stringify(this.options))) : null;
+    console.timeEnd('PicklistStart');
     this.optionData = optionData;
+    console.log('this.optionData',this.optionData);
         Promise.all([
             loadStyle(this, leaflet)
         ]).then(() => {
-            console.log('OUTPUT : '+'Style Loaded');
+           // console.log('OUTPUT : '+'Style Loaded');
         });
     }
 

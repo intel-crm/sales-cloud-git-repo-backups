@@ -7,8 +7,7 @@ Modification Log :
 * Developer         Date          Description
 * ----------------------------------------------------------------------------                 
 * Dave Hood         10/31/2016    Original version
-* Vivek T S         01/09/2018    Added the condition to show the Pipeline Management URL - US91703
-* Ashwin 			07/06/2020	  Added a new branch for New Pipeline Management Tab - US710633
+* Vivek T S         01/09/2018    Added the condition to show the Pipeline Management URL - US91703 
 **************************************************************************************************/
 public class Core_WavePipelineAnalysis_Controller {
     
@@ -37,9 +36,7 @@ public class Core_WavePipelineAnalysis_Controller {
       
         If (pageName == 'Core_WavePipelineManagement') {
             pageRef = new PageReference(Label.Core_Wave_Pipeline_Management_URL);
-        }else if(pageName == 'Core_WavePipelineManagement_New') { //US710633 - Added a new branch for New Pipeline Management Tab - Ashwin
-            pageRef = new PageReference(Label.Core_NewWave_Pipeline_Management_URL);
-        }
+        }   
         // End - Added the condition to show the Pipeline Management URL *US91703* 
         return pageRef;
     }

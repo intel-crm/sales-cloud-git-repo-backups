@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Approval Email to be sent to Approvers for Activity</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_Activity_Approval_Notification_Clone</name>
+    <style>none</style>
+    <subject>Activity status updated for Activity {!PartnerFundRequest.Activity}</subject>
+    <textOnly>Action Required
+
+
+Dear Intel employee,
+
+The following activity has been submitted and requires Intel review:
+
+Member Name:{!PartnerFundRequest.Core_MDF_Ultimate_Account_Name__c}
+
+Activity number: {!PartnerFundRequest.Core_MDF_Activity_Number__c}
+
+Activity type: {!PartnerFundRequest.Core_MDF_Activity_Types__c}
+
+Status History: {!PartnerFundRequest.Core_MDF_Fund_Request_Status__c}
+
+Countries/locations: {!PartnerFundRequest.Core_MDF_Country_nm__c}
+
+
+{!PartnerFundRequest.CreatedBy} has requested your approval for the following item: Click here
+
+Please click this link to approve or reject this record.
+
+
+Thank you,
+
+{!PartnerFundRequest.RecordType} Program Team
+
+
+Messages to this mailbox are not monitored. Contact customer service if you have additional questions.
+
+This message and any attachments are for the sole use of the intended recipient(s). If you are not the intended recipient, contact customer service immediately and confirm you have deleted all copies.
+
+Intel Corporation, 2111 NE 25th Avenue, Mailstop HF3-17, Hillsboro, OR 97124
+Intel Corporation | Trademarks | Privacy Policy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

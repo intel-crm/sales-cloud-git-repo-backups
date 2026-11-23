@@ -1,5 +1,7 @@
 import { LightningElement, api, track} from 'lwc';
 import noRecordsToDisplay from '@salesforce/label/c.Core_MDF_NoRecordsToDisplay';
+import page from '@salesforce/label/c.Core_MDF_Page';
+import recPerPage from '@salesforce/label/c.Core_MDF_Records_Per_Page';
 
 const DELAY = 300;
 const recordsPerPage = [10,25,50,100];
@@ -23,7 +25,7 @@ export default class core_MDF_Paginator extends LightningElement {
     //@track controlPrevious = hideIt; //Controls the visibility of Previous page button
     //@track controlNext = showIt; //Controls the visibility of Next page button
     recordsToDisplay = []; //Records to be displayed on the page
-    label = {noRecordsToDisplay};
+    label = {noRecordsToDisplay,recPerPage,page};
     @track paginatorHasRendered = false;
     //@track currentRecordsPerPage;
 

@@ -8,3 +8,23 @@
     overflow: hidden;
     white-space: nowrap;
 }
+
+/* Roshan - Tactics POC */
+.THIS .tactics-modal__container {
+    width: 75vw !important;
+    max-width: 75rem !important;
+    min-width: 60vw !important;
+}
+
+.THIS .tactics-modal__content {
+    max-height: 55vh !important;
+    overflow-y: auto !important;
+}
+.THIS .custom-box {
+    border-radius: 1rem;
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+.THIS .bulk-pop-action-btn {
+    width: 270px;
+}

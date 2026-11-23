@@ -437,7 +437,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>engineering</value>
+            <value>Escalate</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Sub_Status__c</column>

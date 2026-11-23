@@ -90,7 +90,7 @@
         <groupingColumn>BucketField_31708393</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_TOP</location>
-        <secondaryGroupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</secondaryGroupingColumn>
+        <secondaryGroupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</secondaryGroupingColumn>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -181,7 +181,7 @@
             <value>Design Win,Production Win,Lost,Cancelled</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -204,7 +204,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>EMEA OSC Total Pending Design Funnel QTD</name>

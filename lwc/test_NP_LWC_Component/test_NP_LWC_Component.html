@@ -1,0 +1,19 @@
+<template>
+    <lightning-card>
+    <!--<lightning-record-form object-api-name={objectApiName}
+        fields={fields} onsuccess={handleSuccess}>
+    </lightning-record-form>-->
+    <template if:true={CountryValues.data}>
+        <lightning-dual-listbox name="Countries"
+                                label="Select Country"
+                                source-label="Available"
+                                selected-label="Selected"
+                                field-level-help="This is a dual listbox"
+                                options={CountryValues.data.values}
+                                onchange={handleChange}></lightning-dual-listbox>
+    </template><br/>
+<div class="slds-box" >
+    <p>Selected values are: <b style="color:blue;"></b>{selected}</b></p>
+</div>
+</lightning-card>
+</template>

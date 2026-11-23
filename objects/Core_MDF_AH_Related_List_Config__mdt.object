@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Core_MDF_Actor_Alias__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Actor.Alias</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Actor_LastName__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Actor.LastName</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Actor_Masked_Label__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Actor Masked Label</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Actor_Masked__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Actor Masked</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Actor_Name__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Actor.Name</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Comments_Masked_Label__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Comments Masked Label</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Comments_Masked__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Comments Masked</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Comments__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Comments</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_CreatedDate__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>CreatedDate</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_External_User__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>For External User</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Identifier_CheckboxField1__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Identifier Checkbox Field1</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Identifier_CheckboxField2__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Identifier Checkbox Field2</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Identifier_TextField1__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Identifier TextField1</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Identifier_TextField2__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Identifier TextField2</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Object_API_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Object API Name</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Order_By__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Order By</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_OriginalActor_Alias__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>OriginalActor.Alias</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_OriginalActor_LastName__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>OriginalActor.LastName</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_OriginalActor_Masked_Label__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>OriginalActor Masked Label</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_OriginalActor_Masked__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>OriginalActor Masked</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_OriginalActor_Name__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>OriginalActor.Name</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Permissions__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Permissions</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Title__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Table Title</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_ToLabel_StepStatus__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>toLabel(StepStatus)</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>CCP AH Related List Config</label>
+    <pluralLabel>CCP AH Related List Configs</pluralLabel>
+    <validationRules>
+        <fullName>masked_label</fullName>
+        <active>true</active>
+        <description>masked Label should not be empty if masked checkbox is selected</description>
+        <errorConditionFormula>OR(
+AND(Core_MDF_OriginalActor_Masked__c,ISBLANK( Core_MDF_OriginalActor_Masked_Label__c )),
+AND( Core_MDF_Actor_Masked__c ,ISBLANK(Core_MDF_Actor_Masked_Label__c)),
+AND(  Core_MDF_Comments_Masked__c  ,ISBLANK( Core_MDF_Comments_Masked_Label__c )))</errorConditionFormula>
+        <errorMessage>Masked label should not be empty if corresponding masked Checkbox is selected</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -72,6 +72,10 @@
             <translation><!-- Core_MDF_Co_GTM --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Core_MDF_Co_Inv</masterLabel>
+            <translation><!-- Core_MDF_Co_Inv --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Core_MDF_Data_Center_CoMarketing_Fund</masterLabel>
             <translation><!-- Core_MDF_Data_Center_CoMarketing_Fund --></translation>
         </picklistValues>
@@ -105,6 +109,22 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>Account Plan</masterLabel>
+            <translation><!-- Account Plan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RSA MD</masterLabel>
+            <translation><!-- RSA MD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail MDF</masterLabel>
+            <translation><!-- Retail MDF --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Channel Program Name --></label>
         <name>Core_MDF_Channel_Program_Name_txt__c</name>
         <picklistValues>
@@ -122,6 +142,10 @@
         <picklistValues>
             <masterLabel>CoGTM</masterLabel>
             <translation><!-- CoGTM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CoInv</masterLabel>
+            <translation><!-- CoInv --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Data Center CoMarketing Fund</masterLabel>
@@ -162,6 +186,10 @@
         <picklistValues>
             <masterLabel>Co-GTM</masterLabel>
             <translation><!-- Co-GTM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-Inv</masterLabel>
+            <translation><!-- Co-Inv --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Datacenter</masterLabel>
@@ -293,6 +321,38 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- FieldSet API Name --></label>
+        <name>Core_MDF_FieldSet_API_Name__c</name>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCF_Claim_Fieldset</masterLabel>
+            <translation><!-- Core_MDF_CCF_Claim_Fieldset --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_CoGTM_Claim_Fieldset</masterLabel>
+            <translation><!-- Core_MDF_CoGTM_Claim_Fieldset --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_DCF_Claim_Fieldset</masterLabel>
+            <translation><!-- Core_MDF_DCF_Claim_Fieldset --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_IPA_Acc_Claim_Fieldset</masterLabel>
+            <translation><!-- Core_MDF_IPA_Acc_Claim_Fieldset --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_IPA_Prop_Claim_Fieldset</masterLabel>
+            <translation><!-- Core_MDF_IPA_Prop_Claim_Fieldset --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_RMF_RSAMD_Claim_Fieldset</masterLabel>
+            <translation><!-- Core_MDF_RMF_RSAMD_Claim_Fieldset --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_RMF_RetailMDF_Claim_Fieldset</masterLabel>
+            <translation><!-- Core_MDF_RMF_RetailMDF_Claim_Fieldset --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Internal Master Group Name --></label>
         <name>Core_MDF_Internal_Master_Group_Name_Txt__c</name>
         <picklistValues>
@@ -302,6 +362,10 @@
         <picklistValues>
             <masterLabel>Core_MDF_CCP_CCF_INTERNAL_ALL</masterLabel>
             <translation><!-- Core_MDF_CCP_CCF_INTERNAL_ALL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCP_COINV_INTERNAL_ALL</masterLabel>
+            <translation><!-- Core_MDF_CCP_COINV_INTERNAL_ALL --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Core_MDF_CCP_Channel_MDF_INTERNAL_All</masterLabel>

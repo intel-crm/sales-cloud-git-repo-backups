@@ -20,6 +20,7 @@ public class Core_MDF_Batch_UpdateClaimOnBankRelease implements Database.Batchab
             +'Core_MDF_VAT_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Bank__c,Core_MDF_Bank__r.Core_MDF_Bank_Status__c,Core_MDF_Bank__r.Core_MDF_Hold_Payments_from_AP_file_ind__c,'
             +'Core_MDF_Bank__r.Core_MDF_ESD_Hold_Indicator__c,Core_MDF_Document_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c, Core_MDF_Has_Sub_Claims_Ind__c FROM PartnerFundClaim where Core_MDF_Bank__c IN:bankIds '
             +'AND Core_MDF_Type_Txt__c=\'Claim\'';
+
         return Database.getQueryLocator(strQuery);         
     }
     
@@ -35,9 +36,10 @@ public class Core_MDF_Batch_UpdateClaimOnBankRelease implements Database.Batchab
         Map<String, Object> databaseResult = new map<String,Object>();
         Map<id,string> idAndUpdateStatus = new Map<id,string>();
 
-       
         String logEntryMsg = '';
         try{
+
+            system.debug('claimList@@@' + claimList);
             if(claimList != null && claimList.size()>0){
                 for(PartnerFundClaim claim : claimList){
 					
@@ -70,10 +72,11 @@ public class Core_MDF_Batch_UpdateClaimOnBankRelease implements Database.Batchab
                     Core_MDF_Claim_Utility.processReleaseHold(claimListForBankHold,new List<string>{Label.Core_MDF_Bank_Document_Hold});
                     ClaimsToUpdate.addAll(claimListForBankHold);
                 }
-				
+				system.debug('ClaimsToUpdate@@@' + ClaimsToUpdate);
 				if(ClaimsToUpdate!=null && ClaimsToUpdate.size()>0){	
 					setclaimsToUpdate.addALL(ClaimsToUpdate);
 				}
+                system.debug('setclaimsToUpdate@@@' + setclaimsToUpdate);
                 if(setclaimsToUpdate != Null && setclaimsToUpdate.size()>0){
                     listOfClaimsToUpdate.addAll(setclaimsToUpdate);
                     databaseResult = Core_MDF_CCP_UtilityClass.updateListAndLogErrors(listOfClaimsToUpdate, 'claims hold failed');

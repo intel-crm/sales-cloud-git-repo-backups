@@ -104,12 +104,27 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Bank_Legal_Entity_Code_cd__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PartnerFundRequest.Core_MDF_Activity_Closure_Type__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>PartnerFundRequest.Core_MDF_BU_Percent_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_Key_Marketing_Indicator_nm__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_Other_Quantity_nbr__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -140,6 +155,10 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <recordType>PartnerFundClaim.Core_MDF_Intel_Partner_Alliance</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>PartnerFundRequest.Core_MDF_Intel_MDF_Proposal_Based</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>

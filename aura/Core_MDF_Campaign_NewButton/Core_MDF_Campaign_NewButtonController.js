@@ -11,6 +11,8 @@
         });
         action.setCallback(this, function(response) {
             var permission = response.getReturnValue();
+            console.log('permission'+permission);
+            console.log('permission'+$A.get("$SObjectType.CurrentUser.Id"));
             component.set("v.objectCreatePermission", permission);
         });
         $A.enqueueAction(action);

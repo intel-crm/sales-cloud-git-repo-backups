@@ -119,6 +119,31 @@
             <field>Core_MDF_Account_id__c.Core_MDF_CoMarketing_Ultimate_Account__c.Name</field>
             <table>Core_MDF_Int_Users_Partner_Geo_Mapping__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Is_Not_an_Approver_Ind__c</field>
+            <table>Core_MDF_Int_Users_Partner_Geo_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Activity_Classification_nm__c</field>
+            <table>Core_MDF_Int_Users_Partner_Geo_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Approval_Region_nm__c</field>
+            <table>Core_MDF_Int_Users_Partner_Geo_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Days_After_Modified__c</field>
+            <table>Core_MDF_Int_Users_Partner_Geo_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Intel_Account__c</field>
+            <table>Core_MDF_Int_Users_Partner_Geo_Mapping__c</table>
+        </columns>
         <masterLabel>Internal Users Partner Geo Mappings</masterLabel>
     </sections>
 </ReportType>

@@ -27,9 +27,10 @@ public class Core_MDF_PartnerShipScore_to_Detail_Test {
                 List<Core_Trigger_Executions__c> bypassfunctinalitylist = Core_MDF_CCP_TestDataUtility.byPassFeature(bypassFunctionKeys,true,true);
                 Id caseAuditRecordId = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('Core_MDF_Audit').getRecordTypeId();      
                 System.runAs(usr)
-               {        
-                   List<Core_MDF_Partnership_Score_Detail__c> pgdRecToBeInserted = new List<Core_MDF_Partnership_Score_Detail__c >();
-                   Core_MDF_Bulk_Transaction__e evtObj = new Core_MDF_Bulk_Transaction__e();
+               {    
+                   // Highlight: Unused Local Variable - Indira
+                  // List<Core_MDF_Partnership_Score_Detail__c> pgdRecToBeInserted = new List<Core_MDF_Partnership_Score_Detail__c >();
+                  // Core_MDF_Bulk_Transaction__e evtObj = new Core_MDF_Bulk_Transaction__e();
                    List<Account> accList = new List<Account>();
                    ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Datacenter','Data Center CoMarketing Fund', true);
                    Account intAcc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 2', 
@@ -144,9 +145,9 @@ public class Core_MDF_PartnerShipScore_to_Detail_Test {
                         insert newValuesSC;
                         Key2 = record1.Core_MDF_Program_nm__c +dcfAcc.Id+'Q4 2027'+';'+'null' +','+ 'APJ';
                         SCMap.put (Key2,newValuesSC);
-                   
-                        Map<string, List<Core_MDF_Partnership_Score__c>> res = new Map<string, List<Core_MDF_Partnership_Score__c>>();
-                        Map<string, List<Core_MDF_Scorecard__c>> res1 = new Map<string, List<Core_MDF_Scorecard__c>>();
+                        // Highlight: Unused Local Variable - Indira
+                       // Map<string, List<Core_MDF_Partnership_Score__c>> res = new Map<string, List<Core_MDF_Partnership_Score__c>>();
+                       // Map<string, List<Core_MDF_Scorecard__c>> res1 = new Map<string, List<Core_MDF_Scorecard__c>>();
                         
                         String Quarter = 'Q4 2027';
                    Core_MDF_PartnerShipScore_to_Detail.Executedata(newValues,'Datacenter',Quarter,dcfAcc.Id+'');
@@ -166,7 +167,8 @@ public class Core_MDF_PartnerShipScore_to_Detail_Test {
             
         Account Acc = [select id from Account where name = 'Test Account 1' limit 1];
         Map<string, List<Core_MDF_Partnership_Score__c>> PSMap = new Map<string,List<Core_MDF_Partnership_Score__c>>();
-        String Key; 
+       // Highlight: Unused Local Variable - Indira
+       // String Key; 
         List<Core_MDF_Partnership_Score__c> PS = new List<Core_MDF_Partnership_Score__c>();
         Core_MDF_Partnership_Score__c PSrec = [Select id,Core_MDF_Account_Id__c, Core_MDF_Program_nm__c, Core_MDF_Quarter_nm__c ,Core_MDF_Quarter_Year_Nm__c,Core_MDF_Partnership_Grade_Nbr__c,Core_MDF_Zone_nm__c,Core_MDF_Channel_Program_Id__c
                                                FROM Core_MDF_Partnership_Score__c where Core_MDF_Quarter_Year_Nm__c='Q4 2027' Limit 1];
@@ -208,7 +210,8 @@ public class Core_MDF_PartnerShipScore_to_Detail_Test {
                         assert.areEqual(mdtLst.size(),1);
                         
         Map<string, List<Core_MDF_Partnership_Score_Detail__c>> PSdetailMap = new Map<string,List<Core_MDF_Partnership_Score_Detail__c>>();
-        List<Core_MDF_Partnership_Score_Detail__c> pgdRecToBeInserted = new List<Core_MDF_Partnership_Score_Detail__c >();
+       // Highlight: Unused Local Variable - Indira
+       // List<Core_MDF_Partnership_Score_Detail__c> pgdRecToBeInserted = new List<Core_MDF_Partnership_Score_Detail__c >();
         List<Core_MDF_Partnership_Score_Detail__c> pgdrec = new List<Core_MDF_Partnership_Score_Detail__c >();
         Core_MDF_Partnership_Score_Detail__c pgd = new Core_MDF_Partnership_Score_Detail__c();
         string keypsdetail='Data Center CoMarketing Fund'+Acc.id+'Q4 2027'+'MDF'+'APJ';
@@ -225,10 +228,26 @@ public class Core_MDF_PartnerShipScore_to_Detail_Test {
             PSdetailMap.put(keypsdetail,pgdrec);
         String Quarter = 'Q4 2027';
             Core_MDF_PartnerShipScore_to_Detail.getValuesfromdetailforCarryFwd('Datacenter', Acc.Id, 'Q4 2027');
-            Core_MDF_PartnerShipScore_to_Detail.getScoreCardData(Quarter,PSMap,'Datacenter',Acc.Id,res3);
+        Core_MDF_PartnerShipScore_to_Detail.getScoreCardData(Quarter,PSMap,'Datacenter',Acc.Id,res3);
         Core_MDF_PartnerShipScore_to_Detail.doScoreCardDataCalculations(SCMap,PSMap,res3,PSdetailMap,'Q4 2027');
             Core_MDF_PartnerShipScore_to_Detail.doScoreCardDataCalculations(SCMap2,PSMap,res3,PSdetailMap,null);
         Core_MDF_PartnerShipScore_to_Detail.Executedata(PS,'Datacenter',null,Acc.id+'');
+
+        Database.executeBatch(new Core_MDF_Batch_IAH_Quarter_Audit('Q4 2027'), 100);
     }
-}
+    }
+
+    private static Datetime getQuarterDatetime(String quarterYear) {
+        List<String> quarterParts = quarterYear.split(' ');
+        Integer yearValue = Integer.valueOf(quarterParts[1]);
+        Integer monthValue = 1;
+        if (quarterParts[0] == 'Q2') {
+            monthValue = 4;
+        } else if (quarterParts[0] == 'Q3') {
+            monthValue = 7;
+        } else if (quarterParts[0] == 'Q4') {
+            monthValue = 10;
+        }
+        return Datetime.newInstance(yearValue, monthValue, 15, 12, 0, 0);
+    }
 }

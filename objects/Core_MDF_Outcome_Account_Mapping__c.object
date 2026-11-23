@@ -211,6 +211,16 @@
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <fields>
+        <fullName>Core_MDF_Parent_Account__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_AccountId__r.Name</formula>
+        <label>Parent Account</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Percentage_pct__c</fullName>
         <description>The percentage allocation assigned to the associated account for the outcome-based MDF campaign. This field represents what portion of the total campaign budget or outcome is allocated to this specific partner account.</description>
         <label>Percentage</label>

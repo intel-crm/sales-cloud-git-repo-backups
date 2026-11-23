@@ -59,6 +59,16 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_CreatedBy_nm__c</field>
+            <table>Core_MDF_PICReviewResult__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Last_ModifiedBy_Nm__c</field>
+            <table>Core_MDF_PICReviewResult__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <displayNameOverride>AI Comment</displayNameOverride>
             <field>Core_MDF_Comment_txt__c</field>
             <table>Core_MDF_PICReviewResult__c</table>
@@ -66,6 +76,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_FilesAffected_txt__c</field>
+            <table>Core_MDF_PICReviewResult__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Parent_Question__c</field>
             <table>Core_MDF_PICReviewResult__c</table>
         </columns>
         <columns>
@@ -131,6 +146,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Tactic_txt__c</field>
+            <table>Core_MDF_PICReviewResult__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Tactics_nm__c</field>
             <table>Core_MDF_PICReviewResult__c</table>
         </columns>
@@ -151,8 +171,18 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_PIC_Review_id__c.Core_MDF_AI_PIC_Review_Ind__c</field>
+            <table>Core_MDF_PICReviewResult__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <displayNameOverride>AI Cycle Number</displayNameOverride>
             <field>Core_MDF_PIC_Review_id__c.Core_MDF_AI_CycleNumber_nbr__c</field>
+            <table>Core_MDF_PICReviewResult__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_PIC_Review_id__c.Core_MDF_AI_PIC_Review_Ind__c</field>
             <table>Core_MDF_PICReviewResult__c</table>
         </columns>
         <masterLabel>AI PIC Review Details</masterLabel>
@@ -202,7 +232,22 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_CreatedBy_nm__c</field>
+            <table>Core_MDF_PICReviewResult__c.PIC_Review_Details__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Last_ModifiedBy_Nm__c</field>
+            <table>Core_MDF_PICReviewResult__c.PIC_Review_Details__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_FilesAffected_txt__c</field>
+            <table>Core_MDF_PICReviewResult__c.PIC_Review_Details__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Parent_Question__c</field>
             <table>Core_MDF_PICReviewResult__c.PIC_Review_Details__r</table>
         </columns>
         <columns>
@@ -252,6 +297,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_Response_Agreement_Nm__c</field>
+            <table>Core_MDF_PICReviewResult__c.PIC_Review_Details__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Issue_SimplifiedChinese_txt__c</field>
             <table>Core_MDF_PICReviewResult__c.PIC_Review_Details__r</table>
         </columns>
@@ -262,7 +312,22 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Tactic_txt__c</field>
+            <table>Core_MDF_PICReviewResult__c.PIC_Review_Details__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Tactics_nm__c</field>
+            <table>Core_MDF_PICReviewResult__c.PIC_Review_Details__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Feedback_To_AI_Agent_Txt__c</field>
+            <table>Core_MDF_PICReviewResult__c.PIC_Review_Details__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_Confidence_Score_Nm__c</field>
             <table>Core_MDF_PICReviewResult__c.PIC_Review_Details__r</table>
         </columns>
         <columns>
@@ -274,6 +339,16 @@
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Issue_Spanish_txt__c</field>
             <table>Core_MDF_PICReviewResult__c.PIC_Review_Details__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_PIC_Review_Detail_Id__c.Core_MDF_Comment_txt__c</field>
+            <table>Core_MDF_PICReviewResult__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_PIC_Review_Detail_Id__c.Core_MDF_Response_txt__c</field>
+            <table>Core_MDF_PICReviewResult__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
@@ -360,22 +435,17 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_AI_Response_Agreement_Nm__c</field>
-            <table>Core_MDF_PICReviewResult__c.PIC_Review_Details__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Feedback_To_AI_Agent_Txt__c</field>
-            <table>Core_MDF_PICReviewResult__c.PIC_Review_Details__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_AI_Confidence_Score_Nm__c</field>
-            <table>Core_MDF_PICReviewResult__c.PIC_Review_Details__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_PIC_Review_id__c.Core_MDF_Overall_AI_Confidence_Score_Nm__c</field>
+            <table>Core_MDF_PICReviewResult__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_PIC_Review_id__c.Core_MDF_Claim_ID_id__c.CreatedDate</field>
+            <table>Core_MDF_PICReviewResult__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_PIC_Review_id__c.Core_MDF_Claim_ID_id__c.Amount</field>
             <table>Core_MDF_PICReviewResult__c</table>
         </columns>
         <masterLabel>Manual PIC Review Details</masterLabel>

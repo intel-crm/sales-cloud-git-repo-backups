@@ -2,8 +2,8 @@
 public class Core_MDF_TargetSettingServiceHandlerTest {
     @TestSetup static void setUpData(){
          Boolean isUnifiedIdEnabled = Core_MDF_CustomLabelConfig.getBooleanValues('Core_MDF_UnifiedIdCheck');
-        
-
+        // Highlight: Unused Local Variable - 14285 // Suma
+        //List<User> usrList = new List<User>();
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
         usr.LastName = 'User Test11';
         usr.IsActive = true;
@@ -94,12 +94,12 @@ public class Core_MDF_TargetSettingServiceHandlerTest {
             targetSetting.Core_MDF_Start_Date__c= System.today();
             targetSetting.Core_MDF_End_Date__c=System.today()+3;
             newTargetSettingList1.add(targetSetting);
-
+           // insert targetSetting;
             
             newTargetSettingList1.add(targetSetting);
             targetSetting.Core_MDF_Start_Date__c=System.today()+2;
             targetSetting.Core_MDF_End_Date__c=System.today()+4;
-
+           // update targetSetting;
             
             Map<Id,Core_MDF_Target_Setting__c> oldTargetSettingMap1= new Map<Id,Core_MDF_Target_Setting__c>();
             
@@ -123,7 +123,7 @@ public class Core_MDF_TargetSettingServiceHandlerTest {
             targetSetting.Core_MDF_Name__c='Trgt Settings';
             targetSetting.Core_MDF_Start_Date__c= System.today()+2;
             targetSetting.Core_MDF_End_Date__c=System.today()+4;
-
+            //insert targetSetting;
             newTargetSettingList.add(targetSetting);
             
             Map<Id,Core_MDF_Target_Setting__c> oldTargetSettingMap= new Map<Id,Core_MDF_Target_Setting__c>();
@@ -132,10 +132,10 @@ public class Core_MDF_TargetSettingServiceHandlerTest {
             targetSettingNew.Core_MDF_Name__c='Trgt Settings Test';
             targetSettingNew.Core_MDF_Start_Date__c= System.today()+5;
             targetSettingNew.Core_MDF_End_Date__c=System.today()+8;
-
+           // insert targetSettingNew;
             
             oldTargetSettingMap.put(targetSettingNew.Id,targetSettingNew);
- 
+            //Core_MDF_Target_Setting_ServiceHandler.createTargetSettingLineItems(newTargetSettingList,oldTargetSettingMap,true); 
             Assert.areEqual(true,targetSetting.Core_MDF_Name__c != null);
             try{
                 Core_MDF_Target_Setting_ServiceHandler.validateRecordsOnUpdate(null,oldTargetSettingMap,true);   

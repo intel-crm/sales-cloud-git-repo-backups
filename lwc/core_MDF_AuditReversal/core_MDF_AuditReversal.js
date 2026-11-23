@@ -24,6 +24,7 @@ errorMsg = Core_MDF_Error_Msg;
     wiredScorecardRecord({ error, data }) {
         if (data) {
             this.scorecardRecord = data;
+            console.log('Scorecard record loaded:', data);
         } else if (error) {
             console.log('Error loading scorecard record:', error);
         }

@@ -1,0 +1,3 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,force:hasRecordId,lightning:isUrlAddressable" access="global">
+	<h1>TestComp2</h1>
+</aura:component>

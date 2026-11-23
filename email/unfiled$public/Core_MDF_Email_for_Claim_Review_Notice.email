@@ -1,0 +1,29 @@
+<messaging:emailTemplate subject="{!IF((RelatedTo.Origin == 'Document Hold') ,$Label.Core_MDF_EmailTemp_Subj1 & RelatedTo.Core_MDF_Claim_Number__c &' '& $Label.Core_MDF_POP_Subject,$Label.Core_MDF_Audit_Creation_SubjectPart & RelatedTo.Core_MDF_Claim_Number__c)} " recipientType="User" relatedToType="Case" language="{!relatedTo.Core_MDF_Claim_Submitter_Language__c}" renderUsingSystemContextWithoutSharing="true">
+<messaging:htmlEmailBody >
+<html>
+<body> 
+     <p>{!$Label.Core_MDF_EmailTemp_StatusUpdate_DearMember}<br/><br/>
+     <p><apex:outputText rendered="{!(relatedTo.Origin == 'Document Hold' && relatedTo.Core_MDF_Review_Case_Status__c == 'Non-compliant')}">
+        {!$Label.Core_MDF_Audit_Creation_POP}<br/>
+     </apex:outputText></p>
+     <p><apex:outputText rendered="{!(relatedTo.Origin != 'Document Hold')}">
+        {!$Label.Core_MDF_Audit_Creation_Part2}
+     </apex:outputText></p></P>
+      <p>  {!$Label.Core_MDF_Audit_Creation_Field1} {!RelatedTo.Core_MDF_Claim_Number__c}
+      <br/>{!IF(RelatedTo.Origin == 'Document Hold', $Label.Core_MDF_Case_Cancelled_Body_CaseField &' '& RelatedTo.CaseNumber,$Label.Core_MDF_EmailTemp_Budget_Type &' '& RelatedTo.Core_MDF_Budget_Type_nm__c)}
+      <br/>{!$Label.Core_MDF_Audit_Creation_Field2} {!RelatedTo.Core_MDF_ActivityName__c} 
+      <br/>{!$Label.Core_MDF_Audit_Creation_Field3} {!RelatedTo.Core_MDF_CampaignName__c } 
+      <br/>{!$Label.Core_MDF_Audit_Creation_Field4} {!RelatedTo.Core_MDF_Activity_Type__c}
+      <br/>{!$Label.Core_MDF_Audit_Creation_Field5} {!RelatedTo.Core_MDF_Country_Region__c}</P>
+      
+      <p>{!$Label.Core_MDF_Audit_Creation_PartLink}
+      <a href="{!$Label.Core_MDF_PFRCommunityLink+RelatedTo.Id}"> {!$Label.Core_MDF_Audit_Creation_PartLink1}</a> <br/><br/>
+     
+      {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}<br/><br/>
+      <!--{!$Label.Core_MDF_Audit_Creation_Body8}-->
+      {!$Label.Core_MDF_Email_Signature}</p>
+      </body>
+    
+</html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

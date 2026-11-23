@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sent to the payment admin when an asynchronous bulk payment status update completes. Placeholders: {{PAYMENT_RUN}}, {{PAYMENT_RUN_URL}}, {{TOTAL_COUNT}}, {{SUCCESS_COUNT}}, {{FAILED_COUNT}}</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_Bulk_Payment_Update_Completed</name>
+    <style>none</style>
+    <subject>Co-Engineering: Bulk Payment Status Update Completed</subject>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

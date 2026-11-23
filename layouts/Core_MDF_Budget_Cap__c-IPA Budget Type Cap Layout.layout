@@ -23,6 +23,10 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Region_nm__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Channel_Program_test__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

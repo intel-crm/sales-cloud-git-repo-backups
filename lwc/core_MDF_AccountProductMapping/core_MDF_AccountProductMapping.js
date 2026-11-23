@@ -1,4 +1,4 @@
-import { LightningElement, track, wire } from 'lwc';
+import { LightningElement, track, wire} from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { getPicklistValues, getObjectInfo } from 'lightning/uiObjectInfoApi';
 import ACCOUNTPRODUCTMAPPING_OBJECT from '@salesforce/schema/Core_MDF_Account_Product_Mapping__c';
@@ -76,7 +76,7 @@ export default class Core_MDF_AccountProductMapping extends LightningElement {
     @wire(getPicklistValues, { recordTypeId: '$accProdMapObjInfo.data.defaultRecordTypeId', fieldApiName: Core_MDF_Program_Account_Map__c})
     programFields({data,error}){
         if(data){
-            this.programFieldValues = data.values;            
+            this.programFieldValues = data.values;
         }
         if(error){
             console.log(`Picklist values error ${error}`);
@@ -89,8 +89,8 @@ export default class Core_MDF_AccountProductMapping extends LightningElement {
         this.selectedAccount = event.detail;
         if(event.detail === null) {
             this.showProducts = false;
-            this.isLoaded = false;
-        } else {
+            this.isLoaded = false;           
+        } else {        
             this.getAccProdMapping();
         }
     }
@@ -99,7 +99,7 @@ export default class Core_MDF_AccountProductMapping extends LightningElement {
         this.selectedProgram = event.target.value;
         this.selectedProgramLabel = event.target.options.find(opt => opt.value === event.target.value).label;
         if(this.template.querySelector('c-core_-m-d-f_-parent-account-lookup') != null){
-        this.template.querySelector('c-core_-m-d-f_-parent-account-lookup').handleRemovePill(event);
+           this.template.querySelector('c-core_-m-d-f_-parent-account-lookup').handleRemovePill(event);
         }
         this.accountQueryFilter = ` RecordType.Name='CoMarketing' AND Core_MDF_Parent_Fund_Account__r.Core_MDF_CoMarketingActive__c = true AND Core_MDF_Channel_Program__r.Name='${this.selectedProgramLabel}' `;
     }
@@ -115,6 +115,7 @@ export default class Core_MDF_AccountProductMapping extends LightningElement {
             .then((result) => {
                 let oldProdIdSet = [];
                 this.selectedProducts = result;
+                console.log('@@selectedProducts --> ',this.selectedProducts);
                 result = result[this.selectedAccount];
                 if(result !== undefined && result !== null && result !== '') {
                     for(let m=0;m<result.length;m++) {
@@ -124,11 +125,12 @@ export default class Core_MDF_AccountProductMapping extends LightningElement {
                     }
                 }
                 //let prodIdSet = new Set(oldProdIdSet);
+                //console.log('prodIdSet '+JSON.stringify(prodIdSet));
                 getProducts()
                     .then(data => {
                         if(data) {
                             let dataWrapper = [];
-			    let childDataWrapper = [];
+                            let childDataWrapper = [];
                             let selectedProds = [];
                             let prooductDataMap = new Map();
                             let prodIdSet = new Set(oldProdIdSet);
@@ -181,7 +183,7 @@ export default class Core_MDF_AccountProductMapping extends LightningElement {
                             });
                             console.timeEnd("spif");
                             this.dataForTable = selectedProds;
-			    this.selectedRecords = selectedProds;
+                            this.selectedRecords = selectedProds;
                             this.productsOnLoad = selectedProds;
                             this.productData = dataWrapper;
                             this.isproductDataAvailable = true;
@@ -218,6 +220,7 @@ export default class Core_MDF_AccountProductMapping extends LightningElement {
                 uncheckedProdIds.push(element.Id);
             });
         }
+
         if(this.isProductError == false){
             let obj={};
             obj.accountId = this.selectedAccount != null ? this.selectedAccount : '';
@@ -240,7 +243,6 @@ export default class Core_MDF_AccountProductMapping extends LightningElement {
                         variant: 'success',
                     });
                     this.dispatchEvent(evt);
-
 
                 })
                 .catch((error) => {
@@ -265,7 +267,8 @@ export default class Core_MDF_AccountProductMapping extends LightningElement {
     }
 
     getSelectedRecords(event) {
-        this.selectedRecords = event.detail.selectedRows;        
+        this.selectedRecords = event.detail.selectedRows; 
+       // console.log('selected rows---',JSON.stringify(this.selectedRecords));       
         this.dataForTable = this.selectedRecords;
     }
 

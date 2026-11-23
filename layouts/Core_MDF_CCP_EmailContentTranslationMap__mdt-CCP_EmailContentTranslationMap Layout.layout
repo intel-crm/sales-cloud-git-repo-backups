@@ -8,6 +8,14 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Required</behavior>
+                <field>MasterLabel</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>DeveloperName</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
                 <field>Core_MDF_LocaleKey__c</field>
             </layoutItems>
             <layoutItems>
@@ -24,6 +32,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
+                <field>Core_MDF_MailBody4__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
                 <field>Core_MDF_MailBody5__c</field>
             </layoutItems>
             <layoutItems>
@@ -33,6 +45,14 @@
             <layoutItems>
                 <behavior>Required</behavior>
                 <field>Core_MDF_MailBody7__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>Core_MDF_MailBody8__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>Core_MDF_MailBody8_1__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -70,14 +90,6 @@
                 <behavior>Required</behavior>
                 <field>Core_MDF_Translated_Program__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>MasterLabel</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>DeveloperName</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -111,33 +123,24 @@
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
     <layoutSections>
-        <customLabel>false</customLabel>
-        <detailHeading>false</detailHeading>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
         <editHeading>false</editHeading>
+        <label>Custom Links</label>
+        <layoutColumns/>
+        <layoutColumns/>
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
-    <miniLayout>
-        <fields>Core_MDF_LocaleKey__c</fields>
-        <fields>Core_MDF_MailBody1__c</fields>
-        <fields>Core_MDF_MailBody2__c</fields>
-        <fields>Core_MDF_MailBody3__c</fields>
-        <fields>Core_MDF_MailBody5__c</fields>
-        <fields>Core_MDF_MailBody6__c</fields>
-        <fields>Core_MDF_MailBody7__c</fields>
-        <fields>Core_MDF_MailBody9__c</fields>
-        <fields>Core_MDF_MailFooter1__c</fields>
-        <fields>Core_MDF_MailFooter2__c</fields>
-        <fields>Core_MDF_MailFooter3__c</fields>
-        <fields>Core_MDF_MailFooter4__c</fields>
-        <fields>Core_MDF_MailFooter5__c</fields>
-        <fields>Core_MDF_MailSubject__c</fields>
-        <fields>Core_MDF_Program__c</fields>
-        <fields>Core_MDF_Translated_Program__c</fields>
-    </miniLayout>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
+    <summaryLayout>
+        <masterLabel>00h1J00000Cymr5</masterLabel>
+        <sizeX>4</sizeX>
+        <sizeY>0</sizeY>
+        <summaryLayoutStyle>Default</summaryLayoutStyle>
+    </summaryLayout>
 </Layout>

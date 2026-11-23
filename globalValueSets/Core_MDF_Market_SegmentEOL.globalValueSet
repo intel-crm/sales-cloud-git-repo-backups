@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Education</fullName>
+        <default>false</default>
+        <label>Education</label>
+    </customValue>
+    <customValue>
+        <fullName>Gaming and Entertainment</fullName>
+        <default>false</default>
+        <label>Gaming and Entertainment</label>
+    </customValue>
+    <customValue>
+        <fullName>Healthcare</fullName>
+        <default>false</default>
+        <label>Healthcare</label>
+    </customValue>
+    <customValue>
+        <fullName>High Performance Computing</fullName>
+        <default>false</default>
+        <label>High Performance Computing</label>
+    </customValue>
+    <customValue>
+        <fullName>Industrial Automation and Energy</fullName>
+        <default>false</default>
+        <label>Industrial Automation and Energy</label>
+    </customValue>
+    <description>Pick-list for Market Segment on Campaign</description>
+    <masterLabel>Market SegmentEOL</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

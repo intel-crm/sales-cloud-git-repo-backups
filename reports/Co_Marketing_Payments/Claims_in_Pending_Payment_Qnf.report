@@ -46,7 +46,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Client CoMarketing Fund,Client CoMarketing Fund Boost,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Data Center CoMarketing Fund</value>
+            <value>,Client CoMarketing Fund,Client,Client CoMarketing Fund Boost,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Data Center CoMarketing Fund</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundClaim$Core_MDF_Budget_Type_Options_Nm__c</column>

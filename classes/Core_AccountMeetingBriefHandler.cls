@@ -23,8 +23,8 @@ public class Core_AccountMeetingBriefHandler {
     public static Map<Id,sObject> objectsToDelete = new Map<Id,sObject>();
     public static Boolean objectsToDeleteCounter = false;
 
-	// Map of our Trigger execution flags
-	public static Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution;
+  // Map of our Trigger execution flags
+  public static Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution;
     
     // Handle all "Before" logic on Account Meeting Briefs
     public static void beforeMethod(List<Account_Meeting_Brief__c> oldList, List<Account_Meeting_Brief__c> newList,
@@ -32,14 +32,14 @@ public class Core_AccountMeetingBriefHandler {
     {
         //mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
         
-    	//if (Trigger.isInsert) {
-        	// Placeholder for future code
+      //if (Trigger.isInsert) {
+          // Placeholder for future code
         //}
         //if (Trigger.isUpdate) {
-        	// Placeholder for future code
+          // Placeholder for future code
         //}
         //if (Trigger.isDelete) {
-        	// Placeholder for future code
+          // Placeholder for future code
         //}
         
         // Perform any inserts, if we have anything to insert
@@ -79,14 +79,14 @@ public class Core_AccountMeetingBriefHandler {
     {        
         mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
         
-    	if (Trigger.isInsert) {
+      if (Trigger.isInsert) {
             Core_AccountMeetingBriefAccountTeam.addAccountOwnerAndTeam(oldList, newList, oldMap, newMap);
         }
         //if (Trigger.isUpdate) {
-        	// Placeholder for future code
+          // Placeholder for future code
         //}
         //if (Trigger.isDelete) {
-        	// Placeholder for future code
+          // Placeholder for future code
         //}
         
         // Perform any inserts, if we have anything to insert
@@ -94,6 +94,7 @@ public class Core_AccountMeetingBriefHandler {
             objectsToInsertCounter = true;
             
             if (objectsToInsert.size() > 0) {
+                System.debug('##### objectsToInsert: ' + objectsToInsert);
                 insert objectsToInsert;
                 objectsToInsert.clear();
             }

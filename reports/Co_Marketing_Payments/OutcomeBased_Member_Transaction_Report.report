@@ -109,6 +109,9 @@
         <field>PartnerFundRequest$ChannelPartner.Core_MDF_Account_Node_Attribute_Id__c.Core_MDF_Final_CSAR_GL_Account_nbr__c</field>
     </columns>
     <columns>
+        <field>PartnerFundRequest$Core_MDF_Region_txt__c</field>
+    </columns>
+    <columns>
         <field>PartnerFundRequest$Core_MDF_Host_Region_txt__c</field>
     </columns>
     <columns>
@@ -158,7 +161,7 @@
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Ultimate_Account_Name__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
+            <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>A&amp;E Test Account JJ,Bristal org_CCPTest,Compute Brigade S A_CCPTest,Test_company,北京苏尔泰科技有限公司-CST_CCPTest</value>
         </criteriaItems>

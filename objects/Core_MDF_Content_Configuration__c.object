@@ -226,6 +226,26 @@
         <type>Url</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_Effective_End_Date__c</fullName>
+        <description>End Date For Announcement</description>
+        <inlineHelpText>This date Follows PST Time</inlineHelpText>
+        <label>Effective End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Effective_Start_Date__c</fullName>
+        <description>start date for announcement widget</description>
+        <inlineHelpText>This date Follows PST Time</inlineHelpText>
+        <label>Effective Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_HelpText_de_txt__c</fullName>
         <description>Helptext translation in German.</description>
         <label>German HelpText Trans</label>
@@ -343,6 +363,14 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Is_HelpText_Required_ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Is HelpText Required?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_MDF_Is_Icon_Required_ind__c</fullName>
@@ -463,6 +491,18 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
+        <fullName>Core_MDF_No_of_Columns_nbr__c</fullName>
+        <externalId>false</externalId>
+        <label>No of Columns</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Parent_Content_Config_Id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Parent Content Confirguration</label>
@@ -481,6 +521,29 @@
         <label>Section Code</label>
         <length>255</length>
         <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Section_Header_txt__c</fullName>
+        <description>To display section header</description>
+        <externalId>false</externalId>
+        <label>Section Header</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Section_SubHeader_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Section SubHeader</label>
+        <length>255</length>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -508,6 +571,18 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Table_Section_Order__c</fullName>
+        <externalId>false</externalId>
+        <label>Table Section Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -633,7 +708,17 @@
     <label>Content Configuration</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Section_Code_txt__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>Core_MDF_Content_Label_txt__c</columns>
+        <columns>Core_MDF_Category_nm__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>CREATEDBY_USER</field>
+            <operation>equals</operation>
+            <value>indira emmidisetty</value>
+        </filters>
         <label>All</label>
     </listViews>
     <nameField>
@@ -643,6 +728,19 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Content Configurations</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Core_MDF_Announcement_Type</fullName>
+        <active>true</active>
+        <label>Announcement Type</label>
+        <picklistValues>
+            <picklist>Core_MDF_Category_nm__c</picklist>
+            <values>
+                <fullName>Section Header</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
     <searchLayouts/>
     <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>

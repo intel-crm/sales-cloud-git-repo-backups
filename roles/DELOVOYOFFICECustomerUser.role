@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>DELOVOY OFFICE Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Inactive_Accounts_Role</parentRole>
+    <parentRole>DELOVOYOFFICECustomerManager</parentRole>
 </Role>

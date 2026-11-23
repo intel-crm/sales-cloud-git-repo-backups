@@ -1,0 +1,12 @@
+<aura:component implements="lightning:availableForFlowScreens,force:hasRecordId" controller ="Core_MDF_RedirectToAuraComp" access="global">
+    <aura:attribute name="ClaimsIds" type="String[]" /><!--Used in Flow-->
+    <aura:attribute name="claimsData" type="String" />
+    <aura:attribute name="mydata" type="PartnerFundClaim"/>
+    <aura:attribute name="claimsList" type="PartnerFundClaim[]"/>
+    <aura:attribute name="mycolumns" type="List"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <lightning:datatable data="{! v.mydata }"
+                         columns="{! v.mycolumns }"
+                         keyField="Id"
+                         hideCheckboxColumn="true"/>
+</aura:component>

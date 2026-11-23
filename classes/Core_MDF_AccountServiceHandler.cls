@@ -4,31 +4,31 @@ public without sharing class Core_MDF_AccountServiceHandler {
     public static Map<Id,set<Id>> accIdToExtGrpIdMap = new Map<Id,set<Id>>();
     public static Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
     public static Map<Id,Account> parentAccIdToParentAccMap = new Map<Id,Account>();
+    public static Map<Id,Account> virtualCorpToUltimateAccountMap = new Map<Id,Account>();
     public static Map<String,Account> virtualCorpIdToVirtualCorpAccMap  = new Map<String,Account>();
     public static Map<Id,Id> parentAccountToUltimateAccountmap = new Map<Id,Id>();
     public static Set<Id> ultimateAccountIds = new Set<Id>();
+   
 
     public static void processCCPTriggerUpdates(List<Account> newAccountList, Map<Id, Account> newAccountMap, Map<Id, Account> oldAccountMap, String triggerContext) {
      List<Account> comarkAct = new List<Account>();
      Set<Id> parentFundAcctIds = new Set<Id>();
-     
      Set<Id> programIds  = new Set<Id>();
 
         //By-pass when recursive call
         if(Core_MDF_RecursiveTrigger.isRecursive){
             return;
         }
-        if(newAccountList != null && newAccountList.size() > 0){
-            for(Account acc : newAccountList)
-            {
-                if(acc.RecordTypeId == coMarketingRecordTypeId)
-                {
-                    comarkAct.add(acc);
-                    programIds.add(acc.Core_MDF_Channel_Program__c);
-                    parentFundAcctIds.add(acc.Core_MDF_Parent_Fund_Account__c);
-                    
-                }
-            } 
+
+        for(Account acc : newAccountList)
+        {
+           if(acc.RecordTypeId == coMarketingRecordTypeId)
+           {
+             comarkAct.add(acc);
+             programIds.add(acc.Core_MDF_Channel_Program__c);
+             parentFundAcctIds.add(acc.Core_MDF_Parent_Fund_Account__c);
+
+           }
         }
         if(!parentFundAcctIds.isEmpty() && !programIds.isEmpty())
         {
@@ -65,7 +65,7 @@ public without sharing class Core_MDF_AccountServiceHandler {
             {
                 restrictHostRegionUpdateOnNodeAccounts(newAccountMap, oldAccountMap);
             }
-        }
+                    }
         
         if(triggerContext == 'after insert') {
             
@@ -199,6 +199,7 @@ public without sharing class Core_MDF_AccountServiceHandler {
         for(Account acc : [Select id,Name,RecordTypeId,RecordType.DeveloperName,Core_Geo__c,Core_MDF_Payment_Type_nm__c,Core_MDF_Virtual_Corp_Account_Id__c,Core_MDF_CoMarketing_Ultimate_Account__c,Core_MDF_Channel_Program__c,Core_MDF_Parent_Fund_Account__r.RecordType.DeveloperName,Core_MDF_Active_Ind__c from Account where Id IN : parentFundAcctIds])
         {
             parentAccIdToParentAccMap.put(acc.Id,acc);
+          
             if(acc.RecordTypeId == masterRecrodtypeId)
             {
                 ultimateAccountIds.add(acc.Id);
@@ -210,14 +211,16 @@ public without sharing class Core_MDF_AccountServiceHandler {
                 parentAccountToUltimateAccountmap.put(acc.Id,acc.Core_MDF_CoMarketing_Ultimate_Account__c);
 
             }
-           
         }
-    
-        for(Account acc : [Select id,Name,RecordType.DeveloperName,Core_MDF_Virtual_Corp_Account_Id__c,Core_MDF_CoMarketing_Ultimate_Account__c,Core_MDF_Channel_Program__c,Core_MDF_Parent_Fund_Account__r.RecordType.DeveloperName from Account where Core_MDF_Parent_Fund_Account__c IN : ultimateAccountIds and Core_MDF_Channel_Program__c IN: programIds and RecordTypeId =: coMarketingRecordtypeId and Core_MDF_Parent_Fund_Account__r.RecordTypeId =: masterRecrodtypeId and Core_MDF_Active_Ind__c = TRUE])
+    System.debug('ultimateAccountIds ---'+ultimateAccountIds);
+        for(Account acc : [Select id,Name,Core_Geo__c,RecordType.DeveloperName,Core_MDF_Virtual_Corp_Account_Id__c,Core_MDF_CoMarketing_Ultimate_Account__c,Core_MDF_Channel_Program__c,Core_MDF_Parent_Fund_Account__r.RecordType.DeveloperName from Account where Core_MDF_Parent_Fund_Account__c IN : ultimateAccountIds and Core_MDF_Channel_Program__c IN: programIds and RecordTypeId =: coMarketingRecordtypeId and Core_MDF_Parent_Fund_Account__r.RecordTypeId =: masterRecrodtypeId and Core_MDF_Active_Ind__c = TRUE])
         {
             String key = String.valueOf(acc.Core_MDF_CoMarketing_Ultimate_Account__c) + String.valueOf(acc.Core_MDF_Channel_Program__c);
             virtualCorpIdToVirtualCorpAccMap.put(key,acc);
+            //added by Jahnavi K - payment type and region field mandatory for IPA and cogtm program on VC
+            virtualCorpToUltimateAccountMap.put(acc.id,acc);
         }
+        System.debug('virtualCorpToUltimateAccountMap--'+virtualCorpToUltimateAccountMap);
     
     }
 
@@ -233,7 +236,7 @@ public without sharing class Core_MDF_AccountServiceHandler {
 
         try{
             boolean isUnifiedIdEnabled = Core_MDF_CustomLabelConfig.getBooleanValues('Core_MDF_UnifiedIdCheck');
-            List<Core_MDF_Account_PGM_Sync__e> accountPgmSyncPE = new List<Core_MDF_Account_PGM_Sync__e>();
+            List<Core_MDF_Account_PGM_Sync__e> accountPgmSyncPE = new List<Core_MDF_Account_PGM_Sync__e>();            
             for(Account newAccount : newAccountMap.values()){
                 if(newAccount.RecordTypeId == masterRecrodtypeId && oldAccountMap != null && oldAccountMap.containsKey(newAccount.Id) &&
                     (newAccount.Core_Intel_Partner_Alliance_PartnerGroup__c != oldAccountMap.get(newAccount.Id).Core_Intel_Partner_Alliance_PartnerGroup__c ||
@@ -256,7 +259,7 @@ public without sharing class Core_MDF_AccountServiceHandler {
                     }*/
                     accountPgmSyncPE.add(new Core_MDF_Account_PGM_Sync__e(Core_MDF_DML_Operation_Type_txt__c = 'Update', Core_MDF_Object_API_Name__c = 'Account', Core_MDF_JSON_Data__c = JSON.serialize(((SObject)accountWithOldValues))));
                 }
-            }
+            }           
 
             if(!accountPgmSyncPE.isEmpty()){
                 //Publish Platform event(Core_MDF_Account_PGM_Sync__e)
@@ -358,30 +361,36 @@ public static void virtualCorpInsertionLogic(List<Account> newList, Set<Id> prog
                 }
 
         //stamp the host region/Payment Type from its parent account for the parent fund account matching records
-        if(!parentAccIdToParentAccMap.isEmpty()) {
+        //ATHR - Deeply Nested if 16209
+        if(parentAccIdToParentAccMap.isEmpty()) return;
+        //if(!parentAccIdToParentAccMap.isEmpty()) {
             for(Account acc: accountsWithoutSubGeo) {
-                 if(parentAccIdToParentAccMap.containsKey(acc.Core_MDF_Parent_Fund_Account__c) && (parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).RecordTypeId == coMarketingRecordTypeId) && (parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Id == acc.Core_MDF_Parent_Fund_Account__c)) {    
+                //ATHR - Deeply Nested if 16209
+                if(!parentAccIdToParentAccMap.containsKey(acc.Core_MDF_Parent_Fund_Account__c) || parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).RecordTypeId != coMarketingRecordTypeId || parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Id != acc.Core_MDF_Parent_Fund_Account__c) continue;
+
+                 //if(parentAccIdToParentAccMap.containsKey(acc.Core_MDF_Parent_Fund_Account__c) && (parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).RecordTypeId == coMarketingRecordTypeId) && (parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Id == acc.Core_MDF_Parent_Fund_Account__c)) {    
                     
                     if(acc.Core_MDF_Channel_Program__c == channelProgramDetailsOfIPA.Core_MDF_Program_ID__c){
-                        if(acc.Core_Geo__c != null) {
-                            if(parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_Geo__c != acc.Core_Geo__c) {
+                        //ATHR - Deeply Nested if 16209
+                        if(acc.Core_Geo__c != null && parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_Geo__c != acc.Core_Geo__c) {
+                            //if(parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_Geo__c != acc.Core_Geo__c) {
                                 acc.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_RegionMismatch_Error'));
-                            } else {
+                            /*} else {
                                 acc.Core_Geo__c = parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_Geo__c;
-                            }
+                            }*/
                         } else {
                             acc.Core_Geo__c = parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_Geo__c;
                         }
                         
                     }
-
-                    if(acc.Core_MDF_Payment_Type_nm__c != null){
-                        if(parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_MDF_Payment_Type_nm__c != acc.Core_MDF_Payment_Type_nm__c && !Core_MDF_Utility.byPassFeature('bypassPaymentTypeErrorOnAccount'))
-                        {
+                    //ATHR - Deeply Nested if 16209
+                    if(acc.Core_MDF_Payment_Type_nm__c != null && parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_MDF_Payment_Type_nm__c != acc.Core_MDF_Payment_Type_nm__c && !Core_MDF_Utility.byPassFeature('bypassPaymentTypeErrorOnAccount')){
+                        //if(parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_MDF_Payment_Type_nm__c != acc.Core_MDF_Payment_Type_nm__c && !Core_MDF_Utility.byPassFeature('bypassPaymentTypeErrorOnAccount'))
+                        //{
                             acc.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PaymentTypeMismatch_Error'));                          
-                        }else{
+                        /*}else{
                             acc.Core_MDF_Payment_Type_nm__c =  parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_MDF_Payment_Type_nm__c;
-                        }
+                        }*/
                     }else{
                         acc.Core_MDF_Payment_Type_nm__c =  parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_MDF_Payment_Type_nm__c;
                     }                   
@@ -393,10 +402,10 @@ public static void virtualCorpInsertionLogic(List<Account> newList, Set<Id> prog
                     }
                      //ATHR Fix
                      //acc.Core_MDF_Virtual_Corp_Account_Id__c = (virtualCorpIdToVirtualCorpAccMap.containsKey(key) && virtualCorpIdToVirtualCorpAccMap.get(key) != null)  ? virtualCorpIdToVirtualCorpAccMap.get(key).Id : acc.Core_MDF_Virtual_Corp_Account_Id__c;//if the key exists and is not null then virtualCorpIdToVirtualCorpAccMap.get(key).Id else no change                    
-                }
+                //}
                 
             }
-        } 
+        //} 
     }catch(Exception ex) {Core_MDF_CCP_UtilityClass.logError(ex);
         }
     }
@@ -422,8 +431,9 @@ public static void virtualCorpInsertionLogic(List<Account> newList, Set<Id> prog
                 }
             }
         }
-        
-        if(accountIds != NULL && accountIds.size()>0){
+        //ATHR - Deeply Nested if 16209
+        if (accountIds.isEmpty()) return;
+        //if(accountIds != NULL && accountIds.size()>0){
             //List to store all child accounts
             List <Account> hierarchyList = [SELECT Id,RecordType.DeveloperName,Name,Core_MDF_Enabled_Auto_Transfer__c, Core_MDF_Auto_Transfer_Account__c,Core_MDF_Parent_Fund_Account__c , Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c,Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c,Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c,
                                         Core_MDF_External_Group_Id__c,Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c ,Core_MDF_Parent_Fund_Account__r.Core_MDF_External_Group_Id__c,
@@ -435,14 +445,17 @@ public static void virtualCorpInsertionLogic(List<Account> newList, Set<Id> prog
                                                                                                                  OR Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c IN : accountIds)];
             
             //Check if child node list is not empty
-            if(hierarchyList != NULL && hierarchyList.size()>0){
+            //ATHR - Deeply Nested if 16209
+            if (hierarchyList.isEmpty()) return;
+            //if(hierarchyList != NULL && hierarchyList.size()>0){
                 for(Account acctObj : newList){
                     //List to store Auto Transfer Enable Nodes
                     List<String> errorNode = new List<String>();  
                     for(Account acc : hierarchyList){
                         //Retail sharing
-                        if(!Core_MDF_Utility.byPassFeature('byPassRetailCampSharingOnPFAChange')){
-                            if(acc.Id == acctObj.Id && acc.Core_MDF_External_Group_Id__c != NULL && acc.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c == 'Retail Marketing Funds'){
+                        //ATHR - Deeply Nested if 16209
+                        if(!Core_MDF_Utility.byPassFeature('byPassRetailCampSharingOnPFAChange') && acc.Id == acctObj.Id && acc.Core_MDF_External_Group_Id__c != NULL && acc.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c == 'Retail Marketing Funds'){
+                            //if(acc.Id == acctObj.Id && acc.Core_MDF_External_Group_Id__c != NULL && acc.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c == 'Retail Marketing Funds'){
                                 accIdToExtGrpIdMap.put(acc.Id, new set<Id>{acc.Core_MDF_External_Group_Id__c});
                                 if(acc.Core_MDF_Parent_Fund_Account__c != null && acc.Core_MDF_Parent_Fund_Account__r.Core_MDF_External_Group_Id__c != null){
                                     if(accIdToExtGrpIdMap.containsKey(acc.id)){
@@ -460,7 +473,7 @@ public static void virtualCorpInsertionLogic(List<Account> newList, Set<Id> prog
                                         accIdToExtGrpIdMap.put(acc.id, new set<Id>{acc.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_External_Group_Id__c});
                                     }
                                 }
-                            }
+                            //}
                         }
                         //check if child nodes parent match with editing node  
                         if(acc.Core_MDF_Parent_Fund_Account__c == acctObj.Id || acc.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c == acctObj.Id 
@@ -499,8 +512,8 @@ public static void virtualCorpInsertionLogic(List<Account> newList, Set<Id> prog
                         acctObj.Core_MDF_Parent_Fund_Account__c.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EnableAutoTransfer_error')+' '+errorString);
                     }
                 }
-            }
-        }
+            //}
+        //}
     }
     
     /***************************************************************************************************** 
@@ -513,6 +526,7 @@ public static void virtualCorpInsertionLogic(List<Account> newList, Set<Id> prog
     ******************************************************************************************************/    
     public static void restrictHostRegionUpdateOnNodeAccounts(Map<Id,Account> newAccountMap, Map<Id,Account> accRecsOldMap) {
         try {
+            System.debug('NewAccountMap---'+newAccountMap);
             Set<Id> parentFundAccountIdsSet = new Set<Id>();
             List<Account> geoUpdatedAccountsList = new List<Account>();
             List<Account> updatePaymentTypeAccountList = new List<Account>();
@@ -520,6 +534,7 @@ public static void virtualCorpInsertionLogic(List<Account> newList, Set<Id> prog
             List<String> paymentTypeSupportedProgramIds = Core_MDF_CustomLabelConfig.getTextList('Core_MDF_PaymentTypeSupportedProgramIds');
             //Get the channel Program id of IPA program
             Core_MDF_ChannelProgram__mdt channelProgramDetailsOfIPA = Core_MDF_ChannelProgram__mdt.getInstance('Intel_Partner_Alliance');
+            Core_MDF_ChannelProgram__mdt channeProgramDetailsOFCogtm = Core_MDF_ChannelProgram__mdt.getInstance('Co_GTM');
             Boolean hasAccessToUpdateGeo = FeatureManagement.checkPermission('Core_MDF_CCP_users_with_Region_Field_Edit_Access_on_CoMarketing_Account');
             // Loop through the Accounts
             for(Account acc : newAccountMap.values()){
@@ -544,7 +559,7 @@ public static void virtualCorpInsertionLogic(List<Account> newList, Set<Id> prog
                         geoUpdatedAccountsList.add(acc);
                     }
                   }
-		  //added by Jahnavi K -- payment type and region should be mandatory for IPA Program on virtual corp
+                  //added by Jahnavi K -- payment type and region should be mandatory for IPA Program on virtual corp
                   //Payment Type field mandatory for co-gtm program on virtual corp
                   if(ultimateAccountIds.contains(acc.Core_MDF_Parent_Fund_Account__c)){
                     if(acc.Core_Geo__c == null && acc.Core_MDF_Channel_Program__c == channelProgramDetailsOfIPA.Core_MDF_Program_ID__c){
@@ -553,9 +568,9 @@ public static void virtualCorpInsertionLogic(List<Account> newList, Set<Id> prog
                         acc.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_MandatePaymentTypeOnVirtualCorp'));
                     }
                 }
-                  if(accRecsOldMap != null)
+                  if(accRecsOldMap != null || acc.Core_MDF_Channel_Program__c == channeProgramDetailsOFCogtm.Core_MDF_Program_ID__c) 
                   {
-                    if(accRecsOldMap != null && accRecsOldMap.get(acc.Id).Core_MDF_Payment_Type_nm__c != acc.Core_MDF_Payment_Type_nm__c){
+                    if((accRecsOldMap != null || acc.Core_MDF_Channel_Program__c == channeProgramDetailsOFCogtm.Core_MDF_Program_ID__c )&& accRecsOldMap.get(acc.Id).Core_MDF_Payment_Type_nm__c != acc.Core_MDF_Payment_Type_nm__c){
                         paymentTypeupdateAccList.add(acc);
                     }
                     updatePaymentTypeAccountList.add(acc);
@@ -565,33 +580,36 @@ public static void virtualCorpInsertionLogic(List<Account> newList, Set<Id> prog
 
             
             //Throw an error 'Region Should be Same as its Parent Account', if the region on node/sub-node accounts is not same as its Parent Account's region
-            if(!parentAccIdToParentAccMap.isEmpty()) {
+            //ATHR - Deeply Nested if 16209
+            if(parentAccIdToParentAccMap.isEmpty()) return;
+            //if(!parentAccIdToParentAccMap.isEmpty()) {
                     for(Account acc : updatePaymentTypeAccountList){
                         
                         if(parentAccIdToParentAccMap.containsKey(acc.Core_MDF_Parent_Fund_Account__c) && (parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).RecordTypeId == coMarketingRecordTypeId) && (parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Id == acc.Core_MDF_Parent_Fund_Account__c)) {
-                           if(geoUpdatedAccountsList.contains(acc))
+                           //ATHR - Deeply Nested if 16209
+                           if(geoUpdatedAccountsList.contains(acc) && ((newAccountMap.containsKey(acc.Core_MDF_Parent_Fund_Account__c) && newAccountMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_Geo__c != acc.Core_Geo__c) || (!newAccountMap.containsKey(acc.Core_MDF_Parent_Fund_Account__c) && parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_Geo__c != acc.Core_Geo__c))) 
                            {
-                               if((newAccountMap.containsKey(acc.Core_MDF_Parent_Fund_Account__c) && 
+                               /*if((newAccountMap.containsKey(acc.Core_MDF_Parent_Fund_Account__c) && 
                                 newAccountMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_Geo__c != acc.Core_Geo__c)  || 
                                (!newAccountMap.containsKey(acc.Core_MDF_Parent_Fund_Account__c) && 
-                               parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_Geo__c != acc.Core_Geo__c)) {
+                               parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_Geo__c != acc.Core_Geo__c)) {*/
                                     acc.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_RegionMismatch_Error')); //Core_MDF_RegionMismatch_Error - Region Should be Same as its Parent Account
-                                } 
+                                //} 
                            }
-                           if(paymentTypeupdateAccList.contains(acc) && !Core_MDF_Utility.byPassFeature('bypassPaymentTypeErrorOnAccount'))
+                           if(paymentTypeupdateAccList.contains(acc) && !Core_MDF_Utility.byPassFeature('bypassPaymentTypeErrorOnAccount') && ((newAccountMap.containsKey(acc.Core_MDF_Parent_Fund_Account__c) && newAccountMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_MDF_Payment_Type_nm__c != acc.Core_MDF_Payment_Type_nm__c)  || (!newAccountMap.containsKey(acc.Core_MDF_Parent_Fund_Account__c) && parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_MDF_Payment_Type_nm__c != acc.Core_MDF_Payment_Type_nm__c)))
                            {
-                               if((newAccountMap.containsKey(acc.Core_MDF_Parent_Fund_Account__c) && 
+                               /*if((newAccountMap.containsKey(acc.Core_MDF_Parent_Fund_Account__c) && 
                                 newAccountMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_MDF_Payment_Type_nm__c != acc.Core_MDF_Payment_Type_nm__c)  || 
                                (!newAccountMap.containsKey(acc.Core_MDF_Parent_Fund_Account__c) && 
-                               parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_MDF_Payment_Type_nm__c != acc.Core_MDF_Payment_Type_nm__c)) {
+                               parentAccIdToParentAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_MDF_Payment_Type_nm__c != acc.Core_MDF_Payment_Type_nm__c)) {*/
                                     acc.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PaymentTypeMismatch_Error')); 
-                                } 
+                                //} 
                            }
                            
                         }
                     }
                 
-                }
+                //}
         } catch(Exception ex) {Core_MDF_CCP_UtilityClass.logError(ex);
         }
     }
@@ -627,7 +645,7 @@ public static void virtualCorpInsertionLogic(List<Account> newList, Set<Id> prog
     }
     
     /*************************************************************************************************************
-   * Method Name:                                            createNodeSharingGroup
+   * Method Name:                                            createNodeShrngGrpAndUpdAccNodeAttr
     @return  :                                               Void
     Modified By:                            Date:            Changes: 
     Accenture – NK                          22/02/2022       This method is used Create PNUM based External sharing group and
@@ -647,14 +665,17 @@ public static void virtualCorpInsertionLogic(List<Account> newList, Set<Id> prog
             List<Group> allAccessGroupList = new List<Group>();
             Map<String,Id> ultimateAccProgamAllAccessGrpIdMap = new Map<String,Id>();
             //query PGM records with ultimate acc Ids
+            System.debug('ultimateAccountIds---'+ultimateAccountIds);
             for(Core_MDF_Partner_Group_Mapping__c pgm : [select Core_MDF_Account__c,Core_MDF_Channel_Program__c,Core_MDF_All_Access_Group_Id__c
                                                         from Core_MDF_Partner_Group_Mapping__c 
                                                         where Core_MDF_Account__c in : ultimateAccountIds 
                                                         and Core_MDF_Inactive_Ind__c = false 
                                                         and Core_MDF_Type_of_Access__c='External'
                                                         and Core_MDF_All_Access_Group_Id__c != null]){
+                                                            System.debug('pgm--'+pgm);
                 
                 String key = String.valueOf(pgm.Core_MDF_Account__c)+String.valueOf(pgm.Core_MDF_Channel_Program__c);
+                System.debug('Key--'+key);
                 ultimateAccProgamAllAccessGrpIdMap.put(key,pgm.Core_MDF_All_Access_Group_Id__c);
             }
             for(Account acc : newMap.values()){
@@ -667,11 +688,14 @@ public static void virtualCorpInsertionLogic(List<Account> newList, Set<Id> prog
                     
                     if(acc.Core_MDF_Channel_Program__c == channelProgramDetailsOfCCF.Core_MDF_Program_ID__c || acc.Core_MDF_Channel_Program__c == channelProgramDetailsOfDCF.Core_MDF_Program_ID__c || acc.Core_MDF_Channel_Program__c == channelProgramDetailsOfEEF.Core_MDF_Program_ID__c){
                         String ultimateAccIdProgram = String.valueOf(parentAccountToUltimateAccountmap.get(acc.Core_MDF_Parent_Fund_Account__c))+String.valueOf(acc.Core_MDF_Channel_Program__c);
+                        System.debug('ultimateAccIdProgram---'+ultimateAccIdProgram);
                         nodeGrpToAllAccessGrpNameMap.put(newNodeGroup.DeveloperName,ultimateAccProgamAllAccessGrpIdMap.get(ultimateAccIdProgram));
+                        System.debug('nodeGrpToAllAccessGrpNameMap---'+nodeGrpToAllAccessGrpNameMap);
                     }
 
                 }
             }
+            
             if(!accIdGrpNameMap.isEmpty()){
                 Database.insert(accIdGrpNameMap.values());
             }
@@ -679,17 +703,22 @@ public static void virtualCorpInsertionLogic(List<Account> newList, Set<Id> prog
             Map<Id, List<Id>> accIdGrpIdListMap = new Map<Id, List<Id>>();
             for(Id accId : accIdGrpNameMap.keyset()){
                 accIdGrpIdListMap.put(accId,new List<Id>{accIdGrpNameMap.get(accId).Id});
+                System.debug('accIdGrpIdListMap --- '+accIdGrpIdListMap);
             }
+            
             //Adding All Access Group as a group member to Node External Group
             List<GroupMember> gmemList = new List<GroupMember>();
             List<String> serializedGroupMembers = new List<String>();
             List<Core_MDF_Bulk_Transaction__e> RecordList = new List<Core_MDF_Bulk_Transaction__e>();
             for(Group g:accIdGrpNameMap.values()){
+                System.debug('g----'+g);
                 if(nodeGrpToAllAccessGrpNameMap.get(g.developerName)!= null){
+                    System.debug('in line 594--');
                     GroupMember gm = new GroupMember();
                     gm.UserOrGroupId = nodeGrpToAllAccessGrpNameMap.get(g.developerName);
                     gm.GroupId = g.Id;
                     gmemList.add(gm); 
+                    System.debug('gm---'+gm);
                     Core_MDF_Bulk_Transaction__e evtObj = new Core_MDF_Bulk_Transaction__e(); 
                     evtObj.Core_MDF_JSON_Data__c = JSON.serialize(gm); 
                     evtObj.Core_MDF_Object_Name__c = 'GroupMember';
@@ -702,20 +731,25 @@ public static void virtualCorpInsertionLogic(List<Account> newList, Set<Id> prog
             List<Database.SaveResult> results = EventBus.publish(RecordList);
             for (Database.SaveResult sr : results) {
                 if (sr.isSuccess()) {
-                    //System.debug('Successfully published event.');
+                    System.debug('Successfully published event.');
                 } 
                 else { 
                     for(Database.Error err : sr.getErrors()) { 
-                        //System.debug('Error returned: ' + err.getStatusCode() ); 
+                        System.debug('Error returned: ' + err.getStatusCode() ); 
                     }
                 }
             }
          }
+             /*if(!serializedGroupMembers.isEmpty()){
+                //insertGrpMem(serializedGroupMembers);
+            }*/
+            
             //Account node attribute creation- WW24'2025
             Map<Id, Id> accIdToNodeAttrIdMap = new Map<Id, Id>();
             if(!Core_MDF_Utility.byPassFeature('Bypass_AccNodeAttr_Creation')){
                 accIdToNodeAttrIdMap = createAccountNodeAttr(newMap);
             }
+
             Core_MDF_GenericShareRecordActionClass.RecordManualShareClass rmsInst = new Core_MDF_GenericShareRecordActionClass.RecordManualShareClass('Account',accIdGrpIdListMap, 'Edit','Manual','Read');
             List<AccountShare> accountShareList = Core_MDF_GenericShareRecordActionClass.createShareRecordList(rmsInst); 
             List<Account> accToUpdate = new List<Account>();
@@ -726,13 +760,29 @@ public static void virtualCorpInsertionLogic(List<Account> newList, Set<Id> prog
                 }
                 accToUpdate.add(acc);
             }
-            
             Database.update(accToUpdate); 
+
         }catch (Exception e) {Core_MDF_CCP_UtilityClass.logError(e);
        }
     }
-    
-    /***************************************************************************************************** 
+    /***************************************************************************************************
+    Method Name: insertGrpMem
+    @return : void
+    Created By: AN
+    Date: 12 Dec, 23
+    ****************************************************************************************************/
+    /*@future
+    public static void insertGrpMem(List<String> serializedGroupMembers){
+        List<GroupMember> groupMembers = new List<GroupMember>();
+        if(!serializedGroupMembers.isEmpty()){ 
+        for (String serializedGm : serializedGroupMembers) {
+            GroupMember groupMember = (GroupMember)JSON.deserialize(serializedGm, GroupMember.class);
+            groupMembers.add(groupMember);
+        }
+        insert groupMembers;r
+        }
+    }*/
+    /****************************************************************************************************
     Method Name: validateAccountHierarchy
     @return  :  Void
     Created By: SH                  
@@ -753,8 +803,9 @@ public static void virtualCorpInsertionLogic(List<Account> newList, Set<Id> prog
                 }
             }
         }
-        
-        if(accList != NULL && accList.size() > 0){
+        //ATHR - Deeply Nested if 16209
+        if(accList == NULL || accList.isEmpty()) return;
+        //if(accList != NULL && accList.size() > 0){
             if(!Core_MDF_Utility.byPassFeature('byPassRetailCampSharingOnPFAChange')){
                 checkRetailCampaignShare(accList);
             }
@@ -773,7 +824,9 @@ public static void virtualCorpInsertionLogic(List<Account> newList, Set<Id> prog
                                                                                          OR Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c IN: accList 
                                                                                          OR Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c IN: accList)];
             
-            if(hierarchyList != NULL && hierarchyList.size()>0){
+            //ATHR - Deeply Nested if 16209
+            if(hierarchyList == NULL || hierarchyList.isEmpty()) return;
+            //if(hierarchyList != NULL && hierarchyList.size()>0){
                 for(Account accInst : accList){
                     for(Account childAcc : hierarchyList){
                         if(childAcc.Core_MDF_Parent_Fund_Account__c == accInst.Id || childAcc.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c == accInst.Id ||
@@ -798,8 +851,8 @@ public static void virtualCorpInsertionLogic(List<Account> newList, Set<Id> prog
                         }
                     }
                 }
-            }
-        }
+            //}
+        //}
     }
     
     /***************************************************************************************************** 

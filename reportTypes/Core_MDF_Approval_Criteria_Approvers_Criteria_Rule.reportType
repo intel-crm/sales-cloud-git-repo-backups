@@ -239,6 +239,11 @@
             <field>Core_MDF_Value_9__c</field>
             <table>Core_MDF_Criteria__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Approval_Criteria_Ref_Code_txt__c</field>
+            <table>Core_MDF_Criteria__c</table>
+        </columns>
         <masterLabel>Approval Criteria</masterLabel>
     </sections>
     <sections>

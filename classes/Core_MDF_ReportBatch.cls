@@ -130,7 +130,6 @@ global class Core_MDF_ReportBatch implements Database.Batchable<sObject>, Databa
                     recordTrackingId = insertedRecord.getId();
                 }
             }
-
             if (!csvDataList.isEmpty() && csvDataList.size()>1) {
                 contentVersionListToBeInserted.add(createContentVersion(csvDataList));
                 Database.insert(contentVersionListToBeInserted);
@@ -180,13 +179,11 @@ global class Core_MDF_ReportBatch implements Database.Batchable<sObject>, Databa
         List<String> userIdsList = new List<String>();
         String templateName = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_SF_PowerBIReport_Notify');
         String iupgmGroupName = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_SF_PowerBIReport_NotifyGroup');
-
         List<EmailTemplate> templateList = [SELECT Id FROM EmailTemplate WHERE DeveloperName = :templateName LIMIT 1];
         if (!templateList.isEmpty() && recordTrackingId != null) {
             for (GroupMember grpMember : [SELECT UserOrGroupId FROM GroupMember WHERE Group.DeveloperName = :iupgmGroupName]) {
                 userIdsList.add(grpMember.UserOrGroupId);
             }
-
             List<Messaging.SingleEmailMessage> emailsToBeSent = new List<Messaging.SingleEmailMessage>();
             for (User usr : [SELECT Id FROM User WHERE Id IN :userIdsList]) {
                 Messaging.SingleEmailMessage sendEmail = new Messaging.SingleEmailMessage();
@@ -197,7 +194,6 @@ global class Core_MDF_ReportBatch implements Database.Batchable<sObject>, Databa
                 sendEmail.setOrgWideEmailAddressId(Label.Core_MDF_OrgWideId);
                 emailsToBeSent.add(sendEmail);
             }
-
             if (!emailsToBeSent.isEmpty()) {
                 Core_MDF_GenericClassToSendMail.sendEmails(emailsToBeSent);
             }

@@ -425,6 +425,11 @@
             <field>Contact.Contact_ID__c</field>
             <table>User</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Partner_License_Reclaimed__c</field>
+            <table>User</table>
+        </columns>
         <masterLabel>Users</masterLabel>
     </sections>
     <sections>

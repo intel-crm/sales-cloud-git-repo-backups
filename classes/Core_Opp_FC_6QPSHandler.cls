@@ -1,7 +1,16 @@
 /******************************************************************************************************************************************
+Class Name:  Core_Opp_FC_6QPSHandler
+Version     : 1.0 
+Created Date: 13 OCT 2017
 Function    : Trigger handler class for the object Forecast Product Schedule
+Modification Log :
+* Developer                   Date                   Description
+* ----------------------------------------------------------------------------        
+* Ashwin Dash                 05/18/2015             US104061 : 6QPS: Implement Approval Tasks Adding Approval and Delegated Manager and Assigning them tasks
+* Ashwin Dash                 05/18/2015             US104056 : 6QPS: Add Forecast Claim Date and capture Rejected Behaviour details like isRejected, Rejected By and Rejected Date         
+* Ashwin Dash                 10/13/2017             Original Version
 ********************************************************************************************************************************************/
-public without sharing class Core_Opp_FC_6QPSHandler{ //TWC3123-5338 Added without sharing keyword to fix code scan issue
+public class Core_Opp_FC_6QPSHandler{
     
     public static boolean recursiveFlag = false;
     public static final Set<String> Core_Status1 = new Set<String>{'Lost','Cancelled','Deleted','On Hold','Production Lost','Production Cancelled'};
@@ -10,7 +19,7 @@ public without sharing class Core_Opp_FC_6QPSHandler{ //TWC3123-5338 Added witho
     public static final String CORE_APPROVED = 'Approved';
 
     public static void beforeUpdateMethod(List<Core_Opp_FC_Prod_Schedule__c> newFCList, Map<Id, Core_Opp_FC_Prod_Schedule__c> oldFCMap){
-        
+        System.debug('** Inside beforeUpdate **');
         Set<Id> fcLineItemIdSet1 = new Set<Id>();
         //START - US104061 : 6QPS: Implement Approval Tasks Adding Approval Populating map for getting manager and delegated approver
         Set<Id> fcOpptyIdSet = new Set<Id>();
@@ -26,30 +35,20 @@ public without sharing class Core_Opp_FC_6QPSHandler{ //TWC3123-5338 Added witho
             }
         }
         if(!fcOpptyIdSet.isEmpty()){
-            opptyList = [SELECT id, OwnerId, Owner.ManagerId, Owner.Manager.DelegatedApproverId, Owner.DelegatedApproverId,Core_Opportunity_Coverage_Nm__c,Core_Coverage_Type_Nm__c FROM Opportunity WHERE Id IN : fcOpptyIdSet];
+            opptyList = [SELECT id, Owner.ManagerId, Owner.Manager.DelegatedApproverId FROM Opportunity WHERE Id IN : fcOpptyIdSet];
             if(!opptyList.isEmpty()){
                 for(Opportunity opp : opptyList){
-					if(opp.Core_Opportunity_Coverage_Nm__c =='Partner-Led Opportunity' && opp.Core_Coverage_Type_Nm__c =='Deal Registration')
-					{
-						//Adding OO as Approval manager and OO's delegate as Delegate approver
-                        opptyMgrDelAppMap.put(opp.Id+'M', opp.OwnerId);
-						if(opp.Owner.DelegatedApproverId != null && String.valueOf(opp.Owner.DelegatedApproverId) != ''){
-							opptyMgrDelAppMap.put(opp.Id+'A', opp.Owner.DelegatedApproverId);
-						}
-					}
-					else{
-						if(opp.Owner.ManagerId != null && String.valueOf(opp.Owner.ManagerId) != ''){
-							opptyMgrDelAppMap.put(opp.Id+'M', opp.Owner.ManagerId);
-						}
-						if(opp.Owner.Manager.DelegatedApproverId != null && String.valueOf(opp.Owner.Manager.DelegatedApproverId) != ''){
-							opptyMgrDelAppMap.put(opp.Id+'A', opp.Owner.Manager.DelegatedApproverId);
-						}
-					}
+                    if(opp.Owner.ManagerId != null && String.valueOf(opp.Owner.ManagerId) != ''){
+                        opptyMgrDelAppMap.put(opp.Id+'M', opp.Owner.ManagerId);
+                    }
+                    if(opp.Owner.Manager.DelegatedApproverId != null && String.valueOf(opp.Owner.Manager.DelegatedApproverId) != ''){
+                        opptyMgrDelAppMap.put(opp.Id+'A', opp.Owner.Manager.DelegatedApproverId);
+                    }
                 }
             }
         }
         //END - US104061 : 6QPS: Implement Approval Tasks Adding Approval Populating map for getting manager and delegated approver
-        
+        System.debug('***Oppty Manager & delegate*** '+opptyMgrDelAppMap);
         for(Core_Opp_FC_Prod_Schedule__c fc : newFCList){
             fcLineItemIdSet1.add(fc.Core_Opp_Line_Item_RecordID__c);
             if(oldFCMap.get(fc.Id).Core_Opp_FC_Quantity__c != fc.Core_Opp_FC_Quantity__c){
@@ -72,15 +71,15 @@ public without sharing class Core_Opp_FC_6QPSHandler{ //TWC3123-5338 Added witho
                         fc.Core_Opp_FC_Delegated_Approver__c = opptyMgrDelAppMap.get(String.valueOf(fc.Core_Opp_FC_Opportunity__c)+'A');
                     }
             }
-            
-           
+            System.debug('*** Old Approval Status - '+oldFCMap.get(fc.Id).Core_Opp_FC_Approval_Status__c);
+            System.debug('*** New Approval Status - '+fc.Core_Opp_FC_Approval_Status__c);
             if(oldFCMap.get(fc.Id).Core_Opp_FC_Approval_Status__c == CORE_SUBMITTED && (fc.Core_Opp_FC_Approval_Status__c == null || String.valueOf(fc.Core_Opp_FC_Approval_Status__c) == '')){
                 fc.Core_Opp_FC_Claim_Date__c = null;
                 fc.Core_Opp_FC_Rejected_By__c = UserInfo.getUserId();
                 fc.Core_Opp_FC_Rejected_Date__c = System.now();
                 fc.Core_Opp_FC_isTaskCreated__c = false;
                 rejectedFCList.add(fc);
-              
+                System.debug('*** Inside Rejection **');
             }
             if(oldFCMap.get(fc.Id).Core_Opp_FC_Approval_Status__c == CORE_SUBMITTED && fc.Core_Opp_FC_Approval_Status__c == CORE_APPROVED){
                 fc.Core_Opp_FC_Approved_By__c = UserInfo.getUserId();
@@ -170,7 +169,7 @@ public without sharing class Core_Opp_FC_6QPSHandler{ //TWC3123-5338 Added witho
                         prodSortForecastMap.put(fc.Core_Opp_FC_Opportunity__c, tempList);
                     }      
                 }
-                
+                System.debug('***DebugList - '+prodSortForecastMap);
             }
             //US104061 : 6QPS: Implement Approval Tasks - Moving thes outside of if condition to ensure updateList has the newly updated Forecast records for isTaskCreated field update
             if(!recursiveFlag){
@@ -221,28 +220,16 @@ public without sharing class Core_Opp_FC_6QPSHandler{ //TWC3123-5338 Added witho
             tempList = new List<Core_Opp_FC_Prod_Schedule__c>();
             opptyIdsSet.add(fc.Core_Opp_FC_Opportunity__c);
         }
-        fcOpptyDetailMap = new Map<Id, Opportunity>([SELECT id, Name, OwnerId, Owner.Name, AccountId, Account.Name, Core_Opportunity_Coverage_Nm__c, Core_Coverage_Type_Nm__c, Core_Technical_Owner__c, Core_Technical_Owner__r.Name FROM Opportunity WHERE id IN :opptyIdsSet]);
+        fcOpptyDetailMap = new Map<Id, Opportunity>([SELECT id, Name, OwnerId, Owner.Name, AccountId, Account.Name FROM Opportunity WHERE id IN :opptyIdsSet]);
         Set<Id> fcOpptyIdSet = new Set<Id>();
         for(Id uId : managerApproverVsFCMap.keySet()){
             for(Core_Opp_FC_Prod_Schedule__c fc : managerApproverVsFCMap.get(uId)){             
                 if(!fcOpptyIdSet.contains(fc.Core_Opp_FC_Opportunity__c)){
-                    if(fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Core_Opportunity_Coverage_Nm__c =='Partner-Led Opportunity' && fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Core_Coverage_Type_Nm__c =='Deal Registration')
-                    {
-                        if(fc.Core_Opp_FC_Approval_Manager__c != null){
-                            taskList.add(new Task(Description='Hello, '+fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Core_Technical_Owner__r.Name+' has requested 6QPS Approval for the Opportunity'+'\n Account Name : '+fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Account.Name+'\n Opportunity Name : '+fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Name+'\n Forecast Quarter : '+fc.Core_Opp_FC_Quarter__c +'\n Click the link to Approve/Reject :  '+Label.Core_IPS_Notification_Internal_URL +fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Id, OwnerId=fc.Core_Opp_FC_Approval_Manager__c, priority='High', Status='In Progress', Subject='6QPS Approval Request for '+fc.Core_Opp_FC_Quarter__c + ' : ' + fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Name, WhatId=fc.Core_Opp_FC_Opportunity__c));
-                        }
-                        if(fc.Core_Opp_FC_Delegated_Approver__c != null){
-                            taskList.add(new Task(Description='Hello, '+fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Core_Technical_Owner__r.Name+' has requested 6QPS Approval for the Opportunity'+'\n Account Name : '+fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Account.Name+'\n Opportunity Name : '+fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Name+'\n Forecast Quarter : '+fc.Core_Opp_FC_Quarter__c +'\n Click the link to Approve/Reject :  '+Label.Core_IPS_Notification_Internal_URL +fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Id, OwnerId=fc.Core_Opp_FC_Delegated_Approver__c, priority='High', Status='In Progress', Subject='6QPS Approval Request for '+fc.Core_Opp_FC_Quarter__c + ' : ' + fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Name, WhatId=fc.Core_Opp_FC_Opportunity__c));
-                        }
+                    if(fc.Core_Opp_FC_Approval_Manager__c != null){
+                        taskList.add(new Task(Description='Hello, '+fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Owner.Name+' has requested 6QPS Approval for the Opportunity'+'\n Account Name : '+fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Account.Name+'\n Opportunity Name : '+fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Name+'\n Forecast Quarter : '+fc.Core_Opp_FC_Quarter__c +'\n Click the link to Approve/Reject :  '+Label.Core_IPS_Notification_Internal_URL +fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Id, OwnerId=fc.Core_Opp_FC_Approval_Manager__c, priority='High', Status='In Progress', Subject='6QPS Approval Request for '+fc.Core_Opp_FC_Quarter__c + ' : ' + fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Name, WhatId=fc.Core_Opp_FC_Opportunity__c));
                     }
-                    else
-                    {
-                        if(fc.Core_Opp_FC_Approval_Manager__c != null){
-                            taskList.add(new Task(Description='Hello, '+fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Owner.Name+' has requested 6QPS Approval for the Opportunity'+'\n Account Name : '+fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Account.Name+'\n Opportunity Name : '+fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Name+'\n Forecast Quarter : '+fc.Core_Opp_FC_Quarter__c +'\n Click the link to Approve/Reject :  '+Label.Core_IPS_Notification_Internal_URL +fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Id, OwnerId=fc.Core_Opp_FC_Approval_Manager__c, priority='High', Status='In Progress', Subject='6QPS Approval Request for '+fc.Core_Opp_FC_Quarter__c + ' : ' + fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Name, WhatId=fc.Core_Opp_FC_Opportunity__c));
-                        }
-                        if(fc.Core_Opp_FC_Delegated_Approver__c != null){
-                            taskList.add(new Task(Description='Hello, '+fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Owner.Name+' has requested 6QPS Approval for the Opportunity'+'\n Account Name : '+fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Account.Name+'\n Opportunity Name : '+fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Name+'\n Forecast Quarter : '+fc.Core_Opp_FC_Quarter__c +'\n Click the link to Approve/Reject :  '+Label.Core_IPS_Notification_Internal_URL +fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Id, OwnerId=fc.Core_Opp_FC_Delegated_Approver__c, priority='High', Status='In Progress', Subject='6QPS Approval Request for '+fc.Core_Opp_FC_Quarter__c + ' : ' + fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Name, WhatId=fc.Core_Opp_FC_Opportunity__c));
-                        }
+                    if(fc.Core_Opp_FC_Delegated_Approver__c != null){
+                        taskList.add(new Task(Description='Hello, '+fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Owner.Name+' has requested 6QPS Approval for the Opportunity'+'\n Account Name : '+fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Account.Name+'\n Opportunity Name : '+fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Name+'\n Forecast Quarter : '+fc.Core_Opp_FC_Quarter__c +'\n Click the link to Approve/Reject :  '+Label.Core_IPS_Notification_Internal_URL +fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Id, OwnerId=fc.Core_Opp_FC_Delegated_Approver__c, priority='High', Status='In Progress', Subject='6QPS Approval Request for '+fc.Core_Opp_FC_Quarter__c + ' : ' + fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Name, WhatId=fc.Core_Opp_FC_Opportunity__c));
                     }
                 }
                 fcOpptyIdSet.add(fc.Core_Opp_FC_Opportunity__c);
@@ -266,21 +253,14 @@ public without sharing class Core_Opp_FC_6QPSHandler{ //TWC3123-5338 Added witho
         for(Core_Opp_FC_Prod_Schedule__c fc : fcRecTaskList){
             opptyIdsSet.add(fc.Core_Opp_FC_Opportunity__c);         
         }
-        Map<Id, Opportunity> fcOpptyDetailMap = new Map<Id, Opportunity>([SELECT id, Name, OwnerId, Owner.ManagerId, Owner.Manager.DelegatedApproverId, Owner.DelegatedApproverId, Core_Opportunity_Coverage_Nm__c,Core_Coverage_Type_Nm__c   FROM Opportunity WHERE id IN :opptyIdsSet]);
+        Map<Id, Opportunity> fcOpptyDetailMap = new Map<Id, Opportunity>([SELECT id, Name, OwnerId, Owner.ManagerId, Owner.Manager.DelegatedApproverId FROM Opportunity WHERE id IN :opptyIdsSet]);
         
         for(Core_Opp_FC_Prod_Schedule__c fc : fcRecTaskList){
-			if(fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Core_Opportunity_Coverage_Nm__c =='Partner-Led Opportunity' && fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Core_Coverage_Type_Nm__c =='Deal Registration')
-				{
-					mgrAppvrIdSet.add(fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).OwnerId);
-					mgrAppvrIdSet.add(fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Owner.DelegatedApproverId);
-					opptyIdvsFCQuaterMap.put(fc.Core_Opp_FC_Opportunity__c, fc.Core_Opp_FC_Quarter__c);
-				}
-				else{
-					mgrAppvrIdSet.add(fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Owner.ManagerId);
-					mgrAppvrIdSet.add(fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Owner.Manager.DelegatedApproverId);
-					opptyIdvsFCQuaterMap.put(fc.Core_Opp_FC_Opportunity__c, fc.Core_Opp_FC_Quarter__c);
-				}
+            mgrAppvrIdSet.add(fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Owner.ManagerId);
+            mgrAppvrIdSet.add(fcOpptyDetailMap.get(fc.Core_Opp_FC_Opportunity__c).Owner.Manager.DelegatedApproverId);
+            opptyIdvsFCQuaterMap.put(fc.Core_Opp_FC_Opportunity__c, fc.Core_Opp_FC_Quarter__c);
         }
+        
         for(Task t : [SELECT id, Status, WhatId FROM Task WHERE WhatId IN :opptyIdsSet AND OwnerId IN :mgrAppvrIdSet]){
             t.Status = 'Completed';
             if(ApprovalStatus == 'Approve'){
@@ -295,4 +275,5 @@ public without sharing class Core_Opp_FC_6QPSHandler{ //TWC3123-5338 Added witho
             update closingFCTaskList;
         }
     }
+    
 }

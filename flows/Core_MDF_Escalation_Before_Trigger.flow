@@ -5,8 +5,8 @@
     <assignments>
         <name>Assign_Approved_Amount</name>
         <label>Assign Approved Amount</label>
-        <locationX>974</locationX>
-        <locationY>611</locationY>
+        <locationX>1194</locationX>
+        <locationY>659</locationY>
         <assignmentItems>
             <assignToReference>Escalation_Amount</assignToReference>
             <operator>Assign</operator>
@@ -28,8 +28,8 @@
     <assignments>
         <name>Assign_TDI_to_Amount</name>
         <label>Assign TDI to Amount</label>
-        <locationX>710</locationX>
-        <locationY>611</locationY>
+        <locationX>930</locationX>
+        <locationY>659</locationY>
         <assignmentItems>
             <assignToReference>Escalation_Amount</assignToReference>
             <operator>Assign</operator>
@@ -61,7 +61,7 @@
         <name>Map_Scorecard_Fields_to_Escalation</name>
         <label>Map Scorecard Fields to Escalation</label>
         <locationX>50</locationX>
-        <locationY>611</locationY>
+        <locationY>659</locationY>
         <assignmentItems>
             <assignToReference>$Record.Core_MDF_First_Attribution_Score_txt__c</assignToReference>
             <operator>Assign</operator>
@@ -101,8 +101,8 @@
     <customErrors>
         <name>Approved_Amount_Error</name>
         <label>Approved Amount Error</label>
-        <locationX>578</locationX>
-        <locationY>1019</locationY>
+        <locationX>798</locationX>
+        <locationY>1967</locationY>
         <customErrorMessages>
             <errorMessage>Escalation cannot be approved as Escalation Amount is exceeding Activity Available Amount</errorMessage>
             <isFieldError>false</isFieldError>
@@ -111,8 +111,8 @@
     <customErrors>
         <name>Escalation_Amount_Error</name>
         <label>Escalation Amount Error</label>
-        <locationX>842</locationX>
-        <locationY>1019</locationY>
+        <locationX>1062</locationX>
+        <locationY>1967</locationY>
         <customErrorMessages>
             <errorMessage>Escalation cannot be created as Escalation Amount is exceeding Activity Available Amount</errorMessage>
             <isFieldError>false</isFieldError>
@@ -121,8 +121,8 @@
     <decisions>
         <name>Check_for_Approved_Amount_of_Escalation</name>
         <label>Check for Approved Amount of Escalation</label>
-        <locationX>842</locationX>
-        <locationY>911</locationY>
+        <locationX>1062</locationX>
+        <locationY>1859</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Approved_Amount_greater_than_Allocation_Amount</name>
@@ -222,7 +222,7 @@
         <name>Check_for_new_Claim_Case_Escalation</name>
         <label>Check for new Claim Case Escalation</label>
         <locationX>182</locationX>
-        <locationY>395</locationY>
+        <locationY>443</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>New_Escalation_Record</name>
@@ -243,8 +243,8 @@
     <decisions>
         <name>Check_for_record_status</name>
         <label>Check for record status</label>
-        <locationX>842</locationX>
-        <locationY>503</locationY>
+        <locationX>1062</locationX>
+        <locationY>551</locationY>
         <defaultConnector>
             <targetReference>Assign_Approved_Amount</targetReference>
         </defaultConnector>
@@ -268,8 +268,8 @@
     <decisions>
         <name>Check_for_records</name>
         <label>Check for records</label>
-        <locationX>1106</locationX>
-        <locationY>395</locationY>
+        <locationX>1326</locationX>
+        <locationY>443</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>check_late_claim_records</name>
@@ -382,8 +382,8 @@
     <decisions>
         <name>If_Claim_Case_Review_Result</name>
         <label>If Claim Case Review Result</label>
-        <locationX>644</locationX>
-        <locationY>287</locationY>
+        <locationX>754</locationX>
+        <locationY>335</locationY>
         <defaultConnector>
             <targetReference>Check_for_records</targetReference>
         </defaultConnector>
@@ -572,8 +572,8 @@ AND({!$Record.Core_MDF_Co_Marketing_Activity_id__r.RecordType.Name} =&apos;Intel
     <recordLookups>
         <name>Get_Allocation_Id</name>
         <label>Get Allocation Id</label>
-        <locationX>842</locationX>
-        <locationY>803</locationY>
+        <locationX>1194</locationX>
+        <locationY>959</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_for_Approved_Amount_of_Escalation</targetReference>
@@ -596,7 +596,7 @@ AND({!$Record.Core_MDF_Co_Marketing_Activity_id__r.RecordType.Name} =&apos;Intel
         <name>Get_Scorecard_records</name>
         <label>Get Scorecard records</label>
         <locationX>50</locationX>
-        <locationY>503</locationY>
+        <locationY>551</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Map_Scorecard_Fields_to_Escalation</targetReference>
@@ -634,8 +634,8 @@ AND({!$Record.Core_MDF_Co_Marketing_Activity_id__r.RecordType.Name} =&apos;Intel
         <sortOrder>Desc</sortOrder>
     </recordLookups>
     <start>
-        <locationX>518</locationX>
-        <locationY>0</locationY>
+        <locationX>628</locationX>
+        <locationY>48</locationY>
         <connector>
             <targetReference>If_Claim_Case_Review_Result</targetReference>
         </connector>

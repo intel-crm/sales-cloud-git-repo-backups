@@ -10,6 +10,7 @@ private class Core_MDF_RecoveryClmReportViewCtrl_Test {
         usr.profileId = sysAdminProfile.Id;
         usr.UserRoleId = usRole.Id;
         Database.insert(usr);
+        
         //Running as System Admin
         System.runAs(usr){
             List<Core_Trigger_Executions__c> transactions = new List<Core_Trigger_Executions__c>();
@@ -125,8 +126,8 @@ private class Core_MDF_RecoveryClmReportViewCtrl_Test {
             PartnerFundAllocation pfaARPCCFFranceLegacy = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('pfaARPCCFFrance',arpPmbLegacyRecord, arpEMEAFrance, 1000, true);
             Core_MDF_Bank__c arpBank = Core_MDF_CCP_TestDataUtility.createBank(arpIntelAcc.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1231231230');
             
-            
-            Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(arpEMEAFrance.Id,arpBank.Id,true);
+            // Highlight: Unused Local Variable - Indira
+           // Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(arpEMEAFrance.Id,arpBank.Id,true);
             
             List<Campaign> campList = new List<Campaign>();
             Campaign arpCamp = Core_MDF_CCP_TestDataUtility.createCampaign('ARP Campaign','Gaming','Intel® Core™ i7+ Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today().addDays(-5), System.today().addDays(+5), 10000, 'Consumer Chromebook', arpCCFVC.Id, '2-in-1', false);
@@ -530,7 +531,8 @@ private class Core_MDF_RecoveryClmReportViewCtrl_Test {
             }
               String grpName = '';
             grpName = pgmCheck.Core_MDF_Group_Name__c;
-             List<Core_MDF_RecoveryFilters.AccountOptions> accExt1 = Core_MDF_RecoveryClaimReportViewCtrl.getAccountIdToNameMapForExternal('Retail Marketing Funds');
+            // Highlight: Unused Local Variable - Indira
+           /*  List<Core_MDF_RecoveryFilters.AccountOptions> accExt1 = */ Core_MDF_RecoveryClaimReportViewCtrl.getAccountIdToNameMapForExternal('Retail Marketing Funds');
             
             /*Core_MDF_Partner_Node_User_Mapping__c pnum = [select id, Core_MDF_Account__c, Core_MDF_Account__r.Name,Core_MDF_Account__r.Core_MDF_Channel_Program__r.Name 
                                                               from Core_MDF_Partner_Node_User_Mapping__c where Core_MDF_Account__r.Core_MDF_Channel_Program__r.Name='Retail Marketing Funds' and
@@ -653,7 +655,8 @@ private class Core_MDF_RecoveryClmReportViewCtrl_Test {
     static void testCheckMode(){ 
     
         Account acc1 = [select id from Account where name='ARP Test Account' limit 1];
-        String modeRetail = Core_MDF_RecoveryClaimReportViewCtrl.checkMode('Retail Marketing Funds',acc1.Id);
+        // Highlight: Unused Local Variable - Indira
+      /*  String modeRetail = */ Core_MDF_RecoveryClaimReportViewCtrl.checkMode('Retail Marketing Funds',acc1.Id);
         PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Account_Recovery_Manager' LIMIT 1];
         // Creating User with utility class 
         User recManager = Core_MDF_CCP_TestDataUtility.createUser(false);
@@ -664,7 +667,8 @@ private class Core_MDF_RecoveryClmReportViewCtrl_Test {
         
         System.runAs(recManager){
             String mode = 'read';
-            String modeCCF = Core_MDF_RecoveryClaimReportViewCtrl.checkMode('Client CoMarketing Fund',acc1.Id);
+           // Highlight: Unused Local Variable - Indira
+           /* String modeCCF = */ Core_MDF_RecoveryClaimReportViewCtrl.checkMode('Client CoMarketing Fund',acc1.Id);
             mode = 'edit';
         }
          List<Core_MDF_RecoveryClaimReportViewCtrl.LeftReportRows> lr = Core_MDF_RecoveryClaimReportViewCtrl.getFilteredDataForClaimsToBeRecovered('Retail Marketing Funds',acc1.Id,'Q2 2025');
@@ -872,7 +876,8 @@ private class Core_MDF_RecoveryClmReportViewCtrl_Test {
         test.stopTest();
         assert.areEqual(psd.size()>0, true);
         }
-         List<Core_MDF_RecoveryClaimReportViewCtrl.BreakdownSummary> psd1 = Core_MDF_RecoveryClaimReportViewCtrl.Get_SummaryBreakdown('Retail Marketing Funds',acc1.Id,'Q2 2025');
+        // Highlight: Unused Local Variable - Indira
+       /*  List<Core_MDF_RecoveryClaimReportViewCtrl.BreakdownSummary> psd1 = */ Core_MDF_RecoveryClaimReportViewCtrl.Get_SummaryBreakdown('Retail Marketing Funds',acc1.Id,'Q2 2025');
         
     }  
     @isTest

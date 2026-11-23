@@ -5,6 +5,89 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>actionNames</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>Edit</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Campaign.Create_Activity</value>
+                            <visibilityRule>
+                                <booleanFilter>1 AND 2</booleanFilter>
+                                <criteria>
+                                    <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
+                                    <operator>NE</operator>
+                                    <rightValue>Core_MDF_Client_CoMarketing_Fund_Boost</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
+                                    <operator>NE</operator>
+                                    <rightValue>Core_MDF_Service_Provider_CoMarketing_Fund</rightValue>
+                                </criteria>
+                            </visibilityRule>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Campaign.Core_MDF_Submit_For_Approval</value>
+                            <visibilityRule>
+                                <booleanFilter>(1 OR 5) AND (2 OR 3 OR 4)</booleanFilter>
+                                <criteria>
+                                    <leftValue>{!Record.Status}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Draft</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Core_MDF_Intel_Partner_Alliance</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Core_MDF_Intel_Partner_Alliance_Closed</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Core_MDF_Channel_MDF</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.Status}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Revision Required</rightValue>
+                                </criteria>
+                            </visibilityRule>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Campaign.Core_MDF_Cancel_Campaign</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Campaign.Core_MDF_CampaignClone</value>
+                            <visibilityRule>
+                                <booleanFilter>1 AND 2</booleanFilter>
+                                <criteria>
+                                    <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
+                                    <operator>NE</operator>
+                                    <rightValue>Core_MDF_Client_CoMarketing_Fund_Boost</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
+                                    <operator>NE</operator>
+                                    <rightValue>Core_MDF_Service_Provider_CoMarketing_Fund</rightValue>
+                                </criteria>
+                            </visibilityRule>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>FeedItem.TextPost</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>FeedItem.PollPost</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Campaign.Select_IPA_Budget_Type</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Campaign.Create_IPA_Campaign</value>
+                        </valueListItems>
+                    </valueList>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>collapsed</name>
@@ -12,6 +95,10 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>enableActionsConfiguration</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>enableActionsInNative</name>
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -20,64 +107,120 @@
                 </componentInstanceProperties>
                 <componentName>force:highlightsPanel</componentName>
                 <identifier>force_highlightsPanel</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Client CoMarketing Fund</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Client CoMarketing Fund Boost</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Data Center CoMarketing Fund</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Retail Marketing Funds</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Service Provider CoMarketing Fund</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
-        <mode>Replace</mode>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>fieldAPIName</name>
+                    <value>Core_MDF_Proposal_Based_Ind__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>isCompactLayout</name>
+                    <value>Yes</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>objAPIName</name>
+                    <value>Campaign</value>
+                </componentInstanceProperties>
+                <componentName>Core_MDF_Compact_Layout</componentName>
+                <identifier>c_Core_MDF_Compact_Layout</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Channel MDF</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Intel Partner Alliance</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
         <name>header</name>
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <name>subheader</name>
-        <type>Region</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>identifierCheckboxField1</name>
-                    <value>Core_MDF_Proposal_Based_Ind__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>identifierCheckboxField2</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>identifierTextField1</name>
-                    <value>Core_MDF_Program__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>identifierTextField2</name>
-                </componentInstanceProperties>
-                <componentName>core_MDF_ApprovalHistoryRelatedList</componentName>
-                <identifier>c_core_MDF_ApprovalHistoryRelatedList</identifier>
+                <componentName>Core_MDF_ProposalApproval</componentName>
+                <identifier>c_Core_MDF_ProposalApproval</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>NONE</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>rowsToDisplay</name>
-                    <value>10</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListContainer</componentName>
-                <identifier>force_relatedListContainer</identifier>
-            </componentInstance>
-        </itemInstances>
-        <mode>Replace</mode>
-        <name>relatedTabContent</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
         <itemInstances>
             <componentInstance>
                 <componentName>force:detailPanel</componentName>
                 <identifier>force_detailPanel</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>fieldAPIName</name>
+                    <value>Core_MDF_Proposal_Based_Ind__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>isCompactLayout</name>
+                    <value>No</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>isSectionVisible</name>
+                    <value>No</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>objAPIName</name>
+                    <value>Campaign</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>standardFieldAlign</name>
+                    <value>Yes</value>
+                </componentInstanceProperties>
+                <componentName>core_MDF_CustomLayoutConfig</componentName>
+                <identifier>c_core_MDF_CustomLayoutConfig</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Channel MDF</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Intel Partner Alliance</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -88,17 +231,7 @@
                 <componentName>core_MDF_CampaignBudgets</componentName>
                 <identifier>core_MDF_CampaignBudgets</identifier>
                 <visibilityRule>
-                    <booleanFilter>((1 OR 2) AND (3 OR 4)) OR ( 5 AND 6)</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Is_Opal__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Yes CMP Only</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Is_Opal__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Yes MDF or both CMP &amp; MDF</rightValue>
-                    </criteria>
+                    <booleanFilter>1 OR 2 OR (3 AND 4)</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -110,41 +243,46 @@
                         <rightValue>Data Center CoMarketing Fund</rightValue>
                     </criteria>
                     <criteria>
+                        <leftValue>{!Record.Core_MDF_Proposal_Based_Ind__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>false</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Channel MDF</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>Core_MDF_DisplayActivities</componentName>
+                <identifier>Core_MDF_DisplayActivities</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR (2 AND 3)</booleanFilter>
+                    <criteria>
                         <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Channel MDF</rightValue>
                     </criteria>
                     <criteria>
+                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Intel Partner Alliance</rightValue>
+                    </criteria>
+                    <criteria>
                         <leftValue>{!Record.Core_MDF_Proposal_Based_Ind__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
+                        <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
         </itemInstances>
-        <mode>Replace</mode>
         <name>detailTabContent</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>active</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>relatedTabContent</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>Standard.Tab.relatedLists</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>relatedListsTab</identifier>
-            </componentInstance>
-        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
@@ -163,13 +301,16 @@
                 <identifier>detailTab</identifier>
             </componentInstance>
         </itemInstances>
-        <mode>Replace</mode>
         <name>maintabs</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>tabs</name>
                     <value>maintabs</value>
@@ -181,97 +322,96 @@
         <itemInstances>
             <componentInstance>
                 <componentName>Core_MDF_GridViewRegionAndCategory</componentName>
-                <identifier>Core_MDF_GridViewRegionAndCategory</identifier>
+                <identifier>c_Core_MDF_GridViewRegionAndCategory</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentName>Core_MDF_DisplayActivities</componentName>
-                <identifier>Core_MDF_DisplayActivities</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <mode>Replace</mode>
-        <name>main</name>
+        <name>leftcol</name>
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>forceChatter:recordFeedContainer</componentName>
-                <identifier>forceChatter_recordFeedContainer</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-fcf971fb-15cd-4867-be9f-a9a396ed1bb4</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentName>runtime_sales_activities:activityPanel</componentName>
-                <identifier>runtime_sales_activities_activityPanel</identifier>
-            </componentInstance>
-        </itemInstances>
-        <mode>Replace</mode>
-        <name>activityTabContent</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
                 <componentInstanceProperties>
-                    <name>active</name>
+                    <name>parentFieldApiName</name>
+                    <value>Campaign.Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListApiName</name>
+                    <value>Histories</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListComponentOverride</name>
+                    <value>NONE</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>rowsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
                     <value>true</value>
                 </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-fcf971fb-15cd-4867-be9f-a9a396ed1bb4</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>Standard.Tab.collaborate</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>collaborateTab</identifier>
+                <componentName>force:relatedListSingleContainer</componentName>
+                <identifier>force_relatedListSingleContainer8</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>active</name>
-                    <value>false</value>
+                    <name>parentFieldApiName</name>
+                    <value>Campaign.Id</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>body</name>
-                    <value>activityTabContent</value>
+                    <name>relatedListApiName</name>
+                    <value>ProcessSteps</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>title</name>
-                    <value>Standard.Tab.activity</value>
+                    <name>relatedListComponentOverride</name>
+                    <value>NONE</value>
                 </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>activityTab</identifier>
+                <componentInstanceProperties>
+                    <name>rowsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>force:relatedListSingleContainer</componentName>
+                <identifier>force_relatedListSingleContainer2</identifier>
             </componentInstance>
         </itemInstances>
-        <mode>Replace</mode>
-        <name>sidebartabs</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>tabs</name>
-                    <value>sidebartabs</value>
+                    <name>parentFieldApiName</name>
+                    <value>Campaign.Id</value>
                 </componentInstanceProperties>
-                <componentName>flexipage:tabset</componentName>
-                <identifier>flexipage_tabset2</identifier>
+                <componentInstanceProperties>
+                    <name>relatedListApiName</name>
+                    <value>PartnerFundRequests</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListComponentOverride</name>
+                    <value>NONE</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>rowsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>force:relatedListSingleContainer</componentName>
+                <identifier>force_relatedListSingleContainer6</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Proposal_Based_Ind__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>false</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -297,18 +437,102 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer</identifier>
+                <identifier>force_relatedListSingleContainer7</identifier>
             </componentInstance>
         </itemInstances>
-        <mode>Replace</mode>
-        <name>sidebar</name>
+        <name>Facet-edc37fbe-d03c-4fe4-90c0-b7d37d58414f</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>active</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-edc37fbe-d03c-4fe4-90c0-b7d37d58414f</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Standard.Tab.relatedLists</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-88663177-7fa3-42eb-ac0e-cf460d41df71</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>forceChatter:recordFeedContainer</componentName>
+                <identifier>forceChatter_recordFeedContainer</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-fcf971fb-15cd-4867-be9f-a9a396ed1bb4</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>active</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-fcf971fb-15cd-4867-be9f-a9a396ed1bb4</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Standard.Tab.collaborate</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>collaborateTab</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>sidebartabs</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>tabs</name>
+                    <value>Facet-88663177-7fa3-42eb-ac0e-cf460d41df71</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tabset</componentName>
+                <identifier>flexipage_tabset3</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>tabs</name>
+                    <value>sidebartabs</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tabset</componentName>
+                <identifier>flexipage_tabset2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>rightcol</name>
         <type>Region</type>
     </flexiPageRegions>
     <masterLabel>Campaign Record Page</masterLabel>
-    <parentFlexiPage>runtime_sales_campaign__Campaign_rec_L_s</parentFlexiPage>
     <sobjectType>Campaign</sobjectType>
     <template>
-        <name>flexipage:recordHomeWithSubheaderTemplateDesktop</name>
+        <name>flexipage:recordHomeTwoColEqualHeaderTemplateDesktop</name>
     </template>
     <type>RecordPage</type>
 </FlexiPage>

@@ -13,7 +13,15 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Core_MDF_ActivityTypePicklist</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_MDF_ApprovalCriteriaHelper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_AuditDocumentHelper</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -49,7 +57,15 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Core_MDF_CustomMultiSelect</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_MDF_CustomMultiSelectPicklist</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_DigitalMediaComp</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -74,6 +90,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>Core_MDF_InactivateAccount</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_Inactivate_Bank_Controller</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -121,6 +141,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Core_MDF_UploadBulkEscalation</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_MDF_checkSObjectCRUDPermission</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -133,6 +157,21 @@
         <name>Core_MDF_User_With_Escalation_Access</name>
     </customPermissions>
     <description>Escalation Reviewer permission for EEF</description>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Account_txt_del__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Activity_Name_url__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Approval_Flag_ind__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Core_MDF_Escalation__c.Core_MDF_Approved_Amount_amt__c</field>
@@ -190,6 +229,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Budget_ID_Number_id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Core_MDF_Escalation__c.Core_MDF_Budget_Type_txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -209,13 +253,133 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Claim_ID_Number_id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Claim_Number_id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Claim_Review_Closure_Note_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Core_MDF_Escalation__c.Core_MDF_Claim_Submitter_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Co_Marketing_Activity_id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Country_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Current_Attribution_Score_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Current_Engagement_Score_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Current_Manual_Recovery_nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Current_POP_Score_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Core_MDF_Escalation__c.Core_MDF_Do_not_Auto_Create_Claim_Ind__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Esc_Submission_End_Date_dtm__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Escalation_Detail_Link_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Escalation_Name_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Escalation_Status_nm__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Escalation_Type_nm__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_First_Attribution_Score_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_First_Engagement_Score_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_First_Manual_Recovery_nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_First_POP_Score_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Issue_Description_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_PGM_Internal_Group_Id_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Program_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Region_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Root_Cause_nm__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Scorecard_id__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

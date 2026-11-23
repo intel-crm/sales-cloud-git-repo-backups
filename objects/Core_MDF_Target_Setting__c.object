@@ -130,7 +130,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Core_MDF_Target_Setting_Record_Page</content>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -138,7 +138,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Core_MDF_Target_Setting_Record_Page</content>
-        <formFactor>Large</formFactor>
+        <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -330,6 +330,16 @@ TEXT(MONTH( Core_MDF_End_Date__c )) &amp;&quot;/&quot;&amp; TEXT(DAY(Core_MDF_En
     </fields>
     <label>Spending Targets</label>
     <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Program_Name__c</columns>
+        <columns>Core_MDF_Start_Date__c</columns>
+        <columns>Core_MDF_End_Date__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
         <fullName>Core_MDF_CCF_Target_Setting</fullName>
         <columns>NAME</columns>
         <columns>Core_MDF_Name__c</columns>
@@ -421,9 +431,8 @@ TEXT(MONTH( Core_MDF_End_Date__c )) &amp;&quot;/&quot;&amp; TEXT(DAY(Core_MDF_En
         <searchResultsAdditionalFields>Core_MDF_Program_Name__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_MDF_Start_Date__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_MDF_End_Date__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_MDF_Spending_Targets_Amount__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_MDF_Top_Accounts_Report__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_MDF_Target_Setting_Dashboard__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_Other_Accounts_Report__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
     <validationRules>

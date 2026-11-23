@@ -36,16 +36,10 @@
         <label>ASMO-NAR</label>
     </customValue>
     <customValue>
-        <fullName>EMEA-*</fullName>
+        <fullName>APJ-TAIWAN</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>EMEA-*</label>
-    </customValue>
-    <customValue>
-        <fullName>ASMO-*</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>ASMO-*</label>
+        <label>APJ-TAIWAN</label>
     </customValue>
     <customValue>
         <fullName>EMEA-CEE</fullName>
@@ -54,58 +48,10 @@
         <label>EMEA-CEE</label>
     </customValue>
     <customValue>
-        <fullName>APJ-TAIWAN</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>APJ-TAIWAN</label>
-    </customValue>
-    <customValue>
-        <fullName>APJ-SEA</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>APJ-SEA</label>
-    </customValue>
-    <customValue>
         <fullName>EMEA-CER</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>EMEA-CER</label>
-    </customValue>
-    <customValue>
-        <fullName>APJ-ROA</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>APJ-ROA</label>
-    </customValue>
-    <customValue>
-        <fullName>APJ-KOREA</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>APJ-KOREA</label>
-    </customValue>
-    <customValue>
-        <fullName>APJ-ANZ</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>APJ-ANZ</label>
-    </customValue>
-    <customValue>
-        <fullName>APJ-IJKK</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>APJ-IJKK</label>
-    </customValue>
-    <customValue>
-        <fullName>INDIA</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>INDIA</label>
-    </customValue>
-    <customValue>
-        <fullName>APJ-SA</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>APJ-SA</label>
     </customValue>
     <customValue>
         <fullName>EMEA-META</fullName>
@@ -120,10 +66,10 @@
         <label>EMEA-NEUR</label>
     </customValue>
     <customValue>
-        <fullName>EMEA-RCIS</fullName>
+        <fullName>INDIA</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>EMEA-RCIS</label>
+        <label>INDIA</label>
     </customValue>
     <customValue>
         <fullName>EMEA-SEUR</fullName>
@@ -142,6 +88,60 @@
         <default>false</default>
         <isActive>false</isActive>
         <label>APJ-*</label>
+    </customValue>
+    <customValue>
+        <fullName>EMEA-*</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>EMEA-*</label>
+    </customValue>
+    <customValue>
+        <fullName>ASMO-*</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>ASMO-*</label>
+    </customValue>
+    <customValue>
+        <fullName>EMEA-RCIS</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>EMEA-RCIS</label>
+    </customValue>
+    <customValue>
+        <fullName>APJ-ANZ</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>APJ-ANZ</label>
+    </customValue>
+    <customValue>
+        <fullName>APJ-IJKK</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>APJ-IJKK</label>
+    </customValue>
+    <customValue>
+        <fullName>APJ-KOREA</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>APJ-KOREA</label>
+    </customValue>
+    <customValue>
+        <fullName>APJ-ROA</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>APJ-ROA</label>
+    </customValue>
+    <customValue>
+        <fullName>APJ-SA</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>APJ-SA</label>
+    </customValue>
+    <customValue>
+        <fullName>APJ-SEA</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>APJ-SEA</label>
     </customValue>
     <masterLabel>Region - Sub Region</masterLabel>
     <sorted>false</sorted>

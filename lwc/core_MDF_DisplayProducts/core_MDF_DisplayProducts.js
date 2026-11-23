@@ -25,7 +25,7 @@ import Core_MDF_ProductsStr from "@salesforce/label/c.Core_MDF_ProductsStr";
 import Core_MDF_SPIFMetrics from "@salesforce/label/c.Core_MDF_SPIFMetrics";
 import Core_MDF_Estimated_Share_of_SPIF_Offer_Target_helptext from "@salesforce/label/c.Core_MDF_Estimated_Share_of_SPIF_Offer_Target_helptext";
 import Core_MDF_Spif_Amount_Offer_Target_helptext from "@salesforce/label/c.Core_MDF_Spif_Amount_Offer_Target_helptext";
-import Core_MDF_SPIF_Amount_ErrMsg from "@salesforce/label/c.Core_MDF_SPIF_Amount_ErrMsg";
+import Core_MDF_SPIF_Amount_ErrMsg from "@salesforce/label/c.Core_MDF_OutcomeBased_SPIF_Amount_ErrMsg";
 
 const SELECTED_PRODUCT_COLUMNS = [{ 
     type: 'text',
@@ -79,11 +79,13 @@ export default class Core_MDF_DisplayProducts extends LightningElement {
         /*This is for initialisation purpose*/
         let isCommunity = true;
         this.loadForm();
+        //this.fetchSpifAmount();
     }
 
     loadForm() {
         returnSegments({recordId : this.recordId})
-            .then(result => {                                
+            .then(result => {     
+
                 if(result != undefined){
                     this.segmentList = result.segmentList;
                     this.fieldsToDisplay = result.fieldsToDisplay;
@@ -147,6 +149,9 @@ export default class Core_MDF_DisplayProducts extends LightningElement {
                         let newObj = {};
                         newObj["Core_MDF_Field_API_Name_txt__c"] = this.fieldsToDisplay[i].Core_MDF_Field_API_Name_txt__c;
                         newObj["value"] = segment[this.fieldsToDisplay[i].Core_MDF_Field_API_Name_txt__c];
+                        /*if(newObj["Core_MDF_Field_API_Name_txt__c"] != null && newObj["Core_MDF_Field_API_Name_txt__c"] == 'Core_MDF_Estimated_Share_of_SPIF_amt__c' ){
+                            let totalSpifAmount = this.fetchSpifAmount();
+                        }*/
                         segmentFieldValue[this.fieldsToDisplay[i].Core_MDF_Field_API_Name_txt__c] = segment[this.fieldsToDisplay[i].Core_MDF_Field_API_Name_txt__c];
                         //newObj["Core_MDF_Field_Label_Name_txt__c"] = this.fieldsToDisplay[i].Core_MDF_Field_Label_Name_txt__c;
                         newObj["Core_MDF_Data_Type_txt__c"] = this.fieldsToDisplay[i].Core_MDF_Data_Type_txt__c;
@@ -182,7 +187,6 @@ export default class Core_MDF_DisplayProducts extends LightningElement {
                         
                         fieldInst = [...fieldInst,newObj];
                     }                     
-
                     //let prods = this.productMap[segment.Core_MDF_Segment_Name_nm__c];
                     let prods = this.productMap[segment.Id];
                     let prodsStr='';
@@ -196,6 +200,7 @@ export default class Core_MDF_DisplayProducts extends LightningElement {
                         }
                     }
                     this.fieldInstGlobal = [...fieldInst];
+                    console.log('fieldInst ->'+ fieldInst);
                     //this.segmentWithValuesMap.push({key:segment.Core_MDF_Segment_Name, value : fieldInst, products : this.productMap[segment.Core_MDF_Segment_Name_nm__c], segmentFieldVal:segmentFieldValue, productFamily: prodFamilyStr});                        
                     this.segmentWithValuesMap.push({key:segment.Core_MDF_Segment_Name, value : fieldInst, products : prodsStr, segmentFieldVal:segmentFieldValue, productFamily: prodFamilyStr});                        
                 }                

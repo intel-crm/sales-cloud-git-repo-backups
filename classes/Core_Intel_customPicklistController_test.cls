@@ -20,39 +20,39 @@ Modified By:                      Date:08/03/2018                     Changes:No
         usr.UserRoleId = usRole1.Id;
         Database.insert(usr);
         system.runAs(usr){
-        ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', true);
-        Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
-        Account acc2 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Account 2', cp.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, acc1.Id, true);
-        acc2.type ='EBM';
-        update acc2;
+            ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM, Core_MDF_CCP_ConstantClass.CCF_TECHNICAL_PROGRAM_NAME, true);
+            Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
+            Account acc2 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Account 2', cp.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, acc1.Id, true);
+            acc2.type ='EBM';
+            update acc2;
             
-        Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 12','Gaming','Intel® Core™ i7 Processor', 'CMP only', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today().addDays(2), System.today().addDays(346), 10000, 'Always Connected PC',acc2.Id,'Radio',false);
-        camp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
+            Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 12','Gaming','Intel® Core™ i7 Processor', 'CMP only', Core_MDF_CCP_TestDataUtility.campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today().addDays(2), System.today().addDays(346), 10000, 'Always Connected PC',acc2.Id,'Radio', false);
+            camp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
             insert camp;
-
-List<String> bypassFunctionKeys = new List<String>();
-        bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
-        bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
-        bypassFunctionKeys.add('Bypass_ValidateActivityWithCampaign');
-        bypassFunctionKeys.add('Bypass_Duplicate_Budget_Check');
-        bypassFunctionKeys.add('Bypass_GeoBased_Budget_Sharing');
-        bypassFunctionKeys.add('Bypass_GeoBased_Allocation_Sharing');
-        bypassFunctionKeys.add('Bypass_MDF_Budget_Access');
-        bypassFunctionKeys.add('ShareActivityWithInternalUsers_Bypass');
-        bypassFunctionKeys.add('Bypass_Allocation_Reservation');
-        bypassFunctionKeys.add('byPassShareUnshareCampaignRecord');
-        bypassFunctionKeys.add('byPassCampaignAndRelatedRecords');
-        bypassFunctionKeys.add('Bypass_UpdateActivityFields');
-        Set<String> myset1 = new Set<String>();
-        List<String> result1 = new List<String>();
-        myset1.addAll(bypassFunctionKeys);
-        result1.addAll(myset1);
-        List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
-        
-        Test.startTest();
-        Map<String,String> lstpicklist = Core_Intel_customPicklistController.getselectOptions('PartnerFundRequest','Core_MDF_Activity_Types__c',camp.Id,'Core_MDF_Activity_Type__c','','');
-        Test.stopTest();
-        //Assert.isTrue(lstpicklist.values().contains('Radio'));
+            
+            List<String> bypassFunctionKeys = new List<String>();
+            bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
+            bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
+            bypassFunctionKeys.add('Bypass_ValidateActivityWithCampaign');
+            bypassFunctionKeys.add('Bypass_Duplicate_Budget_Check');
+            bypassFunctionKeys.add('Bypass_GeoBased_Budget_Sharing');
+            bypassFunctionKeys.add('Bypass_GeoBased_Allocation_Sharing');
+            bypassFunctionKeys.add('Bypass_MDF_Budget_Access');
+            bypassFunctionKeys.add('ShareActivityWithInternalUsers_Bypass');
+            bypassFunctionKeys.add('Bypass_Allocation_Reservation');
+            bypassFunctionKeys.add('byPassShareUnshareCampaignRecord');
+            bypassFunctionKeys.add('byPassCampaignAndRelatedRecords');
+            bypassFunctionKeys.add('Bypass_UpdateActivityFields');
+            Set<String> myset1 = new Set<String>();
+            List<String> result1 = new List<String>();
+            myset1.addAll(bypassFunctionKeys);
+            result1.addAll(myset1);
+            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
+            
+            Test.startTest();
+            Map<String,String> lstpicklist = Core_Intel_customPicklistController.getselectOptions('PartnerFundRequest','Core_MDF_Activity_Types__c',camp.Id,'Core_MDF_Activity_Type__c','','');
+            Test.stopTest();
+            Assert.isTrue(!lstpicklist.values().contains('Radio'));
         }
     }
     /***************************************************************************************************** 
@@ -70,7 +70,7 @@ Modified By:                      Date:08/03/2018                     Changes:No
         Database.insert(usr);
         system.runAs(usr){
         test.startTest();
-        List<String> channelspartners = Core_Intel_customPicklistController.fetchIndPartnerCtryPgmMapping('ALBANIA','Data Center Co-Marketing Fund');
+        List<String> channelspartners = Core_Intel_customPicklistController.fetchIndPartnerCtryPgmMapping('ALBANIA',Core_MDF_CCP_ConstantClass.DCF_PROGRAM);
         test.stopTest(); 
     }
     }
@@ -138,7 +138,7 @@ Modified By:                      Date:08/03/2018                     Changes:No
         test.startTest();
         String obj = 'PartnerFundRequest';
         List<String> field = new List<String>();
-        field.add('Core_MDF_Brand_nm__c'); 
+        field.add('Core_MDF_Brand__c'); 
         Map<String,String> result = Core_Intel_customPicklistController.apitoLabelReference(obj,field);
         test.stopTest();
         Assert.isTrue(result.values().contains('10ᵗʰ Gen'));
@@ -161,12 +161,4 @@ Modified By:                      Date:08/03/2018                     Changes:No
         Assert.isTrue(result.values().contains('10ᵗʰ Gen Core i5 processors')); 
     }
     }
-    @isTest 
-    static void testCalloutforCMDF() {
-        
-        Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator());
-        Map<String, Object> m =  Core_Intel_customPicklistController.customPicklistFetcher('Core_MDF_Channel_MDF_Account_Based');
-        
-    }
-    
 }

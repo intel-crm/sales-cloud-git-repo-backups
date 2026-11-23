@@ -38,6 +38,11 @@
         <name>Core_MDF_Sub_Claim_Id__c</name>
         <relationshipLabel><!-- Claim Offsets (Sub Claim) --></relationshipLabel>
     </fields>
+    <fields>
+        <label><!-- Partner Marketing Budget --></label>
+        <name>Partner_Marketing_Budget__c</name>
+        <relationshipLabel><!-- Claim Offsets --></relationshipLabel>
+    </fields>
     
     <nameFieldLabel><!-- Claim Offset Number --></nameFieldLabel>
 </CustomObjectTranslation>

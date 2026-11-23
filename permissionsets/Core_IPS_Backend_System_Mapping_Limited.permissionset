@@ -176,6 +176,11 @@
         <field>Core_IPS_Backend_Value_Mapping__c.Core_IPS_Unique_Identifier_Key__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Bank_Legal_Entity_Code_cd__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>IPS Backend System Mapping Limited</label>
     <license>Salesforce</license>

@@ -10,15 +10,10 @@ Modifications   :
 * ----------------------------------------------------------------------------                 
 * Brian Matthews              01/16/2015             Original Version
 *****************************************************************************************************/
-@isTest(SeeAllData=true)
+@
+isTest(SeeAllData=true)
 private class Core_Account_330_URL_Test {
 
-
-  public static testMethod void test2 (){   
-   String result= Core_Account_330_URL.dummyMethod1();
-      string result2= Core_Account_Accessor.dummyMethod1();
-    }
-/*
     static Account account;
     static ApexPages.StandardController accountController;
     static Core_Account_330_URL newController;
@@ -28,7 +23,7 @@ private class Core_Account_330_URL_Test {
         List<Account> acctList = Core_Test_Utility.createAccount(1);            
         account                = acctList[0];
         account.Core_CPM_ID__c = cpmId; 
-        //account.OwnerId        = acctOwnerId;
+        account.OwnerId        = acctOwnerId;
         insert account;
         
         System.debug('#27 acctOwnerId: '     + acctOwnerId);
@@ -90,5 +85,5 @@ private class Core_Account_330_URL_Test {
             newController = new Core_Account_330_URL(accountController);
         }
     }    
-*/
+
 }

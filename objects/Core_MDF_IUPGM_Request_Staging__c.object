@@ -143,434 +143,33 @@
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <enableActivities>false</enableActivities>
+    <description>Staging object for processing IUPGM access requests &amp; automating IUPGM record creation, updates and notifications.</description>
+    <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
-    <enableReports>false</enableReports>
+    <enableReports>true</enableReports>
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
-        <fullName>Core_MDF_AGS_Request_Id__c</fullName>
-        <externalId>false</externalId>
-        <label>AGS Request Id</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_AGS_Request_Type__c</fullName>
-        <label>AGS Request Type</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>CREATE_USER</fullName>
-                    <default>false</default>
-                    <label>CREATE_USER</label>
-                </value>
-                <value>
-                    <fullName>PERMISSION_SET_REQUEST</fullName>
-                    <default>false</default>
-                    <label>PERMISSION_SET_REQUEST</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_AGS_Role_Comments__c</fullName>
-        <description>Optional user-provided approver comments / justification for the AGS role request.</description>
-        <inlineHelpText>Optional approver comments provided by the requester for the AGS role request.</inlineHelpText>
-        <label>AGS Role Comments</label>
-        <length>500</length>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_AGS_Role_Name__c</fullName>
-        <externalId>false</externalId>
-        <label>AGS Role Name</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_AGS_Status_nm__c</fullName>
-        <label>AGS Status</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Not_Required</fullName>
-                    <default>false</default>
-                    <label>Not_Required</label>
-                </value>
-                <value>
-                    <fullName>Submitted</fullName>
-                    <default>false</default>
-                    <label>Submitted</label>
-                </value>
-                <value>
-                    <fullName>Approved</fullName>
-                    <default>false</default>
-                    <label>Approved</label>
-                </value>
-                <value>
-                    <fullName>Rejected</fullName>
-                    <default>false</default>
-                    <label>Rejected</label>
-                </value>
-                <value>
-                    <fullName>Error</fullName>
-                    <default>false</default>
-                    <label>Error</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Action_nm__c</fullName>
-        <label>Action</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>CREATE</fullName>
-                    <default>false</default>
-                    <label>CREATE</label>
-                </value>
-                <value>
-                    <fullName>UPDATE</fullName>
-                    <default>false</default>
-                    <label>UPDATE</label>
-                </value>
-                <value>
-                    <fullName>ACTIVATE</fullName>
-                    <default>false</default>
-                    <label>ACTIVATE</label>
-                </value>
-                <value>
-                    <fullName>SKIP</fullName>
-                    <default>false</default>
-                    <label>SKIP</label>
-                </value>
-                <value>
-                    <fullName>DEACTIVATE</fullName>
-                    <default>false</default>
-                    <label>DEACTIVATE</label>
-                </value>
-                <value>
-                    <fullName>ERROR</fullName>
-                    <default>false</default>
-                    <label>ERROR</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Activity_Classification_nm__c</fullName>
-        <label>Activity Classification</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>MultiselectPicklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Marketing</fullName>
-                    <default>false</default>
-                    <label>Marketing</label>
-                </value>
-                <value>
-                    <fullName>Sales</fullName>
-                    <default>false</default>
-                    <label>Sales</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-        <visibleLines>4</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Approval_Region_nm__c</fullName>
-        <label>Approval Region</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>MultiselectPicklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>APJ</fullName>
-                    <default>false</default>
-                    <label>APJ</label>
-                </value>
-                <value>
-                    <fullName>ASMO</fullName>
-                    <default>false</default>
-                    <label>ASMO</label>
-                </value>
-                <value>
-                    <fullName>EMEA</fullName>
-                    <default>false</default>
-                    <label>EMEA</label>
-                </value>
-                <value>
-                    <fullName>PRC</fullName>
-                    <default>false</default>
-                    <label>PRC</label>
-                </value>
-                <value>
-                    <fullName>WW</fullName>
-                    <default>false</default>
-                    <label>WW</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-        <visibleLines>4</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Error_Message_txt__c</fullName>
-        <label>Error Message</label>
-        <length>32768</length>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>5</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_GeoSubGeo_Budget_Type_nm__c</fullName>
-        <label>Region SubRegion - Budget Type</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>MultiselectPicklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>APJ-&gt;Account Plan</fullName>
-                    <default>false</default>
-                    <label>APJ-&gt;Account Plan</label>
-                </value>
-                <value>
-                    <fullName>APJ-&gt;Proposal I MDF</fullName>
-                    <default>false</default>
-                    <label>APJ-&gt;Proposal I MDF</label>
-                </value>
-                <value>
-                    <fullName>APJ-&gt;Proposal II MDF</fullName>
-                    <default>false</default>
-                    <label>APJ-&gt;Proposal II MDF</label>
-                </value>
-                <value>
-                    <fullName>ASMO-&gt;Account Plan</fullName>
-                    <default>false</default>
-                    <label>ASMO-&gt;Account Plan</label>
-                </value>
-                <value>
-                    <fullName>ASMO-&gt;Proposal I MDF</fullName>
-                    <default>false</default>
-                    <label>ASMO-&gt;Proposal I MDF</label>
-                </value>
-                <value>
-                    <fullName>ASMO-&gt;Proposal II MDF</fullName>
-                    <default>false</default>
-                    <label>ASMO-&gt;Proposal II MDF</label>
-                </value>
-                <value>
-                    <fullName>EMEA-&gt;Account Plan</fullName>
-                    <default>false</default>
-                    <label>EMEA-&gt;Account Plan</label>
-                </value>
-                <value>
-                    <fullName>EMEA-&gt;Proposal I MDF</fullName>
-                    <default>false</default>
-                    <label>EMEA-&gt;Proposal I MDF</label>
-                </value>
-                <value>
-                    <fullName>EMEA-&gt;Proposal II MDF</fullName>
-                    <default>false</default>
-                    <label>EMEA-&gt;Proposal II MDF</label>
-                </value>
-                <value>
-                    <fullName>PRC-&gt;Account Plan</fullName>
-                    <default>false</default>
-                    <label>PRC-&gt;Account Plan</label>
-                </value>
-                <value>
-                    <fullName>PRC-&gt;Proposal I MDF</fullName>
-                    <default>false</default>
-                    <label>PRC-&gt;Proposal I MDF</label>
-                </value>
-                <value>
-                    <fullName>PRC-&gt;Proposal II MDF</fullName>
-                    <default>false</default>
-                    <label>PRC-&gt;Proposal II MDF</label>
-                </value>
-                <value>
-                    <fullName>WW-&gt;Account Plan</fullName>
-                    <default>false</default>
-                    <label>WW-&gt;Account Plan</label>
-                </value>
-                <value>
-                    <fullName>WW-&gt;Proposal I MDF</fullName>
-                    <default>false</default>
-                    <label>WW-&gt;Proposal I MDF</label>
-                </value>
-                <value>
-                    <fullName>WW-&gt;Proposal II MDF</fullName>
-                    <default>false</default>
-                    <label>WW-&gt;Proposal II MDF</label>
-                </value>
-                <value>
-                    <fullName>WW-&gt;Co-Engineering</fullName>
-                    <default>false</default>
-                    <label>WW-&gt;Co-Engineering</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-        <visibleLines>4</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_IUPGM_Account__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>Account</label>
-        <referenceTo>Account</referenceTo>
-        <relationshipLabel>IUPGM Requests Staging</relationshipLabel>
-        <relationshipName>IUPGM_Requests_Staging</relationshipName>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_IUPGM_All_Account_Access__c</fullName>
+        <fullName>Core_MDF_All_Budget_Type_Access_ind__c</fullName>
         <defaultValue>false</defaultValue>
-        <label>All Account Access</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_IUPGM_All_Budget_Type_Access__c</fullName>
-        <defaultValue>false</defaultValue>
+        <description>Indicates if user has access to all budget types</description>
+        <inlineHelpText>Check this box to grant access to all budget types</inlineHelpText>
         <label>All Budget Type Access</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>Core_MDF_IUPGM_Budget_Type_nm__c</fullName>
+        <fullName>Core_MDF_Email_txt__c</fullName>
+        <description>Email address for the IUPGM request</description>
         <externalId>false</externalId>
-        <label>Budget Type</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_IUPGM_Program__c</fullName>
-        <externalId>false</externalId>
-        <label>Program Name</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_IUPGM_Record__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>IUPGM Record</label>
-        <referenceTo>Core_MDF_Int_Users_Partner_Geo_Mapping__c</referenceTo>
-        <relationshipLabel>IUPGM Requests Staging</relationshipLabel>
-        <relationshipName>IUPGM_Requests_Staging</relationshipName>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_IUPGM_Region_Sub_Region_nm__c</fullName>
-        <externalId>false</externalId>
-        <label>Region</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_IUPGM_Role_nm__c</fullName>
-        <externalId>false</externalId>
-        <label>Role Name</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_IUPGM_User__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>User</label>
-        <referenceTo>User</referenceTo>
-        <relationshipName>IUPGM_Requests_Staging</relationshipName>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Is_IUPGM_Processed__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Is IUPGM Processed?</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_New_User_Email__c</fullName>
-        <description>Stores the requested new user email for IUPGM/AGS user creation flows instead of packing it into the error field.</description>
-        <externalId>false</externalId>
-        <inlineHelpText>Requested email for a new Salesforce user when the user does not yet exist in Salesforce.</inlineHelpText>
-        <label>New User Email</label>
+        <inlineHelpText>Enter the email address associated with this request</inlineHelpText>
+        <label>Email</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -578,24 +177,11 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_New_User_Federation_Id__c</fullName>
-        <description>Stores the requested new user federation identifier (WWID) for IUPGM/AGS user creation flows instead of packing it into the error field.</description>
+        <fullName>Core_MDF_Federation_ID_txt__c</fullName>
+        <description>Federation identifier for the user</description>
         <externalId>false</externalId>
-        <inlineHelpText>Requested federation identifier / WWID for a new Salesforce user when the user does not yet exist in Salesforce.</inlineHelpText>
-        <label>New User Federation Id</label>
-        <length>10</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_New_User_Name__c</fullName>
-        <description>Stores the requested new user full name for IUPGM/AGS user creation flows instead of packing it into the error field.</description>
-        <externalId>false</externalId>
-        <inlineHelpText>Requested full name for a new Salesforce user when the user does not yet exist in Salesforce.</inlineHelpText>
-        <label>New User Name</label>
+        <inlineHelpText>Enter the federation ID for authentication purposes</inlineHelpText>
+        <label>Federation ID</label>
         <length>255</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -604,7 +190,305 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_MDF_IUPGM_Account_txt__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Related Account for IUPGM access</description>
+        <inlineHelpText>Select the Account associated with this IUPGM request</inlineHelpText>
+        <label>IUPGM Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>IUPGM Request Stagings</relationshipLabel>
+        <relationshipName>IUPGM_Request_Stagings</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_IUPGM_Active_ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicates if the IUPGM access is active</description>
+        <inlineHelpText>Check this box to mark the IUPGM access as active</inlineHelpText>
+        <label>IUPGM Active</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_IUPGM_All_Account_Access_nm__c</fullName>
+        <description>Access level for all accounts in IUPGM</description>
+        <inlineHelpText>Select the access level for all accounts</inlineHelpText>
+        <label>IUPGM All Account Access</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Read</fullName>
+                    <default>false</default>
+                    <label>Read</label>
+                </value>
+                <value>
+                    <fullName>Write</fullName>
+                    <default>false</default>
+                    <label>Write</label>
+                </value>
+                <value>
+                    <fullName>Admin</fullName>
+                    <default>false</default>
+                    <label>Admin</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_IUPGM_All_Accounts_txt__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Reference to all accounts for IUPGM access</description>
+        <inlineHelpText>Select the account for all accounts access</inlineHelpText>
+        <label>IUPGM All Accounts</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>IUPGM Request Stagings (All Accounts)</relationshipLabel>
+        <relationshipName>IUPGM_Request_Stagings_All</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_IUPGM_Budget_Type_nm__c</fullName>
+        <description>Budget types for IUPGM access (supports multiple selections)</description>
+        <inlineHelpText>Select one or more budget types for this request</inlineHelpText>
+        <label>IUPGM Budget Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Co-Op</fullName>
+                    <default>false</default>
+                    <label>Co-Op</label>
+                </value>
+                <value>
+                    <fullName>MDF</fullName>
+                    <default>false</default>
+                    <label>MDF</label>
+                </value>
+                <value>
+                    <fullName>Rebate</fullName>
+                    <default>false</default>
+                    <label>Rebate</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_IUPGM_Exists_ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicates if the IUPGM record already exists</description>
+        <inlineHelpText>Check this box if the IUPGM record already exists in the system</inlineHelpText>
+        <label>IUPGM Exists</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_IUPGM_Program_nm__c</fullName>
+        <description>IUPGM program type</description>
+        <inlineHelpText>Select the IUPGM program for this request</inlineHelpText>
+        <label>IUPGM Program</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Program A</fullName>
+                    <default>false</default>
+                    <label>Program A</label>
+                </value>
+                <value>
+                    <fullName>Program B</fullName>
+                    <default>false</default>
+                    <label>Program B</label>
+                </value>
+                <value>
+                    <fullName>Program C</fullName>
+                    <default>false</default>
+                    <label>Program C</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_IUPGM_Region_Sub_Region_nm__c</fullName>
+        <description>Region and sub-region selections for IUPGM access (supports multiple selections)</description>
+        <inlineHelpText>Select one or more regions or sub-regions for this request</inlineHelpText>
+        <label>IUPGM Region Sub Region</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>North America</fullName>
+                    <default>false</default>
+                    <label>North America</label>
+                </value>
+                <value>
+                    <fullName>EMEA</fullName>
+                    <default>false</default>
+                    <label>EMEA</label>
+                </value>
+                <value>
+                    <fullName>APAC</fullName>
+                    <default>false</default>
+                    <label>APAC</label>
+                </value>
+                <value>
+                    <fullName>Latin America</fullName>
+                    <default>false</default>
+                    <label>Latin America</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_IUPGM_Role_nm__c</fullName>
+        <description>Role assigned for IUPGM access</description>
+        <inlineHelpText>Select the role for this IUPGM request</inlineHelpText>
+        <label>IUPGM Role</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Admin</fullName>
+                    <default>false</default>
+                    <label>Admin</label>
+                </value>
+                <value>
+                    <fullName>Manager</fullName>
+                    <default>false</default>
+                    <label>Manager</label>
+                </value>
+                <value>
+                    <fullName>User</fullName>
+                    <default>false</default>
+                    <label>User</label>
+                </value>
+                <value>
+                    <fullName>Read Only</fullName>
+                    <default>false</default>
+                    <label>Read Only</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_IUPGM_User_txt__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>User associated with the IUPGM request</description>
+        <inlineHelpText>Select the user for this IUPGM access request</inlineHelpText>
+        <label>IUPGM User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipLabel>IUPGM Request Stagings</relationshipLabel>
+        <relationshipName>IUPGM_Request_Stagings_User</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Overall_Status_txt__c</fullName>
+        <description>Formula field displaying the overall status of the request</description>
+        <externalId>false</externalId>
+        <formula>IF(
+  ISPICKVAL(Core_MDF_Request_Status_nm__c, &quot;Completed&quot;),
+  &quot;Completed&quot;,
+  IF(
+    ISPICKVAL(Core_MDF_Request_Status_nm__c, &quot;Failed&quot;),
+    &quot;Failed&quot;,
+    IF(
+      ISPICKVAL(Core_MDF_Request_Status_nm__c, &quot;Pending&quot;),
+      &quot;Pending&quot;,
+      &quot;New&quot;
+    )
+  )
+)</formula>
+        <inlineHelpText>Automatically calculated status based on request conditions</inlineHelpText>
+        <label>Overall Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Profile_nm__c</fullName>
+        <description>Profile for the IUPGM user</description>
+        <inlineHelpText>Select the profile to assign to the user</inlineHelpText>
+        <label>Profile</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>System Administrator</fullName>
+                    <default>false</default>
+                    <label>System Administrator</label>
+                </value>
+                <value>
+                    <fullName>Standard User</fullName>
+                    <default>false</default>
+                    <label>Standard User</label>
+                </value>
+                <value>
+                    <fullName>Custom Profile</fullName>
+                    <default>false</default>
+                    <label>Custom Profile</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Request_Status_Message_txt__c</fullName>
+        <description>Detailed message about the request status</description>
+        <inlineHelpText>Enter any notes or messages about the current status of this request</inlineHelpText>
+        <label>Request Status Message</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Request_Status_nm__c</fullName>
+        <description>Current status of the IUPGM request</description>
+        <inlineHelpText>Select the current status of this request</inlineHelpText>
         <label>Request Status</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -616,33 +500,18 @@
                 <sorted>false</sorted>
                 <value>
                     <fullName>New</fullName>
-                    <default>false</default>
+                    <default>true</default>
                     <label>New</label>
                 </value>
                 <value>
-                    <fullName>Validation_Failed</fullName>
+                    <fullName>Pending</fullName>
                     <default>false</default>
-                    <label>Validation_Failed</label>
+                    <label>Pending</label>
                 </value>
                 <value>
-                    <fullName>AGS_Pending</fullName>
+                    <fullName>In Progress</fullName>
                     <default>false</default>
-                    <label>AGS_Pending</label>
-                </value>
-                <value>
-                    <fullName>AGS_Approved</fullName>
-                    <default>false</default>
-                    <label>AGS_Approved</label>
-                </value>
-                <value>
-                    <fullName>AGS_Rejected</fullName>
-                    <default>false</default>
-                    <label>AGS_Rejected</label>
-                </value>
-                <value>
-                    <fullName>IUPGM_Processing</fullName>
-                    <default>false</default>
-                    <label>IUPGM_Processing</label>
+                    <label>In Progress</label>
                 </value>
                 <value>
                     <fullName>Completed</fullName>
@@ -650,41 +519,18 @@
                     <label>Completed</label>
                 </value>
                 <value>
-                    <fullName>Skipped</fullName>
+                    <fullName>Failed</fullName>
                     <default>false</default>
-                    <label>Skipped</label>
-                </value>
-                <value>
-                    <fullName>Error</fullName>
-                    <default>false</default>
-                    <label>Error</label>
-                </value>
-                <value>
-                    <fullName>External_User_Blocked</fullName>
-                    <default>false</default>
-                    <label>External_User_Blocked</label>
-                </value>
-                <value>
-                    <fullName>AGS_User_Creation_Pending</fullName>
-                    <default>false</default>
-                    <label>AGS_User_Creation_Pending</label>
-                </value>
-                <value>
-                    <fullName>AGS_PS_Pending</fullName>
-                    <default>false</default>
-                    <label>AGS_PS_Pending</label>
-                </value>
-                <value>
-                    <fullName>Submitted</fullName>
-                    <default>false</default>
-                    <label>Submitted</label>
+                    <label>Failed</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
     <fields>
-        <fullName>Core_MDF_Request_Type_nm__c</fullName>
-        <label>Request Type</label>
+        <fullName>Core_MDF_User_License_nm__c</fullName>
+        <description>User license type for IUPGM access</description>
+        <inlineHelpText>Select the user license type for this request</inlineHelpText>
+        <label>User License</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -694,49 +540,31 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>GRANT</fullName>
-                    <default>true</default>
-                    <label>GRANT</label>
+                    <fullName>Salesforce</fullName>
+                    <default>false</default>
+                    <label>Salesforce</label>
                 </value>
                 <value>
-                    <fullName>REVOKE</fullName>
+                    <fullName>Salesforce Platform</fullName>
                     <default>false</default>
-                    <label>REVOKE</label>
+                    <label>Salesforce Platform</label>
+                </value>
+                <value>
+                    <fullName>Guest User License</fullName>
+                    <default>false</default>
+                    <label>Guest User License</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
-    <fields>
-        <fullName>Core_MDF_Requested_By__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>Requested By</label>
-        <referenceTo>User</referenceTo>
-        <relationshipName>IUPGM_Requests_Staging1</relationshipName>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Requestor_Email__c</fullName>
-        <description>Email of the human who raised this request via chatbot. Stored for audit trail since all API operations run under the integration/service account (generic user).</description>
-        <externalId>false</externalId>
-        <inlineHelpText>The actual person who submitted the request through the chatbot.</inlineHelpText>
-        <label>Requestor Email</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Email</type>
-        <unique>false</unique>
-    </fields>
     <label>IUPGM Request Staging</label>
     <nameField>
         <displayFormat>REQ-{0000}</displayFormat>
-        <label>IUPGM Request Number</label>
+        <label>Request Number</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>IUPGM Requests Staging</pluralLabel>
+    <pluralLabel>IUPGM Request Stagings</pluralLabel>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>

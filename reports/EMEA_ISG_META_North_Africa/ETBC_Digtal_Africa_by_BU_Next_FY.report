@@ -62,7 +62,7 @@
         <chartType>HorizontalBarStacked</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
+        <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
         <secondaryGroupingColumn>BucketField_8903978</secondaryGroupingColumn>
@@ -111,19 +111,12 @@
             <operator>equals</operator>
             <value>0061J00000XyWJG</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>HASOPPLINEITEM</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
     <groupingsAcross>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
     <groupingsDown>
@@ -160,8 +153,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2025-12-26</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2019-12-29</startDate>
     </timeFrameFilter>
 </Report>

@@ -12,10 +12,10 @@
         <chartType>HorizontalBarGrouped</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>CREATED</groupingColumn>
+        <groupingColumn>FULL_NAME</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_TOP</location>
-        <secondaryGroupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</secondaryGroupingColumn>
+        <secondaryGroupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -68,9 +68,8 @@
         <field>PRODUCT_NAME</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND (3 OR 4)</booleanFilter>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
@@ -84,30 +83,15 @@
             <value>Lost,Cancelled</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER_MANAGER</column>
+            <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Mariusz Jadwiszczok,Andrea Toigo</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner_Manager__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Mariusz Jadwiszczok,Andrea Toigo</value>
+            <operator>contains</operator>
+            <value>Jadwiszczok,Dylewska,Olszewski,Le Roux,Witke,Cazzamali,Taraszkiewicz</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
-    <groupingsDown>
-        <aggregateType>Sum</aggregateType>
-        <dateGranularity>Day</dateGranularity>
-        <field>CREATED</field>
-        <sortByName>OpportunityLineItem.Core_KPI_Total_Price__c</sortByName>
-        <sortOrder>Desc</sortOrder>
-        <sortType>Aggregate</sortType>
-    </groupingsDown>
     <groupingsDown>
         <aggregateType>Sum</aggregateType>
         <dateGranularity>Day</dateGranularity>
@@ -118,7 +102,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>[IOT &amp; PSG ET] - Design creation QTD</name>

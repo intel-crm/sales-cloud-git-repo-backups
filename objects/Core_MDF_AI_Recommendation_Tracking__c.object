@@ -201,38 +201,36 @@
     </fields>
     <fields>
         <fullName>Core_MDF_AI_Source_Type__c</fullName>
+        <description>Indicates the input source used to generate the AI recommendation. Description = derived from the MDF activity text description. File = derived from uploaded supporting documents. Combined = both description and files were used.
+Approval Process = Recommendation for Approval Process</description>
         <label>AI Source Type</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
+            <restricted>true</restricted>
             <valueSetDefinition>
                 <sorted>false</sorted>
-                <value>
-                    <fullName>File</fullName>
-                    <default>false</default>
-                    <label>File</label>
-                </value>
-                <value>
-                    <fullName>Approval Process</fullName>
-                    <default>false</default>
-                    <label>Approval Process</label>
-                </value>
                 <value>
                     <fullName>Description</fullName>
                     <default>false</default>
                     <label>Description</label>
                 </value>
                 <value>
-                    <fullName>Combined</fullName>
+                    <fullName>File</fullName>
                     <default>false</default>
-                    <label>Combined</label>
+                    <label>File</label>
                 </value>
                 <value>
-                    <fullName>IUPGM_Chatbot</fullName>
+                    <fullName>Combined</fullName>
                     <default>false</default>
-                    <label>IUPGM Chatbot</label>
+                    <label>File + Description</label>
+                </value>
+                <value>
+                    <fullName>Approval Process</fullName>
+                    <default>false</default>
+                    <label>Approval Process</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -299,61 +297,6 @@
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>10</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_IUPGM_Error_Detail__c</fullName>
-        <label>IUPGM Error Detail</label>
-        <length>32768</length>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>5</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_IUPGM_Program__c</fullName>
-        <externalId>false</externalId>
-        <label>IUPGM Program</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_IUPGM_Response_Time_ms__c</fullName>
-        <externalId>false</externalId>
-        <label>IUPGM Response Time (ms)</label>
-        <precision>10</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_IUPGM_Role_Requested__c</fullName>
-        <externalId>false</externalId>
-        <label>IUPGM Role Requested</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_IUPGM_Staging_Record__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>IUPGM Staging Record</label>
-        <referenceTo>Core_MDF_IUPGM_Request_Staging__c</referenceTo>
-        <relationshipLabel>AI Chatbot Logs</relationshipLabel>
-        <relationshipName>AI_Chatbot_Logs</relationshipName>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>Core_MDF_Recommendation_Used__c</fullName>

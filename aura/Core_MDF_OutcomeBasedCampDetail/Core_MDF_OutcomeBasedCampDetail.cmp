@@ -1,5 +1,5 @@
-<aura:component controller="Core_MDF_OutcomeBasedCampDetailCntllr" 
-                implements="flexipage:availableForAllPageTypes,force:appHostable,lightning:isUrlAddressable,forceCommunity:availableForAllPageTypes" 
+<aura:component controller="Core_MDF_OutcomeBasedCampDetailCntllr"
+                implements="flexipage:availableForAllPageTypes,force:appHostable,lightning:isUrlAddressable,forceCommunity:availableForAllPageTypes"
                 access="global">
     <!-- Attributes -->
     <aura:attribute name="recordId" type="String" />
@@ -7,7 +7,7 @@
     <aura:attribute name="hasAccess" type="Boolean" default="false" />
     <aura:attribute name="accessChecked" type="Boolean" default="false" />
     <aura:attribute name="isInternalPage" type="Boolean" default="true" />
-	<aura:attribute name="showInternalNoteForm" type="Boolean" default="false" />
+    <aura:attribute name="showInternalNoteForm" type="Boolean" default="false" />
     <aura:attribute name="internalNoteTitle" type="String" default="" />
     <aura:attribute name="internalNoteBody" type="String" default="" />
     <aura:attribute name="internalNoteError" type="String" default="" />
@@ -27,139 +27,77 @@
     <aura:attribute name="allNotesPageSize" type="Integer" default="10" />
     <aura:attribute name="allNotesCurrentPage" type="Integer" default="1" />
     <aura:attribute name="allNotesTotalPages" type="Integer" default="1" />
-
+    <!-- [Akash CCF/DCF] - Attributes to detect Client/DCF record type for ecosystem partner allocation -->
+    <aura:attribute name="recTypeObj" type="Object" />
+    <aura:attribute name="recordTypeDeveloperName" type="String" default="" />
+    <aura:attribute name="isClientOrDCFProgram" type="Boolean" default="false" />
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
-    
+    <!-- [Akash CCF/DCF] - Handler to evaluate record type on load -->
+    <aura:handler name="change" value="{!v.recTypeObj}" action="{!c.handleRecTypeChange}" />
+
     <aura:if isTrue="{!v.accessChecked}">
 
         <aura:if isTrue="{!v.isInternalPage}">
-
             <aura:if isTrue="{!not(v.hasAccess)}">
-                
                 <div class="slds-card record-layout-load-error-container">
                     <div class="slds-p-around_medium">
-                        <p class="slds-text-title_bold slds-p-bottom_small">
-                            Looks like there's a problem.</p>
+                        <p class="slds-text-title_bold slds-p-bottom_small">Looks like there''s a problem.</p>
                         <p class="slds-p-bottom_x-small">Unfortunately, there was a problem. Please try again. If the problem continues, get in touch with your administrator with the error ID shown here and any other related details.</p>
                         <p class="slds-p-bottom_x-small">You do not have the level of access necessary to perform the operation you requested. Please contact the owner of the record or your administrator if access is necessary.</p>
                     </div>
                 </div>
-
             </aura:if>
         </aura:if>
-        
-        <!-- Show content only when user has access and recordId exists -->
+
         <aura:if isTrue="{!and(not(empty(v.recordId)),(v.hasAccess))}">
+            <!-- [Akash CCF/DCF] - Load record type to conditionally show ecosystem partner allocation -->
+            <force:recordData aura:id="pfrRecordType"
+                recordId="{!v.recordId}"
+                fields="RecordType.DeveloperName"
+                targetFields="{!v.recTypeObj}"
+                targetError="{!v.errorMessage}" />
+
             <div class="slds-page-header slds-m-bottom_medium">
                 <div class="slds-page-header__row">
                     <div class="slds-page-header__col-title">
-                        <c:Core_MDF_Compact_Layout
-                            recordId="{!v.recordId}"
-                            objAPIName="PartnerFundRequest"
-                            fieldAPIName="Core_MDF_Proposal_Based_Ind__c,Core_MDF_Is_Outcome_Based_Ind__c"
-                            fieldAPIoperator=""
-                            isCompactLayout="Yes"
-                            controllingObj=""/>
+                        <c:Core_MDF_Compact_Layout recordId="{!v.recordId}" objAPIName="PartnerFundRequest" fieldAPIName="Core_MDF_Proposal_Based_Ind__c,Core_MDF_Is_Outcome_Based_Ind__c" fieldAPIoperator="" isCompactLayout="Yes" controllingObj=""/>
                     </div>
                 </div>
             </div>
-            
+
             <div class="slds-grid slds-wrap slds-gutters">
-                <!-- Left Column - Details -->
                 <div class="slds-col slds-size_1-of-2">
                     <lightning:card>
-                        <!-- Details Header inside the card -->
-                        <div class="slds-text-heading_small" style="font-weight: bold; margin: 8px 16px 4px 16px;">
-                            {!$Label.c.Core_MDF_Activity_Creation_Detail_Section}
-                        </div>
+                        <div class="slds-text-heading_small" style="font-weight: bold; margin: 8px 16px 4px 16px;">{!$Label.c.Core_MDF_Activity_Creation_Detail_Section}</div>
                         <hr style="border: 0; height: 1px; background: #dddbda; margin: 0 16px 16px 16px;"/>
-                        
                         <div class="slds-p-horizontal_medium slds-p-bottom_medium">
-                            <div class="slds-m-bottom_medium">
-                                <c:core_MDF_CustomLayoutConfig
-                                    recordId="{!v.recordId}"
-                                    objAPIName="PartnerFundRequest"
-                                    fieldAPIName="Core_MDF_Proposal_Based_Ind__c"
-                                    operator=""
-                                    fieldAPIoperator=""
-                                    isSectionVisible="Yes"
-                                    isCompactLayout="No"
-                                    recordTypeName=""
-                                    standardFieldAlign="No"
-                                    hasToRetainDecimalValues=""/>
-                            </div>
-                            
-                            <div class="slds-m-bottom_medium">
-                                <c:core_MDF_Activity_Purpose_Comp recordId="{!v.recordId}" isReadOnly="{!v.showReadOnly}" />
-                            </div>
-                            
-                            <div class="slds-m-bottom_medium">
-                                <c:core_MDF_Tactics_Form recordId="{!v.recordId}" isDetail="{!v.showReadOnly}"/>
-                            </div>
-                            
-                            <div class="slds-m-bottom_medium">
-                                <c:core_MDF_DisplayProducts recordId="{!v.recordId}" isReadOnly="{!v.showReadOnly}"/>
-                            </div>
-                            
-                            <div class="slds-m-bottom_medium">
-                                <c:core_MDF_Outcome_Based_Acc_Node recordId="{!v.recordId}" isReadOnly="{!v.showReadOnly}"/>
-                            </div>
-                            
-                            <div class="slds-m-bottom_medium">
-                                <c:Core_MDF_Activity_Upload_File recordId="{!v.recordId}" />
-                            </div>
+                            <div class="slds-m-bottom_medium"><c:core_MDF_CustomLayoutConfig recordId="{!v.recordId}" objAPIName="PartnerFundRequest" fieldAPIName="Core_MDF_Proposal_Based_Ind__c" operator="" fieldAPIoperator="" isSectionVisible="Yes" isCompactLayout="No" recordTypeName="" standardFieldAlign="No" hasToRetainDecimalValues=""/></div>
+                            <div class="slds-m-bottom_medium"><c:core_MDF_Activity_Purpose_Comp recordId="{!v.recordId}" isReadOnly="{!v.showReadOnly}" /></div>
+                            <div class="slds-m-bottom_medium"><c:core_MDF_Tactics_Form recordId="{!v.recordId}" isDetail="{!v.showReadOnly}"/></div>
+                            <div class="slds-m-bottom_medium"><c:core_MDF_DisplayProducts recordId="{!v.recordId}" isReadOnly="{!v.showReadOnly}"/></div>
+                            <div class="slds-m-bottom_medium"><c:core_MDF_Outcome_Based_Acc_Node recordId="{!v.recordId}" isReadOnly="{!v.showReadOnly}"/></div>
+                            <!-- [Akash CCF/DCF] - Show ecosystem partner allocation as read-only for Client and Datacenter programs only; hidden for IPA -->
+                            <aura:if isTrue="{!v.isClientOrDCFProgram}">
+                                <div class="slds-m-bottom_medium"><c:core_MDF_ecosystemPartnerAllocation recordId="{!v.recordId}" isReadOnly="true" mode="" /></div>
+                            </aura:if>
+                            <div class="slds-m-bottom_medium"><c:Core_MDF_Activity_Upload_File recordId="{!v.recordId}" /></div>
                         </div>
                     </lightning:card>
                 </div>
-                
-                <!-- Right Column - Related -->
+
                 <div class="slds-col slds-size_1-of-2">
                     <lightning:card>
-                        <!-- Related Header inside the card -->
-                        <div class="slds-text-heading_small" style="font-weight: bold; margin: 8px 16px 4px 16px;">
-                            {!$Label.c.Core_MDF_Outcome_Based_Related_Section}
-                        </div>
+                        <div class="slds-text-heading_small" style="font-weight: bold; margin: 8px 16px 4px 16px;">{!$Label.c.Core_MDF_Outcome_Based_Related_Section}</div>
                         <hr style="border: 0; height: 1px; background: #dddbda; margin: 0 16px 16px 16px;"/>
-                        
                         <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+                            <div class="slds-m-bottom_medium"><c:core_MDF_Display_Approval_Details recordId="{!v.recordId}" /></div>
+                            <div class="slds-m-bottom_medium"><c:Core_MDF_PFR_Approval recordId="{!v.recordId}" /></div>
+                            <div class="slds-m-bottom_medium"><c:core_MDF_FileRepository recordId="{!v.recordId}" /></div>
+                            <div class="slds-m-bottom_medium"><c:core_MDF_ApprovalHistoryRelatedList recordId="{!v.recordId}" identifierTextField1="Core_MDF_Program__c" identifierTextField2="" identifierCheckboxField1="Core_MDF_Proposal_Based_Ind__c" identifierCheckboxField2="" /></div>
+                            <div class="slds-m-bottom_medium"><c:core_MDF_HistoryComponent objectApiName="PartnerFundRequest" recordId="{!v.recordId}" internalUserName="Intel System User" fieldsToMask="" /></div>
+                            <div class="slds-m-bottom_medium"><c:core_MDF_GenricReleatedList recordId="{!v.recordId}" childObjectApi="PartnerFundClaim" relationshipField="RequestId" title="Claims" fields="Title,Core_MDF_Claim_Ref_Number__c,Core_MDF_Status__c,Amount"/></div>
 
-                            <div class="slds-m-bottom_medium">
-                                <c:core_MDF_Display_Approval_Details recordId="{!v.recordId}" />
-                            </div>
-                            
-                            <div class="slds-m-bottom_medium">
-                                <c:Core_MDF_PFR_Approval recordId="{!v.recordId}" />   
-                            </div>
-                            
-                            <div class="slds-m-bottom_medium">
-                                <c:core_MDF_FileRepository recordId="{!v.recordId}" />
-                            </div>
-                            <div class="slds-m-bottom_medium">
-                                <c:core_MDF_ApprovalHistoryRelatedList 
-                                    recordId="{!v.recordId}" 
-                                    identifierTextField1="Core_MDF_Program__c" 
-                                    identifierTextField2=""       
-                                    identifierCheckboxField1="Core_MDF_Proposal_Based_Ind__c"
-                                    identifierCheckboxField2="" />
-                            </div>
-                            
-                            <div class="slds-m-bottom_medium">
-                                <c:core_MDF_HistoryComponent
-                                    objectApiName="PartnerFundRequest"
-                                    recordId="{!v.recordId}" 
-                                    internalUserName="Intel System User" 
-                                    fieldsToMask=""  />
-                            </div>
-                            
-                            <div class="slds-m-bottom_medium">
-                                <c:core_MDF_GenricReleatedList
-                                    recordId="{!v.recordId}" 
-                                    childObjectApi="PartnerFundClaim"
-                                    relationshipField="RequestId"
-                                    title="Claims" 
-                                    fields="Title,Core_MDF_Claim_Ref_Number__c,Core_MDF_Status__c,Amount"/>
-                            </div>
                             <!-- Internal Notes Container -->
                             <aura:if isTrue="{!v.isInternalPage}">
                                     <div class="slds-m-bottom_medium">

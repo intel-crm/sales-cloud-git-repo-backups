@@ -11,12 +11,12 @@ Used in     : None
 Modification Log :
 * Developer                   Date                   Description
 * ----------------------------------------------------------------------------                 
-* Deepak Jetty              02/02/2016                 Created 
+* Deepak Jetty              02/02/2016                 Created
 ****************************************************************************************************/
 @isTest
 public class Core_IPS_Project_Member_Test {
     //Instance variables that are commonly used in multiple test methods
-    static List<User> listOfUser = new List<User> ();
+    static List<User> ListOfUser = new List<User> ();
     /***************************************************************************************************
 Method Name:  getRecords()
 Method Type: void
@@ -35,7 +35,7 @@ Modification Log :
         List<String> strProf = new List<String>();
         strProf.add('System Administrator');
         strProf.add('Sales Rep-BB');
-        List<Profile> profileList = [select id, name from Profile where name IN : strProf];
+        List<Profile> ProfileList = [select id, name from Profile where name IN : strProf];
         for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
         }
@@ -50,18 +50,7 @@ Modification Log :
         insert ListOfUser;
         System.assertEquals(ListOfUser.get(0).profileid, profiles.get('System Administrator'));
         System.assertEquals(ListOfUser.get(1).profileid, profiles.get('Sales Rep-BB'));
-        system.runas(ListOfUser[0]){
-             Core_Trigger_Executions__c triggerExecution = new Core_Trigger_Executions__c(
-             Name = 'Test Trigger Execution',
-             Core_Class_Name__c = 'Core_IPS_Project_Member_Handler' , 
-             Core_Description__c = 'Testing', 
-             Core_Object__c = 'Core_IPS_Project_Member__c', 
-             Core_Trigger_Events__c = 'After Inserts'
-            
-        );
-             insert triggerExecution;
-        }
-
+        
     }
 /***************************************************************************************************
 Method Name:  InsertManageGroupMember_test
@@ -91,7 +80,6 @@ Modification Log :
             ContactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
             ContactRec.Accountid = ListOfAccounts.get(0).Id;
             ContactRec.Core_IPS_Active__c = true;
-            contactRec.MailingCountry ='India';
         }
         System.runAs(ListOfUser.get(0)){
             insert ListOfContacts;
@@ -176,21 +164,6 @@ Modification Log :
         Id intelSupportOwner = ListOfUser.get(0).id;
         // Create Accounts
         List<Account> ListOfAccounts = TestUtilities.getListOfAccounts(1);
-        
-        //Added by Sowmya - Start - 08/11/2024 - TWC745-6800 - Fix test coverage for all failed classes 
-        System.runAs(ListOfUser.get(0)){
-            Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
-            triggerExecution.Name = 'myIntelProjectMembersTriggerHandler';
-            triggerExecution.Core_Active__c = true;
-            triggerExecution.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
-            triggerExecution.Core_Description__c = 'To update Case fields.';
-            triggerExecution.Core_Object__c = 'Case';
-            triggerExecution.Core_Trigger_Events__c = 'before insert';
-            insert triggerExecution;
-		}
-        //Sowmya - end - 08/11/2024 - TWC745-6800 - Fix test coverage for all failed classes 
-       
-        
         System.runAs(ListOfUser.get(0)){
             insert ListOfAccounts;
         }
@@ -201,7 +174,6 @@ Modification Log :
             ContactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
             ContactRec.Accountid = ListOfAccounts.get(0).Id;
             ContactRec.Core_IPS_Active__c = true;
-            contactRec.MailingCountry ='India';
         }
         System.runAs(ListOfUser.get(0)){
             insert ListOfContacts;
@@ -270,14 +242,12 @@ Modification Log :
             for(Core_IPS_Project_Member__c projMem:ListOfProjectMembers){
                 projMem.Core_Status__c = 'Active';
             
-            }
             Update ListOfProjectMembers;
+            }
             System.assert(ListOfProjectMembers.get(0).Core_Status__c == 'Active', 'Record not updated');
         }
         Test.stopTest();
     }
-    
-         
 /***************************************************************************************************
 Method Name:  UpdateIPSProjectInactiveIPSProjMember_test
 Method Type: Test Method
@@ -306,7 +276,6 @@ Modification Log :
             ContactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
             ContactRec.Accountid = ListOfAccounts.get(0).Id;
             ContactRec.Core_IPS_Active__c = true;
-            contactRec.MailingCountry ='India';
         }
         System.runAs(ListOfUser.get(0)){
             insert ListOfContacts;
@@ -438,10 +407,8 @@ Modification Log :
             ContactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
             ContactRec.Accountid = ListOfAccounts.get(0).Id;
             ContactRec.Core_IPS_Active__c = true;
-            contactRec.MailingCountry ='India';
         }
-        
-       System.runAs(ListOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             insert ListOfContacts;
         }
         System.assert(ListOfContacts[0].Id != null, 'Record not created');
@@ -487,21 +454,14 @@ Modification Log :
                IL.Value__c = 'Submitted Pending' ;
             }
         }
-        
-            
-         
-       System.runAs(ListOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             ListOfIpsProjects[0].Core_MPNDA__c = '';
             insert IPSLabels;
             insert ListOfIpsProjects;
-            insert ListOfTriggerExecutions; 
-           
-//added by Aayushi US90060
-			
+            insert ListOfTriggerExecutions;         //added by Aayushi US90060
+
         }
-        
         System.assert(ListOfIpsProjects[0].Id != null, 'Record not created');
-     
         // Create Ips Account
         List<Core_IPS_Account__c> ListOfIpsAccounts = TestUtilities.getListOfIpsAccounts(1);
         for(Core_IPS_Account__c IpsAcc : ListOfIpsAccounts){
@@ -511,8 +471,7 @@ Modification Log :
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsAccounts;
         }
-                System.assert(ListOfIpsAccounts[0].Id != null, 'Record not created');
-      
+        System.assert(ListOfIpsAccounts[0].Id != null, 'Record not created');
         
         // Create Project Member
         List<Core_IPS_Project_Member__c> ListOfProjectMembers = TestUtilities.getListOfProjectMembers(5);
@@ -524,24 +483,25 @@ Modification Log :
         Test.startTest();
         System.runAs(ListOfUser.get(0)){
             insert ListOfProjectMembers;
-                 
             System.assert(ListOfProjectMembers[0].Id != null, 'Record not created');
             // start added by Aayushi US90060
             try{
+              
                 update ListOfIpsProjects.get(0);
-               Core_IPS_Project_Member_Handler.PreventDelete(ListOfProjectMembers);
+                System.debug('In Try>>');
+            Core_IPS_Project_Member_Handler.PreventDelete(ListOfProjectMembers);
             delete ListOfProjectMembers;
                 
             }
         catch(Exception ex){
+            System.debug('Message>>'+ex.getMessage());
             Boolean expectedExceptionThrown =  ex.getMessage().contains('Cannot delete this Project Member when status is either Submitted or Active') ? true : false;
             System.assertEquals(expectedExceptionThrown, false);   
                }         
             List<Core_IPS_Project_Member__c> ListOfProjectMembers_Delete = [select id from Core_IPS_Project_Member__c where id IN: ListOfProjectMembers];
             System.assert(ListOfProjectMembers_Delete.isEmpty(), 'Record not deleted');
         }
-        
-    
+        //end
         Test.stopTest();
     }
 /***************************************************************************************************
@@ -621,6 +581,7 @@ Modification Log :
                 proj.Core_Status__c = 'Active';
                 proj.Core_MPNDA__c='1234';
             }
+            System.debug('>>Check>>');
             Update ListOfIpsProjects;
         }
         System.assert(ListOfIpsProjects[0].Id != null, 'Record not created');
@@ -683,7 +644,6 @@ Modification Log :
             ContactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
             ContactRec.Accountid = ListOfAccounts.get(0).Id;
             ContactRec.Core_IPS_Active__c = true;
-            contactRec.MailingCountry ='India';
         }
         System.runAs(ListOfUser.get(0)){
             insert ListOfContacts;
@@ -711,7 +671,7 @@ Modification Log :
             insert IPSLabels;
             insert ListOfTriggerExecutions; 
         }
-        System.runAs(ListOfUser.get(0)){
+        System.runAs(ListOfUser.get(1)){
             ListOfIpsProjects[0].Core_MPNDA__c = '';
             insert ListOfIpsProjects;
         }
@@ -750,7 +710,7 @@ Modification Log :
             insert ListOfProjectMembers;
             }
         Test.startTest();
-            System.runAs(ListOfUser.get(0)){
+            System.runAs(ListOfUser.get(1)){
             ListOfProjectMembers[0].Core_Status__c = 'Inactive';
             try{                    
             Update ListOfProjectMembers[0];
@@ -764,21 +724,12 @@ Modification Log :
     
     //add as interested party
     static testmethod void AddasInterestedParty(){
-        try{
         getrecords();
         // Get intelSupportOwner Id (User Id)
         Id intelSupportOwner = ListOfUser.get(0).id;
         // Create Accounts
         List<Account> ListOfAccounts = TestUtilities.getListOfAccounts(1);
         System.runAs(ListOfUser.get(0)){
-            Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
-            triggerExecution.Name = 'myIntelProjectMembersTriggerHandler';
-            triggerExecution.Core_Active__c = true;
-            triggerExecution.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
-            triggerExecution.Core_Description__c = 'To update Case fields.';
-            triggerExecution.Core_Object__c = 'Case';
-            triggerExecution.Core_Trigger_Events__c = 'before insert';
-            insert triggerExecution;
             insert ListOfAccounts;
         }
         System.assert(ListOfAccounts[0].Id != null, 'Record not created');
@@ -788,7 +739,6 @@ Modification Log :
             ContactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
             ContactRec.Accountid = ListOfAccounts.get(0).Id;
             ContactRec.Core_IPS_Active__c = true;
-            contactRec.MailingCountry ='India';
         }
         System.runAs(ListOfUser.get(0)){
             insert ListOfContacts;
@@ -812,7 +762,7 @@ Modification Log :
             insert IPSLabels;
             //insert ListOfTriggerExecutions; 
         }
-        System.runAs(ListOfUser.get(0)){
+        System.runAs(ListOfUser.get(1)){
             ListOfIpsProjects[0].Core_MPNDA__c = '';
             ListOfIpsProjects[0].Core_IPS_EnableMemberasInterestedParties__c = true;
             insert ListOfIpsProjects;
@@ -892,25 +842,15 @@ Modification Log :
         }
         
         Test.stopTest();
-    }catch(Exception ex){}
     } 
     
     static testmethod void AddasInterestedParty3(){
-        try{
         getrecords();
         // Get intelSupportOwner Id (User Id)
         Id intelSupportOwner = ListOfUser.get(0).id;
         // Create Accounts
         List<Account> ListOfAccounts = TestUtilities.getListOfAccounts(1);
         System.runAs(ListOfUser.get(0)){
-            Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
-            triggerExecution.Name = 'myIntelProjectMembersTriggerHandler';
-            triggerExecution.Core_Active__c = true;
-            triggerExecution.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
-            triggerExecution.Core_Description__c = 'To update Case fields.';
-            triggerExecution.Core_Object__c = 'Case';
-            triggerExecution.Core_Trigger_Events__c = 'before insert';
-            insert triggerExecution;
             insert ListOfAccounts;
         }
         System.assert(ListOfAccounts[0].Id != null, 'Record not created');
@@ -921,7 +861,6 @@ Modification Log :
             ContactRec.Accountid = ListOfAccounts.get(0).Id;
             ContactRec.Core_IPS_Active__c = true;
             ContactRec.Core_IPS_Email_Opt_Out__c = false;
-            contactRec.MailingCountry ='India';
         }
         System.runAs(ListOfUser.get(0)){
             insert ListOfContacts;
@@ -945,7 +884,7 @@ Modification Log :
             insert IPSLabels;
             //insert ListOfTriggerExecutions; 
         }
-        System.runAs(ListOfUser.get(0)){
+        System.runAs(ListOfUser.get(1)){
             ListOfIpsProjects[0].Core_MPNDA__c = '';
             ListOfIpsProjects[0].Core_IPS_EnableMemberasInterestedParties__c = true;
             insert ListOfIpsProjects;
@@ -1008,10 +947,7 @@ Modification Log :
                 CaseRec.ContactId = ListOfContacts.get(0).id;
                 CaseRec.accountId = ListOfAccounts.get(0).Id;
                 CaseRec.Core_IPS_Project_Case__c = ListOfIpsProjects.get(0).Id;
-                //Added by Sowmya - Start - 08/11/2024 - TWC745-6800 - Fix test coverage for all failed classes 
-       			 CaseRec.Core_IPS_Customer_Visible__c = true;
-               //Sowmya - end - 08/11/2024 - TWC745-6800 - Fix test coverage for all failed classes 
-           }
+            }
             insert ListOfCases;
         }
         
@@ -1045,7 +981,7 @@ Modification Log :
                 
             }
         Test.stopTest();
-        } catch(Exception x){}
+       
     } 
     
     
@@ -1067,7 +1003,6 @@ Modification Log :
             ContactRec.Accountid = ListOfAccounts.get(0).Id;
             ContactRec.Core_IPS_Active__c = true;
             ContactRec.Core_IPS_Email_Opt_Out__c = false;
-            contactRec.MailingCountry ='India';
         }
         System.runAs(ListOfUser.get(0)){
             insert ListOfContacts;
@@ -1082,7 +1017,7 @@ Modification Log :
             insert IPSLabels;
             //insert ListOfTriggerExecutions; 
         }
-        System.runAs(ListOfUser.get(0)){
+        System.runAs(ListOfUser.get(1)){
             ListOfIpsProjects[0].Core_MPNDA__c = '';
             ListOfIpsProjects[0].Core_IPS_EnableMemberasInterestedParties__c = true;
             insert ListOfIpsProjects;
@@ -1153,13 +1088,11 @@ Modification Log :
         try{
             
             System.runAs(ListOfUser.get(0)){
-                ListOfProjectMembers[2].Add_as_Case_Interested_Party__c=false;
                 insert ListOfProjectMembers;
-                ListOfProjectMembers[2].Add_as_Case_Interested_Party__c=true;
-                update ListOfProjectMembers[2];
             }
             
         }catch(Exception e){
+            System.debug('---error::');
         }
         
         //Core_IPS_Email_Opt_Out__c check
@@ -1188,6 +1121,7 @@ Modification Log :
             }
             
         }catch(Exception e){
+            System.debug('---2nd :::error::');
         }
         
         
@@ -1220,6 +1154,7 @@ Modification Log :
             }
             
         }catch(Exception e){
+            System.debug('---3rd :::error::');
         }
         
     }
@@ -1228,12 +1163,11 @@ Modification Log :
     /****************************************************************
      * Description : Check Inactivation Of Project member
      * Modification Log :
-     * Name             Date                    Description
+     * Name			    Date					Description
      * --------------------------------------------------------------
      * Amritesh         09/10/2018             Modified
     *****************************************************************/
     static testmethod void InactivateProjectMemberTest(){
-        try{
         getrecords();
         // Get intelSupportOwner Id (User Id)
         Id intelSupportOwner = ListOfUser.get(0).id;
@@ -1250,7 +1184,6 @@ Modification Log :
             ContactRec.Accountid = ListOfAccounts.get(0).Id;
             ContactRec.Core_IPS_Active__c = true;
             ContactRec.Core_IPS_Email_Opt_Out__c = false;
-            contactRec.MailingCountry ='India';
         }
         System.runAs(ListOfUser.get(0)){
             insert ListOfContacts;
@@ -1326,7 +1259,7 @@ Modification Log :
             
         }
         
-        System.runAs(ListOfUser.get(0)){
+        System.runAs(ListOfUser.get(1)){
             ListOfIpsProjects[0].Core_MPNDA__c = '';
             ListOfIpsProjects[0].Core_IPS_EnableMemberasInterestedParties__c = true;
             ListOfIpsProjects[0].Core_IPS_Partner_Support_Owner__c = customerUser.Id;
@@ -1364,7 +1297,7 @@ Modification Log :
         }
         System.runAs(ListOfUser.get(0)){
             insert ListOfProjectMembers;
-            Test.startTest();
+            
             // Create Case
             List<Case> ListOfCases = TestUtilities.getListOfCases(3);
             for(Case CaseRec : ListOfCases){
@@ -1377,21 +1310,17 @@ Modification Log :
             insert ListOfCases;
         }
         
-        
+        Test.startTest();
         //Update project member status to inactive
         ListOfProjectMembers[0].Core_Status__c ='Inactive';
         System.runAs(ListOfUser.get(0)){
             update ListOfProjectMembers;
         }
         Test.stopTest();
-        }catch(Exception e){}        
+        
     }
- static List<Core_IPS_Project_Member__c> projectMember =  [SELECT Id,Core_IPS_Project__c,Core_IPS_ContactName__c,Core_Status__c,Core_User__c,Add_as_Case_Interested_Party__c,Core_IPS_Contact_IPS_Active__c FROM Core_IPS_Project_Member__c WHERE Core_IPS_Contact_IPS_Active__c=True LIMIT 10];
- static Map<Id,Core_IPS_Project_Member__c> projectMemberMap = new Map<Id,Core_IPS_Project_Member__c>(projectMember); 
-    @isTest public static void testPM(){
-        Test.startTest();
-        Core_IPS_Project_Member_Handler.interestedParties_ProjectMembers(projectMember,projectMemberMap);
-        Test.stopTest();    
-        System.assert(projectMember != null);
-        }
+ 
+ 
+ 
+  
 }

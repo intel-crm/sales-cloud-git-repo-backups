@@ -43,13 +43,46 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Account.Core_Account_Cnt__c</field>
     </columns>
+    <crossFilters>
+        <criteriaItems>
+            <column>StageName</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Qualify,Define,Develop,Design,Group,Group Open</value>
+        </criteriaItems>
+        <operation>with</operation>
+        <primaryTableColumn>ACCOUNT_ID</primaryTableColumn>
+        <relatedTable>Opportunity</relatedTable>
+        <relatedTableJoinColumn>Account</relatedTableJoinColumn>
+    </crossFilters>
     <filter>
+        <criteriaItems>
+            <column>Account.Core_Covered_Account__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>USERS.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>A&amp;E ACCOUNT OWNER,Salesforce System User</value>
+        </criteriaItems>
         <criteriaItems>
             <column>INDUSTRY</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

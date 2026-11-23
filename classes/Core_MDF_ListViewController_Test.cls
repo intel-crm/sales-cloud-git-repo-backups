@@ -26,7 +26,8 @@ Accenture – Sai Sugathri N   05-06-2019                  Created.
         usr.LastName = 'User Test';
         usr.UserRoleId = usRole.Id;
         Database.insert(usr);
-
+       // Highlight: Unused Local Variable - 14285 // Suma
+            // List<PartnerFundClaim> newClmList = new List<PartnerFundClaim>();
          
         Map<String,PermissionSet> nameToPerSet = new Map<String,PermissionSet>();
         for(PermissionSet pSet:[SELECT Id,Name FROM PermissionSet WHERE Name IN ('Core_MDF_CCP_Internal_Program_Adm',
@@ -295,7 +296,9 @@ Accenture – Sai Sugathri N   05-06-2019                  Created.
                 Test.setCurrentPage(pageRef);
                 
                 ApexPages.currentPage().getParameters().put('ObjName','Core_MDF_Bank__c');
-
+                // Highlight: Unused Local Variable - 14285 // Suma
+                //Core_MDF_ExternalListViewExport lvc = new Core_MDF_ExternalListViewExport();
+                //Core_MDF_Bank__c ac = new Core_MDF_Bank__c();
 
                 ListView lv = [SELECT Id, Name, DeveloperName FROM ListView  WHERE sObjectType = 'Core_MDF_Bank__c' AND Name='All'];
 
@@ -313,15 +316,27 @@ Accenture – Sai Sugathri N   05-06-2019                  Created.
 
                         
                 //listViewInstance.oListViewWrapper lvio = new listViewInstance.oListViewWrapper();
-
+                // Highlight: Unused Local Variable - 14285 // Suma
+                //String label1 = listViewInstance.label;
+                //String developerName = listViewInstance.developerName;
+                //String listViewId = listViewInstance.listViewId;
             
                 //lvc.exportToExcel();
                 //lvc.exportToCSV();
                 
                 Core_MDF_ExternalListViewExport.SingleColumn singleColumnInstance = new Core_MDF_ExternalListViewExport.SingleColumn();
-                  
+                // Highlight: Unused Local Variable - 14285 // Suma
+                //String ascendingLabel = singleColumnInstance.ascendingLabel;
+                //String descendingLabel = singleColumnInstance.descendingLabel;
+                //String sortDirection = singleColumnInstance.sortDirection;
+                //Integer sortIndex = singleColumnInstance.sortIndex;
+                //Boolean sortable = singleColumnInstance.sortable;
+                //String selectListItem = singleColumnInstance.selectListItem;    
+                //Boolean hidden = singleColumnInstance.hidden;
+                //String fieldNameOrPath = singleColumnInstance.fieldNameOrPath;             
+                //String type = singleColumnInstance.type;                   
                 String label = singleColumnInstance.label;
-
+                //Boolean isDateType = singleColumnInstance.isDateType;
                 
         
         }

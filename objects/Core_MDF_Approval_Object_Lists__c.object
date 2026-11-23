@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Stores the list of objects which will be shown as pick-list options in Approval Criteria.</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_MDF_Object_API_Name_nm__c</fullName>
+        <externalId>false</externalId>
+        <label>Core MDF Object API Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>CCP Approval Flow Objects Lists</label>
+    <visibility>Public</visibility>
+</CustomObject>

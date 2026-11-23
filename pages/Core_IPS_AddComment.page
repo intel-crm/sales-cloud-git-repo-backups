@@ -11,8 +11,6 @@
     * Prem Ranjan                   16/07/2018              MODIFIED as part of - US108037 
     * Sumukh                        22/10/2018              Added logic for US193654
     * Sumukh                        25/04/2019              Added logic for US320553
-    * Sneha                         26/11/2019              Modified for US372697
-    * Sumukh                        12/12/2019              Modified for defect DE62463
     ****************************************************************************************************-->
 <apex:page id="mypage" standardController="case" extensions="Core_IPS_AddCommentController" sidebar="false" showHeader="false" tabStyle="Case" >
 <apex:includeScript value="{!$Resource.Core_IPS_Jquery11}"/> 
@@ -119,7 +117,8 @@
                                 <b><apex:outputField value="{!comnt.CreatedDate}" /></b> &nbsp; &nbsp; &nbsp; <br/>
                                 <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                                                          
-                            </apex:column>            
+                            </apex:column>    
+                                                        
                             
                             <!-- Partner X Private to Partner -->
                              <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_External}" rendered="{!AND(AND(!ExtUser,partnerType!='Partner'), comnt.Core_IPS_Comment_Author_Type__c == 'Partner - DFAE',comnt.Core_IPS_Case_Comment_Type__c=='Private to Partner')}" >
@@ -270,14 +269,15 @@
                             
                             
                             <!-- AGENTS/Agent Partner X Private to Intel-->
-                            <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser)), OR (comnt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent',comnt.Core_IPS_Comment_Author_Type__c == 'Agent',comnt.Core_IPS_Comment_Author_Type__c == 'System'), comnt.Core_IPS_Case_Comment_Type__c=='Private to Intel' )}" >                                                          
+                            <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser)), OR (comnt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent',comnt.Core_IPS_Comment_Author_Type__c == 'Agent'), comnt.Core_IPS_Case_Comment_Type__c=='Private to Intel' )}" >                         
+                                
                                 <apex:outputText >**</apex:outputText>
                                 <b>{!$Label.Core_IPS_CaseRTF_Private_to_Intel } </b> &nbsp; &nbsp; &nbsp;
                                 <!-- Author Details -->
                                 <b><apex:outputText value="{!comnt.Core_IPS_Comment_Authored_By_Name__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" /></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
                                 <b><apex:outputText value="{!comnt.CreatedBy.Name}"  rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />  
                                 <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;                       
-                                <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By_Email__c}" rendered="{!AND(comnt.Core_IPS_Comment_Authored_By__c !=null,comnt.Core_IPS_Comment_Authored_By__r.Id != gecSystemUser)}" /></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
+                                <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By_Email__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" /></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
                                 <b><apex:outputField value="{!comnt.CreatedBy.Email}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
                                 <b><apex:outputField value="{!comnt.CreatedDate}" /></b> &nbsp; &nbsp; &nbsp;   <br/>
                                 <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
@@ -346,7 +346,7 @@
                                
                                 <apex:outputText >**</apex:outputText>
                                 <b>{!$Label.Core_IPS_CaseRTF_Private_to_Intel } </b> &nbsp; &nbsp; &nbsp;
-                               <b>{!$Label.Core_IPS_CCP_CoreAccess_ProfileName} </b> &nbsp; &nbsp; &nbsp; <!--TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access -->
+                               <b>{!$Label.Core_IPS_Data_Migration_Profile_Name} </b> &nbsp; &nbsp; &nbsp; 
                                 <!--<b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;-->
                                 <b><apex:outputField value="{!comnt.CreatedDate}" /></b> &nbsp; &nbsp; &nbsp;     <br/>                  
                                 <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
@@ -358,7 +358,7 @@
                                
                                <apex:outputText >*</apex:outputText>
                                 <b>{!$Label.Core_IPS_CaseRTF_Private_To_Partner } </b> &nbsp; &nbsp; &nbsp;     
-                               <b>{!$Label.Core_IPS_CCP_CoreAccess_ProfileName} </b> &nbsp; &nbsp; &nbsp; <!--TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access -->                         
+                               <b>{!$Label.Core_IPS_Data_Migration_Profile_Name} </b> &nbsp; &nbsp; &nbsp;                          
                                 <b><apex:outputField value="{!comnt.CreatedDate}" /></b> &nbsp; &nbsp; &nbsp;   <br/>                     
                                 <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                             </apex:column>
@@ -369,14 +369,14 @@
                                
                                 <apex:outputText >***</apex:outputText>
                                 <b>{!$Label.Core_IPS_CaseRTF_Notetype_PrivateToAgents }</b> &nbsp; &nbsp; &nbsp;
-                               <b>{!$Label.Core_IPS_CCP_CoreAccess_ProfileName} </b> &nbsp; &nbsp; &nbsp; <!--TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access -->
+                               <b>{!$Label.Core_IPS_Data_Migration_Profile_Name} </b> &nbsp; &nbsp; &nbsp; 
                                 <b><apex:outputField value="{!comnt.CreatedDate}" /></b> &nbsp; &nbsp; &nbsp;     <br/>                    
                                 <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                             </apex:column> 
                             
                             <!-- Data Migration X Public comments -->
                             <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(comnt.Core_IPS_Comment_Author_Type__c == 'Data Migration',comnt.Core_IPS_Case_Comment_Type__c=='Public to Customers')}" >                          
-                                <b>{!$Label.Core_IPS_CCP_CoreAccess_ProfileName} </b> &nbsp; &nbsp; &nbsp; <!--TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access -->
+                                <b>{!$Label.Core_IPS_Data_Migration_Profile_Name} </b> &nbsp; &nbsp; &nbsp; 
                                 <b><apex:outputField value="{!comnt.CreatedDate}" /></b> &nbsp; &nbsp; &nbsp;     <br/>                   
                                 <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                             </apex:column>

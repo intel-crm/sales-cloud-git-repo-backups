@@ -21,6 +21,10 @@
         <name>Core_MDF_Approval_Field_Set</name>
     </fieldSets>
     <fieldSets>
+        <label><!-- Approval Required --></label>
+        <name>Core_MDF_Fields_Modified</name>
+    </fieldSets>
+    <fieldSets>
         <label><!-- Core_MDF_IPA_Clone_Fieldset --></label>
         <name>Core_MDF_IPA_Clone_Fieldset</name>
     </fieldSets>
@@ -74,8 +78,29 @@
         <name>partnerfundrequest_totalreimbursedfcs</name>
     </fields>
     <fields>
+        <label><!-- Activity Spending Limit Local New --></label>
+        <name>Activity_Spending_Limit_Local_New__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Spending Limit Local Old --></label>
+        <name>Activity_Spending_Limit_Local_Old__c</name>
+    </fields>
+    <fields>
+        <label><!-- BrandToBeDeleted --></label>
+        <name>BrandToBeDeleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Channel Program Reporting --></label>
+        <name>Channel_Program_Reporting__c</name>
+        <relationshipLabel><!-- Co-Marketing Activities --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- 15digitId --></label>
         <name>Core_MDF_15digitId__c</name>
+    </fields>
+    <fields>
+        <label><!-- AI Field Data --></label>
+        <name>Core_MDF_AI_File_Data__c</name>
     </fields>
     <fields>
         <label>ASP （平均销售价格）增长（美元）</label>
@@ -128,6 +153,10 @@
     <fields>
         <label><!-- Is Activating Intel Owner Required? --></label>
         <name>Core_MDF_Activating_Intel_Owner_Reqd_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- ActivityCatagoryStatus --></label>
+        <name>Core_MDF_ActivityCatagoryStatus__c</name>
     </fields>
     <fields>
         <help>此市场推广活动的活动类别</help>
@@ -184,6 +213,10 @@
         <name>Core_MDF_Activity_Description__c</name>
     </fields>
     <fields>
+        <label><!-- Activity End Quarter --></label>
+        <name>Core_MDF_Activity_End_Quarter_txt__c</name>
+    </fields>
+    <fields>
         <label>工程活动</label>
         <name>Core_MDF_Activity_Engineering_Nm__c</name>
         <picklistValues>
@@ -200,11 +233,11 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>EVT Exit</masterLabel>
-            <translation>EVT 退出</translation>
+            <translation><!-- EVT Exit --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>First Customer Shipment</masterLabel>
-            <translation>第一批客户发货</translation>
+            <translation><!-- First Customer Shipment --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Lab/Factory prep &amp; tools</masterLabel>
@@ -212,7 +245,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Other</masterLabel>
-            <translation>其他</translation>
+            <translation><!-- Other --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Other - Eng Act field</masterLabel>
@@ -242,7 +275,7 @@
     <fields>
         <label><!-- Activity First Approver --></label>
         <name>Core_MDF_Activity_First_Approver_txt__c</name>
-        <relationshipLabel><!-- Co-Marketing Activities (Activity First Approver) --></relationshipLabel>
+        <relationshipLabel><!-- Co-Marketing Activties (Activity First Approver) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Activity Level --></label>
@@ -285,13 +318,34 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Activity Proposal Status --></label>
+        <name>Core_MDF_Activity_Proposal_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <help>该活动的可报销金额</help>
         <label>英特尔贡献</label>
         <name>Core_MDF_Activity_Reimbursement_Amt_nbr__c</name>
     </fields>
     <fields>
+        <label><!-- Activity Reimbursement Rate --></label>
+        <name>Core_MDF_Activity_Reimbursement_Rate_pct__c</name>
+    </fields>
+    <fields>
         <label><!-- Activity Reserved Amount --></label>
         <name>Core_MDF_Activity_Reserved_Amount_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Second Approver --></label>
+        <name>Core_MDF_Activity_Second_Approver_txt__c</name>
+        <relationshipLabel><!-- Co-Marketing Activties (Activity Second Approver) --></relationshipLabel>
     </fields>
     <fields>
         <label>活动零售次要支柱</label>
@@ -330,6 +384,10 @@
         <name>Core_MDF_Activity_SubType_nm__c</name>
     </fields>
     <fields>
+        <label><!-- Activity Subtype old --></label>
+        <name>Core_MDF_Activity_Sub_Type_nm__c</name>
+    </fields>
+    <fields>
         <label>活动类型</label>
         <name>Core_MDF_Activity_Types__c</name>
     </fields>
@@ -350,6 +408,10 @@
         <name>Core_MDF_After_the_Fact_Approved_ind__c</name>
     </fields>
     <fields>
+        <label><!-- Approval Amount Check --></label>
+        <name>Core_MDF_Approval_Amount_Check__c</name>
+    </fields>
+    <fields>
         <label><!-- Approval Stage --></label>
         <name>Core_MDF_Approval_Stage__c</name>
     </fields>
@@ -364,52 +426,52 @@
     <fields>
         <label><!-- Approver 10 --></label>
         <name>Core_MDF_Approver_10__c</name>
-        <relationshipLabel><!-- Co-Marketing Activities (Approver 10) --></relationshipLabel>
+        <relationshipLabel><!-- Co-Marketing Activties (Approver 10) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Approver 1 --></label>
         <name>Core_MDF_Approver_1__c</name>
-        <relationshipLabel><!-- Co-Marketing Activities (Approver 1) --></relationshipLabel>
+        <relationshipLabel><!-- Co-Marketing Activties (Approver 1) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Approver 2 --></label>
         <name>Core_MDF_Approver_2__c</name>
-        <relationshipLabel><!-- Co-Marketing Activities (Approver 2) --></relationshipLabel>
+        <relationshipLabel><!-- Co-Marketing Activties (Approver 2) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Approver 3 --></label>
         <name>Core_MDF_Approver_3__c</name>
-        <relationshipLabel><!-- Co-Marketing Activities (Approver 3) --></relationshipLabel>
+        <relationshipLabel><!-- Co-Marketing Activties (Approver 3) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Approver 4 --></label>
         <name>Core_MDF_Approver_4__c</name>
-        <relationshipLabel><!-- Co-Marketing Activities (Approver 4) --></relationshipLabel>
+        <relationshipLabel><!-- Co-Marketing Activties (Approver 4) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Approver 5 --></label>
         <name>Core_MDF_Approver_5__c</name>
-        <relationshipLabel><!-- Co-Marketing Activities (Approver 5) --></relationshipLabel>
+        <relationshipLabel><!-- Co-Marketing Activties (Approver 5) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Approver 6 --></label>
         <name>Core_MDF_Approver_6__c</name>
-        <relationshipLabel><!-- Co-Marketing Activities (Approver 6) --></relationshipLabel>
+        <relationshipLabel><!-- Co-Marketing Activties (Approver 6) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Approver 7 --></label>
         <name>Core_MDF_Approver_7__c</name>
-        <relationshipLabel><!-- Co-Marketing Activities (Approver 7) --></relationshipLabel>
+        <relationshipLabel><!-- Co-Marketing Activties (Approver 7) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Approver 8 --></label>
         <name>Core_MDF_Approver_8__c</name>
-        <relationshipLabel><!-- Co-Marketing Activities (Approver 8) --></relationshipLabel>
+        <relationshipLabel><!-- Co-Marketing Activties (Approver 8) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Approver 9 --></label>
         <name>Core_MDF_Approver_9__c</name>
-        <relationshipLabel><!-- Co-Marketing Activities (Approver 9) --></relationshipLabel>
+        <relationshipLabel><!-- Co-Marketing Activties (Approver 9) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Approver Source --></label>
@@ -484,14 +546,47 @@
         <name>Core_MDF_BU_Split__c</name>
     </fields>
     <fields>
+        <label><!-- Banner Ads --></label>
+        <name>Core_MDF_BannerAds_Nm__c</name>
+        <picklistValues>
+            <masterLabel>L</masterLabel>
+            <translation><!-- L --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>M</masterLabel>
+            <translation><!-- M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>S</masterLabel>
+            <translation><!-- S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>XL</masterLabel>
+            <translation><!-- XL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>XS</masterLabel>
+            <translation><!-- XS --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>正在推广哪些英特尔品牌</help>
+        <label>品牌</label>
+        <name>Core_MDF_Brand__c</name>
+    </fields>
+    <fields>
         <help>正在进行促销的英特尔品牌</help>
         <label><!-- Brand --></label>
         <name>Core_MDF_Brand_nm__c</name>
     </fields>
     <fields>
         <help>如果您输入美元以外的货币，系统将估算相应的美元支出限额。</help>
-        <label>当地活动支出限制</label>
+        <label>总投资（英特尔 + 合作伙伴）</label>
         <name>Core_MDF_Budget_Amount_Local_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Channel Partner --></label>
+        <name>Core_MDF_Budget_Channel_Partner__c</name>
     </fields>
     <fields>
         <help>预算金额的货币</help>
@@ -507,9 +602,206 @@
         <name>Core_MDF_Budget_Type_nm__c</name>
     </fields>
     <fields>
+        <label>预算类型</label>
+        <name>Core_MDF_Budget_Type_txt__c</name>
+        <picklistValues>
+            <masterLabel>Account Plan</masterLabel>
+            <translation>客户计划</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Client Acceleration - MDF</masterLabel>
+            <translation>企业客户端加速 - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCF 1.0</masterLabel>
+            <translation><!-- CCF 1.0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG Market Accelerate</masterLabel>
+            <translation><!-- CCG Market Accelerate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMP</masterLabel>
+            <translation><!-- CMP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Market Accelerate</masterLabel>
+            <translation><!-- Client Market Accelerate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Specialties MDF</masterLabel>
+            <translation><!-- Client Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCF 1.0</masterLabel>
+            <translation><!-- DCF 1.0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCG MAF</masterLabel>
+            <translation><!-- DCG MAF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Market Accelerate</masterLabel>
+            <translation><!-- Data Center Market Accelerate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Specialties MDF</masterLabel>
+            <translation><!-- Data Center Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Centric Acceleration - MDF</masterLabel>
+            <translation>数据中心加速 - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Datacenter Market Accelerate</masterLabel>
+            <translation><!-- Datacenter Market Accelerate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Ericsson Acceleration - MDF</masterLabel>
+            <translation>全局 Ericsson 加速 - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global IBM Acceleration - MDF</masterLabel>
+            <translation>全局 IBM 加速 - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Microsoft Acceleration - MDF</masterLabel>
+            <translation>全局 Microsoft 加速 - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Nokia Acceleration - MDF</masterLabel>
+            <translation>全局 Nokia 加速 - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Red Hat Acceleration - MDF</masterLabel>
+            <translation>全局 Red Hat 加速 - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global SAP Acceleration - MDF</masterLabel>
+            <translation>全局 SAP 加速 - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global SAS Acceleration - MDF</masterLabel>
+            <translation>全局 SAS 加速 - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Suse Acceleration - MDF</masterLabel>
+            <translation>全局 Suse 加速 - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global VMware Acceleration - MDF</masterLabel>
+            <translation>全局 VMware 加速 - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISV Scale Acceleration - MDF</masterLabel>
+            <translation><!-- ISV Scale Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel MDF Account Based1</masterLabel>
+            <translation><!-- Intel MDF Account Based1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel MDF Account Based2</masterLabel>
+            <translation><!-- Intel MDF Account Based2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Rise Technology Initiative</masterLabel>
+            <translation><!-- Intel Rise Technology Initiative --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT Premier - MDF</masterLabel>
+            <translation>卓越物联网 - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT Targeted - MDF</masterLabel>
+            <translation>目标物联网 - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDF</masterLabel>
+            <translation><!-- MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDF+</masterLabel>
+            <translation><!-- MDF+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ODM Growth Plan - Client MDF</masterLabel>
+            <translation>ODM 增长计划 - 客户端 MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OEM CMP</masterLabel>
+            <translation><!-- OEM CMP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optane Specialties MDF</masterLabel>
+            <translation><!-- Optane Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proposal I MDF</masterLabel>
+            <translation>提案 I MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proposal II MDF</masterLabel>
+            <translation>提案 II MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RSA MD</masterLabel>
+            <translation><!-- RSA MD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Red Hat &quot;Amplify&quot; - MDF</masterLabel>
+            <translation><!-- Red Hat &quot;Amplify&quot; - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail MDF</masterLabel>
+            <translation><!-- Retail MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOEM Client MDF</masterLabel>
+            <translation>SOEM 客户端 MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOEM Data Center MDF</masterLabel>
+            <translation>SOEM 数据中心 MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scale Acceleration - MDF</masterLabel>
+            <translation><!-- Scale Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider CMP</masterLabel>
+            <translation>服务提供商 CMP</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VMWare Amplify - MDF</masterLabel>
+            <translation><!-- VMWare Amplify - MDF --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Budget --></label>
+        <name>Core_MDF_Budget_id__c</name>
+        <relationshipLabel><!-- Co-Marketing Activities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Buyer Incentive Percentage Spend --></label>
+        <name>Core_MDF_BuyerInc_PercentSpend_pct__c</name>
+    </fields>
+    <fields>
+        <label><!-- CPA --></label>
+        <name>Core_MDF_CPA_txt__c</name>
+    </fields>
+    <fields>
         <help><!-- Anticipated revenue from Intel-based instances, in USD. --></help>
         <label>基于 CSP 英特尔的收入</label>
         <name>Core_MDF_CSP_Intel_Based_Revenue_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- CTA --></label>
+        <name>Core_MDF_CTA_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign First Year Budget Amount --></label>
+        <name>Core_MDF_Cam_First_Year_Budget_Amount__c</name>
     </fields>
     <fields>
         <label><!-- Campaign Account Id --></label>
@@ -522,6 +814,10 @@
     <fields>
         <label><!-- Campaign Reimbursement Amount (USD) --></label>
         <name>Core_MDF_Campaign_Reimbursement_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign Reimbursement Rate --></label>
+        <name>Core_MDF_Campaign_Reimbursement_Rate_pct__c</name>
     </fields>
     <fields>
         <help>这是在市场活动中选择的报销率</help>
@@ -538,12 +834,24 @@
     </fields>
     <fields>
         <help>一个该活动是否由行业合作伙伴引领的指标，因此会受到 CP 开支额度限制</help>
-        <label>是否由生态系统合作伙伴引领？</label>
+        <label>是否由生态系统合作伙伴引领?</label>
         <name>Core_MDF_Channel_Partner_Led__c</name>
     </fields>
     <fields>
         <label>生态系统合作伙伴</label>
         <name>Core_MDF_Channel_Partner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Clicks/Circulation --></label>
+        <name>Core_MDF_ClicksOrCirculation_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Clicks/Impressions --></label>
+        <name>Core_MDF_ClicksOrImpression_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Collateral --></label>
+        <name>Core_MDF_Collateral_txt__c</name>
     </fields>
     <fields>
         <help>您的活动是否包括一个或多个竞争对手要素？</help>
@@ -571,6 +879,14 @@
         <name>Core_MDF_Cost_Per_Lead_amt__c</name>
     </fields>
     <fields>
+        <label><!-- Country Names --></label>
+        <name>Core_MDF_Country_Names__c</name>
+    </fields>
+    <fields>
+        <label>国家/地区</label>
+        <name>Core_MDF_Country__c</name>
+    </fields>
+    <fields>
         <label>国家/地区</label>
         <name>Core_MDF_Country_nm__c</name>
     </fields>
@@ -591,9 +907,13 @@
         <name>Core_MDF_CreatedBy__c</name>
     </fields>
     <fields>
-        <help>赢得新客户</help>
+        <help><!-- New customer wins --></help>
         <label>部署数量</label>
         <name>Core_MDF_Deployment_Quantity_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Digital Media Percentage Spend --></label>
+        <name>Core_MDF_DigitalMedia_PercentSpend_pct__c</name>
     </fields>
     <fields>
         <label>分发方法</label>
@@ -612,7 +932,11 @@
         <name>Core_MDF_Domain_Type_nm__c</name>
     </fields>
     <fields>
-        <label>生态系统合作伙伴</label>
+        <label><!-- ELC Reminder --></label>
+        <name>Core_MDF_ELC_Reminder__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ecosystem Partner --></label>
         <name>Core_MDF_EcosystemPartner_nm__c</name>
     </fields>
     <fields>
@@ -668,7 +992,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>活动名称</label>
+        <label><!-- Event Name --></label>
         <name>Core_MDF_Event_Name_nm__c</name>
     </fields>
     <fields>
@@ -676,11 +1000,19 @@
         <name>Core_MDF_Exchange_Rate_ptc__c</name>
     </fields>
     <fields>
+        <label><!-- Expected Close Date --></label>
+        <name>Core_MDF_Exp_Close_Dt__c</name>
+    </fields>
+    <fields>
         <label>外部批准方意见</label>
         <name>Core_MDF_External_Approval_Comment_txt__c</name>
     </fields>
     <fields>
-        <label>聚焦领域</label>
+        <label><!-- Flexible Reimbursement Rate --></label>
+        <name>Core_MDF_Flexible_Reimbursement_Rate_pct__c</name>
+    </fields>
+    <fields>
+        <label><!-- Focus Area --></label>
         <name>Core_MDF_Focus_Area_nm__c</name>
     </fields>
     <fields>
@@ -691,6 +1023,15 @@
         <help>活动当前所处状态</help>
         <label>活动状态</label>
         <name>Core_MDF_Fund_Request_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Funded Headcount Percentage Spend --></label>
+        <name>Core_MDF_FundedHeadcnt_PercentSpend_pct__c</name>
+    </fields>
+    <fields>
+        <help><!-- Geo Name --></help>
+        <label><!-- Region (Not to be used) --></label>
+        <name>Core_MDF_Geo_Nm__c</name>
     </fields>
     <fields>
         <help>本活动是针对政府实体、国营企业的关键参与者，还是针对来自政府实体或国营企业或其员工的关键参与者？</help>
@@ -706,6 +1047,19 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Are there government officials presenting or attending benefits to this event? --></help>
+        <label><!-- Government nexus question --></label>
+        <name>Core_MDF_Government_nexus_question__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Host Region / Region --></label>
         <name>Core_MDF_Host_Region_or_Region_txt__c</name>
     </fields>
@@ -716,6 +1070,14 @@
     <fields>
         <label>屏幕数量</label>
         <name>Core_MDF_How_many_screens_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Contribution Difference --></label>
+        <name>Core_MDF_IC_Difference__c</name>
+    </fields>
+    <fields>
+        <label><!-- Industry - DNR --></label>
+        <name>Core_MDF_IPA_Industry_nm__c</name>
     </fields>
     <fields>
         <label><!-- IPA Internal Approver Comment --></label>
@@ -755,21 +1117,25 @@
         <name>Core_MDF_Incentive_pct__c</name>
     </fields>
     <fields>
-        <label>行业</label>
+        <label><!-- Industry --></label>
         <name>Core_MDF_Industry_Multi_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Industry Partner New --></label>
+        <name>Core_MDF_Industry_Partner_txt__c</name>
     </fields>
     <fields>
         <label><!-- Ineffective Date/Time --></label>
         <name>Core_MDF_IneffectiveDateTime__c</name>
     </fields>
     <fields>
-        <label>倡议</label>
+        <label><!-- Initiatives --></label>
         <name>Core_MDF_Initiative_nm__c</name>
     </fields>
     <fields>
-        <label>英特尔负责人</label>
+        <label><!-- Intel Owner --></label>
         <name>Core_MDF_Intel_Activity_Owner_Id__c</name>
-        <relationshipLabel><!-- Co-Marketing Activities (Intel Owner) --></relationshipLabel>
+        <relationshipLabel><!-- Co-Marketing Activties (Intel Owner) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Intel Owner --></label>
@@ -782,6 +1148,10 @@
     <fields>
         <label><!-- Internal Approval Comment --></label>
         <name>Core_MDF_Internal_Approval_Comment_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Internal Tracking --></label>
+        <name>Core_MDF_Internal_Tracking_txt__c</name>
     </fields>
     <fields>
         <label><!-- Is Cloned --></label>
@@ -804,6 +1174,14 @@
         <name>Core_MDF_Is_Field_Modified__c</name>
     </fields>
     <fields>
+        <label><!-- Is Mobile Approved --></label>
+        <name>Core_MDF_Is_Mobile_Approved_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Node Activity --></label>
+        <name>Core_MDF_Is_Node_Activity__c</name>
+    </fields>
+    <fields>
         <label>是否基于结果？</label>
         <name>Core_MDF_Is_Outcome_Based_Ind__c</name>
     </fields>
@@ -816,32 +1194,73 @@
         <name>Core_MDF_Joint_Content_ind__c</name>
     </fields>
     <fields>
-        <help>如何衡量活动效果。标准 KPI 包括销售线索（新联系人）和部署（赢得新客户）。</help>
+        <label><!-- KPI --></label>
+        <name>Core_MDF_KPI_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Newsletter Circulation</masterLabel>
+            <translation><!-- Newsletter Circulation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Number of Clicks</masterLabel>
+            <translation><!-- Number of Clicks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Number of Clicks on Intel Assist</masterLabel>
+            <translation><!-- Number of Clicks on Intel Assist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Number of Impressions</masterLabel>
+            <translation><!-- Number of Impressions --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>如何衡量营销活动效果。标准 KPI 包括销售线索（新联系人）和部署（赢得新客户）。</help>
         <label>营销关键绩效指标</label>
         <name>Core_MDF_Key_Marketing_Indicator_nm__c</name>
     </fields>
     <fields>
         <label><!-- Level 1 Approver --></label>
         <name>Core_MDF_L1_Approver_Id__c</name>
-        <relationshipLabel><!-- Co-Marketing Activities (Level 1 Approver) --></relationshipLabel>
+        <relationshipLabel><!-- Co-Marketing Activties (Level 1 Approver) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- L1 Approver --></label>
+        <name>Core_MDF_L1_Approver__c</name>
+        <relationshipLabel><!-- Co-Marketing Activties (L1 Approver) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- L1 Primary Approver --></label>
         <name>Core_MDF_L1_Primary_Approver_Id__c</name>
-        <relationshipLabel><!-- Co-Marketing Activities (L1 Primary Approver) --></relationshipLabel>
+        <relationshipLabel><!-- Co-Marketing Activties (L1 Primary Approver) --></relationshipLabel>
     </fields>
     <fields>
         <label>上次修改人</label>
         <name>Core_MDF_Last_Modified_By_nm__c</name>
     </fields>
     <fields>
-        <help>新联系人</help>
+        <label><!-- Lead Gen/Nurture Percentage Spend --></label>
+        <name>Core_MDF_LeadGenNurture_PercentSpend_pct__c</name>
+    </fields>
+    <fields>
+        <help><!-- New contacts --></help>
         <label>潜在客户数量</label>
         <name>Core_MDF_Lead_Quantity_nbr__c</name>
     </fields>
     <fields>
+        <label><!-- Legacy Media Percentage Spend --></label>
+        <name>Core_MDF_LegacyMedia_PercentSpend_pct__c</name>
+    </fields>
+    <fields>
+        <label><!-- Link Required --></label>
+        <name>Core_MDF_LinkRequired_Nm__c</name>
+    </fields>
+    <fields>
         <label><!-- Log --></label>
         <name>Core_MDF_Log__c</name>
+    </fields>
+    <fields>
+        <label><!-- MDF Reimbursement Amount clone --></label>
+        <name>Core_MDF_MDFReimbursement_AmtCl__c</name>
     </fields>
     <fields>
         <label>MDF 报销金额（美元）</label>
@@ -852,8 +1271,20 @@
         <name>Core_MDF_Magazine_Newspaper_txt__c</name>
     </fields>
     <fields>
+        <label><!-- Manager Modified --></label>
+        <name>Core_MDF_Manager_Modified__c</name>
+    </fields>
+    <fields>
         <label><!-- Manual Closure Prior Status --></label>
         <name>Core_MDF_Manual_Closure_Prior_Status_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Market Segment --></label>
+        <name>Core_MDF_Market_Segment_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Matchmaking Percentage Spend --></label>
+        <name>Core_MDF_Matchmaking_PercentSpend_pct__c</name>
     </fields>
     <fields>
         <help>英特尔为此执行支付的最高金额。</help>
@@ -867,7 +1298,12 @@
     <fields>
         <label>会员接受者</label>
         <name>Core_MDF_Member_Acceptor_Id__c</name>
-        <relationshipLabel><!-- Co-Marketing Activities (Member Acceptor) --></relationshipLabel>
+        <relationshipLabel><!-- Co-Marketing Activties (Member Acceptor) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Member Activity Owner --></label>
+        <name>Core_MDF_Member_Activity_Owner_Id__c</name>
+        <relationshipLabel><!-- Co-Marketing Activties (Member Activity Owner) --></relationshipLabel>
     </fields>
     <fields>
         <label>会员所有者</label>
@@ -883,9 +1319,25 @@
         <name>Core_MDF_Metrics_txt__c</name>
     </fields>
     <fields>
+        <label><!-- Migration Support Percentage Spend --></label>
+        <name>Core_MDF_MigrSupport_PercentSpend_pct__c</name>
+    </fields>
+    <fields>
         <help><!-- Select if this activity meets NEX criteria, and NEX-specific rules should apply. The default state is unselected in a new or cloned activity. --></help>
         <label><!-- NEX Activity --></label>
         <name>Core_MDF_NEX_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type of Newsletter --></label>
+        <name>Core_MDF_NewsletterType_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Contains PC and non-PC products</masterLabel>
+            <translation><!-- Contains PC and non-PC products --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contains PC products</masterLabel>
+            <translation><!-- Contains PC products --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label>印象数</label>
@@ -900,11 +1352,11 @@
         <name>Core_MDF_No_Internal_Close_Date__c</name>
     </fields>
     <fields>
-        <label>激活实例数</label>
+        <label><!-- # of Activated Instances --></label>
         <name>Core_MDF_No_of_ActivatedInstance_nbr__c</name>
     </fields>
     <fields>
-        <label>调用次数</label>
+        <label><!-- # of Calls --></label>
         <name>Core_MDF_No_of_Calls_nbr__c</name>
     </fields>
     <fields>
@@ -916,7 +1368,7 @@
         <name>Core_MDF_No_of_Conversions_nbr__c</name>
     </fields>
     <fields>
-        <label>天数</label>
+        <label><!-- # of Days --></label>
         <name>Core_MDF_No_of_Days_nbr__c</name>
     </fields>
     <fields>
@@ -956,7 +1408,7 @@
         <name>Core_MDF_No_of_Individuals_Trained_nbr__c</name>
     </fields>
     <fields>
-        <label>实例数</label>
+        <label><!-- # of Instances --></label>
         <name>Core_MDF_No_of_Instance_nbr__c</name>
     </fields>
     <fields>
@@ -984,7 +1436,7 @@
         <name>Core_MDF_No_of_Signages_Nbr__c</name>
     </fields>
     <fields>
-        <label>学员人数</label>
+        <label><!-- # of Trainees --></label>
         <name>Core_MDF_No_of_Trainees_nbr__c</name>
     </fields>
     <fields>
@@ -1044,6 +1496,10 @@
         <name>Core_MDF_Num_of_Potential_Winners_nbr__c</name>
     </fields>
     <fields>
+        <label><!-- Number of Winners new --></label>
+        <name>Core_MDF_Num_of_Winners_nbr__c</name>
+    </fields>
+    <fields>
         <label>销售数</label>
         <name>Core_MDF_Number_Sold_Nbr__c</name>
     </fields>
@@ -1062,6 +1518,10 @@
     <fields>
         <label>邮件送达数</label>
         <name>Core_MDF_Number_of_Delivered_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Devices --></label>
+        <name>Core_MDF_Number_of_Devices_nbr__c</name>
     </fields>
     <fields>
         <label>分发数量</label>
@@ -1092,6 +1552,23 @@
         <name>Core_MDF_Number_of_Stores_nbr__c</name>
     </fields>
     <fields>
+        <help><!-- This field checks if the OEM CMP budget type activities are eligible for POR/PCT approvals --></help>
+        <label><!-- OEM CMP Approval required --></label>
+        <name>Core_MDF_OEM_CMP_Approval_required__c</name>
+    </fields>
+    <fields>
+        <label><!-- DNU: Opal Activity Type --></label>
+        <name>Core_MDF_Opal_Activity_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>Blue</masterLabel>
+            <translation><!-- Blue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Green</masterLabel>
+            <translation><!-- Green --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Open Rate --></label>
         <name>Core_MDF_Open_Rate_txt__c</name>
     </fields>
@@ -1112,12 +1589,20 @@
         <name>Core_MDF_Other_Engineering_Activity_txt__c</name>
     </fields>
     <fields>
-        <label>其他事件名称</label>
+        <label><!-- Other Event Name --></label>
         <name>Core_MDF_Other_Event_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Industry Partner new --></label>
+        <name>Core_MDF_Other_Industry_Partner_txt__c</name>
     </fields>
     <fields>
         <label>其他测量方法</label>
         <name>Core_MDF_Other_Measurement_Approach_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other --></label>
+        <name>Core_MDF_Other_Nm__c</name>
     </fields>
     <fields>
         <label>其他数量</label>
@@ -1141,9 +1626,25 @@
         <name>Core_MDF_Outcome_Region_nm__c</name>
     </fields>
     <fields>
+        <label><!-- Outcome Type --></label>
+        <name>Core_MDF_Outcome_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>Business</masterLabel>
+            <translation><!-- Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing</masterLabel>
+            <translation><!-- Marketing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <help>选择一个结果。该结果将用于评估该活动的成功。</help>
         <label>结果指标</label>
         <name>Core_MDF_Outcomes_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner Language --></label>
+        <name>Core_MDF_Owner_Language_txt__c</name>
     </fields>
     <fields>
         <label>所有人</label>
@@ -1162,40 +1663,72 @@
         <name>Core_MDF_POP_Requirement_nm__c</name>
         <picklistValues>
             <masterLabel>Documentation (photographs, printouts, test results)</masterLabel>
-            <translation>文件（照片、打印输出、测试结果）</translation>
+            <translation><!-- Documentation (photographs, printouts, test results) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Email certifying completion by partner&apos;s senior engineer</masterLabel>
-            <translation>由合作伙伴的高级工程师认证完成的电子邮件</translation>
+            <translation><!-- Email certifying completion by partner&apos;s senior engineer --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Live demonstration</masterLabel>
-            <translation>现场演示</translation>
+            <translation><!-- Live demonstration --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Product availability in catalog</masterLabel>
-            <translation>目录中的产品可用性</translation>
+            <translation><!-- Product availability in catalog --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Product availability in configuration tool</masterLabel>
-            <translation>配置工具中的产品可用性</translation>
+            <translation><!-- Product availability in configuration tool --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Product availability in public catalog</masterLabel>
-            <translation>公共目录中的产品可用性</translation>
+            <translation><!-- Product availability in public catalog --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Product received by Intel</masterLabel>
-            <translation>英特尔收到的产品</translation>
+            <translation><!-- Product received by Intel --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Proof of general availability of product</masterLabel>
-            <translation>产品一般可用性的证明</translation>
+            <translation><!-- Proof of general availability of product --></translation>
         </picklistValues>
     </fields>
     <fields>
         <label>POP 要求</label>
         <name>Core_MDF_POP_Requirements_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Page to Link to --></label>
+        <name>Core_MDF_PagetoLink_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Intel Promo page</masterLabel>
+            <translation><!-- Intel Promo page --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel SKU page</masterLabel>
+            <translation><!-- Intel SKU page --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel SRT Page</masterLabel>
+            <translation><!-- Intel SRT Page --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Shop-in-Shop page</masterLabel>
+            <translation><!-- Intel Shop-in-Shop page --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Listing page featuring Intel-based devices</masterLabel>
+            <translation><!-- Product Listing page featuring Intel-based devices --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retailer Campaign page</masterLabel>
+            <translation><!-- Retailer Campaign page --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Parent Activity --></label>
@@ -1207,8 +1740,24 @@
         <name>Core_MDF_Partner_Contact_txt__c</name>
     </fields>
     <fields>
+        <label><!-- Payment Type Node Level --></label>
+        <name>Core_MDF_Payment_Type_Node_Level__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pending Approval Level Name --></label>
+        <name>Core_MDF_Pending_Approval_Level_Name__c</name>
+    </fields>
+    <fields>
         <label>标签位置</label>
         <name>Core_MDF_Placement_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Place to run --></label>
+        <name>Core_MDF_PlacetoRun_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Close Date --></label>
+        <name>Core_MDF_Previous_Close_Dt__c</name>
     </fields>
     <fields>
         <label><!-- Price reviewer check --></label>
@@ -1217,7 +1766,7 @@
     <fields>
         <label>主要合作伙伴英特尔负责人</label>
         <name>Core_MDF_Primary_Intel_Owner_Id__c</name>
-        <relationshipLabel><!-- Co-Marketing Activities (Primary Partner Intel Owner) --></relationshipLabel>
+        <relationshipLabel><!-- Co-Marketing Activties (Primary Partner Intel Owner) --></relationshipLabel>
     </fields>
     <fields>
         <label>主要会员接受</label>
@@ -1274,12 +1823,33 @@
         <name>Core_MDF_Proposal_Based_Ind__c</name>
     </fields>
     <fields>
+        <label><!-- Quarter --></label>
+        <name>Core_MDF_Quarter__c</name>
+    </fields>
+    <fields>
+        <label><!-- ROAS --></label>
+        <name>Core_MDF_ROAS_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Reason for Past Dated Activity --></label>
         <name>Core_MDF_ReasonforPastDatedActivity_Nm__c</name>
     </fields>
     <fields>
+        <label><!-- Region - Sub Region --></label>
+        <name>Core_MDF_Region_Sub_Region_nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Geo Name --></help>
+        <label><!-- DNU: Region --></label>
+        <name>Core_MDF_Region_cd__c</name>
+    </fields>
+    <fields>
         <label>地区</label>
         <name>Core_MDF_Region_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_MDF_Region_txt__c</name>
     </fields>
     <fields>
         <label>报销率</label>
@@ -1363,6 +1933,10 @@
         <name>Core_MDF_Rule_Engine_Process_Name__c</name>
     </fields>
     <fields>
+        <label><!-- Rule Engine Action Name --></label>
+        <name>Core_MDF_Rule_Engine_txt__c</name>
+    </fields>
+    <fields>
         <label>每小时运行次数</label>
         <name>Core_MDF_Runs_per_hour_nbr__c</name>
     </fields>
@@ -1373,6 +1947,10 @@
     <fields>
         <label><!-- SPIF Segments Available --></label>
         <name>Core_MDF_SPIF_Segments_Available_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Seller Incentive Percentage Spend --></label>
+        <name>Core_MDF_SellerInc_PercentSpend_pct__c</name>
     </fields>
     <fields>
         <help>100% 基于竞赛的激励，获奖者人数上限为参与者的 33%</help>
@@ -1386,6 +1964,10 @@
     <fields>
         <label><!-- Start Time --></label>
         <name>Core_MDF_StartTime_dtm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date - Created Date --></label>
+        <name>Core_MDF_Start_Date_Created_Date__c</name>
     </fields>
     <fields>
         <label>开始日期与结束日期</label>
@@ -1404,6 +1986,79 @@
         <name>Core_MDF_Strategic_Marketing_Fund_Ind__c</name>
     </fields>
     <fields>
+        <help><!-- Sub Geo Name --></help>
+        <label><!-- DNU: Sub Region --></label>
+        <name>Core_MDF_Sub_Region_cd__c</name>
+        <picklistValues>
+            <masterLabel>ANZ</masterLabel>
+            <translation><!-- ANZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CEE</masterLabel>
+            <translation><!-- CEE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CER</masterLabel>
+            <translation><!-- CER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IJKK</masterLabel>
+            <translation><!-- IJKK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KOREA</masterLabel>
+            <translation><!-- KOREA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LAR</masterLabel>
+            <translation><!-- LAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>META</masterLabel>
+            <translation><!-- META --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAR</masterLabel>
+            <translation><!-- NAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEUR</masterLabel>
+            <translation><!-- NEUR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RCIS</masterLabel>
+            <translation><!-- RCIS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROA</masterLabel>
+            <translation><!-- ROA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SA</masterLabel>
+            <translation><!-- SA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SEA</masterLabel>
+            <translation><!-- SEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SEUR</masterLabel>
+            <translation><!-- SEUR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TAIWAN</masterLabel>
+            <translation><!-- TAIWAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WEUR</masterLabel>
+            <translation><!-- WEUR --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Sub Region --></label>
         <name>Core_MDF_Sub_Region_nm__c</name>
     </fields>
@@ -1412,7 +2067,7 @@
         <name>Core_MDF_TV_Channel_s_txt__c</name>
     </fields>
     <fields>
-        <help>选择一个或多个将在此项目中使用的内容。提交索赔时，系统会要求您为您选择的每种策略提供指标。</help>
+        <help><!-- Select one or more that will be used within this Campaign. When submitting a claim, you’ll be asked to provide metrics for each Tactic you choose --></help>
         <label>策略</label>
         <name>Core_MDF_Tactics_nm__c</name>
     </fields>
@@ -1422,12 +2077,20 @@
         <name>Core_MDF_TargetAudience__c</name>
     </fields>
     <fields>
-        <label>目标受众</label>
+        <label><!-- Target Audience --></label>
         <name>Core_MDF_TargetAudience_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Technical Exploration Percentage Spend --></label>
+        <name>Core_MDF_TechExplor_PercentSpend_pct__c</name>
     </fields>
     <fields>
         <label>技术</label>
         <name>Core_MDF_Technology_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Third Party Ind --></label>
+        <name>Core_MDF_Third_Party_Ind__c</name>
     </fields>
     <fields>
         <label>视频持续时间</label>
@@ -1441,6 +2104,10 @@
     <fields>
         <label><!-- Total Claims Already Paid --></label>
         <name>Core_MDF_Total_Claims_Already_Paid_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Percentage Spend --></label>
+        <name>Core_MDF_Training_PercentSpend_pct__c</name>
     </fields>
     <fields>
         <label>页面类型</label>
@@ -1475,8 +2142,12 @@
         <name>Core_MDF_Type_of_Resource_txt__c</name>
     </fields>
     <fields>
-        <label><!-- URL --></label>
+        <label>URL</label>
         <name>Core_MDF_URL_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- URLs w/ Live CPU Badges --></label>
+        <name>Core_MDF_URLs_w_Live_CPU_Badges_nbr__c</name>
     </fields>
     <fields>
         <label><!-- Ultimate Account Country --></label>
@@ -1489,6 +2160,11 @@
     <fields>
         <label>最终账户名称</label>
         <name>Core_MDF_Ultimate_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ultimate Account --></label>
+        <name>Core_MDF_Ultimate_Account__c</name>
+        <relationshipLabel><!-- Co-Marketing Activities --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Unified Global Name --></label>
@@ -1508,6 +2184,10 @@
         <name>Core_MDF_UserRole_txt__c</name>
     </fields>
     <fields>
+        <label><!-- DNU_User Role --></label>
+        <name>Core_MDF_User_Role_txt__c</name>
+    </fields>
+    <fields>
         <label>公司虚拟账户名称</label>
         <name>Core_MDF_Virtual_Corp_Acct_Name_txt__c</name>
     </fields>
@@ -1519,12 +2199,20 @@
             <translation>店内</translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Inside</masterLabel>
+            <translation><!-- Inside --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Online</masterLabel>
             <translation>在线</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Out of store</masterLabel>
             <translation>店外</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outside</masterLabel>
+            <translation><!-- Outside --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -1537,10 +2225,71 @@
         <label>会员为之付费的页数:</label>
         <name>Core_MDF_pagespayingfor__c</name>
     </fields>
+    <fields>
+        <label><!-- Geo Reporting --></label>
+        <name>Geo_Reporting__c</name>
+        <relationshipLabel><!-- Co-Marketing Activities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Intel Contribution New --></label>
+        <name>Intel_Contribution_New__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Channel Partner --></label>
+        <name>New_Channel_Partner__c</name>
+        <picklistValues>
+            <masterLabel>Accenture</masterLabel>
+            <translation><!-- Accenture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RedHat</masterLabel>
+            <translation><!-- RedHat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP</masterLabel>
+            <translation><!-- SAP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Reimbursement Rate New --></label>
+        <name>Reimbursement_Rate_New__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reimbursement Rate Old --></label>
+        <name>Reimbursement_Rate_Old__c</name>
+    </fields>
+    <fields>
+        <label><!-- Test Activity Subtype Multi --></label>
+        <name>Test_Activity_Subtype_Multi__c</name>
+    </fields>
+    <fields>
+        <label><!-- Test_DNT_Core_MDF_Camp_Status --></label>
+        <name>Test_DNT_Core_MDF_Camp_Status_del__c</name>
+    </fields>
+    <fields>
+        <label><!-- Testing Flow --></label>
+        <name>Testing_Flow_cd__c</name>
+        <picklistValues>
+            <masterLabel>ANZ</masterLabel>
+            <translation><!-- ANZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TAIWAN</masterLabel>
+            <translation><!-- TAIWAN --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- isL1Approved --></label>
+        <name>isL1Approved__c</name>
+    </fields>
+    <fields>
+        <label><!-- test rr --></label>
+        <name>test_rr__c</name>
+    </fields>
     <recordTypes>
-        <description><!-- Channel MDF record type --></description>
-        <label><!-- Channel MDF --></label>
-        <name>Core_MDF_Channel_MDF</name>
+        <description><!-- Record Type for Opal Client Program --></description>
+        <label><!-- Client Not In Use --></label>
+        <name>Core_MDF_Client</name>
     </recordTypes>
     <recordTypes>
         <description><!-- CCF Program Record Type --></description>
@@ -1558,6 +2307,16 @@
         <name>Core_MDF_Co_GTM</name>
     </recordTypes>
     <recordTypes>
+        <description><!-- Record Type for Co-Inv --></description>
+        <label><!-- Co-Inv --></label>
+        <name>Core_MDF_Co_Inv</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type for Opal Data Center Program --></description>
+        <label><!-- Data Center Not In Use --></label>
+        <name>Core_MDF_DataCenter</name>
+    </recordTypes>
+    <recordTypes>
         <description><!-- DCF Program Record Type --></description>
         <label>Datacenter</label>
         <name>Core_MDF_Data_Center_CoMarketing_Fund</name>
@@ -1566,6 +2325,11 @@
         <description><!-- EEF Program Record Type --></description>
         <label><!-- Ecosystem Extension Fund --></label>
         <name>Core_MDF_Ecosystem_Extension_Fund</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Intel MDF Proposal Based Activity --></description>
+        <label><!-- Intel MDF Proposal Based --></label>
+        <name>Core_MDF_Intel_MDF_Proposal_Based</name>
     </recordTypes>
     <recordTypes>
         <description><!-- IPA Program Type --></description>
@@ -1583,6 +2347,10 @@
         <name>Core_MDF_Service_Provider_CoMarketing_Fund</name>
     </recordTypes>
     <validationRules>
+        <errorMessage><!-- Customers cannot create past dated activity --></errorMessage>
+        <name>Core_MDF_ATFActivityCreation_Check</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Activity cannot be created on this Campaign. --></errorMessage>
         <name>Core_MDF_ActivityForCancelledCampaign</name>
     </validationRules>
@@ -1590,6 +2358,10 @@
         <errorMessage><!-- Please enter following Mandatory fields.
 Start Date, End Date, Campaign, Account --></errorMessage>
         <name>Core_MDF_Activity_Required_Fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Start date has passed. --></errorMessage>
+        <name>Core_MDF_ApprovalDateLimitation</name>
     </validationRules>
     <validationRules>
         <errorMessage>请输入 1 或更高的金额（无小数点）。</errorMessage>
@@ -1602,6 +2374,18 @@ Start Date, End Date, Campaign, Account --></errorMessage>
     <validationRules>
         <errorMessage>无法取消正在进行中或处于关闭状态的活动.</errorMessage>
         <name>Core_MDF_CheckActivityCancellation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter comments --></errorMessage>
+        <name>Core_MDF_Comments_Mandate_Status_Change</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Activity can not be created for selected country Russia/Ukraine/Belarus. --></errorMessage>
+        <name>Core_MDF_CountryRestrictOnCreate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Activity can not be updated for selected country Russia/Ukraine/Belarus. --></errorMessage>
+        <name>Core_MDF_CountryRestrictOnUpdate</name>
     </validationRules>
     <validationRules>
         <errorMessage>此品牌从 2020 年 1 月 1 日起不可用。</errorMessage>
@@ -1618,6 +2402,10 @@ Start Date, End Date, Campaign, Account --></errorMessage>
     <validationRules>
         <errorMessage>不能编辑已取消的活动.</errorMessage>
         <name>Core_MDF_Edit_Acty_AfterCancelled</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter a Maximum Intel Investment of $1 or higher (No decimal points). --></errorMessage>
+        <name>Core_MDF_MaxIntelInvestgrtrthan_1Dollar</name>
     </validationRules>
     <validationRules>
         <errorMessage>请为“活动类型”字段选择除“会员活动”以外的其他值。</errorMessage>
@@ -1648,6 +2436,18 @@ Start Date, End Date, Campaign, Account --></errorMessage>
         <name>Core_MDF_Pages_Eligible_Not_Greater</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- No other countries can be selected along with Japan for RMF --></errorMessage>
+        <name>Core_MDF_RMF_JapanCountry</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Activity dates cannot overlap cycles. --></errorMessage>
+        <name>Core_MDF_RMF_JapanCycleActDates</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Activities cannot span multiple years. --></errorMessage>
+        <name>Core_MDF_RMF_Single_Calendar_Year</name>
+    </validationRules>
+    <validationRules>
         <errorMessage>报销率不能为 0％。请查看您的值。</errorMessage>
         <name>Core_MDF_Reimbursement_Rate_Below_0_Pct</name>
     </validationRules>
@@ -1660,11 +2460,15 @@ Start Date, End Date, Campaign, Account --></errorMessage>
         <name>Core_MDF_RestrictCCFDCFLegacyActivity</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Cannot Approve/Reject Record at this time. --></errorMessage>
+        <name>Core_MDF_Restrict_ActionOnPast_Activity</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Event-Promotion is not available for this program. --></errorMessage>
         <name>Core_MDF_Restrict_Event_Promotion_type</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- This activity type is not available. Contact your Intel Representative for more information. --></errorMessage>
+        <errorMessage>此活动类型不可用。请与您的英特尔代表联系以获取更多信息。</errorMessage>
         <name>Core_MDF_Restrict_ExternalUserContentAct</name>
     </validationRules>
     <validationRules>
@@ -1672,8 +2476,20 @@ Start Date, End Date, Campaign, Account --></errorMessage>
         <name>Core_MDF_Restrict_IPA_SrchBannerDisplay</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- The start date of an activity cannot be prior to today&apos;s date. --></errorMessage>
+        <name>Core_MDF_Restrict_PastDatedActivity</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Activities must be created at least 14 days before their start date --></errorMessage>
+        <name>Core_MDF_Retail_14days_Rule</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Retail activity start and end dates difference cannot be more than 13 weeks. --></errorMessage>
         <name>Core_MDF_Retail_One_Quarter</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select an Intel Owner for the activity --></errorMessage>
+        <name>Core_MDF_Select_an_Intel_Owner</name>
     </validationRules>
     <validationRules>
         <errorMessage>预算金额仅适用于一个年度。请输入一年内不超过 6 个月的日期。</errorMessage>
@@ -1708,8 +2524,24 @@ Start Date, End Date, Campaign, Account --></errorMessage>
         <name>Core_MDF_validateCampED_onchangePFRedate</name>
     </validationRules>
     <validationRules>
+        <errorMessage>报销率不能为 0％。请查看您的值。</errorMessage>
+        <name>Reimbursement_Rate_Below_0_Percent</name>
+    </validationRules>
+    <validationRules>
         <errorMessage>合格空间已超过 100%。请验证您的值</errorMessage>
         <name>Reimbursement_Rate_Over_100_Percent</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot Create activity for this budget type/Program --></errorMessage>
+        <name>Restrict_new_and_clone</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Brand cannot be empty --></errorMessage>
+        <name>ValidationToBeDeleted</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Error --></errorMessage>
+        <name>test</name>
     </validationRules>
     <webLinks>
         <label><!-- Core_MDF_Export_List_View --></label>

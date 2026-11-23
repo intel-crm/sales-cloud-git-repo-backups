@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>LG INTERNATIONAL CORP. Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>LGINTERNATIONALCORPCustomerManager</parentRole>
 </Role>

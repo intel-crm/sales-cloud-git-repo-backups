@@ -154,7 +154,10 @@
             grpMember3.GroupId = grp2.Id;
 
             List<UserShare> usList = new List<UserShare>();
+            // Highlight: Unused Local Variable - 14285
+           // UserShare us1 = new UserShare(UserId = usr2.Id, UserOrGroupId = grp1.Id, RowCause = 'Manual', UserAccessLevel = 'Read');
             UserShare us2 = new UserShare(UserId = usr3.Id, UserOrGroupId = grp1.Id, RowCause = 'Manual', UserAccessLevel = 'Read');
+            //usList.add(us1);
             usList.add(us2);
             Database.insert(usList);
 
@@ -208,14 +211,20 @@
 
     @isTest static void testUsrShare() {
         Test.startTest();
+        System.debug('Users before batch: ' + [SELECT Id, IsActive FROM User WHERE LastName LIKE 'User Test%']);
         User usr = [Select id from User where LastName = 'User Test2' limit 1];
         usr.IsActive = false;
         Database.update(usr);
+            System.debug('=== AFTER DEACTIVATING USER ===');
+    System.debug('User Test2 after deactivation: ' + [SELECT Id, IsActive FROM User WHERE Id = :usr.Id]);
         // Check whether user is active or not
         system.assertEquals(usr.IsActive, false);
         Core_MDF_ExternalUserSharing be = new Core_MDF_ExternalUserSharing(false, (Set<String>)null);
         be.counter = 2;
         be.errorMap.put(usr.Id, 'jg');
+        System.debug('=== BATCH INSTANCE CREATED ===');
+    System.debug('Batch deleteMode: false');
+    System.debug('Batch userIds: null');
         DataBase.executeBatch(be);
         Test.stopTest();
     }
@@ -255,7 +264,7 @@
         Core_MDF_ExternalUserSharing be3 = new Core_MDF_ExternalUserSharing(true, null, 1);
         Database.executeBatch(be3);
         Test.stopTest();
-        // Unit Test Method should include System.Assert 
+        // Unit Test Method should include System.Assert - Indira
         System.assertNotEquals(null, be3, 'Constructor should create a valid instance');
     }
     
@@ -265,7 +274,7 @@
         Core_MDF_ExternalUserSharing be3 = new Core_MDF_ExternalUserSharing(true, us);
         Database.executeBatch(be3);
         Test.stopTest();
-        // Unit Test Method should include System.Assert
+        // Unit Test Method should include System.Assert - Indira
         System.assertNotEquals(null, be3, 'Constructor should create a valid instance');
         System.assertEquals(null, us, 'UserShare list should remain null');
     }

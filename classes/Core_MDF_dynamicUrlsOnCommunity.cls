@@ -9,8 +9,8 @@ Public without sharing class Core_MDF_dynamicUrlsOnCommunity {
     /*This Method is used to fetch content configuration records based on section code passed*/
     @AuraEnabled
     public static List<ContentWrapperObj> getHomeContent(string sectionCode) { // e.g., sectionCode = 'Home_KeyResources_IPA'
-        
-
+        // Highlight: Unused Local Variable - 14285
+        // List<Core_MDF_Content_Configuration__c> contentConfigsList = new List<Core_MDF_Content_Configuration__c>();
         Core_MDF_DynamicContentGenerator.ContentInputWrapper ContentResultWrap = new Core_MDF_DynamicContentGenerator.ContentInputWrapper();
         List<ContentWrapperObj> resultList = new List<ContentWrapperObj>();
         String loggedinUserLang =''; //Get LoggedIn users language
@@ -54,7 +54,8 @@ Description :   This Method is used to fetch content configuration records for r
         Map<Id, Set<Id>> headerIdToSubIdSetMap = new Map<Id, Set<Id>>();     
         Map<string,List<Core_MDF_Content_Configuration__c>> subHeaderToContentMap = new Map<string,List<Core_MDF_Content_Configuration__c>>(); 
         Core_MDF_DynamicContentGenerator.ContentInputWrapper ContentResultWrap = new Core_MDF_DynamicContentGenerator.ContentInputWrapper(); 
-
+        // Highlight: Unused Local Variable - 14285
+        // List<Core_MDF_Content_Configuration__c> contentConfigsList = new List<Core_MDF_Content_Configuration__c>(); 
         Map<Id, Core_MDF_Content_Configuration__c> idToContentRecMap = new Map<Id, Core_MDF_Content_Configuration__c>(); 
         List<sectionWrapper> sectionWrapList = new List<sectionWrapper>(); // final wrapper list
         
@@ -74,69 +75,83 @@ Description :   This Method is used to fetch content configuration records for r
         string helpTextFieldAPIName =  ContentResultWrap.helpTextFieldAPIName;  //e.g lang->zh_CN , helpTextFieldAPIName = Core_MDF_HelpText_zh_CN_txt__c
         
         try{
+            // Early return if no content config list
+            // US - TWC702-14285: Flatten nested IFs (no logic change)
             if(ContentResultWrap == null || ContentResultWrap.ContentConfigList == null || ContentResultWrap.ContentConfigList.isEmpty()){
-                return sectionWrapList;         //Refactored: Using guard clauses to avoid deep nesting
+                System.debug('ContentResultWrap: ' + ContentResultWrap);
+               // System.debug('ContentConfigList: ' + ContentResultWrap.ContentConfigList);
+                return sectionWrapList;    //Refactored: Using guard clauses to avoid deep nesting
+                 
             }
-                for (Core_MDF_Content_Configuration__c  content : ContentResultWrap.ContentConfigList ) {
-                    idToContentRecMap.put(content.Id,content);                 //Key: Content Id Value: Content rec
-                    if(content.Core_MDF_Category_nm__c == SECTION_LINE_ITEM){
-                        string subHeaderId = content.Core_MDF_Parent_Content_Config_Id__c;
-                        if(!subHeaderToContentMap.containsKey(subHeaderId)){//Sub Header
-                            subHeaderToContentMap.put(subHeaderId, new List<Core_MDF_Content_Configuration__c>());
-                        }
-                        subHeaderToContentMap.get(subHeaderId).add(content);  //Key:SubHeader Id Value:Content Line item records
+            	
+            for (Core_MDF_Content_Configuration__c  content : ContentResultWrap.ContentConfigList ) {
+                idToContentRecMap.put(content.Id,content);                 //Key: Content Id Value: Content rec
+                
+                // Process LINE ITEM category
+                if(content.Core_MDF_Category_nm__c == SECTION_LINE_ITEM){
+                    string subHeaderId = content.Core_MDF_Parent_Content_Config_Id__c;
+                    if(!subHeaderToContentMap.containsKey(subHeaderId)){//Sub Header
+                        subHeaderToContentMap.put(subHeaderId, new List<Core_MDF_Content_Configuration__c>());
                     }
-                    if(content.Core_MDF_Category_nm__c == SECTION_SUB_HEADER){
-                        string headerId = content.Core_MDF_Parent_Content_Config_Id__c;
-                        string subHeaderId = content.Id;
-                        if(!headerIdToSubIdSetMap.containsKey(headerId)){//Header
-                            headerIdToSubIdSetMap.put(headerId, new Set<Id>());
-                        }
-                        headerIdToSubIdSetMap.get(headerId).add(subHeaderId);   //Key:Header Id (ParentId of subHeaderId) Value:set of subHeader Ids
-                    }
+                    subHeaderToContentMap.get(subHeaderId).add(content);  //Key:SubHeader Id Value:Content Line item records
                 }
                 
-                
+                // Process SUB HEADER category
+                if(content.Core_MDF_Category_nm__c == SECTION_SUB_HEADER){
+                    string headerId = content.Core_MDF_Parent_Content_Config_Id__c;
+                    string subHeaderId = content.Id;
+                    if(!headerIdToSubIdSetMap.containsKey(headerId)){//Header
+                        headerIdToSubIdSetMap.put(headerId, new Set<Id>());
+                    }
+                    headerIdToSubIdSetMap.get(headerId).add(subHeaderId);   //Key:Header Id (ParentId of subHeaderId) Value:set of subHeader Ids
+                }
+            }
+            
+            // Process the hierarchical data structure
+            // US - TWC702-14285: Flatten nested IFs (no logic change)
             if(headerIdToSubIdSetMap.isEmpty()){
                 return sectionWrapList;        //Refactored: Using guard clauses to avoid deep nesting
             }
-                    for(string headerId : headerIdToSubIdSetMap.KeySet()){
-                        sectionWrapper resultWrapper = new sectionWrapper();
-                        list<subSectionWrapper> subSectionWrapList = new list<subSectionWrapper>();
-                        resultWrapper.contentHeader = idToContentRecMap.get(headerId).get(labelfieldAPIName) != null ? (string)idToContentRecMap.get(headerId).get(labelfieldAPIName) : '';
-                        resultWrapper.sortOrder = idToContentRecMap.get(headerId).get(SORT_ORDER) != null ? Integer.valueOf(idToContentRecMap.get(headerId).get(SORT_ORDER)) : 0;
+            
+            for(string headerId : headerIdToSubIdSetMap.KeySet()){
+                sectionWrapper resultWrapper = new sectionWrapper();
+                list<subSectionWrapper> subSectionWrapList = new list<subSectionWrapper>();
+                resultWrapper.contentHeader = idToContentRecMap.get(headerId).get(labelfieldAPIName) != null ? (string)idToContentRecMap.get(headerId).get(labelfieldAPIName) : '';
+                resultWrapper.sortOrder = idToContentRecMap.get(headerId).get(SORT_ORDER) != null ? Integer.valueOf(idToContentRecMap.get(headerId).get(SORT_ORDER)) : 0;
+
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
                 if(headerIdToSubIdSetMap.get(headerId).isEmpty()){
                     sectionWrapList.add(resultWrapper);
                     continue;         //Refactored: Using guard clauses to avoid deep nesting
                 }
-                            for(string subId : headerIdToSubIdSetMap.get(headerId)){
-                                subSectionWrapper subSecWrap = new subSectionWrapper();
-                                List<contentLineItemWrapper> contentWrapList = new List<contentLineItemWrapper>();
-                                subSecWrap.contentSubHeader = idToContentRecMap.get(subId).get(labelfieldAPIName) != null ? (string)idToContentRecMap.get(subId).get(labelfieldAPIName) : '';
-                                subSecWrap.sortOrder = idToContentRecMap.get(subId).get(SORT_ORDER) != null ? Integer.valueOf(idToContentRecMap.get(subId).get(SORT_ORDER)) : 0;
-                                subSecWrap.style = (string)idToContentRecMap.get(subId).get('Core_MDF_Style_txt__c');
+                
+                for(string subId : headerIdToSubIdSetMap.get(headerId)){
+                    subSectionWrapper subSecWrap = new subSectionWrapper();
+                    List<contentLineItemWrapper> contentWrapList = new List<contentLineItemWrapper>();
+                    subSecWrap.contentSubHeader = idToContentRecMap.get(subId).get(labelfieldAPIName) != null ? (string)idToContentRecMap.get(subId).get(labelfieldAPIName) : '';
+                    subSecWrap.sortOrder = idToContentRecMap.get(subId).get(SORT_ORDER) != null ? Integer.valueOf(idToContentRecMap.get(subId).get(SORT_ORDER)) : 0;
+                    subSecWrap.style = (string)idToContentRecMap.get(subId).get('Core_MDF_Style_txt__c');
+                    
+                    // Process content line items
                     if(subHeaderToContentMap != null && !subHeaderToContentMap.keySet().isEmpty() && subHeaderToContentMap.get(subId) != null){
-                                    for(Core_MDF_Content_Configuration__c content: subHeaderToContentMap.get(subId)){
-                                        contentLineItemWrapper contentWrap = new contentLineItemWrapper();
-                                            contentWrap.contentLabel =content.get(labelfieldAPIName) != null ? (string)content.get(labelfieldAPIName) : '';
-                                            contentWrap.contentUrl = content.get(URLfieldAPIName) != null ? (string)content.get(URLfieldAPIName) : '';
-                                            contentWrap.contentHelpText = content.get(helpTextFieldAPIName) != null ? (string)content.get(helpTextFieldAPIName) : '';
-                                            contentWrap.isIconRequired = content.get(ICON_REQUIRED) != null && content.get(ICON_REQUIRED) == true ? (Boolean)content.get(ICON_REQUIRED) : false;
-                                            contentWrap.iconUrl = content.get(ICON_URL) != null ? (string)content.get(ICON_URL) : '';
-                                            contentWrap.sortOrder = content.get(SORT_ORDER) != null ? Integer.valueOf(content.get(SORT_ORDER)) : 0;
-                                            contentWrap.style = (string)content.get('Core_MDF_Style_txt__c');
-                                            contentWrapList.add(contentWrap);
-                                    }
-                                }
-                                subSecWrap.lineItemWrapList = contentWrapList;
-                                subSectionWrapList.add(subSecWrap);
-                            }
-                            resultWrapper.subSectionList = subSectionWrapList;
-                        
-                        sectionWrapList.add(resultWrapper);
-                
-                
-            }
+                        for(Core_MDF_Content_Configuration__c content: subHeaderToContentMap.get(subId)){
+                            contentLineItemWrapper contentWrap = new contentLineItemWrapper();
+                            contentWrap.contentLabel =content.get(labelfieldAPIName) != null ? (string)content.get(labelfieldAPIName) : '';
+                            contentWrap.contentUrl = content.get(URLfieldAPIName) != null ? (string)content.get(URLfieldAPIName) : '';
+                            contentWrap.contentHelpText = content.get(helpTextFieldAPIName) != null ? (string)content.get(helpTextFieldAPIName) : '';
+                            contentWrap.isIconRequired = content.get(ICON_REQUIRED) != null && content.get(ICON_REQUIRED) == true ? (Boolean)content.get(ICON_REQUIRED) : false;
+                            contentWrap.iconUrl = content.get(ICON_URL) != null ? (string)content.get(ICON_URL) : '';
+                            contentWrap.sortOrder = content.get(SORT_ORDER) != null ? Integer.valueOf(content.get(SORT_ORDER)) : 0;
+                            contentWrap.style = (string)content.get('Core_MDF_Style_txt__c');
+                            contentWrapList.add(contentWrap);
+                        }
+                    }
+                    subSecWrap.lineItemWrapList = contentWrapList;
+                    subSectionWrapList.add(subSecWrap);
+                }
+                resultWrapper.subSectionList = subSectionWrapList;
+                sectionWrapList.add(resultWrapper);
+            }          
         }catch(Exception ex){
             Core_MDF_CCP_UtilityClass.logError(ex);
         }
@@ -157,7 +172,8 @@ Description :   This Method is used to fetch content configuration records for b
         Map<Id, Set<Id>> headerIdToSubIdSetMap = new Map<Id, Set<Id>>();     
         Map<string,List<Core_MDF_Content_Configuration__c>> subHeaderToContentMap = new Map<string,List<Core_MDF_Content_Configuration__c>>(); 
         Core_MDF_DynamicContentGenerator.ContentInputWrapper ContentResultWrap = new Core_MDF_DynamicContentGenerator.ContentInputWrapper(); 
-
+        // Highlight: Unused Local Variable - 14285
+        // List<Core_MDF_Content_Configuration__c> contentConfigsList = new List<Core_MDF_Content_Configuration__c>(); 
         Map<Id, Core_MDF_Content_Configuration__c> idToContentRecMap = new Map<Id, Core_MDF_Content_Configuration__c>(); 
         List<tableRowHeaderWrapper> sectionWrapList = new List<tableRowHeaderWrapper>(); 
         
@@ -172,38 +188,51 @@ Description :   This Method is used to fetch content configuration records for b
             ContentResultWrap = Core_MDF_DynamicContentGenerator.getData(sectionCode,loggedinUserLang ); 
         }
         string labelfieldAPIName    =  ContentResultWrap.labelfieldAPIName;     //e.g lang->zh_CN , labelfieldAPIName = Core_MDF_Label_zh_CN_txt__c
+        
         try{
+            // Early return if no content config list
+            // US - TWC702-14285: Flatten nested IFs (no logic change)
             if(ContentResultWrap == null || ContentResultWrap.ContentConfigList == null || ContentResultWrap.ContentConfigList.isEmpty()){
                 return sectionWrapList;          //Refactored: Using guard clauses to avoid deep nesting
             }
-                for (Core_MDF_Content_Configuration__c  content : ContentResultWrap.ContentConfigList ) {
-                    idToContentRecMap.put(content.Id,content);                 //Key: Content Id Value: Content rec
-                    if(content.Core_MDF_Category_nm__c == SECTION_LINE_ITEM){
-                        string subHeaderId = content.Core_MDF_Parent_Content_Config_Id__c;
-                        if(!subHeaderToContentMap.containsKey(subHeaderId)){//Sub Header
-                            subHeaderToContentMap.put(subHeaderId, new List<Core_MDF_Content_Configuration__c>());
-                        }
-                        subHeaderToContentMap.get(subHeaderId).add(content);  //Key:SubHeader Id Value:Content Line item records
+            
+            for (Core_MDF_Content_Configuration__c  content : ContentResultWrap.ContentConfigList ) {
+                idToContentRecMap.put(content.Id,content);                 //Key: Content Id Value: Content rec
+                
+                // Process LINE ITEM category
+                if(content.Core_MDF_Category_nm__c == SECTION_LINE_ITEM){
+                    string subHeaderId = content.Core_MDF_Parent_Content_Config_Id__c;
+                    if(!subHeaderToContentMap.containsKey(subHeaderId)){//Sub Header
+                        subHeaderToContentMap.put(subHeaderId, new List<Core_MDF_Content_Configuration__c>());
                     }
-                    if(content.Core_MDF_Category_nm__c == SECTION_SUB_HEADER){
-                        string headerId = content.Core_MDF_Parent_Content_Config_Id__c;
-                        string subHeaderId = content.Id;
-                        if(!headerIdToSubIdSetMap.containsKey(headerId)){//Header
-                            headerIdToSubIdSetMap.put(headerId, new Set<Id>());
-                        }
-                        headerIdToSubIdSetMap.get(headerId).add(subHeaderId);   //Key:Header Id (ParentId of subHeaderId) Value:set of subHeader Ids
+                    subHeaderToContentMap.get(subHeaderId).add(content);  //Key:SubHeader Id Value:Content Line item records
+                }
+                
+                // Process SUB HEADER category
+                if(content.Core_MDF_Category_nm__c == SECTION_SUB_HEADER){
+                    string headerId = content.Core_MDF_Parent_Content_Config_Id__c;
+                    string subHeaderId = content.Id;
+                    if(!headerIdToSubIdSetMap.containsKey(headerId)){//Header
+                        headerIdToSubIdSetMap.put(headerId, new Set<Id>());
                     }
-                }                
+                    headerIdToSubIdSetMap.get(headerId).add(subHeaderId);   //Key:Header Id (ParentId of subHeaderId) Value:set of subHeader Ids
+                }
+            }
+            
+            // Process the hierarchical data structure
+            // US - TWC702-14285: Flatten nested IFs (no logic change)
             if(headerIdToSubIdSetMap.isEmpty()){
                 return sectionWrapList;         //Refactored: Using guard clauses to avoid deep nesting
             }
-                    for(string headerId : headerIdToSubIdSetMap.KeySet()){
-                        tableRowHeaderWrapper resultWrapper = new tableRowHeaderWrapper();
-                        list<tableRowSectionWrapper> subSectionWrapList = new list<tableRowSectionWrapper>();
-                        resultWrapper.rowHeader = idToContentRecMap.get(headerId).get(labelfieldAPIName) != null ? (string)idToContentRecMap.get(headerId).get(labelfieldAPIName) : '';
-                        resultWrapper.rowSpan = idToContentRecMap.get(headerId).get(ROWSPAN) != null ?  Integer.valueOf(idToContentRecMap.get(headerId).get(ROWSPAN)) : 0;
-                        resultWrapper.sortOrder = idToContentRecMap.get(headerId).get(SORT_ORDER) != null ? Integer.valueOf(idToContentRecMap.get(headerId).get(SORT_ORDER)) : 0;
-
+            
+            for(string headerId : headerIdToSubIdSetMap.KeySet()){
+                tableRowHeaderWrapper resultWrapper = new tableRowHeaderWrapper();
+                list<tableRowSectionWrapper> subSectionWrapList = new list<tableRowSectionWrapper>();
+                resultWrapper.rowHeader = idToContentRecMap.get(headerId).get(labelfieldAPIName) != null ? (string)idToContentRecMap.get(headerId).get(labelfieldAPIName) : '';
+                resultWrapper.rowSpan = idToContentRecMap.get(headerId).get(ROWSPAN) != null ?  Integer.valueOf(idToContentRecMap.get(headerId).get(ROWSPAN)) : 0;
+                resultWrapper.sortOrder = idToContentRecMap.get(headerId).get(SORT_ORDER) != null ? Integer.valueOf(idToContentRecMap.get(headerId).get(SORT_ORDER)) : 0;
+                
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
                 if(headerIdToSubIdSetMap.get(headerId).isEmpty()){
                     sectionWrapList.add(resultWrapper);
                     continue;                  //Refactored: Using guard clauses to avoid deep nesting
@@ -248,8 +277,8 @@ Description :   This Method is used to fetch content configuration records for b
         }
         return sectionWrapList;
     }
-    
-   
+
+       
     
     //Start - Wrappers for resources page//
     public class sectionWrapper{

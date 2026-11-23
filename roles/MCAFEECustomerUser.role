@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>MCAFEE Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Inactive_Accounts_Role</parentRole>
+    <parentRole>MCAFEECustomerManager</parentRole>
 </Role>

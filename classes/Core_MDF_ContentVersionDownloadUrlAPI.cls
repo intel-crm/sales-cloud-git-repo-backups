@@ -46,6 +46,7 @@ global with sharing class Core_MDF_ContentVersionDownloadUrlAPI {
             RequestWrapper wrapper;
             try {
                 wrapper = (RequestWrapper) JSON.deserialize(body, RequestWrapper.class);
+                System.debug('Print wrapper:'+wrapper);
             } catch (Exception ex) {
                 setErrorResponse(response, ERROR02);
                 return;
@@ -110,6 +111,7 @@ global with sharing class Core_MDF_ContentVersionDownloadUrlAPI {
     ******************************************************************************************************************************************/
     private static Map<String, Object> getAppFileIdToInfoMap(List<String> appFileIds, String recordId) {
         String domain = Url.getSalesforceBaseUrl().toExternalForm();
+       
         if (domain.endsWith('/')) {
             domain = domain.substring(0, domain.length() - 1);
         }
@@ -118,8 +120,10 @@ global with sharing class Core_MDF_ContentVersionDownloadUrlAPI {
         Map<String, Object> filesMap = new Map<String, Object>();
         for (String fileId : appFileIds) {
             filesMap.put(fileId, 'Document not found');
+            System.debug('print appFileId in for loop'+fileId);
         }
-         // Bulk query for all requested appFileIds within the claim and process in single loop
+        System.debug('print appFileIds '+appFileIds);
+        // Bulk query for all requested appFileIds within the claim and process in single loop
         // Audit change included Core_MDF_Audit__c in query 
         for (Core_MDF_Audit_Document__c auditDoc : [
             SELECT Core_MDF_Old_Document_Id__c, Core_MDF_ContentVersion_Id__c, Core_MDF_Document_Title__c
@@ -128,6 +132,7 @@ global with sharing class Core_MDF_ContentVersionDownloadUrlAPI {
             AND Core_MDF_Old_Document_Id__c IN :appFileIds
             AND Core_MDF_SFT_File_Download_Ind__c = false
         ]) {
+            System.debug('Print results '+auditDoc);
             // If we have a valid document ID and non-blank ContentVersion Id, create download URL with title
             if (auditDoc.Core_MDF_Old_Document_Id__c != null && !String.isBlank(auditDoc.Core_MDF_ContentVersion_Id__c)) {
                 ResponseWrapper responseWrap = new ResponseWrapper();
@@ -244,6 +249,7 @@ global with sharing class Core_MDF_ContentVersionDownloadUrlAPI {
     ******************************************************************************************************************************************/
     //Set error response
     private static void setErrorResponse(RestResponse response, String errorCode) {
+ 
         Map<String, Object> errorDetails = getErrorDetails(errorCode);
         Integer statusCode = (Integer) errorDetails.get('statusCode');
         String message = (String) errorDetails.get('message');
@@ -259,6 +265,7 @@ global with sharing class Core_MDF_ContentVersionDownloadUrlAPI {
         };
         
         response.responseBody = Blob.valueOf(JSON.serialize(errorResponse));
+
     }
     
     //wrapper for POST request body

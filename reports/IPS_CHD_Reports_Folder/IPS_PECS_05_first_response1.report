@@ -62,6 +62,12 @@
         </values>
         <values>
             <sourceValues>
+                <sourceValue>CHD - Retail-WW</sourceValue>
+            </sourceValues>
+            <value>BL-Retail</value>
+        </values>
+        <values>
+            <sourceValues>
                 <sourceValue>CHD - Telco-AMR</sourceValue>
             </sourceValues>
             <sourceValues>
@@ -88,10 +94,7 @@
             <sourceValues>
                 <sourceValue>CHD – WiFi</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>CHD - Retail-WW</sourceValue>
-            </sourceValues>
-            <value>BL-Wifi</value>
+            <value>Wifi</value>
         </values>
     </buckets>
     <chart>

@@ -48,16 +48,21 @@ Core_MDF_Category__c---> "Bulk Claim Template"
             
             //Map<Id,Core_MDF_BulkClaimTemplateParticulars__mdt> metadataIdToRecordMap = new Map<Id,Core_MDF_BulkClaimTemplateParticulars__mdt>([SELECT Id,Label, Core_MDF_Stage_Field_API_Name__c,Core_MDF_Field_DataType_Txt__c,Core_MDF_Column_Index__c,Core_MDF_Target_Field_API_Name__c, Core_MDF_Stage_Required_Ind__c, Core_MDF_Claim_Field_API_Name__c,Core_MDF_Channel_program__c FROM Core_MDF_BulkClaimTemplateParticulars__mdt WHERE Core_MDF_Channel_program__c = :channelProgramName AND Core_MDF_Upload_Record_Type__c =:Label.Core_MDF_PFCText ORDER BY Core_MDF_Column_Index__c]);
             
+            //Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c> metadataIdToRecordMap = new Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c>([SELECT Id, Name, Core_MDF_Field_2_txt__c, Core_MDF_Field_1_txt__c, Core_MDF_Sort_Order_Nbr__c, Core_MDF_Field_3_txt__c, Core_MDF_Checkbox_Field_1_Ind__c, Core_MDF_Name_Criteria__c, Core_MDF_Program__c FROM Core_MDF_CCP_Custom_Metadata_Utility__c WHERE Core_MDF_Program__c = :channelProgramName AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText  AND Core_MDF_Category__c = :Core_MDF_CCP_ConstantClass.BULK_CLAIM_TEMPLATE ORDER BY Core_MDF_Sort_Order_Nbr__c]);
             String whereClause = 'Core_MDF_Program__c = \'' + channelProgramName + '\' ' + 'AND Core_MDF_Sub_Category__c = \'' + Label.Core_MDF_PFCText + '\' ' + 'AND Core_MDF_Category__c = \'' + Core_MDF_CCP_ConstantClass.BULK_CLAIM_TEMPLATE + '\' ';
             List<Core_MDF_CCP_Custom_Metadata_Utility__c> metaDataValues = Core_MDF_Custom_Metadata_Utility.getCustomObjectRecords(whereClause);
             Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c> metadataIdToRecordMap = new Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c>();
+            System.debug('whereClause===='+whereClause);
+            System.debug('metaDataValues===='+metaDataValues);
             for(Core_MDF_CCP_Custom_Metadata_Utility__c mdtRecords : metaDataValues){
                 metadataIdToRecordMap.put(mdtRecords.id,mdtRecords);
             }
-                
+            System.debug('metadataIdToRecordMap===='+metadataIdToRecordMap);
+            
             Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
                                                                      FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
                                                                      WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName LIMIT 1];//TWC3117-18333
+            System.debug('MDT OPtimisation recordType '+ recordType);
             if(validateUploadedFile(blobData,metadataIdToRecordMap)){
                 // validate user has ultimate account access
                 ultimateAccId = Core_MDF_BulkClaimUtility.validateAccountAccess();
@@ -238,6 +243,9 @@ Core_MDF_Category__c---> "Bulk Claim Template"
 * @param currencyValueList: hold all currency code list 
 */
     public static Core_MDF_Claim_Batch_Stage__c validateCsvDataTypesAndFields(Integer csvRowId,Core_MDF_CCP_Custom_Metadata_Utility__c metadataRecord,Core_MDF_Claim_Batch_Stage__c claimStageInstance,String[] csvRecordData,List<String> currencyValueList,List<String> countryList,List<String> activitySubTypeList,List<String> vatOptInList, List<String> applicableVATPerInList,Map<String,String> bankSupplierNumberToLegalEntity,Map<String,Boolean> applicableVATPerRequired,Integer suppNoPosition){
+        System.debug('metadataRecord --'+metadataRecord);
+        System.debug('vatOptInList -- '+vatOptInList);
+        System.debug('csvRecordData -- '+csvRecordData);
         if(metadataRecord.Core_MDF_Field_1_txt__c == 'Date'){
             Date standardDate = convertDateToStandardDate(csvRecordData[(Integer)metadataRecord.Core_MDF_Sort_Order_Nbr__c]);
             claimStageInstance.put(metadataRecord.Core_MDF_Field_2_txt__c,standardDate);
@@ -443,6 +451,7 @@ Modified By:        Date:      Changes:
                                                                        from Core_MDF_ObjRecType_Budget_FieldSetMap__mdt LIMIT 1000]){ //TWC3117-18333
                                                                            mapOfRecordTypes.put(recTypeMetaData.Core_MDF_Channel_Program_txt__c,recTypeMetaData.MasterLabel);  
                                                                        }
+        System.debug('MDT OPtimisation mapOfRecordTypes '+ mapOfRecordTypes);
         return mapOfRecordTypes;
         
     }
@@ -493,6 +502,7 @@ Modified By:        Date:      Changes:
         if(String.isNotEmpty(programName) && programName != NULL){
             pfrRecTypeDevName = [Select Core_MDF_Activity_RecordType_txt__c from Core_MDF_ObjRecType_Budget_FieldSetMap__mdt WHERE Core_MDF_Channel_Program_txt__c =: programName].Core_MDF_Activity_RecordType_txt__c;//TWC3117-18333
         } 
+        System.debug('MDT OPtimisation pfrRecTypeDevName '+ pfrRecTypeDevName);
         if(String.isNotEmpty(pfrRecTypeDevName) && pfrRecTypeDevName != NULL){            
             pfrRecTypeId = Schema.SObjectType.PartnerFundRequest.getRecordTypeInfosByDeveloperName().get(pfrRecTypeDevName).getRecordTypeId();
         }
@@ -595,7 +605,9 @@ Modified By:        Date:      Changes:
             if(infoMessage != null && infoMessage == 'true'){
                 errorMsgInd = true;
             }
-        }catch (Exception e) {}
+        }catch (Exception e) {
+            System.debug('Exception'+e);
+        }
         return errorMsgInd;
     }
     // wrapper class with @AuraEnabled

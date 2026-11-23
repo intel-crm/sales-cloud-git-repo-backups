@@ -21,18 +21,6 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>Core_MDF_AGS_AuthProvider</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Core_MDF_AGS_CalloutQueueable</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Core_MDF_AGS_PollStatus_Batch</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>Core_MDF_AI_Integration_Outbound</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -73,10 +61,6 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>Core_MDF_AiFieldSuggestions</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>Core_MDF_ApprovalCriteriaHelper</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -85,11 +69,23 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Core_MDF_ApprovalURL</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_AuditDocumentHelper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_MDF_AuditDocumentHelper_Revamp</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>Core_MDF_BatchStageClaimController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_Batch_RetryAICDBOutbound</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -161,6 +157,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Core_MDF_Cancel_Case</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_MDF_CheckStatusAndDate</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -186,6 +186,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>Core_MDF_ContentVersionDownloadUrlAPI</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_Core_MDF_OutcomeBaseParentComp</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -269,10 +273,6 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>Core_MDF_GenericRelatedListCntller_Test</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>Core_MDF_GenericRelatedListController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -289,26 +289,6 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>Core_MDF_IUPGMReqStaging_Queueable</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Core_MDF_IUPGMReqStaging_ServiceHandler</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Core_MDF_IUPGMReqStaging_TriggerHandler</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Core_MDF_IUPGMRoleRecommendationService</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Core_MDF_IUPGM_AccessModelService</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>Core_MDF_IUPGM_ApprovalRequest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -318,22 +298,6 @@
     </classAccesses>
     <classAccesses>
         <apexClass>Core_MDF_IUPGM_Monitor_Batch</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Core_MDF_IUPGM_RequestAPI</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Core_MDF_IUPGM_ServiceHandler</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Core_MDF_IUPGM_StatusAPI</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Core_MDF_IUPGM_SubmitAPI</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -366,18 +330,6 @@
     </classAccesses>
     <classAccesses>
         <apexClass>Core_MDF_OutcomeBasedCmpgnTab</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Core_MDF_OutcomeBasedCmpgnTab_Test</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Core_MDF_OutcomeBasedCmpgn_ParentComp</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Core_MDF_OutcomeBasedCmpgn_ParentTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -450,6 +402,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>Core_MDF_PaymentRunAccounts</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_ProcessAIResponse</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -541,6 +497,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>ListWithoutHeaderController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>UCD_AccountRecordTypeController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -550,11 +510,27 @@
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
-        <name>Core_MDF_AGS_OAuth_Configuration__mdt</name>
+        <name>CCP_Attributes_Map__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>CCP_MDF_POP_Translation__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
         <name>Core_MDF_AdjustmentOrEscalationClaim__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>Core_MDF_Approval_Object_List__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>Core_MDF_Approval_Req_Object_Config__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>Core_MDF_BU_Splits__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
@@ -570,7 +546,15 @@
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
+        <name>Core_MDF_BulkClaimTemplateParticulars__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
         <name>Core_MDF_CCP_Activity_Budget_Cap_Window__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>Core_MDF_CCP_Claim_Window__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
@@ -614,11 +598,19 @@
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
-        <name>Core_MDF_IUPGM_Rule_Config__mdt</name>
+        <name>Core_MDF_ListView_Group_Mapping__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
-        <name>Core_MDF_PFR_Event_Rule__mdt</name>
+        <name>Core_MDF_OPAL_Category_Type_Mapping__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>Core_MDF_ObjRecType_Budget_FieldSetMap__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>Core_MDF_POP_Document_Types__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
@@ -638,8 +630,16 @@
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
+        <name>Core_MDF_Standard_Object_for_Sharing__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
         <name>Trigger_Execution__mdt</name>
     </customMetadataTypeAccesses>
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>Core_MDF_Notifications_Subscription_Tab_Access</name>
+    </customPermissions>
     <customSettingAccesses>
         <enabled>true</enabled>
         <name>Core_AAQ_Profile_Handler__c</name>
@@ -694,16 +694,6 @@
         <field>Core_MDF_PFRCustomPicklist__c.Core_MDF_Program__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_PFRCustomPicklist__c.Core_MDF_Tactics_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_PIC_Review__c.Core_MDF_AI_PIC_Review_Ind__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>CCP Internal Generic Access</label>
     <license>Salesforce</license>
@@ -754,11 +744,7 @@
         <enabled>true</enabled>
     </pageAccesses>
     <tabSettings>
-        <tab>Ask_a_Question1</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>Case_List_Export</tab>
+        <tab>Ask_a_Question</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
@@ -772,6 +758,10 @@
     <tabSettings>
         <tab>Core_MDF_Notification_Subscriptions</tab>
         <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Outcome_Based_Campaigns_Detail_Page</tab>
+        <visibility>Available</visibility>
     </tabSettings>
     <userPermissions>
         <enabled>true</enabled>

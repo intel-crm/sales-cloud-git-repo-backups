@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Core_MDF_Payment_Run__c$Core_MDF_ScheduleRun_Dtm__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Payment_Run__c.Payments1__r.Partner_Fund_Claims__r$Name</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Payment_Run__c.Payments1__r.Partner_Fund_Claims__r.Claim_VAT_Documents__r$Core_MDF_VAT_Per__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_MDF_Payment_Run__c.Payments1__r.Partner_Fund_Claims__r.Claim_VAT_Documents__r$Core_MDF_VAT_Amt__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Payment_Run__c.Payments1__r.Partner_Fund_Claims__r.Claim_VAT_Documents__r$Core_MDF_VAT_Invoice_Number_Txt__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Payment_Run__c.Payments1__r.Partner_Fund_Claims__r.Claim_VAT_Documents__r$Name</field>
+    </columns>
+    <description>GSPO Report</description>
+    <filter>
+        <criteriaItems>
+            <column>Core_MDF_Payment_Run__c$Core_MDF_Program_Id__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Retail Marketing Funds</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_MDF_Payment_Run__c.Payments1__r.Partner_Fund_Claims__r$Core_MDF_VAT_Eligibility_Ind__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Core_MDF_Payment_Run__c$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Core_MDF_Payment_Run__c.Payments1__r$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>GSPO Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>GSPO_Report__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Core_MDF_Payment_Run__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

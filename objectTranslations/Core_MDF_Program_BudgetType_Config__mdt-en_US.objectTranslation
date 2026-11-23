@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Core_MDF_Program_BudgetType_Config</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Program BudgetType configuration</value>
+    </caseValues>
+    <fields>
+        <label><!-- All Budget Types --></label>
+        <name>Core_MDF_AllBudgetTypes_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Types --></label>
+        <name>Core_MDF_BudgetTypes_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Avl Amt Validation Reqd --></label>
+        <name>Core_MDF_activityAvlAmtValidationReq_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- isActive --></label>
+        <name>Core_MDF_isActive__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

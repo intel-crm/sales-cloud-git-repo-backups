@@ -11,6 +11,7 @@ public class Core_MDF_AdjustmentReq_TriggerHandler extends TriggerHandler {
 
     public override void beforeInsert() 
     {   
+        System.debug('getQueries before Adj req insert::::'+Limits.getQueries());
         if(!Core_MDF_Utility.byPassFeature('Bypass_Claim_AdjReq_Amount_Validation'))
             if (isActive('Core_MDF_AdjReqAmountOnBeforeInsert')){
                     Core_MDF_AdjustmentReq_ServiceHandler.claimAdjustmentAmountValidation(Trigger.NEW);
@@ -18,16 +19,19 @@ public class Core_MDF_AdjustmentReq_TriggerHandler extends TriggerHandler {
         if (isActive('Core_MDF_CreateAdjustments')) {
            Core_MDF_AdjustmentReq_ServiceHandler.createAdjustment(Trigger.NEW);
         }
+        System.debug('getQueries ending before Adj req insert::::'+Limits.getQueries());
     }
     
     public override void afterInsert()  {
+        System.debug('getQueries starting after Adj req insert::::'+Limits.getQueries());
         if (isActive('Core_MDF_CreateAdjustments') && isActive('Core_MDF_ShareAdjustmentRequests')) {
             if(!Core_MDF_Utility.byPassFeature('Bypass_ClaimAdjReq_Share_Internal_Usrs'))
-            	Core_MDF_AdjustmentRequest_Sharing.shareAdjustmentRequestToInternalUsers((List<Core_MDF_Adjustment_Request__c>) Trigger.New);
+                Core_MDF_AdjustmentRequest_Sharing.shareAdjustmentRequestToInternalUsers((List<Core_MDF_Adjustment_Request__c>) Trigger.New);
             if(!Core_MDF_Utility.byPassFeature('Bypass_ClaimAdjReq_Share_External_Usrs'))
-            	Core_MDF_AdjustmentRequest_Sharing.shareAdjustmentRequestToPartnerUsers((Map<Id,Core_MDF_Adjustment_Request__c>) Trigger.newMap);
+                Core_MDF_AdjustmentRequest_Sharing.shareAdjustmentRequestToPartnerUsers((Map<Id,Core_MDF_Adjustment_Request__c>) Trigger.newMap);
 
         }
+         System.debug('getQueries ending after Adj req insert::::'+Limits.getQueries());
     }
     
     public override void beforeUpdate() {

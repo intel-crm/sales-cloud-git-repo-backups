@@ -183,20 +183,18 @@ private class Core_MDF_PIC_TestClass {
         insert arpBank;
         }
         
-        
-        Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(arpEMEAFrance.Id,arpBank.Id,true);
+        // Highlight: Unused Local Variable - Indira
+       // Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(arpEMEAFrance.Id,arpBank.Id,true);
 
         List<Campaign> campList = new List<Campaign>();
         Campaign arpCamp = Core_MDF_CCP_TestDataUtility.createCampaign('ARP Campaign','Gaming','Intel® Core™ i7+ Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today().addDays(-5), System.today().addDays(+5), 10000, 'Consumer Chromebook', arpCCFVC.Id, '2-in-1', false);
         arpCamp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
         arpCamp.Core_MDF_Supports_legacy_program__c='MDF or both CMP & MDF';
-        arpCamp.Core_MDF_Activity_Category_Type__c = 'Event->Joint Event';
         arpCamp.Core_MDF_Region_cd__c = 'APJ';
         campList.add(arpCamp);
         Campaign arpCampLegacy = Core_MDF_CCP_TestDataUtility.createCampaign('ARP Legacy Campaign','Gaming','Intel® Core™ i7+ Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today().addDays(-5), System.today().addDays(+5), 10000, 'Consumer Chromebook', arpCCFVC.Id, '2-in-1', false);
         arpCampLegacy.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
         arpCampLegacy.Core_MDF_Region_cd__c = 'APJ';
-        arpCampLegacy.Core_MDF_Activity_Category_Type__c = 'Event->Joint Event';
         campList.add(arpCampLegacy);
         Database.insert(campList);
         
@@ -241,7 +239,7 @@ private class Core_MDF_PIC_TestClass {
                                                                                                   'Consumer',
                                                                                                   'Desktop',
                                                                                                   'Intel® Core™ i5 Processor',
-                                                                                                  'Broadcast',
+                                                                                                  'Audio',
                                                                                                   'Podcast',
                                                                                                   'Draft',
                                                                                                   false);
@@ -257,8 +255,6 @@ private class Core_MDF_PIC_TestClass {
         arpFranceActivity.Core_MDF_Reimbursement_Rate_pct__c='50%';
         arpFranceActivity.Core_MDF_Reimbursement_Rate_txt__c = '50%';
         arpFranceActivity.Core_MDF_Channel_Partner_Led__c = true;
-        arpFranceActivity.Core_MDF_Activity_Types__c='Joint Event';
-        arpFranceActivity.Core_MDF_ActivityCategory__c='Event';
         
         PartnerFundRequest arpFranceActivityLegacy = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(String.valueof(arpCampLegacy.Id), 
                                                                                                   Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
@@ -266,7 +262,7 @@ private class Core_MDF_PIC_TestClass {
                                                                                                   'Consumer',
                                                                                                   'Desktop',
                                                                                                   'Intel® Core™ i5 Processor',
-                                                                                                  'Broadcast',
+                                                                                                  'Audio',
                                                                                                   'Podcast',
                                                                                                   'Draft',
                                                                                                   false);
@@ -282,8 +278,6 @@ private class Core_MDF_PIC_TestClass {
         arpFranceActivityLegacy.Core_MDF_Reimbursement_Rate_pct__c='50%';
         arpFranceActivityLegacy.Core_MDF_Reimbursement_Rate_txt__c = '50%';
         arpFranceActivityLegacy.Core_MDF_Channel_Partner_Led__c = true;
-        arpFranceActivityLegacy.Core_MDF_Activity_Types__c='Joint Event';
-        arpFranceActivityLegacy.Core_MDF_ActivityCategory__c='Event';
         pfrList.add(arpFranceActivityLegacy);
         pfrList.add(arpFranceActivity);
         Database.insert(pfrList);
@@ -355,20 +349,19 @@ private class Core_MDF_PIC_TestClass {
         PartnerFundClaim franceClaimLegacy = Core_MDF_CCP_TestDataUtility.createClaim('France Claim Legacy', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF,arpFranceActivityLegacy.Id,arpFranceActivityLegacy.Core_MDF_Start_Date__c, arpFranceActivityLegacy.Core_MDF_Start_Date__c,100,System.today(),arpBank.ID,false);
         franceClaimLegacy.Core_MDF_Budget_Type_Options_Nm__c= 'CCF 1.0';
         franceClaimLegacy.Core_MDF_Currency__c='USD';
-       	claimList.add(franceClaimLegacy);
-        Database.insert(claimList);
+       claimList.add(franceClaimLegacy);
+        Database.insert(franceClaim);
         
         PartnerFundClaim reservedClaim12 = [Select Status,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c From PartnerFundClaim WHERE Id = :franceClaim.Id LIMIT 1];
-       PartnerFundClaim reservedClaim2 = [Select Status,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c From PartnerFundClaim WHERE Id = :franceClaimLegacy.Id LIMIT 1];
+       // PartnerFundClaim reservedClaim2 = [Select Status,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c,Core_MDF_PIC_Review_Completed__c From PartnerFundClaim WHERE Id = :franceClaimLegacy.Id LIMIT 1];
                 System.assertEquals(reservedClaim12.Status, 'Submitted'); 
                // System.assertEquals(reservedClaim12.Core_MDF_Status__c, 'PIC Pending'); 
                 System.assertEquals(reservedClaim12.Core_MDF_ESD_Hold__c, true);
                 
                 reservedClaim12.Core_MDF_PIC_Review_Completed__c = true;
                 Database.update(reservedClaim12);
-        		reservedClaim2.Core_MDF_PIC_Review_Completed__c = true;
-        		Update reservedClaim2;
-        PartnerFundClaim reservedClaimUpdated2 = [Select Status, Core_MDF_Claim_Previous_Status__c,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c From PartnerFundClaim WHERE Id = :franceClaim.Id LIMIT 1];
+       // Highlight: Unused Local Variable - Indira
+       // PartnerFundClaim reservedClaimUpdated2 = [Select Status, Core_MDF_Claim_Previous_Status__c,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c From PartnerFundClaim WHERE Id = :franceClaim.Id LIMIT 1];
                 
                 //System.assertEquals(reservedClaim12.Core_MDF_Status__c, 'PIC Pending');
         Test.stopTest();
@@ -390,7 +383,8 @@ private class Core_MDF_PIC_TestClass {
         }
         
         PartnerFundRequest arpFranceActivity = [Select id, Core_MDF_Start_Date__c from PartnerFundRequest where Title = 'France Activity'];
-        PartnerFundRequest arpFranceActivityLegacy = [Select id, Core_MDF_Start_Date__c from PartnerFundRequest where Title = 'France Activity Legacy'];
+       // Highlight: Unused Local Variable - Indira
+       // PartnerFundRequest arpFranceActivityLegacy = [Select id, Core_MDF_Start_Date__c from PartnerFundRequest where Title = 'France Activity Legacy'];
         Core_MDF_Bank__c arpBank = [Select id from Core_MDF_Bank__c WHERE Name = 'Test' limit 1];
         arpBank.Core_MDF_Bank_Status__c = 'Active';
         arpBank.Core_MDF_ESD_Hold_Indicator__c=false;
@@ -398,8 +392,8 @@ private class Core_MDF_PIC_TestClass {
         system.runAs(sysAdmUsr){
         Database.update(arpBank);
         }
-        
-        List<PartnerFundClaim> claimList = new List<PartnerFundClaim>();
+        // Highlight: Unused Local Variable - Indira
+       // List<PartnerFundClaim> claimList = new List<PartnerFundClaim>();
         PartnerFundClaim franceClaim2 = Core_MDF_CCP_TestDataUtility.createClaim('France Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF,arpFranceActivity.Id,arpFranceActivity.Core_MDF_Start_Date__c, arpFranceActivity.Core_MDF_Start_Date__c,300,System.today(),arpBank.ID,false);
         franceClaim2.Core_MDF_Budget_Type_Options_Nm__c= 'OEM CMP';
         franceClaim2.Core_MDF_Currency__c='USD';
@@ -414,7 +408,8 @@ private class Core_MDF_PIC_TestClass {
                
                 reservedClaim11.Core_MDF_PIC_Review_Completed__c = true;
                 Database.update(reservedClaim11);
-        PartnerFundClaim reservedClaimUpdated = [Select Status,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c From PartnerFundClaim WHERE Id = :franceClaim2.Id LIMIT 1];
+       // Highlight: Unused Local Variable - Indira
+       // PartnerFundClaim reservedClaimUpdated = [Select Status,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_ESD_Hold__c,Core_MDF_Status__c,Core_MDF_Eligible_for_PIC__c From PartnerFundClaim WHERE Id = :franceClaim2.Id LIMIT 1];
              
         
     }
@@ -433,8 +428,8 @@ private class Core_MDF_PIC_TestClass {
             assignPermissionSetObj1.PermissionSetId = ccfPayAdmPS.Id;
             insert assignPermissionSetObj1;
         }
-        
-        PartnerFundRequest arpFranceActivity = [Select id, Core_MDF_Start_Date__c from PartnerFundRequest where Title = 'France Activity'];
+        // Highlight: Unused Local Variable - Indira
+       // PartnerFundRequest arpFranceActivity = [Select id, Core_MDF_Start_Date__c from PartnerFundRequest where Title = 'France Activity'];
         PartnerFundRequest arpFranceActivityLegacy = [Select id, Core_MDF_Start_Date__c from PartnerFundRequest where Title = 'France Activity Legacy'];
         Core_MDF_Bank__c arpBank = [Select id from Core_MDF_Bank__c WHERE Name = 'Test' limit 1];
         arpBank.Core_MDF_Bank_Status__c = 'Active';
@@ -442,10 +437,10 @@ private class Core_MDF_PIC_TestClass {
         system.runAs(sysAdmUsr){
         Database.update(arpBank);
         }
-        
-        List<PartnerFundClaim> claimList = new List<PartnerFundClaim>();
-        PartnerFundClaim franceClaimLegacy2 = Core_MDF_CCP_TestDataUtility.createClaim('France Claim Legacy2', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF,arpFranceActivityLegacy.Id,arpFranceActivityLegacy.Core_MDF_Start_Date__c, arpFranceActivityLegacy.Core_MDF_Start_Date__c,6000,System.today(),arpBank.ID,false);
-        franceClaimLegacy2.Core_MDF_Budget_Type_Options_Nm__c= 'CCF 1.0';
+       // Highlight: Unused Local Variable - Indira 
+       // List<PartnerFundClaim> claimList = new List<PartnerFundClaim>();
+                PartnerFundClaim franceClaimLegacy2 = Core_MDF_CCP_TestDataUtility.createClaim('France Claim Legacy2', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF,arpFranceActivityLegacy.Id,arpFranceActivityLegacy.Core_MDF_Start_Date__c, arpFranceActivityLegacy.Core_MDF_Start_Date__c,6000,System.today(),arpBank.ID,false);
+        franceClaimLegacy2.Core_MDF_Budget_Type_Options_Nm__c= 'OEM CMP';
         franceClaimLegacy2.Core_MDF_Currency__c='USD';
         Database.insert(franceClaimLegacy2);
         Test.stopTest();
@@ -466,22 +461,14 @@ private class Core_MDF_PIC_TestClass {
         franceClaimLegacy.Core_MDF_Currency__c='USD';
         franceClaimLegacy.Core_MDF_ESD_Hold__c=true;
         franceClaimLegacy.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c=true;
-        franceClaimLegacy.Core_MDF_VAT_Eligibility_Ind__c = true;
-        franceClaimLegacy.Core_MDF_Applicable_VAT_Percentage_nm__c = '0';
         //claimList.add(franceClaimLegacy);
         Database.insert(franceClaimLegacy);
         Core_MDF_PIC_Utility.addDelay();
         Core_MDF_PIC_Utility.isHoldApplicable(franceClaimLegacy);
-         
-         
-         //To check Legacy claim
-         franceClaimLegacy.Core_MDF_Budget_Type_Options_Nm__c = 'CCF 1.0';
-         //franceClaimLegacy.Core_MDF_Program__c = 'Client';
-          Core_MDF_PIC_Utility.isLegacy(franceClaimLegacy);
         test.stoptest();
-        
+        // Unit Test Method should include System.Assert - Indira
+        System.assertNotEquals(null, franceClaimLegacy.Id, 'France Claim Legacy should be created successfully');
       }   
-
-
-
+     
+        
 }

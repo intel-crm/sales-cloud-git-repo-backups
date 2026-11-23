@@ -67,7 +67,7 @@
             <value>Cancelled,Production Cancelled</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -98,8 +98,8 @@
             <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Bettina Smithson,DJ Gianduso,Daggu Bhargavi,Chloe Steel</value>
+            <operator>equals</operator>
+            <value>Bettina Smithson</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -159,7 +159,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2024-12-27</endDate>
+        <endDate>2021-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2017-01-01</startDate>
     </timeFrameFilter>

@@ -45,9 +45,8 @@ private class Core_Contact_AccountChange_Handler_test {
             objAcc.BillingStreet = '13254 E vookbrrok dfdsf';
             objAcc.Core_CNDA_Number__c = '123456';
             objAcc.Core_English_Only_Name__c='englishtestname';
-            objAcc.RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
             insert objAcc; 
-            //System.assertNotEquals(null, objAcc.Id);
+            System.assertNotEquals(null, objAcc.Id);
             
             Account objAcc1 = new Account();
             objAcc1.Name = 'test1';
@@ -63,7 +62,6 @@ private class Core_Contact_AccountChange_Handler_test {
             objAcc1.BillingStreet = '13254 E vookbrrok dfdsf';
             objAcc1.Core_CNDA_Number__c = '1234567';
             objAcc1.Core_English_Only_Name__c='englishtestname';
-            objAcc1.RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
             insert objAcc1; 
             System.assertNotEquals(null, objAcc1.Id);
             
@@ -72,14 +70,9 @@ private class Core_Contact_AccountChange_Handler_test {
             Contact objCon = new Contact();
             objCon.FirstName = 'TestCon'; 
             objCon.LastName = 'TestCon1'; 
-            objCon.AccountId = objAcc1.id;
+            objCon.AccountId = objAcc.id;
             objCon.Email = 'testcontactx@test.com';
             objCon.Core_Contact_B2B_Indicator__c = true;
-            objCon.MailingCountry='USA';
-            objCon.Core_Personal_Email_Indicator__c = true;
-            objCon.Core_Enterprise_Id__c='12345';
-            objCon.Core_ERPM_Integration_Status__c = 'Pending';
-            objCon.Core_eRPM_Person_Id__c = '111111';
             conlist.add(objCon);
             
             insert conlist;
@@ -335,15 +328,13 @@ private class Core_Contact_AccountChange_Handler_test {
         
         List<Contact> lstCon=new List<Contact>();
         Contact testContact1 = new Contact(FirstName='testFirstName123', LastName='test', Email='test123@testing.com.test',
-                                           AccountId=testAccount.Id,Core_Personal_Email_Indicator__c=true,Core_Set_ERPM_Status_Bypass__c=true,MailingCountry='USA',
-                                         Core_Enterprise_Id__c='12345',Core_ERPM_Integration_Status__c = 'Pending',Core_eRPM_Person_Id__c = '111111');
+                                           AccountId=testAccount.Id,Core_Personal_Email_Indicator__c=true,Core_Set_ERPM_Status_Bypass__c=true);
         insert testContact1;
         System.assert(true,testContact1.Core_Personal_Email_Indicator__c!= null);
         lstCon.add(testContact1);
         
         Contact testContact2 = new Contact(FirstName='testFirstName1234', LastName='test', Email='test1234@testing.com.test',
-                                           AccountId=testAccount3.Id,Core_Personal_Email_Indicator__c=true,Core_Set_ERPM_Status_Bypass__c=true,MailingCountry='USA',
-                                         Core_Enterprise_Id__c='12345',Core_ERPM_Integration_Status__c = 'Pending',Core_eRPM_Person_Id__c = '111111');
+                                           AccountId=testAccount3.Id,Core_Personal_Email_Indicator__c=true,Core_Set_ERPM_Status_Bypass__c=true);
         insert testContact2;
         system.assertequals(testContact2.FirstName,'testFirstName1234');
         lstCon.add(testContact2);
@@ -466,8 +457,7 @@ private class Core_Contact_AccountChange_Handler_test {
                 system.assertNOTEquals(null,testAccount.id);
                   
                  Contact testContact1 = new Contact(FirstName='testFirstName123', LastName='test', Email='test123@testing.com.test',
-                                           AccountId=testAccount.Id,Core_Personal_Email_Indicator__c=true,Core_Set_ERPM_Status_Bypass__c=true,
-                                           MailingCountry='USA',Core_Enterprise_Id__c='12345',Core_ERPM_Integration_Status__c = 'Pending',Core_eRPM_Person_Id__c = '111111');
+                                           AccountId=testAccount.Id,Core_Personal_Email_Indicator__c=true,Core_Set_ERPM_Status_Bypass__c=true);
                 insert testContact1;
                 System.assert(true,testContact1.Core_Personal_Email_Indicator__c!= null);
                 // Create Case
@@ -479,7 +469,7 @@ private class Core_Contact_AccountChange_Handler_test {
                 
                 }
                 insert ListOfCases;
-                //System.debug('Object msg :'+ListOfCases);
+                system.debug('Object msg :'+ListOfCases);
           
                 Account testAccount2 = new Account(Name='testAccount12345', Core_Sales_Group__c='Global Accounts',
                                           Core_Account_Type__c='Other', Industry='Others',
@@ -499,11 +489,11 @@ private class Core_Contact_AccountChange_Handler_test {
                 
                 
                 try{
-                    //System.debug('Object msg: befor Update'+testContact1);
+                    system.debug('Object msg: befor Update'+testContact1);
                     testContact1.accountId=testAccount2.id;
                     testContact1.Core_Account_Changeable__c=true;
                     update testContact1;
-                    //System.debug('Object msg: after Update '+testContact1);
+                    system.debug('Object msg: after Update '+testContact1);
                 
                 }catch(Exception ex){
                     System.assertEquals(StatusCode.FIELD_CUSTOM_VALIDATION_EXCEPTION, ex.getDmlType(0));
@@ -565,22 +555,19 @@ private class Core_Contact_AccountChange_Handler_test {
                 system.assertNOTEquals(null,testAccount.id);
                   
                  Contact testContact1 = new Contact(FirstName='testFirstName123', LastName='test', Email='test123@testing.com.test',
-                                           AccountId=testAccount.Id,Core_Personal_Email_Indicator__c=true,Core_Set_ERPM_Status_Bypass__c=true,Core_ERPM_Integration_Status__c ='Failed',Core_AGS_Integration_Status__c='Failed', Core_Entitlement_Assignment_Status__c='Failed',
-                                           MailingCountry='USA',
-                                         Core_Enterprise_Id__c='12345',Core_eRPM_Person_Id__c = '111111');
+                                           AccountId=testAccount.Id,Core_Personal_Email_Indicator__c=true,Core_Set_ERPM_Status_Bypass__c=true,Core_ERPM_Integration_Status__c ='Failed',Core_AGS_Integration_Status__c='Failed');
                 insert testContact1;
                 System.assert(true,testContact1.Core_Personal_Email_Indicator__c!= null);
                 try{
-                    //System.debug('Object msg: befor Update'+testContact1);
+                    system.debug('Object msg: befor Update'+testContact1);
                     testContact1.Core_ERPM_Integration_Status__c ='pending';
                     testContact1.Core_AGS_Integration_Status__c='pending';
-                    testContact1.Core_Entitlement_Assignment_Status__c='pending';
                     
                     update testContact1;
-                    //System.debug('Object msg: after Update '+testContact1);
+                    system.debug('Object msg: after Update '+testContact1);
                 
                 }catch(Exception ex){
-                     //System.debug('Error :'+ex);
+                     system.debug('Error :'+ex);
                   
                 }
         }

@@ -1,0 +1,11 @@
+<messaging:emailTemplate subject="test" recipientType="User" language="{!recipient.LanguageLocaleKey}"  >
+<messaging:plainTextEmailBody >
+Localized::
+{!$Label.Core_MDF_EmailTemp_StatusUpdate_DearMember}
+
+
+English::
+Congratulations!
+This is your new Visualforce Email Template.
+</messaging:plainTextEmailBody>
+</messaging:emailTemplate>

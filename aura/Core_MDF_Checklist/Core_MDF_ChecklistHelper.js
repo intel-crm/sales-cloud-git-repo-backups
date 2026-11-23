@@ -11,6 +11,7 @@
         //AI Audit changes
 	    helper.callServer(component, "c.getCaseStatus", (response) => {
             component.set('v.caseStatus',response);
+             console.log('Inside queryalllchecklit-> before audit called'+JSON.stringify(response));
             // Only call AI audit status if case status is "Under Review"
             if (response === "Under Review") {
                 helper.getAIAuditStatus(component, helper, event);
@@ -19,6 +20,7 @@
 		//Check if the logged in user is a Claim Case Reviewer / Manager [Checklist Enhancements v2 - US488875: [Checklist] HIGH: Assign additional Case Checklist permissions to Finance users]
         helper.callServer(component, "c.checkEditability", (response) => {component.set('v.isAClaimCaseReviewerOrManager',response);},{}, helper,event);
         helper.callServer(component, "c.calculateChecklistCompletion", (response) => {component.set('v.checklistCompletionPer',response);}, {caseRecord : caseId}, helper,event);
+
     },
     //This method is called to record the checklist inputs to the DB
     updateChecklistRecords: function (component,event, helper) {
@@ -26,8 +28,17 @@
         var impactAmountMap =component.get("v.impactAmount");
         var commentMap =component.get("v.commentCopy");
         var caseId =component.get("v.recordId");
+        var errorflag = false;
+        var errormessage = 'Error Occured!!';
 
-        helper.callServer(component, "c.updateChecklistRecords", (response) => {component.set('v.checklistCompletion',response);}, {checklistSelection : checklistMap,impactAmount : impactAmountMap, comments: commentMap, caseRecord:caseId}, helper,event);
+        helper.callServer(component, "c.updateChecklistRecords", (response) => { 
+            if(response!=null || response!=undefined){
+                 component.set('v.checklistCompletion',response);
+            }
+            else{
+                 component.set('v.errorflag',true);
+                          }
+                          ;}, {checklistSelection : checklistMap,impactAmount : impactAmountMap, comments: commentMap, caseRecord:caseId}, helper,event);
     },
     //Checklist Enhancements v1 - US458776: [Case: Edit] Automatic Status for Checklist Results
     updateCaseStatus: function (component,event, helper) {
@@ -92,13 +103,17 @@
                 console.log('method' + method);
                 console.log('from callback' + component.get('v.isAClaimCaseReviewerOrManager'));
                 if(method == 'c.updateChecklistRecords'){ 
+                    if(component.get('v.errorflag')==true){$A.get('e.force:refreshView').fire(); helper.showToast($A.get("$Label.c.Core_MDF_ApplicationErrorMessage"),1);}
+                    else{
                     if(component.get('v.checklistCompletion')!=100){$A.get('e.force:refreshView').fire(); helper.showToast();}
                     //Checklist Enhancements v1 - US458776: [Case: Edit] Automatic Status for Checklist Results
                     if(component.get('v.checklistCompletion') == 100){
             		helper.callServer(component, "c.calculateCaseStatus", (response) => {component.set('v.caseStatusChange',response);}, {caseRecord : component.get("v.recordId"), performUpdate: false}, helper,event);
         			}
                     
-                    if(!component.set('v.caseStatusChange')){$A.get('e.force:refreshView').fire(); helper.showToast();}
+                        if(!component.set('v.caseStatusChange')){$A.get('e.force:refreshView').fire(); helper.showToast();}}
+                  
+                    
                 }
                 //Checklist Enhancements v1 - US458776: [Case: Edit] Automatic Status for Checklist Results
                 if(method == 'c.calculateCaseStatus' && component.get('v.caseStatusChange')== true && component.get('v.performUpdate')!= true){component.set("v.isOpen", true);}
@@ -108,6 +123,7 @@
             else if (state === "ERROR") {
                 // generic error handler
                 var errors = response.getError();
+                console.log('errors',errors);
                 if (errors) {
                     if (errors[0] && errors[0].message) {
                         helper.showToast(errors[0].message,1);

@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>THALES OPTRONIQUE CANADA Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>THALESOPTRONIQUECANADACustomerManager</parentRole>
 </Role>

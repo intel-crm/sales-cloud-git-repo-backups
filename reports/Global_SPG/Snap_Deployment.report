@@ -42,6 +42,9 @@
         <sourceColumnName>INDUSTRY</sourceColumnName>
         <useOther>true</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Technology</sourceValue>
+            </sourceValues>
             <value>Cloud</value>
         </values>
         <values>

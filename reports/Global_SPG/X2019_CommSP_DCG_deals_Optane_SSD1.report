@@ -34,7 +34,7 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
+        <field>Opportunity.Core_Oppty_Count__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Solution_Area__c</field>
@@ -86,7 +86,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>Service Provider,Telco/Service Provider,Comm Service Provider (CoSP)</value>
+            <value>Service Provider,Telco/Service Provider</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Commissionable__c</column>
@@ -115,13 +115,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>0</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>nokia,genesys,ringcentral,dynamic computing</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -165,6 +158,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_PREVFY</interval>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

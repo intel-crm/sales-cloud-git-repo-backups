@@ -44,13 +44,19 @@ public without sharing class Core_MDF_Scorecard_ServiceHandler {
     public static Map<decimal,decimal> queryRecoveryScores(){
         Map<decimal,decimal> scoreToRecovery = new Map<decimal,decimal>();
         try{        
+            /*for(Core_MDF_Recovery_Percentages__mdt record: [select Core_MDF_Score_Nbr__c,Core_MDF_Recovery_Pct__c from Core_MDF_Recovery_Percentages__mdt]){
+                scoreToRecovery.put(integer.valueOf(record.Core_MDF_Score_Nbr__c) , integer.valueOf(record.Core_MDF_Recovery_Pct__c));
+            } */
+            //Core_MDF_Custom_Label_Configration__mdt cf=[Select id,QualifiedApiName, Core_MDF_Value_Txt__c from Core_MDF_Custom_Label_Configration__mdt where QualifiedApiName ='Core_MDF_RecoveryPercentagesJson'];
             String recoveryScoresJson = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_RecoveryPercentagesJson');
-	     Map<String, Object> jsonMap = (Map<String, Object>)JSON.deserializeUntyped(recoveryScoresJson);
+			Map<String, Object> jsonMap = (Map<String, Object>)JSON.deserializeUntyped(recoveryScoresJson);
+			
              for(String key:jsonMap.keySet()){
                  Decimal k = Decimal.valueOf(key);
                  Decimal v = (Decimal)jsonMap.get(key);
                  scoreToRecovery.put(k,v);
              }
+			
         }
         catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);} 
         return scoreToRecovery;   
@@ -71,6 +77,29 @@ public without sharing class Core_MDF_Scorecard_ServiceHandler {
            
         }
         catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);} 
+    }
+    
+    public static void updateDependantFields(List<Core_MDF_Scorecard__c> scoreCardRecords, Map<Id,Core_MDF_Scorecard__c> oldMap){
+        try{
+            Map<Id,Core_MDF_Scorecard__c> idToScoreCardMap = new Map<Id,Core_MDF_Scorecard__c>();
+            
+            for(Core_MDF_Scorecard__c score : scoreCardRecords){
+                if(oldMap != null && (oldMap.get(score.Id).Core_MDF_Attribution_Nbr__c != score.Core_MDF_Attribution_Nbr__c 
+                                   || oldMap.get(score.Id).Core_MDF_Engagement_Nbr__c != score.Core_MDF_Engagement_Nbr__c
+                                   || oldMap.get(score.Id).Core_MDF_Manual_Recovery_Amount_USD_Amt__c != score.Core_MDF_Manual_Recovery_Amount_USD_Amt__c
+                                   || oldMap.get(score.Id).Core_MDF_POP__c != score.Core_MDF_POP__c)){
+                    idToScoreCardMap.put(score.Core_MDF_Case_Id__c,score);
+                }
+            }
+            
+            if(!idToScoreCardMap.isEmpty()){
+                //List<Core_MDF_Escalation__c> 
+            }
+            
+            
+        }catch(Exception ex){
+            Core_MDF_CCP_UtilityClass.logError(ex);
+        }
     }
    
 }

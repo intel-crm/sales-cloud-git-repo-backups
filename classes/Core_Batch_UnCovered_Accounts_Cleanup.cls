@@ -42,17 +42,7 @@ global class Core_Batch_UnCovered_Accounts_Cleanup implements Database.Batchable
         batchProcessing.Core_Batch_Query__c = query;            
         batchProcessing.Core_Object_Name__c = 'Account';            
         batchProcessing.Core_Start_Date_Time__c = jobRunTime; 
-        if( (Schema.sObjectType.Core_Batch_Processing__c.fields.Batch_Header__C.isCreateable() && 
-        Schema.sObjectType.Core_Batch_Processing__c.fields.Core_Email_Distribution_List__c.isCreateable() &&
-        Schema.sObjectType.Core_Batch_Processing__c.fields.Core_Salesforce_Job_Id__c.isCreateable() &&
-        Schema.sObjectType.Core_Batch_Processing__c.fields.Core_Batch_Query__c.isCreateable() &&
-        Schema.sObjectType.Core_Batch_Processing__c.fields.Core_Object_Name__c.isCreateable() &&
-        Schema.sObjectType.Core_Batch_Processing__c.fields.Core_Start_Date_Time__c.isCreateable() )||
-        Test.isRunningTest() )
-        {
-
-            insert batchProcessing;
-        }
+        insert batchProcessing;
         Database.QueryLocator uncoveredAccounts = Database.getQueryLocator(query);
         return uncoveredAccounts;
         
@@ -134,15 +124,8 @@ global class Core_Batch_UnCovered_Accounts_Cleanup implements Database.Batchable
             batchline.Object_Type__c = 'Account';            
             batchline.Core_Number_of_Updates__c = batchRecCount; 
             batchline.Exception_Log__c='Total failed records: '+failedRecordCount;
-            batchline.Core_Change_Log__c=errorString;    
-            if(Schema.sObjectType.Batch_Processing_Line_Item__c.fields.Batch_Processing__c.isCreateable() &&
-            Schema.sObjectType.Batch_Processing_Line_Item__c.fields.Object_Type__c.isCreateable() &&
-            Schema.sObjectType.Batch_Processing_Line_Item__c.fields.Core_Number_of_Updates__c.isCreateable() &&
-            Schema.sObjectType.Batch_Processing_Line_Item__c.fields.Exception_Log__c.isCreateable() &&
-            Schema.sObjectType.Batch_Processing_Line_Item__c.fields.Core_Change_Log__c.isCreateable()){
-                  
-                insert batchline;
-            }
+            batchline.Core_Change_Log__c=errorString;                      
+            insert batchline;
         
         } catch(Exception e){      
           batchProcessing.Core_Exception_Log__c= e.getMessage();
@@ -162,7 +145,7 @@ global class Core_Batch_UnCovered_Accounts_Cleanup implements Database.Batchable
         batchProcessing.Core_Batch_Size__c = batchSize;        
         batchProcessing.Core_Send_Email__c = true;                
         update batchProcessing;     
-        Messaging.SingleEmailMessage email =new Messaging.SingleEmailMessage(); 
+        Messaging.SingleEmailMessage email =new Messaging.SingleEmailMessage();        
         list<string> emailRecipientlist=new list<string>();
         for (Core_Uncover_Account_Batch_Recipient__c usEmail : Core_Uncover_Account_Batch_Recipient__c.getAll().values()){
              if(string.isnotblank(usEmail.Core_Recipient_Email1__c)){
@@ -175,10 +158,6 @@ global class Core_Batch_UnCovered_Accounts_Cleanup implements Database.Batchable
         email.setSubject(subject);
         email.setToAddresses(emailRecipientlist);
         email.setPlainTextBody('The batch Apex job processed '+ a.TotalJobItems +' batches with '+ a.NumberOfErrors +' failures and extended tatus : '+a.ExtendedStatus );
-        OrgWideEmailAddress[] owea = [select Id from OrgWideEmailAddress where Address = 'wsm-postmaster@intel.com'LIMIT 1 ];
-                if ( owea.size() > 0 ) {
-                    email.setOrgWideEmailAddressId(owea.get(0).Id);
-                }
         Messaging.SendEmailResult [] r = Messaging.sendEmail(new Messaging.SingleEmailMessage[] {email});      
     }
     /***********************************************************************************************/

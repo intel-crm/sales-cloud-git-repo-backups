@@ -20,10 +20,14 @@
     <tabs>standard-Asset</tabs>
     <tabs>Account_Meeting_Brief__c</tabs>
     <tabs>standard-ProfilePlatformFeed</tabs>
+    <tabs>DFSS_SnapShot_Push__c</tabs>
     <tabs>Account_Meeting_Summary</tabs>
+    <tabs>BLND_TableTop</tabs>
     <tabs>standard-OtherUserProfile</tabs>
     <tabs>standard-Order</tabs>
     <tabs>standard-ProfilePlatformOverview</tabs>
+    <tabs>BLND_Snapshot</tabs>
+    <tabs>BLND_Monarch</tabs>
     <tabs>Core_AccountCoverage_Export__c</tabs>
     <tabs>standard-Campaign</tabs>
     <tabs>standard-Idea</tabs>
@@ -60,15 +64,21 @@
     <tabs>standard-DuplicateRecordSet</tabs>
     <tabs>GBLite__Buy_GridBuddy</tabs>
     <tabs>GBLite__All_Grids</tabs>
+    <tabs>APXTConga4__Conga_Template__c</tabs>
     <tabs>Core_Tab_Newsfeeds</tabs>
     <tabs>MaritzCX__Allegiance_Configuration_Settings</tabs>
     <tabs>standard-AppLauncher</tabs>
+    <tabs>APXTConga4__Conga_Setup</tabs>
     <tabs>standard-Solution</tabs>
     <tabs>MaritzCX__Survey_Response__c</tabs>
     <tabs>MaritzCX__Survey_Question__c</tabs>
+    <tabs>APXTConga4__CongaMerge</tabs>
+    <tabs>APXTConga4__About_Conga_Composer</tabs>
     <tabs>Core_IPS_Backend_Field_Mapping__c</tabs>
+    <tabs>APXTConga4__Conga_Merge_Query__c</tabs>
     <tabs>Core_Opportunity_Stages</tabs>
     <tabs>Core_IPS_Backend_Supported_Product_Map__c</tabs>
+    <tabs>APXTConga4__Conga_Email_Template__c</tabs>
     <tabs>Core_Opportunity_Review</tabs>
     <tabs>Core_IPS_Backend_System__c</tabs>
     <tabs>Core_Opportunity_Teams</tabs>
@@ -79,4 +89,20 @@
     <tabs>Ask_a_Question</tabs>
     <tabs>Core_Channel_Sales_Analysis</tabs>
     <tabs>Core_Opportunity_Search</tabs>
+    <tabs>Power_BI_Report</tabs>
+    <tabs>Core_Security_Dashboard_Metric__c</tabs>
+    <tabs>SCRTY_Admin_Permission_Metrics__c</tabs>
+    <tabs>Core_MDF_Record_Tracking__c</tabs>
+    <tabs>Core_MDF_Partnership_Score__c</tabs>
+    <tabs>Core_MDF_PICReviewQuestion__c</tabs>
+    <tabs>Core_MDF_Recovery__c</tabs>
+    <tabs>In_App_Feedback__c</tabs>
+    <tabs>Core_MDF_Survey_Question__c</tabs>
+    <tabs>Core_MDF_Spending_Targets_Version__c</tabs>
+    <tabs>Core_MDF_Subscription_Notification_Type__c</tabs>
+    <tabs>Core_MDF_User_Notification_Subscriptions__c</tabs>
+    <tabs>Core_MDF_Custom_Utility_Config__c</tabs>
+    <tabs>Core_MDF_Exception_Account_Mapping__c</tabs>
+    <tabs>Core_MDF_Campaign_Outcomes__c</tabs>
+    <tabs>Support_Ticket__c</tabs>
 </CustomApplication>

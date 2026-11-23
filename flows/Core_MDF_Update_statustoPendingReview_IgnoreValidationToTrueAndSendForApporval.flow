@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Core_MDF_Check_If_Approval_Process_Bypassed</name>
+        <label>Check If Approval Process Bypassed</label>
+        <locationX>363</locationX>
+        <locationY>302</locationY>
+        <defaultConnectorLabel>NO</defaultConnectorLabel>
+        <rules>
+            <name>Is_Approval_Process_Bypassed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Core_MDF_Fetch_Budget.Core_MDF_IsApprovalProcessBypassed_Ind__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <interviewLabel>Update status to Pending Review_IgnoreValidationToTru and {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update status to Pending Review_IgnoreValidationToTrue and SendForApporval</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Fetch Budget Record</description>
+        <name>Core_MDF_Fetch_Budget</name>
+        <label>Fetch Budget</label>
+        <locationX>176</locationX>
+        <locationY>300</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Core_MDF_Check_If_Approval_Process_Bypassed</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>vBudgetId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>PartnerMarketingBudget</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Core_MDF_Fetch_Budget</targetReference>
+        </connector>
+        <object>PartnerMarketingBudget</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+    <variables>
+        <name>vBudgetId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue></stringValue>
+        </value>
+    </variables>
+</Flow>

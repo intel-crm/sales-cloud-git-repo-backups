@@ -1,0 +1,19 @@
+<aura:component controller="Core_MDF_DownloadReport" implements="force:lightningQuickAction,force:hasRecordId" access="global" >
+	<aura:attribute name="Spinner" type="boolean" default="false"/>
+    <aura:attribute name="isLinkGenerated" type="boolean" default="false"/>
+    <aura:attribute name="isStandardUser" type="boolean" default="false"/>
+    <!--aura:attribute name="urlTobeDownloaded" type="String"/-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:if isTrue="{!v.Spinner}">
+        <div class="slds-spinner_container">
+            <lightning:spinner alternativeText="Loading" size="medium" variant="brand"/>
+        </div>
+    </aura:if>
+    <aura:if isTrue="{!v.isLinkGenerated}">
+       <center><p>Report has been downloaded and attched in Files Related list.</p>
+           <p>Please REFRESH to view it in Files Related List.</p></center>
+    </aura:if>
+     <aura:if isTrue="{!v.isStandardUser}">
+        <center> User doesn't have access to this button.</center>
+    </aura:if>
+</aura:component>

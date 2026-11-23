@@ -583,7 +583,6 @@
         </assignedApprover>
         <description>Level 1 Manager Approval i.e. Activity Submitter&apos;s Manager approval when Amount &gt;= 1M</description>
         <entryCriteria>
-            <booleanFilter>1 AND 2 AND 3</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
@@ -910,7 +909,7 @@
         </rejectionActions>
     </approvalStep>
     <description>Approval Process flow to handle the activity approval process</description>
-    <emailTemplate>Testt/Core_MDF_NotifyActivityApprovers</emailTemplate>
+    <emailTemplate>unfiled$public/Core_MDF_NotifyActivityApprovers</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <booleanFilter>(1 OR 2 OR 3 OR (4 AND 5 )) AND 6</booleanFilter>

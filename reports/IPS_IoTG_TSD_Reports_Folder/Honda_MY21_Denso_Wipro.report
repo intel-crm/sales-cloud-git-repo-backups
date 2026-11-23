@@ -54,9 +54,6 @@
         <field>Case.Core_Last_Case_Comment_Timestamp__c</field>
     </columns>
     <columns>
-        <field>CLOSED_DATE</field>
-    </columns>
-    <columns>
         <field>Case.Core_IPS_Age__c</field>
     </columns>
     <columns>

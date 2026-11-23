@@ -2,12 +2,13 @@
     color : black;
 }
 
+/* Center the header content horizontally and slightly move it to the right */
 .header-center {
     display: flex;
-    align-items: center;      
-    justify-content: center;   
-    gap: 0.5rem;               
-    margin-left: 7rem;         
+    align-items: center;       /* vertically align help text with header */
+    justify-content: center;   /* horizontally center the header + help text */
+    gap: 0.5rem;               /* space between header text and help icon */
+    margin-left: 7rem;         /* move slightly to the right */
 }
 
 .header-text {
@@ -15,72 +16,82 @@
     font-size: 1.125rem;
 }
 
+/* Container for amount field and copy button - inline layout */
 .amount-with-copy {
     display: flex;
     align-items: flex-end;
-    gap: 0.5rem; 
+    gap: 0.5rem; /* Gap for better visibility */
     width: 100%;
-    flex-wrap: nowrap; 
+    flex-wrap: nowrap; /* Prevent wrapping */
 }
 
+/* Amount field - adjusted size for better balance */
 .amount-field {
     flex: 1;
     min-width: 120px;
-    max-width: 55%; 
+    max-width: 55%; /* Increased to give more space to amount field */
 }
 
+/* Copy button container - made smaller */
 .copy-button-container {
-    flex: 0 0 auto; 
+    flex: 0 0 auto; /* Don't grow, don't shrink, auto width */
     flex-shrink: 0;
-    padding-bottom: 0.25rem; 
-    min-width: 160px; 
-    max-width: 45%; 
+    padding-bottom: 0.25rem; /* Align with input field bottom */
+    min-width: 160px; /* Reduced minimum width */
+    max-width: 45%; /* Reduced max width */
 }
 
+/* Custom button wrapper */
 .custom-button-wrapper {
     width: 100%;
 }
 
+/* Custom button with dual icons - smaller size */
 .copy-btn-custom {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.375rem; 
+    gap: 0.375rem; /* Reduced gap between elements */
     white-space: nowrap;
-    min-width: 150px; 
-    height: 2.25rem; 
-    font-size: 0.8125rem; 
+    min-width: 150px; /* Reduced minimum width */
+    height: 2.25rem; /* Slightly reduced height */
+    font-size: 0.8125rem; /* Smaller font size */
     width: 100%;
-    padding: 0.25rem 0.5rem; 
+    padding: 0.25rem 0.5rem; /* Reduced padding */
     border-radius: 0.25rem;
     cursor: pointer;
     transition: all 0.2s ease;
-    overflow: visible; 
+    overflow: visible; /* Ensure button content is visible */
 }
 
+/* Button text - smaller */
 .button-text {
     font-weight: 400;
     color: inherit;
-    flex-shrink: 0; 
-    font-size: 0.8125rem; 
+    flex-shrink: 0; /* Prevent text from shrinking */
+    font-size: 0.8125rem; /* Smaller text */
 }
 
+/* Copy icon styling (first icon) - smaller */
 .copy-icon-inline {
     --slds-c-icon-color-foreground-default: #0176d3;
     flex-shrink: 0;
-    order: 1; 
+    order: 1; /* First position */
 }
 
+/* Eye icon styling (last icon) - smaller */
 .eye-icon-inline {
     --slds-c-icon-color-foreground-default: #0176d3;
     flex-shrink: 0;
-    order: 3; 
+    order: 3; /* Last position */
 }
 
+/* Button text order */
 .button-text {
-    order: 2; 
+    order: 2; /* Middle position */
 }
 
+/* Hover effects */
 .copy-btn-custom:hover {
     background-color: #f3f2f2;
     border-color: #014486;
@@ -95,24 +106,29 @@
     color: #014486;
 }
 
+/* Focus effects */
 .copy-btn-custom:focus {
     outline: none;
     box-shadow: 0 0 3px #0176d3;
 }
 
+/* Active state */
 .copy-btn-custom:active {
     background-color: #e5e5e5;
     transform: translateY(1px);
 }
 
+/* Ensure the input field maintains proper width */
 .amount-field .large-input {
     width: 100%;
 }
 
+/* Force the lightning-input to take full width */
 .amount-field lightning-input {
     width: 100%;
 }
 
+/* Additional responsive adjustments */
 @media (max-width: 768px) {
     .amount-with-copy {
         flex-direction: column;
@@ -130,14 +146,15 @@
         min-width: auto;
         gap: 0.25rem;
         padding: 0.25rem 0.375rem;
-        height: 2rem; 
+        height: 2rem; /* Even smaller on mobile */
     }
     
     .button-text {
-        font-size: 0.75rem; 
+        font-size: 0.75rem; /* Smaller text on mobile */
     }
 }
 
+/* Ensure button is fully visible on smaller containers */
 @media (max-width: 1200px) {
     .amount-field {
         max-width: 50%;
@@ -145,14 +162,15 @@
     
     .copy-button-container {
         max-width: 50%;
-        min-width: 140px; 
+        min-width: 140px; /* Reduced for smaller screens */
     }
     
     .copy-btn-custom {
-        min-width: 130px; 
+        min-width: 130px; /* Reduced minimum width */
     }
 }
 
+/* Extra small button variant - if you want even smaller */
 .copy-btn-custom.extra-small {
     min-width: 130px;
     height: 2rem;

@@ -1,7 +1,7 @@
 <template>
     <div
-        id="listbox-id" style="border-radius: 0rem; border: 1px solid #aeaeae; color: #0068b5; text-transform: capitalize;"
-        class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid"
+        id="listbox-id"
+        class={listboxCssClass}
         role="listbox">
         <ul class="slds-listbox slds-listbox_vertical" role="presentation">
             <template for:each={suggestionsToRender} for:item="suggestion">

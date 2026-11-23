@@ -20,7 +20,7 @@
         <groupingColumn>CLOSE_DATE2</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_TOP</location>
-        <secondaryGroupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</secondaryGroupingColumn>
+        <secondaryGroupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -127,7 +127,7 @@
         <field>OpportunityLineItem.Core_Product_Segment__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Product_Application__c</field>
@@ -304,7 +304,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>DCS SEUR Pending Weighted by BU</name>

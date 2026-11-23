@@ -1,18 +1,22 @@
 <template>
-  <div class="slds-modal__header">
+  <header class="slds-modal__header">
+
+    <!-- <lightning-button-icon icon-name="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large remove-transparency" variant="bare" alternative-text="Close" onclick={onCancel}></lightning-button-icon> -->
+
     <button
-      id="crossCancel"
+    id="crossCancel"
     class="slds-button slds-button_icon slds-modal__close"
-      title="Close"
-      onclick={onCancel}
-    >
-      <lightning-icon
-        id="crossCancelIcon"
-        class="slds-icon"
-        icon-name="utility:close"
-        alternative-text="Close"
-      ></lightning-icon>
-    </button>
+    title="Close"
+    onclick={onCancel}
+  >
+    <lightning-icon
+      id="crossCancelIcon"
+      class="slds-icon"
+      icon-name="utility:close"
+      alternative-text="Close"
+    ></lightning-icon>
+  </button>
+
     <template if:true={isUserToAccountSelected}>
       <h2 id="headerUtoA" class="slds-text-heading--medium">
         {label.userToAccountHeader}
@@ -23,7 +27,8 @@
         {label.accountToUserHeader}
       </h2>
     </template>
-  </div>
+  </header>
+
   <div class="slds-modal__content slds-p-around--large slds-p-bottom_none">
     <div class="slds-grid slds-wrap">
       <div class="slds-col slds-size_2-of-6 slds-p-around_small">

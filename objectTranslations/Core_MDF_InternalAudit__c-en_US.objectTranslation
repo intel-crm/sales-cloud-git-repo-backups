@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Internal Audit</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Internal Audits</value>
+    </caseValues>
+    <fields>
+        <label><!-- Intel Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- Internal Audits --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Auditor --></label>
+        <name>Approver__c</name>
+        <relationshipLabel><!-- Internal Audits (Auditor) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Audit Close Date --></label>
+        <name>Audit_Close_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Audit End Date --></label>
+        <name>Audit_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Audit Start Date --></label>
+        <name>Audit_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Auditor 2 --></label>
+        <name>Auditor2__c</name>
+        <relationshipLabel><!-- Internal Audits (Auditor 2) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Auditor 3 --></label>
+        <name>Auditor3__c</name>
+        <relationshipLabel><!-- Internal Audits (Auditor 3) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Channel Program --></label>
+        <name>Channel_Program__c</name>
+        <relationshipLabel><!-- Internal Audits --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Auditor 10 --></label>
+        <name>Core_MDF_Approver_10_Id__c</name>
+        <relationshipLabel><!-- Internal Audits (Auditor 10) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Auditor 1 --></label>
+        <name>Core_MDF_Approver_1_Id__c</name>
+        <relationshipLabel><!-- Internal Audits (Auditor 1) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Auditor 2 --></label>
+        <name>Core_MDF_Approver_2_Id__c</name>
+        <relationshipLabel><!-- Internal Audits (Auditor 2) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Auditor 3 --></label>
+        <name>Core_MDF_Approver_3__c</name>
+        <relationshipLabel><!-- Internal Audits (Auditor 3) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Auditor 4 --></label>
+        <name>Core_MDF_Approver_4_Id__c</name>
+        <relationshipLabel><!-- Internal Audits (Auditor 4) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Auditor 5 --></label>
+        <name>Core_MDF_Approver_5_Id__c</name>
+        <relationshipLabel><!-- Internal Audits (Auditor 5) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Auditor 6 --></label>
+        <name>Core_MDF_Approver_6_Id__c</name>
+        <relationshipLabel><!-- Internal Audits (Auditor 6) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Auditor 7 --></label>
+        <name>Core_MDF_Approver_7_Id__c</name>
+        <relationshipLabel><!-- Internal Audits (Auditor 7) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Auditor 8 --></label>
+        <name>Core_MDF_Approver_8_Id__c</name>
+        <relationshipLabel><!-- Internal Audits (Auditor 8) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Auditor 9 --></label>
+        <name>Core_MDF_Approver_9_Id__c</name>
+        <relationshipLabel><!-- Internal Audits (Auditor 9) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Audit Now --></label>
+        <name>Core_MDF_Audit_Now__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hold Criteria --></label>
+        <name>Core_MDF_Hold_Criteria_List__c</name>
+        <relationshipLabel><!-- Internal Audits --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- No of User Admin --></label>
+        <name>Core_MDF_No_of_User_Admin__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Generate Document</masterLabel>
+            <translation><!-- Generate Document --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Initiated</masterLabel>
+            <translation><!-- Initiated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reviewed &amp; Closed</masterLabel>
+            <translation><!-- Reviewed &amp; Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Under Review</masterLabel>
+            <translation><!-- Under Review --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status of Approval --></label>
+        <name>Status_of_Approval__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Generate --></label>
+        <name>Generate</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Generate_Document --></label>
+        <name>Generate_Document</name>
+    </webLinks>
+</CustomObjectTranslation>

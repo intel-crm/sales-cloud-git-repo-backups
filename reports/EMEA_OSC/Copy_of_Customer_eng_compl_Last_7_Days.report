@@ -37,6 +37,9 @@
     <columns>
         <field>ACTIVITY_ID</field>
     </columns>
+    <columns>
+        <field>Activity.LID__Date_Sent__c</field>
+    </columns>
     <filter>
         <criteriaItems>
             <column>SUBJECT</column>
@@ -50,16 +53,11 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Natalia Radtke,Andrzej Taraszkiewicz,Antoine Guinebault,Barbara Barusova Maliszewska,Bene Cazzamali,Bruno Le Gallou,Dawid Studzinski,Dilip James,Dmitry Matchin,Dorian Witkowski,Dorota Prokopowicz,Ekaterina Kotelnikova,Emmanuel Le Roux,Galin Dimov,Hesham Elsaid,Joe Martin,Karim Ghatwary,Katarzyna Makowska,Korcan Erguder,Lukasz Balas,Lukasz Chrzanowski,Maciek Osiecki,Magdalena Dunska-Glowka,Magdalena Witke,Marcin Sochacki,Marek Lesiewski,Marta Muszynska,Martin Opara,Michela Adamo,Milosz Cieszynski,Nikolay Panov,Ozkan Ozdikici,Roberto Lipari,Roksana Dylewska,Stephy Savier,Tomasz Czajko,Vladimir Fedorov,Aaron Voelker,Alexey Belogortsev,Ariel Hako,Bartlomiej Olik-Gajewski,Bartłomiej Olik-Gajewski,Kamil Guzik,Katarzyna Bielak,Michal Nowak,Tim Olszewski,Blazej Matusik,Arndt Mitwer,Leszek Grzywacz,Jacek Hadryś</value>
+            <value>Natalia Radtke,Andrzej Taraszkiewicz,Antoine Guinebault,Barbara Barusova Maliszewska,Bene Cazzamali,Bruno Le Gallou,Dawid Studzinski,Dilip James,Dmitry Matchin,Dorian Witkowski,Dorota Prokopowicz,Ekaterina Kotelnikova,Emmanuel Le Roux,Galin Dimov,Hesham Elsaid,Joe Martin,Karim Ghatwary,Katarzyna Makowska,Korcan Erguder,Lukasz Balas,Lukasz Chrzanowski,Maciek Osiecki,Magdalena Dunska-Glowka,Magdalena Witke,Marcin Sochacki,Marek Lesiewski,Marta Muszynska,Martin Opara,Michela Adamo,Milosz Cieszynski,Nikolay Panov,Ozkan Ozdikici,Roberto Lipari,Roksana Dylewska,Stephy Savier,Tomasz Czajko,Vladimir Fedorov,Aaron Voelker,Alexey Belogortsev,Ariel Hako,Bartlomiej Olik-Gajewski,Bartłomiej Olik-Gajewski,Kamil Guzik,Katarzyna Bielak,Michal Nowak,Tim Olszewski</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>ASSIGNED</field>
-        <sortOrder>Desc</sortOrder>
-    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>DUE_DATE</field>
@@ -68,6 +66,11 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>ROLLUP_DESCRIPTION</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ASSIGNED</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Customer eng. compl. Last 30 Days - 2</name>
@@ -91,7 +94,7 @@
     <sortColumn>STATUS</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
-        <dateColumn>DUE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CURPREV1</interval>
     </timeFrameFilter>
 </Report>

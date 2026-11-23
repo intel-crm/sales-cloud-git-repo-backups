@@ -16,6 +16,10 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
+                <field>Core_MDF_Virtual_Corp_Account_Name_nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
                 <field>Core_MDF_Channel_Program_id__c</field>
             </layoutItems>
             <layoutItems>
@@ -31,8 +35,16 @@
                 <field>Core_MDF_Issue_Description_txt__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Root_Cause_nm__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Required</behavior>
                 <field>Core_MDF_Claim_Submitter_Id__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>CheckCustomPermission__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -84,9 +96,9 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>Core_MDF_Escalation__c.Core_MDF_Cancel</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>2</sortOrder>
+            <actionName>Clone</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>0</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>Core_MDF_Escalation__c.Create_Claim</actionName>
@@ -94,9 +106,9 @@
             <sortOrder>1</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Clone</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>0</sortOrder>
+            <actionName>Core_MDF_Escalation__c.Core_MDF_Cancel</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>2</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <quickActionList>

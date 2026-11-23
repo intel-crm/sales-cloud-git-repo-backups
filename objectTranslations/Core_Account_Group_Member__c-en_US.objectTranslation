@@ -9,25 +9,13 @@
         <value>One Partner ID Group Members</value>
     </caseValues>
     <fields>
-        <label><!-- Comments --></label>
-        <name>Comments__c</name>
-    </fields>
-    <fields>
-        <label><!-- Unified ID --></label>
-        <name>Core_Business_Party_Id__c</name>
-    </fields>
-    <fields>
-        <label><!-- Inactive OPID Association --></label>
+        <label><!-- Inactive Indicator --></label>
         <name>Core_Inactive_Ind__c</name>
     </fields>
     <fields>
         <label><!-- Intel Account --></label>
         <name>Core_Intel_Account_Id__c</name>
         <relationshipLabel><!-- One Partner ID Group Members --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- IPA Account --></label>
-        <name>Core_Intel_Partner_Alliance_PartnerGroup__c</name>
     </fields>
     <fields>
         <help><!-- Indicates if this member is MDA (MarketPlace Designated Account). Only one member in the group is tagged as MDA. --></help>
@@ -41,39 +29,6 @@
         </lookupFilter>
         <name>Core_Partner_Account_Id__c</name>
         <relationshipLabel><!-- One Partner ID Group Members --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Delink / Association Requested by --></label>
-        <name>Delink_Association_User__c</name>
-        <relationshipLabel><!-- One Partner ID Group Members --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Inactive Account --></label>
-        <name>Inactive_Account__c</name>
-    </fields>
-    <fields>
-        <label><!-- Intel Account Name --></label>
-        <name>Intel_Account_Name__c</name>
-    </fields>
-    <fields>
-        <label><!-- Intel Record Type --></label>
-        <name>Intel_Record_Type_Text__c</name>
-    </fields>
-    <fields>
-        <label><!-- RelationshipEndDate --></label>
-        <name>PRM_RelationshipEndDate__c</name>
-    </fields>
-    <fields>
-        <label><!-- RelationshipStartDate --></label>
-        <name>PRM_RelationshipStartDate__c</name>
-    </fields>
-    <fields>
-        <label><!-- UCD Primary Account --></label>
-        <name>Primary_Account__c</name>
-    </fields>
-    <fields>
-        <label><!-- UCD Hierarchy --></label>
-        <name>UCD_Hierarchy__c</name>
     </fields>
     <recordTypes>
         <label><!-- Standard --></label>

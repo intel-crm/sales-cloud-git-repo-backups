@@ -8,15 +8,15 @@
             <axisBinding>y</axisBinding>
             <column>RowCount</column>
         </chartSummaries>
-        <chartType>Donut</chartType>
+        <chartType>Pie</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>false</expandOthers>
         <groupingColumn>Core_Sales_Support_Request__c.Core_IT_IAI_Date_of_Topic__c</groupingColumn>
-        <legendPosition>OnChart</legendPosition>
+        <legendPosition>Right</legendPosition>
         <location>CHART_TOP</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
-        <showTotal>true</showTotal>
+        <showTotal>false</showTotal>
         <showValues>true</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
@@ -31,16 +31,14 @@
     <columns>
         <field>FK_NAME</field>
     </columns>
-    <columns>
-        <field>Core_Sales_Support_Request__c.Core_Account_Name__c</field>
-    </columns>
-    <columns>
-        <field>Core_Sales_Support_Request__c.Core_IT_Geo_Manager__c</field>
-    </columns>
-    <columns>
-        <field>FK_OPP_CLOSE_DATE</field>
-    </columns>
     <filter>
+        <criteriaItems>
+            <column>Core_Sales_Support_Request__c.Core_IT_IAI_Date_of_Topic__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>THIS_YEAR</value>
+        </criteriaItems>
         <criteriaItems>
             <column>CUST_RECORDTYPE</column>
             <columnToColumn>false</columnToColumn>

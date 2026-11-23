@@ -22,6 +22,7 @@ export default class Core_MDF_Searchable_Dropdownlist extends LightningElement {
     @api placeHolder = null; // Placeholder of Input field
     @api selectedItemName = ''; // Default selected item Name
     @api fieldDisabled = false; //Flag for Disabled
+    @api parentClass;
 
     @track listItems; //Holding the list that is going to displayed on dropdown
 
@@ -37,6 +38,7 @@ export default class Core_MDF_Searchable_Dropdownlist extends LightningElement {
 
     //Method to open dropdown list, reset the field
     handleInputFieldClicked(event) {
+        console.log('in handleInputFieldClicked');
         //check if field is not Disabled
         if (this.fieldDisabled != true) {
             this.resetParameters();
@@ -62,13 +64,18 @@ export default class Core_MDF_Searchable_Dropdownlist extends LightningElement {
         if (this.fieldDisabled != true) {
             //check if inputDataList is not empty
             if (inputFieldValue == null || inputFieldValue == '') {
-                this.dispatchEvent(new CustomEvent('inputFieldValueClear'));
-                //check if field in required
-                if (this.isRequired == true) {
+                if(this.parentClass === 'recovery') {
+                    this.dispatchEvent(new CustomEvent('inputfieldvalueclear'));
+                } else {
+                    this.dispatchEvent(new CustomEvent('inputFieldValueClear'));
+                    //check if field in required
+                    if (this.isRequired == true) {
                     //show custom required field message
                     searchInputField.setCustomValidity(this.requiredMessage);
                     searchInputField.reportValidity();
                 }
+                }
+                
             }
         }
     }
@@ -115,7 +122,12 @@ export default class Core_MDF_Searchable_Dropdownlist extends LightningElement {
         selectedItem["Id"] = selectedId;
         selectedItem["Name"] = selectedName;
         //dispatch event to send selected data to parent component
-        this.dispatchEvent(new CustomEvent('selectedItem', { detail: { selectedItem } }));
+        
+        if(this.parentClass === 'recovery') {
+            this.dispatchEvent(new CustomEvent('selecteditem', { detail: { selectedItem } }));
+        } else {
+            this.dispatchEvent(new CustomEvent('selectedItem', { detail: { selectedItem } }));
+        }
     }
 
     //Method to reset necessary properties
@@ -134,7 +146,12 @@ export default class Core_MDF_Searchable_Dropdownlist extends LightningElement {
             }
             searchInputField.reportValidity();
         }
-
+        if(this.parentClass === 'recovery') {
+            this.dispatchEvent(new CustomEvent('reset', { detail: false }));
+        } else {
+            this.dispatchEvent(new CustomEvent('reset', { detail:  true  }));
+        }
+        
     }
 
     //Method to set itemName to Input Field

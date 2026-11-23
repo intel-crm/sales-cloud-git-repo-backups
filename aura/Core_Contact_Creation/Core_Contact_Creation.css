@@ -44,10 +44,6 @@
 .THIS .ContAcc label.slds-form-element__label abbr.slds-required{
    float : left;
 }
-
-.THIS .CountryCon label.slds-form-element__label abbr.slds-required{
-    float : left;
- }
 /*.THIS .slds-form-element__label{
     margin-right:200px;
 }*/

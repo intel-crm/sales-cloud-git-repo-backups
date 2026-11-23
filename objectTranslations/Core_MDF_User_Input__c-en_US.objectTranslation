@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MDF User Input</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MDF User Inputs</value>
+    </caseValues>
+    <fields>
+        <label><!-- User Email --></label>
+        <name>Core_MDF_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Federation ID --></label>
+        <name>Core_MDF_Federation_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Account --></label>
+        <name>Core_MDF_IUPGM_Account__c</name>
+        <relationshipLabel><!-- MDF User Inputs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- User Active --></label>
+        <name>Core_MDF_IUPGM_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- User All Account Access --></label>
+        <name>Core_MDF_IUPGM_All_Account_Access__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- User All Accounts --></label>
+        <name>Core_MDF_IUPGM_All_Accounts__c</name>
+        <relationshipLabel><!-- MDF User Inputs (User All Accounts) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- All Budget Type Access --></label>
+        <name>Core_MDF_IUPGM_All_Budget_Type_Access__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_IUPGM_Budget_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- IUPGM Exists --></label>
+        <name>Core_MDF_IUPGM_Exists__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Program --></label>
+        <name>Core_MDF_IUPGM_Program__c</name>
+        <picklistValues>
+            <masterLabel>Intel Partner Alliance</masterLabel>
+            <translation><!-- Intel Partner Alliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- User Region - Sub Region --></label>
+        <name>Core_MDF_IUPGM_Region_Sub_Region__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WW</masterLabel>
+            <translation><!-- WW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>new</masterLabel>
+            <translation><!-- new --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- User Role --></label>
+        <name>Core_MDF_IUPGM_Role__c</name>
+        <picklistValues>
+            <masterLabel>CCP Internal IPA Regional Budget Loader</masterLabel>
+            <translation><!-- CCP Internal IPA Regional Budget Loader --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IPA-MDF Manager</masterLabel>
+            <translation><!-- IPA-MDF Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal Escalation Reviewer L1</masterLabel>
+            <translation><!-- Internal Escalation Reviewer L1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- User --></label>
+        <name>Core_MDF_IUPGM_User__c</name>
+        <relationshipLabel><!-- MDF User Inputs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Overall Status --></label>
+        <name>Core_MDF_Overall_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Profile --></label>
+        <name>Core_MDF_Profile__c</name>
+        <picklistValues>
+            <masterLabel>new</masterLabel>
+            <translation><!-- new --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Request Status Message --></label>
+        <name>Core_MDF_Request_Status_Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- Request Status --></label>
+        <name>Core_MDF_Request_Status__c</name>
+        <picklistValues>
+            <masterLabel>EXISTS</masterLabel>
+            <translation><!-- EXISTS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FAILED</masterLabel>
+            <translation><!-- FAILED --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SUCCESS</masterLabel>
+            <translation><!-- SUCCESS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UPDATED</masterLabel>
+            <translation><!-- UPDATED --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- User License --></label>
+        <name>Core_MDF_User_License__c</name>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

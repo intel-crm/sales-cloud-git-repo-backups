@@ -60,7 +60,7 @@
     </columns>
     <description>open and closed last 12 month filter by customer</description>
     <filter>
-        <booleanFilter>(((1 OR 2) AND (3 OR 4 OR 5 OR 7 OR 8 OR 9) AND 6))</booleanFilter>
+        <booleanFilter>((1 OR 2) AND (3 OR 4 OR 5 OR 6) AND 7)</booleanFilter>
         <criteriaItems>
             <column>CLOSED_DATEONLY</column>
             <columnToColumn>false</columnToColumn>
@@ -87,6 +87,13 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
+            <value>Jingwu Lin</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
             <value>Link Lin</value>
         </criteriaItems>
         <criteriaItems>
@@ -102,27 +109,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>QNAP</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Spencer Hsu</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Gary C Wang</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Chin-Wu Lin</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

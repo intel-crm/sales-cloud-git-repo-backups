@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <interviewLabel>Adjustment Notification and Owner Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Adjustment Notification and Owner Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Adjustment_Notification_and_Owner_Update</targetReference>
+        </connector>
+        <filterFormula>AND ((ISPICKVAL({!$Record.Core_MDF_Adjustment_Claim_Nbr__r.Core_MDF_Type_Txt__c},&apos;$Label.Core_MDF_Claim_Adjustment_Type&apos;)) , (!(ISPICKVAL({!$Record.Core_MDF_Reason_Cd__c},&apos;$Label.Core_MDF_AdjReq_EscalationType&apos;))))</filterFormula>
+        <object>Core_MDF_Adjustment_Request__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+    <subflows>
+        <name>Adjustment_Notification_and_Owner_Update</name>
+        <label>Adjustment Notification and Owner Update</label>
+        <locationX>176</locationX>
+        <locationY>335</locationY>
+        <flowName>Core_MDF_Adjustment_Notification_and_Owner_Update</flowName>
+        <inputAssignments>
+            <name>AdjustmentReq_Type</name>
+            <value>
+                <elementReference>$Record.Core_MDF_Adjustment_Claim_Nbr__r.Core_MDF_Type_Txt__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>AdjustmentReqId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>RefClaim_Owner_UserType</name>
+            <value>
+                <elementReference>$Record.Core_MDF_Reference_Claim_Nbr__r.Owner:User.UserType</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>ReferenceClaim_OwnerEmail</name>
+            <value>
+                <elementReference>$Record.Core_MDF_Reference_Claim_Nbr__r.Owner:User.Email</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>ReferenceClaimOwner_isActive</name>
+            <value>
+                <elementReference>$Record.Core_MDF_Reference_Claim_Nbr__r.Owner:User.IsActive</elementReference>
+            </value>
+        </inputAssignments>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </subflows>
+</Flow>

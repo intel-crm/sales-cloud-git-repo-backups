@@ -13,6 +13,10 @@
         <translation><!-- Co-GTM --></translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>Co-Inv</masterLabel>
+        <translation><!-- Co-Inv --></translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>Datacenter</masterLabel>
         <translation>Rechenzentrum</translation>
     </valueTranslation>
@@ -22,7 +26,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel Partner Alliance</masterLabel>
-        <translation><!-- Intel Partner Alliance --></translation>
+        <translation>Intel Partner Alliance</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Retail Marketing Funds</masterLabel>

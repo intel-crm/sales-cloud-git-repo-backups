@@ -22,8 +22,10 @@
         </values>
     </buckets>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>AGE</field>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
         <field>STAGE_NAME</field>
@@ -35,11 +37,11 @@
         <field>PROBABILITY</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>TOTAL_PRICE</field>
+        <field>PRODUCT_NAME</field>
     </columns>
     <columns>
-        <field>LAST_UPDATE</field>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>TOTAL_PRICE</field>
     </columns>
     <description>USED IN SMG IOTG PIPELINE DASHBOARD</description>
     <filter>
@@ -51,47 +53,35 @@
             <value>Lost,Cancelled,Group</value>
         </criteriaItems>
         <criteriaItems>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>IOTG</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Pending,On Hold</value>
+            <value>Pending,On Hold,Win Submitted</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Deal: Sell-to</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Solution_Area__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>iotg</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>TOTAL_PRICE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>greaterThan</operator>
-            <value>10000</value>
+            <value>Deal: Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>FULL_NAME</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
         <field>OPPORTUNITY_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>IOTG MX DEALS, Solo Business cons</name>
+    <name>IOTG MX DEALS, NO DESIGN</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -106,15 +96,15 @@
     </params>
     <params>
         <name>co</name>
-        <value>0</value>
+        <value>1</value>
     </params>
     <reportType>OpportunityProduct</reportType>
     <scope>organization</scope>
-    <showDetails>false</showDetails>
+    <showDetails>true</showDetails>
     <showGrandTotal>false</showGrandTotal>
     <showSubTotals>false</showSubTotals>
-    <sortColumn>AGE</sortColumn>
-    <sortOrder>Desc</sortOrder>
+    <sortColumn>PROBABILITY</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
         <interval>INTERVAL_CURFY</interval>

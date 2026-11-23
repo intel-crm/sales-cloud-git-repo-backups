@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>NEDAP SPECIALS TELECOM Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>NEDAPSPECIALSTELECOMCustomerManager</parentRole>
 </Role>

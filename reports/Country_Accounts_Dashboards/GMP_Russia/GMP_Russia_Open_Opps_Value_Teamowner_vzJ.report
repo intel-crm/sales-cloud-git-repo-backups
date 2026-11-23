@@ -77,11 +77,13 @@
             <axisBinding>y</axisBinding>
             <column>RowCount</column>
         </chartSummaries>
-        <chartType>HorizontalBar</chartType>
+        <chartType>HorizontalBarGrouped</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>FULL_NAME</groupingColumn>
+        <groupingColumn>BucketField_2572062</groupingColumn>
+        <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>FULL_NAME</secondaryGroupingColumn>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -152,17 +154,17 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
+        <field>BucketField_2572062</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
         <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>ACCOUNT_NAME</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>ROLLUP_DESCRIPTION</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>GMP Russia Open Opps Value  Team/owner</name>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Home_IUPGM_2</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>IUPGM</actionButtonLabel>
+        <actionButtonLink>https://intel--crmdevccp.lightning.force.com/lightning/o/Core_MDF_Int_Users_Partner_Geo_Mapping__c/list?filterName=00Bg0000001xQHbEAM</actionButtonLink>
+        <body>CCP Program Introduce new feature IUPGM.Want to know more about click below button.   &quot;ASK &quot; Through which system will automatically</body>
+        <customApplication>Core_MDF_CoMarketing</customApplication>
+        <delayDays>1</delayDays>
+        <dismissButtonLabel>Dismiss</dismissButtonLabel>
+        <displayPosition>TopCenter</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <endDate>2021-06-30</endDate>
+        <isPublished>false</isPublished>
+        <masterLabel>Home_IUPGM_2</masterLabel>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2021-06-02</startDate>
+        <targetPageKey1>home</targetPageKey1>
+        <targetPageType>standard__namedPage</targetPageType>
+        <timesToDisplay>10</timesToDisplay>
+        <title>Welcome to Co-Marketing Program</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

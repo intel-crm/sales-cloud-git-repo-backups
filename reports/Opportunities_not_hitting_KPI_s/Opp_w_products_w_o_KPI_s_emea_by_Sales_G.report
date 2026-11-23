@@ -36,9 +36,6 @@
     <columns>
         <field>ACCOUNT_NAME</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Opportunity_ID__c</field>
-    </columns>
     <crossFilters>
         <operation>without</operation>
         <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>

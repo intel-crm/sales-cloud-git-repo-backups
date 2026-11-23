@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>wsm-postmaster@intel.com.invalid</email>
+    <name>CCP Opal Level 1&apos;s Manager</name>
+    <queueSobject>
+        <sobjectType>PartnerFundRequest</sobjectType>
+    </queueSobject>
+</Queue>

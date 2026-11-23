@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>48.0</apiVersion>
+    <available>true</available>
+    <description>Error Logging Template</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Error Logging Template</name>
+    <style>none</style>
+    <subject>DEVCCP: Error Notification</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

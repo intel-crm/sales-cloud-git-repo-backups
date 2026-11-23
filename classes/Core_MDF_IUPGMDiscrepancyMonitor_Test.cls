@@ -69,9 +69,16 @@ public class Core_MDF_IUPGMDiscrepancyMonitor_Test {
             grpMember.GroupId = ipaGRP.Id;
             Database.insert(grpMember);
             
-        // Don't create group members for ipaGRP2 and ipaGRP3 to simulate missing group member scenarios
-        
-         
+            GroupMember grpMember1 = new GroupMember();
+            grpMember1.UserOrGroupId = testUser.Id;
+            grpMember1.GroupId = ipaGRP2.Id;
+            Database.insert(grpMember1);
+            
+            GroupMember grpMember2 = new GroupMember();
+            grpMember2.UserOrGroupId = testUser.Id;
+            grpMember2.GroupId = ipaGRP3.Id;
+            Database.insert(grpMember2);
+            
             PermissionSet ipaL2ApproverPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver' LIMIT 1];
             PermissionSetAssignment psa9 = new PermissionSetAssignment(PermissionSetId = ipaL2ApproverPS.Id, AssigneeId = testUser.Id);
             Database.insert(psa9);
@@ -91,21 +98,19 @@ public class Core_MDF_IUPGMDiscrepancyMonitor_Test {
             pgmRecord1.Core_MDF_Region_cd__c = 'EMEA'; // 14285 Indira
             pgmRecord1.Core_MDF_Sub_Region_cd__c = 'ANZ';  // 14285 Indira
             pgmRecord1.Core_MDF_BudgetType_nm__c = 'Client Specialties MDF';
-        pgmRecord1.Core_MDF_Type_Of_Access__c = 'External';
-           
+            pgmRecord1.Core_MDF_Type_Of_Access__c = 'External';  // 14285 Indira
             pgmRecord1.Core_MDF_Inactive_Ind__c = false;
             pgmList.add(pgmRecord1);
             
             Core_MDF_Partner_Group_Mapping__c pgmRecord2 = new Core_MDF_Partner_Group_Mapping__c();
             pgmRecord2.Core_MDF_Account__c = ccpIntelAccount2.Id;
             pgmRecord2.Core_MDF_Channel_Program__c = ipaCp.Id;
-        pgmRecord2.Core_MDF_Group_Name__c = 'Core_MDF_CCP_TESTACCTTEMP_CCF_APJ'; 
-        pgmRecord2.Core_MDF_Group_id__c = ipaGRP2.Id; 
+            pgmRecord2.Core_MDF_Group_Name__c = 'Core_MDF_CCP_TESTACCTTEMP_CCF_APJ';
+            pgmRecord2.Core_MDF_Group_id__c = ipaGRP2.Id;
             pgmRecord2.Core_MDF_Region_cd__c = 'APJ';
             pgmRecord2.Core_MDF_Sub_Region_cd__c = 'IJKK'; // 14285 Indira
             pgmRecord2.Core_MDF_BudgetType_nm__c = 'Account Plan';
-        pgmRecord2.Core_MDF_Type_Of_Access__c = 'External';
-            
+            pgmRecord2.Core_MDF_Type_Of_Access__c = 'External'; // 14285 Indira
             pgmRecord2.Core_MDF_Inactive_Ind__c = false;
             pgmList.add(pgmRecord2);
             
@@ -117,9 +122,8 @@ public class Core_MDF_IUPGMDiscrepancyMonitor_Test {
             pgmRecord3.Core_MDF_Group_id__c = ipaGRP3.Id;
             pgmRecord3.Core_MDF_Region_cd__c = 'ASMO';  // 14285 Indira
             pgmRecord3.Core_MDF_Sub_Region_cd__c='NAR';  // 14285 Indira
-        pgmRecord3.Core_MDF_BudgetType_nm__c = null; // No budget type
-        pgmRecord3.Core_MDF_Type_Of_Access__c = 'External'; 
-           
+            pgmRecord3.Core_MDF_BudgetType_nm__c = '';
+            pgmRecord3.Core_MDF_Type_Of_Access__c = 'External'; // 14285 Indira
             pgmRecord3.Core_MDF_Inactive_Ind__c = false;
             pgmList.add(pgmRecord3);
             
@@ -129,40 +133,40 @@ public class Core_MDF_IUPGMDiscrepancyMonitor_Test {
             List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
 
             // Record with budget type and geo mapping
-           Core_MDF_Int_Users_Partner_Geo_Mapping__c IPAiupgm1 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
+            Core_MDF_Int_Users_Partner_Geo_Mapping__c IPAiupgm1 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
             IPAiupgm1.Core_MDF_Account_id__c = ccpIntelAccount.Id;
             IPAiupgm1.RecordTypeId = IPA_RecordType;
             IPAiupgm1.Core_MDF_Program_nm__c = 'Intel Partner Alliance';
             IPAiupgm1.Core_MDF_Region_cd__c = 'EMEA';
             IPAiupgm1.Core_MDF_Region_Sub_Region_nm__c = 'EMEA';
-            IPAiupgm1.Core_MDF_Budget_Type_nm__c = '';
-            IPAiupgm1.Core_MDF_GeoSubGeo_Budget_Type_nm__c = 'EMEA->Client Specialties MDF'; // Has value
+            IPAiupgm1.Core_MDF_Budget_Type_nm__c = 'Account Plan';
+            IPAiupgm1.Core_MDF_GeoSubGeo_Budget_Type_nm__c = 'EMEA->Client Specialties MDF'; // 14285 Indira
             IPAiupgm1.Core_MDF_User_id__c = testUser.Id;
             IPAiupgm1.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver';
             IPAiupgm1.Core_MDF_All_Accounts_cd__c = 'No';
             IPAiupgm1.Core_MDF_Active_Ind__c = true;
-            IPAiupgm1.Core_MDF_All_Budget_Type_Access_Ind__c = false; // False because GeoSubGeo has value
+            IPAiupgm1.Core_MDF_Budget_Type_nm__c='';
+            IPAiupgm1.Core_MDF_All_Budget_Type_Access_Ind__c = false;
             IPAiupgm1.Core_MDF_Activity_Classification_nm__c = 'Sales';
             iupgmList.add(IPAiupgm1);
             
-            //Record with All Budget Type Access - FIXED
+            //Record without budget type
             Core_MDF_Int_Users_Partner_Geo_Mapping__c IPAiupgm2 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
             IPAiupgm2.Core_MDF_Account_id__c = ccpIntelAccount2.Id;
             IPAiupgm2.RecordTypeId = IPA_RecordType;
             IPAiupgm2.Core_MDF_Program_nm__c = 'Intel Partner Alliance';
             IPAiupgm2.Core_MDF_Region_cd__c = 'APJ';
             IPAiupgm2.Core_MDF_Region_Sub_Region_nm__c = 'APJ';
-            IPAiupgm2.Core_MDF_Budget_Type_nm__c = '';
-            IPAiupgm2.Core_MDF_GeoSubGeo_Budget_Type_nm__c = null; // Null because All Budget Type Access is true
             IPAiupgm2.Core_MDF_User_id__c = testUser.Id;
             IPAiupgm2.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Int_IPA_ProposalL1_Approver';
             IPAiupgm2.Core_MDF_All_Accounts_cd__c = 'No';
-            IPAiupgm2.Core_MDF_All_Budget_Type_Access_Ind__c = true; // True and GeoSubGeo is null
+            IPAiupgm2.Core_MDF_Budget_Type_nm__c='';
+            IPAiupgm2.Core_MDF_All_Budget_Type_Access_Ind__c = true;
             IPAiupgm2.Core_MDF_Activity_Classification_nm__c = '';
             IPAiupgm2.Core_MDF_Active_Ind__c = true;
             iupgmList.add(IPAiupgm2);
             
-            // Record with multiple geo mappings - FIXED
+            // Record with multiple geo mappings
             Core_MDF_Int_Users_Partner_Geo_Mapping__c IPAiupgm3 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
             IPAiupgm3.Core_MDF_Account_id__c = ccpIntelAccount.Id;
             IPAiupgm3.RecordTypeId = IPA_RecordType;
@@ -170,30 +174,31 @@ public class Core_MDF_IUPGMDiscrepancyMonitor_Test {
             IPAiupgm3.Core_MDF_Region_cd__c = 'ASMO';
             IPAiupgm3.Core_MDF_Region_Sub_Region_nm__c = 'ASMO';
             IPAiupgm3.Core_MDF_Budget_Type_nm__c = '';
-            IPAiupgm3.Core_MDF_GeoSubGeo_Budget_Type_nm__c = null; // Null because All Budget Type Access is true
+            IPAiupgm3.Core_MDF_GeoSubGeo_Budget_Type_nm__c = ''; // 14285 Indira
             IPAiupgm3.Core_MDF_User_id__c = testUser.Id;
             IPAiupgm3.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver';
             IPAiupgm3.Core_MDF_All_Accounts_cd__c = 'Yes';
             IPAiupgm3.Core_MDF_Active_Ind__c = true;
-            IPAiupgm3.Core_MDF_All_Budget_Type_Access_Ind__c = true; // True and GeoSubGeo is null
+            IPAiupgm3.Core_MDF_Budget_Type_nm__c='';
+            IPAiupgm3.Core_MDF_All_Budget_Type_Access_Ind__c = false;
             IPAiupgm3.Core_MDF_Activity_Classification_nm__c = 'Sales';
-            iupgmList.add(IPAiupgm3);
+            //iupgmList.add(IPAiupgm3);
             
-            //Record with specific geo-budget mapping - FIXED
+            //Inactive record
             Core_MDF_Int_Users_Partner_Geo_Mapping__c IPAiupgm4 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
             IPAiupgm4.Core_MDF_Account_id__c = ccpIntelAccount.Id;
             IPAiupgm4.RecordTypeId = IPA_RecordType;
             IPAiupgm4.Core_MDF_Program_nm__c = 'Intel Partner Alliance';
-            IPAiupgm4.Core_MDF_Region_cd__c = 'EMEA'; 
-            IPAiupgm4.Core_MDF_Region_Sub_Region_nm__c ='EMEA';
-            IPAiupgm4.Core_MDF_Budget_Type_nm__c = '';
-            IPAiupgm4.Core_MDF_GeoSubGeo_Budget_Type_nm__c = 'EMEA->Client Specialties MDF'; // Has value
+            IPAiupgm4.Core_MDF_Region_cd__c = 'EMEA';
+            IPAiupgm4.Core_MDF_Region_Sub_Region_nm__c = 'EMEA';
             IPAiupgm4.Core_MDF_User_id__c = testUser.Id;
             IPAiupgm4.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Int_IPA_ProposalL1_Approver';
-            IPAiupgm4.Core_MDF_All_Accounts_cd__c = 'Yes';
-            IPAiupgm4.Core_MDF_Active_Ind__c = true;
-            IPAiupgm4.Core_MDF_All_Budget_Type_Access_Ind__c = false; // False because GeoSubGeo has value
-            iupgmList.add(IPAiupgm4);
+            IPAiupgm4.Core_MDF_All_Accounts_cd__c = 'No';
+            IPAiupgm4.Core_MDF_Budget_Type_nm__c='';
+            IPAiupgm4.Core_MDF_Active_Ind__c = false; // Inactive
+            IPAiupgm4.Core_MDF_All_Budget_Type_Access_Ind__c = true;
+            //IPAiupgm4.Core_MDF_Activity_Classification_nm__c = 'Sales';
+            //iupgmList.add(IPAiupgm4);
             
             insert iupgmList;
         }
@@ -322,22 +327,8 @@ public class Core_MDF_IUPGMDiscrepancyMonitor_Test {
     @isTest
     public static void testBatchWithEmptyData(){
         // Delete all test data to test empty scenario
-       // delete [SELECT Id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c];
-      // Deactivate all test data to test empty scenario instead of deleting
-        List<Core_MDF_Partner_Group_Mapping__c> recordsToDeactivate = [
-            SELECT Id, Core_MDF_Inactive_Ind__c 
-            FROM Core_MDF_Partner_Group_Mapping__c
-        ];
-        
-        // Set inactive indicator to true for all records
-        for(Core_MDF_Partner_Group_Mapping__c record : recordsToDeactivate) {
-            record.Core_MDF_Inactive_Ind__c = true;
-        }
-        
-        // Update records to deactivate them (only if there are records to update)
-        if(!recordsToDeactivate.isEmpty()) {
-            update recordsToDeactivate;
-        }
+        delete [SELECT Id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c];
+        delete [SELECT Id FROM Core_MDF_Partner_Group_Mapping__c];
         
         Test.startTest();
         Core_MDF_IUPGM_Discrepancy_Monitor_Batch obj = new Core_MDF_IUPGM_Discrepancy_Monitor_Batch(null, null);
@@ -371,7 +362,8 @@ public class Core_MDF_IUPGMDiscrepancyMonitor_Test {
         
         Assert.areNotEqual(obj, null, 'Instance should be generated successfully');
     }
-    @isTest
+    // 14285 Indira - Start 
+     @isTest
 public static void testBatchWithInternalPGM(){
     
   // Create a user with the exact name from the custom label
@@ -404,5 +396,5 @@ public static void testBatchWithInternalPGM(){
         Test.stopTest();
     }
 }
-    
+    // 14285 Indira - end
 }

@@ -3,62 +3,62 @@
     <caseValues>
         <caseType>Nominative</caseType>
         <plural>false</plural>
-        <value>Сопоставление учетной записи исключения</value>
+        <value>Exception Account Mapping</value>
     </caseValues>
     <caseValues>
         <caseType>Nominative</caseType>
         <plural>true</plural>
-        <value>Сопоставление учетной записи исключения</value>
+        <value>Exception Account Mappings</value>
     </caseValues>
     <caseValues>
         <caseType>Accusative</caseType>
         <plural>false</plural>
-        <value>Сопоставление учетной записи исключения</value>
+        <value>Exception Account Mapping</value>
     </caseValues>
     <caseValues>
         <caseType>Accusative</caseType>
         <plural>true</plural>
-        <value>Сопоставление учетной записи исключения</value>
+        <value>Exception Account Mappings</value>
     </caseValues>
     <caseValues>
         <caseType>Genitive</caseType>
         <plural>false</plural>
-        <value>Сопоставление учетной записи исключения</value>
+        <value>Exception Account Mapping</value>
     </caseValues>
     <caseValues>
         <caseType>Genitive</caseType>
         <plural>true</plural>
-        <value>Сопоставление учетной записи исключения</value>
+        <value>Exception Account Mappings</value>
     </caseValues>
     <caseValues>
         <caseType>Dative</caseType>
         <plural>false</plural>
-        <value>Сопоставление учетной записи исключения</value>
+        <value>Exception Account Mapping</value>
     </caseValues>
     <caseValues>
         <caseType>Dative</caseType>
         <plural>true</plural>
-        <value>Сопоставление учетной записи исключения</value>
+        <value>Exception Account Mappings</value>
     </caseValues>
     <caseValues>
         <caseType>Instrumental</caseType>
         <plural>false</plural>
-        <value>Сопоставление учетной записи исключения</value>
+        <value>Exception Account Mapping</value>
     </caseValues>
     <caseValues>
         <caseType>Instrumental</caseType>
         <plural>true</plural>
-        <value>Сопоставление учетной записи исключения</value>
+        <value>Exception Account Mappings</value>
     </caseValues>
     <caseValues>
         <caseType>Prepositional</caseType>
         <plural>false</plural>
-        <value>Сопоставление учетной записи исключения</value>
+        <value>Exception Account Mapping</value>
     </caseValues>
     <caseValues>
         <caseType>Prepositional</caseType>
         <plural>true</plural>
-        <value>Сопоставление учетной записи исключения</value>
+        <value>Exception Account Mappings</value>
     </caseValues>
     <fields>
         <label>Учетная запись</label>
@@ -86,7 +86,7 @@
         <name>Core_MDF_Exception_Status_txt__c</name>
     </fields>
     <fields>
-        <label>Исключение</label>
+        <label><!-- Exception --></label>
         <name>Core_MDF_Exception_id__c</name>
         <relationshipLabel>Сопоставления учетных записей исключений</relationshipLabel>
     </fields>

@@ -5,7 +5,7 @@
     <oauthConfig>
         <callbackUrl>http://localhost:8081/callback
 https://www.getpostman.com/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6ucbpeXLkC6KspPRVb8e2UnpN_cyKYmm.rhCU7RHXyXKQYAIpFf.eSQpbZeT</consumerKey>
+        <consumerKey>3MVG9ahGHqp.k2_wmbjHwYMdmXxi0GlGb.BVrQ87aGgM6enZV9VLtcv25jcGCfqcqQ3r.QPIe_v9rP8YhvVd7</consumerKey>
         <isAdminApproved>true</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -24,10 +24,7 @@ https://www.getpostman.com/oauth2/callback</callbackUrl>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
         <scopes>Api</scopes>
-        <scopes>Web</scopes>
         <scopes>Full</scopes>
-        <scopes>RefreshToken</scopes>
-        <scopes>OpenID</scopes>
     </oauthConfig>
     <oauthPolicy>
         <ipRelaxation>ENFORCE</ipRelaxation>

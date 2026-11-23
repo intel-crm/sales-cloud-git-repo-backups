@@ -1,0 +1,116 @@
+<template>
+    <div class="slds-modal__header">
+      <button
+        class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+        title="Close"
+        onclick={onCancel}
+      >
+        <lightning-icon
+          class="slds-icon"
+          icon-name="utility:close"
+          variant="inverse"
+          alternative-text="Close"
+        ></lightning-icon>
+      </button>
+     
+        <h2 id="header43" class="slds-text-heading--medium">
+          Account Domain Mapping
+        </h2>
+      
+    </div>
+    <div class="slds-modal__content slds-p-around--large slds-p-bottom_none">
+      <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_2-of-6 slds-p-around_small">
+          <label style="color:red;font-size: large;">*</label>
+          <label
+            title={label.acctCategoryHlpText}
+            class="slds-form-element__label"
+            for="unique-id-of-input"
+            style="font-weight: bold;
+              font-size: small;"
+            >{label.acctCategory}</label
+          >
+        </div>
+        <div class="slds-col slds-size_3-of-6 slds-p-around_small slds-p-bottom_none">
+        <lightning-radio-group name="accountCategory"
+                          options={options}
+                          value={value}
+                          type="radio"
+                          onchange={handleRadioButtonChange}></lightning-radio-group>
+      </div>
+        <div class="slds-col slds-size_2-of-6 slds-p-around_small">
+          <label style="color:red;font-size: large;">*</label>
+          <label
+            title={label.accountHlpText}
+            class="slds-form-element__label"
+            for="unique-id-of-input"
+            style="font-weight: bold;
+              font-size: small;"
+            >{label.account}</label>
+        </div>
+        <div class="slds-col slds-size_3-of-6 slds-p-around_small slds-p-bottom_none">
+          <select
+            data-id="accountSelected"
+            class="slds-select"
+            name="accountPicklist"
+            onchange={handleSelection}>
+            <option value="">None</option>
+            <template for:each={acctList} for:item='item'>
+              <option key={item.Id} value={item.Id} >{item.Name}</option>
+          </template>
+          </select>
+        </div>
+        <div class="slds-col slds-size_2-of-6 slds-p-around_small">
+          <label style="color:red;font-size: large;">*</label>
+          <label
+            title={label.programHlpText}
+            class="slds-form-element__label"
+            for="unique-id-of-input"
+            style="font-weight: bold;
+              font-size: small;"
+            >{label.program}</label
+          >
+        </div>
+        <div
+          class="slds-col slds-size_3-of-6 slds-p-around_small slds-p-bottom_none"
+        >
+          <select
+            data-id="programSelected"
+            class="slds-select"
+            name="channelProgPicklist"
+            onchange={handleSelection}
+            >
+            <option value="" >None</option>
+            <template for:each={channleProgLst} for:item='item'>
+                <option key={item.Id} value={item.Id} >{item.Name}</option>
+            </template>
+          </select>
+        </div>
+        
+          <div class="slds-col slds-size_2-of-6 slds-p-around_small">
+          <label style="color:red;font-size: large;">*</label>
+          <label
+            title={label.availableDomainHlpText}
+            class="slds-form-element__label"
+            for="unique-id-of-input"
+            style="font-weight: bold;
+              font-size: small;"
+            >{label.domain}</label
+          >
+        </div>
+        <div class="slds-col slds-size_3-of-6 slds-p-around_small slds-p-bottom_large slds-p-top_none">
+          <lightning-textarea name="availDomain" data-id="availableDomain"></lightning-textarea>
+        </div>
+      </div>
+    </div>
+    <footer class="slds-modal__footer">
+      <div class="slds-list_horizontal slds-align_absolute-center">
+        <button class="slds-button slds-button_neutral" onclick={onCancel}>
+          {label.cancelButtonName}
+        </button>
+        <button class="slds-button slds-button_brand" onclick={onClickOfSave}>
+          {label.saveButtonName}
+        </button>
+      </div>
+    </footer>
+  </template>

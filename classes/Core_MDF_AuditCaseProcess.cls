@@ -35,10 +35,13 @@ public without sharing class Core_MDF_AuditCaseProcess
                 List<Case> cases = [select id, Core_MDF_Claim_Submitter__c,  Core_MDF_Claim_Submitter__r.LanguageLocaleKey, Core_MDF_Claim_Submitter_Language__c from case where case.id in :caseIds];
                 for(Case c :cases){
                     //Setting the DMLOption on each Case 
-					c.Core_MDF_Claim_Submitter_Language__c = c.Core_MDF_Claim_Submitter__r.LanguageLocaleKey;
+                    c.Core_MDF_Claim_Submitter_Language__c = c.Core_MDF_Claim_Submitter__r.LanguageLocaleKey;
                     c.setOptions(dmo);
                 }
-                update cases; 
+                //US949837 - Added extra condition to fix checkmarx issues
+                if(Schema.sObjectType.Case.isUpdateable()){
+                    update cases;
+                }
             }catch(exception ex){Core_MDF_CCP_UtilityClass.logErrorinLogObject(ex.getMessage(),'Audit Assignment');}    
         }
    }

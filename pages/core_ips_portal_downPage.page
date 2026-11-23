@@ -1,22 +1,17 @@
-<apex:page showHeader="false">
-<style>
-        .center {
-            text-align: center;
-            margin-top: 15vh; /* Adjust this value to position the content */
-            padding: 20px; /* Adjust padding as needed */
-            font-size: 20px; /* Adjust font size as needed */
-        }
- 
-        .center p {
-            margin: 0;
-        }
- 
-        .center a.link {
-            color: blue; /* Change URL color to blue */
-            font-size: 22px; /* Increase font size of the URL */
-        }
-</style>
-<div class="center">
-<p style="margin-bottom: 10px;">Design Registration has moved! To submit design registrations, authorized users can go to and bookmark <a href="https://partner-admin.intel.com/s/ddr" class="link">https://partner-admin.intel.com/s/ddr</a>.</p>
-</div>
+<apex:page showHeader="false" cache="false" standardStylesheets="false" language="{!$CurrentPage.parameters.lang}">
+   <div style="background-color: #DCDCDC;">
+    <apex:image value="{!$Resource.Downtimeintellogo}"/>
+     <!---<div style="text-align:left;font-size: 30px; color:#0071c5; padding-top: 60px; font-family:"Neo Sans Intel" ">--->
+         <Div >
+         <font size="6" color="#0071c5"  face="Intel Clear" >
+          {!$Label.dowminformation}
+             
+            <a href="mailto:smg.customer.support@intel.com?subject=Question/Feedback:%20Intel®%20Premier%20Support" id="UProfile_hlProfile" style="text-decoration: none;" target="_blank">email.</a>
+          {!$Label.Thank_you}
+          </font>
+          </div>
+        <div style="padding-top:150px;">
+      <apex:image value="{!$Resource.Footer}"/>  
+      </div>        
+     </div> 
 </apex:page>

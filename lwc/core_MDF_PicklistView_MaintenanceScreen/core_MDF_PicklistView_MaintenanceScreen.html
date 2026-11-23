@@ -1,8 +1,18 @@
 <template>
 	<div class="spinner">
 		<template if:true={isLoading}>
+			<div class="spinner-container slds-spinner_delayed">
 			<lightning-spinner alternative-text="Loading" variant="brand" size="large">
 			</lightning-spinner>
+			</div>
+		</template>
+	</div>
+	<div class="spinner">
+		<template if:true={innerLoading}>
+			<div class="spinner-container slds-spinner_delayed">
+			<lightning-spinner alternative-text="Loading" variant="brand" size="large">
+			</lightning-spinner>
+			</div>
 		</template>
 	</div>
 	<lightning-card style="background-color:white">
@@ -220,7 +230,7 @@
 										<div class="slds-section__content claim-activity-details" id={recIndex}
 													aria-hidden="true" key={recType.id}>
 											<template if:true={recType.isExpanded}>
-
+											<!--<template if:false={innerLoading}>-->
 											<!-- this template block displays the dependent fields in accordions -->
 											<template for:each={dependentfieldsInfo} for:item="fd" for:index="fdIndex">
 											<!--<p key={fd.name}>{fd.name}</p>-->
@@ -270,7 +280,8 @@
 											</template>
 											<!-- dependent fields display ended here -->
 
-											</template>
+											<!--</template>-->
+										</template>
 										</div>
 
 										</div>

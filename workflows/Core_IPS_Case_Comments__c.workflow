@@ -23,7 +23,7 @@
     <outboundMessages>
         <fullName>Core_IPS_RTF_CaseComment_Backend_OutMsg</fullName>
         <apiVersion>35.0</apiVersion>
-        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2.cloudhub.io/smit/api/ips/NewIPSCaseUpdate</endpointUrl>
+        <endpointUrl>https://dummy_user1:7Ha8oBPw!1!c@eip-generic-dummygroup2.cloudhub.io/smit/api/ips/NewIPSCaseUpdate</endpointUrl>
         <fields>Core_IPS_Case__c</fields>
         <fields>Id</fields>
         <includeSessionId>false</includeSessionId>
@@ -32,6 +32,19 @@
         <protected>false</protected>
         <useDeadLetterQueue>false</useDeadLetterQueue>
     </outboundMessages>
+    <rules>
+        <fullName>Core_IPS_Auto_Populate_Plain_Text</fullName>
+        <actions>
+            <name>test_for_plain_update_case_rtf_to_delete</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Core_IPS_Case_Comments__c.CreatedById</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
     <rules>
         <fullName>Core_IPS_RTF_CaseComment_Backend_WF</fullName>
         <actions>

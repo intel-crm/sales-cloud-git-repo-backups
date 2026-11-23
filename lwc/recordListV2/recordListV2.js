@@ -1,0 +1,23 @@
+//recordList.js
+import { LightningElement, api } from 'lwc';
+
+export default class recordListV2 extends LightningElement {
+    @api record;
+    @api fieldname;
+    @api iconname;
+
+    //Event to set selected account record Id
+    handleSelect(event){
+        event.preventDefault();
+        const selectedRecord = new CustomEvent(
+            "select",
+            {
+                detail : this.record.Id
+            }
+        );
+        /* eslint-disable no-console */
+        //console.log( this.record.Id);
+        /* fire the event to be handled on the Parent Component */
+        this.dispatchEvent(selectedRecord);
+    }
+}

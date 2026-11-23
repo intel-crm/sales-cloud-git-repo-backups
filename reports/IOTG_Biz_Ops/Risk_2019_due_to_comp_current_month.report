@@ -48,7 +48,7 @@
     </columns>
     <crossFilters>
         <criteriaItems>
-            <column>Core_BU_Short_Name_Old__c</column>
+            <column>Core_BU_Short_Name__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>IOTG</value>
@@ -113,7 +113,7 @@
         <field>Opportunity.Core_Risk_Reason__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>@ Risk 2020 due to comp current month</name>
+    <name>@ Risk 2019 due to comp current month</name>
     <params>
         <name>terr</name>
         <value>all</value>

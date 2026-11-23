@@ -46,11 +46,19 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_MDF_Look_Up_Field_Ind__c</field>
+                <field>Core_MDF_Process_Name__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_MDF_Process_Name__c</field>
+                <field>Core_MDF_Rule_Base__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Claim_Submission_Window_days__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Closure_Date_Extension__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -100,7 +108,7 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Approval Details</label>
+        <label>Approver Source Details</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -121,6 +129,20 @@
                 <field>Core_MDF_Approver_Source_Value_on_False__c</field>
             </layoutItems>
         </layoutColumns>
+        <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Custom Claiming Window</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Account__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
@@ -166,7 +188,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3b00000flIYX</masterLabel>
+        <masterLabel>00hg0000000d4Lg</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

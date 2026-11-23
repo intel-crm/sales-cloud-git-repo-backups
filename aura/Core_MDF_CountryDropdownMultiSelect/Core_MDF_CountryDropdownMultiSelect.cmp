@@ -1,0 +1,76 @@
+<aura:component access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.availableOptions}" action="{!c.handleOptionsChange}" />
+    <aura:handler name="change" value="{!v.selectedOptions}" action="{!c.handleSelectedOptionsChange}" />
+
+    <aura:attribute name="availableOptions" type="List" default="[]" />
+    <aura:attribute name="selectedOptions" type="List" default="[]" />
+    <aura:attribute name="displayOptions" type="List" default="[]" />
+    <aura:attribute name="filteredOptions" type="List" default="[]" />
+    <aura:attribute name="selectedDisplayOptions" type="List" default="[]" />
+    <aura:attribute name="dispLabel" type="String" default="Country" />
+    <aura:attribute name="searchPlaceholder" type="String" default="Search country" />
+    <aura:attribute name="emptyMessage" type="String" default="No country values available" />
+    <aura:attribute name="requiredMessage" type="String" default="Please select at least one value." />
+    <aura:attribute name="isRequired" type="Boolean" default="false" />
+    <aura:attribute name="disabled" type="Boolean" default="false" />
+    <aura:attribute name="searchTerm" type="String" default="" />
+    <aura:attribute name="selectedCount" type="Integer" default="0" />
+    <aura:attribute name="selectedCountLabel" type="String" default="0 selected" />
+    <aura:attribute name="hasError" type="Boolean" default="false" />
+    <aura:attribute name="errorMessage" type="String" default="" />
+    <aura:attribute name="showSelectedSection" type="Boolean" default="false" />
+    <aura:attribute name="selectedSectionLabel" type="String" default="Selected" />
+    <aura:attribute name="availableSectionLabel" type="String" default="Available" />
+
+    <div class="{!if(v.hasError, 'slds-form-element slds-has-error country-dropdown', 'slds-form-element country-dropdown')}">
+        <label class="slds-form-element__label">
+            <aura:if isTrue="{!v.isRequired}">
+                <abbr class="slds-required" title="required">*</abbr>
+            </aura:if>
+            {!v.dispLabel}
+        </label>
+        <div class="slds-form-element__control">
+            <div class="country-dropdown__panel" role="listbox">
+                <div class="country-dropdown__header">
+                    <span class="slds-text-title_bold">{!v.selectedCountLabel}</span>
+                </div>
+                <div class="slds-p-horizontal_small slds-p-bottom_x-small">
+                    <lightning:input type="search" variant="label-hidden" placeholder="{!v.searchPlaceholder}" value="{!v.searchTerm}" onchange="{!c.handleSearch}" disabled="{!v.disabled}" />
+                </div>
+                <aura:if isTrue="{!and(v.showSelectedSection, not(empty(v.selectedDisplayOptions)))}">
+                    <div class="country-dropdown__section country-dropdown__section_selected">
+                        <div class="country-dropdown__section-title slds-text-title_caps">{!v.selectedSectionLabel}</div>
+                        <ul class="country-dropdown__list country-dropdown__list_selected" role="presentation">
+                            <aura:iteration items="{!v.selectedDisplayOptions}" var="item">
+                                <li class="country-dropdown__item" role="presentation">
+                                    <lightning:input type="checkbox" label="{!item.label}" name="{!item.value}" checked="true" disabled="{!v.disabled}" onchange="{!c.handleOptionToggle}" />
+                                </li>
+                            </aura:iteration>
+                        </ul>
+                    </div>
+                </aura:if>
+                <aura:if isTrue="{!v.showSelectedSection}">
+                    <div class="country-dropdown__section-title country-dropdown__section-title_available slds-text-title_caps">{!v.availableSectionLabel}</div>
+                </aura:if>
+                <ul class="country-dropdown__list" role="presentation">
+                    <aura:if isTrue="{!empty(v.filteredOptions)}">
+                        <li class="country-dropdown__empty slds-p-around_small">{!v.emptyMessage}</li>
+                        <aura:set attribute="else">
+                            <aura:iteration items="{!v.filteredOptions}" var="item">
+                                <li class="country-dropdown__item" role="presentation">
+                                    <lightning:input type="checkbox" label="{!item.label}" name="{!item.value}" checked="{!item.selected}" disabled="{!v.disabled}" onchange="{!c.handleOptionToggle}" />
+                                </li>
+                            </aura:iteration>
+                        </aura:set>
+                    </aura:if>
+                </ul>
+            </div>
+        </div>
+        <aura:if isTrue="{!v.hasError}">
+            <div class="slds-form-element__help">{!v.errorMessage}</div>
+        </aura:if>
+    </div>
+
+    <aura:method name="validateErrors" action="{!c.validateErrors}" access="PUBLIC" />
+</aura:component>

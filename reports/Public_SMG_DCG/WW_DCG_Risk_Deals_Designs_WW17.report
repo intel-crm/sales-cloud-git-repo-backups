@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>Opportunity.Core_Opportunity_ID__c</field>
+        <field>ADDRESS1_COUNTRY_CODE</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Sales_Groups__c</field>
@@ -49,9 +49,6 @@
     <columns>
         <field>AMOUNT</field>
     </columns>
-    <columns>
-        <field>OPPORTUNITY_ID</field>
-    </columns>
     <description>Report of all deals flagged at Risk</description>
     <filter>
         <criteriaItems>
@@ -69,7 +66,7 @@
             <value>,Design: Original,Design: Secondary,Deal: Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -92,11 +89,6 @@
         <language>en_US</language>
     </filter>
     <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>ADDRESS1_COUNTRY_CODE</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>ACCOUNT_NAME</field>
@@ -123,7 +115,7 @@
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
-    <showSubTotals>false</showSubTotals>
+    <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
         <interval>INTERVAL_CURFY</interval>

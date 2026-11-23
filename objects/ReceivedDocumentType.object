@@ -130,6 +130,12 @@
     <enableFeeds>false</enableFeeds>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
+        <fullName>DocumentTypeId</fullName>
+        <inlineHelpText>Associated Document Type</inlineHelpText>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>PageNumber</fullName>
         <trackHistory>false</trackHistory>
     </fields>
@@ -143,15 +149,19 @@
         <customTabListAdditionalFields>LastModifiedDate</customTabListAdditionalFields>
         <customTabListAdditionalFields>LastModifiedBy</customTabListAdditionalFields>
         <customTabListAdditionalFields>ReceivedDocument</customTabListAdditionalFields>
+        <customTabListAdditionalFields>DocumentType</customTabListAdditionalFields>
         <lookupDialogsAdditionalFields>LastModifiedDate</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>LastModifiedBy</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>ReceivedDocument</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>DocumentType</lookupDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>LastModifiedDate</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>LastModifiedBy</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>ReceivedDocument</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>DocumentType</lookupPhoneDialogsAdditionalFields>
         <searchResultsAdditionalFields>LastModifiedDate</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>LastModifiedBy</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>ReceivedDocument</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>DocumentType</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
 </CustomObject>

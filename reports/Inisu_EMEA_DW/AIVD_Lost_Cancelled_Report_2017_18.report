@@ -23,7 +23,7 @@
         <field>OpportunityLineItem.Core_Lost_Total_Price__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>Account.Core_Geo__c</field>
@@ -94,7 +94,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>AIVD - Lost/Cancelled Report (2017/18)</name>

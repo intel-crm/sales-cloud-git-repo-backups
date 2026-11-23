@@ -3,6 +3,11 @@
     <description>This permission set allows user to edit following fields on User record. 
 1. Is HQ User. 
 2. Alternate Channel Manager WWID</description>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Bank_Legal_Entity_Code_cd__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Update Fields on User Record</label>
     <license>Salesforce</license>

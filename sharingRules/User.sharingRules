@@ -1,25 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
-        <fullName>Access_for_Reclaimed_Scenerio</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>Access for Reclaimed Scenerio</label>
-        <sharedTo>
-            <group>PMP_All_Intel_Admin_Users</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>IsActive</field>
-            <operation>equals</operation>
-            <value>False</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Partner_License_Reclaimed__c</field>
-            <operation>equals</operation>
-            <value>True</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>Core_DRD_User_Access</fullName>
         <accessLevel>Read</accessLevel>
         <description>Rule to share Users with DRD System.</description>
@@ -47,7 +28,7 @@
             <operation>equals</operation>
             <value>False</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_User_All_AllContingent_Workers_Read</fullName>
@@ -57,14 +38,8 @@
         <sharedTo>
             <group>Core_All_Contingent_Workers_Group</group>
         </sharedTo>
-        <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
             <field>IsActive</field>
-            <operation>equals</operation>
-            <value>True</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Partner_License_Reclaimed__c</field>
             <operation>equals</operation>
             <value>True</value>
         </criteriaItems>
@@ -78,14 +53,8 @@
         <sharedTo>
             <group>Core_All_Employees_Group</group>
         </sharedTo>
-        <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
             <field>IsActive</field>
-            <operation>equals</operation>
-            <value>True</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Partner_License_Reclaimed__c</field>
             <operation>equals</operation>
             <value>True</value>
         </criteriaItems>
@@ -126,142 +95,6 @@
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>SWS_6Sense_User_Access</fullName>
-        <accessLevel>Read</accessLevel>
-        <description>6Sense User Access</description>
-        <label>SWS 6Sense User Access</label>
-        <sharedTo>
-            <group>SWS_6Sense_Admin_Group</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_Employee_Type_Code__c</field>
-            <operation>equals</operation>
-            <value>CTW,EMP</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingOwnerRules>
-        <fullName>CCP_1_1_SPCF_EXTERNAL</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>CCP 1&amp;1 SPCF EXTERNAL</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_1_1_SPCF_EXTERNAL</group>
-        </sharedTo>
-        <sharedFrom>
-            <group>Core_MDF_CCP_1_1_SPCF_EXTERNAL</group>
-        </sharedFrom>
-    </sharingOwnerRules>
-    <sharingOwnerRules>
-        <fullName>CCP_AETest_AcctJJ_CCFB_External</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>CCP AETest AcctJJ CCFB External</label>
-        <sharedTo>
-            <group>CoreCCP_A_E_Test_AccountJJ_CCFB_EXTERNAL</group>
-        </sharedTo>
-        <sharedFrom>
-            <group>CoreCCP_A_E_Test_AccountJJ_CCFB_EXTERNAL</group>
-        </sharedFrom>
-    </sharingOwnerRules>
-    <sharingOwnerRules>
-        <fullName>CCP_AETest_AcctJJ_CCF_External</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>CCP AETest AcctJJ CCF External</label>
-        <sharedTo>
-            <group>Core_A_E_Test_Account_JJ_CCF_EXTERNAL</group>
-        </sharedTo>
-        <sharedFrom>
-            <group>Core_A_E_Test_Account_JJ_CCF_EXTERNAL</group>
-        </sharedFrom>
-    </sharingOwnerRules>
-    <sharingOwnerRules>
-        <fullName>CCP_Acer_CCFB_External</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>CCP Acer CCFB External</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_Acer_CCFB_External</group>
-        </sharedTo>
-        <sharedFrom>
-            <group>Core_MDF_CCP_Acer_CCFB_External</group>
-        </sharedFrom>
-    </sharingOwnerRules>
-    <sharingOwnerRules>
-        <fullName>CCP_Asus_CCFB_External</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>CCP Asus CCFB External</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_Asus_CCFB_External</group>
-        </sharedTo>
-        <sharedFrom>
-            <group>Core_MDF_CCP_Asus_CCFB_External</group>
-        </sharedFrom>
-    </sharingOwnerRules>
-    <sharingOwnerRules>
-        <fullName>CCP_CENTURYLINK_SPCF_EXTERNAL</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>CCP CENTURYLINK SPCF EXTERNAL</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_CENTURYLINK_SPCF_EXTERNAL</group>
-        </sharedTo>
-        <sharedFrom>
-            <group>Core_MDF_CCP_CENTURYLINK_SPCF_EXTERNAL</group>
-        </sharedFrom>
-    </sharingOwnerRules>
-    <sharingOwnerRules>
-        <fullName>CCP_Dell_CCFB_External</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>CCP Dell CCFB External</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_Dell_CCFB_External</group>
-        </sharedTo>
-        <sharedFrom>
-            <group>Core_MDF_CCP_Dell_CCFB_External</group>
-        </sharedFrom>
-    </sharingOwnerRules>
-    <sharingOwnerRules>
-        <fullName>CCP_FCCL_CCFB_External</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>CCP FCCL CCFB External</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_FCCL_CCF_Boost_External</group>
-        </sharedTo>
-        <sharedFrom>
-            <group>Core_MDF_CCP_FCCL_CCF_Boost_External</group>
-        </sharedFrom>
-    </sharingOwnerRules>
-    <sharingOwnerRules>
-        <fullName>CCP_GOOGLEINC_SPCF_EXTERNAL</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>CCP_GOOGLEINC_SPCF_EXTERNAL</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_GOOGLEINC_SPCF_EXTERNAL</group>
-        </sharedTo>
-        <sharedFrom>
-            <group>Core_MDF_CCP_GOOGLEINC_SPCF_EXTERNAL</group>
-        </sharedFrom>
-    </sharingOwnerRules>
-    <sharingOwnerRules>
-        <fullName>CCP_H3C_DCF_EXTERNAL</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>CCP H3C DCF EXTERNAL</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_H3C_DCF_EXTERNAL</group>
-        </sharedTo>
-        <sharedFrom>
-            <group>Core_MDF_CCP_H3C_DCF_EXTERNAL</group>
-        </sharedFrom>
-    </sharingOwnerRules>
-    <sharingOwnerRules>
-        <fullName>CCP_HPI_CCFB_EXTERNAL</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>CCP HPI CCFB EXTERNAL</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_HPI_CCFB_External</group>
-        </sharedTo>
-        <sharedFrom>
-            <group>Core_MDF_CCP_HPI_CCFB_External</group>
-        </sharedFrom>
-    </sharingOwnerRules>
     <sharingOwnerRules>
         <fullName>CCP_IPSTESTACCOUNT3_DCF_EXTERNAL</fullName>
         <accessLevel>Read</accessLevel>
@@ -274,17 +107,6 @@
         </sharedFrom>
     </sharingOwnerRules>
     <sharingOwnerRules>
-        <fullName>CCP_Lenovo_CCFB_External</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>CCP Lenovo CCFB External</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_Lenovo_CCFB_External</group>
-        </sharedTo>
-        <sharedFrom>
-            <group>Core_MDF_CCP_Lenovo_CCFB_External</group>
-        </sharedFrom>
-    </sharingOwnerRules>
-    <sharingOwnerRules>
         <fullName>CCP_MICROSOFT_SPCF_EXTERNAL</fullName>
         <accessLevel>Read</accessLevel>
         <label>CCP MICROSOFT SPCF EXTERNAL</label>
@@ -293,72 +115,6 @@
         </sharedTo>
         <sharedFrom>
             <group>Core_MDF_CCP_MICROSOFT_SPCF_EXTERNAL</group>
-        </sharedFrom>
-    </sharingOwnerRules>
-    <sharingOwnerRules>
-        <fullName>CCP_NEC_PC_CCFB_External</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>CCP NEC PC CCFB External</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_NEC_PC_CCF_Boost_EXTERNAL</group>
-        </sharedTo>
-        <sharedFrom>
-            <group>Core_MDF_CCP_NEC_PC_CCF_Boost_EXTERNAL</group>
-        </sharedFrom>
-    </sharingOwnerRules>
-    <sharingOwnerRules>
-        <fullName>CCP_NOKIA_DCF_EXTERNAL</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>CCP NOKIA DCF EXTERNAL</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_NOKIA_DCF_EXTERNAL</group>
-        </sharedTo>
-        <sharedFrom>
-            <group>Core_MDF_CCP_NOKIA_DCF_EXTERNAL</group>
-        </sharedFrom>
-    </sharingOwnerRules>
-    <sharingOwnerRules>
-        <fullName>CCP_OVH_SAS_SPCF_EXTERNAL</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>CCP OVH SAS SPCF EXTERNAL</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_OVH_SAS_SPCF_EXTERNAL</group>
-        </sharedTo>
-        <sharedFrom>
-            <group>Core_MDF_CCP_OVH_SAS_SPCF_EXTERNAL</group>
-        </sharedFrom>
-    </sharingOwnerRules>
-    <sharingOwnerRules>
-        <fullName>CCP_QINGCLOUD_SPCF_EXTERNAL</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>CCP QINGCLOUD SPCF EXTERNAL</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_QINGCLOUD_SPCF_EXTERNAL</group>
-        </sharedTo>
-        <sharedFrom>
-            <group>Core_MDF_CCP_QINGCLOUD_SPCF_EXTERNAL</group>
-        </sharedFrom>
-    </sharingOwnerRules>
-    <sharingOwnerRules>
-        <fullName>CCP_TSYSTEMS_SPCF_EXTERNAL</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>CCP TSYSTEMS SPCF EXTERNAL</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_TSYSTEMS_SPCF_EXTERNAL</group>
-        </sharedTo>
-        <sharedFrom>
-            <group>Core_MDF_CCP_TSYSTEMS_SPCF_EXTERNAL</group>
-        </sharedFrom>
-    </sharingOwnerRules>
-    <sharingOwnerRules>
-        <fullName>CCP_ZTE_DCF_EXTERNAL</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>CCP ZTE DCF EXTERNAL</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_ZTE_DCF_EXTERNAL</group>
-        </sharedTo>
-        <sharedFrom>
-            <group>Core_MDF_CCP_ZTE_DCF_EXTERNAL</group>
         </sharedFrom>
     </sharingOwnerRules>
     <sharingOwnerRules>
@@ -406,6 +162,17 @@
         </sharedFrom>
     </sharingOwnerRules>
     <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_1_1_SPCF_EXTERNAL</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>CCP 1&amp;1 SPCF EXTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_1_1_SPCF_EXTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_1_1_SPCF_EXTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
         <fullName>Core_MDF_CCP_ALIBABA_SPCF_EXTERNAL</fullName>
         <accessLevel>Read</accessLevel>
         <label>CCP ALIBABA SPCF EXTERNAL</label>
@@ -414,6 +181,17 @@
         </sharedTo>
         <sharedFrom>
             <group>Core_MDF_CCP_ALIBABA_SPCF_EXTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_A_E_Test_Account_JJ_CCF_EXTERNAL</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>CCP A&amp;E Test Account JJ CCF EXTERNAL</label>
+        <sharedTo>
+            <group>Core_A_E_Test_Account_JJ_CCF_EXTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_A_E_Test_Account_JJ_CCF_EXTERNAL</group>
         </sharedFrom>
     </sharingOwnerRules>
     <sharingOwnerRules>
@@ -572,6 +350,17 @@
         </sharedFrom>
     </sharingOwnerRules>
     <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Weezer_CCF_EXTERNAL</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>CCP Weezer CCF EXTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Weezer_CCF_EXTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_Weezer_CCF_EXTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
         <fullName>Core_MDF_CCP_YANDEX_SPCF_EXTERNA</fullName>
         <accessLevel>Read</accessLevel>
         <label>CCP YANDEX SPCF EXTERNA:</label>
@@ -602,17 +391,6 @@
         </sharedTo>
         <sharedFrom>
             <group>Core_MDF_CCP_CRAY_DCF_EXTERNAL</group>
-        </sharedFrom>
-    </sharingOwnerRules>
-    <sharingOwnerRules>
-        <fullName>Core_MDF_DELL_CCF_NEW</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>DELL CCF</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_DELL_CCF_EXTERNAL</group>
-        </sharedTo>
-        <sharedFrom>
-            <group>Core_MDF_CCP_DELL_CCF_EXTERNAL</group>
         </sharedFrom>
     </sharingOwnerRules>
     <sharingOwnerRules>
@@ -932,17 +710,6 @@
         </sharedTo>
         <sharedFrom>
             <group>CCP_IPSTESTACCOUNT3_CCF_EXTERNAL</group>
-        </sharedFrom>
-    </sharingOwnerRules>
-    <sharingOwnerRules>
-        <fullName>PCC_Users_Share_DDR_Internal_Users</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>PCC_Users Share DDR Internal Users</label>
-        <sharedTo>
-            <group>DDR_Internal_Users</group>
-        </sharedTo>
-        <sharedFrom>
-            <group>DDR_Internal_Users</group>
         </sharedFrom>
     </sharingOwnerRules>
 </SharingRules>

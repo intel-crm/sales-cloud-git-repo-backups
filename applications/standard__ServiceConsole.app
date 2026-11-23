@@ -181,8 +181,71 @@
     <tabs>standard-Case</tabs>
     <tabs>standard-Opportunity</tabs>
     <tabs>standard-Lead</tabs>
-    <tabs>standard-Knowledge</tabs>
+    <tabs>Power_BI_Report</tabs>
+    <tabs>Core_Security_Dashboard_Metric__c</tabs>
+    <tabs>SCRTY_Admin_Permission_Metrics__c</tabs>
+    <tabs>Core_MDF_Record_Tracking__c</tabs>
+    <tabs>Core_MDF_Partnership_Score__c</tabs>
+    <tabs>Core_MDF_PICReviewQuestion__c</tabs>
+    <tabs>Core_MDF_Recovery__c</tabs>
+    <tabs>In_App_Feedback__c</tabs>
+    <tabs>Core_MDF_Survey_Question__c</tabs>
+    <tabs>Core_MDF_Spending_Targets_Version__c</tabs>
+    <tabs>Core_MDF_Subscription_Notification_Type__c</tabs>
+    <tabs>Core_MDF_User_Notification_Subscriptions__c</tabs>
+    <tabs>Core_MDF_Custom_Utility_Config__c</tabs>
+    <tabs>Core_MDF_Exception_Account_Mapping__c</tabs>
+    <tabs>Core_MDF_Campaign_Outcomes__c</tabs>
+    <tabs>Support_Ticket__c</tabs>
     <workspaceConfig>
+        <mappings>
+            <tab>Core_MDF_Campaign_Outcomes__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_MDF_Custom_Utility_Config__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_MDF_Exception_Account_Mapping__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_MDF_PICReviewQuestion__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_MDF_Partnership_Score__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_MDF_Record_Tracking__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_MDF_Recovery__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_MDF_Spending_Targets_Version__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_MDF_Subscription_Notification_Type__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_MDF_Survey_Question__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_MDF_User_Notification_Subscriptions__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_Security_Dashboard_Metric__c</tab>
+        </mappings>
+        <mappings>
+            <tab>In_App_Feedback__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Power_BI_Report</tab>
+        </mappings>
+        <mappings>
+            <tab>SCRTY_Admin_Permission_Metrics__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Support_Ticket__c</tab>
+        </mappings>
         <mappings>
             <tab>standard-Account</tab>
         </mappings>
@@ -193,9 +256,6 @@
         <mappings>
             <fieldName>AccountId</fieldName>
             <tab>standard-Contact</tab>
-        </mappings>
-        <mappings>
-            <tab>standard-Knowledge</tab>
         </mappings>
         <mappings>
             <tab>standard-Lead</tab>

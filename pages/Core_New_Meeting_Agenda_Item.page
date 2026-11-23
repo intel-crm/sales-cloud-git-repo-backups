@@ -5,8 +5,7 @@
         
         <apex:outputPanel rendered="{!$User.UITheme == 'Theme3'}">            
                 <script>
-            //US677993 : Security Scan Fixes - 5(Unencoded Formulas in Script Tags XSS), added JSENCODE to NewMeetingAgendaItemUrl by Gopala Krishna Ch
-                    window.top.location.href='{!JSENCODE(NewMeetingAgendaItemUrl)}'
+                    window.top.location.href='{!NewMeetingAgendaItemUrl}'
                 </script>
             </apex:outputPanel>
             
@@ -14,9 +13,8 @@
             <apex:outputPanel rendered="{!$User.UITheme != 'Theme3'}">    
                     
                  <script type="text/javascript">
-                   //US677993 : Security Scan Fixes - 5(Unencoded Formulas in Script Tags XSS), added JSENCODE to ambId by Gopala Krishna Ch
                    sforce.one.createRecord('Core_Account_Meeting_Agenda_Item__c',null,{ 
-                   Core_Account_Meeting_Brief__c : '{!JSENCODE(ambId)}'
+                   Account_Meeting_Brief__c : '{!ambId}'
                 });
             
             </script>

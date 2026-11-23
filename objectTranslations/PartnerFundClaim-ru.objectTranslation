@@ -61,14 +61,46 @@
         <value>Сведения о заявке</value>
     </caseValues>
     <fieldSets>
+        <label><!-- Core_MDF_CCF_Claim_Fieldset --></label>
+        <name>Core_MDF_CCF_Claim_Fieldset</name>
+    </fieldSets>
+    <fieldSets>
         <label><!-- Claim Fields for AI PIC --></label>
         <name>Core_MDF_Claim_Fields_For_AI_PIC</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Core_MDF_CoGTM_Claim_Fieldset --></label>
+        <name>Core_MDF_CoGTM_Claim_Fieldset</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Core_MDF_DCF_Claim_Fieldset --></label>
+        <name>Core_MDF_DCF_Claim_Fieldset</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Core_MDF_IPA_Acc_Claim_Fieldset --></label>
+        <name>Core_MDF_IPA_Acc_Claim_Fieldset</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Core_MDF_IPA_Prop_Claim_Fieldset --></label>
+        <name>Core_MDF_IPA_Prop_Claim_Fieldset</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Metrices Fields --></label>
+        <name>Core_MDF_Metrices_Fields</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Core_MDF_RMF_RSAMD_Claim_Fieldset --></label>
+        <name>Core_MDF_RMF_RSAMD_Claim_Fieldset</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Core_MDF_RMF_RetailMDF_Claim_Fieldset --></label>
+        <name>Core_MDF_RMF_RetailMDF_Claim_Fieldset</name>
     </fieldSets>
     <fields>
         <caseValues>
             <caseType>Nominative</caseType>
             <plural>false</plural>
-            <value>Сумма возмещения (долл. США)</value>
+            <value>Возмещаемая сумма (долларов США)</value>
         </caseValues>
         <gender>Feminine</gender>
         <name>partnerfundclaim_amount</name>
@@ -129,12 +161,25 @@
         <name>partnerfundclaim_request</name>
     </fields>
     <fields>
-        <help>Требуется сторонняя документация, если выбрано это значение</help>
-        <label>Требуется сторонняя документация POP</label>
+        <label><!-- Bank Country --></label>
+        <name>Bank_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bank Supplier --></label>
+        <name>Bank_Supplier_tbd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Channel Program Reporting --></label>
+        <name>Channel_Program_Reporting__c</name>
+        <relationshipLabel><!-- Claims --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Third Party documentation is required if the value is selected --></help>
+        <label><!-- 3rd Party POP Documentation Required --></label>
         <name>Core_MDF_3rd_Party_POP_Doc_Required_Ind__c</name>
     </fields>
     <fields>
-        <label>Рост ASP (долл. США)</label>
+        <label><!-- ASP (Average Sales Price) Growth (USD) --></label>
         <name>Core_MDF_ASP_Growth_amt__c</name>
     </fields>
     <fields>
@@ -184,14 +229,18 @@
         <name>Core_MDF_Activity_Types__c</name>
     </fields>
     <fields>
-        <help>Дата окончания исполнения</help>
+        <help>Дата окончания рекламы</help>
         <label>Дата окончания исполнения</label>
         <name>Core_MDF_Ad_Run_End_Date__c</name>
     </fields>
     <fields>
-        <help>Дата начала исполнения</help>
+        <help>Дата начала рекламы</help>
         <label>Дата начала исполнения</label>
         <name>Core_MDF_Ad_Run_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ad run end date - Claim submission date --></label>
+        <name>Core_MDF_Ad_run_end_date_Clm_sub_date__c</name>
     </fields>
     <fields>
         <label><!-- Amount Percentage --></label>
@@ -262,11 +311,11 @@
         <name>Core_MDF_Audit_Type__c</name>
     </fields>
     <fields>
-        <label>Среднее время просмотра (секунды)</label>
+        <label><!-- Average View Time (Seconds) --></label>
         <name>Core_MDF_Average_View_Time_nbr__c</name>
     </fields>
     <fields>
-        <label>Ср. время пребывания на странице (сек.)</label>
+        <label><!-- Average time on Page (Seconds) --></label>
         <name>Core_MDF_Average_time_on_Page_nbr__c</name>
     </fields>
     <fields>
@@ -321,6 +370,10 @@
         <name>Core_MDF_Budget_Type_Options_Nm__c</name>
     </fields>
     <fields>
+        <label><!-- CPA --></label>
+        <name>Core_MDF_CPA_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Claim Review Result Positive Indicator --></label>
         <name>Core_MDF_CRR_Positive_Ind__c</name>
     </fields>
@@ -329,14 +382,30 @@
         <name>Core_MDF_CSP_Intel_Based_Revenue_Amt__c</name>
     </fields>
     <fields>
+        <label><!-- CTA --></label>
+        <name>Core_MDF_CTA_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- C Type Indicator --></label>
         <name>Core_MDF_C_Type_Ind__c</name>
     </fields>
     <fields>
+        <label><!-- Campaign End Date --></label>
+        <name>Core_MDF_Campaign_End_Date_dt__c</name>
+    </fields>
+    <fields>
         <help>Указывает кампанию, с которой связана эта заявка.</help>
-        <label>Кампания</label>
+        <label><!-- Campaign --></label>
         <name>Core_MDF_Campaign_Id__c</name>
         <relationshipLabel><!-- Claims --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Campaign Name --></label>
+        <name>Core_MDF_Campaign_Name_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign Start Date --></label>
+        <name>Core_MDF_Campaign_Start_Date_dt__c</name>
     </fields>
     <fields>
         <label><!-- Cap Type --></label>
@@ -360,6 +429,10 @@
         <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
     <fields>
+        <label>Причина отмены претензии</label>
+        <name>Core_MDF_Claim_Cancellation_Reason_txt__c</name>
+    </fields>
+    <fields>
         <help>Текстовая заметка, связанная с заявкой</help>
         <label>Примечания к заявке</label>
         <name>Core_MDF_Claim_Comments__c</name>
@@ -371,6 +444,10 @@
     <fields>
         <label><!-- Claim Creation Duration --></label>
         <name>Core_MDF_Claim_Creation_Duration_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Date Difference --></label>
+        <name>Core_MDF_Claim_Date_Difference_Nbr__c</name>
     </fields>
     <fields>
         <label><!-- Claim evaluation in progress --></label>
@@ -437,6 +514,10 @@
             <translation><!-- Payment Clearance Processing --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Payment Clearance Screening</masterLabel>
+            <translation><!-- Payment Clearance Screening --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Payment Due</masterLabel>
             <translation><!-- Payment Due --></translation>
         </picklistValues>
@@ -497,11 +578,15 @@
         <relationshipLabel><!-- Claims (Claim Submitter) --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Collateral --></label>
+        <name>Core_MDF_Collateral_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Comments (Approver only) --></label>
         <name>Core_MDF_Comments_Appvr_Only_txt__c</name>
     </fields>
     <fields>
-        <label>Стоимость на потенц. клиента (USD)</label>
+        <label><!-- Cost Per Lead (USD) --></label>
         <name>Core_MDF_Cost_Per_Lead_amt__c</name>
     </fields>
     <fields>
@@ -536,6 +621,14 @@
         <help>Валюта в документе с подтверждением затрат, в которой запрашивается возмещаемая сумма</help>
         <label>Подтверждение валюты затрат</label>
         <name>Core_MDF_Currency__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Product --></label>
+        <name>Core_MDF_Customer_Product_Codename_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date After Modified --></label>
+        <name>Core_MDF_Date_After_Modified__c</name>
     </fields>
     <fields>
         <label>Количество развертываний</label>
@@ -582,12 +675,16 @@
     </fields>
     <fields>
         <help>Количество дней, через которое окно подачи заявок будет закрыто.</help>
-        <label>Дней до закрытия окна подачи заявок</label>
+        <label>Дней до закрытия окна подачи заявки</label>
         <name>Core_MDF_Due_Date_nbr__c</name>
     </fields>
     <fields>
         <label>Дубликат заявки</label>
         <name>Core_MDF_Duplicate_Claim__c</name>
+    </fields>
+    <fields>
+        <label>Номер EFT</label>
+        <name>Core_MDF_EFT_Nbr__c</name>
     </fields>
     <fields>
         <label>Номер EFT</label>
@@ -599,12 +696,20 @@
         <name>Core_MDF_ESD_Hold__c</name>
     </fields>
     <fields>
+        <label><!-- Einstein Audit Prediction Result --></label>
+        <name>Core_MDF_Einstein_Prediction_Result_Nbr__c</name>
+    </fields>
+    <fields>
         <label><!-- Eligible for PIC --></label>
         <name>Core_MDF_Eligible_for_PIC__c</name>
     </fields>
     <fields>
         <label><!-- End Time --></label>
         <name>Core_MDF_EndTime_dtm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Engagement # --></label>
+        <name>Core_MDF_Engagement_Nbr__c</name>
     </fields>
     <fields>
         <help>При необходимости проверьте идентификационный номер эскалации по этой заявке</help>
@@ -656,7 +761,7 @@
         <name>Core_MDF_Intel_Manual_Hold_Ind__c</name>
     </fields>
     <fields>
-        <label>Количество выступлений/семинаров Intel</label>
+        <label><!-- # of Intel Speakerships/Sessions --></label>
         <name>Core_MDF_Intel_Speakerships_Sessions_nbr__c</name>
     </fields>
     <fields>
@@ -735,6 +840,10 @@
         <name>Core_MDF_Manaul_Audit_Staging_Ind__c</name>
     </fields>
     <fields>
+        <label><!-- Marketing Quantity to Date --></label>
+        <name>Core_MDF_Marketing_Qty_to_Date_Nbr__c</name>
+    </fields>
+    <fields>
         <help>Средство маркетинга, используемое для совместного маркетингового действия</help>
         <label>Средство маркетинга</label>
         <name>Core_MDF_Media_Vehicle__c</name>
@@ -763,9 +872,13 @@
         <name>Core_MDF_NoOfImpressions_Nbr__c</name>
     </fields>
     <fields>
-        <help>Введите количество потенциальных клиентов, связанных с заявкой.</help>
-        <label>Количество потенциальных клиентов</label>
+        <help><!-- Enter the number of Leads related to the Claim. --></help>
+        <label><!-- # of Leads --></label>
         <name>Core_MDF_NoOfLeads_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Prod page URLs with Live CPU badges --></label>
+        <name>Core_MDF_NoOfProdPageURLs_Nbr__c</name>
     </fields>
     <fields>
         <help>Введите количество пробных активаций, связанных с заявкой.</help>
@@ -785,11 +898,11 @@
         <name>Core_MDF_No_of_Calls_nbr__c</name>
     </fields>
     <fields>
-        <label>Количество установленных контактов</label>
+        <label><!-- # of Contacts Reached --></label>
         <name>Core_MDF_No_of_Contacts_Reached_nbr__c</name>
     </fields>
     <fields>
-        <label>Количество конверсий</label>
+        <label><!-- # of Conversions --></label>
         <name>Core_MDF_No_of_Conversions_nbr__c</name>
     </fields>
     <fields>
@@ -797,27 +910,27 @@
         <name>Core_MDF_No_of_Days_nbr__c</name>
     </fields>
     <fields>
-        <label>Количество зарегистрированных сделок</label>
+        <label><!-- # of Deals Registered --></label>
         <name>Core_MDF_No_of_Deals_Registered_nbr__c</name>
     </fields>
     <fields>
-        <label>Количество выделенного персонала</label>
+        <label><!-- # of Dedicated Personnel --></label>
         <name>Core_MDF_No_of_Dedicated_Personnel_nbr__c</name>
     </fields>
     <fields>
-        <label>Количество развертываний</label>
+        <label><!-- # of Deployments --></label>
         <name>Core_MDF_No_of_Deployments_nbr__c</name>
     </fields>
     <fields>
-        <label>Количество побед в области разработки</label>
+        <label><!-- # of Design Wins --></label>
         <name>Core_MDF_No_of_Design_Wins_nbr__c</name>
     </fields>
     <fields>
-        <label>Количество загрузок</label>
+        <label><!-- # of Downloads --></label>
         <name>Core_MDF_No_of_Downloads_nbr__c</name>
     </fields>
     <fields>
-        <label><!-- # of Emails Opened --></label>
+        <label>Количество просмотров</label>
         <name>Core_MDF_No_of_Emails_Opened_nbr__c</name>
     </fields>
     <fields>
@@ -825,11 +938,11 @@
         <name>Core_MDF_No_of_End_caps_Nbr__c</name>
     </fields>
     <fields>
-        <label>Количество ожидаемых участников</label>
+        <label><!-- Number of Expected Participants --></label>
         <name>Core_MDF_No_of_Expected_Participants_nbr__c</name>
     </fields>
     <fields>
-        <label>Количество обученных лиц</label>
+        <label><!-- # of Individuals Trained --></label>
         <name>Core_MDF_No_of_Individuals_Trained_nbr__c</name>
     </fields>
     <fields>
@@ -837,16 +950,16 @@
         <name>Core_MDF_No_of_Instance_nbr__c</name>
     </fields>
     <fields>
-        <help><!-- Enter the number of Leads related to the Claim. --></help>
+        <help>Введите количество потенциальных клиентов, связанных с заявкой.</help>
         <label>Количество потенциальных клиентов</label>
         <name>Core_MDF_No_of_Leads_nbr__c</name>
     </fields>
     <fields>
-        <label>Количество просмотров страницы</label>
+        <label><!-- # of Page Views --></label>
         <name>Core_MDF_No_of_Page_Views_nbr__c</name>
     </fields>
     <fields>
-        <label>Количество размещений</label>
+        <label><!-- # of Placements --></label>
         <name>Core_MDF_No_of_Placements_nbr__c</name>
     </fields>
     <fields>
@@ -866,23 +979,23 @@
         <name>Core_MDF_No_of_Trainees_nbr__c</name>
     </fields>
     <fields>
-        <label>Количество завершенных учебных курсов</label>
+        <label><!-- # of Trainings Completed --></label>
         <name>Core_MDF_No_of_Trainings_Completed_nbr__c</name>
     </fields>
     <fields>
-        <label>Количество уникальных слушателей</label>
+        <label><!-- # of Unique Listeners --></label>
         <name>Core_MDF_No_of_Unique_Listeners_nbr__c</name>
     </fields>
     <fields>
-        <label>Количество уникальных посетителей</label>
+        <label><!-- # of Unique Visitors --></label>
         <name>Core_MDF_No_of_Unique_Visitors_nbr__c</name>
     </fields>
     <fields>
-        <label>Количество проданных единиц</label>
+        <label><!-- # of Units Sold --></label>
         <name>Core_MDF_No_of_Units_Sold_nbr__c</name>
     </fields>
     <fields>
-        <label>Количество просмотров</label>
+        <label><!-- # of Views --></label>
         <name>Core_MDF_No_of_Views_nbr__c</name>
     </fields>
     <fields>
@@ -914,8 +1027,12 @@
         <name>Core_MDF_No_of_video_impressions_Nbr__c</name>
     </fields>
     <fields>
-        <label>Количество победителей</label>
+        <label><!-- Number of Winners --></label>
         <name>Core_MDF_Num_of_Potential_Winners_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Winners --></label>
+        <name>Core_MDF_Num_of_Winners_nbr__c</name>
     </fields>
     <fields>
         <label><!-- Number of Recoveries --></label>
@@ -942,6 +1059,10 @@
         <name>Core_MDF_Number_of_Delivered_nbr__c</name>
     </fields>
     <fields>
+        <label><!-- # of Devices --></label>
+        <name>Core_MDF_Number_of_Devices_nbr__c</name>
+    </fields>
+    <fields>
         <label><!-- # of Distributed --></label>
         <name>Core_MDF_Number_of_Distributed_Nbr__c</name>
     </fields>
@@ -958,7 +1079,7 @@
         <name>Core_MDF_Number_of_RSPs_nbr__c</name>
     </fields>
     <fields>
-        <label>Количество получателей</label>
+        <label><!-- # of Recipient --></label>
         <name>Core_MDF_Number_of_Recipient_nbr__c</name>
     </fields>
     <fields>
@@ -966,11 +1087,15 @@
         <name>Core_MDF_Number_of_Reviews_nbr__c</name>
     </fields>
     <fields>
-        <label>Количество точек продаж</label>
+        <label><!-- # of Slots --></label>
+        <name>Core_MDF_Number_of_Slots_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>Количество магазинов</label>
         <name>Core_MDF_Number_of_Stores_nbr__c</name>
     </fields>
     <fields>
-        <label>Количество просмотров</label>
+        <label><!-- # of Emails Opened --></label>
         <name>Core_MDF_Open_Rate_txt__c</name>
     </fields>
     <fields>
@@ -983,8 +1108,8 @@
         <name>Core_MDF_Other_Quantity_nbr__c</name>
     </fields>
     <fields>
-        <help>Необходимо ввести числовое значение, которое является измеряемым показателем</help>
-        <label>Другое</label>
+        <help><!-- Must enter a numerical value that is a measurable metric --></help>
+        <label><!-- Others --></label>
         <name>Core_MDF_Others_txt__c</name>
     </fields>
     <fields>
@@ -1020,6 +1145,14 @@
         <name>Core_MDF_Payment_Admin_Reminder_Date_Dtm__c</name>
     </fields>
     <fields>
+        <label><!-- Retail Payment Currency --></label>
+        <name>Core_MDF_Payment_Currency_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retail Payment Exchange Rate --></label>
+        <name>Core_MDF_Payment_Exchange_Rate_Nbr__c</name>
+    </fields>
+    <fields>
         <help>Этот флажок устанавливается в случае задержки банка</help>
         <label>Приостановка платежа</label>
         <name>Core_MDF_Payment_Hold_ind__c</name>
@@ -1052,6 +1185,10 @@
     <fields>
         <label><!-- Payment Type --></label>
         <name>Core_MDF_Payment_Type_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retail Payment Local Amount --></label>
+        <name>Core_MDF_Payment_lcl_Amount__c</name>
     </fields>
     <fields>
         <label>Количество устройств Intel</label>
@@ -1161,6 +1298,14 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Product Category --></label>
+        <name>Core_MDF_Product_Category_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Type --></label>
+        <name>Core_MDF_Product_Type__c</name>
+    </fields>
+    <fields>
         <help>Программа, с которой связана заявка.</help>
         <label>Программа</label>
         <name>Core_MDF_Program__c</name>
@@ -1168,6 +1313,10 @@
     <fields>
         <label><!-- Proposal Based Ind --></label>
         <name>Core_MDF_Proposal_Based_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quarter &amp; Year Of Claim Start Date --></label>
+        <name>Core_MDF_Qrts_Year_Of_Claim_Start_Date__c</name>
     </fields>
     <fields>
         <label><!-- Quantity of (Impressions, instances) --></label>
@@ -1181,6 +1330,10 @@
     <fields>
         <label><!-- Quarter Number and Year --></label>
         <name>Core_MDF_Quarter_Year_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quarter_c --></label>
+        <name>Core_MDF_Quarter__c</name>
     </fields>
     <fields>
         <label><!-- Queued Hold Email Sent --></label>
@@ -1200,6 +1353,10 @@
         <name>Core_MDF_RMF_Last_POP_Submission_Dt__c</name>
     </fields>
     <fields>
+        <label><!-- ROAS --></label>
+        <name>Core_MDF_ROAS_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Internal Comments --></label>
         <name>Core_MDF_RecentInternalComments_txt__c</name>
     </fields>
@@ -1208,7 +1365,7 @@
         <name>Core_MDF_Recommend_For_ClaimReview__c</name>
     </fields>
     <fields>
-        <label>Удерживать для восстановления</label>
+        <label><!-- Hold for Recovery --></label>
         <name>Core_MDF_Recovery_Hold_Ind__c</name>
     </fields>
     <fields>
@@ -1227,9 +1384,13 @@
         <name>Core_MDF_Reimbursable_Transaction_Amount__c</name>
     </fields>
     <fields>
-        <help>% возмещения, применимый к этой заявке</help>
+        <help>T% возмещения, применимый к этой заявке</help>
         <label>Ставка возмещения, %</label>
         <name>Core_MDF_Reimbursement_Percent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reporting Region --></label>
+        <name>Core_MDF_Reporting_Region__c</name>
     </fields>
     <fields>
         <label><!-- Reprocess Claim --></label>
@@ -1241,7 +1402,7 @@
         <name>Core_MDF_Requested_Reimbursement_Amt__c</name>
     </fields>
     <fields>
-        <label>Выручка от проданных единиц (долл. США)</label>
+        <label><!-- Revenue of Units Sold (USD) --></label>
         <name>Core_MDF_Revenue_of_Units_Sold_amt__c</name>
     </fields>
     <fields>
@@ -1253,12 +1414,20 @@
         <name>Core_MDF_Runs_per_hour_nbr__c</name>
     </fields>
     <fields>
-        <label>Кол-во лайков/шеров в соц. Сетях</label>
+        <label><!-- DNR: Send Vat Eligible Claim for Audit --></label>
+        <name>Core_MDF_Send_VatElig_Claim_forAudit_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Social Media Likes/Shares --></label>
         <name>Core_MDF_Social_Media_Engagements_nbr__c</name>
     </fields>
     <fields>
         <label><!-- Start Time --></label>
         <name>Core_MDF_StartTime_dtm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_MDF_Status_Image__c</name>
     </fields>
     <fields>
         <help>Статус заявки</help>
@@ -1310,7 +1479,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Payment Clearance Processing</masterLabel>
-            <translation>Обработка платежа</translation>
+            <translation><!-- Payment Clearance Processing --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Payment Due</masterLabel>
@@ -1393,6 +1562,14 @@
         <name>Core_MDF_Taxes_Local__c</name>
     </fields>
     <fields>
+        <label><!-- Technology --></label>
+        <name>Core_MDF_Technology__c</name>
+    </fields>
+    <fields>
+        <label><!-- Third Party Ind --></label>
+        <name>Core_MDF_Third_Party_Ind__c</name>
+    </fields>
+    <fields>
         <label>Продолжительность видео</label>
         <name>Core_MDF_Time_video_to_last_txt__c</name>
     </fields>
@@ -1400,6 +1577,14 @@
         <help><!-- Check the box for claim to go straight to pay. Uncheck the box to determine if the claim should be audited. --></help>
         <label><!-- Straight to Pay --></label>
         <name>Core_MDF_To_Be_Audited_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Amount (Local) New --></label>
+        <name>Core_MDF_TotalInvoice_Amt_Local__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Adjustment Amount --></label>
+        <name>Core_MDF_Total_Adjustment_Amt__c</name>
     </fields>
     <fields>
         <help>Сумма (в долларах США), сокращающая запрошенную сумму (в долларах США) из-за корректировки возмещений</help>
@@ -1474,6 +1659,10 @@
         <name>Core_MDF_URL_txt__c</name>
     </fields>
     <fields>
+        <label><!-- URLs w/ Live CPU Badges --></label>
+        <name>Core_MDF_URLs_w_Live_CPU_Badges_nbr__c</name>
+    </fields>
+    <fields>
         <label><!-- Ultimate Account ID --></label>
         <name>Core_MDF_Ultimate_Account_ID__c</name>
     </fields>
@@ -1525,6 +1714,10 @@
         <name>Core_MDF_VAT_Opt_In_txt__c</name>
     </fields>
     <fields>
+        <label><!-- Vat Payment Local Amount --></label>
+        <name>Core_MDF_Vat_Payment_lcl_Amount__c</name>
+    </fields>
+    <fields>
         <label>Место размещения</label>
         <name>Core_MDF_Where_to_take_place_txt__c</name>
         <picklistValues>
@@ -1552,14 +1745,47 @@
         <label><!-- Owner swapped with submitter --></label>
         <name>Core_MDF_owner_swapped_withsubmitter_ind__c</name>
     </fields>
+    <fields>
+        <label><!-- Geo Reporting --></label>
+        <name>Geo_Reporting__c</name>
+        <relationshipLabel><!-- Claims --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Quarter --></label>
+        <name>Quarter__c</name>
+        <relationshipLabel><!-- Claims --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Test Email field --></label>
+        <name>Test_Email_field__c</name>
+    </fields>
+    <fields>
+        <label><!-- program picklist test --></label>
+        <name>program_picklist_test__c</name>
+        <picklistValues>
+            <masterLabel>CCF</masterLabel>
+            <translation><!-- CCF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCF</masterLabel>
+            <translation><!-- DCF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RMF</masterLabel>
+            <translation><!-- RMF --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- test_date --></label>
+        <name>test_date__c</name>
+    </fields>
+    <fields>
+        <label><!-- test flow --></label>
+        <name>test_flow__c</name>
+    </fields>
     <gender>Neuter</gender>
     <recordTypes>
-        <description><!-- Channel MDF Program Record Type --></description>
-        <label>Персонализированный фонд маркетингового развития для канала</label>
-        <name>Core_MDF_Channel_MDF_Account_Based</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- CCF Program Record Type --></description>
+        <description><!-- Client Program Record Type --></description>
         <label>Клиент</label>
         <name>Core_MDF_Client_Co_Marketing_Fund</name>
     </recordTypes>
@@ -1569,12 +1795,11 @@
         <name>Core_MDF_Client_Co_Marketing_Fund_Boost</name>
     </recordTypes>
     <recordTypes>
-        <description><!-- Record type for Co-GTM Program --></description>
         <label><!-- Co-GTM --></label>
         <name>Core_MDF_Co_GTM</name>
     </recordTypes>
     <recordTypes>
-        <description><!-- DCF Program Record Type --></description>
+        <description><!-- Datacenter Program Record Type --></description>
         <label>Центр обработки данных</label>
         <name>Core_MDF_Data_Center_Co_Marketing_Fund</name>
     </recordTypes>
@@ -1592,6 +1817,16 @@
         <description><!-- IPA Program Type --></description>
         <label><!-- Intel Partner Alliance Proposal Based --></label>
         <name>Core_MDF_Intel_Partner_Alliance</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- RSA MD --></description>
+        <label><!-- RSA MD --></label>
+        <name>Core_MDF_RMF_MD</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Retail MDF --></description>
+        <label><!-- Retail MDF --></label>
+        <name>Core_MDF_RMF_MDF</name>
     </recordTypes>
     <recordTypes>
         <description><!-- It will be used for Retail Co-Marketing purposes --></description>
@@ -1624,7 +1859,7 @@
         <name>Core_MDF_Claim_Required_Fields</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Заявка не может быть создана/обновлена, так как она находится за пределами окна подачи заявок. Заявка должна быть подана в течение 6 месяцев с даты окончания исполнения.</errorMessage>
+        <errorMessage>Заявка не может быть создана/обновлена, так как она находится за пределами окна подачи заявок. Заявка должна быть подана в течение 6 месяцев с даты окончания показа объявления.</errorMessage>
         <name>Core_MDF_Claim_Window</name>
     </validationRules>
     <validationRules>
@@ -1632,7 +1867,7 @@
         <name>Core_MDF_Close_Adjustment</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Введите сумму невозмещаемых расходов, которая больше нуля или равна нулю</errorMessage>
+        <errorMessage><!-- Please enter Costs not Reimbursable amount that is greater than or equal to zero --></errorMessage>
         <name>Core_MDF_CostNotReimbursable</name>
     </validationRules>
     <validationRules>
@@ -1664,6 +1899,10 @@
         <name>Core_MDF_NegativeClaimAmountVal</name>
     </validationRules>
     <validationRules>
+        <errorMessage>Создание заявки для выбранного типа бюджета в настоящее время не поддерживается</errorMessage>
+        <name>Core_MDF_Opal_StopClaimCreation</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Payment Id is mandatory for Pending Payment Claims --></errorMessage>
         <name>Core_MDF_PaymentId_Check</name>
     </validationRules>
@@ -1676,7 +1915,7 @@
         <name>Core_MDF_RequestedReimbursementAmt</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Претензия не может быть создана, так как деятельность Фонда развития маркетинга Intel® Partner Alliance, связанная с претензией, отклонена.</errorMessage>
+        <errorMessage><!-- Claim cannot be created as the MDF Intel® Partner Alliance activity associated to the claim is declined. --></errorMessage>
         <name>Core_MDF_RestrictClaimCreationOnDeclined</name>
     </validationRules>
     <validationRules>
@@ -1690,6 +1929,10 @@
     <validationRules>
         <errorMessage>У этого пользователя нет прав на выполнение этого действия</errorMessage>
         <name>Core_MDF_Restrict_Change_Owner</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This user does not have permission to perform this action --></errorMessage>
+        <name>Core_MDF_Restrict_ClaimCloneAndEdit</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Claim creation is blocked due to the ‘In-Progress’ Activity needing approval. --></errorMessage>
@@ -1736,15 +1979,44 @@
         <name>Core_MDF_StartDate_EndDate_Validation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Введите сумму налога, которая больше нуля или равна нулю</errorMessage>
+        <errorMessage><!-- Please enter Tax amount that is greater than or equal to zero --></errorMessage>
         <name>Core_MDF_TaxesLocal</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Bank is not applicable for this Claim due to the Budget Type provided. --></errorMessage>
         <name>Core_MDF_ValidateBank</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- Budget Type cant be empty for legacy --></errorMessage>
+        <name>Testing_BudgetType_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- mandatory filed should not be empty! --></errorMessage>
+        <name>mandatory_fileds_validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter following Mandatory fields.
+Execution Start Date, Execution End Date, Proof Of Cost Currency, Proof Of Cost Date, Proof Of Cost Number, Media Vehicle, Costs not Reimbursable (Local), Taxes (Local), Total Amount (Local), Country/Region --></errorMessage>
+        <name>test_Core_MDF_Claim_Required_Fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- update blocked --></errorMessage>
+        <name>test_VR_block_status_update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is test validation for legacy CCF &amp; DCF --></errorMessage>
+        <name>test_validation_for_Opal</name>
+    </validationRules>
     <webLinks>
         <label><!-- Core_MDF_Export_List_View --></label>
         <name>Core_MDF_Export_List_View</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Release_Hold --></label>
+        <name>Release_Hold</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Test_List_View_Button --></label>
+        <name>Test_List_View_Button</name>
     </webLinks>
 </CustomObjectTranslation>

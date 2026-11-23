@@ -80,7 +80,7 @@ global without sharing class Core_MDF_Batch_RecoveryAdminNotification implements
         }
         
         catch(Exception ex){
-           // System.debug('Exception has occurred' + ex.getmessage());
+            System.debug('Exception has occurred' + ex.getmessage());
         }
     }
     global void finish(Database.BatchableContext bc){

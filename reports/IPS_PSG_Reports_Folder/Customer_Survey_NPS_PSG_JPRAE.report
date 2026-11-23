@@ -70,19 +70,22 @@
         <field>CONTACT.NAME</field>
     </columns>
     <columns>
-        <field>Core_IPS_Response__c.Core_IPS_NPS_Category_Indicator__c</field>
-    </columns>
-    <columns>
         <field>Core_IPS_Response__c.Core_IPS_Answer__c</field>
     </columns>
     <columns>
         <field>Core_IPS_Response__c.Core_IPS_Survey_Type__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Case.Core_IPS_Age__c</field>
+        <field>Core_IPS_Response__c.Core_IPS_NPS_Category_Indicator__c</field>
     </columns>
     <filter>
+        <criteriaItems>
+            <column>Core_IPS_Response__c.Core_IPS_Survey_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Customer</value>
+        </criteriaItems>
         <criteriaItems>
             <column>Case.Core_IPS_Product_Org1__c</column>
             <columnToColumn>false</columnToColumn>
@@ -123,7 +126,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>uniquest,altima,arrow,macnica,digi-key,GALAXY FAR EAST CORPORATION,IPS Intel</value>
+            <value>altima,arrow,macnica,digi-key,GALAXY FAR EAST CORPORATION</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -133,7 +136,7 @@
         <field>CLOSED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Obsolete - Customer Survey NPS - PSG JPR</name>
+    <name>Customer Survey NPS - PSG JPRAE</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -151,6 +154,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2019-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2019-01-01</startDate>
     </timeFrameFilter>
 </Report>

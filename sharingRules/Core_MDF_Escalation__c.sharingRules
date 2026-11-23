@@ -15,7 +15,7 @@
         <criteriaItems>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000KywA</value>
+            <value>0Pkg00000008PW9</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -34,7 +34,7 @@
         <criteriaItems>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000CaSe</value>
+            <value>0Pkg00000008OTT</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -53,7 +53,7 @@
         <criteriaItems>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000CaSZ</value>
+            <value>0Pkg00000008OTY</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -72,7 +72,7 @@
         <criteriaItems>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000CaUp</value>
+            <value>0Pkg00000008OTd</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -102,7 +102,7 @@
         <criteriaItems>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000KywA</value>
+            <value>0Pkg00000008PW9</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -117,7 +117,7 @@
         <criteriaItems>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000CaSe</value>
+            <value>0Pkg00000008OTT</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -147,9 +147,24 @@
         <criteriaItems>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000CaSZ</value>
+            <value>0Pkg00000008OTY</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Escalation_CCP_EEF_All</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sharing of escalation records to EEF All Internal based on EEF program - Read/Write</description>
+        <label>Escalation CCP EEF All</label>
+        <sharedTo>
+            <group>Core_MDF_Int_EEF_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>equals</operation>
+            <value>0PkDz0000008qrJ</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_MDF_Escalation_CCP_SPCF_All</fullName>
@@ -162,7 +177,7 @@
         <criteriaItems>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000CaUp</value>
+            <value>0Pkg00000008OTd</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

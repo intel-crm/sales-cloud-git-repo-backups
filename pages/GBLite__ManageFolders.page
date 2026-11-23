@@ -2,7 +2,7 @@
     <c:FileComponent CSSFileNames="{!CSSFileNames}" />
     <c:FileComponent JSFileNames="{!JSFileNames}" />
 	<!--[if IE 8]>
-        <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.gb_resources, 'ie8-styles.css')}" />
+        <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.GBLite__gb_resources, 'ie8-styles.css')}" />
     <![endif]-->
 	<div class="gbAppPage gbfPage {!if(showHeader, '', 'inGrid')}{!IF(lightningStylesEnabled, ' gbLightning', '')}">
 		<c:EmptyComponent rendered="{!isErrors}">
@@ -52,7 +52,8 @@
 						<apex:outputText value="{!lang.FolderInstr1}" escape="false"/><br/>
 						<apex:outputText value="{!lang.FolderInstr2}" escape="false"/><br/>
 						<apex:outputText value="{!lang.FolderInstr3}" escape="false"/><br/>
-						<apex:outputText value="{!lang.FolderInstr4}" escape="false"/>
+						<apex:outputText value="{!lang.FolderInstr4}" escape="false"/><br/>
+						<apex:outputText value="{!lang.SeeUserGuide}" escape="false"/>
 					</div>
 					<table>
 						<tr>
@@ -100,19 +101,7 @@
 											</div>
 											<div class="content-wrap">
 												<div class="gridList">
-													<apex:repeat value="{!AllGridNamesList.0String}" var="grid">
-														<div>
-															<input type="checkbox"/>
-															<span>{!grid}</span>
-														</div>
-													</apex:repeat>
-													<apex:repeat value="{!AllGridNamesList.1String}" var="grid">
-														<div>
-															<input type="checkbox"/>
-															<span>{!grid}</span>
-														</div>
-													</apex:repeat>
-													<apex:repeat value="{!AllGridNamesList.2String}" var="grid">
+													<apex:repeat value="{!AllGridNames}" var="grid">
 														<div>
 															<input type="checkbox"/>
 															<span>{!grid}</span>

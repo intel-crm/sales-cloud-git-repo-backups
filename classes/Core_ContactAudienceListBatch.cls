@@ -11,7 +11,7 @@ global class Core_ContactAudienceListBatch implements Database.Batchable<sObject
     final static String BATCHES_PROCESSED = 'Batches processed with';
     final static String FAILURE_RECORDS = 'failures';
     //Getting the email ids from the label
-    String 	Core_Email_Batch_Status_Label = System.Label.Core_Email_Batch_Status_Label;
+    String   Core_Email_Batch_Status_Label = System.Label.Core_Email_Batch_Status_Label;
     //Splitting email ids with comma seperated
     List<String> lstEmailIds = Core_Email_Batch_Status_Label.split(';');
     //Batch Start method
@@ -41,10 +41,10 @@ global class Core_ContactAudienceListBatch implements Database.Batchable<sObject
             ' AND Core_Entitlement_Id__c in :lstEntitlementIds');
     }
     //Batch Execute method
-	global void execute(Database.BatchableContext bc, List<Core_Contact_Entitlement__c> scope){
+  global void execute(Database.BatchableContext bc, List<Core_Contact_Entitlement__c> scope){
         //storing the contact details returned by populateAudienceList() method from Core_ContactAudienceList 
-     	returnedContactList = Core_ContactAudienceList.populateAudienceList(scope);
-		Database.SaveResult[] updateResults = new List<Database.SaveResult>();        
+       returnedContactList = Core_ContactAudienceList.populateAudienceList(scope);
+    Database.SaveResult[] updateResults = new List<Database.SaveResult>();        
         if(Test.isRunningTest()){
             Database.SaveResult updateResultsSingleRec = (Database.SaveResult)
             JSON.deserialize('{"success":false,"errors":[{"message":"You cannot do this...","statusCode":"FIELD_CUSTOM_VALIDATION_EXCEPTION"}]}',
@@ -64,20 +64,20 @@ global class Core_ContactAudienceListBatch implements Database.Batchable<sObject
                 // DML operation failed so get all errors
                 String failedDML = '';
                 if(updateResults.get(i).getErrors() != null && !updateResults.get(i).getErrors().isEmpty()){
-                	Database.Error error = updateResults.get(i).getErrors().get(0);
-                	failedDML = error.getMessage();
+                  Database.Error error = updateResults.get(i).getErrors().get(0);
+                  failedDML = error.getMessage();
                 }
                 if(returnedContactList.get(i) != null){
-                	failureContactsStr += returnedContactList.get(i).Id + '\t' + failedDML + ' \t ';
+                  failureContactsStr += returnedContactList.get(i).Id + '\t' + failedDML + ' \t ';
                     
                 }
              }
         
         }
 
-	}
+  }
     //Batch Finish method
-	global void finish(Database.BatchableContext bc){        
+  global void finish(Database.BatchableContext bc){        
         AsyncApexJob apexJob = [Select Id, Status,ExtendedStatus,NumberOfErrors, JobItemsProcessed,TotalJobItems, CreatedBy.Email 
                           from AsyncApexJob where Id =:bc.getJobId()];
         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();

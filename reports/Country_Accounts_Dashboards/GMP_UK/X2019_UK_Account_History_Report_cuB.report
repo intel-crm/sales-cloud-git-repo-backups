@@ -33,8 +33,8 @@
             <column>CREATED_DATE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_YEAR</value>
+            <operator>greaterThan</operator>
+            <value>1/1/2019 12:00 AM</value>
         </criteriaItems>
         <criteriaItems>
             <column>field_key</column>

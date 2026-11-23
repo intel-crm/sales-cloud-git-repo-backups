@@ -8,7 +8,7 @@ Modification Log :
 * Amritesh               12/18/2017             Created - US8534
 **********************************************************************************/    
 
-public without sharing class Core_IPS_Questions_Utility { // TWC745-9117 ATHR critical fixed by Tushar
+public class Core_IPS_Questions_Utility {
     
     /********************************************************************************
     Method Name:  getAllFieldsSObjectQuery
@@ -38,12 +38,8 @@ public without sharing class Core_IPS_Questions_Utility { // TWC745-9117 ATHR cr
     **********************************************************************************/    
     public static List<Core_IPS_Answer__c> getCoreAnswers(List<Id> lstQuestionId) {
         String strQuery = getAllFieldsSObjectQuery(Core_IPS_Answer__c.sObjectType.getDescribe());
-         // SOQL Injection Fix - Start -  Shipra
-         Map<String, Object> bindMap = new Map<String, Object>{ 'Status' => 'Active', 'LstQuestionId' => lstQuestionId  };
-        strQuery += ' WHERE Core_IPS_Status__c= :Status AND Core_IPS_Question__c IN :LstQuestionId AND Core_IPS_Question__c!=null ORDER BY Core_IPS_Order_No__c,Core_IPS_Answer__c';
-        return Database.queryWithBinds(strQuery,bindMap,AccessLevel.USER_MODE);
-         // SOQL Injection Fix - End -  Shipra
-
+        strQuery += ' WHERE Core_IPS_Status__c=\'Active\' AND Core_IPS_Question__c IN :lstQuestionId AND Core_IPS_Question__c!=null ORDER BY Core_IPS_Order_No__c,Core_IPS_Answer__c';
+        return Database.query(strQuery);
     }
     
     /********************************************************************************
@@ -69,12 +65,9 @@ public without sharing class Core_IPS_Questions_Utility { // TWC745-9117 ATHR cr
     * Amritesh               12/18/2017             Created   -  US8534
     **********************************************************************************/
     public static List<Core_IPS_Answer__c> getCoreAnswersByParentAnswer(List<Id> lstParentAnswerId) {
-        // SOQL Injection Fix - Start -  Shipra
-        Map<String, Object> bindMap = new Map<String, Object>{ 'Status' => 'Active', 'LstParentAnswerId' => lstParentAnswerId  };   
         String strQuery = getAllFieldsSObjectQuery(Core_IPS_Answer__c.sObjectType.getDescribe());
-        strQuery += ' WHERE Core_IPS_Status__c= :Status AND Core_IPS_Parent_Answer__c IN :LstParentAnswerId AND Core_IPS_Parent_Answer__c!=null ORDER BY Core_IPS_Order_No__c,Core_IPS_Answer__c';
-        return Database.queryWithBinds(strQuery,bindMap,AccessLevel.USER_MODE);
-        // SOQL Injection Fix - End -  Shipra
+        strQuery += ' WHERE Core_IPS_Status__c=\'Active\' AND Core_IPS_Parent_Answer__c IN :lstParentAnswerId AND Core_IPS_Parent_Answer__c!=null ORDER BY Core_IPS_Order_No__c,Core_IPS_Answer__c';
+        return Database.query(strQuery);
     }
     
     /********************************************************************************
@@ -88,18 +81,18 @@ public without sharing class Core_IPS_Questions_Utility { // TWC745-9117 ATHR cr
     * Modified               09/03/2018             Order by order number field US113683
     **********************************************************************************/
     public static List<Core_IPS_Assigned_Environment_Variables__c> getEnvDetailQuestions(String productId, String SubCatId,boolean isAgent){
-        // SOQL Injection Fix - Start -  Shipra
-        Map<String, Object> bindMap = new Map<String, Object>{ 'Status' => 'Active', 'subCatId' => SubCatId , 'ProductId' => productId };
-        
+        System.debug('Product id from questions utility class'+productId);
+        System.debug('SubCatId id from questions utility class'+SubCatId);
+        System.debug('isAgent from questions utility class'+isAgent);
         String strQuery = 'SELECT Id, Name, Core_IPS_Question__c,Core_IPS_Question__r.Name,Core_IPS_Question__r.Core_IPS_Question__c,'+ 
                           'Core_IPS_Question__r.Core_IPS_Datatype__c, Core_IPS_Question_Text__c,Core_Product_Issue_Sub_Category__c,Core_Required__c,'+
                           'Core_Agent_Only__c,Core_Environment_Variable__c,Core_IPS_Question__r.Core_IPS_Parent_Question__c'+ 
                           ' FROM Core_IPS_Assigned_Environment_Variables__c'+ 
-                          ' WHERE Core_Status__c= :Status AND Core_IPS_Question__c!=null '; // Added by Prem "Core_IPS_Question_Text__c" for US72555
+                          ' WHERE Core_Status__c=\'Active\' AND Core_IPS_Question__c!=null '; // Added by Prem "Core_IPS_Question_Text__c" for US72555
         if(SubCatId!=null){
-            strQuery += ' AND Core_Product_Issue_Sub_Category__c=:subCatId AND Core_Product_Issue_Sub_Category__c!=null';
+            strQuery += ' AND Core_Product_Issue_Sub_Category__c=:SubCatId AND Core_Product_Issue_Sub_Category__c!=null';
         }else{
-            strQuery += ' AND Core_supported_product__c =:ProductId and Core_supported_product__c!=null';
+            strQuery += ' AND Core_supported_product__c =:productId and Core_supported_product__c!=null';
         }
         if(isAgent!=null && !isAgent){    
             strQuery += ' AND Core_Agent_Only__c!=true';
@@ -108,10 +101,25 @@ public without sharing class Core_IPS_Questions_Utility { // TWC745-9117 ATHR cr
         strQuery += ' ORDER BY Core_IPS_Question__r.Core_IPS_Order_No__c ASC';
        // strQuery ='SELECT Id,Core_Product_Issue_Sub_Category__c,Name,Core_supported_product__c,Core_Status__c,Core_IPS_Question__c,Core_Agent_Only__c FROM Core_IPS_Assigned_Environment_Variables__c';// where Core_Status__c=\'Active\' AND Core_IPS_Question__c!=null';
         
-        List<Core_IPS_Assigned_Environment_Variables__c>  listCoreAttrbutr = Database.queryWithBinds(strQuery,bindMap,AccessLevel.USER_MODE);
-        // SOQL Injection Fix - End -  Shipra
-
-       // return Database.query(strQuery);
+        //List<Core_IPS_Question__c> childquestion = new List<Core_IPS_Question__c>();
+        //List<Core_IPS_Assigned_Environment_Variables__c> newList = new List<Core_IPS_Assigned_Environment_Variables__c>();
+        //List<Core_IPS_Assigned_Environment_Variables__c> newList2 = new List<Core_IPS_Assigned_Environment_Variables__c>();
+         List<Core_IPS_Assigned_Environment_Variables__c>  listCoreAttrbutr = Database.query(strQuery);
+         System.debug('size of assginged '+ listCoreAttrbutr.size());
+         /*for(Core_IPS_Assigned_Environment_Variables__c assignVar: listCoreAttrbutr){
+            System.debug('debugging assigned vars '+ assignVar);
+            String ids = assignVar.Core_IPS_Question__c;
+            childquestion = [SELECT Id, Name,Core_IPS_Question__c,Core_IPS_Datatype__c, Core_IPS_Parent_Question__c,Core_IPS_Status__c FROM Core_IPS_Question__c WHERE Core_IPS_Parent_Question__c =: ids AND Core_IPS_Status__c ='Active'];
+            if( childquestion.size()>0)
+                newList = [SELECT Id, Name, Core_IPS_Question__c,Core_IPS_Question__r.Name,Core_IPS_Question__r.Core_IPS_Question__c,Core_IPS_Question__r.Core_IPS_Datatype__c, Core_IPS_Question_Text__c,Core_Product_Issue_Sub_Category__c,Core_Required__c,Core_Agent_Only__c,Core_Environment_Variable__c,Core_IPS_Question__r.Core_IPS_Parent_Question__c FROM Core_IPS_Assigned_Environment_Variables__c WHERE Core_IPS_Question__c =: childquestion];//WHERE Core_IPS_Question__c =: childquestion
+            if(newList.size()>0){
+                newList2.add(newList[0]);
+            }
+            System.debug('child question debug '+ childquestion);
+            System.debug('child assign var debug '+newList);
+         }
+         listCoreAttrbutr.addAll(newList2);*/
+         // return Database.query(strQuery);
         return listCoreAttrbutr;
     }
     
@@ -127,7 +135,8 @@ public without sharing class Core_IPS_Questions_Utility { // TWC745-9117 ATHR cr
     public static List<Core_IPS_Response__c> getEnvDetailCoreResponse(Id caseId) {
         List<Core_IPS_Response__c> coreResponse;
         if(Core_IPS_Response__c.SObjectType.getDescribe().isAccessible()){ //FLS already added - Aditya
-         coreResponse=[SELECT Id,Core_IPS_Question_Master__r.RecordType.DeveloperName,Core_IPS_Answer__c,Core_IPS_Question_Master__c,Core_IPS_Answer_Master__c,Core_IPS_Agent_Only__c FROM Core_IPS_Response__c WHERE Core_IPS_Case__c=:caseId ];//AND Core_IPS_Question_Master__r.RecordType.DeveloperName='EDQ'
+         coreResponse=[SELECT Id,Core_IPS_Answer__c,Core_IPS_Question_Master__c,Core_IPS_Answer_Master__c,Core_IPS_Agent_Only__c FROM Core_IPS_Response__c WHERE Core_IPS_Case__c=:caseId AND Core_IPS_Question_Master__r.RecordType.DeveloperName='EDQ'];
+              
         }
        return coreResponse;  
     }
@@ -203,7 +212,9 @@ public without sharing class Core_IPS_Questions_Utility { // TWC745-9117 ATHR cr
         envResponse.Core_IPS_Agent_Only__c = det.IsAgentOnly;
         
         if(det.type==Core_IPS_Labels__c.getValues('Core_IPS_Datatype_Text').value__c.trim()) {
-            envResponse.Core_IPS_Answer__c = det.sPlaceHolder;                    
+           // if (Schema.sObjectType.Core_IPS_Response__c.fields.Core_IPS_Answer__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/
+                envResponse.Core_IPS_Answer__c = det.sPlaceHolder;
+          //  }
         } else if(det.type==Core_IPS_Labels__c.getValues('Core_IPS_Datatype_TextArea').value__c) {
             envResponse.Core_IPS_Answer__c = det.tPlaceHolder;
         } else if(det.type==Core_IPS_Labels__c.getValues('Core_IPS_Picklist').value__c ) {
@@ -242,20 +253,20 @@ public without sharing class Core_IPS_Questions_Utility { // TWC745-9117 ATHR cr
     **********************************************************************************/
     private static Core_IPS_Response__c makeIPSResponse(Id CaseId, Id QuestionId, Id AnswerId, Boolean isAgentOnly) {
         Core_IPS_Response__c mkRsp = new Core_IPS_Response__c();
-            if (Schema.sObjectType.Core_IPS_Response__c.fields.Core_IPS_Case__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/
+           if (Schema.sObjectType.Core_IPS_Response__c.fields.Core_IPS_Case__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/
                 mkRsp.Core_IPS_Case__c = CaseId;
             }
-            if (Schema.sObjectType.Core_IPS_Response__c.fields.Core_IPS_Question_Master__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/
+          if (Schema.sObjectType.Core_IPS_Response__c.fields.Core_IPS_Question_Master__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/
                 mkRsp.Core_IPS_Question_Master__c = QuestionId;
             }
-            if (Schema.sObjectType.Core_IPS_Response__c.fields.Core_IPS_Agent_Only__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/
+          if (Schema.sObjectType.Core_IPS_Response__c.fields.Core_IPS_Agent_Only__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/
                 mkRsp.Core_IPS_Agent_Only__c = isAgentOnly;
             }
-            if (Schema.sObjectType.Core_IPS_Response__c.fields.Core_IPS_Answer_Master__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/
+          if (Schema.sObjectType.Core_IPS_Response__c.fields.Core_IPS_Answer_Master__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/
                 mkRsp.Core_IPS_Answer_Master__c = AnswerId;
             }
-            
-            return mkRsp;
+      
+      return mkRsp;
         /**
         return new Core_IPS_Response__c(
             Core_IPS_Case__c = CaseId,

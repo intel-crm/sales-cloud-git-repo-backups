@@ -85,11 +85,11 @@
         <name>Core_MDF_Activity_Type__c</name>
     </fields>
     <fields>
-        <label>Дата окончания исполнения</label>
+        <label>Дата окончания размещения рекламы</label>
         <name>Core_MDF_Ad_Run_End_Dt__c</name>
     </fields>
     <fields>
-        <label>Дата начала исполнения</label>
+        <label>Дата начала размещения рекламы</label>
         <name>Core_MDF_Ad_Run_Start_Dt__c</name>
     </fields>
     <fields>
@@ -129,8 +129,8 @@
         <name>Core_MDF_Budget_Type_Nm__c</name>
     </fields>
     <fields>
-        <label><!-- Budget Type --></label>
-        <name>Core_MDF_Budget_Type__c</name>
+        <label><!-- Claim Attributes JSON --></label>
+        <name>Core_MDF_Claim_Attributes_JSON_txt__c</name>
     </fields>
     <fields>
         <label>Примечания к заявке</label>
@@ -246,16 +246,8 @@
         <name>Core_MDF_Program_Txt__c</name>
     </fields>
     <fields>
-        <label><!-- Program --></label>
-        <name>Core_MDF_Program__c</name>
-    </fields>
-    <fields>
         <label><!-- Reimbursement Rate (%) --></label>
         <name>Core_MDF_Reimbursement_Percent_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Reimbursement Rate (%) --></label>
-        <name>Core_MDF_Reimbursement_Percent__c</name>
     </fields>
     <fields>
         <label>Идентификационный номер запроса</label>
@@ -264,6 +256,10 @@
     <fields>
         <label><!-- Retry Count --></label>
         <name>Core_MDF_Retry_Count_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retry Indicator --></label>
+        <name>Core_MDF_Retry_Ind__c</name>
     </fields>
     <fields>
         <label><!-- Review Hold Rule --></label>
@@ -319,7 +315,15 @@
         <name>Core_MDF_Claim_SPCF_Batch_Record</name>
     </recordTypes>
     <validationRules>
+        <errorMessage><!-- The applicable VAT Percentage is not editable for the selected Bank. --></errorMessage>
+        <name>Core_MDF_Restrict_VATPerUpdateFor420</name>
+    </validationRules>
+    <validationRules>
         <errorMessage>Текущий статус заявки не допускает редактирования записи партии заявки</errorMessage>
         <name>Core_MDF_Succesful_StageCannot_Be_Edited</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Applicable VAT Percentage (Mandatory only for Retail MDF Budget type when your Bank’s location is Japan. Supported values are 0, 8, 10. --></errorMessage>
+        <name>Core_MDF_Validate_VATPercentageFor650</name>
     </validationRules>
 </CustomObjectTranslation>

@@ -111,7 +111,8 @@ public class Core_MDF_KPIDetailPage_test {
             Database.insert(bank);
             bank.Core_MDF_Bank_Status__c = 'Active'; 
             Database.update(bank);
-
+            // Highlight: Unused Local Variable - 14285 - suma
+           // Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc4.Id,bank.Id,true);
             
             //Custom setting records needed for insertion of claim
             Core_MDF_CCP_TestDataUtility.createMDFConfigurationData();
@@ -132,11 +133,12 @@ public class Core_MDF_KPIDetailPage_test {
         insert new PermissionSetAssignment(AssigneeId = usr1.id, PermissionSetId = ps.Id);
         Test.startTest();
         System.runAs(usr1) {
-            
- 
+            // Highlight: Unused Local Variable - 14285 - suma
+            // date sdate = date.today();  
             Account acc4 = [select id from account where name = 'Test Account 4']; 
             Campaign camp = [select id from Campaign where name = 'Test Camp 24' limit 1];
-
+            // Highlight: Unused Local Variable - 14285 - suma
+           // PartnerMarketingBudget testBudget = [select id from PartnerMarketingBudget where Title ='TestBudgetData1'];
             
             List<PartnerFundRequest> pfrtoinsert = new List<PartnerFundRequest>();
             PartnerFundRequest testPartnerFundRequestRecord2 = Core_MDF_CCP_TestDataUtility.createRetailActivity(string.valueof(camp.Id),string.valueof(acc4.id),System.today()+1,System.today()+2,false);
@@ -158,7 +160,8 @@ public class Core_MDF_KPIDetailPage_test {
     
     @isTest 
     static void runKPIDetailPagetestforCase(){
-
+        // Highlight: Unused Local Variable - 14285 - suma
+        // Integer pfrCount = 0;
         Core_MDF_KPIDetailPage.KPIWrapper kPIRes= new Core_MDF_KPIDetailPage.KPIWrapper();
         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
         //Creating User with utility class 
@@ -174,7 +177,8 @@ public class Core_MDF_KPIDetailPage_test {
         
         Core_MDF_Bank__c bank = [Select Id from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c='1231231230' limit 1];
         System.runAs(usr1){
-             
+             // Highlight: Unused Local Variable - 14285 - suma
+            // date sdate = date.today();              
             Account accRetail = [select id from account where name = 'Co-marketing Test Account Retail']; 
             Campaign camp2 = [select id from Campaign where name = 'Test Camp 24' limit 1]; 
             PartnerMarketingBudget testBudget = [select id from PartnerMarketingBudget where Title ='TestRetailBudget1'];
@@ -190,7 +194,7 @@ public class Core_MDF_KPIDetailPage_test {
             pfr1.Core_MDF_Reimbursement_Rate_pct__c = '100%';
             pfr1.Core_MDF_Reimbursement_Rate_txt__c = '100%';
             pfr1.Core_MDF_Budget_Currency_cd__c='USD';
-            pfr1.Core_MDF_ActivityCategory__c = '';
+            pfr1.Core_MDF_ActivityCategory__c = 'Digital Media';
             pfr1.Core_MDF_Activity_Types__c ='';  // 14285 Indira
             pfr1.Core_MDF_Activity_SubType_nm__c = ''; // 14285 Indira
             pfr1.Core_MDF_Metrics_txt__c = '123';
@@ -287,7 +291,7 @@ static void testFetchActCatTypeWithIPAProgram(){
         // Test IPA program with multiple subtypes - covers IPA specific logic
         PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createRetailActivity(
             String.valueOf(camp.Id), String.valueOf(acc.Id), System.today()+1, System.today()+2, false);
-        pfr.Core_MDF_ActivityCategory__c = '';
+        pfr.Core_MDF_ActivityCategory__c = 'Digital Media';
         pfr.Core_MDF_Activity_Types__c = ''; // 14285 Indira
        pfr.Core_MDF_Activity_SubType_nm__c = ''; // 14285 Indira
         insert pfr;
@@ -351,8 +355,8 @@ static void testFetchMetadataPrivateMethod(){
         // Test PFR with Planned_Metrics and proposal based = true
         PartnerFundRequest pfr1 = Core_MDF_CCP_TestDataUtility.createRetailActivity(
             String.valueOf(camp.Id), String.valueOf(acc.Id), System.today()+1, System.today()+2, false);
-        pfr1.Core_MDF_ActivityCategory__c = '';
-        pfr1.Core_MDF_Activity_Types__c = '';
+        pfr1.Core_MDF_ActivityCategory__c = 'Print';
+        pfr1.Core_MDF_Activity_Types__c = 'Magazine/Newspaper';
         insert pfr1;
         
         // This covers the first if condition in fetchMetadata
@@ -361,7 +365,7 @@ static void testFetchMetadataPrivateMethod(){
         // Test PFR with Actual_Metrics and proposal based = false
         PartnerFundRequest pfr2 = Core_MDF_CCP_TestDataUtility.createRetailActivity(
             String.valueOf(camp.Id), String.valueOf(acc.Id), System.today()+1, System.today()+2, false);
-        pfr2.Core_MDF_ActivityCategory__c = '';
+        pfr2.Core_MDF_ActivityCategory__c = 'Digital Media';
         pfr2.Core_MDF_Activity_Types__c = '';  // 14285 Indira
         insert pfr2;
         
@@ -592,16 +596,18 @@ static void testLogErrorImperative(){
         
         // Test with null error message - should return early without logging
         Core_MDF_KPIDetailPage.logErrorImperative(null, 'PartnerFundRequest');
-	
+        
         // Test with whitespace only error message - should return early
         Core_MDF_KPIDetailPage.logErrorImperative('   ', 'PartnerFundRequest');
-	
+        
         Test.stopTest();
     }
+    
     // Assert that the method executed without throwing exceptions
     // Since logErrorImperative is void and calls another utility method,
     // we're mainly testing that it doesn't throw exceptions
     Assert.isTrue(true, 'logErrorImperative method executed successfully');
 }
     // 14285 Indira - End
+    
 }

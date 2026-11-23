@@ -116,7 +116,9 @@ public without sharing class Core_MDF_RecallApprovalServiceHandler {
                 }
                 
                 if(appRequests != NULL && appRequests.size()> 0){
-                   Approval.process(appRequests); 
+                    // Highlight: Unused Local Variable - 14285 - Indira
+                   // Approval.ProcessResult[] result = Approval.process(appRequests); 
+                   Approval.process(appRequests);
                 }
     }
     /******************************************************************

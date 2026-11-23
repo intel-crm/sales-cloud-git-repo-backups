@@ -48,6 +48,10 @@
         <name>Core_MDF_Account_Required_Validation</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Required field missing --></errorMessage>
+        <name>Core_MDF_All_Account_Check</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Account should be blank if All Account option is selected. --></errorMessage>
         <name>Core_MDF_Do_Not_Select_Account</name>
     </validationRules>

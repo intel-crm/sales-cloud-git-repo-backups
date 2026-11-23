@@ -47,10 +47,12 @@ import confirmationPopupLabel2 from '@salesforce/label/c.Core_MDF_PICReviewScree
 import confirmationPopupLabel3 from '@salesforce/label/c.Core_MDF_PICReviewScreen_ConfirmationPopup_Label3';
 import claimStatusPICPending from '@salesforce/label/c.Core_MDF_Claim_Status_PIC_Pending';
 import claimStatusPaidAndPICPending from '@salesforce/label/c.Core_MDF_Claim_Status_Paid_and_PIC_Pending';
+import okButton from '@salesforce/label/c.Core_OK'
 import locale from '@salesforce/i18n/locale';
 import timeZone from '@salesforce/i18n/timeZone';
-import ipaProgram from '@salesforce/label/c.Core_MDF_IPA_Technical_program_name';  //Roshan - added for IPA OutcomeBased claims
+import REIMBURSEMENT_RATE from '@salesforce/schema/Core_MDF_Custom_Picklist__c';
 import claimStatusPaymentClearanceProcessing from '@salesforce/label/c.Core_MDF_Claim_Status_Payment_Clearance_Processing';//Swati-PIC Pending Label update
+import ipaProgram from '@salesforce/label/c.Core_MDF_IPA_Technical_program_name';
 import paymentClearanceStatus from '@salesforce/label/c.Core_MDF_Payment_Clearance_Status';//16654
 import aiFeedbackOptions from '@salesforce/label/c.Core_MDF_AI_Feedback_Options';
 
@@ -59,6 +61,7 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
     error;
     @track selectedAndUnselectedDocs;
     @track questionMetadata;
+
     claimId;
     @api claimDetails;
     internalComments;
@@ -66,7 +69,7 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
     endTime;
     userId = Id;
     label = {
-        radioYes, radioNo, applicationError, claimDocumentTypes, claim, claimReviewDocuments, fileType, fileName, uploadedDate, issues, response, filesAffected, applicationErrorText, noIssues, noClaimReviewDocuments, errorMessageOnCompletePICReview, picReviewStatus, picReviewProcess,
+        radioYes, radioNo, applicationError, claimDocumentTypes, claim, claimReviewDocuments, fileType, fileName, uploadedDate, issues, response, filesAffected, applicationErrorText, noIssues, noClaimReviewDocuments, errorMessageOnCompletePICReview, picReviewStatus, picReviewProcess, okButton,
         completePICReview, startPICReview, picInternalComments, picInternalCommentsplaceholder, recommendForClaimReview, downloadAllDocuments, confirmationPopupMessage1, confirmationPopupMessage2, confirmationPopupMessage3, confirmationPopupLabel1, confirmationPopupLabel2, confirmationPopupLabel3,
         claimStatusPICPending, ipaProgram, claimStatusPaidAndPICPending, claimStatusPaymentClearanceProcessing, paymentClearanceStatus, aiFeedbackOptions
     };
@@ -97,16 +100,25 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
     managedExistingDocuments = [];
     picReviewWrapper;
     objectInfo;
+    isNotEligibleForPIC = false;
     subQuestionMetadata;
     mapOfParentQtnToSubQtns = new Map();
     mapOfSubQtnToParQtn = new Map();
     mapOfSubQtnToResponse = new Map();
     currentlySelectedQtn = '';
-    questionNameWithFiles =[];//to store qtns which needts to have file selection
-    isCheckedTrue = '' ;
-    isOutcomeBasedClaim = false;  //Roshan - added for IPA OutcomeBased claims
-    tacticsOptions = [];  //Roshan - Tactics
+    questionNameWithFiles = [];//to store qtns which needts to have file selection
+    isCheckedTrue = '';
+    //contentDocIdToAIResponseMap = new Map();
+    questionIdToAIResponseMap = new Map();
+    consolidatedAIResponsesList = [];
+    questionIdToConsolidatedAIResponsesMap = new Map();
+    parentQuestionIdToCalculatedAIResponseMap = new Map();
+    claimCurrency;
+    claimReimbursementAmount;
+    isOutcomeBasedClaim = false;
+    tacticsOptions = [];
     isOutcomeBasedComment = false;//Swati
+
     //Roshan
     campPurposeValuesOnStartReview;
     campPurposeValuesOnCompleteReview;
@@ -125,16 +137,19 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
     outcomeBasedMsg = 'AI based recommendations not available for outcome-based claims.';
     aiErrorMsg = '';
     latestAIPICReviewId;
-    claimOutcomeBasedInd=false;
+    claimOutcomeBasedInd = false;
     @track claimIdToRecordMap = new Map();
     @track claimIdToReviewToCDBLogRec = new Map();
-    aiResponseMetadata =[];
-   isOutComeBasedSuperClaim;
+    aiResponseMetadata = [];
+    // aiPicReviewDetails = [];
+    isOutComeBasedSuperClaim;
     overallAIConfScore;//MDF POP confidence Score Changes
 
     //To fetch the audit documents from apex controller
     @wire(fetchAuditDocuments, { claimId: '$claimId' })
     wiredAuditDocuments(response) {
+        console.log("okButton", this.label.okButton, 'OK');
+        console.log("time zone", timeZone);
         let auditDocumentObject = [];
         this.auditDocumentsList = [];
         this.contentDocumentIds = [];
@@ -145,10 +160,23 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
             this.showSpinner = true;
             this.hasAuditDocuments = true;
             this.auditDocuments.map(auditdoc => {
+                if (auditdoc.Core_MDF_AI_Processing_Completed_Ind__c && auditdoc.Core_MDF_AI_Processing_Completed_Ind__c != null && auditdoc.Core_MDF_AI_Processing_Completed_Ind__c == true
+                    && auditdoc.Core_MDF_Claim_Document_AI_Response_txt__c != null && auditdoc.Core_MDF_Claim_Document_AI_Response_txt__c != '') {
+                    //this.contentDocIdToAIResponseMap.set(auditdoc.Core_MDF_Document_Id__c, JSON.parse(auditdoc.Core_MDF_Claim_Document_AI_Response_txt__c));
+                    this.consolidatedAIResponsesList.push(...JSON.parse(auditdoc.Core_MDF_Claim_Document_AI_Response_txt__c))
+                }
+                if (auditdoc.Core_MDF_Claim__r.Core_MDF_Currency__c != null && auditdoc.Core_MDF_Claim__r.Core_MDF_Currency__c != '') {
+                    this.claimCurrency = auditdoc.Core_MDF_Claim__r.Core_MDF_Currency__c;
+                }
+                if (auditdoc.Core_MDF_Claim__r.Core_MDF_Requested_Reimbursement_Amt__c != null && auditdoc.Core_MDF_Claim__r.Core_MDF_Requested_Reimbursement_Amt__c != '') {
+                    this.claimReimbursementAmount = parseFloat(auditdoc.Core_MDF_Claim__r.Core_MDF_Requested_Reimbursement_Amt__c) - ((auditdoc.Core_MDF_Claim__r.Core_MDF_Requested_Reimbursement_Amt__c != null || auditdoc.Core_MDF_Claim__r.Core_MDF_Requested_Reimbursement_Amt__c != '') ? 0 : parseFloat(auditdoc.Core_MDF_Claim__r.Core_MDF_Requested_Reimbursement_Amt__c));
+                }
                 let tempAuditDocs = [];
                 if (auditdoc.Core_MDF_Document_Types__c) {
-                    const docUploadedDate = new Date(auditdoc.CreatedDate).toLocaleString(locale, { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: timeZone})
-
+                    const intlFomattedDate = new Intl.DateTimeFormat(locale, { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: timeZone }).format(new Date(auditdoc.CreatedDate));
+                    console.log('intlFomattedDate' + intlFomattedDate);
+                    const docUploadedDate = new Date(auditdoc.CreatedDate).toLocaleString(locale, { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: timeZone })
+                    console.log("doc uloaded date", docUploadedDate);
                     this.auditDocumentsList.push({ documentId: auditdoc.Core_MDF_Document_Id__c, documentName: auditdoc.Core_MDF_Document_Title__c, uploadedDate: docUploadedDate });
                     this.contentDocumentIds.push(auditdoc.Core_MDF_Document_Id__c);
                     if (auditdoc.Core_MDF_Document_Types__c.includes(';')) {
@@ -156,31 +184,32 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
                     } else {
                         tempAuditDocs.push(auditdoc.Core_MDF_Document_Types__c);
                     }
+                    console.log("tempAuditDocs", tempAuditDocs);
                     tempAuditDocs && tempAuditDocs.map(docType => {
                         let index = auditDocumentObject.findIndex(element => element.fileType == docType);
                         if (index != -1) {
-                            auditDocumentObject[index].documentDetails.push({ fileName: auditdoc.Core_MDF_Int_Document_Name__c, uploadedDate: docUploadedDate, documentName:  auditdoc.Core_MDF_Document_Title__c });
+                            auditDocumentObject[index].documentDetails.push({ fileName: auditdoc.Core_MDF_Int_Document_Name__c, uploadedDate: docUploadedDate, documentName: auditdoc.Core_MDF_Document_Title__c });
                             auditDocumentObject[index].uploadedDate = docUploadedDate;
                         } else if (index == -1) {
-                            auditDocumentObject.push({ fileType: docType, uploadedDate: docUploadedDate, documentDetails: [{ fileName: auditdoc.Core_MDF_Int_Document_Name__c, uploadedDate: docUploadedDate, documentName:  auditdoc.Core_MDF_Document_Title__c }] });
+                            auditDocumentObject.push({ fileType: docType, uploadedDate: docUploadedDate, documentDetails: [{ fileName: auditdoc.Core_MDF_Int_Document_Name__c, uploadedDate: docUploadedDate, documentName: auditdoc.Core_MDF_Document_Title__c }] });
                         }
                     });
                 }
             });
-             if(auditDocumentObject.length > 0 && this.auditDocumentsList.length > 0) {
+            if (auditDocumentObject.length > 0 && this.auditDocumentsList.length > 0) {
                 auditDocumentObject.map(docObj => {
                     docObj.rowSpan = docObj.documentDetails.length + 1;
                 });
                 this.auditDocuments = [...auditDocumentObject];
                 // sort the files affected dropdown values in aplhabetical order and for the duplicate filenames sort based on uploadeddate
-                this.auditDocumentsList.sort((a, b) => (a.documentName.toLowerCase() > b.documentName.toLowerCase()) ? 1 : (a.documentName.toLowerCase() === b.documentName.toLowerCase()) ? ((b.uploadedDate > a.uploadedDate) ? 1 : -1) : -1 );
-                
+                this.auditDocumentsList.sort((a, b) => (a.documentName.toLowerCase() > b.documentName.toLowerCase()) ? 1 : (a.documentName.toLowerCase() === b.documentName.toLowerCase()) ? ((b.uploadedDate > a.uploadedDate) ? 1 : -1) : -1);
+
                 // sort the file types - POA, POC and POE - may target in future as per feedback
                 //this.auditDocuments.sort((a, b) => (a.fileType.toLowerCase() > b.fileType.toLowerCase()) ? 1 : -1 );
 
-                 // sort the filenames in aplhabetical order and for the duplicate filenames sort based on uploadeddate - claim review documents section of pic review screen
+                // sort the filenames in aplhabetical order and for the duplicate filenames sort based on uploadeddate - claim review documents section of pic review screen
                 this.auditDocuments.map(auditdoc => {
-                    auditdoc.documentDetails.sort((a, b) => (a.documentName.toLowerCase() > b.documentName.toLowerCase()) ? 1 : (a.documentName.toLowerCase() === b.documentName.toLowerCase()) ? ((b.uploadedDate > a.uploadedDate) ? 1 : -1) : -1 );
+                    auditdoc.documentDetails.sort((a, b) => (a.documentName.toLowerCase() > b.documentName.toLowerCase()) ? 1 : (a.documentName.toLowerCase() === b.documentName.toLowerCase()) ? ((b.uploadedDate > a.uploadedDate) ? 1 : -1) : -1);
                 });
 
                 this.getClaimAttributes();
@@ -192,13 +221,13 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
             this.hasAuditDocuments = false;
             this.hideSpinner(true);
         }
-
     }
 
     //To get the label for claim fields
     @wire(getObjectInfo, { objectApiName: 'PartnerFundClaim' })
     wiredClaimObjectDetails({ error, data }) {
         if (data) {
+            console.log('objectInfo', data.fields);
             this.objectInfo = data.fields;
         } else if (error) {
             this.showSpinner = false;
@@ -208,15 +237,18 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
     }
 
     connectedCallback() {
+        console.log('OUTPUT : aiFeedbackOptions',this.label.aiFeedbackOptions);
+        console.log('OUTPUT : response options',this.responseOptions);
+        //console.log('OUTPUT : ai feedback  options',this.aiFeedbackOptions);
         this.claimId = this.claimDetails.Id;
         //this.isOutcomeBasedClaim = this.claimDetails.Core_MDF_Program__c === this.label.ipaProgram && this.claimDetails.Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c;
-        this.isOutcomeBasedClaim = this.claimDetails.Core_MDF_Program__c === this.label.ipaProgram && this.claimDetails.Core_MDF_OutcomeBased_Ind__c;  //Roshan
+        this.isOutcomeBasedClaim = this.claimDetails.Core_MDF_Program__c === this.label.ipaProgram && this.claimDetails.Core_MDF_OutcomeBased_Ind__c;  //Super Claim changes
         this.claimOutcomeBasedInd = this.claimDetails.Core_MDF_OutcomeBased_Ind__c;//Added By Sham - AI MDF POP
         this.isOutComeBasedSuperClaim = this.claimDetails.Core_MDF_Program__c === this.label.ipaProgram && this.claimDetails.Core_MDF_OutcomeBased_Ind__c && this.claimDetails.Core_MDF_Campaign_Id__c == null;//16654
         if (this.isOutcomeBasedClaim) {
             this.loadTactics();
         }
-        
+
         loadStyle(this, Core_MDF_PICRadioGroupCSS);//To load css from static resource
     }
 
@@ -230,14 +262,20 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
             subQnToUpdate.comment = event.target.value;//Swati
         }
     }
+
+    //Swati
     fetchSelectedTacticValues(event) {
-        
-        const tactics = (JSON.parse(JSON.stringify(event.detail.valueObj))|| [])
-                            .filter(t => t.selected)
-                            .map(t => t.value);
-        
+
+        const tactics = (JSON.parse(JSON.stringify(event.detail.valueObj)) || [])
+            .filter(t => t.selected)
+            .map(t => t.value);
+
+        const questionCode = event.target.id;
         const qtnCode = event.target.id.slice(0, 7);
-        (this.subQuestionMetadata || []).map((qnMetadata, qnIndex) => {  
+        /* this.subQuestionMetadata = this.subQuestionMetadata.map(qn =>
+             qn.name === qtnCode ? { ...qn, tactic: tactics } : qn
+         );*/
+        (this.subQuestionMetadata || []).map((qnMetadata, qnIndex) => {
             if (qnMetadata.name === qtnCode) {
                 this.subQuestionMetadata[qnIndex].tactic = tactics;
             }
@@ -245,20 +283,27 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
         this.questionMetadata = this.questionMetadata.map(qn =>
             qn.name === qtnCode ? { ...qn, tactic: tactics } : qn
         );
+
+        //QC-0112-3331
+        console.log('event.detail...' + JSON.stringify(event.detail));
+        console.log('tactics.' + tactics);
+        console.log('tactics.' + JSON.stringify(event.detail.valueObj));
+        //const qtnCode = event.currentTarget.dataset.id;
     }
 
-    // Roshan
     loadTactics() {
         fetchTactics({ claimId: this.claimId })
-        .then(data => {
-            const tacticNames = Object.keys(data);
-            this.tacticsOptions = tacticNames.map(tactic => ({
-                label: tactic,
-                value: tactic
-            }));
-        })
-        .catch(error => {
-        });
+            .then(data => {
+                const tacticNames = Object.keys(data);
+                this.tacticsOptions = tacticNames.map(tactic => ({
+                    label: tactic,
+                    value: tactic
+                }));
+                console.log('this.tacticsOptions@@@' + JSON.stringify(this.tacticsOptions));
+            })
+            .catch(error => {
+                console.error('Error fetching tactics', error);
+            });
     }
 
     //returns option for radio group
@@ -282,7 +327,7 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
         }
         const [selectedAndUnselectedDocs, ...remainingSelectedValues] = this.selectedAndUnselectedDocs;
         let questionCode = selectedAndUnselectedDocs.questionCode;
-        (this.subQuestionMetadata || []).map((qnMetadata, qnIndex) => {  
+        (this.subQuestionMetadata || []).map((qnMetadata, qnIndex) => {
             if (qnMetadata.name === questionCode) {
                 this.subQuestionMetadata[qnIndex].fileNames = this.selectedAndUnselectedDocs;
             }
@@ -290,6 +335,7 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
         this.questionMetadata.map((qnMetadata, qnIndex) => {
             if (qnMetadata.name === questionCode) {
                 this.questionMetadata[qnIndex].fileNames = this.selectedAndUnselectedDocs;
+
             }
         });
     }
@@ -304,42 +350,46 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
     }
 
     processMetadata(metadata) {
-        let serialNumber =1;
+        let serialNumber = 1;
         let duplicateIndexes = [];
         let questionsTableData = [];
-        let processedMetadata = metadata ;
-        const documentTypesList = this.label.claimDocumentTypes.split(';');
+        let processedMetadata = metadata;
+        console.log('metadata..', metadata);
         try {
-        if (processedMetadata.length > 0) {  
-        processedMetadata.map(qnMdt => {
+            if (processedMetadata.length > 0) {
+                processedMetadata.map(qnMdt => {
 
-                            let questionData = {};
-                            questionData.comment = '';  //Roshan - added for IPA OutcomeBased claims
-                            questionData.tactic = []; //Swati-Tactic
-                            questionData.fileType = qnMdt.Core_MDF_Question_File_Type_nm__c;
-                            questionData.name = qnMdt.Name;
-                            questionData.questionEnglish = qnMdt.Core_MDF_Question_en_US_txt__c;
-                            questionData.response = '';
-                            questionData.id = qnMdt.Id;
-                            questionData.subRows= '';
-                            questionData.cssClassName = qnMdt.Core_MDF_Third_Party_Ind__c ? 'issueWithBackground' : 'issueWithOutBackground';
-                            questionData.displayFileSelOnParent = false;
-
+                    let questionData = {};
+                    questionData.comment = '';
+                    questionData.tactic = []; //Swati-Tactic
+                    questionData.fileType = qnMdt.Core_MDF_Question_File_Type_nm__c;
+                    questionData.name = qnMdt.Name;
+                    questionData.questionEnglish = qnMdt.Core_MDF_Question_en_US_txt__c;
+                    questionData.response = '';
+                    questionData.id = qnMdt.Id;
+                    questionData.subRows = '';
+                    questionData.cssClassName = qnMdt.Core_MDF_Third_Party_Ind__c ? 'issueWithBackground' : 'issueWithOutBackground';
+                    questionData.displayFileSelOnParent = false;
+                    questionData.hasAIQuestion = qnMdt.Core_MDF_Has_AI_Question_ind__c;
+                    questionData.aiResponseProcessingLogic = qnMdt.Core_MDF_AI_Response_Logic__c
                     //Added by VB - MDF POP Confidence Score Changes
                     questionData.agreementToAIResponse = '';
                     questionData.feedbackCmtToAIResponse = '';
-                            //Sham - AI Generated Response
+                    questionData.isPopoverOpen = false;
+                    //Sham - AI Generated Response
                     questionData.hasAIQnResponse = false;
                     questionData.aiQnComment = this.aiDefaultComment;
                     if (this.aiResponseRcvd) {
                         const aiResponse = this.aiResponseMetadata.find(response => response.aiQnId === questionData.id);
+                        console.log('aiResponse rcvd:', JSON.stringify(aiResponse?.aiQnResponse));
 
                         if (aiResponse) {
-                            const { aiQnResponse, aiQnComment,aiPicReviewResId, aiConfidenceScore } = aiResponse;
+                            const { aiQnResponse, aiQnComment, aiPicReviewResId, aiConfidenceScore } = aiResponse;
                             // Always copy comment
                             questionData.aiQnComment = aiQnComment;
                             questionData.aiPicReviewResId = aiPicReviewResId;
                             questionData.aiConfidenceScore = aiConfidenceScore;
+                            //const aiConfidenceScore = (aiQnResponse ?? '').toString().trim().toLowerCase();
                             // Normalize the response to lower case
                             const normResponse = (aiQnResponse ?? '').toString().trim().toLowerCase();
                             if (qnMdt.Core_MDF_Sub_Question_Ind__c === false) {
@@ -370,87 +420,98 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
                                 : '';
                         }
                     }
-    
-                    if(qnMdt.Core_MDF_Sub_Question_Ind__c ===true){
-                                questionData.subRows= '';
-                            questionData.parentQueCode = qnMdt.Core_MDF_Parent_Question__r.Name;
-                                this.mapOfSubQtnToResponse.set(qnMdt.Name,'');
-                                if(qnMdt.Core_MDF_Parent_Question__r.Name != null || qnMdt.Core_MDF_Parent_Question__r.Name != ''){
-                                    if (this.mapOfParentQtnToSubQtns.has(qnMdt.Core_MDF_Parent_Question__r.Name)) {
-                                        this.mapOfParentQtnToSubQtns.get(qnMdt.Core_MDF_Parent_Question__r.Name).push(questionData);
-                                    }else{
-                                        this.mapOfParentQtnToSubQtns.set(qnMdt.Core_MDF_Parent_Question__r.Name,[questionData]);
-                                    }
-                                }
-                                this.mapOfSubQtnToParQtn.set(questionData.name,qnMdt.Core_MDF_Parent_Question__r.Name);
-                            }else{
-                                questionData.serialNumber = serialNumber++;
-                                if(!this.mapOfParentQtnToSubQtns.has(qnMdt.Name)){
-                                    questionData.displayFileSelOnParent = true; 
-                                }
+                    console.log('Responses for each question:' + JSON.stringify(questionData));
+
+                    if (qnMdt.Core_MDF_Sub_Question_Ind__c === true) {
+                        questionData.parentQuestionId = qnMdt.Core_MDF_Parent_Question__c;
+                        questionData.subRows = '';
+                        questionData.parentQueCode = qnMdt.Core_MDF_Parent_Question__r.Name;
+                        this.mapOfSubQtnToResponse.set(qnMdt.Name, '');
+                        if (qnMdt.Core_MDF_Parent_Question__r.Name != null || qnMdt.Core_MDF_Parent_Question__r.Name != '') {
+                            if (this.mapOfParentQtnToSubQtns.has(qnMdt.Core_MDF_Parent_Question__r.Name)) {
+                                this.mapOfParentQtnToSubQtns.get(qnMdt.Core_MDF_Parent_Question__r.Name).push(questionData);
+
+                            } else {
+                                this.mapOfParentQtnToSubQtns.set(qnMdt.Core_MDF_Parent_Question__r.Name, [questionData]);
+
                             }
-                                let fileTitleTempArray = [];
-                                let distinctDuplicateIndexes;
-                                this.auditDocumentsList.map(doc => {
+                        }
+                        this.mapOfSubQtnToParQtn.set(questionData.name, qnMdt.Core_MDF_Parent_Question__r.Name);
 
-                                    let duplicateFileIndex = fileTitleTempArray.findIndex(element => element.value == doc.documentName);
-                                    if (duplicateFileIndex == -1) {
-                                    fileTitleTempArray.push({ selected: false, value: doc.documentName, label: doc.documentName, originalFileName: doc.documentName, questionCode: questionData.name, parentQueCode: questionData.parentQueCode });
-                                    } else {
-                                        duplicateIndexes.push(duplicateFileIndex); //to store the index of duplicate element i.e the first reference
-                                        const documentNameWithDateTime = doc.documentName + ' ' + '(' + doc.uploadedDate + ')';
-                                    fileTitleTempArray.push({ selected: false, value: documentNameWithDateTime, label: documentNameWithDateTime, originalFileName: doc.documentName, questionCode: questionData.name, parentQueCode: questionData.parentQueCode })
-                                    }
-                                    if(qnMdt.Core_MDF_Sub_Question_Ind__c ===false){
-                                        this.questionNameWithFiles.push(questionData.name);
-                                        
-                                    }
-                                });
-                                //update the label and value of duplicate document based on the duplicate indexes
-                                distinctDuplicateIndexes = Array.from(new Set(duplicateIndexes));
-                                distinctDuplicateIndexes && distinctDuplicateIndexes.map(duplicateIndex => {
-                                    fileTitleTempArray[duplicateIndex].label = fileTitleTempArray[duplicateIndex].label + ' ' + '(' + this.auditDocumentsList[duplicateIndex].uploadedDate + ')';
-                                    fileTitleTempArray[duplicateIndex].value = fileTitleTempArray[duplicateIndex].value + ' ' + '(' + this.auditDocumentsList[duplicateIndex].uploadedDate + ')';
+                    } else {
+                        questionData.serialNumber = serialNumber++;
+                        if (!this.mapOfParentQtnToSubQtns.has(qnMdt.Name)) {
+                            questionData.displayFileSelOnParent = true;
+                        }
+                    }
 
-                                })
-                                questionData.fileNames = fileTitleTempArray;
-                            
-                            questionsTableData.push(questionData);
-                        });
-                        processedMetadata = [...questionsTableData];
+                    let fileTitleTempArray = [];
+                    let distinctDuplicateIndexes;
+                    this.auditDocumentsList.map(doc => {
 
-        // Return the processed metadata
-        return processedMetadata;
-        }
+                        let duplicateFileIndex = fileTitleTempArray.findIndex(element => element.value == doc.documentName);
+                        if (duplicateFileIndex == -1) {
+                            fileTitleTempArray.push({ selected: false, value: doc.documentName, label: doc.documentName, originalFileName: doc.documentName, questionCode: questionData.name, parentQueCode: questionData.parentQueCode });
+                        } else {
+                            duplicateIndexes.push(duplicateFileIndex); //to store the index of duplicate element i.e the first reference
+                            //const docUploadedDate = new Date(doc.uploadedDate).toLocaleString(locale, { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: timeZone})
+                            const documentNameWithDateTime = doc.documentName + ' ' + '(' + doc.uploadedDate + ')';
+                            fileTitleTempArray.push({ selected: false, value: documentNameWithDateTime, label: documentNameWithDateTime, originalFileName: doc.documentName, questionCode: questionData.name, parentQueCode: questionData.parentQueCode })
+                        }
+                        if (qnMdt.Core_MDF_Sub_Question_Ind__c === false) {
+                            this.questionNameWithFiles.push(questionData.name);
+                        }
+                    });
+                    //update the label and value of duplicate document based on the duplicate indexes
+                    distinctDuplicateIndexes = Array.from(new Set(duplicateIndexes));
+                    distinctDuplicateIndexes && distinctDuplicateIndexes.map(duplicateIndex => {
+                        fileTitleTempArray[duplicateIndex].label = fileTitleTempArray[duplicateIndex].label + ' ' + '(' + this.auditDocumentsList[duplicateIndex].uploadedDate + ')';
+                        fileTitleTempArray[duplicateIndex].value = fileTitleTempArray[duplicateIndex].value + ' ' + '(' + this.auditDocumentsList[duplicateIndex].uploadedDate + ')';
+
+                    })
+                    questionData.fileNames = fileTitleTempArray;
+
+                    questionsTableData.push(questionData);
+                });
+
+                processedMetadata = [...questionsTableData];
+                // Return the processed metadata
+                return processedMetadata;
+            }
         } catch (error) {
+            // Catch the error and log it or handle it
+            console.error('An error occurred:', error);
             // Optionally, show an error message to the user
             this.showErrorMessage(error.message);
         }
     }
 
-    
+    //
+
 
     //To fetch the question object records from apex controller
     async getMetadataRecords() {
-                                       
-        let questionsTableData = [];
-        let subQuestionsTableData = [];
         this.questionMetadata = [];
-        let serialNumber =1;
-        let duplicateIndexes = [];
         const documentTypesList = this.label.claimDocumentTypes.split(';');
         await fetchQuestionRecords({ claimId: this.claimId })
             .then(response => {
                 if (response.length > 0) {
+
                     let qnMetaData;
                     let thirdPartyMetaData;
-                      let nexMetaData;
-                    //check to retain/remove third party questions
+                    let nexMetaData;
+
                     let subQnMetaData = response.filter(mdt => mdt.Core_MDF_Sub_Question_Ind__c === true);
                     this.subQuestionMetadata = this.processMetadata(subQnMetaData);
-                    
-                    
+                    console.log('this.subQuestionMetadata11..', JSON.stringify(this.subQuestionMetadata));
+                    console.log('subQnMetaData...', subQnMetaData);
+                    console.log('response...', response);
+
                     response = response.filter(mdt => mdt.Core_MDF_Sub_Question_Ind__c === false);
+                    console.log('response2...', response);
+
+                    //check to retain/remove third party questions
+
                     if (this.claimDetails.Core_MDF_3rd_Party_POP_Doc_Required_Ind__c) {
                         qnMetaData = response;
                     } else {
@@ -492,9 +553,8 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
 
                     // add the filenames and default response to track the questions reviewed
                     if (qnMetaData.length > 0) {
+                        console.log('qnMetaData.length..', qnMetaData.length);
                         this.hasQuestionMetadataRecords = true;
-                        
-                        
                         this.questionMetadata = this.processMetadata(qnMetaData);
                     }
                     this.showSpinner = false;
@@ -505,13 +565,14 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
                     this.hideSpinner(true);
                 }
             }).catch(error => {
+                console.log("Error in getMetadataRecords : Core_MDF_PICDocumentDetails", error);
                 this.hideSpinner(true);
                 this.displayServerExceptionMessage(this.label.applicationError, false);
             });
 
         //to disable dropdown on load
         this.disablePicklistOnLoad();
-                                                   
+        //this.processAIResponses();
     }
 
     /**
@@ -519,37 +580,39 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
      * @param {*} event - event contains target question details
      */
     handleCheckboxChange(event) {
+        console.log('@@@--oncheckbox change--this.questionMetadata:', this.questionMetadata);
         event.stopPropagation();
         const name = event.target.name;
-        const isChecked  = event.target.checked;
+        const isChecked = event.target.checked;
         this.selectedRowId = event.target.value;
-        
-    let generalQnIndex = this.subQuestionMetadata.findIndex(qn => (qn.name === name));
+        let generalQnIndex = this.subQuestionMetadata.findIndex(qn => (qn.name === name));
         let qname = this.subQuestionMetadata[generalQnIndex].name;
+
         if (isChecked === true) {
-            
+
             this.subQuestionMetadata[generalQnIndex].response = true;
-            this.mapOfSubQtnToResponse.set(qname,true);
+            this.mapOfSubQtnToResponse.set(qname, true);
             this.isCheckedTrue = isChecked;
             this.isOutcomeBasedClaim ? this.isOutcomeBasedComment = true : null; //Swati
-        }else{
-            
+
+        } else {
             this.subQuestionMetadata[generalQnIndex].response = '';
-            this.mapOfSubQtnToResponse.set(qname,'');
+            this.mapOfSubQtnToResponse.set(qname, '');
             this.isCheckedTrue = '';
             this.isOutcomeBasedClaim ? this.isOutcomeBasedComment = false : null; //Swati
-            this.isOutcomeBasedClaim ? this.subQuestionMetadata[generalQnIndex].comment ='' : null; //Swati
+            this.isOutcomeBasedClaim ? this.subQuestionMetadata[generalQnIndex].comment = '' : null; //Swati
         }
         this.template.querySelectorAll(".multiSelectFiles").forEach(element => {
             const elementName = element.values[0].questionCode;
-             const qtnCode = element.id.slice(0, 7);//Swati-added for tactic
+            const qtnCode = element.id.slice(0, 7);//Swati-added for tactic
+
             if (isChecked === true && (elementName === qname || qtnCode === qname)) {
                 element.enablePickilstMethod();
 
             } else if (isChecked === false && (elementName === qname || qtnCode === qname)) {
                 element.clear();
                 element.disablePickilstMethod(true);
-                element.isValid();  
+                element.isValid();
                 let tempSelectedFile = [];
                 this.subQuestionMetadata.map((qnMetadata, qnIndex) => {
                     if (qnMetadata.name === qname) {
@@ -557,6 +620,7 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
                             file.selected = false;
                             tempSelectedFile.push(file);
                         });
+
                     }
                 });
                 this.selectedAndUnselectedDocs = [...tempSelectedFile];
@@ -575,26 +639,50 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
         //Set the question response based on reviewer's selection
         let generalQnIndex = this.questionMetadata.findIndex(qn => (qn.name === name));
         if (eventValue === responseAsYes) {
-            
+
             this.questionMetadata[generalQnIndex].response = this.label.radioYes;
             this.questionMetadata[generalQnIndex].displaySubQue = false;
-            this.questionMetadata[generalQnIndex].comment = '';  //Roshan - added for IPA OutcomeBased claims
-            this.questionMetadata[generalQnIndex].tactic = []; 
+            this.questionMetadata[generalQnIndex].comment = '';
+            this.questionMetadata[generalQnIndex].tactic = [];  //Swati
             this.isCheckedTrue = '';
             this.isOutcomeBasedClaim ? this.questionMetadata[generalQnIndex].isOutcomeBasedComment = false : null;
+
             if (this.questionMetadata[generalQnIndex].subRows != undefined && this.questionMetadata[generalQnIndex].subRows != '') {
+                /*//for(let i=0;i<this.questionMetadata[generalQnIndex].subRows.length;i++){
+                    let subQ = this.questionMetadata[generalQnIndex].subRows[i];
+                    this.template.querySelectorAll(".multiSelectFiles").forEach(element => {
+                        const elementName = element.values[0].questionCode;
+                        if (elementName === subQ.name) {
+                        element.clear();
+                        element.disablePickilstMethod(true);
+                        element.isValid();
+                        let tempSelectedFile = [];
+                        this.subQuestionMetadata.map((qnMetadata, qnIndex) => {
+                            if (qnMetadata.name === name) {
+                                this.subQuestionMetadata[qnIndex].fileNames.map(file => {
+                                    file.selected = false;
+                                    tempSelectedFile.push(file);
+                                });
+                            }
+                        });
+                        this.selectedAndUnselectedDocs = [...tempSelectedFile];
+                        this.fetchSelectedValues(undefined, this.selectedAndUnselectedDocs);
+                    }
+                    });
+                }*/
                 let mainQntoSubQnMapCopy = this.mapOfParentQtnToSubQtns;
                 let relatedSubQns = new Array();
                 relatedSubQns = mainQntoSubQnMapCopy.get(name);
                 let subQnIdToSubQnMap = new Map();
-                if(relatedSubQns.length > 0) {
+                if (relatedSubQns.length > 0) {
                     relatedSubQns.forEach(subQn => {
                         subQnIdToSubQnMap.set(subQn.name, subQn);
                     })
                 }
+
                 //Comments
                 this.isOutcomeBasedClaim ? this.isOutcomeBasedComment = false : null;
-                
+
                 this.template.querySelectorAll(".multiSelectFiles").forEach(element => {
                     if (element.values[0].parentQueCode === name) {
                         element.clear();
@@ -612,58 +700,92 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
                             this.selectedAndUnselectedDocs = [...tempSelectedFile];
                             this.fetchSelectedValues(undefined, this.selectedAndUnselectedDocs);
                         }
-                       
-                    }
-                });
-            }
-        } else {
-            this.isCheckedTrue = '';
-            this.questionMetadata[generalQnIndex].response = this.label.radioNo;
-            this.questionMetadata[generalQnIndex].displaySubQue = true; 
-            let questionname = this.questionMetadata[generalQnIndex].name;
-            this.questionMetadata[generalQnIndex].subRows = this.mapOfParentQtnToSubQtns.get(questionname);
-             this.isOutcomeBasedClaim ? (this.questionMetadata[generalQnIndex].isOutcomeBasedComment = (!this.questionMetadata[generalQnIndex].subRows || !this.questionMetadata[generalQnIndex].subRows?.length) ? true : false) : null ;//Swati
-            
-        }
-        if(this.questionMetadata[generalQnIndex].displayFileSelOnParent === true){
-                this.template.querySelectorAll(".multiSelectFiles").forEach(element => {
-                    const elementName = element.values[0].questionCode;
-                 const qtnCode = element.id.slice(0, 7);//Swati
-                if (eventValue === responeAsNo && (elementName === name || qtnCode === name)) {//Swati added qtnCode for tactic
-                        element.enablePickilstMethod();
 
-                } else if (eventValue === responseAsYes && elementName === name || qtnCode === name) {
-                        element.clear();
-                        element.disablePickilstMethod(true);
-                        element.isValid();
-                        let tempSelectedFile = [];
-                        this.questionMetadata.map((qnMetadata, qnIndex) => {
-                            if (qnMetadata.name === name) {
-                                this.questionMetadata[qnIndex].fileNames.map(file => {
+
+                        /*subQueMtd.forEach(ftdMtd => {
+                            let tempSelectedFile = [];
+                            let indexFromOriginalSubQnMtd = this.subQuestionMetadata.findIndex(subQn => subQn.name === ftdMtd.name);
+                            console.log('filter', this.subQuestionMetadata.filter(subQn => subQn.name === ftdMtd.name));
+                            if (indexFromOriginalSubQnMtd !== -1) {
+                                this.subQuestionMetadata[indexFromOriginalSubQnMtd].fileNames.forEach(file => {
                                     file.selected = false;
                                     tempSelectedFile.push(file);
                                 });
                             }
-                        });
-                        this.selectedAndUnselectedDocs = [...tempSelectedFile];
-                        this.fetchSelectedValues(undefined, this.selectedAndUnselectedDocs);
+                            this.selectedAndUnselectedDocs = [...tempSelectedFile];
+                            this.fetchSelectedValues(undefined, this.selectedAndUnselectedDocs);
+                            
+                            
+                            // if(ftdMtd.parentQue === name) {
+                            //     this.subQuestionMetadata[fltIndex].fileNames.forEach(file => {
+                            //         file.selected = false;
+                            //         tempSelectedFile.push(file);
+                            //     });
+                            //     this.selectedAndUnselectedDocs = [...tempSelectedFile];
+                            //     this.fetchSelectedValues(undefined, this.selectedAndUnselectedDocs);
+                            // }
+                        });*/
+
                     }
                 });
             }
+
+
+        } else {
+            this.isCheckedTrue = '';
+            this.questionMetadata[generalQnIndex].response = this.label.radioNo;
+            this.questionMetadata[generalQnIndex].displaySubQue = true;
+            let questionname = this.questionMetadata[generalQnIndex].name;
+            this.questionMetadata[generalQnIndex].subRows = this.mapOfParentQtnToSubQtns.get(questionname);
+            this.isOutcomeBasedClaim ? (this.questionMetadata[generalQnIndex].isOutcomeBasedComment = (!this.questionMetadata[generalQnIndex].subRows || !this.questionMetadata[generalQnIndex].subRows?.length) ? true : false) : null;//Swati
+
+            console.log('this.questionMetadata[generalQnIndex].isOutcomeBasedComment..', this.questionMetadata[generalQnIndex].isOutcomeBasedComment);
+            console.log('this.questionMetadata[generalQnIndex].subRows..', !this.questionMetadata[generalQnIndex].subRows, '..subrows..', this.questionMetadata[generalQnIndex].subRows);
+            console.log('!!this.questionMetadata[generalQnIndex].subRows?.length..', !!this.questionMetadata[generalQnIndex].subRows?.length, '...length..', this.questionMetadata[generalQnIndex].subRows?.length);
+
+        }
+        if (this.questionMetadata[generalQnIndex].displayFileSelOnParent === true) {
+
+            this.template.querySelectorAll(".multiSelectFiles").forEach(element => {
+                const elementName = element.values[0].questionCode;
+                const qtnCode = element.id.slice(0, 7);//Swati
+
+                if (eventValue === responeAsNo && (elementName === name || qtnCode === name)) {//Swati added qtnCode for tactic
+                    element.enablePickilstMethod();
+                } else if (eventValue === responseAsYes && elementName === name || qtnCode === name) {
+                    element.clear();
+                    element.disablePickilstMethod(true);
+                    element.isValid();
+                    let tempSelectedFile = [];
+                    this.questionMetadata.map((qnMetadata, qnIndex) => {
+                        if (qnMetadata.name === name) {
+                            this.questionMetadata[qnIndex].fileNames.map(file => {
+                                file.selected = false;
+                                tempSelectedFile.push(file);
+                            });
+
+                        }
+                    });
+                    this.selectedAndUnselectedDocs = [...tempSelectedFile];
+                    this.fetchSelectedValues(undefined, this.selectedAndUnselectedDocs);
+                }
+            });
+        }
         this.currentlySelectedQtn = name;
-        
-                
+
+
 
     }
     renderedCallback() {
         if (this.questionNameWithFiles.includes(this.currentlySelectedQtn)) {//recently updated qtn
             this.template.querySelectorAll(".multiSelectFiles").forEach(element => {
-                const elementName = element.values[0].questionCode ||element.id.slice(0, 7);//Swati element.id.slice(0, 7)
-                
-                if (this.isCheckedTrue === ''&& this.mapOfSubQtnToParQtn.get(elementName) === this.currentlySelectedQtn) {
+                const elementName = element.values[0].questionCode || element.id.slice(0, 7);//Swati element.id.slice(0, 7)
+
+                if (this.isCheckedTrue === '' && this.mapOfSubQtnToParQtn.get(elementName) === this.currentlySelectedQtn) {
                     element.disablePickilstMethod(true);
 
-                } 
+
+                }
             });
         }
     }
@@ -678,6 +800,7 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
 
     //Actions to be taken on click of submit
     handleSubmit() {
+        console.log("@@@object info 348", this.objectInfo);
         this.disableCompleteReview = true;
         this.hideSpinner(false);
         this.editedClaimAttributes = [];
@@ -692,23 +815,26 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
         this.campPurposeChanged = false;
         this.tacticsMetricsChanged = false;
         this.tacticsSpendingChanged = false;
-        
+
+
         this.getClaimRecordData()
             .then(response => {
+                console.log('response..', response);
                 if (Object.keys(response).length) {
                     this.claimDetailOnCompleteReview = response;
-                    
+
                     //Roshan
                     this.campPurposeValuesOnCompleteReview = this.claimDetailOnCompleteReview.Core_MDF_Quantity_to_Date_Nbr__c;
-                    if(this.campPurposeValuesOnCompleteReview !== this.campPurposeValuesOnStartReview) {
+                    if (this.campPurposeValuesOnCompleteReview !== this.campPurposeValuesOnStartReview) {
                         this.campPurposeChanged = true;
                     }
-                    
+
                     claimAttributeList.map(claimAttr => {
                         if (this.claimDetailOnCompleteReview[claimAttr] !== this.claimDetailOnStartReview[claimAttr]) {
                             this.editedClaimAttributes.push(claimAttr);
                         }
                     });
+
                 }
                 this.getAuditDocumentList()
                     .then(response => {
@@ -719,16 +845,17 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
                                     this.auditDocumentsListonCompleteReview.map(auditDocument => {
                                         let docIndex = this.auditDocumentsListonStartReview.findIndex(doc => doc.Core_MDF_Document_Title__c + doc.CreatedDate === auditDocument.Core_MDF_Document_Title__c + auditDocument.CreatedDate);
                                         if (docIndex === -1) {
-                                            this.newlyAddedDocuments.push(auditDocument.Core_MDF_Document_Title__c);
+                                            this.newlyAddedDocuments.push(auditDocument.Core_MDF_Document_Title__c + '');
                                         }
                                     });
                                 }
                                 this.auditDocumentsListonStartReview.map((auditDocument, docIndex) => {
                                     if (this.auditDocumentsListonCompleteReview[docIndex].Core_MDF_Document_Types__c !== auditDocument.Core_MDF_Document_Types__c) {
-                                        this.managedExistingDocuments.push(auditDocument.Core_MDF_Document_Title__c);
+                                        this.managedExistingDocuments.push(auditDocument.Core_MDF_Document_Title__c + '');
                                     }
                                 });
                             }
+
                             //Roshan
                             this.getTacticsData()
                                 .then(result => {
@@ -744,42 +871,45 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
                                             }
                                         }
                                     });
+                                    console.log('this.tacticsMetricsValues@@@', JSON.stringify(this.tacticsMetricsValues));
 
                                     this.tacticsMetricsChanged = Object.values(this.tacticsMetricsValues).some(v => v.valueOnReviewStart !== v.valueOnReviewEnd);
                                     this.tacticsSpendingChanged = Object.values(this.tacticsSpendingValues).some(v => v.valueOnReviewStart !== v.valueOnReviewEnd);
-                                    
-                            if (this.editedClaimAttributes.length > 0 || this.newlyAddedDocuments.length > 0 || this.managedExistingDocuments.length > 0 || this.campPurposeChanged || this.tacticsMetricsChanged || this.tacticsSpendingChanged) {
-                                if (this.editedClaimAttributes.includes('Core_MDF_Status__c')) {
-                                    this.isClaimStatusChanged = true;
-                                    this.claimReviewerName = this.claimDetailOnCompleteReview.Core_MDF_Last_Reviewed_By_id__r.Name;
-                                    this.hideSpinner(true);
-                                } else {
-                                    this.editedClaimAttributes.map(updatedClaimAttr => {
-                                        this.editedClaimAttributeLabels.push(this.claimFields[updatedClaimAttr].label);
-                                    });
-                                    this.enableConfirmationModalPopup = true;
-                                    this.hideSpinner(true);
-                                }
-                            } else {
-                                this.completeReview();
-                            }
 
-                            //Roshan
-                            }).catch(error => {
-                                this.hideSpinner(true);
-                                this.displayServerExceptionMessage(this.label.applicationError, false);
-                            });
-                            
+                                    if (this.editedClaimAttributes.length > 0 || this.newlyAddedDocuments.length > 0 || this.managedExistingDocuments.length > 0 || this.campPurposeChanged || this.tacticsMetricsChanged || this.tacticsSpendingChanged) {  //Roshan
+                                        if (this.editedClaimAttributes.includes('Core_MDF_Status__c')) {
+                                            this.isClaimStatusChanged = true;
+                                            this.claimReviewerName = this.claimDetailOnCompleteReview.Core_MDF_Last_Reviewed_By_id__r.Name;
+                                            this.hideSpinner(true);
+                                        } else {
+                                            this.editedClaimAttributes.map(updatedClaimAttr => {
+                                                this.editedClaimAttributeLabels.push(this.claimFields[updatedClaimAttr].label + '');
+                                            });
+                                            this.enableConfirmationModalPopup = true;
+                                            this.hideSpinner(true);
+                                        }
+                                    } else {
+                                        this.completeReview();
+                                    }
+
+                                    //Roshan
+                                }).catch(error => {
+                                    console.error("Error in handleSubmit : Core_MDF_PICDocumentDetails - tactics handleSubmit", error);
+                                    this.hideSpinner(true);
+                                    this.displayServerExceptionMessage(this.label.applicationError, false);
+                                });
+
                         }
                     }).catch(error => {
+                        console.log("Error in handleSubmit : Core_MDF_PICDocumentDetails", error);
                         this.hideSpinner(true);
                         this.displayServerExceptionMessage(this.label.applicationError, false);
                     });
             }).catch(error => {
+                console.log("Error in handleSubmit : Core_MDF_PICDocumentDetails", error);
                 this.hideSpinner(true);
                 this.displayServerExceptionMessage(this.label.applicationError, false);
             });
-
     }
 
     completeReview() {
@@ -787,7 +917,8 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
         let showValidationErrorToast = false;
         let finalQuestionMetadata;
         this.isReviewFeedbackFailed = false;
-        let responseOfQuestion='';
+        console.log('questionMetadata@@@1', JSON.stringify(this.questionMetadata));
+        console.log('subQuestionMetadata@@@1', JSON.stringify(this.subQuestionMetadata));
 
         this.questionMetadata.map(qnMdt => {
             if (qnMdt.response === "") {
@@ -797,21 +928,24 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
             }
         });
 
-        (this.subQuestionMetadata || []).map(qnMdt => {  //Roshan - added for IPA OutcomeBased claims
+        (this.subQuestionMetadata || []).map(qnMdt => {
             if (qnMdt.response === true) {
                 this.isReviewFeedbackFailed = true;
             }
         });
 
-        //Roshan - added for IPA OutcomeBased claims
         if (this.isOutcomeBasedClaim) {
+            //const needsComment = this.questionMetadata.some(qnMdt => {           
+            //   return (qnMdt.response.toLowerCase() === this.label.radioNo.toLowerCase() && (!qnMdt.comment || !qnMdt.comment.trim()));
+            //});
             const needsComment = this.questionMetadata.some(qnMdt => {
-            const hasSubQn = !!qnMdt.subRows?.length;
+                // const hasSubQn = qnMdt.subRows && qnMdt.subRows.length > 0;
+                const hasSubQn = !!qnMdt.subRows?.length;
 
-             if (hasSubQn) {
+                if (hasSubQn) {
                     return this.subQuestionMetadata.some(subQn => {
                         return (
-                            subQn.response === true && 
+                            subQn.response === true &&
                             (!subQn.comment || !subQn.comment.trim())
                         );
                     });
@@ -822,10 +956,11 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
                     );
                 }
             });
+
             if (needsComment) {
                 const errorToastEvent = new ShowToastEvent({
                     title: 'Submit Error',
-                    message: this.isOutComeBasedSuperClaim ? 'Please provide valid Payment Clearance rejection comments' : 'Please provide valid PIC rejection comments',
+                    message: this.isOutComeBasedSuperClaim ? 'Please provide valid Payment Clearance rejection comments' : 'Please provide valid PIC rejection comments', //anushya TWC3117-16407
                     variant: 'error'
                 });
                 this.dispatchEvent(errorToastEvent);
@@ -836,12 +971,12 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
 
             //Swati Tactic validation
             const needsTactic = this.questionMetadata.some(qnMdt => {
-            const hasSubQn = !!qnMdt.subRows?.length;
-             if (hasSubQn) {
+                const hasSubQn = !!qnMdt.subRows?.length;
+                if (hasSubQn) {
                     return this.subQuestionMetadata.some(subQn => {
                         return (
-                            subQn.response === true && 
-                            (!subQn.tactic ||  subQn.tactic.length === 0)
+                            subQn.response === true &&
+                            (!subQn.tactic || subQn.tactic.length === 0)
                         );
                     });
                 } else {
@@ -851,7 +986,7 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
                     );
                 }
             });
-            
+
             if (needsTactic) {
                 const errorToastEvent = new ShowToastEvent({
                     title: 'Submit Error',
@@ -866,6 +1001,7 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
 
         }
 
+
         if (showValidationErrorToast) {
             const errorToastEvent = new ShowToastEvent({
                 title: 'Submit Error',
@@ -877,32 +1013,34 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
             this.hideSpinner(true);
             this.disableCompleteReview = false;
         } else {
-            
 
             //submit the response only if all the validations are true
             if (!validationArray.includes(false)) {
                 //toast to display on successful submission of review
                 let toastEvent;
-                if(this.isOutComeBasedSuperClaim){
+                //16654
+                if (this.isOutComeBasedSuperClaim) {
                     toastEvent = new ShowToastEvent({
                         title: this.label.paymentClearanceStatus,
                         message: this.isReviewFeedbackFailed ? `The Payment Clearance for the claim ${this.claimDetails.Core_MDF_Claim_Ref_Number__c} is completed with the result Payment Clearance Failed` : `The Payment Clearance for the claim ${this.claimDetails.Core_MDF_Claim_Ref_Number__c} is completed with the result Payment Clearance Passed`,
                         variant: this.isReviewFeedbackFailed ? 'error' : 'success'
                     });
                 }
-                else{
+                else {
                     toastEvent = new ShowToastEvent({
-                    title: this.label.picReviewStatus,
-                    message: this.isReviewFeedbackFailed ? `The PIC Review for the claim ${this.claimDetails.Core_MDF_Claim_Ref_Number__c} is completed with the result PIC Failed` : `The PIC Review for the claim ${this.claimDetails.Core_MDF_Claim_Ref_Number__c} is completed with the result PIC Passed`,
-                    variant: this.isReviewFeedbackFailed ? 'error' : 'success'
-                });
+                        title: this.label.picReviewStatus,
+                        message: this.isReviewFeedbackFailed ? `The PIC Review for the claim ${this.claimDetails.Core_MDF_Claim_Ref_Number__c} is completed with the result PIC Failed` : `The PIC Review for the claim ${this.claimDetails.Core_MDF_Claim_Ref_Number__c} is completed with the result PIC Passed`,
+                        variant: this.isReviewFeedbackFailed ? 'error' : 'success'
+                    });
                 }
 
-                //passing required data to controller for new record creation
-                
-                finalQuestionMetadata = [...this.questionMetadata, ...this.subQuestionMetadata || []];  //Roshan - added for IPA OutcomeBased claims
-                this.picReviewWrapper = { questionData: finalQuestionMetadata, internalComments: this.internalComments, startDateTime: this.startTime, endDateTime: this.endTime, claimId: this.claimId, userId: this.userId, isReviewFailed: this.isReviewFeedbackFailed, isRecommendedForAudit: this.isRecommendedForAudit, latestAIPICreviewID: this.latestAIPICReviewId }
+                console.log('questionMetadata@@@', JSON.stringify(this.questionMetadata));
+                console.log('subQuestionMetadata@@@', JSON.stringify(this.subQuestionMetadata));
+                finalQuestionMetadata = [...this.questionMetadata, ...this.subQuestionMetadata || []];
+                console.log('finalQuestionMetadata@@@', JSON.stringify(this.finalQuestionMetadata));
+                this.picReviewWrapper = { questionData: finalQuestionMetadata, internalComments: this.internalComments, startDateTime: this.startTime, endDateTime: this.endTime, claimId: this.claimId, userId: this.userId, isReviewFailed: this.isReviewFeedbackFailed, isRecommendedForAudit: this.isRecommendedForAudit, latestAIPICreviewID: this.latestAIPICReviewId /*, aiPicReviewDetails: this.aiPicReviewDetails */ }
                 this.insertPICReviewData(this.picReviewWrapper, toastEvent);
+                console.log('picReviewWrapper@@@', JSON.stringify(this.picReviewWrapper), '..toastEvent...', toastEvent);
             } else {
                 this.disableCompleteReview = false;
                 this.hideSpinner(true);
@@ -915,42 +1053,51 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
     async insertPICReviewData(picReviewWrapper, toastEvent) {
         try {
             this.hideSpinner(false);
+            console.log('picReviewWrapper2@@@', JSON.stringify(this.picReviewWrapper), '..toastEvent...', toastEvent);
             await reviewDataInsertion({ picReviewWrapper: picReviewWrapper });
             this.hideSpinner(true);
+            //this.hidePICReviewScreen(false);
             this.dispatchEvent(toastEvent);
             this.hidePICReviewScreen(true);
+
         } catch (error) {
+            console.log("Error in callWrapper: Core_MDF_PICDocumentDetails", error);
             this.hideSpinner(true);
             this.displayServerExceptionMessage(this.label.applicationError, false);
         }
     }
+
     //track start time and enable response column on start of review
     OnStartReview() {
         this.disableStartReview = true;
-        this.disableGenAIBtn = true;
+        this.disableGenAIBtn = true;//Added by Sham- AI PIC Process
         this.getClaimRecordData()
             .then(response => {
                 if (Object.keys(response).length) {
-                                                                       
                     this.claimDetailOnStartReview = response;
-                    
+
                     //Roshan
                     this.campPurposeValuesOnStartReview = this.claimDetailOnStartReview.Core_MDF_Quantity_to_Date_Nbr__c;
 
-                    if (this.claimDetailOnStartReview.Core_MDF_Status__c.toLowerCase() !== this.label.claimStatusPICPending.toLowerCase() && this.claimDetailOnStartReview.Core_MDF_Status__c.toLowerCase() !== this.label.claimStatusPaidAndPICPending.toLowerCase() && this.claimDetailOnStartReview.Core_MDF_Status__c.toLowerCase() !== this.label.claimStatusPaymentClearanceProcessing.toLowerCase()) { 
+                    if (this.claimDetailOnStartReview.Core_MDF_Status__c.toLowerCase() !== this.label.claimStatusPICPending.toLowerCase() && this.claimDetailOnStartReview.Core_MDF_Status__c.toLowerCase() !== this.label.claimStatusPaidAndPICPending.toLowerCase() && this.claimDetailOnStartReview.Core_MDF_Status__c.toLowerCase() !== this.label.claimStatusPaymentClearanceProcessing.toLowerCase()) {
                         //1st way - show PIC completed POP
                         this.isClaimStatusChanged = true;
                         this.claimReviewerName = this.claimDetailOnStartReview.Core_MDF_Last_Reviewed_By_id__r.Name;
-                }
+                        //2nd way - show the error message on status
+                        /*this.isNotEligibleForPIC = true;
+                        this.hideSpinner(true);*/
+                    }
                     else {
-        this.getAuditDocumentList()
+                        this.getAuditDocumentList()
                             .then(res => {
                                 if (res.length) {
                                     this.auditDocumentsListonStartReview = res;
-                }
-            }).catch(error => {
-                this.displayServerExceptionMessage(this.label.applicationError, false);
-            })
+                                }
+                            }).catch(error => {
+                                console.log("Error in OnStartReview : Core_MDF_PICDocumentDetails", error);
+                                this.displayServerExceptionMessage(this.label.applicationError, false);
+                            })
+
                         //Roshan
                         this.getTacticsData()
                             .then(result => {
@@ -971,20 +1118,23 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
                                     }
                                 });
 
+                                console.log('this.tacticsMetricsValues@@@', JSON.stringify(this.tacticsMetricsValues));
 
-                        }).catch(error => {
-                            this.displayServerExceptionMessage(this.label.applicationError, false);
-                        });
+                            }).catch(error => {
+                                console.log("Error in OnStartReview : Core_MDF_PICDocumentDetails - tactics OnStartReview", error);
+                                this.displayServerExceptionMessage(this.label.applicationError, false);
+                            });
+
                     }
                 }
             }).catch(error => {
+                console.log("Error in OnStartReview : Core_MDF_PICDocumentDetails", error);
                 this.displayServerExceptionMessage(this.label.applicationError, false);
             });
         this.disableResponse = false;
         this.disableCompleteReview = false;
         this.startTime = new Date();
     }
-
 
     handleAuditrecommendation(event) {
         this.isRecommendedForAudit = event.target.checked;
@@ -1006,17 +1156,17 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
         const result = await fetchTactics({ claimId: this.claimId })
         return result;
     }
-    
+
     //To get the claim field names from  custom label config metadata
     getClaimAttributes() {
         getClaimAttributesFromMetaData({ claimId: this.claimId })
             .then(response => {
                 if (response) {
-                                                                       
                     this.claimAttributes = response;
                 }
             }).catch(error => {
-            this.hideSpinner(true);
+                console.log("Error occurred in getClaimAttributes: Core_MDF_PICDocumentDetails", error);
+                this.hideSpinner(true);
                 this.displayServerExceptionMessage(this.label.applicationError, false);
             })
     }
@@ -1032,6 +1182,7 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
         this.template.querySelector('.internalComments').value = '';
         this.template.querySelector('.recommendForClaimReview').checked = false;
         this.disableCommentsOnLoad();  //Roshan
+        //this.isRecommendedForAudit = false;
         refreshApex(this.auditDocumentResponse);
         this.resetResponse();
         this.disablePicklistOnLoad();
@@ -1089,7 +1240,7 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
             });
         }
     }
-    
+
     //continue review submission on update of claim - refresh the claim details and complete the review process
     onContinueReviewCompletion() {
         this.hideSpinner(false);
@@ -1097,7 +1248,6 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
         this.auditDocumentsListonStartReview = this.auditDocumentsListonCompleteReview;
         this.updateTacticStartValues();  //Roshan
         this.enableConfirmationModalPopup = false;
-                                           
         this.completeReview();
     }
 
@@ -1145,6 +1295,200 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
         });
         this.dispatchEvent(picReviewScreenEvent);
     }
+
+    processAIResponses() {
+        console.log('@@@In processAIResponses');
+        console.log('@@@->this.questionIdToAIResponseMap:', this.questionIdToAIResponseMap);
+        console.log('@@@this.consolidatedAIResponsesList:', this.consolidatedAIResponsesList);
+        this.consolidatedAIResponsesList.forEach((fileNameToResponseObj) => {
+            Object.entries(fileNameToResponseObj).forEach(([fileName, questionIdToAIResponsesObject]) => {
+                Object.entries(questionIdToAIResponsesObject).forEach(([questionId, aiResponses]) => {
+                    if (!this.questionIdToConsolidatedAIResponsesMap.has(questionId)) {
+                        this.questionIdToConsolidatedAIResponsesMap.set(questionId, []);
+                    }
+                    //convert to lowercase 'na'
+                    for (let i = 0; i < aiResponses.length; i++) {
+                        if (typeof aiResponses[i] === "string" && aiResponses[i].toLowerCase() === "na") {
+                            aiResponses[i] = "na";
+                        }
+                    }
+                    // Add responses to the corresponding responses array, ensuring no duplicates
+                    const existingResponses = this.questionIdToConsolidatedAIResponsesMap.get(questionId);
+                    // Combine and remove duplicates (using Set)
+                    const newResponses = new Set([...existingResponses, ...aiResponses]);
+                    this.questionIdToConsolidatedAIResponsesMap.set(questionId, Array.from(newResponses));
+                });
+            })
+        })
+        // console.log('@@@this.questionIdToConsolidatedAIResponsesMap:', this.questionIdToConsolidatedAIResponsesMap);
+        // console.log('@@@this.claimCurrency:', this.claimCurrency);
+        // console.log('@@@this.claimReimbursementAmount:', this.claimReimbursementAmount);
+
+        this.subQuestionMetadata.forEach(subQuestion => {
+            if (subQuestion.hasAIQuestion == true && (this.questionIdToConsolidatedAIResponsesMap.has(subQuestion.id) && this.questionIdToConsolidatedAIResponsesMap.get(subQuestion.id).length > 0)) {
+                subQuestion.hasAIResponse = true;
+                subQuestion.aiResponseText = this.processQuestionLogic('subquestion', subQuestion.aiResponseProcessingLogic, subQuestion.id, subQuestion.parentQuestionId);
+            } else {
+                this.parentQuestionIdToCalculatedAIResponseMap
+                subQuestion.hasAIResponse = false;
+            }
+        });
+
+        this.questionMetadata.forEach(mainQuestion => {
+            if (mainQuestion.hasAIQuestion == true && (this.questionIdToConsolidatedAIResponsesMap.has(mainQuestion.id) && this.questionIdToConsolidatedAIResponsesMap.get(mainQuestion.id).length > 0)) {
+                mainQuestion.hasAIResponse = true;
+                mainQuestion.aiResponseText = this.processQuestionLogic('mainquestion', mainQuestion.aiResponseProcessingLogic, mainQuestion.id, null);
+            } else if (this.parentQuestionIdToCalculatedAIResponseMap.has(mainQuestion.id)) {
+                mainQuestion.hasAIResponse = true;
+                const calculatedResponse = this.parentQuestionIdToCalculatedAIResponseMap.get(mainQuestion.id);
+                mainQuestion.aiResponseText = calculatedResponse;
+            } else {
+                mainQuestion.hasAIResponse = false;
+            }
+        });
+
+        console.log('@@@->this.parentQuestionIdToCalculatedAIResponseMap:', this.parentQuestionIdToCalculatedAIResponseMap);
+        console.log('@@@->this.questionMetadata:', this.questionMetadata);
+        console.log('@@@->this.subQuestionMetadata:', this.subQuestionMetadata);
+    }
+
+    processQuestionLogic(questionType, processingLogic, questionId, parentQuestionId) {
+        let aiResponseText = questionType == 'mainquestion' ? "Yes" : (questionType == 'subquestion' ? "False" : "")
+        let logicResult = false;
+        switch (processingLogic) {
+            case "OR":
+                logicResult = false;
+                for (let response of this.questionIdToConsolidatedAIResponsesMap.get(questionId)) {
+                    response = response.trim();
+                    if (response.toLowerCase() == "true") {
+                        logicResult = true;
+                        break;
+                    }
+                }
+                if (logicResult) {
+                    aiResponseText = this.setAIResponseIssueByQuestionType(questionType, true, parentQuestionId);
+                }
+                break;
+            case "AND":
+                logicResult = true;
+                for (let response of this.questionIdToConsolidatedAIResponsesMap.get(questionId)) {
+                    response = response.trim();
+                    if (response.toLowerCase() != "true") {
+                        logicResult = false;
+                        break;
+                    }
+                }
+                if (logicResult) {
+                    aiResponseText = this.setAIResponseIssueByQuestionType(questionType, true, parentQuestionId);
+                }
+                break;
+            case "IF ALL FALSE":
+                logicResult = true;
+                for (let response of this.questionIdToConsolidatedAIResponsesMap.get(questionId)) {
+                    response = response.trim();
+                    if (response.toLowerCase() != "false") {
+                        logicResult = false;
+                        break;
+                    }
+                }
+                if (logicResult) {
+                    aiResponseText = this.setAIResponseIssueByQuestionType(questionType, true, parentQuestionId);
+                }
+                break;
+            case "AMOUNT CONSISTENCY":
+                if (this.questionIdToConsolidatedAIResponsesMap.get(questionId).length == 1 && this.questionIdToConsolidatedAIResponsesMap.get(questionId).includes("na")) {
+                    //if only 'na' is present means no amount is there then we will suggest as True/No
+                    aiResponseText = this.setAIResponseIssueByQuestionType(questionType, true, parentQuestionId);
+                } else {
+                    //now removing 'na' and checking if multiple amount found
+                    const filtered_responses = this.questionIdToConsolidatedAIResponsesMap.get(questionId).filter(item => {
+                        return typeof item === "string" && item !== "na";
+                    });
+                    if (filtered_responses.length > 1) {
+                        //if multiple amounts are identified then we will suggest as True/No
+                        aiResponseText = this.setAIResponseIssueByQuestionType(questionType, true, parentQuestionId);
+                    }
+                }
+                break;
+            case "VALIDATE WITH CLAIM AMOUNT":
+                if (this.questionIdToConsolidatedAIResponsesMap.get(questionId).length == 1 && this.questionIdToConsolidatedAIResponsesMap.get(questionId).includes("na")) {
+                    //if only NA is present means no amount is there then we will suggest as True/No
+                    aiResponseText = this.setAIResponseIssueByQuestionType(questionType, true, parentQuestionId);
+                } else {
+                    //if on claim reimbursement amount is greater than the amount in POC then we will suggest as True/No
+                    this.questionIdToConsolidatedAIResponsesMap.get(questionId).forEach(response => {
+                        response = response.trim();
+                        if (response != "na" && parseFloat(this.claimReimbursementAmount) > parseFloat(response)) {
+                            aiResponseText = this.setAIResponseIssueByQuestionType(questionType, true, parentQuestionId);
+                        }
+                    });
+                }
+                break;
+            case "VALIDATE IF WITH TAX AMOUNT REIMBURSED":
+                if (this.questionIdToConsolidatedAIResponsesMap.get(questionId).length == 1 && !this.questionIdToConsolidatedAIResponsesMap.get(questionId).includes("na")) {
+                    //if only NA is present means no amount is there then we will suggest as True/No
+                    //aiResponseText = this.setAIResponseIssueByQuestionType(questionType, true, parentQuestionId);
+                } else {
+                    this.questionIdToConsolidatedAIResponsesMap.get(questionId).forEach(response => {
+                        //if on claim reimbursement amount is equal to taxed amount in POC then we will suggest as True/No
+                        response = response.trim();
+                        if (response != "na" && parseFloat(response) == parseFloat(this.claimReimbursementAmount)) {
+                            aiResponseText = this.setAIResponseIssueByQuestionType(questionType, true, parentQuestionId);
+                        }
+                    });
+                }
+                break;
+            case "CURRENCY CONSISTENCY":
+                if (this.questionIdToConsolidatedAIResponsesMap.get(questionId).length == 1 && this.questionIdToConsolidatedAIResponsesMap.get(questionId).includes("na")) {
+                    //if only 'na' is present means no amount is there then we will suggest as True/No
+                    aiResponseText = this.setAIResponseIssueByQuestionType(questionType, true, parentQuestionId);
+                } else {
+                    //now removing 'na' and checking if multiple currencies found
+                    const filtered_responses = this.questionIdToConsolidatedAIResponsesMap.get(questionId).filter(item => {
+                        return typeof item === "string" && item !== "na";
+                    });
+                    if (filtered_responses.length > 1) {
+                        aiResponseText = this.setAIResponseIssueByQuestionType(questionType, true, parentQuestionId);
+                    }
+                }
+                break;
+            case "VALIDATE WITH CLAIM CURRENCY":
+
+                if (this.questionIdToConsolidatedAIResponsesMap.get(questionId).length == 1 && this.questionIdToConsolidatedAIResponsesMap.get(questionId).includes("na")) {
+                    //if only NA is present means no amount is there then we will suggest as True/No
+                    aiResponseText = this.setAIResponseIssueByQuestionType(questionType, true, parentQuestionId);
+                } else {
+                    this.questionIdToConsolidatedAIResponsesMap.get(questionId).forEach(response => {
+                        //if on claim reimbursement amount is equal to taxed amount in POC then we will suggest as True/No
+                        response = response.trim();
+                        if (response != "na" && response != this.claimCurrency) {
+                            aiResponseText = this.setAIResponseIssueByQuestionType(questionType, true, parentQuestionId);
+                        }
+                    });
+                }
+                break;
+        }
+
+        //to set the parent question response
+        if (!this.parentQuestionIdToCalculatedAIResponseMap.has(parentQuestionId) || this.parentQuestionIdToCalculatedAIResponseMap.get(parentQuestionId) != 'No') {
+            this.parentQuestionIdToCalculatedAIResponseMap.set(parentQuestionId, "Yes");
+        }
+        return aiResponseText;
+    }
+
+    setAIResponseIssueByQuestionType(questionType, setParentCalculatedReponse, parentQuestionId) {
+        let aiResponseText;
+        if (questionType == 'mainquestion') {
+            aiResponseText = "No";
+        } else if (questionType == 'subquestion') {
+            aiResponseText = "True";
+            if (setParentCalculatedReponse) {
+                this.parentQuestionIdToCalculatedAIResponseMap.set(parentQuestionId, "No");
+            }
+        }
+        return aiResponseText;
+    }
+
     //Sham - AI Generated Response
     // Helper method to determine if a response is positive or Negative
     getAIResponseClass(response) {
@@ -1179,16 +1523,19 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
 
         // Early return for outcome-based claims
         if (this.claimOutcomeBasedInd) {
+            console.log('AI validation not applicable for IPA Outcome-based claims');
             setAIResponseAndLoadUI({ isAIResAvailable: false, disableGenAI: true, errMessage: this.outcomeBasedMsg });
             return;
         }
-        
+
         fetchAIResponse({ claimId: this.claimId })
             .then(aiResult => {//VB - change this variable name ?
                 try {
-                    
+                    console.log('AI response result map:', JSON.stringify(aiResult));
+
                     // Validate the response structure
                     if (!aiResult || typeof aiResult !== 'object') {
+                        console.log('Invalid AI response structure returned.');
                         setAIResponseAndLoadUI({ isAIResAvailable: false, disableGenAI: true, errMessage: this.failedErrorMsg });
                         return;
                     }
@@ -1199,8 +1546,8 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
                     this.aiErrorMsg = '';
 
                     const results = aiResult.picReviewDetails || [];
-                    
-                    if (aiResult.status === 'AVAILABLE' && results.length > 0) { 
+
+                    if (aiResult.status === 'AVAILABLE' && results.length > 0) {
                         // Process AI response metadata
                         this.aiResponseMetadata = results.map(result => ({
                             aiQnId: result.Core_MDF_Question_id__c,
@@ -1209,39 +1556,48 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
                             aiPicReviewResId: result.Id,
                             aiConfidenceScore: result.Core_MDF_AI_Confidence_Score_Nm__c
                         }));
-                        
+
                         // latest AI PIC review id for manual Pic Review 
                         this.latestAIPICReviewId = aiResult.picReviewId;
                         this.overallAIConfScore = aiResult.overallAIConfScore;
+                        //this.aiPicReviewDetails = aiResult.picReviewDetails || [];
+                        console.log('AI results present. Count:', results.length);
                         setAIResponseAndLoadUI({ isAIResAvailable: true, disableGenAI: false, errMessage: '' });
                     } else {
                         const errMsg = aiResult?.status === 'INPROGRESS' ? this.inProgressErrorMsg : this.failedErrorMsg;
-                        setAIResponseAndLoadUI({ isAIResAvailable: false,disableGenAI: true,errMessage: errMsg });
+                        console.log(aiResult?.status === 'INPROGRESS' ? 'AI status pending.' : 'AI unavailable (manual/no review/error).');
+                        setAIResponseAndLoadUI({ isAIResAvailable: false, disableGenAI: true, errMessage: errMsg });
                     }
                 } catch (error) {
+                    console.error('Error processing AI response map:', error);
                     setAIResponseAndLoadUI({ isAIResAvailable: false, disableGenAI: true, errMessage: this.failedErrorMsg });
                 }
             })
             .catch(error => {
+                console.error('Error fetching AI response:', error);
                 setAIResponseAndLoadUI({ isAIResAvailable: false, disableGenAI: true, errMessage: this.failedErrorMsg });
             });
     }
 
     async handleGenerateAIValidation() {
-        this.disableGenAIBtn=true;
+        this.disableGenAIBtn = true;
         this.showSpinner = true;
+        console.log('handleGenerateAIValidation button clicked');
         try {
             //First call: fetch claim record
             const claimRec = await fetchClaimRecordData({ claimId: this.claimId });
+            console.log('print response from fetchClaimRecordData:', claimRec);
 
             this.claimIdToRecordMap.set(this.claimId, claimRec);
             const claimRecordsObj = Object.fromEntries(this.claimIdToRecordMap);
             const reviewMapObj = this.claimIdToReviewToCDBLogRec
                 ? Object.fromEntries(this.claimIdToReviewToCDBLogRec)
                 : {};
+            console.log('print claimIdToRecordMap map:', claimRecordsObj);
 
             //Second call: CDB Call
             const status = await fetchClaimDocAndPICReviewDetails({ claimRecordsMap: claimRecordsObj, claimIdToPicReviewIdToFinalCDBLog: reviewMapObj });
+            console.log('Inside Gen AI Validation method call, status: ' + JSON.stringify(status));
 
             // Handle explicit error status returned by Apex
             if (status === 'ERROR') {
@@ -1253,17 +1609,21 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
                 }));
             }
         } catch (error) {
+            // Network/transport/unexpected exceptions
             this.dispatchEvent(new ShowToastEvent({
                 title: 'Error in Generating AI Recommendations',
                 message: 'There was an error fetching AI Recommendations. Please try again or continue with the review.',
                 variant: 'error',
                 mode: 'sticky'
             }));
+            console.error('Error in Generate AI Validation flow:', error);
         } finally {
             this.showSpinner = false;
+            console.error('Executing finally block:');
             this.setAIResponsefromResult();
         }
-    }    
+    }
+    //anushya TWC3117-16407
     get headerLabel() {
         return this.isOutComeBasedSuperClaim
             ? 'Payment Clearance Process'
@@ -1273,7 +1633,9 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
         return this.isOutComeBasedSuperClaim
             ? 'Payment Clearance Review'
             : 'PIC Review';
-	}	
+    }
+    //anushya TWC3117-16407
+
     //Added by VB - MDF POP Confidence Score Changes
     handleAgreementToAIResponse(event) {
         let selectedResponse = event.target.value;
@@ -1307,4 +1669,50 @@ export default class Core_MDF_PICDocumentDetails extends NavigationMixin(Lightni
     get aiFeedbackOptions() {
        return JSON.parse(this.label.aiFeedbackOptions);
     }
+
+    /* Copy to Clipboard option - Added by VB - NA for now
+    async copyComment(event) {
+        console.log('OUTPUT : copy comment', event.currentTarget.dataset.text);
+        const button = event.currentTarget;
+        const textToCopy = button.dataset.text;
+
+        if (!textToCopy) return;
+
+        try {
+            // 1. Try modern API first (if supported and defined)
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                await navigator.clipboard.writeText(textToCopy);
+                this.showSuccessState(button);
+                return;
+            }
+
+            // 2. Fallback for when navigator.clipboard is undefined
+            const textArea = document.createElement('textarea');
+            textArea.value = textToCopy;
+            textArea.style.position = 'fixed';
+            textArea.style.top = '0';
+            textArea.style.left = '0';
+            textArea.style.opacity = '0';
+
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            const successful = document.execCommand('copy');
+            document.body.removeChild(textArea);
+
+            if (successful) {
+                this.showSuccessState(button);
+            } else {
+                console.error('Failed to copy text');
+            }
+
+        } catch (err) {
+            console.error('Failed to copy text: ', err);
+        }
+    }
+
+    showSuccessState(button) {
+        button.title = "Copied!";
+    } */
 }

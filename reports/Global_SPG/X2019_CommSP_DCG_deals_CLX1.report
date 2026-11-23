@@ -66,14 +66,8 @@
     <columns>
         <field>Opportunity.Core_ISV_OSV__c</field>
     </columns>
-    <columns>
-        <field>Product2.Core_Product_Status__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Status__c</field>
-    </columns>
     <filter>
-        <booleanFilter>((1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7) AND (8 OR 9 OR 10)) AND 11</booleanFilter>
+        <booleanFilter>((1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND 8) AND (9 OR 10 OR 11)) AND 12</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -93,7 +87,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>Service Provider,Telco/Service Provider,Comm Service Provider (CoSP)</value>
+            <value>Service Provider,Telco/Service Provider</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Commissionable__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Yes</value>
         </criteriaItems>
         <criteriaItems>
             <column>INDUSTRY</column>
@@ -149,7 +150,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>nokia,genesys,ringcentral,everyware</value>
+            <value>nokia</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -193,8 +194,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2019-12-28</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2018-12-30</startDate>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

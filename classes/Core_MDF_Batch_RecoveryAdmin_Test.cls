@@ -3,11 +3,11 @@ public class Core_MDF_Batch_RecoveryAdmin_Test {
     @isTest static void testScheduleRecoveryNotification(){
         Test.startTest();
         Database.executeBatch(new Core_MDF_Batch_RecoveryAdminNotification('Intel Partner Alliance', Core_MDF_CCP_ConstantClass.SCHEDULE_RECOVERY_NOTIFICATION, '2026-06-29'));
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
         // List<Core_MDF_Batch_Scheduler__c> bsList = [SELECT Id FROM Core_MDF_Batch_Scheduler__c WHERE Core_MDF_Batch_Class_Name_Txt__c = 'Core_MDF_Batch_RecoveryAdminNotification'];
         //assert.isTrue(bsList.size() > 0);
         Test.stopTest();
-         // Unit Test Method should include System.Assert 
+         // Unit Test Method should include System.Assert - Indira
          System.assert(true,'Recovery notification batch executed successfully');
     }
     
@@ -15,7 +15,7 @@ public class Core_MDF_Batch_RecoveryAdmin_Test {
         Test.startTest();
         Database.executeBatch(new Core_MDF_Batch_RecoveryAdminNotification('Intel Partner Alliance', Core_MDF_CCP_ConstantClass.SEND_EMAIL, '2026-06-29'));
         Test.stopTest();
-        // Unit Test Method should include System.Assert 
+        // Unit Test Method should include System.Assert - Indira
         System.assert(Limits.getEmailInvocations() >= 0,'Send email recovery notification batch executed successfully');
     }
     
@@ -25,7 +25,7 @@ public class Core_MDF_Batch_RecoveryAdmin_Test {
         String sch = '0 0 2 * * ?'; 
         system.schedule('Test Schedule', sch, sh1); 
         Test.stopTest();
-        // Unit Test Method should include System.Assert 
+        // Unit Test Method should include System.Assert - Indira
          System.assert(sch.contains('0 0 2'),'Schedule cron expression should match expected time');
     }
     

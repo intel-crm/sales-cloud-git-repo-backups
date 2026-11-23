@@ -39,12 +39,21 @@
         <customLabel>false</customLabel>
         <detailHeading>false</detailHeading>
         <editHeading>false</editHeading>
-        <label>Custom Links</label>
-        <layoutColumns/>
-        <layoutColumns/>
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
+    <relatedLists>
+        <fields>Name</fields>
+        <fields>GroupKey</fields>
+        <fields>SubGroupKey</fields>
+        <fields>IsEnabled</fields>
+        <fields>DscnModelNoteExportStatus</fields>
+        <fields>Rank</fields>
+        <fields>StartDateTime</fields>
+        <fields>EndDateTime</fields>
+        <fields>VersionNumber</fields>
+        <relatedList>CalculationMatrixVersions</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>

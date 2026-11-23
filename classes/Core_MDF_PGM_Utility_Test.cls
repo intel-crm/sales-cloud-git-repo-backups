@@ -243,7 +243,8 @@ public class Core_MDF_PGM_Utility_Test {
         }
 
         ChannelProgram ipaProgram = Core_MDF_CCP_TestDataUtility.createProgram('Intel Partner Alliance','Intel Partner Alliance', true);
-        ChannelProgram eefProgram =  Core_MDF_CCP_TestDataUtility.createProgram('Ecosystem Extension Fund','Ecosystem Extension Fund', true);
+       // Highlight: Unused Local Variable - Indira
+       // ChannelProgram eefProgram =  Core_MDF_CCP_TestDataUtility.createProgram('Ecosystem Extension Fund','Ecosystem Extension Fund', true);
 		Id accOnboard_RecordType_IPA = Schema.SObjectType.Core_MDF_Account_Onboarding__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
         List<Core_MDF_Account_Onboarding__c> accOnboardingList = new List<Core_MDF_Account_Onboarding__c>();
 
@@ -323,7 +324,8 @@ public class Core_MDF_PGM_Utility_Test {
             cpIdList.add(cp.Id);
         }
          assert.isNotNull(accList);
-        Core_MDF_PGM_Utility.pgmKeyGroupIdWrapper pgmKeyGrpIdWrapper = new Core_MDF_PGM_Utility.pgmKeyGroupIdWrapper();
+        // Highlight: Unused Local Variable - Indira
+       // Core_MDF_PGM_Utility.pgmKeyGroupIdWrapper pgmKeyGrpIdWrapper =  new Core_MDF_PGM_Utility.pgmKeyGroupIdWrapper();
         //pgmKeyGrpIdWrapper = Core_MDF_PGM_Utility.getAccPGMKeyGrpIdMap(accList,cpIdList,null);
         
         

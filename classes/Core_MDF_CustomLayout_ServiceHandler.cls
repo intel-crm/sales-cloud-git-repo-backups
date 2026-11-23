@@ -6,7 +6,12 @@ public without sharing class Core_MDF_CustomLayout_ServiceHandler {
             Boolean isError = true;
             If(isInsert || (isUpdate && customLayoutNewList[i].Core_MDF_Object_API_Name_txt__c != customLayoutOldList[i].Core_MDF_Object_API_Name_txt__c)){ 
                 //Map<String, Schema.SObjectType> objMap = Schema.getGlobalDescribe();
-                If(objMap.containsKey(customLayoutNewList[i].Core_MDF_Object_API_Name_txt__c)) {
+                //If(objMap.containsKey(customLayoutNewList[i].Core_MDF_Object_API_Name_txt__c)) {
+                    if (!objMap.containsKey(customLayoutNewList[i].Core_MDF_Object_API_Name_txt__c)) { //ATHR Fix WW19
+                        errorMsg += ' Valid Object API Name,';
+                        isError = false;
+                        continue; 
+                    }
                     If(isInsert || (isUpdate && customLayoutNewList[i].Core_MDF_Record_Type_Name_txt__c != customLayoutOldList[i].Core_MDF_Record_Type_Name_txt__c)){
                         Boolean isValidRecordType = validateRecordTypeName(customLayoutNewList[i].Core_MDF_Object_API_Name_txt__c, customLayoutNewList[i].Core_MDF_Record_Type_Name_txt__c);
                         If(!isValidRecordType){
@@ -21,10 +26,10 @@ public without sharing class Core_MDF_CustomLayout_ServiceHandler {
                             isError = false;
                         }
                     }
-                } else {
+                /*} else {
                     errorMsg = errorMsg + ' Valid Object API Name,';
                     isError = false;
-                }
+                }*/
             }
             If(isUpdate && customLayoutNewList[i].Core_MDF_Object_API_Name_txt__c == customLayoutOldList[i].Core_MDF_Object_API_Name_txt__c
                     && customLayoutNewList[i].Core_MDF_Record_Type_Name_txt__c != customLayoutOldList[i].Core_MDF_Record_Type_Name_txt__c){
@@ -42,6 +47,7 @@ public without sharing class Core_MDF_CustomLayout_ServiceHandler {
                             isError = false;
                         }
                     }
+                    
             errorMsg = errorMsg.removeEnd(',');
             If(isError == false){
                 customLayoutNewList[i].Id.addError(errorMsg);
@@ -59,6 +65,7 @@ public without sharing class Core_MDF_CustomLayout_ServiceHandler {
     }
 
     private static Boolean validateRecordTypeName(String objetAPIName, String recordTypeName){
+        System.debug('tesAmey124 '+recordTypeName);
         Map<String, Schema.RecordTypeInfo> recTypeMap = Schema.getGlobalDescribe().get(objetAPIName).getDescribe().getRecordTypeInfosByName();
         If(!recTypeMap.containsKey(recordTypeName)) {
             return false;

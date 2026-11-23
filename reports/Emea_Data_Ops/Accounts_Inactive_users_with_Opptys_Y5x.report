@@ -7,10 +7,16 @@
         <field>RECORDTYPE</field>
     </columns>
     <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
         <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
         <field>Account.Core_Prime_Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Groups__c</field>
     </columns>
     <columns>
         <field>Account.Core_Account_Country__c</field>
@@ -26,9 +32,6 @@
     </columns>
     <columns>
         <field>Account.Core_Export_Compliance_Block__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Sales_Groups__c</field>
     </columns>
     <crossFilters>
         <criteriaItems>
@@ -50,13 +53,6 @@
             <operator>equals</operator>
             <value>0</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Geo__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>EMEA</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -67,12 +63,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>ROLLUP_DESCRIPTION</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>USERS.NAME</field>
+        <field>LAST_UPDATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Accounts Inactive users with Opptys</name>

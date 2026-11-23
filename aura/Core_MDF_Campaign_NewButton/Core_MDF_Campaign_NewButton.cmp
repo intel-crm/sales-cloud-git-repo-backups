@@ -21,7 +21,7 @@
             <lightning:layoutItem flexibility="grow" size="12" smallDeviceSize="12" mediumDeviceSize="12"
                 largeDeviceSize="12">
                 <div class="slds-float_right">
-                    <lightning:button label="{!$Label.c.Core_MDF_New}" title="New" onclick="{! c.handleClick }" />
+                    <lightning:button label="{!$Label.c.Core_MDF_New}" title="{!$Label.c.Core_MDF_New}" onclick="{! c.handleClick }" />
                 </div>
             </lightning:layoutItem>
         </lightning:layout>

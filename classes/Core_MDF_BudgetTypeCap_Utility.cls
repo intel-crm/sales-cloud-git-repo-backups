@@ -30,8 +30,6 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
         }
     }
     public static Id ipaBudTypeCapRecordtype = Schema.SObjectType.Core_MDF_Budget_Cap__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_Budget_Type_Cap').getRecordTypeId(); 
-    
-    //private Static String underscore = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Underscore');
     private Static String IPATechnicalProgram=Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Technical_program_name');
     /***************************************************************************************************** 
     Method Name   :        budgetTypeCapOverlapDupCheck
@@ -58,14 +56,13 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
         //budTypeCapGeoSet.add('WW');
         // Get Id Of Budget Cap's IPA Record Type 
         //Id ipaBudTypeCapRecordtype = Schema.SObjectType.Core_MDF_Budget_Cap__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_Budget_Type_Cap').getRecordTypeId(); 
-        //Id channelMDFBudTypeCapRecordType = Schema.SObjectType.Core_MDF_Budget_Cap__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Channel_MDF_Budget_Type_Cap').getRecordTypeId();
         Date minDate;
         Date maxDate;
         if(newBudTypeCapList != NULL && newBudTypeCapList.size()>0){
             minDate = newBudTypeCapList[0].Core_MDF_Effective_Start_Date_Dt__c ;
             maxDate = newBudTypeCapList[0].Core_MDF_Effective_End_Date_Dt__c;
         }
-        //List<String> recTypeDeveloperNameLst = Core_MDF_CustomLabelConfig.getTextList('Core_MDF_BudgetTypeCap_RecordTypes');
+        List<String> recTypeDeveloperNameLst = Core_MDF_CustomLabelConfig.getTextList('Core_MDF_BudgetTypeCap_RecordTypes');
         try {
             List<Core_MDF_Budget_Cap__c> budgetTypeCapList = new List<Core_MDF_Budget_Cap__c>();
             for(Core_MDF_Budget_Cap__c budTypeCap : newBudTypeCapList) {
@@ -73,8 +70,7 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
                 if(budTypeCap.RecordTypeId != ipaBudTypeCapRecordtype){
                     continue;
                 }
-                //if(budTypeCap.RecordTypeId == ipaBudTypeCapRecordtype){
-                    // Add All the Incoming records Wile Insert But On Update, Add Only Those Record with specific Fields update
+                    // Add All the Incoming records While Insert But On Update, Add Only Those Record with specific Fields update
                     if(isInsert || (isUpdate && (budTypeCap.Core_MDF_Effective_Start_Date_Dt__c != oldBudgetCapMap.get(budTypeCap.ID).Core_MDF_Effective_Start_Date_Dt__c 
                     || budTypeCap.Core_MDF_Effective_End_Date_Dt__c != oldBudgetCapMap.get(budTypeCap.ID).Core_MDF_Effective_End_Date_Dt__c 
                     || budTypeCap.Core_MDF_Budget_Type_nm__c != oldBudgetCapMap.get(budTypeCap.ID).Core_MDF_Budget_Type_nm__c
@@ -91,18 +87,20 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
                         budTypeCapRecTypeIds.add(budTypeCap.RecordTypeId);
                         
                     }
-					if(budTypeCap.Core_MDF_Effective_Start_Date_Dt__c < minDate){minDate = budTypeCap.Core_MDF_Effective_Start_Date_Dt__c;
+					if(budTypeCap.Core_MDF_Effective_Start_Date_Dt__c < minDate){
+                	minDate = budTypeCap.Core_MDF_Effective_Start_Date_Dt__c;
             		}
-            		if(budTypeCap.Core_MDF_Effective_End_Date_Dt__c > maxDate){maxDate = budTypeCap.Core_MDF_Effective_End_Date_Dt__c;
+            		if(budTypeCap.Core_MDF_Effective_End_Date_Dt__c > maxDate){
+                	maxDate = budTypeCap.Core_MDF_Effective_End_Date_Dt__c;
             		}                    
-                //}
+                
             }
             
             //Looping over existing budget caps corresponding to budget type and Geo But Excluding The Budgets Caps Which are going to be Updated
             for(Core_MDF_Budget_Cap__c existingBudTypeCap : [SELECT Id,Name,RecordTypeId, Core_MDF_Effective_End_Date_Dt__c, Core_MDF_Effective_Start_Date_Dt__c, Core_MDF_Budget_Type_nm__c,Core_MDF_Cap_Status_nm__c,Core_MDF_Region_nm__c
                                                              FROM Core_MDF_Budget_Cap__c 
                                                              WHERE Core_MDF_Budget_Type_nm__c IN :budgetTypes 
-                                                             AND RecordTypeId =: ipaBudTypeCapRecordtype 
+                                                             AND RecordTypeId IN : budTypeCapRecTypeIds 
                                                              AND Core_MDF_Cap_Status_nm__c =: 'Active'
                                                              AND ((Core_MDF_Effective_Start_Date_Dt__c >=: minDate AND Core_MDF_Effective_Start_Date_Dt__c <=: maxDate) OR (Core_MDF_Effective_End_Date_Dt__c >=: minDate AND Core_MDF_Effective_End_Date_Dt__c <=: maxDate) OR (Core_MDF_Effective_Start_Date_Dt__c <=: minDate AND Core_MDF_Effective_End_Date_Dt__c >=: maxDate))
                                                              AND Id NOT IN : budTypeCapIdOnUpdate]){
@@ -113,7 +111,6 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
                                                                     existingBudgetTypeBudCapMap.put(existingBudTypeCap.RecordTypeId + existingBudTypeCap.Core_MDF_Budget_Type_nm__c, new List<Core_MDF_Budget_Cap__c>{existingBudTypeCap});
                                                                 }
             }
-            
             // Looping Over the Incoming List
             for(Integer OuterIndex = 0; OuterIndex < budgetTypeCapList.size(); OuterIndex++){
                 
@@ -142,7 +139,8 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
                         if(newBudTypeCapToCompare.Id != NULL){ listOfDuplicateBudgetCaps.add(newBudTypeCapToCompare.Name);
                         }
                         else{
-                            if(duplicateErrorsInNew == NULL || duplicateErrorsInNew == ''){duplicateErrorsInNew = 'Duplicate Budget Cap in Incoming List';
+                            if(duplicateErrorsInNew == NULL || duplicateErrorsInNew == ''){
+                                duplicateErrorsInNew = 'Duplicate Budget Cap in Incoming List';
                             }
                         }                           
                     }
@@ -152,7 +150,8 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
                         if(newBudTypeCapToCompare.Id != NULL){ listOfOverlappingBudgetCaps.add(newBudTypeCapToCompare.Name);
                         }
                         else{
-                            if(overlappingErrorsInNew == NULL || overlappingErrorsInNew == ''){overlappingErrorsInNew = 'Overlapping Budget Cap With Incoming List';
+                            if(overlappingErrorsInNew == NULL || overlappingErrorsInNew == ''){
+                                overlappingErrorsInNew = 'Overlapping Budget Cap With Incoming List';
                             }
                         }
                     }
@@ -161,13 +160,16 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
                     // Looping over the Existing Budget Caps of Current Budget Cap's Budget type in the database to check for any Duplicate/Overlapping with the Incoming record
                     for(Core_MDF_Budget_Cap__c existingbudTypeCap : existingBudgetTypeBudCapMap.get(budTypeCap.RecordTypeId + budTypeCap.Core_MDF_Budget_Type_nm__c)){
                                 // Check for the Duplicate Caps
-                                if(isBudgetTypeCapDuplicate(budTypeCap,existingbudTypeCap)){listOfDuplicateBudgetCaps.add(existingbudTypeCap.Name);//Duplicate budget cap error
+                                if(isBudgetTypeCapDuplicate(budTypeCap,existingbudTypeCap)){
+                                //Duplicate budget cap error
+                                    listOfDuplicateBudgetCaps.add(existingbudTypeCap.Name);
                                 } 
                                 // Check for the Overlapping Budget Caps and add all the Overlapping Budget Caps in a List
                                 if(isBudgetTypeCapOverlapping (budTypeCap, existingbudTypeCap)) {
                                     listOfOverlappingBudgetCaps.add(existingbudTypeCap.Name);
                                 }
-                           
+                            //}
+                        //}
                     }                                    
                 }
                 // Consolidating all the errors in single String
@@ -200,9 +202,16 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
         try{
             Boolean duplicateBudgetTypeCap = false;
             if(newBudTypeCap.Core_MDF_Effective_Start_Date_Dt__c == budgetTypeCapToCompare.Core_MDF_Effective_Start_Date_Dt__c
-            && newBudTypeCap.Core_MDF_Effective_End_Date_Dt__c == budgetTypeCapToCompare.Core_MDF_Effective_End_Date_Dt__c && newBudTypeCap.Core_MDF_Budget_Type_nm__c == budgetTypeCapToCompare.Core_MDF_Budget_Type_nm__c 
-            && newBudTypeCap.Core_MDF_Cap_Status_nm__c == budgetTypeCapToCompare.Core_MDF_Cap_Status_nm__c && newBudTypeCap.RecordTypeId == budgetTypeCapToCompare.RecordTypeId
-            && (newBudTypeCap.RecordTypeId == ipaBudTypeCapRecordtype && (newBudTypeCap.Core_MDF_Region_nm__c == budgetTypeCapToCompare.Core_MDF_Region_nm__c || (newBudTypeCap.Core_MDF_Region_nm__c != budgetTypeCapToCompare.Core_MDF_Region_nm__c && (newBudTypeCap.Core_MDF_Region_nm__c == 'WW'||budgetTypeCapToCompare.Core_MDF_Region_nm__c == 'WW'))))){duplicateBudgetTypeCap = true;
+            && newBudTypeCap.Core_MDF_Effective_End_Date_Dt__c == budgetTypeCapToCompare.Core_MDF_Effective_End_Date_Dt__c
+            && newBudTypeCap.Core_MDF_Budget_Type_nm__c == budgetTypeCapToCompare.Core_MDF_Budget_Type_nm__c 
+            && newBudTypeCap.Core_MDF_Cap_Status_nm__c == budgetTypeCapToCompare.Core_MDF_Cap_Status_nm__c
+            && newBudTypeCap.RecordTypeId == budgetTypeCapToCompare.RecordTypeId
+            && (newBudTypeCap.RecordTypeId == ipaBudTypeCapRecordtype 
+                    && (newBudTypeCap.Core_MDF_Region_nm__c == budgetTypeCapToCompare.Core_MDF_Region_nm__c 
+                        || (newBudTypeCap.Core_MDF_Region_nm__c != budgetTypeCapToCompare.Core_MDF_Region_nm__c 
+                            && (newBudTypeCap.Core_MDF_Region_nm__c == 'WW'||budgetTypeCapToCompare.Core_MDF_Region_nm__c == 'WW'))))){
+                
+                duplicateBudgetTypeCap = true;
             }
             
             return duplicateBudgetTypeCap;
@@ -226,12 +235,19 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
                     ((newBudTypeCap.Core_MDF_Effective_Start_Date_Dt__c == existingbudTypeCap.Core_MDF_Effective_End_Date_Dt__c || newBudTypeCap.Core_MDF_Effective_End_Date_Dt__c == existingbudTypeCap.Core_MDF_Effective_Start_Date_Dt__c) 
                     || (newBudTypeCap.Core_MDF_Effective_Start_Date_Dt__c > existingbudTypeCap.Core_MDF_Effective_Start_Date_Dt__c && newBudTypeCap.Core_MDF_Effective_End_Date_Dt__c < existingbudTypeCap.Core_MDF_Effective_End_Date_Dt__c) 
                     || (newBudTypeCap.Core_MDF_Effective_Start_Date_Dt__c > existingbudTypeCap.Core_MDF_Effective_Start_Date_Dt__c && newBudTypeCap.Core_MDF_Effective_Start_Date_Dt__c < existingbudTypeCap.Core_MDF_Effective_End_Date_Dt__c && newBudTypeCap.Core_MDF_Effective_End_Date_Dt__c > existingbudTypeCap.Core_MDF_Effective_End_Date_Dt__c) 
-                    || (newBudTypeCap.Core_MDF_Effective_Start_Date_Dt__c == existingbudTypeCap.Core_MDF_Effective_Start_Date_Dt__c && ((newBudTypeCap.Core_MDF_Effective_End_Date_Dt__c > existingbudTypeCap.Core_MDF_Effective_Start_Date_Dt__c && newBudTypeCap.Core_MDF_Effective_End_Date_Dt__c < existingbudTypeCap.Core_MDF_Effective_End_Date_Dt__c) || newBudTypeCap.Core_MDF_Effective_End_Date_Dt__c > existingbudTypeCap.Core_MDF_Effective_End_Date_Dt__c)) 
-                    || (newBudTypeCap.Core_MDF_Effective_End_Date_Dt__c == existingbudTypeCap.Core_MDF_Effective_End_Date_Dt__c && ((newBudTypeCap.Core_MDF_Effective_Start_Date_Dt__c > existingbudTypeCap.Core_MDF_Effective_Start_Date_Dt__c && newBudTypeCap.Core_MDF_Effective_Start_Date_Dt__c < existingbudTypeCap.Core_MDF_Effective_End_Date_Dt__c) || newBudTypeCap.Core_MDF_Effective_Start_Date_Dt__c < existingbudTypeCap.Core_MDF_Effective_Start_Date_Dt__c)) 
-                    || (newBudTypeCap.Core_MDF_Effective_Start_Date_Dt__c < existingbudTypeCap.Core_MDF_Effective_Start_Date_Dt__c && ((newBudTypeCap.Core_MDF_Effective_End_Date_Dt__c > existingbudTypeCap.Core_MDF_Effective_Start_Date_Dt__c && newBudTypeCap.Core_MDF_Effective_End_Date_Dt__c < existingbudTypeCap.Core_MDF_Effective_End_Date_Dt__c) 
-                        || newBudTypeCap.Core_MDF_Effective_End_Date_Dt__c > existingbudTypeCap.Core_MDF_Effective_End_Date_Dt__c)))&& (newBudTypeCap.RecordTypeId == ipaBudTypeCapRecordtype 
+                    || (newBudTypeCap.Core_MDF_Effective_Start_Date_Dt__c == existingbudTypeCap.Core_MDF_Effective_Start_Date_Dt__c && 
+                        ((newBudTypeCap.Core_MDF_Effective_End_Date_Dt__c > existingbudTypeCap.Core_MDF_Effective_Start_Date_Dt__c && newBudTypeCap.Core_MDF_Effective_End_Date_Dt__c < existingbudTypeCap.Core_MDF_Effective_End_Date_Dt__c) 
+                        || newBudTypeCap.Core_MDF_Effective_End_Date_Dt__c > existingbudTypeCap.Core_MDF_Effective_End_Date_Dt__c)) 
+                    || (newBudTypeCap.Core_MDF_Effective_End_Date_Dt__c == existingbudTypeCap.Core_MDF_Effective_End_Date_Dt__c && 
+                        ((newBudTypeCap.Core_MDF_Effective_Start_Date_Dt__c > existingbudTypeCap.Core_MDF_Effective_Start_Date_Dt__c && newBudTypeCap.Core_MDF_Effective_Start_Date_Dt__c < existingbudTypeCap.Core_MDF_Effective_End_Date_Dt__c)
+                        || newBudTypeCap.Core_MDF_Effective_Start_Date_Dt__c < existingbudTypeCap.Core_MDF_Effective_Start_Date_Dt__c)) 
+                    || (newBudTypeCap.Core_MDF_Effective_Start_Date_Dt__c < existingbudTypeCap.Core_MDF_Effective_Start_Date_Dt__c && 
+                        ((newBudTypeCap.Core_MDF_Effective_End_Date_Dt__c > existingbudTypeCap.Core_MDF_Effective_Start_Date_Dt__c && newBudTypeCap.Core_MDF_Effective_End_Date_Dt__c < existingbudTypeCap.Core_MDF_Effective_End_Date_Dt__c) 
+                        || newBudTypeCap.Core_MDF_Effective_End_Date_Dt__c > existingbudTypeCap.Core_MDF_Effective_End_Date_Dt__c)))
+                        && (newBudTypeCap.RecordTypeId == ipaBudTypeCapRecordtype 
                                 && (newBudTypeCap.Core_MDF_Region_nm__c == existingbudTypeCap.Core_MDF_Region_nm__c 
-                                    || (newBudTypeCap.Core_MDF_Region_nm__c != existingbudTypeCap.Core_MDF_Region_nm__c && (newBudTypeCap.Core_MDF_Region_nm__c == 'WW' || existingbudTypeCap.Core_MDF_Region_nm__c == 'WW'))))){
+                                    || (newBudTypeCap.Core_MDF_Region_nm__c != existingbudTypeCap.Core_MDF_Region_nm__c 
+                                        && (newBudTypeCap.Core_MDF_Region_nm__c == 'WW' || existingbudTypeCap.Core_MDF_Region_nm__c == 'WW'))))){
                         
                 overlappingBudTypeCap = true;
             }
@@ -259,13 +275,15 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
         
         for(Core_MDF_Budget_Cap__c budgetCap : newBudTypeCapList){            
             Decimal claimedCapAmount = 0;
-            //Key prepare for Program + BudgetType + Eff St Date + Eff Ed Date for channel MDF and Program + Budget Type + Eff St Date + Eff Ed Date + Geo for ipa to add the related campaigns.
+            //Key prepare for Program + BudgetType + Eff St Date + Eff Ed Date for Program + Budget Type + Eff St Date + Eff Ed Date + Geo for ipa to add the related campaigns.
             String budgetCapUniqueKey='';
             if(budgetCap.RecordTypeId == ipaBudTypeCapRecordtype) 
                 budgetCapUniqueKey = budgetCap.RecordTypeId + budgetCap.Core_MDF_Budget_Type_nm__c + budgetCap.Core_MDF_Effective_Start_Date_Dt__c + budgetCap.Core_MDF_Effective_End_Date_Dt__c + budgetCap.Core_MDF_Region_nm__c;            
             else
                 budgetCapUniqueKey = budgetCap.RecordTypeId + budgetCap.Core_MDF_Budget_Type_nm__c + budgetCap.Core_MDF_Effective_Start_Date_Dt__c + budgetCap.Core_MDF_Effective_End_Date_Dt__c;
+
             // Get all the campaigns for the current Budget cap's Budget type
+            System.debug('MDT OPtimisation budCapRecTypeToProg '+ budCapRecTypeToProg);
             if(budgetTypeToCampaignsList != NULL && budgetTypeToCampaignsList.size()>0 && budgetTypeToCampaignsList.containsKey(budCapRecTypeToProg.get(budgetCapRecTypeMap.get(budgetCap.RecordTypeId).getDeveloperName()) + budgetCap.Core_MDF_Budget_Type_nm__c)
               && budgetTypeToCampaignsList.get(budCapRecTypeToProg.get(budgetCapRecTypeMap.get(budgetCap.RecordTypeId).getDeveloperName()) + budgetCap.Core_MDF_Budget_Type_nm__c) != NULL){
                 for(Campaign camp : budgetTypeToCampaignsList.get(budCapRecTypeToProg.get(budgetCapRecTypeMap.get(budgetCap.RecordTypeId).getDeveloperName()) + budgetCap.Core_MDF_Budget_Type_nm__c))
@@ -277,16 +295,14 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
                     if(!((budgetCap.RecordTypeId == ipaBudTypeCapRecordtype && (budgetCap.Core_MDF_Region_nm__c == camp.Core_MDF_Host_Region_cd__c || (budgetCap.Core_MDF_Region_nm__c != camp.Core_MDF_Host_Region_cd__c && (budgetCap.Core_MDF_Region_nm__c == 'WW')))) && camp.startDate >= budgetCap.Core_MDF_Effective_Start_Date_Dt__c && camp.StartDate <= budgetCap.Core_MDF_Effective_End_Date_Dt__c)){
                         continue;
                     }
-                    //if((budgetCap.RecordTypeId == ipaBudTypeCapRecordtype && (budgetCap.Core_MDF_Region_nm__c == camp.Core_MDF_Host_Region_cd__c || (budgetCap.Core_MDF_Region_nm__c != camp.Core_MDF_Host_Region_cd__c && (budgetCap.Core_MDF_Region_nm__c == 'WW')))) && camp.startDate >= budgetCap.Core_MDF_Effective_Start_Date_Dt__c && camp.StartDate <= budgetCap.Core_MDF_Effective_End_Date_Dt__c)
-                    //{
-                        if(budgetCapUniqueKeyToCampaigns.containsKey(budgetCapUniqueKey)){budgetCapUniqueKeyToCampaigns.get(budgetCapUniqueKey).add(camp);                            
-                        }
-                        else{budgetCapUniqueKeyToCampaigns.put(budgetCapUniqueKey, new List<Campaign>{camp});
-                        }                    
-                        // For Specific campaign status only take the sum of amount of campaigns and assign into Budget cap's claimed cap amount field                    
-                        if(checkCampaignStatusForCapAmount(String.valueOf(camp.Status), Double.valueOf(camp.Core_MDF_Approval_Step_Counter_nbr__c))){claimedCapAmount += (camp.Core_MDF_Reimbursement_Amt__c != NULL)? Double.valueOf(camp.Core_MDF_Reimbursement_Amt__c) : 0;
-                        }
-                    //}
+                    if(!budgetCapUniqueKeyToCampaigns.containsKey(budgetCapUniqueKey)){
+                        budgetCapUniqueKeyToCampaigns.put(budgetCapUniqueKey, new List<Campaign>{camp});                                                       
+                    }
+                    budgetCapUniqueKeyToCampaigns.get(budgetCapUniqueKey).add(camp); 
+                    // For Specific campaign status only take the sum of amount of campaigns and assign into Budget cap's claimed cap amount field                    
+                    if(checkCampaignStatusForCapAmount(String.valueOf(camp.Status),Double.valueOf(camp.Core_MDF_Approval_Step_Counter_nbr__c))){
+                        claimedCapAmount += (camp.Core_MDF_Reimbursement_Amt__c != NULL)? Double.valueOf(camp.Core_MDF_Reimbursement_Amt__c) : 0;
+                    }
                 }
             }
             // summed up campaign's amount of specific statuses will be assigned into Budget cap's claimed amount field
@@ -298,7 +314,7 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
     Method Name:                                  linkCampaignsToBudgetTypeCap
     @return  :                                    void
     @parameters:                                  List of New budgetCap records
-    Description:                                  This method assigns Budget cap lookup field on IPA/Channel MDF campaigns during budget cap Insertion          
+    Description:                                  This method assigns Budget cap lookup field on IPA campaigns during budget cap Insertion          
     Added By:                                     Accenture – Pranav -  5/25/2021
     Modified By:                  Date:           Changes: 
     *****************************************************************************************************************************************/
@@ -310,14 +326,16 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
             for(Core_MDF_Budget_Cap__c budgetCap : newBudTypeCapList){ 
                 // create same key that is used in the Map 
                 String key ='';               
-                //Key prepare for Program + BudgetType + Eff St Date + Eff Ed Date for channel MDF and Program + Budget Type + Eff St Date + Eff Ed Date + Geo for ipa to get the related campaigns.
+                //Key prepare for Program + BudgetType + Eff St Date + Eff Ed Date for Program + Budget Type + Eff St Date + Eff Ed Date + Geo for ipa to get the related campaigns.
                 if(budgetCap.RecordTypeId == ipaBudTypeCapRecordtype) 
                     key =  budgetCap.RecordTypeId + budgetCap.Core_MDF_Budget_Type_nm__c + budgetCap.Core_MDF_Effective_Start_Date_Dt__c + budgetCap.Core_MDF_Effective_End_Date_Dt__c + budgetCap.Core_MDF_Region_nm__c;            
                 else
                     key =  budgetCap.RecordTypeId + budgetCap.Core_MDF_Budget_Type_nm__c + budgetCap.Core_MDF_Effective_Start_Date_Dt__c + budgetCap.Core_MDF_Effective_End_Date_Dt__c;
                 // Get all the campaigns for the unique key and assign the Budget cap lookup field and add the campaigns in the final list
                 if(budgetCapUniqueKeyToCampaigns != NULL && budgetCapUniqueKeyToCampaigns.size()>0 && budgetCapUniqueKeyToCampaigns.containsKey(key)){                    
-                    for(Campaign cmp : budgetCapUniqueKeyToCampaigns.get(key)){cmp.Core_MDF_Budget_Cap__c = budgetCap.Id;campaignList.add(cmp);
+                    for(Campaign cmp : budgetCapUniqueKeyToCampaigns.get(key)){                        
+                        cmp.Core_MDF_Budget_Cap__c = budgetCap.Id;
+                        campaignList.add(cmp);
                     }
                 }
             }
@@ -328,7 +346,10 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
                 Database.executeBatch(updateCampaignbatch, campaignBatchSize);
             }
         }
-        catch(Exception exc){Core_MDF_CCP_UtilityClass.logError(exc);throw exc;}
+        catch(Exception exc){
+            Core_MDF_CCP_UtilityClass.logError(exc);
+            throw exc;
+        }
     }
     
     /****************************************************************************************************************************************
@@ -350,10 +371,12 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
             if(budgetCap.Core_MDF_Cap_Status_nm__c != budgetCapOldMap.get(budgetCap.Id).Core_MDF_Cap_Status_nm__c){
                 // If new status is Inactive then It will be considered ONLY for delinking and Claimed Cap Amount is set to 0
                 if(budgetCap.Core_MDF_Cap_Status_nm__c == 'Inactive'){
-                    budgetCap.Core_MDF_Claimed_Cap_amt__c = 0;budgetCapIdsForDelinkSet.add(budgetCap.Id);
+                    budgetCap.Core_MDF_Claimed_Cap_amt__c = 0;
+                    budgetCapIdsForDelinkSet.add(budgetCap.Id);
                 }
                 // If new status id Active ;It will be ONLY considered for linking
-                else if(budgetCap.Core_MDF_Cap_Status_nm__c == 'Active'){budgetCapsForCampaignLink.add(budgetCap);
+                else if(budgetCap.Core_MDF_Cap_Status_nm__c == 'Active'){
+                    budgetCapsForCampaignLink.add(budgetCap);
                 }
             }
             // If Either Start date Or End Date is changed then It will be considered for both linking as well as delinking
@@ -383,8 +406,9 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
         if(budgetCapIdsForDelinkSet != NULL && budgetCapIdsForDelinkSet.size()>0){
             // Query the Campaigns associated with the Budget caps ; Those Campaigns will be delinked from the Budget cap        
             mapOfCampaignsToBeUpdated = new Map<Id, Campaign>([SELECT Id, StartDate,Core_MDF_Opal_Budget_Type_Txt__c ,Core_MDF_Budget_Cap__c,Status FROM Campaign WHERE Core_MDF_Budget_Cap__c IN: budgetCapIdsForDelinkSet]);        
-            for(Campaign campaign : mapOfCampaignsToBeUpdated.values()){campaign.Core_MDF_Budget_Cap__c = NULL;
+            for(Campaign campaign : mapOfCampaignsToBeUpdated.values()){
                 // Nullify the budget cap Lookup field on Campaign
+                campaign.Core_MDF_Budget_Cap__c = NULL;
             }
         }
     }
@@ -405,38 +429,36 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
         // map of Budget Types to List of campaigns
         Map<String, List<Campaign>> budgetTypeToCampaignsList = new Map<String, List<Campaign>>();
         // calling this method to prepare Budget type to relavant Campaigns List 
-        budgetTypeToCampaignsList = createBudgetTypeToCampaignListMapping(budgetCapsForCampaignLink);    
+            budgetTypeToCampaignsList = createBudgetTypeToCampaignListMapping(budgetCapsForCampaignLink);   
             
         for(Core_MDF_Budget_Cap__c budgetCap : budgetCapsForCampaignLink){
             Decimal claimedCapAmount = 0;
             //ATHR - Deeply Nested if 16209
-            if (budgetTypeToCampaignsList == NULL || budgetTypeToCampaignsList.isEmpty() || !budgetTypeToCampaignsList.containsKey(budCapRecTypeToProg.get(budgetCapRecTypeMap.get(budgetCap.RecordTypeId).getDeveloperName()) + budgetCap.Core_MDF_Budget_Type_nm__c) || budgetTypeToCampaignsList.get(budCapRecTypeToProg.get(budgetCapRecTypeMap.get(budgetCap.RecordTypeId).getDeveloperName()) + budgetCap.Core_MDF_Budget_Type_nm__c) == NULL){
+            if (budgetTypeToCampaignsList == NULL || budgetTypeToCampaignsList.size() == 0 || !budgetTypeToCampaignsList.containsKey(budCapRecTypeToProg.get(budgetCapRecTypeMap.get(budgetCap.RecordTypeId).getDeveloperName()) + budgetCap.Core_MDF_Budget_Type_nm__c) || budgetTypeToCampaignsList.get(budCapRecTypeToProg.get(budgetCapRecTypeMap.get(budgetCap.RecordTypeId).getDeveloperName()) + budgetCap.Core_MDF_Budget_Type_nm__c) == NULL){
                 budgetCap.Core_MDF_Claimed_Cap_amt__c = claimedCapAmount;
                 continue;
             }
-            //if(budgetTypeToCampaignsList != NULL && budgetTypeToCampaignsList.size()>0 && budgetTypeToCampaignsList.containsKey(budCapRecTypeToProg.get(budgetCapRecTypeMap.get(budgetCap.RecordTypeId).getDeveloperName()) + budgetCap.Core_MDF_Budget_Type_nm__c) &&
-            // budgetTypeToCampaignsList.get(budCapRecTypeToProg.get(budgetCapRecTypeMap.get(budgetCap.RecordTypeId).getDeveloperName()) + budgetCap.Core_MDF_Budget_Type_nm__c) != NULL){
+
                 // Looping over the campaigns
                 for(Campaign campaign : budgetTypeToCampaignsList.get(budCapRecTypeToProg.get(budgetCapRecTypeMap.get(budgetCap.RecordTypeId).getDeveloperName()) + budgetCap.Core_MDF_Budget_Type_nm__c))
                 {
+				
                     // If the campaign start date lies within Budget Cap's effective start date and end date - map that campaign with the budget cap id
-                    if(budgetCap.RecordTypeId != ipaBudTypeCapRecordtype || !(budgetCap.Core_MDF_Region_nm__c == campaign.Core_MDF_Host_Region_cd__c || budgetCap.Core_MDF_Region_nm__c == 'WW') || !(campaign.StartDate >= budgetCap.Core_MDF_Effective_Start_Date_Dt__c && campaign.StartDate <= budgetCap.Core_MDF_Effective_End_Date_Dt__c)) {
-                    	continue;
-                	}
-                    //if((budgetCap.RecordTypeId == ipaBudTypeCapRecordtype && (budgetCap.Core_MDF_Region_nm__c == campaign.Core_MDF_Host_Region_cd__c || (budgetCap.Core_MDF_Region_nm__c != campaign.Core_MDF_Host_Region_cd__c && (budgetCap.Core_MDF_Region_nm__c == 'WW' )))) && campaign.StartDate >= budgetCap.Core_MDF_Effective_Start_Date_Dt__c && campaign.StartDate <= budgetCap.Core_MDF_Effective_End_Date_Dt__c)
-                    //{
-                       if(budgetCapIdToCampaigns.containsKey(budgetCap.Id)){budgetCapIdToCampaigns.get(budgetCap.Id).add(campaign);                           
-                       }
-                       else{budgetCapIdToCampaigns.put(budgetCap.Id, new List<Campaign>{campaign});
-                       }
-                       // For specific campaign statuses , sum up the campaign's amount to finally assign it to budget cap's claimed cap amount field
-                       if(checkCampaignStatusForCapAmount(String.valueOf(campaign.Status), Double.valueOf(campaign.Core_MDF_Approval_Step_Counter_nbr__c)))
-                       {
-                           claimedCapAmount += (campaign.Core_MDF_Reimbursement_Amt__c != NULL) ? Double.valueOf(campaign.Core_MDF_Reimbursement_Amt__c) : 0;
-                       }
-                    //}
+                if(budgetCap.RecordTypeId != ipaBudTypeCapRecordtype || !(budgetCap.Core_MDF_Region_nm__c == campaign.Core_MDF_Host_Region_cd__c || budgetCap.Core_MDF_Region_nm__c == 'WW') || !(campaign.StartDate >= budgetCap.Core_MDF_Effective_Start_Date_Dt__c && campaign.StartDate <= budgetCap.Core_MDF_Effective_End_Date_Dt__c)) {
+                    continue;
                 }
-            //}
+                    
+                if(budgetCapIdToCampaigns.containsKey(budgetCap.Id)){
+                    budgetCapIdToCampaigns.get(budgetCap.Id).add(campaign);                           
+                }
+                else{
+                    budgetCapIdToCampaigns.put(budgetCap.Id, new List<Campaign>{campaign});
+                }
+                // For specific campaign statuses , sum up the campaign's amount to finally assign it to budget cap's claimed cap amount field
+                if(checkCampaignStatusForCapAmount(String.valueOf(campaign.Status),Double.valueOf(campaign.Core_MDF_Approval_Step_Counter_nbr__c))){
+                    claimedCapAmount += (campaign.Core_MDF_Reimbursement_Amt__c != NULL) ? Double.valueOf(campaign.Core_MDF_Reimbursement_Amt__c) : 0;
+                }
+                }
             // summed up campaign's amount of specific statuses will be assigned into Budget cap's claimed amount field
             budgetCap.Core_MDF_Claimed_Cap_amt__c = claimedCapAmount;
         }
@@ -454,7 +476,8 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
     
     public static void linkCampaignsToBudgetTypeCapOnUpdate(List<Core_MDF_Budget_Cap__c> budgetCapList){
         try{
-            if(mapOfCampaignsToBeUpdated == NULL){mapOfCampaignsToBeUpdated = new Map<Id, Campaign>();
+            if(mapOfCampaignsToBeUpdated == NULL){
+                mapOfCampaignsToBeUpdated = new Map<Id, Campaign>();
             }
             // Looping on the Budget caps 
             for(Core_MDF_Budget_Cap__c budgetCap : budgetCapList){                                
@@ -464,8 +487,9 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
                     // Getting the campaigns associated with the Budget cap Id
                     for(Campaign cmp : budgetCapIdToCampaigns.get(key)){
                         // Assigning Budget Cap lookup field with Budget Cap id 
-                        cmp.Core_MDF_Budget_Cap__c = budgetCap.Id;  mapOfCampaignsToBeUpdated.put(cmp.Id, cmp);                      
+                        cmp.Core_MDF_Budget_Cap__c = budgetCap.Id;                        
                         // Putting all campaigns in final map that will be updated                        
+                        mapOfCampaignsToBeUpdated.put(cmp.Id, cmp);
                     }
                 }
             }
@@ -476,7 +500,10 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
                 Database.executeBatch(updateCampaignbatch, campaignBatchSize);
             }
         }
-        catch(Exception exc){Core_MDF_CCP_UtilityClass.logError(exc);throw exc;}
+        catch(Exception exc){
+            Core_MDF_CCP_UtilityClass.logError(exc);
+            throw exc;
+        }
     } 
 
     /****************************************************************************************************************************************
@@ -507,9 +534,11 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
         for(Core_MDF_Budget_Cap__c budgetCap : newBudTypeCapList)
         {
             BudgetTypes.add(budgetCap.Core_MDF_Budget_Type_nm__c);
-            if(budgetCap.Core_MDF_Effective_Start_Date_Dt__c < minDate){minDate = budgetCap.Core_MDF_Effective_Start_Date_Dt__c;
+            if(budgetCap.Core_MDF_Effective_Start_Date_Dt__c < minDate){
+                minDate = budgetCap.Core_MDF_Effective_Start_Date_Dt__c;
             }
-            if(budgetCap.Core_MDF_Effective_End_Date_Dt__c > maxDate){ maxDate = budgetCap.Core_MDF_Effective_End_Date_Dt__c;
+            if(budgetCap.Core_MDF_Effective_End_Date_Dt__c > maxDate){
+                maxDate = budgetCap.Core_MDF_Effective_End_Date_Dt__c;
             }
             if(budgetCap.id != NULL){
                 budgetCapIds.add(budgetCap.id);
@@ -518,11 +547,11 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
                 progSet.add(budCapRecTypeToProg.get(budgetCapRecTypeMap.get(budgetCap.RecordTypeId).getDeveloperName()));
             }            
         }
-        
+        //Set<String> geoSet = new Set<String>{'APJ','ASMO','EMEA','PRC','WW'};  //and Core_MDF_Region_cd__c IN : geoSet
         
         // Querying IPA Campaigns with status not cancelled whose start lies between minimum budget cap start date 
         // and max budget cap end date from incoming list - use MDF config custom setting for status
-        for(Campaign campaign : [Select ID,StartDate,EndDate,Core_MDF_Program__c,Core_MDF_Opal_Budget_Type_Txt__c ,Core_MDF_Budget_Cap__c,Status,Core_MDF_Reimbursement_Amt__c,Core_MDF_Approval_Step_Counter_nbr__c,Core_MDF_Region_cd__c,Core_MDF_Host_Region_cd__c from Campaign
+        for(Campaign campaign : [Select ID,StartDate,EndDate,Core_MDF_Program__c,Core_MDF_Opal_Budget_Type_Txt__c ,Core_MDF_Budget_Cap__c,Status,Core_MDF_Reimbursement_Amt__c,Core_MDF_Approval_Step_Counter_nbr__c,Core_MDF_Region_cd__c,Core_MDF_Host_Region_cd__c,Core_MDF_Approval_Stage_nm__c from Campaign
                                  where Core_MDF_Program__c IN : progSet and status NOT IN:campStatusToExcludeForLinking and Core_MDF_Opal_Budget_Type_Txt__c  IN : BudgetTypes
                                  and ((StartDate >=: minDate AND StartDate <=: maxDate) and (Core_MDF_Budget_Cap__c =: NULL OR Core_MDF_Budget_Cap__c IN: budgetCapIds))])
         {
@@ -531,8 +560,10 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
                 if(!budgetTypesToCampaignList.containsKey(campaign.Core_MDF_Program__c + campaign.Core_MDF_Opal_Budget_Type_Txt__c )){
                     budgetTypesToCampaignList.put(campaign.Core_MDF_Program__c + campaign.Core_MDF_Opal_Budget_Type_Txt__c,new List<Campaign>{campaign});
                 }
-                else{budgetTypesToCampaignList.get(campaign.Core_MDF_Program__c + campaign.Core_MDF_Opal_Budget_Type_Txt__c ).add(campaign);
+                else{
+                    budgetTypesToCampaignList.get(campaign.Core_MDF_Program__c + campaign.Core_MDF_Opal_Budget_Type_Txt__c ).add(campaign);
                 }
+            
             
         }
         return budgetTypesToCampaignList;
@@ -544,7 +575,9 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
         Boolean isStatusReqdForClmdAmtSum = false;
         // Set the boolean to true for Campaign status for which campaign amount is going to be summed up  
         List<String> campaignStatusForClaimedCapAmt = Core_MDF_Configuration__c.getValues('CAMPAIGN_STATUS_FOR_BUDGETCAPAMT').Core_MDF_Value__c.split(',');                 
-        if(campaignStatusForClaimedCapAmt.contains(campaignStatus) ){isStatusReqdForClmdAmtSum = true;
+        if(campaignStatusForClaimedCapAmt.contains(campaignStatus) /*|| (campaignStatus == 'Pending Review'  && approvalStepCounterNo >= 1
+                                                                      )*/){
+            isStatusReqdForClmdAmtSum = true;
         }   
         return isStatusReqdForClmdAmtSum;
     }
@@ -566,6 +599,7 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
                     recordGeoShareList.add(new Core_MDF_RecordGeoShare(ipaBudgetCapRec.id, 'EMEA',null,program,ipaBudgetCapRec.Core_MDF_Budget_Type_nm__c));
                     recordGeoShareList.add(new Core_MDF_RecordGeoShare(ipaBudgetCapRec.id, 'PRC',null,program,ipaBudgetCapRec.Core_MDF_Budget_Type_nm__c));
                     recordGeoShareList.add(new Core_MDF_RecordGeoShare(ipaBudgetCapRec.id, 'ASMO',null,program,ipaBudgetCapRec.Core_MDF_Budget_Type_nm__c));
+                    //recordGeoShareList.add(new Core_MDF_RecordGeoShare(ipaBudgetCapRec.id, 'INDIA',null,program,ipaBudgetCapRec.Core_MDF_Budget_Type_nm__c));
                     //recordGeoShareList.add(new Core_MDF_RecordGeoShare(ipaBudgetCapRec.id, 'ASMO','LAR',program,ipaBudgetCapRec.Core_MDF_Budget_Type_nm__c));
                     //recordGeoShareList.add(new Core_MDF_RecordGeoShare(ipaBudgetCapRec.id, 'ASMO','NAR',program,ipaBudgetCapRec.Core_MDF_Budget_Type_nm__c));
                 }
@@ -601,14 +635,22 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
                 id recId = budgetTypeCap.id;
                 if(oldBudgetCapRec.containskey(recId) && oldBudgetCapRec.get(recId).RecordTypeId == ipaBudTypeCapRecordtype ){
                     //Owner or Geo Update check
-                    if(oldBudgetCapRec.get(recId).OwnerId != budgetTypeCap.OwnerId){ budgetCapUpdatedList.add(budgetTypeCap);
+                    if(oldBudgetCapRec.get(recId).OwnerId != budgetTypeCap.OwnerId){
+                    
+                        budgetCapUpdatedList.add(budgetTypeCap);
            		    }
+                     
                     if(oldBudgetCapRec.get(recId).Core_MDF_Region_nm__c != null && oldBudgetCapRec.get(recId).Core_MDF_Region_nm__c != budgetTypeCap.Core_MDF_Region_nm__c)
                     {
-                      budgetCapGeoUpdatedList.add(budgetTypeCap.id);budgetCapUpdatedList.add(budgetTypeCap);
-                    }}  }
+                      budgetCapGeoUpdatedList.add(budgetTypeCap.id);
+                      budgetCapUpdatedList.add(budgetTypeCap);
+                    }
+                }  
+            }
             List<Core_MDF_Budget_Cap__Share> existingSharedBudTypeCap =new list<Core_MDF_Budget_Cap__Share>([select id from Core_MDF_Budget_Cap__Share where ParentId IN : budgetCapGeoUpdatedList and RowCause = 'Manual']);
-            if(!existingSharedBudTypeCap.isEmpty()){delete existingSharedBudTypeCap; 
+           
+            if(!existingSharedBudTypeCap.isEmpty()){
+            	delete existingSharedBudTypeCap;
             }
             
             if(!budgetCapUpdatedList.isEmpty()){
@@ -649,10 +691,9 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
                 assignedPS.add(psa.PermissionSet.Name);
             }
             //ATHR - Deeply Nested if 16209
-            if(assignedPS == null || assignedPS.isEmpty()){
+            if(assignedPS.isEmpty()){
                 return;
             }
-            //if(!assignedPS.isEmpty()) {
                 //if yes then only run for loop to check for IUPGM for that user
                 for(Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgmRecord : [SELECT Id,Core_MDF_Channel_Program_id__c,Core_MDF_Region_cd__c,Core_MDF_Budget_Type_nm__c,/*Core_MDF_Budget_Type_txt__c,*/ Core_MDF_All_Budget_Type_Access_Ind__c,Core_MDF_GeoSubGeo_Budget_Type_nm__c,Core_MDF_Program_nm__c
                                                                          FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c 
@@ -667,14 +708,16 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
                         //If Geo from IUPGM is WW , creating keys for all geos ELSE (Program + respective geo) specific keys
                         switch on geo {
                         	when 'WW' {
-                            //if(geo == 'WW'){
-                            iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+'WW');
-                            iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+'APJ');
-                            iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+'PRC');
-                            iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+'EMEA');
-                            iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+'ASMO');
-                            //iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+'INDIA');
-                        }when else{iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+geo);}
+                            	iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+'WW');
+                            	iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+'APJ');
+                            	iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+'PRC');
+                            	iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+'EMEA');
+                            	iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+'ASMO');
+                            	//iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+'INDIA');
+                            }                        
+                        	when else {
+                            	iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+geo);
+                            }
                         }
                     }
                     continue;
@@ -682,66 +725,66 @@ public without sharing class Core_MDF_BudgetTypeCap_Utility {
                 if(iupgmRecord.Core_MDF_All_Budget_Type_Access_Ind__c || iupgmRecord.Core_MDF_GeoSubGeo_Budget_Type_nm__c == null){
                     continue;
                 }
-                //if(!iupgmRecord.Core_MDF_All_Budget_Type_Access_Ind__c && iupgmRecord.Core_MDF_GeoSubGeo_Budget_Type_nm__c != NULL){
+                
+                             //Map<String,set<String>> btToGeoMap = new Map<String,set<String>>();
+                             
                     for(String btList : iupgmRecord.Core_MDF_GeoSubGeo_Budget_Type_nm__c.split(';')){//ASMO-LAR->Global Ericsson Acceleration - MDF;APJ->Business Client Acceleration - MDF
                         //splitting the field as we get values for Geo And budget type
                         List<String> geoBTList = btList.split('->');// APJ->Data Centric Acceleration - MDF
-                        if(geoBTList == null || geoBTList.isEmpty() || geoBTList.size() <= 1){
+                        //ATHR - Deeply Nested if 16209
+                        if(geoBTList.size() <= 1){
                             continue;
                         }
-                        //if(!geoBTList.isEmpty() && geoBTList.size() > 1){
-                        	String geo = geoBTList[0];String budgetType = geoBTList[1];
+                        	String geo = geoBTList[0];
+                        	String budgetType = geoBTList[1];
+                        
                             // Intel Partner AllianceAPJData Centric Acceleration - MDF, Intel Partner AllianceASMOGlobal Ericsson Acceleration - MDF
                             //iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+geo.split('-')[0]+budgetType);///ASMO-LAR
-                             if(geo == 'WW'){iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+'WW'+budgetType);iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+'APJ'+budgetType);iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+'PRC'+budgetType);iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+'EMEA'+budgetType);iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+'ASMO'+budgetType);
-                            }else{iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+geo+budgetType);}
-                             //iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+geo+budgetType);
+                        	 iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+geo+budgetType);
                         	//to check if a budget type have all geo access
                         	//to create key for a single budget type and WW geo access
-                        	if(btToGeoMap.containsKey(budgetType)){btToGeoMap.get(budgetType).add(geo);}
-                            else{btToGeoMap.put(budgetType, new set<String>{geo});}
-                        //}
+                        	if(btToGeoMap.containsKey(budgetType)){
+                            	btToGeoMap.get(budgetType).add(geo);
+                        	}else{
+                            	btToGeoMap.put(budgetType, new set<String>{geo});
+                        	}
                     }
                     if(btToGeoMap != NULL && btToGeoMap.size()>0){
                         for(String bt : btToGeoMap.keySet()){
                             //if(btToGeoMap.containsKey(bt) && btToGeoMap.get(bt) != NULL){
-                                if(btToGeoMap.get(bt).contains('APJ') && btToGeoMap.get(bt).contains('EMEA') && btToGeoMap.get(bt).contains('PRC') && /*(btToGeoMap.get(bt).contains('ASMO-LAR') && btToGeoMap.get(bt).contains('ASMO-NAR'))||(*/btToGeoMap.get(bt).contains('ASMO')/*))*/){
+                                if(btToGeoMap.get(bt).contains('APJ') && btToGeoMap.get(bt).contains('EMEA') /*&& btToGeoMap.get(bt).contains('INDIA')*/ && btToGeoMap.get(bt).contains('PRC') && /*(btToGeoMap.get(bt).contains('ASMO-LAR') && btToGeoMap.get(bt).contains('ASMO-NAR'))||(*/btToGeoMap.get(bt).contains('ASMO')/*))*/){
                                     //key for a single budget type and WW geo access
                                     iupgmUniqueKeySet.add(String.valueOf(iupgmRecord.Core_MDF_Program_nm__c)+'WW'+bt);
                                 }
                             //}
                         }
                     }
-                //}
             }
             for(Core_MDF_Budget_Cap__c budgetTypeCapRec : ipaBudgetTypeCapList){
+                 
                 String combinationOfProgGeo = '';
                 String combinationOfProgGeoBudType = '';
+                //ATHR - Deeply Nested if 16209
                 if(budgetTypeCapRec.Core_MDF_Region_nm__c == null || budgetTypeCapRec.Core_MDF_Budget_Type_nm__c == null){
                     continue;
                 }
-                //if(budgetTypeCapRec.Core_MDF_Region_nm__c != null && budgetTypeCapRec.Core_MDF_Budget_Type_nm__c != null ){
                 	if(!(budCapRecTypeToProg.containsKey(budgetCapRecTypeMap.get(budgetTypeCapRec.RecordTypeId).getDeveloperName()) || budCapRecTypeToProg.get(budgetCapRecTypeMap.get(budgetTypeCapRec.RecordTypeId).getDeveloperName()) == NULL)){
                         continue;
                     }
-                //if(budCapRecTypeToProg.containsKey(budgetCapRecTypeMap.get(budgetTypeCapRec.RecordTypeId).getDeveloperName()) && budCapRecTypeToProg.get(budgetCapRecTypeMap.get(budgetTypeCapRec.RecordTypeId).getDeveloperName()) != NULL)
-                	//{	
                     	//string to contain (Program + Geo) key
                 		combinationOfProgGeo = (budCapRecTypeToProg.get(budgetCapRecTypeMap.get(budgetTypeCapRec.RecordTypeId).getDeveloperName()))+budgetTypeCapRec.Core_MDF_Region_nm__c;
                 		//String to contain (Program + Geo + BudgetType) key
                 		combinationOfProgGeoBudType = (budCapRecTypeToProg.get(budgetCapRecTypeMap.get(budgetTypeCapRec.RecordTypeId).getDeveloperName()))+budgetTypeCapRec.Core_MDF_Region_nm__c+budgetTypeCapRec.Core_MDF_Budget_Type_nm__c;
                 	
-                	//}
                     	//if iupgmUniqeKeySet is empty OR if its not empty and progGeo is not in that keySet and prgram+geo+budgetType key also not in the keySet
-                	//then throwing error
+                		//then throwing error
                 	if(iupgmUniqueKeySet.isEmpty() || (!iupgmUniqueKeySet.isEmpty() && !iupgmUniqueKeySet.contains(combinationOfProgGeo) && !iupgmUniqueKeySet.contains(combinationOfProgGeoBudType))){
                 	//comparing the budgetcap unique value with IUPGM unique value and displaying error message if it is not matching
                     	budgetTypeCapRec.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_BudgetCapFinUserRole_ErrorMsg'));
                 	}
-		//}
+              
             }
             
-            //}
         }catch(Exception ex){ Core_MDF_CCP_UtilityClass.logError(ex);}
     }
 }

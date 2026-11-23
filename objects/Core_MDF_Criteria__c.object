@@ -132,16 +132,22 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
-        <formFactor>Large</formFactor>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Core_MDF_Approval_Criteria_Record_Page</content>
         <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Core_MDF_Approval_Criteria_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
@@ -150,9 +156,9 @@
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
-    <enableHistory>false</enableHistory>
+    <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
-    <enableReports>false</enableReports>
+    <enableReports>true</enableReports>
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
@@ -162,6 +168,7 @@
         <defaultValue>false</defaultValue>
         <inlineHelpText>At least one active approver record should be created to make approval criteria active.</inlineHelpText>
         <label>Active</label>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -177,6 +184,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Approval Criteria Description</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -189,6 +197,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Approval Criteria Automation Refer Code</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>true</unique>
@@ -199,6 +208,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Approval Process</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -207,6 +217,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <fullName>Core_MDF_Approval_Type__c</fullName>
         <label>Approval Type</label>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -236,6 +247,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         </summaryFilterItems>
         <summaryForeignKey>Core_MDF_Approver__c.Core_MDF_Criteria__c</summaryForeignKey>
         <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Summary</type>
     </fields>
@@ -245,6 +257,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Field Name 10</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -255,6 +268,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Field Name 1</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -265,6 +279,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Field Name 2</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -275,6 +290,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Field Name 3</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -285,6 +301,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Field Name 4</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -295,6 +312,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Field Name 5</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -305,6 +323,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Field Name 6</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -315,6 +334,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Field Name 7</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -325,6 +345,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Field Name 8</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -335,6 +356,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Field Name 9</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -345,6 +367,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Number Of Steps</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -355,6 +378,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Object Type</label>
         <length>255</length>
         <required>true</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -363,6 +387,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <fullName>Core_MDF_Operator_10__c</fullName>
         <label>Operator 10</label>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -416,6 +441,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <fullName>Core_MDF_Operator_1__c</fullName>
         <label>Operator 1</label>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -469,6 +495,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <fullName>Core_MDF_Operator_2__c</fullName>
         <label>Operator 2</label>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -522,6 +549,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <fullName>Core_MDF_Operator_3__c</fullName>
         <label>Operator 3</label>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -575,6 +603,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <fullName>Core_MDF_Operator_4__c</fullName>
         <label>Operator 4</label>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -628,6 +657,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <fullName>Core_MDF_Operator_5__c</fullName>
         <label>Operator 5</label>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -681,6 +711,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <fullName>Core_MDF_Operator_6__c</fullName>
         <label>Operator 6</label>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -734,6 +765,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <fullName>Core_MDF_Operator_7__c</fullName>
         <label>Operator 7</label>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -787,6 +819,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <fullName>Core_MDF_Operator_8__c</fullName>
         <label>Operator 8</label>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -840,6 +873,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <fullName>Core_MDF_Operator_9__c</fullName>
         <label>Operator 9</label>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -895,6 +929,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Description</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -905,6 +940,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Value 10</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -915,6 +951,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Value 1</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -925,6 +962,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Value 2</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -935,6 +973,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Value 3</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -945,6 +984,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Value 4</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -955,6 +995,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Value 5</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -965,6 +1006,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Value 6</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -975,6 +1017,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Value 7</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -985,6 +1028,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Value 8</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -995,6 +1039,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <label>Value 9</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -1015,11 +1060,17 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <columns>Core_MDF_Operator_3__c</columns>
         <columns>Core_MDF_Value_3__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Active__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
         <label>All</label>
     </listViews>
     <nameField>
         <displayFormat>CRT-{0000}</displayFormat>
         <label>Criteria Name</label>
+        <trackHistory>true</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Approval Criteria</pluralLabel>

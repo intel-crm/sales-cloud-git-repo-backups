@@ -58,6 +58,6 @@
         }
     ],
     "code": "200",
-    "campaignName": "campaign test",
+    "campaignName": "Json campaign test",
     "campaignId": "70100000000000000C"
 }

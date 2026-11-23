@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Artificial Intelligence (AI)</fullName>
+        <default>false</default>
+        <label>Artificial Intelligence (AI)</label>
+    </customValue>
+    <customValue>
+        <fullName>Vision</fullName>
+        <default>false</default>
+        <label>Vision</label>
+    </customValue>
+    <customValue>
+        <fullName>Workload Consolidation</fullName>
+        <default>false</default>
+        <label>Workload Consolidation</label>
+    </customValue>
+    <customValue>
+        <fullName>Others</fullName>
+        <default>false</default>
+        <label>Others</label>
+    </customValue>
+    <description>Pick-list for Topics field on Campaign.</description>
+    <masterLabel>Topics</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

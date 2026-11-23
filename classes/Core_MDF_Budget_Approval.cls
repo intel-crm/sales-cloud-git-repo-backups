@@ -37,9 +37,20 @@ public without sharing class Core_MDF_Budget_Approval {
                            || isCustomPermissionAssigned('Core_MDF_CCP_Internal_DCF_MDF_Budget_Approver')
                            || isCustomPermissionAssigned('Core_MDF_CCP_Internal_IPA_Budget_Approver')
                            || isCustomPermissionAssigned('Core_MDF_Internal_EEF_Budget_Approver')
-                           || isCustomPermissionAssigned('Core_MDF_CCP_Internal_Co_GTM_Budget_Approver');
+                           || isCustomPermissionAssigned('Core_MDF_CCP_Internal_Co_GTM_Budget_Approver')
+                           || isCustomPermissionAssigned('Core_MDF_CCP_Internal_Co_Inv_Budget_Approver');
+
                     userPermissionApprovalBudget.isCustomPermissionAssigned = hasCustomPermission;
+
+                    // if(isCustomPermissionAssigned('Core_MDF_CCP_Internal_CCF_MDF_Budget_Approver') 
+                    //   || isCustomPermissionAssigned('Core_MDF_CCP_Internal_DCF_MDF_Budget_Approver')
+                    //   || isCustomPermissionAssigned('Core_MDF_CCP_Internal_IPA_Budget_Approver')
+                    //   || isCustomPermissionAssigned('Core_MDF_Internal_EEF_Budget_Approver')
+                    //   || isCustomPermissionAssigned('Core_MDF_CCP_Internal_Co_GTM_Budget_Approver')) {
+                    //      userPermissionApprovalBudget.isCustomPermissionAssigned = true;
+                    // }
                     userPermissionApprovalBudget.isBudgetApprover = Core_MDF_GeneralPurpose_UI_Utility.isRecordApprover(budgetval, UserInfo.getUserId());
+                    system.debug('userPermissionApprovalBudget@@'+userPermissionApprovalBudget); 
                 }
             } 
         }    
@@ -70,7 +81,8 @@ public without sharing class Core_MDF_Budget_Approval {
     @AuraEnabled
     public static String approveRejectBudget(UserPermissionApproval mapValues){
         List<Approval.ProcessWorkitemRequest> processWorkItemReqList = new  List<Approval.ProcessWorkitemRequest>();
-
+        // Highlight: Unused Local Variable - 14285
+        // string ANOTHER_USER_RESPONDED = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Another_User_Responded');
         String message = '';
         String budgetId = '';
         try{
@@ -96,17 +108,31 @@ public without sharing class Core_MDF_Budget_Approval {
                         //Avoid Deeply Nested IF Statements
                         Boolean isValidResult = processResult != null;
                         Boolean isSuccess = isValidResult && processResult.isSuccess();
-                        Boolean isFailure = isValidResult && !processResult.isSuccess();           
-                        message = isSuccess ? 'SUCCESS' : message;           
+                        Boolean isFailure = isValidResult && !processResult.isSuccess();
+            
+                        message = isSuccess ? 'SUCCESS' : message;
+            
                         // Use ternary to handle error logging
                         String errorlog = isFailure ? 'Approval failed for activiy ->' + processResult.getEntityId() + ';' : '';
-                        String errorDetails = '';                       
+                        String errorDetails = '';
+                        
                         // Handle errors in a loop - this still needs some form of condition
                         for(Database.Error errDet : (isFailure ? processResult.getErrors() : new List<Database.Error>())){
                             errorDetails += errDet.getMessage();
                             message = errDet.getMessage();
                         }
+
                         Core_MDF_CCP_UtilityClass.logErrorinLogObject(errorlog + errorDetails,'approveRejectActivity Method');return message;
+
+                        // if (processResult != null && processResult.isSuccess()){
+                        //     message = 'SUCCESS';
+                        // }
+                        // else if (processResult != null && !processResult.isSuccess()){
+                        //     string errorlog = 'Approval failed for activiy ->' + processResult.getEntityId() + ';' ; 
+                        //     for(Database.Error errDet : processResult.getErrors()){errorlog += errDet.getMessage();message = errDet.getMessage();
+                        //     } 
+                        // Core_MDF_CCP_UtilityClass.logErrorinLogObject(errorlog,'approveRejectActivity Method');return message;  
+                        // }
                     }
                 }
             } else {

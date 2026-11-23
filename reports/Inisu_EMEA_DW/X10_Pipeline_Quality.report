@@ -59,7 +59,7 @@
         <groupingColumn>Account.Core_Sales_Groups__c</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
-        <secondaryGroupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</secondaryGroupingColumn>
+        <secondaryGroupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</secondaryGroupingColumn>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -121,7 +121,7 @@
             <value>GMP France Sales Group,GMP Germany Sales Group,GMP Russia Sales Group,GMP UK Sales Group,GMP EMEA Sales Territory</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -142,7 +142,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>10 - Pipeline Quality</name>

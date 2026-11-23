@@ -109,7 +109,7 @@
     </filter>
     <format>Matrix</format>
     <groupingsAcross>
-        <dateGranularity>Month</dateGranularity>
+        <dateGranularity>Week</dateGranularity>
         <field>CLOSED_DATEONLY</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>

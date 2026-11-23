@@ -84,7 +84,6 @@ public with sharing class Core_MDF_Bulk_ReleaseBankDocHold {
      Description:        Bulk Release Hold logic called on click of Release Hold button,if record is less than or equal to 30 for normal processing
      @Added By:          Accenture - Bishal - 15/03/2021
      Modified By:        Date:       Changes:
-     RP                  Added Core_MDF_Has_Sub_Claims_Ind__c
      ******************************************************************************************************/
 
     public static void immediateReleaseBankDocHold(List<Id> claimIds){

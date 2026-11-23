@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DelegateGroup xmlns="http://soap.sforce.com/2006/04/metadata">
     <groups>IPS - Org Admin - PSG</groups>
-    <groups>PSG - Unassigned</groups>
+    <groups>PSG – Unassigned</groups>
     <groups>PSG-AP-Component/HSIO/IP</groups>
     <groups>PSG-AP-Manager</groups>
     <groups>PSG-AP-Shenzhen/Wuhan</groups>
     <groups>PSG-AP-unassigned</groups>
     <groups>PSG-ASMO-EMIF</groups>
     <groups>PSG-ASMO-Embedded</groups>
+    <groups>PSG-GUAD-SOCO</groups>
     <groups>PSG-ASMO-HSIO</groups>
     <groups>PSG-ASMO-IP</groups>
     <groups>PSG-ASMO-PRISM</groups>
@@ -57,7 +58,7 @@
     <groups>PSG-PG-IO</groups>
     <groups>PSG-PG-IP</groups>
     <groups>PSG-PG-Software</groups>
-    <groups>PSG-SH-Platform!</groups>
+    <groups>PSG-SH-Board-Design</groups>
     <groups>PSG-SJ-Board-Design</groups>
     <groups>PSG-SJ-CQE</groups>
     <groups>PSG-SJ-EMIF</groups>
@@ -71,26 +72,16 @@
     <groups>PSG-AP-Software/EMIF/Embedded</groups>
     <groups>PSG-ZBB</groups>
     <groups>PSG-SJ-DLA</groups>
+    <groups>PSG-GAE-PG</groups>
     <groups>PSG-EMEA-CQE</groups>
     <groups>PSG-PG-CQE</groups>
     <groups>PSG-ERMA-CQE</groups>
     <groups>PSG-eASIC-JP_Unassigned</groups>
-    <groups>PSG-eASIC-AP_Unassigned</groups>
+    <groups>PSG-eASIC-GAE_Unassigned</groups>
     <groups>PSG-eASIC-EMEA_Unassigned</groups>
     <groups>PSG-eASIC-ASMO-unassigned</groups>
     <groups>PSG-EMEA-DTC!</groups>
-    <groups>PSG-SJ-oneAPI!</groups>
-    <groups>PSG-BA-System!</groups>
-    <groups>PSG-BA-IP!</groups>
-    <groups>PSG-QRE</groups>
-    <groups>PSG-EMEA-FACR</groups>
-    <groups>PSG-NA-FACR</groups>
-    <groups>PSG-AP-FACR</groups>
-    <groups>PSG-GAE-FACR</groups>
-    <groups>PSG-JP-FACR</groups>
-    <groups>PSG-AP-review</groups>
     <label>IPS - Org Admin - PSG</label>
     <loginAccess>false</loginAccess>
     <roles>IPS Product OrgAdmin</roles>
-    <roles>EMP_11298293_Kenta_Ueda</roles>
 </DelegateGroup>

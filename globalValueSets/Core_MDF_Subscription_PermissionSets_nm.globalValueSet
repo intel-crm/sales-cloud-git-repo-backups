@@ -26,11 +26,6 @@
         <label>Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager</label>
     </customValue>
     <customValue>
-        <fullName>Core_MDF_CCP_Internal_Co_GTM_Business_Approver</fullName>
-        <default>false</default>
-        <label>Core_MDF_CCP_Internal_Co_GTM_Business_Approver</label>
-    </customValue>
-    <customValue>
         <fullName>Core_MDF_CCP_Internal_IPA_Acct_Mgr</fullName>
         <default>false</default>
         <label>Core_MDF_CCP_Internal_IPA_Acct_Mgr</label>
@@ -56,9 +51,105 @@
         <label>Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr</label>
     </customValue>
     <customValue>
-        <fullName>Core_MDF_Internal_CSC_User</fullName>
+        <fullName>Core_MDF_CCP_Internal_Co_GTM_Business_Approver</fullName>
         <default>false</default>
-        <label>Core_MDF_Internal_CSC_User</label>
+        <label>Core_MDF_CCP_Internal_Co_GTM_Business_Approver</label>
+    </customValue>
+    <customValue>
+        <fullName>PS - CCP Internal Proposal/Activity POR Approver</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CCP Internal Proposal/Activity POR Approver</label>
+    </customValue>
+    <customValue>
+        <fullName>PS - CCP Internal IPA Budget Manager</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CCP Internal IPA Budget Manager</label>
+    </customValue>
+    <customValue>
+        <fullName>PS - CCP Internal DCF Field Account Manager</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CCP Internal DCF Field Account Manager</label>
+    </customValue>
+    <customValue>
+        <fullName>PS - IPA Exception Reviewer</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>IPA Exception Reviewer</label>
+    </customValue>
+    <customValue>
+        <fullName>PR - Partner</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Partner</label>
+    </customValue>
+    <customValue>
+        <fullName>PS - CCP Internal IPA Finance User</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CCP Internal IPA Finance User</label>
+    </customValue>
+    <customValue>
+        <fullName>PS - CCP Internal DCF Marketing Account Manager</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CCP Internal DCF Marketing Account Manager</label>
+    </customValue>
+    <customValue>
+        <fullName>PS - CCP Internal RMF Activity Reviewer</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CCP Internal RMF Activity Reviewer</label>
+    </customValue>
+    <customValue>
+        <fullName>PS - IPA-MDF Proposal Approver L1 Manager</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>IPA-MDF Proposal Approver L1 Manager</label>
+    </customValue>
+    <customValue>
+        <fullName>PS - CCP Internal CCF MDF Payment Admin</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CCP Internal CCF MDF Payment Admin</label>
+    </customValue>
+    <customValue>
+        <fullName>PS - CCP Internal DCF MDF Payment Admin</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CCP Internal DCF MDF Payment Admin</label>
+    </customValue>
+    <customValue>
+        <fullName>PS - CCP Internal CCF MDF Budget Loader</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CCP Internal CCF MDF Budget Loader</label>
+    </customValue>
+    <customValue>
+        <fullName>CCP Internal CCF MDF Budget Approver</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CCP Internal CCF MDF Budget Approver</label>
+    </customValue>
+    <customValue>
+        <fullName>PS - CCP Internal DCF MDF Budget Approver</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CCP Internal DCF MDF Budget Approver</label>
+    </customValue>
+    <customValue>
+        <fullName>PS - CCP Internal DCF MDF Budget Loader</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CCP Internal DCF MDF Budget Loader</label>
+    </customValue>
+    <customValue>
+        <fullName>PS - CCP Internal Proposal/Activity L2 Approver</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CCP Internal Proposal/Activity L2 Approver</label>
     </customValue>
     <description>Applicable Roles for subscription based notification.</description>
     <masterLabel>Subscription Permission Sets</masterLabel>

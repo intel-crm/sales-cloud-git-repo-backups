@@ -1,0 +1,55 @@
+<template>
+    <div class="slds-p-around_medium">
+        
+        <!-- Title -->
+        <p class="slds-text-heading_small 
+                  slds-m-bottom_medium">
+            Please select a Record Type to continue
+        </p>
+        
+        <!-- Dropdown -->
+        <div class="slds-combobox_container">
+            <lightning-combobox
+                id="filterDropdown"
+                name="filterDropdown"
+                label="Choose Record Type"
+                value={selectedValue}
+                placeholder="--Select Record Type--"
+                options={options}
+                onchange={handleSelectionChange}
+                class="filter-dropdown">
+            </lightning-combobox>
+        </div>
+        
+        <!-- Selected Badge -->
+        <template if:true={hasSelectedValue}>
+            <div class="slds-m-top_small">
+                <span class="slds-badge slds-badge_lightest">
+                    Selected: {selectedLabel}
+                </span>
+            </div>
+        </template>
+        
+        <!-- Action Buttons -->
+        <div class="slds-grid slds-m-top_medium 
+                    slds-grid_align-end">
+            
+            <!-- Cancel Button -->
+            <lightning-button
+                label="Cancel"
+                variant="neutral"
+                onclick={handleCancel}
+                class="slds-m-right_small">
+            </lightning-button>
+            
+            <!-- Next Button -->
+            <lightning-button
+                label="Next"
+                variant="brand"
+                onclick={handleNext}
+                disabled={isNextDisabled}>
+            </lightning-button>
+            
+        </div>
+    </div>
+</template>

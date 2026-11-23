@@ -300,7 +300,11 @@
         <columns>UPDATEDBY_USER</columns>
         <columns>OWNER.LAST_NAME</columns>
         <columns>RECORDTYPE</columns>
-        <columns>PRM_Quantitative_Ind__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>All1</fullName>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -355,6 +359,6 @@
         </picklistValues>
     </recordTypes>
     <searchLayouts/>
-    <sharingModel>Read</sharingModel>
+    <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

@@ -85,13 +85,6 @@
             <operator>notEqual</operator>
             <value>On Hold – Review in Progress,On Hold – Government Authorization Needed</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Export_Compliance_Block__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>1</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>

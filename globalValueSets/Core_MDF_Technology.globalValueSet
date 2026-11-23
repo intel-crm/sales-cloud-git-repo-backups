@@ -71,16 +71,6 @@
         <label>Apollo Lake</label>
     </customValue>
     <customValue>
-        <fullName>Arrow Lake (ARL) Intel Core Ultra (Series 2)</fullName>
-        <default>false</default>
-        <label>Arrow Lake (ARL) Intel Core Ultra (Series 2)</label>
-    </customValue>
-    <customValue>
-        <fullName>Arrow Lake (ARL) Series 2</fullName>
-        <default>false</default>
-        <label>Arrow Lake (ARL) Series 2</label>
-    </customValue>
-    <customValue>
         <fullName>Bay Trail</fullName>
         <default>false</default>
         <label>Bay Trail</label>
@@ -124,11 +114,6 @@
         <fullName>Ci9</fullName>
         <default>false</default>
         <label>Ci9</label>
-    </customValue>
-    <customValue>
-        <fullName>Clearwater Forest</fullName>
-        <default>false</default>
-        <label>Clearwater Forest</label>
     </customValue>
     <customValue>
         <fullName>cnvrg.io</fullName>
@@ -226,16 +211,6 @@
         <label>dGPU Flex (PVC)</label>
     </customValue>
     <customValue>
-        <fullName>Diamond Rapids/16-ch</fullName>
-        <default>false</default>
-        <label>Diamond Rapids/16-ch</label>
-    </customValue>
-    <customValue>
-        <fullName>Diamond Rapids/8-ch</fullName>
-        <default>false</default>
-        <label>Diamond Rapids/8-ch</label>
-    </customValue>
-    <customValue>
         <fullName>Discrete graphics</fullName>
         <default>false</default>
         <label>Discrete graphics</label>
@@ -266,11 +241,6 @@
         <label>Elkhart Lake</label>
     </customValue>
     <customValue>
-        <fullName>Emerald Rapids</fullName>
-        <default>false</default>
-        <label>Emerald Rapids</label>
-    </customValue>
-    <customValue>
         <fullName>Endpoint Management Assisstant (EMA)</fullName>
         <default>false</default>
         <label>Endpoint Management Assistant (EMA)</label>
@@ -294,16 +264,6 @@
         <fullName>Gemini Lake</fullName>
         <default>false</default>
         <label>Gemini Lake</label>
-    </customValue>
-    <customValue>
-        <fullName>Granite Rapids-AP</fullName>
-        <default>false</default>
-        <label>Granite Rapids-AP</label>
-    </customValue>
-    <customValue>
-        <fullName>Granite Rapids-SP</fullName>
-        <default>false</default>
-        <label>Granite Rapids-SP</label>
     </customValue>
     <customValue>
         <fullName>Granulate</fullName>
@@ -349,11 +309,6 @@
         <fullName>Intel® Arc™ graphics</fullName>
         <default>false</default>
         <label>Intel® Arc™ graphics</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Aria® 10 PFGAs</fullName>
-        <default>false</default>
-        <label>Intel® Aria® 10 PFGAs</label>
     </customValue>
     <customValue>
         <fullName>Intel® Arria® 10 PFGAs</fullName>
@@ -436,6 +391,16 @@
         <label>Intel® Optane™ Memory w SSD</label>
     </customValue>
     <customValue>
+        <fullName>Intel® Pentium® Gold Processor</fullName>
+        <default>false</default>
+        <label>Intel® Pentium® Gold Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Processor (N/U Series)</fullName>
+        <default>false</default>
+        <label>Intel® Processor (N/U Series)</label>
+    </customValue>
+    <customValue>
         <fullName>Intel® RealSense™</fullName>
         <default>false</default>
         <label>Intel® RealSense™</label>
@@ -511,16 +476,6 @@
         <label>Kaby Lake - Y</label>
     </customValue>
     <customValue>
-        <fullName>Lunar Lake (LNL) Intel Core Ultra (Series 2)</fullName>
-        <default>false</default>
-        <label>Lunar Lake (LNL) Intel Core Ultra (Series 2)</label>
-    </customValue>
-    <customValue>
-        <fullName>Lunar Lake (LNL) Series 2</fullName>
-        <default>false</default>
-        <label>Lunar Lake (LNL) Series 2</label>
-    </customValue>
-    <customValue>
         <fullName>Meteor Lake (MTL)</fullName>
         <default>false</default>
         <label>Meteor Lake (MTL)</label>
@@ -539,11 +494,6 @@
         <fullName>Movidius VPU - Keem Bay</fullName>
         <default>false</default>
         <label>Movidius VPU - Keem Bay</label>
-    </customValue>
-    <customValue>
-        <fullName>Movidius VPU - Other</fullName>
-        <default>false</default>
-        <label>Movidius VPU - Other</label>
     </customValue>
     <customValue>
         <fullName>Movius VPU - Other</fullName>
@@ -619,11 +569,6 @@
         <fullName>P4</fullName>
         <default>false</default>
         <label>P4</label>
-    </customValue>
-    <customValue>
-        <fullName>Panther Lake</fullName>
-        <default>false</default>
-        <label>Panther Lake</label>
     </customValue>
     <customValue>
         <fullName>Parker Ridge - Atom C5xxx</fullName>
@@ -719,11 +664,6 @@
         <fullName>Sapphire Rapids</fullName>
         <default>false</default>
         <label>Sapphire Rapids</label>
-    </customValue>
-    <customValue>
-        <fullName>Sapphire Rapids - 4th Gen Xeon Scalable</fullName>
-        <default>false</default>
-        <label>Sapphire Rapids - 4th Gen Xeon Scalable</label>
     </customValue>
     <customValue>
         <fullName>Sapphire Rapids - HBM</fullName>
@@ -831,26 +771,6 @@
         <label>Wifi6</label>
     </customValue>
     <customValue>
-        <fullName>Wi-Fi 6</fullName>
-        <default>false</default>
-        <label>Wi-Fi 6</label>
-    </customValue>
-    <customValue>
-        <fullName>Wifi7</fullName>
-        <default>false</default>
-        <label>Wifi7</label>
-    </customValue>
-    <customValue>
-        <fullName>Wi-Fi 7</fullName>
-        <default>false</default>
-        <label>Wi-Fi 7</label>
-    </customValue>
-    <customValue>
-        <fullName>Wildcat Lake</fullName>
-        <default>false</default>
-        <label>Wildcat Lake</label>
-    </customValue>
-    <customValue>
         <fullName>Xeon</fullName>
         <default>false</default>
         <label>Xeon</label>
@@ -864,6 +784,81 @@
         <fullName>X Series</fullName>
         <default>false</default>
         <label>X Series</label>
+    </customValue>
+    <customValue>
+        <fullName>Emerald Rapids</fullName>
+        <default>false</default>
+        <label>Emerald Rapids</label>
+    </customValue>
+    <customValue>
+        <fullName>Wifi7</fullName>
+        <default>false</default>
+        <label>Wifi7</label>
+    </customValue>
+    <customValue>
+        <fullName>Lunar Lake (LNL) Series 2</fullName>
+        <default>false</default>
+        <label>Lunar Lake (LNL) Series 2</label>
+    </customValue>
+    <customValue>
+        <fullName>Arrow Lake (ARL) Series 2</fullName>
+        <default>false</default>
+        <label>Arrow Lake (ARL) Series 2</label>
+    </customValue>
+    <customValue>
+        <fullName>Lunar Lake (LNL) Intel Core Ultra (Series 2)</fullName>
+        <default>false</default>
+        <label>Lunar Lake (LNL) Intel Core Ultra (Series 2)</label>
+    </customValue>
+    <customValue>
+        <fullName>Arrow Lake (ARL) Intel Core Ultra (Series 2)</fullName>
+        <default>false</default>
+        <label>Arrow Lake (ARL) Intel Core Ultra (Series 2)</label>
+    </customValue>
+    <customValue>
+        <fullName>Panther Lake</fullName>
+        <default>false</default>
+        <label>Panther Lake</label>
+    </customValue>
+    <customValue>
+        <fullName>Wildcat Lake</fullName>
+        <default>false</default>
+        <label>Wildcat Lake</label>
+    </customValue>
+    <customValue>
+        <fullName>Wi-Fi 7</fullName>
+        <default>false</default>
+        <label>Wi-Fi 7</label>
+    </customValue>
+    <customValue>
+        <fullName>Wi-Fi 6</fullName>
+        <default>false</default>
+        <label>Wi-Fi 6</label>
+    </customValue>
+    <customValue>
+        <fullName>Granite Rapids-SP</fullName>
+        <default>false</default>
+        <label>Granite Rapids-SP</label>
+    </customValue>
+    <customValue>
+        <fullName>Granite Rapids-AP</fullName>
+        <default>false</default>
+        <label>Granite Rapids-AP</label>
+    </customValue>
+    <customValue>
+        <fullName>Clearwater Forest</fullName>
+        <default>false</default>
+        <label>Clearwater Forest</label>
+    </customValue>
+    <customValue>
+        <fullName>Diamond Rapids/16-ch</fullName>
+        <default>false</default>
+        <label>Diamond Rapids/16-ch</label>
+    </customValue>
+    <customValue>
+        <fullName>Diamond Rapids/8-ch</fullName>
+        <default>false</default>
+        <label>Diamond Rapids/8-ch</label>
     </customValue>
     <customValue>
         <fullName>Twin Lake</fullName>
@@ -1171,11 +1166,6 @@
         <label>Moon Lake</label>
     </customValue>
     <customValue>
-        <fullName>Razor Lake</fullName>
-        <default>false</default>
-        <label>Razor Lake</label>
-    </customValue>
-    <customValue>
         <fullName>vPro Fleet Services</fullName>
         <default>false</default>
         <label>vPro Fleet Services</label>
@@ -1196,28 +1186,26 @@
         <label>Intel® Xeon® 6 W Processors</label>
     </customValue>
     <customValue>
+        <fullName>Series 4 Intel® Core™ Ultra (Nova Lake)</fullName>
+        <default>false</default>
+        <label>Series 4 Intel® Core™ Ultra (Nova Lake)</label>
+    </customValue>
+    <customValue>
+        <fullName>Series 4 Intel® Core™ (Wildcat Lake Refresh)</fullName>
+        <default>false</default>
+        <label>Series 4 Intel® Core™ (Wildcat Lake Refresh)</label>
+    </customValue>
+    <customValue>
         <fullName>Intel® OptaneTM DC Persistent Memory</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>Intel® OptaneTM DC Persistent Memory</label>
     </customValue>
     <customValue>
-        <fullName>Arrow Lake (ARL) Intel Core Ultra Series 2</fullName>
+        <fullName>Sapphire Rapids - 4th Gen Xeon Scalable</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Arrow Lake (ARL) Intel Core Ultra Series 2</label>
-    </customValue>
-    <customValue>
-        <fullName>Lunar Lake (LNL) Intel Core Ultra Series 2</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Lunar Lake (LNL) Intel Core Ultra Series 2</label>
-    </customValue>
-    <customValue>
-        <fullName>Raptor Lake – U (RPL)  </fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Raptor Lake – U (RPL)  </label>
+        <label>Sapphire Rapids - 4th Gen Xeon Scalable</label>
     </customValue>
     <customValue>
         <fullName>Intel® OptaneTM DC SSDs</fullName>
@@ -1227,5 +1215,5 @@
     </customValue>
     <description>Technology Picklist values</description>
     <masterLabel>Technology</masterLabel>
-    <sorted>true</sorted>
+    <sorted>false</sorted>
 </GlobalValueSet>

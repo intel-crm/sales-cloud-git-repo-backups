@@ -240,9 +240,6 @@
             <sourceValues>
                 <sourceValue>Liang Zeng (Leon)</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>Fer Rodas Gomez</sourceValue>
-            </sourceValues>
             <value>WWRAE</value>
         </values>
         <values>
@@ -652,19 +649,10 @@
         </values>
     </buckets>
     <columns>
-        <field>CASE_ID</field>
-    </columns>
-    <columns>
         <field>CASE_NUMBER</field>
     </columns>
     <columns>
         <field>OWNER</field>
-    </columns>
-    <columns>
-        <field>OWNER_ROLE</field>
-    </columns>
-    <columns>
-        <field>Case.Core_IPS_Case_Owner_Email__c</field>
     </columns>
     <columns>
         <field>CREATED_DATE</field>
@@ -691,9 +679,6 @@
         <field>Case.Core_End_Customer__c</field>
     </columns>
     <columns>
-        <field>Case.Core_IPS_Project_Case__c</field>
-    </columns>
-    <columns>
         <field>Case.Core_IPS_Support_Level__c</field>
     </columns>
     <columns>
@@ -713,9 +698,6 @@
         <field>Case.Core_External_Issue_Subcategory__c</field>
     </columns>
     <columns>
-        <field>Case.Core_IPS_Date_Time_Close_Pending__c</field>
-    </columns>
-    <columns>
         <field>CLOSED_DATE</field>
     </columns>
     <columns>
@@ -725,13 +707,10 @@
         <field>Case.Core_Case_Resolution_Reason__c</field>
     </columns>
     <columns>
-        <field>Case.Core_IPS_Bug_Doc_Fix_ID__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_IPS_Knowledge_Base_Link__c</field>
-    </columns>
-    <columns>
         <field>Case.Core_Case_Co_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Date_Time_Close_Pending__c</field>
     </columns>
     <columns>
         <field>Case.Core_IPS_Escalated_Level__c</field>
@@ -761,30 +740,19 @@
         <field>Case.Core_IPS_Owner_Manager__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Case.Core_IPS_Age__c</field>
+        <field>BucketField_9253579</field>
     </columns>
     <columns>
-        <field>PRIORITY</field>
+        <field>BucketField_73295762</field>
     </columns>
     <columns>
-        <field>Case.Core_IPS_HC_Help_Needed__c</field>
+        <field>BucketField_57505999</field>
     </columns>
     <columns>
-        <field>Case.Core_Issue_Description__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_CaseType__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_IPS_Classification__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Case.Core_IPS_Minds__c</field>
+        <field>BucketField_34924917</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <booleanFilter>1 AND (2 or 4) AND 3</booleanFilter>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
             <columnToColumn>false</columnToColumn>
@@ -797,19 +765,26 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterOrEqual</operator>
-            <value>1/1/2023 12:00 AM</value>
+            <value>1/1/2019 12:00 AM</value>
         </criteriaItems>
         <criteriaItems>
-            <column>CREATED_DATE</column>
+            <column>Case.Core_Sub_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>lessThan</operator>
-            <value>1/1/2026 12:00 AM</value>
+            <operator>notEqual</operator>
+            <value>Invalid</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CLOSED_DATEONLY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>1/1/2019 12:00 AM</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>Export_IPS_cases</name>
+    <name>Export IPS cases</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -823,7 +798,7 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>CASE_NUMBER</sortColumn>
+    <sortColumn>BucketField_34924917</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>

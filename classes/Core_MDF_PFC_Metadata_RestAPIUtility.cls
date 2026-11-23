@@ -9,11 +9,13 @@ public without sharing class Core_MDF_PFC_Metadata_RestAPIUtility {
     public static final String PARTNER_FUND_CLAIM_OBJECT_API_NAME = 'PartnerFundClaim';
     public static final String CONFIG_USER_TYPE = 'External User';
     public static final String FIELD_VIEW_API_CREATE = 'API Create';
+    public static final String FIELD_VIEW_API_UPDATE = 'API Update';
     public static final String FIELD_CLAIM_SUBMITTER = 'Core_MDF_Claim_Submitter_Id__c';
     public static final String FIELD_BANK_LOOKUP     = 'Core_MDF_Bank__c';
     public static final String FIELD_CLAIM_COUNTRY   = 'Core_MDF_Country_Location_nm__c';
     public static final Map<String, Schema.SObjectField> PARTNER_FUND_CLAIM_FIELDS = PartnerFundClaim.SObjectType.getDescribe().fields.getMap();
     private static final Map<String, List<LabelValue>> PICKLIST_VALUE_CACHE = new Map<String, List<LabelValue>>();
+    private static final Map<String, Schema.DescribeFieldResult> FIELD_DESCRIBE_CACHE = new Map<String, Schema.DescribeFieldResult>();
     private static final Integer ID_LEN_15 = 15;
     private static final Integer ID_LEN_18 = 18;
     private static final String ACTIVITY_ID_PREFIX = '0RJ';
@@ -32,15 +34,21 @@ public without sharing class Core_MDF_PFC_Metadata_RestAPIUtility {
     public static final String ERROR_CODE_ESCALATION_NF  = '6006';
     public static final String ERROR_CODE_APP_ERROR      = '6007';
     public static final String ERROR_CODE_INVALID_CLAIM_TYPE ='6008';
+    public static final String ERROR_CODE_INVALID_CLAIM_ID = '6009';
+    public static final String ERROR_CODE_CLAIM_NOT_EDITABLE = '6010';
     public static final String PARAM_ACTIVITY_ID_OR_NUMBER = 'activityIdOrNumber';
     public static final String PARAM_CLAIM_TYPE = 'claimType';
     public static final String PARAM_ESCALATION_ID = 'escalationId';
     public static final String PARAM_PROGRAM_NAME = 'programName';
+    public static final String PARAM_CLAIM_ID = 'claimId';
+    public static final String PARAM_CLAIM_STATUS = 'claimStatus';
     public static final String PARAM_ACTION = 'action';
     public static final String ACTION_CREATE = 'create';
+    public static final String ACTION_UPDATE = 'update';
     public static final String FIELD_ACTIVITY_REQUEST_LOOKUP = 'RequestId';
+    public static final String FIELD_ESCALATION_ID = 'Core_MDF_Escalation_Id__c';
     public static final String FIELD_DOCUMENTS = 'documents';
-    public static final Set<String> VALID_PARAMS = new Set<String>{PARAM_ACTION, PARAM_CLAIM_TYPE, PARAM_ACTIVITY_ID_OR_NUMBER, PARAM_ESCALATION_ID, PARAM_PROGRAM_NAME};
+    public static final Set<String> VALID_PARAMS = new Set<String>{PARAM_ACTION, PARAM_CLAIM_TYPE, PARAM_ACTIVITY_ID_OR_NUMBER, PARAM_ESCALATION_ID, PARAM_PROGRAM_NAME, PARAM_CLAIM_ID, PARAM_CLAIM_STATUS};
     public static final Map<Schema.DisplayType, String> FLD_TYPE_MAP = new Map<Schema.DisplayType, String>{
         Schema.DisplayType.REFERENCE => 'Lookup',
         Schema.DisplayType.PICKLIST => 'Picklist',
@@ -53,8 +61,7 @@ public without sharing class Core_MDF_PFC_Metadata_RestAPIUtility {
         Schema.DisplayType.LONG => 'Decimal',
         Schema.DisplayType.PERCENT => 'Decimal',
         Schema.DisplayType.BOOLEAN => 'Boolean'
-    };
-    
+    };    
     
     /** Generic label/value pair used for picklists, submitters, banks, and countries. */
     public class LabelValue {
@@ -205,16 +212,8 @@ public without sharing class Core_MDF_PFC_Metadata_RestAPIUtility {
         if (String.isBlank(fieldView)) {
             return;
         }
-        List<Core_MDF_Custom_Layout_Configurations__c> configs = [
-            SELECT Id
-            FROM Core_MDF_Custom_Layout_Configurations__c
-            WHERE Core_MDF_Object_API_Name_txt__c = :PARTNER_FUND_CLAIM_OBJECT_API_NAME
-              AND Core_MDF_User_Type_nm__c = :CONFIG_USER_TYPE
-              AND Core_MDF_Record_Type_Name_txt__c = :progNm
-              AND API_Visibility__c = true
-            AND Core_MDF_Section_id__r.Core_MDF_Field_View_nm__c = :fieldView WITH SYSTEM_MODE
-            LIMIT 1
-        ];
+        List<Core_MDF_Custom_Layout_Configurations__c> configs = [SELECT Id FROM Core_MDF_Custom_Layout_Configurations__c WHERE Core_MDF_Object_API_Name_txt__c = :PARTNER_FUND_CLAIM_OBJECT_API_NAME
+              AND Core_MDF_User_Type_nm__c = :CONFIG_USER_TYPE AND Core_MDF_Record_Type_Name_txt__c = :progNm AND API_Visibility__c = true AND Core_MDF_Section_id__r.Core_MDF_Field_View_nm__c = :fieldView WITH SYSTEM_MODE LIMIT 1];
         if (configs.isEmpty()) { 
             return; 
         }
@@ -226,6 +225,9 @@ public without sharing class Core_MDF_PFC_Metadata_RestAPIUtility {
     private static String resolveFieldViewForAction(String action) {
         if (ACTION_CREATE.equalsIgnoreCase(action)) {
             return FIELD_VIEW_API_CREATE;
+        }
+        if (ACTION_UPDATE.equalsIgnoreCase(action)) {
+            return FIELD_VIEW_API_UPDATE;
         }
         return null;
     }
@@ -301,21 +303,21 @@ public without sharing class Core_MDF_PFC_Metadata_RestAPIUtility {
                 }
             }
             List<Core_MDF_Account_Bank_Mapping__c> mappings = [SELECT Core_MDF_Bank__c, Core_MDF_Bank__r.Name, Core_MDF_Bank__r.Core_MDF_Supplier_Number__c FROM Core_MDF_Account_Bank_Mapping__c WHERE Core_MDF_Account__c = :accountId AND Core_MDF_Active_ind__c = true AND Core_MDF_Bank__r.Core_MDF_Bank_Status__c IN :bankStatusSet];
-            Map<String, String> bankMap = new Map<String, String>();
+            Map<Id, LabelValue> banksById = new Map<Id, LabelValue>();
             for (Core_MDF_Account_Bank_Mapping__c row : mappings) {
-                if (row.Core_MDF_Bank__c == null || String.isBlank(row.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c)) { 
+                if (row.Core_MDF_Bank__c == null || String.isBlank(row.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c)) {
                     continue; 
                 }
                 String supplierNumber = row.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c.trim();
                 String bankLabel = String.isNotBlank(row.Core_MDF_Bank__r.Name) ? row.Core_MDF_Bank__r.Name.trim() : supplierNumber;
-                if (!bankMap.containsKey(supplierNumber)) { 
-                    bankMap.put(supplierNumber, bankLabel); 
+                if (!banksById.containsKey(row.Core_MDF_Bank__c)) {
+                    banksById.put(row.Core_MDF_Bank__c, new LabelValue(bankLabel, supplierNumber));
                 }
             }
-            List<String> orderedSupplierNumbers = new List<String>(bankMap.keySet());
-            orderedSupplierNumbers.sort();
-            for (String supplierNumber : orderedSupplierNumbers) { 
-                values.add(new LabelValue(bankMap.get(supplierNumber), supplierNumber)); 
+            List<Id> bankIds = new List<Id>(banksById.keySet());
+            bankIds.sort();
+            for (Id bankId : bankIds) {
+                values.add(banksById.get(bankId));
             }
         } catch (Exception ex) { 
             Core_MDF_CCP_UtilityClass.logError(ex); 
@@ -333,7 +335,7 @@ public without sharing class Core_MDF_PFC_Metadata_RestAPIUtility {
         List<LabelValue> values = new List<LabelValue>();
         try {
             if (PARTNER_FUND_CLAIM_FIELDS.containsKey(fieldAPIName)) {
-                Schema.DescribeFieldResult fd = PARTNER_FUND_CLAIM_FIELDS.get(fieldAPIName).getDescribe();
+                Schema.DescribeFieldResult fd = getFieldDescribe(fieldAPIName);
                 if (fd.getType() == Schema.DisplayType.PICKLIST || fd.getType() == Schema.DisplayType.MULTIPICKLIST) {
                     for (Schema.PicklistEntry entry : fd.getPicklistValues()) { 
                         values.add(new LabelValue(entry.getLabel(), entry.getValue())); 
@@ -344,7 +346,16 @@ public without sharing class Core_MDF_PFC_Metadata_RestAPIUtility {
             Core_MDF_CCP_UtilityClass.logError(ex); 
         }
         PICKLIST_VALUE_CACHE.put(fieldAPIName, copyLabelValues(values));
-        return copyLabelValues(values);
+        return values;
+    }
+
+    private static Schema.DescribeFieldResult getFieldDescribe(String fieldAPIName) {
+        if (FIELD_DESCRIBE_CACHE.containsKey(fieldAPIName)) {
+            return FIELD_DESCRIBE_CACHE.get(fieldAPIName);
+        }
+        Schema.DescribeFieldResult fieldDescribe = PARTNER_FUND_CLAIM_FIELDS.get(fieldAPIName).getDescribe();
+        FIELD_DESCRIBE_CACHE.put(fieldAPIName, fieldDescribe);
+        return fieldDescribe;
     }
 
     private static List<LabelValue> copyLabelValues(List<LabelValue> src) {

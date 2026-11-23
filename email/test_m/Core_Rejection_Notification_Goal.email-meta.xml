@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Rejection Notification Goal</name>
+    <style>none</style>
+    <subject>Rejection Notification: Goal</subject>
+    <textOnly>{!User.Name} has rejected your request for approval on the following Solution Milestone: 
+
+{!Core_Goal__c.Link}  Solution Milestone ID: {!Core_Goal__c.Name}  
+
+Please click this link to make any necessary changes and resubmit as needed.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

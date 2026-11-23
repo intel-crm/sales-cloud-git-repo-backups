@@ -20,6 +20,36 @@
         <default>false</default>
         <label>Recovery</label>
     </customValue>
+    <customValue>
+        <fullName>Case</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Case</label>
+    </customValue>
+    <customValue>
+        <fullName>ESC - Escalation</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Escalation</label>
+    </customValue>
+    <customValue>
+        <fullName>OPP- Opportunity</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Opportunity</label>
+    </customValue>
+    <customValue>
+        <fullName>CMP - Campaign</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Campaign</label>
+    </customValue>
+    <customValue>
+        <fullName>PAY - Payment</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Payment</label>
+    </customValue>
     <masterLabel>Subscription Modules</masterLabel>
     <sorted>false</sorted>
 </GlobalValueSet>

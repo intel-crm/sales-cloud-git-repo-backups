@@ -7,8 +7,8 @@
 Accenture Hemapriyadharshini         24/4/2023         To send email to Exception Reviewer for IPA based on IUPGM users
 *****************************************************************************************************************************************/
 public without sharing class Core_MDF_ExceptionEmailHandler{
-    private static string EXCEPTION_PENDING_REVIEW_STATUS = 'Pending Review'; 
-    public static void sendEmailToExceptionReviewer(List<Core_MDF_Exception__c> excpList){
+private static string EXCEPTION_PENDING_REVIEW_STATUS = 'Pending Review'; 
+public static void sendEmailToExceptionReviewer(List<Core_MDF_Exception__c> excpList){
         try{
             List<Core_MDF_Exception__c> expPendingReviewList = new List<Core_MDF_Exception__c>();
             for(Core_MDF_Exception__c excp : excpList){ 
@@ -20,21 +20,26 @@ public without sharing class Core_MDF_ExceptionEmailHandler{
             List<String> hostGeoList = new List<String>();
             List<String> budgetTypeList = new List<String>();
             List<String> accountIdList = new List<String>();
-
+            // Highlight: Unused Local Variable - 14285 - Indira 
+            // List<String> geoList = new List<String>();
             Map<String, set<Id>> iupgmGeoUserIdsMap = new Map<String, set<Id>>();
             Map<String, set<Id>> iupgmGeoBudgetUserIdsMap  = new Map<String, set<Id>>();
             String iupgmGeoKey ='';
             String geo='';
             String role= '';
             String iupgmGeoBudgetKey ='';
-
+            // Highlight: Unused Local Variable - 14285 - Indira
+            // String exceptionGeoKey ='';
+            // String exceptionBudgetKey ='';
             
             Boolean sendEmailOnce = true;
             String region='';
             String program='';
-
+            // Highlight: Unused Local Variable - 14285 - Indira
+            // Boolean allIUPGMAccountCheck = false;
             string objName = System.Label.Core_MDF_ObjectName;
-
+            // Highlight: Unused Local Variable - 14285 - Indira
+            // List<Id> userIds = new List<Id>();
             IUPGMInputWrapper iupgmInputs = new IUPGMInputWrapper();
             for(Core_MDF_Exception__c excp : expPendingReviewList){
                 region = (String.isNotBlank(excp.Core_MDF_HostRegion_txt__c)) ? excp.Core_MDF_HostRegion_txt__c : excp.Core_MDF_Region_txt__c;
@@ -57,15 +62,18 @@ public without sharing class Core_MDF_ExceptionEmailHandler{
                 for(Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm : iupgmList){
                     String prgAcc = (iupgm.Core_MDF_Account_id__c != null) ? iupgm.Core_MDF_Program_nm__c+iupgm.Core_MDF_Account_id__c : iupgm.Core_MDF_Program_nm__c;
                     String prgAccRegBudType = (iupgm.Core_MDF_Account_id__c != null) ? iupgm.Core_MDF_Program_nm__c+iupgm.Core_MDF_Account_id__c : iupgm.Core_MDF_Program_nm__c;
-              for(string regionIupgm :iupgm.Core_MDF_Region_cd__c.split(';')){
+            
+                    for(string regionIupgm :iupgm.Core_MDF_Region_cd__c.split(';')){
                         // US - TWC702-14285: Flatten nested IFs (no logic change)
                         // Handle case when user has all budget type access
                         if(iupgm.Core_MDF_All_Budget_Type_Access_Ind__c && iupgm.Core_MDF_Region_cd__c != null){
             
                                 iupgmGeoKey = prgAcc+regionIupgm;
+            
                                 if(!iupgmGeoUserIdsMap.containsKey(iupgmGeoKey)){
-                                    iupgmGeoUserIdsMap.put(iupgmGeoKey,new set<Id>());  
+                                    iupgmGeoUserIdsMap.put(iupgmGeoKey,new set<Id>());
                                 }
+            
                                 iupgmGeoUserIdsMap.get(iupgmGeoKey).add(iupgm.Core_MDF_User_id__c);
                             continue; // Skip to next iteration since we handled this case
                         }
@@ -76,15 +84,19 @@ public without sharing class Core_MDF_ExceptionEmailHandler{
                                 for(string budgetTypeIupgm :iupgm.Core_MDF_Budget_Type_nm__c.split(';')){
             
                                     iupgmGeoBudgetKey = prgAccRegBudType+regionIupgm+budgetTypeIupgm;
+            
                                     if(!iupgmGeoBudgetUserIdsMap.containsKey(iupgmGeoBudgetKey)){
-                                        iupgmGeoBudgetUserIdsMap.put(iupgmGeoBudgetKey,new set<Id>());  
+                                        iupgmGeoBudgetUserIdsMap.put(iupgmGeoBudgetKey,new set<Id>());
                                     }
+            
                                     iupgmGeoBudgetUserIdsMap.get(iupgmGeoBudgetKey).add(iupgm.Core_MDF_User_id__c);
                             }
                         }
                     }
                 }
             }
+            // Highlight: Unused Local Variable - 14285 - Indira
+           // List<string> regList = new List<String>{region};
                 for(Core_MDF_Exception__c exp : expPendingReviewList){
                     set<Id> userIdSet =  new Set<Id>();
                     List<Id> userIdList =  new List<Id>();

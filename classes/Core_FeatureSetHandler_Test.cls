@@ -50,7 +50,7 @@ public class Core_FeatureSetHandler_Test{
         insert lstTriggerExecution;
         
         // Construct the Opportunity instances
-        lstOpportunity = Core_Test_Utility.createOpportunity(100);
+        lstOpportunity = Core_Test_Utility.Core_Opportunity(100);
         
         // Insert the intialized Opportunity 
         Database.SaveResult[] lstSaveResultCS = Database.insert(lstOpportunity, false);
@@ -118,7 +118,7 @@ public class Core_FeatureSetHandler_Test{
 
         //System.assertEquals(lstOpportunityFacts[0].Core_Entry_SPP_US__c,'value0');
                 
-        //Database.DeleteResult[] lsDeletetOppFeatureResults = Database.Delete(lstOpportunityFeature, false);
+        Database.DeleteResult[] lsDeletetOppFeatureResults = Database.Delete(lstOpportunityFeature, false);
         
     }
     
@@ -146,7 +146,9 @@ public class Core_FeatureSetHandler_Test{
         
         // Insert the intialized Feature
         Database.SaveResult[] lstFeatureResults = Database.insert(lstFeature, false);
-                
+        
+        System.debug('----------'+lstFeature);
+        
         // Construct the Feature Header instances
         lstFeatureHeader = Core_Test_Utility.CreateFeatureHeader(80);
         

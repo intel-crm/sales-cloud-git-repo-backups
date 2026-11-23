@@ -3,10 +3,13 @@
     <actionCalls>
         <name>Claim_notification_to_claim_submitter_on_Pending_Clarifiction</name>
         <label>Claim notification to claim submitter on Pending Clarifiction</label>
-        <locationX>556</locationX>
-        <locationY>5837</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_20</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>objectName</name>
@@ -44,8 +47,8 @@
     <actionCalls>
         <name>Claim_notification_to_claim_submitter_when_claim_is_approved</name>
         <label>Claim notification to claim submitter when claim is approved</label>
-        <locationX>1046</locationX>
-        <locationY>1338</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -88,10 +91,13 @@
     <actionCalls>
         <name>Claim_notification_to_claim_submitter_when_claim_is_rejected_during_approval</name>
         <label>Claim notification to claim submitter when claim is rejected during approval</label>
-        <locationX>1671</locationX>
-        <locationY>5832</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_21</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>objectName</name>
@@ -129,10 +135,13 @@
     <actionCalls>
         <name>ClaimNotification_for_Hold_during_PIC_for_Internal_user</name>
         <label>Claim Notification for Hold during PIC for Internal user</label>
-        <locationX>1657</locationX>
-        <locationY>1449</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_22</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>objectName</name>
@@ -170,10 +179,13 @@
     <actionCalls>
         <name>ClaimNotification_for_Hold_during_PIC_for_Partner_user</name>
         <label>ClaimNotification for Hold during PIC for Partner user</label>
-        <locationX>1669</locationX>
-        <locationY>1909</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_23</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>objectName</name>
@@ -211,8 +223,8 @@
     <actionCalls>
         <name>ClaimNotification_for_PIC_pass</name>
         <label>ClaimNotification for PIC pass</label>
-        <locationX>50</locationX>
-        <locationY>648</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -261,8 +273,8 @@
     <actionCalls>
         <name>ClaimNotification_on_Adjustment_Cancellation_to_Internal_User</name>
         <label>ClaimNotification on Adjustment Cancellation to Internal User</label>
-        <locationX>1723</locationX>
-        <locationY>3196</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -305,10 +317,13 @@
     <actionCalls>
         <name>ClaimNotification_On_Hold_For_Internal_Users</name>
         <label>ClaimNotification On Hold For Internal Users</label>
-        <locationX>1660</locationX>
-        <locationY>1225</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_24</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>objectName</name>
@@ -346,10 +361,13 @@
     <actionCalls>
         <name>ClaimNotification_On_Hold_For_Partner_Users</name>
         <label>ClaimNotification On Hold For Partner Users</label>
-        <locationX>1660</locationX>
-        <locationY>1676</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_25</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>objectName</name>
@@ -387,8 +405,8 @@
     <actionCalls>
         <name>ClaimNotification_Pending_Available_Fund_For_Internal_Users</name>
         <label>ClaimNotification Pending Available Fund For Internal Users</label>
-        <locationX>1651</locationX>
-        <locationY>2238</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -431,8 +449,8 @@
     <actionCalls>
         <name>ClaimNotification_Pending_Available_Fund_For_Partner_Users</name>
         <label>Claim Notification Pending Available Fund For Partner Users</label>
-        <locationX>1671</locationX>
-        <locationY>2546</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -475,10 +493,13 @@
     <actionCalls>
         <name>ClaimNotification_to_Internal_Users_on_Claim_Status_Closed</name>
         <label>ClaimNotification to Internal Users on Claim Status Closed</label>
-        <locationX>1707</locationX>
-        <locationY>4478</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_26</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>objectName</name>
@@ -516,10 +537,13 @@
     <actionCalls>
         <name>Core_MDF_Send_Email_to_Intel_Verifier</name>
         <label>Send Email to Intel Verifier</label>
-        <locationX>906</locationX>
-        <locationY>862</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>Core_MDF_DetermineEmailRecipients</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_27</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>permissionSetName</name>
@@ -569,10 +593,13 @@
     <actionCalls>
         <name>Denied_notification_to_Claim_Submitter</name>
         <label>Denied notification to Claim Submitter</label>
-        <locationX>1668</locationX>
-        <locationY>5544</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>PartnerFundClaim.Core_MDF_Legacy_Before_Payment_Maximum_Attempts_Reached</actionName>
         <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_28</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
@@ -586,8 +613,8 @@
     <actionCalls>
         <name>Notification_on_Adjustment_Cancellation_Partner</name>
         <label>Notification on Adjustment Cancellation Partner</label>
-        <locationX>1694</locationX>
-        <locationY>2864</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -630,10 +657,13 @@
     <actionCalls>
         <name>Notification_on_Claim_Status_is_Closed_Partner</name>
         <label>Notification_on_Claim_Status_is_Closed_Partner</label>
-        <locationX>1695</locationX>
-        <locationY>4223</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_29</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>objectName</name>
@@ -671,8 +701,8 @@
     <actionCalls>
         <name>Notify_RSM_Account_Managers</name>
         <label>Notify RSM Account Managers on PIC Pass</label>
-        <locationX>692</locationX>
-        <locationY>1117</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -709,10 +739,13 @@
     <actionCalls>
         <name>Send_Email_to_Account_Managers</name>
         <label>Send Email to Account Managers</label>
-        <locationX>1062</locationX>
-        <locationY>50</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>Core_MDF_DetermineEmailRecipients</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_30</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>category</name>
@@ -768,10 +801,13 @@
     <actionCalls>
         <name>Send_Final_Notification</name>
         <label>Send_Final_Notification</label>
-        <locationX>1689</locationX>
-        <locationY>5268</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>PartnerFundClaim.Core_MDF_Legacy_Post_Payment_Maximum_Attempts_Reached</actionName>
         <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_31</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
@@ -785,10 +821,13 @@
     <actionCalls>
         <name>Send_Notification_to_Claim_Owner</name>
         <label>Send Notification to Claim Owner</label>
-        <locationX>1701</locationX>
-        <locationY>4761</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>Core_MDF_PIC_SendEmailToClaimOwner</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_32</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>claimIds</name>
@@ -802,10 +841,13 @@
     <actionCalls>
         <name>Send_Notification_to_ClaimOwner</name>
         <label>Send Notification to Claim Owner</label>
-        <locationX>1696</locationX>
-        <locationY>5008</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>Core_MDF_PIC_SendEmailToClaimOwner</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_33</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>claimIds</name>
@@ -819,8 +861,8 @@
     <actionCalls>
         <name>Submit_CoGTM_Claim_for_Approval_Process</name>
         <label>Submit CoGTM Claim for Approval Process</label>
-        <locationX>903</locationX>
-        <locationY>588</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>submit</actionName>
         <actionType>submit</actionType>
         <connector>
@@ -852,8 +894,8 @@
     <actionCalls>
         <name>Submit_IPA_Outcome_based_Claim_for_Approval_Process</name>
         <label>Submit IPA Outcome based Claim for Approval Process</label>
-        <locationX>1064</locationX>
-        <locationY>206</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>submit</actionName>
         <actionType>submit</actionType>
         <connector>
@@ -887,8 +929,8 @@
     <assignments>
         <name>IntelVerifier_Id_Assigment</name>
         <label>IntelVerifier Id Assigment</label>
-        <locationX>906</locationX>
-        <locationY>721</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>IntelVerifierId</assignToReference>
             <operator>Add</operator>
@@ -903,8 +945,8 @@
     <assignments>
         <name>Recipient_Id_assignment</name>
         <label>Recipient Id assignment</label>
-        <locationX>734</locationX>
-        <locationY>360</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>RecipientId</assignToReference>
             <operator>Add</operator>
@@ -919,8 +961,8 @@
     <assignments>
         <name>Update_Sub_Claim_Owner_to_FLAO_User</name>
         <label>Update Sub Claim Owner to FLAO User</label>
-        <locationX>1194</locationX>
-        <locationY>573</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>SubClaimRecord.OwnerId</assignToReference>
             <operator>Assign</operator>
@@ -942,8 +984,8 @@
     <decisions>
         <name>Cancel_Adj_Req_if_Claim_is_Cancelled</name>
         <label>Cancel Adj Req if Claim is Cancelled</label>
-        <locationX>1200</locationX>
-        <locationY>3482</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>If_Claim_is_Cancelled_Denied_for_Payment_Admins</targetReference>
         </defaultConnector>
@@ -981,8 +1023,8 @@
     <decisions>
         <name>Check_If_adjustment_Owned_by_Internal_User_is_Cancelled</name>
         <label>Check If adjustment Owned by Internal User is Cancelled</label>
-        <locationX>1200</locationX>
-        <locationY>3195</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>Cancel_Adj_Req_if_Claim_is_Cancelled</targetReference>
         </defaultConnector>
@@ -1048,8 +1090,8 @@
     <decisions>
         <name>Check_if_and_Adjustment_is_cancelled</name>
         <label>Check if and Adjustment is cancelled</label>
-        <locationX>1196</locationX>
-        <locationY>2873</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>Check_If_adjustment_Owned_by_Internal_User_is_Cancelled</targetReference>
         </defaultConnector>
@@ -1108,8 +1150,8 @@
     <decisions>
         <name>CoGTM_IPA_outcome_Claim_is_approved</name>
         <label>CoGTM/IPA outcome based Claim is approved</label>
-        <locationX>927</locationX>
-        <locationY>1062</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>Core_MDF_If_Claim_Status_is_on_Bank_Hold_for_Payment_Admins</targetReference>
         </defaultConnector>
@@ -1231,8 +1273,8 @@
     <decisions>
         <name>CoGTM_IPA_Outcome_Claim_status_goes_to_Resubmission_Required</name>
         <label>CoGTM/IPA outcome based Claim status goes to Resubmission Required</label>
-        <locationX>1197</locationX>
-        <locationY>5833</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>IPA_Outcome_based_to_Pending_Clarification</targetReference>
         </defaultConnector>
@@ -1298,8 +1340,8 @@
     <decisions>
         <name>Core_MDF_If_Claim_is_Queued_for_Hold_For_Internal_Users</name>
         <label>If Claim is Queued for Hold For Internal Users</label>
-        <locationX>1190</locationX>
-        <locationY>1454</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>If_Claim_Status_is_On_Hold_For_Partner_Users</targetReference>
         </defaultConnector>
@@ -1610,8 +1652,8 @@
     <decisions>
         <name>Core_MDF_If_Claim_Status_is_on_Bank_Hold_for_Payment_Admins</name>
         <label>If Claim Status is on Bank Hold for Payment Admins</label>
-        <locationX>1190</locationX>
-        <locationY>979</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>Core_MDF_If_Claim_Status_is_On_Hold_For_Internal_Users</targetReference>
         </defaultConnector>
@@ -1663,8 +1705,8 @@
     <decisions>
         <name>Core_MDF_If_Claim_Status_is_On_Hold_For_Internal_Users</name>
         <label>If Claim Status is On Hold For Internal Users</label>
-        <locationX>1189</locationX>
-        <locationY>1226</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>Core_MDF_If_Claim_is_Queued_for_Hold_For_Internal_Users</targetReference>
         </defaultConnector>
@@ -1807,8 +1849,8 @@
     <decisions>
         <name>Core_MDF_If_Claim_Status_is_On_Pending_Available_Fund_For_Internal_Users</name>
         <label>If Claim Status is On Pending Available Fund For Internal Users</label>
-        <locationX>1193</locationX>
-        <locationY>2232</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>Core_MDF_If_Claim_Status_is_On_Pending_Available_Fund_For_Partner_Users</targetReference>
         </defaultConnector>
@@ -1881,8 +1923,8 @@
     <decisions>
         <name>Core_MDF_If_Claim_Status_is_On_Pending_Available_Fund_For_Partner_Users</name>
         <label>If Claim Status is On Pending Available Fund For Partner Users</label>
-        <locationX>1189</locationX>
-        <locationY>2550</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>Check_if_and_Adjustment_is_cancelled</targetReference>
         </defaultConnector>
@@ -1955,8 +1997,8 @@
     <decisions>
         <name>If_Amount_change_on_claim_for_Payment_Admins</name>
         <label>If Amount change on claim for Payment Admins</label>
-        <locationX>1197</locationX>
-        <locationY>3998</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>if_Claim_is_Closed_for_External_Users</targetReference>
         </defaultConnector>
@@ -2050,8 +2092,8 @@
     <decisions>
         <name>If_Claim_is_Cancelled_Denied_for_Payment_Admins</name>
         <label>If Claim is Cancelled/Denied for Payment Admins</label>
-        <locationX>1198</locationX>
-        <locationY>3745</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>If_Amount_change_on_claim_for_Payment_Admins</targetReference>
         </defaultConnector>
@@ -2117,15 +2159,15 @@
     <decisions>
         <name>if_Claim_is_Closed_for_External_Users</name>
         <label>if Claim is Closed for External Users</label>
-        <locationX>1196</locationX>
-        <locationY>4227</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>if_Claim_is_Closed_for_Internal_Users</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>SendNotification</name>
-            <conditionLogic>1 AND 2 AND 3 AND (4 OR 5) AND 6</conditionLogic>
+            <conditionLogic>1 AND 2 AND 3 AND (4 OR 5)</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Core_MDF_Status__c</leftValueReference>
                 <operator>IsChanged</operator>
@@ -2161,13 +2203,6 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
-            <conditions>
-                <leftValueReference>$Record.Core_MDF_Claim_Id__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
             <connector>
                 <targetReference>Notification_on_Claim_Status_is_Closed_Partner</targetReference>
             </connector>
@@ -2177,15 +2212,15 @@
     <decisions>
         <name>if_Claim_is_Closed_for_Internal_Users</name>
         <label>if Claim is Closed for Internal Users</label>
-        <locationX>1193</locationX>
-        <locationY>4491</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>If_Non_Legacy_Claim_Status_is_in_Resubmission_Required</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>SendEmailNotification</name>
-            <conditionLogic>1 AND 2 AND 3 AND (4 OR 5) AND 6</conditionLogic>
+            <conditionLogic>1 AND 2 AND 3 AND (4 OR 5)</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Core_MDF_Status__c</leftValueReference>
                 <operator>IsChanged</operator>
@@ -2221,13 +2256,6 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
-            <conditions>
-                <leftValueReference>$Record.Core_MDF_Claim_Id__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
             <connector>
                 <targetReference>ClaimNotification_to_Internal_Users_on_Claim_Status_Closed</targetReference>
             </connector>
@@ -2237,8 +2265,8 @@
     <decisions>
         <name>If_Claim_is_Queued_for_Hold_For_Partner_Users</name>
         <label>If Claim is Queued for Hold For Partner Users</label>
-        <locationX>1187</locationX>
-        <locationY>1914</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>Core_MDF_If_Claim_Status_is_On_Pending_Available_Fund_For_Internal_Users</targetReference>
         </defaultConnector>
@@ -2549,8 +2577,8 @@
     <decisions>
         <name>If_Claim_Status_is_On_Hold_For_Partner_Users</name>
         <label>If Claim Status is On Hold For Partner Users</label>
-        <locationX>1188</locationX>
-        <locationY>1679</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>If_Claim_is_Queued_for_Hold_For_Partner_Users</targetReference>
         </defaultConnector>
@@ -2686,8 +2714,8 @@
     <decisions>
         <name>If_Legacy_Claim_Status_is_in_Denied_and_Maximum_Attempts_Reached</name>
         <label>If Legacy Claim Status is in &apos;Denied&apos; and Maximum Attempts Reached</label>
-        <locationX>1197</locationX>
-        <locationY>5559</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>CoGTM_IPA_Outcome_Claim_status_goes_to_Resubmission_Required</targetReference>
         </defaultConnector>
@@ -2739,8 +2767,8 @@
     <decisions>
         <name>If_Legacy_Claim_Status_is_in_Paid_and_Maximum_Attempts_Reached</name>
         <label>If Legacy Claim Status is in &apos;Paid&apos; and Maximum Attempts Reached</label>
-        <locationX>1194</locationX>
-        <locationY>5279</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>If_Legacy_Claim_Status_is_in_Denied_and_Maximum_Attempts_Reached</targetReference>
         </defaultConnector>
@@ -2792,8 +2820,8 @@
     <decisions>
         <name>If_Legacy_Claim_Status_is_Resubmission_Required_or_Paid_and_Resubmission_Require</name>
         <label>If Legacy Claim Status is &apos;Resubmission Required&apos; or &apos;Paid and Resubmission Required&apos;</label>
-        <locationX>1190</locationX>
-        <locationY>5014</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>If_Legacy_Claim_Status_is_in_Paid_and_Maximum_Attempts_Reached</targetReference>
         </defaultConnector>
@@ -2866,8 +2894,8 @@
     <decisions>
         <name>If_Non_Legacy_Claim_Status_is_in_Resubmission_Required</name>
         <label>If Non-Legacy Claim Status is in &apos;Resubmission Required&apos;</label>
-        <locationX>1192</locationX>
-        <locationY>4775</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>If_Legacy_Claim_Status_is_Resubmission_Required_or_Paid_and_Resubmission_Require</targetReference>
         </defaultConnector>
@@ -2947,8 +2975,11 @@
     <decisions>
         <name>IPA_Outcome_based_to_Pending_Clarification</name>
         <label>IPA Outcome based to Pending Clarification</label>
-        <locationX>868</locationX>
-        <locationY>5835</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_34</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>SendPEndingClarificationEmail</name>
@@ -3004,8 +3035,8 @@
     <decisions>
         <name>Notify_RSM_Account_Managers_on_PIC_Pass</name>
         <label>Notify RSM Account Managers on PIC Pass</label>
-        <locationX>282</locationX>
-        <locationY>830</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>CoGTM_IPA_outcome_Claim_is_approved</targetReference>
         </defaultConnector>
@@ -3050,8 +3081,8 @@
     <decisions>
         <name>NotifyClaimSubmittersonPICPass</name>
         <label>Notify Claim Submitters on PIC Pass</label>
-        <locationX>426</locationX>
-        <locationY>455</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>CoGTM_IPA_outcome_Claim_is_approved</targetReference>
         </defaultConnector>
@@ -3135,8 +3166,8 @@
     <decisions>
         <name>Submit_Co_GTM_Claim_for_Approval</name>
         <label>Submit Co-GTM Claim for Approval</label>
-        <locationX>1005</locationX>
-        <locationY>367</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>Recipient_Id_assignment</targetReference>
         </defaultConnector>
@@ -3265,6 +3296,101 @@
         </rules>
     </decisions>
     <description>Notification Emails on Claim Status Changes. Cancel Adjustment Request when Adjustment Claim is Cancelled.</description>
+    <ends>
+        <name>END_ELEMENT_20</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_21</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_22</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_23</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_24</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_25</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_26</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_27</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_28</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_29</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_30</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_31</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_32</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_33</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_34</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_35</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_36</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_37</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_38</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
     <environments>Default</environments>
     <formulas>
         <name>IntelVerifierIdValue</name>
@@ -3285,6 +3411,14 @@
 ), 
 {!$Record.OwnerId})</expression>
     </formulas>
+    <formulas>
+        <name>Subclaim_Recipient_Id</name>
+        <dataType>String</dataType>
+        <expression>IF(CONTAINS(TEXT({!$Record.CreatedBy.UserType}), $Label.Core_MDF_Partner_User_Type), 
+{!$Record.CreatedById}, 
+{!$Record.Core_MDF_Claim_Submitter_Id__c}
+)</expression>
+    </formulas>
     <interviewLabel>Core_MDF_Claim_Notifications {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_MDF_Claim_Notifications</label>
     <processMetadataValues>
@@ -3296,7 +3430,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -3309,8 +3443,11 @@
     <recordUpdates>
         <name>Cancel_Adj_Req</name>
         <label>Cancel Adj Req</label>
-        <locationX>1662</locationX>
-        <locationY>3477</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_37</targetReference>
+        </connector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Core_MDF_Adjustment_Claim_Nbr__c</field>
@@ -3337,13 +3474,16 @@
     <recordUpdates>
         <name>Update_Claim_Records</name>
         <label>Update Claim Records</label>
-        <locationX>1194</locationX>
-        <locationY>707</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_38</targetReference>
+        </connector>
         <inputReference>SubClaimRecord</inputReference>
     </recordUpdates>
     <start>
-        <locationX>1665</locationX>
-        <locationY>258</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <connector>
             <targetReference>Submit_Co_GTM_Claim_for_Approval</targetReference>
         </connector>
@@ -3355,8 +3495,8 @@
     <subflows>
         <name>Core_MDF_Send_Notification_to_Payment_Admins</name>
         <label>Send Notification to Payment Admins</label>
-        <locationX>1658</locationX>
-        <locationY>995</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <connector>
             <targetReference>Core_MDF_If_Claim_Status_is_On_Hold_For_Internal_Users</targetReference>
         </connector>
@@ -3402,8 +3542,11 @@
     <subflows>
         <name>Send_Notification_to_PaymentAdmins_on_Claim_amount_change</name>
         <label>Send Notification to PaymentAdmins on Claim amount change</label>
-        <locationX>1697</locationX>
-        <locationY>3998</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_35</targetReference>
+        </connector>
         <flowName>Claim_Notification_to_Payment_Admins_on_Bank_Document_Hold</flowName>
         <inputAssignments>
             <name>BankDocumentHoldInd</name>
@@ -3446,8 +3589,11 @@
     <subflows>
         <name>Send_Notification_to_PaymentAdmins_when_Claim_is_Cancelled</name>
         <label>Send Notification to PaymentAdmins when Claim is Cancelled</label>
-        <locationX>1700</locationX>
-        <locationY>3735</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_36</targetReference>
+        </connector>
         <flowName>Claim_Notification_to_Payment_Admins_on_Bank_Document_Hold</flowName>
         <inputAssignments>
             <name>BankDocumentHoldInd</name>

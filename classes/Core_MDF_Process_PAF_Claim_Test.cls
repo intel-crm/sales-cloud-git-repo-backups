@@ -178,8 +178,9 @@ Accenture – VD        18-Dec-2019              Refactored to follow best pract
         
         Core_MDF_Bank__c bankPAF = Core_MDF_CCP_TestDataUtility.createBank(accIntel.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1231231230');      
         
-         //creating ABM for indiaBank
-        Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(accCoMarketing.Id,bankPAF.Id,true);
+         //creating ABM for indiaBank 
+        // Highlight: Unused Local Variable - Indira
+       // Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(accCoMarketing.Id,bankPAF.Id,true);
         test.stopTest(); 
 
         }
@@ -203,7 +204,8 @@ Accenture – VD              18-Dec-2019        Refactored to follow best pract
         User usr = [select id,email from User where email='clmcase@example.com'];
         PartnerFundRequest pfRequest= [Select id from PartnerFundRequest where title = 'Test Activity1'];
         Core_MDF_Bank__c bankPAF = [Select id from Core_MDF_Bank__c ];
-        List<PartnerFundClaim> pfcList = new List<PartnerFundClaim>();
+        // Highlight: Unused Local Variable - Indira
+       // List<PartnerFundClaim> pfcList = new List<PartnerFundClaim>();
         
        /* PartnerFundClaim pfClaim = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, pfRequest.Id, System.today(), System.today(), 500.00, System.today(),bankPAF.Id, true);
         pfclaim.Core_MDF_Status__c = Label.Core_MDF_Status_Cancelled;

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>49.0</apiVersion>
+    <apiVersion>63.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>Core_MDF_Add_it_to_PFRShare_Record</name>
         <label>Add it to PFRShare Record</label>
-        <locationX>550</locationX>
+        <locationX>631</locationX>
         <locationY>155</locationY>
         <assignmentItems>
             <assignToReference>sPFRShareTemp.ParentId</assignToReference>
@@ -35,7 +35,7 @@
     <assignments>
         <name>Core_MDF_Add_sPFRShareTemp_to_sCollPFRShareToBeInserted</name>
         <label>Add sPFRShareTemp to sCollPFRShareToBeInserted</label>
-        <locationX>795</locationX>
+        <locationX>876</locationX>
         <locationY>254</locationY>
         <assignmentItems>
             <assignToReference>sCollPFRShareToBeInserted</assignToReference>
@@ -51,7 +51,7 @@
     <assignments>
         <name>Core_MDF_Make_the_PFRShare_Record_as_Blank</name>
         <label>Make the PFRShare Record as Blank</label>
-        <locationX>552</locationX>
+        <locationX>633</locationX>
         <locationY>253</locationY>
         <assignmentItems>
             <assignToReference>sPFRShareTemp.ParentId</assignToReference>
@@ -81,8 +81,11 @@
     <decisions>
         <name>Core_MDF_Check_if_sCollPFRShareToBeInserted_has_values</name>
         <label>Check if sCollPFRShareToBeInserted has values</label>
-        <locationX>308</locationX>
+        <locationX>389</locationX>
         <locationY>364</locationY>
+        <defaultConnector>
+            <targetReference>Core_MDF_Create_log_entry_records</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_sCollPFRShareToBeInserted_is_NOT_EMPTY</name>
@@ -103,8 +106,11 @@
     <decisions>
         <name>Core_MDF_Check_if_sCollPGMList_is_NOT_NULL</name>
         <label>Check if sCollPGMList is NOT NULL</label>
-        <locationX>308</locationX>
+        <locationX>389</locationX>
         <locationY>155</locationY>
+        <defaultConnector>
+            <targetReference>Core_MDF_Creates_log_entry_record</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_sCollPGMList_is_NOT_NULL</name>
@@ -125,8 +131,11 @@
     <decisions>
         <name>Core_MDF_Check_if_vIntelAccountId_is_NOT_NULL</name>
         <label>Check if vIntelAccountId is NOT NULL</label>
-        <locationX>99</locationX>
+        <locationX>180</locationX>
         <locationY>31</locationY>
+        <defaultConnector>
+            <targetReference>Core_MDF_Creates_log_entry_records</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_if_vIntelAccountId_is_NOT_NULL</name>
@@ -145,12 +154,31 @@
         </rules>
     </decisions>
     <description>This flow will share the PFR records with Internal Account Managers group.</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Stores the Flow name, Decision name and Account Record ID</description>
+        <name>Core_MDF_Details1</name>
+        <dataType>String</dataType>
+        <expression>&quot;Flow : &quot;+{!Core_MDF_Flow_Name} +&quot;, Decision : &quot;+{!Core_MDF_Decision_Name1} +&quot;, Record ID : &quot;+{!vPFRId}</expression>
+    </formulas>
+    <formulas>
+        <description>Stores the information of Flow name, Decision name and PGM list ID</description>
+        <name>Core_MDF_Details2</name>
+        <dataType>String</dataType>
+        <expression>&quot;Flow : &quot;+{!Core_MDF_Flow_Name} +&quot;, Decision : &quot;+{!Core_MDF_Decision_Name2} +&quot;, Record ID : &quot;+{!vPFRId}</expression>
+    </formulas>
+    <formulas>
+        <description>Stores the information of Flow name, Decision name and PFR share ID</description>
+        <name>Core_MDF_Details3</name>
+        <dataType>String</dataType>
+        <expression>&quot;Flow : &quot;+{!Core_MDF_Flow_Name} +&quot;, Decision : &quot;+{!Core_MDF_Decision_Name3} +&quot;, Record ID : &quot;+{!vPFRId}</expression>
+    </formulas>
     <interviewLabel>Core_MDF_CreatePFRShareForInternalAccountManagers {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_MDF_CreatePFRShareForInternalAccountManagers</label>
     <loops>
         <name>Core_MDF_Loop_through_sCollPGMList</name>
         <label>Loop through sCollPGMList</label>
-        <locationX>308</locationX>
+        <locationX>389</locationX>
         <locationY>253</locationY>
         <assignNextValueToReference>sPGM</assignNextValueToReference>
         <collectionReference>sCollPGMList</collectionReference>
@@ -162,18 +190,30 @@
             <targetReference>Core_MDF_Check_if_sCollPFRShareToBeInserted_has_values</targetReference>
         </noMoreValuesConnector>
     </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordCreates>
         <name>Core_MDF_Insert_sCollPFRShareToBeInserted</name>
         <label>Insert sCollPFRShareToBeInserted</label>
-        <locationX>309</locationX>
+        <locationX>390</locationX>
         <locationY>488</locationY>
         <inputReference>sCollPFRShareToBeInserted</inputReference>
     </recordCreates>
     <recordLookups>
         <name>Core_MDF_Fetch_the_PGM_records_0</name>
         <label>Fetch the PGM records</label>
-        <locationX>99</locationX>
+        <locationX>180</locationX>
         <locationY>155</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -202,6 +242,13 @@
             </value>
         </filters>
         <filters>
+            <field>Core_MDF_Region_cd__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
             <field>Core_MDF_Type_of_Access__c</field>
             <operator>EqualTo</operator>
             <value>
@@ -212,8 +259,192 @@
         <outputReference>sCollPGMList</outputReference>
         <queriedFields>Core_MDF_Group_Id__c</queriedFields>
     </recordLookups>
-    <startElementReference>Core_MDF_Check_if_vIntelAccountId_is_NOT_NULL</startElementReference>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Core_MDF_Check_if_vIntelAccountId_is_NOT_NULL</targetReference>
+        </connector>
+    </start>
     <status>Active</status>
+    <subflows>
+        <description>Creates the log entry records</description>
+        <name>Core_MDF_Create_log_entry_records</name>
+        <label>Create log entry records</label>
+        <locationX>572</locationX>
+        <locationY>369</locationY>
+        <flowName>Core_MDF_FL_Log_Errors_From_Flows</flowName>
+        <inputAssignments>
+            <name>Core_MDF_Details</name>
+            <value>
+                <elementReference>Core_MDF_Details3</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_Message</name>
+            <value>
+                <elementReference>Core_MDF_Decision_Name3</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_Origin</name>
+            <value>
+                <elementReference>Core_MDF_Flow_Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_Severity</name>
+            <value>
+                <elementReference>Core_MDF_Severity</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_When</name>
+            <value>
+                <elementReference>Core_MDF_DateTime</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>Creates the log entry records</description>
+        <name>Core_MDF_Creates_log_entry_record</name>
+        <label>Creates log entry records</label>
+        <locationX>528</locationX>
+        <locationY>99</locationY>
+        <flowName>Core_MDF_FL_Log_Errors_From_Flows</flowName>
+        <inputAssignments>
+            <name>Core_MDF_Details</name>
+            <value>
+                <elementReference>Core_MDF_Details2</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_Message</name>
+            <value>
+                <elementReference>Core_MDF_Decision_Name2</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_Origin</name>
+            <value>
+                <elementReference>Core_MDF_Flow_Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_Severity</name>
+            <value>
+                <elementReference>Core_MDF_Severity</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_When</name>
+            <value>
+                <elementReference>Core_MDF_DateTime</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>This Sub flow will create the log entry records</description>
+        <name>Core_MDF_Creates_log_entry_records</name>
+        <label>Creates log entry records</label>
+        <locationX>362</locationX>
+        <locationY>32</locationY>
+        <flowName>Core_MDF_FL_Log_Errors_From_Flows</flowName>
+        <inputAssignments>
+            <name>Core_MDF_Details</name>
+            <value>
+                <elementReference>Core_MDF_Details1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_Message</name>
+            <value>
+                <elementReference>Core_MDF_Decision_Name1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_Origin</name>
+            <value>
+                <elementReference>Core_MDF_Flow_Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_Severity</name>
+            <value>
+                <elementReference>Core_MDF_Severity</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_When</name>
+            <value>
+                <elementReference>Core_MDF_DateTime</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <variables>
+        <description>Stores the Date and Time value</description>
+        <name>Core_MDF_DateTime</name>
+        <dataType>DateTime</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <elementReference>$Flow.CurrentDateTime</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <description>Stores the Decision Name</description>
+        <name>Core_MDF_Decision_Name1</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>Core_MDF_Check_if_vIntelAccountId_is_NOT_NULL</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>Core_MDF_Decision_Name2</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>Core_MDF_Check_if_sCollPGMList_is_NOT_NULL</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>Core_MDF_Decision_Name3</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>Core_MDF_Check_if_sCollPFRShareToBeInserted_has_values</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Stores the Flow Name</description>
+        <name>Core_MDF_Flow_Name</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>Core_MDF_CreatePFRShareForInternalAccountManagers Flow</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Stores the Severity value</description>
+        <name>Core_MDF_Severity</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>Critical</stringValue>
+        </value>
+    </variables>
     <variables>
         <description>This will contain all the PFR Share records to be inserted.</description>
         <name>sCollPFRShareToBeInserted</name>

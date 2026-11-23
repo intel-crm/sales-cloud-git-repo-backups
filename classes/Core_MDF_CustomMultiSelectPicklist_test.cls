@@ -64,9 +64,7 @@ public class Core_MDF_CustomMultiSelectPicklist_test {
             update budget;
             PartnerFundAllocation allocation = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Allocation New',budget,acc2,200.0,true);
             //added SupportslegacyProgram='Yes'
-            Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 13','Gaming','Intel® Core™ i7 Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today(), System.today().addDays(15), 10000, 'Always Connected PC', acc2.Id,'Desktop', false); 
-            camp.Core_MDF_Activity_Category_Type__c = null;
-            insert camp;
+            Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 13','Gaming','Intel® Core™ i7 Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today(), System.today().addDays(15), 10000, 'Always Connected PC', acc2.Id,'Desktop', true); 
             
             PartnerFundRequest testPartnerFundRequest = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(String.valueof(camp.Id), 
                                                                                             Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
@@ -83,6 +81,8 @@ public class Core_MDF_CustomMultiSelectPicklist_test {
             testPartnerFundRequest.Core_MDF_Start_Date__c = system.today();
             testPartnerFundRequest.Core_MDF_End_Date__c  = system.today();
             testPartnerFundRequest.Core_MDF_Country_nm__c = 'India';
+            testPartnerFundRequest.Core_MDF_ActivityCategory__c='';
+            testPartnerFundRequest.Core_MDF_Activity_Types__c='';
             insert testPartnerFundRequest;
             Assert.areEqual('India', testPartnerFundRequest.Core_MDF_Country_nm__c);
             Core_MDF_CustomMultiSelectPicklist.fetchmultipicklist('PartnerFundRequest', 'Core_MDF_Country_nm__c', testPartnerFundRequest.Id);

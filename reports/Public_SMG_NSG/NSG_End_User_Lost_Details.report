@@ -55,7 +55,7 @@
         <field>Opportunity.Core_Last_Activity_Date__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>Product2.Core_Product_Series__c</field>
@@ -85,7 +85,7 @@
     </columns>
     <filter>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -104,6 +104,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Deal: Sell-through,Deal: Sell-to</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Lost</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

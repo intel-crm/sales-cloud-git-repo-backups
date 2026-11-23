@@ -118,6 +118,7 @@ public class Core_MDF_UpdateAllocationIdOnPFR implements Database.Batchable<sObj
             
             //Create Id to store DCF recordtype Id
             Id dcfPFARecordTypeId = recordTypeInfo.get(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Zero_Bdgt_Alloctn_Rcrd_Type_DCF')).getRecordTypeId();
+
             resSchema = NULL;
             recordTypeInfo = NULL;
             resSchema = PartnerFundRequest.sObjectType.getDescribe();

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_MDF_AuditCaseProcess_Test</testClassName>
+    <testClassName>Core_MDF_AuditDocumentHelper_Test</testClassName>
+    <testClassName>Core_MDF_AuditSelectionHelper_Test</testClassName>
+    <testClassName>Core_MDF_ClaimReviewCaseProcess_Test</testClassName>
+    <testClassName>Core_MDF_ClaimReviewCaseShare_Test</testClassName>
+    <testClassName>Core_MDF_ClaimReviewChecklist_Test</testClassName>
+    <testClassName>Core_MDF_DetermineEmailRecipients_Test</testClassName>
+    <testClassName>Core_MDF_Escalation_ServiceHandler_Test</testClassName>
+    <testClassName>Core_MDF_ExternalUserSharing_Test</testClassName>
+    <testClassName>Core_MDF_HistoryController_Test</testClassName>
+    <testClassName>Core_MDF_InactivateIUPGM_Test</testClassName>
+    <testClassName>Core_MDF_InactivateIUPGMScheduler_Test</testClassName>
+    <testClassName>Core_MDF_IUPGM_ServiceHandler_Test</testClassName>
+    <testClassName>Core_MDF_ProcessCCP_Case_Test</testClassName>
+</ApexTestSuite>

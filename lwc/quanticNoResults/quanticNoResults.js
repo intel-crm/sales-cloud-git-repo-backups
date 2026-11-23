@@ -78,12 +78,6 @@ export default class QuanticNoResults extends LightningElement {
 
   renderedCallback() {
     initializeWithHeadless(this, this.engineId, this.initialize);
-
-    const passEvent = new CustomEvent('noresult', {
-      detail: {noresult: this.showNoResultsPanel}
-      });
-    this.dispatchEvent(passEvent);
-
   }
 
   /**

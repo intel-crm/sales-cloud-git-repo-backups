@@ -185,7 +185,7 @@
             </processMetadataValues>
             <name>vChannelPartnerIdPriorValue</name>
             <value>
-                <elementReference>formula_2_myRule_1_A1_5049037174</elementReference>
+                <elementReference>formula_2_myRule_1_A1_2681499936</elementReference>
             </value>
         </inputParameters>
         <nameSegment>Core_MDF_Partner_Fund_Request_Sharing_Flow</nameSegment>
@@ -228,7 +228,7 @@
                 <stringValue>IF( AND(NOT(ISNEW()), ISCHANGED([PartnerFundRequest].ChannelPartner.Id )) , PRIORVALUE([PartnerFundRequest].ChannelPartner.Id ),NULL) </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_2_myRule_1_A1_5049037174</name>
+        <name>formula_2_myRule_1_A1_2681499936</name>
         <dataType>String</dataType>
         <expression>IF( AND(NOT(ISNEW()), ISCHANGED({!myVariable_current.ChannelPartner.Id} )) , PRIORVALUE({!myVariable_current.ChannelPartner.Id} ),NULL)</expression>
     </formulas>
@@ -271,7 +271,7 @@
 	)	
 )</expression>
     </formulas>
-    <interviewLabel>Core_MDF_CreatePFRShareforInternalAccountManagerAndExternal-17_InterviewLabel</interviewLabel>
+    <interviewLabel>Core_MDF_CreatePFRShareforInternalAccountManagerAndExternal-19_InterviewLabel</interviewLabel>
     <label>Core_MDF_CreatePFRShareForExternal</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -299,7 +299,7 @@
     </processMetadataValues>
     <processType>Workflow</processType>
     <startElementReference>myDecision</startElementReference>
-    <status>Obsolete</status>
+    <status>Draft</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

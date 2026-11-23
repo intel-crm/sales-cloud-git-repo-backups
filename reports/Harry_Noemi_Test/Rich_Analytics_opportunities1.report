@@ -86,7 +86,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>DCG Enterprise Analytics Deal # (On-Prem),DCG Enterprise Analytics Deal # Workloads (Off-Prem)</value>
+            <value>DCG Enterprise Analytics Deal # (On-Prem),DCG Enterprise Analytics Deal # Workloads (Off-Prem),Analytics</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Solution_Detail__c</column>

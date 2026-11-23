@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EIDEL AS Customer User</description>
+    <description>EIDSVOLL ELECTRONICS AS Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>EIDEL AS Customer User</name>
+    <name>EIDSVOLL ELECTRONICS AS Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>EIDSVOLLELECTRONICSASCustomerManager</parentRole>
 </Role>

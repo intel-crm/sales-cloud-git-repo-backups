@@ -4,8 +4,8 @@
         toastEvent.setParams({
             title: Title,
             message:Message,
-            type: Type
-            
+            type: Type,
+            mode: 'sticky',
         });
         toastEvent.fire();
     },

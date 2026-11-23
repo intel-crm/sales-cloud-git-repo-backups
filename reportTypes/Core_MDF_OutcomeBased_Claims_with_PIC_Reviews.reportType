@@ -12,6 +12,11 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_CreatedBy_nm__c</field>
+            <table>PartnerFundClaim.PIC_Reviews__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>CreatedBy</field>
             <table>PartnerFundClaim.PIC_Reviews__r</table>
         </columns>
@@ -42,6 +47,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Last_ModifiedBy_Nm__c</field>
+            <table>PartnerFundClaim.PIC_Reviews__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>LastModifiedBy</field>
             <table>PartnerFundClaim.PIC_Reviews__r</table>
         </columns>
@@ -62,12 +72,22 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Recommend_for_Review_Flag_ind__c</field>
+            <table>PartnerFundClaim.PIC_Reviews__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Review_Date_dt__c</field>
             <table>PartnerFundClaim.PIC_Reviews__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Review_Duration_in_Minutes_nbr__c</field>
+            <table>PartnerFundClaim.PIC_Reviews__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Reviewed_By_nm__c</field>
             <table>PartnerFundClaim.PIC_Reviews__r</table>
         </columns>
         <columns>
@@ -98,6 +118,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_AI_PIC_Review_Ind__c</field>
+            <table>PartnerFundClaim.PIC_Reviews__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Overall_AI_Confidence_Score_Nm__c</field>
             <table>PartnerFundClaim.PIC_Reviews__r</table>
         </columns>
         <masterLabel>PIC Reviews</masterLabel>
@@ -442,6 +467,36 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Campaign_Name_nm__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Campaign_End_Date_dt__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Technology__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Product_Type__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Customer_Product_Codename_txt__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Date_After_Modified__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Has_Sub_Claims_Ind__c</field>
             <table>PartnerFundClaim</table>
         </columns>
@@ -458,6 +513,26 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Super_Claim_Status_nm__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_NoOfLeads_Nbr__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Number_of_Recipient_nbr__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Open_Rate_txt__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Reporting_Region__c</field>
             <table>PartnerFundClaim</table>
         </columns>
         <masterLabel>Claims</masterLabel>

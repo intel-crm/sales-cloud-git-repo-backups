@@ -14,7 +14,7 @@ public class Core_MDF_PartnerRequestTriggerHandler extends TriggerHandler
 {
     public static Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll(); 
     public static String userid = UserInfo.getUserId();
-    boolean triggerFlag,platformEventFlag,atfUpdateCheck;
+    boolean triggerFlag,approvalFlag,platformEventFlag,atfUpdateCheck;
  //Commented by Sushma as there was no implmentation of this method call
     // Enabled by Sridhar as need to call the close activity close date update	
  public override void beforeInsert()
@@ -25,6 +25,7 @@ public class Core_MDF_PartnerRequestTriggerHandler extends TriggerHandler
                 if(!Core_MDF_Utility.byPassFeature('Bypass_UpdateActivityFields')){
                    
                 	Core_MDF_Process_PartnerFundRequest.populateBackEndFieldsInsert((List<PartnerFundRequest>) Trigger.new);
+
                 }
                 if(!Core_MDF_Utility.byPassFeature('Bypass_ValidateActivityWithCampaign')){
                     Core_MDF_ProcessCCP_PartnerFundRequest.validateActivityWithCampaign((Map<Id,PartnerFundRequest>) Trigger.oldMap,(List<PartnerFundRequest>) Trigger.new);
@@ -34,6 +35,7 @@ public class Core_MDF_PartnerRequestTriggerHandler extends TriggerHandler
                 } 
             	//Auto Budget Transfer for EEF Program
                 if(!Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_Frwd_AutoBdgtTransfer')&& !Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_Before_FrwdBT')) {
+                    system.debug('@@@line 38');
                 Core_MDF_Process_PartnerFundRequest.activityAutoBudgetTransferForward((List<PartnerFundRequest>) Trigger.new,(Map<Id,PartnerFundRequest>) Trigger.oldMap ,Trigger.isBefore , Trigger.isAfter);
                 }
                 Core_MDF_Process_PartnerFundRequest.callRuleEngine((List<PartnerFundRequest>) Trigger.new,(Map<Id,PartnerFundRequest>) Trigger.oldMap,Trigger.isInsert,Trigger.isBefore); 
@@ -45,7 +47,7 @@ public class Core_MDF_PartnerRequestTriggerHandler extends TriggerHandler
                 //Akash - Validate budget type of campaign and activity
                 if(!Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_ValidateBudType')){
                     Core_MDF_Process_PartnerFundRequest.validateBudgetType((List<PartnerFundRequest>) Trigger.new,(Map<Id,PartnerFundRequest>) Trigger.oldMap);
-                }
+                }  
             //Rishabh - Only one Activity can be created for an Outcome-Based Proposal Campaign. 
                 if(!Core_MDF_Utility.byPassFeature('Core_MDF_ByPass_OneActivityperCampaign')){
                     Core_MDF_Process_PartnerFundRequest.oneActivityperCampaign((List<PartnerFundRequest>) Trigger.new);
@@ -64,10 +66,8 @@ public class Core_MDF_PartnerRequestTriggerHandler extends TriggerHandler
        if(triggerFlag && !(System.isBatch() && atfUpdateCheck) && !Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_ATFBatchUpdate'))
         {
        // if (isActive('Core_MDF_PFR_Before_Update')){
-                
                 //to bypass query exceution in test classes
                 if(!Core_MDF_Utility.byPassFeature('Bypass_UpdateActivityFields')){
-                    
                     
                     Core_MDF_Process_PartnerFundRequest.populateBackEndFieldsUpdate((Map<Id,PartnerFundRequest>) Trigger.newMap, (Map<Id,PartnerFundRequest>) Trigger.oldMap);
                 }
@@ -78,12 +78,13 @@ public class Core_MDF_PartnerRequestTriggerHandler extends TriggerHandler
                 if(!Core_MDF_Utility.byPassFeature('byPass_Cancel_Activity')){
                 	Core_MDF_CheckStatusAndDate.checkValidClaims((Map<Id,PartnerFundRequest>) Trigger.oldMap,(Map<Id,PartnerFundRequest>) Trigger.newMap);  
                 }
-                //Auto Budget Transfer for EEF Program
-                if(!Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_Frwd_AutoBdgtTransfer') && !Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_Before_FrwdBT')) {
-                Core_MDF_Process_PartnerFundRequest.activityAutoBudgetTransferForward((List<PartnerFundRequest>) Trigger.new,(Map<Id,PartnerFundRequest>) Trigger.oldMap ,Trigger.isBefore , Trigger.isAfter);
-                }
-		if(!Core_MDF_Utility.byPassFeature('Core_MDF_BypassCancelPFR')){
+                if(!Core_MDF_Utility.byPassFeature('Core_MDF_BypassCancelPFR')){
                     Core_MDF_ProcessCCP_PartnerFundRequest.cancelActivityForCancelledCliamsAndEsclations((Map<Id,PartnerFundRequest>) Trigger.newMap,(Map<Id,PartnerFundRequest>) Trigger.oldMap);
+                }
+		//Auto Budget Transfer for EEF Program
+                if(!Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_Frwd_AutoBdgtTransfer') && !Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_Before_FrwdBT')) {
+                    system.debug('@@@line 82');
+                Core_MDF_Process_PartnerFundRequest.activityAutoBudgetTransferForward((List<PartnerFundRequest>) Trigger.new,(Map<Id,PartnerFundRequest>) Trigger.oldMap ,Trigger.isBefore , Trigger.isAfter);
                 }
                 //RULE ENGINE CALL
                 Core_MDF_Process_PartnerFundRequest.callRuleEngine((List<PartnerFundRequest>) Trigger.new,(Map<Id,PartnerFundRequest>) Trigger.oldMap,Trigger.isInsert,Trigger.isBefore);
@@ -98,7 +99,7 @@ public class Core_MDF_PartnerRequestTriggerHandler extends TriggerHandler
                 }
                 //Ramapriya - validate IPA In-progress activity field update against claims associated 
                 if(!Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_ValidateInProgActEdit')){
-                    Core_MDF_Process_PartnerFundRequest.validateInprogressPFRUpdates((Map<Id, PartnerFundRequest>) Trigger.oldMap,(Map<Id, PartnerFundRequest>) Trigger.newMap);
+                Core_MDF_Process_PartnerFundRequest.validateInprogressPFRUpdates((Map<Id, PartnerFundRequest>) Trigger.oldMap,(Map<Id, PartnerFundRequest>) Trigger.newMap);
                 }
 
         //}
@@ -108,6 +109,7 @@ public class Core_MDF_PartnerRequestTriggerHandler extends TriggerHandler
     public override void afterInsert()
     {
         triggerFlag = isActive('Core_MDF_PFR_Insert');
+        approvalFlag = isActive('Core_MDF_PFR_Approval');
         //Akash - Calling publishActivityPlatformEvent from After Insert
         platformEventFlag = isActive('Core_MDF_Activity_Platform_Event');
         
@@ -121,6 +123,7 @@ public class Core_MDF_PartnerRequestTriggerHandler extends TriggerHandler
                 //Avoid Deeply Nested IF Statements
                 //if(isActive('Core_MDF_PFR_Sharing')){
                     if(isActive('Core_MDF_PFR_Sharing') && !Core_MDF_Utility.byPassFeature('Bypass_ShareActivityWithUsers')){
+                        system.debug('@@@line122');
                         Core_MDF_ProcessCCP_PartnerFundRequest.shareActivityWithUsers((Map<Id,PartnerFundRequest>) Trigger.newMap);
                     }
 
@@ -134,6 +137,7 @@ public class Core_MDF_PartnerRequestTriggerHandler extends TriggerHandler
                 //Auto Budget Transfer for EEF Program
 
                 if(!Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_Frwd_AutoBdgtTransfer') && !Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_After_FrwdBT')) {
+                    system.debug('@@@line 135');
                 Core_MDF_Process_PartnerFundRequest.activityAutoBudgetTransferForward((List<PartnerFundRequest>) Trigger.new,(Map<Id,PartnerFundRequest>) Trigger.oldMap ,Trigger.isBefore , Trigger.isAfter);
                 }
 
@@ -146,6 +150,8 @@ public class Core_MDF_PartnerRequestTriggerHandler extends TriggerHandler
     public override void afterUpdate()
     {      
         triggerFlag = isActive('Core_MDF_PFR_Update');
+        // Highlight: Unused Local Variable - 14285
+       // approvalFlag = isActive('Core_MDF_PFR_Approval');
         boolean recallFlag = isActive('Core_MDF_Activity_Recall');
         platformEventFlag = isActive('Core_MDF_Activity_Platform_Event');
        
@@ -160,7 +166,8 @@ public class Core_MDF_PartnerRequestTriggerHandler extends TriggerHandler
                     //Evaluate the rule engine for approval
 				Core_MDF_Process_PartnerFundRequest.callRuleEngine((List<PartnerFundRequest>) Trigger.new,(Map<Id,PartnerFundRequest>) Trigger.oldMap,Trigger.isInsert,Trigger.isBefore);                
                 //Auto Budget Transfer for EEF Program
-                if(!Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_Frwd_AutoBdgtTransfer') && !Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_After_FrwdBT')) {              
+                if(!Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_Frwd_AutoBdgtTransfer') && !Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_After_FrwdBT')) {   
+                    system.debug('@@@line 163');           
                  Core_MDF_Process_PartnerFundRequest.activityAutoBudgetTransferForward((List<PartnerFundRequest>) Trigger.new,(Map<Id,PartnerFundRequest>) Trigger.oldMap ,Trigger.isBefore ,Trigger.isAfter);
                     }
                 //Added by Shridhar K to call recallApprovalProcess
@@ -212,7 +219,10 @@ public class Core_MDF_PartnerRequestTriggerHandler extends TriggerHandler
                 Core_MDF_Process_PartnerFundRequest.activityAutoBudgetTransferReversal((Map<Id,PartnerFundRequest>) Trigger.newMap,(Map<Id,PartnerFundRequest>) Trigger.oldMap );
                 }
         }
-
+        
+        //Akanksha
+        //Core_MDF_ProcessCCP_PartnerFundRequest.cancelActivityForCancelledCliamsAndEsclations((Map<Id,PartnerFundRequest>) Trigger.oldMap,(Map<Id,PartnerFundRequest>) Trigger.newMap);
+        
     }
     public static Boolean isATFFlagUpdated(Map<Id,PartnerFundRequest> pfrOldMap, list<PartnerFundRequest> pfrNewList)
     {

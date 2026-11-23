@@ -1,0 +1,24 @@
+<messaging:emailTemplate subject="{!$Label.Core_MDF_Audit_Creation_SubjectPart}{!RelatedTo.Core_MDF_Claim_Number__c}" recipientType="User" relatedToType="Case" language="{!relatedTo.Core_MDF_Claim_Submitter_Language__c}">
+<messaging:htmlEmailBody >
+<html>
+<body> 
+     <p>{!$Label.Core_MDF_EmailTemp_StatusUpdate_DearMember}<br/><br/>
+     This is for POP NonSubmission.<br/>
+    {!$Label.Core_MDF_Audit_Creation_Part2} <br/><br/></P>
+    
+      <p>  {!$Label.Core_MDF_Audit_Creation_Field1} {!RelatedTo.Core_MDF_Claim_Number__c}
+     <br/>{!$Label.Core_MDF_Audit_Creation_Field2} {!RelatedTo.Core_MDF_ActivityName__c} 
+    <br/>{!$Label.Core_MDF_Audit_Creation_Field3} {!RelatedTo.Core_MDF_CampaignName__c } 
+      <br/>{!$Label.Core_MDF_Audit_Creation_Field4} {!RelatedTo.Core_MDF_Activity_Type__c}
+      <br/>{!$Label.Core_MDF_Audit_Creation_Field5} {!RelatedTo.Core_MDF_Country_Region__c}</P>
+      
+      <p>{!$Label.Core_MDF_Audit_Creation_PartLink}
+      <a href="{!$Label.Core_MDF_PFRCommunityLink+RelatedTo.Id}"> {!$Label.Core_MDF_Audit_Creation_PartLink1}</a> <br/><br/>
+     
+      {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}<br/><br/>
+      {!$Label.Core_MDF_Audit_Creation_Body8}</p>
+      </body>
+    
+</html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

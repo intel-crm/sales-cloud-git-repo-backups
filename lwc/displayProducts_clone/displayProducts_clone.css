@@ -1,0 +1,18 @@
+.slds-text-heading_label{
+    text-decoration : underline ;
+}
+
+/* .class1 {
+    display:none;
+} */
+
+.class1 {
+    outline: thin solid;
+    outline-color:rgb(243, 242,242);
+    border-radius: 25px;
+}
+
+.class2 {
+    outline: thin solid;
+    border-radius: 25px;
+}

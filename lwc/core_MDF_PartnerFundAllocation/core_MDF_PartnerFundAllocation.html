@@ -47,9 +47,10 @@
                         <span class="slds-var-m-bottom_x-small">{allocToDisplay.length} {label.itemsToDisplay}</span></div>
                 </lightning-layout-item>
                 <!--To display multi select budget type & program filters-->
-                <lightning-layout-item class="slds-col">
-                  <div class="slds-float_right slds-var-m-bottom_small adjustWidth" id="budgetTypeMultiPicklist">
-                  <c-core_-m-d-f_-multi-select-picklist picklistlabel={label.budgetType} values ={budgetTypeList} data-id="budgetTypeSelection" class="multiSelectBudgetType" placeholder-text="Select an Option"
+                <lightning-layout-item>
+                  <!--  <div class="slds-float_right slds-var-m-bottom_small slds-size_medium" id="budgetTypeMultiPicklist" >  -->
+                    <div class="slds-float_right slds-var-m-bottom_small adjustWidth" id="budgetTypeMultiPicklist">
+                        <c-core_-m-d-f_-multi-select-picklist picklistlabel={label.budgetType} values ={budgetTypeList} data-id="budgetTypeSelection" class="multiSelectBudgetType" placeholder-text="Select an Option"
                     onselect={onBudgetTypeValueSelect} no-of-values-got-selected-lable={label.budgetTypesSelected} selected-value-count ={budgetTypeSelectedValueCount}></c-core_-m-d-f_-multi-select-picklist>
                      </div> 
                     <div class="slds-float_right slds-var-m-bottom_small slds-var-m-right_small adjustWidth">

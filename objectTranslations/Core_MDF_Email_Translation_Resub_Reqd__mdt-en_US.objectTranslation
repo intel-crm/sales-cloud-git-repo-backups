@@ -41,6 +41,10 @@
         <name>Core_MDF_Budget_Type__c</name>
     </fields>
     <fields>
+        <label><!-- Claim Name --></label>
+        <name>Core_MDF_Claim_Name__c</name>
+    </fields>
+    <fields>
         <label><!-- Claim # : --></label>
         <name>Core_MDF_Claim__c</name>
     </fields>

@@ -1,85 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <buckets>
-        <bucketType>picklist</bucketType>
-        <developerName>BucketField_61093898</developerName>
-        <masterLabel>Region Rptg</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <sourceColumnName>Lead.Core_Sub_Geo__c</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>ANZ</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>IJKK</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Korea</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>ROA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>SA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>SEA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Taiwan</sourceValue>
-            </sourceValues>
-            <value>APJ</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>CEE</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>CER</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>META</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>NEUR</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>RCIS</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>SEUR</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>WEUR</sourceValue>
-            </sourceValues>
-            <value>EMEA</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>LAR</sourceValue>
-            </sourceValues>
-            <value>LAR</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>NAR</sourceValue>
-            </sourceValues>
-            <value>NAR</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>PRC</sourceValue>
-            </sourceValues>
-            <value>PRC</value>
-        </values>
-    </buckets>
-    <columns>
-        <field>COUNTRY_CODE</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_MQL_Lead_Coverage__c</field>
-    </columns>
     <columns>
         <field>STATUS</field>
     </columns>
@@ -90,11 +10,11 @@
         <field>OWNER</field>
     </columns>
     <columns>
-        <field>OWNER_ROLE_DISPLAY</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>UNREAD</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Entrance_Date_MAQL__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -122,13 +42,6 @@
         <field>Lead.Core_Lead_Conversion_Point__c</field>
     </columns>
     <columns>
-        <field>Lead.Core_Entrance_Date_MQL__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.Core_Age_of_Lead__c</field>
-    </columns>
-    <columns>
         <field>CREATED_DATE</field>
     </columns>
     <columns>
@@ -140,19 +53,21 @@
     <columns>
         <field>Lead.Core_Marketing_Tactic_ID__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.SWS_Software_Lead__c</field>
-    </columns>
-    <description>RT: Leads.  Active Leads NOT owned by LDRs that are PAST DUE</description>
+    <description>RT: Leads</description>
     <filter>
-        <booleanFilter>(1 OR 5) AND 2 AND 3 AND 4</booleanFilter>
+        <criteriaItems>
+            <column>CREATED</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>user eloqua</value>
+        </criteriaItems>
         <criteriaItems>
             <column>RECORDTYPE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Lead.Sales_Lead,Lead.Partner_Lead</value>
+            <value>Lead.Partner_Lead</value>
         </criteriaItems>
         <criteriaItems>
             <column>Lead.Core_Lead_State__c</column>
@@ -169,25 +84,25 @@
             <value>Marketing Qualified Lead</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Lead.Core_Entrance_Date_MQL__c</column>
+            <column>Lead.Core_MQL_Lead_Coverage__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>OSC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Core_Entrance_Date_MAQL__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>lessThan</operator>
             <value>N_DAYS_AGO:7</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Lead.SWS_Software_Lead__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Lead.Core_Geo__c</field>
+        <field>COUNTRY_CODE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -195,7 +110,12 @@
         <field>Lead.Core_Lead_Priority__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>OLD - Sales MGL MAQLs &gt; 7 Days</name>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Lead.Core_MQL_Lead_Coverage__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Global FIELD MGL MAQLs &gt; 7 Days</name>
     <params>
         <name>co</name>
         <value>1</value>

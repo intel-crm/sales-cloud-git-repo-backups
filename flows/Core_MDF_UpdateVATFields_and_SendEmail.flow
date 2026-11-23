@@ -5,7 +5,7 @@
         <name>Call_Release_Hold</name>
         <label>Call Release Hold</label>
         <locationX>654</locationX>
-        <locationY>1211</locationY>
+        <locationY>1310</locationY>
         <actionName>Core_MDF_Claim_Utility</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -22,6 +22,7 @@
             </value>
         </inputParameters>
         <nameSegment>Core_MDF_Claim_Utility</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <name>NotifyClaim_Submitters_on_VAT_Rejection</name>
@@ -111,7 +112,7 @@
         <name>assignReleaseHoldValues</name>
         <label>assignReleaseHoldValues</label>
         <locationX>653</locationX>
-        <locationY>1011</locationY>
+        <locationY>1110</locationY>
         <assignmentItems>
             <assignToReference>varClaimRecordsCollection</assignToReference>
             <operator>Add</operator>
@@ -135,7 +136,7 @@
         <name>Change_Adjustment_status_to_PAF</name>
         <label>Change Adjustment status to PAF</label>
         <locationX>344</locationX>
-        <locationY>1016</locationY>
+        <locationY>1115</locationY>
         <assignmentItems>
             <assignToReference>varClaimRecord.Core_MDF_VAT_Hold_Ind__c</assignToReference>
             <operator>Assign</operator>
@@ -182,7 +183,7 @@
         <name>Adjustment_Claim</name>
         <label>Adjustment/Claim</label>
         <locationX>512</locationX>
-        <locationY>844</locationY>
+        <locationY>943</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Adjustment</name>
@@ -304,8 +305,8 @@
     <decisions>
         <name>Core_MDF_VerifyStatus</name>
         <label>Verify Status</label>
-        <locationX>790</locationX>
-        <locationY>436</locationY>
+        <locationX>792</locationX>
+        <locationY>534</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>When_Status_is_Pending_Documents</name>
@@ -448,7 +449,7 @@
         <name>Iterate_the_records</name>
         <label>Iterate the records</label>
         <locationX>1590</locationX>
-        <locationY>842</locationY>
+        <locationY>941</locationY>
         <collectionReference>Read_Document_Link_Record</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -478,7 +479,7 @@
         <name>getClaimRecord</name>
         <label>getClaimRecord</label>
         <locationX>520</locationX>
-        <locationY>653</locationY>
+        <locationY>752</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Adjustment_Claim</targetReference>
@@ -515,7 +516,7 @@
         <name>Read_Document_Link_Record</name>
         <label>Read Document Link Record</label>
         <locationX>1590</locationX>
-        <locationY>653</locationY>
+        <locationY>752</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Iterate_the_records</targetReference>
@@ -546,7 +547,7 @@
         <name>Update_Adjustment</name>
         <label>Update Adjustment</label>
         <locationX>343</locationX>
-        <locationY>1209</locationY>
+        <locationY>1308</locationY>
         <inputReference>varClaimRecord</inputReference>
     </recordUpdates>
     <recordUpdates>
@@ -554,7 +555,7 @@
         <name>Update_Owner_Id</name>
         <label>Update Owner Id</label>
         <locationX>1724</locationX>
-        <locationY>994</locationY>
+        <locationY>1093</locationY>
         <connector>
             <targetReference>Iterate_the_records</targetReference>
         </connector>
@@ -582,8 +583,8 @@
         <object>ContentDocument</object>
     </recordUpdates>
     <start>
-        <locationX>672</locationX>
-        <locationY>48</locationY>
+        <locationX>602</locationX>
+        <locationY>50</locationY>
         <connector>
             <targetReference>Recipient_Id_assignment</targetReference>
         </connector>

@@ -41,8 +41,10 @@ public with sharing class Core_Case_ActionEditController {
       for(RecordType rt: rtList){
           recordTypesByName.put(rt.developerName, rt.Id);
       }   
+      system.debug(u.profile.name);
       
       for(StandardActionRedirection__c action: sCaseActionList){
+      system.debug(action.Profile_del__c);
           if(action.Profile_del__c <> null && action.Profile_del__c==u.profile.name){
                   ref = new PageReference(action.URI__c + string.valueof(caseedit.ID)+'&retURL='+retURL);   
                   ref.setRedirect(true);
@@ -50,6 +52,7 @@ public with sharing class Core_Case_ActionEditController {
           }
       }
       for(StandardActionRedirection__c action: sCaseActionList){
+      system.debug('Action RT: '+action.Record_Type__c+' rType????: '+rType+' rType: '+recordTypesByName.get(action.Record_Type__c));
           if(action.Record_Type__c!=null && rType!=null && rType==recordTypesByName.get(action.Record_Type__c)){ 
                 if(action.URI__c.indexOF('Caseid') > -1)
                 {

@@ -22,7 +22,7 @@
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_IPS_Asset_Share_R_for_IPS_Users</fullName>
-        <accessLevel>Edit</accessLevel>
+        <accessLevel>Read</accessLevel>
         <description>TME/ADMIN access for Assets</description>
         <label>IPS Asset Share R for IPS Users</label>
         <sharedTo>
@@ -66,26 +66,6 @@
             <field>Core_IPS_Private_Project__c</field>
             <operation>equals</operation>
             <value>False</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>IPS_Asset_Share_R_for_IPS_Agent</fullName>
-        <accessLevel>Read</accessLevel>
-        <description>This rule has been specially added to provide R Access to IPS Agent to Asset as IPS Agent Role is no longer a subordinate to IPS Product Org Admin Role</description>
-        <label>IPS Asset Share R for IPS Agent</label>
-        <sharedTo>
-            <role>EMP_11298293_Kenta_Ueda</role>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>IPS Asset</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_IPS_Private_Project__c</field>
-            <operation>notEqual</operation>
-            <value>True</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

@@ -40,28 +40,37 @@ Modified By   :        Date:           Changes:
                 accToUltimateAccMap.put(acc.Id, acc.Core_MDF_Parent_Fund_Account__c);
             }
             for(Core_MDF_Target_Setting_Line_Item__c lineItemRecord : newTargetSettingLineItemList){
-                if(isInsert || (oldTargetSettingLineItemMap != null && !oldTargetSettingLineItemMap.isEmpty())){
-                    region = (String.isNotBlank(lineItemRecord.Core_MDF_Host_Region_Txt__c)) ? lineItemRecord.Core_MDF_Host_Region_Txt__c : lineItemRecord.Core_MDF_Region_Name_nm__c;
-                    if(oldTargetSettingLineItemMap != null && !oldTargetSettingLineItemMap.isEmpty() && lineItemRecord.Core_MDF_Region_Name_nm__c != oldTargetSettingLineItemMap.get(lineItemRecord.Id).Core_MDF_Region_Name_nm__c){
-                        updatedLineItemMap.put(lineItemRecord.id,lineItemRecord); //map to store line item records id if any updates are made
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                if(!isInsert && (oldTargetSettingLineItemMap == null || oldTargetSettingLineItemMap.isEmpty())){
+                    continue;
+                }
+                
+                region = (String.isNotBlank(lineItemRecord.Core_MDF_Host_Region_Txt__c)) ? lineItemRecord.Core_MDF_Host_Region_Txt__c : lineItemRecord.Core_MDF_Region_Name_nm__c;
+       
+                if(oldTargetSettingLineItemMap != null && !oldTargetSettingLineItemMap.isEmpty() && lineItemRecord.Core_MDF_Region_Name_nm__c != oldTargetSettingLineItemMap.get(lineItemRecord.Id).Core_MDF_Region_Name_nm__c){
+                    updatedLineItemMap.put(lineItemRecord.id,lineItemRecord);
+                }
+                
+                programName = lineItemRecord.Core_MDF_ProgramName_Txt__c;
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                if(region == null || programName == null) {
+                     continue;
+                }
+                
+                if(programName == Core_MDF_CCP_ConstantClass.IPA_PROGRAM){
+                    recordGeoShareList.add(new Core_MDF_RecordGeoShare(lineItemRecord.Id,region, null, programName, lineItemRecord.Core_MDF_Budget_Type_nm__c));
+                    
+                    if(lineItemRecord.Core_MDF_Account__c != null && accToUltimateAccMap.containsKey(lineItemRecord.Core_MDF_Account__c)){
+                        recordPGMShareList.add(new Core_MDF_RecordPGMShareWrapper(lineItemRecord.id, region, null, programName, lineItemRecord.Core_MDF_Budget_Type_nm__c, accToUltimateAccMap.get(lineItemRecord.Core_MDF_Account__c)));
                     }
-                    programName = lineItemRecord.Core_MDF_ProgramName_Txt__c;
-                    if(region != null && programName != null){
-                        if(programName == Core_MDF_CCP_ConstantClass.IPA_PROGRAM){
-                            recordGeoShareList.add(new Core_MDF_RecordGeoShare(lineItemRecord.Id,region, null, programName, lineItemRecord.Core_MDF_Budget_Type_nm__c));
-                            if(lineItemRecord.Core_MDF_Account__c != null && accToUltimateAccMap.containsKey(lineItemRecord.Core_MDF_Account__c)){
-                                recordPGMShareList.add(new Core_MDF_RecordPGMShareWrapper(lineItemRecord.id, region, null, programName, lineItemRecord.Core_MDF_Budget_Type_nm__c, accToUltimateAccMap.get(lineItemRecord.Core_MDF_Account__c)));
-                            }
-                        }
-                        else{
-                            if(lineItemRecord.Core_MDF_Region_Name_nm__c != null){
-                                for(string geo : lineItemRecord.Core_MDF_Region_Name_nm__c.split(';')){
-                                    recordGeoShareList.add(new Core_MDF_RecordGeoShare(lineItemRecord.Id,geo, null, programName));
-                                    if(lineItemRecord.Core_MDF_Account__c != null && accToUltimateAccMap.containsKey(lineItemRecord.Core_MDF_Account__c)){ 
-                                        recordPGMShareList.add(new Core_MDF_RecordPGMShareWrapper(lineItemRecord.id, geo, null, programName, null, accToUltimateAccMap.get(lineItemRecord.Core_MDF_Account__c)));
-                                    } 
-                                }
-                            }
+                }
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                if(programName != Core_MDF_CCP_ConstantClass.IPA_PROGRAM && lineItemRecord.Core_MDF_Region_Name_nm__c != null){
+                    for(string geo : lineItemRecord.Core_MDF_Region_Name_nm__c.split(';')){
+                        recordGeoShareList.add(new Core_MDF_RecordGeoShare(lineItemRecord.Id,geo, null, programName));
+                        
+                        if(lineItemRecord.Core_MDF_Account__c != null && accToUltimateAccMap.containsKey(lineItemRecord.Core_MDF_Account__c)){ 
+                            recordPGMShareList.add(new Core_MDF_RecordPGMShareWrapper(lineItemRecord.id, geo, null, programName, null, accToUltimateAccMap.get(lineItemRecord.Core_MDF_Account__c)));
                         }
                     }
                 }
@@ -170,62 +179,83 @@ Modified By   :        Date:           Changes:
                                                                         AND Core_MDF_Role_nm__c IN : accountManagerPermissionSet]) { 
                                                                             //Verify if Account Manager has WW IUPGM access                                                          
                                                                             List<String> regionList = iupgm.Core_MDF_Region_Sub_Region_nm__c.split(';');
-                                                                            if(!regionList.isEmpty()){
-                                                                                for(String geo : regionList){  
-                                                                                    if(geo == 'WW'){
-                                                                                        for(String strOnGeoLst : allGeosLst){
-                                                                                            String iupgmKey = (String) iupgm.Core_MDF_Account_id__c+ (String) iupgm.Core_MDF_Channel_Program_id__r.Name+strOnGeoLst;
-                                                                                            if(iupgmMap!=null && iupgmMap.containsKey(iupgmKey) && iupgmMap.get(iupgmKey) != null) {
-                                                                                                iupgmMap.get(iupgmKey).add(iupgm);    
-                                                                                            }
-                                                                                            else {
-                                                                                                iupgmMap.put(iupgmKey,new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>{iupgm});
-                                                                                            }
-                                                                                        }    
-                                                                                    }
-                                                                                    else{
-                                                                                        String iupgmKey = (String) iupgm.Core_MDF_Account_id__c+ (String) iupgm.Core_MDF_Channel_Program_id__r.Name+geo;
-                                                                                        if(iupgmMap!=null && iupgmMap.containsKey(iupgmKey) && iupgmMap.get(iupgmKey) != null) {
+                                                                            // US - TWC702-14285: Flatten nested IFs (no logic change)
+                                                                            // Early exit if no regions
+                                                                            if(regionList.isEmpty()) {
+                                                                                continue;            //Refactored: Using guard clauses to avoid deep nesting
+                                                                            }
+                                                                            
+                                                                            for(String geo : regionList){  
+                                                                                // Handle 'WW' case separately
+                                                                                if(geo == 'WW'){
+                                                                                    for(String strOnGeoLst : allGeosLst){
+                                                                                        String iupgmKey = (String) iupgm.Core_MDF_Account_id__c+ (String) iupgm.Core_MDF_Channel_Program_id__r.Name+strOnGeoLst;
+                                                                                        // Combine conditions to reduce nesting
+                                                                                        if(iupgmMap != null && iupgmMap.containsKey(iupgmKey) && iupgmMap.get(iupgmKey) != null) {
                                                                                             iupgmMap.get(iupgmKey).add(iupgm);    
                                                                                         }
                                                                                         else {
                                                                                             iupgmMap.put(iupgmKey,new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>{iupgm});
                                                                                         }
+                                                                                    }    
+                                                                                }
+                                                                                else{
+                                                                                    String iupgmKey = (String) iupgm.Core_MDF_Account_id__c+ (String) iupgm.Core_MDF_Channel_Program_id__r.Name+geo;
+                                                                                    // Combine conditions to reduce nesting
+                                                                                    if(iupgmMap != null && iupgmMap.containsKey(iupgmKey) && iupgmMap.get(iupgmKey) != null) {
+                                                                                        iupgmMap.get(iupgmKey).add(iupgm);    
                                                                                     }
-                                                                                    
-                                                                                } 
-                                                                            }
-                                                                            
-                                                                            
+                                                                                    else {
+                                                                                        iupgmMap.put(iupgmKey,new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>{iupgm});
+                                                                                    }
+                                                                                }
+                                                                            } 
                                                                         }
-                
-                if(!iupgmMap.isEmpty())	{	
-                    // Perform Region check for Target Setting Line Item record and throw validation error 
-                    for (Core_MDF_Target_Setting_Line_Item__c trgtSettingLineItemRec : lineItemsList) {
-                        if(trgtSettingLineItemRec.Core_MDF_Region_Name_nm__c != null && (isInsert ||(oldTargetSettingLineItemMap != null && !oldTargetSettingLineItemMap.isEmpty() && oldTargetSettingLineItemMap.get(trgtSettingLineItemRec.Id).Core_MDF_Country_Name_nm__c != null
-                           && trgtSettingLineItemRec.Core_MDF_Country_Name_nm__c != oldTargetSettingLineItemMap.get(trgtSettingLineItemRec.Id).Core_MDF_Country_Name_nm__c ))){
-                               
-                               List<string> geoList = trgtSettingLineItemRec.Core_MDF_Region_Name_nm__c.split(';');
-                               for(String geo : geoList){
-                                String trgetSettingLineItemkey = trgtSettingLineItemRec.Core_MDF_Ultimate_Account_Id__c + (String) trgtSettingLineItemRec.Core_MDF_ProgramName_Txt__c+geo; 
-                               
-                                if(!iupgmMap.containskey(trgetSettingLineItemkey)){
-                                   trgtSettingLineItemRec.addError(TRGT_SETTNG_LINE_ITEM_REGION_VALIDATION_ERROR_MESSAGE);
-                               }
-                               }
-                               
-                           }
-                    }
-                }else {
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                // Early exit if no iupgm mappings exist
+                if(iupgmMap.isEmpty()) {
                     for (Core_MDF_Target_Setting_Line_Item__c trgtSettingLineItemRec : lineItemsList) {
                         trgtSettingLineItemRec.addError(TRGT_SETTNG_LINE_ITEM_REGION_VALIDATION_ERROR_MESSAGE);
+                    }
+                    // Skip the rest of the validation logic - no continue needed here
+                    // Just return early from this method since no further validation is needed
+                    return;               //Refactored: Using guard clauses to avoid deep nesting
+                }
+
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                // Perform Region check for Target Setting Line Item record and throw validation error 
+                for (Core_MDF_Target_Setting_Line_Item__c trgtSettingLineItemRec : lineItemsList) {
+                    // Early exit if no regions to validate
+                    if(trgtSettingLineItemRec.Core_MDF_Region_Name_nm__c == null) {
+                        continue;           //Refactored: Using guard clauses to avoid deep nesting
+                    }
+                    
+                    // US - TWC702-14285: Flatten nested IFs (no logic change)
+                    // Check if the region/country combination is valid
+                    Boolean isValidRegion = isInsert || (oldTargetSettingLineItemMap != null && !oldTargetSettingLineItemMap.isEmpty() && 
+                        oldTargetSettingLineItemMap.get(trgtSettingLineItemRec.Id).Core_MDF_Country_Name_nm__c != null &&
+                        trgtSettingLineItemRec.Core_MDF_Country_Name_nm__c != oldTargetSettingLineItemMap.get(trgtSettingLineItemRec.Id).Core_MDF_Country_Name_nm__c);
+                    
+                    // US - TWC702-14285: Flatten nested IFs (no logic change)
+                    // If not valid, skip validation (this prevents unnecessary processing)
+                    if(!isValidRegion) {
+                        continue;          //Refactored: Using guard clauses to avoid deep nesting
+                    }
+                    
+                    List<string> geoList = trgtSettingLineItemRec.Core_MDF_Region_Name_nm__c.split(';');
+                    for(String geo : geoList){
+                        String trgetSettingLineItemkey = trgtSettingLineItemRec.Core_MDF_Ultimate_Account_Id__c + (String) trgtSettingLineItemRec.Core_MDF_ProgramName_Txt__c+geo; 
+                       
+                        if(!iupgmMap.containskey(trgetSettingLineItemkey)){
+                           trgtSettingLineItemRec.addError(TRGT_SETTNG_LINE_ITEM_REGION_VALIDATION_ERROR_MESSAGE);
+                       }
                     }
                 }
             }
         }catch ( Exception e ){
             Core_MDF_CCP_UtilityClass.logError ( e );
         }
-    }
+    }  
     /***************************************************************************************************** 
 Method Name   :        validateCountrySelection
 @return       :        void
@@ -252,7 +282,7 @@ Modified By   :        Date:           Changes:
             }
         }
     }
-
+    
 /********************************************************************************************************************************************** 
 Class Name:         Core_MDF_TrgtSetngLineItemServiceHandler
 @parameters:        newTargetSettingLineItemList,oldTargetSettingLineItemMap
@@ -340,19 +370,28 @@ Modified By:        Date:           Changes:
             }
             String KeyForDuplicateCheck = '';
             for(Core_MDF_Target_Setting_Line_Item__c itrOnNewTrgtStngLnItm : newTargetSettingLineItemList){
-                if(itrOnNewTrgtStngLnItm.RecordTypeId != lineItemIPARecTypeId){
-                    //key preperation to check duplicate records present in the system or in the incoming list
-                    KeyForDuplicateCheck = itrOnNewTrgtStngLnItm.Core_MDF_Account__c + '_' +
-                                            itrOnNewTrgtStngLnItm.Core_MDF_Priority_nm__c + '_' + 
-                                            itrOnNewTrgtStngLnItm.Core_MDF_Bucket_nm__c + '_' +
-                                            itrOnNewTrgtStngLnItm.Core_MDF_Country_Name_nm__c + '_' +
-                                            itrOnNewTrgtStngLnItm.Core_MDF_Campaign_Name__c + '_' +
-                                            itrOnNewTrgtStngLnItm.Core_MDF_Budget_Type_nm__c + '_' +
-                                            itrOnNewTrgtStngLnItm.Core_MDF_Spending_Version_Record_Name__c + '_' +
-                                            itrOnNewTrgtStngLnItm.Core_MDF_Spending_Targets_Record_Name__c;
-                    if(!String.isEmpty(KeyForDuplicateCheck)){
-                        //check for duplicates in the existing records 
-                        if(mapOfKeyForOldTrgtStngRcrds.containsKey(KeyForDuplicateCheck)){
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                // Early exit for IPA records
+                if(itrOnNewTrgtStngLnItm.RecordTypeId == lineItemIPARecTypeId){
+                    continue;         //Refactored: Using guard clauses to avoid deep nesting
+                }
+                
+                // Build key for duplicate checking
+                KeyForDuplicateCheck = itrOnNewTrgtStngLnItm.Core_MDF_Account__c + '_' +
+                                        itrOnNewTrgtStngLnItm.Core_MDF_Priority_nm__c + '_' + 
+                                        itrOnNewTrgtStngLnItm.Core_MDF_Bucket_nm__c + '_' +
+                                        itrOnNewTrgtStngLnItm.Core_MDF_Country_Name_nm__c + '_' +
+                                        itrOnNewTrgtStngLnItm.Core_MDF_Campaign_Name__c + '_' +
+                                        itrOnNewTrgtStngLnItm.Core_MDF_Budget_Type_nm__c + '_' +
+                                        itrOnNewTrgtStngLnItm.Core_MDF_Spending_Version_Record_Name__c + '_' +
+                                        itrOnNewTrgtStngLnItm.Core_MDF_Spending_Targets_Record_Name__c;
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                // Early exit if key is empty
+                if(String.isEmpty(KeyForDuplicateCheck)){
+                    continue;         //Refactored: Using guard clauses to avoid deep nesting
+                }
+                
+                       if(mapOfKeyForOldTrgtStngRcrds.containsKey(KeyForDuplicateCheck)){
                             itrOnNewTrgtStngLnItm.addError(TRGT_SETTNG_LINE_ITEM_DUPLICATE_RECORD_ERROR_MESSAGE);
                         }else{
                             //check for duplicates in the incoming list of Target Setting Line Item Records.
@@ -362,8 +401,6 @@ Modified By:        Date:           Changes:
                                 itrOnNewTrgtStngLnItm.addError(TRGT_SETTNG_LINE_ITEM_DUPLICATE_RECORD_ERROR_MESSAGE);
                             }
                         }
-                    }
-                }
             }
         }   
     }catch(Exception e){ Core_MDF_CCP_UtilityClass.logError(e);}  
@@ -382,28 +419,38 @@ Modified By:        Date:           Changes:
         String keyForTrgtStngRcrds = '';
         Map<String, List<Core_MDF_Target_Setting_Line_Item__c>> mapOfKeyAndTargtSetngLineItemRcrds = new Map<String, List<Core_MDF_Target_Setting_Line_Item__c>>();
         try{
-            if(!lstTrgtStngRrds.isEmpty()){
-                for(Core_MDF_Target_Setting_Line_Item__c itrTrgtStngLnItmRcrd : lstTrgtStngRrds){
-                    //key for validating duplicates.
-                    keyForTrgtStngRcrds = itrTrgtStngLnItmRcrd.Core_MDF_Account__c + '_' +
-                                            itrTrgtStngLnItmRcrd.Core_MDF_Priority_nm__c + '_' + 
-                                            itrTrgtStngLnItmRcrd.Core_MDF_Bucket_nm__c + '_' +
-                                            itrTrgtStngLnItmRcrd.Core_MDF_Country_Name_nm__c + '_' +
-                                            itrTrgtStngLnItmRcrd.Core_MDF_Campaign_Name__c + '_' +
-                                            itrTrgtStngLnItmRcrd.Core_MDF_Budget_Type_nm__c + '_' +
-                                            itrTrgtStngLnItmRcrd.Core_MDF_Spending_Version_Record_Name__c + '_' +
-                                            itrTrgtStngLnItmRcrd.Core_MDF_Spending_Targets_Record_Name__c;
-        
-                    if(!String.isEmpty(keyForTrgtStngRcrds)){
-                        if(!mapOfKeyAndTargtSetngLineItemRcrds.containsKey(keyForTrgtStngRcrds)){
-                            mapOfKeyAndTargtSetngLineItemRcrds.put(keyForTrgtStngRcrds,new List<Core_MDF_Target_Setting_Line_Item__c>{itrTrgtStngLnItmRcrd});
-                        }else{
-                            mapOfKeyAndTargtSetngLineItemRcrds.get(keyForTrgtStngRcrds).add(itrTrgtStngLnItmRcrd);
-                        }
-                    }
-                }	
+            // US - TWC702-14285: Flatten nested IFs (no logic change)
+            // Early exit if list is empty
+            if(lstTrgtStngRrds.isEmpty()){
+                return mapOfKeyAndTargtSetngLineItemRcrds;         //Refactored: Using guard clauses to avoid deep nesting
             }
-        }catch(Exception e){ Core_MDF_CCP_UtilityClass.logError(e);}  
-        return mapOfKeyAndTargtSetngLineItemRcrds;
-    } 
+            
+            for(Core_MDF_Target_Setting_Line_Item__c itrTrgtStngLnItmRcrd : lstTrgtStngRrds){
+                //key for validating duplicates.
+                keyForTrgtStngRcrds = itrTrgtStngLnItmRcrd.Core_MDF_Account__c + '_' +
+                                        itrTrgtStngLnItmRcrd.Core_MDF_Priority_nm__c + '_' + 
+                                        itrTrgtStngLnItmRcrd.Core_MDF_Bucket_nm__c + '_' +
+                                        itrTrgtStngLnItmRcrd.Core_MDF_Country_Name_nm__c + '_' +
+                                        itrTrgtStngLnItmRcrd.Core_MDF_Campaign_Name__c + '_' +
+                                        itrTrgtStngLnItmRcrd.Core_MDF_Budget_Type_nm__c + '_' +
+                                        itrTrgtStngLnItmRcrd.Core_MDF_Spending_Version_Record_Name__c + '_' +
+                                        itrTrgtStngLnItmRcrd.Core_MDF_Spending_Targets_Record_Name__c;
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                // Early exit if key is empty
+                if(String.isEmpty(keyForTrgtStngRcrds)){
+                    continue;            //Refactored: Using guard clauses to avoid deep nesting
+                }
+                
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                // Add to map or append to existing list
+                if(mapOfKeyAndTargtSetngLineItemRcrds.containsKey(keyForTrgtStngRcrds)){
+                    mapOfKeyAndTargtSetngLineItemRcrds.get(keyForTrgtStngRcrds).add(itrTrgtStngLnItmRcrd); // added to existing list
+          }else{
+                    mapOfKeyAndTargtSetngLineItemRcrds.put(keyForTrgtStngRcrds,new List<Core_MDF_Target_Setting_Line_Item__c>{itrTrgtStngLnItmRcrd});   // created new list
+                }
+            }	
+        }catch(Exception e){ Core_MDF_CCP_UtilityClass.logError(e);}
+         return mapOfKeyAndTargtSetngLineItemRcrds;  
+     
+    }
 }

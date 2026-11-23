@@ -5,6 +5,7 @@
   flex-direction: row;
   min-width: 0;
   border-radius: .25rem;
+  line-height: var(--lwc-lineHeightText, 1.5);
 }
 
 a {
@@ -24,5 +25,5 @@ a {
 }
 
 .empty-list-message {
-  color: #8e959d;
+  color: var(--lwc-colorTextIconDefault, #747474);
 }

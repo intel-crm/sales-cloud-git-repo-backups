@@ -11,7 +11,7 @@
         <chartType>Pie</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>Opportunity.Core_Technical_Owner__c</groupingColumn>
+        <groupingColumn>FULL_NAME</groupingColumn>
         <legendPosition>Bottom</legendPosition>
         <location>CHART_TOP</location>
         <showAxisLabels>true</showAxisLabels>
@@ -33,7 +33,6 @@
     </columns>
     <description>Chart that displays total number of Channel Opportunities By Owner.</description>
     <filter>
-        <booleanFilter>1 AND 2 AND (3 OR 4 OR 5)</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Channel_Opportunity_Ind__c</column>
             <columnToColumn>false</columnToColumn>
@@ -41,40 +40,12 @@
             <operator>equals</operator>
             <value>1</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Coverage_Nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Partner-Led Opportunity</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Coverage_Type_Nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Disti Design Registration High</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Coverage_Type_Nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Disti Design Registration Low</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Coverage_Type_Nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>PSG Design Registration</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Technical_Owner__c</field>
+        <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Total Number of Opportunities By Owner</name>

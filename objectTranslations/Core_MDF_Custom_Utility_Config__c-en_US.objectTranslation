@@ -14,11 +14,23 @@
     </fields>
     <fields>
         <label><!-- App --></label>
+        <name>Core_MDF_App__c</name>
+    </fields>
+    <fields>
+        <label><!-- App --></label>
         <name>Core_MDF_App_nm__c</name>
     </fields>
     <fields>
         <label><!-- Batch Size --></label>
+        <name>Core_MDF_Batch_Size__c</name>
+    </fields>
+    <fields>
+        <label><!-- Batch Size --></label>
         <name>Core_MDF_Batch_Size_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Column Headers --></label>
+        <name>Core_MDF_Column_Headers__c</name>
     </fields>
     <fields>
         <label><!-- Column Headers --></label>
@@ -33,6 +45,15 @@
         <name>Core_MDF_Ext_PermissionSet_Names_txt__c</name>
     </fields>
     <fields>
+        <label><!-- Ext Permission Set Name --></label>
+        <name>Core_MDF_Ext_Permission_Set_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Filter field label --></help>
+        <label><!-- Filter Criteria --></label>
+        <name>Core_MDF_Filter_Criteria__c</name>
+    </fields>
+    <fields>
         <label><!-- Filter Criteria --></label>
         <name>Core_MDF_Filter_Criteria_txt__c</name>
     </fields>
@@ -45,8 +66,20 @@
         <name>Core_MDF_Int_PermisionSet_Names_txt__c</name>
     </fields>
     <fields>
+        <label><!-- Int Permission Set Name --></label>
+        <name>Core_MDF_Int_Permision_Set_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mandatory Filter Fields --></label>
+        <name>Core_MDF_Mandatory_Filter_Fields__c</name>
+    </fields>
+    <fields>
         <label><!-- Mandatory Filter Fields --></label>
         <name>Core_MDF_Mandatory_Filter_Fields_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name field --></label>
+        <name>Core_MDF_Name__c</name>
     </fields>
     <fields>
         <label><!-- Name field --></label>
@@ -54,7 +87,15 @@
     </fields>
     <fields>
         <label><!-- Object Label --></label>
+        <name>Core_MDF_Object_Label__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Label --></label>
         <name>Core_MDF_Object_Label_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object --></label>
+        <name>Core_MDF_Object__c</name>
     </fields>
     <fields>
         <label><!-- Object --></label>
@@ -62,11 +103,23 @@
     </fields>
     <fields>
         <label><!-- Profiles --></label>
+        <name>Core_MDF_Profiles__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profiles --></label>
         <name>Core_MDF_Profiles_nm__c</name>
     </fields>
     <fields>
         <label><!-- Program --></label>
+        <name>Core_MDF_Program__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
         <name>Core_MDF_Program_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Type Ids --></label>
+        <name>Core_MDF_Record_Type_Ids__c</name>
     </fields>
     <fields>
         <label><!-- Record Type Names --></label>
@@ -74,11 +127,23 @@
     </fields>
     <fields>
         <label><!-- System User Name --></label>
+        <name>Core_MDF_System_User_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- System User Name --></label>
         <name>Core_MDF_System_User_Name_txt__c</name>
     </fields>
     <fields>
         <label><!-- Type of From User --></label>
+        <name>Core_MDF_Type_of_From_User__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type of From User --></label>
         <name>Core_MDF_Type_of_From_User_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type of To User --></label>
+        <name>Core_MDF_Type_of_To_User__c</name>
     </fields>
     <fields>
         <label><!-- Type of To User --></label>
@@ -90,11 +155,23 @@
     </fields>
     <fields>
         <label><!-- isActive --></label>
+        <name>Core_MDF_isActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- isActive --></label>
         <name>Core_MDF_isActive_ind__c</name>
     </fields>
     <fields>
         <label><!-- isProgramApplicable --></label>
+        <name>Core_MDF_isProgramApplicable__c</name>
+    </fields>
+    <fields>
+        <label><!-- isProgramApplicable --></label>
         <name>Core_MDF_isProgramApplicable_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- requiredQueryFields --></label>
+        <name>Core_MDF_requiredQueryFields__c</name>
     </fields>
     <fields>
         <label><!-- requiredQueryFields --></label>

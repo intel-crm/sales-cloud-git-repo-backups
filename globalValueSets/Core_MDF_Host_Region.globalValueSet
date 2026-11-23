@@ -26,6 +26,12 @@
         <isActive>false</isActive>
         <label>INDIA</label>
     </customValue>
+    <customValue>
+        <fullName>WW</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>WW</label>
+    </customValue>
     <description>Picklist values for Host Region</description>
     <masterLabel>Host Region</masterLabel>
     <sorted>false</sorted>

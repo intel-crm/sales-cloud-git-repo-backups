@@ -1,0 +1,77 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+                access="global"
+                controller="LightningComponentToDisplayFilesCtrl">
+    <!--aura doInit handler--> 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!--aura attributes-->  
+    <aura:attribute name="selectedDocumentId" type="string"/>
+    <aura:attribute name="masterTableVariable" type="Boolean" default="false"/>
+    <aura:attribute name="hasModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="searchString" type="String"/>
+    <aura:attribute name="libraryList" type="List"/>
+    <aura:attribute name="unfilteredLibraryList" type="List"/>
+    
+    <!--Internal private calculation attributes-->
+    <aura:attribute access="private" name="searchTimeout" type="Object"/>
+    
+    <!-- Search Files section -->
+    <div class="slds-box slds-theme_shade">
+        <div class="slds-form-element">
+            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+                <lightning:icon iconName="utility:search" size="xx-small" class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"/>
+                <lightning:input name="searchFilesInput" placeholder="Search Files..." variant="label-hidden" class="searchFilesInput" value="{!v.searchString}" onkeyup="{!c.handleInputChange }"/>
+            </div>
+        </div>
+    </div>
+    <!--/ Search Files section -->
+    
+    <!-- Display List Of Available ContentDocuments Start--> 
+    <aura:if isTrue="{! v.masterTableVariable }">
+        <lightning:accordion allowMultipleSectionsOpen="true" >
+            <aura:iteration items="{!v.libraryList}" var="item">
+                <div class="slds-p-bottom_small">
+                    <div class="slds-section slds-is-open">
+                        <lightning:accordionSection name="{!item.key}" label="{!item.key}">
+                            <div class="slds-p-left_medium slds-p-bottom_small">
+                                <aura:iteration items="{!item.value}" var="file">
+                                    <lightning:accordionSection name="{!file.key}" label="{!file.key}">
+                                        <aura:iteration items="{!file.value}" var="index">
+                                            <div class="slds-p-left_x-large">
+                                                <div title="{!index.contentTitle}" class="slds-p-bottom_small">
+                                                    <a class="slds-truncate" href="{!'/customersupport/s/contentdocument/'+index.contentId}">{!index.contentTitle}</a>
+                                                </div>
+                                            </div>   
+                                        </aura:iteration>  
+                                    </lightning:accordionSection>
+                                </aura:iteration>
+                            </div>
+                        </lightning:accordionSection>
+                    </div>
+                </div>
+            </aura:iteration>
+        </lightning:accordion>
+    </aura:if>
+    <!-- Display List Of Available ContentDocuments End-->  
+    
+    <!--###### FILE PREVIEW MODAL BOX START ######--> 
+    <aura:if isTrue="{!v.hasModalOpen}">
+        <section onclick="{!c.closeModel}"
+                 role="dialog"
+                 aria-modal="true"
+                 class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <div class="slds-modal__content slds-p-around_medium slds-text-align_center"
+                     style="background: transparent;">
+                    <div style="width: 50%; margin: 0 auto; text-align: left">
+                        <!--<lightning:fileCard> to preview file using content document Id -->
+                        <lightning:fileCard fileId="{!v.selectedDocumentId}"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    <!--###### FILE PREVIEW MODAL BOX END ######-->
+    
+</aura:component>

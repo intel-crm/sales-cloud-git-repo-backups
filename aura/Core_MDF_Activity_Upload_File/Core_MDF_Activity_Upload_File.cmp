@@ -3,7 +3,7 @@
 <aura:component
   implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
   access="global"
-  Controller="Core_MDF_FileUploadController"
+                  Controller="Core_MDF_FileUploadController"
 >
   <!-- Attribute Initialization -->
   <aura:attribute
@@ -65,10 +65,12 @@
   <aura:attribute name="filedata" type="Object" />
   <aura:attribute name="iserror" type="Boolean" default="false"/>
   <aura:attribute name="errormsg" type="string" default=""/>
-    <aura:attribute name="isOpalActivity" type="Boolean" default="false" />
-    <aura:attribute name="activityBudgetType" type="String" default="" description="Stores the Budget Type selected at Activity" />
-    <aura:attribute name="opalFileUploadBudgetTypes" type="Boolean" default="false" />
-
+  <aura:attribute name="isOpalActivity" type="Boolean" default="false" />
+  <aura:attribute name="activityBudgetType" type="String" default="" description="Stores the Budget Type selected at Activity" />
+  <aura:attribute name="opalFileUploadBudgetTypes" type="Boolean" default="false" />
+  <aura:attribute name="showAIIcon" type="Boolean" default="false" description="Controls whether AI icon should be displayed"/>
+<aura:attribute name="isLoadingAI" type="Boolean" default="false" description="Controls AI loading state"/>
+<aura:registerEvent name="aiSuggestionEvent" type="c:Core_MDF_AI_Suggestions_Event"/>
   <!-- Registering the Component Event for passing the values to parent -->
   <aura:registerEvent
     name="fileuploadcheck"
@@ -79,7 +81,7 @@
   <!-- Modal Starts-->
   <div style="width:100%">
     <lightning:layout class="slds-page-header slds-page-header--object-home">
-      <lightning:layoutItem padding="horizontal-small">
+      <lightning:layoutItem padding="horizontal-small" size="12" smallDeviceSize="12" mediumDeviceSize="12" largeDeviceSize="12">
         <div class="page-section page-header">
           <h1 class="slds-text-heading--label"
             >{!$Label.c.Core_MDF_UploadAttachmentSection}</h1
@@ -87,51 +89,68 @@
         </div>
       </lightning:layoutItem>
     </lightning:layout>
-    <aura:if isTrue="{!v.createEditPFRAttr}">
-      <lightning:layout>
-        <lightning:layoutItem size="6" padding="horizontal-medium" >
-          <div>
-            <lightning:fileUpload
-              label="{!$Label.c.Core_MDF_AddAttachment}"
-              multiple="{!v.multiple}"
-              accept="{!v.accept}"
-              recordId="{!v.userInfo}"
-              onuploadfinished="{!c.handleUploadFinished}"
-              disabled="{!v.disabled}"
-            />
-          </div>
-        </lightning:layoutItem>
-        <!--Modified Date : 4-June-2020 Modified By : NZ Description : Display Event form links only for Event Type Activties -->
-        <lightning:layoutItem size="6" padding="horizontal-medium" class="slds-float_left">
-          <aura:if isTrue="{!v.displayEventTemplate}">
-            <div class="slds-list_horizontal slds-has-block-links">
-	    <!-- US1016810 - Added Extra condition to display only single Event Form link for OPAL Activities -->
-            <aura:if isTrue="{!and(v.isOpalActivity)}">
-              <span style="padding-left: 20px;">
-	          <br /><br />
-	          <a href="{!$Label.c.Core_MDF_EventApprovalFormLink2H}" target="_blank">
-	            {!$Label.c.Core_MDF_EventForm2H}
-	          </a>
-              </span>
-              <aura:set attribute="else">
-              <span style="padding-left: 20px;">
-                  <br /><br />
-                  <a href="{!$Label.c.Core_MDF_EventApprovalFormLink}" target="_blank">
-                      {!$Label.c.Core_MDF_EventApprovalForm}
-                  </a>
-              </span>
-              <span style="padding-left: 20px;">
-                  <br /><br />
-                  <a href="{!$Label.c.Core_MDF_EventApprovalFormLink2020}" target="_blank">
-                    {!$Label.c.Core_MDF_EventApprovalForm2020}
-                  </a>
-              </span>
-              </aura:set>
-              </aura:if>
-            </div>
-            </aura:if>
-                     <aura:if isTrue="{!(v.displayIndustryPartnerTemplate)}">
+      
+      <div class="c-container">
+          <aura:if isTrue="{!v.createEditPFRAttr}">
+              <lightning:layout horizontalAlign="left" multipleRows="true">
+                  <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="3" largeDeviceSize="3"  padding="around-small" >
+                      <lightning:fileUpload
+                                            label="{!$Label.c.Core_MDF_AddAttachment}"
+                                            multiple="{!v.multiple}"
+                                            accept="{!v.accept}"
+                                            recordId="{!v.userInfo}"
+                                            onuploadfinished="{!c.handleUploadFinished}"
+                                            disabled="{!v.disabled}"
+                                            />
+                  </lightning:layoutItem>
+                  <!-- <aura:if isTrue="{!v.showAIIcon}">
+                  <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="2" largeDeviceSize="2" padding="around-small">
+                      <div  style="margin-top: 22px;">
+                        <img src="{!$Resource.Core_MDF_AI_Icon}" 
+                             alt="Get AI Suggestions"
+                             title="Get AI Suggestions"
+                             onclick="{!c.triggerAISuggestions}"
+                             class="ai-suggestion-icon slds-m-horizontal_small disabled-icon"
+                             style="cursor: pointer; width: 39px; height: 39px; opacity: 1;" />
+                          
+                          <aura:if isTrue="{!v.isLoadingAI}">
+                              <div class="slds-m-top_small">
+                                  <lightning:spinner size="small" alternativeText="AI is analyzing..."></lightning:spinner>
+                              </div>
+                          </aura:if>
+                      </div>
+                  </lightning:layoutItem>
+              </aura:if> -->
+                  <!--Modified Date : 4-June-2020 Modified By : NZ Description : Display Event form links only for Event Type Activties -->
+                  <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="5" largeDeviceSize="5"  padding="horizontal-small" >
+                      <aura:if isTrue="{!v.displayEventTemplate}">
                           <div class="slds-list_horizontal slds-has-block-links">
+                              <aura:if isTrue="{!and(v.isOpalActivity, v.opalFileUploadBudgetTypes)}">
+                                 <span style="padding-left: 20px;">
+                                    <br /><br />
+                                   <a href="{!$Label.c.Core_MDF_EventApprovalFormLink2H}" rel="noopener noreferrer" target="_blank">
+                                        {!$Label.c.Core_MDF_EventForm2H}
+                                    </a>
+                                </span>
+                                <aura:set attribute="else">
+                                     <span style="padding-left: 20px;">
+                                        <br /><br />
+                                        <a href="{!$Label.c.Core_MDF_EventApprovalFormLink}" rel="noopener noreferrer" target="_blank">
+                                            {!$Label.c.Core_MDF_EventApprovalForm}
+                                        </a>
+                                    </span>
+                                    <span style="padding-left: 20px;">
+                                        <br /><br />
+                                        <a href="{!$Label.c.Core_MDF_EventApprovalFormLink2020}" rel="noopener noreferrer" target="_blank">
+                                            {!$Label.c.Core_MDF_EventApprovalForm2020}
+                                        </a>
+                                    </span>
+                                    </aura:set>
+                              </aura:if>                       
+                          </div>
+                      </aura:if>
+                     <aura:if isTrue="{!(v.displayIndustryPartnerTemplate)}">
+                        <div class="slds-list_horizontal slds-has-block-links">
                               <aura:if isTrue="{!v.opalFileUploadBudgetTypes}">
                                   <aura:if isTrue="{!v.recordtypeDeveloperName == $Label.c.Core_MDF_CCF_RecordTypeName}">
                                  <span style="padding-left: 20px;">
@@ -153,11 +172,15 @@
                                      </aura:if>                                
                           </div>
                       </aura:if>
-        </lightning:layoutItem>
-      </lightning:layout>
-    </aura:if>
-    <br></br>
-    <aura:if isTrue="{!not(empty(v.filedata))}">
+                  </lightning:layoutItem>
+                  
+               </lightning:layout>
+          </aura:if>
+          
+          <br></br>
+        
+           
+         <aura:if isTrue="{!not(empty(v.filedata))}">
       <div style="width:100%">
         <lightning:layout>
           <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
@@ -225,18 +248,15 @@
         </lightning:layout>
       </div>
     </aura:if>
-    <aura:if isTrue="{!(empty(v.filedata))}">
-        <p>{!$Label.c.Core_MDF_NoFiles} </p>
-      </aura:if><br/>
-    <aura:if isTrue="{!(v.iserror)}">
-        <!--<div class="slds-notify slds-notify_toast slds-theme_error">
-            <div class="slds-notify__content">
-                <h5 class="slds-text-heading_small slds-align_absolute-center">{!v.errormsg}</h5>
-                <p class="slds-align_absolute-center">{!v.errormsg}</p>
-            </div>
-        </div>-->
-        <p class="slds-text-title_bold slds-text-color_error">{!v.errormsg}</p>
-    </aura:if>
+          <aura:if isTrue="{!(empty(v.filedata))}">
+              <p>{!$Label.c.Core_MDF_NoFiles} </p>
+          </aura:if><br/>
+          <aura:if isTrue="{!(v.iserror)}">
+              <p class="slds-text-title_bold slds-text-color_error">{!v.errormsg}</p>
+          </aura:if>
+          
+      </div>
+      
   </div>
   <!-- Modal Closes -->
 </aura:component>

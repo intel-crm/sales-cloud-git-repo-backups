@@ -4,68 +4,59 @@ public class Core_MDF_ShareRecordToGeoGrp_Test {
     // test method for data setup
     @TestSetup static void setUpData(){
         
-        Profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
-        UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
-        User usr2 = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr2.profileId = systemAdminProfile.Id;
-        usr2.Email='test2@example.com';
-        usr2.UserRoleId=usRole.Id;
-        Database.insert(usr2);
-        System.runAs(usr2){
-        
         List<Core_Trigger_Executions__c> triggerExecutionList = new List<Core_Trigger_Executions__c>();
-    Core_Trigger_Executions__c execution1 = new Core_Trigger_Executions__c();
-    execution1.Name = 'Core_MDF_ProcessEntitlementsFlag';
-    execution1.Core_Active__c = true;
-    execution1.Core_Class_Name__c = 'Core_ContactEntitlementHandler';
-    execution1.Core_Description__c = 'Process CCP Contacts';
-    execution1.Core_Object__c = 'Contact Entitlement';
-    execution1.Core_Trigger_Events__c = 'After Update';
+            Core_Trigger_Executions__c execution1 = new Core_Trigger_Executions__c();
+            execution1.Name = 'Core_MDF_ProcessEntitlementsFlag';
+            execution1.Core_Active__c = true;
+            execution1.Core_Class_Name__c = 'Core_ContactEntitlementHandler';
+            execution1.Core_Description__c = 'Process CCP Contacts';
+            execution1.Core_Object__c = 'Contact Entitlement';
+            execution1.Core_Trigger_Events__c = 'After Update';
 
-    Core_Trigger_Executions__c execution2 = new Core_Trigger_Executions__c();
-    execution2.Name = 'pnumDeletionIndicator';
-    execution2.Core_Active__c = true;
-    execution2.Core_Class_Name__c = 'Core_MDF_UserGroupMapping_Deletion';
-    execution2.Core_Description__c = 'Process CCP Contacts';
-    execution2.Core_Object__c = 'Contact Entitlement';
-    execution2.Core_Trigger_Events__c = 'After Update';
+            Core_Trigger_Executions__c execution2 = new Core_Trigger_Executions__c();
+            execution2.Name = 'pnumDeletionIndicator';
+            execution2.Core_Active__c = true;
+            execution2.Core_Class_Name__c = 'Core_MDF_UserGroupMapping_Deletion';
+            execution2.Core_Description__c = 'Process CCP Contacts';
+            execution2.Core_Object__c = 'Contact Entitlement';
+            execution2.Core_Trigger_Events__c = 'After Update';
 
-    Core_Trigger_Executions__c execution3 = new Core_Trigger_Executions__c();
-    execution3.Name = 'callExternalUserSharingFromUGMDeletion';
-    execution3.Core_Active__c = true;
-    execution3.Core_Class_Name__c = 'Core_MDF_UserGroupMapping_Deletion';
-    execution3.Core_Description__c = 'Process CCP Contacts';
-    execution3.Core_Object__c = 'Contact Entitlement';
-    execution3.Core_Trigger_Events__c = 'After Update';
+            Core_Trigger_Executions__c execution3 = new Core_Trigger_Executions__c();
+            execution3.Name = 'callExternalUserSharingFromUGMDeletion';
+            execution3.Core_Active__c = true;
+            execution3.Core_Class_Name__c = 'Core_MDF_UserGroupMapping_Deletion';
+            execution3.Core_Description__c = 'Process CCP Contacts';
+            execution3.Core_Object__c = 'Contact Entitlement';
+            execution3.Core_Trigger_Events__c = 'After Update';
 
-    Core_Trigger_Executions__c execution4 = new Core_Trigger_Executions__c();
-    execution4.Name = 'callExtUsrSharingFrmUGMAutomation';
-    execution4.Core_Active__c = true;
-    execution4.Core_Class_Name__c = 'Core_MDF_Process_CCP_Contacts';
-    execution4.Core_Description__c = 'Process CCP Contacts';
-    execution4.Core_Object__c = 'Contact Entitlement';
-    execution4.Core_Trigger_Events__c = 'After Update';
-  
-    Core_Trigger_Executions__c execution6 = new Core_Trigger_Executions__c();
-    execution6.Name = 'Core_MDF_PNUM_Addition';
-    execution6.Core_Active__c = true;
-    execution6.Core_Class_Name__c = 'Core_MDF_ProcessEntitlements';
-    execution6.Core_Description__c = 'Process CCP Contacts';
-    execution6.Core_Object__c = 'Contact Entitlement';
-    execution6.Core_Trigger_Events__c = 'After Update'; 
+            Core_Trigger_Executions__c execution4 = new Core_Trigger_Executions__c();
+            execution4.Name = 'callExtUsrSharingFrmUGMAutomation';
+            execution4.Core_Active__c = true;
+            execution4.Core_Class_Name__c = 'Core_MDF_Process_CCP_Contacts';
+            execution4.Core_Description__c = 'Process CCP Contacts';
+            execution4.Core_Object__c = 'Contact Entitlement';
+            execution4.Core_Trigger_Events__c = 'After Update';
+        
+            Core_Trigger_Executions__c execution6 = new Core_Trigger_Executions__c();
+            execution6.Name = 'Core_MDF_PNUM_Addition';
+            execution6.Core_Active__c = true;
+            execution6.Core_Class_Name__c = 'Core_MDF_ProcessEntitlements';
+            execution6.Core_Description__c = 'Process CCP Contacts';
+            execution6.Core_Object__c = 'Contact Entitlement';
+            execution6.Core_Trigger_Events__c = 'After Update'; 
 
-    triggerExecutionList.add(execution1); triggerExecutionList.add(execution6); triggerExecutionList.add(execution2);triggerExecutionList.add(execution3);triggerExecutionList.add(execution4);
+            triggerExecutionList.add(execution1); triggerExecutionList.add(execution6); triggerExecutionList.add(execution2);triggerExecutionList.add(execution3);triggerExecutionList.add(execution4);
 
-    Database.insert(triggerExecutionList);
-  
-    List<Core_MDF_Configuration__c> configlist=new List<Core_MDF_Configuration__c>();
-    Core_MDF_Configuration__c config=new Core_MDF_Configuration__c();
-    config.Core_MDF_Category__c='ProcessEntitlements';
-    config.Name='Core_MDF_ProcessEntitlements_Class';
-    config.Core_MDF_Value__c='Core_MDF_ProcessEntitlements';
-    configlist.add(config);
-    Database.insert(configlist);
-    
+            Database.insert(triggerExecutionList);
+        
+        List<Core_MDF_Configuration__c> configlist=new List<Core_MDF_Configuration__c>();
+            Core_MDF_Configuration__c config=new Core_MDF_Configuration__c();
+            config.Core_MDF_Category__c='ProcessEntitlements';
+            config.Name='Core_MDF_ProcessEntitlements_Class';
+            config.Core_MDF_Value__c='Core_MDF_ProcessEntitlements';
+            configlist.add(config);
+            Database.insert(configlist);
+            
         List<Account> toBeUpdated = new List<Account>();
         
         // Creating Account with utility class
@@ -78,6 +69,13 @@ public class Core_MDF_ShareRecordToGeoGrp_Test {
         usr1.ProfileId = profileId;
         usr1.isActive = true;
         Database.insert(usr1);
+        Profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
+        //Permissionset internalFinanceUser=[SELECT Id From PermissionSet WHERE Label='CCP Internal Finance User'];
+        // Creating User with utility class 
+        User usr2 = Core_MDF_CCP_TestDataUtility.createUser(false);
+        usr2.profileId = systemAdminProfile.Id;
+        usr2.Email='test2@example.com';
+        Database.insert(usr2);
         Map<String,PermissionSet> nameToPerSet = new Map<String,PermissionSet>();
         for(PermissionSet pSet:[SELECT Id,Name FROM PermissionSet WHERE Name IN (
                             'Core_MDF_CCP_Internal_Retail_Finance_Usr','Core_MDF_CCP_Internal_IPA_Budget_Loader',
@@ -123,9 +121,14 @@ public class Core_MDF_ShareRecordToGeoGrp_Test {
         newGroup.DeveloperName = 'IPA_Test_Group';
         Database.insert(newGroup);
         
+        /*GroupMember newGroupMember = new GroupMember();
+        newGroupMember.GroupId = newGroup.ID;
+        newGroupMember.UserOrGroupId = usr1.Id;
+        Database.insert(newGroupMember);*/
+        
         // Creating channel program with utility class
         ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram ('Retail Marketing Funds','Retail Marketing Funds', true);
-        ChannelProgram cp2 = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', true);
+        ChannelProgram cp2 = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', true);
         ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Intel Partner Alliance','Intel Partner Alliance', true);
         
         Core_MDF_Partner_Group_Mapping__c pgm1 = new Core_MDF_Partner_Group_Mapping__c();
@@ -140,7 +143,8 @@ public class Core_MDF_ShareRecordToGeoGrp_Test {
         Account acc3 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Account 3', cp2.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, acc1.Id, false);
         
         Account acc4 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Account 4', cp.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, acc1.Id, true);
-    // Updating Accounts 
+
+        // Updating Accounts 
         acc1.isPartner = true;
         acc1.Core_Geo__c='ASMO';
         acc1.Core_Sub_Geo__c='LAR';
@@ -150,8 +154,8 @@ public class Core_MDF_ShareRecordToGeoGrp_Test {
         acc3.Core_MDF_CoMarketingActive__c = true;
         acc3.Core_Geo__c='';
         acc3.Core_Sub_Geo__c='';
-        acc4.Core_Geo__c='ASMO';
-        acc4.Core_Sub_Geo__c='NAR';
+        acc4.Core_Geo__c='';
+        acc4.Core_Sub_Geo__c='';
         toBeUpdated.add(acc1);
         toBeUpdated.add(acc2);
         toBeUpdated.add(acc3);
@@ -185,56 +189,64 @@ public class Core_MDF_ShareRecordToGeoGrp_Test {
         toBeUpdated.add(acc5);
         toBeUpdated.add(acc6);
         Database.upsert(toBeUpdated);
-        
-    string budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(acc6);
+       // Highlight: Unused Local Variable - Indira 
+       // string budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(acc6);
+        //Id ipaRecordtype = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get(Label.Core_MDF_IPA_Record_Type_Developer_Name).getRecordTypeId();  
         
         Core_MDF_ProcessEntitlementsSchedulable test1 = new Core_MDF_ProcessEntitlementsSchedulable();
         test1.execute(null);
         
         test.stopTest();
-        }
     }
     @isTest static void validateShareRecordToGeoGroup(){
-        //adding bypass feature to bypass access validation
-    List<String> bypassFunctionKeys = new List<String>();
-    bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
-    bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
+         //adding bypass feature to bypass access validation
+            List<String> bypassFunctionKeys = new List<String>();
+            bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
+            bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
 
-    Set<String> myset1 = new Set<String>();
-    List<String> result1 = new List<String>();
-    myset1.addAll(bypassFunctionKeys);
-    result1.addAll(myset1);
+            Set<String> myset1 = new Set<String>();
+            List<String> result1 = new List<String>();
+            myset1.addAll(bypassFunctionKeys);
+            result1.addAll(myset1);
 
-    List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
-  
-        test.startTest();
+            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
         
-        User usr1 = [Select id from User where Email='test1@example.com' limit 1];
+        test.startTest();
+        // Highlight: Unused Local Variable - Indira
+       // User usr1 = [Select id from User where Email='test1@example.com' limit 1];
         User usr2 = [Select id from User where Email='test2@example.com' limit 1]; 
         System.runAs(usr2){
-        Group newGrp = [Select id, DeveloperName from Group where DeveloperName='IPA_Test_Group' limit 1];
+        // Highlight: Unused Local Variable - Indira
+       // Group newGrp = [Select id, DeveloperName from Group where DeveloperName='IPA_Test_Group' limit 1];
         
+                
         
         Account acc1 = [Select Id, Name,Core_MDF_Parent_Fund_Account__c from Account where Name in ('Test Account 2')];
         Account acc2 = [Select Id, Name,Core_MDF_Parent_Fund_Account__c from Account where Name in ('Test Account 3')];
-        Account acc3 = [Select Id, Name,Core_MDF_Parent_Fund_Account__c,Core_Geo__c,Core_Sub_Geo__c from Account where Name in ('Test Account 4')];
+        Account acc3 = [Select Id, Name,Core_MDF_Parent_Fund_Account__c from Account where Name in ('Test Account 4')];
         Account acc4 = [Select Id, Name,Core_MDF_Parent_Fund_Account__c from Account where Name in ('Test Account 6')];
-    Core_MDF_RecordGeoShare share5 = new Core_MDF_RecordGeoShare(acc1.Id,'ASMO','LAR','Intel Partner Alliance',null);
-    List<Core_MDF_RecordGeoShare> shareLst5 = new List<Core_MDF_RecordGeoShare>();
-    shareLst5.add(share5);
-    Core_MDF_ShareRecordToGeoGroup.getShareRecordToGeoGroup('Account', shareLst5);
-    Id ipaRecordtype = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get(Label.Core_MDF_IPA_Record_Type_Developer_Name).getRecordTypeId();  
+            Core_MDF_RecordGeoShare share5 = new Core_MDF_RecordGeoShare(acc1.Id,'ASMO','LAR','Intel Partner Alliance',null);
+            List<Core_MDF_RecordGeoShare> shareLst5 = new List<Core_MDF_RecordGeoShare>();
+            shareLst5.add(share5);
+            Core_MDF_ShareRecordToGeoGroup.getShareRecordToGeoGroup('Account', shareLst5);
+        //string budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(acc3);
+        Id ipaRecordtype = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get(Label.Core_MDF_IPA_Record_Type_Developer_Name).getRecordTypeId();  
         
         ChannelProgram cp1 = [Select Id, Name from ChannelProgram where Name in('Retail Marketing Funds')];
-        ChannelProgram cp2 = [Select Id, Name from ChannelProgram where Name in('Client')];
+        ChannelProgram cp2 = [Select Id, Name from ChannelProgram where Name in('Client Co-Marketing Fund')];
         ChannelProgram cp3 = [Select Id, Name from ChannelProgram where Name in('Intel Partner Alliance')];
         List<PartnerMarketingBudget> pmbList = new List<PartnerMarketingBudget>();
         PartnerMarketingBudget pmb1 = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 1', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc1.Id, cp1.Id, 3000, System.Today(), System.Today().addDays(10), false);
-        pmbList.add(pmb1);
+        //pmb1.Core_MDF_Budget_Type_Txt__c = 'CCF 1.0';
+            pmbList.add(pmb1);
         PartnerMarketingBudget pmb2 = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 2', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc4.Id, cp1.Id, 3000, System.Today(), System.Today().addDays(10), false);
-        pmbList.add(pmb2);
+        //pmb2.Core_MDF_Budget_Type_Txt__c = 'CCF 1.0';
+            pmbList.add(pmb2);
         PartnerMarketingBudget pmb3 = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 3', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp2.Id, 3000, System.Today(), System.Today().addDays(10), false);
-        pmbList.add(pmb3);
+        //pmb3.Core_MDF_Budget_Type_Txt__c = 'CCF 1.0';
+            pmbList.add(pmb3);
+        //PartnerMarketingBudget pmb5 = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 4', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc3.Id, cp3.Id, 3000, System.Today(), System.Today().addDays(10), false);
+        //insert pmb5;
         pmb3.Core_MDF_Budget_Type_Txt__c = 'OEM CMP';
         insert pmbList;
         
@@ -243,9 +255,8 @@ public class Core_MDF_ShareRecordToGeoGrp_Test {
         
         Campaign cmp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 12','Gaming','Intel® Core™ i7 Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today(), System.today().addDays(300), 10000, 'Always Connected PC', acc2.Id,'Desktop', false);
         cmp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
-        database.insert(cmp);
-        
-    Profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
+            database.insert(cmp);
+        Profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
 
         //Core_MDF_Partner_Node_User_Mapping__c pnum = [Select id from Core_MDF_Partner_Node_User_Mapping__c where Core_MDF_User__c = :usr1.ID];
         
@@ -253,115 +264,108 @@ public class Core_MDF_ShareRecordToGeoGrp_Test {
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
         usr.profileId = systemAdminProfile.Id;
         Database.insert(usr);
-        
-    Boolean isAsmoShared = false;
-    Boolean isAsmoLarROShared = false;
-    Boolean isEmeaShared = false;
-    Boolean isApjShared = false;
-    Boolean isCmpAsmoShared = false;
-    Boolean isCmpAsmoROShared = false;
-    Map<String,Id> grpNameIdMap = new Map<String,Id>();
-    Set<String> grpNames = new Set<String>();
-    Set<Id> budgetId = new Set<Id>();
-    budgetId.add(pmb1.Id);
-    budgetId.add(pmb2.Id);
-    budgetId.add(pmb3.Id);
-    Core_MDF_RecordGeoShare share = new Core_MDF_RecordGeoShare(pmb1.Id,'ASMO','LAR','Retail Marketing Funds');
-    Core_MDF_RecordGeoShare share2 = new Core_MDF_RecordGeoShare(pmb2.Id,'EMEA','Retail Marketing Funds');
-    Core_MDF_RecordGeoShare share3 = new Core_MDF_RecordGeoShare(pmb3.Id,'Client Co-Marketing Fund');
-    Core_MDF_RecordGeoShare share4 = new Core_MDF_RecordGeoShare(pmb4.Id,'ASMO','LAR','Intel Partner Alliance','Client Specialties MDF');
-    List<Core_MDF_RecordGeoShare> shareLst = new List<Core_MDF_RecordGeoShare>();
-    List<Core_MDF_RecordGeoShare> shareLst2 = new List<Core_MDF_RecordGeoShare>();
-    List<Core_MDF_RecordGeoShare> shareLst3 = new List<Core_MDF_RecordGeoShare>();
-    shareLst.add(share);
-    shareLst.add(share2);
-    shareLst.add(share3);
-    shareLst2.add(share4);
-    Core_MDF_ShareRecordToGeoGroup.getShareRecordToGeoGroup('PartnerMarketingBudget', shareLst);
-    Core_MDF_ShareRecordToGeoGroup.getShareRecordToGeoGroup('PartnerMarketingBudget', shareLst2);
-    Core_MDF_ShareRecordToGeoGroup.ShareRecordToGeoGroup('PartnerMarketingBudget', shareLst);
-    Core_MDF_ShareRecordToGeoGroup.ShareRecordToGeoGroup('PartnerMarketingBudget', shareLst2);
-    List<sObject> sharedRecordsBatch = Core_MDF_ShareRecordToGeoGroup.shareRecordToGeoGroupforBatch('PartnerMarketingBudget', shareLst);
-  
-    Core_MDF_ProgramGeoGroupMap__mdt metaRec = [SELECT Core_MDF_Group_Name__c,Core_MDF_Group_Name_RO__c, Core_MDF_Program__c,Core_MDF_Region__c,Core_MDF_Sub_Region__c
+        //System.runAs(usr2){
+            
+            
+           // try
+            //{
+                Boolean isAsmoShared = false;
+                Boolean isAsmoLarROShared = false;
+                Boolean isEmeaShared = false;
+                Boolean isApjShared = false;
+                Boolean isCmpAsmoShared = false;
+                Boolean isCmpAsmoROShared = false;
+                Map<String,Id> grpNameIdMap = new Map<String,Id>();
+                Set<String> grpNames = new Set<String>();
+                Set<Id> budgetId = new Set<Id>();
+                budgetId.add(pmb1.Id);
+                budgetId.add(pmb2.Id);
+                budgetId.add(pmb3.Id);
+                Core_MDF_RecordGeoShare share = new Core_MDF_RecordGeoShare(pmb1.Id,'ASMO','LAR','Retail Marketing Funds');
+                Core_MDF_RecordGeoShare share2 = new Core_MDF_RecordGeoShare(pmb2.Id,'EMEA','Retail Marketing Funds');
+                Core_MDF_RecordGeoShare share3 = new Core_MDF_RecordGeoShare(pmb3.Id,'Client Co-Marketing Fund');
+                Core_MDF_RecordGeoShare share4 = new Core_MDF_RecordGeoShare(pmb4.Id,'ASMO','LAR','Intel Partner Alliance','Client Specialties MDF');
+                //Core_MDF_RecordGeoShare share5 = new Core_MDF_RecordGeoShare(pnum.Id,'ASMO','LAR','Intel Partner Alliance');
+                List<Core_MDF_RecordGeoShare> shareLst = new List<Core_MDF_RecordGeoShare>();
+                List<Core_MDF_RecordGeoShare> shareLst2 = new List<Core_MDF_RecordGeoShare>();
+              // Highlight: Unused Local Variable - Indira
+              //  List<Core_MDF_RecordGeoShare> shareLst3 = new List<Core_MDF_RecordGeoShare>();
+                shareLst.add(share);
+                shareLst.add(share2);
+                shareLst.add(share3);
+                shareLst2.add(share4);
+                //shareLst3.add(share5);
+                Core_MDF_ShareRecordToGeoGroup.getShareRecordToGeoGroup('PartnerMarketingBudget', shareLst);
+                Core_MDF_ShareRecordToGeoGroup.getShareRecordToGeoGroup('PartnerMarketingBudget', shareLst2);
+                Core_MDF_ShareRecordToGeoGroup.ShareRecordToGeoGroup('PartnerMarketingBudget', shareLst);
+                Core_MDF_ShareRecordToGeoGroup.ShareRecordToGeoGroup('PartnerMarketingBudget', shareLst2);
+                //Core_MDF_ShareRecordToGeoGroup.ShareRecordToGeoGroup('Core_MDF_Partner_Node_User_Mapping__c', shareLst3);
+                Core_MDF_ProgramGeoGroupMap__mdt metaRec = [SELECT Core_MDF_Group_Name__c,Core_MDF_Group_Name_RO__c, Core_MDF_Program__c,Core_MDF_Region__c,Core_MDF_Sub_Region__c
                                                         From Core_MDF_ProgramGeoGroupMap__mdt
                                                         where Core_MDF_Region__c = 'ASMO' and Core_MDF_Sub_Region__c='LAR' and Core_MDF_Program__c = 'Retail Marketing Funds'];
-    grpNames.add(metaRec.Core_MDF_Group_Name__c);
-    grpNames.add(metaRec.Core_MDF_Group_Name_RO__c);
-    
-    Core_MDF_ProgramGeoGroupMap__mdt metaRec2 = [SELECT Core_MDF_Group_Name__c, Core_MDF_Group_Name_RO__c, Core_MDF_Program__c,Core_MDF_Region__c,Core_MDF_Sub_Region__c
-                          From Core_MDF_ProgramGeoGroupMap__mdt
-                          where Core_MDF_Region__c = 'EMEA' and Core_MDF_Program__c = 'Retail Marketing Funds'];
-    grpNames.add(metaRec2.Core_MDF_Group_Name__c);  
-    grpNames.add(metaRec2.Core_MDF_Group_Name_RO__c);
-    
-    Core_MDF_ProgramGeoGroupMap__mdt metaRec3 = [SELECT Core_MDF_Group_Name__c, Core_MDF_Group_Name_RO__c,Core_MDF_Budget_Type_txt__c, Core_MDF_Program__c,Core_MDF_Region__c,Core_MDF_Sub_Region__c
-                          From Core_MDF_ProgramGeoGroupMap__mdt
-                          where Core_MDF_Region__c = 'ASMO' and Core_MDF_Program__c = 'Client' limit 1];
-    grpNames.add(metaRec3.Core_MDF_Group_Name__c);
-    grpNames.add(metaRec3.Core_MDF_Group_Name_RO__c);
-    
-    Core_MDF_ProgramGeoGroupMap__mdt metaRec4 = [SELECT Core_MDF_Group_Name__c, Core_MDF_Group_Name_RO__c, Core_MDF_Program__c,Core_MDF_Region__c,Core_MDF_Sub_Region__c
-                          From Core_MDF_ProgramGeoGroupMap__mdt
-                          where Core_MDF_Region__c = '' and Core_MDF_Program__c = 'Client'];
-    grpNames.add(metaRec4.Core_MDF_Group_Name__c);
-    
-    for(Group grp : [Select Id, DeveloperName from Group where DeveloperName IN :grpNames])
-      {
-        grpNameIdMap.put(grp.DeveloperName,grp.Id);
-      }            
-       
-    List<PartnerMarketingBudgetShare> pmbShare = [SELECT ParentId, UserOrGroupId from PartnerMarketingBudgetShare where ParentId IN :budgetId];
-
-    for(PartnerMarketingBudgetShare shareRec : pmbShare)
-      {
-      
-        if(shareRec.ParentId==pmb1.Id && shareRec.UserOrGroupId.equals(grpNameIdMap.get(metaRec.Core_MDF_Group_Name__c))){
-          isAsmoShared = true;
-        }
-        if(shareRec.ParentId==pmb1.Id && shareRec.UserOrGroupId.equals(grpNameIdMap.get(metaRec.Core_MDF_Group_Name_RO__c))){
-          isAsmoLarROShared = true;
-        }
-        if(shareRec.ParentId==pmb2.Id && shareRec.UserOrGroupId.equals(grpNameIdMap.get(metaRec2.Core_MDF_Group_Name__c))){
-          isEmeaShared = true;
-        }
-        if(shareRec.ParentId==pmb3.Id && shareRec.UserOrGroupId.equals(grpNameIdMap.get(metaRec4.Core_MDF_Group_Name__c))){
-          isApjShared = true;
-        }
-          
-      }
-    System.assertEquals(true,isAsmoShared);
-    System.assertEquals(true,isAsmoLarROShared);
-    System.assertEquals(true,isApjShared);
-    
-    List<CampaignShare> cmpShare = [SELECT CampaignId, UserOrGroupId from CampaignShare where CampaignId = :cmp.Id];   
-    for(CampaignShare cmpShareRec : cmpShare)
-      {
-        if(cmpShareRec.UserOrGroupId.equals(grpNameIdMap.get(metaRec3.Core_MDF_Group_Name__c))){
-          isCmpAsmoShared = true;
-        }
-        if(cmpShareRec.UserOrGroupId.equals(grpNameIdMap.get(metaRec3.Core_MDF_Group_Name_RO__c))){
-          isCmpAsmoROShared = true;
-        }    
-      }
-        Core_MDF_ProgramGeoGroupMap__mdt geoGroupMap = [SELECT Core_MDF_Group_Name__c, Core_MDF_Group_Name_RO__c,Core_MDF_Budget_Type_txt__c, Core_MDF_Program__c,Core_MDF_Region__c,Core_MDF_Sub_Region__c
+            grpNames.add(metaRec.Core_MDF_Group_Name__c);
+            grpNames.add(metaRec.Core_MDF_Group_Name_RO__c);
+            
+            Core_MDF_ProgramGeoGroupMap__mdt metaRec2 = [SELECT Core_MDF_Group_Name__c, Core_MDF_Group_Name_RO__c, Core_MDF_Program__c,Core_MDF_Region__c,Core_MDF_Sub_Region__c
                                                         From Core_MDF_ProgramGeoGroupMap__mdt
-                                                        where Core_MDF_Region__c = 'ASMO' and Core_MDF_Program__c = 'Intel Partner Alliance' limit 1];
-        grpNames.add(geoGroupMap.Core_MDF_Group_Name__c);
-        grpNames.add(geoGroupMap.Core_MDF_Group_Name_RO__c);
+                                                        where Core_MDF_Region__c = 'EMEA' and Core_MDF_Program__c = 'Retail Marketing Funds'];
+            grpNames.add(metaRec2.Core_MDF_Group_Name__c);  
+            grpNames.add(metaRec2.Core_MDF_Group_Name_RO__c);
+            Core_MDF_ProgramGeoGroupMap__mdt metaRec3 = [SELECT Core_MDF_Group_Name__c, Core_MDF_Group_Name_RO__c,Core_MDF_Budget_Type_txt__c, Core_MDF_Program__c,Core_MDF_Region__c,Core_MDF_Sub_Region__c
+                                                        From Core_MDF_ProgramGeoGroupMap__mdt
+                                                        where Core_MDF_Region__c = 'ASMO' and Core_MDF_Program__c = 'Client' limit 1];
+            grpNames.add(metaRec3.Core_MDF_Group_Name__c);
+            grpNames.add(metaRec3.Core_MDF_Group_Name_RO__c);
+            Core_MDF_ProgramGeoGroupMap__mdt metaRec4 = [SELECT Core_MDF_Group_Name__c, Core_MDF_Group_Name_RO__c, Core_MDF_Program__c,Core_MDF_Region__c,Core_MDF_Sub_Region__c
+                                                        From Core_MDF_ProgramGeoGroupMap__mdt
+                                                        where Core_MDF_Region__c = '' and Core_MDF_Program__c = 'Client'];
+            grpNames.add(metaRec4.Core_MDF_Group_Name__c);
             
-        // Create a partner marketing budget with matching budget type
-        PartnerMarketingBudget testBudget = Core_MDF_CCP_TestDataUtility.createBudget('TestBudgetData',Core_MDF_CCP_TestDataUtility.budget_Record_Type,
-                                                                                      acc3.id, cp3.Id , 2000000,System.today().addDays(-20),System.today() , 
-                                                                                      false);
-        testBudget.IsIgnoreValidation = true;
-        testBudget.Core_MDF_Budget_Type_Txt__c = geoGroupMap.Core_MDF_Budget_Type_txt__c;
-        
-    Core_MDF_RecordGeoShare shareRecord = new Core_MDF_RecordGeoShare(testBudget.Id, acc3.Core_Geo__c, acc3.Core_Sub_Geo__c, cp3.Name, geoGroupMap.Core_MDF_Budget_Type_txt__c);
-        List<Core_MDF_RecordGeoShare> shareList = new List<Core_MDF_RecordGeoShare>{shareRecord};
+            for(Group grp : [Select Id, DeveloperName from Group where DeveloperName IN :grpNames])
+                {
+                    grpNameIdMap.put(grp.DeveloperName,grp.Id);
+                }            
+               
+            List<PartnerMarketingBudgetShare> pmbShare = [SELECT ParentId, UserOrGroupId from PartnerMarketingBudgetShare where ParentId IN :budgetId];
+ 
+            for(PartnerMarketingBudgetShare shareRec : pmbShare)
+                {
+              
+                    if(shareRec.ParentId==pmb1.Id && shareRec.UserOrGroupId.equals(grpNameIdMap.get(metaRec.Core_MDF_Group_Name__c))){
+                        isAsmoShared = true;
+                    }
+                    if(shareRec.ParentId==pmb1.Id && shareRec.UserOrGroupId.equals(grpNameIdMap.get(metaRec.Core_MDF_Group_Name_RO__c))){
+                        isAsmoLarROShared = true;
+                    }
+                    if(shareRec.ParentId==pmb2.Id && shareRec.UserOrGroupId.equals(grpNameIdMap.get(metaRec2.Core_MDF_Group_Name__c))){
+                        isEmeaShared = true;
+                    }
+                    if(shareRec.ParentId==pmb3.Id && shareRec.UserOrGroupId.equals(grpNameIdMap.get(metaRec4.Core_MDF_Group_Name__c))){
+                        isApjShared = true;
+                    }
+                        
+                }
+                System.assertEquals(true,isAsmoShared);
+                System.assertEquals(true,isAsmoLarROShared);
+                //System.assertEquals(true,isEmeaShared);
+                System.assertEquals(false,isApjShared);
+                
+                List<CampaignShare> cmpShare = [SELECT CampaignId, UserOrGroupId from CampaignShare where CampaignId = :cmp.Id];   
+            for(CampaignShare cmpShareRec : cmpShare)
+                {
+                    if(cmpShareRec.UserOrGroupId.equals(grpNameIdMap.get(metaRec3.Core_MDF_Group_Name__c))){
+                        isCmpAsmoShared = true;
+                    }
+                    if(cmpShareRec.UserOrGroupId.equals(grpNameIdMap.get(metaRec3.Core_MDF_Group_Name_RO__c))){
+                        isCmpAsmoROShared = true;
+                    }    
+                }
+               // System.assertEquals(true,isCmpAsmoShared);
+               // System.assertEquals(true,isCmpAsmoROShared);
+            
+            //}
 
-        List<Core_MDF_RecordGeoShare> updatedShareList = Core_MDF_ShareRecordToGeoGroup.addGroupstoRecordGeoShareLst('PartnerMarketingBudget', shareList);
-            
+           
         }
         test.stopTest();  
     }

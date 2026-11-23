@@ -50,7 +50,7 @@ private class Core_MDF_HoldCriteriaList_Test
         Database.insert(usr1);
         
         ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
        // ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.DCF_PROGRAM,'Data Center CoMarketing Fund', true);
         // Creating Intel Account with utility class
         Account dellCorpAccount = Core_MDF_CCP_TestDataUtility.createAccount ('Dell Corporation', cp.Id,Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);   
@@ -104,7 +104,7 @@ private class Core_MDF_HoldCriteriaList_Test
         Database.insert(pmbRecord);
         Test.startTest();
         // Create PFA records for the above accounts :
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
        // PartnerFundAllocation pfaDellCCFVirtualCorp = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('pfaDellCCFVirtualCorp',pmbRecord, dellCCFVirtualCorp, 10000,true);
         
         PartnerFundAllocation pfaDellCCFIndia = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('pfaDellCCFIndia',pmbRecord, dellCCFAPACIndia, 1000,true);
@@ -167,7 +167,7 @@ private class Core_MDF_HoldCriteriaList_Test
             indiaBank.Core_MDF_Payment_Currency_Cd__c = 'USD';
             indiaBank.Core_MDF_Bank_Status__c ='Active';
             Database.insert(indiaBank);
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
            // Core_MDF_Account_Bank_Mapping__c abmCCF1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(dellCCFAPACIndia.id, indiaBank.Id, TRUE);
         }
         List<Core_MDF_Currency_Exchange_Rates__c> newValues = new List<Core_MDF_Currency_Exchange_Rates__c>();
@@ -252,7 +252,7 @@ private class Core_MDF_HoldCriteriaList_Test
     @isTest static void testHoldListCriteria(){
         
         Test.startTest();
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
        // ChannelProgram cp = [SELECT ID From ChannelProgram where Name =:Core_MDF_CCP_ConstantClass.CCF_PROGRAM];
         User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         

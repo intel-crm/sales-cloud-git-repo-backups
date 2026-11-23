@@ -21,6 +21,11 @@
         <name>partnerfundallocation_name</name>
     </fields>
     <fields>
+        <help><!-- This field represents percentage of allocation consumed by claims submitted for the budget period that are in either Payment Due, Pending Payment or Paid Status. --></help>
+        <label><!-- Allocation Consumption % --></label>
+        <name>Core_MDF_Allocation_Consumption__c</name>
+    </fields>
+    <fields>
         <help>Importe disponible para la creación de la actividad</help>
         <label>Importe disponible para la actividad</label>
         <name>Core_MDF_Available_Activity_Alloc_Amt__c</name>
@@ -77,6 +82,10 @@
         <name>Core_MDF_Total_Activity_Allocated_Amount__c</name>
     </fields>
     <recordTypes>
+        <label><!-- Budget Type Based Allocation Record Type --></label>
+        <name>Core_MDF_BudType_Based_Allocation_Record_Type</name>
+    </recordTypes>
+    <recordTypes>
         <description><!-- This is the Record type for Channel MDF program --></description>
         <label><!-- Channel MDF --></label>
         <name>Core_MDF_Channel_MDF</name>
@@ -93,6 +102,11 @@
         <description><!-- Record Type for Co-GTM --></description>
         <label><!-- Co-GTM --></label>
         <name>Core_MDF_Co_GTM</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type for Co-Inv --></description>
+        <label><!-- Co-Inv --></label>
+        <name>Core_MDF_Co_Inv</name>
     </recordTypes>
     <recordTypes>
         <label>Fondo de mercadeo conjunto para centros de datos</label>
@@ -118,8 +132,16 @@
         <name>Core_MDF_Service_Provider_CoMarketing_Fund</name>
     </recordTypes>
     <validationRules>
+        <errorMessage><!-- Available Amount Cannot be lesser than 0 --></errorMessage>
+        <name>Available_Amount_Cannot_be_lesser_than_0</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Allocation Amount Cannot be lesser than 0 --></errorMessage>
         <name>Core_MDF_AllocAmt_Cannot_be_lesserthan_0</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Not Possible --></errorMessage>
+        <name>Test_ALlocation_update</name>
     </validationRules>
     <webLinks>
         <label><!-- Core_MDF_Export_List_View --></label>

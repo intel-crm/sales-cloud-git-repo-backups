@@ -43,9 +43,7 @@ public with sharing class Core_IPS_Case_Clone_Controller{
     public List<Core_IPS_EnvironmentDetailQuestion> envDetails{set;get;} //modified by amritesh 12/18/2017 - US85344,US101112 
     public List<Core_IPS_EnvironmentDetailQuestion> subCatEnvDetails{set;get;} //added by amritesh 12/18/2017 - US85344,US101112 
     //public List<EnvironmentDetail> envDetList{get;set;} //commented by amritesh 12/18/2017 - US85344,US101112 
-    //Start--15/07/2019--Aniket--Removed unused variables
-    //public boolean isMAG{get;set;}
-    //End--15/07/2019--Aniket--Removed unused variables
+    public boolean isMAG{get;set;}
     public boolean isGec{get;set;}
     public boolean externalUser{get;set;}{externalUser=Network.getNetWorkid()!= null? True:false;} // <!--Added by Geetha as per user story US92077-->
     //US108800 :Add Product Variant to Copy Case
@@ -61,44 +59,21 @@ public with sharing class Core_IPS_Case_Clone_Controller{
     public Boolean isNACCase{get;set;}                              //added by Aayushi US126300
     public Boolean custVisible{get;set;}                            //added by Aayushi US126300
     
-    //Start--US343456--Aniket--MINDS Case Creation
-    public Boolean isMindsFlag{get;set;}
-    public String selectedCountry{get;set;}
-    public List<SelectOption> countryOptions {get; set;}
-    List<Contact> contactInContext = new List<Contact>();
-    
-    //End--US343456--Aniket--MINDS Case Creation
-    
     public Core_IPS_Case_Clone_Controller(ApexPages.standardController controller){
-        List<Core_IPS_Supported_product__c> sProd;
+        System.debug('### in controller');
         displayEnvDetails = false;
         eoisFlag =false;
         isGEC = false;
-        //Start--15/07/2019--Aniket--Removed unused variables
-        //isMag = false;
-        //End--15/07/2019--Aniket--Removed unused variables
+        isMag = false;
         User u = [select Id, username,userType,ContactId,AccountId,profileid from User where Id = :UserInfo.getUserId()];
-        //Start--US343456--Aniket--MINDS Case Creation
-        isMindsFlag = false;
-        contactInContext = [Select id, Name,Core_MINDS__c,Core_Country_Region__c  from Contact where id=: u.Contactid limit 1];
-        if(contactInContext!=null && !contactInContext.isEmpty()) {
-            if(isMindsFlag!=NULL){
-                isMindsFlag = contactInContext[0].Core_MINDS__c;
-            }            
-            if(contactInContext[0].Core_Country_Region__c!=NULL || contactInContext[0].Core_Country_Region__c!=''){
-                selectedCountry = contactInContext[0].Core_Country_Region__c ;
-            }
-        }
-        //End--US343456--Aniket--MINDS Case Creation
         //US108521 Add PSO/PSA to Case when copying a case
         isPartnerFAE = (Core_Utility.getPartnerUserType(userinfo.getuserId())).contains('Partner - DFAE');
-        //Commented because,deleting the Core_IPS_Customer_Case_Controller.US:TWC745-5417
-       // isAgentPartner = Core_IPS_Customer_Case_Controller.isPartnerAgentUser();//Change it to agent partner check 
-            isAgentPartner =false;
+        isAgentPartner = Core_IPS_Customer_Case_Controller.isPartnerAgentUser();//Change it to agent partner check 
+        
         eoisFlag =false;
         if(u != null)
         {
-            
+            system.debug('UserType'+u.userType);
             if(u.userType== Label.Core_IPS_CustCommPlus_UserType || (Label.Core_Partner_Profile_Id).contains((u.profileId+'').substring(0,15))){
                 isAgent=false;
             }else{
@@ -106,21 +81,18 @@ public with sharing class Core_IPS_Case_Clone_Controller{
             }
         }
         String csId = controller.getId(); 
-            // Unencoded Formulas in Script Tags XSS Fix - TWC745-7251
-        csId = ApexPages.currentPage().getParameters().get('id')?.escapeHtml4();
+        csId = ApexPages.currentPage().getParameters().get('id');
         if(csId==null){
-            
+            System.debug('### cs id null');
             cs = new Case();
         }else{        
-                        
-            cs= getCase_DynamiCSOQL(csId);
-             
+            System.debug('### cs id not null');
+            cs= getCase_DynamiCSOQL(csId);   
+            System.debug('######First cs ####'+cs+':'+cs.Interested_Parties__r);
             if(cs !=null)
             {            
                 cloneCase = cs.clone(false, true, false, false);
-                //Start--15/07/2019--Aniket--Removed unused variables
-                //isMAG = cs.Account.Core_Military_Aerospace_and_Government__c;
-                //End--15/07/2019--Aniket--Removed unused variables
+                isMAG = cs.Account.Core_Military_Aerospace_and_Government__c;
                 //cloneCase.Subject=null; Ashutosh - US103890 - Adding prefix in subject
                 String prefixString = '(Copy Of '+cs.CaseNumber+') ';
                 cloneCase.Subject = prefixString + cloneCase.Subject;
@@ -139,10 +111,7 @@ public with sharing class Core_IPS_Case_Clone_Controller{
                  cloneCase.Core_IPS_Issue_source__c=Label.Core_IPS_CaseSource_Val_for_Legacy_PSG;  
                 }//end
                 //cloneCase.Core_IPS_GEC_Flag__c = cs.Core_IPS_GEC_Flag__c;Ashutosh - US 103890 - not copy GEC flag
-                /**DE47491 --- Commented out GEC Status and setting it as Blank --- to fix incorrect Queue routing issue--post submit logic will be taken care in trigger**/
-                //cloneCase.Core_IPS_GEC_Status__c = cs.Core_IPS_GEC_Status__c;
-                cloneCase.Core_IPS_GEC_Status__c = '';
-                /**DE47491 ---**/ 
+                cloneCase.Core_IPS_GEC_Status__c = cs.Core_IPS_GEC_Status__c;
                 //cloneCase.Core_Issue_Description__c = null; Ashutosh - US 103890 - Adding prefix in description
                 String prefixDesc = '**Copied From Case '+cs.CaseNumber+'<br>';
                 cloneCase.Core_Issue_Description__c = prefixDesc+cloneCase.Core_Issue_Description__c;
@@ -194,8 +163,7 @@ public with sharing class Core_IPS_Case_Clone_Controller{
                         cloneCase.recordTypeId = rtCaseCreate.getRecordTypeId();
                     }
                     else{
-                        //isNACCase is true added by Aayushi US126300
-                        cloneCase.recordTypeId = rtNoAssignedContact.getRecordTypeId(); isNACCase=true;      
+                        cloneCase.recordTypeId = rtNoAssignedContact.getRecordTypeId(); isNACCase=true;      //isNACCase is true added by Aayushi US126300
                     }
                     //cloneCase.recordTypeId = createCase[0].id; commented by ashutosh -US103890
                 }else{
@@ -204,8 +172,7 @@ public with sharing class Core_IPS_Case_Clone_Controller{
                         cloneCase.recordTypeId = rtCaseCreate.getRecordTypeId(); 
                     }
                     else{
-                        //isNACCase is true added by Aayushi US126300 
-                        cloneCase.recordTypeId = rtNoAssignedContact.getRecordTypeId(); isNACCase=true;         
+                        cloneCase.recordTypeId = rtNoAssignedContact.getRecordTypeId(); isNACCase=true;         //isNACCase is true added by Aayushi US126300 
                     }
                 }
                 cloneCase.Core_Severity__c = Cs.Core_Severity__c;
@@ -226,18 +193,17 @@ public with sharing class Core_IPS_Case_Clone_Controller{
             displayEnvDetails = true;
         }
         
-
-        if(cs != null && cloneCase!=null && (cloneCase.AssetId != null || cloneCase.AssetId != '') && Asset.SObjectType.getDescribe().isAccessible() ){
-                ast = [select id, name,Core_IPS_Supported_Product_EOIS__c,Core_IPS_Project__c,Core_Supported_Product__r.Core_EOIS__c, Core_Product_Organization__c,product2Id from Asset where id =: Cs.AssetId limit 1];
-            }
+        System.debug('###### second cs'+cs);
+        if(cs != null && cloneCase!=null && (cloneCase.AssetId != null || cloneCase.AssetId != ''))            
+            ast = [select id, name,Core_IPS_Supported_Product_EOIS__c,Core_IPS_Project__c,Core_Supported_Product__r.Core_EOIS__c, Core_Product_Organization__c,product2Id from Asset where id =: Cs.AssetId limit 1];
+        
         if(ast.size()>0)
         {
-            //FLS Check Added - Nishitha
-            if(Core_IPS_Supported_product__c.SObjectType.getDescribe().isAccessible()){
-                sProd = [select id from Core_IPS_Supported_product__c where Core_product__c=:ast[0].product2Id and Core_product_organization__c=:ast[0].Core_product_organization__c limit 1];
-            }
+            List<Core_IPS_Supported_product__c> sProd = [select id from Core_IPS_Supported_product__c where Core_product__c=:ast[0].product2Id and Core_product_organization__c=:ast[0].Core_product_organization__c limit 1];
+            system.debug('#######'+sProd);
             if(sProd.size() > 0)  
             {
+                system.debug('Product *******Size' + sProd.size() + 'Prod Id' + sProd[0].id);                
                 productId = sProd[0].id;
             }
             if(ast[0].Core_Supported_Product__r.Core_EOIS__c == true)
@@ -258,7 +224,7 @@ public with sharing class Core_IPS_Case_Clone_Controller{
                 categoryOptions.add(new SelectOption(a.id, a.Core_Issue_Category_Name__r.Name));
             }      
         }
-        
+        system.debug('#####'+productId+'#####'+categoryOptions);
         if(categoryOptions.size()>0){
             
             Core_Utility.doSort(categoryOptions,Core_Utility.FieldToSort.Label,'Select Category'); 
@@ -268,6 +234,9 @@ public with sharing class Core_IPS_Case_Clone_Controller{
             displayCategories=false;
             displaySubCategories=false;
         }
+        system.debug('########### CS is ####################'+cs);
+        //system.debug(cs.Core_IPS_Supported_Product__c);
+        system.debug(subCategorySelected);
         envDetails = getEnvironmentDetailsOperationList(cs.Core_IPS_Supported_Product__c,null,isAgent);  //modified  by amritesh 12/18/2017 - US85344,US101112 
         subCatEnvDetails = getEnvironmentDetailsOperationList(null,subCategorySelected,isAgent);  //modified  by amritesh 12/18/2017 - US85344,US101112 
         //setCurrentEnvironmentDetails(envDetails,cs.id);
@@ -298,7 +267,9 @@ List<Core_IPS_Environment_Details__c> caseEnvDetails = [select id,name,Core_Ques
 if(envDetails!=null){
 for(EnvironmentDetail ed: envDetails){
 for(Core_IPS_Environment_Details__c ced:caseEnvDetails){
+System.debug('CED Name:'+ced.name+'ED Label:'+ed.label);
 if(ced.name==ed.label){
+
 if(ed.type==Core_IPS_Labels__c.getValues('Core_IPS_Picklist').value__c || ed.type==Core_IPS_Labels__c.getValues('Core_IPS_Multi_Select').Value__c)
 {
 if(ed.type==Core_IPS_Labels__c.getValues('Core_IPS_Multi_Select').value__c && ced.Core_Answer__c!=null)
@@ -424,10 +395,10 @@ Modification Log :
             displaySubCategories=false;
             
         }  
-          
+        system.debug('####@@####'+categorySelected);  
         
         subCategoryOptions = getsubCategory_Options(categorySelected); 
-        
+        system.debug('####@@####'+subCategoryOptions);
         subCatEnvDetails = new List<Core_IPS_EnvironmentDetailQuestion>();
         
         
@@ -455,21 +426,19 @@ Modification Log :
         //List<SelectOption> subCategoryOptions = new List<SelectOption>();
         //Modified by karthick 25/06/2018 - defect fix -DE40246
         subCategoryOptions = new List<SelectOption>();
-        
+        System.debug('Category Selected:'+categorySelected);
         if(categorySelected!=null && categorySelected!=''){
             //subCategoryOptions.add(new SelectOption('', 'Select SubCategory'));
             for(Core_IPS_Product_Issue_Category__c a:Core_IPS_CaseUtility.getSubCategories(categorySelected)){
-                if(a.Core_Issue_Sub_Category_Name__c!=null){
-                    subCategoryOptions.add(new SelectOption(a.id, a.Core_Issue_Sub_Category_Name__r.Name));
+                system.debug('inside for '+a.Core_Issue_Sub_Category_Name__r.Name+' '+Core_IPS_CaseUtility.getSubCategories(categorySelected));
+                if(a.Core_Issue_Sub_Category_Name__c!=null){subCategoryOptions.add(new SelectOption(a.id, a.Core_Issue_Sub_Category_Name__r.Name));
+                    system.debug('inside for and if'+subCategoryOptions);
                 }
             }
             //Modified by karthick 25/06/2018 - defect fix- DE40246     
             Core_Utility.doSort(subCategoryOptions,Core_Utility.FieldToSort.Label,'Select SubCategory');
-            if(subCategoryOptions.size()>0){
-                /*Core_Utility.doSort(subCategoryOptions, Core_Utility.FieldToSort.Value,'Select SubCategory');*/displaySubCategories=true;}
-            else {
-                displaySubCategories=false;
-            }    
+            if(subCategoryOptions.size()>0){/*Core_Utility.doSort(subCategoryOptions, Core_Utility.FieldToSort.Value,'Select SubCategory');*/displaySubCategories=true;}
+            else displaySubCategories=false;
         }
         return subCategoryOptions;
     }
@@ -519,6 +488,10 @@ Modification Log :
             //for(Core_IPS_EnvironmentDetailQuestion En :envDetails)
             for(Core_IPS_EnvironmentDetailQuestion En : Core_IPS_Questions_Utility.getAllWithChildEnvDetails(envDetails)) //added by amritesh 12/18/2017 - US85344,US101112
             {
+                //system.debug(en.Label);
+                //system.debug(en.type);
+                //system.debug(en.splaceholder);
+                //system.debug(en.selectedValue);
                 if(MapAssigned_EnvironmentVariables.containsKey(en.questionId)==false)
                 {         
                     IsOptionsChanges = true;
@@ -531,7 +504,7 @@ Modification Log :
         {
             IsOptionsChanges =  true;
         }
-        
+        //system.debug('>>>>>>>>>>>>>>>>>>>>>>>' + IsOptionsChanges);
         if(IsOptionsChanges==false)
         {
             return envDetails;
@@ -551,11 +524,12 @@ Modification Log :
             det.questionId = en.Core_IPS_Question__c; // added by amritesh 12/18/2017 - US85344,US101112 
             det.required = en.Core_required__c;
             det.IsAgentOnly = en.Core_Agent_Only__c;
-            
+            //system.debug('>>>>>>>>>>>>>' + en.Core_Environment_Variable__r.Core_Datatype__c); 
+            //system.debug('<<<<<<<<<<<<<<<<<' + Core_IPS_Labels__c.getValues('Core_IPS_text_255').value__c);
             
             //if(en.Core_Environment_Variable__r.Core_Datatype__c.trim() == Core_IPS_Labels__c.getValues('Core_IPS_text_255').value__c.trim()){
             if(en.Core_IPS_Question__r.Core_IPS_Datatype__c.trim() == Core_IPS_Labels__c.getValues('Core_IPS_Datatype_Text').value__c.trim()) { //added by amritesh 12/18/2017 - US85344,US101112
-                
+                //system.debug('LLLLLLLLLLLLL' + (en.Core_Environment_Variable__r.Core_Datatype__c.trim() == Core_IPS_Labels__c.getValues('Core_IPS_text_255').value__c.trim()));
                 det.type=Core_IPS_Labels__c.getValues('Core_IPS_Datatype_Text').value__c;
                 det.splaceHolder = '';
                 /*if(en.Core_Environment_Variable__r.Core_Answers__C!=null)
@@ -660,8 +634,6 @@ return SObjectType.Case.FieldSets.Issue_Description_Fields.getFields();
     private Case getCase_DynamiCSOQL(String csId) {
         try
         {
-             // SOQL Injection Fix - Start -  Shipra
-            Map<String, Object> bindMap = new Map<String, Object>{'cseId' => csId  };
             String query = 'SELECT ';
             for(Schema.FieldSetMember f : this.getFields1()) {
                 query += f.getFieldPath() + ', ';
@@ -670,26 +642,22 @@ return SObjectType.Case.FieldSets.Issue_Description_Fields.getFields();
 query += f.getFieldPath() + ', ';
 }*/
             /*Ashutosh - US103890 - Added some field in query*/
-            
-            query += 'CaseNumber,Core_IPS_Customer_Visible__c,Core_IPS_Issue_source__c,Core_IPS_Classification__c,RecordTypeId,RecordType.DeveloperName,Id,status,Core_CaseType__c,Core_Customer_Reference_ID__c,Core_IPS_Product_name__c,Core_IPS_Copy_Flag__c,Core_End_Customer__c ,Asset.Core_IPS_Case__c, Priority, Core_IPS_GEC_Status__c,  AccountId, Account.Core_Military_Aerospace_and_Government__c, ContactId,Core_Case_issue_category__c,Core_case_issue_sub_category__c,Core_IPS_Project_Case__r.Name, Core_Case_issue_category__r.name,Core_case_issue_sub_category__r.name,AssetId,Asset.status,Core_IPS_Supported_Product__c,Core_IPS_Supported_Product__r.Core_Supported_Product_Name__c,Core_IPS_Supported_Product__r.Core_EOIS__c ,Core_Case_Issue_Category__r.Core_Issue_Category_Name__r.Name,Core_Case_Issue_Sub_Category__r.Core_Issue_Sub_Category_Name__r.Name, Core_Product_Variant__c,Core_IPS_Restricted_Secret_Content__c,Core_Severity_Reason__c,Core_IPS_Partner_Sup_Owner__c,Core_Partner_Supported_Account__c,Core_IPS_Priority_Reason__c,ParentId,origin,(select Name, Core_Question__c, Core_Answer__c, Core_Case__c from Environments__r) ,(Select Id,Type__c,User__c,Contact__c,Active__c ,case__c From  Interested_Parties__r) FROM case WHERE Id = :cseId';
-            
-            return Database.queryWithBinds(query,bindMap,AccessLevel.USER_MODE);
-             // SOQL Injection Fix - End -  Shipra
+            query += 'CaseNumber,Core_IPS_Customer_Visible__c,Core_IPS_Issue_source__c,Core_IPS_Classification__c,RecordTypeId,RecordType.DeveloperName,Id,status,Core_CaseType__c,Core_Customer_Reference_ID__c,Core_IPS_Product_name__c,Core_IPS_Copy_Flag__c,Core_End_Customer__c ,Asset.Core_IPS_Case__c, Priority, Core_IPS_GEC_Status__c,  AccountId, Account.Core_Military_Aerospace_and_Government__c, ContactId,Core_Case_issue_category__c,Core_case_issue_sub_category__c,Core_IPS_Project_Case__r.Name, Core_Case_issue_category__r.name,Core_case_issue_sub_category__r.name,AssetId,Asset.status,Core_IPS_Supported_Product__c,Core_IPS_Supported_Product__r.Core_Supported_Product_Name__c,Core_IPS_Supported_Product__r.Core_EOIS__c ,Core_Case_Issue_Category__r.Core_Issue_Category_Name__r.Name,Core_Case_Issue_Sub_Category__r.Core_Issue_Sub_Category_Name__r.Name, Core_Product_Variant__c,Core_IPS_Restricted_Secret_Content__c,Core_Severity_Reason__c,Core_IPS_Partner_Sup_Owner__c,Core_Partner_Supported_Account__c,Core_IPS_Priority_Reason__c,ParentId,origin,(select Name, Core_Question__c, Core_Answer__c, Core_Case__c from Environments__r) ,(Select Id,Type__c,User__c,Contact__c,Active__c ,case__c From  Interested_Parties__r) FROM case WHERE Id = \'' + csId+ '\'';
+            System.debug('Query:'+query);
+            return Database.query(query);
         }
         catch(Exception e){
             //Utility.addError('There is error while Fetching existing Question using Dynamic SOQL in Field Set. Error Detail - '+e.getMessage()); //This is Utility Method to display error message on VF Page
-            //return null;
-            throw new AuraHandledException(e.getMessage());// ATHR fix Gangadhar
+            system.debug(e);            return null;
         }
-        //return null;
+        return null;
     }
     
     public PageReference cancelCaseDetails(){
         PageReference Pg ; 
         if(ApexPages.currentPage().getParameters().get('retURL') !=null)
         {
-            /*TWC745-112 - 11/08/2021 - Vishal - IPS Security Vulnerability --*/
-            Pg =  new pageReference(ApexPages.currentPage().getParameters().get('retURL').escapeHtml4());   
+            Pg =  new pageReference(ApexPages.currentPage().getParameters().get('retURL'));   
         }
         else
         {
@@ -728,9 +696,7 @@ Modification Log :
         // added by amritesh 12/18/2017 - US85344,US101112
         if(lstAllenvDetails!=null && lstAllenvDetails.size()>0){
             for(Core_IPS_EnvironmentDetailQuestion det : lstAllenvDetails){     
-                if(!det.isVisible) {
-                    continue; // added by amritesh 12/18/2017 - US85344,US101112
-                }    
+                if(!det.isVisible) continue; // added by amritesh 12/18/2017 - US85344,US101112
                 //if(det.type==Core_IPS_Labels__c.getValues('Core_IPS_text_255').value__c &&(det.sPlaceHolder==null || det.sPlaceHolder=='') &&det.required){
                 if(det.type==Core_IPS_Labels__c.getValues('Core_IPS_Datatype_Text').value__c &&(det.sPlaceHolder==null || det.sPlaceHolder=='') &&det.required){
                     ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR,errormessage('G105')+':'+det.label);
@@ -785,13 +751,11 @@ Modification Log :
 ****************************************************************************************************/
     public PageReference saveCaseDetails(){
         //cs = new Case();        
+        System.debug('Inside Case Save method:'+categorySelected+subCategorySelected);
+        System.debug('Inside Case Save method:Cs details'+cs+'---->'+cs.Interested_Parties__r);
         
-        if(validateCaseRelatedInformation()) { 
-            return null; 
-        }
-        if(validateEnvironmentDetails()){ 
-            return null; 
-        }
+        if(validateCaseRelatedInformation()) return null;
+        if(validateEnvironmentDetails()) return null;
         
         try{
             Core_IPS_Product_Issue_Category__c ic = new Core_IPS_Product_Issue_Category__c();
@@ -800,36 +764,24 @@ Modification Log :
                 ic = [select id, name from Core_IPS_Product_Issue_Category__c where id=:categorySelected limit 1];
                 /*Ashutosh - US103890 - added check condition for ic*/
                 if(ic != null && !String.isBlank(ic.Name) ){
-                    /*TWC745-112 - 05/08/2021 - Vishal - FLS Check for security vulnerability --*/
-                   // if (Schema.sObjectType.Case.fields.Core_External_Issue_Category__c.isUpdateable()) {
-                          cloneCase.Core_External_Issue_Category__c=ic.Name;     
-                    //}
+                    cloneCase.Core_External_Issue_Category__c=ic.Name;
                 }
                 //cloneCase.Core_External_Issue_Category__c=ic.Name;   
-                /*TWC745-112 - 05/08/2021 - Vishal - FLS Check for security vulnerability --*/
-               // if (Schema.sObjectType.Case.fields.Core_Case_Issue_Category__c.isUpdateable()) {
-                    cloneCase.Core_Case_Issue_Category__c=categorySelected;
-                //}
+                cloneCase.Core_Case_Issue_Category__c=categorySelected;
             }
             if(subCategorySelected !=null && subCategorySelected !=''){
                 isc = [select id, name from Core_IPS_Product_Issue_Category__c where id=:subCategorySelected limit 1];
                 /*Ashutosh - US103890 - added check condition for ic*/
                 if(isc != null && !String.isBlank(ic.Name)){
-                    /*TWC745-112 - 05/08/2021 - Vishal - FLS Check for security vulnerability --*/
-                   // if (Schema.sObjectType.Case.fields.Core_External_Issue_Subcategory__c.isCreateable() || Schema.sObjectType.Case.fields.Core_External_Issue_Subcategory__c.isUpdateable()) {
-                        cloneCase.Core_External_Issue_Subcategory__c=isc.Name;            
-                    //}
+                    cloneCase.Core_External_Issue_Subcategory__c=isc.Name;
                 }
                 //cloneCase.Core_External_Issue_Subcategory__c=isc.Name;
-                /*TWC745-112 - 05/08/2021 - Vishal - FLS Check for security vulnerability --*/
-               // if (Schema.sObjectType.Case.fields.Core_Case_Issue_Sub_Category__c.isUpdateable()) {
-                    cloneCase.Core_Case_Issue_Sub_Category__c=subCategorySelected;
-               // }
+                cloneCase.Core_Case_Issue_Sub_Category__c=subCategorySelected;
             }
-            /*TWC745-112 - 05/08/2021 - Vishal - FLS Check for security vulnerability --*/
-            //if (Schema.sObjectType.Case.fields.Core_IPS_Customer_Visible__c.isUpdateable()) {
-                 cloneCase.Core_IPS_Customer_Visible__c =custVisible;        //added by Aayushi US126300
-            //}
+            //RecordType rt = [select id from RecordType where name = 'IPS Case Create'];
+            // cloneCase.RecordTypeId = rt.id;
+            System.debug('>>>Subject coming');
+            cloneCase.Core_IPS_Customer_Visible__c =custVisible;        //added by Aayushi US126300
             
             if(DisplayPriorityReason == true && (cloneCase.Core_Severity_Reason__c==null || cloneCase.Core_Severity_Reason__c=='')){
                 ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR,errormessage('I111'));
@@ -839,76 +791,32 @@ Modification Log :
             if(cloneCase.Core_Issue_Description__c != null)
             {
                 string  strDescValue =  Core_Utility.replaceSpecialChar(cloneCase.Core_Issue_Description__c);
-                /*TWC745-112 - 05/08/2021 - Vishal - FLS Check for security vulnerability --*/
-               // if (Schema.sObjectType.Case.fields.Description.isUpdateable()) {
-                    cloneCase.Description = Core_Utility.replaceHtmlTags(strDescValue);
-                //}
+                cloneCase.Description = Core_Utility.replaceHtmlTags(strDescValue);
             }  
             if( cloneCase.recordTypeID == Schema.getGlobalDescribe().get('Case').getDescribe().getRecordTypeInfosByName().get('IPS No Assigned Contact Case').getRecordTypeId())
             {
-                /*TWC745-112 - 05/08/2021 - Vishal - FLS Check for security vulnerability --*/
-               // if (Schema.sObjectType.Case.fields.Core_IPS_Self_Assigned__c.isUpdateable()) {
-                    cloneCase.Core_IPS_Self_Assigned__c = true;
-                //}
-                
+                cloneCase.Core_IPS_Self_Assigned__c = true;
             }
             else
             {
-                /*TWC745-112 - 05/08/2021 - Vishal - FLS Check for security vulnerability --*/
-              //  if (Schema.sObjectType.Case.fields.Core_IPS_Self_Assigned__c.isUpdateable()) {
-                    cloneCase.Core_IPS_Self_Assigned__c = false;
-               // }
-
+                cloneCase.Core_IPS_Self_Assigned__c = false;
             }
             
             if(UserInfo.getUserType() == 'PowerCustomerSuccess')
             {
-                /*TWC745-112 - 05/08/2021 - Vishal - FLS Check for security vulnerability --*/
-              //  if (Schema.sObjectType.Case.fields.Origin.isUpdateable()) {
-                    cloneCase.Origin = 'Web';
-               // }                               
+                cloneCase.Origin = 'Web';                                
             }
-            /*TWC745-112 - 05/08/2021 - Vishal - FLS Check for security vulnerability --*/
-           // if (Schema.sObjectType.Case.fields.Core_IPS_Classification__c.isUpdateable()) {
-                cloneCase.Core_IPS_Classification__c = cs.Core_IPS_Classification__c;    
-            //}
-            //if (Schema.sObjectType.Case.fields.Core_Partner_Supported_Account__c.isUpdateable()) {
-                cloneCase.Core_Partner_Supported_Account__c =null;
-            //}
-            //if (Schema.sObjectType.Case.fields.Core_IPS_Partner_Sup_Owner__c.isUpdateable()) {
-                cloneCase.Core_IPS_Partner_Sup_Owner__c = null;
-            //} 
-            //if (Schema.sObjectType.Case.fields.Core_Product_Variant__c.isUpdateable()) {
-                cloneCase.Core_Product_Variant__c = selectedVariant;
-            //}
-            
-            //Start--US343456--14th June 2019--Aniket--MINDS Case Creation
-            if(isMindsFlag!=NULL){
-                /*TWC745-112 - 05/08/2021 - Vishal - FLS Check for security vulnerability --*/
-               // if (Schema.sObjectType.Case.fields.Core_IPS_Minds__c.isUpdateable()) {
-                    cloneCase.Core_IPS_Minds__c= isMindsFlag;
-                //}
-            }else{
-                /*TWC745-112 - 05/08/2021 - Vishal - FLS Check for security vulnerability --*/
-               // if (Schema.sObjectType.Case.fields.Core_IPS_Minds__c.isUpdateable()) {
-                cloneCase.Core_IPS_Minds__c=false;
-                //}
-            }
-            
-            if(selectedCountry!=null){
-                /*TWC745-112 - 05/08/2021 - Vishal - FLS Check for security vulnerability --*/
-              //  if (Schema.sObjectType.Case.fields.Core_IPS_Country_Region__c.isUpdateable()) {
-                    cloneCase.Core_IPS_Country_Region__c = selectedCountry;
-                //}
-            }
-            //End--US343456--14th June 2019--Aniket--MINDS Case Creation
+            cloneCase.Core_IPS_Classification__c = cs.Core_IPS_Classification__c;
+            cloneCase.Core_Partner_Supported_Account__c =null;
+            cloneCase.Core_IPS_Partner_Sup_Owner__c = null;
+            cloneCase.Core_Product_Variant__c = selectedVariant;
             
             //Insert PSO/PSA Field if user is FAE Partner or Agent PArtner / US108521 Add PSO/PSA to Case when copying a case
             if(isPartnerFAE|| isAgentPartner){
                 cloneCase.Core_IPS_Partner_Sup_Owner__c = userinfo.getUserId();
                 //Checking if the selectedAccountId String is empty since it's an ID Variable
                 if(selectedAccountId!= 'NA'){
-                    
+                    System.debug('Selected PSA '+selectedAccountId);
                     cloneCase.Core_Partner_Supported_Account__c = selectedAccountId;  
                 }
                 
@@ -916,16 +824,16 @@ Modification Log :
                 if((cs.Core_IPS_Project_Case__c!= null) && (String.isBlank(selectedAccountId)|| selectedAccountId == 'NA') ){
                     ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error, 'Please select Partner Supported Account'));
                     return null;
-                }                
+                }
+                
                 //Using this without sharing method to insert PSA
                 CaseRecordSave caseRecSave=new CaseRecordSave();
                 caseRecSave.saveCase(cloneCase); 
             }
-            else{                
-                            
+            else{            
                 upsert cloneCase;
             }
-            
+            System.debug('###### cloneCase'+cloneCase+':::::'+cs.Interested_Parties__r);
             //addEnvDetails();
             captureEnvDetails(); // added  by amritesh 12/18/2017 - US85344,US101112
             if(cs.Interested_Parties__r != null && !(cs.Interested_Parties__r).isEmpty()){
@@ -937,18 +845,18 @@ Modification Log :
             renderErrorFlag=true;
             ApexPages.Message msg = new ApexPages.Message(Apexpages.Severity.Warning, 'Please enter value' + e);
             ApexPages.addMessage(msg);
-            
+            System.debug('Error:In Catch' + e);
             //return new PageReference('/apex/Core_IPS_CreateCase?assetId='+ast[0].id);
             return null;
         }    
         //renderErrorFlag=false; 
-        
+        System.debug('Error:');
         if(!isAgent){
             return new pageReference('/'+cloneCase.id);
         }else{
             return new pageReference('/'+cloneCase.id);
         }
-        
+        //System.debug
     }
     /***************************************************************************************************
 Method Name:  addEnvDetails
@@ -970,6 +878,7 @@ Modification Log :
 public void addEnvDetails(){
 // List<Core_IPS_Environment_Details__c> existingDetails = new List<Core_IPS_Environment_Details__c>();
 // existingDetails = [select id from Core_IPS_Environment_Details__c where Core_case__c=:cs.id];
+// system.debug('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>' + existingDetails);
 // if(existingDetails <> null && existingDetails.size()>0){
 // delete ExistingDetails;
 // }
@@ -981,6 +890,7 @@ detail.Core_Question__c= det.label;
 detail.Core_case__c= cloneCase.id;
 detail.Name = det.label;
 detail.Core_Agent_Only__c = det.IsAgentOnly;
+system.debug('>>>>>>>>>>>>>' + det.type);
 if(det.type==Core_IPS_Labels__c.getValues('Core_IPS_text_255').value__c){
 detail.Core_Answer__c = det.sPlaceHolder;
 }else if(det.type==Core_IPS_Labels__c.getValues('Core_IPS_textarea_5000').value__c){
@@ -1002,6 +912,7 @@ detail.Core_Answer__c = strSelectedValue;//det.selectedValue;
 //else
 //detail.Core_Answer__c= 'False'; 
 //}
+system.debug('>>>>>>>>>>>>>>>>>>>>>>>' + detail);
 envDetailsToCreate.add(detail);
 }
 if(envDetailsToCreate.size()>0){
@@ -1009,6 +920,7 @@ if(envDetailsToCreate.size()>0){
 Core_IPS_AdminUtility.insertEnvDetailsToCreate(envDetailsToCreate);
 }
 }
+
 }
 */
     
@@ -1022,21 +934,16 @@ Core_IPS_AdminUtility.DeleteEnvDetails(lstExistingCoreResponse);
 }*/
         List<Core_IPS_Response__c> lstEnvDetailsResponse = new List<Core_IPS_Response__c>();
         List<Core_IPS_EnvironmentDetailQuestion> lstEnvDetails = new List<Core_IPS_EnvironmentDetailQuestion>();
-        if(envDetails!=null) { 
-            lstEnvDetails.addAll(envDetails);
-        }    
-        if(subCatEnvDetails!=null) {
-         lstEnvDetails.addAll(subCatEnvDetails);
-        } 
+        if(envDetails!=null) lstEnvDetails.addAll(envDetails);
+        if(subCatEnvDetails!=null) lstEnvDetails.addAll(subCatEnvDetails);
         
         if(lstEnvDetails!=null && lstEnvDetails.size()>0) {
             for(Core_IPS_EnvironmentDetailQuestion envdet : lstEnvDetails) {
                 lstEnvDetailsResponse.addAll(Core_IPS_Questions_Utility.constructResponse(envdet, cloneCase));
                 if(envdet.childQuestions.size()>0) {
                     for(Core_IPS_EnvironmentDetailQuestion childEnvDetail : envdet.childQuestions) {
-                        if(childEnvDetail.isVisible){
+                        if(childEnvDetail.isVisible)
                             lstEnvDetailsResponse.addAll(Core_IPS_Questions_Utility.constructResponse(childEnvDetail, cloneCase));
-                        }    
                     }
                 }
             }
@@ -1069,7 +976,7 @@ Modification Log :
             DisplayPriorityReason = false;
             cloneCase.Core_Severity_Reason__c='';
         }
-        
+        system.debug('method invoked. DisplayPriorityReason=    '+DisplayPriorityReason);
     }
     
     
@@ -1085,6 +992,7 @@ Output Parameters: None
 Description: This is called when we starts cloning all the details from parent case
 Used in     : Case copy
 Modification Log :
+
 * Developer                   Date                   Description
 * ----------------------------------------------------------------------------                 
 * Ashutosh Bhardwaj           11/05/2018               Created
@@ -1093,23 +1001,11 @@ Modification Log :
         List<Core_IPS_Case_Interested_Party__c> newPartyList = new List<Core_IPS_Case_Interested_Party__c>();
         for(Core_IPS_Case_Interested_Party__c party : interestedParties){
             Core_IPS_Case_Interested_Party__c newParty =  new Core_IPS_Case_Interested_Party__c();
-            /* Start ---US1038641 06/24/2021 - Sai Krishna - FLS Check for security vulnerability--*/
-            //if(Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.Case__c.isCreateable()){
-               newParty.Case__c = cloneCase.Id;    
-            //}
-          //  if(Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.User__c.isCreateable()){
-               newParty.User__c = party.User__c;
-           // }
-          //  if(Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.Active__c.isCreateable()){
-               newParty.Active__c = party.Active__c;
-            //}
-           // if(Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.Contact__c.isCreateable()){
-               newParty.Contact__c = party.Contact__c;
-            //}
-            //if(Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.Type__c.isCreateable()){
-               newParty.Type__c = party.Type__c;
-            //}    
-           /*End ---US1038641 06/24/2021 - Sai Krishna - FLS Check for security vulnerability--*/ 
+            newParty.Case__c = cloneCase.Id;
+            newParty.User__c = party.User__c;
+            newParty.Active__c = party.Active__c;
+            newParty.Contact__c = party.Contact__c;
+            newParty.Type__c = party.Type__c;
             newPartyList.add(newParty);
         }
         Core_IPS_AdminUtility.insertInterestedParties(newPartyList);//This method insert the parties now
@@ -1141,7 +1037,7 @@ Modification Log :
     
     public boolean validateCaseRelatedInformation()
     {
-        
+        system.debug('>>>>> In validatecaseInfo');
         if(cloneCase.Subject==null || cloneCase.Subject==''){
             ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR,errormessage('G102'));
             ApexPages.addMessage(myMsg);
@@ -1158,21 +1054,21 @@ Modification Log :
             return true;
         }
         if(cloneCase!= null && (cloneCase.Core_CaseType__c==null || cloneCase.Core_CaseType__c=='')) {
-            
+            system.debug('>>>>> 2');
             ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR,errormessage('G109'));
             ApexPages.addMessage(myMsg);
             return true;
         } 
         if((categoryOptions!=null && categoryOptions.size()>1) && (categorySelected==null || (categorySelected!=null && categorySelected.trim().length()==0)))
         {
-            
+            system.debug('>>>>> 1');
             ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR,errormessage('G100'));//G100
             ApexPages.addMessage(myMsg);               
             return true ;  
         }
-        
+        //system.debug('RAZ2'+subCategoryOptions);
         if((subCategoryOptions !=null && subCategoryOptions.size()>1) && (subCategorySelected==null || (subCategorySelected!=null && subCategorySelected.trim().length()==0))){
-            
+            system.debug('>>>>> 2');
             ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR,errormessage('G101'));
             ApexPages.addMessage(myMsg);
             return true;
@@ -1185,8 +1081,8 @@ Modification Log :
     {
         
         Pagereference Pg =  null;
-        
-        
+        //System.debug(' Page Init Case ID : '+ cs.id );
+        //System.debug('Page Init Asset ID : '+ cs.AssetId);
         
         //US185241 Gourav -- Commented MAG check To allow MAG Account cases to be cloned
         /* if(isMAG){//Checks id Account is MAG
@@ -1211,7 +1107,7 @@ Modification Log :
                     pg =  new Pagereference('/apex/Core_IPS_EoisError?ErrCode=G116&retURL='+cs.Id);    
                 }
             }
-        }        
+        }
         displayProductVariant();
         if(pg==null && externalUser==false) { //US127333
             pg = new Pagereference('/apex/Core_IPS_Internal_Case_Creation?id=' + cs.Id + '&mode=copy&retURL=%2F' + cs.Id);
@@ -1247,6 +1143,7 @@ public String tplaceholder{get;set;}
 public boolean required{get;set;}
 public boolean IsAgentOnly{get;set;}
 public List<string> selectedMValue{get;set;}
+
 }*/
     
     //Added by Geetha as per user story US92077
@@ -1293,7 +1190,7 @@ Modification Log :
             variantsList.add(so);
         }
         blnShowVariant = Product_Variant_Utility.blnShowVariant;
-        
+        system.debug('selectedProductId========'+selectedProductId+'variants========'+variants+'blnShowVariant::'+blnShowVariant);
     }
     
     /***************************************************************************************************
@@ -1309,30 +1206,8 @@ Modification Log :
 * Raj Kommera                7/18/2018                 Created
 ****************************************************************************************************/ 
     public without sharing class CaseRecordSave{
-        public void saveCase(Case cloneCase){            
+        public void saveCase(Case cloneCase){
             upsert cloneCase;
         }
     } 
-    
-    /***************************************************************************************************
-    Method Name :  getCountries
-    Function    : This method will return you countries
-    Used in     : Case clone
-    Modification Log :
-    * Developer                   Date                   Description
-    * ----------------------------------------------------------------------------                 
-    * Aniket Kakade            14/06/2019            Created to get countries
-    ****************************************************************************************************/ 
-    public List<SelectOption> getCountries() {
-        countryOptions = new List<SelectOption>();
-        Schema.Describefieldresult result = Schema.sObjectType.Contact.fields.Core_Country_Region__c;
-        Schema.DescribeFieldResult fieldResult = result.getSObjectField().getDescribe();        
-        List<Schema.PicklistEntry> ple = fieldResult.getPicklistValues();
-        //countryOptions.add(new SelectOption('-None-', '-None-'));
-        for( Schema.PicklistEntry entry : ple) {
-            countryOptions.add(new SelectOption(entry.getLabel(), entry.getValue()));
-        }
-        Core_Utility.doSort(countryOptions, Core_Utility.FieldToSort.Label,'-None-');
-        return countryOptions;
-    }
 }

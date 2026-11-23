@@ -13,9 +13,6 @@
         <field>Core_Goal__c$Core_Goal_Name__c</field>
     </columns>
     <columns>
-        <field>Core_Goal__c.Commissionable_Transactions__r$Core_Approved_Total_Price__c</field>
-    </columns>
-    <columns>
         <field>Core_Goal__c.Commissionable_Transactions__r$Core_Status__c</field>
     </columns>
     <columns>
@@ -23,9 +20,6 @@
     </columns>
     <columns>
         <field>Core_Goal__c.Commissionable_Transactions__r$Core_Last_Approved_Date__c</field>
-    </columns>
-    <columns>
-        <field>Core_Goal__c.Commissionable_Transactions__r$Core_Transaction_Type__c</field>
     </columns>
     <columns>
         <field>Core_Goal__c.Commissionable_Transactions__r$Core_Transaction_Timestamp__c</field>
@@ -37,7 +31,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value></value>
+            <value>a35g0000000GEEc</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -50,8 +44,8 @@
     <reportType>Core_Goals_With_Commissionable_Transactions__c</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
-    <showGrandTotal>true</showGrandTotal>
-    <showSubTotals>true</showSubTotals>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Goal__c.Commissionable_Transactions__r$Core_Transaction_Timestamp__c</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

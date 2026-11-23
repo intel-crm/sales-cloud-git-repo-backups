@@ -154,7 +154,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Core_Engagement_Date__c</fullName>
         <label>Engagement Date</label>
@@ -171,9 +171,13 @@
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
-            <restricted>true</restricted>
             <valueSetDefinition>
-                <sorted>true</sorted>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>HQ</fullName>
+                    <default>false</default>
+                    <label>HQ</label>
+                </value>
                 <value>
                     <fullName>APJ</fullName>
                     <default>false</default>
@@ -188,17 +192,6 @@
                     <fullName>EMEA</fullName>
                     <default>false</default>
                     <label>EMEA</label>
-                </value>
-                <value>
-                    <fullName>HQ</fullName>
-                    <default>false</default>
-                    <label>HQ</label>
-                </value>
-                <value>
-                    <fullName>INDIA</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>INDIA</label>
                 </value>
                 <value>
                     <fullName>PRC</fullName>
@@ -218,16 +211,51 @@
         <valueSet>
             <restricted>true</restricted>
             <valueSetDefinition>
-                <sorted>true</sorted>
-                <value>
-                    <fullName>5GIC</fullName>
-                    <default>false</default>
-                    <label>5GIC</label>
-                </value>
+                <sorted>false</sorted>
                 <value>
                     <fullName>A2E-Access to Expert Program</fullName>
                     <default>false</default>
                     <label>A2E-Access to Expert Program</label>
+                </value>
+                <value>
+                    <fullName>CQ&amp;R</fullName>
+                    <default>false</default>
+                    <label>CQ&amp;R</label>
+                </value>
+                <value>
+                    <fullName>DCG/NPG Front End Process Resource</fullName>
+                    <default>false</default>
+                    <label>DCG/NPG Front End Process Resource</label>
+                </value>
+                <value>
+                    <fullName>DesignInTools.Intel.com</fullName>
+                    <default>false</default>
+                    <label>DesignInTools.Intel.com</label>
+                </value>
+                <value>
+                    <fullName>EBC-Executive Briefing Center</fullName>
+                    <default>false</default>
+                    <label>EBC-Executive Briefing Center</label>
+                </value>
+                <value>
+                    <fullName>IoT Lab</fullName>
+                    <default>false</default>
+                    <label>IoT Lab</label>
+                </value>
+                <value>
+                    <fullName>l39-EMEA</fullName>
+                    <default>false</default>
+                    <label>l39-EMEA</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Supply Chain@Intel</fullName>
+                    <default>false</default>
+                    <label>Supply Chain@Intel</label>
                 </value>
                 <value>
                     <fullName>APJ IoT Lab</fullName>
@@ -242,11 +270,6 @@
                     <label>ASMO IoT Lab</label>
                 </value>
                 <value>
-                    <fullName>CQ&amp;R</fullName>
-                    <default>false</default>
-                    <label>CQ&amp;R</label>
-                </value>
-                <value>
                     <fullName>CQ&amp;R EMEA</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -259,35 +282,22 @@
                     <label>CRT-Customer Response Team</label>
                 </value>
                 <value>
-                    <fullName>DCG/NPG Front End Process Resource</fullName>
-                    <default>false</default>
-                    <label>DCG/NPG Front End Process Resource</label>
-                </value>
-                <value>
-                    <fullName>DesignInTools.Intel.com</fullName>
-                    <default>false</default>
-                    <label>DesignInTools.Intel.com</label>
-                </value>
-                <value>
-                    <fullName>DPGS Labs</fullName>
-                    <default>false</default>
-                    <label>DPGS Labs</label>
-                </value>
-                <value>
-                    <fullName>EBC-Executive Briefing Center</fullName>
-                    <default>false</default>
-                    <label>EBC-Executive Briefing Center</label>
-                </value>
-                <value>
                     <fullName>EMEA IoT Lab</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>EMEA IoT Lab</label>
                 </value>
                 <value>
-                    <fullName>IoT Lab</fullName>
+                    <fullName>IT @ Intel</fullName>
                     <default>false</default>
-                    <label>IoT Lab</label>
+                    <isActive>false</isActive>
+                    <label>IT @ Intel</label>
+                </value>
+                <value>
+                    <fullName>IT@Intel</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IT@Intel</label>
                 </value>
                 <value>
                     <fullName>IoT Lab APJ</fullName>
@@ -308,49 +318,22 @@
                     <label>IoT Lab EMEA</label>
                 </value>
                 <value>
-                    <fullName>IoT Lab-HQ (TEG/IPS)</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>IoT Lab-HQ (TEG/IPS)</label>
-                </value>
-                <value>
                     <fullName>IoT Lab PRC</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>IoT Lab PRC</label>
                 </value>
                 <value>
-                    <fullName>IT@Intel</fullName>
+                    <fullName>IoT Lab-HQ (TEG/IPS)</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
-                    <label>IT@Intel</label>
-                </value>
-                <value>
-                    <fullName>IT @ Intel</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>IT @ Intel</label>
-                </value>
-                <value>
-                    <fullName>l39-EMEA</fullName>
-                    <default>false</default>
-                    <label>l39-EMEA</label>
-                </value>
-                <value>
-                    <fullName>Other</fullName>
-                    <default>false</default>
-                    <label>Other</label>
+                    <label>IoT Lab-HQ (TEG/IPS)</label>
                 </value>
                 <value>
                     <fullName>PRC IoT Lab</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>PRC IoT Lab</label>
-                </value>
-                <value>
-                    <fullName>Supply Chain@Intel</fullName>
-                    <default>false</default>
-                    <label>Supply Chain@Intel</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -479,18 +462,6 @@
                     <label>Closed</label>
                 </value>
             </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>Expert_Engagement_Country__c</fullName>
-        <label>Expert Engagement Country/Region</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetName>Core_MDF_Country</valueSetName>
         </valueSet>
     </fields>
     <label>Expert Engagement</label>

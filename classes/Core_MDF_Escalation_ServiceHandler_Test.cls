@@ -16,7 +16,8 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
     public static Id channelProgramId;
     @TestSetup static void setUpData() {
         List<User> usrList = new List<User>();
-
+        // Highlight: Unused Local Variable - 14285 // Suma
+        //List<PartnerFundClaim> newClmList = new List<PartnerFundClaim>();
         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
         profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
         
@@ -306,7 +307,8 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
             Id mysterShopPSIs ;
             Id claimCCFSubPSId ;
             Id cscClaimSubPSId ;
-
+            // Highlight: Unused Local Variable - 14285 // Suma
+            //Id ipaAccPFRSubId;
             //List<PermissionSet> claimSubmitterPS = [SELECT Id, Name FROM PermissionSet WHERE Name IN :claimSubmitterList LIMIT 1];
 
             for(PermissionSet claimSubmitterPS : [SELECT Id, Name FROM PermissionSet WHERE Name IN :claimSubmitterList]){
@@ -1028,11 +1030,12 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
         User clmSub =[select Id from user where email ='xyz@mail.com' limit 1];
         Case compliantCase = new Case();
         Case nonCompliantCase = new Case();
-
+        // Highlight: Unused Local Variable - 14285 // Suma
+        //Case paymentDueCase = new Case();
         Id caseRecType = Schema.SObjectType.Core_MDF_Escalation__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Claim_Case_Review_Result').getRecordTypeId();
         ChannelProgram cp = [Select Id, Name from ChannelProgram where Name ='Client'];
         
-        
+       
         System.runAs(user1){
 
             Integer tempCounter = 0;
@@ -1404,8 +1407,8 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
         } 
     }
         @isTest static void testCompliantCaseEscalation2(){
-        
-
+        // Highlight: Unused Local Variable - 14285 //Suma
+        //List<Core_MDF_Escalation__c> escListToBeInserted = new List<Core_MDF_Escalation__c>();
         List<Core_MDF_Escalation__c> escToBeupdated = new List<Core_MDF_Escalation__c>();       
         List<PartnerFundClaim> toBeupdatedClaims = new List<PartnerFundClaim>();   
         List<Core_MDF_Claim_Case_Checklist__c> checklistRecords = new List<Core_MDF_Claim_Case_Checklist__c>();
@@ -1668,8 +1671,8 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
        }
 
        //Id claimRecType = Schema.SObjectType.Core_MDF_Escalation__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Late_Claim').getRecordTypeId();
-       Core_MDF_Escalation__c esc1 = createLateClaimEscalation('Test1', claimRecType, testPartnerFundRequest1.Id, ccfCp.Id, usr1.Id,
-                                                                5.0, false);
+       Core_MDF_Escalation__c esc1 = createLateClaimEscalation(new EscalationTestWrapper('Test1', claimRecType, testPartnerFundRequest1.Id, ccfCp.Id, usr1.Id,
+                                                                5.0, false));
        System.assert(esc1!=null);
        System.runAs(user1){
             insert esc1;
@@ -1692,10 +1695,10 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
        }
        List<Core_MDF_Escalation__c> escList = new List<Core_MDF_Escalation__c>();
        List<Core_MDF_Escalation__c> updateEescList = new List<Core_MDF_Escalation__c>();
-       Core_MDF_Escalation__c esc1 = createLateClaimEscalation('Test1', claimRecType, testPartnerFundRequest1.Id, retailCp.Id, usr1.Id,
-                                                                5.0, false);
-       Core_MDF_Escalation__c esc2 = createLateClaimEscalation('Test2', claimRecType, testPartnerFundRequest1.Id, retailCp.Id, usr1.Id,
-                                                                15.0, false);
+       Core_MDF_Escalation__c esc1 = createLateClaimEscalation(new EscalationTestWrapper('Test1', claimRecType, testPartnerFundRequest1.Id, retailCp.Id, usr1.Id,
+                                                                5.0, false));
+       Core_MDF_Escalation__c esc2 = createLateClaimEscalation(new EscalationTestWrapper('Test2', claimRecType, testPartnerFundRequest1.Id, retailCp.Id, usr1.Id,
+                                                                15.0, false));
        System.assert(esc1!=null);
        System.assert(esc2!=null);
        escList.add(esc1);
@@ -1742,8 +1745,8 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
         }
         
         //Id claimRecType = Schema.SObjectType.Core_MDF_Escalation__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Late_Claim').getRecordTypeId();
-        Core_MDF_Escalation__c esc1 = createLateClaimEscalation('Test1', claimRecType, testPartnerFundRequest1.Id, ccfCp.Id, usr1.Id,
-                                                              5.0, false);
+        Core_MDF_Escalation__c esc1 = createLateClaimEscalation(new EscalationTestWrapper('Test1', claimRecType, testPartnerFundRequest1.Id, ccfCp.Id, usr1.Id,
+                                                              5.0, false));
         System.assert(esc1!=null);
         System.runAs(user1){
             insert esc1;
@@ -1753,8 +1756,8 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
             update esc1;
         }
 
-        Core_MDF_Escalation__c esc2 = createLateClaimEscalation('Test2', claimRecType, testPartnerFundRequest1.Id, ccfCp.Id, usr1.Id,
-                                                                 10.0, false);
+        Core_MDF_Escalation__c esc2 = createLateClaimEscalation(new EscalationTestWrapper('Test2', claimRecType, testPartnerFundRequest1.Id, ccfCp.Id, usr1.Id,
+                                                                 10.0, false));
         System.assert(esc2!=null);
         System.runAs(user1){
             insert esc2;
@@ -1787,12 +1790,12 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
             update testPartnerFundRequest1;
             
             List<Core_MDF_Escalation__c> escalationList = new List<Core_MDF_Escalation__c>();
-            Core_MDF_Escalation__c esc1 = createLateClaimEscalation('Test1', claimRecType, testPartnerFundRequest1.Id, ipaCp.Id, usr1.Id,
-                                                                    5.0, false);  
+            Core_MDF_Escalation__c esc1 = createLateClaimEscalation(new EscalationTestWrapper('Test1', claimRecType, testPartnerFundRequest1.Id, ipaCp.Id, usr1.Id,
+                                                                    5.0, false));  
             System.assert(esc1 != null);
             escalationList.add(esc1);
-            Core_MDF_Escalation__c esc2 = createLateClaimEscalation('Test2', claimRecType, testPartnerFundRequest1.Id, ipaCp.Id, usr1.Id,
-                                                                    10.0, false);
+            Core_MDF_Escalation__c esc2 = createLateClaimEscalation(new EscalationTestWrapper('Test2', claimRecType, testPartnerFundRequest1.Id, ipaCp.Id, usr1.Id,
+                                                                    10.0, false));
             escalationList.add(esc2);
             insert escalationList;
            Core_MDF_Escalation_ServiceHandler.validateClaimingWindow(escalationList);
@@ -2048,8 +2051,8 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
        System.runAs(user1){
           update testPartnerFundRequest1;
        }
-       Core_MDF_Escalation__c esc1 = createLateClaimEscalation('Test1', claimRecType, testPartnerFundRequest1.Id, ccfCp.Id, usr1.Id,
-                                                                5.0, false);
+       Core_MDF_Escalation__c esc1 = createLateClaimEscalation(new EscalationTestWrapper('Test1', claimRecType, testPartnerFundRequest1.Id, ccfCp.Id, usr1.Id,
+                                                                5.0, false));
        System.assert(esc1!=null);
        System.runAs(user1){
             insert esc1;
@@ -2058,7 +2061,7 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
         try{
             Core_MDF_Escalation_ServiceHandler.validateCampAmt( null, null);
             Core_MDF_Escalation_ServiceHandler.shareEscalation( null, null, true);
-
+            //Core_MDF_Escalation_ServiceHandler.validateEscalationWithCampaign( null, null, null, null, null, null,null);//Suma
             Core_MDF_Escalation_ServiceHandler.initializeEscalationFields( null, null, true);
         } catch(exception e){
         }
@@ -2066,9 +2069,19 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
         
     }
     
-    public static Core_MDF_Escalation__c createLateClaimEscalation(String escName, Id lateclaimEscRecType, Id partnerFundRequestId, 
+   /* public static Core_MDF_Escalation__c createLateClaimEscalation(String escName, Id lateclaimEscRecType, Id partnerFundRequestId, 
                                                                    Id channelPrgmId, Id claimSubmitterId, Decimal totalDollarImp, 
-                                                                   Boolean isInsert){
+                                                                   Boolean isInsert){  */
+    // ATHR Avoid long parameter lists - US 14285 - Indira
+    public static Core_MDF_Escalation__c createLateClaimEscalation(EscalationTestWrapper wrapper) {
+        // Unpack wrapper into local variables
+        String escName = wrapper.escName;
+        Id lateclaimEscRecType = wrapper.lateclaimEscRecType;
+        Id partnerFundRequestId = wrapper.partnerFundRequestId;
+        Id channelPrgmId = wrapper.channelPrgmId;
+        Id claimSubmitterId = wrapper.claimSubmitterId;
+        Decimal totalDollarImp = wrapper.totalDollarImp;
+        Boolean isInsert = wrapper.isInsert;
                                                                        
        
         User sysAdminUser = Core_MDF_CCP_TestDataUtility.createUser(true);
@@ -2090,6 +2103,28 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
         } 
         return esc;
     }
+    // ATHR Avoid long parameter lists - US 14285 - Indira
+    public class EscalationTestWrapper {
+        public String escName;
+        public Id lateclaimEscRecType;
+        public Id partnerFundRequestId;
+        public Id channelPrgmId;
+        public Id claimSubmitterId;
+        public Decimal totalDollarImp;
+        public Boolean isInsert;
+        
+        public EscalationTestWrapper(String escName, Id lateclaimEscRecType, Id partnerFundRequestId, 
+                                     Id channelPrgmId, Id claimSubmitterId, Decimal totalDollarImp, Boolean isInsert) {
+                                         this.escName = escName;
+                                         this.lateclaimEscRecType = lateclaimEscRecType;
+                                         this.partnerFundRequestId = partnerFundRequestId;
+                                         this.channelPrgmId = channelPrgmId;
+                                         this.claimSubmitterId = claimSubmitterId;
+                                         this.totalDollarImp = totalDollarImp;
+                                         this.isInsert = isInsert;
+                                     }
+    }
+    
     @isTest 
     static void testValidateEscalationAgainstRecoveries(){
         Test.startTest();

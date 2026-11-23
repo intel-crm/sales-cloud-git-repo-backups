@@ -839,6 +839,8 @@ Post payment Actions:
         <queriedFields>Core_MDF_VAT_Eligibility_Ind__c</queriedFields>
         <queriedFields>Core_MDF_VAT_Hold_Ind__c</queriedFields>
         <queriedFields>Core_MDF_VAT_Amt__c</queriedFields>
+        <queriedFields>Core_MDF_Bank_Doc_Hold_Ind__c</queriedFields>
+        <queriedFields>Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c</queriedFields>
     </recordLookups>
     <recordUpdates>
         <name>updateClaim_0</name>

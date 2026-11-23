@@ -100,7 +100,7 @@
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
+            <operator>notContain</operator>
             <value>win approved,production win</value>
         </criteriaItems>
         <criteriaItems>

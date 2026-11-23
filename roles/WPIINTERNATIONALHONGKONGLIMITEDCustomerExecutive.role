@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>WPI INTERNATIONAL (HK)  LIMITED Customer Executive</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>WPI INTERNATIONAL (HK)  LIMITED Customer Executive</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_11813556_Lifei_Xu</parentRole>
+</Role>

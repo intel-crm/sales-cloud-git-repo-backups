@@ -1,0 +1,34 @@
+<messaging:emailTemplate renderUsingSystemContextWithoutSharing="true"
+                         subject="Activity External Approval Notification" 
+                         recipientType="User"
+                         relatedToType="PartnerFundRequest">
+<messaging:htmlEmailBody >
+<html>
+<body>  
+<p>{!$Label.Core_MDF_EmailTemp_DearPartner}</p>
+     <p>{!$Label.Core_MDF_IPA_EmailTemp_Body5}</p>
+      <p>{!$Label.Core_MDF_IPA_EmailTemp_Field1}{!RelatedTo.Core_MDF_Ultimate_Account_Name__c}</p>
+      <p>{!$Label.Core_MDF_EmailTemp_Claim_Activity_Name}{!RelatedTo.Title}</p>
+      <p>{!$Label.Core_MDF_Email_Template_Activity_No}{!RelatedTo.Core_MDF_Activity_Number__c}</p> 
+      <p>{!$Label.Core_MDF_EmailTemp_Budget_Type}{!RelatedTo.Core_MDF_Budget_Type_nm__c}</p>             
+      <p>{!$Label.Core_MDF_Audit_Creation_Field4}{!RelatedTo.Core_MDF_Activity_Types__c}</p>
+      <p>{!$Label.Core_MDF_IPA_EmailTemp_Field3}{!RelatedTo.Core_MDF_Fund_Request_Status__c}</p>
+      <p>{!$Label.Core_MDF_Country_Location}{!RelatedTo.Core_MDF_Country_nm__c}</p>
+      <p>Submitter Name:{!$User.FirstName} {!$User.LastName}</p>
+      <p>Submitter Email:{!$User.Email}</p>
+      <p>Approver Name:{!RelatedTo.Core_MDF_Intel_Activity_Owner_Id__r.name}</p>
+      <p>Approver Email:{!RelatedTo.Core_MDF_Intel_Activity_Owner_Id__r.email}</p>
+      
+      <p>{!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}</p>
+      <p>{!$Label.Core_MDF_Audit_Creation_IPA_Body_3}</p>
+      <div style="font-family: Calibri;font-size: 12px;">
+      <p><em>{!$Label.Core_MDF_IPA_EmailTemp_Footer1}</em>&nbsp;<em>{!$Label.Core_MDF_IPA_EmailTemp_Footer2}&nbsp;<strong><a href="https://intelinside.intel.com/Support?AppSignOn=Yes">{!$Label.Core_MDF_IPA_EmailTemp_Footer3}</a>&nbsp;</strong>{!$Label.Core_MDF_IPA_EmailTemp_Footer4}</em></p>
+      <p>{!$Label.Core_MDF_EmailTemp_Claim_Footer3}&nbsp;<strong><a href="https://intelinside.intel.com/Support?AppSignOn=Yes">{!$Label.Core_MDF_IPA_EmailTemp_Footer3}</a>&nbsp;</strong>{!$Label.Core_MDF_EmailTemp_Claim_Footer4}</p>
+      <p>{!$Label.Core_MDF_EmailTemp_StatusUpdate_Address}&nbsp;<br /><br/> <a href="https://www.intel.com/content/www/us/en/homepage.html">{!$Label.Core_MDF_EmailTemp_Footer3}</a>&nbsp;|&nbsp;<a href="https://www.intel.com/content/www/us/en/legal/trademarks.html">{!$Label.Core_MDF_EmailTemp_Footer4}&nbsp;</a>|&nbsp;<a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html?elqTrackId=d66a216e5b8b472c80e421c11f79cbc2&amp;amp;elqaid=13991&amp;amp;elqat=2">{!$Label.Core_MDF_EmailTemp_Footer5}</a>&nbsp;|&nbsp;<a href="http://www.intel.com/cookies">{!$Label.Core_MDF_EmailTemp_Footer6}</a>&nbsp;</p>
+      <p></p>
+      </div>
+</body>
+    
+</html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

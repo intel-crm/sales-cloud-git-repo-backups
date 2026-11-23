@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>shikhax.salaria@intel.com</email>
+    <name>IPA PRC Adm Exception Approvers Queue</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Core_MDF_IPA_PRC_PMG_Approvers_Group</publicGroup>
+        </publicGroups>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Core_MDF_Exception__c</sobjectType>
+    </queueSobject>
+</Queue>

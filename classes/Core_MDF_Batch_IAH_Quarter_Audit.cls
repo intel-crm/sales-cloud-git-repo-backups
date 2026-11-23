@@ -1,7 +1,6 @@
 // Validates the IAH data for current quarter and sends one email with the results
 // checks Recovery Dashboard PS/PSD links and amounts and PSD carry-over from the previous quarter
 // Database.executeBatch(new Core_MDF_Batch_IAH_Quarter_Audit('Q4 2026'), 100);
-// Test class: Core_MDF_Batch_IAH_Quarter_Audit_Test
 
 global without sharing class Core_MDF_Batch_IAH_Quarter_Audit implements Database.Batchable<SObject>, Database.Stateful {
 

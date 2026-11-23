@@ -7,83 +7,34 @@
     <colorPalette>unity</colorPalette>
     <dashboardChartTheme>light</dashboardChartTheme>
     <dashboardColorPalette>unity</dashboardColorPalette>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>startsWith</operator>
+            <values>PSG-</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>startsWith</operator>
+            <values>PSG-AP-</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>startsWith</operator>
+            <values>PSG-EMEA-</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>startsWith</operator>
+            <values>PSG-JP-Unassigned</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>startsWith</operator>
+            <values>PSG-ASMO-</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>startsWith</operator>
+            <values>PSG-GAE-</values>
+        </dashboardFilterOptions>
+        <name>Last Assigned Queue</name>
+    </dashboardFilters>
     <dashboardGridLayout>
-        <dashboardGridComponents>
-            <colSpan>4</colSpan>
-            <columnIndex>0</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <axisBinding>y</axisBinding>
-                    <column>RowCount</column>
-                </chartSummary>
-                <componentType>Donut</componentType>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>true</expandOthers>
-                <groupingColumn>BucketField_34782821</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>FY TAT28 CEG</header>
-                <legendPosition>Right</legendPosition>
-                <maxValuesDisplayed>6</maxValuesDisplayed>
-                <report>IPS_PSG_PSE_Report_Folder/TAT28_CEG</report>
-                <showPercentage>true</showPercentage>
-                <showTotal>true</showTotal>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>0</rowIndex>
-            <rowSpan>5</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>4</colSpan>
-            <columnIndex>0</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <axisBinding>y</axisBinding>
-                    <column>RowCount</column>
-                </chartSummary>
-                <componentType>Donut</componentType>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>BucketField_34782821</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Obsolete-FY TAT28 GEO WWRAE</header>
-                <legendPosition>Right</legendPosition>
-                <maxValuesDisplayed>6</maxValuesDisplayed>
-                <report>IPS_PSG_PSE_Report_Folder/TAT28_GEO_WWRAE</report>
-                <showPercentage>true</showPercentage>
-                <showTotal>true</showTotal>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>5</rowIndex>
-            <rowSpan>5</rowSpan>
-        </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>3</colSpan>
             <columnIndex>0</columnIndex>
@@ -95,61 +46,87 @@
                     <column>RowCount</column>
                 </chartSummary>
                 <componentType>BarGrouped</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Assigned_Queue__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>CLOSED_DATEONLY</groupingColumn>
+                <groupingColumn>CLOSED_DATE</groupingColumn>
                 <groupingColumn>BucketField_34782821</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>TAT28 CEG</header>
+                <groupingSortProperties/>
+                <header>Closed Case Volumes by Age</header>
                 <legendPosition>Right</legendPosition>
-                <report>IPS_PSG_PSE_Report_Folder/TAT28_CEG</report>
+                <report>IPS_PSG_Reports_Folder/Cases_Closed_by_Age_in_3_Quarters_PSG</report>
                 <showPercentage>false</showPercentage>
                 <showValues>true</showValues>
                 <sortBy>RowValueDescending</sortBy>
                 <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>10</rowIndex>
+            <rowIndex>0</rowIndex>
             <rowSpan>6</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>5</colSpan>
+            <colSpan>3</colSpan>
             <columnIndex>3</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
                 <chartSummary>
-                    <aggregate>Average</aggregate>
                     <axisBinding>y</axisBinding>
-                    <column>Case.Core_IPS_Age__c</column>
+                    <column>RowCount</column>
                 </chartSummary>
-                <componentType>Line</componentType>
+                <componentType>BarStacked100</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Assigned_Queue__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
+                <groupingColumn>CLOSED_DATE</groupingColumn>
+                <groupingColumn>BucketField_34782821</groupingColumn>
+                <groupingSortProperties/>
+                <header>Closed Case Volumes by Age%</header>
+                <legendPosition>Right</legendPosition>
+                <report>IPS_PSG_Reports_Folder/Cases_Closed_by_Age_in_3_Quarters_PSG</report>
+                <showPercentage>false</showPercentage>
+                <showValues>false</showValues>
+                <sortBy>RowValueDescending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>6</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>3</colSpan>
+            <columnIndex>6</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Average</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>AGE</column>
+                </chartSummary>
+                <componentType>Line</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Assigned_Queue__c</column>
+                </dashboardFilterColumns>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
                 <groupingColumn>CLOSED_DATEONLY</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <inheritedReportGroupingSort>r</inheritedReportGroupingSort>
-                    </groupingSorts>
-                </groupingSortProperties>
+                <groupingSortProperties/>
                 <header>Average Age in Days</header>
                 <legendPosition>Bottom</legendPosition>
                 <report>IPS_PSG_Reports_Folder/Cases_Closed_Quarterly_Average_Age_PSG</report>
@@ -160,7 +137,42 @@
                 <title>Closed Cases by Quarter</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>10</rowIndex>
+            <rowIndex>0</rowIndex>
+            <rowSpan>6</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>9</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <axisBinding>y</axisBinding>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>ColumnGrouped</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Assigned_Queue__c</column>
+                </dashboardFilterColumns>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>BucketField_57505999</groupingColumn>
+                <groupingColumn>CLOSED_DATEONLY</groupingColumn>
+                <groupingSortProperties/>
+                <header>Closed Cases</header>
+                <legendPosition>Right</legendPosition>
+                <report>IPS_PSG_Reports_Folder/Cases_Closed_Quarterly_by_Group2_PSG</report>
+                <showPercentage>false</showPercentage>
+                <showValues>true</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <title>by Quarter by Owner Group</title>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>6</rowIndex>
             <rowSpan>6</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -171,80 +183,166 @@
                 <chartAxisRange>Auto</chartAxisRange>
                 <chartSummary>
                     <axisBinding>y</axisBinding>
-                    <column>RowCount</column>
+                    <column>FORMULA1</column>
                 </chartSummary>
-                <componentType>BarGrouped</componentType>
+                <componentType>ColumnGrouped</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Assigned_Queue__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>CLOSED_DATEONLY</groupingColumn>
-                <groupingColumn>BucketField_34782821</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Obsolete-TAT28 GEO WWRAE</header>
+                <groupingColumn>BucketField_45968770</groupingColumn>
+                <groupingColumn>Core_IPS_Response__c.Core_IPS_Answer__c</groupingColumn>
+                <groupingSortProperties/>
+                <header>Survey Q1: Case Volume</header>
                 <legendPosition>Right</legendPosition>
-                <report>IPS_PSG_PSE_Report_Folder/TAT28_GEO_WWRAE</report>
+                <report>IPS_PSG_Reports_Folder/Survey_Q1_PSG_CEG</report>
                 <showPercentage>false</showPercentage>
                 <showValues>true</showValues>
                 <sortBy>RowValueDescending</sortBy>
                 <sortLegendValues>false</sortLegendValues>
+                <title>Q1: Was your issue resolved?</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>16</rowIndex>
+            <rowIndex>12</rowIndex>
             <rowSpan>6</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>5</colSpan>
+            <colSpan>3</colSpan>
             <columnIndex>3</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
                 <chartSummary>
                     <axisBinding>y</axisBinding>
-                    <column>RowCount</column>
+                    <column>FORMULA2</column>
                 </chartSummary>
                 <componentType>ColumnGrouped</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Assigned_Queue__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>BucketField_57505999</groupingColumn>
-                <groupingColumn>CLOSED_DATEONLY</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <inheritedReportGroupingSort>r</inheritedReportGroupingSort>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <inheritedReportGroupingSort>r</inheritedReportGroupingSort>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Obsolete-Closed Cases</header>
+                <groupingColumn>BucketField_45968770</groupingColumn>
+                <groupingColumn>Core_IPS_Response__c.Core_IPS_Answer__c</groupingColumn>
+                <groupingSortProperties/>
+                <header>Survey Q1 - Topbox%</header>
                 <legendPosition>Right</legendPosition>
-                <report>IPS_PSG_Reports_Folder/Cases_Closed_Quarterly_by_Group2_PSG</report>
+                <report>IPS_PSG_Reports_Folder/Survey_Q1_PSG_CEG</report>
                 <showPercentage>false</showPercentage>
                 <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
+                <sortBy>RowValueDescending</sortBy>
                 <sortLegendValues>false</sortLegendValues>
-                <title>by Quarter by Owner Group</title>
+                <title>Q1 - Was your issue resolved?</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>16</rowIndex>
-            <rowSpan>8</rowSpan>
+            <rowIndex>12</rowIndex>
+            <rowSpan>6</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>3</colSpan>
+            <columnIndex>6</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartSummary>
+                    <column>FORMULA1</column>
+                </chartSummary>
+                <componentType>Metric</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Assigned_Queue__c</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <groupingSortProperties/>
+                <header>Customer Survey NPS</header>
+                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
+                <report>IPS_PSG_Reports_Folder/Customer_Survey_NPS_PSG_CEG</report>
+                <showRange>false</showRange>
+            </dashboardComponent>
+            <rowIndex>12</rowIndex>
+            <rowSpan>6</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <axisBinding>y</axisBinding>
+                    <column>FORMULA1</column>
+                </chartSummary>
+                <componentType>ColumnGrouped</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Assigned_Queue__c</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>BucketField_45968770</groupingColumn>
+                <groupingColumn>BucketField_55120962</groupingColumn>
+                <groupingSortProperties/>
+                <header>Survey Q2-Q6: Case Volume</header>
+                <legendPosition>Right</legendPosition>
+                <report>IPS_PSG_Reports_Folder/Survey_Q2_Q6_PSG_CEG</report>
+                <showPercentage>false</showPercentage>
+                <showValues>true</showValues>
+                <sortBy>RowValueDescending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>18</rowIndex>
+            <rowSpan>7</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>5</colSpan>
+            <columnIndex>4</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <axisBinding>y</axisBinding>
+                    <column>FORMULA2</column>
+                </chartSummary>
+                <componentType>ColumnGrouped</componentType>
+                <dashboardFilterColumns>
+                    <column>Case.Core_IPS_Assigned_Queue__c</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>BucketField_45968770</groupingColumn>
+                <groupingColumn>BucketField_55120962</groupingColumn>
+                <groupingSortProperties/>
+                <header>Survey Q2-Q6 - Topbox%</header>
+                <legendPosition>Right</legendPosition>
+                <report>IPS_PSG_Reports_Folder/Survey_Q2_Q6_PSG_CEG</report>
+                <showPercentage>false</showPercentage>
+                <showValues>true</showValues>
+                <sortBy>RowValueDescending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>18</rowIndex>
+            <rowSpan>7</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>9</numberOfColumns>
         <rowHeight>80</rowHeight>
@@ -254,7 +352,7 @@
     <owner>11646767@intel.com.crm</owner>
     <runningUser>11646767@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
-    <title>Obsolete-PSG CEG Quarterly Ops Report Part3</title>
+    <title>PSG CEG Quarterly Ops Report Part3</title>
     <titleColor>#000000</titleColor>
     <titleSize>12</titleSize>
 </Dashboard>

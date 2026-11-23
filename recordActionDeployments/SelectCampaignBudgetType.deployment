@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordActionDeployment xmlns="http://soap.sforce.com/2006/04/metadata">
+    <channelConfigurations>
+        <channel>Chat</channel>
+        <isAutopopEnabled>false</isAutopopEnabled>
+    </channelConfigurations>
+    <channelConfigurations>
+        <channel>Phone</channel>
+        <isAutopopEnabled>false</isAutopopEnabled>
+    </channelConfigurations>
+    <channelConfigurations>
+        <channel>Other</channel>
+        <channelItems>
+            <action>Create_IPA_Camp2</action>
+            <isMandatory>false</isMandatory>
+            <isUiRemoveHidden>false</isUiRemoveHidden>
+            <pinned>Top</pinned>
+            <position>0</position>
+            <type>Flow</type>
+        </channelItems>
+        <isAutopopEnabled>false</isAutopopEnabled>
+    </channelConfigurations>
+    <deploymentContexts>
+        <entityName>Campaign</entityName>
+    </deploymentContexts>
+    <hasComponents>false</hasComponents>
+    <hasGuidedActions>true</hasGuidedActions>
+    <hasOmniscripts>false</hasOmniscripts>
+    <hasRecommendations>false</hasRecommendations>
+    <masterLabel>Select Campaign Budget Type</masterLabel>
+</RecordActionDeployment>

@@ -23,6 +23,7 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
     //additional filter condition -> string input
     @api additionalCriteria;
     @api sharingFlag;//to query with user context or not
+    @api compStartDate;
     //Conditions to decide whether to display this whole component, e.g. "someField__c = 'IPA';someField__c = 'CoGTM'"
     @api componentVisibilityCriteria;
     //Logic that combines the above conditions by index, e.g. "1 AND 2 (3 OR 4)"
@@ -44,22 +45,28 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
     @api restrictFieldVisiblityFieldAPIName;
     @api restrictFieldVisiblityCriteriaFieldAPIName;
     @track filterConditionResult = false;
-
-
     tableColumns;
+    //15511
     @api tableHeader; 
     @track showRelatedList = true;
     @track dynamicTableHeader;
+    showStaticText = false;
     @api strLabels; //TWC3117-17837
 
-     connectedCallback() {
+    connectedCallback() {
+        /*if (this.recordId?.startsWith('0RB') && !this.showRelatedList) {
+            return;
+        }*/
+        console.log('tableHeader:', this.tableHeader);
+        console.log('@@RecordID:',this.recordId);
         if(this.recordId?.startsWith('0RB')){
-            this.getClaimDetails();
+            this.getClaimDetails();//15511
         }
-        this.resolveTableHeader();
-         this.restrictFieldVisiblityCriteria();
+        this.resolveTableHeader();//15511
+        this.restrictFieldVisiblityCriteria();
         this.evaluateComponentVisibility();
     }
+
 
     checkForUndefinedEmptyAndNull(input) {
         if (input !== undefined && input !== null && input !== "") {
@@ -70,12 +77,12 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
 
     }
 
-    setObjectName(objectApiName, objectLabel) {
+    setObjectName(objectApiName, objectLabel) { 
         switch (objectApiName) {
             case 'Core_MDF_Camp_to_ActPartner__c':
                 this.objectName = activatingPartnerObjLabel;
                 break;
-            case 'Core_MDF_Contract_Line_Item__c':
+            case 'Core_MDF_Contract_Line_Item__c': 
                 this.objectName = contractLineItemLabel;
                 break;
             default:
@@ -83,7 +90,24 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
                 break;
         }
     }
+    /*async restrictFieldVisiblityCriteria() {
+         console.log('Start restrictFieldVisiblityCriteria');
+        try {
+            this.filterConditionResult = await getFilterCondition({ //checkfieldVisisikity
+                recordId: this.recordId,
+                restrictFieldVisiblityCriteriaFieldAPIName: this.restrictFieldVisiblityCriteriaFieldAPIName
+            });
+            console.log('filterConditionResult Ealay result -->', this.filterConditionResult);
+ 
+        } catch (error) {
+            this.error = error;
+            console.error('Error in restrictFieldVisiblityCriteria:', error);
+            return false;
+        }
+    }*/
     restrictFieldVisiblityCriteria() {
+        console.log('Start restrictFieldVisiblityCriteria');
+
         getFilterCondition({
             recordId: this.recordId,
             restrictFieldVisiblityCriteriaFieldAPIName: this.restrictFieldVisiblityCriteriaFieldAPIName
@@ -91,6 +115,7 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
             .then(result => {
                 this.filterConditionResult = result;
                 this.loadFieldsAndRecords(); 
+                console.log('filterConditionResult Ealay result -->', this.filterConditionResult);
             })
             .catch(error => {
                 this.error = error;
@@ -99,7 +124,7 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
     }
 
      loadFieldsAndRecords() {
-        getFieldsAndRecords({
+       getFieldsAndRecords({
             relatedobjectApiName: this.relatedobjectApiName,
             strFields: this.getQueryFields(),
             criteriaField: this.criteriaFieldAPIName,
@@ -140,35 +165,49 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
                 }
 
                 listOfFields = this.strFields.split(',');//remove the condition according
+                console.log('fieldsDescribe:' + JSON.stringify(fieldsDescribe));
                 //Ealay
+                console.log(' Ealay column hide value -->' + this.restrictFieldVisiblityFieldAPIName);
                 if (!this.filterConditionResult) {
                     //this.restrictFieldVisiblityFieldAPIName = 'Core_MDF_Initial_Baseline_Quantity_nbr__c';
+                    console.log('Outcome-based result is true — removing FlexiPage fields');
                     const fieldsColumnsToRemove = (this.restrictFieldVisiblityFieldAPIName || '').split(',').map(f => f.trim());
                     // Remove only those fields that are in flexipageFieldList
                     listOfFields = listOfFields.filter(field => !fieldsColumnsToRemove.includes(field));
                 }
-
+                console.log(' Ealay filterConditionResult after -->' + this.filterConditionResult);
+                console.log('listOfFields:' + JSON.stringify(listOfFields));
                 //Ealay
                 let items = []; //local array to prepare columns
 
+                
                 const translatedLabels = (this.checkForUndefinedEmptyAndNull(data) && data.translatedLabels)
                     ? data.translatedLabels
                     : []; //TWC3117-17837 
-                //prepare the column with type = url 
+                console.log('translatedLabels:', translatedLabels);
 
+                //prepare the column with type = url
+                //listOfFields.map(element => { //TWC3117-17837
                 listOfFields.map((element, index) => { //TWC3117-17837
                     let fldDataType;
                     let fldDetail = fieldsDescribe[element];//fldDetail
                     let fldApi = fldDetail['fieldName'];
+                    //let fldLabel = fldDetail['fieldLabel'];  //TWC3117-17837
                     let fldLabel = translatedLabels[index] || fldDetail['fieldLabel']; //TWC3117-17837
+
+                    console.log('fldLabel : ' + fldLabel);
+                    console.log('tData : ' + fldDetail);
+    
                     fldDataType = fldDetail['dataType'];//fldDataType
+                    console.log('fldDataType : ' + fldDataType);
                     // it will enter this if-block just once
                     if (fldDataType == 'REFERENCE') {
 
                         items = [...items,
                         {
                             label: fldLabel,
-                            fieldName: fldApi + '_URL',
+                            //fieldName: 'URLField',
+                            fieldName: fldApi + '_URL', //15511
                             type: 'url',
                             typeAttributes: {
                                 label: {
@@ -191,22 +230,24 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
                 //prepare table data
                 this.columns = items;
                 this.tableColumns = this.columns;
+                console.log('this.columns 141' + JSON.stringify(this.columns));
                 this.tableData = [];
+                
                 records.map(item => {
                     let recData = item;
                     let tdata = {};
                     listOfFields.map(fld => {
                         if (refFieldsList.includes(fld)) {
-                            /*let refCol = isCustomObject ? fld.replace('__c', '__r') : fld;
-                            tdata[fld] = recData[refCol]['Name'];
-                            tdata['URLField'] = userType == UserType_Standard ? orgBaseURL + this.relatedobjectApiName + '/' + item[fld] + '/view' :
-                                portalBaseURL + communityURLSection + item[fld];*/
+                            
 
+                            //15511
                             const relationshipPath = IdToValueMap[fld]; 
                             const lookupId = item[fld]; 
                             const urlField = fld + '_URL';
+
                             tdata[fld] = '';
                             tdata[urlField] = '';
+
                             if (lookupId && relationshipPath) {
                                 const [relName, relField] = relationshipPath.split('.');
                                 tdata[fld] = recData?.[relName]?.[relField] || '';
@@ -215,6 +256,8 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
                         }
                         else {
                             let rawValue = recData[fld];
+
+                            console.log('@@rawValue==>',rawValue);
                             const picklistMap = data.picklistTranslatedMap?.[fld];
                             if (picklistMap && picklistMap[rawValue]) {
                                 tdata[fld] = picklistMap[rawValue];  // Translated label
@@ -226,7 +269,12 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
                     this.tableData.push(tdata);
                 });
 
+                console.log('records', records);
+
                 //create URL with Id and push it into the array
+                console.log('this.tableData 92:' + this.tableData);
+                console.log('this.tableData 95:' + JSON.stringify(this.tableData));
+
 
                 //hide columns that have no data across all rows
                 this.hideEmptyColumns();
@@ -247,21 +295,33 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
             })
     }
 
+   
+
+    //15511
     get resolvedHeader() {
+        console.log('@@resolvedHeader',this.tableHeader);
         return this.checkForUndefinedEmptyAndNull(this.dynamicTableHeader) ? this.dynamicTableHeader : this.objectName;
     }
+
     getClaimDetails() {
+        console.log('Start getClaimDetails');
+
         getClaimData({
             recordId: this.recordId,
         })
             .then(result => {
                 this.showRelatedList = result;
+                console.log('showRelatedList Ealay result -->', this.showRelatedList);
             })
             .catch(error => {
                 this.error = error;
+                console.error('Error in getClaimDetails:', error);
             });
     }
+
     resolveTableHeader(){
+        console.log('Start getTableTitle');
+
         getTableHeader({
             displayHeader: this.tableHeader,
         })
@@ -276,6 +336,7 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
             })
             .catch(error => {
                 this.error = error;
+                console.error('Error in getTableTitle:', error);
             });
     }
 
@@ -287,6 +348,7 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
         return getLabelValue({ labelName: this.tableHeader })
             .then(label => {
                 if (this.checkForUndefinedEmptyAndNull(label)) {
+                    console.log('label:::'+JSON.stringify(label));
                     this.dynamicTableHeader = label;
                 }
             })
@@ -340,6 +402,7 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
         })
             .then(result => {
                 this.componentVisible = result;
+                console.log('evaluateComponentVisibility result -->', result);
             })
             .catch(error => {
                 this.error = error;

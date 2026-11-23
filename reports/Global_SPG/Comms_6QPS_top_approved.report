@@ -169,8 +169,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Approved_Date__c</dateColumn>
-        <endDate>2020-01-13</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2018-12-30</startDate>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

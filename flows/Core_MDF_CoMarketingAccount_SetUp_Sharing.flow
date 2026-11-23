@@ -175,7 +175,7 @@
         </connector>
     </assignments>
     <assignments>
-        <description>If Account is created by External User, change owner to FLAO user</description>
+        <description>Set the internal FLAO owner before enabling partner status on the Account.</description>
         <name>Core_MDF_Update_Owner_to_FLAO_User</name>
         <label>Update Owner to FLAO User</label>
         <locationX>208</locationX>
@@ -302,7 +302,7 @@
             <label>If External User</label>
         </rules>
     </decisions>
-    <description>When created by External Update Owner to FLAO User, Insert PNUM. 
+    <description>When created by External User, update owner to FLAO before enabling partner status and insert PNUM.
 Update isPartner to True, Active to True, Populate CoMarketing Ultimate account field,  Sharing with Account Managers and Geo based Sharing</description>
     <environments>Default</environments>
     <interviewLabel>Core_MDF_CoMarketingAccount_SetUp_Sharing {!$Flow.CurrentDateTime}</interviewLabel>

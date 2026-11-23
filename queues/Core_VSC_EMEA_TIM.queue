@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>VSC - EMEA TIM</name>
+    <queueMembers>
+        <users>
+            <user>adam.mrozik@inteltechnologyprovider.com.crm</user>
+            <user>aleksandra.mielinska@inteltechnologyprovider.com.crm</user>
+            <user>aleksandra.patryn@inteltechnologyprovider.com.crm</user>
+            <user>alina.grabovska@inteltechnologyprovider.com.crm</user>
+            <user>anna.dopieralska@inteltechnologyprovider.com.crm</user>
+            <user>calin.muresan@inteltechnologyprovider.com.crm</user>
+            <user>davor.kucera@inteltechnologyprovider.com.crm</user>
+            <user>diana.stackevic@inteltechnologyprovider.com.crm</user>
+            <user>dominika.kargut@inteltechnologyprovider.com.crm</user>
+            <user>jacek.borkowski@inteltechnologyprovider.com.crm</user>
+            <user>kamil.grzesik@inteltechnologyprovider.com.crm</user>
+            <user>11654097@intel.com.crm</user>
+            <user>maciej.bogucki@inteltechnologyprovider.com.crm</user>
+            <user>11519982@intel.com.crm</user>
+            <user>mikolaj.danilowicz@inteltechnologyprovider.com.crm</user>
+            <user>miroslav.stefanov@inteltechnologyprovider.com.crm</user>
+            <user>patryk.pabich@inteltechnologyprovider.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+</Queue>

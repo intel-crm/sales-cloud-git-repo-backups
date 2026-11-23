@@ -2,23 +2,53 @@
 <DashboardFolder xmlns="http://soap.sforce.com/2006/04/metadata">
     <folderShares>
         <accessLevel>Manage</accessLevel>
-        <sharedTo>10642066@intel.com.crm</sharedTo>
+        <sharedTo>10166818@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
         <accessLevel>View</accessLevel>
-        <sharedTo>10711727@intel.com.crm</sharedTo>
+        <sharedTo>10048987@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
         <accessLevel>View</accessLevel>
-        <sharedTo>EMP_10642066_Gina_Moore</sharedTo>
-        <sharedToType>RoleAndSubordinatesInternal</sharedToType>
+        <sharedTo>11223033@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
         <accessLevel>View</accessLevel>
-        <sharedTo>EMP_10629535_Gregory_Ernst</sharedTo>
-        <sharedToType>RoleAndSubordinatesInternal</sharedToType>
+        <sharedTo>10645190@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
     </folderShares>
-    <name>US ACCTS MOORE Dashboards</name>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>10062055@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>11641867@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>10640362@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>10642253@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>10548860@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>10637546@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <name>US ACCTS PALMERI Dashboards</name>
 </DashboardFolder>

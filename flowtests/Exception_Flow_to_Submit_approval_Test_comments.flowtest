@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowTest xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flowApiName>Exception_Flow_to_Submit_approval</flowApiName>
+    <label>Test comments</label>
+    <testPoints>
+        <elementApiName>Start</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordInitial</type>
+            <value>
+                <sobjectValue>{&quot;Core_MDF_Activity_Cate_and_Type_nm__c&quot;:&quot;Broadcast-&gt;Podcast;Broadcast-&gt;Other (Broadcast)&quot;,&quot;Core_MDF_Budget_Type_nm__c&quot;:&quot;Client Specialties MDF;Business Client Acceleration - MDF;Data Centric Acceleration - MDF&quot;,&quot;Core_MDF_Comments_txt__c&quot;:&quot;Test Appemail&quot;,&quot;Core_MDF_Country_Region_nm__c&quot;:&quot;AFGHANISTAN;ALBANIA&quot;,&quot;Core_MDF_Exception_End_Date_dt__c&quot;:&quot;2023-04-25&quot;,&quot;Core_MDF_Exception_Reason_nm__c&quot;:&quot;Process Exception from Activity Catalog&quot;,&quot;Core_MDF_Exception_Start_Date_dt__c&quot;:&quot;2023-04-25&quot;,&quot;Core_MDF_Exception_Status_nm__c&quot;:&quot;Pending Review&quot;,&quot;Core_MDF_Issue_Description_dsc__c&quot;:&quot;Test Appemail&quot;,&quot;Core_MDF_Name_of_Exception_nm__c&quot;:&quot;Test Appemail223&quot;,&quot;Core_MDF_Program_nm__c&quot;:&quot;Core_MDF_Intel_Partner_Alliance&quot;,&quot;Core_MDF_Region_txt__c&quot;:&quot;APJ, EMEA&quot;,&quot;Core_MDF_Select_All_Accounts_ind__c&quot;:true,&quot;Core_MDF_Select_All_Country_ind__c&quot;:false,&quot;Core_MDF_Total_Dollar_Impact_amt__c&quot;:10,&quot;OwnerId&quot;:&quot;005g00000096dCOAAY&quot;}</sobjectValue>
+            </value>
+        </parameters>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordUpdated</type>
+            <value>
+                <sobjectValue>{&quot;Core_MDF_Activity_Cate_and_Type_nm__c&quot;:&quot;Broadcast-&gt;Podcast;Broadcast-&gt;Other (Broadcast)&quot;,&quot;Core_MDF_Budget_Type_nm__c&quot;:&quot;Client Specialties MDF;Business Client Acceleration - MDF;Data Centric Acceleration - MDF&quot;,&quot;Core_MDF_Comments_txt__c&quot;:&quot;Test Appemail&quot;,&quot;Core_MDF_Country_Region_nm__c&quot;:&quot;AFGHANISTAN;ALBANIA&quot;,&quot;Core_MDF_Exception_End_Date_dt__c&quot;:&quot;2023-04-25&quot;,&quot;Core_MDF_Exception_Reason_nm__c&quot;:&quot;Process Exception from Activity Catalog&quot;,&quot;Core_MDF_Exception_Start_Date_dt__c&quot;:&quot;2023-04-25&quot;,&quot;Core_MDF_Exception_Status_nm__c&quot;:&quot;Pending Review&quot;,&quot;Core_MDF_Issue_Description_dsc__c&quot;:&quot;Test Appemail&quot;,&quot;Core_MDF_Name_of_Exception_nm__c&quot;:&quot;Test Appemail223&quot;,&quot;Core_MDF_Program_nm__c&quot;:&quot;Core_MDF_Intel_Partner_Alliance&quot;,&quot;Core_MDF_Region_txt__c&quot;:&quot;APJ, EMEA&quot;,&quot;Core_MDF_Select_All_Accounts_ind__c&quot;:true,&quot;Core_MDF_Select_All_Country_ind__c&quot;:false,&quot;Core_MDF_Total_Dollar_Impact_amt__c&quot;:10,&quot;OwnerId&quot;:&quot;005g00000096dCOAAY&quot;}</sobjectValue>
+            </value>
+        </parameters>
+    </testPoints>
+    <testPoints>
+        <assertions>
+            <conditions>
+                <leftValueReference>Update_Exception_Approvers_Comment</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <errorMessage>failed</errorMessage>
+        </assertions>
+        <elementApiName>Finish</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+    </testPoints>
+    <testType>WithAssertion</testType>
+</FlowTest>

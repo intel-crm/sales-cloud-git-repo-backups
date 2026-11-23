@@ -29,7 +29,7 @@ public with sharing class Core_MDF_PFC_VAT_TriggerHandler extends TriggerHandler
     }
     
     public override void beforeUpdate() {
-	if(!Core_MDF_Utility.byPassFeature('Bypass_Payment_Doc_InvFileVAT_Validate'))
+        if(!Core_MDF_Utility.byPassFeature('Bypass_Payment_Doc_InvFileVAT_Validate'))
             if (isActive('Core_MDF_Claim_VAT_Info_Validations')) {
                     Core_MDF_PFC_VAT_ServiceHandler.validateVATInvoiceandFiles((List<Core_MDF_Claim_VAT_Info__c>) Trigger.NEW, (Map<Id,Core_MDF_Claim_VAT_Info__c>) Trigger.oldMap);
             }
@@ -55,6 +55,7 @@ public with sharing class Core_MDF_PFC_VAT_TriggerHandler extends TriggerHandler
     }
     
     public override void afterUpdate() {
+        system.debug('inside VAT trigger after update');
         Core_MDF_PFC_VAT_ServiceHandler.releaseClaimWhenVatisCancelled((List<Core_MDF_Claim_VAT_Info__c>) Trigger.NEW,(Map<Id,Core_MDF_Claim_VAT_Info__c>) Trigger.oldMap,(Map<Id,Core_MDF_Claim_VAT_Info__c>) Trigger.newMap); 
       
     }  

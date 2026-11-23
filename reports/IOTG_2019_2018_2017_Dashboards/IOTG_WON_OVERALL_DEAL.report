@@ -43,20 +43,17 @@
     <columns>
         <field>Opportunity.Core_Product_Segment__c</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Approved_Date__c</field>
-    </columns>
     <crossFilters>
         <criteriaItems>
-            <column>Name</column>
+            <column>Core_BU_Short_Name__c</column>
             <isUnlocked>false</isUnlocked>
-            <operator>contains</operator>
+            <operator>equals</operator>
             <value>IOTG</value>
         </criteriaItems>
         <operation>with</operation>
         <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
-        <relatedTable>Core_Opportunity_KPI__c</relatedTable>
-        <relatedTableJoinColumn>Core_Opp_KPI_Opportunity__c</relatedTableJoinColumn>
+        <relatedTable>OpportunityLineItem</relatedTable>
+        <relatedTableJoinColumn>Opportunity</relatedTableJoinColumn>
     </crossFilters>
     <filter>
         <criteriaItems>
@@ -103,11 +100,16 @@
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
+        <dateGranularity>FiscalQuarter</dateGranularity>
+        <field>Opportunity.Core_Approved_Date__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Opportunity.Core_Consumption_Market__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>IOTG WON OVERALL DEAL 2020</name>
+    <name>IOTG WON OVERALL DEAL</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -129,8 +131,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Opportunity.Core_Approved_Date__c</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Opportunity.Core_Approved_Date__c</dateColumn>
         <interval>INTERVAL_CURFY</interval>

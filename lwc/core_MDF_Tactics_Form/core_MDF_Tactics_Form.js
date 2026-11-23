@@ -29,6 +29,7 @@ export default class KpiTable extends LightningElement {
     @api isProposalBased;
     @api editable;
     @api programName = 'Client';
+    //@api inputElement;
 
     @track selectedTactics = [];
     @track data = [];
@@ -158,13 +159,21 @@ wiredPicklistLabels({ data, error }) {
                 this.isDetail = true;
             }
         }
-
+       // intelContributionCurrent
         @api
         set intelContribution(value) {
+                console.log('Incoming intelContribution value--:', value);
+               // const latestValue = parseFloat(value);
+
             this.intelContributionValue = parseFloat(value);
+                console.log('After parseFloat:', this.intelContributionValue);
+
             this.updateIntelContributionValue();
+           //  this.intelContributionCurrent = latestValue;
         }
         get intelContribution() {
+            console.log('Getter returning:', this.intelContributionValue);
+
             return this.intelContributionValue;
         }
 
@@ -196,25 +205,7 @@ wiredPicklistLabels({ data, error }) {
         }
 
         const previousRow = previousDataMap.get(tacticApi);
-
-        const previousKpiValuesByApi = new Map();
-
-        if (previousRow?.firstKpi?.api) {
-            previousKpiValuesByApi.set(
-                previousRow.firstKpi.api,
-                previousRow.firstKpi.value
-            );
-        }
-
-        (previousRow?.otherKpis || []).forEach(savedKpi => {
-            if (savedKpi?.api) {
-                previousKpiValuesByApi.set(
-                    savedKpi.api,
-                    savedKpi.value
-                );
-            }
-        }); //Indu defect fix 
-
+        console.log('Previous Row::---:', previousRow);
         // Get localized labels dynamically from picklistLabelMap
         const tacticLabel = this.picklistLabelMap[tacticApi] || tacticApi;
         const percentageLabel = this.picklistLabelMap[template.percentageField] || template.percentageField;
@@ -225,21 +216,23 @@ wiredPicklistLabels({ data, error }) {
             percentageField: { api: template.percentageField, label: percentageLabel },
             percentageValue: previousRow?.percentageValue ?? '',
             intelContri: previousRow?.intelContri ?? '',
-           
+            /*intelContri: previousRow?.spendingAmount 
+            ? previousRow.spendingAmount 
+            : (previousRow?.percentageValue 
+            ? ((this.intelContributionValue * previousRow.percentageValue) / 100).toFixed(2) 
+            : 0),*/
           //  intelContri: previousRow?.percentageValue ? ((this.intelContributionValue * previousRow.percentageValue) / 100).toFixed(2) : 0,
             maxIntelInvest:this.intelContributionValue,
 
             firstKpi: {
                 api: template.firstKpi.label,
                 label: this.picklistLabelMap[template.firstKpi.label] || template.firstKpi.label,
-                //value: previousRow?.firstKpi?.value ?? ''
-                value: previousKpiValuesByApi.get(template.firstKpi.label) ?? ''
+                value: previousRow?.firstKpi?.value ?? ''
             },
             otherKpis: template.otherKpis.map((kpi, i) => ({
                 api: kpi.label,
                 label: this.picklistLabelMap[kpi.label] || kpi.label,
-                //value: previousRow?.otherKpis?.[i]?.value ?? '' 
-                value: previousKpiValuesByApi.get(kpi.label) ?? '' //indu
+                value: previousRow?.otherKpis?.[i]?.value ?? ''
             })),
             rowspan: template.otherKpis.length + 1
         };
@@ -300,22 +293,36 @@ wiredPicklistLabels({ data, error }) {
         }
     
         handlePercentageChange(event) {
+            //const inputElement = event.target;
             const rowId = event.target.dataset.id;
+            //const value = event.target.value;
             const newValue = parseFloat(event.target.value);
         
             const updatedData = [...this.data];
             const row = updatedData.find(item => item.id == rowId);
             if (row) {
+                //row.percentageValue = newValue;
+                //row.intelContri = newValue != '' && newValue != null && newValue != undefined && !isNaN(newValue) ? ((newValue*this.intelContributionValue) / 100).toFixed(2) : 0;
 
                 row.percentageValue = isNaN(newValue) ? 0 : newValue;
                 // recalc amount based on %
                 row.intelContri = this.intelContributionValue && !isNaN(newValue) ? ((newValue * this.intelContributionValue) / 100).toFixed(2) : 0;
+
+                /*inputElement.setCustomValidity('');
+                 // Validate if the value has a decimal part
+                 const isValidDecimal = /^\d+(\.\d{1,2})?$/.test(value);
+                if(!isValidDecimal){
+                    inputElement.setCustomValidity(this.spending_Value_Decimal_Error);
+                }else{
+                    inputElement.setCustomValidity('');
+                }*/
     }
         
             this.data = updatedData;
         }
         @api handleSave() {
             const payload = JSON.parse(JSON.stringify(this.data));
+            console.log('payload-->>>',payload);
              return saveKpiData({ rawRecords: payload, pfrId: this.recordId, isProposalBased: true })
                 .then(result => {
                     return result;
@@ -729,6 +736,7 @@ wiredPicklistLabels({ data, error }) {
                     : 0),
                    // intelContri: tactic.percentageValue != '' && tactic.percentageValue != null && tactic.percentageValue != undefined && !isNaN(tactic.percentageValue) ? ((tactic.percentageValue*this.intelContributionValue) / 100).toFixed(2) : 0,
                     maxIntelInvest:this.intelContributionValue,
+
                     firstKpi: {
                         api: tactic.firstKpi?.api || '',
                         label: tactic.firstKpi?.label || '',

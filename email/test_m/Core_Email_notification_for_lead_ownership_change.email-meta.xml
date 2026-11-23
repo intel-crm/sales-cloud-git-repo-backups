@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Lead_Intel</letterhead>
+    <name>Core Email notification for lead ownership change</name>
+    <style>freeForm</style>
+    <subject>New lead assigned to you: {!Lead.Name} from {!Lead.Company}</subject>
+    <textOnly>Dear {!Lead.OwnerFirstName},
+
+The lead {!Lead.Name} from {!Lead.Company} has been assigned to you because it has been qualified by an LDR. Prior to this assignment you will have met or otherwise communicated with the responsible LDR to get a high-level overview of the potential opportunity, and have agreed to accept the lead.
+
+Actions upon receipt of this notification:
+
+1. Change sales stage to “Sales Accepted Lead”
+
+a. A call or email must be logged within 1 business day of receipt of this notification
+
+
+2. If contact established and the lead is considered an opportunity, change sales stage to “Sales Qualified Lead” to convert the lead.
+
+
+3. If contact cannot be established:
+
+a. Lead status changed to “Unreachable”
+
+If not an opportunity at this time, and if desired, you can convert this lead to a contact for potential contact in the future.
+
+Good Luck!</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Core_MDF_Partner_Response_Zone_Matrix__c$Name</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_MDF_Partner_Response_Zone_Matrix__c$Core_MDF_FV_Percent_Recovery__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_MDF_Partner_Response_Zone_Matrix__c$Core_MDF_PV1_Percent_Recovery__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_MDF_Partner_Response_Zone_Matrix__c$Core_MDF_PV2_Percent_Recovery__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_MDF_Partner_Response_Zone_Matrix__c$Core_MDF_PV4_Percent_Recovery__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_MDF_Partner_Response_Zone_Matrix__c$Core_MDF_ZV_Percent_Recovery__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>PGM and PRZ Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_MDF_PGM_and_PRZ__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Core_MDF_Partner_Response_Zone_Matrix__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

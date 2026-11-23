@@ -10,6 +10,7 @@
 * Accenture – Shridhar K       02/18/2019                   Case is shared with account manager based on PGM records
 *****************************************************************************************************************************************/
 public without sharing class Core_MDF_ClaimReviewCaseShare {
+    public static List<Case> listOfCases = new List<Case>();
     /****************************************************************************************************************************************
     Method Name:                                             claimReviewCaseShare
     @return  :                                               Void
@@ -20,11 +21,11 @@ public without sharing class Core_MDF_ClaimReviewCaseShare {
     Accenture – Harika P        11/21/2018                   Created. 
     Accenture – Shridhar K      01/08/2019                   Updated claimReviewCaseShare method to share Case records only with claim submitter.
     Accenture – Shridhar K      02/18/2019                   Case is shared with account manager based on PGM records
-    Accenture - Varun			07/13/2020					 Modified method to share Internal groups as Read only access
+    Accenture - Varun           07/13/2020                   Modified method to share Internal groups as Read only access
     *****************************************************************************************************************************************/    
     @InvocableMethod
     public static void claimReviewCaseShare(List<Case> caseList){
-        try{                    
+        try{ 
             Map<Id,List<Id>> claimIdUserIdListMapToShare = new Map<Id,List<Id>>();        
             Map<Id,List<Id>> caseIdWithUserOrGroupId = new Map<Id,List<Id>>();  
             Map<Id,Id> caseWithVirtualAccount = new Map<Id,Id>();
@@ -48,30 +49,32 @@ public without sharing class Core_MDF_ClaimReviewCaseShare {
             Map<Id,List<Id>> caseIdWithReadOnlyGroup = new Map<Id,List<Id>>();
 
             //EEF - Primary Partner Account Sharing
+            String geoBudgetTypeMapKeyForPrimary ;
             String geoMapKeyForPrimary;
             String WWMapKeyForPrimary;
             Set<Id> primaryPartnerAccountIds = new Set<Id>();
-
+            //Case Ids set
+            Set<Id> caseIdSet = new set<Id>();
             //Splitting Custom Label to share with Retail/ IPA claim submitters as well - Added by Sugathri
-            List<String> claimSubmitterPSList = Label.Core_MDF_External_Claim_Submitter.split(';');
-            List<id> caseId = new List<id>();
+            List<String> claimSubmitterPSList = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_External_Claim_Submitter').split(';');
+            List<id> caseId = new List<Id>();
 
             for(Case c :caseList){
                 if(c.Core_MDF_Channel_Program_txt__c == 'Ecosystem Extension Fund'){
                     caseId.add(c.id);
                 }
             }
-            if(!caseId.isEmpty()){
+            if(caseId != null){
                 caseList = [select id,Core_MDF_Claim_Lookup_Id__r.Request.Campaign.Core_MDF_Account__c,Core_MDF_Channel_Program_txt__c,AccountId,Core_Account_Geo__c,Core_IPS_Account_Sub_Geo__c,Core_MDF_Budget_Type_nm__c from Case where Id in :caseId];
             }
             
             // Identifying accounts from cases
             for (Case c : caseList){
                 if(c.AccountId != null){
-                    caseWithVirtualAccount.put(c.Id, c.AccountId);
+                    caseWithVirtualAccount.put(c.Id, c.AccountId); 
                     String geo = c.Core_Account_Geo__c.trim();
                     geoSet.add(geo);
-                    //added by Jk--> for EEF - Primary Partner Account Sharing
+                    //EEF - Primary Partner Account Sharing
                     if(c.Core_MDF_Channel_Program_txt__c == 'Ecosystem Extension Fund'){
                         primaryPartnerAccountIds.add(c.Core_MDF_Claim_Lookup_Id__r.Request.Campaign.Core_MDF_Account__c);
                     }
@@ -127,20 +130,21 @@ public without sharing class Core_MDF_ClaimReviewCaseShare {
                 mapOfAccToHostGeo.put(acc.Id, acc.Core_Geo__c);
                 setOfAccHostGeo.add(acc.Core_Geo__c);
             }
-            
+
             //Fetching PGM records and storing them in map with Account
             if(accIdSet != NULL && accIdSet.Size() > 0 && programIdSet != NULL && programIdSet.Size() > 0){
+                
                 for(Core_MDF_Partner_Group_Mapping__c pgm:[SELECT Id, Core_MDF_Group_Id__c, Core_MDF_Account__c,Core_MDF_Sub_Region_cd__c, 
                                                            Core_MDF_Channel_Program__c,Core_MDF_Region_cd__c,
-							   Core_MDF_BudgetType_nm__c
+                                                           Core_MDF_BudgetType_nm__c
                                                            FROM Core_MDF_Partner_Group_Mapping__c 
-                                                           WHERE Core_MDF_Type_of_Access__c='Internal'
-                                                           AND Core_MDF_Inactive_Ind__c = false 
+                                                           WHERE Core_MDF_Type_of_Access__c='Internal' 
                                                            AND Core_MDF_Account__c IN : accIdSet AND 
+                                                           Core_MDF_Inactive_Ind__c = false AND 
                                                            Core_MDF_Channel_Program__c IN : programIdSet AND
                                                            (Core_MDF_Region_cd__c IN : geoSet OR Core_MDF_Region_cd__c = 'WW' OR Core_MDF_Region_cd__c IN: setOfAccHostGeo)])
                 {                      
-                        If(pgm.Core_MDF_Sub_Region_cd__c != NULL){
+                    If(pgm.Core_MDF_Sub_Region_cd__c != NULL){
                         
                         //Prepare acc + Cp + Geo + SubGeo key
                         accIdProgramIdGeoSubGeo = (String)pgm.Core_MDF_Account__c + (String)pgm.Core_MDF_Channel_Program__c + pgm.Core_MDF_Region_cd__c+pgm.Core_MDF_Sub_Region_cd__c;
@@ -156,7 +160,7 @@ public without sharing class Core_MDF_ClaimReviewCaseShare {
                     }else if(pgm.Core_MDF_Region_cd__c != 'WW'){
                         //Prepare acc + Cp + Geo key
                         accIdProgramIdGeo = (String)pgm.Core_MDF_Account__c + (String)pgm.Core_MDF_Channel_Program__c + pgm.Core_MDF_Region_cd__c;
-                     
+                        
                         //If budget type on pgm is null else add budget type to the key
                         if(pgm.Core_MDF_BudgetType_nm__c == NULL){
                             geoInternalMap.put(accIdProgramIdGeo, pgm.Core_MDF_Group_Id__c);
@@ -175,7 +179,6 @@ public without sharing class Core_MDF_ClaimReviewCaseShare {
                             geoInternalMap.put(accIdProgramId, pgm.Core_MDF_Group_Id__c);
                         }
                     }
-                                                               
                 }
             }
             
@@ -208,26 +211,28 @@ public without sharing class Core_MDF_ClaimReviewCaseShare {
                 }else{
                     accRegion = c.Core_Account_Geo__c.trim();
                 }
-                
+
                 //Share case with Acc Mgr based on Group present on Account for Retail Program else follow PGM sharing
                 if(isNodeBasedSharingReqd && virtualAccMap.containsKey(c.AccountId) && 
                    virtualAccMap.get(c.AccountId) != NULL && virtualAccMap.get(c.AccountId).Core_MDF_Group_Id__c != NULL){
-                    readOnlyGroupSet.add(virtualAccMap.get(c.AccountId).Core_MDF_Group_Id__c);                       
-                   }else{
-                       if(c.Core_IPS_Account_Sub_Geo__c != NULL){
-                        subGeoMapKey = (String)virtualAccWithIntelAcc.get(c.AccountId) + virtualAccMap.get(c.AccountId).Core_MDF_Channel_Program__c + accRegion +c.Core_IPS_Account_Sub_Geo__c.trim();                    
-                           
-                           if(c.Core_MDF_Budget_Type_nm__c != NULL){
-                            subGeoBudgetTypeMapKey = (String)virtualAccWithIntelAcc.get(c.AccountId) + virtualAccMap.get(c.AccountId).Core_MDF_Channel_Program__c + accRegion + c.Core_IPS_Account_Sub_Geo__c.trim() + c.Core_MDF_Budget_Type_nm__c;                    
-			    geoBudgetTypeMapKey = (String)virtualAccWithIntelAcc.get(c.AccountId) + virtualAccMap.get(c.AccountId).Core_MDF_Channel_Program__c + accRegion + c.Core_MDF_Budget_Type_nm__c;    
-                           }
-                           
-                       }
-                       
+                    readOnlyGroupSet.add(virtualAccMap.get(c.AccountId).Core_MDF_Group_Id__c);   
+                }else{
+                    if(c.Core_IPS_Account_Sub_Geo__c != NULL){           
+                        subGeoMapKey = (String)virtualAccWithIntelAcc.get(c.AccountId) + virtualAccMap.get(c.AccountId).Core_MDF_Channel_Program__c + accRegion +c.Core_IPS_Account_Sub_Geo__c.trim();  
+                        
+                        if(c.Core_MDF_Budget_Type_nm__c != NULL){
+                            subGeoBudgetTypeMapKey = (String)virtualAccWithIntelAcc.get(c.AccountId) + virtualAccMap.get(c.AccountId).Core_MDF_Channel_Program__c + accRegion + c.Core_IPS_Account_Sub_Geo__c.trim() + c.Core_MDF_Budget_Type_nm__c;                  
+                        }
+                        
+                    }
+                    
                     geoMapKey = (String)virtualAccWithIntelAcc.get(c.AccountId) + virtualAccMap.get(c.AccountId).Core_MDF_Channel_Program__c + accRegion;
-                    //added by JK --> for EEF - Primary Partner Account Sharing
+                    
+                    geoBudgetTypeMapKey = (String)virtualAccWithIntelAcc.get(c.AccountId) + virtualAccMap.get(c.AccountId).Core_MDF_Channel_Program__c + accRegion + c.Core_MDF_Budget_Type_nm__c;    
+
+                    //for EEF - Primary Partner Account Sharing
                     if(c.Core_MDF_Channel_Program_txt__c == 'Ecosystem Extension Fund'){
-           
+                        
                         geoMapKeyForPrimary = (String)virtualAccWithIntelAcc.get(c.Core_MDF_Claim_Lookup_Id__r.Request.Campaign.Core_MDF_Account__c) + virtualAccMap.get(c.Core_MDF_Claim_Lookup_Id__r.Request.Campaign.Core_MDF_Account__c).Core_MDF_Channel_Program__c + accRegion;
                         WWMapKeyForPrimary = (String)virtualAccWithIntelAcc.get(c.Core_MDF_Claim_Lookup_Id__r.Request.Campaign.Core_MDF_Account__c) + virtualAccMap.get(c.Core_MDF_Claim_Lookup_Id__r.Request.Campaign.Core_MDF_Account__c).Core_MDF_Channel_Program__c;
                         if(geoInternalMap.containsKey(geoMapKeyForPrimary)){
@@ -238,37 +243,34 @@ public without sharing class Core_MDF_ClaimReviewCaseShare {
                         }
                         
                     }
-                       if(subGeoMapKey != NULL && geoInternalMap.containsKey(subGeoMapKey)){
-                           
-                           readOnlyGroupSet.add(geoInternalMap.get(subGeoMapKey));
-                       }
-                       
-                       if(subGeoBudgetTypeMapKey != NULL && geoInternalMap.containsKey(subGeoBudgetTypeMapKey)){
-                           
-                           readOnlyGroupSet.add(geoInternalMap.get(subGeoBudgetTypeMapKey));
-                       }
-                       
-                       if(geoInternalMap!=null && geoInternalMap.containsKey(geoMapKey)){
-                           readOnlyGroupSet.add(geoInternalMap.get(geoMapKey));
-                       }
-                       
-                       if(geoBudgetTypeMapKey!=null && geoInternalMap.containsKey(geoBudgetTypeMapKey) ){
-                          
-                           readOnlyGroupSet.add(geoInternalMap.get(geoBudgetTypeMapKey));
-                       }
-                       
-                       geoMapKey = geoMapKey.left(36);
-                       
-                       if(geoInternalMap.containsKey(geoMapKey)){
-                                                     
-                           readOnlyGroupSet.add(geoInternalMap.get(geoMapKey));
-                       }
-                       
-                       geoMapKey = geoMapKey + c.Core_MDF_Budget_Type_nm__c;
-                       if(geoInternalMap.containsKey(geoMapKey)){
-                           readOnlyGroupSet.add(geoInternalMap.get(geoMapKey));
-                       }
-                   }
+                    
+                    if(subGeoMapKey != NULL && geoInternalMap.containsKey(subGeoMapKey)){
+                        readOnlyGroupSet.add(geoInternalMap.get(subGeoMapKey));
+                    }
+                    
+                    if(subGeoBudgetTypeMapKey != NULL && geoInternalMap.containsKey(subGeoBudgetTypeMapKey)){
+                        readOnlyGroupSet.add(geoInternalMap.get(subGeoBudgetTypeMapKey));
+                    }
+                    
+                    if(geoInternalMap.containsKey(geoMapKey)){
+                        readOnlyGroupSet.add(geoInternalMap.get(geoMapKey));
+                    }
+                    
+                    if(geoInternalMap.containsKey(geoBudgetTypeMapKey)){
+                        readOnlyGroupSet.add(geoInternalMap.get(geoBudgetTypeMapKey));
+                    }
+                    
+                    geoMapKey = geoMapKey.left(36);
+                    
+                    if(geoInternalMap.containsKey(geoMapKey)){
+                        readOnlyGroupSet.add(geoInternalMap.get(geoMapKey));
+                    }
+                    
+                    geoMapKey = geoMapKey + c.Core_MDF_Budget_Type_nm__c;
+                    if(geoInternalMap.containsKey(geoMapKey)){
+                        readOnlyGroupSet.add(geoInternalMap.get(geoMapKey));
+                    }
+                }
                 
                 //Below conditions are for sharing case with program based group from metadata
                 if(programGeoGroupMap.containsKey(c.Core_MDF_Channel_Program_txt__c) && programGeoGroupMap.get(c.Core_MDF_Channel_Program_txt__c) != NULL){
@@ -311,12 +313,12 @@ public without sharing class Core_MDF_ClaimReviewCaseShare {
             if(!caseIdWithUserOrGroupId.isEmpty()){
                 //Core_MDF_GenericShareRecordActionClass.createShareRecordList('Case', caseIdWithUserOrGroupId); 
                 Core_MDF_GenericShareRecordActionClass.RecordManualShareClass rmsInst = new Core_MDF_GenericShareRecordActionClass.RecordManualShareClass('Case', caseIdWithUserOrGroupId, 'Edit');
-				Core_MDF_GenericShareRecordActionClass.createShareRecordList(rmsInst);
+                Core_MDF_GenericShareRecordActionClass.createShareRecordList(rmsInst);
             }
             if(!caseIdWithReadOnlyGroup.isEmpty()){
                 //Core_MDF_GenericShareRecordActionClass.createShareRecordList('Case', caseIdWithUserOrGroupId); 
                 Core_MDF_GenericShareRecordActionClass.RecordManualShareClass rmsReadInst = new Core_MDF_GenericShareRecordActionClass.RecordManualShareClass('Case', caseIdWithReadOnlyGroup, 'Read');
-				Core_MDF_GenericShareRecordActionClass.createShareRecordList(rmsReadInst);
+                Core_MDF_GenericShareRecordActionClass.createShareRecordList(rmsReadInst);
             }
         }
         catch(Exception e){
@@ -348,6 +350,7 @@ public without sharing class Core_MDF_ClaimReviewCaseShare {
                  if(mdt.Core_MDF_Budget_Type_txt__c == NULL){
                      if(mdt.Core_MDF_Region__c == NULL){
                          programRWGroupMap.put(mdt.Core_MDF_Program__c, mdt.Core_MDF_Group_Name__c);
+                      
                          programROGroupMap.put(mdt.Core_MDF_Program__c, mdt.Core_MDF_Group_Name_RO__c);
                      }else if(mdt.Core_MDF_Region__c != NULL && mdt.Core_MDF_Sub_Region__c != NULL){
                          programRWGroupMap.put(mdt.Core_MDF_Program__c+mdt.Core_MDF_Region__c+mdt.Core_MDF_Sub_Region__c, mdt.Core_MDF_Group_Name__c);
@@ -358,21 +361,21 @@ public without sharing class Core_MDF_ClaimReviewCaseShare {
                      }
                  }
                  //For Budget Type based Sharing for IPA Only                                          
-                 if(mdt.Core_MDF_Program__c == Label.Core_MDF_IPA_Program_Name && mdt.Core_MDF_Budget_Type_txt__c != NULL){
+                 if(mdt.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name') && mdt.Core_MDF_Budget_Type_txt__c != NULL){
                      //For ASMO LAR-NAR
                      if(mdt.Core_MDF_Region__c != NULL && mdt.Core_MDF_Sub_Region__c != NULL){
-                     	programRWGroupMap.put(mdt.Core_MDF_Program__c+mdt.Core_MDF_Region__c+mdt.Core_MDF_Sub_Region__c+mdt.Core_MDF_Budget_Type_txt__c, mdt.Core_MDF_Group_Name__c);
-                       	programROGroupMap.put(mdt.Core_MDF_Program__c+mdt.Core_MDF_Region__c+mdt.Core_MDF_Sub_Region__c+mdt.Core_MDF_Budget_Type_txt__c, mdt.Core_MDF_Group_Name_RO__c);
+                        programRWGroupMap.put(mdt.Core_MDF_Program__c+mdt.Core_MDF_Region__c+mdt.Core_MDF_Sub_Region__c+mdt.Core_MDF_Budget_Type_txt__c, mdt.Core_MDF_Group_Name__c);
+                        programROGroupMap.put(mdt.Core_MDF_Program__c+mdt.Core_MDF_Region__c+mdt.Core_MDF_Sub_Region__c+mdt.Core_MDF_Budget_Type_txt__c, mdt.Core_MDF_Group_Name_RO__c);
                      //For APJ, EMEA, PRC   
-					 }else if(mdt.Core_MDF_Region__c != NULL && mdt.Core_MDF_Sub_Region__c == NULL){
+                     }else if(mdt.Core_MDF_Region__c != NULL && mdt.Core_MDF_Sub_Region__c == NULL){
                         programRWGroupMap.put(mdt.Core_MDF_Program__c+mdt.Core_MDF_Region__c+mdt.Core_MDF_Budget_Type_txt__c, mdt.Core_MDF_Group_Name__c);
-						programROGroupMap.put(mdt.Core_MDF_Program__c+mdt.Core_MDF_Region__c+mdt.Core_MDF_Budget_Type_txt__c, mdt.Core_MDF_Group_Name_RO__c);
+                        programROGroupMap.put(mdt.Core_MDF_Program__c+mdt.Core_MDF_Region__c+mdt.Core_MDF_Budget_Type_txt__c, mdt.Core_MDF_Group_Name_RO__c);
                      }
                  }  
                                                           
                  groupNameList.add(mdt.Core_MDF_Group_Name__c);
-                 groupNameList.add(mdt.Core_MDF_Group_Name_RO__c);                                         
-             }
+                 groupNameList.add(mdt.Core_MDF_Group_Name_RO__c);                                     
+            }
 
             for(Group grp : [SELECT Id, Name, DeveloperName FROM Group WHERE (DeveloperName like 'Core_MDF%' or DeveloperName like 'MDF%') and type='Regular' and DeveloperName IN: groupNameList]){
                 groupNameGroupIdMap.put(grp.DeveloperName, grp.Id);
@@ -394,6 +397,7 @@ public without sharing class Core_MDF_ClaimReviewCaseShare {
                 }
                 
             }
+            
             return programGeoGroupIdListMap;
         }catch(Exception e){Core_MDF_CCP_UtilityClass.getErrorDetails(e); return NULL;}
     }

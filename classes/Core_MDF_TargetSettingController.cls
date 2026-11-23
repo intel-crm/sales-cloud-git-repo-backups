@@ -20,6 +20,8 @@ public with sharing class Core_MDF_TargetSettingController {
     @AuraEnabled
     public static void updateCampaignIdtoSTLI(List<Id> selectedLineItmIdList, Id campaignId){
         try {
+            System.debug('@@selectedLineItmIdList->'+selectedLineItmIdList);
+            System.debug('@@campaignId->'+campaignId);
             if (!selectedLineItmIdList.isEmpty()) {
                 List<Core_MDF_Target_Setting_Line_Item__c> TargetLineItemToUpdateList = new List<Core_MDF_Target_Setting_Line_Item__c>();
                 
@@ -31,6 +33,7 @@ public with sharing class Core_MDF_TargetSettingController {
                     TargetLineItemToUpdateList.add(TargetLineItm);
                 }
             
+                System.debug('@@TargetLineItemToUpdateList->' + TargetLineItemToUpdateList);
             
                 // Update all records in a single DML statement
                 if (!TargetLineItemToUpdateList.isEmpty()) {
@@ -44,8 +47,9 @@ public with sharing class Core_MDF_TargetSettingController {
     
     @AuraEnabled
     public static UserPermissionAccesss checkLoggedInUserhasAccess(String channelProgram){
-        
-	UserPermissionAccesss userPermission = new UserPermissionAccesss();
+    // Highlight: Unused Local Variable - 14285 
+    // List<PermissionSetAssignment> permissionSetsAssigned = new List<PermissionSetAssignment>();
+    UserPermissionAccesss userPermission = new UserPermissionAccesss();
         
         List<String> permissionsetList = new List<String>();
         
@@ -55,18 +59,18 @@ public with sharing class Core_MDF_TargetSettingController {
         if(channelProgram == Core_MDF_CCP_ConstantClass.DCF_PROGRAM){
             permissionsetList.add(Core_MDF_CCP_ConstantClass.DCF_Internal_Acct_Mgr);
         }
-		
+        
         
         if(!permissionsetList.isEmpty()){
             userPermission.isCreateCampaignButtonAccess = Core_MDF_PaymentRunAccounts.checkLoggedInUserhasReqdRole(permissionsetList);   
         }
         Schema.DescribeSObjectResult targetSettingSObj = Schema.sObjectType.Core_MDF_Target_Setting_Line_Item__c;
-	userPermission.isNewButtonAccess = targetSettingSObj.isCreateable();
+    userPermission.isNewButtonAccess = targetSettingSObj.isCreateable();
         userPermission.isEditAccess = targetSettingSObj.isUpdateable();
-		
-	return userPermission;
+        
+    return userPermission;
     }
-	
+    
     public class UserPermissionAccesss{
         @AuraEnabled
         public Boolean isNewButtonAccess = false;
@@ -75,6 +79,8 @@ public with sharing class Core_MDF_TargetSettingController {
         @AuraEnabled
         public Boolean isCreateCampaignButtonAccess = false;
     }
+  
+    
     
     /* Method to Create a new version and clone the Line Items associated to the previous version on the new version */
     @Invocablemethod(label='Get Comments entered by user for Version')

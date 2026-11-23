@@ -55,7 +55,7 @@
         <field>ACCOUNT.NAME</field>
     </columns>
     <filter>
-        <booleanFilter>(((((1 OR 3 OR 6) AND 2 AND (4 OR 5)) AND 7) AND 8) AND 9) AND 10</booleanFilter>
+        <booleanFilter>((((1 OR 3 OR 6) AND 2 AND (4 OR 5)) AND 7) AND 8) AND 9</booleanFilter>
         <criteriaItems>
             <column>Case.Core_IPS_Product_name__c</column>
             <columnToColumn>false</columnToColumn>
@@ -118,13 +118,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>Yebisu</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>SUBJECT</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Floris</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -28,7 +28,7 @@
     
     <!-- Contact Creation Form -->
     <div class="slds-m-around_xx-large">
-        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" >
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
             <div class="slds-modal__container">
                 <header class="slds-modal__header">                    
                     <div class="slds-text-heading_large slds-border_bottom NewCont">{!$Label.c.Core_MDF_New_Contact}</div>
@@ -81,10 +81,10 @@
                             </div>
                         </div>
                         <div class="slds-grid ">
-                            <div class="slds-col slds-size_6-of-12 CountryCon">
+                            <div class="slds-col slds-size_6-of-12 ">
                                 <!--lightning:input aura:id="contactform" label="Country" Name="country" value="{!v.country}"/-->
-                                <lightning:select name="country" label="{!$Label.c.Core_MDF_Country_Region_cc}" aura:id="contactform" value="{!v.country}" required="true" title="{!$Label.c.Core_MDF_Please_fill}">
-                                        <option value="">{!$Label.c.Core_MDF_None}</option>
+                                <lightning:select name="country" label="{!$Label.c.Core_MDF_Country_Region_cc}" value="{!v.country}"> <!-- required="true" -->
+                                     <option value="">{!$Label.c.Core_MDF_None}</option>
                                     <aura:iteration items="{!v.contryList}" var="countryList">
                                         <option value="{!countryList.value}" text="{!countryList.label}"></option>
                                     </aura:iteration>

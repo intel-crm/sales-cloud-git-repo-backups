@@ -11,8 +11,6 @@ Private class Core_MDF_PFC_ManualHold_Claim_Test {
     
     /* Method to Setup Test Data */
     @TestSetup static void setUpData(){        
-        User tempUser = Core_MDF_CCP_TestDataUtility.createUser(false);
-		insert tempUser;
         
         List<Account> toBeUpdated = new List<Account>();
         
@@ -41,9 +39,9 @@ Private class Core_MDF_PFC_ManualHold_Claim_Test {
         PermissionSet clmCaseRevPS = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_Claim_Case_Reviewer' LIMIT 1];
         PermissionSet clmSubmitter = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_External_Claim_Submitter' LIMIT 1];
         
-        System.runAs(tempUser){
         // Creating User with utility class 
         List<User> usrList = new List<User>();
+        UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
         usr.Email = 'sysadmin@example.com';
         usrList.add(usr);
@@ -53,6 +51,7 @@ Private class Core_MDF_PFC_ManualHold_Claim_Test {
         usr1.ContactId = conRecord1.Id;
         usr1.ProfileId = profileId;
         usr1.isActive = true;
+        usr1.UserRoleId = usRole.Id;
         usrList.add(usr1);
         
         User claimCase = Core_MDF_CCP_TestDataUtility.createUser(false);
@@ -71,7 +70,7 @@ Private class Core_MDF_PFC_ManualHold_Claim_Test {
         system.runAs(usr){
             Database.insert(lstPSAssignment);
         }
-        }
+        
         Core_MDF_CCP_TestDataUtility.insertCurrencyExchangeRates();
         //adding bypass feature to bypass access validation
 			List<String> bypassFunctionKeys = new List<String>();
@@ -106,11 +105,12 @@ Private class Core_MDF_PFC_ManualHold_Claim_Test {
         testPartnerFundRequestRecord.Status = 'Approved';
         testPartnerFundRequestRecord.Core_MDF_Reimbursement_Rate_pct__c = '50%';
         testPartnerFundRequestRecord.Core_MDF_Reimbursement_Rate_txt__c = '50%';
+        testPartnerFundRequestRecord.Core_MDF_Start_Date__c = System.today()-1;
         Database.insert(testPartnerFundRequestRecord);
         
         Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(acc1.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1231231230');
-       
-        Core_MDF_Account_Bank_Mapping__c accountBankMap = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc2.Id, bank.Id, true);
+       // Highlight: Unused Local Variable
+       // Core_MDF_Account_Bank_Mapping__c accountBankMap = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc2.Id, bank.Id, true);
         
         Test.stopTest();
         Core_MDF_Configuration__c execution1 = new Core_MDF_Configuration__c();

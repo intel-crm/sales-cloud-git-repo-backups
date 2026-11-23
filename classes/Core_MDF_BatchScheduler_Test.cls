@@ -132,8 +132,6 @@ private class Core_MDF_BatchScheduler_Test {
             customSch4.Core_MDF_Program_Txt__c = 'CCP';
             customSch4.Core_MDF_GMT_Time__c = dt.time();
             customSch4.Core_MDF_Every_X_Hour_Nbr__c = '2';
-            customSch4.Core_MDF_Enable_Email_Notification__c = true;
-            customSch4.Core_MDF_Include_All_Notifications__c = true;
             BatchSch.add(customSch4);
             
             
@@ -179,11 +177,6 @@ private class Core_MDF_BatchScheduler_Test {
             lineItem2.Core_MDF_Scheduled_Time_Dt__c =customSch3.Scheduled_Time_Dt__c; 
             lineItem2.Core_MDF_Status_Txt__c = 'Scheduled'; 
             schLineList.add(lineItem2);
-            Core_MDF_Batch_Scheduler_Line_Item__c lineItem3 = new Core_MDF_Batch_Scheduler_Line_Item__c();
-            lineItem3.Core_MDF_Batch_Scheduler__c = customSch4.Id;
-            lineItem3.Core_MDF_Scheduled_Time_Dt__c =customSch4.Scheduled_Time_Dt__c; 
-            lineItem3.Core_MDF_Status_Txt__c = 'Pending'; 
-            schLineList.add(lineItem3);
             Database.insert(schLineList);
             
             List<Core_MDF_Configuration__c> configList = new List<Core_MDF_Configuration__c>();
@@ -238,14 +231,14 @@ private class Core_MDF_BatchScheduler_Test {
       	//System.assert(lst.size()>0, 'List has rows');
       	
         Test.stopTest();
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
        /* List<Core_MDF_Batch_Scheduler_Line_Item__c> lst2 = */ Core_MDF_BatchSchedulerUtility.updateStatusForCompletedOrFailedJob('CCP');
         try{
             Core_MDF_Custom_BatchJobSch obj =new Core_MDF_Custom_BatchJobSch('');
             
 			obj.execute(null);
         }catch (Exception e) {
-         // Highlight: Unused Local Variable    
+         // Highlight: Unused Local Variable - Indira   
         //	String message = e.getMessage();
             System.assert(e.getMessage().contains('Program cannot be empty'), 'message=' + e.getMessage());
         }        
@@ -256,7 +249,7 @@ private class Core_MDF_BatchScheduler_Test {
         	Core_MDF_BatchJobRestart obj = new Core_MDF_BatchJobRestart('CCP');
 			obj.execute(null);
         }catch(Exception e){
-           // Highlight: Unused Local Variable
+           // Highlight: Unused Local Variable - Indira
           //  String message = e.getMessage();
             System.assert(e.getMessage().contains('Attempt to de-reference a null object'),'message=' + e.getMessage());
             //System.assert(e.getMessage().contains('This is not a valid job to restart.Please check the input parameter'), 'message=' + e.getMessage());
@@ -272,14 +265,14 @@ private class Core_MDF_BatchScheduler_Test {
         sch1.Core_MDF_Inactive__c = True;
         update sch1;
         }catch(exception e){
-           // Highlight: Unused Local Variable
+           // Highlight: Unused Local Variable - Indira
           //  String message = e.getMessage();
             System.assert(e.getMessage().contains(' Batch Schedule cannot be cancelled in current status'), 'message=' + e.getMessage());
         }
         
         
         Core_MDF_Batch_Scheduler__c sch2 = [select id,Core_MDF_Scheduler_Status_Txt__c from Core_MDF_Batch_Scheduler__c where Core_MDF_Job_Frequency__c = 'Daily' limit 1];
-        // Highlight: Unused Local Variable
+        // Highlight: Unused Local Variable - Indira
        // Core_MDF_Batch_Scheduler_Line_Item__c schline2 = [select Id,Core_MDF_Status_Txt__c,Core_MDF_Batch_Scheduler__c from Core_MDF_Batch_Scheduler_Line_Item__c where Core_MDF_Batch_Scheduler__c=:sch2.Id  Limit 1 ];
         sch2.Core_MDF_Inactive__c = True;
         update sch2;
@@ -301,7 +294,7 @@ private class Core_MDF_BatchScheduler_Test {
             customSch6.Core_MDF_Every_X_Minute_Nbr__c = '5';
             insert customSch6;
        }catch(exception e){
-           // Highlight: Unused Local Variable
+           // Highlight: Unused Local Variable - Indira
            // String message = e.getMessage();
             System.assert(e.getMessage().contains('Please provide valid batch class name'), 'message=' + e.getMessage());
         }

@@ -47,6 +47,7 @@
                                 {!RelatedTo.Request.Title}
                             </apex:outputLink>
                         </li>
+                            
                         <li>{!$Label.Core_MDF_EmailTemp_Budget_Type} {!RelatedTo.Core_MDF_Budget_Type_Options_Nm__c}</li>
                         <li>{!$Label.Core_MDF_IPA_Comments}: {!RelatedTo.Core_MDF_Comments_Appvr_Only_txt__c}</li>
                     </ul>

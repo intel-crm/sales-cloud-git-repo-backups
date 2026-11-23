@@ -21,6 +21,12 @@ public without sharing class Core_MDF_DynamicContentGenerator {
                 urlToBeQuried    = loggedInUserLangStr != 'en_US' ? 'Core_MDF_'+loggedInUserLangStr+'_URL__c' : 'Core_MDF_Content_URL__c';
                 helptextToBeQueried = loggedInUserLangStr != 'en_US' ? 'Core_MDF_HelpText_'+loggedInUserLangStr+'_txt__c' : 'Core_MDF_Content_HelpText_txt__c';
             }
+            System.debug('labelToBeQueried-->'+labelToBeQueried);
+            System.debug('escapeSQlabelToBeQueried-->'+String.escapeSingleQuotes(labelToBeQueried));
+            System.debug('urlToBeQuried-->'+urlToBeQuried);
+            System.debug('escapeSQlabelToBeQueried-->'+String.escapeSingleQuotes(urlToBeQuried));
+            System.debug('helptextToBeQueried-->'+helptextToBeQueried);
+              System.debug('escapeSQhelptextToBeQueried-->'+String.escapeSingleQuotes(helptextToBeQueried));
             string qryStr = 'SELECT Id,Core_MDF_Parent_Content_Config_Id__c,Core_MDF_Category_nm__c,Core_MDF_Section_Code_txt__c,Core_MDF_Sort_Order_nbr__c,Core_MDF_Is_Icon_Required_ind__c,Core_MDF_Icon_URL__c,Core_MDF_Style_txt__c,Core_MDF_rowspan_nbr__c,'+
                 +String.escapeSingleQuotes(labelToBeQueried)+ ',' +String.escapeSingleQuotes(urlToBeQuried)+ ',' +String.escapeSingleQuotes(helptextToBeQueried)+ 
                 ' FROM Core_MDF_Content_Configuration__c'+
@@ -29,6 +35,8 @@ public without sharing class Core_MDF_DynamicContentGenerator {
                 ' Order BY Core_MDF_Sort_Order_nbr__c';
             
             contentConfigsList = Database.query(qryStr);
+            system.debug('contentConfigsList----'+contentConfigsList);
+            System.debug('label to be quried ----'+ labelToBeQueried);
             ContentWrap.ContentConfigList=contentConfigsList;
             ContentWrap.labelfieldAPIName = labelToBeQueried;
             ContentWrap.URLfieldAPIName = urlToBeQuried;

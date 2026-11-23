@@ -141,6 +141,7 @@
         <name>Core_MDF_Bank_Location__c</name>
     </fields>
     <fields>
+        <help><!-- Bank name as per Enterprise Supplier Data for the matching Supplier Number --></help>
         <label>Название банка</label>
         <name>Core_MDF_Bank_Name__c</name>
     </fields>
@@ -171,6 +172,10 @@
     <fields>
         <label><!-- Country --></label>
         <name>Core_MDF_Country_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created By --></label>
+        <name>Core_MDF_Created_By_nm__c</name>
     </fields>
     <fields>
         <help><!-- The currency used by Supplier database for this bank. --></help>
@@ -258,6 +263,19 @@
         <name>Core_MDF_INTRMD_BNK_ST_NM__c</name>
     </fields>
     <fields>
+        <label><!-- Inactivate By Program --></label>
+        <name>Core_MDF_Inactivate_By_Program_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive Date --></label>
+        <name>Core_MDF_Inactivate_Date_dt__c</name>
+    </fields>
+    <fields>
+        <help>Вследствие неактивности банк более недоступен для выбора при оформлении заявок на возмещение. Система не будет блокировать активность банка, если у него есть активные заявки. </help>
+        <label><!-- Inactive Date --></label>
+        <name>Core_MDF_Inactive_Date_dt__c</name>
+    </fields>
+    <fields>
         <label><!-- Inactive by Program --></label>
         <name>Core_MDF_Inactive_by_Program_nm__c</name>
         <picklistValues>
@@ -324,6 +342,10 @@
         <name>Core_MDF_Intermediary_Indicator__c</name>
     </fields>
     <fields>
+        <label><!-- Last Modified By --></label>
+        <name>Core_MDF_Last_Modified_By_nm__c</name>
+    </fields>
+    <fields>
         <label>Примечание</label>
         <name>Core_MDF_Note__c</name>
     </fields>
@@ -334,6 +356,10 @@
     <fields>
         <label><!-- ORIG_APP_SYS_CD --></label>
         <name>Core_MDF_ORIG_APP_SYS_CD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner --></label>
+        <name>Core_MDF_Owner_nm__c</name>
     </fields>
     <fields>
         <help>Валюта, в которой будет производиться оплата покупателю.</help>
@@ -372,6 +398,10 @@
             <translation><!-- Co-GTM --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Co-Inv</masterLabel>
+            <translation><!-- Co-Inv --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Datacenter</masterLabel>
             <translation>Фонд совместного маркетинга для дата центров</translation>
         </picklistValues>
@@ -396,6 +426,10 @@
         <help>Банковский маршрутный номер (Bank routing number) по данным предприятия поставщика для соответствующего номера поставщика.</help>
         <label>Код банка (Routing Number)</label>
         <name>Core_MDF_Routing_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supplier Number Currency Program --></label>
+        <name>Core_MDF_SupplierNumCurrencyProgram_cd__c</name>
     </fields>
     <fields>
         <label><!-- Supplier City --></label>
@@ -486,6 +520,10 @@
             <translation><!-- 8% --></translation>
         </picklistValues>
     </fields>
+    <fields>
+        <label><!-- New --></label>
+        <name>New__c</name>
+    </fields>
     <gender>Neuter</gender>
     <nameFieldLabel>Название банка</nameFieldLabel>
     <recordTypes>
@@ -533,6 +571,14 @@
     <validationRules>
         <errorMessage><!-- This bank is in Inactive status and cannot currently be edited --></errorMessage>
         <name>Core_MDF_InactiveBank_Uneditable_AP_Hold</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Select Inactive by Program with Inactive Date --></errorMessage>
+        <name>Core_MDF_Inactive_Bank_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Inactive Date cannot be in future --></errorMessage>
+        <name>Core_MDF_Inactive_Bank_Date_in_Future</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Client/Datacenter/SPCF/CCFB can only select Legal Entity 100. --></errorMessage>
@@ -585,6 +631,10 @@
     <validationRules>
         <errorMessage><!-- Selected Account is not a Comarketing Account. --></errorMessage>
         <name>Core_MDF_ValidateAccountOnBank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter valid Account Number and Supplier Number --></errorMessage>
+        <name>Core_MDF_errorIfNotNumber</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Enter Valid Account Number --></errorMessage>

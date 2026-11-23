@@ -144,16 +144,18 @@ public class Core_FeatureHandler_Test {
         createData();
            
         lstOpportunityFacts = [select Id, Core_Entry_SPP_Us__c from Core_Opportunity_Facts__c where Core_Entry_SPP_Us__c != null
-                               order by Core_Entry_SPP_Us__c];        
-      //  System.assertEquals('value0', lstOpportunityFacts[0].Core_Entry_SPP_Us__c);
+                               order by Core_Entry_SPP_Us__c];
+        System.debug('##### ' + lstOpportunityFacts);
+        
+        System.assertEquals('value0', lstOpportunityFacts[0].Core_Entry_SPP_Us__c);
         
         lstOpportunityFeature[0].Core_Feature_Set__c=lstFeatureSet[1].Id;
         //update lstOpportunityFeature;
         Database.SaveResult[] lstOppFeatureResults1 = Database.Update(lstOpportunityFeature, false);
 
-    //    System.assertEquals('value0', lstOpportunityFacts[0].Core_Entry_SPP_Us__c);
+        System.assertEquals('value0', lstOpportunityFacts[0].Core_Entry_SPP_Us__c);
                 
-     //   Database.DeleteResult[] lsDeletetOppFeatureResults = Database.Delete(lstOpportunityFeature, false);
+        Database.DeleteResult[] lsDeletetOppFeatureResults = Database.Delete(lstOpportunityFeature, false);
         
     }
     
@@ -181,7 +183,9 @@ public class Core_FeatureHandler_Test {
         
         // Insert the intialized Feature
         Database.SaveResult[] lstFeatureResults = Database.insert(lstFeature, false);
-                
+        
+        System.debug('----------'+lstFeature);
+        
         // Construct the Feature Header instances
         lstFeatureHeader = Core_Test_Utility.CreateFeatureHeader(80);
         
@@ -220,13 +224,13 @@ public class Core_FeatureHandler_Test {
         lstOpportunityFacts = [select Id, Core_Entry_SPP_Us__c from Core_Opportunity_Facts__c where Core_Entry_SPP_Us__c != null
                                order by Core_Entry_SPP_Us__c];
         
-     //   System.assertEquals('value0', lstOpportunityFacts[0].Core_Entry_SPP_Us__c);
+        System.assertEquals('value0', lstOpportunityFacts[0].Core_Entry_SPP_Us__c);
         
         lstOpportunityFeature[0].Core_Feature_Set__c=lstFeatureSet[1].Id;
         //update lstOpportunityFeature;
         Database.SaveResult[] lstOppFeatureResults1 = Database.Update(lstOpportunityFeature, false);
 
-    //    System.assertEquals('value0', lstOpportunityFacts[0].Core_Entry_SPP_Us__c);
+        System.assertEquals('value0', lstOpportunityFacts[0].Core_Entry_SPP_Us__c);
                 
         //Database.DeleteResult[] lsDeletetOppFeatureResults = Database.Delete(lstOpportunityFeature, false);
         
@@ -327,13 +331,7 @@ public class Core_FeatureHandler_Test {
             Core_Feature_Header__c=featureHeader.Id, Core_Display_Order__c=1);
         insert featureSet;
         
-        
-        Account accnt = Core_Test_Utility.createAccount(1)[0];
-        accnt.Core_Sales_Groups__c = 'PRC Sales Group';
-        insert accnt;
-            
-        Opportunity opp = Core_Test_Utility.createOpportunity(1)[0];
-        opp.Accountid = accnt.id;
+        Opportunity opp = Core_Test_Utility.Core_Opportunity(1)[0];
         insert opp;
         
         Core_Opportunity_Features__c descFeature = new Core_Opportunity_Features__c(Core_Feature_Set__c=featureSet.Id,
@@ -388,12 +386,7 @@ public class Core_FeatureHandler_Test {
         insert featureSet2;
         insert featureSet3;
         
-        Account accnt = Core_Test_Utility.createAccount(1)[0];
-        accnt.Core_Sales_Groups__c = 'PRC Sales Group';
-        insert accnt;
-        
-        Opportunity opp = Core_Test_Utility.createOpportunity(1)[0];
-        opp.Accountid = accnt.id;
+        Opportunity opp = Core_Test_Utility.Core_Opportunity(1)[0];
         insert opp;
         
         Core_Opportunity_Features__c descFeature1 = new Core_Opportunity_Features__c(Core_Feature_Set__c=featureSet1.Id,
@@ -456,12 +449,7 @@ public class Core_FeatureHandler_Test {
         insert featureSet2;
         insert featureSet3;
         
-        Account accnt = Core_Test_Utility.createAccount(1)[0];
-        accnt.Core_Sales_Groups__c = 'PRC Sales Group';
-        insert accnt;
-        
-        Opportunity opp = Core_Test_Utility.createOpportunity(1)[0];
-        opp.Accountid = accnt.id;
+        Opportunity opp = Core_Test_Utility.Core_Opportunity(1)[0];
         insert opp;
         
         Core_Opportunity_Features__c descFeature1 = new Core_Opportunity_Features__c(Core_Feature_Set__c=featureSet1.Id,

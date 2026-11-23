@@ -1,11 +1,5 @@
-/***************************************************************************************************** 
-Class Name   :    Core_MDF_GenericRelatedListController
-Description  :    Server-side controller of core_MDF_GenricReleatedList
-Added By     :    Rishabh - Weezer
-Created Date :    01/12/2025
-******************************************************************************************************/
 public with sharing class Core_MDF_GenericRelatedListController {
-
+    
     @AuraEnabled(cacheable=true)
     public static List<SObject> getRelatedRecords(
         String childObjectApi,
@@ -13,31 +7,28 @@ public with sharing class Core_MDF_GenericRelatedListController {
         Id parentId,
         String fieldList
     ) {
-        // Always return 
+        
         List<SObject> results = new List<SObject>();
-
+        
         try {
-            // Basic validation added
-            if (String.isBlank(childObjectApi) ||
-                String.isBlank(relationshipField) ||
-                String.isBlank(fieldList) ||
-                parentId == null) {
+            
+            if (String.isBlank(childObjectApi) || String.isBlank(relationshipField) || String.isBlank(fieldList) || parentId == null) {
                 return results;
             }
-
+            
             String soql =
                 'SELECT Id,' + fieldList +
                 ' FROM ' + childObjectApi +
-                ' WHERE ' + relationshipField + ' = :parentId';
-
-            // Execute query
+                ' WHERE ' + relationshipField + ' = :parentId ' +
+                ' WITH SECURITY_ENFORCED';
+            
             results = Database.query(soql);
             
             return results;
-
+            
         } catch (Exception e) {
-            System.debug('ERROR in getRelatedRecords: ' + e.getMessage());
-            return results; // never return null
+            System.debug('Access issue OR Query error: ' + e.getMessage());
+            return results; // return empty if user has no access
         }
     }
     @AuraEnabled(cacheable=true)

@@ -119,8 +119,12 @@ public class Core_MDF_IUPGM_Monitor_Batch_Test {
             PermissionSet ccfAccManagerPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Acct_Mgr' LIMIT 1];
             PermissionSet dcfAccManagerPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_DCF_Acct_Mgr' LIMIT 1];
             PermissionSet retailAccManagerPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Retail_Account_Manager' LIMIT 1];
+            // Highlight: Unused Local Variable - 14285 // Suma
+            //PermissionSet readOnlyUsrPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Int_Read_Only' LIMIT 1];
             PermissionSet ipaAccManagerPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_IPA_Acct_Mgr' LIMIT 1];
             PermissionSet ipaProgAdmPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_IPA_Program_Adm' LIMIT 1];
+            // Highlight: Unused Local Variable - 14285 // Suma
+            //PermissionSet ipaApprPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Int_IPA_ProposalL1_Approver' LIMIT 1];
             PermissionSet ipaEscRevL1PS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_IPA_Escalation_Reviewer_L1' LIMIT 1];
             
             List<User> userList = new List<User>();
@@ -295,7 +299,7 @@ public class Core_MDF_IUPGM_Monitor_Batch_Test {
         Id IUPGM_recordtype_IPA = Schema.SObjectType.Core_MDF_Int_Users_Partner_Geo_Mapping__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
         Id IUPGM_recordtype_RMF = Schema.SObjectType.Core_MDF_Int_Users_Partner_Geo_Mapping__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Retail_Marketing_Funds').getRecordTypeId();
             Core_MDF_Int_Users_Partner_Geo_Mapping__c IPAiupgm5= new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
-           // IPAiupgm5.Core_MDF_Account_id__c = ccpIntelAccount.Id;
+            IPAiupgm5.Core_MDF_Account_id__c = ccpIntelAccount.Id;
             IPAiupgm5.Core_MDF_Program_nm__c = 'Intel Partner Alliance';
              IPAiupgm5.RecordTypeId = IUPGM_recordtype_IPA;
             IPAiupgm5.Core_MDF_Region_cd__c = 'WW';
@@ -304,13 +308,13 @@ public class Core_MDF_IUPGM_Monitor_Batch_Test {
             IPAiupgm5.Core_MDF_GeoSubGeo_Budget_Type_nm__c='EMEA->Client Specialties MDF';
             IPAiupgm5.Core_MDF_User_id__c =testUser.Id;
             IPAiupgm5.Core_MDF_Role_nm__c='Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver';
-           // IPAiupgm5.Core_MDF_All_Accounts_cd__c = 'Yes';
+            IPAiupgm5.Core_MDF_All_Accounts_cd__c = 'Yes';
             IPAiupgm5.Core_MDF_All_Budget_Type_Access_Ind__c = false;
             IPAiupgm5.Core_MDF_Activity_Classification_nm__c ='Sales;Marketing';
             Database.insert(IPAiupgm5);
 
             Core_MDF_Int_Users_Partner_Geo_Mapping__c IPAiupgm6= new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
-           // IPAiupgm6.Core_MDF_Account_id__c = ccpIntelAccount.Id;
+            IPAiupgm6.Core_MDF_Account_id__c = ccpIntelAccount.Id;
             IPAiupgm6.Core_MDF_Program_nm__c = 'Intel Partner Alliance';
              IPAiupgm6.RecordTypeId = IUPGM_recordtype_IPA;
             IPAiupgm6.Core_MDF_Region_cd__c = 'EMEA';
@@ -319,15 +323,15 @@ public class Core_MDF_IUPGM_Monitor_Batch_Test {
             IPAiupgm6.Core_MDF_GeoSubGeo_Budget_Type_nm__c='EMEA->Client Specialties MDF';
             IPAiupgm6.Core_MDF_User_id__c =testUser.Id;
             IPAiupgm6.Core_MDF_Role_nm__c='Core_MDF_CCP_Internal_Price_Reviewer'; 
-           // IPAiupgm6.Core_MDF_All_Accounts_cd__c = 'No';
+            IPAiupgm6.Core_MDF_All_Accounts_cd__c = 'No';
             IPAiupgm6.Core_MDF_All_Budget_Type_Access_Ind__c = false;
             IPAiupgm6.Core_MDF_Activity_Classification_nm__c ='';  
            // Database.insert(IPAiupgm6);         
            
             
           Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm01 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
-           // iupgm01.Core_MDF_Account_id__c = ccpIntelRmfAccount.Id;
-           // iupgm01.Core_MDF_All_Accounts_cd__c ='Yes';
+            iupgm01.Core_MDF_Account_id__c = ccpIntelRmfAccount.Id;
+            iupgm01.Core_MDF_All_Accounts_cd__c ='Yes';
             iupgm01.Core_MDF_Program_nm__c = 'Retail Marketing Funds';
             iupgm01.RecordTypeId = IUPGM_recordtype_RMF;
             iupgm01.Core_MDF_Region_cd__c = 'EMEA';
@@ -343,7 +347,7 @@ public class Core_MDF_IUPGM_Monitor_Batch_Test {
             
             // Add more IUPGM records to cover different scenarios
             Core_MDF_Int_Users_Partner_Geo_Mapping__c IPAiupgm7 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
-          //  IPAiupgm7.Core_MDF_Account_id__c = ccpIntelAccount.Id;
+            IPAiupgm7.Core_MDF_Account_id__c = ccpIntelAccount.Id;
             IPAiupgm7.Core_MDF_Program_nm__c = 'Intel Partner Alliance';
             IPAiupgm7.RecordTypeId = IUPGM_recordtype_IPA;
             IPAiupgm7.Core_MDF_Region_cd__c = 'WW';
@@ -352,15 +356,15 @@ public class Core_MDF_IUPGM_Monitor_Batch_Test {
             //IPAiupgm7.Core_MDF_GeoSubGeo_Budget_Type_nm__c = 'EMEA->Client Specialties MDF';
             IPAiupgm7.Core_MDF_User_id__c = testUser.Id;
             //IPAiupgm7.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver';
-          //  IPAiupgm7.Core_MDF_All_Accounts_cd__c = 'No';
+            IPAiupgm7.Core_MDF_All_Accounts_cd__c = 'No';
             IPAiupgm7.Core_MDF_All_Budget_Type_Access_Ind__c = false;
             IPAiupgm7.Core_MDF_Activity_Classification_nm__c = '';
             Database.insert(IPAiupgm7);
             
             // Add RMF IUPGM record for non-IPA testing
             Core_MDF_Int_Users_Partner_Geo_Mapping__c RMFiupgm = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
-          // RMFiupgm.Core_MDF_Account_id__c = ccpIntelRmfAccount.Id;
-           // RMFiupgm.Core_MDF_All_Accounts_cd__c = 'No';
+           RMFiupgm.Core_MDF_Account_id__c = ccpIntelRmfAccount.Id;
+            RMFiupgm.Core_MDF_All_Accounts_cd__c = 'No';
             RMFiupgm.Core_MDF_Program_nm__c = 'Retail Marketing Funds';
             RMFiupgm.RecordTypeId = IUPGM_recordtype_RMF;
             RMFiupgm.Core_MDF_Region_cd__c = 'EMEA';

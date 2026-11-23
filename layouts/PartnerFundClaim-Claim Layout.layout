@@ -27,6 +27,14 @@
                 <behavior>Readonly</behavior>
                 <field>ChannelPartnerId</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_TotalInvoice_Amt_Local__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_SurePay_Processed_Ind__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -40,10 +48,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Description</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Total_Claim_Recovery_Amount__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -83,10 +87,11 @@
     </layoutSections>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Core_MDF_Amount_Amt__c</fields>
-        <fields>Core_MDF_PartnershipGradeMaintenance_Nbr__c</fields>
-        <fields>CREATED_DATE</fields>
-        <relatedList>Core_MDF_Recovery__c.Core_MDF_Claim_Id__c</relatedList>
+        <relatedList>Junction_Object__c.Claim__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_MDF_AI_Tracking__c.Core_MDF_Claim_Id__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>

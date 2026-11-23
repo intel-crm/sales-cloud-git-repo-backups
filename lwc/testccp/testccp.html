@@ -1,0 +1,22 @@
+<template>
+    <div class="slds-card">
+        <div class="slds-card">
+    <lightning-layout class="slds-page-header slds-page-header--object-home" id="header" multiple-rows="true">
+        <lightning-layout-item>
+            <lightning-icon icon-name="standard:approval" class="icn"></lightning-icon>
+        </lightning-layout-item>
+        <lightning-layout-item size="11" padding="horizontal-small">
+            <div class="page-section page-header">
+                <h1 class="slds-text-heading--label">Approval Request</h1>
+                <h2 class="slds-text-heading--medium"><b>Items To Approve</b></h2>
+             </div>
+            <br/>
+            <br/>
+        </lightning-layout-item><br/> 
+  
+</lightning-layout>
+  <lightning-datatable data={recordsToRender} columns={columns} key-field="id" >
+</lightning-datatable>
+</div>
+</div>
+</template>

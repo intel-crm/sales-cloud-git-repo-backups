@@ -1,0 +1,142 @@
+<aura:component access="global" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" Controller="Core_MDF_DigitalMediaComp">
+	<aura:attribute name="ActivityType" type="String" default="" required="true" description="This attribute holds the activity type value" />
+    <aura:attribute name="SelPageToLinkOpt" type="String" default="" description="This attribute holds the selected PageToLink value"/>
+    <aura:attribute name="objName" type="String" default="" required="true" description="This attribute holds the Object name" />
+    <aura:attribute name="fldName" type="String" default="" required="true" description="This attribute holds the Field name"/>
+    <aura:attribute name="RecId" type="Id" default="" description="This attribute holds the Record Id from calling component"/>
+    <aura:attribute name="AvailPageToLinkOpt" type="String" default="[]" description="This attribute holds the PageToLink values"/>
+    <aura:attribute name="AvailKPIOpt" type="String" default="[]" description="This attribute holds the KPI values"/>
+    <aura:attribute name="SelKPIOpt" type="String" default="" description="This attribute holds the selected KPI value"/>
+    <aura:attribute name="AvailNewsLetterOpt" type="String[]" description="This attribute holds the NewsLetter values"/>
+    <aura:attribute name="SelNewsLetterOpt" type="String" default = "" description="Stores the selected NewsLetter value"/>
+    <aura:attribute name="AvailBannerAdsOpt" type="String[]" description="This attribute holds the Banner Ads values"/>
+    <aura:attribute name="SelBannerAdsOpt" type="String" default = "" description="Stores the selected Banner Ads value"/>
+    <aura:attribute name="LinkReqVal" type="String" default = "" description="Stores the Link Required value"/>
+    <aura:attribute name="ClicksCircVal" type="String" default = "" description="Stores the ClicksOrCirculation value"/> 
+    <aura:attribute name="ClicksImprVal" type="String" default = "" description="Stores the ClicksOrImpression value"/> 
+    <aura:attribute name="otherVal" type="String" default = "" description="Stores the Other value"/> 
+    <aura:attribute name="placetorunVal" type="String" default = "" description="Stores the PlacetoRun value"/> 
+    <aura:attribute name="disabled" type="boolean" default="false" description="Set the picklist disabled"/>
+    <aura:attribute name="dispLabel" type="String" default="" description="This attribute holds the display label"/>
+    <aura:attribute type="PartnerFundRequest" name="newPFRq" default="{Name:'',
+                                                                      RequestedAmount:0, 
+                                                                      ChannelPartner:null,                                                                      
+                                                                      Core_MDF_PagetoLink_Nm__c:'',
+                                                                      Core_MDF_KPI_Nm__c:'',
+                                                                      Core_MDF_NewsletterType_Nm__c:'',
+                                                                      Core_MDF_BannerAds_Nm__c:'',
+                                                                      Core_MDF_LinkRequired_Nm__c:'',
+                                                                      Core_MDF_ClicksOrCirculation_Nm__c:'',
+                                                                      Core_MDF_ClicksOrImpression_Nm__c:'',
+                                                                      Core_MDF_Other_Nm__c:'',
+                                                                      Core_MDF_PlacetoRun_Nm__c:''}"></aura:attribute>	
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
+    <aura:handler name="change" value="{!v.ActivityType}" action="{!c.ResetValues}"/>  
+    <aura:registerEvent name="dynamicQuestionEvt" type="c:Core_MDF_DynamicQuestionEvent"/>
+    
+    <lightning:layout horizontalAlign="spread" multipleRows="true">
+    	<lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3"></lightning:layoutItem>
+			<lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">  
+               <aura:if isTrue= "{!or(or(or((v.ActivityType == 'Online Ad - Banner Ad Third party.com'),(v.ActivityType == 'Social Post')),or((v.ActivityType == 'Newsletter'),(v.ActivityType == 'Online Ad - Banner Ad retailer.com'))),(v.ActivityType == 'Online Ad - Retargeting Banner Ad'))}">
+                       <lightning:select name="mySelect" label="Page to link to" value="{!v.SelPageToLinkOpt}" required="true"  disabled="false" onchange="{!c.LoadValues}">                       
+                    	<aura:iteration items="{!v.AvailPageToLinkOpt}" var="item">
+                        	<aura:if isTrue="{!item.label != null}"> 
+                               <option text="{!item.label}" value="{!item.value}" selected="{!item.value == v.SelPageToLinkOpt}"/>                       	
+                   		</aura:if>  
+                     </aura:iteration>                                   
+               	 	</lightning:select>    
+                </aura:if>
+       		</lightning:layoutItem>
+            
+        <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+            <aura:if isTrue="{!or((v.ActivityType == 'Online Ad - Banner Ad Third party.com'),(v.ActivityType == 'Social Post'))}">                 
+                   <lightning:input type="text" label="Link Required" name="LinkReq" disabled="false" value="{!v.LinkReqVal}" onchange="{!c.LoadValues}" />
+                </aura:if> 
+        </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+                 </lightning:layoutItem> 
+        </lightning:layout>
+        	   
+   <lightning:layout horizontalAlign="spread" multipleRows="true">
+    	<lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3"></lightning:layoutItem>
+			<lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">                                
+                <aura:if isTrue="{!v.ActivityType == 'Newsletter'}">
+            	<lightning:select name="mySelect" label="Type of NewsLetter" value="{!v.SelNewsLetterOpt}" required="true"  disabled="false" onchange="{!c.LoadValues}">                                   
+                    	<aura:iteration items="{!v.AvailNewsLetterOpt}" var="item">
+                        	<aura:if isTrue="{!item.label != null}"> 
+                               <option text="{!item.label}" value="{!item.value}" selected="{!item.value == v.SelNewsLetterOpt}"/>                        	
+                   		    </aura:if>  
+                        </aura:iteration> 
+                    </lightning:select>
+                </aura:if>
+            </lightning:layoutItem> 
+        
+           <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+               <aura:if isTrue="{!v.ActivityType == 'Online Ad - Banner Ad retailer.com'}">
+            	<lightning:select name="mySelect" label="Banner Ads" value="{!v.SelBannerAdsOpt}" required="true"  disabled="false" onchange="{!c.LoadValues}">                                   
+                    	<aura:iteration items="{!v.AvailBannerAdsOpt}" var="item">
+                        	<aura:if isTrue="{!item.label != null}"> 
+                               <option text="{!item.label}" value="{!item.value}" selected="{!item.value == v.SelBannerAdsOpt}"/>                        	
+                   		    </aura:if>  
+                        </aura:iteration> 
+                    </lightning:select>
+                </aura:if>
+           </lightning:layoutItem>  
+       <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+       </lightning:layoutItem>
+   </lightning:layout>        
+    
+     <lightning:layout horizontalAlign="spread" multipleRows="true">
+           <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3"></lightning:layoutItem>
+           <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+                <aura:if isTrue="{!or((v.ActivityType == 'Newsletter'),(v.ActivityType == 'Online Ad - Banner Ad retailer.com'))}">
+            	<lightning:select name="mySelect" label="KPI" value="{!v.SelKPIOpt}" required="true"  disabled="false" onchange="{!c.LoadValues}">                                   
+                    	<aura:iteration items="{!v.AvailKPIOpt}" var="item">
+                        	<aura:if isTrue="{!item.label != null}"> 
+                               <option text="{!item.label}" value="{!item.value}" selected="{!item.value == v.SelKPIOpt}"/>                        	
+                   		    </aura:if>  
+                        </aura:iteration> 
+                    </lightning:select>
+                </aura:if>
+            </lightning:layoutItem>    
+         
+         <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">                
+                <aura:if isTrue="{!v.ActivityType == 'Newsletter'}">
+            		<lightning:input type="text" label="Number of Clicks/Circulation" name="NoofClicks" disabled="false" value="{!v.ClicksCircVal}" onchange="{!c.LoadValues}" />
+                </aura:if>
+            </lightning:layoutItem> 
+           <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+             </lightning:layoutItem> 
+     </lightning:layout>
+     
+     <lightning:layout horizontalAlign="spread" multipleRows="true"> 
+         <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3"></lightning:layoutItem>
+           <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+               <aura:if isTrue="{!v.ActivityType == 'Online Ad - Banner Ad retailer.com'}">                   
+                   <lightning:input type="text" label="Number of Clicks/Impressions" name="NoofImpressions" disabled="false" value="{!v.ClicksImprVal}" onchange="{!c.LoadValues}" />
+               </aura:if>
+         </lightning:layoutItem>
+         
+         <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">                
+             <aura:if isTrue="{!v.ActivityType == 'Newsletter'}">                   
+                   <lightning:input type="text" label="Other" name="Other" disabled="false" value="{!v.otherVal}" onchange="{!c.LoadValues}" />
+               </aura:if>
+         </lightning:layoutItem>    
+         <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+             </lightning:layoutItem>
+     </lightning:layout>  
+    
+    <lightning:layout horizontalAlign="spread" multipleRows="true"> 
+         <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3"></lightning:layoutItem>
+           <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+               <aura:if isTrue="{!v.ActivityType == 'Social Post'}">                   
+                   <lightning:input type="text" label="Place to run" name="Place to run" disabled="false" value="{!v.placetorunVal}" onchange="{!c.LoadValues}" />
+               </aura:if>
+        </lightning:layoutItem>  
+        <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+             </lightning:layoutItem>
+        <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+             </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

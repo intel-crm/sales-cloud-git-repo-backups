@@ -101,6 +101,11 @@
                     <label>Core_MDF_Co_GTM</label>
                 </value>
                 <value>
+                    <fullName>Core_MDF_Co_Inv</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Co_Inv</label>
+                </value>
+                <value>
                     <fullName>Core_MDF_Data_Center_CoMarketing_Fund</fullName>
                     <default>false</default>
                     <label>Core_MDF_Data_Center_CoMarketing_Fund</label>
@@ -152,6 +157,34 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Core_MDF_Budget_Type_nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Budget Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Retail MDF</fullName>
+                    <default>false</default>
+                    <label>Retail MDF</label>
+                </value>
+                <value>
+                    <fullName>RSA MD</fullName>
+                    <default>false</default>
+                    <label>RSA MD</label>
+                </value>
+                <value>
+                    <fullName>Account Plan</fullName>
+                    <default>false</default>
+                    <label>Account Plan</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Channel_Program_Name_txt__c</fullName>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Channel Program Name</label>
@@ -180,6 +213,11 @@
                     <fullName>CoGTM</fullName>
                     <default>false</default>
                     <label>CoGTM</label>
+                </value>
+                <value>
+                    <fullName>CoInv</fullName>
+                    <default>false</default>
+                    <label>CoInv</label>
                 </value>
                 <value>
                     <fullName>Data Center CoMarketing Fund</fullName>
@@ -238,6 +276,11 @@
                     <fullName>Co-GTM</fullName>
                     <default>false</default>
                     <label>Co-GTM</label>
+                </value>
+                <value>
+                    <fullName>Co-Inv</fullName>
+                    <default>false</default>
+                    <label>Co-Inv</label>
                 </value>
                 <value>
                     <fullName>Datacenter</fullName>
@@ -431,6 +474,54 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Core_MDF_FieldSet_API_Name__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>FieldSet API Name</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Core_MDF_CCF_Claim_Fieldset</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_CCF_Claim_Fieldset</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_CoGTM_Claim_Fieldset</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_CoGTM_Claim_Fieldset</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_DCF_Claim_Fieldset</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_DCF_Claim_Fieldset</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_IPA_Acc_Claim_Fieldset</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_IPA_Acc_Claim_Fieldset</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_IPA_Prop_Claim_Fieldset</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_IPA_Prop_Claim_Fieldset</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_RMF_RetailMDF_Claim_Fieldset</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_RMF_RetailMDF_Claim_Fieldset</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_RMF_RSAMD_Claim_Fieldset</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_RMF_RSAMD_Claim_Fieldset</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Internal_Master_Group_Name_Txt__c</fullName>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Internal Master Group Name</label>
@@ -459,6 +550,11 @@
                     <fullName>Core_MDF_CCP_Co_GTM_INTERNAL_ALL</fullName>
                     <default>false</default>
                     <label>Core_MDF_CCP_Co_GTM_INTERNAL_ALL</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_CCP_COINV_INTERNAL_ALL</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_CCP_COINV_INTERNAL_ALL</label>
                 </value>
                 <value>
                     <fullName>Core_MDF_CCP_DCF_INTERNAL_ALL</fullName>

@@ -152,38 +152,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
-    <fields>
-        <fullName>Core_IAH_KPI_Record_ID__c</fullName>
-        <externalId>false</externalId>
-        <label>IAH KPI Record ID</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_KPI_Name__c</fullName>
-        <externalId>false</externalId>
-        <label>KPI Name</label>
-        <length>100</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_New_Opportunity_KPI__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>New Opportunity KPI</label>
-        <referenceTo>Core_Oppty_KPI_New__c</referenceTo>
-        <relationshipLabel>Opportunity KPI History</relationshipLabel>
-        <relationshipName>Opportunity_KPI_History</relationshipName>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Core_Opp_KPI_Achieved_History__c</fullName>
         <defaultValue>false</defaultValue>
@@ -225,13 +194,6 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Opp_KPI_IsActive__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>KPI IsActive</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_Opp_KPI_Last_Updated_Date_History__c</fullName>
@@ -350,7 +312,7 @@
     </fields>
     <fields>
         <fullName>Core_Opp_KPI_Total_Price__c</fullName>
-        <label>KPI Revenue</label>
+        <label>KPI Total Price</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>

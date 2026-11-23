@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>VAT Home  Training :Demo1</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>Claim</actionButtonLabel>
+        <actionButtonLink>https://intel--crmdevccp.lightning.force.com/lightning/o/PartnerFundClaim/list?filterName=Recent</actionButtonLink>
+        <body>CCP has introduce new feature called &apos;VAT-Value Added Tax&apos; for EMEA based countries. To know more click on &apos;Claim Button&apos; else Close</body>
+        <customApplication>Core_MDF_CoMarketing</customApplication>
+        <delayDays>1</delayDays>
+        <dismissButtonLabel>Close</dismissButtonLabel>
+        <displayPosition>TopCenter</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <endDate>2021-06-30</endDate>
+        <isPublished>false</isPublished>
+        <masterLabel>VAT Home  Training :Demo1</masterLabel>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2021-06-02</startDate>
+        <targetPageKey1>home</targetPageKey1>
+        <targetPageType>standard__namedPage</targetPageType>
+        <themeColor>Theme1</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>10</timesToDisplay>
+        <title>Welcome to Co-Marketing Program</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

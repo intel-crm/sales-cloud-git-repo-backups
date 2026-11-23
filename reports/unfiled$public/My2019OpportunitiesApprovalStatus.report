@@ -32,35 +32,6 @@
             <value>Pipeline</value>
         </values>
     </buckets>
-    <chart>
-        <backgroundColor1>#FFFFFF</backgroundColor1>
-        <backgroundColor2>#FFFFFF</backgroundColor2>
-        <backgroundFadeDir>Diagonal</backgroundFadeDir>
-        <chartSummaries>
-            <aggregate>Sum</aggregate>
-            <axisBinding>y</axisBinding>
-            <column>HASOPPLINEITEM</column>
-        </chartSummaries>
-        <chartType>HorizontalBar</chartType>
-        <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>true</expandOthers>
-        <groupingColumn>ACCOUNT_NAME</groupingColumn>
-        <location>CHART_BOTTOM</location>
-        <showAxisLabels>true</showAxisLabels>
-        <showPercentage>false</showPercentage>
-        <showTotal>false</showTotal>
-        <showValues>false</showValues>
-        <size>Medium</size>
-        <summaryAxisRange>Auto</summaryAxisRange>
-        <textColor>#000000</textColor>
-        <textSize>12</textSize>
-        <titleColor>#000000</titleColor>
-        <titleSize>18</titleSize>
-    </chart>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>AMOUNT</field>
-    </columns>
     <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
@@ -69,10 +40,6 @@
     </columns>
     <columns>
         <field>CLOSE_DATE</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>HASOPPLINEITEM</field>
     </columns>
     <filter>
         <booleanFilter>(2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12 OR 13) AND 1</booleanFilter>
@@ -116,7 +83,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Thales</value>
+            <value>VALEO</value>
         </criteriaItems>
         <criteriaItems>
             <column>ACCOUNT_NAME</column>

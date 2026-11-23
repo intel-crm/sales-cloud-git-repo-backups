@@ -1,0 +1,37 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes"
+        access="global"
+        Controller="Core_MDF_PFR_Budget" >
+  
+  <!--Declare Attributes-->  
+  <aura:attribute name="wrapperList" type="object"/>
+  <aura:attribute name="innerWrapperList" type="object" />
+  <aura:attribute name="mycolumns" type="List"/>
+  <aura:attribute name="dataPresent" type="Boolean"/>
+  
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+  
+  <aura:if isTrue="{!v.dataPresent}">
+    <div class="slds-p-around--large">
+      <div align = "center">
+        <h3 style="font-size:25px;">Budget Released = ${!v.wrapperList.budgetAmount}</h3> 
+        <br/>
+        <h3 style="font-size:25px;">Remaining Budget = ${!v.wrapperList.remainingBudgetAmount}</h3> 
+      </div>
+    </div>
+    <div class="slds-scrollable_y slds-box" style="height:24rem;">
+      <div>
+        <aura:iteration items="{!v.innerWrapperList}" var="innerWrapper">
+          <div style="font-weight: bold" align = "center" class="slds-text-heading_medium">
+            Campaign Name: 
+            <lightning:formattedUrl value="{!innerWrapper.campaignId}" label="{!innerWrapper.campaignName}" target="_blank" />
+          </div>
+          <lightning:datatable data="{!innerWrapper.pfrList}" hideCheckboxColumn="true"
+            columns="{! v.mycolumns }"
+            keyField="Id"/>
+          <div style="font-weight: bold" align = "center" class="slds-text-heading_medium">Subtotal: ${!innerWrapper.totalAmountInCampaign}</div>
+          <br/>
+        </aura:iteration>
+      </div>
+    </div>
+  </aura:if>
+</aura:component>

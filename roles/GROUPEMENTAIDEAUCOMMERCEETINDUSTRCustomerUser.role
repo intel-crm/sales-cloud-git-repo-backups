@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>GROUPEMENT AIDE AU COMMERCE ET INDUSTR Customer User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>GROUPEMENT AIDE AU COMMERCE ET INDUSTR Customer User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>GROUPEMENTAIDEAUCOMMERCEETINDUSTRCustomerManager</parentRole>
+</Role>

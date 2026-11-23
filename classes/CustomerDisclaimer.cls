@@ -20,6 +20,7 @@ public without sharing class CustomerDisclaimer {
         //Reading from custom object
         @AuraEnabled
         public static String redirect(String siteUrl){
+            System.debug('Here in redirect!!');
             String toBeRedirectedToNDA = 'false';
             String query;
             Map<String,String> contentLangToValueMap = new Map<String,String>{};
@@ -31,9 +32,11 @@ public without sharing class CustomerDisclaimer {
                                 // To resolve issue: by Editing Community URL Customers are able to access Community.
                                 ID communityId = Network.getNetworkId();
                                 String baseUrl='';
+                                system.debug('**communityId**'+communityId);
                                 if(communityId  != null){baseUrl = [SELECT Id, UrlPathPrefix FROM Network WHERE Id = :communityId].UrlPathPrefix;}
                                 
                                 baseUrl ='%'+baseUrl+'%';
+                                system.debug('**baseUrl**'+baseUrl);
                                 String userId = UserInfo.getUserId();
                                 Schema.DescribeFieldResult lang = Terms_and_Conditions__c.Content_Language_nm__c.getDescribe();
                                 List<Schema.PicklistEntry> langValues = lang.getPicklistValues();
@@ -60,6 +63,7 @@ public without sharing class CustomerDisclaimer {
                             
                                 List<Terms_and_Conditions__c> tAndConRecds = Database.query(query);
                                 /* SR Added null checks */
+                              
                                 Map<String,Terms_and_Conditions__c> userLangcpToTAndCMap = new Map<String,Terms_and_Conditions__c>{};
                                     Map<String,Terms_and_Conditions__c> engLangcpToTAndCMap = new Map<String,Terms_and_Conditions__c>{};
                                         if(tAndConRecds != null && !tAndConRecds.isEmpty()){
@@ -86,15 +90,17 @@ public without sharing class CustomerDisclaimer {
                                 List<Customer_Disclaimer__c> discAcceptanceDetails = Database.query('Select User_id__c,Program_txt__c,Terms_and_Conditions_id__c,NDA_Acceptance_Date_dtm__c,Site_URL_txt__c from Customer_Disclaimer__c where User_id__c=:userId and Site_URL_txt__c LIKE \''+baseUrl+'\'');
                                 //List<Customer_Disclaimer__c> discAcceptanceDetails = Database.query('Select User_id__c,Program_txt__c,Terms_and_Conditions_id__c,NDA_Acceptance_Date_dtm__c,Site_URL_txt__c from Customer_Disclaimer__c where User_id__c=:userId and Site_URL_txt__c =:siteUrl');
                                 Map<Id,Customer_Disclaimer__c> userIdToDisRec = new Map<Id,Customer_Disclaimer__c>{};
+                                    system.debug('**discAcceptanceDetails**'+discAcceptanceDetails);
                                     if(discAcceptanceDetails != null && !discAcceptanceDetails.isEmpty()){
                                         for(Customer_Disclaimer__c cd:discAcceptanceDetails){
                                             tncToAcceptedDate.put(cd.Terms_and_Conditions_id__c,cd.NDA_Acceptance_Date_dtm__c);
                                         }            
                                     }
                                 system.debug(' :'+tncToAcceptedDate);
-                            
+                            	system.debug(' yyyyyyyyyyy:'+custPermToTAndCMap);
                                 if(custPermToTAndCMap != null && !custPermToTAndCMap.isEmpty()){
                                     for(String custPerm:custPermToTAndCMap.keySet()){
+                                        system.debug('xxxxxxxx'+custPerm);
                                         if(FeatureManagement.checkPermission(custPerm)){
                                             Boolean toBeRedirected = checkNDAValidity(discAcceptanceDetails,custPermToTAndCMap.get(custPerm),tncToAcceptedDate);
                                             if(toBeRedirected){
@@ -151,10 +157,11 @@ public without sharing class CustomerDisclaimer {
         system.debug('#07 domainUrl after edit:' + domainUrl);
         endpointUrl = domainUrl+Label.CustomerDisclaimerApi+contentversionId+'/VersionData';
         req.setEndpoint(endpointUrl);
-        req.setMethod('GET');      
+        req.setMethod('GET'); 
+        system.debug('**req**'+req);
         Http h = new Http();
         HttpResponse res = h.send(req);
-        //system.debug('#09 res: ' + res.getBody());              
+        system.debug('#09 res: ' + res.getBody());              
         if(res != null && res.getStatusCode() == 200){
             docBody = res.getBody();
         }
@@ -164,11 +171,14 @@ public without sharing class CustomerDisclaimer {
     @AuraEnabled
     public static List<DisclaimerDetails> getResourceName(String siteUrl) 
     {
+        String nDAtoBeDisplayed='false';
         List<DisclaimerDetails> ddList = new List<DisclaimerDetails>{};
             Map<String,Id> progToRecId = new Map<String,Id>();
         try{
-            String nDAtoBeDisplayed = redirect(siteUrl);
-            if(nDAtoBeDisplayed == 'true'){              
+            system.debug('**siteUrl**'+siteUrl);
+            nDAtoBeDisplayed = redirect(siteUrl);
+            if(nDAtoBeDisplayed == 'true'){
+                system.debug('Redirect called');
                 if(tncMap != null && !tncMap.isEmpty()){                    
                     Map<String,String> disclaimerContent = loadNDABody(tncMap.keySet());   
                     System.debug(' disc '+disclaimerContent);

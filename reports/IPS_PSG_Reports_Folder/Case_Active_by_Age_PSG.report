@@ -376,7 +376,7 @@
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
         <textSize>12</textSize>
-        <title>Obsoleted-Active Cases by Owner Group</title>
+        <title>Active Cases by Owner Group</title>
         <titleColor>#000000</titleColor>
         <titleSize>18</titleSize>
     </chart>
@@ -423,7 +423,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Case.Core_AAQC_Case_recordType</value>
+            <value>Case.Core_AAQC_Case_recordType,Case.CEP_Case</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
@@ -447,11 +447,11 @@
             <value>,WWRAE,MAG,Factory APPS</value>
         </criteriaItems>
         <criteriaItems>
-            <column>ACCOUNT.NAME</column>
+            <column>BucketField_57505999</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>IPS Test Account</value>
+            <operator>equals</operator>
+            <value>JPRAE</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -466,7 +466,7 @@
         <field>BucketField_9253579</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Obsoleted-Cases Active - by Age - PSG</name>
+    <name>Cases Active - by Age - PSG</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -485,6 +485,5 @@
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2019-01-01</startDate>
     </timeFrameFilter>
 </Report>

@@ -9,6 +9,12 @@
         <value><!-- Budget Cap --></value>
     </caseValues>
     <fields>
+        <help><!-- Enter program name --></help>
+        <label><!-- Channel Program --></label>
+        <name>Channel_Program_test__c</name>
+        <relationshipLabel><!-- Budget Caps test --></relationshipLabel>
+    </fields>
+    <fields>
         <label>Cantidad límite aprobada</label>
         <name>Core_MDF_Approved_Cap_amt__c</name>
     </fields>
@@ -28,6 +34,10 @@
     <fields>
         <label><!-- Budget Status --></label>
         <name>Core_MDF_Budget_Status_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type Cap Key --></label>
+        <name>Core_MDF_Budget_Type_Cap_Key__c</name>
     </fields>
     <fields>
         <label>Tipo de presupuesto</label>
@@ -67,10 +77,6 @@
         <picklistValues>
             <masterLabel>Channel Led Activity</masterLabel>
             <translation>Actividad dirigida por el canal</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Channel MDF Budget Type Cap</masterLabel>
-            <translation><!-- Channel MDF Budget Type Cap --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>IPA Budget Type Cap</masterLabel>
@@ -144,6 +150,22 @@
         <name>Core_MDF_IPA_Budget_Type_Cap</name>
     </recordTypes>
     <validationRules>
+        <errorMessage><!-- Finance User cannot create MDF type budget cap --></errorMessage>
+        <name>BudgetCapCreationForProfiles</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Budget Type cannot be changed. --></errorMessage>
+        <name>Core_MDF_BudgetTypeCap_cannotbeEdited</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Budget Type Caps can&apos;t be Inactive during creation --></errorMessage>
+        <name>Core_MDF_BudgetTypeCaps_ActiveValidation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Channel MDF Budget Caps can&apos;t be Inactive during creation --></errorMessage>
+        <name>Core_MDF_CMDF_BudgetCap_ActiveValidation</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Budget cap can’t be created on Rejected budget --></errorMessage>
         <name>Core_MDF_CheckBudgetStatusEqualsRejected</name>
     </validationRules>
@@ -178,6 +200,22 @@
     <validationRules>
         <errorMessage><!-- Requested Cap Amount is mandatory --></errorMessage>
         <name>Core_MDF_IPA_Mandatory_ReqCapAmt</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Effective Start Date is mandatory --></errorMessage>
+        <name>Core_MDF_MandatoryEffectiveStartDate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Budget Type is mandatory --></errorMessage>
+        <name>Core_MDF_Mandatory_BudgetType</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Effective End Date is mandatory --></errorMessage>
+        <name>Core_MDF_Mandatory_EffectiveEndDate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Requested Cap Amount is mandatory --></errorMessage>
+        <name>Core_MDF_Mandatory_ReqCapAmt</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- The revised Requested Cap Amount cannot be lesser than Claimed Cap Amount. --></errorMessage>

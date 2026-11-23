@@ -22,7 +22,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Altera®</masterLabel>
-        <translation><!-- Altera® --></translation>
+        <translation>Altera®</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Appliance</masterLabel>
@@ -30,11 +30,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Athena</masterLabel>
-        <translation><!-- Athena --></translation>
+        <translation>Athena</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Chromebook</masterLabel>
-        <translation><!-- Chromebook --></translation>
+        <translation>Chromebook</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Client</masterLabel>
@@ -54,7 +54,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Component</masterLabel>
-        <translation>组件</translation>
+        <translation><!-- Component --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Data Center DGPU</masterLabel>
@@ -90,7 +90,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel Unite®</masterLabel>
-        <translation><!-- Intel Unite® --></translation>
+        <translation>Intel Unite®</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel vPro®</masterLabel>
@@ -98,7 +98,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intelligent Edge/IoT</masterLabel>
-        <translation>智能边缘/物联网</translation>
+        <translation><!-- Intelligent Edge/IoT --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ i3</masterLabel>
@@ -174,7 +174,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Networking &amp; Telecommunications</masterLabel>
-        <translation>网络与电信</translation>
+        <translation><!-- Networking &amp; Telecommunications --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Networking/Ethernet</masterLabel>
@@ -186,7 +186,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>OpenVINO™</masterLabel>
-        <translation><!-- OpenVINO™ --></translation>
+        <translation>OpenVINO™</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Other</masterLabel>
@@ -222,15 +222,15 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Service</masterLabel>
-        <translation>服务</translation>
+        <translation><!-- Service --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Software</masterLabel>
-        <translation>软件</translation>
+        <translation><!-- Software --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Solution</masterLabel>
-        <translation>解决方案</translation>
+        <translation><!-- Solution --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Storage</masterLabel>

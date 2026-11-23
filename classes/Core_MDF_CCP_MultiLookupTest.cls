@@ -2,13 +2,13 @@
 public class Core_MDF_CCP_MultiLookupTest {
  @isTest 
     public static void Core_MDF_CCP_MultiLookup_Test() {
-             // Highlight: Unused Local Variable 
+             // Highlight: Unused Local Variable - Indira
             // String objName='Contact';
              String objectName='Campaign';
              List<String> comList =new List<String>();
             // List<Account> accList = new List<Account>();
             
-            ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', false);
+            ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', false);
             insert cp1;
             Account intacc = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1', 
                                                                               Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
@@ -35,8 +35,18 @@ public class Core_MDF_CCP_MultiLookupTest {
        // Core_MDF_CCP_MultiLookup.fetchSampleRecs1(objName,comList);
         Core_MDF_CCP_MultiLookup.fetchSampleRecs();
            Core_MDF_CCP_MultiLookup.getResult(objectName,filterCondition);
-        // Unit Test Method should include System.Assert 
+        // Unit Test Method should include System.Assert - Indira
         System.assertNotEquals(null, Core_MDF_CCP_MultiLookup.getResult(objectName, filterCondition), 'getResult should return a list');
+
+        Core_MDF_CCP_MultiLookup obj = new Core_MDF_CCP_MultiLookup();
+        try{
+            objectName = 'ABC';
+            filterCondition = '#25@145sd';
+            Core_MDF_CCP_MultiLookup.getResult(objectName,filterCondition);
+        }
+        catch(exception e){
+            system.assert(e != null);
+        }
             Test.stopTest();
     }
 }

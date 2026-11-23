@@ -1,0 +1,527 @@
+<!-- aiFieldSuggestions.html -->
+<template>
+    <template if:true={showModal}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container" style="max-width: 80rem; width: 90%;">
+                <header class="slds-modal__header">
+                    <lightning-button-icon 
+                        icon-name="utility:close" 
+                        onclick={closeModal} 
+                        alternative-text="Close"
+                        class="slds-modal__close">
+                    </lightning-button-icon>
+                    <h2 class="slds-modal__title slds-hyphenate">AI Field Suggestions</h2>
+                </header>
+                
+                <div class="slds-modal__content slds-p-around_medium" style="max-height: 70vh; overflow-y: auto;">
+                    <template if:true={isLoading}>
+                        <div class="slds-align_absolute-center slds-p-around_large">
+                            <lightning-spinner alternative-text="Analyzing description..." size="medium"></lightning-spinner>
+                            <p class="slds-m-top_small">Analyzing your description with AI...</p>
+                        </div>
+                    </template>
+                    
+                    <template if:false={isLoading}>
+                        <template if:true={hasSuggestions}>
+                            <!-- AI Disclaimer Note -->
+                            <div class="slds-notify slds-notify_alert slds-alert_warning slds-m-bottom_medium">
+                                <span class="slds-assistive-text">Warning</span>
+                                <lightning-icon icon-name="utility:warning" size="x-small" variant="warning"></lightning-icon>
+                                <h2 class="slds-text-heading_x-small">
+                                    <strong>Note:</strong> AI suggestions may not be exactly correct. Please review and verify all suggested values before applying.
+                                </h2>
+                            </div>
+
+                            <div class="slds-box slds-theme_shade slds-m-bottom_medium">
+                                <p class="slds-text-heading_small slds-m-bottom_small">
+                                    <lightning-icon icon-name="utility:ai" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                                    AI has found the following field suggestions based on your description:
+                                </p>
+                                
+                                <!-- Selection Summary -->
+                                <div class="slds-m-top_small slds-p-top_small slds-border-top_1">
+                                    <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_small">
+                                        <lightning-icon icon-name="utility:info" size="xx-small" class="slds-m-right_x-small"></lightning-icon>
+                                        {selectionSummary}
+                                    </p>
+                                    
+                                    <!-- Select All / Clear All Controls -->
+                                    <lightning-button 
+                                        variant="neutral" 
+                                        label="Select All" 
+                                        onclick={selectAllFields}
+                                        size="small"
+                                        class="slds-m-right_x-small">
+                                    </lightning-button>
+                                    <lightning-button 
+                                        variant="neutral" 
+                                        label="Clear All" 
+                                        onclick={clearAllFields}
+                                        size="small">
+                                    </lightning-button>
+                                </div>
+                            </div>
+                            
+                            <!-- Two Column Layout -->
+                            <div class="slds-grid slds-wrap slds-gutters">
+                                
+                                <!-- Left Column - Fields with User Input -->
+                                <div class="slds-col slds-size_1-of-2">
+                                    <div class="slds-box slds-theme_default">
+                                        <h3 class="slds-text-heading_small slds-m-bottom_medium">
+                                            <lightning-icon icon-name="utility:edit" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                                            Editable Fields
+                                        </h3>
+                                        
+                                        <!-- Activity Name with Input -->
+                                        <template if:true={suggestions.activityName}>
+                                            <div class="slds-form-element slds-m-bottom_medium">
+                                                <div class="slds-form-element__control">
+                                                    <lightning-input 
+                                                        type="checkbox" 
+                                                        name="activityName"
+                                                        data-field="activityName"
+                                                        onchange={handleFieldSelection}
+                                                        checked={selectedFields.activityName}
+                                                        label="Campaign Name">
+                                                    </lightning-input>
+                                                    <div class="slds-m-left_large slds-m-top_x-small">
+                                                        <lightning-input
+                                                            type="text"
+                                                            value={userInputs.activityName}
+                                                            data-field="activityName"
+                                                            onchange={handleUserInput}
+                                                            placeholder="Edit suggested activity name..."
+                                                            disabled={isUserInputDisabled.activityName}
+                                                            class="user-input-field">
+                                                        </lightning-input>
+                                                        <p class="slds-text-body_small slds-text-color_weak slds-m-top_xx-small">
+                                                            AI Suggestion: {suggestions.activityName}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                        
+                                        <!-- Start Date with Input -->
+                                        <template if:true={suggestions.startDate}>
+                                            <div class="slds-form-element slds-m-bottom_medium">
+                                                <div class="slds-form-element__control">
+                                                    <lightning-input 
+                                                        type="checkbox" 
+                                                        name="startDate"
+                                                        data-field="startDate"
+                                                        onchange={handleFieldSelection}
+                                                        checked={selectedFields.startDate}
+                                                        label="Start Date">
+                                                    </lightning-input>
+                                                    <div class="slds-m-left_large slds-m-top_x-small">
+                                                        <lightning-input
+                                                            type="date"
+                                                            value={userInputs.startDate}
+                                                            data-field="startDate"
+                                                            onchange={handleUserInput}
+                                                            disabled={isUserInputDisabled.startDate}
+                                                            class="user-input-field">
+                                                        </lightning-input>
+                                                        <p class="slds-text-body_small slds-text-color_weak slds-m-top_xx-small">
+                                                            AI Suggestion: {suggestions.startDate}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                        
+                                        <!-- End Date with Input -->
+                                        <template if:true={suggestions.endDate}>
+                                            <div class="slds-form-element slds-m-bottom_medium">
+                                                <div class="slds-form-element__control">
+                                                    <lightning-input 
+                                                        type="checkbox" 
+                                                        name="endDate"
+                                                        data-field="endDate"
+                                                        onchange={handleFieldSelection}
+                                                        checked={selectedFields.endDate}
+                                                        label="End Date">
+                                                    </lightning-input>
+                                                    <div class="slds-m-left_large slds-m-top_x-small">
+                                                        <lightning-input
+                                                            type="date"
+                                                            value={userInputs.endDate}
+                                                            data-field="endDate"
+                                                            onchange={handleUserInput}
+                                                            disabled={isUserInputDisabled.endDate}
+                                                            class="user-input-field">
+                                                        </lightning-input>
+                                                        <p class="slds-text-body_small slds-text-color_weak slds-m-top_xx-small">
+                                                            AI Suggestion: {suggestions.endDate}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                        
+                                        <!-- Total Investment with Input -->
+                                        <template if:true={suggestions.totalInvestment}>
+                                            <div class="slds-form-element slds-m-bottom_medium">
+                                                <div class="slds-form-element__control">
+                                                    <lightning-input 
+                                                        type="checkbox" 
+                                                        name="totalInvestment"
+                                                        data-field="totalInvestment"
+                                                        onchange={handleFieldSelection}
+                                                        checked={selectedFields.totalInvestment}
+                                                        label="Total Investment">
+                                                    </lightning-input>
+                                                    <div class="slds-m-left_large slds-m-top_x-small">
+                                                        <lightning-input
+                                                            type="number"
+                                                            value={userInputs.totalInvestment}
+                                                            data-field="totalInvestment"
+                                                            onchange={handleUserInput}
+                                                            min="0"
+                                                            step="1"
+                                                            formatter="currency"
+                                                            disabled={isUserInputDisabled.totalInvestment}
+                                                            class="user-input-field">
+                                                        </lightning-input>
+                                                        <p class="slds-text-body_small slds-text-color_weak slds-m-top_xx-small">
+                                                            AI Suggestion: ${suggestions.totalInvestment}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                        
+                                        <!-- Maximum Intel Investment with Input -->
+                                        <template if:true={suggestions.maxIntelInvestment}>
+                                            <div class="slds-form-element slds-m-bottom_medium">
+                                                <div class="slds-form-element__control">
+                                                    <lightning-input 
+                                                        type="checkbox" 
+                                                        name="maxIntelInvestment"
+                                                        data-field="maxIntelInvestment"
+                                                        onchange={handleFieldSelection}
+                                                        checked={selectedFields.maxIntelInvestment}
+                                                        label="Maximum Intel Investment">
+                                                    </lightning-input>
+                                                    <div class="slds-m-left_large slds-m-top_x-small">
+                                                        <lightning-input
+                                                            type="number"
+                                                            value={userInputs.maxIntelInvestment}
+                                                            data-field="maxIntelInvestment"
+                                                            onchange={handleUserInput}
+                                                            min="0"
+                                                            step="1"
+                                                            formatter="currency"
+                                                            disabled={isUserInputDisabled.maxIntelInvestment}
+                                                            class="user-input-field">
+                                                        </lightning-input>
+                                                        <p class="slds-text-body_small slds-text-color_weak slds-m-top_xx-small">
+                                                            AI Suggestion: ${suggestions.maxIntelInvestment}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+                                
+                                <!-- Right Column - Picklist Fields (Read-only) -->
+                                <div class="slds-col slds-size_1-of-2">
+                                    <div class="slds-box slds-theme_default">
+                                        <h3 class="slds-text-heading_small slds-m-bottom_medium">
+                                            <lightning-icon icon-name="utility:picklist_type" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                                            Picklist Fields
+                                        </h3>
+                                        
+                                        <!-- Focus Area Suggestion -->
+                                        <template if:true={suggestions.focusArea}>
+                                            <div class="slds-form-element slds-m-bottom_medium">
+                                                <div class="slds-form-element__control">
+                                                    <lightning-input 
+                                                        type="checkbox" 
+                                                        name="focusArea"
+                                                        data-field="focusArea"
+                                                        onchange={handleFieldSelection}
+                                                        checked={selectedFields.focusArea}
+                                                        label="Focus Area">
+                                                    </lightning-input>
+                                                    <div class="suggestion-box slds-m-left_large">
+                                                        <span class="slds-badge slds-badge_lightest">{suggestions.focusArea}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                        
+                                        <!-- Priority Suggestion -->
+                                        <template if:true={suggestions.priority}>
+                                            <div class="slds-form-element slds-m-bottom_medium">
+                                                <div class="slds-form-element__control">
+                                                    <lightning-input 
+                                                        type="checkbox" 
+                                                        name="priority"
+                                                        data-field="priority"
+                                                        onchange={handleFieldSelection}
+                                                        checked={selectedFields.priority}
+                                                        label="Priority">
+                                                    </lightning-input>
+                                                    <div class="suggestion-box slds-m-left_large">
+                                                        <span class="slds-badge slds-badge_lightest">{suggestions.priority}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                        
+                                        <!-- Country Suggestions -->
+                                        <template if:true={suggestions.country}>
+                                            <div class="slds-form-element slds-m-bottom_medium">
+                                                <div class="slds-form-element__control">
+                                                    <lightning-input 
+                                                        type="checkbox" 
+                                                        name="country"
+                                                        data-field="country"
+                                                        onchange={handleFieldSelection}
+                                                        checked={selectedFields.country}
+                                                        label="Country">
+                                                    </lightning-input>
+                                                    <div class="suggestion-box slds-m-left_large">
+                                                        <template for:each={suggestions.country} for:item="countryItem">
+                                                            <span key={countryItem} class="slds-badge slds-badge_lightest slds-m-right_x-small slds-m-bottom_x-small">
+                                                                {countryItem}
+                                                            </span>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                        
+                                        <!-- Product Type Suggestions -->
+                                        <template if:true={suggestions.productTypes}>
+                                            <div class="slds-form-element slds-m-bottom_medium">
+                                                <div class="slds-form-element__control">
+                                                    <lightning-input 
+                                                        type="checkbox" 
+                                                        name="productTypes"
+                                                        data-field="productTypes"
+                                                        onchange={handleFieldSelection}
+                                                        checked={selectedFields.productTypes}
+                                                        label="Product Types">
+                                                    </lightning-input>
+                                                    <div class="suggestion-box slds-m-left_large">
+                                                        <template for:each={suggestions.productTypes} for:item="productType">
+                                                            <span key={productType} class="slds-badge slds-badge_lightest slds-m-right_x-small slds-m-bottom_x-small">
+                                                                {productType}
+                                                            </span>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                        
+                                        <!-- Target Audience Suggestions -->
+                                        <template if:true={suggestions.targetAudience}>
+                                            <div class="slds-form-element slds-m-bottom_medium">
+                                                <div class="slds-form-element__control">
+                                                    <lightning-input 
+                                                        type="checkbox" 
+                                                        name="targetAudience"
+                                                        data-field="targetAudience"
+                                                        onchange={handleFieldSelection}
+                                                        checked={selectedFields.targetAudience}
+                                                        label="Target Audience">
+                                                    </lightning-input>
+                                                    <div class="suggestion-box slds-m-left_large">
+                                                        <template for:each={suggestions.targetAudience} for:item="audience">
+                                                            <span key={audience} class="slds-badge slds-badge_lightest slds-m-right_x-small slds-m-bottom_x-small">
+                                                                {audience}
+                                                            </span>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                        
+                                        <!-- Brand Suggestions -->
+                                        <template if:true={suggestions.brands}>
+                                            <div class="slds-form-element slds-m-bottom_medium">
+                                                <div class="slds-form-element__control">
+                                                    <lightning-input 
+                                                        type="checkbox" 
+                                                        name="brands"
+                                                        data-field="brands"
+                                                        onchange={handleFieldSelection}
+                                                        checked={selectedFields.brands}
+                                                        label="Brands">
+                                                    </lightning-input>
+                                                    <div class="suggestion-box slds-m-left_large">
+                                                        <template for:each={suggestions.brands} for:item="brand">
+                                                            <span key={brand} class="slds-badge slds-badge_lightest slds-m-right_x-small slds-m-bottom_x-small">
+                                                                {brand}
+                                                            </span>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                        
+                                        <!-- Technology Suggestions -->
+                                        <template if:true={suggestions.technologies}>
+                                            <div class="slds-form-element slds-m-bottom_medium">
+                                                <div class="slds-form-element__control">
+                                                    <lightning-input 
+                                                        type="checkbox" 
+                                                        name="technologies"
+                                                        data-field="technologies"
+                                                        onchange={handleFieldSelection}
+                                                        checked={selectedFields.technologies}
+                                                        label="Technology">
+                                                    </lightning-input>
+                                                    <div class="suggestion-box slds-m-left_large">
+                                                        <template for:each={suggestions.technologies} for:item="tech">
+                                                            <span key={tech} class="slds-badge slds-badge_lightest slds-m-right_x-small slds-m-bottom_x-small">
+                                                                {tech}
+                                                            </span>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                        
+                                        <!-- Initiative Suggestions -->
+                                        <template if:true={suggestions.initiatives}>
+                                            <div class="slds-form-element slds-m-bottom_medium">
+                                                <div class="slds-form-element__control">
+                                                    <lightning-input 
+                                                        type="checkbox" 
+                                                        name="initiatives"
+                                                        data-field="initiatives"
+                                                        onchange={handleFieldSelection}
+                                                        checked={selectedFields.initiatives}
+                                                        label="Initiatives">
+                                                    </lightning-input>
+                                                    <div class="suggestion-box slds-m-left_large">
+                                                        <template for:each={suggestions.initiatives} for:item="initiative">
+                                                            <span key={initiative} class="slds-badge slds-badge_lightest slds-m-right_x-small slds-m-bottom_x-small">
+                                                                {initiative}
+                                                            </span>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                        
+                                        <!-- Ecosystem Partner Suggestions -->
+                                        <template if:true={suggestions.ecosystemPartners}>
+                                            <div class="slds-form-element slds-m-bottom_medium">
+                                                <div class="slds-form-element__control">
+                                                    <lightning-input 
+                                                        type="checkbox" 
+                                                        name="ecosystemPartners"
+                                                        data-field="ecosystemPartners"
+                                                        onchange={handleFieldSelection}
+                                                        checked={selectedFields.ecosystemPartners}
+                                                        label="Ecosystem Partners">
+                                                    </lightning-input>
+                                                    <div class="suggestion-box slds-m-left_large">
+                                                        <template for:each={suggestions.ecosystemPartners} for:item="partner">
+                                                            <span key={partner} class="slds-badge slds-badge_lightest slds-m-right_x-small slds-m-bottom_x-small">
+                                                                {partner}
+                                                            </span>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                        
+                                        <!-- Tactics Suggestions -->
+                                        <template if:true={suggestions.tactics}>
+                                            <div class="slds-form-element slds-m-bottom_medium">
+                                                <div class="slds-form-element__control">
+                                                    <lightning-input 
+                                                        type="checkbox" 
+                                                        name="tactics"
+                                                        data-field="tactics"
+                                                        onchange={handleFieldSelection}
+                                                        checked={selectedFields.tactics}
+                                                        label="Tactics">
+                                                    </lightning-input>
+                                                    <div class="suggestion-box slds-m-left_large">
+                                                        <template for:each={suggestions.tactics} for:item="tactic">
+                                                            <span key={tactic} class="slds-badge slds-badge_lightest slds-m-right_x-small slds-m-bottom_x-small">
+                                                                {tactic}
+                                                            </span>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                        
+                                        <!-- Outcome Metrics Suggestions -->
+                                        <template if:true={suggestions.outcomeMetrics}>
+                                            <div class="slds-form-element slds-m-bottom_medium">
+                                                <div class="slds-form-element__control">
+                                                    <lightning-input 
+                                                        type="checkbox" 
+                                                        name="outcomeMetrics"
+                                                        data-field="outcomeMetrics"
+                                                        onchange={handleFieldSelection}
+                                                        checked={selectedFields.outcomeMetrics}
+                                                        label="Outcome Metrics">
+                                                    </lightning-input>
+                                                    <div class="suggestion-box slds-m-left_large">
+                                                        <template for:each={suggestions.outcomeMetrics} for:item="metric">
+                                                            <span key={metric} class="slds-badge slds-badge_lightest slds-m-right_x-small slds-m-bottom_x-small">
+                                                                {metric}
+                                                            </span>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                        
+                        <template if:false={hasSuggestions}>
+                            <div class="slds-align_absolute-center slds-p-around_large">
+                                <lightning-icon icon-name="utility:info" size="medium" variant="warning"></lightning-icon>
+                                <p class="slds-m-top_small slds-text-heading_small">No matching suggestions found</p>
+                                <p class="slds-text-color_weak">
+                                    AI couldn't find exact matches for your description in the available picklist values.
+                                </p>
+                            </div>
+                        </template>
+                        
+                        <template if:true={errorMessage}>
+                            <div class="slds-notify slds-notify_alert slds-alert_error">
+                                <span class="slds-assistive-text">Error</span>
+                                <lightning-icon icon-name="utility:error" size="x-small" variant="inverse"></lightning-icon>
+                                <h2>{errorMessage}</h2>
+                            </div>
+                        </template>
+                    </template>
+                </div>
+                
+                <footer class="slds-modal__footer">
+                    <template if:true={hasSuggestions}>
+                        <lightning-button 
+                            variant="brand" 
+                            label="Apply Selected Suggestions" 
+                            onclick={applySuggestions}
+                            disabled={isApplyDisabled}>
+                        </lightning-button>
+                    </template>
+                    <lightning-button 
+                        variant="neutral" 
+                        label="Cancel" 
+                        onclick={closeModal}
+                        class="slds-m-left_x-small">
+                    </lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

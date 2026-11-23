@@ -6,9 +6,10 @@ public class Core_MDF_DetermineActiveUsersToSendETest {
         UserRole adminRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
         
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr.LastName = 'User Test';
-        usr.UserRoleId = adminRole.Id;
+        	usr.LastName = 'User Test';
+        	usr.UserRoleId = adminRole.Id;
         insert usr;
+        
         test.stopTest();
     }
     @isTest
@@ -31,6 +32,7 @@ public class Core_MDF_DetermineActiveUsersToSendETest {
             database.insert(intelAccount);
             // US - TWC702-14285: Unit Test Method should include System.Assert
             System.assertNotEquals(null, intelAccount.Id, 'Account should be inserted');
+            
             accMgr.recordId = intelAccount.Id;
             accMgr.sendDiff = True;
             accMgr.templateName = 'Core_MDF_EscalationApprovalTemplate_VF';

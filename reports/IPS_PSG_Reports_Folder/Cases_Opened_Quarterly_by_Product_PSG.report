@@ -386,27 +386,6 @@
             </sourceValues>
             <value>PAC</value>
         </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ 7 FPGAs and SoC FPGAs F-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ 7 FPGAs and SoC FPGAs I-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ 7 FPGAs and SoC FPGAs M-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ M-Series</sourceValue>
-            </sourceValues>
-            <value>Agilex 7</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ 5 FPGAs and SoC FPGAs E-Series</sourceValue>
-            </sourceValues>
-            <value>Agilex 5</value>
-        </values>
     </buckets>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
@@ -485,7 +464,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Case.Core_AAQC_Case_recordType</value>
+            <value>Case.Core_AAQC_Case_recordType,Case.CEP_Case</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
@@ -500,13 +479,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Invalid</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT.NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>IPS Test Account</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -537,6 +509,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_PREVCUR2Y</interval>
+        <endDate>2019-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-01-01</startDate>
     </timeFrameFilter>
 </Report>

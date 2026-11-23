@@ -12,11 +12,11 @@
     </values>
     <values>
         <field>Core_MDF_Value2_Txt__c</field>
-        <value xsi:type="xsd:string">Core_MDF_CCP_Internal_Retail_Account_Manager,Core_MDF_CCP_Internal_IPA_Acct_Mgr,Core_MDF_CCP_Int_IPA_ProposalL1_Approver,Core_MDF_CCP_Int_IPA_ProposalL1_Approver_Manager,</value>
+        <value xsi:type="xsd:string">Core_MDF_CCP_Internal_Retail_Account_Manager,Core_MDF_CCP_Internal_IPA_Acct_Mgr,Core_MDF_CCP_Int_IPA_ProposalL1_Approver,Core_MDF_CCP_Int_IPA_ProposalL1_Approver_Manager,Core_MDF_CCP_Internal_Price_Reviewer,</value>
     </values>
     <values>
         <field>Core_MDF_Value3_Txt__c</field>
-        <value xsi:type="xsd:string">Core_MDF_CCP_Internal_Price_Reviewer,Core_MDF_Internal_EEF_Primary_Partner_Acct_Mgr,Core_MDF_CCP_Internal_Co_GTM_Account_Manager</value>
+        <value xsi:type="xsd:string">Core_MDF_Internal_EEF_Primary_Partner_Acct_Mgr;Core_MDF_CCP_Internal_Co_GTM_Account_Manager</value>
     </values>
     <values>
         <field>Core_MDF_Value4_Txt__c</field>

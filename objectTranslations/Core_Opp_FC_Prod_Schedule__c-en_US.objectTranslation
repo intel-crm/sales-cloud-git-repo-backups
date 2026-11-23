@@ -9,14 +9,6 @@
         <value>Forecast Product Schedules</value>
     </caseValues>
     <fields>
-        <label><!-- Approved BU Short Name --></label>
-        <name>Core_Approved_BU_Short_Name__c</name>
-    </fields>
-    <fields>
-        <label><!-- BU Short Name --></label>
-        <name>Core_BU_Short_Name__c</name>
-    </fields>
-    <fields>
         <label><!-- Forecast Approved Sales Price --></label>
         <name>Core_Core_FC_Appvd_SalesPrice__c</name>
     </fields>
@@ -33,7 +25,7 @@
         <name>Core_FC_BU_Product_Segment__c</name>
     </fields>
     <fields>
-        <label><!-- 6QPS BU Short Name --></label>
+        <label><!-- BU Short Name --></label>
         <name>Core_FC_BU_Short_Name__c</name>
     </fields>
     <fields>
@@ -45,11 +37,6 @@
         <name>Core_FC_OppStage__c</name>
     </fields>
     <fields>
-        <label><!-- Opportunity Product --></label>
-        <name>Core_FC_Opportunity_Product__c</name>
-        <relationshipLabel><!-- Forecast Product Schedules --></relationshipLabel>
-    </fields>
-    <fields>
         <label><!-- Vendor --></label>
         <name>Core_FC_Vendor__c</name>
         <relationshipLabel><!-- Forecast Product Schedules --></relationshipLabel>
@@ -57,11 +44,6 @@
     <fields>
         <label><!-- Forecast Old Claim Date --></label>
         <name>Core_Forecast_Old_Claim_Date__c</name>
-    </fields>
-    <fields>
-        <help><!-- This field is used to determine if the product is a post-win product --></help>
-        <label><!-- Is Post Win --></label>
-        <name>Core_Is_Post_Win__c</name>
     </fields>
     <fields>
         <label><!-- Forecast Approval Manager --></label>
@@ -74,10 +56,6 @@
         <picklistValues>
             <masterLabel>Approved</masterLabel>
             <translation><!-- Approved --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Invalid</masterLabel>
-            <translation><!-- Invalid --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Pending</masterLabel>

@@ -19,7 +19,9 @@ public class Core_MDF_Tactics_Controller_Test {
         for(PermissionSet pSet : [SELECT Id,Name FROM PermissionSet WHERE Name IN ('Core_MDF_CCP_External_IPA_Activity_Manager')]){
                                                                                        nameToPerSet.put(pSet.Name,pSet);
                                                                                    }
-                
+        // Highlight: Unused Local Variable - 14285 // Suma
+        //PermissionSet extIPAActivityManager = nameToPerSet.get('Core_MDF_CCP_External_IPA_Activity_Manager');
+        
         Map<String,Id> profileToId = new Map<String,Id>();
         for(Profile prfl:[SELECT Id,Name FROM Profile WHERE Name IN ('CCP - Core Access', 'Partner')]) {
             profileToId.put(prfl.Name,prfl.Id);
@@ -60,6 +62,9 @@ public class Core_MDF_Tactics_Controller_Test {
         bypassFunctionKeys.add('byPassShareUnshareCampaignRecord');
         bypassFunctionKeys.add('byPassCampaignAndRelatedRecords');
         bypassFunctionKeys.add('ByPass_BlockLegacyBudgetCreation');
+        bypassFunctionKeys.add('Bypass_Claim_Insert_Calculations');
+        bypassFunctionKeys.add('Bypass_Claim_Amount_Calculation');
+        
         Set<String> myset1 = new Set<String>(); 
         List<String> result1 = new List<String>();
         myset1.addAll(bypassFunctionKeys);
@@ -171,7 +176,7 @@ public class Core_MDF_Tactics_Controller_Test {
             IPApfr.Core_MDF_Activity_Description__c = 'Test IPA Activity Tactic Controller';
             IPApfr.Title = 'Test IPA Activity Tactic Controller';
             IPApfr.Core_MDF_ActivityCategory__c= 'Broadcast (Pre-2025)';
-           // IPApfr.Core_MDF_Activity_Types__c= '';    
+            IPApfr.Core_MDF_Activity_Types__c= '';    
             IPApfr.Core_MDF_Focus_Area_nm__c='Client Computing';
             IPApfr.ChannelPartnerId = ipaCoMarketingAccount.id;
             pfrList.add(IPApfr);
@@ -181,7 +186,7 @@ public class Core_MDF_Tactics_Controller_Test {
             IPApfr2.Core_MDF_Activity_Description__c = 'Test IPA Activity2 Tactic Controller';
             IPApfr2.Title = 'Test IPA Activity2 Tactic Controller';
             IPApfr2.Core_MDF_ActivityCategory__c= 'Broadcast (Pre-2025)';
-           // IPApfr2.Core_MDF_Activity_Types__c= '';  
+            IPApfr2.Core_MDF_Activity_Types__c= '';  
             IPApfr2.Core_MDF_Focus_Area_nm__c='Client Computing';
             IPApfr2.Core_MDF_Country_nm__c='CANADA';
             IPApfr.ChannelPartnerId = ipaCoMarketingAccount.id;
@@ -191,7 +196,7 @@ public class Core_MDF_Tactics_Controller_Test {
             IPApfr3.Core_MDF_Activity_Description__c = 'Test IPA Activity2 Tactic Controller';
             IPApfr3.Title = 'Test IPA Activity2 Tactic Controller';
             IPApfr3.Core_MDF_ActivityCategory__c= 'Broadcast (Pre-2025)';
-           // IPApfr2.Core_MDF_Activity_Types__c= '';  
+            IPApfr3.Core_MDF_Activity_Types__c= '';  
             IPApfr3.Core_MDF_Focus_Area_nm__c='Client Computing';
             IPApfr3.Core_MDF_Country_nm__c='CANADA';
             IPApfr3.ChannelPartnerId = ipaCoMarketingAccount.id;
@@ -260,70 +265,80 @@ public class Core_MDF_Tactics_Controller_Test {
     }
 
 @IsTest
-    static void testSaveKpiData() {
+static void testSaveKpiData() {
+    
+    PartnerFundRequest IPApfr = [
+        SELECT Id 
+        FROM PartnerFundRequest 
+        WHERE Title = 'Test IPA Activity Tactic Controller' 
+        LIMIT 1
+    ];
 
-        PartnerFundRequest IPApfr=[select Id from PartnerFundRequest where title='Test IPA Activity Tactic Controller' LIMIT 1];
+   List<Core_MDF_Activity_Attributes__c> testAttributes = new List<Core_MDF_Activity_Attributes__c>();
+    testAttributes.add(new Core_MDF_Activity_Attributes__c(
+        Core_MDF_Co_Marketing_Activity__c = IPApfr.Id,
+        Core_MDF_Tactics_nm__c = 'Event', 
+        //Core_MDF_Field_Name_nm__c = 'Event - # of Deal Wins', 
+        Core_MDF_Type_nm__c = 'KPI', 
+        Core_MDF_Field_Value_nbr__c = 10.00,
+        Core_MDF_Is_Active_Ind__c = true
+    )); 
+    testAttributes.add(new Core_MDF_Activity_Attributes__c( 
+        Core_MDF_Co_Marketing_Activity__c = IPApfr.Id,
+        Core_MDF_Tactics_nm__c = 'Event',
+        Core_MDF_Type_nm__c = 'Percentage',
+        Core_MDF_Field_Value_nbr__c = 100.00,
+        Core_MDF_Is_Active_Ind__c = true 
+    ));
+    insert testAttributes;
 
-        // Create test data for Core_MDF_Activity_Attributes__c
-        List<Core_MDF_Activity_Attributes__c> testAttributes = new List<Core_MDF_Activity_Attributes__c>();
-        testAttributes.add(new Core_MDF_Activity_Attributes__c(
-            Core_MDF_Co_Marketing_Activity__c = IPApfr.Id,
-            Core_MDF_Tactics_nm__c = 'Event',
-            //Core_MDF_Field_Name_nm__c = 'Event - # of Deal Wins',
-            Core_MDF_Type_nm__c = 'KPI',
-            Core_MDF_Field_Value_nbr__c = 10.00,
-            Core_MDF_Is_Active_Ind__c = true
-        ));
-        testAttributes.add(new Core_MDF_Activity_Attributes__c(
-            Core_MDF_Co_Marketing_Activity__c = IPApfr.Id,
-            Core_MDF_Tactics_nm__c = 'Event',
-            Core_MDF_Type_nm__c = 'Percentage',
-            Core_MDF_Field_Value_nbr__c = 100.00,
-            Core_MDF_Is_Active_Ind__c = true
-        ));
-        insert testAttributes;
+    List<Map<String, Object>> inputData = new List<Map<String, Object>>();
+    inputData.add(new Map<String, Object>{
+        'tactic' => 'Lead Cultivation',
 
-        // Prepare input data for saveKpiData method
-        List<Map<String, Object>> inputData = new List<Map<String, Object>>();
-        inputData.add(new Map<String, Object>{
-            'tactic' => 'Lead Cultivation',
-            'percentageField' => new Map<String, Object>{
-                'label' => 'Lead Cultivation Percentage Spend',
-                'value' => 'Lead Cultivation Percentage Spend'
-            },
-            'percentageValue' => 100,
-             'intelContri' => 100,
-                'maxIntelInvest' => 100,
-            'firstKpi' => new Map<String, Object>{
-                'label' => 'Lead Cultivation - # of Sales Qualified Leads',
-                'value' => 15.00
-            },
-            'otherKpis' => new List<Object>{
-                new Map<String, Object>{
-                    'label' => 'Lead Cultivation - # of Leads',
-                    'value' => 20.00
-                }
+        'percentageField' => new Map<String, Object>{
+            'label' => 'Lead Cultivation Percentage Spend',
+            'value' => 'Lead Cultivation Percentage Spend'
+        },
+        'percentageValue' => 100,
+        'intelContri' => 100,
+        'maxIntelInvest' => 100,
+
+        'firstKpi' => new Map<String, Object>{
+            'label' => 'Lead Cultivation - # of Sales Qualified Leads',
+            'value' => 15.00
+        },
+
+        'otherKpis' => new List<Object>{
+            new Map<String, Object>{
+                'label' => 'Lead Cultivation - # of Leads',
+                'value' => 20.00
             }
-        });
- 			
-        // Call the saveKpiData method
-        Core_MDF_Tactics_Controller.saveKpiData((Object)inputData, IPApfr.Id, false);
-
-        List<Core_MDF_Activity_Attributes__c> updatedAttributes = [
-            SELECT Core_MDF_Field_Value_nbr__c
-            FROM Core_MDF_Activity_Attributes__c
-            WHERE Core_MDF_Co_Marketing_Activity__c = :IPApfr.Id AND Core_MDF_Tactics_nm__c = 'Lead Cultivation' 
-        ];
-
-        // Check the updated values
-        Decimal sumOfKPIValues = 0;
-        for (Core_MDF_Activity_Attributes__c attr : updatedAttributes) {
-            sumOfKPIValues += attr.Core_MDF_Field_Value_nbr__c;
         }
-     // US - TWC702-14285: Unit Test Method should include System.Assert
+    });
+
+    Test.startTest();
+    Core_MDF_Tactics_Controller.saveKpiData(inputData, IPApfr.Id, false);
+    Test.stopTest();
+
+    //  Filter only new tactic records
+    List<Core_MDF_Activity_Attributes__c> updatedAttributes = [
+        SELECT Core_MDF_Field_Value_nbr__c
+        FROM Core_MDF_Activity_Attributes__c
+        WHERE Core_MDF_Co_Marketing_Activity__c = :IPApfr.Id
+        AND Core_MDF_Tactics_nm__c = 'Lead Cultivation'
+    ];
+
+    // Calculate sum
+    Decimal sumOfKPIValues = 0;
+    for (Core_MDF_Activity_Attributes__c attr : updatedAttributes) {
+        sumOfKPIValues += attr.Core_MDF_Field_Value_nbr__c;
+    }
+
+   // US - TWC702-14285: Unit Test Method should include System.Assert
     System.assertEquals(3, updatedAttributes.size(), 'Should have 3 records created');
     System.assertEquals(135.00, sumOfKPIValues, 'Sum should be 130 (100 + 15 + 20)');
-    }
+}
 
 @IsTest
     static void testGetSavedKpiData() {
@@ -392,12 +407,10 @@ public class Core_MDF_Tactics_Controller_Test {
             Core_MDF_Is_Active_Ind__c = true
         ));
         insert testAttributes;
-         Core_MDF_Tactics_Controller.getTacticSpending(false, null , IPApfr.Id);
-
-        
-        
+         Core_MDF_Tactics_Controller.getTacticSpending(false, null , IPApfr.Id);        
     }
-    @IsTest
+   //14285 Indira - start
+     @IsTest
 static void testUpdateClaimAttributesEdgeCases() {
     // Test with null parameters
     Test.startTest();
@@ -603,6 +616,5 @@ static void testUpdateClaimAttributes() {
     
     System.assert(true, 'Edit operation should complete without errors');
 }
-
-    
+    // 14285 Indira - end
 }

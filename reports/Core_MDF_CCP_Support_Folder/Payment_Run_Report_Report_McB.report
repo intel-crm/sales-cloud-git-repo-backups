@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Core_MDF_Payment_Run__c$Name</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Payment_Run__c$Core_MDF_ErrorDetails_Txt__c</field>
+    </columns>
+    <description>Payment Run Report Report</description>
+    <filter>
+        <criteriaItems>
+            <column>Core_MDF_Payment_Run__c$Core_MDF_ErrorDetails_Txt__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Payment Run Report Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_MDF_Payment_Run_Report__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Core_MDF_Payment_Run__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

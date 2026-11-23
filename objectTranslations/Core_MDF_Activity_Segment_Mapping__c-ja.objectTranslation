@@ -17,6 +17,7 @@
         <name>Core_MDF_Activity_Type_txt__c</name>
     </fields>
     <fields>
+        <help><!-- Estimated --></help>
         <label>予想される SPIF の割り当て</label>
         <name>Core_MDF_Estimated_Share_of_SPIF_amt__c</name>
     </fields>
@@ -31,6 +32,14 @@
     <fields>
         <label>最小予想数量</label>
         <name>Core_MDF_Minimum_Forecast_Volume_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Expected Participants --></label>
+        <name>Core_MDF_Num_of_Expected_Participants__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Potential Winners --></label>
+        <name>Core_MDF_Num_of_Potential_Winners__c</name>
     </fields>
     <fields>
         <label><!-- Activity --></label>

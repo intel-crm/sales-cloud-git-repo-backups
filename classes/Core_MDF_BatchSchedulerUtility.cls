@@ -6,7 +6,7 @@
 * Developer   Vivek                  Date                          Description
 *****************************************************************************************************************************************/
 public without sharing class Core_MDF_BatchSchedulerUtility {        
-    //Start batch job for specific program      
+    //Start batch job for specific program  	  
     public static list<Core_MDF_Batch_Scheduler_Line_Item__c> startBatchJob(string program){
         //Integer maxSchedule = 50;  
         
@@ -25,11 +25,15 @@ public without sharing class Core_MDF_BatchSchedulerUtility {
             }
             
             List<Core_MDF_Batch_Scheduler_Line_Item__c> lineItemList=new List<Core_MDF_Batch_Scheduler_Line_Item__c>();
-            if(lstBatch != null && lstBatch.size()>0){ 
+            //ATHR - Deeply Nested if 16209
+            if(lstBatch.isEmpty()){
+                return lstBatch;
+            }
+            //if(lstBatch != null && lstBatch.size()>0){ 
                 List<String> classesImplementingInterface = new List<String>();
                 for( ApexTypeImplementor ati : [SELECT ClassName, ClassNamespacePrefix
-                                      FROM ApexTypeImplementor 
-                                      WHERE InterfaceName = 'Core_MDF_BatchSchedulerInterface']){
+            					                FROM ApexTypeImplementor 
+            					                WHERE InterfaceName = 'Core_MDF_BatchSchedulerInterface']){
                     classesImplementingInterface.add(ati.ClassName);
                 }
                 for(Core_MDF_Batch_Scheduler_Line_Item__c  schRec : lstBatch){ 
@@ -44,18 +48,18 @@ public without sharing class Core_MDF_BatchSchedulerUtility {
                                 string parameters = signature.substringBetween('(',')');
                                 List<String> paramList = parameters.split(',');
                                 map<String,object> parmValueMap = (Map<String, Object>)JSON.deserializeUntyped(schRec.Core_MDF_Batch_Scheduler__r.Core_MDF_Object_JSON_Txt__c);
-                                if(paramList.size() == parmValueMap.size()){
-                                    //check to confirm if interface is implemented
-                                    if(classesImplementingInterface.contains(schRec.Core_MDF_Batch_Scheduler__r.Core_MDF_Batch_Class_Name_Txt__c)){
-                                        Core_MDF_BatchSchedulerInterface batchint  = (Core_MDF_BatchSchedulerInterface)System.Type.forName(schRec.Core_MDF_Batch_Scheduler__r.Core_MDF_Batch_Class_Name_Txt__c).newInstance();
-                                        des_Obj = batchint.generateInstance(schRec.Core_MDF_Batch_Scheduler__r.Core_MDF_Object_JSON_Txt__c,schRec.Core_MDF_Batch_Scheduler__r.Core_MDF_Batch_Class_Signature_Txt__c);
-                                    }
-                                    else{ 
-                                        Core_MDF_CCP_UtilityClass.logErrorinLogObject('Selected batch class does not implement batch scheduler interface to instantiate class signature provided.','Core_MDF_Batch_Scheduler__c');
-                                    }
+                                //ATHR - Deeply Nested if 16209
+                                if (paramList.size() != parmValueMap.size()) {
+                                    Core_MDF_CCP_UtilityClass.logErrorinLogObject('parameter count in json does not match parameter count in signature.','Core_MDF_Batch_Scheduler__c');
+                            		errorFlag = true;
+                        		}
+                                else if (!classesImplementingInterface.contains(schRec.Core_MDF_Batch_Scheduler__r.Core_MDF_Batch_Class_Name_Txt__c)) {
+                                    Core_MDF_CCP_UtilityClass.logErrorinLogObject('Selected batch class does not implement batch scheduler interface to instantiate class signature provided.','Core_MDF_Batch_Scheduler__c');
+                                    errorFlag = true;
                                 }
                                 else{
-                                    Core_MDF_CCP_UtilityClass.logErrorinLogObject('parameter count in json does not match parameter count in signature.','Core_MDF_Batch_Scheduler__c');
+                                    Core_MDF_BatchSchedulerInterface batchint  = (Core_MDF_BatchSchedulerInterface)System.Type.forName(schRec.Core_MDF_Batch_Scheduler__r.Core_MDF_Batch_Class_Name_Txt__c).newInstance();
+                                        des_Obj = batchint.generateInstance(schRec.Core_MDF_Batch_Scheduler__r.Core_MDF_Object_JSON_Txt__c,schRec.Core_MDF_Batch_Scheduler__r.Core_MDF_Batch_Class_Signature_Txt__c);
                                 }
                             }
                             else{
@@ -73,8 +77,12 @@ public without sharing class Core_MDF_BatchSchedulerUtility {
                         errorFlag = true;
                     }
                     if(!errorFlag){
-                        Database.batchable<sObject> batch = (Database.batchable<sObject>)des_Obj;  
-                        jobId = Database.executeBatch(batch, Integer.valueOf(schRec.Core_MDF_Batch_Scheduler__r.Core_MDF_Batch_Size_Nbr__c));
+                        if(des_Obj instanceof Queueable){
+                            jobId = System.enqueueJob((Queueable)des_Obj);
+                        }else{
+                            Database.batchable<sObject> batch = (Database.batchable<sObject>)des_Obj;  
+                            jobId = Database.executeBatch(batch, Integer.valueOf(schRec.Core_MDF_Batch_Scheduler__r.Core_MDF_Batch_Size_Nbr__c));
+                        }
                         
                         if(jobId instanceOf Id){  
                             schRec.Core_MDF_Status_Txt__c = 'Pending';
@@ -85,11 +93,12 @@ public without sharing class Core_MDF_BatchSchedulerUtility {
                         
                         schRec.Core_MDF_Job_Id_Txt__c = jobId;
                         
-                    }   
+                    }  
+
                     schRec.Core_MDF_Execution_Time_Dt__c = System.now();                  
                 }
                 Database.update(lstBatch);
-            }
+            //}
         }catch(exception e){Core_MDF_CCP_UtilityClass.logError(e); throw e;}
         
         return lstBatch;       
@@ -144,26 +153,16 @@ public without sharing class Core_MDF_BatchSchedulerUtility {
             jobIds.add(sch.Core_MDF_Job_Id_Txt__c);
         }
         if(jobIds != null && jobIds.size()>0){
-            for(AsyncApexJob apexJob : [Select Id, Status, NumberOfErrors, ExtendedStatus FROM AsyncApexJob WHERE Status IN ('Failed','Completed') AND ID IN : jobIds]){
+            for(AsyncApexJob apexJob : [Select Id, Status FROM AsyncApexJob WHERE Status IN ('Failed','Completed') AND ID IN : jobIds]){
                 jobIdToStatusMap.put(apexJob.Id, apexJob);
             }
         }
         
         for(Core_MDF_Batch_Scheduler_Line_Item__c sch : pendingRecords){
             if(jobIdToStatusMap != null && jobIdToStatusMap.size()>0 && jobIdToStatusMap.containsKey(sch.Core_MDF_Job_Id_Txt__c)){
-                sch.Core_MDF_Status_Txt__c = jobIdToStatusMap.get(sch.Core_MDF_Job_Id_Txt__c).Status;
-
-                Integer numberOfFailures = jobIdToStatusMap.get(sch.Core_MDF_Job_Id_Txt__c).NumberOfErrors;
-                String StatusErrorDetail = jobIdToStatusMap.get(sch.Core_MDF_Job_Id_Txt__c).ExtendedStatus;
-                sch.Core_MDF_Number_of_errors__c = numberOfFailures;
-                sch.Core_MDF_Status_Detail__c = StatusErrorDetail;
-
+                sch.Core_MDF_Status_Txt__c = jobIdToStatusMap.get(sch.Core_MDF_Job_Id_Txt__c).Status;               
                 // Filtering Line Items For Email Notification
-                if(sch.Core_MDF_Batch_Scheduler__r.Core_MDF_Enable_Email_Notification__c && ((!sch.Core_MDF_Batch_Scheduler__r.Core_MDF_Include_All_Notifications__c   && sch.Core_MDF_Status_Txt__c == 'Failed') ||  sch.Core_MDF_Batch_Scheduler__r.Core_MDF_Include_All_Notifications__c)) {
-                    schItemsForEmail.add(sch);
-                }
-                //Added condition for IPA batches, to get emails in case batch is completed with 1 or more failure batches
-                if(sch.Core_MDF_Batch_Scheduler__r.Core_MDF_Enable_Email_Notification__c && !sch.Core_MDF_Batch_Scheduler__r.Core_MDF_Include_All_Notifications__c && sch.Core_MDF_Status_Txt__c == 'Completed' && (numberOfFailures >= 1 || String.isNotBlank(StatusErrorDetail))){
+                if(sch.Core_MDF_Batch_Scheduler__r.Core_MDF_Enable_Email_Notification__c && ((!sch.Core_MDF_Batch_Scheduler__r.Core_MDF_Include_All_Notifications__c	 && sch.Core_MDF_Status_Txt__c == 'Failed') ||  sch.Core_MDF_Batch_Scheduler__r.Core_MDF_Include_All_Notifications__c)) {
                     schItemsForEmail.add(sch);
                 }
             }
@@ -174,7 +173,6 @@ public without sharing class Core_MDF_BatchSchedulerUtility {
             Database.update(pendingRecords);
         }
         catch(exception e){Core_MDF_CCP_UtilityClass.logError(e); throw e;}
-
         try{
             if(!schItemsForEmail.isEmpty()){
                 Core_MDF_BatchSchedulerUtility.sendEmailNotificationForJobs(schItemsForEmail,program);
@@ -212,12 +210,9 @@ public without sharing class Core_MDF_BatchSchedulerUtility {
         string jobId = System.schedule(batchJobName, nextRunCron, new Core_MDF_Custom_BatchJobSch(program));        
         
     }
-
     public static void sendEmailNotificationForJobs(List<Core_MDF_Batch_Scheduler_Line_Item__c> schLineItemList,String programName){
-
         Map<String,Batch_Scheduler_Email_Templates__c> emailTemplateForProgram = Batch_Scheduler_Email_Templates__c.getAll();
         String templateName = '';
-
         if(!emailTemplateForProgram.containsKey(programName)){
             templateName = System.Label.Default_Batch_Scheduler_Email_Template_Name;
         }else{
@@ -242,7 +237,6 @@ public without sharing class Core_MDF_BatchSchedulerUtility {
                 message.toAddresses = toAddresses;
                 allEmailMessages.add(message);
             }
-
             Messaging.SingleEmailMessage[] messages = allEmailMessages;
             Messaging.SendEmailResult[] results = Messaging.sendEmail(messages);
         }

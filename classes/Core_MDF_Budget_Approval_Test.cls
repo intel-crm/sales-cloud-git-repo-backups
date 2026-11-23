@@ -48,10 +48,10 @@ public class Core_MDF_Budget_Approval_Test {
             List<String> result1 = new List<String>();
             myset1.addAll(bypassFunctionKeys);
             result1.addAll(myset1);
-
+         //   List<Core_Trigger_Executions__c> bypassfunctinalitylist = Core_MDF_CCP_TestDataUtility.byPassFeature(bypassFunctionKeys,true,true);
             
             Test.stopTest();
-
+         //   List<PartnerMarketingBudget> pmbList = new List<PartnerMarketingBudget>();
             Id recordTypeIdPMB = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByName().get('CoMarketing').getRecordTypeId();
             system.runAs(usr){
                 List<String> psList = new List<String>{'Core_MDF_CCP_Internal_Finance_Usr','Core_MDF_CCP_Internal_CCF_User','Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader','Core_MDF_CCP_Internal_Channel_MDF_Budget_Loader','Core_MDF_CCP_Internal_IPA_Budget_Loader','Core_MDF_CCP_Internal_Finance_Manager','Core_MDF_CCP_Internal_CCF_MDF_Budget_Approver'};
@@ -88,9 +88,11 @@ public class Core_MDF_Budget_Approval_Test {
     @isTest
     public static void loadBudgetecordTest(){
         User usr = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
-
+      //  Account acc1 = [SELECT Id from Account where Name='Test Account 4' limit 1];
+     //   ChannelProgram cpMDF = [Select id from ChannelProgram where Name='Client' limit 1];
         Test.startTest();
-
+     //   PartnerMarketingBudget  pmbRecordtobeUpdated = new PartnerMarketingBudget();
+     //   Id recordTypeIdPMB = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByName().get('CoMarketing').getRecordTypeId();
             PartnerMarketingBudget pmb = [Select id,OwnerId,Core_MDF_Budget_Status__c from PartnerMarketingBudget limit 1];
             system.assertEquals('Pending Review', pmb.Core_MDF_Budget_Status__c);
             Core_MDF_Budget_Approval.UserPermissionApproval userPA= Core_MDF_Budget_Approval.loadBudgetecord(pmb.id);

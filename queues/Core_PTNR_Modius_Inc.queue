@@ -2,7 +2,7 @@
 <Queue xmlns="http://soap.sforce.com/2006/04/metadata">
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
-    <name>PTNR - Modius, Inc.</name>
+    <name>PTNR - Modius Inc.</name>
     <queueSobject>
         <sobjectType>Lead</sobjectType>
     </queueSobject>

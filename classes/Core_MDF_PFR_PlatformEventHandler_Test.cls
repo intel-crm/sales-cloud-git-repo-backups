@@ -102,7 +102,8 @@ public class Core_MDF_PFR_PlatformEventHandler_Test {
             Account ipaCoMarketingAccount = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('IPA Co-Marketing Account', ipaCP.id, Core_MDF_CCP_TestDataUtility.Account_Record_Type,ipaUltimateAccount.id, false);           
             ipaCoMarketingAccount.Core_Geo__c = 'APJ';
             insert ipaCoMarketingAccount;
-
+            // Highlight: Unused Local Variable - 14285 // Suma
+            //Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Acc New 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
             
             List<Account> accountList = new List<Account>();
             Account ccfVc = Core_MDF_CCP_TestDataUtility.createAccount ('Co-marketing CCF Test Account', 

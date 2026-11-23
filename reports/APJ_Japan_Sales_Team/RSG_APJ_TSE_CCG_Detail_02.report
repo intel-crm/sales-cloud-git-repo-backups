@@ -52,7 +52,7 @@
     <filter>
         <booleanFilter>1 AND (2 OR (6 AND 5) )AND 3 AND NOT 4</booleanFilter>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>

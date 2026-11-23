@@ -91,6 +91,7 @@ Global with sharing class Core_IPS_GlobalCaseSearchController {
     @RemoteAction
     // For US60963 by Varun for adding one more parameter for subStatus for fetching cases based on subStatus.//
     global static List <case> getCaseList(String caseSearch, string filterStr,string subStatus) {
+        System.debug('subStatus = :' +subStatus);
         string FilterSOQLRTF = '';
         string FilterSOQL = '';
         boolean NoSoslFilter = true;
@@ -106,10 +107,13 @@ Global with sharing class Core_IPS_GlobalCaseSearchController {
                 FilterSOQL = FilterSOQL + +((FilterSOQL != '') ? ' AND ' : '') + ' CaseNumber like \'%' + MapFilterData.get('CaseNumber') + '%\'';
                 FilterSOQLRTF = FilterSOQLRTF + +((FilterSOQLRTF != '') ? ' AND ' : '') + ' Core_IPS_Case__r.CaseNumber like \'%' + MapFilterData.get('CaseNumber') + '%\'';
             }
+            system.debug(MapFilterData.containsKey('CreatingDateFrom') + ' >>>>>>>>>>>>> ' + MapFilterData.containsKey('CreatingDateTo'));
             if (MapFilterData.containsKey('CreatingDateFrom') && MapFilterData.containsKey('CreatingDateTo')) {
 
                 dtCreateFrom = datetime.newInstance(integer.valueOF(MapFilterData.get('CreatingDateFrom').split('-')[0]), integer.valueOF(MapFilterData.get('CreatingDateFrom').split('-')[1]), integer.valueOF(MapFilterData.get('CreatingDateFrom').split('-')[2]), 0, 0, 0);
+                system.debug('dtCreateFrom===' + dtCreateFrom);
                 dtCreateTo = datetime.newInstance(integer.valueOF(MapFilterData.get('CreatingDateTo').split('-')[0]), integer.valueOF(MapFilterData.get('CreatingDateTo').split('-')[1]), integer.valueOF(MapFilterData.get('CreatingDateTo').split('-')[2]), 23, 59, 0);
+                system.debug('dtCreateTo===' + dtCreateto);
                 FilterSOQL = FilterSOQL + ((FilterSOQL != '') ? ' AND ' : '') + ' createdDate >=:dtCreateFrom AND createdDate <=:dtCreateto';
                 //FilterSOQL = FilterSOQL   +   ((FilterSOQL!='') ? ' AND ': '') + ' createdDate >= convertTimezone(' + MapFilterData.get('CreatingDateFrom') + 'T00:00:00Z' + ') AND createdDate < convertTimezone(' + MapFilterData.get('CreatingDateTo') + 'T23:59:00Z)';
 
@@ -119,6 +123,7 @@ Global with sharing class Core_IPS_GlobalCaseSearchController {
 
             } else if (MapFilterData.containsKey('CreatingDateFrom') && MapFilterData.containsKey('CreatingDateTo') == false) {
                 dtCreateFrom = datetime.newInstance(integer.valueOF(MapFilterData.get('CreatingDateFrom').split('-')[0]), integer.valueOF(MapFilterData.get('CreatingDateFrom').split('-')[1]), integer.valueOF(MapFilterData.get('CreatingDateFrom').split('-')[2]), 0, 0, 0);
+                system.debug('dtCreateFrom===' + dtCreateFrom);
 
                 FilterSOQL = FilterSOQL + ((FilterSOQL != '') ? ' AND ' : '') + ' createdDate >=:dtCreateFrom ';
                 FilterSOQLRTF = FilterSOQLRTF + ((FilterSOQLRTF != '') ? ' AND ' : '') + ' Core_IPS_Case__r.createdDate >=:dtCreateFrom ';
@@ -156,8 +161,11 @@ Global with sharing class Core_IPS_GlobalCaseSearchController {
             }
 
 
+            //system.debug(FilterSOSL);
         }
         string strfinalFilter = '';
+
+        system.debug(caseSearch);
 
         if (caseSearch != '') {
 
@@ -168,6 +176,7 @@ Global with sharing class Core_IPS_GlobalCaseSearchController {
        /*Pooja Commented for Skyhigh     
             string caseSearch_Ciphertext = basicAuthCallout(caseSearch);
 
+            system.debug('DEBUG SEARCH TERM CALLOUT : ' + caseSearch_Ciphertext);
 
             if (caseSearch_Ciphertext != caseSearch) {
                 strfinalFilter = caseSearch_Ciphertext;
@@ -175,12 +184,15 @@ Global with sharing class Core_IPS_GlobalCaseSearchController {
                 strfinalFilter = caseSearch;
         //    }
 
+            system.debug(strfinalFilter);
+
 
         }
         //strfinalFilter =  '{'+ caseSearchWithWildCard  +'} OR {*'+ caseSearchWithWildCard  +'} OR {'+ caseSearchWithWildCard  +'*} OR {*'+ caseSearchWithWildCard  +'*} OR {' + caseSearch_WithWildCard+ '} OR {' + caseSearch_WithWildCard+ '*} OR {*' + caseSearch_WithWildCard+ '} OR {*' + caseSearch_WithWildCard+ '*} OR {*' + caseSearch_Ciphertext_withFooter+ '} OR {' + caseSearch_Ciphertext_withHeader+ '*} OR {' + caseSearch_Ciphertext+ '} ' + FilterSOSL;
 
         //strfinalFilter =  '{' + caseSearch_WithWildCard+ '} OR {*' + caseSearch_WithWildCard+ '*}  OR {' + caseSearch_Ciphertext+ '} OR {' +caseSearch_Ciphertext.substring(0,4) + '*' + caseSearch_WithWildCard + '*' + caseSearch_Ciphertext.substring(caseSearch_Ciphertext.length()-3,caseSearch_Ciphertext.length()) + '} OR {'+ caseSearchWithWildCard  +'} OR {*'+ caseSearchWithWildCard  +'*} OR {dgdg}' ;
 
+        system.debug('DBUG SEARCH TERM FINAL :' + strfinalFilter);
         //caseSearch = caseSearchWithoutWildCard + '*';
         // caseSearch = '惔膇巊版一';//畵厱超磫一
 
@@ -193,8 +205,14 @@ Global with sharing class Core_IPS_GlobalCaseSearchController {
 
 
         for (Schema.FieldSetMember f: Core_Utility.readFieldSet('Core_IPS_Global_Search_Field_Result', 'Case')) {
+
+            system.debug(string.valueOf(f.getLabel()));
+            system.debug(string.valueOf(f.getType()));
+            system.debug(string.valueOf(f.getFieldPath()));
             if (string.valueOf(f.getType()).equalsIgnoreCase('REFERENCE')) {
+                system.debug(string.valueOf(f.getType()).equalsIgnoreCase('REFERENCE'));
                 if (f.getFieldPath().indexOF('__c') > -1) {
+                    system.debug(f.getFieldPath().indexOF('__c'));
                     CaseSoql += f.getFieldPath().replace('__c', '__r.Name') + ',';
                     CaseSOSL += f.getFieldPath().replace('__c', '__r.Name') + ',';
                 } else {
@@ -220,6 +238,7 @@ Global with sharing class Core_IPS_GlobalCaseSearchController {
 
         //CaseSOSL_With_wild += (FilterSOSL!='' ? (' Where ' + FilterSOSL ): '') + ' order by LastModifiedDate desc LIMIT 2000)';
         //CaseSOSL_WithWildCiphertext += (FilterSOSL!='' ? (' Where ' + FilterSOSL ): '') + ' order by LastModifiedDate desc LIMIT 2000)';
+        system.debug(CaseSOSL);
         List < List < SObject >> LstCase = new List < List < SObject >> ();
         if (strfinalFilter != '' && NoSoslFilter) {
             LstCase = search.query(CaseSOSL);
@@ -276,6 +295,8 @@ Global with sharing class Core_IPS_GlobalCaseSearchController {
          } 
          //string CaseSoql1 = CaseSoql + ' from case where subject like  \'%:Puerto%\' ';*/
 
+        //system.debug(database.query(CaseSoql1));
+        system.debug(FilterSOQL != '' + '&&' + (SetCaseId.size() > 0));
         if (FilterSOQL != '' && SetCaseId.size() > 0 && NoSoslFilter == false) {
             FilterSOQL += ' OR id in:SetCaseId ';
         } else if (SetCaseId.size() > 0) {
@@ -283,14 +304,18 @@ Global with sharing class Core_IPS_GlobalCaseSearchController {
         }
 
         CaseSoql += ' from case ' + (FilterSOQL != '' ? ' Where ' + FilterSOQL : '') + ' order by LastModifiedDate desc LIMIT 3000';
+        System.debug(CaseSoql);
         
     // added by Varun below logic for US60963 :- To filter substatus values and add in existing case SOQL query.//////
         if(subStatus!='' ){
             subStatus=subStatus.subString(0,subStatus.length()-1);
+            System.debug(subStatus);
 
             List<String> queryStringList=CaseSoql.split('order by LastModifiedDate desc LIMIT');
+            System.debug(subStatus);
 
             List<String> subStatusFilter=subStatus.split(',');
+            System.debug('subStatusFilter.size()' +subStatusFilter.size());
             String tempquery='';
             tempquery=queryStringList[0]+' AND ( ' ;
             for(Integer i=0 ;i< subStatusFilter.size();i++){
@@ -310,6 +335,7 @@ Global with sharing class Core_IPS_GlobalCaseSearchController {
             }
             
             tempquery=tempquery+' order by LastModifiedDate desc LIMIT '+queryStringList[1];
+            system.debug(tempquery);
             CaseSoql=tempquery;
         }
     ////// End logic US60963 /////
@@ -337,6 +363,7 @@ Global with sharing class Core_IPS_GlobalCaseSearchController {
                 if (lstFilter1[1] != null && lstFilter1[1] != '') {
                     MapFilterData.put(lstFilter1[0], lstFilter1[1]);
                 }
+            system.debug('>>>>>>>>>>>>>>>>>>>>>>>' + MapFilterData);
         }
         return MapFilterData;
     }
@@ -350,9 +377,11 @@ Global with sharing class Core_IPS_GlobalCaseSearchController {
                 //mapEmp.put('plaintext',str_Search); 
                 mapEmp.put('query', str_Search);
                 //mapEmp.put('algo','LineFPEEngine');
+                System.debug('DEBUG SEARCH String:' + str_Search);
 
                 String JSONString = JSON.serialize(mapEmp);
 
+                System.debug('DEBUG SEARCH JSON String:' + JSONString); 
                 req.setBody(JSONString);
                 //req.setHeader('Content-Type', 'application/json; charset=utf-8');
                 req.setHeader('Content-Type', 'application/json'); 
@@ -370,14 +399,18 @@ Global with sharing class Core_IPS_GlobalCaseSearchController {
 
                 Http http = new Http(); 
                 HTTPResponse res = http.send(req); 
+                System.debug('DEBUG SEARCH res.getBody : ' + res.getBody()); 
                 string ciphertext = Core_IPS_fromJSON.Parse(res.getBody()).query;
+                System.debug('DEBUG SEARCH res.getBody ciphertext: ' + ciphertext); 
 
 
                //ciphertext = null;Using this for testing without Sky high API 
                 return ciphertext;
+            System.debug('RAZZ'+ciphertext);
                
             }
             catch (exception e) {
+                system.debug(e);
                 return str_Search;
             }
         }*/

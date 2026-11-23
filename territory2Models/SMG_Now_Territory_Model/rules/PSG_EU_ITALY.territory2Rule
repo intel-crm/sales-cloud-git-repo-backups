@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Territory2Rule xmlns="http://soap.sforce.com/2006/04/metadata">
     <active>true</active>
-    <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
     <name>PSG-EU-ITALY</name>
     <objectType>Account</objectType>
     <ruleItems>
@@ -13,15 +12,5 @@
         <field>Account.BillingCountryCode</field>
         <operation>equals</operation>
         <value>BOL,ITA,MLT,SMR</value>
-    </ruleItems>
-    <ruleItems>
-        <field>Account.Name</field>
-        <operation>notContain</operation>
-        <value>ABB Energy,ABB Power,ABB SACE,ABB SPA,Power-one,ABB SCHWEIZ</value>
-    </ruleItems>
-    <ruleItems>
-        <field>Account.Core_Deactivated__c</field>
-        <operation>equals</operation>
-        <value>False</value>
     </ruleItems>
 </Territory2Rule>

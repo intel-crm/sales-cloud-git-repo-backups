@@ -929,5 +929,5 @@
     </customValue>
     <description>Contains all the currencies supported by Salesforce</description>
     <masterLabel>Currencies</masterLabel>
-    <sorted>true</sorted>
+    <sorted>false</sorted>
 </GlobalValueSet>

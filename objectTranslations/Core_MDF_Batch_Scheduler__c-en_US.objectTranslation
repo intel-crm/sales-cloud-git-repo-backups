@@ -302,10 +302,6 @@
         <label><!-- Program --></label>
         <name>Core_MDF_Program_Txt__c</name>
         <picklistValues>
-            <masterLabel>A&amp;E</masterLabel>
-            <translation><!-- A&amp;E --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>ACM</masterLabel>
             <translation><!-- ACM --></translation>
         </picklistValues>
@@ -400,7 +396,15 @@
         <name>Core_MDF_Restrict_Start_date</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Batch Schedule Time cannot be modified. Please create a new job. --></errorMessage>
+        <name>Core_MDF_Restrict_Time_Change</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Please select an End date greater than Start date. --></errorMessage>
         <name>Core_MDF_Start_Date_Less_Than_End_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is feature is not available at the moment. The Job frequency can be set to only Once. --></errorMessage>
+        <name>To_allow_only_Once_option_for_Job_Freq</name>
     </validationRules>
 </CustomObjectTranslation>

@@ -50,9 +50,6 @@
             <sourceValues>
                 <sourceValue>Are you satisfied with the amount of effort you had to put in?</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel made it easy for me to accomplish my task</sourceValue>
-            </sourceValues>
             <value>Effort</value>
         </values>
         <values>
@@ -152,14 +149,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>Enpirion,CQE,Admin,CSTOOLS,Deflected,IR,ZBB,CAT2,eASIC</value>
+            <value>Enpirion,CQE,Admin,CSTOOLS,Deflected,IR,ZBB,CAT2</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_IPS_Response__c.Core_IPS_Question__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>time,effort,communicate,commitments,Support tool,easy</value>
+            <value>time,effort,communicate,commitments,Support tool</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_IPS_Response__c.Core_IPS_Numeric_Answer__c</column>
@@ -181,7 +178,7 @@
         <field>BucketField_55120962</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Obsoleted - Survey Q2-Q6 - PSG CEG</name>
+    <name>Survey Q2-Q6 - PSG CEG</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -192,11 +189,11 @@
     </params>
     <reportType>CaseCustomEntity$Core_IPS_Response__c</reportType>
     <scope>organization</scope>
-    <showDetails>false</showDetails>
+    <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>CASE_NUMBER</sortColumn>
-    <sortOrder>Desc</sortOrder>
+    <sortColumn>Case.Core_IPS_Assigned_Queue__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
         <interval>INTERVAL_CURY</interval>

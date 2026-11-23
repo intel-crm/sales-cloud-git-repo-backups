@@ -85,6 +85,7 @@
         <name>Core_MDF_Bank_Location__c</name>
     </fields>
     <fields>
+        <help><!-- Bank name as per Enterprise Supplier Data for the matching Supplier Number --></help>
         <label>銀行名稱</label>
         <name>Core_MDF_Bank_Name__c</name>
     </fields>
@@ -115,6 +116,10 @@
     <fields>
         <label><!-- Country --></label>
         <name>Core_MDF_Country_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created By --></label>
+        <name>Core_MDF_Created_By_nm__c</name>
     </fields>
     <fields>
         <help><!-- The currency used by Supplier database for this bank. --></help>
@@ -202,6 +207,19 @@
         <name>Core_MDF_INTRMD_BNK_ST_NM__c</name>
     </fields>
     <fields>
+        <label><!-- Inactivate By Program --></label>
+        <name>Core_MDF_Inactivate_By_Program_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive Date --></label>
+        <name>Core_MDF_Inactivate_Date_dt__c</name>
+    </fields>
+    <fields>
+        <help>一旦處於無作用狀態，系統就不再提供該銀行做為報銷要求的選擇之一。如果銀行已有作用中的申請，系統不會允許該銀行處於無作用狀態。 </help>
+        <label><!-- Inactive Date --></label>
+        <name>Core_MDF_Inactive_Date_dt__c</name>
+    </fields>
+    <fields>
         <label><!-- Inactive by Program --></label>
         <name>Core_MDF_Inactive_by_Program_nm__c</name>
         <picklistValues>
@@ -268,6 +286,10 @@
         <name>Core_MDF_Intermediary_Indicator__c</name>
     </fields>
     <fields>
+        <label><!-- Last Modified By --></label>
+        <name>Core_MDF_Last_Modified_By_nm__c</name>
+    </fields>
+    <fields>
         <label>注意</label>
         <name>Core_MDF_Note__c</name>
     </fields>
@@ -278,6 +300,10 @@
     <fields>
         <label><!-- ORIG_APP_SYS_CD --></label>
         <name>Core_MDF_ORIG_APP_SYS_CD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner --></label>
+        <name>Core_MDF_Owner_nm__c</name>
     </fields>
     <fields>
         <help>將付給客戶的款項幣別。</help>
@@ -316,6 +342,10 @@
             <translation><!-- Co-GTM --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Co-Inv</masterLabel>
+            <translation><!-- Co-Inv --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Datacenter</masterLabel>
             <translation>資料中心共同行銷基金</translation>
         </picklistValues>
@@ -340,6 +370,10 @@
         <help>在符合的「供應商號碼」內依照「企業供應商資料」中找到的銀行電匯代碼。</help>
         <label>銀行代碼 (Routing Number)</label>
         <name>Core_MDF_Routing_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supplier Number Currency Program --></label>
+        <name>Core_MDF_SupplierNumCurrencyProgram_cd__c</name>
     </fields>
     <fields>
         <label><!-- Supplier City --></label>
@@ -430,6 +464,10 @@
             <translation><!-- 8% --></translation>
         </picklistValues>
     </fields>
+    <fields>
+        <label><!-- New --></label>
+        <name>New__c</name>
+    </fields>
     <nameFieldLabel>銀行名稱</nameFieldLabel>
     <recordTypes>
         <description><!-- Record Type when bank status is Active --></description>
@@ -476,6 +514,14 @@
     <validationRules>
         <errorMessage><!-- This bank is in Inactive status and cannot currently be edited --></errorMessage>
         <name>Core_MDF_InactiveBank_Uneditable_AP_Hold</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Select Inactive by Program with Inactive Date --></errorMessage>
+        <name>Core_MDF_Inactive_Bank_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Inactive Date cannot be in future --></errorMessage>
+        <name>Core_MDF_Inactive_Bank_Date_in_Future</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Client/Datacenter/SPCF/CCFB can only select Legal Entity 100. --></errorMessage>
@@ -528,6 +574,10 @@
     <validationRules>
         <errorMessage><!-- Selected Account is not a Comarketing Account. --></errorMessage>
         <name>Core_MDF_ValidateAccountOnBank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter valid Account Number and Supplier Number --></errorMessage>
+        <name>Core_MDF_errorIfNotNumber</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Enter Valid Account Number --></errorMessage>

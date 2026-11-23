@@ -23,9 +23,13 @@ public without sharing class Core_MDF_Audit_Document_ServiceHandler {
         List<Id> claimIdList = new List<Id>();
         Map<Id,List<Id>> claimIdToDocIdsMap = new Map<Id,List<Id>>();
         for(Core_MDF_Audit_Document__c newAuditDoc :newAuditDocList){
+            system.debug('in for loop'+newAuditDoc);
+            system.debug('in loop claimid'+newAuditDoc.Core_MDF_Claim__c);
             claimIdList.add(newAuditDoc.Core_MDF_Claim__c);           
         }
+        system.debug('claimIdList'+claimIdList);
         List<Core_MDF_Audit_Document__c> existingAuditDocList = [SELECT id,Core_MDF_Document_Id__c,Core_MDF_Claim__c FROM Core_MDF_Audit_Document__c where Core_MDF_Claim__c in:claimIdList];
+        System.debug('existingAuditDoc'+existingAuditDocList);
         for(Core_MDF_Audit_Document__c auditDocExist :existingAuditDocList){
             if(claimIdToDocIdsMap.containsKey(auditDocExist.Core_MDF_Claim__c)){
                 list<id> docList = claimIdToDocIdsMap.get(auditDocExist.Core_MDF_Claim__c);
@@ -43,9 +47,24 @@ public without sharing class Core_MDF_Audit_Document_ServiceHandler {
         }
     }
     
+    
+    Public static void titleCharLength(List<Core_MDF_Audit_Document__c> newAuditDocList){
+        for(Core_MDF_Audit_Document__c auditDoc :newAuditDocList){
+            //String F = auditDoc.Core_MDF_Document_Title__c;
+            //Integer titleLength = F.length();
+            System.debug('testAmey docName before insert'+auditDoc.Name);
+            System.debug('auditDoc.Core_MDF_Document_Title__c.length '+ auditDoc.Core_MDF_Document_Title__c.length());
+            if(auditDoc.Core_MDF_Document_Title__c.length() > 50){
+                //auditDoc.addError('Selected document has title of length of more than 50 charachters');
+            }
+        }
+    }
+    
     public static void auditDocProcessesOnAfterInsert(List<Core_MDF_Audit_Document__c> newAuditDocList){
+        System.debug('Inside2');
         Map<ID,Core_MDF_Audit_Document__c> auditDocIdToAuditDocMap = new Map<ID,Core_MDF_Audit_Document__c>(newAuditDocList);
             Core_MDF_Audit_Document_Sharing.shareAuditDocToclaim(auditDocIdToAuditDocMap);
+        
         Set<Id> processedRecordIds = new Set<Id>();
         for (Core_MDF_Audit_Document__c audit_doc_rec : newAuditDocList) {
             // Check if the record has already been processed
@@ -63,9 +82,11 @@ public without sharing class Core_MDF_Audit_Document_ServiceHandler {
     
     
     public static void auditDocProcessesOnAfterUpdate(List<Core_MDF_Audit_Document__c> newAuditDocList){
+        System.debug('Inside2');
         Map<ID,Core_MDF_Audit_Document__c> auditDocIdToAuditDocMap = new Map<ID,Core_MDF_Audit_Document__c>(newAuditDocList);
             Core_MDF_Audit_Document_Sharing.shareAuditDocToclaim(auditDocIdToAuditDocMap);
     }
+
     
     @future
     public static void updateAuditDocRecAsync(set<Id> recordIds) {
@@ -77,7 +98,7 @@ public without sharing class Core_MDF_Audit_Document_ServiceHandler {
                     integer extPosition = downloadTitle.lastindexOf('.');//extention position 
                     string fileExt = downloadTitle.substring(extPosition);
                     string uploadedFileNameWithoutExt = downloadTitle.substring(0, extPosition);
-    				uploadedFileNameWithoutExt = uploadedFileNameWithoutExt.replace('|', '_').replace('\'', '_').replace('`', '_').replace('~', '_');
+    				uploadedFileNameWithoutExt = uploadedFileNameWithoutExt.replace('|', '_').replace('\'', '_').replace('`', '_').replace('"', '_');
                     String auditDocDownloadTitle = uploadedFileNameWithoutExt+'_' + audit_doc_rec.Name + fileExt;
                     audit_doc_rec.Core_MDF_Download_Document_Title_txt__c = auditDocDownloadTitle;
                     audit_doc_rec.Core_MDF_Encoded_Document_Title_txt__c = EncodingUtil.URLENCODE(auditDocDownloadTitle,'UTF-8').replace ('+', '%20');

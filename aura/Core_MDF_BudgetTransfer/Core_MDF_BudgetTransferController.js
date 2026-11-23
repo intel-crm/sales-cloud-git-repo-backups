@@ -58,7 +58,7 @@
         $A.enqueueAction(component.get('c.CloseToast'));
         $A.enqueueAction(component.get('c.CloseErrorToast'));
         helper.BudgetChange(component, event, helper);
-    },
+       },
     TransferBudget: function(component, event, helper) {
         var dt = new Date();
 		$A.enqueueAction(component.get('c.CloseToast'));
@@ -103,13 +103,15 @@
     },
     //Getting From Account selected value
     fromAccountToChange:function(component, event, helper) {
-    	helper.ClearForm(component);
+        component.set("v.accountSelected",true);
+        helper.ClearForm(component);
         //getting values from dispatch event call
     	let selectedFromAcc = event.getParam('selectedItem');
         component.set("v.fromAccountSelectedValue",selectedFromAcc);
         //set auto selected value of from account to false
         component.set("v.autoSelected","false");
         helper.GetBudget(component, event, helper);
+        console.log('budget::'+ component.get("v.PartnerMarketingBudgetList"));
 	},
     //Getting To Account selected value
     toAccountToChange:function(component, event, helper) {

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>OpportunityTeamMember.Core_Account_Name__c</field>
+        <field>Account.Core_Account_Tier__c</field>
     </columns>
     <columns>
-        <field>Account.Core_Account_Tier__c</field>
+        <field>OpportunityTeamMember.Core_Account_Name__c</field>
     </columns>
     <columns>
         <field>OWNER_FULL_NAME</field>
@@ -26,9 +26,6 @@
     </columns>
     <columns>
         <field>Opportunity.Core_Business_Unit_Territory__c</field>
-    </columns>
-    <columns>
-        <field>ACCOUNT.ADDRESS1_STATE_CODE</field>
     </columns>
     <columns>
         <field>Product2.Core_Product_Series__c</field>
@@ -67,6 +64,9 @@
         <field>PROBABILITY</field>
     </columns>
     <columns>
+        <field>STAGE_DURATION</field>
+    </columns>
+    <columns>
         <field>OpportunityLineItem.Core_KPI_Quantity__c</field>
     </columns>
     <columns>
@@ -76,39 +76,9 @@
         <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_Approved_Date__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Oppty_Approved_Total_Price__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Approved_Total_Price__c</field>
+        <field>EXP_AMOUNT</field>
     </columns>
     <description>use the team member filter to choose a TAM</description>
-    <filter>
-        <criteriaItems>
-            <column>MEMBER_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Charlie Mark</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Approval_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Approved</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Product_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>FPGA</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Tabular</format>
     <name>Opportunities w/ Team &amp; Product</name>
     <params>
@@ -121,7 +91,7 @@
     </params>
     <params>
         <name>team_lkp</name>
-        <value>0051J000005UMzW</value>
+        <value>005o000000485uJ</value>
     </params>
     <params>
         <name>terr</name>
@@ -142,6 +112,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Opportunity.Core_Approved_Date__c</dateColumn>
-        <interval>INTERVAL_PREVFY</interval>
+        <interval>INTERVAL_PREV1</interval>
     </timeFrameFilter>
 </Report>

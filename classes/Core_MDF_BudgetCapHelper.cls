@@ -23,6 +23,7 @@ public without sharing class Core_MDF_BudgetCapHelper{
             try{
                 Set<Id> prfIdSet = new Set<Id>();           
                 for(PartnerFundClaim pfc: newClaimList){ 
+              
                     prfIdSet.add(pfc.RequestId);
                 }
     
@@ -38,10 +39,14 @@ public without sharing class Core_MDF_BudgetCapHelper{
                 if(test.isRunningTest()){
                     active = false;
                 }
-                List<Core_MDF_CCP_Activity_Budget_Cap_Window__mdt> metadataList = [SELECT Core_MDF_Field_Name_1_txt__c, Core_MDF_Field_Name_2_txt__c, Core_MDF_Operator_1_nm__c, Core_MDF_Operator_2_nm__c,Core_MDF_Value_1_txt__c, Core_MDF_Value_2_txt__c,Cap_Type__c, Core_MDF_Channel_Program_Name__c, Core_MDF_Active_ind__c FROM Core_MDF_CCP_Activity_Budget_Cap_Window__mdt WHERE Core_MDF_Active_ind__c=:active]; 
-                                                                                     
-                                                                                     
-                                                                                    
+                List<Core_MDF_CCP_Activity_Budget_Cap_Window__mdt> metadataList = [SELECT Core_MDF_Field_Name_1_txt__c, Core_MDF_Field_Name_2_txt__c,/*Core_MDF_Field_Name_3_txt__c,
+                                                                                    Core_MDF_Field_Name_4_txt__c, Core_MDF_Field_Name_5_txt__c, Core_MDF_Field_Name_6_txt__c, Core_MDF_Field_Name_7_txt__c,
+                                                                                    Core_MDF_Field_Name_8_txt__c, Core_MDF_Field_Name_9_txt__c, Core_MDF_Field_Name_10_txt__c,*/ Core_MDF_Operator_1_nm__c, Core_MDF_Operator_2_nm__c,
+                                                                                    /*Core_MDF_Operator_3_nm__c, Core_MDF_Operator_4_nm__c, Core_MDF_Operator_5_nm__c, Core_MDF_Operator_6_nm__c, Core_MDF_Operator_7_nm__c,
+                                                                                    Core_MDF_Operator_8_nm__c, Core_MDF_Operator_9_nm__c, Core_MDF_Operator_10_nm__c,*/ Core_MDF_Value_1_txt__c, Core_MDF_Value_2_txt__c, 
+                                                                                    /*Core_MDF_Value_3_txt__c, Core_MDF_Value_4_txt__c, Core_MDF_Value_5_txt__c, Core_MDF_Value_6_txt__c, Core_MDF_Value_7_txt__c, Core_MDF_Value_8_txt__c,
+                                                                                    Core_MDF_Value_9_txt__c, Core_MDF_Value_10_txt__c,*/ Cap_Type__c, Core_MDF_Channel_Program_Name__c, Core_MDF_Active_ind__c FROM Core_MDF_CCP_Activity_Budget_Cap_Window__mdt
+                                                                                    WHERE Core_MDF_Active_ind__c=:active]; 
                                                                                     
                         
                 //Construct Activity Query
@@ -53,7 +58,30 @@ public without sharing class Core_MDF_BudgetCapHelper{
                     if(mdt.Core_MDF_Field_Name_2_txt__c != null){
                         activitFieldSet.add(mdt.Core_MDF_Field_Name_2_txt__c);
                     }
-                    
+                    /*if(mdt.Core_MDF_Field_Name_3_txt__c != null){
+                        activitFieldSet.add(mdt.Core_MDF_Field_Name_3_txt__c);
+                    }
+                    if(mdt.Core_MDF_Field_Name_4_txt__c != null){
+                        activitFieldSet.add(mdt.Core_MDF_Field_Name_4_txt__c);
+                    }
+                    if(mdt.Core_MDF_Field_Name_5_txt__c != null){
+                        activitFieldSet.add(mdt.Core_MDF_Field_Name_5_txt__c);
+                    }
+                    if(mdt.Core_MDF_Field_Name_6_txt__c != null){
+                        activitFieldSet.add(mdt.Core_MDF_Field_Name_6_txt__c);
+                    }
+                    if(mdt.Core_MDF_Field_Name_7_txt__c != null){
+                        activitFieldSet.add(mdt.Core_MDF_Field_Name_7_txt__c);
+                    }
+                    if(mdt.Core_MDF_Field_Name_8_txt__c != null){
+                        activitFieldSet.add(mdt.Core_MDF_Field_Name_8_txt__c);
+                    }
+                    if(mdt.Core_MDF_Field_Name_9_txt__c != null){
+                        activitFieldSet.add(mdt.Core_MDF_Field_Name_9_txt__c);
+                    }
+                    if(mdt.Core_MDF_Field_Name_10_txt__c != null){
+                        activitFieldSet.add(mdt.Core_MDF_Field_Name_10_txt__c);
+                    }*/
     
                     if(programSpecificMDT.containsKey(mdt.Core_MDF_Channel_Program_Name__c)){
                         programSpecificMDT.get(mdt.Core_MDF_Channel_Program_Name__c).add(mdt);
@@ -64,6 +92,7 @@ public without sharing class Core_MDF_BudgetCapHelper{
                     }
                 }
                 
+        
                 String pfrQuery = 'SELECT Id, BudgetId, Campaign.Core_MDF_Program__c';
                 for(String fieldName : activitFieldSet){
                     //pfrQuery = pfrQuery +', ' + fieldName;
@@ -71,7 +100,7 @@ public without sharing class Core_MDF_BudgetCapHelper{
                     pfrQuery = pfrQuery +', ' + String.escapeSingleQuotes(fieldName); 
                 }
                 pfrQuery = pfrQuery + ' FROM PartnerFundRequest WHERE BudgetId IN: budgetIdSet LIMIT 50000';
-                
+              
                 List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
                 pfrList = Database.query(pfrQuery);
                 
@@ -111,19 +140,66 @@ public without sharing class Core_MDF_BudgetCapHelper{
                             
                             //Criteria 1 Validation
                             isCriteriaMatched = isCriteriaMatching(String.valueOf(sObj.get(mdt.Core_MDF_Field_Name_1_txt__c)),mdt.Core_MDF_Value_1_txt__c,mdt.Core_MDF_Operator_1_nm__c,string.valueOf(sObjField.getType()));                       
-                            
+
                             //Criteria 2 Validation                     
                             if(isCriteriaMatched && mdt.Core_MDF_Field_Name_2_txt__c != null){
                                 sObjField = dsr.fields.getMap().get(mdt.Core_MDF_Field_Name_2_txt__c).getDescribe();
                                 isCriteriaMatched = isCriteriaMatching(String.valueOf(sObj.get(mdt.Core_MDF_Field_Name_2_txt__c)),mdt.Core_MDF_Value_2_txt__c,mdt.Core_MDF_Operator_2_nm__c,string.valueOf(sObjField.getType()));                                                   
                             }
                             
-                           
+                            //Criteria 3 Validation                     
+                            /*if(isCriteriaMatched && mdt.Core_MDF_Field_Name_3_txt__c != null){
+                                sObjField = dsr.fields.getMap().get(mdt.Core_MDF_Field_Name_3_txt__c).getDescribe();
+                                isCriteriaMatched = isCriteriaMatching(String.valueOf(sObj.get(mdt.Core_MDF_Field_Name_3_txt__c)),mdt.Core_MDF_Value_3_txt__c,mdt.Core_MDF_Operator_3_nm__c,string.valueOf(sObjField.getType()));                       
+                            }
     
+                            //Criteria 4 Validation                     
+                            if(isCriteriaMatched && mdt.Core_MDF_Field_Name_4_txt__c != null){
+                                sObjField = dsr.fields.getMap().get(mdt.Core_MDF_Field_Name_4_txt__c).getDescribe();
+                                isCriteriaMatched = isCriteriaMatching(String.valueOf(sObj.get(mdt.Core_MDF_Field_Name_4_txt__c)),mdt.Core_MDF_Value_4_txt__c,mdt.Core_MDF_Operator_4_nm__c,string.valueOf(sObjField.getType()));                       
+                            }
+    
+                            //Criteria 5 Validation                     
+                            if(isCriteriaMatched && mdt.Core_MDF_Field_Name_5_txt__c != null){
+                                sObjField = dsr.fields.getMap().get(mdt.Core_MDF_Field_Name_5_txt__c).getDescribe();
+                                isCriteriaMatched = isCriteriaMatching(String.valueOf(sObj.get(mdt.Core_MDF_Field_Name_5_txt__c)),mdt.Core_MDF_Value_5_txt__c,mdt.Core_MDF_Operator_5_nm__c,string.valueOf(sObjField.getType()));                       
+                            }
+    
+                            //Criteria 6 Validation                     
+                            if(isCriteriaMatched && mdt.Core_MDF_Field_Name_6_txt__c != null){
+                                sObjField = dsr.fields.getMap().get(mdt.Core_MDF_Field_Name_6_txt__c).getDescribe();
+                                isCriteriaMatched = isCriteriaMatching(String.valueOf(sObj.get(mdt.Core_MDF_Field_Name_6_txt__c)),mdt.Core_MDF_Value_6_txt__c,mdt.Core_MDF_Operator_6_nm__c,string.valueOf(sObjField.getType()));                       
+                            }
+    
+                            //Criteria 7 Validation                     
+                            if(isCriteriaMatched && mdt.Core_MDF_Field_Name_7_txt__c != null){
+                                sObjField = dsr.fields.getMap().get(mdt.Core_MDF_Field_Name_7_txt__c).getDescribe();
+                                isCriteriaMatched = isCriteriaMatching(String.valueOf(sObj.get(mdt.Core_MDF_Field_Name_7_txt__c)),mdt.Core_MDF_Value_7_txt__c,mdt.Core_MDF_Operator_7_nm__c,string.valueOf(sObjField.getType()));                       
+                            }
+    
+                            //Criteria 8 Validation                     
+                            if(isCriteriaMatched && mdt.Core_MDF_Field_Name_8_txt__c != null){
+                                sObjField = dsr.fields.getMap().get(mdt.Core_MDF_Field_Name_8_txt__c).getDescribe();
+                                isCriteriaMatched = isCriteriaMatching(String.valueOf(sObj.get(mdt.Core_MDF_Field_Name_8_txt__c)),mdt.Core_MDF_Value_8_txt__c,mdt.Core_MDF_Operator_8_nm__c,string.valueOf(sObjField.getType()));                       
+                            }   
+    
+                            //Criteria 9 Validation                     
+                            if(isCriteriaMatched && mdt.Core_MDF_Field_Name_9_txt__c != null){
+                                sObjField = dsr.fields.getMap().get(mdt.Core_MDF_Field_Name_9_txt__c).getDescribe();
+                                isCriteriaMatched = isCriteriaMatching(String.valueOf(sObj.get(mdt.Core_MDF_Field_Name_9_txt__c)),mdt.Core_MDF_Value_9_txt__c,mdt.Core_MDF_Operator_9_nm__c,string.valueOf(sObjField.getType()));                   
+                            }
+    
+                            //Criteria 10 Validation                        
+                            if(isCriteriaMatched && mdt.Core_MDF_Field_Name_10_txt__c != null){
+                                sObjField = dsr.fields.getMap().get(mdt.Core_MDF_Field_Name_10_txt__c).getDescribe();
+                                isCriteriaMatched = isCriteriaMatching(String.valueOf(sObj.get(mdt.Core_MDF_Field_Name_10_txt__c)),mdt.Core_MDF_Value_10_txt__c,mdt.Core_MDF_Operator_10_nm__c,string.valueOf(sObjField.getType()));                        
+                            }*/
+
                             //ATHR - Deeply Nested if 16209
                             if(!isCriteriaMatched){
                                 continue;
                             }
+
                                 prfIdSet.add(pfr.Id);   
                                 //pfrIdWithCapType.put(pfr.Id,mdt.Cap_Type__c);
                                 pfrIdWithBudgetId.put(pfr.Id,pfr.BudgetId);
@@ -134,11 +210,13 @@ public without sharing class Core_MDF_BudgetCapHelper{
                                 }
                                 else{
                                     pfrIdWithCapType.put(pfr.id, new set<String>{mdt.Cap_Type__c});
-                                }  
-                            }                       
+                                }                      
                         }
+                }
                                        
         
+                
+                
                 Map<Id,Core_MDF_Budget_Cap__c> budgetCapToBeUpdatedMap = new Map<Id,Core_MDF_Budget_Cap__c>();
                 
                 //Validation Begins
@@ -151,6 +229,7 @@ public without sharing class Core_MDF_BudgetCapHelper{
                             pfrIdWithBudgetId.containsKey(pfc.RequestId) && pfrIdWithBudgetId.get(pfc.RequestId) != null &&            
                             budgetIdCapTypeWithRamainingAmount.containsKey(pfrIdWithBudgetId.get(pfc.RequestId)+'#'+captype) &&
                             budgetIdCapTypeWithRamainingAmount.get(pfrIdWithBudgetId.get(pfc.RequestId)+'#'+captype) != null){
+                         
                                 Decimal totalClaimedAmount = budgetIdCapTypeWithClaimedAmount.get(pfrIdWithBudgetId.get(pfc.RequestId)+'#'+captype);
                                     if( totalClaimedAmount + pfc.Amount > 
                                         budgetIdCapTypeWithRamainingAmount.get(pfrIdWithBudgetId.get(pfc.RequestId)+'#'+captype).Core_MDF_Approved_Cap_amt__c && budgetIdCapTypeWithRamainingAmount.get(pfrIdWithBudgetId.get(pfc.RequestId)+'#'+captype).Core_MDF_Cap_Status_nm__c =='Approved'){ 
@@ -161,6 +240,7 @@ public without sharing class Core_MDF_BudgetCapHelper{
                                         pfc.Core_MDF_Cap_Type_nm__c = pfc.Core_MDF_Cap_Type_nm__c==null?captype : pfc.Core_MDF_Cap_Type_nm__c + ';' + captype;
                                         Id budgetCapId = budgetIdCapTypeWithRamainingAmount.get(pfrIdWithBudgetId.get(pfc.RequestId)+'#'+captype).Id;
                                         totalClaimedAmount = totalClaimedAmount + pfc.Amount;
+                        
                                         budgetIdCapTypeWithClaimedAmount.put(pfrIdWithBudgetId.get(pfc.RequestId)+'#'+captype,totalClaimedAmount);
                                             
                                         Core_MDF_Budget_Cap__c budgetCap = new Core_MDF_Budget_Cap__c();
@@ -174,6 +254,7 @@ public without sharing class Core_MDF_BudgetCapHelper{
                     
                     //Update Budget Cap
                     if(budgetCapToBeUpdatedMap.size()>0){
+                   
                         Database.update(budgetCapToBeUpdatedMap.values());
                     }
                 }
@@ -368,51 +449,52 @@ public without sharing class Core_MDF_BudgetCapHelper{
             //Multi-Select type comparison with all appropriate operators
             //ATHR - Deeply Nested if 16209
             if (!multiSelectType.contains(fieldType)) {
-                        return false;
-                    }
-                    list<String> mainString = crtValue.toLowerCase().split(';');
+                return false;
+            }
+            List<String> mainString = crtValue.toLowerCase().split(';');
             switch on operator {
                 when 'Equal' {
                 if (mainString.size() != recValue.split(';').size()) {
                     return false;
                 }
-                    for(String str: recValue.split(';')){
-                        if(!mainString.contains(str.toLowerCase())){
-                            return false;
-                        }
+                for (String str : recValue.split(';')) {
+                    if (!mainString.contains(str.toLowerCase())) {
+                        return false;
                     }
-                    return true;
+                }
+                return true;
                 }
 
                 when 'Not Equal' {
-                    for(String str: recValue.split(';')){
-                        if(!mainString.contains(str.toLowerCase())){
-                            return true;
-                        }
+                for (String str : recValue.split(';')) {
+                    if (!mainString.contains(str.toLowerCase())) {
+                        return true;
                     }
-                    return false;
+                }
+                return false;
                 }
 
                 when 'In' {
-                    for(String str: recValue.toLowerCase().split(';')){  
-                        if(!mainString.contains(str.toLowerCase())){
-                            return false;
-                        }
+                for (String str : recValue.toLowerCase().split(';')) {
+                    if (!mainString.contains(str.toLowerCase())) {
+                        return false;
                     }
-                    return true;
+                }
+                return true;
                 }
 
                 when 'Not In' {
-                    for(String str: recValue.toLowerCase().split(';')){                 
-                        if(mainString.contains(str.toLowerCase())){
-                            return false;
-                        }
+                for (String str : recValue.toLowerCase().split(';')) {
+                    if (mainString.contains(str.toLowerCase())) {
+                        return false;
                     }
-                    return true;
-                }           
+                }
+                return true;
+                }
+
                 when else {
-                return false;
+                    return false;
                 }
             }
-        }          
+        }    
     }

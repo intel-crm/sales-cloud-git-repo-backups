@@ -33,9 +33,6 @@
         </values>
     </buckets>
     <columns>
-        <field>Core_Opportunity_Partner__c.Core_Partner_Role__c</field>
-    </columns>
-    <columns>
         <field>FK_NAME</field>
     </columns>
     <columns>
@@ -45,7 +42,7 @@
         <field>FK_OPP_AMOUNT</field>
     </columns>
     <columns>
-        <field>FK_$Opportunity.Core_First_Customer_Ship_Date__c</field>
+        <field>FK_OPP_CLOSE_DATE</field>
     </columns>
     <columns>
         <field>FK_OPP_STAGE_NAME</field>
@@ -55,6 +52,9 @@
     </columns>
     <columns>
         <field>FK_OPP_OWNER_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Opportunity_Partner__c.Core_Partner__c</field>
     </columns>
     <columns>
         <field>Core_Opportunity_Partner__c.Core_Partner_Salesperson__c</field>
@@ -75,7 +75,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Lost,Cancelled,Production Lost,Production Cancelled,Group Cancelled</value>
+            <value>Cancelled,Lost</value>
         </criteriaItems>
         <criteriaItems>
             <column>FK_$Opportunity.Core_Opportunity_Type__c</column>
@@ -85,23 +85,23 @@
             <value>design</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Core_Opportunity_Partner__c.Core_Partner_Salesperson__c</column>
+            <column>FK_$Opportunity.Core_Consumption_Market__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>michael kempe,oliver gabriel</value>
+            <operator>equals</operator>
+            <value>Health and Life Sciences</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Core_Opportunity_Partner__c.Core_Partner_Program__c</field>
-        <sortOrder>Desc</sortOrder>
+        <field>FK_$Opportunity.Core_Opportunity_Owner_Geo__c</field>
+        <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Core_Opportunity_Partner__c.Core_Partner__c</field>
+        <field>BucketField_52624052</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Siemens ISA Partner Report</name>
@@ -114,6 +114,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>FK_OPP_CLOSE_DATE</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>FK_OPP_CLOSE_DATE</dateColumn>
         <endDate>2020-12-29</endDate>

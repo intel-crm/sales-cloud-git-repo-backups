@@ -1,12 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Submit_Async_Update</name>
+        <label>Submit Async Update</label>
+        <locationX>314</locationX>
+        <locationY>2288</locationY>
+        <actionName>Core_MDF_BulkPaymentStatusService</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Screen_Async_Submitted</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Screen_Save_Error</targetReference>
+        </faultConnector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>payments</name>
+            <value>
+                <elementReference>varPaymentsToUpdate</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>paymentRunId</name>
+            <value>
+                <elementReference>varPaymentRunId</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_MDF_BulkPaymentStatusService</nameSegment>
+    </actionCalls>
     <apiVersion>63.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>Add_Selected_Id</name>
         <label>Add Selected Id</label>
         <locationX>402</locationX>
-        <locationY>1322</locationY>
+        <locationY>1430</locationY>
         <assignmentItems>
             <assignToReference>varSelectedPaymentIds</assignToReference>
             <operator>Add</operator>
@@ -22,7 +50,7 @@
         <name>Capture_Grid_State</name>
         <label>Capture Grid State</label>
         <locationX>314</locationX>
-        <locationY>1106</locationY>
+        <locationY>1214</locationY>
         <assignmentItems>
             <assignToReference>varSelectedPayments</assignToReference>
             <operator>Assign</operator>
@@ -52,7 +80,7 @@
     <assignments>
         <name>Clear_Inline_Error</name>
         <label>Clear Inline Error</label>
-        <locationX>842</locationX>
+        <locationX>1106</locationX>
         <locationY>350</locationY>
         <assignmentItems>
             <assignToReference>varInlineError</assignToReference>
@@ -76,7 +104,7 @@
         <name>Init_Edited_Payments</name>
         <label>Init Edited Payments</label>
         <locationX>314</locationX>
-        <locationY>890</locationY>
+        <locationY>998</locationY>
         <assignmentItems>
             <assignToReference>varEditedPayments</assignToReference>
             <operator>Assign</operator>
@@ -100,7 +128,7 @@
         <name>Prepare_Payment_Update</name>
         <label>Prepare Payment Update</label>
         <locationX>138</locationX>
-        <locationY>1838</locationY>
+        <locationY>1946</locationY>
         <assignmentItems>
             <assignToReference>Loop_Selected_Payments.Core_MDF_Payment_Status_Txt__c</assignToReference>
             <operator>Assign</operator>
@@ -137,7 +165,7 @@
         <name>Set_No_Payments_Error</name>
         <label>Set No Payments Error</label>
         <locationX>842</locationX>
-        <locationY>890</locationY>
+        <locationY>998</locationY>
         <assignmentItems>
             <assignToReference>varInlineError</assignToReference>
             <operator>Assign</operator>
@@ -154,7 +182,7 @@
         <name>Set_Payment_Date_Error</name>
         <label>Set Payment Made On Error</label>
         <locationX>402</locationX>
-        <locationY>1838</locationY>
+        <locationY>1946</locationY>
         <assignmentItems>
             <assignToReference>varInlineError</assignToReference>
             <operator>Assign</operator>
@@ -168,9 +196,26 @@
         </connector>
     </assignments>
     <assignments>
+        <name>Set_Run_Not_Eligible_Error</name>
+        <label>Set Run Not Eligible Error</label>
+        <locationX>1106</locationX>
+        <locationY>782</locationY>
+        <assignmentItems>
+            <assignToReference>varInlineError</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>The selected Payment Run is not an eligible Co-GTM / Completed run. Please choose a different Payment Run.</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Screen_Error</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Set_Run_Required_Error</name>
         <label>Set Run Required Error</label>
-        <locationX>1106</locationX>
+        <locationX>1370</locationX>
         <locationY>566</locationY>
         <assignmentItems>
             <assignToReference>varInlineError</assignToReference>
@@ -184,10 +229,26 @@
         </connector>
     </assignments>
     <assignments>
+        <name>Set_Selected_Count</name>
+        <label>Set Selected Count</label>
+        <locationX>138</locationX>
+        <locationY>2180</locationY>
+        <assignmentItems>
+            <assignToReference>varSelectedCount</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>varPaymentsToUpdate</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_Volume</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Set_Selection_Error</name>
         <label>Set Selection Error</label>
         <locationX>578</locationX>
-        <locationY>1622</locationY>
+        <locationY>1730</locationY>
         <assignmentItems>
             <assignToReference>varInlineError</assignToReference>
             <operator>Assign</operator>
@@ -204,7 +265,7 @@
         <name>Check_Has_Payments</name>
         <label>Pending Payments Found?</label>
         <locationX>578</locationX>
-        <locationY>782</locationY>
+        <locationY>890</locationY>
         <defaultConnector>
             <targetReference>Set_No_Payments_Error</targetReference>
         </defaultConnector>
@@ -229,7 +290,7 @@
         <name>Check_Payment_Made_On</name>
         <label>Payment Made On Entered?</label>
         <locationX>270</locationX>
-        <locationY>1730</locationY>
+        <locationY>1838</locationY>
         <defaultConnector>
             <targetReference>Set_Payment_Date_Error</targetReference>
         </defaultConnector>
@@ -251,9 +312,41 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Check_Run_Eligible</name>
+        <label>Payment Run Eligible?</label>
+        <locationX>842</locationX>
+        <locationY>674</locationY>
+        <defaultConnector>
+            <targetReference>Set_Run_Not_Eligible_Error</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Eligible</defaultConnectorLabel>
+        <rules>
+            <name>Run_Is_Eligible</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varSelectedPaymentRun.Core_MDF_Program_Txt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CoGTM</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>varSelectedPaymentRun.Core_MDF_Status_Txt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Completed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Pending_Payments</targetReference>
+            </connector>
+            <label>Eligible</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Check_Run_Selected</name>
         <label>Payment Run Selected?</label>
-        <locationX>842</locationX>
+        <locationX>1106</locationX>
         <locationY>458</locationY>
         <defaultConnector>
             <targetReference>Set_Run_Required_Error</targetReference>
@@ -279,7 +372,7 @@
         <name>Check_Selection</name>
         <label>Payments Selected?</label>
         <locationX>314</locationX>
-        <locationY>1514</locationY>
+        <locationY>1622</locationY>
         <defaultConnector>
             <targetReference>Set_Selection_Error</targetReference>
         </defaultConnector>
@@ -303,7 +396,7 @@
     <decisions>
         <name>Check_User_Access</name>
         <label>Check User Access</label>
-        <locationX>1106</locationX>
+        <locationX>1370</locationX>
         <locationY>134</locationY>
         <defaultConnector>
             <targetReference>Screen_No_Access</targetReference>
@@ -323,6 +416,31 @@
                 <targetReference>Screen_Select_Run</targetReference>
             </connector>
             <label>User Has Access</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Volume</name>
+        <label>Check Volume</label>
+        <locationX>138</locationX>
+        <locationY>2180</locationY>
+        <defaultConnector>
+            <targetReference>Update_Selected_Payments</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Within Threshold (Sync)</defaultConnectorLabel>
+        <rules>
+            <name>Above_Threshold</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varSelectedCount</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <elementReference>fSyncThreshold</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Submit_Async_Update</targetReference>
+            </connector>
+            <label>Above Threshold (Async)</label>
         </rules>
     </decisions>
     <description>This is a screen flow to update payment status to Paid for bulk records.</description>
@@ -345,13 +463,19 @@
   $Flow.FaultMessage
 )</expression>
     </formulas>
+    <formulas>
+        <name>fSyncThreshold</name>
+        <dataType>Number</dataType>
+        <expression>IF(ISBLANK({!rcdSyncThresholdConfig.Core_MDF_Value_Txt__c}), 50, VALUE({!rcdSyncThresholdConfig.Core_MDF_Value_Txt__c}))</expression>
+        <scale>0</scale>
+    </formulas>
     <interviewLabel>Bulk Update Payment Status {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Bulk Update Payment Status</label>
     <loops>
         <name>Loop_Capture_Selected_Ids</name>
         <label>Loop Capture Selected Ids</label>
         <locationX>314</locationX>
-        <locationY>1214</locationY>
+        <locationY>1322</locationY>
         <collectionReference>varSelectedPayments</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -365,14 +489,14 @@
         <name>Loop_Selected_Payments</name>
         <label>Loop Selected Payments</label>
         <locationX>50</locationX>
-        <locationY>1622</locationY>
+        <locationY>1730</locationY>
         <collectionReference>varSelectedPayments</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
             <targetReference>Check_Payment_Made_On</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>Update_Selected_Payments</targetReference>
+            <targetReference>Get_Sync_Threshold_Config</targetReference>
         </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
@@ -398,7 +522,7 @@
         <name>Get_Pending_Payments</name>
         <label>Get Pending Payments</label>
         <locationX>578</locationX>
-        <locationY>674</locationY>
+        <locationY>782</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_Has_Payments</targetReference>
@@ -435,11 +559,11 @@
     <recordLookups>
         <name>Get_Selected_Payment_Run</name>
         <label>Get Selected Payment Run</label>
-        <locationX>578</locationX>
+        <locationX>842</locationX>
         <locationY>566</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Get_Pending_Payments</targetReference>
+            <targetReference>Check_Run_Eligible</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -456,11 +580,35 @@
         <queriedFields>Core_MDF_Program_Txt__c</queriedFields>
         <queriedFields>Core_MDF_Status_Txt__c</queriedFields>
     </recordLookups>
+    <recordLookups>
+        <name>Get_Sync_Threshold_Config</name>
+        <label>Get Sync Threshold Config</label>
+        <locationX>138</locationX>
+        <locationY>2072</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Set_Selected_Count</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Screen_Save_Error</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>BULK_PAYMENT_SYNC_THRESHOLD</stringValue>
+            </value>
+        </filters>
+        <object>Core_MDF_Custom_Label_Configration__mdt</object>
+        <outputReference>rcdSyncThresholdConfig</outputReference>
+        <queriedFields>Core_MDF_Value_Txt__c</queriedFields>
+    </recordLookups>
     <recordUpdates>
         <name>Update_Selected_Payments</name>
         <label>Update Selected Payments</label>
         <locationX>50</locationX>
-        <locationY>2180</locationY>
+        <locationY>2288</locationY>
         <connector>
             <targetReference>Screen_Success</targetReference>
         </connector>
@@ -471,9 +619,74 @@
     </recordUpdates>
     <runInMode>DefaultMode</runInMode>
     <screens>
+        <name>Screen_Async_Submitted</name>
+        <label>Request Submitted</label>
+        <locationX>314</locationX>
+        <locationY>2396</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Async_Header</name>
+            <fieldText>&lt;h3 style=&quot;text-align: center;&quot;&gt;Update Payment Status&lt;/h3&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>Async_Msg</name>
+            <extensionName>flowruntime:message</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>messageType</name>
+                <value>
+                    <stringValue>info</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>messageContent</name>
+                <value>
+                    <elementReference>tmplAsyncMsg</elementReference>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>Async_Cancel</name>
+            <fieldText>&lt;p&gt;{!cancelbutton}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>false</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
         <name>Screen_Error</name>
         <label>Unable to Continue</label>
-        <locationX>1106</locationX>
+        <locationX>1370</locationX>
         <locationY>674</locationY>
         <allowBack>true</allowBack>
         <allowFinish>false</allowFinish>
@@ -539,7 +752,7 @@
     <screens>
         <name>Screen_No_Access</name>
         <label>Access Denied</label>
-        <locationX>1370</locationX>
+        <locationX>1634</locationX>
         <locationY>242</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -605,7 +818,7 @@
         <name>Screen_Review_Payments</name>
         <label>Update Payment Status</label>
         <locationX>314</locationX>
-        <locationY>998</locationY>
+        <locationY>1106</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -715,7 +928,7 @@
         <name>Screen_Save_Error</name>
         <label>Save Failed</label>
         <locationX>314</locationX>
-        <locationY>2288</locationY>
+        <locationY>2396</locationY>
         <allowBack>true</allowBack>
         <allowFinish>false</allowFinish>
         <allowPause>false</allowPause>
@@ -762,7 +975,7 @@
         </fields>
         <fields>
             <name>Save_Error_Cancel</name>
-            <fieldText>&lt;p&gt;{!closeButton}&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;{!cancelbutton}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
@@ -779,7 +992,7 @@
     <screens>
         <name>Screen_Select_Run</name>
         <label>Select Payment Run</label>
-        <locationX>842</locationX>
+        <locationX>1106</locationX>
         <locationY>242</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -843,7 +1056,7 @@
             <inputParameters>
                 <name>filter</name>
                 <value>
-                    <stringValue>Core_MDF_Program_Id__r.Name = &apos;Co-GTM&apos; and Core_MDF_Status_Txt__c  = &apos;Completed&apos; </stringValue>
+                    <stringValue>Core_MDF_Program_Id__r.Name = &apos;Co-GTM&apos;</stringValue>
                 </value>
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
@@ -879,7 +1092,7 @@
         <name>Screen_Success</name>
         <label>Payments Marked as Paid</label>
         <locationX>50</locationX>
-        <locationY>2288</locationY>
+        <locationY>2396</locationY>
         <allowBack>true</allowBack>
         <allowFinish>false</allowFinish>
         <allowPause>false</allowPause>
@@ -926,7 +1139,7 @@
         </fields>
         <fields>
             <name>Success_Cancel</name>
-            <fieldText>&lt;p&gt;{!closeButton}&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;{!cancelbutton}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
@@ -941,13 +1154,18 @@
         <showHeader>false</showHeader>
     </screens>
     <start>
-        <locationX>980</locationX>
+        <locationX>1244</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Check_User_Access</targetReference>
         </connector>
     </start>
     <status>Active</status>
+    <textTemplates>
+        <name>tmplAsyncMsg</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;You have selected over {!fSyncThreshold} records. Because of the large volume, your request is being processed in the background. You will receive an email confirmation once the update is complete.&lt;/p&gt;</text>
+    </textTemplates>
     <textTemplates>
         <name>tmplNoAccessMsg</name>
         <isViewedAsPlainText>false</isViewedAsPlainText>
@@ -969,14 +1187,12 @@
         </value>
     </variables>
     <variables>
-        <name>closeButton</name>
-        <dataType>String</dataType>
+        <name>rcdSyncThresholdConfig</name>
+        <dataType>SObject</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
-        <value>
-            <stringValue>&lt;div style=&quot;text-align:right;margin-top:15px;&quot;&gt;&lt;a class=&quot;slds-button slds-button_neutral&quot; href=&quot;/lightning/o/Core_MDF_Payment__c/list&quot; target=&quot;_top&quot;&gt;Close&lt;/a&gt;&lt;/div&gt;</stringValue>
-        </value>
+        <objectType>Core_MDF_Custom_Label_Configration__mdt</objectType>
     </variables>
     <variables>
         <name>varEditedPayments</name>
@@ -1023,6 +1239,14 @@
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>Core_MDF_Payment__c</objectType>
+    </variables>
+    <variables>
+        <name>varSelectedCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
     </variables>
     <variables>
         <name>varSelectedPaymentIds</name>

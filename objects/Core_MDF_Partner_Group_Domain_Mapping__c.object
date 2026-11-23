@@ -128,11 +128,14 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Core_MDF_PGDM_RecordPage</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -199,6 +202,14 @@
         <writeRequiresMasterRead>true</writeRequiresMasterRead>
     </fields>
     <label>Partner Group Domain Mapping</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>Core_MDF_Partner_Group_Mapping_Id__c</columns>
+        <columns>NAME</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
     <nameField>
         <label>Domain Name</label>
         <trackHistory>false</trackHistory>

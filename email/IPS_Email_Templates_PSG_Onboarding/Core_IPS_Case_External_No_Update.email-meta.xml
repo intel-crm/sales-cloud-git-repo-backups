@@ -2,17 +2,22 @@
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
     <available>true</available>
     <encodingKey>UTF-8</encodingKey>
-    <letterhead>IPS_Letterhead_External</letterhead>
+    <letterhead>IPS_Letterhead</letterhead>
     <name>Core IPS Case External No Update</name>
     <style>freeForm</style>
     <subject>{!Case.Core_IPS_email_text__c } {!Case.CaseNumber} - {!LEFT(Case.core_Account_Name__c,50)} {!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,&quot; - &quot; &amp; LEFT(Case.Subject, 120))} [{!Case.Id}xx]</subject>
-    <textOnly>{!Case.Core_IPS_email_text__c } {!Case.CaseNumber}  Click Here to view
+    <textOnly>Intel® Premier Support 
+
+{!Case.Core_IPS_email_text__c } {!Case.CaseNumber} Click Here 
+{!$Label.Core_IPS_Notification_External_URL}/{!Case.Id} to view 
+
+{!IF(ISPICKVAL(Case.Core_Sub_Status__c,&quot;Closed&quot;) &amp;&amp; Case.Core_IPS_Survey_Captured__c=false, &quot;Please provide feedback at Survey Link &quot; &amp; $Label.Core_IPS_Survey_Link &amp; &quot;?caid=&quot; &amp; Case.Id &amp; &quot; if you have not already done so - Thanks!&quot;,&quot;&quot;)}
 
 Do not reply to this email, no updates will be accepted after a Case is Closed
 
 {!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,&quot;Latest Case Comment : &quot;)}
 {!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,Case.Core_Last_Case_Comment__c)}
-___________________________________________________________
+_______________________________________________________________
 
 Case Details
 
@@ -25,7 +30,7 @@ Case Details
 Case: {!Case.CaseNumber}
 Status: {!Case.Status}{!if(ispickval(Case.Core_Sub_Status__c,&quot;&quot;),&quot;&quot;,&quot;.&quot;)}{!Case.Core_Sub_Status__c}
 Account: {!Case.core_Account_Name__c}
-Contact: {!Case.Core_IPS_Supported_Contact__c}
+Contact: {!Case.Core_IPS_Supported_Contact__c} 
 Severity: {!Case.Core_Severity__c}
 Project: {!Case.Core_IPS_Project_Case__c}
 Product: {!Case.Core_IPS_Product_name__c}

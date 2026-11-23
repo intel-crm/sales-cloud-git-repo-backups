@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>Core_MDF_Partner_Node_User_Mapping__c</baseObject>
+    <category>other</category>
+    <deployed>true</deployed>
+    <description>Account user to contact</description>
+    <label>Account user To Contact</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>User Accounts Access</displayNameOverride>
+            <field>Core_MDF_Account__c</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AccountIdUserId__c</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Id</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Name</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CreatedBy</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CreatedDate</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastActivityDate</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedBy</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedDate</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Owner</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_User__c</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>User Accounts Access</displayNameOverride>
+            <field>Core_MDF_User__c.Account.Name</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>User Role Name</displayNameOverride>
+            <field>Core_MDF_User__c.UserRole.Name</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Program Name</displayNameOverride>
+            <field>Core_MDF_Account__c.Core_Partner_Alliance_Program__c</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_User__c.UserType</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Email Address</displayNameOverride>
+            <field>Core_MDF_User__c.Email</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Program Name</displayNameOverride>
+            <field>Core_MDF_Account__c.Core_MDF_Channel_Program__c.Name</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>User Status</displayNameOverride>
+            <field>Core_MDF_User__c.IsActive</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>User Country</displayNameOverride>
+            <field>Core_MDF_User__c.CountryCode</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>User Geo</displayNameOverride>
+            <field>Core_MDF_User__c.Contact.Core_IPS_Region__c</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>User Sub Geo</displayNameOverride>
+            <field>Core_MDF_User__c.Contact.Core_IPS_Sub_Region__c</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_User__c.Contact.Core_Audience_List__c</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Name</displayNameOverride>
+            <field>Core_MDF_User__c.LastName</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>First Name</displayNameOverride>
+            <field>Core_MDF_User__c.FirstName</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>User:UserName</displayNameOverride>
+            <field>Core_MDF_User__c.Username</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Login Time</displayNameOverride>
+            <field>Core_MDF_User__c.LastLoginDate</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>User Geo</displayNameOverride>
+            <field>Core_MDF_User__c.Core_User_Geo__c</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>User Sub Geo</displayNameOverride>
+            <field>Core_MDF_User__c.Core_User_Sub_Geo__c</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Email Address</displayNameOverride>
+            <field>Core_MDF_User__c.Contact.Email</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>User Name</displayNameOverride>
+            <field>Core_MDF_User__c.Name</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_User__c.Contact.Id</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Active_Ind__c</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Action_Needed_nm__c</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <masterLabel>Account Users</masterLabel>
+    </sections>
+</ReportType>

@@ -34,6 +34,9 @@
         <field>Opportunity.Core_Past_Due__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Channel_Opportunity_Ind__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Inactive__c</field>
     </columns>
     <columns>

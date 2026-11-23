@@ -40,3 +40,9 @@ table {
   border-bottom: 2px solid red !important;
   border-radius: 4px;
 }
+
+.datatable-wrapper {
+  min-height: 250px;
+  max-height: 500px;
+  overflow-y: auto;
+}

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Active_ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>ActivityCategory_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>ActivityCategory_txt</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ActivityType_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>ActivityType_txt</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Blue_Activity_Type_ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Blue Activity Type</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Activity_Category_Type_txt__c</fullName>
+        <description>Stores concatenated value of Activity Category and Type</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Activity Category -&gt;Type</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Supported_Budget_Type_1_txt__c</fullName>
+        <description>Stores Budget Type applicable for Activity Category/ Type.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Stores Budget Type applicable for Activity Category/ Type.</inlineHelpText>
+        <label>Supported Budget Type_1</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Supported_Budget_Type_2_txt__c</fullName>
+        <description>Stores Budget Type applicable for Activity Category/ Type (Placeholder field, if &quot;Supported Budget Type_1&quot; exceeds 255 char limit)</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Stores Budget Type applicable for Activity Category/ Type</inlineHelpText>
+        <label>Supported Budget Type_2</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Green_Activity_Type_ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Green Activity Type</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Record_Type_Picklist__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Record Type Picklist</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Core_MDF_Client_CoMarketing_Fund</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Client_CoMarketing_Fund</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Data_Center_CoMarketing_Fund</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Data_Center_CoMarketing_Fund</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Retail_Marketing_Funds</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Retail_Marketing_Funds</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Channel_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Channel_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Intel_Partner_Alliance</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Intel_Partner_Alliance</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>OPAL Category Type Mapping</label>
+    <listViews>
+        <fullName>My_view</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>ActivityCategory_txt__c</columns>
+        <columns>ActivityType_txt__c</columns>
+        <columns>Blue_Activity_Type_ind__c</columns>
+        <columns>Green_Activity_Type_ind__c</columns>
+        <columns>Active_ind__c</columns>
+        <columns>Core_MDF_Activity_Category_Type_txt__c</columns>
+        <columns>Core_MDF_Supported_Budget_Type_1_txt__c</columns>
+        <columns>Core_MDF_Supported_Budget_Type_2_txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Active_ind__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Record_Type_Picklist__c</field>
+            <operation>equals</operation>
+            <value>Core_MDF_Channel_MDF</value>
+        </filters>
+        <label>My view</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>my_view_opl</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>NamespacePrefix</columns>
+        <columns>IsProtected</columns>
+        <columns>ActivityCategory_txt__c</columns>
+        <columns>Blue_Activity_Type_ind__c</columns>
+        <columns>ActivityType_txt__c</columns>
+        <columns>Core_MDF_Activity_Category_Type_txt__c</columns>
+        <columns>Green_Activity_Type_ind__c</columns>
+        <columns>Core_MDF_Supported_Budget_Type_1_txt__c</columns>
+        <columns>Core_MDF_Supported_Budget_Type_2_txt__c</columns>
+        <columns>Active_ind__c</columns>
+        <columns>Record_Type_Picklist__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Record_Type_Picklist__c</field>
+            <operation>equals</operation>
+            <value>Core_MDF_Channel_MDF</value>
+        </filters>
+        <label>my view opl</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>OPAL Category Type Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

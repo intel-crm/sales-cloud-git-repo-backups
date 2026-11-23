@@ -84,6 +84,8 @@ public class Core_MDF_Partnership_ScoreServiceTest {
         }catch(Exception ex){
         }
         Test.stopTest();
+        // Unit Test Method should include System.Assert - Indira
+        System.assertEquals(4.0, partScrList[0].Core_MDF_Partnership_Score_Nbr__c, 'First partnership score should be updated to 4.0');
         
     }
 }

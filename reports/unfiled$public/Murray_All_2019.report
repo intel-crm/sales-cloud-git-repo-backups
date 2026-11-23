@@ -163,9 +163,6 @@
         </values>
     </buckets>
     <columns>
-        <field>ACCOUNT_NAME</field>
-    </columns>
-    <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
@@ -199,7 +196,10 @@
         <field>OpportunityLineItem.Core_Status__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -231,6 +231,27 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Pending,Win Submitted,Win Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Commissionable__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Yes</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Vendor__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Dell,Lenovo,Cray,Cisco,Microsoft,Penguin,Amazon</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>CCG</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

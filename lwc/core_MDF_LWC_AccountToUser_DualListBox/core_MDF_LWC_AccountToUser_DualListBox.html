@@ -1,0 +1,32 @@
+<template>
+    <div class="slds-modal__content slds-p-around--large slds-p-top_none">
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_2-of-6 slds-p-around_small">
+                <label style="color:red;font-size: large;">*</label>
+                <label class="slds-form-element__label" for="unique-id-of-input" style="font-weight: bold;
+            font-size: small;">{label.accountFieldLabel}</label>
+            </div>
+            <div class="slds-col slds-size_4-of-6 slds-p-around_small slds-p-bottom_none slds-p-top_none">
+                <c-lwc-custom-lookup onremove={selectedRecord} onselected={selectedRecord}></c-lwc-custom-lookup>
+            </div>
+            <template if:false={loaded}>
+                <lightning-spinner alternative-text="Loading"></lightning-spinner>
+            </template>
+            <div class="slds-col slds-size_6-of-6 slds-p-around_small">
+                <lightning-input value={userSearchKey} onchange={onUserSearch} type="search" placeholder="search user">
+                </lightning-input>
+            </div>
+            <div class="slds-col slds-size_6-of-6 slds-p-around_small slds-p-top_none">
+                <lightning-dual-listbox name="users" disable-reordering="True" source-label="Available"
+                    selected-label="Selected" options={allAvailableUsers} value={allAvailableMappedUsers} onchange={handleChange}>
+                </lightning-dual-listbox>
+            </div>
+        </div>
+    </div>
+    <footer class="slds-modal__footer">
+        <div class="slds-list_horizontal slds-align_absolute-center">
+            <button class="slds-button slds-button_neutral" onclick={onCancel}>Cancel</button>
+            <button class="slds-button slds-button_brand" onclick={onSave}>Save</button>
+        </div>
+    </footer>
+</template>

@@ -57,7 +57,7 @@
                     navEvt.fire();
                     setTimeout(function(){window.location.reload();},1000);
                 }
-            }
+            }  
         }
             else if(response.getState() == 'ERROR'){ 
                 var fieldErrors;

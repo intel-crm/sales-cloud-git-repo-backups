@@ -14,6 +14,15 @@ public class Core_MDF_IUPGM_InActive_Batch_Test {
         testUser.IsActive=true;
         insert testUser;
         System.runAs(testUser){
+            // 14285 Indira - start
+            List<String> bypassFunctionKeys = new List<String>();
+            Set<String> myset1 = new Set<String>();
+            List<String> result1 = new List<String>();
+            bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation');
+            myset1.addAll(bypassFunctionKeys);
+            result1.addAll(myset1);
+            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
+            // 14285 Indira - end
             List<ChannelProgram> cpList = new List<ChannelProgram>();
             ChannelProgram ccfCp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', false);
             ChannelProgram dcfCp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.DCF_PROGRAM,'Data Center CoMarketing Fund', false);
@@ -217,7 +226,7 @@ public class Core_MDF_IUPGM_InActive_Batch_Test {
             IPAiupgm7.Core_MDF_All_Budget_Type_Access_Ind__c = true;
             iupgmList.add(IPAiupgm7);
             
-            insert iupgmList;
+              insert iupgmList; 
             
         }
     }

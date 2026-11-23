@@ -9,6 +9,46 @@
         <value>PIC Review Questions</value>
     </caseValues>
     <fields>
+        <label><!-- AI Question --></label>
+        <name>Core_MDF_AI_Question_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- AI Response Logic --></label>
+        <name>Core_MDF_AI_Response_Logic__c</name>
+        <picklistValues>
+            <masterLabel>AMOUNT CONSISTENCY</masterLabel>
+            <translation><!-- AMOUNT CONSISTENCY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AND</masterLabel>
+            <translation><!-- AND --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CURRENCY CONSISTENCY</masterLabel>
+            <translation><!-- CURRENCY CONSISTENCY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IF ALL FALSE</masterLabel>
+            <translation><!-- IF ALL FALSE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OR</masterLabel>
+            <translation><!-- OR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VALIDATE IF WITH TAX AMOUNT REIMBURSED</masterLabel>
+            <translation><!-- VALIDATE IF WITH TAX AMOUNT REIMBURSED --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VALIDATE WITH CLAIM AMOUNT</masterLabel>
+            <translation><!-- VALIDATE WITH CLAIM AMOUNT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VALIDATE WITH CLAIM CURRENCY</masterLabel>
+            <translation><!-- VALIDATE WITH CLAIM CURRENCY --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Applicable to All Budget Types --></label>
         <name>Core_MDF_All_Budget_Types_Ind__c</name>
     </fields>
@@ -27,6 +67,10 @@
     <fields>
         <label><!-- Effective Date --></label>
         <name>Core_MDF_EffectiveDate_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Has AI Question --></label>
+        <name>Core_MDF_Has_AI_Question_ind__c</name>
     </fields>
     <fields>
         <label><!-- Ineffective Date --></label>
@@ -89,7 +133,7 @@
         <name>Core_MDF_Issue_en_US_External_4_txt__c</name>
     </fields>
     <fields>
-        <label><!-- Issue(External) --></label>
+        <label><!-- Issue (External) --></label>
         <name>Core_MDF_Issue_en_US_External_txt__c</name>
     </fields>
     <fields>
@@ -297,6 +341,10 @@
             <translation><!-- Proof of Execution --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Sub Question (Test Amey)</masterLabel>
+            <translation><!-- Sub Question (Test Amey) --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Third Party</masterLabel>
             <translation><!-- Third Party --></translation>
         </picklistValues>
@@ -356,6 +404,10 @@
     <fields>
         <label><!-- Third Party Indicator --></label>
         <name>Core_MDF_Third_Party_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- test report long field --></label>
+        <name>test_report_long_field__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

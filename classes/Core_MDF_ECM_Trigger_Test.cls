@@ -28,7 +28,7 @@ public class Core_MDF_ECM_Trigger_Test {
         System.runAs(usr){
             
             
-        	
+            
             
             ChannelProgram ccfCp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
             
@@ -39,7 +39,8 @@ public class Core_MDF_ECM_Trigger_Test {
             Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
             Account accCCF = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test CCF Account', ccfCp.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, acc1.Id, true);
             Account acc2 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 2', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
-
+            // Highlight: Unused Local Variable - 14285
+            //Account accDCF = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test DCF Account', dcfCp.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, acc2.Id, true);
             //Profile ccpCoreAccessProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access'];
             PermissionSet submitterPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Acct_Mgr' LIMIT 1];
             
@@ -83,7 +84,8 @@ public class Core_MDF_ECM_Trigger_Test {
             iupgm.Core_MDF_User_id__c = exptSubmitter.Id;
             iupgm.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Internal_CCF_Acct_Mgr';
             iupgm.Core_MDF_All_Accounts_cd__c = 'No';
-            insert iupgm;
+
+             insert iupgm; 
             
             //Create PGM
             Core_MDF_Partner_Group_Mapping__c ccfPgm = new Core_MDF_Partner_Group_Mapping__c();
@@ -133,7 +135,7 @@ public class Core_MDF_ECM_Trigger_Test {
                 insert expt;
             }
             //adding bypass feature to bypass access validation
-			
+            
             //Create Bank
             Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(acc1.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1231231230');
             
@@ -143,7 +145,7 @@ public class Core_MDF_ECM_Trigger_Test {
                                                                                       accCCF.Id,ccfCp.Id,10000,
                                                                                       System.today() -20,System.today().addDays(40), 
                                                                                       false);
-            budget.Core_MDF_Budget_Type_Txt__c = 'OEM CMP';
+            budget.Core_MDF_Budget_Type_Txt__c = 'OEM CMP'; // 14285 Indira 
             insert budget;
             
             //Create Allocation
@@ -154,7 +156,7 @@ public class Core_MDF_ECM_Trigger_Test {
                                                                         Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 
                                                                         'Client CoMarketing Fund', System.today(), System.today().addDays(15), 
                                                                         10000, 'Always Connected PC', accCCF.Id,'Desktop', true); 
-            //camp.Core_MDF_Reimbursement_Rate__c = '25%';
+            camp.Core_MDF_Reimbursement_Rate__c = '25%';
             update camp;
             
             Test.startTest();
@@ -275,10 +277,10 @@ public class Core_MDF_ECM_Trigger_Test {
                                                   FROM Core_MDF_Exception_Case_Mapping__c 
                                                   WHERE Core_MDF_Case_id__c =:cs.Id  
                                                   AND Core_MDF_Exception_id__c=:expt.Id];
-     	
+        
         Core_MDF_ProgramGeoGroupMap__mdt metaRec = [SELECT Core_MDF_Group_Name__c, Core_MDF_Group_Name_RO__c, Core_MDF_Program__c,Core_MDF_Region__c,Core_MDF_Sub_Region__c
-                                                  	 From Core_MDF_ProgramGeoGroupMap__mdt
-                                                  	 WHERE Core_MDF_Region__c = :'APJ'
+                                                     From Core_MDF_ProgramGeoGroupMap__mdt
+                                                     WHERE Core_MDF_Region__c = :'APJ'
                                                      AND Core_MDF_Program__c = : 'Client Co-Marketing Fund'];
                 
         Boolean isAPJShared = false;

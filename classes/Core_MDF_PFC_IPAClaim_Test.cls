@@ -71,7 +71,8 @@ public class Core_MDF_PFC_IPAClaim_Test {
         List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
         
         ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Intel Partner Alliance','Intel Partner Alliance', true);
-        Id campaign_RecordType_IPA = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
+       // Highlight: Unused Local Variable 
+       // Id campaign_RecordType_IPA = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
         PermissionSet IPAPayAdmPS = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_IPA_Payment_Adm' LIMIT 1];
         
         // Creating a map of profile name and profile Id
@@ -95,7 +96,8 @@ public class Core_MDF_PFC_IPAClaim_Test {
         }
         
         Id acctRecord_Type = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Core_Partner_Account_Group').getRecordTypeId();
-        Id IPABudgetCapRecord_Type = Schema.SObjectType.Core_MDF_Budget_Cap__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_Budget_Type_Cap').getRecordTypeId();
+        // Highlight: Unused Local Variable
+        // Id IPABudgetCapRecord_Type = Schema.SObjectType.Core_MDF_Budget_Cap__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_Budget_Type_Cap').getRecordTypeId();
         Account acc = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test IPA Accounttest', acctRecord_Type, false);
         acc.Core_MDF_CoMarketingActive__c = false;
         insert acc;
@@ -153,7 +155,7 @@ public class Core_MDF_PFC_IPAClaim_Test {
         PartnerFundAllocation pfa = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('allocation',budget,acc2, 100000,true);
         
         Campaign camp = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test IPA Camp',acc2.Id, System.today().addDays(-2), System.today().addDays(300),budgetType,
-                                                                           1234.00, 'AFGHANISTAN','Consumer','Coffee Lake','Planned', false);
+                                                                           1234.00, 'AFGHANISTAN','Consumer','','Planned', false);
         camp.Core_MDF_Region_cd__c = 'APJ';
         camp.Core_MDF_Budget_Type_txt__c = budgetType;
         camp.Core_MDF_Budget__c = budget.Id;
@@ -209,8 +211,8 @@ public class Core_MDF_PFC_IPAClaim_Test {
         
         Core_MDF_CCP_TestDataUtility.insertCurrencyExchangeRates();        
         Test.stopTest();
-        
-        List<Core_MDF_Bank__c> listBank = new List<Core_MDF_Bank__c>();
+       // Highlight: Unused Local Variable
+       // List<Core_MDF_Bank__c> listBank = new List<Core_MDF_Bank__c>();
         
         Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(acc1.Id, 'Core_MDF_Intel_Partner_Alliance', false,'1231231230');
         bank.Core_MDF_Intel_Company_Code__c = '650';
@@ -229,7 +231,8 @@ public class Core_MDF_PFC_IPAClaim_Test {
         }
         
         //Do Account Bank Mapping for 'bank' and ABM 
-        Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc2.Id,bank.Id,true);
+       // Highlight: Unused Local Variable
+       // Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc2.Id,bank.Id,true);
         //Database.insert(abm1);
         
         
@@ -255,9 +258,10 @@ public class Core_MDF_PFC_IPAClaim_Test {
                 
                 List<Campaign> campToBeUpdated = new List<Campaign>();
                 campToBeUpdated.add(camp);
-                List<PartnerFundRequest> pfrToBeUpdated = new List<PartnerFundRequest>();
-                
-                Id recordtype = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_ProposalBased').getRecordTypeId(); 
+                // Highlight: Unused Local Variable
+               // List<PartnerFundRequest> pfrToBeUpdated = new List<PartnerFundRequest>();
+               // Highlight: Unused Local Variable
+               // Id recordtype = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_ProposalBased').getRecordTypeId(); 
                 
                 
                 
@@ -323,6 +327,9 @@ public class Core_MDF_PFC_IPAClaim_Test {
                 
                 system.debug('pfr.Idpfr.Id'+pfr.Id);
                 system.debug('claim1.Idclaim1.Id'+claim1.Id);
+                // Unit Test Method should include System.Assert 
+               System.assertEquals(5, claimAttrList.size(), 'Should have 5 claim attributes');
+
                 
                 /*POP mandatory for IPA*/
                 List<String> documentIdWithTitle = new List<String>();
@@ -417,18 +424,19 @@ public class Core_MDF_PFC_IPAClaim_Test {
                 PartnerFundRequest pfr = [Select id,Core_MDF_Fund_Request_Status__c,Core_MDF_Start_Date__c,Core_MDF_End_Date__c from PartnerFundRequest where CampaignId=:camp.Id];
                 pfr.Core_MDF_Reimbursement_Rate_pct__c ='100%';
                 database.update(pfr);
-                
-                List<Campaign> campToBeUpdated = new List<Campaign>();
-                List<PartnerFundRequest> pfrToBeUpdated = new List<PartnerFundRequest>();
+                // Highlight: Unused Local Variable 
+               // List<Campaign> campToBeUpdated = new List<Campaign>();
+               // List<PartnerFundRequest> pfrToBeUpdated = new List<PartnerFundRequest>();
                 List<PartnerFundClaim> pfc = new List<PartnerFundClaim>();
-                Id recordtype = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_ProposalBased').getRecordTypeId(); 
+                // Highlight: Unused Local Variable
+               // Id recordtype = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_ProposalBased').getRecordTypeId(); 
                 
                 
                 
                 PartnerMarketingBudget pmb = [Select id,Title, Description, Core_MDF_Budget_Status__c, StartDate, EndDate, Amount, Core_MDF_Budget_Type_Txt__c,
                                               Core_MDF_Budget_Partner__c,Core_MDF_Program__c, RecordTypeId, IsIgnoreValidation From PartnerMarketingBudget where Id = :camp.Core_MDF_Budget__c];
-                
-                PartnerFundAllocation pfa = [Select Id, ChannelPartnerId, Amount from PartnerFundAllocation where BudgetId = :pmb.Id]; 
+                // Highlight: Unused Local Variable
+               // PartnerFundAllocation pfa = [Select Id, ChannelPartnerId, Amount from PartnerFundAllocation where BudgetId = :pmb.Id]; 
                 
                 Core_MDF_Bank__c bank1 = [Select Id from Core_MDF_Bank__c where Core_MDF_Bank_Alias_Name__c='Test' limit 1];
                 
@@ -519,10 +527,12 @@ public class Core_MDF_PFC_IPAClaim_Test {
                 pfr.Core_MDF_Reimbursement_Rate_pct__c ='100%';
                 database.update(pfr);*/
                 
-                List<Campaign> campToBeUpdated = new List<Campaign>();
-                List<PartnerFundRequest> pfrToBeUpdated = new List<PartnerFundRequest>();
+                // Highlight: Unused Local Variable
+               // List<Campaign> campToBeUpdated = new List<Campaign>();
+              //  List<PartnerFundRequest> pfrToBeUpdated = new List<PartnerFundRequest>();
                 List<PartnerFundClaim> pfc = new List<PartnerFundClaim>();
-                Id recordtype = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_ProposalBased').getRecordTypeId(); 
+                // Highlight: Unused Local Variable 
+               // Id recordtype = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_ProposalBased').getRecordTypeId(); 
                 
                 
                 

@@ -7,19 +7,19 @@
         <field>CUST_NAME</field>
     </columns>
     <columns>
-        <field>Core_IPS_Question__c.Core_IPS_Question__c</field>
-    </columns>
-    <columns>
         <field>Core_IPS_Question__c.Core_IPS_Reporting_Name__c</field>
     </columns>
     <columns>
-        <field>Core_IPS_Question__c.Core_IPS_Add_to_Reporting__c</field>
+        <field>Core_IPS_Question__c.Core_IPS_Datatype__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Question__c.Core_IPS_Question__c</field>
     </columns>
     <columns>
         <field>Core_IPS_Question__c.Core_IPS_Order_No__c</field>
     </columns>
     <columns>
-        <field>Core_IPS_Question__c.Core_IPS_Datatype__c</field>
+        <field>Core_IPS_Question__c.Core_IPS_Survey_Type__c</field>
     </columns>
     <columns>
         <field>Core_IPS_Question__c.Core_IPS_Required__c</field>
@@ -31,24 +31,22 @@
         <field>Core_IPS_Question__c.Core_IPS_Parent_Question__c</field>
     </columns>
     <columns>
-        <field>Core_IPS_Question__c.Core_IPS_Environment_Detail_Answer__c</field>
-    </columns>
-    <columns>
-        <field>Core_IPS_Question__c.Core_IPS_Answer_Count__c</field>
-    </columns>
-    <columns>
         <field>FK_$Core_IPS_Product_Organization__c.Core_IPS_Support_Org_Name__c</field>
     </columns>
-    <columns>
-        <field>Core_IPS_Question__c.Core_IPS_Survey_Type__c</field>
-    </columns>
     <filter>
+        <criteriaItems>
+            <column>Core_IPS_Question__c.Core_IPS_Add_to_Reporting__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
         <criteriaItems>
             <column>FK_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Org-005</value>
+            <operator>notEqual</operator>
+            <value>Org-000</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

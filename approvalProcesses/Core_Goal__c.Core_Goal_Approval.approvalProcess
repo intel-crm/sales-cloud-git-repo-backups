@@ -9,6 +9,7 @@
         <field>Name</field>
         <field>Owner</field>
         <field>Core_Goal_BU_Focus_Area__c</field>
+        <field>Core_Goal_Match_Opportunity_KPI__c</field>
         <field>Core_Goal_Claim_Date__c</field>
         <field>Core_Goal_Status__c</field>
         <field>Core_Goal_Oppty_Account_Name__c</field>
@@ -40,10 +41,10 @@
         <label>Approve Goal</label>
         <name>Approve_Goal</name>
     </approvalStep>
-    <emailTemplate>Testt/Core_Goal_Approval_Email</emailTemplate>
+    <emailTemplate>test_m/Core_Goal_Approval_Email</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
-        <formula>ISPICKVAL(Core_Goal_Status__c, &apos;Accepted&apos;) &amp;&amp; Core_Goal_Opportunity_Identified__c = TRUE &amp;&amp; 
+        <formula>ISPICKVAL(Core_Goal_Status__c, &apos;Accepted&apos;) &amp;&amp; Core_Goal_Opportunity_Identified__c = TRUE &amp;&amp;
 (Core_Bypass_Submission__c=TRUE || (Core_Goal_KPI_Achieved_Flag__c = TRUE &amp;&amp;
 Core_Goal_KPI_Match_Flag__c = TRUE)
 )</formula>
@@ -55,10 +56,6 @@ Core_Goal_KPI_Match_Flag__c = TRUE)
         </action>
         <action>
             <name>Core_Goal_Set_Approved_Date_to_Today</name>
-            <type>FieldUpdate</type>
-        </action>
-        <action>
-            <name>Core_Goal_Set_Approved_KPI_Revenue</name>
             <type>FieldUpdate</type>
         </action>
         <action>

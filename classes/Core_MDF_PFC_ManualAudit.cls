@@ -42,7 +42,7 @@ Accenture - JB      12/14/2022  Post Payment changes
     
     @AuraEnabled
     public static manualAuditWrapper isClaimEligibleForManualAudit(Id claimId){
-       	manualAuditWrapper auditWrap = new manualAuditWrapper(); 
+        manualAuditWrapper auditWrap = new manualAuditWrapper(); 
         auditWrap.isPICReviewCompleted = false;
         try{
             string message = null;
@@ -50,7 +50,7 @@ Accenture - JB      12/14/2022  Post Payment changes
             //To check if the user has access to set claims for Manual Audit
             if(!isInternalAuditUser(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ClaimEditAccessToAuditUser')))//Label.Core_MDF_ClaimEditAccessToAuditUser
             {
-                auditWrap.message = Label.Core_MDF_Manual_Audit_Access_Error;
+                auditWrap.message = Label.Core_MDF_Manual_Audit_Access_Error;  //You do not have sufficient permissions to perform this action.
                 return auditWrap;
             }
             else
@@ -58,12 +58,12 @@ Accenture - JB      12/14/2022  Post Payment changes
                 //Get the status in which Manually Auditing a claim is allowed
                 List<string> validStatus =  Core_MDF_CustomLabelConfig.getTextList('Core_MDF_Status_allowed_for_Manual_Audit');  //Label.Core_MDF_Status_allowed_for_Manual_Audit.split(';');
                 //  string userType = UserInfo.getUserId();
-                PartnerFundClaim claimObj = [SELECT Id, Core_MDF_PIC_review_completed__c, Core_MDF_Manaul_Audit_Staging_Ind__c, Core_MDF_Type_Txt__c, Core_MDF_Status__c, Core_MDF_Audit_Hold__c, Core_MDF_FlaggedForAudit__c FROM PartnerFundClaim where Id = :claimId];
+                PartnerFundClaim claimObj = [SELECT Id, Core_MDF_PIC_review_completed__c, Core_MDF_Manaul_Audit_Staging_Ind__c, Core_MDF_Type_Txt__c, Core_MDF_Status__c, Core_MDF_Audit_Hold__c, Core_MDF_FlaggedForAudit__c, Core_MDF_Program__c FROM PartnerFundClaim where Id = :claimId];
                 //check claim type
                 if(Core_MDF_Claim_Utility.isType(claimObj, Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Claim_Adjustment_Type')))
                 {
                     auditWrap.isPICReviewCompleted = claimObj.Core_MDF_PIC_review_completed__c;
-                    auditWrap.message = Label.Core_MDF_Negative_Claim_Error;
+                    auditWrap.message = Label.Core_MDF_Negative_Claim_Error;  //This action is not allowed on an Adjustment
                     return auditWrap;
                 }else{
                     //set the claimEligibleForAudit to true only if user has edit access and the status is one of the allowed statuses.
@@ -78,21 +78,21 @@ Accenture - JB      12/14/2022  Post Payment changes
                         if(claimObj.Core_MDF_FlaggedForAudit__c)
                         {
                             auditWrap.isPICReviewCompleted = claimObj.Core_MDF_PIC_review_completed__c;
-                    		auditWrap.message = Label.Core_MDF_Claim_Reviewed_Previously;
+                            auditWrap.message = Label.Core_MDF_Claim_Reviewed_Previously;  //Claim has been reviewed previously and cannot be selected for audit again
                             return auditWrap;
                         }
                         // Checking if claim is already selected for manual audit when a claim is in Document hold
                         else if(claimObj.Core_MDF_Manaul_Audit_Staging_Ind__c)
                         {
                             auditWrap.isPICReviewCompleted = claimObj.Core_MDF_PIC_review_completed__c;
-                    		auditWrap.message = Label.Core_MDF_ClaimIsAlreadyOnManualHoldMsg;
+                            auditWrap.message = Label.Core_MDF_ClaimIsAlreadyOnManualHoldMsg;  //Claim is already under Manual Audit.
                             return auditWrap;
                         }
                         else
                         {
                             claimEligibleForAudit =  true;
                             auditWrap.isPICReviewCompleted = claimObj.Core_MDF_PIC_review_completed__c;
-                    		auditWrap.message = Label.Core_MDF_Success;
+                            auditWrap.message = Label.Core_MDF_Success;  //Success
                             return auditWrap;
                         }
                     }
@@ -101,7 +101,7 @@ Accenture - JB      12/14/2022  Post Payment changes
                 
             }
             //If the claim is not a valid status
-            auditWrap.message = Label.Core_MDF_Claim_Cannot_be_set_for_Manual_Audit;
+            auditWrap.message = Label.Core_MDF_Claim_Cannot_be_set_for_Manual_Audit;  //Claim is not eligible for manual selection of audit due to its current status.
             return auditWrap;
         }
         catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e); throw e;}
@@ -130,18 +130,21 @@ Accenture - JB      12/14/2022  Post Payment changes
             Map<Id, PartnerFundClaim> claimsMap = new Map<Id, PartnerFundClaim>([SELECT Id, ChannelPartnerId, Core_MDF_PIC_review_completed__c,
                                                                                 Core_MDF_Manaul_Audit_Staging_Ind__c, Core_MDF_Status__c, Core_MDF_Claim_Previous_Status__c,
                                                                                 Core_MDF_Audit_Hold__c, Core_MDF_FlaggedForAudit__c, Core_MDF_Program__c,
-                                                                                Core_MDF_Budget_Type_Options_Nm__c, Core_MDF_Legacy_Claim_Ind__c, Core_MDF_Eligible_for_PIC__c
-                                                                                FROM PartnerFundClaim WHERE Id = :claimIdList]);
+                                                                                Core_MDF_Budget_Type_Options_Nm__c, Core_MDF_Legacy_Claim_Ind__c, Core_MDF_Eligible_for_PIC__c,Request.Core_MDF_Is_Outcome_Based_Ind__c
+                                                                                FROM PartnerFundClaim WHERE Id = :claimIdList]); //Pic-Pop Changes Anushya
 
             List<PartnerFundClaim> claimToBeAudited = new List<PartnerFundClaim>();
             Set<Id> accountIds = new Set<Id>();
-
-            if(!claimsMap.isEmpty()){
+            //ATHR - Deeply Nested if 16209
+            if (claimsMap.isEmpty()) return success;
+            //if(!claimsMap.isEmpty()){
                 //To check the documents are uploaded for a Claim
                 Map<Id,Boolean> claimIdToDocuemntStatusMap = Core_MDF_Audit_Rules_Processing.checkPOPDocuments(new List<Id>(claimsMap.keySet()));
 
                 for(PartnerFundClaim claim : claimsMap.values()){
-                    if(validStatus.contains(string.valueof(claim.Core_MDF_Status__c))){
+                    //ATHR - Deeply Nested if 16209
+                    if(!validStatus.contains(string.valueof(claim.Core_MDF_Status__c))) continue;
+                    //if(validStatus.contains(string.valueof(claim.Core_MDF_Status__c))){
 
                         //Only for Legacy Claims when PIC Review is not Completed
                         if(!claim.Core_MDF_PIC_review_completed__c  && claim.Core_MDF_Legacy_Claim_Ind__c){
@@ -164,6 +167,7 @@ Accenture - JB      12/14/2022  Post Payment changes
                         //For Non-legacy, update the Audit hold flag.
                         //For Legacy, update Audit hold flag only if it completed the PIC Review
                         if(!claim.Core_MDF_Legacy_Claim_Ind__c || claim.Core_MDF_PIC_review_completed__c){
+                            system.debug('here@@@');
                             claim.Core_MDF_Audit_Type__c = rowCauseManual; //Label.Core_MDF_Manual_Audit_Type;
                             claim.Core_MDF_FlaggedForAudit__c = true; 
                             claim.Core_MDF_Audit_Hold__c = true;
@@ -171,12 +175,14 @@ Accenture - JB      12/14/2022  Post Payment changes
 
                         claim.Core_MDF_Eligible_for_PIC__c = true;
                         claimToBeAudited.add(claim);
-                    }
+                    //}
                     
                 }
+            //}
+            //ATHR - Deeply Nested if 16209
+            if (!claimToBeAudited.isEmpty()) {
+                Database.update(claimToBeAudited);
             }
-
-            Database.update(claimToBeAudited);
             
             return success;
         }

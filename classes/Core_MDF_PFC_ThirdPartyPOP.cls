@@ -65,7 +65,8 @@ public without sharing class Core_MDF_PFC_ThirdPartyPOP {
             Core_MDF_CCP_UtilityClass.logError(e); 
             return null; 
         }  
-        
+        /*wrapperThirdPartyPOP obj = new wrapperThirdPartyPOP();
+        obj.isThirdPartyPOP=true;return obj;*/
     }
     
     @AuraEnabled(cacheable=true)

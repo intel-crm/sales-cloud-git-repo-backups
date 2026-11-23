@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_MDF_BudgetTransfer_Test</testClassName>
+    <testClassName>Core_MDF_Bulk_ApprovalReqs_Batch_Test</testClassName>
+    <testClassName>Core_MDF_Bulk_Approvals_Requests_Test</testClassName>
+    <testClassName>Core_MDF_Bulk_ReleaseBankDocHold_Test</testClassName>
+    <testClassName>Core_MDF_Bulk_Transaction_Test</testClassName>
+    <testClassName>Core_MDF_BulkClaimServerController_Test</testClassName>
+    <testClassName>Core_MDF_BulkPOPUploadController_Test</testClassName>
+    <testClassName>Core_MDF_Campaign_QuickActionCtrlTest</testClassName>
+    <testClassName>Core_MDF_CampaignBudgetExceptionTest</testClassName>
+    <testClassName>Core_MDF_CampaignCreatePageTest</testClassName>
+    <testClassName>Core_MDF_CampaignPFR_Controller_Test</testClassName>
+    <testClassName>Core_MDF_CCP_GenericUtility_Test</testClassName>
+    <testClassName>Core_MDF_CCP_Multicurrency_Test</testClassName>
+    <testClassName>Core_MDF_CCPAccount_Onboard_Test</testClassName>
+    <testClassName>Core_MDF_Claim_Prediction_Subscribe_Test</testClassName>
+    <testClassName>Core_MDF_Claim_Utility_Test</testClassName>
+    <testClassName>Core_MDF_ClaimActivityHelper_Test</testClassName>
+    <testClassName>Core_MDF_ClaimReviewCaseProcess_Test</testClassName>
+    <testClassName>Core_MDF_ClaimReviewCaseShare_Test</testClassName>
+    <testClassName>Core_MDF_ClaimReviewChecklist_Test</testClassName>
+    <testClassName>Core_MDF_ClaimsAutoClosureBatch_Test</testClassName>
+    <testClassName>Core_MDF_ClaimSelectionForAudit_Test</testClassName>
+</ApexTestSuite>

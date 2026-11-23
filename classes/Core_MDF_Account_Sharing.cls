@@ -30,6 +30,7 @@ Modified By:        Date:       Changes:
 *****************************************************************************************************/
     @InvocableMethod
     public static void invokeAccountShareRecordToGeoGroup(List<Account> listOfAccounts){
+        System.debug('listOfAccounts---'+listOfAccounts);
         //list for channel program share records
         List<Core_MDF_RecordGeoShare> accountshareList= new List<Core_MDF_RecordGeoShare>();
         List<Core_MDF_RecordPGMShareWrapper> recordPGMShareList= new List<Core_MDF_RecordPGMShareWrapper>();
@@ -41,6 +42,7 @@ Modified By:        Date:       Changes:
         List<AccountShare> accShareListToBeDlt = new List<AccountShare>();
         Savepoint sp = Database.setSavepoint();
         try{
+            shareWithExternalCoMarketingCreators(listOfAccounts);
             //To Save Values of ProgramID and Program Name for Each Program in Map
             if(metadataRecordsList!=null && metadataRecordsList.size()>0){
                 for (Core_MDF_ChannelProgram__mdt metadataRec : metadataRecordsList){
@@ -60,9 +62,11 @@ Modified By:        Date:       Changes:
                             recordPGMShareList.add(new Core_MDF_RecordPGMShareWrapper(acc.ID,acc.Core_Geo__c,acc.Core_Sub_Geo__c,channelProgramIDToNameMap.get(acc.Core_MDF_Channel_Program__c),acc.Core_MDF_CoMarketing_Ultimate_Account__c));
                         }
                     }
-                }  
+                }
              //   }  
            // }
+            System.debug('accountshareList---'+accountshareList);
+            System.debug('recordPGMShareList---'+recordPGMShareList);
             /*if(accIdList != NULL && accIdList.size()>0){
                 accShareListToBeDlt = [SELECT Id, AccountId, UserOrGroupId, UserOrGroup.name FROM AccountShare WHERE AccountId IN : accIdList AND RowCause =: Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_RowCause_Manual') AND (NOT UserOrGroup.name LIKE '%EXT%')];
             }
@@ -77,5 +81,38 @@ Modified By:        Date:       Changes:
                 Core_MDF_CCP_GenericUtility.createShareRecForInternalPGMgrps('Account', recordPGMShareList);
             }
         }catch(Exception e) {Core_MDF_CCP_UtilityClass.logError(e); Database.rollback(sp); throw e;}
-    }    
+    }
+	//TWC3117-19096
+    private static void shareWithExternalCoMarketingCreators(List<Account> listOfAccounts) {
+        if (listOfAccounts == null || listOfAccounts.isEmpty()) {
+            return;
+        }
+		Map<Id, Id> creatorByAccountId = new Map<Id, Id>();
+        for (Account accountRecord : listOfAccounts){
+			if (accountRecord.OwnerId != accountRecord.CreatedById) {
+                creatorByAccountId.put(accountRecord.Id, accountRecord.CreatedById);
+            }
+        }
+
+        if (creatorByAccountId.isEmpty()) {
+            return;
+        }
+
+        List<AccountShare> sharesToInsert = new List<AccountShare>();
+        for (Id accountId : creatorByAccountId.keySet()) {
+            Id creatorId = creatorByAccountId.get(accountId);
+                sharesToInsert.add(new AccountShare(
+                    AccountId = accountId,
+                    UserOrGroupId = creatorId,
+                    AccountAccessLevel = 'Read',
+                    OpportunityAccessLevel = 'None',
+                    CaseAccessLevel = 'None',
+                    RowCause = Schema.AccountShare.RowCause.Manual
+                ));
+        }
+
+        if (!sharesToInsert.isEmpty()) {
+            insert sharesToInsert;
+        }
+    }
 }

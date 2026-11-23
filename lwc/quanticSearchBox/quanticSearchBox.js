@@ -2,10 +2,11 @@ import {LightningElement, api, track} from 'lwc';
 import {
   registerComponentForInit,
   initializeWithHeadless,
-  getHeadlessBundle
+  getHeadlessBundle,
 } from 'c/quanticHeadlessLoader';
 
 import {keys} from 'c/quanticUtils';
+
 import search from '@salesforce/label/c.quantic_Search';
 import clear from '@salesforce/label/c.quantic_Clear';
 
@@ -71,14 +72,11 @@ export default class QuanticSearchBox extends LightningElement {
   headless;
   /** @type {Array} */
   suggestions = [];
-  
-  @api subject;
 
   /**
    * @param {SearchEngine} engine
    */
-  
-   initialize = (engine) => {
+  initialize = (engine) => {
     this.headless = getHeadlessBundle(this.engineId);
     this.searchBox = this.headless.buildSearchBox(engine, {
       options: {
@@ -102,23 +100,8 @@ export default class QuanticSearchBox extends LightningElement {
     );
   }
 
-  searchBoxElement;
   renderedCallback() {
     initializeWithHeadless(this, this.engineId, this.initialize);
-    this.searchBoxElement = this.template.querySelectorAll('.slds-input.searchbox__input.searchbox__input-with-button')[0];
-    if(!this.isOnfocus){
-      this.searchBoxElement.placeholder = this.subject;
-
-      if(this.input.value){
-      sessionStorage.setItem('coveoDescription',this.input.value);
-      } else {
-        sessionStorage.setItem('coveoDescription',this.subject);
-
-      }
-    }
-     // if(this.input.value == '' || this.input.value == null || this.input.value== undefined){
-     // sessionStorage.setItem('coveoDescription',this.subject);
-     // }
   }
 
   disconnectedCallback() {
@@ -132,7 +115,6 @@ export default class QuanticSearchBox extends LightningElement {
   updateState() {
     if (this.state?.value !== this.searchBox.state.value) {
       this.input.value = this.searchBox.state.value;
-      
     }
     this.state = this.searchBox.state;
     this.suggestions =
@@ -141,17 +123,6 @@ export default class QuanticSearchBox extends LightningElement {
         rawValue: s.rawValue,
         value: s.highlightedValue,
       })) ?? [];
-  }
-    get hasSuggestions() {
-    return this.state?.suggestions?.length;
-  }
-
-  get suggestions() {
-    return this.searchBox?.state.suggestions.map((s, index) => ({
-      key: index,
-      rawValue: s.rawValue,
-      value: s.highlightedValue,
-    })) ?? [];
   }
 
   /**
@@ -217,12 +188,9 @@ export default class QuanticSearchBox extends LightningElement {
   handleHighlightChange(event) {
     const suggestion = event.detail;
     this.input.value = suggestion.rawValue;
-    
   }
 
   handleEnter() {
-    sessionStorage.setItem('coveoDescription',this.input.value);
-  this.isOnfocus = false;
     const selectedSuggestion = this.suggestionList?.getCurrentSelectedValue();
     if (this.suggestionsOpen && selectedSuggestion) {
       this.searchBox.selectSuggestion(selectedSuggestion.rawValue);
@@ -231,15 +199,6 @@ export default class QuanticSearchBox extends LightningElement {
       this.searchBox.submit();
       this.input.blur();
     }
-  }
-
-
-  handleOnHover() {
-    this.template.querySelector(".slds-combobox.slds-dropdown-trigger.slds-dropdown-trigger_click").style = "border: 1px solid #262626;";
-  }
-
-  handleMouseOut() {
-    this.template.querySelector(".slds-combobox.slds-dropdown-trigger.slds-dropdown-trigger_click").style = "border: inherit";
   }
 
   onSubmit(event) {
@@ -274,25 +233,16 @@ export default class QuanticSearchBox extends LightningElement {
     }
   }
 
-  isOnfocus = false;
   onFocus() {
-  this.isOnfocus = true;
- this.template.querySelector(".slds-current-color").style = "color: #003c71;";
-   this.template.querySelector(".slds-combobox.slds-dropdown-trigger.slds-dropdown-trigger_click").style = "border: 2px solid #262626;";
-let searchBoxElement = this.template.querySelectorAll('.slds-input.searchbox__input.searchbox__input-with-button')[0];
- searchBoxElement.placeholder = '';
     this.showSuggestions();
   }
 
   onBlur() {
     this.hideSuggestions();
- this.template.querySelector(".slds-current-color").style = "color:#0068b5;";
- this.template.querySelector(".slds-combobox.slds-dropdown-trigger.slds-dropdown-trigger_click").style = "border: inherit";
   }
 
   clearInput() {
     this.input.value = '';
-   
     this.searchBox.updateText(this.input.value);
     this.input.focus();
   }
@@ -300,7 +250,6 @@ let searchBoxElement = this.template.querySelectorAll('.slds-input.searchbox__in
   handleSuggestionSelection(event) {
     const textValue = event.detail;
     this.searchBox.selectSuggestion(textValue);
-        sessionStorage.setItem('coveoDescription',this.input.value);
     this.input.blur();
   }
 
@@ -309,5 +258,4 @@ let searchBoxElement = this.template.querySelectorAll('.slds-input.searchbox__in
     const id = event.detail;
     this.input.setAttribute('aria-controls', id);
   };
-  
 }

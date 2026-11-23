@@ -1,389 +1,673 @@
-@IsTest
+@isTest
 private class Core_MDF_RestAPI_Logger_Test {
-
-    // ============================================================
-    // logToTransactionEntry(LogRequest) tests
-    // ============================================================
-
-    @IsTest
-    static void testLogToTransactionEntry_NullRequest_NoException() {
-        Test.startTest();
-        Id result = Core_MDF_RestAPI_Logger.logToTransactionEntry(null);
-        Test.stopTest();
-
-        // If Core_RestAPI_Transaction_Entry__c exists, returns an Id; otherwise null
-        System.assert(true, 'No exception thrown for null request');
+    
+    /**
+     * Test LogRequest inner class initialization
+     */
+    @isTest
+    static void testLogRequestInitialization() {
+        Core_MDF_RestAPI_Logger.LogRequest request = new Core_MDF_RestAPI_Logger.LogRequest();
+        
+        Assert.isNotNull(request, 'LogRequest should be instantiated');
+        Assert.isNull(request.apiName, 'apiName should be null initially');
+        Assert.isNull(request.endpoint, 'endpoint should be null initially');
+        Assert.isNull(request.methodName, 'methodName should be null initially');
+        Assert.isNull(request.contextMessage, 'contextMessage should be null initially');
+        Assert.isNull(request.statusCode, 'statusCode should be null initially');
+        Assert.isNull(request.isSuccess, 'isSuccess should be null initially');
+        Assert.isNull(request.errors, 'errors should be null initially');
     }
 
-    @IsTest
-    static void testLogToTransactionEntry_SuccessRequest_NoException() {
+    /**
+     * Test LogRequest with populated fields
+     */
+    @isTest
+    static void testLogRequestWithData() {
         Core_MDF_RestAPI_Logger.LogRequest request = new Core_MDF_RestAPI_Logger.LogRequest();
-        request.apiName = 'CampaignRestAPI';
-        request.endpoint = '/v1.0/partnercenter/campaign/7010000000001AAA';
-        request.methodName = 'GET';
-        request.contextMessage = 'Campaign retrieved successfully';
+        request.apiName = 'TestAPI';
+        request.endpoint = '/api/v1/test';
+        request.methodName = 'POST';
+        request.contextMessage = 'Test message';
         request.statusCode = '200';
         request.isSuccess = true;
-        request.entryTime = System.now().addSeconds(-2);
-        request.exitTime = System.now();
         request.apiVersion = 'v1.0';
-        request.requestPayload = '{"campaignId":"7010000000001AAA"}';
-        request.responsePayload = '{"isSuccess":true}';
-        request.errors = null;
-        request.additionalFields = new Map<String, Object>{ 'Core_Status_Code__c' => '200' };
-
-        Test.startTest();
-        Core_MDF_RestAPI_Logger.logToTransactionEntry(request);
-        Test.stopTest();
-
-        System.assert(true, 'Success request logged without exception');
-    }
-
-    @IsTest
-    static void testLogToTransactionEntry_ErrorRequest_NoException() {
-        Core_MDF_RestAPI_Logger.LogRequest request = new Core_MDF_RestAPI_Logger.LogRequest();
-        request.apiName = 'CampaignRestAPI';
-        request.statusCode = '7003';
-        request.isSuccess = false;
-        request.errors = new List<String>{ 'Something went wrong', 'Secondary error' };
-        request.entryTime = System.now();
-        request.exitTime = System.now();
-
-        Test.startTest();
-        Core_MDF_RestAPI_Logger.logToTransactionEntry(request);
-        Test.stopTest();
-
-        System.assert(true, 'Error request logged without exception');
-    }
-
-    @IsTest
-    static void testLogToTransactionEntry_NullPayloads_NoException() {
-        Core_MDF_RestAPI_Logger.LogRequest request = new Core_MDF_RestAPI_Logger.LogRequest();
-        request.apiName = 'NullPayloadTest';
-        request.statusCode = '200';
-        request.isSuccess = true;
-        request.requestPayload = null;
-        request.responsePayload = null;
-        request.errors = null;
-        request.additionalFields = null;
-        request.contextMessage = null;
-
-        Test.startTest();
-        Core_MDF_RestAPI_Logger.logToTransactionEntry(request);
-        Test.stopTest();
-
-        System.assert(true, 'Null payloads handled without exception');
-    }
-
-    @IsTest
-    static void testLogToTransactionEntry_ObjectPayloads_SerializedWithoutException() {
-        Core_MDF_RestAPI_Logger.LogRequest request = new Core_MDF_RestAPI_Logger.LogRequest();
-        request.apiName = 'ObjectPayloadTest';
-        request.isSuccess = true;
-        request.statusCode = '200';
-        request.requestPayload = new Map<String, Object>{ 'campaignId' => '7010000000001', 'filter' => 'label' };
-        request.responsePayload = new List<Object>{ 'item1', 'item2' };
-
-        Test.startTest();
-        Core_MDF_RestAPI_Logger.logToTransactionEntry(request);
-        Test.stopTest();
-
-        System.assert(true, 'Object payloads serialized without exception');
-    }
-
-    @IsTest
-    static void testLogToTransactionEntry_UriWithQueryString_NoException() {
-        Core_MDF_RestAPI_Logger.LogRequest request = new Core_MDF_RestAPI_Logger.LogRequest();
-        request.apiName = 'UriQueryTest';
-        request.endpoint = '/v1.0/partnercenter/campaign/7010000000001AAA?fielddisplay=label&v=1';
-        request.isSuccess = true;
-        request.statusCode = '200';
-
-        Test.startTest();
-        Core_MDF_RestAPI_Logger.logToTransactionEntry(request);
-        Test.stopTest();
-
-        System.assert(true, 'URI with query string handled without exception');
-    }
-
-    @IsTest
-    static void testLogToTransactionEntry_VersionInUri_ExtractedWithoutException() {
-        Core_MDF_RestAPI_Logger.LogRequest request = new Core_MDF_RestAPI_Logger.LogRequest();
-        request.endpoint = '/services/apexrest/v1.0/mdf/campaign/7010000000001AAA';
-        request.isSuccess = true;
-        request.statusCode = '200';
-
-        Test.startTest();
-        Core_MDF_RestAPI_Logger.logToTransactionEntry(request);
-        Test.stopTest();
-
-        System.assert(true, 'Version extracted from URI without exception');
-    }
-
-    @IsTest
-    static void testLogToTransactionEntry_EndsWithSlash_NoIdExtracted() {
-        Core_MDF_RestAPI_Logger.LogRequest request = new Core_MDF_RestAPI_Logger.LogRequest();
-        request.endpoint = '/v1.0/partnercenter/campaign/';
-        request.isSuccess = false;
-        request.statusCode = '400';
-
-        Test.startTest();
-        Core_MDF_RestAPI_Logger.logToTransactionEntry(request);
-        Test.stopTest();
-
-        System.assert(true, 'Trailing slash in URI handled without exception');
-    }
-
-    @IsTest
-    static void testLogToTransactionEntry_EmptyErrorsList_NoException() {
-        Core_MDF_RestAPI_Logger.LogRequest request = new Core_MDF_RestAPI_Logger.LogRequest();
-        request.apiName = 'EmptyErrorsTest';
-        request.isSuccess = false;
-        request.statusCode = '7004';
+        request.requestPayload = new Map<String, Object>{'key' => 'value'};
+        request.responsePayload = new Map<String, Object>{'response' => 'success'};
         request.errors = new List<String>();
+        request.additionalFields = new Map<String, Object>();
 
-        Test.startTest();
-        Core_MDF_RestAPI_Logger.logToTransactionEntry(request);
-        Test.stopTest();
-
-        System.assert(true, 'Empty errors list handled without exception');
+        Assert.areEqual('TestAPI', request.apiName, 'apiName should match');
+        Assert.areEqual('/api/v1/test', request.endpoint, 'endpoint should match');
+        Assert.areEqual('POST', request.methodName, 'methodName should match');
+        Assert.areEqual('Test message', request.contextMessage, 'contextMessage should match');
+        Assert.areEqual('200', request.statusCode, 'statusCode should match');
+        Assert.areEqual(true, request.isSuccess, 'isSuccess should be true');
+        Assert.areEqual('v1.0', request.apiVersion, 'apiVersion should match');
     }
 
-    @IsTest
-    static void testLogToTransactionEntry_AdditionalFields_AppliedWithoutException() {
+    /**
+     * Test logToTransactionEntry with null request
+     */
+    @isTest
+    static void testLogToTransactionEntryWithNullRequest() {
+        Test.startTest();
+        Id resultId = Core_MDF_RestAPI_Logger.logToTransactionEntry(null);
+        Test.stopTest();
+
+        // Should handle null gracefully
+        Assert.isNull(resultId, 'Result should be null for null request');
+    }
+
+    /**
+     * Test logToTransactionEntry with valid LogRequest
+     */
+    @isTest
+    static void testLogToTransactionEntryWithValidRequest() {
         Core_MDF_RestAPI_Logger.LogRequest request = new Core_MDF_RestAPI_Logger.LogRequest();
-        request.apiName = 'AdditionalFieldsTest';
+        request.apiName = 'TestAPIv2';
+        request.endpoint = '/api/v2/users';
+        request.methodName = 'GET';
+        request.contextMessage = 'Fetching user data';
+        request.statusCode = '200';
+        request.isSuccess = true;
+        request.apiVersion = 'v2.0';
+        request.requestPayload = '{"userId": "12345"}';
+        request.responsePayload = '{"user": "John"}';
+        request.errors = new List<String>();
+        request.entryTime = System.now();
+        request.exitTime = System.now().addSeconds(2);
+
+        Test.startTest();
+        // This test verifies the method doesn't throw an exception
+        try {
+            Core_MDF_RestAPI_Logger.logToTransactionEntry(request);
+            Assert.isTrue(true, 'logToTransactionEntry should execute without exception');
+        } catch (Exception e) {
+            Assert.fail('logToTransactionEntry should not throw exception: ' + e.getMessage());
+        }
+        Test.stopTest();
+    }
+
+    /**
+     * Test overloaded logToTransactionEntry with parameters
+     */
+    @isTest
+    static void testLogToTransactionEntryWithParameters() {
+        String apiName = 'ParameterTestAPI';
+        Object requestPayload = new Map<String, Object>{'request' => 'data'};
+        Object responsePayload = new Map<String, Object>{'response' => 'data'};
+        String statusCode = '201';
+        Boolean isSuccess = true;
+        List<String> errors = new List<String>();
+
+        Test.startTest();
+        try {
+            Core_MDF_RestAPI_Logger.logToTransactionEntry(
+                apiName,
+                requestPayload,
+                responsePayload,
+                statusCode,
+                isSuccess,
+                errors
+            );
+            Assert.isTrue(true, 'Overloaded logToTransactionEntry should execute without exception');
+        } catch (Exception e) {
+            Assert.fail('Overloaded logToTransactionEntry should not throw exception: ' + e.getMessage());
+        }
+        Test.stopTest();
+    }
+
+    /**
+     * Test overloaded logToTransactionEntry with error status
+     */
+    @isTest
+    static void testLogToTransactionEntryWithErrorStatus() {
+        String apiName = 'ErrorTestAPI';
+        Object requestPayload = '{"test": "request"}';
+        Object responsePayload = '{"error": "Not found"}';
+        String statusCode = '404';
+        Boolean isSuccess = false;
+        List<String> errors = new List<String>{'Resource not found', 'Invalid ID'};
+
+        Test.startTest();
+        try {
+            Core_MDF_RestAPI_Logger.logToTransactionEntry(
+                apiName,
+                requestPayload,
+                responsePayload,
+                statusCode,
+                isSuccess,
+                errors
+            );
+            Assert.isTrue(true, 'Method should handle error status');
+        } catch (Exception e) {
+            Assert.fail('Method should not throw exception for error status: ' + e.getMessage());
+        }
+        Test.stopTest();
+    }
+
+    /**
+     * Test logFromRestContext
+     */
+    @isTest
+    static void testLogFromRestContext() {
+        String apiName = 'RestContextAPI';
+        Object responsePayload = new Map<String, Object>{'status' => 'success'};
+        String statusCode = '200';
+        Boolean isSuccess = true;
+        List<String> errors = new List<String>();
+        String contextMessage = 'REST API call successful';
+
+        Test.startTest();
+        try {
+            Core_MDF_RestAPI_Logger.logFromRestContext(
+                apiName,
+                responsePayload,
+                statusCode,
+                isSuccess,
+                errors,
+                contextMessage
+            );
+            Assert.isTrue(true, 'logFromRestContext should execute without exception');
+        } catch (Exception e) {
+            Assert.fail('logFromRestContext should not throw exception: ' + e.getMessage());
+        }
+        Test.stopTest();
+    }
+
+    /**
+     * Test logFromRestContext with errors
+     */
+    @isTest
+    static void testLogFromRestContextWithErrors() {
+        String apiName = 'RestContextErrorAPI';
+        Object responsePayload = null;
+        String statusCode = '500';
+        Boolean isSuccess = false;
+        List<String> errors = new List<String>{'Server error', 'Database connection failed'};
+        String contextMessage = 'REST API call failed';
+
+        Test.startTest();
+        try {
+            Core_MDF_RestAPI_Logger.logFromRestContext(
+                apiName,
+                responsePayload,
+                statusCode,
+                isSuccess,
+                errors,
+                contextMessage
+            );
+            Assert.isTrue(true, 'Method should handle REST context with errors');
+        } catch (Exception e) {
+            Assert.fail('Method should not throw exception: ' + e.getMessage());
+        }
+        Test.stopTest();
+    }
+
+    /**
+     * Test info logging method
+     */
+    @isTest
+    static void testInfoLogging() {
+        Test.startTest();
+        try {
+            Core_MDF_RestAPI_Logger.info('This is an info message');
+            Assert.isTrue(true, 'info() should execute without exception');
+        } catch (Exception e) {
+            Assert.fail('info() should not throw exception: ' + e.getMessage());
+        }
+        Test.stopTest();
+    }
+
+    /**
+     * Test info logging with null message
+     */
+    @isTest
+    static void testInfoLoggingWithNull() {
+        Test.startTest();
+        try {
+            Core_MDF_RestAPI_Logger.info(null);
+            Assert.isTrue(true, 'info() should handle null message');
+        } catch (Exception e) {
+            Assert.fail('info() should handle null message: ' + e.getMessage());
+        }
+        Test.stopTest();
+    }
+
+    /**
+     * Test warning logging method
+     */
+    @isTest
+    static void testWarningLogging() {
+        Test.startTest();
+        try {
+            Core_MDF_RestAPI_Logger.warning('This is a warning message');
+            Assert.isTrue(true, 'warning() should execute without exception');
+        } catch (Exception e) {
+            Assert.fail('warning() should not throw exception: ' + e.getMessage());
+        }
+        Test.stopTest();
+    }
+
+    /**
+     * Test error logging method
+     */
+    @isTest
+    static void testErrorLogging() {
+        Test.startTest();
+        try {
+            Core_MDF_RestAPI_Logger.error('This is an error message');
+            Assert.isTrue(true, 'error() should execute without exception');
+        } catch (Exception e) {
+            Assert.fail('error() should not throw exception: ' + e.getMessage());
+        }
+        Test.stopTest();
+    }
+
+    /**
+     * Test logSegmentInfo method
+     */
+    @isTest
+    static void testLogSegmentInfo() {
+        Test.startTest();
+        try {
+            Core_MDF_RestAPI_Logger.logSegmentInfo('Segment1', 'Processing segment data');
+            Assert.isTrue(true, 'logSegmentInfo() should execute without exception');
+        } catch (Exception e) {
+            Assert.fail('logSegmentInfo() should not throw exception: ' + e.getMessage());
+        }
+        Test.stopTest();
+    }
+
+    /**
+     * Test logSegmentInfo with null segment name
+     */
+    @isTest
+    static void testLogSegmentInfoWithNullSegment() {
+        Test.startTest();
+        try {
+            Core_MDF_RestAPI_Logger.logSegmentInfo(null, 'Message for null segment');
+            Assert.isTrue(true, 'logSegmentInfo() should handle null segment name');
+        } catch (Exception e) {
+            Assert.fail('logSegmentInfo() should handle null segment: ' + e.getMessage());
+        }
+        Test.stopTest();
+    }
+
+    /**
+     * Test logSegmentError method
+     */
+    @isTest
+    static void testLogSegmentError() {
+        Test.startTest();
+        try {
+            Core_MDF_RestAPI_Logger.logSegmentError('SegmentError', 'Error processing segment');
+            Assert.isTrue(true, 'logSegmentError() should execute without exception');
+        } catch (Exception e) {
+            Assert.fail('logSegmentError() should not throw exception: ' + e.getMessage());
+        }
+        Test.stopTest();
+    }
+
+    /**
+     * Test logMultiSegmentSPIF method
+     */
+    @isTest
+    static void testLogMultiSegmentSPIF() {
+        String accountId = '001xx000003DHP';
+        String program = 'TestProgram';
+        Integer segmentCount = 5;
+        Boolean isSuccess = true;
+
+        Test.startTest();
+        try {
+            Core_MDF_RestAPI_Logger.logMultiSegmentSPIF(accountId, program, segmentCount, isSuccess);
+            Assert.isTrue(true, 'logMultiSegmentSPIF() should execute without exception');
+        } catch (Exception e) {
+            Assert.fail('logMultiSegmentSPIF() should not throw exception: ' + e.getMessage());
+        }
+        Test.stopTest();
+    }
+
+    /**
+     * Test logMultiSegmentSPIF with failure status
+     */
+    @isTest
+    static void testLogMultiSegmentSPIFWithFailure() {
+        String accountId = '001xx000003DHP';
+        String program = 'FailedProgram';
+        Integer segmentCount = 3;
+        Boolean isSuccess = false;
+
+        Test.startTest();
+        try {
+            Core_MDF_RestAPI_Logger.logMultiSegmentSPIF(accountId, program, segmentCount, isSuccess);
+            Assert.isTrue(true, 'logMultiSegmentSPIF() should handle failure status');
+        } catch (Exception e) {
+            Assert.fail('logMultiSegmentSPIF() should not throw exception: ' + e.getMessage());
+        }
+        Test.stopTest();
+    }
+
+    /**
+     * Test LogRequest with complex nested objects
+     */
+    @isTest
+    static void testLogRequestWithComplexPayloads() {
+        Core_MDF_RestAPI_Logger.LogRequest request = new Core_MDF_RestAPI_Logger.LogRequest();
+        request.apiName = 'ComplexAPI';
+        request.requestPayload = new Map<String, Object>{
+            'user' => new Map<String, Object>{
+                'id' => '123',
+                'name' => 'John Doe',
+                'addresses' => new List<Object>{
+                    new Map<String, Object>{'city' => 'SF', 'zip' => '94105'},
+                    new Map<String, Object>{'city' => 'NYC', 'zip' => '10001'}
+                }
+            }
+        };
+        request.responsePayload = new List<Object>{
+            new Map<String, Object>{'status' => 'success', 'code' => '200'}
+        };
         request.isSuccess = true;
         request.statusCode = '200';
+
+        Test.startTest();
+        try {
+            Core_MDF_RestAPI_Logger.logToTransactionEntry(request);
+            Assert.isTrue(true, 'Should handle complex nested payloads');
+        } catch (Exception e) {
+            Assert.fail('Should not throw exception for complex payloads: ' + e.getMessage());
+        }
+        Test.stopTest();
+    }
+
+    /**
+     * Test LogRequest with additional fields
+     */
+    @isTest
+    static void testLogRequestWithAdditionalFields() {
+        Core_MDF_RestAPI_Logger.LogRequest request = new Core_MDF_RestAPI_Logger.LogRequest();
+        request.apiName = 'AdditionalFieldsAPI';
+        request.statusCode = '200';
+        request.isSuccess = true;
         request.additionalFields = new Map<String, Object>{
-            'Core_API_Name__c' => 'OverriddenApiName',
-            'Core_Status_Code__c' => '200'
+            'Custom_Field_1__c' => 'Custom Value 1',
+            'Custom_Field_2__c' => 'Custom Value 2',
+            'Custom_Numeric__c' => 42
         };
 
         Test.startTest();
-        Core_MDF_RestAPI_Logger.logToTransactionEntry(request);
+        try {
+            Core_MDF_RestAPI_Logger.logToTransactionEntry(request);
+            Assert.isTrue(true, 'Should handle additional custom fields');
+        } catch (Exception e) {
+            Assert.fail('Should not throw exception for additional fields: ' + e.getMessage());
+        }
         Test.stopTest();
-
-        System.assert(true, 'Additional fields applied without exception');
     }
 
-    // ============================================================
-    // logToTransactionEntry shorthand overload tests
-    // ============================================================
+    /**
+     * Test LogRequest with empty error list
+     */
+    @isTest
+    static void testLogRequestWithEmptyErrors() {
+        Core_MDF_RestAPI_Logger.LogRequest request = new Core_MDF_RestAPI_Logger.LogRequest();
+        request.apiName = 'NoErrorsAPI';
+        request.statusCode = '200';
+        request.isSuccess = true;
+        request.errors = new List<String>();
 
-    @IsTest
-    static void testLogToTransactionEntry_ShorthandOverload_SuccessWithNullErrors() {
         Test.startTest();
-        Core_MDF_RestAPI_Logger.logToTransactionEntry(
-            'CampaignAPI',
-            '{"campaignId":"001"}',
-            '{"isSuccess":true}',
-            '200',
-            true,
-            null
-        );
+        try {
+            Core_MDF_RestAPI_Logger.logToTransactionEntry(request);
+            Assert.isTrue(true, 'Should handle empty error list');
+        } catch (Exception e) {
+            Assert.fail('Should not throw exception for empty errors: ' + e.getMessage());
+        }
         Test.stopTest();
-
-        System.assert(true, 'Shorthand success log completed without exception');
     }
 
-    @IsTest
-    static void testLogToTransactionEntry_ShorthandOverload_ErrorWithErrors() {
-        Test.startTest();
-        Core_MDF_RestAPI_Logger.logToTransactionEntry(
-            'FailedAPI',
-            null,
-            null,
-            '7003',
-            false,
-            new List<String>{ 'Error occurred', 'Secondary error' }
-        );
-        Test.stopTest();
+    /**
+     * Test LogRequest with multiple errors
+     */
+    @isTest
+    static void testLogRequestWithMultipleErrors() {
+        Core_MDF_RestAPI_Logger.LogRequest request = new Core_MDF_RestAPI_Logger.LogRequest();
+        request.apiName = 'MultiErrorAPI';
+        request.statusCode = '400';
+        request.isSuccess = false;
+        request.errors = new List<String>{
+            'Validation error: Invalid email format',
+            'Validation error: Phone number too short',
+            'Validation error: Address is required'
+        };
 
-        System.assert(true, 'Shorthand error log completed without exception');
+        Test.startTest();
+        try {
+            Core_MDF_RestAPI_Logger.logToTransactionEntry(request);
+            Assert.isTrue(true, 'Should handle multiple errors');
+        } catch (Exception e) {
+            Assert.fail('Should not throw exception for multiple errors: ' + e.getMessage());
+        }
+        Test.stopTest();
     }
 
-    @IsTest
-    static void testLogToTransactionEntry_ShorthandOverload_NullApiName() {
-        Test.startTest();
-        Core_MDF_RestAPI_Logger.logToTransactionEntry(
-            null, null, null, null, true, null
-        );
-        Test.stopTest();
+    /**
+     * Test LogRequest with special characters in strings
+     */
+    @isTest
+    static void testLogRequestWithSpecialCharacters() {
+        Core_MDF_RestAPI_Logger.LogRequest request = new Core_MDF_RestAPI_Logger.LogRequest();
+        request.apiName = 'Special&Chars API';
+        request.endpoint = '/api/v1/test?param=value&other=123';
+        request.contextMessage = 'Message with "quotes" and \'apostrophes\'';
+        request.statusCode = '200';
+        request.isSuccess = true;
 
-        System.assert(true, 'Shorthand log with null apiName completed without exception');
+        Test.startTest();
+        try {
+            Core_MDF_RestAPI_Logger.logToTransactionEntry(request);
+            Assert.isTrue(true, 'Should handle special characters');
+        } catch (Exception e) {
+            Assert.fail('Should not throw exception for special characters: ' + e.getMessage());
+        }
+        Test.stopTest();
     }
 
-    // ============================================================
-    // logFromRestContext tests
-    // ============================================================
-
-    @IsTest
-    static void testLogFromRestContext_WithFullRestContext_NoException() {
-        RestRequest req = new RestRequest();
-        req.requestUri = '/services/apexrest/v1.0/mdf/campaign/7010000000001AAA';
-        req.httpMethod = 'GET';
-        req.addHeader('User-Agent', 'Test-Agent/1.0');
-        req.addHeader('Host', 'test.salesforce.com');
-        req.addHeader('X-Forwarded-For', '192.168.1.1');
-        req.requestBody = Blob.valueOf('{"test":"body"}');
-        RestContext.request = req;
-        RestContext.response = new RestResponse();
+    /**
+     * Test LogRequest with very long strings (testing abbreviation)
+     */
+    @isTest
+    static void testLogRequestWithLongStrings() {
+        Core_MDF_RestAPI_Logger.LogRequest request = new Core_MDF_RestAPI_Logger.LogRequest();
+        request.apiName = 'VeryLongAPINameAPI';
+        request.contextMessage = 'A'.repeat(500);
+        request.statusCode = '200';
+        request.isSuccess = true;
 
         Test.startTest();
-        Core_MDF_RestAPI_Logger.logFromRestContext(
-            'CampaignAPI',
-            '{"result":"success"}',
-            '200',
-            true,
-            null,
-            'Campaign retrieved'
-        );
+        try {
+            Core_MDF_RestAPI_Logger.logToTransactionEntry(request);
+            Assert.isTrue(true, 'Should handle and abbreviate long strings');
+        } catch (Exception e) {
+            Assert.fail('Should not throw exception for long strings: ' + e.getMessage());
+        }
         Test.stopTest();
-
-        System.assert(true, 'logFromRestContext with full context completed without exception');
     }
 
-    @IsTest
-    static void testLogFromRestContext_NullRestContext_NoException() {
-        RestContext.request = null;
-        RestContext.response = new RestResponse();
+    /**
+     * Test LogRequest with datetime values
+     */
+    @isTest
+    static void testLogRequestWithDatetimes() {
+        Datetime now = System.now();
+        Datetime later = now.addMinutes(5);
+
+        Core_MDF_RestAPI_Logger.LogRequest request = new Core_MDF_RestAPI_Logger.LogRequest();
+        request.apiName = 'DatetimeAPI';
+        request.entryTime = now;
+        request.exitTime = later;
+        request.statusCode = '200';
+        request.isSuccess = true;
 
         Test.startTest();
-        Core_MDF_RestAPI_Logger.logFromRestContext(
-            'CampaignAPI',
-            null,
-            '500',
-            false,
-            new List<String>{ 'Internal error' },
-            null
-        );
+        try {
+            Core_MDF_RestAPI_Logger.logToTransactionEntry(request);
+            Assert.isTrue(true, 'Should handle datetime values');
+        } catch (Exception e) {
+            Assert.fail('Should not throw exception for datetime values: ' + e.getMessage());
+        }
         Test.stopTest();
-
-        System.assert(true, 'logFromRestContext with null RestContext completed without exception');
     }
 
-    @IsTest
-    static void testLogFromRestContext_WithXForwardedHost_NoException() {
-        RestRequest req = new RestRequest();
-        req.requestUri = '/services/apexrest/v1.0/mdf/campaign/';
-        req.httpMethod = 'POST';
-        req.addHeader('X-Forwarded-Host', 'proxy.example.com');
-        req.addHeader('X-Forwarded-For', '10.0.0.1');
-        RestContext.request = req;
-        RestContext.response = new RestResponse();
+    /**
+     * Test LogRequest with null datetime values (should use current time)
+     */
+    @isTest
+    static void testLogRequestWithNullDatetimes() {
+        Core_MDF_RestAPI_Logger.LogRequest request = new Core_MDF_RestAPI_Logger.LogRequest();
+        request.apiName = 'NullDatetimeAPI';
+        request.entryTime = null;
+        request.exitTime = null;
+        request.statusCode = '200';
+        request.isSuccess = true;
 
         Test.startTest();
-        Core_MDF_RestAPI_Logger.logFromRestContext(
-            'CampaignAPI',
-            '{"isSuccess":false}',
-            '7002',
-            false,
-            new List<String>{ 'Campaign ID is empty' },
-            'Missing campaign ID in request'
-        );
+        try {
+            Core_MDF_RestAPI_Logger.logToTransactionEntry(request);
+            Assert.isTrue(true, 'Should handle null datetime values with defaults');
+        } catch (Exception e) {
+            Assert.fail('Should not throw exception for null datetime values: ' + e.getMessage());
+        }
         Test.stopTest();
-
-        System.assert(true, 'logFromRestContext with X-Forwarded-Host completed without exception');
     }
 
-    @IsTest
-    static void testLogFromRestContext_NullRequestBody_NoException() {
-        RestRequest req = new RestRequest();
-        req.requestUri = '/services/apexrest/v1.0/mdf/campaign/7010000000001AAA';
-        req.httpMethod = 'GET';
-        req.requestBody = null;
-        RestContext.request = req;
-        RestContext.response = new RestResponse();
-
+    /**
+     * Test logging methods with empty strings
+     */
+    @isTest
+    static void testLoggingMethodsWithEmptyStrings() {
         Test.startTest();
-        Core_MDF_RestAPI_Logger.logFromRestContext(
-            'CampaignAPI', null, '200', true, null, null
-        );
+        try {
+            Core_MDF_RestAPI_Logger.info('');
+            Core_MDF_RestAPI_Logger.warning('');
+            Core_MDF_RestAPI_Logger.error('');
+            Core_MDF_RestAPI_Logger.logSegmentInfo('', '');
+            Core_MDF_RestAPI_Logger.logSegmentError('', '');
+            Assert.isTrue(true, 'Should handle empty strings in logging methods');
+        } catch (Exception e) {
+            Assert.fail('Should not throw exception for empty strings: ' + e.getMessage());
+        }
         Test.stopTest();
-
-        System.assert(true, 'logFromRestContext with null body completed without exception');
     }
 
-    // ============================================================
-    // Debug logging utility method tests
-    // ============================================================
-
-    @IsTest
-    static void testInfo_WithMessage_NoException() {
+    /**
+     * Test overloaded logToTransactionEntry with null payloads
+     */
+    @isTest
+    static void testLogToTransactionEntryWithNullPayloads() {
         Test.startTest();
-        Core_MDF_RestAPI_Logger.info('Test info message');
-        Core_MDF_RestAPI_Logger.info('');
-        Core_MDF_RestAPI_Logger.info(null);
+        try {
+            Core_MDF_RestAPI_Logger.logToTransactionEntry(
+                'NullPayloadsAPI',
+                null,
+                null,
+                '200',
+                true,
+                null
+            );
+            Assert.isTrue(true, 'Should handle null payloads');
+        } catch (Exception e) {
+            Assert.fail('Should not throw exception for null payloads: ' + e.getMessage());
+        }
         Test.stopTest();
-
-        System.assert(true, 'info() executed without exception for all input variants');
     }
 
-    @IsTest
-    static void testWarning_WithMessage_NoException() {
+    /**
+     * Test logFromRestContext with null errors list
+     */
+    @isTest
+    static void testLogFromRestContextWithNullErrors() {
         Test.startTest();
-        Core_MDF_RestAPI_Logger.warning('Test warning message');
-        Core_MDF_RestAPI_Logger.warning(null);
+        try {
+            Core_MDF_RestAPI_Logger.logFromRestContext(
+                'NullErrorsAPI',
+                new Map<String, Object>{'result' => 'success'},
+                '200',
+                true,
+                null,
+                'Operation completed'
+            );
+            Assert.isTrue(true, 'Should handle null errors list');
+        } catch (Exception e) {
+            Assert.fail('Should not throw exception for null errors: ' + e.getMessage());
+        }
         Test.stopTest();
-
-        System.assert(true, 'warning() executed without exception');
     }
 
-    @IsTest
-    static void testError_WithMessage_NoException() {
-        Test.startTest();
-        Core_MDF_RestAPI_Logger.error('Test error message');
-        Core_MDF_RestAPI_Logger.error(null);
-        Test.stopTest();
+    /**
+     * Test LogRequest with string payloads
+     */
+    @isTest
+    static void testLogRequestWithStringPayloads() {
+        Core_MDF_RestAPI_Logger.LogRequest request = new Core_MDF_RestAPI_Logger.LogRequest();
+        request.apiName = 'StringPayloadAPI';
+        request.requestPayload = '{"type":"request","data":"test"}';
+        request.responsePayload = '{"type":"response","status":"ok"}';
+        request.statusCode = '200';
+        request.isSuccess = true;
 
-        System.assert(true, 'error() executed without exception');
+        Test.startTest();
+        try {
+            Core_MDF_RestAPI_Logger.logToTransactionEntry(request);
+            Assert.isTrue(true, 'Should handle string payloads');
+        } catch (Exception e) {
+            Assert.fail('Should not throw exception for string payloads: ' + e.getMessage());
+        }
+        Test.stopTest();
     }
 
-    @IsTest
-    static void testLogSegmentInfo_NoException() {
+    /**
+     * Test multiple sequential log operations
+     */
+    @isTest
+    static void testMultipleSequentialLogs() {
         Test.startTest();
-        Core_MDF_RestAPI_Logger.logSegmentInfo('SegmentA', 'Processed successfully');
-        Core_MDF_RestAPI_Logger.logSegmentInfo(null, null);
+        try {
+            for (Integer i = 0; i < 5; i++) {
+                Core_MDF_RestAPI_Logger.LogRequest request = new Core_MDF_RestAPI_Logger.LogRequest();
+                request.apiName = 'SequentialAPI' + i;
+                request.statusCode = '200';
+                request.isSuccess = true;
+                Core_MDF_RestAPI_Logger.logToTransactionEntry(request);
+            }
+            Assert.isTrue(true, 'Should handle multiple sequential logs');
+        } catch (Exception e) {
+            Assert.fail('Should not throw exception for multiple sequential logs: ' + e.getMessage());
+        }
         Test.stopTest();
-
-        System.assert(true, 'logSegmentInfo() executed without exception');
     }
 
-    @IsTest
-    static void testLogSegmentError_NoException() {
+    /**
+     * Test exception handling in logging
+     */
+    @isTest
+    static void testExceptionHandling() {
         Test.startTest();
-        Core_MDF_RestAPI_Logger.logSegmentError('SegmentB', 'Processing failed');
-        Core_MDF_RestAPI_Logger.logSegmentError(null, null);
+        try {
+            // The class should handle exceptions gracefully
+            Core_MDF_RestAPI_Logger.LogRequest request = new Core_MDF_RestAPI_Logger.LogRequest();
+            request.apiName = 'ExceptionTestAPI';
+            request.additionalFields = new Map<String, Object>{
+                'InvalidField__c' => new Map<String, Object>{'nested' => 'value'}
+            };
+            Core_MDF_RestAPI_Logger.logToTransactionEntry(request);
+            Assert.isTrue(true, 'Should handle and recover from exceptions');
+        } catch (Exception e) {
+            // Exception handling in the logger should prevent propagation
+            Assert.isTrue(true, 'Caught expected exception handling');
+        }
         Test.stopTest();
-
-        System.assert(true, 'logSegmentError() executed without exception');
-    }
-
-    @IsTest
-    static void testLogMultiSegmentSPIF_Success_NoException() {
-        Test.startTest();
-        Core_MDF_RestAPI_Logger.logMultiSegmentSPIF('001000000000001AAA', 'TestProgram', 3, true);
-        Test.stopTest();
-
-        System.assert(true, 'logMultiSegmentSPIF() success case executed without exception');
-    }
-
-    @IsTest
-    static void testLogMultiSegmentSPIF_Failure_NoException() {
-        Test.startTest();
-        Core_MDF_RestAPI_Logger.logMultiSegmentSPIF('001000000000001AAA', 'TestProgram', 0, false);
-        Test.stopTest();
-
-        System.assert(true, 'logMultiSegmentSPIF() failure case executed without exception');
-    }
-
-    @IsTest
-    static void testLogMultiSegmentSPIF_NullValues_NoException() {
-        Test.startTest();
-        Core_MDF_RestAPI_Logger.logMultiSegmentSPIF(null, null, null, null);
-        Test.stopTest();
-
-        System.assert(true, 'logMultiSegmentSPIF() with null values executed without exception');
     }
 }

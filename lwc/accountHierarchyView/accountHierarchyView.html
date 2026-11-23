@@ -5,7 +5,8 @@
     <template if:false={showSpinner}>
         <div class="slds-card">
             <div class="slds-card">
-                <lightning-layout class="slds-page-header slds-page-header--object-home" id="header" multiple-rows="true">
+                <lightning-layout class="slds-page-header slds-page-header--object-home" id="header"
+                    multiple-rows="true">
                     <lightning-layout-item>
                         <lightning-icon icon-name="standard:hierarchy" class="icn"></lightning-icon>
                     </lightning-layout-item>
@@ -27,16 +28,16 @@
                                     onchange={fetchSearchedRecords}></lightning-input>
                             </div>
                         </template>
-    
+
                     </lightning-layout-item>
                 </lightning-layout>
             </div>
-    
-            
-    
-    
-    
+
+
+
+
             <div class="slds-card slds-var-p-around_small">
+                
                 <template if:false={showSpinner}>
                     <div class="slds-var-p-bottom_x-small">
                         <lightning-icon icon-name="utility:warning" class="icn" size="x-small" variant="warning"
@@ -47,21 +48,28 @@
                         <template for:each={accountsToDisplay} for:item="item">
                             <div key={item.Id} class="slds-box slds-box_xx-small"
                                 style="background-color:rgb(248, 248, 248);">
-                                <lightning-accordion-section name={item.Id} label={item.Name} key={item.Id}>
+                                
+                                <lightning-accordion-section name={item.Id} label={item.Name} key={item.Id}
+                                    for:index="AccIndex">
+                                    
                                     <!--View Details and set Partner score Button implementation-->
                                     <lightning-button-group slot="actions" name={item.Id} class="slds-m-left_medium">
                                         <lightning-button label="View Details" onclick={navigateToRecordViewPage}
                                             data-name={item.Id}></lightning-button>
+                                            
                                         <template if:true={showSetPartnerScoreButton}>
+                                            
                                             <lightning-button label="Set Partner Score"
                                                 onclick={navigateToPartnerScoreCreateModal} data-name={item.Id}>
                                             </lightning-button>
                                         </template>
                                     </lightning-button-group>
+                                    
                                     <c-account-hierarchy_-tree-grid ultimate-account-id={item.Id}
                                         ultimate-account-name={item.Name} salesforce-baseurl={salesforceBaseurl}
                                         enable-scroll="true">
                                     </c-account-hierarchy_-tree-grid>
+                                    
                                 </lightning-accordion-section>
                             </div>
                         </template>
@@ -72,10 +80,10 @@
                     </c-paginator>
                 </template>
             </div>
-    
+
         </div>
     </template>
-    
+
 
     <!--Modal/Popup to create Partner Score Maintenance-->
     <template if:true={showPopupToCreatePartnerScore}>
@@ -91,12 +99,16 @@
             <div class="slds-modal__container">
                 <!-- Modal/Popup Box LWC header here -->
                 <header class="slds-modal__header">
+
+                    <!-- <lightning-button-icon icon-name="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" alternative-text="Close" onclick={closePartnerScoreCreateModal}></lightning-button-icon> -->
+
                     <button class="slds-button slds-button_icon slds-modal__close"
                         title="Close" onclick={closePartnerScoreCreateModal}>
                         <lightning-icon icon-name="utility:close" alternative-text="close"
                             size="small"></lightning-icon>
                         <span class="slds-assistive-text">Close</span>
                     </button>
+                    
                     <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
                         {label.Core_MDF_Partnerscore_Score_Title}</h2>
                 </header>
@@ -127,6 +139,8 @@
             <div class="slds-modal__container">
                 <!-- Modal/Popup Box LWC header here -->
                 <header class="slds-modal__header">
+                    <!-- <lightning-button-icon icon-name="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" alternative-text="Close" onclick={closePartnerScoreViewReportModal}></lightning-button-icon> -->
+
                     <button class="slds-button slds-button_icon slds-modal__close"
                         title="Close" onclick={closePartnerScoreViewReportModal}>
                         <lightning-icon icon-name="utility:close" alternative-text="close"
@@ -145,8 +159,9 @@
                         <p class="">{label.Core_MDF_Partnership_Score_Duplicate_Error}</p>
                     </div>
                     </br>
-                    <lightning-button label="Go to Score details" title="Go to Score details" class="slds-align_absolute-center"
-                        onclick={navigateToScoreDetails} variant="brand"></lightning-button>
+                    <lightning-button label="Go to Score details" title="Go to Score details"
+                        class="slds-align_absolute-center" onclick={navigateToScoreDetails} variant="brand">
+                    </lightning-button>
                     </br>
                 </div>
 

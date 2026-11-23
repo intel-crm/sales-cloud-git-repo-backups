@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExpressionSetDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>ApprovalSet</label>
+    <processType>Bre</processType>
+    <template>false</template>
+    <versions>
+        <fullName>ApprovalSet_V1</fullName>
+        <decimalScale>2</decimalScale>
+        <expressionSetDefinition>ApprovalSet</expressionSetDefinition>
+        <label>ApprovalSet V1</label>
+        <processType>Bre</processType>
+        <shouldShowExplExternally>false</shouldShowExplExternally>
+        <startDate>2024-03-21T06:20:34.000Z</startDate>
+        <status>Draft</status>
+        <versionNumber>1</versionNumber>
+    </versions>
+</ExpressionSetDefinition>

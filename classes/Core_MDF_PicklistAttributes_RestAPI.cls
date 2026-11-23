@@ -47,6 +47,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
         'controllingFieldValue' => 'controllingFieldValue',
         'fielddisplay' => 'fielddisplay'
     };
+    private static final String CTRL_FLD_API = 'Core_MDF_Controlling_Field_nm__c';
+    private static final String CTRL_FLD_BUDGET_TYPE = 'Budget Type';
+    private static final String CTRL_FLD_FOCUS_AREA = 'Focus Area';
     private static Map<String, Schema.SObjectType> sObjectType = new Map<String, Schema.SObjectType>();
     private static Map<String, Schema.DescribeSObjectResult> sObjectDescribe = new Map<String, Schema.DescribeSObjectResult>();
     private static Map<String, Map<String, Schema.SObjectField>> fieldMap = new Map<String, Map<String, Schema.SObjectField>>();
@@ -63,14 +66,18 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
     }
 
     private static Schema.SObjectType getSObjectType(String objApiName) {
-        if (String.isBlank(objApiName)) { return null; }
+        if (String.isBlank(objApiName)) {
+            return null;
+        }
         if (!sObjectType.containsKey(objApiName)) {
             sObjectType.put(objApiName, Schema.getGlobalDescribe().get(objApiName));
         }
         return sObjectType.get(objApiName);
     }
     private static Schema.DescribeSObjectResult getSObjectDescribe(String objApiName) {
-        if (String.isBlank(objApiName)) { return null; }
+        if (String.isBlank(objApiName)) {
+            return null;
+        }
         if (!sObjectDescribe.containsKey(objApiName)) {
             Schema.SObjectType sObjType = getSObjectType(objApiName);
             sObjectDescribe.put(objApiName, sObjType == null ? null : sObjType.getDescribe());
@@ -78,7 +85,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
         return sObjectDescribe.get(objApiName);
     }
     private static Map<String, Schema.SObjectField> getFieldMap(String objApiName) {
-        if (String.isBlank(objApiName)) { return null; }
+        if (String.isBlank(objApiName)) {
+            return null;
+        }
         if (!fieldMap.containsKey(objApiName)) {
             Schema.DescribeSObjectResult describe = getSObjectDescribe(objApiName);
             fieldMap.put(objApiName, describe == null ? null : describe.fields.getMap());
@@ -86,7 +95,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
         return fieldMap.get(objApiName);
     }
     private static Map<String, Schema.FieldSet> getFldSetMap(String objApiName) {
-        if (String.isBlank(objApiName)) { return null; }
+        if (String.isBlank(objApiName)) {
+            return null;
+        }
         if (!fieldSetMap.containsKey(objApiName)) {
             Schema.DescribeSObjectResult describe = getSObjectDescribe(objApiName);
             Map<String, Schema.FieldSet> fieldSet = (describe == null || describe.fieldSets == null) ? null : describe.fieldSets.getMap();
@@ -95,7 +106,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
         return fieldSetMap.get(objApiName);
     }
     private static Schema.DescribeFieldResult getFldDesc(String objApiName, String fldApiName) {
-        if (String.isBlank(objApiName) || String.isBlank(fldApiName)) { return null; }
+        if (String.isBlank(objApiName) || String.isBlank(fldApiName)) {
+            return null;
+        }
         String cacheKey = buildCacheKey(objApiName, fldApiName);
         if (!fieldDescribe.containsKey(cacheKey)) {
             Schema.DescribeFieldResult fieldDesc;
@@ -108,7 +121,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
         return fieldDescribe.get(cacheKey);
     }
     private static Map<String, Schema.RecordTypeInfo> getRecTypeInfoByDevNm(String objApiName) {
-        if (String.isBlank(objApiName)) { return null; }
+        if (String.isBlank(objApiName)) {
+            return null;
+        }
         if (!recTypeByDevName.containsKey(objApiName)) {
             Schema.DescribeSObjectResult describe = getSObjectDescribe(objApiName);
             recTypeByDevName.put(objApiName, describe == null ? null : describe.getRecordTypeInfosByDeveloperName());
@@ -121,7 +136,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 * Description: Returns the controllingFieldValue query parameter, reconstructing it when the raw value contained an unencoded '&'. 
 *****************************************************************/
     private static String resolveCtrlFldVal(RestRequest req) {
-        if (req == null || req.params == null) { return null; }
+        if (req == null || req.params == null) {
+            return null;
+        }
         Map<String, String> params = req.params;
         String baseVal = params.get('controllingFieldValue');
         if (String.isBlank(baseVal)) {
@@ -149,7 +166,7 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
         Map<String, Object> rslt = new Map<String, Object>();
         if (req == null || req.params == null) {
             rslt.put('ctrlFldVal', null);
-            rslt.put('useFieldLabels', false);
+            rslt.put('useFieldLabels', true);
             return rslt;
         }
         // Validate parameter keys
@@ -165,12 +182,13 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
         }
         // Validate fielddisplay value
         String fldDisplayParam = req.params.get('fielddisplay');
-        Boolean useFieldLabels = false;
+        // Labels are the default; only an explicit fielddisplay=technicalname switches to API names.
+        Boolean useFieldLabels = true;
         if (!String.isBlank(fldDisplayParam)) {
             String normalizedVal = fldDisplayParam.trim().toLowerCase();
-            if (normalizedVal == 'label') {
-                useFieldLabels = true;
-            } else if (normalizedVal != 'technicalname') {
+            if (normalizedVal == 'technicalname') {
+                useFieldLabels = false;
+            } else if (normalizedVal != 'label') {
                 List<String> allowedVal = new List<String>{'label', 'technicalname'};
                 rslt.put('error', createErrorApiResponse(Core_MDF_Attributes_RestAPIConstants.CODE_1005_INVALID_FIELDDISPLAY_VALUE, buildInvalidReqParamDetails('fielddisplay', allowedVal), fldDisplayParam));
                 return rslt;
@@ -188,7 +206,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 * Description: Validates controllingFieldValue exists in program context. Returns Error 1006 if invalid.
 *****************************************************************/
     private static Core_MDF_Campaign_APIResponse validateCtrlFldVal(String ctrlFldVal, List<String> rtDevNames, String progName) {
-        if (String.isBlank(ctrlFldVal)) { return null; }
+        if (String.isBlank(ctrlFldVal)) {
+            return null;
+        }
         List<String> allowedVal = getAllowedValForParam('controllingFieldValue', progName, rtDevNames);
         if (allowedVal != null && !allowedVal.isEmpty()) {
             Boolean valFound = false;
@@ -217,7 +237,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 * Description: Sets response statusCode and responseBody based on API response.
 *****************************************************************/
     private static void setResponseBody(RestResponse res, Core_MDF_Campaign_APIResponse apiRes) {
-        if (res == null || apiRes == null) { return; }
+        if (res == null || apiRes == null) {
+            return;
+        }
         res.statusCode = resolveHttpStatusCode(apiRes);
         res.responseBody = Blob.valueOf(serializeApiResponse(apiRes));
     }
@@ -245,9 +267,13 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 * Description: Extracts and URL-decodes the program name segment from the request URI path.
 *****************************************************************/
     private static String extractProgNmFromPath(RestRequest req) {
-        if (req == null || String.isBlank(req.requestURI)) { return null; }
+        if (req == null || String.isBlank(req.requestURI)) {
+            return null;
+        }
         List<String> uriParts = req.requestURI.split('/');
-        if (uriParts == null || uriParts.isEmpty()) { return null; }
+        if (uriParts == null || uriParts.isEmpty()) {
+            return null;
+        }
         Integer attrbyProgIndex = -1;
         for (Integer i = 0; i < uriParts.size(); i++) {
             if (uriParts[i].equalsIgnoreCase('attributesbyprogram')) {
@@ -255,9 +281,13 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
                 break;
             }
         }
-        if (attrbyProgIndex < 0 || attrbyProgIndex + 1 >= uriParts.size()) { return null; }
+        if (attrbyProgIndex < 0 || attrbyProgIndex + 1 >= uriParts.size()) {
+            return null;
+        }
         String rawProgNm = uriParts[attrbyProgIndex + 1];
-        if (String.isBlank(rawProgNm)) { return null; }
+        if (String.isBlank(rawProgNm)) {
+            return null;
+        }
         try {
             return EncodingUtil.urlDecode(rawProgNm, 'UTF-8');
         } catch (Exception ex) {
@@ -301,10 +331,13 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
                 foundResultsForCtrlVal = true;
                 Set<String> allowedFldApiNames = getFldApiNmFromFldSet('Core_MDF_Custom_Picklist__c', rtDevName);
                 recTypeVal = filterValByAllowedFlds(recTypeVal, allowedFldApiNames);
+                // The controlling field is surfaced as controllingField and the dependentValues keys instead.
+                recTypeVal.remove(CTRL_FLD_API);
                 if (recTypeVal.isEmpty()) {
                     continue;
                 }
                 Map<String, Object> recTypeDependency = filterDepMdtByAllowedFld(recTypeResult.dependenciesByField, allowedFldApiNames, new Set<String>(recTypeVal.keySet()));
+                addCtrlFldDependencies(recTypeDependency, recTypeResult.ctrlDependenciesByField, recTypeVal.keySet());
                 String recTypeNm = resolveRecTypeNmByDevNm('Core_MDF_Custom_Picklist__c', rtDevName);
                 attrsByRt.put(String.isBlank(recTypeNm) ? rtDevName : recTypeNm, recTypeVal);
                 if (!recTypeDependency.isEmpty()) {
@@ -318,32 +351,15 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
             if (attrsByRt.isEmpty() || data.isEmpty()) {
                 return createErrorApiResponse(Core_MDF_Attributes_RestAPIConstants.CODE_1002_NO_PICKLIST_VALUES_FOUND, null, null);
             }
-            // When fielddisplay=label, replace field API name keys with field labels
-            if (useFieldLabels) {
-                Set<String> fieldApiToLabel = new Set<String>(data.keySet());
-                getFldApiFromDepMdt(fieldApiToLabel, mergedDepsByFld);
-                Map<String, String> fieldLabels = getFldLabels(fieldApiToLabel);
-                data = applyLabelsToAttrMap(data, fieldLabels);
-                mergedDepsByFld = applyLabelsToDepMdt(mergedDepsByFld, fieldLabels);
-                if (rtDevNames.size() > 1) {
-                    Map<String, Object> labeledAttrsByRt = new Map<String, Object>();
-                    Map<String, Object> labeledDepsByRt = new Map<String, Object>();
-                    for (String rtName : attrsByRt.keySet()) {
-                        Map<String, List<String>> rtValues = (Map<String, List<String>>) attrsByRt.get(rtName);
-                        labeledAttrsByRt.put(rtName, applyLabelsToAttrMap(rtValues, fieldLabels));
-                        if (depsByRt.containsKey(rtName)) {
-                            Map<String, Object> rtDependencies = (Map<String, Object>) depsByRt.get(rtName);
-                            labeledDepsByRt.put(rtName, applyLabelsToDepMdt(rtDependencies, fieldLabels));
-                        }
-                    }
-                    attrsByRt = labeledAttrsByRt;
-                    depsByRt = labeledDepsByRt;
-                }
-            }
-            Object attributesPayload = rtDevNames.size() > 1 ? injectDepIntoAttrByRecType(attrsByRt, depsByRt) : injectDepIntoAttr(data, mergedDepsByFld);            
+            Set<String> fldApiNames = new Set<String>(data.keySet());
+            getFldApiFromDepMdt(fldApiNames, mergedDepsByFld);
+            // An empty label map keeps API names as keys when fielddisplay=technicalname.
+            Map<String, String> attrFldLabels = useFieldLabels ? getFldLabels(fldApiNames) : new Map<String, String>();
+            Object attributesPayload = rtDevNames.size() > 1 ? injectDepIntoAttrByRecType(attrsByRt, depsByRt, attrFldLabels) : injectDepIntoAttr(data, mergedDepsByFld, attrFldLabels);
             Core_MDF_Campaign_APIResponse apiRes = new Core_MDF_Campaign_APIResponse();
             Map<String, Object> respDetails = new Map<String, Object>();
             respDetails.put('programName', canonicalProg);
+            respDetails.put('controllingField', resolveCtrlFldDisplayNm(canonicalProg));
             if (!String.isBlank(ctrlFldVal)) {
                 respDetails.put('controllingFieldValue', resolveCanonicalCtrlFldVal(rtDevNames, ctrlFldVal));
             }
@@ -362,7 +378,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 * Description: Merges one record type's field values into the aggregate set map.
 *****************************************************************/
     private static void mergeFldValues(Map<String, Set<String>> mergedValByFld, Map<String, List<String>> recTypeVal) {
-        if (mergedValByFld == null || recTypeVal == null || recTypeVal.isEmpty()) { return; }
+        if (mergedValByFld == null || recTypeVal == null || recTypeVal.isEmpty()) {
+            return;
+        }
         for (String fldApiName : recTypeVal.keySet()) {
             Set<String> fieldSet = mergedValByFld.get(fldApiName);
             if (fieldSet == null) {
@@ -400,10 +418,14 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 * Description: Resolves both record type Id and Name in a single lookup. Returns map with 'id' and 'name' keys, or null if not found.
 *****************************************************************/
     private static Map<String, Object> resolveRecTypeInfo(String objApiNm, String recTypeDevNm) {
-        if (String.isBlank(objApiNm) || String.isBlank(recTypeDevNm)) { return null; }
+        if (String.isBlank(objApiNm) || String.isBlank(recTypeDevNm)) {
+            return null;
+        }
         try {
             Map<String, Schema.RecordTypeInfo> rtInfoByDevNm = getRecTypeInfoByDevNm(objApiNm);
-            if (rtInfoByDevNm == null || !rtInfoByDevNm.containsKey(recTypeDevNm)) { return null; }
+            if (rtInfoByDevNm == null || !rtInfoByDevNm.containsKey(recTypeDevNm)) {
+                return null;
+            }
             Schema.RecordTypeInfo rtInfo = rtInfoByDevNm.get(recTypeDevNm);
             Map<String, Object> rslt = new Map<String, Object>();
             rslt.put('id', rtInfo.getRecordTypeId());
@@ -426,7 +448,7 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
     
     /****************************************************************
 * Method Name: getRecTypeEnabledPicklstVal
-* Parameters: String recTypeDevNm, String cntrFldVal, Boolean useFldLabels
+* Parameters: String recTypeDevNm, String cntrFldVal, Boolean useFldLabels, String progNm
 * Description: Returns active and distinct picklist values grouped by field for the given record type.
 *****************************************************************/
     private static RecTypePicklistResult getRecTypeEnabledPicklstVal(String recTypeDevNm, String cntrFldVal, Boolean useFldLabels, String progNm) {
@@ -436,6 +458,11 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
         if (payload == null || !payload.containsKey('picklistFieldValues')) {
             return rslt;
         }        
+        Set<String> allowedCtrlVals = new Set<String>();
+        for (String ctrlVal : getActiveValFromPayload(payload, CTRL_FLD_API)) {
+            allowedCtrlVals.add(ctrlVal.trim().toLowerCase());
+        }
+        allowedCtrlVals.removeAll(getLegacyBudgetTypeSet());
         Integer cntrFldValIndex = null;        
             if (!String.isBlank(cntrFldVal)) {
                 cntrFldValIndex = findCntrFldValIndexInFld(payload, 'Core_MDF_Controlling_Field_nm__c', cntrFldVal);
@@ -492,7 +519,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
                         // picklist entries, then re-try with the resolved stored value.
                         if (progControllerIndex == null) {
                             Map<String, Object> pklstFldValsForProg = (Map<String, Object>) payload.get('picklistFieldValues');
-                            Map<String, Object> progFldInPayload = (pklstFldValsForProg != null && pklstFldValsForProg.containsKey('Core_MDF_Program__c')) ? (Map<String, Object>) pklstFldValsForProg.get('Core_MDF_Program__c') : null;
+                            Map<String, Object> progFldInPayload = (pklstFldValsForProg != null && pklstFldValsForProg.containsKey('Core_MDF_Program__c'))
+                                ? (Map<String, Object>) pklstFldValsForProg.get('Core_MDF_Program__c')
+                                : null;
                             if (progFldInPayload != null && progFldInPayload.containsKey('values')) {
                                 String resolvedProgStoredVal = null;
                                 for (Object progValObj : (List<Object>) progFldInPayload.get('values')) {
@@ -537,7 +566,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
                     }
                 }
             }
-            if (shouldSkipFld) { continue; }            
+            if (shouldSkipFld) {
+                continue;
+            }            
             for (Object valueObj : values) {
                 Map<String, Object> valDetails = (Map<String, Object>) valueObj;
                 if (valDetails == null || !valDetails.containsKey('value')) {
@@ -545,9 +576,15 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
                 }
                 Object activeObj = valDetails.get('active');
                 Boolean isActive = activeObj == null ? true : (Boolean) activeObj;                
-                if (!isActive) { continue; }                
-                if (shouldApplyCntrValFilter && !isValValidForCntrFld(valDetails, cntrFldValIndex)) { continue; }
-                if (shouldApplyProgFilter && !isValValidForCntrFld(valDetails, progControllerIndex)) { continue; }
+                if (!isActive) {
+                    continue;
+                }                
+                if (shouldApplyCntrValFilter && !isValValidForCntrFld(valDetails, cntrFldValIndex)) {
+                    continue;
+                }
+                if (shouldApplyProgFilter && !isValValidForCntrFld(valDetails, progControllerIndex)) {
+                    continue;
+                }
                 String valueStr = getPicklistDisplayVal(valDetails, useFldLabels);
                 if (!String.isBlank(valueStr)) {
                     eligibleVal.add(valueStr);
@@ -561,6 +598,12 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
                 if (dependencyMdt != null) {
                     rslt.dependenciesByField.put(fieldApiName, dependencyMdt);
                 }
+                if (!fieldApiName.equalsIgnoreCase(CTRL_FLD_API)) {
+                    Map<String, Object> ctrlDependency = buildCtrlFldDependency(fldDetails, payload, eligibleValDetails, cntrFldValIndex, allowedCtrlVals, useFldLabels);
+                    if (ctrlDependency != null) {
+                        rslt.ctrlDependenciesByField.put(fieldApiName, ctrlDependency);
+                    }
+                }
             }
         }
         normalizeDependencyMdtToEligibleVal(valByField, rslt.dependenciesByField);
@@ -572,7 +615,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 * Description: Trims dependency metadata so it references only controlling/dependent values that remain eligible after filtering.
 *****************************************************************/
     private static void normalizeDependencyMdtToEligibleVal(Map<String, List<String>> valByField, Map<String, Object> dependencyByFld) {
-        if (valByField == null || valByField.isEmpty() || dependencyByFld == null || dependencyByFld.isEmpty()) { return; }
+        if (valByField == null || valByField.isEmpty() || dependencyByFld == null || dependencyByFld.isEmpty()) {
+            return;
+        }
         List<String> dependentFlds = new List<String>(dependencyByFld.keySet());
         for (String dependentFldApi : dependentFlds) {
             if (!valByField.containsKey(dependentFldApi)) {
@@ -629,19 +674,21 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 * Description: Retrieves record-type-specific picklist payload from test hook or UI API.
 *****************************************************************/
     private static Map<String, Object> fetchPicklistForRecType(String recTypeDevNm) {
-        if (String.isBlank(recTypeDevNm)) { return null; }
+        if (String.isBlank(recTypeDevNm)) {
+            return null;
+        }
         if (picklistPayloadInit.contains(recTypeDevNm)) {
             return picklistPayloadByRecType.get(recTypeDevNm);
         }
         Map<String, Object> payload;
-        if (Test.isRunningTest()) {
+        /*if (Test.isRunningTest()) {
             payload = Core_MDF_CampaignCreatePage.PicklistFetcher(recTypeDevNm);
-        } else {
+        } else {*/
             Id recTypeId = resolveRecTypeIdByDevNm('Core_MDF_Custom_Picklist__c', recTypeDevNm);
             if (recTypeId != null) {
                 payload = fetchRecTypeValFromUiApi('Core_MDF_Custom_Picklist__c', recTypeId);
             }
-        }
+        //}
         picklistPayloadInit.add(recTypeDevNm);
         picklistPayloadByRecType.put(recTypeDevNm, payload);
         return payload;    }
@@ -667,10 +714,14 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
         List<Object> fldVal = (List<Object>) fldDetails.get('values');
         for (Object val : fldVal) {
             Map<String, Object> valDetails = (Map<String, Object>) val;
-            if (valDetails == null || !valDetails.containsKey('value')) { continue; }
+            if (valDetails == null || !valDetails.containsKey('value')) {
+                continue;
+            }
             Object activeObj = valDetails.get('active');
             Boolean isActive = activeObj == null ? true : (Boolean) activeObj;
-            if (!isActive) { continue; }
+            if (!isActive) {
+                continue;
+            }
             String valueStr = htmlDecodePicklistValue(String.valueOf(valDetails.get('value')));
             if (!String.isBlank(valueStr)) {
                 values.add(valueStr);
@@ -762,13 +813,7 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
         }
         List<String> allValues = getSortedDistinctVal(new List<String>(validCntrFldVal));
         // Filter out legacy budget types (e.g. 'CCF 1.0', 'DCF 1.0')
-        String legacyValues = System.Label.Core_MDF_LegacyRestricBudgetTypes;
-        Set<String> legacySet = new Set<String>();
-        for (String entry : legacyValues.split(',')) {
-            if (!String.isBlank(entry)) {
-                legacySet.add(entry.trim().toLowerCase());
-            }
-        }
+        Set<String> legacySet = getLegacyBudgetTypeSet();
         if (!legacySet.isEmpty()) {
             List<String> filtered = new List<String>();
             for (String val : allValues) {
@@ -925,6 +970,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
                 candidateSet.add(withSpaceTrimmed);
                 candidateList.add(withSpaceTrimmed);
             }
+            // Callers prefer the highest index, so the literal '+' value must rank last to win over its prefix (MDF+ vs MDF).
+            candidateList.remove(0);
+            candidateList.add(trimmed);
         }    
         // Handle HTML-encoded ampersands
         if (trimmed.contains('&') && !trimmed.contains('&amp;')) {
@@ -948,11 +996,15 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 *              Returns the index position of the value in that field's picklist values.
 *****************************************************************/
     private static Integer findCntrFldValIndexInFld(Map<String, Object> uiApiPayload, String cntrFldApi, String cntrFldVal) {
-        if (uiApiPayload == null || String.isBlank(cntrFldApi) || String.isBlank(cntrFldVal)) { return null; }        
+        if (uiApiPayload == null || String.isBlank(cntrFldApi) || String.isBlank(cntrFldVal)) {
+            return null;
+        }        
         try {
             Map<String, Object> picklistFldVal = (Map<String, Object>) uiApiPayload.get('picklistFieldValues');
             Map<String, Object> fldDetails = (picklistFldVal == null || !picklistFldVal.containsKey(cntrFldApi)) ? null : (Map<String, Object>) picklistFldVal.get(cntrFldApi);
-            if (fldDetails == null || !fldDetails.containsKey('values')) { return null; }            
+            if (fldDetails == null || !fldDetails.containsKey('values')) {
+                return null;
+            }            
             List<Object> values = (List<Object>) fldDetails.get('values');
             List<String> candidates = buildValueCandidates(cntrFldVal);
             Integer valueIndex = 0;
@@ -986,9 +1038,13 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 * Description: Checks if a dependent picklist value is valid for the given controlling field value index.
 *****************************************************************/
     private static Boolean isValValidForCntrFld(Map<String, Object> valueDetails, Integer cntrFldValIndex) {
-        if (valueDetails == null || cntrFldValIndex == null) { return true; }        
+        if (valueDetails == null || cntrFldValIndex == null) {
+            return true;
+        }        
         try {
-            if (!valueDetails.containsKey('validFor')) { return true; }
+            if (!valueDetails.containsKey('validFor')) {
+                return true;// No validFor array means this is an independent value
+            }
             List<Object> validForList = (List<Object>) valueDetails.get('validFor');
             String valueStr = String.valueOf(valueDetails.get('value'));
             if (validForList == null || validForList.isEmpty()) {
@@ -1053,8 +1109,12 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 *****************************************************************/
     private static Map<String, List<String>> filterValByAllowedFlds(Map<String, List<String>> recTypeVal, Set<String> allowedFldApi) {
         Map<String, List<String>> filteredValues = new Map<String, List<String>>();
-        if (recTypeVal == null || recTypeVal.isEmpty()) { return filteredValues; }
-        if (allowedFldApi == null || allowedFldApi.isEmpty()) { return recTypeVal; }
+        if (recTypeVal == null || recTypeVal.isEmpty()) {
+            return filteredValues;
+        }
+        if (allowedFldApi == null || allowedFldApi.isEmpty()) {
+            return recTypeVal;
+        }
         for (String fieldApiName : recTypeVal.keySet()) {
             if (allowedFldApi.contains(fieldApiName)) {
                 filteredValues.put(fieldApiName, recTypeVal.get(fieldApiName));
@@ -1068,7 +1128,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 * Description: Calls the Salesforce UI API to retrieve picklist metadata for a specific record type.
 *****************************************************************/
     private static Map<String, Object> fetchRecTypeValFromUiApi(String objApi, Id recTypeId) {
-        if (String.isBlank(objApi) || recTypeId == null) { return null; }        
+        if (String.isBlank(objApi) || recTypeId == null) {
+            return null;
+        }        
         try {            
             HttpRequest req = new HttpRequest();
             req.setEndpoint('callout:Custom_Picklist_Values/'+recTypeId);
@@ -1092,7 +1154,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 *              If eligible, uses Core_MDF_ProgramRecordTypeMapping to identify associated record type developer names.
 *****************************************************************/
     private static Map<String, Object> queryChannelProgram(String progName) {
-        if (String.isBlank(progName)) { return null; }
+        if (String.isBlank(progName)) {
+            return null;
+        }
         try {
             String normalizedProgram = progName.trim().toLowerCase();
             // Query ChannelProgram to verify program is eligible (has Program_Type__c value)
@@ -1110,7 +1174,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
                 }
             }            
             // If eligible program found, get record types from Core_MDF_ProgramRecordTypeMapping
-            if (canonicalProgram == null) { return null; }            
+            if (canonicalProgram == null) {
+                return null;
+            }            
             List<String> rtDevNames = inferRecTypeDevNmFromProg(canonicalProgram);
             if (rtDevNames == null || rtDevNames.isEmpty()) {
                 return null;
@@ -1130,11 +1196,17 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 * Description: Maps a normalized program name to one or more record type developer names.
 *****************************************************************/
     private static List<String> inferRecTypeDevNmFromProg(String progName) {
-        if (String.isBlank(progName)) { return new List<String>(); }        
+        if (String.isBlank(progName)) {
+            return new List<String>();
+        }        
         String normalizedProgram = String.isBlank(progName) ? null : progName.trim().toLowerCase();
-        if (String.isBlank(normalizedProgram)) { return new List<String>(); }
+        if (String.isBlank(normalizedProgram)) {
+            return new List<String>();
+        }
         Map<String, Object> recTypeToProgMap = getProgRecTypeMap();
-        if (recTypeToProgMap == null || recTypeToProgMap.isEmpty()) { return new List<String>(); }        
+        if (recTypeToProgMap == null || recTypeToProgMap.isEmpty()) {
+            return new List<String>();
+        }        
         List<String> matchedRecTypes = new List<String>();
         for (String recTypeDevNm : recTypeToProgMap.keySet()) {
             String mappedProgram = String.isBlank(String.valueOf(recTypeToProgMap.get(recTypeDevNm))) ? null : String.valueOf(recTypeToProgMap.get(recTypeDevNm)).trim().toLowerCase();
@@ -1157,18 +1229,26 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
         try {
             for (String rtDevName : rtDevNames) {
                 Map<String, Object> payload = fetchPicklistForRecType(rtDevName);
-                if (payload == null || !payload.containsKey('picklistFieldValues')) { continue; }
+                if (payload == null || !payload.containsKey('picklistFieldValues')) {
+                    continue;
+                }
                 Map<String, Object> pklstFldVals = (Map<String, Object>) payload.get('picklistFieldValues');
-                if (!pklstFldVals.containsKey('Core_MDF_Controlling_Field_nm__c')) { continue; }
+                if (!pklstFldVals.containsKey('Core_MDF_Controlling_Field_nm__c')) {
+                    continue;
+                }
                 Map<String, Object> fldDetails = (Map<String, Object>) pklstFldVals.get('Core_MDF_Controlling_Field_nm__c');
-                if (fldDetails == null || !fldDetails.containsKey('values')) { continue; }
+                if (fldDetails == null || !fldDetails.containsKey('values')) {
+                    continue;
+                }
                 List<String> candidates = buildValueCandidates(ctrlFldVal);
                 List<Object> values = (List<Object>) fldDetails.get('values');
                 Integer bestMatchCandidateIndex = -1;
                 String bestMatchVal = null;
                 for (Object valueObj : values) {
                     Map<String, Object> valDetails = (Map<String, Object>) valueObj;
-                    if (valDetails == null || !valDetails.containsKey('value')) { continue; }
+                    if (valDetails == null || !valDetails.containsKey('value')) {
+                        continue;
+                    }
                     String picklistValNorm = String.valueOf(valDetails.get('value')).trim().toLowerCase();
                     for (Integer i = 0; i < candidates.size(); i++) {
                         if (candidates.get(i).equals(picklistValNorm) && i > bestMatchCandidateIndex) {
@@ -1243,7 +1323,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 * Description: Returns decoded raw picklist value from a UI API value details object.
 *****************************************************************/
     private static String getPicklistRawVal(Map<String, Object> valDetails) {
-        if (valDetails == null || !valDetails.containsKey('value')) { return null; }
+        if (valDetails == null || !valDetails.containsKey('value')) {
+            return null;
+        }
         return htmlDecodePicklistValue(String.valueOf(valDetails.get('value')));
     }
     
@@ -1253,14 +1335,17 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 * Description: Returns label when requested and available; otherwise returns decoded raw value.
 *****************************************************************/
     private static String getPicklistDisplayVal(Map<String, Object> valDetails, Boolean useFieldLabels) {
-        String rawValue = getPicklistRawVal(valDetails);        
+        String rawValue = getPicklistRawVal(valDetails);
+        
         if (!useFieldLabels) {
             return rawValue;
-        }        
+        }
+        
         Object labelObj = valDetails == null ? null : valDetails.get('label');
         if (labelObj != null && !String.isBlank(String.valueOf(labelObj))) {
             return htmlDecodePicklistValue(String.valueOf(labelObj));
-        }        
+        }
+        
         return rawValue;
     }
     /****************************************************************
@@ -1365,6 +1450,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
             if (detailsMap.containsKey('programName')) {
                 detailsParts.add('"programName":' + JSON.serialize(detailsMap.get('programName')));
             }
+            if (detailsMap.containsKey('controllingField')) {
+                detailsParts.add('"controllingField":' + JSON.serialize(detailsMap.get('controllingField')));
+            }
             if (detailsMap.containsKey('controllingFieldValue')) {
                 detailsParts.add('"controllingFieldValue":' + JSON.serialize(detailsMap.get('controllingFieldValue')));
             }
@@ -1384,7 +1472,7 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
                 detailsParts.add('"attributesByRecordType":' + serializeWithSortedMapKeys(detailsMap.get('attributesByRecordType'),false));
             }
             for (String key : detailsMap.keySet()) {
-                if (key != 'programName' && key != 'controllingFieldValue' && key != 'parameter' && key != 'expectedParameter' && key != 'allowedValues' && key != 'attributes' && key != 'attributesByRecordType' /*&& key != 'attributeDependencies'*/) {
+                if (key != 'programName' && key != 'controllingField' && key != 'controllingFieldValue' && key != 'parameter' && key != 'expectedParameter' && key != 'allowedValues' && key != 'attributes' && key != 'attributesByRecordType' /*&& key != 'attributeDependencies'*/) {
                     detailsParts.add('"' + key + '":' + JSON.serialize(detailsMap.get(key)));
                 }
             }
@@ -1404,12 +1492,18 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 *****************************************************************/
     private static Map<String, String> getFldLabels(Set<String> fldApiNm) {
         Map<String, String> labelByApi = new Map<String, String>();
-        if (fldApiNm == null || fldApiNm.isEmpty()) { return labelByApi; }
+        if (fldApiNm == null || fldApiNm.isEmpty()) {
+            return labelByApi;
+        }
         try {
             Map<String, Schema.SObjectField> fields = getFieldMap('Core_MDF_Custom_Picklist__c');
-            if (fields == null || fields.isEmpty()) { return labelByApi; }
+            if (fields == null || fields.isEmpty()) {
+                return labelByApi;
+            }
             for (String fldApi : fldApiNm) {
-                if (String.isBlank(fldApi)) { continue; }
+                if (String.isBlank(fldApi)) {
+                    continue;
+                }
                 if (!fields.containsKey(fldApi)) {
                     labelByApi.put(fldApi, fldApi);
                     continue;
@@ -1426,20 +1520,6 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
             Core_MDF_CCP_UtilityClass.logError(ex);
         }
         return labelByApi;
-    }
-    /****************************************************************
-* Method Name: applyLabelsToAttrMap
-* Parameters: Map<String, List<String>> data, Map<String, String> fldLabels
-* Description: Returns a new map with the field API name keys replaced by their corresponding field labels.
-*****************************************************************/
-    private static Map<String, List<String>> applyLabelsToAttrMap(Map<String, List<String>> data, Map<String, String> fldLabels) {
-        Map<String, List<String>> labeledData = new Map<String, List<String>>();
-        if (data == null) { return labeledData; }
-        for (String fldApi : data.keySet()) {
-            String key = (fldLabels != null && fldLabels.containsKey(fldApi)) ? fldLabels.get(fldApi) : fldApi;
-            labeledData.put(key, data.get(fldApi));
-        }
-        return labeledData;
     }
     
     /****************************************************************
@@ -1488,7 +1568,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
         }
         for (String dependentFieldApiName : recTypeDependency.keySet()) {
             Map<String, Object> incomingMeta = (Map<String, Object>) recTypeDependency.get(dependentFieldApiName);
-            if (incomingMeta == null || !incomingMeta.containsKey('dependentValues')) { continue; }
+            if (incomingMeta == null || !incomingMeta.containsKey('dependentValues')) {
+                continue;
+            }
             if (!mergedDependencyByFld.containsKey(dependentFieldApiName)) {
                 Map<String, Object> cloneMeta = new Map<String, Object>();
                 cloneMeta.put('dependentOn', incomingMeta.get('dependentOn'));
@@ -1535,39 +1617,14 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
         for (String dependentFldApi : dependenciesByFld.keySet()) {
             fldApi.add(dependentFldApi);
             Map<String, Object> metadata = (Map<String, Object>) dependenciesByFld.get(dependentFldApi);
-            if (metadata == null || !metadata.containsKey('dependentOn')) { continue; }
+            if (metadata == null || !metadata.containsKey('dependentOn')) {
+                continue;
+            }
             String dependentOnFldApi = String.valueOf(metadata.get('dependentOn'));
             if (!String.isBlank(dependentOnFldApi)) {
                 fldApi.add(dependentOnFldApi);
             }
         }
-    }
-    /****************************************************************
-* Method Name: applyLabelsToDepMdt
-* Parameters: Map<String, Object> dependenciesByFld, Map<String, String> fldLabels
-* Description: Rewrites dependency metadata keys and dependentOn references from field API names to labels when label display mode is enabled.
-*****************************************************************/
-    private static Map<String, Object> applyLabelsToDepMdt(Map<String, Object> dependenciesByFld, Map<String, String> fldLabels) {
-        Map<String, Object> labeledDependencies = new Map<String, Object>();
-        if (dependenciesByFld == null || dependenciesByFld.isEmpty()) {
-            return labeledDependencies;
-        }
-        for (String dependentFldApi : dependenciesByFld.keySet()) {
-            Map<String, Object> metadata = (Map<String, Object>) dependenciesByFld.get(dependentFldApi);
-            if (metadata == null) { continue; }
-            String dependentFieldLabel = (fldLabels != null && fldLabels.containsKey(dependentFldApi)) ? fldLabels.get(dependentFldApi) : dependentFldApi;
-            Map<String, Object> labeledMeta = new Map<String, Object>();
-            if (metadata.containsKey('dependentOn')) {
-                String dependentOnFldApi = String.valueOf(metadata.get('dependentOn'));
-                String dependentOnLabel = (fldLabels != null && fldLabels.containsKey(dependentOnFldApi)) ? fldLabels.get(dependentOnFldApi) : dependentOnFldApi;
-                labeledMeta.put('dependentOn', dependentOnLabel);
-            }
-            if (metadata.containsKey('dependentValues')) {
-                labeledMeta.put('dependentValues', metadata.get('dependentValues'));
-            }
-            labeledDependencies.put(dependentFieldLabel, labeledMeta);
-        }
-        return labeledDependencies;
     }
     /****************************************************************
 * Method Name: buildDependencyMdtForFld
@@ -1662,17 +1719,22 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 * Description: Builds dependentValues mapping from schema-level validFor metadata constrained to currently eligible values.
 *****************************************************************/
     private static Map<String, Object> buildDependencyValFromSchema(String cntrFieldApi, String dependentFldApi, Map<String, Object> cntrFieldDetails, List<Map<String, Object>> eligibleVal, Boolean useFieldLabels) {
-        if (String.isBlank(cntrFieldApi) || String.isBlank(dependentFldApi) || cntrFieldDetails == null || eligibleVal == null || eligibleVal.isEmpty()) {
+        if (String.isBlank(cntrFieldApi) || String.isBlank(dependentFldApi) ||
+            cntrFieldDetails == null || eligibleVal == null || eligibleVal.isEmpty()) {
                 return null;
-        }
+            }
         Map<String, Set<String>> schemaDependencyMap = getSchemaDependencyMap(cntrFieldApi, dependentFldApi);
         if (schemaDependencyMap == null || schemaDependencyMap.isEmpty()) {
             return null;
         }
         Map<String, String> controllingDisplayByRaw = buildControllerRawToDisplayValueMap(cntrFieldDetails, useFieldLabels);
-        if (controllingDisplayByRaw.isEmpty()) { return null; }
+        if (controllingDisplayByRaw.isEmpty()) {
+            return null;
+        }
         Map<String, String> eligibleDependentDisplayByRaw = buildDependentRawToDisplayValueMap(eligibleVal, useFieldLabels);
-        if (eligibleDependentDisplayByRaw.isEmpty()) { return null; }
+        if (eligibleDependentDisplayByRaw.isEmpty()) {
+            return null;
+        }
         Map<String, Object> dependentVal = new Map<String, Object>();
         for (String controllingRawVal : schemaDependencyMap.keySet()) {
             if (!controllingDisplayByRaw.containsKey(controllingRawVal)) {
@@ -1709,12 +1771,18 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
         List<Object> controllingValues = (List<Object>) cntrFldDetails.get('values');
         for (Object controllingValueObj : controllingValues) {
             Map<String, Object> controllingValueDetails = (Map<String, Object>) controllingValueObj;
-            if (controllingValueDetails == null || !controllingValueDetails.containsKey('value')) { continue; }
+            if (controllingValueDetails == null || !controllingValueDetails.containsKey('value')) {
+                continue;
+            }
             Object activeObj = controllingValueDetails.get('active');
             Boolean isActive = activeObj == null ? true : (Boolean) activeObj;
-            if (!isActive) { continue; }
+            if (!isActive) {
+                continue;
+            }
             String rawValue = getPicklistRawVal(controllingValueDetails);
-            if (String.isBlank(rawValue)) { continue; }
+            if (String.isBlank(rawValue)) {
+                continue;
+            }
             String displayValue = getPicklistDisplayVal(controllingValueDetails, useFldLabels);
             if (!String.isBlank(displayValue)) {
                 rawToDisplay.put(rawValue, displayValue);
@@ -1733,9 +1801,13 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
             return rawToDisplay;
         }
         for (Map<String, Object> valueDetails : eligibleValDetails) {
-            if (valueDetails == null || !valueDetails.containsKey('value')) { continue; }
+            if (valueDetails == null || !valueDetails.containsKey('value')) {
+                continue;
+            }
             String rawValue = getPicklistRawVal(valueDetails);
-            if (String.isBlank(rawValue)) { continue; }
+            if (String.isBlank(rawValue)) {
+                continue;
+            }
             String displayValue = getPicklistDisplayVal(valueDetails, useFieldLabels);
             if (!String.isBlank(displayValue)) {
                 rawToDisplay.put(rawValue, displayValue);
@@ -1776,9 +1848,13 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
             }
             for (Schema.PicklistEntry dependentEntry : dependentVal) {
                 String dependentRawValue = htmlDecodePicklistValue(dependentEntry.getValue());
-                if (String.isBlank(dependentRawValue)) { continue; }
+                if (String.isBlank(dependentRawValue)) {
+                    continue;
+                }
                 String encodedValidFor = extractEncodedValidForFromPicklistEntry(dependentEntry);
-                if (String.isBlank(encodedValidFor)) { continue; }
+                if (String.isBlank(encodedValidFor)) {
+                    continue;
+                }
                 String hexString = EncodingUtil.convertToHex(EncodingUtil.base64Decode(encodedValidFor)).toUpperCase();
                 Integer baseCount = 0;
                 for (Integer curr : hexString.getChars()) {
@@ -1814,9 +1890,13 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 * Description: Adds a dependent raw value to the set for a controlling raw value.
 *****************************************************************/
     private static void addDependencyEntry(Map<String, Set<String>> dependencyMap, Schema.PicklistEntry controllingEntry, String dependentRawVal) {
-        if (dependencyMap == null || controllingEntry == null || String.isBlank(dependentRawVal)) { return; }
+        if (dependencyMap == null || controllingEntry == null || String.isBlank(dependentRawVal)) {
+            return;
+        }
         String controllingRawValue = htmlDecodePicklistValue(controllingEntry.getValue());
-        if (String.isBlank(controllingRawValue) || !dependencyMap.containsKey(controllingRawValue)) { return; }
+        if (String.isBlank(controllingRawValue) || !dependencyMap.containsKey(controllingRawValue)) {
+            return;
+        }
         dependencyMap.get(controllingRawValue).add(dependentRawVal);
     }
     /****************************************************************
@@ -1825,7 +1905,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 * Description: Extracts encoded validFor bitset from picklist entry JSON form.
 *****************************************************************/
     private static String extractEncodedValidForFromPicklistEntry(Schema.PicklistEntry picklistEntry) {
-        if (picklistEntry == null) { return null; }
+        if (picklistEntry == null) {
+            return null;
+        }
         try {
             Map<String, Object> entryAsMap = (Map<String, Object>) JSON.deserializeUntyped(JSON.serialize(picklistEntry));
             if (entryAsMap != null && entryAsMap.containsKey('validFor') && entryAsMap.get('validFor') != null) {
@@ -1861,14 +1943,22 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 * Description: Resolves controlling field API name directly from schema metadata.
 *****************************************************************/
     private static String resolveCntrFldFromSchema(String dependentFldApi) {
-        if (String.isBlank(dependentFldApi)) { return null; }
+        if (String.isBlank(dependentFldApi)) {
+            return null;
+        }
         try {
             Map<String, Schema.SObjectField> fieldMap = getFieldMap('Core_MDF_Custom_Picklist__c');
-            if (fieldMap == null || !fieldMap.containsKey(dependentFldApi)) { return null; }
+            if (fieldMap == null || !fieldMap.containsKey(dependentFldApi)) {
+                return null;
+            }
             Schema.DescribeFieldResult dependentDescribe = getFldDesc('Core_MDF_Custom_Picklist__c', dependentFldApi);
-            if (dependentDescribe == null || !dependentDescribe.isDependentPicklist()) { return null; }
+            if (dependentDescribe == null || !dependentDescribe.isDependentPicklist()) {
+                return null;
+            }
             Schema.SObjectField controllerField = dependentDescribe.getController();
-            if (controllerField == null) { return null; }
+            if (controllerField == null) {
+                return null;
+            }
             Schema.DescribeFieldResult controllerDescribe = controllerField.getDescribe();
             return controllerDescribe == null ? null : controllerDescribe.getName();
         } catch (Exception ex) {
@@ -1882,13 +1972,21 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 * Description: Infers controlling field by strict alignment of controllerValues indexes with candidate field value ordering.
 *****************************************************************/
     private static String inferCntrFldByControllerIndexMap(String dependentFldApi, Map<String, Object> dependentFldDetails, Map<String, Object> picklistFldVal) {
-        if (String.isBlank(dependentFldApi) || dependentFldDetails == null || picklistFldVal == null) { return null; }
-        if (!dependentFldDetails.containsKey('controllerValues')) { return null; }
+        if (String.isBlank(dependentFldApi) || dependentFldDetails == null || picklistFldVal == null) {
+            return null;
+        }
+        if (!dependentFldDetails.containsKey('controllerValues')) {
+            return null;
+        }
         Map<String, Object> controllerVal = (Map<String, Object>) dependentFldDetails.get('controllerValues');
-        if (controllerVal == null || controllerVal.isEmpty()) { return null; }
+        if (controllerVal == null || controllerVal.isEmpty()) {
+            return null;
+        }
         Integer expectedControllerKeyCount = 0;
         for (String controllerKey : controllerVal.keySet()) {
-            if (String.isBlank(controllerKey)) { continue; }
+            if (String.isBlank(controllerKey)) {
+                continue;
+            }
             Object expectedIndexObj = controllerVal.get(controllerKey);
             Integer expectedIndex;
             try {
@@ -1904,17 +2002,25 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
                 expectedControllerKeyCount++;
             }
         }
-        if (expectedControllerKeyCount == 0) { return null; }
+        if (expectedControllerKeyCount == 0) {
+            return null;
+        }
         String bestFieldApiName;
         Integer bestStrictMatchCount = 0;
         Integer bestCoverageCount = 0;
         Boolean hasAmbiguousBestMatch = false;
         for (String candidateFldApi : picklistFldVal.keySet()) {
-            if (candidateFldApi == dependentFldApi) { continue; }
+            if (candidateFldApi == dependentFldApi) {
+                continue;
+            }
             Map<String, Object> candidateFldDetails = (Map<String, Object>) picklistFldVal.get(candidateFldApi);
-            if (candidateFldDetails == null || !candidateFldDetails.containsKey('values')) { continue; }
+            if (candidateFldDetails == null || !candidateFldDetails.containsKey('values')) {
+                continue;
+            }
             List<Object> candidateValues = (List<Object>) candidateFldDetails.get('values');
-            if (candidateValues == null || candidateValues.isEmpty()) { continue; }
+            if (candidateValues == null || candidateValues.isEmpty()) {
+                continue;
+            }
             Map<String, Integer> candidateIndexByValue = new Map<String, Integer>();
             Integer idx = 0;
             for (Object candidateValueObj : candidateValues) {
@@ -1930,7 +2036,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
             Integer strictMatchCount = 0;
             Integer coverageCount = 0;
             for (String controllerKey : controllerVal.keySet()) {
-                if (String.isBlank(controllerKey)) { continue; }
+                if (String.isBlank(controllerKey)) {
+                    continue;
+                }
                 Integer expectedIndex;
                 try {
                     expectedIndex = (Integer) controllerVal.get(controllerKey);
@@ -1941,7 +2049,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
                         expectedIndex = null;
                     }
                 }
-                if (expectedIndex == null) { continue; }
+                if (expectedIndex == null) {
+                    continue;
+                }
                 String controllerKeyNorm = controllerKey.trim().toLowerCase();
                 if (candidateIndexByValue.containsKey(controllerKeyNorm)) {
                     coverageCount++;
@@ -1950,20 +2060,29 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
                     }
                 }
             }
-            if (strictMatchCount == 0) { continue; }
-            if (strictMatchCount > bestStrictMatchCount || (strictMatchCount == bestStrictMatchCount && coverageCount > bestCoverageCount)) {
-                bestStrictMatchCount = strictMatchCount;
-                bestCoverageCount = coverageCount;
-                bestFieldApiName = candidateFldApi;
-                hasAmbiguousBestMatch = false;
-            } else if (strictMatchCount == bestStrictMatchCount && coverageCount == bestCoverageCount) {
-                hasAmbiguousBestMatch = true;
+            if (strictMatchCount == 0) {
+                continue;
             }
+            if (strictMatchCount > bestStrictMatchCount ||
+                (strictMatchCount == bestStrictMatchCount && coverageCount > bestCoverageCount)) {
+                    bestStrictMatchCount = strictMatchCount;
+                    bestCoverageCount = coverageCount;
+                    bestFieldApiName = candidateFldApi;
+                    hasAmbiguousBestMatch = false;
+                } else if (strictMatchCount == bestStrictMatchCount && coverageCount == bestCoverageCount) {
+                    hasAmbiguousBestMatch = true;
+                }
         }
-        if (String.isBlank(bestFieldApiName) || hasAmbiguousBestMatch) { return null; }
+        if (String.isBlank(bestFieldApiName) || hasAmbiguousBestMatch) {
+            return null;
+        }
         Integer minCoverageRequired = Math.min(2, expectedControllerKeyCount);
-        if (bestCoverageCount < minCoverageRequired) { return null; }
-        if (bestStrictMatchCount != bestCoverageCount) { return null; }
+        if (bestCoverageCount < minCoverageRequired) {
+            return null;
+        }
+        if (bestStrictMatchCount != bestCoverageCount) {
+            return null;
+        }
         return bestFieldApiName;
     }
     /****************************************************************
@@ -1979,7 +2098,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
             return null;
         }
         Object controllingFldsObj = dependentFldDetails.get('controllingFields');
-        if (controllingFldsObj == null) { return null; }
+        if (controllingFldsObj == null) {
+            return null;
+        }
         if (controllingFldsObj instanceof List<Object>) {
             List<Object> controllingFlds = (List<Object>) controllingFldsObj;
             for (Object fieldObj : controllingFlds) {
@@ -1994,7 +2115,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
             return null;
         }
         String singleFieldApiName = String.valueOf(controllingFldsObj).trim();
-        if (String.isBlank(singleFieldApiName) || singleFieldApiName == dependentFldApi) { return null; }
+        if (String.isBlank(singleFieldApiName) || singleFieldApiName == dependentFldApi) {
+            return null;
+        }
         return picklistVal.containsKey(singleFieldApiName) ? singleFieldApiName : null;
     }
     /****************************************************************
@@ -2043,19 +2166,25 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
         List<Object> controllingValues = (List<Object>) controllingFldDetails.get('values');
         for (Object controllingValueObj : controllingValues) {
             Map<String, Object> controllingValueDetails = (Map<String, Object>) controllingValueObj;
-            if (controllingValueDetails == null || !controllingValueDetails.containsKey('value')) { continue; }
+            if (controllingValueDetails == null || !controllingValueDetails.containsKey('value')) {
+                continue;
+            }
             Object activeObj = controllingValueDetails.get('active');
             Boolean isActive = activeObj == null ? true : (Boolean) activeObj;
             if (!isActive) {
                 continue;
             }
             String rawValue = getPicklistRawVal(controllingValueDetails);
-            if (String.isBlank(rawValue)) { continue; }
+            if (String.isBlank(rawValue)) {
+                continue;
+            }
             String displayValue = getPicklistDisplayVal(controllingValueDetails, useFldLabels);
             displayByRaw.put(rawValue.trim().toLowerCase(), displayValue);
         }
         for (String controllerKey : controllerVal.keySet()) {
-            if (String.isBlank(controllerKey)) { continue; }
+            if (String.isBlank(controllerKey)) {
+                continue;
+            }
             Integer controllerIndex;
             try {
                 controllerIndex = (Integer) controllerVal.get(controllerKey);
@@ -2066,7 +2195,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
                     controllerIndex = null;
                 }
             }
-            if (controllerIndex == null) { continue; }
+            if (controllerIndex == null) {
+                continue;
+            }
             String keyNorm = controllerKey.trim().toLowerCase();
             if (displayByRaw.containsKey(keyNorm)) {
                 controllingDisplayByIndex.put(controllerIndex, displayByRaw.get(keyNorm));
@@ -2081,46 +2212,172 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
     }
     /****************************************************************
 * Method Name: injectDepIntoAttr
-* Parameters: Map<String, List<String>> attributesByFld, Map<String, Object> dependenciesByFld
-* Description: Shapes each attribute field into the response contract with values and optional dependency metadata.
+* Parameters: Map<String, List<String>> attributesByFld, Map<String, Object> dependenciesByFld, Map<String, String> fldLabels
+* Description: Shapes attributes keyed by field label (or API name when no label is supplied) with technicalName always holding the field API name; dependentOn is omitted when the controlling field is the Budget Type / Focus Area.
 *****************************************************************/
-    private static Map<String, Object> injectDepIntoAttr(Map<String, List<String>> attributesByFld,Map<String, Object> dependenciesByFld) {
-        Map<String, Object> enriched = new Map<String, Object>();
-        if (attributesByFld == null || attributesByFld.isEmpty()) { return enriched; }
-        for (String fieldApiName : attributesByFld.keySet()) {
+    private static Map<String, Object> injectDepIntoAttr(Map<String, List<String>> attributesByFld, Map<String, Object> dependenciesByFld, Map<String, String> fldLabels) {
+        Map<String, Object> attributes = new Map<String, Object>();
+        if (attributesByFld == null || attributesByFld.isEmpty()) {
+            return attributes;
+        }
+        for (String fieldApiName : sortStringKeys(new List<String>(attributesByFld.keySet()))) {
             List<String> values = attributesByFld.get(fieldApiName);
-            if (dependenciesByFld == null || !dependenciesByFld.containsKey(fieldApiName)) {
-                enriched.put(fieldApiName, new Map<String, Object>{'values' => values == null ? new List<String>() : values});
-                continue;
-            }
-            Map<String, Object> depMeta = (Map<String, Object>) dependenciesByFld.get(fieldApiName);
-            if (depMeta == null || !depMeta.containsKey('dependentOn') || !depMeta.containsKey('dependentValues')) {
-                enriched.put(fieldApiName, new Map<String, Object>{'values' => values == null ? new List<String>() : values});
-                continue;
-            }
             Map<String, Object> fieldDetails = new Map<String, Object>{
                 'values' => values == null ? new List<String>() : values,
-                'dependentOn' => String.valueOf(depMeta.get('dependentOn')),
-                'dependentValues' => sortMapKeysAscending((Map<String, Object>) depMeta.get('dependentValues'))
+                'technicalName' => fieldApiName
             };
-            enriched.put(fieldApiName, fieldDetails);
+            Map<String, Object> depMeta = dependenciesByFld == null ? null : (Map<String, Object>) dependenciesByFld.get(fieldApiName);
+            if (depMeta != null && depMeta.containsKey('dependentOn') && depMeta.containsKey('dependentValues')) {
+                String dependentOnApi = String.valueOf(depMeta.get('dependentOn'));
+                if (!CTRL_FLD_API.equalsIgnoreCase(dependentOnApi)) {
+                    fieldDetails.put('dependentOn', fldLabels.containsKey(dependentOnApi) ? fldLabels.get(dependentOnApi) : dependentOnApi);
+                }
+                fieldDetails.put('dependentValues', sortMapKeysAscending((Map<String, Object>) depMeta.get('dependentValues')));
+            }
+            String attrKey = fldLabels.containsKey(fieldApiName) ? fldLabels.get(fieldApiName) : fieldApiName;
+            if (attributes.containsKey(attrKey)) {
+                attrKey = attrKey + ' (' + fieldApiName + ')';
+            }
+            attributes.put(attrKey, fieldDetails);
         }
-        return enriched;
+        return attributes;
     }
     /****************************************************************
 * Method Name: injectDepIntoAttrByRecType
-* Parameters: Map<String, Object> attributesByRecType, Map<String, Object> dependenciesByRecType
-* Description: Applies attribute dependency shaping independently for each record type response branch.
+* Parameters: Map<String, Object> attributesByRecType, Map<String, Object> dependenciesByRecType, Map<String, String> fldLabels
+* Description: Applies attribute shaping independently for each record type response branch.
 *****************************************************************/
-    private static Map<String, Object> injectDepIntoAttrByRecType(Map<String, Object> attributesByRecType,Map<String, Object> dependenciesByRecType) {
+    private static Map<String, Object> injectDepIntoAttrByRecType(Map<String, Object> attributesByRecType, Map<String, Object> dependenciesByRecType, Map<String, String> fldLabels) {
         Map<String, Object> enrichedByRecordType = new Map<String, Object>();
-        if (attributesByRecType == null || attributesByRecType.isEmpty()) { return enrichedByRecordType; }
+        if (attributesByRecType == null || attributesByRecType.isEmpty()) {
+            return enrichedByRecordType;
+        }
         for (String recordTypeName : attributesByRecType.keySet()) {
             Map<String, List<String>> attrs = (Map<String, List<String>>) attributesByRecType.get(recordTypeName);
-            Map<String, Object> deps = (dependenciesByRecType != null && dependenciesByRecType.containsKey(recordTypeName)) ? (Map<String, Object>) dependenciesByRecType.get(recordTypeName) : new Map<String, Object>();
-            enrichedByRecordType.put(recordTypeName, injectDepIntoAttr(attrs, deps));
+            Map<String, Object> deps = (dependenciesByRecType != null && dependenciesByRecType.containsKey(recordTypeName))
+                ? (Map<String, Object>) dependenciesByRecType.get(recordTypeName)
+                : new Map<String, Object>();
+            enrichedByRecordType.put(recordTypeName, injectDepIntoAttr(attrs, deps, fldLabels));
         }
         return enrichedByRecordType;
+    }
+    /****************************************************************
+* Method Name: addCtrlFldDependencies
+* Parameters: Map<String, Object> dependencyByFld, Map<String, Object> ctrlDependencyByFld, Set<String> returnedFldApi
+* Description: Adds dependencies on the controlling field for fields that remain in the response.
+*****************************************************************/
+    private static void addCtrlFldDependencies(Map<String, Object> dependencyByFld, Map<String, Object> ctrlDependencyByFld, Set<String> returnedFldApi) {
+        if (dependencyByFld == null || ctrlDependencyByFld == null || returnedFldApi == null) {
+            return;
+        }
+        for (String fldApi : ctrlDependencyByFld.keySet()) {
+            if (returnedFldApi.contains(fldApi)) {
+                dependencyByFld.put(fldApi, ctrlDependencyByFld.get(fldApi));
+            }
+        }
+    }
+    /****************************************************************
+* Method Name: buildCtrlFldDependency
+* Parameters: Map<String, Object> fldDetails, Map<String, Object> payload, List<Map<String, Object>> eligibleValDetails, Integer cntrFldValIndex, Set<String> allowedCtrlVals, Boolean useFldLabels
+* Description: Maps each controlling field value (Budget Type / Focus Area) to the eligible values of a dependent field. When a controlling value was requested only that value is returned.
+*****************************************************************/
+    private static Map<String, Object> buildCtrlFldDependency(Map<String, Object> fldDetails, Map<String, Object> payload, List<Map<String, Object>> eligibleValDetails, Integer cntrFldValIndex, Set<String> allowedCtrlVals, Boolean useFldLabels) {
+        if (fldDetails == null || eligibleValDetails == null || !isDependentOnCntrFld(fldDetails, payload, CTRL_FLD_API)) {
+            return null;
+        }
+        Map<String, Object> controllerVal = (Map<String, Object>) fldDetails.get('controllerValues');
+        Map<String, Object> picklistFldVal = (Map<String, Object>) payload.get('picklistFieldValues');
+        Map<Integer, String> ctrlDisplayByIndex = buildControllerIndexToDisplayValMapFromCntrVal(controllerVal, (Map<String, Object>) picklistFldVal.get(CTRL_FLD_API), useFldLabels);
+        Map<Integer, String> ctrlRawByIndex = new Map<Integer, String>();
+        for (String controllerKey : controllerVal.keySet()) {
+            Integer ctrlIndex = toInteger(controllerVal.get(controllerKey));
+            if (ctrlIndex != null) {
+                ctrlRawByIndex.put(ctrlIndex, htmlDecodePicklistValue(controllerKey));
+            }
+        }
+        Map<String, List<String>> valByCtrlVal = new Map<String, List<String>>();
+        for (Map<String, Object> valueDetails : eligibleValDetails) {
+            String dependentVal = getPicklistDisplayVal(valueDetails, useFldLabels);
+            List<Object> validForList = (List<Object>) valueDetails.get('validFor');
+            if (String.isBlank(dependentVal) || validForList == null || validForList.isEmpty()) {
+                continue;
+            }
+            for (Object validForObj : validForList) {
+                Integer ctrlIndex = toInteger(validForObj);
+                if (ctrlIndex == null || (cntrFldValIndex != null && ctrlIndex != cntrFldValIndex)) {
+                    continue;
+                }
+                String ctrlRaw = ctrlRawByIndex.get(ctrlIndex);
+                String ctrlNm = ctrlDisplayByIndex.get(ctrlIndex);
+                if (String.isBlank(ctrlRaw) || String.isBlank(ctrlNm) || (!allowedCtrlVals.isEmpty() && !allowedCtrlVals.contains(ctrlRaw.trim().toLowerCase()))) {
+                    continue;
+                }
+                if (!valByCtrlVal.containsKey(ctrlNm)) {
+                    valByCtrlVal.put(ctrlNm, new List<String>());
+                }
+                valByCtrlVal.get(ctrlNm).add(dependentVal);
+            }
+        }
+        if (valByCtrlVal.isEmpty()) {
+            return null;
+        }
+        Map<String, Object> dependentValues = new Map<String, Object>();
+        for (String ctrlNm : valByCtrlVal.keySet()) {
+            dependentValues.put(ctrlNm, getSortedDistinctVal(valByCtrlVal.get(ctrlNm)));
+        }
+        return new Map<String, Object>{'dependentOn' => CTRL_FLD_API, 'dependentValues' => dependentValues};
+    }
+    /****************************************************************
+* Method Name: toInteger
+* Parameters: Object value
+* Description: Converts a deserialized JSON number to Integer, returning null when it cannot be converted.
+*****************************************************************/
+    private static Integer toInteger(Object value) {
+        if (value == null) {
+            return null;
+        }
+        if (value instanceof Integer) {
+            return (Integer) value;
+        }
+        try {
+            return Integer.valueOf(String.valueOf(value));
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+    /****************************************************************
+* Method Name: getLegacyBudgetTypeSet
+* Parameters: None
+* Description: Returns the lower-cased legacy budget types (e.g. 'ccf 1.0') that are excluded from API output.
+*****************************************************************/
+    private static Set<String> getLegacyBudgetTypeSet() {
+        Set<String> legacySet = new Set<String>();
+        String legacyValues = System.Label.Core_MDF_LegacyRestricBudgetTypes;
+        if (String.isBlank(legacyValues)) {
+            return legacySet;
+        }
+        for (String entry : legacyValues.split(',')) {
+            if (!String.isBlank(entry)) {
+                legacySet.add(entry.trim().toLowerCase());
+            }
+        }
+        return legacySet;
+    }
+    /****************************************************************
+* Method Name: resolveCtrlFldDisplayNm
+* Parameters: String canonicalProg
+* Description: Returns 'Focus Area' for programs listed in label Core_MDF_IPA_Program_Name, otherwise 'Budget Type'.
+*****************************************************************/
+    private static String resolveCtrlFldDisplayNm(String canonicalProg) {
+        String focusAreaProgs = System.Label.Core_MDF_IPA_Program_Name;
+        if (!String.isBlank(canonicalProg) && !String.isBlank(focusAreaProgs)) {
+            for (String entry : focusAreaProgs.split(',')) {
+                if (entry.trim().equalsIgnoreCase(canonicalProg.trim())) {
+                    return CTRL_FLD_FOCUS_AREA;
+                }
+            }
+        }
+        return CTRL_FLD_BUDGET_TYPE;
     }
     
     private class AttributeFieldDetails {
@@ -2132,6 +2389,7 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
     private class RecTypePicklistResult {
         public Map<String, List<String>> valuesByField = new Map<String, List<String>>();
         public Map<String, Object> dependenciesByField = new Map<String, Object>();
+        public Map<String, Object> ctrlDependenciesByField = new Map<String, Object>();
     }
     /****************************************************************
 * Method Name: serializeWithSortedMapKeys
@@ -2139,7 +2397,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 * Description: Normalizes and serializes data with deterministic key ordering.
 *****************************************************************/    
     private static String serializeWithSortedMapKeys(Object value, Boolean isNormalizedValue) {
-        if (value == null) { return 'null'; }
+        if (value == null) {
+            return 'null';
+        }
         try {
             Object workingValue = value;
             if (!isNormalizedValue) {
@@ -2192,10 +2452,14 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 * Description: Identifies attribute field detail objects used for ordered serialization.
 *****************************************************************/
     private static Boolean isAttributeFieldDetailsShape(Map<String, Object> valueMap) {
-        if (valueMap == null || valueMap.isEmpty()) { return false; }
-        if (!valueMap.containsKey('values')) { return false; }
-        if (valueMap.containsKey('dependentOn') || valueMap.containsKey('dependentValues')) {
-            return valueMap.containsKey('dependentOn') && valueMap.containsKey('dependentValues');
+        if (valueMap == null || valueMap.isEmpty()) {
+            return false;
+        }
+        if (!valueMap.containsKey('values')) {
+            return false;
+        }
+        if (valueMap.containsKey('dependentOn')) {
+            return valueMap.containsKey('dependentValues');
         }
         return true;
     }
@@ -2205,10 +2469,14 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 * Description: Sorts keys alphabetically in a case-insensitive deterministic order.
 *****************************************************************/
     private static List<String> sortStringKeys(List<String> keys) {
-        if (keys == null || keys.isEmpty()) { return new List<String>(); }
+        if (keys == null || keys.isEmpty()) {
+            return new List<String>();
+        }
         Map<String, List<String>> lowerToOriginalKeys = new Map<String, List<String>>();
         for (String key : keys) {
-            if (key == null) { continue; }
+            if (key == null) {
+                continue;
+            }
             String lower = key.toLowerCase();
             if (!lowerToOriginalKeys.containsKey(lower)) {
                 lowerToOriginalKeys.put(lower, new List<String>());
@@ -2232,10 +2500,14 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 *****************************************************************/
     private static Map<String, Object> sortMapKeysAscending(Map<String, Object> inputMap) {
         Map<String, Object> sortedMap = new Map<String, Object>();
-        if (inputMap == null || inputMap.isEmpty()) { return sortedMap; }
+        if (inputMap == null || inputMap.isEmpty()) {
+            return sortedMap;
+        }
         Map<String, List<String>> lowerToOriginalKeys = new Map<String, List<String>>();
         for (String key : inputMap.keySet()) {
-            if (String.isBlank(key)) { continue; }
+            if (String.isBlank(key)) {
+                continue;
+            }
             String lower = key.toLowerCase();
             if (!lowerToOriginalKeys.containsKey(lower)) {
                 lowerToOriginalKeys.put(lower, new List<String>());

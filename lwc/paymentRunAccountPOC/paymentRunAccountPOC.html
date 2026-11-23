@@ -1,0 +1,24 @@
+<template>
+    <div>
+    <lightning-accordion allow-multiple-sections-open class="slds-theme_default">
+<lightning-accordion-section name="A" label="Selected Accounts" class="slds-theme_shade" style = "text-decoration:none">
+ <!-- <lightning-datatable data={accountList} columns={columns} key-field="Id" hide-checkbox-column class="slds-table slds-table_header-hidden">
+</lightning-datatable> -->
+<table class="slds-table slds-table_cell-buffer slds-table_header-hidden slds-table_bordered">
+  <thead class="slds-assistive-text"></thead>
+  <tbody>
+    <template for:each={accountList} for:item="item" for:index="indexVar">
+      <tr key={item.Id}>
+          <td class="slds-size_1-of-6">
+              <div>
+                  {item.Name}
+              </div>
+          </td>
+          </tr>
+          </template>
+  </tbody>
+</table>
+</lightning-accordion-section>
+      </lightning-accordion>
+        </div>    
+</template>

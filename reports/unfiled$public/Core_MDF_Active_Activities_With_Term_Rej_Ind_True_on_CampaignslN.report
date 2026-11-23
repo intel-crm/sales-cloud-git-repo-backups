@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PartnerFundRequest$Name</field>
+    </columns>
+    <description>This reports filters the activities of active statuses, but with a active campaign and terminal rejection indicator set to true in the back-end</description>
+    <filter>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <column>PartnerFundRequest$Campaign.Core_MDF_Terminal_Rejection_Ind__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Campaign.Status</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Declined</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Active Activities With Term Rej Ind True</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_MDF_Activity_and_Campaign_with_Budget_Cap__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PartnerFundRequest$Core_MDF_IneffectiveDateTime__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

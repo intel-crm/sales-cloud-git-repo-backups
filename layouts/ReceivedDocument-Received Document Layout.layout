@@ -93,6 +93,13 @@
     <relatedLists>
         <relatedList>RelatedFileList</relatedList>
     </relatedLists>
+    <relatedLists>
+        <fields>Name</fields>
+        <fields>ParentRecord</fields>
+        <fields>Status</fields>
+        <fields>CreatedDate</fields>
+        <relatedList>DocumentChecklistItems</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>

@@ -1,0 +1,176 @@
+<aura:component controller="Core_MDF_PartnerFundClaim" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,lightning:actionOverride,force:lightningQuickActionWithoutHeader">
+    <!--Style-->
+    <aura:html tag="style">
+        <!--To remove blue border-->
+        .slds-fade-in-open{
+        outline:none;
+        margin-top: 3rem;
+        }
+    </aura:html>
+    
+    <ltng:require styles="{!$Resource.Core_MDF_SLDS262 + '/styles/salesforce-lightning-design-system.css'}" />
+    <aura:attribute name="simpleNewClaim" type="PartnerFundClaim" default="{ 'sobjectType': 'PartnerFundClaim',
+                                                                           'Description':'',
+                                                                           'Amount':'',
+                                                                           'Title':''
+                                                                           }" />
+    <aura:attribute name="isClaimEdit" type="boolean" default="false" />
+    <!--Handle next buton or back button action/ event fire from save button cmp-->
+    <aura:handler name="ManageButtonEvent" event="c:Core_MDF_ManageButtonActionEvent" action="{!c.manageActionEvent}" />
+    <aura:handler name="DisplayErrorMessageEvent" event="c:Core_MDF_DisplayGenericErrorEvent" action="{!c.displayErrorMessage}" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!-- Save and OK button attribute-->
+    <aura:attribute name="isSaveDisabled" type="boolean" default="false" />
+    <!--Spinner attribute-->
+    <aura:attribute name="Spinner" type="boolean" default="false" />
+    <!--handle edit on status-->
+    <aura:attribute name="isClaimEditable" type="boolean" default="true" />
+    <aura:attribute name="isClaimNegativeType" type="boolean" default="false" />
+    <!--To hold batch record Id-->
+    <aura:attribute name="batchRecordId" type="Id"/>
+    <!--Store error message-->
+    <aura:attribute name="claimErrorMsg" type="String" />
+    <aura:attribute name="recordtype" type="String" default="" description="Stores the recordtypeID from the parent component" />
+    <aura:attribute name="recordtypeName" type="String" default="" description="Stores the recordtypeName from the parent component" />
+    <aura:attribute name="recordtypeDeveloperName" type="String" default="" description="Stores the recordtypeDeveloperName from the parent component" />
+    <!--Setting true , if activity status is In-Progress or Planned -->
+    <aura:attribute name="isValidActivityToCreateClaim" type="boolean" default="false"/>
+    
+    <!--Attribute to Store Clone Button Variable-->
+    <aura:attribute name="isCloneClaim" type="Boolean"  description=" tells if it is clone record"/>   
+    <!--To hold error msg (permission/status), in case of claim create from activity-->
+    <aura:attribute name="claimFromActivityErrorMsg" type="String"/>
+    <!--Added 2 attributes escActivityId, escalationId to create Claim from Escalation-->
+    <aura:attribute name="escActivityId" type="string" default="" />
+    <aura:attribute name="escalationId" type="string" default= "" />
+    
+  <!--Attribute to check weather Claim is can be Audited or Not : Areefa -->
+    <aura:attribute name = "isClaimAudited" type = "Boolean" default="false"/>
+  
+    <!-- Attributes currentStep showes Create Claim -->
+    <aura:attribute name="currentStep" type="string" default="1"/>
+    
+    <!-- Attributes nextuploadcomp and showStep2  showes Document Upload section for Claim -->
+    <aura:attribute name="showStep2" type="Boolean" default="true"/>
+    <aura:attribute name="auditDocument" type="Core_MDF_Audit_Document__c[]" default="[]" />    
+    <!--Attribute to check weather Claim is can be Audited or Not -->    
+    <aura:attribute name="StrightToPayDisabled" type="Boolean" default="false" description="Conditionally disabling the StraightToPay functionality"/>
+    
+    <div aura:id="modalIdForCommunityRecord" role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-modal_medium slds-fade-in-open">
+        <aura:if isTrue="{!v.Spinner}">
+            <lightning:spinner alternativeText="Loading" size="medium" variant="brand" />
+        </aura:if>
+        <div class="slds-modal__container">
+            <!-- Heading (Header of the Modal) -->
+            <div class="slds-modal__header">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+                        onclick="{!c.closeModal}">
+                    <lightning:icon class="slds-icon" iconName="utility:close" alternativeText="Close" />
+                </button>
+                
+                <!--Areefa :POP changes Start-->
+                <aura:if isTrue="{!(v.isClaimEditable)}">
+                <lightning:progressIndicator type="path" currentStep="{!v.currentStep}" variant="base">
+                    <lightning:progressStep label="{!$Label.c.Core_MDF_Claim_Details}" value="1" onclick="{!c.clickClaimDetails}"/>
+                    <!--aura:if isTrue="{!v.showStep2 }"-->
+                        <lightning:progressStep label="{!$Label.c.Core_MDF_Upload_Documents}" value="2" onclick="{!c.moveNext}"/>
+                    <!--/aura:if-->    
+                </lightning:progressIndicator>  
+                </aura:if>                          
+                
+                <!--Edit changes-->
+                <!--Display in header weather it is Clone or Edit changes-->
+                <aura:if isTrue="{!v.isCloneClaim }">
+                    <h2 id="header43" class="slds-text-heading--medium">{!$Label.c.Core_MDF_CloneClaim}-New</h2>
+                    <aura:set attribute="else">                    	
+                        <aura:if isTrue="{!(empty(v.simpleNewClaim.Request.Title))}">
+                            <h2 id="header43" class="slds-text-heading--medium">{!$Label.c.Core_MDF_CreateClaim}-New</h2>
+                            <aura:set attribute="else">
+                                <h2 id="header43" class="slds-text-heading--medium">{!$Label.c.Core_MDF_EditClaim}-New</h2>
+                            </aura:set>
+                        </aura:if>                      
+                    </aura:set>                
+                </aura:if> 
+                <br />                
+            </div>
+            <aura:if isTrue="{!or(v.isValidActivityToCreateClaim,v.isClaimEditable,v.isClaimEdit)}">
+                <div class="slds-modal__content slds-p-around--medium">
+                    <div class="{!v.currentStep == '1' ? 'slds-show' : 'slds-hide'}" style="color:black" >
+                    <c:Core_MDF_PFC_Create_InputFields_AD aura:id="pfcInputFieldsCmp" simpleNewClaim="{!v.simpleNewClaim}"
+                                                          recordtypeDeveloperName = "{!v.recordtypeDeveloperName}"                                                          
+                                                          isCloneClaim = "{!v.isCloneClaim}"
+                                                          activityRecId = "{!v.recordId}"
+                                                          escActivityId = "{!v.escActivityId}"
+                                                          escalationId = "{!v.escalationId}"
+                                                          currentStep = "{!v.currentStep}"
+                                                          isClaimEditable = "{!v.isClaimEditable}"
+                                                          isClaimNegativeType = "{!v.isClaimNegativeType}"
+                                                          claimFromActivityErrorMsg = "{!v.claimFromActivityErrorMsg}"
+                                                          isValidActivityToCreateClaim = "{!v.isValidActivityToCreateClaim}"
+                                                          StrightToPayDisabled = "{!v.StrightToPayDisabled}"/>
+                    </div>
+                    <div class="{!v.currentStep == '2' ? 'slds-show' : 'slds-hide'}" style="color:black">
+                        
+                        <c:Core_MDF_ManageAuditDocument sobjectType = "PartnerFundClaim" 
+                                                        auditDocument = "{!v.auditDocument}"
+                                                        isFileUploadOnClaimCreation = "true"/>
+                    </div>  
+                </div>
+                <aura:set attribute="else">
+                    <aura:if isTrue="{!(v.isClaimNegativeType)}">
+                        <div class="slds-modal__content slds-p-around_medium modelMinHeight">
+                            <p class="textCenterAlign slds-text-heading_small">{!$Label.c.Core_MDF_Negative_Claim_Error}</p>
+                        </div>
+                        <aura:set attribute="else">
+                            <aura:if isTrue="{!(and(v.isClaimEdit ,!v.isClaimEditable))}">
+                                <div class="slds-modal__content slds-p-around_medium">
+                                    <p class="textCenterAlign slds-text-heading_small">{!$Label.c.Core_MDF_NoClaimEditPermissionText}</p>
+                                </div>
+                                <!--In case , create claim from activity-->
+                                <aura:set attribute="else">
+                                    <div class="slds-modal__content slds-p-around_medium modelMinHeight">
+                                        <p class="textCenterAlign slds-text-heading_small slds-align_absolute-center">{!v.claimFromActivityErrorMsg}</p>
+                                    </div>
+                                </aura:set>
+                            </aura:if>
+                        </aura:set>
+                    </aura:if>
+                </aura:set>
+           </aura:if>            
+            <!--###### MODAL BOX FOOTER Part Start From Here ######-->
+            <div class="slds-modal__footer">
+                      <c:Core_MDF_PFC_Create_SaveButton_AD aura:id="pfcSaveButtonCmp" 
+                                                           simpleNewClaim="{!v.simpleNewClaim}"
+                                                           auditDocument = "{!v.auditDocument}"
+                                                           isClaimEdit = "{!v.isClaimEdit}"
+                                                           currentStep = "{!v.currentStep}"                                                           
+                                                           isClaimEditable="{!v.isClaimEditable}"/>
+            </div>            
+        </div>
+        <!--Removed duplicate popup from here-->
+    </div>
+    <!--Error Modal-->
+    <div class="slds-hide" aura:id="errorToast" style="height: 4rem;">
+        <div class="slds-notify_container errorModalMargin">
+            <div class="slds-notify slds-notify_toast slds-theme_error" role="status">
+                <div class="errorIcon">
+                    <lightning:icon class="errorIcon" iconName="utility:error" alternativeText="Error!" variant="error" size="small"/>
+                </div> 
+                <div class="slds-notify__content">
+                    <h2 class="slds-text-heading_small ">{!v.claimErrorMsg}</h2>
+                </div>
+                <div class="slds-notify__close">
+                    <button aura:id='toastCloseButton' class="slds-button slds-button_icon slds-button_icon-inverse" title="Close"
+                            onclick="{!c.closeErrorToast}">
+                        <lightning:icon iconName="utility:close" alternativeText="Close" variant="close" size="small"/>
+                        <span class="slds-assistive-text">{!$Label.c.Core_MDF_Close}</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <aura:if isTrue="{!and(!v.recordId ,!v.batchRecordId)}">        
+        <div aura:id="backdropIdForNewRecord" class="slds-backdrop slds-backdrop--open"></div>
+    </aura:if>
+</aura:component>

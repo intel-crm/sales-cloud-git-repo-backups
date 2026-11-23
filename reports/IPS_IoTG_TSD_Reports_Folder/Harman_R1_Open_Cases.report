@@ -33,29 +33,33 @@
     <columns>
         <field>STATUS</field>
     </columns>
-    <columns>
-        <field>Case.Core_IPS_Product_name__c</field>
-    </columns>
     <description>Harman R1 Open Cases</description>
     <filter>
         <criteriaItems>
-            <column>Case.Core_IPS_Product_name__c</column>
+            <column>FK_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Denverton AD</value>
+            <value>Harman R1 for FCA</value>
         </criteriaItems>
         <criteriaItems>
-            <column>ACCOUNT.NAME</column>
+            <column>STATUS</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>FIAT CHRYSLER AUTOMOBILES</value>
+            <operator>notEqual</operator>
+            <value>Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_Sub_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Close-Pending</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>FCA AV Thunder Cases</name>
+    <name>Harman R1 Open Cases</name>
     <params>
         <name>units</name>
         <value>h</value>

@@ -64,7 +64,6 @@
     </columns>
     <description>Report that lists account balance for each account node for a given budget year .</description>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
         <criteriaItems>
             <column>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests.PartnerFundClaims$Core_MDF_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -76,8 +75,8 @@
             <column>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests.PartnerFundClaims$Core_MDF_Region_Cd__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>APJ,ASMO,EMEA,PRC</value>
+            <operator>notEqual</operator>
+            <value></value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests.PartnerFundClaims$Core_MDF_Type_Txt__c</column>
@@ -91,14 +90,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Business Client Acceleration - MDF,CCF 1.0,Client Market Accelerate,Client Specialties MDF,Data Centric Acceleration - MDF,DCF 1.0,Intel Rise Technology Initiative,IoT Premier - MDF,IoT Targeted - MDF,ODM Growth Plan - Client MDF,MDF,MDF+,OEM CMP,Retail MDF,RSA MD,Service Provider CMP,SOEM Client MDF,SOEM Data Center MDF,Account Plan,Proposal I MDF,Cloud,Proposal II MDF</value>
+            <value>,Client Market Accelerate,Client Specialties MDF,Data Centric Acceleration - MDF,Intel Rise Technology Initiative,IoT Premier - MDF,IoT Targeted - MDF,MDF,MDF+,ODM Growth Plan - Client MDF,OEM CMP,Retail MDF,RSA MD,Service Provider CMP,SOEM Client MDF,SOEM Data Center MDF,Account Plan,Proposal I MDF,Proposal II MDF,Business Client Acceleration - MDF,Cloud,CCF 1.0,DCF 1.0</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerMarketingBudget$Core_MDF_Program__c.Core_MDF_Technical_Program_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Channel MDF,Client CoMarketing Fund,Client CoMarketing Fund Boost,Data Center CoMarketing Fund,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Ecosystem Extension Fund</value>
+            <value>,Client CoMarketing Fund,Client,Client CoMarketing Fund Boost,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Ecosystem Extension Fund,Data Center CoMarketing Fund</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests$Campaign</column>
@@ -106,6 +105,20 @@
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
             <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests.PartnerFundClaims$Core_MDF_Region_Cd__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerMarketingBudget$Core_MDF_Program__c.Core_MDF_Technical_Program_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>CoGTM</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -59,6 +59,7 @@ public class Core_MDF_AccountABACheck_Test {
             ipaUltimateAccount.Core_IPA_One_Partner_Id__c = benefitAccount.Id;
             insert ipaUltimateAccount;
             ipaUltimateAccount.Core_Unified_Global_Customer_BP_Id__c ='primeId1';
+            //ipaUltimateAccount.Core_IPA_One_Partner_Id__c = 'primeId1';
             ipaUltimateAccount.Core_Intel_Partner_Alliance_PartnerGroup__c = true;
             update ipaUltimateAccount;
             Account ipaCoMarketingAccount = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('IPA Co-Marketing Account', ipaCP.id, Core_MDF_CCP_TestDataUtility.Account_Record_Type,ipaUltimateAccount.id, false);   

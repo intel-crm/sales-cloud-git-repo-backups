@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppOauthSecuritySettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <externalClientApplication>CCP_Dev_Test</externalClientApplication>
+    <label>CCP_Dev_Test_oauthSecurity</label>
+</ExtlClntAppOauthSecuritySettings>

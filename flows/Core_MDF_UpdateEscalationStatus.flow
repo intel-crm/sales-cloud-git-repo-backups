@@ -26,6 +26,7 @@
         <inputParameters>
             <name>processDefinitionNameOrId</name>
             <value>
+                <inputConfiguratorMode>Custom</inputConfiguratorMode>
                 <stringValue>Core_MDF_Case_Escalation_AP_v13</stringValue>
             </value>
         </inputParameters>
@@ -59,6 +60,7 @@
         <inputParameters>
             <name>processDefinitionNameOrId</name>
             <value>
+                <inputConfiguratorMode>Custom</inputConfiguratorMode>
                 <stringValue>Core_MDF_Budget_Type_Escalation_AP_v4</stringValue>
             </value>
         </inputParameters>
@@ -92,6 +94,7 @@
         <inputParameters>
             <name>processDefinitionNameOrId</name>
             <value>
+                <inputConfiguratorMode>Custom</inputConfiguratorMode>
                 <stringValue>Core_MDF_Claim_Escalation_AP_v14</stringValue>
             </value>
         </inputParameters>
@@ -907,8 +910,8 @@
     <assignments>
         <name>PFR_fields_Assignment</name>
         <label>PFR fields Assignment</label>
-        <locationX>1268</locationX>
-        <locationY>902</locationY>
+        <locationX>1271</locationX>
+        <locationY>866</locationY>
         <assignmentItems>
             <assignToReference>Loop_on_PFR_Records.Amount</assignToReference>
             <operator>Assign</operator>
@@ -996,8 +999,8 @@
     <customErrors>
         <name>Retail_Activity_update_error_0_0</name>
         <label>Retail Activity update error</label>
-        <locationX>1226</locationX>
-        <locationY>1104</locationY>
+        <locationX>1251</locationX>
+        <locationY>1054</locationY>
         <customErrorMessages>
             <errorMessage>{!$Label.Core_MDF_ApplicationErrorMessage}</errorMessage>
             <isFieldError>false</isFieldError>
@@ -1663,8 +1666,8 @@
     <decisions>
         <name>IPA_Program_Check</name>
         <label>IPA Program Check</label>
-        <locationX>1079</locationX>
-        <locationY>577</locationY>
+        <locationX>1078</locationX>
+        <locationY>572</locationY>
         <defaultConnector>
             <targetReference>Co_GTM_Program_Check</targetReference>
         </defaultConnector>
@@ -1785,8 +1788,8 @@
     <loops>
         <name>Loop_on_PFR_Records</name>
         <label>Loop on PFR Records</label>
-        <locationX>1090</locationX>
-        <locationY>902</locationY>
+        <locationX>1140</locationX>
+        <locationY>874</locationY>
         <collectionReference>Get_Activity_Records</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -1846,8 +1849,8 @@
     <recordLookups>
         <name>Get_Activity_Records</name>
         <label>Get Activity Records</label>
-        <locationX>1084</locationX>
-        <locationY>745</locationY>
+        <locationX>1133</locationX>
+        <locationY>744</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Loop_on_PFR_Records</targetReference>
@@ -1983,8 +1986,8 @@
     <recordUpdates>
         <name>Core_MDF_Update_Activity</name>
         <label>Update Activity</label>
-        <locationX>1092</locationX>
-        <locationY>1107</locationY>
+        <locationX>1143</locationX>
+        <locationY>1050</locationY>
         <connector>
             <targetReference>Core_MDF_Check_if_Owner_and_Escalation_submitter_are_same_user_0_0</targetReference>
         </connector>

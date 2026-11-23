@@ -1,0 +1,7 @@
+<!-- This Component Overwrites the New button for the PFR Object and used for the selection of the recordtype -->
+<!-- Parent Component for the Core_Intel_createEditPFR Component  -->
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:actionOverride" 
+                access="global" 
+                controller="Core_MDF_PFR_RecordTypeSelector">
+           
+</aura:component>

@@ -57,21 +57,13 @@
     <columns>
         <field>PartnerFundRequest$CreatedBy</field>
     </columns>
+    <columns>
+        <field>PartnerFundRequest.PartnerFundClaims.PIC_Reviews__r$Core_MDF_Review_Date_dt__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest.PartnerFundClaims.PIC_Reviews__r$Core_MDF_Review_Status_nm__c</field>
+    </columns>
     <filter>
-        <criteriaItems>
-            <column>PartnerFundRequest$ChannelPartner.Name</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Australia,India,Indonesia,Japan,South Korea,Malaysia,New Zealand,PBS,Philippines,Singapore,Taiwan,Thailand,Vietnam,FPT,Daiwabo,VSTECS,SIS DISTRIBUTION,Tixpro,Welltech,Dragon Computer,Datascrip,Galva,ECS Indo</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundRequest$ChannelPartner.Name</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Embedded,Component,Synnex FPT,Branded</value>
-        </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Campaign</column>
             <columnToColumn>false</columnToColumn>
@@ -101,18 +93,18 @@
             <value>00172941,00178083</value>
         </criteriaItems>
         <criteriaItems>
-            <column>PartnerFundRequest$Campaign</column>
+            <column>PartnerFundRequest.PartnerFundClaims.PIC_Reviews__r$Core_MDF_Review_Status_nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>DGP MDF,DGPS MDF</value>
+            <operator>equals</operator>
+            <value>,Completed,Failed</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
     <groupingsAcross>
         <dateGranularity>Day</dateGranularity>
-        <field>PartnerFundRequest.PartnerFundClaims$Core_MDF_Activity_Types__c</field>
+        <field>PartnerFundRequest$Core_MDF_Activity_Types__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
     <groupingsDown>

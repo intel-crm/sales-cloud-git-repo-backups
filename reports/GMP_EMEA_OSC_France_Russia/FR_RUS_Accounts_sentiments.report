@@ -69,7 +69,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Fedorov,Kotelnikova,Panov,Muszynska,Le Gallou,Chrzanowski,Osiecki,Antoine,Klimczak</value>
+            <value>Fedorov,Kotelnikova,Panov,Kostadinov,Bernard,Muszynska,Le Gallou,Chrzanowski,Osiecki,Antoine</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Account_Country__c</column>

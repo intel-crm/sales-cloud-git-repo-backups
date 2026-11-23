@@ -16,41 +16,49 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Activity</displayNameOverride>
             <field>Activity</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Activity #</displayNameOverride>
             <field>Core_MDF_Activity_Number__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Activity Category</displayNameOverride>
             <field>Core_MDF_ActivityCategory__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Activity Type</displayNameOverride>
             <field>Core_MDF_Activity_Types__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Activity Subtype</displayNameOverride>
             <field>Core_MDF_Activity_SubType_nm__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Budget</displayNameOverride>
             <field>Budget</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Activity Spending Limit Local</displayNameOverride>
             <field>Core_MDF_Budget_Amount_Local_amt__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Ecosystem Partner</displayNameOverride>
             <field>Core_MDF_Channel_Partner__c</field>
             <table>PartnerFundRequest</table>
         </columns>
@@ -62,6 +70,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Ecosystem Partner Led?</displayNameOverride>
             <field>Core_MDF_Channel_Partner_Led__c</field>
             <table>PartnerFundRequest</table>
         </columns>
@@ -85,46 +94,55 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Ineffective Date/Time</displayNameOverride>
             <field>Core_MDF_IneffectiveDateTime__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Joint Content</displayNameOverride>
             <field>Core_MDF_Joint_Content_ind__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
             <field>LastModifiedBy</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Other Ecosystem Partner</displayNameOverride>
             <field>Core_MDF_Other_Channel_Partner__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Owner</displayNameOverride>
             <field>Core_MDF_Owner_nm__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Co-Marketing Activitiy ID</displayNameOverride>
             <field>Id</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Activity Name</displayNameOverride>
             <field>Name</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>PFRDetailLink</displayNameOverride>
             <field>Core_MDF_PFRDetailLink__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>PFRRecordCommunityLink</displayNameOverride>
             <field>Core_MDF_PFRRecordCommunityLink__c</field>
             <table>PartnerFundRequest</table>
         </columns>
@@ -142,6 +160,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product Category</displayNameOverride>
             <field>Core_MDF_Product_Category_txt__c</field>
             <table>PartnerFundRequest</table>
         </columns>
@@ -153,16 +172,19 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Record Type</displayNameOverride>
             <field>RecordType</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Reimbursement Rate</displayNameOverride>
             <field>Core_MDF_Reimbursement_Rate__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Reimbursement Rate</displayNameOverride>
             <field>Core_MDF_Reimbursement_Rate_pct__c</field>
             <table>PartnerFundRequest</table>
         </columns>
@@ -180,11 +202,13 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Status</displayNameOverride>
             <field>Status</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Sub Region</displayNameOverride>
             <field>Core_MDF_Sub_Region_nm__c</field>
             <table>PartnerFundRequest</table>
         </columns>
@@ -196,11 +220,13 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Target Audience</displayNameOverride>
             <field>Core_MDF_TargetAudience__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Ultimate Account Name</displayNameOverride>
             <field>Core_MDF_Ultimate_Account_Name__c</field>
             <table>PartnerFundRequest</table>
         </columns>
@@ -254,31 +280,37 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Co-Marketing Activity : Created By : Contact : Full Name</displayNameOverride>
             <field>CreatedBy.Contact.Name</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Co-Marketing Activity : Account : Account ID</displayNameOverride>
             <field>ChannelPartner.Id</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Co-Marketing Activity : Account : Remove Account ID</displayNameOverride>
             <field>ChannelPartner.Core_Account_ID__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Co-Marketing Activity : Account : Account Name</displayNameOverride>
             <field>ChannelPartner.Name</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Budget Type</displayNameOverride>
             <field>Core_MDF_Budget_Type_nm__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Co-Marketing Activity : Campaign : Marketing Objective / Strategy</displayNameOverride>
             <field>Campaign.Core_MDF_Marketing_Objective_Strategy__c</field>
             <table>PartnerFundRequest</table>
         </columns>
@@ -286,6 +318,30 @@
             <checkedByDefault>false</checkedByDefault>
             <displayNameOverride>Activity Brand</displayNameOverride>
             <field>Core_MDF_Brand_nm__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Co-Marketing Activity : Campaign : Proposal Score</displayNameOverride>
+            <field>Campaign.Core_MDF_Proposal_Score_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Co-Marketing Activity : Campaign : Other Ecosystem Partner</displayNameOverride>
+            <field>Campaign.Core_MDF_Other_Ecosystem_Partner_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Co-Marketing Activity : Campaign : Priority</displayNameOverride>
+            <field>Campaign.Core_MDF_Priority__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Co-Marketing Activity : Campaign : Priority</displayNameOverride>
+            <field>Campaign.Core_MDF_IPA_Priority_nm__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
@@ -308,12 +364,19 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Activity Start Quarter</displayNameOverride>
             <field>Core_MDF_Activity_Start_Quarter_txt__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Activity Start Year</displayNameOverride>
             <field>Core_MDF_Activity_StartYear_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Activity_Level_nm__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <masterLabel>Partner Fund Requests</masterLabel>
@@ -327,11 +390,13 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Activity Category</displayNameOverride>
             <field>Core_MDF_Activity_Category__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Activity End Date</displayNameOverride>
             <field>Core_MDF_Activity_End_Date__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
@@ -343,6 +408,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Activity Start Date</displayNameOverride>
             <field>Core_MDF_Activity_Start_Date__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
@@ -354,56 +420,67 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Activity Type</displayNameOverride>
             <field>Core_MDF_Activity_Types__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Execution End Date</displayNameOverride>
             <field>Core_MDF_Ad_Run_End_Date__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Execution Start Date</displayNameOverride>
             <field>Core_MDF_Ad_Run_Start_Date__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Bank</displayNameOverride>
             <field>Core_MDF_Bank__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Bank/ESD Hold</displayNameOverride>
             <field>Core_MDF_ESD_Hold__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Cap Type</displayNameOverride>
             <field>Core_MDF_Cap_Type_nm__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Claim Batch Number</displayNameOverride>
             <field>Core_MDF_Batch_Nbr__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Claim Batch Stage</displayNameOverride>
             <field>Core_MDF_Claim_Batch_Stage__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Claim Previous Status</displayNameOverride>
             <field>Core_MDF_Claim_Previous_Status__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Claim Type</displayNameOverride>
             <field>Core_MDF_Type_Txt__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Costs not Reimbursable (Local)</displayNameOverride>
             <field>Core_MDF_OtherCostsnotReimbursable_Local__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
@@ -415,176 +492,211 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Description</displayNameOverride>
             <field>Description</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Duplicate Claim</displayNameOverride>
             <field>Core_MDF_Duplicate_Claim__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Escalation ID</displayNameOverride>
             <field>Core_MDF_Escalation_Id__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Exchange Rate</displayNameOverride>
             <field>Core_MDF_Exchange_rate__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Flagged For Review</displayNameOverride>
             <field>Core_MDF_FlaggedForAudit__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Region</displayNameOverride>
             <field>Core_MDF_Region_Cd__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Brand</displayNameOverride>
             <field>Core_MDF_Brand_nm__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>IdealModelResult</displayNameOverride>
             <field>Core_MDF_Pred_IdealModelResult__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Hold</displayNameOverride>
             <field>Core_MDF_Criteria_Hold_Ind__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Hold #</displayNameOverride>
             <field>Core_MDF_Criteria_Hold_No_Id__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Hold Ref #</displayNameOverride>
             <field>Core_MDF_Criteria_Hold_Ref_No_Txt__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Manual Hold</displayNameOverride>
             <field>Core_MDF_Intel_Manual_Hold_Ind__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Manual Hold Comments</displayNameOverride>
             <field>Core_MDF_Intel_Manual_Hold_Comments_Txt__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Proof Of Cost Date</displayNameOverride>
             <field>Core_MDF_Invoice_Date__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Proof Of Cost Number</displayNameOverride>
             <field>Core_MDF_Invoice_Number__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>IsClaimReviewEscalation</displayNameOverride>
             <field>Core_MDF_IsClaimReviewEscalation_Ind__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Language Locale Key</displayNameOverride>
             <field>Core_MDF_Owner_LanguageLocaleKey_Cd__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
             <field>Core_MDF_Last_ModifiedBy_Nm__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
             <field>LastModifiedBy</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
             <field>LastModifiedDate</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Media Vehicle</displayNameOverride>
             <field>Core_MDF_Media_Vehicle__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Member Hold</displayNameOverride>
             <field>Core_MDF_Member_Manual_Hold_Ind__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Member Hold Comments</displayNameOverride>
             <field>Core_MDF_Member_Manual_Hold_Comments_Txt__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>ModelTimeStamp</displayNameOverride>
             <field>Core_MDF_Pred_ModelTimeStamp__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Owner</displayNameOverride>
             <field>Core_MDF_Owner_Nm__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Claim ID</displayNameOverride>
             <field>Id</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Claim Name</displayNameOverride>
             <field>Name</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Payment Hold</displayNameOverride>
             <field>Core_MDF_Payment_Hold_ind__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Payment Made On</displayNameOverride>
             <field>Core_MDF_Payment_Made_Dt__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Payment Number</displayNameOverride>
             <field>Core_MDF_Payment_Id__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>PredictionResult</displayNameOverride>
             <field>Core_MDF_Pred_PredictionResult__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>PredictionScore</displayNameOverride>
             <field>Core_MDF_Pred_PredictionScore__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Predictive Review Error</displayNameOverride>
             <field>Core_MDF_Predictive_Audit_Error__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Predictive Review Retries</displayNameOverride>
             <field>Core_MDF_Predictive_Audit_Retries__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Probability</displayNameOverride>
             <field>Core_MDF_Pred_Probability__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
@@ -596,91 +708,109 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quantity of (Impressions, instances)</displayNameOverride>
             <field>Core_MDF_Quantity_of_Impression__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Record Type</displayNameOverride>
             <field>RecordType</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Reimbursable Amount (Local)</displayNameOverride>
             <field>Core_MDF_Reimbursable_TransactionAmt_Loc__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Reimbursable Amount (USD)</displayNameOverride>
             <field>Core_MDF_Reimbursable_Transaction_Amount__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Reimbursement Rate (%)</displayNameOverride>
             <field>Core_MDF_Reimbursement_Percent__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Requested Amount (USD)</displayNameOverride>
             <field>Core_MDF_Requested_Reimbursement_Amt__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Review Case</displayNameOverride>
             <field>Core_MDF_Claim_Review_Case__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Review Check InProgress</displayNameOverride>
             <field>Core_MDF_AuditSelectionInProgress__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Review Hold</displayNameOverride>
             <field>Core_MDF_Audit_Hold__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Review Type</displayNameOverride>
             <field>Core_MDF_Audit_Type__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Status</displayNameOverride>
             <field>Status</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Straight to Pay</displayNameOverride>
             <field>Core_MDF_To_Be_Audited_Ind__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Sub Region</displayNameOverride>
             <field>Core_MDF_Sub_Region_Cd__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Target Audience</displayNameOverride>
             <field>Core_MDF_Target_Audience__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Taxes (Local)</displayNameOverride>
             <field>Core_MDF_Taxes_Local__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>ThresholdFlag</displayNameOverride>
             <field>Core_MDF_Pred_ThresholdFlag__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Amount (Local)</displayNameOverride>
             <field>Core_MDF_Total_Invoice_Amount_Local__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Offset Amount (USD)</displayNameOverride>
             <field>Core_MDF_Total_Claim_Offsets__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
@@ -752,6 +882,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Budget Type</displayNameOverride>
             <field>Core_MDF_Budget_Type_Options_Nm__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
@@ -769,6 +900,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Claim : Review Case : Review Case Status</displayNameOverride>
             <field>Core_MDF_Claim_Review_Case__c.Core_MDF_Status__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
@@ -789,6 +921,11 @@
             <displayNameOverride>Case Adjustment Amount</displayNameOverride>
             <field>Core_MDF_Claim_Review_Case__c.Core_MDF_Adjustment_Amount_USD_Amt__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ChannelPartner.Core_MDF_Account_Node_Attribute_Id__c</field>
+            <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
@@ -830,6 +967,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Offset Amount (USD)</displayNameOverride>
             <field>Core_MDF_Offset_Amount_Amt__c</field>
             <table>PartnerFundRequest.PartnerFundClaims.Claim_Offsets__r</table>
         </columns>
@@ -844,57 +982,485 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Campaign Reimbursement Rate</displayNameOverride>
+            <field>Core_MDF_Campaign_Reimbursement_Rate_pct__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Activity Reimbursement Rate</displayNameOverride>
+            <field>Core_MDF_Activity_Reimbursement_Rate_pct__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>ATF Flag</displayNameOverride>
             <field>Core_MDF_ATF_Flag_nm__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Campaign Reimbursement Rate</displayNameOverride>
             <field>Core_MDF_Campaign_Reimbursement_Rate_txt__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Activity_Classification_nm__c</field>
+            <displayNameOverride>Budget Type (Reporting Only)</displayNameOverride>
+            <field>Core_MDF_Budget_Type_Reporting_Only_nm__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Content DocumentIds</displayNameOverride>
+            <field>Core_MDF_Content_DocumentIds_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>New Channel Partner</displayNameOverride>
+            <field>New_Channel_Partner__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Host Region</displayNameOverride>
             <field>Core_MDF_Host_Region_txt__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>IPA Internal Approver Comment</displayNameOverride>
+            <field>Core_MDF_IPA_Int_Approver_Comment_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Activity Classification</displayNameOverride>
+            <field>Core_MDF_Activity_Classification_nm__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Focus Area</displayNameOverride>
             <field>Core_MDF_Focus_Area_nm__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Target Audience</displayNameOverride>
+            <field>Core_MDF_TargetAudience_nm__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Industry - DNR</displayNameOverride>
+            <field>Core_MDF_IPA_Industry_nm__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Initiatives</displayNameOverride>
             <field>Core_MDF_Initiative_nm__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Priority_nm__c</field>
-            <table>PartnerFundRequest</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Ecosystem Partner</displayNameOverride>
             <field>Core_MDF_EcosystemPartner_nm__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Priority</displayNameOverride>
+            <field>Core_MDF_Priority_nm__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Industry</displayNameOverride>
             <field>Core_MDF_Industry_Multi_nm__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Business Unit Split</displayNameOverride>
             <field>Core_MDF_BU_Split__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity ID</displayNameOverride>
+            <field>Core_MDF_Opportunity_id__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Campaign Status</displayNameOverride>
+            <field>Core_MDF_Campaign_Status_nm__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Start Time</displayNameOverride>
+            <field>Core_MDF_StartTime_dtm__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Time</displayNameOverride>
+            <field>Core_MDF_EndTime_dtm__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Activity Creation Duration</displayNameOverride>
+            <field>Core_MDF_Activity_Creation_Duration_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Activity Creation Duration (Mins)</displayNameOverride>
+            <field>Core_MDF_Activity_Creation_Dur_Min_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Activity End Quarter</displayNameOverride>
+            <field>Core_MDF_Activity_End_Quarter_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Claims Already Paid</displayNameOverride>
+            <field>Core_MDF_Total_Claims_Already_Paid_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Unified Global ID</displayNameOverride>
+            <field>Core_MDF_Unified_Global_id__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Unified Global Name</displayNameOverride>
+            <field>Core_MDF_Unified_Global_Name_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Region</displayNameOverride>
+            <field>Core_MDF_Region_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Campaign Reimbursement Amount (USD)</displayNameOverride>
+            <field>Core_MDF_Campaign_Reimbursement_Amt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Other Event Name</displayNameOverride>
+            <field>Core_MDF_Other_Event_Name_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Corp Virtual Account Name</displayNameOverride>
+            <field>Core_MDF_Virtual_Corp_Acct_Name_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>NEX Activity</displayNameOverride>
             <field>Core_MDF_NEX_Ind__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Payment Type Node Level</displayNameOverride>
+            <field>Core_MDF_Payment_Type_Node_Level__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CSP Intel-Based Revenue</displayNameOverride>
+            <field>Core_MDF_CSP_Intel_Based_Revenue_amt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Primary Partner Intel Owner</displayNameOverride>
+            <field>Core_MDF_Primary_Intel_Owner_Id__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Primary Member Acceptance</displayNameOverride>
+            <field>Core_MDF_Primary_Member_Acceptance_Ind__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer</displayNameOverride>
+            <field>Core_MDF_End_Customer_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Campaign Ultimate Account Id</displayNameOverride>
+            <field>Core_MDF_Campaign_Ultimate_Account_Id__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Campaign Account Id</displayNameOverride>
+            <field>Core_MDF_Campaign_Account_Id__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approval Amount Check</displayNameOverride>
+            <field>Core_MDF_Approval_Amount_Check__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Internal Tracking</displayNameOverride>
+            <field>Core_MDF_Internal_Tracking_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Recipients</displayNameOverride>
+            <field>Core_MDF_No_of_Recipients_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Page Views</displayNameOverride>
+            <field>Core_MDF_No_of_Page_Views_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Leads</displayNameOverride>
+            <field>Core_MDF_No_of_Leads_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Units Sold</displayNameOverride>
+            <field>Core_MDF_No_of_Units_Sold_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Design Wins</displayNameOverride>
+            <field>Core_MDF_No_of_Design_Wins_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Deals Registered</displayNameOverride>
+            <field>Core_MDF_No_of_Deals_Registered_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Contacts Reached</displayNameOverride>
+            <field>Core_MDF_No_of_Contacts_Reached_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Dedicated Personnel</displayNameOverride>
+            <field>Core_MDF_No_of_Dedicated_Personnel_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Trainings Completed</displayNameOverride>
+            <field>Core_MDF_No_of_Trainings_Completed_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Deployments</displayNameOverride>
+            <field>Core_MDF_No_of_Deployments_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Unique Visitors</displayNameOverride>
+            <field>Core_MDF_No_of_Unique_Visitors_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Conversions</displayNameOverride>
+            <field>Core_MDF_No_of_Conversions_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Cost Per Lead (USD)</displayNameOverride>
+            <field>Core_MDF_Cost_Per_Lead_amt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Views</displayNameOverride>
+            <field>Core_MDF_No_of_Views_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Downloads</displayNameOverride>
+            <field>Core_MDF_No_of_Downloads_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Revenue of Units Sold (USD)</displayNameOverride>
+            <field>Core_MDF_Revenue_of_Units_Sold_amt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Placements</displayNameOverride>
+            <field>Core_MDF_No_of_Placements_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Individuals Trained</displayNameOverride>
+            <field>Core_MDF_No_of_Individuals_Trained_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Average time on Page (Seconds)</displayNameOverride>
+            <field>Core_MDF_Average_time_on_Page_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Social Media Likes/Shares</displayNameOverride>
+            <field>Core_MDF_Social_Media_Engagements_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Average View Time (Seconds)</displayNameOverride>
+            <field>Core_MDF_Average_View_Time_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Unique Listeners</displayNameOverride>
+            <field>Core_MDF_No_of_Unique_Listeners_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>ASP (Average Sales Price) Growth (USD)</displayNameOverride>
+            <field>Core_MDF_ASP_Growth_amt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Others</displayNameOverride>
+            <field>Core_MDF_Others_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Intel Speakerships/Sessions</displayNameOverride>
+            <field>Core_MDF_Intel_Speakerships_Sessions_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Trainees</displayNameOverride>
+            <field>Core_MDF_No_of_Trainees_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Days</displayNameOverride>
+            <field>Core_MDF_No_of_Days_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Activated Instances</displayNameOverride>
+            <field>Core_MDF_No_of_ActivatedInstance_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Instances</displayNameOverride>
+            <field>Core_MDF_No_of_Instance_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Calls</displayNameOverride>
+            <field>Core_MDF_No_of_Calls_nbr__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Other Reason Name</displayNameOverride>
+            <field>Core_MDF_Other_Reason_nm_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Market_Segment_Nm__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Other_Engineering_Activity_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_POP_Requirement_nm__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Activity_Spending_Limit_Local_Old__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Activity_Spending_Limit_Local_New__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Reimbursement_Rate_New__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Reimbursement_Rate_Old__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Intel_Contribution_New__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Outcomes_nm__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <masterLabel>Co-Marketing Activities</masterLabel>
@@ -902,37 +1468,359 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>3rd Party POP Documentation Required</displayNameOverride>
             <field>Core_MDF_3rd_Party_POP_Doc_Required_Ind__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Claim Recovery Amount (USD)</displayNameOverride>
             <field>Core_MDF_Total_Claim_Recovery_Amount__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Excess Requested Amount (USD)</displayNameOverride>
             <field>Core_MDF_Excess_Requested_Amount__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Log Info</displayNameOverride>
             <field>Core_MDF_Log_Info_txt__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Applicable VAT Percentage</displayNameOverride>
+            <field>Core_MDF_Applicable_VAT_Percentage_nm__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Activity Status</displayNameOverride>
+            <field>Core_MDF_Activity_Status_nm__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Amount (Local) New</displayNameOverride>
+            <field>Core_MDF_TotalInvoice_Amt_Local__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Payment Rollback Reason</displayNameOverride>
+            <field>Core_MDF_Payment_Rollback_Reason_nm__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Payment Type</displayNameOverride>
             <field>Core_MDF_Payment_Type_nm__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Paid By Payment Type</displayNameOverride>
             <field>Core_MDF_Paid_By_Payment_Type_nm__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Start Time</displayNameOverride>
+            <field>Core_MDF_StartTime_dtm__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Time</displayNameOverride>
+            <field>Core_MDF_EndTime_dtm__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Claim Creation Duration</displayNameOverride>
+            <field>Core_MDF_Claim_Creation_Duration_txt__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Claim Creation Duration (Mins)</displayNameOverride>
+            <field>Core_MDF_Claim_Creation_Dur_Min_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Unified Global ID</displayNameOverride>
+            <field>Core_MDF_Unified_Global_ID__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Unified Global Name</displayNameOverride>
+            <field>Core_MDF_Unified_Global_Name_nm__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>EFT Number</displayNameOverride>
             <field>Core_MDF_EFT_Number_txt__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Bank Legal Entity Code</displayNameOverride>
+            <field>Core_MDF_Bank_Legal_Entity_Code_cd__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>test flow</displayNameOverride>
+            <field>test_flow__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead Quantity</displayNameOverride>
+            <field>Core_MDF_Lead_Quantity_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Deployment Quantity</displayNameOverride>
+            <field>Core_MDF_Deployment_Quantity_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Other Quantity</displayNameOverride>
+            <field>Core_MDF_Other_Quantity_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CSP Intel-Based Revenue</displayNameOverride>
+            <field>Core_MDF_CSP_Intel_Based_Revenue_Amt__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Hold for Recovery</displayNameOverride>
+            <field>Core_MDF_Recovery_Hold_Ind__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Page Views</displayNameOverride>
+            <field>Core_MDF_No_of_Page_Views_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Units Sold</displayNameOverride>
+            <field>Core_MDF_No_of_Units_Sold_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Design Wins</displayNameOverride>
+            <field>Core_MDF_No_of_Design_Wins_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Deals Registered</displayNameOverride>
+            <field>Core_MDF_No_of_Deals_Registered_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Contacts Reached</displayNameOverride>
+            <field>Core_MDF_No_of_Contacts_Reached_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Dedicated Personnel</displayNameOverride>
+            <field>Core_MDF_No_of_Dedicated_Personnel_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Trainings Completed</displayNameOverride>
+            <field>Core_MDF_No_of_Trainings_Completed_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Deployments</displayNameOverride>
+            <field>Core_MDF_No_of_Deployments_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Unique Visitors</displayNameOverride>
+            <field>Core_MDF_No_of_Unique_Visitors_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Conversions</displayNameOverride>
+            <field>Core_MDF_No_of_Conversions_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Cost Per Lead (USD)</displayNameOverride>
+            <field>Core_MDF_Cost_Per_Lead_amt__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Views</displayNameOverride>
+            <field>Core_MDF_No_of_Views_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Downloads</displayNameOverride>
+            <field>Core_MDF_No_of_Downloads_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Revenue of Units Sold (USD)</displayNameOverride>
+            <field>Core_MDF_Revenue_of_Units_Sold_amt__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Placements</displayNameOverride>
+            <field>Core_MDF_No_of_Placements_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Individuals Trained</displayNameOverride>
+            <field>Core_MDF_No_of_Individuals_Trained_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Average time on Page (Seconds)</displayNameOverride>
+            <field>Core_MDF_Average_time_on_Page_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Social Media Likes/Shares</displayNameOverride>
+            <field>Core_MDF_Social_Media_Engagements_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Average View Time (Seconds)</displayNameOverride>
+            <field>Core_MDF_Average_View_Time_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Intel Speakerships/Sessions</displayNameOverride>
+            <field>Core_MDF_Intel_Speakerships_Sessions_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Unique Listeners</displayNameOverride>
+            <field>Core_MDF_No_of_Unique_Listeners_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>ASP (Average Sales Price) Growth (USD)</displayNameOverride>
+            <field>Core_MDF_ASP_Growth_amt__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Others</displayNameOverride>
+            <field>Core_MDF_Others_txt__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_SurePay_Processed_Ind__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Campaign_Name_nm__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Campaign_End_Date_dt__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Technology__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Product_Type__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Customer_Product_Codename_txt__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Date_After_Modified__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Has_Sub_Claims_Ind__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Claim_Id__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Amount_Percentage__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Super_Claim_Status_nm__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_NoOfLeads_Nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Number_of_Recipient_nbr__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Open_Rate_txt__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Reporting_Region__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <masterLabel>Claims</masterLabel>
@@ -940,6 +1828,7 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Activity Description</displayNameOverride>
             <field>Core_MDF_Activity_Description__c</field>
             <table>PartnerFundRequest</table>
         </columns>
@@ -951,31 +1840,37 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Attribution - Increase from Guidebook</displayNameOverride>
             <field>Core_MDF_Attribution_Variance_Pos_txt__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Contribution</displayNameOverride>
             <field>Core_MDF_Activity_Reimbursement_Amt_nbr__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Member Acceptor</displayNameOverride>
             <field>Core_MDF_Member_Acceptor_Id__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Member Owner</displayNameOverride>
             <field>Core_MDF_Member_Owner_txt__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel Owner</displayNameOverride>
             <field>Core_MDF_Intel_Activity_Owner_Id__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Activity Status</displayNameOverride>
             <field>Core_MDF_Fund_Request_Status__c</field>
             <table>PartnerFundRequest</table>
         </columns>
@@ -1047,11 +1942,13 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Claim Comments</displayNameOverride>
             <field>Core_MDF_Claim_Comments__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Claim Status</displayNameOverride>
             <field>Core_MDF_Status__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
@@ -1075,6 +1972,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>External Approval Comment</displayNameOverride>
             <field>Core_MDF_External_Approval_Comment_txt__c</field>
             <table>PartnerFundRequest</table>
         </columns>
@@ -1084,6 +1982,19 @@
             <field>Core_MDF_Region_nm__c</field>
             <table>PartnerFundRequest</table>
         </columns>
+        <masterLabel>All Fields Report</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Parent_Activity_Id__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Is_Node_Activity__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Is_Outcome_Based_Ind__c</field>
@@ -1091,10 +2002,29 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Super Claim</displayNameOverride>
-            <field>Core_MDF_Claim_Id__c</field>
-            <table>PartnerFundRequest.PartnerFundClaims</table>
+            <field>Core_MDF_AI_File_Data__c</field>
+            <table>PartnerFundRequest</table>
         </columns>
-        <masterLabel>All Fields Report</masterLabel>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_OEM_CMP_Approval_required__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Partner_Contact_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Measurement_Approach_nm__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Other_Measurement_Approach_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <masterLabel>Co-Marketing Activties</masterLabel>
     </sections>
 </ReportType>

@@ -42,18 +42,6 @@
     <columns>
         <field>Opportunity.Core_Product_Segment__c</field>
     </columns>
-    <crossFilters>
-        <criteriaItems>
-            <column>Core_BU_Short_Name_Old__c</column>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>IOTG</value>
-        </criteriaItems>
-        <operation>with</operation>
-        <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
-        <relatedTable>OpportunityLineItem</relatedTable>
-        <relatedTableJoinColumn>Opportunity</relatedTableJoinColumn>
-    </crossFilters>
     <filter>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -115,7 +103,7 @@
         <field>Opportunity.Core_Loss_Cancel_Reason__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>IOTG Cancelled Design 2020</name>
+    <name>IOTG Cancelled Design</name>
     <params>
         <name>terr</name>
         <value>all</value>

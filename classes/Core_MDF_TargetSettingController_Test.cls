@@ -21,7 +21,7 @@ public class Core_MDF_TargetSettingController_Test {
         
         System.runAs(usr){
             ChannelProgram ipaCP = Core_MDF_CCP_TestDataUtility.createProgram ('Intel Partner Alliance','Intel Partner Alliance', true);
-            ChannelProgram CCFChannelProgram = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', true);
+            ChannelProgram CCFChannelProgram = Core_MDF_CCP_TestDataUtility.createProgram ('Client ','Client CoMarketing Fund', true);
             List<Account> intAccList= new List<Account>();
             Account accIPA = Core_MDF_CCP_TestDataUtility.createIntelAccount ('IPA Intel Account',Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
             accIPA.Core_MDF_CoMarketingActive__c = true;
@@ -38,8 +38,8 @@ public class Core_MDF_TargetSettingController_Test {
             accCCF.Core_MDF_CoMarketingActive__c = true;
             accCCF.Core_Geo__c = 'APJ';
             accCCF.Core_Sub_Geo__c = 'SA';
-            accCCF.BillingStateCode = '';
             accCCF.BillingCountryCode = '';
+            accCCF.BillingStateCode='';
             intAccList.add(accCCF);
             
             insert intAccList;
@@ -145,8 +145,11 @@ public class Core_MDF_TargetSettingController_Test {
             newTargetSettingList.add(targetSetting);
             
             insert newTargetSettingList;
-            
-
+            //14285 Suma Unused variable rule
+            /*Core_MDF_Spending_Targets_Version__c version = [SELECT Id, Core_MDF_Is_Active_Ind__c, Core_MDF_Version_nbr__c
+                                                            FROM Core_MDF_Spending_Targets_Version__c
+                                                            WHERE Core_MDF_Spending_Targets__c =: targetSetting.Id  
+                                                            AND Core_MDF_Is_Active_Ind__c = TRUE];*/
             
         }
         
@@ -173,17 +176,17 @@ public class Core_MDF_TargetSettingController_Test {
             Core_MDF_Target_Setting_Line_Item__c lineItemRecord1 = new Core_MDF_Target_Setting_Line_Item__c();
             lineItemRecord1.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
             lineItemRecord1.Core_MDF_Region_nm__c = 'APJ';
-            lineItemRecord1.Core_MDF_Region_Name_nm__c = 'APJ'; // Added by Sumalatha
+            lineItemRecord1.Core_MDF_Region_Name_nm__c = 'APJ';
             lineItemRecord1.Core_MDF_Amount__c = 0;
             lineItemRecord1.Core_MDF_Spending_Targets_Version__c = version1.Id;
             lineItemRecord1.RecordTypeId = lineItem_RecordType_CCF;
             lineItemRecord1.Core_MDF_Account__c= VCacc.id;
             lineItemRecord1.Core_MDF_Campaign_Name__c = 'Test Campaign 1';
             lineItemRecord1.Core_MDF_Country_nm__c = 'INDIA';
-
+            //lineItemRecord1.Core_MDF_Country_Name_nm__c = 'INDIA';
             lineItemRecord1.Core_MDF_Priority_nm__c = 'AI Consumer';
             
-           // insert lineItemRecord1;
+            //insert lineItemRecord1;
             
             Campaign cmp = new Campaign();
             cmp.Name = lineItemRecord1.Core_MDF_Campaign_Name__c;

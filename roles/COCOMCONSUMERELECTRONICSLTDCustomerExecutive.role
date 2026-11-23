@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>COCOM CONSUMER ELECTRONICS LTD Customer Executive</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>COCOM CONSUMER ELECTRONICS LTD Customer Executive</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_10606604_Mark_Allen</parentRole>
+</Role>

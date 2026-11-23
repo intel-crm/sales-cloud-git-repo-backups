@@ -21,7 +21,7 @@
         <picklistValueName>Pending Approval</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
-        <info>&lt;p&gt;&lt;span style=&quot;font-size: 14.6667px;&quot;&gt;Activity was submitted and assigned to Intel approval queue.&lt;/span&gt;&lt;/p&gt;</info>
+        <fieldNames>Core_MDF_OutcomeBased_Campaign_Name_txt__c</fieldNames>
         <picklistValueName>Pending Review</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>

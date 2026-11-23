@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>SIEMENS RAIL AUTOMATION S.A.U. Customer Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>SIEMENS RAIL AUTOMATION S.A.U. Customer Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>SIEMENSRAILAUTOMATIONSAUCustomerExecutive</parentRole>
+</Role>

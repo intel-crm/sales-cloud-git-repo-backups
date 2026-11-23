@@ -1,0 +1,64 @@
+<template>
+    <div class="slds-page-header">
+        <lightning-layout horizontal-align="center">
+        <h1 class="slds-text-heading--label"><b>CCP Mass Owner Update</b></h1>
+        </lightning-layout>
+    </div>
+     <div class="slds-box slds-theme--default">
+        <div style="width: 100%;">
+                <div>
+                <lightning-combobox name="programFilter" data-id="program" label={programLabel} placeholder={selectProgram} style="display: inline-block;width:20%"
+                    value={programSelected} options={programOptions} onchange={handleProgramFilterChange}
+                    class="slds-p-horizontal_medium">
+                </lightning-combobox>
+                 <lightning-combobox name="objectFilter" data-id="object" label="Object" placeholder="Select Object" style="display: inline-block;width:20%"
+                    value={objectSelected} options={objectOptions} onchange={handleobjectFilterChange}
+                    class="slds-p-horizontal_medium" disabled={objectNotLoaded}>
+                </lightning-combobox>
+                <lightning-combobox name="accountFilter" data-id="account" label={accountLabel} placeholder={selectAccount} style="display: inline-block;width:20%"
+                    value={accountSelected} options={accountOptions} onchange={handleAccountFilterChange}
+                    class="slds-p-horizontal_medium" disabled={accountNotLoaded}>
+                </lightning-combobox>
+
+                <lightning-combobox name="nodeAccountFilter" data-id="Node Account" label={nodeaccountLabel} placeholder={selectAccount} style="display: inline-block;width:20%"
+                    value={nodeAccountSelected} options={nodeAccountOptions} onchange={handleNodeAccountFilterChange}
+                    class="slds-p-horizontal_medium" disabled={nodeAccountNotLoaded}>
+                </lightning-combobox>
+                <!--<lightning-layout-item horizontal-align="center" >-->
+                <lightning-button variant="brand" icon-name="utility:download" style="display: inline-block;padding-left:2%"
+                label={getDataLabel} onclick={getData}
+                disabled={allOptionsNotSelected}>
+                </lightning-button>
+                <!--</lightning-layout-item>-->
+                 </div>
+                <template if:true={showUserInput}>
+                <div style="height: 250px;">
+                <lightning-datatable
+                key-field="objectId"
+                data={objectData}
+                columns={objectColumns}>
+                </lightning-datatable>
+                </div>
+                <lightning-layout-item horizontal-align="center" >
+                <lightning-input type="search" required="true" style="width:50%;" data-id="userinputnew" label="To User" value={valueselectedNew} name="searchNewUser"  onchange={searchNewUser}  field-level-help="Enter few characters of User by Name/ User Record Id"  placeholder="Search by Name or UserId">
+                </lightning-input>
+                </lightning-layout-item>
+                <lightning-layout horizontal-align="center">
+                <lightning-layout-item padding="horizontal-small" >
+                <lightning-button icon-name="utility:download" 
+                          label="Update Ownership" 
+                          title="Update Ownership"
+                          onclick={getUpdateRecords} variant="brand"
+                          disabled={allOptionsNotSelected}></lightning-button>
+                </lightning-layout-item>
+                </lightning-layout>
+                </template>
+            </div>
+     </div>
+<div if:true={messageFlagNew}>
+    No result found.
+</div>
+<div if:true={LoadingTextNew}>
+    Loading...
+</div>
+</template>

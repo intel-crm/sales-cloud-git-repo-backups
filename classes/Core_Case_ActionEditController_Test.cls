@@ -91,15 +91,13 @@ Modification Log :
                 if(rt.Name=='CEP Case'){
                     CaseRec.ContactId = ListOfContacts[0].id;
                     CaseRec.accountId = ListOfAccounts[0].Id;
-                    //it is inactive so we are commenting it out
-                    //CaseRec.RecordTypeId = rt.Id;
+                    CaseRec.RecordTypeId = rt.Id;
                     CaseRec.OwnerId = intelSupportOwner;                         
                 }
             }
         }
-        
         System.runAs(ListOfUser.get(0)){
-             insert ListOfCases;
+            insert ListOfCases;
         }
         System.assert(ListOfCases[0].Id != null, 'Record not created');
         Test.startTest();
@@ -137,8 +135,7 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Deepak Jetty              5/02/2016                Created
 ****************************************************************************************************/
- //commenting for classic EOL-Tejaswini
-    /*  static testmethod void redirectActionNonCEPCaseRTEdit_Test(){
+    static testmethod void redirectActionNonCEPCaseRTEdit_Test(){
         getrecords();
         // Get intelSupportOwner Id (User Id)
         Id intelSupportOwner = ListOfUser.get(0).id;
@@ -181,8 +178,7 @@ Modification Log :
             stdAct.Name='12';
             stdAct.Action__c='Edit';
             stdAct.Record_Type__c='IPS_Case_Create';
-            //commented for classic EOL -Tejaswini
-          //  stdAct.URI__c='/apex/Core_IPS_Internal_Case_Creation?mode=edit&id='; 
+            stdAct.URI__c='/apex/Core_IPS_Internal_Case_Creation?mode=edit&id=';
         }
         System.runAs(ListOfUser.get(0)){
             insert ListStdActions;
@@ -198,8 +194,7 @@ Modification Log :
         }
         System.assert(ref!=null, 'Empty Url');
         Test.stopTest();
-    } */
-    
+    }
     /***************************************************************************************************
 Method Name:  redirectActionCEPCaseRTEdit_Test
 Method Type: Test Method
@@ -248,8 +243,7 @@ Modification Log :
         for(StandardActionRedirection__C stdAct:ListStdActions){
             stdAct.Name='21';
             stdAct.Action__c='Edit';
-            //commented for classic EOL -Tejaswini
-         //   stdAct.URI__c='/apex/Core_IPS_Internal_Case_Creation?retURL='; 
+            stdAct.URI__c='/apex/Core_IPS_Internal_Case_Creation?retURL=';
             stdAct.Profile_del__c = 'Sales Rep-BB';
         }
         System.runAs(ListOfUser.get(0)){
@@ -335,9 +329,7 @@ Modification Log :
         for(StandardActionRedirection__C stdAct:ListStdActions){
             stdAct.Name='15';
             stdAct.Action__c='Edit';
-            stdAct.URI__c='';
-            //Commented bcz Core_IPS_Customer_Case_Creation is getting called  US:TWC745-5417 
-           // stdAct.URI__c='/apex/Core_IPS_Customer_Case_Creation?mode=edit&id=';
+            stdAct.URI__c='/apex/Core_IPS_Customer_Case_Creation?mode=edit&id=';
             stdAct.Profile_del__c = 'IPS External Customer';
         }
         System.runAs(ListOfUser.get(0)){
@@ -425,9 +417,7 @@ Modification Log :
         for(StandardActionRedirection__C stdAct:ListStdActions){
             stdAct.Name='15';
             stdAct.Action__c='Edit';
-            stdAct.URI__c='';
-            //Commented bcz Core_IPS_Customer_Case_Creation is getting called  US:TWC745-5417 
-           // stdAct.URI__c='/apex/Core_IPS_Customer_Case_Creation?mode=edit&id=';
+            stdAct.URI__c='/apex/Core_IPS_Customer_Case_Creation?mode=edit&id=';
             stdAct.Profile_del__c = 'IPS External Customer';
         }
         System.runAs(ListOfUser.get(0)){

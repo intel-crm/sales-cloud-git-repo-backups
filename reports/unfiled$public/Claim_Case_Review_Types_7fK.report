@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PartnerFundClaim$Name</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Request.ChannelPartner</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Claim_Review_Case__c.CaseNumber</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>PartnerFundClaim$Core_MDF_Claim_Review_Case__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PartnerFundClaim$Core_MDF_Audit_Type__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Claim Case Review Types</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>PartnerFundClaim_Reports__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PartnerFundClaim$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

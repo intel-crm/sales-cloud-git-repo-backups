@@ -41,7 +41,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Client CoMarketing Fund,Client CoMarketing Fund Boost,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Data Center CoMarketing Fund</value>
+            <value>,Client CoMarketing Fund,Client,Client CoMarketing Fund Boost,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Data Center CoMarketing Fund</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundClaim$Core_MDF_Budget_Type_Options_Nm__c</column>
@@ -65,11 +65,6 @@
         <field>PartnerFundClaim$Core_MDF_Bank__c.Core_MDF_Supplier_Number__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>PartnerFundClaim$Core_MDF_Bank__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
     <name>Banks with Claims</name>
     <params>
         <name>co</name>
@@ -79,7 +74,7 @@
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
-    <showSubTotals>false</showSubTotals>
+    <showSubTotals>true</showSubTotals>
     <sortColumn>PartnerFundClaim$Core_MDF_Program__c</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>

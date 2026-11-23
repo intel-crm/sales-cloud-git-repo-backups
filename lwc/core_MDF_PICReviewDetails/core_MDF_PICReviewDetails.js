@@ -24,10 +24,10 @@ import picReviewLabel from "@salesforce/label/c.Core_MDF_PIC_Review";
 import applicationError from "@salesforce/label/c.Core_MDF_ApplicationErrorMessage";
 import completed from "@salesforce/label/c.Core_MDF_PICReview_Status_Completed";
 import resubReq from "@salesforce/label/c.Core_MDF_PIC_Review_Resubmission_Required";
-import pendingAccManagerClarification from "@salesforce/label/c.Core_MDF_PIC_Review_Pending_Account_Manager_Clarification";
-import ipaProgramName from "@salesforce/label/c.Core_MDF_IPA_Program_Name";
-import comments from "@salesforce/label/c.Core_MDF_IPA_Comments";
-import tactics from "@salesforce/label/c.Core_MDF_Activity_Tactics";
+import pendingAccManagerClarification from "@salesforce/label/c.Core_MDF_PIC_Review_Pending_Account_Manager_Clarification"; 
+import ipaProgramName from "@salesforce/label/c.Core_MDF_IPA_Program_Name"; 
+import comments from "@salesforce/label/c.Core_MDF_IPA_Comments"; 
+import tactics from "@salesforce/label/c.Core_MDF_Activity_Tactics"; //Tactics
 import dash from "@salesforce/label/c.Core_MDF_Dash";
 import finalOutcomeBasedPicStatus from "@salesforce/label/c.Core_MDF_PaymentClearanceProcessing";  //Roshan - Final Outcome Based New Status
 
@@ -50,8 +50,8 @@ export default class Core_MDF_PICReviewDetails extends LightningElement {
     completed,
     resubReq,
     dash,
-    pendingAccManagerClarification,
-    ipaProgramName,
+    pendingAccManagerClarification, 
+    ipaProgramName, 
     comments, 
     tactics,
     finalOutcomeBasedPicStatus  //Roshan - Final Outcome Based New Status
@@ -68,8 +68,8 @@ export default class Core_MDF_PICReviewDetails extends LightningElement {
   picReviewDetails; //holds PIC Review details
   picReviewResultDetails; //holds PIC Review Result details - Issues list
   hasClaimUndergonePICReview = false; //Indicates whether claim has undergone PIC Review or not
-  ipaOutcomeBasedClaim = false;
-  finalOutcomeBasedClaim = false;  //Roshan - Final Outcome Based New Status
+  ipaOutcomeBasedClaim = false; 
+  finalOutcomeBasedClaim = false  //Roshan - Final Outcome Based New Status
   //Initial load
   connectedCallback() {
     this.checkObjectAccess();
@@ -105,6 +105,9 @@ export default class Core_MDF_PICReviewDetails extends LightningElement {
   getUserAndPICReviewResultDetails() {
     getUserAndPICReviewResultDetails({ claimId: this.recordId })
       .then(response => {
+
+        console.log('getUserAndPICReviewResultDetails@@@ ', JSON.parse(JSON.stringify(response)));
+
         //wrapper object will be returned as response
         let userAndPICReviewDetails = response;
         if (Object.keys(userAndPICReviewDetails).length > 0) {
@@ -218,6 +221,8 @@ export default class Core_MDF_PICReviewDetails extends LightningElement {
         }
       }
       
+      // picReviewResultObject.picReviewStatus =  picReview.Core_MDF_Review_Status_nm__c == this.label.completed ? this.isInternalUser ? picReviewStatus : picReview.LocalizedPICReviewStatus : (resubReq);
+      
       picReviewResultObject.picReviewStatus =  picReview.Core_MDF_Review_Status_nm__c == this.label.completed ? this.isInternalUser ? picReviewStatus : picReview.LocalizedPICReviewStatus : (this.ipaOutcomeBasedClaim ? this.label.pendingAccManagerClarification : resubReq);
       picReviewResultObject.picReviewedBy = this.isCCRMUserOrPICReviewer ? picReview.Core_MDF_ReviewedBy_id__r.Name : null;
       picReviewResultObject.internalComments = this.isCCRMUserOrPICReviewer ? picReview.Core_MDF_InternalComments_txt__c : null;
@@ -226,7 +231,7 @@ export default class Core_MDF_PICReviewDetails extends LightningElement {
       picReviewResultObject.hasInternalComments = this.displayPICInternalComments;
       picReviewResultObject.picCSS = picReviewStatus === this.label.completed ? 'picreview-completed' : 'picreview-failed';
       picReviewResultObject.picReviewCycleNumber = picReview.Core_MDF_CycleNumber_nbr__c;
-      picReviewResultObject.picReviewLabel = (this.finalOutcomeBasedClaim ? this.label.finalOutcomeBasedPicStatus : this.label.picReviewLabel) + ' - ' + picReview.Core_MDF_CycleNumber_nbr__c;  //Roshan - Final Outcome Based New Status
+      picReviewResultObject.picReviewLabel =( this.finalOutcomeBasedClaim ? this.label.finalOutcomeBasedPicStatus : this.label.picReviewLabel) + ' - ' + picReview.Core_MDF_CycleNumber_nbr__c;  //Roshan - Final Outcome Based New Status
       picReviewResultDetailsLocalData.push(picReviewResultObject);
     });
     this.picReviewResultDetailsData = picReviewResultDetailsLocalData;
@@ -235,8 +240,12 @@ export default class Core_MDF_PICReviewDetails extends LightningElement {
 
   //To show/hide the columns based on Internal/external user
   assignColumns(isInternalUser, localizedFieldName) {
-    console.log('localizedFileName', localizedFieldName);
-    //check if user is Internal && is final outcomeBased
+    console.log('@@@localizedFileName', localizedFieldName);
+    console.log('@@@isInternalUser', isInternalUser);
+    console.log('@@@ipaOutcomeBasedClaim', this.ipaOutcomeBasedClaim);
+    console.log('@@@finalOutcomeBasedClaim', this.finalOutcomeBasedClaim);
+
+    // check if user is Internal and NOT Final Outcome Based Claim
     if (isInternalUser && !this.finalOutcomeBasedClaim) {
       let localizedFieldNameInternal = "Core_MDF_Issue_English_txt__c";
       //Display column to internal user
@@ -253,12 +262,6 @@ export default class Core_MDF_PICReviewDetails extends LightningElement {
           type: "text",
           wrapText: true
         }
-        // commenting as tactics needs to be added before filesAttached columns
-        /*{
-          label: this.label.picFilesAffected,
-          fieldName: "Core_MDF_FilesAffected_txt__c",
-          type: "text"
-        }*/
       ];
     } else if (!this.finalOutcomeBasedClaim) {
       let localizedFieldNameExternal = localizedFieldName;
@@ -270,41 +273,33 @@ export default class Core_MDF_PICReviewDetails extends LightningElement {
           type: "text",
           wrapText: true
         }
-        // commenting as tactics needs to be added before filesAttached columns
-        /*{
-          label: this.label.picFilesAffected,
-          fieldName: "Core_MDF_FilesAffected_txt__c",
-          type: "text"
-        }*/
       ];
     } else {
       // Final Outcome Based Claim - initialize empty array
       this.picReviewColumns = [];
     }
-    if (this.ipaOutcomeBasedClaim) {
-      this.picReviewColumns.push(
-        {
-          label: this.label.tactics,
-          fieldName: "Core_MDF_Tactics_nm__c",
-          type: "text",
-          wrapText: true
-        }
-      );
-    }
 
-    // moved after tactics column
-    this.picReviewColumns.push(
-      {
-        label: this.label.picFilesAffected,
-        fieldName: "Core_MDF_FilesAffected_txt__c",
+    //Tactics - for IPA Outcome Based Claims
+    if (this.ipaOutcomeBasedClaim) {
+      this.picReviewColumns.push({
+        label: this.label.tactics,
+        fieldName: "Core_MDF_Tactics_nm__c",
         type: "text",
         wrapText: true
-      }
-    );
+      });
+    }
 
-    if(this.ipaOutcomeBasedClaim){
-      this.picReviewColumns.push(
-      {
+    // File(s) Affected - moved after tactics column
+    this.picReviewColumns.push({
+      label: this.label.picFilesAffected,
+      fieldName: "Core_MDF_FilesAffected_txt__c",
+      type: "text",
+      wrapText: true
+    });
+
+    // Comments - for IPA Outcome Based Claims
+    if (this.ipaOutcomeBasedClaim) {
+      this.picReviewColumns.push({
         label: this.label.comments,
         fieldName: "Core_MDF_Comment_txt__c",
         type: "text",

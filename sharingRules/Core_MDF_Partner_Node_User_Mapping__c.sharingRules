@@ -27,7 +27,7 @@
             <operation>notEqual</operation>
             <value>[empty]</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingOwnerRules>
         <fullName>Core_MDF_Account_User_Share_for_All_Users_CCP_Int_1</fullName>
@@ -87,6 +87,28 @@
         </sharedTo>
         <sharedFrom>
             <group>Core_MDF_CCP_SPCF_EXTERNAL_ALL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Weezer_SPCF_EXTERNAL</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>CCP Weezer SPCF EXTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Weezer_SPCF_EXTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_Weezer_SPCF_EXTERNAL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_CCP_Weezer_SPCF_EXT_to_INT</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>CCP Weezer SPCF EXT to INT</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Weezer_SPCF_INTERNAL</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_Weezer_SPCF_EXTERNAL</group>
         </sharedFrom>
     </sharingOwnerRules>
 </SharingRules>

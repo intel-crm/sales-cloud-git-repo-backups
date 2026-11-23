@@ -38,7 +38,7 @@ export default class QuanticResultLink extends LightningElement {
    * @type {string}
    * @defaultValue `'_self'`
    */
-  @api target = '_blank';
+  @api target = '_self';
   /**
    * Indicates the use case where this component is used.
    * @api
@@ -74,21 +74,6 @@ export default class QuanticResultLink extends LightningElement {
       .catch((error) => {
         console.error(error.message);
       });
-  }
-
-  newURL;
-  renderedCallback(){
-    
-
-    if(this.result.raw?.lightningclickuri === undefined){
-      this.newURL = this.result.clickUri;
-    }
-    else{
-      this.newURL = this.result.raw?.lightningclickuri;
-    }
-
-    
-
   }
 
   /**

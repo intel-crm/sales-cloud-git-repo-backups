@@ -56,7 +56,10 @@ public class Core_MDF_PNUM_Mapping_TriggerHandler extends TriggerHandler{
     public override void afterUpdate(){
         //To check Recursion, if coming from batch block it.
             Boolean flagRecursion = Core_MDF_PNUM_Mapping_ServiceHandler.isAccountUserUpdated((Map<Id,Core_MDF_Partner_Node_User_Mapping__c>) Trigger.oldMap, (Map<Id,Core_MDF_Partner_Node_User_Mapping__c>) Trigger.newMap);
-            if(flagRecursion && !Core_MDF_RecursiveTrigger.isRecursive){
+            //if(flagRecursion && !Core_MDF_RecursiveTrigger.isRecursive){
+                if (!flagRecursion || Core_MDF_RecursiveTrigger.isRecursive) { //ATHR Fix WW19
+                    return; 
+                }
                 //Deleting share records & then Creating for new mapping(Case, Escalation and Campaign)
                 if(!System.isBatch()){
                 if(!Core_MDF_Utility.byPassFeature('Bypass_AcctUserMapping_Obj_Del_Share'))
@@ -68,7 +71,7 @@ public class Core_MDF_PNUM_Mapping_TriggerHandler extends TriggerHandler{
                 if(!Core_MDF_Utility.byPassFeature('Bypass_AcctUserMapping_Obj_Share')){
                     Core_MDF_PNUM_Mapping_ServiceHandler.removeAndAddUsersToNodeGroup(Trigger.new, Trigger.old);
                 }
-            }
+            //}
     }
     
     public override void afterDelete(){

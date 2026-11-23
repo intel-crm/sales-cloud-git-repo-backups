@@ -128,7 +128,7 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
         <content>Core_MDF_Partnership_Score_Detail_Page</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
@@ -144,7 +144,14 @@
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayoutAssignment>Core_MDF_Partnership_Grade_Maintenance</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Core_MDF_Partnership_Grade_Maintenance</fullName>
+        <fields>Core_MDF_Program_nm__c</fields>
+        <fields>Core_MDF_Account_Id__c</fields>
+        <fields>Core_MDF_Quarter_Year_Nm__c</fields>
+        <label>Partnership Grade Maintenance</label>
+    </compactLayouts>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
@@ -156,6 +163,18 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Core_MDF_AccountID_id__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASESAFEID(Core_MDF_Virtual_Corp_Account_Id__r.Core_MDF_Parent_Fund_Account__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <fields>
         <fullName>Core_MDF_Account_Id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
@@ -173,9 +192,21 @@
         <relationshipLabel>Partnership Score</relationshipLabel>
         <relationshipName>Partnership_Grade_Maintenance</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Account_nm__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Virtual_Corp_Account_Id__r.Core_MDF_Parent_Fund_Account__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_AggregateClaimScore_Nbr__c</fullName>
@@ -199,7 +230,7 @@
         <precision>5</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -233,6 +264,20 @@
         <type>Currency</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_Balance_Amt_del__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Final_Recovery_Amt__c - Core_MDF_Recovered_Amt__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Balance Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_CarryOver_Amt__c</fullName>
         <label>Carry Over Amount</label>
         <summarizedField>Core_MDF_Partnership_Score_Detail__c.Core_MDF_Carry_Over_Amt__c</summarizedField>
@@ -253,11 +298,22 @@
         <type>Currency</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_Carry_Over_from_Previous_Qtr__c</fullName>
+        <formula>Core_MDF_Partnership_Score_Id__r.Core_MDF_Balance_Amount_Amt__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Carry Over from Previous Qtr</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Channel_Program_Display__c</fullName>
-        <description>Channel Program Display only field</description>
         <externalId>false</externalId>
         <formula>Core_MDF_Channel_Program_Id__r.Name</formula>
-        <inlineHelpText>Channel Program Display only field</inlineHelpText>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Channel Program Display</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -273,7 +329,7 @@
         <relationshipLabel>Partnership Score</relationshipLabel>
         <relationshipName>Partnership_Score</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -297,7 +353,7 @@
         <label>External Id</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>true</unique>
@@ -309,6 +365,18 @@
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <inlineHelpText>Total Recovery Amount for the Quarter + Carry Over Amount of Previous Quarters</inlineHelpText>
         <label>Final Recovery Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Final_Recovery_Amount_New__c</fullName>
+        <formula>Core_MDF_Carry_Over_from_Previous_Qtr__c  +  Core_MDF_Total_Recovery_Amt__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Final Recovery Amount New</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -331,10 +399,22 @@
         <type>Currency</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_Identification_Key_Id__c</fullName>
+        <description>Identification Key: Program, Account, Quarter</description>
+        <externalId>false</externalId>
+        <formula>CASESAFEID( Core_MDF_Channel_Program_Id__c )  +  CASESAFEID(Core_MDF_Account_Id__c) +  TEXT(Core_MDF_Quarter_Year_Nm__c)</formula>
+        <label>Identification Key</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_IsRecordShared_ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>IsRecordShared</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -345,7 +425,7 @@
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
@@ -397,7 +477,7 @@
         <precision>5</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -425,7 +505,7 @@
         <precision>5</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -439,7 +519,7 @@
         <relationshipLabel>Partnership Score (Partnership Score)</relationshipLabel>
         <relationshipName>Partnership_Score</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -450,7 +530,21 @@
         <precision>5</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Past_PartershipScore__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(  VALUE(TEXT(Core_MDF_Year_nm__c)) &lt; 2025, IF( TEXT(Core_MDF_Quarter_nm__c) = &apos;Q1&apos; ,  Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Nbr__c  , IF( TEXT(Core_MDF_Quarter_nm__c) = &apos;Q2&apos; , ((Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Nbr__c * 0.4) + (Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Nbr__c * 0.6)) , IF( TEXT(Core_MDF_Quarter_nm__c) = &apos;Q3&apos; , ((Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Nbr__c * 0.4) + (Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Nbr__c * 0.3) + (Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Nbr__c * 0.3)) , IF( TEXT(Core_MDF_Quarter_nm__c) = &apos;Q4&apos; , ((Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Nbr__c * 0.4) + (Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Nbr__c * 0.3) + (Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Nbr__c * 0.2) + (Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Nbr__c * 0.1)) , 0 ))) ),  ((Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Nbr__c * 0.4) + (Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Nbr__c * 0.3) + (Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Nbr__c * 0.2) + (Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Id__r.Core_MDF_Partnership_Score_Nbr__c * 0.1)))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Past PS</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -469,7 +563,7 @@
         <fullName>Core_MDF_Program_nm__c</fullName>
         <label>Program</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -481,7 +575,7 @@
         <fullName>Core_MDF_Quarter_Year_Nm__c</fullName>
         <label>Quarter Year</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -513,13 +607,23 @@
         <type>Summary</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_Recovered_Amt_del__c</fullName>
+        <label>Recovered Amount Old</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Recovery_Amt__c</fullName>
         <description>Only recovery Amount without the manual Recovery Amount from IAH</description>
         <label>Recovery Amount</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
@@ -751,7 +855,7 @@
         <label>Trend Difference Score</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -760,7 +864,7 @@
         <fullName>Core_MDF_Trend_Value_Nm__c</fullName>
         <label>Trend Value</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -803,7 +907,7 @@
         <description>Holds the year</description>
         <label>Year</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -836,7 +940,7 @@
         <fullName>Core_MDF_Zone_nm__c</fullName>
         <label>Zone</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -850,7 +954,6 @@
         <columns>Core_MDF_Account_Id__c</columns>
         <columns>Core_MDF_Channel_Program_txt__c</columns>
         <columns>Core_MDF_Partnership_Score_Nbr__c</columns>
-        <columns>Core_MDF_Zone_nm__c</columns>
         <columns>Core_MDF_Year_nm__c</columns>
         <columns>Core_MDF_Quarter_nm__c</columns>
         <columns>NAME</columns>
@@ -860,10 +963,267 @@
     <nameField>
         <displayFormat>PM-{000}</displayFormat>
         <label>Partnership Score Name</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Partnership Scores</pluralLabel>
+    <pluralLabel>Partnership Score</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Partnership_Score_RecordType</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>Core_MDF_Partnership_Grade_Maintenance</compactLayoutAssignment>
+        <label>Partnership Score RecordType</label>
+        <picklistValues>
+            <picklist>Core_MDF_Program_nm__c</picklist>
+            <values>
+                <fullName>Client CoMarketing Fund</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client CoMarketing Fund Boost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CoGTM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CoInv</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center CoMarketing Fund</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ecosystem Extension Fund</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel Partner Alliance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail Marketing Funds</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider CoMarketing Fund</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Quarter_Year_Nm__c</picklist>
+            <values>
+                <fullName>Q1 2022</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q1 2023</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q1 2024</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q1 2025</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q1 2026</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q1 2027</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2022</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2023</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2024</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2025</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2026</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2027</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2021</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2022</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2023</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2024</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2025</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2026</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2027</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2021</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2022</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2023</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2024</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2025</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2026</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2027</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Quarter_nm__c</picklist>
+            <values>
+                <fullName>Q1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Trend_Value_Nm__c</picklist>
+            <values>
+                <fullName>A</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Year_nm__c</picklist>
+            <values>
+                <fullName>2021</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2022</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2023</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2024</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Zone_nm__c</picklist>
+            <values>
+                <fullName>A1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C4</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
     <searchLayouts>
         <excludedStandardButtons>New</excludedStandardButtons>
     </searchLayouts>
@@ -876,7 +1236,7 @@
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_Program_cannot_be_updated</fullName>
-        <active>false</active>
+        <active>true</active>
         <errorConditionFormula>NOT(ISNEW()) &amp;&amp;  OR((!ISBLANK(Core_MDF_Channel_Program_Id__c) &amp;&amp;(ISCHANGED(Core_MDF_Channel_Program_Id__c))), (!ISBLANK( TEXT(Core_MDF_Program_nm__c) ) &amp;&amp; ISCHANGED(Core_MDF_Program_nm__c )))</errorConditionFormula>
         <errorDisplayField>Core_MDF_Channel_Program_Id__c</errorDisplayField>
         <errorMessage>Program cannot be updated</errorMessage>
@@ -896,13 +1256,13 @@
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_Required_Fields</fullName>
-        <active>false</active>
+        <active>true</active>
         <errorConditionFormula>AND(ISNEW(), OR( ISBLANK( Core_MDF_Account_Id__c ) , ISBLANK( Core_MDF_Channel_Program_Id__c ),  ISPICKVAL( Core_MDF_Quarter_Year_Nm__c , &apos;&apos;) ))</errorConditionFormula>
         <errorMessage>Mandatory Fields (Account, Program, Quarter Year )</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_Score_value_validation</fullName>
-        <active>false</active>
+        <active>true</active>
         <errorConditionFormula>Core_MDF_Partnership_Score_Nbr__c &lt;0 || Core_MDF_Partnership_Score_Nbr__c &gt;8</errorConditionFormula>
         <errorDisplayField>Core_MDF_Partnership_Score_Nbr__c</errorDisplayField>
         <errorMessage>Score cannot exceed 8 and should not be less than zero</errorMessage>

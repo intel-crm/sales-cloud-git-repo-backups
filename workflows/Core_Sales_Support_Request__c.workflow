@@ -8,9 +8,8 @@
             <recipient>Core_IT_Intel_APJ</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_IT_at_Intel_Approval</template>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>test_m/Core_IT_at_Intel_Approval</template>
     </alerts>
     <alerts>
         <fullName>Core_Email_IT_Intel_ASMO_Email_List</fullName>
@@ -20,9 +19,8 @@
             <recipient>Core_IT_Intel_ASMO</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_IT_at_Intel_Approval</template>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>test_m/Core_IT_at_Intel_Approval</template>
     </alerts>
     <alerts>
         <fullName>Core_Email_IT_Intel_EMEA_Email_List</fullName>
@@ -32,9 +30,8 @@
             <recipient>Core_IT_Intel_EMEA</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_IT_at_Intel_Approval</template>
+        <senderType>CurrentUser</senderType>
+        <template>test_m/Core_IT_at_Intel_Approval</template>
     </alerts>
     <alerts>
         <fullName>Core_Email_IT_Intel_PRC_Email_List</fullName>
@@ -44,9 +41,8 @@
             <recipient>Core_IT_Intel_PRC</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_IT_at_Intel_Approval</template>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>test_m/Core_IT_at_Intel_Approval</template>
     </alerts>
     <alerts>
         <fullName>Core_IT_Intel_Mgr_Assignment</fullName>
@@ -56,9 +52,8 @@
             <field>Core_IT_Geo_Manager__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_IT_Intel_Mgr_Assignment</template>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>test_m/Core_IT_Intel_Mgr_Assignment</template>
     </alerts>
     <alerts>
         <fullName>Core_IT_Send_e_mail_to_APJ_Queue</fullName>
@@ -69,7 +64,7 @@
             <type>group</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>Testt/Core_IT_at_Intel_Approval</template>
+        <template>test_m/Core_IT_at_Intel_Approval</template>
     </alerts>
     <alerts>
         <fullName>Core_IT_Send_e_mail_to_ASMO_Queue</fullName>
@@ -80,7 +75,7 @@
             <type>group</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>Testt/Core_IT_at_Intel_Approval</template>
+        <template>test_m/Core_IT_at_Intel_Approval</template>
     </alerts>
     <alerts>
         <fullName>Core_IT_Send_e_mail_to_EMEA_Queue</fullName>
@@ -91,7 +86,7 @@
             <type>group</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>Testt/Core_IT_at_Intel_Approval</template>
+        <template>test_m/Core_IT_at_Intel_Approval</template>
     </alerts>
     <alerts>
         <fullName>Core_IT_Send_e_mail_to_PRC_Queue</fullName>
@@ -102,7 +97,7 @@
             <type>group</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>Testt/Core_IT_at_Intel_Approval</template>
+        <template>test_m/Core_IT_at_Intel_Approval</template>
     </alerts>
     <fieldUpdates>
         <fullName>Add_IT_Geo_Manager</fullName>
@@ -198,7 +193,7 @@
             <name>Core_Update_Status</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>RecordType.DeveloperName = &quot;Core_DS_IT_Intel&quot;</formula>
         <triggerType>onCreateOnly</triggerType>
     </rules>
@@ -208,7 +203,7 @@
             <name>Core_Email_IT_Intel_APJ_Email_List</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Emails IT @ Intel Geo email public group APJ</description>
         <formula>AND (TEXT(Core_IT_Intel_Geo__c) = &quot;APJ&quot;,        LEN(Core_IT_Geo_Manager__c) = 0       )</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
@@ -219,7 +214,7 @@
             <name>Core_Email_IT_Intel_ASMO_Email_List</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Emails IT @ Intel Geo email public group ASMO</description>
         <formula>AND (TEXT(Core_IT_Intel_Geo__c) = &quot;ASMO&quot;,        LEN(Core_IT_Geo_Manager__c) = 0       )</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
@@ -230,7 +225,7 @@
             <name>Core_Email_IT_Intel_EMEA_Email_List</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Emails IT @ Intel Geo email public group EMEA</description>
         <formula>AND (TEXT(Core_IT_Intel_Geo__c) = &quot;EMEA&quot;,        LEN(Core_IT_Geo_Manager__c) = 0       )</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
@@ -241,7 +236,7 @@
             <name>Core_IT_Intel_Mgr_Assignment</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Sends an e-mail to the assigned IT @ Intel User account</description>
         <formula>ISCHANGED( Core_IT_Geo_Manager__c )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -252,7 +247,7 @@
             <name>Core_Email_IT_Intel_PRC_Email_List</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Emails IT @ Intel Geo email public group PRC</description>
         <formula>AND (TEXT(Core_IT_Intel_Geo__c) = &quot;PRC&quot;,        LEN(Core_IT_Geo_Manager__c) = 0       )</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
@@ -263,7 +258,7 @@
             <name>Core_IT_Intel_Open_Status</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Core_Sales_Support_Request__c.RecordTypeId</field>
             <operation>equals</operation>
@@ -278,7 +273,7 @@
             <name>Core_IT_Update_Status_to_In_Process</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Moves the request to in process once the geo manager is assigned</description>
         <formula>PRIORVALUE( Status__c ) = &quot;Open&quot;</formula>
         <triggerType>onAllChanges</triggerType>

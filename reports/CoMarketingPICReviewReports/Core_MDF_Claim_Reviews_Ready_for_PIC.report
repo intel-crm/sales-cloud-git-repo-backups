@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>PartnerFundClaim$Core_MDF_Program__c</field>
-    </columns>
-    <columns>
         <field>PartnerFundClaim$Core_MDF_Claim_Ref_Number__c</field>
     </columns>
     <columns>
@@ -80,12 +77,17 @@
             <column>PartnerFundClaim$Core_MDF_Campaign_Id__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
+            <operator>equals</operator>
             <value></value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Tabular</format>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PartnerFundClaim$Core_MDF_Program__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <name>Claims Ready for PIC Review</name>
     <params>
         <name>co</name>

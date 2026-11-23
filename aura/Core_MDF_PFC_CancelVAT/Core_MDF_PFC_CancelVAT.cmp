@@ -1,0 +1,4 @@
+<aura:component
+    implements="force:hasRecordId,force:lightningQuickAction" access="global">
+    <c:Core_MDF_PFC_Cancel recordId="{!v.recordId}" cancellationMode="VAT"/>
+</aura:component>

@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>TOKYO CITY UNIVERSITY Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>TOKYOCITYUNIVERSITYCustomerManager</parentRole>
 </Role>

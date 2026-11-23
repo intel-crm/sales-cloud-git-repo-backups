@@ -1,0 +1,7 @@
+.THIS .slds-backdrop.slds-backdrop--open{
+   opacity:0;
+}
+
+.THIS .slds-fade-in-open{
+    margin-top: 0.1rem;
+}

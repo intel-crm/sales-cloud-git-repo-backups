@@ -1,0 +1,67 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 05-12-2021
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   05-12-2021   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
+<template>
+    
+    <div class="slds-page-header">
+        <div class="slds-page-header__row">
+          <div class="slds-page-header__col-title">
+            <div class="slds-media">
+              <div class="slds-media__figure">
+                <lightning-icon icon-name="standard:approval" alternative-text="Approval" title="Approval"></lightning-icon>
+              </div>
+              <div class="slds-media__body">
+                <div class="slds-page-header__name">
+                  <div class="slds-page-header__name-title">
+                    <h1>
+                      <span> Approval Requests </span>
+                      <span class="slds-page-header__title slds-truncate" title="Items to Approve">Items to Approve</span>
+                    </h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <lightning-card>
+        <div class="slds-p-horizontal_small">
+            <div class="c-container">
+                Hi
+            <template for:each={recordsToRender} for:item="rec">
+                
+                <lightning-layout-item padding="around-small" key={rec.recordId} >
+                   <div class="slds-box">
+                    <dd class="slds-item_detail slds-truncate slds-text-heading_medium "><a data-record-id={rec.redirectLink} class="slds-text-link" onclick={handleClick}>{rec.name}</a></dd>
+                    <!-- <dd class="slds-item_detail slds-truncate slds-text-heading_medium "><a href={rec.redirectLink} class="slds-text-link" >{rec.name}</a></dd> -->
+                <template for:each={rec.uiDispalyFields} for:item="recfield">  
+                    <div key={recfield.fieldLabel}>
+                            <dl class="slds-list_horizontal slds-wrap">
+                                <dt class="slds-item_label slds-text-color_weak slds-truncate">{recfield.fieldLabel}:</dt>
+                                <template if:true={recfield.hasFieldValue}>
+                                    <dd class="slds-item_detail slds-truncate">{recfield.fieldValue}</dd>
+                                </template>
+                                <template if:false={recfield.hasFieldValue}>
+                                    <dd class="slds-item_detail slds-truncate">{recfield.dateTimeFieldValue}</dd>
+                                </template>
+
+                            </dl>
+                    </div>   
+                </template>
+            </div> 
+            </lightning-layout-item>
+        
+                </template>
+        
+        </div>
+        </div>
+    </lightning-card>
+   
+</template>

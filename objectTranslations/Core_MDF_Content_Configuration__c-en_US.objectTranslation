@@ -37,6 +37,16 @@
         <name>Core_MDF_Content_URL__c</name>
     </fields>
     <fields>
+        <help><!-- This date Follows PST Time --></help>
+        <label><!-- Effective End Date --></label>
+        <name>Core_MDF_Effective_End_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- This date Follows PST Time --></help>
+        <label><!-- Effective Start Date --></label>
+        <name>Core_MDF_Effective_Start_Date__c</name>
+    </fields>
+    <fields>
         <label><!-- German HelpText Trans --></label>
         <name>Core_MDF_HelpText_de_txt__c</name>
     </fields>
@@ -83,6 +93,10 @@
     <fields>
         <label><!-- Icon URL --></label>
         <name>Core_MDF_Icon_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is HelpText Required? --></label>
+        <name>Core_MDF_Is_HelpText_Required_ind__c</name>
     </fields>
     <fields>
         <label><!-- Is Icon required ? --></label>
@@ -133,6 +147,10 @@
         <name>Core_MDF_Label_zh_TW_txt__c</name>
     </fields>
     <fields>
+        <label><!-- No of Columns --></label>
+        <name>Core_MDF_No_of_Columns_nbr__c</name>
+    </fields>
+    <fields>
         <label><!-- Parent Content Confirguration --></label>
         <name>Core_MDF_Parent_Content_Config_Id__c</name>
         <relationshipLabel><!-- Content Configurations --></relationshipLabel>
@@ -142,12 +160,24 @@
         <name>Core_MDF_Section_Code_txt__c</name>
     </fields>
     <fields>
+        <label><!-- Section Header --></label>
+        <name>Core_MDF_Section_Header_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Section SubHeader --></label>
+        <name>Core_MDF_Section_SubHeader_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Sort Order --></label>
         <name>Core_MDF_Sort_Order_nbr__c</name>
     </fields>
     <fields>
         <label><!-- Style --></label>
         <name>Core_MDF_Style_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Table Section Order --></label>
+        <name>Core_MDF_Table_Section_Order__c</name>
     </fields>
     <fields>
         <label><!-- German URL Trans --></label>
@@ -201,5 +231,9 @@
         <label><!-- Chinese Trad URL Trans --></label>
         <name>Core_MDF_zh_TW_URL__c</name>
     </fields>
+    <recordTypes>
+        <label><!-- Announcement Type --></label>
+        <name>Core_MDF_Announcement_Type</name>
+    </recordTypes>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

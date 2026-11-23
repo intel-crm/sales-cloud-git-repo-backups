@@ -5,6 +5,7 @@
     <excludeButtons>Clone</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>IsotopeSubscription</excludeButtons>
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>PrintableView</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
@@ -61,10 +62,14 @@
                 <behavior>Readonly</behavior>
                 <field>Core_MDF_Note__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>New__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_MDF_Intel_Company_Code__c</field>
             </layoutItems>
             <layoutItems>
@@ -96,7 +101,7 @@
                 <field>Core_MDF_Payment_Currency_Cd__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_MDF_Tax_codes_cd__c</field>
             </layoutItems>
             <layoutItems>

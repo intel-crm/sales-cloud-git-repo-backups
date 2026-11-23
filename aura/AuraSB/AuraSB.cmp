@@ -1,0 +1,8 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	hello World
+
+    <ltng:require 
+       scripts="{!$Resource.hello_from_Scripted_Browsing}"/>
+    
+  
+</aura:component>

@@ -18,6 +18,9 @@
             <value>ENY</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Financial Services</sourceValue>
+            </sourceValues>
             <value>FSI</value>
         </values>
         <values>
@@ -33,6 +36,9 @@
             <value>HLS</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Automation/Building Management</sourceValue>
+            </sourceValues>
             <value>IND</value>
         </values>
         <values>
@@ -78,6 +84,9 @@
             <value>ENY</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Financial Services</sourceValue>
+            </sourceValues>
             <value>FSI</value>
         </values>
         <values>
@@ -93,6 +102,9 @@
             <value>HLS</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Automation/Building Management</sourceValue>
+            </sourceValues>
             <value>IND</value>
         </values>
         <values>
@@ -147,7 +159,7 @@
         <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
+        <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
         <location>CHART_TOP</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -278,7 +290,7 @@
             <value>Deal: Sell-to,Deal: Sell-through,Deal: Sell-with,Deal: Scale-Estimate (per Finance)</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -294,7 +306,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>EMEA ISG All Opps Risk</name>

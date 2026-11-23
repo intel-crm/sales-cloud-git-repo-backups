@@ -30,6 +30,66 @@
             <field>Core_MDF_Quarter__c</field>
             <table>Core_MDF_Scorecard__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_Attribution_Comments_Txt__c</field>
+            <table>Core_MDF_Scorecard__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_Engagement_Comments_Txt__c</field>
+            <table>Core_MDF_Scorecard__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_POP_Comments_Txt__c</field>
+            <table>Core_MDF_Scorecard__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_Attribution_Score_Nm__c</field>
+            <table>Core_MDF_Scorecard__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_Engagement_Score_Nm__c</field>
+            <table>Core_MDF_Scorecard__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_POP_Score_Nm__c</field>
+            <table>Core_MDF_Scorecard__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_PII_Present_Nm__c</field>
+            <table>Core_MDF_Scorecard__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_POC_Strength_Nm__c</field>
+            <table>Core_MDF_Scorecard__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_Recommend_Investigation_Ind__c</field>
+            <table>Core_MDF_Scorecard__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_Compliant_Status_Nm__c</field>
+            <table>Core_MDF_Scorecard__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_Comments_Txt__c</field>
+            <table>Core_MDF_Scorecard__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_Processing_Status_Nm__c</field>
+            <table>Core_MDF_Scorecard__c</table>
+        </columns>
         <masterLabel>Scorecards</masterLabel>
     </sections>
     <sections>

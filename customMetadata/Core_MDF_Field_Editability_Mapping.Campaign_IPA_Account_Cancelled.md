@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Active__c</field>
-        <value xsi:type="xsd:boolean">false</value>
+        <value xsi:type="xsd:boolean">true</value>
     </values>
     <values>
         <field>Core_MDF_Applicable_for_PastFuture_Dated__c</field>

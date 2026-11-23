@@ -2,6 +2,17 @@
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>This will contain the mapping between the Bank Program name and the Entitlement Name.</description>
     <fields>
+        <fullName>Core_MDF_Bank_Custom_Permission_Name__c</fullName>
+        <description>This will contain the Custom permission assigned for Users who can create Bank for which Program.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Bank Custom Permission Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Bank_Program_Name__c</fullName>
         <description>This will contain the program name from the Bank object.</description>
         <externalId>false</externalId>
@@ -47,10 +58,12 @@
     <label>BankProgram Entitlement Mapping</label>
     <listViews>
         <fullName>All_fields</fullName>
+        <columns>DeveloperName</columns>
         <columns>Core_MDF_Bank_Program_Name__c</columns>
         <columns>Core_MDF_Channel_Program__c</columns>
         <columns>Core_MDF_Entitlement_Name__c</columns>
         <columns>Core_MDF_Permission_Set_Name__c</columns>
+        <columns>Core_MDF_Bank_Custom_Permission_Name__c</columns>
         <filterScope>Everything</filterScope>
         <label>All fields</label>
         <language>en_US</language>

@@ -53,6 +53,10 @@
     </fields>
     <nameFieldLabel><!-- Hold Criteria ID --></nameFieldLabel>
     <validationRules>
+        <errorMessage><!-- Select either activity category or activity type(s) --></errorMessage>
+        <name>Core_MDF_ActCategory_ActCategoryType_Val</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Effective date cannot be earlier than today --></errorMessage>
         <name>Core_MDF_EffectiveDate</name>
     </validationRules>
@@ -67,6 +71,10 @@
     <validationRules>
         <errorMessage><!-- Criteria Rule cannot be edited --></errorMessage>
         <name>Core_MDF_PreventHoldListCriteriaFromEdit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Select either Geo or Region/Country. --></errorMessage>
+        <name>Core_MDF_Region_RegionCountry_Val</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- At least one rule condition must be entered to create a hold criteria --></errorMessage>

@@ -5,7 +5,6 @@ Description:        Deactivate IUPGM record if the user is not having the specif
 Added By:           Shiva   09-14-2023
 Modified By:        Date:           Changes:
 Ayush               01-25-2024      Merged IUPGM deactivation logic if a user is inactive from Core_MDF_InactivateIUPGM batch in this batch.
-Ayush               01-29-2025      Added changes for "Reclaiming SF Partner License"
 **********************************************************************************************************************************************/
 
 global with sharing class Core_MDF_IUPGM_InActive_Batch implements Database.Batchable<sObject>,Database.Stateful {
@@ -34,8 +33,7 @@ global with sharing class Core_MDF_IUPGM_InActive_Batch implements Database.Batc
         
         try{
             for(Core_MDF_Int_Users_Partner_Geo_Mapping__c iugpm : iupgmList){
-                //Ayush - Added partner licence reclaimed check as well in or condition to stop inactivation of IUPGMs if user is inactive but licence flag is TRUE
-                if(iugpm.Core_MDF_is_User_Active_ind__c == true || iugpm.Core_MDF_User_id__r.Partner_License_Reclaimed__c == true){ 
+                if(iugpm.Core_MDF_is_User_Active_ind__c == true || iugpm.Core_MDF_User_id__r.Partner_License_Reclaimed__c == true){
                     activeUserIds.add(iugpm.Core_MDF_User_id__c);
                 }
                 else{
@@ -67,7 +65,6 @@ global with sharing class Core_MDF_IUPGM_InActive_Batch implements Database.Batc
             }  
             
         }catch(Exception ex){
-	    //Avoid empty catch blocks
             Core_MDF_CCP_UtilityClass.logError(ex);
         }      
     }

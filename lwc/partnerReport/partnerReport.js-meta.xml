@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>68.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Partner Salesforce Report</masterLabel>
+    <description>Displays tabular report results using the signed-in user's access.</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="reportId" type="String" label="Salesforce report ID" description="15- or 18-character report ID beginning with 00O."/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

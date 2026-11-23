@@ -39,6 +39,7 @@
     <aura:attribute name="updatedCampBudgetType" type="String" />
     <aura:attribute name="updatedBuSplitFormula" type="String" />
     <aura:attribute name="oldPfrList" type="Array" default="[]"/>
+    <!--IPA-Jegan-->
     <aura:attribute name="activityToAttributeList" type="Array" default="[]"/>
     <aura:attribute name="outcomeBasedOptInInd" type="Boolean" default="false" />
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
@@ -69,6 +70,7 @@
 	    onapplicationerror="{!c.closeModalAndDisplayErrorMsg}" 
 	    onpicklistValueChangeEvent="{!c.picklistValueChangeEvent}"
         oncampaignAttributeChangeEvt="{!c.campaignAttributeChangeEvt}"
+        onupdateActivityList="{!c.updateActivityListClone}"
 	    onactivityBlankFieldsCheckoxValidation="{!c.activityBlankFieldsCheckoxValidation}"></c:core_MDF_Create_Campaign>
         </aura:if>
         <aura:set attribute="else">
@@ -101,7 +103,7 @@
                     </header>
                     <aura:if isTrue="{!v.showPFRModal}">
                         <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">                            
-                            <aura:if isTrue="{!(v.recordTypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType)}">
+                            <aura:if isTrue="{!v.recordTypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType}">
                             	<c:Core_MDF_CreateEditActivity clonedCampaignRecord="{!v.campaignObject}" pfrCloneCheck="true"  checkCloneAttribute="true"  recordTypeDeveloperName="{!v.recordTypeDeveloperName}"  checkCloneRecordId="{!v.activityRec.Id}" pfrCloneOnCampaign ="{!v.activityRec}" updatedCampBudgetType="{!v.updatedCampBudgetType}" updatedCampPicklistValues="{!v.updatedCampPicklistValues}" updatedCampaignObj ="{!v.updatedCampaignObj}" outcomeBasedOptInInd="{!v.outcomeBasedOptInInd}"/>  
                                 <aura:set attribute="else">
                                 	<c:Core_Intel_createEditPFR clonedCampaignRecord="{!v.campaignObject}" pfrCloneCheck="true"  checkCloneAttribute="true"  recordTypeDeveloperName="{!v.recordTypeDeveloperName}"  checkCloneRecordId="{!v.activityRec.Id}" pfrCloneOnCampaign ="{!v.activityRec}" ipaCloneRecd="{!v.isIpaActEdited}"/>  
@@ -178,7 +180,7 @@
                     </header>
                     <aura:if isTrue="{!v.showPFRModal}">
                         <div class="slds-p-around_medium" id="modal-content-id-1">
-                            <aura:if isTrue="{!(v.recordTypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType)}">
+                            <aura:if isTrue="{!v.recordTypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType}">
                             		<c:Core_MDF_CreateEditActivity clonedCampaignRecord="{!v.campaignObject}" pfrCloneCheck="true"  checkCloneAttribute="true"  recordTypeDeveloperName="{!v.recordTypeDeveloperName}"  checkCloneRecordId="{!v.activityRec.Id}" pfrCloneOnCampaign ="{!v.activityRec}" updatedCampBudgetType="{!v.updatedCampBudgetType}" outcomeBasedOptInInd="{!v.outcomeBasedOptInInd}"/>  
                                 <aura:set attribute="else">
                                 	<c:Core_Intel_createEditPFR clonedCampaignRecord="{!v.campaignObject}" pfrCloneCheck="true"  checkCloneAttribute="true"  recordTypeDeveloperName="{!v.recordTypeDeveloperName}"  checkCloneRecordId="{!v.activityRec.Id}" pfrCloneOnCampaign ="{!v.activityRec}"/>  

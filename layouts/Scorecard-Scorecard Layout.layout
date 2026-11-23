@@ -36,7 +36,27 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
+    <relatedLists>
+        <fields>Name</fields>
+        <fields>Report</fields>
+        <fields>Category</fields>
+        <fields>Description</fields>
+        <relatedList>ScorecardMetrics</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>TargetEntity</fields>
+        <fields>Name</fields>
+        <fields>Core_MDF_Quarter_cd__c</fields>
+        <fields>Core_MDF_Partner_Score_num__c</fields>
+        <relatedList>ScorecardAssociation</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
+    <summaryLayout>
+        <masterLabel>00h1J00000Av2yO</masterLabel>
+        <sizeX>4</sizeX>
+        <sizeY>0</sizeY>
+        <summaryLayoutStyle>Default</summaryLayoutStyle>
+    </summaryLayout>
 </Layout>

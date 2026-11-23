@@ -15,7 +15,6 @@
     <fields>
         <label><!-- business_organization_party_id --></label>
         <name>business_organization_party_id__c</name>
-        <relationshipLabel><!-- k_v_f_detail_value_exchange_sfdcs --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- change_ts --></label>
@@ -80,10 +79,6 @@
     <fields>
         <label><!-- start_dt --></label>
         <name>start_dt__c</name>
-    </fields>
-    <fields>
-        <label><!-- value_exchange_period_txt --></label>
-        <name>value_exchange_period_txt__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

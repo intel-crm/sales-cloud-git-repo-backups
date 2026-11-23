@@ -21,6 +21,7 @@ public with sharing class Core_Case_CloseController {
     public pagereference redirect(){
         User u = [select Id, username,userType,profile.name from User where Id = :UserInfo.getUserId()];
         
+        system.debug('>>>>>>>>>>>>>>>>>>my' + u.userType + caseedit.recordtype.developerName);
         
         if((u.userType=='PowerCustomerSuccess' || u.userType =='PowerPartner' ) && caseedit.recordtype.developerName=='IPS_Case_Create')
         {

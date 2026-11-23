@@ -21,8 +21,8 @@
             <expandOthers>false</expandOthers>
             <groupingSortProperties/>
             <legendPosition>Bottom</legendPosition>
-            <report>IPS_CHD_Reports_Folder/CHD_Arris_XB6_All</report>
-            <showPercentage>true</showPercentage>
+            <report>IPS_CHD_Reports_Folder/CHD_US_XB6_All</report>
+            <showPercentage>false</showPercentage>
             <showValues>true</showValues>
             <sortBy>RowLabelAscending</sortBy>
             <sortLegendValues>false</sortLegendValues>
@@ -36,35 +36,16 @@
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
             <drillToDetailEnabled>false</drillToDetailEnabled>
-            <enableHover>true</enableHover>
-            <expandOthers>false</expandOthers>
-            <groupingSortProperties/>
-            <legendPosition>Bottom</legendPosition>
-            <report>IPS_CHD_Reports_Folder/CHD_Arris_XB7_All</report>
-            <showPercentage>true</showPercentage>
-            <showValues>true</showValues>
-            <sortBy>RowLabelAscending</sortBy>
-            <sortLegendValues>false</sortLegendValues>
-            <title>XB7 - All cases</title>
-            <useReportChart>false</useReportChart>
-        </components>
-        <components>
-            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
-            <chartAxisRange>Auto</chartAxisRange>
-            <componentType>Pie</componentType>
-            <displayUnits>Auto</displayUnits>
-            <drillEnabled>false</drillEnabled>
-            <drillToDetailEnabled>false</drillToDetailEnabled>
             <enableHover>false</enableHover>
             <expandOthers>false</expandOthers>
             <groupingSortProperties/>
             <legendPosition>Bottom</legendPosition>
-            <report>IPS_CHD_Reports_Folder/CHD_Arris_TCH_XB3_All</report>
+            <report>IPS_CHD_Reports_Folder/CHD_XB7_Project</report>
             <showPercentage>false</showPercentage>
             <showValues>true</showValues>
             <sortBy>RowLabelAscending</sortBy>
             <sortLegendValues>false</sortLegendValues>
-            <title>XB3 Arris &amp; TCH Case</title>
+            <title>XB7 - All cases</title>
             <useReportChart>false</useReportChart>
         </components>
     </leftSection>
@@ -77,12 +58,12 @@
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
             <drillToDetailEnabled>false</drillToDetailEnabled>
-            <enableHover>true</enableHover>
+            <enableHover>false</enableHover>
             <expandOthers>false</expandOthers>
             <groupingSortProperties/>
             <legendPosition>Bottom</legendPosition>
-            <report>IPS_CHD_Reports_Folder/CHD_Arris_XB6_No_Feature_Requests</report>
-            <showPercentage>true</showPercentage>
+            <report>IPS_CHD_Reports_Folder/CHD_US_XB6_No_WiFi</report>
+            <showPercentage>false</showPercentage>
             <showValues>true</showValues>
             <sortBy>RowLabelAscending</sortBy>
             <sortLegendValues>false</sortLegendValues>
@@ -96,35 +77,16 @@
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
             <drillToDetailEnabled>false</drillToDetailEnabled>
-            <enableHover>true</enableHover>
-            <expandOthers>false</expandOthers>
-            <groupingSortProperties/>
-            <legendPosition>Bottom</legendPosition>
-            <report>IPS_CHD_Reports_Folder/CHD_Arris_XB7_WiFi</report>
-            <showPercentage>true</showPercentage>
-            <showValues>true</showValues>
-            <sortBy>RowLabelAscending</sortBy>
-            <sortLegendValues>false</sortLegendValues>
-            <title>XB7 - WiFi cases</title>
-            <useReportChart>false</useReportChart>
-        </components>
-        <components>
-            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
-            <chartAxisRange>Auto</chartAxisRange>
-            <componentType>Pie</componentType>
-            <displayUnits>Auto</displayUnits>
-            <drillEnabled>false</drillEnabled>
-            <drillToDetailEnabled>false</drillToDetailEnabled>
             <enableHover>false</enableHover>
             <expandOthers>false</expandOthers>
             <groupingSortProperties/>
             <legendPosition>Bottom</legendPosition>
-            <report>IPS_CHD_Reports_Folder/CHD_Arris_XB3_All</report>
+            <report>IPS_CHD_Reports_Folder/CHD_US_XB7_WiFi</report>
             <showPercentage>false</showPercentage>
             <showValues>true</showValues>
             <sortBy>RowLabelAscending</sortBy>
             <sortLegendValues>false</sortLegendValues>
-            <title>XB3 Arris Cases</title>
+            <title>XB7 - WiFi cases</title>
             <useReportChart>false</useReportChart>
         </components>
     </middleSection>
@@ -138,12 +100,12 @@
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
             <drillToDetailEnabled>false</drillToDetailEnabled>
-            <enableHover>true</enableHover>
+            <enableHover>false</enableHover>
             <expandOthers>false</expandOthers>
             <groupingSortProperties/>
             <legendPosition>Bottom</legendPosition>
-            <report>IPS_CHD_Reports_Folder/CHD_Arris_XB6_Feature_Requests</report>
-            <showPercentage>true</showPercentage>
+            <report>IPS_CHD_Reports_Folder/CHD_US_XB6_WiFi</report>
+            <showPercentage>false</showPercentage>
             <showValues>true</showValues>
             <sortBy>RowLabelAscending</sortBy>
             <sortLegendValues>false</sortLegendValues>
@@ -157,41 +119,22 @@
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
             <drillToDetailEnabled>false</drillToDetailEnabled>
-            <enableHover>true</enableHover>
+            <enableHover>false</enableHover>
             <expandOthers>false</expandOthers>
             <groupingSortProperties/>
             <legendPosition>Bottom</legendPosition>
-            <report>IPS_CHD_Reports_Folder/CHD_Arris_XB7_No_WiFi</report>
-            <showPercentage>true</showPercentage>
+            <report>IPS_CHD_Reports_Folder/CHD_US_XB7_No_WiFi</report>
+            <showPercentage>false</showPercentage>
             <showValues>true</showValues>
             <sortBy>RowLabelAscending</sortBy>
             <sortLegendValues>false</sortLegendValues>
             <title>XB7 - NOT WiFi cases</title>
             <useReportChart>false</useReportChart>
         </components>
-        <components>
-            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
-            <chartAxisRange>Auto</chartAxisRange>
-            <componentType>Pie</componentType>
-            <displayUnits>Auto</displayUnits>
-            <drillEnabled>false</drillEnabled>
-            <drillToDetailEnabled>false</drillToDetailEnabled>
-            <enableHover>false</enableHover>
-            <expandOthers>false</expandOthers>
-            <groupingSortProperties/>
-            <legendPosition>Bottom</legendPosition>
-            <report>IPS_CHD_Reports_Folder/CHD_TCH_XB3_All</report>
-            <showPercentage>false</showPercentage>
-            <showValues>true</showValues>
-            <sortBy>RowLabelAscending</sortBy>
-            <sortLegendValues>false</sortLegendValues>
-            <title>XB3 TCH Cases</title>
-            <useReportChart>false</useReportChart>
-        </components>
     </rightSection>
     <runningUser>10647818@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
-    <title>Comcast Projects: XB6, XB7, XB3</title>
+    <title>Comcast XB6 and XB7</title>
     <titleColor>#000000</titleColor>
     <titleSize>12</titleSize>
 </Dashboard>

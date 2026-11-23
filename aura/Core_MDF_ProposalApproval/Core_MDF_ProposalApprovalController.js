@@ -1,5 +1,6 @@
 ({
 	doInit: function (component, event, helper) {
+    //component.set("v.coGtmProgramLabel", $A.get("$Label.c.Core_MDF_Co_GTM_Technical_program_name"));
     helper.loadApprovalFlowAction(component, event, helper);
   },
   
@@ -8,6 +9,7 @@
 	  component.set('v.btnValue',btnvalue);
 
     const isCampaign = component.get("v.recordId").startsWith('701');
+    console.log('@@@isCamp', isCampaign);
     if (btnvalue == $A.get("$Label.c.Core_MDF_Retail_Approve")) {
       component.set('v.commentType', isCampaign ? $A.get("$Label.c.Core_MDF_IPA_Proposal_Approval") : 'Approve Claim');    
     } else if (btnvalue == $A.get("$Label.c.Core_MDF_Retail_Reject")) {

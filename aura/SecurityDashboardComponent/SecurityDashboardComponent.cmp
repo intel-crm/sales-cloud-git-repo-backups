@@ -1,0 +1,37 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="SCRTY_Admin_Permission_Metrics" >
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="data" type="Object[]"/>
+    <aura:attribute name="sortedBy" type="String" default="countProfiles"/>
+    <aura:attribute name="sortedDirection" type="String" default="asc"/>
+    <aura:attribute name="userInfoMap" type = "object"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <div style = "height: 410px"> 
+        <lightning:datatable 
+                             
+                             keyField="id"
+                             data="{! v.data }"
+                             columns="{! v.columns }"
+                             hideCheckboxColumn="true"
+                             class = "table-test"
+                             onsort="{!c.updateColumnSorting}"
+                             sortable = "true"
+                             sortedBy="{!v.sortedBy}"  
+                        	 sortedDirection="{!v.sortedDirection}"
+                             onrowaction="{! c.handleRowAction }"
+
+                             /> 
+         
+    </div>  
+        
+        <div style= "text-align: center;background-color: white;width: 100%; padding: 0 0 0 10%; margin: 0; height: 30px;">
+            <a>Red</a><b>: # of Active Users > {!$Label.c.Core_Dashboard_Color_Red}</b>   &nbsp;
+            <s>Yellow</s><b>: # of Active Users is between {!$Label.c.Core_Dashboard_Color_Green} - {!$Label.c.Core_Dashboard_Color_Red} </b> &nbsp; 
+            <u>Green</u> <b>: # of Active Users less then {!$Label.c.Core_Dashboard_Color_Green} </b>
+           
+        
+    </div>
+     
+    
+                                                            
+</aura:component>

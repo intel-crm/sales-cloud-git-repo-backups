@@ -4,9 +4,6 @@
         <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
-        <field>ACCOUNT_ID</field>
-    </columns>
-    <columns>
         <field>Account.Core_CNDA_Number__c</field>
     </columns>
     <columns>
@@ -44,7 +41,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Aaeon</value>
+            <value>hewlett</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Geo__c</column>

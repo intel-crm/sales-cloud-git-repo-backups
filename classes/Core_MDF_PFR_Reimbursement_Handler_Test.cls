@@ -1,14 +1,14 @@
 /***************************************************************************************************** 
 Class Name :    Core_MDF_PFR_Reimbursement_Handler_Test
 Description:    Activity Variable Reimbursment test class
-Added By   :  	SS  
+Added By   :    SS  
 Modified By:                      Date:03/12/2020                     Changes:None  
 ******************************************************************************************************/
 @isTest(SeeAllData=false)
 public with sharing class Core_MDF_PFR_Reimbursement_Handler_Test {
     /*************************************************************************************************
-	Method Name: - Test Data Setup     
-	**************************************************************************************************/
+    Method Name: - Test Data Setup     
+    **************************************************************************************************/
     @TestSetUp
     static void createTestData(){
         //Admin User to create Channel Program, Account , Create Internal Account Managers, Program Admins 
@@ -19,7 +19,7 @@ public with sharing class Core_MDF_PFR_Reimbursement_Handler_Test {
         usr.UserRoleId = usRole.Id;
         userList.add(usr);
         insert userList;
-        System.runAs(userList[0]){ 
+        System.runAs(userList[0]){
             Test.startTest();
             // Creating Channel Programs
             List <ChannelProgram> cpList = new List <ChannelProgram>();
@@ -60,11 +60,11 @@ public with sharing class Core_MDF_PFR_Reimbursement_Handler_Test {
             //PS Assignment
             List<PermissionSetAssignment> psaList = new List<PermissionSetAssignment>();
             PermissionSetAssignment assignPermissionSetObjCCF = new PermissionSetAssignment();
-       		assignPermissionSetObjCCF.AssigneeId = ccfAccntMngr.Id;
-       		assignPermissionSetObjCCF.PermissionSetId = ccfAccmanagerPS.Id;
+            assignPermissionSetObjCCF.AssigneeId = ccfAccntMngr.Id;
+            assignPermissionSetObjCCF.PermissionSetId = ccfAccmanagerPS.Id;
             PermissionSetAssignment assignPermissionSetObjDCF = new PermissionSetAssignment();
-       		assignPermissionSetObjDCF.AssigneeId = dcfAccntMngr.Id;
-       		assignPermissionSetObjDCF.PermissionSetId = dcfAccmanagerPS.Id;
+            assignPermissionSetObjDCF.AssigneeId = dcfAccntMngr.Id;
+            assignPermissionSetObjDCF.PermissionSetId = dcfAccmanagerPS.Id;
             psaList.add(assignPermissionSetObjCCF);
             psaList.add(assignPermissionSetObjDCF);
             insert psaList;
@@ -96,7 +96,7 @@ public with sharing class Core_MDF_PFR_Reimbursement_Handler_Test {
                 pfr1.Core_MDF_Budget_Currency_cd__c='USD';
                // pfr1.Core_MDF_Technology_txt__c = 'Ice Lake';
                pfr1.Core_MDF_Activity_Types__c='';
-            	PartnerFundRequest pfr2 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(String.valueof(campCCF.Id), 
+                PartnerFundRequest pfr2 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(String.valueof(campCCF.Id), 
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                            String.valueof(coMarketingAccCCF.id),null,null,'ALBANIA',
                                                                                            'Gaming',
@@ -144,7 +144,7 @@ public with sharing class Core_MDF_PFR_Reimbursement_Handler_Test {
                 pfr1.Core_MDF_Budget_Amount_Local_amt__c=12345;
                 pfr1.Core_MDF_Budget_Currency_cd__c='USD';
                 pfr1.Core_MDF_Activity_Types__c='';
-            	PartnerFundRequest pfr2 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(String.valueof(campDCF.Id), 
+                PartnerFundRequest pfr2 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(String.valueof(campDCF.Id), 
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_DCF,
                                                                                            String.valueof(coMarketingAccDCF.id),null,null,'ALBANIA',
                                                                                            'Developer',
@@ -199,8 +199,8 @@ public with sharing class Core_MDF_PFR_Reimbursement_Handler_Test {
         }
     }
     /*************************************************************************************************
-	Method Name: - Positive Test Scenario     
-	**************************************************************************************************/
+    Method Name: - Positive Test Scenario     
+    **************************************************************************************************/
     @isTest 
     static void testloadPFRRecord(){
         Test.startTest();
@@ -208,7 +208,7 @@ public with sharing class Core_MDF_PFR_Reimbursement_Handler_Test {
         List<PartnerFundRequest> pfrList = [SELECT Id, Title, Core_MDF_ActivityCategory__c, Core_MDF_Activity_Types__c,Core_MDF_Brand_nm__c,
                                            /* Core_MDF_ProductType__c,*/ Campaign.Core_MDF_Account__r.Core_MDF_Channel_Program__c,Core_MDF_Start_Date__c,Core_MDF_Incentive_Opted_In_ind__c,
                                             Campaign.Core_MDF_Technology__c FROM PartnerFundRequest WHERE Title ='Test DCF Activity 1' OR Title ='Test DCF Activity 2'
-                                           	OR Title ='Test CCF Activity 2' OR Title ='Test CCF Activity 2' Limit 4];
+                                            OR Title ='Test CCF Activity 2' OR Title ='Test CCF Activity 2' Limit 4];
         List<Core_MDF_CoMarketing_Activity_Inc_Rule__c> incentiveList = [SELECT Id, Core_MDF_Brand_Nm__c,Core_MDF_Product_Type_Txt__c,
                                                                          Core_MDF_Activity_Category_Nm__c, Core_MDF_Activity_Type_Nm__c,
                                                                          Core_MDF_Technology_Nm__c,Core_MDF_Effective_Dt__c, Core_MDF_Ineffective_Dt__c,
@@ -216,7 +216,7 @@ public with sharing class Core_MDF_PFR_Reimbursement_Handler_Test {
         
         Map<PartnerFundRequest, Id> pfrCPIdMap = new Map<PartnerFundRequest, Id>();
         for(PartnerFundRequest pfr : pfrList){
-        	pfrCPIdMap.put(pfr , pfr.Campaign.Core_MDF_Account__r.Core_MDF_Channel_Program__c);
+            pfrCPIdMap.put(pfr , pfr.Campaign.Core_MDF_Account__r.Core_MDF_Channel_Program__c);
         }
         Core_MDF_VRQuestionsWrapper.vrQuestionWrap pfrLst = Core_MDF_PFR_Reimbursement_Handler.calculateVariableReimbursement(pfrCPIdMap,'Intel® Optane™ DC Persistent Memory');
         
@@ -232,8 +232,8 @@ public with sharing class Core_MDF_PFR_Reimbursement_Handler_Test {
         Test.stopTest();
     }
     /*************************************************************************************************
-	Method Name: - Negative Test Scenario     
-	**************************************************************************************************/
+    Method Name: - Negative Test Scenario     
+    **************************************************************************************************/
     @isTest 
     static void testloadnegativePFRRecord(){
         Test.startTest();
@@ -242,10 +242,14 @@ public with sharing class Core_MDF_PFR_Reimbursement_Handler_Test {
                                            /* Core_MDF_ProductType__c,*/ Campaign.Core_MDF_Account__r.Core_MDF_Channel_Program__c,Core_MDF_Start_Date__c,
                                             Campaign.Core_MDF_Technology__c
                                             FROM PartnerFundRequest WHERE Title ='Test CCF Activity 2' OR Title ='Test CCF Activity 2' Limit 2];
+        /*List<Core_MDF_CoMarketing_Activity_Inc_Rule__c> incentiveList = [SELECT Id, Core_MDF_Brand_Nm__c,Core_MDF_Product_Type_Txt__c,
+                                                                         Core_MDF_Activity_Category_Nm__c, Core_MDF_Activity_Type_Nm__c,
+                                                                         Core_MDF_Technology_Nm__c,Core_MDF_Effective_Dt__c, Core_MDF_Ineffective_Dt__c,
+                                                                         Core_MDF_Channel_Program_Id__c FROM Core_MDF_CoMarketing_Activity_Inc_Rule__c WHERE Core_MDF_Channel_Program_Id__c =: dcfCP.Id  LIMIT 1];*/
         
         Map<PartnerFundRequest, Id> pfrCPIdMap = new Map<PartnerFundRequest, Id>();
         for(PartnerFundRequest pfr : pfrList){
-        	pfrCPIdMap.put(pfr , pfr.Campaign.Core_MDF_Account__r.Core_MDF_Channel_Program__c);
+            pfrCPIdMap.put(pfr , pfr.Campaign.Core_MDF_Account__r.Core_MDF_Channel_Program__c);
         }
                 Core_MDF_VRQuestionsWrapper.vrQuestionWrap pfrLst = Core_MDF_PFR_Reimbursement_Handler.calculateVariableReimbursement(pfrCPIdMap,'Intel® Optane™ DC Persistent Memory');
         

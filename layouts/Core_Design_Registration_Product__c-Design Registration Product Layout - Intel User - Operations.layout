@@ -2,6 +2,7 @@
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <customButtons>Core_Approve_Product</customButtons>
     <customButtons>Core_Reject_Product</customButtons>
+    <customButtons>Core_Cancel_Product</customButtons>
     <excludeButtons>ChangeOwnerOne</excludeButtons>
     <excludeButtons>ChangeRecordType</excludeButtons>
     <excludeButtons>Clone</excludeButtons>
@@ -30,10 +31,6 @@
                 <field>Core_Target_Resale_Amt__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>DDR_Target_Resale_Price_Note__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_Full_Year_Value_Amt__c</field>
             </layoutItems>
@@ -54,6 +51,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Design_Product_Status_Nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Product_List_Price_Amt__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -122,28 +123,38 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
+            <actionName>Core_Design_Registration_Product__c.Core_Approve_Product_Lex</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>5</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Core_Design_Registration_Product__c.Core_Reject_Product_Lex</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>6</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>FeedItem.TextPost</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>0</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>NewTask</actionName>
+            <actionName>FeedItem.ContentNote</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>1</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Edit</actionName>
-            <actionType>StandardButton</actionType>
+            <actionName>NewTask</actionName>
+            <actionType>QuickAction</actionType>
             <sortOrder>2</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Core_Design_Registration_Product__c.Core_Approve_Product_Lex</actionName>
-            <actionType>QuickAction</actionType>
+            <actionName>Edit</actionName>
+            <actionType>StandardButton</actionType>
             <sortOrder>3</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Core_Design_Registration_Product__c.Core_Reject_Product_Lex</actionName>
-            <actionType>QuickAction</actionType>
+            <actionName>Core_Cancel_Product</actionName>
+            <actionType>CustomButton</actionType>
             <sortOrder>4</sortOrder>
         </platformActionListItems>
     </platformActionList>
@@ -163,20 +174,13 @@
         <fields>Core_Advanced_Technology__c</fields>
         <relatedList>OpportunityLineItem.Core_Design_Registration_Product_Id__c</relatedList>
     </relatedLists>
-    <relatedLists>
-        <fields>PCC_MM_ID__c</fields>
-        <fields>PCC_Old_MM_Id__c</fields>
-        <fields>PCC_Ordering_Cd__c</fields>
-        <fields>PCC_Design_Registration__c</fields>
-        <relatedList>PCC_DDR_L5_Product_Mapping__c.PCC_Design_Registration_Product__c</relatedList>
-    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1J00000DIbSF</masterLabel>
+        <masterLabel>00h2D000000MtK8</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Unlock PFR Approval Records before Cancel Campaign</description>
+    <interviewLabel>Unlock PFR Approval Records {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Unlock PFR Approval Records</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Queries to get all the PFR records for a campaign ID</description>
+        <name>Get_the_PFR_records</name>
+        <label>Get the PFR records</label>
+        <locationX>226</locationX>
+        <locationY>162</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CampaignId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>CampaignID.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Fund_Request_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Pending Review</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>PartnerFundRequest</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Get_the_PFR_records</targetReference>
+        </connector>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <description>Campaign ID from Process Builder</description>
+        <name>CampaignID</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Campaign</objectType>
+    </variables>
+</Flow>

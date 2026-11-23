@@ -2,13 +2,13 @@
 <DebugLevel xmlns="http://soap.sforce.com/2006/04/metadata">
     <apexCode>FINER</apexCode>
     <apexProfiling>FINEST</apexProfiling>
-    <callout>NONE</callout>
-    <database>FINEST</database>
+    <callout>INFO</callout>
+    <database>INFO</database>
     <label>Sushma1</label>
     <nba>NONE</nba>
-    <system>NONE</system>
+    <system>FINE</system>
     <validation>INFO</validation>
-    <visualforce>NONE</visualforce>
+    <visualforce>FINER</visualforce>
     <wave>NONE</wave>
     <workflow>FINER</workflow>
 </DebugLevel>

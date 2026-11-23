@@ -1,0 +1,88 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,lightning:actionOverride"
+    access="global"
+    controller="Core_MDF_PartnerFundRequestCreatePage">
+
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="showSpinner" type="Boolean" default="false" />
+    <aura:attribute name="recordTypeOptions" type="List" default="[]" />
+    <aura:attribute name="recordTypeIdByDeveloperName" type="Map" />
+    <aura:attribute name="recordTypeLabelByDeveloperName" type="Map" />
+    <aura:attribute name="selectedRecordTypeDeveloperName" type="String" default="" />
+    <aura:attribute name="selectedRecordTypeId" type="String" default="" />
+    <aura:attribute name="selectedRecordTypeName" type="String" default="" />
+    <aura:attribute name="renderForm" type="Boolean" default="false" />
+    <aura:attribute name="isRecordTypeLoading" type="Boolean" default="true" />
+    <aura:attribute name="isFormLoading" type="Boolean" default="false" />
+    <aura:attribute name="isFormReady" type="Boolean" default="false" />
+    <aura:attribute name="preparedRecordTypeDeveloperName" type="String" default="" />
+    <aura:attribute name="preparedFormBody" type="Object" />
+    <aura:attribute name="modalOverlay" type="Object" />
+    <aura:attribute name="errorMessage" type="String" default="" />
+
+    <aura:dependency resource="markup://c:Core_MDF_CreateEditCCFDCFOutcomeBasedActivity" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <lightning:overlayLibrary aura:id="overlayLib" />
+
+    <aura:html tag="style">
+        .slds-modal__container{
+            max-width: 70rem !important;
+            width: 95% !important;
+        }
+        .slds-fade-in-open{
+            outline: none;
+        }
+    </aura:html>
+
+    <aura:if isTrue="{!v.showSpinner}">
+        <lightning:spinner alternativeText="Loading" size="large" class="slds-is-fixed" />
+    </aura:if>
+
+    <aura:if isTrue="{!not(v.renderForm)}">
+        <div aura:id="recordTypeModal" role="dialog" tabindex="-1" aria-labelledby="recordTypeHeader" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <div class="slds-modal__header">
+                    <button class="slds-button slds-modal__close slds-button_icon-inverse" title="Close" onclick="{!c.closeModal}">
+                        X<span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
+                    </button>
+                    <h2 id="recordTypeHeader" class="slds-text-heading_medium">{!$Label.c.Core_MDF_Select_a_Record_Type}</h2>
+                </div>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <aura:if isTrue="{!not(empty(v.errorMessage))}">
+                        <div class="slds-m-bottom_small">
+                            <c:Core_MDF_ErrorMessage type="error" message="{!v.errorMessage}" />
+                        </div>
+                    </aura:if>
+                    <aura:if isTrue="{!v.isRecordTypeLoading}">
+                        <div class="slds-is-relative slds-p-vertical_x-large slds-align_absolute-center">
+                            <lightning:spinner alternativeText="Loading record types" size="small" />
+                            <span class="slds-m-left_large">Loading record types...</span>
+                        </div>
+                        <aura:set attribute="else">
+                            <lightning:layout horizontalAlign="center" verticalAlign="center">
+                                <lightning:layoutItem flexibility="auto" padding="around-small" size="8">
+                                    <lightning:select aura:id="recordTypePickList" name="selectRecordType" label="{!$Label.c.Core_MDF_Select_a_Record_Type}" value="{!v.selectedRecordTypeDeveloperName}" disabled="{!or(v.isRecordTypeLoading, v.isFormLoading)}" onchange="{!c.handleRecordTypeChange}">
+                                        <option value="" text="{!$Label.c.Core_MDF_PFR_None_Translation}" />
+                                        <aura:iteration items="{!v.recordTypeOptions}" var="item">
+                                            <option value="{!item.value}" text="{!item.label}" />
+                                        </aura:iteration>
+                                    </lightning:select>
+                                    <aura:if isTrue="{!v.isFormLoading}">
+                                        <div class="slds-m-top_medium slds-is-relative slds-align_absolute-center">
+                                            <lightning:spinner alternativeText="Initializing form" size="small" />
+                                            <span class="slds-m-left_large">Loading form data for selected record type...</span>
+                                        </div>
+                                    </aura:if>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                        </aura:set>
+                    </aura:if>
+                </div>
+                <div class="slds-modal__footer">
+                    <lightning:button variant="neutral" label="{!$Label.c.Core_MDF_Cancel}" onclick="{!c.closeModal}" />
+                    <lightning:button variant="brand" label="{!$Label.c.Core_MDF_Next}" onclick="{!c.handleNext}" disabled="{!or(or(v.showSpinner, v.isRecordTypeLoading), or(v.isFormLoading, not(v.isFormReady)))}" />
+                </div>
+            </div>
+        </div>
+        <div aura:id="recordTypeBackdrop" class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+</aura:component>

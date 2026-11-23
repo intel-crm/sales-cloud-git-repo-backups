@@ -32,10 +32,6 @@
             <translation><!-- Approval Process --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Combined</masterLabel>
-            <translation><!-- Combined --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Description</masterLabel>
             <translation><!-- Description --></translation>
         </picklistValues>
@@ -44,8 +40,8 @@
             <translation><!-- File --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>IUPGM Chatbot</masterLabel>
-            <translation><!-- IUPGM Chatbot --></translation>
+            <masterLabel>File + Description</masterLabel>
+            <translation><!-- File + Description --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -72,27 +68,6 @@
     <fields>
         <label><!-- Final Saved Value --></label>
         <name>Core_MDF_Final_Saved_Value__c</name>
-    </fields>
-    <fields>
-        <label><!-- IUPGM Error Detail --></label>
-        <name>Core_MDF_IUPGM_Error_Detail__c</name>
-    </fields>
-    <fields>
-        <label><!-- IUPGM Program --></label>
-        <name>Core_MDF_IUPGM_Program__c</name>
-    </fields>
-    <fields>
-        <label><!-- IUPGM Response Time (ms) --></label>
-        <name>Core_MDF_IUPGM_Response_Time_ms__c</name>
-    </fields>
-    <fields>
-        <label><!-- IUPGM Role Requested --></label>
-        <name>Core_MDF_IUPGM_Role_Requested__c</name>
-    </fields>
-    <fields>
-        <label><!-- IUPGM Staging Record --></label>
-        <name>Core_MDF_IUPGM_Staging_Record__c</name>
-        <relationshipLabel><!-- AI Chatbot Logs --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Recommendation Used --></label>

@@ -82,7 +82,6 @@ global without sharing class Core_MDF_Batch_RetryAICDBOutbound implements Databa
         Datetime fromDt = System.now().addDays(-PERIOD_DAYS);
         String convertFromDte = fromDt.formatGmt('yyyy-MM-dd\'T\'HH:mm:ss\'Z\'');
         String soql = queryString; 
-            
         return Database.getQueryLocator(soql);
             
         } catch (Exception exp) {
@@ -96,7 +95,6 @@ global without sharing class Core_MDF_Batch_RetryAICDBOutbound implements Databa
         List<Core_CDB_Integration_Log__c> cdbLogs = (scope == null || scope.isEmpty())
             ? new List<Core_CDB_Integration_Log__c>()
             : (List<Core_CDB_Integration_Log__c>) (List<SObject>) scope;
-        
         if (cdbLogs.isEmpty()) {
             return;
         }

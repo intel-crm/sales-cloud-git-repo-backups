@@ -82,7 +82,6 @@ global class Core_PrimeAccountName_BatchClass implements Database.Batchable<sObj
         //update scope;          
         try{
             // Database.update(oppToUpdateList);
-            system.debug('OPPLIST IS:'+oppToUpdateList.size());
             Database.SaveResult[] lsr = Database.update(oppToUpdateList, false);
             // Iterate through the Save Results 
             for(Database.SaveResult sr:lsr){
@@ -114,11 +113,7 @@ global class Core_PrimeAccountName_BatchClass implements Database.Batchable<sObj
             insert batchline;
         }catch(Exception e){      
             System.debug('****BatchProcessing - '+batchProcessing);
-            String exMessage= e.getMessage();
-            if(exMessage.length()>255){
-                exMessage.substring(0,255);
-            }
-            batchProcessing.Core_Exception_Log__c = exMessage;
+            batchProcessing.Core_Exception_Log__c = e.getMessage();
             Update batchProcessing;
             system.debug('batchProcessing-->'+batchProcessing);
         }    

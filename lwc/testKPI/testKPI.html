@@ -1,0 +1,402 @@
+<template>
+  <template if:true={showForm}>
+    <lightning-layout class="slds-page-header slds-page-header--object-home">
+      <lightning-layout-item padding="horizontal-small" size="12" style="width:inherit;">
+        <div class="page-section page-header">
+          <h1 class="slds-text-heading--label">{inputValues.title}</h1>
+        </div>
+      </lightning-layout-item>
+    </lightning-layout>
+    <template if:true={error} >
+      <lightning-layout class="slds-page-header slds-page-header--object-home">
+        <lightning-layout-item padding="horizontal-small" size="12">
+            <div class="slds-notify slds-notify_toast slds-theme_error">
+              <span class="slds-assistive-text">ERROR</span>
+                <div class="slds-notify__content">
+                <br/>
+                <p class="slds-align_absolute-center">{errorMsg}</p>                
+                </div>
+            </div>
+        </lightning-layout-item>
+      </lightning-layout>
+    </template>
+
+    <lightning-layout horizontal-align="spread" multiple-rows="true">
+      <lightning-layout-item flexibility="grow" size="12" padding="around_xxx-small">
+        <div
+            class="slds-p-around_xxx-small slds-m-top_x-xxx-small slds-m-xxx-small slds-m-horizontal_xxx-small"
+          >
+            <lightning-layout>
+              <lightning-layout-item flexibility="grow" padding="around-none">
+                <div class="slds-grid slds-gutters slds-wrap">
+                  <template
+                    if:true={kpiVisibility.Core_MDF_Magazine_Newspaper_txt}
+                  >
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="text"
+                        name="Core_MDF_Magazine_Newspaper_txt"
+                        value={kpiValues.Core_MDF_Magazine_Newspaper_txt}
+                        label={kpiLabels.Core_MDF_Magazine_Newspaper_txt}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template
+                    if:true={kpiVisibility.Core_MDF_Estimated_Ad_Size_nbr}
+                  >
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="number"
+                        name="Core_MDF_Estimated_Ad_Size_nbr"
+                        value={kpiValues.Core_MDF_Estimated_Ad_Size_nbr}
+                        label={kpiLabels.Core_MDF_Estimated_Ad_Size_nbr}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template if:true={kpiVisibility.Core_MDF_Type_of_Page_txt}>
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-combobox
+                        name="Core_MDF_Type_of_Page_txt"
+                        value={kpiValues.Core_MDF_Type_of_Page_txt}
+                        options={kpiPicValues.Core_MDF_Type_of_Page_txt}
+                        label={kpiLabels.Core_MDF_Type_of_Page_txt}
+                      >
+                      </lightning-combobox>
+                    </div>
+                  </template>
+                  <template
+                    if:true={kpiVisibility.Core_MDF_NoOfImpressions_Nbr}
+                  >
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="number"
+                        name="Core_MDF_NoOfImpressions_Nbr"
+                        value={kpiValues.Core_MDF_NoOfImpressions_Nbr}
+                        label={kpiLabels.Core_MDF_NoOfImpressions_Nbr}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template
+                    if:true={kpiVisibility.Core_MDF_Number_of_Clicks_nbr}
+                  >
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="number"
+                        name="Core_MDF_Number_of_Clicks_nbr"
+                        value={kpiValues.Core_MDF_Number_of_Clicks_nbr}
+                        label={kpiLabels.Core_MDF_Number_of_Clicks_nbr}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template if:true={kpiVisibility.Core_MDF_URL_txt}>
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="text"
+                        name="Core_MDF_URL_txt"
+                        value={kpiValues.Core_MDF_URL_txt}
+                        label={kpiLabels.Core_MDF_URL_txt}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template if:true={kpiVisibility.Core_MDF_Number_of_RSPs_nbr}>
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="number"
+                        name="Core_MDF_Number_of_RSPs_nbr"
+                        value={kpiValues.Core_MDF_Number_of_RSPs_nbr}
+                        label={kpiLabels.Core_MDF_Number_of_RSPs_nbr}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template
+                    if:true={kpiVisibility.Core_MDF_Where_to_take_place_txt}
+                  >
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-combobox
+                        name="Core_MDF_Where_to_take_place_txt"
+                        value={kpiValues.Core_MDF_Where_to_take_place_txt}
+                        options={kpiPicValues.Core_MDF_Where_to_take_place_txt}
+                        label={kpiLabels.Core_MDF_Where_to_take_place_txt}
+                      >
+                      </lightning-combobox>
+                    </div>
+                  </template>
+                  <template if:true={kpiVisibility.Core_MDF_Collateral_txt}>
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="text"
+                        name="Core_MDF_Collateral_txt"
+                        value={kpiValues.Core_MDF_Collateral_txt}
+                        label={kpiLabels.Core_MDF_Collateral_txt}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template
+                    if:true={kpiVisibility.Core_MDF_Number_of_Stores_nbr}
+                  >
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="number"
+                        name="Core_MDF_Number_of_Stores_nbr"
+                        value={kpiValues.Core_MDF_Number_of_Stores_nbr}
+                        label={kpiLabels.Core_MDF_Number_of_Stores_nbr}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template
+                    if:true={kpiVisibility.Core_MDF_Percentage_of_Intel_Devices_pct}
+                  >
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-combobox
+                        name="Core_MDF_Percentage_of_Intel_Devices_pct"
+                        value={kpiValues.Core_MDF_Percentage_of_Intel_Devices_pct}
+                        options={kpiPicValues.Core_MDF_Percentage_of_Intel_Devices_pct}
+                        label={kpiLabels.Core_MDF_Percentage_of_Intel_Devices_pct}
+                      >
+                      </lightning-combobox>
+                    </div>
+                  </template>
+                  <template
+                    if:true={kpiVisibility.Core_MDF_URLs_w_Live_CPU_Badges_nbr}
+                  >
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="number"
+                        name="Core_MDF_URLs_w_Live_CPU_Badges_nbr"
+                        value={kpiValues.Core_MDF_URLs_w_Live_CPU_Badges_nbr}
+                        label={kpiLabels.Core_MDF_URLs_w_Live_CPU_Badges_nbr}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template if:true={kpiVisibility.Core_MDF_ROAS_txt}>
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="text"
+                        name="Core_MDF_ROAS_txt"
+                        value={kpiValues.Core_MDF_ROAS_txt}
+                        label={kpiLabels.Core_MDF_ROAS_txt}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template if:true={kpiVisibility.Core_MDF_CPA_txt}>
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="text"
+                        name="Core_MDF_CPA_txt"
+                        value={kpiValues.Core_MDF_CPA_txt}
+                        label={kpiLabels.Core_MDF_CPA_txt}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template
+                    if:true={kpiVisibility.Core_MDF_Number_of_Recipient_nbr}
+                  >
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="number"
+                        name="Core_MDF_Number_of_Recipient_nbr"
+                        value={kpiValues.Core_MDF_Number_of_Recipient_nbr}
+                        label={kpiLabels.Core_MDF_Number_of_Recipient_nbr}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template
+                    if:true={kpiVisibility.Core_MDF_Number_of_Delivered_nbr}
+                  >
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="number"
+                        name="Core_MDF_Number_of_Delivered_nbr"
+                        value={kpiValues.Core_MDF_Number_of_Delivered_nbr}
+                        label={kpiLabels.Core_MDF_Number_of_Delivered_nbr}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template if:true={kpiVisibility.Core_MDF_Open_Rate_nbr}>
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="number"
+                        name="Core_MDF_Open_Rate_nbr"
+                        value={kpiValues.Core_MDF_Open_Rate_nbr}
+                        label={kpiLabels.Core_MDF_Open_Rate_nbr}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template if:true={kpiVisibility.Core_MDF_CTA_txt}>
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="text"
+                        name="Core_MDF_CTA_txt"
+                        value={kpiValues.Core_MDF_CTA_txt}
+                        label={kpiLabels.Core_MDF_CTA_txt}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template if:true={kpiVisibility.Core_MDF_TV_Channel_s_txt}>
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="text"
+                        name="Core_MDF_TV_Channel_s_txt"
+                        value={kpiValues.Core_MDF_TV_Channel_s_txt}
+                        label={kpiLabels.Core_MDF_TV_Channel_s_txt}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template
+                    if:true={kpiVisibility.Core_MDF_Time_video_to_last_txt}
+                  >
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="text"
+                        name="Core_MDF_Time_video_to_last_txt"
+                        value={kpiValues.Core_MDF_Time_video_to_last_txt}
+                        label={kpiLabels.Core_MDF_Time_video_to_last_txt}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template if:true={kpiVisibility.Core_MDF_Frequency_txt}>
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="text"
+                        name="Core_MDF_Frequency_txt"
+                        value={kpiValues.Core_MDF_Frequency_txt}
+                        label={kpiLabels.Core_MDF_Frequency_txt}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template
+                    if:true={kpiVisibility.Core_MDF_How_many_screens_nbr}
+                  >
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="number"
+                        name="Core_MDF_How_many_screens_nbr"
+                        value={kpiValues.Core_MDF_How_many_screens_nbr}
+                        label={kpiLabels.Core_MDF_How_many_screens_nbr}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template if:true={kpiVisibility.Core_MDF_Runs_per_hour_nbr}>
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="number"
+                        name="Core_MDF_Runs_per_hour_nbr"
+                        value={kpiValues.Core_MDF_Runs_per_hour_nbr}
+                        label={kpiLabels.Core_MDF_Runs_per_hour_nbr}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template if:true={kpiVisibility.Core_MDF_Distribution_txt}>
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-combobox
+                        name="Core_MDF_Distribution_txt"
+                        value={kpiValues.Core_MDF_Distribution_txt}
+                        options={kpiPicValues.Core_MDF_Distribution_txt}
+                        label={kpiLabels.Core_MDF_Distribution_txt}
+                      >
+                      </lightning-combobox>
+                    </div>
+                  </template>
+                  <template
+                    if:true={kpiVisibility.Core_MDF_Number_of_Circulation_nbr}
+                  >
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="number"
+                        name="Core_MDF_Number_of_Circulation_nbr"
+                        value={kpiValues.Core_MDF_Number_of_Circulation_nbr}
+                        label={kpiLabels.Core_MDF_Number_of_Circulation_nbr}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template
+                    if:true={kpiVisibility.Core_MDF_Number_of_Devices_nbr}
+                  >
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="number"
+                        name="Core_MDF_Number_of_Devices_nbr"
+                        value={kpiValues.Core_MDF_Number_of_Devices_nbr}
+                        label={kpiLabels.Core_MDF_Number_of_Devices_nbr}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template
+                    if:true={kpiVisibility.Core_MDF_No_Dedicated_Resources_nbr}
+                  >
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="number"
+                        name="Core_MDF_No_Dedicated_Resources_nbr"
+                        value={kpiValues.Core_MDF_No_Dedicated_Resources_nbr}
+                        label={kpiLabels.Core_MDF_No_Dedicated_Resources_nbr}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template
+                    if:true={kpiVisibility.Core_MDF_Type_of_Resource_txt}
+                  >
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="text"
+                        name="Core_MDF_Type_of_Resource_txt"
+                        value={kpiValues.Core_MDF_Type_of_Resource_txt}
+                        label={kpiLabels.Core_MDF_Type_of_Resource_txt}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template if:true={kpiVisibility.Core_MDF_Placement_txt}>
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="number"
+                        name="Core_MDF_Placement_txt"
+                        value={kpiValues.Core_MDF_Placement_txt}
+                        label={kpiLabels.Core_MDF_Placement_txt}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <template if:true={kpiVisibility.Core_MDF_ClicksOrImpression_Nm}>
+                    <div class="slds-p-around_small slds-size_1-of-2">
+                      <lightning-input
+                        type="number"
+                        name="Core_MDF_ClicksOrImpression_Nm"
+                        value={kpiValues.Core_MDF_ClicksOrImpression_Nm}
+                        label={kpiLabels.Core_MDF_ClicksOrImpression_Nm}
+                      >
+                      </lightning-input>
+                    </div>
+                  </template>
+                  <!-- <lightning-button name="submit" label="submit" onclick={getKPIValues}></lightning-button> -->
+                </div>
+              </lightning-layout-item>
+            </lightning-layout>
+          </div>
+      </lightning-layout-item>
+    </lightning-layout>
+  </template>
+</template>

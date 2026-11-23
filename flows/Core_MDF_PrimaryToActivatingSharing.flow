@@ -6,7 +6,7 @@
         <name>Add_Share_Record_To_Final_List</name>
         <label>Add Share Record To Final List</label>
         <locationX>138</locationX>
-        <locationY>863</locationY>
+        <locationY>971</locationY>
         <assignmentItems>
             <assignToReference>ActivatingAccountShareList</assignToReference>
             <operator>Add</operator>
@@ -22,7 +22,7 @@
         <name>Core_MDF_CreateAccountShareForPrimaryActivating</name>
         <label>CreateAccountShareForActivatingPartner</label>
         <locationX>138</locationX>
-        <locationY>755</locationY>
+        <locationY>863</locationY>
         <assignmentItems>
             <assignToReference>ActivatingAccountShare.AccountAccessLevel</assignToReference>
             <operator>Assign</operator>
@@ -73,7 +73,7 @@
         <name>Core_MDF_Verify_Record</name>
         <label>Verify Record</label>
         <locationX>182</locationX>
-        <locationY>431</locationY>
+        <locationY>539</locationY>
         <defaultConnectorLabel>Not Present</defaultConnectorLabel>
         <rules>
             <name>DataIsPresent</name>
@@ -111,7 +111,7 @@
         <name>Core_MDF_IteratePGMRecords</name>
         <label>IteratePGMRecords</label>
         <locationX>50</locationX>
-        <locationY>647</locationY>
+        <locationY>755</locationY>
         <collectionReference>PrimaryPGMRecords</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -144,14 +144,37 @@
         <name>Core_MDF_Insert_Share_Records</name>
         <label>Insert Share Records</label>
         <locationX>50</locationX>
-        <locationY>1055</locationY>
+        <locationY>1163</locationY>
         <inputReference>ActivatingAccountShareList</inputReference>
     </recordCreates>
+    <recordLookups>
+        <name>core_MDF_Get_Channel_Program_ID</name>
+        <label>Get Channel Program ID</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_Record</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Ecosystem Extension Fund</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Core_MDF_ChannelProgram__mdt</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Core_MDF_Program_ID__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordLookups>
         <name>Core_MDF_getPGMRecordsForActivatingPartner</name>
         <label>getPGMRecordsForPrimaryPartner</label>
         <locationX>50</locationX>
-        <locationY>539</locationY>
+        <locationY>647</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Core_MDF_IteratePGMRecords</targetReference>
@@ -201,10 +224,16 @@
         <name>Update_Record</name>
         <label>Update Record</label>
         <locationX>182</locationX>
-        <locationY>323</locationY>
+        <locationY>431</locationY>
         <connector>
             <targetReference>Core_MDF_Verify_Record</targetReference>
         </connector>
+        <inputAssignments>
+            <field>Core_MDF_Channel_Program__c</field>
+            <value>
+                <elementReference>core_MDF_Get_Channel_Program_ID.Core_MDF_Program_ID__c</elementReference>
+            </value>
+        </inputAssignments>
         <inputAssignments>
             <field>Core_MDF_Unique_ID__c</field>
             <value>
@@ -217,7 +246,7 @@
         <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Update_Record</targetReference>
+            <targetReference>core_MDF_Get_Channel_Program_ID</targetReference>
         </connector>
         <object>Core_MDF_Partner_Mapping__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
@@ -247,6 +276,14 @@
         <isInput>true</isInput>
         <isOutput>true</isOutput>
         <objectType>Core_MDF_Partner_Group_Mapping__c</objectType>
+    </variables>
+    <variables>
+        <name>EFFChannelProgramRecord</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Channel_Program__c</objectType>
     </variables>
     <variables>
         <name>PrimaryAccountShare</name>

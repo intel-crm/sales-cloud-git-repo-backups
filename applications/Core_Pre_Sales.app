@@ -2,13 +2,11 @@
 <CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
     <defaultLandingTab>standard-Case</defaultLandingTab>
     <description>IPS Pre-Sales</description>
-    <formFactors>Large</formFactors>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <label>Pre-Sales</label>
-    <logo>SharedDocuments/Intel_Logo_with_asterisk.png</logo>
     <tabs>Core_IPS_Product_Organization__c</tabs>
     <tabs>Core_IPS_Project__c</tabs>
     <tabs>standard-Account</tabs>
@@ -29,7 +27,23 @@
     <tabs>Core_Ask_a_Question_Grid_Mgt</tabs>
     <tabs>Core_Batch_Header__c</tabs>
     <tabs>CaseMilestoneCompare__c</tabs>
+    <tabs>Core_Account_Team_Review</tabs>
+    <tabs>Core_Account_Team_Review_Data_Ops</tabs>
     <tabs>Ask_a_Question</tabs>
-    <tabs>Core_IPS_Case_Owner_Group__c</tabs>
-    <tabs>Account_Create_Request__c</tabs>
+    <tabs>Power_BI_Report</tabs>
+    <tabs>Core_Security_Dashboard_Metric__c</tabs>
+    <tabs>SCRTY_Admin_Permission_Metrics__c</tabs>
+    <tabs>Core_MDF_Record_Tracking__c</tabs>
+    <tabs>Core_MDF_Partnership_Score__c</tabs>
+    <tabs>Core_MDF_PICReviewQuestion__c</tabs>
+    <tabs>Core_MDF_Recovery__c</tabs>
+    <tabs>In_App_Feedback__c</tabs>
+    <tabs>Core_MDF_Survey_Question__c</tabs>
+    <tabs>Core_MDF_Spending_Targets_Version__c</tabs>
+    <tabs>Core_MDF_Subscription_Notification_Type__c</tabs>
+    <tabs>Core_MDF_User_Notification_Subscriptions__c</tabs>
+    <tabs>Core_MDF_Custom_Utility_Config__c</tabs>
+    <tabs>Core_MDF_Exception_Account_Mapping__c</tabs>
+    <tabs>Core_MDF_Campaign_Outcomes__c</tabs>
+    <tabs>Support_Ticket__c</tabs>
 </CustomApplication>

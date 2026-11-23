@@ -40,16 +40,16 @@
         <field>TYPE</field>
     </columns>
     <crossFilters>
-        <operation>without</operation>
-        <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
-        <relatedTable>Core_Goal__c</relatedTable>
-        <relatedTableJoinColumn>Core_Opportunity__c</relatedTableJoinColumn>
-    </crossFilters>
-    <crossFilters>
         <operation>with</operation>
         <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
         <relatedTable>Core_Opportunity_KPI__c</relatedTable>
         <relatedTableJoinColumn>Core_Opp_KPI_Opportunity__c</relatedTableJoinColumn>
+    </crossFilters>
+    <crossFilters>
+        <operation>without</operation>
+        <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
+        <relatedTable>Core_Goal__c</relatedTable>
+        <relatedTableJoinColumn>Core_Opportunity__c</relatedTableJoinColumn>
     </crossFilters>
     <filter>
         <criteriaItems>

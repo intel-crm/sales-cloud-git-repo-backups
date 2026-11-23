@@ -1,0 +1,36 @@
+<template>
+    <lightning-card>
+        <lightning-combobox
+                name="progress"
+                label="Object"
+                value={value}
+                placeholder="Select Object"
+                options={objectDropdownvalues}
+                onchange={handleChange} >
+        </lightning-combobox>
+    <template if:true={enabled}>
+        <p>Selected value is: {result}</p>
+        <lightning-dual-listbox name="languages"
+                                label="Select Languages"
+                                source-label="Available"
+                                selected-label="Selected-"
+                                field-level-help="Select your preferred languages"
+                                options={final}
+                                value={values}
+                                onchange={handleChange2}>
+        </lightning-dual-listbox>
+        <p>Selected values are: {_selected}</p>
+    </template>
+    <p class="slds-m-bottom_small">
+    <lightning-button variant="success" label="Sharing Details" title="Successful action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>  
+    </p>
+     <div style="height: 200px;width: 800px;">
+            <lightning-datatable
+                    key-field="id"
+                    data={data1}
+                    columns={columns}
+                    hide-checkbox-column=true>
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+</template>

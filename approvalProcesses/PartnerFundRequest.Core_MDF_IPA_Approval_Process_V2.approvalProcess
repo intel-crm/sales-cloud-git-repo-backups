@@ -298,7 +298,7 @@
         </rejectionActions>
     </approvalStep>
     <approvalStep>
-        <allowDelegate>true</allowDelegate>
+        <allowDelegate>false</allowDelegate>
         <approvalActions>
             <action>
                 <name>Clear_Approval_Stage</name>
@@ -369,7 +369,7 @@
         </rejectionActions>
     </approvalStep>
     <description>This approval process is for IPA Account based</description>
-    <emailTemplate>Testt/Core_MDF_Activity_Approval_Notification</emailTemplate>
+    <emailTemplate>unfiled$public/Core_MDF_Activity_Approval_Notification</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <booleanFilter>(1 OR 4 OR 5) AND 2 AND 3</booleanFilter>
@@ -434,7 +434,7 @@
     </finalRejectionActions>
     <finalRejectionRecordLock>false</finalRejectionRecordLock>
     <label>IPA Approval Process V2</label>
-    <processOrder>6</processOrder>
+    <processOrder>5</processOrder>
     <recallActions>
         <action>
             <name>Clear_Activity_First_Approver</name>

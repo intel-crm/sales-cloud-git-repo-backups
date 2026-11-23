@@ -16,6 +16,7 @@
         <targetConfig targets="lightning__AppPage">
             <property name="showCreateActivity" label="Show Create Activity Button" type="Boolean" default="false" description="Used to show or hide Create Activity Button"/>
             <property name="showNewActivity" label="Show New Activity Button" type="Boolean" default="false" description="Used to show or hide the New Activity Button"/>
+            <property name="isCommunity" label="Show in Community" type="Boolean" default="false" description="Used to show or hide the in community.If you want to enable click on Yes checkbox"/>
         </targetConfig>
         <targetConfig targets="lightningCommunity__Default">
             <property name="showCreateActivity" label="Show Create Activity Button" type="Boolean" default="false" description="Used to show or hide Create Activity Button"/>

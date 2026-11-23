@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ReportsAndDashboards</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ReportsAndDashboards</value>
+    </caseValues>
+    <fields>
+        <label><!-- Developer Name --></label>
+        <name>Core_Developer_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>Core_MDF_Is_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object API Name --></label>
+        <name>Core_MDF_Object_API_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Core_MDF_Type_txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

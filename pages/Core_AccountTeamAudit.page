@@ -1,0 +1,255 @@
+<apex:page tabstyle="Account" action="{!onLoad}" controller="Core_AccountTeamAudit_Controller" title="Account Team Audit" lightningStylesheets="true">
+<apex:includeLightning />
+ <apex:includeScript value="/lightning/lightning.out.js" />   
+    <style type="text/css">
+        table.teamMembers {
+            border-collapse: collapse;
+            border: 1px solid #E0E0E0; 
+        }
+        th.teamMembers, td.teamMembers { 
+            border: 1px solid #E0E0E0; 
+            padding: 3px;
+            width: 12em;
+        }
+        .teamEdit { 
+            border: 1px solid #E0E0E0; 
+            border-collapse: collapse;
+            padding: 3px 10px 3px 3px;
+        }
+        h1 {
+            font-size: 1.3em;
+        }
+        .headerWrapper {
+            margin: 10px 0 10px 10px;
+        }
+        .buttonWrapper {
+            margin: .5em;
+            text-align:center;
+        }
+        .pageNumWrapper {
+            margin: .5em;
+            text-align:center; 
+        }
+        input[type=checkbox]  {
+          /* Enlarged Checkboxes */
+          -ms-transform: scale(1.5); /* IE */
+          -moz-transform: scale(1.5); /* FF */
+          -webkit-transform: scale(1.5); /* Safari and Chrome */
+          -o-transform: scale(1.5); /* Opera */
+          padding: 10px;
+        }
+    </style>    
+    <apex:sectionHeader title="Account Owner" subtitle="Account Team Audit" 
+    description="This page displays all Accounts you own that currently require their Account Teams to be reviewed."/>    
+    <apex:pageMessages id="showmsg"></apex:pageMessages>
+    <apex:form >
+        <apex:outputPanel layout="block" rendered ="{!OR(NOT(ISBLANK(searchFilter)),paginater.totalResults>0)}">                
+            <input type="text" value="{!searchFilter}" id="searchInput" onkeyup="if (event.keyCode == 13) {submitSearch();}" placeholder="Search: Account name" />
+            <input type="button" value="Search" onclick="submitSearch();" class="btn" id="btnSearch"/> 
+        </apex:outputPanel>            
+        <apex:outputPanel id="mainPanel" rendered="{!paginater.totalResults>0}">
+            <apex:outputPanel styleClass="buttonWrapper" layout="block">                                
+                <apex:commandButton value="Save" action="{!save}" oncomplete="location.reload();" onclick="disableAllButtons();" styleClass="btn" id="btnSave1"/>
+            </apex:outputPanel>                   
+            <apex:outputPanel styleClass="pageNumWrapper" layout="block">                
+            Page {!paginater.pageNum} of {!paginater.totalPage} 
+            </apex:outputPanel>
+            <apex:outputPanel styleClass="buttonWrapper" layout="block" rendered="{!paginater.totalPage>1}">                
+                <apex:outputText rendered="{!paginater.pageNum>1}">     
+                    <input type="button" value="<< Prev Page" onclick="reloadPageWithQueryString('{!paginater.previousQueryString}');" class="btn" style="text-decoration:none;padding:4px;margin:auto;" id="btnPrev1" />
+                </apex:outputText>                          
+                <apex:outputText rendered="{!paginater.pageNum<paginater.totalPage}">    
+                    <input type="button" value="Next Page >>" onclick="reloadPageWithQueryString('{!paginater.nextQueryString}');" class="btn" style="text-decoration:none;padding:4px;margin:auto;" id="btnNext1" />
+                </apex:outputText>
+            </apex:outputPanel>
+            <apex:repeat value="{!displayList}" var="acc">            
+                <apex:pageBlock >
+                    <apex:facet name="header">
+                        <apex:outputPanel styleClass="headerWrapper" layout="block" style="width:100%;">
+                        <!--
+                        <h1>
+                            <a href="/{!acc.Id}">{!acc.Name}</a>
+                        </h1>
+                        &nbsp;
+                        <b>Owner</b>  <a href="/{!acc.OwnerId}" onclick="window.open('/{!acc.OwnerId}', 'newwindow', 'width=1200,height=700,top=100,left=100'); return false;">{!acc.Owner.Name}</a>
+                        &nbsp;
+                        <b>CIM ID</b> {!acc.Core_CIM_ID__c}
+                        <br/>-->
+                         <div style="width:100;">
+                        <div style="float:left;width:32%;font-size: 14px;font-weight:bold;text-decoration:underline;">
+                      
+                           <apex:outputPanel rendered="{!$User.UIThemeDisplayed=='Theme3'}">
+                           <a href="/{!acc.Id}">{!acc.Name}</a>
+                           </apex:outputPanel>
+                           <apex:outputPanel rendered="{!$User.UIThemeDisplayed=='Theme4d'}">
+                           <div  onclick="sforce.one.navigateToSObject('{!acc.Id}','detail');" style="cursor:pointer;text-decoration: underline;">
+                                {!acc.Name}
+                              </div>
+                            </apex:outputPanel>
+                     
+                        </div>
+                        &nbsp;
+                        <div style="float:right;width:67%">
+                         <apex:outputPanel rendered="true">
+                        <div style="width:5%;float:left;">
+                        <b>Owner</b>
+                        </div>
+                        <div style="width:95%;float:right;">
+                        <div onclick="sobjectDetailPage('{!acc.OwnerId}','false');" style="cursor:pointer;float:left;width:14%;text-decoration: underline;">
+                          {!acc.Owner.Name}
+                         </div>&nbsp;
+                         <div style="width:80%;float:right;">
+                         <b>CIM ID</b> {!acc.Core_CIM_ID__c}
+                         </div>
+                         </div>
+                          </apex:outputPanel>
+                         </div>
+                         </div>
+                        &nbsp;                        
+                        <br/>                       
+                        </apex:outputPanel>
+                    </apex:facet>
+                    <apex:inputCheckbox value="{!acc.Core_Account_Team_Audit_Complete__c}" id="auditCompleted"  onclick="editPage();"/> Review Completed 
+                    <br/><br/>                                                    
+                    <table class="teamMembers">
+                        <tr>
+                            <th class="teamEdit"></th>
+                            <th class="teamMembers">Team Member</th>
+                            <th class="teamMembers">Account Access</th>
+                            <th class="teamMembers">Opportunity Access</th>
+                            <th class="teamMembers">Case Access</th>                            
+                            <th class="teamMembers">Team Role</th>
+                            <th class="teamMembers">Created Date</th>
+                            <th class="teamMembers">Created By User</th>
+                            <th class="teamMembers">Is Active</th>
+                        </tr>    
+                        <apex:repeat value="{!teamMembers}" var="tm"> 
+                        <apex:outputPanel rendered="{!IF(acc.Id=tm.accountId,true,false)}">
+                            <tr>
+                                <apex:outputPanel rendered="{!$User.UIThemeDisplayed=='Theme3'}">
+                                     <td class="teamEdit"><a href="/acc/salesteamedit.jsp?id={!tm.atmID}" onclick="window.open('/acc/salesteamedit.jsp?id={!tm.atmID}', 'newwindow', 'width=1200,height=700,top=100,left=100'); return false;">Edit</a>                               
+                                    </td>
+                                </apex:outputPanel>
+                                 <apex:outputPanel rendered="{!$User.UIThemeDisplayed=='Theme4d'}">
+                                    <td onclick="sobjectDetailPage('{!tm.atmID}','false');" style="cursor:pointer;text-decoration: underline;">Edit </td> 
+                                 </apex:outputPanel>                                     
+                                <td class="teamMembers">                                    
+                                   <!-- <a href="/{!tm.userID}" onclick="window.open('/{!tm.userID}', 'newwindow', 'width=1200,height=700,top=100,left=100'); return false;">{!tm.userName}</a>-->
+                                     <div onclick="sobjectDetailPage('{!tm.userID}','false');" style="cursor:pointer;text-decoration: underline;">
+                                              {!tm.userName}
+                                        </div>  
+                                </td>
+                                <td class="teamMembers">{!tm.accountAccessUI}</td>
+                                <td class="teamMembers">{!tm.opportunityAccessUI}</td>
+                                <td class="teamMembers">{!tm.caseAccessUI}</td>
+                                <td class="teamMembers">{!tm.teamRole}</td>
+                                <td class="teamMembers">{!tm.createdDate}</td>
+                                <td class="teamMembers">{!tm.createdByUser}</td>
+                                <td class="teamMembers">{!tm.isActive}</td>
+                            </tr>
+                        </apex:outputPanel>                    
+                        </apex:repeat>
+                    </table>  
+                    <div style="padding-top:.5em;padding-left:.2em">
+                      <!--  <a href="{!acc.Core_Account_Team_Anchor_URL__c}"  onclick="window.open('{!acc.Core_Account_Team_Anchor_URL__c}', 'newwindow', 'width=1200,height=700,top=100,left=100'); return false;">Add or Remove Team Members</a> -->
+                       <apex:outputPanel rendered="{!$User.UIThemeDisplayed=='Theme4d'}">
+                       <!-- <div onclick="sforce.one.navigateToURL('{!acc.Core_Account_Team_Anchor_URL__c}');" style="cursor:pointer;text-decoration: underline;">
+                                              Add or Remove Team Members
+                           </div> -->                                       
+                           <div onclick="sobjectDetailPage('{!acc.Id}','true');" style="cursor:pointer;text-decoration: underline;">
+                                              Add or Remove Team Members
+                                        </div>                                                      
+                       </apex:outputpanel> 
+                       <apex:outputpanel rendered="{!$User.UIThemeDisplayed=='Theme3'}">
+                           <a href="{!acc.Core_Account_Team_Anchor_URL__c}"  onclick="window.open('{!acc.Core_Account_Team_Anchor_URL__c}', 'newwindow', 'width=1200,height=700,top=100,left=100'); return false;">Add or Remove Team Members</a>
+                       </apex:outputpanel>
+                    </div>
+                </apex:pageBlock>
+            </apex:repeat>
+            <apex:outputPanel styleClass="buttonWrapper" layout="block">
+                <input type="button" value="Mark All on Page Complete" onclick="checkAll();" class="btn" style="text-decoration:none;padding:4px;margin:auto;" id="btnComplete" />
+            </apex:outputPanel>
+            <apex:outputPanel styleClass="buttonWrapper" layout="block" rendered="{!paginater.totalPage>1}">
+                <apex:outputText rendered="{!paginater.pageNum>1}">     
+                    <input type="button" value="<< Prev Page" onclick="reloadPageWithQueryString('{!paginater.previousQueryString}');" class="btn" style="text-decoration:none;padding:4px;margin:auto;" id="btnPrev2"/> 
+                </apex:outputText>                          
+                <apex:outputText rendered="{!paginater.pageNum<paginater.totalPage}">    
+                    <input type="button" value="Next Page >>" onclick="reloadPageWithQueryString('{!paginater.nextQueryString}');" class="btn" style="text-decoration:none;padding:4px;margin:auto;" id="btnNext2"/>
+                </apex:outputText>              
+            </apex:outputPanel>
+            <apex:outputPanel styleClass="pageNumWrapper" layout="block">                
+                Page {!paginater.pageNum} of {!paginater.totalPage} 
+            </apex:outputPanel>
+            <apex:outputPanel styleClass="buttonWrapper" layout="block">
+                <apex:commandButton value="Save" action="{!save}" oncomplete="location.reload();" onclick="disableAllButtons();" styleClass="btn" id="btnSave2"/>
+            </apex:outputPanel>
+        </apex:outputPanel>
+    </apex:form>
+    <div id="lightning"></div> 
+    <script>
+     pageEdited={!pageEditedFlag};
+  function sobjectDetailPage(recId,isAccountTeam){
+       if((typeof sforce !== 'undefined' )&&(typeof sforce.one !== 'undefined')){
+           redirectlightningComponent(recId,isAccountTeam); 
+        }else{
+            window.open('/'+recId, 'newwindow', 'width=1200,height=700,top=100,left=100'); return false;
+        }
+    }
+function redirectlightningComponent(recId,isAccountTeam){
+    $Lightning.use("c:Core_windowOpenApp", function() {
+    $Lightning.createComponent("c:Core_windowOpen",
+      { 
+          "RecordId" : recId,
+          "isAccTeamRelated" : isAccountTeam
+      },
+            "lightning",
+             function(cmp) {
+                // do some stuff
+           });
+           
+           });
+} 
+    /*
+    window.onload=load;
+    function load() {
+        pageEdited = false;
+    }*/
+    
+    
+    function checkAll() {
+        editPage();
+        var inputElem = document.getElementsByTagName("input");
+        for(var i=0; i<inputElem.length; i++)
+        {
+            if(inputElem[i].id.indexOf("auditCompleted")!=-1)
+                inputElem[i].checked = true;
+        }        
+    }    
+    function disableAllButtons() {
+        var inputElem = document.getElementsByTagName("input");
+        for(var i=0; i<inputElem.length; i++)
+        {
+            if(inputElem[i].id.indexOf("btn")!=-1) {
+                inputElem[i].disabled = true;
+                inputElem[i].style.color = "#bfbfbf";
+            }
+            if(inputElem[i].id.indexOf("btnSave")!=-1)
+                inputElem[i].value = "Saving...";
+        }        
+    }    
+    function submitSearch() {
+        location.assign((location.toString().replace(location.search, '')).concat('?search=').concat(document.getElementById('searchInput').value));
+    }
+    function reloadPageWithQueryString(queryString) {
+        if (pageEdited === true)
+        {
+            if (!confirm('You have made changes to this page without saving.  Are you sure you want to continue?'))
+                return;
+        }
+        location.assign((location.toString().replace(location.search, '')).concat(queryString));
+    }
+    function editPage() {
+        pageEdited = true;
+    }
+    </script>
+</apex:page>

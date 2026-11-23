@@ -91,7 +91,52 @@ public without sharing class Core_MDF_PaymentRun_ServiceHandler {
                 //Update processed payment run records
                 Database.update(lstPymtRunUpdRec); 
             }   
-        }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);Throw e;}           
+        }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);Throw e;}
+        
+        
+       /* for(Core_MDF_Payment_Run__c paymentRun : paymentRunList)
+        {
+            //To hold technical programe name
+            String technicalProgramName = '';
+            //Null check for channel program map
+            if(channelProgramMap != NULL && channelProgramMap.size() > 0 && channelProgramMap.containsKey(paymentRun.Core_MDF_Program_Id__c)){
+                //To hold technical channel program name
+                technicalProgramName = channelProgramMap.get(paymentRun.Core_MDF_Program_Id__c).Core_MDF_Technical_Program_Name__c;
+                //Null check for channel program metadata map
+                if(mapOfProgramMetadata!= NULL && mapOfProgramMetadata.size() > 0 && mapOfProgramMetadata.containsKey(technicalProgramName)){
+                    programName = mapOfProgramMetadata.get(technicalProgramName);
+                }
+            }
+            
+            // CCF_ASMO_00118
+            paymentJobName = programName+Core_MDF_PaymentUtility.underscore+paymentRun.Core_MDF_Geo_Txt__c+Core_MDF_PaymentUtility.underscore+paymentRun.Name;
+            
+            //Seconds   Minutes Hours   Day Of Month    Month   Day Of Week  Year
+            // 0           31   23          2            FEB        ?        2019
+            
+            //If retail program is selected and straight to payment flag is checked
+            //payment run will be scheduled in next 1 minute 
+         
+      Core_MDF_Recovery_Batch RecoveryBatchClassInstance = new Core_MDF_Recovery_Batch('','','');
+            
+            DateTime dt;
+            Integer hr;
+            //[scheduledRun_Dtm - system.now() ]-> this should be (>24)
+            //Double kla = paymentRun.Core_MDF_ScheduleRun_Dtm__c - system.now();
+            if(paymentRun.Core_MDF_Run_Now_Ind__c){
+              dt = system.now().addMinutes(1);
+            }else{
+                dt = paymentRun.Core_MDF_ScheduleRun_Dtm__c.addHours(-24);
+                hr = paymentRun.Core_MDF_ScheduleRun_Dtm__c.hour();
+            }
+            //Enter batch class name & instance into Batch Scheduler 
+            BatchWrapper btchWrap = new BatchWrapper();
+            btchWrap.batchInstance = RecoveryBatchClassInstance;
+            btchWrap.scopeSize = 200;
+            btchWrap.runTime = dt;            
+            mapBatchWrap.put(paymentRun.Id,btchWrap);                              
+        }*/
+        
     }
 
     /****************************************************************************************************** 

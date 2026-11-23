@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>MOSCOW AVIATION INSTITUTE Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Inactive_Accounts_Role</parentRole>
+    <parentRole>MOSCOWAVIATIONINSTITUTECustomerManager</parentRole>
 </Role>

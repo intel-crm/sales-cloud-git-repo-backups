@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RestrictionRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <enforcementType>Restrict</enforcementType>
+    <masterLabel>See only Dell delhi records</masterLabel>
+    <recordFilter>Core_MDF_Account__c=&apos;001g0000024chZDAAY&apos;</recordFilter>
+    <targetEntity>Core_MDF_Partner_Node_User_Mapping__c</targetEntity>
+    <userCriteria>$User.Username=&apos;test_ccp_ccf_external_claim_submitter@intel.com&apos;</userCriteria>
+    <version>1</version>
+</RestrictionRule>

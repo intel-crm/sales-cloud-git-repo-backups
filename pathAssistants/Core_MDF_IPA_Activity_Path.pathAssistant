@@ -13,11 +13,11 @@
         <picklistValueName>Closed</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
-        <info>&lt;p&gt;&lt;span style=&quot;font-size: 14.6667px;&quot;&gt;Intel has reviewed this proposal and has decided not to move forward at this time.&lt;/span&gt;&lt;/p&gt;</info>
+        <info>&lt;p&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;Intel has reviewed this proposal and has decided not to move forward at this time.&lt;/span&gt;&lt;/p&gt;</info>
         <picklistValueName>Declined</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
-        <info>&lt;p&gt;&lt;span style=&quot;font-size: 14.6667px;&quot;&gt;Activity is part of a Proposal, it has just been created and yet to be submitted for Approval.&lt;/span&gt;&lt;/p&gt;</info>
+        <fieldNames>Core_MDF_OutcomeBased_Campaign_Name_txt__c</fieldNames>
         <picklistValueName>Draft</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
@@ -25,15 +25,15 @@
         <picklistValueName>In-Progress</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
-        <info>&lt;p&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;Activity has a claim and is pending Partner Approval.&lt;/span&gt;&lt;/p&gt;</info>
+        <info>&lt;p&gt;&lt;span style=&quot;font-size: 14.6667px;&quot;&gt;Activity has a claim and is pending Partner approval.&lt;/span&gt;&lt;/p&gt;</info>
         <picklistValueName>In-Progress Pending Approval</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
-        <info>&lt;p&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;Activity has a claim and is assigned to Intel Approver queue.&lt;/span&gt;&lt;/p&gt;</info>
+        <info>&lt;p&gt;&lt;span style=&quot;font-size: 14.6667px;&quot;&gt;Activity has a claim and is assigned to Intel approval queue.&lt;/span&gt;&lt;/p&gt;</info>
         <picklistValueName>In-Progress Pending Review</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
-        <info>&lt;p&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;Activity has a claim and was declined by either Intel or Partner and is now ready to be edited and resubmitted.&lt;/span&gt;&lt;/p&gt;</info>
+        <info>&lt;p&gt;&lt;span style=&quot;font-size: 14.6667px;&quot;&gt;Activity has a claim and was declined by either Intel or Partner and is now ready to be edited and resubmitted.&lt;/span&gt;&lt;/p&gt;</info>
         <picklistValueName>In-Progress Revision Required</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>

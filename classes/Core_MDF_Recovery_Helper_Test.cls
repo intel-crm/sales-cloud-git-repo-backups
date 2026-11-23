@@ -23,8 +23,7 @@ public class Core_MDF_Recovery_Helper_Test {
             grpList.add(grp);
             Group grp1 = new Group(Name = 'CCP Finance Manager Queue', DeveloperName = 'CCP_Finance_Manager_Queue');
             grpList.add(grp1);
-            insert grpList;
-            
+            insert grpList;            
             List<GroupMember> grpMemList = new List<GroupMember>();
             GroupMember grpMember = new GroupMember();
             grpMember.GroupId = grp.Id;
@@ -117,8 +116,8 @@ public class Core_MDF_Recovery_Helper_Test {
             pmb.Core_MDF_Budget_Type__c = 'RSA MD';
             Database.insert(pmb);
             PartnerFundAllocation pfa = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Allocation',pmb,intelRetail,80000000.0,true);
-            
-            Core_MDF_Bank__c recoveryBank = Core_MDF_CCP_TestDataUtility.createBank(recoveryIntelAcc.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1231231230');
+            // Highlight: Unused Local Variable - Indira
+           // Core_MDF_Bank__c recoveryBank = Core_MDF_CCP_TestDataUtility.createBank(recoveryIntelAcc.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1231231230');
             
             //Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(recoveryEMEAFrance.Id,recoveryBank.Id,true);
             
@@ -156,8 +155,8 @@ public class Core_MDF_Recovery_Helper_Test {
             configMDF.add(config2);
             insert configMDF;
             
-            
-            List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
+            // Highlight: Unused Local Variable - Indira
+           // List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
             PartnerFundRequest recoveryFranceActivity = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(String.valueof(recoveryCamp.Id), 
                                                                                                               Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                                               String.valueof(recoveryEMEAFrance.id),pfaRecoveryCCFFrance,recoveryPmbRecord,'INDIA',
@@ -397,8 +396,9 @@ public class Core_MDF_Recovery_Helper_Test {
         Test.startTest();
         Account accountRecord = [select id from Account where Name ='Recovery Test Account'];
         System.runAs(usr){
-            Map<string,List<Core_MDF_Recovery_Helper.RecoveryBatchParams>> result = new Map<string,List<Core_MDF_Recovery_Helper.RecoveryBatchParams>>();
-            string programBudgetTypeQuarter = 'Client CoMarketing Fund;MDF;Q2 2022';
+          // Highlight: Unused Local Variable - Indira
+          //  Map<string,List<Core_MDF_Recovery_Helper.RecoveryBatchParams>> result = new Map<string,List<Core_MDF_Recovery_Helper.RecoveryBatchParams>>();
+          //  string programBudgetTypeQuarter = 'Client CoMarketing Fund;MDF;Q2 2022';
             List<id> accountIds = new List<id>();
             accountIds.add(accountRecord.id);
             assert.isNotNull(accountIds);
@@ -412,7 +412,8 @@ public class Core_MDF_Recovery_Helper_Test {
         Account accountRecord = [select id from Account where Name ='Recovery Test Account' limit 1];
         List<PartnerFundClaim> claim = [select id from PartnerFundClaim where Core_MDF_Budget_Type_Options_Nm__c = 'MDF' limit 2];
         List<Core_MDF_RecoveryClaimReportViewCtrl.RightReportRows> rrr = new List<Core_MDF_RecoveryClaimReportViewCtrl.RightReportRows>();
-        Map<boolean,string> result = new Map<boolean,string>();
+       // Highlight: Unused Local Variable - Indira
+      //  Map<boolean,string> result = new Map<boolean,string>();
         List<Core_MDF_Recovery_Request__c> rrList = new List<Core_MDF_Recovery_Request__c>();
         List<id> accountIds = new List<id>();
         System.runAs(usr){
@@ -481,7 +482,8 @@ public class Core_MDF_Recovery_Helper_Test {
             
             accountIds.add(accountRecord.id);
             assert.isNotNull(accountIds);
-            Core_MDF_RecoveryClaimReportViewCtrl.FinalRightRows result = Core_MDF_Recovery_Helper.getClaimsBasedOnConditionsForUI('Client CoMarketing Fund', accountRecord.id, 'Q2 2022');
+           // Highlight: Unused Local Variable - Indira
+          /*  Core_MDF_RecoveryClaimReportViewCtrl.FinalRightRows result = */ Core_MDF_Recovery_Helper.getClaimsBasedOnConditionsForUI('Client CoMarketing Fund', accountRecord.id, 'Q2 2022');
             string programBudgetTypeQuarter = 'Client CoMarketing Fund;MDF;Q2 2023';
             Core_MDF_Recovery_Helper.queryClaims(programBudgetTypeQuarter, accountIds, true);
             Core_MDF_Recovery_Helper.queryClaims(programBudgetTypeQuarter, accountIds, false);
@@ -525,7 +527,8 @@ public class Core_MDF_Recovery_Helper_Test {
             }else{
                 previousQuarterAndYear = 'Q' + quarterNum + ' ' + currYear;
             }
-            Core_MDF_RecoveryClaimReportViewCtrl.FinalRightRows result = Core_MDF_Recovery_Helper.getClaimsBasedOnConditionsForUI('Client CoMarketing Fund', accountRecord.id, previousQuarterAndYear);
+           // Highlight: Unused Local Variable - Indira 
+           /* Core_MDF_RecoveryClaimReportViewCtrl.FinalRightRows result = */ Core_MDF_Recovery_Helper.getClaimsBasedOnConditionsForUI('Client CoMarketing Fund', accountRecord.id, previousQuarterAndYear);
             Test.stopTest();
         }
     }
@@ -637,7 +640,8 @@ public class Core_MDF_Recovery_Helper_Test {
         wrapperRecData1.source = 'Payment Run';
         wrapperRecData1.isPreSelClaim_RecvryDone = false;
         wrapperRecData1.program = 'Client CoMarketing Fund';
-        Map<string,List<Core_MDF_Recovery_Helper.RecoveryBatchParams>> result2 = new Map<string,List<Core_MDF_Recovery_Helper.RecoveryBatchParams>>();
+       // Highlight: Unused Local Variable - Indira
+       // Map<string,List<Core_MDF_Recovery_Helper.RecoveryBatchParams>> result2 = new Map<string,List<Core_MDF_Recovery_Helper.RecoveryBatchParams>>();
         accountToBTGeoToAmountMap =  Core_MDF_Recovery_Helper.calculateRecoveryAmount(programBudgetTypeQuarter,wrapperRecData1,true);
         allClaimsList = Core_MDF_Recovery_Helper.queryClaims(programBudgetTypeQuarter, accountIds, true);
         recommendedClaims = Core_MDF_Recovery_Helper.processClaimsBasedOnBTGeo(accountToBTGeoToAmountMap,allClaimsList);

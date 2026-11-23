@@ -7,9 +7,6 @@
         <field>PartnerFundRequest$ChannelPartner</field>
     </columns>
     <columns>
-        <field>PartnerFundRequest$Core_MDF_Host_Region_txt__c</field>
-    </columns>
-    <columns>
         <field>PartnerFundRequest$Name</field>
     </columns>
     <columns>
@@ -31,15 +28,6 @@
         <field>PartnerFundRequest$Core_MDF_Activity_SubType_nm__c</field>
     </columns>
     <columns>
-        <field>PartnerFundRequest$Core_MDF_Focus_Area_nm__c</field>
-    </columns>
-    <columns>
-        <field>PartnerFundRequest$Core_MDF_Priority_nm__c</field>
-    </columns>
-    <columns>
-        <field>PartnerFundRequest$Core_MDF_Initiative_nm__c</field>
-    </columns>
-    <columns>
         <field>PartnerFundRequest$Core_MDF_ATF_Flag_nm__c</field>
     </columns>
     <columns>
@@ -56,9 +44,6 @@
     </columns>
     <columns>
         <field>PartnerFundRequest$Core_MDF_ProductType__c</field>
-    </columns>
-    <columns>
-        <field>PartnerFundRequest$Core_MDF_Product_Category_txt__c</field>
     </columns>
     <columns>
         <field>PartnerFundRequest$Core_MDF_Priorities__c</field>
@@ -213,9 +198,6 @@
         <field>PartnerFundRequest.PartnerFundClaims$Core_MDF_Claim_Review_Case__c.Core_MDF_Adjustment_Amount_USD_Amt__c</field>
     </columns>
     <columns>
-        <field>PartnerFundRequest$Core_MDF_BU_Percent_txt__c</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>PartnerFundRequest.PartnerFundClaims$Core_MDF_Total_Claim_Recovery_Amount__c</field>
     </columns>
@@ -299,12 +281,12 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Client CoMarketing Fund,Client CoMarketing Fund Boost,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Ecosystem Extension Fund,Data Center CoMarketing Fund,CoGTM</value>
+            <value>Client CoMarketing Fund,Client,Client CoMarketing Fund Boost,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Ecosystem Extension Fund,Data Center CoMarketing Fund</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Ultimate_Account_Name__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
+            <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>A&amp;E Test Account JJ,Bristal org_CCPTest,Compute Brigade S A_CCPTest,Test_company,北京苏尔泰科技有限公司-CST_CCPTest</value>
         </criteriaItems>
@@ -380,6 +362,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>PartnerFundRequest$ChannelPartner.Core_MDF_Account_Node_Attribute_Id__c.Core_MDF_Final_CSAR_GL_Account_nbr__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>PartnerFundRequest$CreatedDate</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

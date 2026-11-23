@@ -16,7 +16,7 @@
         <chartType>VerticalColumnLine</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>OPPORTUNITY_NAME</groupingColumn>
+        <groupingColumn>FULL_NAME</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_TOP</location>
         <showAxisLabels>true</showAxisLabels>
@@ -32,9 +32,6 @@
     </chart>
     <columns>
         <field>ACCOUNT_NAME</field>
-    </columns>
-    <columns>
-        <field>FULL_NAME</field>
     </columns>
     <columns>
         <field>OWNER_MANAGER</field>
@@ -59,7 +56,7 @@
         <field>Opportunity.Core_Opportunity_ID__c</field>
     </columns>
     <filter>
-        <booleanFilter>(1 OR 2) AND 3 AND ((4 AND 11) OR 5 OR 6 OR 7 OR 8 OR 9 OR 10) AND (12 OR 13)</booleanFilter>
+        <booleanFilter>(1 OR 2) AND 3 AND ((4 AND 11) OR 5 OR 6 OR 7 OR 8 OR 9 OR 10) AND 12</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Business_Unit_Territory__c</column>
             <columnToColumn>false</columnToColumn>
@@ -144,19 +141,12 @@
             <operator>notEqual</operator>
             <value>Bill Galluccio</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Purfurst</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Technical_Owner__c</field>
+        <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -164,7 +154,7 @@
         <field>OPPORTUNITY_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Dirk Non NE Opps in NE Territory</name>
+    <name>Non NE Opps in NE Territory</name>
     <params>
         <name>terr</name>
         <value>all</value>

@@ -3,7 +3,7 @@
     <baseObject>User</baseObject>
     <category>other</category>
     <deployed>true</deployed>
-    <description>User with Identity Info</description>
+    <description>Users mobile device  login history</description>
     <join>
         <outerJoin>false</outerJoin>
         <relationship>IdpEventLog$UserId</relationship>
@@ -12,47 +12,22 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Id</field>
+            <field>AboutMe</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Username</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>true</checkedByDefault>
-            <field>Name</field>
+            <field>Account</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>FirstName</field>
+            <field>Core_Account_Owner__c</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LastName</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CompanyName</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Division</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Department</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Title</field>
+            <field>IsActive</field>
             <table>User</table>
         </columns>
         <columns>
@@ -62,7 +37,37 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Street</field>
+            <field>ReceivesAdminInfoEmails</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Alias</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ForecastEnabled</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Alternate_Channel_Manager_WWID__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ChatterAdoptionStage</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ChatterAdoptionStageModifiedDate</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>DigestFrequency</field>
             <table>User</table>
         </columns>
         <columns>
@@ -72,22 +77,22 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>State</field>
+            <field>CompanyName</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PostalCode</field>
+            <field>Contact</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Country</field>
+            <field>Core_User_Profile_Name__c</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>StateCode</field>
+            <field>Core_IPS_AccountId__c</field>
             <table>User</table>
         </columns>
         <columns>
@@ -97,22 +102,42 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Latitude</field>
+            <field>Country</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Longitude</field>
+            <field>CreatedBy</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>GeocodeAccuracy</field>
+            <field>CreatedDate</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>DefaultGroupNotificationFrequency</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Department</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Division</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Email</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>EmailEncodingKey</field>
             <table>User</table>
         </columns>
         <columns>
@@ -132,102 +157,22 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>StayInTouchSubject</field>
+            <field>EmployeeNumber</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>StayInTouchSignature</field>
+            <field>Core_Employee_Status_Code__c</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>StayInTouchNote</field>
+            <field>Core_Employee_Type_Code__c</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Phone</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Fax</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>MobilePhone</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Alias</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CommunityNickname</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>IsActive</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>IsSystemControlled</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>TimeZoneSidKey</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>UserRole</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LocaleSidKey</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>ReceivesInfoEmails</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>ReceivesAdminInfoEmails</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>EmailEncodingKey</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Profile</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>UserType</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>UserSubtype</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>StartDay</field>
+            <field>Core_Enable_Sales_Navigator_App__c</field>
             <table>User</table>
         </columns>
         <columns>
@@ -237,47 +182,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LanguageLocaleKey</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>EmployeeNumber</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Manager</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LastLoginDate</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LastPasswordChangeDate</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CreatedDate</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CreatedBy</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LastModifiedDate</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LastModifiedBy</field>
+            <field>Extension</field>
             <table>User</table>
         </columns>
         <columns>
@@ -287,77 +192,27 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SuAccessExpirationDate</field>
+            <field>Fax</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SuOrgAdminExpirationDate</field>
+            <field>FirstName</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Name</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>OfflineTrialExpirationDate</field>
+            <field>GeocodeAccuracy</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>WirelessTrialExpirationDate</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>OfflinePdaTrialExpirationDate</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>ForecastEnabled</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Contact</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Account</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Extension</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>FederationIdentifier</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AboutMe</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>DigestFrequency</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>DefaultGroupNotificationFrequency</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>ChatterAdoptionStage</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>ChatterAdoptionStageModifiedDate</field>
+            <field>GlobalIdentity</field>
             <table>User</table>
         </columns>
         <columns>
@@ -372,22 +227,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>GlobalIdentity</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Employee_Type_Code__c</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Account_Owner__c</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Employee_Status_Code__c</field>
+            <field>ReceivesInfoEmails</field>
             <table>User</table>
         </columns>
         <columns>
@@ -397,47 +237,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Is_OSC__c</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_User_Country_Code__c</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_User_Geo__c</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_WWID__c</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Is_HQ_User__c</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Alternate_Channel_Manager_WWID__c</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_User_Sub_Geo__c</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>User_Unique__c</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Login_Id__c</field>
+            <field>UserSubtype</field>
             <table>User</table>
         </columns>
         <columns>
@@ -447,17 +247,72 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_User_Profile_Name__c</field>
+            <field>IsSystemControlled</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_User_Coverage__c</field>
+            <field>Core_Is_HQ_User__c</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_IPS_AccountId__c</field>
+            <field>Core_Is_OSC__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LanguageLocaleKey</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastLoginDate</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedBy</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedDate</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastName</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastPasswordChangeDate</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Latitude</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LocaleSidKey</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Login_Id__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Longitude</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Manager</field>
             <table>User</table>
         </columns>
         <columns>
@@ -467,77 +322,157 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Manager__c</field>
+            <field>MobilePhone</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PMP_One_Partner_ID__c</field>
+            <field>CommunityNickname</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Email_Count__c</field>
+            <field>OfflineTrialExpirationDate</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Email_Trigger_Date__c</field>
+            <field>Phone</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_User_Type_Indicator__c</field>
+            <field>Profile</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_User_Type__c</field>
+            <field>UserRole</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__DefaultProductLookupTab__c</field>
+            <field>OfflinePdaTrialExpirationDate</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__DiagnosticToolEnabled__c</field>
+            <field>FederationIdentifier</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__OutputFormatChangeAllowed__c</field>
+            <field>StartDay</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__ProductSortPreference__c</field>
+            <field>StateCode</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__ResetProductLookup__c</field>
+            <field>State</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__Theme__c</field>
+            <field>StayInTouchNote</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Is_FederationId_Valid_Ind__c</field>
+            <field>StayInTouchSignature</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_IPA_PartnerRole_Nm__c</field>
+            <field>StayInTouchSubject</field>
             <table>User</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_IPA_One_Partner_Id__c</field>
+            <field>Street</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SuAccessExpirationDate</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SuOrgAdminExpirationDate</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>TimeZoneSidKey</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Title</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_User_Country_Code__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_User_Coverage__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Id</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Username</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_User_Geo__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_User_Sub_Geo__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>UserType</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>User_Unique__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>WirelessTrialExpirationDate</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_WWID__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PostalCode</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Partner_License_Reclaimed__c</field>
             <table>User</table>
         </columns>
         <masterLabel>Users</masterLabel>
@@ -545,17 +480,7 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>InitiatedBy</field>
-            <table>User.IdpEventLog$UserId</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Timestamp</field>
-            <table>User.IdpEventLog$UserId</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>ErrorCode</field>
+            <field>App</field>
             <table>User.IdpEventLog$UserId</table>
         </columns>
         <columns>
@@ -565,7 +490,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>ServiceProvider</field>
+            <field>IdentityUsed</field>
             <table>User.IdpEventLog$UserId</table>
         </columns>
         <columns>
@@ -575,17 +500,32 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>ServiceProvider</field>
+            <table>User.IdpEventLog$UserId</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>SsoType</field>
             <table>User.IdpEventLog$UserId</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>App</field>
+            <field>ErrorCode</field>
             <table>User.IdpEventLog$UserId</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>IdentityUsed</field>
+            <field>Timestamp</field>
+            <table>User.IdpEventLog$UserId</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>InitiatedBy</field>
+            <table>User.IdpEventLog$UserId</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>User</field>
             <table>User.IdpEventLog$UserId</table>
         </columns>
         <masterLabel>Identity Event Logs (User)</masterLabel>

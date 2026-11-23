@@ -27,7 +27,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Client CoMarketing Fund,Client CoMarketing Fund Boost,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Data Center CoMarketing Fund</value>
+            <value>,Client CoMarketing Fund,Client,Client CoMarketing Fund Boost,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Data Center CoMarketing Fund</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_MDF_Partnership_Score__c$Core_MDF_Quarter_nm__c</column>
@@ -47,6 +47,11 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Core_MDF_Partnership_Score__c$Core_MDF_Account_Id__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Core_MDF_Partnership_Score__c$Core_MDF_Virtual_Corp_Account_Id__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>List of Partnership Scores</name>

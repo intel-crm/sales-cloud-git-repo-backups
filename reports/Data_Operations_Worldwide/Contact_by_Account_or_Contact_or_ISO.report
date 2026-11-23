@@ -40,27 +40,27 @@
         <field>Account.Core_Account_ID__c</field>
     </columns>
     <filter>
-        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <criteriaItems>
+            <column>OWNER_FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Scott Phillips</value>
+        </criteriaItems>
         <criteriaItems>
             <column>CONTACT_OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Peggy Emerson</value>
+            <operator>equals</operator>
+            <value>Scott Phillips</value>
         </criteriaItems>
         <criteriaItems>
             <column>Contact.Core_IPS_Intel_Support_Owner__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Peggy Emerson</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER_FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Peggy Emerson</value>
+            <operator>equals</operator>
+            <value>Scott Phillps</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

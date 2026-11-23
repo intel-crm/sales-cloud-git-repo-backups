@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>This will store the Reports and Dashboards Name</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_Developer_Name_txt__c</fullName>
+        <description>This field will store the Developer Name of Reports and Dashboards</description>
+        <externalId>false</externalId>
+        <label>Developer Name</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Is_Active_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Active indicator</description>
+        <label>Is Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Object_API_Name__c</fullName>
+        <description>This will store the object API name on which the reports or Dashboards are built</description>
+        <externalId>false</externalId>
+        <label>Object API Name</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Type_txt__c</fullName>
+        <description>This field will store the component type</description>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>ReportsAndDashboards</label>
+    <visibility>Public</visibility>
+</CustomObject>

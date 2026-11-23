@@ -6,7 +6,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Agriculture</masterLabel>
-        <translation>Agricultura</translation>
+        <translation>Agricultura.</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Amusement and Gambling</masterLabel>
@@ -97,10 +97,6 @@
         <translation>Otros</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Others</masterLabel>
-        <translation><!-- Others --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Professional and Business Services</masterLabel>
         <translation>Servicios profesionales y empresariales</translation>
     </valueTranslation>
@@ -114,11 +110,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Robotics</masterLabel>
-        <translation>Robótica</translation>
+        <translation><!-- Robotics --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Software</masterLabel>
-        <translation><!-- Software --></translation>
+        <translation>Software</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Software and Services</masterLabel>
@@ -127,6 +123,10 @@
     <valueTranslation>
         <masterLabel>Telecommunications</masterLabel>
         <translation>Telecomunicaciones</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Test LOV Industry</masterLabel>
+        <translation><!-- Test LOV Industry --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Transportation and Warehouse</masterLabel>

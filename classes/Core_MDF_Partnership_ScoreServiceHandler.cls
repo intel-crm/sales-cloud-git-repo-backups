@@ -21,7 +21,7 @@ public without sharing class Core_MDF_Partnership_ScoreServiceHandler {
             }
         }
         catch(Exception e){ 
-          //System.debug('generate ExternalId Error '+e.getMessage()+' '+e.getLineNumber());
+            
             Core_MDF_CCP_UtilityClass.logError(e); 
         }
     }
@@ -37,7 +37,7 @@ public without sharing class Core_MDF_Partnership_ScoreServiceHandler {
             }
         }
         catch(Exception e){ 
-            //System.debug('Duplicate erraor at 12 '+e.getMessage());
+            System.debug('Duplicate erraor at 12 '+e.getMessage());
             
         }
     }
@@ -62,7 +62,7 @@ public without sharing class Core_MDF_Partnership_ScoreServiceHandler {
             
         }
         catch(Exception e){ 
-            //System.debug('Exception Occured '+e.getMessage());
+            System.debug('Exception Occured '+e.getMessage());
             
         }
     }
@@ -230,8 +230,45 @@ Date :              15-Mar-2022
 Modified By:        Date:       Changes:
 *****************************************************************************************************/
     public static void validatePartnerScoreforUpdate (List <Core_MDF_Partnership_Score__c> psObjs, Map<Id,Core_MDF_Partnership_Score__c> psOldObjs) {
+        /*Map<String,List<Period>> mapYearPeriods = new Map<String,List<Period>>();
+        Period currentQuarter;
+        Date todayDate = Date.today();
+        
+        Integer bufferDays = 0;
+        Core_MDF_Configuration__c config = Core_MDF_Configuration__c.getValues('Core_MDF_PScore_Edit_Buffer_Days');
+        if(config!=null)
+            bufferDays = Integer.valueOf(config.Core_MDF_Value__c);
+        
+        //Create map of Year and its quarter periods for This Fiscal and Last Fascal Years
+        for(Period perObj:[SELECT FiscalYearSettings.Name,Number,StartDate,EndDate FROM Period WHERE FiscalYearSettings.YearType='Custom' and Type = 'Quarter'  AND (StartDate = LAST_FISCAL_YEAR  OR  StartDate = THIS_FISCAL_YEAR) ORDER By enddate desc ]){
+            if(!mapYearPeriods.containsKey(perObj.FiscalYearSettings.Name))
+                mapYearPeriods.put(perObj.FiscalYearSettings.Name, new List<Period>());
+            mapYearPeriods.get(perObj.FiscalYearSettings.Name).add(perObj);
+            //Keep the current quarter period for validaiton. 
+            if(perObj.StartDate<=todayDate && perObj.enddate>=todayDate)
+                currentQuarter = perObj;
+        } */
         for(Core_MDF_Partnership_Score__c pScore : psObjs){
-            
+            /*if(pScore.id!=null && psOldObjs!=null && psOldObjs.containsKey(pScore.id) && (pScore.Core_MDF_Partnership_Score_Nbr__c == psOldObjs.get(pScore.id).Core_MDF_Partnership_Score_Nbr__c))
+                continue;
+            if(pScore.Core_MDF_Quarter_nm__c!=null && pScore.Core_MDF_Year_nm__c!=null){
+                // Validate for only current or past years PS score records
+                if(Integer.valueOf(pScore.Core_MDF_Year_nm__c) <= currentQuarter.enddate.year()){
+                    if(mapYearPeriods.containsKey(pScore.Core_MDF_Year_nm__c)){
+                        List<Period> yearQuarters = mapYearPeriods.get(pScore.Core_MDF_Year_nm__c);
+                        for(Period eachPeriod : yearQuarters){
+                            // Check the PS Scores quarter end date, if older than current quarter + buffer days then user cannot edit. 
+                            if(pScore.Core_MDF_Quarter_nm__c.equals('Q'+eachPeriod.Number) && eachPeriod.enddate.addDays(bufferDays)<todayDate){
+                                pScore.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Partner_Score_Edit_Error')+' '+pScore.Core_MDF_Quarter_nm__c + ' '+pScore.Core_MDF_Year_nm__c);
+                            }
+                        }
+                    }
+                }
+            }
+            else{
+                pScore.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Partner_Score_Field_Validation'));
+            }*/
+
             if(pScore.Core_MDF_Quarter_nm__c == null || pScore.Core_MDF_Year_nm__c == null){
                 pScore.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Partner_Score_Field_Validation'));
             }

@@ -1,0 +1,32 @@
+<aura:component controller = "Core_MDF_AccountHierarchyController" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    
+    <!-- Ultimate Account Id and Name Will be set in parent Comp -->
+    <aura:attribute name="ultimateAccountId" type="Id" />
+    <aura:attribute name="ultimateAcctName" type="String" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!-- Attributes Used for Tree Grid Data -->
+    <aura:attribute name="gridColumns" type="list" />
+    <aura:attribute name="gridData" type="Object" />
+    <aura:attribute name="gridExpandedRows" type="List" access="PRIVATE" />
+    
+    <aura:attribute name="getAccountsData" type="Object" />
+    <!-- Salesforce Base URL -->
+    <aura:attribute name="salesforceBaseURL" type="String" />
+    
+    <div style="width: 100%;overflow-x: hidden">  
+        <!--Tree Grid View To SHow Account hierarchy -->
+        <div style="background-color:white;overflow-x: hidden;border-style: ridge">
+            <lightning:treeGrid  
+                                columns="{! v.gridColumns }"
+                                data="{! v.gridData }"
+                                keyField="Id"
+                                expandedRows="{! v.gridExpandedRows}"
+                                hideCheckboxColumn = "true"
+                                aura:id="mytree" />
+        </div>
+        <!-- Export Button at bottom right of Component -->
+        <div style="padding-top:5px"><lightning:button class="slds-float_right" variant = "brand" onclick="{!c.exportExcel}" label="Export"/></div>
+    </div>
+    
+</aura:component>

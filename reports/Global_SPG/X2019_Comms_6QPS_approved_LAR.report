@@ -106,7 +106,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>Service Provider,Telco/Service Provider,Comm Service Provider (CoSP)</value>
+            <value>Service Provider,Telco/Service Provider</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Owner_Sub_Geo__c</column>

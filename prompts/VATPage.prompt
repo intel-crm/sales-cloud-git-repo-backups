@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>VAT Page</masterLabel>
+    <promptVersions>
+        <body>You can Approve or Reject VAT from buttons appear on Approval History or Goto Approval Queue do the same</body>
+        <customApplication>Core_MDF_CoMarketing</customApplication>
+        <delayDays>1</delayDays>
+        <dismissButtonLabel>Close</dismissButtonLabel>
+        <displayPosition>BottomRight</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <endDate>2020-11-30</endDate>
+        <isPublished>false</isPublished>
+        <masterLabel>VAT Page Step 1</masterLabel>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2020-11-11</startDate>
+        <stepNumber>1</stepNumber>
+        <targetPageKey1>Core_MDF_Claim_VAT_Info__c</targetPageKey1>
+        <targetPageKey2>view</targetPageKey2>
+        <targetPageType>standard__recordPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>10</timesToDisplay>
+        <title>VAT</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+    <promptVersions>
+        <actionButtonLabel>Approval Requests</actionButtonLabel>
+        <actionButtonLink>https://intel--crmdevccp.lightning.force.com/lightning/o/ProcessInstanceWorkitem/list?filterName=00Bo0000002lSkWEAU</actionButtonLink>
+        <body>You can Edit VAT invoice number  by clicking on &apos;Edit Button&apos; on to right of the page</body>
+        <customApplication>Core_MDF_CoMarketing</customApplication>
+        <dismissButtonLabel>Dismiss</dismissButtonLabel>
+        <displayPosition>TopLeft</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <isPublished>false</isPublished>
+        <masterLabel>VAT Page Step 2</masterLabel>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <stepNumber>2</stepNumber>
+        <targetPageKey1>Core_MDF_Claim_VAT_Info__c</targetPageKey1>
+        <targetPageKey2>view</targetPageKey2>
+        <targetPageType>standard__recordPage</targetPageType>
+        <title>Edit VAT</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

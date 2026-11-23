@@ -1,0 +1,24 @@
+<template>
+    <div class="slds-modal__content slds-p-around--large slds-p-top_none">
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_2-of-6 slds-p-around_small">
+                <label style="color:red;font-size: large;">*</label>
+                <label id="selectProgram" class="slds-form-element__label" for="unique-id-of-input" style="font-weight: bold;
+                font-size: small;">{label.programFieldLabel}</label>
+            </div>
+            <div class="slds-col slds-size_4-of-6 slds-p-around_small slds-p-bottom_none slds-p-top_none">
+                <c-lwc-custom-lookup-program onprogram={programSelected} onfocus={focusMethod}>
+                </c-lwc-custom-lookup-program>
+            </div>
+            <div class="slds-col slds-size_2-of-6 slds-p-around_small">
+                <label style="color:red;font-size: large;">*</label>
+                <label id="selectAccount" class="slds-form-element__label" for="unique-id-of-input" style="font-weight: bold;
+            font-size: small;">{label.accountFieldLabel}</label>
+            </div>
+            <div class="slds-col slds-size_4-of-6 slds-p-around_small slds-p-bottom_none slds-p-top_none">
+                <c-lwc-custom-lookup onremove={selectedRecord} onselected={selectedRecord} program={programName}>
+                </c-lwc-custom-lookup>
+            </div>
+        </div>
+    </div>
+</template>

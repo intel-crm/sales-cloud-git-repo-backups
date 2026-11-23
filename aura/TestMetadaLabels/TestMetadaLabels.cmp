@@ -1,0 +1,10 @@
+<aura:component controller="Core_MDF_CustomLabelConfig" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <Aura:Attribute name="labelName" type="String"/>
+    <Aura:Attribute name="labelName1" type="List"/>
+    <lightning:Button label="getMetadata" onclick="{!c.getMetadata}"/>
+     <lightning:Button label="labelTest" onclick="{!c.getLabel}"/>
+    <aura:iteration items="{!v.labelName1}" var="mdtRec">
+        <br/> {!mdtRec.key}:{!mdtRec.val}<br/><br/>
+    </aura:iteration>
+    <br/>{!v.labelName}<br/>
+</aura:component>

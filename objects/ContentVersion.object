@@ -70,14 +70,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>LEXMAGICMOVER__LegacyNoteConvertedLastModifiedDateTime__c</fullName>
-        <deprecated>false</deprecated>
-        <label>LegacyNoteConvertedLastModifiedDateTime</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
         <fullName>LEXMAGICMOVER__LegacyNoteConvertedLastModifiedDate__c</fullName>
         <deprecated>false</deprecated>
         <label>LegacyNoteConvertedLastModifiedDate</label>
@@ -130,17 +122,6 @@
     <fields>
         <fullName>Title</fullName>
         <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>src_sys_id_c__c</fullName>
-        <description>Source System Id will be filled with Siebel ROW ID</description>
-        <externalId>false</externalId>
-        <label>Source System Id</label>
-        <length>100</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <searchLayouts>
         <searchResultsAdditionalFields>VERSION.TITLE</searchResultsAdditionalFields>

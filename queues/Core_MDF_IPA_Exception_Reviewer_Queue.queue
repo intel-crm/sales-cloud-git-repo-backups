@@ -8,6 +8,10 @@
         <publicGroups>
             <publicGroup>Core_MDF_IPA_Exception_Reviewer_Group</publicGroup>
         </publicGroups>
+        <users>
+            <user>testccf_qa_field_owner@intel.com.crm</user>
+            <user>12067215@intel.com.crm</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>Core_MDF_Exception__c</sobjectType>

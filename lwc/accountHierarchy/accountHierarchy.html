@@ -1,0 +1,63 @@
+<template>
+    <!-- <lightning-card>
+        <div slot="title">
+            <lightning-icon icon-name="standard:hierarchy" size="small"></lightning-icon>
+          <h3> 
+               Create an Scheduler Using Apex Controller in LWC           
+           </h3>
+        </div>
+    </lightning-card> -->
+    <div class="slds-card">
+        <div class="slds-card">
+            <lightning-layout class="slds-page-header slds-page-header--object-home" id="header">
+                <lightning-layout-item>
+                    <lightning-icon icon-name="standard:hierarchy" class="icn"></lightning-icon>
+                </lightning-layout-item>
+                <lightning-layout-item size="11" padding="horizontal-small">
+                    <div class="page-section page-header">
+                        <h1 class="slds-text-heading--label">Co-MARKETING ACCOUNTs</h1>
+                        <h2 class="slds-text-heading--medium"><b>Accounts Hierarchy</b></h2>
+                    </div>
+                </lightning-layout-item><br/>
+            </lightning-layout>
+            <lightning-layout  class="slds-page-header slds-page-header--object-home">
+                <lightning-layout-item flexibility="auto">
+                    <div class="slds-float_left">
+                        1 Intel Account
+                    </div>
+                    <div class="slds-float_right">
+                        <div>
+                            <lightning-input type="search" placeholder="Search Intel Accounts" onchange={searchAccountAction} value={accountName}></lightning-input>
+                        </div>
+                    </div>
+                    
+                </lightning-layout-item>
+
+            </lightning-layout>
+        </div>
+
+
+        <div class="slds-card slds-p-around_small">
+            <div>
+                <lightning-accordion allow-multiple-sections-open>
+                        <template for:each={accountList} for:item="accObj" for:index="index">
+                        <div class="slds-box slds-box__xx-small" style="background-color:rgb(248,248,248);" key={accObj.Id}>
+                            <lightning-accordion-section name={accObj.Id} label={accObj.Name}>
+                                
+                            </lightning-accordion-section>
+                            
+                            
+                        </div>
+                    </template>
+                    
+                </lightning-accordion>
+            </div>
+            <br/>
+            <c-paginator id="paginatorComponent" records="listOfAllUltimateAccounts" totalrecords="listOfAllUltimateAccounts.length"></c-paginator>
+            
+        </div>
+        
+        
+    </div>
+    
+</template>

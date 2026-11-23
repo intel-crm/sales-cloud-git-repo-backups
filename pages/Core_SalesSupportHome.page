@@ -24,16 +24,27 @@ Modification Log :
     <apex:stylesheet value="{!URLFOR($Resource.Core_SalesSupportHomeCSS)}" />
     <apex:stylesheet value="/sCSS/25.0/sprites/1342034628000/Theme3/default/gc/versioning.css" />
     <apex:stylesheet value="/sCSS/25.0/sprites/1342034628000/Theme3/default/gc/extended.css" />
-    
+ 
     <!-- End stylesheet references -->
     
     <!-- Javascript includes and code -->
-    <apex:includeScript value="{!URLFOR($Resource.Core_SalesSupportHomeJS1)}" />
+    <apex:includeScript value="{!URLFOR($Resource.Core_SalesSupportHomeJS)}" />
+    
     <script language="javascript">
     // Fix issue with jQuery conflicts with tabPanel (http://salesforce.stackexchange.com/questions/23159/using-jquery-with-apextabpanel-in-visualforce)
     // Needs to be here - won't work in javscript include
     if ('jQuery' in window) jQuery.noConflict();
-   
+    
+    /* 01/10/16 DH: This code added an onLoad event handler that loaded either Seeds or Samples *after* the rest of the page was loaded,
+    to allow users to use the top part of the page immediately (ordering Seeds/Samples). However, it's even faster to do it when
+    "DOMContentLoaded" event is triggered, since that doesn't need to wait for iframes (like IT@Intel) to load. So commenting the onLoad
+    code out for now. Can add it back if we see browser issues with the other approach.
+    
+    function pullSeeds() {}
+    function pullSamples() {}
+    addLoadEvent('{!sCurrentTab}');
+    */
+    
     function loadTab() {
         console.log('**** inside load tab****');
         if (document.getElementById('initialSeedsLoadingImage')) {
@@ -49,35 +60,9 @@ Modification Log :
             clickTab('tabSeeds','{!$Component.pageblk.seedsTable}','{!$Component.pageblk.seedsMessages}');
         else if ('{!sCurrentTab}' == 'tabSamples')
             clickTab('tabSamples','{!$Component.pageblk.samplesTable}','{!$Component.pageblk.samplesMessages}');
-            else if ('{!sCurrentTab}' == 'tabWebquotes')
-                clickTab('tabWebquotes','{!$Component.pageblk.pgBlkQuotesTable}','{!$Component.pageblk.quotesMessages}');
     }
     document.addEventListener( "DOMContentLoaded", loadTab, false );
     </script>
-    <style>
-        .spinnerBg{
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        background-color: #000;
-        opacity: 0.1;
-        z-index: 999999;
-        }
-        .spinner{
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        background-image: url("/img/loading32.gif");  
-        background-size: 56px;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center;
-        z-index: 9999999;
-        opacity: 1;
-        }
-        .ul{text-decoration:underline;}
-        
-    </style>
     
     <apex:outputPanel >
         <table>
@@ -111,26 +96,18 @@ Modification Log :
     
     <apex:outputPanel rendered="{!bAccountWithNoCIMID}">
         <br/>
-        <apex:pageMessage rendered="{!ucdSwitch}" severity="INFO" title="Account is not mastered" strength="2"
-                          summary="This account has not been mastered, so has no Unified ID, and cannot have Sales Support requests placed against it."></apex:pageMessage>
-        <apex:pageMessage rendered="{!NOT(ucdSwitch)}" severity="INFO" title="Account is not mastered" strength="2"
+        <apex:pageMessage severity="INFO" title="Account is not mastered" strength="2"
                           summary="This account has not been mastered, so has no CIM ID, and cannot have Sales Support requests placed against it."></apex:pageMessage>
     </apex:outputPanel>
     
     <apex:form >
-                
+        
+        <!--apex:actionFunction action="{!loadFirstTab}" name="loadTab" reRender="theTabPanel"/-->
+        
         <!-- Intel Altera Phase1:
 Code added on 12-5-2016.Calls the controller for Quote creation   -->
-        <apex:actionstatus id="seedsTabLoadStatus1" > 
-            <apex:facet name="start">
-                <div class="spinnerBg" />
-                <div class="spinner" />
-            </apex:facet>
-        </apex:actionstatus>
-        <!--<apex:actionFunction name="processOpportuntyQuote" status="seedsTabLoadStatus1" action="{!createPSGQuoteonSiebel}" rerender="pnlRequestTypeSection,theTabPanel" oncomplete="loadTab()"/>-->
+        <apex:actionFunction name="processOpportuntyQuote" action="{!createPSGQuoteonSiebel}" rerender="pnlRequestTypeSection,theTabPanel" oncomplete="loadTab()"/> 
         <apex:actionFunction name="processSSGRequest" action="{!processSSGRequest}"></apex:actionFunction>
-        
-        
         
         <apex:pageBlock tabStyle="Core_Sales_Support__tab" id="pageblk" rendered="{!bUserHasAccess && NOT(bAccountWithNoCIMID)}">
             <apex:outputPanel id="pnlRequestTypeSection" >
@@ -142,64 +119,52 @@ Code added on 12-5-2016.Calls the controller for Quote creation   -->
                 <!-- Intel Altera Phase1:
 Code added on 12-5-2016.Used for displaying the notification message on quote creation process  
 -->
-                <apex:pageMessages rendered="{!NOT(bOpportunityValidForQuoteCreation)}" escape="false"/>
-                
+                <apex:pageMessages rendered="{!NOT(bOpportunityValidForQuoteCreation)}"/>
                 <apex:outputLabel for="existing__opp" value="Sales Support Request Type"
                                   style="font-weight:bold;color:rgb(74, 74, 86);font-size: 11px" />&nbsp;&nbsp;&nbsp;
                 
-                <!-- Rendered condition added by Devashish - TWC3123-4227 -->
-                <apex:selectList id="salesSupportRequestType" size="1" rendered="{!IF(URLPMT == null || URLPMT == 'SystemBuild' || URLPMT == 'both', true, false)}">
+                <apex:selectList id="salesSupportRequestType" size="1">
                     <!--apex:selectOption itemLabel="IT@Intel" itemValue="IT@Intel"/-->
                     <apex:selectOption itemLabel="Order Seed" itemValue="Order Seed"/>
                     <apex:selectOption itemLabel="Request Sample" itemValue="Request Sample"/>
                     <apex:selectOption itemLabel="IT@Intel" itemValue="IT@Intel"/>
-                                   
-                    <!-- Intel Altera Phase1: code added on 12-5-2016 -->
-                    <!--<apex:selectOption rendered="{!IF($Profile.Name == 'BU Account Collaborator',FALSE,bSalesSupportHomePageAccessible)}" itemLabel="{!$Label.Core_PSG_Quote_Label}" itemValue="{!$Label.Core_PSG_Quote_Label}"/>-->
-                    <apex:selectOption itemLabel="{!$Label.Core_SSR_Support_Request}" itemValue="{!$Label.Core_SSR_Create_SSR}"/>                      
-                    <apex:selectOption itemLabel="{!$Label.Core_Web_Quote_Label}" itemValue="{!$Label.Core_Web_Quote_Label}"/> 
+                    
+                    <!-- Intel Altera Phase1:
+code added on 12-5-2016 
+-->
+                    <apex:selectOption rendered="{!IF($Profile.Name == 'BU Account Collaborator',FALSE,bSalesSupportHomePageAccessible)}" itemLabel="{!$Label.Core_PSG_Quote_Label}" itemValue="{!$Label.Core_PSG_Quote_Label}"/> 
+                    
+                    
+                    <apex:selectOption itemLabel="{!$Label.Core_SSR_Support_Request}" itemValue="{!$Label.Core_SSR_Create_SSR}"/>  
+                    
+                    
                 </apex:selectList>
                 
-                <!-- Button for Ordering Seeds or Samples, rendered condition added by Devashish - TWC3123-4227 -->
-                <apex:commandButton value="Continue" rendered="{!IF(URLPMT == null || URLPMT == 'SystemBuild' || URLPMT == 'both', true, false)}"
+                <!-- Button for Ordering Seeds or Samples -->
+                <apex:commandButton value="Continue"
                                     onClick="newRequest('{!$Component.pageblk.salesSupportRequestType}', '{!sOppId}',
                                              '{!JSENCODE(sOppRecName)}',
                                              '{!sAcctId}', '{!orderSeedsURL}', '{!requestSamplesURL}', '{!UserRegion}', '{!UIthemedisplayed}',
-                                             '{!$Label.Core_Intel_Network_Resource}', '{!$Label.Core_IntelNetworkError}','{!$Label.Core_Premier_Support_URL }','{!$Label.Core_Web_Quote_URL}'); return false" /> 
-				
-                <!--Start - TWC3123-4227 - Devashish - Display Request type value based on ProductType -->
-                <apex:selectList id="salesSupportRequestType2" size="1" rendered="{!IF(URLPMT == 'Sample',true,false)}" >
-                    <apex:selectOption itemLabel="Request Sample" itemValue="Request Sample"/>
-                    <apex:selectOption itemLabel="Order Seed" itemValue="Order Seed"/>                    
-                    <apex:selectOption itemLabel="IT@Intel" itemValue="IT@Intel"/>
-                    <!--<apex:selectOption rendered="{!IF($Profile.Name == 'System Administrator',FALSE,bSalesSupportHomePageAccessible)}" itemLabel="{!$Label.Core_PSG_Quote_Label}" itemValue="{!$Label.Core_PSG_Quote_Label}"/>-->
-					<apex:selectOption itemLabel="{!$Label.Core_SSR_Support_Request}" itemValue="{!$Label.Core_SSR_Create_SSR}"/>  
-					<apex:selectOption itemLabel="{!$Label.Core_Web_Quote_Label}" itemValue="{!$Label.Core_Web_Quote_Label}"/> 
-            	</apex:selectList>
-                
-                <apex:commandButton value="Continue" rendered="{!IF(URLPMT == 'Sample',true,false)}"
-                                    onClick="newRequest('{!$Component.pageblk.salesSupportRequestType2}', '{!sOppId}',
-                                             '{!JSENCODE(sOppRecName)}',
-                                             '{!sAcctId}', '{!orderSeedsURL}', '{!requestSamplesURL}', '{!UserRegion}', '{!UIthemedisplayed}',
-                                             '{!$Label.Core_Intel_Network_Resource}', '{!$Label.Core_IntelNetworkError}','{!$Label.Core_Premier_Support_URL }','{!$Label.Core_Web_Quote_URL}'); return false" /> 
-                <!--End- TWC3123-4227 - Devashish - Display Request type value based on ProductType -->
+                                             '{!$Label.Core_Intel_Network_Resource}', '{!$Label.Core_IntelNetworkError}'); return false" /> 
                 &nbsp;
                 <br/><br/>
-
+                
                 <h3 class="recordTypesHeading">Available Sales Support Request Types</h3>
-                <table class="recordTypeInfo infoTable" border="0" cellpadding="0" cellspacing="0">
+<table class="recordTypeInfo infoTable" border="0" cellpadding="0" cellspacing="0">
                     <tr class="headerRow"><TH class="recordTypeName" scope="col">Request Type</TH><TH class="recordTypeDescription" scope="col">Description</TH></tr>
                     <tr><TH class="recordTypeName" scope="row">Order Seed</TH><td class="recordTypeDescription">Commercial/Prototype Devices (powered by Intel Demo Depot)&nbsp; <apex:outputLink value="https://salescrm.intel.com/opportunity-management/seeds/" style="color:blue" target="new">Learn More</apex:outputLink></td></tr>
                     <tr class="last"><TH class="recordTypeName" scope="row">Request Sample</TH><td class="recordTypeDescription">Components (powered by My Samples/SMS) &nbsp; <apex:outputLink value="https://salescrm.intel.com/opportunity-management/managing-samples/" style="color:blue"  target="new">Learn More</apex:outputLink></td></tr>
-                    <tr><TH class="recordTypeName" scope="row">IT @ Intel</TH><td class="recordTypeDescription">Request IT @ Intel Support for Opportunities &nbsp; <apex:outputLink value="https://salescrm.intel.com/opportunity-management/partnering-with-itintel/" style="color:blue"  target="new">Learn More</apex:outputLink></td></tr>
-                   
+                    <tr><TH class="recordTypeName" scope="row">IT @ Intel</TH><td class="recordTypeDescription">Request IT @ Intel Support for Opportunities &nbsp; <apex:outputLink value="http://salescrm.intel.com/opportunity-management/partnering-with-itintel/" style="color:blue"  target="new">Learn More</apex:outputLink></td></tr>
+                    
+                    
+                    
                     <!-- Intel Altera Phase1:
 This Table row will be added only if the user has the access to the Sales support page 
 -->
-                    <!--<tr rendered="{!bSalesSupportHomePageAccessible}"><TH class="recordTypeName" scope="row">{!$Label.Core_PSG_Quote_Label}</TH><td class="recordTypeDescription" width="600px"> Request a PSG quote to be created in InteliQuote</td></tr>-->
+                    <tr rendered="{!bSalesSupportHomePageAccessible}"><TH class="recordTypeName" scope="row">{!$Label.Core_PSG_Quote_Label}</TH><td class="recordTypeDescription" width="600px"> Request a PSG quote to be created in Siebel</td></tr>
                     
-                    <tr><TH class="recordTypeName" scope="row">{!$Label.Core_SSR_Support_Request}</TH><td class="recordTypeDescription">Get expert software support for competitive and/or strategic opportunities.&nbsp; <apex:outputLink value="https://salescrm.intel.com/opportunity-management/ssg-sales-support/" style="color:blue"  target="new">Learn More</apex:outputLink></td></tr>
-                    <tr><TH class="recordTypeName" scope="row">{!$Label.Core_Web_Quote_Label}</TH><td class="recordTypeDescription" width="600px"> Request a WebQuote</td></tr>
+                    <tr><TH class="recordTypeName" scope="row">{!$Label.Core_SSR_Support_Request}</TH><td class="recordTypeDescription">Get expert software support from SSG and CVCG teams for competitive and/or strategic Opportunities.&nbsp; <apex:outputLink value="http://salescrm.intel.com/opportunity-management/ssg-sales-support/" style="color:blue"  target="new">Learn More</apex:outputLink></td></tr>
+                    
                 </table>                
                 <br/><br/>
             </apex:outputPanel> 
@@ -220,7 +185,7 @@ This Table row will be added only if the user has the access to the Sales suppor
                         <apex:actionFunction name="applySeedsFilters" action="{!filterSeeds}" reRender="seedsPanel" status="seedsFilterStatus"/>
                         
                         <br/>
-                        <apex:pageMessages rendered="{!bSeedsErrorFlag}" id="seedsMessages" escape="false"/>
+                        <apex:pageMessages rendered="{!bSeedsErrorFlag}" id="seedsMessages"/>
                         
                         <apex:outputPanel rendered="{!NOT(bSeedsRenderFlag)}">
                             <br/><br/><br/><br/>
@@ -260,6 +225,7 @@ This Table row will be added only if the user has the access to the Sales suppor
                                 <apex:inputText value="{!sSeedSearch[9]}" size="{!IF(sWWID != NULL,15,IF(sAcctRecName != NULL,19,0))}" html-placeholder="Opportunity Name"  
                                                 styleClass="{!IF(sWWID != NULL,'userSeedFilter','accountSeedFilter')}" onkeypress="return runOnEnter(event, 'Seeds');"
                                                 rendered="{!IF(sAcctRecName != NULL || sWWID != NULL, true,false)}"/>
+                                
                             </apex:panelGrid>
                             
                             <br/>
@@ -272,7 +238,6 @@ This Table row will be added only if the user has the access to the Sales suppor
                         <!-- Table for rendering Seeds grid view -->
                         <apex:pageBlockTable value="{!lstFilteredSeeds}" var="seed" id="seedsTable"  frame="box" columns="11"
                                              columnsWidth="2%,2%,16%,5%,5%,6%,5%,5%,3%,8%,8%" rendered="{!bSeedsRenderFlag}">
-       						
                             <apex:column >
                                 <apex:actionstatus id="expansionStatus">
                                     <apex:facet name="start">
@@ -372,8 +337,7 @@ This Table row will be added only if the user has the access to the Sales suppor
                                         {!$Label.Core_Account_Name}
                                     </div>
                                 </apex:facet>
-                               <!-- As part of TWC3123-6816 Added No Sales CRM account assigned text in the value-->
-                                <apex:outputText value="{!IF(seed.AccountName != NULL, seed.AccountName, 'No Sales CRM Account assigned')}"/>
+                                <apex:outputText value="{!seed.AccountName}"/>
                             </apex:column>
                             
                             <apex:column styleClass="alignCentre" rendered="{!IF(sAcctRecName != NULL || sWWID != NULL, true,false)}">
@@ -457,7 +421,7 @@ This Table row will be added only if the user has the access to the Sales suppor
                         <apex:actionFunction name="applySamplesFilters" action="{!filterSamples}" reRender="samplesPanel" status="samplesFilterStatus"/>
                         
                         <br/>
-                        <apex:pageMessages rendered="{!bSamplesErrorFlag}" id="samplesMessages" escape="false"/>
+                        <apex:pageMessages rendered="{!bSamplesErrorFlag}" id="samplesMessages"/>
                         
                         <apex:outputPanel rendered="{!NOT(bSamplesRenderFlag)}">
                             <br/><br/><br/><br/>
@@ -512,7 +476,7 @@ This Table row will be added only if the user has the access to the Sales suppor
                             <apex:actionstatus id="samplesFilterStatus">
                                 <apex:facet name="start"><apex:image url="/img/loading32.gif" styleClass="imageFilterLoading"/></apex:facet>
                             </apex:actionstatus>
-                        </apex:pageBlockSection>
+                        </apex:pageblocksection>
                         
                         <!-- Table for rendering Samples grid view -->
                         <apex:pageBlockTable value="{!lstFilteredSamples}" var="sample" id="samplesTable"  frame="box" columns="13"
@@ -635,7 +599,7 @@ This Table row will be added only if the user has the access to the Sales suppor
                                                 <apex:pageBlockSection title="Notes" columns="1" collapsible="false"> 
                                                     
                                                     <b>On Behalf Of</b> <br/><apex:outputText value="{!sample.OBO}" /><br/>
-                                                    <br/><apex:outputText value="<b>{!unifiedOrCimLabelSample}</b><br/><br/>{!sample.DetailViewCIMIDs}" escape="false" rendered="{!IF(sOppRecName != NULL || sWWID != NULL, true, false)}" /><br/>
+                                                    <br/><apex:outputText value="<b>Account CIM ID</b><br/><br/>{!sample.DetailViewCIMIDs}" escape="false" rendered="{!IF(sOppRecName != NULL || sWWID != NULL, true, false)}" /><br/>
                                                     <br/><apex:outputText value="<b>Opportunity ID</b><br/><br/>{!sample.DetailViewOppIDs}" escape="false" rendered="{!IF(sAcctRecName != NULL || sWWID != NULL, true, false)}" />
                                                     
                                                 </apex:pageBlockSection>
@@ -663,7 +627,7 @@ This Table row will be added only if the user has the access to the Sales suppor
                 
                 <!--Intel Altera Phase1: 
 Below method is used for showing the PSG Quote History associated with Opportunity. --> 
-                <!--<apex:tab label="PSG Quotes" name="tabPSGQuote" id="tabPSGQuote"  labelWidth="120" onTabEnter="clickTab('tabPSGQuote','{!$Component.pageblk.pgBlkPSGQuoteTbl}','');"  rendered="{!bPSGQuoteTabVisible}" disabled="true">
+                <apex:tab label="PSG Quotes" name="tabPSGQuote" id="tabPSGQuote"  labelWidth="120" onTabEnter="clickTab('tabPSGQuote','{!$Component.pageblk.pgBlkPSGQuoteTbl}','');"  rendered="{!bPSGQuoteTabVisible}">
                     <apex:outputPanel id="psgQuoteHistoryPnl" >
                         <apex:actionFunction name="pullPSGQuote" action="{!pullPSGQuoteHistory}" reRender="psgQuoteHistoryPnl" status="samplePSGQuoteLoadStatus"/>
                         <apex:actionstatus id="samplePSGQuoteLoadStatus">
@@ -693,7 +657,7 @@ Below method is used for showing the PSG Quote History associated with Opportuni
                             </div>
                         </div>
                     </apex:outputPanel>
-                </apex:tab> -->
+                </apex:tab> 
                 
                 <!-- SSG Support Request Grid Buddy Flow Changes Start -->
                 <!-- Display if User Navigates from Account Record -->
@@ -712,68 +676,15 @@ Below method is used for showing the PSG Quote History associated with Opportuni
                     </iframe>                  
                 </apex:tab>
                 
-                <!-- Display if User Navigates from Sales Support Tab -->
+                 <!-- Display if User Navigates from Sales Support Tab -->
                 <apex:tab label="{!$Label.Core_SSR_Support_Request}" name="tabDRDSSR" id="tabDRDSSR3" labelWidth="180"
                           onTabEnter="clickTab('tabDRDSSR','','');" rendered="{!AND(sOppId == '',sAcctId=='')}">  
                     <iframe id="gridFrame0" scrolling="auto" height="600" width="100%" frameborder="0"
                             src="/apex/gblite__Grid?gname=Software Expert Support&sh=0&ro=0&sbb=0&fpf=createdById&fpv={!userId}">
                     </iframe>
                 </apex:tab>
-                <!-- SSG Support Request Grid Buddy Flow Changes End -->
-                  
-                <!-- to show related webquotes--> 
-                <apex:tab label="Related WebQuotes" name="tabWebquotes" id="tabWebquotes" labelWidth="120"
-                          onTabEnter="clickTab('tabWebquotes','{!$Component.pageblk.pgBlkQuotesTable}','{!$Component.pageblk.quotesMessages}');">
-                    <apex:actionFunction name="pullWebQuotes" action="{!pullWebQuotes}" reRender="quotesPanel" status="quotesTabLoadStatus"/>
-                    <apex:actionstatus id="quotesTabLoadStatus">
-                        <apex:facet name="start"><apex:image url="/img/loading32.gif" styleClass="imageTabLoading"/></apex:facet>
-                    </apex:actionstatus>
-                    
-                    
-                    <apex:outputPanel id="quotesPanel" >
-                        <br/>
-                        <apex:pageMessages rendered="{!bQuotesErrorFlag}" id="quotesMessages" escape="false"/>
-                        
-                        <div style="overflow-y: scroll; height: 200px;"> 
-                            <apex:pageBlockTable value="{!quotes}" var="item" id="pgBlkQuotesTable" rendered="{!bQuotesRenderFlag}" styleClass="fixheaders">
-                                <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
-                                    RFQ ID
-                                    </div></apex:facet><apex:outputLink value="{!item.quote_link}" styleClass="ul">{!item.quote_name}</apex:outputLink></apex:column>
-                                <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
-                                    Creation Type
-                                    </div></apex:facet><apex:outputText value="{!item.creation_type}"/></apex:column>
-                                <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
-                                    Creator
-                                    </div></apex:facet><apex:outputText value="{!item.creator}"/></apex:column>
-                                <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
-                                    Product Description
-                                    </div></apex:facet><apex:outputText value="{!item.prd_dsc}"/></apex:column>
-                                <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
-                                    Status 
-                                    </div></apex:facet><apex:outputText value="{!item.quote_status}"/></apex:column>
-                                <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
-                                    DPA Number
-                                    </div></apex:facet><apex:outputText value="{!item.dpa_number}"/></apex:column>
-                                <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
-                                    DPA Valid From
-                                    </div></apex:facet><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!item.dpa_vld_fr_dt}" /></apex:outputText></apex:column>
-                                <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
-                                    DPA Expiry Date
-                                    </div></apex:facet><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!item.dpa_expr_dt}" /></apex:outputText></apex:column>
-                                <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
-                                    Approved Quantity
-                                    </div></apex:facet><apex:outputText value="{!item.approved_quantity}"/></apex:column>
-                                <!-- TWC4767-486 : WebQuote enhancements -->
-                                <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
-                                    Disti Cost/Intel Price 
-                                    </div></apex:facet><apex:outputText value="{!item.intel_prc_sdc}"/></apex:column>
-                                <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
-                                    Approved Price
-                                    </div></apex:facet><apex:outputText value="{!item.aprv_prc}"/></apex:column>
-                            </apex:pageBlockTable>
-                        </div>
-                    </apex:outputPanel>
-                </apex:tab>
+                 <!-- SSG Support Request Grid Buddy Flow Changes End -->
+                
             </apex:tabPanel>
         </apex:pageBlock>
     </apex:form>

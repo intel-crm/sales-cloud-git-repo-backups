@@ -206,9 +206,17 @@
         <referenceTo>ChannelProgram</referenceTo>
         <relationshipLabel>Primary to Activating Partners Map</relationshipLabel>
         <relationshipName>Primary_to_Activating_Partners_Map</relationshipName>
-        <required>true</required>
+        <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Duplicate_Detected_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field is used in the flow to restrict user from creating duplicate records</description>
+        <label>Duplicate Detected</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_MDF_Effective_End_Date__c</fullName>

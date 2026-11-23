@@ -43,9 +43,10 @@ public static void checkClaimAmtAgainstCampaignCAPtAmt(List<PartnerFundClaim> in
             //pfrIDs.add(pfc.RequestId); // Add list of PFR ids to query the list of campaign ids later
         }
     }
-    
-    if(listOfClaimsToBeProcessed!= null && listOfClaimsToBeProcessed.size() > 0)
-    { 
+    //ATHR - Deeply Nested if 16209
+    if(listOfClaimsToBeProcessed == null || listOfClaimsToBeProcessed.isEmpty()) return;
+    //if(listOfClaimsToBeProcessed!= null && listOfClaimsToBeProcessed.size() > 0)
+    //{ 
         //Label.Core_MDF_InactiveStatusForClaim = 'Cancelled;Denied;Adjusted'
         List<String> claimStatusToBeExcluded = Label.Core_MDF_InactiveStatusForClaim.split(';');
         //Map to store the Campaign as key and list of its new claims to be inserted
@@ -114,9 +115,9 @@ public static void checkClaimAmtAgainstCampaignCAPtAmt(List<PartnerFundClaim> in
                 //Id cmpgnRecId = pfrIdCmpgnId.get(pfc.RequestId);
                 Id cmpgnRecId = pfc.Core_MDF_Campaign_Id__c;
                 //Get the corresponding Campaigns available Budget Amount
-
-
-                if (mapofCmpgnwithAvailableCAP.get(cmpgnRecId) != null){
+                //ATHR - Deeply Nested if 16209
+                if (mapofCmpgnwithAvailableCAP.get(cmpgnRecId) == null) continue;
+                //if (mapofCmpgnwithAvailableCAP.get(cmpgnRecId) != null){
                     Decimal availableAmount = mapofCmpgnwithAvailableCAP.get(cmpgnRecId);
 
                     if(pfc.Amount > availableAmount)
@@ -129,13 +130,13 @@ public static void checkClaimAmtAgainstCampaignCAPtAmt(List<PartnerFundClaim> in
                         //If claim amount is lesser than or equal to the campaigns available amount,process it by deducting claim amount from the available amount
                         mapofCmpgnwithAvailableCAP.put(pfc.Core_MDF_Campaign_Id__c, availableAmount - pfc.Amount);
                     }
-                }
+                //}
                 
             }
             
         }
 
-    }
+    //}
     
 }  
 

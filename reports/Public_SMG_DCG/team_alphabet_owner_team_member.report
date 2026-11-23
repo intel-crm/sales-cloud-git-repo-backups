@@ -7,9 +7,6 @@
         <field>OPPORTUNITY.NAME</field>
     </columns>
     <columns>
-        <field>OWNER_FULL_NAME</field>
-    </columns>
-    <columns>
         <field>STAGE_NAME</field>
     </columns>
     <columns>
@@ -17,20 +14,20 @@
         <field>AMOUNT</field>
     </columns>
     <filter>
-        <booleanFilter>(1 or 2) AND 3</booleanFilter>
+        <booleanFilter>((1 or 2) AND 3) AND 4</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Owner__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Justin Van Buren,Linda Boysel,Pascal Schultis</value>
+            <value>Claire Louise Campbell,Justin Van Buren,Linda Boysel,Pascal Schultis,Vanessa Martins Gomes de Pina</value>
         </criteriaItems>
         <criteriaItems>
             <column>MEMBER_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Justin Van Buren,Linda Boysel,Pascal Schultis</value>
+            <value>Claire Louise Campbell,Justin Van Buren,Linda Boysel,Pascal Schultis,Vanessa Martins Gomes de Pina</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -38,6 +35,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Lost,Cancelled,Group,Production Lost,Production Cancelled,Group Open,Group Cancelled,Group Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_ROLE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Team Member (100%)</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -52,12 +56,7 @@
         <field>MEMBER_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Approval_Status__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <name>Team Alphabet Approval Status</name>
+    <name>team alphabet owner/team member</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -72,7 +71,7 @@
     </params>
     <reportType>OpportunityTeam</reportType>
     <scope>organization</scope>
-    <showDetails>false</showDetails>
+    <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>

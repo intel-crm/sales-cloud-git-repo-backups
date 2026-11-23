@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Territory2Model.Territory2s$Name</field>
+    </columns>
+    <columns>
+        <field>Territory2Model.Territory2s.UserTerritory2Associations$Name</field>
+    </columns>
+    <columns>
+        <field>Territory2Model.Territory2s.UserTerritory2Associations*User$Core_WWID__c</field>
+    </columns>
+    <columns>
+        <field>Territory2Model.Territory2s.UserTerritory2Associations$RoleInTerritory2</field>
+    </columns>
+    <description>List of Users assigned to Named and GAM territories</description>
+    <filter>
+        <criteriaItems>
+            <column>Territory2Model.Territory2s$Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>startsWith</operator>
+            <value>Global</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Territory2Model$State</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>3</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>TERR - Users in GAM Territory</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_Territory_with_Users__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Territory2Model$ActivatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

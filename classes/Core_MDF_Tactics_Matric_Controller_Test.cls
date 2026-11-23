@@ -226,6 +226,7 @@ public class Core_MDF_Tactics_Matric_Controller_Test {
         pfr.amount = 500;
         pfr.Core_MDF_Reimbursement_Rate_txt__c='60%';
         pfr.Core_MDF_Budget_Type_nm__c = budgetType;
+        pfr.Core_MDF_ActivityCategory__c= 'Broadcast (Pre-2025)';
         Database.insert(pfr);
         List<Campaign> campToBeUpdated = new List<Campaign>();
         List<PartnerFundRequest> pfrToBeUpdated = new List<PartnerFundRequest>(); 
@@ -424,6 +425,7 @@ public class Core_MDF_Tactics_Matric_Controller_Test {
             pfr.Core_MDF_BU_Split__c = 'CCG';
             pfr.Core_MDF_BU1_Split_Percent_nbr__c = 100;
             pfr.Core_MDF_Product_Category_txt__c ='Desktop';
+            pfr.Core_MDF_ActivityCategory__c= 'Broadcast (Pre-2025)';
             insert pfr;
             
             // Update Campaign
@@ -467,10 +469,6 @@ public class Core_MDF_Tactics_Matric_Controller_Test {
             claim1.Core_MDF_VAT_Eligibility_Ind__c= true; 
             claim1.Core_MDF_VAT_Hold_Ind__c = true;
             claim1.Core_MDF_Status__c = 'Hold';
-            claim1.Core_MDF_Ad_Run_Start_Date__c=System.today();
-            claim1.Core_MDF_Ad_Run_End_Date__c=System.today();
-            claim1.Core_MDF_Processing_Preference_nm__c='Get paid, then settle';
-           
             insert claim1;
         }
         Core_MDF_Claim_Attributes__c claimAttribute = new Core_MDF_Claim_Attributes__c(
@@ -480,7 +478,6 @@ public class Core_MDF_Tactics_Matric_Controller_Test {
             Core_MDF_Type_nm__c = 'KPI - Claim',
             Core_MDF_Tactics_nm__c = 'Digital Media',
             Core_MDF_Is_Active_Ind__c = true
-            
         );
         insert claimAttribute;
         System.runAs(ipaPayAdm) {

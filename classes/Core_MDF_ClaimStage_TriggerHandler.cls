@@ -21,6 +21,7 @@ public class Core_MDF_ClaimStage_TriggerHandler extends TriggerHandler{
         if (isActive('Core_MDF_claimStageProcessOnBeforeInsert')) {
             //calling below method to check mandatory and accessibility validations on insertion of Claim Stage Record List
             Core_MDF_ClaimStage_ServiceHandler.isValidOnInsert((List<Core_MDF_Claim_Batch_Stage__c>) Trigger.New);
+
         }
     }
     public override void afterInsert(){
@@ -37,9 +38,10 @@ public class Core_MDF_ClaimStage_TriggerHandler extends TriggerHandler{
             recursiveCheckStopBeforeUpdate = true;
             // Store the OldClaimStage Map to the Global Variable 
             oldClaimStageMap = (Map<Id,Core_MDF_Claim_Batch_Stage__c>)trigger.oldMap;
-            //System.debug('oldClaimStageMap in before Update::::'+oldClaimStageMap);
+          
             // check mandatory and accessibility validations for all the edited records from Claim Stage Record List
             Core_MDF_ClaimStage_ServiceHandler.isValidOnUpdate((List<Core_MDF_Claim_Batch_Stage__c>) Trigger.new,(Map<Id,Core_MDF_Claim_Batch_Stage__c>)trigger.oldMap,(Map<Id,Core_MDF_Claim_Batch_Stage__c>)trigger.newMap);
+
         }
     }
     
@@ -47,13 +49,14 @@ public class Core_MDF_ClaimStage_TriggerHandler extends TriggerHandler{
         
         if(isActive('Core_MDF_claimStageProcessOnAfterUpdate')){
             // Get all the ClaimStageRecords which were edited
-            //System.debug('oldClaimStageMap in after Update::::'+oldClaimStageMap);
+           
+            
             List<Core_MDF_Claim_Batch_Stage__c> updatedClaimStageRecordList = Core_MDF_ClaimStage_ServiceHandler.getUpdatedStageRecordList((List<Core_MDF_Claim_Batch_Stage__c>) Trigger.New,oldClaimStageMap);
             
             if(updatedClaimStageRecordList != NULL && updatedClaimStageRecordList.size() > 0 && !recursiveCheckStopAfterUpdate){
                 // Make the recursive flag as True
                 recursiveCheckStopAfterUpdate = true;
-               // system.debug('in after update');
+           
                 // Get the Claim Object List From the ClaimStage List as Input
                 List<PartnerFundClaim> getBulkOfClaims = Core_MDF_BatchClaimHelper.mapStageRecordsToClaim(updatedClaimStageRecordList);
                 // call the function to check whether the ClaimList contains duplicates   

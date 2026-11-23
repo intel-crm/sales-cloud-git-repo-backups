@@ -1,0 +1,26 @@
+.responsive-table-container {
+    width: 100%;
+    overflow-x: auto; /* prevents overflow outside the card */
+}
+
+.responsive-input {
+    width: 100%;
+    min-width: 140px;
+    font-size: 0.85rem;
+}
+
+.slds-table {
+    width: 100%;
+    table-layout: auto;
+}
+
+.slds-table th,
+.slds-table td {
+    white-space: nowrap;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.text-center {
+    text-align: center;
+}

@@ -128,11 +128,14 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Core_MDF_PGM_RecordPage</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -146,7 +149,7 @@
     <description>This object is used for storing the mappings between Accounts(Partner) and Groups.</description>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
-    <enableFeeds>true</enableFeeds>
+    <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
@@ -160,7 +163,6 @@
         <inlineHelpText>The field stores the email domains of the partner user email ids that are allowed by a certain Account</inlineHelpText>
         <label>Allowed Email Domains</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
@@ -279,33 +281,9 @@
                     <label>baidu.com</label>
                 </value>
                 <value>
-                    <fullName>bakerhughes.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>bakerhughes.com</label>
-                </value>
-                <value>
-                    <fullName>batesasia.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>batesasia.com</label>
-                </value>
-                <value>
-                    <fullName>bateschi.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>bateschi.com</label>
-                </value>
-                <value>
                     <fullName>bbdo.co.kr</fullName>
                     <default>false</default>
                     <label>bbdo.co.kr</label>
-                </value>
-                <value>
-                    <fullName>bbdoindonesia.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>bbdoindonesia.com</label>
                 </value>
                 <value>
                     <fullName>bbdomexico.com</fullName>
@@ -318,39 +296,9 @@
                     <label>bc.jp.nec.com</label>
                 </value>
                 <value>
-                    <fullName>bdm.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>bdm.com</label>
-                </value>
-                <value>
-                    <fullName>bdm.net</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>bdm.net</label>
-                </value>
-                <value>
                     <fullName>bdsmktg.com</fullName>
                     <default>false</default>
                     <label>bdsmktg.com</label>
-                </value>
-                <value>
-                    <fullName>bigbeat.co.jp</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>bigbeat.co.jp</label>
-                </value>
-                <value>
-                    <fullName>bigmir.net</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>bigmir.net</label>
-                </value>
-                <value>
-                    <fullName>bizcom-us.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>bizcom-us.com</label>
                 </value>
                 <value>
                     <fullName>bluefocus.com</fullName>
@@ -358,39 +306,9 @@
                     <label>bluefocus.com</label>
                 </value>
                 <value>
-                    <fullName>bnyadv.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>bnyadv.com</label>
-                </value>
-                <value>
-                    <fullName>bp.jp.nec.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>bp.jp.nec.com</label>
-                </value>
-                <value>
-                    <fullName>bq.jp.nec.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>bq.jp.nec.com</label>
-                </value>
-                <value>
                     <fullName>br.fujitsu.com</fullName>
                     <default>false</default>
                     <label>br.fujitsu.com</label>
-                </value>
-                <value>
-                    <fullName>brilliantpr.gr</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>brilliantpr.gr</label>
-                </value>
-                <value>
-                    <fullName>broadcastmedia.vn</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>broadcastmedia.vn</label>
                 </value>
                 <value>
                     <fullName>bx.jp.nec.com</fullName>
@@ -418,22 +336,9 @@
                     <label>carolcreechpromotions.com</label>
                 </value>
                 <value>
-                    <fullName>celestica.com</fullName>
+                    <fullName>centurylink.com</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
-                    <label>celestica.com</label>
-                </value>
-                <value>
-                    <fullName>cheil.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>cheil.com</label>
-                </value>
-                <value>
-                    <fullName>cheilpengtai.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>cheilpengtai.com</label>
+                    <label>centurylink.com</label>
                 </value>
                 <value>
                     <fullName>cisco.com</fullName>
@@ -441,33 +346,9 @@
                     <label>cisco.com</label>
                 </value>
                 <value>
-                    <fullName>cj-service.com.cn</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>cj-service.com.cn</label>
-                </value>
-                <value>
-                    <fullName>clevo.com.tw</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>clevo.com.tw</label>
-                </value>
-                <value>
                     <fullName>cn.fujitsu.com</fullName>
                     <default>false</default>
                     <label>cn.fujitsu.com</label>
-                </value>
-                <value>
-                    <fullName>cn.pico.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>cn.pico.com</label>
-                </value>
-                <value>
-                    <fullName>cnspartner.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>cnspartner.com</label>
                 </value>
                 <value>
                     <fullName>cohnwolfe.com</fullName>
@@ -475,51 +356,9 @@
                     <label>cohnwolfe.com</label>
                 </value>
                 <value>
-                    <fullName>comcast.net</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>comcast.net</label>
-                </value>
-                <value>
-                    <fullName>comm.sec.samsung.co.kr</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>comm.sec.samsung.co.kr</label>
-                </value>
-                <value>
-                    <fullName>compal.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>compal.com</label>
-                </value>
-                <value>
-                    <fullName>conceptinaction.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>conceptinaction.com</label>
-                </value>
-                <value>
-                    <fullName>connect2b.com.br</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>connect2b.com.br</label>
-                </value>
-                <value>
-                    <fullName>connection.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>connection.com</label>
-                </value>
-                <value>
                     <fullName>contax.com.br</fullName>
                     <default>false</default>
                     <label>contax.com.br</label>
-                </value>
-                <value>
-                    <fullName>contract.ignitetokyo.co.jp</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>contract.ignitetokyo.co.jp</label>
                 </value>
                 <value>
                     <fullName>contractindia.co.in</fullName>
@@ -537,18 +376,6 @@
                     <label>corp.ovh.us</label>
                 </value>
                 <value>
-                    <fullName>covario.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>covario.com</label>
-                </value>
-                <value>
-                    <fullName>cpu.edu.cn</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>cpu.edu.cn</label>
-                </value>
-                <value>
                     <fullName>cray.com</fullName>
                     <default>false</default>
                     <label>cray.com</label>
@@ -559,27 +386,9 @@
                     <label>creativebank.co.jp</label>
                 </value>
                 <value>
-                    <fullName>csat-solutions.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>csat-solutions.com</label>
-                </value>
-                <value>
-                    <fullName>ctsho.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>ctsho.com</label>
-                </value>
-                <value>
                     <fullName>da.jp.nec.com</fullName>
                     <default>false</default>
                     <label>da.jp.nec.com</label>
-                </value>
-                <value>
-                    <fullName>davincistart.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>davincistart.com</label>
                 </value>
                 <value>
                     <fullName>dbt.dynabook.com</fullName>
@@ -587,50 +396,14 @@
                     <label>dbt.dynabook.com</label>
                 </value>
                 <value>
-                    <fullName>dcim.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>dcim.com</label>
-                </value>
-                <value>
                     <fullName>dddmarcom.ch</fullName>
                     <default>false</default>
                     <label>dddmarcom.ch</label>
                 </value>
                 <value>
-                    <fullName>deleted.intel.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>deleted.intel.com</label>
-                </value>
-                <value>
-                    <fullName>deletedell.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>deletedell.com</label>
-                </value>
-                <value>
                     <fullName>dell.com</fullName>
                     <default>false</default>
                     <label>dell.com</label>
-                </value>
-                <value>
-                    <fullName>dell.com.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>dell.com.com</label>
-                </value>
-                <value>
-                    <fullName>dell.com.dup</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>dell.com.dup</label>
-                </value>
-                <value>
-                    <fullName>dell.comold</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>dell.comold</label>
                 </value>
                 <value>
                     <fullName>dellteam.com</fullName>
@@ -648,36 +421,6 @@
                     <label>dentsu.com.cn</label>
                 </value>
                 <value>
-                    <fullName>designkitchen.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>designkitchen.com</label>
-                </value>
-                <value>
-                    <fullName>developmentfactor.com.mx</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>developmentfactor.com.mx</label>
-                </value>
-                <value>
-                    <fullName>deya.cn</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>deya.cn</label>
-                </value>
-                <value>
-                    <fullName>dgajg.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>dgajg.com</label>
-                </value>
-                <value>
-                    <fullName>dhl.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>dhl.com</label>
-                </value>
-                <value>
                     <fullName>dialoggroup.com</fullName>
                     <default>false</default>
                     <label>dialoggroup.com</label>
@@ -686,24 +429,6 @@
                     <fullName>digitalriver.com</fullName>
                     <default>false</default>
                     <label>digitalriver.com</label>
-                </value>
-                <value>
-                    <fullName>dl.jp.fujitsu.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>dl.jp.fujitsu.com</label>
-                </value>
-                <value>
-                    <fullName>draft-cbd.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>draft-cbd.com</label>
-                </value>
-                <value>
-                    <fullName>dtpc.paso.fujitsu.co.jp</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>dtpc.paso.fujitsu.co.jp</label>
                 </value>
                 <value>
                     <fullName>dwamedia.com</fullName>
@@ -731,12 +456,6 @@
                     <label>egplusww.com</label>
                 </value>
                 <value>
-                    <fullName>e-graphics.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>e-graphics.com</label>
-                </value>
-                <value>
                     <fullName>e-graphics.com.mx</fullName>
                     <default>false</default>
                     <label>e-graphics.com.mx</label>
@@ -747,38 +466,14 @@
                     <label>emc.com</label>
                 </value>
                 <value>
-                    <fullName>empal.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>empal.com</label>
-                </value>
-                <value>
                     <fullName>enfatico.com</fullName>
                     <default>false</default>
                     <label>enfatico.com</label>
                 </value>
                 <value>
-                    <fullName>epfl.ch</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>epfl.ch</label>
-                </value>
-                <value>
-                    <fullName>eqltech.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>eqltech.com</label>
-                </value>
-                <value>
                     <fullName>esg.us</fullName>
                     <default>false</default>
                     <label>esg.us</label>
-                </value>
-                <value>
-                    <fullName>eslgaming.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>eslgaming.com</label>
                 </value>
                 <value>
                     <fullName>essencedigital.com</fullName>
@@ -796,51 +491,9 @@
                     <label>event.co.kr</label>
                 </value>
                 <value>
-                    <fullName>eventarchitects.pk</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>eventarchitects.pk</label>
-                </value>
-                <value>
-                    <fullName>evr.com.pl</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>evr.com.pl</label>
-                </value>
-                <value>
                     <fullName>example.com</fullName>
                     <default>false</default>
                     <label>example.com</label>
-                </value>
-                <value>
-                    <fullName>expohouse.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>expohouse.com</label>
-                </value>
-                <value>
-                    <fullName>external.groups.hp.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>external.groups.hp.com</label>
-                </value>
-                <value>
-                    <fullName>fc.hp.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>fc.hp.com</label>
-                </value>
-                <value>
-                    <fullName>fedex.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>fedex.com</label>
-                </value>
-                <value>
-                    <fullName>fell.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>fell.com</label>
                 </value>
                 <value>
                     <fullName>fireflyeducate.com</fullName>
@@ -853,45 +506,9 @@
                     <label>fitch.com</label>
                 </value>
                 <value>
-                    <fullName>flab.fujitsu.co.jp</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>flab.fujitsu.co.jp</label>
-                </value>
-                <value>
                     <fullName>force-focus.com</fullName>
                     <default>false</default>
                     <label>force-focus.com</label>
-                </value>
-                <value>
-                    <fullName>foundation-aus.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>foundation-aus.com</label>
-                </value>
-                <value>
-                    <fullName>foxconn.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>foxconn.com</label>
-                </value>
-                <value>
-                    <fullName>fredfarid.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>fredfarid.com</label>
-                </value>
-                <value>
-                    <fullName>ftr.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>ftr.com</label>
-                </value>
-                <value>
-                    <fullName>ftxs.fujitsu.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>ftxs.fujitsu.com</label>
                 </value>
                 <value>
                     <fullName>fujitsu.com</fullName>
@@ -902,24 +519,6 @@
                     <fullName>fullid.co.kr</fullName>
                     <default>false</default>
                     <label>fullid.co.kr</label>
-                </value>
-                <value>
-                    <fullName>fvd.fujitsu.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>fvd.fujitsu.com</label>
-                </value>
-                <value>
-                    <fullName>gemteks.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>gemteks.com</label>
-                </value>
-                <value>
-                    <fullName>genco.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>genco.com</label>
                 </value>
                 <value>
                     <fullName>getitcomms.com</fullName>
@@ -937,27 +536,9 @@
                     <label>gmail.com</label>
                 </value>
                 <value>
-                    <fullName>gnextcom.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>gnextcom.com</label>
-                </value>
-                <value>
-                    <fullName>google.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>google.com</label>
-                </value>
-                <value>
                     <fullName>go-yamamoto.com</fullName>
                     <default>false</default>
                     <label>go-yamamoto.com</label>
-                </value>
-                <value>
-                    <fullName>gpj.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>gpj.com</label>
                 </value>
                 <value>
                     <fullName>gpr.lk</fullName>
@@ -965,27 +546,9 @@
                     <label>gpr.lk</label>
                 </value>
                 <value>
-                    <fullName>grey.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>grey.com</label>
-                </value>
-                <value>
-                    <fullName>groupjp.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>groupjp.com</label>
-                </value>
-                <value>
                     <fullName>groupm.com</fullName>
                     <default>false</default>
                     <label>groupm.com</label>
-                </value>
-                <value>
-                    <fullName>groups.hp.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>groups.hp.com</label>
                 </value>
                 <value>
                     <fullName>gyro.com</fullName>
@@ -1003,21 +566,9 @@
                     <label>haier.com</label>
                 </value>
                 <value>
-                    <fullName>harvestcom.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>harvestcom.com</label>
-                </value>
-                <value>
                     <fullName>hasee.com</fullName>
                     <default>false</default>
                     <label>hasee.com</label>
-                </value>
-                <value>
-                    <fullName>hasee.net</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>hasee.net</label>
                 </value>
                 <value>
                     <fullName>hds.com</fullName>
@@ -1040,12 +591,6 @@
                     <label>hitachivantara.com</label>
                 </value>
                 <value>
-                    <fullName>hitechnologies.com.br</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>hitechnologies.com.br</label>
-                </value>
-                <value>
                     <fullName>hk.fujitsu.com</fullName>
                     <default>false</default>
                     <label>hk.fujitsu.com</label>
@@ -1066,21 +611,9 @@
                     <label>hp.com</label>
                 </value>
                 <value>
-                    <fullName>hp.cpm</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>hp.cpm</label>
-                </value>
-                <value>
                     <fullName>hpe.com</fullName>
                     <default>false</default>
                     <label>hpe.com</label>
-                </value>
-                <value>
-                    <fullName>hsad.co.kr</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>hsad.co.kr</label>
                 </value>
                 <value>
                     <fullName>huawei.com</fullName>
@@ -1088,33 +621,9 @@
                     <label>huawei.com</label>
                 </value>
                 <value>
-                    <fullName>hui-jia.com.cn</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>hui-jia.com.cn</label>
-                </value>
-                <value>
-                    <fullName>hyfn.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>hyfn.com</label>
-                </value>
-                <value>
                     <fullName>ibm.com</fullName>
                     <default>false</default>
                     <label>ibm.com</label>
-                </value>
-                <value>
-                    <fullName>ictgmbh.ne</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>ictgmbh.ne</label>
-                </value>
-                <value>
-                    <fullName>ictgmbh.net</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>ictgmbh.net</label>
                 </value>
                 <value>
                     <fullName>id.fujitsu.com</fullName>
@@ -1132,12 +641,6 @@
                     <label>imd.dentsu.co.jp</label>
                 </value>
                 <value>
-                    <fullName>impactlcd.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>impactlcd.com</label>
-                </value>
-                <value>
                     <fullName>in2ideas.com</fullName>
                     <default>false</default>
                     <label>in2ideas.com</label>
@@ -1148,75 +651,9 @@
                     <label>ingrammicro.com</label>
                 </value>
                 <value>
-                    <fullName>innocean.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>innocean.com</label>
-                </value>
-                <value>
-                    <fullName>inoarts.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>inoarts.com</label>
-                </value>
-                <value>
-                    <fullName>inpacebd.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>inpacebd.com</label>
-                </value>
-                <value>
-                    <fullName>inpsur.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>inpsur.com</label>
-                </value>
-                <value>
-                    <fullName>inpur.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>inpur.com</label>
-                </value>
-                <value>
                     <fullName>inspur.com</fullName>
                     <default>false</default>
                     <label>inspur.com</label>
-                </value>
-                <value>
-                    <fullName>inspur.com.hk</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>inspur.com.hk</label>
-                </value>
-                <value>
-                    <fullName>instituto-jc.org.br</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>instituto-jc.org.br</label>
-                </value>
-                <value>
-                    <fullName>intel.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>intel.com</label>
-                </value>
-                <value>
-                    <fullName>intercomp.com.mt</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>intercomp.com.mt</label>
-                </value>
-                <value>
-                    <fullName>intesasanpaolo.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>intesasanpaolo.com</label>
-                </value>
-                <value>
-                    <fullName>inventec.com.cn</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>inventec.com.cn</label>
                 </value>
                 <value>
                     <fullName>ionos.com</fullName>
@@ -1224,38 +661,14 @@
                     <label>ionos.com</label>
                 </value>
                 <value>
-                    <fullName>iqor.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>iqor.com</label>
-                </value>
-                <value>
-                    <fullName>iris-worldwide.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>iris-worldwide.com</label>
-                </value>
-                <value>
                     <fullName>it-comm.co.jp</fullName>
                     <default>false</default>
                     <label>it-comm.co.jp</label>
                 </value>
                 <value>
-                    <fullName>jabil.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>jabil.com</label>
-                </value>
-                <value>
                     <fullName>jd.com</fullName>
                     <default>false</default>
                     <label>jd.com</label>
-                </value>
-                <value>
-                    <fullName>jdc.paso.fujitsu.co.jp</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>jdc.paso.fujitsu.co.jp</label>
                 </value>
                 <value>
                     <fullName>joysaloon.cn</fullName>
@@ -1268,38 +681,14 @@
                     <label>jp.fujitsu.com</label>
                 </value>
                 <value>
-                    <fullName>jp.lenovo.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>jp.lenovo.com</label>
-                </value>
-                <value>
                     <fullName>jp.panasonic.com</fullName>
                     <default>false</default>
                     <label>jp.panasonic.com</label>
                 </value>
                 <value>
-                    <fullName>jpfujitsu.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>jpfujitsu.com</label>
-                </value>
-                <value>
                     <fullName>jpik.com</fullName>
                     <default>false</default>
                     <label>jpik.com</label>
-                </value>
-                <value>
-                    <fullName>jp-ik.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>jp-ik.com</label>
-                </value>
-                <value>
-                    <fullName>jpsacouto.pt</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>jpsacouto.pt</label>
                 </value>
                 <value>
                     <fullName>kadaver.dk</fullName>
@@ -1317,93 +706,9 @@
                     <label>kingsoft.com</label>
                 </value>
                 <value>
-                    <fullName>kkudos.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>kkudos.com</label>
-                </value>
-                <value>
-                    <fullName>kodeks.hr</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>kodeks.hr</label>
-                </value>
-                <value>
-                    <fullName>kokokusha.co.jp</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>kokokusha.co.jp</label>
-                </value>
-                <value>
-                    <fullName>koyosms.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>koyosms.com</label>
-                </value>
-                <value>
                     <fullName>kr.fujitsu.com</fullName>
                     <default>false</default>
                     <label>kr.fujitsu.com</label>
-                </value>
-                <value>
-                    <fullName>kremaworldwide.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>kremaworldwide.com</label>
-                </value>
-                <value>
-                    <fullName>langchao.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>langchao.com</label>
-                </value>
-                <value>
-                    <fullName>langchao.com.cn</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>langchao.com.cn</label>
-                </value>
-                <value>
-                    <fullName>langchao.com.hk</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>langchao.com.hk</label>
-                </value>
-                <value>
-                    <fullName>lao.ten.fujitsu.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>lao.ten.fujitsu.com</label>
-                </value>
-                <value>
-                    <fullName>latonegroup.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>latonegroup.com</label>
-                </value>
-                <value>
-                    <fullName>lcfuturecenter.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>lcfuturecenter.com</label>
-                </value>
-                <value>
-                    <fullName>leftbraindga.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>leftbraindga.com</label>
-                </value>
-                <value>
-                    <fullName>legend.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>legend.com</label>
-                </value>
-                <value>
-                    <fullName>legend.com.cn</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>legend.com.cn</label>
                 </value>
                 <value>
                     <fullName>lenovo.com</fullName>
@@ -1411,93 +716,9 @@
                     <label>lenovo.com</label>
                 </value>
                 <value>
-                    <fullName>lenovo.com.isvc</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>lenovo.com.isvc</label>
-                </value>
-                <value>
-                    <fullName>lenovo.ua</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>lenovo.ua</label>
-                </value>
-                <value>
-                    <fullName>lenovoemc.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>lenovoemc.com</label>
-                </value>
-                <value>
-                    <fullName>lenvovo.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>lenvovo.com</label>
-                </value>
-                <value>
-                    <fullName>lgad.co.kr</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>lgad.co.kr</label>
-                </value>
-                <value>
-                    <fullName>lgdisplay.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>lgdisplay.com</label>
-                </value>
-                <value>
-                    <fullName>lge.co.kr</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>lge.co.kr</label>
-                </value>
-                <value>
                     <fullName>lge.com</fullName>
                     <default>false</default>
                     <label>lge.com</label>
-                </value>
-                <value>
-                    <fullName>lge.om</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>lge.om</label>
-                </value>
-                <value>
-                    <fullName>lgepartner.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>lgepartner.com</label>
-                </value>
-                <value>
-                    <fullName>liquid-force.co.kr</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>liquid-force.co.kr</label>
-                </value>
-                <value>
-                    <fullName>litobel.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>litobel.com</label>
-                </value>
-                <value>
-                    <fullName>longreen.org</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>longreen.org</label>
-                </value>
-                <value>
-                    <fullName>magnon-egplus.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>magnon-egplus.com</label>
-                </value>
-                <value>
-                    <fullName>magnusmccoy.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>magnusmccoy.com</label>
                 </value>
                 <value>
                     <fullName>mailinator.com</fullName>
@@ -1505,21 +726,9 @@
                     <label>mailinator.com</label>
                 </value>
                 <value>
-                    <fullName>maverick-services.com.sg</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>maverick-services.com.sg</label>
-                </value>
-                <value>
                     <fullName>mbur.cn</fullName>
                     <default>false</default>
                     <label>mbur.cn</label>
-                </value>
-                <value>
-                    <fullName>me.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>me.com</label>
                 </value>
                 <value>
                     <fullName>mecglobal.com</fullName>
@@ -1532,27 +741,9 @@
                     <label>mediacom.com</label>
                 </value>
                 <value>
-                    <fullName>medical.canon</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>medical.canon</label>
-                </value>
-                <value>
                     <fullName>medion.com</fullName>
                     <default>false</default>
                     <label>medion.com</label>
-                </value>
-                <value>
-                    <fullName>merlion.ru</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>merlion.ru</label>
-                </value>
-                <value>
-                    <fullName>metanvietnam.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>metanvietnam.com</label>
                 </value>
                 <value>
                     <fullName>microsoft.com</fullName>
@@ -1560,33 +751,9 @@
                     <label>microsoft.com</label>
                 </value>
                 <value>
-                    <fullName>microstar.in</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>microstar.in</label>
-                </value>
-                <value>
                     <fullName>mirrorshow.com</fullName>
                     <default>false</default>
                     <label>mirrorshow.com</label>
-                </value>
-                <value>
-                    <fullName>moak1.co.jp</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>moak1.co.jp</label>
-                </value>
-                <value>
-                    <fullName>mobinus.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>mobinus.com</label>
-                </value>
-                <value>
-                    <fullName>moraviaworldwide.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>moraviaworldwide.com</label>
                 </value>
                 <value>
                     <fullName>mraservices.com</fullName>
@@ -1609,74 +776,14 @@
                     <label>msi.com</label>
                 </value>
                 <value>
-                    <fullName>msi.com.tw</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>msi.com.tw</label>
-                </value>
-                <value>
-                    <fullName>msic.com.cn</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>msic.com.cn</label>
-                </value>
-                <value>
-                    <fullName>msik.com.cn</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>msik.com.cn</label>
-                </value>
-                <value>
-                    <fullName>msi-polska.pl</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>msi-polska.pl</label>
-                </value>
-                <value>
-                    <fullName>mslgroup.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>mslgroup.com</label>
-                </value>
-                <value>
-                    <fullName>murie.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>murie.com</label>
-                </value>
-                <value>
                     <fullName>my.fujitsu.com</fullName>
                     <default>false</default>
                     <label>my.fujitsu.com</label>
                 </value>
                 <value>
-                    <fullName>my.pwc.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>my.pwc.com</label>
-                </value>
-                <value>
-                    <fullName>nate.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>nate.com</label>
-                </value>
-                <value>
-                    <fullName>naver.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>naver.com</label>
-                </value>
-                <value>
                     <fullName>navercorp.com</fullName>
                     <default>false</default>
                     <label>navercorp.com</label>
-                </value>
-                <value>
-                    <fullName>nec.com.tw</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>nec.com.tw</label>
                 </value>
                 <value>
                     <fullName>necp.co.jp</fullName>
@@ -1689,21 +796,9 @@
                     <label>nelsonbostockunlimited.com</label>
                 </value>
                 <value>
-                    <fullName>neoteric.com.np</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>neoteric.com.np</label>
-                </value>
-                <value>
                     <fullName>netnow.cl</fullName>
                     <default>false</default>
                     <label>netnow.cl</label>
-                </value>
-                <value>
-                    <fullName>netsuite.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>netsuite.com</label>
                 </value>
                 <value>
                     <fullName>newbetter.cn</fullName>
@@ -1716,12 +811,6 @@
                     <label>nextmarketing.com</label>
                 </value>
                 <value>
-                    <fullName>nittsu.co.jp</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>nittsu.co.jp</label>
-                </value>
-                <value>
                     <fullName>nomura-g.jp</fullName>
                     <default>false</default>
                     <label>nomura-g.jp</label>
@@ -1730,12 +819,6 @@
                     <fullName>ogilvy.com</fullName>
                     <default>false</default>
                     <label>ogilvy.com</label>
-                </value>
-                <value>
-                    <fullName>oliverrussell.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>oliverrussell.com</label>
                 </value>
                 <value>
                     <fullName>omd.com</fullName>
@@ -1768,69 +851,9 @@
                     <label>oracle.com</label>
                 </value>
                 <value>
-                    <fullName>orale.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>orale.com</label>
-                </value>
-                <value>
-                    <fullName>outlook.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>outlook.com</label>
-                </value>
-                <value>
-                    <fullName>partner.samsung.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>partner.samsung.com</label>
-                </value>
-                <value>
-                    <fullName>partner.sec.co.kr</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>partner.sec.co.kr</label>
-                </value>
-                <value>
-                    <fullName>pb.jp.nec.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>pb.jp.nec.com</label>
-                </value>
-                <value>
-                    <fullName>pc.fujitsu.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>pc.fujitsu.com</label>
-                </value>
-                <value>
-                    <fullName>pc.ome.toshiba.co.jp</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>pc.ome.toshiba.co.jp</label>
-                </value>
-                <value>
-                    <fullName>pcconnection.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>pcconnection.com</label>
-                </value>
-                <value>
-                    <fullName>pcs.pc.ome.toshiba.co.jp</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>pcs.pc.ome.toshiba.co.jp</label>
-                </value>
-                <value>
                     <fullName>performics.com</fullName>
                     <default>false</default>
                     <label>performics.com</label>
-                </value>
-                <value>
-                    <fullName>pfu.fujitsu.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>pfu.fujitsu.com</label>
                 </value>
                 <value>
                     <fullName>ph.fujitsu.com</fullName>
@@ -1868,18 +891,6 @@
                     <label>phdnetwork.com</label>
                 </value>
                 <value>
-                    <fullName>pivot3.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>pivot3.com</label>
-                </value>
-                <value>
-                    <fullName>positicom.com.br</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>positicom.com.br</label>
-                </value>
-                <value>
                     <fullName>position2.com</fullName>
                     <default>false</default>
                     <label>position2.com</label>
@@ -1888,12 +899,6 @@
                     <fullName>positivo.com.br</fullName>
                     <default>false</default>
                     <label>positivo.com.br</label>
-                </value>
-                <value>
-                    <fullName>positivobgh.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>positivobgh.com</label>
                 </value>
                 <value>
                     <fullName>powerleader.com.cn</fullName>
@@ -1906,21 +911,9 @@
                     <label>ppr.com.au</label>
                 </value>
                 <value>
-                    <fullName>psd.cs.fujitsu.co.jp</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>psd.cs.fujitsu.co.jp</label>
-                </value>
-                <value>
                     <fullName>public7.de</fullName>
                     <default>false</default>
                     <label>public7.de</label>
-                </value>
-                <value>
-                    <fullName>publicis.com.sg</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>publicis.com.sg</label>
                 </value>
                 <value>
                     <fullName>publicismedia.com</fullName>
@@ -1933,18 +926,6 @@
                     <label>qct.io</label>
                 </value>
                 <value>
-                    <fullName>qcttw.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>qcttw.com</label>
-                </value>
-                <value>
-                    <fullName>qfremont2.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>qfremont2.com</label>
-                </value>
-                <value>
                     <fullName>qingcloud.com</fullName>
                     <default>false</default>
                     <label>qingcloud.com</label>
@@ -1955,39 +936,9 @@
                     <label>qorvismsl.com</label>
                 </value>
                 <value>
-                    <fullName>qq.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>qq.com</label>
-                </value>
-                <value>
-                    <fullName>quanta.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>quanta.com</label>
-                </value>
-                <value>
-                    <fullName>quanta.com.tw</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>quanta.com.tw</label>
-                </value>
-                <value>
                     <fullName>quantacn.com</fullName>
                     <default>false</default>
                     <label>quantacn.com</label>
-                </value>
-                <value>
-                    <fullName>quantade.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>quantade.com</label>
-                </value>
-                <value>
-                    <fullName>quantaqct.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>quantaqct.com</label>
                 </value>
                 <value>
                     <fullName>quantatw.com</fullName>
@@ -1995,75 +946,9 @@
                     <label>quantatw.com</label>
                 </value>
                 <value>
-                    <fullName>quantatw.com.dup</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>quantatw.com.dup</label>
-                </value>
-                <value>
-                    <fullName>quantaw.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>quantaw.com</label>
-                </value>
-                <value>
-                    <fullName>quantw.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>quantw.com</label>
-                </value>
-                <value>
-                    <fullName>quatatw.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>quatatw.com</label>
-                </value>
-                <value>
-                    <fullName>quatayw.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>quatayw.com</label>
-                </value>
-                <value>
-                    <fullName>quattrocentodiseno.es</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>quattrocentodiseno.es</label>
-                </value>
-                <value>
-                    <fullName>qunatatw.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>qunatatw.com</label>
-                </value>
-                <value>
-                    <fullName>quqntatw.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>quqntatw.com</label>
-                </value>
-                <value>
-                    <fullName>rackspace.co.uk</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>rackspace.co.uk</label>
-                </value>
-                <value>
                     <fullName>rackspace.com</fullName>
                     <default>false</default>
                     <label>rackspace.com</label>
-                </value>
-                <value>
-                    <fullName>rackwise.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>rackwise.com</label>
-                </value>
-                <value>
-                    <fullName>radarworks.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>radarworks.com</label>
                 </value>
                 <value>
                     <fullName>rationalagency.com</fullName>
@@ -2071,27 +956,9 @@
                     <label>rationalagency.com</label>
                 </value>
                 <value>
-                    <fullName>razerzone.com.dup</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>razerzone.com.dup</label>
-                </value>
-                <value>
-                    <fullName>realkinetica.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>realkinetica.com</label>
-                </value>
-                <value>
                     <fullName>redbaron.in</fullName>
                     <default>false</default>
                     <label>redbaron.in</label>
-                </value>
-                <value>
-                    <fullName>redhat.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>redhat.com</label>
                 </value>
                 <value>
                     <fullName>resolutionmedia.com</fullName>
@@ -2099,92 +966,14 @@
                     <label>resolutionmedia.com</label>
                 </value>
                 <value>
-                    <fullName>rts-services.ce</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>rts-services.ce</label>
-                </value>
-                <value>
-                    <fullName>rts-services.de</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>rts-services.de</label>
-                </value>
-                <value>
-                    <fullName>saatchi.com.cn</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>saatchi.com.cn</label>
-                </value>
-                <value>
-                    <fullName>saatchi.de</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>saatchi.de</label>
-                </value>
-                <value>
-                    <fullName>sacouto.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>sacouto.com</label>
-                </value>
-                <value>
-                    <fullName>samsug.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>samsug.com</label>
-                </value>
-                <value>
-                    <fullName>samsung.co</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>samsung.co</label>
-                </value>
-                <value>
                     <fullName>samsung.com</fullName>
                     <default>false</default>
                     <label>samsung.com</label>
                 </value>
                 <value>
-                    <fullName>samsung.de</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>samsung.de</label>
-                </value>
-                <value>
-                    <fullName>samsung.se</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>samsung.se</label>
-                </value>
-                <value>
-                    <fullName>sap.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>sap.com</label>
-                </value>
-                <value>
-                    <fullName>sapo.pt</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>sapo.pt</label>
-                </value>
-                <value>
-                    <fullName>se.fujitsu.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>se.fujitsu.com</label>
-                </value>
-                <value>
                     <fullName>sea.samsung.com</fullName>
                     <default>false</default>
                     <label>sea.samsung.com</label>
-                </value>
-                <value>
-                    <fullName>servms.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>servms.com</label>
                 </value>
                 <value>
                     <fullName>sezax.co.jp</fullName>
@@ -2207,51 +996,9 @@
                     <label>shanghai.co.za</label>
                 </value>
                 <value>
-                    <fullName>sicolamartin.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>sicolamartin.com</label>
-                </value>
-                <value>
-                    <fullName>sinobasedm.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>sinobasedm.com</label>
-                </value>
-                <value>
-                    <fullName>socialaves.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>socialaves.com</label>
-                </value>
-                <value>
-                    <fullName>soniccn.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>soniccn.com</label>
-                </value>
-                <value>
-                    <fullName>sotacreative.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>sotacreative.com</label>
-                </value>
-                <value>
                     <fullName>sparkfoundryww.com</fullName>
                     <default>false</default>
                     <label>sparkfoundryww.com</label>
-                </value>
-                <value>
-                    <fullName>sprocketmedia.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>sprocketmedia.com</label>
-                </value>
-                <value>
-                    <fullName>ssi.samsung.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>ssi.samsung.com</label>
                 </value>
                 <value>
                     <fullName>sugon.com</fullName>
@@ -2259,21 +1006,9 @@
                     <label>sugon.com</label>
                 </value>
                 <value>
-                    <fullName>sun.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>sun.com</label>
-                </value>
-                <value>
                     <fullName>supermicro.com</fullName>
                     <default>false</default>
                     <label>supermicro.com</label>
-                </value>
-                <value>
-                    <fullName>supermicro.com.dup</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>supermicro.com.dup</label>
                 </value>
                 <value>
                     <fullName>supermicro.com.tw</fullName>
@@ -2281,105 +1016,9 @@
                     <label>supermicro.com.tw</label>
                 </value>
                 <value>
-                    <fullName>supermicro.com.tw.dup</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>supermicro.com.tw.dup</label>
-                </value>
-                <value>
-                    <fullName>supermicro.com1</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>supermicro.com1</label>
-                </value>
-                <value>
-                    <fullName>supermicro.nl</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>supermicro.nl</label>
-                </value>
-                <value>
-                    <fullName>supermicto.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>supermicto.com</label>
-                </value>
-                <value>
-                    <fullName>supermnicro.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>supermnicro.com</label>
-                </value>
-                <value>
-                    <fullName>taec.toshiba.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>taec.toshiba.com</label>
-                </value>
-                <value>
-                    <fullName>tagworldwide.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>tagworldwide.com</label>
-                </value>
-                <value>
-                    <fullName>tais.toshiba.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>tais.toshiba.com</label>
-                </value>
-                <value>
-                    <fullName>tandt.com.sg</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>tandt.com.sg</label>
-                </value>
-                <value>
-                    <fullName>targetbaseintegrated.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>targetbaseintegrated.com</label>
-                </value>
-                <value>
                     <fullName>tbwabenchmark.com</fullName>
                     <default>false</default>
                     <label>tbwabenchmark.com</label>
-                </value>
-                <value>
-                    <fullName>tcpk.cs.fujitsu.co.jp</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>tcpk.cs.fujitsu.co.jp</label>
-                </value>
-                <value>
-                    <fullName>teamdell.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>teamdell.com</label>
-                </value>
-                <value>
-                    <fullName>techdata.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>techdata.com</label>
-                </value>
-                <value>
-                    <fullName>tee.toshiba.de</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>tee.toshiba.de</label>
-                </value>
-                <value>
-                    <fullName>tekelec.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>tekelec.com</label>
-                </value>
-                <value>
-                    <fullName>tekelec.com.na</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>tekelec.com.na</label>
                 </value>
                 <value>
                     <fullName>tencent.com</fullName>
@@ -2397,24 +1036,6 @@
                     <label>terracom.com.my</label>
                 </value>
                 <value>
-                    <fullName>test.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>test.com</label>
-                </value>
-                <value>
-                    <fullName>tgfz.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>tgfz.com</label>
-                </value>
-                <value>
-                    <fullName>th.fujits.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>th.fujits.com</label>
-                </value>
-                <value>
                     <fullName>th.fujitsu.com</fullName>
                     <default>false</default>
                     <label>th.fujitsu.com</label>
@@ -2425,21 +1046,9 @@
                     <label>theaffiniti.com</label>
                 </value>
                 <value>
-                    <fullName>theflow.kr</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>theflow.kr</label>
-                </value>
-                <value>
                     <fullName>thtfpc.com</fullName>
                     <default>false</default>
                     <label>thtfpc.com</label>
-                </value>
-                <value>
-                    <fullName>thundersoft.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>thundersoft.com</label>
                 </value>
                 <value>
                     <fullName>timeus.net</fullName>
@@ -2452,33 +1061,9 @@
                     <label>tmc-gmbh.de</label>
                 </value>
                 <value>
-                    <fullName>tomascon.pl</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>tomascon.pl</label>
-                </value>
-                <value>
-                    <fullName>tongky.sec.samsung.co.kr</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>tongky.sec.samsung.co.kr</label>
-                </value>
-                <value>
                     <fullName>toprankmarketing.com</fullName>
                     <default>false</default>
                     <label>toprankmarketing.com</label>
-                </value>
-                <value>
-                    <fullName>topwit.com.cn</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>topwit.com.cn</label>
-                </value>
-                <value>
-                    <fullName>toshiba.ca</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>toshiba.ca</label>
                 </value>
                 <value>
                     <fullName>toshiba.co.jp</fullName>
@@ -2496,12 +1081,6 @@
                     <label>toshiba.com</label>
                 </value>
                 <value>
-                    <fullName>toshiba.com.mx</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>toshiba.com.mx</label>
-                </value>
-                <value>
                     <fullName>toshiba.com.sg</fullName>
                     <default>false</default>
                     <label>toshiba.com.sg</label>
@@ -2517,33 +1096,9 @@
                     <label>toshiba.nl</label>
                 </value>
                 <value>
-                    <fullName>toshiba.pt</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>toshiba.pt</label>
-                </value>
-                <value>
-                    <fullName>toshiba-india.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>toshiba-india.com</label>
-                </value>
-                <value>
-                    <fullName>toshiba-italia.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>toshiba-italia.com</label>
-                </value>
-                <value>
                     <fullName>toshiba-tap.com</fullName>
                     <default>false</default>
                     <label>toshiba-tap.com</label>
-                </value>
-                <value>
-                    <fullName>toshibatec-eu.nl</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>toshibatec-eu.nl</label>
                 </value>
                 <value>
                     <fullName>toshiba-teg.com</fullName>
@@ -2551,39 +1106,9 @@
                     <label>toshiba-teg.com</label>
                 </value>
                 <value>
-                    <fullName>toshiba-teis.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>toshiba-teis.com</label>
-                </value>
-                <value>
-                    <fullName>toshiba-tgfz.ae</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>toshiba-tgfz.ae</label>
-                </value>
-                <value>
-                    <fullName>toshiba-tih.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>toshiba-tih.com</label>
-                </value>
-                <value>
                     <fullName>toshiba-tsf.com</fullName>
                     <default>false</default>
                     <label>toshiba-tsf.com</label>
-                </value>
-                <value>
-                    <fullName>toshiba-tsip.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>toshiba-tsip.com</label>
-                </value>
-                <value>
-                    <fullName>tracylocke.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>tracylocke.com</label>
                 </value>
                 <value>
                     <fullName>ts.fujitsu.com</fullName>
@@ -2591,56 +1116,14 @@
                     <label>ts.fujitsu.com</label>
                 </value>
                 <value>
-                    <fullName>ts.jp.nec.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>ts.jp.nec.com</label>
-                </value>
-                <value>
-                    <fullName>ttpdc.toshiba.co.jp</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>ttpdc.toshiba.co.jp</label>
-                </value>
-                <value>
                     <fullName>tw.fujitsu.com</fullName>
                     <default>false</default>
                     <label>tw.fujitsu.com</label>
                 </value>
                 <value>
-                    <fullName>tw.ibm.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>tw.ibm.com</label>
-                </value>
-                <value>
-                    <fullName>txdirect.net</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>txdirect.net</label>
-                </value>
-                <value>
                     <fullName>ucloud.cn</fullName>
                     <default>false</default>
                     <label>ucloud.cn</label>
-                </value>
-                <value>
-                    <fullName>uk.fujitsu.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>uk.fujitsu.com</label>
-                </value>
-                <value>
-                    <fullName>uol.com.br</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>uol.com.br</label>
-                </value>
-                <value>
-                    <fullName>ur.jp.nec.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>ur.jp.nec.com</label>
                 </value>
                 <value>
                     <fullName>us.fujitsu.com</fullName>
@@ -2653,12 +1136,6 @@
                     <label>us.ibm.com</label>
                 </value>
                 <value>
-                    <fullName>us.lenovo.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>us.lenovo.com</label>
-                </value>
-                <value>
                     <fullName>us.panasonic.com</fullName>
                     <default>false</default>
                     <label>us.panasonic.com</label>
@@ -2669,27 +1146,9 @@
                     <label>vce.com</label>
                 </value>
                 <value>
-                    <fullName>vibescomm.com.sg</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>vibescomm.com.sg</label>
-                </value>
-                <value>
-                    <fullName>vitalimages.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>vitalimages.com</label>
-                </value>
-                <value>
                     <fullName>vml.com</fullName>
                     <default>false</default>
                     <label>vml.com</label>
-                </value>
-                <value>
-                    <fullName>vmlim20.com.cn</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>vmlim20.com.cn</label>
                 </value>
                 <value>
                     <fullName>vmlyr.com</fullName>
@@ -2702,62 +1161,14 @@
                     <label>vn.fujitsu.com</label>
                 </value>
                 <value>
-                    <fullName>volume.co.uk</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>volume.co.uk</label>
-                </value>
-                <value>
-                    <fullName>vt.jp.nec.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>vt.jp.nec.com</label>
-                </value>
-                <value>
                     <fullName>wavemc.com</fullName>
                     <default>false</default>
                     <label>wavemc.com</label>
                 </value>
                 <value>
-                    <fullName>wearebourne.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>wearebourne.com</label>
-                </value>
-                <value>
                     <fullName>wearesocial.net</fullName>
                     <default>false</default>
                     <label>wearesocial.net</label>
-                </value>
-                <value>
-                    <fullName>wearetwogether.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>wearetwogether.com</label>
-                </value>
-                <value>
-                    <fullName>whu.edu.cn</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>whu.edu.cn</label>
-                </value>
-                <value>
-                    <fullName>wipro.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>wipro.com</label>
-                </value>
-                <value>
-                    <fullName>wistron.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>wistron.com</label>
-                </value>
-                <value>
-                    <fullName>wkk.com.hk</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>wkk.com.hk</label>
                 </value>
                 <value>
                     <fullName>wunderman.com</fullName>
@@ -2770,62 +1181,14 @@
                     <label>wundermanthompson.com</label>
                 </value>
                 <value>
-                    <fullName>wyse.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>wyse.com</label>
-                </value>
-                <value>
                     <fullName>xiaomi.com</fullName>
                     <default>false</default>
                     <label>xiaomi.com</label>
                 </value>
                 <value>
-                    <fullName>x-kom.pl</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>x-kom.pl</label>
-                </value>
-                <value>
-                    <fullName>xtramus.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>xtramus.com</label>
-                </value>
-                <value>
-                    <fullName>yahoo.cn</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>yahoo.cn</label>
-                </value>
-                <value>
-                    <fullName>yahoo.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>yahoo.com</label>
-                </value>
-                <value>
-                    <fullName>yahoo.com.dup</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>yahoo.com.dup</label>
-                </value>
-                <value>
-                    <fullName>yahoo.com.tw</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>yahoo.com.tw</label>
-                </value>
-                <value>
                     <fullName>yandex-team.ru</fullName>
                     <default>false</default>
                     <label>yandex-team.ru</label>
-                </value>
-                <value>
-                    <fullName>yeah.net</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>yeah.net</label>
                 </value>
                 <value>
                     <fullName>youngs-group.com</fullName>
@@ -2838,27 +1201,9 @@
                     <label>yr.com</label>
                 </value>
                 <value>
-                    <fullName>yrgrp.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>yrgrp.com</label>
-                </value>
-                <value>
                     <fullName>yunify.com</fullName>
                     <default>false</default>
                     <label>yunify.com</label>
-                </value>
-                <value>
-                    <fullName>yzccxm.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>yzccxm.com</label>
-                </value>
-                <value>
-                    <fullName>zc.necp.jp.nec.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>zc.necp.jp.nec.com</label>
                 </value>
                 <value>
                     <fullName>zengdesign.com</fullName>
@@ -2869,18 +1214,6 @@
                     <fullName>zenithoptimedia.com.cn</fullName>
                     <default>false</default>
                     <label>zenithoptimedia.com.cn</label>
-                </value>
-                <value>
-                    <fullName>zones.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>zones.com</label>
-                </value>
-                <value>
-                    <fullName>ztsystems.com</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>ztsystems.com</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -2893,8 +1226,18 @@
         <label>AccountProgramInactiveInd</label>
         <length>255</length>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_AccountGroupMismatch_Ind__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(CONTAINS(Core_MDF_Group_Name__c , Core_MDF_Account__c),&apos;False&apos;,&apos;True&apos;)</formula>
+        <label>Account Group Mismatch</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -2907,7 +1250,6 @@
         <label>AccountIdGroupName</label>
         <length>254</length>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -2919,7 +1261,6 @@
         <label>AccountProgramId</label>
         <length>255</length>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -2932,6 +1273,18 @@
         <formula>Core_MDF_Account__r.Core_Unified_Global_Customer_BP_Id__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Account Prime/Unified ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Account_ProgramName_txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Account__r.Name +&quot;&quot;+ Core_MDF_Channel_Program__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account ProgramName</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -2954,8 +1307,7 @@
         <referenceTo>Account</referenceTo>
         <relationshipLabel>Partner Group Mapping</relationshipLabel>
         <relationshipName>Partner_Group_Mapping</relationshipName>
-        <required>true</required>
-        <trackFeedHistory>false</trackFeedHistory>
+        <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -2966,7 +1318,6 @@
         <label>All Access Group Id</label>
         <length>18</length>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -2978,18 +1329,27 @@
         <label>All Access Group Name</label>
         <length>255</length>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_MDF_Allowed_Email_Domains_txt__c</fullName>
+        <description>The field stores the email domains of the partner user email ids that are allowed by a certain Account.
+Contains email domains with semi colon seperated</description>
+        <inlineHelpText>The field stores the email domains of the partner user email ids that are allowed by a certain Account</inlineHelpText>
+        <label>Allowed Email Domains</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_BudgetType_nm__c</fullName>
-        <description>Budget type details</description>
+        <description>Budge t type details</description>
         <label>Budget Type</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -2997,6 +1357,42 @@
             <restricted>true</restricted>
             <valueSetName>Core_MDF_Budget_Types</valueSetName>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Budget_Type_Access_nm__c</fullName>
+        <label>Budget Type Access</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Budget_Types</valueSetName>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Budget_Type_nm__c</fullName>
+        <label>Budget Type Old</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Budget_Type</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_CMF_Id__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Account__r.Core_Direct_Primary_Account_Id__r.Core_Direct_Account_Id__c</formula>
+        <label>CMF Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_Channel_Program_Name_Txt__c</fullName>
@@ -3018,8 +1414,7 @@
         <referenceTo>ChannelProgram</referenceTo>
         <relationshipLabel>Partner Group Mapping</relationshipLabel>
         <relationshipName>Partner_Group_Mapping_ChannelProgram</relationshipName>
-        <required>true</required>
-        <trackFeedHistory>false</trackFeedHistory>
+        <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -3076,7 +1471,6 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
         <label>Group Id</label>
         <length>18</length>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -3087,8 +1481,7 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
         <externalId>false</externalId>
         <label>Group Name</label>
         <length>255</length>
-        <required>true</required>
-        <trackFeedHistory>false</trackFeedHistory>
+        <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -3099,8 +1492,7 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
         <defaultValue>false</defaultValue>
         <description>This field is used to inactivate the PGM records</description>
         <label>Inactive Indicator</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -3109,7 +1501,6 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
         <description>Holds the payment type value</description>
         <label>Payment Type</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -3168,7 +1559,6 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
         <description>Field to hold the Region(Geo)</description>
         <label>Region</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -3211,11 +1601,50 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
         </valueSet>
     </fields>
     <fields>
+        <fullName>Core_MDF_Region_nm__c</fullName>
+        <description>Field to hold the Region(Geo)</description>
+        <label>DNU - Region</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>APJ</fullName>
+                    <default>false</default>
+                    <label>APJ</label>
+                </value>
+                <value>
+                    <fullName>ASMO</fullName>
+                    <default>false</default>
+                    <label>ASMO</label>
+                </value>
+                <value>
+                    <fullName>EMEA</fullName>
+                    <default>false</default>
+                    <label>EMEA</label>
+                </value>
+                <value>
+                    <fullName>PRC</fullName>
+                    <default>false</default>
+                    <label>PRC</label>
+                </value>
+                <value>
+                    <fullName>WW</fullName>
+                    <default>false</default>
+                    <label>WW</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Source_Txt__c</fullName>
         <description>Defines the source of PGM insert</description>
         <label>Source</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -3250,7 +1679,6 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
         <fullName>Core_MDF_Sub_Region_cd__c</fullName>
         <label>Sub Region</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -3263,7 +1691,6 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
         <fullName>Core_MDF_Type_of_Access__c</fullName>
         <label>Type of Access</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -3293,7 +1720,6 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
         <relationshipLabel>Partner Group Mapping (Virtual Corp Name)</relationshipLabel>
         <relationshipName>Partner_Group_Mapping1</relationshipName>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -3306,84 +1732,7 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
         <relationshipLabel>Partner Group Mapping (Works For)</relationshipLabel>
         <relationshipName>Partner_Group_Mapping_WorksFor</relationshipName>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>PSG_SAP_Distributor_for_ALN__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>SAP Distributor for ALN</label>
-        <lookupFilter>
-            <active>true</active>
-            <errorMessage>Invalid SAP ALN Distributor  has been selected on PGM Record. Please select a valid SAP ALN Distributor</errorMessage>
-            <filterItems>
-                <field>Account.RecordTypeId</field>
-                <operation>equals</operation>
-                <value>Direct Account</value>
-            </filterItems>
-            <filterItems>
-                <field>Account.Core_Direct_Account_Type_Nm__c</field>
-                <operation>equals</operation>
-                <value>Sold To</value>
-            </filterItems>
-            <filterItems>
-                <field>Account.Core_Direct_Account_Active_Ind__c</field>
-                <operation>equals</operation>
-                <value>True</value>
-            </filterItems>
-            <filterItems>
-                <field>Account.Core_Nielsen_ID__c</field>
-                <operation>equals</operation>
-                <value>Alt Logistics</value>
-            </filterItems>
-            <isOptional>false</isOptional>
-        </lookupFilter>
-        <referenceTo>Account</referenceTo>
-        <relationshipLabel>Partner Group Mapping (SAP Distributor for ALN)</relationshipLabel>
-        <relationshipName>Partner_Group_Mapping_ALN</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>PSG_SAP_Distributor_for_DPA__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>SAP Distributor for DPA</label>
-        <lookupFilter>
-            <active>true</active>
-            <errorMessage>Invalid SAP DPA Distributor  has been selected on PGM Record. Please select a valid SAP DPA Distributor</errorMessage>
-            <filterItems>
-                <field>Account.RecordTypeId</field>
-                <operation>equals</operation>
-                <value>Direct Account</value>
-            </filterItems>
-            <filterItems>
-                <field>Account.Core_Direct_Account_Type_Nm__c</field>
-                <operation>equals</operation>
-                <value>Sold To</value>
-            </filterItems>
-            <filterItems>
-                <field>Account.Core_Direct_Account_Active_Ind__c</field>
-                <operation>equals</operation>
-                <value>True</value>
-            </filterItems>
-            <filterItems>
-                <field>Account.Core_Nielsen_ID__c</field>
-                <operation>equals</operation>
-                <value>Distributor, PD Plus</value>
-            </filterItems>
-            <isOptional>false</isOptional>
-        </lookupFilter>
-        <referenceTo>Account</referenceTo>
-        <relationshipLabel>Partner Group Mapping (SAP Distributor for DPA)</relationshipLabel>
-        <relationshipName>Partner_Group_Mapping_DPA</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -3393,43 +1742,73 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
         <columns>NAME</columns>
         <columns>Core_MDF_Account__c</columns>
         <columns>Core_MDF_Group_Name__c</columns>
+        <columns>Core_MDF_Type_of_Access__c</columns>
+        <columns>Core_MDF_Channel_Program__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Core_MDF_AccountProgramId_Txt__c</columns>
+        <columns>Core_MDF_Region_cd__c</columns>
+        <columns>Core_MDF_Sub_Region_cd__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Channel_Program__c</field>
+            <operation>equals</operation>
+            <value>Co-Inv</value>
+        </filters>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Piantronics</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Channel_Program_Name_Txt__c</columns>
+        <columns>Core_MDF_Group_Id__c</columns>
+        <columns>Core_MDF_Type_of_Access__c</columns>
+        <columns>Core_MDF_Group_Name__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Account__c</field>
+            <operation>contains</operation>
+            <value>Dell Computer Corporation</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Type_of_Access__c</field>
+            <operation>equals</operation>
+            <value>Internal</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Channel_Program__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </filters>
+        <label>Piantronics</label>
+    </listViews>
+    <listViews>
+        <fullName>Retail_PGMs</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Account__c</columns>
+        <columns>Core_MDF_Group_Name__c</columns>
+        <columns>Core_MDF_Group_Id__c</columns>
+        <columns>Core_MDF_Type_of_Access__c</columns>
         <columns>Core_MDF_Channel_Program__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_MDF_Channel_Program__c</field>
             <operation>contains</operation>
-            <value>PSG</value>
+            <value>Retail</value>
         </filters>
-        <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>IQR_PGM</fullName>
-        <columns>NAME</columns>
-        <columns>Core_MDF_Account__c</columns>
-        <columns>Core_MDF_Channel_Program__c</columns>
-        <columns>Core_MDF_Type_of_Access__c</columns>
-        <columns>Core_MDF_Group_Id__c</columns>
-        <columns>Core_MDF_Group_Name__c</columns>
-        <filterScope>Everything</filterScope>
         <filters>
-            <field>Core_MDF_Channel_Program__c</field>
-            <operation>equals</operation>
-            <value>Intel Quote Request</value>
+            <field>Core_MDF_Account__c</field>
+            <operation>contains</operation>
+            <value>Dell Com</value>
         </filters>
-        <label>IQR PGM</label>
-        <sharedTo>
-            <group>IQR_Tech_Team</group>
-        </sharedTo>
+        <label>Retail PGMs</label>
     </listViews>
     <nameField>
         <displayFormat>PGM-{000000000}</displayFormat>
         <label>Partner Group Mapping Name</label>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Partner Group Mapping</pluralLabel>
-    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <recordTypes>
         <fullName>Core_MDF_Co_marketing</fullName>
@@ -3567,6 +1946,10 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
             </values>
             <values>
                 <fullName>carolcreechpromotions%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>centurylink%2Ecom</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4301,6 +2684,10 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
                 <default>false</default>
             </values>
             <values>
+                <fullName>Co-Investment</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>DCF 1%2E0</fullName>
                 <default>false</default>
             </values>
@@ -4374,6 +2761,104 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Core_MDF_Budget_Type_Access_nm__c</picklist>
+            <values>
+                <fullName>Account Plan</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Market Accelerate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center Market Accelerate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Centric Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel MDF Account Based2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel Rise Technology Initiative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proposal I MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proposal II MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Data Center MDF</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_nm__c</picklist>
+            <values>
+                <fullName>Account Plan</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Business Client Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Centric Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global Red Hat Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel MDF Account Based2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proposal I MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proposal II MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSA MD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Data Center MDF</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Core_MDF_Payment_Type_nm__c</picklist>
             <values>
                 <fullName>Customer</fullName>
@@ -4398,6 +2883,29 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
         </picklistValues>
         <picklistValues>
             <picklist>Core_MDF_Region_cd__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WW</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Region_nm__c</picklist>
             <values>
                 <fullName>APJ</fullName>
                 <default>false</default>
@@ -4520,8 +3028,25 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
     <searchLayouts/>
     <sharingModel>Private</sharingModel>
     <validationRules>
+        <fullName>Core_MDF_All_Access_Group_Check</fullName>
+        <active>false</active>
+        <description>All Access Group is applicable for CCF and DCF Program only</description>
+        <errorConditionFormula>IF( 
+						AND(!ISPICKVAL(Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,&apos;Client CoMarketing Fund&apos;),
+									!ISPICKVAL(Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,&apos;Data Center CoMarketing Fund&apos;),
+									!ISNULL(Core_MDF_All_Access_Group_Nm__c)) , true, false)</errorConditionFormula>
+        <errorMessage>All Access Group Name is applicable for CCF and DCF Programs</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_BudgetTypeAccess_Validation</fullName>
+        <active>false</active>
+        <description>1. Budget Type Access is only applicable for External type of access, Channel MDF Program and Account&apos;s Co-marketing Active true</description>
+        <errorConditionFormula>IF(AND(NOT(ISBLANK( Core_MDF_Budget_Type_Access_nm__c )),OR( TEXT( Core_MDF_Type_of_Access__c ) != &apos;External&apos; , NOT(Core_MDF_Account__r.Core_MDF_CoMarketingActive__c))), TRUE,FALSE )</errorConditionFormula>
+        <errorMessage>Budget Type Access is not applicable</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Core_MDF_IPA_PaymentTypeValidation</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Distributor (Cash), Distributor (Credit Memo) and Customer (Pass Through) Payment types are only applicable for IPA program</description>
         <errorConditionFormula>AND(NOT(TEXT(Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c)==$Label.Core_MDF_IPA_Program_Name),
 OR(TEXT(Core_MDF_Payment_Type_nm__c )== &apos;Distributor (Cash)&apos;,TEXT(Core_MDF_Payment_Type_nm__c )== &apos;Distributor (Credit Memo)&apos;,TEXT(Core_MDF_Payment_Type_nm__c )== &apos;Customer (Pass Through)&apos;))</errorConditionFormula>
@@ -4529,7 +3054,7 @@ OR(TEXT(Core_MDF_Payment_Type_nm__c )== &apos;Distributor (Cash)&apos;,TEXT(Core
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_PayTypeVal_ForOtherPrograms</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Restrict the Payment type selection for programs which does not belong to CCP.</description>
         <errorConditionFormula>AND(NOT(ISBLANK(TEXT(Core_MDF_Payment_Type_nm__c))),AND(
 NOT( Core_MDF_Channel_Program__r.Name = $Label.Core_MDF_CCF_Program_Name),NOT( Core_MDF_Channel_Program__r.Name = $Label.Core_MDF_Non_Localized_DCF_Program_Name),
@@ -4537,14 +3062,14 @@ NOT( Core_MDF_Channel_Program__r.Name = $Label.Core_MDF_CCF_Program_Name),NOT( C
  NOT( Core_MDF_Channel_Program__r.Name = $Label.Core_MDF_SPCF_Program_Name), 
  NOT( Core_MDF_Channel_Program__r.Name = $Label.Core_MDF_Retail_Program_Name), 
 NOT( Core_MDF_Channel_Program__r.Name = $Label.Core_MDF_IPA_Program_Name)))</errorConditionFormula>
+        <errorDisplayField>Core_MDF_Account__c</errorDisplayField>
         <errorMessage>Payment Type is not applicable for the Selected Program.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_PaymentTypeValidation</fullName>
         <active>false</active>
         <description>Restrict manual creation of PGM  for Agency accounts i.e when co-Marketing active is false</description>
-        <errorConditionFormula>AND((TEXT(Core_MDF_Payment_Type_nm__c) != NULL), (TEXT( Core_MDF_Type_of_Access__c ) == $Label.Core_MDF_External_label_for_PGM),  (Core_MDF_Account__r.Core_MDF_CoMarketingActive__c == FALSE))</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Account__c</errorDisplayField>
+        <errorConditionFormula>AND((TEXT(Core_MDF_Payment_Type_nm__c) != NULL), (TEXT( Core_MDF_Type_of_Access__c ) == $Label.Core_MDF_External_label_for_PGM),  (Core_MDF_CoMarketingActive_Ind__c == FALSE))</errorConditionFormula>
         <errorMessage>Payment Type is not applicable for the Agency Account.</errorMessage>
     </validationRules>
     <validationRules>
@@ -4561,10 +3086,25 @@ NOT( Core_MDF_Channel_Program__r.Name = $Label.Core_MDF_IPA_Program_Name)))</err
 ISNEW(),
 ISPICKVAL(Core_MDF_Type_of_Access__c , &apos;Internal&apos;),
 ISPICKVAL(Core_MDF_Source_Txt__c,&apos;Others&apos;),
-NOT(CONTAINS($Label.Core_MDF_UserIdAllowedToUpdatePGM, ($User.FirstName +&apos; &apos;+ $User.LastName))),
-NOT(Core_MDF_Channel_Program_Name_Txt__c == $Label.Pricing_Tender_PGM_Channel)
+NOT(CONTAINS($Label.Core_MDF_UserIdAllowedToUpdatePGM, ($User.FirstName +&apos; &apos;+ $User.LastName)))
 )</errorConditionFormula>
         <errorMessage>Please use IUPGM for Internal PGM record creation.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Restrict_Update_EXT_PGM_Fields</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(
+NOT(CONTAINS($Label.Core_MDF_UserIdAllowedToUpdatePGM, ($User.FirstName +&apos; &apos;+ $User.LastName))),ISPICKVAL(Core_MDF_Type_of_Access__c, &apos;External&apos;),
+OR(ISNEW(),
+OR(ISCHANGED( Core_MDF_Region_cd__c),ISCHANGED(Core_MDF_Sub_Region_cd__c),ISCHANGED(Core_MDF_BudgetType_nm__c ))
+),OR((Core_MDF_Channel_Program__r.Name = $Label.Core_MDF_ChannelMDF_Program_Name),
+( Core_MDF_Channel_Program__r.Name = $Label.Core_MDF_CCF_Program_Name),
+( Core_MDF_Channel_Program__r.Name = $Label.Core_MDF_Non_Localized_DCF_Program_Name),
+( Core_MDF_Channel_Program__r.Name = $Label.Core_MDF_CCFB_Program_Name),
+( Core_MDF_Channel_Program__r.Name = $Label.Core_MDF_SPCF_Program_Name),
+( Core_MDF_Channel_Program__r.Name = $Label.Core_MDF_Retail_Program_Name),
+( Core_MDF_Channel_Program__r.Name = $Label.Core_MDF_IPA_Program_Name)))</errorConditionFormula>
+        <errorMessage>The Region, Sub Region and Budget Type fields are not applicable for External PGM records.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_Update_PGM</fullName>
@@ -4572,7 +3112,7 @@ NOT(Core_MDF_Channel_Program_Name_Txt__c == $Label.Pricing_Tender_PGM_Channel)
         <description>To block update from users other than System Admin and IT Admin</description>
         <errorConditionFormula>AND(
     NOT(CONTAINS($Label.Core_MDF_UserIdAllowedToUpdatePGM, ($User.FirstName +&apos; &apos;+ $User.LastName))),
-	OR(
+	OR( 
 		Core_MDF_Channel_Program_Name_Txt__c  == $Label.Core_MDF_CCF_Program_Name,
 		Core_MDF_Channel_Program_Name_Txt__c  == $Label.Core_MDF_Non_Localized_DCF_Program_Name,
 		Core_MDF_Channel_Program_Name_Txt__c  == $Label.Core_MDF_CCFB_Program_Name,
@@ -4581,11 +3121,11 @@ NOT(Core_MDF_Channel_Program_Name_Txt__c == $Label.Pricing_Tender_PGM_Channel)
 		Core_MDF_Channel_Program_Name_Txt__c  == $Label.Core_MDF_IPA_Program_Name
 	),
 	OR(
-	   AND(
+		AND(
 	       ISPICKVAL(Core_MDF_Type_of_Access__c, &apos;Internal&apos;),
 		   NOT(ISNEW())
 		  ),
-	  AND(
+		AND(
 		  ISPICKVAL(Core_MDF_Type_of_Access__c, &apos;External&apos;),
 		  ISCHANGED(Core_MDF_Type_of_Access__c)
 	  )
@@ -4599,6 +3139,19 @@ NOT(Core_MDF_Channel_Program_Name_Txt__c == $Label.Pricing_Tender_PGM_Channel)
         <description>Check if the entered group name exists.</description>
         <errorConditionFormula>if( Core_MDF_Group_Id__c == null,true,false)</errorConditionFormula>
         <errorMessage>The Group Name entered is not valid.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Validate_Virtual_Corp</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(Contains($Label.Core_MDF_CCP_Program_Names,Core_MDF_Channel_Program__r.Name),
+ISBLANK(Core_MDF_Virtual_Corp_nm__c))</errorConditionFormula>
+        <errorMessage>Virtual Corp should not be null for CCP programs</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PGM_Account_name_change_not_allowed</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISCHANGED(  Core_MDF_Account__c  )</errorConditionFormula>
+        <errorMessage>Account Name cannot be changed</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

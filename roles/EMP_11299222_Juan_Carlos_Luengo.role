@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of Jorge Cordova</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_11299222_Juan_Carlos_Luengo</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>EMP_10644346_Jorge_Cordova</parentRole>
+</Role>

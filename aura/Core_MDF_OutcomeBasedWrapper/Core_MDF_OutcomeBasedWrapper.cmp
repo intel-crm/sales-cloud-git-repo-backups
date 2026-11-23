@@ -1,0 +1,45 @@
+<!--<aura:component implements="lightning:isUrlAddressable,force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId,lightning:actionOverride" access="global">
+<aura:component
+    implements="
+        
+        force:hasRecordId,
+        flexipage:availableForAllPageTypes,
+        forceCommunity:availableForAllPageTypes
+    "
+    access="global">
+    
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="selrecordtype" type="String" />
+    <aura:attribute name="selrecordtypeName" type="String" />
+    <aura:attribute name="selrecordtypeDeveloperName" type="String" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <c:Core_MDF_CreateEditOutcomeBasedActivity 
+        recordId="{!v.recordId}" 
+        recordtype="{!v.selrecordtype}" 
+        recordtypeName="{!v.selrecordtypeName}" 
+        recordtypeDeveloperName="{!v.selrecordtypeDeveloperName}" />
+    
+</aura:component>-->
+<aura:component
+    implements="lightning:isUrlAddressable,force:hasRecordId,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes"
+    access="global">
+
+    <!-- REQUIRED -->
+    <aura:attribute name="pageReference" type="Object" />
+
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="selrecordtype" type="String" />
+    <aura:attribute name="selrecordtypeName" type="String" />
+    <aura:attribute name="selrecordtypeDeveloperName" type="String" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.pageReference}" action="{!c.doInit}" />
+
+    <c:Core_MDF_CreateEditOutcomeBasedActivity
+        recordId="{!v.recordId}"
+        recordtype="{!v.selrecordtype}"
+        recordtypeName="{!v.selrecordtypeName}"
+        recordtypeDeveloperName="{!v.selrecordtypeDeveloperName}" />
+</aura:component>

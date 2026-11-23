@@ -4,7 +4,7 @@
       <div class="slds-col slds-truncate slds-col_bump-right breadcrumb-manager__column">
         <ul>
           <template for:each={facetBreadcrumbValues} for:item="breadcrumb">
-            <li key={breadcrumb.facetId} class="slds-list_horizontal breadcrumb-manager__facet-list breadcrumb-manager__line" style="background-color: white;padding: 3px;border-style: groove; border-width: thin; margin-bottom: 3px;">
+            <li key={breadcrumb.facetId} class="slds-list_horizontal breadcrumb-manager__facet-list breadcrumb-manager__line">
               <span class="slds-col breadcrumb-manager__field-name">{breadcrumb.label}{labels.colon} </span>
               <ul class="slds-col slds-truncate slds-list_horizontal slds-grid slds-wrap">
                 <template for:each={breadcrumb.values} for:item="breadcrumbValue">
@@ -14,7 +14,7 @@
                 </template>
                 <template if:true={breadcrumb.showMoreButton}>
                   <li>
-                    <a onclick={breadcrumb.expandButtonClick} class="slds-grid slds-button slds-var-m-around_xxx-small slds-p-horizontal_x-small slds-p-vertical_xx-small slds-text-color_default breadcrumb-manager__more-button">{breadcrumb.showMoreButtonText}</a>
+                    <button onclick={breadcrumb.expandButtonClick} class="slds-grid slds-button slds-var-m-around_xxx-small slds-p-horizontal_x-small slds-p-vertical_xx-small slds-text-color_default breadcrumb-manager__more-button">{breadcrumb.showMoreButtonText}</button>
                   </li>
                 </template>
               </ul>
@@ -31,7 +31,7 @@
                 </template>
                 <template if:true={breadcrumb.showMoreButton}>
                   <li>
-                    <a onclick={breadcrumb.expandButtonClick} class="slds-grid slds-button slds-var-m-around_xxx-small slds-p-horizontal_x-small slds-p-vertical_xx-small slds-text-color_default breadcrumb-manager__more-button">{breadcrumb.showMoreButtonText}</a>
+                    <button onclick={breadcrumb.expandButtonClick} class="slds-grid slds-button slds-var-m-around_xxx-small slds-p-horizontal_x-small slds-p-vertical_xx-small slds-text-color_default breadcrumb-manager__more-button">{breadcrumb.showMoreButtonText}</button>
                   </li>
                 </template>
               </ul>
@@ -58,7 +58,7 @@
                 </template>
                 <template if:true={breadcrumb.showMoreButton}>
                   <li>
-                    <a onclick={breadcrumb.expandButtonClick} class="slds-grid slds-button slds-var-m-around_xxx-small slds-p-horizontal_x-small slds-p-vertical_xx-small slds-text-color_default breadcrumb-manager__more-button">{breadcrumb.showMoreButtonText}</a>
+                    <button onclick={breadcrumb.expandButtonClick} class="slds-grid slds-button slds-var-m-around_xxx-small slds-p-horizontal_x-small slds-p-vertical_xx-small slds-text-color_default breadcrumb-manager__more-button">{breadcrumb.showMoreButtonText}</button>
                   </li>
                 </template>
               </ul>
@@ -69,7 +69,7 @@
       <div class="slds-col breadcrumb-manager__column slds-nowrap breadcrumb-manager__clear-button slds-m-left_small slds-shrink-none">
         <ul class="slds-m-around_xx-small">
           <li>
-            <a class="slds-button slds-var-m-around_xxx-small" onclick={deselectAll}>{labels.clearAllFilters}</a>
+            <button class="slds-button slds-var-m-around_xxx-small" onclick={deselectAll}>{labels.clearAllFilters}</button>
           </li>
         </ul>
       </div>

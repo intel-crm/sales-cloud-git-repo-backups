@@ -184,12 +184,19 @@ Description:        This method is used to get the available Allocation amount f
 Added By:           Intel - SM - 08/15/2018
 Modified By:        Date:        Changes: 
 Accenture- VD       05-02-2019   Added check for SPCF Record Type
-Accenture- HP		07-02-2019   Modified check for SPCF Record Type
+Accenture- HP       07-02-2019   Modified check for SPCF Record Type
 ****************************************************************************************************************************/
     
     @AuraEnabled
-    public static string transferAllocationAmount(string partnerFrom,string partnerTo, string pbmId, Decimal amount, string typeOfTransfer){ 
-        string transactionStatus = '';
+    //public static string transferAllocationAmount(string partnerFrom,string partnerTo, string pbmId, Decimal amount, string typeOfTransfer){ 
+        public static string transferAllocationAmount(TransferRequestWrapper req){ 
+        // Convert wrapper parameters to local variables
+        String partnerFrom = req.partnerFrom;
+        String partnerTo = req.partnerTo;
+        String pbmId = req.pbmId;
+        Decimal amount = req.amount;
+        String typeOfTransfer = req.typeOfTransfer; 
+    		string transactionStatus = '';
         // Adding the below Savepoint incase any technical error occurs, rollback till this point
         Savepoint sp = Database.setSavepoint();
         try {
@@ -199,7 +206,15 @@ Accenture- HP		07-02-2019   Modified check for SPCF Record Type
             User user=[select id, isactive, IsPortalEnabled from User where id=:userId limit 1];
             if(user.IsActive && user.IsPortalEnabled)
             {
-                transactionStatus=Core_MDF_BudgetTransferHandler_EXT.TransferAllocationAmount(partnerFrom,partnerTo,pbmId,amount,typeOfTransfer);return transactionStatus; 
+                 Core_MDF_BudgetTransferHandler_EXT.TransferRequestWrapper extReq = new Core_MDF_BudgetTransferHandler_EXT.TransferRequestWrapper();
+            extReq.partnerFrom = partnerFrom;
+            extReq.partnerTo = partnerTo;
+            extReq.pbmId = pbmId;
+            extReq.amount = amount;
+            extReq.typeOfTransfer = typeOfTransfer;
+            
+            transactionStatus = Core_MDF_BudgetTransferHandler_EXT.transferAllocationAmount(extReq);
+            return transactionStatus;  
             }
             
             else
@@ -295,5 +310,12 @@ Accenture- HP		07-02-2019   Modified check for SPCF Record Type
         }
         return transactionStatus;
     }
-    
+    // Wrapper class for transferAllocationAmount method parameters
+    public class TransferRequestWrapper {
+        @AuraEnabled public String partnerFrom;
+        @AuraEnabled public String partnerTo;
+        @AuraEnabled public String pbmId;
+        @AuraEnabled public Decimal amount;
+        @AuraEnabled public String typeOfTransfer;
+    }
 }

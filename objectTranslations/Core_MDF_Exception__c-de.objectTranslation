@@ -54,6 +54,10 @@
         <name>Core_MDF_Approver_1_Comments_Txt__c</name>
     </fields>
     <fields>
+        <label><!-- Approver 2 Comments --></label>
+        <name>Core_MDF_Approver_2_Comments_Txt__c</name>
+    </fields>
+    <fields>
         <label>Budgettyp</label>
         <name>Core_MDF_Budget_Type_nm__c</name>
     </fields>
@@ -131,6 +135,14 @@
         <name>Core_MDF_HostRegion_txt__c</name>
     </fields>
     <fields>
+        <label><!-- Host Region --></label>
+        <name>Core_MDF_Host_Region_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Create Clone --></label>
+        <name>Core_MDF_Is_Create_Clone__c</name>
+    </fields>
+    <fields>
         <label><!-- Issue Description --></label>
         <name>Core_MDF_Issue_Description_dsc__c</name>
     </fields>
@@ -191,8 +203,40 @@
         <name>Core_MDF_Select_All_Country_ind__c</name>
     </fields>
     <fields>
+        <label><!-- Supports Legacy Program --></label>
+        <name>Core_MDF_Supports_legacy_program__c</name>
+        <picklistValues>
+            <masterLabel>CMP or SPCMP</masterLabel>
+            <translation><!-- CMP or SPCMP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDF or MDF+</masterLabel>
+            <translation><!-- MDF or MDF+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Technical Program Name --></label>
+        <name>Core_MDF_Technical_Program_Name_txt__c</name>
+    </fields>
+    <fields>
         <label>Gesamte finanzielle Auswirkung (USD)</label>
         <name>Core_MDF_Total_Dollar_Impact_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Test MultiSelect --></label>
+        <name>Test_MultiSelect__c</name>
+        <picklistValues>
+            <masterLabel>T1</masterLabel>
+            <translation><!-- T1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>t2</masterLabel>
+            <translation><!-- t2 --></translation>
+        </picklistValues>
     </fields>
     <gender>Neuter</gender>
     <nameFieldLabel>Ausnahmenummer</nameFieldLabel>
@@ -200,6 +244,10 @@
         <label><!-- Exception External Sharing --></label>
         <name>Exception_External_Sharing</name>
     </sharingReasons>
+    <validationRules>
+        <errorMessage><!-- Select Account same as Program --></errorMessage>
+        <name>Core_MDF_AccountAndExceptionProgram</name>
+    </validationRules>
     <validationRules>
         <errorMessage><!-- Please enter an account or select all accounts. --></errorMessage>
         <name>Core_MDF_Account_Selection_Mandatory</name>
@@ -233,6 +281,10 @@
         <name>Core_MDF_ExceptionInDeniedOrCancelled</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Exception program cannot be changed. --></errorMessage>
+        <name>Core_MDF_ProgramChangeCheck</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- User does not have access to create/edit exception for this Program. --></errorMessage>
         <name>Core_MDF_ProgramCheckAccMgr</name>
     </validationRules>
@@ -247,6 +299,10 @@
     <validationRules>
         <errorMessage><!-- Cannot edit Select All Accounts field in this status. --></errorMessage>
         <name>Core_MDF_restrict_acc_to_allaccswitch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The values &apos;SPCF&apos; and &apos;CCFB&apos; are restricted values in the Program field. Please choose a valid value. --></errorMessage>
+        <name>Core_MDF_validate_Program_SPCF_CCFB</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Invalid Program/Budget Type --></errorMessage>

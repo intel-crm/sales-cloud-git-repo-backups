@@ -204,6 +204,17 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_User_Account_txt__c</fullName>
+        <description>To store feedback submitted by user&apos;s account</description>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Submitted_By_id__r.Contact.Account.Name</formula>
+        <label>User Account</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_User_Program_nm__c</fullName>
         <inlineHelpText>To store User&apos;s Program</inlineHelpText>
         <label>User Program</label>

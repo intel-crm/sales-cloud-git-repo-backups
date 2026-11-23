@@ -2,6 +2,7 @@
 <Queue xmlns="http://soap.sforce.com/2006/04/metadata">
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>wsm-postmaster@intel.com.invalid</email>
     <name>CCP SPCF Prog Admin Escalations L2 Que</name>
     <queueMembers>
         <publicGroups>

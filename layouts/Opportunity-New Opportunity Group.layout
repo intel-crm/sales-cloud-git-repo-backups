@@ -31,6 +31,10 @@
                 <behavior>Edit</behavior>
                 <field>Core_Technical_Owner__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Smartpicklist_TestingField__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -189,8 +193,8 @@
         <fields>TotalPrice</fields>
         <fields>Core_Write_In_Product_Name__c</fields>
         <fields>Core_BU_Short_Name__c</fields>
+        <fields>Core_KPI_Product_Group__c</fields>
         <fields>Core_Vendor__c</fields>
-        <fields>Core_Vendor_InActive__c</fields>
         <relatedList>RelatedLineItemList</relatedList>
     </relatedLists>
     <relatedLists>

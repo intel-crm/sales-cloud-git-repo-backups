@@ -17,13 +17,14 @@ import totalSpendError2 from '@salesforce/label/c.Core_MDF_Total_Spend_Error';
 import intelContributionError1 from '@salesforce/label/c.Core_MDF_Intel_Contribution_Error1';
 import intelContributionError2 from '@salesforce/label/c.Core_MDF_Intel_Contribution_Error2';
 import totalPlannedSpendError from '@salesforce/label/c.Core_MDF_Total_Planned_Spend_error';
-import CURRENCY_CONVERTER_TITLE from '@salesforce/label/c.Core_MDF_Currency_Converter_Title';
+
 import total_planned_spend_help_text from '@salesforce/label/c.Core_MDF_total_planned_spend_help_text';
 import previous_period_spends_help_text from '@salesforce/label/c.Core_MDF_previous_period_spends_help_text';
 import remaining_spend_help_text from '@salesforce/label/c.Core_MDF_remaining_spend_help_text';
 import Intel_contribution_this_period_help_text from '@salesforce/label/c.Core_MDF_Intel_contribution_this_period_help_text';
 import Core_MDF_Error from '@salesforce/label/c.Core_MDF_Error';
 import APPLICATION_ERROR from '@salesforce/label/c.Core_MDF_ApplicationErrorMessage';
+import { NavigationMixin } from 'lightning/navigation';
 
 
 export default class Core_MDF_Tactic_Spending extends LightningElement {
@@ -32,13 +33,12 @@ export default class Core_MDF_Tactic_Spending extends LightningElement {
     @api recordId; //Claim Id
     @api reimbursableAmountUsd;
     @api reimbursementRate;
-    @api editCmp = false;
+    @api objectName;
     @track showTacticSpending = false;
         @track showCurrencyConverter = false;
 
     //Custom Labels
     tacticSpendingText = TACTIC_SPENDING_TEXT;
-    currencyConverterHeader = CURRENCY_CONVERTER_TITLE;
     tacticText = TACTIC_TEXT;
     totalPlannedSpendText = TOTAL_PLANNED_SPEND_TEXT;
     previousPeriodSpendsText = PREVIOUS_PERIOD_SPENDS_TEXT;
@@ -49,7 +49,7 @@ export default class Core_MDF_Tactic_Spending extends LightningElement {
     spendThisPeriodHelpText = SPEND_THIS_PERIOD_HELPTEXT;
     totalAmountUsdLabel = TOTAL_AMOUNT_USD;
     totalLabel = TOTAL_LABEL;
-    
+
     totalSpendError1 = totalSpendError1;
     totalSpendError2 = totalSpendError2;
     intelContributionError1 = intelContributionError1;
@@ -57,7 +57,7 @@ export default class Core_MDF_Tactic_Spending extends LightningElement {
     totalPlannedSpendError = totalPlannedSpendError;
     errorLabel = Core_MDF_Error;
     applicationError = APPLICATION_ERROR;
-    
+
     @track total_planned_spend_help_text = total_planned_spend_help_text;
     @track previous_period_spends_help_text = previous_period_spends_help_text;
     @track remaining_spend_help_text = remaining_spend_help_text;
@@ -65,53 +65,89 @@ export default class Core_MDF_Tactic_Spending extends LightningElement {
 
     @track tactics = [];
 
+    // Roshan - Tactics POC
+    _prefillClaimAttributes = [];
+    @api
+    get prefillClaimAttributes() {
+        return this._prefillClaimAttributes;
+    }
+    set prefillClaimAttributes(value) {
+        this._prefillClaimAttributes = Array.isArray(value) ? value : [];
+        this.applyPrefillValues();
+    }
+
+    /*_editable;
+    @api
+    get editable() {
+        return this._editable;
+    }
+    set editable(value) {
+        this._editable = value;
+        // Run only after Aura sets the real value
+        if (value === true || value === false) {
+            this.loadTacticSpendingDetails();
+        }
+    }  */ 
+
     connectedCallback() {
         this.loadTacticSpendingDetails();
     }
     openCurrencyConverter() {
+        console.log('Opening currency converter modal');
         this.showCurrencyConverter = true;
     }
 
     closeCurrencyConverter() {
+        console.log('Closing currency converter modal');
         this.showCurrencyConverter = false;
     }
 
-    loadTacticSpendingDetails(){
-        getTacticSpending({ 
-            editable: this.editable, 
-            claimId: this.recordId, 
-            activityId: this.activityId 
+    loadTacticSpendingDetails() {
+        getTacticSpending({
+            editable: this.editable,
+            claimId: this.recordId,
+            activityId: this.activityId
         })
-        .then(result => {
-            if(result && result.length > 0){
-                const rows = result.map(r => ({
-                    ...r,
-                    isTotal: false,
-                    className: ''
-                }));
+            .then(result => {
+                if (result && result.length > 0) {
+                    const rows = result.map(r => ({
+                        ...r,
+                        isTotal: false,
+                        className: ''
+                    }));
 
-                const totalRow = this.getTotalRow(rows);
-                totalRow.isTotal = true;
-                totalRow.className = 'total-row';
+                    const totalRow = this.getTotalRow(rows);
+                    totalRow.isTotal = true;
+                    totalRow.className = 'total-row';
 
-                this.tactics = [...rows, totalRow];
+                    this.tactics = [...rows, totalRow];
 
-            this.showTacticSpending = result[0].ipaOutcomeBased;
-            this.reimbursementRate = result[0].reimbursementRate;
-            }
-        })
-        .catch(error => {
-            this.handleServerExceptions();
-        });
+                    this.showTacticSpending = result[0].ipaOutcomeBased;
+                    this.reimbursementRate = result[0].reimbursementRate;
+
+                    // Roshan - Tactics POC
+                    this.applyPrefillValues();
+                }
+                //Added by VB - AI PIC
+                /*if (this.objectName == 'PartnerFundClaim') {
+                    let tacticSpendingsOnLoad = this.prepareClaimAttributes();
+                    console.log('initial tactics spending', tacticSpendingsOnLoad);
+                    const tacticSpendingEvent = new CustomEvent('tacticSpendingEvent', {detail : {tacticSpendingsOnLoad}});
+                    this.dispatchEvent(tacticSpendingEvent);
+                }*/
+            })
+            .catch(error => {
+                this.handleServerExceptions();
+            });
     }
 
-    handleServerExceptions(){
+    handleServerExceptions() {
         this.showToast(this.errorLabel, this.applicationError, 'error', 'dismissable');
     }
 
     getTotalRow(rows) {
         const sum = (key) => rows.reduce((acc, r) => acc + (parseFloat(r[key]) || 0), 0);
-    
+
         return {
             tactic: 'TOTAL',
             tacticLabel: this.totalLabel,
@@ -125,7 +161,7 @@ export default class Core_MDF_Tactic_Spending extends LightningElement {
             className: 'total-row'
         };
     }
-    
+
 
     handleSpendChange(event) {
         const index = event.target.dataset.index;
@@ -164,7 +200,7 @@ export default class Core_MDF_Tactic_Spending extends LightningElement {
         const totalRow = this.getTotalRow(dataRows);
         this.tactics = [...dataRows, totalRow];
     }
-    
+
 
     @api validate() {
         const allInputs = this.template.querySelectorAll('lightning-input');
@@ -191,10 +227,10 @@ export default class Core_MDF_Tactic_Spending extends LightningElement {
         //const totalSpend = this.getTotalSpend();
         //const totalRemaining = this.getTotalRemaining();
 
-        if (Number(totalSpend.toFixed(2)) > Number(totalRemaining.toFixed(2))) {
+        if (totalSpend > totalRemaining) {
             this.showToast(
                 this.errorLabel,
-                `${totalSpendError1} ($${totalSpend.toFixed(2)}) ${totalSpendError2} ($${totalRemaining.toFixed(2)})`,
+                `${totalSpendError1} ($${totalSpend}) ${totalSpendError2} ($${totalRemaining})`,
                 'error'
             );
             allValid = false;
@@ -208,8 +244,8 @@ export default class Core_MDF_Tactic_Spending extends LightningElement {
             const contribution = (row.spendThisPeriod || 0);
             return sum + contribution;
         }, 0);
-    
-        if (Number(totalIntel.toFixed(2)) != this.reimbursableAmountUsd) {
+
+        if (totalIntel.toFixed(2) != this.reimbursableAmountUsd) {
             this.showToast(
                 this.errorLabel,
                 `${intelContributionError1} ($${totalIntel.toFixed(2)}) ${intelContributionError2} ($${this.reimbursableAmountUsd}).`,
@@ -217,6 +253,7 @@ export default class Core_MDF_Tactic_Spending extends LightningElement {
             );
             allValid = false;
         }
+        console.log("lwc amount", this.reimbursableAmountUsd);
 
         return allValid;
     }
@@ -230,10 +267,10 @@ export default class Core_MDF_Tactic_Spending extends LightningElement {
                 Core_MDF_Type_nm__c: 'Total Planned Spend',
                 Core_MDF_Field_Value_nbr__c: row.totalPlannedSpend,
                 Core_MDF_Tactics_nm__c: row.tactic,
-                Core_MDF_Is_Active_Ind__c : true
+                Core_MDF_Is_Active_Ind__c: true
             }
 
-            if(row.totalPlannedSpendRecordId){
+            if (row.totalPlannedSpendRecordId) {
                 totalPlannedSpend.Id = row.totalPlannedSpendRecordId;
             }
             claimAttributes.push(totalPlannedSpend);
@@ -242,10 +279,10 @@ export default class Core_MDF_Tactic_Spending extends LightningElement {
                 Core_MDF_Type_nm__c: 'Previous Period Spends',
                 Core_MDF_Field_Value_nbr__c: row.previousSpend,
                 Core_MDF_Tactics_nm__c: row.tactic,
-                Core_MDF_Is_Active_Ind__c : true
+                Core_MDF_Is_Active_Ind__c: true
             }
 
-            if(row.previousSpendRecordId){
+            if (row.previousSpendRecordId) {
                 previousPeriodSpend.Id = row.previousSpendRecordId;
             }
             claimAttributes.push(previousPeriodSpend);
@@ -254,10 +291,10 @@ export default class Core_MDF_Tactic_Spending extends LightningElement {
                 Core_MDF_Type_nm__c: 'Spend This Period',
                 Core_MDF_Field_Value_nbr__c: row.spendThisPeriod,
                 Core_MDF_Tactics_nm__c: row.tactic,
-                Core_MDF_Is_Active_Ind__c : true
+                Core_MDF_Is_Active_Ind__c: true
             }
 
-            if(row.spendThisPeriodRecordId){
+            if (row.spendThisPeriodRecordId) {
                 spendThisPeriod.Id = row.spendThisPeriodRecordId;
             }
             claimAttributes.push(spendThisPeriod);
@@ -318,13 +355,13 @@ export default class Core_MDF_Tactic_Spending extends LightningElement {
 
     getTotalSpend() {
         //return this.tactics.reduce((sum, r) => sum + (r.spendThisPeriod || 0), 0);
-        return this.tactics.reduce((sum, r) => sum + (r.isTotal ? 0 : (r.spendThisPeriod || 0)),0);
+        return this.tactics.reduce((sum, r) => sum + (r.isTotal ? 0 : (r.spendThisPeriod || 0)), 0);
     }
 
     getTotalRemaining() {
         //return this.tactics.reduce((sum, r) => sum + (r.totalPlannedSpend - r.previousSpend), 0);
         //return this.tactics.reduce((sum, r) => sum + (r.totalPlannedSpend), 0);
-        return this.tactics.reduce((sum, r) => sum + (r.isTotal ? 0 : (r.totalPlannedSpend || 0)),0);
+        return this.tactics.reduce((sum, r) => sum + (r.isTotal ? 0 : (r.totalPlannedSpend || 0)), 0);
     }
 
     showToast(title, message, variant) {
@@ -335,5 +372,51 @@ export default class Core_MDF_Tactic_Spending extends LightningElement {
                 variant
             })
         );
+    }
+
+    // Roshan - Tactics POC
+    applyPrefillValues() {
+        const dataRows = this.tactics.filter((row) => !row.isTotal);
+        if (!dataRows.length || !this._prefillClaimAttributes.length) {
+            return;
+        }
+
+        const typeToFieldMap = {
+            'Total Planned Spend': 'totalPlannedSpend',
+            'Previous Period Spends': 'previousSpend',
+            'Spend This Period': 'spendThisPeriod'
+        };
+        const typeToIdFieldMap = {
+            'Total Planned Spend': 'totalPlannedSpendRecordId',
+            'Previous Period Spends': 'previousSpendRecordId',
+            'Spend This Period': 'spendThisPeriodRecordId'
+        };
+
+        const updatedRows = dataRows.map((row) => {
+            let updatedRow = { ...row };
+
+            this._prefillClaimAttributes.forEach((attribute) => {
+                if (attribute.Core_MDF_Tactics_nm__c !== row.tactic) {
+                    return;
+                }
+                const fieldName = typeToFieldMap[attribute.Core_MDF_Type_nm__c];
+                if (!fieldName) {
+                    return;
+                }
+
+                updatedRow[fieldName] = attribute.Core_MDF_Field_Value_nbr__c;
+                const idFieldName = typeToIdFieldMap[attribute.Core_MDF_Type_nm__c];
+                if (idFieldName && attribute.Id) {
+                    updatedRow[idFieldName] = attribute.Id;
+                }
+            });
+
+            const contribution = ((updatedRow.spendThisPeriod || 0) * (updatedRow.reimbursementRate)) / 100;
+            updatedRow.intelContribution = contribution ? parseFloat(contribution.toFixed(2)) : '';
+            return updatedRow;
+        });
+
+        const totalRow = this.getTotalRow(updatedRows);
+        this.tactics = [...updatedRows, totalRow];
     }
 }

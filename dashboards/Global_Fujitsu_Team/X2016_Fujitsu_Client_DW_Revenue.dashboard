@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dashboard xmlns="http://soap.sforce.com/2006/04/metadata">
+    <backgroundEndColor>#FFFFFF</backgroundEndColor>
+    <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
+    <backgroundStartColor>#FFFFFF</backgroundStartColor>
+    <dashboardType>SpecifiedUser</dashboardType>
+    <isGridLayout>false</isGridLayout>
+    <leftSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartSummary>
+                <aggregate>Sum</aggregate>
+                <axisBinding>y</axisBinding>
+                <column>TOTAL_PRICE</column>
+            </chartSummary>
+            <componentType>Gauge</componentType>
+            <displayUnits>Millions</displayUnits>
+            <footer>2017 Fujitsu CCG DW Revenue target : TBD</footer>
+            <gaugeMax>1.184E9</gaugeMax>
+            <gaugeMin>0.0</gaugeMin>
+            <groupingSortProperties/>
+            <indicatorBreakpoint1>5.328E8</indicatorBreakpoint1>
+            <indicatorBreakpoint2>5.92E8</indicatorBreakpoint2>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <report>Global_Fujitsu_Team/X2017_Fujitsu_DW_Revenue</report>
+            <showPercentage>false</showPercentage>
+            <showRange>false</showRange>
+            <showTotal>true</showTotal>
+            <showValues>false</showValues>
+            <title>2017 Fujitsu CCG DW Pipeline</title>
+        </components>
+    </leftSection>
+    <owner>10694307@intel.com.crm</owner>
+    <rightSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartSummary>
+                <aggregate>Sum</aggregate>
+                <axisBinding>y</axisBinding>
+                <column>Opportunity.Core_Oppty_Approved_Total_Price__c</column>
+            </chartSummary>
+            <componentType>Gauge</componentType>
+            <displayUnits>Millions</displayUnits>
+            <footer>2016 Fujitsu DW$ target : TBD</footer>
+            <gaugeMax>1.184E9</gaugeMax>
+            <gaugeMin>0.0</gaugeMin>
+            <groupingSortProperties/>
+            <indicatorBreakpoint1>5.328E8</indicatorBreakpoint1>
+            <indicatorBreakpoint2>5.92E8</indicatorBreakpoint2>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <report>Global_Fujitsu_Team/X2017_Fujitsu_DW_Revenue</report>
+            <showPercentage>false</showPercentage>
+            <showRange>false</showRange>
+            <showTotal>true</showTotal>
+            <showValues>false</showValues>
+            <title>2017 Fujitsu CCG DW Revenue</title>
+        </components>
+    </rightSection>
+    <runningUser>10694307@intel.com.crm</runningUser>
+    <textColor>#000000</textColor>
+    <title>2017 Fujitsu CCG DW Revenue</title>
+    <titleColor>#000000</titleColor>
+    <titleSize>12</titleSize>
+</Dashboard>

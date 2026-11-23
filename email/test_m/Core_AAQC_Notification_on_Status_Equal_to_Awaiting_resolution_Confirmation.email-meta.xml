@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Ask Commissions-Alert to Requester on Status =Awaiting resoluton Confirmation</name>
+    <style>none</style>
+    <subject>Case ID: {!Case.CaseNumber} -  Resolution provided for your Ask Commissions case</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

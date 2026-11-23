@@ -75,6 +75,9 @@
         <sourceColumnName>Opportunity.Core_Product_Application__c</sourceColumnName>
         <useOther>true</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Server</sourceValue>
+            </sourceValues>
             <value>Server</value>
         </values>
         <values>

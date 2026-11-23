@@ -102,7 +102,7 @@ public class Core_MDF_Campaign_QuickActionCtrlTest {
             
         
         //String budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount);
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
        // String filter='Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c = \'Intel Partner Alliance\''  ;
             
         
@@ -139,7 +139,7 @@ public class Core_MDF_Campaign_QuickActionCtrlTest {
         Campaign dcfcmp = [Select id,Recordtype.Developername from Campaign where Name='DCF Opal Campaign' limit 1];
         
         Campaign cmp = Core_MDF_Campaign_QuickActionController.loadCampaignRecord(c.Id);
-       // Highlight: Unused Local Variable 
+       // Highlight: Unused Local Variable - Indira
       /*  String x = */ Core_MDF_Campaign_QuickActionController.getRtFieldSetMappings('Campaign','Core_MDF_Intel_Partner_Alliance');
       /*  Boolean b = */ Core_MDF_Campaign_QuickActionController.checkSObjectEditPermission('Campaign');
       /*  Boolean y = */ Core_MDF_Campaign_QuickActionController.isCommunity();
@@ -196,7 +196,7 @@ public class Core_MDF_Campaign_QuickActionCtrlTest {
             pgm1.Core_MDF_AccountIdGroupName__c = ipaUltimateAccount.Id+'Core_MDF_CCP_IPA_External';
             Database.insert(pgm1);
         //String budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount);
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
        // String filter='Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c = \'Intel Partner Alliance\''  ;
         
            

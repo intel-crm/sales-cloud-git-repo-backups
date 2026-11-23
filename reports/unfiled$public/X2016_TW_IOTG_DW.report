@@ -10,10 +10,10 @@
         <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>PRODUCT_NAME</field>
@@ -45,7 +45,7 @@
             <value>aaeon,advantech,adlink,aewin,avalue,axiomtek,biostar,compal,delta,dfi,elitegroup,tatung,ennoconn,foxconn,flytech,gemtek,getac,giga-byte,ibase,iei,inventec,kinpo,lanner,microprogram,mitac,micro-star,nexcom,pegatron,portwell,quanta,wistron,universal scientific</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>

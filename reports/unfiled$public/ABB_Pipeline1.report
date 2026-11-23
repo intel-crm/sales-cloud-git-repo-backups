@@ -70,6 +70,6 @@
         <dateColumn>CLOSE_DATE</dateColumn>
         <endDate>2024-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2020-01-01</startDate>
+        <startDate>2019-01-01</startDate>
     </timeFrameFilter>
 </Report>

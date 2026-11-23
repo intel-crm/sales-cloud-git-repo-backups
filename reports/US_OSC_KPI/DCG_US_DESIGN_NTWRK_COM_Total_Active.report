@@ -4,9 +4,6 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
-        <field>OPPORTUNITY_NAME</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Opportunity_Type__c</field>
     </columns>
     <columns>
@@ -68,6 +65,9 @@
         <field>FULL_NAME</field>
     </columns>
     <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <columns>
         <field>ACCOUNT_OWNER</field>
     </columns>
     <columns>
@@ -104,7 +104,7 @@
             <value>US Sales Group</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -143,7 +143,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>THIS_YEAR</value>
+            <value>THIS_FISCAL_YEAR</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -154,13 +154,13 @@
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
-        <dateGranularity>Quarter</dateGranularity>
+        <dateGranularity>FiscalQuarter</dateGranularity>
         <field>OpportunityLineItem.Core_KPI_Date__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>ROLLUP_DESCRIPTION</field>
+        <field>OPPORTUNITY_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>DCG US DESIGN NTWRK COM $ Total Active</name>
@@ -189,6 +189,6 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURNEXTY</interval>
+        <interval>INTERVAL_PREVCURFY</interval>
     </timeFrameFilter>
 </Report>

@@ -13,20 +13,20 @@
         <name>Core_MDF_Active_Ind__c</name>
     </fields>
     <fields>
-        <help>基线期描述了本次活动之前的某个时间点，当时基准值被捕获或估算。举例：如果本次活动将在八月结束，且基线值是在前一个八月被捕获的，请选择第一个选项。如果基准值为零，选择第一个选项。</help>
-        <label>基线期</label>
+        <help><!-- The Baseline Period describes a point in time prior to this campaign when the Baseline Value was captured or estimated. Example: if this campaign will end in August, and the Baseline Value was captured in the previous August, choose the first option. If the Baseline Value is zero, choose the first option. --></help>
+        <label><!-- Baseline Period --></label>
         <name>Core_MDF_Baseline_Period_nm__c</name>
         <picklistValues>
             <masterLabel>Same period as this campaign, one half before</masterLabel>
-            <translation>与这次战役同期，比这场战役早了一半</translation>
+            <translation><!-- Same period as this campaign, one half before --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Same period as this campaign, one quarter before</masterLabel>
-            <translation>与本次战役同期，前一个季度</translation>
+            <translation><!-- Same period as this campaign, one quarter before --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Same period as this campaign, one year before</masterLabel>
-            <translation>与这次运动同期，一年前</translation>
+            <translation><!-- Same period as this campaign, one year before --></translation>
         </picklistValues>
     </fields>
     <fields>

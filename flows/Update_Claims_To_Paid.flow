@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <interviewLabel>Update Claims To Paid {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Claims To Paid</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Claims_To_Paid</name>
+        <label>Update Claims To Paid</label>
+        <locationX>255</locationX>
+        <locationY>56</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_MDF_Payment_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varPaymentId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Amount</field>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_MDF_Status__c</field>
+            <value>
+                <stringValue>Paid</stringValue>
+            </value>
+        </inputAssignments>
+        <object>PartnerFundClaim</object>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Update_Claims_To_Paid</targetReference>
+        </connector>
+    </start>
+    <status>Obsolete</status>
+    <variables>
+        <name>varPaymentId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

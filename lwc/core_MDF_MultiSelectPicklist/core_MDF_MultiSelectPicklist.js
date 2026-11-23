@@ -17,11 +17,12 @@ export default class core_MDF_MultiSelectPicklist extends LightningElement {
     showdropdown;
     @api noOfValuesGotSelectedLable;
     @api selectedValueCount;
-
+    //@api enableRequired;
     @track enableRequired = false; // By defualt required will be false
     @api isRequired; // Pass the value when you call the component if it is required field
     @api placeholderText;
     @api utilisedModule;
+    @track displayValues = false;
     selectedValuesArrayObj = [];
 
     label = {
@@ -113,26 +114,39 @@ export default class core_MDF_MultiSelectPicklist extends LightningElement {
 
     get selectedmessage() {
         if (this.selectedvalues.length) {
+            let displayMessage = '';
             if (this.enableRequired) {
                 this.isValid();
             }
-            return this.selectedvalues.length + ' ' + this.noOfValuesGotSelectedLable;
+            console.log('displayValues'+this.displayValues);
+            if(this.displayValues){
+                displayMessage = this.selectedvalues.length + ' ' + this.selectedvalues;
+            }
+            else{
+                displayMessage = this.selectedvalues.length + ' ' + this.noOfValuesGotSelectedLable;
+            }
+            console.log('displayMessage'+displayMessage);
+            return displayMessage;
         }
     }
-    
-     @api populateSelectedMessage(value){
-         this.selectedvalues.length = value;
-     }
+
+    @api populateSelectedMessage(value) {
+        this.selectedvalues.length = value;
+    }
     @api disablePickilstMethod() {
         this.disablePickilst = true;
         this.enableRequired = false;
     }
     @api enablePickilstMethod() {
         this.disablePickilst = false;
+        console.log('this.values3..' + JSON.stringify(this.values));
         if(this.utilisedModule == 'Claim'){
             this.enableRequired = false;
+        console.log('this.values1..' + JSON.stringify(this.values));
+
         } else {
             this.enableRequired = true;
+        console.log('this.values2..' + JSON.stringify(this.values));        
         }
     }
     onPicklistSelection(event) {
@@ -145,16 +159,22 @@ export default class core_MDF_MultiSelectPicklist extends LightningElement {
             detail: { value }
         });
         const valueChangeLWCEvent = new CustomEvent('select', {
-            detail: { value }
+            detail: { value:  value}
         });
         const valueChangeLWCEventForPIC = new CustomEvent('select', {
             detail: { valueObj }
         });
-        // Fire the custom event
+       /* const valueChangeLWCEventForMOU = new CustomEvent('filterselection', { //Added by Alekhya for MOU testing
+            detail: { value }
+        });*/
         this.dispatchEvent(valueChangeEvent);
         if(this.utilisedModule === 'Claim') {
             this.dispatchEvent(valueChangeLWCEventForPIC);
-        } else {
+        }
+        /*else if(this.utilisedModule === 'MOU'){ //Added by Alekhya for MOU testing
+            this.dispatchEvent(valueChangeLWCEventForMOU);
+        }*/
+        else {
             this.dispatchEvent(valueChangeLWCEvent);
         }
     }
@@ -169,7 +189,7 @@ export default class core_MDF_MultiSelectPicklist extends LightningElement {
             isValid = false;
         }
         else {
-            availableBudgetsCmp.setCustomValidity('');           
+            availableBudgetsCmp.setCustomValidity('');
             isValid = true;
         }
         Promise.resolve().then(() => {

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>50.0</apiVersion>
+    <available>true</available>
+    <description>Notify RMF User on status update</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_RMF_StatusUpdate</name>
+    <style>none</style>
+    <subject>Changes are required for Activity:</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

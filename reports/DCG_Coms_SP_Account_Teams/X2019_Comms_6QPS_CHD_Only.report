@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <aggregate>Sum</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Sched_Revenue__c</column>
+        </chartSummaries>
+        <chartType>VerticalColumnStacked</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>Opportunity.Core_Opportunity_Owner_Geo__c</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_TOP</location>
+        <secondaryGroupingColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Approval_Status__c</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Sched_Revenue__c</field>
@@ -46,8 +73,8 @@
             <column>Opportunity.Core_Product_Segment__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Client</value>
+            <operator>equals</operator>
+            <value>Smart &amp; Connected Home</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -64,15 +91,10 @@
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>ACCOUNT_NAME</field>
+        <field>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OPPORTUNITY_NAME</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <name>2020-Comms 6QPS - CHD Only</name>
+    <name>2019-Comms 6QPS - CHD Only</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -91,13 +113,13 @@
     </params>
     <reportType>OpportunityCustomEntity$Core_Opp_FC_Prod_Schedule__c@Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Product__c</reportType>
     <scope>organization</scope>
-    <showDetails>false</showDetails>
+    <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Approved_Date__c</dateColumn>
-        <endDate>2020-12-26</endDate>
+        <endDate>2019-12-28</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2019-12-29</startDate>
+        <startDate>2018-12-30</startDate>
     </timeFrameFilter>
 </Report>

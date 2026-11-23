@@ -2,10 +2,11 @@
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>63.0</apiVersion>
     <available>true</available>
-    <description>Email Template to notify Claim Submitter upon Late Claim Escalation Approval</description>
+    <description>Email Template to notify Claim case reviewer upon Late Claim Escalation Approval</description>
     <encodingKey>UTF-8</encodingKey>
     <name>Late Claim Escalation Approval VF</name>
     <style>none</style>
+    <subject>Late Claim Escalation Request ID is approved to take action on Claim</subject>
     <type>visualforce</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

@@ -43,6 +43,8 @@ global Database.QueryLocator start(Database.BatchableContext batchableContext)
         //         string claimDay =(string.valueOf(claimWindowAdded.day()).length()<2)?0+string.valueOf(claimWindowAdded.day()):string.valueOf(claimWindowAdded.day());                   
         //         extractedClaimWindow = claimWindowAdded.year() + '-' + claimMonth + '-' + claimDay;
         //         query += ' (Core_mdf_program__c =\''+program+'\' and enddate<='+extractedClaimWindow+') OR';
+        //         System.System.debug('@@@vikas program: '+program);
+        //         System.System.debug('@@@vikas extractedClaimWindow: '+extractedClaimWindow);
         //     }
         
         query = query.left(query.length()-2) + ')) OR (status = \'Draft\' AND Core_MDF_Campaign_Source_nm__c = \'Target Setting\'))';
@@ -63,15 +65,14 @@ global void execute(Database.BatchableContext batchableContext, List<Campaign> c
                         
                        //Iterating through each campaign and updating status to 'Completed'.
                         for(Campaign completeCampaign : campaigns)
-                            {
-                               
+                            {                               
                                 //Added check for Enddate
-                                if(completeCampaign.status != 'Draft'){
+                                if(completeCampaign.status != 'Draft'){                                    
                                     /*if(completeCampaign.StartDate <= todaydt && completeCampaign.endDate > todaydt)
                                     {
                                         completeCampaign.Status = changeToInProgressStatus;
                                     }
-                                else
+                                    else
                                     {
                                         completeCampaign.Status = changeToCompletedStatus;
                                     }*/   
@@ -127,7 +128,7 @@ global void finish (Database.BatchableContext batchableContext)
         // Send an email to the Apex job's ;submitter notifying of job completion only if Custom Setting 'toAddress' data is available
         if(Test.isRunningTest())
             {
-                sendEmailAddress = 'ealisha.chatterjee@intel.com';
+                sendEmailAddress = 'vikasx.soni@intel.com';
                 sendemail = true;
             }
          

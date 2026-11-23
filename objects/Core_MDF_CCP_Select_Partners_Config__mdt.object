@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Core_MDF_Account_Id__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Account Id</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Account__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Account Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_End_Date__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>End Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Program__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Program</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Client CoMarketing Fund</fullName>
+                    <default>true</default>
+                    <label>Client</label>
+                </value>
+                <value>
+                    <fullName>Data Center CoMarketing Fund</fullName>
+                    <default>false</default>
+                    <label>Datacenter</label>
+                </value>
+                <value>
+                    <fullName>Intel Partner Alliance</fullName>
+                    <default>false</default>
+                    <label>Intel Partner Alliance</label>
+                </value>
+                <value>
+                    <fullName>Client CoMarketing Fund Boost</fullName>
+                    <default>false</default>
+                    <label>Client CoMarketing Fund Boost</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>CCP Select Partners Config</label>
+    <pluralLabel>CCP Select Partners Configs</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

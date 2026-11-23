@@ -22,19 +22,16 @@ public without sharing class Core_MDF_Add_GroupMembers_Queueable implements Queu
             //To add Group Members with respective acccount node groups.
             if(grpMemListToInsert != null && !grpMemListToInsert.isEmpty()){
 
-                if(!Test.isRunningTest())
+                if(!Test.isRunningTest()){
                     srList = Database.insert(grpMemListToInsert.values(), false);
+                }
 
-               
-                
                 for(Id pnumId : grpMemListToInsert.keySet()){
-                    
                     if(grpMemListToInsert.containskey(pnumId) && grpMemListToInsert.get(pnumId).Id == null){
                         pnumInitialList.add(new Core_MDF_Partner_Node_User_Mapping__c(Id = pnumId, Core_MDF_Error_Details_txt__c = 'Group member Insert failed'));
                     }
                 }
                
-
                 if(!pnumInitialList.isEmpty()){
                     // Create an instance of LoggingFinalizer and attach it
                     Core_MDF_PNUM_Update_Finalizer fc = new Core_MDF_PNUM_Update_Finalizer(pnumInitialList);
@@ -44,6 +41,7 @@ public without sharing class Core_MDF_Add_GroupMembers_Queueable implements Queu
             
         }catch (Exception e) {
             Core_MDF_CCP_UtilityClass.logError(e);
+            throw e;
         }
     }
 
@@ -56,7 +54,7 @@ public without sharing class Core_MDF_Add_GroupMembers_Queueable implements Queu
         
         // Finalizer implementation
         public void execute(FinalizerContext ctx) {
-
+           
             Core_MDF_RecursiveTrigger.isRecursive = true;
 
             //PNUM records to update

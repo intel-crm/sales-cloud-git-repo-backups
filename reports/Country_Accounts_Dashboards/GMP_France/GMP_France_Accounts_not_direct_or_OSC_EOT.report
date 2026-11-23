@@ -96,7 +96,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value></value>
+            <value>OSC</value>
         </criteriaItems>
         <criteriaItems>
             <column>USERS.NAME</column>
@@ -110,7 +110,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>EMP of ERWAN MONTAUX,EMP of Helene De La Gastine,EMP of J.F Mukumbi,EMP of Fabien Esdourubail,EMP of Stephane Negre</value>
+            <value>EMP of ERWAN MONTAUX,EMP of Helene De La Gastine,EMP of J.F Mukumbi,EMP of Nicolas Silvestre,EMP of Stephane Negre</value>
         </criteriaItems>
         <criteriaItems>
             <column>User.Core_User_Profile_Name__c</column>

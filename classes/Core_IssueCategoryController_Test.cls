@@ -19,16 +19,14 @@ public class Core_IssueCategoryController_Test{
         userRecord.username = 'TestClassUser@intel.com';
         userRecord.ProfileID = ProfileRec.id;
         insert userRecord;
+        // Creating Queue
+        System.runAs(userRecord){
         QueueRecord = new Group(Name='SupportOrgQueue', type='Queue');
         insert QueueRecord;
         // Creating Public Group
         Group PublicGroupRecord = new Group(Name = 'SupportOrgPublicGroup');
         insert PublicGroupRecord;
-        // Creating Queue
         System.runAs(userRecord){
-          //  Test.startTest();
-        
-      //  System.runAs(userRecord){
             ipsLabels = new List<Core_IPS_Labels__c>();
             ipsLabels=TestUtilities.getIPSLabel();
             // Mapping the Queue to the Core_Product_Organization__c object
@@ -46,15 +44,14 @@ public class Core_IssueCategoryController_Test{
                 UserOrGroupId = userRecord.id
             );
             insert groupMemberObject_User;
-      //  }
+        }
         // Creating Product Record
         Product2 createProductRecord = TestUtilities.getProduct();
-          //  createProductRecord.OwnerId = QueueRecord.Id;
         insert createProductRecord;
         System.Assert(createProductRecord.Id != null, 'Record not created');
         // Creating Support Org (Core_Product_Organization__c) Record
         Core_IPS_Product_Organization__c SupportOrgRecord = TestUtilities.getSupportOrg();
-        //SupportOrgRecord.OwnerId = QueueRecord.Id;
+        SupportOrgRecord.OwnerId = QueueRecord.Id;
         insert SupportOrgRecord;
         System.Assert(SupportOrgRecord.Id != null, 'Record not created');
         // Creating Core Supported Product
@@ -98,7 +95,6 @@ public class Core_IssueCategoryController_Test{
         CaseSubCategory.Core_Product_Issue_Category__c = CaseCategory.id;
         CaseSubCategory.Core_Issue_Sub_Category_Name__c=MasterCaseSubCategories.id;
         insert CaseSubCategory;
-           // Test.stopTest();
         }
     }
     
@@ -206,7 +202,7 @@ public class Core_IssueCategoryController_Test{
         System.Assert(createProductRecord.Id != null, 'Record not created');
         // Creating Support Org (Core_Product_Organization__c) Record
         Core_IPS_Product_Organization__c SupportOrgRecord = TestUtilities.getSupportOrg();
-        //SupportOrgRecord.OwnerId = QueueRecord.Id;
+        SupportOrgRecord.OwnerId = QueueRecord.Id;
         insert SupportOrgRecord;
         System.Assert(SupportOrgRecord.Id != null, 'Record not created');
         // Creating Core Supported Product
@@ -367,7 +363,7 @@ public class Core_IssueCategoryController_Test{
         System.Assert(createProductRecord.Id != null, 'Record not created');
         // Creating Support Org (Core_Product_Organization__c) Record
         Core_IPS_Product_Organization__c SupportOrgRecord = TestUtilities.getSupportOrg();
-        //SupportOrgRecord.OwnerId = QueueRecord.Id;
+        SupportOrgRecord.OwnerId = QueueRecord.Id;
         insert SupportOrgRecord;
         System.Assert(SupportOrgRecord.Id != null, 'Record not created');
         // Creating Core Supported Product

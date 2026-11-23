@@ -47,16 +47,19 @@ export default class Core_MDF_HistoryComponent extends LightningElement {
   data = [];
   columns = columns;
 
-  
-
 // make describe call dynamically based on objectName
 @wire(getHistoryHeader, { objectInfo: "$objectApiName",recordId : "$recordId" })
 wiredHistoryHeaderData({ data, error }) {
+  //alert("<<isInternalUserNameMasked>>"+this.isInternalUserNameMasked);  
+  console.log('in wiredHistoryHeaderData');
+  console.log('data',data);
   if (data) {
     this.historyHeaderData = data.objectName;
+    console.log('historyHeaderData',this.historyHeaderData);
     this.haserror=false;
   } else if (error) {
     this.haserror=true;
+    console.log('error',error);
     this.historyHeaderData = undefined;
   }
 }
@@ -73,12 +76,14 @@ connectedCallback()
     this.fieldsToMask = defaultFields;
    }
 }
+  
 
  //, profiles: "$profileNames" , permsets: "$permSetNames" , customperms: "$customPerms"
   @wire(loadData, { recordId: "$recordId", objectInfo: "$objectApiName" , internalUserName: "$internalUserName", fieldsToMask: "$fieldsToMask"})
   wiredHistoryData({data,error}) {
+    console.log('in wiredHistoryData');
     if (data) {
-      console.log(data);
+      console.log('@@@@'+ data);
 
       let newData = data.map((item) => 
       Object.assign({}, item, {}))
@@ -118,16 +123,20 @@ connectedCallback()
                                       }
                                       `;
       document.head.appendChild(dataTableGlobalStyle);
-      */
+*/
 
 
       //this.historyData = data;
       this.haserror=false;
     } else if (error) {
-      console.log(error);
+      console.log('@@@' , error);
       this.haserror=true;
       this.data=undefined;
       //this.historyData = undefined;
+    }
+    else{
+      console.log('@@@1' + error);
+      console.log('@@@@1'+ data);
     }
   }
  

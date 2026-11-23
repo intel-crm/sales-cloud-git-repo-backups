@@ -154,6 +154,69 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
+        <fullName>Core_MDF_AI_Question_txt__c</fullName>
+        <label>AI Question</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_AI_Response_Logic__c</fullName>
+        <label>AI Response Logic</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>OR</fullName>
+                    <default>false</default>
+                    <label>OR</label>
+                </value>
+                <value>
+                    <fullName>AND</fullName>
+                    <default>false</default>
+                    <label>AND</label>
+                </value>
+                <value>
+                    <fullName>AMOUNT CONSISTENCY</fullName>
+                    <default>false</default>
+                    <label>AMOUNT CONSISTENCY</label>
+                </value>
+                <value>
+                    <fullName>VALIDATE WITH CLAIM AMOUNT</fullName>
+                    <default>false</default>
+                    <label>VALIDATE WITH CLAIM AMOUNT</label>
+                </value>
+                <value>
+                    <fullName>VALIDATE IF WITH TAX AMOUNT REIMBURSED</fullName>
+                    <default>false</default>
+                    <label>VALIDATE IF WITH TAX AMOUNT REIMBURSED</label>
+                </value>
+                <value>
+                    <fullName>CURRENCY CONSISTENCY</fullName>
+                    <default>false</default>
+                    <label>CURRENCY CONSISTENCY</label>
+                </value>
+                <value>
+                    <fullName>VALIDATE WITH CLAIM CURRENCY</fullName>
+                    <default>false</default>
+                    <label>VALIDATE WITH CLAIM CURRENCY</label>
+                </value>
+                <value>
+                    <fullName>IF ALL FALSE</fullName>
+                    <default>false</default>
+                    <label>IF ALL FALSE</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Core_MDF_All_Budget_Types_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Applicable to All Budget Types</label>
@@ -201,6 +264,14 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Has_AI_Question_ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Has AI Question</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_MDF_IneffectiveDate_dt__c</fullName>
@@ -337,7 +408,7 @@ Core_MDF_Issue_en_US_External_2_txt__c &amp; BR() &amp;
 Core_MDF_Issue_en_US_External_3_txt__c &amp; BR() &amp; 
 Core_MDF_Issue_en_US_External_4_txt__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Issue(External)</label>
+        <label>Issue (External)</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -817,6 +888,11 @@ Core_MDF_Issue_zh_TW_4_txt__c</formula>
                     <default>false</default>
                     <label>NEX</label>
                 </value>
+                <value>
+                    <fullName>Sub Question (Test Amey)</fullName>
+                    <default>false</default>
+                    <label>Sub Question (Test Amey)</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
         <visibleLines>4</visibleLines>
@@ -945,7 +1021,23 @@ If(NOT(ISBLANK( Core_MDF_Question_en_US_4_txt__c )), Core_MDF_Question_en_US_4_t
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
+    <fields>
+        <fullName>test_report_long_field__c</fullName>
+        <label>test report long field</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
     <label>PIC Review Question</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Question_English_External_txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>QC-{0000}</displayFormat>
         <label>Question Name</label>

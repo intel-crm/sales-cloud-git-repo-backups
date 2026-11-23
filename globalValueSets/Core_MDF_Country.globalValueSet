@@ -81,11 +81,6 @@
         <label>BARBADOS</label>
     </customValue>
     <customValue>
-        <fullName>BELARUS</fullName>
-        <default>false</default>
-        <label>BELARUS</label>
-    </customValue>
-    <customValue>
         <fullName>BELGIUM</fullName>
         <default>false</default>
         <label>BELGIUM</label>
@@ -129,11 +124,6 @@
         <fullName>BRAZIL</fullName>
         <default>false</default>
         <label>BRAZIL</label>
-    </customValue>
-    <customValue>
-        <fullName>BRITISH VIRGIN ISLANDS</fullName>
-        <default>false</default>
-        <label>BRITISH VIRGIN ISLANDS</label>
     </customValue>
     <customValue>
         <fullName>BRUNEI DARUSSALAM</fullName>
@@ -496,11 +486,6 @@
         <label>LATVIA</label>
     </customValue>
     <customValue>
-        <fullName>LEBANON</fullName>
-        <default>false</default>
-        <label>LEBANON</label>
-    </customValue>
-    <customValue>
         <fullName>LESOTHO</fullName>
         <default>false</default>
         <label>LESOTHO</label>
@@ -624,11 +609,6 @@
         <fullName>MOZAMBIQUE</fullName>
         <default>false</default>
         <label>MOZAMBIQUE</label>
-    </customValue>
-    <customValue>
-        <fullName>MYANMAR</fullName>
-        <default>false</default>
-        <label>MYANMAR</label>
     </customValue>
     <customValue>
         <fullName>NAMIBIA</fullName>
@@ -801,11 +781,6 @@
         <label>SLOVENIA</label>
     </customValue>
     <customValue>
-        <fullName>SOMALIA</fullName>
-        <default>false</default>
-        <label>SOMALIA</label>
-    </customValue>
-    <customValue>
         <fullName>SOUTH AFRICA</fullName>
         <default>false</default>
         <label>SOUTH AFRICA</label>
@@ -936,11 +911,6 @@
         <label>UZBEKISTAN</label>
     </customValue>
     <customValue>
-        <fullName>VENEZUELA</fullName>
-        <default>false</default>
-        <label>VENEZUELA</label>
-    </customValue>
-    <customValue>
         <fullName>VIETNAM</fullName>
         <default>false</default>
         <label>VIETNAM</label>
@@ -956,11 +926,6 @@
         <label>WESTERN SAHARA</label>
     </customValue>
     <customValue>
-        <fullName>YEMEN</fullName>
-        <default>false</default>
-        <label>YEMEN</label>
-    </customValue>
-    <customValue>
         <fullName>ZAMBIA</fullName>
         <default>false</default>
         <label>ZAMBIA</label>
@@ -971,10 +936,39 @@
         <label>ZIMBABWE</label>
     </customValue>
     <customValue>
-        <fullName>NETHERLANDS ANTILLES</fullName>
+        <fullName>BRITISH VIRGIN ISLANDS</fullName>
         <default>false</default>
-        <isActive>false</isActive>
-        <label>NETHERLANDS ANTILLES</label>
+        <label>BRITISH VIRGIN ISLANDS</label>
+    </customValue>
+    <customValue>
+        <fullName>BELARUS</fullName>
+        <default>false</default>
+        <label>BELARUS</label>
+    </customValue>
+    <customValue>
+        <fullName>LEBANON</fullName>
+        <default>false</default>
+        <label>LEBANON</label>
+    </customValue>
+    <customValue>
+        <fullName>MYANMAR</fullName>
+        <default>false</default>
+        <label>MYANMAR</label>
+    </customValue>
+    <customValue>
+        <fullName>SOMALIA</fullName>
+        <default>false</default>
+        <label>SOMALIA</label>
+    </customValue>
+    <customValue>
+        <fullName>VENEZUELA</fullName>
+        <default>false</default>
+        <label>VENEZUELA</label>
+    </customValue>
+    <customValue>
+        <fullName>YEMEN</fullName>
+        <default>false</default>
+        <label>YEMEN</label>
     </customValue>
     <customValue>
         <fullName>MAINLAND CHINA</fullName>
@@ -988,6 +982,18 @@
         <isActive>false</isActive>
         <label>SWAZILAND</label>
     </customValue>
+    <customValue>
+        <fullName>UKRAINE1</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>UKRAINE1</label>
+    </customValue>
+    <customValue>
+        <fullName>NETHERLANDS ANTILLES</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>NETHERLANDS ANTILLES</label>
+    </customValue>
     <masterLabel>Country</masterLabel>
-    <sorted>true</sorted>
+    <sorted>false</sorted>
 </GlobalValueSet>

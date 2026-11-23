@@ -9,10 +9,6 @@
         <value>PRM Execution Controls</value>
     </caseValues>
     <fields>
-        <label><!-- BypassValidationInTransferAdmin --></label>
-        <name>BypassValidationInTransferAdmin__c</name>
-    </fields>
-    <fields>
         <label><!-- Skip Process Builder --></label>
         <name>PRM_Skip_Process_Builder_Ind__c</name>
     </fields>
@@ -27,14 +23,6 @@
     <fields>
         <label><!-- Skip Workflow --></label>
         <name>PRM_Skip_Workflow_Rule_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Skip_ValidationRule_ContractStatus --></label>
-        <name>Skip_ValidationRule_ContractStatus__c</name>
-    </fields>
-    <fields>
-        <label><!-- Skip_ValidationRule_Order_Status --></label>
-        <name>Skip_ValidationRule_Order_Status__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

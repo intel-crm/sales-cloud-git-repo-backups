@@ -125,7 +125,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>Enpirion,CQE,Admin,CSTOOLS,Deflected,IR,ZBB,CAT2,eASIC</value>
+            <value>Enpirion,CQE,Admin,CSTOOLS,Deflected,IR,ZBB,CAT2</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_IPS_Response__c.Core_IPS_Question__c</column>
@@ -147,7 +147,7 @@
         <field>Core_IPS_Response__c.Core_IPS_Answer__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Obsoleted - Survey Q1 - PSG CEG</name>
+    <name>Survey Q1 - PSG CEG</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -163,6 +163,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2019-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2018-01-01</startDate>
     </timeFrameFilter>
 </Report>

@@ -128,7 +128,7 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
         <content>Core_MDF_Escalation_Record_Page</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
@@ -136,7 +136,7 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
         <content>Core_MDF_Escalation_Record_Page</content>
         <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
@@ -168,6 +168,50 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>CheckCustomPermission__c</fullName>
+        <formula>$Permission.Core_MDF_ClaimCaseReviewer1</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CheckCustomPermission</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Account_txt_del__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(RecordType.DeveloperName =$Label.Core_MDF_Budget_RecordType, (Core_MDF_Budget_ID_Number_id__r.Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__r.Name),
+IF(RecordType.DeveloperName =$Label.Core_MDF_ClaimCaseReviewResult_RecordType,(Core_MDF_Case_ID_Number_id__r.Account.Core_MDF_CoMarketing_Ultimate_Account__r.Name),
+IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType,(Core_MDF_Co_Marketing_Activity_id__r.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Name),&apos;&apos;)))</formula>
+        <label>Account</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Activity_Id_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Activity Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Activity_Name_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Activity Name 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <fields>
         <fullName>Core_MDF_Activity_Name_url__c</fullName>
         <externalId>false</externalId>
@@ -201,12 +245,48 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_MDF_Activity_Number_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Activity #</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Activity_txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&apos;/lightning/r/PartnerFundRequest/&apos;+Core_MDF_Activity_Id_txt__c+&apos;/view&apos;,  Core_MDF_Activity_Name_txt__c ,&apos;blank&apos; )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Activity</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Approval_Flag_ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Approval Flag</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Approval_Step_Completed_nbr__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Approval Step Completed</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_Approved_Amount_amt__c</fullName>
@@ -390,6 +470,17 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType,TEXT( Core_MDF
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_Claim_ID_Number_id__c</fullName>
+        <externalId>false</externalId>
+        <label>Claim ID Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Claim_Number_id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Claim Name</label>
@@ -442,6 +533,15 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType,TEXT( Core_MDF
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Comments_Reviewer_Comments_txt__c</fullName>
+        <label>Comments(Reviewer Comments)</label>
+        <length>131072</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Core_MDF_Country_txt__c</fullName>
@@ -537,6 +637,26 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType,TEXT( Core_MDF
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Escalation_Status_Cancel_nm__c</fullName>
+        <description>This field is used to set the Escalation status to Cancelled and will have only one value in the Picklist.</description>
+        <label>Escalation Status1</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Core_MDF_Escalation_Status_nm__c</fullName>
@@ -794,9 +914,9 @@ IF ( INCLUDES (Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Region_nm__c , &quo
         <description>Display Virtual Corp Account Name for IPA Escalations</description>
         <externalId>false</externalId>
         <formula>IF(Core_MDF_Channel_Program_id__r.Name =&apos;Intel Partner Alliance&apos;, 
-IF(RecordType.DeveloperName =$Label.Core_MDF_Budget_RecordType,(Core_MDF_Budget_ID_Number_id__r.Core_MDF_Budget_Partner__r.Name),  
-IF(RecordType.DeveloperName =$Label.Core_MDF_ClaimCaseReviewResult_RecordType, IF( ISBLANK(Core_MDF_Case_ID_Number_id__r.Account.Core_MDF_Virtual_Corp_Account_Id__c), (Core_MDF_Case_ID_Number_id__r.Account.Name), Core_MDF_Case_ID_Number_id__r.Account.Core_MDF_Virtual_Corp_Account_Id__r.Name) ,  
-IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(Core_MDF_Co_Marketing_Activity_id__r.ChannelPartner.Core_MDF_Virtual_Corp_Account_Id__c) , Core_MDF_Co_Marketing_Activity_id__r.ChannelPartner.Name, Core_MDF_Co_Marketing_Activity_id__r.ChannelPartner.Core_MDF_Virtual_Corp_Account_Id__r.Name) ), &apos;&apos;) ) ) , &apos;&apos;)</formula>
+IF(Core_MDF_Budget_ID_Number_id__c!=null,(Core_MDF_Budget_ID_Number_id__r.Core_MDF_Budget_Partner__r.Name),  
+IF(Core_MDF_Case_ID_Number_id__c!=null, IF( ISBLANK(Core_MDF_Case_ID_Number_id__r.Account.Core_MDF_Virtual_Corp_Account_Id__c), (Core_MDF_Case_ID_Number_id__r.Account.Name), Core_MDF_Case_ID_Number_id__r.Account.Core_MDF_Virtual_Corp_Account_Id__r.Name) ,  
+IF(Core_MDF_Co_Marketing_Activity_id__c!=null, (IF( ISBLANK(Core_MDF_Co_Marketing_Activity_id__r.ChannelPartner.Core_MDF_Virtual_Corp_Account_Id__c) , Core_MDF_Co_Marketing_Activity_id__r.ChannelPartner.Name, Core_MDF_Co_Marketing_Activity_id__r.ChannelPartner.Core_MDF_Virtual_Corp_Account_Id__r.Name) ), &apos;&apos;) ) ) , &apos;&apos;)</formula>
         <label>Corp Virtual Account Name</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -809,14 +929,36 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>Core_MDF_Escalation_Name_txt__c</columns>
-        <columns>Core_MDF_Budget_Type_txt__c</columns>
+        <columns>Core_MDF_Co_Marketing_Activity_id__c</columns>
         <columns>Core_MDF_Total_Dollar_Impact_amt__c</columns>
+        <columns>Core_MDF_Approved_Amount_amt__c</columns>
         <columns>Core_MDF_Escalation_Status_nm__c</columns>
         <columns>Core_MDF_Root_Cause_nm__c</columns>
         <columns>RECORDTYPE</columns>
         <columns>Core_MDF_Channel_Program_id__c</columns>
+        <columns>Core_MDF_Budget_Type_txt__c</columns>
+        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Core_MDF_Escalation__c.Core_MDF_Late_Claim</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Co_Marketing_Activity_id__c</field>
+            <operation>equals</operation>
+            <value>Test Outcome 16Feb7</value>
+        </filters>
         <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Core_MCCP_EEF_Fin_Mgr_Escl_L1_Que_Core_MDF_Escalation</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP EEF Fin Mgr Escalations L1 Que</label>
+        <queue>Core_MDF_CCP_EEF_Fin_Mgr_Escl_L1_Que</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>Core_MDF_CCP_CCFB_Fin_Mgr_Escl_L1_Que_Core_MDF_Escalation</fullName>
@@ -961,7 +1103,7 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
         <filters>
             <field>Core_MDF_Channel_Program_id__c</field>
             <operation>equals</operation>
-            <value>Client Co-Marketing Fund</value>
+            <value>Client</value>
         </filters>
         <filters>
             <field>Core_MDF_Escalation_Status_nm__c</field>
@@ -969,7 +1111,6 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
             <value>Pending Review</value>
         </filters>
         <label>CCP CCF Fin Mgr Escalations L1 Que</label>
-        <language>en_US</language>
         <sharedTo>
             <group>Core_MDF_CCP_CCF_Fin_Mgr_Escl_L1_Grp</group>
         </sharedTo>
@@ -987,7 +1128,7 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
         <filters>
             <field>Core_MDF_Channel_Program_id__c</field>
             <operation>equals</operation>
-            <value>Client Co-Marketing Fund</value>
+            <value>Client</value>
         </filters>
         <filters>
             <field>Core_MDF_Escalation_Status_nm__c</field>
@@ -995,7 +1136,6 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
             <value>Pending Review</value>
         </filters>
         <label>CCP CCF Fin Mgr Escalations L2 Que</label>
-        <language>en_US</language>
         <sharedTo>
             <group>Core_MDF_CCP_CCF_Fin_Mgr_Escl_L2_Grp</group>
         </sharedTo>
@@ -1039,7 +1179,7 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
         <filters>
             <field>Core_MDF_Channel_Program_id__c</field>
             <operation>equals</operation>
-            <value>Client Co-Marketing Fund</value>
+            <value>Client</value>
         </filters>
         <filters>
             <field>Core_MDF_Escalation_Status_nm__c</field>
@@ -1047,7 +1187,6 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
             <value>Pending Review</value>
         </filters>
         <label>CCP CCF Prog Admin Escalations L2 Que</label>
-        <language>en_US</language>
         <sharedTo>
             <group>Core_MDF_CCP_CCF_Prog_Admin_Escl_L2_Grp</group>
         </sharedTo>
@@ -1065,7 +1204,7 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
         <filters>
             <field>Core_MDF_Channel_Program_id__c</field>
             <operation>equals</operation>
-            <value>Client Co-Marketing Fund</value>
+            <value>Client</value>
         </filters>
         <filters>
             <field>Core_MDF_Escalation_Status_nm__c</field>
@@ -1073,18 +1212,8 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
             <value>Pending Review</value>
         </filters>
         <label>CCP CCF Prog Admin Escalations L3 Que</label>
-        <language>en_US</language>
         <sharedTo>
             <group>Core_MDF_CCP_CCF_Prog_Admin_Escl_L3_Grp</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_MDF_CCP_Co_GTM_Fin_Mgr_Escl_L1_Que_Core_MDF_Escalation</fullName>
-        <filterScope>Queue</filterScope>
-        <label>CCP Co-GTM Fin Mgr Escalations L1 Que</label>
-        <queue>Core_MDF_CCP_Co_GTM_Fin_Mgr_Escl_L1_Que</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
     <listViews>
@@ -1100,7 +1229,7 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
         <filters>
             <field>Core_MDF_Channel_Program_id__c</field>
             <operation>equals</operation>
-            <value>Data Center Co-Marketing Fund</value>
+            <value>Datacenter</value>
         </filters>
         <filters>
             <field>Core_MDF_Escalation_Status_nm__c</field>
@@ -1108,7 +1237,6 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
             <value>Pending Review</value>
         </filters>
         <label>CCP DCF Fin Mgr Escalations L1 Que</label>
-        <language>en_US</language>
         <sharedTo>
             <group>Core_MDF_CCP_DCF_Fin_Mgr_Escl_L1_Grp</group>
         </sharedTo>
@@ -1126,7 +1254,7 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
         <filters>
             <field>Core_MDF_Channel_Program_id__c</field>
             <operation>equals</operation>
-            <value>Data Center Co-Marketing Fund</value>
+            <value>Datacenter</value>
         </filters>
         <filters>
             <field>Core_MDF_Escalation_Status_nm__c</field>
@@ -1134,7 +1262,6 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
             <value>Pending Review</value>
         </filters>
         <label>CCP DCF Fin Mgr Escalations L2 Que</label>
-        <language>en_US</language>
         <sharedTo>
             <group>Core_MDF_CCP_DCF_Fin_Mgr_Escl_L2_Grp</group>
         </sharedTo>
@@ -1152,7 +1279,7 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
         <filters>
             <field>Core_MDF_Channel_Program_id__c</field>
             <operation>equals</operation>
-            <value>Data Center Co-Marketing Fund</value>
+            <value>Datacenter</value>
         </filters>
         <filters>
             <field>Core_MDF_Escalation_Status_nm__c</field>
@@ -1160,7 +1287,6 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
             <value>Pending Review</value>
         </filters>
         <label>CCP DCF Fin Mgr Escalations L3 Que</label>
-        <language>en_US</language>
         <sharedTo>
             <group>Core_MDF_CCP_DCF_Fin_Mgr_Escl_L3_Grp</group>
         </sharedTo>
@@ -1178,7 +1304,7 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
         <filters>
             <field>Core_MDF_Channel_Program_id__c</field>
             <operation>equals</operation>
-            <value>Data Center Co-Marketing Fund</value>
+            <value>Datacenter</value>
         </filters>
         <filters>
             <field>Core_MDF_Escalation_Status_nm__c</field>
@@ -1186,7 +1312,6 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
             <value>Pending Review</value>
         </filters>
         <label>CCP DCF Prog Admin Escalations L2 Que</label>
-        <language>en_US</language>
         <sharedTo>
             <group>Core_MDF_CCP_DCF_Prog_Admin_Escl_L2_Grp</group>
         </sharedTo>
@@ -1204,7 +1329,7 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
         <filters>
             <field>Core_MDF_Channel_Program_id__c</field>
             <operation>equals</operation>
-            <value>Data Center Co-Marketing Fund</value>
+            <value>Datacenter</value>
         </filters>
         <filters>
             <field>Core_MDF_Escalation_Status_nm__c</field>
@@ -1212,88 +1337,24 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
             <value>Pending Review</value>
         </filters>
         <label>CCP DCF Prog Admin Escalations L3 Que</label>
-        <language>en_US</language>
         <sharedTo>
             <group>Core_MDF_CCP_DCF_Prog_Admin_Escl_L3_Grp</group>
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Core_MDF_CCP_EEF_Fin_Mgr_Escl_L1_Que_Core_MDF_Escalation</fullName>
+        <fullName>Core_MDF_CCP_EEF_Escl_Queue_Core_MDF_Escalation</fullName>
         <filterScope>Queue</filterScope>
-        <label>CCP EEF Fin Mgr Escalations L1 Que</label>
-        <queue>Core_MDF_CCP_EEF_Fin_Mgr_Escl_L1_Que</queue>
+        <label>CCP EEF Escalation Queue</label>
+        <queue>Core_MDF_CCP_EEF_Escl_Queue</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Core_MDF_CCP_IPA_APJ_Escltns_L1_Apr_Que_Core_MDF_Escalation</fullName>
-        <filterScope>Queue</filterScope>
-        <label>CCP IPA APJ Escltns L1 Appr Que</label>
-        <queue>Core_MDF_CCP_IPA_APJ_Escltns_L1_Apr_Que</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_MDF_CCP_IPA_ASMO_Esc_L1_Apr_Que_Core_MDF_Escalation</fullName>
-        <filterScope>Queue</filterScope>
-        <label>CCP IPA ASMO Escltns L1 Appr Que</label>
-        <queue>Core_MDF_CCP_IPA_ASMO_Esc_L1_Apr_Que</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_MDF_CCP_IPA_ASMO_LAR_Esc_L1_Apr_Que_Core_MDF_Escalation</fullName>
-        <filterScope>Queue</filterScope>
-        <label>CCP IPA ASMO LAR Escltns L1 Appr Que</label>
-        <queue>Core_MDF_CCP_IPA_ASMO_LAR_Esc_L1_Apr_Que</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_MDF_CCP_IPA_ASMO_NAR_Esc_L1_Apr_Que_Core_MDF_Escalation</fullName>
-        <filterScope>Queue</filterScope>
-        <label>CCP IPA ASMO NAR Escltns L1 Appr Que</label>
-        <queue>Core_MDF_CCP_IPA_ASMO_NAR_Esc_L1_Apr_Que</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_MDF_CCP_IPA_CaseRevMgr_Escl_L2_Que_Core_MDF_Escalation</fullName>
-        <filterScope>Queue</filterScope>
-        <label>CCP IPA Case Reviewer Mgr Escltns L2 Que</label>
-        <queue>Core_MDF_CCP_IPA_CaseRevMgr_Escl_L2_Que</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_MDF_CCP_IPA_EMEA_Escltns_L1_Apr_Que_Core_MDF_Escalation</fullName>
-        <filterScope>Queue</filterScope>
-        <label>CCP IPA EMEA Escltns L1 Appr Que</label>
-        <queue>Core_MDF_CCP_IPA_EMEA_Escltns_L1_Apr_Que</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_MDF_CCP_IPA_Esc_L2_Apr_Que_Core_MDF_Escalation</fullName>
+        <fullName>Core_MDF_CCP_IPA_Escltns_L2_Appr_Que_Core_MDF_Escalation</fullName>
         <filterScope>Queue</filterScope>
         <label>CCP IPA Escltns L2 Appr Que</label>
         <queue>Core_MDF_CCP_IPA_Esc_L2_Apr_Que</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_MDF_CCP_IPA_Escltns_L1_Appr_Queue_Core_MDF_Escalation</fullName>
-        <filterScope>Queue</filterScope>
-        <label>CCP IPA Escltns L1 Appr Queue</label>
-        <queue>Core_MDF_CCP_IPA_Escltns_L1_Appr_Queue</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
@@ -1308,19 +1369,19 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Core_MDF_CCP_IPA_PRC_Escltns_L1_Apr_Que_Core_MDF_Escalation</fullName>
+        <fullName>Core_MDF_CCP_NRE_Fin_Mgr_Escl_L1_Que_Core_MDF_Escalation</fullName>
         <filterScope>Queue</filterScope>
-        <label>CCP IPA PRC Escltns L1 Appr Que</label>
-        <queue>Core_MDF_CCP_IPA_PRC_Escltns_L1_Apr_Que</queue>
+        <label>CCP Co-GTM Fin Mgr Escalations L1 Que</label>
+        <queue>Core_MDF_CCP_Co_GTM_Fin_Mgr_Escl_L1_Que</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Core_MDF_CCP_IPA_Prog_Adm_Escltns_L2_Que_Core_MDF_Escalation</fullName>
+        <fullName>Core_MDF_CCP_Retail_APJ_FinMgr_EscL2_Que_Core_MDF_Escalation</fullName>
         <filterScope>Queue</filterScope>
-        <label>CCP IPA Prog Admin Escltns L2 Queue</label>
-        <queue>Core_MDF_CCP_IPA_Prog_Adm_Escltns_L2_Que</queue>
+        <label>CCP Retail APJ Fin Mgr Escltns L2 Que</label>
+        <queue>Core_MDF_CCP_Retail_APJ_FinMgr_EscL2_Que</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
@@ -1335,28 +1396,94 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Core_MDF_CCP_Retail_APJ_Geo_Lead_Que_Core_MDF_Escalation</fullName>
+        <fullName>Core_MDF_CCP_Retail_ASMOLAR_FinMgr_EscL1_Core_MDF_Escalation</fullName>
         <filterScope>Queue</filterScope>
-        <label>CCP Retail APJ Geo Lead Que</label>
-        <queue>Core_MDF_CCP_Retail_APJ_Geo_Lead_Que</queue>
+        <label>CCP Retail ASMO LAR Fin Mgr Escl L1 Que</label>
+        <queue>Core_MDF_CCP_Retail_ASMOLAR_FinMgr_EscL1</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_CCP_Retail_ASMOLAR_FinMgr_EscL2_Core_MDF_Escalation</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP Retail ASMO LAR Fin Mgr Escl L2 Que</label>
+        <queue>Core_MDF_CCP_Retail_ASMOLAR_FinMgr_EscL2</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
     <listViews>
         <fullName>Core_MDF_CCP_Retail_ASMOLAR_FinMgr_Esc_Core_MDF_Escalation</fullName>
-        <filterScope>Queue</filterScope>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Escalation_Name_txt__c</columns>
+        <columns>Core_MDF_Total_Dollar_Impact_amt__c</columns>
+        <columns>Core_MDF_Escalation_Status_nm__c</columns>
+        <columns>Core_MDF_Root_Cause_nm__c</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>Core_MDF_Channel_Program_id__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Channel_Program_id__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Escalation_Status_nm__c</field>
+            <operation>equals</operation>
+            <value>Pending Review</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Core_MDF_Escalation__c.Core_MDF_Budget</value>
+        </filters>
         <label>CCP Retail ASMO LAR Fin Mgr Escl Que</label>
-        <queue>Core_MDF_CCP_Retail_ASMOLAR_FinMgr_Esc</queue>
+        <language>en_US</language>
+        <sharedTo>
+            <group>Core_MDF_CCP_Retail_ASMOLAR_FinMgr_Esc</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_CCP_Retail_ASMOLAR_Geo_Lead_Que_Core_MDF_Escalation</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Escalation_Name_txt__c</columns>
+        <columns>Core_MDF_Total_Dollar_Impact_amt__c</columns>
+        <columns>Core_MDF_Escalation_Status_nm__c</columns>
+        <columns>Core_MDF_Root_Cause_nm__c</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>Core_MDF_Channel_Program_id__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Channel_Program_id__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Escalation_Status_nm__c</field>
+            <operation>equals</operation>
+            <value>Pending Review</value>
+        </filters>
+        <label>CCP Retail ASMO LAR Geo Lead Que</label>
+        <language>en_US</language>
+        <sharedTo>
+            <group>Core_MDF_CCP_Retail_ASMOLAR_Geo_Lead_Grp</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_CCP_Retail_ASMONAR_FinMgr_EscL1_Core_MDF_Escalation</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP Retail ASMO NAR Fin Mgr Escl L1 Que</label>
+        <queue>Core_MDF_CCP_Retail_ASMONAR_FinMgr_EscL1</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Core_MDF_CCP_Retail_ASMOLAR_Geo_Lead_Que_Core_MDF_Escalation</fullName>
+        <fullName>Core_MDF_CCP_Retail_ASMONAR_FinMgr_EscL2_Core_MDF_Escalation</fullName>
         <filterScope>Queue</filterScope>
-        <label>CCP Retail ASMO LAR Geo Lead Que</label>
-        <queue>Core_MDF_CCP_Retail_ASMOLAR_Geo_Lead_Que</queue>
+        <label>CCP Retail ASMO NAR Fin Mgr Escl L2 Que</label>
+        <queue>Core_MDF_CCP_Retail_ASMONAR_FinMgr_EscL2</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
@@ -1375,6 +1502,24 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
         <filterScope>Queue</filterScope>
         <label>CCP Retail ASMO NAR Geo Lead Que</label>
         <queue>Core_MDF_CCP_Retail_ASMONAR_Geo_Lead_Que</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_CCP_Retail_EMEA_FinMgr_EscL1Que_Core_MDF_Escalation</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP Retail EMEA Fin Mgr Escltns L1 Que</label>
+        <queue>Core_MDF_CCP_Retail_EMEA_FinMgr_EscL1Que</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_CCP_Retail_EMEA_FinMgr_EscL2Que_Core_MDF_Escalation</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP Retail EMEA Fin Mgr Escltns L2 Que</label>
+        <queue>Core_MDF_CCP_Retail_EMEA_FinMgr_EscL2Que</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
@@ -1416,6 +1561,15 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
         </sharedTo>
     </listViews>
     <listViews>
+        <fullName>Core_MDF_CCP_Retail_Finance_Manager_Que_Core_MDF_Escalation</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP Retail Finance Manager Queue</label>
+        <queue>Core_MDF_CCP_Retail_Finance_Manager_Que</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
         <fullName>Core_MDF_CCP_Retail_INDIA_FinMgr_Esc_Que_Core_MDF_Escalation</fullName>
         <filterScope>Queue</filterScope>
         <label>CCP Retail INDIA Fin Mgr Escltns Que</label>
@@ -1429,6 +1583,50 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
         <filterScope>Queue</filterScope>
         <label>CCP Retail INDIA Geo Lead Que</label>
         <queue>Core_MDF_CCP_Retail_INDIA_Geo_Lead_Que</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_CCP_Retail_PJ_Geo_Lead_Que_Core_MDF_Escalation</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Escalation_Name_txt__c</columns>
+        <columns>Core_MDF_Total_Dollar_Impact_amt__c</columns>
+        <columns>Core_MDF_Escalation_Status_nm__c</columns>
+        <columns>Core_MDF_Root_Cause_nm__c</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>Core_MDF_Channel_Program_id__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Channel_Program_id__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Escalation_Status_nm__c</field>
+            <operation>equals</operation>
+            <value>Pending Review</value>
+        </filters>
+        <label>CCP Retail APJ Geo Lead Que</label>
+        <language>en_US</language>
+        <sharedTo>
+            <group>Core_MDF_CCP_Retail_APJ_Geo_Lead_Grp</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_CCP_Retail_PRC_FinMgr_EscL1_Que_Core_MDF_Escalation</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP Retail PRC Fin Mgr Escltns L1 Que</label>
+        <queue>Core_MDF_CCP_Retail_PRC_FinMgr_EscL1_Que</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_CCP_Retail_PRC_FinMgr_EscL2_Que_Core_MDF_Escalation</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP Retail PRC Fin Mgr Escltns L2 Que</label>
+        <queue>Core_MDF_CCP_Retail_PRC_FinMgr_EscL2_Que</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
@@ -1556,29 +1754,102 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Core_MDF_CCP_SPCF_Prog_Admin_Escl_L3_Que_Core_MDF_Escalation</fullName>
+        <fullName>Core_MDF_CCRM_Queue_Core_MDF_Escalation</fullName>
         <columns>NAME</columns>
-        <columns>Core_MDF_Escalation_Name_txt__c</columns>
-        <columns>Core_MDF_Total_Dollar_Impact_amt__c</columns>
-        <columns>Core_MDF_Escalation_Status_nm__c</columns>
-        <columns>Core_MDF_Root_Cause_nm__c</columns>
-        <columns>RECORDTYPE</columns>
-        <columns>Core_MDF_Channel_Program_id__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_MDF_Channel_Program_id__c</field>
-            <operation>equals</operation>
-            <value>Service Provider Co-Marketing Fund</value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Escalation_Status_nm__c</field>
-            <operation>equals</operation>
-            <value>Pending Review</value>
-        </filters>
-        <label>CCP SPCF Prog Admin Escalations L3 Que</label>
+        <filterScope>Queue</filterScope>
+        <label>IPA Case Reviewer Mgr Escltns L2 Que</label>
         <language>en_US</language>
+        <queue>Core_MDF_CCP_IPA_CaseRevMgr_Escl_L2_Que</queue>
         <sharedTo>
-            <group>Core_MDF_CCP_SPCF_Prog_Admin_Escl_L3_Grp</group>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_IPA_APJ_Geo_Lead_Que_Core_MDF_Escalation</fullName>
+        <columns>NAME</columns>
+        <filterScope>Queue</filterScope>
+        <label>IPA APJ Escltns L1 Appr Que</label>
+        <language>en_US</language>
+        <queue>Core_MDF_CCP_IPA_APJ_Escltns_L1_Apr_Que</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_IPA_ASMO_Esc_L1_Apr_Que_Core_MDF_Escalation</fullName>
+        <columns>NAME</columns>
+        <filterScope>Queue</filterScope>
+        <label>IPA ASMO Escltns L1 Appr Que</label>
+        <language>en_US</language>
+        <queue>Core_MDF_CCP_IPA_ASMO_Esc_L1_Apr_Que</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_IPA_ASMO_LAR_Geo_L1_Apr_Que_Core_MDF_Escalation</fullName>
+        <columns>NAME</columns>
+        <filterScope>Queue</filterScope>
+        <label>IPA ASMO LAR Escltns L1 Appr Que</label>
+        <language>en_US</language>
+        <queue>Core_MDF_CCP_IPA_ASMO_LAR_Esc_L1_Apr_Que</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_IPA_ASMO_NAR_Geo_L1_Apr_Que_Core_MDF_Escalation</fullName>
+        <columns>NAME</columns>
+        <filterScope>Queue</filterScope>
+        <label>IPA ASMO NAR Escltns L1 Appr Que</label>
+        <language>en_US</language>
+        <queue>Core_MDF_CCP_IPA_ASMO_NAR_Esc_L1_Apr_Que</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_IPA_EMEA_Geo_Lead_Que_Core_MDF_Escalation</fullName>
+        <columns>NAME</columns>
+        <filterScope>Queue</filterScope>
+        <label>IPA EMEA Escltns L1 Appr Que</label>
+        <language>en_US</language>
+        <queue>Core_MDF_CCP_IPA_EMEA_Escltns_L1_Apr_Que</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_IPA_Escltns_L1_Appr_Queue_Core_MDF_Escalation</fullName>
+        <columns>NAME</columns>
+        <filterScope>Queue</filterScope>
+        <label>IPA Escltns L1 Appr Queue</label>
+        <language>en_US</language>
+        <queue>Core_MDF_CCP_IPA_Escltns_L1_Appr_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_IPA_PRC_Geo_Lead_Que_Core_MDF_Escalation</fullName>
+        <columns>NAME</columns>
+        <filterScope>Queue</filterScope>
+        <label>IPA PRC Escltns L1 Appr Que</label>
+        <language>en_US</language>
+        <queue>Core_MDF_CCP_IPA_PRC_Escltns_L1_Apr_Que</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_IPA_Prog_Admin_Queue_Core_MDF_Escalation</fullName>
+        <columns>NAME</columns>
+        <filterScope>Queue</filterScope>
+        <label>IPA Prog Admin Escltns L2 Queue</label>
+        <language>en_US</language>
+        <queue>Core_MDF_CCP_IPA_Prog_Adm_Escltns_L2_Que</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
     <listViews>
@@ -1613,12 +1884,23 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Escalations</pluralLabel>
+    <profileSearchLayouts>
+        <fields>NAME</fields>
+        <profileName>Comarketing Support L2</profileName>
+    </profileSearchLayouts>
     <recordTypeTrackHistory>true</recordTypeTrackHistory>
     <recordTypes>
         <fullName>Core_MDF_Budget</fullName>
         <active>true</active>
         <compactLayoutAssignment>Core_MDF_Escalation</compactLayoutAssignment>
         <label>Budget</label>
+        <picklistValues>
+            <picklist>Core_MDF_Escalation_Status_Cancel_nm__c</picklist>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
         <picklistValues>
             <picklist>Core_MDF_Escalation_Status_nm__c</picklist>
             <values>
@@ -1656,6 +1938,13 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
         <compactLayoutAssignment>Core_MDF_Escalation</compactLayoutAssignment>
         <label>Claim Case Review Result</label>
         <picklistValues>
+            <picklist>Core_MDF_Escalation_Status_Cancel_nm__c</picklist>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Core_MDF_Escalation_Status_nm__c</picklist>
             <values>
                 <fullName>Approved</fullName>
@@ -1687,6 +1976,13 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
         <active>true</active>
         <compactLayoutAssignment>Core_MDF_Escalation</compactLayoutAssignment>
         <label>Late Claim</label>
+        <picklistValues>
+            <picklist>Core_MDF_Escalation_Status_Cancel_nm__c</picklist>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
         <picklistValues>
             <picklist>Core_MDF_Escalation_Status_nm__c</picklist>
             <values>
@@ -1728,7 +2024,8 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
     </recordTypes>
     <searchLayouts>
         <listViewButtons>Core_MDF_Export_List_View</listViewButtons>
-        <searchResultsCustomButtons>Core_MDF_Export_List_View</searchResultsCustomButtons>
+        <listViewButtons>export_Test</listViewButtons>
+        <searchResultsAdditionalFields>Core_MDF_Co_Marketing_Activity_id__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
     <validationRules>
@@ -1752,6 +2049,13 @@ AND(RecordType.Name  =&apos;Late Claim&apos;, Core_MDF_Co_Marketing_Activity_id_
 AND(RecordType.Name  =&apos;Claim Case Review Result&apos;, Core_MDF_Case_ID_Number_id__r.Account.Core_MDF_Active_Ind__c = false)
 ),AND(ISCHANGED(Core_MDF_Escalation_Status_nm__c),NOT(OR(ISPICKVAL(Core_MDF_Escalation_Status_nm__c, &quot;Cancelled&quot;),ISPICKVAL(Core_MDF_Escalation_Status_nm__c, &quot;Expired&quot;)))))</errorConditionFormula>
         <errorMessage>Escalation cannot be created for an inactive Account.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Check_ClaimSubmitter_Active</fullName>
+        <active>false</active>
+        <description>Check_ClaimSubmitter_Active</description>
+        <errorConditionFormula>Core_MDF_Claim_Submitter_Id__r.IsActive = false</errorConditionFormula>
+        <errorMessage>Selected user is not Active.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_Claim_Case_Required_Fields</fullName>
@@ -1809,6 +2113,30 @@ ISCHANGED(Core_MDF_Approved_Amount_amt__c)
         <errorMessage>Approved amount cannot be edited in this status.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Core_MDF_ErrorOnEditingClaimSubmitter</fullName>
+        <active>false</active>
+        <description>Claim Submitter Field is not editable in Denied/Approved/Cancelled Status</description>
+        <errorConditionFormula>AND( ISCHANGED( Core_MDF_Claim_Submitter_Id__c ), OR(ISPICKVAL( Core_MDF_Escalation_Status_nm__c , &apos;Approved&apos;),
+ISPICKVAL( Core_MDF_Escalation_Status_nm__c , &apos;Denied&apos;),
+ISPICKVAL( Core_MDF_Escalation_Status_nm__c , &apos;Cancelled&apos;),
+ISPICKVAL( Core_MDF_Escalation_Status_nm__c , &apos;Expired&apos;)))</errorConditionFormula>
+        <errorMessage>Claim Submitter can be edited only for Pending Review status.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_ErrorOnEditing_Checkbox</fullName>
+        <active>false</active>
+        <description>Do not Auto Create Claim checkbox can be edited only for Pending Review status.</description>
+        <errorConditionFormula>AND(
+OR(
+ISPICKVAL( Core_MDF_Escalation_Status_nm__c , &apos;Approved&apos;),
+ISPICKVAL( Core_MDF_Escalation_Status_nm__c , &apos;Denied&apos;),
+ISPICKVAL( Core_MDF_Escalation_Status_nm__c , &apos;Cancelled&apos;)
+),
+ISCHANGED(Core_MDF_Do_not_Auto_Create_Claim_Ind__c)
+)</errorConditionFormula>
+        <errorMessage>Do not Auto Create Claim can be edited only for Pending Review status.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Core_MDF_LateClaim_ClaimSubUserCheck</fullName>
         <active>true</active>
         <errorConditionFormula>AND(
@@ -1845,6 +2173,15 @@ Claim Submitter</errorMessage>
 )</errorConditionFormula>
         <errorDisplayField>Core_MDF_Co_Marketing_Activity_id__c</errorDisplayField>
         <errorMessage>Escalations can only be created for Outcome Based Campaign records.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_RestrictClaimOnDeclinedActivity</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(
+RecordType.DeveloperName = &apos;Core_MDF_Late_Claim&apos;,
+ISPICKVAL(Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Fund_Request_Status__c,&apos;Declined&apos;))</errorConditionFormula>
+        <errorDisplayField>Core_MDF_Activity_Number_txt__c</errorDisplayField>
+        <errorMessage>Claim cannot be created - associated campaign is declined.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_RestrictMissedApprovalActivity</fullName>
@@ -1884,5 +2221,18 @@ Core_MDF_Escalation_Type_nm__c != &apos;Claim Case Review Result&apos;)</errorCo
         <protected>false</protected>
         <requireRowSelection>true</requireRowSelection>
         <url>/apex/Core_MDF_ExportToExcel?ObjName=Core_MDF_Escalation__c</url>
+    </webLinks>
+    <webLinks>
+        <fullName>export_Test</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>export Test</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/apex/Export</url>
     </webLinks>
 </CustomObject>

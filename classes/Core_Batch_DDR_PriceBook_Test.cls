@@ -32,7 +32,6 @@ public class Core_Batch_DDR_PriceBook_Test
         insert lstPriceBook;  
         
         List<Product2> lstProduct = new List<Product2>();
-        Set<Id> PricebookId1 = new Set<Id>();
         
         //Product1 price book entry update scenario
         Product2 product1 = new Product2();
@@ -42,7 +41,6 @@ public class Core_Batch_DDR_PriceBook_Test
         product1.Core_Sales_Visible_Flag__c = TRUE;
         product1.Core_Partner_Visible_Ind__c  = TRUE;
         lstProduct.add(product1);
-        PricebookId1.add(product1.Id);
         
         //Product2 price book entry create scenario
         Product2 product2 = new Product2();
@@ -52,7 +50,6 @@ public class Core_Batch_DDR_PriceBook_Test
         product2.Core_Sales_Visible_Flag__c = TRUE;
         product2.Core_Partner_Visible_Ind__c  = TRUE;
         lstProduct.add(product2);
-        PricebookId1.add(product2.Id);
         
         //Product 3 price book entry deactivate scenario
         Product2 product3 = new Product2();
@@ -61,8 +58,7 @@ public class Core_Batch_DDR_PriceBook_Test
         product3.Core_Design_Registration_Eligible_Ind__c = TRUE;
         product3.Core_Sales_Visible_Flag__c = TRUE;
         product3.Core_Partner_Visible_Ind__c  = FALSE;
-        lstProduct.add(product3);  
-        PricebookId1.add(product3.Id);      
+        lstProduct.add(product3);        
         
         insert lstProduct;
         
@@ -93,7 +89,13 @@ public class Core_Batch_DDR_PriceBook_Test
         lstPriceBookEntry.add(PriceBookEntry2);
         
         PricebookEntry PriceBookEntry3 = new PricebookEntry();
-        PriceBookEntry3 = setPriceBookIdForPartnerPriceBook(lstPriceBook);
+        for(Pricebook2 iPB : lstPriceBook)
+        {
+            if(iPB.Name == 'Partner Price Book')
+            {
+                PriceBookEntry3.Pricebook2Id =  iPB.ID;
+            }
+        }
         PriceBookEntry3.Product2Id = lstProduct[0].id;
         PriceBookEntry3.IsActive = true;
         PriceBookEntry3.UnitPrice = 100;
@@ -155,14 +157,13 @@ public class Core_Batch_DDR_PriceBook_Test
         lstPriceBookEntry.add(PriceBookEntry7); 
         
         PricebookEntry PriceBookEntry8 = new PricebookEntry();
-        PriceBookEntry8 = setPriceBookIdForPartnerPriceBook(lstPriceBook);
-        // for(Pricebook2 iPB : lstPriceBook)
-        // {
-        //     if(iPB.Name == 'Partner Price Book')
-        //     {
-        //         PriceBookEntry8.Pricebook2Id =  iPB.Id;
-        //     }
-        // }
+        for(Pricebook2 iPB : lstPriceBook)
+        {
+            if(iPB.Name == 'Partner Price Book')
+            {
+                PriceBookEntry8.Pricebook2Id =  iPB.Id;
+            }
+        }
         PriceBookEntry8.Product2Id = lstProduct[2].id;
         PriceBookEntry8.IsActive = true;
         PriceBookEntry8.UnitPrice = 100;
@@ -175,11 +176,6 @@ public class Core_Batch_DDR_PriceBook_Test
                 
         insert lstPriceBookEntry;
         
-        List<PricebookEntry> lstPricebookEntry1 = new List<PricebookEntry>();
-        lstPricebookEntry1 = [SELECT Id, Product2Id, Pricebook2Id, UnitPrice, isActive FROM PricebookEntry WHERE Pricebook2Id IN: PricebookId1];
-        //system.debug('ans:'+lstPricebookEntry1.size());
-        system.assertequals(0,lstPricebookEntry1.size());
-        
         
         Test.StartTest();
         Core_Batch_DDR_PriceBook objPartnerPB1 = new Core_Batch_DDR_PriceBook();  
@@ -187,21 +183,6 @@ public class Core_Batch_DDR_PriceBook_Test
         
         Core_Batch_DDR_PriceBook_Scheduler.SchedulerMethod();  
         Test.StopTest();
-    }
-    
-    public static PricebookEntry setPriceBookIdForPartnerPriceBook(List<Pricebook2> lstPriceBook){
-
-        PricebookEntry PriceBookEntry = new PricebookEntry();
-        for(Pricebook2 iPB : lstPriceBook)
-            {
-            
-                if(iPB.Name == 'Partner Price Book')
-                {
-                    PriceBookEntry.Pricebook2Id =  iPB.ID;
-                }
-            }
-
-        return PriceBookEntry;
-    }
+    }     
    
 }

@@ -160,6 +160,9 @@ public without sharing class Core_MDF_BankAccountServiceHandler{
                             userIdList = accountIdUserIdListMap.get(bankAccountId);
                             bankIdUserIdListMap.put(bankId, userIdList);
                         }
+                       /* //ATHR Fix - Deeply nested  if
+                        bankIdUserIdListMap.put(bankId,(bankIdUserIdListMap.containsKey(bankId) ? bankIdUserIdListMap.get(bankId) : new List<Id>()));
+                        bankIdUserIdListMap.get(bankId).addAll(accountIdUserIdListMap.get(bankAccountId));//ATHR End*/
                     }
                 //}
             }
@@ -200,7 +203,7 @@ public without sharing class Core_MDF_BankAccountServiceHandler{
     {
         // Map to store account and its list of users
         Map<Id,List<Id>> accountIdUserIdListMap = new Map<Id,List<Id>>();
-        
+        //Jahnavi K -- Added Partner_License_Reclaimed__c in where clause for "Reclaiming SF Partner License"
         for(Core_MDF_Partner_Node_User_Mapping__c pNUMappingRecord : [SELECT Core_MDF_Account__c, Core_MDF_User__c
                                                                       FROM Core_MDF_Partner_Node_User_Mapping__c
                                                                       WHERE Core_MDF_Account__c IN :listOfAccounts
@@ -499,7 +502,7 @@ public without sharing class Core_MDF_BankAccountServiceHandler{
                 inpAcctBnkIdMap.put(abm.Core_MDF_Account__c,new List<Id>{abm.Core_MDF_Bank__c});
             }
         }
-
+        //Jahnavi K -- Added Partner_License_Reclaimed__c in where clause for "Reclaiming SF Partner License"
         List<Core_MDF_Partner_Node_User_Mapping__c> acctUserIdLst = 
             [SELECT Core_MDF_Account__c,Core_MDF_User__c FROM Core_MDF_Partner_Node_User_Mapping__c
              WHERE Core_MDF_Account__c IN :inpAcctIdLst and (Core_MDF_User__r.IsActive=true or Core_MDF_User__r.Partner_License_Reclaimed__c = true)];

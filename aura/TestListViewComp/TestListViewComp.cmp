@@ -1,0 +1,11 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+	<lightning:listView aura:id="listViewAccounts"
+    objectApiName="Core_MDF_Escalation__c"
+    listName="Core_MDF_Open_Escalations"
+    rows="5"
+    showSearchBar="false"
+    showActionBar="false"
+    enableInlineEdit="false"
+    showRowLevelActions="false"
+/>
+</aura:component>

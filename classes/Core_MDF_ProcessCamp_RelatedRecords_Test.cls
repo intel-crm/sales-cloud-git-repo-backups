@@ -92,7 +92,8 @@ Accenture – Harika P        8/30/2018                    Created.
             //camp.Core_MDF_Activity_Category_Type__c = 'Broadcast->Radio';
             insert camp;
             list<Core_MDF_Regionwise_Campaign_Budget__c> rWise = Core_MDF_CampGridController.regionalData(camp.Id);
-            List<String> rWiseList= new List<String>();
+            // Highlight: Unused Local Variable - Indira
+           // List<String> rWiseList= new List<String>();
             for(Core_MDF_Regionwise_Campaign_Budget__c rcb : rWise){
                 assert.isTrue(camp.Core_MDF_Market__c.contains(rcb.Core_MDF_Region__c));
             }  
@@ -106,7 +107,8 @@ Accenture – Harika P        8/30/2018                    Created.
             
             // call SaveRegionWiseData method from class
             Core_MDF_CampGridController.SaveRegionWiseData(rWise);
-            List<String> rWise1List= new List<String>();
+            // Highlight: Unused Local Variable - Indira
+           // List<String> rWise1List= new List<String>();
             for(Core_MDF_Regionwise_Campaign_Budget__c rcb : rWise){
                 assert.isTrue(camp.Core_MDF_Market__c.contains(rcb.Core_MDF_Region__c));
             }
@@ -121,7 +123,8 @@ Accenture – Harika P        8/30/2018                    Created.
             Campaign campxc1 = [SELECT Name, Id, Core_MDF_Activity_Category_Type__c, Core_MDF_Activity_Category__c FROM Campaign WHERE 
                                 Name = 'DCFTestCamp' LIMIT 1];
             list<Core_MDF_Categorywise_Campaign_Budget__c>cWise = Core_MDF_CampGridController.categoryData(campxc1.Id);
-            List<String> cWiseList = new List<String>();
+           // Highlight: Unused Local Variable - Indira
+          //  List<String> cWiseList = new List<String>();
             for(Core_MDF_Categorywise_Campaign_Budget__c ccb : cWise){
                 assert.isTrue(campxc1.Core_MDF_Activity_Category__c.contains(ccb.Core_MDF_Activity_Category__c));
             }
@@ -136,7 +139,8 @@ Accenture – Harika P        8/30/2018                    Created.
             
             // call SaveCategoryWiseData method from class
             Core_MDF_CampGridController.SaveCategoryWiseData(cWise);
-            List<String> cWise1List = new List<String>();
+           // Highlight: Unused Local Variable - Indira
+           // List<String> cWise1List = new List<String>();
             for(Core_MDF_Categorywise_Campaign_Budget__c ccb : cWise){
                 assert.isTrue(campxc44.Core_MDF_Activity_Category__c.contains(ccb.Core_MDF_Activity_Category__c));
             }
@@ -149,7 +153,8 @@ Accenture – Harika P        8/30/2018                    Created.
             camp2.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
             insert camp2;
             list<Core_MDF_Regionwise_Campaign_Budget__c> rWise2 = Core_MDF_CampGridController.regionalData(camp2.Id);
-            List<String> rWise2List = new List<String>();
+           // Highlight: Unused Local Variable - Indira
+          //  List<String> rWise2List = new List<String>();
             for(Core_MDF_Regionwise_Campaign_Budget__c rcb : rWise2){
                 assert.isTrue(camp2.Core_MDF_Market__c.contains(rcb.Core_MDF_Region__c));
             }  
@@ -161,7 +166,8 @@ Accenture – Harika P        8/30/2018                    Created.
             
             // call SaveRegionWiseData method from class
             Core_MDF_CampGridController.SaveRegionWiseData(rWise2);
-            List<String> rWise3List= new List<String>();
+           // Highlight: Unused Local Variable - Indira
+          //  List<String> rWise3List= new List<String>();
             for(Core_MDF_Regionwise_Campaign_Budget__c rcb : rWise2){
                 assert.isTrue(camp2.Core_MDF_Market__c.contains(rcb.Core_MDF_Region__c));
             }
@@ -178,7 +184,8 @@ Accenture – Harika P        8/30/2018                    Created.
             Campaign campxc3 = [SELECT Name, Id, Core_MDF_Activity_Category_Type__c, Core_MDF_Activity_Category__c FROM Campaign WHERE 
                                 Name = 'DCFTestCamp1' LIMIT 1];
             list<Core_MDF_Categorywise_Campaign_Budget__c> cWise2 = Core_MDF_CampGridController.categoryData(campxc3.Id);
-            List<String> cWise2List = new List<String>();
+            // Highlight: Unused Local Variable - Indira
+           // List<String> cWise2List = new List<String>();
             for(Core_MDF_Categorywise_Campaign_Budget__c ccb : cWise2){
                 assert.isTrue(campxc3.Core_MDF_Activity_Category__c.contains(ccb.Core_MDF_Activity_Category__c));
             } 
@@ -212,7 +219,8 @@ Accenture – Harika P        8/30/2018                    Created.
             
             // call SaveCategoryWiseData method from class
             Core_MDF_CampGridController.SaveCategoryWiseData(cWise3);
-            List<String> cWise3List = new List<String>();
+            // Highlight: Unused Local Variable - Indira
+           // List<String> cWise3List = new List<String>();
             for(Core_MDF_Categorywise_Campaign_Budget__c ccb : cWise3){
                 assert.isTrue(campxc11.Core_MDF_Activity_Category__c.contains(ccb.Core_MDF_Activity_Category__c));
             }
@@ -354,7 +362,8 @@ Accenture – Harika P        8/30/2018                    Created.
             pmbList.add(pbmEef);
             
             Database.insert(pmbList);
-            PartnerFundAllocation eefPFA = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test EEF PFA', pbmEef, eefActivatingVirtualCorp, 30000, true);
+           // Highlight: Unused Local Variable - Indira
+          //  PartnerFundAllocation eefPFA = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test EEF PFA', pbmEef, eefActivatingVirtualCorp, 30000, true);
             
             List<Core_MDF_Partner_Group_Mapping__c> pgmList = new List<Core_MDF_Partner_Group_Mapping__c>();
             
@@ -424,6 +433,8 @@ Accenture – Harika P        8/30/2018                    Created.
               eefCamp.Core_MDF_Partner_Mapping_Txt__c = eefActivatingVirtualCorp2.id;
             update eefCamp;
            Test.stopTest(); 
+         // Unit Test Method should include System.Assert - Indira
+         System.assertEquals(3, pgmList.size(), 'Partner Group Mapping list should contain 3 mappings');
         }
     }    
 }

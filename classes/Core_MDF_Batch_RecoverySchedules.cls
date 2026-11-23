@@ -16,18 +16,13 @@ global without sharing class Core_MDF_Batch_RecoverySchedules implements Databas
     global void execute(Database.BatchableContext batchableContext, List<sObject> scope)
     {
         try{
-	    // WW14 - Method moved to Core_MDF_Calendar_Utility - Roshan
-            //List<Period> currentFiscalQuarterDetails = getFiscalQuarterWeekPeriods(currentDate);
-	    List<Period> currentFiscalQuarterDetails = Core_MDF_Calendar_Utility.getFiscalQuarterWeekPeriods(currentDate);
-
+            List<Period> currentFiscalQuarterDetails = Core_MDF_Calendar_Utility.getFiscalQuarterWeekPeriods(currentDate);
             //Exit from the exection if the size is not 13(4,4,5)
             if(currentFiscalQuarterDetails.size() != 13){
                 return;
             }
             //Key: Month1Week1 => Period record
-	    // WW14 - Method moved to Core_MDF_Calendar_Utility - Roshan
-            //Map<String, Period> monthNumberToQuarterPeriodsMap = mapMonthAndWeekPeriods(currentFiscalQuarterDetails);
-	    Map<String, Period> monthNumberToQuarterPeriodsMap = Core_MDF_Calendar_Utility.mapMonthAndWeekPeriods(currentFiscalQuarterDetails);
+            Map<String, Period> monthNumberToQuarterPeriodsMap = Core_MDF_Calendar_Utility.mapMonthAndWeekPeriods(currentFiscalQuarterDetails);
             
             //Map<String, List<Date>> programToRecoveryRunDate = new Map<String, List<Date>>();
             Map<String, Map<String,Date>> programToMonthToRecoveryRunDate = new Map<String, Map<String,Date>>();
@@ -54,6 +49,7 @@ global without sharing class Core_MDF_Batch_RecoverySchedules implements Databas
             }
             
             Map<String, Core_MDF_Batch_Scheduler__c> uniqueKeyToBatchSchedulerMap = new Map<String, Core_MDF_Batch_Scheduler__c>();
+            Map<Date, Integer> recoveryRunDateToMinutuesToAddMap= new Map<Date, Integer>();
             Integer minutesToAdd = 5;
             for(String program : programToMonthToRecoveryRunDate.keySet()){
                 for(String recoveryMonth : programToMonthToRecoveryRunDate.get(program).keySet()){
@@ -63,6 +59,7 @@ global without sharing class Core_MDF_Batch_RecoverySchedules implements Databas
                     String region = '';
                     Boolean onlyPreselection = false;
                     Boolean notifyReminders = false;
+                    //Basetime- Surepay 8:00 & Recovery- 9:00 IST
                     Integer surePayExecutionHour;
                     Integer surePayExecutionMin;
                     Integer recoveryExecutionHour;
@@ -75,6 +72,8 @@ global without sharing class Core_MDF_Batch_RecoverySchedules implements Databas
                         List<String> onlyPreselectionMonthList= String.isNotBlank(programToWrapper.onlyReadyToRecoverMonths) ? programToWrapper.onlyReadyToRecoverMonths.split(',') : new List<String>();
                         onlyPreselection = onlyPreselectionMonthList.contains(recoveryMonth) ? true : false;
                         notifyReminders = String.isNotBlank(programToWrapper.reminderDays) ? true : false;
+
+                        //Added
                         if(String.isNotBlank(programToWrapper.surePayExeTime)){
                             List<String> surePayTime = programToWrapper.surePayExeTime.split(':');
                             if(surePayTime.size() == 2){
@@ -103,17 +102,23 @@ global without sharing class Core_MDF_Batch_RecoverySchedules implements Databas
                             minutesToAdd += 5;
                         }
                     }
-                    //Surepay and Recovery Run Schedule
+
+                    //Integer minutesToAddForRecoveryRun = 0;
                     String technicalProgramName = Core_MDF_CCP_GenericUtility.getTechnicalProgramName(program);
+                    // Add SurePay Batch Schedule
                     String surePayJson = '{"program" : "' + technicalProgramName + '"}';
                     String recoverRunJson = '{"program" : "' + technicalProgramName + '","budgetType" : "'+ budgetType +'","quarterYear" : "","accountIds" : "","regions" : "'+ region +'","source" : "Payment Run","isRecReq_RecvryDone" : ' + onlyPreselection +',"isPreSelClaim_RecvryDone" : ' + onlyPreselection + '}';
                     
+                    // if(recoveryRunDateToMinutuesToAddMap.containsKey(recoveryExecutionDate)){
+                    //     minutesToAddForRecoveryRun = recoveryRunDateToMinutuesToAddMap.get(recoveryExecutionDate)+15;
+                    // }
 
                     Datetime surePayExecutionDateAndTime = DateTime.newInstanceGmt(recoveryExecutionDate.year(), recoveryExecutionDate.month(), recoveryExecutionDate.day(), surePayExecutionHour, surePayExecutionMin, 0);
 
                     Core_MDF_Batch_Scheduler__c surePayBatchSchedule = createBatchSchedulerInstance(surePayJson, 50, surePayExecutionDateAndTime, 'Core_MDF_SurePay_Batch', 'Once', 'High', 'CCP');
                     uniqueKeyToBatchSchedulerMap.put(surePayJson.replaceAll(' ', '') + recoveryExecutionDate, surePayBatchSchedule);
                     
+                    //recoveryRunDateToMinutuesToAddMap.put(recoveryExecutionDate, minutesToAddForRecoveryRun);
                     Datetime recoveryExecutionDateAndTime = DateTime.newInstanceGmt(recoveryExecutionDate.year(), recoveryExecutionDate.month(), recoveryExecutionDate.day(), recoveryExecutionHour, recoveryExecutionMin, 0);
 
                     Core_MDF_Batch_Scheduler__c recoveryRunBatchSchedule =createBatchSchedulerInstance(recoverRunJson, 50, recoveryExecutionDateAndTime, 'Core_MDF_Recovery_Batch', 'Once', 'High', 'CCP');   
@@ -128,15 +133,14 @@ global without sharing class Core_MDF_Batch_RecoverySchedules implements Databas
             if(uniqueKeyToBatchSchedulerMap != null && !uniqueKeyToBatchSchedulerMap.isEmpty()){
                 Database.insert(uniqueKeyToBatchSchedulerMap.values(),false);
             }
-        }catch(Exception ex){
-        }
+        }catch(Exception ex){System.debug('Exception has occurred' + ex.getmessage());}
     }
     
     global void finish(Database.BatchableContext bc){
         
     }
 
-    // WW14 - Method moved to Core_MDF_Calendar_Utility - Roshan
+    // WW14 - Method moved to Core_MDF_Calendar_Utility - RP
     /*global List<Period> getFiscalQuarterWeekPeriods(Date inputDate) {
         Date quarterStartDate;
         Date quarterEndDate;
@@ -151,7 +155,7 @@ global without sharing class Core_MDF_Batch_RecoverySchedules implements Databas
         return currentFiscalQuarterDetails;
     }*/
 
-    // WW14 - Method moved to Core_MDF_Calendar_Utility - Roshan
+    // WW14 - Method moved to Core_MDF_Calendar_Utility - RP
     /*global Map<String, Period> mapMonthAndWeekPeriods(List<Period> currentFiscalQuarterDetails) {
         Map<String, Period> monthNumberToQuarterPeriodsMap = new Map<String, Period>();
         Integer monthNumber;

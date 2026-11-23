@@ -1,0 +1,12 @@
+.recordListScroll{
+    max-height: 6.5rem;
+    overflow: overlay;
+    margin-right: 1rem;
+    }
+
+.customLookupDiv{
+    /*margin-left: 39rem;
+    margin-right: 39rem;*/
+    margin-left: 35rem;
+    margin-right: 30rem;
+}

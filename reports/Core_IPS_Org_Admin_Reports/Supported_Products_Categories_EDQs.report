@@ -10,16 +10,13 @@
         <field>Core_IPS_Supported_Product__c$Core_Supported_Product_Name__c</field>
     </columns>
     <columns>
-        <field>Core_IPS_Supported_Product__c$Core_Flag_Status__c</field>
-    </columns>
-    <columns>
         <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r$Core_Issue_Category_Name__c</field>
     </columns>
     <columns>
-        <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r$Core_Issue_Sub_Category_Name__c</field>
+        <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r$Name</field>
     </columns>
     <columns>
-        <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r.Environment_Detail_Operationals__r$Core_Status__c</field>
+        <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r$Core_Issue_Sub_Category_Name__c</field>
     </columns>
     <columns>
         <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r.Environment_Detail_Operationals__r$Core_IPS_Question_Text__c</field>
@@ -34,8 +31,21 @@
         <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r.Environment_Detail_Operationals__r$Core_Agent_Only__c</field>
     </columns>
     <columns>
+        <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r.Environment_Detail_Operationals__r$Core_Status__c</field>
+    </columns>
+    <columns>
         <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r.Environment_Detail_Operationals__r$LastModifiedDate</field>
     </columns>
+    <filter>
+        <criteriaItems>
+            <column>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r$Core_Issue_Sub_Category_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Intel® Management Engine Firmware (Intel® ME FW)</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
     <format>Tabular</format>
     <name>Supported Products &amp; Categories &amp; EDQs</name>
     <params>
@@ -47,8 +57,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Core_IPS_Supported_Product__c$Name</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Core_IPS_Supported_Product__c$CreatedDate</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

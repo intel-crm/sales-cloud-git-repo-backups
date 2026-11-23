@@ -25,9 +25,6 @@
         <field>LAST_NAME</field>
     </columns>
     <columns>
-        <field>Lead.Core_PSG_Lead__c</field>
-    </columns>
-    <columns>
         <field>Lead.Core_Lead_Conversion_Point__c</field>
     </columns>
     <columns>

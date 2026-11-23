@@ -29,6 +29,8 @@ import Core_MDF_Strongly_Disagree from '@salesforce/label/c.Core_MDF_Strongly_Di
 
 
 export default class Core_MDF_Feedback extends LightningElement {
+  @api userId;
+  @api contactId;
   @track isModalOpen = false;
   @track optionalFeedback;
   @track surveyLog;
@@ -38,6 +40,7 @@ export default class Core_MDF_Feedback extends LightningElement {
   @track isCommunity = false;
   @track isQuestionAvailable = false;
   @track isSubmitDisabled = true;
+  @track data = [];
   @track pageRef = '';
 
   currentPageReference = null;
@@ -57,6 +60,7 @@ export default class Core_MDF_Feedback extends LightningElement {
 
   getSurveyQuestions() {
     getQuestions().then(result => {
+      console.log('Result->', result);
       this.questionList = result;
       if (this.questionList != undefined && this.questionList != null && this.questionList.length > 0) {
         this.isQuestionAvailable = true;
@@ -72,6 +76,7 @@ export default class Core_MDF_Feedback extends LightningElement {
   getIsCommunity() {
     isExternalPortal().then(result => {
       this.isCommunity = result;
+      console.log('@@isCommunity -> ', this.isCommunity);
     })
       .catch(error => {
         this.showToastMessage('Error', APPLICATION_ERROR, 'error', 'sticky');
@@ -88,7 +93,9 @@ export default class Core_MDF_Feedback extends LightningElement {
   getPageReferenceParameters(currentPageReference) {
     if (currentPageReference) {
       this.surveyLog = currentPageReference.attributes;
+      console.log('@@this.surveyLog',this.surveyLog);
       this.pageRef = currentPageReference.attributes.name;
+      console.log('@@pageref -> ',this.pageRef);
     }
   }
 
@@ -97,8 +104,9 @@ export default class Core_MDF_Feedback extends LightningElement {
         console.log('Result->', result);
         if(result){
           // Need to show Feedback Popup only on Homepage so adding check for pageReference = Home as Home is the API Name of Homepage on community   
-          if(this.pageRef != null && this.pageRef != '' && this.pageRef == 'Home'){
+          if(this.pageRef != null && this.pageRef != '' && this.pageRef == 'Home' /*&& sessionStorage.getItem('Feedback') != 'PoppedUp'*/){
             this.isModalOpen = true;
+            //sessionStorage.setItem('Feedback', 'PoppedUp');
           }
         }
         
@@ -109,16 +117,20 @@ export default class Core_MDF_Feedback extends LightningElement {
     }
 
   generateQuestionSets() {
+    console.log('QuestionListLength', this.questionList.length);
     for (let index = 0; index < this.questionList.length; index++) {
       let ratingNumbers = [];
       ratingNumbers = this.generateRadioButtons(index + 1);
+      console.log('Line 105->', this.questionList[index]);
       this.questionSets.push({
         label: this.questionList[index].question,
         quesOrder: this.questionList[index].order,
         quesId: this.questionList[index].questionId,
         radioBtn: ratingNumbers
       });
+      console.log('Line 109');
     }
+    console.log('questionSets', this.questionSets);
 
 
   }
@@ -135,6 +147,7 @@ export default class Core_MDF_Feedback extends LightningElement {
       }
       ratingArray.push(radioBtn)
     }
+    console.log('ratingArray', ratingArray);
     return ratingArray;
   }
 
@@ -167,6 +180,7 @@ export default class Core_MDF_Feedback extends LightningElement {
     this.isModalOpen = false;
     this.ratingMap.clear();
     this.isSubmitDisabled = true;
+    //sessionStorage.setItem('Feedback', 'PoppedUp');
   }
 
 
@@ -183,6 +197,8 @@ export default class Core_MDF_Feedback extends LightningElement {
         });
         surveyMapDetails.pageRef = JSON.stringify(this.surveyLog);
         surveyMapDetails.SurveyDetailsWrapperList = questionRating;
+        console.log('questionRating->', questionRating);
+        //sessionStorage.setItem('Feedback', 'PoppedUp');
       }
       submitScoreAction({ surveyMap: surveyMapDetails })
         .then(result => {

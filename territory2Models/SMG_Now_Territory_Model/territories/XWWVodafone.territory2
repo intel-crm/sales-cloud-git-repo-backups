@@ -13,9 +13,5 @@
     </customFields>
     <name>WW Vodafone</name>
     <opportunityAccessLevel>Read</opportunityAccessLevel>
-    <ruleAssociations>
-        <inherited>true</inherited>
-        <ruleName>WW_vodafone</ruleName>
-    </ruleAssociations>
     <territory2Type>Named_Strategic_Accounts</territory2Type>
 </Territory2>

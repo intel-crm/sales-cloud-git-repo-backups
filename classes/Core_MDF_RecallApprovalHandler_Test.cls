@@ -11,7 +11,7 @@ private class Core_MDF_RecallApprovalHandler_Test {
         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
         // Creating User with utility class 
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr.LastName = 'User Test';
+        usr.LastName = 'User Test Recall';
         usr.UserRoleId = usRole.Id;
         Database.insert(usr);
          List<User> lstUser = new List<user>();
@@ -73,16 +73,14 @@ private class Core_MDF_RecallApprovalHandler_Test {
             accCoMarketingList[0].Core_MDF_Group_Id__c = accNodeGroup.Id;
             
             Database.insert(accCoMarketingList);
-	    // 14285 suma
             List<String> bypassFunctionKeys1 = new List<String>();
             Set<String> myset2 = new Set<String>();
             List<String> result2 = new List<String>();
             bypassFunctionKeys1.add('Core_MDF_Bypass_AccOnboardValidation');
-            bypassFunctionKeys1.add('Core_MDF_Bypass_PFREmailNotification'); // 14285 suma
+            bypassFunctionKeys1.add('Core_MDF_Bypass_PFREmailNotification'); // 14285 Indira
             myset2.addAll(bypassFunctionKeys1);
             result2.addAll(myset2);
             List<Core_Trigger_Executions__c> bypassfunctinalitylist2 = Core_MDF_CCP_TestDataUtility.byPassFeature(result2,true,true);
-	    // 14285 suma
              List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();            
             Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
             iupgm.Core_MDF_Account_id__c = accRetail.Id;
@@ -171,7 +169,7 @@ private class Core_MDF_RecallApprovalHandler_Test {
             testPartnerFundRequest1.Core_MDF_Budget_Currency_cd__c ='USD'; 
             testPartnerFundRequest1.Core_MDF_Reimbursement_Rate_pct__c='100%';
             testPartnerFundRequest1.AllocationId=retailAlloc.id;
-            testPartnerFundRequest1.Core_MDF_Activity_Types__c='';  // 14285 suma
+            testPartnerFundRequest1.Core_MDF_Activity_Types__c='';
             listPRFToBeInserted.add(testPartnerFundRequest1);
             PartnerFundRequest testPartnerFundRequest2 = Core_MDF_CCP_TestDataUtility.createRetailActivity(string.valueof(camp1.Id),string.valueof(accRetail.id),System.today()+2,System.today()+2,false); 
             
@@ -187,12 +185,12 @@ private class Core_MDF_RecallApprovalHandler_Test {
             //testPartnerFundRequest2.Core_MDF_ATF_Approval_Reqd_ind__c = false;
             testPartnerFundRequest2.Core_MDF_Budget_Currency_cd__c ='USD'; 
             testPartnerFundRequest2.Core_MDF_Reimbursement_Rate_pct__c='100%';
-            testPartnerFundRequest2.Core_MDF_Activity_Closure_Type__c = 'No Internal Approval';  // 14285 suma
-            testPartnerFundRequest2.Core_MDF_Activity_Types__c='';  // 14285 suma
+            testPartnerFundRequest2.Core_MDF_Activity_Closure_Type__c = 'No Internal Approval';
+            testPartnerFundRequest2.Core_MDF_Activity_Types__c='';
             listPRFToBeInserted.add(testPartnerFundRequest2);
             Database.insert(listPRFToBeInserted);
         }
-        User user = [SELECT Id, LastName FROM User WHERE LastName ='User Test'  LIMIT 1];
+        User user = [SELECT Id, LastName FROM User WHERE LastName ='User Test Recall'  LIMIT 1];
         PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Retail_Marketing_GEO_Approver' LIMIT 1];
         insert new PermissionSetAssignment(AssigneeId = user.id, PermissionSetId = ps.Id); 
     }
@@ -201,8 +199,8 @@ private class Core_MDF_RecallApprovalHandler_Test {
     Description:                                   Created for testing custom approval process for PartnerFundRequest Object
     ***********************************************************************************************************************************/
     @isTest  static void recallApprovalProcessTestEMEA(){
-        User user = [SELECT Id, LastName FROM User WHERE LastName ='User Test'  LIMIT 1];
-           PartnerFundRequest pfr = [SELECT id,Title,Core_MDF_Country_nm__c,Core_MDF_Program__c FROM PartnerFundRequest where Title = 'Retail MDF Activity' LIMIT 1];  // 14285 suma
+        User user = [SELECT Id, LastName FROM User WHERE LastName ='User Test Recall'  LIMIT 1];
+           PartnerFundRequest pfr = [SELECT id,Title,Core_MDF_Country_nm__c,Core_MDF_Program__c FROM PartnerFundRequest where Title = 'Retail MDF Activity' LIMIT 1];
           System.runAs(user){
             Test.startTest();            
             
@@ -211,8 +209,9 @@ private class Core_MDF_RecallApprovalHandler_Test {
             // Close that Activity.
             pfr.Core_MDF_Fund_Request_Status__c = 'Closed';
             pfr.Core_MDF_Activity_Closure_Type__c = 'No Internal Approval';
-            update pfr;
-	    // 14285 suma
+           
+            
+             update pfr;
             List<Core_MDF_Recall_Approval__e> approvalRecallList = new List<Core_MDF_Recall_Approval__e>();//14285 suma
             Core_MDF_Recall_Approval__e evtObj = new Core_MDF_Recall_Approval__e();
             evtObj.Core_MDF_Target_Object_Id__c = pfr.Id;
@@ -220,26 +219,30 @@ private class Core_MDF_RecallApprovalHandler_Test {
             evtObj.Core_MDF_Request_Status_nm__c = pfr.Core_MDF_Fund_Request_Status__c;
             evtObj.Core_MDF_Activity_Editor_txt__c = 'Geo Lead';
             evtObj.Core_MDF_Closure_Type_nm__c = pfr.Core_MDF_Activity_Closure_Type__c;
+
             approvalRecallList.add(evtObj);
             EventBus.publish(approvalRecallList);
-            // 14285 suma
+
+            
             Approval.ProcessSubmitRequest req = new Approval.ProcessSubmitRequest();
             req.setComments('Submitting request for approval.');
             req.setObjectId(pfr.Id);
-            Approval.ProcessResult resu = Approval.process(req);     
-          
+            Approval.ProcessResult resu = Approval.process(req);  
+              
          // US - TWC702-14285: Unit Test Method should include System.Assert  
         System.assertNotEquals(null, resu, 'Approval process result should not be null');
         System.assertEquals('Closed', pfr.Core_MDF_Fund_Request_Status__c, 'Partner Fund Request status should be Closed');
         System.assertEquals('Closed', pfr.Core_MDF_Fund_Request_Status__c);  
-        }
+       
+          }
             Test.stopTest();
     }
+    
     @isTest  static void recallApprovalProcessTestNonEMEA(){
         
         PartnerFundRequest pfr = [SELECT id,Title,Core_MDF_Program__c,Core_MDF_Activity_Closure_Type__c,Core_MDF_Country_nm__c,Core_MDF_Fund_Request_Status__c,Core_MDF_Start_Date__c,Core_MDF_End_Date__c
                                   FROM PartnerFundRequest where Title = 'Retail MDF Activity NON EMEA' LIMIT 1];
-        User user = [SELECT Id, LastName FROM User WHERE LastName ='User Test'  LIMIT 1];
+        User user = [SELECT Id, LastName FROM User WHERE LastName ='User Test Recall'  LIMIT 1];
        /* PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Retail_Marketing_GEO_Approver' LIMIT 1];
         insert new PermissionSetAssignment(AssigneeId = user.id, PermissionSetId = ps.Id);  */
          // pfr.Core_MDF_Fund_Request_Status__c = 'Closed';
@@ -251,11 +254,13 @@ private class Core_MDF_RecallApprovalHandler_Test {
            pfr.Core_MDF_Fund_Request_Status__c = 'Pending Review';
            pfr.Core_MDF_Start_Date__c = System.today()+5;
            pfr.Core_MDF_End_Date__c = System.today()+5;
+        
           update pfr;
+            
             Approval.ProcessSubmitRequest req = new Approval.ProcessSubmitRequest();
             req.setComments('Submitting request for approval.');
             req.setObjectId(pfr.Id);
-            Approval.ProcessResult resu = Approval.process(req);     // is present in prod & devccp but not in devint
+            Approval.ProcessResult resu = Approval.process(req);     
            
                   List<Core_MDF_Recall_Approval__e> approvalRecallList = new  List<Core_MDF_Recall_Approval__e>();
                  Core_MDF_Recall_Approval__e evtObj = new Core_MDF_Recall_Approval__e();
@@ -263,11 +268,12 @@ private class Core_MDF_RecallApprovalHandler_Test {
                   evtObj.Core_MDF_Program_nm__c    = pfr.Core_MDF_Program__c ;
                   evtObj.Core_MDF_Request_Status_nm__c = pfr.Core_MDF_Fund_Request_Status__c;
                   evtObj.Core_MDF_Activity_Editor_txt__c = 'Geo Lead';
-                  evtObj.Core_MDF_Closure_Type_nm__c = pfr.Core_MDF_Activity_Closure_Type__c; 
+                  evtObj.Core_MDF_Closure_Type_nm__c = pfr.Core_MDF_Activity_Closure_Type__c;
                   approvalRecallList.add(evtObj);   
-                    if(!approvalRecallList.isEmpty()){
+                   if(!approvalRecallList.isEmpty()){
                         Eventbus.publish(approvalRecallList);
                     }
+            
         // US - TWC702-14285: Unit Test Method should include System.Assert    
         System.assertNotEquals(null, resu, 'Approval process result should not be null');
         System.assertEquals('Pending Review', pfr.Core_MDF_Fund_Request_Status__c, 'Partner Fund Request status should be Pending Review');
@@ -278,5 +284,55 @@ private class Core_MDF_RecallApprovalHandler_Test {
         }
         
     }
+    
+     // 14285 Indira - Start    
+   @isTest
+static void recallApprovalProcess_CoverWorkItemRemoval() {
+
+    User user = [SELECT Id FROM User WHERE LastName ='User Test Recall' LIMIT 1];
+
+    PartnerFundRequest pfr = [
+        SELECT Id, Core_MDF_Program__c, Core_MDF_Fund_Request_Status__c
+        FROM PartnerFundRequest 
+        WHERE Title = 'Retail MDF Activity' 
+        LIMIT 1
+    ];
+
+    System.runAs(user){
+        Test.startTest();
+
+        // Step 1: Put record in approval
+        pfr.Core_MDF_Fund_Request_Status__c = 'Pending Review';
+      
+        update pfr;
+
+        Approval.ProcessSubmitRequest req = new Approval.ProcessSubmitRequest();
+        req.setObjectId(pfr.Id);
+        req.setComments('Submit for approval');
+        Approval.ProcessResult result = Approval.process(req);
+
+        System.assert(result.isSuccess());
+
+        // Step 2: Ensure work item exists
+        List<ProcessInstanceWorkitem> workItems = [
+            SELECT Id, ProcessInstance.TargetObjectId
+            FROM ProcessInstanceWorkitem
+            WHERE ProcessInstance.TargetObjectId = :pfr.Id
+        ];
+
+        System.assert(workItems.size() > 0, 'Workitems should exist');
+
+        // Step 3: Fire recall event (this triggers your method)
+        Core_MDF_Recall_Approval__e evt = new Core_MDF_Recall_Approval__e();
+        evt.Core_MDF_Target_Object_Id__c = pfr.Id;
+        evt.Core_MDF_Request_Status_nm__c = 'Closed'; // IMPORTANT
+        evt.Core_MDF_Program_nm__c = pfr.Core_MDF_Program__c;
+
+        EventBus.publish(evt);
+
+        Test.stopTest();
+    }
+}  
+// 14285 Indira - end
     
 }

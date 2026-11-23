@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_MDF_AccountUser_Controller_Test</testClassName>
+    <testClassName>Core_MDF_BatchAddRemoveUsersPgmGrp_Test</testClassName>
+    <testClassName>Core_MDF_PartnerNodeUserMapping_Test</testClassName>
+    <testClassName>Core_MDF_PGM_BatchHelper_Test</testClassName>
+    <testClassName>Core_MDF_ProcessEntitlements_Test</testClassName>
+    <testClassName>Core_MDF_SchBatch_UpdateCampaignSts_Test</testClassName>
+    <testClassName>Core_MDF_ShareRecordToGeoGrp_Test</testClassName>
+</ApexTestSuite>

@@ -44,7 +44,7 @@ public without sharing class Core_MDF_PFC_ManualHold_Claim {
 ******************************************************************************************************/
     public static PartnerFundClaim getClaimHoldStatus(Id claimId)
     {
-       PartnerFundClaim claimObj = [SELECT Id, Core_MDF_Type_Txt__c, Core_MDF_Status__c,Core_MDF_PIC_Review_Completed__c,Core_MDF_Intel_Manual_Hold_Ind__c, Core_MDF_Member_Manual_Hold_Ind__c, Core_MDF_Program__c,Core_MDF_Claim_Approval_Dt__c,Core_MDF_Approval_Step_Counter_nbr__c FROM PartnerFundClaim where Id = :claimId]; 
+       PartnerFundClaim claimObj = [SELECT Id, Core_MDF_Type_Txt__c, Core_MDF_Status__c,Core_MDF_PIC_Review_Completed__c,Core_MDF_Queued_Email_Sent_Ind__c,Core_MDF_Intel_Manual_Hold_Ind__c, Core_MDF_Member_Manual_Hold_Ind__c, Core_MDF_Program__c,Core_MDF_Claim_Approval_Dt__c,Core_MDF_Approval_Step_Counter_nbr__c FROM PartnerFundClaim where Id = :claimId]; //Ajinkya - added
         try
         {   if(claimObj != null)
             {return claimObj;}
@@ -90,21 +90,20 @@ public without sharing class Core_MDF_PFC_ManualHold_Claim {
         try{
             
                 if(isPartner())
-                {	
+                {   
                     claimObj.Core_MDF_Member_Manual_Hold_Ind__c = true;
                     claimObj.Core_MDF_Member_Manual_Hold_Comments_Txt__c = holdComments;
-                    if(claimObj.Core_MDF_PIC_Review_Completed__c || (claimObj.Core_MDF_Program__c ==  Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM && claimObj.Core_MDF_Claim_Approval_Dt__c != null && claimObj.Core_MDF_Approval_Step_Counter_nbr__c == 0)){claimObj.Core_MDF_Status__c = holdStatus;}
+                    if(claimObj.Core_MDF_PIC_Review_Completed__c || (claimObj.Core_MDF_Program__c ==  Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM && claimObj.Core_MDF_Claim_Approval_Dt__c != null && claimObj.Core_MDF_Approval_Step_Counter_nbr__c == 0)){claimObj.Core_MDF_Status__c = holdStatus;}  //Ajinkya - added
                     claimToBeUpdated.add(claimObj);
                 }
                 else{
                     
                     claimObj.Core_MDF_Intel_Manual_Hold_Ind__c = true;
                     claimObj.Core_MDF_Intel_Manual_Hold_Comments_Txt__c = holdComments;
-                    if(claimObj.Core_MDF_PIC_Review_Completed__c || (claimObj.Core_MDF_Program__c ==  Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM && claimObj.Core_MDF_Claim_Approval_Dt__c != null && claimObj.Core_MDF_Approval_Step_Counter_nbr__c == 0)){claimObj.Core_MDF_Status__c = holdStatus;}
+                    if(claimObj.Core_MDF_PIC_Review_Completed__c || (claimObj.Core_MDF_Program__c ==  Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM && claimObj.Core_MDF_Claim_Approval_Dt__c != null && claimObj.Core_MDF_Approval_Step_Counter_nbr__c == 0)){claimObj.Core_MDF_Status__c = holdStatus;} //Ajinkya - added
                     claimToBeUpdated.add(claimObj);
                 }
             Database.update(claimToBeUpdated);
-            
             return true; } catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);throw e; } //throw new AuraHandledException(''+e.getMessage()); 
     }
 

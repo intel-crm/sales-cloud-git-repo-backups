@@ -58,9 +58,12 @@ public class Core_RestAPI_Case_CreateV1_Handler{
     
     //Create Case and return the caseNumber
     public Core_RestAPI_Response createCase(){
+        System.debug('Core_RestAPI_Case_CreateV1_Handler createCase started processing request ');
+        system.debug('requestWrpr ====== >>> '+requestWrpr);
         Savepoint sp = Database.setSavepoint();
         try{
             Boolean allValidationsPassed = ( doAllCaseValidations() && doAllEnvDetailValidations() );
+            System.debug(' doAllCaseValidations passed ? >>> '+allValidationsPassed+' Validation code : '+validationCode + ' validationErrorMessage :'+validationErrorMessage);
             
             if(allValidationsPassed == false ){
                 Core_RestAPI_Util.processException(null , validationCode, response, apiName, entryTime, requestWrpr);
@@ -70,6 +73,7 @@ public class Core_RestAPI_Case_CreateV1_Handler{
                 insertEnvironmentDetails();   
             }
         }catch(Exception e){
+            System.debug(LoggingLevel.ERROR, 'Core_RestAPI_Case_CreateV1_Handler Exception : ' + Core_RestAPI_Util.getExceptionAsString(e));
             Database.rollback(sp);        
             response.successContent = null;
             Core_RestAPI_Util.processException(e, ERROR_CODE_500, response, apiName, entryTime, requestWrpr);
@@ -79,6 +83,7 @@ public class Core_RestAPI_Case_CreateV1_Handler{
             }
             Core_RestAPI_LoggingUtil.logTransaction(entryTime, response);
         } 
+        System.debug('Core_RestAPI_Case_CreateV1_Handler createCase processing request completed - final response :'+response);
         return response;
     }
     
@@ -86,10 +91,11 @@ public class Core_RestAPI_Case_CreateV1_Handler{
     /******************************************** insert  Cases*****************************************************/
     //Insert the case, this will be called only if all validations passes
     public void insertCase(){
+        System.debug('Create case started for the asset '+assetObj);
         
         Case newCase = new Case();
          if (Schema.sObjectType.Case.fields.status.isCreateable()) { //Fls create fix --Gangadhar
-        	newCase.status = 'New';
+          newCase.status = 'New';
          }
         newCase.assetId = requestWrpr.intelProductId ;
         newCase.Core_IPS_Project_Case__c  = (assetObj.Core_IPS_Project__c != null ? assetObj.Core_IPS_Project__c : null);
@@ -132,13 +138,19 @@ public class Core_RestAPI_Case_CreateV1_Handler{
     
     //Create Environment Details 
     public void insertEnvironmentDetails(){
+        System.debug('insertEnvironmentDetails() started for envDetails from request'+requestWrpr.envDetails);
         List<Core_IPS_Response__c> envDetailsToCreate = new List<Core_IPS_Response__c>();
         Set<String> addedQuestions = new Set<String>();
         
+        system.debug('mRequestQuestionEnvDetail.values() ==+>> '+mRequestQuestionEnvDetail.values());
+        system.debug('request map size ==>> '+mRequestQuestionEnvDetail.size());
         if(requestWrpr.envDetails != null) {  
             for(Core_RestAPI_Case_CreateV1_Wrapper.EnvQuestionWrapper qa: mRequestQuestionEnvDetail.values()){
+                system.debug('qa ==>> '+qa);
+                System.debug('qa.envDetQuestion ===>> '+qa.envDetQuestion);
                 for( Core_RestAPI_Case_CreateV1_Wrapper.AnsWrapper ans : qa.answers){
                     if(String.isNotBlank(qa.envDetQuestionId)){
+                        System.debug('insertEnvironmentDetails()  if ==>>');
                         Core_IPS_Response__c detail = new Core_IPS_Response__c();
                         if (Schema.sObjectType.Core_IPS_Response__c.fields.Core_IPS_Case__c.isCreateable()) { //Fls create fix --Gangadhar
                             detail.Core_IPS_Case__c = newCaseObj.id;
@@ -146,12 +158,17 @@ public class Core_RestAPI_Case_CreateV1_Handler{
                         
                         if(mEnvDetailsAll.containsKey(qa.envDetQuestionId)){
                             Core_IPS_Assigned_Environment_Variables__c tempQuest = mEnvDetailsAll.get(qa.envDetQuestionId);
+                            system.debug('tempQuest.Core_IPS_Question__r.id ==>>> '+tempQuest.Core_IPS_Question__r.id);
                             detail.Core_IPS_Question_Master__c = tempQuest.Core_IPS_Question__r.id;
                         }
                         detail.Core_IPS_Answer__c = ans.answer;
                         
+                        system.debug('123 mEnvDetailsAll ===>> '+mEnvDetailsAll);
+                        system.debug('123 qa.envDetQuestionId===>> '+qa.envDetQuestionId);
                         
+                        system.debug('mEnvDetailsAll.get(qa.envDetQuestionId).Core_IPS_Question__r.Core_IPS_Datatype__c ====>> '+mEnvDetailsAll.get(qa.envDetQuestionId).Core_IPS_Question__r.Core_IPS_Datatype__c);
                         if(mEnvDetailsAll.get(qa.envDetQuestionId).Core_IPS_Question__r.Core_IPS_Datatype__c == 'Picklist' || mEnvDetailsAll.get(qa.envDetQuestionId).Core_IPS_Question__r.Core_IPS_Datatype__c == 'Multiselect Picklist'){
+                            system.debug('answer id ===>> '+ mQuestionAnswer.get(qa.envDetQuestionId).get(ans.answerId).id);
                             detail.Core_IPS_Answer_Master__c= mQuestionAnswer.get(qa.envDetQuestionId).get(ans.answerId).id;
                         }
                         
@@ -184,6 +201,7 @@ public class Core_RestAPI_Case_CreateV1_Handler{
     public Boolean doAllCaseValidations(){
         //Validation create object accessibility
         Boolean isCreatable = Schema.sObjectType.Case.isCreateable();
+        System.debug(' doAllCaseValidations started \n CreateAccess ? '+isCreatable);
         //Perform validations as per the following order
         //1. CRUD validations
         //2. Required field validations to see is all inputs exist which require for creating a case
@@ -192,6 +210,7 @@ public class Core_RestAPI_Case_CreateV1_Handler{
         //IMPORTANT NOTE - Do not change the order of the validations
         //return ( isCreatable && validateCaseRequiredFields() && (isProductIdValid() || isProjectIdValid() ) && validateCaseFieldValues() && validateCaseCategoryFields()  ) ;
         Boolean result = ( isCreatable && validateCaseRequiredFields() && isProductOrProjectValid() && validateCaseInputs() && validateCaseCategoryFields()  ) ;
+        System.debug(' doAllCaseValidations result : '+result);
         return result;
     }
     
@@ -226,6 +245,7 @@ public class Core_RestAPI_Case_CreateV1_Handler{
             validationErrorMessage = ' '+requestWrpr.intelProductId;     
             productValid = false;
         }
+        System.debug(' isProductIdValid >>> '+productValid+' validationErrorMessage :'+validationErrorMessage);
         return productValid;
     }
     
@@ -244,6 +264,7 @@ public class Core_RestAPI_Case_CreateV1_Handler{
             if(pl.isActive() == true)
                 picklistSeverity.add(pl.getValue());
         }
+        System.debug(' >> Type valid Pick List values '+picklistCaseType+' \n >> severityValidPl valid pick List values '+picklistSeverity);
         
         //Validate the inputs are valid picklist values
         if(String.isNotBlank(requestWrpr.caseType) && !picklistCaseType.contains(requestWrpr.caseType)){
@@ -276,6 +297,7 @@ public class Core_RestAPI_Case_CreateV1_Handler{
             flag = false;
         }
         
+        System.debug(' validateCaseFieldValues >>> '+flag+' validationErrorMessage :'+validationErrorMessage);
         return flag;
     }
     
@@ -283,6 +305,7 @@ public class Core_RestAPI_Case_CreateV1_Handler{
     @testVisible
     private Boolean validateCaseRequiredFields(){
         Boolean flag = true;
+        System.debug('requestWrpr  ==> '+requestWrpr);
         if (String.isBlank(requestWrpr.subject) ){
             validationCode = REQ_FIELD_MISSING_9002;
             validationErrorMessage = ' subject' ;  
@@ -309,6 +332,7 @@ public class Core_RestAPI_Case_CreateV1_Handler{
             flag = false;
         }
         
+        System.debug(' validateCaseRequiredFields >>> '+flag+' validationErrorMessage :'+validationErrorMessage);
         return flag;
     }
     
@@ -316,12 +340,15 @@ public class Core_RestAPI_Case_CreateV1_Handler{
     public Boolean validateCaseCategoryFields(){
         Boolean flag = true;  
         //Map holds the categories as Keys and all the sub categories as a set
+        System.debug('  validateCaseCategoryFields started ');
         Boolean categoryValid = false;
         Boolean subCategoryValid = false;
         Boolean noCategories = true;
         Boolean noSubCategories = true;
         
         //Query all the categories and sub categories for the product
+        System.debug('assetObj 1234 ===>> '+assetObj);
+        System.debug('assetObj.core_supported_product__c ===>> '+assetObj.core_supported_product__c);
         //FLS check added-Venugopal
         if(Core_IPS_Product_Issue_Category__c.SObjectType.getDescribe().isAccessible()){
         for(Core_IPS_Product_Issue_Category__c cat : [Select Name,  Core_Issue_Category_Name__r.Name,  
@@ -332,11 +359,14 @@ public class Core_RestAPI_Case_CreateV1_Handler{
                                                       WHERE Core_Status__c ='Active' AND Core_Supported_Product__c =: assetObj.core_supported_product__c Limit 2000]) //AND Name =: requestWrpr.caseCategoryId 
         {
             noCategories = false;
+            System.debug(' validateCaseCategoryFields case categories >>>> '+cat.Name + ' > '+cat.Core_Issue_Category_Name__r.Name);
+            System.debug('requestWrpr.caseCategoryId  ===>>> '+requestWrpr.caseCategoryId);
             if(requestWrpr.caseCategoryId == cat.Name){
                 this.catId = cat.Id;
                 categoryValid = true;
                 for(Core_IPS_Product_Issue_Category__c subCat : cat.Product_Issue_Sub_Categories__r){
                     noSubCategories = false;
+                    System.debug(' validateCaseCategoryFields and sub categories >>> '+cat.Name + ' > '+subCat.Name+'  requestWrpr.subCategoryId ==>'+requestWrpr.subCategoryId);
                     if(requestWrpr.subCategoryId == subCat.Name){
                         subCategoryValid = true;
                         this.subCatId = subCat.Id;
@@ -350,35 +380,42 @@ public class Core_RestAPI_Case_CreateV1_Handler{
         
         
         if(noCategories == true){
+            system.debug('inside if condition ');
             if(String.isNotBlank(requestWrpr.caseCategoryId) || String.isNotBlank(requestWrpr.subCategoryId)  ){
                 validationCode = INVALID_INPUT;
                 validationErrorMessage = ' caseCategoryId/subCategoryId '; 
                 flag = false;
             }
         }else if(noCategories == false && String.isEmpty(requestWrpr.caseCategoryId)){
+            system.debug('inside the empty cat ==>> ');
             flag = false;
             validationCode = REQ_FIELD_MISSING_9002;
             validationErrorMessage = ' caseCategoryId';  
         }else if(noCategories == false && categoryValid == false){
+            system.debug('inside else condition categoryValid == false');
             flag = false;
             validationCode = INVALID_INPUT;
             validationErrorMessage = ' caseCategoryId';  
         }else if(noSubCategories == true){
+        system.debug('inside else condition no sub cat id  ');
             if(String.isNotBlank(requestWrpr.subCategoryId)){
                 validationCode = INVALID_INPUT;
                 validationErrorMessage = ' caseCategoryId/subCategoryId '; 
                 flag = false;
             }  
         }else if(noSubCategories == false && String.isEmpty(requestWrpr.subCategoryId)){
+            system.debug('inside else condition requestWrpr.subCategoryId is empty ');
             flag = false;
             validationCode = REQ_FIELD_MISSING_9002;
             validationErrorMessage = ' subCategoryId';  
         }else if(noSubCategories == false && subCategoryValid == false){
+            system.debug('inside else condition subCategoryValid == false');
             validationCode = INVALID_INPUT;
             flag = false;
             validationErrorMessage = ' subCategoryId'; 
         }
         
+        System.debug(' validateCaseCategoryFields  >>> categoryValid :'+categoryValid+' subCategoryValid:'+subCategoryValid+' noCategories > '+noCategories +' Result :'+flag+' validationErrorMessage :'+validationErrorMessage);
         return flag;
     }
     
@@ -387,6 +424,7 @@ public class Core_RestAPI_Case_CreateV1_Handler{
     /******************************************************* Environment detail field validations START ***************************************************/    
     @testVisible 
     private Boolean doAllEnvDetailValidations(){
+        system.debug('doAllEnvDetailValidations started ====<>>> '+assetObj.core_supported_product__c);
         Set<Id> questionId = new Set<Id>();
         //FLS check added-Venugopal
         if(Core_IPS_Assigned_Environment_Variables__c.SObjectType.getDescribe().isAccessible()){
@@ -394,12 +432,15 @@ public class Core_RestAPI_Case_CreateV1_Handler{
                          FROM Core_IPS_Assigned_Environment_Variables__c 
                          WHERE (Core_Supported_Product__c  =: assetObj.core_supported_product__c OR (Core_Product_Issue_Sub_Category__r.Name=: requestWrpr.subCategoryId AND Core_Product_Issue_Sub_Category__r.Name != null)) AND Core_Agent_Only__c = false AND Core_Status__c='Active' ];
         }
+        System.debug('lstEnvDetails -->'+lstEnvDetails );
         
         //  code for check duplicate question 
+        system.debug('requestWrpr.EnvDetails ===> '+requestWrpr.EnvDetails);
         if(requestWrpr.EnvDetails != null && !requestWrpr.EnvDetails.isEmpty() ){
             for( Core_RestAPI_Case_CreateV1_Wrapper.EnvQuestionWrapper wrpr :  requestWrpr.EnvDetails)        {
                 String ques = ( wrpr.envDetQuestionId!= null ? wrpr.envDetQuestionId.trim(): '');
                 if(mRequestQuestionEnvDetail.containsKey(ques)){
+                    System.debug('inside duplicate question '+ques);
                     validationCode = DUPLICATE_INPUTS ;
                     validationErrorMessage = ' '+ques;
                     return false;
@@ -407,6 +448,8 @@ public class Core_RestAPI_Case_CreateV1_Handler{
                     mRequestQuestionEnvDetail.put(ques, wrpr);
                 }
             }
+            System.debug('mRequestQuestionEnvDetail size ===>>> '+mRequestQuestionEnvDetail.size());
+            System.debug('mRequestQuestionEnvDetail===>>> '+mRequestQuestionEnvDetail);
         }
         
         //Product & SubCategory does not have any environment details defined but request has, throw the validation message
@@ -436,29 +479,38 @@ public class Core_RestAPI_Case_CreateV1_Handler{
                      FROM Core_IPS_Question__c where id  IN : questionId AND Core_IPS_Status__c = 'Active'];
         }
         
+        System.debug('lstAnswer -->'+lstAnswer );
         
         for(Core_IPS_Question__c quest: lstAnswer ){
             String ques = ( quest.Name != null ? quest.Name.trim(): '');
             map<String, Core_IPS_Answer__c > ansIdDetails= new map<String, Core_IPS_Answer__c >();
             for(Core_IPS_Answer__c ans1 : quest.Core_Answers__r){
+                system.debug('ans1  ==>> '+ans1 );
                 
                 ansIdDetails.put(ans1.name ,ans1 );
             }
             mQuestionAnswer.put(ques ,ansIdDetails);
         }
         
+        System.debug('mEnvDetailsRequired ===>> '+mEnvDetailsRequired );
+        System.debug('mEnvDetailsAll  ===>> '+mEnvDetailsAll );
+        System.debug('mQuestionAnswer ===>> '+mQuestionAnswer);
+        System.debug('mRequestQuestionEnvDetail   ===>> '+mRequestQuestionEnvDetail);
         
         boolean result =  validateEnvDetailRequiredFields() && validateEnvDetailMatch();
+        System.debug('doAllEnvDetailValidations    result    ===>> '+result);
         
         return result;
         
     }
     // checking for required fields are given in request or not
     @testVisible private Boolean validateEnvDetailRequiredFields(){
+        System.debug('validateEnvDetailRequiredFields started ');
         Boolean requestHasAllRequiredFields = true;
         
         //Product/Subcategory has envDetails as required fields and api request do not have evn details
         if(mEnvDetailsRequired.size() > 0  && mRequestQuestionEnvDetail.size() == 0){
+            System.debug('inside all blank list condition ');
             validationCode = REQ_FIELD_MISSING_9002; 
             validationErrorMessage = ' envDetails' ;
             return false;
@@ -466,12 +518,15 @@ public class Core_RestAPI_Case_CreateV1_Handler{
         
         //PRODUCT : Verify request has all the required environmental details passed
         for(Core_IPS_Assigned_Environment_Variables__c prodEnvDet : mEnvDetailsRequired.values()){
+            System.debug('mRequestQuestionEnvDetail  ===>> '+mRequestQuestionEnvDetail);
+            System.debug('prodEnvDet.Core_IPS_Question__r.Core_IPS_Question__c  ===>> '+prodEnvDet.Core_IPS_Question__r.Core_IPS_Question__c);
             if(mRequestQuestionEnvDetail.get(prodEnvDet.Core_IPS_Question__r.name) == null){
                 validationCode = REQ_FIELD_MISSING_9002;
                 validationErrorMessage = ' envDetails '+prodEnvDet.Core_IPS_Question__r.name +' '+prodEnvDet.Core_IPS_Question__r.Core_IPS_Question__c ;
                 return false;
             }
         }
+        System.debug('requestHasAllRequiredFields ? ==>> '+requestHasAllRequiredFields );
         return requestHasAllRequiredFields;
     }
     
@@ -483,11 +538,15 @@ public class Core_RestAPI_Case_CreateV1_Handler{
         for(Core_RestAPI_Case_CreateV1_Wrapper.EnvQuestionWrapper envdet : mRequestQuestionEnvDetail.values())
         {    
             boolean envDetailMatchTemp = false;
+            System.debug('envdet.envDetQuestionId==>> '+envdet.envDetQuestionId);
             
+            system.debug('mEnvDetailsAll.containsKey(envdet.envDetQuestionId) ====>> '+mEnvDetailsAll.containsKey(envdet.envDetQuestionId));
+            system.debug('mEnvDetailsAll.containsKey(envdet.envDetQuestion) ====>> '+!mEnvDetailsAll.isEmpty());
             if(!mEnvDetailsAll.isEmpty()){
                 
                 if(mEnvDetailsAll.containsKey(envdet.envDetQuestionId) && (mEnvDetailsAll.get(envdet.envDetQuestionId).Core_IPS_Question__r.Core_IPS_Question__c == envdet.envDetQuestion) ){
                     
+                    system.debug('inside question id and question is match ===>> ');
                     envDetailMatchTemp= true;
                     isAnsValidate = isAnsValidate && isAnsValidate(envdet, mEnvDetailsAll.get(envdet.envDetQuestionId), mQuestionAnswer.get(mEnvDetailsAll.get(envdet.envDetQuestionId).Core_IPS_Question__r.name));
                     
@@ -502,29 +561,38 @@ public class Core_RestAPI_Case_CreateV1_Handler{
                 }
             }
             
+            System.debug(' envDetailMatch  result : '+envDetailMatch );
+            System.debug(' isAnsValidate result : '+isAnsValidate );
            }   
         Boolean finalResult = (envDetailMatch && isAnsValidate );  //&& parentQuestionTemp );
+        System.debug(' validateEnvDetailMatch result : '+finalResult);
         return finalResult;
         
     }
     // Validate all Answers in the request.
     // checking validation for answer length , answer list size(answer is not more than one) and answer are valid or not
     @testVisible private Boolean isAnsValidate(Core_RestAPI_Case_CreateV1_Wrapper.EnvQuestionWrapper reqQuest , Core_IPS_Assigned_Environment_Variables__c envQuestDetail, map<String, Core_IPS_Answer__c > mEnvAns){
+        System.debug(' isAnsValidate invoked to validate all answers  >> ');
         Boolean ansLstValidSize = true;
         Boolean ansValidation = true;
         
+        system.debug('mEnvAns ==>> '+mEnvAns );
+        system.debug('envQuestDetail.Core_IPS_Question__r.Core_IPS_Datatype__c ==>> '+envQuestDetail.Core_IPS_Question__r.Core_IPS_Datatype__c);
         
         List<Core_RestAPI_Case_CreateV1_Wrapper.AnsWrapper> lstWrappAnswer = reqQuest.answers;
+        system.debug('lstWrappAnswer  ==>> '+lstWrappAnswer );
         if(envQuestDetail.Core_IPS_Question__r.Core_IPS_Datatype__c == 'Text Area' ){
             
             // checking for answer is not more than one
             if(lstWrappAnswer.size() > 1){
+                system.debug('inside text area ans  size > 1');
                 ansLstValidSize = false;
                 validationCode = INVALID_INPUT_ANSWER ;
                 validationErrorMessage = ' '+reqQuest.envDetQuestionId;
             }else{
                 // checking for ans size is less than 5000
                 for(Core_RestAPI_Case_CreateV1_Wrapper.AnsWrapper answerObj: lstWrappAnswer){
+                    system.debug('answerObj.answer ===>> '+answerObj.answer);
                     if(Core_RestAPI_Util.isMaxLengthExceeded(answerObj.answer, 5000) ){
                         ansValidation = false;
                         validationCode = MAX_LENGTH_EXCEEDED_9025;
@@ -534,11 +602,13 @@ public class Core_RestAPI_Case_CreateV1_Handler{
             }  
         }else If(envQuestDetail.Core_IPS_Question__r.Core_IPS_Datatype__c == 'Text'){
             if(lstWrappAnswer.size() > 1){
+                system.debug('inside text ans  size > 1');
                 ansLstValidSize = false;
                 validationCode = INVALID_INPUT_ANSWER ;
                 validationErrorMessage = ' '+reqQuest.envDetQuestionId;
             }else{
                 for(Core_RestAPI_Case_CreateV1_Wrapper.AnsWrapper answerObj: lstWrappAnswer){
+                    system.debug('answerObj.answer ===>> '+answerObj.answer);
                     if(Core_RestAPI_Util.isMaxLengthExceeded(answerObj.answer, 255)){
                         ansValidation = false;
                         validationCode = MAX_LENGTH_EXCEEDED_9025;
@@ -554,6 +624,7 @@ public class Core_RestAPI_Case_CreateV1_Handler{
                 validationErrorMessage = ' '+reqQuest.envDetQuestionId;
             }else{
                 for(Core_RestAPI_Case_CreateV1_Wrapper.AnsWrapper answerObj: lstWrappAnswer){
+                    system.debug('inside new ans validation  ');
                     if(!((mEnvAns.containsKey(answerObj.answerId)) && (mEnvAns.get(answerObj.answerId).Core_IPS_Answer__c == answerObj.answer))){
                         ansValidation = false;
                         validationCode = INVALID_INPUT_ANSWER ;
@@ -563,6 +634,7 @@ public class Core_RestAPI_Case_CreateV1_Handler{
             }
         }else if(envQuestDetail.Core_IPS_Question__r.Core_IPS_Datatype__c == 'Multiselect Picklist'){
             for(Core_RestAPI_Case_CreateV1_Wrapper.AnsWrapper answerObj: lstWrappAnswer){
+                system.debug('inside new ans validation  Multiselect Picklist');
                 if(!((mEnvAns.containsKey(answerObj.answerId)) && ((mEnvAns.get(answerObj.answerId).Core_IPS_Answer__c) == answerObj.answer))){
                     ansValidation = false;
                     validationCode = INVALID_INPUT_ANSWER ;
@@ -573,6 +645,7 @@ public class Core_RestAPI_Case_CreateV1_Handler{
         
         
         Boolean finalResult =  (ansLstValidSize  && ansValidation );
+        System.debug(' isAnsValidate result >> '+finalResult);
         return finalResult;
     }
     

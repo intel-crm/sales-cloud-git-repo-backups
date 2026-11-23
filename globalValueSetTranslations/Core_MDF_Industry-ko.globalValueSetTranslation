@@ -97,10 +97,6 @@
         <translation>기타</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Others</masterLabel>
-        <translation><!-- Others --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Professional and Business Services</masterLabel>
         <translation>전문 및 비즈니스 서비스</translation>
     </valueTranslation>
@@ -114,7 +110,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Robotics</masterLabel>
-        <translation>로봇 공학</translation>
+        <translation><!-- Robotics --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Software</masterLabel>
@@ -127,6 +123,10 @@
     <valueTranslation>
         <masterLabel>Telecommunications</masterLabel>
         <translation>통신</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Test LOV Industry</masterLabel>
+        <translation><!-- Test LOV Industry --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Transportation and Warehouse</masterLabel>

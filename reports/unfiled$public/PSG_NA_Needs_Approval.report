@@ -26,73 +26,6 @@
             <value>Deal Win</value>
         </values>
     </buckets>
-    <buckets>
-        <bucketType>text</bucketType>
-        <developerName>BucketField_14479034</developerName>
-        <masterLabel>PSG Region</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <sourceColumnName>Opportunity.Core_Business_Unit_Territory__c</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>PSG-NA-ABOS</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-NA-ACAN</sourceValue>
-            </sourceValues>
-            <value>PSG-NA-NE</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>PSG-NA-NW</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-NA-RM</sourceValue>
-            </sourceValues>
-            <value>PSG-NA-NW</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>PSG-NA-CHI</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-NA-MINN</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-NA-OHIO</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-NA-WI</sourceValue>
-            </sourceValues>
-            <value>PSG-NA-NC</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>PSG-NA-MID</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-NA-SE</sourceValue>
-            </sourceValues>
-            <value>PSG-NA-SE</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>PSG-NA-SC</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-NA-SW</sourceValue>
-            </sourceValues>
-            <value>PSG-NA-SW</value>
-        </values>
-    </buckets>
-    <buckets>
-        <bucketType>text</bucketType>
-        <developerName>BucketField_45170733</developerName>
-        <masterLabel>PSG Regions</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <sourceColumnName>Opportunity.Core_Business_Unit_Territory__c</sourceColumnName>
-        <useOther>false</useOther>
-    </buckets>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
         <backgroundColor2>#FFFFFF</backgroundColor2>
@@ -102,11 +35,13 @@
             <axisBinding>y</axisBinding>
             <column>TOTAL_PRICE</column>
         </chartSummaries>
-        <chartType>VerticalColumn</chartType>
+        <chartType>VerticalColumnGrouped</chartType>
         <enableHoverLabels>true</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>BucketField_14479034</groupingColumn>
+        <groupingColumn>Opportunity.Core_Business_Unit_Territory__c</groupingColumn>
+        <legendPosition>Right</legendPosition>
         <location>CHART_TOP</location>
+        <secondaryGroupingColumn>BucketField_68473836</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -150,10 +85,6 @@
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>PROBABILITY</field>
-    </columns>
-    <columns>
         <field>STAGE_NAME</field>
     </columns>
     <columns>
@@ -163,7 +94,7 @@
         <field>Account.Core_Account_Tier__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+        <booleanFilter>1 AND 2  AND 3</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Business_Unit_Territory__c</column>
             <columnToColumn>false</columnToColumn>
@@ -176,7 +107,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Agilex,CPLD,FPGA,Enpirion,BD-,DK-ACB,Rush Creek,DCP-A10,Stratix,Arria,Cyclone,eASIC,Power Solutions</value>
+            <value>CPLD,FPGA,Enpirion,BD-,DK-ACB,Rush Creek,DCP-A10,Stratix,Arria,Cyclone,eASIC,Power Solutions</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
@@ -184,13 +115,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Win Submitted</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Design: Original,Design: Secondary</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -202,7 +126,7 @@
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>BucketField_14479034</field>
+        <field>Opportunity.Core_Business_Unit_Territory__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>PSG NA Needs Approval</name>

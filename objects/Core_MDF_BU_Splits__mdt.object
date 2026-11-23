@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Core_MDF_BU_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Business Unit Name</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Brand__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Brand</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Intel® Corporate Logo</fullName>
+                    <default>true</default>
+                    <label>Intel® Corporate Logo</label>
+                </value>
+                <value>
+                    <fullName>Intel® Arc™</fullName>
+                    <default>false</default>
+                    <label>Intel® Arc™</label>
+                </value>
+                <value>
+                    <fullName>Intel® Unison™</fullName>
+                    <default>false</default>
+                    <label>Intel® Unison™</label>
+                </value>
+                <value>
+                    <fullName>Intel Unite®</fullName>
+                    <default>false</default>
+                    <label>Intel Unite®</label>
+                </value>
+                <value>
+                    <fullName>Intel® Processor (N/U Series)</fullName>
+                    <default>false</default>
+                    <label>Intel® Processor (N/U Series)</label>
+                </value>
+                <value>
+                    <fullName>Intel vPro®, An Intel® Evo™ Design</fullName>
+                    <default>false</default>
+                    <label>Intel vPro®, An Intel® Evo™ Design</label>
+                </value>
+                <value>
+                    <fullName>Intel® Core™ i3 Processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Core™ i3 Processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Core™ i5 Processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Core™ i5 Processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Core™ i5 vPro® Processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Core™ i5 vPro® Processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Core™ i7 Processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Core™ i7 Processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Core™ i7 vPro® Processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Core™ i7 vPro® Processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Core™ i9 Processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Core™ i9 Processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Core™ i9 vPro® Processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Core™ i9 vPro® Processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Core™ Processor Family</fullName>
+                    <default>false</default>
+                    <label>Intel® Core™ Processor Family</label>
+                </value>
+                <value>
+                    <fullName>Intel vPro® platform</fullName>
+                    <default>false</default>
+                    <label>Intel vPro® platform</label>
+                </value>
+                <value>
+                    <fullName>Intel® Evo™ platform</fullName>
+                    <default>false</default>
+                    <label>Intel® Evo™ platform</label>
+                </value>
+                <value>
+                    <fullName>Intel® Evo™ powered by Core™ i5 processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Evo™ powered by Core™ i5 processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Evo™ powered by Core™ i7 processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Evo™ powered by Core™ i7 processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Xeon® Bronze Processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Xeon® Bronze Processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Xeon® E Processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Xeon® E Processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Xeon® Gold Processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Xeon® Gold Processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Xeon® Platinum Processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Xeon® Platinum Processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Xeon® Processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Xeon® Processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Xeon® Silver Processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Xeon® Silver Processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Xeon® W processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Xeon® W processor</label>
+                </value>
+                <value>
+                    <fullName>OpenVINO™</fullName>
+                    <default>false</default>
+                    <label>OpenVINO™</label>
+                </value>
+                <value>
+                    <fullName>FlexRAN™</fullName>
+                    <default>false</default>
+                    <label>FlexRAN™</label>
+                </value>
+                <value>
+                    <fullName>Intel® Celeron ®</fullName>
+                    <default>false</default>
+                    <label>Intel® Celeron ®</label>
+                </value>
+                <value>
+                    <fullName>Intel Atom Processor</fullName>
+                    <default>false</default>
+                    <label>Intel Atom Processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Iris® Xe Graphics</fullName>
+                    <default>false</default>
+                    <label>Intel® Iris® Xe Graphics</label>
+                </value>
+                <value>
+                    <fullName>Intel® Optane™ PMem</fullName>
+                    <default>false</default>
+                    <label>Intel® Optane™ PMem</label>
+                </value>
+                <value>
+                    <fullName>Intel® Select Solutions</fullName>
+                    <default>false</default>
+                    <label>Intel® Select Solutions</label>
+                </value>
+                <value>
+                    <fullName>Intel® Xeon® D Processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Xeon® D Processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Agilex™</fullName>
+                    <default>false</default>
+                    <label>Intel® Agilex™</label>
+                </value>
+                <value>
+                    <fullName>Intel® Stratix®</fullName>
+                    <default>false</default>
+                    <label>Intel® Stratix®</label>
+                </value>
+                <value>
+                    <fullName>Intel® Movidius™</fullName>
+                    <default>false</default>
+                    <label>Intel® Movidius™</label>
+                </value>
+                <value>
+                    <fullName>Intel® Tofino™</fullName>
+                    <default>false</default>
+                    <label>Intel® Tofino™</label>
+                </value>
+                <value>
+                    <fullName>Intel® IoT Market Ready Solutions</fullName>
+                    <default>false</default>
+                    <label>Intel® IoT Market Ready Solutions</label>
+                </value>
+                <value>
+                    <fullName>Intel® IoT RFP Ready Kit</fullName>
+                    <default>false</default>
+                    <label>Intel® IoT RFP Ready Kit</label>
+                </value>
+                <value>
+                    <fullName>Intel® Arria®</fullName>
+                    <default>false</default>
+                    <label>Intel® Arria®</label>
+                </value>
+                <value>
+                    <fullName>Intel® Cyclone®</fullName>
+                    <default>false</default>
+                    <label>Intel® Cyclone®</label>
+                </value>
+                <value>
+                    <fullName>Intel® MAX®</fullName>
+                    <default>false</default>
+                    <label>Intel® MAX®</label>
+                </value>
+                <value>
+                    <fullName>Intel® NUC</fullName>
+                    <default>false</default>
+                    <label>Intel® NUC</label>
+                </value>
+                <value>
+                    <fullName>Altera®</fullName>
+                    <default>false</default>
+                    <label>Altera®</label>
+                </value>
+                <value>
+                    <fullName>Intel® RealSense™</fullName>
+                    <default>false</default>
+                    <label>Intel® RealSense™</label>
+                </value>
+                <value>
+                    <fullName>Intel Atom®</fullName>
+                    <default>false</default>
+                    <label>Intel Atom®</label>
+                </value>
+                <value>
+                    <fullName>Intel® Partner Alliance</fullName>
+                    <default>false</default>
+                    <label>Intel® Partner Alliance</label>
+                </value>
+                <value>
+                    <fullName>Intel® Partner Alliance (IoT version)</fullName>
+                    <default>false</default>
+                    <label>Intel® Partner Alliance (IoT version)</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Intel® Core™ i5 vPro® Essentials</fullName>
+                    <default>false</default>
+                    <label>Intel® Core™ i5 vPro® Essentials</label>
+                </value>
+                <value>
+                    <fullName>Intel® Core™ i7 vPro® Essentials</fullName>
+                    <default>false</default>
+                    <label>Intel® Core™ i7 vPro® Essentials</label>
+                </value>
+                <value>
+                    <fullName>Intel® Core™ i9 vPro® Essentials</fullName>
+                    <default>false</default>
+                    <label>Intel® Core™ i9 vPro® Essentials</label>
+                </value>
+                <value>
+                    <fullName>Gaudi</fullName>
+                    <default>false</default>
+                    <label>Gaudi</label>
+                </value>
+                <value>
+                    <fullName>Ponte Vecchio</fullName>
+                    <default>false</default>
+                    <label>Ponte Vecchio</label>
+                </value>
+                <value>
+                    <fullName>Xeon HBM</fullName>
+                    <default>false</default>
+                    <label>Xeon HBM</label>
+                </value>
+                <value>
+                    <fullName>Intel® Silicon Photonics</fullName>
+                    <default>false</default>
+                    <label>Intel® Silicon Photonics</label>
+                </value>
+                <value>
+                    <fullName>Intel® Ethernet</fullName>
+                    <default>false</default>
+                    <label>Intel® Ethernet</label>
+                </value>
+                <value>
+                    <fullName>Intel® Data Center GPU Flex Series</fullName>
+                    <default>false</default>
+                    <label>Intel® Data Center GPU Flex Series</label>
+                </value>
+                <value>
+                    <fullName>Intel® Infrastructure Power Manager</fullName>
+                    <default>false</default>
+                    <label>Intel® Infrastructure Power Manager</label>
+                </value>
+                <value>
+                    <fullName>Intel® SGX</fullName>
+                    <default>false</default>
+                    <label>Intel® SGX</label>
+                </value>
+                <value>
+                    <fullName>Intel® Data Center GPU</fullName>
+                    <default>false</default>
+                    <label>Intel® Data Center GPU</label>
+                </value>
+                <value>
+                    <fullName>Intel® Server GPU</fullName>
+                    <default>false</default>
+                    <label>Intel® Server GPU</label>
+                </value>
+                <value>
+                    <fullName>Intel® eASIC</fullName>
+                    <default>false</default>
+                    <label>Intel® eASIC</label>
+                </value>
+                <value>
+                    <fullName>Intel® Evo™ Edition</fullName>
+                    <default>false</default>
+                    <label>Intel® Evo™ Edition</label>
+                </value>
+                <value>
+                    <fullName>Intel® Core™ 3 Processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Core™ 3 Processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Core™ 5 Processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Core™ 5 Processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Core™ 7 Processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Core™ 7 Processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Core™ Ultra 5 Processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Core™ Ultra 5 Processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Core™ Ultra 7 Processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Core™ Ultra 7 Processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Core™ Ultra 9 Processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Core™ Ultra 9 Processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Core™ Ultra Processor Family</fullName>
+                    <default>false</default>
+                    <label>Intel® Core™ Ultra Processor Family</label>
+                </value>
+                <value>
+                    <fullName>Intel® Gaudi®</fullName>
+                    <default>false</default>
+                    <label>Intel® Gaudi®</label>
+                </value>
+                <value>
+                    <fullName>Accelerated by Intel®</fullName>
+                    <default>false</default>
+                    <label>Accelerated by Intel®</label>
+                </value>
+                <value>
+                    <fullName>Intel® Tiber™</fullName>
+                    <default>false</default>
+                    <label>Intel® Tiber™</label>
+                </value>
+                <value>
+                    <fullName>Intel® Core™ Ultra</fullName>
+                    <default>false</default>
+                    <label>Intel® Core™ Ultra</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Budget_Type__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Budget Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Account Plan</fullName>
+                    <default>false</default>
+                    <label>Account Plan</label>
+                </value>
+                <value>
+                    <fullName>Business Client Acceleration - MDF</fullName>
+                    <default>true</default>
+                    <label>Business Client Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>CCG Market Accelerate</fullName>
+                    <default>false</default>
+                    <label>CCG Market Accelerate</label>
+                </value>
+                <value>
+                    <fullName>Client Market Accelerate</fullName>
+                    <default>false</default>
+                    <label>Client Market Accelerate</label>
+                </value>
+                <value>
+                    <fullName>Client Specialties MDF</fullName>
+                    <default>false</default>
+                    <label>Client Specialties MDF</label>
+                </value>
+                <value>
+                    <fullName>Datacenter Market Accelerate</fullName>
+                    <default>false</default>
+                    <label>Datacenter Market Accelerate</label>
+                </value>
+                <value>
+                    <fullName>Data Center Market Accelerate</fullName>
+                    <default>false</default>
+                    <label>Data Center Market Accelerate</label>
+                </value>
+                <value>
+                    <fullName>Data Center Specialties MDF</fullName>
+                    <default>false</default>
+                    <label>Data Center Specialties MDF</label>
+                </value>
+                <value>
+                    <fullName>Data Centric Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Data Centric Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>DCG MAF</fullName>
+                    <default>false</default>
+                    <label>DCG MAF</label>
+                </value>
+                <value>
+                    <fullName>Global Ericsson Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global Ericsson Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global IBM Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global IBM Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global Microsoft Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global Microsoft Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global Nokia Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global Nokia Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global Red Hat Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global Red Hat Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global SAP Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global SAP Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global SAS Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global SAS Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global Suse Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global Suse Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global VMware Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global VMware Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Intel Rise Technology Initiative</fullName>
+                    <default>false</default>
+                    <label>Intel Rise Technology Initiative</label>
+                </value>
+                <value>
+                    <fullName>IoT Premier - MDF</fullName>
+                    <default>false</default>
+                    <label>IoT Premier - MDF</label>
+                </value>
+                <value>
+                    <fullName>IoT Targeted - MDF</fullName>
+                    <default>false</default>
+                    <label>IoT Targeted - MDF</label>
+                </value>
+                <value>
+                    <fullName>ISV Scale Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>ISV Scale Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>ODM Growth Plan - Client MDF</fullName>
+                    <default>false</default>
+                    <label>ODM Growth Plan - Client MDF</label>
+                </value>
+                <value>
+                    <fullName>Optane Specialties MDF</fullName>
+                    <default>false</default>
+                    <label>Optane Specialties MDF</label>
+                </value>
+                <value>
+                    <fullName>Proposal II MDF</fullName>
+                    <default>false</default>
+                    <label>Proposal II MDF</label>
+                </value>
+                <value>
+                    <fullName>Proposal I MDF</fullName>
+                    <default>false</default>
+                    <label>Proposal I MDF</label>
+                </value>
+                <value>
+                    <fullName>Red Hat &quot;Amplify&quot; - MDF</fullName>
+                    <default>false</default>
+                    <label>Red Hat &quot;Amplify&quot; - MDF</label>
+                </value>
+                <value>
+                    <fullName>Scale Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Scale Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Scale Market Accelerate - MDF</fullName>
+                    <default>false</default>
+                    <label>Scale Market Accelerate - MDF</label>
+                </value>
+                <value>
+                    <fullName>SOEM Client MDF</fullName>
+                    <default>false</default>
+                    <label>SOEM Client MDF</label>
+                </value>
+                <value>
+                    <fullName>SOEM Data Center MDF</fullName>
+                    <default>false</default>
+                    <label>SOEM Data Center MDF</label>
+                </value>
+                <value>
+                    <fullName>VMWare Amplify - MDF</fullName>
+                    <default>false</default>
+                    <label>VMWare Amplify - MDF</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Default_BU__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Default BU</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Effective_End_Date__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Effective End Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Effective_Start_Date__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Effective Start Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Fields</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Focus_Area__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Focus Area</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Client Computing</fullName>
+                    <default>true</default>
+                    <label>Client Computing</label>
+                </value>
+                <value>
+                    <fullName>Data Center</fullName>
+                    <default>false</default>
+                    <label>Data Center</label>
+                </value>
+                <value>
+                    <fullName>Networking &amp; Intelligent Edge</fullName>
+                    <default>false</default>
+                    <label>Networking &amp; Intelligent Edge</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_IsActive__c</fullName>
+        <defaultValue>true</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>isActive</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Product_Type__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Product Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>2-in-1</fullName>
+                    <default>true</default>
+                    <label>2-in-1</label>
+                </value>
+                <value>
+                    <fullName>All-in-one</fullName>
+                    <default>false</default>
+                    <label>All-in-one</label>
+                </value>
+                <value>
+                    <fullName>Chromebook</fullName>
+                    <default>false</default>
+                    <label>Chromebook</label>
+                </value>
+                <value>
+                    <fullName>Desktop</fullName>
+                    <default>false</default>
+                    <label>Desktop</label>
+                </value>
+                <value>
+                    <fullName>Notebook</fullName>
+                    <default>false</default>
+                    <label>Notebook</label>
+                </value>
+                <value>
+                    <fullName>Mini PC/NUC</fullName>
+                    <default>false</default>
+                    <label>Mini PC/NUC</label>
+                </value>
+                <value>
+                    <fullName>Motherboard - Desktop</fullName>
+                    <default>false</default>
+                    <label>Motherboard - Desktop</label>
+                </value>
+                <value>
+                    <fullName>Motherboard - Notebook</fullName>
+                    <default>false</default>
+                    <label>Motherboard - Notebook</label>
+                </value>
+                <value>
+                    <fullName>Workstation - Fixed</fullName>
+                    <default>false</default>
+                    <label>Workstation - Fixed</label>
+                </value>
+                <value>
+                    <fullName>Workstation - Mobile</fullName>
+                    <default>false</default>
+                    <label>Workstation - Mobile</label>
+                </value>
+                <value>
+                    <fullName>Hyper Converged Solutions</fullName>
+                    <default>false</default>
+                    <label>Hyper Converged Solutions</label>
+                </value>
+                <value>
+                    <fullName>Server</fullName>
+                    <default>false</default>
+                    <label>Server</label>
+                </value>
+                <value>
+                    <fullName>Appliance</fullName>
+                    <default>false</default>
+                    <label>Appliance</label>
+                </value>
+                <value>
+                    <fullName>Edge Gateway</fullName>
+                    <default>false</default>
+                    <label>Edge Gateway</label>
+                </value>
+                <value>
+                    <fullName>Storage</fullName>
+                    <default>false</default>
+                    <label>Storage</label>
+                </value>
+                <value>
+                    <fullName>Motherboard</fullName>
+                    <default>false</default>
+                    <label>Motherboard</label>
+                </value>
+                <value>
+                    <fullName>Programmable Solution</fullName>
+                    <default>false</default>
+                    <label>Programmable Solution</label>
+                </value>
+                <value>
+                    <fullName>Component</fullName>
+                    <default>false</default>
+                    <label>Component</label>
+                </value>
+                <value>
+                    <fullName>Service</fullName>
+                    <default>false</default>
+                    <label>Service</label>
+                </value>
+                <value>
+                    <fullName>Software</fullName>
+                    <default>false</default>
+                    <label>Software</label>
+                </value>
+                <value>
+                    <fullName>Solution</fullName>
+                    <default>false</default>
+                    <label>Solution</label>
+                </value>
+                <value>
+                    <fullName>Cloud</fullName>
+                    <default>false</default>
+                    <label>Cloud</label>
+                </value>
+                <value>
+                    <fullName>HPC</fullName>
+                    <default>false</default>
+                    <label>HPC</label>
+                </value>
+                <value>
+                    <fullName>FPGA Programmable Solution</fullName>
+                    <default>false</default>
+                    <label>FPGA Programmable Solution</label>
+                </value>
+                <value>
+                    <fullName>Mini PC</fullName>
+                    <default>false</default>
+                    <label>Mini PC</label>
+                </value>
+                <value>
+                    <fullName>Networking &amp; Telecommunications</fullName>
+                    <default>false</default>
+                    <label>Networking &amp; Telecommunications</label>
+                </value>
+                <value>
+                    <fullName>Intelligent Edge/IoT</fullName>
+                    <default>false</default>
+                    <label>Intelligent Edge/IoT</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Program__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Program</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Intel Partner Alliance</fullName>
+                    <default>true</default>
+                    <label>Intel Partner Alliance</label>
+                </value>
+                <value>
+                    <fullName>Channel MDF</fullName>
+                    <default>false</default>
+                    <label>Channel MDF</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Proposal_Based_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Proposal Based Indicator</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Split_Percent__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Split Percent</label>
+        <length>10</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>CCP Bu Split</label>
+    <pluralLabel>CCP Bu Splits</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

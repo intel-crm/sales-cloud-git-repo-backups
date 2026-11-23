@@ -93,11 +93,23 @@
         <sourceColumnName>Case.Core_IPS_Escalated_Level__c</sourceColumnName>
         <useOther>false</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Front Line Support</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Consult with Front Line Support</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Consult with Domain Expert</sourceValue>
+            </sourceValues>
             <value>Frontline Support</value>
         </values>
         <values>
             <sourceValues>
                 <sourceValue>Domain Expert</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Escalate to Domain Expert</sourceValue>
             </sourceValues>
             <value>Domain Expert</value>
         </values>
@@ -174,10 +186,6 @@
         <field>Case.Core_IPS_Escalated_Level__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Average</aggregateTypes>
-        <field>Case.Core_IPS_Age__c</field>
-    </columns>
-    <columns>
         <field>Case.Core_Severity__c</field>
     </columns>
     <columns>
@@ -250,15 +258,15 @@
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_22763604</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Month</dateGranularity>
         <field>CLOSED_DATEONLY</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>BucketField_22763604</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Telco - 10G PON escalation level</name>
@@ -275,8 +283,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Case.Core_IPS_Age__c</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

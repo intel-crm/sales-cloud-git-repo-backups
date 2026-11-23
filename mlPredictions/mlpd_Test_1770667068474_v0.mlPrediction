@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MLPredictionDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aiApplicationDeveloperName>Test</aiApplicationDeveloperName>
+    <developerName>mlpd_Test_1770667068474_v0</developerName>
+    <masterLabel>Test</masterLabel>
+    <status>Draft</status>
+    <type>BinaryClassification</type>
+</MLPredictionDefinition>

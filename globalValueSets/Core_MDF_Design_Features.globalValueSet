@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Design Features 1</fullName>
+        <default>false</default>
+        <label>Design Features 1</label>
+    </customValue>
+    <customValue>
+        <fullName>Design Features 2</fullName>
+        <default>false</default>
+        <label>Design Features 2</label>
+    </customValue>
+    <customValue>
+        <fullName>Design Features 3</fullName>
+        <default>false</default>
+        <label>Design Features 3</label>
+    </customValue>
+    <description>Store Design Features values</description>
+    <masterLabel>Design Features</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

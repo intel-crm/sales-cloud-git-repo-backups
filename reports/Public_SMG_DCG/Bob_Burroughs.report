@@ -93,7 +93,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>ahmed al-jeshi,chris allison,atanas,jiang chen,whitney gross,claire bild,keith kirkendall,tuong nguyen,jean-laurent,thanh phung,adam roe,charles hall,midoriko,scott huck,yanguo,swinburne</value>
+            <value>ahmed al-jeshi,chris allison,rebecca arney,atanas,jiang chen,whitney gross,claire bild,keith kirkendall,chakra nagarajan,tuong nguyen,hisaki ohara,jean-laurent,zhiqi,yanguo,thanh phung,swinburn,vivek kumar rai,adam roe,charles hall</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -138,6 +138,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

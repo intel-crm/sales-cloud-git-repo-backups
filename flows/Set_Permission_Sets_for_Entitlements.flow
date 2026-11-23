@@ -7,7 +7,7 @@
         <name>Check_CCFB_User_Permission_Set_is_assigned</name>
         <label>Check CCFB User Permission Set is assigned</label>
         <locationX>2917</locationX>
-        <locationY>118</locationY>
+        <locationY>349</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>CCFB_User_Permission_Set_is_not_exist</name>
@@ -29,7 +29,7 @@
         <name>Check_If_CCF_or_DCF_or_SPCF_or_CCFB</name>
         <label>Check If CCF or DCF or SPCF or CCFB</label>
         <locationX>2652</locationX>
-        <locationY>289</locationY>
+        <locationY>520</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>CCF_User_Permission</name>
@@ -91,12 +91,27 @@
             </connector>
             <label>CCFB User Permission</label>
         </rules>
+        <rules>
+            <name>Retail_User_Permission</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>EngagementTechnicalName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>RetailEngagementName</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Wait_for_Retail_Entitlement_0</targetReference>
+            </connector>
+            <label>Retail User Permission</label>
+        </rules>
     </decisions>
     <decisions>
         <name>Check_if_CCF_Permission_Exists</name>
         <label>Check if CCF Permission Exists</label>
         <locationX>2110</locationX>
-        <locationY>357</locationY>
+        <locationY>588</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>CCF_Permission_does_not_Exists</name>
@@ -118,7 +133,7 @@
         <name>Check_If_CCF_permission_is_created</name>
         <label>Check If CCF permission is created</label>
         <locationX>2001</locationX>
-        <locationY>572</locationY>
+        <locationY>803</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>CCF_permission_is_created</name>
@@ -137,11 +152,40 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Check_if_CCFB_User_Admin_entitlement_exist</name>
+        <label>Check if CCFB User Admin entitlement exist</label>
+        <locationX>277</locationX>
+        <locationY>1220</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>CCFB_User_Admin_entitlement_is_not_exist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>vCCFBUserAdmin</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vUserAdministratorEntitlementExist</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Wait_for_Retail_User_Admin</targetReference>
+            </connector>
+            <label>CCFB User Admin entitlement is not exist</label>
+        </rules>
+    </decisions>
+    <decisions>
         <description>Check If CCFB User Permission Set is assigned</description>
         <name>Check_If_CCFB_User_Permission_Set_is_assigned</name>
         <label>Check If CCFB User Permission Set is assigned</label>
         <locationX>1052</locationX>
-        <locationY>544</locationY>
+        <locationY>775</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>CCFB_User_Permission_Set_is_not_assigned</name>
@@ -163,7 +207,7 @@
         <name>Check_if_ClaimSubmittePermission_Exists</name>
         <label>Check if Claim Submitte Permission Exists</label>
         <locationX>2723</locationX>
-        <locationY>727</locationY>
+        <locationY>958</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>Claim_Submitter_Permission_does_not_exist</name>
@@ -185,7 +229,7 @@
         <name>Check_if_DCF_Account_Budget_Administrator_is_null</name>
         <label>Check if DCF Account Budget Administrator is null</label>
         <locationX>1578</locationX>
-        <locationY>291</locationY>
+        <locationY>522</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>DCF_Account_Budget_Administrator_is_null</name>
@@ -207,7 +251,7 @@
         <name>Check_if_DCF_Activity_Submitter_is_null</name>
         <label>Check if DCF Activity Submitter is null</label>
         <locationX>2286</locationX>
-        <locationY>798</locationY>
+        <locationY>1029</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>DCF_Activity_Submitter_is_null</name>
@@ -229,7 +273,7 @@
         <name>Check_if_DCF_Claim_Submitter_is_null</name>
         <label>Check if DCF Claim Submitter is null</label>
         <locationX>2570</locationX>
-        <locationY>1114</locationY>
+        <locationY>1345</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>DCF_Claim_Submitter_is_null</name>
@@ -251,7 +295,7 @@
         <name>Check_if_DCF_Content_Viewer_is_null</name>
         <label>Check if DCF Content Viewer is null</label>
         <locationX>2583</locationX>
-        <locationY>1019</locationY>
+        <locationY>1250</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>DCF_Content_Viewer_is_null</name>
@@ -273,7 +317,7 @@
         <name>Check_if_DCF_External_View_All_is_null</name>
         <label>Check if DCF External View All is null</label>
         <locationX>3030</locationX>
-        <locationY>1099</locationY>
+        <locationY>1330</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>DCF_External_View_All_is_null</name>
@@ -295,7 +339,7 @@
         <name>Check_if_DCF_Permission_exists</name>
         <label>Check if DCF Permission exists</label>
         <locationX>3299</locationX>
-        <locationY>377</locationY>
+        <locationY>608</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>DCF_permission_does_not_exists</name>
@@ -317,7 +361,7 @@
         <name>Check_If_DCF_permission_is_created</name>
         <label>Check If DCF permission is created</label>
         <locationX>2326</locationX>
-        <locationY>1195</locationY>
+        <locationY>1426</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>If_DCF_permission_is_created</name>
@@ -339,7 +383,7 @@
         <name>Check_if_DCF_User_Administrator_is_null</name>
         <label>Check if DCF User Administrator is null</label>
         <locationX>2615</locationX>
-        <locationY>1208</locationY>
+        <locationY>1439</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>DCF_User_Administrator_is_null</name>
@@ -361,7 +405,7 @@
         <name>Check_if_Permission_Exists_AccountBudgetAdministrator</name>
         <label>Check if Permission Exists for Account Budget Administrato</label>
         <locationX>2039</locationX>
-        <locationY>210</locationY>
+        <locationY>441</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>Account_Budget_Administrator_Permission_does_not_Exists</name>
@@ -383,7 +427,7 @@
         <name>Check_if_Permission_Exists_for_Activity_Submitter</name>
         <label>Check if Permission Exists for Activity Submitter</label>
         <locationX>2340</locationX>
-        <locationY>605</locationY>
+        <locationY>836</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>Activity_Submitter_Permission_does_not_exists</name>
@@ -405,7 +449,7 @@
         <name>Check_if_Permission_Exists_for_Content_Viewer</name>
         <label>Check if Permission Exists for Content Viewer</label>
         <locationX>2569</locationX>
-        <locationY>718</locationY>
+        <locationY>949</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>Content_Viewer_Permission_does_exists</name>
@@ -427,7 +471,7 @@
         <name>Check_if_Permission_Exists_for_External_View_Only</name>
         <label>Check if Permission Exists for External View Only</label>
         <locationX>3101</locationX>
-        <locationY>751</locationY>
+        <locationY>982</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>External_View_Only_does_not_exist</name>
@@ -449,7 +493,7 @@
         <name>Check_if_Permission_Exists_for_ExternalUserAdministrator</name>
         <label>Check if Permission Exists for External User Administrator</label>
         <locationX>2871</locationX>
-        <locationY>724</locationY>
+        <locationY>955</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>External_User_Administrator_Permission_does_not_exist</name>
@@ -468,11 +512,48 @@
         </rules>
     </decisions>
     <decisions>
+        <description>Check if Retail Claim Submitter entitlement exist</description>
+        <name>Check_if_Retail_Claim_Submitter_entitlement_exist</name>
+        <label>Check if Retail Claim Submitter entitlement exist</label>
+        <locationX>277</locationX>
+        <locationY>364</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>CCFB_SPCF_DCF_Claim_Submitter_entitlement_is_not_exist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>vCCFBClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vClaimSubmitterEntitlementExist</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Wait_for_Claim_Submitter</targetReference>
+            </connector>
+            <label>CCFB_SPCF_DCF Claim Submitter entitlement is not exist</label>
+        </rules>
+    </decisions>
+    <decisions>
         <description>Check if SPCF account budget admin entitlement exist</description>
         <name>Check_if_SPCF_account_budget_admin_entitlement_exist</name>
         <label>Check if SPCF account budget admin entitlement exist</label>
         <locationX>826</locationX>
-        <locationY>471</locationY>
+        <locationY>702</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>SPCF_account_budget_admin_entitlement_is_not_exist</name>
@@ -495,7 +576,7 @@
         <name>Check_if_SPCF_activity_submitter_entitlement_exist</name>
         <label>Check if SPCF activity submitter entitlement exist</label>
         <locationX>700</locationX>
-        <locationY>439</locationY>
+        <locationY>670</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>SPCF_activity_submitter_entitlement_is_not_exist</name>
@@ -518,7 +599,7 @@
         <name>Check_if_SPCF_claim_submitter_entitlement_exist</name>
         <label>Check if SPCF claim submitter entitlement exist</label>
         <locationX>566</locationX>
-        <locationY>462</locationY>
+        <locationY>693</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>SPCF_claim_submitter_entitlement_is_not_exist</name>
@@ -541,7 +622,7 @@
         <name>Check_if_SPCF_external_content_viewer_entitlement_exist</name>
         <label>Check if SPCF external content viewer entitlement exist</label>
         <locationX>842</locationX>
-        <locationY>1012</locationY>
+        <locationY>1243</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>SPCF_external_content_viewer_entitlement_is_not_exist</name>
@@ -564,7 +645,7 @@
         <name>Check_if_SPCF_external_view_all_entitlement_exist</name>
         <label>Check if SPCF external view all entitlement exist</label>
         <locationX>710</locationX>
-        <locationY>992</locationY>
+        <locationY>1223</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>SPCF_external_view_all_entitlement_is_not_exist</name>
@@ -586,7 +667,7 @@
         <name>Check_if_SPCF_Permission_exists</name>
         <label>Check if SPCF Permission exists</label>
         <locationX>3406</locationX>
-        <locationY>494</locationY>
+        <locationY>725</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>SPCF_permission_does_not_exists</name>
@@ -608,7 +689,7 @@
         <name>Check_If_SPCF_permission_is_created</name>
         <label>Check If SPCF permission is created</label>
         <locationX>1391</locationX>
-        <locationY>324</locationY>
+        <locationY>555</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>SPCF_permission_is_created</name>
@@ -631,7 +712,7 @@
         <name>Check_if_SPCF_user_admin_entitlement_exist</name>
         <label>Check if SPCF user admin entitlement exist</label>
         <locationX>589</locationX>
-        <locationY>989</locationY>
+        <locationY>1220</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>SPCF_user_admin_entitlement_is_not_exist</name>
@@ -650,10 +731,56 @@
         </rules>
     </decisions>
     <decisions>
+        <description>Check Retail User Permission Set is assigned</description>
+        <name>Check_Retail_User_Permission_Set_is_assigned</name>
+        <label>Check Retail User Permission Set is assigned</label>
+        <locationX>2729</locationX>
+        <locationY>105</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Retail_User_Permission_Set_is_not_exist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>vRetailUserPermissionSet</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Retail_User_Permission_Set_Assignment</targetReference>
+            </connector>
+            <label>Retail User Permission Set is not exist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check Retail User Permission Set is assigned</description>
+        <name>Check_Retail_User_Permission_Set_is_assigned_0</name>
+        <label>Check Retail User Permission Set is assigned</label>
+        <locationX>1033</locationX>
+        <locationY>1172</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Retail_User_Permission_Set_is_not_exist_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>vRetailUserPermissionSet</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Retail_User_Permission_Set_Assignment_0</targetReference>
+            </connector>
+            <label>Retail User Permission Set is not exist</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Which_Entitlement</name>
         <label>Which Entitlement?</label>
         <locationX>1470</locationX>
-        <locationY>722</locationY>
+        <locationY>953</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>Partner_Portal_DDR</name>
@@ -1246,6 +1373,66 @@
             </connector>
             <label>CCFB User Administrator</label>
         </rules>
+        <rules>
+            <name>Retail_User_Administrator</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>EntitlementID</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>RMF_UserAdministrator_Entitlement</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_CCFB_User_Administrator_Contact_Entitlement</targetReference>
+            </connector>
+            <label>Retail User Administrator</label>
+        </rules>
+        <rules>
+            <name>Retail_User</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>EntitlementID</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>RMF_User_Entitlement</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Retail_User_Permission_Set_0</targetReference>
+            </connector>
+            <label>Retail User</label>
+        </rules>
+        <rules>
+            <name>Retail_Activity_Reviewer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>EntitlementID</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>RMF_ActivityReviewer_Entitlement</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Permission_Set_Assignment_For_Retail_Activity_Reviewer</targetReference>
+            </connector>
+            <label>Retail Activity Reviewer</label>
+        </rules>
+        <rules>
+            <name>Retail_Claim_Submitter</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>EntitlementID</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>RMF_ClaimSubmitter_Entitlement</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_CCFB_Claim_Submitter_Contact_Entitlement</targetReference>
+            </connector>
+            <label>Retail Claim Submitter</label>
+        </rules>
     </decisions>
     <description>Called from PB Flow A&amp;E Set Permission Sets for Contact Entitlements
 
@@ -1511,6 +1698,41 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <expression>{!$Label.Core_Partner_FAE_Permission_Set_ID}</expression>
     </formulas>
     <formulas>
+        <name>Retail_Activity_Submitter_Permission</name>
+        <dataType>String</dataType>
+        <expression>{!$Label.Core_Retail_Activity_Reviewer_Permission}</expression>
+    </formulas>
+    <formulas>
+        <name>Retail_User_PermissionSet</name>
+        <dataType>String</dataType>
+        <expression>{!$Label.Core_Retail_User_Permission}</expression>
+    </formulas>
+    <formulas>
+        <name>RetailEngagementName</name>
+        <dataType>String</dataType>
+        <expression>{!$Label.Core_Retail_Engagement_Technical_Code}</expression>
+    </formulas>
+    <formulas>
+        <name>RMF_ActivityReviewer_Entitlement</name>
+        <dataType>String</dataType>
+        <expression>{!$Label.Core_Retail_Activity_Reviewer}</expression>
+    </formulas>
+    <formulas>
+        <name>RMF_ClaimSubmitter_Entitlement</name>
+        <dataType>String</dataType>
+        <expression>{!$Label.Core_Retail_Claim_Submitter}</expression>
+    </formulas>
+    <formulas>
+        <name>RMF_User_Entitlement</name>
+        <dataType>String</dataType>
+        <expression>{!$Label.Core_RMF_User}</expression>
+    </formulas>
+    <formulas>
+        <name>RMF_UserAdministrator_Entitlement</name>
+        <dataType>String</dataType>
+        <expression>{!$Label.Core_Retail_User_Administrator}</expression>
+    </formulas>
+    <formulas>
         <name>SPCFAccountBudgetAdministrator</name>
         <dataType>String</dataType>
         <expression>{!$Label.Core_SPCF_Account_Budget_Administrator}</expression>
@@ -1565,6 +1787,11 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <dataType>String</dataType>
         <expression>{!$Label.Core_User_Administrator_DCF}</expression>
     </formulas>
+    <formulas>
+        <name>WaitForRetailEntilememntRemoval</name>
+        <dataType>DateTime</dataType>
+        <expression>{!vFlowDateTime}+0.000000015</expression>
+    </formulas>
     <interviewLabel>Set Permission Sets for Entitlements {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Set Permission Sets and Groups for Entitlements</label>
     <processMetadataValues>
@@ -1578,7 +1805,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>Add_user_to_DDR_Group</name>
         <label>Add user to DDR Group</label>
         <locationX>1660</locationX>
-        <locationY>694</locationY>
+        <locationY>925</locationY>
         <assignRecordIdToReference>DDRGroupMemberID</assignRecordIdToReference>
         <inputAssignments>
             <field>GroupId</field>
@@ -1598,7 +1825,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>Add_user_to_Lead_Group</name>
         <label>Add user to Lead Group</label>
         <locationX>1701</locationX>
-        <locationY>1059</locationY>
+        <locationY>1290</locationY>
         <assignRecordIdToReference>LeadsGroupMemberID</assignRecordIdToReference>
         <inputAssignments>
             <field>GroupId</field>
@@ -1619,7 +1846,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>Assign_CCFB_User_Permission_Set</name>
         <label>Assign CCFB User Permission Set</label>
         <locationX>1280</locationX>
-        <locationY>527</locationY>
+        <locationY>758</locationY>
         <inputAssignments>
             <field>AssigneeId</field>
             <value>
@@ -1638,7 +1865,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>CCF_Permission_Set</name>
         <label>CCF Permission Set</label>
         <locationX>1831</locationX>
-        <locationY>363</locationY>
+        <locationY>594</locationY>
         <inputAssignments>
             <field>AssigneeId</field>
             <value>
@@ -1658,7 +1885,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>CCFB_User_Permission_Set_Assignment</name>
         <label>CCFB User Permission Set Assignment</label>
         <locationX>3150</locationX>
-        <locationY>66</locationY>
+        <locationY>297</locationY>
         <inputAssignments>
             <field>AssigneeId</field>
             <value>
@@ -1677,7 +1904,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>CCP_Activity_Submitter_permission</name>
         <label>CCP Activity Submitter permission</label>
         <locationX>2430</locationX>
-        <locationY>505</locationY>
+        <locationY>736</locationY>
         <connector>
             <targetReference>Check_If_CCF_or_DCF_or_SPCF_or_CCFB</targetReference>
         </connector>
@@ -1699,7 +1926,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>CCP_Campaign_Planner_Permission</name>
         <label>CCP Content Viewer_Permission</label>
         <locationX>2582</locationX>
-        <locationY>604</locationY>
+        <locationY>835</locationY>
         <connector>
             <targetReference>Check_If_CCF_or_DCF_or_SPCF_or_CCFB</targetReference>
         </connector>
@@ -1721,7 +1948,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>CCP_CCF_USER_Permission</name>
         <label>CCP CCF USER Permission</label>
         <locationX>2172</locationX>
-        <locationY>522</locationY>
+        <locationY>753</locationY>
         <inputAssignments>
             <field>AssigneeId</field>
             <value>
@@ -1740,7 +1967,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>CCP_DCF_USER</name>
         <label>CCP DCF USER</label>
         <locationX>2566</locationX>
-        <locationY>1290</locationY>
+        <locationY>1521</locationY>
         <inputAssignments>
             <field>AssigneeId</field>
             <value>
@@ -1759,7 +1986,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>CCP_External_Account_Budget_Administrator_permission</name>
         <label>CCP External Account Budget Administrator permission</label>
         <locationX>2189</locationX>
-        <locationY>236</locationY>
+        <locationY>467</locationY>
         <connector>
             <targetReference>Check_If_CCF_or_DCF_or_SPCF_or_CCFB</targetReference>
         </connector>
@@ -1781,7 +2008,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>CCP_External_Claim_Submitter_Permission</name>
         <label>CCP External Claim Submitter Permission</label>
         <locationX>2730</locationX>
-        <locationY>619</locationY>
+        <locationY>850</locationY>
         <connector>
             <targetReference>Check_If_CCF_or_DCF_or_SPCF_or_CCFB</targetReference>
         </connector>
@@ -1803,7 +2030,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>CCP_External_User_Admin_Permission</name>
         <label>CCP External User Admin Permission</label>
         <locationX>2903</locationX>
-        <locationY>599</locationY>
+        <locationY>830</locationY>
         <connector>
             <targetReference>Check_If_CCF_or_DCF_or_SPCF_or_CCFB</targetReference>
         </connector>
@@ -1825,7 +2052,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>CCP_External_View_Only_Permission</name>
         <label>CCP External View Only Permission</label>
         <locationX>3173</locationX>
-        <locationY>619</locationY>
+        <locationY>850</locationY>
         <connector>
             <targetReference>Check_If_CCF_or_DCF_or_SPCF_or_CCFB</targetReference>
         </connector>
@@ -1847,7 +2074,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>DCF_Permission_Set</name>
         <label>DCF Permission Set</label>
         <locationX>3631</locationX>
-        <locationY>374</locationY>
+        <locationY>605</locationY>
         <inputAssignments>
             <field>AssigneeId</field>
             <value>
@@ -1866,7 +2093,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>DDR_Permission_set_assignment</name>
         <label>DDR Permission set assignment</label>
         <locationX>1663</locationX>
-        <locationY>581</locationY>
+        <locationY>812</locationY>
         <assignRecordIdToReference>PermissionSetID</assignRecordIdToReference>
         <connector>
             <targetReference>Add_user_to_DDR_Group</targetReference>
@@ -1889,7 +2116,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>IPS_Permission_Set_Assignment</name>
         <label>IPS Permission Set Assignment</label>
         <locationX>1861</locationX>
-        <locationY>1006</locationY>
+        <locationY>1237</locationY>
         <inputAssignments>
             <field>AssigneeId</field>
             <value>
@@ -1908,7 +2135,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>Leads_Permission_Set_Assignment</name>
         <label>Leads Permission Set Assignment</label>
         <locationX>1726</locationX>
-        <locationY>945</locationY>
+        <locationY>1176</locationY>
         <connector>
             <targetReference>Add_user_to_Lead_Group</targetReference>
         </connector>
@@ -1930,7 +2157,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>MP_External_Employee_permission</name>
         <label>MP External Employee permission</label>
         <locationX>1816</locationX>
-        <locationY>1140</locationY>
+        <locationY>1371</locationY>
         <inputAssignments>
             <field>AssigneeId</field>
             <value>
@@ -1949,7 +2176,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>MP_External_Lead_Development_Representative</name>
         <label>MP External Lead Development Representative</label>
         <locationX>1401</locationX>
-        <locationY>1045</locationY>
+        <locationY>1276</locationY>
         <inputAssignments>
             <field>AssigneeId</field>
             <value>
@@ -1968,7 +2195,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>MP_External_Partner_Admin</name>
         <label>MP External Partner Admin</label>
         <locationX>1258</locationX>
-        <locationY>997</locationY>
+        <locationY>1228</locationY>
         <inputAssignments>
             <field>AssigneeId</field>
             <value>
@@ -1987,7 +2214,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>MP_Marketing_Specialist_permission</name>
         <label>MP Marketing Specialist permission</label>
         <locationX>1639</locationX>
-        <locationY>1219</locationY>
+        <locationY>1450</locationY>
         <inputAssignments>
             <field>AssigneeId</field>
             <value>
@@ -2006,7 +2233,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>MP_Offering_Editor_permission</name>
         <label>MP Offering Editor permission</label>
         <locationX>1510</locationX>
-        <locationY>1211</locationY>
+        <locationY>1442</locationY>
         <inputAssignments>
             <field>AssigneeId</field>
             <value>
@@ -2025,7 +2252,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>Partner_FAE_Permission_Set_Assignment</name>
         <label>Partner FAE Permission Set Assignment</label>
         <locationX>2053</locationX>
-        <locationY>1075</locationY>
+        <locationY>1306</locationY>
         <inputAssignments>
             <field>AssigneeId</field>
             <value>
@@ -2041,10 +2268,73 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <object>PermissionSetAssignment</object>
     </recordCreates>
     <recordCreates>
+        <description>Permission Set Assignment For Retail Activity Reviewer</description>
+        <name>Permission_Set_Assignment_For_Retail_Activity_Reviewer</name>
+        <label>Permission Set Assignment For Retail Activity Reviewer</label>
+        <locationX>1965</locationX>
+        <locationY>44</locationY>
+        <connector>
+            <targetReference>Check_If_CCF_or_DCF_or_SPCF_or_CCFB</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>AssigneeId</field>
+            <value>
+                <elementReference>UserID</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PermissionSetId</field>
+            <value>
+                <elementReference>Retail_Activity_Submitter_Permission</elementReference>
+            </value>
+        </inputAssignments>
+        <object>PermissionSetAssignment</object>
+    </recordCreates>
+    <recordCreates>
+        <description>Retail User Permission Set Assignment</description>
+        <name>Retail_User_Permission_Set_Assignment</name>
+        <label>Retail User Permission Set Assignment</label>
+        <locationX>3033</locationX>
+        <locationY>102</locationY>
+        <inputAssignments>
+            <field>AssigneeId</field>
+            <value>
+                <elementReference>UserID</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PermissionSetId</field>
+            <value>
+                <elementReference>Retail_User_PermissionSet</elementReference>
+            </value>
+        </inputAssignments>
+        <object>PermissionSetAssignment</object>
+    </recordCreates>
+    <recordCreates>
+        <description>Retail User Permission Set Assignment</description>
+        <name>Retail_User_Permission_Set_Assignment_0</name>
+        <label>Retail User Permission Set Assignment</label>
+        <locationX>1158</locationX>
+        <locationY>1564</locationY>
+        <inputAssignments>
+            <field>AssigneeId</field>
+            <value>
+                <elementReference>UserID</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PermissionSetId</field>
+            <value>
+                <elementReference>Retail_User_PermissionSet</elementReference>
+            </value>
+        </inputAssignments>
+        <object>PermissionSetAssignment</object>
+    </recordCreates>
+    <recordCreates>
         <name>SPCF_Permission_Set</name>
         <label>SPCF Permission Set</label>
         <locationX>3628</locationX>
-        <locationY>496</locationY>
+        <locationY>727</locationY>
         <inputAssignments>
             <field>AssigneeId</field>
             <value>
@@ -2063,7 +2353,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>SPCF_USER_Permission</name>
         <label>SPCF USER Permission</label>
         <locationX>1326</locationX>
-        <locationY>229</locationY>
+        <locationY>460</locationY>
         <inputAssignments>
             <field>AssigneeId</field>
             <value>
@@ -2082,7 +2372,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>Account_Budget_Adminidtaror_Permission</name>
         <label>Account Budget Adminidtaror Permission</label>
         <locationX>1908</locationX>
-        <locationY>231</locationY>
+        <locationY>462</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_Permission_Exists_AccountBudgetAdministrator</targetReference>
@@ -2112,7 +2402,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>Account_Budget_Administrator_DCF_Permission</name>
         <label>Account Budget Administrator DCF Permission</label>
         <locationX>1524</locationX>
-        <locationY>379</locationY>
+        <locationY>610</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_DCF_Account_Budget_Administrator_is_null</targetReference>
@@ -2142,7 +2432,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>Activity_Submitter_DCF_Permission</name>
         <label>Activity Submitter DCF Permission</label>
         <locationX>2112</locationX>
-        <locationY>831</locationY>
+        <locationY>1062</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_DCF_Activity_Submitter_is_null</targetReference>
@@ -2172,7 +2462,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>ActivitySubmitterPermission</name>
         <label>ActivitySubmitterPermission</label>
         <locationX>2463</locationX>
-        <locationY>666</locationY>
+        <locationY>897</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_Permission_Exists_for_Activity_Submitter</targetReference>
@@ -2202,7 +2492,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>CCF_permission</name>
         <label>CCF permission</label>
         <locationX>1883</locationX>
-        <locationY>656</locationY>
+        <locationY>887</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_If_CCF_permission_is_created</targetReference>
@@ -2232,7 +2522,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>CCFPermissionLookup</name>
         <label>CCFPermissionLookup</label>
         <locationX>2303</locationX>
-        <locationY>358</locationY>
+        <locationY>589</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_CCF_Permission_Exists</targetReference>
@@ -2259,11 +2549,73 @@ Automatically sets permission sets for those entitlements which need them.  Also
         </outputAssignments>
     </recordLookups>
     <recordLookups>
+        <description>Check CCFB Claim Submitter Contact Entitlement</description>
+        <name>Check_CCFB_Claim_Submitter_Contact_Entitlement</name>
+        <label>Check CCFB Claim Submitter Contact Entitlement</label>
+        <locationX>217</locationX>
+        <locationY>780</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_SPCF_Claim_Submitter_Contact_Entitlement_0</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Contact_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ContactID</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Entitlement_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>CCFB_ClaimSubmitter_Entitlement</elementReference>
+            </value>
+        </filters>
+        <object>Core_Contact_Entitlement__c</object>
+        <outputAssignments>
+            <assignToReference>vCCFBClaimSubmitter</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
+        <description>Check CCFB User Administrator Contact Entitlement</description>
+        <name>Check_CCFB_User_Administrator_Contact_Entitlement</name>
+        <label>Check CCFB User Administrator Contact Entitlement</label>
+        <locationX>278</locationX>
+        <locationY>1044</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_SPCF_User_Admin_Contact_Entitlement_0</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Contact_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ContactID</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Entitlement_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>CCFB_UserAdministrator_Entitlement</elementReference>
+            </value>
+        </filters>
+        <object>Core_Contact_Entitlement__c</object>
+        <outputAssignments>
+            <assignToReference>vCCFBUserAdmin</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
         <description>Check CCFB User Permission Set</description>
         <name>Check_CCFB_User_Permission_Set</name>
         <label>Check CCFB User Permission Set</label>
-        <locationX>2772</locationX>
-        <locationY>56</locationY>
+        <locationX>2857</locationX>
+        <locationY>240</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_CCFB_User_Permission_Set_is_assigned</targetReference>
@@ -2294,7 +2646,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>Check_CCP_CCFB_User_Permission_Set</name>
         <label>Check CCFB User Permission Set</label>
         <locationX>1282</locationX>
-        <locationY>633</locationY>
+        <locationY>864</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_If_CCFB_User_Permission_Set_is_assigned</targetReference>
@@ -2321,11 +2673,104 @@ Automatically sets permission sets for those entitlements which need them.  Also
         </outputAssignments>
     </recordLookups>
     <recordLookups>
+        <description>Check DCF Claim Submitter Contact Entitlement</description>
+        <name>Check_DCF_Claim_Submitter_Contact_Entitlement_0</name>
+        <label>Check DCFClaim Submitter Contact Entitlement</label>
+        <locationX>169</locationX>
+        <locationY>499</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_Retail_Claim_Submitter_entitlement_exist</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Contact_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ContactID</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Entitlement_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ClaimSubmitter_DCF</elementReference>
+            </value>
+        </filters>
+        <object>Core_Contact_Entitlement__c</object>
+        <outputAssignments>
+            <assignToReference>vDCFClaimSubmitter</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
+        <description>Check Retail User Permission Set</description>
+        <name>Check_Retail_User_Permission_Set</name>
+        <label>Check Retail User Permission Set</label>
+        <locationX>2527</locationX>
+        <locationY>50</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_Retail_User_Permission_Set_is_assigned</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AssigneeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>UserID</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>PermissionSetId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Retail_User_PermissionSet</elementReference>
+            </value>
+        </filters>
+        <object>PermissionSetAssignment</object>
+        <outputAssignments>
+            <assignToReference>vRetailUserPermissionSet</assignToReference>
+            <field>PermissionSetId</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
+        <description>Check Retail User Permission Set</description>
+        <name>Check_Retail_User_Permission_Set_0</name>
+        <label>Check Retail User Permission Set</label>
+        <locationX>1168</locationX>
+        <locationY>1100</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_Retail_User_Permission_Set_is_assigned_0</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AssigneeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>UserID</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>PermissionSetId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Retail_User_PermissionSet</elementReference>
+            </value>
+        </filters>
+        <object>PermissionSetAssignment</object>
+        <outputAssignments>
+            <assignToReference>vRetailUserPermissionSet</assignToReference>
+            <field>PermissionSetId</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
         <description>Check SPCF Account Budget Administrator Contact Entitlement</description>
         <name>Check_SPCF_Account_Budget_Administrator_Contact_Entitlement</name>
         <label>Check SPCF Account Budget Administrator Contact Entitlement</label>
         <locationX>847</locationX>
-        <locationY>639</locationY>
+        <locationY>870</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_SPCF_account_budget_admin_entitlement_exist</targetReference>
@@ -2356,7 +2801,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>Check_SPCF_Activity_Submitter_Contact_Entitlement</name>
         <label>Check SPCF Activity Submitter Contact Entitlement</label>
         <locationX>728</locationX>
-        <locationY>643</locationY>
+        <locationY>874</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_SPCF_activity_submitter_entitlement_exist</targetReference>
@@ -2387,10 +2832,41 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>Check_SPCF_Claim_Submitter_Contact_Entitlement</name>
         <label>Check SPCF Claim Submitter Contact Entitlement</label>
         <locationX>604</locationX>
-        <locationY>646</locationY>
+        <locationY>877</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_SPCF_claim_submitter_entitlement_exist</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Contact_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ContactID</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Entitlement_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>SPCFClaimSubmitter</elementReference>
+            </value>
+        </filters>
+        <object>Core_Contact_Entitlement__c</object>
+        <outputAssignments>
+            <assignToReference>vClaimSubmitterEntitlementExist</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
+        <description>Check SPCF Claim Submitter Contact Entitlement</description>
+        <name>Check_SPCF_Claim_Submitter_Contact_Entitlement_0</name>
+        <label>Check SPCF Claim Submitter Contact Entitlement</label>
+        <locationX>193</locationX>
+        <locationY>633</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_DCF_Claim_Submitter_Contact_Entitlement_0</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -2418,7 +2894,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>Check_SPCF_External_Content_Viewer_Contact_Entitlement</name>
         <label>Check SPCF External Content Viewer Contact Entitlement</label>
         <locationX>845</locationX>
-        <locationY>821</locationY>
+        <locationY>1052</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_SPCF_external_content_viewer_entitlement_exist</targetReference>
@@ -2449,7 +2925,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>Check_SPCF_External_View_All_Contact_Entitlement</name>
         <label>Check SPCF External View All Contact Entitlement</label>
         <locationX>718</locationX>
-        <locationY>823</locationY>
+        <locationY>1054</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_SPCF_external_view_all_entitlement_exist</targetReference>
@@ -2480,7 +2956,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>Check_SPCF_User_Admin_Contact_Entitlement</name>
         <label>Check SPCF User Admin Contact Entitlement</label>
         <locationX>605</locationX>
-        <locationY>824</locationY>
+        <locationY>1055</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_SPCF_user_admin_entitlement_exist</targetReference>
@@ -2507,10 +2983,41 @@ Automatically sets permission sets for those entitlements which need them.  Also
         </outputAssignments>
     </recordLookups>
     <recordLookups>
+        <description>Check SPCF User Admin Contact Entitlement</description>
+        <name>Check_SPCF_User_Admin_Contact_Entitlement_0</name>
+        <label>Check SPCF User Admin Contact Entitlement</label>
+        <locationX>139</locationX>
+        <locationY>1185</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_CCFB_User_Admin_entitlement_exist</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Contact_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ContactID</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Entitlement_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>SPCFUserAdministrator</elementReference>
+            </value>
+        </filters>
+        <object>Core_Contact_Entitlement__c</object>
+        <outputAssignments>
+            <assignToReference>vUserAdministratorEntitlementExist</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
         <name>Claim_Submitter_DCF_Permission</name>
         <label>Claim Submitter DCF Permission</label>
         <locationX>2243</locationX>
-        <locationY>1030</locationY>
+        <locationY>1261</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_DCF_Claim_Submitter_is_null</targetReference>
@@ -2540,7 +3047,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>Claim_Submitter_Permission</name>
         <label>Claim Submitter Permission</label>
         <locationX>2723</locationX>
-        <locationY>1060</locationY>
+        <locationY>1291</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_ClaimSubmittePermission_Exists</targetReference>
@@ -2570,7 +3077,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>Content_Viewer_DCF_Permission</name>
         <label>Content Viewer DCF Permission</label>
         <locationX>2072</locationX>
-        <locationY>947</locationY>
+        <locationY>1178</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_DCF_Content_Viewer_is_null</targetReference>
@@ -2600,7 +3107,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>Content_Viewer_Permission</name>
         <label>Content Viewer Permission</label>
         <locationX>2644</locationX>
-        <locationY>874</locationY>
+        <locationY>1105</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_Permission_Exists_for_Content_Viewer</targetReference>
@@ -2630,7 +3137,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>DCF_Permission</name>
         <label>DCF Permission</label>
         <locationX>2185</locationX>
-        <locationY>1106</locationY>
+        <locationY>1337</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_If_DCF_permission_is_created</targetReference>
@@ -2660,7 +3167,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>DCF_Permission_Lookup</name>
         <label>DCF Permission Lookup</label>
         <locationX>3124</locationX>
-        <locationY>374</locationY>
+        <locationY>605</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_DCF_Permission_exists</targetReference>
@@ -2690,7 +3197,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>External_user_Admin_Permission</name>
         <label>External user Admin Permission</label>
         <locationX>2913</locationX>
-        <locationY>1234</locationY>
+        <locationY>1465</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_Permission_Exists_for_ExternalUserAdministrator</targetReference>
@@ -2720,7 +3227,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>External_View_All_DCF_Permission</name>
         <label>External View All DCF Permission</label>
         <locationX>2875</locationX>
-        <locationY>970</locationY>
+        <locationY>1201</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_DCF_External_View_All_is_null</targetReference>
@@ -2750,7 +3257,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>External_View_Only_Permission</name>
         <label>External View Only Permission</label>
         <locationX>3094</locationX>
-        <locationY>838</locationY>
+        <locationY>1069</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_Permission_Exists_for_External_View_Only</targetReference>
@@ -2780,7 +3287,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>Lookup_User</name>
         <label>Lookup User</label>
         <locationX>1729</locationX>
-        <locationY>415</locationY>
+        <locationY>646</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Which_Entitlement</targetReference>
@@ -2803,7 +3310,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>SPCF_permission</name>
         <label>SPCF permission</label>
         <locationX>1400</locationX>
-        <locationY>524</locationY>
+        <locationY>755</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_If_SPCF_permission_is_created</targetReference>
@@ -2833,7 +3340,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>SPCF_Permission_Lookup</name>
         <label>SPCF Permission Lookup</label>
         <locationX>3214</locationX>
-        <locationY>487</locationY>
+        <locationY>718</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_SPCF_Permission_exists</targetReference>
@@ -2863,7 +3370,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         <name>User_Administrator_DCF_Permission</name>
         <label>User Administrator DCF Permission</label>
         <locationX>2455</locationX>
-        <locationY>1196</locationY>
+        <locationY>1427</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_DCF_User_Administrator_is_null</targetReference>
@@ -2889,8 +3396,14 @@ Automatically sets permission sets for those entitlements which need them.  Also
             <field>Id</field>
         </outputAssignments>
     </recordLookups>
-    <startElementReference>Lookup_User</startElementReference>
-    <status>Obsolete</status>
+    <start>
+        <locationX>50</locationX>
+        <locationY>281</locationY>
+        <connector>
+            <targetReference>Lookup_User</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
     <textTemplates>
         <name>ActivitySubmitterChatterPost</name>
         <isViewedAsPlainText>false</isViewedAsPlainText>
@@ -3094,6 +3607,20 @@ The variable value --&gt; {!vActivitySubmitter}</text>
         <isOutput>false</isOutput>
     </variables>
     <variables>
+        <name>vCCFBClaimSubmitter</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>vCCFBUserAdmin</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
         <name>vCCFBUserPermissionSet</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
@@ -3123,6 +3650,13 @@ The variable value --&gt; {!vActivitySubmitter}</text>
     </variables>
     <variables>
         <name>vContentViewerPermission</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>vDCFClaimSubmitter</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
@@ -3164,6 +3698,23 @@ The variable value --&gt; {!vActivitySubmitter}</text>
         <isOutput>false</isOutput>
     </variables>
     <variables>
+        <name>vFlowDateTime</name>
+        <dataType>DateTime</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Flow.CurrentDateTime</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>vRetailUserPermissionSet</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
         <name>vSPCFPermission</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
@@ -3188,7 +3739,7 @@ The variable value --&gt; {!vActivitySubmitter}</text>
         <name>Wait_for_AccountBudgetAdministratorentitlement</name>
         <label>Wait for Account Budget Administrator entitlement</label>
         <locationX>1740</locationX>
-        <locationY>46</locationY>
+        <locationY>277</locationY>
         <defaultConnectorLabel>[Default Path]</defaultConnectorLabel>
         <waitEvents>
             <name>AccountBudgetAdministratorentitlementDCF_entitement_wait</name>
@@ -3223,7 +3774,7 @@ The variable value --&gt; {!vActivitySubmitter}</text>
         <name>Wait_for_AccountBudgetAdministratorentitlement_0</name>
         <label>Wait for Account Budget Administrator entitlement</label>
         <locationX>842</locationX>
-        <locationY>371</locationY>
+        <locationY>602</locationY>
         <defaultConnectorLabel>[Default Path]</defaultConnectorLabel>
         <waitEvents>
             <name>Wait_for_Account_Budget_Admin_entitlement</name>
@@ -3257,7 +3808,7 @@ The variable value --&gt; {!vActivitySubmitter}</text>
         <name>Wait_for_Activity_Submiiter</name>
         <label>Wait for Activity Submiiter</label>
         <locationX>2473</locationX>
-        <locationY>755</locationY>
+        <locationY>986</locationY>
         <defaultConnectorLabel>[Default Path]</defaultConnectorLabel>
         <waitEvents>
             <name>Activity_Submitter_Wait</name>
@@ -3292,7 +3843,7 @@ The variable value --&gt; {!vActivitySubmitter}</text>
         <name>Wait_for_Activity_Submitter_entitlement</name>
         <label>Wait for Activity Submitter entitlement</label>
         <locationX>707</locationX>
-        <locationY>322</locationY>
+        <locationY>553</locationY>
         <defaultConnectorLabel>[Default Path]</defaultConnectorLabel>
         <waitEvents>
             <name>Wait_for_Activity_Submitter_entitlement1</name>
@@ -3326,7 +3877,7 @@ The variable value --&gt; {!vActivitySubmitter}</text>
         <name>Wait_for_CCF_entitlement</name>
         <label>Wait for CCF entitlement</label>
         <locationX>2478</locationX>
-        <locationY>408</locationY>
+        <locationY>639</locationY>
         <defaultConnectorLabel>[Default Path]</defaultConnectorLabel>
         <waitEvents>
             <name>CCF_Entitlement_wait</name>
@@ -3360,8 +3911,8 @@ The variable value --&gt; {!vActivitySubmitter}</text>
         <description>Wait for CCFB Entitlement</description>
         <name>Wait_for_CCFB_Entitlement</name>
         <label>Wait for CCFB Entitlement</label>
-        <locationX>2594</locationX>
-        <locationY>97</locationY>
+        <locationX>2763</locationX>
+        <locationY>378</locationY>
         <defaultConnectorLabel>Default Path</defaultConnectorLabel>
         <waitEvents>
             <name>CCFB_Entitlement_Wait</name>
@@ -3395,7 +3946,7 @@ The variable value --&gt; {!vActivitySubmitter}</text>
         <name>Wait_for_Claim_Submitter</name>
         <label>Wait for Claim Submitter</label>
         <locationX>2704</locationX>
-        <locationY>1378</locationY>
+        <locationY>1609</locationY>
         <defaultConnectorLabel>[Default Path]</defaultConnectorLabel>
         <waitEvents>
             <name>Claim_Submitter_Wait</name>
@@ -3430,7 +3981,7 @@ The variable value --&gt; {!vActivitySubmitter}</text>
         <name>Wait_for_Claim_Submitter_entitlement</name>
         <label>Wait for Claim Submitter entitlement</label>
         <locationX>584</locationX>
-        <locationY>268</locationY>
+        <locationY>499</locationY>
         <defaultConnectorLabel>[Default Path]</defaultConnectorLabel>
         <waitEvents>
             <name>Wait_for_Claim_Submitter_entitlement1</name>
@@ -3464,7 +4015,7 @@ The variable value --&gt; {!vActivitySubmitter}</text>
         <name>Wait_For_Content_Viewer</name>
         <label>Wait For Content Viewer</label>
         <locationX>2495</locationX>
-        <locationY>921</locationY>
+        <locationY>1152</locationY>
         <defaultConnectorLabel>[Default Path]</defaultConnectorLabel>
         <waitEvents>
             <name>Content_Viewer_Wait</name>
@@ -3498,7 +4049,7 @@ The variable value --&gt; {!vActivitySubmitter}</text>
         <name>Wait_for_DCF_entitlement</name>
         <label>Wait for DCF entitlement</label>
         <locationX>2812</locationX>
-        <locationY>529</locationY>
+        <locationY>760</locationY>
         <defaultConnectorLabel>[Default Path]</defaultConnectorLabel>
         <waitEvents>
             <name>DCF_entitlement_wait</name>
@@ -3533,7 +4084,7 @@ The variable value --&gt; {!vActivitySubmitter}</text>
         <name>Wait_for_External_Content_Viewer_entitlement</name>
         <label>Wait for External Content Viewer entitlement</label>
         <locationX>849</locationX>
-        <locationY>1158</locationY>
+        <locationY>1389</locationY>
         <defaultConnectorLabel>[Default Path]</defaultConnectorLabel>
         <waitEvents>
             <name>Wait_for_External_Content_Viewer_entitlement1</name>
@@ -3567,7 +4118,7 @@ The variable value --&gt; {!vActivitySubmitter}</text>
         <name>Wait_for_External_User_Admin</name>
         <label>Wait for External User Admin</label>
         <locationX>3023</locationX>
-        <locationY>1471</locationY>
+        <locationY>1702</locationY>
         <defaultConnectorLabel>[Default Path]</defaultConnectorLabel>
         <waitEvents>
             <name>External_User_Admin_Wait</name>
@@ -3602,7 +4153,7 @@ The variable value --&gt; {!vActivitySubmitter}</text>
         <name>Wait_for_External_View_All_entitlement</name>
         <label>Wait for External View All entitlement</label>
         <locationX>717</locationX>
-        <locationY>1198</locationY>
+        <locationY>1429</locationY>
         <defaultConnectorLabel>[Default Path]</defaultConnectorLabel>
         <waitEvents>
             <name>Wait_for_External_View_All_entitlement1</name>
@@ -3636,7 +4187,7 @@ The variable value --&gt; {!vActivitySubmitter}</text>
         <name>Wait_For_External_View_Only</name>
         <label>Wait For External View Only</label>
         <locationX>3179</locationX>
-        <locationY>976</locationY>
+        <locationY>1207</locationY>
         <defaultConnectorLabel>[Default Path]</defaultConnectorLabel>
         <waitEvents>
             <name>External_View_Only_Wait</name>
@@ -3667,10 +4218,74 @@ The variable value --&gt; {!vActivitySubmitter}</text>
         </waitEvents>
     </waits>
     <waits>
+        <description>Wait for RetailEntitlement</description>
+        <name>Wait_for_Retail_Entitlement_0</name>
+        <label>Wait for Retail Entitlement</label>
+        <locationX>2585</locationX>
+        <locationY>288</locationY>
+        <defaultConnectorLabel>Default Path</defaultConnectorLabel>
+        <waitEvents>
+            <name>Retail_Entitlement_Wait_0</name>
+            <conditionLogic>and</conditionLogic>
+            <connector>
+                <targetReference>Check_Retail_User_Permission_Set</targetReference>
+            </connector>
+            <eventType>AlarmEvent</eventType>
+            <inputParameters>
+                <name>AlarmTime</name>
+                <value>
+                    <elementReference>$Flow.CurrentDateTime</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeOffset</name>
+                <value>
+                    <numberValue>0.0</numberValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeOffsetUnit</name>
+                <value>
+                    <stringValue>Hours</stringValue>
+                </value>
+            </inputParameters>
+            <label>Retail Entitlement Wait</label>
+        </waitEvents>
+    </waits>
+    <waits>
+        <description>Wait for Retail User Admin</description>
+        <name>Wait_for_Retail_User_Admin</name>
+        <label>Wait for Retail User Admin</label>
+        <locationX>263</locationX>
+        <locationY>1387</locationY>
+        <defaultConnectorLabel>Default Path</defaultConnectorLabel>
+        <waitEvents>
+            <name>Add_Retail_user_admin</name>
+            <conditionLogic>and</conditionLogic>
+            <connector>
+                <targetReference>Wait_for_External_User_Admin</targetReference>
+            </connector>
+            <eventType>AlarmEvent</eventType>
+            <inputParameters>
+                <name>AlarmTime</name>
+                <value>
+                    <elementReference>WaitForRetailEntilememntRemoval</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeOffset</name>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeOffsetUnit</name>
+            </inputParameters>
+            <label>Add Retail user admin</label>
+        </waitEvents>
+    </waits>
+    <waits>
         <name>Wait_for_SPCF_entitlement</name>
         <label>Wait for SPCF entitlement</label>
         <locationX>2959</locationX>
-        <locationY>232</locationY>
+        <locationY>463</locationY>
         <defaultConnectorLabel>[Default Path]</defaultConnectorLabel>
         <waitEvents>
             <name>SPCF_Entitlement_wait</name>
@@ -3705,7 +4320,7 @@ The variable value --&gt; {!vActivitySubmitter}</text>
         <name>Wait_for_User_Admin_entitlement</name>
         <label>Wait for User Admin entitlement</label>
         <locationX>579</locationX>
-        <locationY>1255</locationY>
+        <locationY>1486</locationY>
         <defaultConnectorLabel>[Default Path]</defaultConnectorLabel>
         <waitEvents>
             <name>Wait_for_User_Admin_entitlement1</name>

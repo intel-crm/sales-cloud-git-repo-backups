@@ -7,6 +7,13 @@
         <publicGroups>
             <publicGroup>Core_MDF_Program_Office_Grp</publicGroup>
         </publicGroups>
+        <users>
+            <user>kalitax.harshadeep@intel.com</user>
+            <user>12005608@intel.com.crm</user>
+            <user>12015206@intel.com.crm</user>
+            <user>10675503@intel.com.crm</user>
+            <user>testdcfprogadm@intel.com.devccp</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>PartnerFundRequest</sobjectType>

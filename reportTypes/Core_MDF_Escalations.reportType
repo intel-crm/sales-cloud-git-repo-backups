@@ -48,6 +48,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Budget_Type_txt__c</field>
+            <table>Core_MDF_Escalation__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Case_ID_Number_id__c</field>
             <table>Core_MDF_Escalation__c</table>
         </columns>
@@ -123,6 +128,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_PGM_Internal_Group_Id_txt__c</field>
+            <table>Core_MDF_Escalation__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Program_txt__c</field>
             <table>Core_MDF_Escalation__c</table>
         </columns>
@@ -169,6 +179,66 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Approver_3_Name_Id__c</field>
+            <table>Core_MDF_Escalation__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Case_ID_Number_id__c.Core_MDF_Non_Compliance_Reason_txt__c</field>
+            <table>Core_MDF_Escalation__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_First_Attribution_Score_txt__c</field>
+            <table>Core_MDF_Escalation__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_First_POP_Score_txt__c</field>
+            <table>Core_MDF_Escalation__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_First_Engagement_Score_txt__c</field>
+            <table>Core_MDF_Escalation__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_First_Manual_Recovery_nbr__c</field>
+            <table>Core_MDF_Escalation__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Scorecard_id__c</field>
+            <table>Core_MDF_Escalation__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Current_Attribution_Score_txt__c</field>
+            <table>Core_MDF_Escalation__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Current_Engagement_Score_txt__c</field>
+            <table>Core_MDF_Escalation__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Current_Manual_Recovery_nbr__c</field>
+            <table>Core_MDF_Escalation__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Current_POP_Score_txt__c</field>
+            <table>Core_MDF_Escalation__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Claim_Review_Closure_Note_txt__c</field>
+            <table>Core_MDF_Escalation__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CheckCustomPermission__c</field>
             <table>Core_MDF_Escalation__c</table>
         </columns>
         <columns>

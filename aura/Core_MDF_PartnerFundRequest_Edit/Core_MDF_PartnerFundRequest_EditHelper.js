@@ -50,7 +50,9 @@
                 console.log('hasEditAccess');
                 component.set("v.hasEditAccess", result);
                // alert('result' + result);
-                if(result==false){                    
+                if(result==false){       
+                       
+                    //debugger;         
                     var errMsg = $A.get('$Label.c.Core_MDF_CloneAccessError');     
                     if(!component.get("v.isCommunity")) {
                         var toastEvent = $A.get("e.force:showToast");

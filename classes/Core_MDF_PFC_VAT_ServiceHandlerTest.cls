@@ -164,7 +164,8 @@ public class Core_MDF_PFC_VAT_ServiceHandlerTest {
             Profile ccpCoreAccessProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1];
             Profile partnerProfile = [SELECT Id FROM Profile WHERE Name='Partner' limit 1];
             PermissionSet aacntMngrPS = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_Retail_Account_Manager' LIMIT 1];
-            PermissionSet extApprPS = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_External_Activity_Approver' LIMIT 1];
+           // Highlight: Unused Local Variable
+           // PermissionSet extApprPS = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_External_Activity_Approver' LIMIT 1];
 
             Contact con  = Core_MDF_CCP_TestDataUtility.createContact(retailIntelAcc.Id, true);
             User usrBudgetAdmin = Core_MDF_CCP_TestDataUtility.createUser(false);
@@ -204,8 +205,8 @@ public class Core_MDF_PFC_VAT_ServiceHandlerTest {
             //retailCampaign.Core_MDF_Budget_Type_txt__c ='Retail MDF';
             retailCampaign.Core_MDF_Opal_Budget_Type_Txt__c='Retail MDF'; 
             insert retailCampaign;
-            
-            List<Core_MDF_Bank__c> listBank = new List<Core_MDF_Bank__c>();            
+            // Highlight: Unused Local Variable
+           // List<Core_MDF_Bank__c> listBank = new List<Core_MDF_Bank__c>();            
             
             Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(retailIntelAcc.Id, 'Core_MDF_Retail_Marketing_Funds', false,'1231231230');
             bank.Core_MDF_Bank_Alias_Name__c='Test';
@@ -216,7 +217,8 @@ public class Core_MDF_PFC_VAT_ServiceHandlerTest {
             Database.insert(bank);        
             
             //Do Account Bank Mapping for 'bank' and ABM is applicaple only for "Retail MDF" record type
-            Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(masterAcc.Id,bank.Id,true);
+            // Highlight: Unused Local Variable
+           // Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(masterAcc.Id,bank.Id,true);
             
             Core_MDF_CCP_TestDataUtility.createPartnerGroupMapping(retailIntelAcc.Id,'Internal',retailIntelAcc.Id,retailCP.Id,'PGM_Retail_TEST',true);
             
@@ -323,14 +325,13 @@ public class Core_MDF_PFC_VAT_ServiceHandlerTest {
             claim1.Core_MDF_VAT_Eligibility_Ind__c= true ; 
             claim1.Core_MDF_VAT_Hold_Ind__c = true;
             claim1.Core_MDF_Status__c = 'Hold';
-            claim1.Core_MDF_Processing_Preference_nm__c='Settle, then get paid';
             insert claim1;
             list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
             String amt5='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
             Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
             res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt5, null,false, null, false, null, false);
             //String res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList);   
-      //System.assertNotEquals(null, res, 'saveClaim() returned null');
+			//System.assertNotEquals(null, res, 'saveClaim() returned null');
             //System.assertNotEquals(null, res.claimDetail, 'saveClaim().claimDetail is null');
             //System.assertNotEquals(null, res.claimDetail.Id, 'Claim ID in ClaimWrap is null');
            
@@ -340,7 +341,7 @@ public class Core_MDF_PFC_VAT_ServiceHandlerTest {
             Database.update(claimins);
           
             // Read the VAT Invoice record
-            Core_MDF_Claim_VAT_Info__c vatInfo = [select id from Core_MDF_Claim_VAT_Info__c /*where Core_MDF_Claim_Id__c = : res.claimDetail.id*/ limit 1];
+            Core_MDF_Claim_VAT_Info__c vatInfo = [select id from Core_MDF_Claim_VAT_Info__c where Core_MDF_Claim_Id__c = : res.claimDetail.id limit 1];
             
             vatInfo.Core_MDF_VAT_Invoice_Number_Txt__c = 'VATINV001';
             vatInfo.Core_MDF_Status_Txt__c ='Pending Documents';
@@ -410,7 +411,8 @@ public class Core_MDF_PFC_VAT_ServiceHandlerTest {
         try{
             Approval.ProcessSubmitRequest app = new Approval.ProcessSubmitRequest();
             app.setObjectId(recordId);
-            Approval.ProcessResult result = Approval.process(app);
+            // Highlight: Unused Local Variable
+           /* Approval.ProcessResult result = */ Approval.process(app);
             return true;
         }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e); return false;} 
     }
@@ -438,8 +440,9 @@ public class Core_MDF_PFC_VAT_ServiceHandlerTest {
      static void testDateFieldsOnVATUpdate()
      {
         User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' and LastName = 'System Adm' limit 1];
-        boolean submitStatusBFile = false;
-        boolean submitStatusAFile = false;
+        // Highlight: Unused Local Variable
+       // boolean submitStatusBFile = false;
+       // boolean submitStatusAFile = false;
         Core_MDF_CCP_TestDataUtility.createMDFConfigurationData();
         System.runAs(sysAdminUser)
         {
@@ -458,7 +461,6 @@ public class Core_MDF_PFC_VAT_ServiceHandlerTest {
             claim1.Core_MDF_VAT_Opt_In__c = 'Service Invoice to Intel (VAT may apply)';
             claim1.Core_MDF_VAT_Eligibility_Ind__c= true ; 
             claim1.Core_MDF_VAT_Hold_Ind__c = true;
-            claim1.Core_MDF_Processing_Preference_nm__c='Settle, then get paid';
             insert claim1;
             list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
             Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
@@ -486,13 +488,13 @@ public class Core_MDF_PFC_VAT_ServiceHandlerTest {
             
             // Update Status to Revision Required and Claim Submitter Reminder Notification sent to true
             vatInfo.Core_MDF_Status_Txt__c = 'Revision Required';
-            vatInfo.Core_MDF_ClaimSubRemNotificationSent_Ind__c = true;
+          	vatInfo.Core_MDF_ClaimSubRemNotificationSent_Ind__c = true;
             try{
                 Database.update(vatInfo);
             }catch(Exception e){}               
-           //Database.update(vatInfo);  
-             system.assertEquals(Core_MDF_PFC_VAT_ServiceHandler.addBusinessDays(system.today(),3), vatInfo.Core_MDF_ClaimSubmitterReminder_Dtm__c,'Update First Reminder Date');
-            system.assertEquals(Core_MDF_PFC_VAT_ServiceHandler.addBusinessDays(system.today(),5), vatInfo.Core_MDF_RSMReminderDate_Dtm__c,'Update Second Reminder Date');
+         	//Database.update(vatInfo);	
+           	system.assertEquals(Core_MDF_PFC_VAT_ServiceHandler.addBusinessDays(system.today(),3), vatInfo.Core_MDF_ClaimSubmitterReminder_Dtm__c,'Update First Reminder Date');
+          	system.assertEquals(Core_MDF_PFC_VAT_ServiceHandler.addBusinessDays(system.today(),5), vatInfo.Core_MDF_RSMReminderDate_Dtm__c,'Update Second Reminder Date');
 
             //Create Document
             ContentVersion cv = new ContentVersion();

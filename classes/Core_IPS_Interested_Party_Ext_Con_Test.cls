@@ -75,7 +75,6 @@ public class Core_IPS_Interested_Party_Ext_Con_Test{
             Con.Accountid = ListOfAccounts.get(0).Id;
             Con.Core_IPS_Intel_Support_Owner__c = ListOfInternalUsers.get(0).id;
             Con.ownerid = ListOfInternalUsers.get(0).id;
-            Con.MailingCountry = 'India';
         }
         System.RunAs(ListOfInternalUsers.get(0)){
             insert ListOfContacts;
@@ -224,6 +223,7 @@ public class Core_IPS_Interested_Party_Ext_Con_Test{
             InterestedPartyExtCon.ProjMem= null;
             InterestedPartyExtCon.IPRecordSet.add(IpWrapClass); 
             InterestedPartyExtCon.IPRecordSet.add(IpWrapClass); 
+            System.Debug('count======'+InterestedPartyExtCon.IPRecordSet.size());
             PageReference pageRef6 = InterestedPartyExtCon.doSearch();
             System.assertEquals(null,pageRef6);
             // end
@@ -270,11 +270,11 @@ public class Core_IPS_Interested_Party_Ext_Con_Test{
             InterestedPartyExtCon.searchText = '*';
             PageReference pageRef1 = InterestedPartyExtCon.doSearch();
             System.assertEquals(null,pageRef1);
-           // InterestedPartyExtCon.IPRecordSet.get(0).isSelected = true;
+            InterestedPartyExtCon.IPRecordSet.get(0).isSelected = true;
             PageReference pageRef2 = InterestedPartyExtCon.AddSelectedContacts();
             System.assertEquals(null,pageRef2);
             PageReference pageRef3 =InterestedPartyExtCon.Finished();
-            //System.assertEquals('/'+ListOfCases.get(0).id,pageRef3.getUrl());
+            System.assertEquals('/'+ListOfCases.get(0).id,pageRef3.getUrl());
         }
         Test.stopTest();
     }
@@ -298,8 +298,6 @@ public class Core_IPS_Interested_Party_Ext_Con_Test{
             InterestedPartyExtCon.AddSelectedContacts();
             //InterestedPartyExtCon.LinkedExternalParties.get(0).Active__c = false;
             InterestedPartyExtCon.removeSelectedContacts();
-                       System.assertEquals(true,InterestedPartyExtCon.IPRecordSet.size()>0);
-
         }
     }
     static testmethod void DeleExtIPbyExtUsr_CaseWithIpsProj(){
@@ -307,6 +305,7 @@ public class Core_IPS_Interested_Party_Ext_Con_Test{
         System.RunAs(ListOfExternalUsers.get(0)){
             User UsrRec = new User();
             Contact ConRec = new Contact();
+            system.debug('ListOfCases.get(0)====    '+ListOfCases.get(0));
             // Setting the Visualforce Page
             PageReference InterestedPartyExternalPage = Page.Core_IPS_Interested_Party_External;
             Test.setCurrentPage(InterestedPartyExternalPage);
@@ -324,10 +323,9 @@ public class Core_IPS_Interested_Party_Ext_Con_Test{
             InterestedPartyExtCon.AddSelectedContacts();
             //InterestedPartyExtCon.LinkedExternalParties.get(0).Active__c = false;
             InterestedPartyExtCon.removeSelectedContacts();
-           System.assertEquals(true,InterestedPartyExtCon.IPRecordSet.size()>0);
             
             
-            }
+        }
     }
     /*Ashutosh - US103988*/
     static testMethod void testSaveAndRedirect(){

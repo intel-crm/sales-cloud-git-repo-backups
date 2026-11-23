@@ -66,12 +66,12 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Core_MDF_Partnership_Score_Detail__c$Core_MDF_Quarter_Year_Nm__c</field>
-        <sortOrder>Asc</sortOrder>
+        <sortOrder>Desc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Core_MDF_Partnership_Score_Detail__c$Core_MDF_Account_Id__c</field>
-        <sortOrder>Asc</sortOrder>
+        <sortOrder>Desc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>

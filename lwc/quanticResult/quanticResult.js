@@ -79,13 +79,13 @@ export default class QuanticResult extends LightningElement {
     evt.stopPropagation();
   };
 
-  // render() {
-  //   const template = this.resultTemplatesManager.selectTemplate(this.result);
-  //   if (template) {
-  //     return template;
-  //   }
-  //   return defaultTemplate;
-  // }
+  render() {
+    const template = this.resultTemplatesManager.selectTemplate(this.result);
+    if (template) {
+      return template;
+    }
+    return defaultTemplate;
+  }
 
   get resultPreviewShouldNotBeAccessible() {
     return !!this.openPreviewId && this.result.uniqueId !== this.openPreviewId;

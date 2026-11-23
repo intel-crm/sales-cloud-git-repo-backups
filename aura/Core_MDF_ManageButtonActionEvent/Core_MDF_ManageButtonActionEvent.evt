@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="To checked which button clicked">
+<aura:attribute name="buttonClicked" type="String" description="To check clicked button"/>
+</aura:event>

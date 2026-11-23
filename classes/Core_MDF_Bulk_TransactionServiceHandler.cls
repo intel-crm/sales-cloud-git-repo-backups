@@ -1,16 +1,16 @@
 /*********************************************************************************************************************************************************************************
-* Class Name  : Core_MDF_Bulk_TransactionServiceHandler 
-* Test class : Core_MDF_Bulk_Transaction_Test
-* Version     : 1.0 
-* Created Date: 4-26-2021
-* Modification Log :
-* Developer                         Date                          Description
+- Class Name  : Core_MDF_Bulk_TransactionServiceHandler 
+- Test class : Core_MDF_Bulk_Transaction_Test
+- Version     : 1.0 
+- Created Date: 4-26-2021
+- Modification Log :
+- Developer                         Date                          Description
 Accenture - NZ				06/23/2021					Bulk Data Insert/Update
 **********************************************************************************************************************************************************************************/
 public without sharing class Core_MDF_Bulk_TransactionServiceHandler {
     
     public static String logEntryMsg = '';
-    public static final String SOBJECT_TYPE = 'User';
+    public static final Schema.SObjectType USER_SOBJECT_TYPE = User.SObjectType;
     
     /*****************************************************************************************************
 Method Name :   upsertRecords 
@@ -61,6 +61,7 @@ Added By    :   Accenture - NZ - 06/23/2021
                     }
                     //Rishabh 
                     else if(eventObj.Core_MDF_Action_Name__c == actionNameRelatedToUpdateActivityStatus){
+                        system.debug('Enter in the Core_MDF_Bulk_TransactionServiceHandlerif--cehck');
                         PartnerFundClaim pfcObj = (PartnerFundClaim)sObj;
                         activityIdSet.add(pfcObj.RequestId);
                     }
@@ -76,6 +77,7 @@ Added By    :   Accenture - NZ - 06/23/2021
             }
             
             if(!recordIds.isEmpty()){
+                system.debug('Enter in the Core_MDF_Bulk_TransactionServiceHandlerif cehck');
                 Core_MDF_PFR_PlatformEventHandler.updateActivityAmount(recordIds);
             }
             //Rishabh 
@@ -111,7 +113,6 @@ Added By    :   Accenture - NZ - 06/23/2021
     
     //Test with 200 record with 3 object at time and records was updated.
     public static void upsertData(Map<String,List<Sobject>> sobjectsMap) {
-        //if(!sobjectsMap.isEmpty()) {
         try{
             Map<Id,Boolean> userToUpdateFlag = new Map<Id,Boolean>();
             List<SObject> allRecords = new List<SObject>();
@@ -133,33 +134,41 @@ Added By    :   Accenture - NZ - 06/23/2021
         catch(exception ex) {
             Core_MDF_CCP_UtilityClass.logError(ex);         
         }
-        //}
     }
     
-    public static void insertUserGroupMappingRecords(List<SObject> allRecords, Map<Id,Boolean> userToUpdateFlag) {
+    public static void insertUserGroupMappingRecords(List<SObject> allRecords, Map<Id, Boolean> userToUpdateFlag) {
+        if (allRecords == null || allRecords.isEmpty()) {
+            return;
+        }
+        if (userToUpdateFlag == null) {
+            userToUpdateFlag = new Map<Id, Boolean>();
+        }
+
+        // Perform bulk upsert.
         List<Database.UpsertResult> saveList = Database.upsert(allRecords, false);
-        for (Database.UpsertResult sr : saveList) {
-            if (sr.isSuccess()) {
-                String objName = sr.id.getSObjectType().getDescribe().getName();
-                if (objName == SOBJECT_TYPE) {
-                    userToUpdateFlag.put(sr.getId(), true);
-                }
+
+        // Database results maintain the same order as input records.
+        for (Integer i = 0; i < saveList.size(); i++) {
+            Database.UpsertResult sr = saveList[i];
+            // Get the original record to identify its actual object type.
+            SObject originalRecord = allRecords[i];
+            // Process only User records.
+            if (originalRecord.getSObjectType() != USER_SOBJECT_TYPE) {
                 continue;
             }
-            //ATHR - Deeply Nested if 16209
-            if (sr.getErrors() == null || sr.getErrors().isEmpty()) {
-                continue;
-            }
-                    Database.Error error = sr.getErrors().get(0);
-            if (error.getFields() == null || error.getFields().isEmpty()) {
-                continue;
-            }
-                        String objName = error.getFields()[0];
-                        if (objName == SOBJECT_TYPE) {
-                            userToUpdateFlag.put(sr.getId(), false);
+            Boolean isSuccessful = sr.isSuccess();
+            // Successful upsert: use the ID returned by Salesforce.
+            // Failed update: use the original record ID.
+            Id userId = isSuccessful ? sr.getId(): originalRecord.Id;
+
+            // Failed inserts may not have an ID, so they cannot be
+            // associated with the User lookup field in the log object.
+            if (userId != null) {
+                userToUpdateFlag.put(userId, isSuccessful);
             }
         }
-        
+
+        // Create User Group Mapping log records.
         if (!userToUpdateFlag.isEmpty()) {
             insertUserGroupMappingRecords(userToUpdateFlag);
         }

@@ -1,0 +1,68 @@
+<aura:component controller = "Core_MDF_ClaimBatchItemsController" implements="force:appHostable,lightning:hasPageReference,flexipage:availableForAllPageTypes,lightning:isUrlAddressable,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,force:hasSObjectName" access="global" >
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="ClaimStageRecList" type="Core_MDF_Claim_Batch_Stage__c[]" />
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="activityId" type="string" default="" />
+    <aura:attribute name="recordTypeMap" type="Map" default="{}"/>
+    <aura:attribute name="simpleNewClaim" type="PartnerFundClaim" default="{ 'sobjectType': 'PartnerFundClaim',
+                                                                           'Description':'',
+                                                                           'Amount':'',
+                                                                           'Title':''
+                                                                           }" />
+    <aura:attribute name="isPOPEnabled" type="boolean" default="true" />
+    <aura:attribute name="budgetType" type="string" default="" />
+    <aura:attribute name="recordtypeDeveloperName" type="String" default="" description="Stores the recordtypeDeveloperName from the parent component" />
+    <aura:attribute name="UpdatedClaimStageRecList" type="Core_MDF_Claim_Batch_Stage__c[]"/>
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="pageReference" type="Object"/>
+    <aura:attribute name="auditDocument" type="Core_MDF_Audit_Document__c[]" default="[]" />
+    <lightning:navigation aura:id="navService" />
+    <aura:handler name="init" value="{!this}" action="{!c.myAction}" />
+    <lightning:card iconName="standard:work_capacity_usage" title="Claim Batch Records with pending documents submission">
+        <aura:if isTrue="{!v.ClaimStageRecList}">
+            
+            <lightning:datatable data="{!v.ClaimStageRecList }" 
+                                 columns="{!v.columns }" 
+                                 keyField="Id"
+                                 draftValues= "{!v.UpdatedClaimStageRecList}"
+                                 onsave="{!c.SaveUpdatedClaimStageRecList}"
+                                 hideCheckboxColumn="true"
+                                 onrowaction="{!c.UploadAction}"/>
+            
+            <aura:html tag="style">
+                .slds-modal__container {
+                max-width: 70rem !important;
+                width:100% !important;
+                }
+                .slds-input{
+                min-height:6rem;
+                }
+            </aura:html>   
+            
+            <aura:set attribute="else">
+                <div Style="text-align : center"> " There are no related records "</div>
+            </aura:set>
+        </aura:if>
+        <!-- <aura:handler name="init" value="{!this}" action="{!c.doInit}" />-->
+        
+        <aura:if isTrue="{!v.isModalOpen}">
+            <!--Modal/Popup Box starts here-->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                     
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <!--<c:Core_MDF_ManageAuditDocument recordIdForPop="{!v.recordId}" sobjectType = "PartnerFundClaim" />-->
+                        <c:Core_MDF_ManageAuditDocument sobjectType = "PartnerFundClaim" 
+                                                            auditDocument = "{!v.auditDocument}"
+                                                            recordtypeDeveloperName = "{!v.recordtypeDeveloperName}"
+                                                            budgetType = "{!v.budgetType}"
+                                                            isFileUploadOnClaimCreation = "{!v.isPOPEnabled}" 
+                                                            aura:id="manageAudit"
+                                                            editClaimId ="{!v.simpleNewClaim.Id}"/>
+                    	
+                    </div>
+                </div>
+            </section>
+        </aura:if>
+    </lightning:card>
+</aura:component>

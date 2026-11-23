@@ -148,12 +148,14 @@
         <name>CoMarketing OutcomeBased Campaign Detail</name>
         <params>
             <name>co</name>
-            <value>0</value>
+            <value>1</value>
         </params>
         <reportType>Core_MDF_Outcome_Based_Campaign_with_claims__c</reportType>
         <scope>organization</scope>
         <showGrandTotal>true</showGrandTotal>
         <showSubTotals>true</showSubTotals>
+        <sortColumn>PartnerFundRequest$Core_MDF_Activity_Reimbursement_Amt_nbr__c</sortColumn>
+        <sortOrder>Desc</sortOrder>
         <timeFrameFilter>
             <dateColumn>PartnerFundRequest$CreatedDate</dateColumn>
             <interval>INTERVAL_CUSTOM</interval>
@@ -266,7 +268,7 @@
         <name>Outcomebased Campaign &amp; Claim Details</name>
         <params>
             <name>co</name>
-            <value>0</value>
+            <value>1</value>
         </params>
         <reportType>Core_MDF_Outcome_Based_Campaign_with_claims__c</reportType>
         <scope>organization</scope>

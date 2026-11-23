@@ -240,7 +240,7 @@ private class Core_MDF_BulkClaimServerController_Test{
         //testPartnerFundRequest.Core_MDF_Budget_Type_txt__c = 'CCF 1.0';
         testPartnerFundRequest.Core_MDF_Activity_SubType_nm__c = 'Email';
         testPartnerFundRequest.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
-        testPartnerFundRequest.Core_MDF_Start_Date__c = system.today().addDays(-1);
+        testPartnerFundRequest.Core_MDF_Start_Date__c = system.today();
         testPartnerFundRequest.Core_MDF_End_Date__c	 = system.today().addDays(3);
         testPartnerFundRequest.Amount=5000;
         testPartnerFundRequest.Core_MDF_Country_nm__c = 'INDIA';
@@ -260,7 +260,7 @@ private class Core_MDF_BulkClaimServerController_Test{
         //testPartnerFundRequest2.Core_MDF_Budget_Type_txt__c = 'CCF 1.0';
         //testPartnerFundRequest2.Core_MDF_Activity_SubType_nm__c = 'Email';
         testPartnerFundRequest2.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
-        testPartnerFundRequest2.Core_MDF_Start_Date__c = system.today().addDays(-1);
+        testPartnerFundRequest2.Core_MDF_Start_Date__c = system.today();
         testPartnerFundRequest2.Core_MDF_End_Date__c = system.today().addDays(3);
         testPartnerFundRequest2.Amount=5000;
         testPartnerFundRequest.Core_MDF_Country_nm__c = 'INDIA';
@@ -799,8 +799,8 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                                                                WHERE Core_MDF_Channel_program__c = :channelProgramName
                                                                                                                                                AND Core_MDF_Upload_Record_Type__c =:Label.Core_MDF_PFCText]);*/
 /*Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c> metadataIdToRecordMap = new Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c>([SELECT Id, Name, Core_MDF_Field_2_txt__c, Core_MDF_Field_1_txt__c, Core_MDF_Sort_Order_Nbr__c, Core_MDF_Field_3_txt__c, Core_MDF_Checkbox_Field_1_Ind__c, Core_MDF_Name_Criteria__c, Core_MDF_Program__c FROM Core_MDF_CCP_Custom_Metadata_Utility__c WHERE Core_MDF_Program__c = :channelProgramName AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText  AND Core_MDF_Category__c = :Core_MDF_CCP_ConstantClass.BULK_CLAIM_TEMPLATE ORDER BY Core_MDF_Sort_Order_Nbr__c]);
-            Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
-                                                                     FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
+            Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
+                                                                     FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt
                                                                      WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName LIMIT 1];
             Test.startTest();
             
@@ -865,7 +865,7 @@ private class Core_MDF_BulkClaimServerController_Test{
         System.runAs(sysAdminUser){
 
         Test.startTest();
-         // Highlight: Unused Local Variable 
+         // Highlight: Unused Local Variable - Indira
         // User japaneseUser = [Select Id from User WHERE LanguageLocaleKey = 'ja' LIMIT 1];
         List <String> fetchUserList = new List <String>();
         fetchUserList = Core_MDF_BulkClaimServerController.fetchUserAndTemplateDetails('CCF');
@@ -886,7 +886,7 @@ private class Core_MDF_BulkClaimServerController_Test{
             List<PartnerFundRequest> activityRecordList = [Select id, Title, Core_MDF_Activity_Number__c,ChannelPartner.Core_MDF_Active_Ind__c,ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c,ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c, Core_MDF_Fund_Request_Status__c from PartnerFundRequest where ChannelPartnerId IN :accounts limit 2];
             Core_MDF_Bank__c bankRecord = [Select id, Name, Core_MDF_Supplier_Number__c, Core_MDF_Bank_Account_Number__c from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c = '1231231230'];
             String dateFormatString = 'dd-MMM-yy';
-            // Highlight: Unused Local Variable
+            // Highlight: Unused Local Variable - Indira
            // Date d = Date.today();
             Datetime dt = system.today();
             String dateString = dt.format(dateFormatString);
@@ -920,8 +920,8 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                                                          AND Core_MDF_Category__c = 'bulk claim template'
                                                                                                                                          ORDER BY Core_MDF_Sort_Order_Nbr__c]);
 
-            Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
-                                                                     FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
+            Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
+                                                                     FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt
                                                                      WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName LIMIT 1];
             
             Test.startTest();
@@ -968,8 +968,8 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                                                          AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText 
                                                                                                                                          AND Core_MDF_Category__c = 'bulk claim template'
                                                                                                                                          ORDER BY Core_MDF_Sort_Order_Nbr__c]);
-            Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
-                                                                     FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
+            Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
+                                                                     FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt
                                                                      WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName LIMIT 1];
             
             ChannelProgram channelProgram = [Select id from ChannelProgram where Name =:Core_MDF_CCP_ConstantClass.CCF_PROGRAM];
@@ -980,7 +980,7 @@ private class Core_MDF_BulkClaimServerController_Test{
             Datetime dt = Datetime.newInstance(d.year(), d.month(),d.day());
             String dateString = dt.format(dateFormatString);
             Core_MDF_Bank__c bankRecord = [Select id, Name, Core_MDF_Supplier_Number__c, Core_MDF_Bank_Status__c, Core_MDF_Program__c, Core_MDF_Bank_Account_Number__c from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c = '1231231230'];
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
            // String fileName = 'file1.csv';
             Core_MDF_Claim_Batch__c claimbatchinstance = [SELECT Id,Core_MDF_Program_Id__c,Core_MDF_Account__c FROM Core_MDF_Claim_Batch__c LIMIT 1];
             String csvStringForFailedRecord = 'Claim Name,Activity #,"Execution Start Date  (YYYY-MM-DD)","Execution End Date (YYYY-MM-DD)","Country","Activity Subtype","Media Vehicle","Bank","Bank Account Number(last 4 digits)","Invoice/Receipt Date (YYYY-MM-DD)",Invoice/Receipt Number,Invoice/Receipt Currency,Total Amount (Local),Costs not Reimbursable (Local),Taxes (Local),Claim Comments \n Dell DCF Claim from Bulk 1,' 
@@ -1016,8 +1016,8 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                                                          WHERE Core_MDF_Program__c = :channelProgramName 
                                                                                                                                          AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText 
                                                                                                                                          AND Core_MDF_Category__c = 'bulk claim template' ORDER BY Core_MDF_Sort_Order_Nbr__c]);
-            Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
-                                                                     FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
+            Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
+                                                                     FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt
                                                                      WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName LIMIT 1];
             
             ChannelProgram channelProgram = [Select id from ChannelProgram where Name = 'Client'];
@@ -1027,7 +1027,7 @@ private class Core_MDF_BulkClaimServerController_Test{
             Date d = Date.today();
             Datetime dt = Datetime.newInstance(d.year(), d.month(),d.day());
             String dateString = dt.format(dateFormatString);
-            // Highlight: Unused Local Variable
+            // Highlight: Unused Local Variable - Indira
           //  Core_MDF_Bank__c bankRecord = [Select id, Name, Core_MDF_Supplier_Number__c, Core_MDF_Bank_Status__c, Core_MDF_Program__c from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c = '1231231230'];
            // String fileName = 'file1.csv';
             Core_MDF_Claim_Batch__c claimbatchinstance = [SELECT Id,Core_MDF_Program_Id__c,Core_MDF_Account__c FROM Core_MDF_Claim_Batch__c LIMIT 1];
@@ -1073,8 +1073,8 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                                                                AND Core_MDF_Upload_Record_Type__c =:Label.Core_MDF_PFCText]);*/
             Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c> metadataIdToRecordMap = new Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c>([SELECT Id, Name, Core_MDF_Field_2_txt__c, Core_MDF_Field_1_txt__c, Core_MDF_Sort_Order_Nbr__c, Core_MDF_Field_3_txt__c, Core_MDF_Checkbox_Field_1_Ind__c, Core_MDF_Name_Criteria__c, Core_MDF_Program__c FROM Core_MDF_CCP_Custom_Metadata_Utility__c WHERE Core_MDF_Program__c = :channelProgramName AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText  AND Core_MDF_Category__c = :Core_MDF_CCP_ConstantClass.BULK_CLAIM_TEMPLATE ORDER BY Core_MDF_Sort_Order_Nbr__c]);
 
-            Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
-                                                                     FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
+            Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
+                                                                     FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt
                                                                      WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName LIMIT 1];
             
             List<String> pfrTitleList = new List<String>();
@@ -1091,7 +1091,7 @@ private class Core_MDF_BulkClaimServerController_Test{
             Datetime dt = Datetime.newInstance(d.year(), d.month(),d.day());
             String dateString = dt.format(dateFormatString);
             Core_MDF_Bank__c bankRecord = [Select id, Name, Core_MDF_Supplier_Number__c, Core_MDF_Bank_Account_Number__c, Core_MDF_Bank_Status__c, Core_MDF_Program__c from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c = '1231231230'];
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
            // String fileName = 'file1.csv';
             Core_MDF_Claim_Batch__c claimbatchinstance = [SELECT Id,Core_MDF_Program_Id__c,Core_MDF_Account__c FROM Core_MDF_Claim_Batch__c LIMIT 1];
             // Invalid Activity Sub Type error
@@ -1175,13 +1175,13 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                                                          AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText  
                                                                                                                                          AND Core_MDF_Category__c = 'bulk claim template' ORDER BY Core_MDF_Sort_Order_Nbr__c]);
 
-            Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
-                                                                     FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
+            Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
+                                                                     FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt
                                                                      WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName LIMIT 1];
             
             Core_MDF_Claim_Batch__c claimbatchinstance = [SELECT Id,Core_MDF_Program_Id__c,Core_MDF_Account__c FROM Core_MDF_Claim_Batch__c LIMIT 1];
             PartnerFundRequest activityRecord = [Select id, Title, Core_MDF_Activity_Number__c, Core_MDF_Fund_Request_Status__c from PartnerFundRequest where Title = 'test' Limit 1];
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
            // Core_MDF_Bank__c bankRecord = [Select id, Name, Core_MDF_Supplier_Number__c, Core_MDF_Bank_Status__c, Core_MDF_Program__c from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c = '1231231230'];
             ChannelProgram channelProgram = [Select id from ChannelProgram where Name = 'Client'];
 
@@ -1231,13 +1231,13 @@ private class Core_MDF_BulkClaimServerController_Test{
             Datetime dt = Datetime.newInstance(d.year(), d.month(),d.day());
             Datetime wrongdt = Datetime.newInstance(wdate.year(), wdate.month(),wdate.day());
             String dateString = dt.format(dateFormatString);
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
            // String wrongDateString = wrongdt.format(dateFormatString);
             
             String csvString = 'Claim Name,Activity #,"Execution Start Date  (YYYY-MM-DD)","Execution End Date (YYYY-MM-DD)","Country","Activity Subtype","Media Vehicle,Bank,Bank Account Number(last 4 digits)","Invoice/Receipt Date (YYYY-MM-DD)",Invoice/Receipt Number,Invoice/Receipt Currency,Total Amount (Local),Costs not Reimbursable (Local),Taxes (Local),Claim Comments \n Dell DCF Claim from Bulk 1,' + pfrList[0].Core_MDF_Activity_Number__c + ',' + dateString + ',' + dateString + ',India,Email,Krishna1011,' + bankRecord.Core_MDF_Supplier_Number__c + ',' + bankRecord.Core_MDF_Bank_Account_Number__c + ',' + dateString + ',1234,USD,10,0,0,Dell DCF Bulk Claim1 \n Dell DCF Claim from Bulk 1,' + pfrList[0].Core_MDF_Activity_Number__c + ',' + dateString + ',' + dateString +',India,Email,99999997644,' + bankRecord.Core_MDF_Supplier_Number__c + ',' + bankRecord.Core_MDF_Bank_Account_Number__c + ',' + dateString + ',1234,USD,10,0,0,Dell DCF Bulk Claim1 \n Dell DCF Claim from Bulk 3,' + pfrList[0].Core_MDF_Activity_Number__c + ',' + dateString + ',' + dateString + ',India,Email,99999997644,' + bankRecord.Core_MDF_Supplier_Number__c + ',' + bankRecord.Core_MDF_Bank_Account_Number__c + ',' + dateString +',1234,USD,10,0,0,Dell DCF Bulk Claim1';
             csvString = csvString + '\n Dell DCF Claim from Bulk 4,' + pfrList[1].Core_MDF_Activity_Number__c + ',' + dateString + ',' + dateString + ',India,Email' +',Krishna1014,' + bankRecord.Core_MDF_Supplier_Number__c + ',' + bankRecord.Core_MDF_Bank_Account_Number__c + ',' + dateString + ',12345,USD,50,0,0,Dell DCF Bulk Claim1' ;
             Blob myBlob = Blob.valueof(csvString);
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
            // String base64Data = EncodingUtil.base64Encode(myBlob);
           //  String fileName = 'fileName.csv';
             
@@ -1264,8 +1264,8 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                                                          AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText  
                                                                                                                                          AND Core_MDF_Category__c = 'bulk claim template' ORDER BY Core_MDF_Sort_Order_Nbr__c]);
 
-            Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
-                                                                     FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
+            Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
+                                                                     FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt
                                                                      WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName LIMIT 1];
             
             
@@ -1300,7 +1300,7 @@ private class Core_MDF_BulkClaimServerController_Test{
             csvString = csvString + '\n Dell DCF Claim from Bulk 6,' + pfrList[2].Core_MDF_Activity_Number__c + ',' + wrongDateString + ',' + dateString + ',India,Email,Krishna1017,' + bankRecord.Core_MDF_Supplier_Number__c + ',' + dateString + ',12345,USD,50,0,0,Claim from Bulk 7 Claim1' ;
             csvString = csvString + '\n Dell DCF Claim from Bulk 7,' + pfrList[2].Core_MDF_Activity_Number__c + ',' + wrongDateString + ',' + dateString + ',India,Email,Krishna1018,' + bankRecord.Core_MDF_Supplier_Number__c + ',' + dateString + ',12345,USD,50,0,0,Claim from Bulk 7 Claim1' ;
             Blob myBlob = Blob.valueof(csvString);
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
           //  String base64Data = EncodingUtil.base64Encode(myBlob);
           //  String fileName = 'fileName.csv';
             
@@ -1317,14 +1317,14 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                                                                FROM Core_MDF_BulkClaimTemplateParticulars__mdt
                                                                                                                                                WHERE Core_MDF_Channel_program__c = :channelProgramName
                                                                                                                                                AND Core_MDF_Upload_Record_Type__c =:Label.Core_MDF_PFCText]);*/
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
          /*   Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c> metadataIdToRecordMap = new Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c>([SELECT Id, Name, Core_MDF_Field_2_txt__c, Core_MDF_Field_1_txt__c, Core_MDF_Sort_Order_Nbr__c, Core_MDF_Field_3_txt__c, Core_MDF_Checkbox_Field_1_Ind__c, Core_MDF_Name_Criteria__c, Core_MDF_Program__c FROM Core_MDF_CCP_Custom_Metadata_Utility__c 
                                                                                                                                          WHERE Core_MDF_Program__c = :channelProgramName 
                                                                                                                                          AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText 
                                                                                                                                          AND Core_MDF_Category__c = 'bulk claim template' ORDER BY Core_MDF_Sort_Order_Nbr__c]);  */
 
-            Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
-                                                                     FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
+            Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
+                                                                     FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt
                                                                      WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName LIMIT 1];
             
             
@@ -1510,14 +1510,14 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                                                                 FROM Core_MDF_BulkClaimTemplateParticulars__mdt
                                                                                                                                                 WHERE Core_MDF_Channel_program__c = :channelProgramName1
                                                                                                                                                 AND Core_MDF_Upload_Record_Type__c =:Label.Core_MDF_PFCText]);*/
-            // Highlight: Unused Local Variable
+            // Highlight: Unused Local Variable - Indira
           /*  Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c> metadataIdToRecordMap = new Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c>([SELECT Id, Name, Core_MDF_Field_2_txt__c, Core_MDF_Field_1_txt__c, Core_MDF_Sort_Order_Nbr__c, Core_MDF_Field_3_txt__c, Core_MDF_Checkbox_Field_1_Ind__c, Core_MDF_Name_Criteria__c, Core_MDF_Program__c FROM Core_MDF_CCP_Custom_Metadata_Utility__c 
                                                                                                                                          WHERE Core_MDF_Program__c = :channelProgramName1 
                                                                                                                                          AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText  
                                                                                                                                          AND Core_MDF_Category__c = 'bulk claim template' ORDER BY Core_MDF_Sort_Order_Nbr__c]);  */
 
-            Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType1 = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
-                                                                      FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
+            Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType1 = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
+                                                                      FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt
                                                                       WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName1 LIMIT 1];
             
             List<Core_MDF_Claim_Batch_Stage__c> claimBatchStageRecordList = new List <Core_MDF_Claim_Batch_Stage__c>();
@@ -1597,14 +1597,14 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                                                                 FROM Core_MDF_BulkClaimTemplateParticulars__mdt
                                                                                                                                                 WHERE Core_MDF_Channel_program__c = :channelProgramName1
                                                                                                                                                 AND Core_MDF_Upload_Record_Type__c =:Label.Core_MDF_PFCText]);*/
-            // Highlight: Unused Local Variable
+            // Highlight: Unused Local Variable - Indira
           /*  Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c> metadataIdToRecordMap1 = new Map<Id,Core_MDF_CCP_Custom_Metadata_Utility__c>([SELECT Id,Core_MDF_Field_2_txt__c,Core_MDF_Field_1_txt__c,Core_MDF_Sort_Order_Nbr__c,
                                                                                                                                                 Core_MDF_Field_3_txt__c, Core_MDF_Checkbox_Field_1_Ind__c
                                                                                                                                                 FROM Core_MDF_CCP_Custom_Metadata_Utility__c
                                                                                                                                                 WHERE Core_MDF_Category__c = 'bulk claim template' AND Core_MDF_Program__c = :channelProgramName1
                                                                                                                                                 AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText]);  */
-            Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType1 = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
-                                                                      FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
+            Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType1 = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
+                                                                      FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt
                                                                       WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName1 LIMIT 1];
             Test.startTest();  
             List<Core_MDF_Claim_Batch_Stage__c> claimBatchStageRecordList = new List<Core_MDF_Claim_Batch_Stage__c>();
@@ -1724,8 +1724,8 @@ private class Core_MDF_BulkClaimServerController_Test{
                                                                                                                                          AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText  
                                                                                                                                          AND Core_MDF_Category__c = 'bulk claim template' ORDER BY Core_MDF_Sort_Order_Nbr__c]);
 
-            Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
-                                                                     FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt
+            Core_MDF_ClaimActAllocRecTypeMapping__mdt  recordType = [SELECT Id, Core_MDF_ClaimStage_RecordType_txt__c
+                                                                     FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt
                                                                      WHERE Core_MDF_Channel_Program_Name_txt__c = :channelProgramName LIMIT 1];
             
             Test.startTest();

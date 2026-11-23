@@ -24,10 +24,8 @@
         <field>QUANTITY</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
-    </columns>
-    <columns>
-        <field>UNIT_PRICE</field>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>TOTAL_PRICE</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -39,16 +37,13 @@
     <columns>
         <field>Opportunity.Core_Sales_Groups__c</field>
     </columns>
-    <columns>
-        <field>STAGE_NAME</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Deal: Sell-through,Deal: Sell-to</value>
+            <value>Deal: Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -87,7 +82,22 @@
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Tabular</format>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>User.Core_User_Geo__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OpportunityLineItem.Core_Vertical_Market__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>STAGE_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <name>AEP Deal Pipeline By Segment</name>
     <params>
         <name>terr</name>
@@ -95,7 +105,7 @@
     </params>
     <params>
         <name>open</name>
-        <value>open</value>
+        <value>all</value>
     </params>
     <params>
         <name>probability</name>
@@ -112,6 +122,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

@@ -17,6 +17,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_Account_ID__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Id</field>
             <table>Account</table>
         </columns>
@@ -37,7 +42,17 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_Account_Owner_Active__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>RecordType</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Account_Record_Type__c</field>
             <table>Account</table>
         </columns>
         <columns>
@@ -52,12 +67,17 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_CoMarketing_Ultimate_Account__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_CoMarketingAgency__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_CoMarketing_Ultimate_Account__c</field>
+            <field>Core_MDF_Group_Id__c</field>
             <table>Account</table>
         </columns>
         <columns>
@@ -82,17 +102,12 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Group_Id__c</field>
+            <field>LastModifiedDate</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LastModifiedBy</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LastModifiedDate</field>
             <table>Account</table>
         </columns>
         <columns>
@@ -118,6 +133,61 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Type</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Host_Region_nm__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Source_nm__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Direct_Primary_Account_Id__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Direct_Account_Id__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Is_Top_Account_Ind__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Payment_Type_NodeLevel_nm__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Payment_Type_nm__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Unified_Global_Customer_Name__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Unified_Global_Customer_BP_Id__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Virtual_Corp_Account_Id__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Partner_Type_nm__c</field>
             <table>Account</table>
         </columns>
         <masterLabel>Accounts</masterLabel>
@@ -196,6 +266,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_User__c</field>
+            <table>Account.Partner_Node_User_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Account__c</field>
+            <table>Account.Partner_Node_User_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Action_Needed_nm__c</field>
             <table>Account.Partner_Node_User_Mappings__r</table>
         </columns>
         <masterLabel>Account Users</masterLabel>

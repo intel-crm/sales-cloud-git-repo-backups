@@ -6,7 +6,7 @@
 * ---------------------------------------------------------------------------------------------------------------------------------------
 Accenture SS        19-06-2019          Exception Trigger on after insert and update        
 *****************************************************************************************************************************************/
-trigger Core_MDF_Exception_Case_Mapping on Core_MDF_Exception_Case_Mapping__c (after insert, before delete) {
+trigger Core_MDF_Exception_Case_Mapping on Core_MDF_Exception_Case_Mapping__c (before delete) {
 
      new Core_MDF_ExceptionCaseMap_TriggerHandler().run();
 }

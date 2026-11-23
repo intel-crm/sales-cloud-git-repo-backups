@@ -128,16 +128,22 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Core_MDF_Budget_Cap_Record_Page</content>
         <formFactor>Large</formFactor>
-        <type>Default</type>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Core_MDF_Budget_Cap_Record_Page</content>
         <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
@@ -153,6 +159,19 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Channel_Program_test__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <inlineHelpText>Enter program name</inlineHelpText>
+        <label>Channel Program</label>
+        <referenceTo>ChannelProgram</referenceTo>
+        <relationshipLabel>Budget Caps test</relationshipLabel>
+        <relationshipName>Budget_Caps_test</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
     <fields>
         <fullName>Core_MDF_Approved_Cap_amt__c</fullName>
         <defaultValue>0.00</defaultValue>
@@ -205,6 +224,18 @@
         <formula>TEXT(Core_MDF_Budget_Name_id__r.Core_MDF_Budget_Status__c)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Budget Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Budget_Type_Cap_Key__c</fullName>
+        <description>Stores the Budget Type Cap Key which is used to check the duplicates</description>
+        <externalId>false</externalId>
+        <label>Budget Type Cap Key</label>
+        <length>255</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -290,6 +321,7 @@
                 <value>
                     <fullName>Channel MDF Budget Type Cap</fullName>
                     <default>false</default>
+                    <isActive>false</isActive>
                     <label>Channel MDF Budget Type Cap</label>
                 </value>
                 <value>
@@ -437,8 +469,131 @@
         <columns>Core_MDF_Remaining_Cap_amt__c</columns>
         <columns>Core_MDF_Budget_Name_id__c</columns>
         <columns>Core_MDF_Budget_Amount_amt__c</columns>
+        <columns>Core_MDF_Effective_Start_Date_Dt__c</columns>
+        <columns>Core_MDF_Effective_End_Date_Dt__c</columns>
+        <columns>Channel_Program_test__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>CCP_CCFB_Finance_Manager_Queue_Core_MDF_Budget_Cap</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP CCFB Finance Manager Queue</label>
+        <queue>CCP_CCFB_Finance_Manager_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>CCP_CCF_Finance_Manager_Queue_Core_MDF_Budget_Cap</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP Client Finance Manager Queue</label>
+        <queue>CCP_CCF_Finance_Manager_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>CCP_DCF_Finance_Manager_Queue_Core_MDF_Budget_Cap</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP Datacenter Finance Manager Queue</label>
+        <queue>CCP_DCF_Finance_Manager_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>CCP_SPCF_Finance_Manager_Queue_Core_MDF_Budget_Cap</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP SPCF Finance Manager Queue</label>
+        <queue>CCP_SPCF_Finance_Manager_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_Budget_Caps_Approved</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Cap_Type_nm__c</columns>
+        <columns>Core_MDF_Cap_Status_nm__c</columns>
+        <columns>Core_MDF_Requested_Cap_amt__c</columns>
+        <columns>Core_MDF_Approved_Cap_amt__c</columns>
+        <columns>Core_MDF_Claimed_Cap_amt__c</columns>
+        <columns>Core_MDF_Remaining_Cap_amt__c</columns>
+        <columns>Core_MDF_Budget_Name_id__c</columns>
+        <columns>Core_MDF_Budget_Amount_amt__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Cap_Status_nm__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008OTd</value>
+        </filters>
+        <label>Budget Caps Approved</label>
+        <language>en_US</language>
+        <sharedTo>
+            <group>Core_MDF_CCP_SPCF_Finance_User</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_Budget_Caps_Requiring_Approval</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Cap_Type_nm__c</columns>
+        <columns>Core_MDF_Cap_Status_nm__c</columns>
+        <columns>Core_MDF_Requested_Cap_amt__c</columns>
+        <columns>Core_MDF_Approved_Cap_amt__c</columns>
+        <columns>Core_MDF_Claimed_Cap_amt__c</columns>
+        <columns>Core_MDF_Remaining_Cap_amt__c</columns>
+        <columns>Core_MDF_Budget_Name_id__c</columns>
+        <columns>Core_MDF_Budget_Amount_amt__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Cap_Status_nm__c</field>
+            <operation>equals</operation>
+            <value>Pending Review</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008OTd</value>
+        </filters>
+        <label>Budget Caps Requiring Approval</label>
+        <language>en_US</language>
+        <sharedTo>
+            <group>Core_MDF_CCP_SPCF_Fin_Mgr_Queue_Group</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_Budget_Caps_Revision_Required</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Cap_Type_nm__c</columns>
+        <columns>Core_MDF_Cap_Status_nm__c</columns>
+        <columns>Core_MDF_Requested_Cap_amt__c</columns>
+        <columns>Core_MDF_Approved_Cap_amt__c</columns>
+        <columns>Core_MDF_Claimed_Cap_amt__c</columns>
+        <columns>Core_MDF_Remaining_Cap_amt__c</columns>
+        <columns>Core_MDF_Budget_Name_id__c</columns>
+        <columns>Core_MDF_Budget_Amount_amt__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Cap_Status_nm__c</field>
+            <operation>equals</operation>
+            <value>Revision Required</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008OTd</value>
+        </filters>
+        <label>Budget Caps Revision Required</label>
+        <language>en_US</language>
+        <sharedTo>
+            <group>Core_MDF_CCP_SPCF_Finance_User</group>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>Core_MDF_CCFB_Budget_Caps_Approved</fullName>
@@ -460,7 +615,7 @@
         <filters>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000KywA</value>
+            <value>0Pkg00000008PW9</value>
         </filters>
         <label>Budget Caps Approved</label>
         <language>en_US</language>
@@ -488,7 +643,7 @@
         <filters>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000KywA</value>
+            <value>0Pkg00000008PW9</value>
         </filters>
         <label>Budget Caps Requiring Approval</label>
         <language>en_US</language>
@@ -516,7 +671,7 @@
         <filters>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000KywA</value>
+            <value>0Pkg00000008PW9</value>
         </filters>
         <label>Budget Caps Revision Required</label>
         <language>en_US</language>
@@ -544,7 +699,7 @@
         <filters>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000CaSe</value>
+            <value>0Pkg00000008OTT</value>
         </filters>
         <label>Budget Caps Approved</label>
         <language>en_US</language>
@@ -572,7 +727,7 @@
         <filters>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000CaSe</value>
+            <value>0Pkg00000008OTT</value>
         </filters>
         <label>Budget Caps Requiring Approval</label>
         <language>en_US</language>
@@ -600,12 +755,21 @@
         <filters>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000CaSe</value>
+            <value>0Pkg00000008OTT</value>
         </filters>
         <label>Budget Caps Revision Required</label>
         <language>en_US</language>
         <sharedTo>
             <group>Core_MDF_CCP_CCF_Finance_User</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_CCP_IPA_Finance_Manager_Queue_Core_MDF_Budget_Cap</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP IPA Finance Manager Queue</label>
+        <queue>Core_MDF_CCP_IPA_Finance_Manager_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
     <listViews>
@@ -628,7 +792,7 @@
         <filters>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000CaSZ</value>
+            <value>0Pkg00000008OTY</value>
         </filters>
         <label>Budget Caps Approved</label>
         <language>en_US</language>
@@ -656,7 +820,7 @@
         <filters>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000CaSZ</value>
+            <value>0Pkg00000008OTY</value>
         </filters>
         <label>Budget Caps Requiring Approval</label>
         <language>en_US</language>
@@ -684,7 +848,7 @@
         <filters>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000CaSZ</value>
+            <value>0Pkg00000008OTY</value>
         </filters>
         <label>Budget Caps Revision Required</label>
         <language>en_US</language>
@@ -712,7 +876,7 @@
         <filters>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000CaUp</value>
+            <value>0Pkg00000008OTd</value>
         </filters>
         <label>Budget Caps Approved</label>
         <language>en_US</language>
@@ -740,7 +904,7 @@
         <filters>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000CaUp</value>
+            <value>0Pkg00000008OTd</value>
         </filters>
         <label>Budget Caps Requiring Approval</label>
         <language>en_US</language>
@@ -768,7 +932,7 @@
         <filters>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000CaUp</value>
+            <value>0Pkg00000008OTd</value>
         </filters>
         <label>Budget Caps Revision Required</label>
         <language>en_US</language>
@@ -868,10 +1032,6 @@
         <picklistValues>
             <picklist>Core_MDF_Budget_Type_nm__c</picklist>
             <values>
-                <fullName>Business Client Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Client Specialties MDF</fullName>
                 <default>false</default>
             </values>
@@ -953,6 +1113,33 @@
     <searchLayouts/>
     <sharingModel>Private</sharingModel>
     <validationRules>
+        <fullName>BudgetCapCreationForProfiles</fullName>
+        <active>true</active>
+        <errorConditionFormula>($Permission.Core_MDF_CCP_Internal_Finance_User) &amp;&amp;  (ISPICKVAL(Core_MDF_Budget_Name_id__r.Core_MDF_Budget_Type__c, &apos;MDF&apos;))</errorConditionFormula>
+        <errorMessage>Finance User cannot create MDF type budget cap</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_BudgetTypeCap_cannotbeEdited</fullName>
+        <active>true</active>
+        <description>For Channel MDF/IPA Budget Type Caps; Budget Type field cannot be edited.</description>
+        <errorConditionFormula>AND(OR( RecordType.DeveloperName = &apos;Core_MDF_Channel_MDF_Budget_Type_Cap&apos;,RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos;) , NOT(ISNEW()),ISCHANGED(Core_MDF_Budget_Type_nm__c))</errorConditionFormula>
+        <errorMessage>Budget Type cannot be changed.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_BudgetTypeCaps_ActiveValidation</fullName>
+        <active>true</active>
+        <description>IPA/Channel MDF Budget Type Caps can&apos;t be Inactive during creation</description>
+        <errorConditionFormula>AND(OR(RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos;, RecordType.DeveloperName = &apos;Core_MDF_Channel_MDF_Budget_Type_Cap&apos;), ISNEW(),ISPICKVAL(Core_MDF_Cap_Status_nm__c, &apos;Inactive&apos;))</errorConditionFormula>
+        <errorMessage>Budget Type Caps can&apos;t be Inactive during creation</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_CMDF_BudgetCap_ActiveValidation</fullName>
+        <active>true</active>
+        <description>Channel MDF Budget Type Caps can&apos;t be Inactive during creation</description>
+        <errorConditionFormula>AND(RecordType.DeveloperName = &apos;Core_MDF_Channel_MDF_Budget_Type_Cap&apos; , ISNEW(),ISPICKVAL(Core_MDF_Cap_Status_nm__c, &apos;Inactive&apos;))</errorConditionFormula>
+        <errorMessage>Channel MDF Budget Caps can&apos;t be Inactive during creation</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Core_MDF_CheckBudgetStatusEqualsRejected</fullName>
         <active>true</active>
         <description>Restrict Budget Cap Creation when the Budget Status is equal to Rejected</description>
@@ -970,7 +1157,7 @@
         <fullName>Core_MDF_IPA_BudgetType_cannotbeEdited</fullName>
         <active>true</active>
         <description>For IPA Budget Caps; Budget Type field cannot be edited.</description>
-        <errorConditionFormula>AND( RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos;, NOT(ISNEW()),ISCHANGED(Core_MDF_Budget_Type_nm__c))</errorConditionFormula>
+        <errorConditionFormula>AND( RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos; , NOT(ISNEW()),ISCHANGED(Core_MDF_Budget_Type_nm__c))</errorConditionFormula>
         <errorMessage>Budget Type cannot be changed.</errorMessage>
     </validationRules>
     <validationRules>
@@ -983,22 +1170,19 @@
     <validationRules>
         <fullName>Core_MDF_IPA_MandatoryEffectiveStartDate</fullName>
         <active>true</active>
-        <errorConditionFormula>AND(RecordType.DeveloperName =&apos;Core_MDF_IPA_Budget_Type_Cap&apos;,
-ISBLANK(Core_MDF_Effective_Start_Date_Dt__c))</errorConditionFormula>
+        <errorConditionFormula>AND(RecordType.DeveloperName =&apos;Core_MDF_IPA_Budget_Type_Cap&apos;,ISBLANK(Core_MDF_Effective_Start_Date_Dt__c))</errorConditionFormula>
         <errorMessage>Effective Start Date is mandatory</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_IPA_Mandatory_BudgetType</fullName>
         <active>true</active>
-        <errorConditionFormula>AND(RecordType.DeveloperName =&apos;Core_MDF_IPA_Budget_Type_Cap&apos;,
-ISBLANK(TEXT( Core_MDF_Budget_Type_nm__c )))</errorConditionFormula>
+        <errorConditionFormula>AND(RecordType.DeveloperName =&apos;Core_MDF_IPA_Budget_Type_Cap&apos;,ISBLANK(TEXT( Core_MDF_Budget_Type_nm__c )))</errorConditionFormula>
         <errorMessage>Budget Type is mandatory</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_IPA_Mandatory_EffectiveEndDate</fullName>
         <active>true</active>
-        <errorConditionFormula>AND(RecordType.DeveloperName =&apos;Core_MDF_IPA_Budget_Type_Cap&apos;,
-ISBLANK(Core_MDF_Effective_End_Date_Dt__c))</errorConditionFormula>
+        <errorConditionFormula>AND(RecordType.DeveloperName =&apos;Core_MDF_IPA_Budget_Type_Cap&apos;,ISBLANK(Core_MDF_Effective_End_Date_Dt__c))</errorConditionFormula>
         <errorMessage>Effective End Date is mandatory</errorMessage>
     </validationRules>
     <validationRules>
@@ -1012,22 +1196,49 @@ ISBLANK(Core_MDF_Effective_End_Date_Dt__c))</errorConditionFormula>
     <validationRules>
         <fullName>Core_MDF_IPA_Mandatory_ReqCapAmt</fullName>
         <active>true</active>
-        <errorConditionFormula>AND(RecordType.DeveloperName =&apos;Core_MDF_IPA_Budget_Type_Cap&apos;,
-ISNULL( Core_MDF_Requested_Cap_amt__c ))</errorConditionFormula>
+        <errorConditionFormula>AND(RecordType.DeveloperName =&apos;Core_MDF_IPA_Budget_Type_Cap&apos;,ISNULL( Core_MDF_Requested_Cap_amt__c ))</errorConditionFormula>
+        <errorMessage>Requested Cap Amount is mandatory</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_MandatoryEffectiveStartDate</fullName>
+        <active>true</active>
+        <description>Effective Start Date is Mandatory for Channel MDF/IPA</description>
+        <errorConditionFormula>AND(OR(RecordType.DeveloperName =&apos;Core_MDF_Channel_MDF_Budget_Type_Cap&apos;,RecordType.DeveloperName =&apos;Core_MDF_IPA_Budget_Type_Cap&apos;),ISBLANK(Core_MDF_Effective_Start_Date_Dt__c))</errorConditionFormula>
+        <errorMessage>Effective Start Date is mandatory</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Mandatory_BudgetType</fullName>
+        <active>true</active>
+        <description>Budget Type is Mandatory for Channel MDF/IPA</description>
+        <errorConditionFormula>AND(OR(RecordType.DeveloperName =&apos;Core_MDF_Channel_MDF_Budget_Type_Cap&apos;,RecordType.DeveloperName =&apos;Core_MDF_IPA_Budget_Type_Cap&apos;),ISBLANK(TEXT( Core_MDF_Budget_Type_nm__c )))</errorConditionFormula>
+        <errorMessage>Budget Type is mandatory</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Mandatory_EffectiveEndDate</fullName>
+        <active>true</active>
+        <description>Effective End Date is Mandatory for Channel MDF/IPA</description>
+        <errorConditionFormula>AND(OR(RecordType.DeveloperName =&apos;Core_MDF_Channel_MDF_Budget_Type_Cap&apos;,RecordType.DeveloperName =&apos;Core_MDF_IPA_Budget_Type_Cap&apos;),ISBLANK(Core_MDF_Effective_End_Date_Dt__c))</errorConditionFormula>
+        <errorMessage>Effective End Date is mandatory</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Mandatory_ReqCapAmt</fullName>
+        <active>true</active>
+        <description>Requested Cap Amount is Mandatory for Channel MDF/IPA</description>
+        <errorConditionFormula>AND(OR(RecordType.DeveloperName =&apos;Core_MDF_Channel_MDF_Budget_Type_Cap&apos;,RecordType.DeveloperName =&apos;Core_MDF_IPA_Budget_Type_Cap&apos;),ISNULL( Core_MDF_Requested_Cap_amt__c ))</errorConditionFormula>
         <errorMessage>Requested Cap Amount is mandatory</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_Validate_ReqCapAmt_OnAmtChange</fullName>
         <active>true</active>
         <description>Requested Cap Amount cannot be less than Claimed Cap Amount on requested amount change</description>
-        <errorConditionFormula>AND(RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos; ,NOT(ISNEW()),ISCHANGED( Core_MDF_Requested_Cap_amt__c ) , Core_MDF_Requested_Cap_amt__c &lt;  Core_MDF_Claimed_Cap_amt__c)</errorConditionFormula>
+        <errorConditionFormula>AND(OR(RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos;,RecordType.DeveloperName = &apos;Core_MDF_Channel_MDF_Budget_Type_Cap&apos;) ,NOT(ISNEW()),ISCHANGED( Core_MDF_Requested_Cap_amt__c ) , Core_MDF_Requested_Cap_amt__c &lt;  Core_MDF_Claimed_Cap_amt__c)</errorConditionFormula>
         <errorMessage>The revised Requested Cap Amount cannot be lesser than Claimed Cap Amount.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_Validate_ReqCapAmt_OnCreation</fullName>
         <active>true</active>
         <description>This rule validates the Budget Cap&apos;s requested amount with claimed amount while creation or activation</description>
-        <errorConditionFormula>AND(RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos;, Core_MDF_Requested_Cap_amt__c &lt; Core_MDF_Claimed_Cap_amt__c ,OR(ISNEW(), AND(ISCHANGED( Core_MDF_Cap_Status_nm__c ),
+        <errorConditionFormula>AND(OR(RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos;,RecordType.DeveloperName = &apos;Core_MDF_Channel_MDF_Budget_Type_Cap&apos;), Core_MDF_Requested_Cap_amt__c &lt; Core_MDF_Claimed_Cap_amt__c ,OR(ISNEW(), AND(ISCHANGED( Core_MDF_Cap_Status_nm__c ),
 ISPICKVAL(Core_MDF_Cap_Status_nm__c, &apos;Active&apos;))
 ))</errorConditionFormula>
         <errorMessage>The Requested Cap Amount cannot be lesser than Claimed Cap Amount for the given time period.</errorMessage>
@@ -1036,7 +1247,7 @@ ISPICKVAL(Core_MDF_Cap_Status_nm__c, &apos;Active&apos;))
         <fullName>Core_MDF_Validate_ReqCapAmt_OnDateChange</fullName>
         <active>true</active>
         <description>This rule validates budget cap amount with claimed cap amount when time period of budget cap is changed</description>
-        <errorConditionFormula>AND( RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos; , NOT(ISNEW()),OR(ISCHANGED( Core_MDF_Effective_Start_Date_Dt__c  ) , ISCHANGED( Core_MDF_Effective_End_Date_Dt__c )),  Core_MDF_Requested_Cap_amt__c &lt; Core_MDF_Claimed_Cap_amt__c)</errorConditionFormula>
+        <errorConditionFormula>AND(OR( RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos; , RecordType.DeveloperName = &apos;Core_MDF_Channel_MDF_Budget_Type_Cap&apos; ), NOT(ISNEW()),OR(ISCHANGED( Core_MDF_Effective_Start_Date_Dt__c  ) , ISCHANGED( Core_MDF_Effective_End_Date_Dt__c )),  Core_MDF_Requested_Cap_amt__c &lt; Core_MDF_Claimed_Cap_amt__c)</errorConditionFormula>
         <errorMessage>The Requested Cap Amount cannot be lesser than Claimed Cap Amount (due to change in the time period).</errorMessage>
     </validationRules>
     <validationRules>

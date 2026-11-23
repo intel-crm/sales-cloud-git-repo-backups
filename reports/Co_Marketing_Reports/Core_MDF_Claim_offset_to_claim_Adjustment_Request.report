@@ -45,9 +45,23 @@
             <criteriaItems>
                 <column>Core_MDF_Adjustment_Request__c$Core_MDF_Adjustment_Claim_Nbr__c.Core_MDF_Type_Txt__c</column>
                 <columnToColumn>false</columnToColumn>
-                <isUnlocked>true</isUnlocked>
+                <isUnlocked>false</isUnlocked>
                 <operator>equals</operator>
                 <value>Adjustment</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>Core_MDF_Adjustment_Request__c$Core_MDF_Reference_Claim_Nbr__c.Core_MDF_Region_Cd__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value>,EMEA,PRC,APJ,ASMO</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>Core_MDF_Adjustment_Request__c$Core_MDF_Reference_Claim_Nbr__c.Request.ChannelPartner.Core_MDF_Channel_Program__c.Core_MDF_Technical_Program_Name__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value>,Client CoMarketing Fund,Client,Client CoMarketing Fund Boost,Data Center,Data Center CoMarketing Fund,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund</value>
             </criteriaItems>
         </filter>
         <format>Summary</format>
@@ -58,8 +72,8 @@
         </params>
         <reportType>Core_MDF_Claim_Adjustment_Request_Report_Type__c</reportType>
         <scope>organization</scope>
-        <showGrandTotal>false</showGrandTotal>
-        <showSubTotals>false</showSubTotals>
+        <showGrandTotal>true</showGrandTotal>
+        <showSubTotals>true</showSubTotals>
         <timeFrameFilter>
             <dateColumn>Core_MDF_Adjustment_Request__c$CreatedDate</dateColumn>
             <interval>INTERVAL_CUSTOM</interval>
@@ -87,8 +101,8 @@
         </params>
         <reportType>Core_MDF_Claim_Offset_Report_Type__c</reportType>
         <scope>organization</scope>
-        <showGrandTotal>false</showGrandTotal>
-        <showSubTotals>false</showSubTotals>
+        <showGrandTotal>true</showGrandTotal>
+        <showSubTotals>true</showSubTotals>
         <timeFrameFilter>
             <dateColumn>Core_MDF_Claim_Offset__c$CreatedDate</dateColumn>
             <interval>INTERVAL_CUSTOM</interval>

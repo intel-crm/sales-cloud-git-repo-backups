@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Validate_Incentive</name>
+        <label>Validate Incentive</label>
+        <locationX>700</locationX>
+        <locationY>63</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Incentive_Result</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Chk_Apply_Incentive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Incentive Result</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Validte_Logo_Answer</name>
+        <label>Validte Logo Answer</label>
+        <locationX>347</locationX>
+        <locationY>64</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Chk_Logo_Answer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Chk_Logo_Included</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>OptIn_Incentive</targetReference>
+            </connector>
+            <label>Chk Logo Answer</label>
+        </rules>
+    </decisions>
+    <interviewLabel>Activity Incentive Check {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Activity Incentive Check</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <runInMode>DefaultMode</runInMode>
+    <screens>
+        <name>Logo_Check</name>
+        <label>Logo Check</label>
+        <locationX>201</locationX>
+        <locationY>62</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Validte_Logo_Answer</targetReference>
+        </connector>
+        <fields>
+            <name>Chk_Logo_Included</name>
+            <dataType>Boolean</dataType>
+            <defaultValue>
+                <booleanValue>false</booleanValue>
+            </defaultValue>
+            <fieldText>Is Logo Included?</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>OptIn_Incentive</name>
+        <label>Apply Incentive</label>
+        <locationX>556</locationX>
+        <locationY>61</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Validate_Incentive</targetReference>
+        </connector>
+        <fields>
+            <name>Chk_Apply_Incentive</name>
+            <dataType>Boolean</dataType>
+            <fieldText>Apply Incentive?</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>63</locationX>
+        <locationY>62</locationY>
+        <connector>
+            <targetReference>Logo_Check</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+</Flow>

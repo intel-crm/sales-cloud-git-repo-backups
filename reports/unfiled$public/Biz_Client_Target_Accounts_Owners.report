@@ -16,9 +16,6 @@
         <field>EMPLOYEES</field>
     </columns>
     <columns>
-        <field>Account.Core_Alt_Language_Postal_Code__c</field>
-    </columns>
-    <columns>
         <field>SALES</field>
     </columns>
     <columns>
@@ -62,7 +59,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Melissa Gonzalez,Greg Peterson,Cooper Prescott,Matthew Harrison,Angela Baroni,Juan Tobon,Darrell Stewart,Frank Debello,Katie Arnold,David Minnaar,Leita Herra - Ott,Ariadne Duncan,Anne Barker,Christopher Lesko</value>
+            <value>Cooper Prescott,Matthew Harrison,Angela Baroni,Juan Tobon,Darrell Stewart,Frank Debello,Katie Arnold,David Minnaar,Leita Herra - Ott,Ariadne Duncan,Anne Barker</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

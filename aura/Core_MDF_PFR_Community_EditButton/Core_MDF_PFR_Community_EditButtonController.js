@@ -18,10 +18,11 @@
     // Function Called on the load of the component
     checkObjectPermission: function(component, event, helper) {
       //Fetching Record Type Developer Name
-      
+      console.log("Here-->0"+component.get("v.recordId"));
         if(component.get("v.recordId")!=null){
             var recordtypeAction = component.get("c.getActivityRecordTypeDevname");
-           
+            //pass the record Id name here for which
+            //to fetch developername
             recordtypeAction.setParams({
                 "recordId" : component.get("v.recordId")
             });
@@ -29,8 +30,10 @@
                 var state = res.getState();
                 if (state === "SUCCESS") {
                     var recordTypeDevName = res.getReturnValue();
+                    console.log("Here-->"+recordTypeDevName);
                     component.set("v.recordtypeDeveloperName",recordTypeDevName);
-                    if(recordTypeDevName != $A.get("$Label.c.Core_MDF_Retail_Program")){
+                    // if(recordTypeDevName != "Core_MDF_Intel_Partner_Alliance"){
+                   if(recordTypeDevName != $A.get("$Label.c.Core_MDF_Retail_Program")){
                         var action = component.get("c.checkSObjectEditPermission");
                         //pass the object name here for which you want
                         //to fetch check the permission
@@ -47,7 +50,7 @@
                     var errorMessage = $A.get("$Label.c.Core_MDF_ApplicationErrorMessage");
                     helper.displaySuccessErrorMsg(errorMessage, "Error", "error");
                 }
-              
+                //  }
             });
             $A.enqueueAction(recordtypeAction);
         }

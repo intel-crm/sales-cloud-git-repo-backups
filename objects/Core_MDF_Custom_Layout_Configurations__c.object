@@ -130,7 +130,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Custom_Layout_Configuration_Record_Page</content>
-        <formFactor>Large</formFactor>
+        <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -138,7 +138,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Custom_Layout_Configuration_Record_Page</content>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -168,6 +168,18 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_API_Error_Code__c</fullName>
+        <description>Error Code for the API field</description>
+        <externalId>false</externalId>
+        <label>API Error Code</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_API_Required_Ind__c</fullName>
@@ -229,6 +241,21 @@
                     <label>Account Based</label>
                 </value>
                 <value>
+                    <fullName>Cloud</fullName>
+                    <default>false</default>
+                    <label>Cloud</label>
+                </value>
+                <value>
+                    <fullName>MDF</fullName>
+                    <default>false</default>
+                    <label>MDF</label>
+                </value>
+                <value>
+                    <fullName>MDF+</fullName>
+                    <default>false</default>
+                    <label>MDF+</label>
+                </value>
+                <value>
                     <fullName>OEM CMP</fullName>
                     <default>false</default>
                     <label>OEM CMP</label>
@@ -267,10 +294,19 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_MDF_Field_Editability_Rules__c</fullName>
+        <label>Field Editability Rules(JSON)</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Field_Label_txt__c</fullName>
         <description>Field Label to be display on layout</description>
         <externalId>false</externalId>
-        <label>Field Label</label>
+        <label>Custom Field Label</label>
         <length>255</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -307,6 +343,14 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_IsCompactLayout__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>CompactLayout</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Is_Lookup_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Is Lookup</label>
@@ -321,6 +365,113 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_List_Api_Filter_Field_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field is used for  Generic List View API.</description>
+        <inlineHelpText>Check this field to include in  allowed filter field</inlineHelpText>
+        <label>List Api Filter Field</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_List_Api_Filter_Operator_nm__c</fullName>
+        <description>Allowed filter operators for the List API.</description>
+        <inlineHelpText>Supported  Operator Value</inlineHelpText>
+        <label>List API Filter Operator</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>EQ</fullName>
+                    <default>false</default>
+                    <label>EQ</label>
+                </value>
+                <value>
+                    <fullName>NE</fullName>
+                    <default>false</default>
+                    <label>NE</label>
+                </value>
+                <value>
+                    <fullName>GT</fullName>
+                    <default>false</default>
+                    <label>GT</label>
+                </value>
+                <value>
+                    <fullName>GE</fullName>
+                    <default>false</default>
+                    <label>GE</label>
+                </value>
+                <value>
+                    <fullName>LT</fullName>
+                    <default>false</default>
+                    <label>LT</label>
+                </value>
+                <value>
+                    <fullName>LE</fullName>
+                    <default>false</default>
+                    <label>LE</label>
+                </value>
+                <value>
+                    <fullName>INCLUDE</fullName>
+                    <default>false</default>
+                    <label>INCLUDE</label>
+                </value>
+                <value>
+                    <fullName>EXCLUDE</fullName>
+                    <default>false</default>
+                    <label>EXCLUDE</label>
+                </value>
+                <value>
+                    <fullName>CONTAIN</fullName>
+                    <default>false</default>
+                    <label>CONTAIN</label>
+                </value>
+                <value>
+                    <fullName>NOT CONTAIN</fullName>
+                    <default>false</default>
+                    <label>NOT CONTAIN</label>
+                </value>
+                <value>
+                    <fullName>EQUAL TO</fullName>
+                    <default>false</default>
+                    <label>EQUAL TO</label>
+                </value>
+                <value>
+                    <fullName>NOT EQUAL TO</fullName>
+                    <default>false</default>
+                    <label>NOT EQUAL TO</label>
+                </value>
+                <value>
+                    <fullName>GREATER THAN</fullName>
+                    <default>false</default>
+                    <label>GREATER THAN</label>
+                </value>
+                <value>
+                    <fullName>GREATER THAN OR EQUAL TO</fullName>
+                    <default>false</default>
+                    <label>GREATER THAN OR EQUAL TO</label>
+                </value>
+                <value>
+                    <fullName>LESS THAN</fullName>
+                    <default>false</default>
+                    <label>LESS THAN</label>
+                </value>
+                <value>
+                    <fullName>LESS THAN OR EQUAL TO</fullName>
+                    <default>false</default>
+                    <label>LESS THAN OR EQUAL TO</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
     </fields>
     <fields>
         <fullName>Core_MDF_Lookup_Custom_URL_Ind__c</fullName>
@@ -347,6 +498,18 @@
         <label>Object API Name</label>
         <length>255</length>
         <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Parent_Object_Txt__c</fullName>
+        <description>To hold the Parent object name for a relationship field(reference/lookup)</description>
+        <externalId>false</externalId>
+        <label>Parent Object Name</label>
+        <length>50</length>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -544,6 +707,30 @@
         <visibleLines>3</visibleLines>
     </fields>
     <label>Custom Layout Configuration</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Field_Label_txt__c</columns>
+        <columns>Core_MDF_Field_API_Name_txt__c</columns>
+        <columns>Core_MDF_Budget_Type_nm__c</columns>
+        <columns>Core_MDF_Alignment_nm__c</columns>
+        <columns>Core_MDF_Object_API_Name_txt__c</columns>
+        <columns>Core_MDF_Record_Type_Name_txt__c</columns>
+        <columns>Core_MDF_Section_id__c</columns>
+        <columns>Core_MDF_Sequence_No_nbr__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Object_API_Name_txt__c</field>
+            <operation>equals</operation>
+            <value>Campaign</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Record_Type_Name_txt__c</field>
+            <operation>equals</operation>
+            <value>COGTM</value>
+        </filters>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>CLC-{0000}</displayFormat>
         <label>Custom Layout Configurations Name</label>

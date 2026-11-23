@@ -83,7 +83,24 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
                 break;
         }
     }
+    /*async restrictFieldVisiblityCriteria() {
+         console.log('Start restrictFieldVisiblityCriteria');
+        try {
+            this.filterConditionResult = await getFilterCondition({ //checkfieldVisisikity
+                recordId: this.recordId,
+                restrictFieldVisiblityCriteriaFieldAPIName: this.restrictFieldVisiblityCriteriaFieldAPIName
+            });
+            console.log('filterConditionResult Ealay result -->', this.filterConditionResult);
+ 
+        } catch (error) {
+            this.error = error;
+            console.error('Error in restrictFieldVisiblityCriteria:', error);
+            return false;
+        }
+    }*/
     restrictFieldVisiblityCriteria() {
+        console.log('Start restrictFieldVisiblityCriteria');
+
         getFilterCondition({
             recordId: this.recordId,
             restrictFieldVisiblityCriteriaFieldAPIName: this.restrictFieldVisiblityCriteriaFieldAPIName
@@ -91,6 +108,7 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
             .then(result => {
                 this.filterConditionResult = result;
                 this.loadFieldsAndRecords(); 
+                console.log('filterConditionResult Ealay result -->', this.filterConditionResult);
             })
             .catch(error => {
                 this.error = error;
@@ -140,13 +158,18 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
                 }
 
                 listOfFields = this.strFields.split(',');//remove the condition according
+                console.log('fieldsDescribe:' + JSON.stringify(fieldsDescribe));
                 //Ealay
+                console.log(' Ealay column hide value -->' + this.restrictFieldVisiblityFieldAPIName);
                 if (!this.filterConditionResult) {
                     //this.restrictFieldVisiblityFieldAPIName = 'Core_MDF_Initial_Baseline_Quantity_nbr__c';
+                    console.log('Outcome-based result is true — removing FlexiPage fields');
                     const fieldsColumnsToRemove = (this.restrictFieldVisiblityFieldAPIName || '').split(',').map(f => f.trim());
                     // Remove only those fields that are in flexipageFieldList
                     listOfFields = listOfFields.filter(field => !fieldsColumnsToRemove.includes(field));
                 }
+                console.log(' Ealay filterConditionResult after -->' + this.filterConditionResult);
+                console.log('listOfFields:' + JSON.stringify(listOfFields));
 
                 //Ealay
                 let items = []; //local array to prepare columns
@@ -154,13 +177,15 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
                 const translatedLabels = (this.checkForUndefinedEmptyAndNull(data) && data.translatedLabels)
                     ? data.translatedLabels
                     : []; //TWC3117-17837 
-                //prepare the column with type = url 
-
+                console.log('translatedLabels:', translatedLabels);
+                //prepare the column with type = url                
                 listOfFields.map((element, index) => { //TWC3117-17837
                     let fldDataType;
                     let fldDetail = fieldsDescribe[element];//fldDetail
-                    let fldApi = fldDetail['fieldName'];
+                    let fldApi = fldDetail['fieldName'];                    
                     let fldLabel = translatedLabels[index] || fldDetail['fieldLabel']; //TWC3117-17837
+                    console.log('fldLabel : ' + fldLabel);
+                    console.log('tData : ' + fldDetail);
                     fldDataType = fldDetail['dataType'];//fldDataType
                     // it will enter this if-block just once
                     if (fldDataType == 'REFERENCE') {
@@ -191,6 +216,7 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
                 //prepare table data
                 this.columns = items;
                 this.tableColumns = this.columns;
+                console.log('this.columns 141' + JSON.stringify(this.columns));
                 this.tableData = [];
                 records.map(item => {
                     let recData = item;
@@ -226,7 +252,12 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
                     this.tableData.push(tdata);
                 });
 
+                console.log('records', records);
+
                 //create URL with Id and push it into the array
+                console.log('this.tableData 92:' + this.tableData);
+                console.log('this.tableData 95:' + JSON.stringify(this.tableData));
+
 
                 //hide columns that have no data across all rows
                 this.hideEmptyColumns();
@@ -340,6 +371,7 @@ export default class Core_MDF_Generic_Related_List extends LightningElement {
         })
             .then(result => {
                 this.componentVisible = result;
+                console.log('evaluateComponentVisibility result -->', result);
             })
             .catch(error => {
                 this.error = error;

@@ -1,0 +1,187 @@
+<template>
+  <section class="report-card slds-m-top_medium" aria-label="Salesforce report">
+    <header class="report-header">
+      <div class="report-heading">
+        <span class="report-eyebrow">Reports &amp; Analytics</span>
+        <h2 class="report-title">{reportName}</h2>
+      </div>
+      <lightning-button
+        class="report-action"
+        variant="base"
+        label="Refresh report"
+        icon-name="utility:refresh"
+        icon-position="right"
+        onclick={handleRefresh}
+        disabled={isLoading}
+      ></lightning-button>
+    </header>
+    <template lwc:if={hasChart}>
+      <div class="chart-heading">
+        <h3 class="chart-title">Reimbursement Amount by Claim Status</h3>
+        <p class="chart-description">
+          Full-report totals in the report's display currency, across all
+          accounts. Select a column to view its matching report rows.
+        </p>
+      </div>
+      <div class="pipeline-card">
+        <div class="chart-section">
+          <p class="axis-title">Reimbursement Amount (Y-axis)</p>
+          <div
+            class="chart"
+            role="group"
+            aria-label="Reimbursement Amount column chart"
+          >
+            <div class="axis-ticks" aria-label="Reimbursement amount scale">
+              <template for:each={axisTicks} for:item="tick">
+                <span key={tick.key} class="axis-tick" style={tick.style}
+                  >{tick.label}</span
+                >
+              </template>
+            </div>
+            <div class="columns-scroll">
+              <div class="columns">
+                <div class="grid-lines" aria-hidden="true">
+                  <template for:each={axisTicks} for:item="tick">
+                    <span
+                      key={tick.key}
+                      class="grid-line"
+                      style={tick.style}
+                    ></span>
+                  </template>
+                  <span class="zero-line" style={zeroLineStyle}></span>
+                </div>
+                <template for:each={chartDisplayBars} for:item="bar">
+                  <button
+                    key={bar.key}
+                    type="button"
+                    class="chart-bar"
+                    data-key={bar.key}
+                    aria-label={bar.ariaLabel}
+                    aria-pressed={bar.selected}
+                    onclick={handleBarClick}
+                  >
+                    <span class="bar-plot" aria-hidden="true">
+                      <span class="bar-fill" style={bar.style}></span>
+                      <span class={bar.labelClass} style={bar.labelStyle}
+                        >{bar.amount}</span
+                      >
+                    </span>
+                    <span class="status-label">{bar.status}</span>
+                    <span class="row-count">{bar.count} rows</span>
+                  </button>
+                </template>
+              </div>
+            </div>
+          </div>
+          <p class="axis-title category-axis-title">Claim Status (X-axis)</p>
+        </div>
+        <aside class="pipeline-summary" aria-label="Report totals">
+          <div class="summary-metric">
+            <strong class="summary-amount">{totalAmountLabel}</strong>
+            <span class="summary-label">Total reimbursement amount</span>
+            <span class="summary-note">Report display currency</span>
+          </div>
+          <div class="summary-metric">
+            <strong class="summary-count">{totalRowsLabel}</strong>
+            <span class="summary-label">Report rows</span>
+            <span class="summary-note">Across all claim statuses</span>
+          </div>
+          <lightning-button
+            class="report-action all-rows-action"
+            variant="base"
+            label="Show all report rows"
+            icon-name="utility:forward"
+            icon-position="right"
+            onclick={handleAllRows}
+            disabled={isLoading}
+          ></lightning-button>
+        </aside>
+      </div>
+    </template>
+    <template lwc:if={isLoading}>
+      <div class="loading">
+        <lightning-spinner
+          alternative-text="Loading report"
+          size="small"
+        ></lightning-spinner>
+      </div>
+    </template>
+    <template lwc:elseif={errorMessage}>
+      <p role="alert" class="slds-text-color_error">{errorMessage}</p>
+    </template>
+    <template lwc:else>
+      <template lwc:if={showGrid}>
+        <h3 class="details-heading" tabindex="-1" data-details-heading>
+          {detailHeading}
+        </h3>
+        <template lwc:if={isTruncated}>
+          <p role="status" class="slds-m-bottom_small">
+            Salesforce returned only part of this report (up to 2,000 detail
+            rows). Chart totals include all matching rows; the grid shows only
+            the returned detail rows.
+          </p>
+        </template>
+        <template lwc:if={hasRows}>
+          <div
+            class="table-container"
+            tabindex="0"
+            role="region"
+            aria-label="Report results, scroll to view all columns"
+          >
+            <table
+              class="slds-table slds-table_bordered slds-table_cell-buffer"
+            >
+              <caption class="slds-assistive-text">
+                {reportName}
+              </caption>
+              <thead>
+                <tr>
+                  <template for:each={columns} for:item="column">
+                    <th key={column.key} scope="col">{column.label}</th>
+                  </template>
+                </tr>
+              </thead>
+              <tbody>
+                <template for:each={visibleRows} for:item="row">
+                  <tr key={row.key}>
+                    <template for:each={row.cells} for:item="cell">
+                      <td key={cell.key}>{cell.label}</td>
+                    </template>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
+          <div
+            class="report-pagination slds-grid slds-wrap slds-grid_vertical-align-center"
+          >
+            <lightning-button
+              label="Previous"
+              onclick={handlePrevious}
+              disabled={previousDisabled}
+            ></lightning-button>
+            <span class="slds-m-horizontal_small" role="status"
+              >{pageSummary}</span
+            >
+            <lightning-button
+              label="Next"
+              onclick={handleNext}
+              disabled={nextDisabled}
+            ></lightning-button>
+          </div>
+        </template>
+        <template lwc:else>
+          <p role="status">
+            No report rows match the saved filters for your user.
+          </p>
+        </template>
+      </template>
+      <template lwc:elseif={hasChart}></template>
+      <template lwc:else>
+        <p role="status">
+          No chart groups match the saved report filters for your user.
+        </p>
+      </template>
+    </template>
+  </section>
+</template>

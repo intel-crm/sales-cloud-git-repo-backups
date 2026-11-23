@@ -63,18 +63,18 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Tomala</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Pipeline_Heath__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Arkadiusz Drazkowski,Dmitry Matchin,Hesham Elsaid,Kamil Guzik,Maciek Osiecki,Magdalena Dunska-Glowka,Michela Adamo,Ozkan Ozdikici,Natalia Radtke,Leszek Grzywacz,Jacek Hadryś,Joanna Momont,Maciej Hoffmann,Julia Samoilov</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

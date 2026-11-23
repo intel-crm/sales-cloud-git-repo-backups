@@ -2347,7 +2347,7 @@ ISPICKVAL({!myVariable_old.Core_Lead_Status__c} , &quot;Accepted&quot;)
         <object>Lead</object>
     </recordUpdates>
     <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>cancelWaits</name>
         <dataType>String</dataType>

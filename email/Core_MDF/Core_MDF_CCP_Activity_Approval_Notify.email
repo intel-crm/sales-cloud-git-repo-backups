@@ -1,0 +1,37 @@
+<messaging:emailTemplate renderUsingSystemContextWithoutSharing="true"
+                         subject="Activity status updated for Activity # {!RelatedTo.Core_MDF_Activity_Number__c}"    
+                         relatedToType="PartnerFundRequest" 
+                         language="en_US" 
+                         recipientType="User">
+    <messaging:htmlEmailBody >
+        <html>
+            <body>
+                <div style="font-family: Arial; font-size: 11px;">
+                    <p><span style="color: #ff0000;"><strong>Action Required</strong></span></p>
+                    <p><span></span></p>
+                    <p><span><br />Dear Intel employee,</span></p>
+                    <p>The following activity has been submitted and requires Intel review:&nbsp;</p>
+                    <p><span>&nbsp; &nbsp; &nbsp; Member Name: {!RelatedTo.Core_MDF_Ultimate_Account_Name__c}</span></p>
+                    <p><span>&nbsp; &nbsp; &nbsp; Activity number: {!RelatedTo.Core_MDF_Activity_Number__c}</span></p>
+                    <p><span>&nbsp; &nbsp; &nbsp; Activity type:&nbsp;{!RelatedTo.Core_MDF_Activity_Types__c}</span></p>
+                    <p><span>&nbsp; &nbsp; &nbsp; Status History:&nbsp;{!RelatedTo.Core_MDF_Fund_Request_Status__c}</span></p>
+                    <p><span>&nbsp; &nbsp; &nbsp; Countries/locations:&nbsp;{!RelatedTo.Core_MDF_Country_nm__c}</span></p>
+                    <p></p>
+                    <p>{!RelatedTo.CreatedBy.Name}&nbsp;has requested your approval for the following item:<span>&nbsp;</span></p>
+                    <c:Core_MDF_ApprovalURLCmp objID="{!RelatedTo.Id}" actorID="{! IF(NOT(ISBLANK(RelatedTo.Core_MDF_Approver_1__c)),RelatedTo.Core_MDF_Approver_1__c, IF(NOT(ISBLANK(RelatedTo.Core_MDF_Approver_2__c)), RelatedTo.Core_MDF_Approver_2__c, IF(NOT(ISBLANK(RelatedTo.Core_MDF_Approver_3__c)), RelatedTo.Core_MDF_Approver_3__c, IF(NOT(ISBLANK(RelatedTo.Core_MDF_Approver_4__c)), RelatedTo.Core_MDF_Approver_4__c, IF(NOT(ISBLANK(RelatedTo.Core_MDF_Approver_5__c)), RelatedTo.Core_MDF_Approver_5__c, IF(NOT(ISBLANK(RelatedTo.Core_MDF_Approver_6__c)), RelatedTo.Core_MDF_Approver_6__c, IF(NOT(ISBLANK(RelatedTo.Core_MDF_Approver_7__c)), RelatedTo.Core_MDF_Approver_7__c, IF(NOT(ISBLANK(RelatedTo.Core_MDF_Approver_8__c)), RelatedTo.Core_MDF_Approver_8__c, IF(NOT(ISBLANK(RelatedTo.Core_MDF_Approver_9__c)), RelatedTo.Core_MDF_Approver_9__c, IF(NOT(ISBLANK(RelatedTo.Core_MDF_Approver_10__c)), RelatedTo.Core_MDF_Approver_10__c,'')))))))))) }"></c:Core_MDF_ApprovalURLCmp> <br/>
+                    <p>Please click this link to approve or reject this record.</p>
+                    <p></p>
+                    <p>Thank you,</p>
+                    <p><span>{!RelatedTo.RecordType.Name}&nbsp;Program Team</span></p>
+                    <p><span>&nbsp;</span></p>
+                    </div>
+                    <div style="font-family: Calibri;font-size: 11px;">
+                    <p><em>Messages to this mailbox are not monitored.</em>&nbsp;<em>Contact&nbsp;<strong><a href="https://intelinside.intel.com/Support?AppSignOn=Yes">customer service</a>&nbsp;</strong>if you have additional questions.</em></p>
+                    <p>This message and any attachments are for the sole use of the intended recipient(s). If you are not the intended recipient, contact&nbsp;<strong><a href="https://intelinside.intel.com/Support?AppSignOn=Yes">customer service</a>&nbsp;</strong>immediately and confirm you have deleted all copies.</p>
+                    <p>Intel Corporation, 2111 NE 25th Avenue, Mailstop HF3-17, Hillsboro, OR 97124&nbsp;<br /><a href="https://www.intel.com/content/www/us/en/homepage.html">Intel Corporation</a>&nbsp;|&nbsp;<a href="https://www.intel.com/content/www/us/en/legal/trademarks.html">Trademarks&nbsp;</a>|&nbsp;<a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html?elqTrackId=d66a216e5b8b472c80e421c11f79cbc2&amp;amp;elqaid=13991&amp;amp;elqat=2">Privacy Policy</a>&nbsp;|&nbsp;<a href="http://www.intel.com/cookies">Cookies</a>&nbsp;</p>
+                    <p></p>
+                </div>
+            </body>
+        </html>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

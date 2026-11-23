@@ -10,7 +10,8 @@
 * Accenture - Shridhar K        2/08/2019                   Co-marketing recordType check is modified to handle new recordType dynamically 
 *****************************************************************************************************************************************/
 public without sharing class Core_MDF_BatchSharecmpSchedule implements Schedulable{
-    //Added without sharing as part of ATHR fix    
+    //Added without sharing as part of ATHR fix
+    
     // Execute schedule class
     public void execute(SchedulableContext sc) {
         

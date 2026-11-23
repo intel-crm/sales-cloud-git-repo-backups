@@ -188,10 +188,12 @@ public without sharing class Core_MDF_Recovery_Helper {
                     }
                 }
                 if(surePayRecAmount >0 && surePayBTSet != null && !surePayBTSet.isEmpty()){
+                    //system.debug('comingInsideSurePayIf::');
                     combinedBTSet.addAll(surePayBTSet);
                 }
 				if(!combinedBTSet.isEmpty()){
                     budgetTypeList = String.join(new List<String>(combinedBTSet), ',');
+                    //system.debug('comingInsideCombinedIf::'+budgetTypeList);
                 }
                 programBudgetTypeQuarter = program + ';'+ budgetTypeList+ ';' + quarter;
                 
@@ -215,6 +217,7 @@ public without sharing class Core_MDF_Recovery_Helper {
                 rrRet = Core_MDF_RecoveryClaimReportViewCtrl.getOrganizedDataForClaimsToBeRecovered(allClaims,recommendedClaims.get(account),accountEligibileClaimsBTGeo.get(account),false,budgetGeoList,clmToBtRecoveryAmt,crossBTorProgToBTMap,clmIdToRecAmtMap);   
             }
             else if(surePayRecAmount >0 && recommendedRecoveries.size()==0 && recommendedClaims.size() == 0){
+                system.debug('coming here::'+ allClaims);
                 rrRet = Core_MDF_RecoveryClaimReportViewCtrl.getOrganizedDataForClaimsToBeRecovered(allClaims,null,null,false,null,null,crossBTorProgToBTMap,clmIdToRecAmtMap);   
             }
         }
@@ -238,7 +241,7 @@ public without sharing class Core_MDF_Recovery_Helper {
             previousQuarterAndYear = 'Q' + quarterNum + ' ' + currYear;
         }
         
-        String currQuarterAndYear = currQuarter + ' ' + currYear;
+        //String currQuarterAndYear = currQuarter + ' ' + currYear; //TWC3117-16123
         
         //Allow specific users in the below list to see the claims if they select older quarters.
         String usersToBypass = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Bypass_Recovery_Selection');
@@ -474,7 +477,7 @@ public without sharing class Core_MDF_Recovery_Helper {
         
         Map<string,Map<string,decimal>> accountToRecoveryAmount = new Map<string,Map<string,decimal>>();
         List<Core_MDF_Partnership_Score_Detail__c> psdList = new List<Core_MDF_Partnership_Score_Detail__c>();
-        List<Core_MDF_Partnership_Score_Detail__c> psdList1 = new List<Core_MDF_Partnership_Score_Detail__c>();
+        //List<Core_MDF_Partnership_Score_Detail__c> psdList1 = new List<Core_MDF_Partnership_Score_Detail__c>(); //TWC3117-16123
         boolean noBT = false;
         List<id> accountIds = wrapperForRecvryData.accntListId;
         List<string> regionList = wrapperForRecvryData.regionList;
@@ -493,7 +496,8 @@ public without sharing class Core_MDF_Recovery_Helper {
                 decimal recoveryPct = (decimal.valueof(prgmSplit[1])/100).setScale(2);
                 programToRecoveryPct.put(prgmSplit[0],recoveryPct);
             }*/           
-            noBT =noBudgetTypePrograms.contains(keySplit[0]) ?true: false;
+            //noBT =noBudgetTypePrograms.contains(keySplit[0]) ?true: false;
+            noBT = noBudgetTypePrograms.contains(keySplit[0]); //TWC3117-16123
             
             String strQuery = '';
             strQuery = 'select id,Core_MDF_Budget_Type_Nm__c,Core_MDF_Region_Cd__c,Core_MDF_Balance_Amount_Amt__c,Core_MDF_Node_Account_Id__c,';
@@ -1148,6 +1152,7 @@ public without sharing class Core_MDF_Recovery_Helper {
             
             for(Core_MDF_RecoveryClaimReportViewCtrl.RightReportRows record:rrr){
                 if(String.isNotBlank(record.recoveryAmount)){
+                    system.debug('record::'+record);
                     Core_MDF_Recovery_Request__c rr;
                     if(existingRR.containsKey(record.id)){
                         rr = new Core_MDF_Recovery_Request__c(id=existingRR.get(record.id).id);
@@ -1172,7 +1177,8 @@ public without sharing class Core_MDF_Recovery_Helper {
                     recoveryBudAmtList.add(record.recoveryBudAmt);
                 }
             }
-            
+            system.debug('recoveryBudAmtList::'+recoveryBudAmtList);
+            system.debug('btGeoToAmountMap::'+btGeoToAmountMap);
             //Check if the recovered claims are within the recovery limit of the Account, Program, Quarter
             output = Core_MDF_Recovery_Save_Functionality.validateBudgetConsumed(btGeoToAmountMap,recoveryBudAmtList);
             for(boolean key:output.keyset()){
@@ -1195,6 +1201,7 @@ public without sharing class Core_MDF_Recovery_Helper {
             } 
             
             result.put(issueUpdate,message);
+            system.debug('result::'+result);
         }
         catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);} 
         return result;

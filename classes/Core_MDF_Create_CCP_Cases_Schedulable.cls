@@ -75,11 +75,7 @@ public without sharing class Core_MDF_Create_CCP_Cases_Schedulable implements Sc
             }
             
             return false;
-        }
-        catch (Exception ex) {
-            Core_MDF_CCP_UtilityClass.logError(ex);
-            return false;
-        }
+        }catch (Exception ex) {Core_MDF_CCP_UtilityClass.logError(ex);return false;}
     }
 
 }

@@ -35,6 +35,7 @@ public class Core_MDF_CCP_TestDataUtility {
     public static Id claim_RecordType_CCF = Schema.SObjectType.PartnerFundClaim.getRecordTypeInfosByDeveloperName().get('Core_MDF_Client_Co_Marketing_Fund').getRecordTypeId();
     public static Id claim_RecordType_DCF = Schema.SObjectType.PartnerFundClaim.getRecordTypeInfosByDeveloperName().get('Core_MDF_Data_Center_Co_Marketing_Fund').getRecordTypeId(); 
     public static Id claim_RecordType_SPCF = Schema.SObjectType.PartnerFundClaim.getRecordTypeInfosByDeveloperName().get('Core_MDF_Service_Provider_Co_Marketing_Fund').getRecordTypeId(); 
+    public static Id claim_RecordType_IPA = Schema.SObjectType.PartnerFundClaim.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
     
     //Claim Retail Record Types
     public static Id claim_RecordType_Retail = Schema.SObjectType.PartnerFundClaim.getRecordTypeInfosByDeveloperName().get('Core_MDF_Retail_Marketing_Funds').getRecordTypeId();   
@@ -66,7 +67,7 @@ public class Core_MDF_CCP_TestDataUtility {
     }  
     public static User createPartnerUser(Boolean isInsert){
         Profile partnerProfile = [SELECT Id FROM Profile WHERE Name='Partner'];
-        ChannelProgram cp = createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
+        ChannelProgram cp = createProgram ('Core_MDF_CCP_ConstantClass.CCF_PROGRAM','Client CoMarketing Fund', true);
         Account acc1 = createIntelAccount('Test Acc New 2', intel_Account_Record_Type, true);
         Account acc2 = createCoMarketingAccount('Test Acc New 8', cp.Id, Account_Record_Type, acc1.Id, true);
         Contact con  = createContact(acc1.Id, true);
@@ -88,8 +89,7 @@ public class Core_MDF_CCP_TestDataUtility {
         }
         return testChannelProgram;
     }
-    
-    
+  
     public static Account createAccount(String accountName, Id channelProgramId, Id accountRecordTypeId, Boolean isInsert){
         
         Account testAccount = new Account(Name = accountName , RecordTypeId = accountRecordTypeId, Core_MDF_Channel_Program__c = channelProgramId, Core_MDF_CoMarketingActive__c = true);
@@ -143,6 +143,7 @@ public class Core_MDF_CCP_TestDataUtility {
         testCampaign.Core_MDF_Industry_Nm__c='Accommodation and Food Services';
         //testCampaign.Core_MDF_Spending_Cap_Amt__c = 2000000000;
         //testCampaign.Core_MDF_Priority__c = priority;
+        //Core_MDF_Opal_Budget_Type_Txt__c
         Schema.DescribeFieldResult fieldResult1 = Schema.sObjectType.Campaign.fields.Core_MDF_Priority__c.getSObjectField().getDescribe();
         List<Schema.PicklistEntry> ple1 = fieldResult1.getPicklistValues();
         for (Schema.PicklistEntry p1: ple1) {
@@ -197,39 +198,19 @@ public class Core_MDF_CCP_TestDataUtility {
         else{
             testCampaign.Core_MDF_Technology__c = null;
         }
-
+        
         
         
         //testCampaign.Core_MDF_Brand__c= brandName;
-        if (programType != 'Retail Marketing Funds')
+        if (/*programType != 'Retail Marketing Funds'*/ programType == Core_MDF_CCP_ConstantClass.CCF_PROGRAM || programType == Core_MDF_CCP_ConstantClass.DCF_PROGRAM || programType == 'Ecosystem Extension Fund')
         {
-            //testCampaign.Core_MDF_Activity_Category_Type__c ='Digital Media->Email';
+            //testCampaign.Core_MDF_Activity_Category_Type__c ='Broadcast->Radio';
             testCampaign.Core_MDF_Reimbursement_Rate__c='50%';
         }
         else{
             testCampaign.Core_MDF_Reimbursement_Rate__c='100%';
         }
-        if(programType == 'Client CoMarketing Fund' || programType == 'Data center CoMarketing Fund' || programType == 'Ecosystem Extension Fund'){
-            Integer startYear = startDate.year();
-            Integer endYear = endDate.year();
-            if(testCampaign.Core_MDF_Opal_Budget_Type_Txt__c=='OEM CMP' || testCampaign.Core_MDF_Opal_Budget_Type_Txt__c=='Service Provider CMP'){
-                testCampaign.Core_MDF_Supports_legacy_program__c =startYear >= 2025 ? 'New CMP only' : 'CMP Only';
-                testCampaign.Core_MDF_Activity_Category_Type__c = testCampaign.Core_MDF_Supports_legacy_program__c=='New CMP only' ?'Digital 2025->Web Content'  : 'Broadcast->Podcast';
-            } else if(testCampaign.Core_MDF_Opal_Budget_Type_Txt__c=='MDF' || testCampaign.Core_MDF_Opal_Budget_Type_Txt__c=='MDF+'){
-                testCampaign.Core_MDF_Supports_legacy_program__c = startYear >= 2025 ? 'New MDF or both CMP & MDF' : 'MDF or both CMP & MDF';
-                 testCampaign.Core_MDF_Activity_Category_Type__c = testCampaign.Core_MDF_Supports_legacy_program__c=='New MDF or both CMP & MDF' ? 'Digital 2025->Web Content' : 'Broadcast->Podcast';
-            }
-        }else if(programType == 'Intel Partner Alliance' && programType=='Retail Marketing Funds'){
-            Integer startYear = startDate.year();
-            Integer endYear = endDate.year();
-            if(startYear < 2025 && endYear >= 2025) {
-                testCampaign.Core_MDF_Supports_legacy_program__c ='All MDF or both CMP & MDF';
-                testCampaign.Core_MDF_Activity_Category_Type__c = 'Broadcast->Podcast';
-            } else if(startYear >= 2025){
-                testCampaign.Core_MDF_Supports_legacy_program__c ='New MDF or both CMP & MDF';
-                 testCampaign.Core_MDF_Activity_Category_Type__c = 'Digital 2025->Web Content';
-            }
-        }
+        
         testCampaign.Status = 'Planned';  
         if(isInsert){
             insert testCampaign;            
@@ -356,16 +337,7 @@ public class Core_MDF_CCP_TestDataUtility {
         PartnerFundRequest testPartnerFundRequest = NULL;
 
         if (pfaRec == NULL){
-            testPartnerFundRequest = new PartnerFundRequest(CampaignId=campaignId,recordtypeid = recTypeId,ChannelPartnerId = channelPartnerId,Core_MDF_Country_nm__c=country,Core_MDF_Brand_nm__c=brand,/*
-            
-            
-            
-            
-            
-            
-            
-            
-            =productType,*/Core_MDF_ActivityCategory__c=activityCategory,
+            testPartnerFundRequest = new PartnerFundRequest(CampaignId=campaignId,recordtypeid = recTypeId,ChannelPartnerId = channelPartnerId,Core_MDF_Country_nm__c=country,Core_MDF_Brand_nm__c=brand,/*Core_MDF_ProductType__c=productType,*/Core_MDF_ActivityCategory__c=activityCategory,
                                                                            Core_MDF_Activity_Types__c=activityTypes,RequestedAmount=12345,Core_MDF_TargetAudience__c=targetAudience,Core_MDF_Start_Date__c=System.today(),Core_MDF_End_Date__c = system.today(),Status=status,Title ='test',
                                                                            Core_MDF_Activity_Description__c ='test123');
         }
@@ -382,20 +354,20 @@ public class Core_MDF_CCP_TestDataUtility {
         
         return testPartnerFundRequest;
     }
-     public static PartnerFundRequest createRetailActivity(String campaignId,String channelPartnerId,Date startDate,Date endDate,Boolean isInsert){
+     public static PartnerFundRequest createRetailActivity(String campaignId,String channelPartnerId,Date startDate,Date endDate,Boolean isInsert){/*String country,String targetAudience,String productType,String brand,String activityCategory,String activityTypes,String status,*/
         PartnerFundRequest testPartnerFundRequest = NULL;
 
        // if (pfaRec == NULL){
-            testPartnerFundRequest = new PartnerFundRequest(CampaignId=campaignId,recordtypeid = Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,ChannelPartnerId = channelPartnerId,Core_MDF_Country_nm__c='INDIA',Core_MDF_Brand_nm__c='Intel® 11ᵗʰ Gen',Core_MDF_ActivityCategory__c='Sales Readiness',
+            testPartnerFundRequest = new PartnerFundRequest(CampaignId=campaignId,recordtypeid = Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,ChannelPartnerId = channelPartnerId,Core_MDF_Country_nm__c='INDIA',Core_MDF_Brand_nm__c='Intel® 11ᵗʰ Gen',/*Core_MDF_ProductType__c='Traditional Notebook',*/Core_MDF_ActivityCategory__c='Sales Readiness',
                                                                            Core_MDF_Activity_Types__c='In-Store Promotion',RequestedAmount=12345,Core_MDF_TargetAudience__c='Enthusiast Gaming',Core_MDF_Start_Date__c=startDate,Core_MDF_End_Date__c =endDate,Title ='Test Retail',
                                                                            Core_MDF_Activity_Description__c ='Test Retail Description');
-       // }
-       // else{
-           // testPartnerFundRequest = new PartnerFundRequest(CampaignId=campaignId,recordtypeid = recTypeId,ChannelPartnerId = channelPartnerId,Core_MDF_Country_nm__c=country,
-                                                          //  Core_MDF_Brand__c=brand,Core_MDF_ActivityCategory__c=activityCategory,
-                                                                  //         Core_MDF_Activity_Types__c=activityTypes,RequestedAmount=12345,Core_MDF_TargetAudience__c=targetAudience,Core_MDF_Start_Date__c=System.today(),Core_MDF_End_Date__c = system.today(),Status=status,Title ='test',
-                                                                    //       Core_MDF_Activity_Description__c ='test123',AllocationId = pfaRec.Id);
-       // }
+        /*}
+        else{
+            testPartnerFundRequest = new PartnerFundRequest(CampaignId=campaignId,recordtypeid = recTypeId,ChannelPartnerId = channelPartnerId,Core_MDF_Country_nm__c=country,
+                                                            Core_MDF_Brand__c=brand,Core_MDF_ProductType__c=productType,Core_MDF_ActivityCategory__c=activityCategory,
+                                                                           Core_MDF_Activity_Types__c=activityTypes,RequestedAmount=12345,Core_MDF_TargetAudience__c=targetAudience,Core_MDF_Start_Date__c=System.today(),Core_MDF_End_Date__c = system.today(),Status=status,Title ='test',
+                                                                           Core_MDF_Activity_Description__c ='test123',AllocationId = pfaRec.Id);
+        }*/
         
         if(isInsert){
             insert testPartnerFundRequest;
@@ -418,6 +390,7 @@ public class Core_MDF_CCP_TestDataUtility {
         if(isInsert){
             insert testPartnerNodeUserMapping;
         }
+        
         
         return testPartnerNodeUserMapping;
     }
@@ -498,6 +471,26 @@ public class Core_MDF_CCP_TestDataUtility {
         }
         return pfc;
     }
+    
+    public static PartnerFundClaim createIPAClaim(String claimName, Id claimRecordTypeId, Id requestId, Date startDate, Date endDate,Decimal amount, Boolean isInsert){
+        
+        PartnerFundClaim pfc = new PartnerFundClaim();
+        pfc.RequestId = requestId;
+        pfc.RecordTypeId = claimRecordTypeId;        
+        pfc.Core_MDF_Status__c = 'Submitted';
+        pfc.Core_MDF_Total_Invoice_Amount_Local__c = amount;
+        pfc.Core_MDF_Ad_Run_Start_Date__c = startDate;
+        pfc.Core_MDF_Ad_Run_End_Date__c = endDate;
+        pfc.Title = claimName;
+        pfc.Core_MDF_Currency__c = 'USD'; 
+        //pfc.Description = 'Test';
+        pfc.Core_MDF_Country_Location_nm__c= 'BRAZIL';        
+        if(isInsert){
+            insert pfc;            
+        }
+        return pfc;
+    }
+    
     
     
     public static Core_MDF_Bank__c createBank(Id account, string program, Boolean isInsert, String supplierno)
@@ -614,6 +607,7 @@ public class Core_MDF_CCP_TestDataUtility {
         pgm.Core_MDF_Account__c = accId;
         pgm.Core_MDF_Type_of_Access__c = accessType;
         pgm.Core_MDF_Works_For__c = worksFor;
+        //pgm.Core_MDF_Virtual_Corp_nm__c = corpId;
         pgm.Core_MDF_Channel_Program__c = ChannelProgram;
         pgm.Core_MDF_Group_Name__c = group1.developername;
         if(accessType == 'Internal'){pgm.Core_MDF_Source_Txt__c = 'Test';}
@@ -728,7 +722,7 @@ public class Core_MDF_CCP_TestDataUtility {
       configMap.put('ALLOWED_REGION_FOR_BDH_NOTIF',new Core_MDF_Configuration__c(Name='ALLOWED_REGION_FOR_BDH_NOTIF',Core_MDF_Value__c='EMEA',Core_MDF_Category__c='Bank Document Hold Logic'));
       configMap.put('PRC_CLAIM_OPERATION_CUSTOM_PERMISSION',new Core_MDF_Configuration__c(Name='PRC_CLAIM_OPERATION_CUSTOM_PERMISSION',Core_MDF_Value__c='Core_MDF_CCP_RMF_Internal_Claim_Operations',Core_MDF_Category__c='PRC RMF Claim Operation'));
       configMap.put('ELIGIBLE_CP_FOR_OEM_BUDGET_TRANSFER',new Core_MDF_Configuration__c(Name='ELIGIBLE_CP_FOR_OEM_BUDGET_TRANSFER',Core_MDF_Value__c='Core_MDF_CCP_Budget_Administrator;Core_MDF_CCP_Internal_Budget_transfer',Core_MDF_Category__c='Budget Transfer'));
-      configMap.put('ELIGIBLE_PROG_FOR_OEM_BUDGET_TRANSFER',new Core_MDF_Configuration__c(Name='ELIGIBLE_PROG_FOR_OEM_BUDGET_TRANSFER',Core_MDF_Value__c='Client CoMarketing Fund;Data Center CoMarketing Fund',Core_MDF_Category__c='Budget Transfer'));
+      configMap.put('ELIGIBLE_PROG_FOR_OEM_BUDGET_TRANSFER',new Core_MDF_Configuration__c(Name='ELIGIBLE_PROG_FOR_OEM_BUDGET_TRANSFER',Core_MDF_Value__c='Client CoMarketing Fund;' + Core_MDF_CCP_ConstantClass.DCF_PROGRAM,Core_MDF_Category__c='Budget Transfer'));
       configMap.put('PROGRAMS_FOR_BU_SPLIT',new Core_MDF_Configuration__c(Name='PROGRAMS_FOR_BU_SPLIT',Core_MDF_Value__c='Intel Partner Alliance',Core_MDF_Category__c='BU Split Payments'));
       insert configMap.values();
       return configMap;
@@ -736,8 +730,8 @@ public class Core_MDF_CCP_TestDataUtility {
     
     public static Map<String,Core_MDF_CCP_Budget_Transfer_Config__c> createCCPBudgetTransferData(){
       Map<String,Core_MDF_CCP_Budget_Transfer_Config__c> configMap = new Map<String,Core_MDF_CCP_Budget_Transfer_Config__c>();
-      configMap.put('CCP Budget Administrator',new Core_MDF_CCP_Budget_Transfer_Config__c(Name='CCP Budget Administrator',Core_MDF_Budget_Type_Txt__c='OEM CMP;CCF 1.0;DCF 1.0',Core_MDF_Custom_Permission_Name_Txt__c='Core_MDF_CCP_Budget_Administrator',Core_MDF_Program_Txt__c='Client CoMarketing Fund;Data Center CoMarketing Fund'));
-      configMap.put('CCP Internal MDF Budget Manager',new Core_MDF_CCP_Budget_Transfer_Config__c(Name='CCP Internal MDF Budget Manager',Core_MDF_Budget_Type_Txt__c='MDF;MDF+',Core_MDF_Custom_Permission_Name_Txt__c='Core_MDF_CCP_Internal_MDF_Budget_Manager',Core_MDF_Program_Txt__c='Client CoMarketing Fund;Data Center CoMarketing Fund'));
+      configMap.put('CCP Budget Administrator',new Core_MDF_CCP_Budget_Transfer_Config__c(Name='CCP Budget Administrator',Core_MDF_Budget_Type_Txt__c='OEM CMP;CCF 1.0;DCF 1.0',Core_MDF_Custom_Permission_Name_Txt__c='Core_MDF_CCP_Budget_Administrator',Core_MDF_Program_Txt__c='Client CoMarketing Fund;' + Core_MDF_CCP_ConstantClass.DCF_PROGRAM));
+      configMap.put('CCP Internal MDF Budget Manager',new Core_MDF_CCP_Budget_Transfer_Config__c(Name='CCP Internal MDF Budget Manager',Core_MDF_Budget_Type_Txt__c='MDF;MDF+',Core_MDF_Custom_Permission_Name_Txt__c='Core_MDF_CCP_Internal_MDF_Budget_Manager',Core_MDF_Program_Txt__c='Client CoMarketing Fund;' + Core_MDF_CCP_ConstantClass.DCF_PROGRAM));
       insert configMap.values();
       return configMap;
     }

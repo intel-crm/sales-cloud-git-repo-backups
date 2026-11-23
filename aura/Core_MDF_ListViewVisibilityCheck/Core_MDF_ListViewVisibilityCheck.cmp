@@ -1,0 +1,38 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" controller="Core_MDF_UserPermissionCheck" >
+    <aura:attribute name="objectName" type="string" />
+    <aura:attribute name="noOfRows" type="Integer" default="5" />
+    <aura:attribute name="hasObjectAccess" type="Boolean" default="false" />
+    <aura:attribute name="listViewName" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.getUserAccess}" />
+    <aura:if isTrue="{! and (v.hasObjectAccess == true , v.objectName=='Core_MDF_Escalation__c')}">
+        <lightning:listView aura:id="listView1"
+                            objectApiName="Core_MDF_Escalation__c"
+                            listName="{!v.listViewName}"
+                            rows="{!v.noOfRows}"
+                            showSearchBar="false"
+                            showActionBar="false"
+                            enableInlineEdit="false"
+                            showRowLevelActions="false"
+                            /> </aura:if>
+    <aura:if isTrue="{! and (v.hasObjectAccess == true, v.objectName=='PartnerFundRequest')}">
+        <lightning:listView aura:id="listView2"
+                            objectApiName="PartnerFundRequest"
+                            listName="{!v.listViewName}"
+                            rows="{!v.noOfRows}"
+                            showSearchBar="false"
+                            showActionBar="false"
+                            enableInlineEdit="false"
+                            showRowLevelActions="false"
+                            /> </aura:if>
+    
+        <lightning:listView aura:id="listView3"
+                            objectApiName="PartnerFundRequest"
+                            listName="{!v.listViewName}"
+                            rows="{!v.noOfRows}"
+                            showSearchBar="false"
+                            showActionBar="false"
+                            enableInlineEdit="false"
+                            showRowLevelActions="false"
+                            />
+      
+</aura:component>

@@ -1,0 +1,47 @@
+<template>
+    <lightning-card title="Retail Marketing Funds">
+        <div class="slds-p-around_medium slds-is-relative">
+            <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Retrieving contract data" size="small"></lightning-spinner>
+            </template>
+            <lightning-combobox
+                name="budgetType"
+                label="Budget Type"
+                value={selectedBudgetType}
+                options={budgetTypeOptions}
+                required
+                onchange={handleBudgetTypeChange}>
+            </lightning-combobox>
+
+            <template if:true={showContractId}>
+                <div class="slds-m-top_medium">
+                    <lightning-input
+                        data-id="contract-id"
+                        type="text"
+                        name="contractId"
+                        label="Contract Id"
+                        value={contractId}
+                        required
+                        onchange={handleContractIdChange}>
+                    </lightning-input>
+                </div>
+            </template>
+
+            <template if:true={errorMessage}>
+                <p class="slds-text-color_error slds-m-top_small">{errorMessage}</p>
+            </template>
+
+            <template if:true={authenticationMessage}>
+                <div class="slds-box slds-box_x-small slds-theme_default slds-m-top_small">
+                    <p class="slds-text-body_small">
+                        {authenticationMessage}
+                    </p>
+                </div>
+            </template>
+
+            <div class="slds-m-top_medium slds-text-align_right">
+                <lightning-button label={actionButtonLabel} variant="brand" disabled={isContinueDisabled} onclick={handlePrimaryAction}></lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

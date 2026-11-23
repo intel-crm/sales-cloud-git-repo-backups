@@ -69,7 +69,7 @@
             <name>Core_IPS_Uncheck_EOIS</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>If Access Flag is changed from EOIS, uncheck EOIS checkbox</description>
         <formula>ISPICKVAL(PRIORVALUE(Core_Flag_Status__c),&apos;EOIS&apos;) &amp;&amp;  ISCHANGED(Core_Flag_Status__c)</formula>
         <triggerType>onAllChanges</triggerType>
@@ -88,8 +88,19 @@
             <name>Core_IPS_Insert_EPMID</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Auto populate EPM Product Name from the Product Master into the Supported Product Name field. Entry criteria is on Create only, as the Update scenario is handled thru trigger, to cascade changes down to Assets, MAP, PAR &amp; Case.</description>
+        <formula>TRUE</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_Ensure_EPMID_Is_Unique_Per_Org</fullName>
+        <actions>
+            <name>Core_Ensure_EPMID_Is_Unique_Per_Org</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>Inserts (Support Org ID &amp;&amp; EPM ID) into a text field which is then checked for uniqueness. Cant use Formula, as uniqueness cannot be enforced on Formulae. Evaluated on Create only, as SP re-lookup to Product MD is prevented from UI.</description>
         <formula>TRUE</formula>
         <triggerType>onCreateOnly</triggerType>
     </rules>
@@ -99,9 +110,24 @@
             <name>Core_IPS_Insert_Codename</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Inserts codename into the Code Name text field (Core_IPS_Code_Name__c) to allow Product search on it.</description>
         <formula>TRUE</formula>
         <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_IPS_Update Access Flag to Auto Approve for Public Product</fullName>
+        <actions>
+            <name>IPS_Updates_Access_Flag_to_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Core_IPS_Supported_Product__c.Core_IPS_Public_Product__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Updates Access Flag field to Auto Approve whenever public product checkbox is checked</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
 </Workflow>

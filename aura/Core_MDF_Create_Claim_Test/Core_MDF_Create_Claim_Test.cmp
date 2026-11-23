@@ -1,0 +1,8 @@
+<aura:component
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,lightning:actionOverride,force:lightningQuickActionWithoutHeader">
+    <aura:attribute name='isLoadModal' default="false" description="" type="Boolean"/>
+   <lightning:button label="Test Create Claim" onclick="{!c.loadModal}"></lightning:button>
+   <aura:if isTrue="{!v.isLoadModal}">
+    <c:Core_MDF_Create_Claim_Testchild/>
+   </aura:if>
+</aura:component>

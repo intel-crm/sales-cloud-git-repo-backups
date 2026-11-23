@@ -86,7 +86,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>NA</masterLabel>
-        <translation><!-- NA --></translation>
+        <translation>NA</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Not For Profit</masterLabel>
@@ -95,10 +95,6 @@
     <valueTranslation>
         <masterLabel>Other</masterLabel>
         <translation>その他</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Others</masterLabel>
-        <translation><!-- Others --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Professional and Business Services</masterLabel>
@@ -114,7 +110,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Robotics</masterLabel>
-        <translation>ロボット工学</translation>
+        <translation><!-- Robotics --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Software</masterLabel>
@@ -127,6 +123,10 @@
     <valueTranslation>
         <masterLabel>Telecommunications</masterLabel>
         <translation>通信</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Test LOV Industry</masterLabel>
+        <translation><!-- Test LOV Industry --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Transportation and Warehouse</masterLabel>

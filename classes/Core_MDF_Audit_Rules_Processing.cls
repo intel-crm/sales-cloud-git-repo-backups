@@ -32,10 +32,10 @@ public without sharing class Core_MDF_Audit_Rules_Processing {
         string random = 'Random';
         Map<string,set<string>> objectToFieldsMap = new Map<string,set<string>>();
         try{
-            for(Core_MDF_Audit_Rules_Engine__c rules: [select Name, toLabel(Core_MDF_Program_Nm__c), Core_MDF_Budget_Type_Nm__c,Core_MDF_Region_Cd__c, Core_MDF_Object_Nm__c,Core_MDF_Field_Nm__c, Core_MDF_Operator_Nm__c,Core_MDF_Value_Txt__c,Core_MDF_Next_Rule_Id__c,Core_MDF_Immediate_Ind__c,Core_MDF_Next_Rule_False_Id__c,Core_MDF_ID_Field_Id__c,Core_MDF_Effective_Dt__c,Core_MDF_Rule_Type_Nm__c
+            for(Core_MDF_Audit_Rules_Engine__c rules: [select Name, toLabel(Core_MDF_Program_Nm__c), Core_MDF_Budget_Type_Multi_Nm__c,Core_MDF_Region_Cd__c, Core_MDF_Object_Nm__c,Core_MDF_Field_Nm__c, Core_MDF_Operator_Nm__c,Core_MDF_Value_Txt__c,Core_MDF_Next_Rule_Id__c,Core_MDF_Immediate_Ind__c,Core_MDF_Next_Rule_False_Id__c,Core_MDF_ID_Field_Id__c,Core_MDF_Effective_Dt__c,Core_MDF_Rule_Type_Nm__c
                                                        from Core_MDF_Audit_Rules_Engine__c where Core_MDF_Active_Ind__c=true order by Core_MDF_Region_Cd__c]) {
                                                            //AND toLabel(Core_MDF_Program_Nm__c) in :program
-                                                           string key = rules.Core_MDF_Program_Nm__c + rules.Core_MDF_Budget_Type_Nm__c;
+                                                           string key = rules.Core_MDF_Program_Nm__c + rules.Core_MDF_Budget_Type_Multi_Nm__c;
                                                            rulesList = prgmBTToRulesMap.get(key) == null? new List<Core_MDF_Audit_Rules_Engine__c>() : prgmBTToRulesMap.get(key);
                                                            if(rules.Core_MDF_Object_Nm__c!=random) {
                                                                fieldsList = objectToFieldsMap.get(rules.Core_MDF_Object_Nm__c) == null? new Set<string>():objectToFieldsMap.get(rules.Core_MDF_Object_Nm__c);
@@ -84,8 +84,7 @@ public without sharing class Core_MDF_Audit_Rules_Processing {
                     string fields = objToApiMap.get('PartnerFundClaim');
                     string query1 = 'Select Id,RequestId,Core_MDF_Document_Hold_Ind__c,';
                     string query2= ' FROM PartnerFundClaim where id in :claimIds';
-                     string finalQuery1 = query1 + String.escapeSingleQuotes(fields) + query2;
-                    for(PartnerFundClaim claimRecords : Database.query(String.escapeSingleQuotes(finalQuery1))) {
+                    for(PartnerFundClaim claimRecords : Database.query(query1 + String.escapeSingleQuotes(fields) + query2)) {
                         CLAIM_MAP.put(claimRecords.id,claimRecords);
                     }
                     
@@ -94,8 +93,7 @@ public without sharing class Core_MDF_Audit_Rules_Processing {
                     string fields = objToApiMap.get('PartnerFundRequest');
                     string query3 = 'Select Id,';
                     string query4= ' FROM PartnerFundRequest where id in :actIds';
-		    string finalQuery = query3 + String.escapeSingleQuotes(fields) + query4;
-                    for(PartnerFundRequest actRecords : Database.query(String.escapeSingleQuotes(finalQuery))) {
+                    for(PartnerFundRequest actRecords : Database.query(query3 + String.escapeSingleQuotes(fields) + query4)) {
                         ACT_MAP.put(actRecords.id,actRecords);
                     }
                     
@@ -104,7 +102,7 @@ public without sharing class Core_MDF_Audit_Rules_Processing {
         }
         catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);}
     }
-
+    ///////////////////
     //checkPOPDocuments method contain query it was called inside loop so collected data in list and called method on 127 line
     //docDaysMap method is called inside updateClaimValues it was inside loop so method is called at 117 and passed in updateClaimValues parameter
 
@@ -130,12 +128,33 @@ public without sharing class Core_MDF_Audit_Rules_Processing {
             }
 
             for(Core_MDF_Claim_Prediction__c claimPredRecord: claimRecords) {
+                // if(claimPredRecord.Core_MDF_Budget_Type_Nm__c != null && Label.Core_MDF_FileUpload_BudgetTypes.contains(claimPredRecord.Core_MDF_Budget_Type_Nm__c)){
+                //     cmpClaimIds.add(claimPredRecord.Core_MDF_Claim_id__c);
+                // }
                 rulesToBeExecuted = prgmBTToRulesMap.get(claimPredRecord.Core_MDF_Program_Nm__c + claimPredRecord.Core_MDF_Budget_Type_Nm__c);
                 result = getresult(rulesToBeExecuted, result, claimPredRecord);
+                // if(rulesToBeExecuted!=null && !rulesToBeExecuted.isEmpty()){
+                //     for(Core_MDF_Audit_Rules_Engine__c rule: rulesToBeExecuted) {
+                //         if(rule.Core_MDF_Immediate_Ind__c==yes) {
+                            
+                //             if(rule.Core_MDF_Region_Cd__c == 'WW'){
+                //                 result = runRules(claimPredRecord,rule);
+                //                 break;
+                //             }
+                //             else if(rule.Core_MDF_Region_Cd__c == claimPredRecord.Core_MDF_Region_Cd__c){
+                //                 result = runRules(claimPredRecord,rule);
+                //                 break;
+                //             }  
+                //         }
+                //     }
+                // }
                 
                 
                 PartnerFundClaim claimRecord = new PartnerFundClaim(id =claimPredRecord.Core_MDF_Claim_id__c);
-                 //DE119538: The CCF1.0/DCF1.0 claims remain in submitted status if audit rules are made for different region
+                // if(cmpClaimIds.size() > 0){
+                //     claimPOPMap = checkPOPDocuments(cmpClaimIds);
+                // }
+                // //DE119538: The CCF1.0/DCF1.0 claims remain in submitted status if audit rules are made for different region
                 if(result.isEmpty()) {
                     List<String> resultForNoMatchingRules = new List<String>{'false'};
                     claimRecord = updateClaimValues(claimRecord, resultForNoMatchingRules, claimPOPMap,docDaysMap);
@@ -159,12 +178,13 @@ public without sharing class Core_MDF_Audit_Rules_Processing {
         catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);}
     }
 
+    //new Method by Sandesh
     public static  Map<id,string> getresult (List<Core_MDF_Audit_Rules_Engine__c> rulesToBeExecuted, Map<id,string> result,Core_MDF_Claim_Prediction__c claimPredRecord){
         string yes='Yes';
         if(rulesToBeExecuted!=null && !rulesToBeExecuted.isEmpty()){
             for(Core_MDF_Audit_Rules_Engine__c rule: rulesToBeExecuted) {
-                if(rule.Core_MDF_Immediate_Ind__c==yes) {
-                    
+               // if(rule.Core_MDF_Immediate_Ind__c==yes) { ATHR comment
+                    if(!(rule.Core_MDF_Immediate_Ind__c==yes)){continue;} //ATHR Fix- Deeply nested if
                     if(rule.Core_MDF_Region_Cd__c == 'WW'){
                         result = runRules(claimPredRecord,rule);
                         break;
@@ -173,13 +193,12 @@ public without sharing class Core_MDF_Audit_Rules_Processing {
                         result = runRules(claimPredRecord,rule);
                         break;
                     }  
-                }
+                //} ATHR comment
             }
         }
         return result;
     }
-
-
+    ////////////
     /* Match each Claim/Claim Pred record against the corresponding Rules */
     public static Map<id,string> runRules(Core_MDF_Claim_Prediction__c claimPredRecord, Core_MDF_Audit_Rules_Engine__c rule) {       
         //boolean result =false; 
@@ -213,7 +232,7 @@ public without sharing class Core_MDF_Audit_Rules_Processing {
         return resultMap;
     }
 
-
+    //new Method by Sandesh
     public static Map<id,string> getResultMap(Map<id,string> resultMap,Core_MDF_Claim_Prediction__c claimPredRecord, Core_MDF_Audit_Rules_Engine__c rule) {
         boolean result =false;
         if(!resultMap.isEmpty()) {
@@ -291,8 +310,14 @@ public without sharing class Core_MDF_Audit_Rules_Processing {
         //Map<string,decimal> docDaysMap = new Map<string,decimal>();
         try{
             Core_MDF_Claim_Prediction__c claimPred = CLAIMPRED_MAP.get(claimRecord.id);
-            
-            if(Boolean.valueOf(result[0])) {
+            //ATHR - Deeply Nested if 16209
+            if (!Boolean.valueOf(result[0])) {
+                claimRecord.Core_MDF_Audit_Hold__c = false;
+                claimRecord.Core_MDF_FlaggedForAudit__c = false;
+                claimRecord.Core_MDF_AuditSelectionInProgress__c = false;
+                return claimRecord;
+            }
+            //if(Boolean.valueOf(result[0])) {
                 if(result[3] == 'Audit'){
                     claimRecord.Core_MDF_Audit_Hold__c = true;
                     claimRecord.Core_MDF_Audit_Type__c= result[1];              
@@ -303,15 +328,18 @@ public without sharing class Core_MDF_Audit_Rules_Processing {
                     //US1100385: [OEM Integration] - [POP Selection] - Edit of Doc Hold Claim
                     claimRecord.Core_MDF_Doc_Hold_to_Review_Hold_Ind__c = CLAIM_MAP.get(claimRecord.id).Core_MDF_Document_Hold_Ind__c?true: false;
                     claimRecord.Core_MDF_Document_Hold_Ind__c = false; 
+                    return claimRecord; 
                 }
-                else if(result[3] == 'POP' && Label.Core_MDF_FileUpload_BudgetTypes.contains(claimPred.Core_MDF_Budget_Type_Nm__c)){
+                if(result[3] == 'POP' && Label.Core_MDF_FileUpload_BudgetTypes.contains(claimPred.Core_MDF_Budget_Type_Nm__c)){
                     boolean popResult = claimPOPMap.get(claimRecord.id);
-                    if(popResult){
+                    if(popResult){//
                         claimRecord.Core_MDF_Audit_Hold__c = false;
                         claimRecord.Core_MDF_FlaggedForAudit__c = false; 
                         claimRecord.Core_MDF_AuditSelectionInProgress__c = false;
+                        return claimRecord; 
                     }
                     else {
+                        //docDaysMap = queryMetadata();
                         integer days = integer.valueOf(docDaysMap.get(claimPred.Core_MDF_Program_Nm__c + claimPred.Core_MDF_Budget_Type_Nm__c));
                         claimRecord.Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c = claimPred.Core_MDF_Claim_Created_Dt__c.addDays(days);
                         claimRecord.Core_MDF_Status__c = 'Hold';
@@ -320,14 +348,13 @@ public without sharing class Core_MDF_Audit_Rules_Processing {
                         claimRecord.Core_MDF_Document_Hold_Eligibility_Ind__c = true;
                         claimRecord.Core_MDF_Document_Hold_Ind__c = true; 
                     }
-                    
                 }
-            }
+            /*}
             else {
                 claimRecord.Core_MDF_Audit_Hold__c = false;
                 claimRecord.Core_MDF_FlaggedForAudit__c = false; 
                 claimRecord.Core_MDF_AuditSelectionInProgress__c = false;
-            }   
+            }*/   
         }
         catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);}
         return claimRecord;

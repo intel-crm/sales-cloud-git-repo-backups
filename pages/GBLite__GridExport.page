@@ -1,6 +1,6 @@
 <apex:page controller="GBLite.GridExportController" showHeader="false" sidebar="false" readOnly="true" >
     <!--[if IE 8]>
-        <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.gb_resources, 'ie8-styles.css')}" />
+        <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.GBLite__gb_resources, 'ie8-styles.css')}" />
     <![endif]-->
 	<div class="gbAppPage gbExportPage{!IF(lightningStylesEnabled, ' gbLightning', '')}">
         <div class="body">  
@@ -19,21 +19,21 @@
 				
 				<apex:outputPanel id="dataBlock" styleClass="none">
 					<script>
-						var parentObjectData1 = JSON.parse('{!JSENCODE(parentObjectData1)}'),
-							parentObjectData2 = JSON.parse('{!JSENCODE(parentObjectData2)}'),
-							parentObjectData3 = JSON.parse('{!JSENCODE(parentObjectData3)}'),
-							childObject1Data1 = JSON.parse('{!JSENCODE(childObject1Data1)}'),
-							childObject1Data2 = JSON.parse('{!JSENCODE(childObject1Data2)}'),
-							childObject1Data3 = JSON.parse('{!JSENCODE(childObject1Data3)}'),
-							childObject2Data1 = JSON.parse('{!JSENCODE(childObject2Data1)}'),
-							childObject2Data2 = JSON.parse('{!JSENCODE(childObject2Data2)}'),
-							childObject2Data3 = JSON.parse('{!JSENCODE(childObject2Data3)}'),
-							childObject3Data1 = JSON.parse('{!JSENCODE(childObject3Data1)}'),
-							childObject3Data2 = JSON.parse('{!JSENCODE(childObject3Data2)}'),
-							childObject3Data3 = JSON.parse('{!JSENCODE(childObject3Data3)}'),
-							childObject4Data1 = JSON.parse('{!JSENCODE(childObject4Data1)}'),
-							childObject4Data2 = JSON.parse('{!JSENCODE(childObject4Data2)}'),
-							childObject4Data3 = JSON.parse('{!JSENCODE(childObject4Data3)}');
+						var parentObjectData1 = {!parentObjectData1},
+							parentObjectData2 = {!parentObjectData2},
+							parentObjectData3 = {!parentObjectData3},
+							childObject1Data1 = {!childObject1Data1},
+							childObject1Data2 = {!childObject1Data2},
+							childObject1Data3 = {!childObject1Data3},
+							childObject2Data1 = {!childObject2Data1},
+							childObject2Data2 = {!childObject2Data2},
+							childObject2Data3 = {!childObject2Data3},
+							childObject3Data1 = {!childObject3Data1},
+							childObject3Data2 = {!childObject3Data2},
+							childObject3Data3 = {!childObject3Data3},
+							childObject4Data1 = {!childObject4Data1},
+							childObject4Data2 = {!childObject4Data2},
+							childObject4Data3 = {!childObject4Data3};
 					</script>
 				</apex:outputPanel>
                 <div class="exportFieldRow">
@@ -78,12 +78,12 @@
 		<script>
 			var swfFileLocation = "{!URLFOR($Resource.gb_resources, 'downloadify/media/downloadify.swf')}",
 				buttonImage = "{!URLFOR($Resource.gb_resources, 'downloadify/images/transparent.png')}",
-				gridName = '{!JSENCODE(gridConfig.Name)}',
+				gridName = '{!gridConfig.Name}',
 				currentLocale = '{!localeForDate}',
 				dateFormat = '{!dateFormat}', // used by date js
 				apexTZOffset = {!apexTimezoneOffset},
 				isMultiCurrencyOrg = {!isMultiCurrencyOrg},
-				preparingExportData = '{!JSENCODE(lang.preparingExportDataTxt)}',
+				preparingExportData = '{!lang.preparingExportDataTxt}',
 				noParentRecordsSelected = '{!lang.noParentRecordsSelectedTxt}',
 				exporting = '{!lang.exportTxt}',
 				exportSuccess = '{!lang.exportSuccessTxt}',
@@ -95,9 +95,9 @@
 				CURRENCY_ISO_CODE_FIELD = '{!currencyIsoCodeField}',
 				OPTION_XLS = '{!optionXls}',
 				OPTION_CSV = '{!optionCsv}',
-				CSVFormatChangeHelpTxt = '{!JSENCODE(lang.CSVFormatChangeHelpTxt)}',
+				CSVFormatChangeHelpTxt = '{!lang.CSVFormatChangeHelpTxt}',
 				multiObjectExportEnabled = {!multiObjectExportEnabled},
-				relatedLabel = '{!JSENCODE(lang.relatedLabel)}',
+				relatedLabel = '{!lang.relatedLabel}',
 				userLanguage = '{!userLanguage}';
 		</script>
 				

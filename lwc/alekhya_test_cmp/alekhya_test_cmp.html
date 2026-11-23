@@ -1,0 +1,15 @@
+<template>
+    <lightning-accordion allow-multiple-sections-open>
+        <template for:each={objects} for:item="object">
+            <lightning-accordion-section key={object.apiName} name={object.apiName} label={object.label} onsectiontoggle={handleAccordionToggle}>
+                <template if:true={object.records}>
+                    <p>{object.records}</p>
+                    <lightning-datatable data={object.records} columns={columns} key-field="Id"></lightning-datatable>
+                </template>
+                <template if:false={object.records}>
+                    No records found.
+                </template>
+            </lightning-accordion-section>
+        </template>
+    </lightning-accordion>
+</template>

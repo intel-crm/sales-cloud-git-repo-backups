@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Step1:Create Campaign</masterLabel>
+    <promptVersions>
+        <body>To Create Campaign click on &quot;New&quot; Button.   For more info Click on &quot;Next&quot; Button</body>
+        <customApplication>Core_MDF_CoMarketing</customApplication>
+        <delayDays>1</delayDays>
+        <dismissButtonLabel>Close</dismissButtonLabel>
+        <displayPosition>TopCenter</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <endDate>2020-08-31</endDate>
+        <isPublished>false</isPublished>
+        <masterLabel>Step1:Create Campaign Step 1</masterLabel>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2020-08-11</startDate>
+        <stepNumber>1</stepNumber>
+        <targetPageKey1>Campaign</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <timesToDisplay>3</timesToDisplay>
+        <title>Create Campaign</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+    <promptVersions>
+        <actionButtonLabel>Create Campaign</actionButtonLabel>
+        <actionButtonLink>https://intel--crmdevccp.lightning.force.com/lightning/o/Campaign/new?count=3&amp;nooverride=1&amp;useRecordTypeCheck=1&amp;navigationLocation=MRU_LIST&amp;backgroundContext=%2Flightning%2Fo%2FCampaign%2Flist%3FfilterName%3DRecent&amp;recordTypeId=012g0000000A3o0AAC</actionButtonLink>
+        <body>&lt;p&gt;Fill all the Required Fields.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://intel--CRMDEVCCP--c.documentforce.com/servlet/rtaImage?refid=0EMg0000000o923&quot; alt=&quot;image.png&quot;&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;After filling click on &quot;Save Button&quot;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;To know more goto FAQS &lt;a href=&quot;https://en.wikipedia.org/wiki/FAQ&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://en.wikipedia.org/wiki/FAQ&lt;/a&gt;&lt;/p&gt;</body>
+        <customApplication>Core_MDF_CoMarketing</customApplication>
+        <displayPosition>BottomCenter</displayPosition>
+        <displayType>DockedComposer</displayType>
+        <header>Campaign</header>
+        <isPublished>false</isPublished>
+        <masterLabel>Step1:Create Campaign Step 2</masterLabel>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <stepNumber>2</stepNumber>
+        <targetPageKey1>Campaign</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <title>Create Campaign</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

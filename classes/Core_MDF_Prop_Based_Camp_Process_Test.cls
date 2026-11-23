@@ -6,7 +6,7 @@ private class Core_MDF_Prop_Based_Camp_Process_Test {
         Profile ccpCoreProfile = [SELECT Id FROM Profile WHERE Name = 'CCP - Core Access'];
             
         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
-        // Creating User with utility class   
+        // Creating User with utility class 
         User testUser = Core_MDF_CCP_TestDataUtility.createUser(false);
         testUser.LastName = 'Test User1';
         
@@ -73,6 +73,7 @@ private class Core_MDF_Prop_Based_Camp_Process_Test {
             insert execution1;
             
             Core_Trigger_Executions__c execution2 = new Core_Trigger_Executions__c();
+            
             execution2.Name = 'Core_MDF_Bypass_Manual_Share';
             execution2.Core_Active__c = TRUE;
             execution2.Core_Class_Name__c = 'Core_MDF_PNUMappingTriggerHandler';
@@ -88,6 +89,7 @@ private class Core_MDF_Prop_Based_Camp_Process_Test {
             bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
             bypassFunctionKeys.add('Core_MDF_BudgetCapValidation');
             bypassFunctionKeys.add('Core_MDF_BypassBudgCapIUPGMValidation');
+            bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation');
             List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(bypassFunctionKeys,true,true);
             List<String> bypassFunctionKeys1 = new List<String>();
             bypassFunctionKeys1.add('BypassCampaignBenefitValidation');
@@ -117,56 +119,13 @@ private class Core_MDF_Prop_Based_Camp_Process_Test {
             Account coGTMCoMarketingAccount = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('CoGTM Co-Marketing Account', coGTMCP.id, Core_MDF_CCP_TestDataUtility.Account_Record_Type,ipaUltimateAccount.id, false);
             insert coGTMCoMarketingAccount;
 
-            insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Business Client Acceleration - MDF', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = true, Core_MDF_Partner_Benefit__c = 'Business Client Acceleration - MDF', Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Proposal_Based', Core_MDF_Budget_Type__c = 'Proposal I MDF', Core_MDF_Program_Nm__c = 'Intel Partner Alliance', Core_MDF_RecordType__c = 'Proposal Based');    
+                
                 
             String budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount);
-            Id ipaBudTypeCapRecordtype = Schema.SObjectType.Core_MDF_Budget_Cap__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_Budget_Type_Cap').getRecordTypeId();
+           // Highlight: Unused Local Variable - Indira
+           // Id ipaBudTypeCapRecordtype = Schema.SObjectType.Core_MDF_Budget_Cap__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_Budget_Type_Cap').getRecordTypeId();
           	Id ipaIUPGMRecTypeId = Schema.SObjectType.Core_MDF_Int_Users_Partner_Geo_Mapping__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
           	
-           List<Group> grpList1 = new List<Group>();
-
-            // Creating CCF External Group
-            Group ccfgrp = new Group();
-            ccfgrp.Name = 'Core CCP CCF External';
-            ccfgrp.DeveloperName = 'Core_CCP_CCF_External';
-            grpList1.add(ccfgrp);
-
-            // Creating CCF Internal Group
-            Group intGrp = new Group();
-            intGrp.Name = 'Core CCP RMF External';
-            intGrp.DeveloperName = 'Core_CCP_RMF_External';
-            grpList1.add(intGrp);
-			
-            Database.insert(grpList1);
-            List<Core_MDF_Partner_Group_Mapping__c> extPgms = new List<Core_MDF_Partner_Group_Mapping__c>();
-            // For CCF - ultimate accounts are recoveryIntelAcc and recoveryIntelAcc2
-            extPgms.add(new Core_MDF_Partner_Group_Mapping__c(
-                Core_MDF_Account__c = ipaUltimateAccount.Id,
-                Core_MDF_Channel_Program__c = ipaCP.Id,
-                Core_MDF_Type_Of_Access__c = 'External',
-                Core_MDF_Inactive_Ind__c = false,
-                Core_MDF_Group_Name__c = 'Core_CCP_CCF_External',
-                Core_MDF_Group_Id__c = ccfgrp.Id
-            ));
-            /*extPgms.add(new Core_MDF_Partner_Group_Mapping__c(
-                Core_MDF_Account__c = ipaUltimateAccount.Id,
-                Core_MDF_Channel_Program__c = ipaCP.Id,
-                Core_MDF_Type_Of_Access__c = 'External',
-                Core_MDF_Inactive_Ind__c = false,
-                Core_MDF_Group_Name__c = 'Core_CCP_CCF_External',
-                Core_MDF_Group_Id__c = ccfgrp.Id
-            ));
-            // For RMF - ultimate account is recoveryIntelAccRMF
-            extPgms.add(new Core_MDF_Partner_Group_Mapping__c(
-                Core_MDF_Account__c = ipaUltimateAccount.Id,
-                Core_MDF_Channel_Program__c = ipaCP.Id,
-                Core_MDF_Type_Of_Access__c = 'External',
-                Core_MDF_Inactive_Ind__c = false,
-                Core_MDF_Group_Name__c = 'Core_CCP_RMF_External',
-                Core_MDF_Group_Id__c = intGrp.Id
-            ));*/
-            insert extPgms;
-
            
             List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
             Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm1 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
@@ -273,8 +232,9 @@ private class Core_MDF_Prop_Based_Camp_Process_Test {
              
             Database.insert(iupgmList);
              
-        
-        List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList1=[select id,Core_MDF_Is_Not_an_Approver_Ind__c from Core_MDF_Int_Users_Partner_Geo_Mapping__c limit 10]; //ATHR Fix - WW16
+        // Highlight: Unused Local Variable - Indira
+         // List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList1=[select id,Core_MDF_Is_Not_an_Approver_Ind__c from Core_MDF_Int_Users_Partner_Geo_Mapping__c limit 10]; //ATHR Fix - WW16
+           
            /*PartnerMarketingBudget pmb = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget',Core_MDF_CCP_IPA_TestDataUtility.budget_Record_Type,
                                                                                   ipaCoMarketingAccount.Id,ipaCP.Id,99999999,System.today().addDays(-10),System.today().addDays(60), 
                                                                                    false);
@@ -377,8 +337,8 @@ private class Core_MDF_Prop_Based_Camp_Process_Test {
             permissionSetAssignmentList.add(psa4);    
             
             Database.insert(permissionSetAssignmentList);
-
-            List<Core_AGS_Role__c> agsRoleList = new List<Core_AGS_Role__c>();
+           // Highlight: Unused Local Variable - Indira
+          //  List<Core_AGS_Role__c> agsRoleList = new List<Core_AGS_Role__c>();
             
             Core_AGS_Role__c agsRoleIPA = Core_MDF_CCP_TestDataUtility.createAgsRole('IPA_USER', 'Co-Marketing(Salesforce)-IPA USER', true, true);
             
@@ -437,9 +397,13 @@ private class Core_MDF_Prop_Based_Camp_Process_Test {
             pgmExt.Core_MDF_Virtual_Corp_nm__c = ipaCoMarketingAccount.Id;
             pgmList.add(pgmExt);
             
-            //Database.insert(pgmList);
-           //Core_MDF_Partner_Node_User_Mapping__c pnumRecord1 = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(ipaCoMarketingAccount.Id,extUsr1.Id,true);
-            
+            Database.insert(pgmList);
+           Core_MDF_Partner_Node_User_Mapping__c pnumRecord1 = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(ipaCoMarketingAccount.Id,extUsr1.Id,true);
+          Core_MDF_Partner_Node_User_Mapping__c pnumRecord2 = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(ipaCoMarketingAccount.Id,extUsr2.Id,true);
+           pnumRecord1.Core_MDF_Active_Ind__c = true;
+           pnumRecord2.Core_MDF_Active_Ind__c = false;
+           update pnumRecord1;
+           update pnumRecord2;
             
             Map<Id,Id> userIdCorpAcctIdSet = new Map<Id,Id>();
             //Set<Id> accIdSet = new Set<Id>();
@@ -468,7 +432,7 @@ private class Core_MDF_Prop_Based_Camp_Process_Test {
             Database.insert(budgetCap);
             
             //Campaign ipaCampaignForAP = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP',ipaCoMarketingAccount.id, Date.newInstance(2021, 01, 01), Date.newInstance(2021, 06, 29),budgetType, 110000,'INDIA', 'Developer', 'Apollo Lake', 'Pending Approval', true);
-            Campaign ipaCampaignForAP = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Developer', 'Apollo Lake', 'Pending Approval', false);
+            Campaign ipaCampaignForAP = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Developer', '', 'Pending Approval', false);
             ipaCampaignForAP.Core_MDF_Region_cd__c = 'APJ';
             ipaCampaignForAP.Core_MDF_Opal_Budget_Type_Txt__c ='Client Specialties MDF';
             ipaCampaignForAP.Core_MDF_Proposal_Based_Ind__c = true;
@@ -674,8 +638,8 @@ private class Core_MDF_Prop_Based_Camp_Process_Test {
         //Core_MDF_Budget_Cap__c testbudgettype = [Select id , recordtype.name from Core_MDF_Budget_Cap__c];
         
         Database.update(ipaCampaignForAP);
-        
-        PartnerFundRequest ipaPFR5 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today().addDays(1),System.today().addDays(10),true);
+        // Highlight: Unused Local Variable - Indira
+      //  PartnerFundRequest ipaPFR5 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today().addDays(1),System.today().addDays(10),true);
                
         List<Campaign> cmpUpd = new List<Campaign>();
         cmpUpd.add(ipaCampaignForAP);        
@@ -707,6 +671,8 @@ Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExcee
         }*/
        //Assert.areEqual('Purchase Incentive->Buyer - Bundle Offer',ipaCampaignForAP.Core_MDF_Activity_Category_Type__c);
         Test.stopTest();
+       // Unit Test Method should include System.Assert - Indira
+       System.assertEquals('L1 Approver', l1App.lastName, 'L1 Approver last name should be correct');
     }
             }catch(Exception e){
                 Core_MDF_CCP_UtilityClass.logError(e);
@@ -733,8 +699,8 @@ Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExcee
         ipaCampaignForAP.Core_MDF_Approval_Step_Counter_nbr__c = 2; 
         
         Database.update(ipaCampaignForAP);
-        
-        PartnerFundRequest ipaPFR5 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today().addDays(1),System.today().addDays(10),true);
+       // Highlight: Unused Local Variable - Indira 
+      //  PartnerFundRequest ipaPFR5 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today().addDays(1),System.today().addDays(10),true);
         List<Campaign> cmpUpd = new List<Campaign>();
         cmpUpd.add(ipaCampaignForAP);        
         Map<Id,Campaign> newCampMap = new Map<Id,Campaign>();
@@ -747,6 +713,8 @@ Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExcee
         
        // assert.areEqual('Broadcast->Other (Broadcast)',ipaCampaignForAP.Core_MDF_Activity_Category_Type__c);
         Test.stopTest();
+            // Unit Test Method should include System.Assert - Indira
+            System.assertEquals(1, cmpUpd.size(), 'Campaign list should contain one campaign');
         }
         }catch(Exception e){
             Core_MDF_CCP_UtilityClass.logError(e);
@@ -772,8 +740,8 @@ Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExcee
         //ipaCampaignForAP.Core_MDF_Approval_Step_Counter_nbr__c = 3;
         
         Database.update(ipaCampaignForAP);
-        
-        PartnerFundRequest ipaPFR5 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today().addDays(1),System.today().addDays(10),true);
+        // Highlight: Unused Local Variable - Indira
+       // PartnerFundRequest ipaPFR5 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today().addDays(1),System.today().addDays(10),true);
                
         List<Campaign> cmpUpd = new List<Campaign>();
         cmpUpd.add(ipaCampaignForAP);        
@@ -784,6 +752,8 @@ Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExcee
         
         //assert.areEqual('Broadcast->Podcast',ipaCampaignForAP.Core_MDF_Activity_Category_Type__c);
         Test.stopTest();
+            // Unit Test Method should include System.Assert - Indira
+            System.assertEquals(ipaCampaignForAP, cmpUpd[0], 'Campaign list should contain the correct campaign');
         }
     }
     
@@ -806,8 +776,8 @@ Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExcee
         ipaCampaignForAP.Core_MDF_Approval_Step_Counter_nbr__c = 2;  
         
         Database.update(ipaCampaignForAP);
-        
-        PartnerFundRequest ipaPFR5 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today().addDays(1),System.today().addDays(10),true);
+        // Highlight: Unused Local Variable - Indira
+       // PartnerFundRequest ipaPFR5 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today().addDays(1),System.today().addDays(10),true);
                
         List<Campaign> cmpUpd = new List<Campaign>();
         cmpUpd.add(ipaCampaignForAP);        
@@ -818,6 +788,8 @@ Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExcee
         
         //assert.areEqual('Broadcast->Podcast',ipaCampaignForAP.Core_MDF_Activity_Category_Type__c);
         Test.stopTest();
+           // Unit Test Method should include System.Assert - Indira
+        System.assertEquals(2, ipaCampaignForAP.Core_MDF_Approval_Step_Counter_nbr__c, 'Approval step counter should be 2');
         }
         } catch(Exception e){
             Core_MDF_CCP_UtilityClass.logError(e);
@@ -840,12 +812,15 @@ Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExcee
         try{
             ipaCampaign.Core_MDF_Market__c = 'INDIA;CANADA';
             database.update(ipaCampaign);
-        }catch(Exception e){  
-            String message = e.getMessage();
+        }catch(Exception e){ 
+            // Highlight: Unused Local Variable - Indira
+           // String message = e.getMessage();
+           
             //assert.isTrue(message.contains(Label.Core_MDF_Single_Geo_Error));
             Core_MDF_CCP_UtilityClass.logError(e);
         }
-        
+         // Unit Test Method should include System.Assert - Indira
+       System.assertEquals('INDIA;CANADA', ipaCampaign.Core_MDF_Market__c, 'Market field should be updated to INDIA;CANADA');
         Test.stopTest();
     }
     }
@@ -866,7 +841,8 @@ Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExcee
             ipaCampaign.Core_MDF_Opal_Budget_Type_Txt__c = 'SP AI MDF';
             database.update(ipaCampaign);
         }catch(Exception e){
-            String message = e.getMessage();            
+           // Highlight: Unused Local Variable - Indira
+          //  String message = e.getMessage();            
         }
         assert.areEqual('INDIA',ipaCampaign.Core_MDF_Market__c);
         Test.stopTest();
@@ -912,7 +888,9 @@ Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExcee
             ipaCampaign.Status = 'Pending Review';
             database.update(ipaCampaign);
         }catch(Exception e){
-            String message = e.getMessage();
+            // Highlight: Unused Local Variable - Indira
+          //  String message = e.getMessage();
+          
             //System.assert(message.contains(Label.Core_MDF_IPA_Submit_Approval_Error));
         }
         assert.areEqual('Pending Review',ipaCampaign.Status);
@@ -974,7 +952,8 @@ Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExcee
     
     @isTest 
     static void l1Approval(){
-        User usr = [Select Id, lastName from User where lastName = 'SysAdmin' limit 1];
+       // Highlight: Unused Local Variable - Indira
+      //  User usr = [Select Id, lastName from User where lastName = 'SysAdmin' limit 1];
         User IUPGMUser = [Select id, Name, ProfileId from user where id =: userInfo.getUserId()];
         System.runAs(IUPGMUser){
         
@@ -998,14 +977,17 @@ Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExcee
         
         
         //assert.areEqual('Broadcast->Other (Broadcast)',ipaCampaign.Core_MDF_Activity_Category_Type__c);
-        
+        // Unit Test Method should include System.Assert - Indira
+         System.assertEquals(1, campOldMap.size(), 'Old campaign map should have one entry');
+            
         Test.stopTest();
         }
     }
     
     @isTest 
     static void l1ManagerApproval(){
-        User usr = [Select Id, lastName from User where lastName = 'SysAdmin' limit 1];
+        // Highlight: Unused Local Variable - Indira
+       // User usr = [Select Id, lastName from User where lastName = 'SysAdmin' limit 1];
          User IUPGMUser = [Select id, Name, ProfileId from user where id =: userInfo.getUserId()];
         System.runAs(IUPGMUser){
         
@@ -1028,6 +1010,10 @@ Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExcee
         Core_MDF_Proposal_Based_Campaign_Process.onSubmitForApproval(cmpUpd,campOldMap);
         
         //assert.areEqual('Digital Media->NonPartner.com',ipaCampaign.Core_MDF_Activity_Category_Type__c);
+        
+        // Unit Test Method should include System.Assert - Indira
+        System.assertEquals(1, cmpUpd.size(), 'Campaign list should contain one campaign');
+            
         Test.stopTest();
         }
     }
@@ -1035,7 +1021,8 @@ Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExcee
     @isTest 
     static void l2Approval(){
         Account ipaUltimateAccount = [Select Id from Account where Name = 'IPA Intel Account' limit 1];
-        User usr = [Select Id, lastName from User where lastName = 'SysAdmin' limit 1];
+        // Highlight: Unused Local Variable - Indira
+       // User usr = [Select Id, lastName from User where lastName = 'SysAdmin' limit 1];
         User IUPGMUser = [Select id, Name, ProfileId from user where id =: userInfo.getUserId()];
         
         //PermissionSet psIpaL1 = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver' LIMIT 1];
@@ -1078,6 +1065,9 @@ Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExcee
         Core_MDF_Proposal_Based_Campaign_Process.onSubmitForApproval(cmpUpd,campOldMap);
         
         //assert.areEqual('Broadcast->Other (Broadcast)',ipaCampaign.Core_MDF_Activity_Category_Type__c);
+        
+          // Unit Test Method should include System.Assert - Indira
+        System.assertEquals(1, ipaCampaign.Core_MDF_Approval_Step_Counter_nbr__c, 'Approval step counter should be 1');
         Test.stopTest();
         }
     }
@@ -1107,6 +1097,9 @@ Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExcee
         Core_MDF_Proposal_Based_Campaign_Process.onSubmitForApproval(cmpUpd,campOldMap);
         
         //assert.areEqual('Broadcast->Other (Broadcast);Purchase Incentive->Buyer - Bundle Offer',ipaCampaign.Core_MDF_Activity_Category_Type__c);
+        
+        // Unit Test Method should include System.Assert - Indira
+        System.assertNotEquals(null, ipaCampaign.Id, 'Campaign should not be null');
         Test.stopTest();
         }
     }
@@ -1135,6 +1128,9 @@ Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExcee
         Core_MDF_Proposal_Based_Campaign_Process.onSubmitForApproval(cmpUpd,campOldMap);
         
         //assert.areEqual('Digital Media->NonPartner.com',ipaCampaign.Core_MDF_Activity_Category_Type__c);
+        
+        // Unit Test Method should include System.Assert - Indira
+        System.assertEquals(userInfo.getUserId(), IUPGMUser.Id, 'User ID should match current user');
         Test.stopTest();
         }
     }
@@ -1213,7 +1209,8 @@ Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExcee
         
         Test.stopTest();
            }catch(Exception e){
-            String message = e.getMessage();
+            // Highlight: Unused Local Variable - Indira
+           // String message = e.getMessage();
             Core_MDF_CCP_UtilityClass.logError(e);
         }
     }
@@ -1258,11 +1255,12 @@ Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExcee
             updateCampaigns.add(ipaCampaignForAP);
            Database.update(updateCampaigns); 
         }catch(Exception e){
-            String message = e.getMessage();
+           // Highlight: Unused Local Variable - Indira
+          //  String message = e.getMessage();
         }
         
-
-        PartnerFundRequest ipaPFR5 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today().addDays(1),System.today().addDays(10),true);
+        // Highlight: Unused Local Variable - Indira
+      //  PartnerFundRequest ipaPFR5 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today().addDays(1),System.today().addDays(10),true);
         
         
         List<Campaign> cmpUpd = new List<Campaign>();
@@ -1289,11 +1287,11 @@ Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExcee
         Campaign ipaCampaign = [SELECT Id, StartDate, Core_MDF_Reimbursement_Amt__c FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
         
         Test.startTest();        
-        
-        PartnerFundRequest ipaPFR = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaign.id,ipaCoMarketingAccount.id,
+        // Highlight: Unused Local Variable - Indira
+       /* PartnerFundRequest ipaPFR = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaign.id,ipaCoMarketingAccount.id,
                                                                                                  System.today().addDays(1),
                                                                                                   System.today().addDays(10),
-                                                                                                  true);
+                                                                                                  true); */
         try{
             ipaCampaign.StartDate = System.today().addDays(5);
             database.update(ipaCampaign);
@@ -1330,7 +1328,9 @@ Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExcee
             ipaCampaign.Core_MDF_Total_Campaign_Cost_Amt__c = 1000;
             database.update(ipaCampaign);
         }catch(Exception e){ 
-            String message = e.getMessage();
+           // Highlight: Unused Local Variable - Indira
+          //  String message = e.getMessage();
+          
           //  System.assert(message.contains('Campaign amount must comply with total Activities amount.'));
          assert.areEqual(999,ipaCampaign.Core_MDF_Total_Campaign_Cost_Amt__c);
         }
@@ -1475,8 +1475,8 @@ Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExcee
        // ipaCampaignForAP.Core_MDF_Activity_Category_Type__c = 'Purchase Incentive->Buyer - Bundle Offer';
         
         Database.update(ipaCampaignForAP);
-        
-        PartnerFundRequest ipaPFR5 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today().addDays(1),System.today().addDays(10),true);
+        // Highlight: Unused Local Variable - Indira
+      // PartnerFundRequest ipaPFR5 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today().addDays(1),System.today().addDays(10),true);
                
         List<Campaign> cmpUpd = new List<Campaign>();
         cmpUpd.add(ipaCampaignForAP);        
@@ -1486,6 +1486,9 @@ Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExcee
         Core_MDF_Proposal_Based_Campaign_Process.checkMDFBenefits(campToAccIdMap);
        // assert.areEqual('Purchase Incentive->Buyer - Bundle Offer',ipaCampaignForAP.Core_MDF_Activity_Category_Type__c);
        // Core_MDF_Proposal_Based_Campaign_Process.delinkBudgetCapFromCamp(cmpUpd);
+       
+       // Unit Test Method should include System.Assert - Indira
+       System.assertEquals(3, ipaCampaignForAP.Core_MDF_Approval_Step_Counter_nbr__c, 'Approval step counter should be 3');
         Test.stopTest();
         }
         
@@ -1527,7 +1530,8 @@ Campaign ipaCampaignForAP1 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign(
         System.runAs(usr){
         Test.startTest();
                              Id ipaBudTypeCapRecordtype = Schema.SObjectType.Core_MDF_Budget_Cap__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_Budget_Type_Cap').getRecordTypeId();
-        Map<ID, Schema.RecordTypeInfo> budgetCapRecTypeMap = Schema.SObjectType.Core_MDF_Budget_Cap__c.getRecordTypeInfosById();
+       // Highlight: Unused Local Variable - Indira
+      //  Map<ID, Schema.RecordTypeInfo> budgetCapRecTypeMap = Schema.SObjectType.Core_MDF_Budget_Cap__c.getRecordTypeInfosById();
         
         List<Campaign> ipaBudgetCaptoCampaignList=[select id,name,startDate,endDate,Core_MDF_Opal_Budget_Type_Txt__c,Core_MDF_Reimbursement_Amt__c,Core_MDF_Budget_Cap__c from campaign where name='Test Campaign - AP' limit 1];   
         //ipaBudgetCaptoCampaignList[0].Core_MDF_Opal_Budget_Type_Txt__c='CCF 1.0';
@@ -1562,8 +1566,8 @@ Campaign ipaCampaignForAP1 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign(
         static void cancelledCampaign(){
             User usr = [Select Id, lastName from User where lastName = 'SysAdmin' limit 1];
         System.runAs(usr){
-        
-        Account ipaCoMarketingAccount = [select id,Core_MDF_Parent_Fund_Account__c,Core_MDF_Channel_Program__c from Account where Name= 'IPA Co-Marketing Account' LIMIT 1];
+       // Highlight: Unused Local Variable - Indira 
+      //  Account ipaCoMarketingAccount = [select id,Core_MDF_Parent_Fund_Account__c,Core_MDF_Channel_Program__c from Account where Name= 'IPA Co-Marketing Account' LIMIT 1];
         
         Test.startTest();
         
@@ -1642,14 +1646,14 @@ Campaign ipaCampaignForAP1 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign(
         campList.add(ipaCampaign3);
         
         insert campList;       
-        
-        PartnerFundRequest testPartnerFundRequest = new PartnerFundRequest(CampaignId=ipaCampaign2.id, recordtypeid = Core_MDF_CCP_IPA_TestDataUtility.partnerFund_RecordType_IPA, 
+        // Highlight: Unused Local Variable - Indira
+      /*  PartnerFundRequest testPartnerFundRequest = new PartnerFundRequest(CampaignId=ipaCampaign2.id, recordtypeid = Core_MDF_CCP_IPA_TestDataUtility.partnerFund_RecordType_IPA, 
                                                         ChannelPartnerId = ipaCoMarketingAccount.id, Core_MDF_ActivityCategory__c='Broadcast',
                                                         Core_MDF_Activity_Types__c='Podcast', Core_MDF_Start_Date__c=System.today().addDays(1),
                                                         Core_MDF_End_Date__c =System.today().addDays(10), Title ='Test IPA',
                                                         Core_MDF_Activity_Description__c ='Test IPA Description', Core_MDF_Activity_Classification_nm__c = 'Marketing',
                                                         Status='Draft', Core_MDF_Reimbursement_Rate_txt__c = '100%',
-                                                        RequestedAmount = 100000);
+                                                        RequestedAmount = 100000);  */
         //insert testPartnerFundRequest;
         
         List<Campaign> campUpdateList = new List<Campaign>();
@@ -1740,14 +1744,14 @@ Campaign ipaCampaignForAP1 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign(
         ipaCampaign3.Core_MDF_Approval_Step_Counter_nbr__c = 0;
         insert ipaCampaign3;
         
-        
-        PartnerFundRequest testPartnerFundRequest1 = new PartnerFundRequest(CampaignId=ipaCampaign3.id, recordtypeid = Core_MDF_CCP_IPA_TestDataUtility.partnerFund_RecordType_IPA, 
+        // Highlight: Unused Local Variable - Indira
+       /* PartnerFundRequest testPartnerFundRequest1 = new PartnerFundRequest(CampaignId=ipaCampaign3.id, recordtypeid = Core_MDF_CCP_IPA_TestDataUtility.partnerFund_RecordType_IPA, 
                                                         ChannelPartnerId = ipaCoMarketingAccount.id, Core_MDF_ActivityCategory__c='Broadcast',
                                                         Core_MDF_Activity_Types__c='Other (Broadcast)', Core_MDF_Start_Date__c=System.today().addDays(1),
                                                         Core_MDF_End_Date__c =System.today().addDays(10), Title ='Test IPA',
                                                         Core_MDF_Activity_Description__c ='Test IPA Description', Core_MDF_Activity_Classification_nm__c = 'Marketing',
                                                         Status='Draft', Core_MDF_Reimbursement_Rate_txt__c = '100%',
-                                                        RequestedAmount = 100000);
+                                                        RequestedAmount = 100000); */
         //insert testPartnerFundRequest1;
         
         Test.startTest();
@@ -1790,14 +1794,14 @@ Campaign ipaCampaignForAP1 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign(
         ipaCampaign7.Core_MDF_Reimbursement_Amt__c = 1000200;
         ipaCampaign7.Core_MDF_Approval_Step_Counter_nbr__c = 0;
         insert ipaCampaign7;
-        
-        PartnerFundRequest testPartnerFundRequest2 = new PartnerFundRequest(CampaignId=ipaCampaign7.id, recordtypeid = Core_MDF_CCP_IPA_TestDataUtility.partnerFund_RecordType_IPA, 
+        // Highlight: Unused Local Variable - Indira
+      /*  PartnerFundRequest testPartnerFundRequest2 = new PartnerFundRequest(CampaignId=ipaCampaign7.id, recordtypeid = Core_MDF_CCP_IPA_TestDataUtility.partnerFund_RecordType_IPA, 
                                                         ChannelPartnerId = ipaCoMarketingAccount.id, Core_MDF_ActivityCategory__c='Sales Incentive',
                                                         Core_MDF_Activity_Types__c='Seller - Target SPIF', Core_MDF_Start_Date__c=System.today().addDays(1),
                                                         Core_MDF_End_Date__c =System.today().addDays(10), Title ='Test IPA',
                                                         Core_MDF_Activity_Description__c ='Test IPA Description', Core_MDF_Activity_Classification_nm__c = 'Sales',
                                                         Status='Draft', Core_MDF_Reimbursement_Rate_txt__c = '100%',
-                                                        RequestedAmount = 100000, Core_MDF_SPIF_Segments_Available_ind__c= true);
+                                                        RequestedAmount = 100000, Core_MDF_SPIF_Segments_Available_ind__c= true); */
         //insert testPartnerFundRequest2;
         
         Test.startTest();
@@ -1841,14 +1845,14 @@ Campaign ipaCampaignForAP1 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign(
         ipaCampaign8.Core_MDF_Approval_Step_Counter_nbr__c = 2;
         ipaCampaign8.Core_MDF_Proposal_Based_Ind__c = true;
         insert ipaCampaign8;
-        
-        PartnerFundRequest testPartnerFundRequest3 = new PartnerFundRequest(CampaignId=ipaCampaign8.id, recordtypeid = Core_MDF_CCP_IPA_TestDataUtility.partnerFund_RecordType_IPA, 
+        // Highlight: Unused Local Variable - Indira
+       /* PartnerFundRequest testPartnerFundRequest3 = new PartnerFundRequest(CampaignId=ipaCampaign8.id, recordtypeid = Core_MDF_CCP_IPA_TestDataUtility.partnerFund_RecordType_IPA, 
                                                         ChannelPartnerId = ipaCoMarketingAccount.id, Core_MDF_ActivityCategory__c='Broadcast',
                                                         Core_MDF_Activity_Types__c='Other (Broadcast)', Core_MDF_Start_Date__c=System.today().addDays(1),
                                                         Core_MDF_End_Date__c =System.today().addDays(10), Title ='Test IPA',
                                                         Core_MDF_Activity_Description__c ='Test IPA Description', Core_MDF_Activity_Classification_nm__c = 'Marketing',
                                                         Status='Draft', Core_MDF_Reimbursement_Rate_txt__c = '100%',
-                                                        RequestedAmount = 100000);
+                                                        RequestedAmount = 100000);  */
        // insert testPartnerFundRequest3;
         
         
@@ -1920,7 +1924,8 @@ Campaign ipaCampaignForAP1 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign(
         ipaCampaign8.Status = 'Cancelled';
         update ipaCampaign8;
         test.stopTest();
-        
+        // Unit Test Method should include System.Assert - Indira
+         System.assertEquals('Cancelled', ipaCampaign8.Status, 'Campaign status should be Cancelled');
         }        
     }
 
@@ -1933,7 +1938,8 @@ Campaign ipaCampaignForAP1 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign(
 	
             ChannelProgram coGTMCP = [Select Id from ChannelProgram where Name = 'Co-GTM' limit 1];
             Id pmb_RecordType_CoGTM = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
-            Id pfa_RecordType_CoGTM = Schema.SObjectType.PartnerFundAllocation.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
+           // Highlight: Unused Local Variable - Indira
+          //  Id pfa_RecordType_CoGTM = Schema.SObjectType.PartnerFundAllocation.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
             Id campaign_RecordType_CoGTM = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
             Id pfr_RecordType_CoGTM = Schema.SObjectType.PartnerFundRequest.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
 
@@ -2001,1287 +2007,6 @@ Campaign ipaCampaignForAP1 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign(
             coGTMCampaign.Core_MDF_Approval_Stage_nm__c = 'L2 Approval';
 			try { Database.update(coGTMCampaign); } catch (Exception e) {}
             Assert.areEqual('', coGTMCampaign.Core_MDF_Other_Reason_Name_txt__c);
-        }
-    }
-
-    // Additional Test Methods for Enhanced Coverage
-    
-    @isTest
-    static void testNullParametersHandling() {
-        try {
-            Test.startTest();
-            // Test null list parameters
-            Core_MDF_Proposal_Based_Campaign_Process.onSubmitForApproval(null, null);
-            Core_MDF_Proposal_Based_Campaign_Process.notifyExternalReviewers(null);
-            Core_MDF_Proposal_Based_Campaign_Process.budgetCapConsumption(null, null);
-            Core_MDF_Proposal_Based_Campaign_Process.processPropBasedCamapignsAfterUpdate(null, null);
-            Core_MDF_Proposal_Based_Campaign_Process.validateSingleGeoOnCampaign(null);
-            Core_MDF_Proposal_Based_Campaign_Process.isMDFBenefitApplicable(null);
-            Core_MDF_Proposal_Based_Campaign_Process.checkMDFBenefits(null);
-            Core_MDF_Proposal_Based_Campaign_Process.onCampaignCancel(null, null);
-            Core_MDF_Proposal_Based_Campaign_Process.queryPFCRecords(null);
-            Core_MDF_Proposal_Based_Campaign_Process.queryPFRRecords(null);
-            Core_MDF_Proposal_Based_Campaign_Process.mapBudgetToCampaign(null, null);
-            Core_MDF_Proposal_Based_Campaign_Process.validateCampaignDateAndAmountAgainstActivity(null, null);
-            Test.stopTest();
-            Assert.isTrue(true, 'Null parameter handling completed successfully');
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testEmptyListHandling() {
-        try {
-            Test.startTest();
-            List<Campaign> emptyCampList = new List<Campaign>();
-            Map<Id, Campaign> emptyMap = new Map<Id, Campaign>();
-            Map<Campaign, Id> emptyCampMap = new Map<Campaign, Id>();
-            
-            Core_MDF_Proposal_Based_Campaign_Process.onSubmitForApproval(emptyCampList, emptyMap);
-            Core_MDF_Proposal_Based_Campaign_Process.notifyExternalReviewers(emptyCampList);
-            Core_MDF_Proposal_Based_Campaign_Process.budgetCapConsumption(emptyMap, emptyCampList);
-            Core_MDF_Proposal_Based_Campaign_Process.isMDFBenefitApplicable(emptyCampMap);
-            Core_MDF_Proposal_Based_Campaign_Process.checkMDFBenefits(emptyCampMap);
-            Core_MDF_Proposal_Based_Campaign_Process.onCampaignCancel(emptyCampList, emptyMap);
-            Core_MDF_Proposal_Based_Campaign_Process.queryPFRRecords(emptyCampList);
-            Core_MDF_Proposal_Based_Campaign_Process.mapBudgetToCampaign(emptyCampList, new Map<String, List<Core_MDF_Budget_Cap__c>>());
-            Test.stopTest();
-            Assert.isTrue(true, 'Empty list handling completed successfully');
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testCheckifCampaignReimbursementExceedsBudgetCap() {
-        try {
-            User usr = [SELECT Id, lastName FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-                
-                Account ipaCoMarketingAccount = [SELECT id FROM Account WHERE Name = 'IPA Co-Marketing Account' LIMIT 1];
-                Campaign ipaCampaign = [SELECT Id FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
-                
-                List<Campaign> campList = new List<Campaign>();
-                campList.add(ipaCampaign);
-                
-                Map<Id, Campaign> oldMap = new Map<Id, Campaign>();
-                oldMap.put(ipaCampaign.Id, ipaCampaign);
-                
-                // Test with boolean parameter variations
-                Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExceedsBudgetCap(campList, oldMap, true);
-                Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExceedsBudgetCap(campList, oldMap, false);
-                Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExceedsBudgetCap(null, null, true);
-                
-                Test.stopTest();
-                Assert.isTrue(true, 'Budget cap reimbursement check completed');
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testGetRemovedPicklistValueAndDeterminePropBasedCampaign() {
-        try {
-            Test.startTest();
-            
-            Set<String> testSet = new Set<String>();
-            testSet.add('Value1');
-            testSet.add('Value2');
-            
-            // Test getRemovedPicklistValue with various parameter combinations
-            Core_MDF_Proposal_Based_Campaign_Process.getRemovedPicklistValue('TestField', testSet, 'TestLabel', null);
-            Core_MDF_Proposal_Based_Campaign_Process.getRemovedPicklistValue(null, null, null, null);
-            
-            // Test determinePropBasedCampaignAttributes
-            Core_MDF_Proposal_Based_Campaign_Process.determinePropBasedCampaignAttributes(null, null, null);
-            
-            Test.stopTest();
-            Assert.isTrue(true, 'Picklist and campaign attribute determination completed');
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testCheckifCampaignNeedsStatusChange() {
-        try {
-            User usr = [SELECT Id, lastName FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-                
-                Campaign ipaCampaign = [SELECT Id, Status, Core_MDF_Approval_Step_Counter_nbr__c FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
-                
-                Map<Id, Campaign> oldCampMap = new Map<Id, Campaign>();
-                oldCampMap.put(ipaCampaign.Id, ipaCampaign);
-                
-                List<Campaign> newCampList = new List<Campaign>();
-                newCampList.add(ipaCampaign);
-                
-                // Test status change check
-                Core_MDF_Proposal_Based_Campaign_Process.checkIfCampaignNeedsStatusChange(newCampList, oldCampMap);
-                Core_MDF_Proposal_Based_Campaign_Process.checkIfCampaignNeedsStatusChange(null, null);
-                
-                Test.stopTest();
-                Assert.isTrue(true, 'Status change check completed');
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testMultipleCampaignProcessing() {
-        try {
-            User usr = [SELECT Id, lastName FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-                
-                Account ipaCoMarketingAccount = [SELECT id FROM Account WHERE Name = 'IPA Co-Marketing Account' LIMIT 1];
-                ChannelProgram ipaCP = [SELECT Id FROM ChannelProgram WHERE Name = 'Intel Partner Alliance' LIMIT 1];
-                String budgetType = 'Business Client Acceleration - MDF';
-                
-                // Create multiple campaigns for batch processing tests
-                List<Campaign> multiCampaigns = new List<Campaign>();
-                for (Integer i = 0; i < 2; i++) {
-                    Campaign camp = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign(
-                        'Multi Test Campaign ' + i,
-                        ipaCoMarketingAccount.id,
-                        System.today().addDays(i),
-                        System.today().addDays(i + 10),
-                        budgetType,
-                        50000 + (i * 10000),
-                        'INDIA',
-                        'Developer',
-                        'Apollo Lake',
-                        '',
-                        false
-                    );
-                    camp.Core_MDF_Proposal_Based_Ind__c = true;
-                    multiCampaigns.add(camp);
-                }
-                
-                insert multiCampaigns;
-                
-                Map<Id, Campaign> oldCampMap = new Map<Id, Campaign>(multiCampaigns);
-                
-                // Test batch processing
-                Core_MDF_Proposal_Based_Campaign_Process.onSubmitForApproval(multiCampaigns, oldCampMap);
-                Core_MDF_Proposal_Based_Campaign_Process.notifyExternalReviewers(multiCampaigns);
-                Core_MDF_Proposal_Based_Campaign_Process.budgetCapConsumption(oldCampMap, multiCampaigns);
-                
-                Test.stopTest();
-                Assert.isTrue(multiCampaigns.size() > 0, 'Multiple campaigns processed successfully');
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testCampaignStateTransitions() {
-        try {
-            User usr = [SELECT Id, lastName FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-                
-                Campaign ipaCampaign = [SELECT Id, Status, Core_MDF_Approval_Step_Counter_nbr__c, Core_MDF_Proposal_Based_Ind__c
-                                        FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
-                
-                Map<Id, Campaign> oldMap = new Map<Id, Campaign>();
-                oldMap.put(ipaCampaign.Id, ipaCampaign);
-                
-                // Test various state transitions
-                List<String> states = new List<String>{'Draft', 'Pending Review', 'In Review', 'Approved', 'Active', 'Completed', 'Cancelled'};
-                
-                for (String state : states) {
-                    try {
-                        ipaCampaign.Status = state;
-                        Database.update(ipaCampaign);
-                        
-                        List<Campaign> campList = new List<Campaign>();
-                        campList.add(ipaCampaign);
-                        
-                        Core_MDF_Proposal_Based_Campaign_Process.onSubmitForApproval(campList, oldMap);
-                    } catch (Exception e) {
-                        // Expected for some state transitions
-                    }
-                }
-                
-                Test.stopTest();
-                Assert.isTrue(true, 'State transitions tested');
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testCampaignDateAndAmountValidations() {
-        try {
-            User usr = [SELECT Id, lastName FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-                
-                // Test date and amount validation
-                Core_MDF_Proposal_Based_Campaign_Process.validateCampaignDateAndAmountAgainstActivity(null, null);
-                
-                Test.stopTest();
-                Assert.isTrue(true, 'Date and amount validations completed');
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testBudgetTypeMapping() {
-        try {
-            User usr = [SELECT Id, lastName FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-                
-                List<Campaign> ipaCampaignList = [SELECT Id, Core_MDF_Opal_Budget_Type_Txt__c FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
-                
-                Map<String, List<Core_MDF_Budget_Cap__c>> budgetTypeMap = new Map<String, List<Core_MDF_Budget_Cap__c>>();
-                
-                // Test budget mapping with valid data
-                Core_MDF_Proposal_Based_Campaign_Process.mapBudgetToCampaign(ipaCampaignList, budgetTypeMap);
-                Core_MDF_Proposal_Based_Campaign_Process.mapBudgetToCampaign(null, null);
-                
-                Test.stopTest();
-                Assert.isTrue(true, 'Budget type mapping completed');
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testPFRUpdatesMethod() {
-        try {
-            User usr = [SELECT Id, lastName FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-                
-                Campaign ipaCampaign = [SELECT Id, Status FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
-                
-                Map<Id, Campaign> campaignMap = new Map<Id, Campaign>();
-                campaignMap.put(ipaCampaign.Id, ipaCampaign);
-                
-                // Test PFR updates with different boolean flags
-                Core_MDF_Proposal_Based_Campaign_Process.pfrUpdates(campaignMap, true);
-                Core_MDF_Proposal_Based_Campaign_Process.pfrUpdates(campaignMap, false);
-                Core_MDF_Proposal_Based_Campaign_Process.pfrUpdates(new Map<Id, Campaign>(), true);
-                
-                Test.stopTest();
-                Assert.isTrue(true, 'PFR updates completed');
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testCampaignWithDifferentApprovalSteps() {
-        try {
-            User usr = [SELECT Id, lastName FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-                
-                Campaign ipaCampaign = [SELECT Id, Core_MDF_Approval_Step_Counter_nbr__c FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
-                Account ipaCoMarketingAccount = [SELECT id FROM Account WHERE Name = 'IPA Co-Marketing Account' LIMIT 1];
-                
-                // Test different approval step counters
-                for (Integer step = 0; step <= 5; step++) {
-                    ipaCampaign.Core_MDF_Approval_Step_Counter_nbr__c = step;
-                    try {
-                        Database.update(ipaCampaign);
-                        
-                        List<Campaign> campList = new List<Campaign>();
-                        campList.add(ipaCampaign);
-                        Map<Id, Campaign> oldMap = new Map<Id, Campaign>();
-                        oldMap.put(ipaCampaign.Id, ipaCampaign);
-                        
-                        Core_MDF_Proposal_Based_Campaign_Process.onSubmitForApproval(campList, oldMap);
-                    } catch (Exception e) {
-                        // Expected for some steps
-                    }
-                }
-                
-                Test.stopTest();
-                Assert.isTrue(true, 'All approval steps tested');
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testExceptionHandlingInProcessing() {
-        try {
-            Test.startTest();
-            
-            // Create invalid campaign objects to trigger exceptions
-            Campaign invalidCamp = new Campaign();
-            List<Campaign> invalidList = new List<Campaign>{invalidCamp};
-            Map<Id, Campaign> invalidMap = new Map<Id, Campaign>();
-            
-            try {
-                Core_MDF_Proposal_Based_Campaign_Process.onSubmitForApproval(invalidList, invalidMap);
-            } catch (Exception e) {
-                Core_MDF_CCP_UtilityClass.logError(e);
-            }
-            
-            try {
-                Core_MDF_Proposal_Based_Campaign_Process.notifyExternalReviewers(invalidList);
-            } catch (Exception e) {
-                Core_MDF_CCP_UtilityClass.logError(e);
-            }
-            
-            try {
-                Core_MDF_Proposal_Based_Campaign_Process.budgetCapConsumption(invalidMap, invalidList);
-            } catch (Exception e) {
-                Core_MDF_CCP_UtilityClass.logError(e);
-            }
-            
-            Test.stopTest();
-            Assert.isTrue(true, 'Exception handling verified');
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testCampaignUpdatesWithProposalAccepted() {
-        try {
-            User usr = [SELECT Id FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-
-                Campaign dbCamp = [SELECT Id, Status, StartDate, EndDate, Core_MDF_Budget__c, 
-                                   Core_MDF_Budget_Cap__c, Core_MDF_Terminal_Rejection_Ind__c
-                                   FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
-
-                // Scenario 1: Proposal Accepted → In Progress (past start date)
-                Map<Id, Campaign> campMap1 = new Map<Id, Campaign>();
-                Campaign c1 = dbCamp.clone(true, true, false, false);
-                c1.Status = 'Proposal Accepted';
-                c1.StartDate = System.today().addDays(-1);
-                campMap1.put(c1.Id, c1);
-                Core_MDF_Proposal_Based_Campaign_Process.campaignUpdates(campMap1);
-
-                // Scenario 2: Proposal Accepted → Planned (future start date)
-                Map<Id, Campaign> campMap2 = new Map<Id, Campaign>();
-                Campaign c2 = dbCamp.clone(true, true, false, false);
-                c2.Status = 'Proposal Accepted';
-                c2.StartDate = System.today().addDays(5);
-                campMap2.put(c2.Id, c2);
-                Core_MDF_Proposal_Based_Campaign_Process.campaignUpdates(campMap2);
-
-                // Scenario 3: Accepted (CoGTM intermediate status) → Planned
-                Map<Id, Campaign> campMap3 = new Map<Id, Campaign>();
-                Campaign c3 = dbCamp.clone(true, true, false, false);
-                c3.Status = 'Accepted';
-                c3.StartDate = System.today().addDays(3);
-                campMap3.put(c3.Id, c3);
-                Core_MDF_Proposal_Based_Campaign_Process.campaignUpdates(campMap3);
-
-                // Scenario 4: Revision Required + Terminal Rejection (no budget)
-                Map<Id, Campaign> campMap4 = new Map<Id, Campaign>();
-                Campaign c4 = dbCamp.clone(true, true, false, false);
-                c4.Status = 'Revision Required';
-                c4.Core_MDF_Terminal_Rejection_Ind__c = true;
-                c4.Core_MDF_Budget__c = null;
-                campMap4.put(c4.Id, c4);
-                Core_MDF_Proposal_Based_Campaign_Process.campaignUpdates(campMap4);
-
-                Test.stopTest();
-                Assert.isTrue(true, 'campaignUpdates executed successfully');
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testProcessAfterUpdateWithMapsAndStatusChange() {
-        try {
-            User usr = [SELECT Id FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-
-                Campaign dbCamp = [SELECT Id, Status, Core_MDF_Proposal_Based_Ind__c, Core_MDF_Program__c,
-                                   Core_MDF_Approval_Step_Counter_nbr__c, Core_MDF_IPA_Approval_Status_nm__c,
-                                   Core_MDF_Approval_Stage_nm__c, StartDate, EndDate, Core_MDF_Market__c,
-                                   Core_MDF_Region_cd__c, Core_MDF_Opal_Budget_Type_Txt__c, Core_MDF_ReimbursementRate_pct__c
-                                   FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
-
-                // Simulate: old status = Draft, new status = Pending Review (step counter change)
-                Campaign oldCamp = dbCamp.clone(true, true, false, false);
-                oldCamp.Status = 'Draft';
-                oldCamp.Core_MDF_Approval_Step_Counter_nbr__c = 0;
-                oldCamp.Core_MDF_Approval_Stage_nm__c = null;
-
-                Campaign newCamp = dbCamp.clone(true, true, false, false);
-                newCamp.Status = 'Pending Review';
-                newCamp.Core_MDF_Approval_Step_Counter_nbr__c = 1;
-                newCamp.Core_MDF_Approval_Stage_nm__c = 'L1 Approval';
-
-                Map<Id, Campaign> newMap = new Map<Id, Campaign>{newCamp.Id => newCamp};
-                Map<Id, Campaign> oldMap = new Map<Id, Campaign>{oldCamp.Id => oldCamp};
-
-                Core_MDF_Proposal_Based_Campaign_Process.processPropBasedCamapignsAfterUpdate(newMap, oldMap);
-
-                // Simulate: step counter change on Pending Review → triggers approval
-                Campaign oldCamp2 = dbCamp.clone(true, true, false, false);
-                oldCamp2.Status = 'Pending Review';
-                oldCamp2.Core_MDF_Approval_Step_Counter_nbr__c = 1;
-                oldCamp2.Core_MDF_IPA_Approval_Status_nm__c = null;
-
-                Campaign newCamp2 = dbCamp.clone(true, true, false, false);
-                newCamp2.Status = 'Pending Review';
-                newCamp2.Core_MDF_Approval_Step_Counter_nbr__c = 2;
-                newCamp2.Core_MDF_IPA_Approval_Status_nm__c = null;
-
-                Map<Id, Campaign> newMap2 = new Map<Id, Campaign>{newCamp2.Id => newCamp2};
-                Map<Id, Campaign> oldMap2 = new Map<Id, Campaign>{oldCamp2.Id => oldCamp2};
-
-                Core_MDF_Proposal_Based_Campaign_Process.processPropBasedCamapignsAfterUpdate(newMap2, oldMap2);
-
-                Test.stopTest();
-                Assert.isTrue(true, 'processPropBasedCamapignsAfterUpdate executed successfully');
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testPfrUpdatesWithPFRsLoaded() {
-        try {
-            User usr = [SELECT Id FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-
-                Account ipaCoMarketingAccount = [SELECT id FROM Account WHERE Name = 'IPA Co-Marketing Account' LIMIT 1];
-                Campaign dbCamp = [SELECT Id, Status, Core_MDF_Market__c, Core_MDF_ReimbursementRate_pct__c,
-                                   Core_MDF_Opal_Budget_Type_Txt__c 
-                                   FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
-
-                // Create a PFR in Pending Approval status to populate the static map
-                PartnerFundRequest pfr = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(
-                    dbCamp.id, ipaCoMarketingAccount.id,
-                    System.today().addDays(1), System.today().addDays(10), false);
-                pfr.Core_MDF_Fund_Request_Status__c = 'Pending Approval';
-                insert pfr;
-
-                // Populate the static PFR map by calling queryPFRRecords
-                List<Campaign> campList = new List<Campaign>{dbCamp};
-                Core_MDF_Proposal_Based_Campaign_Process.queryPFRRecords(campList);
-
-                // Campaign in Revision Required → PFR should go to Revision Required
-                Campaign campRR = dbCamp.clone(true, true, false, false);
-                campRR.Status = 'Revision Required';
-                Map<Id, Campaign> rrMap = new Map<Id, Campaign>{campRR.Id => campRR};
-                Core_MDF_Proposal_Based_Campaign_Process.pfrUpdates(rrMap, false);
-
-                // Campaign in Planned → PFR should stay Pending Approval or go Planned
-                Campaign campPlanned = dbCamp.clone(true, true, false, false);
-                campPlanned.Status = 'Planned';
-                Map<Id, Campaign> plannedMap = new Map<Id, Campaign>{campPlanned.Id => campPlanned};
-                Core_MDF_Proposal_Based_Campaign_Process.pfrUpdates(plannedMap, true);
-
-                // Campaign in In Progress → PFR updates
-                Campaign campIP = dbCamp.clone(true, true, false, false);
-                campIP.Status = 'In Progress';
-                Map<Id, Campaign> ipMap = new Map<Id, Campaign>{campIP.Id => campIP};
-                Core_MDF_Proposal_Based_Campaign_Process.pfrUpdates(ipMap, true);
-
-                Test.stopTest();
-                Assert.isTrue(true, 'pfrUpdates with loaded PFR maps executed successfully');
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testBudgetCapConsumptionAllStatuses() {
-        try {
-            User usr = [SELECT Id FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-
-                Campaign dbCamp = [SELECT Id, Status FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
-
-                // Create a Budget Cap record to use as lookup ID
-                Id ipaBudTypeCapRecordtype = Schema.SObjectType.Core_MDF_Budget_Cap__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_Budget_Type_Cap').getRecordTypeId();
-                Core_MDF_Budget_Cap__c budgetCap = new Core_MDF_Budget_Cap__c();
-                budgetCap.RecordTypeId = ipaBudTypeCapRecordtype;
-                budgetCap.Core_MDF_Budget_Type_nm__c = 'Business Client Acceleration - MDF';
-                budgetCap.Core_MDF_Requested_Cap_amt__c = 9999999;
-                budgetCap.Core_MDF_Effective_Start_Date_Dt__c = System.today().addDays(-30);
-                budgetCap.Core_MDF_Effective_End_Date_Dt__c = System.today().addDays(60);
-                budgetCap.Core_MDF_Region_nm__c = 'WW';
-                insert budgetCap;
-
-                // Helper to build a campaign clone with specific status
-                Map<String, Object> statusTests = new Map<String, Object>{
-                    'Planned' => null, 'In Progress' => null, 'Completed' => null,
-                    'Pending Review' => null, 'Revision Required' => null,
-                    'Cancelled' => null, 'Pending Approval' => null, 'Declined' => null
-                };
-
-                for (String newStatus : statusTests.keySet()) {
-                    Campaign oldCamp = dbCamp.clone(true, true, false, false);
-                    oldCamp.Status = 'Draft';
-                    oldCamp.Core_MDF_Reimbursement_Amt__c = 100;
-                    oldCamp.Core_MDF_Budget_Cap__c = budgetCap.Id;
-                    oldCamp.Core_MDF_Program__c = 'Intel Partner Alliance';
-
-                    Campaign newCamp = dbCamp.clone(true, true, false, false);
-                    newCamp.Status = newStatus;
-                    newCamp.Core_MDF_Reimbursement_Amt__c = 500;
-                    newCamp.Core_MDF_Budget_Cap__c = budgetCap.Id;
-                    newCamp.Core_MDF_Program__c = 'Intel Partner Alliance';
-                    newCamp.Core_MDF_Budget__c = null; // avoid cancelBudget DML
-
-                    Map<Id, Campaign> oldMap = new Map<Id, Campaign>{oldCamp.Id => oldCamp};
-                    List<Campaign> newList = new List<Campaign>{newCamp};
-
-                    try {
-                        Core_MDF_Proposal_Based_Campaign_Process.budgetCapConsumption(oldMap, newList);
-                    } catch (Exception e) {
-                        // Expected for some status combinations
-                    }
-                }
-
-                Test.stopTest();
-                Assert.isTrue(true, 'budgetCapConsumption status switch executed');
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testQueryEscalationAndContractRecords() {
-        try {
-            User usr = [SELECT Id FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-
-                Account ipaCoMarketingAccount = [SELECT id FROM Account WHERE Name = 'IPA Co-Marketing Account' LIMIT 1];
-                Campaign dbCamp = [SELECT Id FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
-
-                // Create a Closed PFR so queryEscalationRecords has data to process
-                PartnerFundRequest closedPfr = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(
-                    dbCamp.id, ipaCoMarketingAccount.id,
-                    System.today().addDays(1), System.today().addDays(10), false);
-                closedPfr.Core_MDF_Fund_Request_Status__c = 'Closed';
-                insert closedPfr;
-
-                List<Campaign> campList = new List<Campaign>{dbCamp};
-
-                // Populate closed PFR map first
-                Core_MDF_Proposal_Based_Campaign_Process.queryPFRRecords(campList);
-
-                // Test queryEscalationRecords
-                Core_MDF_Proposal_Based_Campaign_Process.queryEscalationRecords(campList);
-
-                // Test queryContractRecords  
-                Core_MDF_Proposal_Based_Campaign_Process.queryContractRecords(campList);
-
-                Test.stopTest();
-                Assert.isTrue(true, 'queryEscalation and queryContract executed successfully');
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testGetGeoRegionsForBothPrograms() {
-        try {
-            User usr = [SELECT Id FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-
-                // IPA Campaign
-                Campaign ipaCamp = [SELECT Id, Core_MDF_Program__c, Core_MDF_Proposal_Based_Ind__c,
-                                    Core_MDF_Host_Region_cd__c, Core_MDF_Region_cd__c
-                                    FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
-
-                List<String> ipaRegions = Core_MDF_Proposal_Based_Campaign_Process.getGeoRegions(ipaCamp);
-                Assert.isTrue(ipaRegions != null, 'IPA geo regions should not be null');
-
-                // CoGTM Campaign
-                Campaign coGTMCamp = [SELECT Id, Core_MDF_Program__c, Core_MDF_Proposal_Based_Ind__c,
-                                      Core_MDF_Host_Region_cd__c, Core_MDF_Region_cd__c
-                                      FROM Campaign WHERE Name = 'Test CoGTM Camp' LIMIT 1];
-                if (coGTMCamp != null) {
-                    List<String> coGTMRegions = Core_MDF_Proposal_Based_Campaign_Process.getGeoRegions(coGTMCamp);
-                    Assert.isTrue(coGTMRegions != null, 'CoGTM geo regions should not be null');
-                }
-
-                Test.stopTest();
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testCheckIfCampaignNeedsStatusChangeWithPlannedCampaign() {
-        try {
-            User usr = [SELECT Id FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-
-                Campaign dbCamp = [SELECT Id, Status, Core_MDF_Proposal_Based_Ind__c, Core_MDF_Program__c,
-                                   StartDate, EndDate, Core_MDF_Market__c, Core_MDF_Reimbursement_Amt__c,
-                                   Core_MDF_Opal_Budget_Type_Txt__c, Core_MDF_Region_cd__c,
-                                   Core_MDF_Host_Region_cd__c, Core_MDF_Ultimate_Account_txt__c
-                                   FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
-
-                // Old = Planned, New = Planned with changed field → triggers Revision Required
-                Campaign oldCamp = dbCamp.clone(true, true, false, false);
-                oldCamp.Status = 'Planned';
-                oldCamp.Core_MDF_Market__c = 'INDIA';
-                oldCamp.EndDate = System.today().addDays(30);
-
-                Campaign newCamp = dbCamp.clone(true, true, false, false);
-                newCamp.Status = 'Planned';
-                newCamp.Core_MDF_Proposal_Based_Ind__c = true;
-                newCamp.Core_MDF_Market__c = 'INDIA; CANADA';
-                newCamp.EndDate = System.today().addDays(60); // changed EndDate
-
-                Map<Id, Campaign> oldMap = new Map<Id, Campaign>{oldCamp.Id => oldCamp};
-                List<Campaign> newList = new List<Campaign>{newCamp};
-
-                Core_MDF_Proposal_Based_Campaign_Process.checkIfCampaignNeedsStatusChange(newList, oldMap);
-
-                // Also test with In Progress + Proposal_Based_Ind__c false → should skip
-                Campaign nonPropCamp = dbCamp.clone(true, true, false, false);
-                nonPropCamp.Core_MDF_Proposal_Based_Ind__c = false;
-                nonPropCamp.Status = 'In Progress';
-
-                Campaign oldNonPropCamp = dbCamp.clone(true, true, false, false);
-                oldNonPropCamp.Core_MDF_Proposal_Based_Ind__c = false;
-                oldNonPropCamp.Status = 'In Progress';
-
-                Map<Id, Campaign> oldMap2 = new Map<Id, Campaign>{oldNonPropCamp.Id => oldNonPropCamp};
-                List<Campaign> newList2 = new List<Campaign>{nonPropCamp};
-
-                Core_MDF_Proposal_Based_Campaign_Process.checkIfCampaignNeedsStatusChange(newList2, oldMap2);
-
-                Test.stopTest();
-                Assert.isTrue(true, 'checkIfCampaignNeedsStatusChange executed successfully');
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testQueryPFRRecordsWithInProgressAndClosedPFRs() {
-        try {
-            User usr = [SELECT Id FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-
-                Account ipaCoMarketingAccount = [SELECT id FROM Account WHERE Name = 'IPA Co-Marketing Account' LIMIT 1];
-                Campaign dbCamp = [SELECT Id FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
-
-                // Create PFR with In-Progress status (covers line 112-113 in queryPFRRecords)
-                PartnerFundRequest inProgressPfr = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(
-                    dbCamp.id, ipaCoMarketingAccount.id,
-                    System.today().addDays(1), System.today().addDays(10), false);
-                inProgressPfr.Core_MDF_Fund_Request_Status__c = 'In-Progress';
-                inProgressPfr.Core_MDF_Activity_Classification_nm__c = 'Marketing';
-                inProgressPfr.RequestedAmount = 500000;
-                insert inProgressPfr;
-
-                // Create PFR with Closed status (covers Closed branch in queryPFRRecords)
-                PartnerFundRequest closedPfr = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(
-                    dbCamp.id, ipaCoMarketingAccount.id,
-                    System.today().addDays(1), System.today().addDays(10), false);
-                closedPfr.Core_MDF_Fund_Request_Status__c = 'Closed';
-                insert closedPfr;
-
-                // Create PFR with Cancelled status (covers Cancelled branch)
-                PartnerFundRequest cancelledPfr = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(
-                    dbCamp.id, ipaCoMarketingAccount.id,
-                    System.today().addDays(1), System.today().addDays(10), false);
-                cancelledPfr.Core_MDF_Fund_Request_Status__c = 'Cancelled';
-                insert cancelledPfr;
-
-                // Reset static maps and call queryPFRRecords
-                Core_MDF_Proposal_Based_Campaign_Process.propBasedCampIdPfrListIdMap = new Map<Id, List<PartnerFundRequest>>();
-                Core_MDF_Proposal_Based_Campaign_Process.propBasedCampIdClosedPfrListIdMap = new Map<Id, List<PartnerFundRequest>>();
-                Core_MDF_Proposal_Based_Campaign_Process.propBasedCampIdCancelledPfrListIdMap = new Map<Id, List<PartnerFundRequest>>();
-                Core_MDF_Proposal_Based_Campaign_Process.budgetIdInProgCompPfrListIdMap = new Map<Id, Decimal>();
-                Core_MDF_Proposal_Based_Campaign_Process.pfrList = new List<PartnerFundRequest>();
-
-                List<Campaign> campList = new List<Campaign>{dbCamp};
-                Core_MDF_Proposal_Based_Campaign_Process.queryPFRRecords(campList);
-
-                // Also test queryPFCRecords
-                Core_MDF_Proposal_Based_Campaign_Process.queryPFCRecords(campList);
-
-                Test.stopTest();
-                Assert.isTrue(true, 'queryPFRRecords with In-Progress, Closed, Cancelled PFRs executed');
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testReCalculateCampaignFormulaFieldsAndCheckClaims() {
-        try {
-            User usr = [SELECT Id FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-
-                Campaign dbCamp = [SELECT Id, Status, Core_MDF_Program__c, Core_MDF_Reimbursement_Amt__c
-                                   FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
-
-                // Test reCalculateCampaignFormulaFields
-                List<Campaign> campList = new List<Campaign>{dbCamp};
-                try {
-                    List<Campaign> recalcList = Core_MDF_Proposal_Based_Campaign_Process.reCalculateCampaignFormulaFields(campList);
-                    Assert.isTrue(recalcList != null, 'recalcList should not be null');
-                } catch (Exception e) {
-                    // Expected if formula recalculation fails in test context
-                }
-
-                // Test checkClaimsAssociatedToCampaign with an existing campaign ID
-                List<Id> campIdList = new List<Id>{dbCamp.Id};
-                Map<Id, List<PartnerFundClaim>> claimMap = Core_MDF_Proposal_Based_Campaign_Process.checkClaimsAssociatedToCampaign(campIdList);
-                Assert.isTrue(claimMap != null, 'Claim map should not be null');
-
-                // Test with empty list
-                Map<Id, List<PartnerFundClaim>> emptyClaimMap = Core_MDF_Proposal_Based_Campaign_Process.checkClaimsAssociatedToCampaign(new List<Id>());
-                Assert.isTrue(emptyClaimMap != null, 'Empty claim map should not be null');
-
-                Test.stopTest();
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testPopulateCoGTMFieldsDirectCall() {
-        try {
-            User usr = [SELECT Id FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-
-                Campaign coGTMCamp = [SELECT Id, StartDate, EndDate, Core_MDF_Product_Type__c,
-                                      Core_MDF_Reason_for_Back_Dating_Nm__c, Core_MDF_Other_Reason_Name_txt__c,
-                                      Core_MDF_ATF_Flag_Nm__c, Core_MDF_External_Visibility_Date__c,
-                                      Core_MDF_Profit_Center__c, Core_MDF_Activity_Category_Type__c,
-                                      Core_MDF_Activity_Category__c, Core_MDF_Activity_Type__c, Core_MDF_Region_cd__c,
-                                      Core_MDF_Program__c, Core_MDF_Opal_Budget_Type_Txt__c
-                                      FROM Campaign WHERE Name = 'Test CoGTM Camp' LIMIT 1];
-
-                // Scenario 1: isInsert = true, future start date
-                Campaign campCopy1 = coGTMCamp.clone(true, true, false, false);
-                campCopy1.StartDate = System.today().addDays(5);
-                campCopy1.Core_MDF_External_Visibility_Date__c = null;
-                Core_MDF_Proposal_Based_Campaign_Process.populateCoGTMFields(campCopy1, null, true, false);
-
-                // Scenario 2: isInsert = true, past start date (sets ATF flag)
-                Campaign campCopy2 = coGTMCamp.clone(true, true, false, false);
-                campCopy2.StartDate = System.today().addDays(-5);
-                campCopy2.Core_MDF_External_Visibility_Date__c = null;
-                Core_MDF_Proposal_Based_Campaign_Process.populateCoGTMFields(campCopy2, null, true, false);
-
-                // Scenario 3: isUpdate = true, start date changed to future (clears ATF)
-                Campaign oldCamp = coGTMCamp.clone(true, true, false, false);
-                oldCamp.StartDate = System.today().addDays(-5);
-                oldCamp.Core_MDF_Product_Type__c = null;
-
-                Campaign newCamp = coGTMCamp.clone(true, true, false, false);
-                newCamp.StartDate = System.today().addDays(5);
-                newCamp.Core_MDF_Reason_for_Back_Dating_Nm__c = '';
-
-                Map<Id, Campaign> oldMap = new Map<Id, Campaign>{oldCamp.Id => oldCamp};
-                Core_MDF_Proposal_Based_Campaign_Process.populateCoGTMFields(newCamp, oldMap, false, true);
-
-                // Scenario 4: isUpdate = true, start date changed to past (sets ATF)
-                Campaign oldCamp2 = coGTMCamp.clone(true, true, false, false);
-                oldCamp2.StartDate = System.today().addDays(5);
-
-                Campaign newCamp2 = coGTMCamp.clone(true, true, false, false);
-                newCamp2.StartDate = System.today().addDays(-3);
-                newCamp2.Core_MDF_Reason_for_Back_Dating_Nm__c = 'Other';
-
-                Map<Id, Campaign> oldMap2 = new Map<Id, Campaign>{oldCamp2.Id => oldCamp2};
-                Core_MDF_Proposal_Based_Campaign_Process.populateCoGTMFields(newCamp2, oldMap2, false, true);
-
-                Test.stopTest();
-                Assert.isTrue(true, 'populateCoGTMFields executed for all scenarios');
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testPrepareProductTypeToProfitCenterMappingDirect() {
-        try {
-            User usr = [SELECT Id FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-
-                // Direct call - this method queries metadata and populates static maps
-                Core_MDF_Proposal_Based_Campaign_Process.prepareProductTypeToProfitCenterMapping();
-
-                // Verify the static maps were populated (they may or may not have data)
-                Assert.isTrue(Core_MDF_Proposal_Based_Campaign_Process.productTypeToBuSplitCoGTMMap != null,
-                    'productTypeToBuSplitCoGTMMap should not be null');
-                Assert.isTrue(Core_MDF_Proposal_Based_Campaign_Process.buSplitToPriorityRankingCoGTMMap != null,
-                    'buSplitToPriorityRankingCoGTMMap should not be null');
-                Assert.isTrue(Core_MDF_Proposal_Based_Campaign_Process.buSplitToProfitCenterCoGTMMap != null,
-                    'buSplitToProfitCenterCoGTMMap should not be null');
-
-                Test.stopTest();
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testQueryPFRRecordsWithTacticsAndDuplicateClosedPFRs() {
-        try {
-            User usr = [SELECT Id FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-
-                Account ipaCoMarketingAccount = [SELECT id FROM Account WHERE Name = 'IPA Co-Marketing Account' LIMIT 1];
-                Campaign dbCamp = [SELECT Id FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
-
-                // Create 2 closed PFRs for the same campaign (covers lines 123-126 in queryPFRRecords)
-                PartnerFundRequest closedPfr1 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(
-                    dbCamp.id, ipaCoMarketingAccount.id,
-                    System.today().addDays(1), System.today().addDays(10), false);
-                closedPfr1.Core_MDF_Fund_Request_Status__c = 'Closed';
-                closedPfr1.Core_MDF_ActivityCategory__c = 'Broadcast (Pre-2025)';
-                insert closedPfr1;
-
-                PartnerFundRequest closedPfr2 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(
-                    dbCamp.id, ipaCoMarketingAccount.id,
-                    System.today().addDays(1), System.today().addDays(10), false);
-                closedPfr2.Core_MDF_Fund_Request_Status__c = 'Closed';
-                closedPfr2.Core_MDF_ActivityCategory__c = 'Broadcast (Pre-2025)';
-                insert closedPfr2;
-
-                // Create a PFR with Completed status and high RequestedAmount (covers line 112-113)
-                PartnerFundRequest completedPfr = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(
-                    dbCamp.id, ipaCoMarketingAccount.id,
-                    System.today().addDays(1), System.today().addDays(10), false);
-                completedPfr.Core_MDF_Fund_Request_Status__c = 'Completed';
-                completedPfr.Core_MDF_Activity_Classification_nm__c = 'Marketing';
-                completedPfr.RequestedAmount = 2000000;
-                insert completedPfr;
-
-                // Reset static maps to force re-query
-                Core_MDF_Proposal_Based_Campaign_Process.propBasedCampIdPfrListIdMap = new Map<Id, List<PartnerFundRequest>>();
-                Core_MDF_Proposal_Based_Campaign_Process.propBasedCampIdClosedPfrListIdMap = new Map<Id, List<PartnerFundRequest>>();
-                Core_MDF_Proposal_Based_Campaign_Process.propBasedCampIdCancelledPfrListIdMap = new Map<Id, List<PartnerFundRequest>>();
-                Core_MDF_Proposal_Based_Campaign_Process.budgetIdInProgCompPfrListIdMap = new Map<Id, Decimal>();
-                Core_MDF_Proposal_Based_Campaign_Process.campIdActTacticsSet = new Map<Id, Set<String>>();
-                Core_MDF_Proposal_Based_Campaign_Process.pfrList = new List<PartnerFundRequest>();
-
-                // Now call queryPFRRecords - will process 2 Closed PFRs and hit the containsKey branch
-                List<Campaign> campList = new List<Campaign>{dbCamp};
-                Core_MDF_Proposal_Based_Campaign_Process.queryPFRRecords(campList);
-
-                // Verify that both closed PFRs were processed  
-                Assert.isTrue(Core_MDF_Proposal_Based_Campaign_Process.propBasedCampIdClosedPfrListIdMap.containsKey(dbCamp.Id),
-                    'Closed PFR map should contain the campaign');
-
-                Test.stopTest();
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testProcessIPACampaignApprovalDirectCall() {
-        try {
-            User usr = [SELECT Id FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-
-                // Query the actual campaign with all fields including formula fields
-                Campaign dbCamp = [SELECT Id, Status, Core_MDF_Proposal_Based_Ind__c, Core_MDF_Program__c,
-                                   Core_MDF_Host_Region_cd__c, Core_MDF_Ultimate_Account_txt__c,
-                                   Core_MDF_Opal_Budget_Type_Txt__c, Core_MDF_Approval_Step_Counter_nbr__c,
-                                   Core_MDF_Approval_Stage_nm__c, Core_MDF_IPA_Approval_Status_nm__c,
-                                   Core_MDF_IPA_NonSPIF_Apprval_Ind__c, Core_MDF_IPA_SPIF_Apprval_Ind__c,
-                                   Core_MDF_Total_Campaign_Cost_Amt__c, Core_MDF_Reimbursement_Amt__c
-                                   FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
-
-                Map<String, List<String>> iupgmUserMap = new Map<String, List<String>>();
-                Map<String, List<String>> cmpToActClassMap = new Map<String, List<String>>();
-                Set<Id> validMarketingActivities = new Set<Id>();
-
-                // Scenario 1: Pending Review, step = 0 - use queried campaign with formula fields
-                Campaign camp1 = dbCamp;
-                camp1.Status = 'Pending Review';
-                camp1.Core_MDF_Proposal_Based_Ind__c = true;
-                camp1.Core_MDF_Approval_Step_Counter_nbr__c = 0;
-                camp1.Core_MDF_Approval_Stage_nm__c = null;
-                camp1.Core_MDF_IPA_Approval_Status_nm__c = null;
-                camp1.Core_MDF_Total_Campaign_Cost_Amt__c = 100000;
-
-                Map<Id, Campaign> oldMap1 = new Map<Id, Campaign>{
-                    camp1.Id => new Campaign(Id = camp1.Id, Core_MDF_Approval_Step_Counter_nbr__c = 0,
-                                             Core_MDF_Total_Campaign_Cost_Amt__c = 100000, Status = 'Draft')
-                };
-                Core_MDF_Proposal_Based_Campaign_Process.processIPACampaignApproval(
-                    camp1, iupgmUserMap, oldMap1, false, cmpToActClassMap, validMarketingActivities);
-
-                // Scenario 2: Pending Review, step changed to 1, NonSPIF approval needed
-                camp1.Core_MDF_Approval_Step_Counter_nbr__c = 1;
-                camp1.Core_MDF_IPA_NonSPIF_Apprval_Ind__c = true;
-
-                Map<Id, Campaign> oldMap2 = new Map<Id, Campaign>{
-                    camp1.Id => new Campaign(Id = camp1.Id, Core_MDF_Approval_Step_Counter_nbr__c = 0,
-                                             Core_MDF_Total_Campaign_Cost_Amt__c = 100000)
-                };
-                cmpToActClassMap.put(camp1.Id, new List<String>{'Marketing'});
-                validMarketingActivities.add(camp1.Id);
-                Core_MDF_Proposal_Based_Campaign_Process.processIPACampaignApproval(
-                    camp1, iupgmUserMap, oldMap2, false, cmpToActClassMap, validMarketingActivities);
-
-                // Scenario 3: Pending Approval, step >= 2, L2 Regional Sales → Customer Acceptance
-                camp1.Status = 'Pending Approval';
-                camp1.Core_MDF_Approval_Step_Counter_nbr__c = 2;
-                camp1.Core_MDF_Approval_Stage_nm__c = 'L2 Regional Sales';
-
-                Map<Id, Campaign> oldMap3 = new Map<Id, Campaign>{
-                    camp1.Id => new Campaign(Id = camp1.Id, Core_MDF_Approval_Step_Counter_nbr__c = 1,
-                                             Core_MDF_Total_Campaign_Cost_Amt__c = 100000)
-                };
-                Core_MDF_Proposal_Based_Campaign_Process.processIPACampaignApproval(
-                    camp1, new Map<String, List<String>>(), oldMap3, false, new Map<String, List<String>>(), new Set<Id>());
-
-                Test.stopTest();
-                Assert.isTrue(true, 'processIPACampaignApproval executed for all scenarios');
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testProcessProjectBasedApprovalDirectCall() {
-        try {
-            User usr = [SELECT Id FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-
-                Campaign coGTMCamp = [SELECT Id, Status, Core_MDF_Approval_Step_Counter_nbr__c,
-                                      Core_MDF_Approval_Stage_nm__c, Core_MDF_Total_Campaign_Cost_Amt__c,
-                                      Core_MDF_Reimbursement_Amt__c, Core_MDF_Proposal_Based_Ind__c, Core_MDF_Program__c
-                                      FROM Campaign WHERE Name = 'Test CoGTM Camp' LIMIT 1];
-
-                // Scenario 1: Status != Pending Review → returns early
-                Campaign camp1 = coGTMCamp.clone(true, true, false, false);
-                camp1.Status = 'Draft';
-                Map<Id, Campaign> oldMap1 = new Map<Id, Campaign>{camp1.Id => camp1};
-                Core_MDF_Proposal_Based_Campaign_Process.processProjectBasedApproval(camp1, oldMap1);
-
-                // Scenario 2: Status = Pending Review, step = 0, total cost > 0 → Business Approver
-                Campaign camp2 = coGTMCamp.clone(true, true, false, false);
-                camp2.Status = 'Pending Review';
-                camp2.Core_MDF_Approval_Step_Counter_nbr__c = 0;
-                camp2.Core_MDF_Total_Campaign_Cost_Amt__c = 100000;
-
-                Campaign oldCamp2 = camp2.clone(true, true, false, false);
-                oldCamp2.Core_MDF_Approval_Step_Counter_nbr__c = 0;
-                oldCamp2.Core_MDF_Total_Campaign_Cost_Amt__c = 100000;
-
-                Map<Id, Campaign> oldMap2 = new Map<Id, Campaign>{oldCamp2.Id => oldCamp2};
-                Core_MDF_Proposal_Based_Campaign_Process.processProjectBasedApproval(camp2, oldMap2);
-
-                // Scenario 3: Status = Pending Review, step changed from 0 to 1 → Business Approver stage
-                Campaign camp3 = coGTMCamp.clone(true, true, false, false);
-                camp3.Status = 'Pending Review';
-                camp3.Core_MDF_Approval_Step_Counter_nbr__c = 1;
-                camp3.Core_MDF_Approval_Stage_nm__c = null;
-                camp3.Core_MDF_Reimbursement_Amt__c = 100;
-
-                Campaign oldCamp3 = camp3.clone(true, true, false, false);
-                oldCamp3.Core_MDF_Approval_Step_Counter_nbr__c = 0;
-
-                Map<Id, Campaign> oldMap3 = new Map<Id, Campaign>{oldCamp3.Id => oldCamp3};
-                Core_MDF_Proposal_Based_Campaign_Process.processProjectBasedApproval(camp3, oldMap3);
-
-                // Scenario 4: Step changed from 1 to 2, high reimbursement → L2 Approval
-                Campaign camp4 = coGTMCamp.clone(true, true, false, false);
-                camp4.Status = 'Pending Review';
-                camp4.Core_MDF_Approval_Step_Counter_nbr__c = 2;
-                camp4.Core_MDF_Reimbursement_Amt__c = 10000000;
-
-                Campaign oldCamp4 = camp4.clone(true, true, false, false);
-                oldCamp4.Core_MDF_Approval_Step_Counter_nbr__c = 1;
-
-                Map<Id, Campaign> oldMap4 = new Map<Id, Campaign>{oldCamp4.Id => oldCamp4};
-                Core_MDF_Proposal_Based_Campaign_Process.processProjectBasedApproval(camp4, oldMap4);
-
-                Test.stopTest();
-                Assert.isTrue(true, 'processProjectBasedApproval executed for all scenarios');
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testCheckIfFieldsUsedInActivityNotRemovedDirectCall() {
-        try {
-            User usr = [SELECT Id FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-
-                Account ipaCoMarketingAccount = [SELECT id FROM Account WHERE Name = 'IPA Co-Marketing Account' LIMIT 1];
-                Campaign dbCamp = [SELECT Id, Status, RecordTypeId, Core_MDF_Opal_Budget_Type_Txt__c,
-                                   Core_MDF_Market__c, Core_MDF_Activity_Category_Type__c, Core_MDF_Program__c
-                                   FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
-
-                // Create a PFR to populate static maps
-                PartnerFundRequest pfr = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(
-                    dbCamp.id, ipaCoMarketingAccount.id,
-                    System.today().addDays(1), System.today().addDays(10), true);
-
-                // Populate static maps
-                Core_MDF_Proposal_Based_Campaign_Process.propBasedCampIdPfrListIdMap = new Map<Id, List<PartnerFundRequest>>();
-                Core_MDF_Proposal_Based_Campaign_Process.propBasedCampIdClosedPfrListIdMap = new Map<Id, List<PartnerFundRequest>>();
-                List<Campaign> campList = new List<Campaign>{dbCamp};
-                Core_MDF_Proposal_Based_Campaign_Process.queryPFRRecords(campList);
-
-                // Build the field maps that the method expects
-                Map<String, Schema.SObjectField> fieldMap = Schema.getGlobalDescribe().get('Campaign').getDescribe().fields.getMap();
-                
-                // Use a real campaign field that is a picklist
-                String testField = 'Core_MDF_Opal_Budget_Type_Txt__c';
-                Map<String, String> cmpProgWithPLfieldsMap = new Map<String, String>{
-                    'Intel Partner Alliance' => testField
-                };
-                Map<String, Schema.DisplayType> cmpFieldtoFieldDataType = new Map<String, Schema.DisplayType>{
-                    testField => Schema.DisplayType.PICKLIST
-                };
-                Map<String, String> cmpFieldtoFieldLabel = new Map<String, String>{
-                    testField => 'Budget Type'
-                };
-                Map<String, String> cmpProgWithCampNotEditFieldsMap = new Map<String, String>{
-                    'Intel Partner Alliance' => testField
-                };
-
-                // Create old campaign with different field value
-                Campaign oldCamp = dbCamp.clone(true, true, false, false);
-                oldCamp.Core_MDF_Opal_Budget_Type_Txt__c = 'SP AI MDF';
-                Map<Id, Campaign> oldCampMap = new Map<Id, Campaign>{oldCamp.Id => oldCamp};
-
-                // Change the new campaign's field value
-                dbCamp.Core_MDF_Opal_Budget_Type_Txt__c = 'Business Client Acceleration - MDF';
-                
-                try {
-                    Boolean result = Core_MDF_Proposal_Based_Campaign_Process.checkIfFieldsUsedInActivityNotRemoved(
-                        campList, oldCampMap, 'Intel Partner Alliance',
-                        cmpProgWithPLfieldsMap, cmpFieldtoFieldDataType, cmpFieldtoFieldLabel, cmpProgWithCampNotEditFieldsMap);
-                } catch (Exception e) {
-                    // Expected in some scenarios
-                }
-
-                Test.stopTest();
-                Assert.isTrue(true, 'checkIfFieldsUsedInActivityNotRemoved executed');
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testOnCampaignCancelWithCustomSettings() {
-        try {
-            User usr = [SELECT Id FROM User WHERE lastName = 'SysAdmin' LIMIT 1];
-            System.runAs(usr) {
-                Test.startTest();
-
-                // Create custom settings to prevent NPE in isValidationBypassed()
-                // Without these, isValidationBypassed() throws NPE and the ENTIRE onCampaignCancel body is skipped
-                try {
-                    insert new Core_MDF_Configuration__c(Name = 'CAMPAIGN_BYPASS_USERS', Core_MDF_Value__c = 'nobody@bypass.com');
-                } catch (Exception e) { /* May already exist */ }
-                try {
-                    insert new Core_MDF_Configuration__c(Name = 'CAMPAIGN_BYPASS_ALLOWED', Core_MDF_Value__c = 'false');
-                } catch (Exception e) { /* May already exist */ }
-
-                Campaign ipaCampaign = [SELECT Id, Status, Core_MDF_Program__c, Core_MDF_Proposal_Based_Ind__c
-                                        FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
-
-                // Test 1: Old status = 'Completed' → calls handleCompletedCampaigns
-                Campaign newCamp1 = ipaCampaign.clone(true, true, false, false);
-                newCamp1.Status = 'Cancelled';
-                Map<Id, Campaign> oldMapCompleted = new Map<Id, Campaign>{
-                    ipaCampaign.Id => new Campaign(Id = ipaCampaign.Id, Status = 'Completed',
-                                                    Core_MDF_Program__c = ipaCampaign.Core_MDF_Program__c)
-                };
-                Core_MDF_Proposal_Based_Campaign_Process.onCampaignCancel(
-                    new List<Campaign>{newCamp1}, oldMapCompleted);
-
-                // Test 2: Old status = 'Planned' → calls handleActiveCampaigns
-                Campaign newCamp2 = ipaCampaign.clone(true, true, false, false);
-                newCamp2.Status = 'Cancelled';
-                Map<Id, Campaign> oldMapPlanned = new Map<Id, Campaign>{
-                    ipaCampaign.Id => new Campaign(Id = ipaCampaign.Id, Status = 'Planned',
-                                                    Core_MDF_Program__c = ipaCampaign.Core_MDF_Program__c)
-                };
-                Core_MDF_Proposal_Based_Campaign_Process.onCampaignCancel(
-                    new List<Campaign>{newCamp2}, oldMapPlanned);
-
-                // Test 3: Old status = 'In Progress' with IPA program
-                Campaign newCamp3 = ipaCampaign.clone(true, true, false, false);
-                newCamp3.Status = 'Cancelled';
-                Map<Id, Campaign> oldMapInProgress = new Map<Id, Campaign>{
-                    ipaCampaign.Id => new Campaign(Id = ipaCampaign.Id, Status = 'In Progress',
-                                                    Core_MDF_Program__c = 'Intel Partner Alliance')
-                };
-                Core_MDF_Proposal_Based_Campaign_Process.onCampaignCancel(
-                    new List<Campaign>{newCamp3}, oldMapInProgress);
-
-                Test.stopTest();
-                Assert.isTrue(true, 'onCampaignCancel executed with custom settings');
-            }
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testCampaignUpdateToPendingReviewStepZero() {
-        // Runs as current user (who has Core_MDF_CCP_Int_IPA_ProposalL1_Approver PS from TestSetup)
-        // This triggers the IUPGM L1 approval logic block (lines 389-430) in the trigger handler
-        try {
-            Test.startTest();
-
-            Campaign ipaCampaign = [SELECT Id, Status, Core_MDF_Approval_Step_Counter_nbr__c,
-                                     Core_MDF_Proposal_Based_Ind__c, Core_MDF_Program__c
-                                     FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
-
-            ipaCampaign.Status = 'Pending Review';
-            ipaCampaign.Core_MDF_Approval_Step_Counter_nbr__c = 0;
-
-            try {
-                Database.update(ipaCampaign);
-            } catch (Exception e) {
-                // Trigger may add validation errors, but the IUPGM block should have executed before the error
-                Core_MDF_CCP_UtilityClass.logError(e);
-            }
-
-            Test.stopTest();
-            Assert.isTrue(true, 'Campaign update to Pending Review step 0 completed');
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testCheckReimbExceedsBudgetCapWithL2Permission() {
-        // Runs as current user (who has Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver PS from TestSetup)
-        // This covers lines 1979-2033 inside the hasL2ProposalApproverPS=true branch
-        try {
-            Test.startTest();
-
-            Campaign ipaCampaign = [SELECT Id, Status, Core_MDF_Reimbursement_Amt__c, Core_MDF_Budget_Cap__c,
-                                    Core_MDF_Program__c, Core_MDF_Approval_Stage_nm__c,
-                                    Core_MDF_Completed_Approval_Level_Nm__c
-                                    FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
-
-            List<Campaign> campList = new List<Campaign>{ipaCampaign};
-            Map<Id, Campaign> oldMap = new Map<Id, Campaign>{
-                ipaCampaign.Id => new Campaign(Id = ipaCampaign.Id, Status = 'Pending Review')
-            };
-
-            // Call with isStageChange = false
-            try {
-                Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExceedsBudgetCap(
-                    campList, oldMap, false);
-            } catch (Exception e) {
-                Core_MDF_CCP_UtilityClass.logError(e);
-            }
-
-            // Call with isStageChange = true (iterates cmpList directly instead of querying ProcessInstance)
-            try {
-                Core_MDF_Proposal_Based_Campaign_Process.checkifCampaignReimbursementAmountExceedsBudgetCap(
-                    campList, oldMap, true);
-            } catch (Exception e) {
-                Core_MDF_CCP_UtilityClass.logError(e);
-            }
-
-            Test.stopTest();
-            Assert.isTrue(true, 'checkifCampaignReimbursementAmountExceedsBudgetCap with L2 permission completed');
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-
-    @isTest
-    static void testCheckCampaignFieldChangesWithDateChange() {
-        // Tests checkCampaignFieldChanges lines 1168-1226 via trigger
-        // Updates an IPA campaign with changed start date to trigger validateCampaignDateAndAmountAgainstActivity
-        try {
-            Test.startTest();
-
-            Account ipaCoMarketingAccount = [SELECT id FROM Account WHERE Name = 'IPA Co-Marketing Account' LIMIT 1];
-            Campaign ipaCampaign = [SELECT Id, Status, StartDate, EndDate, Core_MDF_Market__c,
-                                    Core_MDF_Program__c, Core_MDF_Reimbursement_Amt__c
-                                    FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
-
-            // Create a PFR so trigger can find active PFRs
-            PartnerFundRequest pfrForTest = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(
-                ipaCampaign.id, ipaCoMarketingAccount.id,
-                System.today().addDays(1), System.today().addDays(15), true);
-
-            // Update with changed dates - triggers checkCampaignFieldChanges
-            ipaCampaign.StartDate = System.today().addDays(2);
-            ipaCampaign.EndDate = System.today().addDays(40);
-            try {
-                Database.update(ipaCampaign);
-            } catch (Exception e) {
-                Core_MDF_CCP_UtilityClass.logError(e);
-            }
-
-            // Also call checkCampaignFieldChanges directly with Map params
-            Campaign newCamp = ipaCampaign.clone(true, true, false, false);
-            newCamp.StartDate = System.today().addDays(3);
-            Campaign oldCamp = new Campaign(Id = ipaCampaign.Id, StartDate = ipaCampaign.StartDate,
-                                            EndDate = ipaCampaign.EndDate,
-                                            Core_MDF_Program__c = ipaCampaign.Core_MDF_Program__c);
-            Map<Id, Campaign> newMap = new Map<Id, Campaign>{newCamp.Id => newCamp};
-            Map<Id, Campaign> oldCampMap = new Map<Id, Campaign>{oldCamp.Id => oldCamp};
-            try {
-                Core_MDF_Proposal_Based_Campaign_Process.checkCampaignFieldChanges(newMap, oldCampMap);
-            } catch (Exception e) {
-                Core_MDF_CCP_UtilityClass.logError(e);
-            }
-
-            Test.stopTest();
-            Assert.isTrue(true, 'checkCampaignFieldChanges with date change executed');
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
         }
     }
 

@@ -53,21 +53,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Claim_Date_From__c</fullName>
-        <defaultValue>Today()</defaultValue>
-        <label>Start Date</label>
-        <required>true</required>
-        <trackTrending>false</trackTrending>
-        <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>Core_Claim_Date_To__c</fullName>
-        <label>End Date</label>
-        <required>true</required>
-        <trackTrending>false</trackTrending>
-        <type>Date</type>
-    </fields>
-    <fields>
         <fullName>Core_IsActive__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Is Active?</label>
@@ -84,8 +69,6 @@
         <columns>Core_Approved_Prime_Account_Name__c</columns>
         <columns>Core_Approved_Sales_Group__c</columns>
         <columns>Core_IsActive__c</columns>
-        <columns>Core_Claim_Date_From__c</columns>
-        <columns>Core_Claim_Date_To__c</columns>
         <columns>CREATED_DATE</columns>
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>

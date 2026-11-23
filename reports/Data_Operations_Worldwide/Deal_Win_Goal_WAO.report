@@ -37,11 +37,11 @@
             <value>1/1/2019 12:00 AM</value>
         </criteriaItems>
         <criteriaItems>
-            <column>CUST_OWNER_NAME</column>
+            <column>Core_Goal__c.Core_Goal_Approver__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Brian Highland,Steven Brightwell</value>
+            <value>Ellen Weston</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

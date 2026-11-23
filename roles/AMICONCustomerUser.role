@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>AMICON Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Inactive_Accounts_Role</parentRole>
+    <parentRole>AMICONCustomerManager</parentRole>
 </Role>

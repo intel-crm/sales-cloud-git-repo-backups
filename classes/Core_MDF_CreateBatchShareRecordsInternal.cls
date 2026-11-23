@@ -266,7 +266,7 @@ global without sharing class Core_MDF_CreateBatchShareRecordsInternal implements
                         if(channelProgramBankProgramMap.get(cp.Name) != NULL) {
                             bankProgramChannelProgramIdMap.put(channelProgramBankProgramMap.get(cp.Name), cp.Id);
                         }
-                    }
+                    }                   
                     
                     for(Core_MDF_Bank__c bank : bankList) {
                         for(String bankProgram : bank.Core_MDF_Program__c.Split(';')) {
@@ -307,7 +307,7 @@ global without sharing class Core_MDF_CreateBatchShareRecordsInternal implements
                     List<Core_MDF_Exception__c> exptListToBeProcessed = new List<Core_MDF_Exception__c>();
                     
                     for(Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem :([SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c
-                                                                              FROM Core_MDF_BankProgram_Entitlement_Mapping__mdt])) {
+                                                                              FROM Core_MDF_BankProgram_Entitlement_Mapping__mdt LIMIT 1000])) {
                         channelProgramBankProgramMap.put(bpem.Core_MDF_Channel_Program__c, bpem.Core_MDF_Bank_Program_Name__c);
                     }
                         
@@ -322,9 +322,9 @@ global without sharing class Core_MDF_CreateBatchShareRecordsInternal implements
                     for(Core_MDF_Exception__c expt :exptList) {
                         for(String exptProgram :expt.Core_MDF_Program_nm__c.Split(';')) {
                             if(expt.Core_MDF_Select_All_Accounts_ind__c == FALSE && expt.Core_MDF_Account_id__c != NULL &&
-                                    accIdProgramIdSet.contains((String) expt.Core_MDF_Account_id__c + exptProgramChannelProgramIdMap.get(exptProgram))) {
-                                        exptListToBeProcessed.add(expt);
-                                    }
+                                accIdProgramIdSet.contains((String) expt.Core_MDF_Account_id__c + exptProgramChannelProgramIdMap.get(exptProgram))) {
+                                    exptListToBeProcessed.add(expt);
+                            }
                         }
                     }                              
                     
@@ -800,27 +800,6 @@ global without sharing class Core_MDF_CreateBatchShareRecordsInternal implements
             }
         }catch(Exception e) { Core_MDF_CCP_UtilityClass.logError(e);}
 	}
-
-	/*****************************************************************************************************
-	   Method Name   :        exceptionShare
-	   @return       :        void
-	   @parameters   :        List of Exception
-	   Description   :        method to call class for Exception Share
-	   Added By      :        Accenture - VK - 11/24/2019
-	   Modified By   :        Date:       		Changes:
-	 ******************************************************************************************************/
-	/*public void exceptionShare(List<Core_MDF_Exception__c> exptList) {
-
-        try{
-            Map<Id, Core_MDF_Exception__c> exceptionMap = new Map<Id, Core_MDF_Exception__c>();
-            for(Core_MDF_Exception__c expt :exptList) {
-                exceptionMap.put(expt.Id, expt);
-            }
-            if(exceptionMap.size() > 0) {
-                Core_MDF_Exception_TriggerServiceHandler.shareExceptionRecordsWithInternalUsers(exceptionMap, false);
-            }
-        }catch(Exception e) { Core_MDF_CCP_UtilityClass.logError(e);}
-	}*/
     
     /*****************************************************************************************************
 	   Method Name   :        exceptionAccountMapShare
@@ -897,6 +876,6 @@ global without sharing class Core_MDF_CreateBatchShareRecordsInternal implements
 	   Modified By :                               Date:                     Changes:None
 	 ******************************************************************************************************/
 	global void finish(Database.BatchableContext bc) {
-		
-	}
+
+	}    
 }

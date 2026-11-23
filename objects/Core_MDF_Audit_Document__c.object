@@ -154,6 +154,14 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
+        <fullName>Core_MDF_AI_Processing_Completed_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field will be checked when claim document is uploaded and processed by AI</description>
+        <label>AI Processing Completed</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_App_Document_Types_nm__c</fullName>
         <description>Holds the Applicable Document Types</description>
         <label>App Document Types</label>
@@ -222,6 +230,14 @@ IF(INCLUDES( Core_MDF_App_Document_Types_nm__c, &quot;Proof of Execution&quot;),
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Claim_Document_AI_Response_txt__c</fullName>
+        <label>Claim Document AI Response</label>
+        <length>131072</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
     </fields>
     <fields>
         <fullName>Core_MDF_Claim__c</fullName>
@@ -301,6 +317,16 @@ IF(INCLUDES( Core_MDF_App_Document_Types_nm__c, &quot;Proof of Execution&quot;),
         <visibleLines>4</visibleLines>
     </fields>
     <fields>
+        <fullName>Core_MDF_Document_Upload_Status_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Document Upload Status</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Download_Document_Title_txt__c</fullName>
         <externalId>false</externalId>
         <label>Download Document Title</label>
@@ -324,9 +350,9 @@ IF(INCLUDES( Core_MDF_App_Document_Types_nm__c, &quot;Proof of Execution&quot;),
     <fields>
         <fullName>Core_MDF_Ext_Document_Name__c</fullName>
         <externalId>false</externalId>
-        <formula>IF((!Core_MDF_SFT_File_Download_Ind__c) , HYPERLINK($Label.Core_MDF_PFRCommunityLink+&apos;sfc/servlet.shepherd/document/download/&apos;+ Core_MDF_Document_Id__c +&apos;?operationContext=S1&apos;, Core_MDF_Document_Title__c ,&apos;blank&apos;), HYPERLINK(Core_MDF_SFT_File_Download_URL__c,Core_MDF_Document_Title__c))</formula>
+        <formula>IF((!Core_MDF_SFT_File_Download_Ind__c) , HYPERLINK($Label.Core_MDF_PFRCommunityLink+&apos;sfc/servlet.shepherd/document/download/&apos;+ Core_MDF_Document_Id__c +&apos;?operationContext=S1&apos;, Core_MDF_Document_Title__c ,&apos;_blank&apos;), HYPERLINK(Core_MDF_SFT_File_Download_URL__c,Core_MDF_Document_Title__c))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Document Name</label>
+        <label>Ext Document Name</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -335,8 +361,9 @@ IF(INCLUDES( Core_MDF_App_Document_Types_nm__c, &quot;Proof of Execution&quot;),
     <fields>
         <fullName>Core_MDF_Int_Document_Name__c</fullName>
         <externalId>false</externalId>
-        <formula>IF((!Core_MDF_SFT_File_Download_Ind__c) , HYPERLINK(&apos;/sfc/servlet.shepherd/document/download/&apos;+ Core_MDF_Document_Id__c +&apos;?operationContext=S1&apos;, Core_MDF_Document_Title__c ,&apos;blank&apos;), HYPERLINK(Core_MDF_SFT_File_Download_URL__c,Core_MDF_Document_Title__c))</formula>
+        <formula>IF((!Core_MDF_SFT_File_Download_Ind__c) , HYPERLINK(&apos;/sfc/servlet.shepherd/document/download/&apos;+ Core_MDF_Document_Id__c +&apos;?operationContext=S1&apos;, Core_MDF_Document_Title__c ,&apos;_blank&apos;), HYPERLINK(Core_MDF_SFT_File_Download_URL__c,Core_MDF_Document_Title__c))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Download File Name Could be Shorter if its exceeding System Limit.</inlineHelpText>
         <label>Document Name</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -407,6 +434,32 @@ IF(INCLUDES( Core_MDF_Document_Types__c , &quot;Proof of Execution&quot;), $Labe
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>Encoded_Document_Title_Long_Text__c</fullName>
+        <label>Encoded Document Title Long Text</label>
+        <length>131072</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Test_Field__c</fullName>
+        <label>Test Field</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>testSFTFileUploadId__c</fullName>
+        <externalId>false</externalId>
+        <label>testSFTFileUploadId</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>Case Review Document</label>
     <nameField>
         <displayFormat>DOC-{0000}</displayFormat>
@@ -422,6 +475,12 @@ IF(INCLUDES( Core_MDF_Document_Types__c , &quot;Proof of Execution&quot;), $Labe
         <description>Applicable document types and selected document types shouldn&apos;t be empty.</description>
         <errorConditionFormula>IF( $CustomMetadata.Trigger_Execution__mdt.Core_MDF_Audit_Doc_Type_Check.Active__c == true,IF(OR(ISBLANK(Core_MDF_App_Document_Types_nm__c), ISBLANK(Core_MDF_Document_Types__c)), true, false), false)</errorConditionFormula>
         <errorMessage>You cannot insert/update Documents without Document Type(POC, POA, POE).</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_File_Select_Check</fullName>
+        <active>false</active>
+        <errorConditionFormula>IF(ISNEW() , false, AND(NOT(Core_MDF_Proof_of_Branding__c), NOT(Core_MDF_Proof_of_Cost__c),NOT(Core_MDF_Proof_of_Execution__c)))</errorConditionFormula>
+        <errorMessage>At least one file type should must be selected for each file.</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

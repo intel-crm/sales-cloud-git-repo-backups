@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Exclude Accounts for Recovery</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Exclude Accounts for Recoveries</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Id --></label>
+        <name>Core_MDF_Account_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Channel Program --></label>
+        <name>Core_MDF_Channel_Program__c</name>
+        <picklistValues>
+            <masterLabel>Client CoMarketing Fund</masterLabel>
+            <translation><!-- Client CoMarketing Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client CoMarketing Fund Boost</masterLabel>
+            <translation><!-- Client CoMarketing Fund Boost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center CoMarketing Fund</masterLabel>
+            <translation><!-- Data Center CoMarketing Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Partner Alliance</masterLabel>
+            <translation><!-- Intel Partner Alliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Marketing Funds</masterLabel>
+            <translation><!-- Retail Marketing Funds --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider CoMarketing Fund</masterLabel>
+            <translation><!-- Service Provider CoMarketing Fund --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -21,6 +21,9 @@
                 <sourceValue>Cancelled</sourceValue>
             </sourceValues>
             <sourceValues>
+                <sourceValue>Deleted</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>Lost</sourceValue>
             </sourceValues>
             <value>lost/cancelled</value>

@@ -213,34 +213,6 @@
         <label>All</label>
         <language>en_US</language>
     </listViews>
-    <listViews>
-        <fullName>User_Details_Modified_Today</fullName>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
-        <columns>NAME</columns>
-        <columns>Core_Impacted_User__c</columns>
-        <columns>Core_Modified_User_Field__c</columns>
-        <columns>Core_Previous_Value__c</columns>
-        <columns>Core_Current_Value__c</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>LAST_UPDATE</field>
-            <operation>equals</operation>
-            <value>TODAY</value>
-        </filters>
-        <filters>
-            <field>UPDATEDBY_USER</field>
-            <operation>notContain</operation>
-            <value>Integration User</value>
-        </filters>
-        <filters>
-            <field>UPDATEDBY_USER</field>
-            <operation>notContain</operation>
-            <value>AGS API</value>
-        </filters>
-        <label>User Details Modified Today</label>
-        <language>en_US</language>
-    </listViews>
     <nameField>
         <label>Core_User_Field_Change_History_Name</label>
         <trackHistory>false</trackHistory>

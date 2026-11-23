@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">Region and Sub Region (only for ASMO region) are required for the selected account and program.</value>
+        <value xsi:type="xsd:string">Region and Sub region (only for ASMO region) are required for the selected account and program.</value>
     </values>
 </CustomMetadata>

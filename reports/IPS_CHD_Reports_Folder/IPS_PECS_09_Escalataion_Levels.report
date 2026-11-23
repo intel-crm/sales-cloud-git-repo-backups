@@ -93,16 +93,31 @@
         <sourceColumnName>Case.Core_IPS_Escalated_Level__c</sourceColumnName>
         <useOther>true</useOther>
         <values>
-            <value>1-Front Line</value>
+            <sourceValues>
+                <sourceValue>Front Line Support</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Consult with Front Line Support</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Consult with Domain Expert</sourceValue>
+            </sourceValues>
+            <value>Front Line</value>
         </values>
         <values>
             <sourceValues>
+                <sourceValue>Escalate to Domain Expert</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>Domain Expert</sourceValue>
             </sourceValues>
-            <value>2-Domain Expert</value>
+            <value>Domain Expert</value>
         </values>
         <values>
-            <value>3-Engineering</value>
+            <sourceValues>
+                <sourceValue>Development/Engineering</sourceValue>
+            </sourceValues>
+            <value>Engineering</value>
         </values>
     </buckets>
     <buckets>
@@ -146,13 +161,13 @@
             <axisBinding>y</axisBinding>
             <column>RowCount</column>
         </chartSummaries>
-        <chartType>VerticalColumnStacked</chartType>
+        <chartType>VerticalColumnStackedTo100</chartType>
         <enableHoverLabels>true</enableHoverLabels>
         <expandOthers>true</expandOthers>
         <groupingColumn>CLOSED_DATEONLY</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_TOP</location>
-        <secondaryGroupingColumn>BucketField_21199437</secondaryGroupingColumn>
+        <secondaryGroupingColumn>Case.Core_CaseType__c</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -213,7 +228,7 @@
         <field>Case.Core_IPS_Backend_ID_URL__c</field>
     </columns>
     <filter>
-        <booleanFilter>(1 AND 2 AND (3 OR 4)) AND 5 AND 6</booleanFilter>
+        <booleanFilter>1 AND 2 AND (3 OR 4)</booleanFilter>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
             <columnToColumn>false</columnToColumn>
@@ -241,20 +256,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_CaseType__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Feature Request</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PRIORITY</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>Critical,High</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

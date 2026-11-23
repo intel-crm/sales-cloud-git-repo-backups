@@ -18,28 +18,13 @@
     <columns>
         <field>Core_Goal__c.Core_Goal_Status__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Core_Goal__c.Core_Goal_KPI_Match_Flag__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Core_Goal__c.Core_Goal_KPI_Achieved_Flag__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Core_Goal__c.Core_Goal_Claim_Date__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterThan</operator>
-            <value>1/1/2018</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_Goal__c.Core_Goal_Claim_Date__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>lessThan</operator>
-            <value>1/1/2019</value>
+            <value>12/29/2018</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

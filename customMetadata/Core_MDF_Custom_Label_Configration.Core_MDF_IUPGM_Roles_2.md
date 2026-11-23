@@ -16,11 +16,11 @@
     </values>
     <values>
         <field>Core_MDF_Value3_Txt__c</field>
-        <value xsi:type="xsd:string">Core_MDF_Internal_Co_GTM_Escalation_Reviewer;Core_MDF_Internal_EEF_Escalation_Reviewer;Core_MDF_Internal_EEF_Exception_Reviewer;Core_MDF_CCP_Internal_Regional_Admin;Core_MDF_CCP_Internal_Co_GTM_Business_Approver</value>
+        <value xsi:type="xsd:string">Core_MDF_Internal_Co_GTM_Escalation_Reviewer;Core_MDF_Internal_EEF_Escalation_Reviewer;Core_MDF_Internal_EEF_Exception_Reviewer;Core_MDF_CCP_Internal_Regional_Admin;Core_MDF_CCP_Internal_Co_GTM_Business_Approver;Core_MDF_CCP_Internal_Co_Inv_Budget_Loader;</value>
     </values>
     <values>
         <field>Core_MDF_Value4_Txt__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">Core_MDF_CCP_Internal_Co_Inv_Budget_Approver</value>
     </values>
     <values>
         <field>Core_MDF_Value5_Txt__c</field>

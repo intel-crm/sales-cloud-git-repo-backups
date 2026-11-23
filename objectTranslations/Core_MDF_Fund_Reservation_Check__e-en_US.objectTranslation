@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Fund Reservation Check on Insert</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Fund Reservation Check on Inserts</value>
+    </caseValues>
+    <fields>
+        <label><!-- Core_MDF_ClaimID --></label>
+        <name>Core_MDF_ClaimID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_MDF_ClaimName --></label>
+        <name>Core_MDF_ClaimName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_MDF_ErrorMessage --></label>
+        <name>Core_MDF_ErrorMessage__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

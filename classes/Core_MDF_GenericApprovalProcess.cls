@@ -930,21 +930,23 @@ public Without Sharing class Core_MDF_GenericApprovalProcess {
             }
             if(operator == 'In'){
                 list<String> mainString = crtValue.toLowerCase().split(';');
-                if(mainString.contains(recValue.toLowerCase())){
+                /*if(mainString.contains(recValue.toLowerCase())){
                     return true;
                 }
                 else{
                     return false;
-                }
+                }*/
+                return mainString.contains(recValue.toLowerCase());
             }
             if(operator == 'Not In'){
                 list<String> mainString = crtValue.toLowerCase().split(';');
-                if(!mainString.contains(recValue.toLowerCase())){
+                /*if(!mainString.contains(recValue.toLowerCase())){
                     return true;
                 }
                 else{
                     return false;
-                }
+                }*/
+                return !mainString.contains(recValue.toLowerCase());
             }               
             return false;
         }
@@ -976,7 +978,56 @@ public Without Sharing class Core_MDF_GenericApprovalProcess {
         }
         //Multi-Select type comparison with all appropriate operators
         if(multiSelectType.contains(fieldType)){
-            if(operator == 'Equal'){
+            //ATHR Fix WW19 - Start
+            Set<String> mainValues = new Set<String>(crtValue.toLowerCase().split(';'));
+            List<String> recValues = recValue.toLowerCase().split(';');
+            switch on operator {
+                when 'Equal' {
+                    if (mainValues.size() != recValues.size()) {
+                        return false;
+                    }
+                    for (String val : recValues) {
+                        if (!mainValues.contains(val)) {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                when 'Not Equal' {
+                    for (String val : recValues) {
+                        if (!mainValues.contains(val)) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+                when 'In' {
+                    for (String val : recValues) {
+                        if (!mainValues.contains(val)) {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                when 'Any' {
+                    for (String val : recValues) {
+                        if (mainValues.contains(val)) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+                when 'Not In' {
+                    for (String val : recValues) {
+                        if (mainValues.contains(val)) {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+            }
+            //ATHR Fix WW19 - End
+            /*if(operator == 'Equal'){
                 if(crtValue.split(';').size() != recValue.split(';').size()){
                     return false;
                 }
@@ -1028,7 +1079,7 @@ public Without Sharing class Core_MDF_GenericApprovalProcess {
                     }
                 }
                 return true;
-            }           
+            }*/    
             return false;
         }
         //Returning false if user selects inappropriate operator 

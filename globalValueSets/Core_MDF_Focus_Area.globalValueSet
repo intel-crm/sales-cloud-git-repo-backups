@@ -11,14 +11,14 @@
         <label>Data Center</label>
     </customValue>
     <customValue>
-        <fullName>Edge</fullName>
-        <default>false</default>
-        <label>Edge</label>
-    </customValue>
-    <customValue>
         <fullName>Networking &amp; Telco</fullName>
         <default>false</default>
         <label>Networking &amp; Telco</label>
+    </customValue>
+    <customValue>
+        <fullName>Edge</fullName>
+        <default>false</default>
+        <label>Edge</label>
     </customValue>
     <customValue>
         <fullName>FC1</fullName>
@@ -27,18 +27,18 @@
         <label>FC1</label>
     </customValue>
     <customValue>
-        <fullName>FC2</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>FC2</label>
-    </customValue>
-    <customValue>
         <fullName>Networking &amp; Intelligent Edge</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>Networking &amp; Intelligent Edge</label>
     </customValue>
+    <customValue>
+        <fullName>FC2</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>FC2</label>
+    </customValue>
     <description>Store focus Area value</description>
     <masterLabel>Focus Area</masterLabel>
-    <sorted>true</sorted>
+    <sorted>false</sorted>
 </GlobalValueSet>

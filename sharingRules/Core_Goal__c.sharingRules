@@ -8,10 +8,31 @@
         <sharedTo>
             <group>Deal_Win_Goals_All</group>
         </sharedTo>
+        <booleanFilter>(1 OR 2 OR 3 OR 4 OR 5)</booleanFilter>
         <criteriaItems>
             <field>Core_Goal_Status__c</field>
-            <operation>notEqual</operation>
-            <value>Pending</value>
+            <operation>equals</operation>
+            <value>Draft</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_Goal_Status__c</field>
+            <operation>equals</operation>
+            <value>Accepted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_Goal_Status__c</field>
+            <operation>equals</operation>
+            <value>Cancelled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_Goal_Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_Goal_Status__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

@@ -53,10 +53,7 @@
             </containers>
         </primaryTabComponents>
     </customConsoleComponents>
-    <excludeButtons>ChangeRecordType</excludeButtons>
     <excludeButtons>Clone</excludeButtons>
-    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
-    <excludeButtons>SmartFillEnrich</excludeButtons>
     <headers>PersonalTagging</headers>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -104,16 +101,15 @@
                 <width>100%</width>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_Loss_Cancel_Reason__c</field>
+                <height>25</height>
+                <page>Core_Msg_OnKPIUpdate</page>
+                <showLabel>false</showLabel>
+                <showScrollbars>false</showScrollbars>
+                <width>100%</width>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_Loss_Cancel_Details__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Decision_Date__c</field>
+                <field>Smartpicklist_TestingField__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -130,15 +126,15 @@
                 <field>Core_Opportunity_Type__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Core_Product_Segment__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Core_Product_Application__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Core_Consumption_Market__c</field>
             </layoutItems>
             <layoutItems>
@@ -157,13 +153,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_Exclude_From_KPIs__c</field>
             </layoutItems>
-            <layoutItems>
-                <height>25</height>
-                <page>Core_Msg_OnKPIUpdate</page>
-                <showLabel>false</showLabel>
-                <showScrollbars>false</showScrollbars>
-                <width>100%</width>
-            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
@@ -179,19 +168,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>NextStep</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Core_Status_Update__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_VBS_Potential__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_VBS_Status__c</field>
             </layoutItems>
         </layoutColumns>
         <style>OneColumn</style>
@@ -214,10 +191,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_Manufacturing_Geo__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Push_Reason__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -232,10 +205,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_Competitor_Architecture__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Push_Reason_Details__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
@@ -244,8 +213,57 @@
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
         <label>Opportunity Information: Deal</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Solution_Area__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Solution_Type__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Solution_Detail__c</field>
+            </layoutItems>
+        </layoutColumns>
         <layoutColumns/>
-        <style>OneColumn</style>
+        <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Opportunity Information: At Risk</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Risk_Reason__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Support_Requested__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_At_Risk_Created_Date__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Support_Completed__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Loss_Cancel_Reason__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Loss_Cancel_Details__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>TwoColumnsTopToBottom</style>
     </layoutSections>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -258,33 +276,85 @@
                 <field>Core_Military_Aerospace_Govmt_End_Use__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MAG_Questionnaire__c</field>
+                <behavior>Edit</behavior>
+                <field>Core_Standard_Customer_Refresh__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Compliance_Status__c</field>
             </layoutItems>
             <layoutItems>
-                <height>65</height>
-                <page>Core_MINDS_Compliance_Message</page>
-                <showLabel>false</showLabel>
-                <showScrollbars>false</showScrollbars>
-                <width>100%</width>
+                <behavior>Readonly</behavior>
+                <field>Core_MAG_Questionnaire__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_MAG_Account__c</field>
+            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Compliance_Comments__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_Private_Compliance_Comments__c</field>
+                <field>Core_Compliance_Sub_Status__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_Compliance_Sub_Status__c</field>
+                <field>Core_Private_Compliance_Comments__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Lead Information</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LeadSource</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Project_Timeframe__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Product_Interest__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>CampaignId</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Marketing_Tactic_Details__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Project_Size__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Project_Phase__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Current_Architecture__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Lead_Conversion_Point__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Customer_Project_Details__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -351,11 +421,43 @@
                 <field>Core_Opportunity_ID__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Channel_Opportunity_Ind__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_Design_Registration_Id__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>false</editHeading>
+        <label>6Q Product Scheduling (Mainly for DCG Cloud and Comms Opportunities)</label>
+        <layoutColumns>
+            <layoutItems>
+                <height>280</height>
+                <page>Core_FC_Product_Schedule</page>
+                <showLabel>false</showLabel>
+                <showScrollbars>true</showScrollbars>
+                <width>100%</width>
+            </layoutItems>
+        </layoutColumns>
+        <style>OneColumn</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>false</editHeading>
+        <label> </label>
+        <layoutColumns>
+            <layoutItems>
+                <emptySpace>true</emptySpace>
+            </layoutItems>
+        </layoutColumns>
+        <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -370,136 +472,66 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>Opportunity.Lost</actionName>
+            <actionName>FeedItem.TextPost</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>0</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>FeedItem.TextPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>1</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>Edit</actionName>
             <actionType>StandardButton</actionType>
-            <sortOrder>2</sortOrder>
+            <sortOrder>1</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>FeedItem.ContentNote</actionName>
             <actionType>QuickAction</actionType>
-            <sortOrder>3</sortOrder>
+            <sortOrder>2</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Opportunity.Claim_Opportunity</actionName>
+            <actionName>NewContact</actionName>
             <actionType>QuickAction</actionType>
-            <sortOrder>4</sortOrder>
+            <sortOrder>3</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>NewTask</actionName>
             <actionType>QuickAction</actionType>
-            <sortOrder>5</sortOrder>
+            <sortOrder>4</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>NewEvent</actionName>
             <actionType>QuickAction</actionType>
-            <sortOrder>6</sortOrder>
+            <sortOrder>5</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>LogACall</actionName>
+            <actionName>Opportunity.Log_a_Call</actionName>
             <actionType>QuickAction</actionType>
-            <sortOrder>7</sortOrder>
+            <sortOrder>6</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>Core_Lex_Opp_Sharing</actionName>
             <actionType>CustomButton</actionType>
-            <sortOrder>8</sortOrder>
+            <sortOrder>7</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>Submit</actionName>
             <actionType>StandardButton</actionType>
+            <sortOrder>8</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Core_Opportunity_Clone_Button</actionName>
+            <actionType>CustomButton</actionType>
             <sortOrder>9</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Opportunity.Core_Submit_for_Approval_LWC</actionName>
-            <actionType>QuickAction</actionType>
+            <actionName>Core_Sales_Support</actionName>
+            <actionType>CustomButton</actionType>
             <sortOrder>10</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Opportunity.Core_OpportunitySupport</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>11</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>SendEmail</actionName>
             <actionType>QuickAction</actionType>
-            <sortOrder>12</sortOrder>
+            <sortOrder>11</sortOrder>
         </platformActionListItems>
     </platformActionList>
-    <relatedLists>
-        <fields>MemberName</fields>
-        <fields>Core_User_Type_Indicator__c</fields>
-        <fields>Core_User_Type__c</fields>
-        <fields>OppAccessLevel</fields>
-        <fields>TeamMemberRole</fields>
-        <fields>Core_Production_Win_Member_Role__c</fields>
-        <fields>Core_Description_of_Contribution__c</fields>
-        <fields>Core_Team_Member_Geo__c</fields>
-        <fields>Core_Date_Added__c</fields>
-        <relatedList>RelatedOpportunitySalesTeam</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>ContactName</fields>
-        <fields>Role</fields>
-        <fields>ContactTitle</fields>
-        <fields>IsPrimary</fields>
-        <fields>ContactPhone</fields>
-        <fields>ContactEmail</fields>
-        <fields>ContactAccountName</fields>
-        <relatedList>RelatedContactRoleList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <relatedList>RelatedNoteList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <customButtons>Refresh_KPIs</customButtons>
-        <customButtons>Core_Opportunity_Credit</customButtons>
-        <fields>NAME</fields>
-        <fields>Core_KPI_Achieved__c</fields>
-        <fields>Core_KPI_Total_Price__c</fields>
-        <fields>Core_KPI_Threshold_Met__c</fields>
-        <fields>Core_KPI_Opportunity_Product_Name__c</fields>
-        <fields>Core_Opportunity_Product_Id__c</fields>
-        <fields>Core_KPI_Quantity__c</fields>
-        <fields>CREATED_DATE</fields>
-        <fields>Core_TIER__c</fields>
-        <fields>Core_IsActive__c</fields>
-        <relatedList>Core_Oppty_KPI_New__c.Core_KPI_Opportunity__c</relatedList>
-        <sortField>Core_IsActive__c</sortField>
-        <sortOrder>Desc</sortOrder>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>Core_Partner__c</fields>
-        <fields>Core_Partner_Type__c</fields>
-        <fields>Core_Partner_Role__c</fields>
-        <fields>Core_Partner_Salesperson__c</fields>
-        <fields>Core_Partner_Program__c</fields>
-        <relatedList>Core_Opportunity_Partner__c.Core_Opportunity__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
-        <fields>Core_Opp_Solution__c</fields>
-        <fields>Solution_Area_Type__c</fields>
-        <fields>Core_Industry_Use_Case_s__c</fields>
-        <fields>Core_Industry__c</fields>
-        <fields>Core_End_Customer_Solution__c</fields>
-        <fields>Core_Application_Workload__c</fields>
-        <fields>Core_Technology_Enabled__c</fields>
-        <fields>Core_Version__c</fields>
-        <fields>Core_Region_of_availability__c</fields>
-        <relatedList>Opportunity_Solution_Area__c.Core_Opportunity__c</relatedList>
-    </relatedLists>
     <relatedLists>
         <customButtons>Core_Edit_Product_Attributes</customButtons>
         <customButtons>Core_Product_Credit</customButtons>
@@ -512,7 +544,6 @@
         <fields>Core_Write_In_Product_Name__c</fields>
         <fields>Core_BU_Short_Name__c</fields>
         <fields>Core_Vendor__c</fields>
-        <fields>Core_Vendor_InActive__c</fields>
         <relatedList>RelatedLineItemList</relatedList>
     </relatedLists>
     <relatedLists>
@@ -526,6 +557,87 @@
         <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <excludeButtons>New</excludeButtons>
+        <fields>NAME</fields>
+        <fields>Core_Opp_KPI_Achieved__c</fields>
+        <fields>Core_Opp_KPI_Threshold_Met__c</fields>
+        <fields>Core_Opp_KPI_Add_Date__c</fields>
+        <fields>Core_Opp_KPI_Last_Update_Date__c</fields>
+        <relatedList>Core_Opportunity_KPI__c.Core_Opp_KPI_Opportunity__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <excludeButtons>New</excludeButtons>
+        <fields>NAME</fields>
+        <fields>Core_Goal_Owner__c</fields>
+        <fields>Core_Goal_Status__c</fields>
+        <fields>Core_Goal_Category__c</fields>
+        <fields>Core_Goal_BU_Focus_Area__c</fields>
+        <fields>Core_Goal_Criteria__c</fields>
+        <fields>Core_Goal_Claim_Date__c</fields>
+        <fields>Core_Goal_Accept_Date__c</fields>
+        <relatedList>Core_Goal__c.Core_Opportunity__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>MemberName</fields>
+        <fields>OppAccessLevel</fields>
+        <fields>TeamMemberRole</fields>
+        <fields>Core_Team_Member_Geo__c</fields>
+        <fields>Core_Date_Added__c</fields>
+        <relatedList>RelatedOpportunitySalesTeam</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Core_Partner__c</fields>
+        <fields>Core_Partner_Type__c</fields>
+        <fields>Core_Partner_Role__c</fields>
+        <fields>Core_Partner_Salesperson__c</fields>
+        <fields>Core_Partner_Program__c</fields>
+        <relatedList>Core_Opportunity_Partner__c.Core_Opportunity__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <relatedList>RelatedContentNoteList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <relatedList>RelatedNoteList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>TASK.SUBJECT</fields>
+        <fields>TASK.WHO_NAME</fields>
+        <fields>ACTIVITY.TASK</fields>
+        <fields>TASK.DUE_DATE</fields>
+        <fields>TASK.STATUS</fields>
+        <fields>TASK.PRIORITY</fields>
+        <fields>CORE.USERS.FULL_NAME</fields>
+        <relatedList>RelatedActivityList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>TASK.SUBJECT</fields>
+        <fields>TASK.WHO_NAME</fields>
+        <fields>ACTIVITY.TASK</fields>
+        <fields>TASK.DUE_DATE</fields>
+        <fields>CORE.USERS.FULL_NAME</fields>
+        <fields>TASK.LAST_UPDATE</fields>
+        <relatedList>RelatedHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Core_Account__c</fields>
+        <fields>UPDATEDBY_USER</fields>
+        <fields>CREATEDBY_USER</fields>
+        <relatedList>Core_CCV__c.Core_Opportunity__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>ContactName</fields>
+        <fields>Role</fields>
+        <fields>ContactTitle</fields>
+        <fields>IsPrimary</fields>
+        <fields>ContactPhone</fields>
+        <fields>ContactEmail</fields>
+        <fields>ContactAccountName</fields>
+        <relatedList>RelatedContactRoleList</relatedList>
+    </relatedLists>
+    <relatedLists>
         <customButtons>Core_New_IT_Intel_Engagement</customButtons>
         <fields>NAME</fields>
         <fields>Core_Expert_Engagement_Type__c</fields>
@@ -535,23 +647,16 @@
         <relatedList>Core_Expert_Engagement__c.Core_Opportunity_Name__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
+        <customButtons>Core_New_Sales_Support_Request</customButtons>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
-        <fields>CRM_VBS_SOAR_Stage__c</fields>
-        <fields>CRM_VBS_SOAR_VBS_Decision__c</fields>
-        <fields>CRM_VBS_Primary_VBS_Offering_Category__c</fields>
-        <fields>CRM_VBS_QB_Resource__c</fields>
-        <relatedList>CRM_VBS_SOAR__c.CRM_VBS_SOAR_Opportunity__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <relatedList>RelatedContentNoteList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <relatedList>RelatedOpportunityHistoryList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <relatedList>RelatedEntityHistoryList</relatedList>
+        <fields>RECORDTYPE</fields>
+        <fields>OWNER.FIRST_NAME</fields>
+        <fields>OWNER.LAST_NAME</fields>
+        <fields>CREATED_DATE</fields>
+        <fields>UPDATEDBY_USER</fields>
+        <fields>LAST_UPDATE</fields>
+        <relatedList>Core_Sales_Support_Request__c.Core_Opportunity__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>CreatedDate</fields>
@@ -560,6 +665,12 @@
         <fields>Actor</fields>
         <fields>Comments</fields>
         <relatedList>RelatedProcessHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <relatedList>RelatedOpportunityHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
     <relatedLists>
         <excludeButtons>New</excludeButtons>
@@ -584,48 +695,6 @@
         <fields>Core_Opp_KPI_Last_Updated_Date_History__c</fields>
         <fields>Core_Opp_KPI_Operation__c</fields>
         <relatedList>Core_Opp_KPI_History__c.Core_Opp_KPI_Opportunity_Name__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
-        <fields>NAME</fields>
-        <fields>jiffle__Account__c</fields>
-        <fields>jiffle__Meeting__c</fields>
-        <fields>jiffle__Meeting_ID__c</fields>
-        <fields>jiffle__Request_Status__c</fields>
-        <fields>jiffle__Event__c</fields>
-        <fields>CREATEDBY_USER</fields>
-        <fields>CREATED_DATE</fields>
-        <relatedList>jiffle__Meeting_Relations__c.jiffle__Opportunity__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
-        <fields>NAME</fields>
-        <fields>Pricing_Name__c</fields>
-        <fields>SBQQ__Version__c</fields>
-        <fields>CREATED_DATE</fields>
-        <fields>Pricing_View_Download__c</fields>
-        <relatedList>SBQQ__QuoteDocument__c.SBQQ__Opportunity__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
-        <fields>CRM_Primary_Opportunity__c</fields>
-        <fields>CRM_Link_Reason__c</fields>
-        <fields>CRM_Link_Description__c</fields>
-        <relatedList>CRM_Linked_Opportunities__c.CRM_Linked_Opportunity__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>UniTag__Tag__c</fields>
-        <fields>CREATED_DATE</fields>
-        <fields>CREATEDBY_USER</fields>
-        <relatedList>UniTag__Tagging__c.Opportunity__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>PRM_Partner_Deal_Opportunity__c.PRM_Sales_Opportunity__c</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

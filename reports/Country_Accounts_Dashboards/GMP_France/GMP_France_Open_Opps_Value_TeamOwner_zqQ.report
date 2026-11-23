@@ -69,36 +69,6 @@
             <value>Andreas Timm Team</value>
         </values>
     </buckets>
-    <buckets>
-        <bucketType>text</bucketType>
-        <developerName>BucketField_51868361</developerName>
-        <masterLabel>Teams - by Owner Role</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <otherBucketLabel>Other</otherBucketLabel>
-        <sourceColumnName>ROLLUP_DESCRIPTION</sourceColumnName>
-        <useOther>true</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>EMP of Helene De La Gastine</sourceValue>
-            </sourceValues>
-            <value>Disti&amp;Scale (H d.l. Gastine)</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>EMP of ERWAN MONTAUX</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>EMP of J.F Mukumbi</sourceValue>
-            </sourceValues>
-            <value>BizCon (E Montaux)</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>EMP of Fabien Esdourubail</sourceValue>
-            </sourceValues>
-            <value>France accounts (F Esdourubail)</value>
-        </values>
-    </buckets>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
         <backgroundColor2>#FFFFFF</backgroundColor2>
@@ -107,11 +77,13 @@
             <axisBinding>y</axisBinding>
             <column>RowCount</column>
         </chartSummaries>
-        <chartType>HorizontalBar</chartType>
+        <chartType>HorizontalBarGrouped</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>FULL_NAME</groupingColumn>
+        <groupingColumn>BucketField_2572062</groupingColumn>
+        <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>FULL_NAME</secondaryGroupingColumn>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -123,9 +95,6 @@
         <titleColor>#000000</titleColor>
         <titleSize>18</titleSize>
     </chart>
-    <columns>
-        <field>ROLLUP_DESCRIPTION</field>
-    </columns>
     <columns>
         <field>ACCOUNT_OWNER</field>
     </columns>
@@ -185,16 +154,13 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>BucketField_51868361</field>
+        <field>BucketField_2572062</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
-        <aggregateType>Sum</aggregateType>
         <dateGranularity>Day</dateGranularity>
         <field>FULL_NAME</field>
-        <sortByName>AMOUNT</sortByName>
         <sortOrder>Asc</sortOrder>
-        <sortType>Aggregate</sortType>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>

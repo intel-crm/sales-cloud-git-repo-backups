@@ -100,7 +100,7 @@
     </actionOverrides>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <enableFeeds>false</enableFeeds>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>AccountId</fullName>
         <trackHistory>false</trackHistory>
@@ -188,8 +188,6 @@
         <lookupPhoneDialogsAdditionalFields>MessagingConsentStatus</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>CONTACT.PHONE3</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>CONTACT.PHONE5</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>Contact.Core_LS_Phone__c</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>Account.Core_User_Defined_Phone_Number__c</lookupPhoneDialogsAdditionalFields>
         <searchResultsAdditionalFields>MessagingPlatformKey</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>MessagingChannel</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>MessageType</searchResultsAdditionalFields>

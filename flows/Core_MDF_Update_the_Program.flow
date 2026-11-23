@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Core_MDF_Update_the_Program workflow rule</description>
+    <environments>Default</environments>
+    <interviewLabel>Core_MDF_Update_the_Program {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_MDF_Update_the_Program</label>
+    <migratedFromWorkflowRuleName>Core_MDF_Update_the_Program</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Core_MDF_Update_the_Program_Field</name>
+        <label>Update the Program Field</label>
+        <locationX>176</locationX>
+        <locationY>335</locationY>
+        <inputAssignments>
+            <field>Core_MDF_Program__c</field>
+            <value>
+                <elementReference>$Record.Core_MDF_Account__r.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_MDF_Update_the_Program_Field</targetReference>
+        </connector>
+        <filterFormula>1 != 2</filterFormula>
+        <object>Core_MDF_Account_Bank_Mapping__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

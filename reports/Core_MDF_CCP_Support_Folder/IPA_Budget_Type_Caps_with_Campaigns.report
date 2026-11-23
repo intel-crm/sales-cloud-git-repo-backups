@@ -86,6 +86,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>Core_MDF_Budget_Cap__c$Core_MDF_Budget_Type_nm__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Core_MDF_Budget_Cap__c$CreatedDate</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

@@ -1,0 +1,58 @@
+<template>      
+                        <header class="slds-modal__header">
+                                <h2 class="slds-text-heading_medium">Open Activity To Claim</h2>
+                                <!--<lightning-icon class="slds-modal__close" icon-name="utility:close" size="small"
+                                        onclick={handleCloseModal}></lightning-icon>-->
+                        </header>
+                        <div class="slds-modal__content">
+                                <div class="slds-p-around_none slds-m-top_x-small slds-m-bottom_medium slds-m-horizontal_none">
+                                        <lightning-layout multiple-rows>
+
+                                            <lightning-layout-item size="2" padding="around-small">Activity #</lightning-layout-item>
+                                            <lightning-layout-item size="4" padding="around-small">
+                                                        <lightning-input type="text" value={activityNumber} variant="label-hidden" disabled={isDisabled}></lightning-input>
+                                            </lightning-layout-item>
+
+                                            <lightning-layout-item size="2" padding="around-small">Activity Name</lightning-layout-item>
+                                            <lightning-layout-item size="4" padding="around-small">
+                                                        <lightning-input type="text" value={activityName} variant="label-hidden" disabled={isDisabled}></lightning-input>
+                                            </lightning-layout-item>
+
+                                            <lightning-layout-item size="2" padding="around-small">Activity Spending Limit Local</lightning-layout-item>
+                                            <lightning-layout-item size="4" padding="around-small">
+                                                        <lightning-input type="number" value={activitySpendingLimitLocal} variant="label-hidden" disabled={isDisabled}></lightning-input>
+                                            </lightning-layout-item>
+
+                                            <lightning-layout-item size="2" padding="around-small">Reimbursement Rate</lightning-layout-item>
+                                            <lightning-layout-item size="4" padding="around-small">
+                                                        <lightning-input type="text" value={reimbursementRate} variant="label-hidden" disabled={isDisabled}></lightning-input>
+                                            </lightning-layout-item>
+
+                                            <lightning-layout-item size="2" padding="around-small">Activity Reserved Amount</lightning-layout-item>
+                                            <lightning-layout-item size="4" padding="around-small">
+                                                        <lightning-input type="number" value={activityReservedAmount} variant="label-hidden" disabled={isDisabled}></lightning-input>
+                                            </lightning-layout-item>
+
+                                            <lightning-layout-item size="2" padding="around-small">Amount to be Claimed</lightning-layout-item>
+                                            <lightning-layout-item size="4" padding="around-small">
+                                                        <lightning-input type="number" onchange={handleAmountChange} value={amountValue} variant="label-hidden"></lightning-input>
+                                            </lightning-layout-item>
+
+                                            <template if:true={isInValidAmount}>
+                                                <p class="slds-text-color_error" style="padding-left:69%">Amount should be less then $1234</p>
+                                            </template>
+                                            <template if:false={isInValidAmount}>
+                                                <p class="slds-text-color_success" style="padding-left:69%">Available : $1234</p>
+                                            </template>
+                                            
+
+                                        </lightning-layout>
+                                    </div>
+                        </div>
+                        <footer class="slds-modal__footer">
+                                <lightning-button variant="brand-outline" label="Cancel" title="Cancel"
+                                        onclick={handleCloseModal} class="slds-m-left_x-small"></lightning-button>
+                                <lightning-button variant="brand" label="Save" title="Save" onclick={handleSave}
+                                        class="slds-m-left_x-small"></lightning-button>
+                        </footer>
+</template>

@@ -4,29 +4,57 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>height</name>
-                    <value>225</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>label</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>pageName</name>
-                    <value>Core_HomePage_ImpMessage</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showLabel</name>
+                    <name>enableInlineEdit</name>
                     <value>false</value>
                 </componentInstanceProperties>
-                <componentName>flexipage:visualforcePage</componentName>
-                <identifier>flexipage_visualforcePage2</identifier>
+                <componentInstanceProperties>
+                    <name>entityName</name>
+                    <value>Case</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>filterName</name>
+                    <value>Core_MDF_Co_Marketing_Cases_Master_Due_List</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideSearchBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>pageSize</name>
+                    <value>6</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:filterListCard</componentName>
+                <identifier>flexipage_filterListCard</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Core_MDF_ClaimCaseReviewerManager}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_PIC_Reviewer}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>Core_BannerDisplay</componentName>
+                <identifier>Core_BannerDisplay</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
                     <name>dashboardId</name>
-                    <value>Pipeline_Management_Dashboard1</value>
+                    <value>X2018_Pipeline_Management_Overview</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>enableNotifications</name>
@@ -51,10 +79,6 @@
                 <componentInstanceProperties>
                     <name>showHeader</name>
                     <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showPostToSlack</name>
-                    <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>showSharing</name>
@@ -87,143 +111,50 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>richTextValue</name>
-                    <value>&lt;h2&gt;&lt;strong&gt;Training &amp;amp; Resources&lt;/strong&gt;&lt;/h2&gt;&lt;table class=&quot;ql-table-blob&quot; border=&quot;0&quot; style=&quot;width: 335pt;&quot; width=&quot;447&quot;&gt;
- &lt;tbody&gt;&lt;tr style=&quot;mso-yfti-irow:0;mso-yfti-firstrow:yes;height:14.5pt&quot;&gt;
-  &lt;td width=&quot;228&quot; style=&quot;width:171.0pt;padding:.75pt .75pt .75pt .75pt;
-  height:14.5pt&quot;&gt;
-  &lt;p class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/&quot;&gt;●&amp;nbsp;
-  Home&lt;/a&gt;&lt;/u&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;
-  &lt;/td&gt;
-  &lt;td width=&quot;219&quot; style=&quot;width:164.0pt;padding:.75pt .75pt .75pt .75pt;
-  height:14.5pt&quot;&gt;
-  &lt;p class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-practices-policies/&quot;&gt;●&amp;nbsp;
-  Sales Practices, &amp;amp; Policies&lt;/a&gt;&lt;/u&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;
-  &lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr style=&quot;mso-yfti-irow:1;height:14.5pt&quot;&gt;
-  &lt;td width=&quot;228&quot; style=&quot;width:171.0pt;padding:.75pt .75pt .75pt .75pt;
-  height:14.5pt&quot;&gt;
-  &lt;p class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/customer-access-entitlements/&quot;&gt;●&amp;nbsp;
-  Customer (Contact) Access &amp;amp; Entitlement (A&amp;amp;E)&lt;/a&gt;&lt;/u&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;
-  &lt;/td&gt;
-  &lt;td width=&quot;219&quot; style=&quot;width:164.0pt;padding:.75pt .75pt .75pt .75pt;
-  height:14.5pt&quot;&gt;
-  &lt;p class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/lead-management/&quot;&gt;●&amp;nbsp;
-  Lead Management&lt;/a&gt;&lt;/u&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;
-  &lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr style=&quot;mso-yfti-irow:2;height:14.5pt&quot;&gt;
-  &lt;td width=&quot;228&quot; style=&quot;width:171.0pt;padding:.75pt .75pt .75pt .75pt;
-  height:14.5pt&quot;&gt;
-  &lt;p class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/account-contact-management/&quot;&gt;●&amp;nbsp;
-  Account &amp;amp; Contact Management&lt;/a&gt;&lt;/u&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;
-  &lt;/td&gt;
-  &lt;td width=&quot;219&quot; style=&quot;width:164.0pt;padding:.75pt .75pt .75pt .75pt;
-  height:14.5pt&quot;&gt;
-  &lt;p class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/opportunity-management/&quot;&gt;●&amp;nbsp;
-  Opportunity Management&lt;/a&gt;&lt;/u&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;
-  &lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr style=&quot;mso-yfti-irow:3;height:14.5pt&quot;&gt;
-  &lt;td width=&quot;228&quot; style=&quot;width:171.0pt;padding:.75pt .75pt .75pt .75pt;
-  height:14.5pt&quot;&gt;
-  &lt;p class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/basic-functionality/&quot;&gt;●&amp;nbsp;
-  Basic Functionality&lt;/a&gt;&lt;/u&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;
-  &lt;/td&gt;
-  &lt;td width=&quot;219&quot; style=&quot;width:164.0pt;padding:.75pt .75pt .75pt .75pt;
-  height:14.5pt&quot;&gt;
-  &lt;p class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/reporting/&quot;&gt;●&amp;nbsp;
-  Reporting&lt;/a&gt;&lt;/u&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;
-  &lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr style=&quot;mso-yfti-irow:4;height:14.5pt&quot;&gt;
-  &lt;td width=&quot;228&quot; style=&quot;width:171.0pt;padding:.75pt .75pt .75pt .75pt;
-  height:14.5pt&quot;&gt;
-  &lt;p class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;a href=&quot;https://salesincentives.intel.com/&quot;&gt;●
-  &amp;nbsp;Sales Incentives&lt;/a&gt;&lt;/u&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;
-  &lt;/td&gt;
-  &lt;td width=&quot;219&quot; style=&quot;width:164.0pt;padding:.75pt .75pt .75pt .75pt;
-  height:14.5pt&quot;&gt;
-  &lt;p class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;a href=&quot;https://saleskpi.intel.com/&quot;&gt;●&amp;nbsp; Sales KPI
-  Resources&lt;/a&gt;&lt;/u&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;
-  &lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr style=&quot;mso-yfti-irow:5;height:14.5pt&quot;&gt;
-  &lt;td width=&quot;228&quot; style=&quot;width:171.0pt;padding:.75pt .75pt .75pt .75pt;
-  height:14.5pt&quot;&gt;
-  &lt;p class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;a href=&quot;https://partnercenterresources.intel.com/&quot;&gt;●&amp;nbsp;&lt;/a&gt;
-  &lt;a href=&quot;https://partnercenterresources.intel.com/&quot;&gt;Co-Marketing&lt;/a&gt;&lt;a href=&quot;https://partnercenterresources.intel.com/&quot;&gt; &lt;/a&gt;&lt;/u&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;
-  &lt;/td&gt;
-  &lt;td width=&quot;219&quot; style=&quot;width:164.0pt;padding:.75pt .75pt .75pt .75pt;
-  height:14.5pt&quot;&gt;
-  &lt;p class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/intel-premier-support-ips/&quot;&gt;●&amp;nbsp;
-  Intel Premier Support (IPS)&lt;/a&gt;&lt;/u&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;
-  &lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr style=&quot;mso-yfti-irow:6;height:14.5pt&quot;&gt;
-  &lt;td width=&quot;228&quot; style=&quot;width:171.0pt;padding:.75pt .75pt .75pt .75pt;
-  height:14.5pt&quot;&gt;
-  &lt;p class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;a href=&quot;https://circuitplus.intel.com/channels/6444968&quot;&gt;●&amp;nbsp;
-  Sales Central&lt;/a&gt;&lt;/u&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;
-  &lt;/td&gt;
-  &lt;td width=&quot;219&quot; style=&quot;width:164.0pt;padding:.75pt .75pt .75pt .75pt;
-  height:14.5pt&quot;&gt;
-  &lt;p class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;a href=&quot;https://community.intel.com/t5/SMG-Sales-Connect/ct-p/smg-sales-connect&quot;&gt;●
-  &amp;nbsp;SMG Sales Connect (VPN required)&lt;/a&gt;&lt;/u&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;
-  &lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr style=&quot;mso-yfti-irow:7;height:14.5pt&quot;&gt;
-  &lt;td width=&quot;228&quot; style=&quot;width:171.0pt;padding:.75pt .75pt .75pt .75pt;
-  height:14.5pt&quot;&gt;
-  &lt;p class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;a href=&quot;https://intel.sharepoint.com/sites/Intel-Sales-Academy&quot;&gt;●&amp;nbsp; Sales
-  Academy&lt;/a&gt;&lt;/u&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;
-  &lt;/td&gt;
-  &lt;td width=&quot;219&quot; style=&quot;width:164.0pt;padding:.75pt .75pt .75pt .75pt;
-  height:14.5pt&quot;&gt;
-  &lt;p class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;a href=&quot;http://goto.intel.com/secalendarb&quot;&gt;●&amp;nbsp;
-  Sales Excellence Calendar&lt;/a&gt;&lt;/u&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;
-  &lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr style=&quot;mso-yfti-irow:8;mso-yfti-lastrow:yes;height:14.5pt&quot;&gt;
-  &lt;td width=&quot;228&quot; style=&quot;width:171.0pt;padding:.75pt .75pt .75pt .75pt;
-  height:14.5pt&quot;&gt;
-  &lt;p class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/&quot;&gt;●&amp;nbsp;
-  New to Sales CRM Resources&lt;/a&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/u&gt;&lt;/p&gt;
-  &lt;/td&gt;
-  &lt;td width=&quot;219&quot; style=&quot;width:164.0pt;padding:.75pt .75pt .75pt .75pt;
-  height:14.5pt&quot;&gt;
-  &lt;p class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/u&gt;&lt;/p&gt;
-  &lt;/td&gt;
- &lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;&lt;h2&gt;&lt;br&gt;&lt;/h2&gt;</value>
+                    <value>&lt;h2&gt;Trainings&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/training-and-help/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/training-and-help/account-and-contact-management/access-and-entitlement-2/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Access &amp;amp; Entitlement&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://salescrm.intel.com/training-and-help/account-and-contact-management/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Account &amp;amp; Contact Management&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/training-and-help/commissions-2/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Commissions&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.sharepoint.com/sites/ccptrainingandcommunications&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Co-Marketing&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/training-and-help/salescrm-functionality/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;General Salesforce Functionality&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/training-and-help/intel-premier-support-ips/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;IPS Training&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://saleskpi.intel.com/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Sales KPI Resources&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/training-and-help/lead-management/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Lead Management&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/training-and-help/opportunity-management/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Opportunity Management&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/training-and-help/pipeline-management/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Pipeline Management&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/training-and-help/reporting/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Reporting&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/lightning-update-2/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(0, 95, 178);&quot;&gt;Introduction to Lightning Experience&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:richText</componentName>
                 <identifier>flexipage_richText</identifier>
             </componentInstance>
         </itemInstances>
-        <name>bottomLeft</name>
-        <type>Region</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
                     <name>height</name>
-                    <value>125</value>
+                    <value>300</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
+                    <value>SimplePBIRSEmbed</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>pageName</name>
-                    <value>Core_HomePage_KPIMessage</value>
+                    <value>SimplePBIRSEmbed</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>showLabel</name>
-                    <value>false</value>
+                    <value>true</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:visualforcePage</componentName>
                 <identifier>flexipage_visualforcePage</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>decorate</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;b&gt;Intel Salesforce Privacy &amp;amp; Personal Information Notice&lt;/b&gt;&lt;/span&gt;&lt;br /&gt;
+&amp;nbsp;
+&lt;ul&gt;
+	&lt;li&gt;&lt;a href=&quot;/apex/Core_IPS_Intel_Terms_Of_Use&quot; target=&quot;_blank&quot;&gt;Privacy Notice&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:richText</componentName>
+                <identifier>flexipage_richText2</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -240,256 +171,14 @@
                 <identifier>flexipage_richText3</identifier>
             </componentInstance>
         </itemInstances>
-        <name>bottomRight</name>
+        <itemInstances>
+            <componentInstance>
+                <componentName>trailHeadReport</componentName>
+                <identifier>trailHeadReport</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>bottomLeft</name>
         <type>Region</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>enableInlineEdit</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>entityName</name>
-                    <value>Opportunity</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>filterName</name>
-                    <value>Unhealthy_Opportunities</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hideActionBar</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hideSearchBar</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>pageSize</name>
-                    <value>1</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:filterListCard</componentName>
-                <identifier>flexipage_filterListCard2</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-99e16463-5cff-403a-a0ce-e8de35192f2a</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>enableInlineEdit</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>entityName</name>
-                    <value>Opportunity</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>filterName</name>
-                    <value>Core_MyOpportunities</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hideActionBar</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hideSearchBar</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>pageSize</name>
-                    <value>1</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:filterListCard</componentName>
-                <identifier>flexipage_filterListCard3</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-2b23106a-9c66-4107-a286-179b125e29f5</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-99e16463-5cff-403a-a0ce-e8de35192f2a</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Opportunities Requiring Your Action</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>name</name>
-                    <value>accordionSection2</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:accordionSection</componentName>
-                <identifier>flexipage_accordionSection2</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-2b23106a-9c66-4107-a286-179b125e29f5</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>My Opportunities</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>name</name>
-                    <value>accordionSection--alodobwkosm</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:accordionSection</componentName>
-                <identifier>flexipage_accordionSection3</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-5bc4f49d-c43d-4e19-b5c8-db70ff2d2b26</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>accordionSections</name>
-                    <value>Facet-5bc4f49d-c43d-4e19-b5c8-db70ff2d2b26</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:accordion</componentName>
-                <identifier>flexipage_accordion</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-7c061795-c3ba-4d0f-a47e-af034254e7ec</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>active</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-7c061795-c3ba-4d0f-a47e-af034254e7ec</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>Opportunities</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-8489fcce-c8f5-444e-9a30-bbf293db6cf7</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>enableInlineEdit</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>entityName</name>
-                    <value>Task</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>filterName</name>
-                    <value>OpenTasks</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hideActionBar</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hideSearchBar</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>pageSize</name>
-                    <value>2</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:filterListCard</componentName>
-                <identifier>flexipage_filterListCard5</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-fb173f18-9716-471a-9122-87387bd9cfa8</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>enableInlineEdit</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>entityName</name>
-                    <value>Event</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>filterName</name>
-                    <value>MyUpcomingEvents</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hideActionBar</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hideSearchBar</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>pageSize</name>
-                    <value>2</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:filterListCard</componentName>
-                <identifier>flexipage_filterListCard6</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-2b58812d-6c25-4a40-955d-84f7a2886e27</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>active</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-fb173f18-9716-471a-9122-87387bd9cfa8</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>Standard.Tab.tasks</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab2</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-2b58812d-6c25-4a40-955d-84f7a2886e27</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>Events</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab3</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-f97c9987-ab44-4dbf-88a3-076a4938076c</name>
-        <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
@@ -500,7 +189,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>richTextValue</name>
-                    <value>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;a href=&quot;https://community.intel.com/t5/SMG-Sales-Connect/ct-p/smg-sales-connect&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(0, 174, 239); font-size: 14px;&quot;&gt;&lt;strong&gt;Search SMG Sale&lt;span class=&quot;ql-cursor&quot;&gt;﻿&lt;/span&gt;s Connect&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;</value>
+                    <value>&lt;h2&gt;Custom Links&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/whats-new-2/&quot; target=&quot;_blank&quot;&gt;Sales CRM What’s New&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://soco.intel.com/groups/cloud-crm&quot; target=&quot;_blank&quot;&gt;SMG Sales CRM Inside Blue Group&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel--c.na74.visual.force.com/apex/showMAGquestionaire?id=005o0000001faAE&quot; target=&quot;_blank&quot; style=&quot;color: rgb(0, 95, 178);&quot;&gt;MAG Questionnaire&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:richText</componentName>
                 <identifier>flexipage_richText4</identifier>
@@ -508,21 +197,56 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
-                <componentName>core_OppSupTeamAccOrRej</componentName>
-                <identifier>c_core_OppSupTeamAccOrRej</identifier>
+                <componentInstanceProperties>
+                    <name>decorate</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;h2&gt;NEW Salesforce Lightning Experience (LEX)&lt;/h2&gt;&lt;p&gt;We updated our Sales CRM to the current new user interface on September 10th, 2018 :&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Lightning Experience (LEX) is a more modern and intuitive interface, designed to maximize your productivity and allow you to find what you need faster. It provides a significant improvement over the 15 year old “Classic” user interface that we are using today.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Please find an introduction video, as well as, BKMs, FAQs, and further LEX training at &lt;a href=&quot;http://goto/LEX&quot; target=&quot;_blank&quot;&gt;goto/LEX&lt;/a&gt;.&lt;/p&gt;</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:richText</componentName>
+                <identifier>flexipage_richText5</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>tabs</name>
-                    <value>Facet-8489fcce-c8f5-444e-9a30-bbf293db6cf7</value>
+                    <name>decorate</name>
+                    <value>true</value>
                 </componentInstanceProperties>
-                <componentName>flexipage:tabset</componentName>
-                <identifier>flexipage_tabset</identifier>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;h2&gt;Co-Marketing&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://sqlbi-dev.intel.com/Reports/browse/Co-Marketing/CCP&quot; target=&quot;_blank&quot;&gt;Co-Marketing Power BI Reports&lt;/a&gt; &lt;a href=&quot;https://soco.intel.com/docs/DOC-2613307&quot; target=&quot;_blank&quot;&gt;(request access)&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:richText</componentName>
+                <identifier>flexipage_richText6</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Core_MDF_CoMarketingPowerBIDashboardLink}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$User.Profile.Name}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>System Administrator</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <name>bottomRight</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>home:assistant</componentName>
+                <identifier>home_assistant</identifier>
                 <visibilityRule>
                     <criteria>
-                        <leftValue>{!$Permission.CustomPermission.Core_CRM_ViewOpptAndMyAcctsOnHomePage}</leftValue>
+                        <leftValue>{!$Permission.CustomPermission.Core_Assistant_ItemsToApprove_Visibility}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>true</rightValue>
                     </criteria>
@@ -531,26 +255,8 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
-                <componentName>home:assistant</componentName>
-                <identifier>home_assistant</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>System Administrator</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>IT Admin</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Production Support-Display</rightValue>
-                    </criteria>
-                </visibilityRule>
+                <componentName>runtime_sales_activities:todayTaskContainer</componentName>
+                <identifier>runtime_sales_activities_todayTaskContainer</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -569,17 +275,33 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>tabs</name>
-                    <value>Facet-f97c9987-ab44-4dbf-88a3-076a4938076c</value>
+                    <name>height</name>
+                    <value>300</value>
                 </componentInstanceProperties>
-                <componentName>flexipage:tabset</componentName>
-                <identifier>flexipage_tabset2</identifier>
+                <componentInstanceProperties>
+                    <name>pageName</name>
+                    <value>SimplePowerBIEmbed</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showLabel</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:visualforcePage</componentName>
+                <identifier>flexipage_visualforcePage2</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
             <componentInstance>
-                <componentName>home:recentRecordContainer</componentName>
-                <identifier>home_recentRecordContainer</identifier>
+                <componentInstanceProperties>
+                    <name>dashboardName</name>
+                    <value>Source_of_Entitlement_Creation_Dashboard</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideOnError</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>desktopDashboards:embeddedDashboard</componentName>
+                <identifier>desktopDashboards_embeddedDashboard</identifier>
             </componentInstance>
         </itemInstances>
         <name>sidebar</name>

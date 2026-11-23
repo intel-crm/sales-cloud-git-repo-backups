@@ -38,6 +38,7 @@ public without sharing class Core_MDF_AccountProductMappingController {
             final String errMsg = 'Exception: '+exp.getMessage();
             throw new AuraHandledException(errMsg);
         }
+        System.debug('prodlistget->'+productList);
         return productList;
     }
 
@@ -64,6 +65,15 @@ public without sharing class Core_MDF_AccountProductMappingController {
                     {
                        if(pfrProductMapping.Core_MDF_IsActive_Ind__c && (segment==null || (segment != null && pfrProductMapping.Core_MDF_Segment_ProductType_txt__c==segment))){
                         //Avoid Deeply Nested IF Statements
+                        //    if(pfrProductMapping.Core_MDF_Show_All_Products_ind__c){
+                        //      if(pfrProductMapping.Core_MDF_Criteria_For_Product_txt__c==null){
+                        //          segmentsAllProductsset.add(pfrProductMapping.Core_MDF_Segment_ProductType_txt__c);
+                        //      }
+                        //      if(pfrProductMapping.Core_MDF_Criteria_For_Product_txt__c!=null){
+                        //          mapOfSegmentAndCriteria.put(pfrProductMapping.Core_MDF_Segment_ProductType_txt__c,pfrProductMapping.Core_MDF_Criteria_For_Product_txt__c);
+                        //      }
+                        //    }
+                        //Avoid Deeply Nested IF Statements
                            if(pfrProductMapping.Core_MDF_Show_All_Products_ind__c && pfrProductMapping.Core_MDF_Criteria_For_Product_txt__c==null){
                                 segmentsAllProductsset.add(pfrProductMapping.Core_MDF_Segment_ProductType_txt__c);
                            }
@@ -72,14 +82,16 @@ public without sharing class Core_MDF_AccountProductMappingController {
                            }
                              else if(!pfrProductMapping.Core_MDF_Show_All_Products_ind__c){
                                 
-                                prodsegmentsset.add(pfrProductMapping.Core_MDF_Segment_ProductType_txt__c);                                
+                                prodsegmentsset.add(pfrProductMapping.Core_MDF_Segment_ProductType_txt__c);
+                                
                                 productEPMIDset.add(pfrProductMapping.Core_MDF_Product_EPM_ID_txt__c);
 
                              }
                         }
                     }
             if(!segmentsAllProductsset.isEmpty() || (!prodsegmentsset.isEmpty() && !productEPMIDset.isEmpty()) || !mapOfSegmentAndCriteria.isEmpty()){
-                //As part of Avoid Untrusted/Unescaped Variables in DML Query fix,Used secure bind variable :hierarchynumber instead of concatenation
+                //As part of Avoid Untrusted/Unescaped Variables in DML Query fix,Used secure bind variable :hierarchynumber instead of concatenation 
+                //productQuery= 'SELECT Id, Core_Product_Family__c, Name,Core_Product_Name_EPM_ID__c,Core_Processor_Number_Nm__c FROM Product2 WHERE isactive = true AND Core_End_of_Intel_Service_Flag__c = false AND Core_Hierarchy_ID__c = ' + '\'' + String.escapeSingleQuotes(hierarchynumber) + '\'' + ' AND Core_Sales_Visible_Flag__c = true ';
                 productQuery= 'SELECT Id, Core_Product_Family__c, Name,Core_Product_Name_EPM_ID__c,Core_Processor_Number_Nm__c FROM Product2 WHERE isactive = true AND Core_End_of_Intel_Service_Flag__c = false AND Core_Hierarchy_ID__c = :hierarchynumber AND Core_Sales_Visible_Flag__c = true ';    
                     if(!segmentsAllProductsset.isEmpty()){ //chipsets, memory and storage, graphics
                         productQuery+= 'AND (Core_Product_Type__c IN:segmentsAllProductsset ';
@@ -91,6 +103,12 @@ public without sharing class Core_MDF_AccountProductMappingController {
                             ? 'OR (Core_Product_Type__c IN:prodsegmentsset and Core_Product_Name_EPM_ID__c IN:productEPMIDset) '
                             : 'AND ((Core_Product_Type__c IN:prodsegmentsset and Core_Product_Name_EPM_ID__c IN:productEPMIDset) ';
                         //Avoid Deeply Nested IF Statements
+                        // if(!segmentsAllProductsset.isEmpty()){
+                        //     productQuery+= 'OR (Core_Product_Type__c IN:prodsegmentsset and Core_Product_Name_EPM_ID__c IN:productEPMIDset) ';
+                        // }
+                        // else{
+                        //     productQuery+= 'AND ((Core_Product_Type__c IN:prodsegmentsset and Core_Product_Name_EPM_ID__c IN:productEPMIDset) ';
+                        // }
                         
                     }
             
@@ -101,6 +119,13 @@ public without sharing class Core_MDF_AccountProductMappingController {
                             productQuery += (!segmentsAllProductsset.isEmpty() || (!prodsegmentsset.isEmpty() && !productEPMIDset.isEmpty()))
                                 ? 'OR (Core_Product_Type__c =\''+String.escapeSingleQuotes(productType)+'\' AND '+criteria+') '
                                 : 'AND ((Core_Product_Type__c =\''+String.escapeSingleQuotes(productType)+'\' AND '+criteria+') ';
+                            //Avoid Deeply Nested IF Statements
+                            // if(!segmentsAllProductsset.isEmpty() || (!prodsegmentsset.isEmpty() && !productEPMIDset.isEmpty())){
+                            //     productQuery+= 'OR (Core_Product_Type__c =\''+String.escapeSingleQuotes(productType)+'\' AND '+criteria+') ';
+                            // }
+                            // else{
+                            //     productQuery+= 'AND ((Core_Product_Type__c =\''+String.escapeSingleQuotes(productType)+'\' AND '+criteria+') ';
+                            // }
                         
                         } 
                     }
@@ -115,6 +140,7 @@ public without sharing class Core_MDF_AccountProductMappingController {
             if(productQuery!=null){
                 productList = Database.query(productQuery);
             }
+            System.debug('productqueryacc1->'+productList.size());
             return productList;
         }catch(Exception e) {
             Core_MDF_CCP_UtilityClass.logError(e); 
@@ -136,8 +162,9 @@ public without sharing class Core_MDF_AccountProductMappingController {
         
         if(!isAllAccount && string.isNotBlank(accountId)){
             upsertAccountSpecficProductMapping(details);
+            System.debug('specific account creation->');
         }else{
-            Database.executeBatch(new Core_MDF_AccountProductMap_Batch(details), Integer.valueOf(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Acc_Product_Mapping_Batch_Size')));
+            Database.executeBatch(new Core_MDF_AccountProductMap_Batch(details),Integer.valueOf(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Acc_Product_Mapping_Batch_Size')));
         }
      }
 
@@ -148,19 +175,21 @@ public without sharing class Core_MDF_AccountProductMappingController {
             List<string> selectedProdIds = accProdMapWrap.selectedProdIds;
             List<string> uncheckedProdIds = accProdMapWrap.uncheckedProdIds;
             string program = accProdMapWrap.program;
+            System.debug('progcheck123'+program);
    
             Map<String, Core_MDF_Account_Product_Mapping__c> oldAccProdMap = new Map<String, Core_MDF_Account_Product_Mapping__c>();
             Map<String, Core_MDF_Account_Product_Mapping__c> newAccProdMap = new Map<String, Core_MDF_Account_Product_Mapping__c>();
 
             Map<String,List<String>> accountProductIdMap = new Map<String,List<String>>();
             accountProductIdMap.put(accountId,selectedProdIds);
-
+            System.debug('new accountProductIdMap ->'+accountProductIdMap);
             Map<Id, Core_MDF_Account_Product_Mapping__c> existingAccProdMap = new Map<Id, Core_MDF_Account_Product_Mapping__c>(
                                                             [SELECT Id, Core_MDF_Account__c, Core_MDF_Product__c, Core_MDF_Active_ind__c  
                                                             FROM Core_MDF_Account_Product_Mapping__c 
                                                             WHERE Core_MDF_Account__c IN :accountProductIdMap.keySet() 
-                                                            AND Core_MDF_Program_Account_Map__c = :program]);            
-                                                            
+                                                            AND Core_MDF_Program_Account_Map__c = :program]);         
+
+            System.debug('old existingAccProdMap ->'+existingAccProdMap);                                                
             if(existingAccProdMap != null && !existingAccProdMap.isEmpty()) {
                 for(Id accProdMapId : existingAccProdMap.keySet()) {
                     Core_MDF_Account_Product_Mapping__c apm = new Core_MDF_Account_Product_Mapping__c();
@@ -171,8 +200,7 @@ public without sharing class Core_MDF_AccountProductMappingController {
                     final String keyStr1 = apm.Core_MDF_Account__c + '$' + apm.Core_MDF_Product__c;
                     oldAccProdMap.put(keyStr1, apm);
                 }
-            } 
-                      
+            }
             if(accountProductIdMap != null && !accountProductIdMap.isEmpty()) {
                 for(Id accId : accountProductIdMap.keySet()) {
                     for(Id prodId : accountProductIdMap.get(accId)) {
@@ -200,11 +228,9 @@ public without sharing class Core_MDF_AccountProductMappingController {
                 if(oldAccProdMap != null && !oldAccProdMap.isEmpty()) {
                      newAccProdMap.putAll(oldAccProdMap);
                 }
-
-
-                    if(uncheckedProdIds != null && !uncheckedProdIds.isEmpty()){
+                if(uncheckedProdIds != null && !uncheckedProdIds.isEmpty()){
                         for(string prodId : uncheckedProdIds){
-                            String keyStr = accountId + '$' + prodId;
+                        String keyStr = accountId + '$' + prodId;
                             Core_MDF_Account_Product_Mapping__c apm = new Core_MDF_Account_Product_Mapping__c();
                             apm.Core_MDF_Account__c = accountId;
                             apm.Core_MDF_Product__c = prodId;
@@ -213,14 +239,21 @@ public without sharing class Core_MDF_AccountProductMappingController {
                             if(!newAccProdMap.containsKey(keyStr)){
                                 newAccProdMap.put(keyStr,apm);
                             }
-
                         }
-                    }                           
+                    }
+
+                    System.debug('old oldAccProdMap ->'+oldAccProdMap);
+                    System.debug('new newAccProdMap ->'+newAccProdMap);
+                
+
+
+
+                
+
                 if(newAccProdMap != null && !newAccProdMap.isEmpty()) {
                     upsert newAccProdMap.values();
                 }
             }
-
         }
         catch(Exception exp) {
             Core_MDF_CCP_UtilityClass.logError(exp);
@@ -239,13 +272,13 @@ public without sharing class Core_MDF_AccountProductMappingController {
         apm.Core_MDF_Active_ind__c = isActive;
         return apm;
     }
-    
+
 
     
     /*
      * Method Name - getAccountProductMapping
      * Desc - To get Account Product Mappings
-	 */
+     */
     @AuraEnabled
     public static Map<String, List<Core_MDF_Account_Product_Mapping__c>> getAccountProductMapping(List<String> accountIds, String program) {
         Map<String, List<Core_MDF_Account_Product_Mapping__c>> existingAccProdMap = new Map<String, List<Core_MDF_Account_Product_Mapping__c>>();
@@ -254,18 +287,33 @@ public without sharing class Core_MDF_AccountProductMappingController {
         set<string> specificAccProductSet = new set<string>();
         string accId = accountIds != null ? accountIds[0] : null;
         try {
-
             existingApmList = [SELECT Id, Core_MDF_Account__c, Core_MDF_Product__c,Core_MDF_All_Account_Ind__c,Core_MDF_Active_ind__c  
                                FROM Core_MDF_Account_Product_Mapping__c
                                WHERE (Core_MDF_Account__c IN :accountIds OR Core_MDF_All_Account_Ind__c = true) 
                                AND Core_MDF_Program_Account_Map__c = :program];
-
-            if(!existingApmList.isEmpty()){                                            
+            //if(!existingApmList.isEmpty()){  US - TWC702-14285 - commented original code 
+            // Early return if no records found
+            if (existingApmList.isEmpty()) return existingAccProdMap;                                           
                 for(Core_MDF_Account_Product_Mapping__c apm: existingApmList){
+                    // US - TWC702-14285: Flatten nested IFs (no logic change) - Begin
+                    if(!apm.Core_MDF_Active_ind__c && string.isNotBlank(accId) && apm.Core_MDF_Account__c == accId) {
+                        specificAccProductSet.add(apm.Core_MDF_Product__c);
+                    } else if(apm.Core_MDF_Active_ind__c && apm.Core_MDF_All_Account_Ind__c && string.isBlank(apm.Core_MDF_Account__c)) {
+                        productIdToApmMap.put(apm.Core_MDF_Product__c,apm);
+                    } else if(apm.Core_MDF_Active_ind__c && !(apm.Core_MDF_All_Account_Ind__c && string.isBlank(apm.Core_MDF_Account__c))) {
+                        if(!existingAccProdMap.containsKey(accId)) {
+                            existingAccProdMap.put(accId, new List<Core_MDF_Account_Product_Mapping__c>());
+                        }
+                        existingAccProdMap.get(accId).add(apm);
+                        specificAccProductSet.add(apm.Core_MDF_Product__c);
+                    }
+                    // US - TWC702-14285: Flatten nested IFs (no logic change) - End
+                    /*
+                    // Original nested logic preserved for reference (no logic change):
                     if(apm.Core_MDF_Active_ind__c){
                         if(apm.Core_MDF_All_Account_Ind__c && string.isBlank(apm.Core_MDF_Account__c)){
                             productIdToApmMap.put(apm.Core_MDF_Product__c,apm);
-                        } else {
+                        }else{
                             if(!existingAccProdMap.containsKey(accId)) {
                                 existingAccProdMap.put(accId, new List<Core_MDF_Account_Product_Mapping__c>());
                             }
@@ -277,46 +325,56 @@ public without sharing class Core_MDF_AccountProductMappingController {
                             specificAccProductSet.add(apm.Core_MDF_Product__c);
                         }
                     }
+                    */
                 }
-
-                if(!productIdToApmMap.isEmpty()){
-                    for(string allAccprodId : productIdToApmMap.keySet()){
-                        if(!specificAccProductSet.contains(allAccprodId)){
-                            if(!existingAccProdMap.containsKey(accId)) {
-                                existingAccProdMap.put(accId, new List<Core_MDF_Account_Product_Mapping__c>());
-                            }
-                            existingAccProdMap.get(accId).add(productIdToApmMap.get(allAccprodId));
-                        }
-                    }
-                }
-            }
+            if(!productIdToApmMap.isEmpty()){
+                 for(string allAccprodId : productIdToApmMap.keySet()){
+                     // US - TWC702-14285: Flatten nested IFs (no logic change) - Begin
+                     if(!specificAccProductSet.contains(allAccprodId) && !existingAccProdMap.containsKey(accId)) {
+                        existingAccProdMap.put(accId, new List<Core_MDF_Account_Product_Mapping__c>());
+                     } else if(!specificAccProductSet.contains(allAccprodId)) {
+                        existingAccProdMap.get(accId).add(productIdToApmMap.get(allAccprodId));
+                     }
+                     // US - TWC702-14285: Flatten nested IFs (no logic change) - End
+                     /*
+                     // Original nested logic preserved for reference (no logic change):
+                     if(!specificAccProductSet.contains(allAccprodId)){
+                         if(!existingAccProdMap.containsKey(accId)) {
+                            existingAccProdMap.put(accId, new List<Core_MDF_Account_Product_Mapping__c>());
+                          }
+                        existingAccProdMap.get(accId).add(productIdToApmMap.get(allAccprodId));
+                     }
+                     */
+                 }
+             }
+          //} US - TWC702-14285 - commented original code
         }
         catch(Exception exp) {
             Core_MDF_CCP_UtilityClass.logError(exp);
             final String errMsg = 'Exception: '+exp.getMessage();
             throw new AuraHandledException(errMsg);           
-                             }
+        }
+        System.debug('data 1->'+existingAccProdMap);
         return existingAccProdMap;
     }
     /*
      * Method Name - hasAccessToPriceReviewerMaintanceTab
      * Desc - To check if user has access to tab
-	 */
+     */
     @AuraEnabled
     public static Boolean hasAccessToPriceReviewerMaintanceTab() {
         Boolean hasAccess = false;
         if (FeatureManagement.checkPermission('Core_MDF_PriceReviewer') || FeatureManagement.checkPermission('Core_MDF_PriceReviewMaintenanceAllAccounts')) {
             hasAccess = true;
         }
-        return hasAccess;
+       return hasAccess;
     }
-
     
     public class AccountProdMapWrapper{
         @AuraEnabled public string accountId;
         @AuraEnabled public List<String> selectedProdIds;
         @AuraEnabled public String program;
-		@AuraEnabled public boolean isAllAccount;
+        @AuraEnabled public boolean isAllAccount;
         @AuraEnabled public List<string> uncheckedProdIds;
     }
     

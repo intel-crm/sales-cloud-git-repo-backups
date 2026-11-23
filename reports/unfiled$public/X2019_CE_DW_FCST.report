@@ -91,12 +91,8 @@
     <columns>
         <field>OpportunityLineItem.Core_Claim_Date__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>OpportunityLineItem.Core_Approved_Total_Price__c</field>
-    </columns>
     <filter>
-        <booleanFilter>(1 AND 2) AND ((3 AND 4 AND 5 AND 6 AND 9) OR (7 AND 8) OR (10 AND 11))</booleanFilter>
+        <booleanFilter>(1 AND 2 AND 3 AND 4 AND 5 AND 6) OR (7 AND 8)</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Product_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -153,27 +149,6 @@
             <operator>equals</operator>
             <value>Christian Schwingenschloegl</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>CERN</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>York Moellerhenn</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Sub_Geo__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>NEUR</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
@@ -204,7 +179,7 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2020-12-31</endDate>
+        <endDate>2050-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2019-01-01</startDate>
     </timeFrameFilter>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CCP Apis Healthheck</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CCP Apis Healthheck</value>
+    </caseValues>
+    <fields>
+        <label><!-- AccessToken --></label>
+        <name>AccessToken__c</name>
+    </fields>
+    <fields>
+        <label><!-- Authentication Type --></label>
+        <name>Authentication_Type__c</name>
+        <picklistValues>
+            <masterLabel>Basic Auth</masterLabel>
+            <translation><!-- Basic Auth --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OAuth 2.0</masterLabel>
+            <translation><!-- OAuth 2.0 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- User --></label>
+        <name>User__c</name>
+        <relationshipLabel><!-- CCP Apis Healthheck --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- client_id --></label>
+        <name>client_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- client_secret --></label>
+        <name>client_secret__c</name>
+    </fields>
+    <fields>
+        <label><!-- is_active --></label>
+        <name>is_active__c</name>
+    </fields>
+    <fields>
+        <label><!-- method --></label>
+        <name>method__c</name>
+        <picklistValues>
+            <masterLabel>GET</masterLabel>
+            <translation><!-- GET --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POST</masterLabel>
+            <translation><!-- POST --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- params --></label>
+        <name>params__c</name>
+    </fields>
+    <startsWith>Vowel</startsWith>
+</CustomObjectTranslation>

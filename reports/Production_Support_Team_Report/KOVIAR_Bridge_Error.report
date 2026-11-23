@@ -16,9 +16,6 @@
         <field>FK_$Core_IPS_Backend_System__c.Core_IPS_Backend_System_Name__c</field>
     </columns>
     <columns>
-        <field>FK_NAME</field>
-    </columns>
-    <columns>
         <field>Case.Core_Promote_Status__c</field>
     </columns>
     <columns>

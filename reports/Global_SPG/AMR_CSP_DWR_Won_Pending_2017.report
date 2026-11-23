@@ -17,7 +17,7 @@
         <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
+        <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_TOP</location>
         <showAxisLabels>true</showAxisLabels>
@@ -137,7 +137,7 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>

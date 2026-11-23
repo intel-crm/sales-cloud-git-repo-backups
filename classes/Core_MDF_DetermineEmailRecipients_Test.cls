@@ -32,7 +32,6 @@ public class Core_MDF_DetermineEmailRecipients_Test {
             
             ChannelProgram retailCp = Core_MDF_CCP_TestDataUtility.createProgram ('Retail Marketing Funds','Retail Marketing Funds', true);
             
-            
             Account intelAccount = Core_MDF_CCP_TestDataUtility.createIntelAccount('Flipkart', 
                                                                                    Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
             intelAccount.Core_Geo__c = 'APJ';
@@ -53,27 +52,21 @@ public class Core_MDF_DetermineEmailRecipients_Test {
             PermissionSet ipaAccManagerPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_IPA_Acct_Mgr' LIMIT 1];
             //PermissionSet reviewerPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager' LIMIT 1];
             PermissionSet claimSubmitterPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_External_Retail_Claim_Submitter' LIMIT 1];
-            PermissionSet ipaActMgr = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_IPA_Acct_Mgr' LIMIT 1];
-            PermissionSet readOnlyPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Int_Read_Only' LIMIT 1];
-            PermissionSet internalIUPGMReadOnlyPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Int_Read_Only' LIMIT 1];
-
+            
             List<User> userList = new List<User>();
             
             List<PermissionSetAssignment> permissionSetAssignmentList = new List<PermissionSetAssignment>();
-            UserRole role1 = [Select Id from UserRole where DeveloperName = 'Admin'];
-            
+             
             User retailAccountManager = Core_MDF_CCP_TestDataUtility.createUser(false);
             retailAccountManager.profileId = ccpCoreProfile.Id;
             retailAccountManager.LastName = 'Retail Acc Manager';
             retailAccountManager.Email = 'testUser1@intel.com';
-            retailAccountManager.UserRoleId = role1.Id;
             userList.add(retailAccountManager);
             
             User accountManager = Core_MDF_CCP_TestDataUtility.createUser(false);
             accountManager.profileId = ccpCoreProfile.Id;
             accountManager.LastName = 'Acc Manager';
             retailAccountManager.Email = 'testUser2@intel.com';
-            accountManager.UserRoleId = role1.Id;
             userList.add(accountManager);
             
             User accountManagerIPA = Core_MDF_CCP_TestDataUtility.createUser(false);
@@ -104,8 +97,8 @@ public class Core_MDF_DetermineEmailRecipients_Test {
             
             Core_AGS_Role__c agsRoleRMF = Core_MDF_CCP_TestDataUtility.createAgsRole('Co-Marketing(Salesforce)-RMF User', 'Co-Marketing(Salesforce)-RMF User', true, true);
             Core_ERPM_Engagement__c erpmEngagementRMF = Core_MDF_CCP_TestDataUtility.createErpmEngagement('RPS_Retailer', 'RPS_Retailer', 'DEDUPGPRET', 'SEC', true, true);
-            Core_Entitlement__c entitlementRMF = Core_MDF_CCP_TestDataUtility.createEntitlement('RMF User',agsRoleRMF.Id ,'Retail Partner Systems (RPS)','RMF User',erpmEngagementRMF.Id , true,'Retail Marketing Funds (RMF)',true);
-            // Highlight: Unused Local Variable 
+            Core_Entitlement__c entitlementRMF = Core_MDF_CCP_TestDataUtility.createEntitlement('RMF User',agsRoleRMF.Id ,'Consolidated Co-marketing Platform','RMF User',erpmEngagementRMF.Id , true,'Retail Marketing Funds (RMF)',true);
+            // Highlight: Unused Local Variable - Indira
            // Core_Contact_Entitlement__c contactEntitlementRMF = Core_MDF_CCP_TestDataUtility.createContactEntitlement(externalUser.Id,entitlementRMF.Id ,true,'Complete', true);
             
             PermissionSetAssignment psa1 = new PermissionSetAssignment(PermissionSetId = retailAccManagerPS.Id, AssigneeId = retailAccountManager.Id);
@@ -120,18 +113,6 @@ public class Core_MDF_DetermineEmailRecipients_Test {
             PermissionSetAssignment psa4 = new PermissionSetAssignment(PermissionSetId = ipaAccManagerPS.Id, AssigneeId = accountManagerIPA.Id);
             permissionSetAssignmentList.add(psa4); 
             
-            PermissionSetAssignment psa5 = new PermissionSetAssignment(PermissionSetId = ipaActMgr.Id, AssigneeId = retailAccountManager.Id);
-            permissionSetAssignmentList.add(psa5);
-            
-            PermissionSetAssignment psa6 = new PermissionSetAssignment(PermissionSetId = ipaActMgr.Id, AssigneeId = accountManager.Id);
-            permissionSetAssignmentList.add(psa6); 
-            
-            PermissionSetAssignment psa7 = new PermissionSetAssignment(PermissionSetId = readOnlyPS.Id, AssigneeId = retailAccountManager.Id);
-            permissionSetAssignmentList.add(psa7); 
-            
-            PermissionSetAssignment psa8 = new PermissionSetAssignment(PermissionSetId = readOnlyPS.Id, AssigneeId = accountManager.Id);
-			permissionSetAssignmentList.add(psa8); 
-            
             insert permissionSetAssignmentList;            
             
             Group extGroup = new Group();
@@ -143,7 +124,7 @@ public class Core_MDF_DetermineEmailRecipients_Test {
             intGroup.Name = 'CCP Internal Group';
             intGroup.DeveloperName = 'Core_MDF_CCP_Internal_Group';
             database.insert(intGroup);
-            List<Core_MDF_Partner_Group_Mapping__c> pgmList = new List<Core_MDF_Partner_Group_Mapping__c>();
+            
             Core_MDF_Partner_Group_Mapping__c pgmRecord = new Core_MDF_Partner_Group_Mapping__c();
             pgmRecord.Core_MDF_Account__c = intelAccount.id;
             pgmRecord.Core_MDF_Channel_Program__c = retailCp.id;
@@ -151,18 +132,8 @@ public class Core_MDF_DetermineEmailRecipients_Test {
             pgmRecord.Core_MDF_Group_Name__c = 'Core_MDF_CCP_External_Group';
             pgmRecord.Core_MDF_Source_Txt__c = 'Test';
             pgmRecord.Core_MDF_AccountIdGroupName__c = intelAccount.Id+'Core_MDF_CCP_External_Group';
-            pgmList.add(pgmRecord);
-            
-            Core_MDF_Partner_Group_Mapping__c pgmRecord1 = new Core_MDF_Partner_Group_Mapping__c();
-            pgmRecord1.Core_MDF_Account__c = intelAccountIPA.id;
-            pgmRecord1.Core_MDF_Channel_Program__c = ipaCp.id;
-            pgmRecord1.Core_MDF_Type_of_Access__c ='External';
-            pgmRecord1.Core_MDF_Group_Name__c = 'Core_MDF_CCP_External_Group';
-            pgmRecord1.Core_MDF_Source_Txt__c = 'Test';
-            pgmRecord1.Core_MDF_AccountIdGroupName__c = intelAccountIPA.Id+'Core_MDF_CCP_External_Group';
-            pgmList.add(pgmRecord1);
-            database.insert(pgmList);
-            
+            database.insert(pgmRecord);
+        
             GroupMember gm = new GroupMember();
             gm.GroupId = extGroup.Id;
             gm.UserOrGroupId = extUser.Id;
@@ -174,29 +145,27 @@ public class Core_MDF_DetermineEmailRecipients_Test {
             database.insert(gm1);
             
             List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();            
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
            // Core_MDF_Partner_Node_User_Mapping__c pnum = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(intelRetail.Id,extUser.Id,true);
             
             Id retailIUPGMRecordTypeId = Schema.SObjectType.Core_MDF_Int_Users_Partner_Geo_Mapping__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Retail_Marketing_Funds').getRecordTypeId();
             Id ipaIUPGMRecordTypeId = Schema.SObjectType.Core_MDF_Int_Users_Partner_Geo_Mapping__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
             Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
             iupgm.recordTypeId = retailIUPGMRecordTypeId;
-            iupgm.Core_MDF_Account_id__c = intelAccount.Id;
+            iupgm.Core_MDF_Account_id__c = intelRetail.Id;
             iupgm.Core_MDF_Program_nm__c = 'Retail Marketing Funds';
             iupgm.Core_MDF_User_id__c = retailAccountManager.Id;
-            iupgm.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Int_Read_Only';
+            iupgm.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Internal_Retail_Account_Manager';
             iupgm.Core_MDF_All_Accounts_cd__c = 'No';
-            iupgm.Core_MDF_Region_Sub_Region_nm__c = 'APJ';
             iupgmList.add(iupgm);
             
             Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm2 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
             iupgm2.recordTypeId = retailIUPGMRecordTypeId;
-            iupgm2.Core_MDF_Account_id__c = intelAccount.Id;
+            iupgm2.Core_MDF_Account_id__c = intelRetail.Id;
             iupgm2.Core_MDF_Program_nm__c = 'Retail Marketing Funds';
             iupgm2.Core_MDF_User_id__c = accountManager.Id;
-            iupgm2.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Int_Read_Only';
+            iupgm2.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Internal_Retail_Account_Manager';
             iupgm2.Core_MDF_All_Accounts_cd__c = 'No';
-            iupgm2.Core_MDF_Region_Sub_Region_nm__c = 'APJ';
             iupgmList.add(iupgm2);
             
             Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm3 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
@@ -227,9 +196,7 @@ public class Core_MDF_DetermineEmailRecipients_Test {
                                FROM Account WHERE Name = 'IPA Co-Marketing Account' limit 1];
         Id groupId = NULL;
         System.assert(groupId == NULL);
-        //System.runAs(user){
-            insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Business Client Acceleration - MDF', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = true, Core_MDF_Partner_Benefit__c = 'Business Client Acceleration - MDF', Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Proposal_Based', Core_MDF_Budget_Type__c = 'Proposal I MDF', Core_MDF_Program_Nm__c = 'Intel Partner Alliance', Core_MDF_RecordType__c = 'Proposal Based');
-
+        System.runAs(user){
             String budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount);
             
             Campaign ipaCampaignForAP = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP',ipaCoMarketingAccount.id, 
@@ -242,11 +209,9 @@ public class Core_MDF_DetermineEmailRecipients_Test {
             database.insert(ipaCampaignForAP);
             
             PartnerFundRequest ipaPFR5 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,
-                                                                                                      System.today().addDays(1),System.today().addDays(10),false);
+                                                                                                      System.today().addDays(1),System.today().addDays(10),true);
             
-            ipaPFR5.Core_MDF_ActivityCategory__c='Digital';
-            ipaPFR5.Core_MDF_Activity_Types__c='Email';
-        	insert ipaPFR5;
+            
             test.startTest();
             List<Core_MDF_DetermineEmailRecipients.InitialInputs> inputList = new List<Core_MDF_DetermineEmailRecipients.InitialInputs>();
             
@@ -265,7 +230,7 @@ public class Core_MDF_DetermineEmailRecipients_Test {
             Core_MDF_DetermineEmailRecipients.determineRecipients(inputList);
             //Core_MDF_DetermineEmailRecipients.toInternalUsers();
             test.stopTest();
-        //}    
+        }    
     }
     
     @isTest
@@ -282,7 +247,7 @@ public class Core_MDF_DetermineEmailRecipients_Test {
         update intelRetail;
         Id groupId = intelRetail.Core_MDF_Group_Id__c;
         
-        //System.runAs(user){
+        System.runAs(user){
             //adding bypass feature to bypass access validation
             List<String> bypassFunctionKeys = new List<String>();
             bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
@@ -315,7 +280,7 @@ public class Core_MDF_DetermineEmailRecipients_Test {
             Campaign camp1 = Core_MDF_CCP_TestDataUtility.createCampaign('TestRetailCamp','Gaming','Athena','MDF or both CMP & MDF',
                                                                          Core_MDF_CCP_TestDataUtility.campaign_RecordType_Retail, 
                                                                          'Retail Marketing Funds',
-                                                                         System.today().addDays(-1), System.today().addYears(1), 2000, 
+                                                                         System.today(), System.today().addYears(1), 2000, 
                                                                          'Instore innovation', intelRetail.Id,'2-in-1', false);
             camp1.Core_MDF_Budget_Type_txt__c ='RSA MD';
             database.insert(camp1);
@@ -324,13 +289,13 @@ public class Core_MDF_DetermineEmailRecipients_Test {
                                                                                            Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,
                                                                                            string.valueof(intelRetail.id),NULL,NULL,
                                                                                            'AFGHANISTAN','Business','Workstation',
-                                                                                           'EVO','Broadcast (Pre-2025)',
+                                                                                           'EVO','Broadcast',
                                                                                            'Podcast','Draft',false);
             
             pfr.Title ='Retail MDF Activity';
             pfr.Core_MDF_Activity_Description__c ='Retail MDF Activity';
             pfr.Core_MDF_Budget_Type_nm__c ='RSA MD';
-            pfr.Core_MDF_Start_Date__c = system.today().addDays(-1);
+            pfr.Core_MDF_Start_Date__c = System.today();
             pfr.Core_MDF_End_Date__c  = System.today();
             pfr.RequestedAmount =1000;
             pfr.Amount=1000;
@@ -350,10 +315,10 @@ public class Core_MDF_DetermineEmailRecipients_Test {
             bank.Core_MDF_Tax_codes_cd__c = 'I0';
             Database.insert(bank);
             //Do Account Bank Mapping for 'bank' and ABM is applicaple only for "Retail MDF" record type
-           // Highlight: Unused Local Variable 
+           // Highlight: Unused Local Variable - Indira
           //  Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(intelRetail.ID,bank.Id,true);
             PartnerFundClaim pfc = Core_MDF_CCP_TestDataUtility.createRetailRSAMDClaim(Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail,
-                                                                                       pfr.Id, system.today().addDays(-1), system.today().addDays(-1), 50.00, false);
+                                                                                       pfr.Id, System.today(), System.today(), 50.00, false);
             pfc.Core_MDF_Country_Location_nm__c= 'AFGHANISTAN';
             pfc.Title = 'Retail RSA MD Claim';
             database.insert(pfc);
@@ -379,7 +344,7 @@ public class Core_MDF_DetermineEmailRecipients_Test {
             database.insert(esc); */           
              Core_MDF_Escalation__c esc = new Core_MDF_Escalation__c();
             esc.Core_MDF_Escalation_Name_txt__c='Test2';
-        	esc.Core_MDF_Escalation_Status_nm__c='Pending Review';
+            esc.Core_MDF_Escalation_Status_nm__c='Pending Review';
             esc.Core_MDF_Total_Dollar_Impact_amt__c= 23;
             esc.Core_MDF_Root_Cause_nm__c = 'Claim Score Appeal';
            // esc1.Core_MDF_Co_Marketing_Activity_id__c = testPartnerFundRequestRecord2.Id;
@@ -415,7 +380,7 @@ public class Core_MDF_DetermineEmailRecipients_Test {
             Core_MDF_DetermineEmailRecipients.determineRecipients(inputList);
 
             test.stopTest();
-        //}
+        }
     }
     
     @isTest
@@ -431,7 +396,7 @@ public class Core_MDF_DetermineEmailRecipients_Test {
 
         Id groupId = intelRetail.Core_MDF_Group_Id__c;
         
-        //System.runAs(user){ 
+        System.runAs(user){ 
             //adding bypass feature to bypass access validation
             List<String> bypassFunctionKeys = new List<String>();
             bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
@@ -462,7 +427,7 @@ public class Core_MDF_DetermineEmailRecipients_Test {
             Campaign camp1 = Core_MDF_CCP_TestDataUtility.createCampaign('TestRetailCamp','Gaming','Athena','MDF or both CMP & MDF',
                                                                          Core_MDF_CCP_TestDataUtility.campaign_RecordType_Retail, 
                                                                          'Retail Marketing Funds',
-                                                                         System.today().addDays(-1), System.today().addYears(1), 2000, 
+                                                                         System.today(), System.today().addYears(1), 2000, 
                                                                          'Instore innovation', intelRetail.Id,'2-in-1', false);
             camp1.Core_MDF_Budget_Type_txt__c ='RSA MD';
             database.insert(camp1);
@@ -471,13 +436,13 @@ public class Core_MDF_DetermineEmailRecipients_Test {
                                                                                            Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,
                                                                                            string.valueof(intelRetail.id),NULL,NULL,
                                                                                            'AFGHANISTAN','Business','Workstation',
-                                                                                           'EVO','Broadcast (Pre-2025)',
+                                                                                           'EVO','Broadcast',
                                                                                            'Podcast','Draft',false);
             
             pfr.Title ='Retail MDF Activity';
             pfr.Core_MDF_Activity_Description__c ='Retail MDF Activity';
             pfr.Core_MDF_Budget_Type_nm__c ='RSA MD';
-            pfr.Core_MDF_Start_Date__c = system.today().addDays(-1);
+            pfr.Core_MDF_Start_Date__c = System.today();
             pfr.Core_MDF_End_Date__c  = System.today();
             pfr.RequestedAmount =1000;
             pfr.Amount=1000;
@@ -492,7 +457,7 @@ public class Core_MDF_DetermineEmailRecipients_Test {
     
             
             PartnerFundClaim pfc = Core_MDF_CCP_TestDataUtility.createRetailRSAMDClaim(Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail,
-                                                                                       pfr.Id, system.today().addDays(-1), system.today().addDays(-1), 50.00, false);
+                                                                                       pfr.Id, System.today(), System.today(), 50.00, false);
             pfc.Core_MDF_Country_Location_nm__c= 'AFGHANISTAN';
             pfc.Title = 'Retail RSA MD Claim';
             database.insert(pfc);
@@ -559,7 +524,7 @@ public class Core_MDF_DetermineEmailRecipients_Test {
             test.stopTest();
             Core_MDF_GenericClassToSendMail.sendEmailMethod(paramsList);
            
-        //}
+        }
     }
     
     @isTest
@@ -586,7 +551,7 @@ public class Core_MDF_DetermineEmailRecipients_Test {
             Core_MDF_GenericClassToSendMail.batchExecutionNotifyUser('Core_MDF_Batch_Execution_Notify_User','Test_Batch','Core_MDF_Notify_Batch_Email_Users');
             // Validate the generated URL does not contain internal org host
             String internalHost = System.URL.getOrgDomainUrl().getHost();
-            //System.assertNotEquals(true, res.contains(internalHost), 'External URL should not contain the internal org host');
+            System.assertNotEquals(true, res.contains(internalHost), 'External URL should not contain the internal org host');
 
         try{
             Core_MDF_GenericClassToSendMail.sendEmailMethod(null);

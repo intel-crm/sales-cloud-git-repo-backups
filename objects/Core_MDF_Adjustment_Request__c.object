@@ -86,7 +86,6 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
-        <comment>Using Custom Record Type Selector Component</comment>
         <content>Core_MDF_PFR_RecordTypeSelectorComp</content>
         <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
@@ -94,7 +93,6 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
-        <comment>Using Custom Record Type Selector Component</comment>
         <content>Core_MDF_PFR_RecordTypeSelectorComp</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
@@ -134,11 +132,14 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Claim_Adjustment_Request_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -160,8 +161,7 @@
     <description>This object stores all the Adjustment request</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
-    <enableEnhancedLookup>false</enableEnhancedLookup>
-    <enableFeeds>true</enableFeeds>
+    <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
@@ -194,7 +194,6 @@
         <relationshipLabel>Claim Adjustment Requests (Adjustment Claim)</relationshipLabel>
         <relationshipName>Claim_Adjustment_Requests1</relationshipName>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -204,7 +203,6 @@
         <description>This field stores the Adjustment Request status as Approved or Cancelled</description>
         <label>Adjustment Status</label>
         <required>true</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -233,7 +231,6 @@
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
@@ -244,7 +241,6 @@
         <description>If the field value is true, then the system is going to by-pass the amount validation</description>
         <inlineHelpText>If Checked, this Adjustment Request Amount will bypass the Total Adjustment Request Amount Validation for this Reference Claim. Provide justification in the comments section.</inlineHelpText>
         <label>Bypass Amount Validation</label>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
@@ -255,7 +251,6 @@
         <inlineHelpText>Free text comments related to the Claim Adjustment Request. In case the amount validation is bypassed, need to provide justification for bypassing validation.</inlineHelpText>
         <label>Adjustment Request Comments</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
@@ -286,8 +281,7 @@ $Label.Core_MDF_Intel_System_User
         <relationshipLabel>Claim Adjustment Requests</relationshipLabel>
         <relationshipName>Claim_Adjustment_Requests</relationshipName>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -331,7 +325,6 @@ $Label.Core_MDF_Intel_System_User
         <inlineHelpText>Reason for Adjustment creation</inlineHelpText>
         <label>Adjustment Reason</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -357,7 +350,6 @@ $Label.Core_MDF_Intel_System_User
         <externalId>false</externalId>
         <label>Reference Claim Owner Email</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Email</type>
@@ -373,7 +365,6 @@ $Label.Core_MDF_Intel_System_User
         <relationshipLabel>Claim Adjustment Requests</relationshipLabel>
         <relationshipName>Claim_Adjustment_Requests</relationshipName>
         <required>true</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -386,7 +377,6 @@ $Label.Core_MDF_Intel_System_User
         <relationshipLabel>Claim Adjustment Requests (Sub Claim)</relationshipLabel>
         <relationshipName>Claim_Adjustment_Requests2</relationshipName>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -407,19 +397,41 @@ $Label.Core_MDF_Intel_System_User
     <nameField>
         <displayFormat>{00000}</displayFormat>
         <label>Adjustment Request Number</label>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Claim Adjustment Requests</pluralLabel>
     <searchLayouts>
+        <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
+        <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Import</excludedStandardButtons>
+        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>MassAssignRecordLabel</excludedStandardButtons>
         <searchResultsAdditionalFields>OBJECT_ID</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_MDF_Reference_Claim_Nbr__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_MDF_Adjustment_Claim_Nbr__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_MDF_Reason_Cd__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>CREATEDBY_USER</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_Adjustment_Status_nm__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_CreatedBy_Nm__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Core_MDF_Adj_Ref_Activity_InProgress</fullName>
+        <active>false</active>
+        <description>Allow Adjustment request creation on Claims associated to only  In Progress Activities</description>
+        <errorConditionFormula>AND(
+ISNEW(),
+NOT(ISBLANK(Core_MDF_Reference_Claim_Nbr__c)), 
+OR(
+Core_MDF_Reference_Claim_Nbr__r.Core_MDF_Activity_Status_nm__c = &apos;In-Progress Pending Review&apos;,
+Core_MDF_Reference_Claim_Nbr__r.Core_MDF_Activity_Status_nm__c  = &apos;In-Progress Pending Approval&apos;,
+Core_MDF_Reference_Claim_Nbr__r.Core_MDF_Activity_Status_nm__c  = &apos;In-Progress Revision Required&apos;
+)
+)</errorConditionFormula>
+        <errorMessage>Adjustment can be created on claims associated to activities that are in an &quot;In Progress&quot; state only</errorMessage>
+    </validationRules>
     <validationRules>
         <fullName>Core_MDF_AdjustmentAmount</fullName>
         <active>true</active>
@@ -515,5 +527,30 @@ TEXT(Core_MDF_Reason_Cd__c) != $Label.Core_MDF_AdjReq_EscalationType)</errorCond
         <errorConditionFormula>ISBLANK( Core_MDF_Reference_Claim_Nbr__c) || TEXT(Core_MDF_Reference_Claim_Nbr__r.Core_MDF_Type_Txt__c) &lt;&gt; $Label.Core_MDF_Claim_Type</errorConditionFormula>
         <errorMessage>The claim selected is offset claim, please select a valid claim.</errorMessage>
     </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_StatusRestriction</fullName>
+        <active>false</active>
+        <errorConditionFormula>IF(AND(TEXT(PRIORVALUE(Core_MDF_Adjustment_Status_nm__c)) == $Label.Core_MDF_Status_Cancelled ,TEXT(Core_MDF_Adjustment_Status_nm__c) == $Label.Core_MDF_Status_Approved), true, false)</errorConditionFormula>
+        <errorMessage>Status Cannot be changed to Approved now!</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_TotalAdjustmentAmtLessThanClaim</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND( ISNEW(),(Core_MDF_Amount_Amt__c  +   Core_MDF_Reference_Claim_Nbr__r.Core_MDF_Total_Adjustment_Amt__c ) &gt;  Core_MDF_Reference_Claim_Nbr__r.Amount )</errorConditionFormula>
+        <errorMessage>Total Adjustment amount has exceeded the Claim reimbursement amount.</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>New_Adjustment_Request</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>New Adjustment Request</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/flow/Adjustment_Screen_Flow</url>
+    </webLinks>
 </CustomObject>

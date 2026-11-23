@@ -12,141 +12,174 @@ public without sharing class Core_MDF_GenericShareRecordActionClass {
 
     public static String readAccessLevel = '';
     
+    // ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+    // Static cache added at class level — shared across all 3 methods
+    private static Map<String, Schema.SObjectType> sObjectTypeCache = new Map<String, Schema.SObjectType>();
+
+    // Private helper replaces getGlobalDescribe() in all 3 methods
+    private static Schema.SObjectType getSObjectTypeToken(String objectName) {
+    	if (String.isBlank(objectName)) { return null; }
+    	String key = objectName.toLowerCase();
+    	if (!sObjectTypeCache.containsKey(key)) {
+        	try {
+            	Schema.DescribeSObjectResult[] results = Schema.describeSObjects(new List<String>{ objectName });
+            	if (results != null && !results.isEmpty()) {
+                	sObjectTypeCache.put(key, results[0].getSObjectType());
+            	}
+        	} catch (Exception e) { Core_MDF_CCP_UtilityClass.logError(e); }
+    	}
+    	return sObjectTypeCache.containsKey(key) ? sObjectTypeCache.get(key) : null;
+	}
+    
     public static List<sObject> createShareRecordList(RecordManualShareClass recordManualShare){
         List<sObject> dynObjectList = new List<sObject>();
         Boolean hasUserId = false;
         try{
-            if(recordManualShare != NULL){
-                //Store the Original Name
-                recordManualShare.typeName = String.escapeSingleQuotes(recordManualShare.typeName);
-                String originalObjectName = (recordManualShare.typeName != NULL ? recordManualShare.typeName : '');
-                //Fetch all the object Ids in a List variable 'objectIdList'
-                List<Id> objectIdList = new List<Id>();
-                objectIdList.addAll(recordManualShare.objectIdUserGroupIdListMap.keySet());
-                /* US781098 - start */
-                List<Id> userGrpIdList = new List<Id>();
-                for(List<Id> usrgrpIdLst : recordManualShare.objectIdUserGroupIdListMap.values()) {
-                    userGrpIdList.addAll(usrgrpIdLst); // fetch all user or group ids in userGrpIdList
+            // US - TWC702-14285: Flatten nested IFs (no logic change)
+            if(recordManualShare == NULL) return dynObjectList;
+            
+            //Store the Original Name
+            recordManualShare.typeName = String.escapeSingleQuotes(recordManualShare.typeName);
+            String originalObjectName = (recordManualShare.typeName != NULL ? recordManualShare.typeName : '');
+            //Fetch all the object Ids in a List variable 'objectIdList'
+            List<Id> objectIdList = new List<Id>();
+            objectIdList.addAll(recordManualShare.objectIdUserGroupIdListMap.keySet());
+            /* US781098 - start */
+            List<Id> userGrpIdList = new List<Id>();
+            for(List<Id> usrgrpIdLst : recordManualShare.objectIdUserGroupIdListMap.values()) {
+                userGrpIdList.addAll(usrgrpIdLst); // fetch all user or group ids in userGrpIdList
+            }
+            system.debug('userGrpIdList@@@ ' + userGrpIdList);
+            for(Id recId : userGrpIdList) {
+                if(recId != NULL && String.valueOf(recId).startsWith('005')) {
+                    hasUserId = true;
+                    break;
                 }
-                for(Id recId : userGrpIdList) {
-                    if(recId != NULL && String.valueOf(recId).startsWith('005')) {
-                        hasUserId = true;
-                        break;
-                    }
-                }
-                /* US781098 - End */
-                if(String.isNotEmpty(recordManualShare.typeName)){ //if typeName is not empty
-                    Map<Id, Id> objectIdOwnerIdMap = new Map<Id, Id>();
-                    /* if hasUserId = false it means that userGrpIdList contains group ids and 
-                     * Group cannot be an owner of the records so not required the below soql for 
-                     * getting the ownerid for record.
-                     * The below block only executes if userGrpIdList contains user ids
-                    */
-                    if(hasUserId) { /* US781098 - start */
-                        //Query the same records to fetch the Owner Ids as we do not want to create Share records with the User
-                        //who is an Owner.
-                        String sQuery = Label.Core_MDF_GenericShareQueryFields + 
-                                        ' ' + recordManualShare.typeName + ' ' +
-                                        Label.Core_MDF_GenericShareQueryWhereClass + ' :objectIdList';
+            }
+            /* US781098 - End */
+            // US - TWC702-14285: Flatten nested IFs (no logic change)
+            if(String.isEmpty(recordManualShare.typeName)) return dynObjectList; //if typeName is empty
+            
+            Map<Id, Id> objectIdOwnerIdMap = new Map<Id, Id>();
+            /* if hasUserId = false it means that userGrpIdList contains group ids and 
+             * Group cannot be an owner of the records so not required the below soql for 
+             * getting the ownerid for record.
+             * The below block only executes if userGrpIdList contains user ids
+            */
+            if(hasUserId) { /* US781098 - start */
+                //Query the same records to fetch the Owner Ids as we do not want to create Share records with the User
+                //who is an Owner.
+                String sQuery = Label.Core_MDF_GenericShareQueryFields + 
+                                ' ' + recordManualShare.typeName + ' ' +
+                                Label.Core_MDF_GenericShareQueryWhereClass + ' :objectIdList';
 
-                        Map<Id,Sobject> results = new Map<Id,Sobject>(Database.query(String.escapeSingleQuotes(sQuery)));
-                        for(Sobject record : results.values()){
-                            objectIdOwnerIdMap.put((Id)record.get(Label.Core_MDF_Id_Label),(Id)record.get(Label.Core_MDF_OwnerId_Label));
-                        }
+                Map<Id,Sobject> results = new Map<Id,Sobject>(Database.query(String.escapeSingleQuotes(sQuery)));
+                system.debug('results1'+results);
+                for(Sobject record : results.values()){
+                    objectIdOwnerIdMap.put((Id)record.get(Label.Core_MDF_Id_Label),(Id)record.get(Label.Core_MDF_OwnerId_Label));
+                    system.debug('objectIdOwnerIdMap1'+objectIdOwnerIdMap);
+                }
+            }
+            //Append Share to the object Name
+            if(recordManualShare.typeName.endsWithIgnoreCase(Label.Core_MDF_ObjectEnding_Label))
+            {
+                    recordManualShare.typeName = recordManualShare.typeName.removeEndIgnoreCase(Label.Core_MDF_c_Label) + Label.Core_MDF_Share_Label;
+                    system.debug('recordManualShare.typeName1'+recordManualShare.typeName);
                     }
-                    //Append Share to the object Name
-                    if(recordManualShare.typeName.endsWithIgnoreCase(Label.Core_MDF_ObjectEnding_Label))
-                    {
-                            recordManualShare.typeName = recordManualShare.typeName.removeEndIgnoreCase(Label.Core_MDF_c_Label) + Label.Core_MDF_Share_Label;
-                        	}
-                    else{
-                        recordManualShare.typeName += Label.Core_MDF_Share_Label;
+            else{
+                recordManualShare.typeName += Label.Core_MDF_Share_Label;
+                system.debug('recordManualShare.typeName1'+recordManualShare.typeName);
+                
+            }
+            List<String> standardObjectNameList = new List<String>();
+            // Map<metadataIs,metadataRecord
+            //Map<Id,Core_MDF_Standard_Object_for_Sharing__mdt> sofsMap = new Map<Id,Core_MDF_Standard_Object_for_Sharing__mdt>([SELECT MasterLabel, DeveloperName
+              //                                                                                                                  FROM Core_MDF_Standard_Object_for_Sharing__mdt]);
+            List<String> SplitStandardObject = Label.Core_MDF_Standard_Object_for_SharingLabel.split(',');//Swati -  Replaced Core_MDF_Standard_Object_for_Sharing__mdt with label
+            //Fetch the Standard object names to differentiate between the Share record creation as some standard
+            //objects have different fields as compared to some other standard and all custom objects.
+            //Like AccountShare - Fields to populate are AccountId & AccountAccessLevel
+            //But, for PartnerFundAllocationShare - Fields to populate are ParentId & AccessLevel
+            
+           /* for(Core_MDF_Standard_Object_for_Sharing__mdt sofs : sofsMap.values())
+            {
+                standardObjectNameList.add(sofs.DeveloperName);
+                system.debug('standardObjectNameList1'+standardObjectNameList);
+            }*/
+            
+            for (String value : SplitStandardObject) { //Swati -Replaced Core_MDF_Standard_Object_for_Sharing__mdt with label
+                value = value.trim();
+                standardObjectNameList.add(value);
+                System.debug(value);
+                system.debug('standardObjectNameList1'+standardObjectNameList);                        
+            }
+            
+	    	// ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+            Schema.SObjectType objToken = getSObjectTypeToken(recordManualShare.typeName);
+            // US - TWC702-14285: Flatten nested IFs (no logic change)
+            if(objToken == NULL) return dynObjectList;
+            
+            //Iterate over the objectIdUserGroupIdListMap map to create share records
+            //First fetch each Object Id
+            for(Id objectId : recordManualShare.objectIdUserGroupIdListMap.keySet())
+            {
+                //Then, fetch all the User Ids with which the object record needs to be shared with.
+                for(String userGroupId : recordManualShare.objectIdUserGroupIdListMap.get(objectId))
+                {
+                    //Dynamically instantiate the Object Share record.
+                    sObject dynObject = objToken.newSObject();
+                    // US - TWC702-14285: Flatten nested IFs (no logic change)
+                    if (dynObject == NULL || userGroupId == NULL) continue;
+                    
+                    //Fields -> UserOrGroupId, ParentId, AccessLevel 
+                    /* US781098 - Added null check for objectIdOwnerIdMap */
+                    // US - TWC702-14285: Flatten nested IFs (no logic change)
+                    if(!((hasUserId && objectIdOwnerIdMap != null && !objectIdOwnerIdMap.isEmpty()
+                        && objectIdOwnerIdMap.containsKey(objectId)
+                        && objectIdOwnerIdMap.get(objectId) != userGroupId) || !hasUserId )) continue;  //If the selected User is not Owner
+                    
+                    if(standardObjectNameList.contains(originalObjectName))
+                    { //if the metadata contains the object
+                        dynObject.put(originalObjectName + Label.Core_MDF_Id_Label, objectId); //e.g. Account, Campaign - AccountId, CampaignId
+                        if(String.isNotBlank(recordManualShare.accessLevelStr)){
+                            dynObject.put(originalObjectName + Label.Core_MDF_AccessLevel_Label, recordManualShare.accessLevelStr); //e.g. Account, Campaign - AccountAccessLevel, CampaignAccessLevel
+                            }
                         
-                    }
-                    List<String> standardObjectNameList = new List<String>();
-                    // Map<metadataIs,metadataRecord
-                    //Map<Id,Core_MDF_Standard_Object_for_Sharing__mdt> sofsMap = new Map<Id,Core_MDF_Standard_Object_for_Sharing__mdt>([SELECT MasterLabel, DeveloperName
-                      //                                                                                                                  FROM Core_MDF_Standard_Object_for_Sharing__mdt]);
-                    List<String> SplitStandardObject = Label.Core_MDF_Standard_Object_for_SharingLabel.split(',');//Replaced Core_MDF_Standard_Object_for_Sharing__mdt with label
-                    //Fetch the Standard object names to differentiate between the Share record creation as some standard
-                    //objects have different fields as compared to some other standard and all custom objects.
-                    //Like AccountShare - Fields to populate are AccountId & AccountAccessLevel
-                    //But, for PartnerFundAllocationShare - Fields to populate are ParentId & AccessLevel
-                    
-                   /* for(Core_MDF_Standard_Object_for_Sharing__mdt sofs : sofsMap.values())
-                    {
-                        standardObjectNameList.add(sofs.DeveloperName);
-                        
-                    }*/
-                    
-                    for (String value : SplitStandardObject) { //Replaced Core_MDF_Standard_Object_for_Sharing__mdt with label
-                        value = value.trim();
-                        standardObjectNameList.add(value);                        
-                    }
-                    
-                    Schema.SObjectType objToken = Schema.getGlobalDescribe().get(recordManualShare.typeName);
-                    if(objToken != NULL)
-                    {
-                        //Iterate over the objectIdUserGroupIdListMap map to create share records
-                        //First fetch each Object Id
-                        for(Id objectId : recordManualShare.objectIdUserGroupIdListMap.keySet())
-                        {
-                            //Then, fetch all the User Ids with which the object record needs to be shared with.
-                            for(String userGroupId : recordManualShare.objectIdUserGroupIdListMap.get(objectId))
+                        if((Label.Core_MDF_Account_Label).equalsIgnoreCase(originalObjectName))
+                        { //for Account, 3 more extra fields need to be added to instantiate.
+                            dynObject.put(Label.Core_MDF_OpportunityAccessLevel_Label, Label.Core_MDF_None_Label);
+                            if(String.isNotBlank(recordManualShare.caseAccessLevel))
                             {
-                                //Dynamically instantiate the Object Share record.
-                                sObject dynObject = objToken.newSObject();
-                                if (dynObject != NULL && userGroupId != NULL) 
-                                {
-                                    //Fields -> UserOrGroupId, ParentId, AccessLevel 
-                                    /* US781098 - Added null check for objectIdOwnerIdMap */
-                                    if((hasUserId && objectIdOwnerIdMap != null && !objectIdOwnerIdMap.isEmpty()
-                                        && objectIdOwnerIdMap.containsKey(objectId)
-                                        && objectIdOwnerIdMap.get(objectId) != userGroupId) || !hasUserId ) {  //If the selected User is not Owner
-                                        if(standardObjectNameList.contains(originalObjectName))
-                                        { //if the metadata contains the object
-                                            dynObject.put(originalObjectName + Label.Core_MDF_Id_Label, objectId); //e.g. Account, Campaign - AccountId, CampaignId
-                                            if(String.isNotBlank(recordManualShare.accessLevelStr)){
-                                                dynObject.put(originalObjectName + Label.Core_MDF_AccessLevel_Label, recordManualShare.accessLevelStr); //e.g. Account, Campaign - AccountAccessLevel, CampaignAccessLevel
-                                                }
-                                            
-                                            if((Label.Core_MDF_Account_Label).equalsIgnoreCase(originalObjectName))
-                                            { //for Account, 3 more extra fields need to be added to instantiate.
-                                                dynObject.put(Label.Core_MDF_OpportunityAccessLevel_Label, Label.Core_MDF_None_Label);
-                                                if(String.isNotBlank(recordManualShare.caseAccessLevel))
-                                                {
-                                                    dynObject.put(Label.Core_MDF_CaseAccessLevel_Label, recordManualShare.caseAccessLevel);
-                                                }
-                                                else {
-                                                    dynObject.put(Label.Core_MDF_CaseAccessLevel_Label, Label.Core_MDF_None_Label);
-                                                }
-                                            }
-                                        }
-                                        else
-                                        {
-                                            dynObject.put(Label.Core_MDF_ParentId_Label, objectId); //PartnerFundAllocation, PartnerFundRequest - PartnerFundAllocationId, PartnerFundRequestId
-                                            if(String.isNotBlank(recordManualShare.accessLevelStr)){
-                                                dynObject.put(Label.Core_MDF_AccessLevel_Label, recordManualShare.accessLevelStr);
-                                                }
-                                        }
-                                             dynObject.put(Label.Core_MDF_UserOrGroupId_Label, userGroupId); //Add the UserOrGroupId field
-                                        dynObject.put('RowCause', recordManualShare.rowCauseStr); //Add the RowCause field
-                                        dynObjectList.add(dynObject); //Add it to the List
-                                            
-                                    }
-                                }                                
+                                dynObject.put(Label.Core_MDF_CaseAccessLevel_Label, recordManualShare.caseAccessLevel);
                             }
-                        }
-                        if(dynObjectList.size() > 0 && recordManualShare.insertShareRecords)
-                        {
-                  
-                            List<Database.SaveResult> saveResultList = Database.insert(dynObjectList); //insert the record
-                            
-                            if(saveResultList != NULL){
-                                return dynObjectList; //return the list of Share records
+                            else {
+                                dynObject.put(Label.Core_MDF_CaseAccessLevel_Label, Label.Core_MDF_None_Label);
                             }
                         }
                     }
+                    else
+                    {
+                        dynObject.put(Label.Core_MDF_ParentId_Label, objectId); //PartnerFundAllocation, PartnerFundRequest - PartnerFundAllocationId, PartnerFundRequestId
+                        if(String.isNotBlank(recordManualShare.accessLevelStr)){
+                            dynObject.put(Label.Core_MDF_AccessLevel_Label, recordManualShare.accessLevelStr);
+                            }
+                    }
+                         dynObject.put(Label.Core_MDF_UserOrGroupId_Label, userGroupId); //Add the UserOrGroupId field
+                    dynObject.put('RowCause', recordManualShare.rowCauseStr); //Add the RowCause field
+                    dynObjectList.add(dynObject);
+                    system.debug('dynObjectList1'+dynObjectList); //Add it to the List
+                        
+                }                                
+            }
+            system.debug('dynObjectList2'+dynObjectList);
+            if(dynObjectList.size() > 0 && recordManualShare.insertShareRecords)
+            {
+      
+                List<Database.SaveResult> saveResultList = Database.insert(dynObjectList); //insert the record
+ 
+                if(saveResultList != NULL){
+                    
+                    return dynObjectList; //return the list of Share records
                 }
             }
         }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e); }
@@ -200,125 +233,134 @@ public static List<sObject> getShareRecordList(RecordManualShareClass recordManu
         List<sObject> dynObjectList = new List<sObject>();
         Boolean hasUserId = false;
         try{
-            if(recordManualShare != NULL){
-                //Store the Original Name
-                recordManualShare.typeName = String.escapeSingleQuotes(recordManualShare.typeName);
-                String originalObjectName = (recordManualShare.typeName != NULL ? recordManualShare.typeName : '');
-                //Fetch all the object Ids in a List variable 'objectIdList'
-                List<Id> objectIdList = new List<Id>();
-                objectIdList.addAll(recordManualShare.objectIdUserGroupIdListMap.keySet());
-                /* US781098 - start */
-                List<Id> userGrpIdList = new List<Id>();
-                for(List<Id> usrgrpIdLst : recordManualShare.objectIdUserGroupIdListMap.values()) {
-                    userGrpIdList.addAll(usrgrpIdLst); // fetch all user or group ids in userGrpIdList
+            System.debug('enter manual share records list');
+            System.debug('objectIdUserGroupIdListMap-?'+recordManualShare.objectIdUserGroupIdListMap);
+            // US - TWC702-14285: Flatten nested IFs (no logic change)
+            if(recordManualShare == NULL) return dynObjectList;
+            
+            //Store the Original Name
+            recordManualShare.typeName = String.escapeSingleQuotes(recordManualShare.typeName);
+            String originalObjectName = (recordManualShare.typeName != NULL ? recordManualShare.typeName : '');
+            //Fetch all the object Ids in a List variable 'objectIdList'
+            List<Id> objectIdList = new List<Id>();
+            objectIdList.addAll(recordManualShare.objectIdUserGroupIdListMap.keySet());
+            /* US781098 - start */
+            List<Id> userGrpIdList = new List<Id>();
+            for(List<Id> usrgrpIdLst : recordManualShare.objectIdUserGroupIdListMap.values()) {
+                userGrpIdList.addAll(usrgrpIdLst); // fetch all user or group ids in userGrpIdList
+            }
+            for(Id recId : userGrpIdList) {
+                if(recId != NULL && String.valueOf(recId).startsWith('005')) {
+                    hasUserId = true;
+                    break;
                 }
-                for(Id recId : userGrpIdList) {
-                    if(recId != NULL && String.valueOf(recId).startsWith('005')) {
-                        hasUserId = true;
-                        break;
-                    }
-                }
-                /* US781098 - End */
-                if(String.isNotEmpty(recordManualShare.typeName)){ //if typeName is not empty
-                    Map<Id, Id> objectIdOwnerIdMap = new Map<Id, Id>();
-                    /* if hasUserId = false it means that userGrpIdList contains group ids and 
-                     * Group cannot be an owner of the records so not required the below soql for 
-                     * getting the ownerid for record.
-                     * The below block only executes if userGrpIdList contains user ids
-                    */
-                    if(hasUserId) { /* US781098 - start */
-                        //Query the same records to fetch the Owner Ids as we do not want to create Share records with the User
-                        //who is an Owner.
-                        String sQuery = Label.Core_MDF_GenericShareQueryFields + 
-                                        ' ' + recordManualShare.typeName + ' ' +
-                                        Label.Core_MDF_GenericShareQueryWhereClass + ' :objectIdList';
+            }
+            /* US781098 - End */
+            // US - TWC702-14285: Flatten nested IFs (no logic change)
+            if(String.isEmpty(recordManualShare.typeName)) return dynObjectList; //if typeName is empty
+            
+            Map<Id, Id> objectIdOwnerIdMap = new Map<Id, Id>();
+            /* if hasUserId = false it means that userGrpIdList contains group ids and 
+             * Group cannot be an owner of the records so not required the below soql for 
+             * getting the ownerid for record.
+             * The below block only executes if userGrpIdList contains user ids
+            */
+            if(hasUserId) { /* US781098 - start */
+                //Query the same records to fetch the Owner Ids as we do not want to create Share records with the User
+                //who is an Owner.
+                String sQuery = Label.Core_MDF_GenericShareQueryFields + 
+                                ' ' + recordManualShare.typeName + ' ' +
+                                Label.Core_MDF_GenericShareQueryWhereClass + ' :objectIdList';
 
-                        Map<Id,Sobject> results = new Map<Id,Sobject>(Database.query(String.escapeSingleQuotes(sQuery)));
-                        for(Sobject record : results.values()){
-                            objectIdOwnerIdMap.put((Id)record.get(Label.Core_MDF_Id_Label),(Id)record.get(Label.Core_MDF_OwnerId_Label));
-                        }
-                    }
-                    //Append Share to the object Name
-                    if(recordManualShare.typeName.endsWithIgnoreCase(Label.Core_MDF_ObjectEnding_Label))
-                    {
-                            recordManualShare.typeName = recordManualShare.typeName.removeEndIgnoreCase(Label.Core_MDF_c_Label) + Label.Core_MDF_Share_Label;
-                        	  }
-                    else{
-                        recordManualShare.typeName += Label.Core_MDF_Share_Label;
-                         }
-                    List<String> standardObjectNameList = new List<String>();
-                    // Map<metadataIs,metadataRecord
-                    //Map<Id,Core_MDF_Standard_Object_for_Sharing__mdt> sofsMap = new Map<Id,Core_MDF_Standard_Object_for_Sharing__mdt>([SELECT MasterLabel, DeveloperName
-                      //                                                                                                                  FROM Core_MDF_Standard_Object_for_Sharing__mdt]);
-                    List<String> SplitStandardObject = Label.Core_MDF_Standard_Object_for_SharingLabel.split(',');//Replaced Core_MDF_Standard_Object_for_Sharing__mdt with label                    //Fetch the Standard object names to differentiate between the Share record creation as some standard
-                    //objects have different fields as compared to some other standard and all custom objects.
-                    //Like AccountShare - Fields to populate are AccountId & AccountAccessLevel
-                    //But, for PartnerFundAllocationShare - Fields to populate are ParentId & AccessLevel
-                    
-                   /* for(Core_MDF_Standard_Object_for_Sharing__mdt sofs : sofsMap.values())
-                    {
-                        standardObjectNameList.add(sofs.DeveloperName);
-                        
-                    }*/
-                    
-                    for (String value : SplitStandardObject) { //Replaced Core_MDF_Standard_Object_for_Sharing__mdt with label
-                        value = value.trim();
-                        standardObjectNameList.add(value);                      
-                    }
-                    
-                    Schema.SObjectType objToken = Schema.getGlobalDescribe().get(recordManualShare.typeName);
-                    if(objToken != NULL)
-                    {
-                        //Iterate over the objectIdUserGroupIdListMap map to create share records
-                        //First fetch each Object Id
-                        for(Id objectId : recordManualShare.objectIdUserGroupIdListMap.keySet())
-                        {
-                            //Then, fetch all the User Ids with which the object record needs to be shared with.
-                            for(String userGroupId : recordManualShare.objectIdUserGroupIdListMap.get(objectId))
-                            {
-                                //Dynamically instantiate the Object Share record.
-                                sObject dynObject = objToken.newSObject();
-                                if (dynObject != NULL && userGroupId != NULL) 
-                                {
-                                    //Fields -> UserOrGroupId, ParentId, AccessLevel 
-                                    /* US781098 - Added null check for objectIdOwnerIdMap */
-                                    if((hasUserId && objectIdOwnerIdMap != null && !objectIdOwnerIdMap.isEmpty()
-                                        && objectIdOwnerIdMap.containsKey(objectId)
-                                        && objectIdOwnerIdMap.get(objectId) != userGroupId) || !hasUserId ) {  //If the selected User is not Owner
-                                        if(standardObjectNameList.contains(originalObjectName))
-                                        { //if the metadata contains the object
-                                            dynObject.put(originalObjectName + Label.Core_MDF_Id_Label, objectId); //e.g. Account, Campaign - AccountId, CampaignId
-                                            if(String.isNotBlank(recordManualShare.accessLevelStr)){
-                                                dynObject.put(originalObjectName + Label.Core_MDF_AccessLevel_Label, recordManualShare.accessLevelStr); //e.g. Account, Campaign - AccountAccessLevel, CampaignAccessLevel
-                                                }
-                                            
-                                            if((Label.Core_MDF_Account_Label).equalsIgnoreCase(originalObjectName))
-                                            { //for Account, 3 more extra fields need to be added to instantiate.
-                                                dynObject.put(Label.Core_MDF_OpportunityAccessLevel_Label, Label.Core_MDF_None_Label);
-                                                dynObject.put(Label.Core_MDF_CaseAccessLevel_Label, Label.Core_MDF_None_Label);
-                                                 }
-                                        }
-                                        else
-                                        {
-                                            dynObject.put(Label.Core_MDF_ParentId_Label, objectId); //PartnerFundAllocation, PartnerFundRequest - PartnerFundAllocationId, PartnerFundRequestId
-                                            if(String.isNotBlank(recordManualShare.accessLevelStr)){
-                                                dynObject.put(Label.Core_MDF_AccessLevel_Label, recordManualShare.accessLevelStr);
-                                               }
-                                        }
-                                              dynObject.put(Label.Core_MDF_UserOrGroupId_Label, userGroupId); //Add the UserOrGroupId field
-                                        dynObject.put('RowCause', recordManualShare.rowCauseStr); //Add the RowCause field
-                                        dynObjectList.add(dynObject); //Add it to the List
-                                            
-                                    }
-                                }                                
-                            }
-                        }
-                        if(dynObjectList.size() > 0)
-                        {
-                            return dynObjectList;
-                        }
-                    }
+                Map<Id,Sobject> results = new Map<Id,Sobject>(Database.query(String.escapeSingleQuotes(sQuery)));
+                for(Sobject record : results.values()){
+                    objectIdOwnerIdMap.put((Id)record.get(Label.Core_MDF_Id_Label),(Id)record.get(Label.Core_MDF_OwnerId_Label));
                 }
+            }
+            //Append Share to the object Name
+            if(recordManualShare.typeName.endsWithIgnoreCase(Label.Core_MDF_ObjectEnding_Label))
+            {
+                    recordManualShare.typeName = recordManualShare.typeName.removeEndIgnoreCase(Label.Core_MDF_c_Label) + Label.Core_MDF_Share_Label;
+                      }
+            else{
+                recordManualShare.typeName += Label.Core_MDF_Share_Label;
+                 }
+            List<String> standardObjectNameList = new List<String>();
+            // Map<metadataIs,metadataRecord
+            //Map<Id,Core_MDF_Standard_Object_for_Sharing__mdt> sofsMap = new Map<Id,Core_MDF_Standard_Object_for_Sharing__mdt>([SELECT MasterLabel, DeveloperName
+              //                                                                                                                  FROM Core_MDF_Standard_Object_for_Sharing__mdt]);
+            List<String> SplitStandardObject = Label.Core_MDF_Standard_Object_for_SharingLabel.split(',');//Swati -  Replaced Core_MDF_Standard_Object_for_Sharing__mdt with label                    //Fetch the Standard object names to differentiate between the Share record creation as some standard
+            //objects have different fields as compared to some other standard and all custom objects.
+            //Like AccountShare - Fields to populate are AccountId & AccountAccessLevel
+            //But, for PartnerFundAllocationShare - Fields to populate are ParentId & AccessLevel
+            
+           /* for(Core_MDF_Standard_Object_for_Sharing__mdt sofs : sofsMap.values())
+            {
+                standardObjectNameList.add(sofs.DeveloperName);
+                system.debug('standardObjectNameList1'+standardObjectNameList);
+            }*/
+            
+            for (String value : SplitStandardObject) { //Swati -Replaced Core_MDF_Standard_Object_for_Sharing__mdt with label
+                value = value.trim();
+                standardObjectNameList.add(value);
+                System.debug(value);
+                system.debug('standardObjectNameList1'+standardObjectNameList);                        
+            }
+            
+	    	// ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+            Schema.SObjectType objToken = getSObjectTypeToken(recordManualShare.typeName);
+            // US - TWC702-14285: Flatten nested IFs (no logic change)
+            if(objToken == NULL) return dynObjectList;
+            
+            //Iterate over the objectIdUserGroupIdListMap map to create share records
+            //First fetch each Object Id
+            for(Id objectId : recordManualShare.objectIdUserGroupIdListMap.keySet())
+            {
+                //Then, fetch all the User Ids with which the object record needs to be shared with.
+                for(String userGroupId : recordManualShare.objectIdUserGroupIdListMap.get(objectId))
+                {
+                    //Dynamically instantiate the Object Share record.
+                    sObject dynObject = objToken.newSObject();
+                    // US - TWC702-14285: Flatten nested IFs (no logic change)
+                    if (dynObject == NULL || userGroupId == NULL) continue;
+                    
+                    //Fields -> UserOrGroupId, ParentId, AccessLevel 
+                    /* US781098 - Added null check for objectIdOwnerIdMap */
+                    // US - TWC702-14285: Flatten nested IFs (no logic change)
+                    if(!((hasUserId && objectIdOwnerIdMap != null && !objectIdOwnerIdMap.isEmpty()
+                        && objectIdOwnerIdMap.containsKey(objectId)
+                        && objectIdOwnerIdMap.get(objectId) != userGroupId) || !hasUserId )) continue;  //If the selected User is not Owner
+                    
+                    if(standardObjectNameList.contains(originalObjectName))
+                    { //if the metadata contains the object
+                        dynObject.put(originalObjectName + Label.Core_MDF_Id_Label, objectId); //e.g. Account, Campaign - AccountId, CampaignId
+                        if(String.isNotBlank(recordManualShare.accessLevelStr)){
+                            dynObject.put(originalObjectName + Label.Core_MDF_AccessLevel_Label, recordManualShare.accessLevelStr); //e.g. Account, Campaign - AccountAccessLevel, CampaignAccessLevel
+                            }
+                        
+                        if((Label.Core_MDF_Account_Label).equalsIgnoreCase(originalObjectName))
+                        { //for Account, 3 more extra fields need to be added to instantiate.
+                            dynObject.put(Label.Core_MDF_OpportunityAccessLevel_Label, Label.Core_MDF_None_Label);
+                            dynObject.put(Label.Core_MDF_CaseAccessLevel_Label, Label.Core_MDF_None_Label);
+                             }
+                    }
+                    else
+                    {
+                        System.debug('enter else');
+                        dynObject.put(Label.Core_MDF_ParentId_Label, objectId); //PartnerFundAllocation, PartnerFundRequest - PartnerFundAllocationId, PartnerFundRequestId
+                        if(String.isNotBlank(recordManualShare.accessLevelStr)){
+                            dynObject.put(Label.Core_MDF_AccessLevel_Label, recordManualShare.accessLevelStr);
+                           }
+                    }
+                          dynObject.put(Label.Core_MDF_UserOrGroupId_Label, userGroupId); //Add the UserOrGroupId field
+                    dynObject.put('RowCause', recordManualShare.rowCauseStr); //Add the RowCause field
+                    dynObjectList.add(dynObject); //Add it to the List
+                        
+                }                                
+            }
+            if(dynObjectList.size() > 0)
+            {
+                return dynObjectList;
             }
         }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e); }
         return dynObjectList;
@@ -328,134 +370,137 @@ public static List<sObject> getShareRecordList(RecordManualShareClass recordManu
         List<sObject> dynObjectList = new List<sObject>();
         Boolean hasUserId = false;
         try{
-            if(recordManualShare != NULL){
-                //Store the Original Name
-                recordManualShare.typeName = String.escapeSingleQuotes(recordManualShare.typeName);
+            // US - TWC702-14285: Flatten nested IFs (no logic change)
+            if(recordManualShare == NULL) return dynObjectList;
             
-                String originalObjectName = (recordManualShare.typeName != NULL ? recordManualShare.typeName : '');
-            
-                //Fetch all the object Ids in a List variable 'objectIdList'
-                List<Id> objectIdList = new List<Id>();
-                objectIdList.addAll(recordManualShare.objectIdUserGroupIdListMap.keySet());
-               
-                List<Id> userGrpIdList = new List<Id>();
-                for(List<Id> usrgrpIdLst : recordManualShare.objectIdUserGroupIdListMap.values()) {
-                    userGrpIdList.addAll(usrgrpIdLst); // fetch all user or group ids in userGrpIdList
-                    }
-                for(Id recId : userGrpIdList) {
-                    if(recId != NULL && String.valueOf(recId).startsWith('005')) {
-                        hasUserId = true;
-                        break;
-                    }
+            //Store the Original Name
+            recordManualShare.typeName = String.escapeSingleQuotes(recordManualShare.typeName);
+        
+            String originalObjectName = (recordManualShare.typeName != NULL ? recordManualShare.typeName : '');
+        
+            //Fetch all the object Ids in a List variable 'objectIdList'
+            List<Id> objectIdList = new List<Id>();
+            objectIdList.addAll(recordManualShare.objectIdUserGroupIdListMap.keySet());
+           
+            List<Id> userGrpIdList = new List<Id>();
+            for(List<Id> usrgrpIdLst : recordManualShare.objectIdUserGroupIdListMap.values()) {
+                userGrpIdList.addAll(usrgrpIdLst); // fetch all user or group ids in userGrpIdList
                 }
+            for(Id recId : userGrpIdList) {
+                if(recId != NULL && String.valueOf(recId).startsWith('005')) {
+                    hasUserId = true;
+                    break;
+                }
+            }
+            // US - TWC702-14285: Flatten nested IFs (no logic change)
+           if(String.isEmpty(recordManualShare.typeName)) return dynObjectList; //if typeName is empty
+           
+            Map<Id, Id> objectIdOwnerIdMap = new Map<Id, Id>();
+            if(hasUserId) { 
+                //Query the same records to fetch the Owner Ids as we do not want to create Share records with the User
+                //who is an Owner.
+                String sQuery = Label.Core_MDF_GenericShareQueryFields + 
+                                ' ' + recordManualShare.typeName + ' ' +
+                                Label.Core_MDF_GenericShareQueryWhereClass + ' :objectIdList';
 
-               if(String.isNotEmpty(recordManualShare.typeName)){ //if typeName is not empty
-                    Map<Id, Id> objectIdOwnerIdMap = new Map<Id, Id>();
-                    if(hasUserId) { 
-                        //Query the same records to fetch the Owner Ids as we do not want to create Share records with the User
-                        //who is an Owner.
-                        String sQuery = Label.Core_MDF_GenericShareQueryFields + 
-                                        ' ' + recordManualShare.typeName + ' ' +
-                                        Label.Core_MDF_GenericShareQueryWhereClass + ' :objectIdList';
+                Map<Id,Sobject> results = new Map<Id,Sobject>(Database.query(String.escapeSingleQuotes(sQuery)));
+                for(Sobject record : results.values()){
+                    objectIdOwnerIdMap.put((Id)record.get(Label.Core_MDF_Id_Label),(Id)record.get(Label.Core_MDF_OwnerId_Label));
+                }
+            }
+            //Append Share to the object Name
+            if(recordManualShare.typeName.endsWithIgnoreCase(Label.Core_MDF_ObjectEnding_Label))
+            {
+                    recordManualShare.typeName = recordManualShare.typeName.removeEndIgnoreCase(Label.Core_MDF_c_Label) + Label.Core_MDF_Share_Label;
+                      }
+            else{
+                recordManualShare.typeName += Label.Core_MDF_Share_Label;
+            }
+            List<String> standardObjectNameList = new List<String>();
+            // Map<metadataIs,metadataRecord
+            //Map<Id,Core_MDF_Standard_Object_for_Sharing__mdt> sofsMap = new Map<Id,Core_MDF_Standard_Object_for_Sharing__mdt>([SELECT MasterLabel, DeveloperName
+            //                                                                                                                    FROM Core_MDF_Standard_Object_for_Sharing__mdt]);
+            
+            List<String> SplitStandardObject = Label.Core_MDF_Standard_Object_for_SharingLabel.split(',');//Swati -  Replaced Core_MDF_Standard_Object_for_Sharing__mdt with label
 
-                        Map<Id,Sobject> results = new Map<Id,Sobject>(Database.query(String.escapeSingleQuotes(sQuery)));
-                        for(Sobject record : results.values()){
-                            objectIdOwnerIdMap.put((Id)record.get(Label.Core_MDF_Id_Label),(Id)record.get(Label.Core_MDF_OwnerId_Label));
-                        }
-                    }
-                    //Append Share to the object Name
-                    if(recordManualShare.typeName.endsWithIgnoreCase(Label.Core_MDF_ObjectEnding_Label))
-                    {
-                            recordManualShare.typeName = recordManualShare.typeName.removeEndIgnoreCase(Label.Core_MDF_c_Label) + Label.Core_MDF_Share_Label;
-                        	  }
-                    else{
-                        recordManualShare.typeName += Label.Core_MDF_Share_Label;
-                    }
-                    List<String> standardObjectNameList = new List<String>();
-                    // Map<metadataIs,metadataRecord
-                    //Map<Id,Core_MDF_Standard_Object_for_Sharing__mdt> sofsMap = new Map<Id,Core_MDF_Standard_Object_for_Sharing__mdt>([SELECT MasterLabel, DeveloperName
-                    //                                                                                                                    FROM Core_MDF_Standard_Object_for_Sharing__mdt]);
+            //Fetch the Standard object names to differentiate between the Share record creation as some standard
+            //objects have different fields as compared to some other standard and all custom objects.
+            //Like AccountShare - Fields to populate are AccountId & AccountAccessLevel
+            //But, for PartnerFundAllocationShare - Fields to populate are ParentId & AccessLevel
+            
+            /* for(Core_MDF_Standard_Object_for_Sharing__mdt sofs : sofsMap.values())
+            {
+                standardObjectNameList.add(sofs.DeveloperName);
+                system.debug('standardObjectNameList1'+standardObjectNameList);
+            }*/
+            
+            for (String value : SplitStandardObject) { //Swati -Replaced Core_MDF_Standard_Object_for_Sharing__mdt with label
+                value = value.trim();
+                standardObjectNameList.add(value);
+                System.debug(value);
+                system.debug('standardObjectNameList1'+standardObjectNameList);                        
+            }
+            
+	    	// ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+            Schema.SObjectType objToken = getSObjectTypeToken(recordManualShare.typeName);
+            // US - TWC702-14285: Flatten nested IFs (no logic change)
+            if(objToken == NULL) return dynObjectList;
+            
+            //Iterate over the objectIdUserGroupIdListMap map to create share records
+            //First fetch each Object Id
+            for(Id objectId : recordManualShare.objectIdUserGroupIdListMap.keySet())
+            {
+                //Then, fetch all the User Ids with which the object record needs to be shared with.
+                for(String userGroupId : recordManualShare.objectIdUserGroupIdListMap.get(objectId))
+                {
+                    //Dynamically instantiate the Object Share record.
+                    sObject dynObject = objToken.newSObject();
+                    // US - TWC702-14285: Flatten nested IFs (no logic change)
+                    if (dynObject == NULL || userGroupId == NULL) continue;
                     
-                    List<String> SplitStandardObject = Label.Core_MDF_Standard_Object_for_SharingLabel.split(',');//Replaced Core_MDF_Standard_Object_for_Sharing__mdt with label
+                    //Fields -> UserOrGroupId, ParentId, AccessLevel 
+                    /* US781098 - Added null check for objectIdOwnerIdMap */
+                    // US - TWC702-14285: Flatten nested IFs (no logic change)
+                    if(!((hasUserId && objectIdOwnerIdMap != null && !objectIdOwnerIdMap.isEmpty()
+                        && objectIdOwnerIdMap.containsKey(objectId)
+                        && objectIdOwnerIdMap.get(objectId) != userGroupId) || !hasUserId )) continue;  //If the selected User is not Owner
 
-                    //Fetch the Standard object names to differentiate between the Share record creation as some standard
-                    //objects have different fields as compared to some other standard and all custom objects.
-                    //Like AccountShare - Fields to populate are AccountId & AccountAccessLevel
-                    //But, for PartnerFundAllocationShare - Fields to populate are ParentId & AccessLevel
-                    
-                    /* for(Core_MDF_Standard_Object_for_Sharing__mdt sofs : sofsMap.values())
-                    {
-                        standardObjectNameList.add(sofs.DeveloperName);
+                    if(standardObjectNameList.contains(originalObjectName))
+                    { //if the metadata contains the object
+                        dynObject.put(originalObjectName + Label.Core_MDF_Id_Label, objectId); //e.g. Account, Campaign - AccountId, CampaignId
+                      
                         
-                    }*/
-                    
-                    for (String value : SplitStandardObject) { //Replaced Core_MDF_Standard_Object_for_Sharing__mdt with label
-                        value = value.trim();
-                        standardObjectNameList.add(value);
-                                                
+                        if(String.isNotBlank(recordManualShare.accessLevelStr)){
+                            dynObject.put(originalObjectName + Label.Core_MDF_AccessLevel_Label, recordManualShare.accessLevelStr); //e.g. Account, Campaign - AccountAccessLevel, CampaignAccessLevel
+   
+                        }
+                        
+                        if((Label.Core_MDF_Account_Label).equalsIgnoreCase(originalObjectName))
+                        { //for Account, 3 more extra fields need to be added to instantiate.
+                            dynObject.put(Label.Core_MDF_OpportunityAccessLevel_Label, Label.Core_MDF_None_Label);
+                            dynObject.put(Label.Core_MDF_CaseAccessLevel_Label, Label.Core_MDF_None_Label);                                                
+                        }
                     }
-                    
-                    Schema.SObjectType objToken = Schema.getGlobalDescribe().get(recordManualShare.typeName);
-                    if(objToken != NULL)
+                    else
                     {
-                        //Iterate over the objectIdUserGroupIdListMap map to create share records
-                        //First fetch each Object Id
-                        for(Id objectId : recordManualShare.objectIdUserGroupIdListMap.keySet())
-                        {
-                            //Then, fetch all the User Ids with which the object record needs to be shared with.
-                            for(String userGroupId : recordManualShare.objectIdUserGroupIdListMap.get(objectId))
-                            {
-                                //Dynamically instantiate the Object Share record.
-                                sObject dynObject = objToken.newSObject();
-                                if (dynObject != NULL && userGroupId != NULL) 
-                                {
-                                    //Fields -> UserOrGroupId, ParentId, AccessLevel 
-                                    /* US781098 - Added null check for objectIdOwnerIdMap */
-                                    if((hasUserId && objectIdOwnerIdMap != null && !objectIdOwnerIdMap.isEmpty()
-                                        && objectIdOwnerIdMap.containsKey(objectId)
-                                        && objectIdOwnerIdMap.get(objectId) != userGroupId) || !hasUserId ) {  //If the selected User is not Owner
-
-                                        if(standardObjectNameList.contains(originalObjectName))
-                                        { //if the metadata contains the object
-                                            dynObject.put(originalObjectName + Label.Core_MDF_Id_Label, objectId); //e.g. Account, Campaign - AccountId, CampaignId
-                                          
-                                            
-                                            if(String.isNotBlank(recordManualShare.accessLevelStr)){
-                                                dynObject.put(originalObjectName + Label.Core_MDF_AccessLevel_Label, recordManualShare.accessLevelStr); //e.g. Account, Campaign - AccountAccessLevel, CampaignAccessLevel
-                       
-                                            }
-                                            
-                                            if((Label.Core_MDF_Account_Label).equalsIgnoreCase(originalObjectName))
-                                            { //for Account, 3 more extra fields need to be added to instantiate.
-                                                dynObject.put(Label.Core_MDF_OpportunityAccessLevel_Label, Label.Core_MDF_None_Label);
-                                                dynObject.put(Label.Core_MDF_CaseAccessLevel_Label, Label.Core_MDF_None_Label);                                                
-                                            }
-                                        }
-                                        else
-                                        {
-                                            dynObject.put(Label.Core_MDF_ParentId_Label, objectId); //PartnerFundAllocation, PartnerFundRequest - PartnerFundAllocationId, PartnerFundRequestId
-                                            if(String.isNotBlank(recordManualShare.accessLevelStr)){
-                                                dynObject.put(Label.Core_MDF_AccessLevel_Label, recordManualShare.accessLevelStr);
-                                            }
-                                        }
-                                        dynObject.put(Label.Core_MDF_UserOrGroupId_Label, userGroupId); //Add the UserOrGroupId field
-                                        dynObject.put('RowCause', recordManualShare.rowCauseStr); //Add the RowCause field
-                                        dynObjectList.add(dynObject); //Add it to the List
-                                            
-                                    }
-                                }                                
-                            }
-                        }
-                        if(dynObjectList.size() > 0)
-                        {
-
-                            String shareObjectName = originalObjectName.Substring(0,originalObjectName.length()-1);
-                            shareObjectName += 'Share';
-                            //createShareBulkString(dynObjectList, shareObjectName);
-                           
+                        dynObject.put(Label.Core_MDF_ParentId_Label, objectId); //PartnerFundAllocation, PartnerFundRequest - PartnerFundAllocationId, PartnerFundRequestId
+                        if(String.isNotBlank(recordManualShare.accessLevelStr)){
+                            dynObject.put(Label.Core_MDF_AccessLevel_Label, recordManualShare.accessLevelStr);
                         }
                     }
-                }
+                    dynObject.put(Label.Core_MDF_UserOrGroupId_Label, userGroupId); //Add the UserOrGroupId field
+                    dynObject.put('RowCause', recordManualShare.rowCauseStr); //Add the RowCause field
+                    dynObjectList.add(dynObject); //Add it to the List
+                        
+                }                                
+            }
+            if(dynObjectList.size() > 0)
+            {
+
+                String shareObjectName = originalObjectName.Substring(0,originalObjectName.length()-1);
+                shareObjectName += 'Share';
+                //createShareBulkString(dynObjectList, shareObjectName);
+               
             }
         }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e); }
         return dynObjectList;
@@ -481,11 +526,11 @@ public static List<sObject> getShareRecordList(RecordManualShareClass recordManu
     public static void insertShareBulkRecords(String reqString, String shareObjectName){
         HttpRequest request = new HttpRequest();
         request.setMethod('POST');
-        
+        //String endPointUrl = URL.getOrgDomainUrl().toExternalForm() + '/services/data/' +'v56.0' + '/jobs/ingest';
         String endPointUrl = 'callout:PicklistNamedCredentialForGVS/services/data/v56.0/jobs/ingest';
         //request.setEndpoint('callout:Bulk_API');
         request.setEndpoint(endPointUrl);
-       
+        //request.setHeader('Authorization', 'Bearer ' + UserInfo.getSessionID());
         request.setHeader('content-type', 'application/json' );
         String body = '{'+  
             '"lineEnding": "CRLF",'+ 
@@ -503,11 +548,12 @@ public static List<sObject> getShareRecordList(RecordManualShareClass recordManu
             //second request to store data
             HttpRequest request1 = new HttpRequest();
             request1.setMethod('PUT');
-           
+            ///String endPointUrl1 = URL.getOrgDomainUrl().toExternalForm() + '/services/data/' +'v56.0' + '/jobs/ingest/' + jobId+'/batches';
             String endPointUrl1 = 'callout:PicklistNamedCredentialForGVS/services/data/v56.0/jobs/ingest/' + jobId+'/batches';
+
             request1.setEndpoint(endPointUrl1);
             request1.setHeader('content-type', 'text/csv' );
-           
+            //request1.setHeader('Authorization', 'Bearer ' + UserInfo.getSessionID());
             request1.setBody(reqString);
             request1.setTimeout(20000);
             Http h1 = new Http();
@@ -516,11 +562,11 @@ public static List<sObject> getShareRecordList(RecordManualShareClass recordManu
                 
                 HttpRequest request2 = new HttpRequest();
                 request2.setMethod('PATCH');
-               
+                //String endPointUrl2 = URL.getOrgDomainUrl().toExternalForm() + '/services/data/' +'v56.0' + '/jobs/ingest/' + jobId;
                 String endPointUrl2 = 'callout:PicklistNamedCredentialForGVS/services/data/v56.0/jobs/ingest/' + jobId;
                 request2.setEndpoint(endPointUrl2);
                 request2.setHeader('content-type', 'application/json' );
-               
+                //request2.setHeader('Authorization', 'Bearer ' + UserInfo.getSessionID());                
                 request2.setBody('{ "state" : "UploadComplete" }');
                 Http h2 = new Http();
                 HttpResponse resp2 = h2.send(request2);

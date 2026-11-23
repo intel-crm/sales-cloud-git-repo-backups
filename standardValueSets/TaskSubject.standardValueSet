@@ -2,8 +2,33 @@
 <StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <sorted>false</sorted>
     <standardValue>
-        <fullName>type_the_subject_of_your_call_or_task_here</fullName>
-        <default>true</default>
-        <label>Type the subject of your call or task here...</label>
+        <fullName>Phone</fullName>
+        <default>false</default>
+        <label>Phone</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Video</fullName>
+        <default>false</default>
+        <label>Video</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Email</fullName>
+        <default>false</default>
+        <label>Email</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Meeting</fullName>
+        <default>false</default>
+        <label>Meeting</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Seeds or Samples</fullName>
+        <default>false</default>
+        <label>Seeds or Samples</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Coaching (Managers only)</fullName>
+        <default>false</default>
+        <label>Coaching (Managers only)</label>
     </standardValue>
 </StandardValueSet>

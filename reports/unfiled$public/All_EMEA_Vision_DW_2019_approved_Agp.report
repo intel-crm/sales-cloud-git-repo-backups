@@ -51,7 +51,7 @@
         <field>Opportunity.Core_Product_Application__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Product_Type__c</field>
@@ -97,7 +97,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Embedded - AI - Artificial Intelligence,Embedded - Video</value>
+            <value>Embedded - Video</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -116,7 +116,7 @@
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>All EMEA Vision DW 2020 approved</name>
+    <name>All EMEA Vision DW 2019 approved</name>
     <params>
         <name>terr</name>
         <value>all</value>

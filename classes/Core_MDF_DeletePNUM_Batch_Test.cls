@@ -12,7 +12,7 @@ private class Core_MDF_DeletePNUM_Batch_Test {
         System.runAs(usr){
             
             // Creating channel program with utility class
-            ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram('Data Center Co-Marketing Fund', 'Data Center CoMarketing Fund', true);
+            ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram('Datacenter', 'Data Center CoMarketing Fund', true);
 
             // Creating IntelAccount with utility class
             Account intAcc = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 1', 
@@ -46,7 +46,7 @@ private class Core_MDF_DeletePNUM_Batch_Test {
             
             Core_ERPM_Engagement__c cee=new Core_ERPM_Engagement__c(Name  ='DCF', Core_Engagement_Type__c='SEC',Core_IsActive__c=true,Core_Technical_Engagement_Code__c='DCF');
             insert cee;
-            Core_Entitlement__c entitle = new Core_Entitlement__c (name ='DCF User', Core_Category__c='Consolidated Co-marketing Platform',Core_Sub_Category__c='Data Center Co-Marketing Fund (DCF)',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee.id,Core_Display_Name__c='DCF User',Core_IsActive__c=true);
+            Core_Entitlement__c entitle = new Core_Entitlement__c (name ='Datacenter User', Core_Category__c='Consolidated Co-marketing Platform',Core_Sub_Category__c='Datacenter',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee.id,Core_Display_Name__c='DCF User',Core_IsActive__c=true);
             insert entitle;
             //System.assert(true,entitle.Core_Category__c!= null);
             List<Core_Contact_Entitlement__c> contactEntList = new List<Core_Contact_Entitlement__c>();

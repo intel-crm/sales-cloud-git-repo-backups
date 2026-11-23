@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Core_MDF_Intel_BudgetType_To_RecordType</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Core_MDF_Intel_BudgetType _To_RecordType</value>
+    </caseValues>
+    <fields>
+        <label><!-- Audience --></label>
+        <name>Core_MDF_Audience__c</name>
+    </fields>
+    <fields>
+        <label><!-- RecordType --></label>
+        <name>RecordType__c</name>
+        <picklistValues>
+            <masterLabel>Account Based</masterLabel>
+            <translation><!-- Account Based --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proposal Based</masterLabel>
+            <translation><!-- Proposal Based --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

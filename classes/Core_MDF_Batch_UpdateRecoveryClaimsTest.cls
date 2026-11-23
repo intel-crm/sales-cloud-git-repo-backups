@@ -36,7 +36,7 @@ public class Core_MDF_Batch_UpdateRecoveryClaimsTest {
         
         //Create Channel Program
         ChannelProgram ccfCP = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
-       // Highlight: Unused Local Variable 
+       // Highlight: Unused Local Variable - Indira
        // ChannelProgram rmfCP = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.RMF_PROGRAM,'Retail Marketing Funds', true);
         
         //Create Intel Account
@@ -120,7 +120,7 @@ public class Core_MDF_Batch_UpdateRecoveryClaimsTest {
         bankList.add(recoveryBank);
         bankList.add(recoveryBank2);
         Database.insert(bankList);
-        // Highlight: Unused Local Variable
+        // Highlight: Unused Local Variable - Indira
        // Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(recoveryEMEAFrance.Id,recoveryBank.Id,true);
        // Core_MDF_Account_Bank_Mapping__c abm2 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(recoveryCCFVC2.Id,recoveryBank2.Id,true);
         Test.startTest();
@@ -263,7 +263,6 @@ public class Core_MDF_Batch_UpdateRecoveryClaimsTest {
         recoveryClaim1.Core_MDF_BackendReviewSelection_Ind__c = false;
         recoveryClaim1.Amount = 300;
         recoveryClaim1.Core_MDF_Currency__c='USD'; 
-		recoveryClaim1.Core_MDF_Processing_Preference_nm__c = 'Get paid, then settle';
         pfcList.add(recoveryClaim1);
         
         PartnerFundClaim recoveryClaimAcc2 = Core_MDF_CCP_TestDataUtility.createClaim('France Claim 2', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF,recoveryFranceActivity2.Id,
@@ -273,7 +272,6 @@ public class Core_MDF_Batch_UpdateRecoveryClaimsTest {
         recoveryClaimAcc2.Core_MDF_BackendReviewSelection_Ind__c = false;
         recoveryClaimAcc2.Amount = 300;
         recoveryClaimAcc2.Core_MDF_Currency__c='USD'; 
-		recoveryClaimAcc2.Core_MDF_Processing_Preference_nm__c = 'Get paid, then settle';
         pfcList.add(recoveryClaimAcc2); 
         
         PartnerFundClaim recoveryClaim2 = Core_MDF_CCP_TestDataUtility.createClaim('France Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF,recoveryFranceActivity.Id,
@@ -283,7 +281,6 @@ public class Core_MDF_Batch_UpdateRecoveryClaimsTest {
         recoveryClaim2.Core_MDF_BackendReviewSelection_Ind__c = false;
         recoveryClaim2.Amount = 30;
         recoveryClaim2.Core_MDF_Currency__c='USD'; 
-		recoveryClaim2.Core_MDF_Processing_Preference_nm__c = 'Get paid, then settle';
         pfcList.add(recoveryClaim2);
         Test.stopTest();
         
@@ -294,7 +291,6 @@ public class Core_MDF_Batch_UpdateRecoveryClaimsTest {
         recoveryClaimSP.Core_MDF_Document_Submission_Missed_Ind__c = true;
         recoveryClaimSP.Amount = 300;
         recoveryClaimSP.Core_MDF_Currency__c='USD'; 
-		recoveryClaimSP.Core_MDF_Processing_Preference_nm__c = 'Get paid, then settle';
         pfcList.add(recoveryClaimSP);
         Database.insert(pfcList);
         Core_MDF_Partnership_Score__c partnershipScore = new Core_MDF_Partnership_Score__c();
@@ -364,7 +360,7 @@ public class Core_MDF_Batch_UpdateRecoveryClaimsTest {
         {
             claimIdSet.add(claim.Id);
         }
-        // Highlight: Unused Local Variable
+        // Highlight: Unused Local Variable - Indira
       /*  final List<Core_MDF_Partnership_Score__c> psList =[Select Id, Core_MDF_Account_Id__c,Core_MDF_Program_nm__c, Core_MDF_Quarter_Year_Nm__c, Core_MDF_Balance_Amount_Amt__c
              From Core_MDF_Partnership_Score__c Where Core_MDF_Channel_Program_Id__r.Core_MDF_Technical_Program_Name__c = 'Client CoMarketing Fund'  
              and Core_MDF_Quarter_Year_Nm__c = 'Q2 2023']; //and Core_MDF_Balance_Amount_Amt__c > 0];  */
@@ -379,7 +375,7 @@ public class Core_MDF_Batch_UpdateRecoveryClaimsTest {
         Set<Id> claimIdSet = new Set<Id>();
         List<id> accountIds = new List<id>();
         Account accountRecord = [select id from Account limit 1];
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
        // List<PartnerFundClaim> claim = [select id from PartnerFundClaim where Core_MDF_Budget_Type_Options_Nm__c = 'MDF' limit 2];
         PartnerFundClaim claim2 = [select id from PartnerFundClaim where Core_MDF_Budget_Type_Options_Nm__c = 'MDF+' limit 1];
         accountIds.add(accountRecord.id);
@@ -408,7 +404,7 @@ public class Core_MDF_Batch_UpdateRecoveryClaimsTest {
         database.executeBatch(obj3);
         Core_MDF_Recovery_Batch obj4 = new Core_MDF_Recovery_Batch('Retail Marketing Funds',  ''    ,  '');
         database.executeBatch(obj4);
-        // Highlight: Unused Local Variable
+        // Highlight: Unused Local Variable - Indira
        // String acc =  accountIds.toString();
         Core_MDF_Recovery_Batch obj5 = new Core_MDF_Recovery_Batch('Retail Marketing Funds',  '' ,''   , '');
         database.executeBatch(obj5);

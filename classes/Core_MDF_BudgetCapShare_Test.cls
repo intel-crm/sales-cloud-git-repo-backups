@@ -32,7 +32,7 @@ public class Core_MDF_BudgetCapShare_Test {
         
         System.runAs(usr1){
             //adding bypass feature to bypass access validation
-			List<String> bypassFunctionKeys = new List<String>();
+      List<String> bypassFunctionKeys = new List<String>();
             bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
             bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
             
@@ -44,7 +44,7 @@ public class Core_MDF_BudgetCapShare_Test {
             List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
             
             // Creating channel program with utility class
-            ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Datacenter','Data Center CoMarketing Fund', true);
+            ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Data Center Co-Marketing Fund','Data Center CoMarketing Fund', true);
             
             // Creating IntelAccount with utility class
             Account intAcc = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1', 
@@ -123,7 +123,7 @@ public class Core_MDF_BudgetCapShare_Test {
             insert pmbList;
             
             // Creating Allocation using utility class
-           // Highlight: Unused Local Variable 
+           // Highlight: Unused Local Variable - Indira
           //  PartnerFundAllocation pfa = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Allocation',pmb1,dcfAcc,1000000.0,true);
             
             // Creating BudgetCap Record

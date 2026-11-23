@@ -16,6 +16,7 @@ public class Core_Batch_DDR_PriceBook_Add_Test
     {
         List<Pricebook2> lstPriceBook = new List<Pricebook2>();
         
+        
         Pricebook2 pb1 = new Pricebook2();
         pb1.name = 'Standard Price Book';
         pb1.isActive = TRUE;
@@ -49,23 +50,8 @@ public class Core_Batch_DDR_PriceBook_Add_Test
         product2.Core_Sales_Visible_Flag__c = TRUE;
         product2.Core_Partner_Visible_Ind__c  = TRUE;
         lstProduct.add(product2);
-        
-        Product2 product3 = new Product2();
-        product3.Name = 'Intel® Core™ i3-40920M Processor (3M Cache, 2.60 GHz)';
-        product3.IsActive = TRUE;
-        product3.Core_Design_Registration_Eligible_Ind__c = TRUE;
-        product3.Core_Sales_Visible_Flag__c = TRUE;
-        product3.Core_Partner_Visible_Ind__c  = TRUE;
-        lstProduct.add(product3);
 
         insert lstProduct;
-        
-        Core_Design_Registration_Product_List__c tempDesignProdList = new Core_Design_Registration_Product_List__c();
-        tempDesignProdList.Core_Design_Product_Id__c = lstProduct[1].Id;
-        tempDesignProdList.Core_Design_Product_Nm__c = lstProduct[0].Name;
-        tempDesignProdList.Core_Active_Ind__c = FALSE;
-        
-        insert tempDesignProdList;
         
         List<PricebookEntry> lstPriceBookEntry = new List<PricebookEntry>();
         
@@ -116,16 +102,8 @@ public class Core_Batch_DDR_PriceBook_Add_Test
         PriceBookEntry4.Product2Id = lstProduct[1].id;
         PriceBookEntry4.IsActive = true;
         PriceBookEntry4.UnitPrice = 100;
-        
-        lstPriceBookEntry.add(PriceBookEntry4);   
-        
-        PricebookEntry PriceBookEntry6 = new PricebookEntry();
-        PriceBookEntry6.Pricebook2Id =  Test.getStandardPricebookId();
-        PriceBookEntry6.Product2Id = lstProduct[2].id;
-        PriceBookEntry6.IsActive = true;
-        PriceBookEntry6.UnitPrice = 100;
             
-        lstPriceBookEntry.add(PriceBookEntry6);         
+        lstPriceBookEntry.add(PriceBookEntry4);         
         
         PricebookEntry PriceBookEntry5 = new PricebookEntry();
         for(Pricebook2 iPB : lstPriceBook)
@@ -140,22 +118,7 @@ public class Core_Batch_DDR_PriceBook_Add_Test
         PriceBookEntry5.UnitPrice = 100;
         PriceBookEntry5.UseStandardPrice = true;    
             
-        lstPriceBookEntry.add(PriceBookEntry5);    
-        
-        PricebookEntry PriceBookEntry7 = new PricebookEntry();
-        for(Pricebook2 iPB : lstPriceBook)
-        {
-            if(iPB.Name == 'Standard Price Book')
-            {
-                PriceBookEntry7.Pricebook2Id =  iPB.Id;
-            }
-        }
-        PriceBookEntry7.Product2Id = lstProduct[2].id;
-        PriceBookEntry7.IsActive = true;
-        PriceBookEntry7.UnitPrice = 100;
-        PriceBookEntry7.UseStandardPrice = true;    
-            
-        lstPriceBookEntry.add(PriceBookEntry7);
+        lstPriceBookEntry.add(PriceBookEntry5);          
         
         /*******Partner price book entry create scenario - Close ********/
         
@@ -171,7 +134,7 @@ public class Core_Batch_DDR_PriceBook_Add_Test
         Core_Batch_DDR_PriceBook_Add objPartnerPB1 = new Core_Batch_DDR_PriceBook_Add();  
         Database.executeBatch(objPartnerPB1); 
         
-       // Core_Batch_DDR_PriceBook_Add_Scheduler.SchedulerMethod();  
+        Core_Batch_DDR_PriceBook_Add_Scheduler.SchedulerMethod();  
         Test.StopTest();
     }     
    

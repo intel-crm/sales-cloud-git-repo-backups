@@ -6,12 +6,14 @@
         <target>lightning__RecordPage</target>
         <target>lightningCommunity__Page</target>
         <target>lightningCommunity__Default</target>
+        <target>lightning__Tab</target>
     </targets>
     <targetConfigs>
         <targetConfig targets="lightning__RecordPage">
             <property name="objAPIName" type="String" datasource="Campaign,PartnerFundRequest,PartnerFundClaim"/>
             <!--<property name="fieldAPIName" type="String" datasource="Core_MDF_Proposal_Based_Ind__c,Core_MDF_Is_Outcome_Based_Ind__c"/>-->
             <property name="fieldAPIName" type="String"/>
+            <property name="operator" type="String" description="Operator"/>
             <property name="fieldAPIoperator" type="String"/>
             <property name="isSectionVisible" type="String" datasource="Yes, No"/>
             <property name="isCompactLayout" type="String" datasource="Yes, No"/>
@@ -24,12 +26,14 @@
             <property name="objAPIName" type="String" datasource="Campaign,PartnerFundRequest,PartnerFundClaim"/>
             <!--<property name="fieldAPIName" type="String" datasource="Core_MDF_Proposal_Based_Ind__c,Core_MDF_Is_Outcome_Based_Ind__c"/>-->
             <property name="fieldAPIName" type="String"/>
+            <property name="operator" type="String"/>
             <property name="fieldAPIoperator" type="String"/>
             <property name="isSectionVisible" type="String" datasource="Yes, No"/>
             <property name="isCompactLayout" type="String" datasource="Yes, No"/>
             <property name="recordTypeName" type="String" datasource=""/>
             <property name="standardFieldAlign" type="String" datasource="Yes, No"/>
             <property name="hasToRetainDecimalValues" type="String" datasource="Yes, No"/>
+            
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

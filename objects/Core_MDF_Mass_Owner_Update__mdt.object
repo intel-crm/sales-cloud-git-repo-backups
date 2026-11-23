@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Core_MDF_APP__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Core_MDF_APP</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CCP</fullName>
+                    <default>true</default>
+                    <label>CCP</label>
+                </value>
+                <value>
+                    <fullName>CRM</fullName>
+                    <default>false</default>
+                    <label>CRM</label>
+                </value>
+                <value>
+                    <fullName>Salesforce</fullName>
+                    <default>false</default>
+                    <label>Salesforce</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Object_Label__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Core_MDF_Object_Label</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Campaign</fullName>
+                    <default>true</default>
+                    <label>Campaign</label>
+                </value>
+                <value>
+                    <fullName>Claim</fullName>
+                    <default>false</default>
+                    <label>Claim</label>
+                </value>
+                <value>
+                    <fullName>Co-Marketing Activity</fullName>
+                    <default>false</default>
+                    <label>Co-Marketing Activity</label>
+                </value>
+                <value>
+                    <fullName>Claim Batch</fullName>
+                    <default>false</default>
+                    <label>Claim Batch</label>
+                </value>
+                <value>
+                    <fullName>Account Bank Mapping</fullName>
+                    <default>false</default>
+                    <label>Account Bank Mapping</label>
+                </value>
+                <value>
+                    <fullName>Case Review Document</fullName>
+                    <default>false</default>
+                    <label>Case Review Document</label>
+                </value>
+                <value>
+                    <fullName>Account</fullName>
+                    <default>false</default>
+                    <label>Account</label>
+                </value>
+                <value>
+                    <fullName>Contact</fullName>
+                    <default>false</default>
+                    <label>Contact</label>
+                </value>
+                <value>
+                    <fullName>Lead</fullName>
+                    <default>false</default>
+                    <label>Lead</label>
+                </value>
+                <value>
+                    <fullName>Opportunity</fullName>
+                    <default>false</default>
+                    <label>Opportunity</label>
+                </value>
+                <value>
+                    <fullName>Opportunity Support</fullName>
+                    <default>false</default>
+                    <label>Opportunity Support</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Object__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Core_MDF_Object</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Campaign</fullName>
+                    <default>true</default>
+                    <label>Campaign</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Claim_Batch__c</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Claim_Batch__c</label>
+                </value>
+                <value>
+                    <fullName>PartnerFundClaim</fullName>
+                    <default>false</default>
+                    <label>PartnerFundClaim</label>
+                </value>
+                <value>
+                    <fullName>PartnerFundRequest</fullName>
+                    <default>false</default>
+                    <label>PartnerFundRequest</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Audit_Document__c</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Audit_Document__c</label>
+                </value>
+                <value>
+                    <fullName>Account</fullName>
+                    <default>false</default>
+                    <label>Account</label>
+                </value>
+                <value>
+                    <fullName>Contact</fullName>
+                    <default>false</default>
+                    <label>Contact</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Account_Bank_Mapping__c</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Account_Bank_Mapping__c</label>
+                </value>
+                <value>
+                    <fullName>Lead</fullName>
+                    <default>false</default>
+                    <label>Lead</label>
+                </value>
+                <value>
+                    <fullName>Opportunity</fullName>
+                    <default>false</default>
+                    <label>Opportunity</label>
+                </value>
+                <value>
+                    <fullName>Core_Opportunity_Support__c</fullName>
+                    <default>false</default>
+                    <label>Core_Opportunity_Support__c</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Program__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Core_MDF_Program</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Channel MDF</fullName>
+                    <default>true</default>
+                    <label>Channel MDF</label>
+                </value>
+                <value>
+                    <fullName>Client Co-Marketing Fund</fullName>
+                    <default>false</default>
+                    <label>Client CoMarketing Fund</label>
+                </value>
+                <value>
+                    <fullName>Client Co-Marketing Fund Boost</fullName>
+                    <default>false</default>
+                    <label>Client CoMarketing Fund Boost</label>
+                </value>
+                <value>
+                    <fullName>Data Center Co-Marketing Fund</fullName>
+                    <default>false</default>
+                    <label>Data Center CoMarketing Fund</label>
+                </value>
+                <value>
+                    <fullName>Intel Partner Alliance</fullName>
+                    <default>false</default>
+                    <label>Intel Partner Alliance</label>
+                </value>
+                <value>
+                    <fullName>Retail Marketing Funds</fullName>
+                    <default>false</default>
+                    <label>Retail Marketing Funds</label>
+                </value>
+                <value>
+                    <fullName>Service Provider Co-Marketing Fund</fullName>
+                    <default>false</default>
+                    <label>Service Provider CoMarketing Fund</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_System_User_Name__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>System_User_Name</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Comarketing FLAO-User</fullName>
+                    <default>true</default>
+                    <label>Comarketing FLAO-User</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_isProgramApplicable__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field indicates whether program is applicable for the selected application/platform or not</description>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Core_MDF_isProgramApplicable</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Ext_Permission_Set_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Ext_Permission_Set_Name</label>
+        <length>250</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Int_Permission_Set_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Int_Permission_Set_Name</label>
+        <length>250</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>isActive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>isActive</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>Core_MDF_Mass_Owner_Update</label>
+    <pluralLabel>Core_MDF_Mass_Owner_Update</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

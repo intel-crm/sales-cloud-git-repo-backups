@@ -327,12 +327,30 @@
         <sourceColumnName>Case.Core_Case_Closure__c</sourceColumnName>
         <useOther>true</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Fix in Intel Documentation</sourceValue>
+            </sourceValues>
             <value>Documentation F</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Known Issue</sourceValue>
+            </sourceValues>
             <value>Known Issue</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Customer Error/Fix</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Abandoned by Customer</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Configuration Issue</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Training Required</sourceValue>
+            </sourceValues>
             <value>Customer Faults</value>
         </values>
     </buckets>

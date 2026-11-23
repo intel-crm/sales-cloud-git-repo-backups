@@ -64,6 +64,9 @@
         <label>Check if Bank Id and Status Are NOT NULL</label>
         <locationX>41</locationX>
         <locationY>190</locationY>
+        <defaultConnector>
+            <targetReference>Core_MDF_Creates_log_entry_records</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_Check_if_BankId_and_Status_are_Not_Blank</name>
@@ -118,6 +121,9 @@
         <label>Check if vRecordTypeId is Not Blank</label>
         <locationX>1068</locationX>
         <locationY>586</locationY>
+        <defaultConnector>
+            <targetReference>Core_MDF_Creates_log_entry_record</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_RecordTypeId_is_not_Blank</name>
@@ -140,6 +146,9 @@
         <label>Check Status Value</label>
         <locationX>41</locationX>
         <locationY>389</locationY>
+        <defaultConnector>
+            <targetReference>Core_MDF_Create_log_entry_record</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_Updated_to_ESD_Hold_or_AP_Hold_or_From_Initial_Draft_to_Draft</name>
@@ -398,6 +407,9 @@
         <label>Check Status Value</label>
         <locationX>1069</locationX>
         <locationY>157</locationY>
+        <defaultConnector>
+            <targetReference>Core_MDF_Create_log_entry_records</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_Status_Active</name>
@@ -442,6 +454,36 @@
         <expression>{!$Label.Core_MDF_Bank_RT_Status_Non_Draft}</expression>
     </formulas>
     <formulas>
+        <description>Stores the flow name and decision name</description>
+        <name>Core_MDF_Details1</name>
+        <dataType>String</dataType>
+        <expression>&quot;Flow : &quot;+{!Core_MDF_Flow_Name} +&quot;, Decision : &quot;+{!Core_MDF_Decision1}</expression>
+    </formulas>
+    <formulas>
+        <description>Stores the Flow name and Decision name</description>
+        <name>Core_MDF_Details2</name>
+        <dataType>String</dataType>
+        <expression>&quot;Flow : &quot;+{!Core_MDF_Flow_Name} +&quot;, Decision : &quot;+{!Core_MDF_Decision2}</expression>
+    </formulas>
+    <formulas>
+        <description>Stores the Flow name and Decision name</description>
+        <name>Core_MDF_Details3</name>
+        <dataType>String</dataType>
+        <expression>&quot;Flow : &quot;+{!Core_MDF_Flow_Name} +&quot;, Decision : &quot;+{!Core_MDF_Decision3}</expression>
+    </formulas>
+    <formulas>
+        <description>Stores the flow name and Decision name</description>
+        <name>Core_MDF_Details4</name>
+        <dataType>String</dataType>
+        <expression>&quot;Flow : &quot;+{!Core_MDF_Flow_Name} +&quot;, Decision : &quot;+{!Core_MDF_Decision4}</expression>
+    </formulas>
+    <formulas>
+        <description>stores the flow name and decision name</description>
+        <name>Core_MDF_Details5</name>
+        <dataType>String</dataType>
+        <expression>&quot;Flow : &quot;+{!Core_MDF_Flow_Name} +&quot;, Decision : &quot;+{!Core_MDF_Decision5}</expression>
+    </formulas>
+    <formulas>
         <description>This will contain the value of the Label Core_MDF_ESD_Hold.</description>
         <name>vESDHoldReason</name>
         <dataType>String</dataType>
@@ -453,6 +495,12 @@
         <name>BuilderType</name>
         <value>
             <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
@@ -685,6 +733,206 @@
         </connector>
     </start>
     <status>Obsolete</status>
+    <subflows>
+        <description>Creates the log entry record if any null value is encountered in the Decision.</description>
+        <name>Core_MDF_Create_log_entry_record</name>
+        <label>Create log entry record</label>
+        <locationX>192</locationX>
+        <locationY>401</locationY>
+        <flowName>Core_MDF_FL_Log_Errors_From_Flows</flowName>
+        <inputAssignments>
+            <name>Core_MDF_Details</name>
+            <value>
+                <elementReference>Core_MDF_Details2</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_Message</name>
+            <value>
+                <elementReference>Core_MDF_Decision2</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_Origin</name>
+            <value>
+                <elementReference>Core_MDF_Flow_Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_Severity</name>
+            <value>
+                <elementReference>Core_MDF_Severity</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_sObjectId</name>
+            <value>
+                <elementReference>vBankId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_sObjectType</name>
+            <value>
+                <elementReference>Core_MDF_sObjectType</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_When</name>
+            <value>
+                <elementReference>Core_MDF_DateTime</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>Creates the log entry records as default outcome</description>
+        <name>Core_MDF_Create_log_entry_records</name>
+        <label>Create log entry records</label>
+        <locationX>1221</locationX>
+        <locationY>218</locationY>
+        <flowName>Core_MDF_FL_Log_Errors_From_Flows</flowName>
+        <inputAssignments>
+            <name>Core_MDF_Details</name>
+            <value>
+                <elementReference>Core_MDF_Details4</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_Message</name>
+            <value>
+                <elementReference>Core_MDF_Decision4</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_Origin</name>
+            <value>
+                <elementReference>Core_MDF_Flow_Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_Severity</name>
+            <value>
+                <elementReference>Core_MDF_Severity</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_sObjectId</name>
+            <value>
+                <elementReference>vBankId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_sObjectType</name>
+            <value>
+                <elementReference>Core_MDF_sObjectType</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_When</name>
+            <value>
+                <elementReference>Core_MDF_DateTime</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>Creates the log entry records as default outcome</description>
+        <name>Core_MDF_Creates_log_entry_record</name>
+        <label>Creates log entry record</label>
+        <locationX>1231</locationX>
+        <locationY>590</locationY>
+        <flowName>Core_MDF_FL_Log_Errors_From_Flows</flowName>
+        <inputAssignments>
+            <name>Core_MDF_Details</name>
+            <value>
+                <elementReference>Core_MDF_Details5</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_Message</name>
+            <value>
+                <elementReference>Core_MDF_Decision5</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_Origin</name>
+            <value>
+                <elementReference>Core_MDF_Flow_Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_Severity</name>
+            <value>
+                <elementReference>Core_MDF_Severity</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_sObjectId</name>
+            <value>
+                <elementReference>vBankId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_sObjectType</name>
+            <value>
+                <elementReference>Core_MDF_sObjectType</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_When</name>
+            <value>
+                <elementReference>Core_MDF_DateTime</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>Creates the log entry records as default outcome</description>
+        <name>Core_MDF_Creates_log_entry_records</name>
+        <label>Creates log entry records</label>
+        <locationX>181</locationX>
+        <locationY>186</locationY>
+        <flowName>Core_MDF_FL_Log_Errors_From_Flows</flowName>
+        <inputAssignments>
+            <name>Core_MDF_Details</name>
+            <value>
+                <elementReference>Core_MDF_Details1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_Message</name>
+            <value>
+                <elementReference>Core_MDF_Decision1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_Origin</name>
+            <value>
+                <elementReference>Core_MDF_Flow_Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_Severity</name>
+            <value>
+                <elementReference>Core_MDF_Severity</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_sObjectId</name>
+            <value>
+                <elementReference>vBankId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_sObjectType</name>
+            <value>
+                <elementReference>Core_MDF_sObjectType</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Core_MDF_When</name>
+            <value>
+                <elementReference>Core_MDF_DateTime</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
     <variables>
         <description>This will contain the Claim Ids.</description>
         <name>collClaimIds</name>
@@ -700,6 +948,105 @@
         <isCollection>true</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Stores the Date and Time value</description>
+        <name>Core_MDF_DateTime</name>
+        <dataType>DateTime</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <elementReference>$Flow.CurrentDateTime</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <description>stores the Decision name</description>
+        <name>Core_MDF_Decision1</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>Core_MDF_Check_if_Bank_Id_and_Status_Are_NOT_NULL</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Stores the Decision Name</description>
+        <name>Core_MDF_Decision2</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>Core_MDF_Check_Status_Value </stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Stores the Decision name</description>
+        <name>Core_MDF_Decision3</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>Core_MDF_Check_if_collClaimIds_Is_Not_Empty</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Stores the Decision name</description>
+        <name>Core_MDF_Decision4</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>Core_MDF_Check_Status_Value_1</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Stores the Decision name</description>
+        <name>Core_MDF_Decision5</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>Core_MDF_Check_if_vRecordTypeId_is_Not_Blank</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Stores the flow name</description>
+        <name>Core_MDF_Flow_Name</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>Core_MDF_FL_Update_Bank_Record_Type_Status Flow</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Stores the Severity value</description>
+        <name>Core_MDF_Severity</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>Critical</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>stores the sObject Type value which is Bank</description>
+        <name>Core_MDF_sObjectType</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>Core_MDF_Bank__c</stringValue>
+        </value>
     </variables>
     <variables>
         <description>It fetches the Claim Ids related to this bank.</description>

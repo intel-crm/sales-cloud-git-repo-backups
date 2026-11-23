@@ -23,6 +23,10 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Adjustment_Claim_Nbr__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Partner_Marketing_Budget__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>

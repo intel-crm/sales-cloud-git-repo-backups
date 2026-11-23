@@ -45,6 +45,10 @@
         <translation>Geplant</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>Rejected</masterLabel>
+        <translation><!-- Rejected --></translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>Revision Required</masterLabel>
         <translation>Überarbeitung erforderlich</translation>
     </valueTranslation>

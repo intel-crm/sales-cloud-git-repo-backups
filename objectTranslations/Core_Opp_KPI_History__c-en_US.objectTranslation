@@ -9,19 +9,6 @@
         <value>Opportunity KPI History</value>
     </caseValues>
     <fields>
-        <label><!-- IAH KPI Record ID --></label>
-        <name>Core_IAH_KPI_Record_ID__c</name>
-    </fields>
-    <fields>
-        <label><!-- KPI Name --></label>
-        <name>Core_KPI_Name__c</name>
-    </fields>
-    <fields>
-        <label><!-- New Opportunity KPI --></label>
-        <name>Core_New_Opportunity_KPI__c</name>
-        <relationshipLabel><!-- Opportunity KPI History --></relationshipLabel>
-    </fields>
-    <fields>
         <label><!-- KPI Achieved? --></label>
         <name>Core_Opp_KPI_Achieved_History__c</name>
     </fields>
@@ -40,10 +27,6 @@
     <fields>
         <label><!-- KPI Id --></label>
         <name>Core_Opp_KPI_Id__c</name>
-    </fields>
-    <fields>
-        <label><!-- KPI IsActive --></label>
-        <name>Core_Opp_KPI_IsActive__c</name>
     </fields>
     <fields>
         <label><!-- KPI Last Updated Date --></label>
@@ -104,7 +87,7 @@
         <name>Core_Opp_KPI_Threshold_Requirement__c</name>
     </fields>
     <fields>
-        <label><!-- KPI Revenue --></label>
+        <label><!-- KPI Total Price --></label>
         <name>Core_Opp_KPI_Total_Price__c</name>
     </fields>
     <fields>

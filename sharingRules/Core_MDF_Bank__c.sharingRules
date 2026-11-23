@@ -57,6 +57,20 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>CORE_MDF_BANK_EEF</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>BANK EEF</label>
+        <sharedTo>
+            <group>Core_MDF_Int_EEF_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_Value__c</field>
+            <operation>contains</operation>
+            <value>Ecosystem Extension Fund</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>CORE_MDF_BANK_SPCF</fullName>
         <accessLevel>Edit</accessLevel>
         <label>BANK SPCF</label>
@@ -67,20 +81,6 @@
             <field>Core_MDF_Program_Value__c</field>
             <operation>contains</operation>
             <value>Service Provider Co-Marketing Fund;</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_BANK_EEF</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>BANK EEF</label>
-        <sharedTo>
-            <group>Core_MDF_Int_EEF_ALL</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Program_Value__c</field>
-            <operation>contains</operation>
-            <value>Ecosystem Extension Fund</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

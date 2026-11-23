@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Claim_Einstien</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Claim_Einstien</value>
+    </caseValues>
+    <fields>
+        <label><!-- Activity Start Date --></label>
+        <name>Activity_Start_Date__c</name>
+        <relationshipLabel><!-- Claim_Einstien (Activity Start Date) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Claim --></label>
+        <name>Claim__c</name>
+        <relationshipLabel><!-- Claim_Einstien --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

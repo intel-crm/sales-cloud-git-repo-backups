@@ -160,7 +160,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterThan</operator>
-            <value>40</value>
+            <value>50</value>
         </criteriaItems>
         <criteriaItems>
             <column>PRIORITY</column>
@@ -174,7 +174,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterThan</operator>
-            <value>60</value>
+            <value>75</value>
         </criteriaItems>
         <criteriaItems>
             <column>PRIORITY</column>

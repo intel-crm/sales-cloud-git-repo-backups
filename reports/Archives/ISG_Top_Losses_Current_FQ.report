@@ -57,7 +57,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
-            <value>Cancelled - Duplicate</value>
+            <value>Cancelled - Duplicate,Cancelled - Entered in Error</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Sales_Segments__c</column>

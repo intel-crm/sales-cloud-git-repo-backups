@@ -1,0 +1,116 @@
+<aura:component controller="Core_MDF_BulkClaimServerController_Clone" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes"
+                access="global">
+    <!--Style-->
+    <aura:html tag="style">
+        <!--To remove blue border-->
+        .toastMessage.forceActionsText{
+        white-space : pre-line !important;
+        }
+    </aura:html>
+    <ltng:require scripts="{!$Resource.KJS1}"/>
+    <ltng:require scripts="{!$Resource.KJS2}"/>
+    <ltng:require scripts="{!$Resource.XLSX}"/>
+    <aura:attribute name="programSearchString" type="string" default="" />
+    <aura:attribute name="fileId" type="String" />
+    <aura:attribute name="isPortal" type="boolean" default="false"/>
+    <aura:attribute name="fileToBeUploaded" type="Object[]" />
+    <aura:attribute name="file" type="Object" />
+    <aura:attribute name="content" type="String" />
+    <aura:attribute name="programId" type="String" default="" />
+    <aura:attribute name="programLabel" type="String" default="" />
+    <aura:attribute name="fileInputValue" type="String" default="" />
+    <aura:attribute name="recordTypeMap" type="Map" default="" />
+    <aura:attribute name="showAppPicklistVal" type="Boolean" default="false" />
+    <aura:attribute name="togglePopUp" type="Boolean" default="false" />
+    <aura:attribute name="picklistVal" type="Object" />
+    <aura:attribute name="ActivityCategories" type="String[]" description="to store activity categories" />
+    <aura:attribute name="ActivityTypes" type="Map" description="to store activity types" />
+    <aura:attribute name="ActivitySubTypes" type="Map" description="to store activity sub types" />
+    <aura:attribute name="ActivitySubTypeValues" type="String[]" description="to store activity sub type values" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!--Handler event for the lookup component to clear and handle selection-->
+    <aura:handler name="updateLookupIdEvent" event="c:Core_MDF_UpdateLookupId" action="{!c.updateLookUpId}" />
+    <aura:handler name="clearLookupIdEvent" event="c:Core_MDF_ClearLookupId" action="{!c.clearLookUpId}" />
+    <lightning:spinner aura:id="fileprogressBar" class="slds-hide" />
+    <lightning:card title="Bulk Claim Upload POC"> 
+        
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                <!-- Program -->
+                <c:Core_MDF_LightningSObjectLookUp aura:id="programId" label="{! $Label.c.Core_MDF_Bulk_Claim_Program}" pluralLabel="Programs"
+                                                   sObjectAPIName="ChannelProgram" instanceId="programId" helpText="{! $Label.c.Core_MDF_Enter_program}"
+                                                   listIconSVGPath="/resource/Core_MDF_SLDS262/icons/standard-sprite/svg/symbols.svg#client"
+                                                   listIconClass="slds-icon-standard-user" searchString="{!v.programSearchString}" returnFields="Name"
+                                                   required="true" filterCriteria="{!'(IsActive = true AND Name LIKE @quote;%' + v.programSearchString +'%@quote;)'}" />
+                <div aura:id="programInputHelpMsg" data-help-message="true" role="alert" class="errorMsg slds-hide">{!$Label.c.Core_MDF_Enter_program}</div>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                <!-- Download Template Link-->
+                <lightning:input name="fileUploader" aura:id="fieldId" type="File" label="{! $Label.c.Core_MDF_Bulk_Claim_Upload_Template}"
+                                 files="{!v.fileToBeUploaded}" accept=".xlsx" onchange="{! c.handleUploadFinished }" multiple="false" />
+                <div aura:id="fileInputHelpMsg" data-help-message="true" role="alert" class="errorMsg slds-hide">{!$Label.c.Core_MDF_Upload_file}</div>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="6" flexibility="auto" padding="around-large" >
+                <div aura:id="downloadTemplate" class="slds-hide">
+                    <aura:if isTrue="{!!v.isPortal}">
+                        <!--Internal User : Bulk Claim Excel templet download link-->
+                        <lightning:formattedUrl value="{! $Label.c.Core_MDF_PFRDetailLink + $Label.c.Core_MDF_FileURLInternal +v.fileId}" tooltip="Template"
+                                                label="{!$Label.c.Core_MDF_Download_template_here}" target="_self" class="slds-button slds-button_brand"/>
+                        <aura:set attribute="else">
+                            <!--External User : Bulk Claim Excel templet download link-->
+                            <lightning:button label="Download" iconName="utility:download" iconPosition="left" onclick="{!c.getTemplate}">
+                                <lightning:formattedUrl value="{! $Label.c.Core_MDF_PFRCommunityLink +$Label.c.Core_MDF_FileURLInternal +v.fileId}" tooltip="Template"
+                                                        label="{!$Label.c.Core_MDF_Download_template_here}" target="_self" aura:id="templateURL">
+                                </lightning:formattedUrl>
+                            </lightning:button>
+                            <aura:if isTrue="{!v.showAppPicklistVal}">
+                                <lightning:button label="Available Values"  title="Available Values"  onclick="{!c.getAvailableValues}"/>
+                            </aura:if>
+                        </aura:set>
+                    </aura:if>
+                </div>
+                <div aura:id="noTemplateAvailable" class="slds-hide">
+                    {!$Label.c.Core_MDF_BulkClaimTemplateNotFound}
+                </div>
+            </lightning:layoutItem>
+            
+            <div class="slds-m-around_xx-medium">                
+                <aura:if isTrue="{!v.togglePopUp}">
+                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                             aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__container">
+                            <div class="slds-modal__header">
+                                <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close"
+                                        onclick="{!c.onCancel}">
+                                    X<span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
+                                </button>
+                                <h2 id="header43" class="slds-text-heading--medium">
+                                    Activity SubType Values</h2>
+                            </div>
+                            <div class="slds-modal__content slds-p-around--max-small" id="modal-content-id-1">
+                                <lightning:layoutItem flexibility="auto" padding="around-large">
+                                    <aura:iteration items="{!v.ActivitySubTypes}" var="type" indexVar="indx">                                        
+                                        <center><label>{!type}</label></center>
+                                    </aura:iteration>
+                                </lightning:layoutItem>
+                            </div>
+                        </div>
+                    </section>
+                    <lightning:accordion aura:id="accordion" allowMultipleSectionsOpen="true">
+                        <!--Show Non-compliant finding below Checklist Item -->
+                        <lightning:accordionSection name="Activity Subtype" label="Activity Subtype"></lightning:accordionSection>
+                        <lightning:accordionSection name="Country" label="Country"></lightning:accordionSection>
+                        <lightning:accordionSection name="Currency" label="Currency"></lightning:accordionSection>
+                    </lightning:accordion>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+                </aura:if>
+            </div>
+            
+            <lightning:layoutItem size="6" flexibility="auto" padding="around-large">
+                <!-- Import Button -->
+                <lightning:button aura:id="importButtonCmp"  variant="brand" label="{!$Label.c.Core_MDF_Import_Claims}" title="{!$Label.c.Core_MDF_Import_Claims}" 
+                                  onclick="{! c.handleClick }"  />
+            </lightning:layoutItem>
+        </lightning:layout>
+    </lightning:card>
+</aura:component>

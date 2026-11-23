@@ -3,7 +3,7 @@
        
         component.set("v.spinner",true);
         var action = component.get("c.fetchPendingDocumentsRecords"); 
-        action.setParams({clmBatchId : component.get('v.recordId')});
+        action.setParams({clmBatchId : component.get("v.recordId")});
         action.setCallback(this, function (response) {
             var result = response.getReturnValue();
             if (response.getState() === "SUCCESS") {
@@ -37,65 +37,238 @@
         this.fetchLogInfoByPassCheckValue(component);
     }, 
     
-  uploadAction: function (component, event, helper) {
-      			var target = event.target;
-        		var rowIndex = target.getAttribute("data-row-index");
-      			var bulkClaimData = component.get("v.bulkClmStgRecData");
-      			var row = bulkClaimData[rowIndex];
-                component.set("v.clmBatchStgRec",row);
-                var action = component.get("c.fetchActivityDetails");
-                action.setParams
-                ({
-                    activityNbr: component.get("v.clmBatchStgRec.Core_MDF_Activity_Nbr__c")
-                })
-                action.setCallback(this, function (response) {
-                    if (response.getState() === "SUCCESS" && response.getReturnValue() != null) {
-                        var budgetType = response.getReturnValue().Core_MDF_Budget_Type_nm__c;
-                        component.set('v.budgetType', budgetType);
-                    }            
-                    else {this.showToast(component, event, 'Error', $A.get("$Label.c.Core_MDF_ApplicationErrorMessage")); }
-                });
-                $A.enqueueAction(action);
+    uploadAction: function (component, event, helper) {
+        var rowIndex = event.getSource().get("v.name");
+        var bulkClaimData = component.get("v.bulkClmStgRecData");
+        var row = bulkClaimData[rowIndex];
+
+        // Roshan - Tactics POC
+        var isOutcomeBased = row.Core_MDF_ActivityCategory__c === $A.get("$Label.c.Core_MDF_Outcome_Based_CatType");
+        component.set("v.claimAttributeList", []);
+
+        component.set("v.clmBatchStgRec", row);
+        var action = component.get("c.fetchActivityDetails");
+        action.setParams({
+            activityNbr: row.Core_MDF_Activity_Nbr__c
+        });
+        action.setCallback(this, function (response) {
+            if (response.getState() === "SUCCESS" && response.getReturnValue() != null) {
+                var budgetType = response.getReturnValue().Core_MDF_Budget_Type_nm__c;
+                component.set("v.budgetType", budgetType);
+            } else {
+                this.showToast(component, event, "Error", $A.get("$Label.c.Core_MDF_ApplicationErrorMessage"));
+            }
+        });
+        $A.enqueueAction(action);
         
         var claimStageList = [row];
-        claimStageList[0].Core_MDF_Processing_Status_Nm__c = 'Submitted';
+        claimStageList[0].Core_MDF_Processing_Status_Nm__c = "Submitted";
         var createClaimInstanceAction = component.get("c.createClaimInstanceAction");
-        createClaimInstanceAction.setParams
-        ({
-            stageList :claimStageList
-        })
+        createClaimInstanceAction.setParams({
+            stageList: claimStageList
+        });
         createClaimInstanceAction.setCallback(this, function (result) {
-            console.log("callback");
-            if (result.getState() === "SUCCESS" && result.getReturnValue()!= null) {
+            if (result.getState() === "SUCCESS" && result.getReturnValue() != null) {
                 var claimInstanceList = result.getReturnValue();
                 claimInstanceList[0].Core_MDF_Reimbursement_Percent__c = row.Core_MDF_Reimbursement_Percent_Nbr__c;
                 claimInstanceList[0].Core_MDF_Program__c = row.Core_MDF_Program_Txt__c;
-                claimInstanceList[0].Core_MDF_Budget_Type_Options_Nm__c=row.Core_MDF_Budget_Type_Nm__c;
-                claimInstanceList[0].Core_MDF_Ultimate_Account_ID__c=row.Core_MDF_Ultimate_Account_ID__c;
-                claimInstanceList[0].Core_MDF_AccountCompany__c=row.Core_MDF_Ultimate_Account_Txt__c;
-                claimInstanceList[0].Core_MDF_Activity_Types__c=row.Core_MDF_Activity_Type_Nm__c;
-		claimInstanceList[0].Core_MDF_Activity_Category__c =row.Core_MDF_ActivityCategory__c;
-                component.set("v.simpleNewClaim",claimInstanceList[0]);
-                console.log('claim --->',claimInstanceList[0]);
-                component.set("v.openPopUp",true);
-                component.set("v.openManageAuditDocPopup", true);//added to open manage audit document section on click of upload
-            }            
-            else {
-                this.showToast(component, event, 'Error', $A.get("$Label.c.Core_MDF_ApplicationErrorMessage"));
+                claimInstanceList[0].Core_MDF_Budget_Type_Options_Nm__c = row.Core_MDF_Budget_Type_Nm__c;
+                claimInstanceList[0].Core_MDF_Ultimate_Account_ID__c = row.Core_MDF_Ultimate_Account_ID__c;
+                claimInstanceList[0].Core_MDF_AccountCompany__c = row.Core_MDF_Ultimate_Account_Txt__c;
+                claimInstanceList[0].Core_MDF_Activity_Types__c = row.Core_MDF_Activity_Type_Nm__c;
+                claimInstanceList[0].Core_MDF_Activity_Category__c = row.Core_MDF_ActivityCategory__c;
+                component.set("v.simpleNewClaim", claimInstanceList[0]);
+                console.log("claim --->", claimInstanceList[0]);
+
+                // Roshan - Tactics POC
+                if (isOutcomeBased) {
+                    component.set("v.spinner", true);
+                    component.set("v.openTacticsSection", true);
+                    component.set("v.selectedTacticsActivityId", row.Core_MDF_Request_Id__c);
+                    this.loadCampaignPurpose(component, row);
+                } else {
+                    component.set("v.openPopUp", true);
+                    component.set("v.openManageAuditDocPopup", true);//added to open manage audit document section on click of upload
+                }
+            } else {
+                this.showToast(component, event, "Error", $A.get("$Label.c.Core_MDF_ApplicationErrorMessage"));
             }
         });
         $A.enqueueAction(createClaimInstanceAction);
-        //component.set("v.openPopUp",true);
-            },
+    },
+
+    loadCampaignPurpose: function (component, batchRow) {
+        component.set("v.campaignPurposeColumns", []);
+        component.set("v.campaignPurposeRows", []);
+
+        var action = component.get("c.getCampaignPurposeDetails");
+        action.setParams({
+            activityId: component.get("v.selectedTacticsActivityId"),
+            claimId: null
+        });
+
+        action.setCallback(this, function (response) {
+            if (response.getState() === "SUCCESS" && response.getReturnValue() != null) {
+                var result = response.getReturnValue();
+                if (result.showTacticMetric) {
+                    this.setCampaignPurposeColumns(component, result);
+                    this.setCampaignPurposeRows(component, result);
+                }
+                this.calculateAmountFields(component, batchRow);
+            } else {
+                component.set("v.spinner", false);
+                this.showToast(component, null, "error", $A.get("$Label.c.Core_MDF_ApplicationErrorMessage"));
+            }
+        });
+
+        $A.enqueueAction(action);
+    },
+
+    setCampaignPurposeColumns: function (component, result) {
+        component.set("v.campaignPurposeColumns", [
+            { label: result.outcomeMetricLabel, fieldName: "outcome", displayField: "outcomeLabel", editable: false },
+            { label: result.baselineQuantityLabel, fieldName: "baselineQuantity", editable: false, type: "number", required: false, min: 1, max: 2147483647, step: 1, helpText: result.baselineQuantityHelpText },
+            { label: result.goalQuantityLabel, fieldName: "goalQuantity", editable: false, type: "number", required: false, min: 1, max: 2147483647, step: 1, helpText: result.goalQuantityHelpText },
+            { label: result.quantityToDateLabel, fieldName: "quantity", editable: true, type: "number", required: true, min: 0, max: 2147483647, step: 1, helpText: result.quantityToDateHelpText },
+            { label: result.outcomeCriteriaLabel, fieldName: "outcomeCriteria", editable: false, type: "textarea", maxLength: 1000, required: false, helpText: result.outcomeCriteriaHelpText }
+        ]);
+    },
+
+    setCampaignPurposeRows: function (component, result) {
+        component.set("v.campaignPurposeRows", [{
+            id: "1",
+            outcome: result.outcomeMetric,
+            outcomeLabel: result.outcomeMetric,
+            baselineQuantity: result.baselineQuantity,
+            goalQuantity: result.goalQuantity,
+            quantity: result.quantityToDate,
+            outcomeCriteria: result.outcomeCriteria
+        }]);
+    },
+
+    handleCampaignPurposeChange: function (component, event, helper) {
+        var updatedRows = event.getParams("detail")[0];
+        component.set("v.simpleNewClaim.Core_MDF_Quantity_to_Date_Nbr__c", parseInt(updatedRows.quantity));
+    },
+
+    calculateAmountFields: function (component, batchRow) {
+        let claimRecord = Object.assign({}, component.get("v.simpleNewClaim"));
+        claimRecord.Core_MDF_Reimbursement_Percent__c = batchRow.Core_MDF_Reimbursement_Percent_Nbr__c;
+        claimRecord.Core_MDF_Currency__c = batchRow.Core_MDF_Inv_Receipt_Cur_Cd__c;
+        claimRecord.Core_MDF_Total_Invoice_Amount_Local__c = batchRow.Core_MDF_Total_Amt__c;
+        claimRecord.Core_MDF_OtherCostsnotReimbursable_Local__c = batchRow.Core_MDF_Non_Reimbursable_Amt__c;
+        claimRecord.Core_MDF_Taxes_Local__c = batchRow.Core_MDF_Taxes_Local_Amt__c;
+        component.set("v.simpleNewClaim", claimRecord);
+
+        var amountFields = {
+            totalAmountLocal: batchRow.Core_MDF_Total_Amt__c,
+            costNotReimbursable: batchRow.Core_MDF_Non_Reimbursable_Amt__c,
+            taxesLocal: batchRow.Core_MDF_Taxes_Local_Amt__c
+        };
+        var action = component.get("c.calculateAmountFields");
+        action.setParams({
+            pfcList: claimRecord,
+            amountFields: JSON.stringify(amountFields)
+        });
+
+        action.setCallback(this, function (response) {
+            var state = response.getState();
+            if (state === "SUCCESS") {
+                var result = response.getReturnValue();
+                if (result.Core_MDF_Reimbursable_Transaction_Amount__c) {
+                    component.set('v.reimbursableAmountUsd', result.Core_MDF_Reimbursable_Transaction_Amount__c);
+                }
+            } else {
+                let errorMessage = $A.get("$Label.c.Core_MDF_ApplicationErrorMessage");
+                this.handleServerExceptions(component, errorMessage);
+            }
+            component.set("v.spinner", false);
+        });
+
+        $A.enqueueAction(action);
+    },
+
+    closeTacticsModal: function (component) {
+        component.set("v.openTacticsSection", false);
+        component.set("v.selectedTacticsActivityId", null);
+        component.set("v.reimbursableAmountUsd", null);
+        component.set("v.campaignPurposeColumns", []);
+        component.set("v.campaignPurposeRows", []);
+        component.set("v.claimAttributeList", []);
+        component.set("v.simpleNewClaim.Core_MDF_Quantity_to_Date_Nbr__c", null);
+        component.set("v.spinner", false);
+    },
+
+    saveTacticsAction: function (component, event, helper) {
+        var isCampaignPurposeValid = true;
+        if (component.find("campaignPurposeCmp")) {
+            isCampaignPurposeValid = component.find("campaignPurposeCmp").validate().isValid;
+        }
+
+        var tacticMetricResult = this.validateTacticMetric(component);
+        var tacticSpendingResult = this.validateTacticSpending(component);
+        var isMetricValid = tacticMetricResult.valid;
+        var isSpendingValid = tacticSpendingResult.valid;
+
+        if (!isCampaignPurposeValid || !isMetricValid || !isSpendingValid) {
+            // this.showToast(component, null, "error", "Please fill all tactics.");
+            return;
+        }
+
+        var finalClaimAttributeList = [];
+        if (tacticSpendingResult.claimAttributes.length > 0) {
+            finalClaimAttributeList = finalClaimAttributeList.concat(tacticSpendingResult.claimAttributes);
+        }
+        if (tacticMetricResult.claimAttributesObj.length > 0) {
+            finalClaimAttributeList = finalClaimAttributeList.concat(tacticMetricResult.claimAttributesObj);
+        }
+        component.set("v.claimAttributeList", finalClaimAttributeList);
+        component.set("v.clmBatchStgRec.Core_MDF_Claim_Attributes_JSON_txt__c", JSON.stringify(finalClaimAttributeList));
+        console.log('claimAttributeList@@@', component.get("v.claimAttributeList"));
+
+        component.set("v.openTacticsSection", false);
+        component.set("v.spinner", false);
+        component.set("v.openPopUp", true);
+        component.set("v.openManageAuditDocPopup", true);
+    },
+
+    navigateBackToTactics: function (component) {
+        component.set("v.openManageAuditDocPopup", false);
+        component.set("v.openPopUp", false);
+        component.set("v.openTacticsSection", true);
+        component.set("v.spinner", false);
+    },
+
+    validateTacticMetric: function (component) {
+        const tacticMetricCmp = component.find("tacticMetricCmp");
+        const result = tacticMetricCmp ? tacticMetricCmp.validate() : true;
+        let finalResult = { valid: result, claimAttributesObj: [] };
+        if (result && tacticMetricCmp) {
+            finalResult.claimAttributesObj = tacticMetricCmp.getAllMatricValueforRecordcreation();
+        }
+        return finalResult;
+    },
+
+    validateTacticSpending: function (component) {
+        const tacticSpendingCmp = component.find("tacticSpendingCmp");
+        const result = tacticSpendingCmp ? tacticSpendingCmp.validate() : true;
+        let finalResult = { valid: result, claimAttributes: [] };
+        if (result && tacticSpendingCmp) {
+            finalResult.claimAttributes = tacticSpendingCmp.prepareClaimAttributes();
+        }
+        return finalResult;
+    },
 
     saveClaimResult: function (component, event, helper) {
-	    component.set("v.spinner",true);
-            var action = component.get("c.saveClaim");
-           action.setParams({
+        component.set("v.spinner",true);
+        var action = component.get("c.saveClaim");
+        action.setParams({
                 //"claim": component.get("v.simpleNewClaim"),
-                "claimBatchRec": component.get("v.clmBatchStgRec"),
-                "auditDocList": component.get("v.auditDocument") //POP
-            });
+                claimBatchRec: component.get("v.clmBatchStgRec"),
+                auditDocList: component.get("v.auditDocument"), //POP
+                claimAttributeList: component.get("v.claimAttributeList"),
+                quantityToDate: component.get("v.simpleNewClaim.Core_MDF_Quantity_to_Date_Nbr__c")
+        });
         action.setCallback(this, function (saveResult) {
             if (saveResult.getState() === "SUCCESS" && saveResult.getReturnValue() != null && !saveResult.getReturnValue().startsWith('Exception')) {
                 component.set("v.spinner", false);
@@ -167,9 +340,9 @@
         }), 4000);
         component.set("v.isSaveDisabled", false);
     },
-     //This function is used to show error toast message
+    //This function is used to show error toast message
     populateErrorToastModal: function (component) {
-        var errorToastModal = component.find('errorToast');
+        var errorToastModal = component.find("errorToast");
         $A.util.removeClass(errorToastModal, "slds-hide");
         component.set("v.isError", true);
         component.set("v.spinner", false);
@@ -181,16 +354,15 @@
         }), 10000); */
         component.set("v.isSaveDisabled", false);
     },
-    getMiniLayout:function(component, event, helper){
-        
-        var getAllClaimRec = component.get('v.bulkClmStgRecData');
-        for(var i=0;i<getAllClaimRec.length;i++){
-            if(getAllClaimRec[i].Id == component.get("v.reId")){
-                component.set('v.mouseHoverData',getAllClaimRec[i]);
+    getMiniLayout: function (component, event) {
+        var getAllClaimRec = component.get("v.bulkClmStgRecData");
+        for (var i = 0; i < getAllClaimRec.length; i++) {
+            if (getAllClaimRec[i].Id === component.get("v.reId")) {
+                component.set("v.mouseHoverData", getAllClaimRec[i]);
                 break;
             }
         }
-        console.log('hover'+component.get('v.mouseHoverData'));
+        console.log("hover" + component.get("v.mouseHoverData"));
         component.set("v.hoverRow", parseInt(event.target.dataset.index));
         component.set("v.togglehover",true);
     },
@@ -247,5 +419,15 @@
                     
             //console.log('Core_MDF_Log_Info_txt__c' + thirdPartyDetails);
         }
+    },
+
+    showToast: function(component, event, type, message) {
+        var toastEvent = $A.get("e.force:showToast");
+        toastEvent.setParams({
+            message: message,
+            type: type,
+            key: "info_alt",
+        });
+        toastEvent.fire();
     }
-})
+});

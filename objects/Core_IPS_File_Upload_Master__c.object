@@ -153,7 +153,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fieldSets>
         <fullName>Core_Admin_Upload_Screen</fullName>
         <description>Admin Upload Screen</description>
@@ -319,7 +319,7 @@
     <fields>
         <fullName>Core_File_Hyperlink__c</fullName>
         <externalId>false</externalId>
-        <formula>IF(ISPICKVAL(Core_Upload_Status__c, &apos;Complete&apos;),HYPERLINK(Core_File_URL__c ,&apos;Download&apos;,&apos;Self&apos;),HYPERLINK($Label.Core_IPS_File_SCFT_URL +&apos;&amp;console=true&amp;appfileId=&apos;+Core_File_GUID__c ,&apos;Resume&apos;,&apos;Self&apos; ))</formula>
+        <formula>IF(ISPICKVAL(Core_Upload_Status__c, &apos;Complete&apos;),HYPERLINK(Core_File_URL__c ,&apos;Download&apos;,&apos;Self&apos;),TEXT(Core_Upload_Status__c))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>File Download Link</label>
         <required>false</required>
@@ -507,4 +507,30 @@ ISPICKVAL(PRIORVALUE( Core_Upload_Status__c ),&quot;Complete&quot;), NOT(ISPICKV
         <errorMessage>Status Change not allowed once set to Complete</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Core_Assign_SP_Account</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Assign SP/Account</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/14.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/14.0/apex.js&quot;)}
+
+var ptb = new sforce.SObject(&quot;Core_IPS_File_Upload_Master__c&quot;);
+ptb.Id = &apos;{!Core_IPS_File_Upload_Master__c.Id}&apos;; 
+var IPSFileUploadID = &apos;{!Core_IPS_File_Upload_Master__c.Id}&apos;; 
+var IPSFileUploadStatus = &apos;{!Core_IPS_File_Upload_Master__c.Core_Upload_Status__c}&apos;;
+var ExpDateTime = new Date(&apos;{!Core_IPS_File_Upload_Master__c.Core_Expiration_Date__c}&apos;);
+var CurrentDateTime = new Date(&apos;{!NOW()}&apos;);
+
+if(IPSFileUploadStatus != &apos;Complete&apos;){
+alert(&apos;File Upload Status not Complete.Supported Product/Account cannot be assigned to this File&apos;); 
+}
+else if (ExpDateTime &lt; CurrentDateTime) {alert(&apos;File Expired.Supported Product/Account cannot be assigned to this File&apos;)}
+else{
+window.open(&quot;/apex/Core_IPS_File_AssignSPAccount&quot;+&quot;?id=&quot;+IPSFileUploadID, &apos;_self&apos;);
+}</url>
+    </webLinks>
 </CustomObject>

@@ -80,12 +80,12 @@ export default class AccountHierarchy_TreeGrid extends LightningElement {
         // Fetching All child Accounts By passing the ultimate Account Id to apex method 
         getChildAccounts({ ultimateAccountId: this.ultimateAccountId })
             .then(allAccounts => {
-                if (allAccounts !== undefined && allAccounts !== null && allAccounts !== "") {
-                    allAccounts.sort((a, b) => (a.Name.toLowerCase() > b.Name.toLowerCase()) ? 1 : (a.Name.toLowerCase() === b.Name.toLowerCase()) ? ((b.CreatedDate > a.CreatedDate) ? 1 : -1) : -1);
-                    accountsToDisplayOnTree = allAccounts;
-                    // Calling a method to create tree grid data
-                    this.createTreeGridData(accountsToDisplayOnTree);
-                }
+                allAccounts.sort((a, b) => (a.Name.toLowerCase() > b.Name.toLowerCase()) ? 1 : (a.Name.toLowerCase() === b.Name.toLowerCase()) ? ((b.CreatedDate > a.CreatedDate) ? 1 : -1) : -1);
+                accountsToDisplayOnTree = allAccounts;
+                console.log('testsrteddata ',accountsToDisplayOnTree);
+                console.log('vsdvdrvdv ',allAccounts.length);
+                // Calling a method to create tree grid data
+                this.createTreeGridData(accountsToDisplayOnTree);
             })
             .catch(error => {
                 this.error = error;
@@ -98,6 +98,7 @@ export default class AccountHierarchy_TreeGrid extends LightningElement {
     /* Method to Create tree grid data */
     createTreeGridData(accountsToDisplayOnTree) {
         var expandedRows = [];
+        var inactiveAccs =[];
         // Creating a vaisable to store Childrens of the parent account in array
         var accounts = { _children: [] };
         for (var index = 0; index < accountsToDisplayOnTree.length; index++) {
@@ -127,6 +128,24 @@ export default class AccountHierarchy_TreeGrid extends LightningElement {
                     accounts[account.Core_MDF_Parent_Fund_Account__c]._children.push(accounts[account.Id]);
                 }
             }
+            // else {
+            //     // If Parent Account is Intel then Push Virtual corps into first level --- Check for Not equal to Comarketing
+            //     if (accounts[account.Id].recordType === 'Core_MDF_Co_Marketing' && accounts[account.Id].parentRecordtype === 'Mastered_Account' ) {
+            //         if(accounts[account.Id].accountActive === 'Inactive'){
+            //             inactiveAccs.push(accounts[account.Id]);
+            //         }
+            //         accounts._children.push(accounts[account.Id]);
+            //     }
+            //     // else Push Account into Account's Parent Fund Account _children
+            //     else if (accounts[account.Id].parentRecordtype === 'Core_MDF_Co_Marketing') {
+            //         if(accounts[account.Id].accountActive === 'Inactive'){
+            //             inactiveAccs.push(accounts[account.Id]);
+            //         }
+            //         //if(accounts[account.Core_MDF_Parent_Fund_Account__c].Core_MDF_Active_Ind__c == false){}
+
+            //         accounts[account.Core_MDF_Parent_Fund_Account__c]._children.push(accounts[account.Id]);
+            //     }
+            // }
             else {
                 // If Parent Account is Intel then Push Virtual corps into first level --- Check for Not equal to Comarketing
                 if (accounts[account.Id].recordType === 'Core_MDF_Co_Marketing' && accounts[account.Id].parentRecordtype === 'Mastered_Account') {
@@ -134,10 +153,14 @@ export default class AccountHierarchy_TreeGrid extends LightningElement {
                 }
                 // else Push Account into Account's Parent Fund Account _children
                 else if (accounts[account.Id].parentRecordtype === 'Core_MDF_Co_Marketing') {
+                    if(accounts[account.Core_MDF_Parent_Fund_Account__c] == undefined || accounts[account.Core_MDF_Parent_Fund_Account__c] == ''){
+                        console.log(accounts,' sfhreskhbkres ' ,account.Core_MDF_Parent_Fund_Account__c);
+                    }
                     accounts[account.Core_MDF_Parent_Fund_Account__c]._children.push(accounts[account.Id]);
                 }
             }
         });
+        console.log('TestAmey ',inactiveAccs);
         // Setting Tree Griddata and expandedrows attribute to be viewed in tree
         this.gridData = accounts._children;
         this.gridExpandedRows = expandedRows;
@@ -158,7 +181,7 @@ export default class AccountHierarchy_TreeGrid extends LightningElement {
         var ultimateAccountName = this.ultimateAccountName;
         var ultimateAccountId = this.ultimateAccountId;
         var accountData;
-
+				console.log('in export');
         // Adding All the accounts of a hierarchy except for the Intel Account
         if (Boolean(isAccountRecPage)) {
             accountData = this.gridData[0]._children;
@@ -204,11 +227,15 @@ export default class AccountHierarchy_TreeGrid extends LightningElement {
         }
         // Table-Ends
         finalExcelData = finalExcelData + "</table>";
-
+		console.log('finalExcelData'+finalExcelData);
+				var TableDataType = 'application/vnd.ms-excel';
         // Final Excel file generation
         let hiddenElement = document.createElement('a');
-	let blob = new Blob(["\ufeff",finalExcelData]);
-        hiddenElement.href = window.URL.createObjectURL(blob, {type: "text/plain"});
+	let blob = new Blob(['\ufeff',finalExcelData],{
+            type: TableDataType
+        });
+				console.log('blob',blob);
+        hiddenElement.href = 'data:' + TableDataType + ', ' + encodeURIComponent(finalExcelData);
         hiddenElement.target = '_self';
         hiddenElement.download = ultimateAccountName + ' Account Hierarchy.xls';
         document.body.appendChild(hiddenElement);

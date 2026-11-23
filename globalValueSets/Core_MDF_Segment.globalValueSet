@@ -6,16 +6,6 @@
         <label>Chipsets</label>
     </customValue>
     <customValue>
-        <fullName>Ethernet Products</fullName>
-        <default>false</default>
-        <label>Ethernet Products</label>
-    </customValue>
-    <customValue>
-        <fullName>Graphics</fullName>
-        <default>false</default>
-        <label>Graphics</label>
-    </customValue>
-    <customValue>
         <fullName>Memory and Storage</fullName>
         <default>false</default>
         <label>Memory and Storage</label>
@@ -26,9 +16,19 @@
         <label>Processors</label>
     </customValue>
     <customValue>
+        <fullName>Graphics</fullName>
+        <default>false</default>
+        <label>Graphics</label>
+    </customValue>
+    <customValue>
         <fullName>Technologies</fullName>
         <default>false</default>
         <label>Technologies</label>
+    </customValue>
+    <customValue>
+        <fullName>Ethernet Products</fullName>
+        <default>false</default>
+        <label>Ethernet Products</label>
     </customValue>
     <customValue>
         <fullName>Solid-State Drives</fullName>
@@ -37,5 +37,5 @@
         <label>Solid-State Drives</label>
     </customValue>
     <masterLabel>Segment</masterLabel>
-    <sorted>true</sorted>
+    <sorted>false</sorted>
 </GlobalValueSet>

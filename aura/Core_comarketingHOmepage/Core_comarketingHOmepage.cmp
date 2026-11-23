@@ -1,0 +1,13 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="Core_MDF_coMarketingHomePage">
+<aura:handler name="init" value="this" action="{!c.doInit}"/>
+<aura:attribute name="userInfo" type="user"/>  
+   <div aura:id="text">
+        <lightning:card >
+            <p class="slds-p-horizontal_medium">
+               <b> Hi {!v.userInfo.Name} </b> 
+                Welcome to devCCP!!!
+            </p>
+        </lightning:card>
+    </div>
+
+</aura:component>

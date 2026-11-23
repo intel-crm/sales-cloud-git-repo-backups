@@ -49,7 +49,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterThan</operator>
-            <value>50</value>
+            <value>50.0</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Product_Segment__c</column>

@@ -27,7 +27,7 @@ public class Core_MDF_Batch_UpdateStatusOnClaim implements Database.Batchable<sO
               List<String> releaseReasonList = new List<String>();
               //Added the bank document hold string to pass to the releaseHold method
               releaseReasonList.add(Label.Core_MDF_Bank_Document_Hold);
-              //system.debug('@@@ claimlist'+claimsList);
+              
               if(releaseReasonList!=NULL && releaseReasonList.size() > 0){
                   //calling the release hold method for updating the bank document to false and changing the status of the claim.
                Core_MDF_Claim_Utility.releaseHold(claimsList, releaseReasonList); 

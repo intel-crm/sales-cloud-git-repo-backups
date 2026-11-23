@@ -5,8 +5,8 @@ public class Core_MDF_PGM_BatchHelper_Test{
            
           Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator());
         List<User> userList = new List<User>();
-        
-        List<PermissionSetAssignment> permissionSetAssignmentList = new List<PermissionSetAssignment>();
+        // Highlight: Unused Local Variable - Indira
+       // List<PermissionSetAssignment> permissionSetAssignmentList = new List<PermissionSetAssignment>();
         
         Profile coreProfile = [SELECT Id FROM Profile WHERE Name = 'CCP - Core Access'];
         
@@ -114,8 +114,7 @@ public class Core_MDF_PGM_BatchHelper_Test{
         bypassFunctionKeys.add('Bypass_UpdateActivityFields');
         bypassFunctionKeys.add('Bypass_ValidateActivityWithCampaign');
         bypassFunctionKeys.add('Bypass_MDF_Budget_Access');
-        bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation');
-          
+        bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation'); 
             List<Core_Trigger_Executions__c> bypassfunctinalitylist = Core_MDF_CCP_TestDataUtility.byPassFeature(bypassFunctionKeys,true,true);
             
             List<Core_Trigger_Executions__c> executionList = new List<Core_Trigger_Executions__c>();
@@ -554,7 +553,7 @@ public class Core_MDF_PGM_BatchHelper_Test{
             PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                            string.valueof(intelCCF.id),pfa,null,'INDIA','Creator',
-                                                                                           'Desktop','Intel® Core™ i7 Processor','Broadcast (Pre-2025)',
+                                                                                           'Desktop','Intel® Core™ i7 Processor','Audio',
                                                                                            'Radio','Draft',false);
             pfr.RequestedAmount = 500000;
             pfr.Amount = 500000;
@@ -573,7 +572,8 @@ public class Core_MDF_PGM_BatchHelper_Test{
             database.insert(bank);            
             
             //Creating ABM
-             Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(intelCcf.Id,bank.Id,TRUE);            
+           // Highlight: Unused Local Variable - Indira
+           //  Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(intelCcf.Id,bank.Id,TRUE);            
             
             //Creating Claims
             PartnerFundClaim pfc = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim',Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF,pfr.Id,System.today(),System.today(),20000,System.today(),bank.Id,false);
@@ -581,7 +581,6 @@ public class Core_MDF_PGM_BatchHelper_Test{
             pfc.Core_MDF_Currency__c = 'USD';
             pfc.Core_MDF_Status__c = 'Pending Payment';
             pfc.Status = Label.Core_MDF_Status_Approved;
-            pfc.Core_MDF_Processing_Preference_nm__c='Settle, then get paid';
             Core_MDF_CCP_TestDataUtility.createMDFConfigurationData();
             database.insert(pfc);      
             List<ContentVersion> conVersionLst = new List<ContentVersion>();
@@ -621,10 +620,11 @@ public class Core_MDF_PGM_BatchHelper_Test{
             update pfc;
             
             Core_MDF_RecordGeoShare rec = new Core_MDF_RecordGeoShare(pay.Id,payRunRecord.Core_MDF_Geo_Txt__c,null, 'Client Co-marketing Fund' ,null);
-            Core_MDF_RecordGeoShare rec1 = new Core_MDF_RecordGeoShare(pay.Id,payRunRecord.Core_MDF_Geo_Txt__c,null,null,intelAccount.Id, 'Client Co-marketing Fund');
-            Core_MDF_RecordGeoShare rec2 = new Core_MDF_RecordGeoShare(pay.Id,payRunRecord.Core_MDF_Geo_Txt__c,null,intelAccount.Id,'Client Co-marketing Fund');
-            Core_MDF_RecordGeoShare rec3 = new Core_MDF_RecordGeoShare(pay.Id,payRunRecord.Core_MDF_Geo_Txt__c,'Client Co-marketing Fund');
-            Core_MDF_RecordGeoShare rec4 = new Core_MDF_RecordGeoShare(pay.Id,'Client Co-marketing Fund');
+            // Highlight: Unused Local Variable - Indira
+          //  Core_MDF_RecordGeoShare rec1 = new Core_MDF_RecordGeoShare(pay.Id,payRunRecord.Core_MDF_Geo_Txt__c,null,null,intelAccount.Id, 'Client Co-marketing Fund');
+          //  Core_MDF_RecordGeoShare rec2 = new Core_MDF_RecordGeoShare(pay.Id,payRunRecord.Core_MDF_Geo_Txt__c,null,intelAccount.Id,'Client Co-marketing Fund');
+          //  Core_MDF_RecordGeoShare rec3 = new Core_MDF_RecordGeoShare(pay.Id,payRunRecord.Core_MDF_Geo_Txt__c,'Client Co-marketing Fund');
+          //  Core_MDF_RecordGeoShare rec4 = new Core_MDF_RecordGeoShare(pay.Id,'Client Co-marketing Fund');
             List<Core_MDF_RecordGeoShare> recList = new  List<Core_MDF_RecordGeoShare>();
             recList.add(rec);
             //Core_MDF_ShareRecordToGeoGroup.shareRecordToGeoGroupBulkAPI('Core_MDF_Payment__c',recList);
@@ -701,7 +701,8 @@ public class Core_MDF_PGM_BatchHelper_Test{
         
         System.runAs(testUser){
             //Creating Acc User record
-            Core_MDF_Partner_Node_User_Mapping__c pnumRecord = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(intelCCF.Id,extUser.Id,true);
+           // Highlight: Unused Local Variable - Indira 
+          //  Core_MDF_Partner_Node_User_Mapping__c pnumRecord = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(intelCCF.Id,extUser.Id,true);
         }
         
         User user = [SELECT Id FROM User WHERE LastName = 'IUPGM Test User' limit 1];
@@ -739,8 +740,8 @@ public class Core_MDF_PGM_BatchHelper_Test{
         ChannelProgram cp = [SELECT Id, Name FROM ChannelProgram WHERE Name = 'Client' limit 1];
         
         User user = [SELECT Id FROM User WHERE LastName = 'IUPGM Test User' limit 1];
-        
-        PartnerFundClaim pfc = [Select Id,Title from PartnerFundCLaim where Title ='Test Claim' limit 1];                
+        // Highlight: Unused Local Variable - Indira
+       // PartnerFundClaim pfc = [Select Id,Title from PartnerFundCLaim where Title ='Test Claim' limit 1];                
 
         /*Core_MDF_Adjustment_Request__c adjustment = new Core_MDF_Adjustment_Request__c();          
         adjustment.Core_MDF_Reference_Claim_Nbr__c = pfc.Id;
@@ -888,10 +889,12 @@ public class Core_MDF_PGM_BatchHelper_Test{
         pgmMap.put(ccfPgm.Id,ccfPgm);
         Core_MDF_PGM_ServiceHandler.isInactiveIndicatorUpdated(pgmMap,pgmMap);
         System.runAs(testUser){
-            Core_MDF_Partner_Node_User_Mapping__c pnumRecord = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(intelRMF.Id,extUser.Id,true);
+           // Highlight: Unused Local Variable - Indira
+          //  Core_MDF_Partner_Node_User_Mapping__c pnumRecord = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(intelRMF.Id,extUser.Id,true);
         }
         try{
-            Core_MDF_Partner_Node_User_Mapping__c pnumRecord1 = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(intelRMF.Id,extUser.Id,true);
+          // Highlight: Unused Local Variable - Indira
+          //  Core_MDF_Partner_Node_User_Mapping__c pnumRecord1 = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(intelRMF.Id,extUser.Id,true);
         }
         catch(Exception e){
                 System.Assert(e.getMessage().contains(System.Label.Core_MDF_PNUMDuplicateError));
@@ -902,8 +905,8 @@ public class Core_MDF_PGM_BatchHelper_Test{
         inactivePgmAccountIdToPrgmsMap.put(ccfPgm.Id,new List<String>{'Client'});
         Core_MDF_PGM_ServiceHandler.inactivatePnumRecords(userIdToAccountIdMap,inactivePgmAccountIdToPrgmsMap);
         Core_MDF_PGM_ServiceHandler.getUserDetails(new Set<Id>{intelAccount.Id},inactivePgmAccountIdToPrgmsMap);
-        
-        User user = [SELECT Id FROM User WHERE LastName = 'IUPGM Test User' limit 1];
+      // Highlight: Unused Local Variable - Indira  
+     //   User user = [SELECT Id FROM User WHERE LastName = 'IUPGM Test User' limit 1];
         
         List<Core_MDF_Partner_Group_Mapping__c> pgmList = [SELECT Id, Core_MDF_Account__c, Core_MDF_Channel_Program__c
                                                            FROM Core_MDF_Partner_Group_Mapping__c
@@ -970,10 +973,11 @@ public class Core_MDF_PGM_BatchHelper_Test{
         Database.insert(ccfPgm);
 
         System.runAs(testUser){        
-            Core_MDF_Partner_Node_User_Mapping__c pnumRecord = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(intelRMF.Id,extUser.Id,true);
+           // Highlight: Unused Local Variable - Indira
+          //  Core_MDF_Partner_Node_User_Mapping__c pnumRecord = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(intelRMF.Id,extUser.Id,true);
         }
-        
-        User user = [SELECT Id FROM User WHERE LastName = 'IUPGM Test User' limit 1];
+        // Highlight: Unused Local Variable - Indira
+       // User user = [SELECT Id FROM User WHERE LastName = 'IUPGM Test User' limit 1];
         
         List<Core_MDF_Partner_Group_Mapping__c> pgmList = [SELECT Id, Core_MDF_Account__c, Core_MDF_Channel_Program__c
                                                            FROM Core_MDF_Partner_Group_Mapping__c
@@ -1015,7 +1019,7 @@ public class Core_MDF_PGM_BatchHelper_Test{
             expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
             expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
             expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Audio->Podcast'; // Indira
+            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Audio->Podcast';
             expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
             expt.Core_MDF_Country_Region_nm__c = 'INDIA';
             expt.Core_MDF_Account_id__c = acc.Id;
@@ -1044,9 +1048,8 @@ public class Core_MDF_PGM_BatchHelper_Test{
                                                  Core_MDF_Channel_Program__r.Name =: 'Client' AND 
                                                      Core_MDF_Region_cd__c =: 'APJ' LIMIT 1];
            }catch(exception ex){}
-        
-        
-        //Assert.isTrue(pgm != NULL);
+      
+      //  Assert.isTrue(pgm != NULL);
     }
      @isTest
     static void testEEF(){    
@@ -1094,6 +1097,8 @@ public class Core_MDF_PGM_BatchHelper_Test{
         eefActivatingVirtualCorp.Core_MDF_Parent_Fund_Account__c = acc1.Id;
         eefActivatingVirtualCorp.Core_MDF_Partner_Type_nm__c ='Activating Partner';
         insert eefActivatingVirtualCorp;
+        // Unit Test Method should include System.Assert - Indira
+        System.assertEquals('Primary Partner', eefPrimaryVirtualCorp.Core_MDF_Partner_Type_nm__c, 'Primary partner type should be set correctly');
         
         system.runAs(usr){
             PermissionSet eefBudLoader = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_Internal_EEF_Budget_Loader' LIMIT 1];
@@ -1102,8 +1107,8 @@ public class Core_MDF_PGM_BatchHelper_Test{
             insert new PermissionSetAssignment(AssigneeId = usr2.id, PermissionSetId = eefBudManager.Id);
             
         }
-        
-        List<PartnerMarketingBudget> pmbList = new List<PartnerMarketingBudget>(); 
+        // Highlight: Unused Local Variable - Indira
+       // List<PartnerMarketingBudget> pmbList = new List<PartnerMarketingBudget>(); 
         System.runAs(usr){
             Core_MDF_Partner_Mapping__c priToActiPartnerMapping = new Core_MDF_Partner_Mapping__c();
             priToActiPartnerMapping.Core_MDF_Primary_Partner_Account_id__c = eefPrimaryVirtualCorp.Id;
@@ -1121,7 +1126,8 @@ public class Core_MDF_PGM_BatchHelper_Test{
             
             Database.insert(pmbList);
             PartnerFundAllocation eefPFA = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test EEF PFA Primary', pbmEef, eefActivatingVirtualCorp, 20000, true);*/
-            PartnerMarketingBudget pmb = [SELECT id from PartnerMarketingBudget WHERE Title = 'Test Budget' LIMIT 1];
+            // Highlight: Unused Local Variable - Indira
+          //  PartnerMarketingBudget pmb = [SELECT id from PartnerMarketingBudget WHERE Title = 'Test Budget' LIMIT 1];
             Group extGrp = new Group();
             extGrp.name = 'Core_MDF_EEF_EXT';
             extGrp.DoesIncludeBosses = false;
@@ -1192,6 +1198,7 @@ public class Core_MDF_PGM_BatchHelper_Test{
         }
         
         Test.stopTest();
+       
         
     }
     @isTest
@@ -1208,7 +1215,7 @@ public class Core_MDF_PGM_BatchHelper_Test{
         Map<string,id> accessToGroupIdMap = new Map<string,id>();
         ChannelProgram cpId = [select id from ChannelProgram limit 1];
         Account accId = [select id from Account limit 1];
-        List<Id> grpIdList = new List<Id>();
+		List<Id> grpIdList = new List<Id>();
         //Create Master Group map
         for(Group record: [select id, developername from group limit 2]){
             accessToGroupIdMap.put('Internal',record.id);

@@ -9,6 +9,10 @@
         <value>RestAPI Response codes</value>
     </caseValues>
     <fields>
+        <label><!-- Category --></label>
+        <name>Core_Category__c</name>
+    </fields>
+    <fields>
         <label><!-- Code --></label>
         <name>Core_Code__c</name>
     </fields>

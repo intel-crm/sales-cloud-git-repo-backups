@@ -1,12 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
+        <fullName>Budget_Cap_CCP_CCFB_ALL_RO</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>CCFB Budget CAP sharing to Read Only Group</description>
+        <label>Budget Cap CCP CCFB ALL RO</label>
+        <sharedTo>
+            <group>Core_MDF_CCFB_Internal_All_Geo_Read_Only</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008PW9</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Budget_Cap_CCP_CCF_ALL_RO</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>CCF Budget CAP sharing to Read Only Group</description>
+        <label>Budget Cap CCP CCF ALL RO</label>
+        <sharedTo>
+            <group>Core_MDF_CCF_Internal_All_Geo_Read_Only</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008OTT</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Budget_Cap_CCP_DCF_ALL_RO</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>DCF Budget CAP sharing to Read Only Group</description>
+        <label>Budget Cap CCP DCF ALL RO</label>
+        <sharedTo>
+            <group>Core_MDF_DCF_Internal_All_Geo_Read_Only</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008OTY</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Budget_Cap_CCP_IPA_ALL_RO</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>IPA Budget CAP sharing to Read Only Group</description>
+        <label>Budget Cap CCP IPA ALL RO</label>
+        <sharedTo>
+            <group>Core_MDF_IPA_Internal_All_Geo_Read_Only</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008aG2</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Budget_Cap_CCP_SPCF_ALL_RO</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>SPCF Budget CAP sharing to Read Only Group</description>
+        <label>Budget Cap CCP SPCF ALL RO</label>
+        <sharedTo>
+            <group>Core_MDF_SPCF_Internal_All_Geo_Read_Only</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008OTd</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Core_Budget_Cap_All_Users_CCP_Internal_Read_Write</fullName>
         <accessLevel>Edit</accessLevel>
         <label>Budget Cap All Users - CCP Internal Read Write</label>
         <sharedTo>
             <group>Core_All_Users_CCP_Internal</group>
         </sharedTo>
+        <booleanFilter>1 AND 2</booleanFilter>
         <criteriaItems>
             <field>Name</field>
             <operation>notEqual</operation>
@@ -30,7 +106,7 @@
         <criteriaItems>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000KywA</value>
+            <value>0Pkg00000008PW9</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -44,7 +120,7 @@
         <criteriaItems>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000CaSe</value>
+            <value>0Pkg00000008OTT</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -56,6 +132,7 @@
         <sharedTo>
             <group>Core_MDF_CCP_Claim_Case_Reviewer_Q_Group</group>
         </sharedTo>
+        <booleanFilter>1 AND 2</booleanFilter>
         <criteriaItems>
             <field>Name</field>
             <operation>notEqual</operation>
@@ -78,7 +155,21 @@
         <criteriaItems>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000CaSZ</value>
+            <value>0Pkg00000008OTY</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Budget_Cap_CCP_IPA_ALL</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Budget Cap CCP IPA ALL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_IPA_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008aG2</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -92,7 +183,22 @@
         <criteriaItems>
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
-            <value>0Pk1J000000CaUp</value>
+            <value>0Pkg00000008OTd</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_IPA_Budget_Cap_Sharing_Rule</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>IPA Budget Cap Sharing Rule</description>
+        <label>IPA Budget Cap Sharing Rule</label>
+        <sharedTo>
+            <group>Core_MDF_IPA_Finance_User_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>IPA Budget Type Cap</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

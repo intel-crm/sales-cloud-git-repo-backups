@@ -36,7 +36,8 @@ global without sharing class Core_MDF_SchBatch_UpdateCampaignSts implements Sche
         //         string claimMonth =(string.valueOf(claimWindowAdded.month()).length()<2)?0+string.valueOf(claimWindowAdded.month()):string.valueOf(claimWindowAdded.month());    
         //         string claimDay =(string.valueOf(claimWindowAdded.day()).length()<2)?0+string.valueOf(claimWindowAdded.day()):string.valueOf(claimWindowAdded.day());                   
         //         extractedClaimWindow = claimWindowAdded.year() + '-' + claimMonth + '-' + claimDay;
-        //         query += ' (Core_mdf_program__c =\''+program+'\' and enddate<='+extractedClaimWindow+') OR';
+        //         query += ' (Core_mdf_program__c =\''+program+'\' and enddate<='+extractedClaimWindow+') OR';  
+        //         System.System.debug('@@@vikas sch extractedClaimWindow: '+extractedClaimWindow);
         //     }*/
         
         query = query.left(query.length()-2) + ')))';

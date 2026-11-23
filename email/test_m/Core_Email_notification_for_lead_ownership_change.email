@@ -1,0 +1,18 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<p class="MsoNormal" style="font-size: 12pt; font-family: arial;"></p><p class="MsoNormal" style=""><font face="Arial, sans-serif" style="">Dear&nbsp;<span style="line-height: 107%;">{!Lead.OwnerFirstName},</span><o:p></o:p></font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif">The <span style="line-height: 107%;">lead&nbsp;{!Lead.Name}&nbsp;from&nbsp;{!Lead.Company}</span>&nbsp;has been
+assigned to you because it has been qualified by an LDR. Prior to this
+assignment you will have met or otherwise communicated with the responsible LDR
+to get a high-level overview of the potential opportunity, and have agreed to
+accept the lead.</font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif"><o:p></o:p></font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif"><u style="">Actions upon receipt of this notification</u>:</font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif"><o:p></o:p></font></p><p class="MsoListParagraphCxSpFirst" style="margin-left: 0.75in; text-indent: -0.25in;"><font face="Arial, sans-serif">1.&nbsp; &nbsp;Change sales stage to “Sales Accepted Lead”<o:p></o:p></font></p><p class="MsoListParagraphCxSpMiddle" style="margin-left: 1.25in; text-indent: -0.25in;"><!--[if !supportLists]--><font face="Arial, sans-serif">a.&nbsp; &nbsp;A call or email must be logged within 1
+business day of receipt of this notification<br>
+<!--[if !supportLineBreakNewLine]--><br>
+<!--[endif]--><o:p></o:p></font></p><p class="MsoListParagraphCxSpMiddle" style="margin-left: 0.75in; text-indent: -0.25in;"><!--[if !supportLists]--><font face="Arial, sans-serif">2.&nbsp; &nbsp;If contact established and the lead is
+considered an opportunity, change sales stage to “Sales Qualified Lead” to
+convert the lead.<br>
+<!--[if !supportLineBreakNewLine]--><br>
+<!--[endif]--><o:p></o:p></font></p><p class="MsoListParagraphCxSpMiddle" style="margin-left: 0.75in; text-indent: -0.25in;"><!--[if !supportLists]--><font face="Arial, sans-serif">3.&nbsp; &nbsp;If contact cannot be established:<o:p></o:p></font></p><p class="MsoListParagraphCxSpLast" style="margin-left: 1.25in; text-indent: -0.25in;"><!--[if !supportLists]--><font face="Arial, sans-serif">a.&nbsp; &nbsp;Lead status changed to “Unreachable”<o:p></o:p></font></p><p class="MsoListParagraphCxSpLast" style="margin-left: 1.25in; text-indent: -0.25in;"><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif">If not an opportunity at this time, and if desired, you can
+convert this lead to a contact for potential contact in the future.<o:p></o:p></font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif" style="">Good Luck!</font></p><p class="MsoNormal" style="font-size: 12pt; font-family: arial;"><o:p></o:p></p><p style="font-size: 12pt; font-family: arial;"></p>]]></td>
+</tr>
+</table>

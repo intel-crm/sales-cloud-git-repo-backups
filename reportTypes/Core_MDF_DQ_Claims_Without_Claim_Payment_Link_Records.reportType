@@ -213,6 +213,16 @@
             <field>Core_MDF_Unique_Key_Id__c</field>
             <table>PartnerFundClaim.Claim_Payment_Links__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Account_Id__c</field>
+            <table>PartnerFundClaim.Claim_Payment_Links__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Bank_Id__c</field>
+            <table>PartnerFundClaim.Claim_Payment_Links__r</table>
+        </columns>
         <masterLabel>Claim Payment Links</masterLabel>
     </sections>
 </ReportType>

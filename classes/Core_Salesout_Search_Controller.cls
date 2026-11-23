@@ -7,9 +7,9 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Brian Matthews              9/14/15                Initial Revision
 *************************************************************************************/
-public without sharing class Core_Salesout_Search_Controller {
+public class Core_Salesout_Search_Controller {
 
-    /*public  static final String  NONE_SELECTED             = '--None--';
+    public  static final String  NONE_SELECTED             = '--None--';
     public  static final String  ITP_MEMBERSHIP_TIER       = 'ITP Membership Tier';
     public  static final String  ITP_MEMBERSHIP_TIER_FIELD = 'Core_Current_Membership_Tier__c';
     public  static final String  TRAINING_CREDITS          = 'Training Credits';
@@ -229,7 +229,7 @@ public without sharing class Core_Salesout_Search_Controller {
         // MUST use a Double in the Ceiling function
         Double doubleMonth = currentDate.month();                                                    
         Integer currentQuarter = Integer.valueOf(Math.Ceil(doubleMonth/3));  // MUST USE DOUBLE
-        
+        // System.debug(LoggingLevel.Info, '#48 currentQuarter: ' + currentQuarter);
         
         Date quarterEnd        = Date.newInstance(currentDate.year(), currentQuarter * 3, 1);
         quarterEnd             = quarterEnd.addMonths(1);
@@ -246,9 +246,9 @@ public without sharing class Core_Salesout_Search_Controller {
         soField1 = lstDefaultField1.get(0).getValue();
         soOp1    = lstDateOperators.get(1).getValue();
 
-     
+        //System.debug(LoggingLevel.Info, '#60 soValue1: ' + soValue1 + '     soField1: ' + soField1);
 
-    }*/
+    }
 
 
     /*
@@ -257,19 +257,19 @@ public without sharing class Core_Salesout_Search_Controller {
      * Return Type  : VOID
      * Parameter    : String
      */
-    /*private String getWhereClause() {
+    private String getWhereClause() {
     
         String whereClause = salesoutPeriodCriteria();
 
         // Account fields
         if (!String.isblank(acField1))    
-            whereClause = addCriteria(String.escapeSingleQuotes(acField1), String.escapeSingleQuotes(acOp1), String.escapeSingleQuotes(acValue1), whereClause);    
+            whereClause = addCriteria(acField1, acOp1, acValue1, whereClause);    
 
         if (!String.isblank(acField2))    
-            whereClause = addCriteria(String.escapeSingleQuotes(acField2), String.escapeSingleQuotes(acOp2), String.escapeSingleQuotes(acValue2), whereClause);    
+            whereClause = addCriteria(acField2, acOp2, acValue2, whereClause);    
 
         if (!String.isblank(acField3))    
-            whereClause = addCriteria(String.escapeSingleQuotes(acField3), String.escapeSingleQuotes(acOp3), String.escapeSingleQuotes(acValue3), whereClause);    
+            whereClause = addCriteria(acField3, acOp3, acValue3, whereClause);    
 
 
         // *** Program Member fields *** //
@@ -280,15 +280,15 @@ public without sharing class Core_Salesout_Search_Controller {
         // Salesout Period is a required field that requires translation
         //
         if (!String.isblank(soField2))    
-            whereClause = addCriteria(String.escapeSingleQuotes(soField2), String.escapeSingleQuotes(soOp2), String.escapeSingleQuotes(soValue2), whereClause);    
+            whereClause = addCriteria(soField2, soOp2, soValue2, whereClause);    
 
         if (!String.isblank(soField3))    
-            whereClause = addCriteria(String.escapeSingleQuotes(soField3), String.escapeSingleQuotes(soOp3), String.escapeSingleQuotes(soValue3), whereClause);    
+            whereClause = addCriteria(soField3, soOp3, soValue3, whereClause);    
 
         if (whereClause != NULL)
             whereClause = whereClause.removeEnd(' AND ');
 
-        
+        //System.debug(LoggingLevel.Info, '#66 whereClause: ' + whereClause);
         
         return whereClause;
     }
@@ -319,13 +319,13 @@ public without sharing class Core_Salesout_Search_Controller {
 
 
     private String salesoutPeriodCriteria() {
-       
+        //System.debug(LoggingLevel.Info, '#61 soValue1: ' + soValue1);
         List<String> str = soValue1.split('-');
-       
+        //System.debug(LoggingLevel.Info, '#62 str: ' + str);
   
         integer quarter = (integer.valueof(str.get(0)) * 100) + integer.valueof(str.get(1));
 
-        
+        //System.debug(LoggingLevel.Info, '#63 quarter: ' + quarter);
     
         if (soOp1 == 'e')
             return ' WHERE (Core_Invoice_Quarter__c = ' + quarter + ') AND ';
@@ -445,7 +445,7 @@ public without sharing class Core_Salesout_Search_Controller {
 
     private String addBooleanCriteria(String fld, String op, String value, String whereClause) {
        
-                
+        //System.debug(LoggingLevel.Info, '#49 addBooleanCriteria value: ' + value);        
         if (op == 'e')
             return whereClause + ' ' + fld + ' = ' + value + ' AND ';
 
@@ -514,7 +514,7 @@ public without sharing class Core_Salesout_Search_Controller {
         
         // soFiel1 - "Period" : Is automatically loaded.  soOp1 must be user supplied.
         //
-        
+        //System.Debug(LoggingLevel.Info, '#67 validUserInputs : soOp1: ' + soOp1);
         if (String.isblank(soOp1))
         {
             searchShowMessage = true;                        
@@ -546,7 +546,7 @@ public without sharing class Core_Salesout_Search_Controller {
 
 
     public Boolean accountFieldValidation() {
-        
+        //System.debug(LoggingLevel.Info, '#22 acField1: ' + acField1 + ';  acField2: ' + acField2 + ';  acField3: ' + acField3);
         if ((acField1 == COVERED_ACCOUNT_FIELD && (acValue1 != 'true' && acValue1 != 'false')) ||
             (acField2 == COVERED_ACCOUNT_FIELD && (acValue2 != 'true' && acValue2 != 'false')) ||
             (acField3 == COVERED_ACCOUNT_FIELD && (acValue3 != 'true' && acValue3 != 'false'))) {        
@@ -557,7 +557,7 @@ public without sharing class Core_Salesout_Search_Controller {
         }
 
         return true;
-    }*/
+    }
 
 
     /*
@@ -566,8 +566,9 @@ public without sharing class Core_Salesout_Search_Controller {
      * Return Type  : None
      * Parameter    : PageReference
      */
-   /* public PageReference search() {
+    public PageReference search() {
         
+        //System.debug(LoggingLevel.Info, '#24 Search - START');
 
         maxLimitExceeded  = false;      
         searchShowMessage = false;    
@@ -578,17 +579,18 @@ public without sharing class Core_Salesout_Search_Controller {
         if (!accountFieldValidation())
             return NULL;
 
-       
+        //System.debug(LoggingLevel.Info, '#25 Validation Passed');
 
         String salesoutQuery;
         salesOutQuery = 'SELECT Core_Account_Name__c FROM Core_Channel_Salesout__c ';    
         salesOutQuery += getWhereClause();
         salesoutQuery += ' LIMIT ' + SALESOUT_MAX_RECORDS;
 
-       
-		List<Core_Channel_Salesout__c> lstSalesout = Database.query(salesoutQuery);
+        System.debug(LoggingLevel.Info, '#56 salesoutQuery: ' + salesoutQuery);
 
-        
+        List<Core_Channel_Salesout__c> lstSalesout = Database.query(salesoutQuery);
+
+        System.debug(LoggingLevel.Info, '#57 lstSalesout.size(): ' + lstSalesout.size());
 
         maxLimitExceeded = (lstSalesout.size() == SALESOUT_MAX_RECORDS);
 
@@ -624,7 +626,7 @@ public without sharing class Core_Salesout_Search_Controller {
 
         // Qualify Account Owners, Account Team Members, Territory Members, Sharing Rules       
         Set<Id> setTargetId = Core_Test_Utility.validateAccountAccess(Id.valueOf(userInfo.getUserId()), setSalesoutId);        
-        
+        //System.debug(LoggingLevel.Info, '#58 After validateAccountAccess setTargetId.size(): ' + setTargetId.size());
 
 
         // Taking an OR in case something else has set maxLimitExceeded to true.
@@ -651,7 +653,7 @@ public without sharing class Core_Salesout_Search_Controller {
         Core_Campaign_Member_Creator.setTargetId.clear();    
         Core_Campaign_Member_Creator.setTargetId.addAll(setTargetId);
                           
-        
+        //System.debug(LoggingLevel.Info, '#44 Core_Campaign_Member_Creator.setTargetId.size():' + Core_Campaign_Member_Creator.setTargetId.size());
                 
         PageReference pageRef = Page.Core_CampaignCreator;
         pageRef.setRedirect(false);
@@ -662,34 +664,34 @@ public without sharing class Core_Salesout_Search_Controller {
 
     private Set<Id> applyProgramMembershipCriteria(Set<Id> setSalesoutId) {
 
-       
+        System.debug(LoggingLevel.DEBUG, '#22 applyProgramMembershipCritteria  setSalesoutId:' + setSalesoutId.size() + '  pmField1: ' + pmField1);
 
         if (pmField1 == ITP_MEMBERSHIP_TIER_FIELD)
-            setSalesoutId = applyMemberCriteria(String.escapeSingleQuotes(pmField1), String.escapeSingleQuotes(pmOp1), String.escapeSingleQuotes(pmValue1), setSalesoutId);    
+            setSalesoutId = applyMemberCriteria(pmField1,    pmOp1, pmValue1, setSalesoutId);    
         else if (pmField1 == TRAINING_CREDITS_FIELD)
-            setSalesoutId = applyTrainingCriteria(String.escapeSingleQuotes(pmField1), String.escapeSingleQuotes(pmOp1), String.escapeSingleQuotes(pmValue1), setSalesoutId);    
+            setSalesoutId = applyTrainingCriteria(pmField1,  pmOp1, pmValue1, setSalesoutId);    
         else if (pmField1 == TOTAL_EARNED_POINTS_FIELD)
-            setSalesoutId = applyLiabilityCriteria(String.escapeSingleQuotes(pmField1), String.escapeSingleQuotes(pmOp1), String.escapeSingleQuotes(pmValue1), setSalesoutId);               
+            setSalesoutId = applyLiabilityCriteria(pmField1, pmOp1, pmValue1, setSalesoutId);               
 
         if (maxLimitExceeded || searchShowMessage)
             return setSalesoutId;
 
         if (pmField2 == ITP_MEMBERSHIP_TIER_FIELD)
-            setSalesoutId = applyMemberCriteria(String.escapeSingleQuotes(pmField2), String.escapeSingleQuotes(pmOp2), String.escapeSingleQuotes(pmValue2), setSalesoutId);    
+            setSalesoutId = applyMemberCriteria(pmField2,    pmOp2, pmValue2, setSalesoutId);    
         else if (pmField2 == TRAINING_CREDITS_FIELD)
-            setSalesoutId = applyTrainingCriteria(String.escapeSingleQuotes(pmField2),  String.escapeSingleQuotes(pmOp2), String.escapeSingleQuotes(pmValue2), setSalesoutId);    
+            setSalesoutId = applyTrainingCriteria(pmField2,  pmOp2, pmValue2, setSalesoutId);    
         else if (pmField2 == TOTAL_EARNED_POINTS_FIELD)
-            setSalesoutId = applyLiabilityCriteria(String.escapeSingleQuotes(pmField2), String.escapeSingleQuotes(pmOp2), String.escapeSingleQuotes(pmValue2), setSalesoutId);               
+            setSalesoutId = applyLiabilityCriteria(pmField2, pmOp2, pmValue2, setSalesoutId);               
 
         if (maxLimitExceeded || searchShowMessage)
             return setSalesoutId;
 
         if (pmField3 == ITP_MEMBERSHIP_TIER_FIELD)
-            setSalesoutId = applyMemberCriteria(String.escapeSingleQuotes(pmField3), String.escapeSingleQuotes(pmOp3), String.escapeSingleQuotes(pmValue3), setSalesoutId);    
+            setSalesoutId = applyMemberCriteria(pmField3,    pmOp3, pmValue3, setSalesoutId);    
         else if (pmField3 == TRAINING_CREDITS_FIELD)
-            setSalesoutId = applyTrainingCriteria(String.escapeSingleQuotes(pmField3), String.escapeSingleQuotes(pmOp3), String.escapeSingleQuotes(pmValue3), setSalesoutId);    
+            setSalesoutId = applyTrainingCriteria(pmField3,  pmOp3, pmValue3, setSalesoutId);    
         else if (pmField3 == TOTAL_EARNED_POINTS_FIELD)
-            setSalesoutId = applyLiabilityCriteria(String.escapeSingleQuotes(pmField3), String.escapeSingleQuotes(pmOp3), String.escapeSingleQuotes(pmValue3), setSalesoutId);               
+            setSalesoutId = applyLiabilityCriteria(pmField3, pmOp3, pmValue3, setSalesoutId);               
 
         return setSalesoutId;
     }
@@ -708,8 +710,9 @@ public without sharing class Core_Salesout_Search_Controller {
         membersQuery = membersQuery.removeEnd(' AND ');
         membersQuery = membersQuery + ' LIMIT ' + ACCESS_CHECK_MAX_RECORDS;
 
-       
-		List<Core_Channel_Membership__c> lstMembers = Database.query(membersQuery);
+        System.debug(LoggingLevel.DEBUG, '#31 membersQuery: ' + membersQuery);
+
+        List<Core_Channel_Membership__c> lstMembers = Database.query(membersQuery);
 
         if (lstMembers == NULL || (lstMembers.size() == 0))
             return resultIds;
@@ -732,9 +735,10 @@ public without sharing class Core_Salesout_Search_Controller {
                        'WHERE Core_Account_Name__c IN :resultIds ' + 
                        'ORDER BY Core_Account_Name__c, Core_Status_Date__c DESC';
                        
-      
+        System.debug('#49 membersQuery: ' + membersQuery);
+                
         lstMembers = Database.query(membersQuery);
-       
+        System.debug('#50 lstMembers: ' + lstMembers.size());
             
         // Clear previous results, to be used for the final result set.            
         resultIds.clear();    
@@ -748,10 +752,10 @@ public without sharing class Core_Salesout_Search_Controller {
              if (currentAccount != lstMembers[i].Core_Account_Name__c)
              {
                  currentAccount = lstMembers[i].Core_Account_Name__c;
-                
+                 System.debug('#51 currentAccount: ' + currentAccount + '   lstMembers[i].Core_Account_Name__c:' + lstMembers[i].Core_Account_Name__c);
                  if (lstMembers[i].Core_Current_Membership_Tier__c == membershipTier)
                  {
-                    
+                    System.debug('#52 lstMembers[i].Core_Current_Membership_Tier__c: ' + lstMembers[i].Core_Current_Membership_Tier__c + '   membershipTier:' + membershipTier);
                     resultIds.add(currentAccount);                          
                  }
              }
@@ -770,8 +774,9 @@ public without sharing class Core_Salesout_Search_Controller {
         membersQuery = membersQuery.removeEnd(' AND ');
         membersQuery = membersQuery + ' LIMIT ' + ACCESS_CHECK_MAX_RECORDS;
 
-        
-		List<Core_Training__c> lstMembers = Database.query(membersQuery);
+        System.debug(LoggingLevel.DEBUG, '#92 membersQuery: ' + membersQuery);
+
+        List<Core_Training__c> lstMembers = Database.query(membersQuery);
 
         if (lstMembers == NULL || lstMembers.size() == 0)
             return resultIds;
@@ -804,8 +809,9 @@ public without sharing class Core_Salesout_Search_Controller {
         membersQuery = membersQuery.removeEnd(' AND ');
         membersQuery = membersQuery + ' LIMIT ' + ACCESS_CHECK_MAX_RECORDS;
 
-        
-		List<Core_Liability_Points__c> lstMembers = Database.query(membersQuery);
+        System.debug(LoggingLevel.Info, '#33 membersQuery: ' + membersQuery);
+
+        List<Core_Liability_Points__c> lstMembers = Database.query(membersQuery);
 
         if (lstMembers == NULL || lstMembers.size() == 0)
             return resultIds;
@@ -826,5 +832,6 @@ public without sharing class Core_Salesout_Search_Controller {
         PageReference pageRef = Page.Core_Salesout_Search;
         pageRef.setRedirect(true);
         return pageRef;
-    }*/
+    }
+       
 }

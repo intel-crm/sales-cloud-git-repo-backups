@@ -7,7 +7,7 @@
 Accenture NZ        24-06-2019          Exception Case Mapping Trigger Handler    
 *****************************************************************************************************************************************/   
 public with sharing class Core_MDF_ExceptionCaseMap_TriggerHandler extends TriggerHandler {
-  /**
+    /**
         * @description              : Method for processing the Exception Case Mapping before Update
         * @param Trigger.newMap     : Map of Exception Case Mapping that have been Updated  
     */
@@ -16,9 +16,5 @@ public with sharing class Core_MDF_ExceptionCaseMap_TriggerHandler extends Trigg
             Core_MDF_ExpCaseMp_TriggerServiceHandler.ecmStatusOnDelete( (Map<Id,Core_MDF_Exception_Case_Mapping__c>) Trigger.oldMap );
         }
     }
-    /*public override void afterInsert(){
-        if (isActive('Core_MDF_ECM_AfterInsert')) {
-            Core_MDF_ExpCaseMp_TriggerServiceHandler.shareECMRecordWithusers((Map<Id,Core_MDF_Exception_Case_Mapping__c>) Trigger.newMap);
-        }
-    }*/
+   
 }

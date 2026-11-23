@@ -102,14 +102,14 @@ Budget Type - ALL</description>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,ANZ,CEE,CER,IJKK,KOREA,LAR,META,NAR,NEUR,RCIS,ROA,SA,SEA,SEUR,TAIWAN,WEUR</value>
+            <value>,ANZ,CEE,CER,KOREA,LAR,META,NAR,NEUR,RCIS,ROA,SA,SEA,SEUR,TAIWAN,WEUR</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundClaim$Core_MDF_Budget_Type_Options_Nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Business Client Acceleration - MDF,Client Specialties MDF,Data Center Specialties MDF,Data Centric Acceleration - MDF,Global Ericsson Acceleration - MDF,Global IBM Acceleration - MDF,Global Microsoft Acceleration - MDF,Global Nokia Acceleration - MDF,Global Red Hat Acceleration - MDF,Global SAP Acceleration - MDF,Global SAS Acceleration - MDF,Global Suse Acceleration - MDF,Global VMware Acceleration - MDF,IoT Premier - MDF,IoT Targeted - MDF,ISV Scale Acceleration - MDF,Optane Specialties MDF,Red Hat &quot;Amplify&quot; - MDF,SOEM Client MDF,SOEM Data Center MDF,VMWare Amplify - MDF,Account Plan,Proposal I MDF,Proposal II MDF</value>
+            <value>,Client Specialties MDF,Data Centric Acceleration - MDF,IoT Premier - MDF,IoT Targeted - MDF,SOEM Client MDF,SOEM Data Center MDF,Account Plan,Proposal I MDF,Proposal II MDF,Business Client Acceleration - MDF</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundClaim$Core_MDF_Campaign_Id__c</column>

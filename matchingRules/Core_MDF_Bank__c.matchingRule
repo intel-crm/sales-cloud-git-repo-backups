@@ -20,4 +20,29 @@
         </matchingRuleItems>
         <ruleStatus>Active</ruleStatus>
     </matchingRules>
+    <matchingRules>
+        <fullName>Core_MDF_Bank_Duplicate_Check_matching_rule_Updated</fullName>
+        <label>Core_MDF_Bank_Duplicate_Check matching rule Updated</label>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>Core_MDF_Supplier_Number__c</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>Core_MDF_Currency_cd__c</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>Core_MDF_Intel_Company_Code__c</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>Core_MDF_Account__c</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
+        <ruleStatus>Inactive</ruleStatus>
+    </matchingRules>
 </MatchingRules>

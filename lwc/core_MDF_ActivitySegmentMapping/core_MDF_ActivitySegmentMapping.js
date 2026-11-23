@@ -374,6 +374,7 @@ export default class Core_MDF_ActivitySegmentMapping extends LightningElement {
         this.activityProgram = this.program.replace(/[-]/g, "");
         this.searchEnabled = true;
         this.showHelpText = true;
+        console.log('is edit==',this.isEdit);
         getProductMappingForSegment({ segment : this.selSegment, accountId: this.accountId, program: this.activityProgram})
             .then(data => {                
                 if(data) {
@@ -422,6 +423,7 @@ export default class Core_MDF_ActivitySegmentMapping extends LightningElement {
                     productFamilyProdsMap.forEach((value,key) =>{
                         if(this.isEdit && (value?.length == prodFamilyisCheckedMap.get(key)?.length)){
                             parentCheckedFlag = true;
+                            console.log('parentCheckedFlag in if---',parentCheckedFlag);
                         }else{parentCheckedFlag = false; }
                         let obj = {};
                         obj.name = `${key}`;
@@ -434,6 +436,7 @@ export default class Core_MDF_ActivitySegmentMapping extends LightningElement {
                         if(obj._children != null && obj._children.length > 0) {
                             dataWrapper = [...dataWrapper, obj];
                         }
+                        console.log('DATA WRAPPER---',dataWrapper);
                     });
                     this.dataForTable = selectedProds;
                     this.productData = dataWrapper;
@@ -472,6 +475,7 @@ export default class Core_MDF_ActivitySegmentMapping extends LightningElement {
                 }
             }
         }
+        console.log('get selected rows--',JSON.stringify(this.selectedRecords));
         this.dataForTable = this.selectedRecords;        
     }
     @api

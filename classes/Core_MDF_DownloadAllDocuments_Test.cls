@@ -56,9 +56,8 @@ private class Core_MDF_DownloadAllDocuments_Test {
             Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('TestCamp','Consumer','Intel® Corporate Logo', 
                                                                         'Yes',Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF,
                                                                         'Client CoMarketing Fund',System.today().addDays(-15), 
-                                                                        System.today().addDays(15), 2000, 'Unite',acc.Id,'2-in-1', false);
-            camp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
-            insert camp;
+                                                                        System.today().addDays(15), 2000, 'Unite',acc.Id,'2-in-1', true);
+            
             //Creating Budget using utility class
             PartnerMarketingBudget pmb = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget',Core_MDF_CCP_TestDataUtility.budget_Record_Type,
                                                                                    acc.Id,cp.Id,5000000,System.today().addDays(-20),System.today().addDays(40), 
@@ -66,15 +65,6 @@ private class Core_MDF_DownloadAllDocuments_Test {
             
             pmb.Core_MDF_Budget_Type_Txt__c='OEM CMP';
             insert pmb;
-            
-            Core_MDF_Campaign_Budgets__c campBudget= new Core_MDF_Campaign_Budgets__c();
-            campBudget.Core_MDF_Campaign_Id__c=camp.id;
-            campBudget.Core_MDF_Budget_Name_Id__c=pmb.id;
-            campBudget.Core_MDF_Reimbursement_Rate_Pct__c='100%';
-            campBudget.Core_MDF_Reimbursement_Amt__c=100000;
-            campBudget.Core_MDF_Budget_Amt__c=100000;
-            campBudget.Core_MDF_Active_ind__c=true;
-            insert campBudget;
             //Creating Allocation using utility class
             PartnerFundAllocation pfa = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Allocation',pmb,acc,1000000.0,true);
             
@@ -84,15 +74,15 @@ private class Core_MDF_DownloadAllDocuments_Test {
                                                                                            string.valueof(acc.id),pfa,pmb,'INDIA','Small Business',
                                                                                            'Desktop','Intel® Core™ i7 Processor','Broadcast (Pre-2025)',
                                                                                            'Radio','Draft',false);
-            pfr.RequestedAmount = 100;
-            pfr.Amount = 100;
+            pfr.RequestedAmount = 900000;
+            pfr.Amount = 900000;
             pfr.Status = 'Approved';
             pfr.AllocationId = pfa.Id;
             pfr.BudgetId = pmb.Id;
             pfr.Core_MDF_Start_Date__c = system.today().addDays(-1);
             pfr.Core_MDF_End_Date__c = system.today().addDays(1);
             pfr.Core_MDF_Reimbursement_Rate_txt__c = '100%';
-            pfr.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
+            pfr.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
             Database.insert(pfr);
             
             Test.startTest();
@@ -104,7 +94,7 @@ private class Core_MDF_DownloadAllDocuments_Test {
             Database.insert(bank);  
             
             //creating ABM for bank
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
            // Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc.Id,bank.Id,true);
             
             // Creating claims
@@ -142,7 +132,7 @@ private class Core_MDF_DownloadAllDocuments_Test {
     static void testGetUserDetailsForInternalUsers() {
         Case case1 = [select Id from Case limit 1];
         PartnerFundClaim pfc  = [select id,Core_MDF_Claim_Review_Case__c,Core_MDF_Claim_Review_Case__r.Core_MDF_Status__c,Core_MDF_RMF_Last_POP_Submission_Dt__c from PartnerFundClaim limit 1];
-       // Highlight: Unused Local Variable  
+       // Highlight: Unused Local Variable - Indira 
       //  List<String> documentIdWithTitle = new List<String>();
         List<Core_MDF_Audit_Document__c> listDoc =  new List<Core_MDF_Audit_Document__c>();
         Core_MDF_Audit_Document__c auditDocs = new Core_MDF_Audit_Document__c();
@@ -155,7 +145,7 @@ private class Core_MDF_DownloadAllDocuments_Test {
         auditDocs.CreatedDate = system.today();
         listDoc.add(auditDocs);
         insert listDoc;
-        // Unit Test Method should include System.Assert
+        // Unit Test Method should include System.Assert - Indira
         System.assert(listDoc.size() > 0,'Audit document list should contain inserted records');
         
         //for internal claim case reviewer - download all documents
@@ -164,7 +154,7 @@ private class Core_MDF_DownloadAllDocuments_Test {
     
     @isTest
     static void testGetUserDetailsErrorScenario() {
-        // Highlight: Unused Local Variable
+        // Highlight: Unused Local Variable - Indira
        // Case case1 = [select Id from Case limit 1];
         PartnerFundClaim pfc = [select Id from PartnerFundClaim limit 1];
         
@@ -173,7 +163,7 @@ private class Core_MDF_DownloadAllDocuments_Test {
             Core_MDF_DownloadAllDocumentsController.getUserDetails(pfc.Id);
         } catch(Exception ex) {
         }
-        // Unit Test Method should include System.Assert 
+        // Unit Test Method should include System.Assert - Indira
         System.assertNotEquals(null,pfc.Id,'PartnerFundClaim Id should not be null');
     }
    

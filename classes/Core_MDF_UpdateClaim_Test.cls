@@ -27,7 +27,8 @@ Accenture – Sai Sugathri N   04-30-2019                  Created.
         usr.LastName = 'User Test';
         usr.UserRoleId = usRole.Id;
         Database.insert(usr);
-        List<PartnerFundClaim> newClmList = new List<PartnerFundClaim>();
+        // Highlight: Unused Local Variable - Indira
+      //  List<PartnerFundClaim> newClmList = new List<PartnerFundClaim>();
         
         System.runAs(usr){
             
@@ -86,13 +87,13 @@ Accenture – Sai Sugathri N   04-30-2019                  Created.
             database.insert(newValues);                     
             
             // Creating channel program with utility class
-            ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', true);
+            ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,Core_MDF_CCP_ConstantClass.CCF_TECHNICAL_PROGRAM_NAME, true);
             
             // Creating IntelAccount with utility class
             Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, 
                                                                             false);
             acc1.Core_Account_Type__c = 'Reseller';
-            acc1.Core_Sales_Groups__c = 'Americas Hosted Sales Group';
+            acc1.Core_Sales_Groups__c = 'Automotive Sales Group';
             acc1.Industry = 'Food & Beverage';
             acc1.Core_MDF_Channel_Program__c = cp.Id;
             acc1.Core_MDF_CoMarketingAgency__c=true;
@@ -142,7 +143,9 @@ Accenture – Sai Sugathri N   04-30-2019                  Created.
             Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('TestCamp','Consumer','Intel® Corporate Logo','Yes', 
                                                                         Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF,
                                                                         'Client CoMarketing Fund',System.today(),
-                                                                        System.today().addDays(200), 2000, 'Unite',acc.Id,'2-in-1', true);
+                                                                        System.today().addDays(200), 2000, 'Unite',acc.Id,'2-in-1', false);
+            camp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
+            insert camp;
             
             // Creating Budget using utility class
             PartnerMarketingBudget pmb = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget',Core_MDF_CCP_TestDataUtility.budget_Record_Type,
@@ -353,8 +356,9 @@ Accenture – Sai Sugathri N   04-30-2019                  Created.
     }
     
     @isTest static void testCaseToClaimFlow(){
-        List<Case> caseListToBeUpdated = new List<Case>();  
-        List<Case> caseListToBeUpdated1 = new List<Case>();        
+        List<Case> caseListToBeUpdated = new List<Case>(); 
+       // Highlight: Unused Local Variable - Indira
+      //  List<Case> caseListToBeUpdated1 = new List<Case>();        
 
         Integer temp = 1;
         Integer count = 1;
@@ -452,7 +456,8 @@ Accenture – Sai Sugathri N   04-30-2019                  Created.
         }           
                
         Test.stopTest();
-        Id claimId;
+        // Highlight: Unused Local Variable - Indira
+       // Id claimId;
         
         for (PartnerFundClaim pfc : [SELECT Id, Core_MDF_Status__c, Core_MDF_Audit_Hold__c, Core_MDF_Audit_Adjustment_Amount__c from PartnerFundClaim WHERE Id =: nonCompliantClaimId OR
                                      Id=: compliantClaimId1 OR Id=: compliantClaimId2]){

@@ -117,10 +117,14 @@ public without sharing class Core_MDF_ProcessClaimSubmissionClosure {
         }
         map<string,Core_MDF_CCP_Submission_Window__mdt> inputKeyToMtdMap = getMetadataValuesForKeyApplied(keySet);
 
-        if(submissionDueDateMap != null && !submissionDueDateMap.isEmpty()){
-        	for(string strKey : submissionDueDateMap.keySet()){
+            //if(submissionDueDateMap != null && !submissionDueDateMap.isEmpty()){
+            if (submissionDueDateMap == null || submissionDueDateMap.isEmpty()) { //ATHR Fix WW19
+                return  new map<string,date>();
+            }
+
+            for(string strKey : submissionDueDateMap.keySet()){
                 if(dueDateMap.containsKey(strKey)){continue;}
-            	string key = strKey.substringbeforelast(':');
+                string key = strKey.substringbeforelast(':');
                 string dtStr = strKey.substringafterlast(':');
                 date dt;
                 try{
@@ -129,11 +133,20 @@ public without sharing class Core_MDF_ProcessClaimSubmissionClosure {
                 }catch(Exception ex){
                     system.debug('exception in date format--- '+dtStr+' --  '+ex.getMessage());
                     continue;
-            	}
-                if(dt != null){
+                }
+
+                    //if(dt != null){
+                    if (dt == null) { //ATHR Fix WW19
+                        continue;
+                    }
+
                     Core_MDF_CCP_Submission_Window__mdt mtd = inputKeyToMtdMap.get(key);
                     // get quarter value from metadata
-                        if(mtd != null && mtd.Core_MDF_Quarter__c != null){
+                        //if(mtd != null && mtd.Core_MDF_Quarter__c != null){
+                            if (mtd == null || mtd.Core_MDF_Quarter__c == null) { //ATHR Fix WW19
+                                continue;
+                            }
+
                             integer qtrVal = integer.valueOf(mtd.Core_MDF_Quarter__c);
                             date qtrEndDate = getQuarterEndDate(dt,qtrVal);
                             if(window.equalsIgnoreCase('QtrStrtDate')){
@@ -186,11 +199,11 @@ public without sharing class Core_MDF_ProcessClaimSubmissionClosure {
                                 dueDateMap.put(strKey,getDate(intMtd));                                
                             }
                             
-                        }
-                    }
+                        //}
+                    //}
                 }
-        	} 
-    }
+            //} 
+        }
     catch(exception ex) {
             Core_MDF_CCP_UtilityClass.logError(ex);
         }
@@ -246,7 +259,11 @@ public without sharing class Core_MDF_ProcessClaimSubmissionClosure {
     private static date getActSubDueDate(date dt, Core_MDF_CCP_Submission_Window__mdt mtd){
         date actSubDueDate;
         
-        if(dt != null && mtd != null){
+        //if(dt != null && mtd != null){
+        if (dt == null || mtd == null) { //ATHR Fix WW19
+            return null; 
+        }
+
          if(mtd.Core_MDF_Activity_Auto_Closure_SLA_Month__c != null && mtd.Core_MDF_Activity_Auto_Closure_SLA_Month__c > 0 ){
                 integer actSubClosureWindowAddMnths = integer.valueOf(mtd.Core_MDF_Activity_Auto_Closure_SLA_Month__c);
                 actSubDueDate = dt.addMonths(actSubClosureWindowAddMnths);
@@ -259,7 +276,7 @@ public without sharing class Core_MDF_ProcessClaimSubmissionClosure {
                 integer actSubClosureWindowAddDays = integer.valueOf(mtd.Core_MDF_Activity_Auto_Closure_SLA__c);
                 actSubDueDate = dt.addDays(actSubClosureWindowAddDays);
             }
-        }
+        //}
         
         /*if(dt != null && mtd != null && mtd.Core_MDF_Activity_Auto_Closure_SLA__c != null){
             integer actSubClosureWindow = integer.valueOf(mtd.Core_MDF_Activity_Auto_Closure_SLA__c);
@@ -331,7 +348,10 @@ public without sharing class Core_MDF_ProcessClaimSubmissionClosure {
     }
     private static date getSubmissionDueDate(date dt, Core_MDF_CCP_Submission_Window__mdt mtd){
         date submissionDueDate;
-        if(dt != null && mtd != null){
+        //if(dt != null && mtd != null){
+        if(dt == null && mtd == null){//ATHR Fix WW19
+            return null;
+        }
             if(mtd.Core_MDF_Claim_Submission_Window_mnth__c != null && mtd.Core_MDF_Claim_Submission_Window_mnth__c > 0 ){
                 integer submissionAddMonths = integer.valueOf(mtd.Core_MDF_Claim_Submission_Window_mnth__c);
                 submissionDueDate = dt.addMonths(submissionAddMonths);
@@ -344,7 +364,7 @@ public without sharing class Core_MDF_ProcessClaimSubmissionClosure {
                 integer submissionAddDays = integer.valueOf(mtd.Core_MDF_Claim_Submission_Window_days__c);
                 submissionDueDate = dt.addDays(submissionAddDays);
             }
-        }
+        //}
         return submissionDueDate;
     }
     private static date getClosureDueDate(date dt, Core_MDF_CCP_Submission_Window__mdt mtd){

@@ -117,7 +117,7 @@ public class Core_MDF_ShareRecordToGeoGroup_Test {
         Core_ERPM_Engagement__c erpmEngagementIPA = Core_MDF_CCP_TestDataUtility.createErpmEngagement('IPA', 'IPA', 'DEDUPB2B', 'SEC', true, false);
         Database.insert(erpmEngagementIPA);
         
-        Core_Entitlement__c entitlementIPA = Core_MDF_CCP_TestDataUtility.createEntitlement('IPA MDF User',agsRoleCCF.Id ,'Pricing','IPA MDF User',erpmEngagementIPA.Id , true,'Solutions Marketplace',false);
+        Core_Entitlement__c entitlementIPA = Core_MDF_CCP_TestDataUtility.createEntitlement('IPA MDF User',agsRoleCCF.Id ,'Consolidated Co-marketing Platform','IPA MDF User',erpmEngagementIPA.Id , true,'Solutions Marketplace',false);
         Database.insert(entitlementIPA); 
         
         Core_Contact_Entitlement__c contactEntitlementIPA = Core_MDF_CCP_TestDataUtility.createContactEntitlement(conRecord1.Id,entitlementIPA.Id ,true,'Complete', false);
@@ -313,6 +313,8 @@ public class Core_MDF_ShareRecordToGeoGroup_Test {
         Test.startTest();
         Core_MDF_GenericShareRecordActionClass.createShareBulkString(dynObjectList, 'Core_MDF_Payment__Share');
         Test.stopTest();
+        // Unit Test Method should include System.Assert - Indira
+        System.assertEquals(1, dynObjectList.size(), 'Dynamic object list should contain one record');
     }
     
 }

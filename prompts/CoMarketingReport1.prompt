@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Co-Marketing Report</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>Test</actionButtonLabel>
+        <actionButtonLink>https://intel--crmdevccp.lightning.force.com/lightning/r/Folder/00l1J000001e6PdQAI/view?queryScope=userFolders</actionButtonLink>
+        <body>&lt;p&gt;Tips goes Here&lt;/p&gt;</body>
+        <customApplication>Core_MDF_CoMarketing</customApplication>
+        <delayDays>1</delayDays>
+        <displayPosition>BottomCenter</displayPosition>
+        <displayType>DockedComposer</displayType>
+        <endDate>2020-08-08</endDate>
+        <header>Co-Marketing Report Folder</header>
+        <isPublished>false</isPublished>
+        <masterLabel>Co-Marketing Report</masterLabel>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2020-08-05</startDate>
+        <targetPageKey1>Folder</targetPageKey1>
+        <targetPageKey2>view</targetPageKey2>
+        <targetPageType>standard__recordPage</targetPageType>
+        <timesToDisplay>10</timesToDisplay>
+        <title>Welcome to Co-Marketing Reports</title>
+        <uiFormulaRule>
+            <booleanFilter>(1 AND 2 AND 3 AND 4) AND (5 OR 6 OR 7 OR 8 OR 9)</booleanFilter>
+            <criteria>
+                <leftValue>{!$Permission.CustomPermission.Core_MDF_RMF_USER}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>TRUE</rightValue>
+            </criteria>
+            <criteria>
+                <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_Internal_Retail_Payment_Admin}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>TRUE</rightValue>
+            </criteria>
+            <criteria>
+                <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_Internal_Retail_Account_Manager}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>TRUE</rightValue>
+            </criteria>
+            <criteria>
+                <leftValue>{!$Permission.CustomPermission.Core_MDF_FinanceMgr_FinanceUser_ClaimCaseRev_ClaimCaseMgr}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>TRUE</rightValue>
+            </criteria>
+            <criteria>
+                <leftValue>{!$User.Profile.Key}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>custom_it admin</rightValue>
+            </criteria>
+            <criteria>
+                <leftValue>{!$User.Profile.Key}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>custom_comarketing support l1</rightValue>
+            </criteria>
+            <criteria>
+                <leftValue>{!$User.Profile.Key}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>custom_comarketing support l2</rightValue>
+            </criteria>
+            <criteria>
+                <leftValue>{!$User.Profile.Key}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>Admin</rightValue>
+            </criteria>
+            <criteria>
+                <leftValue>{!$User.Profile.Key}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>custom_ccp - core access</rightValue>
+            </criteria>
+        </uiFormulaRule>
+        <userAccess>SpecificPermissions</userAccess>
+        <userProfileAccess>SpecificProfiles</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

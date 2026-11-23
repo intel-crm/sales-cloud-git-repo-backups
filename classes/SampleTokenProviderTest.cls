@@ -4,11 +4,7 @@ private class SampleTokenProviderTest {
     @IsTest
     static void shouldReturnStringifiedConfiguration(){
         Test.startTest();
-        
-        //System.assertEquals(sampleHeadlessConfiguration, SampleTokenProvider.getHeadlessConfiguration());
-        SampleTokenProvider.getHeadlessConfiguration();
-        HeadlessController.getHeadlessConfiguration();
+        System.assertEquals(sampleHeadlessConfiguration, SampleTokenProvider.getHeadlessConfiguration());
         Test.stopTest();
-
     }
 }

@@ -1,0 +1,19 @@
+<template>
+    <div class="slds-form-element">
+        <div class="slds-form-element__control">
+            <div class="slds-combobox_container">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon slds-input-has-icon_right"
+                role="none">
+                 <lightning-combobox
+                    name="Program"
+                    label="Program"
+                    value={programValue}
+                    placeholder="select"
+                    options={ShowOptions}
+                    onchange={handleChange}>
+                    </lightning-combobox>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

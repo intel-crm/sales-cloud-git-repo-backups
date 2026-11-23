@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>Core_MDF_Value2_Txt__c</field>
-        <value xsi:type="xsd:string">Core_MDF_CCP_Internal_CCF_MDF_Payment_Admin;Core_MDF_CCP_Internal_DCF_MDF_Payment_Admin;Core_MDF_CCP_Internal_Price_Reviewer;Core_MDF_CCP_Int_Read_Only;Core_MDF_CCP_Internal_IPA_Finance_Usr;Core_MDF_CCP_Internal_IPA_Budget_Loader;</value>
+        <value xsi:type="xsd:string">Core_MDF_CCP_Internal_CCF_MDF_Payment_Admin;Core_MDF_CCP_Internal_DCF_MDF_Payment_Admin;Core_MDF_CCP_Internal_Price_Reviewer;Core_MDF_CCP_Int_Read_Only;Core_MDF_CCP_Internal_IPA_Budget_Loader;Core_MDF_CCP_Internal_Co_GTM_POR_Approver;</value>
     </values>
     <values>
         <field>Core_MDF_Value3_Txt__c</field>
@@ -20,11 +20,11 @@
     </values>
     <values>
         <field>Core_MDF_Value4_Txt__c</field>
-        <value xsi:type="xsd:string">Core_MDF_Internal_Escalation_Reviewer_L1;Core_MDF_Internal_Escalation_Reviewer_L2;Core_MDF_Internal_EEF_Budget_Loader;Core_MDF_Internal_EEF_Budget_Approver;Core_MDF_Internal_EEF_Activity_L2_Approver;</value>
+        <value xsi:type="xsd:string">Core_MDF_Internal_Escalation_Reviewer_L1;Core_MDF_Internal_Escalation_Reviewer_L2;Core_MDF_Internal_EEF_Budget_Loader;Core_MDF_Internal_EEF_Budget_Approver;Core_MDF_Internal_EEF_Activity_L2_Approver;Core_MDF_CCP_Internal_Co_GTM_Budget_Loader;</value>
     </values>
     <values>
         <field>Core_MDF_Value5_Txt__c</field>
-        <value xsi:type="xsd:string">Core_MDF_Internal_EEF_Activity_POR_Approver;Core_MDF_Internal_EEF_Program_Adm;Core_MDF_Internal_EEF_Escalation_Reviewer;Core_MDF_Internal_EEF_Exception_Reviewer</value>
+        <value xsi:type="xsd:string">Core_MDF_Internal_EEF_Activity_POR_Approver;Core_MDF_Internal_EEF_Program_Adm;Core_MDF_Internal_EEF_Escalation_Reviewer;Core_MDF_Internal_EEF_Exception_Reviewer;Core_MDF_CCP_Internal_Co_GTM_Budget_Approver;Core_MDF_CCP_Internal_Co_GTM_L2_Approver;</value>
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>

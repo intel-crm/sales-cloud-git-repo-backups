@@ -94,6 +94,10 @@
     <nameFieldLabel><!-- Adjustment Request Number --></nameFieldLabel>
     
     <validationRules>
+        <errorMessage><!-- Adjustment can be created on claims associated to activities that are in an &quot;In Progress&quot; state only --></errorMessage>
+        <name>Core_MDF_Adj_Ref_Activity_InProgress</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Please enter a value greater than 0 for Adjustment Amount (USD) --></errorMessage>
         <name>Core_MDF_AdjustmentAmount</name>
     </validationRules>
@@ -133,4 +137,16 @@
         <errorMessage><!-- The claim selected is offset claim, please select a valid claim. --></errorMessage>
         <name>Core_MDF_Referance_Claim_Number</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- Status Cannot be changed to Approved now! --></errorMessage>
+        <name>Core_MDF_StatusRestriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Total Adjustment amount has exceeded the Claim reimbursement amount. --></errorMessage>
+        <name>Core_MDF_TotalAdjustmentAmtLessThanClaim</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- New_Adjustment_Request --></label>
+        <name>New_Adjustment_Request</name>
+    </webLinks>
 </CustomObjectTranslation>

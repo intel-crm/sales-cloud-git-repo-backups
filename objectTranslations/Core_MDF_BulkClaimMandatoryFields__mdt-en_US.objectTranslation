@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Core_MDF_BulkClaimMandatoryFields</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Core_MDF_BulkClaimMandatoryFields</value>
+    </caseValues>
+    <fields>
+        <label><!-- Core MDF Claim Field --></label>
+        <name>Core_MDF_Claim_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core MDF Program --></label>
+        <name>Core_MDF_Program__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core MDF Sort Order Nbr --></label>
+        <name>Core_MDF_Sort_Order_Nbr__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

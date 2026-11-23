@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_47001117</developerName>
+        <masterLabel>PRC Biz Group</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>OWNER_MANAGER</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Weichen Ye</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Karl Meng</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Henry Ye</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jacky Ma</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Leo Chan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Howard Chang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Qingchun Huang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Wenkang Li</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Evyns Chan</sourceValue>
+            </sourceValues>
+            <value>ISG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Michael Han</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Steven W Swartz</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Erik Reid</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Evzen Pavlovsky</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sonny Jin</sourceValue>
+            </sourceValues>
+            <value>Lenovo</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Hao H Zhang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>rong liu</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Wei Guo</sourceValue>
+            </sourceValues>
+            <value>Client &amp; IoT</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Zhichen Yang</sourceValue>
+            </sourceValues>
+            <value>OSC</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Arthur Fang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ji Pang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Dennis Iun</sourceValue>
+            </sourceValues>
+            <value>Huawei</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Yong SZ Li</sourceValue>
+            </sourceValues>
+            <value>DCG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Kit Ho Chee</sourceValue>
+            </sourceValues>
+            <value>Internet</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Gary Gao</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Michael Deng</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Yidong Wang</sourceValue>
+            </sourceValues>
+            <value>Ecosystem</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Form_Factor__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Product_Family__c</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>OWNER_MANAGER</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>EXP_AMOUNT</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>QUANTITY</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Status__c</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
+    <filter>
+        <booleanFilter>(1 or 4) AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>kit ho chee,wen a li,michael mi,kevin li,hong1 zhao,chao z shen</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Product_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Processors</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Lost,Cancelled,Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>kit ho chee,wen a li,michael mi,kevin li,hong1 zhao,chao z shen</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>FiscalQuarter</dateGranularity>
+        <field>OpportunityLineItem.Core_KPI_Date__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>STAGE_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Intel_Platform__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Internet Processor</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
+    </timeFrameFilter>
+</Report>

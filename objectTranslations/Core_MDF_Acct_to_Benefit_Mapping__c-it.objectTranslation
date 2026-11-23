@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- MDF Budget Type --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- MDF Budget Type --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Active Indicator --></label>
+        <name>Core_MDF_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Client Specialties MDF</masterLabel>
+            <translation>Specialità del cliente MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Specialties MDF</masterLabel>
+            <translation>Specialità del data center MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optane Specialties MDF</masterLabel>
+            <translation>Specialità del optane MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOEM Data Center MDF</masterLabel>
+            <translation><!-- SOEM Data Center MDF --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- CoMarketing Account --></label>
+        <name>Core_MDF_CoMarketing_Account_Id__c</name>
+        <relationshipLabel><!-- MDF Budget Types --></relationshipLabel>
+    </fields>
+    
+    <nameFieldLabel><!-- Budget Type --></nameFieldLabel>
+    
+</CustomObjectTranslation>

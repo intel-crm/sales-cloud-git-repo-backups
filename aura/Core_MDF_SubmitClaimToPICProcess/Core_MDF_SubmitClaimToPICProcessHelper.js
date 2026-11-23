@@ -22,6 +22,7 @@
         });
         $A.enqueueAction(action);
     },
+
     //update claim status from resubmission required/paid and resubmission required to pic pending/paid and pic pending
     submitForPICReviewProcess: function (component, claimId) {
         component.set("v.spinner", true);
@@ -32,15 +33,19 @@
         action.setCallback(this, function (res) {
             var state = res.getState();
             if (state === "SUCCESS") {
+
                 component.set("v.spinner", false);
-			 	var message = component.get("v.isOutComeBased") ? $A.get("$Label.c.Core_MDF_Submit_For_PaymentClearance_ToastMessage") : $A.get("$Label.c.Core_MDF_Submit_For_PIC_ToastMessage");
+
+                //Roshan - Final Outcome Based New Status
+                //var message = $A.get("$Label.c.Core_MDF_Submit_For_PIC_ToastMessage");
+                var message = component.get("v.isOutComeBased") ? $A.get("$Label.c.Core_MDF_Submit_For_PaymentClearance_ToastMessage") : $A.get("$Label.c.Core_MDF_Submit_For_PIC_ToastMessage");
+
                 this.fireToastEvent(message, "3000", "success");
 
-                //Roshan - close popup explicitly
                 if (component.get("v.isCustomComp")) {
                     component.getEvent("closeModalEvent").fire();
                 }
-                
+
                 setTimeout(() => {
                     window.location.reload();
                 }, 5000);
@@ -52,8 +57,6 @@
         });
         $A.enqueueAction(action);
     },
-
-
 
     //common toast event to handle success and error scenarios
     fireToastEvent: function (message, duration, type) {

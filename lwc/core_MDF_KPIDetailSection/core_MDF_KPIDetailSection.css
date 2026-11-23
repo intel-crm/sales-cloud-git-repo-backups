@@ -30,6 +30,12 @@ div.extraSpace {
   margin-left: 0.9rem;
 }
 
+.textarea {
+  height: 20rem;
+  width: 50rem;
+  ;
+}
+
 .wrap {
   margin-left: -5px;
   margin-right: 10px;

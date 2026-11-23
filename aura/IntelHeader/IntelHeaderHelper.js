@@ -37,6 +37,22 @@
                 userLangLocale = "ru_RU";
                 analyticsUserLangLocale = "ru-ru";
                 break;
+            case "zh_CN":
+                userLangLocale = "zh_CN";
+                analyticsUserLangLocale = "cn-zh";
+                break;
+            case "zh_TW":
+                userLangLocale = "zh_TW";
+                analyticsUserLangLocale = "tw-zh";
+                break;
+            case "pt_BR":
+                userLangLocale = "pt_BR";
+                analyticsUserLangLocale = "br-pt";
+                break;
+            case "es_MX":
+                userLangLocale = "es_MX";
+                analyticsUserLangLocale = "xl-es";
+                break;
         }      
 
         window.INTELNAV = window.INTELNAV || {};
@@ -49,8 +65,9 @@
         }
         
         //*******************Load WAP Framework*************************
-        
-        //analyticsUserLangLocale = 'en_US';
+        //existing
+       //analyticsUserLangLocale = 'en_US';
+       // var analyticsUserLangLocale = 'us-en';
         console.log('Inside IntelHeaderHelper.js userLangLocale > analyticsUserLangLocale = '+ analyticsUserLangLocale);
         try{
         	loadAnalyticsScript(analyticsUserLangLocale);  // Used for calling the function in the head script

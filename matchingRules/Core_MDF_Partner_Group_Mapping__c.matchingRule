@@ -16,6 +16,21 @@
         <ruleStatus>Inactive</ruleStatus>
     </matchingRules>
     <matchingRules>
+        <fullName>Core_MDF_PGM_Account_groupname_rule</fullName>
+        <label>PGM Account groupname rule</label>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>Core_MDF_Account__c</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>Core_MDF_Type_of_Access__c</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
+        <ruleStatus>Inactive</ruleStatus>
+    </matchingRules>
+    <matchingRules>
         <fullName>Core_MDF_Unique_AccountprogramId_on_PGM</fullName>
         <description>To check for unique accountid, program id or AccountIdGroupName</description>
         <label>Unique AccountprogramId on PGM</label>

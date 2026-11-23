@@ -1,0 +1,45 @@
+<template>
+    <template if:true={hasAccess}>
+        <template if:true={isSpinner}>
+            <div class="spinner">
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+        </template>
+    <lightning-card title="Bulk Release Bank Document Hold">
+       <!-- <div class="slds-clearfix">
+            <lightning-input type="search" onchange={handleKeyChange} class="slds-float_right" label="Search" value={recordsToDisplay}></lightning-input>
+        </div>-->
+        <lightning-input-rich-text
+        value="Claim on review hold and bank document hold are excluded from this list.Once Released,the status cannot be reverted."
+        
+    ></lightning-input-rich-text>
+        <div class="slds-clearfix">
+            <lightning-button label="Release Bank Document Hold" variant="brand" onclick={updateSelRecords} class="slds-float_right"></lightning-button>
+            </div>
+            <div class="slds-clearfix">
+                <div onkeyup={fetchSearchedRecords}>
+                    <lightning-input type="search" placeholder="Search Claims..." class="slds-float_right"></lightning-input>
+                </div>
+            </div>
+            <lightning-datatable data={recordsToRender} columns={columns} key-field="id" 
+                onsort={handleSortdata} sorted-by={sortBy} sorted-direction={sortDirection} 
+                onrowselection={prepareSelectedRows}>
+            </lightning-datatable>
+            <template if:true={showTable}>
+                <c-paginator records={recordsToDisplay} 
+                            total-records={recordsToDisplay.length}
+                            onpaginatorchange={handlePaginatorChange}>
+                </c-paginator>
+            </template>
+        
+    </lightning-card>
+</template>
+<template if:false={hasAccess}>
+    <template if:true={isSpinner}>
+        <div class="backgroundInverse">
+            <lightning-spinner alternative-text="Loading" variant="inverse"></lightning-spinner>
+        </div>
+    </template>
+    <lightning-card title="User does not has access"></lightning-card>
+</template>
+</template>

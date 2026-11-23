@@ -1,0 +1,9 @@
+<apex:page standardController="Core_MDF_Adjustment_Request__c" sidebar="false">
+<apex:form >
+<apex:pageBlock title="Adj req Detail">
+<apex:pageBlockbuttons >
+<apex:commandButton value="Save Aj req" action="{!save}"/>
+</apex:pageBlockbuttons>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

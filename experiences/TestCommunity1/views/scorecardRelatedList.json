@@ -1,0 +1,39 @@
+{
+  "appPageId" : "1f1f0c88-2082-47fd-848d-f4bfea5157f2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "37f56db3-5303-48a9-b693-f4254d080583",
+  "label" : "Scorecard Related List",
+  "regions" : [ {
+    "id" : "5c4fe0bc-c536-4f62-bd9b-2f8964039ed2",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customTitle" : "",
+        "parentRecordId" : "{!recordId}",
+        "relatedListName" : "{!relationshipApiName}",
+        "showBreadCrumbs" : true,
+        "showCustomTitle" : false,
+        "showManualRefreshButton" : true,
+        "showRowNumbers" : true
+      },
+      "componentName" : "forceCommunity:relatedList",
+      "id" : "7aa9101e-8690-4e6d-8f45-d1f49e9eb421",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "74b25fed-3380-4d89-8ba1-d15da1fbc75b",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "83f11144-16a7-4558-ba54-cd028dc3df60",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "relatedlist-a5U"
+}

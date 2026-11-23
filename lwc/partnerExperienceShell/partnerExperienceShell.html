@@ -1,0 +1,125 @@
+<template>
+  <div class={shellClass} onkeydown={handleKeydown}>
+    <a
+      class="skip-link"
+      href="#partner-main-content"
+      onclick={handleSkipToContent}
+    >
+      Skip to Home content
+    </a>
+    <header class="partner-header" data-f6-region>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label={menuToggleLabel}
+        aria-expanded={menuOpen}
+        aria-controls="partner-navigation"
+        onclick={toggleMenu}
+      >
+        <lightning-icon
+          icon-name="utility:rows"
+          size="small"
+          alternative-text=""
+        ></lightning-icon>
+      </button>
+      <a
+        class="brand"
+        href={homeUrl}
+        aria-label="Intel Partner Experience Home"
+      >
+        <img
+          class="intel-logo"
+          src={logoUrl}
+          alt="Intel"
+          width="76"
+          height="40"
+        />
+        <span class="brand-title">Partner Experience</span>
+      </a>
+      <div class="search-container">
+        <label class="assistive-text" for="partner-navigation-search"
+          >Search navigation</label
+        >
+        <lightning-icon
+          class="search-icon"
+          icon-name="utility:search"
+          size="x-small"
+          alternative-text=""
+        ></lightning-icon>
+        <input
+          id="partner-navigation-search"
+          type="search"
+          class="navigation-search"
+          placeholder="Search navigation..."
+          value={searchTerm}
+          aria-controls="partner-navigation"
+          aria-describedby="partner-search-help"
+          oninput={handleSearch}
+        />
+        <span id="partner-search-help" class="assistive-text">
+          Filters the navigation menu only. Home content is not searched or
+          changed.
+        </span>
+        <span class="assistive-text" role="status">{filterStatus}</span>
+      </div>
+    </header>
+    <div class="partner-body">
+      <aside class="partner-sidebar" id="partner-navigation" data-f6-region>
+        <nav aria-label="Partner navigation">
+          <ul class="navigation-list">
+            <template for:each={menuItems} for:item="item">
+              <li key={item.id}>
+                <template lwc:if={item.isHome}>
+                  <a
+                    class="navigation-item home-link"
+                    href={homeUrl}
+                    aria-current="page"
+                  >
+                    <lightning-icon
+                      icon-name={item.icon}
+                      size="small"
+                      alternative-text=""
+                    ></lightning-icon>
+                    <span>{item.label}</span>
+                  </a>
+                </template>
+                <template lwc:else>
+                  <button
+                    class="navigation-item unavailable-item"
+                    type="button"
+                    disabled
+                    title="Unavailable: this page has not been configured."
+                  >
+                    <lightning-icon
+                      icon-name={item.icon}
+                      size="small"
+                      alternative-text=""
+                    ></lightning-icon>
+                    <span class="item-copy">
+                      <span>{item.label}</span>
+                      <span class="unavailable-label">Unavailable</span>
+                    </span>
+                  </button>
+                </template>
+              </li>
+            </template>
+          </ul>
+          <template lwc:if={noMatches}>
+            <p class="no-matches" role="status">
+              No navigation items match your search.
+            </p>
+          </template>
+        </nav>
+      </aside>
+      <main
+        class="home-content"
+        id="partner-main-content"
+        tabindex="-1"
+        aria-label="Home"
+        data-f6-region
+      >
+        <slot></slot>
+      </main>
+    </div>
+  </div>
+</template>

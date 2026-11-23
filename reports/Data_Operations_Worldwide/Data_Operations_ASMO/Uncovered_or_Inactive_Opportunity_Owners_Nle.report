@@ -33,7 +33,7 @@
     </columns>
     <description>List of Open Opportunities owned by &quot;Uncovered Account&quot;, &quot;A&amp;E Account Owner&quot;, or by Users listed as Inactive in Salesforce.</description>
     <filter>
-        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+        <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
             <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -48,13 +48,6 @@
             <operator>equals</operator>
             <value>0</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Qualify,Define,Develop,Design</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
@@ -65,7 +58,7 @@
     </params>
     <params>
         <name>open</name>
-        <value>all</value>
+        <value>open</value>
     </params>
     <params>
         <name>probability</name>

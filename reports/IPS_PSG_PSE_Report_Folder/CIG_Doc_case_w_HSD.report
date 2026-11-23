@@ -327,12 +327,30 @@
         <sourceColumnName>Case.Core_Case_Closure__c</sourceColumnName>
         <useOther>true</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Fix in Intel Documentation</sourceValue>
+            </sourceValues>
             <value>Documentation F</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Known Issue</sourceValue>
+            </sourceValues>
             <value>Known Issue</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Customer Error/Fix</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Abandoned by Customer</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Configuration Issue</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Training Required</sourceValue>
+            </sourceValues>
             <value>Customer Faults</value>
         </values>
     </buckets>
@@ -576,13 +594,6 @@
             <operator>contains</operator>
             <value>Documentation</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Bug_Doc_Fix_ID__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
@@ -617,6 +628,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
+        <endDate>2019-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2018-07-01</startDate>
     </timeFrameFilter>

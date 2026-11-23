@@ -1,0 +1,144 @@
+<apex:page controller="Core_IPS_Add_IntelSupportTeam_Controller" sidebar="false"  showHeader="false">
+    
+    <apex:includeScript value="/soap/ajax/29.0/connection.js"/>
+    <apex:includeScript value="/support/console/35.0/integration.js"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'spinner.css')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'jquery.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'spinner.js')}"/>
+    <script type="text/javascript">
+    
+        function doSearchOnEnter(ev)
+        {
+        if (window.event)
+      {
+          ev=window.event;
+      }
+       
+      var keyCode;
+      if (ev.keyCode)
+      {
+         keyCode=ev.keyCode;
+      }
+      else
+      {
+         keyCode=ev.charCode;
+      }
+       
+      if (keyCode == 13)
+      {
+         var ele=document.getElementById('{!$Component.j_id0:form:crit_block:crit_section:Searchbtn}');
+         ele.click();
+         return false;
+      }
+      else
+      {
+         return true;
+      }
+        }
+    
+    </script>
+    <div class="splashStatus" id="splashDiv">
+        <div class="circle"><img src="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'spinner.gif')}"/></div>
+        <div class="txt">Please Wait...</div>
+    </div>
+    <apex:form id="form">
+    <apex:pageblock rendered="{!accessErrorMsg}">
+     <apex:pageblockButtons >
+         <apex:commandButton value="Back to Project" action="{!Finished}"/>
+     </apex:pageblockButtons>
+     <apex:outputText style="color:red;font-weight:bold;" value="{!errorMsg}"></apex:outputText>
+ </apex:pageblock>
+    <apex:pageBlock id="crit_block" rendered="{!NOT(accessErrorMsg)}"> 
+        
+        <apex:pagemessages rendered="{!showErrorMsg}" ></apex:pagemessages>
+        <apex:actionstatus id="status1">
+            <apex:facet name="start">
+                <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb; height: 5000%;opacity:0.65;width:100%;">
+                    <div class="waitingHolder" style="top: 74.2px; width: 91px;">
+                        <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                        <span class="waitingDescription">Please Wait...</span>
+                    </div>
+                </div>
+            </apex:facet>
+        </apex:actionstatus>
+        <apex:pageBlockSection title="Search Intel Support Team Members" columns="1" id="crit_section">                
+            <apex:outputPanel id="pnl">
+                <apex:outputLabel value="Enter Search Text: " style="font-weight:700;font-size:11px"/>
+                <apex:inputText value="{!searchText}" label="Enter Search Text" style="width:40%" id="inputSearchText" onkeypress="return doSearchOnEnter(event);" html-placeholder="Type in the name or email and click Search.."/>
+                <apex:commandButton value="Search" action="{!doSearch}" id="Searchbtn" reRender="crit_block"  status="splashStatus"/>
+                <span class="helpButton">
+                    <img src="/s.gif" class="helpOrb" title="{!$Label.Core_IPS_HelpText}"/>                        
+                </span>                   
+            </apex:outputPanel>
+            
+        </apex:pageBlockSection>
+        <apex:actionStatus id="splashStatus" onstart="startSplash();" onstop="endSplash(); "/>         
+        <apex:pageBlockSection columns="1" id="crit_section_btn">                
+                <apex:outputPanel id="pn2">
+                    <div style="position:relative;left:450px;">
+                        <!--start modified for US279984-->
+                        <apex:commandButton value="Exit" action="{!Finished}" rerender="crit_block" status="splashStatus"/>
+                        <apex:commandButton value="Add" action="{!AddSelectedContacts}" rerender="crit_block" status="splashStatus"/>
+                        <!--end-->
+                    </div>
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+        <apex:PageBlock title="Selected:" id="selectedresult">
+                <apex:outputPanel rendered="{!existingMembers.size<1}"><apex:outputText > No records to display </apex:outputText></apex:outputPanel>        
+                <apex:outputPanel rendered="{!existingMembers.size>0}">
+                    <apex:pageBlockTable value="{!existingMembers}" var="internal">         
+                        <apex:column value="{!internal.Core_IPS_User__r.FirstName}"/>
+                        <apex:column value="{!internal.Core_IPS_User__r.LastName}"/>
+                        <apex:column value="{!internal.Core_IPS_User__r.Email}"/> 
+                        <apex:column value="{!internal.Core_IPS_Profile__c}"/>
+                    </apex:pageBlockTable>
+                </apex:outputPanel>
+            </apex:PageBlock>
+        <apex:PageBlock title="Search Results:" id="searchresult">
+                <apex:pageBlockTable value="{!ISTRecordSet}" var="ISTRec" id="ISTTable" rendered="{!searchMadeInt}">
+                    <apex:column headerValue="Add">                            
+                        <apex:inputCheckBox value="{!ISTRec.isSelected}">
+                        </apex:inputCheckBox>
+                    </apex:column>
+                    
+                    <apex:column >
+                        <apex:facet name="header"> 
+                            <apex:commandLink action="{!doSearch}" value="First Name {!IF(sortHeader.sortExpression== 'FirstName', sortHeader.sortIndicator, '')}" reRender="searchresult">
+                                <apex:param value="FirstName" name="column" assignTo="{!sortHeader.sortExpression}"/>
+                            </apex:commandLink>                                                                                         
+                        </apex:facet>                                     
+                        <apex:outputText value="{!ISTRec.Usr.FirstName}"/>
+                    </apex:column>                    
+                    
+                    <apex:column >
+                        <apex:facet name="header"> 
+                            <apex:commandLink action="{!doSearch}" value="Last Name {!IF(sortHeader.sortExpression== 'LastName', sortHeader.sortIndicator, '')}" reRender="searchresult">
+                                <apex:param value="LastName" name="column" assignTo="{!sortHeader.sortExpression}"/>
+                            </apex:commandLink>                                                                                         
+                        </apex:facet>                                     
+                        <apex:outputText value="{!ISTRec.Usr.LastName}"/>
+                    </apex:column>  
+                    
+                    <apex:column >
+                        <apex:facet name="header"> 
+                            <apex:commandLink action="{!doSearch}" value="Email {!IF(sortHeader.sortExpression== 'Email', sortHeader.sortIndicator, '')}" reRender="searchresult">
+                                <apex:param value="Email" name="column" assignTo="{!sortHeader.sortExpression}"/>
+                            </apex:commandLink>                                                                                         
+                        </apex:facet>                                     
+                        <apex:outputText value="{!ISTRec.Usr.Email}"/>
+                    </apex:column>
+                 <apex:column >
+                        <apex:facet name="header"> 
+                            <apex:commandLink action="{!doSearch}" value="Profile {!IF(sortHeader.sortExpression== 'Profile.Name', sortHeader.sortIndicator, '')}" reRender="searchresult">
+                                <apex:param value="Profile.Name" name="column" assignTo="{!sortHeader.sortExpression}"/>
+                            </apex:commandLink>                                                                                         
+                        </apex:facet>                                     
+                        <apex:outputText value="{!ISTRec.Usr.Profile.Name}"/>
+                    </apex:column>                                        
+                </apex:pageBlockTable>
+            </apex:PageBlock>
+    </apex:pageBlock>  
+    </apex:form>
+    <!--modified for US279984-->
+    <div class="lightbox"></div>
+</apex:page>

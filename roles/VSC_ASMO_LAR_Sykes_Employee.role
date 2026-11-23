@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>VSC ASMO LAR Sykes - Employee</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>VSC ASMO LAR Sykes - Employee</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>VSC_ASMO_LAR_Sykes_Manager</parentRole>
+</Role>

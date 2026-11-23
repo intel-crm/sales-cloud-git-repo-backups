@@ -86,7 +86,69 @@ Modified By:        Date:       Changes:
         }   catch(Exception e) {Core_MDF_CCP_UtilityClass.logError(e);}
     }
     
-   
+    /*****************************************************************************************************
+Method Name:        shareAdjustmentRequestToPartnerUsers
+@return  :          void
+@parameters:        newAdjustmentRequestTobeShared - This will contain all the adjustment Records to be shared
+Description:        Whenever a record is inserted/updated of Adjustment Request, this method shares the Claim to the Partner Users
+according the Account Node on which the Claim is created
+@Added By:          Accenture - JV - 07-06-2019
+Modified By:        Date:       Changes:
+******************************************************************************************************
+public static void shareAdjustmentRequestToPartnerUsers(Map<Id, Core_MDF_Adjustment_Request__c> newAdjustmentRequestTobeShared){
+
+// querying the Account Node on the Related Adjustment Claim on the Adjustment Record
+newAdjustmentRequestTobeShared = new Map<Id,Core_MDF_Adjustment_Request__c>([SELECT Id,Core_MDF_Adjustment_Claim_Nbr__c,Core_MDF_Adjustment_Claim_Nbr__r.ChannelPartnerId
+FROM Core_MDF_Adjustment_Request__c 
+WHERE Id IN: newAdjustmentRequestTobeShared.keySet()]);
+//Map<AdjClaimId, AdjustmentRequestId>
+Map<String,Id> adjClaimNbrToAdjReqIdMap = new Map<String,Id>();
+
+//Map<adjustmentRequestId, List<Users>>
+Map<Id,List<Id> > adjReqShareList = new Map<Id,List<Id> >();
+
+//Set<channelPartnerIds>
+Set<Id> accountNodeIdSet = new Set<Id>();
+
+// Map<accountId,UserList>
+Map<Id,List<Id> > accountUserList = new Map<Id,List<Id> >();
+
+for(Core_MDF_Adjustment_Request__c adjustmentRequest: newAdjustmentRequestTobeShared.values()) {
+adjClaimNbrToAdjReqIdMap.put(adjustmentRequest.Core_MDF_Adjustment_Claim_Nbr__c,adjustmentRequest.Id);
+//retrieve the Account Node Id for the claim
+accountNodeIdSet.add(adjustmentRequest.Core_MDF_Adjustment_Claim_Nbr__r.ChannelPartnerId);
+}
+
+for(Core_MDF_Partner_Node_User_Mapping__c pnumRec: [SELECT Id, Core_MDF_Account__c, Core_MDF_User__c
+FROM Core_MDF_Partner_Node_User_Mapping__c
+WHERE Core_MDF_Account__c IN : accountNodeIdSet and Core_MDF_User__r.IsActive = true]) {
+
+if(accountUserList.containsKey(pnumRec.Core_MDF_Account__c)) {
+accountUserList.get(pnumRec.Core_MDF_Account__c).add(pnumRec.Core_MDF_User__c);
+}
+else {
+accountUserList.put(pnumRec.Core_MDF_Account__c, new List<Id> {pnumRec.Core_MDF_User__c});
+}
+
+}
+
+for(Core_MDF_Adjustment_Request__c adjustmentRequest : newAdjustmentRequestTobeShared.values()) {
+//For each claim add claim Id and list of users to whom the claim record to be shared
+if(accountUserList.get(adjustmentRequest.Core_MDF_Adjustment_Claim_Nbr__r.ChannelPartnerId)!=null && accountUserList.get(adjustmentRequest.Core_MDF_Adjustment_Claim_Nbr__r.ChannelPartnerId).size() > 0)
+{
+adjReqShareList.put(adjustmentRequest.Id, accountUserList.get(adjustmentRequest.Core_MDF_Adjustment_Claim_Nbr__r.ChannelPartnerId));
+}
+}
+
+if(adjReqShareList!=null && adjReqShareList.size() > 0) {
+
+//Call the generic sharing method to share the list of claims and corresponding list of users
+Core_MDF_GenericShareRecordActionClass.RecordManualShareClass rmsInst = new Core_MDF_GenericShareRecordActionClass.RecordManualShareClass('Core_MDF_Adjustment_Request__c',adjReqShareList, 'Edit');
+Core_MDF_GenericShareRecordActionClass.createShareRecordList(rmsInst);
+
+}
+}*/
+    
     /*****************************************************************************************************
 Method Name:        recalculateShareAdjustmentRequestWhenOwnerChange
 @return  :          void
@@ -116,15 +178,10 @@ Modified By:        Date:       Changes:
             
         }
     }
-    /*****************************************************************************************************
-Method Name:        shareAdjustmentRequestToPartnerUsers
-@return  :          void
-@parameters:        newAdjustmentRequestTobeShared - This will contain all the adjustment Records to be shared
-Description:        Whenever a record is inserted/updated of Adjustment Request, this method shares the Claim to the Partner Users
-according the Account Node on which the Claim is created
-@Added By:          Accenture - NK - 28-02-22
-Modified By:        Date:       Changes:
-******************************************************************************************************/
+    /*******************************************************************************************************************/
+    
+    /*******************************************************************************************************************/
+    /*******************************************************************************************************************/
     public static void shareAdjustmentRequestToPartnerUsers(Map<Id, Core_MDF_Adjustment_Request__c> newAdjustmentRequestTobeShared){
         
         // querying the Account Node on the Related Adjustment Claim on the Adjustment Record

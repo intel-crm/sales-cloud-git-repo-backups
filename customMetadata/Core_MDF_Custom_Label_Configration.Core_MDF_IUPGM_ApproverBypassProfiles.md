@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Core_MDF_Category_Txt__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">IUPGM</value>
     </values>
     <values>
         <field>Core_MDF_Org_Specific_Ind__c</field>
@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">IT Admin;Comarketing Support L1;Comarketing Support L2;Production Support;Production Support-IPS;Production Support-Display;Production Support;System Administrator;Support Core Team;</value>
+        <value xsi:type="xsd:string">Comarketing Support L1;Comarketing Support L2;IT Admin;Production Support;Production Support-IPS;Production Support-Display;Production Support;System Administrator;Support Core Team;</value>
     </values>
 </CustomMetadata>

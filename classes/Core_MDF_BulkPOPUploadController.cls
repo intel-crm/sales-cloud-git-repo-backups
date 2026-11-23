@@ -19,13 +19,27 @@ public without sharing class Core_MDF_BulkPOPUploadController {
     @AuraEnabled
     public static PartnerFundRequest fetchActivityDetails(String activityNbr) {
         PartnerFundRequest activity = new  PartnerFundRequest();
-        return activity = [SELECT Id, Core_MDF_Budget_Type_nm__c FROM PartnerFundRequest WHERE Core_MDF_Activity_Number__c =: activityNbr LIMIT 1];
+        return activity = [SELECT Id, Core_MDF_Budget_Type_nm__c, Core_MDF_Reimbursement_Rate__c FROM PartnerFundRequest WHERE Core_MDF_Activity_Number__c =: activityNbr LIMIT 1];  //Roshan - Tactics POC
+    }
+
+    //Roshan - Tactics POC
+    @AuraEnabled
+    public static Core_MDF_PartnerFundClaim.CampaignPurposeWrappper getCampaignPurposeDetails(String activityId, String claimId) {
+        return Core_MDF_PartnerFundClaim.getCampaignPurposeDetails(activityId, claimId);
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static PartnerFundClaim calculateAmountFields(PartnerFundClaim pfcList, String amountFields) {
+        return Core_MDF_PartnerFundClaim.calculateAmountFields(pfcList, amountFields);
     }
     
     @AuraEnabled
-    public static string saveClaim(Core_MDF_Claim_Batch_Stage__c claimBatchRec, List<Core_MDF_Audit_Document__c> auditDocList){
+    public static string saveClaim(Core_MDF_Claim_Batch_Stage__c claimBatchRec, List<Core_MDF_Audit_Document__c> auditDocList, List<Core_MDF_Claim_Attributes__c> claimAttributeList, Integer quantityToDate){
        
         try{
+            system.debug('claimAttributeList@@@' + claimAttributeList);
+            system.debug('quantityToDate@@@' + quantityToDate);
+
             if(claimBatchRec.id!=null && auditDocList!=null && auditDocList.size()>0){
                 assignDocumentList(auditDocList,claimBatchRec.Id); 
                 }
@@ -37,7 +51,7 @@ public without sharing class Core_MDF_BulkPOPUploadController {
             Core_MDF_ClaimStage_TriggerHandler.recursiveCheckStopAfterUpdate = true;
             
             //Update 3rd Party indicator and Log informations.
-            Core_MDF_Claim_Batch_Stage__c claimBatchStage = new Core_MDF_Claim_Batch_Stage__c(Id = claimBatchRec.Id, Core_MDF_3rd_Party_POP_Doc_Required_Ind__c = claimBatchRec.Core_MDF_3rd_Party_POP_Doc_Required_Ind__c, Core_MDF_Log_Info_txt__c = claimBatchRec.Core_MDF_Log_Info_txt__c);
+            Core_MDF_Claim_Batch_Stage__c claimBatchStage = new Core_MDF_Claim_Batch_Stage__c(Id = claimBatchRec.Id, Core_MDF_3rd_Party_POP_Doc_Required_Ind__c = claimBatchRec.Core_MDF_3rd_Party_POP_Doc_Required_Ind__c, Core_MDF_Log_Info_txt__c = claimBatchRec.Core_MDF_Log_Info_txt__c, Core_MDF_Claim_Attributes_JSON_txt__c = claimBatchRec.Core_MDF_Claim_Attributes_JSON_txt__c);  //Roshan - Tactics POC
             update claimBatchStage;
             
             // Get the Claim Object List From the ClaimStage List as Input
@@ -45,6 +59,17 @@ public without sharing class Core_MDF_BulkPOPUploadController {
             // call the function to check whether the ClaimList contains duplicates
             Core_MDF_ClaimStage_ServiceHandler.stageAndClaimRecWrapper wrapInstance = new Core_MDF_ClaimStage_ServiceHandler.stageAndClaimRecWrapper();
             wrapInstance = Core_MDF_ClaimStage_ServiceHandler.handleDuplicateClaimsOnUpdate(getBulkOfClaims,wrapInstance);
+
+            //Roshan - Tactics POC
+            if(claimAttributeList != null && !claimAttributeList.isEmpty()) {
+                wrapInstance.claimStageIdToClaimAttributesMap.put(claimBatchRec.Id, claimAttributeList);
+            }
+            if(quantityToDate != null) {
+                wrapInstance.claimStageIdToQuantityToDateMap.put(claimBatchRec.Id, quantityToDate);
+            }
+
+            system.debug('wrapInstanceFull@@@' + wrapInstance);
+
             // to insert claims and update stage records
            Core_MDF_BatchClaimHelper.insertClaimsAndUpdateClaimStageRecords(wrapInstance);
             return 'Success';
@@ -53,6 +78,7 @@ public without sharing class Core_MDF_BulkPOPUploadController {
             return 'Exception: '+e.getMessage();            
         }
     }
+
     /****************************************************************************************************** 
     Method Name:        assignDocumentList
     @return  :          boolean
@@ -146,5 +172,10 @@ public without sharing class Core_MDF_BulkPOPUploadController {
     @AuraEnabled
     public static Boolean fetchLogInfoByPassCheckValue(){
         return Core_MDF_Utility.byPassFeature('Bypass_LogInfoTextFieldMapping');
+    }
+    @AuraEnabled 
+    public static user fetchUser(){
+       User u = [select id,Name,LocaleSidKey  from User where id =: userInfo.getUserId()];
+        return u;
     }
 }

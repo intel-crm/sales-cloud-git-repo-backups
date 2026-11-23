@@ -10,9 +10,9 @@
         <criteriaItems>
             <field>Core_MDF_Program_Name_nm__c</field>
             <operation>equals</operation>
-            <value>Client,Datacenter,Service Provider Co-Marketing Fund,Client Co-Marketing Fund Boost,Retail Marketing Funds,Intel Partner Alliance</value>
+            <value>Client,Datacenter,Service Provider Co-Marketing Fund,Retail Marketing Funds,Client Co-Marketing Fund Boost,Intel Partner Alliance</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_MDF_Notes_Sharing_To_L3_Maintenance</fullName>
@@ -24,7 +24,7 @@
         <criteriaItems>
             <field>Core_MDF_Program_Name_nm__c</field>
             <operation>equals</operation>
-            <value>Client,Datacenter,Service Provider Co-Marketing Fund,Client Co-Marketing Fund Boost,Retail Marketing Funds,Intel Partner Alliance</value>
+            <value>Client,Datacenter,Service Provider Co-Marketing Fund,Retail Marketing Funds,Client Co-Marketing Fund Boost,Intel Partner Alliance</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -38,9 +38,9 @@
         <criteriaItems>
             <field>Core_MDF_Program_Name_nm__c</field>
             <operation>equals</operation>
-            <value>Client,Datacenter,Service Provider Co-Marketing Fund,Client Co-Marketing Fund Boost,Retail Marketing Funds,Intel Partner Alliance</value>
+            <value>Client,Datacenter,Service Provider Co-Marketing Fund,Retail Marketing Funds,Client Co-Marketing Fund Boost,Intel Partner Alliance</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_MDF_Notes_Sharing_to_PIC_Reviewer</fullName>
@@ -52,9 +52,9 @@
         <criteriaItems>
             <field>Core_MDF_Program_Name_nm__c</field>
             <operation>equals</operation>
-            <value>Client,Datacenter,Service Provider Co-Marketing Fund,Client Co-Marketing Fund Boost,Retail Marketing Funds,Intel Partner Alliance</value>
+            <value>Client,Datacenter,Service Provider Co-Marketing Fund,Retail Marketing Funds,Client Co-Marketing Fund Boost,Intel Partner Alliance</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_MDF_Share_CCFB_Notes</fullName>

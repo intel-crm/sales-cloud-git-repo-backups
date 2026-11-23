@@ -1,0 +1,60 @@
+<template>
+    <lightning-card title="Sub Claim Items">
+        <div class="slds-scrollable_x">
+            <template if:true={accountNodes}>
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr>
+                            <th>Account Node</th>
+                            <th>Node Amount</th>
+                            <th>Status</th>
+                            <th>Bank <abbr class="slds-required" title="required">*</abbr></th>
+                            <th>Invoice Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={accountNodes} for:item="node">
+                            <tr key={node.accountNodeId}>
+                                <td>{node.accountNodeName}</td>
+                                <td>{node.nodeAmount}</td>
+                                <td>&nbsp;</td>
+                                <td>
+                                    <div class="input-wrapper">
+                                        <lightning-combobox
+                                            data-node-id={node.accountNodeId}
+                                            value={node.selectedBank}
+                                            placeholder="Select"
+                                            options={node.banks}
+                                            required
+                                            variant="label-hidden"                                        
+                                            onchange={handleBankChange}
+                                            disabled={node.disableBankField}>
+                                        </lightning-combobox>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-wrapper">
+                                        <lightning-combobox
+                                            data-node-id={node.accountNodeId}
+                                            value={node.vatValue}
+                                            placeholder="Select"
+                                            options={node.vatOptions}
+                                            required
+                                            variant="label-hidden"                                        
+                                            onchange={handleVatChange}
+                                            disabled={node.vatDisabled}>
+                                        </lightning-combobox>
+                                    </div>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </template>
+
+            <!--<template if:true={error}>
+                <div class="slds-text-color_error slds-p-around_small">{error}</div>
+            </template>-->
+        </div>
+    </lightning-card>
+</template>

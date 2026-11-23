@@ -13,9 +13,6 @@
         <field>FULL_NAME</field>
     </columns>
     <columns>
-        <field>OWNER_EMAIL</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <columns>

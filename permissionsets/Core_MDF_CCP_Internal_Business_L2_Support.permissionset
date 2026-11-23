@@ -30,6 +30,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Account.Core_MDF_Host_Region_nm__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.Core_MDF_Virtual_Corp_Account_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Account.MaritzCX__Active__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -115,6 +125,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account_Create_Request__c.IsAddressVerified__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account_Create_Request__c.Process_Type__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -176,6 +191,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account_Create_Request__c.Zip_Postal_Code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Campaign.Core_MDF_Host_Region_cd__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -535,6 +555,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Core_MDF_Account_Onboarding__c.Account_Onboarding_External_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Core_MDF_Account_Onboarding__c.Core_MDF_Account__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -590,6 +615,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Core_MDF_Partner_Group_Mapping__c.Core_MDF_Account__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Core_MDF_Partner_Group_Mapping__c.Core_MDF_All_Access_Group_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -600,7 +630,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Core_MDF_Partner_Group_Mapping__c.Core_MDF_Channel_Program__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Core_MDF_Partner_Group_Mapping__c.Core_MDF_Group_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Partner_Group_Mapping__c.Core_MDF_Inactive_Ind__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -624,7 +664,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Core_MDF_Partner_Node_User_Mapping__c.Core_MDF_Active_Ind__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -641,6 +681,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Core_MDF_Partner_Node_User_Mapping__c.Core_MDF_User__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Bank_Legal_Entity_Code_cd__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

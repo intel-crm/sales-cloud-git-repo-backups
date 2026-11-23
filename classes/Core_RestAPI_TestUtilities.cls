@@ -10,7 +10,7 @@ Provide Method level comments and Parameters for every method, so that it will h
 ******************************************************************************/
 @isTest public class Core_RestAPI_TestUtilities {
     
-    public static final String REQUEST_TEMPLATE = '{"resourcePath":"/services/apexrest/v1.0/unitTest","requestURI":"/v1.0/unitTest","requestBody":"","remoteAddress":"170.178.140.170","params":{},"httpMethod":"GET","headers":{"X-Salesforce-SIP":"170.178.140.170","Accept-Language":"en-US,en;q=0.9","Accept-Encoding":"gzip, deflate, br","Postman-Token":"09c84838-c53c-e33a-34ed-1717086d6c9e","Host":"intel--crmdevcase.sandbox.my.salesforce.com","User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.75 Safari/537.36","Connection":"keep-alive","CipherSuite":"ECDHE-RSA-AES256-GCM-SHA384 TLSv1.2 256-bits","Accept":"*/*","Cache-Control":"no-cache"}}';
+    public static final String REQUEST_TEMPLATE = '{"resourcePath":"/services/apexrest/v1.0/unitTest","requestURI":"/v1.0/unitTest","requestBody":"","remoteAddress":"170.178.140.170","params":{},"httpMethod":"GET","headers":{"X-Salesforce-SIP":"170.178.140.170","Accept-Language":"en-US,en;q=0.9","Accept-Encoding":"gzip, deflate, br","Postman-Token":"09c84838-c53c-e33a-34ed-1717086d6c9e","Host":"intel--crmdevcase.cs92.my.salesforce.com","User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.75 Safari/537.36","Connection":"keep-alive","CipherSuite":"ECDHE-RSA-AES256-GCM-SHA384 TLSv1.2 256-bits","Accept":"*/*","Cache-Control":"no-cache"}}';
     
  /*****************************************************************************
     Method Info : getAccountRecord Method returns Account Record
@@ -1119,14 +1119,14 @@ Provide Method level comments and Parameters for every method, so that it will h
                 String fname = 'Contact'+String.valueOf(i);
                 contacts.add(new Contact (AccountId = accts[a].Id,FirstName = fname, LastName  = accts[a].Name,
                                           email = accts[a].Name+fname+'@unitTest.com',Core_IPS_Intel_Support_Owner__c= adminUser.id,
-                                          Core_IPS_Active__c = true, RecordType = conRT, MailingCountry = 'India'));
+                                          Core_IPS_Active__c = true, RecordType = conRT));
                 i+=1;
             }
             for(Integer c=0;c< noOfNonIPSContacts;c++){
                 String fname = 'Contact'+String.valueOf(i);
                 contacts.add(new Contact (AccountId = accts[a].Id,FirstName = fname, LastName  = accts[a].Name,
                                           email = accts[a].Name+fname+'@unitTest.com',Core_IPS_Intel_Support_Owner__c= adminUser.id,
-                                          Core_IPS_Active__c = false, RecordType = conRT, MailingCountry = 'India'));
+                                          Core_IPS_Active__c = false, RecordType = conRT));
                 i+=1;
             }
         }
@@ -1286,39 +1286,29 @@ Provide Method level comments and Parameters for every method, so that it will h
         sp.Core_Flag_Status__c = 'Auto Approve';
         insert sp;
            System.debug('>>SP>>'+sp);
-           List<core_ips_account__c> projAccountList = new List<core_ips_account__c>();
-           List<Core_IPS_Project_Member__c> projMemberList = new List<Core_IPS_Project_Member__c>();
-           List<Core_IPS_Product__c> productList = new List<Core_IPS_Product__c>();
-            for(Core_IPS_Project__c proj: projList){
-                core_ips_account__c projAccount= getCoreIpsAccount();
-                projAccount.Core_Account__c=acctRecord.Id;
-                projAccount.Core_IPS_Project__c=proj.Id;
-                projAccountList.add(projAccount);
-                Core_IPS_Project_Member__c projectMember = getProjectMember();
-                projectMember.core_ips_contact__c = contactList[0].id;   //modified by Aayushi US90060
-                projectMember.Core_IPS_Project__c = proj.id;
-                projMemberList.add(projectMember);
-                //start added by Aayushi US90060    
-                Core_IPS_Project_Member__c projectMember1 = getProjectMember();
-                projectMember1.core_ips_contact__c = contactList[1].id;
-                projectMember1.Core_IPS_Project__c = proj.id;
-                projMemberList.add(projectMember1);
-                //end    
-                Core_IPS_Product__c projProduct=getIpsProduct();
-                projProduct.Core_IPS_Project__c=proj.Id;
-                projProduct.Core_Supported_Product__c=sp.Id;
-                productList.add(projProduct);
-                System.debug('>>projProduct>>'+projProduct+'>>spId>>'+sp.Id);
-            }
-            if(projAccountList.size() > 0) {
-                Database.insert(projAccountList);
-            }
-            if(projMemberList.size() > 0) {
-                Database.insert(projMemberList);
-            }
-            if(productList.size() > 0) {
-                Database.insert(productList);
-            }
+        for(Core_IPS_Project__c proj: projList){
+        
+        core_ips_account__c projAccount= getCoreIpsAccount();
+        projAccount.Core_Account__c=acctRecord.Id;
+        projAccount.Core_IPS_Project__c=proj.Id;
+        insert projAccount;
+        
+        Core_IPS_Project_Member__c projectMember = getProjectMember();
+        projectMember.core_ips_contact__c = contactList[0].id;   //modified by Aayushi US90060
+        projectMember.Core_IPS_Project__c = proj.id;
+        insert projectMember;
+        //start added by Aayushi US90060    
+        Core_IPS_Project_Member__c projectMember1 = getProjectMember();
+        projectMember1.core_ips_contact__c = contactList[1].id;
+        projectMember1.Core_IPS_Project__c = proj.id;
+        insert projectMember1;
+        //end    
+        Core_IPS_Product__c projProduct=getIpsProduct();
+        projProduct.Core_IPS_Project__c=proj.Id;
+        projProduct.Core_Supported_Product__c=sp.Id;
+        insert projProduct;
+        System.debug('>>projProduct>>'+projProduct+'>>spId>>'+sp.Id);
+        }
        // }   
     }
     public static List<Asset> getAssetList2(integer NumOfRec){
@@ -1438,48 +1428,6 @@ Provide Method level comments and Parameters for every method, so that it will h
             ipsLabel.Value__c = 'Partner - DFAE';
             ipsCustSettings.add(ipsLabel);
         }
-        ipsLabel = Core_IPS_Labels__c.getValues('Partner - Agent');
-        if(ipsLabel == null){
-            ipsLabel = new Core_IPS_Labels__c(Name= 'Partner - Agent');
-            ipsLabel.Value__c = 'Partner - Agent';
-            ipsCustSettings.add(ipsLabel);
-        }
-        ipsLabel = Core_IPS_Labels__c.getValues('Customer Portal');
-        if(ipsLabel == null){
-            ipsLabel = new Core_IPS_Labels__c(Name= 'Customer Portal');
-            ipsLabel.Value__c = 'Customer Portal';
-            ipsCustSettings.add(ipsLabel);
-        }
-        ipsLabel = Core_IPS_Labels__c.getValues('Comment Source - Email');
-        if(ipsLabel == null){
-            ipsLabel = new Core_IPS_Labels__c(Name= 'Comment Source - Email');
-            ipsLabel.Value__c = 'Comment Source - Email';
-            ipsCustSettings.add(ipsLabel);
-        }
-        ipsLabel = Core_IPS_Labels__c.getValues('Comment Source - B2B API');
-        if(ipsLabel == null){
-            ipsLabel = new Core_IPS_Labels__c(Name= 'Comment Source - B2B API');
-            ipsLabel.Value__c = 'Comment Source - B2B API';
-            ipsCustSettings.add(ipsLabel);
-        }
-        ipsLabel = Core_IPS_Labels__c.getValues('Comment Source - Customer');
-        if(ipsLabel == null){
-            ipsLabel = new Core_IPS_Labels__c(Name= 'Comment Source - Customer');
-            ipsLabel.Value__c = 'Comment Source - Customer';
-            ipsCustSettings.add(ipsLabel);
-        }
-        ipsLabel = Core_IPS_Labels__c.getValues('Comment Source - Internal');
-        if(ipsLabel == null){
-            ipsLabel = new Core_IPS_Labels__c(Name= 'Comment Source - Internal');
-            ipsLabel.Value__c = 'Comment Source - Internal';
-            ipsCustSettings.add(ipsLabel);
-        }
-        ipsLabel = Core_IPS_Labels__c.getValues('Comment Source - N/A');
-        if(ipsLabel == null){
-            ipsLabel = new Core_IPS_Labels__c(Name= 'Comment Source - N/A');
-            ipsLabel.Value__c = 'Comment Source - N/A';
-            ipsCustSettings.add(ipsLabel);
-        }
         insert ipsCustSettings;
     }
     public static void setUpCustomSettingCaseAttachment(){
@@ -1548,144 +1496,4 @@ Provide Method level comments and Parameters for every method, so that it will h
         }
         return lstAnswer;
     }
-
-  /****************************************************************************************
-  This data is set up for POST Case Comment and Case Attachment Validation
-  ******************************************************************************************/
-  public static void caseValidationSetUp(){
-  
-  User adminUser  = [Select Id,AccountId FROM User where Profile.Name = 'System Administrator' AND isActive = true Limit 1];
-  RecordType conRT = [SELECT Id, Name, DeveloperName, SobjectType FROM RecordType where SobjectType='Contact' AND Name ='Intel Contact'];
-        account acc = getAccountRecord();
-        system.debug('account ==>> '+acc);
-        acc.Owner = adminUser;
-        insert acc;
-        
-        Contact contactRecord = getContact();
-            contactRecord.recordTypeId = conRT.Id;
-            contactRecord.AccountId = acc.id;
-            insert contactRecord;
-        
-        Contact contactRecordInactive = getContact();
-            contactRecordInactive.FirstName = 'Ding Dong123';
-            contactRecordInactive.Email = 'Contact1Dell123@gmail.com';
-            contactRecordInactive.recordTypeId = conRT.Id;
-            contactRecordInactive.Core_IPS_Active__c = false;
-            contactRecordInactive.AccountId = acc.id;
-            insert contactRecordInactive;
-         
-          Profile pf =   [select Id,name from Profile where Name = 'IPS External Customer' limit 1];   
-           User userWithInactiveCon = new User(
-            Alias = 'StdUser', 
-            Email = 'newuser@intel.com', 
-            EmailEncodingKey ='UTF-8',
-            LastName = 'Testing Inactive', 
-            LanguageLocaleKey = 'en_US',
-            LocaleSidKey = 'en_US',
-            TimeZoneSidKey = 'America/Los_Angeles', 
-            UserName = 'newuser' + String.valueOf(DateTime.Now().getTime()) + '@intel.com.' + UserInfo.getOrganizationId(),
-            isActive = true,
-            ProfileId = pf.Id,
-            ContactId = contactRecordInactive.Id
-         );
-        insert userWithInactiveCon;
-        
-        Contact conInvalidProfile= getContact();
-            conInvalidProfile.FirstName = 'Contact With';
-            conInvalidProfile.Lastname = 'Invalid Profile';
-            conInvalidProfile.Email = 'ContactInvalid@gmail.com';
-            conInvalidProfile.recordTypeId = conRT.Id;
-            conInvalidProfile.AccountId = acc.id;
-            insert conInvalidProfile;
-            
-        Profile pfInvalid = [select Id,name from Profile where Name = 'Partner AE' limit 1];
-        User userRecordInvalid = new User(
-            Alias = 'StdUser', 
-            Email = 'newuser@intel.com', 
-            EmailEncodingKey ='UTF-8',
-            LastName = 'Testing Invalid Profile', 
-            LanguageLocaleKey = 'en_US',
-            LocaleSidKey = 'en_US',
-            TimeZoneSidKey = 'America/Los_Angeles', 
-            UserName = 'newuser' + String.valueOf(DateTime.Now().getTime()) + '@intel.com.' + UserInfo.getOrganizationId(),
-            isActive = true,
-            ProfileId = pfInvalid.Id,
-            ContactId = conInvalidProfile.Id
-        );
-        insert userRecordInvalid;
-        
-       
-        User userRecord = new User(
-            Alias = 'StdUser', 
-            Email = 'newuser@intel.com', 
-            EmailEncodingKey ='UTF-8',
-            LastName = 'Testing', 
-            LanguageLocaleKey = 'en_US',
-            LocaleSidKey = 'en_US',
-            TimeZoneSidKey = 'America/Los_Angeles', 
-            UserName = 'newuser' + String.valueOf(DateTime.Now().getTime()) + '@intel.com.' + UserInfo.getOrganizationId(),
-            isActive = true,
-            ProfileId = pf.Id,
-            ContactId = contactRecord.Id
-        );
-        insert userRecord;
-        
-       
-        
-        Core_IPS_Project__c objProj= new Core_IPS_Project__c();
-        objProj.Core_Status__c='Draft';
-        objProj.Name='demo';
-        insert objProj;
-        
-        Core_IPS_Project_Member__c projectMember = getProjectMember();
-        projectMember.Core_IPS_Contact__c = contactRecordInactive.Id;
-        projectMember.Core_IPS_Project__c = objProj.id;
-        insert projectMember;
-        
-        Contact conInvalidMem = getContact();
-        conInvalidMem.AccountId = acc.id;
-        conInvalidMem.FirstName = 'Invalid ProjectMember';
-        conInvalidMem.Email = 'InvalidProjectMem@gmail.com';
-        insert conInvalidMem;
-         User userInvalidPrMem = new User(
-            Alias = 'StdUser', 
-            Email = 'newuser@intel.com', 
-            EmailEncodingKey ='UTF-8',
-            LastName = 'Testing Inactive', 
-            LanguageLocaleKey = 'en_US',
-            LocaleSidKey = 'en_US',
-            TimeZoneSidKey = 'America/Los_Angeles', 
-            UserName = 'newuser' + String.valueOf(DateTime.Now().getTime()) + '@intel.com.' + UserInfo.getOrganizationId(),
-            isActive = true,
-            ProfileId = pf.Id,
-            ContactId = conInvalidMem.Id
-        );
-        insert userInvalidPrMem;
-        //g  System.debug('Test System.runAs Entered'+adminUser.id);
-        List<RecordType> ObjRecordType = [Select Id from RecordType where name='IPS Case Create'];
-        List<RecordType> objClosedRecordType = [Select Id from RecordType where name='IPS Closed Case'];
-        List<contact> objcon=[select id from contact where id!=null ];
-        Case objCase= getCase();
-        objCase.OwnerId = adminUser.Id;
-        objCase.contactId=objcon[0].id;
-        objCase.Subject = 'Post TestSubject';
-        objCase.Description = 'Case Create';
-        objCase.Core_IPS_Project_Case__c=objProj.id;
-        objCase.Status='Open'; 
-        objCase.Core_Sub_Status__c='Close-Pending';
-        objCase.RecordTypeId=ObjRecordType[0].Id;
-        insert objCase;
-        
-        Case objCase1 =getCase();
-            objCase1.OwnerId = adminUser.Id;
-            objCase1.contactId=objcon[0].id;
-            objCase1.Subject = 'Post Test Case Visbility';
-            objCase1.Description = 'Case Create';
-            objCase1.Status='Open'; 
-            objCase1.Core_IPS_Project_Case__c=objProj.id;
-            objCase1.Core_Sub_Status__c='Close-Pending';
-            objCase1.Core_IPS_Customer_Visible__c = false;
-            objCase1.RecordTypeId= objClosedRecordType[0].Id;
-            insert objCase1;
-     }  
-     }
+}

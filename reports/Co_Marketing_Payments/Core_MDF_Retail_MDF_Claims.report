@@ -92,7 +92,7 @@ Budget Type-Retail MDF</description>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,EMEA,PRC,APJ,ASMO,INDIA</value>
+            <value>,EMEA,PRC,APJ,ASMO</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundClaim$Core_MDF_Sub_Region_Cd__c</column>

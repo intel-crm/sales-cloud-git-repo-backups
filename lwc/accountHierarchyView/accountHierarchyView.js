@@ -37,14 +37,18 @@ export default class AccountHierarchyView extends NavigationMixin(LightningEleme
     @track allAccessibleAccounts = [];
     label = { coMarketingAccounts, accountsHierarchy, intelAccounts, searchAccounts, loadingLabel, applicationErrorMsg, applicationErrorTitle, nodeVisibilityWarningLabel, Core_MDF_Partnership_Score_Duplicate_Error, Core_MDF_Partnership_Score_Duplicate_Record_Exists, Core_MDF_Partnerscore_Score_Title };
     partnerScoreDuplicateId;
+    showGridData;
+    
 
     async connectedCallback() {
+       
         // Getting Salesforce Base URL
         this.getsfdcBaseUrl();
-        // Fetching all the Ultimate Accounts
+        
         await this.fetchAllUltimateAccounts();
         // Fetching all accounts user is having access to
         this.fetchAllAccounts();
+        
     }
 
     // Method to fetch Salesforce Base Url
@@ -99,13 +103,6 @@ export default class AccountHierarchyView extends NavigationMixin(LightningEleme
         getAllAccounts({ ultimateAccountIdList: this.allUltimateAccounts })
             .then(accounts => {
                 this.allAccessibleAccounts = accounts;
-            })
-            .catch(error => {
-                this.error = error;
-               console.log('error'+error.body + error.body.message);
-                this.showSpinner = false;
-                this.showSearchBox = false;
-                
             });
         this.showSpinner = false;
     }
@@ -302,5 +299,21 @@ export default class AccountHierarchyView extends NavigationMixin(LightningEleme
         });
     }
 
+    /*handleIntelAccount(event) {
+        this.showGridData = true;
+        this.selectedIntelAccount = event.target.label;
+        this.selectedIntelAccId = event.target.name
+        console.log('this.selectedIntelAccount', this.selectedIntelAccount);
+    }
+
+    get account() {
+        this.template.querySelectorAll('.accordionSec').forEach(ele => {
+            if(ele.name === this.selectedIntelAccId) {
+                return true;
+            } else {
+                return false;
+            }
+        })
+    } */
 
 }

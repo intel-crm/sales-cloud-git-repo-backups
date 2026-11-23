@@ -12,11 +12,13 @@ public without sharing class Core_MDF_SearchAccountController {
     @AuraEnabled
     public static List<PickListValueWrapper> fetchPicklistValues(List<String> salutationPickListNames) {
         List<PickListValueWrapper> pickListNameToValueSet = new List<PickListValueWrapper>();
-        Map<String, String> pickistNameValue = new Map<String, String>(); 
+        Map<String, String> pickistNameValue = new Map<String, String>();
+        system.debug('Entered into picklistFectch'); 
         for(String pickListName : salutationPickListNames){
             pickistNameValue.put(pickListName, pickListName); 
         }
         
+        System.debug('pickistNameValue = '+ pickistNameValue); 
         
         //for(String pickistValue : pickistNameValue){  
         //for(String pickListName : salutationPickListNames){
@@ -27,6 +29,9 @@ public without sharing class Core_MDF_SearchAccountController {
                && pickistNameValue.containsKey(DescField.getName())){
                    
                    List<Schema.PicklistEntry> pickListEntries = DescField.getPicklistValues();
+                   System.debug('Name: ' +  DescField.getName());
+                   System.debug('Type: ' +  DescField.getType());
+                   System.debug('pickListEntries : ' +  pickListEntries);
                    PickListValueWrapper pickListWrapper = new PickListValueWrapper();
                    List<PickListEntry> pickListValueList = new List<PickListEntry>();
                    
@@ -43,6 +48,7 @@ public without sharing class Core_MDF_SearchAccountController {
                }
         }
         //}
+        system.debug('pickListNameToValueSet' + pickListNameToValueSet);
         return pickListNameToValueSet;
     }
     
@@ -65,18 +71,23 @@ public without sharing class Core_MDF_SearchAccountController {
     @AuraEnabled
     public static List<Account> fetchAccountList(String userId,String AccType) {
         
+        System.debug('userId **** = ' + userId);
+        System.debug('AccType **** = ' + AccType);
         
         List<Account> lstOfAccount = new List<Account>();
         String ContactId1;
         string loggdInUserAccountId;
         
         List<User> users = [Select Id, ContactId from User where Id = :userId];
+        System.debug('users **** = ' + users);
         if(users != null && !users.isEmpty()){
             ContactId1 = users[0].ContactId;
+            System.debug('ContactId1 **** = ' + ContactId1);
         }
         List<Contact> contList = [Select Id,AccountId from Contact where Id = :ContactId1];
         if(contList != null && !contList.isEmpty()){
             loggdInUserAccountId = contList[0].AccountId;
+            System.debug('loggdInUserAccountId **** = ' + loggdInUserAccountId);
         }
         
         List<GroupMember> gmList = [SELECT Id, GroupId, UserOrGroupId FROM GroupMember where UserOrGroupId = :userId];
@@ -85,7 +96,9 @@ public without sharing class Core_MDF_SearchAccountController {
         for(GroupMember gMember : gmList){
             loggedInUserGroupIds.add(gMember.GroupId);
         }
-       
+        
+        System.debug('gmList = '+ gmList);
+        System.debug('loggedInUserGroupIds = '+ loggedInUserGroupIds);
         
          List<String> ccpProgramList = Label.Core_MDF_CCP_Program_Names.split(';');
          Set<String> ccpProgramSet = new Set<String>(ccpProgramList);
@@ -97,6 +110,7 @@ public without sharing class Core_MDF_SearchAccountController {
         
         Set<Id> accIds = new Set<id>();
         Set<Id> corpAccIds = new Set<id>();
+        System.debug('pgMappingList*** = '+ pgMappingList);
         
         if( !String.isBlank(loggdInUserAccountId)){
             List<Core_MDF_Partner_Group_Mapping__c> usertype = [Select Core_MDF_Account__c,Core_MDF_Works_For__c,
@@ -106,11 +120,12 @@ public without sharing class Core_MDF_SearchAccountController {
                                                                 AND Core_MDF_Group_Id__c in :loggedInUserGroupIds AND Core_MDF_Inactive_Ind__c = false
                                                                	AND Core_MDF_Channel_Program_Name_Txt__c IN :ccpProgramSet];
             
-
+            System.debug('usertype = '+ usertype);
             
             if(!usertype.isEmpty() && usertype != null && usertype[0].Core_MDF_Works_For__c == null) // User is a corporate Admin 
             {
                 if(AccType == 'Corporate'){
+                    System.debug('Corporate***');
                     for(Core_MDF_Partner_Group_Mapping__c pgMappingMember : pgMappingList){
                         if(pgMappingMember.Core_MDF_Works_For__c == null){
                             corpAccIds.add(pgMappingMember.Core_MDF_Account__c);
@@ -146,9 +161,10 @@ public without sharing class Core_MDF_SearchAccountController {
                 }
             }
         }
+        System.debug('accIds = '+ accIds);
         
         lstOfAccount = [select Id, Name from Account WHERE Id in :accIds];  
-
+        System.debug('lstOfAccount = '+ lstOfAccount);
         return lstOfAccount;
     }
     
@@ -159,7 +175,17 @@ public without sharing class Core_MDF_SearchAccountController {
                                           //('cont1test1@dell.com','India','',)
                                           
                                           Boolean saveRetvalue = false;
-
+                                          
+                                          System.debug('title = '+ title);
+                                          System.debug('salutation = '+ salutation);
+                                          System.debug('phone = '+ phone);
+                                          System.debug('first_name = '+ first_name);
+                                          System.debug('last_name = '+ last_name);
+                                          System.debug('mobile = '+ mobile);
+                                          System.debug('email = '+ email);
+                                          System.debug('country = '+ country);
+                                          //System.debug('region = '+ region);
+                                          System.debug('accId = '+ accId);
                                           
                                           String emailDomain = '';
                                           if(!String.isBlank(email)){
@@ -174,7 +200,7 @@ public without sharing class Core_MDF_SearchAccountController {
                                           if(saveRetvalue){
                                               Contact contactToBeInserted = new Contact(Title=title,Salutation=salutation,Phone=phone,FirstName=first_name,LastName=last_name,MobilePhone=mobile,Email = email, AccountId = accId, MailingCountry = country);
                                               Database.SaveResult dsr = Database.insert(contactToBeInserted, false); 
-
+                                              System.debug('dsr = '+ dsr);
                                           }                                                      
                                           return saveRetvalue;                             
                                           //Contact con = new Contact(Title=title,Salutation=salutation,Phone=phone,First Name=first_name,Last Name=last_name,MobilePhone=mobile);
@@ -194,15 +220,16 @@ public without sharing class Core_MDF_SearchAccountController {
         string loggdInUserAccountId;
         
         List<User> users = [Select Id, ContactId from User where Id = :userId];
+        System.debug('users **** = ' + users);
         Id ContactId1;
         if(users != null && !users.isEmpty()){
             ContactId1 = users[0].ContactId;
-
+            System.debug('ContactId1 **** = ' + ContactId1);
         }
         List<Contact> contList = [Select Id,AccountId from Contact where Id = :ContactId1];
         if(contList != null && !contList.isEmpty()){
             loggdInUserAccountId = contList[0].AccountId;
-
+            System.debug('loggdInUserAccountId **** = ' + loggdInUserAccountId);
         }
         
         List<String> ccpProgramList = Label.Core_MDF_CCP_Program_Names.split(';');
@@ -216,7 +243,7 @@ public without sharing class Core_MDF_SearchAccountController {
                                                                   and  Core_MDF_Account__c = :accId
                                                                   and Core_MDF_Channel_Program_Name_Txt__c IN :ccpProgramSet];
         
-
+        System.debug('checkForValidEmailDomain > pgMappingList*** = '+ pgMappingList);
         
          Set<String> validEmailDomainsSet = new Set<String>();
         
@@ -239,10 +266,14 @@ public without sharing class Core_MDF_SearchAccountController {
             }
             
             returnValue = validEmailDomainsSet.contains(emailDomain);
-          
+            
+            System.debug('checkForValidEmailDomain > pgDominMappingList*** = '+ pgDominMappingList);            
         }
         }
-
+        
+        //System.debug('allowedEmails = '+ allowedEmails);
+        System.debug('emailDomain = '+ emailDomain);
+        System.debug('returnValue = '+ returnValue);
         return returnValue;
     }
 }

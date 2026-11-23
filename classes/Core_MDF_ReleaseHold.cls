@@ -32,7 +32,7 @@ Modified By:        Date:      Changes:
         public String exceptionDetails;
         @AuraEnabled
         public Boolean hasAccessForBankDocumentHold=False;   // Added for checking if the user has access for the custom permission or not
-       	@AuraEnabled
+        @AuraEnabled
         public Boolean isOnBankDocumentHold=False;   // Added for checking if the Bank document hold is true or not.
     }
 /*********************************************************************************************************
@@ -52,6 +52,7 @@ Modified By:        Date:      Changes:
             //Checking for user's permission from custom permission
             holdWrap.hasAccess = FeatureManagement.checkPermission(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PermToRelease_CritAndManualHold')); 
             holdWrap.hasAccessForBankDocumentHold = FeatureManagement.checkPermission(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PermToRelease_BankDocumentHold'));
+            
             if(holdWrap.hasAccess){
                 //Assigning logged in user userType
                 holdWrap.loggedInUserType = UserInfo.getUserType();
@@ -61,22 +62,18 @@ Modified By:        Date:      Changes:
                 holdWrap.isOnCriteriaHold = holdWrap.pfc.Core_MDF_Criteria_Hold_Ind__c;
                 
                 holdWrap.exceptionDetails = null;
-                
+               
             }
             //If the user has access to custom permission then we are updating isOnBankDocumentHold with the bank document hold.
             if(holdWrap.hasAccessForBankDocumentHold){
              holdWrap.loggedInUserType = UserInfo.getUserType();
-			 holdWrap.isOnBankDocumentHold = holdWrap.pfc.Core_MDF_Bank_Doc_Hold_Ind__c;
+             holdWrap.isOnBankDocumentHold = holdWrap.pfc.Core_MDF_Bank_Doc_Hold_Ind__c;
              holdWrap.exceptionDetails = null;
             }
             return holdWrap;
             
         }  
-        catch (Exception e){
-	Core_MDF_CCP_UtilityClass.logError(e);
-	holdWrap.exceptionDetails = 'Exception: '+e.getMessage();
-	return holdWrap;
-	}
+        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);holdWrap.exceptionDetails = 'Exception: '+e.getMessage();return holdWrap;}
     }
 /******************************************************************************************************************************************************************
 Method Name:        updateCriteriaManualFields
@@ -90,6 +87,8 @@ Modified By:        Date:      Changes:
    @AuraEnabled 
     public static String releaseHoldFromClaim(PartnerFundClaim pfclaim, Boolean previousMembHold, Boolean previousIntHold, Boolean previousCriteriaHold, Boolean previousBankDocumentHold){
         try{
+
+            system.debug('pfclaim@@@' + pfclaim);
             List<PartnerFundClaim> claimsToBeReleasedlist = new List<PartnerFundClaim>();
             List<String> releaseReasonList = new List<String>();
             //Checking old and new Value of Hold fields
@@ -106,23 +105,19 @@ Modified By:        Date:      Changes:
                 //Wiping off the comments after releasing hold
                 pfclaim.Core_MDF_Member_Manual_Hold_Comments_Txt__c='';
             }
-            
+           
             if(previousBankDocumentHold && (!pfclaim.Core_MDF_Bank_Doc_Hold_Ind__c)){
                releaseReasonList.add(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Bank_Document_Hold'));  //Label.Core_MDF_Bank_Document_Hold
             }
             claimsToBeReleasedlist.add(pfclaim);
             //Calling releaseHold method to update claim record.
             if(releaseReasonList!=NULL && releaseReasonList.size() > 0){
-               Core_MDF_Claim_Utility.releaseHold(claimsToBeReleasedlist, releaseReasonList); 
-	       return null;
+               Core_MDF_Claim_Utility.releaseHold(claimsToBeReleasedlist, releaseReasonList); return null;
             }
             else{
                 return null;
             }
         }
-        catch (Exception e){
-	Core_MDF_CCP_UtilityClass.logError(e); 
-	return 'Exception: '+e.getMessage();
-	}
+        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e); return 'Exception: '+e.getMessage();}
     }
 }

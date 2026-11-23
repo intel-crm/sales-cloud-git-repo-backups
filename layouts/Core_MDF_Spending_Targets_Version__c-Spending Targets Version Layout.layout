@@ -15,6 +15,10 @@
                 <behavior>Readonly</behavior>
                 <field>Core_MDF_Is_Active_Ind__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Amount_amt__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

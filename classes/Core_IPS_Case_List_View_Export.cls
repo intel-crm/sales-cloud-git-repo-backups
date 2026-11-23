@@ -35,10 +35,11 @@ public with sharing class Core_IPS_Case_List_View_Export {
     private String strFilterId;
     
     public Core_IPS_Case_List_View_Export(ApexPages.StandardSetController controller) {
-            // Unencoded Formulas in Script Tags XSS Fix - TWC745-7251
-        //returnURL = ApexPages.currentPage().getParameters().get('retURL').escapeHtml4();
+
+        System.debug('#01 controller.getResultSize(): ' + controller.getResultSize());
+
         returnURL = ApexPages.currentPage().getParameters().get('retURL');
-       
+
         // For PDF:
         // contentType = 'application/pdf#Export.pdf';
         // renderType  = 'PDF';
@@ -51,7 +52,7 @@ public with sharing class Core_IPS_Case_List_View_Export {
         reportDate = dtNow.format('yyyy-MM-dd h:mm a');
 
         lstlstObj = new List<List<Object>>();
-
+        
         strfilterId = controller.getFilterId();
         
         List<System.SelectOption> lstSelectOption = controller.getListViewOptions();
@@ -67,11 +68,11 @@ public with sharing class Core_IPS_Case_List_View_Export {
             }
         
         loadFilterFields();
+        System.debug('#05 strQuery: ' + strQuery);
         
         Integer idx = strQuery.indexOf(' FROM ');
-        // TWC745-9117 - ATHR Critical fixed by Tushar
-        Integer limitValue = MAX_EXPORT_ROWS + 1;
-        String strCountQuery = 'SELECT Id ' + strQuery.substring(idx) + ' LIMIT :limitValue';
+        String strCountQuery = 'SELECT Id ' + strQuery.substring(idx) + ' LIMIT ' + (MAX_EXPORT_ROWS + 1);
+        System.debug('#06 strCountQuery: ' + strCountQuery);        
         
         List<Object> lstObj = Database.query(strCountQuery);
         if (lstObj.size() > MAX_EXPORT_ROWS) {
@@ -91,13 +92,8 @@ public with sharing class Core_IPS_Case_List_View_Export {
     
     
     public PageReference returnToPage() {
-        String finalReturnURL='';
-        if( returnURL!= null){
-            finalReturnURL = returnURL;
-        }else{
-            finalReturnURL = '/500/o';
-        }           
-        PageReference returnPage = new PageReference(finalReturnURL);
+    
+        PageReference returnPage = new PageReference(returnURL);            
         returnPage.setRedirect(true);
         return returnPage;
     }      
@@ -105,6 +101,7 @@ public with sharing class Core_IPS_Case_List_View_Export {
     
     public void loadData(Boolean cleanData) {
 
+        System.debug('#41 LoadData START - strQuery: ' + strQuery);
         
         List<Object> lstObjPage = new List<Object>();
         
@@ -159,11 +156,13 @@ public with sharing class Core_IPS_Case_List_View_Export {
                     strFieldValue = strFieldValue.subString(0, MAX_FIELD_LENGTH) + '...';                
                 
                 strFieldValue = strFieldValue.escapeCSV();        
-                // Avoid Deeply Nested IF Statements Kamala - TWC745-9117              
-                if ((strFieldValue.length() > 0) && (strFieldValue.charAt(0) != ASCII_FOR_DOUBLE_QUOTE)) {
+                              
+                if (strFieldValue.length() > 0) {
+                    if (strFieldValue.charAt(0) != ASCII_FOR_DOUBLE_QUOTE) {
                         strFieldValue = '"' + strFieldValue + '"';                    
                     }                               
                 }                                  
+            }
             
             mapRow.put(sc.fieldNameOrPath, strFieldValue);
         }
@@ -191,17 +190,15 @@ public with sharing class Core_IPS_Case_List_View_Export {
 
 
     private void loadFilterFields() {
-        //added By Hassan for Authorization issue Fix.
-        String ipsAuthorization = System.Label.IPS_Authorization;
-        
         HttpRequest req = new HttpRequest();
-        req.setHeader(ipsAuthorization, 'Bearer ' + UserInfo.getSessionID());
+        req.setHeader('Authorization', 'Bearer ' + UserInfo.getSessionID());
         req.setHeader('Content-Type', 'application/json');
         
         /* Set the Cert here */                        
         req.setClientCertificateName(Label.Core_Self_Signed_Cert);
     
         String domainUrl = URL.getSalesforceBaseUrl().toExternalForm();
+        system.debug('#07 domainUrl:' + domainUrl);
     
         if (Core_IPS_Case_Comments_Handler.isCurrentUserPortalUser()) {                            
             Organization currOrg = [Select IsSandbox from Organization limit 1];
@@ -212,18 +209,22 @@ public with sharing class Core_IPS_Case_List_View_Export {
         }
     
         String endpointUrl = domainUrl + '/services/data/v37.0/sobjects/Case/listviews/' + strfilterId + '/describe';
+        system.debug('#08 domain URL' + endpointUrl);
     
         req.setEndpoint(endpointUrl);
         req.setMethod('GET');      
         Http h = new Http();
         HttpResponse res = h.send(req);
-        Map<String, Object> root = (Map<String, Object>)JSON.deserializeUntyped(res.getBody()); 
+        system.debug('#09 res: ' + res);        
+
+        Map<String, Object> root = (Map<String, Object>)JSON.deserializeUntyped(res.getBody());     
         strQuery = (String)root.get('query');
         strQuery = strQuery.replace('Owner.Alias', 'Owner.Name');
-   
+                
         if (Core_IPS_Case_Comments_Handler.isCurrentUserPortalUser() && strQuery.contains('USING SCOPE mine'))                            
             strQuery = processScopeForCases(strQuery);
         
+        System.debug('#10 strQuery: ' + strQuery);
         
         // This HAS to be reset every iteration.
         lstColumn = new List<SingleColumn>();
@@ -250,10 +251,13 @@ public with sharing class Core_IPS_Case_List_View_Export {
             }
          }
 
+        System.debug('#10 lstColumn: ' + lstColumn);
+
     }
     
 
     public string processScopeForCases(String strScopeQuery) {    
+        System.debug('#70 strScopeQuery.contains(\'USING SCOPE mine\'): '  + strScopeQuery.contains('USING SCOPE mine'));
         if (!strScopeQuery.contains('USING SCOPE mine'))
             return strScopeQuery;
             
@@ -282,6 +286,10 @@ public with sharing class Core_IPS_Case_List_View_Export {
             strWhereClause  += ' AND Contact.Id = \'' + objUser.ContactId + '\' ';
             strOrderByClause = strScopeQuery.substring(intOrderByStart);        
         }
+            
+        System.debug('#71 strSelectClause: '  + strSelectClause);
+        System.debug('#72 strWhereClause: '   + strWhereClause);
+        System.debug('#73 strOrderByClause: ' + strOrderByClause);
                 
         return strSelectClause + strWhereClause + strOrderByClause;
     }

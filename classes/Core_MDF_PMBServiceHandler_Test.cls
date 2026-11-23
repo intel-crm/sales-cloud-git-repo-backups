@@ -81,7 +81,7 @@ private class Core_MDF_PMBServiceHandler_Test {
             accRecord.BillingCity = 'Test City';         
             accRecord.BillingCountry= 'AUS';
             accRecord.BillingStreet= 'Test Street';
-            accRecord.Core_Business_Party_Id__c = '123456';
+            //accRecord.Core_Business_Party_Id__c = '123456';
             Database.insert(accRecord);   
             // Create test accounts
         Id partnerAccountGroupRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Core_Partner_Account_Group').getRecordTypeId();
@@ -132,42 +132,42 @@ private class Core_MDF_PMBServiceHandler_Test {
             acc1.BillingCity = 'Test City';         
             acc1.BillingCountry= 'AUS';
             acc1.BillingStreet= 'Test Street';
-            acc1.Core_Business_Party_Id__c = '1234560';
+            //acc1.Core_Business_Party_Id__c = '1234560';
             intAccList.add(acc1);
             
             Account accP1 = Core_MDF_CCP_TestDataUtility.createAccount ('Test Account ParentDCF', cp4.Id,Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);   
             accP1.BillingCity = 'Test City';         
             accP1.BillingCountry= 'AUS';
             accP1.BillingStreet= 'Test Street';
-            accP1.Core_Business_Party_Id__c = '1234561';
+            //accP1.Core_Business_Party_Id__c = '1234561';
             intAccList.add(accP1);
             
             Account accP = Core_MDF_CCP_TestDataUtility.createAccount ('Test Account Parent', cp.Id,Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);   
             accP.BillingCity = 'Test City';         
             accP.BillingCountry= 'AUS';
             accP.BillingStreet= 'Test Street';
-            accP.Core_Business_Party_Id__c = '1234562';
+            //accP.Core_Business_Party_Id__c = '1234562';
             intAccList.add(accP);
             
             Account accRetail = Core_MDF_CCP_TestDataUtility.createAccount ('Test Account ParentRetail', cp1.Id,Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);   
             accRetail.BillingCity = 'Test City';         
             accRetail.BillingCountry= 'AUS';
             accRetail.BillingStreet= 'Test Street';
-            accRetail.Core_Business_Party_Id__c = '1234563';
+            //accRetail.Core_Business_Party_Id__c = '1234563';
             intAccList.add(accRetail);
             
             Account accCMDF = Core_MDF_CCP_TestDataUtility.createAccount ('CMDF Test Account', cp1.Id,Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);   
             accCMDF.BillingCity = 'Test City';         
             accCMDF.BillingCountry= 'AUS';
             accCMDF.BillingStreet= 'Test Street';
-            accCMDF.Core_Business_Party_Id__c = '1234565';
+            //accCMDF.Core_Business_Party_Id__c = '1234565';
             intAccList.add(accCMDF);
             
             Account accIPA = Core_MDF_CCP_TestDataUtility.createIntelAccount ('IPA Intel Account',Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
             accIPA.Core_MDF_CoMarketingActive__c = true;
             if(isUnifiedIdEnabled){
                 accIPA.Core_Unified_Global_Customer_BP_Id__c = 'Prime001';
-                accIPA.Core_Business_Party_Id__c='6784569';
+                //accIPA.Core_Business_Party_Id__c='6784569';
             }
             else{
                 accIPA.Core_Prime_Id__c = 'Prime001'; 
@@ -179,7 +179,7 @@ private class Core_MDF_PMBServiceHandler_Test {
             accIPA1.Core_MDF_CoMarketingActive__c = true;
             if(isUnifiedIdEnabled){
                 accIPA.Core_Unified_Global_Customer_BP_Id__c = 'Prime001';
-                accIPA.Core_Business_Party_Id__c='67845690';
+                //accIPA.Core_Business_Party_Id__c='67845690';
             }else{
                 accIPA.Core_Prime_Id__c = 'Prime001'; 
             }
@@ -187,7 +187,7 @@ private class Core_MDF_PMBServiceHandler_Test {
             intAccList.add(accIPA1);
             
             Account testAcctTemp = Core_MDF_CCP_TestDataUtility.createIntelAccount('CCPTestAccountTemp', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
-            testAcctTemp.Core_Business_Party_Id__c = '0987654';
+            //testAcctTemp.Core_Business_Party_Id__c = '0987654';
             intAccList.add(testAcctTemp);
             
             Database.insert(intAccList);
@@ -240,7 +240,7 @@ private class Core_MDF_PMBServiceHandler_Test {
             Account eefAcc = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Account EEF', cpEef.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type,testAcctTemp.Id, false);
             eefAcc.Core_MDF_Partner_Type_nm__c ='Primary Partner';
             eefAcc.Core_MDF_CoMarketing_Ultimate_Account__c =testAcctTemp.id;
-            eefAcc.Core_Business_Party_Id__c = '09876543';
+            //eefAcc.Core_Business_Party_Id__c = '09876543';
             accList.add(eefAcc);
             
             
@@ -258,7 +258,7 @@ private class Core_MDF_PMBServiceHandler_Test {
             
             ChannelProgram cpIPATest = new ChannelProgram();
             cpIPATest.Name='Intel Partner Alliance';
-            cpIPATest.PRM_programCode__c='IPA';
+            //cpIPATest.PRM_programCode__c='IPA';
             insert cpIPATest;
             
             PRM_AccountChannelMembership__c acctChnlMem2 = new PRM_AccountChannelMembership__c(); 
@@ -363,7 +363,7 @@ private class Core_MDF_PMBServiceHandler_Test {
             Id recordTypeIdPMB = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByName().get('CoMarketing').getRecordTypeId();
             Id rmfRecType = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByName().get('Retail Marketing Funds').getRecordTypeId(); 
             system.runAs(usr){
-                List<String> psList = new List<String>{'Core_MDF_CCP_Internal_Finance_Usr','Core_MDF_CCP_Internal_CCF_User','Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader','Core_MDF_CCP_Internal_Channel_MDF_Budget_Loader','Core_MDF_CCP_Internal_IPA_Budget_Loader','Core_MDF_CCP_Internal_Finance_Manager','Core_MDF_CCP_Internal_CCF_MDF_Budget_Approver','Core_MDF_CCP_Internal_Retail_Finance_Usr','Core_MDF_CCP_Internal_DCF_User','Core_MDF_Internal_EEF_Budget_Loader'};
+                List<String> psList = new List<String>{'Core_MDF_CCP_Internal_Finance_Usr','Core_MDF_CCP_Internal_CCF_User','Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader','Core_MDF_CCP_Internal_Channel_MDF_Budget_Loader_Approver','Core_MDF_CCP_Internal_IPA_Budget_Loader','Core_MDF_CCP_Internal_Finance_Manager','Core_MDF_CCP_Internal_CCF_MDF_Budget_Approver','Core_MDF_CCP_Internal_Retail_Finance_Usr','Core_MDF_CCP_Internal_DCF_User','Core_MDF_Internal_EEF_Budget_Loader'};
                     for(PermissionSet ps : [SELECT Id,Name FROM PermissionSet WHERE Name IN: psList]){
                         psNameToIdMap.put(ps.Name, ps.Id);
                     }
@@ -439,6 +439,9 @@ private class Core_MDF_PMBServiceHandler_Test {
             
             System.runAs(testuser){
                 Profile ccpCoreProfile = [SELECT Id FROM Profile WHERE Name = 'CCP - Core Access'];
+                for(PermissionSet ps : [SELECT Id,Name FROM PermissionSet WHERE Name IN ('Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader','Core_MDF_CCP_Internal_Channel_MDF_Budget_Loader_Approver','Core_MDF_CCP_Internal_IPA_Budget_Loader','Core_MDF_Internal_EEF_Budget_Loader')]){
+                    psNameToIdMap.put(ps.Name, ps.Id);
+                }
                 List<User> userList = new List<User>();
                 User mdfBudgetLoader = Core_MDF_CCP_TestDataUtility.createUser(false);
                 mdfBudgetLoader.LastName = 'TestClass MDF Budget Loader';
@@ -465,7 +468,7 @@ private class Core_MDF_PMBServiceHandler_Test {
                 psaList1.add(psa1);
                 PermissionSetAssignment psa2 = new PermissionSetAssignment();
                 psa2.AssigneeId = cmdfBudgetLoader.id;
-                psa2.PermissionSetId = psNameToIdMap.get('Core_MDF_CCP_Internal_Channel_MDF_Budget_Loader');
+                psa2.PermissionSetId = psNameToIdMap.get('Core_MDF_CCP_Internal_Channel_MDF_Budget_Loader_Approver');
                 psaList1.add(psa2);
                 PermissionSetAssignment psa3 = new PermissionSetAssignment();
                 psa3.AssigneeId = ipaBudgetLoader.id;
@@ -608,7 +611,7 @@ private class Core_MDF_PMBServiceHandler_Test {
     @isTest static void createanddeletePNUMRecords(){
         test.startTest();
         User usr = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
-        Account acc1 = [SELECT Id,Core_Business_Party_Id__c from Account where Name='Test Account 1' limit 1];
+        Account acc1 = [SELECT Id from Account where Name='Test Account 1' limit 1];
         ChannelProgram cp = [Select id from ChannelProgram limit 1];
         Id recordTypeIdPMB = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByName().get('CoMarketing').getRecordTypeId();
         System.runAs(usr){
@@ -647,7 +650,7 @@ private class Core_MDF_PMBServiceHandler_Test {
     // Test method tp fetch and delete the created PNUM Records
     @isTest static void validateDecreasedBudgetAmountOnChange(){
         test.startTest();
-        Account acc3 = [SELECT Id,Core_Business_Party_Id__c,Core_MDF_Parent_Fund_Account__c,Core_MDF_Parent_Fund_Account__r.Id from Account where Name='Test Account 3' limit 1];
+        Account acc3 = [SELECT Id,Core_MDF_Parent_Fund_Account__c,Core_MDF_Parent_Fund_Account__r.Id from Account where Name='Test Account 3' limit 1];
         ChannelProgram cp = [Select id from ChannelProgram where Name='Client' limit 1];
         User usr = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         PartnerMarketingBudget  pmbRecordtobeUpdated = new PartnerMarketingBudget();
@@ -708,7 +711,7 @@ private class Core_MDF_PMBServiceHandler_Test {
     
     @isTest static void validateDecreasedBudgetAmountOnMDF(){
         test.startTest();
-        Account acc3 = [SELECT Id,Core_Business_Party_Id__c,Core_MDF_Parent_Fund_Account__c,Core_MDF_Parent_Fund_Account__r.Id from Account where Name='Test Account 3' limit 1];
+        Account acc3 = [SELECT Id,Core_MDF_Parent_Fund_Account__c,Core_MDF_Parent_Fund_Account__r.Id from Account where Name='Test Account 3' limit 1];
         ChannelProgram cp = [Select id from ChannelProgram where Name='Client' limit 1];
         
         User usr = [SELECT Id,Email from User where LastName='TestClass MDF Budget Loader' limit 1];
@@ -798,7 +801,7 @@ private class Core_MDF_PMBServiceHandler_Test {
     //Test method to Check Decreased budget amount
     @isTest static void ValidateMdfBudgetDecreasedAmount(){
         test.startTest();
-        Account acc3 = [SELECT Id,Core_Business_Party_Id__c,Core_MDF_Parent_Fund_Account__c,Core_MDF_Parent_Fund_Account__r.Id from Account where Name='Test Account 3' limit 1];
+        Account acc3 = [SELECT Id,Core_MDF_Parent_Fund_Account__c,Core_MDF_Parent_Fund_Account__r.Id from Account where Name='Test Account 3' limit 1];
         ChannelProgram cp = [Select id from ChannelProgram where Name='Client' limit 1];
         
         User usr = [SELECT Id,Email from User where LastName='TestClass MDF Budget Loader' limit 1];
@@ -830,7 +833,7 @@ private class Core_MDF_PMBServiceHandler_Test {
     @isTest static void ValidateNonMdfBudgetDecreasedAmount(){
         test.startTest();
         User usr = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
-        Account acc3 = [SELECT Id,Core_Business_Party_Id__c from Account where Name='Test Account 3' limit 1];
+        Account acc3 = [SELECT Id from Account where Name='Test Account 3' limit 1];
         ChannelProgram cp = [Select id from ChannelProgram limit 1];
         Id recordTypeIdPMB = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByName().get('CoMarketing').getRecordTypeId();
         System.runAs(usr){
@@ -877,7 +880,7 @@ private class Core_MDF_PMBServiceHandler_Test {
     @isTest static void validateBudgetCreationNegative(){
         test.startTest();
         User usr = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
-        Account acc1 = [SELECT Id,Core_Business_Party_Id__c from Account where Name='Test Account 3' limit 1];
+        Account acc1 = [SELECT Id from Account where Name='Test Account 3' limit 1];
         ChannelProgram cpMDF = [Select id from ChannelProgram where Name='Client' limit 1];
         PartnerMarketingBudget  pmbRecordtobeUpdated = new PartnerMarketingBudget();
         Id recordTypeIdPMB = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByName().get('Channel MDF Account Based').getRecordTypeId();
@@ -929,7 +932,7 @@ private class Core_MDF_PMBServiceHandler_Test {
     @isTest static void validateBudgetCreationPositiveChannelMDF(){
         test.startTest();
         User usr = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
-        PermissionSet ps1 = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Channel_MDF_Budget_Loader'];
+        PermissionSet ps1 = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Channel_MDF_Budget_Loader_Approver'];
         insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = ps1.Id);
         Account acc1 = [SELECT Id from Account where Name='CMDF Test Account' limit 1];//
         ChannelProgram cpMDF = [Select id from ChannelProgram where Name='Client' limit 1];

@@ -2132,7 +2132,7 @@
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>Claim_Submitter_is_deleted</name>
-            <conditionLogic>((1 AND 3 AND 5) AND (2 AND 4 AND 6) AND (7 AND 8 AND 9) AND (10 AND 11 AND 12))</conditionLogic>
+            <conditionLogic>((1 AND 3 AND 5) AND (2 AND 4 AND 6) AND (7 AND 8 AND 9) AND (10 AND 11 AND 12) AND (13 AND 14 AND 15))</conditionLogic>
             <conditions>
                 <leftValueReference>CCFClaimSubmitter</leftValueReference>
                 <operator>IsNull</operator>
@@ -2212,6 +2212,27 @@
             </conditions>
             <conditions>
                 <leftValueReference>CCFB_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>Complete</stringValue>
@@ -2224,7 +2245,7 @@
         </rules>
         <rules>
             <name>Claim_Submitter_is_deleted1</name>
-            <conditionLogic>((1 AND 3 AND 4) AND 2 AND 5 AND 6)</conditionLogic>
+            <conditionLogic>((1 AND 3 AND 4) AND 2 AND 5 AND 6 AND 7)</conditionLogic>
             <conditions>
                 <leftValueReference>CCFClaimSubmitter</leftValueReference>
                 <operator>IsNull</operator>
@@ -2262,6 +2283,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -2274,7 +2302,7 @@
         </rules>
         <rules>
             <name>Claim_Submitter_is_deleted2</name>
-            <conditionLogic>((1 AND 3 AND 4) AND 2 AND 5 AND 6)</conditionLogic>
+            <conditionLogic>((1 AND 3 AND 4) AND 2 AND 5 AND 6 AND 7)</conditionLogic>
             <conditions>
                 <leftValueReference>DCFClaimSubmitter</leftValueReference>
                 <operator>IsNull</operator>
@@ -2312,6 +2340,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -2324,7 +2359,7 @@
         </rules>
         <rules>
             <name>Claim_Submitter_is_deleted3</name>
-            <conditionLogic>(1 AND 2 AND 3) AND 4 AND 5 AND 6</conditionLogic>
+            <conditionLogic>(1 AND 2 AND 3) AND 4 AND 5 AND 6 AND 7</conditionLogic>
             <conditions>
                 <leftValueReference>Check_SPCFClaimSubmitter</leftValueReference>
                 <operator>IsNull</operator>
@@ -2362,6 +2397,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -2374,7 +2416,7 @@
         </rules>
         <rules>
             <name>Claim_Submitter_is_deleted4</name>
-            <conditionLogic>((1 AND 3 AND 5) AND (2 AND 4 AND 6) AND 7 AND 8)</conditionLogic>
+            <conditionLogic>((1 AND 3 AND 5) AND (2 AND 4 AND 6) AND 7 AND 8 AND 9)</conditionLogic>
             <conditions>
                 <leftValueReference>CCFClaimSubmitter</leftValueReference>
                 <operator>IsNull</operator>
@@ -2426,6 +2468,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -2438,7 +2487,7 @@
         </rules>
         <rules>
             <name>Claim_Submitter_is_deleted5</name>
-            <conditionLogic>((1 AND 3 AND 5) AND (2 AND 4 AND 6) AND 7 AND 8)</conditionLogic>
+            <conditionLogic>((1 AND 3 AND 5) AND (2 AND 4 AND 6) AND 7 AND 8 AND 9)</conditionLogic>
             <conditions>
                 <leftValueReference>CCFClaimSubmitter</leftValueReference>
                 <operator>IsNull</operator>
@@ -2490,6 +2539,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -2502,7 +2558,7 @@
         </rules>
         <rules>
             <name>Claim_Submitter_is_deleted6</name>
-            <conditionLogic>((1 AND 3 AND 5) AND (2 AND 4 AND 6) AND 7 AND 8)</conditionLogic>
+            <conditionLogic>((1 AND 3 AND 5) AND (2 AND 4 AND 6) AND 7 AND 8 AND 9)</conditionLogic>
             <conditions>
                 <leftValueReference>DCFClaimSubmitter</leftValueReference>
                 <operator>IsNull</operator>
@@ -2554,6 +2610,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -2566,7 +2629,7 @@
         </rules>
         <rules>
             <name>Remove_CCFB_Claim_Submitter1</name>
-            <conditionLogic>((1 AND 2 AND 3) AND 4 AND 5 AND 6)</conditionLogic>
+            <conditionLogic>((1 AND 2 AND 3) AND 4 AND 5 AND 6 AND 7)</conditionLogic>
             <conditions>
                 <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
@@ -2604,6 +2667,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>Check_SPCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -2616,7 +2686,7 @@
         </rules>
         <rules>
             <name>Remove_CCFB_SPCF_Claim_Submitter</name>
-            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND 7 AND 8)</conditionLogic>
+            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND 7 AND 8 AND 9)</conditionLogic>
             <conditions>
                 <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
@@ -2668,6 +2738,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>DCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -2680,7 +2757,7 @@
         </rules>
         <rules>
             <name>Remove_CCFB_DCF_Claim_Submitter</name>
-            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND 7 AND 8)</conditionLogic>
+            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND 7 AND 8 AND 9)</conditionLogic>
             <conditions>
                 <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
@@ -2732,6 +2809,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>Check_SPCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -2744,7 +2828,7 @@
         </rules>
         <rules>
             <name>Remove_CCFB_CCF_Claim_Submitter</name>
-            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND 7 AND 8)</conditionLogic>
+            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND 7 AND 8 AND 9)</conditionLogic>
             <conditions>
                 <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
@@ -2796,6 +2880,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>Check_SPCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -2808,7 +2899,7 @@
         </rules>
         <rules>
             <name>Remove_CCF_DCF_SPCF_Claim_Submitter</name>
-            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10)</conditionLogic>
+            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10 AND 11)</conditionLogic>
             <conditions>
                 <leftValueReference>CCFClaimSubmitter</leftValueReference>
                 <operator>IsNull</operator>
@@ -2874,6 +2965,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -2886,7 +2984,7 @@
         </rules>
         <rules>
             <name>Remove_DCF_SPCF_CCFB_Claim_Submitter</name>
-            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10)</conditionLogic>
+            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10 AND 11)</conditionLogic>
             <conditions>
                 <leftValueReference>DCFClaimSubmitter</leftValueReference>
                 <operator>IsNull</operator>
@@ -2952,6 +3050,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>CCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -2964,7 +3069,7 @@
         </rules>
         <rules>
             <name>Remove_CCF_SPCF_CCFB_Claim_Submitter</name>
-            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10)</conditionLogic>
+            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10 AND 11)</conditionLogic>
             <conditions>
                 <leftValueReference>CCFClaimSubmitter</leftValueReference>
                 <operator>IsNull</operator>
@@ -3035,6 +3140,13 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>Claim_Submitter_Permission</targetReference>
             </connector>
@@ -3042,7 +3154,7 @@
         </rules>
         <rules>
             <name>Remove_CCF_DCF_CCFB_Claim_Submitter</name>
-            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10)</conditionLogic>
+            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10 AND 11)</conditionLogic>
             <conditions>
                 <leftValueReference>CCFClaimSubmitter</leftValueReference>
                 <operator>IsNull</operator>
@@ -3113,10 +3225,1363 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>Claim_Submitter_Permission</targetReference>
             </connector>
             <label>Remove CCF-DCF-CCFB Claim Submitter</label>
+        </rules>
+        <rules>
+            <name>Remove_Retail_Claim_Submitter_Ent</name>
+            <conditionLogic>(1 AND 2 AND 3) AND 4 AND 5 AND 6 AND 7</conditionLogic>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Claim_Submitter_Permission</targetReference>
+            </connector>
+            <label>Remove Retail Claim Submitter Ent</label>
+        </rules>
+        <rules>
+            <name>Remove_CCFB_Retail_Claim_Submitter</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND 7 AND 8 AND 9</conditionLogic>
+            <conditions>
+                <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Claim_Submitter_Permission</targetReference>
+            </connector>
+            <label>Remove CCFB-Retail Claim Submitter</label>
+        </rules>
+        <rules>
+            <name>Remove_SPCF_Retail_claim_submitter</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND 7 AND 8 AND 9</conditionLogic>
+            <conditions>
+                <leftValueReference>Check_SPCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFClaimSubmitter1.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFClaimSubmitter1.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Claim_Submitter_Permission</targetReference>
+            </connector>
+            <label>Remove SPCF-Retail claim submitter</label>
+        </rules>
+        <rules>
+            <name>Remove_DCF_Retail_Claim_Submitter</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND 7 AND 8 AND 9</conditionLogic>
+            <conditions>
+                <leftValueReference>DCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFClaimSubmitter.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFClaimSubmitter.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Claim_Submitter_Permission</targetReference>
+            </connector>
+            <label>Remove DCF-Retail Claim Submitter</label>
+        </rules>
+        <rules>
+            <name>Remove_CCF_Retail_Claim_Submitter</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND 7 AND 8 AND 9</conditionLogic>
+            <conditions>
+                <leftValueReference>CCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFClaimSubmitter.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFClaimSubmitter.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Claim_Submitter_Permission</targetReference>
+            </connector>
+            <label>Remove CCF-Retail Claim Submitter</label>
+        </rules>
+        <rules>
+            <name>Remove_SPCF_CCFB_Retail_Claim_Submitter</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10 AND 11</conditionLogic>
+            <conditions>
+                <leftValueReference>Check_SPCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFClaimSubmitter1.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFClaimSubmitter1.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Claim_Submitter_Permission</targetReference>
+            </connector>
+            <label>Remove SPCF-CCFB-Retail Claim Submitter</label>
+        </rules>
+        <rules>
+            <name>Remove_DCF_SPCF_Retail_Claim_Submitter</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10 AND 11</conditionLogic>
+            <conditions>
+                <leftValueReference>DCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFClaimSubmitter.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFClaimSubmitter.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFClaimSubmitter1.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFClaimSubmitter1.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Claim_Submitter_Permission</targetReference>
+            </connector>
+            <label>Remove DCF-SPCF-Retail Claim Submitter</label>
+        </rules>
+        <rules>
+            <name>Remove_CCF_SPCF_Retail_Claim_Submitter</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10 AND 11</conditionLogic>
+            <conditions>
+                <leftValueReference>CCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFClaimSubmitter.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFClaimSubmitter.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFClaimSubmitter1.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFClaimSubmitter1.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Claim_Submitter_Permission</targetReference>
+            </connector>
+            <label>Remove CCF-SPCF-Retail Claim Submitter</label>
+        </rules>
+        <rules>
+            <name>Remove_DCF_CCFB_Retail_Claim_Submitter</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10 AND 11</conditionLogic>
+            <conditions>
+                <leftValueReference>DCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFClaimSubmitter.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFClaimSubmitter.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Claim_Submitter_Permission</targetReference>
+            </connector>
+            <label>Remove DCF-CCFB_Retail Claim Submitter</label>
+        </rules>
+        <rules>
+            <name>Remove_CCF_CCFB_Retail_Claim_Submitter</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10 AND 11</conditionLogic>
+            <conditions>
+                <leftValueReference>CCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFClaimSubmitter.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFClaimSubmitter.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Claim_Submitter_Permission</targetReference>
+            </connector>
+            <label>Remove CCF-CCFB-Retail Claim Submitter</label>
+        </rules>
+        <rules>
+            <name>Remove_CCF_DCF_Retail_Claim_Submitter</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10 AND 11</conditionLogic>
+            <conditions>
+                <leftValueReference>CCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFClaimSubmitter.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFClaimSubmitter.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFClaimSubmitter</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFClaimSubmitter.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFClaimSubmitter.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Claim_Submitter_Permission</targetReference>
+            </connector>
+            <label>Remove CCF-DCF-Retail Claim Submitter</label>
+        </rules>
+        <rules>
+            <name>Remove_DCF_SPCF_CCFB_Retail_Claim_Submitter</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND (10 AND 11 AND 12) AND 13</conditionLogic>
+            <conditions>
+                <leftValueReference>DCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFClaimSubmitter.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFClaimSubmitter.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFClaimSubmitter1.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFClaimSubmitter1.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Claim_Submitter_Permission</targetReference>
+            </connector>
+            <label>Remove DCF-SPCF-CCFB-Retail Claim Submitter</label>
+        </rules>
+        <rules>
+            <name>Remove_CCF_DCF_CCFB_Retail_Claim_Submitter</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND (10 AND 11 AND 12) AND 13</conditionLogic>
+            <conditions>
+                <leftValueReference>CCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFClaimSubmitter.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFClaimSubmitter.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFClaimSubmitter.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFClaimSubmitter.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Claim_Submitter_Permission</targetReference>
+            </connector>
+            <label>Remove CCF-DCF-CCFB-Retail Claim Submitter</label>
+        </rules>
+        <rules>
+            <name>Remove_CCF_DCF_SPCF_CCFB_Claim_Submitter</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND (10 AND 11 AND 12) AND 13</conditionLogic>
+            <conditions>
+                <leftValueReference>CCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFClaimSubmitter.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFClaimSubmitter.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFClaimSubmitter.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFClaimSubmitter.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFClaimSubmitter1.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFClaimSubmitter1.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Claim_Submitter_Permission</targetReference>
+            </connector>
+            <label>Remove CCF-DCF-SPCF-CCFB Claim Submitter</label>
+        </rules>
+        <rules>
+            <name>Remove_CCF_DCF_SPCF_Retail_Claim_Submitter</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND (10 AND 11 AND 12) AND 13</conditionLogic>
+            <conditions>
+                <leftValueReference>CCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFClaimSubmitter.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFClaimSubmitter.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFClaimSubmitter.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFClaimSubmitter.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFClaimSubmitter1.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFClaimSubmitter1.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Claim_Submitter_Permission</targetReference>
+            </connector>
+            <label>Remove CCF-DCF-SPCF-Retail Claim Submitter</label>
+        </rules>
+        <rules>
+            <name>Remove_CCF_SPCF_CCFB_Retail_Claim_Submitter</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND (10 AND 11 AND 12) AND 13</conditionLogic>
+            <conditions>
+                <leftValueReference>CCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFClaimSubmitter.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFClaimSubmitter.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFClaimSubmitter1.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFClaimSubmitter1.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailClaimSubmitter_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFClaimSubmitter</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Claim_Submitter_Permission</targetReference>
+            </connector>
+            <label>Remove CCF-SPCF-CCFB-Retail Claim Submitter</label>
         </rules>
     </decisions>
     <decisions>
@@ -4117,12 +5582,12 @@
     <decisions>
         <name>Check_if_External_User_Admin_is_deleted</name>
         <label>Check if External User Admin is deleted</label>
-        <locationX>1879</locationX>
-        <locationY>913</locationY>
+        <locationX>1849</locationX>
+        <locationY>921</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>External_User_Admin_is_deleted</name>
-            <conditionLogic>((1 AND 3 AND 5) AND (2 AND 4 AND 6) AND (7 AND 8 AND 9) AND (10 AND 11 AND 12))</conditionLogic>
+            <conditionLogic>((1 AND 3 AND 5) AND (2 AND 4 AND 6) AND (7 AND 8 AND 9) AND (10 AND 11 AND 12) AND (13 AND 14 AND 15))</conditionLogic>
             <conditions>
                 <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
                 <operator>IsNull</operator>
@@ -4202,6 +5667,27 @@
             </conditions>
             <conditions>
                 <leftValueReference>CCFB_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>Complete</stringValue>
@@ -4214,7 +5700,7 @@
         </rules>
         <rules>
             <name>External_User_Admin_is_deleted1</name>
-            <conditionLogic>((1 AND 3 AND 4) AND 2 AND 5 AND 6)</conditionLogic>
+            <conditionLogic>((1 AND 3 AND 4) AND 2 AND 5 AND 6 AND 7)</conditionLogic>
             <conditions>
                 <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
                 <operator>IsNull</operator>
@@ -4252,6 +5738,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -4264,7 +5757,7 @@
         </rules>
         <rules>
             <name>External_User_Admin_is_deleted2</name>
-            <conditionLogic>((1 AND 3 AND 4) AND 2 AND 5 AND 6)</conditionLogic>
+            <conditionLogic>((1 AND 3 AND 4) AND 2 AND 5 AND 6 AND 7)</conditionLogic>
             <conditions>
                 <leftValueReference>DCFExternalUserAdministrator</leftValueReference>
                 <operator>IsNull</operator>
@@ -4302,6 +5795,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -4314,7 +5814,7 @@
         </rules>
         <rules>
             <name>External_User_Admin_is_deleted3</name>
-            <conditionLogic>(1 AND 2 AND 3) AND 4 AND 5 AND 6</conditionLogic>
+            <conditionLogic>(1 AND 2 AND 3) AND 4 AND 5 AND 6 AND 7</conditionLogic>
             <conditions>
                 <leftValueReference>Check_SPCFUserAdmin</leftValueReference>
                 <operator>IsNull</operator>
@@ -4352,6 +5852,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -4364,7 +5871,7 @@
         </rules>
         <rules>
             <name>External_User_Admin_is_deleted4</name>
-            <conditionLogic>((1 AND 3 AND 5) AND (2 AND 4 AND 6) AND 7 AND 8)</conditionLogic>
+            <conditionLogic>((1 AND 3 AND 5) AND (2 AND 4 AND 6) AND 7 AND 8 AND 9)</conditionLogic>
             <conditions>
                 <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
                 <operator>IsNull</operator>
@@ -4416,6 +5923,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -4428,7 +5942,7 @@
         </rules>
         <rules>
             <name>External_User_Admin_is_deleted5</name>
-            <conditionLogic>((1 AND 3 AND 5) AND (2 AND 4 AND 6) AND 7 AND 8)</conditionLogic>
+            <conditionLogic>((1 AND 3 AND 5) AND (2 AND 4 AND 6) AND 7 AND 8 AND 9)</conditionLogic>
             <conditions>
                 <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
                 <operator>IsNull</operator>
@@ -4480,6 +5994,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -4492,7 +6013,7 @@
         </rules>
         <rules>
             <name>External_User_Admin_is_deleted6</name>
-            <conditionLogic>((1 AND 3 AND 5) AND (2 AND 4 AND 6) AND 7 AND 8)</conditionLogic>
+            <conditionLogic>((1 AND 3 AND 5) AND (2 AND 4 AND 6) AND 7 AND 8 AND 9)</conditionLogic>
             <conditions>
                 <leftValueReference>DCFExternalUserAdministrator</leftValueReference>
                 <operator>IsNull</operator>
@@ -4544,6 +6065,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -4556,7 +6084,7 @@
         </rules>
         <rules>
             <name>Remove_CCFB_User_Administrator</name>
-            <conditionLogic>((1 AND 2 AND 3) AND 4 AND 5 AND 6)</conditionLogic>
+            <conditionLogic>((1 AND 2 AND 3) AND 4 AND 5 AND 6 AND 7)</conditionLogic>
             <conditions>
                 <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
@@ -4594,6 +6122,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>Check_SPCFUserAdmin</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -4606,7 +6141,7 @@
         </rules>
         <rules>
             <name>Remove_CCFB_SPCF_User_Administrator</name>
-            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND 7 AND 8)</conditionLogic>
+            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND 7 AND 8 AND 9)</conditionLogic>
             <conditions>
                 <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
@@ -4658,6 +6193,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>DCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -4670,7 +6212,7 @@
         </rules>
         <rules>
             <name>Remove_CCFB_DCF_User_Administrator</name>
-            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND 7 AND 8)</conditionLogic>
+            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND 7 AND 8 AND 9)</conditionLogic>
             <conditions>
                 <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
@@ -4722,6 +6264,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>Check_SPCFUserAdmin</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -4734,7 +6283,7 @@
         </rules>
         <rules>
             <name>Remove_CCFB_CCF_User_Administrator</name>
-            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND 7 AND 8)</conditionLogic>
+            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND 7 AND 8 AND 9)</conditionLogic>
             <conditions>
                 <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
@@ -4786,6 +6335,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>Check_SPCFUserAdmin</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -4798,7 +6354,7 @@
         </rules>
         <rules>
             <name>Remove_CCF_DCF_SPCF_User_Administrator</name>
-            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10)</conditionLogic>
+            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10 AND 11)</conditionLogic>
             <conditions>
                 <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
                 <operator>IsNull</operator>
@@ -4864,6 +6420,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -4876,7 +6439,7 @@
         </rules>
         <rules>
             <name>Remove_DCF_SPCF_CCFB_User_Administrator</name>
-            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10)</conditionLogic>
+            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10 AND 11)</conditionLogic>
             <conditions>
                 <leftValueReference>DCFExternalUserAdministrator</leftValueReference>
                 <operator>IsNull</operator>
@@ -4942,6 +6505,13 @@
             </conditions>
             <conditions>
                 <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -4954,7 +6524,7 @@
         </rules>
         <rules>
             <name>Remove_CCF_SPCF_CCFB_User_Administrator</name>
-            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10)</conditionLogic>
+            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10 AND 11)</conditionLogic>
             <conditions>
                 <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
                 <operator>IsNull</operator>
@@ -5025,6 +6595,13 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>External_User_Admin_Permission</targetReference>
             </connector>
@@ -5032,7 +6609,7 @@
         </rules>
         <rules>
             <name>Remove_CCF_DCF_CCFB_User_Administrator</name>
-            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10)</conditionLogic>
+            <conditionLogic>((1 AND 2 AND 3)  AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10 AND 11)</conditionLogic>
             <conditions>
                 <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
                 <operator>IsNull</operator>
@@ -5103,10 +6680,1363 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>External_User_Admin_Permission</targetReference>
             </connector>
             <label>Remove CCF-DCF-CCFB User Administrator</label>
+        </rules>
+        <rules>
+            <name>Remove_Retail_User_Admin</name>
+            <conditionLogic>(1 AND 2 AND 3) AND 4 AND 5 AND 6 AND 7</conditionLogic>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFUserAdmin</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>External_User_Admin_Permission</targetReference>
+            </connector>
+            <label>Remove Retail User Admin</label>
+        </rules>
+        <rules>
+            <name>Remove_CCFB_Retail_User_Admin</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND 7 AND 8 AND 9</conditionLogic>
+            <conditions>
+                <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFUserAdmin</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>External_User_Admin_Permission</targetReference>
+            </connector>
+            <label>Remove CCFB-Retail User Admin</label>
+        </rules>
+        <rules>
+            <name>Remove_SPCF_Retail_User_Admin</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Check_SPCFUserAdmin</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFUserAdmin1.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFUserAdmin1.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>External_User_Admin_Permission</targetReference>
+            </connector>
+            <label>Remove SPCF-Retail User Admin</label>
+        </rules>
+        <rules>
+            <name>Remove_DCF_Retail_User_Admin</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND 7 AND 8 AND 9</conditionLogic>
+            <conditions>
+                <leftValueReference>DCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFExternalUserAdmin.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFExternalUserAdmin.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFUserAdmin</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>External_User_Admin_Permission</targetReference>
+            </connector>
+            <label>Remove DCF-Retail User Admin</label>
+        </rules>
+        <rules>
+            <name>Remove_CCF_Retail_User_Admin</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND 7 AND 8 AND 9</conditionLogic>
+            <conditions>
+                <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFExternalUserAdmin.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFExternalUserAdmin.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFUserAdmin</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>External_User_Admin_Permission</targetReference>
+            </connector>
+            <label>Remove CCF-Retail User Admin</label>
+        </rules>
+        <rules>
+            <name>Remove_SPCF_CCFB_Retail_User_Admin</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10 AND 11</conditionLogic>
+            <conditions>
+                <leftValueReference>Check_SPCFUserAdmin</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFUserAdmin1.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFUserAdmin1.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>External_User_Admin_Permission</targetReference>
+            </connector>
+            <label>Remove SPCF-CCFB-Retail User Admin</label>
+        </rules>
+        <rules>
+            <name>Remove_DCF_SPCF_Retail_User_Admin</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10 AND 11</conditionLogic>
+            <conditions>
+                <leftValueReference>DCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFExternalUserAdmin.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFExternalUserAdmin.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFUserAdmin</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFUserAdmin1.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFUserAdmin1.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>External_User_Admin_Permission</targetReference>
+            </connector>
+            <label>Remove DCF-SPCF-Retail User Admin</label>
+        </rules>
+        <rules>
+            <name>Remove_CCF_SPCF_Retail_User_Admin</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10 AND 11</conditionLogic>
+            <conditions>
+                <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFExternalUserAdmin.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFExternalUserAdmin.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFUserAdmin</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFUserAdmin1.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFUserAdmin1.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>External_User_Admin_Permission</targetReference>
+            </connector>
+            <label>Remove CCF-SPCF-Retail User Admin</label>
+        </rules>
+        <rules>
+            <name>Remove_DCF_CCFB_Retail_User_Admin</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10 AND 11</conditionLogic>
+            <conditions>
+                <leftValueReference>DCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFExternalUserAdmin.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFExternalUserAdmin.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFUserAdmin</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>External_User_Admin_Permission</targetReference>
+            </connector>
+            <label>Remove DCF-CCFB-Retail User Admin</label>
+        </rules>
+        <rules>
+            <name>Remove_CCF_CCFB_Retail_User_Admin</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10 AND 11</conditionLogic>
+            <conditions>
+                <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFExternalUserAdmin.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFExternalUserAdmin.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFUserAdmin</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>External_User_Admin_Permission</targetReference>
+            </connector>
+            <label>Remove CCF-CCFB-Retail User Admin</label>
+        </rules>
+        <rules>
+            <name>Remove_CCF_DCF_Retail_User_Admin</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND 10 AND 11</conditionLogic>
+            <conditions>
+                <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFExternalUserAdmin.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFExternalUserAdmin.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFExternalUserAdmin.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFExternalUserAdmin.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFUserAdmin</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>External_User_Admin_Permission</targetReference>
+            </connector>
+            <label>Remove CCF-DCF-Retail User Admin</label>
+        </rules>
+        <rules>
+            <name>Remove_DCF_SPCF_CCFB_Retail_User_Admin</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND (10 AND 11 AND 12) AND 13</conditionLogic>
+            <conditions>
+                <leftValueReference>DCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFExternalUserAdmin.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFExternalUserAdmin.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFUserAdmin</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFUserAdmin1.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFUserAdmin1.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>External_User_Admin_Permission</targetReference>
+            </connector>
+            <label>Remove DCF-SPCF-CCFB-Retail User Admin</label>
+        </rules>
+        <rules>
+            <name>Remove_CCF_DCF_CCFB_Retail_User_Admin</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND (10 AND 11 AND 12) AND 13</conditionLogic>
+            <conditions>
+                <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFExternalUserAdmin.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFExternalUserAdmin.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFExternalUserAdmin.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFExternalUserAdmin.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFUserAdmin</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>External_User_Admin_Permission</targetReference>
+            </connector>
+            <label>Remove CCF-DCF-CCFB-Retail User Admin</label>
+        </rules>
+        <rules>
+            <name>Remove_CCF_DCF_SPCF_CCFB_User_Admin</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND (10 AND 11 AND 12) AND 13</conditionLogic>
+            <conditions>
+                <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFExternalUserAdmin.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFExternalUserAdmin.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFExternalUserAdmin.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFExternalUserAdmin.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFUserAdmin</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFUserAdmin1.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFUserAdmin1.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>External_User_Admin_Permission</targetReference>
+            </connector>
+            <label>Remove CCF-DCF-SPCF-CCFB User Admin</label>
+        </rules>
+        <rules>
+            <name>Remove_CCF_DCF_SPCF_Retail_User_Admin</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND (10 AND 11 AND 12) AND 13</conditionLogic>
+            <conditions>
+                <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFExternalUserAdmin.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFExternalUserAdmin.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFExternalUserAdmin.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vDCFExternalUserAdmin.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFUserAdmin</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFUserAdmin1.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFUserAdmin1.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>External_User_Admin_Permission</targetReference>
+            </connector>
+            <label>Remove CCF-DCF-SPCF-Retail User Admin</label>
+        </rules>
+        <rules>
+            <name>Remove_CCF_SPCF_CCFB_Retail_User_Adim</name>
+            <conditionLogic>(1 AND 2 AND 3) AND (4 AND 5 AND 6) AND (7 AND 8 AND 9) AND (10 AND 11 AND 12) AND 13</conditionLogic>
+            <conditions>
+                <leftValueReference>CCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFExternalUserAdmin.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFExternalUserAdmin.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_SPCFUserAdmin</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFUserAdmin1.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SPCFUserAdmin1.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCCFBUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CCFB_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vRetailUserAdministrator_Entitlement</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Retail_UserAdministrator_ConEntitlementRec.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DCFExternalUserAdministrator</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>External_User_Admin_Permission</targetReference>
+            </connector>
+            <label>Remove CCF-SPCF-CCFB-Retail User Adim</label>
         </rules>
     </decisions>
     <decisions>
@@ -6710,6 +9640,66 @@
             </connector>
             <label>CCFB User Administrator</label>
         </rules>
+        <rules>
+            <name>Retail_Claim_Submitter</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>EntitlementID</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>RetailClaimSubmitterEnt</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Wait_for_Retail_Claim_Submitter_Removal</targetReference>
+            </connector>
+            <label>Retail Claim Submitter</label>
+        </rules>
+        <rules>
+            <name>Retail_Activity_Reviewer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>EntitlementID</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>RetailActivityReviewerEnt</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CCP_Retail_Activity_Reviewer</targetReference>
+            </connector>
+            <label>Retail Activity Reviewer</label>
+        </rules>
+        <rules>
+            <name>Retail_User_Admin</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>EntitlementID</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>RetailUserAdminEnt</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Wait_for_Retail_User_Administrator_Removal_0</targetReference>
+            </connector>
+            <label>Retail User Admin</label>
+        </rules>
+        <rules>
+            <name>Retail_User</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>EntitlementID</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>RetailUserEnt</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CCP_Retail_User</targetReference>
+            </connector>
+            <label>Retail User</label>
+        </rules>
     </decisions>
     <formulas>
         <name>AccountBudgetAdministrator_CCF</name>
@@ -6952,6 +9942,36 @@
         <expression>{!$Label.Core_Partner_FAE_Permission_Set_ID}</expression>
     </formulas>
     <formulas>
+        <name>Retail_Activity_Reviewer_Permission</name>
+        <dataType>String</dataType>
+        <expression>{!$Label.Core_Retail_Activity_Reviewer_Permission}</expression>
+    </formulas>
+    <formulas>
+        <name>RetailActivityReviewerEnt</name>
+        <dataType>String</dataType>
+        <expression>{!$Label.Core_Retail_Activity_Reviewer}</expression>
+    </formulas>
+    <formulas>
+        <name>RetailClaimSubmitterEnt</name>
+        <dataType>String</dataType>
+        <expression>{!$Label.Core_Retail_Claim_Submitter}</expression>
+    </formulas>
+    <formulas>
+        <name>RetailUserAdminEnt</name>
+        <dataType>String</dataType>
+        <expression>{!$Label.Core_Retail_User_Administrator}</expression>
+    </formulas>
+    <formulas>
+        <name>RetailUserEnt</name>
+        <dataType>String</dataType>
+        <expression>{!$Label.Core_RMF_User}</expression>
+    </formulas>
+    <formulas>
+        <name>RetailUserPermission</name>
+        <dataType>String</dataType>
+        <expression>{!$Label.Core_Retail_User_Permission}</expression>
+    </formulas>
+    <formulas>
         <name>SPCFAccountBudgetAdministrator</name>
         <dataType>String</dataType>
         <expression>{!$Label.Core_SPCF_Account_Budget_Administrator}</expression>
@@ -7006,6 +10026,11 @@
         <name>WaitForCCFBEntilememntRemoval</name>
         <dataType>DateTime</dataType>
         <expression>{!vFlowDateTime}+0.000000015</expression>
+    </formulas>
+    <formulas>
+        <name>WaitForRetailEntilememntRemoval</name>
+        <dataType>DateTime</dataType>
+        <expression>{!vFlowDateTime}+0.000000020</expression>
     </formulas>
     <interviewLabel>Remove Permission Sets for Entitlements {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Remove Permission Sets and Groups for Entitlements</label>
@@ -7188,6 +10213,50 @@
             <operator>EqualTo</operator>
             <value>
                 <elementReference>CCPExternalViewOnlyPermission</elementReference>
+            </value>
+        </filters>
+        <object>PermissionSetAssignment</object>
+    </recordDeletes>
+    <recordDeletes>
+        <name>CCP_Retail_Activity_Reviewer</name>
+        <label>CCP Retail Activity Reviewer</label>
+        <locationX>1132</locationX>
+        <locationY>1250</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AssigneeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>UserID</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>PermissionSetId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Retail_Activity_Reviewer_Permission</elementReference>
+            </value>
+        </filters>
+        <object>PermissionSetAssignment</object>
+    </recordDeletes>
+    <recordDeletes>
+        <name>CCP_Retail_User</name>
+        <label>CCP Retail User</label>
+        <locationX>1056</locationX>
+        <locationY>1193</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AssigneeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>UserID</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>PermissionSetId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>RetailUserPermission</elementReference>
             </value>
         </filters>
         <object>PermissionSetAssignment</object>
@@ -7855,11 +10924,11 @@
         <description>Check for CCFB Claim Submitter entitlement</description>
         <name>Check_for_CCFB_Claim_Submitter_entitlement</name>
         <label>Check for CCFB Claim Submitter entitlement</label>
-        <locationX>1702</locationX>
-        <locationY>853</locationY>
+        <locationX>1677</locationX>
+        <locationY>895</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Check_if_Claim_Submitter_is_deleted</targetReference>
+            <targetReference>Check_for_Retail_Claim_Submitter_entitlement</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -7972,11 +11041,11 @@
         <description>Check for CCFB User Admin entitlement</description>
         <name>Check_for_CCFB_User_Admin_entitlement</name>
         <label>Check for CCFB User Admin entitlement</label>
-        <locationX>1857</locationX>
-        <locationY>1031</locationY>
+        <locationX>1877</locationX>
+        <locationY>1051</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Check_if_External_User_Admin_is_deleted</targetReference>
+            <targetReference>Check_for_Retail_User_Admin_entitlement</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -8008,10 +11077,87 @@
         </outputAssignments>
     </recordLookups>
     <recordLookups>
+        <name>Check_for_Retail_Claim_Submitter_entitlement</name>
+        <label>Check for Retail Claim Submitter entitlement</label>
+        <locationX>1762</locationX>
+        <locationY>799</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_Claim_Submitter_is_deleted</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Contact_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ContactID</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Entitlement_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>RetailClaimSubmitterEnt</elementReference>
+            </value>
+        </filters>
+        <object>Core_Contact_Entitlement__c</object>
+        <outputAssignments>
+            <assignToReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Selected__c</assignToReference>
+            <field>Core_Selected__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>Retail_ClaimSubmitter_ConEntitlementRec.Core_Status__c</assignToReference>
+            <field>Core_Status__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>vRetailClaimSubmitter_Entitlement</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
+        <description>Check for Retail User Admin entitlement</description>
+        <name>Check_for_Retail_User_Admin_entitlement</name>
+        <label>Check for Retail User Admin entitlement</label>
+        <locationX>1739</locationX>
+        <locationY>977</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_External_User_Admin_is_deleted</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Contact_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ContactID</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Entitlement_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>RetailUserAdminEnt</elementReference>
+            </value>
+        </filters>
+        <object>Core_Contact_Entitlement__c</object>
+        <outputAssignments>
+            <assignToReference>Retail_UserAdministrator_ConEntitlementRec.Core_Selected__c</assignToReference>
+            <field>Core_Selected__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>Retail_UserAdministrator_ConEntitlementRec.Core_Status__c</assignToReference>
+            <field>Core_Status__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>vRetailUserAdministrator_Entitlement</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
         <name>Claim_Submitter_CCF_Permission</name>
         <label>Claim Submitter CCF Permission</label>
-        <locationX>1250</locationX>
-        <locationY>873</locationY>
+        <locationX>1207</locationX>
+        <locationY>1022</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Claim_Submitter_DCF_Permission</targetReference>
@@ -8086,8 +11232,8 @@
     <recordLookups>
         <name>Claim_Submitter_Permission</name>
         <label>Claim Submitter Permission</label>
-        <locationX>1838</locationX>
-        <locationY>753</locationY>
+        <locationX>1885</locationX>
+        <locationY>706</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_for_Claim_Submitter_is_deleted</targetReference>
@@ -8298,8 +11444,8 @@
     <recordLookups>
         <name>External_User_Admin_CCF_Permission</name>
         <label>External User Admin CCF Permission</label>
-        <locationX>1568</locationX>
-        <locationY>1134</locationY>
+        <locationX>1047</locationX>
+        <locationY>1535</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>External_User_Admin_DCF_Permission</targetReference>
@@ -8336,8 +11482,8 @@
     <recordLookups>
         <name>External_User_Admin_DCF_Permission</name>
         <label>External User Admin DCF Permission</label>
-        <locationX>1668</locationX>
-        <locationY>1048</locationY>
+        <locationX>1609</locationX>
+        <locationY>1203</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>User_Administrator_SPCF_Permission</targetReference>
@@ -8571,8 +11717,8 @@
     <recordLookups>
         <name>User_Administrator_SPCF_Permission</name>
         <label>User Administrator SPCF Permission</label>
-        <locationX>1742</locationX>
-        <locationY>968</locationY>
+        <locationX>1635</locationX>
+        <locationY>1067</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_for_CCFB_User_Admin_entitlement</targetReference>
@@ -8606,8 +11752,14 @@
             <field>Id</field>
         </outputAssignments>
     </recordLookups>
-    <startElementReference>Lookup_User</startElementReference>
-    <status>Obsolete</status>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Lookup_User</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
     <textTemplates>
         <name>ChatterPost</name>
         <isViewedAsPlainText>false</isViewedAsPlainText>
@@ -8919,6 +12071,22 @@
         <isOutput>true</isOutput>
     </variables>
     <variables>
+        <name>Retail_ClaimSubmitter_ConEntitlementRec</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Core_Contact_Entitlement__c</objectType>
+    </variables>
+    <variables>
+        <name>Retail_UserAdministrator_ConEntitlementRec</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Core_Contact_Entitlement__c</objectType>
+    </variables>
+    <variables>
         <name>SPCFAccountBudgetAdmin</name>
         <dataType>SObject</dataType>
         <isCollection>false</isCollection>
@@ -9105,6 +12273,20 @@
             <elementReference>$Flow.CurrentDateTime</elementReference>
         </value>
     </variables>
+    <variables>
+        <name>vRetailClaimSubmitter_Entitlement</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>vRetailUserAdministrator_Entitlement</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
     <waits>
         <description>Wait for CCFB Account Budget Admin Removal</description>
         <name>Wait_for_CCFB_Account_Budget_Admin_Removal</name>
@@ -9277,6 +12459,64 @@
                 <name>TimeOffsetUnit</name>
             </inputParameters>
             <label>Remove CCFB User Admin</label>
+        </waitEvents>
+    </waits>
+    <waits>
+        <description>Wait for Retail User Administrator Removal</description>
+        <name>Wait_for_Retail_Claim_Submitter_Removal</name>
+        <label>Wait for Retail Claim Submitter Removal</label>
+        <locationX>435</locationX>
+        <locationY>1435</locationY>
+        <defaultConnectorLabel>Default Path</defaultConnectorLabel>
+        <waitEvents>
+            <name>Remove_Retail_Claim_Submitter</name>
+            <conditionLogic>and</conditionLogic>
+            <connector>
+                <targetReference>Claim_Submitter_CCF_Permission</targetReference>
+            </connector>
+            <eventType>AlarmEvent</eventType>
+            <inputParameters>
+                <name>AlarmTime</name>
+                <value>
+                    <elementReference>WaitForRetailEntilememntRemoval</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeOffset</name>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeOffsetUnit</name>
+            </inputParameters>
+            <label>Remove Retail Claim Submitter</label>
+        </waitEvents>
+    </waits>
+    <waits>
+        <description>Wait for Retail User Administrator Removal</description>
+        <name>Wait_for_Retail_User_Administrator_Removal_0</name>
+        <label>Wait for Retail User Administrator Removal</label>
+        <locationX>675</locationX>
+        <locationY>1569</locationY>
+        <defaultConnectorLabel>Default Path</defaultConnectorLabel>
+        <waitEvents>
+            <name>Remove_Retail_User_Admin_0</name>
+            <conditionLogic>and</conditionLogic>
+            <connector>
+                <targetReference>External_User_Admin_CCF_Permission</targetReference>
+            </connector>
+            <eventType>AlarmEvent</eventType>
+            <inputParameters>
+                <name>AlarmTime</name>
+                <value>
+                    <elementReference>WaitForRetailEntilememntRemoval</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeOffset</name>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeOffsetUnit</name>
+            </inputParameters>
+            <label>Remove Retail User Admin</label>
         </waitEvents>
     </waits>
     <waits>

@@ -1,0 +1,7 @@
+<aura:component implements="force:lightningQuickAction">
+    <aura:method name="ToastMessageUtility" action="{!c.displayToastMessage}" description="Sample"> 
+        <aura:attribute name="title" type="String" default="param1"/> 
+        <aura:attribute name="message" type="String" default="message"/> 
+        <aura:attribute name="type" type="String" default="type"/>        
+    </aura:method>
+</aura:component>

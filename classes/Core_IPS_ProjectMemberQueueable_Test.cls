@@ -42,8 +42,7 @@ private class Core_IPS_ProjectMemberQueueable_Test {
         // Create Users
         ListOfUser = TestUtilities.getListOfUser(1);
         ListOfUser.get(0).ProfileID =  profiles.get('System Administrator');
-	ListOfUser.get(0).UserRoleId = role.Id;
-	insert ListOfUser;
+        insert ListOfUser;
         System.assertEquals(ListOfUser.get(0).profileid, profiles.get('System Administrator'));
         
         // Create Ips Labels
@@ -101,25 +100,22 @@ private class Core_IPS_ProjectMemberQueueable_Test {
             ContactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
             ContactRec.Accountid = ListOfAccounts.get(0).Id;
             ContactRec.Core_IPS_Active__c = true;
-            ContactRec.MailingCountry= 'India';
         }
         System.runAs(ListOfUser.get(0)){
             insert ListOfContacts;
         }
         System.assert(ListOfContacts[0].Id != null, 'Record not created');
         // Create Ips Project
-        List<Core_IPS_Project__c> ListOfIpsProjects = TestUtilities.getListOfIpsProjects(2);
+        List<Core_IPS_Project__c> ListOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsProjects;
         }
         System.assert(ListOfIpsProjects[0].Id != null, 'Record not created');
         // Create Ips Account
-        List<Core_IPS_Account__c> ListOfIpsAccounts = TestUtilities.getListOfIpsAccounts(2);
-        Integer i=0;
+        List<Core_IPS_Account__c> ListOfIpsAccounts = TestUtilities.getListOfIpsAccounts(1);
         for(Core_IPS_Account__c IpsAcc : ListOfIpsAccounts){
             IpsAcc.Core_Account__c = ListOfAccounts.get(0).Id;
-            IpsAcc.Core_IPS_Project__c = ListOfIpsProjects.get(i).Id;
-            if(i==0){ i=i+1; }
+            IpsAcc.Core_IPS_Project__c = ListOfIpsProjects.get(0).Id;
         }
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsAccounts;
@@ -141,22 +137,14 @@ private class Core_IPS_ProjectMemberQueueable_Test {
         //end
         // Create Project Member
         List<Core_IPS_Project_Member__c> ListOfProjectMembers = TestUtilities.getListOfProjectMembers(5);
-        Integer j=0;
         for(Core_IPS_Project_Member__c ProjMem : ListOfProjectMembers){
             ProjMem.Core_IPS_Contact__c = ListOfContacts.get(0).Id;
-            ProjMem.Core_IPS_Project__c = ListOfIpsProjects.get(j).Id;
+            ProjMem.Core_IPS_Project__c = ListOfIpsProjects.get(0).Id;
             ProjMem.Core_User__c = customerUser.Id;            //added by Amritesh
-            if(j==0){ j=j+1; }
         }
         //Test.startTest();
         System.runAs(ListOfUser.get(0)){
             insert ListOfProjectMembers;
-        }
-        System.runAs(ListOfUser.get(0)){
-            Core_IPS_Project__c projRec = new Core_IPS_Project__c();
-            projRec.Id = ListOfIpsProjects.get(0).Id;
-            projRec.Core_IPS_GroupId__c = null;
-            update projRec;
         }
         System.assert(ListOfProjectMembers[0].Id != null, 'Record not created');
         //Test.stopTest();
@@ -189,7 +177,6 @@ private class Core_IPS_ProjectMemberQueueable_Test {
         Map<Id,Core_IPS_Project__c> mapProjectById = new Map<Id,Core_IPS_Project__c>([Select id, Core_IPS_GroupId__c,Createdby.ProfileId from Core_IPS_Project__c where id IN: ProjectIdSet]);
         Test.startTest();
         ID batchId = System.enqueueJob(new Core_IPS_ProjectMemberQueueable(lstProjMember, mapProjectById));      
-        ID batchId1 = System.enqueueJob(new Core_IPS_ProjectMemberQueueable(null,lstProjMember, mapProjectById,'addprojectmember',0));  
         System.assert(batchId!=null , 'Not in Queue'); 
         Test.stopTest();
     }
@@ -273,45 +260,10 @@ private class Core_IPS_ProjectMemberQueueable_Test {
         for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
         }
-	User thisUser = [ select Id from User where profile.Name = 'System Administrator' and userRoleId != null AND ISActive=true Limit 1];
-        Account accountRecord = new Account(
-                recordTypeId =   (Id)Schema.sobjecttype.Account.getrecordtypeinfosbyname().get('Intel Account').getRecordTypeId(),
-                Name = 'Dell Products Test',
-                Core_Account_Type__c = 'Distributor',
-                Core_Sales_Segment__c = 'Compute',
-                Industry = 'Banking',
-                BillingCity = 'Delhi',
-                BillingCountry = 'USA',
-                billingState = 'AK',
-                billingStreet = 'Bratislava 1',
-                Core_IPS_Active__c = true,
-		Ownerid =thisUser.id
-          );
-		 //insert accountRecord;
+        
         //Create Users
         System.runAs(ListOfUser.get(0)){
-        	//UserList.add(TestUtilities.getCustomerUser('IPS External Customer')); 
-            insert accountRecord;
-            List<Contact> ListOfContacts = TestUtilities.getListOfContact(1);
-            for(Contact ContactRec : ListOfContacts){
-                ContactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
-                ContactRec.Accountid = accountRecord.Id;
-                ContactRec.Core_IPS_Active__c = true;
-                ContactRec.Email = 'Contact1DellTest@gmail.com';
-                ContactRec.MailingCountry= 'India';
-            }
-            insert ListOfContacts;
-            Id ExternalUserProfileId = [select id, name from Profile where name='IPS External Customer'].Id;
-            User customerUser = TestUtilities.getListOfUser(1).get(0);
-            customerUser.ProfileId = ExternalUserProfileId;
-            customerUser.UserName = 'testips2.contact999@intel.com.crm';
-            customerUser.FirstName = 'TestEx2t';
-            customerUser.LastName = 'User1922';
-            customerUser.Alias = 'eusr1922'; 
-            customerUser.CommunityNickname = 'IPSExtUser1922';
-            customerUser.ContactId = ListOfContacts[0].Id;
-            insert customerUser;
-            UserList.add(customerUser);
+        	UserList.add(TestUtilities.getCustomerUser('IPS External Customer'));    
              Contact objContact = new Contact(Id=UserList.get(0).contactId);
              objContact.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
         	 objContact.Core_IPS_Active__c = true;
@@ -391,17 +343,5 @@ private class Core_IPS_ProjectMemberQueueable_Test {
         ID batchId = System.enqueueJob(new Core_IPS_ProjectMemberQueueable(setProjectId, lstUserId, lstContactId)); 
         System.assert(batchId!=null , 'Not in Queue'); 
         Test.stopTest();
-    }
-    static testmethod void InsertException_PositiveTestMethod(){
-	 String result = 'true';
-            Test.startTest();
-            try{
-                Exception excep;
-                integer i = 1/0;
-            }catch(exception e){
-                Core_IPS_ProjectMemberQueueable.insertExceptionInFuture('001','Core_IPS_ProjectMemberQueueable','Project Member','Test Exception','Test Method',e.getMessage());
-            }         
-	 System.assert(String.isNotBlank(result) , 'Result Not Empty'); 
-            Test.stopTest();
     }
 }

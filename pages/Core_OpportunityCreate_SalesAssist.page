@@ -2,7 +2,7 @@
     <apex:form >
         <apex:outputPanel rendered="true">
             <script type="text/javascript">
-            new function() { redirectForLex('{!JSENCODE(recordTypeId)}', '{!JSENCODE(accId)}', '{!JSENCODE(description)}', '{!isLex}'); };
+            new function() { redirectForLex('{!recordTypeId}', '{!accId}', '{!description}', '{!isLex}'); };
             function redirectForLex(recType, accountName, descrip, lexAccess) {
                 if(lexAccess == 'true'){
                     sforce.one.createRecord('Opportunity', recType , {

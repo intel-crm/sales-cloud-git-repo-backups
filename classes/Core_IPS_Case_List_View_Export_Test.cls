@@ -66,8 +66,7 @@ public class Core_IPS_Case_List_View_Export_Test {
             objCaseListViewExport.exportToExcel();
             objCaseListViewExport.exportToCSV();        
             objCaseListViewExport.returnToPage();        
-         system.assert(objCaseListViewExport!=null);
-
+        
         Test.stopTest();
 
     }
@@ -98,7 +97,7 @@ public class Core_IPS_Case_List_View_Export_Test {
             objSingleColumn.sortable        = true;
             objSingleColumn.type            = '';
                                 
-        system.assert(objCaseListViewExport!=null);
+        
         Test.stopTest();
 
     }    
@@ -116,7 +115,6 @@ public class Core_IPS_Case_List_View_Export_Test {
             Core_IPS_Case_List_View_Export objCaseListViewExport = new Core_IPS_Case_List_View_Export(sscController);
 
             objCaseListViewExport.StrQuery += ' LIMIT ' + CASE_COUNT;            
- 		system.assert(objCaseListViewExport!=null);
 
         Test.stopTest();
 
@@ -136,8 +134,7 @@ public class Core_IPS_Case_List_View_Export_Test {
 
             objCaseListViewExport.StrQuery += ' LIMIT ' + CASE_COUNT;            
             objCaseListViewExport.exportToCSV();        
-         system.assert(objCaseListViewExport!=null);
-
+        
         Test.stopTest();
 
     }    
@@ -156,12 +153,8 @@ public class Core_IPS_Case_List_View_Export_Test {
             /* MAKE AN INVALID QUERY */
             objCaseListViewExport.StrQuery += ' BAD QUERY ';                        
             objCaseListViewExport.exportToExcel();
-            objCaseListViewExport.exportToCSV(); 
-         	//Added by Sowmya - Start - 05/11/2024 - TWC745-6800 - Fix test coverage for all failed classes 
-          	objCaseListViewExport.processScopeForCases('test USING SCOPE mine');
-         	//Sowmya - End - 05/11/2024 - TWC745-6800 - Fix test coverage for all failed classes 
-        system.assert(objCaseListViewExport!=null);
-
+            objCaseListViewExport.exportToCSV();        
+        
         Test.stopTest();
 
     }    

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>WW05 IUPGM Changes walkthrough</masterLabel>
+    <promptVersions>
+        <body>&lt;p&gt;List of new Budget types for IPA : -&lt;/p&gt;&lt;p&gt;o&amp;nbsp;&amp;nbsp;ASMO - Account Plan   [Account Based]&lt;/p&gt;&lt;p&gt;o&amp;nbsp;&amp;nbsp;EMEA - Proposal I MDF  [Proposal Based]&lt;/p&gt;&lt;p&gt;o&amp;nbsp;&amp;nbsp;PRC - Proposal II MDF    [Proposal Based]&lt;/p&gt;</body>
+        <customApplication>Core_MDF_CoMarketing</customApplication>
+        <delayDays>1</delayDays>
+        <description>This walkthrough will provide guidance to the users while creating IUPGM records for IPA program</description>
+        <dismissButtonLabel>Dismiss</dismissButtonLabel>
+        <displayType>Targeted</displayType>
+        <elementRelativePosition>LeftCenter</elementRelativePosition>
+        <image>IUPGM_New_BTs</image>
+        <imageAltText>List of new BTs</imageAltText>
+        <imageLocation>Bottom</imageLocation>
+        <isPublished>true</isPublished>
+        <masterLabel>WW05 IUPGM Changes walkthrough Step 1</masterLabel>
+        <publishedDate>2023-02-03</publishedDate>
+        <referenceElementContext>{&quot;scope&quot;:{&quot;attributes&quot;:{&quot;id&quot;:&quot;flexipage_fieldSection&quot;}},&quot;version&quot;:2}</referenceElementContext>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2023-02-03</startDate>
+        <stepNumber>1</stepNumber>
+        <targetPageKey1>Core_MDF_Int_Users_Partner_Geo_Mapping__c</targetPageKey1>
+        <targetPageKey2>new</targetPageKey2>
+        <targetPageKey3>{&quot;navigationLocation&quot;:&quot;LIST_VIEW&quot;,&quot;nooverride&quot;:&quot;1&quot;,&quot;useRecordTypeCheck&quot;:&quot;1&quot;,&quot;onRecordTypeSelection&quot;:false}</targetPageKey3>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme1</themeColor>
+        <themeSaturation>Light</themeSaturation>
+        <timesToDisplay>30</timesToDisplay>
+        <title>Introduced three new budget types</title>
+        <uiFormulaRule>
+            <booleanFilter>(1) AND (2)</booleanFilter>
+            <criteria>
+                <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_Internal_IPA_Program_Admin}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>TRUE</rightValue>
+            </criteria>
+            <criteria>
+                <leftValue>{!$User.Profile.Key}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>custom_ccp - core access</rightValue>
+            </criteria>
+        </uiFormulaRule>
+        <userAccess>SpecificPermissions</userAccess>
+        <userProfileAccess>SpecificProfiles</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+    <promptVersions>
+        <actionButtonLabel>Create New IUPGM record</actionButtonLabel>
+        <actionButtonLink>/lightning/o/Core_MDF_Int_Users_Partner_Geo_Mapping__c/new?count=2&amp;nooverride=1&amp;useRecordTypeCheck=1&amp;navigationLocation=LIST_VIEW&amp;uid=167541012978585751&amp;backgroundContext=%2Flightning%2Fo%2FCore_MDF_Int_Users_Partner_Geo_Mapping__c%2Flist%3FfilterName%3DRecent</actionButtonLink>
+        <body>&lt;p&gt;1. For &lt;strong&gt;CCP Internal IPA Regional Budget Loader Role&lt;/strong&gt; : Removed All Account = “No” option, previously it had both Yes and No options for All Account.&amp;nbsp;&lt;/p&gt;&lt;p&gt;2. For &lt;strong&gt;IPA-MDF Manager Role: &lt;/strong&gt;Added All Account = “Yes”, previously it was only “No” in the option.&lt;/p&gt;</body>
+        <customApplication>Core_MDF_CoMarketing</customApplication>
+        <dismissButtonLabel>Dismiss</dismissButtonLabel>
+        <displayType>Targeted</displayType>
+        <elementRelativePosition>BottomLeft</elementRelativePosition>
+        <isPublished>false</isPublished>
+        <masterLabel>WW05 IUPGM Changes walkthrough Step 2</masterLabel>
+        <referenceElementContext>{&quot;scope&quot;:{&quot;attributes&quot;:{&quot;id&quot;:&quot;flexipage_fieldSection&quot;}},&quot;version&quot;:2}</referenceElementContext>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <stepNumber>2</stepNumber>
+        <targetPageKey1>Core_MDF_Int_Users_Partner_Geo_Mapping__c</targetPageKey1>
+        <targetPageKey2>new</targetPageKey2>
+        <targetPageKey3>{&quot;navigationLocation&quot;:&quot;LIST_VIEW&quot;,&quot;nooverride&quot;:&quot;1&quot;,&quot;useRecordTypeCheck&quot;:&quot;1&quot;,&quot;onRecordTypeSelection&quot;:false}</targetPageKey3>
+        <targetPageType>standard__objectPage</targetPageType>
+        <title>&apos;All Accounts&apos; changes based on Role</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

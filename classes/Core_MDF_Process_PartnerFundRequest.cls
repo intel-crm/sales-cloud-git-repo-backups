@@ -20,7 +20,6 @@ public without sharing class Core_MDF_Process_PartnerFundRequest {
     public static Map<Id,String> accIdRegionMap = new Map<Id,String>();
     public static Boolean sendEmailOnce = true;
     public static Map<Id,Schema.RecordTypeInfo> rtMapById = Schema.SObjectType.PartnerFundRequest.getRecordTypeInfosById();
-    //Avoid Using Empty Schema Methods
     public static final string pfrPrefixKey = PartnerFundRequest.sObjectType.getDescribe(SObjectDescribeOptions.DEFERRED).getKeyPrefix();
     //Added by Sai
     public static Map<Id,String> nodeAccIdRegionMap = new Map<Id,String>();
@@ -53,12 +52,14 @@ Shivaprasad         08-29-2019    Added the condition to check closed status of 
                 oldStaticPFRMap = oldMap;
             }
             List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
-            List<PartnerFundRequest> budgetCurrencyExchangeRatePFRList = new List<PartnerFundRequest>();
-            for(PartnerFundRequest pfr: newMap.values()){
-                pfrList.add(pfr);
+            // Highlight: Unused Local Variable - 14285
+            // List<PartnerFundRequest> budgetCurrencyExchangeRatePFRList = new List<PartnerFundRequest>();
+            if(newMap != NULL && newMap.size() > 0){
+                pfrList.addAll(newMap.values());
             }
             if (pfrList != NULL && pfrList.size() > 0)
             {
+                system.debug('line 61');
                 processPFRRecords(pfrList,oldMap);
             }
         }
@@ -80,6 +81,7 @@ Modified By:        Date:      Changes:
             if (newList != NULL && newList.size() > 0)
             {
                 //close activity & activity event rules method call
+                system.debug('line 82');
                 processPFRRecords(newList,NULL); 
             }
         }
@@ -129,7 +131,7 @@ Added By:           Sridhar - 06/17/2019
 Modified By:        Date:      Changes: 
 *******************************************************************************************************/
     
-    public static void processPFRRecords(List<PartnerFundRequest> pfrList, Map<Id,PartnerFundRequest> oldPfrMap)
+ public static void processPFRRecords(List<PartnerFundRequest> pfrList, Map<Id,PartnerFundRequest> oldPfrMap)
     {
         
         try{
@@ -139,16 +141,16 @@ Modified By:        Date:      Changes:
             // Mapping Of RecordType and associated close date
             Map<String,Integer> activityRecordTypeCloseDateMap = new Map<String,Integer>();
             activityRecordTypeCloseDateMap = claimActAllocRecTypeMapWrapInstance.activityRecordTypeCloseDateMap;
-            
+            System.debug('activityRecordTypeCloseDateMap processPFRRecords-> '+activityRecordTypeCloseDateMap);
             
             //Program and supported Geo Map 
             Map<String, List<String>> activityRecordTypeGeoListMap = new Map<String,List<String>>();
             activityRecordTypeGeoListMap = claimActAllocRecTypeMapWrapInstance.activityRecordTypeGeoListMap;
-            
+            System.debug('activityRecordTypeGeoListMap processPFRRecords-> '+activityRecordTypeGeoListMap);
             // RecordTypeId and RecordType DeveloperName Map 
             Map<Id,String> ccpRecordTypeIds = new Map<Id,String>();
             ccpRecordTypeIds = Core_MDF_PartnerFundRequest_Utility.getCCPRTNames(activityRecordTypeCloseDateMap);
-            
+            System.debug('ccpRecordTypeIds PFRRecords-> '+ccpRecordTypeIds);
             //loop meta data and form Map --> Record type id, list of metadata //Record type restrict
             
             //Attributes Map metadata
@@ -173,15 +175,17 @@ Modified By:        Date:      Changes:
             Map<String,List<Core_MDF_CCP_Custom_Metadata_Utility__c>> brandFAProductTypeBUMap = new Map<String,List<Core_MDF_CCP_Custom_Metadata_Utility__c>>();
             Map<String,Decimal> buRankingMap = new Map<String,Decimal>();
             
+            // Highlight: Unused Local Variable - 14285
+            // List<PartnerFundRequest> pendingApprovalPfrList = new List<PartnerFundRequest>();
+            // List<PartnerFundRequest> externalPendingApprovalPfrList = new List<PartnerFundRequest>();
+            // Set<Id> accIdSet = new Set<Id>();
             
-            List<PartnerFundRequest> pendingApprovalPfrList = new List<PartnerFundRequest>();
-            List<PartnerFundRequest> externalPendingApprovalPfrList = new List<PartnerFundRequest>();
-            Set<Id> accIdSet = new Set<Id>();
-            
-            Map<Id, Id> crtdByIdPfrIdMap = new Map<Id, Id>();
+            // Highlight: Unused Local Variable - 14285
+            // Map<Id, Id> crtdByIdPfrIdMap = new Map<Id, Id>();
             Map<Id, Id> pfrIdMgrIdMap = new Map<Id, Id>();
-            Set<Id> userIdSet = new Set<Id>(); 
-            Map<Id,Id> userIdManagerMap = new Map<Id,Id>();
+            // Highlight: Unused Local Variable - 14285
+            // Set<Id> userIdSet = new Set<Id>(); 
+            // Map<Id,Id> userIdManagerMap = new Map<Id,Id>();
             
             Set<String> brandSet = new Set<String>();
             List<String> brandList = new List<String>();
@@ -190,18 +194,19 @@ Modified By:        Date:      Changes:
             Set<String> businessUnitSet = new Set<String>();
             
             //ATF Flags
-            String atfDate = System.Label.Core_MDF_ATF_Insertion_Status;
-            String atfPlannedStatus = System.Label.Core_MDF_ATF_Planned_Status;
-            String atfRRStatus = System.Label.Core_MDF_ATF_RR_Status;
+            // Highlight: Unused Local Variable - 14285
+            // String atfDate = System.Label.Core_MDF_ATF_Insertion_Status;
+            // String atfPlannedStatus = System.Label.Core_MDF_ATF_Planned_Status;
+            // String atfRRStatus = System.Label.Core_MDF_ATF_RR_Status;
             String atfClosedStatus = System.Label.Core_MDF_ATF_Closed_Status;
             
             //Fetch Product Category
             Map<String, String> prodTypeCategoryMap = new Map<String, String>();
             
             String programForProdCategorySplits = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_AppliPrgmsFor_Product_Cat_Split');
-            
+            System.debug('programForProdCategorySplits PFRRecords-> '+programForProdCategorySplits);
             prodTypeCategoryMap = productTypeCatSplitMap();
-            
+            System.debug('prodTypeCategoryMap PFRRecords-> '+prodTypeCategoryMap);
             List<Core_MDF_CCP_Country_Geo_Mapping__mdt> countryGeoMetaDataList = Core_MDF_CCP_Country_Geo_Mapping__mdt.getAll().values();
             
             for(Core_MDF_CCP_Country_Geo_Mapping__mdt countryGeoMetaData : countryGeoMetaDataList){
@@ -245,13 +250,14 @@ Modified By:        Date:      Changes:
                 Set<String> coGtmBudgetIdSet = new Set<String>();
                 Set<String> coGtmAccountIdSet = new Set<String>();
                 
-                /// This loop collects the campiagn Ids, Account Ids   
+                /// This loop collects the campiagn Ids, Account Ids
+                
                 for(PartnerFundRequest pfr: pfrList){
                     /* if(!bypassFlag) // need to move this code
 {
 setATFFlag(pfr,oldPfrMap);                 
 }     */ 
-                    
+                    System.debug('INCOMING PFR: Id=' + pfr.Id + ' RequestedAmount=' + pfr.RequestedAmount + ' BudgetId=' + pfr.BudgetId + ' ProposalBased=' + pfr.Core_MDF_Proposal_Based_Ind__c + ' PriorAmount=' + pfr.Amount);
                     if(oldPfrMap == null && pfr.RecordTypeId == coGtmRecordTypeId){
                         coGtmActivityList.add(pfr);
                         coGtmCampaignSet.add(pfr.CampaignId);
@@ -286,6 +292,13 @@ pfr.Core_MDF_Is_Activity_Shared_EXT_Ind__c = true;
                     
                     //populate the user type for EEF program & created by internal user during the create/clone
                     //Avoid Deeply Nested IF Statements
+                    // if(pfr.Core_MDF_Program__c==Core_MDF_CCP_ConstantClass.PFR_EEF_PROGRAM && (oldPfrMap == null || pfr.Id == null)){
+                    //     if(isEEFPrimaryUser){
+                    //         pfr.Core_MDF_CreatedByIntUsrType__c=Core_MDF_CCP_ConstantClass.PFR_EEF_PRIMARYPARTNER;
+                    //     }else if(isEEFActivatingUser){
+                    //         pfr.Core_MDF_CreatedByIntUsrType__c=Core_MDF_CCP_ConstantClass.PFR_EEF_ACTIVATINGPARTNER;
+                    //     }
+                    // }
                     if(pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.PFR_EEF_PROGRAM && 
                        (oldPfrMap == null || pfr.Id == null) && 
                        isEEFPrimaryUser) {
@@ -296,34 +309,39 @@ pfr.Core_MDF_Is_Activity_Shared_EXT_Ind__c = true;
                        isEEFActivatingUser) {
                            pfr.Core_MDF_CreatedByIntUsrType__c = Core_MDF_CCP_ConstantClass.PFR_EEF_ACTIVATINGPARTNER;
                        }
-                    if(programForProdCategorySplits.contains(pfr.Core_MDF_Program__c) && pfr.Core_MDF_ProductType__c != null && 
-                       prodTypeCategoryMap.containsKey(pfr.Core_MDF_ProductType__c)){
-                           if(oldPfrMap == null ||
-                              (oldPfrMap != null && !oldPfrMap.isEmpty() && oldPfrMap.containsKey(pfr.Id) && 
-                               pfr.Core_MDF_ProductType__c != oldPfrMap.get(pfr.Id).Core_MDF_ProductType__c)){
-                                   pfr.Core_MDF_Product_Category_txt__c = prodTypeCategoryMap.get(pfr.Core_MDF_ProductType__c);
-                               }
-                       }
-                    
-                    if(buSplitProgramList.contains(pfr.Core_MDF_Program__c) && String.isNotBlank(pfr.Core_MDF_Brand_nm__c) 
-                       && String.isNotBlank(pfr.Core_MDF_ProductType__c) && String.isNotBlank(pfr.Core_MDF_Focus_Area_nm__c))
-                    {
-                        brandList = pfr.Core_MDF_Brand_nm__c.split(';');
-                        brandSet.addAll(brandList);
-                        //productTypeSet.add(pfr.Core_MDF_ProductType__c);
-                        productTypeSet.addAll(pfr.Core_MDF_ProductType__c.split(';'));
-                        focusAreaSet.add(pfr.Core_MDF_Focus_Area_nm__c);
-                    }
+                    /*if(programForProdCategorySplits.contains(pfr.Core_MDF_Program__c) && pfr.Core_MDF_ProductType__c != null && 
+prodTypeCategoryMap.containsKey(pfr.Core_MDF_ProductType__c)){
+if(oldPfrMap == null ||
+(oldPfrMap != null && !oldPfrMap.isEmpty() && oldPfrMap.containsKey(pfr.Id) && 
+pfr.Core_MDF_ProductType__c != oldPfrMap.get(pfr.Id).Core_MDF_ProductType__c)){
+pfr.Core_MDF_Product_Category_txt__c = prodTypeCategoryMap.get(pfr.Core_MDF_ProductType__c);
+}
+}
+
+if(buSplitProgramList.contains(pfr.Core_MDF_Program__c) && String.isNotBlank(pfr.Core_MDF_Brand_nm__c) 
+&& String.isNotBlank(pfr.Core_MDF_ProductType__c) && String.isNotBlank(pfr.Core_MDF_Focus_Area_nm__c))
+{
+brandList = pfr.Core_MDF_Brand_nm__c.split(';');
+brandSet.addAll(brandList);
+productTypeSet.add(pfr.Core_MDF_ProductType__c);
+focusAreaSet.add(pfr.Core_MDF_Focus_Area_nm__c);
+}*/
                     
                 }
                 
                 if(!coGtmActivityList.isEmpty()){
+                    system.debug('coGtmActivityList1'+coGtmActivityList);
+                    system.debug('coGtmCampaignSet1'+coGtmCampaignSet);
+                    system.debug('coGtmBudgetIdSet1'+coGtmBudgetIdSet);
+                    system.debug('coGtmAccountIdSet1'+coGtmAccountIdSet);
                     populateCoGtmFields(coGtmActivityList, coGtmCampaignSet, coGtmBudgetIdSet, coGtmAccountIdSet);
                 }
-                
-                if(!brandSet.isEmpty() && !productTypeSet.isEmpty() && !focusAreaSet.isEmpty())
-                {
-                    
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                // Refactored 1st part - reduced nesting
+                Boolean shouldProcessBUSplit = !brandSet.isEmpty() && !productTypeSet.isEmpty() && !focusAreaSet.isEmpty();
+                if(!shouldProcessBUSplit) {
+                    // Skip processing if conditions not met
+                } else {
                     // Creating sets for focus area, product type and brand to be used in the where clause
                     String focusAreaSetStr = '\'' + String.join(new List<String>(focusAreaSet), '\', \'') + '\'';
                     String productTypeSetStr = '\'' + String.join(new List<String>(productTypeSet), '\', \'') + '\'';
@@ -346,21 +364,23 @@ pfr.Core_MDF_Is_Activity_Shared_EXT_Ind__c = true;
                     
                     
                     List<Core_MDF_CCP_Custom_Metadata_Utility__c> customMetadataUtilityRecords = Core_MDF_Custom_Metadata_Utility.getCustomObjectRecordsUsingDynamicQuery(query);
-                    
-                    if(customMetadataUtilityRecords != NULL && customMetadataUtilityRecords.size() > 0){
+                    // US - TWC702-14285: Flatten nested IFs (no logic change)
+                    Boolean hasMetadataRecords = customMetadataUtilityRecords != NULL && customMetadataUtilityRecords.size() > 0;
+                    if(!hasMetadataRecords) {
+                        // Skip processing if no metadata records
+                    } else {
                         for(Core_MDF_CCP_Custom_Metadata_Utility__c rec : customMetadataUtilityRecords)
                         {
                             String key = rec.Core_MDF_Field_2_txt__c+'_'+rec.Core_MDF_Field_3_txt__c+'_'+rec.Core_MDF_Field_1_txt__c;
                             businessUnitSet.add(rec.Core_MDF_Field_5_txt__c);
-                            if(brandFAProductTypeBUMap.containsKey(key))
-                            {
-                                List<Core_MDF_CCP_Custom_Metadata_Utility__c> recList = brandFAProductTypeBUMap.get(key);
+                            
+                            Boolean keyExists = brandFAProductTypeBUMap.containsKey(key);
+                            if(!keyExists) {
+                                List<Core_MDF_CCP_Custom_Metadata_Utility__c> recList = new List<Core_MDF_CCP_Custom_Metadata_Utility__c>();
                                 recList.add(rec);
                                 brandFAProductTypeBUMap.put(key,recList);
-                            }
-                            else
-                            {
-                                List<Core_MDF_CCP_Custom_Metadata_Utility__c> recList = new List<Core_MDF_CCP_Custom_Metadata_Utility__c>();
+                            } else {
+                                List<Core_MDF_CCP_Custom_Metadata_Utility__c> recList = brandFAProductTypeBUMap.get(key);
                                 recList.add(rec);
                                 brandFAProductTypeBUMap.put(key,recList);
                             }
@@ -401,15 +421,19 @@ accIdCountryMap.put(accObj.Id,  accObj.Core_MDF_CoMarketing_Ultimate_Account__r.
                     String progName = ccpRecordTypeIds.get(pfr.recordTypeId);
                     String key = '';
                     key = buildKeyForActivityClosure(pfr, progName);
+                    System.debug('key->'+key);
                     if (!String.isEmpty(key)){
                         quarterEndDateMap.put(key, null);
+                        System.debug('quarterEndDateMap->'+quarterEndDateMap);
                     }
                 }
                 if(quarterEndDateMap != null && !quarterEndDateMap.isEmpty()){
                     quarterEndRsltMap = getActivitySubDueDate(quarterEndDateMap);
+                    System.debug('quarterEndRsltMap->'+quarterEndRsltMap);
                 }
                 if(quarterEndDateMap != null && !quarterEndDateMap.isEmpty()){
                     closeDateExtensionMap = getActClosureExtensionDate(quarterEndDateMap);
+                    System.debug('closeDateExtensionMap->'+closeDateExtensionMap);
                 }
                 
                 // Get the campiagn and campaign budget details
@@ -438,11 +462,14 @@ accIdCountryMap.put(accObj.Id,  accObj.Core_MDF_CoMarketing_Ultimate_Account__r.
                                                                   }
                 }
                 // This is main loop which populates the backend fields of PFR like close date, RR calcaulation, Amount, reimbursmeent amount etc..
-                for(PartnerFundRequest pfr: pfrList){  
+                for(PartnerFundRequest pfr: pfrList){
+                    
+                    System.debug('INCOMING PFR: Id=' + pfr.Id + ' RequestedAmount=' + pfr.RequestedAmount + ' BudgetId=' + pfr.BudgetId + ' ProposalBased=' + pfr.Core_MDF_Proposal_Based_Ind__c + ' PriorAmount=' + pfr.Amount);
                     
                     // Method to calculate requestedAmount field
                     recalculateSpendingLimit(pfr,oldPfrMap);
                     Boolean isPropBasedCamp = false;
+					
                     pfr.Core_MDF_Email_body_Field_Values_txt__c = getInternalEmailContent(pfr);
                     
                     //we are populating the value for this field for ipa outcome based
@@ -454,20 +481,34 @@ accIdCountryMap.put(accObj.Id,  accObj.Core_MDF_CoMarketing_Ultimate_Account__r.
                     
                     if(campaignMap != null && campaignMap.containsKey(pfr.CampaignId) && campaignMap.size() > 0){
                         isPropBasedCamp = campaignMap.get(pfr.CampaignId).Core_MDF_Proposal_Based_Ind__c;
+						
                     }
+                    System.debug('prop iND->'+isPropBasedCamp);
+                    System.debug('pfr.CampaignId->'+pfr.CampaignId);
                     if(pfr.CampaignId ==null){
                         isOutcomeBased =pfr.Core_MDF_Is_Outcome_Based_Ind__c;
+                        System.debug('isOutcomeBased->'+isOutcomeBased);
                     }
                     
                     if((oldPfrMap == null || pfr.Id == null) && (!isPropBasedCamp || isOutcomeBased)){
                         pfr.Core_MDF_Fund_Request_Status__c = Core_MDF_CCP_ConstantClass.PFR_PENDING_REVIEW_STATUS;
+                        System.debug('STATUS SET PR->'+pfr.Core_MDF_Fund_Request_Status__c);
                     }
                     Boolean errorthrown = regionSubRegionChecks(pfr, activityRecordTypeGeoListMap, ccpRecordTypeIds, countryGeoMap, countrySubGeoMap, isPropBasedCamp,oldPfrMap);
+                    System.debug('Region boolean method return->'+errorthrown);
                     if(errorthrown){
                         break;
                     }
+                    System.debug('PCTpfr->'+pfr);
+                    System.debug('PCTspifActivityTypesList->'+spifActivityTypesList);
+                    System.debug('PCTotherActivityTypesList->'+otherActivityTypesList);
+                    System.debug('PCToldPfrMap->'+oldPfrMap);
+                    
                     //Update Price reviewer check and program office check fields if the activity type is of SPIF type and other type respectively
                     updatePctAndPorChecks(pfr, spifActivityTypesList, otherActivityTypesList,oldPfrMap);
+                    
+                    //Gayathri-New finance SOX control on Date Changes- Check for POR approval requirements for cross-quarter changes 
+                    //checkPORApprovalForCrossQuarterChanges(pfr, oldPfrMap);
                     
                     //call set ATF Flag
                     if(!bypassFlag && pfr.Core_MDF_Program__c != Label.Core_MDF_Co_GTM_program_name) { //Ayush - added NRE check to bypass ATF logic for NRE
@@ -477,19 +518,39 @@ accIdCountryMap.put(accObj.Id,  accObj.Core_MDF_CoMarketing_Ultimate_Account__r.
                     //Set the to be closed date based on the values configured in meta data - closed date validations
                     String progName = ccpRecordTypeIds.get(pfr.recordTypeId);
                     String autoClosurekeyStr = '';
-                    
-                    if(isAutoClosureDateToBeUpdated(pfr, progName, oldPfrMap)){
-                        if((quarterEndRsltMap != null)){
+                    // US - TWC702-14285: Flatten nested IFs (no logic change)
+                    // Refactored 2nd part - reduced nesting
+                    Boolean shouldUpdateClosureDate = isAutoClosureDateToBeUpdated(pfr, progName, oldPfrMap);
+                    if(!shouldUpdateClosureDate) {
+                        // Skip closure date update if conditions not met
+                    } else {
+                        System.debug('isAutoClosureDateToBeUpdated True');
+                        // US - TWC702-14285: Flatten nested IFs (no logic change)
+                        Boolean hasQuarterEndData = quarterEndRsltMap != null;
+                        if(!hasQuarterEndData) {
+                            // Skip if no quarter end data
+                        } else {
                             autoClosurekeyStr = buildKeyForActivityClosure(pfr, progName);
-                            if(pfr.Core_MDF_ToBeClosedDate__c != quarterEndRsltMap.get(autoClosurekeyStr) && (pfr.Core_MDF_ATF_Flag_nm__c == null || pfr.Core_MDF_ATF_Flag_nm__c != null)){
+                            System.debug('autoClosurekeyStr'+autoClosurekeyStr);
+                            
+                            Boolean shouldUpdateToBeClosedDate = pfr.Core_MDF_ToBeClosedDate__c != quarterEndRsltMap.get(autoClosurekeyStr) && (pfr.Core_MDF_ATF_Flag_nm__c == null || pfr.Core_MDF_ATF_Flag_nm__c != null);
+                            if(shouldUpdateToBeClosedDate) {
                                 pfr.Core_MDF_ToBeClosedDate__c = quarterEndRsltMap.get(autoClosurekeyStr);
+                                System.debug('pfr.Core_MDF_ToBeClosedDate__c ->'+pfr.Core_MDF_ToBeClosedDate__c);
                             }
-                            if(oldPfrMap == NULL && pfr.Core_MDF_ToBeClosedDate__c < System.today())
-                            {
+                            
+                            Boolean shouldExtendCloseDate = oldPfrMap == NULL && pfr.Core_MDF_ToBeClosedDate__c < System.today();
+                            // US - TWC702-14285: Flatten nested IFs (no logic change)
+                            if(!shouldExtendCloseDate) {
+                                // Skip extension if conditions not met
+                            } else {
                                 pfr.Core_MDF_ToBeClosedDate__c = closeDateExtensionMap.get(autoClosurekeyStr);
-                                if(pfr.Core_MDF_Program__c != Label.Core_MDF_Co_GTM_program_name){
+                                System.debug('below if pfr.Core_MDF_ToBeClosedDate__c ->'+pfr.Core_MDF_ToBeClosedDate__c);
+                                
+                                Boolean shouldSetATFFlag = pfr.Core_MDF_Program__c != Label.Core_MDF_Co_GTM_program_name;
+                                if(shouldSetATFFlag) {
                                     pfr.Core_MDF_ATF_Flag_nm__c=atfClosedStatus;
-                                } 
+                                }
                             }
                         }
                     }
@@ -497,7 +558,7 @@ accIdCountryMap.put(accObj.Id,  accObj.Core_MDF_CoMarketing_Ultimate_Account__r.
                     
                     // Derive any status update need
                     deriveActivityStatuses(pfr,oldPfrMap);
-                    
+                    System.debug('524 actiivty status->'+pfr.Core_MDF_Fund_Request_Status__c);
                     //to update amt = 0 on BT change to Certain BTs
                     if(!Core_MDF_Utility.byPassFeature('Amount_Zero_Update')){
                         
@@ -511,7 +572,7 @@ accIdCountryMap.put(accObj.Id,  accObj.Core_MDF_CoMarketing_Ultimate_Account__r.
                     if(isEligibleForBUSplit(pfr,oldPfrMap))
                     {
                         
-                        populateBUSplit(pfr,oldPfrMap,brandFAProductTypeBUMap,buRankingMap);
+                         populateBUSplit(pfr,oldPfrMap,brandFAProductTypeBUMap,buRankingMap);
                     }
                     
                     
@@ -554,7 +615,18 @@ Modified By:        Date:      Changes:
                 //Populate Activity Category and Type from Campaign
                 String activityCategory;
                 String activityType;
-                if(String.isNotBlank(camp.Core_MDF_Activity_Category_Type__c)){
+                //Avoid Deeply Nested IF Statements
+                // if(String.isNotBlank(camp.Core_MDF_Activity_Category_Type__c)){
+                //     List<String> activityCategoryTypeList = camp.Core_MDF_Activity_Category_Type__c.split(';');
+                //     if(!activityCategoryTypeList.isEmpty()) {
+                //         List<String> activityCategoryType = activityCategoryTypeList[0].split('->');
+                //         if(activityCategoryType.size() == 2){
+                //             activityCategory = activityCategoryType[0].trim();
+                //             activityType = activityCategoryType[1].trim();
+                //         }
+                //     }
+                // }
+                if (String.isNotBlank(camp.Core_MDF_Activity_Category_Type__c)) {
                     List<String> activityCategoryTypeList = camp.Core_MDF_Activity_Category_Type__c.split(';');
                     List<String> activityCategoryType = (!activityCategoryTypeList.isEmpty() && activityCategoryTypeList[0].contains('->')) ? activityCategoryTypeList[0].split('->') : new List<String>();
                     activityCategory = (activityCategoryType.size() == 2) ? activityCategoryType[0].trim() : null;
@@ -562,6 +634,7 @@ Modified By:        Date:      Changes:
                 }
                 pfr.Core_MDF_ActivityCategory__c = activityCategory;
                 pfr.Core_MDF_Activity_Types__c = activityType;
+
                 
                 pfr.Core_MDF_Start_Date__c = camp.StartDate;
                 pfr.Title = camp.Name;
@@ -601,7 +674,8 @@ Added By:           JB - 04/10/2025
 Modified By:        Date:      Changes: 
 *******************************************************************************************************/
     public static void createCoGtmAllocation(List<PartnerFundRequest> pfrToCreateAllocation, Set<String> budgetIdSet){
-        List<PartnerFundAllocation> allocationListToCreate = new List<PartnerFundAllocation>();
+        // Highlight: Unused Local Variable - 14285
+        // List<PartnerFundAllocation> allocationListToCreate = new List<PartnerFundAllocation>();
         Map<String, PartnerFundAllocation> uniqueKeyToAllocationMap = new Map<String, PartnerFundAllocation>();
         Id recordtypeId = Schema.SObjectType.PartnerFundAllocation.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
         Map<Id,PartnerMarketingBudget> budgetIdToRecordMap = new Map<Id, PartnerMarketingBudget>([SELECT Id, Title FROM PartnerMarketingBudget WHERE Id IN: budgetIdSet]);
@@ -625,6 +699,130 @@ Modified By:        Date:      Changes:
             }
         }
     }
+    
+    //Gayathri-New finance SOX control on Date Changes START    
+    /****************************************************************************************************** 
+Method Name:        checkPORApprovalForCrossQuarterChanges
+@return  :          void
+@parameters:        pfr, oldPfrMap
+Description:        Check if POR approval is required for cross-quarter changes or amount updates
+Added By:           [Your Name] - [Date]
+Modified By: Gayathri        Date:      Changes: 
+*******************************************************************************************************/
+    /*public static void checkPORApprovalForCrossQuarterChanges(PartnerFundRequest pfr, Map<Id,PartnerFundRequest> oldPfrMap) {
+// Skip if this is an insert operation
+if (oldPfrMap == null) {
+return;
+}
+
+PartnerFundRequest oldPfr = oldPfrMap.get(pfr.Id);
+if (oldPfr == null) {
+return;
+}
+
+// ONLY process if start date is actually changed
+if (pfr.Core_MDF_Start_Date__c == oldPfr.Core_MDF_Start_Date__c) {
+// Start date not changed - don't touch POR indicator at all
+return;
+}
+
+System.debug('POR Check - Start date changed from: ' + oldPfr.Core_MDF_Start_Date__c + ' to: ' + pfr.Core_MDF_Start_Date__c);
+
+Boolean requiresPORApproval = false;
+
+// Get minimum threshold for amount update (default to 0 if not configured)
+Decimal minThreshold = 0;
+try {
+String thresholdLabel = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_POR_Amount_Threshold');
+if (String.isNotBlank(thresholdLabel)) {
+minThreshold = Decimal.valueOf(thresholdLabel);
+}
+} catch (Exception e) {
+minThreshold = 0;
+}
+
+// Check if start date change results in cross-quarter movement
+Boolean isStartDateCrossQuarter = isDifferentQuarter(pfr.Core_MDF_Start_Date__c, oldPfr.Core_MDF_Start_Date__c);
+System.debug('POR Check - Is cross quarter change: ' + isStartDateCrossQuarter);
+
+// Get activity type requirements
+List<String> otherActivityTypesList = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Other_Activity_Types').split(';');
+Boolean currentActivityTypeRequiresPOR = otherActivityTypesList.contains(pfr.Core_MDF_Activity_Types__c);
+Boolean previousActivityTypeRequiredPOR = otherActivityTypesList.contains(oldPfr.Core_MDF_Activity_Types__c);
+
+System.debug('POR Check - Current activity type requires POR: ' + currentActivityTypeRequiresPOR);
+System.debug('POR Check - Previous activity type required POR: ' + previousActivityTypeRequiredPOR);
+System.debug('POR Check - Current activity type: ' + pfr.Core_MDF_Activity_Types__c);
+System.debug('POR Check - Previous activity type: ' + oldPfr.Core_MDF_Activity_Types__c);
+
+//Cross-quarter changes ALWAYS require POR approval
+if (isStartDateCrossQuarter) {
+requiresPORApproval = true;
+System.debug('POR Check - Setting POR to TRUE due to cross-quarter change');
+} 
+//If no cross-quarter change, check activity type requirements
+else {
+if (currentActivityTypeRequiresPOR) {
+// Current activity type requires POR
+requiresPORApproval = true;
+System.debug('POR Check - Setting POR to TRUE due to current activity type');
+} else if (previousActivityTypeRequiredPOR) {
+// Previous activity type required POR but current doesn't
+// Since no cross-quarter change, we can set to false
+requiresPORApproval = false;
+System.debug('POR Check - Setting POR to FALSE - previous required but current does not and no cross-quarter');
+} else {
+// Neither requires POR
+requiresPORApproval = false;
+System.debug('POR Check - Setting POR to FALSE - neither activity type requires POR');
+}
+}
+
+// Check for amount updates when there's a cross-quarter movement
+if (isStartDateCrossQuarter && 
+(pfr.RequestedAmount != oldPfr.RequestedAmount || 
+pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c != oldPfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c)) {
+
+// Calculate the amount difference
+Decimal amountDifference = 0;
+if (pfr.RequestedAmount != oldPfr.RequestedAmount) {
+amountDifference = Math.abs(pfr.RequestedAmount - oldPfr.RequestedAmount);
+} else if (pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c != oldPfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c) {
+amountDifference = Math.abs(pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c - oldPfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c);
+}
+
+if (amountDifference > minThreshold) {
+requiresPORApproval = true;
+System.debug('POR Check - Confirming POR to TRUE due to amount change during cross-quarter');
+}
+}
+
+System.debug('POR Check - Final POR value: ' + requiresPORApproval);
+
+// Update POR flag only when start date is edited
+pfr.Core_MDF_Program_Office_Check_ind__c = requiresPORApproval;
+}*/
+    
+    /****************************************************************************************************** 
+Method Name:        isDifferentQuarter
+@return  :          Boolean
+@parameters:        olddate, newdate
+Description:        Check if two dates fall in different quarters
+Added By:           [Your Name] - [Date]
+Modified By: Gayathri       Date:      Changes: 
+*******************************************************************************************************/
+    /*public static Boolean isDifferentQuarter(Date olddate, Date newdate) {
+if (olddate == null || newdate == null) {
+return false;
+}
+// Use the existing getQuarterEndDate method with quarter value 4 (quarterly)
+Date oldQuarterEnd = getQuarterEndDate(olddate, 4);
+Date newQuarterEnd = getQuarterEndDate(newdate, 4);
+
+// If the quarter end dates are different, they're in different quarters
+return oldQuarterEnd != newQuarterEnd;
+}*/
+    //Gayathri-New finance SOX control on Date Changes END
     
     /****************************************************************************************************** 
 Method Name:        buildKeyForActivityClosure
@@ -696,9 +894,11 @@ else*/ if (progName == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Re
         }
         //preparing endDate by splitting it by /
         String pfrEndDateStr = pfr.Core_MDF_End_Date__c.Day()+'/'+pfr.Core_MDF_End_Date__c.Month()+'/'+pfr.Core_MDF_End_Date__c.Year();
+        system.debug('@@@pfrEndDateStr '+pfrEndDateStr);
         key += pfrEndDateStr;
+        system.debug('@@@key '+key);
         key = key.deleteWhitespace();
-        
+        System.debug('key mthod'+key);
         
         return key;
     }
@@ -804,147 +1004,145 @@ Method Name:        deriveRRandAmt
 Description:        
 Added By:           
 *******************************************************************************************************/
-    public static void deriveRRandAmt(PartnerFundRequest pfr, Campaign camp,Core_MDF_Campaign_Budgets__c campbudget,Map<Id,PartnerFundRequest> oldPfrMap){
-        String reimursmentRate, rRate;
-        Decimal decimalRR;
-        String ccfProgramName = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCF_Program_Name');
-        String dcfProgramName = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_DCF_Program_Name');
-        List<String> budgetTypeCCFDCF1_0 = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_BudgetTypeToExclude').split(';');
-        
-        List<String> budgetTypesList = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Bdgt_Types_For_Amount_Update').split(';');
-        List<String> cmpBudgetType = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CMP_BudgetType').split(';');
-        
-        Decimal amount = 0;
-        Decimal activityReimbursementAmount = 0;
-        Boolean isIPAProposalBased = pfr.Core_MDF_Proposal_Based_Ind__c == true && rtMapById.get(pfr.RecordTypeId).getDeveloperName() == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_RecordType'); //Indu IPA Proposal
-        //Populate the budget type for CCF1.0 and DCF 1.0 if the prf budget type is blank
-        if((pfr.Core_MDF_Program__c == ccfProgramName || pfr.Core_MDF_Program__c == dcfProgramName) && 
-           String.isBlank(pfr.Core_MDF_Budget_Type_nm__c) &&
-           budgetTypeCCFDCF1_0.contains(camp.Core_MDF_Opal_Budget_Type_Txt__c)){
-               if( oldPfrMap == null){//entry criteria
-                   pfr.Core_MDF_Budget_Type_nm__c = camp.Core_MDF_Opal_Budget_Type_Txt__c;
-               }
-           }
-        // Derive the Reimbursement rate for the PFR based on the program or UI values
-        if(pfr.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_Program_Name')){
-            if(oldPfrMap == null 
-               || (oldPfrMap!= null && (oldPfrMap.get(pfr.Id).Core_MDF_Reimbursement_Rate_pct__c != pfr.Core_MDF_Reimbursement_Rate_pct__c ))){
-                   
-                   pfr.Core_MDF_Reimbursement_Rate_txt__c = pfr.Core_MDF_Reimbursement_Rate_pct__c;  
-                   if(pfr.Core_MDF_Budget_Type_nm__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_RetailMDF_BudgetType')){
-                       pfr.Amount = ((pfr.RequestedAmount * Decimal.valueOf(pfr.Core_MDF_Reimbursement_Rate_txt__c.removeEnd('%')))/100).setScale(2,RoundingMode.HALF_UP);
-                   }
-               }
-            
+public static void deriveRRandAmt(PartnerFundRequest pfr, Campaign camp,Core_MDF_Campaign_Budgets__c campbudget,Map<Id,PartnerFundRequest> oldPfrMap){
+    String reimursmentRate, rRate;
+    Decimal decimalRR;
+    Boolean compElementCalculated = false;
+    String ccfProgramName = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCF_Program_Name');
+    String dcfProgramName = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_DCF_Program_Name');
+    List<String> budgetTypeCCFDCF1_0 = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_BudgetTypeToExclude').split(';');
+    List<String> budgetTypesList = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Bdgt_Types_For_Amount_Update').split(';');
+    List<String> cmpBudgetType = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CMP_BudgetType').split(';');
+    Decimal amount = 0;
+    Decimal activityReimbursementAmount = 0;
+    
+    //Populate the budget type for CCF1.0 and DCF 1.0 if the prf budget type is blank
+    if((pfr.Core_MDF_Program__c == ccfProgramName || pfr.Core_MDF_Program__c == dcfProgramName) && String.isBlank(pfr.Core_MDF_Budget_Type_nm__c) && budgetTypeCCFDCF1_0.contains(camp.Core_MDF_Opal_Budget_Type_Txt__c)){
+        if( oldPfrMap == null){//entry criteria
+            pfr.Core_MDF_Budget_Type_nm__c = camp.Core_MDF_Opal_Budget_Type_Txt__c;
         }
-        else if(pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM){
-            pfr.Core_MDF_Reimbursement_Rate_txt__c = '100%';
+    }
+    // US - TWC702-14285: Flatten nested IFs (no logic change)
+    // Derive the Reimbursement rate for the PFR based on the program or UI values
+    if(pfr.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_Program_Name') && 
+       (oldPfrMap == null || (oldPfrMap!= null && (oldPfrMap.get(pfr.Id).Core_MDF_Reimbursement_Rate_pct__c != pfr.Core_MDF_Reimbursement_Rate_pct__c )))){
+        pfr.Core_MDF_Reimbursement_Rate_txt__c = pfr.Core_MDF_Reimbursement_Rate_pct__c;
+        if(pfr.Core_MDF_Budget_Type_nm__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_RetailMDF_BudgetType')){
+            pfr.Amount = ((pfr.RequestedAmount * Decimal.valueOf(pfr.Core_MDF_Reimbursement_Rate_txt__c.removeEnd('%')))/100).setScale(2,RoundingMode.HALF_UP);
         }
-        if(pfr.Core_MDF_Budget_Type_nm__c == Core_MDF_CCP_ConstantClass.OEM_CMP_BUDGET_TYPE || pfr.Core_MDF_Budget_Type_nm__c == Core_MDF_CCP_ConstantClass.SPCMP_BUDGET_TYPE){
-            if(oldPfrMap == null 
-               || (oldPfrMap!= null && (oldPfrMap.get(pfr.Id).Core_MDF_ActivityCategory__c != pfr.Core_MDF_ActivityCategory__c 
-                                        || oldPfrMap.get(pfr.Id).Core_MDF_Activity_Types__c != pfr.Core_MDF_Activity_Types__c
-                                        || oldPfrMap.get(pfr.Id).Core_MDF_Competitive_Elements__c != pfr.Core_MDF_Competitive_Elements__c
-                                        || oldPfrMap.get(pfr.Id).Core_MDF_Incentive_pct__c != pfr.Core_MDF_Incentive_pct__c
-                                        || oldPfrMap.get(pfr.Id).Core_MDF_Reimbursement_Rate_txt__c != pfr.Core_MDF_Reimbursement_Rate_txt__c))){ 
-                                            
-                                            Decimal pfrInc = (pfr.Core_MDF_Incentive_pct__c != NULL? (pfr.Core_MDF_Incentive_pct__c) : 0);
-                                            if(String.isNotBlank(pfr.BudgetId)){
-                                                //Ayush - RR changes
-                                                //reimursmentRate = campbudget.Core_MDF_Reimbursement_Rate_Pct__c;
-                                                reimursmentRate = pfr.Core_MDF_Reimbursement_Rate_txt__c;
-                                            }   
-                                            //To remove '%' from Campaign.Core_MDF_Reimbursement_Rate__c
-                                            Decimal rrWoPercentage = Decimal.valueof(reimursmentRate.left(reimursmentRate.length()-1));      
-                                            if((pfr.Core_MDF_ActivityCategory__c == Core_MDF_CCP_ConstantClass.PFR_EVENT_CATEGORY || pfr.Core_MDF_ActivityCategory__c==Core_MDF_CCP_ConstantClass.PFR_EVENT_2025_CATEGORY) && (pfr.Core_MDF_Activity_Types__c == Core_MDF_CCP_ConstantClass.PFR_JOINT_EVENT_CATEGORY 
-                                                                                                                                                                                                                               || pfr.Core_MDF_Activity_Types__c == Core_MDF_CCP_ConstantClass.PFR_THIRD_PARTY_CATEGORY) && pfr.Core_MDF_Competitive_Elements__c == 'Yes'){
-                                                                                                                                                                                                                                   decimalRR = (rrWoPercentage + pfrInc)/ 2; 
-                                                                                                                                                                                                                               }else {                                
-                                                                                                                                                                                                                                   decimalRR = (rrWoPercentage + pfrInc);
-                                                                                                                                                                                                                               }
-                                            rRate = String.valueOf(decimalRR);
-                                            
-                                            if(rRate.endswith('.0')){   
-                                                rRate = rRate.removeEnd('.0'); 
-                                            }
-                                            if(rRate.endswith('.00')){
-                                                rRate = rRate.removeEnd('.00'); 
-                                            }         
-                                            //To append '%' for RR                              
-                                            if(String.isNotBlank(rRate) && !rRate.endsWith('%')){
-                                                rRate = rRate + '%';
-                                            } 
-                                            pfr.Core_MDF_Reimbursement_Rate_txt__c = rRate;  
-                                        } 
-            //activityReimbursementAmount = (pfr.RequestedAmount * decimal.valueOf(pfr.Core_MDF_Reimbursement_Rate_txt__c.removeEnd('%')))/100;
-            //amount = activityReimbursementAmount;
-            if(cmpBudgetType.contains(pfr.Core_MDF_Budget_Type_nm__c)){
-                if(pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_CANCELLED_STATUS){
-                    pfr.Status = Core_MDF_CCP_ConstantClass.PFR_REJECTED_STATUS;
-                }
+    } else if(pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM){
+        pfr.Core_MDF_Reimbursement_Rate_txt__c = '100%';
+    }
+    
+    if(pfr.Core_MDF_Budget_Type_nm__c == Core_MDF_CCP_ConstantClass.OEM_CMP_BUDGET_TYPE || pfr.Core_MDF_Budget_Type_nm__c == Core_MDF_CCP_ConstantClass.SPCMP_BUDGET_TYPE){
+        Boolean shouldProcessReimbursement = oldPfrMap == null || 
+            (oldPfrMap!= null && (oldPfrMap.get(pfr.Id).Core_MDF_ActivityCategory__c != pfr.Core_MDF_ActivityCategory__c || 
+                                 oldPfrMap.get(pfr.Id).Core_MDF_Activity_Types__c != pfr.Core_MDF_Activity_Types__c || 
+                                 oldPfrMap.get(pfr.Id).Core_MDF_Competitive_Elements__c != pfr.Core_MDF_Competitive_Elements__c || 
+                                 oldPfrMap.get(pfr.Id).Core_MDF_Incentive_pct__c != pfr.Core_MDF_Incentive_pct__c || 
+                                 oldPfrMap.get(pfr.Id).Core_MDF_Reimbursement_Rate_txt__c != pfr.Core_MDF_Reimbursement_Rate_txt__c));
+        
+        if(shouldProcessReimbursement){
+            //if old pfr competitive element = true dont go inside
+            Decimal pfrInc = (pfr.Core_MDF_Incentive_pct__c != NULL? (pfr.Core_MDF_Incentive_pct__c) : 0);
+            if(String.isNotBlank(pfr.BudgetId)){
+                //Ayush - RR changes
+                //reimursmentRate = campbudget.Core_MDF_Reimbursement_Rate_Pct__c;
+                reimursmentRate = pfr.Core_MDF_Reimbursement_Rate_txt__c;
+            }
+            //To remove '%' from Campaign.Core_MDF_Reimbursement_Rate__c
+            Decimal rrWoPercentage = Decimal.valueof(reimursmentRate.left(reimursmentRate.length()-1));
+            if((pfr.Core_MDF_ActivityCategory__c == Core_MDF_CCP_ConstantClass.PFR_EVENT_CATEGORY || pfr.Core_MDF_ActivityCategory__c==Core_MDF_CCP_ConstantClass.PFR_EVENT_2025_CATEGORY) && 
+               (pfr.Core_MDF_Activity_Types__c == Core_MDF_CCP_ConstantClass.PFR_JOINT_EVENT_CATEGORY || pfr.Core_MDF_Activity_Types__c == Core_MDF_CCP_ConstantClass.PFR_THIRD_PARTY_CATEGORY) && 
+               (pfr.Core_MDF_Competitive_Elements__c == 'Yes')){
+                /*if(oldPfrMap!= null && oldPfrMap.get(pfr.Id).Core_MDF_Competitive_Elements__c == 'Yes'){
+                    decimalRR = (rrWoPercentage + pfrInc);
+                }*/
+                //else{
+                decimalRR = (rrWoPercentage + pfrInc)/ 2;
+                //}
+            }else {
+                decimalRR = (rrWoPercentage + pfrInc);
+            }
+            rRate = String.valueOf(decimalRR);
+            if(rRate.endswith('.0')){
+                rRate = rRate.removeEnd('.0');
+            }
+            if(rRate.endswith('.00')){
+                rRate = rRate.removeEnd('.00');
+            }
+            //To append '%' for RR
+            if(String.isNotBlank(rRate) && !rRate.endsWith('%')){
+                rRate = rRate + '%';
+            }
+            pfr.Core_MDF_Reimbursement_Rate_txt__c = rRate;
+        }
+        //activityReimbursementAmount = (pfr.RequestedAmount * decimal.valueOf(pfr.Core_MDF_Reimbursement_Rate_txt__c.removeEnd('%')))/100;
+        //amount = activityReimbursementAmount;
+        // US - TWC702-14285: Flatten nested IFs (no logic change)
+        if(cmpBudgetType.contains(pfr.Core_MDF_Budget_Type_nm__c) && pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_CANCELLED_STATUS){
+            pfr.Status = Core_MDF_CCP_ConstantClass.PFR_REJECTED_STATUS;
+        }
+    } else {
+        //add to stamp amount
+        //MDF;MDF+;IPA Account Based;Channel MDF Account Based;IPA Proposal Based
+        Boolean shouldProcessAmount = (pfr.Core_MDF_Budget_Type_nm__c != NULL && budgetTypesList.contains(pfr.Core_MDF_Budget_Type_nm__c))|| 
+                                     (pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.PFR_IPA_PROGRAM || pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM);
+        
+        if(shouldProcessAmount){
+            if(pfr.Core_MDF_Fund_Request_Status__c != Core_MDF_CCP_ConstantClass.PFR_CANCELLED_STATUS && pfr.Core_MDF_Proposal_Based_Ind__c == false && pfr.Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.EEF_PROGRAM ){
+                pfr.Status = Core_MDF_CCP_ConstantClass.PFR_APPROVED_STATUS;
             }
             
+            Boolean shouldCalculateAmount = (oldPfrMap == NULL) || 
+                ((oldPfrMap != NULL && oldPfrMap.containsKey(pfr.Id) && oldPfrMap.get(pfr.Id) != NULL) && 
+                 (pfr.RequestedAmount != oldPfrMap.get(pfr.Id).RequestedAmount || 
+                  pfr.Core_MDF_MDFReimbursement_Amt__c != oldPfrMap.get(pfr.Id).Core_MDF_MDFReimbursement_Amt__c || 
+                  pfr.Core_MDF_Reimbursement_Rate_txt__c != oldPfrMap.get(pfr.Id).Core_MDF_Reimbursement_Rate_txt__c || 
+                  pfr.Core_MDF_Budget_Type_nm__c != oldPfrMap.get(pfr.Id).Core_MDF_Budget_Type_nm__c));
+            
+            if(shouldCalculateAmount) {
+                //TWC702-4881: Calculate for Reimbursement Rate
+                if(pfr.Core_MDF_MDFReimbursement_Amt__c != null && pfr.Core_MDF_MDFReimbursement_Amt__c > 0 && pfr.RequestedAmount !=null && pfr.RequestedAmount > 0){
+                    decimalRR = ((pfr.Core_MDF_MDFReimbursement_Amt__c / pfr.RequestedAmount )*100).setScale(2,RoundingMode.HALF_UP);
+                    rRate = String.valueOf(decimalRR);
+                    if(rRate.endswith('.0')){
+                        rRate = rRate.removeEnd('.0');
+                    }
+                    if(rRate.endswith('.00')){
+                        rRate = rRate.removeEnd('.00');
+                    }
+                    //To append '%' for RR
+                    if(String.isNotBlank(rRate) && !rRate.endsWith('%')){
+                        rRate = rRate + '%';
+                    }
+                    pfr.Core_MDF_Reimbursement_Rate_txt__c = rRate;
+                    amount = pfr.Core_MDF_MDFReimbursement_Amt__c;
+                    system.debug('@@@amount11 '+amount);
+                } else if(pfr.RequestedAmount != NULL && pfr.Core_MDF_Reimbursement_Rate_txt__c != NULL && pfr.Core_MDF_Reimbursement_Rate_txt__c != NULL && pfr.Core_MDF_Reimbursement_Rate_txt__c != ''){
+                    //Akash - changes
+                    if(pfr.Core_MDF_Is_Outcome_Based_Ind__c != true && pfr.Core_MDF_Activity_Level_nm__c != Core_MDF_CCP_ConstantClass.PFR_SUB_ACTIVITY) {
+                        activityReimbursementAmount = ((pfr.RequestedAmount * decimal.valueOf(pfr.Core_MDF_Reimbursement_Rate_txt__c.removeEnd('%')))/100).setScale(2,RoundingMode.HALF_UP);
+                        amount = activityReimbursementAmount;
+                    }
+                }
+                //special handling for IPA
+                else if(pfr.RequestedAmount != NULL && (pfr.Core_MDF_Reimbursement_Rate_txt__c == NULL || pfr.Core_MDF_Reimbursement_Rate_txt__c == '' && pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.PFR_IPA_PROGRAM)){
+                    activityReimbursementAmount = ((pfr.RequestedAmount * decimal.valueOf(pfr.Core_MDF_Campaign_Reimbursement_Rate_txt__c.removeEnd('%')))/100).setScale(2,RoundingMode.HALF_UP);
+                    amount =activityReimbursementAmount;
+                    System.debug('enter 3rd else if1');
+                }
+            }
         }
-        else {
-            //add to stamp amount
-            //MDF;MDF+;IPA Account Based;Channel MDF Account Based;IPA Proposal Based
-            if((pfr.Core_MDF_Budget_Type_nm__c != NULL && budgetTypesList.contains(pfr.Core_MDF_Budget_Type_nm__c))|| 
-               (pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.PFR_IPA_PROGRAM  || pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM)){
-                   if(pfr.Core_MDF_Fund_Request_Status__c != Core_MDF_CCP_ConstantClass.PFR_CANCELLED_STATUS && pfr.Core_MDF_Proposal_Based_Ind__c == false && pfr.Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.EEF_PROGRAM ){
-                       pfr.Status = Core_MDF_CCP_ConstantClass.PFR_APPROVED_STATUS;
-                   }      
-                   
-                   if((oldPfrMap == NULL)  ||
-                      ((oldPfrMap != NULL && oldPfrMap.containsKey(pfr.Id) && oldPfrMap.get(pfr.Id) != NULL) &&
-                       (pfr.RequestedAmount != oldPfrMap.get(pfr.Id).RequestedAmount ||
-                        pfr.Core_MDF_MDFReimbursement_Amt__c != oldPfrMap.get(pfr.Id).Core_MDF_MDFReimbursement_Amt__c ||
-                        pfr.Core_MDF_Reimbursement_Rate_txt__c != oldPfrMap.get(pfr.Id).Core_MDF_Reimbursement_Rate_txt__c ||
-                        pfr.Core_MDF_Budget_Type_nm__c != oldPfrMap.get(pfr.Id).Core_MDF_Budget_Type_nm__c)))                        
-                   {
-                       //TWC702-4881: Calculate for Reimbursement Rate
-                       if(pfr.Core_MDF_MDFReimbursement_Amt__c != null && pfr.Core_MDF_MDFReimbursement_Amt__c > 0 && pfr.RequestedAmount !=null && pfr.RequestedAmount > 0){
-                           decimalRR = ((pfr.Core_MDF_MDFReimbursement_Amt__c / pfr.RequestedAmount )*100).setScale(2,RoundingMode.HALF_UP);
-                           rRate = String.valueOf(decimalRR);
-                           
-                           if(rRate.endswith('.0')){   
-                               rRate = rRate.removeEnd('.0'); 
-                           }
-                           if(rRate.endswith('.00')){
-                               rRate = rRate.removeEnd('.00'); 
-                           }         
-                           //To append '%' for RR                              
-                           if(String.isNotBlank(rRate) && !rRate.endsWith('%')){
-                               rRate = rRate + '%';
-                           } 
-                           pfr.Core_MDF_Reimbursement_Rate_txt__c = rRate;
-                           amount = pfr.Core_MDF_MDFReimbursement_Amt__c;
-                       }
-                       else if(pfr.RequestedAmount != NULL && pfr.Core_MDF_Reimbursement_Rate_txt__c != NULL &&
-                               pfr.Core_MDF_Reimbursement_Rate_txt__c != NULL && pfr.Core_MDF_Reimbursement_Rate_txt__c != ''){
-                                   //Akash - changes      
-                                   if(pfr.Core_MDF_Is_Outcome_Based_Ind__c != true && pfr.Core_MDF_Activity_Level_nm__c != 'Sub Activity') {
-                                       activityReimbursementAmount = ((pfr.RequestedAmount * decimal.valueOf(pfr.Core_MDF_Reimbursement_Rate_txt__c.removeEnd('%')))/100).setScale(2,RoundingMode.HALF_UP);
-                                       amount = activityReimbursementAmount;
-                                   }
-                               }
-                       //special handling for IPA
-                       else if(pfr.RequestedAmount != NULL && (pfr.Core_MDF_Reimbursement_Rate_txt__c == NULL || 
-                                                               pfr.Core_MDF_Reimbursement_Rate_txt__c == '' && pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.PFR_IPA_PROGRAM)){
-                                                                   activityReimbursementAmount = ((pfr.RequestedAmount * decimal.valueOf(pfr.Core_MDF_Campaign_Reimbursement_Rate_txt__c.removeEnd('%')))/100).setScale(2,RoundingMode.HALF_UP);
-                                                                   amount =activityReimbursementAmount;
-                                                               }
-                   }         
-               }
-        }
-        /*if(amount !=0){
-            pfr.Amount = amount;
-        }*/
-        if(isIPAProposalBased && pfr.Core_MDF_Maximum_Intel_Investment_amt__c != null && pfr.Core_MDF_Maximum_Intel_Investment_amt__c > 0){
-    pfr.Amount = pfr.Core_MDF_Maximum_Intel_Investment_amt__c;
-     }else if(amount != 0){
-    pfr.Amount = amount;
-     } // Indu IPA Proposal
-    } 
+    }
+    
+    if(amount !=0){
+        pfr.Amount = amount;
+        system.debug('@@@pfr.Amount11 '+pfr.Amount);
+        System.debug('enter last amt');
+    }
+    System.debug('COMPUTED amount for PFR Id=' + pfr.Id + ' amount=' + amount + ' pfr.Amount=' + pfr.Amount + ' activityReimbNbr=' + pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c);
+}
     /********************************************************************************************************* 
 Method Name:        updateAmountOnBudgetTypeChange
 @return  :          null
@@ -1040,78 +1238,94 @@ regionSubRegionChecks - throws errors for multiple geo/sub geo's else update reg
 Added By:           Accenture - Sai 
 Date:               21/04/2022
 *******************************************************************************************************/
-    public static Boolean regionSubRegionChecks(PartnerFundRequest pfr, Map<String, List<String>> activityRecordTypeGeoListMap, 
-                                                Map<Id,String> ccpRecordTypeIds, Map<String, String> countryGeoMap,
-                                                Map<String, String> countrySubGeoMap, Boolean isPropBasedCamp, Map<Id,PartnerFundRequest> oldPfrMap){
+ public static Boolean regionSubRegionChecks(PartnerFundRequest pfr, Map<String, List<String>> activityRecordTypeGeoListMap, 
+                                            Map<Id,String> ccpRecordTypeIds, Map<String, String> countryGeoMap,
+                                            Map<String, String> countrySubGeoMap, Boolean isPropBasedCamp, Map<Id,PartnerFundRequest> oldPfrMap){
+                                                
+                                                Boolean errorThrown = false;
+                                                Set<String> geoSet = new Set<String>();
+                                                Set<String> subGeoSet = new Set<String>();
+                                                
+                                                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                                                Boolean shouldProcessCountry = oldPfrMap == null || (oldPfrMap!= null && (oldPfrMap.get(pfr.Id).Core_MDF_Country_nm__c != pfr.Core_MDF_Country_nm__c ));
+                                                if(!shouldProcessCountry) {
+                                                    return errorThrown;
+                                                }
+                                                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                                                if(pfr.Core_MDF_Country_nm__c == NULL){
+                                                    return errorThrown;
+                                                }
+                                                
+                                                List<String> splitCountry = pfr.Core_MDF_Country_nm__c.split(';');
+                                                
+                                                for(String Country : splitCountry){
+                                                    if(countryGeoMap.containsKey(Country)){
+                                                        // US - TWC702-14285: Flatten nested IFs (no logic change)
+                                                        Boolean shouldAddSubGeo = countrySubGeoMap.containsKey(Country) && pfr.Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.PFR_IPA_PROGRAM;
+                                                        if(shouldAddSubGeo){
+                                                            subGeoSet.add(countrySubGeoMap.get(Country));
+                                                        }
+                                                        
+                                                        geoSet.add(countryGeoMap.get(Country));
+                                                    }                                
+                                                }
+                                                
+                                                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                                                Boolean shouldProcessProgram = pfr.Core_MDF_Program__c != Null && pfr.Core_MDF_Program__c != '';
+                                                if(!shouldProcessProgram && !pfr.Core_MDF_Activity_CreatedByExternalUsr__c) {
+                                                    return errorThrown;
+                                                }
+                                                
+                                                if(geoSet != NULL && geoSet.size() > 1 ){
+                                                    errorThrown = true;
+                                                    pfr.addError(Label.Core_MDF_Country_Multiple_Geo_Error);
+                                                }
+                                                else if(subGeoSet != NULL && subGeoSet.size() > 1 && (activityRecordTypeGeoListMap != NULL && activityRecordTypeGeoListMap.size() > 0 &&
+                                                                                                      activityRecordTypeGeoListMap.containsKey(ccpRecordTypeIds.get(pfr.RecordTypeId)) &&
+                                                                                                      activityRecordTypeGeoListMap.get(ccpRecordTypeIds.get(pfr.RecordTypeId)).contains(new List<String>(geoSet)[0]))){
+                                                                                                          errorThrown = true;
+                                                                                                          pfr.addError(Label.Core_MDF_Country_Multiple_SubGeo_Error);
+                                                                                                      }               
+                                                else{
+                                                    errorThrown = false;
+                                                    List<String> geoSetList = new List<String>();                                
+                                                    geoSetList.addAll(geoSet);
+                                                    //US1098882
+                                                    /*pfr.Core_MDF_Region_cd__c =  geoSetList[0];*/
+                                                    pfr.Core_MDF_Region_nm__c =  geoSetList[0];
+                                                    System.debug('Region field->'+pfr.Core_MDF_Region_nm__c);
                                                     
-                                                    Boolean errorThrown = false;
-                                                    Set<String> geoSet = new Set<String>();
-                                                    Set<String> subGeoSet = new Set<String>();
-                                                if(oldPfrMap == null || (oldPfrMap!= null && (oldPfrMap.get(pfr.Id).Core_MDF_Country_nm__c != pfr.Core_MDF_Country_nm__c ))){         
-                                                    if(pfr.Core_MDF_Country_nm__c != NULL){
-                                                        List<String> splitCountry = pfr.Core_MDF_Country_nm__c.split(';');
-                                                        for(String Country : splitCountry){
-                                                            if(countryGeoMap.containsKey(Country)){
-                                                                if(countrySubGeoMap.containsKey(Country)){
-                                                                    if(pfr.Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.PFR_IPA_PROGRAM){
-                                                                        subGeoSet.add(countrySubGeoMap.get(Country));
-                                                                    }
-                                                                }
-                                                                geoSet.add(countryGeoMap.get(Country));
-                                                            }                                
-                                                        }
-                                                       
-                                                        if(pfr.Core_MDF_Program__c != Null && pfr.Core_MDF_Program__c != '') {
-                                                            if(geoSet != NULL && geoSet.size() > 1 ){
-                                                                errorThrown = true;
-                                                                pfr.addError(Label.Core_MDF_Country_Multiple_Geo_Error);
-                                                                //break; --> Break statement must be in loop
-                                                            }
-                                                            else if(subGeoSet != NULL && subGeoSet.size() > 1 && (activityRecordTypeGeoListMap != NULL && activityRecordTypeGeoListMap.size() > 0 &&
-                                                                                                                  activityRecordTypeGeoListMap.containsKey(ccpRecordTypeIds.get(pfr.RecordTypeId)) &&
-                                                                                                                  activityRecordTypeGeoListMap.get(ccpRecordTypeIds.get(pfr.RecordTypeId)).contains(new List<String>(geoSet)[0]))){
-                                                                                                                      errorThrown = true;
-                                                                                                                      pfr.addError(Label.Core_MDF_Country_Multiple_SubGeo_Error);
-                                                                                                                      //break; --> Break statement must be in loop
-                                                                                                                  }               
-                                                            else{
-                                                                errorThrown = false;
-                                                                List<String> geoSetList = new List<String>();                                
-                                                                geoSetList.addAll(geoSet);
-                                                                //US1098882
-                                                                /*pfr.Core_MDF_Region_cd__c =  geoSetList[0];*/
-                                                                pfr.Core_MDF_Region_nm__c =  geoSetList[0];
-                                                                if(activityRecordTypeGeoListMap != NULL && activityRecordTypeGeoListMap.size() > 0 && 
-                                                                   ccpRecordTypeIds.containsKey(pfr.RecordTypeId) && 
-                                                                   activityRecordTypeGeoListMap.containsKey(ccpRecordTypeIds.get(pfr.RecordTypeId))){
-                                                                       List<String> geoProgramList = activityRecordTypeGeoListMap.get(ccpRecordTypeIds.get(pfr.RecordTypeId));
-                                                                       if(geoProgramList != NULL && geoProgramList.contains(geoSetList[0])){
-                                                                           List<String> subGeoSetList = New List<String>();
-                                                                           //US1098882
-                                                                           if(pfr.Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.PFR_IPA_PROGRAM){
-                                                                               subGeoSetList.addAll(subGeoSet);
-                                                                               /*pfr.Core_MDF_Sub_Region_cd__c = subGeoSetList[0];//CHECK VALUE*/
-                                                                               pfr.Core_MDF_Sub_Region_nm__c = subGeoSetList[0];//CHECK VALUE
-                                                                           }
-                                                                       }
-                                                                       else{
-                                                                           //US1098882
-                                                                           /*pfr.Core_MDF_Sub_Region_cd__c = NULL;//CHECK VALUE*/
-                                                                           pfr.Core_MDF_Sub_Region_nm__c = NULL;//CHECK VALUE
-                                                                       }
-                                                                   }
-                                                                else{
-                                                                    //US1098882
-                                                                    /*pfr.Core_MDF_Sub_Region_cd__c = NULL;//CHECK VALUE*/
-                                                                    pfr.Core_MDF_Sub_Region_nm__c = NULL;//CHECK VALUE
-                                                                }    
-                                                            }
-                                                        }
-                                                            
-                                                    }
+                                                    // US - TWC702-14285: Flatten nested IFs (no logic change)
+                                                    Boolean hasValidActivityRecordType = activityRecordTypeGeoListMap != NULL && activityRecordTypeGeoListMap.size() > 0 && 
+                                                           ccpRecordTypeIds.containsKey(pfr.RecordTypeId) && 
+                                                           activityRecordTypeGeoListMap.containsKey(ccpRecordTypeIds.get(pfr.RecordTypeId));
+                                                    
+                                                    if(hasValidActivityRecordType){
+                                                           List<String> geoProgramList = activityRecordTypeGeoListMap.get(ccpRecordTypeIds.get(pfr.RecordTypeId));
+                                                           if(geoProgramList != NULL && geoProgramList.contains(geoSetList[0])){
+                                                               List<String> subGeoSetList = New List<String>();
+                                                               //US1098882
+                                                               if(pfr.Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.PFR_IPA_PROGRAM){
+                                                                   subGeoSetList.addAll(subGeoSet);
+                                                                   /*pfr.Core_MDF_Sub_Region_cd__c = subGeoSetList[0];//CHECK VALUE*/
+                                                                   pfr.Core_MDF_Sub_Region_nm__c = subGeoSetList[0];//CHECK VALUE
+                                                               }
+                                                           }
+                                                           else{
+                                                               //US1098882
+                                                               /*pfr.Core_MDF_Sub_Region_cd__c = NULL;//CHECK VALUE*/
+                                                               pfr.Core_MDF_Sub_Region_nm__c = NULL;//CHECK VALUE
+                                                           }
+                                                       }
+                                                    else{
+                                                        //US1098882
+                                                        /*pfr.Core_MDF_Sub_Region_cd__c = NULL;//CHECK VALUE*/
+                                                        pfr.Core_MDF_Sub_Region_nm__c = NULL;//CHECK VALUE
+                                                    }    
                                                 }
-                                                    return errorThrown;          
-                                                }
+                                                
+                                                return errorThrown;          
+                                            }
     
     /****************************************************************************************************** 
 Method Name:        updatePctAndPorChecks
@@ -1122,13 +1336,13 @@ Updates Price Reviewer and Program office review indicators
 Added By:           Accenture - Sai 
 Date:               28/04/2022
 *******************************************************************************************************/
-    public static void updatePctAndPorChecks(PartnerFundRequest pfr, List<String> spifActivityTypesList, List<String> otherActivityTypesList,Map<Id,PartnerFundRequest> oldPfrMap){
+        public static void updatePctAndPorChecks(PartnerFundRequest pfr, List<String> spifActivityTypesList, List<String> otherActivityTypesList,Map<Id,PartnerFundRequest> oldPfrMap){
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>{pfr}; // Joshua 15182
         Map<Id, Boolean> Camp_Approval_checkMap = retrieveApprovalField(pfrList); // Joshua 15182
         Boolean CCF_DCFCheck = (pfr.Core_MDF_Program__c == Label.Core_MDF_CCF_Program_Name || pfr.Core_MDF_Program__c == Label.Core_MDF_DCF_Program_Name); //Joshua 15182 program check for CCF/DCF
         List<String> outcomeEligiblePrograms = label.Core_MDF_Program_Enabled_Tactics.split(',');
         Boolean isOtherActivity = otherActivityTypesList.contains(pfr.Core_MDF_Activity_Types__c); // Joshua 15182
-	Boolean isspifActivity = spifActivityTypesList.contains(pfr.Core_MDF_Activity_Types__c); // Joshua 15182
+    Boolean isspifActivity = spifActivityTypesList.contains(pfr.Core_MDF_Activity_Types__c); // Joshua 15182
         Boolean isCMP = pfr.Core_MDF_Budget_Type_nm__c == Label.Core_MDF_BudgetType_CMP; // Joshua 15182
         Boolean Camp_Approval_check= Camp_Approval_checkMap.containsKey(pfr.CampaignId)? Camp_Approval_checkMap.get(pfr.CampaignId): false; // Joshua 15182
         Boolean CMP_threshold_value = pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c > Decimal.valueOf(Label.CMP_Threshold_value); // Joshua 15182
@@ -1150,6 +1364,40 @@ Date:               28/04/2022
             }   
         }
     }
+
+    //Joshua 15182 Start
+     public static Map<Id, Boolean> retrieveApprovalField(List<PartnerFundRequest> pfrList){
+       Map<Id, Boolean> pfrApprovalMap = new Map<Id, Boolean>();
+
+            Set<Id> campaignIds = new Set<Id>();
+
+            // Collect Campaign Ids
+            for(PartnerFundRequest pfr : pfrList){
+                if(pfr.CampaignId != null){
+                    campaignIds.add(pfr.CampaignId);
+                }
+            }
+
+            // Query Campaigns
+            Map<Id, Campaign> campaignMap = new Map<Id, Campaign>([SELECT Id,Core_MDF_Activity_Approval_Required_Ind__c FROM Campaign WHERE Id IN :campaignIds]);
+
+            // Map PFR Id -> Campaign Approval Checkbox
+            for(PartnerFundRequest pfr : pfrList){
+
+                Boolean approvalRequired = false;
+
+                if(pfr.CampaignId != null && campaignMap.containsKey(pfr.CampaignId)){
+                    approvalRequired = campaignMap.get(pfr.CampaignId).Core_MDF_Activity_Approval_Required_Ind__c;
+                }
+
+                pfrApprovalMap.put(pfr.CampaignId, approvalRequired);
+            }
+            System.debug('Line1417  ==>' + pfrApprovalMap);
+            return pfrApprovalMap;
+        
+
+     }
+     //Joshua 15182 End
     
     /****************************************************************************************************** 
 Method Name:        getActivitySubDueDate
@@ -1162,10 +1410,12 @@ Date:               29/04/2022
 *******************************************************************************************************/
     public static Map<String, Date> getActivitySubDueDate(Map<String, Date> dueDateMap){
         Map<String, Date> actSubDueDateMap = getDueDate(dueDateMap,'ActSubDueDate');
+        System.debug('actSubDueDateMap getActivitySubDueDate-> '+actSubDueDateMap);
         return actSubDueDateMap;
     }
     public static map<string,date> getActClosureExtensionDate(map<string,date> dueDateMap){
         map<string,date> actSubDueDateMap = getDueDate(dueDateMap,'ActClosureDate');
+        System.debug('actSubDueDateMap getActClosureExtensionDate-> '+actSubDueDateMap);
         return actSubDueDateMap;
     }
     private static Map<String, Date> getDueDate(Map<String, Date> submissionDueDateMap, String window){
@@ -1182,7 +1432,8 @@ Date:               29/04/2022
                     keySet.add(key);
                 }
         Map<String, Core_MDF_CCP_Submission_Window__mdt> inputKeyToMtdMap = getMetadataValuesForKeyApplied(keySet);
-        
+        System.debug('inputKeyToMtdMap-> '+inputKeyToMtdMap);
+        System.debug('submissionDueDateMap-> '+submissionDueDateMap);
         if(submissionDueDateMap != null && !submissionDueDateMap.isEmpty()){
             for(String strKey : submissionDueDateMap.keySet()){
                 
@@ -1200,26 +1451,31 @@ Date:               29/04/2022
                 String pfrEndDateYear = formattedDateList[2];
                 
                 ActivityEndDateInstance  = Date.newInstance(Integer.valueOf(pfrEndDateYear),Integer.valueOf(pfrEndDateMonth),Integer.valueOf(pfrEndDateDay));
+                System.debug('ActivityEndDateInstance-> '+ActivityEndDateInstance);
                 if(ActivityEndDateInstance != null){
                     Core_MDF_CCP_Submission_Window__mdt mtd = inputKeyToMtdMap.get(key);
                     // get quarter value from metadata
+                    System.debug('mtd-> '+mtd);
                     if(mtd != null && mtd.Core_MDF_Quarter__c != null){
                         integer qtrVal = integer.valueOf(mtd.Core_MDF_Quarter__c);
                         date qtrEndDate = getQuarterEndDate(ActivityEndDateInstance,qtrVal);
+                        System.debug('qtrEndDate-> '+qtrEndDate);
                         
                         if(window.equalsIgnoreCase('ActSubDueDate')){
                             InternalMetdata intMtd = new InternalMetdata();
                             intMtd.rule=mtd.Core_MDF_Activity_Auto_Closure_Rule__c;
                             intMtd.mtd=mtd;
                             intMtd.dt=qtrEndDate;
-                            dueDateMap.put(strKey, getDate(intMtd));                                
+                            dueDateMap.put(strKey, getDate(intMtd));
+                            System.debug('dueDateMap 1st -> '+dueDateMap);                                
                         }
                         if(window.equalsIgnoreCase('ActClosureDate')){
                             InternalMetdata intMtd = new InternalMetdata();
                             intMtd.rule=mtd.Core_MDF_Closure_date_Extension_Rule__c;
                             intMtd.mtd=mtd;
                             intMtd.dt=qtrEndDate;
-                            dueDateMap.put(strKey, getDate(intMtd));                                
+                            dueDateMap.put(strKey, getDate(intMtd)); 
+                            System.debug('dueDateMap 2nd -> '+dueDateMap);                                 
                         } 
                     }
                 }
@@ -1232,7 +1488,8 @@ Date:               29/04/2022
     
     private static Map<String,Core_MDF_CCP_Submission_Window__mdt> getMetadataValuesForKeyApplied(Set<String> keySet){
         Map<String,Core_MDF_CCP_Submission_Window__mdt> keyToAppliedMetadataMap = new Map<String,Core_MDF_CCP_Submission_Window__mdt>{};  
-            Map<String,Core_MDF_CCP_Submission_Window__mdt> ncClosureMap = createSubmissionAndClosureMap();       
+            Map<String,Core_MDF_CCP_Submission_Window__mdt> ncClosureMap = createSubmissionAndClosureMap();  
+        System.debug('ncClosureMap-> '+ncClosureMap);     
         for(String key : keySet){
             Core_MDF_CCP_Submission_Window__mdt mtd;
             if(ncClosureMap != null && !ncClosureMap.isEmpty()){
@@ -1256,22 +1513,28 @@ Date:               29/04/2022
                     
                     
                     if(ncClosureMap.containsKey(keySubGeo)){
+                        System.debug('nt 1->');
                         keyApplied = keySubGeo;
                     }else if(ncClosureMap.containsKey(keyGeo)){
+                        System.debug('nt 2->');
                         keyApplied = keyGeo;
                     }else if(ncClosureMap.containsKey(keyPgmBudget)){
+                        System.debug('nt 3->');
                         keyApplied = keyPgmBudget;
                     }else if(ncClosureMap.containsKey(keyPgm)){
+                        System.debug('nt 4->');
                         keyApplied = keyPgm;
                     }
-                    
+                    System.debug('keyApplied->'+keyApplied);
                     
                     if(String.isNotBlank(keyApplied)){
                         mtd = ncClosureMap.get(keyApplied);
+                        System.debug('keyApplied mtd->'+mtd);
                     }
                 }
             }
             keyToAppliedMetadataMap.put(key,mtd);
+            System.debug('keyToAppliedMetadataMap-> '+keyToAppliedMetadataMap); 
         }
         
         return keyToAppliedMetadataMap;
@@ -1296,6 +1559,7 @@ Date:               29/04/2022
             key = key.deleteWhitespace();
             submissionAndClosureMap.put(key,mtd);
         }
+        System.debug('submissionAndClosureMap-> '+submissionAndClosureMap);
         return submissionAndClosureMap;
     }
     
@@ -1310,6 +1574,7 @@ Date:               29/04/2022
                 rulesplit.add(intMtd.rule);
             }
         }
+        System.debug('rulesplit-> '+rulesplit);
         if(rulesplit!=null){
             for(String rule : rulesplit){
                 if(rule=='Core_MDF_Activity_Auto_Closure_SLA__c'){
@@ -1324,6 +1589,7 @@ Date:               29/04/2022
                 
             }
         }
+        System.debug('returnDate-> '+returnDate);
         return returnDate;
     }
     
@@ -1359,19 +1625,25 @@ Date:               29/04/2022
         if(dt != null && mtd != null){
             if(mtd.Core_MDF_Activity_Auto_Closure_SLA_Month__c != null && mtd.Core_MDF_Activity_Auto_Closure_SLA_Month__c > 0 ){
                 integer actSubClosureWindowAddMnths = integer.valueOf(mtd.Core_MDF_Activity_Auto_Closure_SLA_Month__c);
+                system.debug('@@@actSubClosureWindowAddMnths '+actSubClosureWindowAddMnths);
                 actSubDueDate = dt.addMonths(actSubClosureWindowAddMnths);
+                system.debug('@@@actSubDueDate '+actSubDueDate);
                 //submissionDueDate = submissionDueDate.addMonths(submissionAddMonths).toStartofMonth().addDays(-1);
                 if(mtd.Core_MDF_Quarter__c > 0){
                     integer numberOfDays = Date.daysInMonth(actSubDueDate.year(), actSubDueDate.month());
+                    system.debug('@@@numberOfDays '+numberOfDays);
                     actSubDueDate = Date.newInstance(actSubDueDate.year(), actSubDueDate.month(), numberOfDays);
+                    system.debug('@@@actSubDueDate '+actSubDueDate);
                 }
             }else if(mtd.Core_MDF_Activity_Auto_Closure_SLA__c != null && mtd.Core_MDF_Activity_Auto_Closure_SLA__c > 0 ){
                 integer actSubClosureWindowAddDays = integer.valueOf(mtd.Core_MDF_Activity_Auto_Closure_SLA__c);
+                system.debug('@@@actSubClosureWindowAddDays '+actSubClosureWindowAddDays);
                 actSubDueDate = dt.addDays(actSubClosureWindowAddDays);
+                system.debug('@@@actSubDueDate1 '+actSubDueDate);
             }
             
         }
-        
+        System.debug('new method actSubDueDate2 -> '+actSubDueDate);
         return actSubDueDate;
     }
     
@@ -1387,6 +1659,7 @@ Date:               29/04/2022
                 actSubDueDate = getActSubDueDate(dt, mtd);
             }
         }
+        System.debug('new method actSubDueDate 3-> '+actSubDueDate);
         return actSubDueDate;
     }
     
@@ -1465,7 +1738,7 @@ Modified By:        Mohit Sharma; removed pfrRecordTypeEventMetadataMap from par
                                             String amount = String.valueOf(pfr.RequestedAmount);
                                             
                                             
-                                            
+                                            System.debug('errorthrown->'+errorthrown);
                                             //closed date validations
                                             if(!errorthrown){
                                                 
@@ -1507,7 +1780,8 @@ Modified By:        Ramapriya       Date: 25/07/2025    Added new ATF Flag value
         String atfPlannedStatus = System.Label.Core_MDF_ATF_Planned_Status;
         String atfRRStatus = System.Label.Core_MDF_ATF_RR;
         String atfInProgressStatus=System.Label.Core_MDF_ATF_In_Progress_Status;
-        String atfClosedStatus = System.Label.Core_MDF_ATF_Closed_Status;
+        // Highlight: Unused Local Variable - 14285
+        // String atfClosedStatus = System.Label.Core_MDF_ATF_Closed_Status;
         Boolean isfieldModified;
         
         if(oldPfrMap != NULL && (oldPfrMap.get(pfr.Id).Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_RR_STATUS 
@@ -1534,6 +1808,15 @@ Modified By:        Ramapriya       Date: 25/07/2025    Added new ATF Flag value
             && oldPfrMap.get(pfr.Id).Core_MDF_Start_Date__c != pfr.Core_MDF_Start_Date__c ))
         {
             //Avoid Deeply Nested IF Statements
+            //  if (oldPfrMap.get(pfr.Id).Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_RR_STATUS 
+            //     && isfieldModified == true){
+            //     if(String.isBlank(pfr.Core_MDF_ATF_Flag_nm__c)){
+            //         pfr.Core_MDF_ATF_Flag_nm__c= atfRRStatus ;
+            //     }
+            //     else if(!pfr.Core_MDF_ATF_Flag_nm__c.contains(atfRRStatus)){
+            //         pfr.Core_MDF_ATF_Flag_nm__c=pfr.Core_MDF_ATF_Flag_nm__c+';'+ atfRRStatus ;
+            //     }
+            // }
             if(oldPfrMap.get(pfr.Id).Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_RR_STATUS && isfieldModified == true && String.isBlank(pfr.Core_MDF_ATF_Flag_nm__c)){
                 pfr.Core_MDF_ATF_Flag_nm__c = atfRRStatus;
             }
@@ -1541,6 +1824,15 @@ Modified By:        Ramapriya       Date: 25/07/2025    Added new ATF Flag value
                 pfr.Core_MDF_ATF_Flag_nm__c = pfr.Core_MDF_ATF_Flag_nm__c + ';' + atfRRStatus;
             }
             // Setting ATF Flag for edit in Planned Status
+            // if (oldPfrMap.get(pfr.Id).Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PLANNED_STATUS && isfieldModified == true)
+            //    {
+            //         if(String.isBlank(pfr.Core_MDF_ATF_Flag_nm__c)){
+            //             pfr.Core_MDF_ATF_Flag_nm__c = atfPlannedStatus ;
+            //         }
+            //         else if(!pfr.Core_MDF_ATF_Flag_nm__c.contains(atfPlannedStatus)){
+            //             pfr.Core_MDF_ATF_Flag_nm__c=pfr.Core_MDF_ATF_Flag_nm__c+';'+atfPlannedStatus ;
+            //         }
+            //     }
             if(oldPfrMap.get(pfr.Id).Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PLANNED_STATUS && isfieldModified == true && String.isBlank(pfr.Core_MDF_ATF_Flag_nm__c)){
                 pfr.Core_MDF_ATF_Flag_nm__c = atfPlannedStatus;
             }
@@ -1548,6 +1840,15 @@ Modified By:        Ramapriya       Date: 25/07/2025    Added new ATF Flag value
                 pfr.Core_MDF_ATF_Flag_nm__c = pfr.Core_MDF_ATF_Flag_nm__c + ';' + atfPlannedStatus;
             }
             // Ramapriya - Setting ATF Flag for edit in In-Progress Sttaus for IPA Program
+            // if (oldPfrMap.get(pfr.Id).Core_MDF_Program__c ==Core_MDF_CCP_ConstantClass.PFR_IPA_PROGRAM && oldPfrMap.get(pfr.Id).Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_STATUS && isfieldModified == true)
+            //    {
+            //         if(String.isBlank(pfr.Core_MDF_ATF_Flag_nm__c)){
+            //             pfr.Core_MDF_ATF_Flag_nm__c = atfInProgressStatus ;
+            //         }
+            //         else if(!pfr.Core_MDF_ATF_Flag_nm__c.contains(atfInProgressStatus)){
+            //             pfr.Core_MDF_ATF_Flag_nm__c=pfr.Core_MDF_ATF_Flag_nm__c+';'+atfInProgressStatus ;
+            //         }
+            //     }
             if(oldPfrMap.get(pfr.Id).Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.PFR_IPA_PROGRAM && oldPfrMap.get(pfr.Id).Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_STATUS && isfieldModified == true && String.isBlank(pfr.Core_MDF_ATF_Flag_nm__c)){
                 pfr.Core_MDF_ATF_Flag_nm__c = atfInProgressStatus;
             }
@@ -1570,7 +1871,8 @@ Date:               29/08/2022
     public static Boolean isfieldModified(String objectName, String fieldSetName, 
                                           SObject newObject, Map<Id, SObject> oldObjectmap){        
                                               Boolean isFldModified = false;    
-                                              List<Schema.FieldSetMember> fieldSetMemberList =  Schema.getGlobalDescribe().get(objectName).getDescribe().FieldSets.getMap().get(fieldSetName).getFields();
+					      					  // ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+                                              List<Schema.FieldSetMember> fieldSetMemberList = Schema.describeSObjects(new List<String>{objectName})[0].FieldSets.getMap().get(fieldSetName).getFields();
                                               if(!fieldSetMemberList.isEmpty()){
                                                   for(Schema.FieldSetMember fieldSetMemberObj : fieldSetMemberList){
                                                       String fieldAPIName = (String)fieldSetMemberObj.getFieldPath();
@@ -1609,542 +1911,396 @@ Added By:           Sai           Date:  30/05/2022
 Modified By:        Ramapriya     Date:  25/07/2025     Added status check as part of "In-Progress Activity Edit"
 
 *******************************************************************************************************/
-    public static void callRuleEngine(List<PartnerFundRequest> pfrList,Map<Id,PartnerFundRequest> oldMap,Boolean isInsert,Boolean isBefore){
-    Map<Id, Boolean> Camp_Approval_checkMap = retrieveApprovalField(pfrList); // Joshua 15182
-        Map<String, List<sobject>> inputMap = new Map<String, List<sobject>>();
-        
-        List<PartnerFundRequest> pfrRuleList = new List<PartnerFundRequest>();
-        List<PartnerFundRequest> pfrRuleListClone = new List<PartnerFundRequest>();
-        List<PartnerFundRequest> pfrCalcList = new List<PartnerFundRequest>();
-        List<PartnerFundRequest> pfrToUpdateWithApprovalCriteriaList = new List<PartnerFundRequest>();
-        Map<String, String> pfrIdToApprovalCriteriaIdMap = new Map<String, String>();
-        Map<String, String> pfrIdToApprovalProcessMap = new Map<String, String>();
-        Integer recordIdCount =1;
-        Set<String> userIdSet = new Set<String>(); 
-        Map<String,String> userIdManagerMap = new Map<String,String>();
-        Map<String,String> userIdManagersManagerIdMap = new Map<String,String>();
-        Map<String,String> pfrIdToUserIdMap = new Map<String,String>();
-        
-        List<PartnerFundRequest> pfrManagerLevelApprovalList = new List<PartnerFundRequest>();
-        
-        Core_MDF_PartnerFundRequest_Utility.ClaimActAllocRecTypeMappingWrapper claimActAllocRecTypeMapWrapInstance = Core_MDF_PartnerFundRequest_Utility.getMetaDataValues();
-        // Mapping Of RecordType and associated close date
-        Map<String,Integer> activityRecordTypeCloseDateMap = new Map<String,Integer>();
-        activityRecordTypeCloseDateMap = claimActAllocRecTypeMapWrapInstance.activityRecordTypeCloseDateMap;
-        // RecordTypeId and RecordType DeveloperName Map 
-        Map<Id,String> ccpRecordTypeIds = new Map<Id,String>();
-        ccpRecordTypeIds = Core_MDF_PartnerFundRequest_Utility.getCCPRTNames(activityRecordTypeCloseDateMap);
-        List<String> budgetTypeCCFDCF1_0 = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_BudgetTypeToExclude').split(';');
-        
-        List<String> budgetTypesList = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_OPAL_CustomerAutoApprBudgetType').split(';');//
-        
-        Set<String> accntIdSet = new Set<String>();
-        Set<String> programSet = new Set<String>();
-        Set<String> geoStrSet = new Set<String>();
-        Set<String> budgetTypeSet = new Set<String>();
-        
-        try{
-            if(Trigger.isBefore){
-                Set<Id> accIdSet = new Set<Id>();
-                for(PartnerFundRequest pfr: pfrList){
-                    String region = (String.isNotBlank(pfr.Core_MDF_Host_Region_txt__c)) ? pfr.Core_MDF_Host_Region_txt__c : pfr.Core_MDF_Region_nm__c;
-                    if((pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_REVIEW_STATUS || pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_PENDING_REVIEW_STATUS || (pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS && pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM)) 
-                       && ((isInsert || oldMap.get(pfr.Id).Core_MDF_Approval_Step_Completed__c != pfr.Core_MDF_Approval_Step_Completed__c || oldMap.get(pfr.Id).Core_MDF_Fund_Request_Status__c != pfr.Core_MDF_Fund_Request_Status__c 
-                            || (Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_Program_Name').equals(pfr.Core_MDF_Program__c) && (pfr.Core_MDF_Region_nm__c == Core_MDF_CCP_ConstantClass.PFR_REGION_EMEA && pfr.Core_MDF_Approval_Step_Completed__c == 0) 
-                                || oldMap.get(pfr.Id).Core_MDF_Region_nm__c != pfr.Core_MDF_Region_nm__c)))&& (pfr.Core_MDF_Proposal_Based_Ind__c   == false)){
-                                    
-                                    if(isInsert && pfr.Id ==null){
-                                        String randomNumber =getFakeId( pfr.getSObjectType(),recordIdCount);
-                                        pfr.Id =randomNumber;
-                                        recordIdCount++;
-                                    }
-                                    if(pfr.Core_MDF_Approval_Step_Completed__c != 0){
-                                        pfr.Core_MDF_Completed_Approval_Level_Name__c    = pfr.Core_MDF_Approval_Stage__c;// move to approval process
-                                    }
-                                    
-                                    accntIdSet.add(pfr.Core_MDF_Ultimate_Account_Id__c);
-                                    programSet.add(pfr.Core_MDF_Program__c);
-                                    geoStrSet.add(region);
-                                    budgetTypeSet.add(pfr.Core_MDF_Budget_Type_nm__c);
-                                    
-                                    pfrRuleListClone.add(pfr.clone(true));
-                                    pfrRuleList.add(pfr);
-                                }
-                }
-                //Copy Ecosystem Partner from Multiselect to Text area field for IPA
-                populatePfrFields(pfrList,oldMap,isInsert,isBefore);
+   public static void callRuleEngine(List<PartnerFundRequest> pfrList,Map<Id,PartnerFundRequest> oldMap,Boolean isInsert,Boolean isBefore){
+    Map<Id, Boolean> Camp_Approval_checkMap = retrieveApprovalField(pfrList); // Joshua 15182 
+     Map<String, List<sobject>> inputMap = new Map<String, List<sobject>>();
+    
+    List<PartnerFundRequest> pfrRuleList = new List<PartnerFundRequest>();
+    List<PartnerFundRequest> pfrRuleListClone = new List<PartnerFundRequest>();
+    List<PartnerFundRequest> pfrCalcList = new List<PartnerFundRequest>();
+       // Highlight unused local variable - 14285 
+    // List<PartnerFundRequest> pfrToUpdateWithApprovalCriteriaList = new List<PartnerFundRequest>();
+    // Map<String, String> pfrIdToApprovalCriteriaIdMap = new Map<String, String>();
+    // Map<String, String> pfrIdToApprovalProcessMap = new Map<String, String>();
+    Integer recordIdCount =1;
+    Set<String> userIdSet = new Set<String>(); 
+    Map<String,String> userIdManagerMap = new Map<String,String>();
+    Map<String,String> userIdManagersManagerIdMap = new Map<String,String>();
+    Map<String,String> pfrIdToUserIdMap = new Map<String,String>();
+    
+    List<PartnerFundRequest> pfrManagerLevelApprovalList = new List<PartnerFundRequest>();
+    
+    Core_MDF_PartnerFundRequest_Utility.ClaimActAllocRecTypeMappingWrapper claimActAllocRecTypeMapWrapInstance = Core_MDF_PartnerFundRequest_Utility.getMetaDataValues();
+    // Mapping Of RecordType and associated close date
+    Map<String,Integer> activityRecordTypeCloseDateMap = new Map<String,Integer>();
+    activityRecordTypeCloseDateMap = claimActAllocRecTypeMapWrapInstance.activityRecordTypeCloseDateMap;
+    // RecordTypeId and RecordType DeveloperName Map 
+    Map<Id,String> ccpRecordTypeIds = new Map<Id,String>();
+    ccpRecordTypeIds = Core_MDF_PartnerFundRequest_Utility.getCCPRTNames(activityRecordTypeCloseDateMap);
+    List<String> budgetTypeCCFDCF1_0 = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_BudgetTypeToExclude').split(';');
+    
+    List<String> budgetTypesList = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_OPAL_CustomerAutoApprBudgetType').split(';');//
+    
+    Set<String> accntIdSet = new Set<String>();
+    Set<String> programSet = new Set<String>();
+    Set<String> geoStrSet = new Set<String>();
+    Set<String> budgetTypeSet = new Set<String>();
+    
+    try{
+        if(Trigger.isBefore){
+            Set<Id> accIdSet = new Set<Id>();
+            for(PartnerFundRequest pfr: pfrList){
                 
+                String region = (String.isNotBlank(pfr.Core_MDF_Host_Region_txt__c)) ? pfr.Core_MDF_Host_Region_txt__c : pfr.Core_MDF_Region_nm__c;
                 
-                
-                List<System.FormulaRecalcResult> calcPFRFormulas = Formula.recalculateFormulas(pfrRuleListClone);
-                
-                for(System.FormulaRecalcResult calcPFRFormulasRecord : calcPFRFormulas){
-                    if(calcPFRFormulasRecord.isSuccess()){
-                        pfrCalcList.add((PartnerFundRequest)calcPFRFormulasRecord.getSObject());
-                    }
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                if(pfr.Core_MDF_Fund_Request_Status__c != Core_MDF_CCP_ConstantClass.PFR_PENDING_REVIEW_STATUS && 
+                   pfr.Core_MDF_Fund_Request_Status__c != Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_PENDING_REVIEW_STATUS && 
+                   !(pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS && pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM)) {
+                    continue;
                 }
                 
-                
-                if(!pfrCalcList.isEmpty()){
-                    inputMap.put(Core_MDF_CCP_ConstantClass.RULE_ENGINE_FRONT_END_REVIEW, pfrCalcList);
-                    ruleEngineResult = Core_MDF_Rules_Engine.executeRulesByObjects(inputMap);
-                    
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                if(!isInsert && oldMap.get(pfr.Id).Core_MDF_Approval_Step_Completed__c == pfr.Core_MDF_Approval_Step_Completed__c && 
+                   oldMap.get(pfr.Id).Core_MDF_Fund_Request_Status__c == pfr.Core_MDF_Fund_Request_Status__c && 
+                   !(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_Program_Name').equals(pfr.Core_MDF_Program__c) && 
+                     (pfr.Core_MDF_Region_nm__c == Core_MDF_CCP_ConstantClass.PFR_REGION_EMEA && pfr.Core_MDF_Approval_Step_Completed__c == 0) 
+                     || oldMap.get(pfr.Id).Core_MDF_Region_nm__c != pfr.Core_MDF_Region_nm__c)) {
+                    continue;
                 }
                 
-                
-                if(!Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_IUPGMAssignment')){
-                    approversFromIUPGMMap = getApproversFromIUPGM(accntIdSet,programSet,geoStrSet,budgetTypeSet);
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                if(pfr.Core_MDF_Proposal_Based_Ind__c == true) {
+                    continue;
                 }
                 
-                // Collect PFR record Ids //Joshua 15182 start
-                   /* Set<Id> pfrIds = new Set<Id>();
-                    for (PartnerFundRequest pfr : pfrRuleList) {
-                        pfrIds.add(pfr.Id);
-                    }
-                    // Get ProcessInstance records for all PFRs
-                    Map<Id, ProcessInstance> processInstanceMap = new Map<Id, ProcessInstance>();
-                    for (ProcessInstance pi : [
-                        SELECT Id, Status, TargetObjectId,CreatedDate
-                        FROM ProcessInstance
-                        WHERE TargetObjectId IN :pfrIds  ORDER BY CreatedDate DESC
-                    ]) {
-                        processInstanceMap.put(pi.TargetObjectId, pi);
-                    }*/ //Joshua 15182 End
-                //sets data we get from rules:
-                for(PartnerFundRequest pfr: pfrRuleList){//pfrRuleList Works both on insert & Update
+                if(isInsert && pfr.Id ==null){
+                    String randomNumber =getFakeId( pfr.getSObjectType(),recordIdCount);
+                    pfr.Id =randomNumber;
+                    recordIdCount++;
+                }
+                system.debug('pfr.Core_MDF_Approval_Stage__c-->'+pfr.Core_MDF_Approval_Stage__c);
+                system.debug('pfr.Core_MDF_Approval_Step_Completed__c-->'+pfr.Core_MDF_Approval_Step_Completed__c);
+                if(pfr.Core_MDF_Approval_Step_Completed__c != 0){
+                    pfr.Core_MDF_Completed_Approval_Level_Name__c    = pfr.Core_MDF_Approval_Stage__c;// move to approval process
+                }
+                
+                accntIdSet.add(pfr.Core_MDF_Ultimate_Account_Id__c);
+                programSet.add(pfr.Core_MDF_Program__c);
+                geoStrSet.add(region);
+                budgetTypeSet.add(pfr.Core_MDF_Budget_Type_nm__c);
+                
+                pfrRuleListClone.add(pfr.clone(true));
+                pfrRuleList.add(pfr);
+            }
+            //Copy Ecosystem Partner from Multiselect to Text area field for IPA
+            populatePfrFields(pfrList,oldMap,isInsert,isBefore);
+            
+            
+            
+            List<System.FormulaRecalcResult> calcPFRFormulas = Formula.recalculateFormulas(pfrRuleListClone);
+            
+            for(System.FormulaRecalcResult calcPFRFormulasRecord : calcPFRFormulas){
+                if(calcPFRFormulasRecord.isSuccess()){
+                    pfrCalcList.add((PartnerFundRequest)calcPFRFormulasRecord.getSObject());
+                }
+            }
+            
+            system.debug('pfrCalcList-->'+pfrCalcList);
+            if(!pfrCalcList.isEmpty()){
+                inputMap.put(Core_MDF_CCP_ConstantClass.RULE_ENGINE_FRONT_END_REVIEW, pfrCalcList);
+                ruleEngineResult = Core_MDF_Rules_Engine.executeRulesByObjects(inputMap);
+                system.debug('ruleEngineResult12'+ruleEngineResult);
+                
+            }
+            
+            
+            if(!Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_IUPGMAssignment')){
+                approversFromIUPGMMap = getApproversFromIUPGM(accntIdSet,programSet,geoStrSet,budgetTypeSet);
+            }
+            system.debug('approversFromIUPGMMap-->' + approversFromIUPGMMap);
+            system.debug('pfrRuleList-->'+pfrRuleList);
+            //sets data we get from rules:
+            for(PartnerFundRequest pfr: pfrRuleList){//pfrRuleList Works both on insert & Update
             Boolean isCMP = pfr.Core_MDF_Budget_Type_nm__c == Label.Core_MDF_BudgetType_CMP; // Joshua 15182
+            system.debug('Line ==>-->2012  ' + isCMP); // Joshua 15182
             Boolean Camp_Approval_check = Camp_Approval_checkMap.get(pfr.CampaignId); // Joshua 15182
+            system.debug('Line ==>-->2014  ' + Camp_Approval_check); // Joshua 15182
+            Boolean hasAccess = Schema.sObjectType.Campaign.fields.Core_MDF_Activity_Approval_Required_Ind__c.isAccessible();
+            System.debug('Line 2016== '+ hasAccess); // Joshua 15182
             Boolean CMP_threshold_value = pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c > Decimal.valueOf(Label.CMP_Threshold_value); // Joshua 15182
-            Boolean ISCMP_with_Threshold = isCMP && Camp_Approval_check && CMP_threshold_value; // Joshua 15182
+            Boolean CMP_outcomeBased_threshold_value = pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c > Decimal.valueOf(Label.CMP_Outcomebased_Threshold_value);
+            system.debug('Line ==>-->2018  ' + CMP_threshold_value); // Joshua 15182
+            Boolean isOutcomeBasedCMP = pfr.Core_MDF_Is_Outcome_Based_Ind__c == true;
+            Boolean ISCMP_with_Threshold = isCMP && !isOutcomeBasedCMP && Camp_Approval_check && CMP_threshold_value; // Joshua 15182
+            Boolean ISCMP_OutcomeBased_with_Threshold = isCMP && isOutcomeBasedCMP && CMP_outcomeBased_threshold_value;
+            Boolean shouldForceL1ApprovalForCMP = ISCMP_with_Threshold || ISCMP_OutcomeBased_with_Threshold;
+            system.debug('Line ==>-->2020  ' + ISCMP_with_Threshold); // Joshua 15182
             Boolean CCF_DCFCheck = (pfr.Core_MDF_Program__c == Label.Core_MDF_CCF_Program_Name || pfr.Core_MDF_Program__c == Label.Core_MDF_DCF_Program_Name); //Joshua 15182 program check for CCF/DCF
-                    String region = (String.isNotBlank(pfr.Core_MDF_Host_Region_txt__c)) ? pfr.Core_MDF_Host_Region_txt__c : pfr.Core_MDF_Region_nm__c;
-                    String userId;
-                    if(!ruleEngineResult.isEmpty() &&  ruleEngineResult.containsKey(Core_MDF_CCP_ConstantClass.RULE_ENGINE_FRONT_END_REVIEW)){
-                        
-                        Map<String,Core_MDF_Rules_Engine.RulesEngineParams> rule1 = ruleEngineResult.get(Core_MDF_CCP_ConstantClass.RULE_ENGINE_FRONT_END_REVIEW);//gets the rule
-                        
-                        Core_MDF_Rules_Engine.RulesEngineParams ruleEngineParam = rule1.get(pfr.Id);
-                        if(ruleEngineParam != null && ruleEngineParam.ruleRecord != null){
-                            Boolean isNoAction = false;
-                            pfrToRuleEngineMap.put(pfr,ruleEngineParam);
-                            if(ruleEngineParam.result){//gets the RuleEngineParam and checks the result attribute
-                                if(ruleEngineParam.actionOnTrue != Core_MDF_CCP_ConstantClass.RULE_ENGINE_NO_ACTION){
-                                    pfr.Core_MDF_Approval_Stage__c = ruleEngineParam.actionOnTrue;  
-                                    pfr.Core_MDF_Approver_Source_nm__c = (ruleEngineParam.ruleRecord).Core_MDF_Approver_Source_on_True_nm__c;
-                                    String key = pfr.Core_MDF_Program__c + pfr.Core_MDF_Budget_Type_nm__c + pfr.Core_MDF_Region_nm__c + pfr.Core_MDF_Approval_Stage__c;
-                                    pfrApprovalSendMap.put(key, false);
-                                }else{
-                                    isNoAction = true;
-                                    noAction = true;
-                                    String key = pfr.Core_MDF_Program__c + pfr.Core_MDF_Budget_Type_nm__c + pfr.Core_MDF_Region_nm__c + pfr.Core_MDF_Approval_Stage__c;
-                                    pfrApprovalSendMap.put(key, true);
-                                }
-                            }else{
-                                if(ruleEngineParam.actionOnFalse != Core_MDF_CCP_ConstantClass.RULE_ENGINE_NO_ACTION){
-                                    pfr.Core_MDF_Approval_Stage__c = ruleEngineParam.actionOnFalse;  
-                                    
-                                    pfr.Core_MDF_Approver_Source_nm__c = (ruleEngineParam.ruleRecord).Core_MDF_Approver_Source_on_False_nm__c;
-                                    String key = pfr.Core_MDF_Program__c + pfr.Core_MDF_Budget_Type_nm__c + pfr.Core_MDF_Region_nm__c + pfr.Core_MDF_Approval_Stage__c;
-                                    pfrApprovalSendMap.put(key, false);
-                                }else{
-                                    isNoAction = true;
-                                    noAction = true;
-                                    String key = pfr.Core_MDF_Program__c + pfr.Core_MDF_Budget_Type_nm__c + pfr.Core_MDF_Region_nm__c + pfr.Core_MDF_Approval_Stage__c;
-                                    pfrApprovalSendMap.put(key, true);
-                                }
-                            }  
-                            if(isNoAction == false){
-                    if(pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.PFR_PLANNED_STATUS){ 
-                                     if(CCF_DCFCheck && ISCMP_with_Threshold){ //  Joshua 15182 Added check (CCF_DCFCheck && ISCMP_with_Threshold)
+
+                String region = (String.isNotBlank(pfr.Core_MDF_Host_Region_txt__c)) ? pfr.Core_MDF_Host_Region_txt__c : pfr.Core_MDF_Region_nm__c;
+                String userId;
+                
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                if(ruleEngineResult.isEmpty() || !ruleEngineResult.containsKey(Core_MDF_CCP_ConstantClass.RULE_ENGINE_FRONT_END_REVIEW)){
+                    deriveActivityStatuses(pfr,oldMap);
+                    continue;
+                }
+                
+                Map<String,Core_MDF_Rules_Engine.RulesEngineParams> rule1 = ruleEngineResult.get(Core_MDF_CCP_ConstantClass.RULE_ENGINE_FRONT_END_REVIEW);//gets the rule
+                system.debug('ruleE12'+rule1);
+                Core_MDF_Rules_Engine.RulesEngineParams ruleEngineParam = rule1.get(pfr.Id);
+                system.debug('ruleEngineParam23'+ruleEngineParam);
+                
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                if(ruleEngineParam == null || ruleEngineParam.ruleRecord == null){
+                    deriveActivityStatuses(pfr,oldMap);
+                    continue;
+                }
+                
+                Boolean isNoAction = false;
+                pfrToRuleEngineMap.put(pfr,ruleEngineParam);
+                system.debug('PFR '+pfr);
+                system.debug('pfr.Core_MDF_Approval_Stage__c '+pfr.Core_MDF_Approval_Stage__c);
+                system.debug('ruleEngineParam.result-->' + ruleEngineParam.result);
+                if(ruleEngineParam.result){//gets the RuleEngineParam and checks the result attribute
+                    if(ruleEngineParam.actionOnTrue != Core_MDF_CCP_ConstantClass.RULE_ENGINE_NO_ACTION){
+                        system.debug('ruleEngineParam.actionOnTrue '+ruleEngineParam.actionOnTrue);
+                        system.debug('pfr.Core_MDF_Approval_Stage__c 1 '+pfr.Core_MDF_Approval_Stage__c);
+                        pfr.Core_MDF_Approval_Stage__c = ruleEngineParam.actionOnTrue;  
+                        pfr.Core_MDF_Approver_Source_nm__c = (ruleEngineParam.ruleRecord).Core_MDF_Approver_Source_on_True_nm__c;
+                        String key = pfr.Core_MDF_Program__c + pfr.Core_MDF_Budget_Type_nm__c + pfr.Core_MDF_Region_nm__c + pfr.Core_MDF_Approval_Stage__c;
+                        pfrApprovalSendMap.put(key, false);
+                    }else{
+                        isNoAction = true;
+                        noAction = true;
+                        String key = pfr.Core_MDF_Program__c + pfr.Core_MDF_Budget_Type_nm__c + pfr.Core_MDF_Region_nm__c + pfr.Core_MDF_Approval_Stage__c;
+                        pfrApprovalSendMap.put(key, true);
+                    }
+                }else{
+                    if(ruleEngineParam.actionOnFalse != Core_MDF_CCP_ConstantClass.RULE_ENGINE_NO_ACTION){
+                        pfr.Core_MDF_Approval_Stage__c = ruleEngineParam.actionOnFalse;  
+                        system.debug('ruleEngineParam.actionOnFalse '+ruleEngineParam.actionOnFalse);
+                        system.debug('pfr.Core_MDF_Approval_Stage__c 2 '+pfr.Core_MDF_Approval_Stage__c);
+                        pfr.Core_MDF_Approver_Source_nm__c = (ruleEngineParam.ruleRecord).Core_MDF_Approver_Source_on_False_nm__c;
+                        String key = pfr.Core_MDF_Program__c + pfr.Core_MDF_Budget_Type_nm__c + pfr.Core_MDF_Region_nm__c + pfr.Core_MDF_Approval_Stage__c;
+                        pfrApprovalSendMap.put(key, false);
+                    }else{
+                        isNoAction = true;
+                        noAction = true;
+                        String key = pfr.Core_MDF_Program__c + pfr.Core_MDF_Budget_Type_nm__c + pfr.Core_MDF_Region_nm__c + pfr.Core_MDF_Approval_Stage__c;
+                        pfrApprovalSendMap.put(key, true);
+                    }
+                }  
+                if(isNoAction == false){
+                     if(pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.PFR_PLANNED_STATUS){ 
+                                     if(CCF_DCFCheck && shouldForceL1ApprovalForCMP){ //  Joshua 15182 Added check (CCF_DCFCheck && ISCMP_with_Threshold)
                                         pfr.Core_MDF_Approval_Stage__c = Core_MDF_CCP_ConstantClass.PFR_L1_APPROVAL;
+                                        pfr.Core_MDF_ATF_Approval_Reqd_ind__c = TRUE;
                                         String key = pfr.Core_MDF_Program__c + pfr.Core_MDF_Budget_Type_nm__c + pfr.Core_MDF_Region_nm__c + pfr.Core_MDF_Approval_Stage__c;
                                         pfrApprovalSendMap.put(key, false); 
-                                              /* ProcessInstance pi = processInstanceMap.get(pfr.Id);
-                                                if(pi != null && pi.Status == 'Removed'){
-                                               // if(pi.Status == 'Removed'){
-                                                    // Approval request recalled
-                                                    pfr.Core_MDF_Fund_Request_Status__c = Core_MDF_CCP_ConstantClass.PFR_RR_STATUS;
-                                                }*/
-                                    }else if(!ISCMP_with_Threshold){
+                                    }else if(!shouldForceL1ApprovalForCMP){
                                         pfr.Core_MDF_Fund_Request_Status__c = Core_MDF_CCP_ConstantClass.PFR_PLANNED_STATUS;
                                             }
-                                    
-                                }else if(pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.PFR_CUSTOMER_ACCEPTANCE 
-                                         || pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.CUSTOMER_ACCEPTANCE_PRIMARY_PARTNER
-                                         || pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.CUSTOMER_ACCEPTANCE_ACTIVATING_PARTNER){
-                                             //Ramapriya - set status to In-Progress Pending Approval
-                                             if(pfr.Core_MDF_PriorValueOfStatus__c == Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_PENDING_REVIEW_STATUS || pfr.Core_MDF_PriorValueOfStatus__c == Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_STATUS || pfr.Core_MDF_PriorValueOfStatus__c == Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_REVISION_REQUIRED_STATUS){
-                                                 pfr.Core_MDF_Fund_Request_Status__c = Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_PENDING_APPROVAL_STATUS;
-                                             }
-                                             else{
-                                                 pfr.Core_MDF_Fund_Request_Status__c = Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS; 
-                                             }  
-                                         }
-                                
-                                String recordTypeName = getRecordTypeDevloperNameById('PartnerFundRequest',pfr.RecordTypeId);//Core_MDF_Service_Provider_CoMarketing_Fund
-                                
-                                
-                                if((ruleEngineParam.ruleRecord).Core_MDF_Approver_Source_on_False_nm__c != null || (ruleEngineParam.ruleRecord).Core_MDF_Approver_Source_on_True_nm__c != null){
-                                    
-                                    clearAllApprovers(pfr);
-                                    
-                                    
-                                    if(ruleEngineParam.result == true && (ruleEngineParam.ruleRecord).Core_MDF_Approver_Source_on_True_nm__c != null 
-                                       && (ruleEngineParam.ruleRecord).Core_MDF_Approver_Source_on_True_nm__c == Core_MDF_CCP_ConstantClass.RULE_ENGINE_OBJECT_FIELD){
-                                           
-                                           userId = (String)pfr.get((ruleEngineParam.ruleRecord).Core_MDF_Approver_Source_Value_on_True__c);
-                                           
-                                       }else if(ruleEngineParam.result == false && (ruleEngineParam.ruleRecord).Core_MDF_Approver_Source_on_False_nm__c != null 
-                                                && (ruleEngineParam.ruleRecord).Core_MDF_Approver_Source_on_False_nm__c == Core_MDF_CCP_ConstantClass.RULE_ENGINE_OBJECT_FIELD){
-                                                    
-                                                    userId = (String)pfr.get((ruleEngineParam.ruleRecord).Core_MDF_Approver_Source_Value_on_False__c);
-                                                }  
-                                }
-                                
-                                //end
-                                if((isInsert || (oldMap!=null && oldMap.get(pfr.Id).Core_MDF_Approval_Step_Completed__c != pfr.Core_MDF_Approval_Step_Completed__c)) 
-                                   && pfr.Core_MDF_Approval_Step_Completed__c == 1 && pfr.Core_MDF_Proposal_Based_Ind__c == false){
-                                       pfr.Core_MDF_Activity_First_Approver_txt__c  = UserInfo.getUserId();  
-                                   }
-                                //setting the L1 approverId to send the rejection mail,when rejected by POR,PCT or Additional Reviewer
-                                if(oldMap != NULL && oldMap.get(pfr.Id).Core_MDF_Approval_Step_Completed__c != pfr.Core_MDF_Approval_Step_Completed__c && pfr.Core_MDF_Approval_Step_Completed__c == 1 
+                        System.debug('Line 2079==> '+ pfr.Core_MDF_Fund_Request_Status__c); // Joshua 15182
+                    }else if(pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.PFR_CUSTOMER_ACCEPTANCE 
+                             || pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.CUSTOMER_ACCEPTANCE_PRIMARY_PARTNER
+                             || pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.CUSTOMER_ACCEPTANCE_ACTIVATING_PARTNER){
+                                 //Ramapriya - set status to In-Progress Pending Approval
+                                 if(pfr.Core_MDF_PriorValueOfStatus__c == Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_PENDING_REVIEW_STATUS || pfr.Core_MDF_PriorValueOfStatus__c == Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_STATUS || pfr.Core_MDF_PriorValueOfStatus__c == Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_REVISION_REQUIRED_STATUS){
+                                     pfr.Core_MDF_Fund_Request_Status__c = Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_PENDING_APPROVAL_STATUS;
+                                 }
+                                 else{
+                                     pfr.Core_MDF_Fund_Request_Status__c = Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS; 
+                                 }  
+                             }
+                    
+                    String recordTypeName = getRecordTypeDevloperNameById('PartnerFundRequest',pfr.RecordTypeId);//Core_MDF_Service_Provider_CoMarketing_Fund
+                    
+                    
+                    if((ruleEngineParam.ruleRecord).Core_MDF_Approver_Source_on_False_nm__c != null || (ruleEngineParam.ruleRecord).Core_MDF_Approver_Source_on_True_nm__c != null){
+                        
+                        clearAllApprovers(pfr);
+                        
+                        
+                        if(ruleEngineParam.result == true && (ruleEngineParam.ruleRecord).Core_MDF_Approver_Source_on_True_nm__c != null 
+                           && (ruleEngineParam.ruleRecord).Core_MDF_Approver_Source_on_True_nm__c == Core_MDF_CCP_ConstantClass.RULE_ENGINE_OBJECT_FIELD){
+                               
+                               userId = (String)pfr.get((ruleEngineParam.ruleRecord).Core_MDF_Approver_Source_Value_on_True__c);
+                               
+                           }else if(ruleEngineParam.result == false && (ruleEngineParam.ruleRecord).Core_MDF_Approver_Source_on_False_nm__c != null 
+                                    && (ruleEngineParam.ruleRecord).Core_MDF_Approver_Source_on_False_nm__c == Core_MDF_CCP_ConstantClass.RULE_ENGINE_OBJECT_FIELD){
+                                        
+                                        userId = (String)pfr.get((ruleEngineParam.ruleRecord).Core_MDF_Approver_Source_Value_on_False__c);
+                                    }  
+                    }
+                    
+                    //end
+                    if((isInsert || (oldMap!=null && oldMap.get(pfr.Id).Core_MDF_Approval_Step_Completed__c != pfr.Core_MDF_Approval_Step_Completed__c)) 
+                       && pfr.Core_MDF_Approval_Step_Completed__c == 1 && pfr.Core_MDF_Proposal_Based_Ind__c == false){
+                           pfr.Core_MDF_Activity_First_Approver_txt__c  = UserInfo.getUserId();  
+                       }
+                     //setting the L1 approverId to send the rejection mail,when rejected by POR,PCT or Additional Reviewer
+                    if(oldMap != NULL && oldMap.get(pfr.Id).Core_MDF_Approval_Step_Completed__c != pfr.Core_MDF_Approval_Step_Completed__c && pfr.Core_MDF_Approval_Step_Completed__c == 1 
                                    &&(pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_REVIEW_STATUS || pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS) && UserInfo.getUserType() == 'Standard' 
                                    && pfr.Core_MDF_Activity_CreatedByExternalUsr__c == true 
                                    && (recordTypeName == Core_MDF_CCP_ConstantClass.PFR_CCF_RECORDTYPE || recordTypeName == Core_MDF_CCP_ConstantClass.PFR_DCF_RECORDTYPE || recordTypeName == Core_MDF_CCP_ConstantClass.PFR_EEF_RECORDTYPE
                                        || (recordTypeName == Core_MDF_CCP_ConstantClass.PFR_IPA_RECORDTYPE) && pfr.Core_MDF_Proposal_Based_Ind__c == false)){     
                                            pfr.Core_MDF_L1_Approver_Id__c = UserInfo.getUserId();
                                        }
-                                
-                                //setting the L1 Primary approverId to send the rejection mail,when rejected by POR,PCT,L2 Approver,Primary Partner Customer Acceptance or Activating Partner Customer Acceptance
-                                if(oldMap != NULL && recordTypeName == Core_MDF_CCP_ConstantClass.PFR_EEF_RECORDTYPE && oldMap.get(pfr.Id).Core_MDF_Approval_Step_Completed__c != pfr.Core_MDF_Approval_Step_Completed__c && pfr.Core_MDF_Approval_Step_Completed__c == 2 
+                                //setting the L1 Primary approverId to send the rejection mail,when rejected by POR,PCT,L2 Approver,Primary Partner Customer Acceptance or Activating Partner Customer Acceptance                                     
+                                  if(oldMap != NULL && recordTypeName == Core_MDF_CCP_ConstantClass.PFR_EEF_RECORDTYPE && oldMap.get(pfr.Id).Core_MDF_Approval_Step_Completed__c != pfr.Core_MDF_Approval_Step_Completed__c && pfr.Core_MDF_Approval_Step_Completed__c == 2 
                                    &&(pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_REVIEW_STATUS || pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS) && UserInfo.getUserType() == 'Standard' 
                                    && pfr.Core_MDF_Activity_CreatedByExternalUsr__c == true ){
                                        pfr.Core_MDF_L1_Primary_Approver_Id__c = UserInfo.getUserId();
                                        if(pfr.Core_MDF_L1_Approver_Id__c==null){
                                            pfr.Core_MDF_L1_Approver_Id__c = pfr.Core_MDF_Activity_First_Approver_txt__c!=null?pfr.Core_MDF_Activity_First_Approver_txt__c:null;
                                        }
-                                   }        
-                                //do we need this if block-- start
-                                if(pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.PFR_L1_APPROVAL || pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.PFR_L2_APPROVAL){
-                                    //below code would be needed after rule engine -- start
-                                    if(!String.isBlank(userId)){
-                                        pfr.Core_MDF_Approver_1__c =userId;
-                                        setAllApprovers(pfr);
-                                    }   
-                                }//do we need this if block-- end
-                                else if(pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.PFR_FIRST_LEVEL_MGR || pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.PFR_SECOND_LEVEL_MGR){
-                                    if(!String.isBlank(userId)){
-                                        pfrIdToUserIdMap.put(pfr.id,userId);
-                                        userIdSet.add(userId);
-                                        pfrManagerLevelApprovalList.add(pfr);
-                                    }else{
-                                        userId = UserInfo.getUserId();  
-                                        pfrIdToUserIdMap.put(pfr.id,userId);
-                                        userIdSet.add(userId);
-                                        pfrManagerLevelApprovalList.add(pfr);  
-                                    }   
-                                }
-                            }
+                                   } 
+                    //do we need this if block-- start
+                    if(pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.PFR_L1_APPROVAL || pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.PFR_L2_APPROVAL){
+                        //below code would be needed after rule engine -- start
+                        if(!String.isBlank(userId)){
+                            pfr.Core_MDF_Approver_1__c =userId;
+                            setAllApprovers(pfr);
+                        }   
+                    }//do we need this if block-- end
+                    else if(pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.PFR_FIRST_LEVEL_MGR || pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.PFR_SECOND_LEVEL_MGR){
+                        if(!String.isBlank(userId)){
+                            pfrIdToUserIdMap.put(pfr.id,userId);
+                            userIdSet.add(userId);
+                            pfrManagerLevelApprovalList.add(pfr);
+                        }else{
+                            userId = UserInfo.getUserId();  
+                            pfrIdToUserIdMap.put(pfr.id,userId);
+                            userIdSet.add(userId);
+                            pfrManagerLevelApprovalList.add(pfr);  
                         }   
                     }
-                    deriveActivityStatuses(pfr,oldMap);
                 }
                 
-                ///copied code-- start
-                if(userIdSet != null && userIdSet.size() > 0){
-                    for(User usr: [Select Id, ManagerId,Manager.ManagerId  FROM User WHERE Id =: userIdSet and ManagerId != NULL]){
-                        userIdManagerMap.put(usr.Id, usr.ManagerId); 
-                        userIdManagersManagerIdMap.put(usr.Id, usr.Manager.ManagerId); 
-                    }  
+                deriveActivityStatuses(pfr,oldMap);
+            }
+            
+            ///copied code-- start
+            if(userIdSet != null && userIdSet.size() > 0){
+                for(User usr: [Select Id, ManagerId,Manager.ManagerId  FROM User WHERE Id =: userIdSet and ManagerId != NULL]){
+                    userIdManagerMap.put(usr.Id, usr.ManagerId); 
+                    userIdManagersManagerIdMap.put(usr.Id, usr.Manager.ManagerId); 
+                }  
+            }
+            for(PartnerFundRequest pfr : pfrManagerLevelApprovalList){
+                if(userIdManagerMap.containsKey((pfrIdToUserIdMap.get(pfr.Id)))){
+                    pfr.Core_MDF_Approver_1__c = userIdManagerMap.get(pfrIdToUserIdMap.get(pfr.Id));
+                    //setAllApprovers(pfr);
+                }else{
+                    pfr.addError('No manager record found'); 
                 }
-                for(PartnerFundRequest pfr : pfrManagerLevelApprovalList){
-                    if(userIdManagerMap.containsKey((pfrIdToUserIdMap.get(pfr.Id)))){
-                        pfr.Core_MDF_Approver_1__c = userIdManagerMap.get(pfrIdToUserIdMap.get(pfr.Id));
-                        //setAllApprovers(pfr);
-                    }else{
-                        pfr.addError('No manager record found'); 
-                    }
-                    
-                }
-                
-                
-                Boolean isUpdate = !isInsert;
                 
             }
             
-            if(Trigger.isAfter){
-                List<Approval.ProcessSubmitRequest> appRequests = new List<Approval.ProcessSubmitRequest> ();
-                Set<String>pfrInPendingReviewIdSet = new Set<String>();
-                Set<String>recordsInApprovalProcessIdSet = new Set<String>();
-                List<PartnerFundRequest> pfrInPendingReviewList = new List<PartnerFundRequest>();
-                List<PartnerFundRequest> pendingApprovalPFR = new List<PartnerFundRequest>();
-                List<String> pfrAccntList = new List<String>();
-                List<String> pfrProgramList = new List<String>();
-                List<String> pfrGeoList = new List<String>();
-                List<String> pfrApprovalStageStatusList = new List<String>();
-                List<String> pfrBudgetTypeList = new List<String>();
-                List<PartnerFundRequest> pendingApprovalRMFPfrList = new List<PartnerFundRequest>();
-                List<PartnerFundRequest> plannedPfrList = new List<PartnerFundRequest>();
+            
+             Boolean isUpdate = !isInsert;
+            
+        }
+        
+        if(Trigger.isAfter){
+            List<Approval.ProcessSubmitRequest> appRequests = new List<Approval.ProcessSubmitRequest> ();
+            Set<String>pfrInPendingReviewIdSet = new Set<String>();
+            Set<String>recordsInApprovalProcessIdSet = new Set<String>();
+            List<PartnerFundRequest> pfrInPendingReviewList = new List<PartnerFundRequest>();
+            List<PartnerFundRequest> pendingApprovalPFR = new List<PartnerFundRequest>();
+            List<String> pfrAccntList = new List<String>();
+            List<String> pfrProgramList = new List<String>();
+            List<String> pfrGeoList = new List<String>();
+            List<String> pfrApprovalStageStatusList = new List<String>();
+            List<String> pfrBudgetTypeList = new List<String>();
+            List<PartnerFundRequest> pendingApprovalRMFPfrList = new List<PartnerFundRequest>();
+            List<PartnerFundRequest> plannedPfrList = new List<PartnerFundRequest>();
+            
+            //list and sets for email notification
+            List<PartnerFundRequest> pendingApprovalPfrList = new List<PartnerFundRequest>();
+            List<PartnerFundRequest> externalPendingApprovalPfrList = new List<PartnerFundRequest>();
+            List<PartnerFundRequest> ipaAccPendingApprovalPfrList = new List<PartnerFundRequest>();
+            List<PartnerFundRequest> revRqdPfrList = new List<PartnerFundRequest>();
+            List<PartnerFundRequest> pendingApprovalOPALPfrList = new List<PartnerFundRequest>();
+            List<PartnerFundRequest> pendingApprovalEEFPPfrList = new List<PartnerFundRequest>();
+            List<PartnerFundRequest> pendingReviewMarketingPfrList = new List<PartnerFundRequest>();
+            List<PartnerFundRequest> pendingReviewFieldPfrList = new List<PartnerFundRequest>();
+            Set<Id> accIdSet = new Set<Id>();
+            Set<Id> campAccIdSet = new Set<Id>();
+            //Price Reviewer notification
+            List<PartnerFundRequest> pendingPCTApprovalPFR = new List<PartnerFundRequest>();
+            List<PartnerFundRequest> pendingGeoApprovalPFR = new List<PartnerFundRequest>();
+            List<String> geoList = new List<String>();
+            List<String> accntList = new List<String>();
+            List<String> programList = new List<String>();
+            //rejection notification by POR,PCT ,Additional reviewer to L1 Approver
+            List<PartnerFundRequest> revReqPfrList = new List<PartnerFundRequest>();
+            
+            if(Trigger.isInsert){
                 
-                //list and sets for email notification
-                List<PartnerFundRequest> pendingApprovalPfrList = new List<PartnerFundRequest>();
-                List<PartnerFundRequest> externalPendingApprovalPfrList = new List<PartnerFundRequest>();
-                List<PartnerFundRequest> ipaAccPendingApprovalPfrList = new List<PartnerFundRequest>();
-                List<PartnerFundRequest> revRqdPfrList = new List<PartnerFundRequest>();
-                List<PartnerFundRequest> pendingApprovalOPALPfrList = new List<PartnerFundRequest>();
-                List<PartnerFundRequest> pendingApprovalEEFPPfrList = new List<PartnerFundRequest>();
-                List<PartnerFundRequest> pendingReviewMarketingPfrList = new List<PartnerFundRequest>();
-                List<PartnerFundRequest> pendingReviewFieldPfrList = new List<PartnerFundRequest>();
-                Set<Id> accIdSet = new Set<Id>();
-                Set<Id> campAccIdSet = new Set<Id>();
-                //Price Reviewer notification
-                List<PartnerFundRequest> pendingPCTApprovalPFR = new List<PartnerFundRequest>();
-                List<PartnerFundRequest> pendingGeoApprovalPFR = new List<PartnerFundRequest>();
-                List<String> geoList = new List<String>();
-                List<String> accntList = new List<String>();
-                List<String> programList = new List<String>();
-                //rejection notification by POR,PCT ,Additional reviewer to L1 Approver
-                List<PartnerFundRequest> revReqPfrList = new List<PartnerFundRequest>();
-                
-                if(Trigger.isInsert){
+                for(PartnerFundRequest pfr: pfrList){
                     
-                    for(PartnerFundRequest pfr: pfrList){
+                    string region = pfr.Core_MDF_Host_Region_or_Region_txt__c;//For IPA & !PCT it stores Host Geo, else Transaction geo.
+                    if(pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_REVIEW_STATUS || pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS){
                         
-                        string region = pfr.Core_MDF_Host_Region_or_Region_txt__c;//For IPA & !PCT it stores Host Geo, else Transaction geo.
-                        if(pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_REVIEW_STATUS || pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS){
-                            
-                            String recordTypeName = getRecordTypeDevloperNameById('PartnerFundRequest',pfr.RecordTypeId);//Core_MDF_Service_Provider_CoMarketing_Fund
-                            String approvalProcessVersion = getApprovalProcessVersion(pfr,recordTypeName,budgetTypeCCFDCF1_0,budgetTypesList);
-                            String key = pfr.Core_MDF_Program__c + pfr.Core_MDF_Budget_Type_nm__c + pfr.Core_MDF_Region_nm__c + pfr.Core_MDF_Approval_Stage__c;
-                            
-                            if(approvalProcessVersion != '' && !pfrApprovalSendMap.isEmpty() 
-                               && pfrApprovalSendMap.containsKey(key) && !pfrApprovalSendMap.get(key)){
-                                   Approval.ProcessSubmitRequest appObj = new Approval.ProcessSubmitRequest();
-                                   appObj.setObjectId(pfr.id);
-                                   appObj.setProcessDefinitionNameOrId(approvalProcessVersion);
-                                   appObj.setComments('Record submitted for approval');
-                                   appRequests.add(appObj);
-                               }
-                            if((pfr.Core_MDF_Approval_Stage__c != Null && pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.PFR_PRICE_REVIEWER )  
-                               && pfr.Core_MDF_Approver_Source_nm__c == Core_MDF_CCP_ConstantClass.PFR_APP_SOURCE_IUPGM && sendEmailOnce == true && pfr.Core_MDF_Activity_Level_nm__c != Core_MDF_CCP_ConstantClass.PFR_SUB_ACTIVITY) {
+                        String recordTypeName = getRecordTypeDevloperNameById('PartnerFundRequest',pfr.RecordTypeId);//Core_MDF_Service_Provider_CoMarketing_Fund
+                        String approvalProcessVersion = getApprovalProcessVersion(pfr,recordTypeName,budgetTypeCCFDCF1_0,budgetTypesList);
+                        String key = pfr.Core_MDF_Program__c + pfr.Core_MDF_Budget_Type_nm__c + pfr.Core_MDF_Region_nm__c + pfr.Core_MDF_Approval_Stage__c;
+                        
+                        if(approvalProcessVersion != '' && !pfrApprovalSendMap.isEmpty() 
+                           && pfrApprovalSendMap.containsKey(key) && !pfrApprovalSendMap.get(key)
+                           && pfr.Core_MDF_Activity_Level_nm__c != Core_MDF_CCP_ConstantClass.PFR_SUB_ACTIVITY){  // Akash CCF/DCF Sub Activities should not be submitted to Approval Process
+                               Approval.ProcessSubmitRequest appObj = new Approval.ProcessSubmitRequest();
+                               appObj.setObjectId(pfr.id);
+                               appObj.setProcessDefinitionNameOrId(approvalProcessVersion);
+                               appObj.setComments('Record submitted for approval');
+                               appRequests.add(appObj);
+                           }
+                        
+                       if((pfr.Core_MDF_Approval_Stage__c != Null && pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.PFR_PRICE_REVIEWER )  
+                               && pfr.Core_MDF_Approver_Source_nm__c == Core_MDF_CCP_ConstantClass.PFR_APP_SOURCE_IUPGM && sendEmailOnce == true  /* && pfr.Core_MDF_Activity_Level_nm__c != Core_MDF_CCP_ConstantClass.PFR_SUB_ACTIVITY */) {
                                    pendingPCTApprovalPFR.add(pfr);
                                    accntList.add(pfr.Core_MDF_Ultimate_Account_Id__c);
                                    programList.add(pfr.Core_MDF_Program__c);
                                    geoList.add(region);
                                }
-                            //For GeoLead
-                            else if((pfr.Core_MDF_Approval_Stage__c != Null && pfr.Core_MDF_Approval_Stage__c == 'Geo Lead Approval' )  
-                                    && pfr.Core_MDF_Approver_Source_nm__c == Core_MDF_CCP_ConstantClass.PFR_APP_SOURCE_IUPGM && sendEmailOnce == true && pfr.Core_MDF_Activity_Level_nm__c != Core_MDF_CCP_ConstantClass.PFR_SUB_ACTIVITY) {
-                                        pendingGeoApprovalPFR.add(pfr);
-                                        accntList.add(pfr.ChannelPartnerId);
-                                        programList.add(pfr.Core_MDF_Program__c);
-                                        geoList.add(region);
-                                        pfrApprovalStageStatusList.add(pfr.Core_MDF_Approval_Stage__c);
-                                        pfrBudgetTypeList.add(pfr.Core_MDF_Budget_Type_nm__c);
-                                    }
-                            
-                            else if(pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_REVIEW_STATUS
-                                    && pfr.Core_MDF_Approver_Source_nm__c == Core_MDF_CCP_ConstantClass.PFR_APP_SOURCE_IUPGM 
-                                    && pfr.Core_MDF_Approval_Stage__c != Null && sendEmailOnce == true && pfr.Core_MDF_Activity_Level_nm__c != Core_MDF_CCP_ConstantClass.PFR_SUB_ACTIVITY) {//Pending Review check needed
-                                        pendingApprovalPFR.add(pfr);
-                                        if(pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM 
-                                           && pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L2_PRIMARY_APPROVAL){
-                                               pfrAccntList.add(pfr.Core_MDF_Campaign_Ultimate_Account_Id__c);
-                                           } else {
-                                               pfrAccntList.add(pfr.Core_MDF_Ultimate_Account_Id__c);
-                                           }
-                                        pfrProgramList.add(pfr.Core_MDF_Program__c);
-                                        pfrGeoList.add(region);
-                                        
-                                        pfrApprovalStageStatusList.add(pfr.Core_MDF_Approval_Stage__c);
-                                        pfrBudgetTypeList.add(pfr.Core_MDF_Budget_Type_nm__c);
-                                    }
-                            //notify ext Approvers in RMF when status is pending Approval
-                            if(pfr.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_Program_Name') 
-                               && pfr.Core_MDF_Fund_Request_Status__c != label.Core_MDF_PFR_Status_Closed //is this condition needed?
-                               && pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Pending_Approval_Nm')){                                
-                                   pendingApprovalRMFPfrList.add(pfr);
-                                   accIdSet.add(pfr.ChannelPartnerId);
-                               }   
-                            
-                            //Added a code below to send the email notifacation to Additional Reviewer
-                            if((pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.CCF_PROGRAM || pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.DCF_PROGRAM) 
-                               && pfr.Core_MDF_Require_Additional_Review_ind__c && (pfr.Core_MDF_Approval_Step_Completed__c == 1 || pfr.Core_MDF_Approval_Step_Completed__c== 2 || pfr.Core_MDF_Approval_Step_Completed__c == 3)){
-                                   if(pfr.Core_MDF_Additional_Review_Type_txt__c == 'Marketing Review'){
-                                       pendingReviewMarketingPfrList.add(pfr);
-                                   }else if(pfr.Core_MDF_Additional_Review_Type_txt__c == 'Field Review'){
-                                       pendingReviewFieldPfrList.add(pfr);
-                                   }
-                                   pfrAccntList.add(pfr.Core_MDF_Ultimate_Account_Id__c);
-                                   pfrProgramList.add(pfr.Core_MDF_Program__c);
-                                   pfrGeoList.add(region);
-                                   pfrApprovalStageStatusList.add(pfr.Core_MDF_Approval_Stage__c);
-                                   pfrBudgetTypeList.add(pfr.Core_MDF_Budget_Type_nm__c);
-                               }
-                            
-                        }
-                        //external mail for planned activity
-                        if(pfr.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_Program_Name')){
-                            if(pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCP_Planned_Status')){                                
-                                plannedPfrList.add(pfr);
-                                accIdSet.add(pfr.ChannelPartnerId);
-                            }
-                        }
-                        //External mail for Pending Approval OPAL Activity
-                        if(pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS 
-                           && pfr.Core_MDF_Member_Acceptor_Id__c != NULL
-                           && pfr.Core_MDF_Approval_Stage__c != Core_MDF_CCP_ConstantClass.CUSTOMER_ACCEPTANCE_PRIMARY_PARTNER){
-                               pendingApprovalOPALPfrList.add(pfr); 
-                           }
-                        //Send Approval notification to EEF External Primary Partner
-                        if(pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM
-                           && pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS
-                           && pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.CUSTOMER_ACCEPTANCE_PRIMARY_PARTNER){
-                               pendingApprovalEEFPPfrList.add(pfr);
-                               campAccIdSet.add(pfr.Core_MDF_Campaign_Account_Id__c);
-                           }
-                        //IPA AccountBased Send Email on Pending Approval status during creation 
-                        if(pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.PFR_IPA_PROGRAM && pfr.Core_MDF_Proposal_Based_Ind__c == false 
-                           && pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS && pfr.Core_MDF_Activity_Level_nm__c != Core_MDF_CCP_ConstantClass.PFR_SUB_ACTIVITY){
-                               ipaAccPendingApprovalPfrList.add(pfr);
-                           }
-                        
-                    } 
-                    
-                    //To call the email notification flow
-                    if(ipaAccPendingApprovalPfrList != NULL && ipaAccPendingApprovalPfrList.Size() > 0 && sendNotificationByFlowOnce){
-                        
-                        sendNotificationByFlowOnce = false;                 
-                        sendNotificationByFlow(ipaAccPendingApprovalPfrList);
-                    }
-                    if (appRequests.size()> 0){
-                        Approval.ProcessResult[] result = Approval.process(appRequests);
-                    }
-                    if(pendingApprovalPFR != NULL && pendingApprovalPFR.Size() > 0){
-                        Core_MDF_ProcessCCP_PartnerFundRequest.notifyApprovers(pendingApprovalPFR, pfrAccntList, pfrGeoList, pfrProgramList,pfrApprovalStageStatusList,pfrBudgetTypeList);
-                        emailSendOnce = false;
-                        sendEmailOnce = false;
-                    }
-                    
-                    if(pendingPCTApprovalPFR != NULL && pendingPCTApprovalPFR.Size() > 0){
-                        Core_MDF_ProcessCCP_PartnerFundRequest.notifyPCTApprovers(pendingPCTApprovalPFR, accntList, geoList, programList);
-                        emailSendOnce = false;
-                        sendEmailOnce = false;
-                    }            
-                    //Added a code below to send the email notifacation to Additional Reviewer
-                    if(pendingReviewMarketingPfrList != NULL && pendingReviewMarketingPfrList.Size() > 0){                  
-                        Core_MDF_ProcessCCP_PartnerFundRequest.notifyApprovers(pendingReviewMarketingPfrList, pfrAccntList, pfrGeoList, pfrProgramList,pfrApprovalStageStatusList,pfrBudgetTypeList);
-                        emailSendOnce = false;
-                        sendEmailOnce = false;
-                    }
-                    //Added a code below to send the email notifacation to Additional Reviewer
-                    if(pendingReviewFieldPfrList != NULL && pendingReviewFieldPfrList.Size() > 0){                  
-                        Core_MDF_ProcessCCP_PartnerFundRequest.notifyApprovers(pendingReviewFieldPfrList, pfrAccntList, pfrGeoList, pfrProgramList,pfrApprovalStageStatusList,pfrBudgetTypeList);
-                        emailSendOnce = false;
-                        sendEmailOnce = false;
-                    }           
-                    if(pendingGeoApprovalPFR != NULL && pendingGeoApprovalPFR.Size() > 0){
-                        
-                        Core_MDF_ProcessCCP_PartnerFundRequest.notifyApprovers(pendingGeoApprovalPFR, accntList, geoList, programList,pfrApprovalStageStatusList,pfrBudgetTypeList);
-                        emailSendOnce = false;
-                        sendEmailOnce = false;
-                    }
-                    //Send email when memeber acceptance is not null
-                    if( pendingApprovalOPALPfrList != NULL && !pendingApprovalOPALPfrList.isEmpty() && emailSendOnce){
-                        Core_MDF_ProcessCCP_PartnerFundRequest.notifyCCFDCFExternalReviewer(pendingApprovalOPALPfrList);
-                        emailSendOnce = false;
-                    } 
-                    if(pendingApprovalEEFPPfrList != NULL && pendingApprovalEEFPPfrList.Size() > 0 
-                       && campAccIdSet != NULL && campAccIdSet.Size() > 0 && emailSendOnce){
-                           Core_MDF_ProcessCCP_PartnerFundRequest.notifyExternalReviewers(pendingApprovalEEFPPfrList, campAccIdSet);
-                           emailSendOnce = false;
-                       }
-                }
-                if(Trigger.isUpdate){
-                    
-                    for(PartnerFundRequest pfr: pfrList){
-                        String progName = ccpRecordTypeIds.get(pfr.recordTypeId);
-                        
-                        string region = pfr.Core_MDF_Host_Region_or_Region_txt__c;//For IPA & !PCT it stores Host Geo, else Transaction geo.
-                        if(pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_REVIEW_STATUS || pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS || pfr.Core_MDF_Fund_Request_Status__c ==Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_PENDING_REVIEW_STATUS || pfr.Core_MDF_Fund_Request_Status__c==Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_PENDING_APPROVAL_STATUS){
-                            pfrInPendingReviewIdSet.add(pfr.Id);
-                            pfrInPendingReviewList.add(pfr); 
-                            
-                            if((pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_REVIEW_STATUS || pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_PENDING_REVIEW_STATUS) && pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.PFR_PRICE_REVIEWER 
-                               && (pfr.Core_MDF_Approval_Stage__c != oldMap.get(pfr.Id).Core_MDF_Approval_Stage__c) && pfr.Core_MDF_Approver_Source_nm__c == Core_MDF_CCP_ConstantClass.PFR_APP_SOURCE_IUPGM && sendEmailOnce == true && pfr.Core_MDF_Activity_Level_nm__c != Core_MDF_CCP_ConstantClass.PFR_SUB_ACTIVITY) {
-                                   pendingPCTApprovalPFR.add(pfr);
-                                   accntList.add(pfr.Core_MDF_Ultimate_Account_Id__c);
-                                   programList.add(pfr.Core_MDF_Program__c);
-                                   geoList.add(region);
-                               }
-                            else if((pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_REVIEW_STATUS || pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_PENDING_REVIEW_STATUS) && (pfr.Core_MDF_Approval_Stage__c != oldMap.get(pfr.Id).Core_MDF_Approval_Stage__c) && pfr.Core_MDF_Approver_Source_nm__c == Core_MDF_CCP_ConstantClass.PFR_APP_SOURCE_IUPGM && sendEmailOnce == true && pfr.Core_MDF_Activity_Level_nm__c != Core_MDF_CCP_ConstantClass.PFR_SUB_ACTIVITY) {//Pending Review check needed
-                                
-                                pendingApprovalPFR.add(pfr);
-                                if(pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM 
-                                   && pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L2_PRIMARY_APPROVAL){
-                                       pfrAccntList.add(pfr.Core_MDF_Campaign_Ultimate_Account_Id__c);
-                                   } else {
-                                       pfrAccntList.add(pfr.Core_MDF_Ultimate_Account_Id__c);
-                                   }
-                                pfrProgramList.add(pfr.Core_MDF_Program__c);
-                                pfrGeoList.add(region);
-                                pfrApprovalStageStatusList.add(pfr.Core_MDF_Approval_Stage__c);
-                                pfrBudgetTypeList.add(pfr.Core_MDF_Budget_Type_nm__c);
-                            }
-                            
-                            
-                            //notify ext Approvers in RMF when status is pending Approval
-                            if(pfr.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_Program_Name') 
-                               && pfr.Core_MDF_Fund_Request_Status__c != label.Core_MDF_PFR_Status_Closed //is this condition needed?
-                               && pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Pending_Approval_Nm')){                                
-                                   pendingApprovalRMFPfrList.add(pfr);
-                                   accIdSet.add(pfr.ChannelPartnerId);
-                               }
-                        }
-                        //external mail for planned activity
-                        if(pfr.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_Program_Name')){
-                            if(pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCP_Planned_Status')){                                
-                                plannedPfrList.add(pfr);
-                                accIdSet.add(pfr.ChannelPartnerId);
-                            }
-                        }
-                        
-                        
-                        if(((oldMap != NULL && oldMap.get(pfr.Id).Core_MDF_Fund_Request_Status__c != pfr.Core_MDF_Fund_Request_Status__c
-                             && pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS) 
-                            || (oldMap != NULL && oldMap.get(pfr.Id).Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS 
-                                && pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS))){
-                                    if(pfr.Core_MDF_Member_Acceptor_Id__c != NULL
-                                       && pfr.Core_MDF_Approval_Stage__c != Core_MDF_CCP_ConstantClass.CUSTOMER_ACCEPTANCE_PRIMARY_PARTNER){
-                                           externalPendingApprovalPfrList.add(pfr); 
-                                       }                                                                              
+                        //For GeoLead
+                        else if((pfr.Core_MDF_Approval_Stage__c != Null && pfr.Core_MDF_Approval_Stage__c == 'Geo Lead Approval' )  
+                                && pfr.Core_MDF_Approver_Source_nm__c == Core_MDF_CCP_ConstantClass.PFR_APP_SOURCE_IUPGM && sendEmailOnce == true  /* && pfr.Core_MDF_Activity_Level_nm__c != Core_MDF_CCP_ConstantClass.PFR_SUB_ACTIVITY */) {
+                                    pendingGeoApprovalPFR.add(pfr);
+                                    accntList.add(pfr.ChannelPartnerId);
+                                    programList.add(pfr.Core_MDF_Program__c);
+                                    geoList.add(region);
+                                    pfrApprovalStageStatusList.add(pfr.Core_MDF_Approval_Stage__c);
+                                    pfrBudgetTypeList.add(pfr.Core_MDF_Budget_Type_nm__c);
                                 }
-                        // Activity Status change Notifications to L1 Approver when rejected by POR, PCT & L2 Approver
-                        if(pfr.Core_MDF_Approval_Step_Completed__c == 0 && (pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_RR_STATUS || pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_REVISION_REQUIRED_STATUS)&&
-                           pfr.Core_MDF_Activity_CreatedByExternalUsr__c == true && pfr.Core_MDF_L1_Approver_Id__c != NULL && pfr.Core_MDF_L1_Approver_Id__c != pfr.CreatedById &&
-                           (Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCF_Program_Name').equals(pfr.Core_MDF_Program__c) ||  Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_DCF_Program_Name').equals(pfr.Core_MDF_Program__c) || Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EEF_Program_Name').equals(pfr.Core_MDF_Program__c) || (Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PFR_IPA').equals(pfr.Core_MDF_Program__c) && pfr.Core_MDF_Proposal_Based_Ind__c == false)) && pfr.Core_MDF_Activity_Level_nm__c != Core_MDF_CCP_ConstantClass.PFR_SUB_ACTIVITY){                           
-                               revReqPfrList.add(pfr);                       
-                           }
-                        // Activity Status change Notifications to L1 Primary Approver for EEF program,when rejected by POR,PCT,L2 Approver,Primary Partner Customer Acceptance or Activating Partner Customer Acceptance
-                        if(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EEF_Program_Name').equals(pfr.Core_MDF_Program__c) && pfr.Core_MDF_Approval_Step_Completed__c == 0 && pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_RR_STATUS &&
-                           pfr.Core_MDF_Activity_CreatedByExternalUsr__c == true && pfr.Core_MDF_L1_Primary_Approver_Id__c != NULL && pfr.Core_MDF_L1_Primary_Approver_Id__c != pfr.CreatedById){
-                               if(!revReqPfrList.contains(pfr)){revReqPfrList.add(pfr); } 
-                           }
-                        //Send Email on Revision Required and Pending Approval status when Activity is updated by External user
-                        // send Email on In-Progress Revision Required  and In-Progress Pending Approval status
-                        if(oldMap != NULL && oldMap.get(pfr.Id).Core_MDF_Fund_Request_Status__c != pfr.Core_MDF_Fund_Request_Status__c
-                           && ((pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.PFR_IPA_PROGRAM && pfr.Core_MDF_Proposal_Based_Ind__c == false 
-                                && (pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS || pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_PENDING_APPROVAL_STATUS))
-                               || sendRevRqdEmailToExtUser(pfr)) && pfr.Core_MDF_Activity_Level_nm__c != Core_MDF_CCP_ConstantClass.PFR_SUB_ACTIVITY){
-                                   
-                                   revRqdPfrList.add(pfr);
-                               }
-                        if(oldMap != NULL && oldMap.get(pfr.Id).Core_MDF_Approval_Stage__c != pfr.Core_MDF_Approval_Stage__c
-                           && pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS
-                           && pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.CUSTOMER_ACCEPTANCE_PRIMARY_PARTNER){
-                               pendingApprovalEEFPPfrList.add(pfr);
-                               campAccIdSet.add(pfr.Core_MDF_Campaign_Account_Id__c);
-                           }
+                        
+                        else if(pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_REVIEW_STATUS
+                                && pfr.Core_MDF_Approver_Source_nm__c == Core_MDF_CCP_ConstantClass.PFR_APP_SOURCE_IUPGM 
+                                && pfr.Core_MDF_Approval_Stage__c != Null && sendEmailOnce == true  /* && pfr.Core_MDF_Activity_Level_nm__c != Core_MDF_CCP_ConstantClass.PFR_SUB_ACTIVITY */) {//Pending Review check needed
+                                    pendingApprovalPFR.add(pfr);
+                                    if(pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM 
+                                       && pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L2_PRIMARY_APPROVAL){
+                                           pfrAccntList.add(pfr.Core_MDF_Campaign_Ultimate_Account_Id__c);
+                                       } else {
+                                           pfrAccntList.add(pfr.Core_MDF_Ultimate_Account_Id__c);
+                                       }
+                                    pfrProgramList.add(pfr.Core_MDF_Program__c);
+                                    pfrGeoList.add(region);
+                                    
+                                    pfrApprovalStageStatusList.add(pfr.Core_MDF_Approval_Stage__c);
+                                    pfrBudgetTypeList.add(pfr.Core_MDF_Budget_Type_nm__c);
+                                }
+                        //notify ext Approvers in RMF when status is pending Approval
+                        if(pfr.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_Program_Name') 
+                           && pfr.Core_MDF_Fund_Request_Status__c != label.Core_MDF_PFR_Status_Closed //is this condition needed?
+                           && pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Pending_Approval_Nm')){                                
+                               pendingApprovalRMFPfrList.add(pfr);
+                               accIdSet.add(pfr.ChannelPartnerId);
+                           }   
+                        
                         //Added a code below to send the email notifacation to Additional Reviewer
                         if((pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.CCF_PROGRAM || pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.DCF_PROGRAM) 
                            && pfr.Core_MDF_Require_Additional_Review_ind__c && (pfr.Core_MDF_Approval_Step_Completed__c == 1 || pfr.Core_MDF_Approval_Step_Completed__c== 2 || pfr.Core_MDF_Approval_Step_Completed__c == 3)){
@@ -2159,111 +2315,325 @@ Modified By:        Ramapriya     Date:  25/07/2025     Added status check as pa
                                pfrApprovalStageStatusList.add(pfr.Core_MDF_Approval_Stage__c);
                                pfrBudgetTypeList.add(pfr.Core_MDF_Budget_Type_nm__c);
                            }
+                        
                     }
-                    
-                    
-                    for(ProcessInstance processInstanceRec : [Select TargetObjectId,Status from ProcessInstance where TargetObjectId = :pfrInPendingReviewIdSet and Status=: Core_MDF_CCP_ConstantClass.PFR_PENDING_STATUS]){
-                        recordsInApprovalProcessIdSet.add(processInstanceRec.TargetObjectId);
+                    //external mail for planned activity
+                    if(pfr.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_Program_Name')){
+                        if(pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCP_Planned_Status')){                                
+                            plannedPfrList.add(pfr);
+                            accIdSet.add(pfr.ChannelPartnerId);
+                        }
                     }
-                    
-                    for(PartnerFundRequest pfr: pfrInPendingReviewList){
-                        String recordTypeName = getRecordTypeDevloperNameById('PartnerFundRequest',pfr.RecordTypeId);//Core_MDF_Service_Provider_CoMarketing_Fund
-                        String approvalProcessVersion = getApprovalProcessVersion(pfr,recordTypeName,budgetTypeCCFDCF1_0,budgetTypesList);
-                        String region = (String.isNotBlank(pfr.Core_MDF_Host_Region_txt__c)) ? pfr.Core_MDF_Host_Region_txt__c : pfr.Core_MDF_Region_nm__c;
-                        String key = pfr.Core_MDF_Program__c + pfr.Core_MDF_Budget_Type_nm__c + pfr.Core_MDF_Region_nm__c + pfr.Core_MDF_Approval_Stage__c;
-                        if(!recordsInApprovalProcessIdSet.contains(pfr.Id) && approvalProcessVersion != '' && ((!pfrApprovalSendMap.isEmpty() 
-                                                                                                                && pfrApprovalSendMap.containsKey(key) && !pfrApprovalSendMap.get(key)) || ruleEngineResult.isEmpty())){
-                                                                                                                    
-                                                                                                                    
-                                                                                                                    Approval.ProcessSubmitRequest appObj = new Approval.ProcessSubmitRequest();
-                                                                                                                    appObj.setObjectId(pfr.id);
-                                                                                                                    appObj.setProcessDefinitionNameOrId(approvalProcessVersion);
-                                                                                                                    appObj.setComments('Record submitted for approval');
-                                                                                                                    appRequests.add(appObj);  
-                                                                                                                }
-                    }
-                    if (appRequests.size()> 0){
-                        Approval.ProcessResult[] result = Approval.process(appRequests);
-                    }
-                    
-                    if(revReqPfrList != NULL && revReqPfrList.Size() > 0 && emailSendOnceL1){
-                        Core_MDF_ProcessCCP_PartnerFundRequest.notifyInternalApproversOnRejection(revReqPfrList);
-                        emailSendOnce = false;
-                        emailSendOnceL1=false;
-                        sendEmailOnce = false;
-                    }
-                    
-                    
-                    
-                    //Added a code below to send the email notifacation to Additional Reviewer
-                    if(pendingReviewMarketingPfrList != NULL && pendingReviewMarketingPfrList.Size() > 0){                  
-                        Core_MDF_ProcessCCP_PartnerFundRequest.notifyApprovers(pendingReviewMarketingPfrList, pfrAccntList, pfrGeoList, pfrProgramList,pfrApprovalStageStatusList,pfrBudgetTypeList);
-                        emailSendOnce = false;
-                        sendEmailOnce = false;
-                    }
-                    //Added a code below to send the email notifacation to Additional Reviewer
-                    if(pendingReviewFieldPfrList != NULL && pendingReviewFieldPfrList.Size() > 0){                  
-                        Core_MDF_ProcessCCP_PartnerFundRequest.notifyApprovers(pendingReviewFieldPfrList, pfrAccntList, pfrGeoList, pfrProgramList,pfrApprovalStageStatusList,pfrBudgetTypeList);
-                        emailSendOnce = false;
-                        sendEmailOnce = false;
-                    }
-                    
-                    if(pendingApprovalPFR != NULL && pendingApprovalPFR.Size() > 0){                  
-                        Core_MDF_ProcessCCP_PartnerFundRequest.notifyApprovers(pendingApprovalPFR, pfrAccntList, pfrGeoList, pfrProgramList,pfrApprovalStageStatusList,pfrBudgetTypeList);
-                        emailSendOnce = false;
-                        sendEmailOnce = false;
-                    }
-                    
-                    if(pendingPCTApprovalPFR != NULL && pendingPCTApprovalPFR.Size() > 0){                  
-                        Core_MDF_ProcessCCP_PartnerFundRequest.notifyPCTApprovers(pendingPCTApprovalPFR, accntList, geoList, programList);
-                        emailSendOnce = false;
-                        sendEmailOnce = false;
-                    }  
-                    
-                    
-                    //send email when memeber acceptance is not null
-                    if( externalPendingApprovalPfrList != NULL && externalPendingApprovalPfrList.Size() > 0 && emailSendOnce){                 
-                        Core_MDF_ProcessCCP_PartnerFundRequest.notifyCCFDCFExternalReviewer(externalPendingApprovalPfrList);
-                        emailSendOnce = false;
-                    } 
-                    if(pendingApprovalEEFPPfrList != NULL && pendingApprovalEEFPPfrList.Size() > 0 
-                       && campAccIdSet != NULL && campAccIdSet.Size() > 0 && emailSendOnce){
-                           Core_MDF_ProcessCCP_PartnerFundRequest.notifyExternalReviewers(pendingApprovalEEFPPfrList, campAccIdSet);
-                           emailSendOnce = false;
+                    //External mail for Pending Approval OPAL Activity
+                    if(pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS 
+                       && pfr.Core_MDF_Member_Acceptor_Id__c != NULL
+                       && pfr.Core_MDF_Approval_Stage__c != Core_MDF_CCP_ConstantClass.CUSTOMER_ACCEPTANCE_PRIMARY_PARTNER){
+                           pendingApprovalOPALPfrList.add(pfr); 
+                       }
+                    //Send Approval notification to EEF External Primary Partner
+                    if(pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM
+                       && pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS
+                       && pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.CUSTOMER_ACCEPTANCE_PRIMARY_PARTNER){
+                           pendingApprovalEEFPPfrList.add(pfr);
+                           campAccIdSet.add(pfr.Core_MDF_Campaign_Account_Id__c);
+                       }
+                    //IPA AccountBased Send Email on Pending Approval status during creation 
+                    if(pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.PFR_IPA_PROGRAM && pfr.Core_MDF_Proposal_Based_Ind__c == false 
+                       && pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS  /* && pfr.Core_MDF_Activity_Level_nm__c != Core_MDF_CCP_ConstantClass.PFR_SUB_ACTIVITY */){
+                           ipaAccPendingApprovalPfrList.add(pfr);
                        }
                     
-                }
+                } 
                 
-                //Send RMf Email for Planned Activity                 
-                if(plannedEmailSendOnce && plannedPfrList != NULL && plannedPfrList.Size() > 0 && accIdSet != NULL && accIdSet.Size() > 0){
-                    Core_MDF_ProcessCCP_PartnerFundRequest.notifyExternalReviewers(plannedPfrList,accIdSet);
-                    plannedEmailSendOnce = false;
-                }
-                //DE115127// notify RMF for pending Approval activity//check emailSendOnce since calling class
-                if(emailSendOnce && pendingApprovalRMFPfrList != NULL && pendingApprovalRMFPfrList.Size() > 0 && accIdSet != NULL && accIdSet.Size() > 0){
-                    Core_MDF_ProcessCCP_PartnerFundRequest.notifyExternalReviewers(pendingApprovalRMFPfrList,accIdSet);
-                    emailSendOnce = false;
-                }   
-                if(pendingGeoApprovalPFR != NULL && pendingGeoApprovalPFR.Size() > 0){
+                //To call the email notification flow
+                if(ipaAccPendingApprovalPfrList != NULL && ipaAccPendingApprovalPfrList.Size() > 0 && sendNotificationByFlowOnce){
                     
-                    Core_MDF_ProcessCCP_PartnerFundRequest.notifyApprovers(pendingGeoApprovalPFR, accntList, geoList, programList,pfrApprovalStageStatusList,pfrBudgetTypeList);
+                    sendNotificationByFlowOnce = false;                 
+                    sendNotificationByFlow(ipaAccPendingApprovalPfrList);
+                }
+                if (appRequests.size()> 0){
+                    Approval.ProcessResult[] result = Approval.process(appRequests);
+                }
+                if(pendingApprovalPFR != NULL && pendingApprovalPFR.Size() > 0){
+                    // ATHR Avoid long parameter lists - US 14285 - Indira
+                    Core_MDF_ProcessCCP_PartnerFundRequest.notifyApprovers(new Core_MDF_ProcessCCP_PartnerFundRequest.NotifyApproversWrapper(pendingApprovalPFR, pfrAccntList, pfrGeoList, pfrProgramList,pfrApprovalStageStatusList,pfrBudgetTypeList));
                     emailSendOnce = false;
                     sendEmailOnce = false;
                 }
                 
-                //To call the email notification flow
-                if(revRqdPfrList != NULL && revRqdPfrList.Size() > 0 && sendNotificationByFlowOnce){
-                    sendNotificationByFlowOnce = false;
-                    sendNotificationByFlow(revRqdPfrList);                 
+                if(pendingPCTApprovalPFR != NULL && pendingPCTApprovalPFR.Size() > 0){
+                    // ATHR Avoid long parameter lists - US 14285 - Indira
+                    Core_MDF_ProcessCCP_PartnerFundRequest.notifyPCTApprovers(new Core_MDF_ProcessCCP_PartnerFundRequest.PCTApproverNotificationWrapper (pendingPCTApprovalPFR, accntList, geoList, programList));
+                    emailSendOnce = false;
+                    sendEmailOnce = false;
+                }            
+                //Added a code below to send the email notifacation to Additional Reviewer
+                if(pendingReviewMarketingPfrList != NULL && pendingReviewMarketingPfrList.Size() > 0){ 
+                    // ATHR Avoid long parameter lists - US 14285 - Indira
+                    Core_MDF_ProcessCCP_PartnerFundRequest.notifyApprovers(new Core_MDF_ProcessCCP_PartnerFundRequest.NotifyApproversWrapper(pendingReviewMarketingPfrList, pfrAccntList, pfrGeoList, pfrProgramList,pfrApprovalStageStatusList,pfrBudgetTypeList));
+                    emailSendOnce = false;
+                    sendEmailOnce = false;
                 }
+                //Added a code below to send the email notifacation to Additional Reviewer
+                if(pendingReviewFieldPfrList != NULL && pendingReviewFieldPfrList.Size() > 0){
+                    // ATHR Avoid long parameter lists - US 14285 - Indira
+                    Core_MDF_ProcessCCP_PartnerFundRequest.notifyApprovers(new Core_MDF_ProcessCCP_PartnerFundRequest.NotifyApproversWrapper(pendingReviewFieldPfrList, pfrAccntList, pfrGeoList, pfrProgramList,pfrApprovalStageStatusList,pfrBudgetTypeList));
+                    emailSendOnce = false;
+                    sendEmailOnce = false;
+                }           
+                if(pendingGeoApprovalPFR != NULL && pendingGeoApprovalPFR.Size() > 0){
+                    // ATHR Avoid long parameter lists - US 14285 - Indira
+                    Core_MDF_ProcessCCP_PartnerFundRequest.notifyApprovers(new Core_MDF_ProcessCCP_PartnerFundRequest.NotifyApproversWrapper(pendingGeoApprovalPFR, accntList, geoList, programList,pfrApprovalStageStatusList,pfrBudgetTypeList));
+                    emailSendOnce = false;
+                    sendEmailOnce = false;
+                }
+                //Send email when memeber acceptance is not null
+                if( pendingApprovalOPALPfrList != NULL && !pendingApprovalOPALPfrList.isEmpty() && emailSendOnce){
+                    System.debug('pendingApprovalOPALPfrList->'+pendingApprovalOPALPfrList) ;
+                    Core_MDF_ProcessCCP_PartnerFundRequest.notifyCCFDCFExternalReviewer(pendingApprovalOPALPfrList);
+                    emailSendOnce = false;
+                } 
+                if(pendingApprovalEEFPPfrList != NULL && pendingApprovalEEFPPfrList.Size() > 0 
+                   && campAccIdSet != NULL && campAccIdSet.Size() > 0 && emailSendOnce){
+                       Core_MDF_ProcessCCP_PartnerFundRequest.notifyExternalReviewers(pendingApprovalEEFPPfrList, campAccIdSet);
+                       emailSendOnce = false;
+                   }
+            }
+            if(Trigger.isUpdate){
+                
+                for(PartnerFundRequest pfr: pfrList){
+                    // Highlight: Unused Local Variable - 14285
+                    // String progName = ccpRecordTypeIds.get(pfr.recordTypeId);
+                    
+                    string region = pfr.Core_MDF_Host_Region_or_Region_txt__c;//For IPA & !PCT it stores Host Geo, else Transaction geo.
+                    if(pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_REVIEW_STATUS || pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS || pfr.Core_MDF_Fund_Request_Status__c ==Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_PENDING_REVIEW_STATUS || pfr.Core_MDF_Fund_Request_Status__c==Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_PENDING_APPROVAL_STATUS){
+                        pfrInPendingReviewIdSet.add(pfr.Id);
+                        pfrInPendingReviewList.add(pfr); 
+                        
+                       if((pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_REVIEW_STATUS || pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_PENDING_REVIEW_STATUS) && pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.PFR_PRICE_REVIEWER 
+                               && (pfr.Core_MDF_Approval_Stage__c != oldMap.get(pfr.Id).Core_MDF_Approval_Stage__c) && pfr.Core_MDF_Approver_Source_nm__c == Core_MDF_CCP_ConstantClass.PFR_APP_SOURCE_IUPGM && sendEmailOnce == true  /* && pfr.Core_MDF_Activity_Level_nm__c != Core_MDF_CCP_ConstantClass.PFR_SUB_ACTIVITY */) {
+                                   pendingPCTApprovalPFR.add(pfr);
+                                   accntList.add(pfr.Core_MDF_Ultimate_Account_Id__c);
+                                   programList.add(pfr.Core_MDF_Program__c);
+                                   geoList.add(region);
+                               }
+                        else if((pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_REVIEW_STATUS || pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_PENDING_REVIEW_STATUS) && (pfr.Core_MDF_Approval_Stage__c != oldMap.get(pfr.Id).Core_MDF_Approval_Stage__c) && pfr.Core_MDF_Approver_Source_nm__c == Core_MDF_CCP_ConstantClass.PFR_APP_SOURCE_IUPGM && sendEmailOnce == true  /* && pfr.Core_MDF_Activity_Level_nm__c != Core_MDF_CCP_ConstantClass.PFR_SUB_ACTIVITY */) {//Pending Review check needed
+                            
+                            pendingApprovalPFR.add(pfr);
+                            if(pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM 
+                               && pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L2_PRIMARY_APPROVAL){
+                                   pfrAccntList.add(pfr.Core_MDF_Campaign_Ultimate_Account_Id__c);
+                               } else {
+                                   pfrAccntList.add(pfr.Core_MDF_Ultimate_Account_Id__c);
+                               }
+                            pfrProgramList.add(pfr.Core_MDF_Program__c);
+                            pfrGeoList.add(region);
+                            pfrApprovalStageStatusList.add(pfr.Core_MDF_Approval_Stage__c);
+                            pfrBudgetTypeList.add(pfr.Core_MDF_Budget_Type_nm__c);
+                        }
+                        
+                        
+                        //notify ext Approvers in RMF when status is pending Approval
+                        if(pfr.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_Program_Name') 
+                           && pfr.Core_MDF_Fund_Request_Status__c != label.Core_MDF_PFR_Status_Closed //is this condition needed?
+                           && pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Pending_Approval_Nm')){                                
+                               pendingApprovalRMFPfrList.add(pfr);
+                               accIdSet.add(pfr.ChannelPartnerId);
+                           }
+                    }
+                    //external mail for planned activity
+                    if(pfr.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_Program_Name')){
+                        if(pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCP_Planned_Status')){                                
+                            plannedPfrList.add(pfr);
+                            accIdSet.add(pfr.ChannelPartnerId);
+                        }
+                    }
+                    
+                    
+                    if(((oldMap != NULL && oldMap.get(pfr.Id).Core_MDF_Fund_Request_Status__c != pfr.Core_MDF_Fund_Request_Status__c
+                         && pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS) 
+                        || (oldMap != NULL && oldMap.get(pfr.Id).Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS 
+                            && pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS))){
+                                if(pfr.Core_MDF_Member_Acceptor_Id__c != NULL
+                                   && pfr.Core_MDF_Approval_Stage__c != Core_MDF_CCP_ConstantClass.CUSTOMER_ACCEPTANCE_PRIMARY_PARTNER){
+                                       externalPendingApprovalPfrList.add(pfr); 
+                                   }                                                                              
+                            }
+                    // Activity Status change Notifications to L1 Approver when rejected by POR, PCT & L2 Approver
+                        if(pfr.Core_MDF_Approval_Step_Completed__c == 0 && (pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_RR_STATUS || pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_REVISION_REQUIRED_STATUS)&&
+                           pfr.Core_MDF_Activity_CreatedByExternalUsr__c == true && pfr.Core_MDF_L1_Approver_Id__c != NULL && pfr.Core_MDF_L1_Approver_Id__c != pfr.CreatedById &&
+                           (Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCF_Program_Name').equals(pfr.Core_MDF_Program__c) ||  Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_DCF_Program_Name').equals(pfr.Core_MDF_Program__c) || Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EEF_Program_Name').equals(pfr.Core_MDF_Program__c) || (Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PFR_IPA').equals(pfr.Core_MDF_Program__c) && pfr.Core_MDF_Proposal_Based_Ind__c == false))  /* && pfr.Core_MDF_Activity_Level_nm__c != Core_MDF_CCP_ConstantClass.PFR_SUB_ACTIVITY */){                           
+                               revReqPfrList.add(pfr);                       
+                           }
+                        // Activity Status change Notifications to L1 Primary Approver for EEF program,when rejected by POR,PCT,L2 Approver,Primary Partner Customer Acceptance or Activating Partner Customer Acceptance
+                        if(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EEF_Program_Name').equals(pfr.Core_MDF_Program__c) && pfr.Core_MDF_Approval_Step_Completed__c == 0 && pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_RR_STATUS &&
+                           pfr.Core_MDF_Activity_CreatedByExternalUsr__c == true && pfr.Core_MDF_L1_Primary_Approver_Id__c != NULL && pfr.Core_MDF_L1_Primary_Approver_Id__c != pfr.CreatedById){
+                               if(!revReqPfrList.contains(pfr)){revReqPfrList.add(pfr); } 
+                           }
+                    
+                    //Send Email on Revision Required and Pending Approval status when Activity is updated by External user
+                    // send Email on In-Progress Revision Required  and In-Progress Pending Approval status
+                    if(oldMap != NULL && oldMap.get(pfr.Id).Core_MDF_Fund_Request_Status__c != pfr.Core_MDF_Fund_Request_Status__c
+                       && ((pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.PFR_IPA_PROGRAM && pfr.Core_MDF_Proposal_Based_Ind__c == false 
+                            && (pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS || pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_IN_PROGRESS_PENDING_APPROVAL_STATUS))
+                           || sendRevRqdEmailToExtUser(pfr))  /* && pfr.Core_MDF_Activity_Level_nm__c != Core_MDF_CCP_ConstantClass.PFR_SUB_ACTIVITY */){
+                               
+                               revRqdPfrList.add(pfr);
+                           }
+                    if(oldMap != NULL && oldMap.get(pfr.Id).Core_MDF_Approval_Stage__c != pfr.Core_MDF_Approval_Stage__c
+                       && pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS
+                       && pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.CUSTOMER_ACCEPTANCE_PRIMARY_PARTNER){
+                           pendingApprovalEEFPPfrList.add(pfr);
+                           campAccIdSet.add(pfr.Core_MDF_Campaign_Account_Id__c);
+                       }
+                    //Added a code below to send the email notifacation to Additional Reviewer
+                    if((pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.CCF_PROGRAM || pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.DCF_PROGRAM) 
+                       && pfr.Core_MDF_Require_Additional_Review_ind__c && (pfr.Core_MDF_Approval_Step_Completed__c == 1 || pfr.Core_MDF_Approval_Step_Completed__c== 2 || pfr.Core_MDF_Approval_Step_Completed__c == 3)){
+                           if(pfr.Core_MDF_Additional_Review_Type_txt__c == 'Marketing Review'){
+                               pendingReviewMarketingPfrList.add(pfr);
+                           }else if(pfr.Core_MDF_Additional_Review_Type_txt__c == 'Field Review'){
+                               pendingReviewFieldPfrList.add(pfr);
+                           }
+                           pfrAccntList.add(pfr.Core_MDF_Ultimate_Account_Id__c);
+                           pfrProgramList.add(pfr.Core_MDF_Program__c);
+                           pfrGeoList.add(region);
+                           pfrApprovalStageStatusList.add(pfr.Core_MDF_Approval_Stage__c);
+                           pfrBudgetTypeList.add(pfr.Core_MDF_Budget_Type_nm__c);
+                       }
+                    // No restoration needed since Sub Activities no longer submitted to Approval Process
+                }
+                
+                
+                for(ProcessInstance processInstanceRec : [Select TargetObjectId,Status from ProcessInstance where TargetObjectId = :pfrInPendingReviewIdSet and Status=: Core_MDF_CCP_ConstantClass.PFR_PENDING_STATUS]){
+                    recordsInApprovalProcessIdSet.add(processInstanceRec.TargetObjectId);
+                }
+                
+                for(PartnerFundRequest pfr: pfrInPendingReviewList){
+                    String recordTypeName = getRecordTypeDevloperNameById('PartnerFundRequest',pfr.RecordTypeId);//Core_MDF_Service_Provider_CoMarketing_Fund
+                    String approvalProcessVersion = getApprovalProcessVersion(pfr,recordTypeName,budgetTypeCCFDCF1_0,budgetTypesList);
+                    String region = (String.isNotBlank(pfr.Core_MDF_Host_Region_txt__c)) ? pfr.Core_MDF_Host_Region_txt__c : pfr.Core_MDF_Region_nm__c;
+                    String key = pfr.Core_MDF_Program__c + pfr.Core_MDF_Budget_Type_nm__c + pfr.Core_MDF_Region_nm__c + pfr.Core_MDF_Approval_Stage__c;
+                    if(!recordsInApprovalProcessIdSet.contains(pfr.Id) && approvalProcessVersion != '' && ((!pfrApprovalSendMap.isEmpty() 
+                                                                                                            && pfrApprovalSendMap.containsKey(key) && !pfrApprovalSendMap.get(key)) || ruleEngineResult.isEmpty())){
+                                                                                                                
+                                                                                                                
+                                                                                                                Approval.ProcessSubmitRequest appObj = new Approval.ProcessSubmitRequest();
+                                                                                                                appObj.setObjectId(pfr.id);
+                                                                                                                appObj.setProcessDefinitionNameOrId(approvalProcessVersion);
+                                                                                                                appObj.setComments('Record submitted for approval');
+                                                                                                                appRequests.add(appObj);  
+                                                                                                            }
+                }
+                if (appRequests.size()> 0){
+                    Approval.ProcessResult[] result = Approval.process(appRequests);
+                }
+                
+                if(revReqPfrList != NULL && revReqPfrList.Size() > 0 && emailSendOnceL1){
+                    Core_MDF_ProcessCCP_PartnerFundRequest.notifyInternalApproversOnRejection(revReqPfrList);
+                    emailSendOnce = false;
+                    emailSendOnceL1=false;
+                    sendEmailOnce = false;
+                }
+                
+                
+                
+                //Added a code below to send the email notifacation to Additional Reviewer
+                if(pendingReviewMarketingPfrList != NULL && pendingReviewMarketingPfrList.Size() > 0){  
+                    // ATHR Avoid long parameter lists - US 14285 - Indira
+                    Core_MDF_ProcessCCP_PartnerFundRequest.notifyApprovers(new Core_MDF_ProcessCCP_PartnerFundRequest.NotifyApproversWrapper(pendingReviewMarketingPfrList, pfrAccntList, pfrGeoList, pfrProgramList,pfrApprovalStageStatusList,pfrBudgetTypeList));
+                    emailSendOnce = false;
+                    sendEmailOnce = false;
+                }
+                //Added a code below to send the email notifacation to Additional Reviewer
+                if(pendingReviewFieldPfrList != NULL && pendingReviewFieldPfrList.Size() > 0){
+                    // ATHR Avoid long parameter lists - US 14285 - Indira
+                    Core_MDF_ProcessCCP_PartnerFundRequest.notifyApprovers(new Core_MDF_ProcessCCP_PartnerFundRequest.NotifyApproversWrapper(pendingReviewFieldPfrList, pfrAccntList, pfrGeoList, pfrProgramList,pfrApprovalStageStatusList,pfrBudgetTypeList));
+                    emailSendOnce = false;
+                    sendEmailOnce = false;
+                }
+                
+                if(pendingApprovalPFR != NULL && pendingApprovalPFR.Size() > 0){  
+                    // ATHR Avoid long parameter lists - US 14285 - Indira
+                    Core_MDF_ProcessCCP_PartnerFundRequest.notifyApprovers(new Core_MDF_ProcessCCP_PartnerFundRequest.NotifyApproversWrapper(pendingApprovalPFR, pfrAccntList, pfrGeoList, pfrProgramList,pfrApprovalStageStatusList,pfrBudgetTypeList));
+                    emailSendOnce = false;
+                    sendEmailOnce = false;
+                }
+                
+                if(pendingPCTApprovalPFR != NULL && pendingPCTApprovalPFR.Size() > 0){ 
+                    // ATHR Avoid long parameter lists - US 14285 - Indira
+                    Core_MDF_ProcessCCP_PartnerFundRequest.notifyPCTApprovers(new Core_MDF_ProcessCCP_PartnerFundRequest.PCTApproverNotificationWrapper (pendingPCTApprovalPFR, accntList, geoList, programList));
+                    emailSendOnce = false;
+                    sendEmailOnce = false;
+                }  
+                
+                
+                //send email when memeber acceptance is not null
+                if( externalPendingApprovalPfrList != NULL && externalPendingApprovalPfrList.Size() > 0 && emailSendOnce){ 
+                    System.debug('externalPendingApprovalPfrList->'+externalPendingApprovalPfrList) ;                
+                    Core_MDF_ProcessCCP_PartnerFundRequest.notifyCCFDCFExternalReviewer(externalPendingApprovalPfrList);
+                    emailSendOnce = false;
+                } 
+                if(pendingApprovalEEFPPfrList != NULL && pendingApprovalEEFPPfrList.Size() > 0 
+                   && campAccIdSet != NULL && campAccIdSet.Size() > 0 && emailSendOnce){
+                       Core_MDF_ProcessCCP_PartnerFundRequest.notifyExternalReviewers(pendingApprovalEEFPPfrList, campAccIdSet);
+                       emailSendOnce = false;
+                   }
+                
             }
             
-        }
-        catch(Exception e){
-            Core_MDF_CCP_UtilityClass.logError(e);
-            throw new CustomException(e.getMessage());
+            //Send RMf Email for Planned Activity                 
+            if(plannedEmailSendOnce && plannedPfrList != NULL && plannedPfrList.Size() > 0 && accIdSet != NULL && accIdSet.Size() > 0){
+                Core_MDF_ProcessCCP_PartnerFundRequest.notifyExternalReviewers(plannedPfrList,accIdSet);
+                plannedEmailSendOnce = false;
+            }
+            //DE115127// notify RMF for pending Approval activity//check emailSendOnce since calling class
+            if(emailSendOnce && pendingApprovalRMFPfrList != NULL && pendingApprovalRMFPfrList.Size() > 0 && accIdSet != NULL && accIdSet.Size() > 0){
+                Core_MDF_ProcessCCP_PartnerFundRequest.notifyExternalReviewers(pendingApprovalRMFPfrList,accIdSet);
+                emailSendOnce = false;
+            }   
+            if(pendingGeoApprovalPFR != NULL && pendingGeoApprovalPFR.Size() > 0){
+                // ATHR Avoid long parameter lists - US 14285 - Indira
+                Core_MDF_ProcessCCP_PartnerFundRequest.notifyApprovers(new Core_MDF_ProcessCCP_PartnerFundRequest.NotifyApproversWrapper(pendingGeoApprovalPFR, accntList, geoList, programList,pfrApprovalStageStatusList,pfrBudgetTypeList));
+                emailSendOnce = false;
+                sendEmailOnce = false;
+            }
             
+            //To call the email notification flow
+            if(revRqdPfrList != NULL && revRqdPfrList.Size() > 0 && sendNotificationByFlowOnce){
+                sendNotificationByFlowOnce = false;
+                sendNotificationByFlow(revRqdPfrList);                 
+            }
         }
+        
+    }
+    catch(Exception e){
+        Core_MDF_CCP_UtilityClass.logError(e);
+        throw new CustomException(e.getMessage());
+        
+    }
+}
+    
+    
+    private static Boolean isAccountManagerEditingL1Approval() {
+        try {
+            Boolean isIpaAccountManager = FeatureManagement.checkPermission('Core_MDF_CCP_Int_IPA_AcctMgr');
+            Boolean isIpaL2Approver = FeatureManagement.checkPermission('Core_MDF_CCP_Int_IPA_L2_Approver');
+            return isIpaAccountManager && !isIpaL2Approver;
+        } catch (Exception e) {
+            System.debug('Error checking account manager permissions: ' + e.getMessage());
+            return false;
+        }
+    }
+    
+    private static Boolean shouldPreserveL1ApprovalForOutcomeBased(PartnerFundRequest newPfr, PartnerFundRequest oldPfr) {
+        return (
+            oldPfr != null &&
+            oldPfr.Core_MDF_Approval_Stage__c == 'L1 Approval' &&
+            newPfr.RecordType.DeveloperName == 'Core_MDF_Intel_Partner_Alliance' &&
+            newPfr.Core_MDF_Proposal_Based_Ind__c == false &&
+            newPfr.Core_MDF_Is_Outcome_Based_Ind__c == true &&
+            isAccountManagerEditingL1Approval()
+        );
     }
     /****************************************************************************************************** 
 Method Name:        sendRevRqdEmailToExtUser
@@ -2355,9 +2725,11 @@ Modifies :                                               1.Added code to recall 
     {
         String logEntryMsg = '';
         list<Id> recallPFRId = new list<Id>();
-        list<ProcessInstanceWorkitem>  piList = new list<ProcessInstanceWorkitem>();        
+        // Highlight: Unused Local Variable - 14285
+        // list<ProcessInstanceWorkitem>  piList = new list<ProcessInstanceWorkitem>();        
         boolean res = false;
-        List<Id> pfrsToBeSubmittedForATFApproval = new List<Id>();
+        // Highlight: Unused Local Variable - 14285
+        // List<Id> pfrsToBeSubmittedForATFApproval = new List<Id>();
         List<Core_MDF_Recall_Approval__e> eventList = new List<Core_MDF_Recall_Approval__e>();
         
         try
@@ -2430,94 +2802,94 @@ Added By    :
 US          :   
 Modified By :                      Date:                    Changes:None
 ******************************************************************************************************/  
-    public static Map<String, list<String>> getApproversFromIUPGM(Set<String> accntIdSet, Set<string> programSet, Set<string> geoStrSet, Set<String> budgetTypeSet){
+  public static Map<String, list<String>> getApproversFromIUPGM(Set<String> accntIdSet, Set<string> programSet, Set<string> geoStrSet, Set<String> budgetTypeSet){
+    
+    Map<String, list<String>> resultMap = new Map<String, list<String>>();
+    List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
+    Map<string, List<string>> subMap = new Map<string, List<string>>();
+    List<String> geoList = new List<String>(geoStrSet);
+    List<String> budgetTypeList = new List<String>(budgetTypeSet);
+    String qryStr;
+    String geoStr= '';
+    String budgetStr = '';
+    List<string> accountManagerPermissionSet = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCP_Account_Mgr_Permission_Sets').split(',');
+    
+    geoList.add('WW');
         
-        Map<String, list<String>> resultMap = new Map<String, list<String>>();
-        List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
-        Map<string, List<string>> subMap = new Map<string, List<string>>();
-        List<String> geoList = new List<String>(geoStrSet);
-        List<String> budgetTypeList = new List<String>(budgetTypeSet);
-        String qryStr;
-        String geoStr= '';
-        String budgetStr = '';
-        List<string> accountManagerPermissionSet = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCP_Account_Mgr_Permission_Sets').split(',');
-        
-        
-        geoList.add('WW');
-        
-        if(!geoList.isEmpty()){
-            geoStr ='(\'' + String.join(geoList, '\', \'') + '\')';
-        }  
-        if(String.isNotBlank(geoStr)){
-            geoStr = String.escapeSingleQuotes(geoStr);
-            geoStr = geoStr.replaceAll('\\\\','');
+ /*   if(!geoList.isEmpty()){
+        geoStr ='(\'' + String.join(geoList, '\', \'') + '\')';
+    }  
+    if(String.isNotBlank(geoStr)){
+        geoStr = String.escapeSingleQuotes(geoStr);
+        geoStr = geoStr.replaceAll('\\\\','');
+    }  
+    if(budgetTypeList != null && !budgetTypeList.isEmpty()){
+        budgetStr ='(\'' + String.join(budgetTypeList, '\', \'') + '\')';
+    }  
+    if(String.isNotBlank(budgetStr)){
+        budgetStr = String.escapeSingleQuotes(budgetStr);
+        budgetStr = budgetStr.replaceAll('\\\\','');
+    }  */
+    
+    qryStr = 'SELECT Id, Core_MDF_User_id__c,Core_MDF_Region_cd__c,Core_MDF_GeoSubGeo_Budget_Type_nm__c, '+
+        ' Core_MDF_Channel_Program_id__r.Name, Core_MDF_Program_nm__c, Core_MDF_Role_nm__c, Core_MDF_Budget_Type_nm__c,' +
+        ' Core_MDF_All_Accounts_cd__c, Core_MDF_Account_id__c, Core_MDF_All_Budget_Type_Access_Ind__c' +
+        ' FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c'+
+        ' WHERE Core_MDF_Channel_Program_id__r.Name IN: programSet' +
+        ' and Core_MDF_Region_cd__c INCLUDES :geoList' +       // US - TWC702-14285: Avoid Untrusted/Unescaped Variables in DML Query
+        ' and Core_MDF_Role_nm__c IN: accountManagerPermissionSet'+
+        ' and Core_MDF_is_User_Active_ind__c = true'+
+        ' and Core_MDF_Active_Ind__c = true'+
+        ' and Core_MDF_Is_Not_an_Approver_Ind__c = false ';
+    
+    try{
+        if(String.isNotBlank(qryStr)){
+            iupgmList = Database.Query(qryStr);
         }
-        if(budgetTypeList != null && !budgetTypeList.isEmpty()){
-            budgetStr ='(\'' + String.join(budgetTypeList, '\', \'') + '\')';
-        }  
-        if(String.isNotBlank(budgetStr)){
-            budgetStr = String.escapeSingleQuotes(budgetStr);
-            budgetStr = budgetStr.replaceAll('\\\\','');
+        
+        // US - TWC702-14285: Flatten nested IFs (no logic change)
+        if(iupgmList.isEmpty()){
+            return resultMap;
         }
         
-        qryStr = 'SELECT Id, Core_MDF_User_id__c,Core_MDF_Region_cd__c,Core_MDF_GeoSubGeo_Budget_Type_nm__c, '+
-            ' Core_MDF_Channel_Program_id__r.Name, Core_MDF_Program_nm__c, Core_MDF_Role_nm__c, Core_MDF_Budget_Type_nm__c,' +
-            ' Core_MDF_All_Accounts_cd__c, Core_MDF_Account_id__c, Core_MDF_All_Budget_Type_Access_Ind__c' +
-            ' FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c'+
-            ' WHERE Core_MDF_Channel_Program_id__r.Name IN: programSet' +
-            ' and Core_MDF_Region_cd__c INCLUDES ' + geoStr  +
-            ' and Core_MDF_Role_nm__c IN: accountManagerPermissionSet'+
-            ' and Core_MDF_is_User_Active_ind__c = true'+
-            ' and Core_MDF_Active_Ind__c = true'+
-            ' and Core_MDF_Is_Not_an_Approver_Ind__c = false ';
-        
-        
-        
-        try{
-            if(String.isNotBlank(qryStr)){
-                iupgmList = Database.Query(qryStr);
+        for(Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgmObj : iupgmList){
+            List<string> geoBudgetTypeList = new List<string> ();
+            
+            if(iupgmObj.Core_MDF_GeoSubGeo_Budget_Type_nm__c != null){
+                for(String geoBudgetTypeStr : iupgmObj.Core_MDF_GeoSubGeo_Budget_Type_nm__c.split(';')){
+                    String geo = geoBudgetTypeStr.split('->')[0];                             
+                    String budtype = geoBudgetTypeStr.split('->')[1];
+                    
+                    if(geo == 'ASMO-LAR' || geo == 'ASMO-NAR' || geo == 'ASMO'){
+                        geo = 'ASMO';
+                    }
+                    geoBudgetTypeList.add(geo + budtype);
+                }
+            }
+            else if(iupgmObj.Core_MDF_Region_cd__c != NULL){
+                for(String geo:iupgmObj.Core_MDF_Region_cd__c.split(';')){
+                    geoBudgetTypeList.add(geo);
+                }
             }
             
-            
-            if(!iupgmList.isEmpty()){
-                for(Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgmObj : iupgmList){
-                    List<string> geoBudgetTypeList = new List<string> ();
-                    if(iupgmObj.Core_MDF_GeoSubGeo_Budget_Type_nm__c != null){
-                        for(String geoBudgetTypeStr : iupgmObj.Core_MDF_GeoSubGeo_Budget_Type_nm__c.split(';')){
-                            String geo = geoBudgetTypeStr.split('->')[0] ;                             
-                            String budtype = geoBudgetTypeStr.split('->')[1] ;
-                            if(geo == 'ASMO-LAR' || geo == 'ASMO-NAR' || geo == 'ASMO'){
-                                geo = 'ASMO';
-                            }
-                            geoBudgetTypeList.add(geo + budtype);
-                        }
-                    }
-                    else if(iupgmObj.Core_MDF_Region_cd__c != NULL){
-                        for(String geo:iupgmObj.Core_MDF_Region_cd__c.split(';')){
-                            geoBudgetTypeList.add(geo);
-                        }
-                    }
-                    
-                    
-                    for(String geo: geoBudgetTypeList){
+            for(String geo: geoBudgetTypeList){
                         if(iupgmObj.Core_MDF_All_Accounts_cd__c == 'NO' && accntIdSet.contains(iupgmObj.Core_MDF_Account_id__c)){  
                             String mapKey = iupgmObj.Core_MDF_Channel_Program_id__r.Name + geo + iupgmObj.Core_MDF_Account_id__c;                   
                             if(resultMap.containsKey(mapKey)){
                                 resultMap.get(mapKey).add(iupgmObj.Core_MDF_User_id__c);
                             } else {
                                 resultMap.put(mapKey, new List<string>{iupgmObj.Core_MDF_User_id__c});
-                            }
+                            }                
                         }
-                    }
-                }
             }
-            
         }
-        catch(exception ex){
-            Core_MDF_CCP_UtilityClass.logError(ex);
-        }
-        return resultMap;
-    }    
+        
+    }
+    catch(exception ex){
+        Core_MDF_CCP_UtilityClass.logError(ex);
+    }
+    return resultMap;
+}    
     /*****************************************************************************************************
 Method Name :   getApprovalProcessVersion
 @return     :   String
@@ -2541,7 +2913,7 @@ Modified By :                      Date:20/12/2022
         }
         return approvalProcessVersion;
     }
-    /*****************************************************************************************************
+   /*****************************************************************************************************
 Method Name :   populateBUSplit
 @return     :   N/A
 @parameters :   pfr, oldPfrMap
@@ -2625,7 +2997,7 @@ pfr.Core_MDF_BU5_Split_Percent_nbr__c= 0;
 
 }
 }*/
-    public static void populateBUSplit(PartnerFundRequest pfr, 
+  public static void populateBUSplit(PartnerFundRequest pfr, 
                                        Map<Id,PartnerFundRequest> oldPfrMap,
                                        Map<String,List<Core_MDF_CCP_Custom_Metadata_Utility__c>> brandFAProductTypeMap,
                                        Map<String,Decimal> buPriorityMap)
@@ -2840,7 +3212,7 @@ pfr.Core_MDF_BU5_Split_Percent_nbr__c= 0;
                 }
             }
         }
-    }
+    }   
     
     
     /*****************************************************************************************************
@@ -2856,7 +3228,7 @@ Modified By :   Date:7/02/2023
         List<String> buEligibleProgramList = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_BUSplit_Program_Types').Split(';');
         if(buEligibleProgramList.contains(pfr.Core_MDF_Program__c) && !Core_MDF_Utility.byPassFeature('Bypass_PopulateBUSplit') && 
            (oldPfrMap == NULL ||(oldPfrMap!= NULL && (pfr.Core_MDF_Focus_Area_nm__c!=oldPfrMap.get(pfr.id).Core_MDF_Focus_Area_nm__c || 
-                                                      pfr.Core_MDF_ProductType__c!=oldPfrMap.get(pfr.id).Core_MDF_ProductType__c || 
+                                                      // pfr.Core_MDF_ProductType__c!=oldPfrMap.get(pfr.id).Core_MDF_ProductType__c || 
                                                       pfr.Core_MDF_Brand_nm__c!=oldPfrMap.get(pfr.id).Core_MDF_Brand_nm__c ||
                                                       pfr.Core_MDF_Start_Date__c!=oldPfrMap.get(pfr.id).Core_MDF_Start_Date__c ))))
         {
@@ -2920,14 +3292,19 @@ Modified By :                 Date:22/02/2024
                 
             }
             //limits check
-            
-            
-            
-            List<PartnerMarketingBudget> pmbList =[Select id,Core_MDF_Budget_Partner__c from PartnerMarketingBudget where id in:budgetIds];
-            for(PartnerMarketingBudget pmb:pmbList) {
-                accountIds.add(pmb.Core_MDF_Budget_Partner__c);
-                pmbIdToPmbMap.put(pmb.id,pmb);
-            }
+        
+        // ✅ FIX: Use Map Constructor instead of manual FOR loop + put()
+        List<PartnerMarketingBudget> pmbList = [SELECT id, Core_MDF_Budget_Partner__c 
+                                                 FROM PartnerMarketingBudget 
+                                                 WHERE id IN: budgetIds];
+        
+        // ✅ Map built using constructor - resolves the PMD issue
+        pmbIdToPmbMap = new Map<Id, PartnerMarketingBudget>(pmbList);
+        
+        // ✅ Separate loop ONLY for accountIds - single responsibility
+        for(PartnerMarketingBudget pmb : pmbList) {
+            accountIds.add(pmb.Core_MDF_Budget_Partner__c);
+        }
             
             getActAvailAmountOnAllocationForPfr(budgetIds , accountIds ,pfrToEvaluate ,accIdBudIdToIntelConMap,pmbIdToPmbMap,oldPFRMap,isbefore);
             
@@ -2961,13 +3338,17 @@ Modified By :                 Date:10/03/2024
                                                  if(accIdBudIdToIntelConMap.containsKey(accIdBudgetIdKey)){
                                                      //To get activity Avail Amt on Allocation before incoming PFR's intel Contribution is considered into Reserved amt
                                                      Decimal actAvailAmtOnAlloc =  (isBefore ==  true) ? (pfa.Amount - pfa.Core_MDF_Total_Activity_Allocated_Amount__c) : (pfa.Amount - pfa.Core_MDF_Total_Activity_Allocated_Amount__c) + accIdBudIdToIntelConMap.get(accIdBudgetIdKey);
+                                                     system.debug('@@@actAvailAmtOnAlloc '+actAvailAmtOnAlloc);
                                                      
                                                      Decimal actualActAvailAmt =  actAvailAmtOnAlloc < 0 ? 0 :actAvailAmtOnAlloc ;
+                                                     system.debug('@@@actualActAvailAmt '+actualActAvailAmt);
                                                      activatingAccIdBudIdToAllocAvailAmtMap.put(accIdBudgetIdKey,actualActAvailAmt);
+                                                     system.debug('@@@activatingAccIdBudIdToAllocAvailAmtMap '+activatingAccIdBudIdToAllocAvailAmtMap);
                                                      
                                                  }else{
                                                      //Mapping Primary Account's allocation's Activity Available amount
                                                      primaryAccIdToActAvailableAmt.put(pfa.ChannelPartnerId,(pfa.Amount - pfa.Core_MDF_Total_Activity_Allocated_Amount__c));
+                                                     system.debug('@@@primaryAccIdToActAvailableAmt '+primaryAccIdToActAvailableAmt);
                                                      
                                                  }
                                              }
@@ -2995,17 +3376,21 @@ Modified By :                 Date:10/03/2024
         //pfrIdsSet.addAll(pfrToEvaluate);
         for(PartnerFundRequest pfr : pfrToEvaluate){
             pfrIdsSet.add(pfr.Id);
+            system.debug('@@@pfrIdsSet1 '+pfrIdsSet);
         }
         pfrIdToBudTransferWrapperMap=getBudgetTransferHistory(pfrIdsSet);
+        system.debug('@@@pfrIdToBudTransferWrapperMap '+pfrIdToBudTransferWrapperMap);
         
         for(PartnerFundRequest pfr : pfrToEvaluate) {
             Decimal IntelConToConsider = getIntelContributionToValidate(pfr,oldPFRMap);
+            system.debug('@@@IntelConToConsider '+IntelConToConsider);
             Decimal intCon = oldPFRMap!=null ? IntelConToConsider : 
             ((pfr.RequestedAmount * decimal.valueOf(pfr.Core_MDF_Reimbursement_Rate_txt__c.removeEnd('%')))/100).setScale(2,RoundingMode.HALF_UP);
+            system.debug('@@@intCon '+intCon);
             Decimal amountToTransfer = 0;
             Decimal differenceInAmount = 0;
             string accIdBudgetIdKey = (string)pfr.ChannelPartnerId + (string)pfr.BudgetId;
-            
+            system.debug('@@@accIdBudgetIdKey '+accIdBudgetIdKey);
             
             if(!activatingAccIdBudIdToAllocAvailAmtMap.isEmpty() && activatingAccIdBudIdToAllocAvailAmtMap.containsKey(accIdBudgetIdKey) && activatingAccIdBudIdToAllocAvailAmtMap.get(accIdBudgetIdKey) != NULL && activatingAccIdBudIdToAllocAvailAmtMap.get(accIdBudgetIdKey) >=0) {
                 //If Activity Avail Amt on pfr Allocation is less than incoming PFR's Intel Contrubition
@@ -3015,22 +3400,27 @@ Modified By :                 Date:10/03/2024
                     if(pfrIdToBudTransferWrapperMap!=null && pfrIdToBudTransferWrapperMap.containskey(pfr.id) && pfrIdToBudTransferWrapperMap.get(pfr.id)!= Null ) {
                         
                         differenceInAmount = pfrIdToBudTransferWrapperMap.get(pfr.id).sumOfForwardTransferredAmt - pfrIdToBudTransferWrapperMap.get(pfr.id).sumOfReverseTransferredAmt;
+                        system.debug('@@@differenceInAmount '+differenceInAmount);
                         amountToTransfer = intCon - differenceInAmount; //zero
-                        
+                        system.debug('@@@amountToTransfer '+amountToTransfer);
                     }
                     else{
                         //If Activity Avail Amt on pfr Allocation is Zero , Considering PFR's IC as the amount to transfer
                         if(activatingAccIdBudIdToAllocAvailAmtMap.get(accIdBudgetIdKey) == 0) {
                             amountToTransfer = intCon;
+                            system.debug('@@@amountToTransfer '+amountToTransfer);
                         } else { //partial amt transfer
                             if(activatingAccIdBudIdToAllocAvailAmtMap.get(accIdBudgetIdKey) > 0 ) {
                                 amountToTransfer = intCon - activatingAccIdBudIdToAllocAvailAmtMap.get(accIdBudgetIdKey);
+                                system.debug('@@@amountToTransfer1 '+amountToTransfer);
                                 activatingAccIdBudIdToAllocAvailAmtMap.put(accIdBudgetIdKey,0);
+                                system.debug('@@@activatingAccIdBudIdToAllocAvailAmtMap '+activatingAccIdBudIdToAllocAvailAmtMap);
                             }
                         }
                     }
                     if(pfr.Id != null){
                         pfrIdToAmtToTransfer.put(pfr.Id,amountToTransfer);
+                        system.debug('@@@pfrIdToAmtToTransfer '+pfrIdToAmtToTransfer);
                     }
                     
                     if(isbefore){
@@ -3041,9 +3431,12 @@ Modified By :                 Date:10/03/2024
                 }
                 else {
                     Decimal amountAfterConsumed = activatingAccIdBudIdToAllocAvailAmtMap.get(accIdBudgetIdKey) - intCon;
+                    system.debug('@@@amountAfterConsumed '+amountAfterConsumed);
                     activatingAccIdBudIdToAllocAvailAmtMap.put(accIdBudgetIdKey,amountAfterConsumed);
+                    system.debug('@@@activatingAccIdBudIdToAllocAvailAmtMap '+activatingAccIdBudIdToAllocAvailAmtMap);
                     if(pfr.status !='Approved' && isbefore){
                         pfr.status ='Approved' ;
+                        system.debug('@@@pfr.status '+pfr.status);
                     }
                     
                 }
@@ -3053,6 +3446,7 @@ Modified By :                 Date:10/03/2024
         
         if(!budgetTransferWrapperList.isEmpty() && budgetTransferWrapperList.size()>0) {
             String result = Core_MDF_BudgetTransferUtility.budgetTransfer(budgetTransferWrapperList);
+            system.debug('@@@result '+result);
             
         }
     }
@@ -3371,8 +3765,8 @@ Modified By :                 Date:28/03/2024
             for(Core_MDF_CCP_Custom_Metadata_Utility__c prodTypeCat : prdTypeCategoryList){                                 
                 prodTypeCatMap.put(prodTypeCat.Core_MDF_Field_1_txt__c, prodTypeCat.Core_MDF_Field_2_txt__c);
             } 
-        }	
-        return prodTypeCatMap;	
+        }   
+        return prodTypeCatMap;  
         
     }
     /*****************************************************************************************************
@@ -3386,13 +3780,15 @@ Modified By :                 Date:20/Jan/2025
         Set<Id> pfrAccountId = new Set<Id>();
         Map<String, List<Core_MDF_Partner_Node_User_Mapping__c>> mapOfAccountIdAndPNUM = new Map<String, List<Core_MDF_Partner_Node_User_Mapping__c>>();
         String userId = UserInfo.getUserId();
+        system.debug('inside-->');
         //Collect the AccountIds based on the beforeInsert or beforeUpdate context
         for (PartnerFundRequest itrPFR : newPFRList) {
             // Only check for differences if it's a beforeUpdate context
             if (oldPFRMap == null || (oldPFRMap != null && oldPFRMap.containsKey(itrPFR.Id) && itrPFR.ChannelPartnerId != oldPFRMap.get(itrPFR.Id).ChannelPartnerId)) {
                 pfrAccountId.add(itrPFR.ChannelPartnerId);
             }
-        }  
+        }   
+        System.debug('pfr acc id set---'+ pfrAccountId);
         // Query Core_MDF_Partner_Node_User_Mapping__c to fetch the active mappings
         List<Core_MDF_Partner_Node_User_Mapping__c> pnumList = [SELECT  Id,Core_MDF_Active_Ind__c, Core_MDF_User__c, Core_MDF_User__r.isActive ,Core_MDF_Account__c
                                                                 FROM Core_MDF_Partner_Node_User_Mapping__c WHERE Core_MDF_Account__c IN :pfrAccountId AND   
@@ -3400,7 +3796,7 @@ Modified By :                 Date:20/Jan/2025
                                                                ];
         
         
-        
+        System.debug('list of PNUM Records----'+ pnumList);
         if(pnumList.size() > 0){
             //creating a map of unique key and pnums
             for (Core_MDF_Partner_Node_User_Mapping__c itrPnum : pnumList) {
@@ -3411,6 +3807,7 @@ Modified By :                 Date:20/Jan/2025
                     mapOfAccountIdAndPNUM.get(uniqueKey).add(itrPnum);
                 }   
             }
+            System.debug('mapOfAccountIdAndPNUM-----'+mapOfAccountIdAndPNUM);
             // Check if the partner fund request contains a valid mapping for the user
             for (PartnerFundRequest itrPfr : newPFRList) {
                 String uniquePFRKey = String.valueOf(itrPfr.ChannelPartnerId)+'_'+'true';
@@ -3423,10 +3820,13 @@ Modified By :                 Date:20/Jan/2025
     public static boolean checkTactics(PartnerFundRequest pfr){
         List<String> tacticIncentive = Label.Core_MDF_Spif_Tactics.split(';');
         List<String> tacticsList = pfr.Core_MDF_Tactics_nm__c != null ? pfr.Core_MDF_Tactics_nm__c.split(';') : new List<String>();
+        System.debug('tacticsList->'+tacticsList);
         if(!tacticsList.isEmpty()){
             for (String incentive : tacticIncentive) {
                 if (tacticsList.contains(incentive)) {
+                    System.debug('is spif incentive');
                     return true;
+                    
                 }
             }}
         return false;
@@ -3440,6 +3840,10 @@ Added By    :   Akash
 Modified By :   Date:26/June/2025               
 ******************************************************************************************************/
     public static void validateBudgetType(List<PartnerFundRequest> pfrlist,Map<Id,PartnerFundRequest> oldpfrMap){
+        Integer queryUsed = Limits.getQueries();
+        Integer queryLimit = Limits.getLimitQueries();
+        System.debug('@@@queryUsed'+queryUsed);
+        System.debug('@@@queryLimit'+queryLimit);
         Set<Id> setofCampaignIds = new Set<Id>();
         List<PartnerFundRequest> pfrNewList = new List<PartnerFundRequest>();
         
@@ -3523,6 +3927,7 @@ Modified By :
                         
                         totalClaimAmount += claim.Amount;
                     }
+                    
                     if (newPFR.Core_MDF_Activity_Reimbursement_Amt_nbr__c < totalClaimAmount) {
                         newPFR.addError(Label.Core_MDF_Validate_InProgress_Amount_Edit_Error);
                     }
@@ -3533,6 +3938,8 @@ Modified By :
             }
         }
     }
+    
+    
     /*****************************************************************************************************
 Method Name :   oneActivityperCampaign
 @parameters :   pfrlist
@@ -3629,28 +4036,6 @@ Modified By :   Date:15/Jan/2026   // YYYY-MM-DD HH:MM:SS
             }
         }
     }
-	    //Joshua 15182 Start
-     public static Map<Id, Boolean> retrieveApprovalField(List<PartnerFundRequest> pfrList){
-       Map<Id, Boolean> pfrApprovalMap = new Map<Id, Boolean>();
-            Set<Id> campaignIds = new Set<Id>();
-            // Collect Campaign Ids
-            for(PartnerFundRequest pfr : pfrList){
-                if(pfr.CampaignId != null){
-                    campaignIds.add(pfr.CampaignId);
-                }
-            }
-            // Query Campaigns
-            Map<Id, Campaign> campaignMap = new Map<Id, Campaign>([SELECT Id,Core_MDF_Activity_Approval_Required_Ind__c FROM Campaign WHERE Id IN :campaignIds]);
-            // Map PFR Id -> Campaign Approval Checkbox
-            for(PartnerFundRequest pfr : pfrList){
-                Boolean approvalRequired = false;
-                if(pfr.CampaignId != null && campaignMap != null && campaignMap.containsKey(pfr.CampaignId)){
-                    approvalRequired = campaignMap.get(pfr.CampaignId).Core_MDF_Activity_Approval_Required_Ind__c;
-                }
-                pfrApprovalMap.put(pfr.CampaignId, approvalRequired);
-            }
-
-            return pfrApprovalMap;
-     }
-     //Joshua 15182 End
+    
+    
 }

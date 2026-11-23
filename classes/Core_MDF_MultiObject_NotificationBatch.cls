@@ -262,6 +262,12 @@ Modification Log :
                                                          
                                                          for(SObject sobj : scope){                                    
                                                              PartnerMarketingBudget pmb = (PartnerMarketingBudget) sobj;
+                                                             System.debug('Program Name: ' + pmb.Core_MDF_Program_Nm__c);
+                                                             System.debug('Budget Type: ' + pmb.Core_MDF_Budget_Type__c);
+                                                             System.debug('Program EXACT: "' + pmb.Core_MDF_Program_Nm__c + '"');
+                                                             System.debug('Program LENGTH: ' + pmb.Core_MDF_Program_Nm__c.length());
+                                                             System.debug('Map Keys: ' + currentQuery.mapOfProgramToBudgetTypeToQueue.keySet());
+                                                             System.debug('Program Exists in Map?: ' + currentQuery.mapOfProgramToBudgetTypeToQueue.containsKey(pmb.Core_MDF_Program_Nm__c));
                                                              if (pmb.Core_MDF_Program_Nm__c != null && pmb.Core_MDF_Budget_Type__c != null && pmb.Core_MDF_Ultimate_Account_Id__c!=null) { // add null check Core_MDF_Ultimate_Account_Id__c
                                                                  
                                                                  // Case 1: Role based on ApprovalStage
@@ -395,6 +401,13 @@ Modification Log :
                                            for (SObject sobj : scope) {
                                                
                                                Campaign cmp = (Campaign) sobj;
+                                               System.debug('one-Budgets: "' + cmp.Core_MDF_Approval_Stage_nm__c + '"');
+                                               System.debug('one-EXACT: "' + cmp.Core_MDF_Program__c + '"');
+                                             //  System.debug('one-Budgetsss: "' + currentQuery.mapOfProgramToBudgetTypeToQueue.containsKey(cmp.Core_MDF_Program__c));
+                                             //  System.debug('one-Budget- LENGTH: ' + currentQuery.mapOfProgramToBudgetTypeToQueue.get(cmp.Core_MDF_Program__c).containsKey(cmp.Core_MDF_Approval_Stage_nm__c));
+                                               System.debug('Campaign Exists?: ' + currentQuery.mapOfProgramToBudgetTypeToQueue);
+                                               System.debug('--- DEBUG CHECK END ---');
+                                               
                                                if(cmp.Core_MDF_Ultimate_Account_txt__c!=null && cmp.Core_MDF_Opal_Budget_Type_Txt__c!=null && cmp.Core_MDF_Channel_Program__c!=null){
                                                    if (!currentQuery.mapOfProgramToApprovalStageToRolesList.isEmpty() && currentQuery.mapOfProgramToApprovalStageToRolesList.containsKey(cmp.Core_MDF_Program__c) 
                                                        && cmp.Core_MDF_Account__r.Core_Geo__c!=null && currentQuery.mapOfProgramToApprovalStageToRolesList.get(cmp.Core_MDF_Program__c).containsKey(cmp.Core_MDF_Approval_Stage_nm__c)) { // add contains check for approval stage
@@ -559,6 +572,10 @@ Modification Log :
                                                      
                                                      for (SObject sobj : scope) {
                                                          PartnerFundRequest pfr = (PartnerFundRequest) sobj;
+                                                         system.debug('oneCore_MDF_Approval_Stage__c::'+pfr.Core_MDF_Approval_Stage__c);
+                                                         system.debug('oneCore_MDF_Channel_Program__c::'+pfr.Campaign.Core_MDF_Channel_Program__c);
+                                                         system.debug('oneCore_MDF_Budget_Type_nm__c::'+pfr.Core_MDF_Budget_Type_nm__c);
+                                                         
                                                          
                                                          if(pfr.Core_MDF_Approval_Stage__c!=NULL && pfr.Campaign.Core_MDF_Channel_Program__c!=NULL && pfr.Core_MDF_Budget_Type_nm__c!=Null){
                                                              String approvalStageKey = pfr.Core_MDF_Approval_Stage__c + ' - ' + pfr.Core_MDF_Budget_Type_nm__c;

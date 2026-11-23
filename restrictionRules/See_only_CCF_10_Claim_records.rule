@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RestrictionRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <enforcementType>Restrict</enforcementType>
+    <masterLabel>See only CCF 1.0 Claim records</masterLabel>
+    <recordFilter>Core_MDF_Claim_id__r.Core_MDF_Program__c=&apos;Client Co-Marketing Program&apos;</recordFilter>
+    <targetEntity>Core_MDF_Claim_Prediction__c</targetEntity>
+    <userCriteria>$User.FirstName=&apos;Ealisha&apos;</userCriteria>
+    <version>1</version>
+</RestrictionRule>

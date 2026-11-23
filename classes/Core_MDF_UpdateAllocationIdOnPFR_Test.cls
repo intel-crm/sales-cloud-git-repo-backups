@@ -6,6 +6,7 @@ private class Core_MDF_UpdateAllocationIdOnPFR_Test {
     @TestSetup static void setUpData(){
         Profile itAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator'];
         // Creating User with utility class
+
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
         usr.Email = 'sysadmin@example.com';
         usr.profileId = itAdminProfile.Id;
@@ -24,14 +25,14 @@ private class Core_MDF_UpdateAllocationIdOnPFR_Test {
             
             List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
             // Creating channel program with utility class
-            ChannelProgram cpCCF = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
+            ChannelProgram cpCCF = Core_MDF_CCP_TestDataUtility.createProgram ('Client ','Client CoMarketing Fund', true);//14285
             //Creating DCF channel program 
-            ChannelProgram cpDCF = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.DCF_PROGRAM,'Data Center CoMarketing Fund', true);
+            ChannelProgram cpDCF = Core_MDF_CCP_TestDataUtility.createProgram ('Datacenter','Data Center CoMarketing Fund', true);//14285
             Test.startTest();
             // Creating Intel Account with utility class
             Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
             acc1.Core_Account_Type__c = 'Reseller';
-            //acc1.Core_Sales_Groups__c = 'CCG Sales Group';
+            acc1.Core_Sales_Groups__c = 'CCG Sales Group';
             acc1.Industry = 'Food & Beverage';
             acc1.Core_MDF_Channel_Program__c = cpCCF.Id;
             insert acc1; 
@@ -58,9 +59,8 @@ private class Core_MDF_UpdateAllocationIdOnPFR_Test {
                                                                            Core_MDF_CCP_TestDataUtility.Campaign_RecordType_DCF, 
                                                                            'Data Center CoMarketing Fund',System.today().addDays(5) , 
                                                                            System.today().addYears(1), 2000, 'Advanced Analytics', 
-                                                                           accDCF.Id,'Server', false);
-            campDcf.Core_MDF_Technology__c = null;
-            insert campDcf;
+                                                                           accDCF.Id,'Server', true);
+            
             
             
             // Creating activity without budget
@@ -69,7 +69,7 @@ private class Core_MDF_UpdateAllocationIdOnPFR_Test {
                                                                                                                        string.valueof(accCCF.id),
                                                                                                                        NULL,NULL,'ALBANIA','Consumer',
                                                                                                                        'Desktop','Intel® Corporate Logo',
-                                                                                                                       'Event','Promotion',
+                                                                                                                       'Event','',
                                                                                                                        'Draft',false,true,
                                                                                                                        'Others','Test Other cpCCF');
             testPartnerFundRequestObj.RequestedAmount=100000000;
@@ -109,6 +109,7 @@ private class Core_MDF_UpdateAllocationIdOnPFR_Test {
                 testPartnerFundRequestRecord.Core_MDF_Fund_Request_Status__c = 'Revision Required';
                 testPartnerFundRequestRecord.Core_MDF_Start_Date__c = system.today() + 30;
                 testPartnerFundRequestRecord.Core_MDF_End_Date__c = system.today() + 30;
+                testPartnerFundRequestRecord.Core_MDF_Activity_Types__c='';
                 testPartnerFundRequestRecordList.add(testPartnerFundRequestRecord);
             }
             
@@ -126,6 +127,7 @@ private class Core_MDF_UpdateAllocationIdOnPFR_Test {
                 testPartnerFundRequestRecord1.Core_MDF_Fund_Request_Status__c = 'Revision Required';
                 testPartnerFundRequestRecord1.Core_MDF_Start_Date__c = system.today() + 30;
                 testPartnerFundRequestRecord1.Core_MDF_End_Date__c = system.today() + 30;
+                testPartnerFundRequestRecord1.Core_MDF_Activity_Types__c='';
                 testPartnerFundRequestRecordList.add(testPartnerFundRequestRecord1);
             }
             
@@ -163,7 +165,8 @@ private class Core_MDF_UpdateAllocationIdOnPFR_Test {
             Test.startTest();
             
             /*Core_MDF_UpdateAllocationIdOnPFR batchClass = new Core_MDF_UpdateAllocationIdOnPFR();
-            batchClass.fundAllocationCreation(new List<PartnerFundRequest> {testPartnerFundRequestRecordList[0]});*/
+            batchClass.fundAllocationCreation(new List<PartnerFundRequest> {testPartnerFundRequestRecordList[0]});
+            System.debug('Allocation Id ->'+testPartnerFundRequestRecordList[0].AllocationId);*/
             Core_MDF_UpdateAllocationIdOnPFR obj = new Core_MDF_UpdateAllocationIdOnPFR();
             DataBase.executeBatch(obj); 
             
@@ -189,7 +192,8 @@ private class Core_MDF_UpdateAllocationIdOnPFR_Test {
             Test.startTest();
             
             /*Core_MDF_UpdateAllocationIdOnPFR batchClass = new Core_MDF_UpdateAllocationIdOnPFR();
-            batchClass.fundAllocationCreation(new List<PartnerFundRequest> {testPartnerFundRequestRecordList[0]});*/
+            batchClass.fundAllocationCreation(new List<PartnerFundRequest> {testPartnerFundRequestRecordList[0]});
+            System.debug('Allocation Id ->'+testPartnerFundRequestRecordList[0].AllocationId);*/
             Core_MDF_UpdateAllocationIdOnPFR obj = new Core_MDF_UpdateAllocationIdOnPFR();
             DataBase.executeBatch(obj); 
             

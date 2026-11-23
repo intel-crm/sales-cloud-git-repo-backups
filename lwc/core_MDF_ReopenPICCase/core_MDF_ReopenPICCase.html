@@ -1,0 +1,12 @@
+<template>
+    <lightning-card>
+    <lightning-layout horizontal-align="left">
+        <lightning-layout-item>
+
+            <p class="slds-p-horizontal_small">{reopenCaseHeading}</p></br>
+            <lightning-button label={reopenCaseBtnLabel} title={reopenCaseBtnLabel} class="slds-var-m-left_x-small" onclick={handleReopenCase} disabled={toBeReopened}></lightning-button>
+
+        </lightning-layout-item>
+    </lightning-layout>
+</lightning-card>
+    </template>

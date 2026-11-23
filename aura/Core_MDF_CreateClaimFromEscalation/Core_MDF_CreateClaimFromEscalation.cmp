@@ -19,7 +19,7 @@
     <aura:attribute name="Spinner" type="boolean" default="true"/>  
     <aura:attribute name="renderModal" type="boolean" default="false"/>  
     <aura:attribute name="claimCreationError" type="string" default="" />
-    
+    <aura:attribute name="programName" type="String" default='' Description="This field is to hold the program name"/>
     
     <force:recordData aura:id="recordLoader"
                       recordId="{!v.recordId}"
@@ -30,7 +30,7 @@
    
     <aura:if isTrue="{!v.Spinner}">
         <lightning:spinner alternativeText="Loading" size="medium" />
-    </aura:if>
+    </aura:if> 
     
     <!--Err:Claim can be created manually only if the Do Not Auto Create Claim is Checked.-->
     
@@ -62,7 +62,8 @@
                         <c:Core_MDF_PFC_Create escalationId="{!v.recordId}" 
                                                escActivityId ="{!v.escalationRecord.Core_MDF_Co_Marketing_Activity_id__c}"
                                                recordId= "{!v.recordId}"
-                                               isProposalbasedInd="{!v.escalationRecord.Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Proposal_Based_Ind__c}"/>
+                                               isProposalbasedInd="{!v.escalationRecord.Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Proposal_Based_Ind__c}"
+                                               programName="{!v.programName}"/>
                       <aura:set attribute="else">   
                             <div class="slds-notify__content">
                                 <h5 class="slds-text-heading_small slds-align_absolute-center">{!v.claimCreationError}</h5>
@@ -75,7 +76,8 @@
                             <c:Core_MDF_PFC_Create escalationId="{!v.recordId}"
                                                    escActivityId ="{!v.escalationRecord.Core_MDF_Case_ID_Number_id__r.Core_MDF_Activity_ID__c}"
                                                    recordId= "{!v.recordId}"
-                                                   isProposalbasedInd="{!v.escalationRecord.Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Proposal_Based_Ind__c}"/> 
+                                                   isProposalbasedInd="{!v.escalationRecord.Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Proposal_Based_Ind__c}"
+                                                   programName="{!v.programName}"/> 
   
                         </aura:if> 
                     </aura:set>

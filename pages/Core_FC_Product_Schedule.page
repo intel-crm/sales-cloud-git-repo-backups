@@ -1,388 +1,368 @@
 <apex:page standardController="Opportunity" extensions="Core_FC_ProductSchedule_ExtController" action="{!deleteAllBlankQuantity}" id="fcPage" applyHtmlTag="false" showHeader="false" lightningStylesheets="false">
-    <style type="text/css">
-        .opportunityBlock{
-        width:100%;
-        }
-        .tableHeader{background-color:greenyellow}
-    </style>
-    
-    <apex:variable value="{!0.00}" var="total1"/>
-    <apex:variable value="{!0.00}" var="total2"/>
-    <apex:variable value="{!0.00}" var="total3"/>
-    <apex:variable value="{!0.00}" var="total4"/>
-    <apex:variable value="{!0.00}" var="total5"/>
-    <apex:variable value="{!0.00}" var="total6"/>
-    <apex:variable value="{!0.00}" var="sumRevenue"/>
-    <apex:slds />
-    <apex:form >
-        <apex:outputPanel rendered="{!isForecastAvailable}" id="reloadOpp">
-            <div class="demo-only" style="padding-left: 20px;padding-top: 20px;padding-bottom: 20px;">
-                <nav role="navigation" aria-label="Breadcrumbs">
-                    <apex:actionStatus id="cancelForecast">
-                        <apex:facet name="stop">
-                            <apex:commandLink action="{!cancelRecentFC}" oncomplete="redirectToOpp();" rendered="{!isNewPage}" status="cancelForecast" rerender="reloadOpp">Opportunity : {!opptyObj1.Name}</apex:commandLink>
-                        </apex:facet>
-                        <apex:facet name="start">
-                            <apex:outputText value="Loading..." style="margin-left:2%;"/>
-                        </apex:facet>
-                    </apex:actionStatus>
-                </nav>
-            </div>
-        </apex:outputPanel>
-        <apex:outputPanel id="showMigrateLink">
-            <apex:pagemessages id="errMsg"/>
-            <!--<apex:commandLink value="{!$Label.Core_FC_Migrate6QPS}" action="{!migrate6QPSMethod}" rendered="{!oliPresentFlag}" style="margin-left:2%;"/>-->
-            <!--Ashwin -- Added fix to make sure the records are getting created only once-->
-            <apex:actionStatus id="saveStatus">
-                <apex:facet name="stop">
-                    <apex:commandLink value="{!$Label.Core_FC_Migrate6QPS}" action="{!migrate6QPSMethod}" oncomplete="redirectToOpp();" status="saveStatus" rerender="showMigrateLink" style="margin-left:2%;" rendered="{!oliPresentFlag}"/>
-                </apex:facet>
-                <apex:facet name="start">
-                    <apex:outputText value="Migrating..." style="margin-left:2%;"/>
-                </apex:facet>
-            </apex:actionStatus>
-        </apex:outputPanel>
-        <apex:pageBlock id="pb1" rendered="{!qtrNameList.size > 0}">             
-            <apex:pageblockSection collapsible="false" columns="1"> 
-                <apex:outputPanel id="table1">
-                    <apex:pageblockTable value="{!forecastTable}" var="fc" style="width:101%;margin-left:-1em;" rendered="{!NOT(editAll)}" columnsWidth="33%,10%,10%,6%,6%,6%,6%,6%,6%,7%,4%">
-                        <apex:column headerValue="Product Name">
-                            <apex:outputLink value="/{!fc.fcObjList[0].Core_Opp_Line_Item_RecordID__c}" target="_blank">
-                                {!fc.fcObjList[0].Core_Opp_FC_Product__r.Name}
-                            </apex:outputLink>
-                        </apex:column>
-                        <apex:column headerValue="Vendor">
-                            <apex:outputField value="{!fc.fcObjList[0].Core_FC_Vendor__c}" rendered="{!IF(fc.fcObjList[0].Core_FC_Vendor__c != null, true, false)}" />
-                            <!--<apex:outputField value="{!fc.fcObjList[0].Core_FC_BU_Short_Name__c}" rendered="{!IF(AND(fc.fcObjList[0].Core_FC_BU_Short_Name__c != null, fc.fcObjList[0].Core_FC_Vendor__c == null), true, false)}" />-->
-                        </apex:column>
-                        <apex:column >
-                            <apex:facet name="footer">
-                                <apex:outputText value="Total Revenue"/>
-                            </apex:facet>
-                            <apex:repeat value="{!fc.schedQRList}" var="qr" id="pbt2" >
-                                <apex:outputText value="{!qr}"/><br/>
-                            </apex:repeat>
-                        </apex:column>                      
-                        <apex:column >                          
-                            <apex:facet name="header">
-                                <apex:outputText ><div style="background-color:{!IF(LEFT(colorList[0],5) == 'green', 'greenyellow', IF(LEFT(colorList[0],9) == 'submitted', 'yellow', 'none'))}">{!qtrNameList[0]}</div></apex:outputText>
-                            </apex:facet>           
-                            <apex:variable var="total1" value="{!fc.schedQtyRevList[0].revenueQtyList[1].value+total1}" />
-                            <apex:facet name="footer">
-                                <span class="amountSum1"></span>
-                            </apex:facet>
-                            <apex:repeat value="{!fc.schedQtyRevList[0].revenueQtyList}" var="q0">
-                                <apex:outputPanel rendered="{!q0.isQuantity}" ><!--style="background-color:{!IF(fc.fcObjList[0].Core_Opp_FC_Approval_Status__c == 'Submitted', 'yellow', 'none')}"-->
-                                    <apex:outputText value="{0, number}" >
-                                        <apex:param value="{!q0.value}"/>
-                                    </apex:outputText><br/>
-                                </apex:outputPanel>
-                                <apex:outputPanel rendered="{!!q0.isQuantity}">
-                                    <apex:outputText value="{0, number, currency}">
-                                        <apex:param value="{!q0.value}"/>   
-                                    </apex:outputText><br/>
-                                </apex:outputPanel>
-                            </apex:repeat>
-                        </apex:column>
-                        <apex:column >
-                            <apex:facet name="header">
-                                <apex:outputText ><div style="background-color:{!IF(LEFT(colorList[1],5) == 'green', 'greenyellow', IF(LEFT(colorList[1],9) == 'submitted', 'yellow', 'none'))}">{!qtrNameList[1]}</div></apex:outputText>
-                            </apex:facet>
-                            <apex:variable var="total2" value="{!fc.schedQtyRevList[1].revenueQtyList[1].value+total2}" />
-                            <apex:facet name="footer">
-                                <span class="amountSum2"></span>
-                            </apex:facet>
-                            <apex:repeat value="{!fc.schedQtyRevList[1].revenueQtyList}" var="q0">
-                                <apex:outputPanel rendered="{!q0.isQuantity}">
-                                    <apex:outputText value="{0, number}">
-                                        <apex:param value="{!q0.value}"/>
-                                    </apex:outputText><br/>
-                                </apex:outputPanel>
-                                <apex:outputPanel rendered="{!!q0.isQuantity}">
-                                    <apex:outputText value="{0, number, currency}">
-                                        <apex:param value="{!q0.value}"/>
-                                    </apex:outputText><br/>
-                                </apex:outputPanel>
-                            </apex:repeat>
-                        </apex:column>
-                        <apex:column >
-                            <apex:facet name="header">
-                                <apex:outputText ><div style="background-color:{!IF(LEFT(colorList[2],5) == 'green', 'greenyellow', IF(LEFT(colorList[2],9) == 'submitted', 'yellow', 'none'))}">{!qtrNameList[2]}</div></apex:outputText>
-                            </apex:facet>   
-                            <apex:variable var="total3" value="{!fc.schedQtyRevList[2].revenueQtyList[1].value+total3}" />
-                            <apex:facet name="footer">
-                                <span class="amountSum3"></span>
-                            </apex:facet>
-                            <apex:repeat value="{!fc.schedQtyRevList[2].revenueQtyList}" var="q0">
-                                <apex:outputPanel rendered="{!q0.isQuantity}">
-                                    <apex:outputText value="{0, number}">
-                                        <apex:param value="{!q0.value}"/>
-                                    </apex:outputText><br/>
-                                </apex:outputPanel>
-                                <apex:outputPanel rendered="{!!q0.isQuantity}">
-                                    <apex:outputText value="{0, number, currency}">
-                                        <apex:param value="{!q0.value}"/>
-                                    </apex:outputText><br/>
-                                </apex:outputPanel>
-                            </apex:repeat>
-                        </apex:column>
-                        <apex:column >
-                            <apex:facet name="header">
-                                <apex:outputText ><div style="background-color:{!IF(LEFT(colorList[3],5) == 'green', 'greenyellow', IF(LEFT(colorList[3],9) == 'submitted', 'yellow', 'none'))}">{!qtrNameList[3]}</div></apex:outputText>
-                            </apex:facet>   
-                            <apex:variable var="total4" value="{!fc.schedQtyRevList[3].revenueQtyList[1].value+total4}" />
-                            <apex:facet name="footer">
-                                <span class="amountSum4"></span>
-                            </apex:facet>
-                            <apex:repeat value="{!fc.schedQtyRevList[3].revenueQtyList}" var="q0">
-                                <apex:outputPanel rendered="{!q0.isQuantity}">
-                                    <apex:outputText value="{0, number}">
-                                        <apex:param value="{!q0.value}"/>
-                                    </apex:outputText><br/>
-                                </apex:outputPanel>
-                                <apex:outputPanel rendered="{!!q0.isQuantity}">
-                                    <apex:outputText value="{0, number, currency}">
-                                        <apex:param value="{!q0.value}"/>
-                                    </apex:outputText><br/>
-                                </apex:outputPanel>
-                            </apex:repeat>
-                        </apex:column>
-                        <apex:column >
-                            <apex:facet name="header">
-                                <apex:outputText ><div style="background-color:{!IF(LEFT(colorList[4],5) == 'green', 'greenyellow', IF(LEFT(colorList[4],9) == 'submitted', 'yellow', 'none'))}">{!qtrNameList[4]}</div></apex:outputText>
-                            </apex:facet>   
-                            <apex:variable var="total5" value="{!fc.schedQtyRevList[4].revenueQtyList[1].value+total5}" />
-                            <apex:facet name="footer">
-                                <span class="amountSum5"></span>
-                            </apex:facet>
-                            <apex:repeat value="{!fc.schedQtyRevList[4].revenueQtyList}" var="q0">
-                                <apex:outputPanel rendered="{!q0.isQuantity}">
-                                    <apex:outputText value="{0, number}">
-                                        <apex:param value="{!q0.value}"/>
-                                    </apex:outputText><br/>
-                                </apex:outputPanel>
-                                <apex:outputPanel rendered="{!!q0.isQuantity}">
-                                    <apex:outputText value="{0, number, currency}">
-                                        <apex:param value="{!q0.value}"/>
-                                    </apex:outputText><br/>
-                                </apex:outputPanel>
-                            </apex:repeat>
-                        </apex:column>
-                        <apex:column >
-                            <apex:facet name="header">
-                                <apex:outputText ><div style="background-color:{!IF(LEFT(colorList[5],5) == 'green', 'greenyellow', IF(LEFT(colorList[5],9) == 'submitted', 'yellow', 'none'))}">{!qtrNameList[5]}</div></apex:outputText>
-                            </apex:facet>   
-                            <apex:variable var="total6" value="{!fc.schedQtyRevList[5].revenueQtyList[1].value+total6}" />
-                            <apex:facet name="footer">
-                                <span class="amountSum6"></span>
-                            </apex:facet>
-                            <apex:repeat value="{!fc.schedQtyRevList[5].revenueQtyList}" var="q0">
-                                <apex:outputPanel rendered="{!q0.isQuantity}">
-                                    <apex:outputText value="{0, number}">
-                                        <apex:param value="{!q0.value}"/>
-                                    </apex:outputText><br/>
-                                </apex:outputPanel>
-                                <apex:outputPanel rendered="{!!q0.isQuantity}">
-                                    <apex:outputText value="{0, number, currency}">
-                                        <apex:param value="{!q0.value}"/>
-                                    </apex:outputText><br/>
-                                </apex:outputPanel>
-                            </apex:repeat>
-                        </apex:column>
-                        <apex:column headerValue="{!$Label.Core_FC_ForecastedQuantity}">
-                            <apex:variable var="sumRevenue" value="{!fc.totalQtyRev.revenueQtyList[1].value+sumRevenue}" />
-                            <apex:facet name="footer">
-                                <span class="totalSum"></span>
-                            </apex:facet>
-                            <apex:repeat value="{!fc.totalQtyRev.revenueQtyList}" var="qr">
-                                <apex:outputPanel rendered="{!qr.isQuantity}">
-                                    <apex:outputText value="{0, number}">
-                                        <apex:param value="{!qr.value}"/>
-                                    </apex:outputText><br/>
-                                </apex:outputPanel>
-                                <apex:outputPanel rendered="{!!qr.isQuantity}">
-                                    <apex:outputText value="{0, number, currency}">
-                                        <apex:param value="{!qr.value}"/>
-                                    </apex:outputText><br/>
-                                </apex:outputPanel>
-                            </apex:repeat>
-                        </apex:column>
-                        <apex:column headerValue="{!$Label.Core_FC_LastModifiedDate}" value="{!fc.fcObjList[5].Core_FC_Last_Modified_Date__c}"/>
-                    </apex:pageblockTable>
-                    <apex:pageblockTable value="{!forecastTable}" var="fc" style="width:101%;margin-left:-1em;" rendered="{!editAll}" columnsWidth="33%,9%,8%,7%,7%,7%,7%,7%,7%,4%,4%">
-                        <apex:column headerValue="Product Name">
-                            <apex:outputLink value="/{!fc.fcObjList[0].Core_Opp_Line_Item_RecordID__c}" target="_blank">
-                                {!fc.fcObjList[0].Core_Opp_FC_Product__r.Name}
-                            </apex:outputLink>
-                        </apex:column>
-                        <apex:column headerValue="Vendor">
-                            <apex:outputField value="{!fc.fcObjList[0].Core_FC_Vendor__c}" rendered="{!IF(fc.fcObjList[0].Core_FC_Vendor__c != null, true, false)}" />
-                            <!--<apex:outputField value="{!fc.fcObjList[0].Core_FC_BU_Short_Name__c}" rendered="{!IF(AND(fc.fcObjList[0].Core_FC_BU_Short_Name__c != null, fc.fcObjList[0].Core_FC_Vendor__c == null), true, false)}" />-->
-                        </apex:column>
-                        <apex:column headerValue="" >{!$Label.Core_FC_ForecastQuantity}</apex:column>                   
-                        <apex:column headerValue="{!qtrNameList[0]}">
-                            <apex:outputText rendered="{!IF(fc.fcObjList[0].Core_Opp_FC_Approval_Status__c != '', true, false)}" style="width:90%;">{!fc.viewQuantityList[0]}</apex:outputText>
-                            <apex:inputText rendered="{!IF(fc.fcObjList[0].Core_Opp_FC_Approval_Status__c == '', true, false)}" value="{!fc.viewQuantityList[0]}" style="width:90%;"/>                         
-                        </apex:column>
-                        <apex:column headerValue="{!qtrNameList[1]}">
-                            <apex:outputText rendered="{!IF(fc.fcObjList[1].Core_Opp_FC_Approval_Status__c != '', true, false)}" style="width:90%;">{!fc.viewQuantityList[1]}</apex:outputText>
-                            <apex:inputText rendered="{!IF(fc.fcObjList[1].Core_Opp_FC_Approval_Status__c == '', true, false)}" value="{!fc.viewQuantityList[1]}" style="width:90%;"/>                         
-                        </apex:column>
-                        <apex:column headerValue="{!qtrNameList[2]}">
-                            <apex:outputText rendered="{!IF(fc.fcObjList[2].Core_Opp_FC_Approval_Status__c != '', true, false)}" style="width:90%;">{!fc.viewQuantityList[2]}</apex:outputText>
-                            <apex:inputText rendered="{!IF(fc.fcObjList[2].Core_Opp_FC_Approval_Status__c == '', true, false)}" value="{!fc.viewQuantityList[2]}" style="width:90%;"/>                         
-                        </apex:column>
-                        <apex:column headerValue="{!qtrNameList[3]}">
-                            <apex:outputText rendered="{!IF(fc.fcObjList[3].Core_Opp_FC_Approval_Status__c != '', true, false)}"  style="width:90%;">{!fc.viewQuantityList[3]}</apex:outputText>
-                            <apex:inputText rendered="{!IF(fc.fcObjList[3].Core_Opp_FC_Approval_Status__c == '', true, false)}" value="{!fc.viewQuantityList[3]}" style="width:90%;"/>                         
-                        </apex:column>
-                        <apex:column headerValue="{!qtrNameList[4]}">
-                            <apex:outputText rendered="{!IF(fc.fcObjList[4].Core_Opp_FC_Approval_Status__c != '', true, false)}" style="width:90%;">{!fc.viewQuantityList[4]}</apex:outputText>
-                            <apex:inputText rendered="{!IF(fc.fcObjList[4].Core_Opp_FC_Approval_Status__c == '', true, false)}" value="{!fc.viewQuantityList[4]}" style="width:90%;"/>                         
-                        </apex:column>
-                        <apex:column headerValue="{!qtrNameList[5]}">
-                            <apex:outputText rendered="{!IF(fc.fcObjList[5].Core_Opp_FC_Approval_Status__c != '', true, false)}" style="width:90%;">{!fc.viewQuantityList[5]}</apex:outputText>
-                            <apex:inputText rendered="{!IF(fc.fcObjList[5].Core_Opp_FC_Approval_Status__c == '', true, false)}" value="{!fc.viewQuantityList[5]}" style="width:90%;"/>                         
-                        </apex:column>
-                        <apex:column headerValue="{!$Label.Core_FC_ForecastedQuantity}" value="{!fc.fcObjList[0].Core_FC_4Q_Shed_Quantity__c}"/>
-                        <apex:column headerValue="{!$Label.Core_FC_LastModifiedDate}" value="{!fc.fcObjList[5].Core_FC_Last_Modified_Date__c}"/>
-                    </apex:pageblockTable>                  
-                </apex:outputPanel>                
-            </apex:pageblockSection>
-            <apex:pageblockButtons location="top">
-                <apex:outputPanel id="addPanel" >
-                    <apex:actionStatus id="mySaveStatus2"> 
-                        <apex:facet name="stop">
-                            <apex:commandbutton value="Add Quarter" id="addQtrButton" onclick="redirectForAddQuarter();" rendered="{!IF($Profile.Name == $Label.Core_BU_Acc_Collaborator_Profile || $Profile.Name == $Label.Core_Commissions_Office_Inquiries_Admin_User_Profile,FALSE,NOT(editAll))}" status="mySaveStatus2" rerender="table1,savePanel,addPanel,pm2,errMsg" title="{!$Label.Core_FC_AddQuarterMsg}" alt="{!$Label.Core_FC_AddQuarterMsg}" oncomplete="setTotals();"/>
-                        </apex:facet>
-                        <apex:facet name="start">
-                            <apex:outputPanel id="pm2">
-                                <apex:commandbutton value="Adding..." disabled="true" id="addQtrButton1" action="{!addQuarterMethod}" rendered="{!NOT(editAll)}" status="mySaveStatus2" rerender="table1,savePanel,addPanel,errMsg" title="{!$Label.Core_FC_AddQuarterMsg}" alt="{!$Label.Core_FC_AddQuarterMsg}" oncomplete="setTotals();"/>
-                            </apex:outputPanel>
-                        </apex:facet>
-                    </apex:actionStatus>
-                    <!--<apex:commandbutton value="Add Quarter" id="addQtrButton" action="{!addQuarterMethod}" rendered="{!NOT(editAll)}" rerender="table1,savePanel,addPanel" title="{!$Label.Core_FC_AddQuarterMsg}" alt="{!$Label.Core_FC_AddQuarterMsg}" oncomplete="setTotals();"/>-->
-                    
-                    <apex:actionStatus id="mySaveStatus3"> 
-                        <apex:facet name="stop"> 
-                            <apex:commandButton value="{!$Label.Core_FC_EditAllScheduledQty}" id="editButton" action="{!editAllMethod}" oncomplete="redirectEditPage()" rendered="{!IF($Profile.Name == 'BU Account Collaborator' || $Profile.Name == $Label.Core_Commissions_Office_Inquiries_Admin_User_Profile,FALSE,NOT(editAll))}" status="mySaveStatus3" rerender="table1,savePanel,addPanel,pm3,errMsg"/>
-                        </apex:facet> 
-                        <apex:facet name="start">
-                            <apex:outputPanel id="pm3">
-                                <apex:commandButton value="Editing..." id="editButton1" disabled="true" action="{!editAllMethod}" rendered="{!NOT(editAll)}" status="mySaveStatus3" rerender="table1,savePanel,addPanel,errMsg"/>
-                            </apex:outputPanel>
-                        </apex:facet>
-                    </apex:actionStatus>
-                    <!--<apex:commandButton value="Edit All Schedule Quantity" id="editButton" action="{!editAllMethod}" rendered="{!NOT(editAll)}" rerender="table1,savePanel,addPanel"/>-->
-                    <apex:outputPanel id="render1" rendered="{!isOwner}">
-                        <apex:outputPanel id="out">
-                            <apex:actionstatus id="status1">
-                                <apex:facet name="start">
-                                    <div class="waitingSearchDiv" id="el_loading" style="background-color: #DCD6D6; height: 100%;opacity:0.65;width:100%;">
-                                        <div class="waitingHolder" style="top: 74.2px; width: 91px;">
-                                            <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
-                                            <span class="waitingDescription">Please Wait...</span>
-                                        </div>
-                                    </div>
+        <style type="text/css">
+            .opportunityBlock{
+                width:100%;
+            }
+            .tableHeader{background-color:greenyellow}
+        </style>
+        
+        <apex:variable value="{!0.00}" var="total1"/>
+        <apex:variable value="{!0.00}" var="total2"/>
+        <apex:variable value="{!0.00}" var="total3"/>
+        <apex:variable value="{!0.00}" var="total4"/>
+        <apex:variable value="{!0.00}" var="total5"/>
+        <apex:variable value="{!0.00}" var="total6"/>
+        <apex:variable value="{!0.00}" var="sumRevenue"/>
+        <apex:slds />
+        <apex:form >
+            <apex:outputPanel rendered="{!!isClassic && !oliPresentFlag}">
+                <div class="demo-only" style="padding-left: 20px;padding-top: 20px;padding-bottom: 20px;">
+                    <nav role="navigation" aria-label="Breadcrumbs">
+                        <apex:outputLink value="{!'/one/one.app?#/sObject/'+ opptyObj1.Id + '/view'}">Opportunity : {! opptyObj1.Name }</apex:outputLink>
+                    </nav>
+                </div>
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{!isClassic && !oliPresentFlag}">
+                <div class="demo-only" style="padding-left: 20px;padding-top: 20px;padding-bottom: 20px;">
+                    <nav role="navigation" aria-label="Breadcrumbs">
+                        <apex:commandLink action="{!redirectToOppRec}" rendered="{!isNewPage}" >Opportunity : {!opptyObj1.Name}</apex:commandLink>
+                        <apex:commandLink onclick="redirectToOpp();" rendered="{!!isNewPage}" >Opportunity : {!opptyObj1.Name}</apex:commandLink>
+                    </nav>
+                </div>
+            </apex:outputPanel>
+            <apex:outputPanel id="showMigrateLink">
+                <apex:pagemessages id="errMsg"/>
+                <!--<apex:commandLink value="{!$Label.Core_FC_Migrate6QPS}" action="{!migrate6QPSMethod}" rendered="{!oliPresentFlag}" style="margin-left:2%;"/>-->
+                <!--Ashwin -- Added fix to make sure the records are getting created only once-->
+                <apex:actionStatus id="saveStatus">
+                    <apex:facet name="stop">
+                        <apex:commandLink value="{!$Label.Core_FC_Migrate6QPS}" action="{!migrate6QPSMethod}" status="saveStatus" rerender="showMigrateLink" style="margin-left:2%;" rendered="{!oliPresentFlag}"/>
+                    </apex:facet>
+                    <apex:facet name="start">
+                        <apex:outputText value="Migrating..." style="margin-left:2%;"/>
+                    </apex:facet>
+                </apex:actionStatus>
+            </apex:outputPanel>
+            <apex:pageBlock id="pb1" rendered="{!qtrNameList.size > 0}">             
+                <apex:pageblockSection collapsible="false" columns="1"> 
+                    <apex:outputPanel id="table1">
+                        <apex:pageblockTable value="{!forecastTable}" var="fc" style="width:101%;margin-left:-1em;" rendered="{!NOT(editAll)}" columnsWidth="33%,10%,10%,6%,6%,6%,6%,6%,6%,7%,4%">
+                            <apex:column headerValue="Product Name">
+                                <apex:outputLink value="/{!fc.fcObjList[0].Core_Opp_Line_Item_RecordID__c}" target="_blank">
+                                    {!fc.fcObjList[0].Core_Opp_FC_Product__r.Name}
+                                </apex:outputLink>
+                            </apex:column>
+                            <apex:column headerValue="Vendor">
+                                <apex:outputField value="{!fc.fcObjList[0].Core_FC_Vendor__c}" rendered="{!IF(fc.fcObjList[0].Core_FC_Vendor__c != null, true, false)}" />
+                                <apex:outputField value="{!fc.fcObjList[0].Core_FC_BU_Short_Name__c}" rendered="{!IF(AND(fc.fcObjList[0].Core_FC_BU_Short_Name__c != null, fc.fcObjList[0].Core_FC_Vendor__c == null), true, false)}" />
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="footer">
+                                    <apex:outputText value="Total Revenue"/>
                                 </apex:facet>
-                            </apex:actionstatus>
-                        </apex:outputPanel>
-                        <apex:commandButton value="{!$Label.Core_FC_SubmitForecast}" id="submitBtn" action="{!submitForApproval}" oncomplete="redirect()" onclick="if(!confirm('{!qtrSubmitMsg[0]}')){return false;}" rendered="{!IF($Profile.Name == 'BU Account Collaborator' || $Profile.Name == $Label.Core_Commissions_Office_Inquiries_Admin_User_Profile,FALSE,NOT(editAll))}" status="status1" rerender="out,errMsg" styleclass="{!if($User.UIThemeDisplayed =='Theme4d' && (isSubmitChk || isAllZero), 'slds-button slds-button_neutral', '')}" disabled="{!isSubmitChk || isAllZero}" />
-                    </apex:outputPanel>
-                    
-                    <apex:outputPanel id="render2" rendered="{!(isManager)}">
-                        <apex:commandButton value="{!$Label.Core_FC_Approve}" id="apprvBtn" action="{!approvalMethod}" oncomplete="redirect()" rendered="{!IF($Profile.Name == 'BU Account Collaborator' || $Profile.Name == $Label.Core_Commissions_Office_Inquiries_Admin_User_Profile,FALSE,NOT(editAll))}" disabled="{!!isSubmitChk}" styleclass="{!if($User.UIThemeDisplayed =='Theme4d' && !isSubmitChk, 'slds-button slds-button_neutral', '')}"/>
-                        
-                        <apex:commandButton value="{!$Label.Core_FC_Reject}" id="rejectBtn" action="{!rejectionMethod}" oncomplete="redirect()" rendered="{!IF($Profile.Name == 'BU Account Collaborator' || $Profile.Name == $Label.Core_Commissions_Office_Inquiries_Admin_User_Profile,FALSE,NOT(editAll))}" disabled="{!!isSubmitChk}" styleclass="{!if($User.UIThemeDisplayed =='Theme4d' && !isSubmitChk, 'slds-button slds-button_neutral', '')}"/>
-                    </apex:outputPanel>
-                    <apex:outputPanel id="render3" rendered="{!(isManager) || (isAdmin)}">
-                        <apex:actionStatus id="myRecallStatus"> 
-                            <apex:facet name="stop"> 
-                                <apex:commandbutton value="{!$Label.Core_Recall_Last_Approval}" id="recallBtn" action="{!recallLastApprovedFC}" oncomplete="redirect()" rendered="{!IF($Profile.Name == 'BU Account Collaborator' || $Profile.Name == $Label.Core_Commissions_Office_Inquiries_Admin_User_Profile,FALSE,NOT(editAll))}" rerender="fcPage,table1,savePanel,addPanel,rc,errMsg" status="myRecallStatus" styleclass="{!if($User.UIThemeDisplayed =='Theme4d' && (isSubmitChk || isAllZero), 'slds-button slds-button_neutral', '')}" disabled="{!!isRecall}"/>
-                            </apex:facet> 
+                                <apex:repeat value="{!fc.schedQRList}" var="qr" id="pbt2" >
+                                    <apex:outputText value="{!qr}"/><br/>
+                                </apex:repeat>
+                            </apex:column>                      
+                            <apex:column >                          
+                                <apex:facet name="header">
+                                    <apex:outputText ><div style="background-color:{!IF(LEFT(colorList[0],5) == 'green', 'greenyellow', IF(LEFT(colorList[0],9) == 'submitted', 'yellow', 'none'))}">{!qtrNameList[0]}</div></apex:outputText>
+                                </apex:facet>           
+                                <apex:variable var="total1" value="{!fc.schedQtyRevList[0].revenueQtyList[1].value+total1}" />
+                                <apex:facet name="footer">
+                                    <span class="amountSum1"></span>
+                                </apex:facet>
+                                <apex:repeat value="{!fc.schedQtyRevList[0].revenueQtyList}" var="q0">
+                                        <apex:outputPanel rendered="{!q0.isQuantity}" ><!--style="background-color:{!IF(fc.fcObjList[0].Core_Opp_FC_Approval_Status__c == 'Submitted', 'yellow', 'none')}"-->
+                                            <apex:outputText value="{0, number}" >
+                                                <apex:param value="{!q0.value}"/>
+                                            </apex:outputText><br/>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!!q0.isQuantity}">
+                                            <apex:outputText value="{0, number, currency}">
+                                                <apex:param value="{!q0.value}"/>
+                                            </apex:outputText><br/>
+                                        </apex:outputPanel>
+                                </apex:repeat>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">
+                                    <apex:outputText ><div style="background-color:{!IF(LEFT(colorList[1],5) == 'green', 'greenyellow', IF(LEFT(colorList[1],9) == 'submitted', 'yellow', 'none'))}">{!qtrNameList[1]}</div></apex:outputText>
+                                </apex:facet>
+                                <apex:variable var="total2" value="{!fc.schedQtyRevList[1].revenueQtyList[1].value+total2}" />
+                                <apex:facet name="footer">
+                                    <span class="amountSum2"></span>
+                                </apex:facet>
+                                <apex:repeat value="{!fc.schedQtyRevList[1].revenueQtyList}" var="q0">
+                                        <apex:outputPanel rendered="{!q0.isQuantity}">
+                                            <apex:outputText value="{0, number}">
+                                                <apex:param value="{!q0.value}"/>
+                                            </apex:outputText><br/>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!!q0.isQuantity}">
+                                            <apex:outputText value="{0, number, currency}">
+                                                <apex:param value="{!q0.value}"/>
+                                            </apex:outputText><br/>
+                                        </apex:outputPanel>
+                                </apex:repeat>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">
+                                    <apex:outputText ><div style="background-color:{!IF(LEFT(colorList[2],5) == 'green', 'greenyellow', IF(LEFT(colorList[2],9) == 'submitted', 'yellow', 'none'))}">{!qtrNameList[2]}</div></apex:outputText>
+                                </apex:facet>   
+                                <apex:variable var="total3" value="{!fc.schedQtyRevList[2].revenueQtyList[1].value+total3}" />
+                                <apex:facet name="footer">
+                                    <span class="amountSum3"></span>
+                                </apex:facet>
+                                <apex:repeat value="{!fc.schedQtyRevList[2].revenueQtyList}" var="q0">
+                                        <apex:outputPanel rendered="{!q0.isQuantity}">
+                                            <apex:outputText value="{0, number}">
+                                                <apex:param value="{!q0.value}"/>
+                                            </apex:outputText><br/>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!!q0.isQuantity}">
+                                            <apex:outputText value="{0, number, currency}">
+                                                <apex:param value="{!q0.value}"/>
+                                            </apex:outputText><br/>
+                                        </apex:outputPanel>
+                                </apex:repeat>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">
+                                    <apex:outputText ><div style="background-color:{!IF(LEFT(colorList[3],5) == 'green', 'greenyellow', IF(LEFT(colorList[3],9) == 'submitted', 'yellow', 'none'))}">{!qtrNameList[3]}</div></apex:outputText>
+                                </apex:facet>   
+                                <apex:variable var="total4" value="{!fc.schedQtyRevList[3].revenueQtyList[1].value+total4}" />
+                                <apex:facet name="footer">
+                                    <span class="amountSum4"></span>
+                                </apex:facet>
+                                <apex:repeat value="{!fc.schedQtyRevList[3].revenueQtyList}" var="q0">
+                                        <apex:outputPanel rendered="{!q0.isQuantity}">
+                                            <apex:outputText value="{0, number}">
+                                                <apex:param value="{!q0.value}"/>
+                                            </apex:outputText><br/>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!!q0.isQuantity}">
+                                            <apex:outputText value="{0, number, currency}">
+                                                <apex:param value="{!q0.value}"/>
+                                            </apex:outputText><br/>
+                                        </apex:outputPanel>
+                                </apex:repeat>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">
+                                    <apex:outputText ><div style="background-color:{!IF(LEFT(colorList[4],5) == 'green', 'greenyellow', IF(LEFT(colorList[4],9) == 'submitted', 'yellow', 'none'))}">{!qtrNameList[4]}</div></apex:outputText>
+                                </apex:facet>   
+                                <apex:variable var="total5" value="{!fc.schedQtyRevList[4].revenueQtyList[1].value+total5}" />
+                                <apex:facet name="footer">
+                                    <span class="amountSum5"></span>
+                                </apex:facet>
+                                <apex:repeat value="{!fc.schedQtyRevList[4].revenueQtyList}" var="q0">
+                                        <apex:outputPanel rendered="{!q0.isQuantity}">
+                                            <apex:outputText value="{0, number}">
+                                                <apex:param value="{!q0.value}"/>
+                                            </apex:outputText><br/>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!!q0.isQuantity}">
+                                            <apex:outputText value="{0, number, currency}">
+                                                <apex:param value="{!q0.value}"/>
+                                            </apex:outputText><br/>
+                                        </apex:outputPanel>
+                                </apex:repeat>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">
+                                    <apex:outputText ><div style="background-color:{!IF(LEFT(colorList[5],5) == 'green', 'greenyellow', IF(LEFT(colorList[5],9) == 'submitted', 'yellow', 'none'))}">{!qtrNameList[5]}</div></apex:outputText>
+                                </apex:facet>   
+                                <apex:variable var="total6" value="{!fc.schedQtyRevList[5].revenueQtyList[1].value+total6}" />
+                                <apex:facet name="footer">
+                                    <span class="amountSum6"></span>
+                                </apex:facet>
+                                <apex:repeat value="{!fc.schedQtyRevList[5].revenueQtyList}" var="q0">
+                                        <apex:outputPanel rendered="{!q0.isQuantity}">
+                                            <apex:outputText value="{0, number}">
+                                                <apex:param value="{!q0.value}"/>
+                                            </apex:outputText><br/>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!!q0.isQuantity}">
+                                            <apex:outputText value="{0, number, currency}">
+                                                <apex:param value="{!q0.value}"/>
+                                            </apex:outputText><br/>
+                                        </apex:outputPanel>
+                                </apex:repeat>
+                            </apex:column>
+                            <apex:column headerValue="{!$Label.Core_FC_ForecastedQuantity}">
+                                <apex:variable var="sumRevenue" value="{!fc.totalQtyRev.revenueQtyList[1].value+sumRevenue}" />
+                                <apex:facet name="footer">
+                                    <span class="totalSum"></span>
+                                </apex:facet>
+                                <apex:repeat value="{!fc.totalQtyRev.revenueQtyList}" var="qr">
+                                        <apex:outputPanel rendered="{!qr.isQuantity}">
+                                            <apex:outputText value="{0, number}">
+                                                <apex:param value="{!qr.value}"/>
+                                            </apex:outputText><br/>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!!qr.isQuantity}">
+                                            <apex:outputText value="{0, number, currency}">
+                                                <apex:param value="{!qr.value}"/>
+                                            </apex:outputText><br/>
+                                        </apex:outputPanel>
+                                </apex:repeat>
+                            </apex:column>
+                            <apex:column headerValue="{!$Label.Core_FC_LastModifiedDate}" value="{!fc.fcObjList[5].Core_FC_Last_Modified_Date__c}"/>
+                        </apex:pageblockTable>
+                        <apex:pageblockTable value="{!forecastTable}" var="fc" style="width:101%;margin-left:-1em;" rendered="{!editAll}" columnsWidth="33%,9%,8%,7%,7%,7%,7%,7%,7%,4%,4%">
+                            <apex:column headerValue="Product Name">
+                                <apex:outputLink value="/{!fc.fcObjList[0].Core_Opp_Line_Item_RecordID__c}" target="_blank">
+                                    {!fc.fcObjList[0].Core_Opp_FC_Product__r.Name}
+                                </apex:outputLink>
+                            </apex:column>
+                            <apex:column headerValue="Vendor">
+                                <apex:outputField value="{!fc.fcObjList[0].Core_FC_Vendor__c}" rendered="{!IF(fc.fcObjList[0].Core_FC_Vendor__c != null, true, false)}" />
+                                <apex:outputField value="{!fc.fcObjList[0].Core_FC_BU_Short_Name__c}" rendered="{!IF(AND(fc.fcObjList[0].Core_FC_BU_Short_Name__c != null, fc.fcObjList[0].Core_FC_Vendor__c == null), true, false)}" />
+                            </apex:column>
+                            <apex:column headerValue="" >{!$Label.Core_FC_ForecastQuantity}</apex:column>                   
+                            <apex:column headerValue="{!qtrNameList[0]}">
+                                <apex:outputText rendered="{!IF(fc.fcObjList[0].Core_Opp_FC_Approval_Status__c != '', true, false)}" style="width:90%;">{!fc.viewQuantityList[0]}</apex:outputText>
+                                <apex:inputText rendered="{!IF(fc.fcObjList[0].Core_Opp_FC_Approval_Status__c == '', true, false)}" value="{!fc.viewQuantityList[0]}" style="width:90%;"/>                         
+                            </apex:column>
+                            <apex:column headerValue="{!qtrNameList[1]}">
+                                <apex:outputText rendered="{!IF(fc.fcObjList[1].Core_Opp_FC_Approval_Status__c != '', true, false)}" style="width:90%;">{!fc.viewQuantityList[1]}</apex:outputText>
+                                <apex:inputText rendered="{!IF(fc.fcObjList[1].Core_Opp_FC_Approval_Status__c == '', true, false)}" value="{!fc.viewQuantityList[1]}" style="width:90%;"/>                         
+                            </apex:column>
+                            <apex:column headerValue="{!qtrNameList[2]}">
+                                <apex:outputText rendered="{!IF(fc.fcObjList[2].Core_Opp_FC_Approval_Status__c != '', true, false)}" style="width:90%;">{!fc.viewQuantityList[2]}</apex:outputText>
+                                <apex:inputText rendered="{!IF(fc.fcObjList[2].Core_Opp_FC_Approval_Status__c == '', true, false)}" value="{!fc.viewQuantityList[2]}" style="width:90%;"/>                         
+                            </apex:column>
+                            <apex:column headerValue="{!qtrNameList[3]}">
+                                <apex:outputText rendered="{!IF(fc.fcObjList[3].Core_Opp_FC_Approval_Status__c != '', true, false)}"  style="width:90%;">{!fc.viewQuantityList[3]}</apex:outputText>
+                                <apex:inputText rendered="{!IF(fc.fcObjList[3].Core_Opp_FC_Approval_Status__c == '', true, false)}" value="{!fc.viewQuantityList[3]}" style="width:90%;"/>                         
+                            </apex:column>
+                            <apex:column headerValue="{!qtrNameList[4]}">
+                                <apex:outputText rendered="{!IF(fc.fcObjList[4].Core_Opp_FC_Approval_Status__c != '', true, false)}" style="width:90%;">{!fc.viewQuantityList[4]}</apex:outputText>
+                                <apex:inputText rendered="{!IF(fc.fcObjList[4].Core_Opp_FC_Approval_Status__c == '', true, false)}" value="{!fc.viewQuantityList[4]}" style="width:90%;"/>                         
+                            </apex:column>
+                            <apex:column headerValue="{!qtrNameList[5]}">
+                                <apex:outputText rendered="{!IF(fc.fcObjList[5].Core_Opp_FC_Approval_Status__c != '', true, false)}" style="width:90%;">{!fc.viewQuantityList[5]}</apex:outputText>
+                                <apex:inputText rendered="{!IF(fc.fcObjList[5].Core_Opp_FC_Approval_Status__c == '', true, false)}" value="{!fc.viewQuantityList[5]}" style="width:90%;"/>                         
+                            </apex:column>
+                            <apex:column headerValue="{!$Label.Core_FC_ForecastedQuantity}" value="{!fc.fcObjList[0].Core_FC_4Q_Shed_Quantity__c}"/>
+                            <apex:column headerValue="{!$Label.Core_FC_LastModifiedDate}" value="{!fc.fcObjList[5].Core_FC_Last_Modified_Date__c}"/>
+                        </apex:pageblockTable>                  
+                    </apex:outputPanel>                
+                </apex:pageblockSection>
+                <apex:pageblockButtons location="top">
+                    <apex:outputPanel id="addPanel" >
+                        <apex:actionStatus id="mySaveStatus2"> 
+                            <apex:facet name="stop">
+                            	<apex:commandbutton value="Add Quarter" id="addQtrButton" onclick="redirectForAddQuarter();" rendered="{!IF($Profile.Name == $Label.Core_BU_Acc_Collaborator_Profile,FALSE,NOT(editAll))}" status="mySaveStatus2" rerender="table1,savePanel,addPanel,pm2,errMsg" title="{!$Label.Core_FC_AddQuarterMsg}" alt="{!$Label.Core_FC_AddQuarterMsg}" oncomplete="setTotals();"/>
+                            </apex:facet>
                             <apex:facet name="start">
-                                <apex:outputPanel id="rc">
-                                    <apex:commandbutton value="Recalling..." disabled="true" id="recallBtn1" action="{!recallLastApprovedFC}" rendered="{!IF($Profile.Name == 'BU Account Collaborator',FALSE,NOT(editAll))}" rerender="fcPage,table1,savePanel,addPanel,errMsg" status="myRecallStatus" styleclass="{!if($User.UIThemeDisplayed =='Theme4d' && (isSubmitChk || isAllZero), 'slds-button slds-button_neutral', '')}"/>
+                                <apex:outputPanel id="pm2">
+                                <apex:commandbutton value="Adding..." disabled="true" id="addQtrButton1" action="{!addQuarterMethod}" rendered="{!NOT(editAll)}" status="mySaveStatus2" rerender="table1,savePanel,addPanel,errMsg" title="{!$Label.Core_FC_AddQuarterMsg}" alt="{!$Label.Core_FC_AddQuarterMsg}" oncomplete="setTotals();"/>
                                 </apex:outputPanel>
                             </apex:facet>
                         </apex:actionStatus>
-                    </apex:outputPanel>
-                </apex:outputPanel>  
-                <apex:outputPanel id="savePanel" >
-                    <apex:commandButton value="Save All" id="saveButton" action="{!saveAllMethod}" oncomplete="redirect()" rendered="{!editAll}"/>
-                    <apex:actionStatus id="mySaveStatus1"> 
-                        <apex:facet name="stop"> 
-                            <apex:commandButton value="Cancel" id="cancelButton" action="{!cancelMethod}" rendered="{!editAll}" status="mySaveStatus1" rerender="table1,savePanel,addPanel,errMsg,pm1,pb1"/>
-                        </apex:facet> 
-                        <apex:facet name="start">
-                            <apex:outputPanel id="pm1">
-                                <apex:commandButton value="Cancelling..." disabled="true" id="cancelButton1" action="{!cancelMethod}" rendered="{!editAll}" status="mySaveStatus1" rerender="table1,savePanel,addPanel,errMsg,pb1"/> 
+                        <!--<apex:commandbutton value="Add Quarter" id="addQtrButton" action="{!addQuarterMethod}" rendered="{!NOT(editAll)}" rerender="table1,savePanel,addPanel" title="{!$Label.Core_FC_AddQuarterMsg}" alt="{!$Label.Core_FC_AddQuarterMsg}" oncomplete="setTotals();"/>-->
+                        
+                        <apex:actionStatus id="mySaveStatus3"> 
+                            <apex:facet name="stop"> 
+                                <apex:commandButton value="{!$Label.Core_FC_EditAllScheduledQty}" id="editButton" action="{!editAllMethod}" oncomplete="redirectEditPage()" rendered="{!IF($Profile.Name == 'BU Account Collaborator',FALSE,NOT(editAll))}" status="mySaveStatus3" rerender="table1,savePanel,addPanel,pm3,errMsg"/>
+                            </apex:facet> 
+                            <apex:facet name="start">
+                                <apex:outputPanel id="pm3">
+                                <apex:commandButton value="Editing..." id="editButton1" disabled="true" action="{!editAllMethod}" rendered="{!NOT(editAll)}" status="mySaveStatus3" rerender="table1,savePanel,addPanel,errMsg"/>
+                                </apex:outputPanel>
+                            </apex:facet>
+                        </apex:actionStatus>
+                        <!--<apex:commandButton value="Edit All Schedule Quantity" id="editButton" action="{!editAllMethod}" rendered="{!NOT(editAll)}" rerender="table1,savePanel,addPanel"/>-->
+                        <apex:outputPanel id="render1" rendered="{!isOwner}">
+                            <apex:outputPanel id="out">
+                                <apex:actionstatus id="status1">
+                                    <apex:facet name="start">
+                                        <div class="waitingSearchDiv" id="el_loading" style="background-color: #DCD6D6; height: 100%;opacity:0.65;width:100%;">
+                                            <div class="waitingHolder" style="top: 74.2px; width: 91px;">
+                                                <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                                                <span class="waitingDescription">Please Wait...</span>
+                                            </div>
+                                        </div>
+                                    </apex:facet>
+                                </apex:actionstatus>
                             </apex:outputPanel>
-                        </apex:facet>
-                    </apex:actionStatus>
-                    <!--<apex:commandButton value="Cancel" id="cancelButton" action="{!cancelMethod}" rendered="{!editAll}" rerender="table1,savePanel,addPanel,errMsg"/>-->
-                    <apex:commandButton value="Clear all Schedules" action="{!clearQuantities}" rendered="{!editAll}" rerender="table1,savePanel,addPanel,errMsg"/>
-                    <apex:commandButton value="Remove All 6QPS" disabled="{!isDisabled}" action="{!removeQuantities}"  rerender="table1,savePanel,addPanel,errMsg,checkPanel" />
-                </apex:outputPanel>                 
-            </apex:pageblockButtons>
-        </apex:pageBlock>
-    </apex:form>
-    <script>
-    var formatter = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        minimumFractionDigits: 2,
-    });
-    function setTotals(){
-        document.getElementsByClassName('amountSum1')[0].innerHTML = formatter.format({!total1});
-        document.getElementsByClassName('amountSum2')[0].innerHTML = formatter.format({!total2});
-        document.getElementsByClassName('amountSum3')[0].innerHTML = formatter.format({!total3});
-        document.getElementsByClassName('amountSum4')[0].innerHTML = formatter.format({!total4});
-        document.getElementsByClassName('amountSum5')[0].innerHTML = formatter.format({!total5});
-        document.getElementsByClassName('amountSum6')[0].innerHTML = formatter.format({!total6});
-        document.getElementsByClassName('totalSum')[0].innerHTML = formatter.format({!sumRevenue});
-    }
-    setTotals();
-    
-    function redirectToOpp(){
-        if("{!isClassic}" == "true"){
-            window.open("{!'/'+opptyObj1.Id}","_parent");
-        }else{
-            window.open("{!'/one/one.app?#/sObject/'+opptyObj1.Id+'/view'}","_parent");
-        }
-    }
-    
-    function redirect(){
-        window.open("{!'/apex/Core_FC_Product_Schedule?Id='+Opportunity.Id+'&isNew=TRUE'}","_parent");
-    }
-    
-    function redirectEditPage(){
-        window.open("/apex/Core_FC_Product_Schedule?Id={!Opportunity.Id}&edit=TRUE&isNew=TRUE","_parent");
-    }
-    
-    function redirectForAddQuarter(){
-        if("{!isClassic}" == "true"){
-            window.open("/apex/Core_FC_Product_Schedule?Id={!Opportunity.Id}&isAddQuarter=true&isNew=TRUE","_parent");
-        }else{
-            window.open("/one/one.app#/alohaRedirect/apex/Core_FC_Product_Schedule?Id={!Opportunity.Id}&isAddQuarter=true&isNew=TRUE","_parent");
-        }
-    }
-    function alertMessage(){
-        debugger;
-        if({!isCountcheck} == False){
-            //redirectToOpp();
-        }
-    }
-    </script>
-    <apex:outputPanel id="checkPanel" >
+                            <apex:commandButton value="{!$Label.Core_FC_SubmitForecast}" id="submitBtn" action="{!submitForApproval}" oncomplete="redirect()" onclick="if(!confirm('{!qtrSubmitMsg[0]}')){return false;}" rendered="{!IF($Profile.Name == 'BU Account Collaborator',FALSE,NOT(editAll))}" status="status1" rerender="out,errMsg" styleclass="{!if($User.UIThemeDisplayed =='Theme4d' && (isSubmitChk || isAllZero), 'slds-button slds-button_neutral', '')}" disabled="{!isSubmitChk || isAllZero}" />
+                        </apex:outputPanel>
+                        
+                        <apex:outputPanel id="render2" rendered="{!isManager}">
+                            <apex:commandButton value="{!$Label.Core_FC_Approve}" id="apprvBtn" action="{!approvalMethod}" oncomplete="redirect()" rendered="{!IF($Profile.Name == 'BU Account Collaborator',FALSE,NOT(editAll))}" disabled="{!!isSubmitChk}" styleclass="{!if($User.UIThemeDisplayed =='Theme4d' && !isSubmitChk, 'slds-button slds-button_neutral', '')}"/>
+                            
+                            <apex:commandButton value="{!$Label.Core_FC_Reject}" id="rejectBtn" action="{!rejectionMethod}" oncomplete="redirect()" rendered="{!IF($Profile.Name == 'BU Account Collaborator',FALSE,NOT(editAll))}" disabled="{!!isSubmitChk}" styleclass="{!if($User.UIThemeDisplayed =='Theme4d' && !isSubmitChk, 'slds-button slds-button_neutral', '')}"/>
+                        </apex:outputPanel>
+                        <apex:outputPanel id="render3" rendered="{!(isManager) || (isAdmin)}">
+                            <apex:actionStatus id="myRecallStatus"> 
+                                <apex:facet name="stop"> 
+                                    <apex:commandbutton value="{!$Label.Core_Recall_Last_Approval}" id="recallBtn" action="{!recallLastApprovedFC}" oncomplete="redirect()" rendered="{!IF($Profile.Name == 'BU Account Collaborator',FALSE,NOT(editAll))}" rerender="fcPage,table1,savePanel,addPanel,rc,errMsg" status="myRecallStatus" styleclass="{!if($User.UIThemeDisplayed =='Theme4d' && (isSubmitChk || isAllZero), 'slds-button slds-button_neutral', '')}" disabled="{!!isRecall}"/>
+                                </apex:facet> 
+                                <apex:facet name="start">
+                                    <apex:outputPanel id="rc">
+                                        <apex:commandbutton value="Recalling..." disabled="true" id="recallBtn1" action="{!recallLastApprovedFC}" rendered="{!IF($Profile.Name == 'BU Account Collaborator',FALSE,NOT(editAll))}" rerender="fcPage,table1,savePanel,addPanel,errMsg" status="myRecallStatus" styleclass="{!if($User.UIThemeDisplayed =='Theme4d' && (isSubmitChk || isAllZero), 'slds-button slds-button_neutral', '')}"/>
+                                    </apex:outputPanel>
+                                </apex:facet>
+                            </apex:actionStatus>
+                        </apex:outputPanel>
+                    </apex:outputPanel>  
+                    <apex:outputPanel id="savePanel" >
+                        <apex:commandButton value="Save All" id="saveButton" action="{!saveAllMethod}" oncomplete="redirect()" rendered="{!editAll}"/>
+                        <apex:actionStatus id="mySaveStatus1"> 
+                            <apex:facet name="stop"> 
+                                <apex:commandButton value="Cancel" id="cancelButton" action="{!cancelMethod}" rendered="{!editAll}" status="mySaveStatus1" rerender="table1,savePanel,addPanel,errMsg,pm1,pb1"/>
+                            </apex:facet> 
+                            <apex:facet name="start">
+                                <apex:outputPanel id="pm1">
+                                <apex:commandButton value="Cancelling..." disabled="true" id="cancelButton1" action="{!cancelMethod}" rendered="{!editAll}" status="mySaveStatus1" rerender="table1,savePanel,addPanel,errMsg,pb1"/> 
+                                </apex:outputPanel>
+                            </apex:facet>
+                        </apex:actionStatus>
+                        <!--<apex:commandButton value="Cancel" id="cancelButton" action="{!cancelMethod}" rendered="{!editAll}" rerender="table1,savePanel,addPanel,errMsg"/>-->
+                        <apex:commandButton value="Clear all Schedules" action="{!clearQuantities}" rendered="{!editAll}" rerender="table1,savePanel,addPanel,errMsg"/>
+                    </apex:outputPanel>                
+                </apex:pageblockButtons>
+            </apex:pageBlock>
+        </apex:form>
         <script>
-        if({!isCountcheck} == true){
-            alert("{!$Label.Core_Alert_Message_6QPS_Page}");
-            //redirectToOpp();
-        }
-        else if ({!isCount} == true) {
-            redirectToOpp();
+            var formatter = new Intl.NumberFormat('en-US', {
+                                style: 'currency',
+                                currency: 'USD',
+                                minimumFractionDigits: 2,
+                            });
+            function setTotals(){
+                document.getElementsByClassName('amountSum1')[0].innerHTML = formatter.format({!total1});
+                document.getElementsByClassName('amountSum2')[0].innerHTML = formatter.format({!total2});
+                document.getElementsByClassName('amountSum3')[0].innerHTML = formatter.format({!total3});
+                document.getElementsByClassName('amountSum4')[0].innerHTML = formatter.format({!total4});
+                document.getElementsByClassName('amountSum5')[0].innerHTML = formatter.format({!total5});
+                document.getElementsByClassName('amountSum6')[0].innerHTML = formatter.format({!total6});
+                document.getElementsByClassName('totalSum')[0].innerHTML = formatter.format({!sumRevenue});
+            }
+            setTotals();
+    
+            function redirectToOpp(){
+                window.open("{!'/'+opptyObj1.Id}","_parent");
+            }
+    
+            function redirect(){
+                window.open("/apex/Core_FC_Product_Schedule?Id={!Opportunity.Id}&isNew=TRUE","_parent");
+            }
+    
+            function redirectEditPage(){
+                window.open("/apex/Core_FC_Product_Schedule?Id={!Opportunity.Id}&edit=TRUE&isNew=TRUE","_parent");
+            }
+    
+            function redirectForAddQuarter(){
+                if("{!isClassic}" == "true"){
+                    window.open("/apex/Core_FC_Product_Schedule?Id={!Opportunity.Id}&isAddQuarter=true&isNew=TRUE","_parent");
+                }else{
+                    window.open("/one/one.app#/alohaRedirect/apex/Core_FC_Product_Schedule?Id={!Opportunity.Id}&isAddQuarter=true","_parent");
+                }
             }
         </script>
-    </apex:outputPanel>
+        
 </apex:page>

@@ -1,6 +1,7 @@
 import { LightningElement, api, wire } from "lwc";
 import getPOPvalue from "@salesforce/apex/Core_MDF_POP_Details.getPOPvalues";
 import Core_MDF_ApplicationErrorMessage from "@salesforce/label/c.Core_MDF_POP_ErrorMsg";
+import logErrorImperative from '@salesforce/apex/Core_MDF_KPIDetailPage.logErrorImperative'; //Unhandeled Exception fix added by Shravani
 
 export default class Core_MDF_POP_Details extends LightningElement {
 
@@ -14,6 +15,7 @@ export default class Core_MDF_POP_Details extends LightningElement {
     @api recTypeName
     @api actSubType
 
+    
     displayHeader;
     result = '';
     haserror = false;
@@ -25,6 +27,7 @@ export default class Core_MDF_POP_Details extends LightningElement {
 
     connectedCallback() {
         /* eslint-disable no-console*/
+        console.log('recordIdinput'+this.recordIdinput+'objectApiNameinput'+this.objectApiNameinput);
         if (this.recordIdinput !== undefined) {
             this.recordId = this.recordIdinput;
         }
@@ -40,24 +43,39 @@ export default class Core_MDF_POP_Details extends LightningElement {
             actCat : this.actCat,
             actType : this.actType,
             recTypeName : this.recTypeName,
-            actSubType : this.actSubType
+            actSubType : this.actSubType,
         };
         console.log('actSubType==>'+this.actSubType+'='+this.actType);
-
+        console.log('@@@popDetailObj'+JSON.stringify(popDetailObj));
         getPOPvalue({ popDetail: JSON.stringify(popDetailObj) })
             .then(data => {
                 if (data) {
                     this.result = data.datamap;
                     this.displayHeader = data.displayHeader;
+                    console.log('@@@displayHeader-->'+this.displayHeader);
+                    console.log('@@@this.result-->'+this.result);
                     if (this.result != '') {
                         this.isValidPOPdata = true;
                     }
+                    console.log('@@@this.isValidPOPdata-->'+this.isValidPOPdata);
                 }
             }).catch(error=>{
                 if (error) {
                     this.haserror = true;
                     /* eslint-disable no-console*/
-                    console.log('Error in loading POP Requirements. Error : ',this.error);
+                    console.log('@@@Error in loading POP Requirements. Error : ',error);
+                    const errorPayload = {
+                        message: error?.body?.message,
+                        stackTrace: error?.body?.stackTrace,
+                        exceptionType: error?.body?.exceptionType,
+                        pageErrors: error?.body?.pageErrors,
+                        fieldErrors: error?.body?.fieldErrors
+                    };
+
+                    logErrorImperative({
+                        errorMessage: JSON.stringify(errorPayload),
+                        objectApiName: this.objectApiName
+                    });
                 }
             })
     }

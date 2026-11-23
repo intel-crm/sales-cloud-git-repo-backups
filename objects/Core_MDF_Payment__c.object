@@ -199,7 +199,7 @@
         <description>Formula field to populate Budget Type on Payment. It is used in List View.</description>
         <externalId>false</externalId>
         <formula>IF( RecordType.DeveloperName == &apos;Core_MDF_RMF_MDF&apos;, &apos;Retail MDF&apos;, IF(RecordType.DeveloperName == &apos;Core_MDF_RMF_MD&apos;, &apos;RSA MD&apos;, &apos;&apos;) )</formula>
-        <label>Budget Type</label>
+        <label>Budget Type-old</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -214,6 +214,17 @@
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Company_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Company</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_Conversion_Rate_Nbr__c</fullName>
@@ -327,6 +338,7 @@ $Label.Core_MDF_Intel_System_User
     </fields>
     <fields>
         <fullName>Core_MDF_Paid_Amt__c</fullName>
+        <description>This field is shown in Retail Payment records detail Page - Retail Mdf and RSA MD both.</description>
         <label>Paid Amount</label>
         <precision>18</precision>
         <required>false</required>
@@ -495,7 +507,6 @@ Name + &quot; - &quot; + CASE(Core_MDF_Program_Txt__c,
         <columns>Core_MDF_RMF_Proposed_Payment_Amt__c</columns>
         <columns>Core_MDF_RMF_Actual_Payment_Amt__c</columns>
         <columns>Core_MDF_Payment_Status_Txt__c</columns>
-        <columns>Core_MDF_AccountCompany_Txt__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -904,6 +915,29 @@ Name + &quot; - &quot; + CASE(Core_MDF_Program_Txt__c,
             <group>Core_MDF_CCP_Int_Retail_PRC</group>
         </sharedTo>
     </listViews>
+    <listViews>
+        <fullName>Retail_MD_MDF_Payments</fullName>
+        <columns>Core_MDF_Payment_No_Txt__c</columns>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Geo_Txt__c</columns>
+        <columns>Core_MDF_Payment_Status_Txt__c</columns>
+        <columns>Core_MDF_Program_Txt__c</columns>
+        <columns>Core_MDF_AccountCompany_Txt__c</columns>
+        <columns>Core_MDF_RMF_Proposed_Payment_Amt__c</columns>
+        <columns>Core_MDF_RMF_Actual_Payment_Amt__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Core_MDF_Payment_Made_Dt__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Core_MDF_Payment__c.Core_MDF_RMF_MD</value>
+        </filters>
+        <label>Retail MD-MDF Payments</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Retail_All</group>
+        </sharedTo>
+    </listViews>
     <nameField>
         <displayFormat>{000000}</displayFormat>
         <label>Payment Reference</label>
@@ -919,10 +953,6 @@ Name + &quot; - &quot; + CASE(Core_MDF_Program_Txt__c,
         <label>Client</label>
         <picklistValues>
             <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
-            <values>
-                <fullName>Business Client Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
             <values>
                 <fullName>CCF 1%2E0</fullName>
                 <default>false</default>
@@ -992,10 +1022,6 @@ Name + &quot; - &quot; + CASE(Core_MDF_Program_Txt__c,
         <picklistValues>
             <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
             <values>
-                <fullName>Business Client Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>CCF 1%2E0</fullName>
                 <default>false</default>
             </values>
@@ -1063,10 +1089,6 @@ Name + &quot; - &quot; + CASE(Core_MDF_Program_Txt__c,
         <label>Client MDF</label>
         <picklistValues>
             <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
-            <values>
-                <fullName>Business Client Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
             <values>
                 <fullName>CCF 1%2E0</fullName>
                 <default>false</default>
@@ -1160,10 +1182,6 @@ Name + &quot; - &quot; + CASE(Core_MDF_Program_Txt__c,
         <picklistValues>
             <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
             <values>
-                <fullName>Business Client Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>CCF 1%2E0</fullName>
                 <default>false</default>
             </values>
@@ -1232,10 +1250,6 @@ Name + &quot; - &quot; + CASE(Core_MDF_Program_Txt__c,
         <picklistValues>
             <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
             <values>
-                <fullName>Business Client Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>CCF 1%2E0</fullName>
                 <default>false</default>
             </values>
@@ -1297,6 +1311,69 @@ Name + &quot; - &quot; + CASE(Core_MDF_Program_Txt__c,
         </picklistValues>
     </recordTypes>
     <recordTypes>
+        <fullName>Core_MDF_Ecosystem_Extension_Fund</fullName>
+        <active>true</active>
+        <label>Ecosystem Extension Fund</label>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
+            <values>
+                <fullName>Client Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cloud</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Centric Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF%2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OEM CMP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSA MD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Data Center MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider CMP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Status_Txt__c</picklist>
+            <values>
+                <fullName>Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Payment</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
         <fullName>Core_MDF_Intel_Partner_Alliance</fullName>
         <active>true</active>
         <description>IPA Program Record Type</description>
@@ -1305,10 +1382,6 @@ Name + &quot; - &quot; + CASE(Core_MDF_Program_Txt__c,
             <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
             <values>
                 <fullName>Account Plan</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Business Client Acceleration - MDF</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1400,10 +1473,6 @@ Name + &quot; - &quot; + CASE(Core_MDF_Program_Txt__c,
         <picklistValues>
             <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
             <values>
-                <fullName>Business Client Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>CCF 1%2E0</fullName>
                 <default>false</default>
             </values>
@@ -1472,10 +1541,6 @@ Name + &quot; - &quot; + CASE(Core_MDF_Program_Txt__c,
         <picklistValues>
             <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
             <values>
-                <fullName>Business Client Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>CCF 1%2E0</fullName>
                 <default>false</default>
             </values>
@@ -1538,15 +1603,11 @@ Name + &quot; - &quot; + CASE(Core_MDF_Program_Txt__c,
     </recordTypes>
     <recordTypes>
         <fullName>Core_MDF_Retail_Marketing_Funds</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>It will be used for Retail Co-Marketing purposes</description>
         <label>Retail Marketing Funds</label>
         <picklistValues>
             <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
-            <values>
-                <fullName>Business Client Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
             <values>
                 <fullName>CCF 1%2E0</fullName>
                 <default>false</default>
@@ -1615,10 +1676,6 @@ Name + &quot; - &quot; + CASE(Core_MDF_Program_Txt__c,
         <label>Service Provider Co-Marketing Fund</label>
         <picklistValues>
             <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
-            <values>
-                <fullName>Business Client Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
             <values>
                 <fullName>CCF 1%2E0</fullName>
                 <default>false</default>
@@ -1766,7 +1823,7 @@ Core_MDF_RMF_Proposed_Payment_Amt__c)</errorConditionFormula>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_BlockPaidToPendingPayment</fullName>
-        <active>true</active>
+        <active>false</active>
         <errorConditionFormula>AND(
 ISCHANGED(Core_MDF_Payment_Status_Txt__c),
 TEXT(PRIORVALUE(Core_MDF_Payment_Status_Txt__c)) = &quot;Paid&quot;,
@@ -1778,8 +1835,8 @@ TEXT(Core_MDF_Payment_Status_Txt__c) = &quot;Pending Payment&quot;
         <fullName>Core_MDF_CheckActualPaymentAmtNotBlank</fullName>
         <active>true</active>
         <errorConditionFormula>AND(OR(INCLUDES(Core_MDF_Payment_Run_Id__r.Core_MDF_Budget_Type_nm__c,&quot;RSA MD&quot;),INCLUDES(Core_MDF_Payment_Run_Id__r.Core_MDF_Budget_Type_nm__c,&quot;MDF&quot;),INCLUDES(Core_MDF_Payment_Run_Id__r.Core_MDF_Budget_Type_nm__c,&quot;MDF+&quot;)),
-   ISBLANK(Core_MDF_RMF_Actual_Payment_Amt__c) ,
-    ISPICKVAL(Core_MDF_Payment_Status_Txt__c, &apos;Paid&apos;))</errorConditionFormula>
+ISBLANK(Core_MDF_RMF_Actual_Payment_Amt__c) ,
+ISPICKVAL(Core_MDF_Payment_Status_Txt__c, &apos;Paid&apos;))</errorConditionFormula>
         <errorMessage>Actual Payment Amount is mandatory.</errorMessage>
     </validationRules>
     <visibility>Public</visibility>

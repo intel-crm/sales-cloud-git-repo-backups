@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Configurable settings for Account Team Audit</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_Value__c</fullName>
+        <externalId>false</externalId>
+        <label>Value</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Account Team Audit Settings</label>
+    <listViews>
+        <fullName>Core_All_Fields</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Value__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Fields</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <visibility>Public</visibility>
+</CustomObject>

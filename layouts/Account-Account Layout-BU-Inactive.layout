@@ -3,7 +3,8 @@
     <customButtons>Core_Product_Recommendations</customButtons>
     <excludeButtons>ChangeOwnerOne</excludeButtons>
     <excludeButtons>ChangeRecordType</excludeButtons>
-    <excludeButtons>DataDotComAccountInsights</excludeButtons>
+    <excludeButtons>DataDotComClean</excludeButtons>
+    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>DisableCustomerPortalAccount</excludeButtons>
     <excludeButtons>DisablePartnerPortalAccount</excludeButtons>
@@ -39,6 +40,14 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_Account_Type__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Account_Legal_Name__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Prime_Account_Name__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -76,17 +85,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Industry</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_Sub_Industry__c</field>
-            </layoutItems>
-            <layoutItems>
-                <height>60</height>
-                <page>Core_Industry_Warning</page>
-                <showLabel>false</showLabel>
-                <showScrollbars>true</showScrollbars>
-                <width>100%</width>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -165,6 +163,97 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
+        <label>D&amp;B Information</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>AnnualRevenue</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Website</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>NumberOfEmployees</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_D_B_Industry_1__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_D_B_Industry_2__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_D_B_Industry_3__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_D_B_Industry_6__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_D_B_Industry_5__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_D_B_Industry_4__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Trade_Style_Name__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Year_Started__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Phone</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Fax</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Headquarter_Parent_DUNS__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Global_Ultimate_DUNS__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Global_Ultimate_Indicator__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Domestic_Ultimate_DUNS__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_DUNS_Number__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_global_500__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_global_1000__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
         <label>Compliance Information</label>
         <layoutColumns>
             <layoutItems>
@@ -196,7 +285,7 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_Business_Party_Id__c</field>
+                <field>Core_CIM_ID__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -205,6 +294,14 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_IPS_Active__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_B2B_AcctGrpCMF_Link__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_B2B_ERPM_Account_Number__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -348,21 +445,6 @@
             <sortOrder>3</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>SendEmail</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>9</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Core_Product_Recommendations</actionName>
-            <actionType>CustomButton</actionType>
-            <sortOrder>10</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>EnableAsPartner</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>11</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>NewTask</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>4</sortOrder>
@@ -371,6 +453,11 @@
             <actionName>Edit</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>5</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Core_Request_Ownership</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>6</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>LogACall</actionName>
@@ -382,9 +469,18 @@
             <actionType>QuickAction</actionType>
             <sortOrder>8</sortOrder>
         </platformActionListItems>
+        <platformActionListItems>
+            <actionName>SendEmail</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>9</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Core_Product_Recommendations</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>10</sortOrder>
+        </platformActionListItems>
     </platformActionList>
     <relatedLists>
-        <excludeButtons>New</excludeButtons>
         <fields>OPPORTUNITY.NAME</fields>
         <fields>OPPORTUNITY.STAGE_NAME</fields>
         <fields>CORE.USERS.FULL_NAME</fields>
@@ -396,6 +492,12 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>Core_Account_Meeting_Customer_Contact__c</fields>
+        <fields>Core_Account_Meeting_Date__c</fields>
+        <relatedList>Account_Meeting_Brief__c.Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
         <fields>Core_ERPM_Account_Number__c</fields>
         <fields>Core_ERPM_Engagement_Id__c</fields>
         <fields>Core_ERPM_Business_Attributes__c</fields>
@@ -404,15 +506,12 @@
         <relatedList>Core_Account_ERPM_Engagement__c.Core_Account_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <customButtons>Create_new_Contact</customButtons>
-        <excludeButtons>NewContact</excludeButtons>
         <fields>FULL_NAME</fields>
         <fields>Core_Primary_Contact__c</fields>
         <fields>CONTACT.TITLE</fields>
         <fields>CONTACT.EMAIL</fields>
         <fields>CONTACT.PHONE1</fields>
         <fields>Core_IPS_Active__c</fields>
-        <fields>Core_IPS_Intel_Support_Owner__c</fields>
         <relatedList>RelatedContactList</relatedList>
     </relatedLists>
     <relatedLists>
@@ -444,11 +543,6 @@
         <relatedList>RelatedAccountContactRoleList</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>AccountTeamMemberMultiAdd</excludeButtons>
-        <excludeButtons>AddAccTeamMember</excludeButtons>
-        <excludeButtons>AddAccountDefaultTeam</excludeButtons>
-        <excludeButtons>DeleteAllAccountTeamMembers</excludeButtons>
-        <excludeButtons>DisplayAccountTeamEffectiveAccess</excludeButtons>
         <fields>MEMBER_NAME</fields>
         <fields>TEAM_MEMBER_ROLE</fields>
         <relatedList>RelatedAccountSalesTeam</relatedList>
@@ -498,52 +592,42 @@
         <relatedList>Core_Liability_Points__c.Core_Account__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>Core_Opportunity__c</fields>
-        <fields>OpportunityStage__c</fields>
-        <fields>Opportunity_Owner_Full_Name__c</fields>
-        <fields>Opportunity_Technical_Owner__c</fields>
-        <fields>Decision_Date__c</fields>
-        <fields>Opportunity_Record_Type__c</fields>
         <fields>NAME</fields>
-        <relatedList>Core_Opportunity_Partner__c.Core_Partner__c</relatedList>
-        <sortField>Core_Opportunity__c</sortField>
-        <sortOrder>Asc</sortOrder>
-    </relatedLists>
-    <relatedLists>
-        <excludeButtons>NewContact</excludeButtons>
-        <fields>CONTACT.FULL_NAME</fields>
-        <fields>CONTACT.ACCOUNT_NAME</fields>
-        <fields>ACCCONRELATION.IS_DIRECT</fields>
-        <fields>CONTACT.EMAIL</fields>
-        <fields>CONTACT.TITLE</fields>
-        <fields>CONTACT.PHONE1</fields>
-        <fields>ACCCONRELATION.ROLES</fields>
-        <relatedList>RelatedAccountContactRelationList</relatedList>
+        <relatedList>Core_MDF_Account_Onboarding__c.Core_MDF_Account__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Core_Account_Status_Name__c</fields>
-        <fields>Status_Update__c</fields>
-        <fields>LAST_UPDATE</fields>
-        <relatedList>Account_Status__c.Account__c</relatedList>
+        <relatedList>Core_MDF_Account_Onboarding__c.Core_MDF_Works_For__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
-        <fields>Plan_Name__c</fields>
-        <fields>Plan_Status__c</fields>
-        <fields>CREATED_DATE</fields>
-        <fields>LAST_UPDATE</fields>
-        <relatedList>Account_Plan__c.Account__c</relatedList>
+        <relatedList>Core_MDF_Partnership_Score__c.Core_MDF_Account_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>New</excludeButtons>
+        <fields>ACCOUNT.NAME</fields>
+        <fields>Core_Prime_Account_Name__c</fields>
+        <fields>Core_Sales_Groups__c</fields>
+        <fields>Core_Account_Country__c</fields>
+        <fields>Core_Alt_Language_State_Province__c</fields>
+        <fields>Core_Geo__c</fields>
+        <fields>CORE.USERS.FIRST_NAME</fields>
+        <fields>CORE.USERS.LAST_NAME</fields>
+        <relatedList>Account.Core_Direct_Primary_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <fields>NAME</fields>
-        <fields>Core_Executive_Meeting_Brief_Name__c</fields>
-        <fields>RECORDTYPE</fields>
-        <fields>CREATED_DATE</fields>
-        <fields>LAST_UPDATE</fields>
-        <relatedList>Executive_Meeting_Brief__c.Account__c</relatedList>
+        <relatedList>Test_Recovery_Mapping__c.Core_MDF_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>ACCOUNT.NAME</fields>
+        <fields>Core_Prime_Account_Name__c</fields>
+        <fields>Core_Sales_Groups__c</fields>
+        <fields>Core_Account_Country__c</fields>
+        <fields>Core_Alt_Language_State_Province__c</fields>
+        <fields>Core_Geo__c</fields>
+        <fields>CORE.USERS.FIRST_NAME</fields>
+        <fields>CORE.USERS.LAST_NAME</fields>
+        <relatedList>Account.Core_MDF_Virtual_Corp_Account_Id__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <runAssignmentRulesDefault>true</runAssignmentRulesDefault>

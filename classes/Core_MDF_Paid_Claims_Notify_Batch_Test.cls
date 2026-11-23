@@ -201,12 +201,12 @@ public class Core_MDF_Paid_Claims_Notify_Batch_Test {
         
         //IUPGM creation
         Core_MDF_Int_Users_Partner_Geo_Mapping__c ccfIupgm = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
-        //ccfIupgm.Core_MDF_Account_id__c = ccpIntelAccount.Id;//14285 Suma
+        //ccfIupgm.Core_MDF_Account_id__c = ccpIntelAccount.Id;
         ccfIupgm.Core_MDF_Program_nm__c = 'Client CoMarketing Fund';
         ccfIupgm.Core_MDF_Region_Sub_Region_nm__c = 'EMEA';
         ccfIupgm.Core_MDF_User_id__c =testUser.Id;
         ccfIupgm.Core_MDF_Role_nm__c='Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr';
-        //ccfIupgm.Core_MDF_All_Accounts_cd__c = 'No';//14285 Suma
+        //ccfIupgm.Core_MDF_All_Accounts_cd__c = 'No';
         System.runAs(testUser){
             insert ccfIupgm;
         }
@@ -357,14 +357,14 @@ public class Core_MDF_Paid_Claims_Notify_Batch_Test {
         newPayment.Core_MDF_Payment_Status_Txt__c = 'Pending Payment';
         newPayment.Core_MDF_Payment_Run_Id__c = payRunRecordCcf.Id;
         newPayment.RecordTypeId = ccfRecordTypeId;
-        newPayment.Core_MDF_Payment_Made_Dt__c = system.today();
+        newPayment.Core_MDF_Payment_Made_Dt__c = system.today()-2;
         paymentList.add(newPayment);
         
         Core_MDF_Payment__c newPaymentRmf = new Core_MDF_Payment__c();
         newPaymentRmf.Core_MDF_Payment_Status_Txt__c = 'Pending Payment';
         newPaymentRmf.Core_MDF_Payment_Run_Id__c = payRunRecordRmf.Id;
         newPaymentRmf.RecordTypeId = ccfRecordTypeId;
-        newPaymentRmf.Core_MDF_Payment_Made_Dt__c = system.today();
+        newPaymentRmf.Core_MDF_Payment_Made_Dt__c = system.today()-2;
         paymentList.add(newPaymentRmf);
         
         system.runAs(testUser){
@@ -393,7 +393,8 @@ public class Core_MDF_Paid_Claims_Notify_Batch_Test {
         @isTest
         public static void testMethod1(){
         User usr = [select id,lastname from User where lastname='Admin_user' limit 1 ];
-
+        // Highlight: Unused Local Variable - 14285 // Suma
+        //List <PartnerFundClaim> claim = [select id,Amount,Core_MDF_Status__c,Core_MDF_Payment_Made_Dt__c,Core_MDF_Last_Recovery_Dt__c,Core_MDF_Program__c from PartnerFundClaim where title in ('Paid Claim CCF','Paid Claim RMF')];
         System.runAs(usr){
             Core_MDF_Paid_Claims_Notify_Batch picBatch = new Core_MDF_Paid_Claims_Notify_Batch();
             id batchid = Database.executeBatch(picBatch);

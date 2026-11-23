@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>CCP RMF EMEA Geo Lead Exptn Que</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Core_MDF_CCP_RMF_EMEA_GeoLead_Exptn_Grp</publicGroup>
+        </publicGroups>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Core_MDF_Exception__c</sobjectType>
+    </queueSobject>
+</Queue>

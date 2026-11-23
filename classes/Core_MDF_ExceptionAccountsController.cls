@@ -88,18 +88,41 @@ public with sharing class Core_MDF_ExceptionAccountsController {
         } catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);return NULL;}
         return exceptWrapper;
     }
+
     /***************************************************************************************************** 
     Method Name:        saveExceptionAccountMappingRecords
     @return  :          Boolean
-    @parameters:        recordId - Exception Record Id, accountIdList - List of Account Ids selected
+    @parameters:        params - SaveExceptionParams wrapper object
     Description:        Whenever the Accounts are associated with the Exception Record, add it to the Exception Account Mapping records.
     Added By:           Accenture - SB - 9th May 2019
     Modified By:        Date:       Changes: 
     ******************************************************************************************************/
     @AuraEnabled
-    public static ExceptionErrorsWrapper saveExceptionAccountMappingRecords(Id recordId, List<String> accountIdList, String exceptionStatus, Boolean addAccountCheck, String strSelectedAccountNames)
-    {
+    public static ExceptionErrorsWrapper saveExceptionAccountMappingRecords(SaveExceptionParams params) {
+        
+        // Fix: Null check on params object
+        if(params == null) {
+            ExceptionErrorsWrapper errorWrapper = new ExceptionErrorsWrapper();
+            errorWrapper.isSuccess = false;
+            errorWrapper.exceptionStatusError = Label.Core_MDF_Exception_Server_Error;
+            return errorWrapper;
+        }
+
+        // Extract parameters at the beginning
+        //ATHR Avoid Long Parameter List by Anjali - US- 15023
+        Id recordId = params.recordId;
+        List<String> accountIdList = params.accountIdList;
+        String exceptionStatus = params.exceptionStatus;
+        Boolean addAccountCheck = params.addAccountCheck;
+        String strSelectedAccountNames = params.strSelectedAccountNames;
+        //ATHR END
+   // @AuraEnabled
+   // public static ExceptionErrorsWrapper saveExceptionAccountMappingRecords(Id recordId, List<String> accountIdList, String exceptionStatus, Boolean addAccountCheck, String strSelectedAccountNames)
+   // {
         ExceptionErrorsWrapper exceptErrorWrapper = new ExceptionErrorsWrapper();
+        // Highlight: Unused Local Variable - 14285
+        // String selAccts = '';
+        
         //Boolean isSuccess = false;
         List<Core_MDF_Exception_Account_Mapping__c> eamList = new List<Core_MDF_Exception_Account_Mapping__c>();
         try {
@@ -160,6 +183,8 @@ public with sharing class Core_MDF_ExceptionAccountsController {
                     eamList.add(eamRecord);
                 }
                 //Insert the New Exception Account Mapping Records
+                // Highlight: Unused Local Variable - 14285
+                // List<Boolean> checkIfExceptionAccountMappingInsertedlist= new List<Boolean>();
                 if(eamList.size() > 0){
                     Database.insert(eamList);
                     //Update the Company Name field for the Exception Record
@@ -212,6 +237,23 @@ public with sharing class Core_MDF_ExceptionAccountsController {
         public String exceptionStatusError = '';
         @AuraEnabled
         public Boolean isSuccess = false;
+    }
+
+    /***************************************************************************************************** 
+    Method Name:        SaveExceptionParams
+    @return  :          N/A
+    @parameters:        N/A
+    Description:        Wrapper class to avoid long parameter list for saveExceptionAccountMappingRecords method.
+                        ATHR Avoid Long Parameter List by Anjali - US- 15023
+    Added By:           Anjali
+    Modified By:        Date:       Changes: 
+    ******************************************************************************************************/
+    public class SaveExceptionParams {
+        @AuraEnabled public Id recordId;
+        @AuraEnabled public List<String> accountIdList;
+        @AuraEnabled public String exceptionStatus;
+        @AuraEnabled public Boolean addAccountCheck;
+        @AuraEnabled public String strSelectedAccountNames;
     }
 
     /****************************************************************************************************************************************

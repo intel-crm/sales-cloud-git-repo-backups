@@ -53,6 +53,8 @@ public virtual without sharing class TriggerHandler {
         this.setTriggerContext();
     }
 
+
+
     /***************************************
     * public instance methods
     ***************************************/
@@ -268,6 +270,8 @@ public virtual without sharing class TriggerHandler {
     protected virtual void afterDelete(){}
     @TestVisible
     protected virtual void afterUndelete(){}
+    @TestVisible
+    protected virtual void testingbeforeUpdate(){}
     
     /***************************************
     * inner classes

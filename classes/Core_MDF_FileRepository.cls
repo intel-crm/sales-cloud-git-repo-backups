@@ -40,7 +40,7 @@ public without sharing class Core_MDF_FileRepository {
         List<MDFDocumentWrapper> results = new List<MDFDocumentWrapper>();
         Boolean isPartnerUser = (UserInfo.getUserType() == 'PowerPartner') ? true : false;
         
-        for (Core_MDF_Documents__c cdl : [ SELECT Id, Core_MDF_Document_Id__c, Core_MDF_Document_Title_txt__c, Core_MDF_File_Extension_txt__c, Core_MDF_ContentVersion_Id__c, Core_MDF_SFT_File_Available_ind__c, Core_MDF_Int_Document_Name_txt__c, Core_MDF_Ext_Document_Name_txt__c, Core_MDF_SFT_File_Download_URL__c,
+        for (Core_MDF_Documents__c cdl : [ SELECT Id, Core_MDF_Document_Id__c, Core_MDF_Document_Title_txt__c, Core_MDF_File_Extension_txt__c, Core_MDF_ContentVersion_Id__c, Core_MDF_SFT_File_Available_ind__c, Core_MDF_SFT_File_Download_URL__c, //HP:ATHR Fix
                                           Core_MDF_External_SF_File_Download_URL__c, CreatedDate, Core_MDF_Internal_SF_File_Download_URL__c
                                           FROM Core_MDF_Documents__c
                                           WHERE Core_MDF_Activity_id__c = :recordId AND Core_MDF_Is_Deleted_ind__c = false ORDER BY CreatedDate DESC
@@ -138,7 +138,7 @@ public without sharing class Core_MDF_FileRepository {
             FROM Core_MDF_Documents__c
             WHERE Core_MDF_Document_Id__c = :contentDocumentId LIMIT 1
         ];
-        ContentDocument contentDocument = [
+        List<ContentDocument> contentDocument = [
             SELECT Id
             FROM ContentDocument
             WHERE Id = :contentDocumentId
@@ -152,7 +152,7 @@ public without sharing class Core_MDF_FileRepository {
             } catch(Exception ex){ Core_MDF_CCP_UtilityClass.logError(ex); throw new AuraHandledException(ex.getMessage()); }
         }
         // delete content document
-        if(contentDocument != null){
+        if(!contentDocument.isEmpty()){
             try{
                 delete contentDocument;
             } catch(Exception ex){ Core_MDF_CCP_UtilityClass.logError(ex); throw new AuraHandledException(ex.getMessage()); }

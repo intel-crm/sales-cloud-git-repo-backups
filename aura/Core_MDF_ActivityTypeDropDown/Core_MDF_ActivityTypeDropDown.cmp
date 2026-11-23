@@ -1,0 +1,63 @@
+<aura:component controller="Core_MDF_ActivityTypePicklist" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="selectedValue" type="String"/>
+    <aura:attribute name="selectedVal" type="String"/>
+    <aura:attribute name="activityCat" type="String[]" default="None,Online,Media,Sales Readiness"/>
+    <aura:attribute name="activityTypes" type="String[]" default="None,Customer.com,Tv Ad - in store"/>
+    <aura:attribute name="wrapperInst" type="Object"/> 
+    <aura:attribute name="picklistValMap" type="Map"/>
+    <aura:attribute name="listOfVal" type="List"/>  
+    <aura:attribute name="mapKeys" type="List"/>
+    <div class="slds-p-around_medium">
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem padding="around-small" size="3" flexibility="grow">
+                <div class="slds-grid slds-gutters slds-wrap" mediumDeviceSize="3" largeDeviceSize="3">
+                    <div class="slds-wrap slds-size_1-of-2" size="3" flexibility="grow" mediumDeviceSize="3" largeDeviceSize="3">
+                        <lightning:select name="selectActCat" aura:id="activityCatPicklist" label="Activity Category" value="{!v.selectedVal}">
+                            <aura:iteration items="{!v.activityCat}" var="item">
+                                <option text="{!item}"></option>
+                            </aura:iteration>
+                        </lightning:select>
+                        <br/>
+                        <lightning:select name="select" aura:id="activityTypePicklist" label="Activity Type" value="{!v.selectedValue}" onchange="{!c.changeSelection}">
+                            <aura:iteration items="{!v.activityTypes}" var="item">
+                                <option text="{!item}"></option>
+                            </aura:iteration>
+                        </lightning:select>
+                        <br/>
+                    </div>
+                    <div class="slds-grid slds-gutters">
+                        <lightning:layout multipleRows="true">
+                            <aura:if isTrue="{!v.selectedValue != 'None'}">
+                                <aura:iteration items="{!v.wrapperInst}" var="item" indexVar="index">
+                                    <div class="slds-col slds-wrap slds-size_1-of-2" size="3" flexibility="grow" mediumDeviceSize="3" largeDeviceSize="3">
+                                        <aura:if isTrue="{!item.fieldDatatype != 'Picklist'}">
+                                            <span>
+                                                <lightning:input type="{!item.fieldDatatype}" label="{!item.fieldlabel}" required="{!item.isFieldReqd}" placeholder="{!item.defaultValue}" min="0"/>
+                                                <br/>
+                                            </span>
+                                            <aura:set attribute="else">
+                                                <span>
+                                                    <lightning:select name="select" label="{!item.fieldlabel}" value = "test" required="{!item.isFieldReqd}">
+                                                        <!--aura:iteration items="{!v.mapKeys}" var="itemk"-->
+                                                        <!--aura:if  isTrue="{!item.fieldlabel == itemk}"-->
+                                                        <option value="" text="Select" ></option>
+                                                        <aura:iteration items="{!item.picklistValues}" var="item">
+                                                            <option value="{!item}" text="{!item}" ></option>
+                                                        </aura:iteration>
+                                                        <!--/aura:if-->
+                                                        <!--/aura:iteration-->
+                                                    </lightning:select>
+                                                    <br/>
+                                                </span>
+                                            </aura:set>
+                                        </aura:if>
+                                    </div>
+                                </aura:iteration>
+                            </aura:if>
+                        </lightning:layout>
+                    </div>
+                </div>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+</aura:component>

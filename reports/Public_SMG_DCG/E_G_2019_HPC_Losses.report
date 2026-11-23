@@ -28,9 +28,6 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>OpportunityLineItem.Core_Status__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Opportunity_Count__c</field>
     </columns>
     <columns>
@@ -79,7 +76,7 @@
         <field>Product2.Core_Code_Name__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Product_Segment__c</field>
@@ -172,7 +169,7 @@
         <field>Opportunity.Core_Sales_Groups__c</field>
     </columns>
     <filter>
-        <booleanFilter>(((1 AND 2 AND 3 AND 4 AND 5) or (1 and 2 and 3 and 4 and (9 or 10)) or (1 and 2 and 4 and 6 and 7 and (5 or 9)) or (1 and 2 and 4 and 8 and (5 or 9 or 10))))</booleanFilter>
+        <booleanFilter>((1 AND 2 AND 3 AND 4 AND 5) or (1 and 2 and 3 and 4 and 10) or (1 and 2 and 4 and 6 and 7 and (5 or 10)) or (1 and 2 and 4 and 8 and (5 or 10)) and 9)</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -195,7 +192,7 @@
             <value>consulting</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
@@ -230,18 +227,18 @@
             <value>cray,penguin,sugon,inspur</value>
         </criteriaItems>
         <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>facebook</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Solution_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
             <value>HPC - Private Cloud,HPC - Data Analytics,HPC in Private Cloud,HPC in Enterprise Data Analytics (HPDA),DCG Enterprise High Perf Compute Deal # (On-Prem),DCG Enterprise High Perf Compute Deal # Workloads (Off-Prem)</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Product_Application__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Server - HPC,Storage - HPC</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -251,14 +248,19 @@
         <field>OpportunityLineItem.Core_KPI_Date__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Loss_Cancel_Details__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>ACCOUNT_NAME</field>
+        <field>OpportunityLineItem.Core_Status__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Loss_Cancel_Details__c</field>
+        <field>ACCOUNT_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>E&amp;G 2019 HPC Losses</name>

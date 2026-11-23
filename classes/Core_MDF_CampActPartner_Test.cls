@@ -49,7 +49,7 @@ public without sharing class Core_MDF_CampActPartner_Test{
         
         Profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
         Profile ccpCoreProfile = [SELECT Id FROM Profile WHERE Name = 'CCP - Core Access'];
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
        // UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 50000];
         // Creating User with utility class 
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
@@ -122,7 +122,7 @@ public without sharing class Core_MDF_CampActPartner_Test{
             pmbList.add(pbmEef);
             
             Database.insert(pmbList);
-           // Highlight: Unused Local Variable 
+           // Highlight: Unused Local Variable - Indira
            // PartnerFundAllocation eefPFA = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test EEF PFA', pbmEef, eefActivatingVirtualCorp, 30000, true);
             Group extGrp = new Group();
             extGrp.name = 'Core_MDF_EEF_EXT';
@@ -249,14 +249,14 @@ public without sharing class Core_MDF_CampActPartner_Test{
             
             String cronExp = '0 0 * ? * * *';
             Test.startTest();
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
            // String shareCamp = System.schedule('Test Campaign Share', cronExp, new Core_MDF_BatchSharecmpSchedule());
             List<Id> grpIdList= new List<Id>();
             
             for(CampaignShare shareList : [SELECT Id, CampaignId, UserOrGroupId FROM CampaignShare WHERE CampaignId =: cmp.Id LIMIT 50000 ]){
                 grpIdList.add(string.valueof(shareList.UserOrGroupId));
             }
-            // Highlight: Unused Local Variable
+            // Highlight: Unused Local Variable - Indira
            // String json = '{"inputStrquery":"SELECT Id, Name, Type, RecordTypeId, Status, StartDate, EndDate,IsActive, OwnerId, Core_MDF_External_Visibility_Date__c,Core_MDF_Program__c, Core_MDF_Account__c,Core_MDF_Channel_Program__c FROM Campaign WHERE Core_MDF_External_Visibility_Date__c >= LAST_N_DAYS:5 AND Core_MDF_External_Visibility_Date__c <= TODAY AND RecordType.DeveloperName IN: recTypeDeveloperName"}';
             
             //Core_MDF_BatchShareCampVisibility.generateInstance(json,'Core_MDF_BatchShareCampVisibility (String inputStrquery)');
@@ -292,7 +292,7 @@ public without sharing class Core_MDF_CampActPartner_Test{
             inp1.mode = 'Share';
             inpList.add(inp1);
             Core_MDF_CampActPartnerServiceHandler.shareUnshareCamptoActPartner(inpList);
-            // Unit Test Method should include System.Assert 
+            // Unit Test Method should include System.Assert - Indira
             System.assertNotEquals(null, campToActPartner.Id, 'Campaign to Act Partner should exist');
         }
     }
@@ -305,7 +305,7 @@ public without sharing class Core_MDF_CampActPartner_Test{
             Campaign cmp = [SELECT Id, Name, Core_MDF_Region_cd__c FROM Campaign WHERE Name ='Campaign EEF Campaign' LIMIT 1];
             //sucess scenario
             Core_MDF_CampaignCreatePage.fetchCampToActPartnerData(cmp.Id);
-            // Unit Test Method should include System.Assert
+            // Unit Test Method should include System.Assert - Indira
             System.assertEquals('Campaign EEF Campaign', cmp.Name, 'Campaign name should match');
         }
         
@@ -317,7 +317,7 @@ public without sharing class Core_MDF_CampActPartner_Test{
         System.runAs(usr1){
             Account acc = [Select Id,Core_MDF_Partner_Type_nm__c from Account where Core_MDF_Partner_Type_nm__c = 'Primary Partner'];
             Core_MDF_CampaignCreatePage.getSIOrISVAccounts(acc.Id);
-            // Unit Test Method should include System.Assert 
+            // Unit Test Method should include System.Assert - Indira
             System.assertEquals('Primary Partner', acc.Core_MDF_Partner_Type_nm__c, 'Account partner type should be Primary Partner');
         }
     }
@@ -330,7 +330,7 @@ public without sharing class Core_MDF_CampActPartner_Test{
             System.runAs(usr1){
                 Core_MDF_CampaignCreatePage.getPartnerAccList(acc[0].Id);
                 Core_MDF_CampaignCreatePage.getPartnerAccList(accIds);
-             // Unit Test Method should include System.Assert
+             // Unit Test Method should include System.Assert - Indira
             System.assert(acc.size() >= 2, 'Should have at least 2 accounts');
             }
     }
@@ -341,7 +341,7 @@ public without sharing class Core_MDF_CampActPartner_Test{
         System.runAs(usr1){
             Campaign cmp = [SELECT Id, Name, Core_MDF_Region_cd__c,Core_MDF_Partner_Mapping_Txt__c FROM Campaign WHERE Name ='Campaign EEF Campaign' LIMIT 1];
             Core_MDF_CampaignCreatePage.saveCampToISVMapping(cmp);
-            // Unit Test Method should include System.Assert 
+            // Unit Test Method should include System.Assert - Indira
          System.assertNotEquals(null, cmp.Id, 'Campaign should exist');
         }
     }

@@ -10,6 +10,16 @@
         <field>ChannelProgram.Core_MDF_Technical_Program_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Core_MDF_Recovery_Request__c.Core_MDF_Ready_to_Recover_Ind__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Bank_Legal_Entity_Code_cd__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Core_MDF_Recovery_Run</label>
     <license>Salesforce</license>

@@ -9,6 +9,28 @@ public with sharing class Core_MDF_PFR_RecordTypeSelector {
     public static Map<String, Id> newrecordtypemap;
     public static Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
     public static List<String> restrictedRecTypesList = Label.Core_MDF_LegacyRestrictedRecordTypes.split(',');
+
+    // ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+    // Static cache added at class level — shared across all methods
+    private static Map<String, Schema.DescribeSObjectResult> describeCache = new Map<String, Schema.DescribeSObjectResult>();
+
+    // Private helper replaces getGlobalDescribe() in all methods
+    private static Schema.DescribeSObjectResult getSObjectDescribe(String objectName) {
+        if (String.isBlank(objectName)) { return null; }
+        String key = objectName.toLowerCase();
+        if (!describeCache.containsKey(key)) {
+            try {
+                Schema.DescribeSObjectResult[] results = Schema.describeSObjects(new List<String>{ objectName });
+                if (results != null && !results.isEmpty()) {
+                    describeCache.put(key, results[0]);
+                }
+            } catch (Exception e) {
+                Core_MDF_CCP_UtilityClass.logError(e);
+            }
+        }
+        return describeCache.containsKey(key) ? describeCache.get(key) : null;
+    }
+
 /***************************************************************************************************** 
 Method Name :   fetchRecordTypeValues Map(RecordTypeDeveloperName , RecordTypeLabelName)
 Added By   :    Accenture - SS 
@@ -16,11 +38,16 @@ Modified By:                      Date:10/25/2018                     Changes:No
 ******************************************************************************************************/
     @AuraEnabled
     public static Map<String, String> fetchRecordTypeValues(String objectName){
-        List<Schema.RecordTypeInfo> recordtypes = Schema.getGlobalDescribe().get(objectName).getDescribe().getRecordTypeInfos();
+        // ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+        Schema.DescribeSObjectResult describeResult = getSObjectDescribe(objectName);
         newrecordtypemapdevname = new Map<String, String>();
+        if(describeResult == null) { return newrecordtypemapdevname; }
+        List<Schema.RecordTypeInfo> recordtypes = describeResult.getRecordTypeInfos();
+        if(recordtypes == null || recordtypes.isEmpty()) { return newrecordtypemapdevname; }
         for(RecordTypeInfo rt : recordtypes){
             if( rt.isMaster() == false && rt.getName().trim() != '' &&  rt.isAvailable() && rt.isActive() && !restrictedRecTypesList.contains(rt.getDeveloperName())){  //&& rt.getDeveloperName() != label.Core_MDF_Intel_MDF_Account_Based && rt.getDeveloperName() != label.Core_MDF_Intel_MDF_Proposal_Based //rt.getName() != label.Core_MDF_Master 
                   newrecordtypemapdevname.put(rt.getDeveloperName(), rt.getName());
+                  
             }    
         }
         return newrecordtypemapdevname;
@@ -32,11 +59,16 @@ Modified By:                      Date:10/25/2018                     Changes:No
 ******************************************************************************************************/
     @AuraEnabled
     public static Map<String, Id> fetchRecordTypeValues_string_id(String objectName){
-        List<Schema.RecordTypeInfo> recordtypes = Schema.getGlobalDescribe().get(objectName).getDescribe().getRecordTypeInfos();
+        // ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+        Schema.DescribeSObjectResult describeResult = getSObjectDescribe(objectName);
         newrecordtypemap = new Map<String, Id>();
+        if(describeResult == null) { return newrecordtypemap; }
+        List<Schema.RecordTypeInfo> recordtypes = describeResult.getRecordTypeInfos();
+        if(recordtypes == null || recordtypes.isEmpty()) { return newrecordtypemap; }
         for(RecordTypeInfo rt : recordtypes){
             if( rt.isMaster() == false && rt.getName().trim() != '' &&  rt.isAvailable() && rt.isActive() && !restrictedRecTypesList.contains(rt.getDeveloperName())){ //&& rt.getDeveloperName() != label.Core_MDF_Intel_MDF_Account_Based && rt.getDeveloperName() != label.Core_MDF_Intel_MDF_Proposal_Based //rt.getName() != label.Core_MDF_Master
                   newrecordtypemap.put( rt.getDeveloperName() , rt.getRecordTypeId());
+                 
             }    
         }
         return newrecordtypemap;
@@ -86,10 +118,12 @@ Modified By:                      Date:                    Changes:None
 *******************************************************************************************************/
     @AuraEnabled
     public static Boolean checkSObjectCreatePermission(String objectName){
-        Map<String,Schema.SObjectType> gd = Schema.getGlobalDescribe();
-        Schema.SObjectType sobjType = gd.get(objectName);
-		Schema.DescribeSObjectResult obj = sobjType.getDescribe();
+        
+        // ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+        Schema.DescribeSObjectResult obj = getSObjectDescribe(objectName);
+        if(obj == null) { return false; }
         Boolean checkCreate = obj.createable;
+        
        	return checkCreate;
     }
 /***************************************************************************************************** 
@@ -101,8 +135,9 @@ Modified By:                      Date:                    Changes:None
     @AuraEnabled
     public static List<Core_MDF_RecordType_FieldSet_Mapping__mdt> getRtFieldSetMappings(String objectName, String pickListObj, String executionContext){
         String objectNameStr =  String.escapeSingleQuotes(objectName);
-        
-	//Metadata disposition - changed text field references to picklist fields
+        //return [SELECT Core_MDF_RecordType_Developer_Name__c, Core_MDF_FieldSet_API_Name__c FROM Core_MDF_RecordType_FieldSet_Mapping__mdt WHERE Core_MDF_Object_API_Name__c =:pickListObj and Core_MDF_Current_Object__c =:objectNameStr and Core_MDF_Execution_Context_nm__c =:executionContext];
+
+        //Metadata disposition - RP
         return [SELECT Core_MDF_Record_Type_DeveloperName_nm__c, Core_MDF_Field_Set_API_Name_nm__c FROM Core_MDF_RecordType_FieldSet_Mapping__mdt WHERE Core_MDF_Object_API_Name_nm__c =:pickListObj and Core_MDF_Current_Object_nm__c =:objectNameStr and Core_MDF_Execution_Context_nm__c =:executionContext];
     }
     
@@ -114,7 +149,9 @@ Modified By:                      Date:                    Changes:None
     @AuraEnabled
     public static List<Core_MDF_RecordType_FieldSet_Mapping__mdt> getRtBudTypeFieldSetMappings(String objectName, string budType){
         
-       	//Metadata disposition - changed text field references to picklist fields
+       	//return [SELECT Core_MDF_RecordType_Developer_Name__c, Core_MDF_FieldSet_API_Name__c,Core_MDF_Budget_Type_nm__c FROM Core_MDF_RecordType_FieldSet_Mapping__mdt WHERE Core_MDF_Object_API_Name__c =:objectName and Core_MDF_Budget_Type_nm__c =: budType];
+
+        //Metadata disposition - RP
         return [SELECT Core_MDF_Record_Type_DeveloperName_nm__c, Core_MDF_Field_Set_API_Name_nm__c,Core_MDF_Budget_Type_nm__c FROM Core_MDF_RecordType_FieldSet_Mapping__mdt WHERE Core_MDF_Object_API_Name_nm__c =:objectName and Core_MDF_Budget_Type_nm__c =: budType];
     }    
 /***************************************************************************************************** 
@@ -140,7 +177,8 @@ Modified By:                      Date:10/25/2018                     Changes:No
         try{
        
         Map<String,boolean> userPermissions = new Map<String,boolean>();
-
+        // Highlight: Unused Local Variable - 14285
+        // List<PermissionSetAssignment> userPerSets = new List<PermissionSetAssignment>();
         for(String perKey : permissionsets.keySet())
         {
             for(String customPermissionStr : permissionsets.get(perKey))
@@ -161,7 +199,6 @@ Modified By:                      Date:10/25/2018                     Changes:No
         usrprmissionWrapper.userPermissions = userPermissions;
         
         }catch(Exception ex){
-	    //Avoid empty catch blocks
             Core_MDF_CCP_UtilityClass.logError(ex);
         }
          return usrprmissionWrapper; 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CCP Healthcheck Report</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CCP Healthcheck Reports</value>
+    </caseValues>
+    <fields>
+        <label><!-- CCP Apis Healthheck --></label>
+        <name>CCP_Apis_Healthheck__c</name>
+        <relationshipLabel><!-- CCP Healthcheck Reports --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>failed</masterLabel>
+            <translation><!-- failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>successful</masterLabel>
+            <translation><!-- successful --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- log --></label>
+        <name>log__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

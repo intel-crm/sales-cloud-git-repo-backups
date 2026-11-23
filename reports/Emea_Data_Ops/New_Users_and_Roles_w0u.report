@@ -13,13 +13,7 @@
         <field>LAST_NAME</field>
     </columns>
     <columns>
-        <field>ADDRESS_COUNTRY_CODE</field>
-    </columns>
-    <columns>
         <field>PROFILE</field>
-    </columns>
-    <columns>
-        <field>User.Core_Manager__c</field>
     </columns>
     <columns>
         <field>USERNAME</field>
@@ -33,8 +27,24 @@
     <columns>
         <field>LAST_LOGIN</field>
     </columns>
-    <description>Profile contains :Sales, marketing</description>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
     <filter>
+        <criteriaItems>
+            <column>CREATED_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>1/1/2019 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PROFILE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Sales,SMG/GMC,marketing,A&amp;E</value>
+        </criteriaItems>
         <criteriaItems>
             <column>ROLE</column>
             <columnToColumn>false</columnToColumn>
@@ -43,40 +53,21 @@
             <value></value>
         </criteriaItems>
         <criteriaItems>
-            <column>PROFILE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Sales,marketing</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PROFILE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>IPA</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>User.Core_User_Geo__c</column>
+            <column>ACTIVE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>EMEA</value>
+            <value>1</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Quarter</dateGranularity>
-        <field>CREATED_DATE</field>
-        <sortOrder>Desc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>User.Core_User_Geo__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>New Users without Role - Sales (EMEA)</name>
+    <name>New Users without Role</name>
     <params>
         <name>active</name>
         <value>active</value>
@@ -89,8 +80,12 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>CREATED_DATE</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
+        <endDate>2024-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2019-01-01</startDate>
     </timeFrameFilter>
 </Report>

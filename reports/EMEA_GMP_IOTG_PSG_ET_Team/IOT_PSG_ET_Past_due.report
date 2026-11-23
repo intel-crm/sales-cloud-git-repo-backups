@@ -9,7 +9,7 @@
             <axisBinding>y</axisBinding>
             <column>OpportunityLineItem.Core_KPI_Total_Price__c</column>
         </chartSummaries>
-        <chartType>HorizontalBar</chartType>
+        <chartType>VerticalColumn</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
         <groupingColumn>FULL_NAME</groupingColumn>
@@ -32,29 +32,29 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Technical_Owner__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Inactive__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Past_Due__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Low_Velocity__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Pipeline_Heath__c</field>
-    </columns>
-    <columns>
         <field>ADDRESS1_COUNTRY_CODE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <columns>
         <field>STAGE_NAME</field>
     </columns>
     <columns>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>UNIT_PRICE</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_PRICE</field>
+    </columns>
+    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
+    </columns>
+    <columns>
+        <field>QUANTITY</field>
     </columns>
     <columns>
         <field>CREATED_DATE</field>
@@ -66,7 +66,7 @@
         <field>PRODUCT_NAME</field>
     </columns>
     <filter>
-        <booleanFilter>(1 OR 2) AND 3 AND 4 AND (5 OR 6 OR 7 OR 8)</booleanFilter>
+        <booleanFilter>(((1 OR 2) AND 3) AND 4) AND 5</booleanFilter>
         <criteriaItems>
             <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>
@@ -86,7 +86,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Not Submitted,Rejected,Recalled</value>
+            <value>Not Submitted,Rejected</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Design: Original,Design: Secondary</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -94,34 +101,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Qualify,Define,Develop,Design</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Inactive__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Past_Due__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Low_Velocity__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CLOSE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>lessThan</operator>
-            <value>8/13/2019</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -133,7 +112,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>[IOT &amp; PSG ET] - Past due</name>
@@ -160,6 +139,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2018-04-17</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2014-01-01</startDate>
     </timeFrameFilter>
 </Report>

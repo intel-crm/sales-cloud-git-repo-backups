@@ -33,7 +33,7 @@
             grid-template-columns: auto auto;
             grid-column-gap: 40px;
         }
-    </aura:html> 
+    </aura:html>
     <aura:attribute name="recordId" type="Id" />
     <aura:attribute name="claimErrorMsg" type="String" />
     <aura:attribute name="spinner" type="boolean" default="false" />
@@ -51,6 +51,17 @@
     <aura:attribute name="reId" type="Id" />
     <aura:attribute name="togglehover" type="boolean" default="false"/>
     <aura:attribute name="hoverRow" type="Integer" default="-1" />
+
+    <!-- Roshan - Tactics POC -->
+    <aura:attribute name="tacticMetricsEditable" type="Boolean" default="true" />
+    <aura:attribute name="reimbursableAmountUsd" type="Decimal" />
+    <aura:attribute name="openTacticsSection" type="Boolean" default="false" />
+    <aura:attribute name="selectedTacticsActivityId" type="Id" />
+    <aura:attribute name="campaignPurposeColumns" type="List" />
+    <aura:attribute name="campaignPurposeRows" type="List" default="[]" />
+    <aura:attribute name="claimAttributeList" type="Object[]" default="[]" />
+    <aura:handler name="bulkPOPUploadBackEvent" event="c:Core_MDF_BulkPOPUploadBackEvent" action="{!c.handleBackToTactics}" />
+    
     <aura:attribute name="openManageAuditDocPopup" type="Boolean" default="false"
         description="Flag to open and close the popup" />
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
@@ -71,7 +82,7 @@
            {!$Label.c.Core_MDF_BulkUploadPopup_Header}
      	</div>
     </header>
-    <aura:if isTrue="{!v.spinner}">
+    <aura:if isTrue="{!and(v.spinner, not(v.openTacticsSection))}">
         <lightning:spinner alternativeText="Loading" size="medium" />
     <aura:set attribute="else">
     <aura:if isTrue="{!v.clmBatchStgRecExists}">
@@ -98,8 +109,9 @@
                                 <th scope="col">
                                     <div class="slds-text-align_center">{!$Label.c.Core_MDF_Budget_Currency}</div>
                                 </th>
+
                                 <th scope="col">
-                                    <div class="slds-text-align_center">{!$Label.c.Core_MDF_Upload_Documents}</div>
+                                    <div class="slds-text-align_center">Action</div>
                                 </th>
             </tr>
         </thead>
@@ -230,10 +242,23 @@
                                         <div class="slds-text-align_center">{!claimrec.Core_MDF_Inv_Receipt_Cur_Cd__c}
                                         </div>
                                     </td>
+
+                                    <!-- <td>
+                                        <div class="slds-text-align_center">
+                                            <lightning:button label="Fill Metrics/Upload POP"
+                                                iconName="utility:upload" onclick="{!c.uploadAction}" name="{!index}" />
+                                        </div>
+                                    </td> -->
                                     <td>
-                                        <div class="slds-text-align_center" data-row-index="{!index}">
-                                            <lightning:button label="{!$Label.c.Core_MDF_Upload}"
-                                                iconName="utility:upload" onclick="{!c.uploadAction}" />
+                                        <div class="slds-text-align_center">
+                                            <aura:if isTrue="{!claimrec.Core_MDF_ActivityCategory__c == $Label.c.Core_MDF_Outcome_Based_CatType}">
+                                                <lightning:button label="Enter Metrics &amp; Upload POP"
+                                                    iconName="utility:edit" onclick="{!c.uploadAction}" name="{!index}" class="bulk-pop-action-btn" />
+                                            <aura:set attribute="else">
+                                                <lightning:button label="Upload POP"
+                                                    iconName="utility:upload" onclick="{!c.uploadAction}" name="{!index}" class="bulk-pop-action-btn" />
+                                            </aura:set>
+                                            </aura:if>
                                         </div>
                                     </td>
                     
@@ -253,6 +278,56 @@
     </aura:if>
 </aura:set>
 </aura:if>
+
+    <!-- Roshan - Tactics POC -->
+    <aura:if isTrue="{!v.openTacticsSection}">
+        <aura:if isTrue="{!not(empty(v.selectedTacticsActivityId))}">
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container tactics-modal__container">
+                    <aura:if isTrue="{!v.spinner}">
+                        <lightning:spinner alternativeText="Loading" size="medium" class="spnr" />
+                    </aura:if>
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick="{!c.closeTacticsModal}">
+                            <lightning:icon iconName="utility:close" alternativeText="Close" size="small" />
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 class="slds-text-heading_medium">Fill Tactics</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium tactics-modal__content">
+                        <div class="slds-p-bottom_medium">
+                            <div class="slds-box slds-theme_default custom-box slds-p-bottom_medium">
+                                <c:core_MDF_CustomDataTable aura:id="campaignPurposeCmp"
+                                    title="{!$Label.c.Core_MDF_Campaign_Purpose}"
+                                    columns="{!v.campaignPurposeColumns}"
+                                    tableData="{!v.campaignPurposeRows}"
+                                    ontablechange="{!c.handleCampaignPurposeChange}" />
+                            </div>
+                        </div>
+
+                        <c:core_MDF_Tactics_Matric aura:id="tacticMetricCmp"
+                            editable="{!v.tacticMetricsEditable}"
+                            activityId="{!v.selectedTacticsActivityId}"
+                            prefillClaimAttributes="{!v.claimAttributeList}"
+                            objectName="PartnerFundClaim" />
+
+                        <c:core_MDF_Tactic_Spending aura:id="tacticSpendingCmp"
+                            activityId="{!v.selectedTacticsActivityId}"
+                            editable="{!v.tacticMetricsEditable}"
+                            prefillClaimAttributes="{!v.claimAttributeList}"
+                            reimbursableAmountUsd="{!v.reimbursableAmountUsd}"
+                            objectName="PartnerFundClaim" />
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <lightning:button label="{!$Label.c.Core_MDF_Close}" variant="neutral" onclick="{!c.closeTacticsModal}" />
+                        <lightning:button label="Next" variant="brand" onclick="{!c.saveTacticsAction}" class="slds-m-right_small" disabled="{!v.spinner}" />
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+    </aura:if>
+
     <aura:if isTrue="{!v.openPopUp}">
         <!--Manage Audit Document Section - Core_MDF_ManageAuditDocumentWrapperComponent-->
         <c:Core_MDF_ManageAuditDocumentWrapperComponent
@@ -260,7 +335,7 @@
             budgetType="{!v.budgetType}" aura:id="manageAuditRevamp"
             claimRefName="{!v.clmBatchStgRec.Core_MDF_Claim_Nm__c}" recordId="{!v.clmBatchStgRec.Id}"
             claimDetails="{!v.simpleNewClaim}" openManageAuditDocPopup="{!v.openManageAuditDocPopup}"
-            isBulkClaim="true" />
+            isBulkClaim="true" showBackButton="{!not(empty(v.claimAttributeList))}" />
     </aura:if>
 
     <!--Error Modal-->

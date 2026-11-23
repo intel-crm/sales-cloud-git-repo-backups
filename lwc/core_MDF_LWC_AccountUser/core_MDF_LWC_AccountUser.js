@@ -44,6 +44,8 @@ export default class Core_MDF_LWC_AccountUser extends NavigationMixin(
   @track accOrUserRecordIdList;
   @track accOrUserMappingType;
   @track programName;
+   applicationErrorMsg=applicationErrorMsg;
+   applicationErrorMsgTitle=applicationErrorMsgTitle;
 
   // Expose the labels to use in the template.
   label = {
@@ -104,8 +106,9 @@ export default class Core_MDF_LWC_AccountUser extends NavigationMixin(
 }
   //Function to save mappings
   onSave(accOrUsrId, accOrUsrIdList, objectName, progName) {
+    console.log('Enter in the onSave');
     if (accOrUsrId != null && accOrUsrId.length > 0) {
-      this.spinner = !this.spinner;
+      this.spinner = false;
       saveAccountToUserData({
         accountOrUserId: accOrUsrId,
         objectListToBeProcessed: accOrUsrIdList,
@@ -115,14 +118,14 @@ export default class Core_MDF_LWC_AccountUser extends NavigationMixin(
         .then(result => {
           if (result !=''){
             console.log('Inside If-->', result);
-            this.spinner = !this.spinner;
+            this.spinner = false;
             this.message = JSON.stringify(result);
             this.variant = "error";
             this._title = invalidSelectionTitle;  // Invalide selection Eg: CCF prgm : DCF AUSU user
             this.showNotification();
           }else{
             console.log('Inside else-->', result);
-            this.spinner = !this.spinner;
+            this.spinner = false;
             this._title = successMsgTitle;
             this.message = successMsg;
             this.variant = "success";
@@ -131,11 +134,13 @@ export default class Core_MDF_LWC_AccountUser extends NavigationMixin(
           }
         })
         .catch(error => {
-          console.log('Inside catch-->', result);
-          this.showGenericError(error);
-          this.showNotification();
+          console.log('Inside catchDoneTT-->', error);
+                this.showGenericError(error);
+              //  this.showNotification();             
         });
-    } else {
+    } 
+      else {
+        console.log('Inside::else');
       this.variant = "error";
       this.message = "";
       this._title = requiredMsg;
@@ -222,11 +227,19 @@ export default class Core_MDF_LWC_AccountUser extends NavigationMixin(
 
   //Show Generic Error
   showGenericError(error) {
-    console.log('inside showGenericError' , error);
+    console.log('inside showGenericError---' , error);
     if (error){
-      this.variant = "error";
-      this.message = applicationErrorMsg;
-      this._title = applicationErrorMsgTitle;
+
+      this.dispatchEvent(
+                  new ShowToastEvent({
+                      title: 'Error',
+                      message: applicationErrorMsg,
+                      variant: 'error'
+                  })
+              );
+      // this.variant = "error";
+      // this.message = applicationErrorMsg;
+      
     }
   }
 }

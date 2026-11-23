@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>DUE_DATE</field>
+    </columns>
+    <columns>
+        <field>CONTACT</field>
+    </columns>
+    <columns>
+        <field>Activity.Core_Task_Type__c</field>
+    </columns>
+    <columns>
+        <field>Activity.Core_Activity_Type__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT</field>
+    </columns>
+    <columns>
+        <field>DESCRIPTION</field>
+    </columns>
+    <description>RT: Task and Events
+Filtered on Assigned to SDRs</description>
+    <filter>
+        <criteriaItems>
+            <column>ASSIGNED</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Zackary Smiley,Kevin McKelligon,Jessica McCowan,Daniel Herrera</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CONTACT</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Todd Hatcher,Kurt Kleinschmidt,Michael Williams,Tom Schmidt,Henry Sevilla,Dave Hair,Warren Jackson,Brian Wilson,John Lisherness,Sheryl sick,doreen richards,ray gennawey,dan messer,kelly cantlen,max mcdaniel,tricia vera,tim keaney,shane turner,ken barney,john lisherness,drew englebert,dana turiello,jennifer groschen,Paul Schoenke,Inger Escamilla,Daniel Rumley,Tammy Novotny,Gary Cochran,Cathy Bille,Chuck Loomis,Adam Beamer,Terri Schofield,Mike Willis,Craig Hood,Matt Gerrick,Erickson de la Cruz,Jerry Johnson,Josh Knapp,Andy Barbosa,Greg Kotsovolos,Kelly Shields,Patel Dipen,Karen Mahooney,John Tran,Rick Bogan,Steve Moss</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ASSIGNED</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>STATUS</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Partner Activity Report US Inside Sales</name>
+    <params>
+        <name>closed</name>
+        <value>closed</value>
+    </params>
+    <params>
+        <name>type</name>
+        <value>te</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Activity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>DUE_DATE</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>DUE_DATE</dateColumn>
+        <interval>LAST_FISCALWEEK</interval>
+    </timeFrameFilter>
+</Report>

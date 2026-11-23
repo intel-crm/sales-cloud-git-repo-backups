@@ -165,9 +165,6 @@ export default class QuanticFacet extends LightningElement {
   focusTarget;
   /** @type {boolean} */
   focusShouldBeInFacet = false;
-   @api caption;
-    dict = {};
-  @api formattingFunction;
 
   labels = {
     showMore,
@@ -186,27 +183,11 @@ export default class QuanticFacet extends LightningElement {
 
   connectedCallback() {
     registerComponentForInit(this, this.engineId);
-    this.setCaptions();
-  }
-  setCaptions(){
-    if(this.field == "tabfilter"){
-      this.dict = {"Developers": "Resource & Documentation Center", "forums" : "Communities", "Support" : "Support", "Partners": "Partners"};
-    }
-    else if(this.field == "datasource"){
-      // this.dict = {"Ark.intel.com" : "intel"};
-    }
-    else if(this.field == "objecttype"){
-      this.dict = {};
-    }
   }
 
   renderedCallback() {
     initializeWithHeadless(this, this.engineId, this.initialize);
     this.input = this.template.querySelector('.facet__searchbox-input');
-     const sendEvent = new CustomEvent('hasvalues', {
-          detail: {hasvalue: this.hasValues}
-      });
-    this.dispatchEvent(sendEvent);
     if (this.focusShouldBeInFacet && !this.facet?.state?.isLoading) {
       this.setFocusOnTarget();
       this.focusTarget = null;
@@ -237,9 +218,6 @@ export default class QuanticFacet extends LightningElement {
       injectionDepth: Number(this.injectionDepth),
     };
     this.facet = this.headless.buildFacet(engine, {options});
-      this.facet.facetSearch.updateCaptions(this.dict);
-
-      this.formattingFunction = (item) => this.dict[item.value] ?? item.value;
     this.unsubscribe = this.facet.subscribe(() => this.updateState());
     registerToStore(this.engineId, Store.facetTypes.FACETS, {
       label: this.label,
@@ -277,7 +255,6 @@ export default class QuanticFacet extends LightningElement {
         .filter((value) => value.numberOfResults || value.state === 'selected')
         .map((v) => ({
           ...v,
-          value: v.value,
           checked: v.state === 'selected',
           highlightedResult: v.value,
         })) || []
@@ -352,7 +329,7 @@ export default class QuanticFacet extends LightningElement {
   }
 
   get actionButtonIcon() {
-    return this.isCollapsed ? 'utility:chevrondown' : 'utility:chevronup';
+    return this.isCollapsed ? 'utility:add' : 'utility:dash';
   }
 
   get actionButtonCssClasses() {
@@ -418,7 +395,7 @@ export default class QuanticFacet extends LightningElement {
   getItemFromValue(value) {
     return (
       this.isFacetSearchActive ? this.facetSearchResults : this.values
-    ).find((item) =>this.formattingFunction(item) === value);
+    ).find((item) => item.value === value);
   }
 
   /**

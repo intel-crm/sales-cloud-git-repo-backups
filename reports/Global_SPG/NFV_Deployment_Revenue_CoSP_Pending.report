@@ -15,6 +15,9 @@
             <value>Comms</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Technology</sourceValue>
+            </sourceValues>
             <value>Cloud</value>
         </values>
     </buckets>
@@ -120,7 +123,7 @@
             <value>Network Function Virtualization,5G Network Infrastructure,Cloud: SDN/NFV,Software Defined Networking,vRAN/MEC</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>

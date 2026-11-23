@@ -7,7 +7,6 @@
         <locationY>2174</locationY>
         <actionName>Core_MDF_Claim_Utility</actionName>
         <actionType>apex</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>inputClaims</name>
             <value>
@@ -477,7 +476,7 @@
             <targetReference>getEachClaimRecord</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Obsolete</status>
     <variables>
         <name>deniedClaimCollection</name>
         <dataType>SObject</dataType>

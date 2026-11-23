@@ -2,7 +2,7 @@
 * Class Name  : Core_MDF_Calendar_Utility 
 * Test Class  : Core_MDF_Calendar_Utility_Test
 * Version     : 1.0 
-* Created By  : Roshan - 19-02-2025
+* Created Date: 19-02-2025
 * Modification Log :
 * Developer            Date               Description
 * -----------------------------------------------------------------------------------------------------
@@ -22,7 +22,7 @@ public without sharing class Core_MDF_Calendar_Utility {
     public static List<Period> getFiscalQuarterWeekPeriods(Date inputDate) {
         Date quarterStartDate;
         Date quarterEndDate;
-        for(Period currentYearDetail : [SELECT FiscalYearSettings.Name, Type,Number,StartDate,EndDate FROM Period WHERE FiscalYearSettings.YearType='Custom' AND StartDate <=: inputDate and EndDate >=: inputDate ORDER BY Type, Number DESC]){
+        for(Period currentYearDetail : [SELECT Type,StartDate,EndDate FROM Period WHERE FiscalYearSettings.YearType='Custom' AND StartDate <=: inputDate and EndDate >=: inputDate ORDER BY Type, Number DESC]){ //HP:ATHR Fix
             if(currentYearDetail.Type == 'Quarter'){//To Find Quarter Start and End date
                 quarterStartDate = currentYearDetail.startDate;
                 quarterEndDate = currentYearDetail.EndDate;

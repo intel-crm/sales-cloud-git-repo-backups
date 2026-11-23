@@ -138,6 +138,11 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>ContextId</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Duration</fullName>
         <trackHistory>false</trackHistory>
     </fields>
@@ -202,6 +207,7 @@
         <customTabListAdditionalFields>EndDateTime</customTabListAdditionalFields>
         <customTabListAdditionalFields>CommunicationChannel</customTabListAdditionalFields>
         <customTabListAdditionalFields>Sentiment</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Context</customTabListAdditionalFields>
         <customTabListAdditionalFields>ExternalIdentifier</customTabListAdditionalFields>
         <customTabListAdditionalFields>Owner</customTabListAdditionalFields>
         <lookupDialogsAdditionalFields>InitiatingAttendee</lookupDialogsAdditionalFields>
@@ -211,6 +217,7 @@
         <lookupDialogsAdditionalFields>EndDateTime</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>CommunicationChannel</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Sentiment</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Context</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>ExternalIdentifier</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Owner</lookupDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>InitiatingAttendee</lookupPhoneDialogsAdditionalFields>
@@ -220,6 +227,7 @@
         <lookupPhoneDialogsAdditionalFields>EndDateTime</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>CommunicationChannel</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Sentiment</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Context</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>ExternalIdentifier</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Owner</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>PhoneNumber</lookupPhoneDialogsAdditionalFields>
@@ -230,6 +238,7 @@
         <searchResultsAdditionalFields>EndDateTime</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CommunicationChannel</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Sentiment</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Context</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>ExternalIdentifier</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Owner</searchResultsAdditionalFields>
     </searchLayouts>

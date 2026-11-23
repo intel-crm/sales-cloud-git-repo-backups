@@ -10,18 +10,16 @@
 * ----------------------------------------------------------------------------    
 * Accenture        5-DEC-2016       Original Version
 * Venu Karumuru    3-MAR-2017       Updated validateOpportuntyBeforeQuoteCreation() to check if the user has R/W Access to Opportunity
-* Venu Karumuru    15-JAN-2018		Validated the additional DDR fields sent, updated code to not send idsid for Partner Users
-* Venu Karumuru    30-JAN-2018		Added Opportunity Description to Quote Message
+* Venu Karumuru    15-JAN-2018    Validated the additional DDR fields sent, updated code to not send idsid for Partner Users
+* Venu Karumuru    30-JAN-2018    Added Opportunity Description to Quote Message
 *************************************************************************************/
 
-public without sharing class  Core_SalesSupportPSGQuoteSFDCToSiebel {
+public class Core_SalesSupportPSGQuoteSFDCToSiebel {
     
 
     static final String STATUS_CANCELLED  = 'Cancelled';
     static final String STATUS_PROD_CANCELLED  = 'Production Cancelled';
-   @AuraEnabled public static String errorMessage{get;set;}//Shivini
-   @AuraEnabled public static Boolean isValid{get;set;}//Shivini
-    
+    public static string erroMsg{get;set;}
     public static String selectedISR = '';
 
     /**********************************
@@ -56,10 +54,7 @@ public without sharing class  Core_SalesSupportPSGQuoteSFDCToSiebel {
           ApexPages.addMessage(myMsg);
         
     }
-//Shivini
-    @AuraEnabled public static String errorMessages(String errorMessage) {
-    return errorMessage;
-}
+
     /**********************************
     * Method Name : validateOpportuntyBeforeQuoteCreation
     * Created On  : Dec-13-2016
@@ -69,7 +64,7 @@ public without sharing class  Core_SalesSupportPSGQuoteSFDCToSiebel {
     *               Before Quote creation.
     ***********************************/
 
-     /*public static Boolean validateOpportuntyBeforeQuoteCreation() {
+     public static Boolean validateOpportuntyBeforeQuoteCreation() {
         
         // Get the Opportunity Id
         String soppId = ApexPages.currentPage().getParameters().get(System.Label.Core_OpportunityID);
@@ -102,12 +97,18 @@ public without sharing class  Core_SalesSupportPSGQuoteSFDCToSiebel {
             writeErrorMessage(System.Label.Core_PSG_Validate_Quote_Account);
             return false; 
         }
+        
+         if(!accObj.Core_Account_Type__c.contains('End Customer') ){
+             writeErrorMessage('The Account should be of End Customer Type');
+            return false;
+         }
 
         // Check if First Customer Ship Date and Volume have values
         
         if (oppObj.Core_First_Customer_Ship_Date__c == null || oppObj.Core_Volume__c == null ) {
           writeErrorMessage(System.Label.Core_PSG_Opportunity_Fields_Required);
-          
+            /* ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.Error,'First Customer Ship Date and Volume should not be NULL');
+            ApexPages.addMessage(myMsg);*/
             return false;
         }
          
@@ -123,91 +124,20 @@ public without sharing class  Core_SalesSupportPSGQuoteSFDCToSiebel {
 
         // No validation errors
         return true;
-     }*/
+     }
+    
+    public static void validateOpportunty() {
+         String soppId = ApexPages.currentPage().getParameters().get(System.Label.Core_OpportunityID);
+        string errorMsg=System.Label.Core_PSG_Opportunity_Fields_Required;
+        Opportunity oppObj = [SELECT Id, Core_PSG_Quote_Last_Processed_Status__c, AccountId, Core_First_Customer_Ship_Date__c, Core_Volume__c FROM Opportunity WHERE Id = :soppId];
+      if (oppObj.Core_First_Customer_Ship_Date__c == null || oppObj.Core_Volume__c == null ) {
+            //writeErrorMessage(System.Label.Core_PSG_Opportunity_Fields_Required);
+             ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.Error,System.Label.Core_PSG_Opportunity_Fields_Required);
+            ApexPages.addMessage(myMsg);
+            //return errorMsg;
+        }
+    }
 
-    //Shivini
-    /*@AuraEnabled
-    public static Map<String, Object> validateOpportunityBeforeQuoteCreationNew(Id opportunityId) {
-        Map<String, Object> result = new Map<String, Object>();
-        List<String> errorMessages = new List<String>();
-        Boolean isValid = true;
-    
-        // Check if Opportunity Id is provided
-        if (opportunityId == null) {
-            errorMessages.add(System.Label.Core_PSG_Validate_Quote_Opportunity);
-            isValid = false;
-        }
-    
-        // Check if the user has Read/Write Access to the Opportunity
-        UserRecordAccess recordAccessObj = [
-            SELECT RecordId, HasEditAccess
-            FROM UserRecordAccess
-            WHERE UserId = :UserInfo.getUserId()
-                AND RecordId = :opportunityId
-        ];
-    
-        if (recordAccessObj == null || !recordAccessObj.HasEditAccess) {
-            errorMessages.add(System.Label.Core_PSG_Validate_Opportunity_Access);
-            isValid = false;
-        }
-    
-        // Get the Opportunity Details
-        Opportunity oppObj = [
-            SELECT Id, Core_PSG_Quote_Last_Processed_Status__c, AccountId, Core_First_Customer_Ship_Date__c, Core_Volume__c
-            FROM Opportunity
-            WHERE Id = :opportunityId
-        ];
-    
-        // Check if there is a quote request in progress
-        if (oppObj.Core_PSG_Quote_Last_Processed_Status__c == 'Processing') {
-            errorMessages.add(System.Label.Core_PSG_Opportunity_Quote_Creation_Status);
-            isValid = false;
-        }
-    
-        // Check if the Account associated with the Opportunity is a PSG Account
-        Account accObj = [
-            SELECT Id, Core_Account_Type__c, Core_PSG_Account__c
-            FROM Account
-            WHERE Id = :oppObj.AccountId
-        ];
-    
-        if (!accObj.Core_PSG_Account__c) {
-            errorMessages.add(System.Label.Core_PSG_Validate_Quote_Account);
-            isValid = false;
-        }
-    
-       
-    
-        // Check if First Customer Ship Date and Volume have values
-        if (oppObj.Core_First_Customer_Ship_Date__c == null || oppObj.Core_Volume__c == null) {
-            errorMessages.add(System.Label.Core_PSG_Opportunity_Fields_Required);
-            isValid = false;
-        }
-    
-        // Get the list of PSG Products associated with the Opportunity
-        List<OpportunityLineItem> opportunityProducts = [
-            SELECT Id, Product2.Name, Product2Id, Quantity
-            FROM OpportunityLineItem
-            WHERE Core_Product_Type__c = 'Intel® FPGAs'
-                AND OpportunityId = :oppObj.Id
-                AND Core_Status__c != :STATUS_CANCELLED
-                AND Core_Status__c != :STATUS_PROD_CANCELLED
-        ];
-    
-        // Check if there are any PSG Products associated with the Opportunity
-        if (opportunityProducts.isEmpty()) {
-            errorMessages.add(System.Label.Core_PSG_Product_Required);
-            isValid = false;
-        }
-    
-        // Prepare the result map
-        result.put('isValid', isValid);
-        result.put('errorMessages', errorMessages);
-    
-        return result;
-    }*/
-    
-    
     /**********************************
     * Method Name : processPSGQuoteMessage
     * Created On  : Dec-13-2016
@@ -248,7 +178,9 @@ public without sharing class  Core_SalesSupportPSGQuoteSFDCToSiebel {
                 insert quoteGenarationHistoryList;
                 List<Opportunity> oppList = [select Id,Core_PSG_Quote_Last_Processed_Date__c,Core_PSG_Quote_Last_Processed_Status__c from Opportunity where Id IN: siebelResponseMap.keySet()];
                 for(Opportunity opp :oppList) {
+                    System.debug('******opp.Id****'+opp.Id);
                     SiebelResponse objResponse = siebelResponseMap.get(opp.Id);
+                    System.debug('****objResponse****'+objResponse);
                     opp.Core_PSG_Quote_Last_Processed_Status__c = 'Success';
                     opp.Core_PSG_Quote_Last_Processed_Date__c = DateTime.Now();
                 }
@@ -288,6 +220,7 @@ public without sharing class  Core_SalesSupportPSGQuoteSFDCToSiebel {
         for(Dom.XMLNode innerNode : xrec){ //Loop Through Records
            dom.XmlNode [] xrecChild = innerNode.getchildelements() ; //Points to the ns:AlteraSfdcQuoteCreate_Output element 
             for(Dom.XMLNode innerNodeChild : xrecChild) {
+                   System.debug('******innerNodeChild.getName()****'+innerNodeChild.getName());
                    for(Dom.XMLNode child : innerNodeChild.getChildElements()) { // reading the data from ns:AlteraSfdcQuoteCreate_Output element 
                        if(child.getName() == 'Error_spcCode')
                             objResponse.ErrorCode = child.getText();
@@ -367,7 +300,7 @@ public without sharing class  Core_SalesSupportPSGQuoteSFDCToSiebel {
                         PSGQuoteXmlStreamWriter.writeStartElement('cus','Email', ''); // Email Start element
                             PSGQuoteXmlStreamWriter.writeCharacters(userObj.Email); 
                         PSGQuoteXmlStreamWriter.writeEndElement(); // Email end element
-        				        				
+                                
                         PSGQuoteXmlStreamWriter.writeStartElement('eai','ListOfEaiOptyIoSfdcAltera', '');
 
                         PSGQuoteXmlStreamWriter.writeStartElement('eai','Opportunity', ''); // Opportunity Start element
@@ -446,10 +379,10 @@ public without sharing class  Core_SalesSupportPSGQuoteSFDCToSiebel {
                                 if(opp.Core_Design_Registration_Id__r.Name != null)
                                     PSGQuoteXmlStreamWriter.writeCharacters(String.ValueOf(opp.Core_Design_Registration_Id__r.Name));
                             PSGQuoteXmlStreamWriter.writeEndElement(); //DesignRegistrationNumber End Element 
-        					
-        					//PartnerComments Start Element. Send first 1024 characters of Description value for Channel Opportunities only
-        					PSGQuoteXmlStreamWriter.writeStartElement('eai','PartnerComments', '');
-        						if(opp.Core_Design_Registration_Id__r.Name != null)
+                  
+                  //PartnerComments Start Element. Send first 1024 characters of Description value for Channel Opportunities only
+                  PSGQuoteXmlStreamWriter.writeStartElement('eai','PartnerComments', '');
+                    if(opp.Core_Design_Registration_Id__r.Name != null)
                                     PSGQuoteXmlStreamWriter.writeCharacters(String.ValueOf(opp.Description).abbreviate(1024));   
                             PSGQuoteXmlStreamWriter.writeEndElement(); //PartnerComments End Element
                             
@@ -481,8 +414,8 @@ public without sharing class  Core_SalesSupportPSGQuoteSFDCToSiebel {
                                                     PSGQuoteXmlStreamWriter.writeCharacters(String.valueOf(oppLineItem.Core_Design_Registration_Product_Id__r.Name));
                                             PSGQuoteXmlStreamWriter.writeEndElement(); // DesignRegistrationProductNumber End Element
                                         
-                                        	/* Added by Infosys - on August 9th 2018 as per the US - 103446 */
-                                        	//Opportunity LineItem Sales Price Start Element
+                                          /* Added by Infosys - on August 9th 2018 as per the US - 103446 */
+                                          //Opportunity LineItem Sales Price Start Element
                                             PSGQuoteXmlStreamWriter.writeStartElement('eai','RequestedResale', '');
                                                     PSGQuoteXmlStreamWriter.writeCharacters(String.valueOf(oppLineItem.UnitPrice).abbreviate(50));
                                             PSGQuoteXmlStreamWriter.writeEndElement(); // Sales Price End Element

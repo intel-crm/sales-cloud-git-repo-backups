@@ -1,34 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>Opportunity.Core_Consumption_Market__c</field>
-    </columns>
-    <columns>
-        <field>ACCOUNT_NAME</field>
+        <field>CLOSE_DATE</field>
     </columns>
     <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Products_At_Risk_Count__c</field>
+        <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Risk_Reason__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Competitive_Architecture__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Support_Requested__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <aggregateTypes>Average</aggregateTypes>
-        <field>AMOUNT</field>
-    </columns>
-    <columns>
-        <field>CLOSE_DATE</field>
+        <field>FULL_NAME</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Opportunity_Type__c</field>
@@ -40,7 +22,29 @@
         <field>Opportunity.Core_Product_Application__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Consumption_Market__c</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>EXP_AMOUNT</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Risk_Reason__c</field>
+    </columns>
+    <columns>
         <field>STAGE_DURATION</field>
+    </columns>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
     </columns>
     <description>RT: Opportunities</description>
     <filter>
@@ -49,7 +53,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
-            <value>Wood,Halversen,Swyers,oldfield,merjanian,covey</value>
+            <value>Tatel,Wood,Halversen,Edison,Swyers,oldfield</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -91,12 +95,12 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>ROLLUP_DESCRIPTION</field>
+        <field>OWNER_MANAGER</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>FULL_NAME</field>
+        <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>MA US OSC Optys AT RISK by Mgr</name>
@@ -121,6 +125,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>EXP_AMOUNT</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

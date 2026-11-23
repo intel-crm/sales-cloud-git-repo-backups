@@ -1,239 +1,209 @@
 <apex:page controller="Core_IPS_Project_Controller" action="{!actionMethod}">
-    <!--added by Aayushi to display error message for invalid MPNDA field 11-03-17 US80374-->
+     <!--added by Aayushi to display error message for invalid MPNDA field 11-03-17 US80374-->
     <apex:pageMessages id="msg"></apex:pageMessages>
-    
+
     <apex:includeScript value="{!$Resource.Core_IPS_Jquery11}"/>
     <apex:includeScript value="{!Urlfor($Resource.Core_IPS_DataTable,'jquery-ui.js')}"/>
     <apex:includeScript value="{!URLFOR($Resource.Core_IPS_DataTable,'jquery.dataTables.js')}"/>
     <!--<apex:includeScript value="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'jquery.min.js')}"/>-->
     <apex:includeScript value="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'spinner.js')}"/>
     <apex:stylesheet value="{!URLFOR($Resource.Core_IPS_DataTable,'jquery.dataTables.css')}" />
-    <apex:stylesheet value="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'spinner.css')}"/>
-    <script>    
-    var AccountLst = '';
-    var members = '';  //US964686-- 30/4/2021 -- Rekha -- variable to store selected accountIds and members value
-    $( document ).ready(function() {
+	<apex:stylesheet value="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'spinner.css')}"/>
+    <script>  
+    var  AccountLst = '';
+     $( document ).ready(function() {
         $("div[id*=pgBlockMsg]").hide();
-        
-        getRemoteAccountsWrapper();
-        $(".TblExtAcc").DataTable({
-            
-            paginate: false,
-            scrollY: 150,
-            bFilter: false
-        });
-    });
-    
-    function createTable(TableID,cols,result)
-    {
-        //$("."+TableID).show();
-        //$("#"+divId).show();
-        
-        $("."+TableID).DataTable({
-            "bDestroy": true,
-            "responsive": true,
-            "aaData": result,
-            "bFilter" :true,
-            "aoColumns": cols
-            
-        });
-        $("#spanPleaseWait").hide();
-    }
-    
    
-    
+        getRemoteAccountsWrapper();
+     $(".TblExtAcc").DataTable({
+     
+         paginate: false,
+         scrollY: 150,
+         bFilter: false
+         });
+     });
+     
+      function createTable(TableID,cols,result)
+    {
+               //$("."+TableID).show();
+               //$("#"+divId).show();
+               
+               $("."+TableID).DataTable({
+               "bDestroy": true,
+               "responsive": true,
+               "aaData": result,
+               "bFilter" :true,
+                "aoColumns": cols
+               
+               });
+                $("#spanPleaseWait").hide();
+    }
     function getRemoteAccountsWrapper() {
-      
+   
+       
         //$("#tblCase").fnDestroy();
         Visualforce.remoting.Manager.invokeAction(
-            '{!$RemoteAction.Core_IPS_Project_Controller.getAccountsWrapper}',
-            '{!$CurrentPage.parameters.projectId}',
+            '{!$RemoteAction.Core_IPS_Project_Controller.getAccountsWrapper}','{!$CurrentPage.parameters.projectId}',
+             
             function(result, event){
-                var switchLabel = '{!$Label.Core_IPS_UCD_Toggle_Switch}';
+              
+                console.log(JSON.stringify(result));
                 if(result.length != 0){
                     //modified by Aayushi US95034  
-                    //Modified to display Account owner and Unified ID , Account ID columns by Aparna for US104027,US108704-PSG Independent Release 
-                    var cols = [ {"mDataProp": "acc.Id","sTitle":"","defaultContent":"","render": function( oObj,row,set )
-                                  {return "<input type='checkbox' onclick='UpdateHidden(this);' value='" +set.acc.Id+"'/>"; }
-                                 },
-                                {"mDataProp": "acc.Name","sTitle":"Account Name","defaultContent":""},
-                                {"mDataProp": "acc.Owner.Name","sTitle":"Account Owner","defaultContent":""},
-                                {"mDataProp": "acc.Id","sTitle":"Account ID","defaultContent":""},
-                                /*--US964686-- 30/4/2024 -- Farooq -- Replaced CIM ID with Businesss_Party_Id--*/
-                                {"mDataProp": "acc.Core_Business_Party_Id__c","sTitle":"Unified ID","defaultContent":""},
-                                /*--START--US964686-- 30/4/2021 -- Rekha -- New members column added--*/   
-                                {"mDataProp": "acc.Id","sTitle":"Members",
-                                 "defaultContent":"",
-                                 "render": function( oObj,row,set) {
-                                     return "<form>" +
-                                    "<select id='mySelect'name='mySelect' onchange='updateMembers(this);'>" +
-                                        "<option  value='" +set.acc.Id+"=Selective'>Selective</option>" +
-                                        "<option  value='" +set.acc.Id+"=All'>All</option>" +
-                                     "</select>"+
-                                "</form>"
-                                }
-                                  } 
-                                /*--END--US964686 -- 30/4/2021 Rekha -- New members column added --*/
-                               ];
-                    if(cols.length >= 5 && switchLabel === '0') {
-                        cols[4] =  {"mDataProp": "acc.Core_CIM_Id__c","sTitle":"CIM ID","defaultContent":""};
-                    }
-                    
-                    
-                    createTable("TblAccount",cols,result);
+                    //Modified to display Account owner and CIM ID , Account ID columns by Aparna for US104027,US108704-PSG Independent Release 
+                var cols = [{"mDataProp": "acc.Id","sTitle":"","defaultContent":"","render": function( oObj,row,set ){return "<input type='checkbox' onclick='UpdateHidden(this);' value='" +set.acc.Id+"'/>";}},{"mDataProp": "acc.Name","sTitle":"Account Name","defaultContent":""},{"mDataProp": "acc.Owner.Name","sTitle":"Account Owner","defaultContent":""},{"mDataProp": "acc.Id","sTitle":"Account ID","defaultContent":""},{"mDataProp": "acc.Core_CIM_ID__c","sTitle":"CIM ID","defaultContent":""}];
+                
+                         console.log(JSON.stringify(cols));
+                         createTable("TblAccount",cols,result);
                 }else{
-                         $("div[id*=pgBlockMsg]").show();
-                       }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-                            }, 
-                                {escape: true}
-                                );
-                                
-                                }
-                                //getAccountsWrapper 
-                                function UpdateHidden(itm)
-                                { 
-                                if(itm.checked)
-                                {
-                                    
-                                AccountLst +=itm.value + '=' + $('#' + itm.value).val() + ',';
-                                }
-                                else
-                                {
-                                var AccToRemove = AccountLst.split(itm.value + '=' + $('#' + itm.value).val() + ',');
-                                if(AccToRemove[0]!='' && AccToRemove[1]!='')
-                                {
-                                    AccountLst = AccToRemove[0] + AccToRemove[1];
-                                }
-                    else if(AccToRemove[0]=='' && AccToRemove[1]!='')
-                    {
-                        AccountLst = AccToRemove[1];
-                    }
-                        else if(AccToRemove[0]!='' && AccToRemove[1]=='')
-                        {
-                            AccountLst = AccToRemove[0];
-                        }
-                            else if(AccToRemove[0]=='' && AccToRemove[1]=='')
-                            {
-                                AccountLst = '';
-                            }
+                $("div[id*=pgBlockMsg]").show();
                 }
-               $("input[id*=hdnItmList]").val(AccountLst);
-            }
-            
-            function UpdateAccountHidden(itm)
-        {
-            if(AccountLst.indexOf(itm.id) > -1)
+                 
+              
+            }, 
+            {escape: true}
+        );
+        
+    }
+     //getAccountsWrapper 
+     function UpdateHidden(itm)
+     { 
+         if(itm.checked)
+         {
+             
+           AccountLst +=itm.value + '=' + $('#' + itm.value).val()  + ',';
+           //console.log(AccountLst);
+         }
+         else
+         {
+          var AccToRemove = AccountLst.split(itm.value + '=' + $('#' + itm.value).val() + ',');
+          console.log(AccToRemove);
+          if(AccToRemove[0]!='' && AccToRemove[1]!='')
+          {
+            AccountLst = AccToRemove[0] + AccToRemove[1];
+          }
+          else if(AccToRemove[0]=='' && AccToRemove[1]!='')
+          {
+            AccountLst = AccToRemove[1];
+          }
+          else if(AccToRemove[0]!='' && AccToRemove[1]=='')
+          {
+            AccountLst = AccToRemove[0];
+          }
+          else if(AccToRemove[0]=='' && AccToRemove[1]=='')
+          {
+            AccountLst = '';
+          }
+         }
+         console.log(AccountLst);
+         
+         $("input[id*=hdnItmList]").val(AccountLst);
+     }
+     
+     function UpdateAccountHidden(itm)
+     {
+       if(AccountLst.indexOf(itm.id) > -1)
+       {
+          console.log(itm.id)
+          var AccToRemove = AccountLst.split(',');
+          var  AccountLstTemp = '';
+          for(var  i=0;i < AccToRemove.length;i++ )
+          {
+            if(AccToRemove[i] !='')
             {
-                var AccToRemove = AccountLst.split(',');
-                var  AccountLstTemp = '';
-                for(var  i=0;i < AccToRemove.length;i++ )
+                if(AccToRemove[i] !='' && AccToRemove[i].split('=')[0]==itm.id)
                 {
-                    if(AccToRemove[i] !='')
-                    {
-                        if(AccToRemove[i] !='' && AccToRemove[i].split('=')[0]==itm.id)
-                        {
-                            AccountLstTemp = AccountLstTemp  + itm.id + '=' + itm.value +',';
-                        }
-                        else
-                        {
-                            AccountLstTemp = AccountLstTemp + AccToRemove[i] + ',';
-                        }
-                    }
+                  AccountLstTemp = AccountLstTemp  + itm.id + '=' + itm.value +',';
                 }
-                AccountLst = AccountLstTemp;
-            } 
-            $("input[id*=hdnItmList]").val(AccountLst);
-        }
-     /*--START--US964686-- 30/4/2021 -- Rekha -- method to get the value on chnge of member --*/   
-
-    function updateMembers (itm) {
-        members += itm.value + ',';
-        $("input[id*=strAccountMembersList]").val(members);
-   }
-   /*--End--US964686-- 30/4/2021 -- Rekha -- method to get the value on chnge of member--*/   
-
-        </script>
-    <div class="splashStatus" id="splashDiv">
+                else
+                {
+                    AccountLstTemp = AccountLstTemp + AccToRemove[i] + ',';
+                }
+            }
+          }
+          AccountLst = AccountLstTemp;
+       }
+       $("input[id*=hdnItmList]").val(AccountLst);
+     }
+    
+     </script>
+  <div class="splashStatus" id="splashDiv">
         <div class="circle"><img src="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'spinner.gif')}"/></div>
         <div class="txt">Please Wait...</div>
     </div>   
-    <apex:pageBlock id="existing" ><!--rendered="{!NOT(displayErrorSection)}"-->
-        <apex:pageblockSection title="Existing Accounts"  columns="1"> <!--rendered="{!displayExistingAccounts}"-->
-            <apex:pageblockTable value="{!existingAccounts}" var="ipsAcc" styleclass="TblExtAcc">
-                <apex:column value="{!ipsAcc.core_account__r.name}"/>
-                <!--Added the Unified ID and Account Onwer Columns for US104027-PSG Independent Release-->
-                <apex:column value="{!ipsAcc.core_account__r.Owner.Name}" headerValue="Account Owner" rendered="{!IF((existingAccounts.size != 0),true,false)}"/><!--Added rendered condition for DE17083-->
-                <apex:column value="{!ipsAcc.core_account__r.id}" /><!--Added for US10874-PSG Independent Release-->
-                <!--US964686-- 30/4/2024 -- Farooq -- Replaced CIM ID with Businesss_Party_Id-->
-                <apex:column value="{!ipsAcc.core_account__r.Core_Business_Party_Id__c}" rendered="{!IF($Label.Core_IPS_UCD_Toggle_Switch == '1', true, false)}"/>
-                <apex:column value="{!ipsAcc.core_account__r.Core_CIM_ID__c}" rendered="{!IF($Label.Core_IPS_UCD_Toggle_Switch == '0', true, false)}"/>
-                <!--end-->
-                <apex:column value="{!ipsAcc.Core_Members__c}"/>
-            </apex:pageblockTable>
-        </apex:pageblockSection>
-    </apex:pageBlock>
-    <apex:form >
-        <apex:pageblock rendered="{!displayErrorSection}">
-            <apex:pageblockButtons >
-                <apex:commandButton value="Back to Project" action="{!cancel}"/>
-            </apex:pageblockButtons>
-            <apex:outputText style="color:red;font-weight:bold;" value="{!errorMsg}"></apex:outputText>
-        </apex:pageblock>
-        <apex:pageBlock id="addaccount" rendered="{!NOT(displayErrorSection)}">
-            <apex:actionStatus id="splashStatus" onstart="startSplash();" onstop="endSplash(); "/>  
-            <apex:pageblockButtons >
-                <!-- start modified for US279984-->
-                <apex:commandButton value="Add" action="{!addIPSAccounts}" rerender="existing,msg" status="splashStatus"/>
-                <apex:commandButton value="Add & Done" action="{!addIPSAccountsAndDone}" rerender="existing,msg" status="splashStatus"/>
-                <apex:commandButton value="Cancel"  action="{!cancel}" rerender="existing,msg" status="splashStatus" />
-                <!--end-->
-            </apex:pageblockButtons>	
+  <apex:pageBlock id="existing" ><!--rendered="{!NOT(displayErrorSection)}"-->
+      <apex:pageblockSection title="Existing Accounts"  columns="1"> <!--rendered="{!displayExistingAccounts}"-->
+          <apex:pageblockTable value="{!existingAccounts}" var="ipsAcc" styleclass="TblExtAcc">
+              <apex:column value="{!ipsAcc.core_account__r.name}"/>
+              <!--Added the CIM Id and Account Onwer Columns for US104027-PSG Independent Release-->
+              <apex:column value="{!ipsAcc.core_account__r.Owner.Name}" headerValue="Account Owner" rendered="{!IF((existingAccounts.size != 0),true,false)}"/><!--Added rendered condition for DE17083-->
+              <apex:column value="{!ipsAcc.core_account__r.id}" /><!--Added for US10874-PSG Independent Release-->
+              <apex:column value="{!ipsAcc.core_account__r.Core_CIM_ID__c}"/>
+              <!--end-->
+              <apex:column value="{!ipsAcc.Core_Members__c}"/>
+          </apex:pageblockTable>
+      </apex:pageblockSection>
+ </apex:pageBlock>
+ <apex:form >
+ <apex:pageblock rendered="{!displayErrorSection}">
+     <apex:pageblockButtons >
+         <apex:commandButton value="Back to Project" action="{!cancel}"/>
+     </apex:pageblockButtons>
+     <apex:outputText style="color:red;font-weight:bold;" value="{!errorMsg}"></apex:outputText>
+ </apex:pageblock>
+ <apex:pageBlock id="addaccount" rendered="{!NOT(displayErrorSection)}">
+      <apex:actionStatus id="splashStatus" onstart="startSplash();" onstop="endSplash(); "/>  
+     <apex:pageblockButtons >
+         <!-- start modified for US279984-->
+         <apex:commandButton value="Add" action="{!addIPSAccounts}" rerender="existing,msg" status="splashStatus"/>
+         <apex:commandButton value="Add & Done" action="{!addIPSAccountsAndDone}" rerender="existing,msg" status="splashStatus"/>
+         <apex:commandButton value="Cancel"  action="{!cancel}" rerender="existing,msg" status="splashStatus" />
+         <!--end-->
+     </apex:pageblockButtons>	
+     
+      <apex:pageblockSection Title="Add Accounts" columns="1" >
+          <apex:pageblockTable value="{!acctWrapperList}"  styleClass="TblAccount" var="accWrap">
+             
+              <apex:column >
+                  <apex:inputCheckbox value="{!accWrap.selected}"/>
+              </apex:column>
+              <apex:column >
+                  <apex:outPutText value="{!accWrap.acc.name}"/>
+              </apex:column>
+              <!--Added for US104027-PSG Independent Release-->
+             <apex:column >
+                  <apex:outPutText value="{!accWrap.ownrname}"/>
+              </apex:column>
+              <!--Added by Aparna for US108704-PSG Independent Release-->
+              <apex:column >
+                  <apex:outPutText value="{!accWrap.accntID}"/>
+              </apex:column>
+              <!--end for US108704-->
+              <apex:column >
+                  <apex:outPutText value="{!accWrap.cimId}"/>
+              </apex:column>
+              <!--end for US104027-->
+              <apex:column >
+               <!--Commented by Aayushi US95034-->
+               <!--   <apex:selectList value="{!accWrap.participantTypeSelected}" size="1">
+                      <apex:selectOptions value="{!accWrap.participants}"/>
+                  </apex:selectList> -->
+                <apex:outputText value="{!accWrap.participantTypeSelected}"></apex:outputText>
+              </apex:column>
             
-            <apex:pageblockSection Title="Add Accounts" columns="1" >
-                <apex:pageblockTable value="{!acctWrapperList}"  styleClass="TblAccount" var="accWrap">
-                   <!-- <apex:column >
-                        <apex:inputCheckbox value="{!accWrap.selected}"/>
-                    </apex:column>
-                    <apex:column >
-                        <apex:outPutText value="{!accWrap.acc.name}"/>
-                    </apex:column>
-                    <!--Added for US104027-PSG Independent Release
-                    <apex:column >
-                        <apex:outPutText value="{!accWrap.ownrname}"/>
-                    </apex:column>
-                    <!--Added by Aparna for US108704-PSG Independent Release
-                    <apex:column >
-                        <apex:outPutText value="{!accWrap.accntID}"/>
-                    </apex:column>
-                    <!--end for US108704 
-                    <apex:column >
-                        <apex:outPutText value="{!accWrap.unifiedID}"/>
-                    </apex:column>
-                    <!--end for US104027 
-                    <apex:column >
-                        Commented by Aayushi US95034 
-                        <apex:selectList value="{!accWrap.participantTypeSelected}" size="1">
-                            <apex:selectOptions value="{!participantTypes}"/>
-                        </apex:selectList> 
-                        <apex:outputText value="{!accWrap.participantTypeSelected}"></apex:outputText>
-                    </apex:column> -->
-                    
-                </apex:pageblockTable>
-            </apex:pageblockSection>
-            <!--Commented by Aayushi as it was not being used US80368-->
-            <!--<apex:pageBlockSection Title="Add Accounts" rendered="{!NOT(displayAddSection)}" columns="1"  id="pgBlockMsg">
-                <apex:pageBlockSectionItem > 
-                    <apex:outputLabel value="You are not authorized to Add More Accounts" />
-                </apex:pageBlockSectionItem>
-            </apex:pageBlockSection>-->
-            
-        </apex:pageBlock> 
-        
-        <apex:inputHidden id="hdnItmList"  value="{!strAccountInfo}"/>
-        <!--START--US964686-- 30/4/2021 -- Rekha -- method to set the value of member -->
-        <apex:inputHidden id="strAccountMembersList"  value="{!strAccountMembersInfo}"/>
-        <!--END--US964686-- 30/4/2021 -- Rekha -- method to set the value of member -->
-    </apex:form>
-    <!--modified for US279984-->
-    <div class="lightbox"></div> 
+          </apex:pageblockTable>
+          </apex:pageblockSection>
+     <!--Commented by Aayushi as it was not being used US80368 -->
+     <!-- <apex:pageBlockSection Title="Add Accounts" rendered="{!NOT(displayAddSection)}" columns="1"  id="pgBlockMsg">
+              <apex:pageBlockSectionItem > 
+                  <apex:outputLabel value="You are not authorized to Add More Accounts" />
+              </apex:pageBlockSectionItem>
+          </apex:pageBlockSection>-->
+      
+  </apex:pageBlock>
+  
+  <apex:inputHidden id="hdnItmList"  value="{!strAccountInfo}"/>
+  </apex:form>
+ <!--modified for US279984-->
+ <div class="lightbox"></div> 
 </apex:page>

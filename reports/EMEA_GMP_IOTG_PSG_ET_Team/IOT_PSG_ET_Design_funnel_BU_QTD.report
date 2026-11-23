@@ -15,7 +15,7 @@
         <groupingColumn>FULL_NAME</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_TOP</location>
-        <secondaryGroupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</secondaryGroupingColumn>
+        <secondaryGroupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -71,7 +71,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Mariusz Jadwiszczok,Andrea Toigo</value>
+            <value>Mariusz Jadwiszczok</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Approval_Status__c</column>
@@ -88,11 +88,11 @@
             <value>Design: Original,Design: Secondary</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>,ADG,-,CCG,PSG</value>
+            <value>ADG</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -105,16 +105,13 @@
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <aggregateType>Sum</aggregateType>
         <dateGranularity>Day</dateGranularity>
         <field>FULL_NAME</field>
-        <sortByName>OpportunityLineItem.Core_KPI_Total_Price__c</sortByName>
-        <sortOrder>Desc</sortOrder>
-        <sortType>Aggregate</sortType>
+        <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>[IOT &amp; PSG ET] - Design funnel (BU) QTD</name>
@@ -143,8 +140,6 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2026-11-22</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <interval>INTERVAL_CURRENT</interval>
     </timeFrameFilter>
 </Report>

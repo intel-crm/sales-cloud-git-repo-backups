@@ -10,9 +10,6 @@
     </caseValues>
     <fields>
         <label><!-- Account --></label>
-        <lookupFilter>
-            <errorMessage><!-- Please select only IPA Accounts --></errorMessage>
-        </lookupFilter>
         <name>PRM_Account_Id__c</name>
         <relationshipLabel><!-- Account Specialty Associations --></relationshipLabel>
     </fields>
@@ -65,7 +62,7 @@
         <name>PRM_Status_Reason_Txt__c</name>
     </fields>
     <fields>
-        <label><!-- Suppress Email --></label>
+        <label><!-- Suppress_Email --></label>
         <name>PRM_Suppress_Email__c</name>
     </fields>
     <startsWith>Consonant</startsWith>

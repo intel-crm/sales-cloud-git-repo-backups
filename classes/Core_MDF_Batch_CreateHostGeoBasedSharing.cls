@@ -17,7 +17,7 @@ global without sharing class Core_MDF_Batch_CreateHostGeoBasedSharing implements
 	Set<Id> setOfAccountId = new Set<Id>();
 	Set<Id> setOfProgramId = new Set<Id>();
 	Set<String> accIdProgramIdSet = new Set<String>();
-	
+    List<Core_MDF_Exception__c> exceptionToBeProcessed = new List<Core_MDF_Exception__c>();
     
     //Constructor called from PGM_BatchHelper class
     global Core_MDF_Batch_CreateHostGeoBasedSharing(String objectName, String firstQuery, String secondQuery, 
@@ -26,7 +26,7 @@ global without sharing class Core_MDF_Batch_CreateHostGeoBasedSharing implements
         this.accQuery = firstQuery;
         this.setOfAccountId = accIdSet;
         this.accIdProgramIdSet = uniqueKeySet;
-
+        
         if(programIdSet != null) {
             this.setOfProgramId = programIdSet;
         }
@@ -200,6 +200,7 @@ global without sharing class Core_MDF_Batch_CreateHostGeoBasedSharing implements
                         escalationShare(esclnToBeProcessed,escalationIds);
                     }
                 }
+                
             }
         }catch(Exception e) { Core_MDF_CCP_UtilityClass.logError(e);}
     }
@@ -403,6 +404,7 @@ global without sharing class Core_MDF_Batch_CreateHostGeoBasedSharing implements
             Core_MDF_CCP_UtilityClass.logError(e);}
 	}
     
+    
 	/*****************************************************************************************************
 	   Method Name :   finish
 	   @return     :   void
@@ -412,6 +414,5 @@ global without sharing class Core_MDF_Batch_CreateHostGeoBasedSharing implements
 	   Modified By :                               Date:                     Changes:None
 	 ******************************************************************************************************/
 	global void finish(Database.BatchableContext bc) {
-		
 	}    
 }

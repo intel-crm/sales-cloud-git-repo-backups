@@ -102,8 +102,8 @@
     <recordUpdates>
         <name>update_campaign_record_as_claim_created</name>
         <label>update campaign record as claim created</label>
-        <locationX>618</locationX>
-        <locationY>401</locationY>
+        <locationX>620</locationX>
+        <locationY>483</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -130,8 +130,8 @@
     <recordUpdates>
         <name>update_campaign_record_as_Revision_req</name>
         <label>update campaign record as Revision req</label>
-        <locationX>810</locationX>
-        <locationY>399</locationY>
+        <locationX>801</locationX>
+        <locationY>499</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>

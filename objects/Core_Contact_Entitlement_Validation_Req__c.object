@@ -72,12 +72,8 @@
         <columns>Core_Entitlement_Req_Name__c</columns>
         <columns>Core_Entitlement_SysMsgName__c</columns>
         <columns>Core_Entitlement_MsgName__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>UPDATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <label>All2</label>
-        <language>en_US</language>
     </listViews>
     <visibility>Protected</visibility>
 </CustomObject>

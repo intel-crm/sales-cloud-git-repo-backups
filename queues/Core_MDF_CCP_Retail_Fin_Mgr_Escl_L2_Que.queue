@@ -7,6 +7,9 @@
         <publicGroups>
             <publicGroup>Core_MDF_CCP_Retail_Fin_Mgr_Escl_L2_Grp</publicGroup>
         </publicGroups>
+        <users>
+            <user>12010928@intel.com.crm</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>Core_MDF_Escalation__c</sobjectType>

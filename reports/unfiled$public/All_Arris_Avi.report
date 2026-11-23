@@ -51,7 +51,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
-            <value>Case.IPS_Closed_Case</value>
+            <value>Case.CEP_Case</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.core_Account_Name__c</column>
@@ -98,7 +98,7 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>AGE</sortColumn>
+    <sortColumn>Case.Core_IPS_Project_Case__c</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>

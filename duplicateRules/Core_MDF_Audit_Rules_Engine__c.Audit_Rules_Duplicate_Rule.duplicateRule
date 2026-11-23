@@ -5,11 +5,6 @@
     <alertText>Similar record already exists.</alertText>
     <description>Records cannot be Duplicate</description>
     <duplicateRuleFilter xsi:nil="true"/>
-    <duplicateRuleMatchRules>
-        <matchRuleSObjectType>Core_MDF_Audit_Rules_Engine__c</matchRuleSObjectType>
-        <matchingRule>Core_MDF_AR_Duplicate_Records_MR</matchingRule>
-        <objectMapping xsi:nil="true"/>
-    </duplicateRuleMatchRules>
     <isActive>false</isActive>
     <masterLabel>Core_MDF_Audit_Rules_Duplicate_Rule</masterLabel>
     <securityOption>EnforceSharingRules</securityOption>

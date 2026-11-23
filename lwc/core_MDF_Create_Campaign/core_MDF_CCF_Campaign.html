@@ -88,6 +88,7 @@
                                         required={campaignRequiredFields.StartDate} 
                                         disabled={campaignFieldDisabled.StartDate}
                                         onchange={handleDateChanges}></lightning-input>
+
                                         <template if:true={showCCFDCFStartDateError}>
                                             <div class="slds-text-color_error slds-m-top_xx-small">
                                                 {beforeCCFDCFDateText}{formattedCCFDCFBlockDate}.
@@ -111,7 +112,7 @@
                                         </lightning-input>
                                     </lightning-layout-item>
                                 </template>
-    
+                                
                                 <template if:true={campaignFieldVisibility.Core_MDF_Integrated_Campaign__c}>
                                     <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
     
@@ -178,8 +179,7 @@
                                             required={campaignRequiredFields.Core_MDF_Opal_Budget_Type_Txt__c}>
                                         </lightning-dual-listbox>
                                     </lightning-layout-item>
-                                </template>
-                                
+                                </template>                                
 
                                 <template if:true={loadBudgetTypefields}>  
                                 <template if:false={showAvailableBudgets}>
@@ -208,6 +208,7 @@
                                     </lightning-layout-item>
                                 </template>
 
+                                <!--anushya TWC3117-17373-->
                                 <template if:true={showApprovalCheckbox}>
                                     <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
                                         <lightning-input type="checkbox" 
@@ -220,6 +221,7 @@
                                         ></lightning-input>
                                     </lightning-layout-item>
                                 </template>
+                                <!--anushya TWC3117-17373-->
     
                                 <template if:true={availableBudgetWarning.Core_MDF_Opal_Budget_Type_Txt__c}>
                                     <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
@@ -307,12 +309,7 @@
                                         <lightning-textarea name="Description" maxlength="32000" field-level-help={campaignFieldHelpText.Description} value={campaignFieldValue.Description} label={campaignFieldLabel.Description} required={campaignRequiredFields.Description} disabled={campaignFieldDisabled.Description} class="textAreaOrPicklistFields"></lightning-textarea>
                                     </lightning-layout-item>
                                 </template>
-    
-                                <template if:true={campaignFieldVisibility.Core_MDF_Hero_Product__c}>
-                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
-                                        <lightning-textarea name="Core_MDF_Hero_Product__c" maxlength="255" field-level-help={campaignFieldHelpText.Core_MDF_Hero_Product__c} value={campaignFieldValue.Core_MDF_Hero_Product__c} label={campaignFieldLabel.Core_MDF_Hero_Product__c} required={campaignRequiredFields.Core_MDF_Hero_Product__c} disabled={campaignFieldDisabled.Core_MDF_Hero_Product__c} class="textAreaOrPicklistFields"></lightning-textarea>
-                                    </lightning-layout-item>
-                                </template>
+
                                 <template if:true={showLegacyFields}>
                                 <template if:true={campaignFieldVisibility.Core_MDF_Spending_Cap_Amt__c}>
                                     <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
@@ -425,6 +422,7 @@
                                     onchange={handlePriorityPctChange}></lightning-input>
                                 </lightning-layout-item>
                             </template>
+                            <!-- Ealaya TWC3117-14432 changes -->
 
                                 <template if:true={campaignFieldVisibility.Core_MDF_CampOutcomeOpt_In_Ind__c}>
                                          <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
@@ -440,6 +438,7 @@
                                             </p>
                                         </lightning-layout-item>
                                 </template>
+                            <!-- Ealaya TWC3117-14432 changes -->
                                  <template if:true={campaignFieldVisibility.Core_MDF_Outcomes_nm__c}>
                                         <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
                                             <lightning-dual-listbox name="Core_MDF_Outcomes_nm__c"
@@ -463,9 +462,11 @@
                                                 <p class="slds-text-color_error slds-m-top_xx-small">
                                                     {label.Core_MDF_Campaign_Outcome_Validation}</p>
                                             </template>
+                                             <!-- Ealaya TWC3117-14432 changes -->
                                             <template if:true={outcomeBasedError}>
                                                 <p class="slds-text-color_error slds-m-top_xx-small">{label.Core_MDF_Campaign_Outcome_Based_Validation}</p>
                                             </template>
+                                             <!-- Ealaya TWC3117-14432 changes -->
                                                 <template if:true={campaignFieldValue.Core_MDF_Outcomes_nm__c}>
                                                     <c-core_-m-d-f_-custom-data-table title={title} columns={columns} table-data={rows}
                                                         ontablechange={handleTableChange}> </c-core_-m-d-f_-custom-data-table>
@@ -507,6 +508,18 @@
                                             disabled={campaignFieldDisabled.Core_MDF_Market__c}
                                             onchange={selectedCountry}></lightning-dual-listbox>
                                     </lightning-layout-item>
+                                    <!-- <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-dual-listbox name="Core_MDF_Test_Country__c"
+                                            class="textAreaOrPicklistFields"
+                                            label={campaignFieldLabel.Core_MDF_Test_Country__c}
+                                            source-label={sourceLabelStr}
+                                            selected-label={selectedLabelStr}
+                                            options={campaignPicValues.Core_MDF_Test_Country__c}
+                                            required={campaignRequiredFields.Core_MDF_Test_Country__c}
+                                            value ={campaignFieldValue.Core_MDF_Test_Country__c}
+                                            disabled={campaignFieldDisabled.Core_MDF_Test_Country__c}
+                                            onchange={selectedCountry}></lightning-dual-listbox>
+                                    </lightning-layout-item> -->
                                 </template>
                                 <!--DE114157: UAT Defect: Not able to create a campaign-->
                                 <template if:true={countryError}>

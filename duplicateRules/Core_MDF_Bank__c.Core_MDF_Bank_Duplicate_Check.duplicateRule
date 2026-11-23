@@ -7,7 +7,7 @@
     <duplicateRuleFilter xsi:nil="true"/>
     <duplicateRuleMatchRules>
         <matchRuleSObjectType>Core_MDF_Bank__c</matchRuleSObjectType>
-        <matchingRule>Core_MDF_Bank_Duplicate_Check_matching_rule</matchingRule>
+        <matchingRule>Core_MDF_Bank_Duplicate_Check_matching_rule_Updated</matchingRule>
         <objectMapping xsi:nil="true"/>
     </duplicateRuleMatchRules>
     <isActive>false</isActive>

@@ -1,3 +1,4 @@
 <aura:event type="APPLICATION" description="Event template">
-    <aura:attribute name="errorLog" type="Object"/>    
+    <aura:attribute name="errorLog" type="Object"/> 
+   <!-- <aura:attribute name="closeModal" type ="boolean" default="false"/>   -->
 </aura:event>

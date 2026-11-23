@@ -115,6 +115,7 @@ export default class LwcDualListBoxAccountUser extends LightningElement {
               });
             }
           }
+          
           if (this.allAvailableUsers != null) {
             //Getting mapped user list
             selectedUserInfoMap = result.toShowAtRight;

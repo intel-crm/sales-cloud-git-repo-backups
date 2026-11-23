@@ -20,6 +20,11 @@ import Core_MDF_Camp_Budget_Msg from '@salesforce/label/c.Core_MDF_Camp_Budget_M
 import REIMBURSEMENT_RATE from '@salesforce/schema/Core_MDF_Custom_Picklist__c.Core_MDF_Reimbursement_Rate__c';
 import CUSTOM_PICKLIST_OBJECT from '@salesforce/schema/Core_MDF_Custom_Picklist__c';
 import { addExistingReimbursementRate } from 'c/core_MDF_utilityModule';
+import Core_MDF_Campaign_Reimbursement_Amount from "@salesforce/label/c.Core_MDF_Campaign_Reimbursement_Amount";
+//aditya
+import Core_MDF_Budget_Consumption from "@salesforce/label/c.Core_MDF_Budget_Consumption";
+import Core_MDF_Available_Budget_Amount from "@salesforce/label/c.Core_MDF_Available_Budget_Amount_Label";
+
 //import { getPicklistValues, getObjectInfo } from 'lightning/uiObjectInfoApi';
 //import CAMPAIGN_BUDGETS_OBJECT from '@salesforce/schema/Core_MDF_Campaign_Budgets__c';
 
@@ -53,9 +58,8 @@ export default class Core_MDF_CampaignBudgets extends LightningElement {
     @track activityAmtBudgets;
     @api programName;
     
-    @track isEEFProg=false;
+    @track isEEFProg=false;   
     isCoGTMProg=false;
-    
     //@track showForm = false;
     camapign;
 
@@ -69,6 +73,9 @@ export default class Core_MDF_CampaignBudgets extends LightningElement {
     budgetTypeRrOptionsStr = Core_MDF_budgetTypeRRValuesMap;
     budgetAmountErrMsg = Core_MDF_CampaignBudgets_ErrMsg;
     budgetAmountActivityErrorMsg = Core_MDF_Camp_Budget_Msg;
+    campReimbAmtLabel = Core_MDF_Campaign_Reimbursement_Amount;
+    consumedBudgetAmtLabel = Core_MDF_Budget_Consumption;
+    availableBudgetAmtLabel = Core_MDF_Available_Budget_Amount;
 
     @wire(getRecord, { recordId: '$recordId', fields: [IS_LEGACY,PROPBASEDINDICATOR, PROGRAM_NAME] })
     wiredRecord({ data }) {
@@ -189,6 +196,10 @@ export default class Core_MDF_CampaignBudgets extends LightningElement {
             this.displayMode = true;
             this.requiredFields = false;
         }
+        console.log('in campaign budgets cmp campaignBudgets ' + JSON.stringify(this.campaignBudgets));
+        console.log('in campaign budgets cmp old campaignBudgets ' + JSON.stringify(this.oldCampaignBudgets));
+        console.log('in campaign budgets cmp mode ' + this.recMode);
+        console.log('in campaign budgets cmp status ' + this.recStatus);
 
         if (this.recMode === 'edit' && this.recStatus !== 'Cancelled' && this.recStatus !== 'Completed') {
             this.enableBudgetAmountEdit = true;
@@ -306,15 +317,17 @@ export default class Core_MDF_CampaignBudgets extends LightningElement {
                         if (this.budgetTypeRrOptionMap.has(campaignBudgetsFromApex[key].Core_MDF_Budget_Type_Nm__c)) {
                             rrOptions = this.budgetTypeRrOptionMap.get(campaignBudgetsFromApex[key].Core_MDF_Budget_Type_Nm__c);
                         }
+
                         // New RR changes - RP
                         let finalRROptions = [];
                         finalRROptions = addExistingReimbursementRate(campaignBudgetsFromApex[key].Core_MDF_Reimbursement_Rate_Pct__c, rrOptions);
 
                         // US982502 - [Opal - CCF/DCF] - [Campaign] - RR% until 100% for MDF and MDF+ end
-                        var budgetNameString =this.getBudgetNameString(campaignBudgetsFromApex[key].Core_MDF_Budget_Name_Id__r.Title, campaignBudgetsFromApex[key].Core_MDF_Budget_Type_Nm__c,campaignBudgetsFromApex[key].Core_MDF_Start_Date_Dt__c , campaignBudgetsFromApex[key].Core_MDF_End_Date_Dt__c,campaignBudgetsFromApex[key].Core_MDF_Budget_Name_Id__r.Core_MDF_budget_ref_nbr__c);
+                        //aditya
+                        var budgetNameString =this.getBudgetNameString(campaignBudgetsFromApex[key].Core_MDF_Budget_Name_Id__r.Title, campaignBudgetsFromApex[key].Core_MDF_Budget_Type_Nm__c,campaignBudgetsFromApex[key].Core_MDF_Start_Date_Dt__c , campaignBudgetsFromApex[key].Core_MDF_End_Date_Dt__c,campaignBudgetsFromApex[key].Core_MDF_Budget_Name_Id__r.Core_MDF_budget_ref_nbr__c, campaignBudgetsFromApex[key].Core_MDF_Consumed_Budget_Amount__c, campaignBudgetsFromApex[key].Core_MDF_Available_Budget_Amount__c);
                         if (campaignBudgetsFromApex[key].Core_MDF_Active_ind__c) {
-
-                            let obj = { campaignId: this.recordId, budgetId: '', disable: this.displayMode, budgetName: budgetNameString, budgetAmount: campaignBudgetsFromApex[key].Core_MDF_Budget_Amt__c, budgetRR: campaignBudgetsFromApex[key].Core_MDF_Reimbursement_Rate_Pct__c, budgetRAmount: campaignBudgetsFromApex[key].Core_MDF_Reimbursement_Amt__c, options: finalRROptions };
+                            //aditya
+                            let obj = { campaignId: this.recordId, budgetId: '', disable: this.displayMode, budgetName: budgetNameString, budgetAmount: campaignBudgetsFromApex[key].Core_MDF_Budget_Amt__c, budgetRR: campaignBudgetsFromApex[key].Core_MDF_Reimbursement_Rate_Pct__c, budgetRAmount: campaignBudgetsFromApex[key].Core_MDF_Reimbursement_Amt__c, options: finalRROptions, consumedBudgetAmount: campaignBudgetsFromApex[key].Core_MDF_Consumed_Budget_Amount__c, availableBudgetAmount: campaignBudgetsFromApex[key].Core_MDF_Available_Budget_Amount__c};
                             campaignBudgetsValues = [...campaignBudgetsValues, obj];
                         }
                     }
@@ -435,11 +448,12 @@ export default class Core_MDF_CampaignBudgets extends LightningElement {
             return false;
         }
     }
-    getBudgetNameString(budgetTitle, budgetType, startDate, endDate, budgetRefNumber) {
+    //aditya
+    getBudgetNameString(budgetTitle, budgetType, startDate, endDate, budgetRefNumber, consumedBudgetAmount, availableBudgetAmount) {
         if(this.checkForUndefinedEmptyAndNull(startDate) && this.checkForUndefinedEmptyAndNull(endDate)){
             startDate = startDate.replaceAll('-','/');
             endDate = endDate.replaceAll('-','/');
         }
-        return budgetRefNumber+': '+budgetTitle + ': ' + budgetType + ': ' + startDate + ' - ' + endDate;
+        return budgetRefNumber+': '+budgetTitle + ': ' + budgetType + ': ' + startDate + ' - ' + endDate + ' - ' + consumedBudgetAmount + ' - ' + availableBudgetAmount;
     }
 }

@@ -152,7 +152,7 @@
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>Read</externalSharingModel>
     <fieldSets>
         <fullName>Core_MDF_CustomMetadata_Utility_FieldSet</fullName>
         <description>Core_MDF_Custom_Metadata_Utility</description>
@@ -312,6 +312,16 @@
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
+            <field>Core_MDF_Date_1_dt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_MDF_Date_2_dt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
             <field>Core_MDF_Is_Active_Ind__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
@@ -423,7 +433,7 @@
     <fields>
         <fullName>Core_MDF_Field_11_txt__c</fullName>
         <label>Field 11</label>
-        <length>5000</length>
+        <length>32768</length>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>

@@ -1,0 +1,37 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<div style=""><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif">Dear {!Lead.OwnerFirstName},&nbsp;</font></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif"><br></font></div><div style=""><font face="Arial, sans-serif" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">The lead&nbsp; {!Lead.Name} from&nbsp; account&nbsp;</font><font face="Arial, sans-serif">{!Lead.Core_Existing_Covered_Account__c}&nbsp;</font><font style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">has been assigned to you&nbsp;</font><span style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">because it is from&nbsp; covered account. You are the account
+owner for the company associated with this lead.&nbsp;</span></div><p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><o:p></o:p></p><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-family: Arial, sans-serif; font-size: 12pt;"><br></span></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-family: Arial, sans-serif; font-size: 12pt;"><u>Actions</u>:&nbsp;</span></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><p class="MsoListParagraphCxSpFirst" style="text-indent:-.25in;mso-list:l0 level1 lfo1"><!--[if !supportLists]-->1.<span style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: &quot;Times New Roman&quot;;">&nbsp; &nbsp; &nbsp; &nbsp;</span>1.If lead is deemed a <u>potential opportunity</u>
+you shall: <o:p></o:p></p>
+
+<p class="MsoListParagraphCxSpMiddle" style="margin-left:1.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l0 level2 lfo1"><!--[if !supportLists]-->a.<span style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: &quot;Times New Roman&quot;;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><!--[endif]-->Change sales stage to “Sales Accepted Lead”<o:p></o:p></p>
+
+<p class="MsoListParagraphCxSpLast" style="margin-left:1.0in;mso-add-space:auto;
+text-indent:-.25in;mso-list:l0 level2 lfo1"><!--[if !supportLists]-->b.<span style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: &quot;Times New Roman&quot;;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><!--[endif]-->A call or email must be logged within 1
+business day of receipt of this notification<o:p></o:p></p></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif">&nbsp;</font></div><p class="MsoListParagraphCxSpFirst" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; text-indent: -0.25in;"><!--[if !supportLists]--><span style="mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin"><span style="mso-list:Ignore">1.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp; &nbsp; &nbsp; &nbsp;</span></span></span><span style="mso-bidi-font-family:Calibri;
+mso-bidi-theme-font:minor-latin">2.If lead is <u>not a potential opportunity </u>you
+shall:<o:p></o:p></span></p>
+
+<p class="MsoListParagraphCxSpMiddle" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; margin-left: 1in; text-indent: -0.25in;"><!--[if !supportLists]--><span style="mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin"><span style="mso-list:Ignore">a.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="mso-bidi-font-family:Calibri;
+mso-bidi-theme-font:minor-latin">Change Lead Status to “Rejected”<o:p></o:p></span></p>
+
+<p class="MsoListParagraphCxSpMiddle" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; margin-left: 1in; text-indent: -0.25in;"><!--[if !supportLists]--><span style="mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin"><span style="mso-list:Ignore">b.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="mso-bidi-font-family:Calibri;
+mso-bidi-theme-font:minor-latin">Lead sub-status field appears and an
+appropriate rejection reason must be indicated at this time<o:p></o:p></span></p>
+
+<p class="MsoListParagraphCxSpLast" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; margin-left: 1in; text-indent: -0.25in;"><!--[if !supportLists]--><span style="mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin"><span style="mso-list:Ignore">c.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="mso-bidi-font-family:Calibri;
+mso-bidi-theme-font:minor-latin">If desired, you can convert this Lead to a
+Contact under your existing Account for potential contact in the future<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="mso-bidi-font-family:Calibri;mso-bidi-theme-font:
+minor-latin">Good Luck!</span><b style="mso-bidi-font-weight:normal"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt;line-height:107%;mso-bidi-font-family:
+Calibri;mso-bidi-theme-font:minor-latin;color:#0070C0"><o:p></o:p></span></b></p></div>]]></td>
+</tr>
+</table>

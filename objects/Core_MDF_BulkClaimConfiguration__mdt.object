@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Holds records to check if tax and bank values are mandatory on bulk claim template</description>
+    <fields>
+        <fullName>Core_MDF_Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>holds current records status</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Core MDF Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Bank_Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>true if bank is required for current program and budget type combination</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Core MDF Bank Required</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Budget_Type__c</fullName>
+        <description>holds budget type value</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Core MDF Budget Type</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Program__c</fullName>
+        <description>Holds program value</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Core MDF Program</label>
+        <length>50</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Tax_Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>true if tax is required for current program and budget type combination</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Core MDF Tax Required</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>Core_MDF_BulkClaimConfiguration</label>
+    <pluralLabel>Core_MDF_BulkClaimConfigurations</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -60,11 +60,6 @@
         <name>Core_IPS_Is_Show_Variant__c</name>
     </fields>
     <fields>
-        <label><!-- Opportunity PAR --></label>
-        <name>Core_IPS_Opportunity_PAR__c</name>
-        <relationshipLabel><!-- Supported Products --></relationshipLabel>
-    </fields>
-    <fields>
         <help><!-- This field if checked indicates that the product is a public product;
 This field value cannot be changed once checked as Public Product. --></help>
         <label><!-- Public Product? --></label>
@@ -160,10 +155,6 @@ This field value cannot be changed once checked as Public Product. --></help>
         <name>Core_IPS_Prevent_EOIS_Removal</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- This Support Org not in use, cannot add or update Product to this Org. --></errorMessage>
-        <name>Core_IPS_Restrict_009_SupportedProduct</name>
-    </validationRules>
-    <validationRules>
         <errorMessage><!-- Only Valid Product Hierarchy can be made as Public Product --></errorMessage>
         <name>Core_IPS_VPH_Check_PublicProduct</name>
     </validationRules>
@@ -176,16 +167,8 @@ This field value cannot be changed once checked as Public Product. --></help>
         <name>Core_Product_Name_Cant_Be_Null</name>
     </validationRules>
     <webLinks>
-        <label><!-- Add_Case_Categories --></label>
-        <name>Add_Case_Categories</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Add_Environment_Details_LEX --></label>
-        <name>Add_Environment_Details_LEX</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Copy_Categories_EDQ_Lex --></label>
-        <name>Copy_Categories_EDQ_Lex</name>
+        <label><!-- Core_Add_Environment_Variables --></label>
+        <name>Core_Add_Environment_Variables</name>
     </webLinks>
     <webLinks>
         <label><!-- Core_Add_Issue_categories --></label>
@@ -206,5 +189,9 @@ This field value cannot be changed once checked as Public Product. --></help>
     <webLinks>
         <label><!-- Core_Supported_Product_Make_EOIS --></label>
         <name>Core_Supported_Product_Make_EOIS</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- New_Core_Add_Environment_Variables --></label>
+        <name>New_Core_Add_Environment_Variables</name>
     </webLinks>
 </CustomObjectTranslation>

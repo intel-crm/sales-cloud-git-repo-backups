@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <customSettingsType>List</customSettingsType>
-    <description>Stores</description>
+    <description>To restrict manual virtual Corp Account creation from Account</description>
     <enableFeeds>false</enableFeeds>
     <fields>
-        <fullName>PRM_Max_Account_Number__c</fullName>
-        <description>Stores maximum of account number</description>
-        <externalId>false</externalId>
-        <label>Max Account Number</label>
-        <length>80</length>
-        <required>false</required>
+        <fullName>Manual_VC_Insertion__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Manual VC Insertion</label>
         <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
+        <type>Checkbox</type>
     </fields>
-    <label>Account Number</label>
+    <label>preventManualVCInsertion</label>
     <visibility>Public</visibility>
 </CustomObject>

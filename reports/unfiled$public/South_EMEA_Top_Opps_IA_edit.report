@@ -7,11 +7,11 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>CLOSE_DATE</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE2</field>
     </columns>
     <columns>
         <field>PROBABILITY</field>
@@ -52,6 +52,13 @@
             <operator>equals</operator>
             <value>BEL,FRA,ITA,LUX,NLD,PRT,ESP</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Approval_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Not Submitted</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
@@ -83,6 +90,6 @@
         <dateColumn>CLOSE_DATE</dateColumn>
         <endDate>2023-03-25</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>1899-12-31</startDate>
+        <startDate>2018-01-01</startDate>
     </timeFrameFilter>
 </Report>

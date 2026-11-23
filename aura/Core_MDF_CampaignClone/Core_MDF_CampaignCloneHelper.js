@@ -128,7 +128,7 @@
     getAssociatedActivity : function(component, event) {
         
         if( component.get("v.mode") == 'clone' && (component.get("v.recordTypeDeveloperName") ==  $A.get('$Label.c.Core_MDF_IPA_RecordType') && component.get("v.proposalBasedIndicator"))){  
-	var action = component.get("c.loadPFRRecords");
+          var action = component.get("c.loadPFRRecords");
         action.setParams({
             campId : component.get("v.recordId"),
             mode: component.get("v.mode"),
@@ -332,6 +332,13 @@
              
              if(activityList != undefined && activityList != null && activityList != ''){
                  for(var i=0;i < activityList.length;i++){
+                    //IPA-Jegan
+                    /*activityList[i].showKPIErrorClone = ((activityList[i].hasOwnProperty("showKPIErrorClone") && activityList[i].showKPIErrorClone == false && activityList[i].hasOwnProperty("kpiMetricEdited") && activityList[i].kpiMetricEdited) || component.get('v.outcomeBasedOptInInd')) ? false : true;
+                    if(activityList[i].hasOwnProperty("showKPIErrorClone") && component.get('v.outcomeBasedOptInInd')){
+                        delete activityList[i].showKPIErrorClone;
+                    }
+                    
+                    activityList[i].showTacticMetricsErrorClone = ((activityList[i].hasOwnProperty("Core_MDF_Tactics_nm__c") && !this.isNotBlank(activityList[i].Core_MDF_Tactics_nm__c) || !activityList[i].hasOwnProperty("Core_MDF_Tactics_nm__c") || (!activityList[i].hasOwnProperty("tacticMetricEdited") ||  activityList[i].hasOwnProperty("tacticMetricEdited") && !activityList[i].tacticMetricEdited)) && component.get('v.outcomeBasedOptInInd')) ? true : false;*/
 
                     activityList[i].showKPIErrorClone = ((activityList[i].hasOwnProperty("showKPIErrorClone") && activityList[i].showKPIErrorClone == false && activityList[i].hasOwnProperty("kpiMetricEdited") && activityList[i].kpiMetricEdited) || component.get('v.outcomeBasedOptInInd')) ? false : true;
                     if(activityList[i].hasOwnProperty("showKPIErrorClone") && component.get('v.outcomeBasedOptInInd')){
@@ -392,6 +399,7 @@
              return (value !== undefined && value !== null && value !== '');
          },    
 
+         //IPA-Jegan
          //IPA Outcome Based optin - To map the Activity record with Activity Attribute records
          formActivityToActivityAttributes :function(component, event) {
             var activityToAttributeListFromEvent = JSON.parse(JSON.stringify(event.getParam("activityToAttrList")));

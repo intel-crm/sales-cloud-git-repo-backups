@@ -342,15 +342,6 @@
             <sourceValues>
                 <sourceValue>Stratix 10 DX</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Stratix® 10 NX FPGA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Stratix® 10 TX FPGA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Stratix® 10 DX FPGA</sourceValue>
-            </sourceValues>
             <value>Stratix 10</value>
         </values>
         <values>
@@ -378,73 +369,22 @@
             <sourceValues>
                 <sourceValue>Intel® PAC With Arria® 10 GX FPGA</sourceValue>
             </sourceValues>
+            <value>Rush Creek</value>
+        </values>
+        <values>
             <sourceValues>
                 <sourceValue>Intel® PAC With Stratix® 10 SX FPGA</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® FPGA PAC N3000</sourceValue>
-            </sourceValues>
+            <value>Darby Creek</value>
+        </values>
+        <values>
             <sourceValues>
                 <sourceValue>Intel® PAC With Arria® 10 GT FPGA</sourceValue>
             </sourceValues>
             <sourceValues>
-                <sourceValue>Pyramid Lake</sourceValue>
+                <sourceValue>Intel® FPGA PAC N3000</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® SNIC Third Party</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® FPGA PAC D5005</sourceValue>
-            </sourceValues>
-            <value>Accel Cards</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ M-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ I-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ F-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ F-Series FPGAs and SoC FPGAs</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ I-Series SoC FPGAs</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>agilex</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ 7 FPGAs and SoC FPGAs F-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ 7 FPGAs and SoC FPGAs I-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ 7 FPGAs and SoC FPGAs M-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel Agilex® 7 FPGAs and SoC FPGAs F-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel Agilex® 7 FPGAs and SoC FPGAs I-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel Agilex® 7 FPGAs and SoC FPGAs M-Series</sourceValue>
-            </sourceValues>
-            <value>Agilex 7</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ 5 FPGAs and SoC FPGAs E-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel Agilex® 5 FPGAs and SoC FPGAs E-Series</sourceValue>
-            </sourceValues>
-            <value>Agilex 5</value>
+            <value>Vista Creek</value>
         </values>
     </buckets>
     <chart>
@@ -522,7 +462,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Case.Core_AAQC_Case_recordType</value>
+            <value>Case.Core_AAQC_Case_recordType,Case.CEP_Case</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
@@ -538,25 +478,18 @@
             <operator>notEqual</operator>
             <value>Invalid</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT.NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>IPS Test Account</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
+    <format>Matrix</format>
     <groupingsDown>
         <dateGranularity>Month</dateGranularity>
         <field>CREATED_DATEONLY</field>
-        <sortOrder>Asc</sortOrder>
+        <sortOrder>Desc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>BucketField_41275784</field>
-        <sortOrder>Desc</sortOrder>
+        <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>MIPS IPS Cases by Family</name>
     <params>
@@ -574,6 +507,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_PREVCURY</interval>
+        <endDate>2019-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2018-07-01</startDate>
     </timeFrameFilter>
 </Report>

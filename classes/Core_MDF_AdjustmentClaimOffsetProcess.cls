@@ -359,14 +359,14 @@ Description:        This method is used to create offset entry
 Added By:           Accenture - AD - 06/03/2019
 Modified By:        Date:       Changes: 
 *******************************************************************************************************/      
-    public static Core_MDF_Claim_Offset__c createClaimOffsetEntry(Id offsetClaimId,Id adjustmentClaimId,Decimal offsetAmount){
+    /*public static Core_MDF_Claim_Offset__c createClaimOffsetEntry(Id offsetClaimId,Id adjustmentClaimId,Decimal offsetAmount){
         //create new claim offest record
         Core_MDF_Claim_Offset__c newClaimOffset = new Core_MDF_Claim_Offset__c();
         newClaimOffset.Core_MDF_Offset_Claim_Nbr__c = offsetClaimId;
         newClaimOffset.Core_MDF_Adjustment_Claim_Nbr__c = adjustmentClaimId;
         newClaimOffset.Core_MDF_Offset_Amount_Amt__c = offsetAmount;
         return newClaimOffset;
-    }
+    }*/
     /****************************************************************************************************** 
 Method Name:        generateQueryFilters
 @return  :          N/A

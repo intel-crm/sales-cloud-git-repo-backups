@@ -9,12 +9,40 @@
         <value>Escalations</value>
     </caseValues>
     <fields>
+        <label><!-- CheckCustomPermission --></label>
+        <name>CheckCustomPermission__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_MDF_Account_txt_del__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Id --></label>
+        <name>Core_MDF_Activity_Id_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Name 1 --></label>
+        <name>Core_MDF_Activity_Name_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Activity Name --></label>
         <name>Core_MDF_Activity_Name_url__c</name>
     </fields>
     <fields>
+        <label><!-- Activity # --></label>
+        <name>Core_MDF_Activity_Number_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity --></label>
+        <name>Core_MDF_Activity_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Approval Flag --></label>
         <name>Core_MDF_Approval_Flag_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Step Completed --></label>
+        <name>Core_MDF_Approval_Step_Completed_nbr__c</name>
     </fields>
     <fields>
         <help><!-- Amount approved for reimbursement after escalation review --></help>
@@ -93,6 +121,10 @@
         <relationshipLabel><!-- Escalations --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Claim ID Number --></label>
+        <name>Core_MDF_Claim_ID_Number_id__c</name>
+    </fields>
+    <fields>
         <label><!-- Claim Name --></label>
         <name>Core_MDF_Claim_Number_id__c</name>
         <relationshipLabel><!-- Escalations --></relationshipLabel>
@@ -110,6 +142,10 @@
         <label><!-- Activity Name --></label>
         <name>Core_MDF_Co_Marketing_Activity_id__c</name>
         <relationshipLabel><!-- Escalations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Comments(Reviewer Comments) --></label>
+        <name>Core_MDF_Comments_Reviewer_Comments_txt__c</name>
     </fields>
     <fields>
         <label><!-- Country --></label>
@@ -146,6 +182,14 @@
     <fields>
         <label><!-- Escalation Name --></label>
         <name>Core_MDF_Escalation_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Escalation Status1 --></label>
+        <name>Core_MDF_Escalation_Status_Cancel_nm__c</name>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Escalation Status --></label>
@@ -302,6 +346,10 @@
         <name>Core_MDF_Check_Account_Active</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Selected user is not Active. --></errorMessage>
+        <name>Core_MDF_Check_ClaimSubmitter_Active</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Required Fields:	
 Escalation Name, Root Cause, Case ID Number, 
 Claim Submitter --></errorMessage>
@@ -314,6 +362,14 @@ Claim Submitter --></errorMessage>
     <validationRules>
         <errorMessage><!-- Approved amount cannot be edited in this status. --></errorMessage>
         <name>Core_MDF_ErrorOnEditingApprovedAmount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Claim Submitter can be edited only for Pending Review status. --></errorMessage>
+        <name>Core_MDF_ErrorOnEditingClaimSubmitter</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Do not Auto Create Claim can be edited only for Pending Review status. --></errorMessage>
+        <name>Core_MDF_ErrorOnEditing_Checkbox</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Claim Submitter cannot be edited when a claim is already created. --></errorMessage>
@@ -330,6 +386,10 @@ Claim Submitter --></errorMessage>
         <name>Core_MDF_Prevent_Sub_Activity</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Claim cannot be created - associated campaign is declined. --></errorMessage>
+        <name>Core_MDF_RestrictClaimOnDeclinedActivity</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Escalation cannot be created on an Activity that is not Approved and Closed. --></errorMessage>
         <name>Core_MDF_RestrictMissedApprovalActivity</name>
     </validationRules>
@@ -340,5 +400,9 @@ Claim Submitter --></errorMessage>
     <webLinks>
         <label><!-- Core_MDF_Export_List_View --></label>
         <name>Core_MDF_Export_List_View</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- export_Test --></label>
+        <name>export_Test</name>
     </webLinks>
 </CustomObjectTranslation>

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <customButtons>Core_IPS_New_Comment</customButtons>
-    <customButtons>Core_IPS_Sales_Rep_Close_Case</customButtons>
     <customButtons>Core_IPS_Copy</customButtons>
     <customButtons>ExportPDF</customButtons>
     <excludeButtons>ChangeOwnerOne</excludeButtons>
@@ -10,7 +8,6 @@
     <excludeButtons>CloseCase</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>Edit</excludeButtons>
-    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Share</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <headers>PersonalTagging</headers>
@@ -18,14 +15,14 @@
         <customLabel>true</customLabel>
         <detailHeading>false</detailHeading>
         <editHeading>false</editHeading>
-        <label>New Section</label>
+        <label>Case Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Required</behavior>
+                <behavior>Readonly</behavior>
                 <field>Core_IPS_Classification__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>Core_IPS_Customer_Visible__c</field>
             </layoutItems>
             <layoutItems>
@@ -53,8 +50,16 @@
                 <field>Core_ConEmail__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_IPS_Case_Owner__c</field>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Media_Vehicle_txt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Document_Upload_Status_txt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Earlier_Quarter_Closed_Dt__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -75,7 +80,7 @@
                 <field>Core_IPS_Assigned_Queue__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>Core_Intel_Sup_Owner__c</field>
             </layoutItems>
             <layoutItems>
@@ -87,11 +92,11 @@
                 <field>Core_Partner_Supported_Account__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>Core_IPS_Restricted_Secret_Content__c</field>
             </layoutItems>
         </layoutColumns>
-        <style>TwoColumnsLeftToRight</style>
+        <style>TwoColumnsTopToBottom</style>
     </layoutSections>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -109,34 +114,34 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_External_Issue_Category__c</field>
+                <field>Core_Case_Issue_Category__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_External_Issue_Subcategory__c</field>
+                <field>Core_Case_Issue_Sub_Category__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_Product_Organization__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>Core_Severity__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>Core_Severity_Reason__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
+                <behavior>Readonly</behavior>
                 <field>Core_CaseType__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>Core_End_Customer__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>Core_Customer_Reference_ID__c</field>
             </layoutItems>
             <layoutItems>
@@ -144,16 +149,12 @@
                 <field>Core_IPS_Legacy_IPS_ID__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>Core_IPS_GEC_Case__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_IPS_GEC_Flag__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_Problem_Statement__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -206,57 +207,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_IPS_Knowledge_Base_Link__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_Resolution__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <style>TwoColumnsLeftToRight</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>false</editHeading>
-        <label>Hot Case Management</label>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_HC_Hot_Issue__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_HC_Customer_Disposition__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_HC_Executive_Summary__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_HC_Help_Needed__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Date_and_time_of_hot__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_HC_Debug_Progress__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_HC_Intel_Disposition__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_HC_Latest_Update__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_HC_Next_Actions__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
@@ -264,7 +214,7 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>System/Integration Information (This section refers to old backend system)</label>
+        <label>System/Integration Information</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -323,37 +273,6 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>New Backend System (This section is for the new IPS - HSDES bridge)</label>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_New_Backend_System__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_BES_Promote_Status__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_IPS_Backed_ID_URL__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_IPS_Backend_Rev__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_BackendID__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <style>TwoColumnsTopToBottom</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
         <label>Description Information</label>
         <layoutColumns>
             <layoutItems>
@@ -372,18 +291,10 @@
         <detailHeading>true</detailHeading>
         <editHeading>false</editHeading>
         <label>Case Comments</label>
-        <layoutColumns/>
-        <style>OneColumn</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Coveo Search</label>
         <layoutColumns>
             <layoutItems>
                 <height>700</height>
-                <page>Core_IPS_CustomCoveoPanel</page>
+                <page>Core_IPS_CaseComments</page>
                 <showLabel>false</showLabel>
                 <showScrollbars>true</showScrollbars>
                 <width>100%</width>
@@ -395,14 +306,6 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Case Attachments</label>
-        <layoutColumns/>
-        <style>OneColumn</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>false</editHeading>
         <label>Environment Details</label>
         <layoutColumns>
             <layoutItems>
@@ -452,14 +355,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_IPS_Minds__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_IPS_Country_Region__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
                 <field>Description</field>
             </layoutItems>
         </layoutColumns>
@@ -487,10 +382,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_IPS_Owner_2nd_Manager__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_IPS_Case_Owner_Groups__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -524,6 +415,22 @@
     <layoutSections>
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Case Attachments</label>
+        <layoutColumns>
+            <layoutItems>
+                <height>500</height>
+                <page>Core_IPS_CaseAttachment_Visibility</page>
+                <showLabel>false</showLabel>
+                <showScrollbars>false</showScrollbars>
+                <width>100%</width>
+            </layoutItems>
+        </layoutColumns>
+        <style>OneColumn</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>false</detailHeading>
         <editHeading>false</editHeading>
         <label>Survey Feedback</label>
         <layoutColumns>
@@ -541,7 +448,7 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>false</editHeading>
-        <label>MINDS Responses</label>
+        <label>GEC Details/MAG Questionnaire</label>
         <layoutColumns>
             <layoutItems>
                 <height>200</height>
@@ -553,50 +460,15 @@
         </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>
-    <platformActionList>
-        <actionListContext>Record</actionListContext>
-        <platformActionListItems>
-            <actionName>PrintableView</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>MergeCase</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>1</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>StartOutboundConversation</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>2</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>FeedItem.TextPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>3</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>FeedItem.ContentPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>4</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>FeedItem.LinkPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>5</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>MassAccept</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>6</sortOrder>
-        </platformActionListItems>
-    </platformActionList>
     <quickActionList>
         <quickActionListItems>
             <quickActionName>FeedItem.TextPost</quickActionName>
         </quickActionListItems>
         <quickActionListItems>
-            <quickActionName>FeedItem.QuestionPost</quickActionName>
+            <quickActionName>FeedItem.ContentPost</quickActionName>
+        </quickActionListItems>
+        <quickActionListItems>
+            <quickActionName>FeedItem.LinkPost</quickActionName>
         </quickActionListItems>
     </quickActionList>
     <relatedContent>
@@ -614,94 +486,26 @@
         </relatedContentItems>
     </relatedContent>
     <relatedLists>
-        <customButtons>Add_External_Interested_Party</customButtons>
-        <customButtons>Manage_Interested_Parties_LWC</customButtons>
         <excludeButtons>New</excludeButtons>
         <fields>First_Name__c</fields>
         <fields>Last_Name__c</fields>
         <fields>Email__c</fields>
-        <fields>Active__c</fields>
         <relatedList>Core_IPS_Case_Interested_Party__c.Case__c</relatedList>
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>Status__c</fields>
-        <fields>Sub_Status__c</fields>
-        <fields>Owner__c</fields>
-        <fields>Last_Assigned_Queue__c</fields>
-        <fields>Escalated_Level__c</fields>
-        <fields>From__c</fields>
-        <fields>Until__c</fields>
-        <fields>Total_Hours__c</fields>
-        <fields>Total_Days__c</fields>
-        <relatedList>Status_Ownership_Duration__c.Parent__c</relatedList>
-        <sortField>From__c</sortField>
-        <sortOrder>Desc</sortOrder>
-    </relatedLists>
     <relatedObjects>ContactId</relatedObjects>
-    <relatedObjects>AccountId</relatedObjects>
-    <relatedObjects>AssetId</relatedObjects>
-    <relatedObjects>Core_Case_Issue_Category__c</relatedObjects>
-    <relatedObjects>Core_Case_Issue_Sub_Category__c</relatedObjects>
-    <relatedObjects>Core_IPS_Project_Case__c</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
-    <showHighlightsPanel>true</showHighlightsPanel>
+    <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>
     <showKnowledgeComponent>false</showKnowledgeComponent>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>true</showSubmitAndAttachButton>
     <summaryLayout>
         <masterLabel>00ho000000CJN4g</masterLabel>
-        <sizeX>3</sizeX>
-        <sizeY>4</sizeY>
-        <summaryLayoutItems>
-            <field>ContactId</field>
-            <posX>0</posX>
-            <posY>0</posY>
-        </summaryLayoutItems>
-        <summaryLayoutItems>
-            <field>AccountId</field>
-            <posX>0</posX>
-            <posY>1</posY>
-        </summaryLayoutItems>
-        <summaryLayoutItems>
-            <field>Core_Intel_Sup_Owner__c</field>
-            <posX>0</posX>
-            <posY>2</posY>
-        </summaryLayoutItems>
-        <summaryLayoutItems>
-            <field>CaseNumber</field>
-            <posX>1</posX>
-            <posY>0</posY>
-        </summaryLayoutItems>
-        <summaryLayoutItems>
-            <field>CreatedDate</field>
-            <posX>1</posX>
-            <posY>1</posY>
-        </summaryLayoutItems>
-        <summaryLayoutItems>
-            <field>Subject</field>
-            <posX>1</posX>
-            <posY>2</posY>
-        </summaryLayoutItems>
-        <summaryLayoutItems>
-            <field>Description</field>
-            <posX>1</posX>
-            <posY>3</posY>
-        </summaryLayoutItems>
-        <summaryLayoutItems>
-            <field>Status</field>
-            <posX>2</posX>
-            <posY>0</posY>
-        </summaryLayoutItems>
-        <summaryLayoutItems>
-            <field>OwnerId</field>
-            <posX>2</posX>
-            <posY>1</posY>
-        </summaryLayoutItems>
-        <summaryLayoutStyle>CaseInteraction</summaryLayoutStyle>
+        <sizeX>4</sizeX>
+        <sizeY>0</sizeY>
+        <summaryLayoutStyle>Default</summaryLayoutStyle>
     </summaryLayout>
 </Layout>

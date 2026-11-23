@@ -4,13 +4,7 @@
         <field>CUST_NAME</field>
     </columns>
     <columns>
-        <field>CUST_LAST_UPDATE</field>
-    </columns>
-    <columns>
         <field>FK_NAME</field>
-    </columns>
-    <columns>
-        <field>FK_LAST_UPDATE</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -33,8 +27,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>CUST_LAST_UPDATE</sortColumn>
-    <sortOrder>Desc</sortOrder>
+    <sortColumn>CUST_NAME</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CUST_CREATED_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

@@ -44,13 +44,6 @@
             <operator>equals</operator>
             <value>Approved,Pending</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Approved,Design accepted,Pre-Approved,Re-Submitted,Submitted</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>

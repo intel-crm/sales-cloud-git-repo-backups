@@ -8,7 +8,7 @@
     <caseValues>
         <caseType>Nominative</caseType>
         <plural>true</plural>
-        <value>Платежные документы</value>
+        <value>Платежный документ</value>
     </caseValues>
     <caseValues>
         <caseType>Accusative</caseType>
@@ -18,7 +18,7 @@
     <caseValues>
         <caseType>Accusative</caseType>
         <plural>true</plural>
-        <value>Платежные документы</value>
+        <value>Платежный документ</value>
     </caseValues>
     <caseValues>
         <caseType>Genitive</caseType>
@@ -28,7 +28,7 @@
     <caseValues>
         <caseType>Genitive</caseType>
         <plural>true</plural>
-        <value>Платежные документы</value>
+        <value>Платежный документ</value>
     </caseValues>
     <caseValues>
         <caseType>Dative</caseType>
@@ -38,7 +38,7 @@
     <caseValues>
         <caseType>Dative</caseType>
         <plural>true</plural>
-        <value>Платежные документы</value>
+        <value>Платежный документ</value>
     </caseValues>
     <caseValues>
         <caseType>Instrumental</caseType>
@@ -48,17 +48,17 @@
     <caseValues>
         <caseType>Instrumental</caseType>
         <plural>true</plural>
-        <value>Платежные документы</value>
-    </caseValues>
-    <caseValues>
-        <caseType>Prepositional</caseType>
-        <plural>false</plural>
         <value>Платежный документ</value>
     </caseValues>
     <caseValues>
         <caseType>Prepositional</caseType>
+        <plural>false</plural>
+        <value>Payment Document</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Prepositional</caseType>
         <plural>true</plural>
-        <value>Платежные документы</value>
+        <value>Payment Documents</value>
     </caseValues>
     <fields>
         <label>Название счета</label>
@@ -88,9 +88,25 @@
         <relationshipLabel><!-- Payment Documents --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Document Requested Date --></label>
+        <name>Core_MDF_Document_Requested_Dtm__c</name>
+    </fields>
+    <fields>
         <help>Указывает на тип платежного документа, который покупатель должен загрузить.</help>
         <label>Тип документа</label>
         <name>Core_MDF_Document_Type_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- First Reminder Date --></label>
+        <name>Core_MDF_First_Reminder_Date_Dtm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Funding Source Amount --></label>
+        <name>Core_MDF_Funding_Source_Amount_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Funding Source --></label>
+        <name>Core_MDF_Funding_Source_txt__c</name>
     </fields>
     <fields>
         <label><!-- Last Modified By --></label>
@@ -103,6 +119,15 @@
     <fields>
         <label><!-- Payment Admin Reminder Sent --></label>
         <name>Core_MDF_Payment_Admin_Reminder_Sent_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the adjustment amount populated as a result of post payment audit --></help>
+        <label><!-- Post Payment Adjustment Amount --></label>
+        <name>Core_MDF_Post_Payment_Adjustment_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Queue Id --></label>
+        <name>Core_MDF_Queue_Id_Txt__c</name>
     </fields>
     <fields>
         <label><!-- RSM Reminder Sent --></label>
@@ -118,7 +143,11 @@
         <name>Core_MDF_Reimbursement_Amt__c</name>
     </fields>
     <fields>
-        <help>Статус платежного документа</help>
+        <label><!-- Second Reminder Date --></label>
+        <name>Core_MDF_Second_Reminder_Date_Dtm__c</name>
+    </fields>
+    <fields>
+        <help>The Статус платежного документа</help>
         <label>Статус документа</label>
         <name>Core_MDF_Status_Txt__c</name>
         <picklistValues>
@@ -152,9 +181,21 @@
         <relationshipLabel><!-- Payment Documents (Sub Claim) --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Sub Claim Title --></label>
+        <name>Core_MDF_Sub_Claim_Title_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- DNR:Core_MDF_Unique_Id --></label>
+        <name>Core_MDF_Unique_Id__c</name>
+    </fields>
+    <fields>
         <help>Сумма налога</help>
         <label>Сумма налога</label>
         <name>Core_MDF_VAT_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- VAT Cancellation Comment --></label>
+        <name>Core_MDF_VAT_Comments_txt__c</name>
     </fields>
     <fields>
         <label><!-- Created By --></label>
@@ -171,7 +212,7 @@
         <name>Core_MDF_VAT_Per__c</name>
     </fields>
     <fields>
-        <label>Руководство по платежным документам</label>
+        <label><!-- Payment Document Guidelines --></label>
         <name>Core_MDF_Vat_Inv_Guide_Link__c</name>
     </fields>
     <gender>Neuter</gender>
@@ -183,7 +224,7 @@
     </recordTypes>
     <recordTypes>
         <description><!-- Submit for Approval Record Type --></description>
-        <label><!-- Submit for Approval --></label>
+        <label>Представить на утверждение</label>
         <name>Core_MDF_Submit_for_Approval</name>
     </recordTypes>
     <validationRules>

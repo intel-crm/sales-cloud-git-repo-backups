@@ -1,0 +1,37 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+                access="global" controller="Core_MDF_Inactivate_Bank_Controller" >
+    
+     <!-- Event Handlers-->
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" description="Call doInit function on component load to get picklist values"/>
+    
+    <!--Attributes-->
+    <aura:attribute name="selectedDate" type="date" default="[]" description="Genre Picklist Values"/> 
+    <aura:attribute name="ProgramList" type="List" description="ProgramList Picklist Values"/>
+    <aura:attribute name="selectedProgramList" type="List" description="Selected ProgramList Picklist Values"/>
+    <aura:attribute name="disabledate" type="Boolean" default="true"/>
+    <div class="slds-align_absolute-center">
+     <lightning:layout>
+        <lightning:layoutItem>
+                 <lightning:button variant="brand" label="Save" onclick="{!c.getProgramInfo}" />
+         </lightning:layoutItem>
+    </lightning:layout>
+    </div>
+    <lightning:layout horizontalAlign="spread" multipleRows="true">
+        <lightning:layoutItem padding="around-small" flexibility="auto" >
+            <lightning:input aura:id="NewForm" type="date" label="Date"  name="Inactivate Date" value ="{!v.selectedDate}" disabled="{!v.disabledate}"/>   
+        </lightning:layoutItem>
+    </lightning:layout>
+     <lightning:layout horizontalAlign="spread" multipleRows="true">
+        <lightning:layoutItem padding="around-small" flexibility="auto" >
+            <lightning:dualListbox aura:id="NewForm"
+                                   name="Inactivate By Program"
+                                   label="Inactivate By Program"
+                                   sourceLabel="Selected"
+                                   selectedLabel="Available"
+                                   options="{!v.ProgramList}"
+                                   value="{!v.selectedProgramList}"
+                                   onchange="{!c.handleProgramChange}">
+            </lightning:dualListbox>
+        </lightning:layoutItem>
+        </lightning:layout>
+</aura:component>

@@ -1,5 +1,5 @@
 public without sharing class Core_MDF_SubUnsub_Notifications_Utility {
-    //Test Class: Core_MDF_SubscriptionUtility_Test
+    
     //Query Notification Subscription records based on user access
     @AuraEnabled
     public static List<notificationData> getSubscriptionDetails(Id usrId, String application) 

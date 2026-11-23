@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_MDF_BankTrigger_Test</testClassName>
+    <testClassName>Core_MDF_Bulk_Transaction_Test</testClassName>
+    <testClassName>Core_MDF_CCP_GenericUtility_Test</testClassName>
+    <testClassName>Core_MDF_DeletePNUM_Batch_Test</testClassName>
+    <testClassName>Core_MDF_PartnerFundClaim_Test</testClassName>
+    <testClassName>Core_MDF_PartnerShipScore_to_Detail_Test</testClassName>
+    <testClassName>Core_MDF_ProcessCCP_Claim_Test</testClassName>
+    <testClassName>Core_MDF_ProcessEntitlements_Test</testClassName>
+    <testClassName>Core_MDF_RecoveryClmReportViewCtrl_Test</testClassName>
+</ApexTestSuite>

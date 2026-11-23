@@ -14,8 +14,6 @@ public class Core_Master_Issue_Category_Handler{
             }
         }
         // Iterating and assigning Status value for the "Case Category" and its "Case SubCategory" records based on the "Master Case Category - (Case Category)"
-        // FLS check added-Venugopal
-        if(Core_IPS_Product_Issue_Category__c.SObjectType.getDescribe().isAccessible()){
         for(Core_IPS_Product_Issue_Category__c CaseCategory : [SELECT Id, Core_Issue_Category_Name__c, Core_Status__c, Core_Type__c, (SELECT Id, Core_Issue_Category_Name__c, Core_Status__c, Core_Type__c FROM Product_Issue_Sub_Categories__r WHERE Core_Type__c = 'Case Subcategory') FROM Core_IPS_Product_Issue_Category__c WHERE Core_Issue_Category_Name__c IN: listOfCoreMasIssCatId AND Core_Type__c = 'Case Category']){
             CaseCategory.Core_Status__c = trgNewMap.get(CaseCategory.Core_Issue_Category_Name__c).Core_Status__c;
             listOfCaseCategoryToUpdate.add(CaseCategory);
@@ -24,15 +22,11 @@ public class Core_Master_Issue_Category_Handler{
                 listOfCaseCategoryToUpdate.add(CaseSubCategory);
             }
         }
-        }
         // Iterating and assigning Status value for the "Case SubCategory" records based on the "Master Case Category - (Case SubCategory)" 
-        // FLS check added-Venugopal
-       if(Core_IPS_Product_Issue_Category__c.SObjectType.getDescribe().isAccessible()){
         for(Core_IPS_Product_Issue_Category__c CaseSubCategory : [SELECT Id, Core_Issue_Sub_Category_Name__c, Core_Status__c, Core_Type__c FROM Core_IPS_Product_Issue_Category__c WHERE Core_Issue_Sub_Category_Name__c IN: listOfCoreMasIssSubCatId AND Core_Type__c = 'Case Subcategory']){
             CaseSubCategory.Core_Status__c = trgNewMap.get(CaseSubCategory.Core_Issue_Sub_Category_Name__c).Core_Status__c;
             listOfCaseCategoryToUpdate.add(CaseSubCategory);
         }
-           }
         // Updating Core_IPS_Product_Issue_Category__c Records - "Case Category" and "Case SubCategory".
         if(!listOfCaseCategoryToUpdate.isEmpty()){
             update listOfCaseCategoryToUpdate;

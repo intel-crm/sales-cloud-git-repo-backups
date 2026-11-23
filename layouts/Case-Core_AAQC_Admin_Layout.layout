@@ -51,8 +51,16 @@
                 <field>Core_AAQC_Commissions_Severity__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_IPS_Case_Owner__c</field>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Media_Vehicle_txt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Document_Upload_Status_txt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Earlier_Quarter_Closed_Dt__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>
@@ -207,9 +215,6 @@
         </quickActionListItems>
         <quickActionListItems>
             <quickActionName>FeedItem.PollPost</quickActionName>
-        </quickActionListItems>
-        <quickActionListItems>
-            <quickActionName>Case.SendEmail</quickActionName>
         </quickActionListItems>
     </quickActionList>
     <relatedContent>

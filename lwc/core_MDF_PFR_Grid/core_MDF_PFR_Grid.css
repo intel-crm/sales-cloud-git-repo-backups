@@ -1,7 +1,17 @@
+/*.scrollable-table {
+    height: fit-content;
+    max-height: 400px;
+    width: 100%;
+    overflow:hidden;
+    overflow-x: auto;
+    display: flex;
+}*/
+
 .scrollable-table {
     max-height: 400px;
     overflow: hidden;
     overflow-y: auto;
+    
 }
 
 .title-container {

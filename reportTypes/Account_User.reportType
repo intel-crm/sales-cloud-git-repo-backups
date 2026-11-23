@@ -75,6 +75,16 @@
             <field>Core_MDF_User__c.Contact.Id</field>
             <table>Core_MDF_Partner_Node_User_Mapping__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Active_Ind__c</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Action_Needed_nm__c</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
         <masterLabel>Account Users</masterLabel>
     </sections>
 </ReportType>

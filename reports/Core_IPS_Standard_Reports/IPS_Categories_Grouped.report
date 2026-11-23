@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>FK_NAME</field>
+        <field>CUST_NAME</field>
     </columns>
     <filter>
         <criteriaItems>
-            <column>FK_$Core_IPS_Master_Issue_Category__c.Core_Type__c</column>
+            <column>FK_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Case Category</value>
+            <operator>notContain</operator>
+            <value>- test</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FK_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <name>IPS Categories - Grouped</name>
     <params>
         <name>co</name>
@@ -24,7 +29,7 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>FK_NAME</sortColumn>
+    <sortColumn>CUST_NAME</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CUST_CREATED_DATE</dateColumn>

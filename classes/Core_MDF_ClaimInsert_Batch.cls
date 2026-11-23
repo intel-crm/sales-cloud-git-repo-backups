@@ -49,6 +49,7 @@ public without sharing class Core_MDF_ClaimInsert_Batch implements Database.Batc
             'AND Core_MDF_Retry_Count_Nbr__c < '+retryCountLimit +
             ' ORDER BY Createddate Asc LIMIT '+queryLimit;
         
+           
         return Database.getQueryLocator(queryStr);
     }
      
@@ -60,7 +61,11 @@ public without sharing class Core_MDF_ClaimInsert_Batch implements Database.Batc
         Savepoint transactionSavePoint = Database.setSavepoint();
         
         try{
-              
+            //Added to stop recurssion
+            Core_MDF_ClaimStage_TriggerHandler.recursiveCheckStopAfterUpdate = true;
+            //Core_MDF_ClaimStage_TriggerHandler.recursiveCheckStopBeforeUpdate = true;            
+      
+       
             Map<Id,Core_MDF_Claim_Batch_Stage__c> claimStageMap = new Map<Id,Core_MDF_Claim_Batch_Stage__c>(claimStageList);
 
             List<PartnerFundClaim> getBulkOfClaims = Core_MDF_BatchClaimHelper.mapStageRecordsToClaim(claimStageList);
@@ -77,11 +82,16 @@ public without sharing class Core_MDF_ClaimInsert_Batch implements Database.Batc
                 }
             }
             
-            if(claimToBeInserted != NULL && claimToBeInserted.size() > 0){
+            //if(claimToBeInserted != NULL && claimToBeInserted.size() > 0){
+                if(claimToBeInserted == NULL && claimToBeInserted.size() == 0){ //ATHR Fix WW19
+                    return;
+                }
                 Database.SaveResult[] result = Database.insert(claimToBeInserted, false);
                 
                 for (Database.SaveResult sr : result) {
-                    if (sr.isSuccess()) {succesRecordIdSet.add(sr.getId());
+                  
+                    if (sr.isSuccess()) {
+                        succesRecordIdSet.add(sr.getId());
                     }
                 }                
                 successClaimMap = new Map<Id,PartnerFundClaim>([Select Id,Core_MDF_Claim_Batch_Stage__c, Core_MDF_Claim_Ref_Number__c, RequestId, Request.Status,Core_MDF_Legacy_Claim_Ind__c,
@@ -90,14 +100,13 @@ public without sharing class Core_MDF_ClaimInsert_Batch implements Database.Batc
 
                 List<Core_MDF_Claim_Batch_Stage__c> successfulStageRecords = new List<Core_MDF_Claim_Batch_Stage__c>();
                 List<Core_MDF_Claim_Batch_Stage__c> failedStageRecords = new List<Core_MDF_Claim_Batch_Stage__c>();
-                
-                //For Non Legacy Re-processed Claims creating a map of claim with values as claim batch stage rec id's
-                if(successClaimMap != null && successClaimMap.size()>0){
-                    for(PartnerFundClaim claim : successClaimMap.values()){if(claim.Core_MDF_Legacy_Claim_Ind__c == false){successClaimToClaimStageIdMap.put(claim,claim.Core_MDF_Claim_Batch_Stage__c);}
+                for(PartnerFundClaim claim : successClaimMap.values()){
+                    if(claim.Core_MDF_Legacy_Claim_Ind__c == false){
+                        successClaimToClaimStageIdMap.put(claim,claim.Core_MDF_Claim_Batch_Stage__c);
                     }
                 }
                 
-                for(Integer index=0;index<result.size();index++){                    
+                for(Integer index=0;index<result.size();index++){                 
                     
                     if (result[index].isSuccess()){
                         ID stageid = claimToBeInserted.get(index).Core_MDF_Claim_Batch_Stage__c;
@@ -129,7 +138,7 @@ public without sharing class Core_MDF_ClaimInsert_Batch implements Database.Batc
                         }
                         //system exception
                         else{    
-                            
+                                    
                             if(stageRecord.Core_MDF_Processing_Status_Nm__c !=Label.Core_MDF_Claim_Batch_Successful && stageRecord.Core_MDF_Claim_Reference_Nbr__c==null){
                             String errorMessage = errorMsg.getMessage();stageRecord.Core_MDF_Message_txt__c =''; stageRecord.Core_MDF_Failure_Reason_Txt__c = errorMessage; 
                             stageRecord.Core_MDF_Retry_Count_Nbr__c = claimStageMap.get(stageRecord.Id).Core_MDF_Retry_Count_Nbr__c + 1; 
@@ -163,9 +172,7 @@ public without sharing class Core_MDF_ClaimInsert_Batch implements Database.Batc
                         pfrClaimMap.put(claim.RequestId, new List<PartnerFundClaim>{claim});
                     }
                 }
-               
-                if(failedPFR!=null && failedPFR.size()>0)
-                {
+                if(failedPFR!=null && failedPFR.size()>0){
                     for(Id pfrID : failedPFR)
                     {
                         if(!pfrClaimMap.containsKey(pfrID) && pfrStatusMap.get(pfrID)=='Approved')
@@ -179,7 +186,7 @@ public without sharing class Core_MDF_ClaimInsert_Batch implements Database.Batc
                     Database.Update(pfrToBeUpdated);   
                 }
                 
-            }
+            //}
            
             if(wrapInstance.failedStageRecordsList != null && wrapInstance.failedStageRecordsList.size()>0){
         	stageRecordsToUpdate.addAll(wrapInstance.failedStageRecordsList);//failed duplicate records
@@ -187,20 +194,27 @@ public without sharing class Core_MDF_ClaimInsert_Batch implements Database.Batc
             
          	Database.update(stageRecordsToUpdate);
           
-            //Logic for linking of Audit Document to respective inserted claims as per document attached to the claim stage rec.
           	if(successClaimToClaimStageIdMap != null && successClaimToClaimStageIdMap.size()>0){
        	   	//if(succesRecordIdSet != null && succesRecordIdSet.size()>0){
                 Map<Id, List<Core_MDF_Audit_Document__c>> auditList = new map<id, List<Core_MDF_Audit_Document__c>>();
                 List<Core_MDF_Audit_Document__c> auditDocumentList = new List<Core_MDF_Audit_Document__c>([select Id, Core_MDF_Claim_Batch_Record__c, Core_MDF_Claim__c, Core_MDF_Document_Id__c from Core_MDF_Audit_Document__c where Core_MDF_Claim_Batch_Record__c IN :successClaimToClaimStageIdMap.values()]);
                 for(Core_MDF_Audit_Document__c auditRecord : auditDocumentList) {
-                    if(!auditList.containskey(auditRecord.Core_MDF_Claim_Batch_Record__c)) {List<Core_MDF_Audit_Document__c> auditDocument = new List<Core_MDF_Audit_Document__c>();auditDocument.add(auditRecord);auditList.put(auditRecord.Core_MDF_Claim_Batch_Record__c, auditDocument);
+                    if(!auditList.containskey(auditRecord.Core_MDF_Claim_Batch_Record__c)) {
+                        List<Core_MDF_Audit_Document__c> auditDocument = new List<Core_MDF_Audit_Document__c>();
+                        auditDocument.add(auditRecord);
+                        auditList.put(auditRecord.Core_MDF_Claim_Batch_Record__c, auditDocument);
                     } else {
-                        List<Core_MDF_Audit_Document__c> auditDocument = auditList.get(auditRecord.Core_MDF_Claim_Batch_Record__c);auditDocument.add(auditRecord);auditList.put(auditRecord.Core_MDF_Claim_Batch_Record__c, auditDocument);
+                        List<Core_MDF_Audit_Document__c> auditDocument = auditList.get(auditRecord.Core_MDF_Claim_Batch_Record__c);
+                        auditDocument.add(auditRecord);
+                        auditList.put(auditRecord.Core_MDF_Claim_Batch_Record__c, auditDocument);
                     }
                    
-                } 
+                }
                 //if(successClaimToClaimStageIdMap != null && successClaimToClaimStageIdMap.size()>0){
-                    for (PartnerFundClaim claim : successClaimToClaimStageIdMap.keySet()) {if(auditList!=null && auditList.containsKey(claim.Core_MDF_Claim_Batch_Stage__c)) {Core_MDF_BulkPOPUploadController.assignDocumentList(auditList.get(claim.Core_MDF_Claim_Batch_Stage__c), claim.Id);}
+                    for (PartnerFundClaim claim : successClaimToClaimStageIdMap.keySet()) {
+                        if(auditList!=null && auditList.containsKey(claim.Core_MDF_Claim_Batch_Stage__c)) {
+                            Core_MDF_BulkPOPUploadController.assignDocumentList(auditList.get(claim.Core_MDF_Claim_Batch_Stage__c), claim.Id);
+                        }
                     }
                 //}
             //}
@@ -213,6 +227,7 @@ public without sharing class Core_MDF_ClaimInsert_Batch implements Database.Batc
     }
     
     public void finish(Database.BatchableContext bc){
+        
         if(!skipBatchChaining) {
             Core_MDF_BatchClaimHelper.generateBatchChaining(runStartTime);
         }

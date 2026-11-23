@@ -24,7 +24,6 @@ public with sharing class Core_MDF_ExternalListViewExport {
         Set<String> allVisisbleListView = new Set<String>();        
         String aud;
         List<String> audList=new List<String>();
-        List<String> customPermissionsList=new List<String>();        
         List<String> groupSet = new List<String>();        
         List<String> channelProg = new List<String>();
         Map<string,string> channelProgToCustomPermissionMap = new Map<string,string>();
@@ -49,20 +48,16 @@ public with sharing class Core_MDF_ExternalListViewExport {
             for(string channelProToCP : Label.Core_MDF_CustomPermission_ChannelProgram_List.split(';'))
             {
                 List<string> record = channelProToCP.split(':');
+                if(FeatureManagement.checkPermission(record[0])){
                     String channelProgram = record[0].toUpperCase();                    
                     channelProgToCustomPermissionMap.put(channelProgram,record[1]);
-                if(FeatureManagement.checkPermission(record[0])){                    
-                    customPermissionsList.add(record[0]);
-                    
                 }  
-               
             }
                        
             //geting the immediate group for the user.
             for(GroupMember gm : [SELECT Id, Group.DeveloperName, UserOrGroupId FROM GroupMember WHERE UserOrGroupId=: loggedUserId]){
                 groupSet.add(gm.Group.DeveloperName);
             }  
-
 
             //getting all the ccp external groups
             Core_MDF_CCPExternalGroups ext = new Core_MDF_CCPExternalGroups();            
@@ -73,21 +68,17 @@ public with sharing class Core_MDF_ExternalListViewExport {
                 //if immediate group is part of any of the external group, add the parent group from channel prog to ccp external group map
                 if(groupSet.contains(g.DeveloperName))
                 {
-                    //loop through the audience list and add the parent external group based on program.
-                    for(string a :customPermissionsList) //customPermissionsList
-                    {             
-                        if(channelProgToCustomPermissionMap.containsKey(a.toUpperCase()))
-                        {
-                            
-                            groupSet.add(channelPartnerToExtGrpMapping.get(channelProgToCustomPermissionMap.get(a.toUpperCase())));                       
+                    //loop through the applicable Channel Program list and add the parent external group based on program.
+                    if(channelProgToCustomPermissionMap != NULL && !channelProgToCustomPermissionMap.isEmpty()){
+                        for(String program : channelProgToCustomPermissionMap.keySet()){
+                            if(channelPartnerToExtGrpMapping != null && !channelPartnerToExtGrpMapping.isEmpty()){
+                                groupSet.add(channelPartnerToExtGrpMapping.get(channelProgToCustomPermissionMap.get(program.toUpperCase())));                       
                             }
                         }
-                    
+                    }  
                 }
-                
             }              
             
-                                                                
             // for(Core_MDF_List_View_Group_Mapping__c mdt : [SELECT Core_MDF_Active_ind__c, Core_MDF_Group_Name_txt__c, Core_MDF_SObject_txt__c,  Core_MDF_ListView_Name_txt__c,
             //                                                 Core_MDF_Visible_to_all_users_ind__c FROM Core_MDF_List_View_Group_Mapping__c WHERE Core_MDF_SObject_txt__c=:objectInfo AND Core_MDF_Active_ind__c = TRUE
             //                                                 AND Core_MDF_ListView_Name_txt__c != null and Core_MDF_Whitelisted_Object__c = false]){
@@ -115,8 +106,10 @@ public with sharing class Core_MDF_ExternalListViewExport {
                                    }                                                        
                                }
         }
-        catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);throw new AuraHandledException(''+Label.Core_MDF_ApplicationErrorMessage);}        
-        
+        catch(Exception e){
+            Core_MDF_CCP_UtilityClass.logError(e);
+            throw new AuraHandledException(''+Label.Core_MDF_ApplicationErrorMessage);
+        }        
         return oListViewWrapper; 
     }
     
@@ -150,31 +143,33 @@ public with sharing class Core_MDF_ExternalListViewExport {
             // }
             //updated the code for the change of Custom Metadata to Custom Settings - Akanksha (WW-32 2024)
             for(Core_MDF_List_View_Group_Mapping__c itrOnListViewMapping : Core_MDF_List_View_Group_Mapping__c.getall().values()){
+                	
                 if(itrOnListViewMapping.Core_MDF_Whitelisted_Object__c && itrOnListViewMapping.Core_MDF_Active_ind__c){
                     whiteListedObjApiNameList.add(itrOnListViewMapping.Core_MDF_SObject_txt__c); 
                 }
             }
      
+            Integer test = string.valueOf(filterId).length();
+          
             if((isVaildSObject && whiteListedObjApiNameList.contains(sanitizedSobjectName)) && (string.valueOf(filterId).length() == 15 || string.valueOf(filterId).length() == 18)){
                 endpointUrl = Label.Core_MDF_PFRCommunityLink+ Label.Core_MDF_Describe_API_URL4+sanitizedSobjectName +Label.Core_MDF_Describe_API_URL2 + filterId + Label.Core_MDF_Describe_API_URL3;
              
             }
             //SF Fix-Ealisha:end     
-            
+            System.debug('endpointUrl'+endpointUrl);
             //ATHR - Deeply Nested if 16209
             if(endpointUrl == ''){
                 return;
             }
             //if(endpointUrl != ''){   
+               
                 req.setEndpoint(endpointUrl);
                 req.setMethod('GET');      
                 Http h = new Http();
                 HttpResponse res = h.send(req);
-                
                 Map<String, Object> root = (Map<String, Object>)JSON.deserializeUntyped(res.getBody());     
                 //get the query string from the response
                 strQuery = (String)root.get('query') + string.escapeSingleQuotes(' LIMIT ') + (maxExportRows+ 1);  
-                
                 lstColumn = new List<SingleColumn>();
                 
                 //Parsing JSON string to get the column details    
@@ -192,6 +187,7 @@ public with sharing class Core_MDF_ExternalListViewExport {
                                     
                                     col.label = col.label.replace(',', '');                            
                                     lstColumn.add(col);   
+                                   
                                 //}    
                             //}
                         }
@@ -201,7 +197,7 @@ public with sharing class Core_MDF_ExternalListViewExport {
         }
         catch(Exception e){
             Core_MDF_CCP_UtilityClass.logError(e);
-            throw new AuraHandledException(''+Label.Core_MDF_ApplicationErrorMessage);
+            //throw new AuraHandledException(''+Label.Core_MDF_ApplicationErrorMessage);
         }  
         
     }
@@ -212,15 +208,24 @@ public with sharing class Core_MDF_ExternalListViewExport {
     @AuraEnabled
     public static List<sObject> fetchRecords(Id filterId, String sObjectName){
         //fetching records based on the query.
-        
         if(strQuery == null){
             listViewFilter(filterId,sObjectName);
-            
         }
         List<sObject> lstRec = new List<sObject>();
         try{
             lstRec = Database.query(strQuery);
 
+            /*for(Sobject obj : lstRec){
+                for(SingleColumn col : lstColumn){
+                    if(col.type == 'date'){
+                        Date d = (Date) obj.get(col.selectListItem);
+                        obj.put(col.selectListItem, d.format());
+                    }else if(col.type == 'datetime'){
+                        Datetime dt = (Datetime) obj.get(col.selectListItem);
+                        obj.put(col.selectListItem, dt.format());
+                    }
+                }
+            }*/
         }
         catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);throw new AuraHandledException(''+Label.Core_MDF_ApplicationErrorMessage);} 
         return lstRec;
@@ -233,16 +238,17 @@ public with sharing class Core_MDF_ExternalListViewExport {
     @AuraEnabled
     public static Map<String,SingleColumn> fetchKeys(Id filterId, String sObjectName){
         Map<String,SingleColumn> keysToLabelMap = new Map<String,SingleColumn>{};
-            try{
+            //try{
                 listViewFilter(filterId, sObjectName);        
                 for(SingleColumn fieldInfo: lstColumn){
                     keysToLabelMap.put(fieldInfo.selectListItem,fieldInfo);
                     
                 }
-                
-                
-            }
-        catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);throw new AuraHandledException(''+Label.Core_MDF_ApplicationErrorMessage);} 
+            /*}
+        catch(Exception e){
+            Core_MDF_CCP_UtilityClass.logError(e);
+            throw new AuraHandledException(''+Label.Core_MDF_ApplicationErrorMessage);
+        } */
         return keysToLabelMap;
     }
     
@@ -276,12 +282,15 @@ public with sharing class Core_MDF_ExternalListViewExport {
         public List<Id> getExternalGroups(){
             List<Id> allCCPExternalGroupIds = new List<Id>();
             try{
-                for(Core_MDF_Partner_Group_Mapping__c pgm : [select Core_MDF_Group_Id__c from Core_MDF_Partner_Group_Mapping__c where Core_MDF_Type_of_Access__c='External' AND Core_MDF_Inactive_Ind__c = false])
+                for(Core_MDF_Partner_Group_Mapping__c pgm : [select Core_MDF_Group_Id__c from Core_MDF_Partner_Group_Mapping__c where Core_MDF_Type_of_Access__c='External' and Core_MDF_Inactive_Ind__c = false])
                 {
                     allCCPExternalGroupIds.add(pgm.Core_MDF_Group_Id__c);
                 }
             }
-            catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);throw new AuraHandledException(''+Label.Core_MDF_ApplicationErrorMessage);} 
+            catch(Exception e){
+                Core_MDF_CCP_UtilityClass.logError(e);
+                throw new AuraHandledException(''+Label.Core_MDF_ApplicationErrorMessage);
+            } 
             
             return allCCPExternalGroupIds;
         }        

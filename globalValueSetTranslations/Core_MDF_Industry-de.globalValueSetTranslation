@@ -62,7 +62,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Gaming</masterLabel>
-        <translation><!-- Gaming --></translation>
+        <translation>Gaming</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Government</masterLabel>
@@ -97,10 +97,6 @@
         <translation>Andere</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Others</masterLabel>
-        <translation><!-- Others --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Professional and Business Services</masterLabel>
         <translation>Professionelle und Unternehmensdienstleistungen</translation>
     </valueTranslation>
@@ -114,11 +110,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Robotics</masterLabel>
-        <translation>Robotik</translation>
+        <translation><!-- Robotics --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Software</masterLabel>
-        <translation><!-- Software --></translation>
+        <translation>Software</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Software and Services</masterLabel>
@@ -127,6 +123,10 @@
     <valueTranslation>
         <masterLabel>Telecommunications</masterLabel>
         <translation>Telekommunikation</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Test LOV Industry</masterLabel>
+        <translation>Testen Sie die LOV-Industrie</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Transportation and Warehouse</masterLabel>

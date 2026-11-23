@@ -1,0 +1,31 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,lightning:actionOverride,force:lightningQuickActionWithoutHeader">
+    
+Create Budget:
+•	Enter the mandatory required information (marked with an asterisk) *:
+•	Budget Name is a free text field, it is recommended you follow a naming convention for easy identification. Eg. “RMF Budget for Amazon Q1 2021” 
+•	Description and Comments are optional fields, available to capture notes and comments.
+•	Program is search look up field, one must type in first few letter of the program name, before making a selection
+•	Budget Partner is search look up field, one must type in first few letter of the account name, before making a selection
+•	Budget Reduction Amount is used to decrease amount from an existing budget, this can be left blank when creating a new budget
+•	Budget Amount is the amount of funds being allocated to the account for the said budget period
+•	Start Date defines start of the budget period
+•	End Date defines end of the budget period
+•	Budget Type is applicable to the RMF program, there are 2 budget types to choose from RSA MD and Retail MDF
+
+Key Points:
+•	Once the budget is created it is set to pending review requiring approval from a finance manager
+•	Duplicate or overlapping budgets cannot be created. Duplicate/Overlapping budget is one that has the same Budget Partner, Budget Type and same/overlapping start and end dates
+
+
+On the approve budget page include the following in the app guidance 
+
+Approve/Reject Budget:
+
+In order to approve/reject a budget
+1.	Review budget details 
+2.	Navigate to the “Related” tab
+3.	On the Approval History table, click on Approve/Reject buttons to record review decision
+4.	Enter comments and save decision
+
+	
+</aura:component>

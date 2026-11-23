@@ -68,7 +68,7 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>ccp.l1.approverqueue@intel.com.crm</name>
+                <name>ccp.l1.approverqueue@crm.intel.com</name>
                 <type>user</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
@@ -101,6 +101,10 @@
                 <name>Core_MDF_Update_Status_to_Denied</name>
                 <type>FieldUpdate</type>
             </action>
+            <action>
+                <name>IPA_path_status_update_revision_required</name>
+                <type>FieldUpdate</type>
+            </action>
         </rejectionActions>
     </approvalStep>
     <approvalStep>
@@ -125,7 +129,7 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>program.officereviewer.queue@intel.com.crm</name>
+                <name>program.officereviewer.queue@crm.intel.com</name>
                 <type>user</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
@@ -187,7 +191,7 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>pricereveiwer.queue@intel.com.crm</name>
+                <name>pricereveiwer.queue@crm.intel.com</name>
                 <type>user</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
@@ -254,7 +258,7 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>l2.regional.marketingqueue@intel.com.crm</name>
+                <name>l2.regional.marketingqueue@crm.intel.com</name>
                 <type>user</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
@@ -303,6 +307,10 @@
                 <type>FieldUpdate</type>
             </action>
             <action>
+                <name>IPA_path_status_update_revision_required</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
                 <name>L2_Regional_Marketing_Rejected</name>
                 <type>FieldUpdate</type>
             </action>
@@ -328,13 +336,17 @@
                 <type>FieldUpdate</type>
             </action>
             <action>
+                <name>ipa_path_status_update</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
                 <name>update_status_pending_Approval</name>
                 <type>FieldUpdate</type>
             </action>
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>l2.regional.salesqueue@intel.com.crm</name>
+                <name>l2.regional.salesqueue@crm.intel.com</name>
                 <type>user</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
@@ -383,6 +395,10 @@
                 <type>FieldUpdate</type>
             </action>
             <action>
+                <name>IPA_path_status_update_revision_required</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
                 <name>L2_Regional_Sales_Rejected</name>
                 <type>FieldUpdate</type>
             </action>
@@ -402,7 +418,7 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>customer.acceptancequeue@intel.com.crm</name>
+                <name>customer.acceptancequeue@crm.intel.com</name>
                 <type>user</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
@@ -452,6 +468,10 @@
             </action>
             <action>
                 <name>Core_MDF_Update_Status_to_Denied</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>IPA_path_status_update_revision_required</name>
                 <type>FieldUpdate</type>
             </action>
         </rejectionActions>

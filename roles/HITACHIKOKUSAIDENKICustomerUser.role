@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>KOKUSAI DENKI Electric Inc. Customer User</description>
+    <description>HITACHI KOKUSAI DENKI Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>KOKUSAI DENKI Electric Inc. Customer User</name>
+    <name>HITACHI KOKUSAI DENKI Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>HITACHIKOKUSAIDENKICustomerManager</parentRole>
 </Role>

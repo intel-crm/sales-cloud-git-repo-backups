@@ -85,19 +85,7 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>Core_MDF_Approver_9__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_4__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_5__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_1__c</name>
+                <name>Core_MDF_Approver_10__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -105,15 +93,27 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
+                <name>Core_MDF_Approver_1__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_5__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_4__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_9__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
                 <name>Core_MDF_Approver_3__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_10__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_6__c</name>
+                <name>Core_MDF_Approver_8__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -121,7 +121,7 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_8__c</name>
+                <name>Core_MDF_Approver_6__c</name>
                 <type>relatedUserField</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
@@ -145,7 +145,7 @@
         </rejectionActions>
     </approvalStep>
     <description>Approval Process for Activity to update status from pending review to planned</description>
-    <emailTemplate>Testt/Core_MDF_Activity_Approval_Notification</emailTemplate>
+    <emailTemplate>unfiled$public/Core_MDF_Activity_Approval_Notification</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <booleanFilter>1 AND ((2 AND 3) OR (4 AND 5) OR 6 OR 7)</booleanFilter>

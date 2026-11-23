@@ -13,35 +13,19 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>PRM_Specialty_Id__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
                 <field>PRM_Account_Id__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_Status_Reason_Txt__c</field>
+                <behavior>Readonly</behavior>
+                <field>PRM_Account_Type__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_Notes_Txt__c</field>
+                <behavior>Required</behavior>
+                <field>PRM_Specialty_Id__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>PRM_InActive_Ind__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>PRM_Start_Date_Dt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>PRM_End_Date_Dt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_Partner_Role__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -100,17 +84,7 @@
         <relatedList>RelatedHistoryList</relatedList>
     </relatedLists>
     <relatedLists>
-        <relatedList>RelatedEntityHistoryList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <relatedList>RelatedNoteList</relatedList>
-    </relatedLists>
-    <relatedLists>
         <fields>NAME</fields>
-        <fields>PRM_Specialty_Criteria_Id__c</fields>
-        <fields>PRM_Start_Date_Dt__c</fields>
-        <fields>PRM_End_Date_Dt__c</fields>
-        <fields>PRM_InActive_Ind__c</fields>
         <relatedList>PRM_Account_Specialty_Qual_Criteria__c.PRM_Account_Specialty_Association_Id__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
@@ -119,7 +93,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h6C000000FRpK</masterLabel>
+        <masterLabel>00hg0000000rrj3</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

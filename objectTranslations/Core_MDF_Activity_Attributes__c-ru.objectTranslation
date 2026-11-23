@@ -66,6 +66,10 @@
         <relationshipLabel><!-- Activity Attributes --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Expected Spending Amount --></label>
+        <name>Core_MDF_Expected_Spending_Amount_amt__c</name>
+    </fields>
+    <fields>
         <label><!-- Field Name --></label>
         <name>Core_MDF_Field_Name_nm__c</name>
         <picklistValues>

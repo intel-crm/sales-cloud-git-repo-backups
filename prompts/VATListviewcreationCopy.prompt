@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>VAT List view creation Copy</masterLabel>
+    <promptVersions>
+        <body>&lt;p&gt;1.Goto Claim tab, Recently List view will open.&lt;/p&gt;&lt;p&gt;2.Click on List view Gear icon&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://intel--CRMDEVCCP--c.documentforce.com/servlet/rtaImage?refid=0EMg0000000r8wl&quot; alt=&quot;image.png&quot;&gt;&lt;/p&gt;&lt;p&gt;3.Click on New Button&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://intel--CRMDEVCCP--c.documentforce.com/servlet/rtaImage?refid=0EMg0000000r8wq&quot; alt=&quot;image.png&quot;&gt;&lt;/p&gt;&lt;p&gt;4.Give the Name to List view and click on Save&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://intel--CRMDEVCCP--c.documentforce.com/servlet/rtaImage?refid=0EMg0000000r8wv&quot; alt=&quot;image.png&quot;&gt;&lt;/p&gt;&lt;p&gt;5Now you can provide your own filter&lt;/p&gt;&lt;p&gt;6.You have the luxury to select own your column as well.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;i&gt; Tips: To get only VAT related claims, lease add filters like &apos;VAT Ealigiblity=true&apos;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;p&gt;7.Select and Move fields right and left as need basis.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</body>
+        <customApplication>Core_MDF_CoMarketing</customApplication>
+        <delayDays>1</delayDays>
+        <displayType>DockedComposer</displayType>
+        <endDate>2021-06-30</endDate>
+        <header>List View</header>
+        <isPublished>false</isPublished>
+        <masterLabel>VAT List view creation Copy</masterLabel>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2021-06-02</startDate>
+        <targetPageKey1>PartnerFundClaim</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme1</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>10</timesToDisplay>
+        <title>How to create your own list view</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

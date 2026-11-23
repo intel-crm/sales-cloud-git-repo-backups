@@ -1,0 +1,58 @@
+<template>
+  <lightning-card title={title}>
+    <div class="slds-p-horizontal_small slds-p-bottom_small">
+      <template lwc:if={errorMessage}>
+        <div class="slds-text-color_error slds-m-bottom_small" role="alert">
+          {errorMessage}
+        </div>
+      </template>
+      <template lwc:if={hasItems}>
+        <template lwc:if={isSelectable}>
+          <div
+            class="slds-grid slds-wrap slds-grid_align-spread slds-m-bottom_x-small"
+          >
+            <p>Selected components: {selectedCount}</p>
+            <lightning-button
+              data-id="exportButton"
+              label="Export occurrences for selected components"
+              title="Download a CSV of changed paths for the selected components"
+              icon-name="utility:download"
+              onclick={handleExport}
+              disabled={isExportDisabled}
+            >
+            </lightning-button>
+          </div>
+        </template>
+        <lightning-datatable
+          key-field="recordId"
+          data={items}
+          columns={columns}
+          selected-rows={selectedRecordIds}
+          max-row-selection={maxRowSelection}
+          onrowselection={handleRowSelection}
+          hide-checkbox-column={readOnly}
+          aria-label={tableLabel}
+        >
+        </lightning-datatable>
+        <template lwc:if={validationMessage}>
+          <div class="slds-text-color_error slds-m-top_x-small" role="alert">
+            {validationMessage}
+          </div>
+        </template>
+      </template>
+      <template lwc:else>
+        <p>No component rows are available.</p>
+      </template>
+      <template lwc:if={isSelectable}>
+        <a
+          data-id="downloadLink"
+          class="slds-hide"
+          href="#"
+          download="Program_Rename_Occurrences.csv"
+          tabindex="-1"
+          aria-hidden="true"
+        ></a>
+      </template>
+    </div>
+  </lightning-card>
+</template>

@@ -1,0 +1,13 @@
+<apex:page standardController="Core_MDF_Partner_Node_User_Mapping__c" recordSetVar="accountusers">
+<apex:includeScript value="/lightning/lightning.out.js" />
+<apex:slds />
+<div id="lightning" />
+<script> 
+$Lightning.use("c:Core_MDF_NewAccUserApp", function() {
+$Lightning.createComponent("c:Core_MDF_AccountUserContainer",
+{"recordId":"{!$CurrentPage.parameters.Id}",
+"invokedBy":"Core_MDF_NewAccUserApp" }, "lightning", function(cmp) {
+});
+});
+</script>
+</apex:page>

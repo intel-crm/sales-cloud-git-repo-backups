@@ -25,11 +25,15 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
         List<initialInputs> externalUserList = new List<initialInputs>();
         List<initialInputs> additionalUserList = new List<initialInputs>(); 
         List<initialInputs> externalUserwithGroupIdList = new List<initialInputs>();
+
         Map<String, List<initialInputs>> categoryToInputs = new Map<String, List<initialInputs>>();
-	
+
+        system.debug('processinput@@@' + processInput);
+
         try{
             for(initialInputs inputs : processInput){
                 if(inputs.recipients == 'InternalUsers'){
+                    system.debug('insideInternalUsers@@@@');
                     if(inputs.groupId != NULL && inputs.groupId != ''){
                         internalUserList.add(inputs);
                     } else {
@@ -42,21 +46,21 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
                         categoryToInputs.get(category).add(inputs);
                     }
                 }
+                system.debug('@@internalUserList@@@@'+internalUserList);
                 if(inputs.recipients == 'ExternalUsers'){
-                     if(inputs.groupId != NULL && inputs.groupId != ''){
+                    if(inputs.groupId != NULL && inputs.groupId != ''){
                         externalUserwithGroupIdList.add(inputs);
+                    }else{
+                        externalUserList.add(inputs);
                     }
-                    else{
-                    externalUserList.add(inputs);
-                    }
-                    
                 }
-                
             }
             
             if (!categoryToInputs.isEmpty()) {
                 internalIUPGMUserList.addAll(categoryToInputs.values()[0]);
             }
+            system.debug('internalIUPGMUserList@@@' + internalIUPGMUserList);
+
             if(internalUserList != NULL && internalUserList.Size() > 0){
                 toGroupIdUsers(internalUserList);
             }
@@ -92,6 +96,8 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
         List<String> accntList = new List<String>();
         List<String> programList = new List<String>();
         List<String> approvalStageList = new List<String>();
+
+        system.debug('internalUserList@@@' + internalUserList);
         String category = '';
         
         try{
@@ -111,6 +117,17 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
 
             resultMap = Core_MDF_GeneralPurpose_UI_Utility.getIupgmRecordsForApprovers(accntList, programList, geoList, permissionSetNameList, category);
             //resultMap = Core_MDF_GeneralPurpose_UI_Utility.getIupgmRecordsForApprovers(accntList, programList, geoList, permissionSetNameList);
+
+            system.debug('resultMap@@@' + resultMap);  //Intel Partner AllianceASMOCore_MDF_CCP_Internal_IPA_Acct_Mgr001g000002gkDgAAAU = 005g0000007uPAiAAM
+
+
+            // Core_MDF_CCP_Internal_Co_GTM_Business_Approver={
+            //     CoGTMWWCore_MDF_CCP_Internal_Co_GTM_Business_Approver001Dz00002jGn0PIAS=(005Dz000009dKDbIAM), 
+            //     CoGTMWWCore_MDF_CCP_Internal_Co_GTM_Business_Approver001Dz00002jGnooIAC=(005Dz000009dKDbIAM), 
+            //     CoGTMWWCore_MDF_CCP_Internal_Co_GTM_Business_Approver001g000002CANf4AAH=(005Dz000009dKDbIAM), 
+            //     CoGTMWWCore_MDF_CCP_Internal_Co_GTM_Business_Approver001g000002gkDgAAAU=(005Dz000009eZIUIA2, 005Dz000009dKDbIAM)
+            // }
+            
             for(initialInputs input : internalUserList){
 
                 String role = System.Label.Core_MDF_CCP_Internal_IPA_Acct_Mgr_PS;
@@ -121,26 +138,42 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
                 Map<string, List<Id>> resultsubMap;
                 List<Id> userIds;
                 //ATHR - Deeply Nested if 16209
-                if(resultMap == null || resultMap.isEmpty()) {
+                if(resultMap == null) {
                     continue;
                 }
                 //if(resultMap != null){
+
                     String allAccountNOKey = input.programName + input.region + role + input.ultimateAccountId;
                     String allAccountNOKeyWW = input.programName + 'WW' + role + input.ultimateAccountId;
                     String allAccountYesKey = input.programName + input.region + role + 'null';
                     String allAccountYesKeyWW = input.programName + 'WW' + role + 'null';
+
+                    system.debug('allAccountNOKey@@@' + allAccountNOKey);  // CoGTMWWCore_MDF_CCP_Internal_Co_GTM_Business_Approver001g000002gkDgAAAU
+                    system.debug('allAccountNOKeyWW@@@' + allAccountNOKeyWW);  // CoGTMWWCore_MDF_CCP_Internal_Co_GTM_Business_Approver001g000002gkDgAAAU
+                    system.debug('allAccountYesKey@@@' + allAccountYesKey);  // CoGTMWWCore_MDF_CCP_Internal_Co_GTM_Business_Approvernull
+                    system.debug('allAccountYesKeyWW@@@' + allAccountYesKeyWW);  // CoGTMWWCore_MDF_CCP_Internal_Co_GTM_Business_Approvernull
                     
                     userIds = new List<Id>();
                     if(resultMap.containsKey(role)){
-                        resultsubMap = resultMap.get(role);                        
+                        resultsubMap = resultMap.get(role);  
+                        system.debug('resultsubMap@@@' + resultsubMap);
+
+                    // CoGTMWWCore_MDF_CCP_Internal_Co_GTM_Business_Approver001Dz00002jGn0PIAS=(005Dz000009dKDbIAM)
+                    // CoGTMWWCore_MDF_CCP_Internal_Co_GTM_Business_Approver001Dz00002jGnooIAC=(005Dz000009dKDbIAM)
+                    // CoGTMWWCore_MDF_CCP_Internal_Co_GTM_Business_Approver001g000002CANf4AAH=(005Dz000009dKDbIAM)
+                    // CoGTMWWCore_MDF_CCP_Internal_Co_GTM_Business_Approver001g000002gkDgAAAU=(005Dz000009eZIUIA2, 005Dz000009dKDbIAM)
+
                         for(String key :resultsubMap.keySet()){
                             if(key == allAccountNOKey || key == allAccountNOKeyWW ||
                                key == allAccountYesKey || key == allAccountYesKeyWW){
                                    userIds.addAll(resultsubMap.get(key));
                                }
                         }
+
+                        system.debug('userIds@@@' + userIds);  //(005Dz000009eZIUIA2, 005Dz000009dKDbIAM)
                     } 
                 //}
+
                 if(userIds != NULL && !userIds.isEmpty()){
 
                     if (input.programName == 'CoGTM' && input.userIdList != null && !input.userIdList.isEmpty()) {
@@ -153,7 +186,7 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
                         userIds = finalRecipient;
                     }
 
-
+                    system.debug('userIds@@@' + userIds);  //(005Dz000009eZIUIA2, 005Dz000009dKDbIAM)
                     Core_MDF_GenericClassToSendMail.MailParams params = new Core_MDF_GenericClassToSendMail.MailParams();
                     params.recordId = input.recordId;
                     params.templateName = input.templateName;
@@ -208,17 +241,18 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
                 }
             }
             
+            system.debug('groupIdSet@@@' + groupIdSet);
             //Added Partner_License_Reclaimed__c in where clause for "Reclaiming SF Partner License"
             if(groupIdSet != NULL){
                 for(GroupMember gm : [SELECT Id, GroupId, UserOrGroupId 
                                       FROM GroupMember
                                       WHERE GroupId IN: groupIdSet AND (UserOrGroup.isActive = true OR UserOrGroup.Partner_License_Reclaimed__c = true)]){
                     //ATHR - Deeply Nested if 16209
-                    if (gm.UserOrGroupId == null || !String.valueOf(gm.UserOrGroupId).startsWith('005')) continue;
+                    if (!String.valueOf(gm.UserOrGroupId).startsWith('005')) continue;
                     //if(string.valueof(gm.UserOrGroupId).startsWith('005')){
                         for(Id recordId : recordIdGroupIdSetMap.keySet()){
                             //ATHR - Deeply Nested if 16209
-                            if(recordIdGroupIdSetMap.get(recordId) == null || gm.GroupId == null || !recordIdGroupIdSetMap.get(recordId).contains(gm.GroupId)){
+                            if(recordIdGroupIdSetMap.get(recordId) == null || !recordIdGroupIdSetMap.get(recordId).contains(gm.GroupId)){
                                 continue;
                             }
                             //if(recordIdGroupIdSetMap.get(recordId) != NULL && recordIdGroupIdSetMap.get(recordId).contains(gm.GroupId)){
@@ -233,6 +267,9 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
                     //}
                 }
             }
+            system.debug('userIdSet@@@' + userIdSet);
+            system.debug('recordIdUserIdListMap@@@' + recordIdUserIdListMap);
+            system.debug('permissionSetNameList@@@' + permissionSetNameList);
         
             //Added Partner_License_Reclaimed__c in where clause for "Reclaiming SF Partner License"
             if(permissionSetNameList != NULL && permissionSetNameList.Size() > 0){ 
@@ -244,12 +281,14 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
                     userWithRequiredPermissionSet.add(psa.AssigneeId);              
                 }
             }
+            system.debug('userWithRequiredPermissionSet@@@' + userWithRequiredPermissionSet);
+
             List<Core_MDF_GenericClassToSendMail.MailParams> settingMailParameters = new List<Core_MDF_GenericClassToSendMail.MailParams>();
             
             for(initialInputs input : internalUserList){
                 Core_MDF_GenericClassToSendMail.MailParams params = new Core_MDF_GenericClassToSendMail.MailParams();
                 //ATHR - Deeply Nested if 16209
-                if(input.recordId == null || recordIdUserIdListMap.get(input.recordId) == NULL || !recordIdUserIdListMap.containsKey(input.recordId)){
+                if(!recordIdUserIdListMap.containsKey(input.recordId) || recordIdUserIdListMap.get(input.recordId) == NULL){
                     continue;
                 }
                 //if(recordIdUserIdListMap.containsKey(input.recordId) && recordIdUserIdListMap.get(input.recordId) != NULL){
@@ -270,6 +309,8 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
                     settingMailParameters.add(params);
                 }
             }
+
+            system.debug('settingMailParameters@@@' + settingMailParameters);
            
             if(settingMailParameters != NULL && settingMailParameters.Size() > 0){
                 
@@ -296,6 +337,7 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
         Set<Id> userWithRequiredPermissionSet = new Set<Id>();
         
         try{
+            system.debug('externalUserList@@@' + externalUserList);
             for(initialInputs input : externalUserList){
                 if(input.accountId != NULL){
                     accIdSet.add(input.accountId);
@@ -313,6 +355,7 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
                                                                   WHERE Core_MDF_Account__c IN: accIdSet AND
                                                                   (Core_MDF_User__r.IsActive = TRUE  OR Core_MDF_User__r.Partner_License_Reclaimed__c = TRUE) AND
                                                                   Core_MDF_Active_Ind__c = TRUE]){
+                                                                    system.debug('pnum@@@' + pnum);
                     userIdSet.add(pnum.Core_MDF_User__c);
                     if(accIdUserIdSetMap.containsKey(pnum.Core_MDF_Account__c)){
                         accIdUserIdSetMap.get(pnum.Core_MDF_Account__c).add(pnum.Core_MDF_User__c);
@@ -321,6 +364,7 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
                     }
                 }
             }
+            system.debug('accIdUserIdSetMap@@@' + accIdUserIdSetMap);
                 
             if(permissionSetNameList != NULL && permissionSetNameList.Size() > 0){
                 for(PermissionSetAssignment psa : [SELECT Id, PermissionSet.Name,AssigneeId
@@ -330,13 +374,14 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
                     userWithRequiredPermissionSet.add(psa.AssigneeId);                                  
                 }
             }
+            system.debug('userWithRequiredPermissionSet@@@' + userWithRequiredPermissionSet);
         
             List<Core_MDF_GenericClassToSendMail.MailParams> settingMailParameters = new List<Core_MDF_GenericClassToSendMail.MailParams>();
             
             for(initialInputs input : externalUserList){
                 Core_MDF_GenericClassToSendMail.MailParams params = new Core_MDF_GenericClassToSendMail.MailParams();
                 //ATHR - Deeply Nested if 16209
-                if(input.accountId == null || accIdUserIdSetMap.get(input.accountId) == NULL || !accIdUserIdSetMap.containsKey(input.accountId)){
+                if(!accIdUserIdSetMap.containsKey(input.accountId) || accIdUserIdSetMap.get(input.accountId) == NULL){
                     continue;
                 }
                 //if(accIdUserIdSetMap.containsKey(input.accountId) && accIdUserIdSetMap.get(input.accountId) != NULL){
@@ -344,10 +389,12 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
                         for(Id userId : accIdUserIdSetMap.get(input.accountId)){
                             if(userWithRequiredPermissionSet.contains(userId)){
                                 params.userIdList.add(userId);
+                                system.debug('paramsUserIdList@@@' + params.userIdList);
                             }
                         }
                     }else{
                         params.userIdList.addAll(accIdUserIdSetMap.get(input.accountId));
+                        system.debug('paramsUserIdList2@@@' + params.userIdList);
                     }
                     
                     params.recordId = input.recordId;
@@ -358,7 +405,9 @@ public without sharing class Core_MDF_DetermineEmailRecipients {
                 if(params.userIdList != NULL && params.userIdList.Size() > 0){
                     settingMailParameters.add(params);
                 }
-            }            
+                system.debug('settingMailParameters1@@@' + settingMailParameters);
+            }   
+            system.debug('settingMailParameters2@@@' + settingMailParameters);        
             if(settingMailParameters != NULL && settingMailParameters.Size() > 0){
                
                 Core_MDF_GenericClassToSendMail.sendEmailMethod(settingMailParameters);

@@ -96,7 +96,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value></value>
+            <value>OSC</value>
         </criteriaItems>
         <criteriaItems>
             <column>USERS.NAME</column>
@@ -110,7 +110,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>EMP of Torsten Kahrmann,EMP of Markus Seifert,EMP of Markus Gabler,EMP of Hannes Schwaderer,EMP of Franzi Divis,EMP of Christoph Johann,EMP of Christian Roth,EMP of Christian Ganz,EMP of Christian Anderka,EMP of Andreas Timm,EMP of Michael Krueger</value>
+            <value>EMP of Torsten Kahrmann,EMP of Markus Seifert,EMP of Markus Gabler,EMP of Hannes Schwaderer,EMP of Franzi Divis,EMP of Christoph Johann,EMP of Christian Roth,EMP of Christian Ganz,EMP of Christian Anderka,EMP of Andreas Timm</value>
         </criteriaItems>
         <criteriaItems>
             <column>User.Core_User_Profile_Name__c</column>

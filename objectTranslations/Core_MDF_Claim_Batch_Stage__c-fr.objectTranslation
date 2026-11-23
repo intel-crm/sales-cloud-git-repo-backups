@@ -77,8 +77,8 @@
         <name>Core_MDF_Budget_Type_Nm__c</name>
     </fields>
     <fields>
-        <label><!-- Budget Type --></label>
-        <name>Core_MDF_Budget_Type__c</name>
+        <label><!-- Claim Attributes JSON --></label>
+        <name>Core_MDF_Claim_Attributes_JSON_txt__c</name>
     </fields>
     <fields>
         <label>Commentaires sur la demande</label>
@@ -166,7 +166,7 @@
         <relationshipLabel><!-- Claim Batch Records --></relationshipLabel>
     </fields>
     <fields>
-        <label>Coûts non remboursables (locaux)</label>
+        <label>Autres coûts non remboursables (locaux)</label>
         <name>Core_MDF_Non_Reimbursable_Amt__c</name>
     </fields>
     <fields>
@@ -194,16 +194,8 @@
         <name>Core_MDF_Program_Txt__c</name>
     </fields>
     <fields>
-        <label><!-- Program --></label>
-        <name>Core_MDF_Program__c</name>
-    </fields>
-    <fields>
         <label><!-- Reimbursement Rate (%) --></label>
         <name>Core_MDF_Reimbursement_Percent_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Reimbursement Rate (%) --></label>
-        <name>Core_MDF_Reimbursement_Percent__c</name>
     </fields>
     <fields>
         <label>ID de la demande</label>
@@ -214,15 +206,19 @@
         <name>Core_MDF_Retry_Count_Nbr__c</name>
     </fields>
     <fields>
+        <label><!-- Retry Indicator --></label>
+        <name>Core_MDF_Retry_Ind__c</name>
+    </fields>
+    <fields>
         <label><!-- Review Hold Rule --></label>
         <name>Core_MDF_Review_Hold_Rule_Nm__c</name>
     </fields>
     <fields>
-        <label>Taxes (locales)</label>
+        <label>Taxes (devise locale)</label>
         <name>Core_MDF_Taxes_Local_Amt__c</name>
     </fields>
     <fields>
-        <label>Montant total (local)</label>
+        <label>Montant total de la facture (local)</label>
         <name>Core_MDF_Total_Amt__c</name>
     </fields>
     <fields>
@@ -268,7 +264,15 @@
     </recordTypes>
     <startsWith>Consonant</startsWith>
     <validationRules>
+        <errorMessage><!-- The applicable VAT Percentage is not editable for the selected Bank. --></errorMessage>
+        <name>Core_MDF_Restrict_VATPerUpdateFor420</name>
+    </validationRules>
+    <validationRules>
         <errorMessage>L&apos;enregistrement du lot de demandes ne peut pas être modifié dans son état actuel</errorMessage>
         <name>Core_MDF_Succesful_StageCannot_Be_Edited</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Applicable VAT Percentage (Mandatory only for Retail MDF Budget type when your Bank’s location is Japan. Supported values are 0, 8, 10. --></errorMessage>
+        <name>Core_MDF_Validate_VATPercentageFor650</name>
     </validationRules>
 </CustomObjectTranslation>

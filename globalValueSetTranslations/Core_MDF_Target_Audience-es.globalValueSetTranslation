@@ -10,11 +10,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Business Owners/SMB</masterLabel>
-        <translation><!-- Business Owners/SMB --></translation>
+        <translation>Propietarios de negocios/PyME</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Business owners</masterLabel>
-        <translation><!-- Business owners --></translation>
+        <translation>Propietarios de empresa</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>C-Suite</masterLabel>
@@ -58,7 +58,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Distributors</masterLabel>
-        <translation><!-- Distributors --></translation>
+        <translation>Mayoristas</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Edge Customers (edge computing)</masterLabel>
@@ -74,7 +74,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Employees</masterLabel>
-        <translation><!-- Employees --></translation>
+        <translation>Empleados</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Enterprise</masterLabel>
@@ -102,7 +102,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Government agency heads</masterLabel>
-        <translation><!-- Government agency heads --></translation>
+        <translation>Jefes de agencia gubernamental</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Government/Public Sector</masterLabel>
@@ -174,15 +174,15 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Partner </masterLabel>
-        <translation><!-- Partner  --></translation>
+        <translation>Asociarse</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Project / program managers</masterLabel>
-        <translation><!-- Project / program managers --></translation>
+        <translation>Administradores de proyecto / programa</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Purchasing</masterLabel>
-        <translation><!-- Purchasing --></translation>
+        <translation>Compras</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Reseller</masterLabel>
@@ -190,11 +190,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Leaders</masterLabel>
-        <translation><!-- Sales Leaders --></translation>
+        <translation>Jefes de ventas</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Security managers</masterLabel>
-        <translation><!-- Security managers --></translation>
+        <translation>Administradores de seguridad</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Senior Business Decision Maker</masterLabel>
@@ -214,15 +214,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sr. Business Decision Maker</masterLabel>
-        <translation><!-- Sr. Business Decision Maker --></translation>
+        <translation>Responsable principal de toma de decisiones empresariales</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>System Integrators</masterLabel>
-        <translation><!-- System Integrators --></translation>
+        <translation>Integradores de sistemas</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Influencer</masterLabel>
         <translation>Influencer técnico</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Test LOV Target Audience</masterLabel>
+        <translation><!-- Test LOV Target Audience --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Unmanaged Small Business</masterLabel>

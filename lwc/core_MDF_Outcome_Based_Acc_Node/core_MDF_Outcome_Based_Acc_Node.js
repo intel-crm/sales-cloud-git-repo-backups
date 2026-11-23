@@ -327,7 +327,42 @@ export default class AccountPercentageList extends NavigationMixin(LightningElem
     }
 
     updateCalculatedValues() {
-        this.rows = [...this.rows];
+        // When totalAmount changes, recalculate all row amounts to maintain percentage distribution
+        if (this._totalAmount && this._totalAmount > 0) {
+            this.rows = this.rows.map(row => {
+                // Skip rows with no percentage or no account
+                if (row.percent === null || row.percent === undefined || row.percent <= 0) {
+                    return row;
+                }
+                
+                // Calculate new amount based on percentage and new total
+                const newAmount = this.roundToTwoDecimals((row.percent / 100) * this._totalAmount);
+                
+                // Update the row with new amount and formatted values
+                return {
+                    ...row,
+                    amount: newAmount,
+                    formattedAmount: new Intl.NumberFormat('en-US', {
+                        style: 'currency',
+                        currency: 'USD'
+                    }).format(newAmount)
+                };
+            });
+        } else {
+            // If total amount is 0 or invalid, reset all amounts to 0
+            this.rows = this.rows.map(row => {
+                return {
+                    ...row,
+                    amount: 0,
+                    formattedAmount: '$0.00'
+                };
+            });
+        }
+        
+        // Recalculate totals
+        this.calculateTotals();
+        this.updateRowClasses();
+        this.updateFormattedValues();
     }
 
     loadStoredAllocations() {

@@ -18,12 +18,129 @@
         <name>Core_MDF_Account_Names__c</name>
     </fields>
     <fields>
-        <label><!-- Budget Type --></label>
+        <label><!-- Budget Type-OLD --></label>
         <name>Core_MDF_Budget_Type_Txt__c</name>
     </fields>
     <fields>
         <label><!-- Budget Type --></label>
         <name>Core_MDF_Budget_Type_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Types-POC --></label>
+        <name>Core_MDF_Budget_Types_nm__c</name>
+        <picklistValues>
+            <masterLabel>Business Client Acceleration - MDF</masterLabel>
+            <translation><!-- Business Client Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCF 1.0</masterLabel>
+            <translation><!-- CCF 1.0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Specialties MDF</masterLabel>
+            <translation><!-- Client Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCF 1.0</masterLabel>
+            <translation><!-- DCF 1.0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Specialties MDF</masterLabel>
+            <translation><!-- Data Center Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Centric Acceleration - MDF</masterLabel>
+            <translation><!-- Data Centric Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Ericsson Acceleration - MDF</masterLabel>
+            <translation><!-- Global Ericsson Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global IBM Acceleration - MDF</masterLabel>
+            <translation><!-- Global IBM Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Microsoft Acceleration - MDF</masterLabel>
+            <translation><!-- Global Microsoft Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Nokia Acceleration - MDF</masterLabel>
+            <translation><!-- Global Nokia Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Red Hat Acceleration - MDF</masterLabel>
+            <translation><!-- Global Red Hat Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global SAP Acceleration - MDF</masterLabel>
+            <translation><!-- Global SAP Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global SAS Acceleration - MDF</masterLabel>
+            <translation><!-- Global SAS Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Suse Acceleration - MDF</masterLabel>
+            <translation><!-- Global Suse Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global VMware Acceleration - MDF</masterLabel>
+            <translation><!-- Global VMware Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISV Scale Acceleration - MDF</masterLabel>
+            <translation><!-- ISV Scale Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDF</masterLabel>
+            <translation><!-- MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDF+</masterLabel>
+            <translation><!-- MDF+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OEM CMP</masterLabel>
+            <translation><!-- OEM CMP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optane Specialties MDF</masterLabel>
+            <translation><!-- Optane Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RSA MD</masterLabel>
+            <translation><!-- RSA MD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Red Hat &quot;Amplify&quot; - MDF</masterLabel>
+            <translation><!-- Red Hat &quot;Amplify&quot; - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail MDF</masterLabel>
+            <translation><!-- Retail MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOEM Client MDF</masterLabel>
+            <translation><!-- SOEM Client MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOEM Data Center MDF</masterLabel>
+            <translation><!-- SOEM Data Center MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider CMP</masterLabel>
+            <translation><!-- Service Provider CMP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VMWare Amplify - MDF</masterLabel>
+            <translation><!-- VMWare Amplify - MDF --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Field is used to send email to GSPO email box. --></help>
+        <label><!-- Email Id for GSPO --></label>
+        <name>Core_MDF_Email_Id_for_GSPO__c</name>
     </fields>
     <fields>
         <label><!-- Execution End Date --></label>
@@ -88,11 +205,15 @@
     <fields>
         <label><!-- Program --></label>
         <name>Core_MDF_Program_Id__c</name>
-        <relationshipLabel><!-- Payment Run (Channel Program) --></relationshipLabel>
+        <relationshipLabel><!-- Payment Run --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Program --></label>
         <name>Core_MDF_Program_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Resend Notification --></label>
+        <name>Core_MDF_ReSend_Notification_Ind__c</name>
     </fields>
     <fields>
         <help><!-- If this option is selected, all the accounts you have access to at the time of the scheduling/initiating the payment run will be included. --></help>
@@ -151,6 +272,26 @@
         <label><!-- VAT Claims Exist --></label>
         <name>Core_MDF_VAT_Claims_Exist_Ind__c</name>
     </fields>
+    <fields>
+        <label><!-- Note --></label>
+        <name>Note__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Id --></label>
+        <name>Record_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Test --></label>
+        <name>Test__c</name>
+        <picklistValues>
+            <masterLabel>Test1</masterLabel>
+            <translation><!-- Test1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Test2</masterLabel>
+            <translation><!-- Test2 --></translation>
+        </picklistValues>
+    </fields>
     
     <nameFieldLabel><!-- Payment Run Number --></nameFieldLabel>
     <recordTypes>
@@ -168,6 +309,10 @@
     <recordTypes>
         <label><!-- Co-Engineering --></label>
         <name>Co_Engineering</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Ecosystem Extension Fund --></label>
+        <name>Core_MDF_Ecosystem_Extension_Fund</name>
     </recordTypes>
     <recordTypes>
         <label><!-- Intel Partner Alliance MDF --></label>
@@ -210,7 +355,7 @@
         <name>Core_MDF_BlockPaymentNatureChange</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Send Notification can be checked only for EMEA/APJ Payment Run records and it cannot be edited. --></errorMessage>
+        <errorMessage><!-- Send Notification cannot be edited. --></errorMessage>
         <name>Core_MDF_IPAValidationOnSendNotification</name>
     </validationRules>
     <validationRules>
@@ -246,6 +391,10 @@
         <name>Core_MDF_Restrict_Multiple_PaymentNature</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Please enter a date when you want to schedule payment --></errorMessage>
+        <name>Core_MDF_Retail_Required_Fields</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Select ‘Run Now’ to run payment run instantly or enter a date to schedule a payment run. --></errorMessage>
         <name>Core_MDF_Retail_Schedule_Required_Fields</name>
     </validationRules>
@@ -264,5 +413,9 @@
     <webLinks>
         <label><!-- Core_MDF_Export_List_View --></label>
         <name>Core_MDF_Export_List_View</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- MyButtonPOC --></label>
+        <name>MyButtonPOC</name>
     </webLinks>
 </CustomObjectTranslation>

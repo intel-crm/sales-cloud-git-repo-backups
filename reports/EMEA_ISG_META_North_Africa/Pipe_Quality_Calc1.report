@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <aggregates>
-        <calculatedFormula>1-(Opportunity.Core_Pipeline_Heath__c:SUM/Opportunity.Core_Open_Oppty__c:SUM)</calculatedFormula>
+        <calculatedFormula>1-(Opportunity.Core_Low_Quality__c:SUM/Opportunity.Core_Open_Oppty__c:SUM)</calculatedFormula>
         <datatype>percent</datatype>
         <developerName>FORMULA1</developerName>
         <downGroupingContext>GRAND_SUMMARY</downGroupingContext>
@@ -69,20 +69,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Group,Group Open</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Owner__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>contains</operator>
-            <value>,pieterse; ozkan</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER_MANAGER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>contains</operator>
-            <value>beckmann</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

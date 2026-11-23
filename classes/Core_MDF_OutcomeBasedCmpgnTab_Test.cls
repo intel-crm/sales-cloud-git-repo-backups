@@ -1,5 +1,5 @@
 @IsTest
-public class Core_MDF_OutcomeBasedCmpgnTab_Test { 
+public class Core_MDF_OutcomeBasedCmpgnTab_Test {
     public static Id payRun_RecordType_IPAMDF = Schema.SObjectType.Core_MDF_Payment_Run__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance_MDF').getRecordTypeId();
     
     // test method for data setup
@@ -245,7 +245,7 @@ public class Core_MDF_OutcomeBasedCmpgnTab_Test {
         Core_MDF_CCP_TestDataUtility.insertCurrencyExchangeRates();  
         // Create test data for Core_MDF_Activity_Attributes__c
         Core_MDF_Activity_Outcome__c activityOutcome = new Core_MDF_Activity_Outcome__c(
-            Core_MDF_Activity_Id__c  = pfr.Id,
+            Core_MDF_Activity_Id__c	 = pfr.Id,
             Core_MDF_Outcome_Metric_nm__c = 'Revenue - Billings',
             Core_MDF_Goal_Value_nbr__c = 200,
             Core_MDF_Baseline_Value_nbr__c = 190,
@@ -332,18 +332,18 @@ getOutcomeBasedActivities
 ---------------------------------------------------------- */
     @IsTest
     static void testGetOutcomeBasedActivities() {
-        //(String sortBy, String sortDirection, Integer pageSize, String pageDirection, String cursorValue, String cursorId, String statusFilter, String programFilter, String budgetFilter, String accountId, String searchKey) {
+        
         Test.startTest();
         
-       // OutcomeBasedActivitiesPage records =
+        List<PartnerFundRequest> records =
             Core_MDF_OutcomeBasedCmpgnTab.getOutcomeBasedActivities(
-                'DESC',
-                'LastModifiedDate',10,'last',null,null,'Planned','Intel Partner Alliance','Account Plan',null,'test'                
+                'LastModifiedDate',
+                'DESC'
             );
         
         Test.stopTest();
         
-       // System.assertNotEquals(null, records);
+        System.assertNotEquals(null, records);
     }
     
     /* ----------------------------------------------------------
@@ -362,7 +362,6 @@ getStatusPicklistValues
         System.assertNotEquals(null, values);
     }
     
-
     
     /* ----------------------------------------------------------
 searchAccounts

@@ -31,7 +31,7 @@ public class Core_MDF_TrgtSetngLineItemHandler_Test {
         System.runAs(usr){
             Test.startTest();
             
-            ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', true);
+            ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', true);
             
             ChannelProgram ipaCP = Core_MDF_CCP_TestDataUtility.createProgram ('Intel Partner Alliance','Intel Partner Alliance', true);
             
@@ -40,8 +40,7 @@ public class Core_MDF_TrgtSetngLineItemHandler_Test {
                                                                             false);
             acc1.Core_Geo__c = 'APJ';
             acc1.Core_Sub_Geo__c = 'SA';
-            acc1.BillingStateCode = '';
-            acc1.BillingCountryCode = '';
+            acc1.BillingCountryCode = 'JPN';
             intelAccList.add(acc1);
             insert intelAccList;
             
@@ -82,13 +81,13 @@ public class Core_MDF_TrgtSetngLineItemHandler_Test {
             insert newTargetSettingList;
             
             List<Core_MDF_Spending_Targets_Version__c> versionList = new List<Core_MDF_Spending_Targets_Version__c>();
-            Core_MDF_Spending_Targets_Version__c version = new  Core_MDF_Spending_Targets_Version__c();
+            Core_MDF_Spending_Targets_Version__c version = new 	Core_MDF_Spending_Targets_Version__c();
             version.Core_MDF_Spending_Targets__c = targetSetting.Id;
             version.Core_MDF_Version_nbr__c = 1;
             version.Core_MDF_Is_Active_Ind__c = TRUE;
             versionList.add(version);
             
-            Core_MDF_Spending_Targets_Version__c versionIPA = new   Core_MDF_Spending_Targets_Version__c();
+            Core_MDF_Spending_Targets_Version__c versionIPA = new 	Core_MDF_Spending_Targets_Version__c();
             versionIPA.Core_MDF_Spending_Targets__c = targetSettingIPA.Id;
             versionIPA.Core_MDF_Version_nbr__c = 1;
             versionIPA.Core_MDF_Is_Active_Ind__c = TRUE;
@@ -118,8 +117,8 @@ public class Core_MDF_TrgtSetngLineItemHandler_Test {
     
     @isTest static void testValidateRegion1(){
         
-        User usr = [Select id from User where LastName = 'CCF Account Manager' limit 1];
-        Account acc = [Select id from Account where name = 'Test Account 1' limit 1];
+        User usr = [Select id from User where LastName = 'CCF Account Manager'];
+        Account acc = [Select id from Account where name = 'Test Account 1'];
         Account viracc = [Select id from Account where Core_MDF_Parent_Fund_Account__c =: acc.Id LIMIT 1];
         Core_MDF_Target_Setting__c trgtSetting = [SELECT Id, Core_MDF_Name__c FROM Core_MDF_Target_Setting__c WHERE Core_MDF_Name__c='Trgt Settings'];
         Core_MDF_Spending_Targets_Version__c version1 = [SELECT Id from Core_MDF_Spending_Targets_Version__c WHERE Core_MDF_Spending_Targets__c=: trgtSetting.Id LIMIT 1];
@@ -142,18 +141,18 @@ public class Core_MDF_TrgtSetngLineItemHandler_Test {
             Test.startTest();
             Core_MDF_Target_Setting_Line_Item__c lineItemRecord1 = new Core_MDF_Target_Setting_Line_Item__c();
             lineItemRecord1.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
-            lineItemRecord1.Core_MDF_Region_Name_nm__c = 'ASMO';
+            lineItemRecord1.Core_MDF_Region_nm__c = 'ASMO';
             lineItemRecord1.Core_MDF_Country_Name_nm__c = 'CANADA';
             lineItemRecord1.Core_MDF_Amount__c = 0;
             lineItemRecord1.Core_MDF_Spending_Targets_Version__c = version1.Id;
             lineItemRecord1.RecordTypeId = lineItemCCFRecTypeId;
             lineItemRecord1.Core_MDF_Account__c= viracc.id;
             
-            //insert lineItemRecord1;
+            insert lineItemRecord1;
             
             lineItemRecord1.Core_MDF_Amount__c = 1;
             lineItemRecord1.Core_MDF_Region_nm__c = 'ASMO';
-           // update lineItemRecord1;
+            update lineItemRecord1;
             
             List<Core_MDF_Target_Setting_Line_Item__c> TSLIList = new List<Core_MDF_Target_Setting_Line_Item__c>([Select Id, Core_MDF_Account__c,Core_MDF_Ultimate_Account_Id__c, Core_MDF_Amount__c,
                                                                                                                   Core_MDF_Region_nm__c,Core_MDF_Host_Region_Txt__c,
@@ -169,8 +168,8 @@ public class Core_MDF_TrgtSetngLineItemHandler_Test {
     }
     @isTest static void testValidateRegion2(){
         
-        User usr = [Select id from User where LastName = 'CCF Account Manager' limit 1];
-        Account acc = [Select id from Account where name = 'Test Account 1' limit 1];
+        User usr = [Select id from User where LastName = 'CCF Account Manager'];
+        Account acc = [Select id from Account where name = 'Test Account 1'];
         Account viracc = [Select id from Account where Core_MDF_Parent_Fund_Account__c =: acc.Id LIMIT 1];
         Core_MDF_Target_Setting__c trgtSetting = [SELECT Id, Core_MDF_Name__c FROM Core_MDF_Target_Setting__c WHERE Core_MDF_Name__c='Trgt Settings'];
         Core_MDF_Spending_Targets_Version__c version1 = [SELECT Id from Core_MDF_Spending_Targets_Version__c WHERE Core_MDF_Spending_Targets__c=: trgtSetting.Id LIMIT 1];
@@ -193,14 +192,14 @@ public class Core_MDF_TrgtSetngLineItemHandler_Test {
             Test.startTest();
             Core_MDF_Target_Setting_Line_Item__c lineItemRecord1 = new Core_MDF_Target_Setting_Line_Item__c();
             lineItemRecord1.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
-            lineItemRecord1.Core_MDF_Region_Name_nm__c = 'ASMO';
+            lineItemRecord1.Core_MDF_Region_nm__c = 'ASMO';
             lineItemRecord1.Core_MDF_Country_Name_nm__c = 'CANADA';
             lineItemRecord1.Core_MDF_Amount__c = 0;
             lineItemRecord1.Core_MDF_Spending_Targets_Version__c = version1.Id;
             lineItemRecord1.RecordTypeId = lineItemCCFRecTypeId;
             lineItemRecord1.Core_MDF_Account__c= viracc.id;
             
-            //insert lineItemRecord1;
+            insert lineItemRecord1;
             
             
             List<Core_MDF_Target_Setting_Line_Item__c> TSLIList = new List<Core_MDF_Target_Setting_Line_Item__c>([Select Id, Core_MDF_Account__c,Core_MDF_Ultimate_Account_Id__c, Core_MDF_Amount__c,

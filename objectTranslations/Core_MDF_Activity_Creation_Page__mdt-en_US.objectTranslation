@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Test Activity Creation Page</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Activity Creation Pages</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_ind__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Activity Page Section --></label>
+        <name>Core_MDF_Activity_Page_Section_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field API Name --></label>
+        <name>Core_MDF_Field_API_Name_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Data Type --></label>
+        <name>Core_MDF_Field_Data_Type_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Display Name --></label>
+        <name>Core_MDF_Field_Display_Name_nm__c</name>
+        <picklistValues>
+            <masterLabel>Account</masterLabel>
+            <translation><!-- Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Activity Category</masterLabel>
+            <translation><!-- Activity Category --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Activity Name</masterLabel>
+            <translation><!-- Activity Name --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Activity Type</masterLabel>
+            <translation><!-- Activity Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brand</masterLabel>
+            <translation><!-- Brand --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Budget Currency Local</masterLabel>
+            <translation><!-- Budget Currency Local --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Campaign</masterLabel>
+            <translation><!-- Campaign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Country</masterLabel>
+            <translation><!-- Country --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Currency</masterLabel>
+            <translation><!-- Currency --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Description</masterLabel>
+            <translation><!-- Description --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>End Date</masterLabel>
+            <translation><!-- End Date --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Priority</masterLabel>
+            <translation><!-- Priority --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Type</masterLabel>
+            <translation><!-- Product Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Start Date</masterLabel>
+            <translation><!-- Start Date --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Target Audience</masterLabel>
+            <translation><!-- Target Audience --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Order --></label>
+        <name>Core_MDF_Order_num__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mandatory/Required --></label>
+        <name>Core_MDF_Required_ind__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -9,7 +9,7 @@ Modification Log :
 * Dave Hood           Jun 24, 2015       Initial version
 * Dave Hood           Jan 25, 2016       Changes for Spring 16 and shortening of the questionnaire
 *************************************************************************************/
-public without sharing class Core_MAGQuestionnaireController {
+public class Core_MAGQuestionnaireController {
     
     private ApexPages.StandardController stdController;
     
@@ -20,7 +20,6 @@ public without sharing class Core_MAGQuestionnaireController {
     public Integer numQuestions { get; set; }    
     public Boolean renderCommentSection { get; set; }
     public Boolean isLocked { get; set; }
-    public Boolean isApprovedGuardrails { get; set; }
     
     private static final String APPROVED = 'Approved';
     private static final String APPROVED_WITH_GUARDRAILS = 'Approved with Guardrails';
@@ -32,7 +31,7 @@ public without sharing class Core_MAGQuestionnaireController {
         
         if ((qstId != null) && (qstId != '')) {
             
-            questionnaire = (Core_MAG_Questionnaire__c) stdController.getRecord();
+        	questionnaire = (Core_MAG_Questionnaire__c) stdController.getRecord();
             
             numQuestions = (Integer) questionnaire.Core_Number_of_Questions__c;
             
@@ -50,8 +49,6 @@ public without sharing class Core_MAGQuestionnaireController {
             if ((questionnaire.Core_Opportunity__r.Core_Compliance_Status__c == APPROVED) ||
                 (questionnaire.Core_Opportunity__r.Core_Compliance_Status__c == APPROVED_WITH_GUARDRAILS))
                 isLocked = true;
-            if (questionnaire.Core_Opportunity__r.Core_Compliance_Status__c == APPROVED)
-                isApprovedGuardrails = true;
             
             oppty = [select Id, Name, Core_Standard_Customer_Refresh__c from Opportunity where Id = :questionnaire.Core_Opportunity__c];
         }
@@ -72,7 +69,7 @@ public without sharing class Core_MAGQuestionnaireController {
                 Id qstId;
                 
                 List<Core_MAG_Questionnaire__c> existingQuestionnaire =
-                    [select Id from Core_MAG_Questionnaire__c where Core_Opportunity__c =: ApexPages.currentPage().getParameters().get('OpportunityId') limit 1];
+                    [select Id from Core_MAG_Questionnaire__c where Core_Opportunity__c = :oppId limit 1];
                     
                 if ((existingQuestionnaire != null) && (existingQuestionnaire.size() > 0)) {
                     qstId = existingQuestionnaire[0].Id;
@@ -82,7 +79,7 @@ public without sharing class Core_MAGQuestionnaireController {
                     insert existingQuestionnaire;
                     qstId = existingQuestionnaire[0].Id;
                     
-                    Opportunity opp = [select Core_MAG_Questionnaire_ID__c from Opportunity where Id =: ApexPages.currentPage().getParameters().get('OpportunityId')];
+                    Opportunity opp = [select Core_MAG_Questionnaire_ID__c from Opportunity where Id = :oppId];
                     opp.Core_MAG_Questionnaire_ID__c = qstId;
                     update opp;
                 }
@@ -135,8 +132,7 @@ public without sharing class Core_MAGQuestionnaireController {
     public PageReference save() {
         stdController.save();
         update oppty;
-        //return new PageReference('/' + oppty.Id);
-        return null;
+        return new PageReference('/' + oppty.Id);
     }
     
     public PageReference cancel() {
@@ -145,7 +141,7 @@ public without sharing class Core_MAGQuestionnaireController {
 
     public PageReference gotoOpportunity() {
         if (oppty != null)
-            return new PageReference('/' + oppty.Id);
+        	return new PageReference('/' + oppty.Id);
         else
             return null;
     }

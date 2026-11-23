@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>IEF-UNIVERSITE PARIS SUD Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>IEFUNIVERSITEPARISSUDCustomerManager</parentRole>
 </Role>

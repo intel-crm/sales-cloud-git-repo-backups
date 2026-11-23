@@ -1,0 +1,15 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,lightning:actionOverride,force:lightningQuickActionWithoutHeader" access="global" >
+    <aura:attribute name="isIPAPgm" type="boolean" default="false"/>    
+    <div class="slds-p-bottom_small">{!v.isIPAPgm}...
+        <aura:If isTrue="true">
+            <lightning:accordion allowMultipleSectionsOpen="true" class="lgtAcctSec"> 
+                <lightning:accordionSection class="slds-size_2-of-2 lgtAcctSec" label="{!$Label.c.Core_MDF_IPA_BankUrl_Accordion_Header}">
+                    <lightning:formattedRichText value="{!$Label.c.Core_MDF_IPA_BankLink_Verbage1}"/>
+                    <lightning:formattedUrl value="{!$Label.c.Core_MDF_IPA_BankDocLink}" label="{!' '+$Label.c.Core_MDF_IPA_BankLink_Verbage2+' '}" target="_blank" />
+                    <lightning:formattedRichText value="{!$Label.c.Core_MDF_IPA_BankLink_Verbage3}"/>
+                    <lightning:formattedEmail value="{!$Label.c.Core_MDF_IPABankCorporateOrganizationMailId}" label="{!' '+$Label.c.Core_MDF_IPABankCorporateOrganizationMail+'.'}" hideIcon="true" /> 
+                </lightning:accordionSection>    
+            </lightning:accordion>  
+        </aura:If>
+    </div>
+</aura:component>

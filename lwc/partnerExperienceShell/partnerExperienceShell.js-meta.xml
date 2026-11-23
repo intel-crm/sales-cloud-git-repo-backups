@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>68.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Partner Experience Navigation Shell</masterLabel>
+    <description>Intel-branded header, navigation search, and left sidebar around existing Home page content.</description>
+    <targets>
+        <target>lightningCommunity__Theme_Layout</target>
+    </targets>
+</LightningComponentBundle>

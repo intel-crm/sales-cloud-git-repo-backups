@@ -8,7 +8,6 @@
         * ------------------------------------------------------------------------------------------------                 
         * Ashutosh                    19/04/2018                  Modified(UserStory US102781 - Modified For changes on single column creation in EDQ section)
         * Karthick                    03/09/2018                  Modified(UserStory US113683)
-		* Gourav Anand				  28/03/2019                  DE36223 - Added html name to input text tag
         ----------------------------------------------------------------------------------------------------->
     <style type="text/css">
         .dropdown-display-label {
@@ -27,7 +26,7 @@
         }
         
     </style>
-      
+    
     <apex:attribute name="selectedProductId" description="Product Id" type="String"/>
     <apex:attribute name="selectedSAProductId" description="Supported Product Id" type="String"/>    
     <apex:attribute name="subCategorySelected" description="Sub Category Id" type="String" />
@@ -51,10 +50,10 @@
                             <apex:repeat value="{!subCatenvDetList}" var="env" rendered="{!subCatenvDetList!=null && subCategorySelected!=null}" id="EnvironmentDetails1">
                                 <!--Removed rendered="{!if(CONTAINS(env.type,'Text Area'),false,true)}" as part of US113683 by karthick -->
                                 <apex:pageblockSectionItem id="section" >
-                                    <apex:outputLabel value="{!JSENCODE(env.label)}" escape="true"></apex:outputLabel>
+                                    <apex:outputLabel value="{!env.label}" escape="true"></apex:outputLabel>
                                     <apex:outputPanel id="panel">
                                         <!-- Text -->
-                                        <apex:outputPanel rendered="{!if(JSENCODE(env.type)=='Text',true,false)}" id="panel1">
+                                        <apex:outputPanel rendered="{!if(env.type=='Text',true,false)}" id="panel1">
                                             <apex:outputPanel styleClass="{!IF(env.required,'requiredInput','')}" layout="block">
                                                 <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!env.required}"/>
                                                 <apex:inputText value="{!env.sPlaceHolder}">
@@ -136,7 +135,7 @@
                                                     <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!envDetail.required}"/>
                                                     <!--Ashutosh - US-102781 - changing rows to 10 from 5 and also adding width:100%-->
                                                     <apex:inputtextarea rows="10" cols="150" value="{!envDetail.tPlaceHolder}" styleClass="dependentTextArea"/>
-                                                </apex:outputPanel>                                  
+                                                </apex:outputPanel>                                    
                                                 <br/>
                                             </apex:outputPanel>
                                             <!--Added by Karthick US101342 R4.2-- End--->
@@ -150,18 +149,17 @@
                         
                         <!-- Environment Details for Supported Product -->
                         <!--Ashutosh - US102781 - removed page block section tag -->
-                         
+                        
                             <apex:repeat value="{!envDetails}" var="env" id="EnvironmentDetails">
                                 <!--Removed rendered="{!if(CONTAINS(env.type,'Text Area'),false,true)}" as part of US113683 by karthick -->
                                 <apex:pageblockSectionItem id="section" >
-                                    <apex:outputLabel value="{!JSENCODE(env.label)}" escape="true"></apex:outputLabel>
+                                    <apex:outputLabel value="{!env.label}" escape="true"></apex:outputLabel>
                                     <apex:outputPanel id="panel">
                                         <!-- Text -->
-                                        <apex:outputPanel rendered="{!if(JSENCODE(env.type)=='Text',true,false)}" id="panel1">
+                                        <apex:outputPanel rendered="{!if(env.type=='Text',true,false)}" id="panel1">
                                             <apex:outputPanel styleClass="{!IF(env.required,'requiredInput','')}" layout="block">
                                                 <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!env.required}"/>
-                                                <!-- changed sPlaceHolder to splaceholder Gourav: DE36223-->
-                                               <apex:inputText value="{!env.splaceholder}">
+                                                <apex:inputText value="{!env.sPlaceHolder}">
                                                 </apex:inputText>
                                             </apex:outputPanel>                                    
                                             <br/>
@@ -197,8 +195,8 @@
                                             <apex:outputPanel styleClass="{!IF(env.required,'requiredInput','')}" layout="block">
                                                 <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!env.required}"/>
                                                 <!--<apex:inputtextarea value="{!env.tPlaceHolder}" required="true"/><br/>-->
-                                                <!-- changed sPlaceHolder to splaceholder Gourav: DE36223-->
-                                                <apex:inputtextarea rows="10" cols="150" style="width:100%;" value="{!env.tPlaceHolder}" />
+                                                
+                                                <apex:inputtextarea rows="10" cols="150" style="width:100%;"   value="{!env.tPlaceHolder}" />
                                                 <br/>
                                             </apex:outputPanel> 
                                         </apex:outputPanel>
@@ -237,7 +235,7 @@
                                             <apex:outputPanel rendered="{!if(envDetail.type=='Text',true,false)}" id="panel1">
                                                 <apex:outputPanel styleClass="{!IF(envDetail.required,'requiredInput','')}" layout="block">
                                                     <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!envDetail.required}"/>
-                                                    <apex:inputText value="{!envDetail.splaceholder}">
+                                                    <apex:inputText value="{!envDetail.sPlaceHolder}">
                                                     </apex:inputText>
                                                 </apex:outputPanel>                                    
                                                 <br/>

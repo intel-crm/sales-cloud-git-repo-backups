@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>To store static values instead of using custom labels</description>
+    <fields>
+        <fullName>Is_Org_Specific__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Is Org Specific</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>Custom Label metadata</label>
+    <pluralLabel>Custom Labels metadata</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

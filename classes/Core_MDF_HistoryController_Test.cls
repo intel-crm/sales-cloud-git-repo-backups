@@ -128,7 +128,7 @@ private class Core_MDF_HistoryController_Test {
             Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(acc1.id,'Core_MDF_Client_CoMarketing_Fund',true,'1234567890');
 
             //creating ABM for bank1
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
            // Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc.Id,bank.Id,true);
             
             PartnerFundRequestShare pfrShare = new PartnerFundRequestShare();
@@ -164,7 +164,7 @@ private class Core_MDF_HistoryController_Test {
             pfc.Core_MDF_Country_Location_nm__c='UNITED STATES';
             pfc.Core_MDF_Processing_Preference_nm__c = 'Settle, then get paid';        
             newClmList.add(pfc);
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
            // User partnerUser = [SELECT Id, LastName FROM User WHERE LastName='User Test1'];
             Database.insert(newClmList);
 
@@ -174,7 +174,7 @@ private class Core_MDF_HistoryController_Test {
             update clm;
               
             // FIXED: Use actual claim ID instead of hardcoded ID
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
             // List<sObject> historyDatafromQuery = [SELECT Id, CreatedById, format(CreatedDate), toLabel(Field), toLabel(OldValue), toLabel(NewValue),PartnerFundClaimId FROM PartnerFundClaimHistory where PartnerFundClaimId = :clm.Id order by CreatedDate desc];
             
             List<Core_MDF_HistoryController.History> h = new List<Core_MDF_HistoryController.History>();
@@ -322,12 +322,12 @@ static void testLoadDataWithPartnerFundRequest(){
 
 @IsTest
 static void testLoadDataWithOutcomeBasedPFR(){
-    Test.startTest();
     // Update existing PFR to be outcome-based
     PartnerFundRequest pfr = [SELECT Id FROM PartnerFundRequest LIMIT 1];
     pfr.Core_MDF_Is_Outcome_Based_Ind__c = true;
     update pfr;
     
+    Test.startTest();
     List<Core_MDF_HistoryController.History> history = Core_MDF_HistoryController.loadData(pfr.Id, 'PartnerFundRequest', 'Intel System User', 'Owner;Core_MDF_Fund_Request_Status__c;RequestedAmount');
     Test.stopTest();
     
@@ -336,12 +336,12 @@ static void testLoadDataWithOutcomeBasedPFR(){
 
 @IsTest
 static void testGetHistoryHeaderForOutcomeBasedPFR(){
-    Test.startTest();
     // Update existing PFR to be outcome-based
     PartnerFundRequest pfr = [SELECT Id FROM PartnerFundRequest LIMIT 1];
     pfr.Core_MDF_Is_Outcome_Based_Ind__c = true;
     update pfr;
     
+    Test.startTest();
     Core_MDF_HistoryController.HistoryHeader header = Core_MDF_HistoryController.getHistoryHeader('PartnerFundRequest', pfr.Id);
     Test.stopTest();
     
@@ -604,18 +604,19 @@ static void testGetHistoryHeaderWithCustomLabel(){
     System.assertEquals('', header.errorMessage, 'Error message should be empty for valid object');
 }
 
-/*@IsTest
+@IsTest
 static void testLoadDataWithMaskedFieldsContainingUserIds(){
     Account testAccount = [SELECT Id FROM Account LIMIT 1];
     User testUser = [SELECT Id FROM User WHERE LastName = 'User Test' LIMIT 1];
-    Test.startTest();
     
     // Update account owner to create history
     testAccount.OwnerId = testUser.Id;
     update testAccount;
+    
+    Test.startTest();
     List<Core_MDF_HistoryController.History> history = Core_MDF_HistoryController.loadData(testAccount.Id, 'Account', 'Intel System User', 'Owner');
     Test.stopTest();
     
-    //System.assertNotEquals(null, history, 'History should not be null');
-}*/
+    System.assertNotEquals(null, history, 'History should not be null');
+}
 }

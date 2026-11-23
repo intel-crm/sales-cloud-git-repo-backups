@@ -49,12 +49,12 @@
             <translation><!-- Blackbox --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>CPQ Quote Request</masterLabel>
-            <translation><!-- CPQ Quote Request --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Contact</masterLabel>
             <translation><!-- Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment</masterLabel>
+            <translation><!-- Payment --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Quote</masterLabel>
@@ -67,10 +67,6 @@
         <picklistValues>
             <masterLabel>SSG Support Request</masterLabel>
             <translation><!-- SSG Support Request --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Tender</masterLabel>
-            <translation><!-- Tender --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -109,22 +105,10 @@
             <masterLabel>Successful</masterLabel>
             <translation><!-- Successful --></translation>
         </picklistValues>
-        <picklistValues>
-            <masterLabel>Terminated</masterLabel>
-            <translation><!-- Terminated --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <label><!-- Publish Timestamp --></label>
         <name>Core_Publish_Timestamp__c</name>
-    </fields>
-    <fields>
-        <label><!-- Reprocess Message --></label>
-        <name>Core_Reprocess_Message__c</name>
-    </fields>
-    <fields>
-        <label><!-- Retry Counter --></label>
-        <name>Core_Retry_Counter__c</name>
     </fields>
     <fields>
         <label><!-- Source System Response Time(In Minutes) --></label>
@@ -156,14 +140,6 @@
         <picklistValues>
             <masterLabel>ERPM</masterLabel>
             <translation><!-- ERPM --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>MyDeals</masterLabel>
-            <translation><!-- MyDeals --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SAP</masterLabel>
-            <translation><!-- SAP --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>SIEBEL</masterLabel>

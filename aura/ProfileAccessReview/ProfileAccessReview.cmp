@@ -1,0 +1,118 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" 
+                controller="Profile_Access_Review">
+    
+    <!--MultiSelectPicklist.cmp-->
+    
+    <!--Declare Event Handlers-->
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" description="Call doInit function on component load to get picklist values"/>
+    
+    <!--Declare Attributes-->
+    <aura:attribute name="ProfileList" type="List" default="[]" description="Profile Picklist Values"/>
+    <aura:attribute name="ObjectList" type="List" default="[]" description="Object Picklist Values"/>
+    <aura:attribute name="AllObjectList" type="List" default="[]" description="Object Picklist Values"/>
+    <aura:attribute name="SelectedObjectList" type="List" default="[]" description="Selected Object Picklist Values"/>
+    <aura:attribute name="FieldPermissionsList" type="namespace.FieldPermissions[]"/>
+    <aura:attribute name="ObjectPermissionsList" type="namespace.ObjectPermissions[]"/>
+    <!-- search term -->
+    <aura:attribute name="term" type="String" />
+    <aura:handler name="change" value="{!v.term}" action="{!c.search}" />
+    <lightning:layout class="slds-page-header slds-page-header--object-home" >
+        <lightning:layoutItem padding="around-small" class="slds-size_1-of-2" >
+            <lightning:select aura:id="profile" label="Profile" name="profileList"  
+                              required="true"  class="slds-p-around_xx-small"> 
+                
+                <option value="">{!$Label.c.Core_MDF_choose_one}...</option>                         
+                <aura:iteration items="{!v.ProfileList}" var="profile">
+                    <option value="{!profile.label}">{!profile.value}</option>    
+                </aura:iteration>                
+            </lightning:select>
+            <div class="slds-m-around_xx-small">
+                <lightning:input type="text" value="{!v.term}" label="Filter" />
+                <lightning:dualListbox aura:id="selectObject"
+                                       name="Objects"
+                                       label="Select Objects"
+                                       sourceLabel="Available Objects"
+                                       selectedLabel="Selected Objects"
+                                       options="{!v.ObjectList }"
+                                       value="{!v.SelectedObjectList}"
+                                       onchange="{!c.handleObjectChange}"/>
+                
+            </div>
+            <div class = "slds-m-top_large">
+                <lightning:button variant="brand" label="Get Selected Profile's FLS" onclick="{!c.getSelectedObjectFLS}" />
+                <lightning:button variant="brand" label="Get Selected Profile's CRUD" onclick="{!c.getSelectedObjectCrud}" />
+            </div>
+            
+            <table aura:id = 'FLSTable' class="slds-table slds-hide slds-table--bordered slds-table--cell-buffer">
+                <thead>
+                    <tr class="slds-text-heading--label">
+                        <th scope="col">
+                            <div class="slds-truncate" title="Object Name">Object Name</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Field Name">Field Name</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="PermissionsRead">Read</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="PermissionsEdit">Edit</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.FieldPermissionsList}" var="fieldPerm">
+                        <tr>
+                            <td>{!fieldPerm.SObjectName}</td>
+                            <td>{!fieldPerm.Field}</td>
+                            <td>{!fieldPerm.PermissionsRead}</td>
+                            <td>{!fieldPerm.PermissionsEdit}</td>
+                            <!-- more fields here --> 
+                        </tr>
+                    </aura:iteration>
+                </tbody>
+            </table>
+            <table aura:id= 'CRUDTable' class="slds-table slds-hide slds-table--bordered slds-table--cell-buffer">
+                <thead>
+                    <tr class="slds-text-heading--label">
+                        <th scope="col">
+                            <div class="slds-truncate" title="Object Name">Object Name</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="PermissionsCreate">Create</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="PermissionsRead">Read</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="PermissionsDelete">Delete</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="PermissionsViewAllRecords">ViewAllRecords</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="PermissionsModifyAllRecords">ModifyAllRecords</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="PermissionsEdit ">Edit </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.ObjectPermissionsList}" var="CRUDPerm">
+                        <tr>
+                            <td>{!CRUDPerm.SObjectName}</td>
+                            <td>{!CRUDPerm.PermissionsCreate}</td>
+                            <td>{!CRUDPerm.PermissionsRead}</td>
+                            <td>{!CRUDPerm.PermissionsDelete}</td>
+                            <td>{!CRUDPerm.PermissionsViewAllRecords}</td>
+                            <td>{!CRUDPerm.PermissionsModifyAllRecords}</td>
+                            <td>{!CRUDPerm.PermissionsEdit}</td>
+                            <!-- more fields here --> 
+                        </tr>
+                    </aura:iteration>
+                </tbody>
+            </table>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

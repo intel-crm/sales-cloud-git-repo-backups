@@ -14,12 +14,16 @@
             <column>CUST_OWNER_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>derek pearsall</value>
+            <operator>startsWith</operator>
+            <value>bene</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Tabular</format>
+    <format>Summary</format>
+    <groupingsDown>
+        <field>CUST_CREATED_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <name>Bene Deal Win Goals Report</name>
     <params>
         <name>co</name>

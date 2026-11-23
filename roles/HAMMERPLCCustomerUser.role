@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>HAMMER PLC Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11223529_Luke_Atkins</parentRole>
+    <parentRole>HAMMERPLCCustomerManager</parentRole>
 </Role>

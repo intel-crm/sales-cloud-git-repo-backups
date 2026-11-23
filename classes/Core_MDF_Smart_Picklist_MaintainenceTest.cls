@@ -37,9 +37,11 @@ public class Core_MDF_Smart_Picklist_MaintainenceTest {
     @isTest
     static void testgetObjectData(){
         Map<String, String> objectMap = new Map<String,String>();
-        Map<String,String> objMap2 = new Map<String,String>();
+        // Highlight: Unused Local Variable - Indira
+       // Map<String,String> objMap2 = new Map<String,String>();
         String programName = 'Co-Marketing Platform';
-        String programName2 = 'XYZ';
+       // Highlight: Unused Local Variable - Indira
+      //  String programName2 = 'XYZ';
         objectMap =  Core_MDF_Smart_Picklist_Maintainence.getObjectData(programName);
         System.assertNotEquals(null,objectMap,'Map of object values should not be null');
         try{
@@ -73,6 +75,10 @@ public class Core_MDF_Smart_Picklist_MaintainenceTest {
         String objName = 'Core_MDF_Custom_Picklist__c';
         String fldName = 'Core_MDF_Focus_Area_nm__c';
         picklistValues=Core_MDF_Smart_Picklist_Maintainence.getPickListValuesData(objName,fldName);
+        System.assertEquals(3,picklistValues.size(),'Excepted number of picklist values');
+        System.assertEquals('Client Computing',picklistValues[0],'Expected value of 1st picklist Value');
+        System.assertEquals('Data Center',picklistValues[1],'Expected value of 2nd picklist value');
+        System.assertEquals('Networking & Intelligent Edge',picklistValues[2],'Expected value of 3rd picklist value'); 
         try{
         Core_MDF_Smart_Picklist_Maintainence.getPickListValuesData(null,null);
         }
@@ -154,9 +160,11 @@ public class Core_MDF_Smart_Picklist_MaintainenceTest {
         //Test.setMock(HttpCalloutMock.class, new MockHttpResponse());
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator());
         dependentPicklistValuesMap = Core_MDF_Smart_Picklist_Maintainence.getDependentPicklistValues(objName, fldName, recordtypeId);
+        system.debug('dependentPicklistValuesMap'+dependentPicklistValuesMap.size());
          System.assertNotEquals(null,dependentPicklistValuesMap,'dependentPicklistValuesMap should not be null');
         }
         catch(exception e){
+            system.debug('Exception'+e);
              Core_MDF_CCP_UtilityClass.logError(e);
         }
              
@@ -199,6 +207,7 @@ public class Core_MDF_Smart_Picklist_MaintainenceTest {
         }
         catch(Exception e){
              String message = e.getMessage();
+             System.debug('message at 207'+message);
              assert.isTrue(message.contains('Script-thrown exception'));
              Core_MDF_CCP_UtilityClass.logError(e);
         }
@@ -210,6 +219,7 @@ public class Core_MDF_Smart_Picklist_MaintainenceTest {
         }
         catch(Exception e){
               String message = e.getMessage();
+             System.debug('message at 219'+message);
                assert.isTrue(message.contains('Script-thrown exception'));
              Core_MDF_CCP_UtilityClass.logError(e);
         }
@@ -221,6 +231,7 @@ public class Core_MDF_Smart_Picklist_MaintainenceTest {
         }
         catch(Exception e){
             String message = e.getMessage();
+             System.debug('message at 230'+message);
               assert.isTrue(message.contains('Script-thrown exception'));
              Core_MDF_CCP_UtilityClass.logError(e);
         }
@@ -232,6 +243,7 @@ public class Core_MDF_Smart_Picklist_MaintainenceTest {
    		 }
     catch(Exception e){
              String message = e.getMessage();
+             System.debug('message at 241'+message);
                assert.isTrue(message.contains('Script-thrown exception'));
              Core_MDF_CCP_UtilityClass.logError(e);
         }
@@ -242,10 +254,13 @@ public class Core_MDF_Smart_Picklist_MaintainenceTest {
          
         try{
          Core_MDF_Smart_Picklist_Maintainence.getProgramData();
+        //System.debug(fldData[10]);
+          //System.debug('fldVal'+fldVAl1);
        }
        catch(Exception e){
             // Verify that the expected exception is thrown
             String message = e.getMessage();
+             System.debug('message at 257'+message);
                assert.isTrue(message.contains('Script-thrown exception'));
              Core_MDF_CCP_UtilityClass.logError(e);
         }
@@ -269,6 +284,7 @@ public class Core_MDF_Smart_Picklist_MaintainenceTest {
         }
         catch(Exception e){
             String message = e.getMessage();
+             System.debug('message at 280'+message);
               assert.isTrue(message.contains('Script-thrown exception'));
              Core_MDF_CCP_UtilityClass.logError(e);
         }
@@ -283,6 +299,7 @@ public class Core_MDF_Smart_Picklist_MaintainenceTest {
         }
         catch(Exception e){
             String message = e.getMessage();
+             System.debug('message at 294'+message);
              assert.isTrue(message.contains('Script-thrown exception'));
              Core_MDF_CCP_UtilityClass.logError(e);
         }

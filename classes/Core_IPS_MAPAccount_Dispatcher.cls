@@ -23,13 +23,12 @@ public class Core_IPS_MAPAccount_Dispatcher{
              newListStr = JSON.serialize(newList);
              Core_IPS_MAPAccount_Handler.createLineItems(newList);
              Core_IPS_MAPAccount_Handler.SharetoFAE(newListStr);
-             Core_IPS_MAPAccount_Handler.getMapAcctChangeCount(newList);
          }
          if(trigger.isUpdate){
              
          }
          if(trigger.isDelete){
-             Core_IPS_MAPAccount_Handler.getMapAcctChangeCount(oldList); 
+             
          }
     }
 }

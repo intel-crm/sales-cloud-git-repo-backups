@@ -163,6 +163,18 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_Available_Budget_Amount__c</fullName>
+        <formula>Core_MDF_Budget_Name_Id__r.TotalAllocatedAmount  - Core_MDF_Consumed_Budget_Amount__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Available Budget Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Budget_Amt__c</fullName>
         <description>Stores the Budget Amount planned for the Campaign for the selected Budget</description>
         <label>Campaign Spending Limit (USD)</label>
@@ -213,6 +225,18 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_Consumed_Budget_Amount__c</fullName>
+        <formula>Core_MDF_Budget_Name_Id__r.TotalApprovedFrs</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Consumed Budget Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_End_Date_Dt__c</fullName>
         <description>Stores the End Date of the Budget</description>
         <formula>Core_MDF_Budget_Name_Id__r.EndDate</formula>
@@ -228,7 +252,7 @@
         <description>Stores the Reimbursement Amount for the Campaign Budget based on the Reimbursement Rate</description>
         <label>Campaign Intel Contribution (USD)</label>
         <precision>18</precision>
-        <required>false</required>
+        <required>true</required>
         <scale>2</scale>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -310,6 +334,11 @@
                     <fullName>0%</fullName>
                     <default>false</default>
                     <label>0%</label>
+                </value>
+                <value>
+                    <fullName>82%</fullName>
+                    <default>false</default>
+                    <label>82%</label>
                 </value>
             </valueSetDefinition>
         </valueSet>

@@ -9,6 +9,31 @@
 * Accenture – Sandesh H        23/01/2024                    Created Core_MDF_GenericMetadata class to get all any Metadata from one class.
 *****************************************************************************************************************************************/
 public Without Sharing class Core_MDF_GenericMetadata {
+    
+    /***************************************************************************************************** 
+Method Name   :        getRecordTypeDeveloperName
+@return       :        List
+@parameters   :        Channel Program Label 
+Description   :        To accept the String type metadata record and returns metadata values
+Added By      :        Accenture - Sandesh - 23/01/2024
+Modified By   :        Date:       		Changes: 
+******************************************************************************************************/    
+   /* @AuraEnabled(cacheable=true)
+    public static List<sObject> getMetaDataRecords(String fields,String objectApiName, String whereClause) {
+        List<sObject> queryResults = new List<sObject>();
+        if(fields != null && objectApiName != null){
+            String queryString = 'SELECT '+fields+' FROM ' + objectApiName;
+        
+            if (whereClause != null && whereClause.trim() != '') {
+                queryString += ' WHERE ' + whereClause;
+            }
+            if(String.isNotBlank(queryString)){
+                queryResults = Database.query(queryString);
+            }
+        }
+        return queryResults;
+    }*/
+    
  /***************************************************************************************************** 
 Method Name   :        getObjectRecords
 @return       :        List
@@ -50,6 +75,7 @@ Modified By   :        Date:       		Changes:
                             queryString += ' WHERE ' + sanitizedWhereClause;
                         }
                         queryResults = Database.query(queryString);
+                        System.debug('MDT OPtimisation queryResults '+ queryResults);
                     }
 
                    /* when 'Core_MDF_BudgetType_Benefit_Mapping__mdt' {
@@ -58,7 +84,9 @@ Modified By   :        Date:       		Changes:
                             String sanitizedWhereClause = String.escapeSingleQuotes(whereClause).replaceAll('\\\\','');
                             queryString += ' Where '+sanitizedWhereClause;
                         }
+                        System.debug('Query JK'+queryString);
                         queryResults = Database.query(queryString);
+                        System.debug('QueryResults'+queryResults);
                     }*/
                 }
             }
@@ -139,13 +167,37 @@ Modified By   :        Date:       		Changes:
                 queryResults = Database.query(queryString);
             }
         }catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);}
+        System.debug('MDT OPtimisation queryResults '+ queryResults);
         return queryResults;
     }
+    
+    /*@AuraEnabled(cacheable=true)
+    public static List<sObject> getMetaDataAllRecords(String objectApiName, String whereClause) {
+        List<sObject> queryResults = new List<sObject>();
+        if(objectApiName != null){
+            String queryString = 'SELECT FIELDS(ALL) FROM ' + objectApiName;
+        
+            if (whereClause != null && whereClause.trim() != '') {
+                queryString += ' WHERE ' + whereClause+ 'limit 200';
+            }
+            else{
+                queryString += 'limit 200';
+            }
+            if(String.isNotBlank(queryString)){
+                queryResults = Database.query(queryString);
+            }
+        }
+        
+        
+        return queryResults;
+    }*/
+    
+    //no field but limit 200 no where clause
     
 /***************************************************************************************************** 
 Method Name   :        getRecordType
 @return       :        RecordType
-@parameters   :        RecordTypeName Label and Object Name
+@parameters   :        ChannelProgram Label and Object Name
 Description   :        To accept the ChannelProgram and Object Name to return RecordType Data. 
 Added By      :        Accenture - Sandesh - 23/01/2024
 Modified By   :        Date:       		Changes: 
@@ -154,7 +206,9 @@ Modified By   :        Date:       		Changes:
     @AuraEnabled (cacheable=true)
     public static RecordType getRecordTypeId(String RecordTypeName, String objectName){ // RecordTypeName
         try {
-           RecordType recordTypeId = [Select Id,Name,DeveloperName, Description from RecordType where SobjectType =: objectName and Name =: RecordTypeName limit 1];
+           String sanitizedRTName = String.escapeSingleQuotes(RecordTypeName);
+           String sanitizedObjName = String.escapeSingleQuotes(objectName);
+           RecordType recordTypeId = [Select Id,Name,DeveloperName, Description from RecordType where SobjectType =: sanitizedObjName and Name =: sanitizedRTName limit 1];
            return recordTypeId;
         }
         catch ( Exception e ){
@@ -162,4 +216,6 @@ Modified By   :        Date:       		Changes:
             throw new AuraHandledException ( e.getMessage() );
         }
     }
+
+   
 }

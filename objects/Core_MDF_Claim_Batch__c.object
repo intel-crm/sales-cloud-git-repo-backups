@@ -128,11 +128,14 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Core_MDF_Claim_Batch_RecordPage</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -147,7 +150,7 @@
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
-    <enableHistory>false</enableHistory>
+    <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
     <enableSearch>true</enableSearch>
@@ -162,6 +165,7 @@
         <relationshipLabel>Claim Batches</relationshipLabel>
         <relationshipName>Claim_Batches</relationshipName>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -171,6 +175,7 @@
         <description>This will show the status of claim batch based on the claim batch record status.</description>
         <label>Claim Batch Status</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -208,6 +213,7 @@ IF(AND(Core_MDF_Claim_Fail_Cnt__c==0, Core_MDF_Claim_Total_Cnt__c &gt; 0),
 $Label.Core_MDF_Claim_Batch_Successful,$Label.Core_MDF_Claim_Batch_Failed))</formula>
         <label>Claim Batch Status</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -223,6 +229,7 @@ $Label.Core_MDF_Claim_Batch_Successful,$Label.Core_MDF_Claim_Batch_Failed))</for
         </summaryFilterItems>
         <summaryForeignKey>Core_MDF_Claim_Batch_Stage__c.Core_MDF_Batch_ID__c</summaryForeignKey>
         <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Summary</type>
     </fields>
@@ -236,6 +243,7 @@ $Label.Core_MDF_Claim_Batch_Successful,$Label.Core_MDF_Claim_Batch_Failed))</for
         </summaryFilterItems>
         <summaryForeignKey>Core_MDF_Claim_Batch_Stage__c.Core_MDF_Batch_ID__c</summaryForeignKey>
         <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Summary</type>
     </fields>
@@ -249,6 +257,7 @@ $Label.Core_MDF_Claim_Batch_Successful,$Label.Core_MDF_Claim_Batch_Failed))</for
         </summaryFilterItems>
         <summaryForeignKey>Core_MDF_Claim_Batch_Stage__c.Core_MDF_Batch_ID__c</summaryForeignKey>
         <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Summary</type>
     </fields>
@@ -262,6 +271,7 @@ $Label.Core_MDF_Claim_Batch_Successful,$Label.Core_MDF_Claim_Batch_Failed))</for
         </summaryFilterItems>
         <summaryForeignKey>Core_MDF_Claim_Batch_Stage__c.Core_MDF_Batch_ID__c</summaryForeignKey>
         <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Summary</type>
     </fields>
@@ -276,6 +286,7 @@ $Label.Core_MDF_Claim_Batch_Successful,$Label.Core_MDF_Claim_Batch_Failed))</for
         </summaryFilterItems>
         <summaryForeignKey>Core_MDF_Claim_Batch_Stage__c.Core_MDF_Batch_ID__c</summaryForeignKey>
         <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Summary</type>
     </fields>
@@ -296,6 +307,7 @@ $Label.Core_MDF_Intel_System_User
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Created By</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -317,6 +329,7 @@ $Label.Core_MDF_Intel_System_User
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Last Modified By</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -337,6 +350,7 @@ $Label.Core_MDF_Intel_System_User
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Owner</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -349,6 +363,7 @@ $Label.Core_MDF_Intel_System_User
         <relationshipLabel>Claim Batches</relationshipLabel>
         <relationshipName>Claim_Batches</relationshipName>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -356,6 +371,7 @@ $Label.Core_MDF_Intel_System_User
         <fullName>Core_MDF_Send_Email__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Send Email</label>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -387,6 +403,7 @@ $Label.Core_MDF_Intel_System_User
             <value>Failed</value>
         </filters>
         <label>Claim Batches - Failed</label>
+        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>Core_MDF_Claim_Batches_Successful</fullName>
@@ -404,30 +421,32 @@ $Label.Core_MDF_Intel_System_User
             <value>Successful</value>
         </filters>
         <label>Claim Batches - Successful</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <displayFormat>{000000}</displayFormat>
         <label>Claim Batch Name</label>
+        <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Claim Batches</pluralLabel>
     <searchLayouts>
         <customTabListAdditionalFields>Core_MDF_Program_Id__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>Core_MDF_Claim_Batch_Status_Nm__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_MDF_ClaimBatch_Status_Nm__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>CREATEDBY_USER</customTabListAdditionalFields>
         <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
         <excludedStandardButtons>New</excludedStandardButtons>
         <lookupDialogsAdditionalFields>Core_MDF_Program_Id__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>Core_MDF_Claim_Batch_Status_Nm__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_MDF_ClaimBatch_Status_Nm__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>CREATEDBY_USER</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>CREATED_DATE</lookupDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Core_MDF_Program_Id__c</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>Core_MDF_Claim_Batch_Status_Nm__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_MDF_ClaimBatch_Status_Nm__c</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>CREATEDBY_USER</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>CREATED_DATE</lookupPhoneDialogsAdditionalFields>
         <searchResultsAdditionalFields>Core_MDF_Program_Id__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_MDF_ClaimBatch_Status_Nm__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>CREATEDBY_USER</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_CreatedBy_Nm__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CREATED_DATE</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PartnerFundRequest$Name</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Activity_Number__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Allocation</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Start_Date_End_Date__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Budget_Amount_Local_amt__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Country_nm__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest.PartnerFundClaims$Name</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest.PartnerFundClaims$Id</field>
+    </columns>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PartnerFundRequest$Core_MDF_Fund_Request_Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Activities with Claim Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Activities_and_Claims__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PartnerFundRequest$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

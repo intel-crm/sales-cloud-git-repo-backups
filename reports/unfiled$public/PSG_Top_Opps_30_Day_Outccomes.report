@@ -107,6 +107,12 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
         <field>FULL_NAME</field>
     </columns>
     <columns>
@@ -140,12 +146,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Opportunity_Count__c</field>
     </columns>
-    <columns>
-        <field>BucketField_14228587</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Status__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Opportunity.Core_External_ID__c</column>
@@ -166,48 +166,27 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>THIS_QUARTER</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Design: Original,Design: Secondary</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_External_ID__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>contains</operator>
-            <value>PSG_TO_AREA</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Business_Unit_Territory__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>PSG-NA-ACAN,PSG-NA-ABOS,PSG-NA-MID,PSG-NA-SE,PSG-NA-CHI,PSG-NA-MINN,PSG-NA-OHIO,PSG-NA-WI,PSG-EU-NORDIC</value>
+            <value>LAST_N_DAYS:31,TODAY</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>ACCOUNT_NAME</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OPPORTUNITY_NAME</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
         <field>BucketField_63200473</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>PSG Top Opps 30 Day Outcomes</name>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_14228587</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OpportunityLineItem.Core_Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>PSG Top Opps 30 Day Outccomes</name>
     <params>
         <name>terr</name>
         <value>all</value>

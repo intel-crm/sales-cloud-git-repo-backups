@@ -92,6 +92,46 @@
                     <label>PLANNED METRICS</label>
                 </value>
                 <value>
+                    <fullName>Digital Media</fullName>
+                    <default>false</default>
+                    <label>Digital Media</label>
+                </value>
+                <value>
+                    <fullName>Legacy Media</fullName>
+                    <default>false</default>
+                    <label>Legacy Media</label>
+                </value>
+                <value>
+                    <fullName>Event</fullName>
+                    <default>false</default>
+                    <label>Event</label>
+                </value>
+                <value>
+                    <fullName>Lead Cultivation</fullName>
+                    <default>false</default>
+                    <label>Lead Cultivation</label>
+                </value>
+                <value>
+                    <fullName>Training</fullName>
+                    <default>false</default>
+                    <label>Training</label>
+                </value>
+                <value>
+                    <fullName>Funded Headcount</fullName>
+                    <default>false</default>
+                    <label>Funded Headcount</label>
+                </value>
+                <value>
+                    <fullName>Technical Activation</fullName>
+                    <default>false</default>
+                    <label>Technical Activation</label>
+                </value>
+                <value>
+                    <fullName>Incentive</fullName>
+                    <default>false</default>
+                    <label>Incentive</label>
+                </value>
+                <value>
                     <fullName>Payment Details</fullName>
                     <default>false</default>
                     <label>Payment Details</label>
@@ -102,9 +142,38 @@
                     <label>Payment Breakdown</label>
                 </value>
                 <value>
+                    <fullName>Proof of Performance Documents</fullName>
+                    <default>false</default>
+                    <label>Proof of Performance Documents</label>
+                </value>
+                <value>
                     <fullName>Disbursement Status</fullName>
                     <default>false</default>
                     <label>Disbursement Status</label>
+                </value>
+                <value>
+                    <fullName>ja</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Japanese</label>
+                </value>
+                <value>
+                    <fullName>ko</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Korean</label>
+                </value>
+                <value>
+                    <fullName>pt_BR</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Portuguese</label>
+                </value>
+                <value>
+                    <fullName>ru</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Russian</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -120,5 +189,13 @@
     </fields>
     <label>History Header Translation</label>
     <pluralLabel>History Header Translations</pluralLabel>
+    <validationRules>
+        <fullName>Core_MDF_HistoryHeaderIsNotEmpty</fullName>
+        <active>false</active>
+        <description>Checking whether history header translation field is empty.</description>
+        <errorConditionFormula>ISBLANK(TEXT(Core_MDF_History_Header_Translation_nm__c))</errorConditionFormula>
+        <errorDisplayField>Core_MDF_History_Header_Translation_nm__c</errorDisplayField>
+        <errorMessage>History Header Translation field should not be null.</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

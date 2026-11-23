@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>ACCOUNT.NAME</field>
+        <field>SALUTATION</field>
     </columns>
     <columns>
         <field>FIRST_NAME</field>
@@ -13,19 +13,37 @@
         <field>TITLE</field>
     </columns>
     <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>ADDRESS2_STREET</field>
+    </columns>
+    <columns>
+        <field>ADDRESS2_CITY</field>
+    </columns>
+    <columns>
+        <field>ADDRESS2_STATE</field>
+    </columns>
+    <columns>
+        <field>ADDRESS2_ZIP</field>
+    </columns>
+    <columns>
+        <field>ADDRESS2_COUNTRY</field>
+    </columns>
+    <columns>
         <field>PHONE1</field>
+    </columns>
+    <columns>
+        <field>PHONE2</field>
+    </columns>
+    <columns>
+        <field>PHONE3</field>
     </columns>
     <columns>
         <field>EMAIL</field>
     </columns>
     <columns>
         <field>OWNER_FULL_NAME</field>
-    </columns>
-    <columns>
-        <field>ACCOUNT_ID</field>
-    </columns>
-    <columns>
-        <field>CONTACT_ID</field>
     </columns>
     <format>Tabular</format>
     <name>User_Coverage_Contacts</name>
@@ -37,7 +55,7 @@
     <scope>my</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
-    <showSubTotals>false</showSubTotals>
+    <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

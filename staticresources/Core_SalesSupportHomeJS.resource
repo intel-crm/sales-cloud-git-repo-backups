@@ -32,18 +32,13 @@ function addLoadEvent(currentTab) {
     }
 }*/
 
-function newRequest(requestTypeElementId, sOpportunityId, sOpportunityName, sAccountId, sOrderSeedsURL, sRequestSamplesURL,UserRegion,UIthemedisplayed, sRegURL, sWarningError, sPremierSupportURL) {
+function newRequest(requestTypeElementId, sOpportunityId, sOpportunityName, sAccountId, sOrderSeedsURL, sRequestSamplesURL,UserRegion,UIthemedisplayed, sRegURL, sWarningError) {
     
     requestType = document.getElementById(requestTypeElementId).value;
    
     var popupUrl = '';
     if (requestType == 'Order Seed') {
         popupUrl = sOrderSeedsURL;
-    }
-	else if (requestType == 'Premier Support (IPS)') {
-        var redirectUrl = sPremierSupportURL+sOpportunityId;
-		window.location = redirectUrl;
-		
     }
     else if (requestType == 'Request Sample') {
         popupUrl = sRequestSamplesURL;

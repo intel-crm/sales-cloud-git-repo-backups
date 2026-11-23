@@ -9,6 +9,11 @@
             <publicGroup>Core_MDF_CCP_Retail_APJ_FinMgr_Q_Grp</publicGroup>
             <publicGroup>Core_MDF_CCP_Retail_WW_Fin_Mgr_Queue_Grp</publicGroup>
         </publicGroups>
+        <users>
+            <user>narayani.perachi@intel.comretailfinmgr</user>
+            <user>dsfsgwh@intel.com</user>
+            <user>12087426@intel.com.crm</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>PartnerMarketingBudget</sobjectType>

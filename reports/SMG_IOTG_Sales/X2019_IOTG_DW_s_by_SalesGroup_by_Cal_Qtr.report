@@ -9,24 +9,36 @@
         <sourceColumnName>Opportunity.Core_Product_Application__c</sourceColumnName>
         <useOther>true</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Energy - Other</sourceValue>
+            </sourceValues>
             <value>Energy</value>
         </values>
         <values>
             <value>Transportation</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Industrial - Other</sourceValue>
+            </sourceValues>
             <value>Industrial</value>
         </values>
         <values>
             <value>Medical</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Smart Home</sourceValue>
+            </sourceValues>
             <value>Smart Home</value>
         </values>
         <values>
             <value>Retail</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Blade SBC (Single Board Computer)</sourceValue>
+            </sourceValues>
             <value>Emb Other</value>
         </values>
     </buckets>
@@ -52,7 +64,7 @@
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
         <textSize>10</textSize>
-        <title>2019 IOTG YTD Design Win Status</title>
+        <title>2018 IOTG YTD Design Win Status</title>
         <titleColor>#000000</titleColor>
         <titleSize>14</titleSize>
     </chart>
@@ -69,7 +81,7 @@
             <value>Win Approved,Production Win,Production Lost,Production Cancelled</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
@@ -93,11 +105,6 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Opportunity.Core_Sales_Groups__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Opp_Prime_Account_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>2019 IOTG DW&apos;s by SalesGroup by Cal:Qtr.</name>
@@ -124,8 +131,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2019-06-30</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2019-01-01</startDate>
+        <interval>INTERVAL_CURY</interval>
     </timeFrameFilter>
 </Report>

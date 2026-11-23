@@ -6,328 +6,212 @@
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>IUPGM Requests Staging</value>
+        <value>IUPGM Request Stagings</value>
     </caseValues>
     <fields>
-        <label><!-- AGS Request Id --></label>
-        <name>Core_MDF_AGS_Request_Id__c</name>
+        <help><!-- Check this box to grant access to all budget types --></help>
+        <label><!-- All Budget Type Access --></label>
+        <name>Core_MDF_All_Budget_Type_Access_ind__c</name>
     </fields>
     <fields>
-        <label><!-- AGS Request Type --></label>
-        <name>Core_MDF_AGS_Request_Type__c</name>
-        <picklistValues>
-            <masterLabel>CREATE_USER</masterLabel>
-            <translation><!-- CREATE_USER --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PERMISSION_SET_REQUEST</masterLabel>
-            <translation><!-- PERMISSION_SET_REQUEST --></translation>
-        </picklistValues>
+        <help><!-- Enter the email address associated with this request --></help>
+        <label><!-- Email --></label>
+        <name>Core_MDF_Email_txt__c</name>
     </fields>
     <fields>
-        <help><!-- Optional approver comments provided by the requester for the AGS role request. --></help>
-        <label><!-- AGS Role Comments --></label>
-        <name>Core_MDF_AGS_Role_Comments__c</name>
+        <help><!-- Enter the federation ID for authentication purposes --></help>
+        <label><!-- Federation ID --></label>
+        <name>Core_MDF_Federation_ID_txt__c</name>
     </fields>
     <fields>
-        <label><!-- AGS Role Name --></label>
-        <name>Core_MDF_AGS_Role_Name__c</name>
+        <help><!-- Select the Account associated with this IUPGM request --></help>
+        <label><!-- IUPGM Account --></label>
+        <name>Core_MDF_IUPGM_Account_txt__c</name>
+        <relationshipLabel><!-- IUPGM Request Stagings --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- AGS Status --></label>
-        <name>Core_MDF_AGS_Status_nm__c</name>
+        <help><!-- Check this box to mark the IUPGM access as active --></help>
+        <label><!-- IUPGM Active --></label>
+        <name>Core_MDF_IUPGM_Active_ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select the access level for all accounts --></help>
+        <label><!-- IUPGM All Account Access --></label>
+        <name>Core_MDF_IUPGM_All_Account_Access_nm__c</name>
         <picklistValues>
-            <masterLabel>Approved</masterLabel>
-            <translation><!-- Approved --></translation>
+            <masterLabel>Admin</masterLabel>
+            <translation><!-- Admin --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Error</masterLabel>
-            <translation><!-- Error --></translation>
+            <masterLabel>Read</masterLabel>
+            <translation><!-- Read --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Not_Required</masterLabel>
-            <translation><!-- Not_Required --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Rejected</masterLabel>
-            <translation><!-- Rejected --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Submitted</masterLabel>
-            <translation><!-- Submitted --></translation>
+            <masterLabel>Write</masterLabel>
+            <translation><!-- Write --></translation>
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Action --></label>
-        <name>Core_MDF_Action_nm__c</name>
+        <help><!-- Select the account for all accounts access --></help>
+        <label><!-- IUPGM All Accounts --></label>
+        <name>Core_MDF_IUPGM_All_Accounts_txt__c</name>
+        <relationshipLabel><!-- IUPGM Request Stagings (All Accounts) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Select one or more budget types for this request --></help>
+        <label><!-- IUPGM Budget Type --></label>
+        <name>Core_MDF_IUPGM_Budget_Type_nm__c</name>
         <picklistValues>
-            <masterLabel>ACTIVATE</masterLabel>
-            <translation><!-- ACTIVATE --></translation>
+            <masterLabel>Co-Op</masterLabel>
+            <translation><!-- Co-Op --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>CREATE</masterLabel>
-            <translation><!-- CREATE --></translation>
+            <masterLabel>MDF</masterLabel>
+            <translation><!-- MDF --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>DEACTIVATE</masterLabel>
-            <translation><!-- DEACTIVATE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ERROR</masterLabel>
-            <translation><!-- ERROR --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SKIP</masterLabel>
-            <translation><!-- SKIP --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>UPDATE</masterLabel>
-            <translation><!-- UPDATE --></translation>
+            <masterLabel>Rebate</masterLabel>
+            <translation><!-- Rebate --></translation>
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Activity Classification --></label>
-        <name>Core_MDF_Activity_Classification_nm__c</name>
+        <help><!-- Check this box if the IUPGM record already exists in the system --></help>
+        <label><!-- IUPGM Exists --></label>
+        <name>Core_MDF_IUPGM_Exists_ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select the IUPGM program for this request --></help>
+        <label><!-- IUPGM Program --></label>
+        <name>Core_MDF_IUPGM_Program_nm__c</name>
         <picklistValues>
-            <masterLabel>Marketing</masterLabel>
-            <translation><!-- Marketing --></translation>
+            <masterLabel>Program A</masterLabel>
+            <translation><!-- Program A --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Sales</masterLabel>
-            <translation><!-- Sales --></translation>
+            <masterLabel>Program B</masterLabel>
+            <translation><!-- Program B --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Program C</masterLabel>
+            <translation><!-- Program C --></translation>
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Approval Region --></label>
-        <name>Core_MDF_Approval_Region_nm__c</name>
+        <help><!-- Select one or more regions or sub-regions for this request --></help>
+        <label><!-- IUPGM Region Sub Region --></label>
+        <name>Core_MDF_IUPGM_Region_Sub_Region_nm__c</name>
         <picklistValues>
-            <masterLabel>APJ</masterLabel>
-            <translation><!-- APJ --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ASMO</masterLabel>
-            <translation><!-- ASMO --></translation>
+            <masterLabel>APAC</masterLabel>
+            <translation><!-- APAC --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>EMEA</masterLabel>
             <translation><!-- EMEA --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>PRC</masterLabel>
-            <translation><!-- PRC --></translation>
+            <masterLabel>Latin America</masterLabel>
+            <translation><!-- Latin America --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>WW</masterLabel>
-            <translation><!-- WW --></translation>
+            <masterLabel>North America</masterLabel>
+            <translation><!-- North America --></translation>
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Error Message --></label>
-        <name>Core_MDF_Error_Message_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Region SubRegion - Budget Type --></label>
-        <name>Core_MDF_GeoSubGeo_Budget_Type_nm__c</name>
-        <picklistValues>
-            <masterLabel>APJ-&gt;Account Plan</masterLabel>
-            <translation><!-- APJ-&gt;Account Plan --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>APJ-&gt;Proposal I MDF</masterLabel>
-            <translation><!-- APJ-&gt;Proposal I MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>APJ-&gt;Proposal II MDF</masterLabel>
-            <translation><!-- APJ-&gt;Proposal II MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ASMO-&gt;Account Plan</masterLabel>
-            <translation><!-- ASMO-&gt;Account Plan --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ASMO-&gt;Proposal I MDF</masterLabel>
-            <translation><!-- ASMO-&gt;Proposal I MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ASMO-&gt;Proposal II MDF</masterLabel>
-            <translation><!-- ASMO-&gt;Proposal II MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EMEA-&gt;Account Plan</masterLabel>
-            <translation><!-- EMEA-&gt;Account Plan --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EMEA-&gt;Proposal I MDF</masterLabel>
-            <translation><!-- EMEA-&gt;Proposal I MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EMEA-&gt;Proposal II MDF</masterLabel>
-            <translation><!-- EMEA-&gt;Proposal II MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PRC-&gt;Account Plan</masterLabel>
-            <translation><!-- PRC-&gt;Account Plan --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PRC-&gt;Proposal I MDF</masterLabel>
-            <translation><!-- PRC-&gt;Proposal I MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PRC-&gt;Proposal II MDF</masterLabel>
-            <translation><!-- PRC-&gt;Proposal II MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WW-&gt;Account Plan</masterLabel>
-            <translation><!-- WW-&gt;Account Plan --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WW-&gt;Co-Engineering</masterLabel>
-            <translation><!-- WW-&gt;Co-Engineering --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WW-&gt;Proposal I MDF</masterLabel>
-            <translation><!-- WW-&gt;Proposal I MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WW-&gt;Proposal II MDF</masterLabel>
-            <translation><!-- WW-&gt;Proposal II MDF --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Account --></label>
-        <name>Core_MDF_IUPGM_Account__c</name>
-        <relationshipLabel><!-- IUPGM Requests Staging --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- All Account Access --></label>
-        <name>Core_MDF_IUPGM_All_Account_Access__c</name>
-    </fields>
-    <fields>
-        <label><!-- All Budget Type Access --></label>
-        <name>Core_MDF_IUPGM_All_Budget_Type_Access__c</name>
-    </fields>
-    <fields>
-        <label><!-- Budget Type --></label>
-        <name>Core_MDF_IUPGM_Budget_Type_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Program Name --></label>
-        <name>Core_MDF_IUPGM_Program__c</name>
-    </fields>
-    <fields>
-        <label><!-- IUPGM Record --></label>
-        <name>Core_MDF_IUPGM_Record__c</name>
-        <relationshipLabel><!-- IUPGM Requests Staging --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Region --></label>
-        <name>Core_MDF_IUPGM_Region_Sub_Region_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Role Name --></label>
+        <help><!-- Select the role for this IUPGM request --></help>
+        <label><!-- IUPGM Role --></label>
         <name>Core_MDF_IUPGM_Role_nm__c</name>
+        <picklistValues>
+            <masterLabel>Admin</masterLabel>
+            <translation><!-- Admin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manager</masterLabel>
+            <translation><!-- Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Read Only</masterLabel>
+            <translation><!-- Read Only --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User</masterLabel>
+            <translation><!-- User --></translation>
+        </picklistValues>
     </fields>
     <fields>
-        <label><!-- User --></label>
-        <name>Core_MDF_IUPGM_User__c</name>
-        <relationshipLabel><!-- IUPGM Requests Staging (User) --></relationshipLabel>
+        <help><!-- Select the user for this IUPGM access request --></help>
+        <label><!-- IUPGM User --></label>
+        <name>Core_MDF_IUPGM_User_txt__c</name>
+        <relationshipLabel><!-- IUPGM Request Stagings --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Is IUPGM Processed? --></label>
-        <name>Core_MDF_Is_IUPGM_Processed__c</name>
+        <help><!-- Automatically calculated status based on request conditions --></help>
+        <label><!-- Overall Status --></label>
+        <name>Core_MDF_Overall_Status_txt__c</name>
     </fields>
     <fields>
-        <help><!-- Requested email for a new Salesforce user when the user does not yet exist in Salesforce. --></help>
-        <label><!-- New User Email --></label>
-        <name>Core_MDF_New_User_Email__c</name>
+        <help><!-- Select the profile to assign to the user --></help>
+        <label><!-- Profile --></label>
+        <name>Core_MDF_Profile_nm__c</name>
+        <picklistValues>
+            <masterLabel>Custom Profile</masterLabel>
+            <translation><!-- Custom Profile --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Standard User</masterLabel>
+            <translation><!-- Standard User --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>System Administrator</masterLabel>
+            <translation><!-- System Administrator --></translation>
+        </picklistValues>
     </fields>
     <fields>
-        <help><!-- Requested federation identifier / WWID for a new Salesforce user when the user does not yet exist in Salesforce. --></help>
-        <label><!-- New User Federation Id --></label>
-        <name>Core_MDF_New_User_Federation_Id__c</name>
+        <help><!-- Enter any notes or messages about the current status of this request --></help>
+        <label><!-- Request Status Message --></label>
+        <name>Core_MDF_Request_Status_Message_txt__c</name>
     </fields>
     <fields>
-        <help><!-- Requested full name for a new Salesforce user when the user does not yet exist in Salesforce. --></help>
-        <label><!-- New User Name --></label>
-        <name>Core_MDF_New_User_Name__c</name>
-    </fields>
-    <fields>
+        <help><!-- Select the current status of this request --></help>
         <label><!-- Request Status --></label>
         <name>Core_MDF_Request_Status_nm__c</name>
-        <picklistValues>
-            <masterLabel>AGS_Approved</masterLabel>
-            <translation><!-- AGS_Approved --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>AGS_PS_Pending</masterLabel>
-            <translation><!-- AGS_PS_Pending --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>AGS_Pending</masterLabel>
-            <translation><!-- AGS_Pending --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>AGS_Rejected</masterLabel>
-            <translation><!-- AGS_Rejected --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>AGS_User_Creation_Pending</masterLabel>
-            <translation><!-- AGS_User_Creation_Pending --></translation>
-        </picklistValues>
         <picklistValues>
             <masterLabel>Completed</masterLabel>
             <translation><!-- Completed --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Error</masterLabel>
-            <translation><!-- Error --></translation>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>External_User_Blocked</masterLabel>
-            <translation><!-- External_User_Blocked --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IUPGM_Processing</masterLabel>
-            <translation><!-- IUPGM_Processing --></translation>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>New</masterLabel>
             <translation><!-- New --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Skipped</masterLabel>
-            <translation><!-- Skipped --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Submitted</masterLabel>
-            <translation><!-- Submitted --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Validation_Failed</masterLabel>
-            <translation><!-- Validation_Failed --></translation>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Request Type --></label>
-        <name>Core_MDF_Request_Type_nm__c</name>
+        <help><!-- Select the user license type for this request --></help>
+        <label><!-- User License --></label>
+        <name>Core_MDF_User_License_nm__c</name>
         <picklistValues>
-            <masterLabel>GRANT</masterLabel>
-            <translation><!-- GRANT --></translation>
+            <masterLabel>Guest User License</masterLabel>
+            <translation><!-- Guest User License --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>REVOKE</masterLabel>
-            <translation><!-- REVOKE --></translation>
+            <masterLabel>Salesforce</masterLabel>
+            <translation><!-- Salesforce --></translation>
         </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Requested By --></label>
-        <name>Core_MDF_Requested_By__c</name>
-        <relationshipLabel><!-- IUPGM Requests Staging (Requested By) --></relationshipLabel>
-    </fields>
-    <fields>
-        <help><!-- The actual person who submitted the request through the chatbot. --></help>
-        <label><!-- Requestor Email --></label>
-        <name>Core_MDF_Requestor_Email__c</name>
+        <picklistValues>
+            <masterLabel>Salesforce Platform</masterLabel>
+            <translation><!-- Salesforce Platform --></translation>
+        </picklistValues>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -1,0 +1,76 @@
+<aura:component controller="Core_MDF_AccountHierarchyController" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:appHostable" access="global" >
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!-- Ultimate Accounts to display on single page -->
+    <aura:attribute name="accountsToDisplay" type="list" />
+    <!-- List To hold All ultimate Accounts -->
+    <aura:attribute name="listOfAllUltimateAccounts" type="list" />
+    <!-- attribute to hold text entered in search box -->
+    <aura:attribute name="accountNameSearchText" type="String" />
+    <!-- It will hold salesforce base url -->
+    <aura:attribute name="salesforceBaseURL" type="String" />
+    <!-- spinner -->
+    <aura:attribute name="showSpinner" type="boolean" default="true"/>
+    <!-- Count of Accounts displayed on page to be shown on header -->
+    <aura:attribute name="totalDisplayedAccounts" type="Integer" />
+
+    <div class="slds-card">
+        <div class="slds-card">
+            <!-- This Section shows header and Search Box -->
+            <lightning:layout class="slds-page-header slds-page-header--object-home" aura:id="header" multipleRows="true">
+                <lightning:layoutItem flexibility="auto, no-grow">
+                    <lightning:icon iconName="standard:hierarchy" class="icn" alternativeText="My Accounts Hierarchy" />
+                </lightning:layoutItem>
+                <lightning:layoutItem size="11" padding="horizontal-small">
+                    <div class="page-section page-header">
+                        <h1 class="slds-text-heading--label">Co-MARKETING ACCOUNTS</h1>
+                        <h2 class="slds-text-heading--medium"><b>Accounts Hierarchy</b></h2>
+                    </div>
+                </lightning:layoutItem><br/>
+                <lightning:layoutItem flexibility="auto, no-grow">
+                    
+                </lightning:layoutItem>  
+                
+                <lightning:layoutItem size="12" flexibility="auto">
+                    <div class="slds-float_left"><br/><br/>
+                        {!v.totalDisplayedAccounts} Intel Accounts
+                    </div> 
+                    <div class="slds-float_right"> 
+                        <div onkeyup="{! c.fetchSearchedRecords }">
+                            <lightning:input value="{!v.accountNameSearchText}" type="search" placeholder="Search Intel Accounts"/></div></div>
+                </lightning:layoutItem>
+                                
+            </lightning:layout> 
+            
+        </div>
+        <!-- Spinner -->
+        <aura:if isTrue="{!v.showSpinner}">
+            <div class="slds-spinner_container">
+                <div class="slds-spinner--brand slds-spinner slds-spinner--large" role="alert">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+            </div>
+        </aura:if>
+        
+        <div class="slds-card slds-p-around_small">
+            <aura:if isTrue="{!v.showSpinner == false}">
+                <div>
+                    <!-- Ultimate Account at Accordion level and Hierarchy of Accounts within that Section -->
+                    <lightning:accordion allowMultipleSectionsOpen="true">
+                        <aura:iteration items="{!v.accountsToDisplay}" var="item">
+                            <div class="slds-box slds-box_xx-small" style="background-color:rgb(248, 248, 248);">
+                                <lightning:accordionSection name="{!item.Id}" label="{!item.Name}" >
+                                    <c:AccountTreeGrid_Child ultimateAcctName = "{!item.Name}" ultimateAccountId = "{!item.Id}" salesforceBaseURL = "{!v.salesforceBaseURL}"/>
+                                </lightning:accordionSection>
+                            </div>
+                        </aura:iteration>
+                    </lightning:accordion>
+                </div>
+                <br/>
+                <!-- Enabling Pagination -->
+                <c:paginator aura:id = "paginatorComponent" records= "{!v.listOfAllUltimateAccounts}" showSearchBox="false" totalRecords="{!v.listOfAllUltimateAccounts.length}" onpaginatorchange="{!c.handleRecordsOnPageChange}"/>
+            </aura:if> 
+        </div></div>
+</aura:component>

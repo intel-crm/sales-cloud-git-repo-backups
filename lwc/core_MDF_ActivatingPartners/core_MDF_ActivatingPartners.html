@@ -1,0 +1,26 @@
+<template>
+    <table aria-multiselectable="true"
+        class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+        <thead>
+            <tr class="slds-line-height_reset">
+                <th aria-label='Activating Partners' style="overflow: hidden;vertical-align: top;"
+                    class="slds-is-resizable slds-col slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_6-of-12"
+                    scope="col">
+                    <p class="slds-cell-wrap" title='Activating Partners'>Activating Partners</p>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--<template if:true={showForm}>-->
+            <template for:each={actPartnersData} for:item="item" for:index="indexVar">
+                <tr key={item.accName} aria-selected="false" class="slds-hint-parent">
+                    <td role="gridcell" tabindex="0">
+                        <div class="slds-text" style="white-space: pre-wrap;" title={item.accName}><a
+                                href={item.url}>{item.accName}</a></div>
+                    </td>
+                </tr>
+            </template>
+            <!--</template>-->
+        </tbody>
+    </table>
+</template>

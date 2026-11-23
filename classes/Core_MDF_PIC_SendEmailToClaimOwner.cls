@@ -44,9 +44,35 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
    Modified By:                  Date:                      Changes: 
    Accenture – Jahnavi K             2/26/2024              Pic Main Question-Sub Question Changes
    *****************************************************************************************************************************************/ 
+  /* @InvocableMethod
+   public static void sendEmailtoClaimOwnerOnResubReqd(List<NotificationWrapper> inputList) {
+        List<Id> claimIds = new List<Id>();
+        Boolean notifyPartnerUser = false;
+
+        for (NotificationWrapper input : inputList) {
+            System.debug('input...'+inputList);
+            if (input.ids != null) {
+              System.debug('input.id...'+input.ids);
+                claimIds.add(input.ids);
+            }
+            if(input.notifyPartnerUser){
+                notifyPartnerUser = input.notifyPartnerUser;
+            }
+            if(input.addReminderInSubject){
+                addReminderInSubject = input.notifyPartnerUser;
+            }
+            
+        }
+
+        //for (NotificationWrapper input : inputList) {
+         //   processSendEmailtoClaimOwnerOnResubReqd(claimIds,inputList.notifyPartnerUser);
+        //}
+        processSendEmailtoClaimOwnerOnResubReqd(claimIds,notifyPartnerUser,addReminderInSubject);
+    }*/
+    
    @InvocableMethod
    public static void sendEmailtoClaimOwnerOnResubReqd(List<NotificationWrapper> inputList) {
-
+       // system.debug('@@@ClaimIds'+ids);
        //To By-pass the method execution
        if(Core_MDF_Utility.byPassFeature('Core_MDF_PIC_SendEmailToClaimOwner')){
            return;
@@ -57,11 +83,14 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
        Boolean notifyPartnerUser = false;
 
         for (NotificationWrapper input : inputList) {
+            System.debug('input...'+inputList+'..notifyPartnerUser..'+notifyPartnerUser+'..addReminderInSubject..'+addReminderInSubject);
+
             if (input.claimIds != null) {
                 claimId.add(input.claimIds);
             }
             notifyPartnerUser = (input.notifyPartnerUser == true) ? input.notifyPartnerUser : notifyPartnerUser;
-            addReminderInSubject = (input.addReminderInSubject == true) ? input.addReminderInSubject : addReminderInSubject;          
+            addReminderInSubject = (input.addReminderInSubject == true) ? input.addReminderInSubject : addReminderInSubject;
+            System.debug('input2...'+inputList+'..notifyPartnerUser..'+notifyPartnerUser+'..addReminderInSubject..'+addReminderInSubject);
 
             //break;//need first record
         }
@@ -107,18 +136,33 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
        List<Core_MDF_FlowMapClass> excludedUserIdWrapperList = new List<Core_MDF_FlowMapClass>();            
        List<Core_MDF_SubUnsub_Notifications_Utility.MailParams> mailParamsWrapperList = new List<Core_MDF_SubUnsub_Notifications_Utility.MailParams>();
        Set<String> responeString = Core_MDF_CCP_ConstantClass.picQuestionResponses;
+       system.debug('@@@responeString'+responeString);
 
         //added for IPA OutcomeBased claims
         Boolean isOutcomeBasedClaim = false;
-        Boolean isFinalOutcomeBasedClaim = false;  //Roshan - Outcome-Based Campaign relabelling
+        Boolean isFinalOutcomeBasedClaim = false;  //Outcome-Based Campaign relabelling
         Map<Id, String> claimIdToRegion = new Map<Id, String>();
         Map<Id, Id> claimIdToUltimateAcc = new Map<Id, Id>();
         Set<Id> claimIds = new Set<Id>();
+        Set<Id> claimIdstoUpdateDate = new Set<Id>();
         Map<Id, List<String>> claimIdToOutcomeBasedManagers = new Map<Id, List<String>>();
-        boolean notifyPartnerCheck = false;//Swati - added notifyPartnerCheck             
+        //boolean notifyPartnerUser = false;//Swati - added notifyPartnerUser
+       // System.debug('Core_MDF_CustomLayoutConfig_Controller.notifyPartnerUser1..'+Core_MDF_CustomLayoutConfig_Controller.notifyPartnerUser);
+        System.debug('notifyClaimOwnerCheck'+Core_MDF_Outcome_Claim_Noti.notifyClaimOwnerCheck);           
 
        try{
-             //To get the PIC Review Result based on Claim Id
+           //Swati - added notifyPartnerUser
+           /*if(Core_MDF_CustomLayoutConfig_Controller.notifyPartnerUser){
+               notifyPartnerUser = true;
+              System.debug('notifyPartnerUser....'+notifyPartnerUser);
+           }*/
+           //Akash
+          /* if(Core_MDF_Outcome_Claim_Auto_Reminder.notifyClaimOwnerCheck){
+               notifyPartnerUser = true;
+               addReminderInSubject = true;
+              System.debug('notifyPartnerUser123'+notifyPartnerUser);
+           }*/
+	    //To get the PIC Review Result based on Claim Id
             List<Core_MDF_PICReviewResult__c> picReviewResultsList = new List<Core_MDF_PICReviewResult__c>();
             picReviewResultsList = [SELECT Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__c, Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Core_MDF_Claim_Ref_Number__c,Core_MDF_Question_id__c, Core_MDF_Question_id__r.Core_MDF_Parent_Question__c,Core_MDF_Question_id__r.Core_MDF_Sub_Question_Ind__c,
                                     Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.OwnerId, Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Request.Title,Core_MDF_FilesAffected_txt__c, 
@@ -133,9 +177,14 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
                                                    Core_MDF_Issue_Korean_txt__c, Core_MDF_Issue_Spanish_txt__c, Core_MDF_Issue_French_txt__c,
                                                    Core_MDF_Issue_MexicanSpanish_txt__c, Core_MDF_IssuePortuguese_txt__c, Core_MDF_IssueRussian_txt__c,
                                                    Core_MDF_Issue_SimplifiedChinese_txt__c, Core_MDF_Issue_TraditionalChinese_txt__c, Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.ChannelPartnerId, 
-                                                   Core_MDF_Comment_txt__c, Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c, Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Ultimate_Account_Id__c, Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Core_MDF_Region_Cd__c, Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Core_MDF_Ad_Run_Start_Date__c, Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Core_MDF_Ad_Run_End_Date__c, Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Amount, Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Activity_Number__c, Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Core_MDF_Campaign_Id__r.Core_MDF_Host_Region_cd__c,
-                                                   Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.ChannelPartner.Core_MDF_Group_Id__c, Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Title, Core_MDF_Tactics_nm__c, Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Core_MDF_OutcomeBased_Ind__c, Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Host_Region_txt__c, Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Is_Outcome_Based_Ind__c
-                                                   FROM core_MDF_PICReviewResult__c   //Roshan - Localize tactics 
+                                                   Core_MDF_Comment_txt__c, Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c, 
+                                    			   Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Ultimate_Account_Id__c, Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Core_MDF_Region_Cd__c, 
+                                    			   Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Core_MDF_Ad_Run_Start_Date__c, Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Core_MDF_Ad_Run_End_Date__c, 
+                                                   Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Amount, Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Activity_Number__c, 
+                                                   Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Core_MDF_Campaign_Id__r.Core_MDF_Host_Region_cd__c, Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.ChannelPartner.Core_MDF_Group_Id__c, 
+                                                   Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Title, Core_MDF_Tactics_nm__c, Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Core_MDF_OutcomeBased_Ind__c,  //Roshan - Localize tactics 
+                                                   Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Host_Region_txt__c, Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Is_Outcome_Based_Ind__c
+                                                   FROM core_MDF_PICReviewResult__c 
                                                    WHERE Core_MDF_Response_txt__c  IN: responeString  AND Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__c IN: claimId AND Core_MDF_PIC_Review_id__r.Core_MDF_AI_PIC_Review_Ind__c = false
                                     ORDER BY Core_MDF_Question_id__r.Core_MDF_Sort_Order__c];
                 //To get the PIC Review Result based on Claim Id
@@ -162,6 +211,7 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
                                                                }else {
                                                                    accGroupIdtoClaimIdsMap.put(result.Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.ChannelPartner.Core_MDF_Group_Id__c,new List<Id>{result.Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__c});
                                                                }
+
                                                        }
                                                        //To add Claim Id with Legacy Details
                                                        claimIdtoLegacyDetailsMap.put(result.Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__c, result.Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Core_MDF_Legacy_Claim_Ind__c);
@@ -176,16 +226,16 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
                                                        }
 
                                                         //added for IPA OutcomeBased claims
-                                                        isOutcomeBasedClaim = result.Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Core_MDF_OutcomeBased_Ind__c && result.Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Core_MDF_Program__c == ipaProram;  //Roshan
-							isFinalOutcomeBasedClaim = result.Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Is_Outcome_Based_Ind__c;  //Roshan - Outcome-Based Campaign relabelling
+                                                        isOutcomeBasedClaim = result.Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Core_MDF_OutcomeBased_Ind__c && result.Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Core_MDF_Program__c == ipaProram;
+                                                        isFinalOutcomeBasedClaim = result.Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Is_Outcome_Based_Ind__c;  //Outcome-Based Campaign relabelling
                                                         if (isOutcomeBasedClaim) {
                                                             if (!claimIdToUltimateAcc.containsKey(result.Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__c)) {
                                                                 claimIdToUltimateAcc.put(result.Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__c, result.Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Ultimate_Account_Id__c);
                                                             }
                                                             if (!claimIdToRegion.containsKey(result.Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__c)) {
-                                                                claimIdToRegion.put(result.Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__c, result.Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Host_Region_txt__c);  //Roshan
+                                                                claimIdToRegion.put(result.Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__c, result.Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Host_Region_txt__c);
                                                             }
-                                                            claimIds.add(result.Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__c); 
+                                                            claimIds.add(result.Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__c);
                                                         }
 
                                                     }
@@ -207,7 +257,7 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
             }
 	    
             //added for IPA OutcomeBased claims
-            //Swati - added notifyPartnerCheck
+            //Swati - added notifyPartnerUser
             if (isOutcomeBasedClaim && !notifyPartnerUser) {
                 claimIdToOutcomeBasedManagers = getOutcomeBasedAccountManagers(claimIds, claimIdToRegion, claimIdToUltimateAcc);
             }
@@ -234,7 +284,13 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
            String issue = '';
            String filesAttached = '';          
 
-           //To get the fields based on Language Local Key from Custom metadata.
+            //To get the fields based on Language Local Key from Custom metadata.
+            // for(Core_MDF_Email_Translation_Resub_Reqd__mdt record : Core_MDF_Email_Translation_Resub_Reqd__mdt.getAll().values()){
+            //     if(String.isNotBlank(record.Core_MDF_LanguageLocalKey__c)){
+            //         languageAndTranslationMap.put(record.Core_MDF_LanguageLocalKey__c, record);
+            //     }
+            // }
+
             //Roshan - Localize tactics - replaced with query to avoid truncation
             for (Core_MDF_Email_Translation_Resub_Reqd__mdt record : [SELECT Id, DeveloperName, Label, Core_MDF_Country_Region__c, Core_MDF_LanguageLocalKey__c, Core_MDF_Post_Payment_Body_Content2__c, Core_MDF_Tactics_nm__c, 
                                                                         Core_MDF_MailBody15__c, Core_MDF_MailBody4__c, Core_MDF_MailBody5__c, Core_MDF_MailFooter1__c, Core_MDF_MailFooter2__c, Core_MDF_MailFooter3__c, Core_MDF_MailFooter4__c, Core_MDF_MailFooter5__c, 
@@ -243,6 +299,7 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
                    languageAndTranslationMap.put(record.Core_MDF_LanguageLocalKey__c, record);
                 }
             }
+
            //Create object and notification type list
            String claimObjForEmailPreferences = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EmailPreferenceObjectClaim');
            String notificationType =  Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_NotificationType_PIC_FAIL');    
@@ -269,33 +326,31 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
                
            }
           
-            //added for IPA OutcomeBased claims - block method call for outcome claims
-            //added notifyPartnerUser
+            //Swati - added notifyPartnerUser
             if (!isOutcomeBasedClaim||(isOutcomeBasedClaim && notifyPartnerUser == true)) {
                 emailListforClmOwner = getEmailContent(claimIdToPicReviewResultMap,languageAndTranslationMap, claimOwnerToUserMap, claimWithCycleNumberMap, 
-                            claimIdtoClaimRefNumberMap,claimIdtoClaimName,claimIdtoLegacyDetailsMap,claimIdToOwnerIdMap,isEmailforInternalAccMng,excludedUserIdList,mainQuestionIdtoSubQuestionMap,isOutcomeBasedClaim,null,notifyPartnerUser,isFinalOutcomeBasedClaim);
+                            claimIdtoClaimRefNumberMap,claimIdtoClaimName,claimIdtoLegacyDetailsMap,claimIdToOwnerIdMap,isEmailforInternalAccMng,excludedUserIdList,mainQuestionIdtoSubQuestionMap,isOutcomeBasedClaim,null,notifyPartnerUser,isFinalOutcomeBasedClaim);  //Outcome-Based Campaign relabelling
                 if(!emailListforClmOwner.isEmpty()){
                     emailList.addAll(emailListforClmOwner);
                 }
             }
-
+           
           if(!claimIdToOutcomeBasedManagers.isEmpty() || !claimIdtoUserIdMap.isEmpty()){//Swati
            isEmailforInternalAccMng = true;
            }
-           //added for IPA OutcomeBased claims
-           //added notifyPartnerUser
+           //Swati - added notifyPartnerUser
            if(isEmailforInternalAccMng && !notifyPartnerUser){
-           emailListforAM = getEmailContent(claimIdToPicReviewResultMap,languageAndTranslationMap, claimOwnerToUserMap, claimWithCycleNumberMap, 
-                                                claimIdtoClaimRefNumberMap,claimIdtoClaimName,claimIdtoLegacyDetailsMap,claimIdToOwnerIdMap,isEmailforInternalAccMng,excludedUserIdList,mainQuestionIdtoSubQuestionMap,isOutcomeBasedClaim,claimIdToOutcomeBasedManagers,notifyPartnerUser,isFinalOutcomeBasedClaim);
-           if(!emailListforAM.isEmpty()){
-               emailList.addAll(emailListforAM);
+               emailListforAM = getEmailContent(claimIdToPicReviewResultMap,languageAndTranslationMap, claimOwnerToUserMap, claimWithCycleNumberMap, 
+                                                claimIdtoClaimRefNumberMap,claimIdtoClaimName,claimIdtoLegacyDetailsMap,claimIdToOwnerIdMap,isEmailforInternalAccMng,excludedUserIdList,mainQuestionIdtoSubQuestionMap,isOutcomeBasedClaim,claimIdToOutcomeBasedManagers,notifyPartnerUser,isFinalOutcomeBasedClaim);  //Outcome-Based Campaign relabelling
+               if(!emailListforAM.isEmpty()){
+                   emailList.addAll(emailListforAM);
                }
            }
-           
            //Send Emails only if emailList has values
            if(!emailList.isEmpty()){
                Messaging.sendEmail(emailList);
            }
+
        }catch(Exception e){
            Core_MDF_CCP_UtilityClass.logErrorinLogObject(Core_MDF_CCP_UtilityClass.getErrorDetails(e),'Exception occured in sendEmailtoClaimSubmitter method');
        }
@@ -312,10 +367,12 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
    *****************************************************************************************************************************************/ 
    public static List<Messaging.SingleEmailMessage> getEmailContent(Map<Id,List<core_MDF_PICReviewResult__c>> claimIdToPicReviewResultMap, Map<String,Core_MDF_Email_Translation_Resub_Reqd__mdt> languageAndTranslationMap,
                                       Map<Id,User> claimOwnerToUserMap, Map<Id,Integer> claimWithCycleNumberMap, Map<Id,String> claimIdtoClaimRefNumberMap,Map<Id,String> claimIdtoClaimName,
-                                      Map<Id,Boolean> claimIdtoLegacyDetailsMap, Map<Id,Id> claimIdToOwnerIdMap, Boolean isEmailforInternalAccMng, List<Id> excludedUserIdList,Map<Id,List<core_MDF_PICReviewResult__c>> mainQuestionIdtoSubQuestionMap,Boolean isOutcomeBasedClaim,Map<Id, List<String>> claimIdToOutcomeBasedManagers, Boolean notifyPartnerUser, Boolean isFinalOutcomeBasedClaim){
+                                      Map<Id,Boolean> claimIdtoLegacyDetailsMap, Map<Id,Id> claimIdToOwnerIdMap, Boolean isEmailforInternalAccMng, List<Id> excludedUserIdList,Map<Id,List<core_MDF_PICReviewResult__c>> mainQuestionIdtoSubQuestionMap,Boolean isOutcomeBasedClaim,Map<Id, List<String>> claimIdToOutcomeBasedManagers, Boolean notifyPartnerUser, Boolean isFinalOutcomeBasedClaim){  //Outcome-Based Campaign relabelling
        List<Messaging.SingleEmailMessage> emailList = new List<Messaging.SingleEmailMessage>();
         //Iterate over list of claims
+        system.debug('@@@@claimIdToPicReviewResultMap67'+claimIdToPicReviewResultMap);
         for(Id claimId : claimIdToPicReviewResultMap.keySet()){
+        system.debug('@@@@claimId87677'+claimId);
            Set<String> langSet = new Set<String>{'en_US'};
            String languageKey = '';
            String usertype = '';
@@ -338,7 +395,8 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
            String childIssue = '';
            String parentfilesAttached = '';
            String childfilesAttached = '';
-	   
+
+           //String commentsProvided = '';  
            String executionStartDate = '';
            String executionEndDate = '';
            String reimbursementAmt = '';
@@ -383,8 +441,13 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
                        requestId = String.isNotBlank(result.Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.RequestId) ? result.Core_MDF_PIC_Review_id__r.Core_MDF_Claim_ID_id__r.RequestId : '';
 
  
-                       tableContent = '<tr style="border: 1px solid black;border-collapse: collapse;padding: 3px 15px;"><th style="border: 1px solid black;border-collapse: collapse;padding: 3px 15px;width:500px">'
-                       + languageAndTranslationMap.get(languageKey).Core_MDF_Issue__c + (isOutcomeBasedClaim ? ('<th style="border: 1px solid black;border-collapse: collapse;padding: 3px 15px;">' + System.Label.get('', 'Core_MDF_Activity_Tactics', languageKey) + '</th>') : '') +  //Roshan - Tactics notification
+                    //    tableContent = '<tr style="border: 1px solid black;border-collapse: collapse;padding: 3px 15px;"><th style="border: 1px solid black;border-collapse: collapse;padding: 3px 15px;">'
+                    //    + languageAndTranslationMap.get(languageKey).Core_MDF_Issue__c + (isOutcomeBasedClaim ? ('<th style="border: 1px solid black;border-collapse: collapse;padding: 3px 15px;">' + System.Label.Core_MDF_Activity_Tactics+ '</th>') : '') +  //Tactics notification
+                    //     '</th><th style="border: 1px solid black;border-collapse: collapse;padding: 3px 15px;">' + languageAndTranslationMap.get(languageKey).Core_MDF_Files_Affected__c + 
+                    //    '</th>' + (isOutcomeBasedClaim ? ('<th style="border: 1px solid black;border-collapse: collapse;padding: 3px 15px;">' + System.Label.Core_MDF_IPA_Comments + '</th>') : '') + '</tr>';
+
+                        tableContent = '<tr style="border: 1px solid black;border-collapse: collapse;padding: 3px 15px;"><th style="border: 1px solid black;border-collapse: collapse;padding: 3px 15px;">'
+                       + languageAndTranslationMap.get(languageKey).Core_MDF_Issue__c + (isOutcomeBasedClaim ? ('<th style="border: 1px solid black;border-collapse: collapse;padding: 3px 15px;">' + System.Label.get('', 'Core_MDF_Activity_Tactics', languageKey) + '</th>') : '') +  //Tactics notification
                         '</th><th style="border: 1px solid black;border-collapse: collapse;padding: 3px 15px;">' + languageAndTranslationMap.get(languageKey).Core_MDF_Files_Affected__c + 
                        '</th>' + (isOutcomeBasedClaim ? ('<th style="border: 1px solid black;border-collapse: collapse;padding: 3px 15px;">' + System.Label.get('', 'Core_MDF_IPA_Comments', languageKey) + '</th>') : '') + '</tr>';
 
@@ -393,32 +456,35 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
                    }
 
                    String emailLanguage = languageAndTranslationMap.containsKey(languageKey) && String.isNotBlank(String.valueOf(result.get(languageAndTranslationMap.get(languageKey).Core_MDF_PIC_Review_Result_Field_Name__c))) ? languageAndTranslationMap.get(languageKey).Core_MDF_PIC_Review_Result_Field_Name__c :'Core_MDF_Issue_English_txt__c'; 
+
                     //Roshan - Localize tactics
                     Map<String,Object> tacticsTranslationMap;
                     if (tacticsTranslationMap == null) {
                         tacticsTranslationMap = (Map<String,Object>) JSON.deserializeUntyped(languageAndTranslationMap.get(languageKey).Core_MDF_Tactics_nm__c);
                     }
+
                    //Add the issue based on Claim owner LanguageLocaleKey
                     if(result.Core_MDF_Question_id__r.Core_MDF_Parent_Question__c == null && result.Core_MDF_Question_id__r.Core_MDF_Sub_Question_Ind__c == false){
-                        if(mainQuestionIdtoSubQuestionMap.containsKey(result.Core_MDF_Question_id__c) 
-                        && !mainQuestionIdtoSubQuestionMap.get(result.Core_MDF_Question_id__c).isEmpty()){
+                       
+                        if(mainQuestionIdtoSubQuestionMap.containsKey(result.Core_MDF_Question_id__c) && !mainQuestionIdtoSubQuestionMap.get(result.Core_MDF_Question_id__c).isEmpty()){
                             //iterate over the subquestions and add the issue based on claim owner language key
                             for(core_MDF_PICReviewResult__c subResult :mainQuestionIdtoSubQuestionMap.get(result.Core_MDF_Question_id__c)){
                                 if(String.isNotBlank(String.valueOf(subResult.Core_MDF_PIC_Review_id__r.Core_MDF_CycleNumber_nbr__c)) && subResult.Core_MDF_PIC_Review_id__r.Core_MDF_CycleNumber_nbr__c == claimWithCycleNumberMap.get(claimId)){
 
-                                    //Roshan - Tactics notification
                                     String childCommentsProvided = '';
                                     String childTacticsProvided = '';  
 
                                     childIssue =  String.valueOf(subResult.get(emailLanguage));
                                     if(childIssue.contains('\n')){ 
                                         childIssue = childIssue.replace('\n','<br/>');
-                   }
+                                    }
+
                                     if(String.isNotBlank(subResult.Core_MDF_FilesAffected_txt__c)){
                                         childfilesAttached = subResult.Core_MDF_FilesAffected_txt__c.replace(';',', ');
-                   }else{
+                                    }else{
                                         childfilesAttached = languageAndTranslationMap.get(languageKey).Core_MDF_Not_Applicable__c;
-                   }
+                                    }
+
                                     if (isOutcomeBasedClaim) {
                                         childTacticsProvided = subResult.Core_MDF_Tactics_nm__c;  //Roshan - Localize tactics
 
@@ -438,7 +504,6 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
 
                                     tableContent += '<td style="border: 1px solid black;border-collapse: collapse;padding: 3px 15px;">' + childfilesAttached + '</td>';  
 
-                                    //Roshan - Tactics notification
                                     if (isOutcomeBasedClaim) {
                                         tableContent += '<td style="border: 1px solid black;border-collapse: collapse;padding: 3px 15px;">' + childCommentsProvided + '</td>';
                                     }
@@ -447,19 +512,22 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
                                 }
                                 
                                 childIssue = '';
-                                childfilesAttached = ''; 
+                                childfilesAttached = '';
                             }
                         }else{
                             parentIssue =  String.valueOf(result.get(emailLanguage));
-			    
+
                             String parentTacticsProvided = ''; 
                             String commentsProvided = ''; 
-			    
+
                             if(parentIssue.contains('\n')){ 
                                 parentIssue = parentIssue.replace('\n','<br/>');
                             }
+                            System.debug('parentIssue..'+parentIssue);
+
                             tableContent += '<tr style="border: 1px solid black;border-collapse: collapse;padding: 3px 15px;"><td style="border: 1px solid black;border-collapse: collapse;padding: 3px 15px;">'
                             + parentIssue + '</td>';
+
                             if (isOutcomeBasedClaim) {
                                 parentTacticsProvided = result.Core_MDF_Tactics_nm__c;  //Roshan - Localize tactics
 
@@ -470,18 +538,19 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
 
                                 tableContent += '<td style="border: 1px solid black;border-collapse: collapse;padding: 3px 15px;">' + parentTacticsProvided + '</td>';
                             }
+
                             if(String.isNotBlank(result.Core_MDF_FilesAffected_txt__c)){
                                 parentfilesAttached = result.Core_MDF_FilesAffected_txt__c.replace(';',', ');
                             }else{
                                 parentfilesAttached = languageAndTranslationMap.get(languageKey).Core_MDF_Not_Applicable__c;
                                 }
-                                tableContent += '<td style="border: 1px solid black;border-collapse: collapse;padding: 3px 15px;">' + parentfilesAttached + '</td>';
+                            tableContent += '<td style="border: 1px solid black;border-collapse: collapse;padding: 3px 15px;">' + parentfilesAttached + '</td>';
 
-                                if (isOutcomeBasedClaim) {
-                                    commentsProvided = result.Core_MDF_Comment_txt__c;
-                                    tableContent += '<td style="border: 1px solid black;border-collapse: collapse;padding: 3px 15px;">' + commentsProvided + '</td>';
-                                }
-                                tableContent += '</tr>';
+                            if (isOutcomeBasedClaim) {
+                                commentsProvided = result.Core_MDF_Comment_txt__c;
+                                tableContent += '<td style="border: 1px solid black;border-collapse: collapse;padding: 3px 15px;">' + commentsProvided + '</td>';
+                            }
+                            tableContent += '</tr>';
                         }
                     }
                }
@@ -490,7 +559,40 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
             }
    
            //Claim Details
+            //String claimDetails;
+            //check with Kuamr if order can be same 
+            // if (isOutcomeBasedClaim) {
+            //     claimDetails = '<ul>' + (String.isNotBlank(accountName) ? ('<li>Member Name: ' + accountName + '</li>') : '') +
+            //     '<li>Claim #: ' + claimIdtoClaimRefNumberMap.get(claimId) + '</li>' + '<li>Claim Name: <a href="' + URL.getSalesforceBaseUrl().toExternalForm() + '/' + claimId + '">' + claimIdtoClaimName.get(claimId) + '</a></li>' +
+            //     (String.isNotBlank(activityStartDate) ? ('<li>Execution Start Date: ' + activityStartDate + '</li>') : '') +
+            //     (String.isNotBlank(activityEndDate) ? ('<li>Execution End Date: ' + activityEndDate + '</li>') : '') +
+            //     (String.isNotBlank(reimbursementAmt) ? ('<li>Reimbursement Amount (USD): $' + reimbursementAmt + '</li>') : '') +
+            //     (String.isNotBlank(activityNumber) ? ('<li>Activity #: ' + activityNumber + '</li>') : '') + 
+            //     (String.isNotBlank(activityName) ? ('<li>' + languageAndTranslationMap.get(languageKey).Core_MDF_Activity_Name__c + ' <a href="' + URL.getSalesforceBaseUrl().toExternalForm() + '/' + requestId + '">' + activityName + '</a></li>') : '') +
+            //     (String.isNotBlank(budgetType) ? ('<li>' + languageAndTranslationMap.get(languageKey).Core_MDF_Budget_Type__c + ' ' + budgetType  + '</li>') : '') +
+            //     '</ul>';
+            // } else {
+            //     claimDetails = '<ul>' +
+            //     ((String.isNotBlank(accountName) && (usertype != Label.Core_MDF_Partner_User_Type)) ? ('<li>' + languageAndTranslationMap.get(languageKey).Core_MDF_Account__c + ' ' + accountName + '</li>') : '') +
+            //     '<li>' + languageAndTranslationMap.get(languageKey).Core_MDF_MailSubject1__c + ' : ' + claimIdtoClaimRefNumberMap.get(claimId) + '</li>' +
+            //     '<li>' + System.Label.get('', 'Core_MDF_EmailTemp_AdjReq_Create_Body3', languageKey) + ' ' + claimIdtoClaimName.get(claimId) + '</li>' +
+            //     (String.isNotBlank(activityName) ? ('<li>' + languageAndTranslationMap.get(languageKey).Core_MDF_Activity_Name__c + ' ' + activityName + '</li>') : '') +
+            //     (String.isNotBlank(activityType) ? ('<li>' + languageAndTranslationMap.get(languageKey).Core_MDF_Activity_Type__c + ' ' + activityType  + '</li>') : '') +
+            //     (String.isNotBlank(activitySubtype) ? ('<li>' + languageAndTranslationMap.get(languageKey).Core_MDF_Activity_Subtype__c + ' ' + activitySubtype  + '</li>') : '') +
+            //     (String.isNotBlank(activityStartDate) ? ('<li>' + languageAndTranslationMap.get(languageKey).Core_MDF_Activity_Start_Date__c + ' ' + activityStartDate  + '</li>') : '') +
+            //     (String.isNotBlank(activityEndDate) ? ('<li>' + languageAndTranslationMap.get(languageKey).Core_MDF_Activity_End_Date__c + ' ' + activityEndDate  + '</li>') : '') +
+            //     (String.isNotBlank(country) ? ('<li>' + languageAndTranslationMap.get(languageKey).Core_MDF_Country_Region__c + ' ' + country  + '</li>') : '') +
+            //     (String.isNotBlank(programName) ? ('<li>' + languageAndTranslationMap.get(languageKey).Core_MDF_Program__c + ' ' + programName  + '</li>') : '') +
+            //     (String.isNotBlank(budgetType) ? ('<li>' + languageAndTranslationMap.get(languageKey).Core_MDF_Budget_Type__c + ' ' + budgetType  + '</li>') : '') +
+            //     (String.isNotBlank(String.valueOf(closureDate)) ? ('<li><span style="color: red;"><medium>' + (claimIdtoLegacyDetailsMap.get(claimId) ? languageAndTranslationMap.get(languageKey).Core_MDF_Due_Date__c : languageAndTranslationMap.get(languageKey).Core_MDF_Claimin_Window_Closure_Date__c) + ' ' + String.valueOf(closureDate.formatGMT('EEE MMM dd HH:mm:ss z yyyy')) + '</medium></span></li>') : '') +
+            //     '<li>' + languageAndTranslationMap.get(languageKey).Core_MDF_Document_Submission_Link__c + ' <a href="' + ((userType == Label.Core_MDF_Partner_User_Type) ? Label.Core_MDF_PFRCommunityLink : (URL.getSalesforceBaseUrl().toExternalForm() + '/')) + claimId + '">'+ claimIdtoClaimRefNumberMap.get(claimId) + '</a></li>' +
+            //     '</ul>';
+            // }
 
+
+            system.debug('@@@@isFinalOutcomeBasedClaim'+isFinalOutcomeBasedClaim);
+
+            //Outcome-Based Campaign relabelling
             String claimDetails = '<ul>' + 
             (String.isNotBlank(accountName) ? (isOutcomeBasedClaim ? ('<li>' + System.Label.get('', 'Core_MDF_IPA_EmailTemp_Field1', languageKey) + ' ' + accountName + '</li>') : ((userType != Label.Core_MDF_Partner_User_Type) ? ('<li>' + languageAndTranslationMap.get(languageKey).Core_MDF_Account__c + ' ' + accountName + '</li>') : '')) : '') +
             '<li>' + languageAndTranslationMap.get(languageKey).Core_MDF_MailSubject1__c + ': ' + claimIdtoClaimRefNumberMap.get(claimId) + '</li>' +
@@ -511,8 +613,6 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
             (!isOutcomeBasedClaim ? ((String.isNotBlank(String.valueOf(closureDate)) ? '<li><span style="color: red;"><medium>' + (claimIdtoLegacyDetailsMap.get(claimId) ? languageAndTranslationMap.get(languageKey).Core_MDF_Due_Date__c : languageAndTranslationMap.get(languageKey).Core_MDF_Claimin_Window_Closure_Date__c) + ' ' + String.valueOf(closureDate.formatGMT('EEE MMM dd HH:mm:ss z yyyy')) + '</medium></span></li>' : '') +
             ('<li>' + languageAndTranslationMap.get(languageKey).Core_MDF_Document_Submission_Link__c + ' <a href="' + ((userType == Label.Core_MDF_Partner_User_Type) ? Label.Core_MDF_PFRCommunityLink : (URL.getOrgDomainUrl().toExternalForm() + '/')) + claimId + '">' + claimIdtoClaimRefNumberMap.get(claimId) + '</a></li>')) : '') +
             '</ul>';
-
-
        
        //Partner User Footer Contents
        String partnerUserFooter = '<div style="font-size:11px;font-family:Calibri"><p><i>' +  languageAndTranslationMap.get(languageKey).Core_MDF_MailFooter1__c +
@@ -531,16 +631,16 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
         languageAndTranslationMap.get(languageKey).Core_MDF_Action_Required__c + '</div><br/>' + ((userType == Label.Core_MDF_Partner_User_Type) ? languageAndTranslationMap.get(languageKey).Core_MDF_Greetings_External__c : languageAndTranslationMap.get(languageKey).Core_MDF_Greetings_Internal__c) + 
         '<br/><br/>' + (claimStatus == Label.Core_MDF_Claim_Status_Paid_and_Resubmission_Required ? languageAndTranslationMap.get(languageKey).Core_MDF_Post_Payment_Body_Content1__c : (isOutcomeBasedClaim ? System.Label.get('', 'Core_MDF_Claim_EmailTemp_Body5', languageKey) : languageAndTranslationMap.get(languageKey).Core_MDF_MailBody4__c)) + (isOutcomeBasedClaim ? '' : (' ' + (closureDate != null ? closureDate.formatGMT('EEE MMM dd HH:mm:ss z yyyy') : '') + languageAndTranslationMap.get(languageKey).Core_MDF_MailBody5__c)) + '<br/>' + claimDetails + (claimStatus == Label.Core_MDF_Claim_Status_Paid_and_Resubmission_Required ? languageAndTranslationMap.get(languageKey).Core_MDF_Post_Payment_Body_Content2__c : (isOutcomeBasedClaim ? '' : languageAndTranslationMap.get(languageKey).Core_MDF_MailBody15__c)) + '<br/><br/>' + '<table style="border: 1px solid black;border-collapse: collapse;padding: 3px 15px;">' + tableContent + '</table>' +
         //(isOutcomeBasedClaim ? ('<br/><br/><a href="'+ ((userType == Label.Core_MDF_Partner_User_Type) ? Label.Core_MDF_PFRCommunityLink : (URL.getOrgDomainUrl().toExternalForm() + '/')) + claimId  + '">' + System.Label.get('', 'Core_MDF_Click_here', languageKey) + '</a> ' + (!notifyPartnerUser ? System.Label.Core_MDF_Claim_EmailTemp_Body6 : System.Label.get('', 'Core_MDF_Claim_EmailTemp_Body2', languageKey))) : '')
-        (isOutcomeBasedClaim ? ('<br/><br/><a href="'+ ((userType == Label.Core_MDF_Partner_User_Type) ? Label.Core_MDF_PFRCommunityLink : (URL.getOrgDomainUrl().toExternalForm() + '/')) + claimId  + '">' + System.Label.get('', 'Core_MDF_Click_here', languageKey) + '</a> ' + System.Label.get('','Core_MDF_Claim_EmailTemp_Body6', languageKey)) : '')//16564
+        (isOutcomeBasedClaim ? ('<br/><br/><a href="'+ ((userType == Label.Core_MDF_Partner_User_Type) ? Label.Core_MDF_PFRCommunityLink : (URL.getOrgDomainUrl().toExternalForm() + '/')) + claimId  + '">' + System.Label.get('', 'Core_MDF_Click_here', languageKey) + '</a> ' + System.Label.Core_MDF_Claim_EmailTemp_Body6) : '')//16564
 
         + '<br/>' + (isOutcomeBasedClaim ? '<br/>' + System.Label.get('', 'Core_MDF_PleaseContact', languageKey) + ' <a href="mailto:payment.clearance.team@intel.com">' + System.Label.get('', 'Core_MDF_ContactPaymentTeam', languageKey) + '</a>' : '')
             
         + '<br/><br/>' + languageAndTranslationMap.get(languageKey).Core_MDF_Thank_You__c + '<br/><br/>' + Label.Core_MDF_Email_Signature 
         + '<br/><img src="' + Label.Core_MDF_Intel_Logo_URL + '" alt="Intel Logo" width="120" height="48" />'
-        + partnerUserFooter + '</div></body></html>';//added notifyPartnerUser
+        + partnerUserFooter + '</div></body></html>';//Swati - added notifyPartnerUser
 
        //SubjectLine1 based on notification type(Immediate, 1st Reminder, 2nd Reminder)
-       String subjectLine1 = String.isNotBlank(legacyReminder) ? (legacyReminder == Label.Core_MDF_Legacy_Reminder_2 ? languageAndTranslationMap.get(languageKey).Core_MDF_Reminder1_Subject__c : 
+        String subjectLine1 = String.isNotBlank(legacyReminder) ? (legacyReminder == Label.Core_MDF_Legacy_Reminder_2 ? languageAndTranslationMap.get(languageKey).Core_MDF_Reminder1_Subject__c : 
            (legacyReminder == Label.Core_MDF_Legacy_Reminder_3 ? languageAndTranslationMap.get(languageKey).Core_MDF_Reminder2_Subject__c : languageAndTranslationMap.get(languageKey).Core_MDF_MailSubject1__c )) : languageAndTranslationMap.get(languageKey).Core_MDF_MailSubject1__c;
            
            //Single Email
@@ -559,7 +659,7 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
                 }
 
             }else{
-                if(!isOutcomeBasedClaim || (notifyPartnerUser && isOutcomeBasedClaim)) { //added notifyPartnerUser
+                if(!isOutcomeBasedClaim || (notifyPartnerUser && isOutcomeBasedClaim)) { //Swati - added notifyPartnerUser
                  userIdsforWrapper = new List<String>{claimIdToOwnerIdMap.get(claimId)};
                     //targetObjectId = claimIdToOwnerIdMap.get(claimId);
                 }
@@ -576,20 +676,18 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
             }
        
          if(!finalUserIdList.isEmpty()) {
-           targetObjectId =  finalUserIdList[0];    
+           targetObjectId =  finalUserIdList[0];
            htmlEmailWrapper.userIds = finalUserIdList;
            htmlEmailWrapper.saveAsActivity = false;
            htmlEmailWrapper.targetObjectId = targetObjectId;
            htmlEmailWrapper.orgWideEmailAddressId = Label.Core_MDF_OrgWideId;
 
-           //Roshan - added for IPA OutcomeBased claims
            htmlEmailWrapper.subject =(isOutcomeBasedClaim && addReminderInSubject) ? 
     (System.Label.get('', 'Core_MDF_VAT_EmailSubject_Reminder', languageKey) + ' ' + accountName + ' ' + System.Label.get('', 'Core_MDF_RecoveryClaimStatus', languageKey) + ': ' + System.Label.get('', 'Core_MDF_PIC_Review_Pending_Account_Manager_Clarification', languageKey)) : isOutcomeBasedClaim ? (accountName + ' ' + System.Label.get('', 'Core_MDF_RecoveryClaimStatus', languageKey) + ': ' + System.Label.get('', 'Core_MDF_PIC_Review_Pending_Account_Manager_Clarification', languageKey)) : (subjectLine1 + claimIdtoClaimRefNumberMap.get(claimId) + ': ' + claimIdtoClaimName.get(claimId) + ' - ' + ((claimStatus == Label.Core_MDF_Claim_Status_Paid_and_Resubmission_Required) ? (languageAndTranslationMap.get(languageKey).Core_MDF_Post_Payment_MailSubject2__c) : (languageAndTranslationMap.get(languageKey).Core_MDF_MailSubject2__c)));
            htmlEmailWrapper.emailBody = emailBody;
            if(String.isNotBlank(String.valueOf(closureDate)) && closureDate.getTime() > System.now().getTime())
                emailList.addAll(Core_MDF_GenericClassToSendMail.createEmailInstaceforHtmlBody(htmlEmailWrapper));
             } 
-            
            
        }
        return emailList;
@@ -642,6 +740,7 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
         keys.add(programName + region + role + 'null');
         keys.add(programName + 'WW' + role + 'null');
         
+        system.debug('keys@@@' + keys);
         return keys;
     }
 
@@ -681,8 +780,10 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
                 }//16202
                 
             }
+            system.debug('claimIdToActualApprover@@@' + claimIdToActualApprover);
 
             Map<String, Map<String, List<Id>>> resultMap = Core_MDF_GeneralPurpose_UI_Utility.getIupgmRecordsForApprovers(ultimateAccList, programList, regionList, permissionSetNameList, category);
+            system.debug('resultMap@@@' + resultMap);
             if (resultMap != null) {
                 for (Id claimId : claimIds) {
                     String region = claimIdToRegion.get(claimId);
@@ -694,6 +795,8 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
                     if (String.isNotBlank(actualApprover)) {
                         Set<String> primaryRoleKeys = generateKeysForRole(programName, region, role, ultimateAcc);
                         Set<String> primaryRoleUsers = new Set<String>();
+                        
+                        system.debug('primaryRoleKeys@@@' + primaryRoleKeys);
                         
                         for (String key : resultMap.get(role).keySet()) {
                             if (!primaryRoleKeys.contains(key)) {
@@ -732,16 +835,39 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
                                 }
                             }
                         }
+                        system.debug('RimsUsers@@@' + RimsUsers);
                         // Return Rims users if any found
                         if (!RimsUsers.isEmpty()) {
                             claimIdToManagers.put(claimId, new List<String>(RimsUsers));
                         }
+
+                    /*String allAccountNOKey = programName + region + role + String.valueOf(ultimateAcc);
+                    String allAccountNOKeyWW  = programName + 'WW' + role + String.valueOf(ultimateAcc);
+                    String allAccountYesKey = programName + region + role + 'null';
+                    String allAccountYesKeyWW = programName + 'WW' + role + 'null';
+
+                    
+
+                    for (String key : resultMap.get(role).keySet()) {
+                        if (key == allAccountNOKey || key == allAccountNOKeyWW || key == allAccountYesKey || key == allAccountYesKeyWW) {
+                            for (Id uId : resultMap.get(role).get(key)) {
+                                uniqueUsers.add(String.valueOf(uId));
+                            }
+                        }
+                    }
+                    system.debug('RIMsUsers@@@' + RIMsUsers);
+                    system.debug('uniqueUsers@@@' + uniqueUsers);
+                    if (String.isNotBlank(claimIdToActualApprover.get(claimId)) && !uniqueUsers.isEmpty() && uniqueUsers.contains(claimIdToActualApprover.get(claimId))) {
+                        claimIdToManagers.put(claimId, new List<String>{claimIdToActualApprover.get(claimId)});
+                    } else if(!RIMsUsers.isEmpty()){
+                        claimIdToManagers.put(claimId, new List<String>(RIMsUsers));
+                    }*/
                 }
             }
         } catch (Exception ex) {
             Core_MDF_CCP_UtilityClass.logError(ex);
         }
-
+        system.debug('claimIdToManagers@@@' + claimIdToManagers);
         return claimIdToManagers;
     }
 
@@ -763,7 +889,8 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
         }
         return String.join(localized, '; ');
     }
-    //Added wrapper class to utilize in Core_MDF_PIC_SendEmailToClaimOwner
+
+    //Swati-Added wrapper class to utilize in Core_MDF_PIC_SendEmailToClaimOwner
      public class NotificationWrapper {
         @InvocableVariable(required=true)
         public Id claimIds;
@@ -773,6 +900,5 @@ public without sharing class Core_MDF_PIC_SendEmailToClaimOwner {
      
         @InvocableVariable(required=false)
         public Boolean addReminderInSubject = false;
-
     }
 }

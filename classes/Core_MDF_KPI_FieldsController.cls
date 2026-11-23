@@ -48,9 +48,11 @@ public with sharing class Core_MDF_KPI_FieldsController {
                 string objectName = (string)queryVariabels.get('objName');
                 Boolean isProposal = false;
                 String propStr = '';
+                //US - TWC702-14285: Flatten nested IFs (no logic change)
                 if(program == Core_MDF_CCP_ConstantClass.PFR_IPA_PROGRAM){
                     isProposal = queryVariabels.get('isProposalBased') != null ? (Boolean)queryVariabels.get('isProposalBased') : false; //Ayush - added null check as 'isProposalBased' was returning null if campaign is removed from Activity while cloning.
                     propStr = isProposal ? 'Core_MDF_Checkbox_Field_2_Ind__c = true' : 'Core_MDF_Checkbox_Field_5_Ind__c = true';
+                    system.debug('propStr---'+propStr);
                 }
                 Id recordId = (Id)queryVariabels.get('recordId');
                 Id activityId = (Id)queryVariabels.get('activityId');//Added by VB - KPI Metrics Changes
@@ -102,7 +104,14 @@ public with sharing class Core_MDF_KPI_FieldsController {
                     }
                     List<Core_MDF_CCP_Custom_Metadata_Utility__c> metaDataValues = Core_MDF_Custom_Metadata_Utility.getCustomObjectRecords(whereClause);
                     if (metaDataValues != null){
-                        kpiAttrs = getKPIWrapper(recordId,objectName,metaDataValues, activityId, sectionTitle);
+                        // ATHR Avoid long parameter lists - US 14285 - Indira
+                        KPIWrapperParams p = new KPIWrapperParams();
+                        p.recordId = recordId;
+                        p.objectName = objectName;
+                        p.metaDataValues = metaDataValues;
+                        p.activityId = activityId;
+                        p.sectionTitle = sectionTitle;
+                        kpiAttrs = getKPIWrapper(p);
                     }
                 }
                 // try-catch intentionally removed to allow exceptions to propagate to LWC for client-side handling and logging 
@@ -113,10 +122,18 @@ public with sharing class Core_MDF_KPI_FieldsController {
 
     /**
      * * Method to fetch the KPI wrapper method
-     * * Input params - recordId,objectName and custom meta data values
-     * ? Created by Sridhar on 17-FEB-2020
+     * * Input params - wrapped to avoid long parameter list
+     * ? Created by Sridhar on 17-FEB-2020 | Refactored: wrap params and unpack locally
     */
-    private static KPIAttributes getKPIWrapper(id recordId, string objectName,List<Core_MDF_CCP_Custom_Metadata_Utility__c> metaDataValues, Id activityId, String sectionTitle){
+    // ATHR Avoid long parameter lists - US 14285 - Indira
+    private static KPIAttributes getKPIWrapper(KPIWrapperParams params){
+        // ATHR Avoid long parameter lists - US 14285 - Indira
+        // unpack wrapper into local variables
+        Id recordId = params.recordId;
+        String objectName = params.objectName;
+        List<Core_MDF_CCP_Custom_Metadata_Utility__c> metaDataValues = params.metaDataValues;
+        Id activityId = params.activityId;
+        String sectionTitle = params.sectionTitle;
 
         KPIAttributes kpiAttrs = new KPIAttributes();
         Map<String,Schema.SObjectField> mfields = null;
@@ -136,7 +153,11 @@ public with sharing class Core_MDF_KPI_FieldsController {
             activityRecObject = readRecordValues(activityId,mfieldsValues,'PartnerFundRequest');
         }
         
-        mfields = Schema.getGlobalDescribe().get(objectName).getDescribe().fields.getMap();
+        // ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+        Schema.DescribeSObjectResult[] describeResult = Schema.describeSObjects(new List<String>{objectName});
+        if(describeResult != null && !describeResult.isEmpty()){
+            mfields = describeResult[0].fields.getMap();
+        }
         
         if (mfields != null){
             
@@ -490,6 +511,18 @@ public with sharing class Core_MDF_KPI_FieldsController {
         @AuraEnabled public LabelValues labels{ get;set;}
         @AuraEnabled public List<Core_MDF_CCP_Custom_Metadata_Utility__c> metaDataValues { get;set;}
         @AuraEnabled public SelectedValues activityRecValue {get;set;}
+    }
+
+    /**
+     * * Parameter wrapper to avoid long parameter list for getKPIWrapper
+     */
+    // ATHR Avoid long parameter lists - US 14285 - Indira
+    @TestVisible private class KPIWrapperParams {
+        public Id recordId;
+        public String objectName;
+        public List<Core_MDF_CCP_Custom_Metadata_Utility__c> metaDataValues;
+        public Id activityId;
+        public String sectionTitle;
     }
 
     /**

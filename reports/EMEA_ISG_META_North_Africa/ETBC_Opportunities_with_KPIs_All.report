@@ -3,39 +3,84 @@
     <buckets>
         <bucketType>text</bucketType>
         <developerName>BucketField_25346800</developerName>
-        <masterLabel>KPI</masterLabel>
+        <masterLabel>CCG</masterLabel>
         <nullTreatment>n</nullTreatment>
         <sourceColumnName>CUST_NAME</sourceColumnName>
         <useOther>false</useOther>
         <values>
             <sourceValues>
-                <sourceValue>CCG Public Sector Deal $</sourceValue>
+                <sourceValue>CCG Gateway Deal #</sourceValue>
             </sourceValues>
             <sourceValues>
-                <sourceValue>CCG vPro Deal $</sourceValue>
+                <sourceValue>CCG Performance Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CCG Public Sector Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CCG Unite Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CCG vPro Adoption Technologies Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CCG vPro Deal #</sourceValue>
             </sourceValues>
             <value>CCG</value>
         </values>
         <values>
             <sourceValues>
-                <sourceValue>DCG Adjacencies Deal $</sourceValue>
+                <sourceValue>DCG Comms Infrastructure Deal #</sourceValue>
             </sourceValues>
             <sourceValues>
-                <sourceValue>DCG Compute Deal $</sourceValue>
+                <sourceValue>DCG 5G Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Cloud Infra &amp; App Acceleration Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Enterprise &amp; Gov&apos;t Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Enterprise Analytics Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Enterprise DC Cloud Modern Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Enterprise High Perf Compute Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Cloud New Services Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG AI on Intel for Deep Learning Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Cloud New Rev Streams Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG High Speed Ethernet Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Select Solutions Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG/NSG Optane Persistent Memory &amp; SSD Deal #</sourceValue>
             </sourceValues>
             <value>DCG</value>
         </values>
         <values>
             <sourceValues>
-                <sourceValue>NSG NAND Datacenter Cloud Deal $</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>NSG Optane Datacenter Deal $</sourceValue>
+                <sourceValue>NSG NAND Datacenter Deal #</sourceValue>
             </sourceValues>
             <value>NSG</value>
         </values>
         <values>
-            <value>IOTG</value>
+            <sourceValues>
+                <sourceValue>PSG All Deal #</sourceValue>
+            </sourceValues>
+            <value>PSG</value>
         </values>
     </buckets>
     <buckets>
@@ -96,21 +141,10 @@
         <field>Opportunity.Core_Opportunity_Count__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Core_Opportunity_KPI__c.Core_Opp_KPI_Total_Price__c</field>
-    </columns>
-    <columns>
         <field>BucketField_25346800</field>
     </columns>
     <filter>
-        <booleanFilter>(((1 AND (2 OR 3) AND 4) AND 5) AND 6) AND 7</booleanFilter>
-        <criteriaItems>
-            <column>CUST_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>CCG vPro Technology Adoption Deal #</value>
-        </criteriaItems>
+        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
         <criteriaItems>
             <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>
@@ -123,35 +157,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Pieterse,Korcan</value>
+            <value>Korcan,Ghatwary,Ihemekwele</value>
         </criteriaItems>
         <criteriaItems>
             <column>CUST_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>#,Consumption,Partner</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notContain</operator>
-            <value>Frans</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notContain</operator>
-            <value>Frans</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notContain</operator>
-            <value>Frans</value>
+            <operator>equals</operator>
+            <value>CCG Performance Deal #,CCG Public Sector Deal #,CCG Unite Deal #,CCG vPro Deal #,CCG Gateway Deal #,CCG Partner-Led Deal #,CCG vPro Adoption Technologies Deal #,DCG AI on Intel for Deep Learning Deal #,DCG Enterprise &amp; Gov&apos;t Deal #,DCG/NSG Optane Persistent Memory &amp; SSD Deal #,DCG Cloud New Services Deal #,DCG Partner Enablement Deal #,DCG Comms Infrastructure Deal #,IOTG All Deal #,NSG NAND Datacenter Deal #,PSG All Deal #</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -171,7 +184,7 @@
         <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>ETBC 2020- Opportunities with KPIs (All)</name>
+    <name>ETBC - Opportunities with KPIs (All)</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -190,11 +203,11 @@
     </params>
     <reportType>OpportunityCustomEntity$Core_Opportunity_KPI__c</reportType>
     <scope>organization</scope>
-    <showDetails>true</showDetails>
+    <showDetails>false</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_PREVFY</interval>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

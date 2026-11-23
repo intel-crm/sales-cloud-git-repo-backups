@@ -1,0 +1,46 @@
+<template >
+    <template if:true={hasValidData}>
+    <lightning-card title = "Budget Summary" icon-name = "standard:client">  
+        <div class="slds-box slds-box_large"> 
+            <p class="budgetFont">
+                <!-- <div class = "slds-border_top slds-border_left slds-border_bottom slds-border_right">Budget Amount = ${budgetAmount}</div>
+                    <div class = "slds-border_top slds-border_left slds-border_bottom slds-border_right">Used Budget Amount  = ${usedBudgetAmount}</div> 
+                    <div class = "slds-border_top slds-border_left slds-border_bottom slds-border_right">Remaining Budget Amount = ${remainingBudgetAmount}</div>-->
+                    Budget Amount = ${budgetAmount}<br/>
+                    Used Budget Amount = ${usedBudgetAmount}<br/>
+                    Remaining Budget Amount = ${remainingBudgetAmount}<br/>
+                
+            </p>
+           <!-- <table class="slds-table slds-table_cell-buffer slds-table_bordered"> style="height:7rem;width:24rem-->
+            <lightning-accordion allow-multiple-sections-open>
+                <template for:each={pfrList} for:item="pfr">
+                    <!--<h3 key={pfr.campaignId} class="slds-section__title">
+                        <lightning-icon icon-name="action:approval" alternative-text="Approved" title="Approved"></lightning-icon>
+                            <svg key={pfr.campaignId} class="slds-section__title-action-icon slds-button__icon slds-button__icon_left" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
+                            </svg> 
+                        <div class="budgetFont">
+                            <lightning-formatted-url  key={pfr.campaignId} value={pfr.campaignId} label= {pfr.campaignName} target="_blank"></lightning-formatted-url>
+                        </div>
+                    </h3>-->
+                    <lightning-accordion-section key = {pfr.campaignId} label= {pfr.campaignName}>
+                        <div key={pfr.campaignId} class="slds-scrollable_x Font" style="height:7rem;width:24rem" ></div>
+                            <p>
+                                <lightning-formatted-url  key={pfr.campaignId} value={pfr.campaignId} label= 'Click here ' target="_blank"></lightning-formatted-url>to view Campaign<br/>
+                            </p>
+                        
+                            <lightning-datatable    data={pfr.pfrList}
+                                                    columns={columns}
+                                                    key-field="Id" 
+                                                    key ={pfr.key}
+                                                    hide-checkbox-column="true" >
+
+                            </lightning-datatable>
+                        </div>
+                    </lightning-accordion-section>
+                </template>
+            </lightning-accordion>
+            </div>     
+    </lightning-card>        
+    </template>
+    </template>

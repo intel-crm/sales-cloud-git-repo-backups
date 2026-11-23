@@ -11,6 +11,31 @@
         <masterLabel>Pipeline Health %</masterLabel>
         <scale>2</scale>
     </aggregates>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>Donut</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>false</expandOthers>
+        <groupingColumn>FULL_NAME</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_TOP</location>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Large</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
     <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
@@ -30,10 +55,10 @@
         <field>STAGE_NAME</field>
     </columns>
     <columns>
-        <field>AMOUNT</field>
+        <field>CLOSE_DATE</field>
     </columns>
     <columns>
-        <field>CLOSE_DATE</field>
+        <field>AGE</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Last_Activity_Date__c</field>
@@ -59,13 +84,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>On Hold – Review in Progress,On Hold – Government Authorization Needed</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Export_Compliance_Block__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>1</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

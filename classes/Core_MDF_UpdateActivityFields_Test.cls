@@ -39,7 +39,8 @@ public with sharing class Core_MDF_UpdateActivityFields_Test {
             result1.addAll(myset1);
             
             List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
-
+            // Highlight: Unused Local Variable - 14285
+            //List<User> usrList1=new List<User>();
             Profile ccpCoreAccessProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1];
             PermissionSet aacntMngrPS = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_CCF_Acct_Mgr' LIMIT 1];
             User ccfaccntmngr = Core_MDF_CCP_TestDataUtility.createUser(false);
@@ -249,6 +250,8 @@ public with sharing class Core_MDF_UpdateActivityFields_Test {
             //Code for IPA starts
             ChannelProgram ipaCP = Core_MDF_CCP_TestDataUtility.createProgram ('Intel Partner Alliance','Intel Partner Alliance', true);
             Account ipaUltimateAccount = Core_MDF_CCP_TestDataUtility.createIntelAccount ('IPA Intel Account',Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
+ 
+            
             Account ipaUltimateAccount2 = Core_MDF_CCP_TestDataUtility.createIntelAccount ('IPA Intel Account2',Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
             
                 
@@ -324,11 +327,15 @@ public with sharing class Core_MDF_UpdateActivityFields_Test {
     
     @isTest static void getActivityRejectionCommentsTest(){
         User usr1 = [select id,email from User where email='ccfaccntmngr@example.com' limit 1];
-        Test.startTest();        
+        Test.startTest();
+        // Highlight: Unused Local Variable - 14285
+ 
+       // date sdate = date.today();        
         System.runAs(usr1){
             
             PartnerFundRequest pfr=[select id,OwnerId from PartnerFundRequest where Title='Test PFR Retail'];
-
+            // Highlight: Unused Local Variable - 14285
+            //Approval.ProcessWorkitemRequest pwr = new Approval.ProcessWorkitemRequest();
             
             
             
@@ -348,14 +355,19 @@ public with sharing class Core_MDF_UpdateActivityFields_Test {
         
         
         User usr1 = [SELECT Id, Username, UserRoleId FROM User WHERE LastName='testuser1' LIMIT 1];
-
+        // Highlight: Unused Local Variable - 14285
+ 
+        //Profile partnerProfile = [SELECT Id FROM Profile WHERE Name='Partner'];
+        //ChannelProgram ccfCp = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', false);
         User usr2 = [SELECT Id, Username, UserRoleId FROM User WHERE LastName='User Test6' LIMIT 1];
         
         User usr3 = [select id,email from User where email='ccfaccntmngr@example.com' limit 1];
         test.startTest();
         System.runAs(usr3){
             Account acc2 = [select id from account where name = 'Test Account 2']; 
-
+            // Highlight: Unused Local Variable - 14285
+            //Campaign camp = [select id from Campaign where name = 'Test Camp CCF' limit 1];
+            //PartnerMarketingBudget testBudgetOEM = [select id from PartnerMarketingBudget where Title ='TestBudgetDataOEM'];
             Campaign ccfCamp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp CCF1','Gaming','Intel® Core™ i7 Processor', 'MDF or both CMP & MDF',
                                                                            Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 
                                                                            'Client CoMarketing Fund', System.today()-6, //System.today().addDays(-300), 
@@ -384,10 +396,12 @@ public with sharing class Core_MDF_UpdateActivityFields_Test {
             
             Approval.ProcessSubmitRequest app = new Approval.ProcessSubmitrequest();
             app.setObjectId(pfrRec.id);
-
+            // Highlight: Unused Local Variable - 14285
+            //PartnerFundRequest pfr=[select OwnerId from PartnerFundRequest where id=:pfrRec.Id ];
             app.setSubmitterId(pfrRec.OwnerId);
             app.setProcessDefinitionNameOrId('Core_MDF_OPAL_Approval_Process_V9'); 
             app.setSkipEntryCriteria(true);
+            
             Approval.ProcessResult result = Approval.process(app);
             
             //Id piw = [Select Id from ProcessInstanceWorkitem 
@@ -415,8 +429,10 @@ public with sharing class Core_MDF_UpdateActivityFields_Test {
             testList.add(testObj);
             
             Core_MDF_UpdateActivityFields.getActivityRejectionComments(testList);
+            
             // US - TWC702-14285: Unit Test Method should include System.Assert
              System.assert(testList != null, 'testList should not be null after getActivityRejectionComments call');
+            
             Core_MDF_UpdateActivityFields.notifyExternalUsers(null);
             Core_MDF_UpdateActivityFields.getActivityRejectionComments(null);
             List<Core_MDF_FlowInputWrapper> flowWrapperList = new List<Core_MDF_FlowInputWrapper>();

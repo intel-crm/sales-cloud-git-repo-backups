@@ -1,0 +1,66 @@
+<template>
+    <div if:true={activityDetails} class="slds-p-around_medium">
+        <div class="slds-modal__header">
+            <h2 style="font-size: 21px;">Summary</h2>
+        </div>
+        <!--<div>Campaign Name: {activityDetails.Campaign.Name}</div>
+        <div>Activity Title: {activityDetails.Title}</div>
+        <lightning-card title="Planning Phase">
+            <div class="slds-p-around_medium">
+                <ul>
+                    <li>Date(s) Planned: {activityDetails.Core_MDF_Start_Date__c} - {activityDetails.Core_MDF_End_Date__c}</li>
+                    <li>Budget Allocated: {activityDetails.Core_MDF_Budget_Amount_Local_amt__c}</li>
+                    <li>Objectives: {activityDetails.Description}</li>
+                    <li>Key Partners: {activityDetails.ChannelPartner.Name}</li>
+                    <li>Target Audience: {activityDetails.ChannelPartner.Name}</li>
+                </ul>
+            </div>
+        </lightning-card>
+        <div class="slds-modal__footer">
+            <span>
+                <lightning-button label="Close" variant="brand" onclick="{closeModal}" />
+            </span>
+        </div>-->
+        <div>
+            <div><b>Campaign Name:</b> {activityDetails.Campaign.Name}</div>
+            <div><b>Activity Title:</b> {activityDetails.Title}</div>
+            <div>
+                <b>Planning Phase:</b>
+                <ul>
+                    <li><b>Date(s) Planned:</b>  {activityDetails.Core_MDF_Start_Date__c} - {activityDetails.Core_MDF_End_Date__c}</li>
+                    <li><b>Budget Allocated:</b> {activityDetails.Core_MDF_Budget_Amount_Local_amt__c}</li>
+                    <li><b>Objectives:</b> {activityDetails.Description}</li>
+                    <li><b>Key Partners:</b> {activityDetails.ChannelPartner.Name}</li>
+                    <li><b>Target Audience:</b> Tech enthusiasts and industry professionals</li>
+                </ul>
+            </div>
+
+            <div>
+                <b>Execution Phase:</b>
+                <ul>
+                    <li><b>Date(s) Executed:</b> February 10-12, 2023</li>
+                    <li><b>Channels Used:</b> Email, social media, partner channels</li>
+                    <li><b>Engagement Tactics:</b> Influencer collaborations, live Q/A sessions</li>
+                    <li><b>Claims Submitted:</b> Partner co-op marketing claim of $5,000 for promotional materials</li>
+                </ul>
+            </div>
+
+            <div>
+                <b>Performance Metrics:</b>
+                <ul>
+                    <li><b>Engagement:</b> 2,000 webinar sign-ups, 800 live participants</li>
+                    <li><b>Budget Utilization:</b> $18,500 spent, under budget by $1,500</li>
+                </ul>
+            </div>
+
+            <div>
+                <b>Financial Reconciliation:</b>
+                <ul>
+                    <li><b>Claims Processed:</b> $5,000 reimbursed to partner</li>
+                    <li><b>Final Budget Report:</b> Total spend of $18,500, remaining funds reallocated (Budget Cap reversals)</li>
+                    <li><b>Outstanding Items:</b> No pending claims, budget closed</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</template>

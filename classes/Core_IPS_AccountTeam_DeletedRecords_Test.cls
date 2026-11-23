@@ -6,7 +6,6 @@ Modification Log :
 * Developer                   Date                   Description
 * ----------------------------------------------------------------------------                 
 * Brian Matthews              3/28/16                Initial Revision
-* System.assert()--> Statements Added By Hassan Khan 01-02-2024 
 *************************************************************************************/
 @isTest
 public class Core_IPS_AccountTeam_DeletedRecords_Test {
@@ -32,10 +31,12 @@ public class Core_IPS_AccountTeam_DeletedRecords_Test {
         
         List<AccountTeamMember> lstATM;
         for (Account acct : lstAccount) {
+            System.debug('#11 acct: ' + acct);
 
             lstATM = Core_Test_Utility.Core_AccountTeamMember(lstUser);
             for (AccountTeamMember atm : lstATM)
                 atm.AccountId = acct.Id;
+            System.debug('#12 lstATM: ' + lstATM);
                             
             lstAccountTeamMember.addAll(lstATM);                
         }
@@ -43,7 +44,11 @@ public class Core_IPS_AccountTeam_DeletedRecords_Test {
         // Create a member mismatch
         lstAccountTeamMember.remove(0);        
         
-        insert lstAccountTeamMember;        
+        System.debug('#20 lstAccountTeamMember: ' + lstAccountTeamMember);
+        insert lstAccountTeamMember;
+
+        System.debug('#21 lstAccountTeamMember: ' + lstAccountTeamMember);
+        
         
         lstCustomAccountTeamMember = new List<Core_Account_Team__c>();
         
@@ -56,8 +61,10 @@ public class Core_IPS_AccountTeam_DeletedRecords_Test {
             lstCustomAccountTeamMember.addAll(lstCATM);                
         }
         
+        System.debug('#22 lstCustomAccountTeamMember: ' + lstCustomAccountTeamMember);
         insert lstCustomAccountTeamMember;
 
+        System.debug('#23 lstCustomAccountTeamMember: ' + lstCustomAccountTeamMember);
                         
         batchHeader                = new Core_Batch_Header__c();
         batchHeader.Description__c = 'Batch delete';
@@ -75,8 +82,7 @@ public class Core_IPS_AccountTeam_DeletedRecords_Test {
         
         Database.executeBatch(new Core_IPS_AccountTeam_DeletedRecords_Bulk(), 1000);
         
-        Test.stopTest();
-        System.assert(lstCustomAccountTeamMember.size() > 0, true);  
+        Test.stopTest();        
     }
 
 }

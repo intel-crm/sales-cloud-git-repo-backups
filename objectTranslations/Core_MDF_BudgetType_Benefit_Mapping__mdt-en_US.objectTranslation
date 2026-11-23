@@ -48,6 +48,10 @@
             <translation><!-- IPA Account Based1 --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Intel MDF Account Based1</masterLabel>
+            <translation><!-- Intel MDF Account Based1 --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Intel MDF Account Based2</masterLabel>
             <translation><!-- Intel MDF Account Based2 --></translation>
         </picklistValues>
@@ -66,6 +70,10 @@
         <picklistValues>
             <masterLabel>ODM Growth Plan - Client MDF</masterLabel>
             <translation><!-- ODM Growth Plan - Client MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ODM Growth Plan- MDF</masterLabel>
+            <translation><!-- ODM Growth Plan- MDF --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Proposal I MDF</masterLabel>

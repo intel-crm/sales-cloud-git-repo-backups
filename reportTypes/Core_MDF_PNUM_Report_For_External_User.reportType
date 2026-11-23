@@ -148,6 +148,16 @@
             <field>Core_MDF_Account__c.Core_MDF_CoMarketing_Ultimate_Account__c.Name</field>
             <table>Core_MDF_Partner_Node_User_Mapping__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Action_Needed_nm__c</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Account__c.Core_MDF_Channel_Program__c.Core_MDF_Technical_Program_Name__c</field>
+            <table>Core_MDF_Partner_Node_User_Mapping__c</table>
+        </columns>
         <masterLabel>Account Users</masterLabel>
     </sections>
 </ReportType>

@@ -25,6 +25,18 @@
         <name>Core_MDF_GTM_CampaignStatusChangeFields</name>
     </fieldSets>
     <fieldSets>
+        <label><!-- IPA Campaign Status Change Fields for ExtUser --></label>
+        <name>Core_MDF_IPA_CampStatusChngFields_ExtUsr</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- IPA Campaign Status Change Fields for IntUser --></label>
+        <name>Core_MDF_IPA_CampStatusChngFields_IntUsr</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- IPA Campaign Status Change Fields for L2User --></label>
+        <name>Core_MDF_IPA_CampStatusChngFields_L2Usr</name>
+    </fieldSets>
+    <fieldSets>
         <label><!-- IPA Campaign Fields To Be Synced --></label>
         <name>Core_MDF_IPA_CampaignFieldsToBeSynced</name>
     </fieldSets>
@@ -37,9 +49,18 @@
         <name>Core_MDF_IPA_Campaign_FieldSet</name>
     </fieldSets>
     <fieldSets>
+        <label><!-- IPA Validation Error Fields --></label>
+        <name>Core_MDF_IPA_Validation_Error_Fields</name>
+    </fieldSets>
+    <fieldSets>
         <label><!-- RMF Campaign Fieldset --></label>
         <name>Core_MDF_RMF_Campaign_Fieldset</name>
     </fieldSets>
+    <fields>
+        <label><!-- Channel Program Reporting --></label>
+        <name>Channel_Program_Reporting__c</name>
+        <relationshipLabel><!-- Campaigns --></relationshipLabel>
+    </fields>
     <fields>
         <help><!-- Activity Types that are part of the campaign.  When tasks are automatically generated, the targeted accounts will get a task for each Activity Type. --></help>
         <label><!-- Activity Types --></label>
@@ -230,6 +251,10 @@
         <name>Core_MDF_Account_Based_Ind__c</name>
     </fields>
     <fields>
+        <label>Регион</label>
+        <name>Core_MDF_Account_Geo_txt__c</name>
+    </fields>
+    <fields>
         <label>Счет</label>
         <name>Core_MDF_Account__c</name>
         <relationshipLabel><!-- Campaigns --></relationshipLabel>
@@ -375,12 +400,18 @@
         <name>Core_MDF_Brand__c</name>
     </fields>
     <fields>
-        <label>Сумма бюджета</label>
+        <label>Лимит расходов на действие</label>
         <name>Core_MDF_Budget_Amount_amt__c</name>
     </fields>
     <fields>
         <label><!-- Budget Cap --></label>
         <name>Core_MDF_Budget_Cap__c</name>
+        <relationshipLabel><!-- Campaigns --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Budget type applicable for the account selected. If you are not sure of the eligible budget types, type MDF in the field and hit enter on your keyboard. --></help>
+        <label><!-- Budget Type Lookup --></label>
+        <name>Core_MDF_Budget_Type_Nm__c</name>
         <relationshipLabel><!-- Campaigns --></relationshipLabel>
     </fields>
     <fields>
@@ -397,6 +428,22 @@
         <relationshipLabel><!-- Campaigns --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- CMDF Category --></label>
+        <name>Core_MDF_CMDF_Category__c</name>
+        <picklistValues>
+            <masterLabel>Account Based</masterLabel>
+            <translation><!-- Account Based --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proposal Based</masterLabel>
+            <translation><!-- Proposal Based --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- CMP Activity Category -&gt; Type --></label>
+        <name>Core_MDF_CMP_Activity_Category_Type_Txt__c</name>
+    </fields>
+    <fields>
         <help>Ожидаемый доход от экземпляров на базе Intel, в долларах США</help>
         <label>Доходы CSP, основанные на Intel</label>
         <name>Core_MDF_CSP_Intel_Based_Revenue_Amt__c</name>
@@ -407,12 +454,21 @@
         <name>Core_MDF_CampOutcomeOpt_In_Ind__c</name>
     </fields>
     <fields>
-        <label><!-- Campaign Budgets --></label>
+        <label>Бюджеты кампании</label>
         <name>Core_MDF_Campaign_Budgets_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign Budgets (Reporting Only) --></label>
+        <name>Core_MDF_Campaign_Budgets_Reporting_Only__c</name>
+        <relationshipLabel><!-- Campaigns --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Cancel Alert --></label>
         <name>Core_MDF_Campaign_Cancel_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign Created Count --></label>
+        <name>Core_MDF_Campaign_Created_Count__c</name>
     </fields>
     <fields>
         <label><!-- Campaign IPA Path Status --></label>
@@ -488,12 +544,21 @@
         <name>Core_MDF_Comments_Appvr_Only_txt__c</name>
     </fields>
     <fields>
+        <help><!-- IPA Approver comments Only --></help>
+        <label><!-- Comments (Not Use) --></label>
+        <name>Core_MDF_Comments_IPA_Appvr_Only_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Comments (Internal Only) --></label>
         <name>Core_MDF_Comments_Internal_Only__c</name>
     </fields>
     <fields>
         <label>Комментарии (Внешние)</label>
         <name>Core_MDF_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>Core_MDF_Comments_txt__c</name>
     </fields>
     <fields>
         <label><!-- Completed Approval Level Name --></label>
@@ -522,7 +587,7 @@
     </fields>
     <fields>
         <help>Новые победы клиента</help>
-        <label>Количество развертываний</label>
+        <label><!-- Deployment Quantity --></label>
         <name>Core_MDF_Deployment_Quantity_nbr__c</name>
     </fields>
     <fields>
@@ -545,6 +610,58 @@
     <fields>
         <label>Заявки на возмещение в первый год</label>
         <name>Core_MDF_First_Year_Claims__c</name>
+    </fields>
+    <fields>
+        <label><!-- MDF Activity Category -&gt; Type --></label>
+        <name>Core_MDF_Flex_Activity_Category_Type_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- MDF Budget --></label>
+        <name>Core_MDF_Flexible_Budget__c</name>
+    </fields>
+    <fields>
+        <label><!-- MDF Reimbursement Rate --></label>
+        <name>Core_MDF_Flexible_Reimbursement_Rate_Pct__c</name>
+        <picklistValues>
+            <masterLabel>10%</masterLabel>
+            <translation><!-- 10% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>100%</masterLabel>
+            <translation><!-- 100% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>20%</masterLabel>
+            <translation><!-- 20% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>30%</masterLabel>
+            <translation><!-- 30% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>40%</masterLabel>
+            <translation><!-- 40% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>50%</masterLabel>
+            <translation><!-- 50% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>60%</masterLabel>
+            <translation><!-- 60% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>70%</masterLabel>
+            <translation><!-- 70% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>80%</masterLabel>
+            <translation><!-- 80% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>90%</masterLabel>
+            <translation><!-- 90% --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <help>Основная сфера деятельности, которая представлена на рынке</help>
@@ -586,11 +703,15 @@
         <name>Core_MDF_IPA_SPIF_Apprval_Ind__c</name>
     </fields>
     <fields>
+        <label><!-- ISV Accounts --></label>
+        <name>Core_MDF_ISV_Accounts__c</name>
+    </fields>
+    <fields>
         <label>Отрасль</label>
         <name>Core_MDF_Industry_Nm__c</name>
     </fields>
     <fields>
-        <help>Намеренный акцент, определенный Intel, который соответствует корпоративной цели или цели бизнес-подразделения. Единая инициатива может относиться к одной основной сфере деятельности или приоритету, в то время как другая инициатива может относиться к нескольким основным сферам деятельности или приоритетам. Инициатива должна быть выбрана только в том случае, если она согласована со специалистами Intel по работе с клиентами или ее выполнение осуществляется на основе опубликованного руководства.</help>
+        <help><!-- An intentional emphasis that Intel has identified that aligns with a corporate or business unit objective. A single Initiative may be relevant to one Focus Area or Priority, while another Initiative may be relevant to multiple Focus Areas or Priorities. An Initiative should only be selected if coordinated with an Intel account team or directed by published guidance. --></help>
         <label>Инициатива</label>
         <name>Core_MDF_Initiative_nm__c</name>
     </fields>
@@ -652,12 +773,16 @@
     </fields>
     <fields>
         <help>Новые контакты</help>
-        <label>Количество потенциальных клиентов</label>
+        <label><!-- Lead Quantity --></label>
         <name>Core_MDF_Lead_Quantity_nbr__c</name>
     </fields>
     <fields>
         <label><!-- MMID # --></label>
         <name>Core_MDF_MMID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Market SegmentEOL --></label>
+        <name>Core_MDF_Market_Segment_Txt__c</name>
     </fields>
     <fields>
         <label>Сегмент рынка</label>
@@ -672,7 +797,7 @@
         <name>Core_MDF_Marketing_Objective_Strategy__c</name>
     </fields>
     <fields>
-        <label>Подход к измерению</label>
+        <label><!-- Measurement Approach --></label>
         <name>Core_MDF_Measurement_Approach_nm__c</name>
     </fields>
     <fields>
@@ -754,11 +879,11 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>N/A</masterLabel>
-            <translation>не применимо</translation>
+            <translation><!-- N/A --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Other</masterLabel>
-            <translation>Другое</translation>
+            <translation><!-- Other --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Panasonic</masterLabel>
@@ -782,11 +907,11 @@
         <name>Core_MDF_Other_Ecosystem_Partner_txt__c</name>
     </fields>
     <fields>
-        <label>Другие методы измерения</label>
+        <label><!-- Other Measurement Approach --></label>
         <name>Core_MDF_Other_Measurement_Approach_txt__c</name>
     </fields>
     <fields>
-        <label>Другие критерии исхода</label>
+        <label><!-- Other Outcome Criteria --></label>
         <name>Core_MDF_Other_Outcome_Criteria_txt__c</name>
     </fields>
     <fields>
@@ -795,7 +920,7 @@
         <name>Core_MDF_Other_Outcome_txt__c</name>
     </fields>
     <fields>
-        <label>Другое количество</label>
+        <label><!-- Other Quantity --></label>
         <name>Core_MDF_Other_Quantity_nbr__c</name>
     </fields>
     <fields>
@@ -805,6 +930,10 @@
     <fields>
         <label><!-- Outcome Detail Edited --></label>
         <name>Core_MDF_Outcome_Detail_Edited_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Outcome Value --></label>
+        <name>Core_MDF_Outcome_value__c</name>
     </fields>
     <fields>
         <help>Выберите один результат. Если данная кампания основана на результатах, то этот результат будет использоваться для оценки успеха кампании. Выплаты не обусловлены эффективностью кампании.</help>
@@ -824,7 +953,7 @@
         <name>Core_MDF_Parent_Account_Id__c</name>
     </fields>
     <fields>
-        <label>Контакт с партнёром</label>
+        <label><!-- Partner Contact --></label>
         <name>Core_MDF_Partner_Contact_txt__c</name>
     </fields>
     <fields>
@@ -889,20 +1018,28 @@
         <name>Core_MDF_Reason_for_Back_Dating_Nm__c</name>
     </fields>
     <fields>
+        <label><!-- Core_MDF_Region_Sub_Region_nm --></label>
+        <name>Core_MDF_Region_Sub_Region_nm__c</name>
+    </fields>
+    <fields>
         <label>Регион</label>
         <name>Core_MDF_Region_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- DNU:Region --></label>
+        <name>Core_MDF_Region_nm__c</name>
     </fields>
     <fields>
         <label>Ставка возмещения</label>
         <name>Core_MDF_ReimbursementRate_pct__c</name>
     </fields>
     <fields>
-        <help>Общие инвестиции (Intel + Partner) x ставка возмещения = максимальные инвестиции в Intel.</help>
-        <label>Максимальные инвестиции Intel</label>
+        <help><!-- Total Investment (Intel + Partner) x Reimbursement Rate = Maximum Intel Investment. --></help>
+        <label>Сумма возмещения</label>
         <name>Core_MDF_Reimbursement_Amount_Amt__c</name>
     </fields>
     <fields>
-        <label>Максимальные инвестиции Intel</label>
+        <label>Сумма возмещения</label>
         <name>Core_MDF_Reimbursement_Amt__c</name>
     </fields>
     <fields>
@@ -1009,6 +1146,10 @@
         <name>Core_MDF_Sub_Region_cd__c</name>
     </fields>
     <fields>
+        <label><!-- Core_MDF_SudReg_karan --></label>
+        <name>Core_MDF_SudReg_karan__c</name>
+    </fields>
+    <fields>
         <label>Поддержка устаревшей программы</label>
         <name>Core_MDF_Supports_legacy_program__c</name>
         <picklistValues>
@@ -1033,7 +1174,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Yes</masterLabel>
-            <translation><!-- Yes --></translation>
+            <translation>Да</translation>
         </picklistValues>
     </fields>
     <fields>
@@ -1046,16 +1187,40 @@
         <name>Core_MDF_Terminal_Rejection_Ind__c</name>
     </fields>
     <fields>
-        <label>Общие инвестиции (Intel + Partner)</label>
+        <label><!-- Test Copilot Checkbox --></label>
+        <name>Core_MDF_Test_Copilot_Checkbox_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Test Country --></label>
+        <name>Core_MDF_Test_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Topics --></label>
+        <name>Core_MDF_Topics_Txt__c</name>
+    </fields>
+    <fields>
+        <label>Общие расходы на кампанию</label>
         <name>Core_MDF_Total_Campaign_Cost_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type Indicator --></label>
+        <name>Core_MDF_Type_Indicator__c</name>
+        <picklistValues>
+            <masterLabel>Account Based</masterLabel>
+            <translation><!-- Account Based --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proposal Based</masterLabel>
+            <translation><!-- Proposal Based --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Account (Company) --></label>
         <name>Core_MDF_Ultimate_Account_txt__c</name>
     </fields>
     <fields>
-        <help>Выберите пример использования, который наиболее соответствует предложению решения, продвигаемого в рамках этой кампании. Если ни один из перечисленных примеров использования не подходит, выберите «Общего назначения».</help>
-        <label>Пример использования</label>
+        <help><!-- Please choose the Use Case that most closely aligns with the solution offering this campaign will promote. If none of the listed Uses Cases apply, select General purpose. --></help>
+        <label><!-- Use Case --></label>
         <name>Core_MDF_Use_Case_Nm__c</name>
     </fields>
     <fields>
@@ -1183,12 +1348,9 @@
         <name>Core_Tasks_Generated__c</name>
     </fields>
     <fields>
-        <label><!-- Event Stub --></label>
-        <name>CventEvents__EventStub__c</name>
-    </fields>
-    <fields>
-        <label><!-- Session Stub --></label>
-        <name>CventEvents__SessionStub__c</name>
+        <label><!-- Geo Reporting --></label>
+        <name>Geo_Reporting__c</name>
+        <relationshipLabel><!-- Campaigns --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Campaign Brief Details --></label>
@@ -1211,10 +1373,6 @@
         <name>MKT_Corporate_Campaign_nm__c</name>
     </fields>
     <fields>
-        <label><!-- Custom Links --></label>
-        <name>MKT_Custom_Links__c</name>
-    </fields>
-    <fields>
         <label><!-- Initiative --></label>
         <name>MKT_Initiative_nm__c</name>
     </fields>
@@ -1226,6 +1384,31 @@
         <label><!-- Bulk Add/Invite Email Template --></label>
         <name>PRM_Bulk_Add_Invite_Email_Template__c</name>
     </fields>
+    <fields>
+        <label><!-- Result Quantity Update indicator --></label>
+        <name>Result_Quantity_Update_indicator__c</name>
+    </fields>
+    <fields>
+        <label><!-- Test --></label>
+        <name>Test__c</name>
+        <picklistValues>
+            <masterLabel>test 06</masterLabel>
+            <translation><!-- test 06 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Testing Copilot --></label>
+        <name>Testing_Copilot_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- tst --></label>
+        <name>tst__c</name>
+    </fields>
+    <recordTypes>
+        <description><!-- Record Type for Opal Client Program --></description>
+        <label><!-- Client EOL --></label>
+        <name>Core_MDF_Client</name>
+    </recordTypes>
     <recordTypes>
         <description><!-- Record type for CCP Client Program --></description>
         <label>Фонд совместного маркетинга для клиентов</label>
@@ -1241,6 +1424,11 @@
         <name>Core_MDF_Co_GTM</name>
     </recordTypes>
     <recordTypes>
+        <description><!-- Record Type for Opal Data Center Program --></description>
+        <label><!-- Data Center EOL --></label>
+        <name>Core_MDF_DataCenter</name>
+    </recordTypes>
+    <recordTypes>
         <description><!-- Record Type for CCP Datacenter Program --></description>
         <label>Фонд совместного маркетинга для центров обработки данных</label>
         <name>Core_MDF_Data_Center_CoMarketing_Fund</name>
@@ -1254,6 +1442,11 @@
         <description><!-- Record Type for IPA program --></description>
         <label><!-- Intel Partner Alliance --></label>
         <name>Core_MDF_Intel_Partner_Alliance</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Intel MDF - Proposal Based Recordtype --></description>
+        <label><!-- Core MDF Proposal Based Demo --></label>
+        <name>Core_MDF_Proposal_Based_Demo</name>
     </recordTypes>
     <recordTypes>
         <description><!-- Record type created for Retail program --></description>
@@ -1289,12 +1482,24 @@
         <name>Core_Campaign_Only_Approved_In_Progress</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Для создания кампании требуется аккаунт. Пожалуйста, выберите аккаунт и попробуйте снова.</errorMessage>
+        <errorMessage><!-- Campaign cannot be created for the selected date range. --></errorMessage>
+        <name>Core_MDF_CCFB_PartnerRestriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- User cannot edit Campaign Name, Budget Type and Reimbursement Rate when a Proposal is approved. --></errorMessage>
+        <name>Core_MDF_CMDFRestrict_Edit_Approved_Camp</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- An account is required to create a campaign. Please select an account and try again. --></errorMessage>
         <name>Core_MDF_CampaignAccountValidation</name>
     </validationRules>
     <validationRules>
         <errorMessage>Предложение нельзя отменить, если оно находится в статусе рассмотрения или утверждения</errorMessage>
         <name>Core_MDF_CancellingIPACampaignInApproval</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select the MDF Budget type --></errorMessage>
+        <name>Core_MDF_Check_For_Is_Opal_Budget_Type</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Enter only positive numeric values up to 16 digits. --></errorMessage>
@@ -1303,6 +1508,18 @@
     <validationRules>
         <errorMessage><!-- Enter only positive numeric values up to 16 digits. --></errorMessage>
         <name>Core_MDF_Check_For_Non_Negative_Amount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- An account is required to create a campaign. Please select an account and try again. --></errorMessage>
+        <name>Core_MDF_CoGTMAccountValidation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Custom Reimbursement Rate can have only 2 decimal places --></errorMessage>
+        <name>Core_MDF_CustomRR_only_2_decimal</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Custom Reimbursement Rate should not be negative or cannot exceed 100% --></errorMessage>
+        <name>Core_MDF_Custom_RR_should_be_positive</name>
     </validationRules>
     <validationRules>
         <errorMessage>Учетную запись нельзя изменить после создания кампании.</errorMessage>
@@ -1341,8 +1558,40 @@
         <name>Core_MDF_Integrated_Campaign_is_Yes</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Kindly specify the Budget type --></errorMessage>
+        <name>Core_MDF_Is_Opal_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select right combinations of budget type and Reimbursement Rate. --></errorMessage>
+        <name>Core_MDF_Opal_RRate_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Выбранный тип бюджета не применим к выбранному периоду времени.</errorMessage>
+        <name>Core_MDF_OtherAccountRestriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Campaign cannot be created on an inactive account node --></errorMessage>
+        <name>Core_MDF_RestrictCampaignCreation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Campaign cannot be edited as the account node associated to the campaign is inactive --></errorMessage>
+        <name>Core_MDF_RestrictCampaignEdit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The proposal cannot be declined due to an active claim associated with one of the activities included in this proposal. --></errorMessage>
+        <name>Core_MDF_Restrict_Terminal_Rejection</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Campaign start date and end date cannot span more than 5 calendar quarters --></errorMessage>
+        <name>Core_MDF_Retail_Campaign_End_Date</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Campaign end date should be greater than the campaign start date --></errorMessage>
         <name>Core_MDF_Retail_Campaign_Start_End_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Выбранный тип бюджета не применим к выбранному периоду времени.</errorMessage>
+        <name>Core_MDF_SelectPartnerRestriction</name>
     </validationRules>
     <validationRules>
         <errorMessage>Выберите только одну основную сферу деятельности</errorMessage>
@@ -1355,6 +1604,10 @@
     <validationRules>
         <errorMessage><!-- Strategic Marketing Fund cannot be edited when Campaign is in a Completed or Cancelled status. --></errorMessage>
         <name>Core_MDF_Strategic_Marketing_Field_Edit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Campaign cannot be cancelled. One or more closed activities are present. Please cancel the closed activities and try again. --></errorMessage>
+        <name>Core_MDF_ValFieldEditInCancelledIPAProp</name>
     </validationRules>
     <validationRules>
         <errorMessage>Кампанию нельзя отредактировать или отменить в статусе «Отменено».</errorMessage>
@@ -1385,12 +1638,28 @@
         <name>Core_MDF_Validate_Priority3</name>
     </validationRules>
     <validationRules>
+        <errorMessage>Дата начала кампании не должна быть ранее текущего календарного года.</errorMessage>
+        <name>Core_MDF_Validate_StartDate</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Select a value not already selected for Priority #2 or Priority #3 --></errorMessage>
         <name>Core_MDF_Validate_Top_Priority</name>
     </validationRules>
     <validationRules>
+        <errorMessage>Дата видимости участника не должна предшествовать сегодняшней дате.</errorMessage>
+        <name>Core_MDF_Validate_Visibility_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Дата видимости участника должна быть датой начала или более ранней.</errorMessage>
+        <name>Core_MDF_Validate_Visibility_Start_Date</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Campaign Member Visibility Date must be no later than Campaign Start Date --></errorMessage>
         <name>Core_MDF_Visibility_Start_Date_Limit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please change a value to update the record --></errorMessage>
+        <name>Update_campaign_on_value_changes_only</name>
     </validationRules>
     <webLinks>
         <label><!-- Core_Bulk_Upload_Members --></label>
@@ -1425,12 +1694,8 @@
         <name>Core_New_Sales_Campaign</name>
     </webLinks>
     <webLinks>
-        <label><!-- LinkEventsToCampaign --></label>
-        <name>CventEvents__LinkEventsToCampaign</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- SendInvitation --></label>
-        <name>CventEvents__SendInvitation</name>
+        <label><!-- MKT_Campaign_Brief_URL_Txt --></label>
+        <name>MKT_Campaign_Brief_URL_Txt</name>
     </webLinks>
     <webLinks>
         <label><!-- ViewAllCampaignMembers --></label>

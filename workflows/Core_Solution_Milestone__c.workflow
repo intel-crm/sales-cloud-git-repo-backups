@@ -9,7 +9,7 @@
             <type>userLookup</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
-        <template>Testt/Core_Rejection_Notification_Solution_Milestone</template>
+        <template>test_m/Core_Rejection_Notification_Solution_Milestone</template>
     </alerts>
     <fieldUpdates>
         <fullName>Core_SM_Set_Approved_By_to_CurrentUser</fullName>
@@ -163,7 +163,7 @@
             <name>Core_SM_Default_Milestone_Owner</name>
             <type>FlowAction</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Populate Solution Milestone Owner (Default to the current user)</description>
         <formula>Core_Opportunity__r.Name != &apos;&apos; &amp;&amp; !ISCLONE()</formula>
         <triggerType>onAllChanges</triggerType>
@@ -178,7 +178,7 @@
             <name>Core_SM_Clone_Milestone_Owner</name>
             <type>FlowAction</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>When a user clones a milestone, s/he becomes the owner of the newly created milestone automatically.</description>
         <formula>ISCLONE()</formula>
         <triggerType>onAllChanges</triggerType>
@@ -189,7 +189,7 @@
             <name>Core_SM_Set_Status_to_Pending</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Core_Solution_Milestone__c.CreatedById</field>
             <operation>notEqual</operation>
@@ -215,7 +215,7 @@
             <name>Core_SM_reset_Commissionable</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Core_Solution_Milestone__c.Core_Status__c</field>
             <operation>equals</operation>
@@ -242,7 +242,7 @@
             <name>Core_SM_reset_Commissionable</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Core_Solution_Milestone__c.Core_Status__c</field>
             <operation>equals</operation>

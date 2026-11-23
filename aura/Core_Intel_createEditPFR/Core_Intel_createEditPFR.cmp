@@ -107,6 +107,8 @@
     <aura:attribute name="showErrorMsgForCSPRevAmt" type="Boolean" default="false" /> <!--EEF -->
     <aura:attribute name="ErrorMsgForCSPAmt" type="String" default="" />
     <aura:attribute name="ErrorMsgForSpendingLimit" type="String" default="" />
+    <!-- Akash CCF DCF - Controls the start date validation message -->
+    <aura:attribute name="showStartDateError" type="Boolean" default="false" />
     <aura:attribute name="startDate" type="date"/>
     <aura:attribute name="endDate" type="date"/>
     <!-- To check Opportunity Id is valid -->
@@ -674,6 +676,15 @@
                                 <lightning:input aura:id="NewForm" type="date" label="{!$Label.c.Core_MDF_Start_Date}" required="true"
                                                  name="startDate" onchange="{!c.createAdditionalfilter}" value="{!v.newPFR.Core_MDF_Start_Date__c}"
                                                  disabled="{!v.disabledMap.sdate}" />
+                               <!-- Akash CCF DCF - Show the Account Plan start date guidance -->
+                               <aura:if isTrue="{!and(v.showStartDateError,or(v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_CCF,v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_DCF))}">
+                                   <div class="slds-form-element__help slds-text-color_error">
+                                       {!$Label.c.Core_MDF_CCF_DCF_StartDate_Error_Msg}
+                                       <a href="javascript:void(0);" onclick="{!c.openOutcomeBasedCampaign}" class="slds-text-link">
+                                           {!$Label.c.Core_MDF_AccountPlan_ErrorStartDateLink}
+                                       </a>
+                                   </div>
+                               </aura:if>
                             </lightning:layoutItem>
                             <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
                                                   largeDeviceSize="5">

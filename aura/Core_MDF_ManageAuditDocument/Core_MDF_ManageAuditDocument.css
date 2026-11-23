@@ -1,0 +1,30 @@
+/*.THIS {
+}
+.THIS .slds-input{
+    min-height:6rem;
+}
+.THIS .slds-checkbox [type="checkbox"][disabled] .slds-checkbox_faux:after{
+    border-color: blue !important;
+        
+}
+.THIS .deletePopup{
+    min-width: 20vw;
+            width:30% !important;
+}
+.THIS .td {
+  text-align: center;
+}
+
+.THIS .table-align td  .slds-form-element__control .slds-checkbox {
+    display: block;
+}
+
+.THIS .table-align td .truncate-filename {
+    text-overflow: ellipsis;
+    max-width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+/*.THIS.div.div.div:nth-child(1).lightning-file-upload.lightning-input.div{
+    top:-1.5rem !important;
+}*/

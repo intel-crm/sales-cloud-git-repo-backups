@@ -50,7 +50,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterOrEqual</operator>
-            <value>15</value>
+            <value>15.00</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Product_Segment__c</column>

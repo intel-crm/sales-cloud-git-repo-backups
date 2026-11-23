@@ -31,6 +31,14 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Hide_If_No_Value_Ind__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Filter_Criteria_txt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_List_API_Record_Count_Limit_nbr__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -65,6 +73,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_MDF_ButtonsVisibilityOnStatus_txt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_External_API_Sample_Payload_txt__c</field>
             </layoutItems>
         </layoutColumns>
         <style>OneColumn</style>

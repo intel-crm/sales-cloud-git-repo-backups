@@ -66,6 +66,9 @@
     <aura:attribute name="isBulkClaim" type="Boolean" default="false" />
     <aura:attribute name="isOutcomeBasedAccountBasedAct" type="Boolean" default="false"/> <!--anushya-->
     <aura:attribute name="isOutcomeBasedActivity" type="Boolean" default="false"/> <!--anushya-->
+    <!-- Roshan TWC3117-16573 -->
+    <aura:attribute name="isOutComeBased" type="Boolean" default="false" description="true for final outcome based claims"/>
+
     <aura:attribute name="existingAuditDocuments" type="Object[]" description="Holds the existing documents" />
     <aura:attribute name="isCoGTMProgram" type="Boolean" default="false" />
     <!--register event-->
@@ -117,16 +120,23 @@
         <lightning:layout>
             <aura:if isTrue="{!v.showUploadFileSection}">
                 <lightning:layoutItem padding="around-small">
+                    <!-- TWC3117-18199 Aditya -->
+                    <!-- <div class="slds-box slds-theme_shade slds-var-m-bottom_small" 
+                        style="border-left: 4px solid #0070d2; padding: 8px; font-size: 12px;"> -->
                     <div class="slds-var-m-bottom_small" style="font-size: 12px;">
-                        <lightning:icon iconName="utility:info" alternativeText="Info" size="x-small" class="slds-var-m-right_x-small"/>
+                        <lightning:icon 
+                            iconName="utility:info" alternativeText="Info" size="x-small" class="slds-var-m-right_x-small"/>
                         <span style="color: #0070d2;">{!$Label.c.Core_MDF_Max_File_Upload_Message}</span>
                     </div>
                     <div class="slds-grid" style="align-items: flex-start;">
                         <div class="slds-col_bump-right">
                             <lightning:fileUpload accept="{!v.accept}" onuploadfinished="{!c.handleUploadFinished}" multiple="true" aura:id="lightningfileUpload" disabled="{!v.disableUploadFilesButton}" />
                         </div>
-                        <div class="slds-col slds-var-m-left_medium" style="padding-top: 20px;">
-                            <lightning:button variant="neutral" onclick="{!c.openModal}"
+                        <div class="slds-col slds-var-m-left_medium" 
+                            style="padding-top: 20px;">
+                            <lightning:button 
+                                variant="neutral" 
+                                onclick="{!c.openModal}"
                                 label="{!$Label.c.Core_MDF_Manage_Document_Button_Label}"
                                 title="{!$Label.c.Core_MDF_Manage_Document_Button_Label}"
                                 disabled="{!v.disableManageDocumentButton}" />
@@ -138,13 +148,17 @@
         <aura:if isTrue="{!v.displayUploadedFiles}">
             <aura:if isTrue="{!not(empty(v.auditDocument))}">
                 <div class="slds-var-p-around_medium uploadedFiles" id="modal-content-id-1">
-                    <aura:if isTrue="{!and(not(v.isCoGTMProgram), not(v.isOutcomeBasedAccountBasedAct))}">
+                    <!--<aura:if isTrue="{!not(v.isCoGTMProgram)}">-->
+                    <aura:if isTrue="{!and(not(v.isCoGTMProgram), not(v.isOutcomeBasedAccountBasedAct))}"> <!--anushya TWC3117-14374-->
                         <aura:if isTrue="{!v.requiredDocumentTypes.length}">
                             <p class="slds-var-m-bottom_medium slds-float_left" style="color:red">
                                 *{!$Label.c.Core_MDF_Mandatory_Document_Types}:
                                 {!v.requiredDocumentTypes}</p>
                         </aura:if>
                     </aura:if>
+
+                    
+                    
                     <table class="slds-table_bordered table-align">
                         <thead>
                             <tr>
@@ -153,7 +167,9 @@
                                         <label>{!$Label.c.Core_MDF_Document_Title}</label>
                                     </div>
                                 </th>
-                                <aura:if isTrue="{!and(not(v.isCoGTMProgram), not(v.isOutcomeBasedAccountBasedAct))}">
+                                <!--<aura:if isTrue="{!not(v.isCoGTMProgram)}">-->
+                                <aura:if isTrue="{!and(not(v.isCoGTMProgram), not(v.isOutcomeBasedAccountBasedAct))}"> <!--anushya TWC3117-14374-->
+                                    
                                     <aura:iteration items="{!v.typeOfDocuments}" var="type" indexVar="index">
                                         <th>
                                             <div class="slds-col_padded">
@@ -182,7 +198,8 @@
                                         </div>
 
                                     </td>
-                                    <aura:if isTrue="{!and(not(v.isCoGTMProgram), not(v.isOutcomeBasedAccountBasedAct))}">
+                                    <!--<aura:if isTrue="{!not(v.isCoGTMProgram)}">-->
+                                    <aura:if isTrue="{!and(not(v.isCoGTMProgram), not(v.isOutcomeBasedAccountBasedAct))}"> <!--anushya TWC3117-14374-->
                                         <aura:iteration items="{!v.typeOfDocuments}" var="item" indexVar="indx">
                                             <td>
                                                 <center><label>
@@ -210,21 +227,25 @@
                     aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_large">
                     <div class="slds-modal__container">
                         <header class="slds-modal__header">
+                            <!--added by ajinkya - start-->
+                            <!-- Aditya header change TWC3117-14374-->
                             <aura:if isTrue="{!or(v.isCoGTMProgram, v.isOutcomeBasedAccountBasedAct)}">
                                 <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!$Label.c.Core_MDF_CoGTM_Manage_Document_Header}</h2>
                                 <aura:set attribute="else">
                                     <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!$Label.c.Core_MDF_Manage_Document_Header}</h2>
                                 </aura:set>
                             </aura:if>
+                            <!--added by ajinkya - end-->
                             <!--<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
                                 {!$Label.c.Core_MDF_Manage_Document_Header}</h2>-->
                         </header>
                         <div class="slds-modal__content slds-var-p-around_large documentTypeSelectionPopup" id="modal-content-id-1">
-                            <aura:if isTrue="{!and(not(v.isOutcomeBasedAccountBasedAct), not(v.isCoGTMProgram), v.requiredDocumentTypes.length)}"> <!--added by ajinkya -->
+                            <!--<aura:if isTrue="{!and(not(v.isCoGTMProgram), v.requiredDocumentTypes.length)}"> -->
+                            <aura:if isTrue="{!and(not(v.isOutcomeBasedAccountBasedAct), not(v.isCoGTMProgram), v.requiredDocumentTypes.length)}"> <!--added by ajinkya and (anushya TWC3117-14374)-->
                                 <!--<aura:if isTrue="{!v.requiredDocumentTypes.length}" ><dk change-->
                                 <p class="slds-var-m-bottom_medium slds-float_left" style="color:red">
                                     *{!$Label.c.Core_MDF_Mandatory_Document_Types}:
-                                    {!v.requiredDocumentTypes}</p>
+                                    {!v.requiredDocumentTypes}fsfsfsf</p>
                             </aura:if>
                             <center>
                                 <table class="table-align">
@@ -232,7 +253,8 @@
                                         <th>
                                             <label>{!$Label.c.Core_MDF_Document_Title}</label>
                                         </th>
-                                        <aura:if isTrue="{!and(not(v.isCoGTMProgram), not(v.isOutcomeBasedAccountBasedAct))}">
+                                        <!--<aura:if isTrue="{!not(v.isCoGTMProgram)}">--><!-- dk change -->
+                                        <aura:if isTrue="{!and(not(v.isCoGTMProgram), not(v.isOutcomeBasedAccountBasedAct))}"> <!--anushya TWC3117-14374-->
                                         <aura:iteration items="{!v.typeOfDocuments}" var="type" indexVar="index">
                                             <td>
                                                 <center>
@@ -242,7 +264,7 @@
                             </center>
                             </td>
                             </aura:iteration>
-                            </aura:if>
+                            </aura:if><!-- dk change -->
                             </tr>
                             <aura:iteration items="{!v.auditDocument}" var="file" indexVar="indx">
                                 <tr class="slds-hint-parent">
@@ -252,7 +274,8 @@
                                             {!file.Core_MDF_Document_Title__c}
                                         </div>
                                     </td>
-                                    <aura:if isTrue="{!and(not(v.isCoGTMProgram), not(v.isOutcomeBasedAccountBasedAct))}">
+                                    <!--<aura:if isTrue="{!not(v.isCoGTMProgram)}">--><!-- dk change -->
+                                    <aura:if isTrue="{!and(not(v.isCoGTMProgram), not(v.isOutcomeBasedAccountBasedAct))}"> <!--anushya TWC3117-14374-->
                                     <aura:iteration items="{!v.typeOfDocuments}" var="item" indexVar="indx">
                                         <td>
                                             <center><label>
@@ -263,7 +286,7 @@
                                                 </label></center>
                                         </td>
                                     </aura:iteration>
-                                     </aura:if>
+                                     </aura:if><!--dk change -->
                                     <aura:if
                                         isTrue="{!or(and(v.showDeleteOption, file.isNewDocument), (v.auditDocumentDetailsWrapper.isClaimCreate))}">
                                         <td>

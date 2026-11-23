@@ -157,16 +157,6 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
-        <fullName>Core_Approved_KPI_Revenue__c</fullName>
-        <label>Approved KPI Revenue</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>2</scale>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Currency</type>
-    </fields>
-    <fields>
         <fullName>Core_Bypass_Submission__c</fullName>
         <defaultValue>false</defaultValue>
         <description>Ability for IT to Bypass Submission Block</description>
@@ -188,43 +178,8 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Deal_Win_Goal_Owner_Email__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Goal_Owner__r.Email</formula>
-        <label>Deal Win Goal Owner Email</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Deal_Win_Goal_Owner_Manager_Email__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Goal_Owner__r.Manager.Email</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Deal Win Goal Owner Manager Email</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Deal_Win_Goal_Owner_Manager__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Goal_Owner__r.Core_Manager__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Deal Win Goal Owner Manager</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Goal_Accept_Date__c</fullName>
-        <inlineHelpText>Date the goal was last &apos;Accepted&apos; by the Owner.</inlineHelpText>
+        <inlineHelpText>Date the goal last moved to the Accepted state by the Owner.</inlineHelpText>
         <label>Accept Date</label>
         <required>false</required>
         <trackHistory>true</trackHistory>
@@ -234,7 +189,7 @@
     <fields>
         <fullName>Core_Goal_Approved_By__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>Name of the individual who approved the Deal Win Goal.</inlineHelpText>
+        <inlineHelpText>Name of person who approved the Deal Win Goal</inlineHelpText>
         <label>Approved By</label>
         <length>255</length>
         <required>false</required>
@@ -265,56 +220,723 @@
     </fields>
     <fields>
         <fullName>Core_Goal_BU_Focus_Area__c</fullName>
-        <inlineHelpText>Select the Tier 1 BU KPI with which the goal is aligned.</inlineHelpText>
+        <inlineHelpText>Select the BU KPI the goal is aligned with.</inlineHelpText>
         <label>KPI Name</label>
         <required>true</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
+            <restricted>true</restricted>
             <valueSetDefinition>
-                <sorted>true</sorted>
+                <sorted>false</sorted>
                 <value>
-                    <fullName>CCG Commercial Deal Revenue $</fullName>
+                    <fullName>CCG Gateway Deal #</fullName>
                     <default>false</default>
-                    <label>CCG Commercial Deal Revenue $</label>
+                    <label>CCG Gateway Deal #</label>
                 </value>
                 <value>
-                    <fullName>CCG Strategic Next Gen Design #</fullName>
+                    <fullName>CCG Partner Enablement Deal #</fullName>
                     <default>false</default>
-                    <label>CCG Strategic Next Gen Design #</label>
+                    <label>CCG Partner Enablement Deal #</label>
                 </value>
                 <value>
-                    <fullName>CCG vPro Platform Deal Revenue $</fullName>
+                    <fullName>CCG Partner-Led Deal #</fullName>
                     <default>false</default>
-                    <label>CCG vPro Platform Deal Revenue $</label>
+                    <label>CCG Partner-Led Deal #</label>
                 </value>
                 <value>
-                    <fullName>DCAI Compute Deal $</fullName>
+                    <fullName>CCG Performance Deal #</fullName>
                     <default>false</default>
-                    <label>DCAI Compute Deal $</label>
+                    <label>CCG Performance Deal #</label>
                 </value>
                 <value>
-                    <fullName>DC Growth Deal $</fullName>
+                    <fullName>CCG Public Sector Deal #</fullName>
                     <default>false</default>
-                    <label>DC Growth Deal $</label>
+                    <label>CCG Public Sector Deal #</label>
                 </value>
                 <value>
-                    <fullName>DC Strategic Next Gen Design #</fullName>
+                    <fullName>CCG Unite Deal #</fullName>
                     <default>false</default>
-                    <label>DC Strategic Next Gen Design #</label>
+                    <label>CCG Unite Deal #</label>
                 </value>
                 <value>
-                    <fullName>NEX Deal (Sell-To) $</fullName>
+                    <fullName>CCG vPro Adoption Technologies Deal #</fullName>
                     <default>false</default>
-                    <label>NEX Deal (Sell-To) $</label>
+                    <label>CCG vPro Adoption Technologies Deal #</label>
+                </value>
+                <value>
+                    <fullName>CCG vPro Deal #</fullName>
+                    <default>false</default>
+                    <label>CCG vPro Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCG/NSG Optane Persistent Memory &amp; SSD Deal #</fullName>
+                    <default>false</default>
+                    <label>DCG/NSG Optane Persistent Memory &amp; SSD Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCG AI on Intel for Deep Learning Deal #</fullName>
+                    <default>false</default>
+                    <label>DCG AI on Intel for Deep Learning Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCG Cloud Infra &amp; App Acceleration Deal #</fullName>
+                    <default>false</default>
+                    <label>DCG Cloud Infra &amp; App Acceleration Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCG Cloud New Services Deal #</fullName>
+                    <default>false</default>
+                    <label>DCG Cloud New Services Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCG Comms Infrastructure Deal #</fullName>
+                    <default>false</default>
+                    <label>DCG Comms Infrastructure Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCG Enterprise &amp; Gov&apos;t Deal #</fullName>
+                    <default>false</default>
+                    <label>DCG Enterprise &amp; Gov&apos;t Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCG Partner Enablement Deal #</fullName>
+                    <default>false</default>
+                    <label>DCG Partner Enablement Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCG SiPH Deal #</fullName>
+                    <default>false</default>
+                    <label>DCG SiPH Deal #</label>
+                </value>
+                <value>
+                    <fullName>IOTG All Deal #</fullName>
+                    <default>false</default>
+                    <label>IOTG All Deal #</label>
+                </value>
+                <value>
+                    <fullName>NSG NAND Datacenter Deal #</fullName>
+                    <default>false</default>
+                    <label>NSG NAND Datacenter Deal #</label>
+                </value>
+                <value>
+                    <fullName>PSG All Deal #</fullName>
+                    <default>false</default>
+                    <label>PSG All Deal #</label>
+                </value>
+                <value>
+                    <fullName>CCG - AMT Activation</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CCG - AMT Activation</label>
+                </value>
+                <value>
+                    <fullName>CCG - Kaby Lake / Win 10</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CCG - Kaby Lake / Win 10</label>
+                </value>
+                <value>
+                    <fullName>CCG - Unite</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CCG - Unite</label>
+                </value>
+                <value>
+                    <fullName>CCG AMT Activation Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CCG AMT Activation Deal #</label>
+                </value>
+                <value>
+                    <fullName>CCG Security Solution Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CCG Security Solution Deal #</label>
+                </value>
+                <value>
+                    <fullName>CCG Security Solutions Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CCG Security Solutions Deal #</label>
+                </value>
+                <value>
+                    <fullName>CCG: Authenticate</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CCG: Authenticate</label>
+                </value>
+                <value>
+                    <fullName>CCG: Data Guard</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CCG: Data Guard</label>
+                </value>
+                <value>
+                    <fullName>CCG: Gateway</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CCG: Gateway</label>
+                </value>
+                <value>
+                    <fullName>CCG: Operators</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CCG: Operators</label>
+                </value>
+                <value>
+                    <fullName>DCG - Big Data Analytics - Scale Up</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG - Big Data Analytics - Scale Up</label>
+                </value>
+                <value>
+                    <fullName>DCG - NFV - CoSP</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG - NFV - CoSP</label>
+                </value>
+                <value>
+                    <fullName>DCG - NFV - Enterprise</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG - NFV - Enterprise</label>
+                </value>
+                <value>
+                    <fullName>DCG - Network Transformation</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG - Network Transformation</label>
+                </value>
+                <value>
+                    <fullName>DCG - Next Gen Connectivity - OmniPath</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG - Next Gen Connectivity - OmniPath</label>
+                </value>
+                <value>
+                    <fullName>DCG - Phi</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG - Phi</label>
+                </value>
+                <value>
+                    <fullName>DCG - Private Cloud Enterprise On-Premise</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG - Private Cloud Enterprise On-Premise</label>
+                </value>
+                <value>
+                    <fullName>DCG - Purley</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG - Purley</label>
+                </value>
+                <value>
+                    <fullName>DCG - Rackcscale</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG - Rackcscale</label>
+                </value>
+                <value>
+                    <fullName>DCG AI on Intel for Deep Learning (Training &amp; Inference) Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG AI on Intel for Deep Learning (Training &amp; Inference) Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCG CSP New Services &amp; Biz Model Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG CSP New Services &amp; Biz Model Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCG Comms SP New Infrastructure &amp; Workload Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG Comms SP New Infrastructure &amp; Workload Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCG Design Win Count - Apache Pass Design #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG Design Win Count - Apache Pass Design #</label>
+                </value>
+                <value>
+                    <fullName>DCG Design Win Count - Ethernet Design #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG Design Win Count - Ethernet Design #</label>
+                </value>
+                <value>
+                    <fullName>DCG Design Win Count - OPA Design #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG Design Win Count - OPA Design #</label>
+                </value>
+                <value>
+                    <fullName>DCG Design Win Count - OPA200 Design #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG Design Win Count - OPA200 Design #</label>
+                </value>
+                <value>
+                    <fullName>DCG Design Win Count - SiPH Design #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG Design Win Count - SiPH Design #</label>
+                </value>
+                <value>
+                    <fullName>DCG Design Win Count - Silicon Photonics Design #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG Design Win Count - Silicon Photonics Design #</label>
+                </value>
+                <value>
+                    <fullName>DCG Enterprise Analytics &amp; AI Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG Enterprise Analytics &amp; AI Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCG Enterprise Private/Hybrid Cloud Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG Enterprise Private/Hybrid Cloud Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCG Enterprise Workload on Public CSPs Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG Enterprise Workload on Public CSPs Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCG Enterprise Workloads on Public CSPs Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG Enterprise Workloads on Public CSPs Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCG HPC Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG HPC Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCG High Speed Ethernet Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG High Speed Ethernet Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCG Integrated &amp; Discrete FPGA Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG Integrated &amp; Discrete FPGA Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCG Intel Select Solutions &amp; Rack Scale Architecture Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG Intel Select Solutions &amp; Rack Scale Architecture Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCG OPA Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG OPA Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCG Partner, Cloud, &amp; Enterprise NFV Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG Partner, Cloud, &amp; Enterprise NFV Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCG Partners, Cloud, &amp; Enterprise NFV Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG Partners, Cloud, &amp; Enterprise NFV Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCG Skylake + Cascade Lake Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG Skylake + Cascade Lake Deal #</label>
+                </value>
+                <value>
+                    <fullName>DCG: &gt;10G Ethernet + Smart NIC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG: &gt;10G Ethernet + Smart NIC</label>
+                </value>
+                <value>
+                    <fullName>DCG: Advanced Technology</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG: Advanced Technology</label>
+                </value>
+                <value>
+                    <fullName>DCG: Apache Pass</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG: Apache Pass</label>
+                </value>
+                <value>
+                    <fullName>DCG: Big Data Analytics</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG: Big Data Analytics</label>
+                </value>
+                <value>
+                    <fullName>DCG: Discrete FPGA</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG: Discrete FPGA</label>
+                </value>
+                <value>
+                    <fullName>DCG: HPC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG: HPC</label>
+                </value>
+                <value>
+                    <fullName>DCG: Hybrid Cloud</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG: Hybrid Cloud</label>
+                </value>
+                <value>
+                    <fullName>DCG: Integrated FPGA</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG: Integrated FPGA</label>
+                </value>
+                <value>
+                    <fullName>DCG: Intel Select SKUs</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG: Intel Select SKUs</label>
+                </value>
+                <value>
+                    <fullName>DCG: MEC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG: MEC</label>
+                </value>
+                <value>
+                    <fullName>DCG: Network Function Virtualization</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG: Network Function Virtualization</label>
+                </value>
+                <value>
+                    <fullName>DCG: OPA</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG: OPA</label>
+                </value>
+                <value>
+                    <fullName>DCG: Purley/Cascade Lake</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG: Purley/Cascade Lake</label>
+                </value>
+                <value>
+                    <fullName>DCG: Ramp 5G</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG: Ramp 5G</label>
+                </value>
+                <value>
+                    <fullName>DCG: Si Photonics</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG: Si Photonics</label>
+                </value>
+                <value>
+                    <fullName>DCG: Software Defined Storage</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG: Software Defined Storage</label>
+                </value>
+                <value>
+                    <fullName>DCG: eNFV</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG: eNFV</label>
+                </value>
+                <value>
+                    <fullName>IOTG - Smart Outdoor - MRS</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG - Smart Outdoor - MRS</label>
+                </value>
+                <value>
+                    <fullName>IOTG - Visual Retail - MRS</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG - Visual Retail - MRS</label>
+                </value>
+                <value>
+                    <fullName>IOTG IESD Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG IESD Deal #</label>
+                </value>
+                <value>
+                    <fullName>IOTG IESD Deal Wins</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG IESD Deal Wins</label>
+                </value>
+                <value>
+                    <fullName>IOTG MCA Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG MCA Deal #</label>
+                </value>
+                <value>
+                    <fullName>IOTG MCA Deal Wins</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG MCA Deal Wins</label>
+                </value>
+                <value>
+                    <fullName>IOTG Partner Channel Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG Partner Channel Deal #</label>
+                </value>
+                <value>
+                    <fullName>IOTG Partner Channel Deal Wins</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG Partner Channel Deal Wins</label>
+                </value>
+                <value>
+                    <fullName>IOTG RSD Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG RSD Deal #</label>
+                </value>
+                <value>
+                    <fullName>IOTG RSD Deal Wins</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG RSD Deal Wins</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Automated Mfg</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG: Automated Mfg</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Building Management</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG: Building Management</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Energy/Pipeline Monitoring</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG: Energy/Pipeline Monitoring</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Environmental Monitoring</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG: Environmental Monitoring</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Inventory Management</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG: Inventory Management</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Logistics &amp; Asset Management</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG: Logistics &amp; Asset Management</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Predictive Maintenance</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG: Predictive Maintenance</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Responsive Retail</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG: Responsive Retail</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Smart &amp; Managed Terminals (POS)</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG: Smart &amp; Managed Terminals (POS)</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Smart Outdoor Lighting</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG: Smart Outdoor Lighting</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Smart Visual Display</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG: Smart Visual Display</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Surveilence</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG: Surveilence</label>
+                </value>
+                <value>
+                    <fullName>NSG - 3D NAND PCIe Datacenter</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NSG - 3D NAND PCIe Datacenter</label>
+                </value>
+                <value>
+                    <fullName>NSG - Optane Client</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NSG - Optane Client</label>
+                </value>
+                <value>
+                    <fullName>NSG - Optane Datacenter</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NSG - Optane Datacenter</label>
+                </value>
+                <value>
+                    <fullName>NSG NAND Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NSG NAND Deal #</label>
+                </value>
+                <value>
+                    <fullName>NSG Optane Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NSG Optane Deal #</label>
+                </value>
+                <value>
+                    <fullName>NSG: 110s</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NSG: 110s</label>
+                </value>
+                <value>
+                    <fullName>NSG: Datacenter</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NSG: Datacenter</label>
+                </value>
+                <value>
+                    <fullName>NSG: Optane DC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NSG: Optane DC</label>
+                </value>
+                <value>
+                    <fullName>NTG - Drones</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NTG - Drones</label>
+                </value>
+                <value>
+                    <fullName>NTG - Industrial &amp; Manufacturing</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NTG - Industrial &amp; Manufacturing</label>
+                </value>
+                <value>
+                    <fullName>NTG Deal Counts - Intel Insight Platform</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NTG Deal Counts - Intel Insight Platform</label>
+                </value>
+                <value>
+                    <fullName>NTG Deal Counts - Saffron</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NTG Deal Counts - Saffron</label>
+                </value>
+                <value>
+                    <fullName>NTG Intel Insights Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NTG Intel Insights Deal #</label>
+                </value>
+                <value>
+                    <fullName>NTG Saffron Deal #</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NTG Saffron Deal #</label>
+                </value>
+                <value>
+                    <fullName>NTG: Drone Intel Insight Platform: Agriculture</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NTG: Drone Intel Insight Platform: Agriculture</label>
+                </value>
+                <value>
+                    <fullName>NTG: Drone Intel Insight Platform: Construction</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NTG: Drone Intel Insight Platform: Construction</label>
+                </value>
+                <value>
+                    <fullName>NTG: Drone Intel Insight Platform: Oil &amp; Gas</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NTG: Drone Intel Insight Platform: Oil &amp; Gas</label>
+                </value>
+                <value>
+                    <fullName>NTG: Drone Intel Insight Platform: Utilities</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NTG: Drone Intel Insight Platform: Utilities</label>
+                </value>
+                <value>
+                    <fullName>NTG: Saffron FSI</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NTG: Saffron FSI</label>
+                </value>
+                <value>
+                    <fullName>NTG: Saffron Government</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NTG: Saffron Government</label>
+                </value>
+                <value>
+                    <fullName>NTG: Saffron Industrial</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NTG: Saffron Industrial</label>
+                </value>
+                <value>
+                    <fullName>PSG: FPGAs</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>PSG: FPGAs</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
     <fields>
         <fullName>Core_Goal_Category__c</fullName>
-        <inlineHelpText>Select &apos;Assigned&apos; if you are the primary AE/ITS responsible for delivering KPI as part of your base quota. Select &apos;Team Member&apos; if helping to complete the goal, and select &apos;Overachievement&apos; if applicable per the Overachievement guidance.</inlineHelpText>
+        <inlineHelpText>Select the category the goal falls into.   List of values will include:  Assigned, Team Member, Overachievement. Select “Assigned” if given to you by your manager as primary AE/ITS responsible for delivering KPI as part of base quota.</inlineHelpText>
         <label>Category</label>
         <required>true</required>
         <trackHistory>true</trackHistory>
@@ -366,7 +988,7 @@
     </fields>
     <fields>
         <fullName>Core_Goal_Criteria__c</fullName>
-        <inlineHelpText>The criteria which should be met to achieve the goal. This is a system populated field based on KPI selected.</inlineHelpText>
+        <inlineHelpText>The criteria which should be met to achieve the goal. This is a systemically pre-populated field based on KPI selected.</inlineHelpText>
         <label>Criteria</label>
         <required>true</required>
         <trackHistory>true</trackHistory>
@@ -374,23 +996,649 @@
         <type>Picklist</type>
         <valueSet>
             <controllingField>Core_Goal_BU_Focus_Area__c</controllingField>
+            <restricted>true</restricted>
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Please refer to criteria on https://saleskpi.intel.com/</fullName>
+                    <fullName>AI on IA Deep Learning Training &amp; Inference On/Off Prem Deal Wins utilizing IA AI portfolio including: Xeon, FPGA, NNP, Movidius. Min threshold = $100K. Guidance: $1M top 10 CSP. Off-Prem deal size guidance: 12mo spend @ CSP: $225K (EM), $450K (MM)</fullName>
                     <default>false</default>
-                    <label>Please refer to https://saleskpi.intel.com/</label>
+                    <label>AI on IA Deep Learning Training &amp; Inference On/Off Prem Deal Wins utilizing IA AI portfolio including: Xeon, FPGA, NNP, Movidius. Min threshold = $100K. Guidance: $1M top 10 CSP. Off-Prem deal size guidance: 12mo spend @ CSP: $225K (EM), $450K (MM)</label>
+                </value>
+                <value>
+                    <fullName>Comms Service Providers within SCH Segment; Based on “Intel® WAV Baseband Chipset”, PUMA SoCs, GRX SoCs, FALCont chipset. Threshold: 2.5K Units</fullName>
+                    <default>false</default>
+                    <label>Comms Service Providers within SCH Segment; Based on “Intel® WAV Baseband Chipset”, PUMA SoCs, GRX SoCs, FALCont chipset. Threshold: 2.5K Units</label>
+                </value>
+                <value>
+                    <fullName>Deal Win # based on Purley XEONS flowing into Solution Types . Threshold: 60 Units Next Gen IaaS, Deep Learning, Database, Function</fullName>
+                    <default>false</default>
+                    <label>Deal Win # based on Purley XEONS flowing into Solution Types . Threshold: 60 Units Next Gen IaaS, Deep Learning, Database, Function</label>
+                </value>
+                <value>
+                    <fullName>Deal Win # Intel ALL Silicon Photonics Products</fullName>
+                    <default>false</default>
+                    <label>Deal Win # Intel ALL Silicon Photonics Products</label>
+                </value>
+                <value>
+                    <fullName>Demonstrate the value of Intel Datacenter NAND SSD  by achieving Deal Win Opportunities in the datacenter segment.  Products need to be generation 110 or newer.  Threshold: 50 Units</fullName>
+                    <default>false</default>
+                    <label>Demonstrate the value of Intel Datacenter NAND SSD  by achieving Deal Win Opportunities in the datacenter segment.  Products need to be generation 110 or newer.  Threshold: 50 Units</label>
+                </value>
+                <value>
+                    <fullName>Drive Core i3/i5/i7, vPro i5/i7 or 1S Xeon E/Xeon W Workstations w/Intel® Optane Drive pedestal wkstn sell-up non-Xeon to Xeon W/E* &amp; mobile wkstn sell-up non-Xeon to Xeon E *Excl. E-2104, E-2124, E-2124G Deal Size ≥ 100 units</fullName>
+                    <default>false</default>
+                    <label>Drive Core i3/i5/i7, vPro i5/i7 or 1S Xeon E/Xeon W Workstations w/Intel® Optane Drive pedestal wkstn sell-up non-Xeon to Xeon W/E* &amp; mobile wkstn sell-up non-Xeon to Xeon E *Excl. E-2104, E-2124, E-2124G Deal Size ≥ 100 units</label>
+                </value>
+                <value>
+                    <fullName>Drive Deal Wins focused on Application Acceleration.</fullName>
+                    <default>false</default>
+                    <label>Drive Deal Wins focused on Application Acceleration.</label>
+                </value>
+                <value>
+                    <fullName>Drive Deal Wins for offload to IA based solutions, SmartNIC, FPGA PAC cards, Custom ASICs, QAT/VCA cards</fullName>
+                    <default>false</default>
+                    <label>Drive Deal Wins for offload to IA based solutions, SmartNIC, FPGA PAC cards, Custom ASICs, QAT/VCA cards</label>
+                </value>
+                <value>
+                    <fullName>Drive vPro differentiation &amp; sell-up by increasing the utilization of AMT &amp; vPro security capabilities Deal size: AMT ≥ 500 units &amp; Security clients ≥ 50 units  Defer to vPro Manageability/Security Criteria  Alignment w/SMG BU Segment Director</fullName>
+                    <default>false</default>
+                    <label>Drive vPro differentiation &amp; sell-up by increasing the utilization of AMT &amp; vPro security capabilities Deal size: AMT ≥ 500 units &amp; Security clients ≥ 50 units  Defer to vPro Manageability/Security Criteria  Alignment w/SMG BU Segment Director</label>
+                </value>
+                <value>
+                    <fullName>Drive vPro unit sellup w/Comp Win-back on vPro, Sell-up to vPro, or Refresh to vPro Deal size ≥ 1000 units (i.e. Non-vPro to vPro, vPro i5 to vPro i7, vPro w/Optane, vPro refresh) Alignment w/SMG BU Segment Director</fullName>
+                    <default>false</default>
+                    <label>Drive vPro unit sellup w/Comp Win-back on vPro, Sell-up to vPro, or Refresh to vPro Deal size ≥ 1000 units (i.e. Non-vPro to vPro, vPro i5 to vPro i7, vPro w/Optane, vPro refresh) Alignment w/SMG BU Segment Director</label>
+                </value>
+                <value>
+                    <fullName>E&amp;G Account Xeon® End User HPC, DC Cloud Modernization (SDS, HCI, SDN, NFV), &amp; Analytics (Scale Up/Out, Ent AI) On/Off Prem Deal Wins. Deal # as proxy for CPU units. Off-Prem guidance: 12mo spend @ CSP = $225K(EM), $450K(MM). Parent of E&amp;G Deal # KPIs.</fullName>
+                    <default>false</default>
+                    <label>E&amp;G Account Xeon® End User HPC, DC Cloud Modernization (SDS, HCI, SDN, NFV), &amp; Analytics (Scale Up/Out, Ent AI) On/Off Prem Deal Wins. Deal # as proxy for CPU units. Off-Prem guidance: 12mo spend @ CSP = $225K(EM), $450K(MM). Parent of E&amp;G Deal # KPIs.</label>
+                </value>
+                <value>
+                    <fullName>Establish Intel® Optane™ Persistent Memory(Apache Pass) and Optane SSD technology adoption with End Users and Partners in support of Intel&apos;s Optane ramp in ’19+. Threshold: &gt;= 12. Persistent Memory Deal Size Guidance&gt;=12, SSD Deal Size Guidance&gt;50</fullName>
+                    <default>false</default>
+                    <label>Establish Intel® Optane™ Persistent Memory(Apache Pass) and Optane SSD technology adoption with End Users and Partners in support of Intel&apos;s Optane ramp in ’19+. Threshold: &gt;= 12. Persistent Memory Deal Size Guidance&gt;=12, SSD Deal Size Guidance&gt;50</label>
+                </value>
+                <value>
+                    <fullName>Gov win-back/sell-up refresh to non-vPro i5/i7 on Win10  Edu win/win-back/sell-up/refresh w/Ci5+/Ci3+ on Chromebooks/Ci3+ in Emerging Markets  Deal Size ≥ 1000u  Cannot combine w/vPro Alignment w/SMG BU Segment Director</fullName>
+                    <default>false</default>
+                    <label>Gov win-back/sell-up refresh to non-vPro i5/i7 on Win10  Edu win/win-back/sell-up/refresh w/Ci5+/Ci3+ on Chromebooks/Ci3+ in Emerging Markets  Deal Size ≥ 1000u  Cannot combine w/vPro Alignment w/SMG BU Segment Director</label>
+                </value>
+                <value>
+                    <fullName>New Infrastructure Deal Wins for uCPE/NFVi/Datacenter based on: NPG SOC products &amp; Cascade Lake-SP products for CoSP; Co-Sale  Skylake, Cascade, SOC, and RAN Infrastructure CoSP Targets unique, Partner (OxM/TEM/ISV/SI) may be shared</fullName>
+                    <default>false</default>
+                    <label>New Infrastructure Deal Wins for uCPE/NFVi/Datacenter based on: NPG SOC products &amp; Cascade Lake-SP products for CoSP; Co-Sale  Skylake, Cascade, SOC, and RAN Infrastructure CoSP Targets unique, Partner (OxM/TEM/ISV/SI) may be shared</label>
+                </value>
+                <value>
+                    <fullName>New Intel rich eligible solutions/products added to the partner solution portfolio. Requires a GTM enablement plan, investment details &amp; documented 12 month volume assumptions that begin shipping within 3 months. Refer to DCG Segment Guidebooks.</fullName>
+                    <default>false</default>
+                    <label>New Intel rich eligible solutions/products added to the partner solution portfolio. Requires a GTM enablement plan, investment details &amp; documented 12 month volume assumptions that begin shipping within 3 months. Refer to DCG Segment Guidebooks.</label>
+                </value>
+                <value>
+                    <fullName>Partner-led deals at uncovered accounts Open to vPro/AMT/Security/Optane/Education Deal Size: vPro≥1000u, AMT≥500u, Security≥50u, Optane≥100u Education≥1000u Reference criteria requirements for each CCG T1 Deal Alignment w/SMG BU Segment Director</fullName>
+                    <default>false</default>
+                    <label>Partner-led deals at uncovered accounts Open to vPro/AMT/Security/Optane/Education Deal Size: vPro≥1000u, AMT≥500u, Security≥50u, Optane≥100u Education≥1000u Reference criteria requirements for each CCG T1 Deal Alignment w/SMG BU Segment Director</label>
+                </value>
+                <value>
+                    <fullName>Product as a standard offering &amp; GTM program defined w/sales out  Incl integrated marketing plan/collaterals/training Reference criteria requirements for vPro Manageability, Unite, Optane, SMB, and Public Sector Alignment w. BU Sales Segment Director</fullName>
+                    <default>false</default>
+                    <label>Product as a standard offering &amp; GTM program defined w/sales out  Incl integrated marketing plan/collaterals/training Reference criteria requirements for vPro Manageability, Unite, Optane, SMB, and Public Sector Alignment w. BU Sales Segment Director</label>
+                </value>
+                <value>
+                    <fullName>Production PIN server deployed w/minimum deal size enabled w/Unite 3.x+ version  Deal size:  ≥60 units (US, UK, Germany) &amp; ≥30 units (ROW)     Proof of deployment &amp; alignment w/SMG BU Segment Director</fullName>
+                    <default>false</default>
+                    <label>Production PIN server deployed w/minimum deal size enabled w/Unite 3.x+ version  Deal size:  ≥60 units (US, UK, Germany) &amp; ≥30 units (ROW)     Proof of deployment &amp; alignment w/SMG BU Segment Director</label>
+                </value>
+                <value>
+                    <fullName>To understand what qualifies, refer to IOTG Deal Win Definitions for Workload Consolidation, Video, RSD/ISD/VMC Other, and Partner-Led Deal Wins.  This is an aggregate of all the IOTG Deal #s.</fullName>
+                    <default>false</default>
+                    <label>To understand what qualifies, refer to IOTG Deal Win Definitions for Workload Consolidation, Video, RSD/ISD/VMC Other, and Partner-Led Deal Wins.  This is an aggregate of all the IOTG Deal #s.</label>
+                </value>
+                <value>
+                    <fullName>AI on IA Deep Learning Training &amp; Inference On/Off Prem Deal Wins utilizing IA AI portfolio including: Xeon, FPGA, NNP, Movidius. Min threshold = $100K. Guidance: $2.5M top 10 CSP. Off-Prem deal size guidance: 12mo spend @ CSP: $225K (EM), $450K (MM)</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>AI on IA Deep Learning Training &amp; Inference On/Off Prem Deal Wins utilizing IA AI portfolio including: Xeon, FPGA, NNP, Movidius. Min threshold = $100K. Guidance: $2.5M top 10 CSP. Off-Prem deal size guidance: 12mo spend @ CSP: $225K (EM), $450K (MM)</label>
+                </value>
+                <value>
+                    <fullName>ALL Intel NAND SSDs are eligible in 2018. NSG guidance is to drive/convert majority of 3D NAND to 64-Layer.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>ALL Intel NAND SSDs are eligible in 2018. NSG guidance is to drive/convert majority of 3D NAND to 64-Layer.</label>
+                </value>
+                <value>
+                    <fullName>Alignment w/SMG BU Segment Director</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Alignment w/SMG BU Segment Director</label>
+                </value>
+                <value>
+                    <fullName>Any End User Commercial deployment driven THROUGH approved partner (OEM, Disti/Aggregators, CSP, Telco SP&apos;s, Global SI, ISV). Partner on the IOTG BU Sales approved Partner List. Note: separate program outside of the Retail/IESD/MCA end user deployments</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Any End User Commercial deployment driven THROUGH approved partner (OEM, Disti/Aggregators, CSP, Telco SP&apos;s, Global SI, ISV). Partner on the IOTG BU Sales approved Partner List. Note: separate program outside of the Retail/IESD/MCA end user deployments</label>
+                </value>
+                <value>
+                    <fullName>At least 15% of fleet w/no less than 1000 units. Comp to vPro, Non-vPro to vPro, vPro i5 to vPro i7, vPro w/Optane, Refresh to vPro 8th Gen only. GOV&apos;T - RFP/POP required. PARTNER - GTM program defined w/sales out. Alignment w/BU Sales for approval.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>At least 15% of fleet w/no less than 1000 units. Comp to vPro, Non-vPro to vPro, vPro i5 to vPro i7, vPro w/Optane, Refresh to vPro 8th Gen only. GOV&apos;T - RFP or POP required. PARTNER - GTM program defined w/sales out. Alignment w/BU Sales for approval.</label>
+                </value>
+                <value>
+                    <fullName>At least 15% of fleet w/no less than 1000 units. Meet Comp, Non-vPro to vPro, vPro i5 to vPro i7, vPro w/Optane, Refresh to vPro 8th Gen only. GOV&apos;T - RFP/POP required. PARTNER - GTM program defined w/sales out. Alignment w/BU Sales for approval.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>At least 15% of fleet w/no less than 1000 units. Meet Comp, Non-vPro to vPro, vPro i5 to vPro i7, vPro w/Optane, Refresh to vPro 8th Gen only. GOV&apos;T - RFP/POP required. PARTNER - GTM program defined w/sales out. Alignment w/BU Sales for approval.</label>
+                </value>
+                <value>
+                    <fullName>At least 15% of the fleet with no less than 1000 units. Meet comp, non-vPro to vPro, vPro i5 to vPro i7, vPro with Optane, Refresh to vPro 8th Gen. GOVERNMENT ONLY - RFP Required.PARTNER ONLY - GTM vPro Sell Up program with the partner defined &amp; tracked..</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>At least 15% of the fleet with no less than 1000 units. Meet comp, non-vPro to vPro, vPro i5 to vPro i7, vPro with Optane, Refresh to vPro 8th Gen. GOVERNMENT ONLY - RFP Required.PARTNER ONLY - GTM vPro Sell Up program with the partner defined &amp; tracked..</label>
+                </value>
+                <value>
+                    <fullName>Authenticate or Data Guard operational in a production environment (customer image on customer systems) with minimum of 50 units GOVERNMENT ONLY - RFP required PARTNER ONLY - Eligible product is  a standard offering by the Solution Provider</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Authenticate or Data Guard operational in a production environment (customer image on customer systems) with minimum of 50 units GOVERNMENT ONLY - RFP required PARTNER ONLY - Eligible product is  a standard offering by the Solution Provider</label>
+                </value>
+                <value>
+                    <fullName>CSP New Business Models refer to alternate revenue realization methods other than direct sales. New cloud services utilize specific Intel technology to deliver cloud services that provide unique performance or features to the end user.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CSP New Business Models refer to alternate revenue realization methods other than direct sales. New cloud services utilize specific Intel technology to deliver cloud services that provide unique performance or features to the end user.</label>
+                </value>
+                <value>
+                    <fullName>CoSP Targets unique, Partner (OxM/TEM/ISV/SI) may be shared</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CoSP Targets unique, Partner (OxM/TEM/ISV/SI) may be shared</label>
+                </value>
+                <value>
+                    <fullName>Comms Service Providers within SCH Segment; Based on “Intel® WAV Baseband Chipset”, PUMA SoCs, GRX SoCs, FALCont chipset. Threshold: 5K Units</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Comms Service Providers within SCH Segment; Based on “Intel® WAV Baseband Chipset”, PUMA SoCs, GRX SoCs, FALCont chipset. Threshold: 5K Units</label>
+                </value>
+                <value>
+                    <fullName>Deal size: AMT ≥ 500 units &amp; Security clients ≥ 50 units</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Deal size: AMT ≥ 500 units &amp; Security clients ≥ 50 units</label>
+                </value>
+                <value>
+                    <fullName>Defer to vPro Manageability/Security Criteria</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Defer to vPro Manageability/Security Criteria</label>
+                </value>
+                <value>
+                    <fullName>Deliver AI on IA Training and Inference Deal Wins. Utilize any ingredient from the complete Intel Artificial Intelligence portfolio including: Xeon, Xeon Phi, FPGA, Nervana DL Appliance, Nervana Accelerators, etc.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Deliver AI on IA Training and Inference Deal Wins. Utilize any ingredient from the complete Intel Artificial Intelligence portfolio including: Xeon, Xeon Phi, FPGA, Nervana DL Appliance, Nervana Accelerators, etc.</label>
+                </value>
+                <value>
+                    <fullName>Deliver Apache Pass Design Wins.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Deliver Apache Pass Design Wins.</label>
+                </value>
+                <value>
+                    <fullName>Deliver Apache Pass Design Wins. Minimum Threshold: $5M for OEMs, $50M for TAB, $175 M for Top 4</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Deliver Apache Pass Design Wins. Minimum Threshold: $5M for OEMs, $50M for TAB, $175 M for Top 4</label>
+                </value>
+                <value>
+                    <fullName>Deliver Deal Win on Intel Scalable family including: Bronze, Silver, Gold, Platinum Xeons (Skylake and Cascade Lake).  Min: CoSP=100u, E&amp;G EM=50u, E&amp;G MM=100u, CSP US &amp; PRC=3Ku, CSP APJ (MM)=1.5Ku, CSP EMEA (MM)=2Ku, CSP OSC &amp; All Emerging=100u</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Deliver Deal Win on Intel Scalable family including: Bronze, Silver, Gold, Platinum Xeons (Skylake and Cascade Lake).  Min: CoSP=100u, E&amp;G EM=50u, E&amp;G MM=100u, CSP US &amp; PRC=3Ku, CSP APJ (MM)=1.5Ku, CSP EMEA (MM)=2Ku, CSP OSC &amp; All Emerging=100u</label>
+                </value>
+                <value>
+                    <fullName>Deliver Deal Win on Intel Scalable family including: Bronze, Silver, Gold, Platinum Xeons (Skylake and Cascade Lake). Min Thresholds: CSP 3Ku,CoSP 1Ku, E&amp;G 50u for emerging, 100u for mature</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Deliver Deal Win on Intel Scalable family including: Bronze, Silver, Gold, Platinum Xeons (Skylake and Cascade Lake). Min Thresholds: CSP 3Ku,CoSP 1Ku, E&amp;G 50u for emerging, 100u for mature</label>
+                </value>
+                <value>
+                    <fullName>Deliver Discrete Ethernet Design Wins. Minimum Threshold: $17,500</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Deliver Discrete Ethernet Design Wins. Minimum Threshold: $17,500</label>
+                </value>
+                <value>
+                    <fullName>Deliver Enterprise Analytics Deal Wins , for example: 1.) Scale Up. 2.) Scale Out. 3.) Enterprise Artificial Intelligence. Intel Silicon must be present, Purley as a focus.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Deliver Enterprise Analytics Deal Wins , for example: 1.) Scale Up. 2.) Scale Out. 3.) Enterprise Artificial Intelligence. Intel Silicon must be present, Purley as a focus.</label>
+                </value>
+                <value>
+                    <fullName>Deliver Enterprise Analytics Deal Wins, for example: 1.) Scale Up. 2.) Scale Out. 3.) Enterprise Artificial Intelligence. Intel Xeon must be present, Purley as a focus.  Min: 50u Xeon EM, 100u Xeon MM</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Deliver Enterprise Analytics Deal Wins, for example: 1.) Scale Up. 2.) Scale Out. 3.) Enterprise Artificial Intelligence. Intel Xeon must be present, Purley as a focus.  Min: 50u Xeon EM, 100u Xeon MM</label>
+                </value>
+                <value>
+                    <fullName>Deliver High Performance Compute (HPC) Deal Win Deployments. Intel Silicon must be present, Purley as a focus. Min Threshold: 50u - emerging market, 100u -mature</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Deliver High Performance Compute (HPC) Deal Win Deployments. Intel Silicon must be present, Purley as a focus. Min Threshold: 50u - emerging market, 100u -mature</label>
+                </value>
+                <value>
+                    <fullName>Deliver High Performance Compute (HPC) Deal Win Deployments. Intel Xeon must be present, Purley as a focus. Min: 50u Xeon EM, 100u Xeon MM</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Deliver High Performance Compute (HPC) Deal Win Deployments. Intel Xeon must be present, Purley as a focus. Min: 50u Xeon EM, 100u Xeon MM</label>
+                </value>
+                <value>
+                    <fullName>Deliver NFV Deal Wins through Partners (ISV/OSV/OEM), Cloud service provider deployments, or on Enterprise deployments. Approved S/W Stack selections are required. Purley is a focus. Min Thresholds: 50u E&amp;G, 100u Comms (Purley)</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Deliver NFV Deal Wins through Partners (ISV/OSV/OEM), Cloud service provider deployments, or on Enterprise deployments. Approved S/W Stack selections are required. Purley is a focus. Min Thresholds: 50u E&amp;G, 100u Comms (Purley)</label>
+                </value>
+                <value>
+                    <fullName>Deliver NFV Deal Wins through Partners (ISV/OSV/OEM), Cloud service provider deployments, or on Enterprise deployments. Approved S/W Stack selections are required. Purley is a focus. Min: 50u E&amp;G, 100u Comms (Purley)</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Deliver NFV Deal Wins through Partners (ISV/OSV/OEM), Cloud service provider deployments, or on Enterprise deployments. Approved S/W Stack selections are required. Purley is a focus. Min: 50u E&amp;G, 100u Comms (Purley)</label>
+                </value>
+                <value>
+                    <fullName>Deliver OPA200 Design Wins.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Deliver OPA200 Design Wins.</label>
+                </value>
+                <value>
+                    <fullName>Deliver Private / Hybrid Cloud Deal Wins,for example: 1.)SDI 2.) SDS/Hyperconverged Infrastructure. 3.) SDN/Enterprise Network Function Virtualization. 4.) Containers. 5.) PaaS, etc. Intel Xeon must be present, Purley as a focus.  Min: 50u Xeon EM, 100u X</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Deliver Private / Hybrid Cloud Deal Wins,for example: 1.)SDI 2.) SDS/Hyperconverged Infrastructure. 3.) SDN/Enterprise Network Function Virtualization. 4.) Containers. 5.) PaaS, etc. Intel Xeon must be present, Purley as a focus.  Min: 50u Xeon EM, 100u X</label>
+                </value>
+                <value>
+                    <fullName>Deliver Private/Hybrid Cloud Deal Wins, i.e.: 1)SDI 2) SDS/Hyperconverged Infrastructure 3) SDN/Enterprise Network Function Virtualization 4) Containers 5) PaaS, etc.  Purley as a focus. Min Threshold: 50u - emerging market, 100u -mature</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Deliver Private/Hybrid Cloud Deal Wins, i.e.: 1)SDI 2) SDS/Hyperconverged Infrastructure 3) SDN/Enterprise Network Function Virtualization 4) Containers 5) PaaS, etc.  Purley as a focus. Min Threshold: 50u - emerging market, 100u -mature</label>
+                </value>
+                <value>
+                    <fullName>Deliver Silicon Photonics Design Wins.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Deliver Silicon Photonics Design Wins.</label>
+                </value>
+                <value>
+                    <fullName>Deliver next gen Intel® Omni-Path Fabric Deal Wins.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Deliver next gen Intel® Omni-Path Fabric Deal Wins.</label>
+                </value>
+                <value>
+                    <fullName>Demonstrate the value of Intel Datacenter NAND SSD  by achieving Deal Win Opportunities in the datacenter segment. Products need to be generation 110 or newer. Threshold: 50 Units</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Demonstrate the value of Intel Datacenter NAND SSD  by achieving Deal Win Opportunities in the datacenter segment. Products need to be generation 110 or newer. Threshold: 50 Units</label>
+                </value>
+                <value>
+                    <fullName>Drive  Financial Services Industry players to adopt AI-based Saffron technology for use in identifying financial crimes, customer personalization and portfolio management. Eligible products include V10, and V11; Sledgehammer.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Drive  Financial Services Industry players to adopt AI-based Saffron technology for use in identifying financial crimes, customer personalization and portfolio management. Eligible products include V10, and V11; Sledgehammer.</label>
+                </value>
+                <value>
+                    <fullName>Drive 3D NAND adoption in the data center. Minimum opportunity size must contain at least 50 SSDs. The following products are eligible: S3520, S4X00, D4X00P31XX, P3520, D3XX</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Drive 3D NAND adoption in the data center. Minimum opportunity size must contain at least 50 SSDs. The following products are eligible: S3520, S4X00, D4X00P31XX, P3520, D3XX</label>
+                </value>
+                <value>
+                    <fullName>Drive Government players to adopt AI-based Saffron technology for use in security monitoring and risk identification. Eligible products include V10, and V11; Sledgehammer.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Drive Government players to adopt AI-based Saffron technology for use in security monitoring and risk identification. Eligible products include V10, and V11; Sledgehammer.</label>
+                </value>
+                <value>
+                    <fullName>Drive Manufacturing players to adopt AI-based Saffron technology for use in issue and defect triage, expertise and resolution. Eligible products include V10, and V11; Sledgehammer.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Drive Manufacturing players to adopt AI-based Saffron technology for use in issue and defect triage, expertise and resolution. Eligible products include V10, and V11; Sledgehammer.</label>
+                </value>
+                <value>
+                    <fullName>Drive Optane SSD apoption both in data center and in client. Minimum 40 SSDs per Data Center Win and 100 SSDs per Client win. Includes the following eligible products.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Drive Optane SSD apoption both in data center and in client. Minimum 40 SSDs per Data Center Win and 100 SSDs per Client win. Includes the following eligible products.</label>
+                </value>
+                <value>
+                    <fullName>Drive POS (Point of Sale) refresh and sell up via vPro acgivation to accelerate POS revenue growth. Include fixed and mobile POS and mobility payment penetration.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Drive POS (Point of Sale) refresh and sell up via vPro acgivation to accelerate POS revenue growth. Include fixed and mobile POS and mobility payment penetration.</label>
+                </value>
+                <value>
+                    <fullName>Drive Purley Revenue. Includes both Skylake and Cascade Lake CPUs</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Drive Purley Revenue. Includes both Skylake and Cascade Lake CPUs</label>
+                </value>
+                <value>
+                    <fullName>Drive adoption of ALL Intel NAND SSDs in 2018 with focus on driving 3D NAND conversion from 32-Layer to 64-Layer.  Min: 50u</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Drive adoption of ALL Intel NAND SSDs in 2018 with focus on driving 3D NAND conversion from 32-Layer to 64-Layer.  Min: 50u</label>
+                </value>
+                <value>
+                    <fullName>Drive adoption of Intel portfolio-rich CSP services/instances by Enterprise &amp; Government end users for relevant workloads consistent with Intel Workload Placement taxonomy. Min Threshold: 50u - emerging market, 100u -mature</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Drive adoption of Intel portfolio-rich CSP services/instances by Enterprise &amp; Government end users for relevant workloads consistent with Intel Workload Placement taxonomy. Min Threshold: 50u - emerging market, 100u -mature</label>
+                </value>
+                <value>
+                    <fullName>Drive adoption of Intel-based digital signage systems.  Eligible products include:  Intel Core based Retail Signage solutions, Interactive Whiteboards, Public and Private Kiosks, Self-Service Kiosks, Digital Menus, etc.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Drive adoption of Intel-based digital signage systems.  Eligible products include:  Intel Core based Retail Signage solutions, Interactive Whiteboards, Public and Private Kiosks, Self-Service Kiosks, Digital Menus, etc.</label>
+                </value>
+                <value>
+                    <fullName>Drive conversion of Data Center and Client from 32-Layer to 64-Layer 3D NANDMin Threshold: 50 units</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Drive conversion of Data Center and Client from 32-Layer to 64-Layer 3D NANDMin Threshold: 50 units</label>
+                </value>
+                <value>
+                    <fullName>Drive high-value Enterprise Workloads on Intel-rich instances (esp. Xeon Scalable, Xeon E7 v4 high memory, &amp; FPGA) at Top 10 and Next Wave CSPs with enterprise services/instances. Threshold: 1 year annualized CSP Revenue: $225K EM, $450K MM</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Drive high-value Enterprise Workloads on Intel-rich instances (esp. Xeon Scalable, Xeon E7 v4 high memory, &amp; FPGA) at Top 10 and Next Wave CSPs with enterprise services/instances. Threshold: 1 year annualized CSP Revenue: $225K EM, $450K MM</label>
+                </value>
+                <value>
+                    <fullName>Drive next network transformation at Comms Service Providers on new workloads as follows: 5G, vRAN/MEC, cable network vCPE, vCCAP, MANO/CIM/Service Assurance, Machine Learning/AI. Eligible products include ALL Intel Processor products (Xeon, Xeon SOC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Drive next network transformation at Comms Service Providers on new workloads as follows: 5G, vRAN/MEC, cable network vCPE, vCCAP, MANO/CIM/Service Assurance, Machine Learning/AI. Eligible products include ALL Intel Processor products (Xeon, Xeon SOC</label>
+                </value>
+                <value>
+                    <fullName>Drive vPro differentiation &amp; sell-up by increasing the utilization of AMT &amp; vPro security capabilities</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Drive vPro differentiation &amp; sell-up by increasing the utilization of AMT &amp; vPro security capabilities</label>
+                </value>
+                <value>
+                    <fullName>Establish Intel® Optane™ Client and Server adoption and revenue for SSD&apos;s and Memory with Innovators (OEM, ISV, EU) in support of ramp in &apos;18+.  Min: 50u</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Establish Intel® Optane™ Client and Server adoption and revenue for SSD&apos;s and Memory with Innovators (OEM, ISV, EU) in support of ramp in &apos;18+.  Min: 50u</label>
+                </value>
+                <value>
+                    <fullName>Establish Intel® Optane™ Client and Server adoption and revenue with Innovators (OEM, ISV, EU) in support of ramp in &apos;18+. Min Threshold: 50 units</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Establish Intel® Optane™ Client and Server adoption and revenue with Innovators (OEM, ISV, EU) in support of ramp in &apos;18+. Min Threshold: 50 units</label>
+                </value>
+                <value>
+                    <fullName>Establish Intel® Optane™ Persistent Memory (Apache Pass) and Optane SSD tech adoption with End Users &amp; Partners.  Demo the value of Intel Datacenter Optane products by achieving Deal Win.  Persistent Memory Size Guidance &gt;=12, SSD Size Guidance &gt;50.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Establish Intel® Optane™ Persistent Memory (Apache Pass) and Optane SSD tech adoption with End Users &amp; Partners.  Demo the value of Intel Datacenter Optane products by achieving Deal Win.  Persistent Memory Size Guidance &gt;=12, SSD Size Guidance &gt;50.</label>
+                </value>
+                <value>
+                    <fullName>Example</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Example</label>
+                </value>
+                <value>
+                    <fullName>Intel Rack Scale Design solutions are systems based on the Intel RSD reference architecture that are sold to end users from approved OEMs. Intel Select Solutions are workload optimized, pre-configured systems designed for a range of major IT workloads</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel Rack Scale Design solutions are systems based on the Intel RSD reference architecture that are sold to end users from approved OEMs. Intel Select Solutions are workload optimized, pre-configured systems designed for a range of major IT workloads</label>
+                </value>
+                <value>
+                    <fullName>Intel Responsive Retail Sensor Platform is an end-to-end retail analytics-based solution designed to help ecosystem solution providers and retailers create and deploy innovative retail solutions. Components include</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel Responsive Retail Sensor Platform is an end-to-end retail analytics-based solution designed to help ecosystem solution providers and retailers create and deploy innovative retail solutions. Components include</label>
+                </value>
+                <value>
+                    <fullName>Intel-Ethernet based Design Wins for 25G, 40G, 50G or 100G LOM or NIC.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel-Ethernet based Design Wins for 25G, 40G, 50G or 100G LOM or NIC.</label>
+                </value>
+                <value>
+                    <fullName>Intel-Ethernet based Design Wins for 25G, 40G, 50G or 100G LOM or NIC.  Min: $17,500</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel-Ethernet based Design Wins for 25G, 40G, 50G or 100G LOM or NIC.  Min: $17,500</label>
+                </value>
+                <value>
+                    <fullName>IoTG Systems, Market Ready Solutions and RFP Ready Kits that deliver various Tier 2 use cases for the Markets and Channel Acceleration segment.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IoTG Systems, Market Ready Solutions and RFP Ready Kits that deliver various Tier 2 use cases for the Markets and Channel Acceleration segment.</label>
+                </value>
+                <value>
+                    <fullName>IoTG Systems, Market Ready Solutions and RFP Ready Kits that deliver various Tier 2 use cases for the Markets and Channel Acceleration segment. Must meet minimum thresholds.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IoTG Systems, Market Ready Solutions and RFP Ready Kits that deliver various Tier 2 use cases for the Markets and Channel Acceleration segment. Must meet minimum thresholds.</label>
+                </value>
+                <value>
+                    <fullName>IoTG Systems, Market Ready Solutions and RFP Ready Kits that deliver various Tier 2 use cases for the Retail segment.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IoTG Systems, Market Ready Solutions and RFP Ready Kits that deliver various Tier 2 use cases for the Retail segment.</label>
+                </value>
+                <value>
+                    <fullName>IoTG Systems, Market Ready Solutions and RFP Ready Kits that deliver various Tier 2 use cases for the Retail segment. Must meet minimum thresholds.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IoTG Systems, Market Ready Solutions and RFP Ready Kits that deliver various Tier 2 use cases for the Retail segment. Must meet minimum thresholds.</label>
+                </value>
+                <value>
+                    <fullName>IoTG Systems, Market Ready Solutions and RFP Ready Kits that deliver various Tier 2 use cases for the lndustrial and Energy Solutions segment.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IoTG Systems, Market Ready Solutions and RFP Ready Kits that deliver various Tier 2 use cases for the lndustrial and Energy Solutions segment.</label>
+                </value>
+                <value>
+                    <fullName>IoTG Systems, Market Ready Solutions and RFP Ready Kits that deliver various Tier 2 use cases for the lndustrial and Energy Solutions segment. Must meet minimum thresholds.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IoTG Systems, Market Ready Solutions and RFP Ready Kits that deliver various Tier 2 use cases for the lndustrial and Energy Solutions segment. Must meet minimum thresholds.</label>
+                </value>
+                <value>
+                    <fullName>Min. 500 Clients activated w/SCS 11.x &amp; most prevalent use case identified (KVM, Power Mgmt &amp; Control, Wake, Rebuild, etc). PARTNER- AMT Activation as a standard offering by SP (Partner’s service catalogue) w/sales out. Alignment w/BU Sales for approval.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Min. 500 Clients activated w/SCS 11.x &amp; most prevalent use case identified (KVM, Power Mgmt &amp; Control, Wake, Rebuild, etc). PARTNER- AMT Activation as a standard offering by SP (Partner’s service catalogue) w/sales out. Alignment w/BU Sales for approval.</label>
+                </value>
+                <value>
+                    <fullName>Minimum 500 Clients activated with SCS 11.x and most prevalent use case identified (ie KVM, Power Mgmt and Control, System Wake and Rebuild, etc). PARTNER ONLY - AMT Activation is available as a standard offering by the Solution Provider</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Minimum 500 Clients activated with SCS 11.x and most prevalent use case identified (ie KVM, Power Mgmt and Control, System Wake and Rebuild, etc). PARTNER ONLY - AMT Activation is available as a standard offering by the Solution Provider</label>
+                </value>
+                <value>
+                    <fullName>New</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>New</label>
+                </value>
+                <value>
+                    <fullName>New infrastructure and SoC deployment or new workload deal wins for Comm SP. New infrastructure includes Purley and SOC&apos;s (Skylake-D, Denverton, Broadwell-DE-NS).  Targeting $3M average deal size with Purley, $100k average with SOCs.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>New infrastructure and SoC deployment or new workload deal wins for Comm SP. New infrastructure includes Purley and SOC&apos;s (Skylake-D, Denverton, Broadwell-DE-NS).  Targeting $3M average deal size with Purley, $100k average with SOCs.</label>
+                </value>
+                <value>
+                    <fullName>New infrastructure and SoC deployment or new workload deal wins for Comm SP. New infrastructure includes Purley and SOC&apos;s (Skylake-D, Denverton, Broadwell-DE-NS). Min: 50u E&amp;G, 100u Comms (Purley)</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>New infrastructure and SoC deployment or new workload deal wins for Comm SP. New infrastructure includes Purley and SOC&apos;s (Skylake-D, Denverton, Broadwell-DE-NS). Min: 50u E&amp;G, 100u Comms (Purley)</label>
+                </value>
+                <value>
+                    <fullName>Operator has awarded an OEM a volume 5Ku or more of an OEM’s broadband gateway, eMTA, or WAN modem based on Intel Puma or AnyWAN GRX network processor.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Operator has awarded an OEM a volume 5Ku or more of an OEM’s broadband gateway, eMTA, or WAN modem based on Intel Puma or AnyWAN GRX network processor.</label>
+                </value>
+                <value>
+                    <fullName>Operator has awarded an OEM a volume 5Ku or more of an OEM’s broadband gateway, eMTA, or WAN modem based on Intel Puma or AnyWAN GRX network processor. Aligned with SMG BU Segment Director</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Operator has awarded an OEM a volume 5Ku or more of an OEM’s broadband gateway, eMTA, or WAN modem based on Intel Puma or AnyWAN GRX network processor. Aligned with SMG BU Segment Director</label>
+                </value>
+                <value>
+                    <fullName>Partner-led deals at uncovered accounts Open to vPro/AMT/Security/Optane/Education Deal Size: vPro ≥ 1000u, AMT ≥ 500u, Security ≥ 50u, Optane ≥ 300u Education ≥ 1000u Reference criteria requirements for each CCG T1 Deal win</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Partner-led deals at uncovered accounts Open to vPro/AMT/Security/Optane/Education Deal Size: vPro ≥ 1000u, AMT ≥ 500u, Security ≥ 50u, Optane ≥ 300u Education ≥ 1000u Reference criteria requirements for each CCG T1 Deal win</label>
+                </value>
+                <value>
+                    <fullName>Production PIN server deployed w/100+ units enabled w/Unite 3.x+ version. Proof of deployment/purchase intent aligned w/BU Sales Segment Director. PARTNER - Product as standard offering &amp; GTM program defined &amp; alignment w/BU Sales Segment Director.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Production PIN server deployed w/100+ units enabled w/Unite 3.x+ version. Proof of deployment/purchase intent aligned w/BU Sales Segment Director. PARTNER - Product as standard offering &amp; GTM program defined &amp; alignment w/BU Sales Segment Director.</label>
+                </value>
+                <value>
+                    <fullName>Production PIN server deployed with 100+ units enabled with Unite 3.x+ version (Demo Depot provided systems are not eligible). PARTNER ONLY - Product available as standard offering. GTM program defined and aligned with BU Segment Director.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Production PIN server deployed with 100+ units enabled with Unite 3.x+ version (Demo Depot provided systems are not eligible). PARTNER ONLY - Product available as standard offering. GTM program defined and aligned with BU Segment Director.</label>
+                </value>
+                <value>
+                    <fullName>Production environment (customer image on customer systems) w/at least 50 units at customer.  PARTNER - Eligible product avail. as a standard offering by SP (Partner’s service catalogue). Alignment w/BU Sales for approval.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Production environment (customer image on customer systems) w/at least 50 units at customer.  PARTNER - Eligible product avail. as a standard offering by SP (Partner’s service catalogue). Alignment w/BU Sales for approval.</label>
+                </value>
+                <value>
+                    <fullName>This Solution Area focuses on attaching RTU/RCU sensors with GWs and/or Edge Servers to extract data to drive new levels of productivity in brownfield installations of manufacturing equipment. This includes any solution that combines Intel ingredient</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>This Solution Area focuses on attaching RTU/RCU sensors with GWs and/or Edge Servers to extract data to drive new levels of productivity in brownfield installations of manufacturing equipment. This includes any solution that combines Intel ingredient</label>
+                </value>
+                <value>
+                    <fullName>Win approved Opportunity with Intel Insight (consisting of drone HW, SW, and reoccurring services revenue)  Min: Product value &gt;=$1M</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Win approved Opportunity with Intel Insight (consisting of drone HW, SW, and reoccurring services revenue)  Min: Product value &gt;=$1M</label>
+                </value>
+                <value>
+                    <fullName>Win approved Opportunity with Intel Insight (consisting of drone HW, SW, and reoccurring services revenue). Min Threshold: Product Value to be $1M or higher</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Win approved Opportunity with Intel Insight (consisting of drone HW, SW, and reoccurring services revenue). Min Threshold: Product Value to be $1M or higher</label>
+                </value>
+                <value>
+                    <fullName>Win approved Opportunity with Saffron product  Min: Product value &gt;=$500K</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Win approved Opportunity with Saffron product  Min: Product value &gt;=$500K</label>
+                </value>
+                <value>
+                    <fullName>Win approved Opportunity with Saffron product. Min Threshold: Product value to be $500K or higher</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Win approved Opportunity with Saffron product. Min Threshold: Product value to be $500K or higher</label>
+                </value>
+                <value>
+                    <fullName>Win must include at least 25 clients within a user group who use Authenticate regularly for at least 2 weeks. IT uses a process to inteall Authenticate on the customer&apos;s production IT image, applies policy management and uses 2 or more factors.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Win must include at least 25 clients within a user group who use Authenticate regularly for at least 2 weeks. IT uses a process to inteall Authenticate on the customer&apos;s production IT image, applies policy management and uses 2 or more factors.</label>
+                </value>
+                <value>
+                    <fullName>Win must include at least 25 clients within a user group who use Intel Data Guard regularly for at least 2 weeks, IT uses a process to install Intel Data Guard on the customer&apos;s production IT image, uses their own KMS AND applies policy management. E</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Win must include at least 25 clients within a user group who use Intel Data Guard regularly for at least 2 weeks, IT uses a process to install Intel Data Guard on the customer&apos;s production IT image, uses their own KMS AND applies policy management. E</label>
+                </value>
+                <value>
+                    <fullName>Xeons with Integrated FPGA, and Discreate FPGA deal wins.</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Xeons with Integrated FPGA, and Discreate FPGA deal wins.</label>
                 </value>
             </valueSetDefinition>
             <valueSettings>
-                <controllingFieldValue>CCG Commercial Deal Revenue $</controllingFieldValue>
-                <controllingFieldValue>CCG Strategic Next Gen Design #</controllingFieldValue>
-                <controllingFieldValue>CCG vPro Platform Deal Revenue $</controllingFieldValue>
-                <controllingFieldValue>DCAI Compute Deal $</controllingFieldValue>
-                <controllingFieldValue>DC Growth Deal $</controllingFieldValue>
-                <controllingFieldValue>DC Strategic Next Gen Design #</controllingFieldValue>
-                <controllingFieldValue>NEX Deal (Sell-To) $</controllingFieldValue>
-                <valueName>Please refer to criteria on https://saleskpi.intel.com/</valueName>
+                <controllingFieldValue>DCG/NSG Optane Persistent Memory &amp; SSD Deal #</controllingFieldValue>
+                <valueName>Establish Intel® Optane™ Persistent Memory(Apache Pass) and Optane SSD technology adoption with End Users and Partners in support of Intel&apos;s Optane ramp in ’19+. Threshold: &gt;= 12. Persistent Memory Deal Size Guidance&gt;=12, SSD Deal Size Guidance&gt;50</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DCG AI on Intel for Deep Learning Deal #</controllingFieldValue>
+                <valueName>AI on IA Deep Learning Training &amp; Inference On/Off Prem Deal Wins utilizing IA AI portfolio including: Xeon, FPGA, NNP, Movidius. Min threshold = $100K. Guidance: $1M top 10 CSP. Off-Prem deal size guidance: 12mo spend @ CSP: $225K (EM), $450K (MM)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DCG Cloud Infra &amp; App Acceleration Deal #</controllingFieldValue>
+                <valueName>Drive Deal Wins for offload to IA based solutions, SmartNIC, FPGA PAC cards, Custom ASICs, QAT/VCA cards</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DCG Cloud New Services Deal #</controllingFieldValue>
+                <valueName>Deal Win # based on Purley XEONS flowing into Solution Types . Threshold: 60 Units Next Gen IaaS, Deep Learning, Database, Function</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DCG Comms Infrastructure Deal #</controllingFieldValue>
+                <valueName>New Infrastructure Deal Wins for uCPE/NFVi/Datacenter based on: NPG SOC products &amp; Cascade Lake-SP products for CoSP; Co-Sale  Skylake, Cascade, SOC, and RAN Infrastructure CoSP Targets unique, Partner (OxM/TEM/ISV/SI) may be shared</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DCG Enterprise &amp; Gov&apos;t Deal #</controllingFieldValue>
+                <valueName>E&amp;G Account Xeon® End User HPC, DC Cloud Modernization (SDS, HCI, SDN, NFV), &amp; Analytics (Scale Up/Out, Ent AI) On/Off Prem Deal Wins. Deal # as proxy for CPU units. Off-Prem guidance: 12mo spend @ CSP = $225K(EM), $450K(MM). Parent of E&amp;G Deal # KPIs.</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DCG Partner Enablement Deal #</controllingFieldValue>
+                <valueName>New Intel rich eligible solutions/products added to the partner solution portfolio. Requires a GTM enablement plan, investment details &amp; documented 12 month volume assumptions that begin shipping within 3 months. Refer to DCG Segment Guidebooks.</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DCG Partner Enablement Deal #</controllingFieldValue>
+                <controllingFieldValue>CCG Partner Enablement Deal #</controllingFieldValue>
+                <valueName>Product as a standard offering &amp; GTM program defined w/sales out  Incl integrated marketing plan/collaterals/training Reference criteria requirements for vPro Manageability, Unite, Optane, SMB, and Public Sector Alignment w. BU Sales Segment Director</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DCG SiPH Deal #</controllingFieldValue>
+                <valueName>Deal Win # Intel ALL Silicon Photonics Products</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>IOTG All Deal #</controllingFieldValue>
+                <valueName>To understand what qualifies, refer to IOTG Deal Win Definitions for Workload Consolidation, Video, RSD/ISD/VMC Other, and Partner-Led Deal Wins.  This is an aggregate of all the IOTG Deal #s.</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NSG NAND Datacenter Deal #</controllingFieldValue>
+                <valueName>Demonstrate the value of Intel Datacenter NAND SSD  by achieving Deal Win Opportunities in the datacenter segment.  Products need to be generation 110 or newer.  Threshold: 50 Units</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PSG All Deal #</controllingFieldValue>
+                <valueName>Drive Deal Wins focused on Application Acceleration.</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCG Gateway Deal #</controllingFieldValue>
+                <valueName>Comms Service Providers within SCH Segment; Based on “Intel® WAV Baseband Chipset”, PUMA SoCs, GRX SoCs, FALCont chipset. Threshold: 2.5K Units</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCG Unite Deal #</controllingFieldValue>
+                <valueName>Production PIN server deployed w/minimum deal size enabled w/Unite 3.x+ version  Deal size:  ≥60 units (US, UK, Germany) &amp; ≥30 units (ROW)     Proof of deployment &amp; alignment w/SMG BU Segment Director</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCG vPro Deal #</controllingFieldValue>
+                <valueName>Drive vPro unit sellup w/Comp Win-back on vPro, Sell-up to vPro, or Refresh to vPro Deal size ≥ 1000 units (i.e. Non-vPro to vPro, vPro i5 to vPro i7, vPro w/Optane, vPro refresh) Alignment w/SMG BU Segment Director</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCG Partner-Led Deal #</controllingFieldValue>
+                <valueName>Partner-led deals at uncovered accounts Open to vPro/AMT/Security/Optane/Education Deal Size: vPro≥1000u, AMT≥500u, Security≥50u, Optane≥100u Education≥1000u Reference criteria requirements for each CCG T1 Deal Alignment w/SMG BU Segment Director</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCG Performance Deal #</controllingFieldValue>
+                <valueName>Drive Core i3/i5/i7, vPro i5/i7 or 1S Xeon E/Xeon W Workstations w/Intel® Optane Drive pedestal wkstn sell-up non-Xeon to Xeon W/E* &amp; mobile wkstn sell-up non-Xeon to Xeon E *Excl. E-2104, E-2124, E-2124G Deal Size ≥ 100 units</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCG Public Sector Deal #</controllingFieldValue>
+                <valueName>Gov win-back/sell-up refresh to non-vPro i5/i7 on Win10  Edu win/win-back/sell-up/refresh w/Ci5+/Ci3+ on Chromebooks/Ci3+ in Emerging Markets  Deal Size ≥ 1000u  Cannot combine w/vPro Alignment w/SMG BU Segment Director</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCG vPro Adoption Technologies Deal #</controllingFieldValue>
+                <valueName>Drive vPro differentiation &amp; sell-up by increasing the utilization of AMT &amp; vPro security capabilities Deal size: AMT ≥ 500 units &amp; Security clients ≥ 50 units  Defer to vPro Manageability/Security Criteria  Alignment w/SMG BU Segment Director</valueName>
             </valueSettings>
         </valueSet>
     </fields>
@@ -414,7 +1662,7 @@
         <fullName>Core_Goal_Match_Opportunity_KPI__c</fullName>
         <externalId>false</externalId>
         <formula>IF(Core_Opportunity__c != null, IF(Core_Goal_KPI_Achieved_Flag__c = FALSE &amp;&amp; Core_Goal_KPI_Match_Flag__c = FALSE, IMAGE(&apos;/servlet/servlet.FileDownload?file=0151J000003lqFq&apos;,&apos;No KPI Match&apos;), IF(Core_Goal_KPI_Achieved_Flag__c = FALSE &amp;&amp; Core_Goal_KPI_Match_Flag__c = TRUE, IMAGE(&apos;/servlet/servlet.FileDownload?file=0151J000003lqFp&apos;,&apos;KPI Not Achieved&apos;), IF(Core_Goal_KPI_Achieved_Flag__c = TRUE &amp;&amp; Core_Goal_KPI_Match_Flag__c = TRUE, IMAGE(&apos;/servlet/servlet.FileDownload?file=0151J000003lqFo&apos;,&apos;KPI Achieved&apos;), &apos;&apos;))),&apos;&apos;)</formula>
-        <inlineHelpText>Field Help: 1.No KPI Match: Opportunity doesn’t meet KPI criteria--&gt;CAN’T submit  2.KPI Not Achieved: Opportunity meets KPI criteria but not yet ‘win approved’--&gt;CAN’T submit  3.KPI Achieved: Opportunity meets KPI criteria &amp; ‘win approved’--&gt;CAN submit.</inlineHelpText>
+        <inlineHelpText>Field Help: 1.No KPI Match: Opportunity doesn&apos;t meet KPI criteria--&gt;CAN&apos;T submit  2.KPI Not Achieved:Opportunity meets KPI criteria but not yet &apos;win approved&apos;--&gt;CAN&apos;T submit  3.KPI Achieved: Opportunity meets KPI criteria &amp; &apos;win approved&apos;--&gt;CAN submit</inlineHelpText>
         <label>Match Opportunity KPI?</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -458,7 +1706,7 @@
     <fields>
         <fullName>Core_Goal_Opportunity_Identified__c</fullName>
         <defaultValue>false</defaultValue>
-        <inlineHelpText>If an opportunity is associated with the goal, this will be automatically checked.</inlineHelpText>
+        <inlineHelpText>If an opportunity is associated with the goal, this will be systematically set to yes.</inlineHelpText>
         <label>Opportunity Identified?</label>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -619,7 +1867,7 @@
     <fields>
         <fullName>Core_Goal_Owner__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <inlineHelpText>Individual responsible for achieving and receiving credit for the Deal Win Goal (DWG), typically the user who created the DWG.</inlineHelpText>
+        <inlineHelpText>Owner of achieving the goal, the person who will receive credit.</inlineHelpText>
         <label>Owner</label>
         <referenceTo>User</referenceTo>
         <relationshipName>Deal_Win_Goals</relationshipName>
@@ -630,7 +1878,7 @@
     </fields>
     <fields>
         <fullName>Core_Goal_Status__c</fullName>
-        <inlineHelpText>FIELD KEY:  DRAFT: new (can&apos;t submit); ACCEPTED: Manager accepts DWG (can&apos;t submit); APPROVED: Manager has approved DWG (can submit ONLY if Oppty is approved); CANCELLED: DWG has been cancelled (can be put back to Draft status); more at goto/dealwingoals</inlineHelpText>
+        <inlineHelpText>The current status of the goal.  New goals will be in “Draft” status.  After manager approval, the status will be “Approved”.</inlineHelpText>
         <label>Status</label>
         <required>false</required>
         <trackHistory>true</trackHistory>
@@ -658,102 +1906,18 @@
         </valueSet>
     </fields>
     <fields>
-        <fullName>Core_KPI_Revenue_Difference__c</fullName>
-        <formula>Core_KPI_Revenue__c -  Core_Approved_KPI_Revenue__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>KPI Revenue Difference</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>2</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Currency</type>
-    </fields>
-    <fields>
-        <fullName>Core_KPI_Revenue_Update__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>This Checkbox will be used to calculate the KPI revenue</description>
-        <label>KPI Revenue Update</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_KPI_Revenue__c</fullName>
-        <label>KPI Revenue</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Currency</type>
-    </fields>
-    <fields>
-        <fullName>Core_MatchOppKPI_2ndPrev_Backend__c</fullName>
-        <externalId>false</externalId>
-        <label>Core_MatchOppKPI_2ndPrev_Backend</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MatchOppKPI_Backend__c</fullName>
-        <description>This is a backend field used to populate the actual value of &apos;Match Opportunity KPI&apos; field.
-Do not add it in the layout.</description>
-        <externalId>false</externalId>
-        <label>Core_MatchOppKPI_Backend</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MatchOppKPI_Prev_Backend__c</fullName>
-        <description>This is a backend field used to populate the previous value of &apos;Match Opportunity KPI&apos; field.
-Do not add it in the layout.</description>
-        <externalId>false</externalId>
-        <label>Core_MatchOppKPI_Prev_Backend</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Opportunity__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Opportunity Name</label>
         <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Deal Win Goals</relationshipLabel>
         <relationshipName>Deal_Win_Goals</relationshipName>
         <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
-    <fields>
-        <fullName>Core_Recall_Reason__c</fullName>
-        <label>Recall Comments</label>
-        <length>131072</length>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_Validate_KPI_Flag__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Validate KPI Flag</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <label>Deal Win Goal EOLd</label>
+    <label>Deal Win Goal</label>
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
@@ -770,6 +1934,7 @@ Do not add it in the layout.</description>
         <columns>Core_Goal_Approved_By__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>Deal_Wins_Not_Cancelled</fullName>
@@ -798,7 +1963,7 @@ Do not add it in the layout.</description>
         <trackHistory>true</trackHistory>
         <type>Text</type>
     </nameField>
-    <pluralLabel>Deal Win Goals EOLd</pluralLabel>
+    <pluralLabel>Deal Win Goals</pluralLabel>
     <searchLayouts>
         <customTabListAdditionalFields>Core_Goal_Owner__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Core_Goal_Status__c</customTabListAdditionalFields>
@@ -847,6 +2012,18 @@ Do not add it in the layout.</description>
         <masterLabel>Goal Credit</masterLabel>
         <openType>sidebar</openType>
         <page>Core_Deal_Win_Goal_Credit</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Core_Goal_Recall_Approval</fullName>
+        <availability>online</availability>
+        <description>Used by the manager only</description>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Recall Approval</masterLabel>
+        <openType>sidebar</openType>
+        <page>Core_Goal_UnclockRecord_Int</page>
         <protected>false</protected>
     </webLinks>
     <webLinks>

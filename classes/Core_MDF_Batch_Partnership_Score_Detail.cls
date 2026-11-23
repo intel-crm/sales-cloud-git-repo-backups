@@ -59,6 +59,7 @@ global without sharing class Core_MDF_Batch_Partnership_Score_Detail implements 
     }
     global void finish(Database.BatchableContext bc)
     {
+        List<Core_MDF_Partnership_Score_Detail__c> psdList = new List<Core_MDF_Partnership_Score_Detail__c>();
         sendEmailAddress = Label.Core_MDF_CCP_Support_Email;               
         
         if(sendEmailAddress != null && sendEmailAddress != '')
@@ -68,7 +69,7 @@ global without sharing class Core_MDF_Batch_Partnership_Score_Detail implements 
                 mail.setToAddresses(toAddresses);
                 mail.setSubject(Label.Core_MDF_SFDC_Environment + ': Salesforce Core_MDF_Batch_Partnership_Score_Detail Insertion child Job ');
                 mail.setHtmlBody(returnMessage);
-				mail.setOrgWideEmailAddressId(Label.Core_MDF_OrgWideId);//17001
+                mail.setOrgWideEmailAddressId(Label.Core_MDF_OrgWideId);//17001
         		Messaging.sendEmail(new Messaging.SingleEmailMessage[] {mail});                
             }
         
@@ -103,7 +104,7 @@ global without sharing class Core_MDF_Batch_Partnership_Score_Detail implements 
                 internalActManagersPSList.add(record[0]);
                 programNamesSet.add(record[1]);
             }
-            List<Core_MDF_Partnership_Score_Detail__c> psdList = [SELECT Id, Core_MDF_Partnership_Score_Id__c, Core_MDF_Partnership_Score_Id__r.Core_MDF_Account_Id__c, Core_MDF_Account_Id__c, Core_MDF_Program_Nm__c, Core_MDF_Node_Account_Id__c, Core_MDF_Node_Account_Id__r.Name, Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__c
+            psdList = [SELECT Id, Core_MDF_Partnership_Score_Id__c, Core_MDF_Partnership_Score_Id__r.Core_MDF_Account_Id__c, Core_MDF_Account_Id__c, Core_MDF_Program_Nm__c, Core_MDF_Node_Account_Id__c, Core_MDF_Node_Account_Id__r.Name, Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__c
                                                                     FROM Core_MDF_Partnership_Score_Detail__c
                                                                     WHERE Core_MDF_Balance_Amount_Amt__c > 0 AND Core_MDF_Quarter_Year_Nm__c =: quarterAndYear];
             
@@ -114,5 +115,7 @@ global without sharing class Core_MDF_Batch_Partnership_Score_Detail implements 
                 Core_MDF_Recovery_Utility.notifyInternalActManagersOnRecoveryDataLoad(internalActManagersPSList, psNamesToExcludeForEmail, pgmToExecDateMap, programNamesSet, psdList, 'RecoveryIntAccMngrNotification', true);
             }
         }
+
+        //if (dataProcessed) { Core_MDF_Recovery_Utility.notifyIAHPullFinished(psdList, prevQtr); }
     }  
 }

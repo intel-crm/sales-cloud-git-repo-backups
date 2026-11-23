@@ -21,6 +21,9 @@
         <field>Core_MDF_Escalation__c$Core_MDF_Escalation_Type_nm__c</field>
     </columns>
     <columns>
+        <field>Core_MDF_Escalation__c$Core_MDF_Budget_Type_txt__c</field>
+    </columns>
+    <columns>
         <field>Core_MDF_Escalation__c$Core_MDF_Escalation_Status_nm__c</field>
     </columns>
     <columns>

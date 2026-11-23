@@ -30,6 +30,10 @@
                 <behavior>Required</behavior>
                 <field>Core_MDF_Activity_Segment_Mapping_id__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_MDF_Product_Family__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>

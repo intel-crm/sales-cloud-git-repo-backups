@@ -27,8 +27,11 @@ public without sharing class Core_MDF_BatchSchedularArchival {
                                                                   FROM Core_MDF_Batch_Scheduler__c
                                                                   WHERE Id IN: listOfBatchSchedulerIds  limit 50000];
         
-        //Checking the Schedules list is empty or not                                             
-        if(!listOfBatchSchedules.isEmpty()){ 
+        //Checking the Schedules list is empty or not  
+        //ATHR - Deeply Nested if 16209  
+        if(listOfBatchSchedules.isEmpty()) {
+            return;
+        }                                         
             //Reading the archival limit from Custom Setting record
             Integer archivalLimit = Core_MDF_Configuration__c.getInstance('Core_MDF_CustomBatch_Archival_Limit')!= null ? 
                 Integer.Valueof(Core_MDF_Configuration__c.getInstance('Core_MDF_CustomBatch_Archival_Limit').Core_MDF_Value__c):0;
@@ -39,20 +42,21 @@ public without sharing class Core_MDF_BatchSchedularArchival {
             for(Core_MDF_Batch_Scheduler__c sch: listOfBatchSchedules){
                 
                 //Checking Schedule Line Items are empty or not
-                if(lineItemsToDelete.size()<finalDmlCount){
-                    if(!sch.Batch_Scheduler_Line_Items__r.isEmpty()){
+                //ATHR - Deeply Nested if 16209
+                if(lineItemsToDelete.size() >= finalDmlCount) {
+                    break;
+                }
+                    //ATHR - Deeply Nested if 16209
+                    if(sch.Batch_Scheduler_Line_Items__r.isEmpty()) {
+                        continue;
+                    }
                         
                         //adding (more than Archival Limit) line items to list for deletion
-                        for(integer i=0;i<sch.Batch_Scheduler_Line_Items__r.size();i++){
-                            if(lineItemsToDelete.size()<finalDmlCount){
+                        //ATHR - Deeply Nested if 16209
+                        for(integer i=0; i<sch.Batch_Scheduler_Line_Items__r.size() && lineItemsToDelete.size() < finalDmlCount; i++){
                             	lineItemsToDelete.add(sch.Batch_Scheduler_Line_Items__r[i]);  
-                            }
-                            else{ break; }
                         } 
-                    }   
-                }else{ break; }
             }
-        }
         
         //Checking the list is empty or not and deleting the line items 
         if(!lineItemsToDelete.isEmpty())

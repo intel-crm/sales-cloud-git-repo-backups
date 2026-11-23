@@ -35,6 +35,7 @@ public class Core_MDF_GenAIProcessing {
             String endpoint = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ClaimEzyGenAIEndpoint');
             req.setEndpoint('callout:Core_MDF_CCP_GenAI'+ endpoint);
             //req.setEndpoint('callout:Core_MDF_CCP_GenAI'+'/gpt-35-turbo?api-version=2024-02-15-preview');
+            req.setEndpoint('callout:Core_MDF_CCP_GenAI/gpt-35-turbo?api-version=2024-02-15-preview');
             req.setMethod('POST');
             req.setHeader('Content-Type' , 'application/json');            
             req.setBody(prompt);
@@ -48,8 +49,8 @@ public class Core_MDF_GenAIProcessing {
                 Map<String, Object> parsedJson = (Map<String, Object>)JSON.deserializeUntyped(response.getBody());
                 // Access the 'content' value
                 String content = '';
-
-                if (parsedJson.containsKey('choices')) {
+                // US - TWC702-14285: Flatten nested IFs (no logic change) - Original code commented
+                /*if (parsedJson.containsKey('choices')) {
                     List<Object> choices = (List<Object>)parsedJson.get('choices');
                     if (!choices.isEmpty()) {
                         Map<String, Object> choice = (Map<String, Object>)choices[0];
@@ -65,7 +66,25 @@ public class Core_MDF_GenAIProcessing {
                             Core_MDF_CCP_UtilityClass.logErrorAsNormal('GEN AI endpoint is not giving proper result', 'Core_MDF_AI_Tracking__c');
                         }
                     }
-                }else{
+                }*/
+                // US - TWC702-14285: Flatten nested IFs (no logic change) - Begin
+                if (parsedJson.containsKey('choices')) {
+                    List<Object> choices = (List<Object>) parsedJson.get('choices');
+                        if (!choices.isEmpty()) {
+                                Map<String, Object> choice = (Map<String, Object>) choices[0];
+                                Map<String, Object> message = choice.containsKey('message') 
+                                    ? (Map<String, Object>) choice.get('message') 
+                                    : null;
+
+                            if (message != null && message.containsKey('content')) {
+                                    content = (String) message.get('content');
+                                    content = String.isNotBlank(content) ? content.replaceAll('\n', '&') : '';
+                            }else{
+                                Core_MDF_CCP_UtilityClass.logErrorAsNormal( 'GEN AI endpoint is not giving proper result','Core_MDF_AI_Tracking__c');
+                            }
+                        }
+                }// US - TWC702-14285: Flatten nested IFs (no logic change) - End
+                else{
                     Core_MDF_CCP_UtilityClass.logErrorAsNormal('GEN AI endpoint is not giving proper result', 'Core_MDF_AI_Tracking__c');
                 }
 
@@ -149,8 +168,9 @@ public class Core_MDF_GenAIProcessing {
 
             contentWrapper.contentFromChatGPT = content;
             return contentWrapper;
-        }catch(Exception ex){
-            Core_MDF_CCP_UtilityClass.logError(ex);
+            
+        } catch(Exception ex) {
+            Core_MDF_CCP_UtilityClass.logError(ex); 
             return null;
         }
     }

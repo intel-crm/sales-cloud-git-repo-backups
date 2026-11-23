@@ -130,6 +130,61 @@
             <field>Core_MDF_Channel_Program__c.Core_MDF_Technical_Program_Name__c</field>
             <table>Account</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Host_Region_nm__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Source_nm__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Direct_Primary_Account_Id__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Direct_Account_Id__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Is_Top_Account_Ind__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Payment_Type_NodeLevel_nm__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Payment_Type_nm__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Unified_Global_Customer_Name__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Unified_Global_Customer_BP_Id__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Virtual_Corp_Account_Id__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Partner_Type_nm__c</field>
+            <table>Account</table>
+        </columns>
         <masterLabel>Accounts</masterLabel>
     </sections>
     <sections>
@@ -241,6 +296,26 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_User_id__c</field>
+            <table>Account.Internal_Users_Partner_Geo_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Activity_Classification_nm__c</field>
+            <table>Account.Internal_Users_Partner_Geo_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Approval_Region_nm__c</field>
+            <table>Account.Internal_Users_Partner_Geo_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Days_After_Modified__c</field>
+            <table>Account.Internal_Users_Partner_Geo_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Intel_Account__c</field>
             <table>Account.Internal_Users_Partner_Geo_Mappings__r</table>
         </columns>
         <masterLabel>Internal Users Partner Geo Mappings</masterLabel>

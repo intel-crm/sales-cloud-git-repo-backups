@@ -1,0 +1,19 @@
+<apex:page standardController="PartnerFundClaim">
+    <apex:includeLightning />
+    <div id="LwcDisplayId"></div> 
+    
+    <script>
+    // Here 'VfApp' Is Lightning Application Name
+    $Lightning.use("c:MetricsApp", function() {
+    $Lightning.createComponent("c:core_MDF_KPIDetailSection",
+        { 
+          // Set Lightning Component Attributes Property before creating Lightning Component In Visualforce page 
+            recordId : '{!$CurrentPage.parameters.id}',
+            objectApiName : "PartnerFundClaim",
+            displayHeader : '{!$Label.Core_MDF_ActualKPILabel}'
+        },
+        "LwcDisplayId",
+        "");
+    });
+    </script>
+</apex:page>

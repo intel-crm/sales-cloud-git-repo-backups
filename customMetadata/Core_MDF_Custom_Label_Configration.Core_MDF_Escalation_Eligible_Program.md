@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">Retail Marketing Funds;Intel Partner Alliance;Client;Datacenter;Co-GTM</value>
+        <value xsi:type="xsd:string">Retail Marketing Funds;Intel Partner Alliance;Client;Datacenter;Ecosystem Extension Fund;Co-GTM</value>
     </values>
 </CustomMetadata>

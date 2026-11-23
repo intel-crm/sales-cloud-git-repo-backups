@@ -11,7 +11,7 @@ public without sharing class Core_MDF_CloseActivity {
     private static List<string> pfrProgramSpecific = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Close_Open_Activity_Program').split(';');
     private static string ESC_APPROVED_STATUS = Core_MDF_CCP_ConstantClass.ESC_APPROVED_STATUS;
     private static string TYPE_CLAIM = Core_MDF_CCP_ConstantClass.TYPE_CLAIM;
-    	
+        
     
     
     /****************************************************************************************************** 
@@ -20,9 +20,9 @@ Class Name:         activityCloseWrapper
 Description:        Wrapper which will hold return values of all the validation check to close activity
 Added By:           Sridhar   04-08-2019
 Modified By:        Date:      Changes: 
-Nuzhath				11-3-2019		Added an attribute for retail program
+Nuzhath             11-3-2019       Added an attribute for retail program
 *******************************************************************************************************/
-    public class activityCloseWrapper{   	
+    public class activityCloseWrapper{      
         @AuraEnabled
         public boolean isValidActivity=false;
         @AuraEnabled
@@ -37,7 +37,6 @@ Nuzhath				11-3-2019		Added an attribute for retail program
         public boolean retailActivity = false;
         @AuraEnabled
         public boolean ipaActivity = false;
-        
         
     }
     
@@ -98,19 +97,31 @@ Modified By:        Date:      Changes:
             String actNotAllowedStatus = System.label.Core_MDF_Close_Activity_NotAllowed_ActStatus;
             List<String> actNotAllowedStatusList = new List<String>();
             actNotAllowedStatusList = actNotAllowedStatus.split(',');
-            
             //Avoid Deeply Nested IF Statements
+            /*if (activity != null)
+            {*/
+                  
                 if(activity != null && !actNotAllowedStatusList.contains(activity.Core_MDF_Fund_Request_Status__c) || 
                    (activity.Core_MDF_Fund_Request_Status__c == 'Revision Required' && activity.Core_MDF_Program__c == 'Retail Marketing Funds')
                   )
                 {
+                    // if (!actNotAllowedStatus.contains(activity.Core_MDF_Fund_Request_Status__c))
+                    //{
                     Boolean actNotAllowedStatuss = (!(activity.Core_MDF_Start_Date__c > Date.Today()));
                     if (actNotAllowedStatuss)
                     {
                         claimActWrap = checkClaims(activityId);
                         actWrap.hasActiveClaims = claimActWrap.hasActiveClaims;
                         actWrap.listOfClaim = claimActWrap.listOfClaim.clone();
-                        actWrap.isValidActivity = true; 
+                        actWrap.isValidActivity = true;
+                        //When activity is valid to close, activity status field will be updated                   
+                        // if(actWrap != null && !actWrap.hasActiveClaims)
+                        // {
+                            
+                        //     Map<Id,PartnerFundRequest> pfrMap = new Map<Id,PartnerFundRequest>();
+                        //     pfrMap.put(activity.Id,activity);
+                        //     closeActivityAmountCalculation(pfrMap,pfrManualClosureType);
+                        // }  
                     }
                     if(actNotAllowedStatuss && (actWrap != null && !actWrap.hasActiveClaims)){
                             Map<Id,PartnerFundRequest> pfrMap = new Map<Id,PartnerFundRequest>();
@@ -120,13 +131,19 @@ Modified By:        Date:      Changes:
                     if(!actNotAllowedStatuss){
                         actWrap.activityNotStarted = true;
                     }
+                    // else
+                    // {
+                    //     actWrap.activityNotStarted = true;
+                    // }
                     
-                }                
+                }
+                
                 else
                 {
                     actWrap.isValidActStatus = false;actWrap.retailActivity = activity.Core_MDF_Program__c == 'Retail Marketing Funds' ? true : false;
-                    actWrap.ipaActivity= activity.Core_MDF_Program__c == 'Intel Partner Alliance' ? true : false;
+					actWrap.ipaActivity= activity.Core_MDF_Program__c == 'Intel Partner Alliance' ? true : false;
                 }
+            /*}*/
         }
         
         catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);throw e;//throw new AuraHandledException(e.getMessage());
@@ -153,7 +170,7 @@ Modified By:        Date:      Changes:
         
         //List to store the claims which are in submitted, hold, pending available funds, payment due and pending payment status
        
-        List<PartnerFundClaim> claimList = [SELECT Id FROM PartnerFundClaim WHERE RequestId =:activityId and Core_MDF_Status__c  IN:claimStatusSet];		
+        List<PartnerFundClaim> claimList = [SELECT Id FROM PartnerFundClaim WHERE RequestId =:activityId and Core_MDF_Status__c  IN:claimStatusSet];        
         if (claimList != Null && claimList.size()>0 ){
             checkClaimWrapper.hasActiveClaims = true;
             checkClaimWrapper.listOfClaim = claimList.clone();
@@ -179,8 +196,6 @@ Modified By:   Saikat Manna     Date:   03/01/2023   Changes:
         Map<Id,Decimal> pfcMap = new Map<Id,Decimal>();
         Map<Id,Decimal> pfrToEscalationAmtMap = new Map<Id,Decimal>();
         List<String> cmpBudgetType = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CMP_BudgetType').split(';');
-        
-        
         try{
             if(pfrMap != null && !pfrMap.isEmpty()){
                 // Check if this is an outcome-based parent activity
@@ -244,6 +259,8 @@ Modified By:   Saikat Manna     Date:   03/01/2023   Changes:
             // Update parent activity
             PartnerFundRequest updatedParentActivity = updatedPfr(parentActivity, pfrClosureType, totalClaimAmount);
             pfrClosureList.add(updatedParentActivity);
+            // Deactivate account mappings
+            //deactivateAccountMappings(parentActivityId);
         } catch (Exception e) {
             Core_MDF_CCP_UtilityClass.logError(e);
             throw e;
@@ -269,6 +286,32 @@ Modified By:   Saikat Manna     Date:   03/01/2023   Changes:
             claimAmounts.put(requestId, totalAmount != null ? totalAmount : 0);
         }
         return claimAmounts;
+    }
+    
+    /****************************************************************************************************** 
+    Method Name:        deactivateAccountMappings
+    Description:        Deactivate account mappings when closing outcome-based activity
+    Added By:           Modified for outcome-based activities
+    *******************************************************************************************************/
+    private static void deactivateAccountMappings(Id parentActivityId) {
+        try {
+            List<Core_MDF_Outcome_Account_Mapping__c> mappingsToUpdate = [
+                SELECT Id, Core_MDF_Active_Ind__c
+                FROM Core_MDF_Outcome_Account_Mapping__c 
+                WHERE Core_MDF_Outcome_Based_CampaignId__c = :parentActivityId 
+                AND Core_MDF_Active_Ind__c = true
+            ];
+            
+            if(!mappingsToUpdate.isEmpty()) {
+                for(Core_MDF_Outcome_Account_Mapping__c mapping : mappingsToUpdate) {
+                    mapping.Core_MDF_Active_Ind__c = false;
+                }
+                update mappingsToUpdate;
+            }
+        } catch (Exception e) {
+            Core_MDF_CCP_UtilityClass.logError(e);
+            // Don't throw exception as this is not critical for activity closure
+        }
     }
     
     /****************************************************************************************************** 
@@ -364,9 +407,9 @@ Modified By:   Saikat Manna     Date:   03/01/2023   Changes:
         return pfrToBeUpdated;
     }
     /****************************************************************************************************** 
-    Method Name:        isOutcomeBasedActivity
-    Description:        Check whether given activity is Outcome-Based or not
-    Added By:           Rishabh 30/01/2026
+    Method Name:        updatedPfr
+    Description:        Create PFR Object record which needs to updated
+    Added By:           Saikat Manna- 03/01/2023
     Modified By:        Date:      Changes: 
     *******************************************************************************************************/
     @AuraEnabled

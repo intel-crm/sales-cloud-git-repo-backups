@@ -14,19 +14,11 @@ public without sharing class CRM_CheckUserAccess_Dashboard {
                 CRM_MetadataService.SaveResult result = service.updateMetadata(new List<CRM_MetadataService.Metadata>{dashboardMetadata})[0];
                 if (result.success) {
                     System.debug('Dashboard running user updated successfully.');
-                } 
-                if(!result.success){
+                } else {
                     System.debug('Failed to update dashboard: ' + result.errors[0].message);
-                    //Throw new CustomException(result.errors[0].message);
                 }
-            } 
-            /*catch(CustomException Ex){
-                system.debug(Ex.getMessage());
-                Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(EX,'Critical','CRM','Reports/Dashboard','Mass Access Ownership Transfer',null);
-            }*/
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.debug('Error: ' + e.getMessage());
-                Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(e,'Critical','CRM','Dashboard','Mass Access Ownership Transfer',null);
             }
         }
     }

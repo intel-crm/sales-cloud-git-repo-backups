@@ -1,6 +1,6 @@
 <messaging:emailTemplate renderUsingSystemContextWithoutSharing="true"
                          relatedToType="PartnerFundRequest" language="{!recipient.LanguageLocaleKey}" recipientType="User"
-                         subject="{!if(OR(RelatedTo.Core_MDF_Fund_Request_Status__c='Planned',RelatedTo.Core_MDF_Fund_Request_Status__c = 'Cancelled',RelatedTo.Core_MDF_Fund_Request_Status__c = 'Closed'),if(AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance'),'Status updated for Outcome-Based Campaign: ' + RelatedTo.Title,'Activity status updated for Activity: ' + RelatedTo.Title),if(AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance'),'Changes are required for Outcome-Based Campaign: ' + RelatedTo.Title,'Changes are required for Activity: ' + RelatedTo.Title))}">
+                         subject="{!if(OR(RelatedTo.Core_MDF_Fund_Request_Status__c='Planned',RelatedTo.Core_MDF_Fund_Request_Status__c = 'Cancelled',RelatedTo.Core_MDF_Fund_Request_Status__c = 'Closed'),$Label.Core_MDF_EmailTemp_Status_Change_NoAction_Subject +' '+ RelatedTo.Title ,$Label.Core_MDF_EmailTemp_Status_Change_Subject+' '+ RelatedTo.Title)}"> 
 
     <messaging:htmlEmailBody >
         <html>

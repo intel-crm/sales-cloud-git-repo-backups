@@ -1,0 +1,3 @@
+<apex:page Controller="Core_MDF_GetLabelController">
+    <apex:outputText > {!$Label[mylabel]} </apex:outputText>
+</apex:page>

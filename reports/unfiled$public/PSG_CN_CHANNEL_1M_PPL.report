@@ -38,9 +38,6 @@
         <field>STAGE_NAME</field>
     </columns>
     <columns>
-        <field>CLOSE_DATE</field>
-    </columns>
-    <columns>
         <field>TOTAL_PRICE</field>
     </columns>
     <columns>
@@ -48,7 +45,7 @@
         <field>AMOUNT</field>
     </columns>
     <filter>
-        <booleanFilter>(1 OR 2 OR 3 OR 5 OR 6 OR 7 or 9 or 10 or 11 or 12 or 13) AND 4 AND 8</booleanFilter>
+        <booleanFilter>(((1 OR 2 OR 3 OR 5 OR 6 OR 7) AND 4)) AND 8</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Technical_Owner__c</column>
             <columnToColumn>false</columnToColumn>
@@ -75,7 +72,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Lost,Cancelled,Group,Production Lost,Production Cancelled,Group Open,Group Cancelled,Group Closed,Design Win,Production Win</value>
+            <value>Lost,Cancelled,Group,Production Lost,Production Cancelled,Group Open,Group Cancelled,Group Closed</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Technical_Owner__c</column>
@@ -104,41 +101,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>greaterThan</operator>
             <value>1000000</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Yong Chin See</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>joyce wu</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>zhi gong</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>gang wang</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>wei da liu</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -177,6 +139,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2019-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2019-01-01</startDate>
     </timeFrameFilter>
 </Report>

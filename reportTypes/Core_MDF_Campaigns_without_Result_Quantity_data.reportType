@@ -5,7 +5,7 @@
     <deployed>true</deployed>
     <description>Completed Outcome Based Campaigns with missing Result Quantity data</description>
     <join>
-        <outerJoin>false</outerJoin>
+        <outerJoin>true</outerJoin>
         <relationship>Campaign_Outcomes__r</relationship>
     </join>
     <label>Campaigns without Result Quantity data</label>
@@ -75,6 +75,11 @@
             <field>Core_MDF_Active_Ind__c</field>
             <table>Campaign.Campaign_Outcomes__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Campaign_Purpose_Desc_txt__c</field>
+            <table>Campaign.Campaign_Outcomes__r</table>
+        </columns>
         <masterLabel>Campaign Purposes</masterLabel>
     </sections>
     <sections>
@@ -95,6 +100,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Campaign Name</displayNameOverride>
             <field>Name</field>
             <table>Campaign</table>
         </columns>
@@ -111,6 +117,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Program__c</field>
+            <table>Campaign</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Budget_Type_txt__c</field>
             <table>Campaign</table>
         </columns>
         <columns>
@@ -144,5 +155,28 @@
             <table>Campaign</table>
         </columns>
         <masterLabel>Campaign</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Activity_Approval_Required_Ind__c</field>
+            <table>Campaign</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Measurement_Approach_nm__c</field>
+            <table>Campaign</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Other_Measurement_Approach_txt__c</field>
+            <table>Campaign</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_IPA_Co_Engineering_Campaign_ind__c</field>
+            <table>Campaign</table>
+        </columns>
+        <masterLabel>Campaigns</masterLabel>
     </sections>
 </ReportType>

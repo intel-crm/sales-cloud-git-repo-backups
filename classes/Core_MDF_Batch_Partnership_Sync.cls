@@ -17,6 +17,7 @@ public without sharing class Core_MDF_Batch_Partnership_Sync implements Database
 
     //Prepare map and send to IAH Batch to sync up the data
     public void execute(Database.BatchableContext bcontext, List<Case> caseList) {
+        system.debug('case list: '+ caseList.size());
         Map<string,set<id>> qtrPgmToAcctIdMap = new Map<string,set<id>>();
         List<Core_MDF_Batch_Scheduler__c> custmSchList = new List<Core_MDF_Batch_Scheduler__c>();
         integer count = 1;
@@ -34,6 +35,7 @@ public without sharing class Core_MDF_Batch_Partnership_Sync implements Database
                 }
                 
             }
+            system.debug('map: '+qtrPgmToAcctIdMap);
             
             //Call IAH Batch
             for(string key:qtrPgmToAcctIdMap.keyset()) {
@@ -56,8 +58,10 @@ public without sharing class Core_MDF_Batch_Partnership_Sync implements Database
                 count++;
             }
             if(custmSchList!=null && custmSchList.size()>0) {
+                system.debug('custmSchList.size(): '+ custmSchList.size());
                 Database.insert(custmSchList);
                 Database.SaveResult[] results = Database.insert(custmSchList,false);
+                system.debug('results'+ results);
             }
         }
         catch(exception ex) {Core_MDF_CCP_UtilityClass.logError(ex);} 
@@ -65,6 +69,7 @@ public without sharing class Core_MDF_Batch_Partnership_Sync implements Database
 
     //Finish Method
     public void finish(Database.BatchableContext bcontext) {
+        system.debug('Final');
     }
     
 }

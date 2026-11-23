@@ -6,7 +6,8 @@
 * Developer            Date                 Description
 * ---------------------------------------------------------------------------------------------------------------------------------------
 * Accenture - JV       11/03/2018          Created for extending Trigger framework to process Partner Fund Claim business logic methods.
-* Intel -Areefa		   20 May,2021		   To insert claim on Claim Prediction object
+* Intel -Areefa        20 May,2021         To insert claim on Claim Prediction object
+* Roshan Prasad        18 Nov,2026         Publish Core_MDF_SuperClaim_Status_Sync__e for Super Claim status sync
 *****************************************************************************************************************************************/
 public class Core_MDF_PFC_TriggerHandler extends TriggerHandler{
     
@@ -48,8 +49,17 @@ public class Core_MDF_PFC_TriggerHandler extends TriggerHandler{
                                                                 (List<PartnerFundClaim>) Trigger.OLD,
                                                                 (Map<Id,PartnerFundClaim>) Trigger.oldMap);         
         }     
-        
-
+        //Added by Sham for AI PIC Review Logic. Switch will be added for this.
+         if (isActive('Core_MDF_ProcessClaimsWithAIForPICReview')) {
+             /**
+            * @description          : Method for making CDB callout for the CoMarketing Claims after their Insertion
+            * @param Trigger.newMap : Map of the current Partner Fund Claims to be Inserted
+            * @param Trigger.oldMap : Map of the old Partner Fund Claims
+            */
+            /*Core_MDF_AI_Integration_Outbound.generateAIResponseForPICProcess((Map<Id,PartnerFundClaim>) Trigger.oldMap,
+                                                                             (Map<Id,PartnerFundClaim>) Trigger.newMap);*/
+         }
+        system.debug('After Insert End:: Total: ' + Limits.getLimitQueries() + ' Used: ' + Limits.getQueries());
     }
     
     /**
@@ -75,7 +85,7 @@ public class Core_MDF_PFC_TriggerHandler extends TriggerHandler{
     * @description : Method to execute the actions in after update context of Core_MDF_PFC_Trigger
     */
     public override void afterUpdate(){
-       
+        system.debug('inside afterUpdate');
         if (isActive('Core_MDF_ClaimForEinPredOnAfterInsert')) {
             /**
             * @description          : Method for processing the CoMarketing Claims after their Insertion
@@ -83,6 +93,7 @@ public class Core_MDF_PFC_TriggerHandler extends TriggerHandler{
             */
             Core_MDF_ProcessCCP_Claim.SendClaimsToClaimPrediction((Map<Id,PartnerFundClaim>) Trigger.oldMap, (Map<Id,PartnerFundClaim>) Trigger.newMap);
         }
+        system.debug('before method');
         if (isActive('Core_MDF_claimProcessesOnAfterUpdate')) {
             /**
             * @description          : Method for processing the CoMarketing Claims after their Updation
@@ -95,7 +106,24 @@ public class Core_MDF_PFC_TriggerHandler extends TriggerHandler{
                                                                 (Map<Id,PartnerFundClaim>) Trigger.oldMap);
             
         }
-        
+         //Added by Sham for AI PIC Review Logic. Switch will be added for this.
+         if (isActive('Core_MDF_ProcessClaimsWithAIForPICReview')) {
+             /**
+            * @description          : Method for making CDB callout for the CoMarketing Claims after their Updation
+            * @param Trigger.newMap : Map of the current Partner Fund Claims to be Updated
+            * @param Trigger.oldMap : Map of the old Partner Fund Claims after Updation
+            */
+            /*Core_MDF_AI_Integration_Outbound.generateAIResponseForPICProcess((Map<Id,PartnerFundClaim>) Trigger.oldMap,
+                                                                             (Map<Id,PartnerFundClaim>) Trigger.newMap);*/
+         }
+
+
+        //Roshan - TWC3117-19133
+        if (isActive('Core_MDF_SuperClaimStatusSync')) {
+            Core_MDF_ProcessCCP_Claim.publishSuperClaimStatusSync((List<PartnerFundClaim>) Trigger.NEW, (Map<Id,PartnerFundClaim>) Trigger.oldMap);
+        }
+
+        system.debug('After update End:: Total: ' + Limits.getLimitQueries() + ' Used: ' + Limits.getQueries());
     }
     /*     
     public override void beforeDelete(){

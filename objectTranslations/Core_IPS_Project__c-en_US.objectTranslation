@@ -278,12 +278,12 @@
         <name>Core_IPS_Project_Status_field_edit</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Premier Support Projects must be in the Draft state when being set to Private --></errorMessage>
-        <name>Core_IPS_Restrict_Changing_Private</name>
+        <errorMessage><!-- Project cannot be submitted without atleast one Account and one Product --></errorMessage>
+        <name>Core_IPS_Project_cannot_be_activated</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Sub-Region is required when creating / Updating the Project with a specified Region --></errorMessage>
-        <name>SubRegionNotNullIfRegionExistedOnNewProj</name>
+        <errorMessage><!-- Premier Support Projects must be in the Draft state when being set to Private --></errorMessage>
+        <name>Core_IPS_Restrict_Changing_Private</name>
     </validationRules>
     <webLinks>
         <label><!-- Core_IPS_Update_Support_Owners --></label>

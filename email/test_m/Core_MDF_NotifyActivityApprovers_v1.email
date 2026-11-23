@@ -1,0 +1,62 @@
+<messaging:emailTemplate renderUsingSystemContextWithoutSharing="true"
+                         subject="{!$Label.Core_MDF_Email_Template_PFRSubject} # {!RelatedTo.Core_MDF_Activity_Number__c}"
+                         relatedToType="PartnerFundRequest" language="{!recipient.LanguageLocaleKey}" recipientType="User">
+    <messaging:htmlEmailBody >
+    <html>
+        <body>
+            <div style="font-size:14px;font-family:Calibri">  
+                    <p>
+                        <span style="color: #ff0000;">
+                            <strong>{!$Label.Core_MDF_IPA_EmailTemp_ActionReq}</strong>
+                         </span>
+                     </p>
+                     
+                    <apex:outputPanel rendered="{!IF(RelatedTo.Core_MDF_Fund_Request_Status__c == 'Pending Approval',true,false)}">
+                        <p><span>{!$Label.Core_MDF_Email_Template_Member}, </span></p>
+                    </apex:outputPanel>
+                    
+                    <apex:outputPanel rendered="{!IF(RelatedTo.Core_MDF_Fund_Request_Status__c != 'Pending Approval',true,false)}">
+                        <p><span>Dear Intel employee,</span></p>
+                    </apex:outputPanel>
+                    
+                    <apex:outputPanel rendered="{!IF(RelatedTo.Core_MDF_Fund_Request_Status__c == 'Pending Approval',true,false)}">
+                        <p><span>{!$Label.Core_MDF_Email_Template_Member_Review} </span></p>
+                    </apex:outputPanel>
+                    
+                    <apex:outputPanel rendered="{!IF(RelatedTo.Core_MDF_Fund_Request_Status__c != 'Pending Approval',true,false)}">
+                        <p><span>The following activity has been submitted and requires Intel review:&nbsp;</span></p>
+                    </apex:outputPanel>
+                
+                
+                <p>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_Email_Template_Activity_No} {!RelatedTo.Core_MDF_Activity_Number__c}</p>
+                <p>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_EmailTemp_Budget_Type} {!RelatedTo.Core_MDF_Budget_Type_nm__c}</p>
+                <p><span>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_Audit_Creation_Field4}&nbsp;<apex:outputField value="{!RelatedTo.Core_MDF_Activity_Types__c}" /></span></p>
+                <p>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_IPA_EmailTemp_Field3}&nbsp;<apex:outputField value="{!RelatedTo.Core_MDF_Fund_Request_Status__c}" /></p>
+                <p>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_Country_Location}&nbsp;<apex:outputField value="{!RelatedTo.Core_MDF_Country_nm__c}" /></p>
+                <p>{!RelatedTo.CreatedBy.Name}&nbsp;{!$Label.Core_MDF_Email_Template_Appr_Req}:<span>&nbsp;</span></p>
+                <p></p>                
+                 <apex:outputLink rendered="{!IF(RelatedTo.Core_MDF_Fund_Request_Status__c == 'Pending Approval',true,false)}"
+                                value="{!$Label.Core_MDF_PFRCommunityLink+RelatedTo.Id}"> {!$Label.Core_MDF_IPA_EmailTemp_Link2}  
+                                             
+                 </apex:outputLink>
+                 <apex:outputLink rendered="{!IF(RelatedTo.Core_MDF_Fund_Request_Status__c == 'Pending Review',true,false)}"> 
+                                <c:Core_MDF_ApprovalURLCmp objID="{!RelatedTo.Id}" actorID="{!recipient.ID}"></c:Core_MDF_ApprovalURLCmp> <br/>               
+                </apex:outputLink>  <p>{!RelatedTo.Id} Id {!recipient.ID} Rid  isPCT {!RelatedTo.Core_MDF_Price_reviewer_check_ind__c}</p>             
+    <p>{!$Label.Core_MDF_IPA_EmailTemp_Body7}</p>
+    <p></p>
+    <p>{!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}</p>
+       <p><span>{!RelatedTo.RecordType.Name}&nbsp;{!$Label.Core_MDF_EmailTemp_Claim_Body5}</span></p>
+    <p><span>&nbsp;</span></p>
+    
+    <div style="font-family: Calibri;font-size: 11px;">
+    <p><em>{!$Label.Core_MDF_IPA_EmailTemp_Footer1}</em>&nbsp;<em>{!$Label.Core_MDF_IPA_EmailTemp_Footer2}&nbsp;<strong><a href="https://intelinside.intel.com/Support?AppSignOn=Yes">{!$Label.Core_MDF_IPA_EmailTemp_Footer3}</a>&nbsp;</strong>{!$Label.Core_MDF_IPA_EmailTemp_Footer4}</em></p>
+    <p>{!$Label.Core_MDF_EmailTemp_Claim_Footer3}&nbsp;<strong><a href="https://intelinside.intel.com/Support?AppSignOn=Yes">{!$Label.Core_MDF_IPA_EmailTemp_Footer3}</a>&nbsp;</strong>{!$Label.Core_MDF_EmailTemp_Claim_Footer4}</p>
+    <p>{!$Label.Core_MDF_EmailTemp_StatusUpdate_Address}&nbsp;<br /><a href="https://www.intel.com/content/www/us/en/homepage.html">{!$Label.Core_MDF_EmailTemp_Footer3}</a>&nbsp;|&nbsp;<a href="https://www.intel.com/content/www/us/en/legal/trademarks.html">{!$Label.Core_MDF_EmailTemp_Footer4}&nbsp;</a>|&nbsp;<a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html?elqTrackId=d66a216e5b8b472c80e421c11f79cbc2&amp;amp;elqaid=13991&amp;amp;elqat=2">{!$Label.Core_MDF_EmailTemp_Footer5}</a>&nbsp;|&nbsp;<a href="http://www.intel.com/cookies">{!$Label.Core_MDF_EmailTemp_Footer6}</a>&nbsp;</p>
+    <p></p>
+
+             </div>
+             </div>
+        </body>
+    </html>    
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

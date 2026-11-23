@@ -35,14 +35,8 @@ public class Core_IPS_UpdatePSO_Controller_Test {
         
         List<Core_IPS_Labels__c> lstIpsLabelTeam = new List<Core_IPS_Labels__c>();
         lstIpsLabelTeam.add(new Core_IPS_Labels__c(Name='Core_IPS_MPNDAValue_Error',Value__c='Error'));
-        //Added by Sowmya - Start - 27/09/2024 - TWC745-6800 - Fix test coverage for all failed classes 
-        lstIpsLabelTeam.add(new Core_IPS_Labels__c(Name='IPS_Generic_Exception_Msg',Value__c='Something went Wrong. Please conta'));
-       //Sowmya End - 27/09/2024 - TWC745-6800 - Fix test coverage for all failed classes 
-            
-       System.runAs(ListOfUser.get(0)){
+        System.runAs(ListOfUser.get(0)){
             insert lstIpsLabelTeam;
-            
-            
         }
         
     }

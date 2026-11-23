@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Activity Available Amount</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Activity Available Amounts</value>
+    </caseValues>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Budget Type Based? --></label>
+        <name>Core_MDF_Is_Budget_Type_Based__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Program Based? --></label>
+        <name>Core_MDF_Is_Program_Based__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

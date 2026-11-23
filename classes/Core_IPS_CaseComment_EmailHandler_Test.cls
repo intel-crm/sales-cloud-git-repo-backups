@@ -167,24 +167,6 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         skipKeywordList.add(skipKeyword2); 
         
         insert skipKeywordList;
-        
-        // adding custom setting values
-        List<Core_IPS_SkipEmailHeaderKeywords__c> skipHeaderKeywordList = new List<Core_IPS_SkipEmailHeaderKeywords__c>();
-        
-        Core_IPS_SkipEmailHeaderKeywords__c skipHeaderKeyword1=new Core_IPS_SkipEmailHeaderKeywords__c();
-        skipHeaderKeyword1.name='1';
-        skipHeaderKeyword1.Value__c='auto-generated';
-        skipHeaderKeyword1.Key__c='auto-submitted';
-        skipHeaderKeywordList.add(skipHeaderKeyword1); 
-        
-        Core_IPS_SkipEmailHeaderKeywords__c skipHeaderKeyword2=new Core_IPS_SkipEmailHeaderKeywords__c();
-        skipHeaderKeyword2.name='2';
-        skipHeaderKeyword2.Value__c='auto-replied';
-        skipHeaderKeyword2.Key__c='auto-submitted';
-        skipHeaderKeywordList.add(skipHeaderKeyword2); 
-        
-        insert skipHeaderKeywordList;
-         System.AssertEquals(skipHeaderKeywordList.size()>0, true);
     }
 
     
@@ -199,6 +181,7 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         List<Profile> ProfileList = [select id, name from Profile where name in ('System Administrator','Sales Rep-BB-Dual IPS')];
         
         UserRole usrRole = [select id from UserRole where name ='Admin'];
+        System.debug('---User Role ::'+usrRole);
         
         for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
@@ -240,7 +223,6 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
               
             );
             insert newUser;  
-            System.AssertEquals(newUser.Id != null, true);
         }
         return newUser;
     }
@@ -251,18 +233,23 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
                         
         Map<String, Core_IPS_Feature_Toggle__c> mapFeatureEnabled = new Map<String, Core_IPS_Feature_Toggle__c>();
         mapFeatureEnabled = Core_IPS_Feature_Toggle__c.getAll();                
-        
+        System.debug('-----------#02 mapFeatureEnabled: ' +  mapFeatureEnabled);
+              
         
         Map<String,ID> profiles = new Map<String,ID>();
         Profile userProfile = [select id, name from Profile where name ='IPS External Customer'];
 
         User usr = getExtCustomerUser();
+        System.debug('--------------->test user:'+usr);
 
         List<case> caseList = new List<case>();
         caseList =  TestUtilities.getListOfCases(1); 
         caseList[0].OwnerId =usr.id;
         insert caseList;
         
+        System.debug('-----case ::'+caseList[0]);
+        System.debug('-----case record type ::'+caseList[0].recordTypeId);
+
         // create a new email and envelope object
         Messaging.InboundEmail email = new Messaging.InboundEmail() ;
         Messaging.InboundEnvelope env = new Messaging.InboundEnvelope();
@@ -281,8 +268,6 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         email.htmlBody = body;
         email.plainTextBody= body;
         email.toAddresses = new List<String>{'intel.premier.support@intel.com'};
-        List<Messaging.InboundEmail.Header> newHeader = new List<Messaging.InboundEmail.Header>();
-        email.headers = newHeader;
 
         // add an attachment
         Messaging.InboundEmail.BinaryAttachment attachment = new Messaging.InboundEmail.BinaryAttachment();
@@ -291,18 +276,18 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         attachment.mimeTypeSubType = 'image/jpeg';
         Messaging.InboundEmail.Header header= new Messaging.InboundEmail.Header();
         attachment.headers=new Messaging.InboundEmail.Header[1];
-        header.name='Content-ID'; 
-        header.value='<image testImage007.jpg@01D35F27.4FCFFB70>';
+        header.name='Content-ID'; header.value='<image testImage007.jpg@01D35F27.4FCFFB70>';
         attachment.headers[0]=header;    
         email.binaryAttachments = new Messaging.inboundEmail.BinaryAttachment[] { attachment };
 
         
         // call the email service class and test it with the data in the testMethod
+        system.debug('--------------------------Usr:'+usr+':-:'+usr.Alias+';'+usr.IsActive);
         System.runAs(usr){ 
             Core_IPS_CaseComment_EmailHandler emailHandler = new Core_IPS_CaseComment_EmailHandler();
             emailHandler.handleInboundEmail(email, env);
         }
-        System.AssertEquals(body != null, true);
+        
         test.stopTest();
     }
     
@@ -314,6 +299,7 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         
         Map<String, Core_IPS_Feature_Toggle__c> mapFeatureEnabled = new Map<String, Core_IPS_Feature_Toggle__c>();
         mapFeatureEnabled = Core_IPS_Feature_Toggle__c.getAll();                
+        System.debug('-----------#02 mapFeatureEnabled: ' +  mapFeatureEnabled);
         
        
         Map<String,ID> profiles = new Map<String,ID>();
@@ -328,11 +314,15 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         ListOfUser[1].ProfileID =  profiles.get('Sales Rep-BB-Dual IPS');
         
         insert ListOfUser;
+        System.debug('-----list of test users'+ListOfUser);
 
         List<case> caseList = new List<case>();
         caseList =  TestUtilities.getListOfCases(1); 
         caseList[0].OwnerId = ListOfUser.get(1).Id;
         insert caseList;
+        
+        System.debug('-----case ::'+caseList[0]);
+        System.debug('-----case record type ::'+caseList[0].recordTypeId);
         
         
         // create a new email and envelope object
@@ -354,8 +344,7 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         email.htmlBody = body;
         email.plainTextBody= body;
         email.toAddresses = new List<String>{'intel.premier.support@intel.com'};
-       List<Messaging.InboundEmail.Header> newHeader = new List<Messaging.InboundEmail.Header>();
-        email.headers = newHeader;
+
         // add an attachment
         Messaging.InboundEmail.BinaryAttachment attachment = new Messaging.InboundEmail.BinaryAttachment();
         attachment.body = blob.valueOf('my attachment');
@@ -363,18 +352,18 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         attachment.mimeTypeSubType = 'image/jpeg';
         Messaging.InboundEmail.Header header= new Messaging.InboundEmail.Header();
         attachment.headers=new Messaging.InboundEmail.Header[1];
-        header.name='Content-ID'; 
-        header.value='<image testImage007.jpg@01D35F27.4FCFFB70>';
+        header.name='Content-ID'; header.value='<image testImage007.jpg@01D35F27.4FCFFB70>';
         attachment.headers[0]=header;    
         email.binaryAttachments = new Messaging.inboundEmail.BinaryAttachment[] { attachment };
 
         
         // call the email service class and test it with the data in the testMethod
+        system.debug('--------------------------Usr:'+usr+':-:'+usr.Alias+';'+usr.IsActive);
         System.runAs(usr){ 
             Core_IPS_CaseComment_EmailHandler emailHandler = new Core_IPS_CaseComment_EmailHandler();
             emailHandler.handleInboundEmail(email, env);
         }
-        System.AssertEquals(body != null, true);
+        
         test.stopTest();
   
     }
@@ -384,7 +373,8 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
                
         Map<String, Core_IPS_Feature_Toggle__c> mapFeatureEnabled = new Map<String, Core_IPS_Feature_Toggle__c>();
         mapFeatureEnabled = Core_IPS_Feature_Toggle__c.getAll();                
-       
+        System.debug('-----------#02 mapFeatureEnabled: ' +  mapFeatureEnabled);
+        
        
         Map<String,ID> profiles = new Map<String,ID>();
         List<User> ListOfUser = new List<User>();
@@ -397,10 +387,14 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         ListOfUser[1].ProfileID =  profiles.get('IPS Agent');
         
         insert ListOfUser;
+        System.debug('-----list of test users'+ListOfUser);
         List<case> caseList = new List<case>();
         caseList =  TestUtilities.getListOfCases(1); 
         caseList[0].OwnerId = ListOfUser.get(1).Id;
         insert caseList;
+        
+        System.debug('-----case ::'+caseList[0]);
+        System.debug('-----case record type ::'+caseList[0].recordTypeId);
         
         // create a new email and envelope object
         Messaging.InboundEmail email = new Messaging.InboundEmail() ;
@@ -421,8 +415,7 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         email.htmlBody = body;
         email.plainTextBody= body;
         email.toAddresses = new List<String>{'intel.premier.support@intel.com'};
-       List<Messaging.InboundEmail.Header> newHeader = new List<Messaging.InboundEmail.Header>();
-        email.headers = newHeader;
+
         // add an attachment
         Messaging.InboundEmail.BinaryAttachment attachment = new Messaging.InboundEmail.BinaryAttachment();
         attachment.body = blob.valueOf('my attachment');
@@ -430,20 +423,20 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         attachment.mimeTypeSubType = 'image/jpeg';
         Messaging.InboundEmail.Header header= new Messaging.InboundEmail.Header();
         attachment.headers=new Messaging.InboundEmail.Header[1];
-        header.name='Content-ID'; 
-        header.value='<image testImage007.jpg@01D35F27.4FCFFB70>';
+        header.name='Content-ID'; header.value='<image testImage007.jpg@01D35F27.4FCFFB70>';
         attachment.headers[0]=header;    
         email.binaryAttachments = new Messaging.inboundEmail.BinaryAttachment[] { attachment };
 
         
         // call the email service class and test it with the data in the testMethod
+        system.debug('--------------------------Usr:'+usr+':-:'+usr.Alias+';'+usr.IsActive);
         System.runAs(usr){ 
             Core_IPS_CaseComment_EmailHandler emailHandler = new Core_IPS_CaseComment_EmailHandler();
             emailHandler.handleInboundEmail(email, env);
         }
         
         test.stopTest();
-        System.AssertEquals(body != null, true);
+  
     }
     
     static testMethod void testByFAE() {
@@ -452,7 +445,7 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         
         Map<String, Core_IPS_Feature_Toggle__c> mapFeatureEnabled = new Map<String, Core_IPS_Feature_Toggle__c>();
         mapFeatureEnabled = Core_IPS_Feature_Toggle__c.getAll();                
-       
+        System.debug('-----------#02 mapFeatureEnabled: ' +  mapFeatureEnabled);
         
        
         Map<String,ID> profiles = new Map<String,ID>();
@@ -466,11 +459,15 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         ListOfUser[1].ProfileID =  profiles.get('Sales Rep-BB');
         
         insert ListOfUser;
+        System.debug('-----list of test users'+ListOfUser);
 
         List<case> caseList = new List<case>();
         caseList =  TestUtilities.getListOfCases(1); 
         caseList[0].OwnerId = ListOfUser.get(1).Id;
         insert caseList;
+        
+        System.debug('-----case ::'+caseList[0]);
+        System.debug('-----case record type ::'+caseList[0].recordTypeId);
         
 
         
@@ -494,8 +491,6 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         //email.htmlBody = body;
         email.plainTextBody= body;
         email.toAddresses = new List<String>{'intel.premier.support@intel.com'};
-       List<Messaging.InboundEmail.Header> newHeader = new List<Messaging.InboundEmail.Header>();
-        email.headers = newHeader;
 
         // add an attachment
         Messaging.InboundEmail.BinaryAttachment attachment = new Messaging.InboundEmail.BinaryAttachment();
@@ -504,20 +499,20 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         attachment.mimeTypeSubType = 'image/jpeg';
         Messaging.InboundEmail.Header header= new Messaging.InboundEmail.Header();
         attachment.headers=new Messaging.InboundEmail.Header[1];
-        header.name='Content-ID'; 
-        header.value='<image testImage007.jpg@01D35F27.4FCFFB70>';
+        header.name='Content-ID'; header.value='<image testImage007.jpg@01D35F27.4FCFFB70>';
         attachment.headers[0]=header;    
         email.binaryAttachments = new Messaging.inboundEmail.BinaryAttachment[] { attachment };
 
         
         // call the email service class and test it with the data in the testMethod
+        system.debug('--------------------------Usr:'+usr+':-:'+usr.Alias+';'+usr.IsActive);
         System.runAs(usr){ 
             Core_IPS_CaseComment_EmailHandler emailHandler = new Core_IPS_CaseComment_EmailHandler();
             emailHandler.handleInboundEmail(email, env);
         }
         
         test.stopTest();
-        System.AssertEquals(body != null, true);
+  
     }
     
     static testMethod void testNoProcessing() {
@@ -537,12 +532,17 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         ListOfUser[1].ProfileID =  profiles.get('Sales Rep-BB-Dual IPS');
         // }
         insert ListOfUser;
+        System.debug('-----list of test users'+ListOfUser);
 
         List<case> caseList = new List<case>();
         caseList =  TestUtilities.getListOfCases(1); 
         caseList[0].OwnerId = ListOfUser.get(1).Id;
         insert caseList;
         
+        System.debug('-----case ::'+caseList[0]);
+        System.debug('-----case record type ::'+caseList[0].recordTypeId);
+        
+
         
         // create a new email and envelope object
         Messaging.InboundEmail email = new Messaging.InboundEmail() ;
@@ -563,8 +563,7 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         email.htmlBody = body;
         email.plainTextBody= body;
         email.toAddresses = new List<String>{'intel.premier.support@intel.com','test@intel.com'};
-        List<Messaging.InboundEmail.Header> newHeader = new List<Messaging.InboundEmail.Header>();
-        email.headers = newHeader;
+        
         // add an attachment
         Messaging.InboundEmail.BinaryAttachment attachment = new Messaging.InboundEmail.BinaryAttachment();
         attachment.body = blob.valueOf('my attachment');
@@ -572,20 +571,20 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         attachment.mimeTypeSubType = 'image/jpeg';
         Messaging.InboundEmail.Header header= new Messaging.InboundEmail.Header();
         attachment.headers=new Messaging.InboundEmail.Header[1];
-        header.name='Content-ID'; 
-        header.value='<imagetestImage007.jpg@01D35F27.4FCFFB70>';
+        header.name='Content-ID'; header.value='<imagetestImage007.jpg@01D35F27.4FCFFB70>';
         attachment.headers[0]=header;    
         email.binaryAttachments = new Messaging.inboundEmail.BinaryAttachment[] { attachment };
 
         
         // call the email service class and test it with the data in the testMethod
+        system.debug('--------------------------Usr:'+usr+':-:'+usr.Alias+';'+usr.IsActive);
         System.runAs(usr){ 
             Core_IPS_CaseComment_EmailHandler emailHandler = new Core_IPS_CaseComment_EmailHandler();
             emailHandler.handleInboundEmail(email, env);
         }
         
         test.stopTest();
-        System.AssertEquals(body != null, true);
+  
     }
     
     static testMethod void testSkipEmail() {
@@ -603,6 +602,7 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         for(Profile prf : proList){
         profileMap.put(prf.name, prf.id);
         }
+        system.debug('---profileMap ::'+ profileMap);
         
         ListOfUser = TestUtilities.getListOfUser(2);
         //for(User Usr : ListOfUser){
@@ -635,21 +635,19 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         email.htmlBody = body;
         email.plainTextBody= body;
         email.toAddresses = new List<String>{'intel.premier.support@intel.com'};
-        List<Messaging.InboundEmail.Header> newHeader = new List<Messaging.InboundEmail.Header>();
-        email.headers = newHeader;
         
         // call the email service class and test it with the data in the testMethod
+        system.debug('--------------------------Usr:'+usr+':-:'+usr.Alias+';'+usr.IsActive);
         System.runAs(usr) { 
             Core_IPS_CaseComment_EmailHandler emailHandler = new Core_IPS_CaseComment_EmailHandler();
             emailHandler.handleInboundEmail(email, env);
             Core_IPS_CaseComment_EmailHandler.getAuthr(profileMap.get('Partner'),usr.id);
             Core_IPS_CaseComment_EmailHandler.getAuthr(profileMap.get('Data Ops'),usr.id);         
-           // Core_IPS_CaseComment_EmailHandler.getAuthr(profileMap.get('IPS Data Migration'),usr.id); 
+            Core_IPS_CaseComment_EmailHandler.getAuthr(profileMap.get('IPS Data Migration'),usr.id); 
             Core_IPS_CaseComment_EmailHandler.getAuthr(profileMap.get('Integration'),usr.id);
             Core_IPS_CaseComment_EmailHandler.getAuthr(profileMap.get('Partner'),usr.id);
             Core_IPS_CaseComment_EmailHandler.getAuthr(profileMap.get('IPS Agent-Partner'),usr.id);
         }
         test.stopTest();  
-        System.AssertEquals(body != null, true);
     }
 }

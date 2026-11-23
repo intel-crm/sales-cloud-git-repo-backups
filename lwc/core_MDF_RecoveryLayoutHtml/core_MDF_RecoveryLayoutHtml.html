@@ -1,0 +1,28 @@
+<template>
+    <c-core_-m-d-f_-recovery-filter oncallpasstoparent={passToParent} onresetrecoveryrecord={handleResetRecovery} item={selRec} onrefreshapexdata={handleRefreshApex}></c-core_-m-d-f_-recovery-filter>
+    <div class="slds-p-vertical_xx-small"></div>
+    <div class="spinner">
+        <template if:true={loading}>
+             <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+             </lightning-spinner>
+        </template>
+    
+
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_3-of-12">
+          
+            <c-core_-m-d-f_-recovery-report-view prog-value={progVal} acct-value={acctVal} quarter={quarterVal}  oncallloading={getloadleft}></c-core_-m-d-f_-recovery-report-view>
+    
+         
+        </div>
+        <div class="slds-col slds-size_9-of-12">
+          <c-core_-m-d-f_-recovery-claims-html-table mode={mode} prog-value={progVal} acct-value={acctVal} quarter={quarterVal}  oncallloading={getloadright} onsaveclaimsforrecovery={saveRecoveryRecord} onrecoveryupdate={onRecoveryUpdate}></c-core_-m-d-f_-recovery-claims-html-table>
+        </div>
+    </div>
+    
+    <div class="slds-p-vertical_xx-small"></div>
+    
+    
+    </div>
+
+</template>

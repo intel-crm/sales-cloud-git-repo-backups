@@ -126,6 +126,12 @@
     <aura:attribute name="showBudgetTypeFields" type="Boolean" default="false" />
     <aura:attribute name="showErrorMsgForSpendingLimit" type="Boolean" default="false" />
     <aura:attribute name="ErrorMsgForSpendingLimit" type="String" default="" />
+    <aura:attribute name="showErrorMsgForMaxIntelInvest"
+                type="Boolean"
+                default="false"/>
+    <aura:attribute name="ErrorMsgForMaxIntelInvest"
+                type="String"
+                default=""/>
     <aura:attribute name="startDate" type="date"/>
     <aura:attribute name="endDate" type="date"/>
     <aura:attribute name="disableCurrency" type="Boolean" default="false" 
@@ -482,13 +488,6 @@
     <aura:attribute name="ActReimbursementRt" type="String" default="" description="Activity Reimbursement Rate" />
     <aura:attribute name="IPAIntelContri" type="Integer" default="" 
                     description="Stores the intel contribution amount"/>
-    <!--Indu IPA Proposal -->
-    <aura:attribute name="maximumIntelInvestment" type="Decimal" default=""
-                    description="Stores Maximum Intel Investment"/>
-    <aura:attribute name="showErrorMsgForMaxIntelInvest" type="Boolean" default="false"/>
-    <aura:attribute name="ErrorMsgForMaxIntelInvest" type="String" default=""/>
-    <aura:attribute name="showIPAProposalEditWarning" type="Boolean" default="false"/>
-    <aura:attribute name="lockIPAProposalCurrency" type="Boolean" default="false"/>
     <aura:attribute name="actReimbRateError" type="boolean" default="false"/>
     <aura:attribute name="actReimbErrorMsg" type="String" default="" description = "Stores Activity Reimbursement Rate field validation error message "/>
     <aura:attribute type="PartnerFundRequest" name="pfrCloneOnCampaign"
@@ -511,7 +510,7 @@
     <aura:handler name="change" value="{!v.SelCategory}" action="{!c.resetActivtyType}" />
     <aura:handler name="change" value="{!v.competetiveElement}" action="{!c.resetIntelContribution}" />
     <aura:handler name="change" value="{!v.incentivePercent}" action="{!c.resetIntelContribution}" />
-     <aura:handler name="change" value="{!v.selectedTacticsOptions}" action="{!c.handlePCTApprovalChange}"/><!---PCT Added-->
+    <!-- <aura:handler name="change" value="{!v.selectedTacticsOptions}" action="{!c.handlePCTApprovalChange}"/>  --> <!---PCT Added-->
     <!-- Commented below line as part of US901407 to remove field Dependencies  -->
     <aura:handler name="change" value="{!v.SelProductType}" action="{!c.resetBrand}" />
     <aura:handler name="change" value="{!v.selectedFocusArea}" action="{!c.focusAreaChange}" /> 
@@ -638,17 +637,18 @@
                 </lightning:layoutItem>
             </lightning:layout>
             <!-- / PAGE HEADER -->
-            <!--Indu IPA Proposal -->
-            <aura:if isTrue="{!and(v.mode == 'edit', v.showIPAProposalEditWarning)}">
-                <div class="maxIntelInvestWarning">{!$Label.c.Core_MDF_IPA_Proposal_Edit_Warning}</div>
-            </aura:if>
             <!--Error Messages-->
             <aura:if isTrue="{!empty(v.message)}">
                 <div ></div> 
                 <aura:set attribute="else">
                     <div align="center"><c:Core_MDF_ErrorMessage type="{!v.messageType}" message="{!v.message}" /></div>   
                 </aura:set>
-            </aura:if> 
+            </aura:if>               
+    <aura:if isTrue="{!and(v.mode == 'edit',v.isPropBasedCampaign)}">
+    <div class="maxIntelInvestWarning">
+         {!$Label.c.Core_MDF_IPA_Proposal_Max_Investment_Info}
+    </div>
+</aura:if>
             <!--Event and ELC Popup-->
             <aura:if isTrue="{!v.ShowEventPopup}">
                 <c:Core_MDF_ELCPopup EventMessage="{!v.EventMessage}" AgreeLabel="{!v.AgreeButtonLabel}" DisagreeLabel="{!v.DisagreeButtonLabel}" PopupType="{!v.PopupType}"/>
@@ -856,7 +856,7 @@
                                                 largeDeviceSize="1"></lightning:layoutItem>
                                         <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
                                         <aura:if isTrue ="{!v.pfrFieldVisibility.Core_MDF_Budget_Amount_Local_amt__c}">
-                                           <lightning:input aura:id="BudgetAmount" type="number" formatter="{!v.budgetCurrency == 'USD' ? 'currency' : ''}" label="{!if(and(v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType,v.isPropBasedCampaign),$Label.c.Core_MDF_Activity_Total_Investment,$Label.c.Core_MDF_Budget_Amount)}" required="true" name="BudgetAmount" onchange = "{!c.calculateBudgetAmount}" value="{!v.BudgetLocal}" min="0" step="any" disabled="{!v.pfrFieldEditablity.Core_MDF_Budget_Amount_Local_amt__c}" /> 
+                                          <lightning:input aura:id="BudgetAmount" type="number" class="{!v.budgetCurrency == 'USD' ? 'currency-input-with-symbol' : ''}" label="{!if(v.isPropBasedCampaign,$Label.c.Core_MDF_IPA_Proposal_Total_Investment_Local,$Label.c.Core_MDF_Budget_Amount)}" required="true" name="BudgetAmount" onchange = "{!c.calculateBudgetAmount}" value="{!v.BudgetLocal}" min="0" step="any" disabled="{!v.pfrFieldEditablity.Core_MDF_Budget_Amount_Local_amt__c}" /> 
                                            <aura:if isTrue="{!v.showErrorMsgForSpendingLimit}">
                                                <p class= "red-fc">{!v.ErrorMsgForSpendingLimit}</p>  
                                            </aura:if>
@@ -867,23 +867,20 @@
                                         <aura:if isTrue ="{!v.pfrFieldVisibility.Core_MDF_Budget_Currency_cd__c}">
                                             <lightning:select aura:id="BudgetCurrency456" name="BudgetCurrency" value="{!v.budgetCurrency}"
                                                label="{!$Label.c.Core_MDF_Budget_Currency}" 
-                                               disabled="{!or(or(v.pfrFieldEditablity.Core_MDF_Budget_Currency_cd__c, v.disableCurrency), v.lockIPAProposalCurrency)}"
+                                               disabled="{!(v.pfrFieldEditablity.Core_MDF_Budget_Currency_cd__c|| v.disableCurrency)}" 
                                                onchange="{!c.calculateBudgetAmount}" class ="elementLabel" >
-                                            <aura:if isTrue="{!and(v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType,v.isPropBasedCampaign)}">
-    <aura:iteration items="{!v.currMap}" var="item">
-        <aura:if isTrue="{!or(item.key == 'USD',and(v.mode == 'edit',and(not(v.pfrCloneCheck),item.key == v.oldPFR.Core_MDF_Budget_Currency_cd__c)))}">
-            <option value="{!item.key}" selected="{!item.key == v.budgetCurrency}">{!item.value}</option>
-        </aura:if>
-    </aura:iteration>
-    <aura:set attribute="else">
-        <aura:iteration items="{!v.currMap}" var="item">
-            <aura:if isTrue="{!or(not(empty(v.newPFR.Id)),v.checkCloneAttribute)}">
-                <option value="{!item.key}" selected="{!item.key == v.newPFR.Core_MDF_Budget_Currency_cd__c}">{!item.value}</option>
-                <aura:set attribute="else"><option value="{!item.key}" selected="{!item.key == 'USD'}">{!item.value}</option></aura:set>
-            </aura:if>
-        </aura:iteration>
-    </aura:set>
-</aura:if><!--Indu IPA Proposal -->
+                                            <aura:iteration items="{!v.currMap}" var="item">
+                                               <aura:if isTrue="{!((not(empty(v.newPFR.Id))) || (v.checkCloneAttribute))}"><!-- Edit and Clone to get the data from PFR  -->
+                                                   <option value="{!item.key}" selected="{!item.key == v.newPFR.Core_MDF_Budget_Currency_cd__c}">
+                                                       {!item.value}
+                                                   </option>
+                                                  <aura:set attribute="else"><!-- For New, USD is default  -->
+                                                     <option value="{!item.key}" selected="{!item.key == 'USD'}">
+                                                         {!item.value}
+                                                    </option>
+                                                   </aura:set>
+                                                </aura:if>
+                                            </aura:iteration>
                                            </lightning:select>
                                         </aura:if>
                                     </lightning:layoutItem>
@@ -960,7 +957,7 @@
                                                               largeDeviceSize="1"></lightning:layoutItem>
                                     <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
                                         <aura:if isTrue ="{!v.pfrFieldVisibility.Core_MDF_Budget_Amount_Local_amt__c}">
-                                            <lightning:input aura:id="BudgetAmount" type="number" formatter="{!v.budgetCurrency == 'USD' ? 'currency' : ''}" label="{!if(and(v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType,v.isPropBasedCampaign),$Label.c.Core_MDF_Activity_Total_Investment,$Label.c.Core_MDF_Budget_Amount)}" required="true" name="BudgetAmount" onchange = "{!c.calculateBudgetAmount}" value="{!v.BudgetLocal}" min="0" step="any" disabled="{!v.pfrFieldEditablity.Core_MDF_Budget_Amount_Local_amt__c}" /> 
+                                            <lightning:input aura:id="BudgetAmount" type="number" class="{!v.budgetCurrency == 'USD' ? 'currency-input-with-symbol' : ''}" label="{!if(v.isPropBasedCampaign,$Label.c.Core_MDF_IPA_Proposal_Total_Investment_Local,$Label.c.Core_MDF_Budget_Amount)}" required="true" name="BudgetAmount" onchange = "{!c.calculateBudgetAmount}" value="{!v.BudgetLocal}" min="0" step="any" disabled="{!v.pfrFieldEditablity.Core_MDF_Budget_Amount_Local_amt__c}" /> 
                                             <aura:if isTrue="{!v.showErrorMsgForSpendingLimit}">
                                                 <p class= "red-fc">{!v.ErrorMsgForSpendingLimit}</p>  
                                             </aura:if>
@@ -971,23 +968,20 @@
                                     <aura:if isTrue ="{!v.pfrFieldVisibility.Core_MDF_Budget_Currency_cd__c}">
                                         <lightning:select aura:id="BudgetCurrency456" name="BudgetCurrency" value="{!v.budgetCurrency}"
                                                           label="{!$Label.c.Core_MDF_Budget_Currency}" 
-                                                          disabled="{!or(or(v.pfrFieldEditablity.Core_MDF_Budget_Currency_cd__c, v.disableCurrency), v.lockIPAProposalCurrency)}"
+                                                          disabled="{!(v.pfrFieldEditablity.Core_MDF_Budget_Currency_cd__c|| v.disableCurrency)}" 
                                                           onchange="{!c.calculateBudgetAmount}" class ="elementLabel" >
-                                            <aura:if isTrue="{!and(v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType,v.isPropBasedCampaign)}">
-    <aura:iteration items="{!v.currMap}" var="item">
-        <aura:if isTrue="{!or(item.key == 'USD',and(v.mode == 'edit',and(not(v.pfrCloneCheck),item.key == v.oldPFR.Core_MDF_Budget_Currency_cd__c)))}">
-            <option value="{!item.key}" selected="{!item.key == v.budgetCurrency}">{!item.value}</option>
-        </aura:if>
-    </aura:iteration><!--Indu IPA Proposal -->
-    <aura:set attribute="else">
-        <aura:iteration items="{!v.currMap}" var="item">
-            <aura:if isTrue="{!or(not(empty(v.newPFR.Id)),v.checkCloneAttribute)}">
-                <option value="{!item.key}" selected="{!item.key == v.newPFR.Core_MDF_Budget_Currency_cd__c}">{!item.value}</option>
-                <aura:set attribute="else"><option value="{!item.key}" selected="{!item.key == 'USD'}">{!item.value}</option></aura:set>
-            </aura:if>
-        </aura:iteration>
-    </aura:set>
-</aura:if><!--Indu IPA Proposal -->
+                                            <aura:iteration items="{!v.currMap}" var="item">
+                                                <aura:if isTrue="{!((not(empty(v.newPFR.Id))) || (v.checkCloneAttribute))}"><!-- Edit and Clone to get the data from PFR  -->
+                                                    <option value="{!item.key}" selected="{!item.key == v.newPFR.Core_MDF_Budget_Currency_cd__c}">
+                                                        {!item.value}
+                                                    </option>
+                                                    <aura:set attribute="else"><!-- For New, USD is default  -->
+                                                        <option value="{!item.key}" selected="{!item.key == 'USD'}">
+                                                            {!item.value}
+                                                        </option>
+                                                    </aura:set>
+                                                </aura:if>
+                                            </aura:iteration>
                                         </lightning:select>
                                     </aura:if>
                                 </lightning:layoutItem>
@@ -1064,7 +1058,7 @@
                                 </aura:if>
                                 
                             </lightning:layout>
-                            
+          
                             <lightning:layout horizontalAlign="spread" multipleRows="true">		  
                                 <aura:if isTrue="{!(v.selectedLookUpRecord.Core_MDF_Proposal_Based_Ind__c) || (v.newPFR.Core_MDF_Proposal_Based_Ind__c)}">
                                     <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
@@ -1076,13 +1070,13 @@
                                                                                 fldName="Core_MDF_Reimbursement_Rate_pct__c" ParentId="" recTypeName="{!v.recordtypeName}"
                                                                                 ParentfldName="" recTypeDevName="{!v.recordtypeDeveloperName}"
                                                                                 selectedValue="{!v.SelReimbursementRate}" options="{!v.ReimbursementRateVal}"
-                                                                                 dispLabel="{!$Label.c.Core_MDF_Reimbursement_Rate_Label}" disabled="{!if( and( v.recordtypeDeveloperName ==  $Label.c.Core_MDF_IPA_RecordType, v.isPropBasedCampaign ),if( and(  v.mode == 'edit', and( not(v.checkCloneAttribute),  not(v.pfrCloneCheck)  )  ), or( or( v.externalper, v.pfrFieldEditablity.Core_MDF_Reimbursement_Rate_txt__c ), v.SelReimbursementRate ==  $Label.c.Core_MDF_BudgetType_RRate100 ), true ), v.disableRRPercent)}" />
+                                                                                dispLabel="{!$Label.c.Core_MDF_Reimbursement_Rate_Label}" disabled= "{!v.disableRRPercent}" />
                                             
                                         </lightning:layoutItem>
                                         <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
                                         <!--Akash-RR% -->
                                         
-					                    <aura:if isTrue="{!and( and( not(v.externalper), not(v.isPropBasedOutcomeCampaign) ), not( and( v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType, v.isPropBasedCampaign ) ))}">
+					                    <aura:if isTrue ="{!and(not(v.externalper), not(v.isPropBasedOutcomeCampaign))}">
                                             <aura:if isTrue ="{!v.pfrFieldVisibility.Core_MDF_Reimbursement_Rate_txt__c}">
                                                 <div class="slds-grid">
                                                     <div class="slds-col">
@@ -1104,21 +1098,45 @@
                                             </aura:if>
                                             
                                         </lightning:layoutItem>
-                                        <!--Indu IPA Proposal -->
-                                       <!--Maximum Intel Investment field-->
+                                       <!--Intel Contribution field-->
                                       <lightning:layoutItem padding="around-small" flexibility="grow" size="5" smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5">
-    <aura:if isTrue="{!and(v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType,v.isPropBasedCampaign)}">
-        <aura:if isTrue="{!(!empty(v.pfrFieldVisibility))}">
-            <lightning:input aura:id="NewForm" type="number" formatter="{!v.budgetCurrency == 'USD' ? 'currency' : ''}" step="any" min="0" label="{!$Label.c.Core_MDF_Maximum_Intel_Investment}" required="true" name="MaximumIntelInvestment" value="{!v.maximumIntelInvestment}" onchange="{!c.calculateMaxIntelInvestment}" disabled="{!v.pfrFieldEditablity.Core_MDF_Maximum_Intel_Investment_amt__c}"/>
-            <aura:if isTrue="{!v.showErrorMsgForMaxIntelInvest}"><p class="red-fc">{!v.ErrorMsgForMaxIntelInvest}</p></aura:if>
-        </aura:if>
-        <aura:set attribute="else">
-            <aura:if isTrue="{!(!empty(v.pfrFieldVisibility))}">
-                <lightning:input aura:id="IntelContribution" type="number" step="0.01" label="{!$Label.c.Core_MDF_IntelContribution}" required="false" name="Contribution" value="{!v.IPAIntelContri}" disabled="true"/>
-            </aura:if>
-        </aura:set>
+                                       <aura:if isTrue="{!(!empty(v.pfrFieldVisibility))}">
+                                        <aura:if isTrue="{!v.isPropBasedCampaign}">
+
+    <lightning:input aura:id="NewForm"
+                     type="number"
+                     class="{!v.budgetCurrency == 'USD' ? 'currency-input-with-symbol' : ''}"
+                     label="{!$Label.c.Core_MDF_Maximum_Intel_Investment}"
+                     required="true"
+                     name="MaximumIntelInvestment"
+                     value="{!v.newPFR.Core_MDF_Maximum_Intel_Investment_amt__c}"
+                     min="0.01"
+                     step="0.01"
+                     onchange="{!c.calculateProposalMaxIntelInvestment}"
+                     disabled="{!v.pfrFieldEditablity.Core_MDF_Maximum_Intel_Investment_amt__c}"/>
+
+    <aura:if isTrue="{!v.showErrorMsgForMaxIntelInvest}">
+        <p class="red-fc">
+            <lightning:formattedText
+                value="{!v.ErrorMsgForMaxIntelInvest}"/>
+        </p>
     </aura:if>
-</lightning:layoutItem>
+
+    <aura:set attribute="else">
+
+        <lightning:input aura:id="IntelContribution"
+                         type="number"
+                         step="0.01"
+                         label="{!$Label.c.Core_MDF_IntelContribution}"
+                         required="false"
+                         name="Contribution"
+                         value="{!v.IPAIntelContri}"
+                         disabled="true"/>
+
+    </aura:set>
+</aura:if> 
+                                    </aura:if>
+                                </lightning:layoutItem>
                                        <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
                                                       largeDeviceSize="1"></lightning:layoutItem>
                                 <aura:set attribute="else">
@@ -1448,6 +1466,7 @@
                             </lightning:layoutItem>
                         </lightning:layout>
 
+
                         <!-- Showing Activity Sub Type field on the activity create, clone and edit page dependent on the Activity Type field value, 
         only if there is a dependent activity subtype value
        Date: 06-01-2020 -->
@@ -1734,7 +1753,7 @@
                                         <aura:if isTrue="{! and(and(v.isSPIFSecReadOnly, v.recordId != null), not(v.checkCloneAttribute)) }">
                                             <c:core_MDF_DisplayProducts aura:id="displaySegment" recordId="{!v.recordId}" activityAmount="{!v.activityAmount}"/>
                                             <aura:set attribute="else">
-                                                <c:core_MDF_ActivitySegments aura:id="segmentComp" activityProgram="{!v.recordtypeName}" recTypeDevName="{!v.recordtypeDeveloperName}" activityType="{!v.SelActivityType}" mode="{!v.mode}" recordId="{!v.recordId}" accountId="{!v.selectedLookUpRecord.Core_MDF_Account__c}" activityAmount="{!v.activityAmount}" useOutcomeBasedSpifError="{!and(v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType, v.isPropBasedCampaign)}"/>
+                                                <c:core_MDF_ActivitySegments aura:id="segmentComp" activityProgram="{!v.recordtypeName}" recTypeDevName="{!v.recordtypeDeveloperName}" activityType="{!v.SelActivityType}" mode="{!v.mode}" recordId="{!v.recordId}" accountId="{!v.selectedLookUpRecord.Core_MDF_Account__c}" activityAmount="{!v.activityAmount}" />
                                             </aura:set>
                                         </aura:if>
                                     </aura:if> 
@@ -1755,7 +1774,7 @@
                                 </aura:if>
                                  <!--[IPA MDF] - Campaign - Clone a Proposal - Activity Section  added pfrCloneCheck to pass to kpi along with metrics value-->
                                 <c:core_MDF_Tactics_Form aura:id="tacticMetrics" actTactics ="{!v.selectedTacticsOptions}" mode="{!v.mode}" recordId="{!v.recordId}" ipaclone="{!v.pfrCloneCheck}" 
-                                                         isProposalBased="{!v.isPropBasedCampaign}" intelContribution = "{!v.IPAIntelContri}" 
+                                                         isProposalBased="{!v.isPropBasedCampaign}" intelContribution = "{!if(v.isPropBasedCampaign,v.newPFR.Core_MDF_Maximum_Intel_Investment_amt__c,v.IPAIntelContri)}" 
                                                          editable = "{!v.pfrFieldEditablity.Core_MDF_Tactics_nm__c}" programName = "{!v.recordtypeName}"/>
                             </lightning:layoutItem>                     
                             <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>                     

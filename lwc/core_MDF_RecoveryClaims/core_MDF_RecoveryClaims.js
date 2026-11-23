@@ -467,6 +467,7 @@ export default class Core_MDF_RecoveryClaimsHtmlTable extends LightningElement {
                                     if (data.recoveryAmount != '') {
                                         if (!isNaN(data.recoveryAmount)) {
                                             this.totalRecoveryAmount += parseFloat(data.recoveryAmount);
+                                            console.log('UI::',this.totalRecoveryAmount);
                                             this.totalSelectedRecoveryAmount = this.totalRecoveryAmount;
                                         }
                                     }
@@ -681,6 +682,7 @@ export default class Core_MDF_RecoveryClaimsHtmlTable extends LightningElement {
                 if (element.recoveryAmount != '') {
                     if (!isNaN(element.recoveryAmount)) {
                         this.totalSelectedRecoveryAmount += parseFloat(element.recoveryAmount);
+                        console.log('checkbox::',this.totalSelectedRecoveryAmount);
                     }
                 }
             }
@@ -957,6 +959,7 @@ export default class Core_MDF_RecoveryClaimsHtmlTable extends LightningElement {
                     if (element.recoveryAmount != '') {
                         if (!isNaN(element.recoveryAmount)) {
                             this.totalSelectedRecoveryAmount += parseFloat(element.recoveryAmount);
+                            console.log('saveFunc::',this.totalSelectedRecoveryAmount);
                         }
                     }
                 }

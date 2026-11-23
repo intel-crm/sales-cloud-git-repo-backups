@@ -340,6 +340,24 @@
         <default>false</default>
         <label>Data Center DGPU</label>
     </customValue>
+    <customValue>
+        <fullName>Test LOV Product Type</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Test LOV Product Type</label>
+    </customValue>
+    <customValue>
+        <fullName>Data Center Copilot</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Data Center Copilot</label>
+    </customValue>
+    <customValue>
+        <fullName>Data Center Copilot Testing</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Data Center Copilot Testing</label>
+    </customValue>
     <masterLabel>Product Type</masterLabel>
     <sorted>true</sorted>
 </GlobalValueSet>

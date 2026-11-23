@@ -1,11 +1,5 @@
 <apex:page standardController="Case" extensions="Core_IPS_Interested_Party_Ext_Controller" sidebar="false" showHeader="false">
-    <!--start US313594 - IPS: Disable Done button when adding Interested Party members-->
-    <style>
-        input[type="button"]:disabled {
-            opacity:0.5;
-        }
-    </style>
-    <!--end US313594 - IPS: Disable Done button when adding Interested Party members-->   
+
     <script type="text/javascript">
         function doSearchOnEnter(ev)
         {
@@ -35,27 +29,11 @@
                 return true;
             }
         }
-        
-        
-        //start US313594 - IPS: Disable Done button when adding Interested Party members
-        function openConfirmPopup(doneButton)
-        {
-            var result = confirm("The changes to the interested party list have been made on this case."); 
-            if (result){
-                doneButton.disabled = true;
-                callSaveAndRedirect();                
-            }else
-            {
-                return false;
-            }
-        }
-        //End US313594 - IPS: Disable Done button when adding Interested Party members
+    
     </script>
-     
+        
     <apex:form id="form">
-        <!--start US313594 - IPS: Disable Done button when adding Interested Party members-->
-        <apex:actionFunction name="callSaveAndRedirect" action="{!saveAndRedirect}"/>
-        <!--end US313594 - IPS: Disable Done button when adding Interested Party members-->
+    
         <apex:pageBlock id="crit_block" >
             <apex:pagemessages > </apex:pagemessages>
             <apex:actionstatus id="status1">
@@ -112,17 +90,14 @@
                     <div style="position:relative;left:450px;">
                     <apex:commandButton value="Cancel" action="{!Finished}" />
                     <!--commented by Ashutosh - US103988 -<apex:commandButton value="Done" action="{!Finished}" onclick="if(confirm('The changes to the interested party list have been made on this case.')){window.location.href='/CaseId'}else{return false;}"/>-->
-                    
-                    <!--start US313594 - IPS: Disable Done button when adding Interested Party members-->
-                    <apex:commandButton id="doneButtonId" value="Done" onclick="openConfirmPopup(this);" rerender="nothing"/>
-                    <!--end US313594 - IPS: Disable Done button when adding Interested Party members-->
+                     <apex:commandButton value="Done" action="{!saveAndRedirect}" onclick="if(confirm('The changes to the interested party list have been made on this case.')){window.location.href='/CaseId'}else{return false;}"/>   
                     </div>
                 </apex:outputPanel>
             </apex:pageBlockSection>
             
             <apex:PageBlock title="Selected:" id="selectedresult">
                 <!--Ashutosh - DE34860 - Commented becaue now we will use wrapper "LinkedExternalPartiesList" here.
-                <apex:outputPanel rendered="{!LinkedExternalParties.size<1}"><apex:outputText > No records to display </apex:outputText></apex:outputPanel>        
+				<apex:outputPanel rendered="{!LinkedExternalParties.size<1}"><apex:outputText > No records to display </apex:outputText></apex:outputPanel>        
                 <apex:outputPanel rendered="{!LinkedExternalParties.size>0}">
                     <apex:pageBlockTable value="{!LinkedExternalParties}" var="ext" >         
                          <apex:column headerValue="Add">                            

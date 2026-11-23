@@ -10,11 +10,11 @@ public class Core_MDF_Batch_ShareRecordInsert implements Database.Batchable<sObj
     }
     
     public void execute(Database.BatchableContext bContext, List<sObject> shareRecords) {//log entries
+        system.debug('Inside Batch');
         database.insert(shareRecords);
     }
     
     public void finish(Database.BatchableContext bContext) {
         
-    }
-
+    }    
 }

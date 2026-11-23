@@ -1,0 +1,321 @@
+<template>
+	<!-- Spinner Container -->
+	<div class="spinner">
+		<template if:true={showSpinner}>
+			<lightning-spinner alternative-text="loading...."></lightning-spinner>
+		</template>
+		<lightning-card style="background-color:white">
+			<!-- <div class="slds-box"> -->
+			<!--application dropdown-->
+			<div class="slds-grid">
+				<lightning-combobox name="appFilter" data-id="APP" label="Select Application/Platform"
+					placeholder="Select Application/Platform" value={appSelected} options={appOptions}
+					onchange={handleAppFilterChange} class="slds-var-p-horizontal_medium custom-dropdowns" disbaled={disableApp}>
+				</lightning-combobox>
+			<!--for CCP application-display program, object, from user dropdown-->
+					<template if:true={isProgramApplicable}>
+						<lightning-combobox name="programFilter" data-id="program" label={programLabel}
+							placeholder={selectProgram} value={programSelected} options={programOptions}
+							onchange={handleProgramFilterChange} class="slds-var-p-horizontal_medium custom-dropdowns"
+							disabled={disableProgram}>
+						</lightning-combobox>
+					</template>	
+					<lightning-combobox name="objectFilter" data-id="object" label="Object" placeholder="Select Object"
+						value={objectSelected} options={objectOptions} onchange={handleobjectFilterChange}
+						class="slds-var-p-horizontal_medium custom-dropdowns" disabled={disableObject}>
+					</lightning-combobox>
+				</div>
+				<div class="slds-grid" style="padding: 0 16px;">
+					<template if:true={isFilterFieldApplicale}>
+						<!--<lightning-combobox name="fieldField" data-id="filterField" label={filterCriteriaLabel}
+							placeholder="Select Filter Criteria" value={filterCriteria} options={filterFieldOptionsList}
+							onchange={handleFilterFieldChange} class="slds-var-p-horizontal_medium custom-dropdowns"
+							disabled={disableFilterField}>
+						</lightning-combobox>-->
+						<c-core_-m-d-f_-multi-select-picklist picklistlabel={filterCriteriaLabel} values={filterFieldOptionsList}
+                                                            id="filterField" class="multiSelectPicklistValues"
+                                                            onselect={handleFilterFieldChange}
+                                                            placeholder-text="Select value(s)"
+                                                            no-of-values-got-selected-lable="values(s) Selected">
+                                                        </c-core_-m-d-f_-multi-select-picklist>
+														
+						<lightning-input type="date" label="Filter by: CreatedDate : Start Range" placeholder="Select Start Range" value={selectedDate} onchange={handleStartDate} class="slds-var-p-horizontal_medium custom-dropdowns"> </lightning-input>
+						<lightning-input type="date" label="Filter by: CreatedDate : End Range" placeholder="Select End Range" value={selectedEndDate} onchange={handleendDate} class="slds-var-p-horizontal_medium custom-dropdowns"> </lightning-input>
+					</template>
+				</div>
+				<div class="slds-grid">
+					<template if:true={showTypeOfFromUser}>
+							<lightning-combobox data-name="FromUserFilter" data-id="From User" label=" Type Of From User"
+								placeholder="Select Type Of From User" value={fromUserTypeSelected} options={fromUserOptions}
+								onchange={handleTypeofFromUserFilterChange}
+								class="slds-var-p-horizontal_medium custom-dropdowns">
+							</lightning-combobox>
+					</template>
+
+					
+						
+					
+				
+			
+			<!-- For CCP, display Account selection if the type of user is partner user-->
+			
+				<template if:true={isPartnerUser}>
+					<template if:true={showAccountOptions}>
+						<div style="padding: 0 16px;">
+						<c-core_-m-d-f_-custom-lookup label={accountLabel} obj-name="Account" data-id="account"
+							search-placeholder="Search Accounts..." filter={accountQueryFilter}
+							onlookupselected={handleAccountFilterChange} selected-record={accountSelected}
+							value={accountSelected}>
+						</c-core_-m-d-f_-custom-lookup>
+						</div>
+						<lightning-combobox name="nodeAccountFilter" data-id="Node Account" label={nodeaccountLabel}
+							placeholder={selectAccount} value={nodeAccountSelected} options={nodeAccountOptions}
+							onchange={handleNodeAccountFilterChange}
+							class="slds-var-p-horizontal_medium custom-dropdowns" disabled={disbaleNodeAccount}>
+						</lightning-combobox>
+						
+					</template>
+				</template>
+				<!--if type of user is Internal then show From User selection-->
+				<template if:true={isInternalUser}>
+					<template if:true={showFromUser}>
+						<div class={dynamiClassname} data-id="resultBox" aria-expanded="false" aria-haspopup="listbox"
+							role="combobox" style="padding: 0 16px;">
+							<!--<div class="slds-form-element__control slds-input-has-icon  slds-input-has-icon_right"
+								role="none">-->
+								<lightning-input type="search" required="true" data-id="userinput" label="From User" 
+									value={valueselected} name="searchFromUser" onchange={searchFromUser}
+									field-level-help="Enter few characters of User by Name/ User Record Id"
+									placeholder="Search by Name or UserId" disabled={disableFromUser}
+									class="fromUserDropdown">
+								</lightning-input>
+								<div id="listbox-id-2"
+									class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid"
+									role="listbox">
+									<ul class="slds-listbox slds-listbox_vertical" role="presentation">
+										<template for:each={ownerName} for:item="serecord">
+											<li role="presentation" class="slds-listbox__item" key={serecord.recId}>
+												<div data-id={serecord.recId} data-name={serecord.recName}
+													onclick={getDataBasedOnSelAccntAndUser}
+													class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+													role="option">
+													<div class="slds-media slds-media_center">
+														<span class="slds-media__figure">
+															<span class="slds-icon_container slds-icon-standard-user">
+																<lightning-icon icon-name="standard:user">
+																</lightning-icon>
+															</span>
+														</span>
+														<span class="slds-media__body">
+															<span
+																class="slds-listbox__option-text slds-listbox__option-text_entity">{serecord.recName
+																}</span>
+															<span
+																class="slds-listbox__option-text slds-listbox__option-text_entity">{serecord.email}</span>
+														</span>
+													</div>
+												</div>
+											</li>
+										</template>
+									</ul>
+								</div>
+							<!--</div>-->
+						</div>
+						<!--<div class="button-container">-->
+						<!--After selection of all the required data show Get Data and Reset buttons-->
+							<lightning-layout-item flexibility="no-grow" size="4" small-device-size="4"
+								medium-device-size="4" large-device-size="4" padding="around-small"
+								style="padding-top:25px;padding-left:30px">
+								<lightning-button variant="brand" icon-name="utility:download" style="display: inline-block;padding-left:2%" label={getDataLabel}
+									onclick={getData} disabled={disableGetData}>
+								</lightning-button>
+								<lightning-button variant="Neutral" style="display: inline-block;padding-left:2%" label={resetToDefault}
+									onclick={refreshToInitialSelection} >
+								</lightning-button>
+							</lightning-layout-item>
+						<!--</div>-->
+					</template>
+				</template>
+			</div>
+			<!-- On selection of records, show To User Type and To User selection-->
+			<div class="slds-grid">
+				<template if:true={isPartnerUser}>
+					<template if:true={showFromUser}>
+						<div class={dynamiClassname} data-id="resultBox" aria-expanded="false" aria-haspopup="listbox"
+							role="combobox" style="padding: 0 16px;">
+							<div class="slds-form-element__control slds-input-has-icon  slds-input-has-icon_right"
+								role="none">
+								<lightning-input type="search" required="true" data-id="userinput" label="From User"
+									value={valueselected} name="searchFromUser" onchange={searchFromUser}
+									field-level-help="Enter few characters of User by Name/ User Record Id"
+									placeholder="Search by Name or UserId" disabled={disableFromUser}>
+								</lightning-input>
+								<div id="listbox-id-5"
+									class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid"
+									role="listbox">
+									<ul class="slds-listbox slds-listbox_vertical" role="presentation">
+										<template for:each={ownerName} for:item="serecord">
+											<li role="presentation" class="slds-listbox__item" key={serecord.recId}>
+												<div data-id={serecord.recId} data-name={serecord.recName}
+													onclick={getDataBasedOnSelAccntAndUser}
+													class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+													role="option">
+													<div class="slds-media slds-media_center">
+														<span class="slds-media__figure">
+															<span class="slds-icon_container slds-icon-standard-user">
+																<lightning-icon icon-name="standard:user">
+																</lightning-icon>
+															</span>
+														</span>
+														<span class="slds-media__body">
+															<span
+																class="slds-listbox__option-text slds-listbox__option-text_entity">{serecord.recName}</span>
+															<span
+																class="slds-listbox__option-text slds-listbox__option-text_entity">{serecord.email}</span>
+														</span>
+													</div>
+												</div>
+											</li>
+										</template>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<lightning-layout-item flexibility="no-grow" size="4" small-device-size="4"
+							medium-device-size="4" large-device-size="4" padding="around-small"
+							style="padding-top:25px;padding-left:30px">
+							<lightning-button variant="brand" icon-name="utility:download" label={getDataLabel}
+								onclick={getData} disabled={disableGetData}>
+							</lightning-button>
+						</lightning-layout-item>
+					</template>
+				</template>
+			</div>
+			<!-- </div> -->
+		<!--Once we update select the From User, show Transaction details-->
+		</lightning-card>
+		<template if:true={showTransactionDetails}>
+			<div class="slds-var-m-top_small">
+				<lightning-card variant="Narrow" title={selectedObjectLabel}
+					class="table-card slds-var-m-bottom_large slds-var-m-top_large" style="background-color:white">
+					<p class="slds-p-horizontal_small"><b>Total records :{objRecordsListcount}</b></p>
+					<div class="container">
+						<template if:true={hasRecords}>
+							<template if:false={isCRMPlatform}>
+								<lightning-datatable key-field="Id" data={objRecordsList} columns={dynamiccolumns}
+									onrowselection={handleRowSelected} show-row-number-column="true" class="header-fixed">
+								</lightning-datatable>
+							</template>
+							<template if:true={isCRMPlatform}>
+								<lightning-datatable key-field="Id" data={objRecordsList} columns={dynamiccolumns}
+									onrowselection={handleRowSelected} show-row-number-column="true" class="header-fixed">
+								</lightning-datatable>
+							</template>
+						</template>
+						<template if:false={hasRecords}>
+							<p class="slds-p-horizontal_small">No Records owned by the selected From User!</p>
+						</template>
+					</div>
+				</lightning-card>
+			</div>
+		</template>
+		<!--On selection of records, show To User Type and To User selection-->
+		<template if:true={showToUser}>
+			<div class="slds-var-m-top_small">
+				<lightning-card variant="Narrow" style="background-color:white">
+					<div class="slds-grid">
+						<template if:false={isCRMPlatform}>
+							<lightning-combobox data-name="ToUserFilter" data-id="From User" label=" Type Of To User"
+								placeholder="Select Type Of To User" value={toUserTypeSelected} options={toUserOptions}
+								onchange={handleTypeOfToUserFilterChange} class="slds-p-horizontal_medium custom-dropdowns">
+							</lightning-combobox>
+						</template>
+						<template if:true={showToUserDropdown}>
+							<div class={dynamiClassnamenew} data-id="resultBox" aria-expanded="false"
+								aria-haspopup="listbox" role="combobox" style="padding: 0 16px;">
+								<div class="slds-form-element__control slds-input-has-icon  slds-input-has-icon_right"
+									role="none">
+									<lightning-input type="search" required="true" data-id="userinputnew"
+										label="To User" value={valueselectedNew} name="searchToUser"
+										onchange={searchToUser}
+										field-level-help="Enter few characters of User by Name/ User Record Id"
+										placeholder="Search by Name or UserId" disabled={disableToUserDropdown}>
+									</lightning-input>
+									<div id="listbox-id-3"
+										class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid"
+										role="listbox">
+										<ul class="slds-listbox slds-listbox_vertical" role="presentation">
+											<template for:each={toUserList} for:item="serecord">
+												<li role="presentation" class="slds-listbox__item" key={serecord.recId}>
+
+													<div data-id={serecord.recId} data-name={serecord.recName}
+														onclick={setSelectedRecordNew}
+														class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+														role="option">
+														<div class="slds-media slds-media_center">
+															<span class="slds-media__figure">
+																<span
+																	class="slds-icon_container slds-icon-standard-user">
+																	<lightning-icon icon-name="standard:user">
+																	</lightning-icon>
+																</span>
+															</span>
+
+															<span class="slds-media__body">
+																<span
+																	class="slds-listbox__option-text slds-listbox__option-text_entity">{serecord.recName}</span>
+																<span
+																	class="slds-listbox__option-text slds-listbox__option-text_entity">{serecord.email}</span>
+															</span>
+														</div>
+													</div>
+												</li>
+											</template>
+										</ul>
+									</div>
+									<div if:true={messageFlagNew}>
+										No result found.
+									</div>
+									<div if:true={LoadingTextNew}>
+										Loading...
+									</div>
+									<div if:true={messageFlag}>
+										No result found.
+									</div>
+								</div>
+							</div>
+						</template>
+						<!--To display Ownership button-->
+						<template if:true={showUpdateOwnershipButton}>
+							<lightning-button variant="Variant" label="Update Ownership" title="UpdateOwnershipButton"
+								onclick={updateOwnerOnSelectedRecords} disabled={disableUpdateOwnershipButton}
+								style="padding-top:25px;padding-left:30px" class="custom-dropdowns">
+							</lightning-button>
+						</template>
+					</div>
+				</lightning-card>
+			</div>
+		</template>
+		<!-- After the DML is completed, display the updated data in a table format-->
+		<template if:true={showOwnershipUpdatedRecords}>
+			<div class="slds-var-m-top_small">
+				<lightning-card variant="Narrow" title="Ownership Updated Records"
+					class="table-card slds-var-m-bottom_large slds-var-m-top_large" style="background-color:white">
+					<div class="container">
+						<template if:false={isCRMPlatform}>
+						<lightning-datatable key-field="Id" data={updatedRecordList} columns={columns}
+							show-row-number-column="true" class="header-fixed" hide-checkbox-column="true">
+						</lightning-datatable>
+						</template>
+						<template if:true={isCRMPlatform}>
+							<lightning-datatable key-field="Id" data={updatedRecordList} columns={dynamiccolumns}
+								show-row-number-column="true" class="header-fixed" hide-checkbox-column="true">
+							</lightning-datatable>
+						</template>
+
+					</div>
+				</lightning-card>
+			</div>
+		</template>
+	</div>
+</template>

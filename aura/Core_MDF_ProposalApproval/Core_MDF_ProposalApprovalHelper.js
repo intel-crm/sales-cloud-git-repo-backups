@@ -8,27 +8,29 @@
             result = response.getReturnValue();
             
             if (response.getState() == "SUCCESS" && result != null) {
-                
+                console.log('RESULT-->', result);
+                console.log('isExternalManager-->', result.isExternalManager);
                 component.set('v.externalUser', result.userPermissionsPowerPartner);
                 component.set('v.isPriceReviewer', result.isPriceReviewer);
-                component.set('v.isLegalReviewer', result.isLegalReviewer);  //Roshan - Co-GTM campaign setup
-                component.set('v.isL2Approver', result.isL2Approver);  //Roshan - Co-GTM campaign setup
+                component.set('v.isLegalReviewer', result.isLegalReviewer);
+                component.set('v.isL2Approver', result.isL2Approver);
                 component.set('v.isBusinessApprover',result.isBusinessApprover);  //Aditya
                 component.set('v.isL1Approver',result.isL1ProposalApprover);
                 component.set('v.isL2MarketingApprover',result.isL2ProposalMarketingApprover);
                 component.set('v.isL2SalesApprover',result.isL2ProposalSalesApprover);
-                //component.set('v.isUserPORApprover',result.isUserPORApprover);
+                component.set('v.isUserPORApprover',result.isUserPORApprover);
                 component.set('v.isInternalProposalManager',result.isInternalProposalManager);
                 component.set('v.isExternalManager',result.isExternalManager);
                 component.set('v.isUserPORApprover',result.isPORApprover);
                 component.set('v.piwitmId',result.piwitmGlb);
-                component.set('v.isTechnicalApprover',result.isTechnicalApprover);  //Roshan - Co-GTM claim setup
-                component.set('v.isExternalClaimSubmitter',result.isExternalClaimSubmitter);  //Roshan - Co-GTM claim setup
-                component.set('v.isInternalClaimSubmitter',result.isInternalClaimSubmitter);  //Roshan - Co-GTM claim setup
+                component.set('v.isTechnicalApprover',result.isTechnicalApprover);
+                component.set('v.isExternalClaimSubmitter',result.isExternalClaimSubmitter);
+                component.set('v.isInternalClaimSubmitter',result.isInternalClaimSubmitter);
                 component.set('v.isAccountManagerApprover',result.isAccountManagerApprover); //Swati -IPA Claim
                 component.set('v.isActiveClaimExist',result.isActiveClaimExist);
+                console.log("isActiveClaimExist from Wrapper",result.isActiveClaimExist);
                 if (result.userPermissionsPowerPartner || result.isPriceReviewer||result.isL1ProposalApprover||result.isL2ProposalMarketingApprover
-                    || result.isL2ProposalSalesApprover|| result.isPORApprover||result.isInternalProposalManager||result.isExternalManager||result.isLegalReviewer||result.isL2Approver||result.isBusinessApprover||result.isTechnicalApprover||result.isExternalClaimSubmitter||result.isInternalClaimSubmitter //Roshan - Co-GTM claim setup
+                    || result.isL2ProposalSalesApprover|| result.isPORApprover||result.isInternalProposalManager||result.isExternalManager||result.isLegalReviewer||result.isL2Approver||result.isBusinessApprover||result.isTechnicalApprover||result.isExternalClaimSubmitter||result.isInternalClaimSubmitter
                     ||result.isAccountManagerApprover //Swati -IPA Claim
                 ){
                     component.set('v.buttonToBeVisible', true);  
@@ -36,20 +38,20 @@
                 else {
                     component.set('v.buttonToBeVisible', false); 
                 }
-                if (result.campaignRecord != null) {  //Roshan - Co-GTM claim setup
-                const campaignRecord = result.campaignRecord;
-                component.set("v.programName", campaignRecord.Core_MDF_Program__c);  //Roshan - Dynamic message on campaign recall
 
-		//component.set("v.isCoGtmProgram", component.get("v.programName") === $A.get("$Label.c.Core_MDF_Co_GTM_Technical_program_name"));
-
-                if(component.get('v.buttonToBeVisible') && !$A.util.isUndefinedOrNull(campaignRecord)) {
-         
-                    const totalcampaignCost = campaignRecord.Core_MDF_Total_Campaign_Cost_Amt__c;
-                    const campStatus = campaignRecord.Status;
-                    if(totalcampaignCost === 0 && campStatus === 'Pending Review') {
-                        component.set("v.hideApproveButtonForL1orL2", true);
-                    } else {
-                        component.set("v.hideApproveButtonForL1orL2", false);
+                if (result.campaignRecord != null) {
+                    const campaignRecord = result.campaignRecord;
+                    component.set("v.programName", campaignRecord.Core_MDF_Program__c);
+                    if(component.get('v.buttonToBeVisible') && !$A.util.isUndefinedOrNull(campaignRecord)) {
+            
+                        const totalcampaignCost = campaignRecord.Core_MDF_Total_Campaign_Cost_Amt__c;
+                        const campStatus = campaignRecord.Status;
+                        if(totalcampaignCost === 0 && campStatus === 'Pending Review') {
+                            component.set("v.hideApproveButtonForL1orL2", true);
+                            //component.set("v.hideApproveButtonForL2", true);
+                        } else {
+                            component.set("v.hideApproveButtonForL1orL2", false);
+                            //component.set("v.hideApproveButtonForL2", false);
                         }
                     }
                 }
@@ -62,7 +64,12 @@
     //Function that will called on click of the button
     onClickButton: function (component, cmpId, btnType)
     {   
+        console.log('onclick calllllled');
+        console.log('btnType-->'+btnType);
+        console.log('piwitmId-> '+component.get('v.piwitmId'));       
+        
         if (btnType == $A.get("$Label.c.Core_MDF_Retail_Approve") || btnType == $A.get("$Label.c.Core_MDF_Retail_Reject") || $A.get("$Label.c.Core_MDF_Activity_Recall_Nm")){
+            console.log('piwitmId-> '+component.get('v.piwitmId'));
             const aprAction = component.get("c.approveRejectProposal");
             aprAction.setParams({
                 "buttonName":btnType,
@@ -72,15 +79,20 @@
                 "terminalRejectionInd" : component.get("v.terminalRejectionInd")
             })
             aprAction.setCallback(this, function (response) {
+                console.log("response checking another user error: ",response);
                 const stateSave = response.getState();
                 if(stateSave === "SUCCESS"){
                     let msgTxt = '';
                     const returnValue = response.getReturnValue();
+
                     const isCampaign = component.get("v.recordId").startsWith('701');
+
+                    console.log('returnValue -- > ', returnValue);
                     //Added IF-else condition as part of defect DE120404 fix
                     if(returnValue.isSuccess == true){
                         if (btnType == $A.get("$Label.c.Core_MDF_Retail_Approve")) {
                             msgTxt = isCampaign ? $A.get("$Label.c.Core_MDF_Campaign_was_approved") : 'Claim was approved'; 
+                            //'Campaign was approved' OR 'Claim was approved' //                   
                         }  
                         else if (btnType == $A.get("$Label.c.Core_MDF_Retail_Reject")) {
                             if (isCampaign) {
@@ -91,13 +103,19 @@
                                 msgTxt = 'Claim was rejected';  // 'Claim was rejected'
                             }         
                         }
-                        //Roshan - Dynamic message on campaign/claim recall
                         else if (btnType == $A.get("$Label.c.Core_MDF_Activity_Recall_Nm")) {   
-                        
+                            // const programName = component.get("v.programName");  
+                            // if(isCampaign) {
+                            //     if (programName == $A.get("$Label.c.Core_MDF_Co_GTM_Technical_program_name")) {
+                            //         msgTxt = $A.get("$Label.c.Core_MDF_CampaignRecallSucessMsg");//'Campaign has been recalled successfully';
+                            //     } else {
+                            //         msgTxt = $A.get("$Label.c.Core_MDF_CampaignRecallMsg"); //'Proposal was recalled' // - for IPA
+                            //     }  
+                            // } else {
+                            //     msgTxt = 'Claim has been recalled successfully';
+                            // }
 
-                            //Roshan
                             const programName = component.get("v.programName");  
-
                             msgTxt = isCampaign ? (programName == $A.get("$Label.c.Core_MDF_Co_GTM_Technical_program_name") ? $A.get("$Label.c.Core_MDF_CampaignRecallSucessMsg") : $A.get("$Label.c.Core_MDF_CampaignRecallMsg")) : $A.get("$Label.c.Core_MDF_ClaimRecallSucessMsg");
            
                         }
@@ -115,8 +133,8 @@
                             this.toastMessage($A.get("$Label.c.Core_MDF_Error"),returnValue.type,msgTxt);
                         }
                     }
-                    
                     component.set('v.showApprovalCommentSection', false);
+                    console.log('msgTxt:' + msgTxt);
                     //this.toastMessage($A.get("$Label.c.Core_MDF_Success"),$A.get("$Label.c.Core_MDF_Success"),msgTxt);
                     this.windowTimeOut();
                     component.set("v.loadSpinner",false); 

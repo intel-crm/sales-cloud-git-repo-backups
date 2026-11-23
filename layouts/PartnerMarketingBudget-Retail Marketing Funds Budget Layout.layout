@@ -37,6 +37,14 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Maximum_Approved_Budget_Amt__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Co_Marketing_ind__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Co_Selling_ind__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

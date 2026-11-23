@@ -20,7 +20,7 @@
         <field>Campaign$Core_MDF_Program__c</field>
     </columns>
     <columns>
-        <field>Campaign$Core_MDF_Opal_Budget_Type_Txt__c</field>
+        <field>Campaign$Core_MDF_Budget_Type_txt__c</field>
     </columns>
     <columns>
         <field>Campaign$StartDate</field>
@@ -59,13 +59,13 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Client CoMarketing Fund,Intel Partner Alliance,Retail Marketing Funds,Data Center CoMarketing Fund</value>
+            <value>Client CoMarketing Fund,Client,Intel Partner Alliance,Retail Marketing Funds,Data Center CoMarketing Fund</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Campaign$Core_MDF_Opal_Budget_Type_Txt__c</column>
+            <column>Campaign$Core_MDF_Budget_Type_txt__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>includes</operator>
+            <operator>equals</operator>
             <value>MDF,MDF+,OEM CMP,Retail MDF,RSA MD,Service Provider CMP,Account Plan,Proposal I MDF,Proposal II MDF</value>
         </criteriaItems>
         <criteriaItems>
@@ -111,8 +111,10 @@
     <reportType>Core_MDF_Campaigns_without_Result_Quantity_data__c</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
-    <showGrandTotal>true</showGrandTotal>
+    <showGrandTotal>false</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>Campaign$Core_MDF_Campaign_Reference_Number__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Campaign$StartDate</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

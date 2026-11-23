@@ -4,20 +4,13 @@ public class Core_MDF_Batch_Partnership_Sync_Test {
     @TestSetup
     static void makeData() {
         List<ChannelProgram> channelProgList = new List<ChannelProgram>();
-         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
-        // Creating User with utility class 
-        User usr1 = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr1.LastName = 'User Test1';
-        usr1.UserRoleId = usRole.Id;
-        Database.insert(usr1);
+        
         ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', false);
         channelProgList.add(cp1);
         
         ChannelProgram cp2 = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.RMF_PROGRAM,'Retail Marketing Funds', false);
         channelProgList.add(cp2);
-        System.runAs(usr1){
         Database.insert(channelProgList);
-        }
         
         List<Account> intelAccList = new List<Account> ();
         
@@ -32,9 +25,7 @@ public class Core_MDF_Batch_Partnership_Sync_Test {
         retailAcc.Core_Geo__c ='ASMO';
         retailAcc.Core_Sub_Geo__c ='LAR';
         intelAccList.add(retailAcc);
-        System.runAs(usr1){
         Database.insert(intelAccList);
-        }
         
         List<Account> accList = new List<Account>();
         Account ccfTestAcc = Core_MDF_CCP_TestDataUtility.createAccount ('CCF Test Account',cp1.Id,Core_MDF_CCP_TestDataUtility.Account_Record_Type, false);
@@ -47,9 +38,8 @@ public class Core_MDF_Batch_Partnership_Sync_Test {
         retTestAcc.Core_Geo__c ='ASMO';
         retTestAcc.Core_Sub_Geo__c ='LAR';
         accList.add(retTestAcc);
-        System.runAs(usr1){
+        
         Database.insert(accList);
-        }
         List<Campaign> campList = new List<Campaign>();
         
         Campaign ccfCamp1 = Core_MDF_CCP_TestDataUtility.createCampaign('CCF Campaign 1','Gaming','Intel® Core™ i7+ Processor','Yes' ,Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today(), System.today().adddays(30), 10000, 'Consumer Chromebook', ccfTestAcc.Id, '2-in-1', false);
@@ -59,9 +49,7 @@ public class Core_MDF_Batch_Partnership_Sync_Test {
         
         campList.add(ccfCamp1);
         campList.add(retailCamp);
-        System.runAs(usr1){
         Database.insert(campList);
-        }
         
         List<Case> caseList = new List<Case>();
 
@@ -92,23 +80,13 @@ public class Core_MDF_Batch_Partnership_Sync_Test {
         cs3.Core_MDF_Channel_Program_txt__c = 'Retail Marketing Funds';
         cs3.Origin='Manual Selection';
         caseList.add(cs3);
-        System.runAs(usr1){
         Database.insert(caseList);
-        }
     }
     
     @isTest static void testBatch() {
-        UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
-        // Creating User with utility class 
-        User usr1 = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr1.LastName = 'User Test1';
-        usr1.UserRoleId = usRole.Id;
-        Database.insert(usr1);
         Core_MDF_Batch_Partnership_Sync bchRec = new Core_MDF_Batch_Partnership_Sync();
-        System.runAs(usr1){
         Database.executeBatch(bchRec,100);
-        }
-	 // Unit Test Method should include System.Assert 
+        // Unit Test Method should include System.Assert - Indira
         System.assertNotEquals(null, bchRec, 'Batch record should not be null');
     }
     

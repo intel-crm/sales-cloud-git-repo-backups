@@ -20,7 +20,6 @@ public class Core_MDF_CCP_ConstantClass_Test {
              string cnstName = 'CAMPAIGN_APPROVAL_HISTORY_JSON';
              Core_MDF_CCP_ConstantClass cnstCls = new Core_MDF_CCP_ConstantClass();
              string value = (string)cnstCls.getValue(cnstName);
-
              Assert.isNotNull(value);
          }
              Core_MDF_CCP_ConstantClass.getAllConstants();

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Navin Misra</description>
+    <description>EMP of Lina Stukov</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_10557508_Drew_Peterson</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_10162448_Navin_Misra</parentRole>
+    <parentRole>EMP_10064606_Lina_Stukov</parentRole>
 </Role>

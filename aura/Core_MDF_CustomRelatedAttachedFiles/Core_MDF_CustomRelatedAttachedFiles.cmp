@@ -1,0 +1,7 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <lightning:tile label="Files" href="/path/to/somewhere">
+        <aura:set attribute="media">
+            <lightning:icon iconName="standard:groups"/>
+        </aura:set>
+    </lightning:tile>	
+</aura:component>

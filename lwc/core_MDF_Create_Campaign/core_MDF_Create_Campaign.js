@@ -133,25 +133,32 @@ import getCampaignOutcomes from '@salesforce/apex/Core_MDF_CampaignCreatePage.ge
 import campStartDtBudgetStartDtValErrMessage from "@salesforce/label/c.Core_MDF_Camp_StartDt_Budget_StartDt_Val_ErrMsg";
 import getUserTodayDate from '@salesforce/apex/Core_MDF_CCP_GenericUtility.getUserTodayDate';
 import coGTMCampaignStartDateValidation from '@salesforce/label/c.Core_MDF_CoGTM_Campaign_External_StartDate_Validation';
-import Core_MDF_Campaign_Outcome_Based_Validation from '@salesforce/label/c.Core_MDF_Campaign_Outcome_Based_Validation';
-import campaignIPAOutcomeConfigureDate from '@salesforce/label/c.Core_MDF_IPA_Outcome_Configure_Date';
+import Core_MDF_Campaign_Outcome_Based_Validation from '@salesforce/label/c.Core_MDF_Campaign_Outcome_Based_Validation';//Ealay
+import campaignIPAOutcomeConfigureDate from '@salesforce/label/c.Core_MDF_IPA_Outcome_Configure_Date';//Ealay
+
+const toPicklistArray = value => value == null ? [] : Array.isArray(value) ? value : [value]; //TWC3117-18574
+import resolveRmfAccount from '@salesforce/apex/Core_MDF_CampaignCreatePage.resolveRmfAccount'; //TWC3117-18574
 import Core_MDF_Campaign_Budgets_Label from "@salesforce/label/c.Core_MDF_Campaign_Budgets_Label";
 import Core_MDF_Non_OutcomeBased_Selection_Error from '@salesforce/label/c.Core_MDF_Non_OutcomeBased_Selection_Error';// Ealaya TWC3117-14432 Activity Category changes -->
 import Core_MDF_AccountPlan_StartDate_Error from '@salesforce/label/c.Core_MDF_AccountPlan_StartDate_Error';
 import Core_MDF_IPA_AccountBased_StartDate from '@salesforce/label/c.Core_MDF_IPA_AccountBased_StartDate';
 import userLocale from '@salesforce/i18n/locale';
+import campaignOutcomeVisibilityDateCCF_DCF_RMF from '@salesforce/label/c.Core_MDF_CCF_DCF_RMF_CampaignOutcomeVisibilityDate';//Ealay
 import Core_MDF_Activity_Purpose_Header from '@salesforce/label/c.Core_MDF_Activity_Purpose_Header';
-import getDomainsForAccount from '@salesforce/apex/Core_MDF_CampaignCreatePage.getDomainsForAccount';
+// Roshan - Commented as part of TWC3117-18965
+//import getDomainsForAccount from '@salesforce/apex/Core_MDF_CampaignCreatePage.getDomainsForAccount';
+//import Core_MDF_IntelDomainError from '@salesforce/label/c.Core_MDF_IntelDomainError';
+//import Core_MDF_UnsupportedDomain_Error from '@salesforce/label/c.Core_MDF_UnsupportedDomain_Error';
+//import Core_MDF_No_Approved_Domains_Error from '@salesforce/label/c.Core_MDF_No_ApprovedDomain_Error';
 import Core_MDF_InvalidEmailError from '@salesforce/label/c.Core_MDF_InvalidEmailError';
-import Core_MDF_IntelDomainError from '@salesforce/label/c.Core_MDF_IntelDomainError';
-import Core_MDF_UnsupportedDomain_Error from '@salesforce/label/c.Core_MDF_UnsupportedDomain_Error';
-import Core_MDF_No_Approved_Domains_Error from '@salesforce/label/c.Core_MDF_No_ApprovedDomain_Error';
 import Core_MDF_Other_Specify from '@salesforce/label/c.Core_MDF_Other_Specify';
+import Core_MDF_Maximum_Intel_Investment from '@salesforce/label/c.Core_MDF_Maximum_Intel_Investment';
 //TWC3117-17805 - Aditya 
+import Core_MDF_CCF_DCF_StartDate_Error from '@salesforce/label/c.Core_MDF_CCF_DCF_StartDate_Error';
 import Core_MDF_CCF_DCF_BlockCampaign_StartDate from '@salesforce/label/c.Core_MDF_CCF_DCF_BlockCampaign_StartDate';
 const dateJune2025 = '2025-06-29';
 const dateOct2025 ='2025-10-01';
-const CMP_BUDGET_TYPES = ['OEM CMP'];
+const CMP_BUDGET_TYPES = ['OEM CMP']; //anushya TWC3117-17373
 
 export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningElement) {
 	@api recordTypeId;
@@ -213,6 +220,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 	@api activityListClone = [];
 	@api activityToAttributeList = [];
 	@track mandatoryActFieldsError = false;
+	@track metricsBlankError = true;
 	@track recPFRList = [];
 	@track expandDetail;
 	@track showSPIFRestrictError = false;
@@ -247,8 +255,9 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 	@track initalLoad = false;
 	@track loadBudgetTypefields = false;
 	@track picklistSize = {}
-	@track availableDomains = [];
-	@track domainsLoaded = false;
+	// Roshan - Commented as part of TWC3117-18965
+	//@track availableDomains = [];
+	//@track domainsLoaded = false;
 	activityErrorMessage;
 	isAnyPicklistValueChanged = false;
 	campPickListValuesChangedObj = [];
@@ -279,7 +288,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 	spifWarningError = Core_MDF_Complete_SPIF_Warning;
 	multipleCountriesSoftMsg = Core_MDF_Multiple_Countries_Soft_Msg;
 	multipleGeoError = Core_MDF_Multi_Geo_Error;
-	datevalid = true;countryError = false;industryError = false;multiGeoError = false;activityType = Core_MDF_Activity_Type;
+	datevalid = true; countryError = false; industryError = false; multiGeoError = false; activityType = Core_MDF_Activity_Type;
 	skipOutcomeFieldUpdate = false;
 	startDate = Core_MDF_Start_Date;
 	endDate = Core_MDF_End_Date;
@@ -296,7 +305,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 	availableBudgetValues = [];
 	budgetsOnActiveActivities = [];
 	cloneHeader = Core_MDF_Activity_Creation_Page_Header;
-	campaignBudgets = [];oldcampaignBudgets = [];activityBudgetAmt = [];allCampaignBudgets = [];allCmpBudgetsMap = new Map();selectedAvailableBudgetsMap = new Map();
+	@track campaignBudgets = []; oldcampaignBudgets = []; activityBudgetAmt = []; allCampaignBudgets = []; allCmpBudgetsMap = new Map(); selectedAvailableBudgetsMap = new Map();
 	@track selectPartnerBudgetTypeWarning = {};
 	accountDisable = undefined;
 	accountVisible = true;
@@ -310,10 +319,10 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 	memberVisibilityValid = false;
 	memberVisibilityError = Core_MDF_ExternalVisibilityError;
 	cmpFieldAPINametoPFRFieldAPIName;
-	focusAreaDependentFieldValues = []; label = { singleFocusAreaSelectionTextMessage, internalExternalCommentsCharLimit, applicationErrorMsg, crossGeoCountrySelectionTextMessage, Core_MDF_MandatoryFieldsCheck, Core_MDF_Campaign_Outcome_Validation, Core_MDF_Campaign_Outcome_Based_Validation, Core_MDF_Campaign_Budgets_Label,Core_MDF_Non_OutcomeBased_Selection_Error,Core_MDF_AccountPlan_StartDate_Error,Core_MDF_IPA_AccountBased_StartDate,partnerContactFieldValidation}; //Ealay
+	focusAreaDependentFieldValues = []; label = { singleFocusAreaSelectionTextMessage, internalExternalCommentsCharLimit, applicationErrorMsg, crossGeoCountrySelectionTextMessage, Core_MDF_MandatoryFieldsCheck, Core_MDF_Campaign_Outcome_Validation, Core_MDF_Campaign_Outcome_Based_Validation, Core_MDF_Campaign_Budgets_Label,Core_MDF_Non_OutcomeBased_Selection_Error,Core_MDF_AccountPlan_StartDate_Error,Core_MDF_IPA_AccountBased_StartDate, partnerContactFieldValidation,Core_MDF_Maximum_Intel_Investment,Core_MDF_CCF_DCF_StartDate_Error}; //Ealay
 	ccfRecordType; dcfRecordType;
 	defaultCampRRpct;
-	customPicklistValueDependency; 
+	customPicklistValueDependency;
 	pfrIPALovFields;
 	pfrIPAActCatAndTypeDepFlds;
 	recordTypeWithMultiSelectValues;
@@ -331,23 +340,25 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 	campAmountFields;
 	@track isPriorityPec = false;
 	@api virtualCorpsData;
-	 @api vitualCorpToNodeAcc; 
-	@api NodeAccountsList;
+	@api vitualCorpToNodeAcc = {};
+	@api NodeAccountsList = [];
 	partnerMapError = Core_MDF_PartnerMap_Error_Msg;
-	selectedCampBudgets=[]; campBudgetMap = new Map();
-	isvAccountOptions={};
+	selectedCampBudgets = [];
+	isvAccountOptions = {};
 	@track isvAccIds = [];
 	cspToISVAccountsMap;
 	@track showAvailableISVAccounts = false;
 	@track selectedActPartners = '';
 	@track noAvailablePartnerAccounts = false;
-	isDefaultBudget=false;
-	singleCampBudget=[];
+	isDefaultBudget = false;
+	singleCampBudget = [];
 	@track isActSelOnClone = true;
 	@track validCountriesFromCPObject = [];
+	budgetSelectedOnClone = false;
 	activityCategoryTypeValuesFromCPObject = [];
 	startYearOfCampaign = '';
 	supportsLegacy = '';
+	// @track initialBudgetTypes = [];
 	isDateChanged = false; isCampaignBudgetsInitiallyLoaded = false; @track campaignBudgetsPrevMap = new Map();
 	priorityValuesForRollback = {}; campaignStartDateInitialPhase = ''; campaignStartDatePrevPhase = ''; campaignStartDateCurrPhase = ''; isBudgetTypeChangedOnce = false;
 	campaignBefore2025ActCatTypeValues = []; campaignEqualsOrAfter2025ActCatTypeValues = []; isActAssociatedBudgetTypeRemoved = false; validateCampaignBudgetsAmount = false;
@@ -364,7 +375,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 	intelVerifierError = false;
 	virtualCorpAccId = '';
 	disableContractLineItems = false;
-	disableCampaignBudgets = false;	
+	disableCampaignBudgets = false;
 	selectedBudgetsLabel = Core_MDF_Selected_Budgets;
 	title = Core_MDF_Campaign_Purpose;
 	clickHere = clickHere;
@@ -377,17 +388,17 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 	outcomeStmtFor = outcomeStmtFor;
 	outcomeStmtAnd = outcomeStmtAnd;
 	outcomeStmtClosedBracket = outcomeStmtClosedBracket;
-	multipleValuesSelected= false;
-	@track editedOutcomeData = {};		
+	multipleValuesSelected = false;
+	@track editedOutcomeData = {};
 	@track isOutcomeValid = true;
 	@track isStartDateValid = true;//Added By AN
 	@track outcomeErrorMessages = [];
 	@track columns = [];
-	@track rows = [];	
+	@track rows = [];
 	@track selectedOutcomes = [];
 	outcomeFieldLabels = {};
-		outcomeFieldHelpText = {};
-		outcomePicklistValues = {};
+	outcomeFieldHelpText = {};
+	outcomePicklistValues = {};
 	originalOutcomesOptions = [];  //Roshan - defect fix
 	outcomeFieldRequired = {};
 	currentApprovalStage;
@@ -395,15 +406,20 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 	contractLineItemsOnLoad = [];
 	focusAreaValid = true;
 	userTodayDate;
-	isPastDatedCampaign = false;
+	isPastDatedCampaign=false;
 	bypassBudgetTypeLoad = false;
 	activityCategoryBasedError = false; // Ealaya TWC3117-14432 Activity Category changes -->
 	@track isvalidActCatType = true;
 	@track showIPAStartDateError = false;
+	@track isIPAStartDateValid = true;
+	@track showActivityError = false;
 	//TWC3117-17805 - Aditya 
 	@track showCCFDCFStartDateError = false;
 	@track isCCFDCFStartDateValid = true;
+	//@track isActivityCloneValid = false;
 	campaignPurposeDescriptiveHeader = Core_MDF_Activity_Purpose_Header;
+	@track showRmfSetup = false; //TWC3117-18574
+	@track showAiGeneratedWarning = false; //TWC3117-18574
 
 	validOutcomeMetricRecordType = [
 		Core_MDF_IPA_RecordType,
@@ -420,7 +436,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 	validOutcomeMetricRecordTypeWithOutIPA = [
 		Core_MDF_CCF_RecordTypeName,
 		Core_MDF_DCF_RecordTypeName
-	]; 
+	]; // Ealaya TWC3117-14432 changes	
 
 	@wire(getConstants)
 	allConstants({ error, data }) {
@@ -437,8 +453,8 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			this.recordTypeWithMultiSelectValues[Core_MDF_Co_GTM_RecordType] = data.campaignGTMMultiSelectFieldsOnUI;
 			this.multiSelectPickFlds = this.recordTypeWithMultiSelectValues[this.recordTypeDeveloperName];
 			this.defaultCampRRpct = data.defaultRR_Pct;
-		} else {this.error = error;}
-	} 
+		} else { this.error = error; }
+	}
 	fetchSelectedValues() {
 		let selections = this.template.querySelector('c-core_-m-d-f_-campaign_-available_-budgets_-picklist');
 		this.showCampaignBudgets = true;
@@ -473,6 +489,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 	@wire(getObjectInfo, {
 		objectApiName: CAMPAIGN_OBJECT
 	}) campaignObjectInfo;
+
 	connectedCallback() {
 		loadStyle(this, Core_MDF_DisabledFieldsOnCampaignUI_CSS);
 		if (this.isCommunity === undefined || this.isCommunity === null || this.isCommunity === '') {
@@ -490,11 +507,11 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			this.accountQueryFilter = " RecordType.DeveloperName = 'Core_MDF_Co_Marketing' AND  Core_MDF_Parent_Fund_Account__r.RecordType.DeveloperName != 'Core_MDF_Co_Marketing' AND Core_MDF_Channel_Program__r.Name = 'Client'";
 		} else if (this.recordTypeDeveloperName === Core_MDF_DCF_RecordTypeName) {
 			this.accountQueryFilter = " RecordType.DeveloperName = 'Core_MDF_Co_Marketing' AND  Core_MDF_Parent_Fund_Account__r.RecordType.DeveloperName != 'Core_MDF_Co_Marketing' AND Core_MDF_Channel_Program__r.Name = 'Datacenter'";
-		}else if (this.recordTypeDeveloperName === Core_MDF_EEF_RecordType) {
+		} else if (this.recordTypeDeveloperName === Core_MDF_EEF_RecordType) {
 			this.accountQueryFilter = " RecordType.DeveloperName = 'Core_MDF_Co_Marketing' AND  Core_MDF_Parent_Fund_Account__r.RecordType.DeveloperName != 'Core_MDF_Co_Marketing' AND Core_MDF_Channel_Program__r.Name = 'Ecosystem Extension Fund' AND Core_MDF_Partner_Type_nm__c includes ('Primary Partner')";
 		} else if (this.recordTypeDeveloperName === Core_MDF_Co_GTM_RecordType) {
 			this.accountQueryFilter = " RecordType.DeveloperName = 'Core_MDF_Co_Marketing' AND Core_MDF_Channel_Program__r.Name = '" + Core_MDF_Co_GTM_program_name + "'";
-		}else {
+		} else {
 			this.accountQueryFilter = " RecordType.DeveloperName = 'Core_MDF_Co_Marketing' AND  Core_MDF_Parent_Fund_Account__r.RecordType.DeveloperName != 'Core_MDF_Co_Marketing' AND Core_MDF_Channel_Program__r.Name = '" + this.recordTypeName + "'";
 		}
 		this.accountQueryFilter = this.accountQueryFilter + ' AND Core_MDF_Active_Ind__c = true';
@@ -506,12 +523,13 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		if (this.recordId != undefined && this.recordId != null && this.recordId != '' && (this.mode == 'edit')) {
 			this.getBudgetsOnActiveActivities();
 		}
-		
-			apitoLabelReference({objName: 'Core_MDF_Custom_Picklist__c',pfrPiclistField: Core_MDF_Intel_MDF_Fields.split(',')}).then(result => {
-				this.picklistApitoLabelReferenceMap = new Map(Object.entries(result));
-			}).catch(error => {
-				console.log('error:' + error)
-			});
+
+		apitoLabelReference({ objName: 'Core_MDF_Custom_Picklist__c', pfrPiclistField: Core_MDF_Intel_MDF_Fields.split(',') }).then(result => {
+			this.picklistApitoLabelReferenceMap = new Map(Object.entries(result));
+		}).catch(error => {
+			console.log('error:' + error)
+		});
+
 		//TWC3117-10490 - [CCF/DCF/IPA] - Reimbursement Rate Values
 		const budgetTypeRRMap = new Map(Object.entries(JSON.parse(this.budgetTypeRrOptionsStr)));
 		for (const key of budgetTypeRRMap.keys()) {
@@ -522,7 +540,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				rrOtions.push({ label: value, value: value });
 			});
 			this.budgetTypeRrOptionMap.set(key, rrOtions);
-		}
+		}	
 
 		if (this.recordTypeDeveloperName != rmfRecTypeNm && this.recordTypeDeveloperName != Core_MDF_Co_GTM_RecordType) { this.fetchGeoCountryMappingValue(); }
 		if (this.recordTypeDeveloperName === Core_MDF_Co_GTM_RecordType) {
@@ -558,6 +576,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		}
 	}
 	handleOptInChange(event) {
+		//const dateOct2025 = '2025-06-29';
 		const isChecked = event.target.checked;
 		this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] = isChecked;
 		if (this.recordTypeDeveloperName == Core_MDF_IPA_RecordType && this.campaignFieldValue["StartDate"] >=dateJune2025 && this.campaignFieldValue["StartDate"] < dateOct2025) {
@@ -583,26 +602,37 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			this.campaignFieldValue["Core_MDF_Key_Performance_Indicator__c"] = this.campaignFieldValue["Core_MDF_Key_Performance_Indicator__c"];
 			this.campaignFieldVisibility["Core_MDF_Other_Outcome_Criteria_txt__c"] = false; //Aditya
 		}
+
+		//Aditya TWC3117-16962 
 		this.filterOtherFromOutcomeMetric();
+
+		//Ealaya
 		if (!isChecked) {
-			// Only clear quantity for each outcome row
+		// Only clear quantity for each outcome row
 			Object.keys(this.editedOutcomeData).forEach(key => {
 				this.editedOutcomeData[key].baselineQuantity = null;
-				this.editedOutcomeData[key].baselinePeriod = null;  //Roshan - 17969
+				this.editedOutcomeData[key].baselinePeriod = null;
 			});
 			this.rows = Object.values(this.editedOutcomeData);
-		}
-		this.setColumns();
-		this.validateOutcomeError();
+		}//Elaaya
+		this.setColumns(); //Ealay
+		this.validateOutcomeError();//Ealay and 
 		this.validateActivityCategory();// Ealaya TWC3117-14432 Activity Category changes
+		//Ealay
 		//IPA-Jegan
 		const customEvent = new CustomEvent('outcomechange', {
 			detail: { value: event.target.checked }
 		});
 		this.dispatchEvent(customEvent);
-	}		
+		
+	}
 	handleOutcomeChange(event) {
-		const selectedValues = event.detail.value;
+		let selectedValues = [...event.detail.value];
+		//aditya TWC3117-16962
+		if (this.shouldHideOther()) {
+			selectedValues = selectedValues.filter(v => v !== "Other");
+		}
+		//const selectedValues = event.detail.value;
 		const isOtherSelected = selectedValues.includes("Other");
 		const showOtherField = isOtherSelected;
 		this.campaignFieldVisibility["Core_MDF_Other_Outcome_txt__c"] = showOtherField;
@@ -616,50 +646,56 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		this.multipleValuesSelected = selectedValues.length > 1;
 		const updatedEditedOutcomeData = {};
 		selectedValues.forEach(outcome => {
+			
 			if (this.editedOutcomeData && this.editedOutcomeData[outcome]) {
 				updatedEditedOutcomeData[outcome] = this.editedOutcomeData[outcome];
 			} else {
-				updatedEditedOutcomeData[outcome] = {
-					id: `row-${outcome}`,
-					outcome: outcome,
-					outcomeLabel: this.outcomePicklistValues["Core_MDF_Outcomes_nm__c"]?.[outcome] || outcome,
-					baselineQuantity: null,
-					goalQuantity: null,
-					quantity: null,
-					baselinePeriod: '',
-					outcomeCriteria: ''
-				};
+					updatedEditedOutcomeData[outcome] = {
+						id: `row-${outcome}`,
+						outcome: outcome,
+						outcomeLabel: this.outcomePicklistValues["Core_MDF_Outcomes_nm__c"]?.[outcome] || outcome,
+						baselineQuantity: null,
+						goalQuantity: null,
+						quantity: null,
+						baselinePeriod: '',
+						outcomeCriteria: ''
+					};
 			}
-		});	
+
+		});
 		this.editedOutcomeData = updatedEditedOutcomeData;
-		this.rows = Object.values(this.editedOutcomeData);
+        console.log('OUTPUT :rows ',this.rows);
+        this.rows = Object.values(this.editedOutcomeData);
 		this.setColumns(); //Recompute columns so outcome criteria column shows/hides based on current rows
-	}	
+		//console.log('Updated Edited Outcome Data:', JSON.stringify(this.editedOutcomeData));
+	}
 	handleTableChange(event) {
-		const updatedRows = event.detail;		
+		const updatedRows = event.detail;
 		// Create a temporary object to hold only selected/edited outcomes
-		const updatedEditedOutcomeData = {};	
+		const updatedEditedOutcomeData = {};
 		updatedRows.forEach((row) => {
-			let outcomeKey = row.outcome;	
+			let outcomeKey = row.outcome;
 			if (outcomeKey && this.selectedOutcomes.includes(outcomeKey)) {
 				const existing = this.editedOutcomeData[outcomeKey] || {};
 				updatedEditedOutcomeData[outcomeKey] = { ...existing, ...row };
 			}
-		});	
+		});
 		this.editedOutcomeData = updatedEditedOutcomeData;
+		//console.log('Edited Outcome Data (table):', JSON.stringify(this.editedOutcomeData));
 	}
 	async initializeOutcome() {
 		try {
-			const fieldMetadata = await loadDynamicFields({pickListObj: 'Core_MDF_Campaign_Outcomes__c',budType: [''],objectName:'Core_MDF_Campaign_Outcomes__c'});
+			const fieldMetadata = await loadDynamicFields({ pickListObj: 'Core_MDF_Campaign_Outcomes__c', budType: [''], objectName: 'Core_MDF_Campaign_Outcomes__c' });
 			for (let field of fieldMetadata) {
 				this.outcomeFieldLabels[field.fieldAPIName] = field.fieldLabel;
 				this.outcomeFieldHelpText[field.fieldAPIName] = field.helpText;
 				this.outcomeFieldRequired[field.fieldAPIName] = field.isRequired;
 				if (field.pickListValues) {
 					this.outcomePicklistValues[field.fieldAPIName] = field.pickListValues;
-				}				
-			}			
+				}
+			}
 			this.campaignFieldDisabled["Core_MDF_Quantity_nbr__c"] = true;
+			
 			this.setColumns();
 			// Only load existing data in edit mode
 			if (this.recordId != undefined && this.recordId != null && this.recordId != '' && this.mode == 'edit') {
@@ -696,12 +732,12 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 					outcomeCriteria: row.outcomeCriteria
 				};
 			});
-			this.rows = [...this.rows];			
+			this.rows = [...this.rows];
 		} catch (error) {
 			console.error('Error loading outcomes:', error);
 		}
 	}
-	
+
 	fetchContractLineItems() {
 		getCampaignContractLineItems({ parentId: this.recordId })
 			.then(result => {
@@ -715,7 +751,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 						parentId: this.recordId
 					}))
 					this.contractLineItemsOnLoad = [...this.contractLineItemsList];
-					
+
 				}
 			})
 			.catch(error => {
@@ -743,13 +779,12 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			this.isLoaded = true;
 			if (this.mode == 'edit') {
 				if (this.recordTypeDeveloperName == Core_MDF_EEF_RecordType) {
-					/*if (checkForUndefinedEmptyAndNull(this.virtualCorpsData)){
+					if (checkForUndefinedEmptyAndNull(this.virtualCorpsData)) {
 						this.NodeAccountsList = this.virtualCorpsData['NodeAccountsList'];
 						for (let key in this.virtualCorpsData['vitualCorpToNodeAcc']) {
-								this.vitualCorpToNodeAcc[key] = (this.virtualCorpsData['vitualCorpToNodeAcc'])[key];
-							}
-						 }*/
-
+							this.vitualCorpToNodeAcc[key] = (this.virtualCorpsData['vitualCorpToNodeAcc'])[key];
+						}
+					}
 				}
 
 				checkEditProposalAccess({
@@ -771,6 +806,8 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 
 					getFieldEditibilityMapping({ objectName: this.objectApiName, recTypeDevloperName: this.recordTypeDeveloperName, status: this.status, campaignId: this.recordId, proposalBasedIndicator: result.isProposalBased, claimAssociatedIndicator: result.isClaimAssociated })
 						.then(result => {
+
+
 							if (result) {
 								this.fieldEditibilityList = result;
 								if (this.fieldEditibilityList !== undefined && this.fieldEditibilityList !== null && this.fieldEditibilityList.length === 0) {
@@ -803,45 +840,57 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 								if (!selBudgetIds.includes(result[i].Core_MDF_Budget_Name_Id__c) && result[i].Core_MDF_Active_ind__c == true) {
 									selBudgetIds = [...selBudgetIds, result[i].Core_MDF_Budget_Name_Id__c];
 									this.selectedAvailableBudgetsMap.set(result[i].Core_MDF_Budget_Name_Id__c, result[i]);
-								}let rrOptions;
-								if (this.budgetIdTypeMap.has(result[i].Core_MDF_Budget_Name_Id__c)) {const budgetType = this.budgetIdTypeMap.get(result[i].Core_MDF_Budget_Name_Id__c);
-									if (this.budgetTypeRrOptionMap.has(budgetType)) {rrOptions = this.budgetTypeRrOptionMap.get(budgetType);}}
-						let budgetNameString = getBudgetNameString(result[i].Core_MDF_Budget_Name_Id__r.Title, result[i].Core_MDF_Budget_Type_Nm__c,result[i].Core_MDF_Start_Date_Dt__c, result[i].Core_MDF_End_Date_Dt__c,result[i].Core_MDF_Budget_Name_Id__r.Core_MDF_budget_ref_nbr__c);
-						let obj;if (this.mode === 'edit' && result[i].Core_MDF_Active_ind__c) {
-						if (this.budgetsOnActiveActivities.includes(result[i].Core_MDF_Budget_Name_Id__c)) {
-						campaignBudgetsArray = [...campaignBudgetsArray, budgetDataWrapperMDF(result[i], true, true, rrOptions, budgetNameString)];
-						} else {campaignBudgetsArray = [...campaignBudgetsArray, budgetDataWrapperMDF(result[i], true, false, rrOptions, budgetNameString)];
-						}
-					} else if (this.mode === 'clone' && result[i].Core_MDF_Active_ind__c) {
-						//Clone CCF/DCF RR% changes
-						let selectedRROnCamp = result[i].Core_MDF_Reimbursement_Rate_Pct__c;
-						let selectedBudgetType = result[i].Core_MDF_Budget_Type_Nm__c;
-						let rrToBeStamped;
-
-						if (selectedBudgetType != null) {
-								const allowedRRs = this.budgetTypeRrOptionMap.get(selectedBudgetType)?.map(option => option.value);
-
-								//Check if allowedRRs includes selectedRROnCamp
-								if (allowedRRs && allowedRRs.includes(selectedRROnCamp)) {
-									rrToBeStamped = selectedRROnCamp;  //Set the base campaign's RR%
-								} else {
-									rrToBeStamped = this.defaultCampRRpct;  //Default to 50% if selectedRROnCamp is not in allowed values
 								}
-						}
-						let rrValue = parseFloat(rrToBeStamped) / 100; //Used to calculate Campaign Intel Contribution
-					obj = {
-					budgetId: result[i].Core_MDF_Budget_Name_Id__c,
-					isActive: true,
-					budgetName: budgetNameString,
-					budgetAmount: result[i].Core_MDF_Budget_Amt__c,
-					budgetRR: rrToBeStamped,  // new RR changes
-					budgetRAmount: result[i].Core_MDF_Budget_Amt__c * rrValue,  // new RR changes
-					options: rrOptions,
-					budgetType: result[i].Core_MDF_Budget_Type_Nm__c
-					};
-					campaignBudgetsArray = [...campaignBudgetsArray, obj];}this.allCmpBudgetsMap = this.allCmpBudgetsMap.set(result[i].Core_MDF_Budget_Name_Id__c, result[i]);}
+								let rrOptions;
+								if (this.budgetIdTypeMap.has(result[i].Core_MDF_Budget_Name_Id__c)) {
+									const budgetType = this.budgetIdTypeMap.get(result[i].Core_MDF_Budget_Name_Id__c);
+									if (this.budgetTypeRrOptionMap.has(budgetType)) {
+										rrOptions = this.budgetTypeRrOptionMap.get(budgetType);
+									}
+								}
+
+								let budgetNameString = getBudgetNameString(result[i].Core_MDF_Budget_Name_Id__r.Title, result[i].Core_MDF_Budget_Type_Nm__c, result[i].Core_MDF_Start_Date_Dt__c, result[i].Core_MDF_End_Date_Dt__c, result[i].Core_MDF_Budget_Name_Id__r.Core_MDF_budget_ref_nbr__c);
+								let obj; if (this.mode === 'edit' && result[i].Core_MDF_Active_ind__c) {
+									if (this.budgetsOnActiveActivities.includes(result[i].Core_MDF_Budget_Name_Id__c)) {
+										campaignBudgetsArray = [...campaignBudgetsArray, budgetDataWrapperMDF(result[i], true, true, rrOptions, budgetNameString)];
+									} else {
+										campaignBudgetsArray = [...campaignBudgetsArray, budgetDataWrapperMDF(result[i], true, false, rrOptions, budgetNameString)];
+									}
+								} else if (this.mode === 'clone' && result[i].Core_MDF_Active_ind__c) {
+
+									//Clone CCF/DCF RR% changes
+									let selectedRROnCamp = result[i].Core_MDF_Reimbursement_Rate_Pct__c;
+									let selectedBudgetType = result[i].Core_MDF_Budget_Type_Nm__c;
+									let rrToBeStamped;
+
+									if (selectedBudgetType != null) {
+										const allowedRRs = this.budgetTypeRrOptionMap.get(selectedBudgetType)?.map(option => option.value);
+
+										//Check if allowedRRs includes selectedRROnCamp
+										if (allowedRRs && allowedRRs.includes(selectedRROnCamp)) {
+											rrToBeStamped = selectedRROnCamp;  //Set the base campaign's RR%
+										} else {
+											rrToBeStamped = this.defaultCampRRpct;  //Default to 50% if selectedRROnCamp is not in allowed values
+										}
+									}
+									let rrValue = parseFloat(rrToBeStamped) / 100; //Used to calculate Campaign Intel Contribution
+
+									obj = {
+										budgetId: result[i].Core_MDF_Budget_Name_Id__c,
+										isActive: true,
+										budgetName: budgetNameString,
+										budgetAmount: result[i].Core_MDF_Budget_Amt__c,
+										budgetRR: rrToBeStamped,  //budgetRR: result[i].Core_MDF_Reimbursement_Rate_Pct__c,
+										budgetRAmount: result[i].Core_MDF_Budget_Amt__c * rrValue,  //budgetRAmount: result[i].Core_MDF_Reimbursement_Amt__c,
+										options: rrOptions,
+										budgetType: result[i].Core_MDF_Budget_Type_Nm__c
+									};
+
+									campaignBudgetsArray = [...campaignBudgetsArray, obj];
+								} this.allCmpBudgetsMap = this.allCmpBudgetsMap.set(result[i].Core_MDF_Budget_Name_Id__c, result[i]);
+							}
 							this.oldcampaignBudgets = campaignBudgetsArray;
-							if((this.recordTypeDeveloperName != Core_MDF_EEF_RecordType) || (this.mode == 'edit' && this.recordTypeDeveloperName == Core_MDF_EEF_RecordType)){
+							if ((this.recordTypeDeveloperName != Core_MDF_EEF_RecordType) || (this.recordTypeDeveloperName == Core_MDF_EEF_RecordType && this.mode == 'edit')) {
 								this.campaignBudgetsForSave = campaignBudgetsArray;
 								this.selectedAvailableBudgets = selBudgetIds;
 								this.selectedCmpBudgets = selBudgetIds;
@@ -851,7 +900,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			}
 			loadCampaignRecord({
 				recordId: this.recordId,
-					operation: this.mode,
+				operation: this.mode,
 				objectName: this.objectApiName,
 				fieldSetName: this.fieldSetName
 			}).then(result => {
@@ -859,23 +908,30 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 					var controlllingField = [];
 					this.campaignRecord = result;
 					let isActiveAccount = result["Core_MDF_Account__r"].Core_MDF_Active_Ind__c;
+					this.currentApprovalStage = result['Core_MDF_Approval_Stage_nm__c'];
 					if (isActiveAccount || (!isActiveAccount && this.mode == 'edit')) {
-						this.selectedAccount = { 
-							Id: result["Core_MDF_Account__r"].Id, 
+						this.selectedAccount = {
+							Id: result["Core_MDF_Account__r"].Id,
 							Name: result["Core_MDF_Account__r"].Name,
 							ultimateAcc: result['Core_MDF_Account__r'].Core_MDF_CoMarketing_Ultimate_Account__c,
 							virtualCorpAcc: result['Core_MDF_Account__r'].Core_MDF_Virtual_Corp_Account_Id__c,
 							programId: result['Core_MDF_Channel_Program__c']
-						}; 
+						};
 						this.selectedAccountId = result["Core_MDF_Account__r"].Id;
+						//console.log('@@-selectAccount: ' , this.selectedAccount.virtualCorpAcc);
+
 					}
+					/*else {
+						this.getAccountSpecificBudgetTypes(result["Core_MDF_Account__r"].Id);
+					}*/
+
 					if (this.recordTypeDeveloperName == rmfRecTypeNm) {
 						controlllingField.push(result["Core_MDF_Budget_Type_txt__c"]);
 					} else if (this.recordTypeDeveloperName == Core_MDF_IPA_RecordType) {
 						if (typeof result["Core_MDF_Focus_Area_nm__c"] != 'undefined' && typeof result["Core_MDF_Focus_Area_nm__c"] != null && typeof result["Core_MDF_Focus_Area_nm__c"] != '') {
 							controlllingField = controlllingField.concat(result["Core_MDF_Focus_Area_nm__c"].split(';'));
 						}
-					} else if(this.recordTypeDeveloperName == Core_MDF_EEF_RecordType){
+					} else if (this.recordTypeDeveloperName == Core_MDF_EEF_RecordType) {
 						controlllingField.push(result["Core_MDF_Opal_Budget_Type_Txt__c"]);
 					} else {
 						controlllingField = result["Core_MDF_Opal_Budget_Type_Txt__c"].split(';')
@@ -887,7 +943,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 						if (this.campaignFieldValue["Core_MDF_Integrated_Campaign__c"] == 'Yes') {
 							this.campaignRequiredFields["Core_MDF_Integrated_Campaign_Details__c"] = true;
 						}
-						if(this.mode === 'clone' && !checkForUndefinedEmptyAndNull(this.selectedAccountId)){
+						if (this.mode === 'clone' && !checkForUndefinedEmptyAndNull(this.selectedAccountId)) {
 							this.loadBudgetTypefields = false;
 							this.isLoaded = false;
 						}
@@ -899,21 +955,23 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 						}
 						this.campaignFieldValue["Core_MDF_Program__c"] = this.program;
 						this.campaignFieldValue["Core_MDF_Opal_Budget_Type_Txt__c"] = this.selectedBudType;
-						const virtualCorpId = this.selectedAccount.virtualCorpAcc ? this.selectedAccount.virtualCorpAcc: this.selectedAccount.Id;
-						this.fetchDomainsForAccount(virtualCorpId);
-						this.populateDynamicfields(result);	
+						// Roshan - Commented as part of TWC3117-18965
+						//const virtualCorpId = this.selectedAccount.virtualCorpAcc ? this.selectedAccount.virtualCorpAcc: this.selectedAccount.Id;
+						//this.fetchDomainsForAccount(virtualCorpId);
+						this.populateDynamicfields(result);
+						
 					}
 					this.initalLoad = true;
 					getFieldSetName({ pickListObj: 'Core_MDF_Custom_Picklist__c', budType: controlllingField, objectName: 'Campaign', recordTypeDevName: this.recordTypeDeveloperName })
 						.then(result => {
-							this.fieldSetApiName = result; if (this.recordTypeDeveloperName != Core_MDF_IPA_RecordType) { this.getCampaignFields(); this.loadBudgetTypefields = true; }
+							this.fieldSetApiName = result; console.log('@@fieldsetapi==',this.fieldSetApiName);if (this.recordTypeDeveloperName != Core_MDF_IPA_RecordType) { this.getCampaignFields(); this.loadBudgetTypefields = true; }
 						}).catch(error => console.log(error));
 				}
-				if(result["Core_MDF_Program__c"] === Core_MDF_CCF_Program_Name || result["Core_MDF_Program__c"] === Core_MDF_DCF_Program_Name){
+				if (result["Core_MDF_Program__c"] === Core_MDF_CCF_Program_Name || result["Core_MDF_Program__c"] === Core_MDF_DCF_Program_Name) {
 					this.campaignSource = result["Core_MDF_Campaign_Source_nm__c"];
-					if(result["Core_MDF_Campaign_Source_nm__c"] === 'Target Setting' && this.mode === 'edit'){
+					if (result["Core_MDF_Campaign_Source_nm__c"] === 'Target Setting' && this.mode === 'edit') {
 						this.priorityPecFlag = true;
-						this.priorityPer1 =  parseFloat(result["Core_MDF_Priority_Percentage__c"]);
+						this.priorityPer1 = parseFloat(result["Core_MDF_Priority_Percentage__c"]);
 						this.priorityPer2 = parseFloat(result["Core_MDF_Priority_Percentage_2__c"]);
 						this.priorityPer3 = parseFloat(result["Core_MDF_Priority_Percentage_3__c"]);
 					}
@@ -923,6 +981,11 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		} else {
 			this.getCampaignFields();
 			this.budgetWarning["Core_MDF_Opal_Budget_Type_Txt__c"] = false;
+			//TWC3117-18574
+			 if (this.recordTypeDeveloperName === rmfRecTypeNm && this.mode !== 'edit' && this.mode !== 'clone') {
+				this.showRmfSetup = true;
+			}
+			//TWC3117-18574
 		}
 	}
 	async getCampaignFields() {
@@ -933,10 +996,11 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		await getObjectFields({ objectName: objAPIName, fieldSetNameList: fldSetName, isCommunityUser: this.isCommunity })
 			.then(result => {
 				this.campaignFields = result; this.oldCampFields = this.campaignFields;
+				console.log('@@fields==',this.campaignFields = result);
 				getObjectFieldDetails(this);
-				if(this.recordTypeDeveloperName == Core_MDF_IPA_RecordType) {
+				if (this.recordTypeDeveloperName == Core_MDF_IPA_RecordType) {
 					if (this.mode == 'edit') {
-						if(checkForUndefinedEmptyAndNull(this.budgetOptions) && this.budgetOptions.length > 0) {
+						if (checkForUndefinedEmptyAndNull(this.budgetOptions) && this.budgetOptions.length > 0) {
 							this.campaignPicValues['Core_MDF_Opal_Budget_Type_Txt__c'] = this.budgetOptions;
 						}
 						this.campaignPicValues = lovValuesAddition(this.campaignPicValues, this.campaignFieldValue, this.campRecordTypeName, this.picklistApitoLabelReferenceMap, this);
@@ -967,7 +1031,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 					if (this.mode === 'clone' && this.campaignFieldValue['Core_MDF_Proposal_Based_Ind__c'] && this.activityListClone.length > 0) {
 						this.clearFieldValuesOnClone();// Method to clear field values on clone of a proposal
 						this.pfrDependencyBasedOnActCatAndType = getPFRActCategoryAndTypeDependency(this.activityListClone, this.customPicklistValueDependency);
-						if(this.dynamicload) {
+						if (this.dynamicload) {
 							let cntrlVal = [];
 							cntrlVal.push(this.campaignRecord['Core_MDF_Focus_Area_nm__c']);
 							cntrlVal.push(this.campaignRecord['Core_MDF_Program__c']);
@@ -976,37 +1040,41 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 						}
 						this.clearKPIfieldsClone();
 					}
+					//Aditya TWC3117-17836
 					if (this.mode === 'clone' && this.campaignFieldValue['Core_MDF_Proposal_Based_Ind__c'] ) {
 						this.campaignFieldValue['Core_MDF_Partner_Contact_txt__c'] = '';
 					}
 				} else {
-					if(this.recordTypeDeveloperName == Core_MDF_Co_GTM_RecordType) {
+					if (this.recordTypeDeveloperName == Core_MDF_Co_GTM_RecordType) {
+						//const todayDate = new Date().toISOString().split('T')[0];
 						this.campaignFieldDisabled["Core_MDF_Total_Campaign_Cost_Amt__c"] = true;
 						this.campaignFieldVisibility["Core_MDF_Reason_for_Back_Dating_Nm__c"] = (this.mode == 'edit') ? checkForUndefinedEmptyAndNull(this.campaignFieldValue['Core_MDF_Reason_for_Back_Dating_Nm__c']) && this.campaignFieldValue["StartDate"] < this.userTodayDate ? true : false : false;
 						this.campaignFieldVisibility["Core_MDF_Other_Reason_Name_txt__c"] = (this.mode == 'edit') ? (this.campaignFieldValue["StartDate"] < this.userTodayDate && checkForUndefinedEmptyAndNull(this.campaignFieldValue['Core_MDF_Reason_for_Back_Dating_Nm__c']) && this.campaignFieldValue['Core_MDF_Reason_for_Back_Dating_Nm__c'] == 'Other') ? true : false : false;
 						this.campaignFieldValue["Core_MDF_Opal_Budget_Type_Txt__c"] = ['Co-Engineering'];
 						this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"] = true;
 						this.campaignFieldDisabled["Core_MDF_Profit_Center__c"] = true;
+						
+						//Ankit
 						if(this.isCommunity){
 							this.campaignFieldVisibility["Core_MDF_Reason_for_Back_Dating_Nm__c"] = false;
 							this.campaignFieldVisibility["Core_MDF_Other_Reason_Name_txt__c"] = false;
-							this.campaignFieldVisibility['Core_MDF_MMID__c'] = false;
-							this.campaignFieldVisibility['Core_MDF_Profit_Center__c'] = false;
+							this.campaignFieldVisibility['Core_MDF_MMID__c'] = false; 
+							this.campaignFieldVisibility['Core_MDF_Profit_Center__c'] = false; 
 							this.campaignFieldVisibility["Core_MDF_IPA_Co_Engineering_Campaign_ind__c"] = false;
 						}
-						if(this.mode === 'clone') {
+						if (this.mode === 'clone') {
 							this.campaignFieldValue['Core_MDF_Total_Campaign_Cost_Amt__c'] = '';
-							this.campaignFieldValue['Core_MDF_Reason_for_Back_Dating_Nm__c']='';
+							this.campaignFieldValue['Core_MDF_Reason_for_Back_Dating_Nm__c'] = '';
 							this.campaignFieldValue['Core_MDF_Other_Reason_Name_txt__c'] = '';
 							this.campaignFieldValue['Core_MDF_MMID__c'] = '';
 							this.campaignFieldValue['Core_MDF_Profit_Center__c'] = '';
-                            this.campaignFieldValue['Core_MDF_IPA_Co_Engineering_Campaign_ind__c']=false;
+							this.campaignFieldValue['Core_MDF_IPA_Co_Engineering_Campaign_ind__c']=false;
 							//aditya
 							if(!this.isCommunity){
 								this.campaignFieldVisibility["Core_MDF_Reason_for_Back_Dating_Nm__c"] = this.campaignFieldValue["StartDate"] < this.userTodayDate ? true : false;
 							}else{
-								//this.campaignFieldVisibility["Core_MDF_Reason_for_Back_Dating_Nm__c"] = false;
 								if(this.campaignFieldValue["StartDate"] < this.userTodayDate){
+									
 									this.isPastDatedCampaign = true;
 								}
 							}
@@ -1019,31 +1087,44 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 							this.disableCampaignBudgets = this.disableContractLineItems = true;
 						}
 					}
+
 					this.getPicklistValFromCPObj();
 				}
 				if (this.validOutcomeMetricRecordType.includes(this.recordTypeDeveloperName)) {
 
 					if (this.mode == 'edit' || this.mode == 'clone') {
-						updateOutcomeFieldVisibility(this.campaignFieldValue["StartDate"], this);
+						console.log('startdatevalue:: edit clone', this.campaignFieldValue["StartDate"]);
+						updateOutcomeFieldVisibility(this.campaignFieldValue["StartDate"], this);					
+						console.log('optinvalue:: edit clone', this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"]);											
 					}
 					if (this.recordId != undefined && this.recordId != null && this.recordId != '' && this.mode == 'edit') {
+						console.log('optindisabledbeforegetCampaignFields ', this.campaignFieldDisabled["Core_MDF_CampOutcomeOpt_In_Ind__c"]);
 						this.campaignFieldDisabled["Core_MDF_CampOutcomeOpt_In_Ind__c"] = this.campaignFieldDisabled["Core_MDF_CampOutcomeOpt_In_Ind__c"] ? true : (checkForUndefinedEmptyAndNull(this.activityListEdit) && this.activityListEdit.length > 0);
+						console.log('optindisabledaftrgetCampaignFields ', this.campaignFieldDisabled["Core_MDF_CampOutcomeOpt_In_Ind__c"]);
 						this.campaignFieldVisibility["Core_MDF_Key_Performance_Indicator__c"] = !(this.accountBasedIndicatorCamp && this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"]);
+						//console.log('activities present::'+this.activityListEdit);
 						if (this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"]) {
 							this.campaignRequiredFields["Core_MDF_Outcomes_nm__c"] = true;
 						}
-						this.showOtherOutcomeTextField();
+						
+						this.showOtherOutcomeTextField();//Ealay new
 						this.filterOtherFromOutcomeMetric();
+						//this.setColumns();//Ealaya TWC3117-14432 changes
 					}
 
 					if (this.mode == 'clone') {
-						if (this.validOutcomeMetricRecordType.includes(this.recordTypeDeveloperName)) { 
+						//console.log('coming inside clone console',this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"]);
+						// this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] = false; Previous code
+						// this.campaignFieldVisibility["Core_MDF_Outcomes_nm__c"] = false; previous code
+						//Ealay
+						// if (this.recordTypeDeveloperName == Core_MDF_IPA_RecordType) { Old code
+						if (this.validOutcomeMetricRecordType.includes(this.recordTypeDeveloperName)) { //Ealaya TWC3117-14432 changes
 							this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] = this.recordTypeDeveloperName === Core_MDF_IPA_RecordType && this.proposalBasedIndicatorCamp && this.campaignFieldValue["StartDate"] >= campaignIPAOutcomeConfigureDate ? true : false;
 							const customEvent = new CustomEvent('outcomechange', {
 								detail: { value: this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"]}
 							});
 							this.dispatchEvent(customEvent);
-							if(this.campaignFieldValue["StartDate"] >= dateOct2025){
+							if(this.campaignFieldValue["StartDate"] >= dateOct2025){// remove recordtyep conditon makeit fgenrala
 								this.campaignFieldVisibility["Core_MDF_Outcomes_nm__c"] = true;
 								this.campaignFieldVisibility["Core_MDF_Other_Outcome_Criteria_txt__c"] = true;
 							}else{
@@ -1052,6 +1133,8 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 								this.campaignFieldVisibility["Core_MDF_Other_Outcome_Criteria_txt__c"] = false;
 							}	
 						}
+						//this.showOtherOutcomeTextField();
+						//Ealay
 						this.campaignFieldValue["Core_MDF_Outcomes_nm__c"] = null;
 						this.campaignFieldValue["Core_MDF_Other_Outcome_txt__c"] = null;
 						this.campaignFieldValue["Core_MDF_Other_Outcome_Criteria_txt__c"] = null;
@@ -1062,11 +1145,14 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 						}						
 					}
 					this.setColumns();
-				}
+				} //Ealay
+
 				getpicklistSize(this.multiSelectPickFlds, this);
-				if(this.recordTypeDeveloperName == Core_MDF_EEF_RecordType){
+				if (this.recordTypeDeveloperName == Core_MDF_EEF_RecordType) {
 					this.campaignFieldValue["Core_MDF_Opal_Budget_Type_Txt__c"] = 'Cloud';
 				}
+				console.log('testAMey724 ', this.campaignPicValues);
+				console.log('@@@Inside ini save Start Date', this.isPastDatedCampaign);
 			})
 			.catch(e => { console.log(e); this.isLoaded = false; this.btnDisabled["saveBtn"] = false; this.scrollUp(); });
 	}
@@ -1075,7 +1161,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 	}
 	
 	setColumns() {
-		if (this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] === true) { 
+		if (this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] === true) { // Ealaya TWC3117-14432 changes
 			this.columns = [
 				{ label: this.outcomeFieldLabels["Core_MDF_Outcomes_nm__c"], fieldName: 'outcome', displayField: 'outcomeLabel', editable: false },
 				{ label: this.outcomeFieldLabels["Core_MDF_Initial_Baseline_Quantity_nbr__c"], fieldName: 'baselineQuantity', editable: !this.campaignFieldDisabled["Core_MDF_Initial_Baseline_Quantity_nbr__c"], type: 'number', required: this.outcomeFieldRequired["Core_MDF_Initial_Baseline_Quantity_nbr__c"], min: 0, max: 2147483647, step: 1, helpText: this.outcomeFieldHelpText["Core_MDF_Initial_Baseline_Quantity_nbr__c"] },
@@ -1091,7 +1177,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		const baselinePeriodOptions = Object.entries(this.outcomePicklistValues["Core_MDF_Baseline_Period_nm__c"] || {}).map(([value, label]) => ({ label, value }));
 		
 		if(this.isIPAProposalBasedProgram){
-			if (this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] === true) {  //Roshan - 17969
+			if (this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] === true) {
 				this.columns.push({ label: this.outcomeFieldLabels["Core_MDF_Baseline_Period_nm__c"], fieldName: 'baselinePeriod', editable: !this.campaignFieldDisabled["Core_MDF_Baseline_Period_nm__c"], type: 'picklist', required: true, options: baselinePeriodOptions, placeholder: this.outcomeFieldLabels["Core_MDF_Baseline_Period_nm__c"], cellClass: 'col-lg', helpText: this.outcomeFieldHelpText["Core_MDF_Baseline_Period_nm__c"] });
 			}
 			this.columns.push({ label: this.outcomeFieldLabels["Core_MDF_Quantity_nbr__c"], fieldName: 'quantity', editable: !this.campaignFieldDisabled["Core_MDF_Quantity_nbr__c"], type: 'number', helpText: this.outcomeFieldHelpText["Core_MDF_Quantity_nbr__c"], min: 1, max: 2147483647 });
@@ -1105,8 +1191,9 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		}
 	}
 
+	//Ealay 
 	async getPicklistValFromCPObj() {
-		if (this.recordTypeDeveloperName !== Core_MDF_IPA_RecordType) {
+		if (this.recordTypeDeveloperName !== Core_MDF_IPA_RecordType) { //remove or condition for DCF
 			let controllingFieldValue = [];
 			let selectedProgram = this.campaignFieldValue['Core_MDF_Program__c'];
 			controllingFieldValue.push(selectedProgram);
@@ -1128,7 +1215,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				let selectedBudget;
 				if (this.recordTypeDeveloperName == rmfRecTypeNm) {
 					selectedBudget = this.campaignFieldValue['Core_MDF_Budget_Type_txt__c']
-				}else if(this.recordTypeDeveloperName === Core_MDF_EEF_RecordType){
+				} else if (this.recordTypeDeveloperName === Core_MDF_EEF_RecordType) {
 					fetchCampToActPartnerData(this);
 				} else {
 					selectedBudget = this.campaignFieldValue['Core_MDF_Opal_Budget_Type_Txt__c'];
@@ -1140,36 +1227,37 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				getpicklistSize(this.multiSelectPickFlds, this);
 				if (this.priorityValuesForRollback["initiallyAssigned"] != true && (this.mode === 'clone' || this.mode == 'edit') && (this.recordTypeDeveloperName == this.ccfRecordType || this.recordTypeDeveloperName == this.dcfRecordType
 					|| this.recordTypeDeveloperName == Core_MDF_EEF_RecordType || this.recordTypeDeveloperName == rmfRecTypeNm)) {
-						this.priorityValuesForRollback["Core_MDF_Priority_2_nm__c"] = this.campaignFieldValue["Core_MDF_Priority_2_nm__c"];
-						this.priorityValuesForRollback["Core_MDF_Priority_3_nm__c"] = this.campaignFieldValue["Core_MDF_Priority_3_nm__c"];
-						this.priorityValuesForRollback["initiallyAssigned"] = true;
+					this.priorityValuesForRollback["Core_MDF_Priority_2_nm__c"] = this.campaignFieldValue["Core_MDF_Priority_2_nm__c"];
+					this.priorityValuesForRollback["Core_MDF_Priority_3_nm__c"] = this.campaignFieldValue["Core_MDF_Priority_3_nm__c"];
+					this.priorityValuesForRollback["initiallyAssigned"] = true;
 				}
 				this.isLoaded = false;
 			} else {
 				let selContext;
 				if (this.recordTypeDeveloperName == Core_MDF_EEF_RecordType || this.recordTypeDeveloperName == Core_MDF_Co_GTM_RecordType) {
 					selContext = 'loadAllFields';
-					let ctrlFields = this.recordTypeDeveloperName == Core_MDF_EEF_RecordType ? this.campaignFieldValue["Core_MDF_Opal_Budget_Type_Txt__c"] :  'Co-Engineering';
+					let ctrlFields = this.recordTypeDeveloperName == Core_MDF_EEF_RecordType ? this.campaignFieldValue["Core_MDF_Opal_Budget_Type_Txt__c"] : 'Co-Engineering';
 					controllingFieldValue.push(ctrlFields);
 				} else {
 					selContext = 'loadFieldsBasedOnProgram';
 				}
-				let wrapper = await fetchPicklist(this.recordTypeDeveloperName, this.campaignPicValues, controllingFieldValue, this.picklistApitoLabelReferenceMap,selContext, this);
+				let wrapper = await fetchPicklist(this.recordTypeDeveloperName, this.campaignPicValues, controllingFieldValue, this.picklistApitoLabelReferenceMap, selContext, this);
 				this.campaignPicValues = wrapper.campaignPicValues;
-				if(this.recordTypeDeveloperName == Core_MDF_Co_GTM_RecordType && checkForUndefinedEmptyAndNull(this.campaignFieldValue['Core_MDF_Opal_Budget_Type_Txt__c']) && this.campaignFieldValue['Core_MDF_Opal_Budget_Type_Txt__c'].length > 0) {
+				if (this.recordTypeDeveloperName == Core_MDF_Co_GTM_RecordType && checkForUndefinedEmptyAndNull(this.campaignFieldValue['Core_MDF_Opal_Budget_Type_Txt__c']) && this.campaignFieldValue['Core_MDF_Opal_Budget_Type_Txt__c'].length > 0) {
 					this.loadBudgetTypefields = true;
 				}
 				this.getActcategoryTypeValues();
 				this.isLoaded = false;
 			}
 		}
+		console.log('testAMey789 ', this.campaignPicValues);
 	}
 	editActivityOnCamp(event) {
 		let actId = event.target.name;
-		var selectedEvent = new CustomEvent('recSelectedAct', { detail: {actId: actId, oldActivityListClone : this.activityListClone}});
+		var selectedEvent = new CustomEvent('recSelectedAct', { detail: { actId: actId, oldActivityListClone: this.activityListClone } });
 		this.dispatchEvent(selectedEvent);
 		this.expandDetail = 'A';
-		var campaignAttributeChangeEvt = new CustomEvent('campaignAttributeChangeEvt', { detail: {fieldValue: this.campaignFieldValue} });
+		var campaignAttributeChangeEvt = new CustomEvent('campaignAttributeChangeEvt', { detail: { fieldValue: this.campaignFieldValue } });
 		this.dispatchEvent(campaignAttributeChangeEvt);
 	}
 	handleIntCampChange(event) {
@@ -1182,11 +1270,13 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 	}
 	handleDateChanges(event) {
 		handleDateChange(event, this);
+		//Aditya TWC3117-16962
 		if (this.recordTypeDeveloperName === Core_MDF_IPA_RecordType && this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"] == true) {
 			this.filterOtherFromOutcomeMetric();
 		}
 		//Aditya TWC3117-17805 
 		this.validateCCFDCFStartDateError();
+		
 	}
 	handleOEMDateChanges(event) {
 		handleOEMDateChange(event, this);
@@ -1197,7 +1287,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		let ThirdPriorityCmp = this.template.querySelector(".ThirdPriority");
 		if (event.target.name == 'Core_MDF_Priority__c') {
 			this.campaignFieldValue["Core_MDF_Priority__c"] = event.target.value;
-			if(this.status === 'Draft'){
+			if (this.status === 'Draft') {
 				this.campaignFieldDisabled["Core_MDF_Priority_Percentage__c"] = false;
 			}
 		} else if (event.target.name == 'Core_MDF_Priority_2_nm__c') {
@@ -1207,56 +1297,56 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			this.campaignFieldValue["Core_MDF_Priority_3_nm__c"] = event.target.value;
 			handlePriorityNoneValueSelection(event, this, 'Core_MDF_Priority_Percentage_3__c', '.ThirdPriorityPercentage');
 		}
-		if(this.recordTypeDeveloperName != Core_MDF_Co_GTM_RecordType) {
+		if (this.recordTypeDeveloperName != Core_MDF_Co_GTM_RecordType) {
 			if (((this.campaignFieldValue["Core_MDF_Priority__c"] == this.campaignFieldValue["Core_MDF_Priority_2_nm__c"]) && this.campaignFieldValue["Core_MDF_Priority_2_nm__c"] != '') ||
-			((this.campaignFieldValue["Core_MDF_Priority__c"] == this.campaignFieldValue["Core_MDF_Priority_3_nm__c"]) && this.campaignFieldValue["Core_MDF_Priority_2_nm__c"] != '') && this.campaignFieldValue["Core_MDF_Priority__c"] != '') {
-			PriorityCmp.setCustomValidity("Select a value not already selected for Priority #2 or Priority #3.");
-			PriorityCmp.reportValidity();
-		} else {
-			PriorityCmp.setCustomValidity("");PriorityCmp.reportValidity();
+				((this.campaignFieldValue["Core_MDF_Priority__c"] == this.campaignFieldValue["Core_MDF_Priority_3_nm__c"]) && this.campaignFieldValue["Core_MDF_Priority_2_nm__c"] != '') && this.campaignFieldValue["Core_MDF_Priority__c"] != '') {
+				PriorityCmp.setCustomValidity("Select a value not already selected for Priority #2 or Priority #3.");
+				PriorityCmp.reportValidity();
+			} else {
+				PriorityCmp.setCustomValidity(""); PriorityCmp.reportValidity();
+			}
+			if ((this.campaignFieldValue["Core_MDF_Priority_2_nm__c"] !== 'None') && (((this.campaignFieldValue["Core_MDF_Priority_2_nm__c"] == this.campaignFieldValue["Core_MDF_Priority_3_nm__c"]) &&
+				this.campaignFieldValue["Core_MDF_Priority_2_nm__c"] != '' && this.campaignFieldValue["Core_MDF_Priority_3_nm__c"] != '') ||
+				(this.campaignFieldValue["Core_MDF_Priority_2_nm__c"] == this.campaignFieldValue["Core_MDF_Priority__c"]) && this.campaignFieldValue["Core_MDF_Priority_2_nm__c"] != '')) {
+				SecondPriorityCmp.setCustomValidity("Select a value not already selected for Priority or Priority #3.");
+				SecondPriorityCmp.reportValidity();
+			} else {
+				SecondPriorityCmp.setCustomValidity("");
+				SecondPriorityCmp.reportValidity();
+			}
+			if ((this.campaignFieldValue["Core_MDF_Priority_3_nm__c"] !== 'None') && (((this.campaignFieldValue["Core_MDF_Priority_3_nm__c"] == this.campaignFieldValue["Core_MDF_Priority_2_nm__c"]) &&
+				this.campaignFieldValue["Core_MDF_Priority_2_nm__c"] != '' && this.campaignFieldValue["Core_MDF_Priority_3_nm__c"] != '') ||
+				(this.campaignFieldValue["Core_MDF_Priority_3_nm__c"] == this.campaignFieldValue["Core_MDF_Priority__c"]) && this.campaignFieldValue["Core_MDF_Priority_3_nm__c"] != '')) {
+				ThirdPriorityCmp.setCustomValidity("Select a value not already selected for Priority or Priority #2.");
+				ThirdPriorityCmp.reportValidity();
+			} else {
+				ThirdPriorityCmp.setCustomValidity(""); ThirdPriorityCmp.reportValidity();
+			}
 		}
-		if ((this.campaignFieldValue["Core_MDF_Priority_2_nm__c"] !== 'None') && (((this.campaignFieldValue["Core_MDF_Priority_2_nm__c"] == this.campaignFieldValue["Core_MDF_Priority_3_nm__c"]) &&
-			this.campaignFieldValue["Core_MDF_Priority_2_nm__c"] != '' && this.campaignFieldValue["Core_MDF_Priority_3_nm__c"] != '') ||
-			(this.campaignFieldValue["Core_MDF_Priority_2_nm__c"] == this.campaignFieldValue["Core_MDF_Priority__c"]) && this.campaignFieldValue["Core_MDF_Priority_2_nm__c"] != '')) {
-			SecondPriorityCmp.setCustomValidity("Select a value not already selected for Priority or Priority #3.");
-			SecondPriorityCmp.reportValidity();
-		} else {
-			SecondPriorityCmp.setCustomValidity("");
-			SecondPriorityCmp.reportValidity();
-		}
-		if ((this.campaignFieldValue["Core_MDF_Priority_3_nm__c"] !== 'None') && (((this.campaignFieldValue["Core_MDF_Priority_3_nm__c"] == this.campaignFieldValue["Core_MDF_Priority_2_nm__c"]) &&
-			this.campaignFieldValue["Core_MDF_Priority_2_nm__c"] != '' && this.campaignFieldValue["Core_MDF_Priority_3_nm__c"] != '') ||
-			(this.campaignFieldValue["Core_MDF_Priority_3_nm__c"] == this.campaignFieldValue["Core_MDF_Priority__c"]) && this.campaignFieldValue["Core_MDF_Priority_3_nm__c"] != '')) {
-			ThirdPriorityCmp.setCustomValidity("Select a value not already selected for Priority or Priority #2.");
-			ThirdPriorityCmp.reportValidity();
-		} else {
-			ThirdPriorityCmp.setCustomValidity("");ThirdPriorityCmp.reportValidity();
-		}
-		}
-		
+
 	}
-	handlePriorityPctChange(event){
-		if((this.campaignFieldValue["Core_MDF_Program__c"] === Core_MDF_CCF_Program_Name || this.campaignFieldValue["Core_MDF_Program__c"] === Core_MDF_DCF_Program_Name) && this.campaignSource === 'Target Setting'){
-			if(event.target.name === 'Core_MDF_Priority_Percentage__c'){
-				if(!isNaN(parseFloat(event.target.value))){
+	handlePriorityPctChange(event) {
+		if ((this.campaignFieldValue["Core_MDF_Program__c"] === Core_MDF_CCF_Program_Name || this.campaignFieldValue["Core_MDF_Program__c"] === Core_MDF_DCF_Program_Name) && this.campaignSource === 'Target Setting') {
+			if (event.target.name === 'Core_MDF_Priority_Percentage__c') {
+				if (!isNaN(parseFloat(event.target.value))) {
 					this.priorityPer1 = parseFloat(event.target.value);
-				}else if(isNaN(parseFloat(event.target.value))){
+				} else if (isNaN(parseFloat(event.target.value))) {
 					this.priorityPer1 = 0;
 					event.target.value = 0;
 				}
 			}
-			if(event.target.name === 'Core_MDF_Priority_Percentage_2__c'){
-				if(!isNaN(parseFloat(event.target.value))){
+			if (event.target.name === 'Core_MDF_Priority_Percentage_2__c') {
+				if (!isNaN(parseFloat(event.target.value))) {
 					this.priorityPer2 = parseFloat(event.target.value);
-				}else if(isNaN(parseFloat(event.target.value))){
+				} else if (isNaN(parseFloat(event.target.value))) {
 					this.priorityPer2 = 0;
 					event.target.value = 0;
 				}
 			}
-			if(event.target.name === 'Core_MDF_Priority_Percentage_3__c'){
-				if(!isNaN(parseFloat(event.target.value))){
+			if (event.target.name === 'Core_MDF_Priority_Percentage_3__c') {
+				if (!isNaN(parseFloat(event.target.value))) {
 					this.priorityPer3 = parseFloat(event.target.value);
-				}else if(isNaN(parseFloat(event.target.value))){
+				} else if (isNaN(parseFloat(event.target.value))) {
 					this.priorityPer3 = 0;
 					event.target.value = 0;
 				}
@@ -1269,7 +1359,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		if (this.mode != 'edit' || this.mode != 'clone') {
 			this.activityCategoryValues = this.campaignFieldValue["Core_MDF_Activity_Category_Type__c"];
 		}
-		if (this.campaignFieldValue["Core_MDF_Program__c"] == Core_MDF_CCF_Program_Name || this.campaignFieldValue["Core_MDF_Program__c"] == Core_MDF_DCF_Program_Name || this.campaignFieldValue["Core_MDF_Program__c"] == Core_MDF_EEF_Program_Name){
+		if (this.campaignFieldValue["Core_MDF_Program__c"] == Core_MDF_CCF_Program_Name || this.campaignFieldValue["Core_MDF_Program__c"] == Core_MDF_DCF_Program_Name || this.campaignFieldValue["Core_MDF_Program__c"] == Core_MDF_EEF_Program_Name) {
 			this.handlePicklistDependentValueChange(event);
 		}
 		// Ealaya TWC3117-14432 Activity Category changes -->
@@ -1290,13 +1380,13 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 	}
 	handleEcosystemPartnerChange(event) {
 		this.campaignFieldValue["Core_MDF_Ecosystem_Partner_Nm__c"] = event.target.value;
-		if (this.campaignFieldValue["Core_MDF_Program__c"] == Core_MDF_IPA_Program_Name) { 
+		if (this.campaignFieldValue["Core_MDF_Program__c"] == Core_MDF_IPA_Program_Name) {
 			this.handlePicklistDependentValueChange(event);
 		}
 		this.throwErrorOnNonevalueSelection(event, '.validateNoneForEcoSystemPartner');
 		this.othersMandate(event.target.name, event.target.value);
 	}
-	handleOtherEcoSystemPartner(event){this.campaignFieldValue["Core_MDF_Other_Ecosystem_Partner_txt__c"] = event.target.value;}
+	handleOtherEcoSystemPartner(event) { this.campaignFieldValue["Core_MDF_Other_Ecosystem_Partner_txt__c"] = event.target.value; }
 	throwErrorOnNonevalueSelection(event, className) {
 		var inputCmp = this.template.querySelector(className);
 		if (event.target.value.includes('None') && event.target.value.length > 1)
@@ -1333,7 +1423,6 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			this.handlePicklistDependentValueChange(event); this.validatePickValuesBasedOnFocusArea(event);
 		}
 	}
-
 	validatePickValuesBasedOnFocusArea(event, dependentFields) {
 		let focusAreaDependentErrorWrapper;
 		if (checkForUndefinedEmptyAndNull(dependentFields) && dependentFields.length > 0) {
@@ -1346,11 +1435,10 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			this.throwFocusAreaDependentValuesError(event.target.name, focusAreaDependentErrorWrapper);
 		}
 	}
-
 	throwFocusAreaDependentValuesError(elementName, focusAreaDependentErrorWrapper) {
 		let inputCmp = this.template.querySelector('[data-name="' + elementName + '"]');
 		if (checkForUndefinedEmptyAndNull(focusAreaDependentErrorWrapper) && Object.keys(focusAreaDependentErrorWrapper).length > 0 && focusAreaDependentErrorWrapper.hasNoOnevalueSelectedFromEachFC)
-			inputCmp.setCustomValidity(focusAreaDependentValueError + ' '+ focusAreaDependentErrorWrapper.noSingleValueSelectedFocusAreas);
+			inputCmp.setCustomValidity(focusAreaDependentValueError + ' ' + focusAreaDependentErrorWrapper.noSingleValueSelectedFocusAreas);
 		else
 			inputCmp.setCustomValidity('');
 		inputCmp.reportValidity();
@@ -1387,31 +1475,9 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 	setCCFDCFFields(budgetType) {
 		try {
 			this.finalDependentVal = [];
-			let selectedVal;
+			//let selectedVal;
 			if (this.campaignFieldValue["Core_MDF_Integrated_Campaign__c"] == 'Yes') {
 				this.campaignRequiredFields["Core_MDF_Integrated_Campaign_Details__c"] = true;
-			}
-			if (budgetType == 'CCF 1.0' || budgetType == 'DCF 1.0') {
-				selectedVal = 'Yes';
-				this.campaignFieldValue["Core_MDF_Supports_legacy_program__c"] = 'Yes';
-				this.showLegacyFields = true;
-				this.showAvailableBudgets = false;
-				this.showAvailableBudgetRequired = false;
-				this.showCampaignBudgets = false;
-				this.budgetWarning["Core_MDF_Opal_Budget_Type_Txt__c"] = false;
-				if (this.mode != 'edit' && this.mode != 'clone') {
-					this.campaignFieldValue["Core_MDF_Reimbursement_Rate__c"] = '50%';
-				}
-				this.availableBudgetWarning["Core_MDF_Opal_Budget_Type_Txt__c"] = false;
-			}
-			if (budgetType != undefined && budgetType != null && budgetType != '' && budgetType.length > 1 && (budgetType.includes('CCF 1.0') || budgetType.includes('DCF 1.0'))) {
-				this.campaignFieldValue["Core_MDF_Supports_legacy_program__c"] = 'Yes';
-				this.budgetWarning["Core_MDF_Opal_Budget_Type_Txt__c"] = true;
-				this.availableBudgetWarning["Core_MDF_Opal_Budget_Type_Txt__c"] = false;
-				this.showLegacyFields = false;
-				this.showAvailableBudgets = false;
-				this.showAvailableBudgetRequired = false;
-				this.showCampaignBudgets = false;
 			}
 			if (budgetType != undefined && budgetType != null && budgetType != '' && !budgetType.includes('CCF 1.0') && !budgetType.includes('DCF 1.0')) {
 				if (this.campaignFieldValue["Core_MDF_Program__c"] != Core_MDF_IPA_Program_Name) {
@@ -1431,7 +1497,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				(this.budgetWarning["Core_MDF_Opal_Budget_Type_Txt__c"] == false)) {
 				this.resetBudgetRelatedFlags();
 				if (this.campaignFieldValue["Core_MDF_Supports_legacy_program__c"] != 'Yes') {
-					let selAccount = this.recordTypeDeveloperName == Core_MDF_Co_GTM_RecordType ? checkForUndefinedEmptyAndNull(this.virtualCorpAccId) ? this.virtualCorpAccId :this.campaignFieldValue["Core_MDF_Account__c"]   : this.campaignFieldValue["Core_MDF_Account__c"];
+					let selAccount = this.recordTypeDeveloperName == Core_MDF_Co_GTM_RecordType ? checkForUndefinedEmptyAndNull(this.virtualCorpAccId) ? this.virtualCorpAccId : this.campaignFieldValue["Core_MDF_Account__c"] : this.campaignFieldValue["Core_MDF_Account__c"];
 					this.getBudgetsForCampaign(selAccount, this.campaignFieldValue["StartDate"], this.campaignFieldValue["EndDate"], this.campaignFieldValue["Core_MDF_Opal_Budget_Type_Txt__c"]);
 				}
 			}
@@ -1491,6 +1557,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 									} else {
 										//filter before assigning
 										this.campaignFieldValue['Core_MDF_Activity_Category_Type__c'] = [...this.campaignBefore2025ActCatTypeValues];
+										//this.campaignFieldValue = validatePicklistvalues(actCategoryTypeVals, this.campaignFieldValue, fieldDetails, this);
 										actCatTypeValuesToRetain = this.retainActivityAssociatedActCatTypes();
 										actCategoryTypeVals = [...actCategoryTypeVals, ...actCatTypeValuesToRetain];
 										this.updateActCategoryTypeValues(actCategoryTypeVals);
@@ -1501,6 +1568,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 									} else {
 										//filter before assigning
 										this.campaignFieldValue['Core_MDF_Activity_Category_Type__c'] = [...this.campaignEqualsOrAfter2025ActCatTypeValues];
+										//this.campaignFieldValue = validatePicklistvalues(actCategoryTypeVals, this.campaignFieldValue, fieldDetails, this);
 										actCatTypeValuesToRetain = this.retainActivityAssociatedActCatTypes();
 										actCategoryTypeVals = [...actCategoryTypeVals, ...actCatTypeValuesToRetain];
 										this.updateActCategoryTypeValues(actCategoryTypeVals);
@@ -1516,12 +1584,15 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 								actCatTypeValuesToRetain = this.retainActivityAssociatedActCatTypes();
 								finalActCatType = [...finalActCatType, ...actCatTypeValuesToRetain];
 								actCategoryTypeVals = finalActCatType;
+								//let UpdActCatType = { 'Core_MDF_Activity_Category_Type__c': actCategoryTypeVals }
+								//this.campaignFieldValue = validatePicklistvalues(UpdActCatType, this.campaignFieldValue, fieldDetails, this);
 								this.updateActCategoryTypeValues(actCategoryTypeVals);
 							}
 						}
 						if (target == 'budgetType') {
 							this.isBudgetTypeChangedOnce = true;
 							//filter before assigning
+							//this.campaignFieldValue = validatePicklistvalues(actCategoryTypeVals, this.campaignFieldValue, fieldDetails, this);
 							actCatTypeValuesToRetain = this.retainActivityAssociatedActCatTypes();
 							actCategoryTypeVals = [...actCategoryTypeVals, ...actCatTypeValuesToRetain];
 							this.updateActCategoryTypeValues(actCategoryTypeVals);
@@ -1537,11 +1608,15 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				} else {
 					this.updateActCategoryTypeValues(actCategoryTypeVals);
 				}
-			}		
+			}
+			console.log('@@actCatTypeValuesToRetain',JSON.stringify(actCatTypeValuesToRetain));//remove json stringfy in console
+			console.log('@@actCategoryTypeVals',json.stringify(actCategoryTypeVals));//remove json stringfy in console
+
 		} catch (e) { console.log(e); }
 	}
 
 	updateActCategoryTypeValues(actCategoryTypeVals) {
+		console.log('@@actCategoryTypeVals',actCategoryTypeVals);
 		this.campaignPicValues["Core_MDF_Activity_Category_Type__c"] = actCategoryTypeVals;
 		let fieldDetails = [
 			{
@@ -1552,20 +1627,79 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		]
 		this.campaignFieldValue = validatePicklistvalues(this.campaignPicValues, this.campaignFieldValue, fieldDetails, this);
 	}
-	retainActivityAssociatedActCatTypes(){
+	retainActivityAssociatedActCatTypes() {
 		//add Activity_Category_Type values associated with activity which got removed on budget type change on campaign edit
-		let valuesToRetain  = [];
-		if(this.mode == 'edit' && checkForUndefinedEmptyAndNull(this.activityListEdit) && this.activityListEdit.length > 0){
+		let valuesToRetain = [];
+		if (this.mode == 'edit' && checkForUndefinedEmptyAndNull(this.activityListEdit) && this.activityListEdit.length > 0) {
 			let activityAssociatedActCatTypes = [];
 			activityAssociatedActCatTypes = getValuesRefOnActivities('Core_MDF_Activity_Category_Type__c', 'Activity_Category_Type', this);
 			activityAssociatedActCatTypes.forEach(actCatTypeValue => {
+				//if (!this.campaignFieldValue["Core_MDF_Activity_Category_Type__c"].includes(actCatTypeValue)) {
 				valuesToRetain.push(
-					{class: 'optionClass', label: actCatTypeValue, value: actCatTypeValue}
+					{ class: 'optionClass', label: actCatTypeValue, value: actCatTypeValue }
 				);
+				//}
 			});
 		}
 		return valuesToRetain;
 	}
+
+	// retainActivityAssociatedFieldValues(campFieldAPIName, pfrFieldAPIName){
+	// 	//add activity field values associated with activity
+	// 	let valuesToRetain  = [];
+	// 	if(this.mode == 'edit' && checkForUndefinedEmptyAndNull(this.activityListEdit) && this.activityListEdit.length > 0){
+	// 		let activityAssociatedFieldValues = [];
+	// 		activityAssociatedFieldValues = getValuesRefOnActivities(campFieldAPIName, pfrFieldAPIName, this);
+	// 		activityAssociatedFieldValues.forEach(actFieldValue => {		
+	// 				valuesToRetain.push(
+	// 					{class: 'optionClass', label: actFieldValue, value: actFieldValue}
+	// 				);
+	// 		});
+	// 	}
+	// 	return valuesToRetain;
+	// }
+
+
+	// // Fetch all activity field values (generic)
+	// getValuesRefOnActivities() {
+	//     const valuesReferenced = new Set();
+	//     const fieldValues = getActivityFieldValues(this.activityListEdit);
+	//     fieldValues.forEach(val => valuesReferenced.add(val));
+	//     return valuesReferenced;
+	// }
+
+	// // Retain associated values during Edit (generic)
+	// retainActivityAssociatedValues() {
+	//     let valuesToRetain = [];
+	// 	const currentCampaignValues = this.campaignFieldValue || []; //<--local new variable-->
+	//     if (this.mode === 'edit' && this.activityListEdit && this.activityListEdit.length > 0) {
+	//         const fieldValues = getActivityFieldValues(this.activityListEdit);
+	//         fieldValues.forEach(val => {
+	//             if (!currentCampaignValues.includes(val)) {
+	//                 valuesToRetain.push({
+	//                     class: 'optionClass',
+	//                     label: val,
+	//                     value: val
+	//                 });
+	//             }
+	//         });
+	//     }
+	//     return valuesToRetain;
+	// }
+
+	// retainActivityAssociatedActCatTypes(){
+	// 	//add Activity_Category_Type values associated with activity which got removed on budget type change
+
+	// 	if(checkForUndefinedEmptyAndNull(this.activityListEdit) && this.activityListEdit.length > 0){
+	// 		let activityAssociatedActCatTypes = [];
+	// 		activityAssociatedActCatTypes = getValuesRefOnActivities('Core_MDF_Activity_Category_Type__c', 'Activity_Category_Type', this);
+	// 		activityAssociatedActCatTypes.forEach(actCatTypeValue => {
+	// 			if (!this.campaignFieldValue["Core_MDF_Activity_Category_Type__c"].includes(actCatTypeValue)) {
+	// 				this.campaignFieldValue["Core_MDF_Activity_Category_Type__c"] = [actCatTypeValue, ...this.campaignFieldValue["Core_MDF_Activity_Category_Type__c"]];
+	// 			}
+	// 		});
+	// 	}
+	// }
 
 	clearValuesIfProposalCamp() {
 		this.campaignFieldValue["Core_MDF_Total_Campaign_Cost_Amt__c"] = ''; this.finalRRrate = ''; this.campaignFieldValue["Core_MDF_Reimbursement_Rate__c"] = ''; calReimbursementAmt(this);
@@ -1575,35 +1709,45 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		if (this.selectedActCatTypePicValues != undefined && this.selectedActCatTypePicValues != null && this.selectedActCatTypePicValues != '') {
 			let allValues = this.finalDependentVal;
 			if (allValues != null && allValues != undefined) {
-				let index = 0;let arrLength = allValues.length;
-				let missingValues = [];var allValueArray = [];
+				let index = 0; let arrLength = allValues.length;
+				let missingValues = []; var allValueArray = [];
 				for (index = 0; index < arrLength; index++) {
 					allValueArray = [...allValueArray, allValues[index].value];
 				}
 				for (let index2 = 0; index2 < this.selectedActCatTypePicValues.length; index2++) {
 					if (!allValueArray.includes(this.selectedActCatTypePicValues[index2])) {
-						let obj = {label: this.selectedActCatTypePicValues[index2],value: this.selectedActCatTypePicValues[index2]};
+						let obj = { label: this.selectedActCatTypePicValues[index2], value: this.selectedActCatTypePicValues[index2] };
 						missingValues = [...missingValues, obj];
 					}
 				}
 				if (this.mode == 'clone' || this.mode == 'edit') {
-					let newValues = [];var missingValuesArr = [];
+					let newValues = []; var missingValuesArr = [];
 					for (let index2 = 0; index2 < missingValues.length; index2++) {
-					if (!missingValuesArr.includes(missingValues[index2].value)) {
-					missingValuesArr = [...missingValuesArr, missingValues[index2].value];}}
+						if (!missingValuesArr.includes(missingValues[index2].value)) {
+							missingValuesArr = [...missingValuesArr, missingValues[index2].value];
+						}
+					}
 					if (missingValuesArr != null && missingValuesArr != undefined && missingValuesArr != '' && this.selectedActCatTypePicValues != undefined && this.selectedActCatTypePicValues != null && this.selectedActCatTypePicValues != '') {
-					for (let index = 0; index < this.selectedActCatTypePicValues.length; index++) {
-					if (!missingValuesArr.includes(this.selectedActCatTypePicValues[index])) {
-					if (!newValues.includes(this.selectedActCatTypePicValues[index])) {
-					newValues = [...newValues, this.selectedActCatTypePicValues[index]];}}}
-		if (newValues != undefined && newValues != null && newValues.length > 0) {
-		this.selectedActCatTypePicValues = newValues;}}}}}
+						for (let index = 0; index < this.selectedActCatTypePicValues.length; index++) {
+							if (!missingValuesArr.includes(this.selectedActCatTypePicValues[index])) {
+								if (!newValues.includes(this.selectedActCatTypePicValues[index])) {
+									newValues = [...newValues, this.selectedActCatTypePicValues[index]];
+								}
+							}
+						}
+						if (newValues != undefined && newValues != null && newValues.length > 0) {
+							this.selectedActCatTypePicValues = newValues;
+						}
+					}
+				}
+			}
+		}
 	}
 	handleStandardFields(event) {
 		if (event.target.name == "Name") {
 			const nameValue = event.target.value;
 			const hasOnlySpaces = /^\s*$/.test(nameValue);
-	
+
 			if (hasOnlySpaces) {
 				event.target.setCustomValidity(completeThisFieldErr);
 				console.error('Complete this field.');
@@ -1621,8 +1765,11 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 	}
 	async populateDynamicfields(result) {
 		var controllingFieldValue = [];
+		// if(checkForUndefinedEmptyAndNull(this.selectedAccountId)){
+		//     controllingFieldValue.push(result["Core_MDF_Opal_Budget_Type_Txt__c"]);
+		// }
 		controllingFieldValue.push(result["Core_MDF_Opal_Budget_Type_Txt__c"]);
-		if(typeof result["Core_MDF_Focus_Area_nm__c"] != 'undefined' && typeof result["Core_MDF_Focus_Area_nm__c"] != null && typeof result["Core_MDF_Focus_Area_nm__c"] != ""){
+		if (typeof result["Core_MDF_Focus_Area_nm__c"] != 'undefined' && typeof result["Core_MDF_Focus_Area_nm__c"] != null && typeof result["Core_MDF_Focus_Area_nm__c"] != "") {
 			controllingFieldValue = controllingFieldValue.concat(result["Core_MDF_Focus_Area_nm__c"].split(';'));
 		}
 		this.handleDynamicfields(controllingFieldValue);
@@ -1631,14 +1778,17 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		let updatedCFValue = [];
 		updatedCFValue = JSON.parse(JSON.stringify(controllingFieldValue));
 		updatedCFValue.push(this.campaignFieldValue['Core_MDF_Program__c']);
-		this.ipacontrollingFieldValue = updatedCFValue; 
-		this.isLoaded = true;
+		this.ipacontrollingFieldValue = updatedCFValue; this.isLoaded = true;
 		if (this.recordTypeDeveloperName === Core_MDF_IPA_RecordType) {
 			this.getBudgetTypeValue(this.campaignFieldValue["Core_MDF_Opal_Budget_Type_Txt__c"], this.campaignFieldValue["Core_MDF_Program__c"]);
 		} else {
-			let wrapper = await fetchPicklist(this.recordTypeDeveloperName, this.campaignPicValues, updatedCFValue, this.picklistApitoLabelReferenceMap, 'loadAllfields', this); this.campaignPicValues = wrapper.campaignPicValues;
-			if (this.mode == 'edit') { this.campaignPicValues = lovValuesAddition(this.campaignPicValues, this.campaignFieldValue, this.recordTypeDeveloperName, this.picklistApitoLabelReferenceMap, this); }
-			this.getActcategoryTypeValues(context);		
+			let wrapper = await fetchPicklist(this.recordTypeDeveloperName, this.campaignPicValues, updatedCFValue, this.picklistApitoLabelReferenceMap, 'loadAllfields', this);
+			this.campaignPicValues = wrapper.campaignPicValues;
+			if (this.mode == 'edit') {
+				this.campaignPicValues = lovValuesAddition(this.campaignPicValues, this.campaignFieldValue, this.recordTypeDeveloperName, this.picklistApitoLabelReferenceMap, this);
+			}
+
+			this.getActcategoryTypeValues(context);
 			this.loadBudgetTypefields = true; this.isLoaded = false;
 			getpicklistSize(this.multiSelectPickFlds, this);
 		}
@@ -1656,36 +1806,41 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		let wrapper = await fetchPicklist(this.campRecordTypeName, this.campaignPicValues, controllingFieldValue, this.picklistApitoLabelReferenceMap, 'loadAllFields', this);
 		this.campaignPicValues = wrapper.campaignPicValues; this.focusAreaDependentFieldValues = wrapper.focusAreaDependentFieldValues;
 		this.customPicklistValueDependency = wrapper.customPicklistValueDependency;
-		
+
 		//Calling prepActClassificationMapBasedOnActType to prepare Map for Activity Classification
 		this.activityTypeToClassificationMap = prepActClassificationMapBasedOnActType(this.customPicklistValueDependency['Core_MDF_Activity_Classification_nm__c']);
-		
-		const pr = new Promise((resolve, reject) => {setTimeout(() => {resolve();}, 2000);});
+
+		const pr = new Promise((resolve, reject) => { setTimeout(() => { resolve(); }, 2000); });
 		await Promise.allSettled([loadDynamicFields, fetchPicklist, getFieldSetName, pr]).then((val) => {
 			if (checkForUndefinedEmptyAndNull(this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"]) && !this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"]) {
 				this.setcustomRRValues();
-				if(this.finalRRrate == null && this.finalRRrate == undefined && this.finalRRrate != '') {
-					this.finalRRrate = '50%';} else {
+				if (this.finalRRrate == null && this.finalRRrate == undefined && this.finalRRrate != '') {
+					this.finalRRrate = '50%';
+				} else {
 					let rrIndex = this.customRRValues.findIndex(reimbursementRate => reimbursementRate.value == this.finalRRrate);
-					this.finalRRrate = rrIndex == -1 ? '50%' : this.finalRRrate;}this.campaignFieldValue['Core_MDF_Reimbursement_Rate__c']= this.finalRRrate;}
+					this.finalRRrate = rrIndex == -1 ? '50%' : this.finalRRrate;
+				} this.campaignFieldValue['Core_MDF_Reimbursement_Rate__c'] = this.finalRRrate;
+			}
 			if (this.initalLoad) {
-				this.getCampaignFields();this.initalLoad = false;}else {
+				this.getCampaignFields(); this.initalLoad = false;
+			} else {
 				if (this.mode == 'edit') {
 					let selFocusArea = this.campaignFieldValue["Core_MDF_Focus_Area_nm__c"];
 					let selectedContext;
-					if(checkForUndefinedEmptyAndNull(selFocusArea) && selFocusArea.length == 1) {
+					if (checkForUndefinedEmptyAndNull(selFocusArea) && selFocusArea.length == 1) {
 						selectedContext = 'fieldsBasedOnProgram';
 					}
 					this.campaignPicValues = lovValuesAddition(this.campaignPicValues, this.campaignFieldValue, this.campRecordTypeName, this.picklistApitoLabelReferenceMap, this, selectedContext);
 				}
 				this.campaignFieldValue = validatePicklistvalues(this.campaignPicValues, this.campaignFieldValue, this.campaignFields, this);
 				getpicklistSize(this.multiSelectPickFlds, this);
+				//Aditya TWC3117-16962
 				this.filterOtherFromOutcomeMetric();
 				this.isLoaded = false;
-				}
+			}
 			let ecoSystemValue = this.campaignFieldValue['Core_MDF_Ecosystem_Partner_Nm__c'];
-			if(checkForUndefinedEmptyAndNull(ecoSystemValue) && ecoSystemValue.length>0){
-				this.othersMandate('Core_MDF_Ecosystem_Partner_Nm__c',ecoSystemValue);
+			if (checkForUndefinedEmptyAndNull(ecoSystemValue) && ecoSystemValue.length > 0) {
+				this.othersMandate('Core_MDF_Ecosystem_Partner_Nm__c', ecoSystemValue);
 			}
 			if (checkForUndefinedEmptyAndNull(this.campaignFieldValue["Core_MDF_Initiative_nm__c"]) && this.campaignFieldValue["Core_MDF_Initiative_nm__c"].length > 0) { let inputCmp = this.template.querySelector('[data-name= Core_MDF_Initiative_nm__c]'); if (this.campaignFieldValue["Core_MDF_Initiative_nm__c"].includes('None') && this.campaignFieldValue["Core_MDF_Initiative_nm__c"].length > 1) { inputCmp.setCustomValidity(Core_MDF_IPA_Initiave_None_Selection_Error); inputCmp.reportValidity(); } }
 		}).catch(e => { console.log(e); this.isLoaded = false; })
@@ -1700,12 +1855,13 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		if (this.dynamicload && this.campaignFieldValue["Core_MDF_Program__c"] == Core_MDF_IPA_Program_Name) { let dependentFields = focusAreaDependentFields.split(','); this.validatePickValuesBasedOnFocusArea(event, dependentFields); }
 	}
 	handlePicklistDependentValueChange(event) {
-		let pickListValuesOnChange = event.detail.value; let fieldAPIName = event.target.name;let labelValue = event.target.label;
+		let pickListValuesOnChange = event.detail.value; let fieldAPIName = event.target.name; let labelValue = event.target.label;
 		try {
-			if(this.mode == 'clone' && this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"]) {
+			if (this.mode == 'clone' && this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"]) {
 				this.handlePicklistDependentValueChangeClone(pickListValuesOnChange, fieldAPIName, labelValue);
-			} else if(this.mode == 'edit') {
-				this.handlePicklistDependentValueChangeEdit(pickListValuesOnChange, fieldAPIName, labelValue);}
+			} else if (this.mode == 'edit') {
+				this.handlePicklistDependentValueChangeEdit(pickListValuesOnChange, fieldAPIName, labelValue);
+			}
 		} catch (error) {
 			let applicationErrEvent = new CustomEvent('applicationerror', { detail: { errorLog: error?.stack } });
 			this.dispatchEvent(applicationErrEvent);
@@ -1718,6 +1874,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 
 	handleBudgetTypeChange(event) {
 		let controllingFieldValue = []; this.campaignFieldValue[event.target.name] = event.detail.value;
+		// this.initialBudgetTypes = event.detail.value;
 		if (this.recordTypeDeveloperName == rmfRecTypeNm || this.recordTypeDeveloperName == Core_MDF_IPA_RecordType) {
 			controllingFieldValue.push(event.detail.value);
 		} else {
@@ -1727,7 +1884,6 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		this.selectPartnerBudgetTypeWarning["Core_MDF_Opal_Budget_Type_Txt__c"] = false;
 
 		let retrictBudgetTypeChange = false;
-
 		if (this.mode == 'edit') {
 			if (checkForUndefinedEmptyAndNull(this.activityListEdit) && this.activityListEdit.length > 0) {
 				this.handlePicklistDependentValueChange(event);
@@ -1739,12 +1895,15 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			if (this.recordTypeDeveloperName === Core_MDF_IPA_RecordType) {
 				this.loadBudgetTypefields = true;
 				this.isLoaded = true; this.onBudgetTypeChange = true;
+				/*if(this.mode == 'clone' && !this.proposalBasedIndicator && !this.initalLoad) {
+					this.campaignFieldValue['Core_MDF_Focus_Area_nm__c'] = '';
+				}*/
 				if (this.campaignFieldValue["Core_MDF_Focus_Area_nm__c"] != "") {
 					controllingFieldValue = controllingFieldValue.concat(Object.values(this.campaignFieldValue["Core_MDF_Focus_Area_nm__c"]));
 				} this.campaignFieldVisibility["Core_MDF_Focus_Area_nm__c"] = true;
 			}
 			this.handleDynamicfields(controllingFieldValue, 'budgetType');
-			if (this.datevalid && this.recordTypeDeveloperName != Core_MDF_IPA_RecordType) {
+			if (this.recordTypeDeveloperName != Core_MDF_IPA_RecordType) {
 				this.setCCFDCFFields(event.target.value);
 			}
 			this.showCampaignBudgets = false; this.campaignBudgets = [];
@@ -1753,7 +1912,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			}
 		}
 		this.isActAssociatedBudgetTypeRemoved = false;
-		
+		console.log('activityCategoryTypeValuesFromCPObject' + this.activityCategoryTypeValuesFromCPObject);
 		this.validateIPAStartDateError();
 	}
 
@@ -1764,12 +1923,12 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				.then((result) => {
 					for (const key in result) {
 						if (key == "Proposal Based") {
-							this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"] = true;this.accountBasedIndicatorCamp = false;
-							this.proposalBasedIndicatorCamp = true;this.dynamicload = true;
-
+							this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"] = true; this.accountBasedIndicatorCamp = false;
+							this.proposalBasedIndicatorCamp = true; this.dynamicload = true;
 							//Show Measurement Approach for IPA proposal based campaigns
-							this.campaignFieldVisibility["Core_MDF_Measurement_Approach_nm__c"] = true;
-							if(this.mode != 'edit') {
+							this.campaignFieldVisibility["Core_MDF_Measurement_Approach_nm__c"] = true;						
+							
+							if (this.mode != 'edit') {
 								this.clearValuesIfProposalCamp();
 								if (this.mode == 'clone' && this.activityListClone.length > 0) {
 									let selFA = this.campaignFieldValue['Core_MDF_Focus_Area_nm__c'];
@@ -1781,33 +1940,38 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 								}
 							}
 						} else if (key == "Account Based") {
-							this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"] = false;this.proposalBasedIndicatorCamp = false;
+							this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"] = false; this.proposalBasedIndicatorCamp = false;
 							this.campaignFieldValue["Core_MDF_Supports_legacy_program__c"] = 'MDF or both CMP & MDF';
-							this.accountBasedIndicatorCamp = true;this.dynamicload = true;
+							this.accountBasedIndicatorCamp = true; this.dynamicload = true;
 							this.campaignFieldVisibility["Core_MDF_Measurement_Approach_nm__c"] = false;
 						}
-					if (this.campaignFieldValue["Core_MDF_Focus_Area_nm__c"] === "" && this.recordTypeDeveloperName === Core_MDF_IPA_RecordType) {
-					this.dynamicload = false;
-				}
-					this.campRecordTypeName = result[key];
+						if (this.campaignFieldValue["Core_MDF_Focus_Area_nm__c"] === "" && this.recordTypeDeveloperName === Core_MDF_IPA_RecordType) {
+							this.dynamicload = false;
+						}
+						this.campRecordTypeName = result[key];
+						
 					}
+					console.log('getBudgetTypeValue');
 					this.getDynamicFields('Core_MDF_Custom_Picklist__c', this.ipacontrollingFieldValue, this.objectApiName);
 					this.callFetchPickValues(this.ipacontrollingFieldValue);
-					var today = new Date();this.memberVisibilityValid = false;
+					var today = new Date(); this.memberVisibilityValid = false;
 					this.campaignFieldValue["Core_MDF_External_Visibility_Date__c"] = today.toISOString().split('T')[0];
 					let visibilityDate = this.campaignFieldValue["Core_MDF_External_Visibility_Date__c"];
 					let memberVisibilityDateCmp = this.template.querySelector(".memberVisibilityDate");
 					if ((this.campaignFieldValue["StartDate"] != '' && this.campaignFieldValue["StartDate"] != undefined && this.campaignFieldValue["StartDate"] != null) &&
-					(visibilityDate != '' && visibilityDate != undefined && visibilityDate != null) && memberVisibilityDateCmp == null) {
-					if (visibilityDate > this.campaignFieldValue["StartDate"] && this.campaignFieldVisibility["Core_MDF_External_Visibility_Date__c"] == true) {
-					this.memberVisibilityValid = true;}}})
-		.catch(e => { console.log('error @@getBudgetTypeValue' + e) });
+						(visibilityDate != '' && visibilityDate != undefined && visibilityDate != null) && memberVisibilityDateCmp == null) {
+						if (visibilityDate > this.campaignFieldValue["StartDate"] && this.campaignFieldVisibility["Core_MDF_External_Visibility_Date__c"] == true) {
+							this.memberVisibilityValid = true;
+						}
+					}
+				})
+				.catch(e => { console.log('error @@getBudgetTypeValue' + e) });
 		}
 	}
 
 	async getDynamicFields(CustomPicklistObject, budgettype, currentObjAPIName) {
 		this.isLoaded = true;
-		await loadDynamicFields({pickListObj: CustomPicklistObject, budType: budgettype, objectName: currentObjAPIName})
+		await loadDynamicFields({ pickListObj: CustomPicklistObject, budType: budgettype, objectName: currentObjAPIName })
 			.then((result) => {
 				this.campaignFields = result;
 				if (this.oldCampFields != undefined || this.oldCampFields != null) {
@@ -1818,48 +1982,62 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				}
 				for (let i = 0; i < this.campaignFields.length; i++) {
 					let fieldAPIName = this.campaignFields[i].fieldAPIName;
+					console.log('getallfields::', fieldAPIName);
 					if (fieldAPIName == 'StartDate__c' || fieldAPIName == 'EndDate__c' || fieldAPIName == 'Name__c' || fieldAPIName == 'Description__c') {
 						fieldAPIName = fieldAPIName.replace('__c', '');
 					}
 					this.campaignRequiredFields[fieldAPIName] = this.campaignFields[i].isRequired;
-					if(this.mode == 'edit'){
+					if (this.mode == 'edit') {
 						if (this.fieldEditibilityList != null && this.fieldEditibilityList.includes(fieldAPIName)) {
 							this.campaignFieldDisabled[fieldAPIName] = false;
+							console.log('checkdisabledforallfields::', fieldAPIName);
 						} else {
 							this.campaignFieldDisabled[fieldAPIName] = true;
 						}
-					}else{
-						if(fieldAPIName !='Core_MDF_Proposal_Score_nbr__c' ){this.campaignFieldDisabled[fieldAPIName] = false;}
-					}if(fieldAPIName != 'Core_MDF_Lead_Quantity_nbr__c' && fieldAPIName != 'Core_MDF_Deployment_Quantity_nbr__c' && fieldAPIName != 'Core_MDF_Other_Quantity_nbr__c'){
-						this.campaignFieldVisibility[fieldAPIName] = true;}
+					} else {
+						if (fieldAPIName != 'Core_MDF_Proposal_Score_nbr__c') { this.campaignFieldDisabled[fieldAPIName] = false; }
+					} if (fieldAPIName != 'Core_MDF_Lead_Quantity_nbr__c' && fieldAPIName != 'Core_MDF_Deployment_Quantity_nbr__c' && fieldAPIName != 'Core_MDF_Other_Quantity_nbr__c') {
+						this.campaignFieldVisibility[fieldAPIName] = true;
+					}
 					this.campaignFieldLabel[fieldAPIName] = this.campaignFields[i].fieldLabel;
+					console.log('--checkbox label--',this.campaignFieldLabel[fieldAPIName]);
 					this.campaignFieldHelpText[fieldAPIName] = this.campaignFields[i].helpText;
-					if(this.recordTypeDeveloperName === Core_MDF_IPA_RecordType &&  this.campaignFieldValue['Core_MDF_Proposal_Based_Ind__c'] && fieldAPIName == 'Core_MDF_Reimbursement_Amt__c') {
-						this.campaignFieldHelpText[fieldAPIName] = '';	
+					if (this.recordTypeDeveloperName === Core_MDF_IPA_RecordType && this.campaignFieldValue['Core_MDF_Proposal_Based_Ind__c'] && fieldAPIName == 'Core_MDF_Reimbursement_Amt__c') {
+						this.campaignFieldHelpText[fieldAPIName] = '';
 					}
 				}
 				if ((this.campaignFieldVisibility.StartDate__c && this.campaignFieldVisibility.EndDate__c && this.campaignFieldVisibility.Name__c) && (this.mode == 'clone' || this.mode == 'edit')) {
-					this.showFields = true;}
-				if(this.mode != 'edit'){ this.campaignFieldDisabled["Core_MDF_Proposal_Score_nbr__c"] = true;}
-				this.campaignFieldVisibility["Core_MDF_Campaign_Scoring_txt__c"] = false;this.oldCampFields = this.campaignFields;
-				if(this.mode != 'edit' && this.recordTypeDeveloperName === Core_MDF_IPA_RecordType){
+					this.showFields = true;
+				}
+				if (this.mode != 'edit') { this.campaignFieldDisabled["Core_MDF_Proposal_Score_nbr__c"] = true; }
+				this.campaignFieldVisibility["Core_MDF_Campaign_Scoring_txt__c"] = false; this.oldCampFields = this.campaignFields;
+				 if (this.mode != 'edit' && this.recordTypeDeveloperName === Core_MDF_IPA_RecordType) {
 					updateOutcomeFieldVisibility(this.campaignFieldValue["StartDate"], this);
+					console.log('optinvalue::', this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"]);
 					this.campaignFieldVisibility["Core_MDF_Key_Performance_Indicator__c"] = this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] ? false : true;
 					this.campaignFieldValue["Core_MDF_Key_Performance_Indicator__c"] = this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] ? null : this.campaignFieldValue["Core_MDF_Key_Performance_Indicator__c"];
-					this.showOtherOutcomeTextField();
+					this.showOtherOutcomeTextField(); //Ealay new
 				}
 				 if (this.mode == 'edit' && this.recordTypeDeveloperName === Core_MDF_IPA_RecordType) {
 					if (!this.skipOutcomeFieldUpdate && checkForUndefinedEmptyAndNull(this.campaignFieldValue["StartDate"])) { updateOutcomeFieldVisibility(this.campaignFieldValue["StartDate"], this); }
+					console.log('optinvalue::', this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"]);
+					console.log('optindisabledbeforegetDynamicFields ', this.campaignFieldDisabled["Core_MDF_CampOutcomeOpt_In_Ind__c"]);
 					this.campaignFieldDisabled["Core_MDF_CampOutcomeOpt_In_Ind__c"] = this.campaignFieldDisabled["Core_MDF_CampOutcomeOpt_In_Ind__c"] ? true : (checkForUndefinedEmptyAndNull(this.activityListEdit) && this.activityListEdit.length > 0);
+					console.log('optindisabledgetaftergetDynamicFields ', this.campaignFieldDisabled["Core_MDF_CampOutcomeOpt_In_Ind__c"]);
+					// this.campaignFieldVisibility["Core_MDF_Outcomes_nm__c"] = this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"]; //Previous 
+					// this.campaignRequiredFields["Core_MDF_Outcomes_nm__c"] = this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"]; //Previous 
+					//Ealay
 					this.showOtherOutcomeTextField();
+					//Ealay
 				}
 				if (this.recordTypeDeveloperName === Core_MDF_IPA_RecordType && this.proposalBasedIndicatorCamp) {
 					this.showOtherMeasurementApproachVisibility();
 				}
+				
 			})
 	}
 	getActivityCloneFields(pickListObject, budgettype, recordType, PropBased, objName) {
-		getFieldSets({pickListObj: pickListObject,budType: budgettype,recType: recordType,isPropBased: PropBased,objectName: objName})
+		getFieldSets({ pickListObj: pickListObject, budType: budgettype, recType: recordType, isPropBased: PropBased, objectName: objName })
 			.then((result) => {
 				this.activityFields = result;
 				this.mandatoryActFieldsError = false;
@@ -1867,12 +2045,13 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 					let oldFields = this.oldActFields.values();
 					for (const key of oldFields) {
 						this.activityRequiredFields[key.fieldAPIName] = false;
-					}}
+					}
+				}
 				var isShowError = false;
 				for (let i = 0; i < this.activityFields.length; i++) {
 					this.activityRequiredFields[this.activityFields[i].fieldAPIName] = this.activityFields[i].isRequired;
 				}
-				let checkboxes = this.template.querySelectorAll('[data-id="actsinglerecord"]');this.recActList = [];
+				let checkboxes = this.template.querySelectorAll('[data-id="actsinglerecord"]'); this.recActList = [];
 				for (let i = 0; i < checkboxes.length; i++) {
 					if (checkboxes[i].checked == true) { this.recActList.push(checkboxes[i].name); }
 				}
@@ -1880,7 +2059,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				for (var i = 0; i < actListClone.length; i++) {
 					if (this.recActList.includes(actListClone[i].Id)) {
 						if (((actListClone[i].Core_MDF_Activity_SubType_nm__c == null || actListClone[i].Core_MDF_Activity_SubType_nm__c == [] || (actListClone[i].Core_MDF_Activity_SubType_nm__c != null && actListClone[i].Core_MDF_Activity_SubType_nm__c != undefined && actListClone[i].Core_MDF_Activity_SubType_nm__c.length == 0)) && this.activityRequiredFields["Core_MDF_Activity_SubType_nm__c"] == true && actListClone[i].activitySubTypeAvailable) || (actListClone[i].Core_MDF_ActivityCategory__c == null && this.activityRequiredFields["Core_MDF_ActivityCategory__c"] == true) || ((actListClone[i].Core_MDF_Activity_Types__c == null && this.activityRequiredFields["Core_MDF_Activity_Types__c"] == true))) {
-							isShowError = true;this.mandatoryActFieldsError = true;this.hideGenericError = true;
+							isShowError = true; this.mandatoryActFieldsError = true; this.hideGenericError = true;
 							break;
 						} else { this.mandatoryActFieldsError = false; }
 					}
@@ -1888,6 +2067,11 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 						actListClone[i].showKPIErrorClone = false;
 					}
 
+					//IPA-Jegan
+					/*var proposalCloneOutComeBasedInd = (this.campaignFieldValue.hasOwnProperty('Core_MDF_CampOutcomeOpt_In_Ind__c') && this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"]) ? this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] : false;
+					if (!proposalCloneOutComeBasedInd || (proposalCloneOutComeBasedInd && actListClone[i].showTacticMetricsErrorClone && (actListClone[i].hasOwnProperty('isBlankTacticMetrics') && !actListClone[i].isBlankTacticMetrics))) {
+						actListClone[i].showTacticMetricsErrorClone = false;
+					}*/
 					var proposalCloneOutComeBasedInd = (this.campaignFieldValue.hasOwnProperty('Core_MDF_CampOutcomeOpt_In_Ind__c') && this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"]) ? this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] : false;
 					if (!proposalCloneOutComeBasedInd || (proposalCloneOutComeBasedInd && actListClone[i].showTacticMetricsErrorClone && (actListClone[i].hasOwnProperty('tacticMetricEdited') && actListClone[i].tacticMetricEdited))) {
 						actListClone[i].showTacticMetricsErrorClone = false;
@@ -1904,14 +2088,15 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		this.arrayFromAvailableBudgets = event.detail.recordId;
 		if (this.recordTypeDeveloperName == Core_MDF_EEF_RecordType || this.recordTypeDeveloperName === Core_MDF_Co_GTM_RecordType) {
 			let data = event.target.value;
-			if(this.mode == 'edit') {
+			if (this.mode == 'edit') {
 				this.selectedCmpBudgets = data;
 				this.handlePicklistDependentValueChange(event);
-				if(this.budgetReferredOnActivity) {
+				if (this.budgetReferredOnActivity) {
 					data = this.selectedCmpBudgets;
 				}
+
 			}
-			let availableBudgets = this.availableBudgetValues;let selectedBudgets = [];
+			let availableBudgets = this.availableBudgetValues; let selectedBudgets = [];
 			if (data != null) {
 				data.forEach(dt => {
 					let selBud = availableBudgets.find(avlBdgt => avlBdgt.value === dt);
@@ -1927,7 +2112,8 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		if (this.campaignBudgetsForSave !== undefined && this.campaignBudgetsForSave !== null && this.campaignBudgetsForSave !== '') {
 			for (let i = 0; i < this.campaignBudgetsForSave.length; i++) {
 				cmpBudgetsTempMap.set(this.campaignBudgetsForSave[i].budgetId, this.campaignBudgetsForSave[i]);
-			}}
+			}
+		}
 		if (this.mode === 'edit' && this.allCmpBudgetsMap !== null) {
 			let selectedBudgets = [];
 			this.selectedCmpBudgets = [];
@@ -1939,12 +2125,14 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				}
 				if (this.budgetIdTypeMap.has(arrayFromChild[i].value)) {
 					const budgetType = this.budgetIdTypeMap.get(arrayFromChild[i].value);
+
 					if (this.budgetTypeRrOptionMap.has(budgetType)) {
 						rrOptions = this.budgetTypeRrOptionMap.get(budgetType);
-					}}
+					}
+				}
 				if (this.allCmpBudgetsMap.has(arrayFromChild[i].value)) {
 					let res = this.allCmpBudgetsMap.get(arrayFromChild[i].value);
-					let budgetNameString = getBudgetNameString(res.Core_MDF_Budget_Name_Id__r.Title,res.Core_MDF_Budget_Type_Nm__c ,res.Core_MDF_Start_Date_Dt__c, res.Core_MDF_End_Date_Dt__c,res.Core_MDF_Budget_Name_Id__r.Core_MDF_budget_ref_nbr__c);
+					let budgetNameString = getBudgetNameString(res.Core_MDF_Budget_Name_Id__r.Title, res.Core_MDF_Budget_Type_Nm__c, res.Core_MDF_Start_Date_Dt__c, res.Core_MDF_End_Date_Dt__c, res.Core_MDF_Budget_Name_Id__r.Core_MDF_budget_ref_nbr__c);
 
 					let obj;
 					if (res.Core_MDF_Active_ind__c) {
@@ -1957,17 +2145,17 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 						if (this.recordTypeDeveloperName == Core_MDF_EEF_RecordType || this.recordTypeDeveloperName === Core_MDF_Co_GTM_RecordType) {
 							obj = { campaignBudgetId: res.Id, isActive: true, budgetId: arrayFromChild[i].value, budgetName: arrayFromChild[i].label, budgetAmount: '0', budgetRR: '0%', budgetRAmount: '0', options: rrOptions };
 						}
-						else{
-						obj = {campaignBudgetId: res.Id,isActive: true,budgetId: arrayFromChild[i].value,budgetName: arrayFromChild[i].label,budgetAmount: '',budgetRR: '50%',budgetRAmount: '',options: rrOptions};
+						else {
+							obj = { campaignBudgetId: res.Id, isActive: true, budgetId: arrayFromChild[i].value, budgetName: arrayFromChild[i].label, budgetAmount: '', budgetRR: '50%', budgetRAmount: '', options: rrOptions };
 						}
 						campaignBudgetsArray = [...campaignBudgetsArray, obj];
 					}
 				} else {
 					if (cmpBudgetsTempMap !== undefined && cmpBudgetsTempMap !== null && cmpBudgetsTempMap.has(arrayFromChild[i].value)) {
 						let res = cmpBudgetsTempMap.get(arrayFromChild[i].value);
-						campaignBudgetsArray = [...campaignBudgetsArray, budgetDataWrapper(false, res, rrOptions,this.recordTypeDeveloperName)];
+						campaignBudgetsArray = [...campaignBudgetsArray, budgetDataWrapper(false, res, rrOptions, this.recordTypeDeveloperName)];
 					} else {
-						campaignBudgetsArray = [...campaignBudgetsArray, budgetDataWrapper(true, arrayFromChild[i], rrOptions,this.recordTypeDeveloperName)];
+						campaignBudgetsArray = [...campaignBudgetsArray, budgetDataWrapper(true, arrayFromChild[i], rrOptions, this.recordTypeDeveloperName)];
 					}
 				}
 			}
@@ -1977,6 +2165,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				let rrOptions;
 				this.selectedCmpBudgets = [...this.selectedCmpBudgets, arrayFromChild[i].value];
 				if (this.budgetIdTypeMap.has(arrayFromChild[i].value)) {
+
 					const budgetType = this.budgetIdTypeMap.get(arrayFromChild[i].value);
 					if (this.budgetTypeRrOptionMap.has(budgetType)) {
 						rrOptions = this.budgetTypeRrOptionMap.get(budgetType);
@@ -1984,9 +2173,9 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				}
 				if (cmpBudgetsTempMap !== undefined && cmpBudgetsTempMap !== null && cmpBudgetsTempMap.has(arrayFromChild[i].value)) {
 					let res = cmpBudgetsTempMap.get(arrayFromChild[i].value);
-					campaignBudgetsArray = [...campaignBudgetsArray, budgetDataWrapper(false, res, rrOptions,this.recordTypeDeveloperName)];
+					campaignBudgetsArray = [...campaignBudgetsArray, budgetDataWrapper(false, res, rrOptions, this.recordTypeDeveloperName)];
 				} else {
-					campaignBudgetsArray = [...campaignBudgetsArray, budgetDataWrapper(true, arrayFromChild[i], rrOptions,this.recordTypeDeveloperName)];
+					campaignBudgetsArray = [...campaignBudgetsArray, budgetDataWrapper(true, arrayFromChild[i], rrOptions, this.recordTypeDeveloperName)];
 				}
 			}
 			if (this.recordTypeDeveloperName == Core_MDF_EEF_RecordType || this.recordTypeDeveloperName === Core_MDF_Co_GTM_RecordType) {
@@ -1996,8 +2185,9 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		this.campaignBudgets = campaignBudgetsArray;
 		this.campaignBudgetsForSave = this.campaignBudgets;
 		if (event.detail.recordId != '' && event.detail.recordId != undefined && event.detail.recordId != null) {
-			this.showCampaignBudgets = true;this.availableBudgetSelected = true;
-		} else {this.showCampaignBudgets = false;this.availableBudgetSelected = false;
+			this.showCampaignBudgets = true; this.availableBudgetSelected = true;
+		} else {
+			this.showCampaignBudgets = false; this.availableBudgetSelected = false;
 		}
 		retainAndUpdateCampaignBudgetsOldMap(this, true, true);
 	}
@@ -2005,9 +2195,9 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		this.campaignBudgetsForSave = event.detail.budgetData;
 		this.cmpBudgetsErrorToRetainMap = new Map(event.detail.cmpBudgetsErrorToRetainMap);
 		retainAndUpdateCampaignBudgetsOldMap(this, false, false);
-		if(this.cmpBudgetsErrorToRetainMap.size == 0){
+		if (this.cmpBudgetsErrorToRetainMap.size == 0) {
 			this.isCmpBudgetsValidOnChangeOfFields = true;
-		}else{
+		} else {
 			this.isCmpBudgetsValidOnChangeOfFields = false;
 		}
 	}
@@ -2018,44 +2208,46 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			await getBudgetsForCampaign({ campAccountId: accountid, campStartDate: startdate, campEndDate: enddate, campBudgetType: budgettype })
 				.then((result) => {
 					if (result) {
-					this.isLoaded = true;
-					let budgetTypePicValues = [];
-					var budgetType = result;
-					this.budgetIdTypeMap.clear();
-					let cmpBudgetsTempMap = new Map();
-					let budgetIdTypeMapTemp = new Map();
-					let selectedBudgetIds = [];
-					this.selectedCmpBudgets = [];
-					let campaignBudgetsArray = [];
-					if (this.campaignBudgetsForSave !== undefined && this.campaignBudgetsForSave !== null && this.campaignBudgetsForSave !== '') {
-					for (let i = 0; i < this.campaignBudgetsForSave.length; i++) {
-					if (this.mode === 'edit') {
-					cmpBudgetsTempMap[this.campaignBudgetsForSave[i].budgetId] = this.campaignBudgetsForSave[i];} 
-					else {
+						this.isLoaded = true; let budgetTypePicValues = []; var budgetType = result;
+						this.budgetIdTypeMap.clear();
+						let cmpBudgetsTempMap = new Map(); let budgetIdTypeMapTemp = new Map();
+						let selectedBudgetIds = []; this.selectedCmpBudgets = []; let campaignBudgetsArray = [];
+						if (this.campaignBudgetsForSave !== undefined && this.campaignBudgetsForSave !== null && this.campaignBudgetsForSave !== '') {
+							for (let i = 0; i < this.campaignBudgetsForSave.length; i++) {
+								if (this.mode === 'edit') {
+									cmpBudgetsTempMap[this.campaignBudgetsForSave[i].budgetId] = this.campaignBudgetsForSave[i];
+								}
+								else {
 									cmpBudgetsTempMap.set(this.campaignBudgetsForSave[i].budgetId, this.campaignBudgetsForSave[i]);
 								}
-					selectedBudgetIds = [...selectedBudgetIds, this.campaignBudgetsForSave[i].budgetId];}
+								selectedBudgetIds = [...selectedBudgetIds, this.campaignBudgetsForSave[i].budgetId];
+							}
 						}
-					if (this.mode === 'edit') {
-					if (this.budgetsOnActiveActivities !== undefined && this.budgetsOnActiveActivities !== null &&
-					this.budgetsOnActiveActivities !== '') {
-					for (let i = 0; i < this.budgetsOnActiveActivities.length; i++) {
-						if (!selectedBudgetIds.includes(this.budgetsOnActiveActivities[i])) {
-						selectedBudgetIds = [...selectedBudgetIds, this.budgetsOnActiveActivities[i]];}}}
+						if (this.mode === 'edit') {
+							if (this.budgetsOnActiveActivities !== undefined && this.budgetsOnActiveActivities !== null &&
+								this.budgetsOnActiveActivities !== '') {
+								for (let i = 0; i < this.budgetsOnActiveActivities.length; i++) {
+									if (!selectedBudgetIds.includes(this.budgetsOnActiveActivities[i])) {
+										selectedBudgetIds = [...selectedBudgetIds, this.budgetsOnActiveActivities[i]];
+									}
+								}
+							}
 						}
 						this.selectedAvailableBudgets = selectedBudgetIds;
 						for (const key in budgetType) {
-						budgetIdTypeMapTemp.set(key, result[key].Core_MDF_Budget_Type_Txt__c);
-						let obj;
-						if (this.selectedAvailableBudgets.includes(key)) {
-						if (this.budgetsOnActiveActivities.includes(key)) {
-						obj = {
-						label: getBudgetNameString(result[key].Title, result[key].Core_MDF_Budget_Type_Txt__c, result[key].StartDate, result[key].EndDate,result[key].Core_MDF_budget_ref_nbr__c),value: key,selected: true,disable: true,
-						};
-					} else {
-						obj = {
-						label: getBudgetNameString(result[key].Title, result[key].Core_MDF_Budget_Type_Txt__c, result[key].StartDate, result[key].EndDate,result[key].Core_MDF_budget_ref_nbr__c),value: key,selected: true,disable: false,
-						};}
+							budgetIdTypeMapTemp.set(key, result[key].Core_MDF_Budget_Type_Txt__c);
+							let obj;
+							if (this.selectedAvailableBudgets.includes(key)) {
+
+								if (this.budgetsOnActiveActivities.includes(key)) {
+									obj = {
+										label: getBudgetNameString(result[key].Title, result[key].Core_MDF_Budget_Type_Txt__c, result[key].StartDate, result[key].EndDate, result[key].Core_MDF_budget_ref_nbr__c), value: key, selected: true, disable: true,
+									};
+								} else {
+									obj = {
+										label: getBudgetNameString(result[key].Title, result[key].Core_MDF_Budget_Type_Txt__c, result[key].StartDate, result[key].EndDate, result[key].Core_MDF_budget_ref_nbr__c), value: key, selected: true, disable: false,
+									};
+								}
 								this.selectedCmpBudgets = [...this.selectedCmpBudgets, key];
 							} else {
 								obj = {
@@ -2063,15 +2255,20 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 									value: key,
 								};
 							}
+
+
 							budgetTypePicValues = [...budgetTypePicValues, obj];
 							let rrOptions;
+
 							if (this.budgetTypeRrOptionMap.has(result[key].Core_MDF_Budget_Type_Txt__c)) {
 								rrOptions = this.budgetTypeRrOptionMap.get(result[key].Core_MDF_Budget_Type_Txt__c);
 							}
 							if (this.mode === 'edit' && this.allCmpBudgetsMap !== null) {
 								if (this.selectedAvailableBudgets.includes(key) && this.allCmpBudgetsMap.has(key)) {
 									let res = this.allCmpBudgetsMap.get(key);
-								let budgetNameString = getBudgetNameString(res.Core_MDF_Budget_Name_Id__r.Title,res.Core_MDF_Budget_Type_Nm__c ,res.Core_MDF_Start_Date_Dt__c, res.Core_MDF_End_Date_Dt__c,res.Core_MDF_Budget_Name_Id__r.Core_MDF_budget_ref_nbr__c);
+									let budgetNameString = getBudgetNameString(res.Core_MDF_Budget_Name_Id__r.Title, res.Core_MDF_Budget_Type_Nm__c, res.Core_MDF_Start_Date_Dt__c, res.Core_MDF_End_Date_Dt__c, res.Core_MDF_Budget_Name_Id__r.Core_MDF_budget_ref_nbr__c);
+
+
 									// new RR changes
 									let finalRROptions = [];
 									finalRROptions = addExistingReimbursementRate(res.Core_MDF_Reimbursement_Rate_Pct__c, rrOptions);
@@ -2079,8 +2276,10 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 									let obj;
 									if (res.Core_MDF_Active_ind__c) {
 										if (this.budgetsOnActiveActivities.includes(res.Core_MDF_Budget_Name_Id__c)) {
+											//campaignBudgetsArray = [...campaignBudgetsArray, budgetDataWrapperMDF(res, true, true, rrOptions, budgetNameString, this.recordTypeDeveloperName)];
 											campaignBudgetsArray = [...campaignBudgetsArray, budgetDataWrapperMDF(res, true, true, finalRROptions, budgetNameString, this.recordTypeDeveloperName)];
 										} else {
+											//campaignBudgetsArray = [...campaignBudgetsArray, budgetDataWrapperMDF(res, true, false, rrOptions, budgetNameString, this.recordTypeDeveloperName)];
 											campaignBudgetsArray = [...campaignBudgetsArray, budgetDataWrapperMDF(res, true, false, finalRROptions, budgetNameString, this.recordTypeDeveloperName)];
 										}
 									}
@@ -2118,18 +2317,18 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 								} else {
 									this.picklistSize['availableBudgetValues'] = 6;
 								}
-								if(this.isDefaultBudget){
+								if (this.isDefaultBudget) {
 									this.showAvailableBudgets = true;
 									this.singleCampBudget = (this.availableBudgetValues[0].value);
 									//Default Single budget selection on Campaign budgets on create screen
-									if(this.selectedCmpBudgets == null){
+									if (this.selectedCmpBudgets == null) {
 										this.selectedCmpBudgets = [];
 										this.selectedCmpBudgets.push(this.availableBudgetValues[0].value);
 									}
 									this.loadBudgetTypefields = true;
 								}
-										}
-							if(this.mode == 'clone' && this.initalLoad) {
+							}
+							if (this.mode == 'clone' && this.initalLoad) {
 								this.initalLoad = false;
 							}
 							this.showAvailableBudgets = true;
@@ -2147,7 +2346,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 							this.showCampaignBudgets = false;
 						}
 					}
-					if(!this.isCampaignBudgetsInitiallyLoaded){
+					if (!this.isCampaignBudgetsInitiallyLoaded) {
 						retainAndUpdateCampaignBudgetsOldMap(this, false, false);
 						this.isCampaignBudgetsInitiallyLoaded = true;
 					} else {
@@ -2169,35 +2368,45 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		calReimbursementAmt(this);
 
 	}
-		handleTotalCampaignCostChange(event) {
-	let totalCmpCost = event.target.value;
+	handleTotalCampaignCostChange(event) {
+		let totalCmpCost = event.target.value;
 		let amtComp;
 		amtComp = this.template.querySelector('.Core_MDF_Total_Campaign_Cost_Amt__c');
-		if(totalCmpCost<=0){
+		if (totalCmpCost <= 0) {
 			amtComp.setCustomValidity(errorMsgForTotalCampCostAmt);
 		}
-		else{
+		else {
 			amtComp.setCustomValidity('');
 		}
-		amtComp.reportValidity(); 
-		this.campaignFieldValue["Core_MDF_Total_Campaign_Cost_Amt__c"] = totalCmpCost; 
-		if(this.recordTypeDeveloperName == Core_MDF_EEF_RecordType){
+		amtComp.reportValidity();
+		this.campaignFieldValue["Core_MDF_Total_Campaign_Cost_Amt__c"] = totalCmpCost;
+		if (this.recordTypeDeveloperName == Core_MDF_EEF_RecordType) {
 			this.finalRRrate = '100%'
 		}
 		calReimbursementAmt(this);
 	}
+	handleCSPIntelBasedRevenueChange(event) {
+		let cspIntelBasedRevenue = event.target.value;
+		let cspRevenue = this.template.querySelector('.Core_MDF_CSP_Intel_Based_Revenue_Amt__c');
+		if (cspIntelBasedRevenue <= 0) {
+			cspRevenue.setCustomValidity(errorMsgForTotalCampCostAmt);
+		}
+		else {
+			cspRevenue.setCustomValidity('');
+			this.campaignFieldValue["Core_MDF_CSP_Intel_Based_Revenue__c"] = cspIntelBasedRevenue;
+		}
+		cspRevenue.reportValidity();
+	}
 	handleBudgetAmountChangeForRMF(event) { let val = event.target.value; this.campaignFieldValue['Core_MDF_Budget_Amount_amt__c'] = val; let inpCmp = this.template.querySelector('[data-name="' + event.target.name + '"]'); if (val <= 0) { inpCmp.setCustomValidity(negativeInpValErr); } else { inpCmp.setCustomValidity(''); } inpCmp.reportValidity(); }
 	@api isFormValid() {
-		var isValid = false;
-		var allInputValid = false;
-		var allComboValid = false;
-		var allTextAreaValid = false;
-		var allDualListValid = false;
-		var allCustomLookupValid = true;
-		var availableBudgetSelected = true;
-		var campaignBudgetSelected = true;
-		var campaignBudgetAmntNotDecreased = true;
-		var isEndDateNotChanged = true;
+		var isValid = false; var allInputValid = false;
+		var allComboValid = false; var allTextAreaValid = false;
+		var allDualListValid = false; var allCustomLookupValid = true;
+		var availableBudgetSelected = true; var campaignBudgetSelected = true;
+		var campaignBudgetAmntNotDecreased = true; var isEndDateNotChanged = true;
+		var isCampBudgetValid = true;
+		let customGenericLookupsValid = true;
+
 		allInputValid = [...this.template.querySelectorAll('lightning-input')]
 			.reduce((validSoFar, inputCmp) => {
 				inputCmp.reportValidity();
@@ -2245,9 +2454,17 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				}
 			}
 		}
+		let customGenericLookupUiElements = this.template.querySelectorAll("c-core_-m-d-f_-custom-generic-lookup");
+		if (customGenericLookupUiElements) {
+			customGenericLookupUiElements.forEach(child => {
+				if (!child.isValid()) {
+					customGenericLookupsValid = customGenericLookupsValid && false;
+				}
+				child.reportInputValidity();
+			});
+		}
 		if (this.mode === 'edit' && this.recordTypeDeveloperName === Core_MDF_IPA_RecordType && this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"] == true) {
-			let oldEndDate = this.campaignRecord['EndDate'];
-			let selectedEndDate;
+			let oldEndDate = this.campaignRecord['EndDate']; let selectedEndDate;
 			let inputElements = this.template.querySelectorAll("lightning-input");
 			inputElements.forEach((element) => {
 				if (element !== null && element.name === 'EndDate') {
@@ -2263,33 +2480,25 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				isEndDateNotChanged = true;
 			}
 		}
-		if (this.recordTypeDeveloperName === Core_MDF_IPA_RecordType){
+		if (this.recordTypeDeveloperName === Core_MDF_IPA_RecordType) {
 			this.focusAreaValid = (checkForUndefinedEmptyAndNull(this.campaignFieldValue["Core_MDF_Focus_Area_nm__c"]) && this.campaignFieldValue["Core_MDF_Focus_Area_nm__c"].length) > 1 ? false : true;
 		}
 		if (this.recordTypeDeveloperName === Core_MDF_IPA_RecordType && this.mode == 'clone') {
 			this.getActivityCloneFields('Core_MDF_Custom_Picklist__c', this.campaignFieldValue["Core_MDF_Opal_Budget_Type_Txt__c"], this.recordTypeDeveloperName, this.proposalBasedIndicatorCamp, 'PartnerFundRequest');
 		}
-		if (allInputValid && this.focusAreaValid && allComboValid && allTextAreaValid && allDualListValid && allCustomLookupValid && availableBudgetSelected && campaignBudgetSelected && (campaignBudgetAmntNotDecreased || this.validateCampaignBudgetsAmount) &&
+		if (this.recordTypeDeveloperName === Core_MDF_EEF_RecordType && this.mode == 'clone') {
+			isCampBudgetValid = (this.campaignBudgetsForSave !== undefined && this.campaignBudgetsForSave !== null && this.campaignBudgetsForSave !== '') ? true : false;
+		}
+
+		if (allInputValid && this.focusAreaValid && allComboValid && allTextAreaValid && allDualListValid && allCustomLookupValid && availableBudgetSelected && campaignBudgetSelected && (campaignBudgetAmntNotDecreased || this.validateCampaignBudgetsAmount) && isCampBudgetValid &&
 			!this.availableBudgetWarning["Core_MDF_Opal_Budget_Type_Txt__c"] && !this.selectPartnerBudgetTypeWarning["Core_MDF_Opal_Budget_Type_Txt__c"] && !this.noAvailablePartnerAccounts &&
 			!this.countryError && isEndDateNotChanged && this.isCustomRRValid && !this.multiGeoError && !this.industryError && this.isCmpBudgetsValidOnChangeOfFields) {
 			isValid = true;
 		}
-		if (this.recordTypeDeveloperName === Core_MDF_Co_GTM_RecordType){
+		if (this.recordTypeDeveloperName === Core_MDF_Co_GTM_RecordType) {
 			isValid = isValid && (!this.intelOwnerError && !this.memberAcceptorError && !this.intelVerifierError);
 		}
 		return isValid;
-	}
-	 handleCSPIntelBasedRevenueChange(event) {
-		let cspIntelBasedRevenue = event.target.value;
-		let cspRevenue = this.template.querySelector('.Core_MDF_CSP_Intel_Based_Revenue_Amt__c');
-		if(cspIntelBasedRevenue<=0){
-			cspRevenue.setCustomValidity(errorMsgForTotalCampCostAmt);
-		}
-		else{
-		cspRevenue.setCustomValidity('');
-		this.campaignFieldValue["Core_MDF_CSP_Intel_Based_Revenue__c"] = cspIntelBasedRevenue;
-		}
-		cspRevenue.reportValidity();
 	}
 	setAttributeValues(element) {
 		let eleValue = element.value; let eleName = element.name; let elechecked = element.checked;
@@ -2300,25 +2509,27 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 					if (key == 'Core_MDF_Strategic_Marketing_Fund_Ind__c') {
 						this.campaignFieldValue["Core_MDF_Strategic_Marketing_Fund_Ind__c"] = elechecked;
 					}
+					//anushya TWC3117-17373
 					if (key == 'Core_MDF_Activity_Approval_Required_Ind__c') {
 						this.campaignFieldValue["Core_MDF_Activity_Approval_Required_Ind__c"] = elechecked;
 					}
+					//anushya TWC3117-17373
 					if (key == 'Core_MDF_Primary_Member_Acceptance_Ind__c') {
 						this.campaignFieldValue["Core_MDF_Primary_Member_Acceptance_Ind__c"] = true;
 					}
-					if(key == 'Core_MDF_Priority_2_nm__c' || key == 'Core_MDF_Priority_3_nm__c'){
+					if (key == 'Core_MDF_Priority_2_nm__c' || key == 'Core_MDF_Priority_3_nm__c') {
 						resetOrRollbackPriority2Or3(this, 'reset');
 					}
-					if (key == "Core_MDF_Intel_Owner_id__c"){
+					if (key == "Core_MDF_Intel_Owner_id__c") {
 						this.campaignFieldValue["Core_MDF_Intel_Owner_id__c"] = this.intelOwnerOptions.toString();
 					}
-					if (key == "Core_MDF_Member_Acceptor_id__c"){
+					if (key == "Core_MDF_Member_Acceptor_id__c") {
 						this.campaignFieldValue["Core_MDF_Member_Acceptor_id__c"] = this.memberAcceptorOptions.toString();
 					}
-					if (key == "Core_MDF_Intel_Verifier_id__c"){
+					if (key == "Core_MDF_Intel_Verifier_id__c") {
 						this.campaignFieldValue["Core_MDF_Intel_Verifier_id__c"] = this.intelVerifierOptions.toString();
 					}
-					if(key == "Core_MDF_CampOutcomeOpt_In_Ind__c"){
+					if (key == "Core_MDF_CampOutcomeOpt_In_Ind__c") {
 						this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] = elechecked;
 					}
 					if (key == 'Core_MDF_IPA_Co_Engineering_Campaign_ind__c') {
@@ -2331,19 +2542,25 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 	getCampaignFieldsValues() {
 		try {
 			let comboElements = this.template.querySelectorAll("lightning-combobox");
-			comboElements.forEach(element => {if (element != null) {this.setAttributeValues(element);}
+			comboElements.forEach(element => {
+				if (element != null) { this.setAttributeValues(element); }
 			});
 			let inputElements = this.template.querySelectorAll("lightning-input");
-			inputElements.forEach(element => {if (element != null) {this.setAttributeValues(element);}
+			inputElements.forEach(element => {
+				if (element != null) { this.setAttributeValues(element); }
 			});
 			let txtAreaElements = this.template.querySelectorAll("lightning-textarea");
-			txtAreaElements.forEach(element => {if (element != null) {this.setAttributeValues(element);}
+			txtAreaElements.forEach(element => {
+				if (element != null) { this.setAttributeValues(element); }
 			});
-			let dualListElements = this.template.querySelectorAll("lightning-dual-listbox");dualListElements.forEach(element => {if (element != null) {this.setAttributeValues(element);}
+			let dualListElements = this.template.querySelectorAll("lightning-dual-listbox"); dualListElements.forEach(element => {
+				if (element != null) {
+					this.setAttributeValues(element);
+				}
 			});
 			if (this.campaignFieldValue["Core_MDF_Program__c"] == "Intel Partner Alliance") {
 				this.campaignFieldValue["Core_MDF_Budget_Type_txt__c"] = this.campaignFieldValue["Core_MDF_Opal_Budget_Type_Txt__c"];
-				if(this.mode == 'edit' && this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"] == true) {
+				if (this.mode == 'edit' && this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"] == true) {
 					this.campAmountFields = {
 						totalCampaignCost: this.campaignFieldValue['Core_MDF_Total_Campaign_Cost_Amt__c'],
 						reimbursementAmount: this.campaignFieldValue['Core_MDF_Reimbursement_Amt__c'],
@@ -2353,10 +2570,13 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			if (this.mode != undefined && this.mode != null && this.mode != '' && this.mode == 'edit' && this.selectedAccount != undefined && this.selectedAccount != null && this.selectedAccount.Id != null) {
 				this.campaignFieldValue["Core_MDF_Account__c"] = this.selectedAccount.Id;
 			}
+			/*if (this.mode != undefined && this.mode != null && this.mode != '' && (this.mode == 'edit' || this.mode == 'clone') && this.selectedActCatTypePicValues != undefined && this.selectedActCatTypePicValues != null && this.selectedActCatTypePicValues != '') {
+				this.campaignFieldValue["Core_MDF_Activity_Category_Type__c"] = this.selectedActCatTypePicValues;
+			}*/
 			if (this.campaignFieldValue["Core_MDF_Program__c"] == Core_MDF_IPA_Program_Name && (checkForUndefinedEmptyAndNull(this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"]) && !this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"]) && (this.mode == 'edit' || this.mode == 'clone') && this.finalRRrate != undefined && this.finalRRrate != null && this.finalRRrate != "") {
 				this.campaignFieldValue["Core_MDF_Reimbursement_Rate__c"] = this.finalRRrate;
 			}
-	  		if(this.campaignFieldValue["Core_MDF_Program__c"] == Core_MDF_EEF_Program_Name){
+			if (this.campaignFieldValue["Core_MDF_Program__c"] == Core_MDF_EEF_Program_Name) {
 				this.campaignFieldValue["Core_MDF_Reimbursement_Rate__c"] = '100%';
 				let selActPartners = JSON.parse(JSON.stringify(this.campaignFieldValue['Core_MDF_Partner_Mapping_Txt__c']));
 				this.selectedActPartners = selActPartners.join(';');
@@ -2377,19 +2597,22 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			await this.getBudgetsForCampaign(accountIdForBudget, this.campaignFieldValue["StartDate"], this.campaignFieldValue["EndDate"], this.campaignFieldValue["Core_MDF_Opal_Budget_Type_Txt__c"]);
 		}
 		this.error = null;
-		if(this.mode !='Edit'){
+		if (this.mode != 'Edit') {
 			this.campaignFieldValue["Core_MDF_Terminal_Rejection_Ind__c"] = false;
 		}
-		if (this.mode === 'clone' && this.activityListClone.length > 0) {this.savePFRClonecampaign = true;if (this.pfrListPrepare()) {this.savePFRClonecampaign = false;}
+		if (this.mode === 'clone' && this.activityListClone.length > 0) {			
+			this.savePFRClonecampaign = true; if (this.pfrListPrepare()) { this.savePFRClonecampaign = false; }
 		}
-		this.btnDisabled['saveBtn'] = true;this.btnDisabled['cancelBtn'] = true;this.isLoaded = true;
+		this.btnDisabled['saveBtn'] = true; this.btnDisabled['cancelBtn'] = true; this.isLoaded = true;
 		let ecoSystemPartnerValues = this.campaignFieldValue["Core_MDF_Ecosystem_Partner_Nm__c"];
 		if (ecoSystemPartnerValues != undefined && ecoSystemPartnerValues != null && ecoSystemPartnerValues != "" && ecoSystemPartnerValues.length > 0) {
-			if(!ecoSystemPartnerValues.includes('Other')) {
-				this.campaignFieldValue["Core_MDF_Other_Ecosystem_Partner_txt__c"] = "";}}
-		if((this.mode !== 'edit') && this.campaignFieldValue["Core_MDF_Program__c"] == Core_MDF_IPA_Program_Name && this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"] == false) {
+			if (!ecoSystemPartnerValues.includes('Other')) {
+				this.campaignFieldValue["Core_MDF_Other_Ecosystem_Partner_txt__c"] = "";
+			}
+		}
+		if ((this.mode !== 'edit') && this.campaignFieldValue["Core_MDF_Program__c"] == Core_MDF_IPA_Program_Name && this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"] == false) {
 			let accBasedFieldsToBeBlanked = campaignAccBasedBlank.split(',');
-			 accBasedFieldsToBeBlanked.forEach(field => {
+			accBasedFieldsToBeBlanked.forEach(field => {
 				this.campaignFieldValue[field] = "";
 			});
 		}
@@ -2398,17 +2621,18 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				this.campaignFieldValue = validatePicklistvalues(this.campaignPicValues, this.campaignFieldValue, this.campaignFields, this);
 				this.pfrListCloneInsert.forEach(act => {
 					act.Core_MDF_IsCloned_Ind__c = true;
-									act.Core_MDF_Metrics_txt__c = '' ;
-					if(this.activityTypeToClassificationMap.has(act.Core_MDF_Activity_Types__c)){
+					act.Core_MDF_Metrics_txt__c = '';
+					if (this.activityTypeToClassificationMap.has(act.Core_MDF_Activity_Types__c)) {
 						act.Core_MDF_Activity_Classification_nm__c = this.activityTypeToClassificationMap.get(act.Core_MDF_Activity_Types__c)
 					};
-			if (this.isCommunity == true) {
-						act.Core_MDF_Opportunity_id__c = act.Core_MDF_Opportunity_id__c!=''?'':act.Core_MDF_Opportunity_id__c;
+					if (this.isCommunity == true) {
+						act.Core_MDF_Opportunity_id__c = act.Core_MDF_Opportunity_id__c != '' ? '' : act.Core_MDF_Opportunity_id__c;
 					}
 				});
 			}
 			if (this.mode === 'clone') {
 				this.validateIPAStartDateError();
+				//this.validateOutcomeBasedCampaign();
 			}
 		}
 		if (this.campaignFieldValue["Core_MDF_Program__c"] == Core_MDF_IPA_Program_Name && this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"] == true && this.mode === 'clone' && this.isAnyPicklistValueChanged) {
@@ -2416,39 +2640,45 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				let changedPicklistArray = this.campPickListValuesChangedObj;
 				if (changedPicklistArray.length > 0) {
 					changedPicklistArray.map(pickList => {
-					let availablePickListValues = [];
-					let finalPickListValues = [];
-					availablePickListValues = act[pickList.activityFieldAPIName]?.split(';');
-					if (checkForUndefinedEmptyAndNull(availablePickListValues) && availablePickListValues.length > 0) {
-					finalPickListValues = availablePickListValues.filter(val => pickList.picklistValuesOnCampaign.includes(val))
-					act[pickList.activityFieldAPIName] = finalPickListValues.join(';');}});}});}
-		if((this.campaignFieldValue["Core_MDF_Program__c"] === Core_MDF_CCF_Program_Name || this.campaignFieldValue["Core_MDF_Program__c"] === Core_MDF_DCF_Program_Name) && this.campaignSource === 'Target Setting'){
+						let availablePickListValues = [];
+						let finalPickListValues = [];
+						availablePickListValues = act[pickList.activityFieldAPIName]?.split(';');
+						if (checkForUndefinedEmptyAndNull(availablePickListValues) && availablePickListValues.length > 0) {
+							finalPickListValues = availablePickListValues.filter(val => pickList.picklistValuesOnCampaign.includes(val))
+							act[pickList.activityFieldAPIName] = finalPickListValues.join(';');
+						}
+					});
+				}
+			});
+		}
+		if ((this.campaignFieldValue["Core_MDF_Program__c"] === Core_MDF_CCF_Program_Name || this.campaignFieldValue["Core_MDF_Program__c"] === Core_MDF_DCF_Program_Name) && this.campaignSource === 'Target Setting') {
 			this.priorityPecAbove100 = false;
 			let totalOfPriorityPct = 0;
-			if(this.priorityPer1){
+			if (this.priorityPer1) {
 				totalOfPriorityPct += this.priorityPer1;
 			}
-			if(this.priorityPer2){
+			if (this.priorityPer2) {
 				totalOfPriorityPct += this.priorityPer2;
 			}
-			if(this.priorityPer3){
+			if (this.priorityPer3) {
 				totalOfPriorityPct += this.priorityPer3;
 			}
-			if(100<totalOfPriorityPct){
+			if (100 < totalOfPriorityPct) {
 				this.priorityPecAbove100 = true;
 			}
 		}
 		if(this.validOutcomeMetricRecordTypeWithOutIPA.includes(this.recordTypeDeveloperName) && this.isDateChanged){
 			this.validateActivityCategory();
 		}
-		if (this.recordTypeDeveloperName === Core_MDF_Co_GTM_RecordType){
+
+		if (this.recordTypeDeveloperName === Core_MDF_Co_GTM_RecordType) {
 			this.contractLineItemsListToSave = this.contractLineItemsList.filter(item => (item.type === 'new' && checkForUndefinedEmptyAndNull(item.value)) || item.isUpdated);
 			let contractLineItems = JSON.parse(JSON.stringify(this.contractLineItemsListToSave));
 			let contractLineItemsCopy = this.contractLineItemsOnLoad;
 			if (checkForUndefinedEmptyAndNull(contractLineItems) && contractLineItems.length > 0 && checkForUndefinedEmptyAndNull(contractLineItemsCopy) && contractLineItemsCopy.length > 0) {
 				contractLineItems.forEach(lineItem => {
 					let index = contractLineItemsCopy.findIndex(exisitngLineItem => (lineItem.type == 'existing' && lineItem.Id == exisitngLineItem.Id));
-					if(index != -1) {
+					if (index != -1) {
 						lineItem.isUpdated = (contractLineItemsCopy[index].value != lineItem.value) ? true : false;
 					}
 				});
@@ -2457,46 +2687,55 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			this.contractLineItemsListToSave = [...contractLineItems];
 			contractLineItems.map(cli => {
 				let index = this.contractLineItemsListToSave.findIndex(lineIt => (lineIt.type == 'existing' && lineIt.isUpdated == false && lineIt.Id == cli.Id))
-				if(index != -1) {
+				if (index != -1) {
 					this.contractLineItemsListToSave.splice(index, 1)
 				}
 			});
-			
 
-			if(this.mode == 'edit' && (this.status == 'Planned' || this.status == 'In Progress')) {
+
+			if (this.mode == 'edit' && (this.status == 'Planned' || this.status == 'In Progress')) {
 				this.campaignFieldValue['Core_MDF_ContractLineItem_Update_Ind__c'] = (checkForUndefinedEmptyAndNull(this.contractLineItemsListToSave) && this.contractLineItemsListToSave.length > 0) ? true : false;
 			}
 			//Added by VB
-			if(checkForUndefinedEmptyAndNull(this.campaignBudgetsForSave) && this.campaignBudgetsForSave.length > 0) {
+			if (checkForUndefinedEmptyAndNull(this.campaignBudgetsForSave) && this.campaignBudgetsForSave.length > 0) {
 				let budgetIds = [];
 				this.campaignBudgetsForSave.forEach(campBud => {
 					budgetIds.push(campBud.budgetId);
 				});
 				this.campaignFieldValue['Core_MDF_Campaign_Budgets_Id__c'] = budgetIds.join(';');
-				//Added by Alekhya for budget date issue fix
-				if (this.mode === 'edit' && checkForUndefinedEmptyAndNull(this.activityListEdit) && this.activityListEdit.length > 0) {
-
-					let pfrList = JSON.parse(JSON.stringify(this.activityListEdit));
-					if (pfrList !== undefined && pfrList !== null) {
-						for (let i = 0; i < pfrList.length; i++) {
-
-							if (pfrList[i].Budget['StartDate'] > this.campaignFieldValue['StartDate'] || pfrList[i].Budget['EndDate'] < this.campaignFieldValue['StartDate']) {
-
-								this.isStartDateValid = false;
-							}
-							else {
-								this.isStartDateValid = true;
-							}
+			}
+			//Added by Alekhya for budget date issue fix
+			if (this.mode === 'edit' && checkForUndefinedEmptyAndNull(this.activityListEdit) && this.activityListEdit.length > 0) {
+				console.log('this.activityListEdit', this.activityListEdit);
+				console.log('JSon string', JSON.parse(JSON.stringify(this.activityListEdit)));
+				let pfrList = JSON.parse(JSON.stringify(this.activityListEdit));
+				if (pfrList !== undefined && pfrList !== null) {
+					for (let i = 0; i < pfrList.length; i++) {
+						console.log('pfrList[i]', pfrList[i]);
+						console.log('pfrList[i].budget', pfrList[i].Budget['StartDate']);
+						if (pfrList[i].Budget['StartDate'] > this.campaignFieldValue['StartDate'] || pfrList[i].Budget['EndDate'] < this.campaignFieldValue['StartDate']) {
+							//this.showErrorToast('Campaign startDate doesnot comply with budget startDate of Activity');
+							this.isStartDateValid = false;
+						}
+						else {
+							this.isStartDateValid = true;
 						}
 					}
 				}
+
+				/*this.activityListEdit.forEach(act =>{
+					if(act.Budget.StartDate>this.campaignFieldValue[StartDate] ||act.Budget.EndDate<this.campaignFieldValue[StartDate] ){
+						this.showErrorToast('Campaign startDate doesnot comply with budget startDate of Activity');
+					}
+				});*/
 			}
 		}
 		//TWC3117-17805 Aditya
 		this.validateCCFDCFStartDateError();
+		
 		let outcomeWrapperList = [];
 		if (this.validOutcomeMetricProgram.includes(this.campaignFieldValue["Core_MDF_Program__c"])) {
-			if(this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"]){
+			if (this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"]) {
 				let outcomeDetailsEdited = false;
 				if (this.recordId && this.mode === 'edit') {
 					for (const row of this.rows) {
@@ -2524,23 +2763,34 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				}
 				// Set the outcome edited flag accordingly
 				this.campaignFieldValue["Core_MDF_Outcome_Detail_Edited_Ind__c"] = outcomeDetailsEdited;
-			}	
+				//console.log('outcomeDetailsEdited@@@@@'+this.campaignFieldValue["Core_MDF_Outcome_Detail_Edited_Ind__c"]);
+			}
+			// if (this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] && (!this.editedOutcomeData)) {
 			if ( !this.editedOutcomeData) {
 				this.isOutcomeValid = false; this.outcomeErrorMessages.push(emptyFieldError);
-			}else if (this.validOutcomeMetricRecordType.includes(this.recordTypeDeveloperName) && this.outcomeBasedError ) { 
+				console.log('coming to first if');
+			} //else if (this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] && this.editedOutcomeData && Object.keys(this.editedOutcomeData).length > 1) {
+			else if (this.validOutcomeMetricRecordType.includes(this.recordTypeDeveloperName) && this.outcomeBasedError ) { //Ealaya TWC3117-14432 changes
 					this.isOutcomeValid = false;
 					this.outcomeErrorMessages.push(emptyFieldError);
 			} //Ealaya TWC3117-14432 Activity category changes
-			else if ((this.recordTypeDeveloperName === Core_MDF_CCF_RecordTypeName || this.recordTypeDeveloperName === Core_MDF_DCF_RecordTypeName) && this.activityCategoryBasedError) {
+			else if ((this.recordTypeDeveloperName === Core_MDF_CCF_RecordTypeName || this.recordTypeDeveloperName === Core_MDF_DCF_RecordTypeName) && this.activityCategoryBasedError) { //Ealaya TWC3117-14432 changes
 					this.isvalidActCatType = false;
+					//this.outcomeErrorMessages.push(emptyFieldError);
+			}	//Ealaya TWC3117-14432 Activity category changes
+
+			else if (this.recordTypeDeveloperName === Core_MDF_IPA_RecordType && this.showIPAStartDateError) {
+					this.isIPAStartDateValid = false;
 			}
-			else if (this.recordTypeDeveloperName === Core_MDF_IPA_RecordType && this.showIPAStartDateError === true) {
-					this.isOutcomeValid = false;
-					this.outcomeErrorMessages.push(emptyFieldError);
-			}
+			/*else if (this.recordTypeDeveloperName === Core_MDF_IPA_RecordType && this.showActivityError) {
+					this.isActivityCloneValid = false;
+			}*/
 			else if ( this.editedOutcomeData && Object.keys(this.editedOutcomeData).length > 1) {
 				this.isOutcomeValid = false; this.outcomeErrorMessages.push(Core_MDF_Campaign_Outcome_Validation);
-			} else if ( this.editedOutcomeData && Object.keys(this.editedOutcomeData).length > 0) {
+				console.log('coming to second if');
+			} //else if (this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] && this.editedOutcomeData && Object.keys(this.editedOutcomeData).length > 0) {
+			 else if ( this.editedOutcomeData && Object.keys(this.editedOutcomeData).length > 0) {
+				console.log('outcomecount:::', Object.keys(this.editedOutcomeData).length);
 				const tableCmp = this.template.querySelector('c-core_-m-d-f_-custom-data-table');
 				if (tableCmp) {
 					const validationResult = tableCmp.validate();
@@ -2556,101 +2806,150 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 					});
 				}
 			}
-
+			//Ealay
+			// if (this.recordTypeDeveloperName === Core_MDF_IPA_RecordType && (this.mode == 'edit') &&  this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] === false  ) {
+			//    outcomeWrapperList = Object.values(this.editedOutcomeData).map(row => {
+			// 	const { outcome, goalQuantity, quantity, outcomeCriteria } = row;
+			// 	return {
+			// 		outcome,
+			// 		baselineQuantity: null,
+			// 		goalQuantity ,
+			// 		quantity,
+			// 		outcomeCriteria
+			// 	};
+			// });
+			// } //Ealay this is required in future if they want to baselineQuantity value to null on edit of any other field in campaign. and make anyother value null assign value null in this code 
 		}
-		if (this.isFormValid() && !this.priorityPecAbove100 && this.savePFRClonecampaign && !this.mandatoryActFieldsError && !this.multipleValuesSelected && this.isOutcomeValid && this.isStartDateValid && !this.isPastDatedCampaign && this.isvalidActCatType && this.isCCFDCFStartDateValid) {
+		
+		console.log('Final outcomeWrapperList:', JSON.stringify(outcomeWrapperList));
+		console.log('optIn:', this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"]);
+		console.log('isOutcomeValid:::', this.isOutcomeValid);
+		console.log('pfrListCloneInsert size:', this.pfrListCloneInsert.length);
+		if (this.isFormValid() && !this.priorityPecAbove100 && this.savePFRClonecampaign && !this.mandatoryActFieldsError && !this.multipleValuesSelected && this.isOutcomeValid && this.isStartDateValid && !this.isPastDatedCampaign && this.isvalidActCatType && this.isIPAStartDateValid && this.isCCFDCFStartDateValid){
 			if (this.mode !== undefined && this.mode !== null && this.mode !== '' && this.mode === 'edit' && this.selectedAvailableBudgetsMap !== undefined && this.selectedAvailableBudgetsMap !== null && this.selectedAvailableBudgetsMap !== '') {
 				if (this.campaignFieldValue["Core_MDF_Supports_legacy_program__c"] == 'Yes') {
-					this.selectedCmpBudgets = [];}
+					this.selectedCmpBudgets = [];
+				}
 				for (let budgetId of this.selectedAvailableBudgetsMap.keys()) {
 					let selectedCmpBudgetsStr = this.selectedCmpBudgets.toString();
 					if (!selectedCmpBudgetsStr.includes(budgetId)) {
 						let res = this.allCmpBudgetsMap.get(budgetId);
 						var isDuplicate = false;
-						let budgetNameString = getBudgetNameString(res.Core_MDF_Budget_Name_Id__r.Title,res.Core_MDF_Budget_Type_Nm__c ,res.Core_MDF_Start_Date_Dt__c, res.Core_MDF_End_Date_Dt__c,res.Core_MDF_Budget_Name_Id__r.Core_MDF_budget_ref_nbr__c);
-						let obj = {campaignBudgetId: res.Id,budgetId: res.Core_MDF_Budget_Name_Id__c,isActive: false,budgetName: budgetNameString,budgetAmount: res.Core_MDF_Budget_Amt__c,budgetRR: res.Core_MDF_Reimbursement_Rate_Pct__c,budgetRAmount: res.Core_MDF_Reimbursement_Amt__c};
+						let budgetNameString = getBudgetNameString(res.Core_MDF_Budget_Name_Id__r.Title, res.Core_MDF_Budget_Type_Nm__c, res.Core_MDF_Start_Date_Dt__c, res.Core_MDF_End_Date_Dt__c, res.Core_MDF_Budget_Name_Id__r.Core_MDF_budget_ref_nbr__c);
+						let obj = { campaignBudgetId: res.Id, budgetId: res.Core_MDF_Budget_Name_Id__c, isActive: false, budgetName: budgetNameString, budgetAmount: res.Core_MDF_Budget_Amt__c, budgetRR: res.Core_MDF_Reimbursement_Rate_Pct__c, budgetRAmount: res.Core_MDF_Reimbursement_Amt__c };
 						this.campaignBudgetsForSave.forEach(element => {
 							if (element.campaignBudgetId == obj.campaignBudgetId) { element.isActive = obj.isActive; isDuplicate = true; }
 						});
 						if (!isDuplicate) { this.campaignBudgetsForSave.push(obj); }
-						if(!this.selectedCmpBudgets.includes(res.Id)) {
+						if (!this.selectedCmpBudgets.includes(res.Id)) {
 							this.campaignBudgets = this.campaignBudgets.filter(budgetItem => budgetItem.campaignBudgetId !== res.Id);
 						}
 					}
 				}
+				//keep this in devccp as a priority change issue
+				//this.campaignBudgets = this.campaignBudgetsForSave.filter(budgetItem => budgetItem.isActive !== false);
 			}
-			if (this.campaignFieldValue["Core_MDF_Supports_legacy_program__c"] == 'Yes') {this.campaignBudgetsForSave = [];}
-			saveCampaign({ 
-				campaignObj: this.getCampaignFieldsValues(), 
-				campaignBudgets: this.campaignBudgetsForSave, 
-				pfrList: this.pfrListCloneInsert, 
-				campAmountFields: JSON.stringify(this.campAmountFields), 
-				selectedBudgets: this.selectedCmpBudgets, 
-				selectedActPartners: this.selectedActPartners, 
-				contractLineItemRecordsToSave: this.contractLineItemsListToSave, 
-				outcomeWrapperList: outcomeWrapperList,
+
+			/*, 
+				jsonString : JSON.stringify(this.activityToAttributeList),
+				hasTacticMetrics : this.campaignFieldValue.hasOwnProperty('Core_MDF_CampOutcomeOpt_In_Ind__c') ? this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] : false*/
+
+			/*,
 				activityToActivityAttrWrapperList : this.activityToAttributeList,
-				hasTacticMetrics : this.campaignFieldValue.hasOwnProperty('Core_MDF_CampOutcomeOpt_In_Ind__c') ? this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] : false})
+				hasTacticMetrics : this.campaignFieldValue.hasOwnProperty('Core_MDF_CampOutcomeOpt_In_Ind__c') ? this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] : false*/
+			console.log('update pfrListCloneInsert:', JSON.stringify(this.pfrListCloneInsert));
+			console.log('pfrListCloneInsert size:', this.pfrListCloneInsert.length);
+
+			if (this.campaignFieldValue["Core_MDF_Supports_legacy_program__c"] == 'Yes') { this.campaignBudgetsForSave = []; }
+			saveCampaign({
+				campaignObj: this.getCampaignFieldsValues(),
+				campaignBudgets: this.campaignBudgetsForSave,
+				pfrList: this.pfrListCloneInsert,
+				campAmountFields: JSON.stringify(this.campAmountFields),
+				selectedBudgets: this.selectedCmpBudgets,
+				selectedActPartners: this.selectedActPartners,
+				contractLineItemRecordsToSave: this.contractLineItemsListToSave,
+				outcomeWrapperList: outcomeWrapperList,
+				activityToActivityAttrWrapperList: this.activityToAttributeList,
+				hasTacticMetrics: this.campaignFieldValue.hasOwnProperty('Core_MDF_CampOutcomeOpt_In_Ind__c') ? this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] : false
+			})
 				.then(result => {
 					this.isLoaded = false;
 					if (result != null && !result.startsWith('Exception')) {
 						this.navigateToRecordDetailPage(this.objectApiName, result);
-						this.error = undefined;this.isLoaded = false;
-						if (this.mode == 'edit') {setTimeout(function () {window.location.reload();}, 500);}
+						this.error = undefined; this.isLoaded = false;
+						if (this.mode == 'edit') { setTimeout(function () { window.location.reload(); }, 500); }
 					} else if (result != null && result.startsWith('Exception')) {
-						this.handleServerExceptions(result);this.isLoaded = false;this.btnDisabled["saveBtn"] = false;this.btnDisabled["cancelBtn"] = false;this.scrollUp();}
+						this.handleServerExceptions(result); this.isLoaded = false; this.btnDisabled["saveBtn"] = false; this.btnDisabled["cancelBtn"] = false; this.scrollUp();
+					}
 				}).catch(e => {
-						if (e) {var errorMessage = e.body.message;
-							if(errorMessage != null && errorMessage != undefined && errorMessage.includes(this.inValidOppError)){
-								this.activityListClone = validateOpportunityId(errorMessage,this.activityListClone);
-							}else{
-							if(checkForUndefinedEmptyAndNull(e.body.message)){
+					if (e) {
+						var errorMessage = e.body.message;
+						if (errorMessage != null && errorMessage != undefined && errorMessage.includes(this.inValidOppError)) {
+							this.activityListClone = validateOpportunityId(errorMessage, this.activityListClone);
+						} else {
+							if (checkForUndefinedEmptyAndNull(e.body.message)) {
 								this.validateCampaignBudgetsAmount = (e.body.message).includes('Campaign Spending Limit (USD) entered should be Greater than or equal to') ? true : false;
-							}							
+							}
 							this.handleServerExceptions(e.body.message);
 						}
-						this.isLoaded = false;this.btnDisabled["saveBtn"] = false;this.btnDisabled["cancelBtn"] = false; resetOrRollbackPriority2Or3(this, 'rollback'); this.scrollUp();
+						this.isLoaded = false; this.btnDisabled["saveBtn"] = false; this.btnDisabled["cancelBtn"] = false; resetOrRollbackPriority2Or3(this, 'rollback');
+						this.scrollUp();
 					}
 				})
 		} else {
+			
 			if (!this.isStartDateValid) {
 				this.showErrorToast(campStartDtBudgetStartDtValErrMessage, 'pester');
 			}
+			//aditya
 			if (this.isPastDatedCampaign) {
+				console.log('@@@Inside Custom save Start Date', this.isPastDatedCampaign);
 				this.showErrorToast(coGTMCampaignStartDateValidation);
 				this.hideGenericError = true
 			}
 			if (this.priorityPecAbove100) {
 				this.showErrorToast('Total sum of Priority Weightages cannot be greater than 100%', 'pester');
-			}else if (!this.focusAreaValid) {
+			} else if (!this.focusAreaValid) {
 				this.showErrorToast(singleFocusAreaSelectionTextMessage, 'pester');
-			}else if (!this.isOutcomeValid) {
+			} else if (!this.isOutcomeValid) {
 				console.log('isOutcomeValidationerror', this.outcomeErrorMessages);
 				this.showErrorToast(this.outcomeErrorMessages.join('\n'), 'pester');
 				this.outcomeErrorMessages = [];
-			}else if(!this.isValid && !this.hideGenericError) {
+			}else if (!this.isValid && !this.hideGenericError) {
+				console.log('coming inside isValid');
 				this.showErrorToast(emptyFieldError, 'pester');
 			}
 			if (!this.isvalidActCatType) {
+				console.log('coming inside isvalidActCatType');
 				this.showErrorToast(emptyFieldError, 'pester');			
-			}			
-			if (this.mandatoryActFieldsError) {
-				this.showErrorToast(Core_MDF_MandatoryFieldsCheckOnProposal, 'pester');
 			}
+			if(!this.isIPAStartDateValid){
+				this.showErrorToast(emptyFieldError, 'pester');
+			}
+			//Aditya TWC3117-17805
 			if (!this.isCCFDCFStartDateValid) {
 				this.showErrorToast(emptyFieldError, 'pester');
 			}
-			this.isLoaded = false;this.btnDisabled["saveBtn"] = false;this.btnDisabled["cancelBtn"] = false;this.scrollUp();
+			/*if(!this.isActivityCloneValid){
+				this.showErrorToast('Invalid Number of Activities', 'pester');
+			}*/			
+			if (this.mandatoryActFieldsError) {
+				console.log('coming inside mandatory error');
+				this.showErrorToast(Core_MDF_MandatoryFieldsCheckOnProposal, 'pester');
+			}
+			this.isLoaded = false; this.btnDisabled["saveBtn"] = false; this.btnDisabled["cancelBtn"] = false; this.scrollUp();
 		}
 	}
 	showErrorToast(errorMessage, mode) {
-		const evt = new ShowToastEvent({ title: 'Error!', message: errorMessage, variant: 'error', mode: mode });this.dispatchEvent(evt);
+		const evt = new ShowToastEvent({ title: 'Error!', message: errorMessage, variant: 'error', mode: mode }); this.dispatchEvent(evt);
 	}
 	scrollUp() {
 		const scrollOptions = { left: 0, top: 0, behavior: 'smooth' };
 		const bodyDiv = this.template.querySelector('[class=body]');
-		if (bodyDiv) {bodyDiv.scrollTop = 0;
-		} else {window.scrollTo(scrollOptions);}
+		if (bodyDiv) {
+			bodyDiv.scrollTop = 0;
+		} else { window.scrollTo(scrollOptions); }
 	}
 	async handleSelectedAccount(event) {
 		this.selectPartnerBudgetTypeWarning["Core_MDF_Opal_Budget_Type_Txt__c"] = false;
@@ -2658,31 +2957,35 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		this.virtualCorpAccId = (this.recordTypeDeveloperName === Core_MDF_Co_GTM_RecordType) ? (event.detail ? event.detail["Core_MDF_Virtual_Corp_Account_Id__c"] : '') : '';
 		this.program = this.program == undefined ? this.campaignFieldValue["Core_MDF_Program__c"] : this.program;
 		if (this.recordTypeDeveloperName === Core_MDF_IPA_RecordType) {
-			let virtualCorpId;
+			//let virtualCorpId;  // Roshan - Commented as part of TWC3117-18965
 			if ((this.mode == 'edit' || this.mode == 'clone') && event.detail == undefined) {
 				selectedAccount = event;
-				virtualCorpId = this.selectedAccount?.virtualCorpAcc || this.selectedAccount?.Id;
-			} else { 
+				//virtualCorpId = this.selectedAccount?.virtualCorpAcc || this.selectedAccount?.Id;  // Roshan - Commented as part of TWC3117-18965
+			} else {
 				selectedAccount = event.detail?.Id || event.detail; 
-				virtualCorpId = event.detail?.virtualCorpId || event.detail?.Id || event.detail;
-			}		
+				//virtualCorpId = event.detail?.virtualCorpId || event.detail?.Id || event.detail;  // Roshan - Commented as part of TWC3117-18965
+			}
+
 			if (selectedAccount == null || (selectedAccount != null && selectedAccount.length != 18))
-				this.campaignFieldValue['Core_MDF_Opal_Budget_Type_Txt__c'] = null;this.loadBudgetTypefields = false;this.dynamicload = false;
-			this.availableDomains = [];	
-			this.domainsLoaded = false;
+				this.campaignFieldValue['Core_MDF_Opal_Budget_Type_Txt__c'] = null; this.loadBudgetTypefields = false; this.dynamicload = false;
+			
+			// Roshan - Commented as part of TWC3117-18965
+			//this.availableDomains = [];
+			//this.domainsLoaded = false;
 			this.campaignFieldValue["Core_MDF_Partner_Contact_txt__c"] = '';
-			this.fetchDomainsForAccount(virtualCorpId);
-			await getBudgetType({accId: selectedAccount,operation: this.mode,isProposalBased: this.isProposalCampaign,program: this.program})
+			//this.fetchDomainsForAccount(virtualCorpId);  // Roshan - Commented as part of TWC3117-18965
+			
+			await getBudgetType({ accId: selectedAccount, operation: this.mode, isProposalBased: this.isProposalCampaign, program: this.program })
 				.then((result) => {
-					var budgetTypes = result;var budgetTypePicValues = [];
+					var budgetTypes = result; var budgetTypePicValues = [];
 					if (budgetTypes != undefined && budgetTypes != null) {
-						for (const key in budgetTypes) {const obj = {label: budgetTypes[key],value: key,};budgetTypePicValues = [...budgetTypePicValues, obj];}
+						for (const key in budgetTypes) { const obj = { label: budgetTypes[key], value: key, }; budgetTypePicValues = [...budgetTypePicValues, obj]; }
 					}
 					this.campaignPicValues["Core_MDF_Opal_Budget_Type_Txt__c"] = budgetTypePicValues;
 					this.budgetOptions = budgetTypePicValues;
 				})
 				.catch(e => { });
-		} else if(this.recordTypeDeveloperName === Core_MDF_Co_GTM_RecordType){
+		} else if (this.recordTypeDeveloperName === Core_MDF_Co_GTM_RecordType) {
 			this.intelOwnerError = false;
 			this.memberAcceptorError = false;
 			this.intelVerifierError = false;
@@ -2696,8 +2999,8 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			this.campaignPicValues['Core_MDF_Member_Acceptor_id__c'] = [];
 			this.campaignPicValues['Core_MDF_Intel_Owner_id__c'] = [];
 			let selectedAccParentFundAccId;
-			let coGTMProgramId;	
-			if((this.mode == 'edit' || this.mode == 'clone') && event.detail == undefined) {
+			let coGTMProgramId;
+			if ((this.mode == 'edit' || this.mode == 'clone') && event.detail == undefined) {
 				this.virtualCorpAccId = event['virtualCorpAcc'];
 				this.selectedAccountId = event['Id'];
 				selectedAccParentFundAccId = event['ultimateAcc'];
@@ -2715,21 +3018,19 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 					const keys = ['Core_MDF_Intel_Owner_id__c', 'Core_MDF_Member_Acceptor_id__c', 'Core_MDF_Intel_Verifier_id__c'];
 					keys.forEach((key) => {
 						const wrapper = result[key];
-	
+						console.log('@@@ options', result[key]);
 						// If data exists for that field, assign it to internalAndExternalUsersMap
 						if (wrapper) {
 							const userDetails = {
 								defaultOptions: wrapper.defaultOptions,
 								options: wrapper.options
 							};
-							
 							if (key === 'Core_MDF_Intel_Owner_id__c') {
 								this.intelOwnerOptions = (this.mode == 'edit' || this.mode == 'clone') ? this.campaignRecord['Core_MDF_Intel_Owner_id__c'].split(';') : wrapper.defaultOptions;
 							}
-							else if(key === 'Core_MDF_Member_Acceptor_id__c'){
+							else if (key === 'Core_MDF_Member_Acceptor_id__c') {
 								this.memberAcceptorOptions = (this.mode == 'edit' || this.mode == 'clone') ? this.campaignRecord['Core_MDF_Member_Acceptor_id__c'].split(';') : wrapper.defaultOptions;
 							}
-							
 							else if (key === 'Core_MDF_Intel_Verifier_id__c') {
 								this.intelVerifierOptions = (this.mode == 'edit' || this.mode == 'clone') ? this.campaignRecord['Core_MDF_Intel_Verifier_id__c'].split(';') : wrapper.defaultOptions;
 							}
@@ -2741,7 +3042,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 								options: []
 							});
 						}
-					});				
+					});
 					this.campaignPicValues['Core_MDF_Intel_Verifier_id__c'] = this.internalAndExternalUsersMap.get('Core_MDF_Intel_Verifier_id__c')['options'];
 					this.campaignPicValues['Core_MDF_Member_Acceptor_id__c'] = this.internalAndExternalUsersMap.get('Core_MDF_Member_Acceptor_id__c')['options'];
 					this.campaignPicValues['Core_MDF_Intel_Owner_id__c'] = this.internalAndExternalUsersMap.get('Core_MDF_Intel_Owner_id__c')['options'];
@@ -2753,11 +3054,6 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		}
 		this.campaignFieldDisabled['Core_MDF_Opal_Budget_Type_Txt__c'] = false;
 		this.campaignFieldValue['Core_MDF_Account__c'] = selectedAccount;
-		if((selectedAccount != null && selectedAccount != undefined) && this.recordTypeDeveloperName == Core_MDF_EEF_RecordType){
-				this.campaignFieldValue["Core_MDF_Supports_legacy_program__c"] = 'MDF or both CMP & MDF';
-				this.budgetWarning["Core_MDF_Opal_Budget_Type_Txt__c"] = false;
-				getSIOrISVAccounts(selectedAccount, this);
-			}
 		if (
 			(selectedAccount != null && selectedAccount != undefined) &&
 			(this.campaignFieldValue['StartDate'] !== undefined && this.campaignFieldValue['StartDate'] != null && this.campaignFieldValue['StartDate'] !== '') &&
@@ -2773,37 +3069,48 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		}
 		if ((selectedAccount != undefined && selectedAccount != null && selectedAccount != '') &&
 			(this.campaignFieldValue["Core_MDF_Program__c"] == Core_MDF_IPA_Program_Name && this.mode != 'edit')) {
-			this.isLoaded = true;this.campaignFieldValue["Core_MDF_Account__c"] = selectedAccount;this.getAccountSpecificBudgetTypes(String(selectedAccount));
+			this.isLoaded = true; this.campaignFieldValue["Core_MDF_Account__c"] = selectedAccount; this.getAccountSpecificBudgetTypes(String(selectedAccount));
 		} else {
 			this.campaignFieldDisabled["Core_MDF_Opal_Budget_Type_Txt__c"] = false;
-			if (this.campaignFieldValue["Core_MDF_Program__c"] == Core_MDF_IPA_Program_Name) {this.campaignFieldDisabled['Core_MDF_Opal_Budget_Type_Txt__c'] = true;}
+			if (this.campaignFieldValue["Core_MDF_Program__c"] == Core_MDF_IPA_Program_Name) { this.campaignFieldDisabled['Core_MDF_Opal_Budget_Type_Txt__c'] = true; }
+		}
+		if (this.recordTypeDeveloperName == Core_MDF_EEF_RecordType) {
+			getSIOrISVAccounts(selectedAccount, this);
 		}
 	}
-	fetchDomainsForAccount(accountId) {
-		if (!accountId) { this.availableDomains = [];  this.domainsLoaded = false; return; }
+	// Roshan - Commented as part of TWC3117-18965
+	// fetchDomainsForAccount(accountId) {
+	// 	if (!accountId) { this.availableDomains = [];  this.domainsLoaded = false; return; }
 
-		getDomainsForAccount({ accountId: accountId })
-			.then(result => {
-				this.availableDomains = result || [];
-				this.domainsLoaded = true;
-			})
-			.catch(error => {
-				this.error = error;
-				this.availableDomains = [];
-				this.domainsLoaded = false;
-			});
-	}
+	// 	getDomainsForAccount({ accountId: accountId })
+	// 		.then(result => {
+	// 			this.availableDomains = result || [];
+	// 			this.domainsLoaded = true;
+	// 			console.log('@@-availableDomains:', this.availableDomains);
+	// 			console.log('@@-accountId passed:', accountId);
+	// 		})
+	// 		.catch(error => {
+	// 			console.error('@@-Error fetching domains:', error);
+	// 			this.availableDomains = [];
+	// 			this.domainsLoaded = false;
+	// 		});
+	// }
+
 	handlePartnerContactChange(event) {
 		const emailString = event.target.value?.trim();
 		const inputField = event.target; 
 		this.campaignFieldValue["Core_MDF_Partner_Contact_txt__c"] = emailString;
-		
 		if (!emailString) {
 			inputField.setCustomValidity('');
 			inputField.reportValidity();
 			return;
 		}
-		if (this.domainsLoaded) {
+		// validate email format only.
+		inputField.setCustomValidity(this.validateEmails(emailString));
+		inputField.reportValidity();
+
+		// Roshan - Commented as part of TWC3117-18965
+		/* if (this.domainsLoaded) {
 			const approvedDomains = this.availableDomains
 				.map(d => d.Name.toLowerCase().trim());
 
@@ -2818,6 +3125,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			return;
 		}
 		const virtualCorpId = this.selectedAccount.virtualCorpAcc ? this.selectedAccount.virtualCorpAcc: this.selectedAccount.Id;
+		
 		if (!virtualCorpId) {
 			return;
 		}
@@ -2840,45 +3148,57 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				inputField.reportValidity();
 			})
 			.catch(error => {
-				this.error = error;
+				console.error('@@-Error fetching domains:', error);
 				inputField.setCustomValidity('');
 				inputField.reportValidity();
 			});
+		*/
 	}
-	validateEmails(emailString, approvedDomains) {
+
+	validateEmails(emailString) {
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-		if (approvedDomains.length === 0)
-        	return '';
+		// Roshan - Commented as part of TWC3117-18965
+		// if (approvedDomains.length === 0)
+     	// 	return '';
 		
 		if (/;;|^;/.test(emailString)) {
         	return Core_MDF_InvalidEmailError;
     	}
+
 		for (let email of emailString.split(';').map(e => e.trim()).filter(Boolean)) {
 			
 			// Validate email format
 			if (!emailRegex.test(email)) 
 				return Core_MDF_InvalidEmailError;
 
-			const domain = email.split('@')[1].toLowerCase();
+			// Roshan - Commented as part of TWC3117-18965
+			/* const domain = email.split('@')[1].toLowerCase();
+			
+			console.log('@@-entered domain:', domain);
+			console.log('@@-approvedDomains:', approvedDomains);
+			console.log('@@-is domain valid:', approvedDomains.includes(domain));
 
+			// Block Intel domain
 			if (domain === 'intel.com')
 				return Core_MDF_IntelDomainError;
 
 			if (!approvedDomains.includes(domain))
 				return `${Core_MDF_UnsupportedDomain_Error} ${approvedDomains.join(', ')}`;
+			*/
 
 		}
 		return '';
 	}
+
 	getAccountSpecificBudgetTypes(selectedAccount) {
-		getAccSpecificBudgetTypes({accountId: String(selectedAccount),program: this.campaignFieldValue["Core_MDF_Program__c"]})
+		getAccSpecificBudgetTypes({ accountId: String(selectedAccount), program: this.campaignFieldValue["Core_MDF_Program__c"] })
 			.then(result => {
 				if (result) {
-					var budgetTypes = [];budgetTypes = result['accIdBudgetTypeMap'][selectedAccount];var budgetTypePicValues = [];
+					var budgetTypes = []; budgetTypes = result['accIdBudgetTypeMap'][selectedAccount]; var budgetTypePicValues = [];
 					if (budgetTypes != undefined && budgetTypes != null && budgetTypes != '') {
 						for (const key in budgetTypes) {
-							const obj = {label: budgetTypes[key],value: key,};budgetTypePicValues = [...budgetTypePicValues, obj];
+							const obj = { label: budgetTypes[key], value: key, }; budgetTypePicValues = [...budgetTypePicValues, obj];
 						}
 					}
 					this.campaignPicValues["Core_MDF_Opal_Budget_Type_Txt__c"] = budgetTypePicValues;
@@ -2910,7 +3230,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 	}
 	resetBudgetRelatedFlags() {
 		this.selectPartnerBudgetTypeWarning["Core_MDF_Opal_Budget_Type_Txt__c"] = false;
-		this.showAvailableBudgets = false;this.showAvailableBudgetRequired = false;this.showCampaignBudgets = false;this.availableBudgetWarning["Core_MDF_Opal_Budget_Type_Txt__c"] = false;
+		this.showAvailableBudgets = false; this.showAvailableBudgetRequired = false; this.showCampaignBudgets = false; this.availableBudgetWarning["Core_MDF_Opal_Budget_Type_Txt__c"] = false;
 	}
 	searchCountry(event) {
 		var countrySearch = event.target.value; countrySearch = countrySearch.toUpperCase();
@@ -2933,43 +3253,50 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			this.handlePicklistDependentValueChange(event);
 		}
 	}
-	othersMandate(fieldApiName, fieldValue) {		
-		if (fieldValue != null && fieldValue != undefined && fieldValue != '' && fieldValue.includes('Other') && !this.campaignFieldDisabled[fieldApiName]){
-			this.othersHelpText[fieldApiName] = true;}
-		else{this.othersHelpText[fieldApiName] = false;}
+	othersMandate(fieldApiName, fieldValue) {
+		if (fieldValue != null && fieldValue != undefined && fieldValue != '' && fieldValue.includes('Other') && !this.campaignFieldDisabled[fieldApiName]) {
+			this.othersHelpText[fieldApiName] = true;
+		}
+		else { this.othersHelpText[fieldApiName] = false; }
 		if (fieldApiName == 'Core_MDF_Ecosystem_Partner_Nm__c') {
-			if(this.campaignFieldValue["Core_MDF_Other_Ecosystem_Partner_txt__c"] != '' && this.campaignFieldValue["Core_MDF_Other_Ecosystem_Partner_txt__c"] != undefined){
-				this.campaignFieldValue["Core_MDF_Other_Ecosystem_Partner_txt__c"] = this.campaignFieldValue["Core_MDF_Other_Ecosystem_Partner_txt__c"].length>0 ? this.campaignFieldValue["Core_MDF_Other_Ecosystem_Partner_txt__c"] : '';
+			if (this.campaignFieldValue["Core_MDF_Other_Ecosystem_Partner_txt__c"] != '' && this.campaignFieldValue["Core_MDF_Other_Ecosystem_Partner_txt__c"] != undefined) {
+				this.campaignFieldValue["Core_MDF_Other_Ecosystem_Partner_txt__c"] = this.campaignFieldValue["Core_MDF_Other_Ecosystem_Partner_txt__c"].length > 0 ? this.campaignFieldValue["Core_MDF_Other_Ecosystem_Partner_txt__c"] : '';
 			}
-			if (this.othersHelpText['Core_MDF_Ecosystem_Partner_Nm__c']){this.campaignRequiredFields["Core_MDF_Other_Ecosystem_Partner_txt__c"] = true;}
-			else{this.campaignRequiredFields["Core_MDF_Other_Ecosystem_Partner_txt__c"] = false;}
+			if (this.othersHelpText['Core_MDF_Ecosystem_Partner_Nm__c']) { this.campaignRequiredFields["Core_MDF_Other_Ecosystem_Partner_txt__c"] = true; }
+			else { this.campaignRequiredFields["Core_MDF_Other_Ecosystem_Partner_txt__c"] = false; }
 		}
 	}
-	
+
 	naValidate(fieldApiName, fieldValue) {
 		if (fieldValue != null && fieldValue != undefined && fieldValue != '' && fieldValue.includes('NA') && fieldValue.length > 1) {
-			if (fieldApiName === 'Core_MDF_Industry_Nm__c') {this.naHelpText["Core_MDF_Industry_Nm__c"] = true;this.industryError = true;}
-		} else {this.naHelpText["Core_MDF_Industry_Nm__c"] = false;this.industryError = false;}
+			if (fieldApiName === 'Core_MDF_Industry_Nm__c') { this.naHelpText["Core_MDF_Industry_Nm__c"] = true; this.industryError = true; }
+		} else { this.naHelpText["Core_MDF_Industry_Nm__c"] = false; this.industryError = false; }
 	}
 	handleCancel() {
 		if (this.mode == 'edit' || this.mode == 'clone') {
 			this.navigateToRecordDetailPage(this.objectApiName, this.recordId);
-			if (this.mode == 'edit') {setTimeout(function () {window.location.reload();}, 500);
-			} else if (this.mode == 'clone') {eval("$A.get('e.force:refreshView').fire();");}
+			if (this.mode == 'edit') {
+				setTimeout(function () { window.location.reload(); }, 500);
+			} else if (this.mode == 'clone') { eval("$A.get('e.force:refreshView').fire();"); }
 		} else {
-			this.navigateToObjectPage(this.objectApiName);setTimeout(function () {window.location.reload();}, 500);
+			this.navigateToObjectPage(this.objectApiName); setTimeout(function () { window.location.reload(); }, 500);
 		}
 	}
 	navigateToRecordDetailPage(objectName, recordId) {
 		this[NavigationMixin.Navigate]({
-			type: 'standard__recordPage',attributes: {recordId: recordId,objectApiName: objectName,actionName: 'view'}});
-		if (this.mode === 'edit') {setTimeout(function () {window.location.reload();}, 1000);}}
+			type: 'standard__recordPage', attributes: { recordId: recordId, objectApiName: objectName, actionName: 'view' }
+		});
+		if (this.mode === 'edit') { setTimeout(function () { window.location.reload(); }, 1000); }
+	}
 	navigateToObjectPage(objectName) {
-		this[NavigationMixin.Navigate]({type: 'standard__objectPage',attributes: {objectApiName: objectName,actionName: 'list'},state: {filterName: 'Recent'},});}
+		this[NavigationMixin.Navigate]({ type: 'standard__objectPage', attributes: { objectApiName: objectName, actionName: 'list' }, state: { filterName: 'Recent' }, });
+	}
 	handleServerExceptions(error) {
-		this.error = handleServerExceptionsName(error, this.label.applicationErrorMsg);let doc = this.template.querySelector(".slds-card");doc.scrollTop = 0;}
+		this.error = handleServerExceptionsName(error, this.label.applicationErrorMsg); let doc = this.template.querySelector(".slds-card"); doc.scrollTop = 0;
+	}
 	handleBudgetError() {
-		if (this.isBudgetAmountDecreased === true) {this.isBudgetAmountDecreased = false;}}
+		if (this.isBudgetAmountDecreased === true) { this.isBudgetAmountDecreased = false; }
+	}
 	showCountryoOnBasisOfGeo(event, context) {
 		this._selected = (context === 'initialLoad') ? this.campaignRecord['Core_MDF_Region_cd__c'] : event.detail.value;
 		if (this.recordTypeDeveloperName == Core_MDF_IPA_RecordType) {
@@ -2991,26 +3318,38 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				for (var key in data) {
 					if (data.hasOwnProperty(key)) {
 						this.ConnectedCallbackGeoCountryValue.set(key, data[key]);
-						if (key != 0 && key != undefined && key != null && key != '' && key != 'null') {this.CountryDisplay = this.CountryDisplay.concat(this.ConnectedCallbackGeoCountryValue.get(key));}}}
+						if (key != 0 && key != undefined && key != null && key != '' && key != 'null') { this.CountryDisplay = this.CountryDisplay.concat(this.ConnectedCallbackGeoCountryValue.get(key)); }
+					}
+				}
 				let mapcountry = localizeCountrymap(this.picValuesByRecType.picklistFieldValues['Core_MDF_Market__c'].values);
+
 				for (let z = 0; z < this.CountryDisplay.length; z++) {
 					this.allCountryDisplay.push({
 						label: mapcountry.get(this.CountryDisplay[z]) != undefined ? mapcountry.get(this.CountryDisplay[z]) : this.CountryDisplay[z],
 						value: this.CountryDisplay[z]
-					});}})
-			.catch(error => { this.error = error;});}
+					});
+				}
+			})
+			.catch(error => { this.error = error; });
+	}
 	selectAll() {
 		let checkboxes = this.template.querySelectorAll('[data-id="actsinglerecord"]')
 		for (let i = 0; i < checkboxes.length; i++) {
-			checkboxes[i].checked = true;}}
+			checkboxes[i].checked = true;
+		}
+	}
 	setcustomRRValues() {
 		this.customRRValues = this.campaignPicValues?.["Core_MDF_Reimbursement_Rate__c"];
 	}
 	pfrListPrepare() {
-		var valdCheck = false;this.recPFRList = [];this.pfrListCloneInsert = [];
+		var valdCheck = false; this.recPFRList = []; this.pfrListCloneInsert = [];
 		let checkboxes = this.template.querySelectorAll('[data-id="actsinglerecord"]')
-		for (let i = 0; i < checkboxes.length; i++) {if (checkboxes[i].checked == true) {
-		this.recPFRList.push(checkboxes[i].name);}}
+		//this.campaignDateRangeError = false;
+		for (let i = 0; i < checkboxes.length; i++) {
+			if (checkboxes[i].checked == true) {
+				this.recPFRList.push(checkboxes[i].name);
+			}
+		}
 		let activityCloneData = [];
 		let selectedActivities = JSON.parse(JSON.stringify(this.activityListClone));
 		selectedActivities.forEach(clPfr => {
@@ -3027,7 +3366,8 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		var campaignbudVal = this.campaignFieldValue['Core_MDF_Opal_Budget_Type_Txt__c'];
 		var accountSel = this.campaignFieldValue["Core_MDF_Account__c"];
 		let pfrLs = JSON.parse(JSON.stringify(this.activityListClone));
-		if (pfrLs !== undefined && pfrLs !== null) {		
+		if (pfrLs !== undefined && pfrLs !== null) {
+		console.log('calling validateCampaignDateRangeError with : ', pfrLs);
 		let dateValidationError = this.validateCampaignDateRangeError('save', pfrLs);
 		if(dateValidationError === true)
 		{
@@ -3035,10 +3375,24 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		}
 		
 			for (let i = 0; i < pfrLs.length; i++) {
-		//Non Outcome based Activities
+				//Non Outcome based Activities
 				pfrLs[i].Core_MDF_Budget_Type_nm__c = campaignbudVal;
 				pfrLs[i].ChannelPartnerId = accountSel;
 				if (this.recPFRList.includes(pfrLs[i].Id)) {
+					//if ((this.campaignFieldValue['StartDate'] > pfrLs[i].Core_MDF_Start_Date__c) || (pfrLs[i].Core_MDF_End_Date__c > this.campaignFieldValue['EndDate'])) {
+					//	let errorId = '[data-id="' + pfrLs[i].Id + '"]';
+					//	let styling = 'outerbox';
+					//	this.showBorderAlert(errorId, styling);
+					//	errorId = '[title="' + pfrLs[i].Id + '"]';
+					//	styling = 'slds-show';
+					//	this.campaignDateRangeError = true;
+					//	this.showBorderAlert(errorId, styling);
+					//	valdCheck = true;
+					//}
+					//preserve KPI Metrics state if already present
+					//if(pfrLs[i].kpiMetricEdited === true){
+						//pfrLs[i].showKPIErrorClone = false;
+					//}
 					if (pfrLs[i].act60daysValidation == true && this.campaignFieldValue["Core_MDF_Program__c"] == "Intel Partner Alliance"
 						&& this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"] == true && this.mode === 'clone' && this.isCommunity == true) {
 						valdCheck = true;
@@ -3051,8 +3405,18 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 						&& this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"] == true && this.mode === 'clone') {
 						valdCheck = true;
 					}
+					//IPA-Jegan
+					/*if (pfrLs[i].showKPIErrorClone == true && !pfrLs[i].hasOwnProperty('isBlankMetrics') && this.campaignFieldValue["Core_MDF_Program__c"] == "Intel Partner Alliance"
+						&& this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"] == true && this.mode === 'clone' && !this.campaignFieldValue['Core_MDF_CampOutcomeOpt_In_Ind__c']) {
+						valdCheck = true;
+					}
 
-					if ((!pfrLs[i].hasOwnProperty('kpiMetricEdited') || !pfrLs[i].kpiMetricEdited)  && this.campaignFieldValue["Core_MDF_Program__c"] == "Intel Partner Alliance"
+					if (pfrLs[i].showTacticMetricsErrorClone && !pfrLs[i].hasOwnProperty('isBlankTacticMetrics') && this.campaignFieldValue["Core_MDF_Program__c"] == "Intel Partner Alliance"
+						&& this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"] == true && this.campaignFieldValue['Core_MDF_CampOutcomeOpt_In_Ind__c'] && this.mode === 'clone') {
+						valdCheck = true;
+					}*/
+
+					if ((!pfrLs[i].hasOwnProperty('kpiMetricEdited') || !pfrLs[i].kpiMetricEdited) && this.campaignFieldValue["Core_MDF_Program__c"] == "Intel Partner Alliance"
 						&& this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"] == true && this.mode === 'clone' && !this.campaignFieldValue['Core_MDF_CampOutcomeOpt_In_Ind__c']) {
 						valdCheck = true;
 					}
@@ -3061,24 +3425,29 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 						&& this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"] == true && this.campaignFieldValue['Core_MDF_CampOutcomeOpt_In_Ind__c'] && this.mode === 'clone') {
 						valdCheck = true;
 					}
-				if (valdCheck !== true) {
-				let errrId = '[data-id="' + pfrLs[i].Id + '"]';
-				let styling = 'slds-box';
-				this.showBorderAlert(errrId, styling);
-				errrId = '[title="' + pfrLs[i].Id + '"]';
-				styling = 'slds-hide';
-				this.showBorderAlert(errrId, styling);
-				this.pfrListCloneInsert.push(pfrLs[i]);
-				valdCheck = false;
-				}
+
+					if (valdCheck !== true) {
+						let errrId = '[data-id="' + pfrLs[i].Id + '"]';
+						let styling = 'slds-box';
+						this.showBorderAlert(errrId, styling);
+						errrId = '[title="' + pfrLs[i].Id + '"]';
+						styling = 'slds-hide';
+						this.showBorderAlert(errrId, styling);
+						this.pfrListCloneInsert.push(pfrLs[i]);
+						valdCheck = false;
+						//this.campaignDateRangeError = false;
+					}
 				} else {
-				let errrId = '[data-id="' + pfrLs[i].Id + '"]';
-				let styling = 'slds-box';
-				this.showBorderAlert(errrId, styling);
-				errrId = '[title="' + pfrLs[i].Id + '"]';
-				styling = 'slds-hide';
-				this.showBorderAlert(errrId, styling);
-				}}
+					let errrId = '[data-id="' + pfrLs[i].Id + '"]';
+					let styling = 'slds-box';
+					this.showBorderAlert(errrId, styling);
+					errrId = '[title="' + pfrLs[i].Id + '"]';
+					styling = 'slds-hide';
+					this.showBorderAlert(errrId, styling);
+				}
+			}
+
+			//IPA-Jegan
 			//Update the Budget type and Account in the IPA Outcome based instance to update the detail from Campaign.
 			var outcomeBased = this.campaignFieldValue.hasOwnProperty('Core_MDF_CampOutcomeOpt_In_Ind__c') && this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"];
 			if(outcomeBased && Array.isArray(this.activityToAttributeList) && this.activityToAttributeList.length > 0){
@@ -3086,17 +3455,14 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				const clonedActivity = { ...item.activity };
 				clonedActivity.Core_MDF_Budget_Type_nm__c = campaignbudVal;
 				clonedActivity.ChannelPartnerId = accountSel;
-
-				return {
-					...item,
-					activity: clonedActivity
-				};
+				return { ...item, activity: clonedActivity };
 				});
-			}	
+			}
 		}
-		return valdCheck
+			return valdCheck	
 	}
 	validateCampaignDateRangeError(context, activityList) {
+		console.log('activityListReceived', activityList);
 		let pfrLs;
 		var valdCheck = false; this.recPFRList = [];
 		let checkboxes = this.template.querySelectorAll('[data-id="actsinglerecord"]')
@@ -3107,6 +3473,8 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			}
 		}
 		if (context == 'dateChange') {
+			console.log('@@@this.activityListClone', this.activityListClone);
+			
 			let updatedList = this.activityListClone.map(activity => {
 				return { ...activity, showKPIErrorClone: (activity["kpiMetricEdited"] == true ? false : activity["showKPIErrorClone"])};
 			});
@@ -3132,56 +3500,74 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 					if ((this.campaignFieldValue['StartDate'] > pfrLs[i].Core_MDF_Start_Date__c) || (pfrLs[i].Core_MDF_End_Date__c > this.campaignFieldValue['EndDate'])) {
 						let errorId = '[data-id="' + pfrLs[i].Id + '"]';
 						let styling = 'outerbox';
+						console.log('@LeelaB1-->'+this.showBorderAlert(errorId, styling));
 						this.showBorderAlert(errorId, styling);
+						console.log('@LeelaA1-->'+this.showBorderAlert(errorId, styling));
 						errorId = '[title="' + pfrLs[i].Id + '"]';
 						styling = 'slds-show';
 						this.campaignDateRangeError = true;
+						console.log('@LeelaB2-->'+this.showBorderAlert(errorId, styling));
 						this.showBorderAlert(errorId, styling);
+						console.log('@LeelaA2-->'+this.showBorderAlert(errorId, styling));
 						valdCheck = true;
 					}
 
 					if (valdCheck !== true) {
 						let errrId = '[data-id="' + pfrLs[i].Id + '"]';
 						let styling = 'slds-box';
+						console.log('@LeelaB3-->'+this.showBorderAlert(errrId, styling));
 						this.showBorderAlert(errrId, styling);
+						console.log('@LeelaA3-->'+this.showBorderAlert(errrId, styling));
 						errrId = '[title="' + pfrLs[i].Id + '"]';
 						styling = 'slds-hide';
+						console.log('@LeelaB4-->'+this.showBorderAlert(errrId, styling));
 						this.showBorderAlert(errrId, styling);
+						console.log('@LeelaA4-->'+this.showBorderAlert(errrId, styling));
+						//this.pfrListCloneInsert.push(pfrLs[i]);
 						valdCheck = false;
 						this.campaignDateRangeError = false;
 					}
 				} else {
 					let errrId = '[data-id="' + pfrLs[i].Id + '"]';
 					let styling = 'slds-box';
+					console.log('@LeelaB5-->'+this.showBorderAlert(errrId, styling));
 					this.showBorderAlert(errrId, styling);
+					console.log('@LeelaA5-->'+this.showBorderAlert(errrId, styling));
 					errrId = '[title="' + pfrLs[i].Id + '"]';
 					styling = 'slds-hide';
+					console.log('@LeelaB6-->'+this.showBorderAlert(errrId, styling));
 					this.showBorderAlert(errrId, styling);
+					console.log('@LeelaA6-->'+this.showBorderAlert(errrId, styling));
 				}
 			}
 		}
+	//return valdCheck
+	this.savePFRClonecampaign = !valdCheck;
 	return valdCheck 
 	}
 	showBorderAlert(errorId, styling) {
 		let validatCheck = this.template.querySelector(errorId);
-		if (validatCheck !== undefined && validatCheck != null) {validatCheck.setAttribute('class', styling);}
+		if (validatCheck !== undefined && validatCheck != null) { validatCheck.setAttribute('class', styling); }
 	}
 	@api
 	callChildMethodCampaign(pfrLisst, updatedActivityID) {
 		if (this.recordTypeDeveloperName === Core_MDF_IPA_RecordType && this.mode == 'clone') {
 			this.getActivityCloneFields('Core_MDF_Custom_Picklist__c', this.campaignFieldValue["Core_MDF_Opal_Budget_Type_Txt__c"], this.recordTypeDeveloperName, this.proposalBasedIndicatorCamp, 'PartnerFundRequest');
 			this.validateCampaignDateRangeError('dateChange');
-			}
+		}
 		this.template.querySelectorAll('c-core_-m-d-f_-activity_-view').forEach(element => {
 			if (element.title === updatedActivityID) {
-				element.updatePFRRecord(pfrLisst);}});}
+				element.updatePFRRecord(pfrLisst);
+			}
+		});
+	}
 	showBudgetErrorToast(ErrorMessage) {
-		const evt1 = new ShowToastEvent({ title: 'Warning!', message: ErrorMessage, mode: 'pester', variant: 'warning',});
+		const evt1 = new ShowToastEvent({ title: 'Warning!', message: ErrorMessage, mode: 'pester', variant: 'warning', });
 		this.dispatchEvent(evt1);
 	}
 	handlePicklistDependentValueChangeClone(picklistOnChange, campFieldAPIName, labelValue) {
-		this.isAnyPicklistValueChanged = true;let showPickListRemovalError = false;let existingValuesList = [];let activityRecIdList = [];
-		let existingValues;let removedPicklistValue = [];let previousValueObj;
+		this.isAnyPicklistValueChanged = true; let showPickListRemovalError = false; let existingValuesList = []; let activityRecIdList = [];
+		let existingValues; let removedPicklistValue = []; let previousValueObj;
 		if (checkForUndefinedEmptyAndNull(this.activityListClone) && this.activityListClone.length && checkForUndefinedEmptyAndNull(this.campaignRecord[campFieldAPIName])) {
 			let pfrFieldAPIName = this.cmpFieldAPINametoPFRFieldAPIName[campFieldAPIName];
 			existingValues = this.campaignRecord[campFieldAPIName] && this.campaignRecord[campFieldAPIName];
@@ -3189,20 +3575,22 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			let checkBoxesForActivityRecords = this.template.querySelectorAll('[data-id="actsinglerecord"]')
 			for (let i = 0; i < checkBoxesForActivityRecords.length; i++) {
 				if (checkBoxesForActivityRecords[i].checked == true) {
-					activityRecIdList.push(checkBoxesForActivityRecords[i].name);}}
+					activityRecIdList.push(checkBoxesForActivityRecords[i].name);
+				}
+			}
 			let actCloneList = JSON.parse(JSON.stringify(this.activityListClone));
 			actCloneList && actCloneList.forEach(activity => {
 				if (activityRecIdList.find(actRec => actRec == activity.Id)) {
 					activity['activityReferred'] = false;
 					if (checkForUndefinedEmptyAndNull(activity[pfrFieldAPIName]) && activity[pfrFieldAPIName].length > 0) {
-					let picklistValuesFromActivity = activity[pfrFieldAPIName]?.split(';');
-					if (checkForUndefinedEmptyAndNull(picklistValuesFromActivity) && picklistValuesFromActivity.length) {
-						let campaignPicklistValues = picklistOnChange?.filter(pickVal => picklistValuesFromActivity?.includes(pickVal));
-						if (campaignPicklistValues.length == 0) {
-							const bottomDiv = this.template.querySelector('[data-id="' + activity.Id + '"]');
-							bottomDiv.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
-							showPickListRemovalError = true;
-							activity['activityReferred'] = true; activity['picklistName'] = labelValue;
+						let picklistValuesFromActivity = activity[pfrFieldAPIName]?.split(';');
+						if (checkForUndefinedEmptyAndNull(picklistValuesFromActivity) && picklistValuesFromActivity.length) {
+							let campaignPicklistValues = picklistOnChange?.filter(pickVal => picklistValuesFromActivity?.includes(pickVal));
+							if (campaignPicklistValues.length == 0) {
+								const bottomDiv = this.template.querySelector('[data-id="' + activity.Id + '"]');
+								bottomDiv.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+								showPickListRemovalError = true;
+								activity['activityReferred'] = true; activity['picklistName'] = labelValue;
 							}
 						}
 					}
@@ -3213,32 +3601,36 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				if (checkForUndefinedEmptyAndNull(existingValuesList) && existingValuesList.length > 0 && !existingValuesList?.includes(coun)) {
 					existingValuesList.push(coun);
 					this.campaignRecord[campFieldAPIName] = this.campaignRecord[campFieldAPIName]?.concat(';' + coun);
-				}});
+				}
+			});
 			if (showPickListRemovalError) {
 				this.showToastErrorForPicklistValueDependency();
 				removedPicklistValue = existingValuesList?.filter(val => !picklistOnChange?.includes(val));
 				actCloneList.map(activity => {
 					if (activity['activityReferred']) {
-					let picklistValuesFromActivity = activity[pfrFieldAPIName]?.split(';');
-					let rp = removedPicklistValue?.filter(pickVal => picklistValuesFromActivity?.includes(pickVal));
-					if(checkForUndefinedEmptyAndNull(rp) && rp.length > 0) {
+						let picklistValuesFromActivity = activity[pfrFieldAPIName]?.split(';');
+						let rp = removedPicklistValue?.filter(pickVal => picklistValuesFromActivity?.includes(pickVal));
+						if (checkForUndefinedEmptyAndNull(rp) && rp.length > 0) {
 							let availableOptions = this.campaignPicValues[campFieldAPIName];
-					activity['activityFieldAPIName'] = pfrFieldAPIName;
+							activity['activityFieldAPIName'] = pfrFieldAPIName;
 							let removedPicklistValueArr = [];
-					rp.forEach(pickVal => {
+							rp.forEach(pickVal => {
 								let removedVal;
-								if(checkForUndefinedEmptyAndNull(availableOptions) && Array.isArray(availableOptions) 
-									&& availableOptions.length>0){
-										removedVal = availableOptions.find(opt => opt.value == pickVal);
-										removedVal = (checkForUndefinedEmptyAndNull(removedVal) && Object.keys(removedVal).length>0) ? removedVal.label : pickVal;
-										removedPicklistValueArr.push(removedVal);
+								if (checkForUndefinedEmptyAndNull(availableOptions) && Array.isArray(availableOptions)
+									&& availableOptions.length > 0) {
+									removedVal = availableOptions.find(opt => opt.value == pickVal);
+									removedVal = (checkForUndefinedEmptyAndNull(removedVal) && Object.keys(removedVal).length > 0) ? removedVal.label : pickVal;
+									removedPicklistValueArr.push(removedVal);
 								}
-					if (campFieldAPIName == 'Core_MDF_Market__c') {
-					if (!this.countryValue?.includes(pickVal)) {
-					this.countryValue.push(pickVal);}
-					} else {
-					if (!this.campaignFieldValue[campFieldAPIName]?.includes(pickVal)) {
-					this.campaignFieldValue[campFieldAPIName].push(pickVal);}}
+								if (campFieldAPIName == 'Core_MDF_Market__c') {
+									if (!this.countryValue?.includes(pickVal)) {
+										this.countryValue.push(pickVal);
+									}
+								} else {
+									if (!this.campaignFieldValue[campFieldAPIName]?.includes(pickVal)) {
+										this.campaignFieldValue[campFieldAPIName].push(pickVal);
+									}
+								}
 							});
 							activity['removedPicklistValues'] = removedPicklistValueArr;
 						}
@@ -3246,28 +3638,29 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				});
 			} else {
 				let previousValues = existingValuesList?.filter(val => picklistOnChange?.includes(val));
-				this.campaignRecord[campFieldAPIName] = previousValues?.join(';');}
+				this.campaignRecord[campFieldAPIName] = previousValues?.join(';');
+			}
 			this.activityListClone = actCloneList;
 			let campaignRecordCopy = previousValueObj;
 			let countryPicklistValue = JSON.parse(JSON.stringify(this.countryValue));
 			let campFieldValueCopy = JSON.parse(JSON.stringify(this.campaignFieldValue));
 			let campFieldIndex = this.campPickListValuesChangedObj.findIndex(field => field.campFieldAPIName == campFieldAPIName);
 			if (campFieldIndex == -1) {
-			let obj = {}
-			let oldCampaignValues = campaignRecordCopy[campFieldAPIName].split(';').sort((a, b) => (a > b) ? 1 : -1);
-			let newCampaignValues = campFieldAPIName == 'Core_MDF_Market__c' ? countryPicklistValue.sort((a, b) => (a > b) ? 1 : -1) : campFieldValueCopy[campFieldAPIName].sort((a, b) => (a > b) ? 1 : -1);
-			obj.campFieldAPIName = campFieldAPIName;
-			obj.activityFieldAPIName = pfrFieldAPIName;
-			obj.isPicklistValueChanged = oldCampaignValues.join(';') != newCampaignValues.join(';') ? true : false;
-			obj.picklistValuesOnCampaign = obj.isPicklistValueChanged ? newCampaignValues : oldCampaignValues;
-			this.campPickListValuesChangedObj.push(obj);
+				let obj = {}
+				let oldCampaignValues = campaignRecordCopy[campFieldAPIName].split(';').sort((a, b) => (a > b) ? 1 : -1);
+				let newCampaignValues = campFieldAPIName == 'Core_MDF_Market__c' ? countryPicklistValue.sort((a, b) => (a > b) ? 1 : -1) : campFieldValueCopy[campFieldAPIName].sort((a, b) => (a > b) ? 1 : -1);
+				obj.campFieldAPIName = campFieldAPIName;
+				obj.activityFieldAPIName = pfrFieldAPIName;
+				obj.isPicklistValueChanged = oldCampaignValues.join(';') != newCampaignValues.join(';') ? true : false;
+				obj.picklistValuesOnCampaign = obj.isPicklistValueChanged ? newCampaignValues : oldCampaignValues;
+				this.campPickListValuesChangedObj.push(obj);
 			} else {
 				let oldCampaignValues = campaignRecordCopy[campFieldAPIName].split(';').sort((a, b) => (a > b) ? 1 : -1);
 				let newCampaignValues = campFieldAPIName == 'Core_MDF_Market__c' ? countryPicklistValue.sort((a, b) => (a > b) ? 1 : -1) : campFieldValueCopy[campFieldAPIName].sort((a, b) => (a > b) ? 1 : -1);
 				this.campPickListValuesChangedObj[campFieldIndex].isPicklistValueChanged = oldCampaignValues.join(';') != newCampaignValues.join(';') ? true : false;
 				this.campPickListValuesChangedObj[campFieldIndex].picklistValuesOnCampaign = this.campPickListValuesChangedObj[campFieldIndex].isPicklistValueChanged ? newCampaignValues : oldCampaignValues;
 			}
-			let selectedEvent = new CustomEvent('picklistValueChangeEvent', { detail: { picklistWrapper: { campPickListValuesChangedObj: this.campPickListValuesChangedObj,}}});
+			let selectedEvent = new CustomEvent('picklistValueChangeEvent', { detail: { picklistWrapper: { campPickListValuesChangedObj: this.campPickListValuesChangedObj, } } });
 			this.dispatchEvent(selectedEvent);
 		}
 	}
@@ -3286,19 +3679,27 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				let changedPicklistArray = this.campPickListValuesChangedObj.filter(field => field.isPicklistValueChanged == true);
 				if (changedPicklistArray != undefined && changedPicklistArray != null && changedPicklistArray != '') {
 					if (changedPicklistArray.length > 0) {
-					changedPicklistArray.map(pickList => {
-					let availablePickListValuesonActivity = []; let commonValues = [];
-					if (checkForUndefinedEmptyAndNull(element[pickList.activityFieldAPIName])) {
-					availablePickListValuesonActivity = element[pickList.activityFieldAPIName].split(';');}
-					commonValues = pickList.picklistValuesOnCampaign.filter(val => availablePickListValuesonActivity.includes(val));
-					if (commonValues != undefined) {
-					if (commonValues.length == 0 && ((pickList.activityFieldAPIName == 'Core_MDF_EcosystemPartner_nm__c' && checkForUndefinedEmptyAndNull(availablePickListValuesonActivity) && availablePickListValuesonActivity.length > 0) || pickList.activityFieldAPIName !== 'Core_MDF_EcosystemPartner_nm__c')) {
-					blankPFRFieldsAPINames.push(pickList.activityFieldAPIName);
-					let checkboxes = this.template.querySelectorAll('[data-id="actsinglerecord"]');
-					for (let i = 0; i < checkboxes.length; i++) {
-					if (checkboxes[i].name == actId && checkboxes[i].checked == true) {
-					checkboxes[i].checked = false;}}}}});
-					}}});
+						changedPicklistArray.map(pickList => {
+							let availablePickListValuesonActivity = []; let commonValues = [];
+							if (checkForUndefinedEmptyAndNull(element[pickList.activityFieldAPIName])) {
+								availablePickListValuesonActivity = element[pickList.activityFieldAPIName].split(';');
+							}
+							commonValues = pickList.picklistValuesOnCampaign.filter(val => availablePickListValuesonActivity.includes(val));
+							if (commonValues != undefined) {
+								if (commonValues.length == 0 && ((pickList.activityFieldAPIName == 'Core_MDF_EcosystemPartner_nm__c' && checkForUndefinedEmptyAndNull(availablePickListValuesonActivity) && availablePickListValuesonActivity.length > 0) || pickList.activityFieldAPIName !== 'Core_MDF_EcosystemPartner_nm__c')) {
+									blankPFRFieldsAPINames.push(pickList.activityFieldAPIName);
+									let checkboxes = this.template.querySelectorAll('[data-id="actsinglerecord"]');
+									for (let i = 0; i < checkboxes.length; i++) {
+										if (checkboxes[i].name == actId && checkboxes[i].checked == true) {
+											checkboxes[i].checked = false;
+										}
+									}
+								}
+							}
+						});
+					}
+				}
+			});
 			var selectedEvent = new CustomEvent('activityBlankFieldsCheckoxValidation', { detail: { blankPFRFieldsAPINames: blankPFRFieldsAPINames } }); this.dispatchEvent(selectedEvent);
 		}
 		let actCloneList = JSON.parse(JSON.stringify(this.activityListClone));
@@ -3312,8 +3713,10 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 							element.ischecked = checkboxes[index].checked;
 							element.act60daysValidation = (checkboxes[index].checked == true && this.isCommunity == true && checkActivityEventValidation(element)) ? true : false;
 							element.initiativeNoneValidation = (checkboxes[index].checked == true && checkActivityInitiativeValidation(element)) ? true : false;
+							//IPA-Jegan
 							var outcomeBased = this.campaignFieldValue.hasOwnProperty('Core_MDF_CampOutcomeOpt_In_Ind__c') && this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"];
 							element.showKPIErrorClone = (checkboxes[index].checked == true && !element.hasOwnProperty('isBlankMetrics') && !outcomeBased) ? true : (checkboxes[index].checked == true && (element.hasOwnProperty('isBlankMetrics') && element.isBlankMetrics && !outcomeBased)) ? true : false;
+							//element.showTacticMetricsErrorClone = (checkboxes[index].checked && outcomeBased && !element.hasOwnProperty('isBlankTacticMetrics')) ? true : (checkboxes[index].checked && outcomeBased && (element.hasOwnProperty('isBlankTacticMetrics') && element.isBlankTacticMetrics)) ? true : false;
 							element.showTacticMetricsErrorClone = (checkboxes[index].checked && outcomeBased && !element.hasOwnProperty('tacticMetricEdited')) ? true : (checkboxes[index].checked && outcomeBased && (element.hasOwnProperty('tacticMetricEdited') && !element.tacticMetricEdited)) ? true : false;
 							element['activityReferred'] = false; element.isInvalidOppId = false; pfrToUpdate.push(element);
 							//Mandate Field value validation
@@ -3336,8 +3739,8 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 					}
 				}
 			});
-			if(pfrToUpdate.length>0){
-				var selectedEvent = new CustomEvent('activityValidationEvent', { detail: {pfrToUpdate: pfrToUpdate} });this.dispatchEvent(selectedEvent);
+			if (pfrToUpdate.length > 0) {
+				var selectedEvent = new CustomEvent('activityValidationEvent', { detail: { pfrToUpdate: pfrToUpdate } }); this.dispatchEvent(selectedEvent);
 			}
 			this.activityListClone = actCloneList;
 		}
@@ -3346,21 +3749,21 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		let cntrlVal = [];
 		cntrlVal.push(this.campaignFieldValue['Core_MDF_Focus_Area_nm__c']);
 		cntrlVal.push(this.campaignFieldValue['Core_MDF_Program__c']);
-		this.pfrDependencyBasedOnFocusArea = getPFRFieldsDependency(this.customPicklistValueDependency, this.pfrIPALovFields,  cntrlVal, this.pfrIPAActCatAndTypeDepFlds);
+		this.pfrDependencyBasedOnFocusArea = getPFRFieldsDependency(this.customPicklistValueDependency, this.pfrIPALovFields, cntrlVal, this.pfrIPAActCatAndTypeDepFlds);
 		let oldActivityCatAndTypeDep = this.pfrDependencyBasedOnActCatAndType;
 		let activityCatAndTypeDep = getPFRActCategoryAndTypeDependency(activityList, this.customPicklistValueDependency);
 		if (checkForUndefinedEmptyAndNull(activityCatAndTypeDep) && activityCatAndTypeDep.length > 0 && checkForUndefinedEmptyAndNull(oldActivityCatAndTypeDep) && oldActivityCatAndTypeDep.length > 0) {
-				activityCatAndTypeDep.forEach(actDep => {
-					if(Object.keys(actDep).length > 0) {
-						let activityIdFromNewDepMap = Object.keys(actDep)[0];
-						let index = oldActivityCatAndTypeDep.findIndex(act => Object.keys(act)[0] === activityIdFromNewDepMap);
-						if (index != -1) {
-							oldActivityCatAndTypeDep[index] = actDep;
-						}	
+			activityCatAndTypeDep.forEach(actDep => {
+				if (Object.keys(actDep).length > 0) {
+					let activityIdFromNewDepMap = Object.keys(actDep)[0];
+					let index = oldActivityCatAndTypeDep.findIndex(act => Object.keys(act)[0] === activityIdFromNewDepMap);
+					if (index != -1) {
+						oldActivityCatAndTypeDep[index] = actDep;
 					}
-				});
-				this.pfrDependencyBasedOnActCatAndType = oldActivityCatAndTypeDep;
-			}
+				}
+			});
+			this.pfrDependencyBasedOnActCatAndType = oldActivityCatAndTypeDep;
+		}
 	}
 
 	validateMandateActivityFlds(activityList, context) {
@@ -3377,34 +3780,37 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		this.activityListClone = parsedActivityCloneList;
 	}
 	// Method to clear field values on clone of a proposal
-	clearFieldValuesOnClone(){
+	clearFieldValuesOnClone() {
 		let actfield = JSON.parse(JSON.stringify(this.activityListClone));
 		if (actfield !== undefined && actfield !== null) {
 			for (let index = 0; index < actfield.length; index++) {
 				// Make Attribution Fields as null on clone
-				if (actfield[index].Core_MDF_Attribution_Variance_Pos_txt__c !== undefined && actfield[index].Core_MDF_Attribution_Variance_Pos_txt__c !== null && actfield[index].Core_MDF_Attribution_Variance_Pos_txt__c !==''){
+				if (actfield[index].Core_MDF_Attribution_Variance_Pos_txt__c !== undefined && actfield[index].Core_MDF_Attribution_Variance_Pos_txt__c !== null && actfield[index].Core_MDF_Attribution_Variance_Pos_txt__c !== '') {
 					actfield[index].Core_MDF_Attribution_Variance_Pos_txt__c = null;
 				}
-				 if (actfield[index].Core_MDF_Attribution_Variance_Neg_txt__c !== undefined && actfield[index].Core_MDF_Attribution_Variance_Neg_txt__c !== null && actfield[index].Core_MDF_Attribution_Variance_Neg_txt__c !==''){
+				if (actfield[index].Core_MDF_Attribution_Variance_Neg_txt__c !== undefined && actfield[index].Core_MDF_Attribution_Variance_Neg_txt__c !== null && actfield[index].Core_MDF_Attribution_Variance_Neg_txt__c !== '') {
 					actfield[index].Core_MDF_Attribution_Variance_Neg_txt__c = null;
 				}
+				if (actfield[index].Core_MDF_ActivityCategory__c !== undefined && actfield[index].Core_MDF_ActivityCategory__c !== null && actfield[index].Core_MDF_ActivityCategory__c.includes('2025') && actfield[index].Core_MDF_Activity_SubType_nm__c != null) {
+					actfield[index].Core_MDF_Activity_SubType_nm__c = null;
+				}
 			}
-		this.activityListClone=actfield;
+			this.activityListClone = actfield;
 		}
 	}
 	clearKPIfieldsClone() { //to clear the KPI fields on load of proposal clone scenario
 		var actCloneList = JSON.parse(JSON.stringify(this.activityListClone));
 		actCloneList.forEach(act => {
-			if(act.Core_MDF_Key_Marketing_Indicator_nm__c != null && act.Core_MDF_Key_Marketing_Indicator_nm__c != undefined && act.Core_MDF_Key_Marketing_Indicator_nm__c != ''){
+			if (act.Core_MDF_Key_Marketing_Indicator_nm__c != null && act.Core_MDF_Key_Marketing_Indicator_nm__c != undefined && act.Core_MDF_Key_Marketing_Indicator_nm__c != '') {
 				act.Core_MDF_Key_Marketing_Indicator_nm__c = null;
 			}
-			if(act.Core_MDF_Lead_Quantity_nbr__c != null && act.Core_MDF_Lead_Quantity_nbr__c != undefined && act.Core_MDF_Lead_Quantity_nbr__c != ''){
+			if (act.Core_MDF_Lead_Quantity_nbr__c != null && act.Core_MDF_Lead_Quantity_nbr__c != undefined && act.Core_MDF_Lead_Quantity_nbr__c != '') {
 				act.Core_MDF_Lead_Quantity_nbr__c = null;
 			}
-			if(act.Core_MDF_Deployment_Quantity_nbr__c != null && act.Core_MDF_Deployment_Quantity_nbr__c != undefined && act.Core_MDF_Deployment_Quantity_nbr__c != ''){
+			if (act.Core_MDF_Deployment_Quantity_nbr__c != null && act.Core_MDF_Deployment_Quantity_nbr__c != undefined && act.Core_MDF_Deployment_Quantity_nbr__c != '') {
 				act.Core_MDF_Deployment_Quantity_nbr__c = null;
 			}
-			if(act.Core_MDF_Other_Quantity_nbr__c != null && act.Core_MDF_Other_Quantity_nbr__c != undefined && act.Core_MDF_Other_Quantity_nbr__c != ''){
+			if (act.Core_MDF_Other_Quantity_nbr__c != null && act.Core_MDF_Other_Quantity_nbr__c != undefined && act.Core_MDF_Other_Quantity_nbr__c != '') {
 				act.Core_MDF_Other_Quantity_nbr__c = null;
 			}
 		});
@@ -3413,6 +3819,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 
 	handleMarketSegmentChange(event) {
 		this.campaignFieldValue[event.target.name] = event.target.value;
+
 	}
 
 	handleReasonForBackDatingChange(event) {
@@ -3430,7 +3837,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		let value = event.target.value;
 		if (value.trim() === '') {
 			event.target.setCustomValidity('Complete this field.');
-		} else {            
+		} else {
 			this.campaignFieldValue[event.target.name] = value;
 			event.target.setCustomValidity('');
 		}
@@ -3446,30 +3853,37 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		}
 		event.target.reportValidity();
 	}
+	//Ealay
 	validateOutcomeError(){
 		const isOptIn = this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] === true;
 		const outcomevalue = this.campaignFieldValue["Core_MDF_Outcomes_nm__c"] ;
 		this.outcomeBasedError = isOptIn && checkForUndefinedEmptyAndNull(outcomevalue) && outcomevalue.includes('Other');
 	} 
-	 showOtherOutcomeTextField(){ 
+	//Ealay
+	showOtherOutcomeTextField(){ 
 		this.campaignFieldVisibility["Core_MDF_Other_Outcome_txt__c"] = checkForUndefinedEmptyAndNull(this.campaignFieldValue["Core_MDF_Outcomes_nm__c"]) && (this.campaignFieldValue["Core_MDF_Outcomes_nm__c"].includes("Other"));
 		this.campaignRequiredFields["Core_MDF_Other_Outcome_txt__c"] = this.campaignFieldVisibility["Core_MDF_Other_Outcome_txt__c"];
 	}
-	shouldHideOther(){
+	//Aditya TWC3117-16962
+	shouldHideOther() {
 		return ( this.recordTypeDeveloperName === Core_MDF_IPA_RecordType && this.campaignFieldValue?.Core_MDF_Proposal_Based_Ind__c === true && this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] === true);
 	}
-	filterOtherFromOutcomeMetric(){
+
+	//Aditya TWC3117-16962
+	filterOtherFromOutcomeMetric() {
 		//Roshan - defect fix
 		const hideOther = this.shouldHideOther();
 		this.campaignPicValues["Core_MDF_Outcomes_nm__c"] = this.originalOutcomesOptions.filter(opt => !hideOther || opt.value !== 'Other');
-		if (hideOther) {
-			this.removeOtherFromSelectedOutcomes();
+		if (hideOther) { 
+			this.removeOtherFromSelectedOutcomes(); 
 		}
-		
 		this.showOtherOutcomeTextField(); 
 		this.validateOutcomeError(); 
 	}
+
+	//Aditya TWC3117-16962
 	removeOtherFromSelectedOutcomes() {
+		// Remove from campaignFieldValue if "Other" is selected
 		if (this.campaignFieldValue["Core_MDF_Outcomes_nm__c"] && this.campaignFieldValue["Core_MDF_Outcomes_nm__c"].includes("Other")) {
 			this.campaignFieldValue["Core_MDF_Outcomes_nm__c"] = this.campaignFieldValue["Core_MDF_Outcomes_nm__c"].filter(value => value !== "Other");
 			this.campaignFieldValue["Core_MDF_Other_Outcome_txt__c"] = null;
@@ -3485,6 +3899,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		}
 		this.multipleValuesSelected = this.selectedOutcomes ? this.selectedOutcomes.length > 1 : false;
 	}
+	//Aditya TWC3117-16962
 	get hasSelectedOutcomes() {
 		const values = this.campaignFieldValue["Core_MDF_Outcomes_nm__c"];
 		return Array.isArray(values) && values.length > 0;
@@ -3517,6 +3932,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		}
 		else{
 			this.showIPAStartDateError = false;
+			this.isIPAStartDateValid = true;
 		}
 	}
 	//TWC3117-17805 - Aditya 
@@ -3530,12 +3946,33 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			this.isCCFDCFStartDateValid = true;
 		}
 	}
+	/*validateOutcomeBasedCampaign(){
+		const outcomeBasedInd = this.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"];
+		console.log('ActivityList:', this.pfrListCloneInsert.length);
+		if (this.recordTypeDeveloperName === Core_MDF_IPA_RecordType && outcomeBasedInd && this.pfrListCloneInsert.length >= 2){
+			this.showActivityError = true;
+		}
+		else{
+			this.showActivityError = false;
+			this.isActivityCloneValid = true;
+		}
+
+	}*/
+	// get formattedCampaignOutcomeVisibilityDate() {
+	// 	const dateObj = new Date(Core_MDF_IPA_AccountBased_StartDate);
+	// 	const locale = userLocale || 'en-GB';
+	// 	const formattedDate = dateObj.toLocaleDateString(locale, { day: 'numeric', month: 'short', year: 'numeric' });
+	// 	return formattedDate;
+	// }
+
+	//TWC3117-17805 - Aditya 
 	formatDate(dateString) {
 		const dateObj = new Date(dateString);
 		const locale = userLocale || 'en-GB';
 		const formattedDate = dateObj.toLocaleDateString(locale, { day: 'numeric', month: 'short', year: 'numeric' });
 		return formattedDate;
 	}
+
 	get formattedCampaignOutcomeVisibilityDate() {
     	return this.formatDate(Core_MDF_IPA_AccountBased_StartDate);
 	}
@@ -3545,17 +3982,28 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 	get afterDateText() {
 		return this.label.Core_MDF_AccountPlan_StartDate_Error.split('{0}')[1];
 	}
+	//TWC3117-17805 - Aditya 
 	get beforeCCFDCFDateText() {
 		return 'Campaigns unavailable from ';
 	}
-	
 	get afterCCFDCFDateText() {
 		return ' Create an Outcome-Based campaign instead.'
 	}
-	
 	get formattedCCFDCFBlockDate() {
     	return this.formatDate(Core_MDF_CCF_DCF_BlockCampaign_StartDate);
 	}
+	/*navigateToActivityComponent() {
+	this[NavigationMixin.Navigate]({
+		type: 'standard__component',
+		attributes: {
+			componentName: 'c__Core_MDF_PFR_RecordTypeSelectorComp'
+		},
+		state: {
+			c__isPfrPage: true,
+		}
+	});
+	}*/
+
 	navigateToActivityComponent() {
 	this[NavigationMixin.Navigate]({
 		type: 'standard__navItemPage',
@@ -3564,6 +4012,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		}
 	});
 	}
+	//anushya TWC3117-17373
 	get showApprovalCheckbox() {
 		try {
 			const selectedBudgetTypes = this.campaignFieldValue["Core_MDF_Opal_Budget_Type_Txt__c"];
@@ -3595,6 +4044,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			return false;
 		}
 	}
+	//anushya TWC3117-17373
 	get isIPAProposalBasedProgram() {		
 		if (this.campaignFieldValue["Core_MDF_Program__c"] == Core_MDF_IPA_Program_Name && this.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"] == true) {
 			return true;
@@ -3651,4 +4101,114 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		const valueToLabel = new Map(options.map(opt => [opt.value, opt.label]));
 		return selectedValues.map(val => valueToLabel.get(val) || val).join(', ');
 	}
+
+	//TWC3117-18574
+	async handleRmfSetupCompletebk(event) {
+		const { budgetType, contractId, campaignAttributes } = event.detail;
+		this.showAiGeneratedWarning = budgetType === 'RSA MD' && checkForUndefinedEmptyAndNull(contractId) && checkForUndefinedEmptyAndNull(campaignAttributes);
+		console.log('4108====');
+		let resolvedAccount;
+
+		if (
+			budgetType === 'RSA MD' &&
+			campaignAttributes &&
+			campaignAttributes.account
+		) {
+			try {
+				resolvedAccount = await resolveRmfAccount({
+					accountName: campaignAttributes.account,
+					programName: Core_MDF_Retail_Program_Name
+				});
+			} catch (error) {
+				this.error = 'Unable to search for the Account.';
+				return;
+			}
+
+			if (!resolvedAccount?.ultimateAccountId) {
+				this.error =
+					`No active Account or ultimate Account was found for "${campaignAttributes.account}".`;
+				return;
+			}
+
+			this.selectedAccount = {
+				Id: resolvedAccount.ultimateAccountId,
+				Name: resolvedAccount.ultimateAccountName
+			};
+
+			this.selectedAccountId = resolvedAccount.ultimateAccountId;
+		}
+
+		this.campaignFieldValue = {
+			...this.campaignFieldValue,
+			Core_MDF_Budget_Type_txt__c: budgetType,
+			Core_MDF_Opal_Budget_Type_Txt__c: budgetType,
+			Core_MDF_Contract_ID_txt__c: contractId,
+			Core_MDF_Account__c: resolvedAccount?.ultimateAccountId || ''
+		};
+
+		console.log('4134===='+JSON.stringify(this.campaignFieldValue));
+
+		await this.handleDynamicfields([budgetType], 'budgetType');
+
+		if (campaignAttributes) {
+			this.campaignFieldValue = {
+				...this.campaignFieldValue,
+				//Core_MDF_Account__c: '001g000002KKFrIAAX',
+				Core_MDF_Brand__c: toPicklistArray(campaignAttributes.brand),
+				Core_MDF_Audience__c: toPicklistArray(campaignAttributes.audience),
+				StartDate: campaignAttributes.start_date,
+				EndDate: campaignAttributes.end_date,
+				Core_MDF_Priority__c: campaignAttributes.priority,
+				Core_MDF_Priority_2_nm__c: campaignAttributes.priority_2,
+				Core_MDF_Priority_3_nm__c: campaignAttributes.priority_3,
+				Core_MDF_Technology__c: toPicklistArray(campaignAttributes.technology),
+				Core_MDF_Product_Type__c: toPicklistArray(campaignAttributes.product_type),
+				Core_MDF_Budget_Amount_amt__c: this.parseContractCampaignCost(campaignAttributes.total_campaign_cost),
+			};
+		}
+
+		this.showRmfSetup = false;
+	}
+
+	parseContractCampaignCost(amount) {
+		if (!amount) {
+			return null;
+		}
+
+		return Number(String(amount).replace(/[^0-9.-]/g, ''));
+	}
+
+	//new story
+	async handleRmfSetupComplete(event) {
+		const { budgetType, contractId, campaignAttributes } = event.detail;
+
+		this.campaignFieldValue = {
+			...this.campaignFieldValue,
+			Core_MDF_Budget_Type_txt__c: budgetType,
+			Core_MDF_Opal_Budget_Type_Txt__c: budgetType,
+			Core_MDF_Contract_ID_txt__c: contractId
+		};
+
+		await this.handleDynamicfields([budgetType], 'budgetType');
+
+		if (campaignAttributes) {
+			this.campaignFieldValue = {
+				...this.campaignFieldValue,
+				Core_MDF_Brand__c: toPicklistArray(campaignAttributes.brand),
+				Core_MDF_Audience__c: toPicklistArray(campaignAttributes.audience),
+				StartDate: campaignAttributes.start_date,
+				EndDate: campaignAttributes.end_date,
+				Core_MDF_Priority__c: campaignAttributes.priority,
+				Core_MDF_Priority_2_nm__c: campaignAttributes.priority_2,
+				Core_MDF_Priority_3_nm__c: campaignAttributes.priority_3,
+				Core_MDF_Budget_Amount_amt__c: this.parseContractCampaignCost(campaignAttributes.total_campaign_cost),
+				Core_MDF_Technology__c: toPicklistArray(campaignAttributes.technology),
+				Core_MDF_Product_Type__c: toPicklistArray(campaignAttributes.product_type),
+			};
+		}
+
+		this.showRmfSetup = false;
+	}
+	//new story
+	//TWC3117-18574
 }

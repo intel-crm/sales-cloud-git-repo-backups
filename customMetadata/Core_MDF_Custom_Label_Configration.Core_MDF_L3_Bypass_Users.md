@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">11376277@intel.com.crm</value>
+        <value xsi:type="xsd:string">indux.ponugoti123@intel.com;12071914@intel.com.crm.crmdevccp,12067215@intel.com.crm.crmdevccp;12184888@intel.com.crm.crmdevccp;12125037@intel.com.crm.crmdevccp;12337757@intel.com.crm.crmdevccp</value>
     </values>
 </CustomMetadata>

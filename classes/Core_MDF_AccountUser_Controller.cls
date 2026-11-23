@@ -20,11 +20,11 @@ Added By:           Accenture - Krishna - 05/08/2019
     @AuraEnabled
     public static Boolean isAccountUserEligibleForDelete(Id accountUserId){        
             boolean hasDeleteAccess = false;
-        	hasDeleteAccess = FeatureManagement.checkPermission(Label.Core_MDF_Permission_to_Delete_Account_User);
-        	if(hasDeleteAccess == false){
+            hasDeleteAccess = FeatureManagement.checkPermission(Label.Core_MDF_Permission_to_Delete_Account_User);
+            if(hasDeleteAccess == false){
                 hasDeleteAccess = Core_MDF_checkSObjectCRUDPermission.checkSObjectDeletePermission('Core_MDF_Partner_Node_User_Mapping__c');           
             }
-        	return hasDeleteAccess;
+            return hasDeleteAccess;
     }
     
     /***************************************************************************************************** 

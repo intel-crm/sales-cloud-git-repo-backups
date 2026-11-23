@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Deployments</fullName>
+        <default>false</default>
+        <label>Deployments</label>
+    </customValue>
+    <customValue>
+        <fullName>Leads</fullName>
+        <default>false</default>
+        <label>Leads</label>
+    </customValue>
+    <customValue>
+        <fullName>Others</fullName>
+        <default>false</default>
+        <label>Others</label>
+    </customValue>
+    <description>Stores Marketing KPI Values</description>
+    <masterLabel>Marketing Key Performance Indicator</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

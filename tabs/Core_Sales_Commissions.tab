@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Web tab used to log into my commissions</description>
+    <frameHeight>800</frameHeight>
+    <hasSidebar>false</hasSidebar>
+    <label>Commissions</label>
+    <motif>Custom41: Stack of Cash</motif>
+    <url>https://sfederation.intel.com/federation/Callidus_Cloud_IAP_12794.asp</url>
+    <urlEncodingKey>UTF-8</urlEncodingKey>
+</CustomTab>

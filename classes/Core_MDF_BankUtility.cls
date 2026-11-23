@@ -9,9 +9,9 @@ Modified By:        Date:           Changes:
 public without sharing class Core_MDF_BankUtility {
     /*************************************************
      * abc**************************************************** 
-    Method Name	:       bankClaimMappingWrapper
-    Added By	:       Accenture - NZ - 02/10/2020
-    Modified By	:       Date:       Changes: 
+    Method Name :       bankClaimMappingWrapper
+    Added By    :       Accenture - NZ - 02/10/2020
+    Modified By :       Date:       Changes: 
     ******************************************************************************************************/
     public class BankClaimMappingWrapper
     {   
@@ -19,14 +19,14 @@ public without sharing class Core_MDF_BankUtility {
         public Set<String> bankIdAccountIdStringSet;
     }    
     /***************************************************************************************************** 
-    Method Name	:       validateClaimAssociationWithABM
-    @return  	:     	bankClaimMappingWrapper
-    @parameters	:       Set<Id> eligibleBankSet - Set of Bank
+    Method Name :       validateClaimAssociationWithABM
+    @return     :       bankClaimMappingWrapper
+    @parameters :       Set<Id> eligibleBankSet - Set of Bank
                         Set<String> eligibleBankProgramSet - Set of Program
                         Set<Id> accountIdSet - Set of Account
-    Description	:       Validate if Claim are assocaited with Bank or ABM and store info in Wrapper
-    Added By	:       Accenture - NZ - 02/10/2020
-    Modified By	:       Date:       Changes: 
+    Description :       Validate if Claim are assocaited with Bank or ABM and store info in Wrapper
+    Added By    :       Accenture - NZ - 02/10/2020
+    Modified By :       Date:       Changes: 
     ******************************************************************************************************/
     public static Set<String> validateClaimAssociationWithABM(Set<Id> eligibleAccountIdSet, Set<Id> eligibleBankIdSet, Set<String> eligibleBankProgramSet){ 
         
@@ -39,7 +39,7 @@ public without sharing class Core_MDF_BankUtility {
                                                                         FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt LIMIT 1000]){
             programMap.put(programMapping.Core_MDF_Channel_Program_Name_txt__c, programMapping.Core_MDF_Channel_Program_txt__c);
         }
-
+		System.debug('MDT Optimisation programMap: '+programMap);
         //This will store a combination of Bank Id, Account Id and Program
         Set<String> bankIdAccountIdProgramStrSet = new Set<String>();
         
@@ -49,7 +49,7 @@ public without sharing class Core_MDF_BankUtility {
         String claimBankAssociateQueryStr = '';         
         //String adjustmentClaimTypeStr = Label.Core_MDF_Claim_Adjustment_Type;
         //Build Query to fetch Claim
-        /* claimBankAssociateQueryStr = 	'SELECT Id,Core_MDF_Status__c, Core_MDF_Bank__c, Core_MDF_Program__c,ChannelPartnerId ' +
+        /* claimBankAssociateQueryStr =     'SELECT Id,Core_MDF_Status__c, Core_MDF_Bank__c, Core_MDF_Program__c,ChannelPartnerId ' +
                                         'FROM PartnerFundClaim ' +
                                         'WHERE Core_MDF_Bank__c IN : eligibleBankIdSet AND ' +
                                         'Core_MDF_Status__c IN : claimStatusStrList AND ' + 

@@ -10,13 +10,7 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
-        <field>AMOUNT</field>
-    </columns>
-    <columns>
         <field>FULL_NAME</field>
-    </columns>
-    <columns>
-        <field>OWNER_EMAIL</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Technical_Owner__c</field>
@@ -77,13 +71,6 @@
             <operator>notEqual</operator>
             <value>On Hold – Review in Progress,On Hold – Government Authorization Needed</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Export_Compliance_Block__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>1</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
@@ -109,8 +96,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>AMOUNT</sortColumn>
-    <sortOrder>Desc</sortOrder>
+    <sortColumn>Opportunity.Core_Sales_Groups__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

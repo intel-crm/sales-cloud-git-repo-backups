@@ -9,6 +9,9 @@
         <sourceColumnName>Opportunity.Core_Consumption_Market__c</sourceColumnName>
         <useOther>true</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Manufacturing</sourceValue>
+            </sourceValues>
             <value>1. Industrial</value>
         </values>
         <values>
@@ -18,6 +21,9 @@
             <value>2. Healthcare</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Energy (Oil &amp; Gas, Utilities, Solar &amp; Wind)</sourceValue>
+            </sourceValues>
             <value>3. Energy</value>
         </values>
         <values>
@@ -27,6 +33,9 @@
             <value>4. Mobility</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Automation/Building Management</sourceValue>
+            </sourceValues>
             <value>5. Building Technology</value>
         </values>
     </buckets>
@@ -42,10 +51,10 @@
         <chartType>HorizontalBarStacked</chartType>
         <enableHoverLabels>true</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>Opportunity.Core_Consumption_Market__c</groupingColumn>
+        <groupingColumn>CLOSE_DATE</groupingColumn>
         <legendPosition>Bottom</legendPosition>
         <location>CHART_TOP</location>
-        <secondaryGroupingColumn>CLOSE_DATE</secondaryGroupingColumn>
+        <secondaryGroupingColumn>BucketField_52907700</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -92,6 +101,13 @@
             <value>Lost,Cancelled,Group</value>
         </criteriaItems>
         <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>siemens</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -101,23 +117,16 @@
         <criteriaItems>
             <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notContain</operator>
-            <value>joerg matschke,angelo</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opp_Prime_Account_Name__c</column>
-            <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Siemens</value>
+            <operator>equals</operator>
+            <value>Jost Henning Eid,christian schmidt,thomas dietrich,piyush khurana,jani Heikkinen,elena filatova</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Consumption_Market__c</field>
+        <field>BucketField_52907700</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -149,6 +158,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_PREVCUR2Y</interval>
+        <endDate>2019-12-28</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2016-01-01</startDate>
     </timeFrameFilter>
 </Report>

@@ -4,51 +4,15 @@
     <groups>ADG -Bosch DASY1</groups>
     <groups>ADG - Autoliv ADAS 2.0</groups>
     <groups>ADG - Continental Germany</groups>
-    <groups>ADG - Delphi CSLP</groups>
     <groups>ADG - Anderson Creek</groups>
     <groups>ADG - Skylake-A55</groups>
     <groups>ADG - Anderson Lake</groups>
     <groups>ADG - Sentinel Island</groups>
     <groups>ADG - Spring Hill</groups>
-    <groups>ADG - Anderson Lake for Flex</groups>
     <groups>ADG - Anderson Lake for Argo</groups>
     <groups>ADG - Spring Hill for Flex</groups>
     <groups>ADG - Spring Hill for Argo</groups>
     <groups>ADG - Anderson Lake for Aptiv</groups>
-    <groups>ADG - Veoneer CAVS</groups>
-    <groups>ADG - Aptiv xPAD projects</groups>
-    <groups>ADG - Quanta_C5_C6_Cruise Projects</groups>
-    <groups>ADG - WRS_VxWorks_onto_DNV-AD</groups>
-    <groups>AXG - Alum Rock for Waymo</groups>
-    <groups>ADG-Aquarii_Quanta_Waymo</groups>
-    <groups>ADG - Inceptio Gen2 L2-L4</groups>
-    <groups>ADG - Motional AD_Anderson Lake</groups>
-    <groups>ADG - BU1/Inventec/+/Fischer Lake</groups>
-    <groups>ADG - Aurora Innovations - Fischer Lake</groups>
-    <groups>ADG - Anderson Lake - AMOD2 for nuTonomy</groups>
-    <groups>ADG - Baidu AD HW4.0</groups>
-    <groups>ADG - FCA AV (Thunder)</groups>
-    <groups>ADG - Cruise_C3_Project</groups>
-    <groups>Flex_Odin_Project</groups>
-    <groups>ADG -Baidu AD HW 4.0_ANL</groups>
-    <groups>CCG - EMEA ADC</groups>
-    <groups>ADG - Cascade Lake - Uber</groups>
-    <groups>ADG - Eagle Stream for Waymo</groups>
-    <groups>ADG - Cascade Lake for Waymo</groups>
-    <groups>ADG-ASMO-ACE</groups>
-    <groups>ACE FuSa DEG</groups>
-    <groups>ACE Bootloader DEG</groups>
-    <groups>ADG - ANL for NECPF-DensoT1</groups>
-    <groups>ADG - ACE - LGE Projects</groups>
-    <groups>ADG - Inventec - Aurora- Intel - FSL -</groups>
-    <groups>ADG - Eagle Stream for Argo</groups>
-    <groups>ADG - TGL-H for A2Z</groups>
-    <groups>ADG PonyAI Lanner Gemini2.0 SPR</groups>
-    <groups>Cranium Requirement</groups>
-    <groups>ADG - Ford Projects</groups>
-    <groups>CCG-SSP - Android</groups>
-    <groups>CCG-SSP - Linux</groups>
-    <groups>CCG-SSP - Unassigned</groups>
     <groups>IPS - Org Admin - ADG</groups>
     <groups>ADG - ASMO</groups>
     <groups>ADG - EMEA</groups>
@@ -57,5 +21,4 @@
     <label>IPS - Org Admin - ADG</label>
     <loginAccess>false</loginAccess>
     <roles>IPS Product OrgAdmin</roles>
-    <roles>EMP_11298293_Kenta_Ueda</roles>
 </DelegateGroup>

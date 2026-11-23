@@ -1,0 +1,205 @@
+<template>
+	<div class="slds-var-m-bottom_small card">
+		<lightning-card>
+			<lightning-layout>
+				<lightning-layout-item size="12">
+					<h1 class="title slds-text-heading--medium slds-hyphenate"
+						style="font-weight:bold;font-size: 25px;text-align:center">Notification Subscriptions</h1>
+
+					<template if:false={showAccordion}>
+						<template if:true={showSpinner}>
+							<div class="spinner">
+								<lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+							</div>
+						</template>
+					</template>
+
+					<div
+						class="slds-m-bottom_x-small slds-var-p-bottom_xx-large headerPaddingLeft">
+						<lightning-icon class="slds-float_left" icon-name="utility:user">
+						</lightning-icon>
+						<span class="slds-m-left_xx-small slds-m-top_x-small slds-float_left slds-text-heading_medium" style="color:blue;font-weight:800px"> {name}
+			</span>
+
+						<template if:true={showAccordion}>
+							<!--<div class="slds-align_absolute-center slds-m-top_small">
+					<lightning-button variant="brand" label="Expand All" title="Expand All" onclick={handleExpandAll}
+						class=" slds-m-right_small">
+					</lightning-button>
+					<lightning-button variant="brand" label="Collapse All" title="Collapse All"
+						onclick={handleCollapseAll} class=" slds-m-right_small">
+					</lightning-button>
+				</div>-->
+							<span class="slds-required slds-m-top_x-small slds-float_right slds-text-heading_small"> * Mandatory
+					Notifications are disabled for selection. </span>
+						</template>
+					</div>
+					<!--<div class ="slds-required slds-text-align_right slds-text-heading_small slds-var-m-bottom_small">
+			* Mandatory Notifications are disabled for selection.
+		</div>-->
+					<div class="slds-text-heading--medium" style="font-size: 20px;text-align:center; color:red">
+						<template if:true={showMessage}>
+							You don't have any Notifications to Subscribe or Unsubscribe.
+						</template>
+					</div>
+
+				</lightning-layout-item>
+			</lightning-layout>
+		</lightning-card>
+	</div>
+
+	<div class="modal-header slds-modal__header slds-var-m-bottom_large table">
+		<template if:true={showAccordion}>
+			<!--<div class="slds-align_absolute-center slds-m-top_small slds-m-bottom_large">
+				<lightning-button variant="brand" label="Expand All" title="Expand All" onclick={handleExpandAll}
+					class=" slds-m-right_small">
+				</lightning-button>
+				<lightning-button variant="brand" label="Collapse All" title="Collapse All" onclick={handleCollapseAll}
+					class=" slds-m-right_small">
+				</lightning-button>
+			</div>-->
+
+			<!-- <h6>Added by VB</h6> -->
+			<div class="slds-scrollable_y slds-var-p-left_xx-large slds-var-p-right_xx-large accordianPadding"
+				style="min-height:fit-content;max-height:80rem;width:100%">
+				<template for:each={subscriptionDt} for:item="item" for:index="index">
+					<div class={item.cssClassName} key={item.objectName} data-id={index}>
+						<h3 class="slds-section__title">
+							<button aria-controls={index} aria-expanded="false"
+							class="slds-button slds-section__title-action slds-var-m-top_medium slds-var-p-top_xxx-small slds-var-p-bottom_xxx-small" style="
+							font-size: 20px;" onclick={getSubsDetailsOnExpand}
+							data-name={item.objectName}>
+							<lightning-icon icon-name={item.iconName} aria-hidden="true" size="x-small"
+								class="accordion-chevron-icon" ></lightning-icon>
+							<label class="slds-var-p-left_small" style="color:rgb(11,92,171)">{item.objectLabel}</label>
+						</button>
+						</h3>
+						<div class="slds-section__content" id="expando-unique-id1" aria-hidden="true">
+							<template if:true={item.isExpanded}>
+								<div key={notification.apiname} class="slds-grid slds-wrap slds-var-p-top-small slds-var-p-bottom_x-medium">
+									<template for:each={item.notificationTypes} for:item="notification"
+										for:index="nIndex">
+										<div key={notification.apiname} class="slds-size_4-of-12 parentDiv">
+											<div class="sampleCSS">
+												<span if:true={notification.mandateNotification}
+																	class="slds-required ">*
+																</span>
+												<span class="slds-var-m-top_xx-small">{notification.label}</span>
+												<span>
+													<lightning-helptext content={notification.helpText} class="slds-var-m-left_xx-small">
+                                                    </lightning-helptext>
+												</span>
+											</div>
+											<div key={notification.apiname} date-name={notification.apiname} class="slds-var-m-top_small slds-var-m-bottom_small slds-var-m-left_small slds-var-m-right_small">
+												<span>{notification.helpText}</span>
+												<lightning-input type="checkbox" label="" class={notification.notifyCss}
+													disabled={notification.mandateNotification}
+													name={notification.apiname} onchange={handleResponseChange}
+													checked={notification.subscribed} data-object={item.objectName}>
+												</lightning-input>
+											</div>
+										</div>
+									</template>
+								</div>
+							</template>
+						</div>
+					</div>
+				</template>
+				<!--<div class="slds-align_absolute-center slds-m-top_small table">
+				<lightning-button variant="brand" label=" Save" title="save" onclick={handleInputSave} disabled={enableSave}
+					class=" slds-m-right_small">
+				</lightning-button>
+				<lightning-button variant="neutral" label="Cancel" title="cancel" onclick={handlecancel} disabled={enableCancelBtn}
+					class=" slds-m-right_small">
+				</lightning-button>
+			</div>-->
+			</div>
+
+		</template>
+
+
+
+		<!--<lightning-modal-footer>
+	<div class="slds-align_absolute-center slds-m-top_medium center">
+    <lightning-button variant="brand" label=" Save" title="save" onclick={handleInputSave} disabled={enableSave} class=" slds-m-right_small">
+	</lightning-button>
+	<lightning-button variant="neutral" label="Cancel" title="cancel" onclick={handlecancel} class=" slds-m-right_small">
+	</lightning-button>
+	</div>
+</lightning-modal-footer>-->
+
+		<template if:true={showModal}>
+			<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+				aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+				<div class="slds-modal__container">
+
+					<!--Header part of the Modal-->
+					<header class="slds-modal__header">
+						<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+					onclick={handleModalNo}>
+					<lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+						size="small"></lightning-icon>
+					<span class="slds-assistive-text">Close</span>
+				</button>
+						<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Confirmation</h2>
+					</header>
+					<div class="slds-modal__content slds-p-around_medium" style="text-align:center"
+						id="modal-content-id-1">
+						Do you want to save the changes?
+					</div>
+
+					<footer class="slds-modal__footer">
+
+						<button class="slds-button slds-button_brand" onclick={handleModalSave} title="Yes">Yes</button>
+						<button class="slds-button slds-button_neutral" onclick={handleModalNo} title="No">No</button>
+					</footer>
+					<!--Footer part of the Modal-->
+				</div>
+			</section>
+			<div class="slds-backdrop slds-backdrop_open"> </div>
+		</template>
+		<template if:true={showCancelModal}>
+			<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-02" aria-modal="true"
+				aria-describedby="modal-content-id-2" class="slds-modal slds-fade-in-open">
+				<div class="slds-modal__container">
+
+					<!--Header part of the Modal-->
+					<header class="slds-modal__header">
+						<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+					onclick={handleCancelModalNo}>
+					<lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+						size="small"></lightning-icon>
+					<span class="slds-assistive-text">Close</span>
+				</button>
+						<h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">Confirmation</h2>
+					</header>
+					<div class="slds-modal__content slds-p-around_medium" style="text-align:center"
+						id="modal-content-id-2">
+						Do you want to clear the selection?
+					</div>
+
+					<footer class="slds-modal__footer">
+
+						<button class="slds-button slds-button_brand" onclick={handleCancelModalSave} title="Yes">Yes</button>
+						<button class="slds-button slds-button_neutral" onclick={handleCancelModalNo} title="No">No</button>
+					</footer>
+					<!--Footer part of the Modal-->
+				</div>
+			</section>
+			<div class="slds-backdrop slds-backdrop_open"> </div>
+		</template>
+
+		<template if:true={showAccordion}>
+			<div class="slds-align_absolute-center slds-m-top_large slds-m-bottom_medium slds-docked-form-footer">
+				<lightning-button variant="brand" label=" Save" title="save" onclick={handleInputSave}
+					disabled={enableSave} class=" slds-m-right_small">
+				</lightning-button>
+				<lightning-button variant="neutral" label="Cancel" title="cancel" onclick={handlecancel} disabled={enableCancelBtn}
+					class=" slds-m-right_small">
+				</lightning-button>
+			</div>
+		</template>
+	</div>
+
+
+</template>

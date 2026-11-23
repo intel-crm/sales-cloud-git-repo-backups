@@ -54,7 +54,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Pending Payment,Paid,Cancelled,Denied,Adjusted,Closed</value>
+            <value>Pending Payment,Paid,Cancelled,Denied,Adjusted,Closed,Void</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_MDF_Bank__c.Partner_Fund_Claims__r$Core_MDF_Type_Txt__c</column>
@@ -81,4 +81,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Core_MDF_Bank__c.Partner_Fund_Claims__r$Core_MDF_StartTime_dtm__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
 </Report>

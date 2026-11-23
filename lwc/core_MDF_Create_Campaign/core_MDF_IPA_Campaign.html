@@ -16,8 +16,6 @@
                 </div>
             </template>
         </header>
-        <div class="body">
-            <template if:true={showForm}>
         <template if:true={showSPIFRestrictError}> 
             <lightning-layout horizontal-align="center" multiple-rows="true">
                 <lightning-layout-item flexibility="grow" size="12" small-device-size="12"
@@ -33,6 +31,8 @@
             </lightning-layout-item>
         </lightning-layout>    
             </template>
+        <div class="body">
+            <template if:true={showForm}>
                 <div class="slds-card">
                     
                     <lightning-layout horizontal-align="center" multiple-rows="true">
@@ -78,7 +78,7 @@
                                                 required={campaignRequiredFields.Core_MDF_Account__c} obj-name="Account"
                                                 search-placeholder="Search Accounts..." icon-name="standard:account"
                                                 onlookupselected={handleSelectedAccount} filter={accountQueryFilter}
-                                                selected-record={selectedAccount}
+                                                selected-record={selectedAccount} 
                                                 program-record-type={recordTypeDeveloperName} 
                                                 disabled={campaignFieldDisabled.Core_MDF_Account__c}>
                                             </c-core_-m-d-f_-custom-lookup>
@@ -172,7 +172,7 @@
                                         onchange={handleDateChanges}></lightning-input>
                                     </lightning-layout-item>
                                 </template>
-        
+                                
                                 <template if:true={campaignFieldVisibility.EndDate}>
                                     <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
                                         medium-device-size="6" large-device-size="6" padding="around-small">
@@ -267,7 +267,8 @@
                                             label={campaignFieldLabel.Core_MDF_Total_Campaign_Cost_Amt__c} 
                                             required={campaignRequiredFields.Core_MDF_Total_Campaign_Cost_Amt__c}
                                             disabled={campaignFieldDisabled.Core_MDF_Total_Campaign_Cost_Amt__c}
-                                                onchange={handleTotalCampaignCostChange}>
+                                            formatter="currency"
+                                            onchange={handleTotalCampaignCostChange}>
                                         </lightning-input>
                                         </lightning-layout-item>
                                     </template>
@@ -323,8 +324,9 @@
                                                     step="0.01" maxlength="16"
                                             field-level-help={campaignFieldHelpText.Core_MDF_Reimbursement_Amt__c} 
                                             value={campaignFieldValue.Core_MDF_Reimbursement_Amt__c} 
-                                            label={campaignFieldLabel.Core_MDF_Reimbursement_Amt__c} 
+                                            label={campaignFieldLabel.Core_MDF_Reimbursement_Amt__c}
                                             required={campaignRequiredFields.Core_MDF_Reimbursement_Amt__c}
+                                            formatter="currency"
                                             disabled="true"></lightning-input>
                                         </lightning-layout-item>
                                     </template> 
@@ -654,9 +656,11 @@
                                                 <p class="slds-text-color_error slds-m-top_xx-small">
                                                     {label.Core_MDF_Campaign_Outcome_Validation}</p>
                                             </template>
-                                             <template if:true={outcomeBasedError}>
+                                              <!-- Ealay TWC3117-13038 -->
+                                            <template if:true={outcomeBasedError}>
                                                 <p class="slds-text-color_error slds-m-top_xx-small">{label.Core_MDF_Campaign_Outcome_Based_Validation}</p>
                                             </template>
+                                                <!-- <template if:true={campaignFieldValue.Core_MDF_Outcomes_nm__c}> -->
                                                 <template if:true={hasSelectedOutcomes}>
                                                 <c-core_-m-d-f_-custom-data-table title={campaignPurposeIPAHeader} columns={columns} table-data={rows}
                                                     ontablechange={handleTableChange}> </c-core_-m-d-f_-custom-data-table>
@@ -668,7 +672,7 @@
                                                     </template>
                                                 </template>
                                                 </template>
-                                             <template if:true={campaignRequiredFields.Core_MDF_Other_Outcome_txt__c}>
+                                            <template if:true={campaignRequiredFields.Core_MDF_Other_Outcome_txt__c}>
                                                 <template if:true={campaignFieldVisibility.Core_MDF_Other_Outcome_txt__c}>
                                                     <lightning-layout-item flexibility="no-grow" size="6" small-device-size="6" medium-device-size="6"
                                                         large-device-size="6" padding="around-small">
@@ -682,6 +686,7 @@
                                                     </lightning-layout-item>
                                                 </template>
                                             </template>
+                                             <!-- Ealay TWC3117-13038 -->
                                         </lightning-layout-item>
                                     </template>
                                     <template if:true={proposalBasedIndicatorCamp}>
@@ -852,7 +857,7 @@
                                             <p class="slds-form-element__help informative-text">
                                                 {label.internalExternalCommentsCharLimit}</p>
                                         </lightning-layout-item>
-                                    </template> 
+                                    </template>     
                              </template>
     
                             </lightning-layout> 
@@ -860,6 +865,7 @@
                     </lightning-layout>
                 </div>
             </template>
+        </div>
         <!--  //US1082871: [IPA MDF] - Campaign - Clone a Proposal  -->
         <template if:true={proposalBasedIndicatorCamp}>
         <template if:true={checkIfClone}>
@@ -950,7 +956,6 @@
             </template>
             </template>
         </template>
-        </div>
         <footer class="ipaFooterElement">
             <template if:true={showForm}>
                 <div class="slds-card">

@@ -19,9 +19,6 @@
         <field>FULL_NAME</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Technical_Owner__c</field>
-    </columns>
-    <columns>
         <field>PRODUCT_NAME</field>
     </columns>
     <columns>
@@ -49,8 +46,8 @@
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Lost,Cancelled,Deleted,Production Win,Production Lost,Win Approved,Production Cancelled</value>
+            <operator>notEqual</operator>
+            <value>Lost,Cancelled,Deleted,Production Win,Production Lost,Production Cancelled</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Past_Due__c</column>
@@ -96,6 +93,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_PREVFY</interval>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

@@ -4,9 +4,6 @@
         <field>CASE_NUMBER</field>
     </columns>
     <columns>
-        <field>Case.Core_IPS_Age__c</field>
-    </columns>
-    <columns>
         <field>Case.Core_CaseType__c</field>
     </columns>
     <columns>

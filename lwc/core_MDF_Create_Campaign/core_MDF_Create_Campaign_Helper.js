@@ -29,18 +29,18 @@ import fetchCampToActPartnerRecord from '@salesforce/apex/Core_MDF_CampaignCreat
 import Core_MDF_CCF_Program_Name from '@salesforce/label/c.Core_MDF_NonTranslateCCFRecordType';
 import Core_MDF_DCF_Program_Name from '@salesforce/label/c.Core_MDF_NonTranslateDCFRecordType';
 import Core_MDF_EEF_Program_Name from '@salesforce/label/c.Core_MDF_EEF_Program_Name';
-import Core_MDF_Retail_Program_Name from '@salesforce/label/c.Core_MDF_Retail_Program_Name';
 import restrictStartDateUpdate from '@salesforce/label/c.Core_MDF_RestrictStartDateEdit_Campaign';
 import Core_MDF_Co_GTM_RecordType from '@salesforce/label/c.Core_MDF_Co_GTM_RecordType';
 import Core_MDF_Co_GTM_Program_Name from '@salesforce/label/c.Core_MDF_Co_GTM_Technical_program_name';
 import Core_MDF_Picklists_Co_GTM from '@salesforce/label/c.Core_MDF_Picklists_Co_GTM';
+import Core_MDF_EVENT_CATEGORY from '@salesforce/label/c.Core_MDF_Event_Activity_Category';
 import campaignOutcomeVisibilityDate from '@salesforce/label/c.Core_MDF_CampaignOutcomeVisibilityDate';
 import startDateErrorForOutcome from '@salesforce/label/c.Core_MDF_StartDateErrorForOutcome';
 import coGTMCampaignSpanYearsValidation from '@salesforce/label/c.Core_MDF_CoGTMCampaign_SpanOfYears_Validation';
 import coGTMCampaignStartDateValidation from '@salesforce/label/c.Core_MDF_CoGTM_Campaign_External_StartDate_Validation';
-import campaignOutcomeVisibilityDateCCF_DCF_RMF from '@salesforce/label/c.Core_MDF_CCF_DCF_RMF_CampaignOutcomeVisibilityDate';
-import campaignIPAOutcomeConfigureDate from '@salesforce/label/c.Core_MDF_IPA_Outcome_Configure_Date';
-import Core_MDF_Campaign_OEM_Platform_End_Date_Validation from '@salesforce/label/c.Core_MDF_Campaign_OEM_Platform_End_Date_Validation';
+import campaignOutcomeVisibilityDateCCF_DCF_RMF from '@salesforce/label/c.Core_MDF_CCF_DCF_RMF_CampaignOutcomeVisibilityDate';//Ealay
+import campaignIPAOutcomeConfigureDate from '@salesforce/label/c.Core_MDF_IPA_Outcome_Configure_Date';//Ealay
+import Core_MDF_Campaign_OEM_Platform_End_Date_Validation from '@salesforce/label/c.Core_MDF_Campaign_OEM_Platform_End_Date_Validation';//Swati
 import blockStartDateChangeForNonOutcome from '@salesforce/label/c.Core_MDF_BlockDateChangeOnOutcomeBsdCmp';
 import campaignOutcomeVisibilityDate_RMF from '@salesforce/label/c.Core_MDF_RMF_CampaignOutcomeVisibilityDate';//16406
 import Core_MDF_Other_Specify from '@salesforce/label/c.Core_MDF_Other_Specify';
@@ -48,12 +48,14 @@ import Core_MDF_Other_Specify from '@salesforce/label/c.Core_MDF_Other_Specify';
 const outcomePrefix = 'Core_MDF_Campaign_Outcomes__c.';
 const outcomeList = ["Core_MDF_Initial_Baseline_Quantity_nbr__c", "Core_MDF_Goal_Quantity_nbr__c", "Core_MDF_Quantity_nbr__c", "Core_MDF_Baseline_Period_nm__c", "Core_MDF_Outcome_Criteria_txt__c"];
 const validOutcomeMetricRecordTypeWithOutIPA = [
-		Core_MDF_CCF_RecordTypeName,
-		Core_MDF_DCF_RecordTypeName,
-		rmfRecTypeName
-];
+	Core_MDF_CCF_RecordTypeName,
+	Core_MDF_DCF_RecordTypeName,
+	rmfRecTypeName
+];//Ealay
+
 const dateJune2025 = '2025-06-29';
 const dateOct2025 ='2025-10-01';
+
 function getRecordTypeDependentFields(recordType) {
 	let pickListFields = [];
 	if (recordType == 'Core_MDF_Intel_Partner_Alliance_Account_Based' || recordType == 'Core_MDF_Intel_Partner_Alliance_Proposal_Based') {
@@ -67,7 +69,7 @@ function getRecordTypeDependentFields(recordType) {
 	}
 	else if (recordType == Core_MDF_EEF_RecordType) {
 		pickListFields = Core_MDF_EEF_Campaign_Picklist_Fields.split(',');
-	} else if(recordType == Core_MDF_Co_GTM_RecordType) {
+	} else if (recordType == Core_MDF_Co_GTM_RecordType) {
 		pickListFields = Core_MDF_Picklists_Co_GTM.split(',');
 	}
 	return pickListFields;
@@ -124,6 +126,7 @@ export default async function fetchPicklist(campRecordTypeName, campaignPicValue
 }
 
 function validateControllingFieldValues(controllerValues, picklistValues, selControllingValues, fieldAPIName) {
+	//let finalControllingValues = JSON.parse(JSON.stringify(selControllingValues));
 	let programList = technicalProgramNames.split(';');
 	let focusAreaList = focusAreaPicklistValues.split(',');
 	let validbudgetTypes = [];
@@ -187,10 +190,12 @@ function fetchPicklistFields(fldname, scontrolvalues, sfieldcompletevalues, camp
 		var ParPickField = [];
 		var checkDuplicate = [];
 		campaignPicValues[fldname] = [];
+		let activityCategoryValuesofCmp = [];
+		let controllingfields = {};
+		let pickValsFromCmpObject = [];
+		var filteredActivityCategoryTypeValuesSet;
 		for (var i = 0; i < budgettype.length; i++) {
 			var controllingValue = scontrolvalues[budgettype[i]];
-
-
 			sfieldcompletevalues.forEach(item => {
 				if ((item?.validFor.includes(controllingValue) || (fldname == 'Core_MDF_Ecosystem_Partner_Nm__c')) && !checkDuplicate.includes(item.value)) {
 					if (item.value.includes('&amp;') && item.label.includes('&amp;')) {
@@ -211,6 +216,8 @@ function fetchPicklistFields(fldname, scontrolvalues, sfieldcompletevalues, camp
 						item.value = item.value.replaceAll('&gt;', '>');
 					})
 					compRef.activityCategoryTypeValuesFromCPObject = ParPickField;
+					console.log('Ealay1----. ParPickField picklist value -->' + JSON.stringify(ParPickField));
+					console.log('Ealay2----. Activity picklist value -->' + JSON.stringify(compRef.activityCategoryTypeValuesFromCPObject));
 				} else {
 					campaignPicValues[fldname] = ParPickField;
 				}
@@ -233,7 +240,7 @@ function fetchPicklistFields(fldname, scontrolvalues, sfieldcompletevalues, camp
 			campaignPicValues[fldname] = picklistValueAtTop(campaignPicValues[fldname], 'None', picklistApitoLabelReferenceMap, fldname);
 		}
 
-		if(compRef.recordTypeDeveloperName == Core_MDF_Co_GTM_RecordType && (fldname == 'Core_MDF_Brand__c' || fldname == 'Core_MDF_Technology__c') && campaignPicValues[fldname] != undefined) {
+		if (compRef.recordTypeDeveloperName == Core_MDF_Co_GTM_RecordType && (fldname == 'Core_MDF_Brand__c' || fldname == 'Core_MDF_Technology__c') && campaignPicValues[fldname] != undefined) {
 			campaignPicValues[fldname] = picklistValueAtBottom(campaignPicValues[fldname], 'Other', picklistApitoLabelReferenceMap, fldname);
 		}
 	} catch (error) {
@@ -245,14 +252,20 @@ export function fetchActivityCategoryTypeValues(supportsLegacyValue, activityCat
 	let pickValsFromCmpObject = [];
 	let supportLegacyArray = [];
 	var filteredActivityCategoryTypeValuesSet;
+	let finalActCatType = [];
 	if (checkForUndefinedEmptyAndNull(supportsLegacyValue) && checkForUndefinedEmptyAndNull(activityCategoryTypeValuesofCP) && activityCategoryTypeValuesofCP.length > 0 && checkForUndefinedEmptyAndNull(picValuesByRecType)) {
 		controllingfields = picValuesByRecType.picklistFieldValues.Core_MDF_Activity_Category_Type__c.controllerValues;
 		pickValsFromCmpObject = picValuesByRecType.picklistFieldValues.Core_MDF_Activity_Category_Type__c.values;
 		supportLegacyArray.push(supportsLegacyValue);
 		const activityCategoryValuesofCmp = fetchPFRPicklistFields('Core_MDF_Activity_Category_Type__c', controllingfields, pickValsFromCmpObject, supportLegacyArray).Core_MDF_Activity_Category_Type__c;
-		
 		const fileteredPickValsSet = new Set(activityCategoryValuesofCmp.map(item => item.value));
 		filteredActivityCategoryTypeValuesSet = activityCategoryTypeValuesofCP.filter(item => fileteredPickValsSet.has(item.value));
+		/*if(compRef.mode == 'edit') { 
+			let actCatType = {'Core_MDF_Activity_Category_Type__c': filteredActivityCategoryTypeValuesSet}
+			let validActCatTypeValues = lovValuesAddition(actCatType, compRef.campaignFieldValue, compRef.recordTypeDeveloperName,compRef.picklistApitoLabelReferenceMap, compRef, 'activityCategoryType');
+			finalActCatType = validActCatTypeValues['Core_MDF_Activity_Category_Type__c'];
+			filteredActivityCategoryTypeValuesSet = finalActCatType;
+		}*/
 		filteredActivityCategoryTypeValuesSet.sort((a, b) => a.label.localeCompare(b.label));
 	}
 	return filteredActivityCategoryTypeValuesSet;
@@ -273,7 +286,7 @@ function picklistValueAtBottom(picklisValues, valueAtBottom, picklistApitoLabelR
 		class: "optionClass", label: (picklistApitoLabelReferenceMap.get(valueAtBottom + '-' + fldname) != undefined ? picklistApitoLabelReferenceMap.get(valueAtBottom + '-' + fldname) : valueAtBottom), value: valueAtBottom
 	});
 	return picklisValues;
-} 
+}
 
 export function validateOpportunityId(errorMessage, activityList) {
 	//Throws error messages for proposals with invalid opportunity IDs				
@@ -297,7 +310,7 @@ export function validateOpportunityId(errorMessage, activityList) {
 	return activityList;
 }
 export function validatePicklistvalues(campaignPicValues, campaignFieldValue, campaignFields, compRef) {
-		compRef.campaignFieldValue['Core_MDF_Market__c'] = compRef.countryValue;
+	compRef.campaignFieldValue['Core_MDF_Market__c'] = compRef.countryValue;
 	for (let i = 0; i < campaignFields.length; i++) {
 		let campaignPicValuesCopy = JSON.parse(JSON.stringify(campaignPicValues));
 		if (((campaignFields[i].fieldType === 'PICKLIST' && checkForUndefinedEmptyAndNull(campaignFieldValue[campaignFields[i].fieldAPIName]))
@@ -324,14 +337,13 @@ export function validatePicklistvalues(campaignPicValues, campaignFieldValue, ca
 					}
 				})
 			}
-			if(campaignFields[i].fieldAPIName == 'Core_MDF_Market__c') {
-				compRef.countryValue = ParPickField;			
+			if (campaignFields[i].fieldAPIName == 'Core_MDF_Market__c') {
+				compRef.countryValue = ParPickField;
 			} else {
-			campaignFieldValue[campaignFields[i].fieldAPIName] = ParPickField;
+				campaignFieldValue[campaignFields[i].fieldAPIName] = ParPickField;
+			}
 		}
 	}
-	}
-
 	return campaignFieldValue;
 }
 
@@ -438,8 +450,8 @@ export function budgetDataWrapperMDF(res, isActive, disable, rrOptions, budgetNa
 			budgetRAmount: '0',
 			options: rrOptions
 		}
-	} 
-	else{
+	}
+	else {
 		obj = {
 			campaignBudgetId: res.Id,
 			budgetId: res.Core_MDF_Budget_Name_Id__c,
@@ -452,7 +464,7 @@ export function budgetDataWrapperMDF(res, isActive, disable, rrOptions, budgetNa
 			options: rrOptions,
 			budgetType: res.Core_MDF_Budget_Type_Nm__c
 		}
-		}
+	}
 	return obj;
 }
 
@@ -467,7 +479,7 @@ export function budgetDataWrapper(childOrRes, res, rrOptions, recordTypeDevName)
 			budgetRAmount: 0,
 			options: rrOptions
 		}
-	} else if(recordTypeDevName == Core_MDF_Co_GTM_RecordType) {
+	} else if (recordTypeDevName == Core_MDF_Co_GTM_RecordType) {
 		obj = {
 			budgetId: childOrRes ? res.value : res.budgetId,
 			budgetName: childOrRes ? res.label : res.budgetName,
@@ -485,8 +497,8 @@ export function budgetDataWrapper(childOrRes, res, rrOptions, recordTypeDevName)
 			budgetRAmount: childOrRes ? '' : res.budgetRAmount,
 			options: rrOptions,
 			budgetType: res.budgetType
+		}
 	}
-	 }
 	return obj;
 }
 
@@ -556,7 +568,7 @@ export function campFieldAPINametoPFRFieldAPIName(recordTypeDevelperName) {
 			'Core_MDF_Brand__c': 'Core_MDF_Brand_nm__c',
 			'Core_MDF_Product_Type__c': 'Core_MDF_ProductType__c',
 			'Core_MDF_Ecosystem_Partner_Nm__c': 'Core_MDF_EcosystemPartner_nm__c',
-			'Core_MDF_Opal_Budget_Type_Txt__c':'Core_MDF_Budget_Type_nm__c'
+			'Core_MDF_Opal_Budget_Type_Txt__c': 'Core_MDF_Budget_Type_nm__c'
 		}
 	}
 	else if (recordTypeDevelperName == 'Core_MDF_Client_CoMarketing_Fund' || recordTypeDevelperName == 'Core_MDF_Data_Center_CoMarketing_Fund') {
@@ -570,7 +582,7 @@ export function campFieldAPINametoPFRFieldAPIName(recordTypeDevelperName) {
 			'Core_MDF_Brand__c': 'Core_MDF_Brand_nm__c',
 			'Core_MDF_Industry_Nm__c': 'Core_MDF_Industry_Multi_nm__c',
 			'Core_MDF_Activity_Category_Type__c': 'Activity_Category_Type',
-			'Core_MDF_Opal_Budget_Type_Txt__c':'Core_MDF_Budget_Type_nm__c'
+			'Core_MDF_Opal_Budget_Type_Txt__c': 'Core_MDF_Budget_Type_nm__c'
 		}
 	} else if (recordTypeDevelperName == Core_MDF_EEF_RecordType) {
 		obj = {
@@ -583,11 +595,11 @@ export function campFieldAPINametoPFRFieldAPIName(recordTypeDevelperName) {
 			'Core_MDF_Brand__c': 'Core_MDF_Brand_nm__c',
 			'Core_MDF_Industry_Nm__c': 'Core_MDF_Industry_Multi_nm__c',
 			'Core_MDF_Activity_Category_Type__c': 'Activity_Category_Type',
-			'Core_MDF_Partner_Mapping_Txt__c':'ChannelPartnerId',
+			'Core_MDF_Partner_Mapping_Txt__c': 'ChannelPartnerId',
 			'availableBudgetValues': 'BudgetId',
-			'Core_MDF_Opal_Budget_Type_Txt__c':'Core_MDF_Budget_Type_nm__c'
+			'Core_MDF_Opal_Budget_Type_Txt__c': 'Core_MDF_Budget_Type_nm__c'
 		}
-	} else if(recordTypeDevelperName == Core_MDF_Co_GTM_RecordType) {
+	} else if (recordTypeDevelperName == Core_MDF_Co_GTM_RecordType) {
 		obj = {
 			'availableBudgetValues': 'BudgetId',
 		}
@@ -601,7 +613,7 @@ export function campFieldAPINametoPFRFieldAPIName(recordTypeDevelperName) {
 			'Core_MDF_Product_Type__c': 'Core_MDF_ProductType__c',
 			'Core_MDF_Brand__c': 'Core_MDF_Brand_nm__c',
 			'Core_MDF_Initiative_nm__c': 'Core_MDF_Initiative_nm__c',
-			'Core_MDF_Budget_Type_txt__c':'Core_MDF_Budget_Type_nm__c'
+			'Core_MDF_Budget_Type_txt__c': 'Core_MDF_Budget_Type_nm__c'
 		}
 	}
 
@@ -672,9 +684,10 @@ function showErrorToast(errorMessage, mode) {
 	dispatchEvent(evt);
 }
 export function checkActivityEventValidation(activityElement) {
+	const activityCategories = Core_MDF_EVENT_CATEGORY.split(';').map(val => val.trim());
 	var isValidation = false; let todaysDate = new Date(); todaysDate.setMinutes(new Date().getMinutes() - new Date().getTimezoneOffset());
 	let todaysDatewithLocale = todaysDate.toISOString().slice(0, 10); var actStartDate = activityElement.Core_MDF_Start_Date__c; var daysDifference = (Date.parse(actStartDate) - Date.parse(todaysDatewithLocale)) / (3600 * 24 * 1000);
-	if (activityElement.Core_MDF_ActivityCategory__c == 'Event' && activityElement.Core_MDF_Activity_Reimbursement_Amt_nbr__c >= this.amount50K && daysDifference < this.threshold60Days) {
+	if (activityCategories.includes(activityElement.Core_MDF_ActivityCategory__c) && activityElement.Core_MDF_Activity_Reimbursement_Amt_nbr__c >= this.amount50K && daysDifference < this.threshold60Days) {
 		isValidation = true;
 	} return isValidation;
 }
@@ -691,7 +704,6 @@ export function checkActivityInitiativeValidation(activityElement) {
 }
 
 export function callingGeoToCountryMappingValue(selectedRegions, tempCountrySelected, ConnectedCallbackGeoCountryValue, compRef) {
-
 	let geoToCountryMappingWrapper = {};
 	let connectedCallbackcusts = [];
 	let geoMapping = [];
@@ -726,20 +738,21 @@ export function callingGeoToCountryMappingValue(selectedRegions, tempCountrySele
 	return geoToCountryMappingWrapper;
 }
 
-export function lovValueAdditionforEEF(campaignPickValues, campaignFieldValue,actPartOptions){
-	let campaignFieldSelectedValues =JSON.parse(JSON.stringify(campaignFieldValue));
+export function lovValueAdditionforEEF(campaignPickValues, campaignFieldValue, actPartOptions) {
+	let campaignFieldSelectedValues = JSON.parse(JSON.stringify(campaignFieldValue));
 	let campaignPicOptions = JSON.parse(JSON.stringify(campaignPickValues));
 	let selectedValuesOnCampaignRecord = campaignFieldSelectedValues;
-	if (checkForUndefinedEmptyAndNull(selectedValuesOnCampaignRecord) && selectedValuesOnCampaignRecord !== []) {
+	//if (checkForUndefinedEmptyAndNull(selectedValuesOnCampaignRecord) && selectedValuesOnCampaignRecord !== []) {
+	if (checkForUndefinedEmptyAndNull(selectedValuesOnCampaignRecord) && selectedValuesOnCampaignRecord.length > 0) {
 		for (let j = 0; j < selectedValuesOnCampaignRecord.length; j++) {
 			let plVal = selectedValuesOnCampaignRecord[j];
 			let campaignPicValuesIndex = campaignPickValues.findIndex(pl => pl.value == plVal);
 			if (campaignPicValuesIndex == -1) {
-				if(checkForUndefinedEmptyAndNull(actPartOptions) && actPartOptions.length>0){
-				const labelval = actPartOptions.find(act => act.value == plVal).label;
-				campaignPicOptions.push({
-					class: "optionClass", label: labelval, value: plVal
-				});
+				if (checkForUndefinedEmptyAndNull(actPartOptions) && actPartOptions.length > 0) {
+					const labelval = actPartOptions.find(act => act.value == plVal).label;
+					campaignPicOptions.push({
+						class: "optionClass", label: labelval, value: plVal
+					});
 				}
 			}
 		}
@@ -750,7 +763,7 @@ export function lovValueAdditionforEEF(campaignPickValues, campaignFieldValue,ac
 export function lovValuesAddition(campaignPicValues, campaignFieldValue, recordType, picklistApitoLabelReferenceMap, compRef, context) {
 	let pickListFields = [];
 	let fieldsBasedOnProgram = ['Core_MDF_Opal_Budget_Type_Txt__c', 'Core_MDF_Budget_Type_txt__c', 'Core_MDF_Focus_Area_nm__c', 'Core_MDF_Market__c'];
-	let singleSelectPickListFields =['Core_MDF_Priority__c', 'Core_MDF_Priority_2_nm__c', 'Core_MDF_Priority_3_nm__c'];
+	let singleSelectPickListFields = ['Core_MDF_Priority__c', 'Core_MDF_Priority_2_nm__c', 'Core_MDF_Priority_3_nm__c'];
 	pickListFields = (checkForUndefinedEmptyAndNull(context) && context == "geoChange") ? ['Core_MDF_Market__c'] : (checkForUndefinedEmptyAndNull(context) && context == 'fieldsBasedOnProgram') ? fieldsBasedOnProgram : (checkForUndefinedEmptyAndNull(context) && context == 'activityCategoryType') ? ['Core_MDF_Activity_Category_Type__c'] : getRecordTypeDependentFields(recordType);
 	let campaignPicOptions = JSON.parse(JSON.stringify(campaignPicValues));
 	let campaignFieldSelectedValues = JSON.parse(JSON.stringify(campaignFieldValue));
@@ -758,8 +771,10 @@ export function lovValuesAddition(campaignPicValues, campaignFieldValue, recordT
 		let fldname = pickListFields[i];
 		let selectedValuesOnCampaignRecord = [];
 		let selectedOldValuesOnCamp = [];
-		if (checkForUndefinedEmptyAndNull(campaignFieldSelectedValues[fldname]) && campaignFieldSelectedValues[fldname] !== []) {
+		//if (checkForUndefinedEmptyAndNull(campaignFieldSelectedValues[fldname]) && campaignFieldSelectedValues[fldname] !== []) {
+		if (checkForUndefinedEmptyAndNull(campaignFieldSelectedValues[fldname]) && campaignFieldSelectedValues[fldname].length > 0) {
 			selectedValuesOnCampaignRecord = getSelectedValuesOnCampaign(campaignFieldSelectedValues[fldname]);
+			//if (fieldsBasedOnProgram.includes(fldname) && checkForUndefinedEmptyAndNull(compRef.campaignRecord[fldname]) && compRef.campaignRecord[fldname] !== []) {
 			if ((fieldsBasedOnProgram.includes(fldname) || singleSelectPickListFields.includes(fldname)) && checkForUndefinedEmptyAndNull(compRef.campaignRecord[fldname]) && compRef.campaignRecord[fldname].length > 0) {
 				selectedOldValuesOnCamp = getSelectedValuesOnCampaign(compRef.campaignRecord[fldname]);
 				selectedOldValuesOnCamp.forEach(oldVal => {
@@ -821,10 +836,25 @@ export function getObjectFieldDetails(compRef) {
 				compRef.campaignRequiredFields[fieldAPIName] = compRef.campaignFields[i].isRequired; compRef.campaignFieldVisibility[fieldAPIName] = true; compRef.campaignFieldDisabled[fieldAPIName] = false;
 			}
 			compRef.campaignFieldLabel[fieldAPIName] = compRef.campaignFields[i].fieldLabel; compRef.campaignFieldHelpText[fieldAPIName] = compRef.campaignFields[i].helpText;
-			compRef.campaignFieldVisibility["Core_MDF_MyDeals_txt__c"] = compRef.isCommunity ? false:true;
+			//aditya
+			compRef.campaignFieldVisibility["Core_MDF_MyDeals_txt__c"] = compRef.isCommunity ? false : true;
+			// if(compRef.isCommunity){
+			// 	compRef.campaignFieldVisibility["Core_MDF_MyDeals_txt__c"] = false;
+			// 	compRef.campaignFieldVisibility["Core_MDF_MyDeals_txt__c"] = compRef.isCommunity? false: true;
+			// }
+			// if(fieldAPIName == 'Core_MDF_Outcomes_nm__c'){
+			// 	compRef.campaignRequiredFields[fieldAPIName] = compRef.campaignFields[i].isRequired;
+			// }
 			if (compRef.recordId != undefined && compRef.recordId != null && compRef.recordId != '' && (compRef.mode == 'edit' || compRef.mode == 'clone')) {
 				if (compRef.mode == 'edit') {
-					//aditya
+
+					/*compRef.fieldEditibilityList.forEach(field => {
+						if (field.startsWith(outcomePrefix)) {
+							const outcomeFieldName = field.split('.')[1];
+							compRef.campaignFieldDisabled[outcomeFieldName] = false;
+						}
+					});*/
+
 					const editableFields = Array.isArray(compRef.fieldEditibilityList) ? compRef.fieldEditibilityList : [];
 					editableFields.forEach(field => {
 						if (field.startsWith(outcomePrefix)) {
@@ -832,6 +862,7 @@ export function getObjectFieldDetails(compRef) {
 							compRef.campaignFieldDisabled[outcomeFieldName] = false;
 						}
 					});
+
 					if (editableFields.includes(fieldAPIName)) {
 						compRef.campaignFieldDisabled[fieldAPIName] = false;
 					} else { compRef.campaignFieldDisabled[fieldAPIName] = true; }
@@ -866,7 +897,11 @@ export function getObjectFieldDetails(compRef) {
 			if (compRef.campaignFields[i].fieldType == 'PICKLIST' || compRef.campaignFields[i].fieldType == 'MULTIPICKLIST') {
 				if (compRef.picValuesByRecType !== undefined && compRef.picValuesByRecType !== null) {
 					let tempOptions = []; let temp2Options = compRef.picValuesByRecType.picklistFieldValues[fieldAPIName].values;
+					console.log('@@fieldAPIName:', fieldAPIName);
+					console.log('@@temp2Options++', temp2Options);
+
 					temp2Options.forEach(opt => tempOptions.push(opt));
+					console.log('@@tempOptions++', tempOptions);
 					if (fieldAPIName == 'Core_MDF_Region_cd__c') {
 						if (compRef.recordTypeDeveloperName === Core_MDF_IPA_RecordType) {
 							tempOptions = [{ label: '', value: '', selected: true }, ...tempOptions];
@@ -943,7 +978,7 @@ export function getObjectFieldDetails(compRef) {
 									(compRef.recordTypeDeveloperName === Core_MDF_IPA_RecordType && (checkForUndefinedEmptyAndNull(compRef.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"]) && !compRef.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"])) && compRef.customRRValues != undefined) {
 									compRef.customRRValues = compRef.campaignPicValues["Core_MDF_Reimbursement_Rate__c"];
 								}
-								if(compRef.recordTypeDeveloperName === Core_MDF_EEF_RecordType) {
+								if (compRef.recordTypeDeveloperName === Core_MDF_EEF_RecordType) {
 									compRef.finalRRrate = '100%';
 								}
 							}
@@ -956,14 +991,13 @@ export function getObjectFieldDetails(compRef) {
 							}
 							else if (fieldAPIName == 'Core_MDF_Region_cd__c') {
 								if (compRef.recordTypeDeveloperName === 'Core_MDF_Retail_Marketing_Funds') { compRef.campaignFieldValue[fieldAPIName] = selectedPicValues; }
-								if (compRef.recordTypeDeveloperName != rmfRecTypeName) {								
+								if (compRef.recordTypeDeveloperName != rmfRecTypeName) {
 									compRef.showCountryoOnBasisOfGeo(null, 'initialLoad');
 								}
-							} 
-							//added this for Market Segment & Reason for back dating on UI - Core_MDF_Market_Segment_nm__c, Core_MDF_Reason_for_Back_Dating_Nm__c - AM
-							
+							}
+
 							else if (fieldAPIName == 'Core_MDF_Reimbursement_Rate__c' || fieldAPIName == 'Core_MDF_Program__c' || fieldAPIName == 'Core_MDF_Priority__c' || fieldAPIName == 'Core_MDF_Priority_2_nm__c' || fieldAPIName == 'Core_MDF_Priority_3_nm__c' || fieldAPIName == 'Core_MDF_Integrated_Campaign__c' ||
-								fieldAPIName == 'Core_MDF_Supports_legacy_program__c' || fieldAPIName == 'Core_MDF_Market_Segment_nm__c' || fieldAPIName == 'Core_MDF_Reason_for_Back_Dating_Nm__c'){
+								fieldAPIName == 'Core_MDF_Supports_legacy_program__c' || fieldAPIName == 'Core_MDF_Market_Segment_nm__c' || fieldAPIName == 'Core_MDF_Reason_for_Back_Dating_Nm__c') {
 								if (compRef.campaignRecord[fieldAPIName] != null && compRef.campaignRecord[fieldAPIName] != undefined && selectedPicValues != '') {
 									compRef.campaignFieldValue[fieldAPIName] = compRef.campaignRecord[fieldAPIName];
 								}
@@ -979,6 +1013,7 @@ export function getObjectFieldDetails(compRef) {
 								}
 							} else {
 								compRef.campaignFieldValue[fieldAPIName] = selectedPicValues;
+
 							}
 							if ((compRef.mode == 'edit') && (compRef.recordTypeDeveloperName === Core_MDF_IPA_RecordType)
 								&& (fieldAPIName == 'Core_MDF_Proposal_Score_nbr__c')) {
@@ -1021,7 +1056,6 @@ export function getObjectFieldDetails(compRef) {
 		if (compRef.recordId != undefined && compRef.recordId != null && compRef.recordId != '' && (compRef.mode == 'edit' || compRef.mode == 'clone')) {
 			if ((checkForUndefinedEmptyAndNull(compRef.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"]) && !compRef.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"]) || compRef.recordTypeDeveloperName === Core_MDF_EEF_RecordType) { calReimbursementAmt(compRef); }
 		}
-
 		if (compRef.isCommunity) {
 			compRef.campaignFieldVisibility["Core_MDF_Comments_Internal_Only__c"] = false;
 		}
@@ -1094,11 +1128,15 @@ export function getObjectFieldDetails(compRef) {
 			compRef.clearValuesIfProposalCamp();
 		} if (compRef.mode == 'clone') {
 			if (compRef.recordTypeDeveloperName === Core_MDF_IPA_RecordType && compRef.proposalBasedIndicatorCamp) {
-				
 				compRef.clearValuesIfProposalCamp();
 			} if (checkForUndefinedEmptyAndNull(compRef.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"]) && !compRef.campaignFieldValue["Core_MDF_Proposal_Based_Ind__c"]) {
+				compRef.finalRRrate = '50%';
 				calReimbursementAmt(compRef);
-			}
+			} /*if(compRef.recordTypeDeveloperName === Core_MDF_Co_GTM_RecordType) {
+				compRef.campaignFieldValue['Core_MDF_Total_Campaign_Cost_Amt__c'] = '';
+				compRef.campaignFieldValue['Core_MDF_Reason_for_Back_Dating_Nm__c']='';
+				compRef.campaignFieldValue['Core_MDF_Other_Reason_Name_txt__c'] = ''
+			}*/
 		} if (compRef.mode == 'edit') {
 			if (compRef.recordTypeDeveloperName === Core_MDF_DCF_RecordTypeName || compRef.recordTypeDeveloperName === Core_MDF_CCF_RecordTypeName) {
 				if (compRef.campaignFieldValue["Core_MDF_Opal_Budget_Type_Txt__c"] != undefined && compRef.campaignFieldValue["Core_MDF_Opal_Budget_Type_Txt__c"] != null && compRef.campaignFieldValue["Core_MDF_Opal_Budget_Type_Txt__c"] != '') {
@@ -1113,13 +1151,14 @@ export function getObjectFieldDetails(compRef) {
 			}
 		}
 		compRef.campaignFieldDisabled["Core_MDF_Program__c"] = true;
-		compRef.showForm = true;
-		
-		// Spinner fix to avoid race condition between fieldEditibilityList and getObjectFieldDetails
-		// compRef.isLoaded = false;
+		compRef.showForm = true; 
+
+		//compRef.isLoaded = false;
+		//Spinner fix to avoid race condition between fieldEditibilityList and getObjectFieldDetails
 		if (compRef.mode !== 'edit' || Array.isArray(compRef.fieldEditibilityList)) { compRef.isLoaded = false; }
 		
-		compRef.btnDisabled["saveBtn"] = false; compRef.campaignPicValues.Core_MDF_Market__c = compRef.countryPicklist;
+		compRef.btnDisabled["saveBtn"] = false;
+		compRef.campaignPicValues.Core_MDF_Market__c = compRef.countryPicklist;
 		let activityRecordList = compRef.activityListEdit; let valuesReferencedOnActivities = new Set();
 		let pfrFieldAPIName = 'Core_MDF_Priorities__c';
 		activityRecordList && activityRecordList.map(activity => {
@@ -1311,17 +1350,22 @@ export function handleDateChange(event, compRef) {
 	if (memberVisibilityDateCmp != null) {
 		compRef.memberVisibilityValid = false;
 	}
+	console.log('@@@handleDateChange -', event.target.name);
 	if (event.target.name == 'StartDate') {
-		const todayDate = new Date().toISOString().split('T')[0];
+		//const todayDate = new Date().toISOString().split('T')[0];
 		const prevStartDate = compRef.campaignFieldValue["StartDate"];
 		compRef.campaignFieldValue["StartDate"] = event.target.value;
 		compRef.startYearOfCampaign = new Date(compRef.campaignFieldValue["StartDate"]).getUTCFullYear();
+
+		console.log('@@@VS compRef.userTodayDate', compRef.userTodayDate);
+		console.log('@@@VS compRef.campaignFieldValue["StartDate"] ', compRef.campaignFieldValue["StartDate"]);
+		console.log('@@@VS compRef.campaignFieldValue["StartDate"] < compRef.userTodayDate', compRef.campaignFieldValue["StartDate"] < compRef.userTodayDate);
 
 		if (compRef.recordTypeDeveloperName === Core_MDF_Co_GTM_RecordType && !compRef.isCommunity) {
 			if (compRef.campaignFieldValue["StartDate"] < compRef.userTodayDate && ((prevStartDate >= compRef.userTodayDate || !prevStartDate) || (compRef.mode == 'edit' && !compRef.startDateChangedOnce))) {
 				compRef.isStartDateInPast = true;
 				compRef.campaignFieldVisibility["Core_MDF_Reason_for_Back_Dating_Nm__c"] = true;
-				if(compRef.mode == 'edit' && !compRef.startDateChangedOnce && checkForUndefinedEmptyAndNull(compRef.campaignFieldValue["Core_MDF_Reason_for_Back_Dating_Nm__c"])){
+				if (compRef.mode == 'edit' && !compRef.startDateChangedOnce && checkForUndefinedEmptyAndNull(compRef.campaignFieldValue["Core_MDF_Reason_for_Back_Dating_Nm__c"])) {
 					compRef.campaignFieldVisibility["Core_MDF_Other_Reason_Name_txt__c"] = compRef.campaignFieldValue["Core_MDF_Reason_for_Back_Dating_Nm__c"] == 'Other' ? true : false;
 				} else {
 					compRef.campaignFieldValue["Core_MDF_Reason_for_Back_Dating_Nm__c"] = '';
@@ -1337,7 +1381,13 @@ export function handleDateChange(event, compRef) {
 			}
 		}
 		if (compRef.validOutcomeMetricRecordType.includes(compRef.recordTypeDeveloperName)) {
-			if (compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] && compRef.mode == 'edit' && (compRef.campaignFieldValue["StartDate"] < dateJune2025 || compRef.campaignFieldValue["StartDate"] == null) && checkForUndefinedEmptyAndNull(compRef.activityListEdit) && compRef.activityListEdit.length > 0 && compRef.recordTypeDeveloperName == Core_MDF_IPA_RecordType) {
+			console.log('startdate:', compRef.campaignFieldValue["StartDate"]);
+			console.log('startdate1:', compRef.campaignFieldValue["StartDate"] == null);
+			console.log('optinvalindate:', compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"]);
+			console.log('propbasedInd:', compRef.proposalBasedIndicatorCamp);
+			console.log('actList:', (checkForUndefinedEmptyAndNull(compRef.activityListEdit) && compRef.activityListEdit.length > 0));
+			console.log('mode:', compRef.mode);
+			if (compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] && compRef.mode == 'edit' && (compRef.campaignFieldValue["StartDate"] < dateJune2025 || compRef.campaignFieldValue["StartDate"] == null) && checkForUndefinedEmptyAndNull(compRef.activityListEdit) && compRef.activityListEdit.length > 0 && compRef.recordTypeDeveloperName == Core_MDF_IPA_RecordType) { //Ealay added optin check, 
 				const dateObj = new Date(dateJune2025);
 				const formattedDate = dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 				const errorMessage = `${startDateErrorForOutcome} ${formattedDate}.`;
@@ -1350,8 +1400,8 @@ export function handleDateChange(event, compRef) {
 				startDateCmp.reportValidity();
 				compRef.datevalid = false;
 				compRef.skipOutcomeFieldUpdate = true;
-			}		
-			else{
+			}
+			else {
 				compRef.skipOutcomeFieldUpdate = false;
 				startDateCmp.setCustomValidity("");
 				startDateCmp.reportValidity();
@@ -1363,11 +1413,13 @@ export function handleDateChange(event, compRef) {
 			}
 		}
 		compRef.startDateChangedOnce = true;
+
 	} else if (event.target.name == 'EndDate') {
 		compRef.campaignFieldValue["EndDate"] = event.target.value;
 	} else if (event.target.name == 'Core_MDF_External_Visibility_Date__c') {
 		compRef.campaignFieldValue["Core_MDF_External_Visibility_Date__c"] = event.target.value;
 	}
+
 	let strtOfDate = new Date(compRef.campaignFieldValue["StartDate"]);
 	let yearOfstrtDate = strtOfDate.getUTCFullYear();
 	let endOfDate = new Date(compRef.campaignFieldValue["EndDate"]);
@@ -1401,6 +1453,7 @@ export function handleDateChange(event, compRef) {
 			compRef.datevalid = true;
 		}
 	}
+
 	if ((compRef.campaignFieldValue["StartDate"] != '' && compRef.campaignFieldValue["StartDate"] != undefined && compRef.campaignFieldValue["StartDate"] != null) &&
 		(compRef.campaignFieldValue["Core_MDF_External_Visibility_Date__c"] != '' && compRef.campaignFieldValue["Core_MDF_External_Visibility_Date__c"] != undefined && compRef.campaignFieldValue["Core_MDF_External_Visibility_Date__c"] != null) && memberVisibilityDateCmp != null) {
 		if (compRef.campaignFieldValue["Core_MDF_External_Visibility_Date__c"] > compRef.campaignFieldValue["StartDate"]) {
@@ -1420,22 +1473,27 @@ export function handleDateChange(event, compRef) {
 				startDateCmp.reportValidity();
 				compRef.campaignFieldDisabled['Core_MDF_Opal_Budget_Type_Txt__c'] = true;
 				compRef.datevalid = false;
+				//compRef.showAvailableBudgets = false;
+				//compRef.showCampaignBudgets = false;
 			} else {
 				startDateCmp.setCustomValidity('');
 				startDateCmp.reportValidity();
 				compRef.campaignFieldDisabled['Core_MDF_Opal_Budget_Type_Txt__c'] = false;
 				compRef.datevalid = true;
+				//compRef.showAvailableBudgets = true;
+				//compRef.showCampaignBudgets = true;
 			}
 		}
 	}
 	//aditya
-	if (event.target.name == 'StartDate' && compRef.isCommunity && compRef.recordTypeDeveloperName == Core_MDF_Co_GTM_RecordType && (compRef.campaignFieldValue["StartDate"] != '' && compRef.campaignFieldValue["StartDate"] != undefined && compRef.campaignFieldValue["StartDate"] != null)){
+	if (event.target.name == 'StartDate' && compRef.isCommunity && compRef.recordTypeDeveloperName == Core_MDF_Co_GTM_RecordType && (compRef.campaignFieldValue["StartDate"] != '' && compRef.campaignFieldValue["StartDate"] != undefined && compRef.campaignFieldValue["StartDate"] != null)) {
 		if (compRef.campaignFieldValue["StartDate"] < compRef.userTodayDate) {
 			startDateCmp.setCustomValidity(coGTMCampaignStartDateValidation);
 			startDateCmp.reportValidity();
 			compRef.datevalid = false;
+			console.log('@@@Inside helper save Start Date', this.isPastDatedCampaign);
 		}
-		else{
+		else {
 			compRef.datevalid = true;
 			compRef.isPastDatedCampaign = false;
 		}
@@ -1449,26 +1507,15 @@ export function handleDateChange(event, compRef) {
 		compRef.setCCFDCFFields(compRef.campaignFieldValue["Core_MDF_Opal_Budget_Type_Txt__c"]);
 		//Instead of setCCFDCFFields => move (single budget auto selection code) to a separate method
 	}
-	if((compRef.mode == 'clone') && (compRef.recordTypeDeveloperName === Core_MDF_IPA_RecordType && compRef.proposalBasedIndicatorCamp) && (event.target.name == 'StartDate' || event.target.name == 'EndDate') && (compRef.activityListClone.length > 0)){
+	if ((compRef.mode == 'clone') && (compRef.recordTypeDeveloperName === Core_MDF_IPA_RecordType && compRef.proposalBasedIndicatorCamp) && (event.target.name == 'StartDate' || event.target.name == 'EndDate') && (compRef.activityListClone.length > 0)) {
 		compRef.validateCampaignDateRangeError('dateChange');
 	}
 	if ((event.target.name == 'StartDate' || event.target.name == 'EndDate') && (compRef.datevalid)) {
-			compRef.isDateChanged = true;
-		}
-
-	//CCF-DCF-'Outcome-based values can only be chosen if the campaign is opted in for Outcome-based criteria. If any questions, please contact Program Support.' error to be displayed when outcome based campaign's start date is changed to <1 Jan 2026. 
-	/*let activityCategoryType = compRef.campaignFieldValue["Core_MDF_Activity_Category_Type__c"];
-	if(event.target.name == 'StartDate' && (compRef.recordTypeDeveloperName == Core_MDF_CCF_RecordTypeName || compRef.recordTypeDeveloperName == Core_MDF_DCF_RecordTypeName)){
-		if ((compRef.campaignFieldValue["StartDate"] != '' && compRef.campaignFieldValue["StartDate"] != undefined) && compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"]==false && (checkForUndefinedEmptyAndNull(activityCategoryType) && activityCategoryType.includes('Outcome-Based->Outcome-Based'))) {
-			compRef.activityCategoryBasedError = true;
-		}
-		else{
-			compRef.activityCategoryBasedError = false;
-		}
-	}*/
+		compRef.isDateChanged = true;
+	}
 	
 	//CCF-DCF-'Outcome-based campaigns must start on or after January 1, 2026' error to be displayed when outcome based campaign's with activity start date is changed to <1 Jan 2026. 
-	if (compRef.mode == 'edit' && (compRef.recordTypeDeveloperName == Core_MDF_CCF_RecordTypeName || compRef.recordTypeDeveloperName == Core_MDF_DCF_RecordTypeName) && compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] && event.target.name == 'StartDate' && (compRef.campaignFieldValue["StartDate"] < campaignOutcomeVisibilityDateCCF_DCF_RMF || compRef.campaignFieldValue["StartDate"] == null) && (checkForUndefinedEmptyAndNull(compRef.activityListEdit) && compRef.activityListEdit.length > 0)) {
+	if (compRef.mode == 'edit' && (compRef.recordTypeDeveloperName == Core_MDF_CCF_RecordTypeName || compRef.recordTypeDeveloperName == Core_MDF_DCF_RecordTypeName /*|| compRef.recordTypeDeveloperName == rmfRecTypeName*/) && compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] && event.target.name == 'StartDate' && (compRef.campaignFieldValue["StartDate"] < campaignOutcomeVisibilityDateCCF_DCF_RMF || compRef.campaignFieldValue["StartDate"] == null) && (checkForUndefinedEmptyAndNull(compRef.activityListEdit) && compRef.activityListEdit.length > 0)) {
 		const dateObj = new Date(campaignOutcomeVisibilityDateCCF_DCF_RMF);
 		const formattedDate = dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 		const errorMessage = `${startDateErrorForOutcome} ${formattedDate}.`;
@@ -1487,12 +1534,18 @@ export function handleDateChange(event, compRef) {
 		compRef.datevalid = false;
 		compRef.skipOutcomeFieldUpdate = true;
 	}
-	compRef.validateIPAStartDateError();
 
+	compRef.validateIPAStartDateError();
+	console.log('@@@HandleDate changes end');
 }
 
 export function updateOutcomeFieldVisibility(startDate, compRef) {
+	//Ealay
 	let shouldShowOutcomeFieldValue;
+	//const dateJune2025 = '2025-06-29';
+	//const dateDCFCCFRMF ='2025-10-01';// Ealaya TWC3117-14432 changes
+	//AJ start
+	//const dateJan2026 = '2026-01-01';
 	if(compRef.recordTypeDeveloperName === Core_MDF_IPA_RecordType && compRef.proposalBasedIndicatorCamp && startDate >= campaignIPAOutcomeConfigureDate){
 		shouldShowOutcomeFieldValue= true;
 	} else if (compRef.recordTypeDeveloperName === Core_MDF_IPA_RecordType) { //Aj End
@@ -1511,50 +1564,68 @@ export function updateOutcomeFieldVisibility(startDate, compRef) {
 		compRef.campaignFieldVisibility["Core_MDF_CampOutcomeOpt_In_Ind__c"] = shouldShowOutcomeField;
 		//AJ start
 		if(startDate >= campaignIPAOutcomeConfigureDate && compRef.proposalBasedIndicatorCamp && (!checkForUndefinedEmptyAndNull(compRef.activityListEdit) || compRef.activityListEdit.length == 0)){
+			console.log('--inside after Jan--');
 			compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] = true;
+			console.log('optinvalue::', compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"]);
 			compRef.campaignFieldDisabled["Core_MDF_CampOutcomeOpt_In_Ind__c"] = true;
 			compRef.campaignRequiredFields["Core_MDF_Outcomes_nm__c"] = true;
 			compRef.campaignFieldVisibility["Core_MDF_Outcomes_nm__c"] = true;
-			compRef.campaignFieldVisibility["Core_MDF_Other_Outcome_Criteria_txt__c"] = true;
+			compRef.campaignFieldVisibility["Core_MDF_Other_Outcome_Criteria_txt__c"] = true; //aditya
+			//Aditya TWC3117-16962
 			compRef.filterOtherFromOutcomeMetric();
 		}else if (startDate >= dateOct2025) { //Aj End
+			console.log('--inside after october--');
+			//compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] = false; //AJ
+			//compRef.campaignFieldDisabled["Core_MDF_CampOutcomeOpt_In_Ind__c"] = false; //AJ
 			compRef.campaignRequiredFields["Core_MDF_Outcomes_nm__c"] = true;
 			compRef.campaignFieldVisibility["Core_MDF_Outcomes_nm__c"] = true;
 			compRef.campaignFieldVisibility["Core_MDF_Key_Performance_Indicator__c"] = false;
-			compRef.campaignFieldValue["Core_MDF_Key_Performance_Indicator__c"] =  null ;
-			compRef.campaignFieldVisibility["Core_MDF_Other_Outcome_Criteria_txt__c"] = true;
+			compRef.campaignFieldValue["Core_MDF_Key_Performance_Indicator__c"] = null;
+			compRef.campaignFieldVisibility["Core_MDF_Other_Outcome_Criteria_txt__c"] = true; //aditya
 		} else if (compRef.campaignFieldValue["StartDate"] >= dateJune2025 && compRef.campaignFieldValue["StartDate"] < dateOct2025 && compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] == false) {
+			console.log('--inside between june and october--');
+			//compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] = false; //AJ
+			//compRef.campaignFieldDisabled["Core_MDF_CampOutcomeOpt_In_Ind__c"] = false; //AJ
 			compRef.campaignRequiredFields["Core_MDF_Outcomes_nm__c"] = false;
 			compRef.campaignFieldVisibility["Core_MDF_Outcomes_nm__c"] = false;
 			compRef.campaignFieldValue["Core_MDF_Outcomes_nm__c"] = null;
 			compRef.editedOutcomeData = {};
-			compRef.campaignFieldVisibility["Core_MDF_Key_Performance_Indicator__c"]= true;
+			compRef.campaignFieldVisibility["Core_MDF_Key_Performance_Indicator__c"] = true;
 			compRef.campaignFieldVisibility["Core_MDF_Other_Outcome_txt__c"] = false;
 			compRef.campaignFieldValue["Core_MDF_Other_Outcome_txt__c"] = null;
-			compRef.campaignFieldVisibility["Core_MDF_Other_Outcome_Criteria_txt__c"] = false;
-			compRef.campaignFieldValue["Core_MDF_Other_Outcome_Criteria_txt__c"] = null;
+			compRef.campaignFieldVisibility["Core_MDF_Other_Outcome_Criteria_txt__c"] = false; //aditya
+			compRef.campaignFieldValue["Core_MDF_Other_Outcome_Criteria_txt__c"] = null; //aditya
 		}
-	} else if (validOutcomeMetricRecordTypeWithOutIPA.includes(compRef.recordTypeDeveloperName)) {
-		if((startDate < campaignOutcomeVisibilityDateCCF_DCF_RMF && (compRef.recordTypeDeveloperName == Core_MDF_CCF_RecordTypeName || compRef.recordTypeDeveloperName == Core_MDF_DCF_RecordTypeName)) || (startDate < campaignOutcomeVisibilityDate_RMF && compRef.recordTypeDeveloperName == rmfRecTypeName)){//16406
+	} else if (validOutcomeMetricRecordTypeWithOutIPA.includes(compRef.recordTypeDeveloperName)) { //DCF, CCF RMF
+		//Ealaya TWC3117-14432 changes
+		console.log('Test updateOutcomeFieldVisibility');
+		if(/*startDate >= dateDCFCCFRMF &&*/ (startDate < campaignOutcomeVisibilityDateCCF_DCF_RMF && (compRef.recordTypeDeveloperName == Core_MDF_CCF_RecordTypeName || compRef.recordTypeDeveloperName == Core_MDF_DCF_RecordTypeName)) || (startDate < campaignOutcomeVisibilityDate_RMF && compRef.recordTypeDeveloperName == rmfRecTypeName)){//14752 , 16406
 			if(!checkForUndefinedEmptyAndNull(compRef.activityListEdit) || compRef.activityListEdit.length == 0){
 				compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] = false;
-
+				//14754
 				Object.keys(compRef.editedOutcomeData).forEach(key => {
 					compRef.editedOutcomeData[key].baselineQuantity = null;
 				});
 			}
 			compRef.campaignFieldVisibility["Core_MDF_CampOutcomeOpt_In_Ind__c"] = false;
-		}else if((startDate >= campaignOutcomeVisibilityDateCCF_DCF_RMF && (compRef.recordTypeDeveloperName == Core_MDF_CCF_RecordTypeName || compRef.recordTypeDeveloperName == Core_MDF_DCF_RecordTypeName)) || (startDate >= campaignOutcomeVisibilityDate_RMF && compRef.recordTypeDeveloperName == rmfRecTypeName)){ //16406
+			compRef.rows = Object.values(compRef.editedOutcomeData);
+		}else if((startDate >= campaignOutcomeVisibilityDateCCF_DCF_RMF && (compRef.recordTypeDeveloperName == Core_MDF_CCF_RecordTypeName || compRef.recordTypeDeveloperName == Core_MDF_DCF_RecordTypeName)) || (startDate >= campaignOutcomeVisibilityDate_RMF && compRef.recordTypeDeveloperName == rmfRecTypeName)){ // 16406
 			compRef.campaignFieldVisibility["Core_MDF_CampOutcomeOpt_In_Ind__c"] = true;
-		}	
+		}
+		//Ealaya TWC3117-14432 changes
+		//compRef.campaignFieldVisibility["Core_MDF_CampOutcomeOpt_In_Ind__c"] = (startDate >= dateDCFCCFRMF) ? true : (startDate >= campaignOutcomeVisibilityDateCCF_DCF_RMF && startDate < dateDCFCCFRMF) ? false : compRef.campaignFieldVisibility["Core_MDF_CampOutcomeOpt_In_Ind__c"];
+		
 	}
-	if ((checkForUndefinedEmptyAndNull(shouldShowOutcomeField) && !shouldShowOutcomeField ) || (compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] !== true && compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] !== false)) { 
-		compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] = false;		
+	console.log('--outside undef--');
+	//Ealay
+	if ((checkForUndefinedEmptyAndNull(shouldShowOutcomeField) && !shouldShowOutcomeField) || (compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] !== true && compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] !== false)) { //Ealay removed optin check
+		console.log('--inside undef--');
+		compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] = false;
+		//14754
 		Object.keys(compRef.editedOutcomeData).forEach(key => {
 			compRef.editedOutcomeData[key].baselineQuantity = null;
 		});
 		compRef.campaignFieldValue["Core_MDF_Outcomes_nm__c"] = null;
-		compRef.campaignFieldVisibility["Core_MDF_Outcomes_nm__c"] = false;
 		compRef.campaignFieldVisibility["Core_MDF_Key_Performance_Indicator__c"] = true; //only one check bocx ot this
 		compRef.multipleValuesSelected = false;
 		compRef.isOutcomeValid = true;
@@ -1562,6 +1633,8 @@ export function updateOutcomeFieldVisibility(startDate, compRef) {
 		compRef.campaignFieldValue["Core_MDF_Other_Outcome_txt__c"] = null;
 		compRef.campaignFieldVisibility["Core_MDF_Other_Outcome_txt__c"] = false;
 		compRef.outcomeBasedError = false;
+		//Ealay
+		compRef.campaignFieldVisibility["Core_MDF_Outcomes_nm__c"] = false;//new
 		compRef.campaignFieldVisibility["Core_MDF_Other_Outcome_Criteria_txt__c"] = false;
 		compRef.campaignFieldValue["Core_MDF_Other_Outcome_Criteria_txt__c"] = null;
 		//IPA-Jegan
@@ -1571,13 +1644,16 @@ export function updateOutcomeFieldVisibility(startDate, compRef) {
 		compRef.dispatchEvent(customEvent);
 	}
 	if(!checkForUndefinedEmptyAndNull(compRef.activityListEdit) || compRef.activityListEdit.length == 0){
+		console.log('--hp@@--');
 		if(compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] == false){
+			console.log('--hp1@@--');
 			Object.keys(compRef.editedOutcomeData).forEach(key => {
 				compRef.editedOutcomeData[key].baselineQuantity = null;
 			});
 			compRef.rows = Object.values(compRef.editedOutcomeData);
 		}
 		if(compRef.recordTypeDeveloperName === Core_MDF_IPA_RecordType && compRef.proposalBasedIndicatorCamp && startDate < campaignIPAOutcomeConfigureDate){
+			console.log('--hp2@@--');
 			compRef.campaignFieldDisabled["Core_MDF_CampOutcomeOpt_In_Ind__c"] = false;
 		}
 	}
@@ -1587,60 +1663,63 @@ export function updateOutcomeFieldVisibility(startDate, compRef) {
 		});
 		compRef.dispatchEvent(customEvent);
 	}
+	// const showOutcomes = compRef.campaignFieldValue["Core_MDF_CampOutcomeOpt_In_Ind__c"] === true || shouldShowOutcomeField ; //Previous code
+	// compRef.campaignRequiredFields["Core_MDF_Outcomes_nm__c"] = showOutcomes;//Ealay added optin check
+	// compRef.campaignFieldVisibility["Core_MDF_Outcomes_nm__c"] = showOutcomes; 
 	if (validOutcomeMetricRecordTypeWithOutIPA.includes(compRef.recordTypeDeveloperName)) {
-		compRef.campaignRequiredFields["Core_MDF_Outcomes_nm__c"] = shouldShowOutcomeField;
+		compRef.campaignRequiredFields["Core_MDF_Outcomes_nm__c"] = shouldShowOutcomeField;//Ealay added optin check
 		compRef.campaignFieldVisibility["Core_MDF_Outcomes_nm__c"] = shouldShowOutcomeField;
 	}
-	compRef.setColumns();
+	compRef.setColumns();// Ealaya TWC3117-14432 changes
+	//else if(compRef.recordTypeDeveloperName === Core_MDF_IPA_RecordType){}
 }
-export function handlePicklistDependentValueChangeEdits(pickListValuesOnChange, campFieldAPIName, labelValue, compRef){
+export function handlePicklistDependentValueChangeEdits(pickListValuesOnChange, campFieldAPIName, labelValue, compRef) {
 	let pfrFieldAPIName = compRef.cmpFieldAPINametoPFRFieldAPIName[campFieldAPIName];
 	let activityValues = compRef.selectedActCatTypePicValues;
 	let valuesReferencedOnActivities = new Set();
-	let valuesRemovedFromCampaign = []; 
-let activeAvailableOptions;
-	if(campFieldAPIName === 'availableBudgetValues') {//specific to EEF as its multi select picklist
+	let valuesRemovedFromCampaign = [];
+	let activeAvailableOptions;
+	if (campFieldAPIName === 'availableBudgetValues') {//specific to EEF as its multi select picklist
 		activeAvailableOptions = compRef.availableBudgetValues;
 	} else {
 		activeAvailableOptions = compRef.campaignPicValues[campFieldAPIName];
 	}
-	valuesReferencedOnActivities = getValuesRefOnActivities(campFieldAPIName,pfrFieldAPIName, compRef);
+	valuesReferencedOnActivities = getValuesRefOnActivities(campFieldAPIName, pfrFieldAPIName, compRef);
 	let removedPicklistValues = [];
 	if (valuesReferencedOnActivities.size) {
-		
+		//const valuesReferencedOnActivitiesList = [...valuesReferencedOnActivities];
 		valuesReferencedOnActivities.forEach(val => {
 			let actVal;
 			let removedVal;
 			if (!pickListValuesOnChange.includes(val)) {
 				if (checkForUndefinedEmptyAndNull(activeAvailableOptions) && Array.isArray(activeAvailableOptions)
 					&& activeAvailableOptions.length > 0) {
-						if(campFieldAPIName === 'Core_MDF_Partner_Mapping_Txt__c'){
-							if (compRef.vitualCorpToNodeAcc != {} && Object.keys(compRef.vitualCorpToNodeAcc).length > 0) {
-								
-								for (const [key, value] of Object.entries(compRef.vitualCorpToNodeAcc)) {
-									if(value.includes(val) && !pickListValuesOnChange.includes(key)){
-										actVal = key;
-									}
+					if (campFieldAPIName === 'Core_MDF_Partner_Mapping_Txt__c') {
+						if (compRef.vitualCorpToNodeAcc != {} && Object.keys(compRef.vitualCorpToNodeAcc).length > 0) {
+							for (const [key, value] of Object.entries(compRef.vitualCorpToNodeAcc)) {
+								if (value.includes(val) && !pickListValuesOnChange.includes(key)) {
+									actVal = key;
 								}
 							}
-						}else{
-							actVal = val;
 						}
-						removedVal = (checkForUndefinedEmptyAndNull(actVal))? activeAvailableOptions.find(availOpt => availOpt.value == actVal) : removedVal;
+					} else {
+						actVal = val;
 					}
-					if(checkForUndefinedEmptyAndNull(removedVal) && checkForUndefinedEmptyAndNull(actVal)){
-						removedVal = (checkForUndefinedEmptyAndNull(removedVal) && Object.keys(removedVal).length > 0) ? removedVal.label : actVal;
-						if(!removedPicklistValues.includes(removedVal)){
-						if(campFieldAPIName == 'Core_MDF_Opal_Budget_Type_Txt__c' || campFieldAPIName == 'Core_MDF_Budget_Type_txt__c'){
+					removedVal = (checkForUndefinedEmptyAndNull(actVal)) ? activeAvailableOptions.find(availOpt => availOpt.value == actVal) : removedVal;
+				}
+				if (checkForUndefinedEmptyAndNull(removedVal) && checkForUndefinedEmptyAndNull(actVal)) {
+					removedVal = (checkForUndefinedEmptyAndNull(removedVal) && Object.keys(removedVal).length > 0) ? removedVal.label : actVal;
+					if (!removedPicklistValues.includes(removedVal)) {
+						if (campFieldAPIName == 'Core_MDF_Opal_Budget_Type_Txt__c' || campFieldAPIName == 'Core_MDF_Budget_Type_txt__c') {
 							compRef.isActAssociatedBudgetTypeRemoved = true;
 						}
-							removedPicklistValues.push(removedVal);
-						}
-						valuesRemovedFromCampaign.push(actVal);
+						removedPicklistValues.push(removedVal);
 					}
+					valuesRemovedFromCampaign.push(actVal);
 				}
-			});
-		}
+			}
+		});
+	}
 	if (valuesRemovedFromCampaign.length) {
 		compRef.showErrorToast(picklistValueRemovalErrorOnEdit + ' ' + labelValue + ' - ' + removedPicklistValues, 'sticky');
 		valuesRemovedFromCampaign.forEach(element => {
@@ -1648,7 +1727,7 @@ let activeAvailableOptions;
 				if (!compRef.countryValue.includes(element)) {
 					compRef.countryValue.push(element);
 				}
-			}else if(campFieldAPIName == 'availableBudgetValues') {
+			} else if (campFieldAPIName == 'availableBudgetValues') {
 				if (!compRef.selectedCmpBudgets.includes(element)) { compRef.selectedCmpBudgets.push(element); }
 			} else if ((campFieldAPIName == 'Core_MDF_Opal_Budget_Type_Txt__c' || campFieldAPIName == 'Core_MDF_Budget_Type_txt__c')
 				&& (compRef.recordTypeDeveloperName == Core_MDF_IPA_RecordType || compRef.recordTypeDeveloperName == rmfRecTypeName || compRef.recordTypeDeveloperName == Core_MDF_EEF_RecordType)) {
@@ -1662,9 +1741,12 @@ let activeAvailableOptions;
 				if (!compRef.campaignFieldValue[campFieldAPIName].includes(element)) {
 					compRef.campaignFieldValue[campFieldAPIName].push(element);
 				}
-			}});}
+			}
+		});
+	}
 }
-export function getSIOrISVAccounts(accountId, compRef,actPartOptions) {
+
+export function getSIOrISVAccounts(accountId, compRef, actPartOptions) {
 	getSIOrISVAccount({ accountId: accountId })
 		.then(result => {
 			if (result != {} && Object.keys(result).length > 0) {
@@ -1689,17 +1771,17 @@ export function getSIOrISVAccounts(accountId, compRef,actPartOptions) {
 				}
 				compRef.showAvailableISVAccounts = false;
 			}
-			if(compRef.mode == 'clone') {
+			if (compRef.mode == 'clone') {
 				compRef.campaignFieldValue['Core_MDF_Partner_Mapping_Txt__c'] = [];//empty the selected partner accounts
 				compRef.selectedCmpBudgets = [];//empty the selected budgets
-			}else if(compRef.mode  == 'edit'){
-				compRef.campaignPicValues['Core_MDF_Partner_Mapping_Txt__c'] = lovValueAdditionforEEF(compRef.campaignPicValues['Core_MDF_Partner_Mapping_Txt__c'],compRef.campaignFieldValue['Core_MDF_Partner_Mapping_Txt__c'],actPartOptions);
+			} else if (compRef.mode == 'edit') {
+				compRef.campaignPicValues['Core_MDF_Partner_Mapping_Txt__c'] = lovValueAdditionforEEF(compRef.campaignPicValues['Core_MDF_Partner_Mapping_Txt__c'], compRef.campaignFieldValue['Core_MDF_Partner_Mapping_Txt__c'], actPartOptions);
 			}
 			getpicklistSize('Core_MDF_Partner_Mapping_Txt__c', compRef);
 		})
 		.catch(error => {
 			console.log('error in getSIOrISVAccount', error);
-			compRef.campaignPicValues['Core_MDF_Partner_Mapping_Txt__c']=[];
+			compRef.campaignPicValues['Core_MDF_Partner_Mapping_Txt__c'] = [];
 			compRef.showAvailableISVAccounts = false;
 		})
 }
@@ -1721,7 +1803,8 @@ export function fetchCampToActPartnerData(compRef) {// Camp to ISV Mapping
 			let actPartOptions = [];
 			let actPartners = [];
 			let campToActPartners = result;
-			if (checkForUndefinedEmptyAndNull(campToActPartners) && campToActPartners !== {} && Object.keys(campToActPartners).length > 0) {
+			//if (checkForUndefinedEmptyAndNull(campToActPartners) && campToActPartners !== {} && Object.keys(campToActPartners).length > 0) {
+			if (checkForUndefinedEmptyAndNull(campToActPartners) && Object.keys(campToActPartners).length > 0) {
 				campToActPartners.forEach(CampToActPart => {
 					let selActPartAccId = CampToActPart.accountId;
 					if (checkForUndefinedEmptyAndNull(selActPartAccId)) {
@@ -1735,7 +1818,7 @@ export function fetchCampToActPartnerData(compRef) {// Camp to ISV Mapping
 					}
 				});
 			}
-			getSIOrISVAccounts(compRef.campaignFieldValue['Core_MDF_Account__c'], compRef,actPartOptions);
+			getSIOrISVAccounts(compRef.campaignFieldValue['Core_MDF_Account__c'], compRef, actPartOptions);
 			if (compRef.mode == 'edit') {
 				compRef.campaignFieldValue['Core_MDF_Partner_Mapping_Txt__c'] = actPartners;
 			}
@@ -1790,7 +1873,7 @@ export function getpicklistSize(fieldAPINamesList, compRef) {
 		let fieldValue = compRef.campaignPicValues[fieldAPINamesListArr[i]];
 		if (fieldValue != null && fieldValue.length > 0 && fieldValue.length <= 3) {
 			compRef.picklistSize[fieldAPINamesListArr[i]] = 3;
-		}else if (fieldValue != null && fieldValue.length > 3) {
+		} else if (fieldValue != null && fieldValue.length > 3) {
 			compRef.picklistSize[fieldAPINamesListArr[i]] = 6;
 		}
 	}
@@ -1807,7 +1890,7 @@ export function calReimbursementAmt(compRef) {
 	compRef.campaignFieldValue.Core_MDF_Reimbursement_Amt__c = (parseInt(reimbursementRate) / 100) * parseFloat(totalCampaignCost);
 }
 
-export function getValuesRefOnActivities(campFieldAPIName,pfrFieldAPIName,compRef) {
+export function getValuesRefOnActivities(campFieldAPIName, pfrFieldAPIName, compRef) {
 	let valuesReferencedOnActivities = new Set();
 	let activityRecordList = compRef.activityListEdit;
 	if (compRef.recordTypeDeveloperName === compRef.ccfRecordType || compRef.recordTypeDeveloperName === compRef.dcfRecordType || compRef.recordTypeDeveloperName == Core_MDF_EEF_RecordType) {
@@ -1828,14 +1911,35 @@ export function getValuesRefOnActivities(campFieldAPIName,pfrFieldAPIName,compRe
 			valuesReferencedOnActivities.add(val);
 		});
 	});
-	
+
 	return valuesReferencedOnActivities;
 }
+
+// export function getActivityFieldValues(activityList) {
+//     let fieldValues = new Set();
+//     if (activityList && activityList.length > 0) {
+//         activityList.forEach(activity => {
+//             Object.keys(activity).forEach(field => {
+//                 let fieldValue = activity[field];
+//                 if (typeof fieldValue === 'string' && fieldValue.trim() !== '') {
+//                     let values = fieldValue.split(/\s*;\s*/);
+//                     values.forEach(val => {
+//                         if (val.trim()) {
+//                             fieldValues.add(val.trim());
+//                         }
+//                     });
+//                 }
+//             });
+//         });
+//     }
+//     return Array.from(fieldValues);
+// }
+
 export function retainAndUpdateCampaignBudgetsOldMap(compRef, retainPrevData, retainSelectedBudgetWithInactiveInd) {
 	if (compRef.recordTypeDeveloperName == compRef.ccfRecordType || compRef.recordTypeDeveloperName == compRef.dcfRecordType || compRef.recordTypeDeveloperName == Core_MDF_EEF_RecordType || compRef.recordTypeDeveloperName == Core_MDF_Co_GTM_RecordType) {
 		let isBudgetDataOrBudgetRetained = false;
 		let updatedCampaignBudgetsMap = new Map();
-		
+
 		// Retain old budgets on date change after initial load
 		if (retainPrevData) {
 			compRef.campaignBudgetsForSave.forEach(campaignBudgetObj => {
@@ -1907,7 +2011,7 @@ export function handlePriorityNoneValueSelection(event, compRef, priorityPerApiN
 		else if (priorityPerApiName === 'Core_MDF_Priority_Percentage_3__c') {
 			compRef.priorityPer3 = 0;
 		}
-		if(priorityPerUIElement != null){
+		if (priorityPerUIElement != null) {
 			priorityPerUIElement.value = '';
 			priorityPerUIElement.setCustomValidity('');
 			priorityPerUIElement.reportValidity();

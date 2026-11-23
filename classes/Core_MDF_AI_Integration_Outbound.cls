@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- * Class Name      : Core_MDF_AI_Integration_Outbound
- * Version               : 1.0
- * Created Date          : 09-18-2025
- * Modification Log      :
- * Developer            Date             Description
- * ----------------------------------------------------------------------------------------------------------------------------------------------------
- * Sham                09-18-2025        class for CDB Outbound Integartion for MDF AI PIC Process.
- ******************************************************************************************************************************************************/
+* Class Name      : Core_MDF_AI_Integration_Outbound
+* Version               : 1.0
+* Created Date          : 09-18-2025
+* Modification Log      :
+* Developer            Date             Description
+* ----------------------------------------------------------------------------------------------------------------------------------------------------
+* Sham                09-18-2025        class for CDB Outbound Integartion for MDF AI PIC Process.
+******************************************************************************************************************************************************/
 public without sharing class Core_MDF_AI_Integration_Outbound {
-     Public static Integer LONG_TEXT_AREA_LIMIT = Core_MDF_CCP_ConstantClass.LONG_TEXT_AREA_LIMIT;
+    Public static Integer LONG_TEXT_AREA_LIMIT = Core_MDF_CCP_ConstantClass.LONG_TEXT_AREA_LIMIT;
     
     /*****************************************************************************************************************************************
-    Method Name:        generateAIResponseForPICProcess
-        Description:        To Check claim status change for MDF AI PIC Process.
-        @Added By:          Sham - 10-06-2025
-    Modified By:        Date:       Changes:
-         ******************************************************************************************************************************************/
+Method Name:        generateAIResponseForPICProcess
+Description:        To Check claim status change for MDF AI PIC Process.
+@Added By:          Sham - 10-06-2025
+Modified By:        Date:       Changes:
+******************************************************************************************************************************************/
     
     public static void generateAIResponseForPICProcess(Map<Id,PartnerFundClaim> newClaimMap, String Context)//Map<Id,PartnerFundClaim> oldClaimMap
     {
@@ -35,14 +35,17 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
             }
         } catch (Exception exp) {
             Core_MDF_CCP_UtilityClass.logError(exp);
+            System.debug('Exception while processing records: ' + exp);
+            // throw new AuraHandledException('Error in fetchClaimDocAndPICReviewDetails: ' + exp.getMessage());
+            
         }
     }
     /*****************************************************************************************************************************************
-    Method Name:        fetchClaimDocAndPICReviewDetails
-        Description:        To Fetch Claim, Questions and Document Details, then serialize it into a JSON string for Integration outbound.
-        @Added By:          Sham - 09-18-2025
-    Modified By:        Date:       Changes:
-         ******************************************************************************************************************************************/
+Method Name:        fetchClaimDocAndPICReviewDetails
+Description:        To Fetch Claim, Questions and Document Details, then serialize it into a JSON string for Integration outbound.
+@Added By:          Sham - 09-18-2025
+Modified By:        Date:       Changes:
+******************************************************************************************************************************************/
     @AuraEnabled
     public static String fetchClaimDocAndPICReviewDetails(Map<Id,PartnerFundClaim> claimRecordsMap, Map<Id, Map<Id,Core_CDB_Integration_Log__c>> claimIdToPicReviewIdToFinalCDBLog ,  Map<Id, Core_MDF_PIC_Review__c> picReviewMap)
     {
@@ -61,7 +64,7 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
             String compositeKey;
             Set<Id> claimIds = claimRecordsMap.keySet();
             List<PartnerFundClaim> claimRecords = claimRecordsMap.values();
-            Map<Id,Core_MDF_PIC_Review__c> claimIdToExsistingPICReviewMap = new Map<Id,Core_MDF_PIC_Review__c>();// MDF POP Schema Change 
+            Map<Id,Core_MDF_PIC_Review__c> claimIdToExsistingPICReviewMap = new Map<Id,Core_MDF_PIC_Review__c>();// Overwrite PIC review changes
             
             // Get all Questions for all claims
             claimIdToQnLstMap = fetchQuestionRecords(claimRecords);
@@ -84,10 +87,11 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
             // Process PIC reviews for Next PIC Review
             if (!isRetryInvocation){
                 for (Core_MDF_PIC_Review__c picReview : [ SELECT Core_MDF_Claim_ID_id__c,Core_MDF_CycleNumber_nbr__c,Core_MDF_AI_PIC_Review_Ind__c,Core_MDF_AI_CycleNumber_nbr__c,CreatedDate,Core_MDF_External_Id__c,Core_MDF_Review_Status_nm__c
-                                                 FROM Core_MDF_PIC_Review__c
-                                                 WHERE Core_MDF_Claim_ID_id__c IN :claimIds
-                                                 ORDER BY Core_MDF_Claim_ID_id__c, Core_MDF_CycleNumber_nbr__c DESC, CreatedDate DESC])
+                                                         FROM Core_MDF_PIC_Review__c
+                                                         WHERE Core_MDF_Claim_ID_id__c IN :claimIds
+                                                         ORDER BY Core_MDF_Claim_ID_id__c, Core_MDF_CycleNumber_nbr__c DESC, CreatedDate DESC])
                 {
+                    
                     Id claimId = picReview.Core_MDF_Claim_ID_id__c;
                     if (finalizedClaims.contains(claimId)){
                         continue;
@@ -134,6 +138,11 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
                 claimWrap.pocCurrency        = claimRecord.Core_MDF_Currency__c;
                 claimWrap.activityType       = claimRecord.Core_MDF_Activity_Types__c;
                 claimWrap.claimId            = claimRecord.Id;
+                claimWrap.activityDes        = claimRecord.Request.Core_MDF_Activity_Description__c;
+                claimWrap.actPOPRequirements = claimRecord.Request.Core_MDF_POP_Requirements_txt__c;
+                claimWrap.actAttrRequirements = claimRecord.Request.Core_MDF_Attribution_Requirements_txt__c;
+                claimWrap.reimbAmtUSD = claimRecord.Amount;
+                claimWrap.budgetType = claimRecord.Core_MDF_Budget_Type_Options_Nm__c;
                 
                 // Build outbound wrapper
                 CDBOutboundWrapper mainWrapper = new CDBOutboundWrapper();
@@ -142,7 +151,7 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
                     mainWrapper.documentDetails = claimIdToDocLstMap.get(claimRecord.Id);
                 }
                 if(!claimIdToQnLstMap.isEmpty()){
-                mainWrapper.questions       = claimIdToQnLstMap.get(claimRecord.Id);
+                    mainWrapper.questions       = claimIdToQnLstMap.get(claimRecord.Id);
                 }
                 
                 // Handle retry
@@ -156,8 +165,12 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
                         //POP Schema Changes -Start
                         //Adding externalId present in retryPICReviewId rec to payload for AI PIC Review record processing  
                         Core_MDF_PIC_Review__c picReviewRec = picReviewMap.get(retryPICReviewId);
+                        
+                        String externalId = String.valueOf(picReviewRec.Core_MDF_Claim_ID_id__c) + String.valueOf(picReviewRec.Core_MDF_CycleNumber_nbr__c);
+                        
                         if(picReviewRec!=null && picReviewRec.Core_MDF_External_Id__c!=null){
-                            mainWrapper.picReviewExternalId = picReviewRec.Core_MDF_External_Id__c;
+                            mainWrapper.picReviewExternalId =picReviewRec.Core_MDF_External_Id__c/* picReviewRec.Core_MDF_External_Id__c!=null ? picReviewRec.Core_MDF_External_Id__c : externalId*/ ;
+                            
                         }
                         //Adding externalId to payload for AI PIC Review Detail records processing 
                         if(mainWrapper.questions!=null ){
@@ -172,6 +185,7 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
                         }
                         claimIdToCDBObmWrapMap.put(claimRecord.Id, mainWrapper);
                         String jsonPayload = JSON.serialize(mainWrapper);
+                        system.debug('>>Json paylod in Retry'+jsonPayload);
                         if (String.isNotBlank(compositeKey)) {
                             compKeyToJsonMap.put(compositeKey, jsonPayload);
                         }
@@ -206,20 +220,21 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
                             Core_MDF_External_Id__c           = externalIdCompKey);
                         
                     }else {
-                       
                         newOrExsistingPICReview.Core_MDF_CycleNumber_nbr__c       = nxtMnlCycle;
                         newOrExsistingPICReview.Core_MDF_AI_CycleNumber_nbr__c    = nxtAICycle;
                         newOrExsistingPICReview.Core_MDF_StartTime_dtm__c         = System.now();
-                        newOrExsistingPICReview.Core_MDF_Review_Status_nm__c      = '';
-                        
+                        newOrExsistingPICReview.Core_MDF_Review_Status_nm__c = '';
+                        //newOrExsistingPICReview.Core_MDF_External_Id__c= externalIdCompKey;
                     }
-                    
-                    claimIdToOldAndNewPICReviewMap.put(claimRecord.Id, newOrExsistingPICReview);
+
+                        claimIdToOldAndNewPICReviewMap.put(claimRecord.Id, newOrExsistingPICReview);
                     
                     //POP Schema Changes- Adding the external Id for Pic Review record in CDBOutboundWrapper
                     mainWrapper.picReviewExternalId = externalIdCompKey;
                     
                     claimIdToCDBObmWrapMap.put(claimRecord.Id, mainWrapper);
+                    
+                    System.debug('Prepared new AI PIC Review for claim ' + claimRecord.Id + ' | Manual next: ' + nxtMnlCycle + ', AI next: ' + nxtAICycle);
                 }
             }
             
@@ -234,7 +249,8 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
                         picClaimIds.add(claimId);
                     }
                     
-                    //POP Schema Changes - Upsert
+                    System.debug('Upserting AI PIC Reviews for ' + newOrExsisitngPICReviews.size() + ' claims');
+                     //POP Schema Changes - Upsert
                     Database.UpsertResult[] upsertResultList = Database.upsert(newOrExsisitngPICReviews,Core_MDF_PIC_Review__c.Core_MDF_External_Id__c, false);
                     
                     // Process only successful inserts/updates to build wrappers/json
@@ -254,8 +270,8 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
                                 
                                 String jsonPayload = JSON.serialize(mainWrapper);
                                 compositeKey = String.valueOf(claimId) + '-' + String.valueOf(picReviewId);
+                                System.debug('>>Json after externalId'+jsonPayload);
                                 compKeyToJsonMap.put(compositeKey, jsonPayload);
-                               
                             }
                         } else {
                             String recordKey = String.valueOf(claimId);
@@ -272,12 +288,13 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
                 }
             }
             
+            System.debug('Print final map:'+compKeyToJsonMap);
             if(!compKeyToJsonMap.isEmpty())
-            {  
-               /*Request reqInfo = Request.getCurrent();
-               Quiddity executionContext = reqInfo.getQuiddity();
-               System.debug('exceution context'+executionContext+'  '+Trigger.isExecuting);*/
-                
+            {	
+                /*Request reqInfo = Request.getCurrent();
+Quiddity executionContext = reqInfo.getQuiddity();
+System.debug('exceution context'+executionContext+'  '+Trigger.isExecuting);*/
+                System.debug('exceution context'+System.isBatch()+'  '+Trigger.isExecuting);
                 if(System.isBatch()) {//Trigger.isExecuting - future
                     makeCDBCallout(compKeyToJsonMap,recordIdToPrevRetryCount);
                 } else {
@@ -289,6 +306,7 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
             return 'ERROR'; 
         } catch (Exception exp) {
             Core_MDF_CCP_UtilityClass.logError(exp);
+            System.debug('Exception in fetchClaimDocAndPICReviewDetails :'+exp);
             return 'ERROR';
         }
     }
@@ -299,18 +317,18 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
     }
     
     /***********************************************************************************************************
-    Method Name:        makeCDBCallout
-        Description:        To call sendCDBPayload method with CDB Payload and handle retry logic.
-        @Added By:          Sham - 09-30-2025
-    Modified By:        Date:       Changes:
-         ************************************************************************************************************/
+Method Name:        makeCDBCallout
+Description:        To call sendCDBPayload method with CDB Payload and handle retry logic.
+@Added By:          Sham - 09-30-2025
+Modified By:        Date:       Changes:
+************************************************************************************************************/
     public static void makeCDBCallout( Map<String, String> compositeKeyToJsonMap, Map<String, Integer> recordIdToPrevRetryCount)
     {
         try {
             List<Core_CDB_Integration_Log__c> cdbLogList = new List<Core_CDB_Integration_Log__c>();
             // Local aggregation of exceptions for one-shot logging
             List<Exception> calloutExceptions = new List<Exception>();
-            //Track PIC Review Ids to mark failed upon 3rd retry failure
+            // APPENDED: Track PIC Review Ids to mark failed upon 3rd retry failure
             Set<Id> picReviewIds = new Set<Id>();
             
             // Process each payload
@@ -319,11 +337,10 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
                 if (String.isBlank(payload)) {
                     continue;
                 }
-                
+                System.debug('Json payload for the claim:'+compositeKey+':'+payload);
                 // Send payload to CDB
-               
                 HttpResponse res = sendCDBPayload(payload);
-                 Boolean isSuccess = (res != null && (res.getStatus() == 'SUCCESS' || res.getStatus() == 'OK')) ? true : false;
+                Boolean isSuccess = (res != null && (res.getStatus() == 'SUCCESS' || res.getStatus() == 'OK')) ? true : false;
                 // If callout layer returned an Apex exception as response, aggregate it
                 if (!isSuccess && res != null && res.getStatusCode() == 503 && res.getStatus() == 'APEX_EXCEPTION') {
                     String expnMsg = res.getBody();
@@ -332,7 +349,7 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
                     }
                     calloutExceptions.add(new CDBCalloutException(expnMsg));
                 }
-
+                
                 // Calculate retry counter
                 Integer newRetryCounter = 0;
                 if (recordIdToPrevRetryCount != null && !recordIdToPrevRetryCount.isEmpty()) {
@@ -341,12 +358,13 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
                         newRetryCounter = prevRetryCounter + 1;
                     }
                 }
-                //Collect PIC Review Id when this is a retry reaching 3 and callout failed
+                System.debug('Print newRetryCounter:'+newRetryCounter);
+                // APPENDED: Collect PIC Review Id when this is a retry reaching 3 and callout failed
                 if (!isSuccess && newRetryCounter == 3 && String.isNotBlank(compositeKey)) {
                     List<String> claimAndPicReviewIds = compositeKey.split('-');
                     if (claimAndPicReviewIds != null && claimAndPicReviewIds.size() == 2 && String.isNotBlank(claimAndPicReviewIds[1])) {
-                            Id picReviewId = (Id)claimAndPicReviewIds[1];
-                            picReviewIds.add(picReviewId);
+                        Id picReviewId = (Id)claimAndPicReviewIds[1];
+                        picReviewIds.add(picReviewId);
                     }
                 }
                 // Create log record
@@ -359,12 +377,13 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
                 logRec.Core_Status_Message__c = (res != null) ? res.getStatus() : '';
                 logrec.Core_Integration_Direction_Nm__c ='Outbound';
                 cdbLogList.add(logRec);
+                System.debug('added CDB Log for Upsert:'+logRec);
             }
             // Bulk log Exceptions
             if(!calloutExceptions.isEmpty()) {
                 Core_MDF_CCP_UtilityClass.logErrors(calloutExceptions);
             }
-
+            
             // Upsert log records if we have any
             if (!cdbLogList.isEmpty()) {
                 Database.UpsertResult[] upsertResultList = Database.upsert(cdbLogList, Core_CDB_Integration_Log__c.Core_Record_Id__c, false);
@@ -374,7 +393,7 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
                 Map<String, String> compKeyToBaseMessageMap = new Map<String, String>();
                 for (Integer i = 0; i < upsertResultList.size(); i++) {
                     Database.UpsertResult upsertResult = upsertResultList[i];
-                     if (!upsertResult.isSuccess()) {
+                    if (!upsertResult.isSuccess()) {
                         String compositeKeyForError = cdbLogList[i].Core_Record_Id__c;
                         List<Database.Error> erros = compKeyToUpsertErrorsMap.containsKey(compositeKeyForError) ? compKeyToUpsertErrorsMap.get(compositeKeyForError) : new List<Database.Error>();
                         erros.addAll(upsertResult.getErrors());
@@ -386,7 +405,7 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
                     collectAndLogDbErrors( compKeyToUpsertErrorsMap, compKeyToBaseMessageMap,'Core_CDB_Integration_Log__c');
                 }
             }
-           
+            
             if (!picReviewIds.isEmpty()) {
                 
                 List<Core_MDF_PIC_Review__c> picReviewUpdtLst = [
@@ -418,16 +437,17 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
             }
         } catch (Exception exp) {
             Core_MDF_CCP_UtilityClass.logError(exp);
+            System.debug('Exception in makeCDBCallout: ' + exp);
         }
     }
     
     
     /***********************************************************************************************************
-    Method Name:        sendCDBPayload
-        Description:        To send the payload to CDB system
-        @Added By:          Sham - 10-03-2025
-    Modified By:        Date:       Changes:
-         ************************************************************************************************************/
+Method Name:        sendCDBPayload
+Description:        To send the payload to CDB system
+@Added By:          Sham - 10-03-2025
+Modified By:        Date:       Changes:
+************************************************************************************************************/
     
     public static HttpResponse sendCDBPayload(String payload)
     {
@@ -440,6 +460,8 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
             HttpResponse resp = new Http().send(req);
             return resp;
         }catch(Exception exp){
+            // Return an HttpResponse with Exception message and status code
+            System.debug('Exception while sending payloads:'+exp);
             HttpResponse errResp = new HttpResponse();
             errResp.setStatusCode(503);
             errResp.setStatus('APEX_EXCEPTION');
@@ -450,11 +472,11 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
     }
     
     /***********************************************************************************************************
-    Method Name:        fetchQuestionRecords
-        Description:        To Fetch all teh questions frm PIC Review Question object
-        @Added By:          Sham - 10-01-2025
-    Modified By:        Date:       Changes:
-         ************************************************************************************************************/
+Method Name:        fetchQuestionRecords
+Description:        To Fetch all teh questions frm PIC Review Question object
+@Added By:          Sham - 10-01-2025
+Modified By:        Date:       Changes:
+************************************************************************************************************/
     
     public static Map<Id,List<QuestionsWrapper>> fetchQuestionRecords(List<PartnerFundClaim> claimRecords)
     {
@@ -560,23 +582,26 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
             Integer mainQuestionCount = matchedQuestions.size();
             Integer totalQuestions = mainQuestionCount + subQuestionCount;
             
-            
+            System.debug('Claim ID: ' + claim.Id);
+            System.debug('Main Questions: ' + mainQuestionCount);
+            System.debug('Subquestions: ' + subQuestionCount);
+            System.debug('Total Questions: ' + totalQuestions);
             claimQuestionMap.put(claim.Id, matchedQuestions);
             
         }
-        
+        System.debug('claimQuestionMap:'+claimQuestionMap);
         
         return claimQuestionMap;
         
     }
-/***********************************************************************************************************
-    Method Name:        addMatchingQuestions
-        Description:        To add matching questions to the list of questions
-        @Added By:          Sham - 10-27-2025
-    Modified By:        Date:       Changes:
+    /***********************************************************************************************************
+Method Name:        addMatchingQuestions
+Description:        To add matching questions to the list of questions
+@Added By:          Sham - 10-27-2025
+Modified By:        Date:       Changes:
 ************************************************************************************************************/
-     public static void addMatchingQuestions(String program,Boolean isOutcomeBasedClaim,Boolean isThirdParty,List<QuestionsWrapper> matchedQuestions,Map<String, List<QuestionsWrapper>> compositeKeyToWrappedQuestions) 
-     {
+    public static void addMatchingQuestions(String program,Boolean isOutcomeBasedClaim,Boolean isThirdParty,List<QuestionsWrapper> matchedQuestions,Map<String, List<QuestionsWrapper>> compositeKeyToWrappedQuestions) 
+    {
         String keyProgram = program + ':' + isOutcomeBasedClaim + ':' + isThirdParty;
         String keyAll = 'ALL' + ':' + isOutcomeBasedClaim + ':' + isThirdParty;
         
@@ -586,17 +611,17 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
         if (compositeKeyToWrappedQuestions.containsKey(keyAll)) {
             matchedQuestions.addAll(compositeKeyToWrappedQuestions.get(keyAll));
             if (isThirdParty) {
-                
+                System.debug('matchedQuestions:' + matchedQuestions);
             }
         }
     }
     
     /***********************************************************************************************************
-    Method Name:        fetchCDBLogRecordsForRetry
-        Description:        Method which fetches the CDB Log records that needs to be reprocessed
-        Added By:           Bharath - 10-10-2025
-        Modified By:        Date:       Changes:
-         **********************************************************************************************************/
+Method Name:        fetchCDBLogRecordsForRetry
+Description:        Method which fetches the CDB Log records that needs to be reprocessed
+Added By:           Bharath - 10-10-2025
+Modified By:        Date:       Changes:
+**********************************************************************************************************/
     public static void fetchCDBLogRecordsForRetry(List<Core_CDB_Integration_Log__c> cdbLogRecords){
         try{
             Set<Id> finalClaimIds = new Set<Id>();
@@ -604,9 +629,10 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
             Map<String, Core_CDB_Integration_Log__c> compositeKeyToCDBRecordMap = new Map<String, Core_CDB_Integration_Log__c>();
             Map<Id, Map<Id,Core_CDB_Integration_Log__c>> claimIdToPicReviewIdToFinalCDBLog = new Map<Id, Map<Id,Core_CDB_Integration_Log__c>>();
             Map<Id, Core_MDF_PIC_Review__c> picReviewMap = new  Map<Id, Core_MDF_PIC_Review__c>();
+            system.debug('cdbLogRecords: '+cdbLogRecords);
             for(Core_CDB_Integration_Log__c log: cdbLogRecords){
                 String recIdentifier = log.Core_Record_Id__c;
-                
+                system.debug('recIdentifier: '+recIdentifier);
                 if (String.isNotBlank(recIdentifier) && recIdentifier.contains('-')) {
                     List<String> parts = recIdentifier.split('-');
                     if (parts.size() == 2) {
@@ -622,54 +648,61 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
                     }
                 }
             }
-            
+            system.debug('claimIdToReviewIdMap: '+claimIdToReviewIdMap);
             if(!claimIdToReviewIdMap.isEmpty()){
                 for(Core_MDF_PIC_Review__c review: [SELECT Id, Core_MDF_Claim_ID_id__c,Core_MDF_CycleNumber_nbr__c,Core_MDF_AI_PIC_Review_Ind__c,
                                                     Core_MDF_AI_CycleNumber_nbr__c,Core_MDF_External_Id__c FROM Core_MDF_PIC_Review__c 
-                                                WHERE Core_MDF_Claim_ID_id__c IN: claimIdToReviewIdMap.keyset() AND 
-                                                Core_MDF_Claim_ID_id__r.Core_MDF_PIC_Review_Completed__c = false and Core_MDF_Claim_ID_id__r.Core_MDF_Status__c = 'PIC Pending'
-                                                ORDER BY Core_MDF_Claim_ID_id__c, Core_MDF_CycleNumber_nbr__c Desc, CreatedDate Desc]){
-                    if (finalClaimIds.contains(review.Core_MDF_Claim_ID_id__c)){
-                        
-                        continue;
-                    }
-                    if(!review.Core_MDF_AI_PIC_Review_Ind__c){
-                        finalClaimIds.add(review.Core_MDF_Claim_ID_id__c);
-                        
-                        continue;
-                    }
-                    if(claimIdToReviewIdMap.get(review.Core_MDF_Claim_ID_id__c).contains(review.Id)){
-                        
-                        if(compositeKeyToCDBRecordMap.containsKey(review.Core_MDF_Claim_ID_id__c + '-' + review.Id)){
-                            claimIdToPicReviewIdToFinalCDBLog.put(review.Core_MDF_Claim_ID_id__c, new Map<Id,Core_CDB_Integration_Log__c>{review.Id => compositeKeyToCDBRecordMap.get(review.Core_MDF_Claim_ID_id__c + '-' + review.Id)});
-                            finalClaimIds.add(review.Core_MDF_Claim_ID_id__c);
+                                                    WHERE Core_MDF_Claim_ID_id__c IN: claimIdToReviewIdMap.keyset() AND 
+                                                    Core_MDF_Claim_ID_id__r.Core_MDF_PIC_Review_Completed__c = false and Core_MDF_Claim_ID_id__r.Core_MDF_Status__c = 'PIC Pending'
+                                                    ORDER BY Core_MDF_Claim_ID_id__c, Core_MDF_CycleNumber_nbr__c Desc, CreatedDate Desc]){
+                                                        if (finalClaimIds.contains(review.Core_MDF_Claim_ID_id__c)){
+                                                            system.debug('inside first if');
+                                                            system.debug('inside first if claimId: '+review.Core_MDF_Claim_ID_id__c);
+                                                            system.debug('inside first if finalClaimIds: '+finalClaimIds);
+                                                            continue;
+                                                        }
+                                                        if(!review.Core_MDF_AI_PIC_Review_Ind__c){
+                                                            finalClaimIds.add(review.Core_MDF_Claim_ID_id__c);
+                                                            system.debug('inside second if finalClaimIds: '+finalClaimIds);
+                                                            continue;
+                                                        }
+                                                        if(claimIdToReviewIdMap.get(review.Core_MDF_Claim_ID_id__c).contains(review.Id)){
+                                                            system.debug('inside third if finalClaimIds: '+finalClaimIds);
+                                                            if(compositeKeyToCDBRecordMap.containsKey(review.Core_MDF_Claim_ID_id__c + '-' + review.Id)){
+                                                                claimIdToPicReviewIdToFinalCDBLog.put(review.Core_MDF_Claim_ID_id__c, new Map<Id,Core_CDB_Integration_Log__c>{review.Id => compositeKeyToCDBRecordMap.get(review.Core_MDF_Claim_ID_id__c + '-' + review.Id)});
+                                                                finalClaimIds.add(review.Core_MDF_Claim_ID_id__c);
+                                                               
                                                                 picReviewMap.put(review.Id, review); //POP Schema Changes - To get external Id from exsisting PIC Review Rec 
-                            continue;
-                        }
-                    }
-                     finalClaimIds.add(review.Core_MDF_Claim_ID_id__c);
-                }
+                                                                
+                                                                system.debug('inside fourth if finalClaimIds: '+finalClaimIds);
+                                                                continue;
+                                                            }
+                                                        }
+                                                        finalClaimIds.add(review.Core_MDF_Claim_ID_id__c);
+                                                    }
             }
-            
-            Map<Id, PartnerFundClaim> claimIdToClaimRecordMap = new Map<Id, PartnerFundClaim>([SELECT id,Core_MDF_OutcomeBased_Ind__c,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Budget_Type_Nm__c,Core_MDF_Program__c, Core_MDF_Ad_Run_End_Date__c,Core_MDF_Reimbursable_TransactionAmt_Loc__c,Core_MDF_Activity_Types__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Currency__c,Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c FROM PartnerFundClaim 
-                                                                                           WHERE Id IN: claimIdToPicReviewIdToFinalCDBLog.keyset()]);
+            system.debug('finalClaimIds: '+finalClaimIds);
+            system.debug('claimIdToPicReviewIdToFinalCDBLog: '+claimIdToPicReviewIdToFinalCDBLog);
+            Map<Id, PartnerFundClaim> claimIdToClaimRecordMap = new Map<Id, PartnerFundClaim>([SELECT id,Core_MDF_OutcomeBased_Ind__c,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Budget_Type_Nm__c,Core_MDF_Program__c, Core_MDF_Ad_Run_End_Date__c,Core_MDF_Reimbursable_TransactionAmt_Loc__c,Core_MDF_Activity_Types__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Currency__c,Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c, request.Core_MDF_Activity_Description__c, request.Core_MDF_POP_Requirements_txt__c, request.Core_MDF_Attribution_Requirements_txt__c, Amount, Core_MDF_Budget_Type_Options_Nm__c FROM PartnerFundClaim 
+                                                                                               WHERE Id IN: claimIdToPicReviewIdToFinalCDBLog.keyset()]);
             if(!claimIdToClaimRecordMap.isEmpty() && !claimIdToPicReviewIdToFinalCDBLog.isEmpty()){
-                fetchClaimDocAndPICReviewDetails(claimIdToClaimRecordMap, claimIdToPicReviewIdToFinalCDBLog,picReviewMap);//POP Schema Changes - Added picReviewMap parameter
-            }
+                fetchClaimDocAndPICReviewDetails(claimIdToClaimRecordMap, claimIdToPicReviewIdToFinalCDBLog, picReviewMap);
+            } 
         } catch (Exception exp) {
             Core_MDF_CCP_UtilityClass.logError(exp);
+            System.debug('Exception while reprocessing CDB Log records: '+exp);
         }
     }
     
     
     /***********************************************************************************************************
-    Method Name:        collectAndLogDbErrors
-        Description:       Method to log database errors from both Insert and Upert operations
-        Added By:           Sham - 10-23-2025
-    Modified By:        Date:       Changes:
-    **********************************************************************************************************/
-
-     public static void collectAndLogDbErrors( Map<String, List<Database.Error>> errorsByRecordKeyMap,Map<String, String> baseMessageByRecordKeyMap, String sObjectApiName ) {
+Met3rhod Name:        collectAndLogDbErrors
+Description:       Method to log database errors from both Insert and Upert operations
+Added By:           Sham - 10-23-2025
+Modified By:        Date:       Changes:
+**********************************************************************************************************/
+    
+    public static void collectAndLogDbErrors( Map<String, List<Database.Error>> errorsByRecordKeyMap,Map<String, String> baseMessageByRecordKeyMap, String sObjectApiName ) {
         if (errorsByRecordKeyMap == null || errorsByRecordKeyMap.isEmpty()) {
             return;
         }
@@ -691,8 +724,8 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
             }
             List<String> errorMsgs = new List<String>{
                 'Record ' + recordIdentifier + ' | ' + String.join(errorMessages, ' | ')
-            };
-            Map<String, String> coreLogMap = new Map<String, String>();
+                    };
+                        Map<String, String> coreLogMap = new Map<String, String>();
             coreLogMap.put('Core_Origin__c', 'Core_MDF_AI_Integration_Outbound');
             coreLogMap.put('Core_Severity__c', 'Critical');
             coreLogMap.put('Core_sObjectType__c', sObjectApiName);
@@ -703,10 +736,11 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
             Integer strLength = serialized.length();
             String details = strLength < LONG_TEXT_AREA_LIMIT ? serialized : serialized.substring(0, LONG_TEXT_AREA_LIMIT);
             coreLogMap.put('Core_Details__c', details);
+            System.debug('Logged DB error:' + coreLogMap);
             coreLogMaps.add(coreLogMap);
         }
         if (!coreLogMaps.isEmpty()) {
-           Core_MDF_CCP_UtilityClass.createLogEntries(coreLogMaps);
+            Core_MDF_CCP_UtilityClass.createLogEntries(coreLogMaps);
         }
     }
     /***********************************************************************************************************
@@ -731,7 +765,7 @@ Modified By:       Date:       Changes:
         for (SubQuestionsWrapper subQues : allSubQues) {
             subQues.picRRExternalId = picReviewIdStr +String.valueOf(subQues.questionId);
         }
-    }  
+    }
     //All Wrappers
     public class CDBOutboundWrapper {
         public Id picReviewId;
@@ -749,12 +783,18 @@ Modified By:       Date:       Changes:
         public Decimal totalAmountLocal;
         public String pocCurrency;//claimCurrency ?
         public String activityType;
+        public String activityDes;
+        public String actPOPRequirements;
+        public String actAttrRequirements;
+        public Decimal reimbAmtUSD;
+        public String budgetType;
     }
     
     public class DocumentWrapper
     {
         public String appFileId;
         public Boolean sftFileAvailableInd;
+        //public String sftFileDownloadURL;
         public String documentType;
         public String downloadDocumentTitle;
         public String documentTitle;
@@ -762,6 +802,7 @@ Modified By:       Date:       Changes:
         {
             this.appFileId = document.Core_MDF_Old_Document_Id__c;
             this.sftFileAvailableInd = document.Core_MDF_SFT_File_Download_Ind__c;
+            //this.sftFileDownloadURL = document.Core_MDF_SFT_File_Download_URL__c;
             this.documentType = document.Core_MDF_Document_Types__c;
             this.downloadDocumentTitle = document.Core_MDF_Download_Document_Title_txt__c;
             this.documentTitle = document.Core_MDF_Document_Title__c;
@@ -792,7 +833,7 @@ Modified By:       Date:       Changes:
         }
     }
     // Custom exception for callout errors that can be instantiated anywhere
-     public class CDBCalloutException extends Exception {}
-       
+    public class CDBCalloutException extends Exception {}
+    
     
 }

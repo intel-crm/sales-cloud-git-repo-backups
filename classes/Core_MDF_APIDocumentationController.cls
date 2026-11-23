@@ -153,7 +153,7 @@ public with sharing class Core_MDF_APIDocumentationController {
             if (instanceUrl.contains('.sandbox.my.salesforce.com')) {
                 communityUrl = 'https://' + instanceName + '.sandbox.my.site.com/Partnercenter/API_Documentation';
             } else {
-                communityUrl = Label.Core_MDF_PFRCommunityLink+'/API_Documentation';
+                communityUrl = 'https://' + instanceName + '.intel.com/API_Documentation';
             }
             
             return communityUrl;

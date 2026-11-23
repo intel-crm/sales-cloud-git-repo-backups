@@ -155,8 +155,9 @@ public class Core_MDF_CampaignCreatePageTest {
             userIdCorpAcctIdSet.put(extUsr1.Id, accIdSet);
             //Core_MDF_IPA_AccountUserMapping.createPnumRecords(userIdCorpAcctIdSet);
             insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Business Client Acceleration - MDF', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = true, Core_MDF_Partner_Benefit__c = 'Business Client Acceleration - MDF', Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Proposal_Based', Core_MDF_Budget_Type__c = 'Proposal I MDF', Core_MDF_Program_Nm__c = 'Intel Partner Alliance', Core_MDF_RecordType__c = 'Proposal Based');
+
             String budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount);
-            Campaign ipaCampaignForAP = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign IPA',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Developer', 'Apollo Lake', 'Pending Approval', false);
+            Campaign ipaCampaignForAP = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign IPA',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Developer', '', 'Pending Approval', false);
             ipaCampaignForAP.Core_MDF_Opal_Budget_Type_Txt__c ='Proposal I MDF';
             ipaCampaignForAP.Core_MDF_Partner_Mapping_Txt__c = extUsr1.Id;
             ipaCampaignForAP.Core_MDF_Market__c = 'UNITED STATES';
@@ -283,7 +284,7 @@ public class Core_MDF_CampaignCreatePageTest {
         String campID=Core_MDF_CampaignCreatePage.saveCampaign(ipaCamp, null, null, '','',null,outcomeWrapperList, null,false);
         //Check Campaign Creation for IPA with campAmountFields
         String amtFields ='{\"totalCampaignCost\" :100,\"reimbursementAmount\":50}';
-       // Highlight: Unused Local Variable 
+       // Highlight: Unused Local Variable - Indira
        /* String campID1= */ Core_MDF_CampaignCreatePage.saveCampaign(ipaCamp, null, null, amtFields,'',null,outcomeWrapperList, null,false);
         try {
           Core_MDF_CampaignCreatePage.saveCampaign(null, null, null, '','',null,null,null,false);    
@@ -345,7 +346,7 @@ public class Core_MDF_CampaignCreatePageTest {
     static void createPFRTest(){
         Test.startTest();
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
-       // Highlight: Unused Local Variable 
+       // Highlight: Unused Local Variable - Indira
        // String filter='Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c = \'Intel Partner Alliance\''  ;
         Account ipaCoMarketingAccount = [select id,Core_MDF_Parent_Fund_Account__c,Core_MDF_Channel_Program__c from Account where Name= 'IPA Co-Marketing Account' LIMIT 1];
         Campaign ipaCamp = [SELECT Id,Core_MDF_CampOutcomeOpt_In_Ind__c, Core_MDF_Reimbursement_Amt__c, Core_MDF_Proposal_Based_Ind__c,Core_MDF_Total_Campaign_Cost_Amt__c, Core_MDF_Program__c FROM Campaign WHERE Name = 'Test Campaign IPA' LIMIT 1];
@@ -429,7 +430,7 @@ public class Core_MDF_CampaignCreatePageTest {
         List<String> budgetTypeList = new List<String>();
         budgetTypeList.add('MDF');
         budgetTypeList.add('OEM CMP');
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
        // List<PartnerMarketingBudget> pmbList = new List<PartnerMarketingBudget>();
         PartnerMarketingBudget pbm = [select StartDate, EndDate, Core_MDF_Budget_Status__c, Amount,IsIgnoreValidation from PartnerMarketingBudget where Title='Test Budget MDF'];
         //pbm.Core_MDF_Budget_Status__c = 'Released';
@@ -486,15 +487,15 @@ public class Core_MDF_CampaignCreatePageTest {
         campaignBudgetRecord2.isActive = true;
         campaignBudgetsList.add(campaignBudgetRecord);
         //campaignBudgetsList.add(campaignBudgetRecord2);
-        
-        // Highlight: Unused Local Variable 
+       
+        // Highlight: Unused Local Variable - Indira
       /*  Map<id,PartnerMarketingBudget> campaignBudgets = */ Core_MDF_CampaignCreatePage.getBudgetsForCampaign(ccpCoMarketingAccount.id, System.today(), System.today(), budgetTypeList);
         //string saveCampaignBudgetsResult = Core_MDF_CampaignCreatePage.saveCampaignBudgets(ccfOpalCampaign.id,campaignBudgetsList);
         String campID=Core_MDF_CampaignCreatePage.saveCampaign(ccfOpalCampaign, campaignBudgetsList, null, '','',null, null,null,false);
         campaignBudgetsList.clear();
         campaignBudgetsList.add(campaignBudgetRecord2);
         String campID2=Core_MDF_CampaignCreatePage.saveCampaign(ccfOEMCMPCampaign, campaignBudgetsList, null, '','',null, null,null,false);
-      // Highlight: Unused Local Variable
+      // Highlight: Unused Local Variable - Indira
       /*  List<Core_MDF_Campaign_Budgets__c> retrieveCampaignBudgets =  */ Core_MDF_CampaignCreatePage.getCampaignBudgetsForCampaign(ccfOpalCampaign.id);
         //assert.isTrue('Success',saveCampaignBudgetsResult,'Assert Passed');
 
@@ -612,12 +613,11 @@ public class Core_MDF_CampaignCreatePageTest {
         Core_MDF_CampaignCreatePage.getBudgetsOnActiveActivities(ccfOpalCampaign.id);
         //Core_MDF_CampaignCreatePage.getBudgetsAmountOnActiveActivities(ccfOpalCampaign.id,campaignBudgetRecord.budgetId);
         Core_MDF_CampaignCreatePage.getBudgetsAmountOnActiveActivities(campID,campaignBudgetRecord.budgetId);
-       // Highlight: Unused Local Variable 
+       // Highlight: Unused Local Variable - Indira
        /* List<String> validClaimStatus = */ Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ClaimStatus_ActivityAutoClose').split(';');
         //List<PartnerFundClaim> claimList = [SELECT Id, Amount, Core_MDF_Status__c, RequestId,BudgetId FROM PartnerFundClaim WHERE RequestId = :testPartnerFundRequestRecord2.ID];
         
         //Core_MDF_CampaignCreatePage.getBudgetsAmountOnActiveActivities(ccfOEMCMPCampaign.id,campaignBudgetRecord2.budgetId);
-        Test.stopTest();
         Core_MDF_CampaignCreatePage.getBudgetsAmountOnActiveActivities(campID2,campaignBudgetRecord2.budgetId);
         Core_MDF_CampaignCreatePage.getIPAActivities(campID);
         List<String> budType = new List<String>{'Account Plan'};
@@ -625,7 +625,7 @@ public class Core_MDF_CampaignCreatePageTest {
         Core_MDF_CampaignCreatePage.geoToCountryMappingValueConnectedCallBack();
         Core_MDF_CampaignCreatePage.fetchIUPGMPNUMAccounts();
 
-        
+        Test.stopTest();
         }
     }
     
@@ -719,7 +719,7 @@ public class Core_MDF_CampaignCreatePageTest {
         List<String> country = new List<String>();
         country.add('AFGHANISTAN');
         multiGeo = Core_MDF_CampaignCreatePage.multipleGeosSelected(country,'');
-        assert.isTrue(!multiGeo);
+        assert.isTrue(!multiGeo);        
         List<String> ipaCountries = new List<String>{'AFGHANISTAN', 'ARMENIA'};
         Boolean multiGeoIPA = Core_MDF_CampaignCreatePage.multipleGeosSelected(
             ipaCountries,
@@ -825,23 +825,24 @@ public class Core_MDF_CampaignCreatePageTest {
         contractsToSaveMapTypeExistingWithValue.put('tempKey', 'temp');
         contractsToSaveMapTypeExistingWithValue.put('parentId', cogtmCamp.Id);
         contractsToSaveList.add(contractsToSaveMapTypeExistingWithValue);
-       // Highlight: Unused Local Variables
+       // Highlight: Unused Local Variables - Indira
        /* String campID1=*/ Core_MDF_CampaignCreatePage.saveCampaign(cogtmCamp, null, null, '', '', contractsToSaveList, null, null,false);
   /*  List<Core_MDF_CampaignCreatePage.OutcomeWrapper> ls = */ Core_MDF_CampaignCreatePage.getCampaignOutcomes(cogtmCamp.Id);
-      /*  Core_MDF_CampaignCreatePage.OutcomeWrapper obj = */ new Core_MDF_CampaignCreatePage.OutcomeWrapper(cogtmCamp.Id,'', '', '1', '1', '', '',''); 
+      /*  Core_MDF_CampaignCreatePage.OutcomeWrapper obj = */ new Core_MDF_CampaignCreatePage.OutcomeWrapper(cogtmCamp.Id,'', '', '1', '1', '', ''); 
         Test.stopTest();
         Assert.areEqual(1, contracts.size());
     }
     
+    
     @isTest
     static void testGetInternalAndExternalUsersByAccount(){
-       // Highlight: Unused Local Variable 
+       // Highlight: Unused Local Variable - Indira
        // Core_MDF_CampaignCreatePage.AccountIdBudgetTypeWrapper ab = new Core_MDF_CampaignCreatePage.AccountIdBudgetTypeWrapper();
         Campaign cogtmCamp = [SELECT Id, Core_MDF_Account__c, Core_MDF_Account__r.Core_MDF_Parent_Fund_Account__c FROM Campaign WHERE Name = 'Test CoGTM Camp' LIMIT 1];
         ChannelProgram cogtmCP = [SELECT Id FROM ChannelProgram WHERE Core_MDF_Technical_Program_Name__c ='CoGTM' LIMIT 1];
         Test.startTest();
         Map<String, Core_MDF_CampaignCreatePage.UserRecordsAndDefaultUserWrapper> users = Core_MDF_CampaignCreatePage.getInternalAndExternalUsersByAccount(cogtmCamp.Core_MDF_Account__c, cogtmCamp.Core_MDF_Account__r.Core_MDF_Parent_Fund_Account__c, cogtmCP.Id);
-       // Highlight: Unused Local Variable 
+       // Highlight: Unused Local Variable - Indira
        /* Map<String, Core_MDF_CampaignCreatePage.UserRecordsAndDefaultUserWrapper> users2 = */ Core_MDF_CampaignCreatePage.getInternalAndExternalUsersByAccount(cogtmCamp.Core_MDF_Account__c, '', cogtmCP.Id);
         Test.stopTest();
         Assert.areEqual(3, users.size());         
@@ -859,30 +860,6 @@ public class Core_MDF_CampaignCreatePageTest {
         // Call the second method
         Map<String, Object> res2 = Core_MDF_CampaignCreatePage.PicklistFetcher('Core_MDF_Client_CoMarketing_Fund');
         System.assertNotEquals(null, res2, 'PicklistFetcher should return a result');        
-        Test.stopTest();
-    }
-
-     @isTest
-    static void testGetDomainsForAccount() {
-        Test.startTest();
-        
-        Account ipaCoMarketingAccount = [SELECT Id FROM Account WHERE Name = 'IPA Co-Marketing Account' LIMIT 1];
-        
-        Core_MDF_Partner_Group_Mapping__c pgm = [SELECT Id FROM Core_MDF_Partner_Group_Mapping__c WHERE Core_MDF_Virtual_Corp_nm__c = :ipaCoMarketingAccount.Id LIMIT 1];
-        
-        insert new Core_MDF_Partner_Group_Domain_Mapping__c(
-            Name = 'testdomain.com',
-            Core_MDF_Partner_Group_Mapping_Id__c = pgm.Id,
-            Core_MDF_Active_Ind__c = true
-        );
-        
-        // Valid accountId - covers main query path
-        List<Core_MDF_Partner_Group_Domain_Mapping__c> result = Core_MDF_CampaignCreatePage.getDomainsForAccount(ipaCoMarketingAccount.Id);
-        Assert.areEqual(1, result.size(), 'Should return 1 active domain');
-        
-        // Blank accountId - covers early return path
-        Assert.areEqual(0, Core_MDF_CampaignCreatePage.getDomainsForAccount('').size(), 'Should return empty list');
-        
         Test.stopTest();
     }
 }

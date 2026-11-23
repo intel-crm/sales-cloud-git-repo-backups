@@ -1,6 +1,8 @@
 import LightningDatatable from 'lightning/datatable';
 import picklistColumn from './core_MDF_CustomPicklistColumn.html';
-import pickliststatic from './core_MDF_CustomPicklist.html'
+import pickliststatic from './core_MDF_CustomPicklist.html';
+import checkboxStatic from './core_MDF_CustomCheckbox.html';
+import multiselectpicklistColumn from './core_MDF_MultiPicklistColumn.html';
 
 export default class Core_MDF_TargetSettingCustomPicklist extends LightningDatatable {
     static customTypes = {
@@ -9,6 +11,21 @@ export default class Core_MDF_TargetSettingCustomPicklist extends LightningDatat
             editTemplate: picklistColumn,
             standardCellLayout: true,
             typeAttributes: ['label', 'placeholder', 'options', 'value', 'context', 'variant','name']
+        },
+        checkboxStatic: {
+            template: checkboxStatic,
+            standardCellLayout: true,
+            typeAttributes: ['label', 'value', 'checked']
+        },
+        multiselectpicklistColumn: {
+            template: multiselectpicklistColumn,
+            editTemplate: multiselectpicklistColumn,
+            standardCellLayout: true,
+            typeAttributes: ['label', 'placeholder', 'options', 'value', 'context', 'variant','name']
         }
     };
+
+    handleRowSelection(event){
+        console.log('@@Select ->',event.detail.value);
+    }
 }

@@ -7,17 +7,27 @@
                             <th>{ACCOUNT_NODE}</th>
                             <th>{NODE_AMOUNT}</th>
                             <th>{STATUS}</th>
-                            <th>{BANK} <abbr class="slds-required" title="required">*</abbr></th>
-                            <th>{INVOICE_TYPE}</th>
+                            <!--TWC3117-18459-->
+                            <!--<th>{BANK} <abbr class="slds-required" title="required">*</abbr></th>-->
+                            <template if:false={hideBankField}>
+                                <th>{BANK} <abbr class="slds-required" title="required">*</abbr></th>
+                            </template>
+                            
+                            <!--<th>{INVOICE_TYPE}</th>-->
+                            <template if:false={hideBankField}>
+                                <th>{INVOICE_TYPE}</th>
+                            </template>
+                            <!--TWC3117-18459-->
                         </tr>
                     </thead>
                     <tbody>
-                        <template if:false={isEditorClone}>
+                        <template if:false={isEditorClone}><!-- Naveen-SubClaim -->
                         <template for:each={accountNodes} for:item="node">
                             <tr key={node.accountNodeId}>
                                 <td class="cell-account-node"><span class="truncate" title={node.accountNodeName}>{node.accountNodeName}</span></td>                                
                                 <td>{node.nodeAmount}</td>
                                 <td>&nbsp;</td>
+                                <template if:false={node.hideBankField}> <!--TWC3117-18459-->
                                 <td>
                                     <div class="input-wrapper">
                                         <lightning-combobox
@@ -35,6 +45,7 @@
                                         </lightning-combobox>
                                     </div>
                                 </td>
+                                
                                 <td>
                                     <div class="input-wrapper">
                                         <lightning-combobox data-vat
@@ -49,15 +60,17 @@
                                         </lightning-combobox>
                                     </div>
                                 </td>
+                                </template> <!--TWC3117-18459-->
                             </tr>
                         </template>
                     </template>
-                    <template if:true={isEditorClone}>
+                    <template if:true={isEditorClone}><!-- Naveen-SubClaim -->
                         <template for:each={subClaims} for:item="node">
                             <tr key={node.claimId}>
                                 <td class="cell-account-node"><span class="truncate" title={node.accountNodeName}>{node.accountNodeName}</span></td>
                                 <td>{node.nodeAmount}</td>
                                 <td>{node.status}</td>
+                                <template if:false={node.hideBankField}> <!--TWC3117-18459-->
                                 <td>
                                     <div class="input-wrapper">
                                         <lightning-combobox
@@ -76,6 +89,7 @@
                                         </lightning-combobox>
                                     </div>
                                 </td>
+                                
                                 <td>
                                     <div class="input-wrapper">
                                         <lightning-combobox data-vat
@@ -90,11 +104,16 @@
                                         </lightning-combobox>
                                     </div>
                                 </td>
+                                </template> <!--TWC3117-18459-->
                             </tr>
                         </template>
                     </template>
                     </tbody>
                 </table>
+            <!-- Naveen-SubClaim -->
+            <!--<template if:true={error}>
+                <div class="slds-text-color_error slds-p-around_small">{error}</div>
+            </template>-->
         </div>
     </lightning-card>
 </template>

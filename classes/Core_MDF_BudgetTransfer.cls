@@ -162,8 +162,12 @@ Modified By: Accenture - Sandesh H       Date: 24-05-2022      Changes: Added Or
         {
             ID coMarketingRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_Marketing').getRecordTypeId();
             List<Account> fromAccount = [Select Id, Name, Core_MDF_Channel_Program__c, Core_MDF_Virtual_Corp_Account_Id__c,Core_MDF_Channel_Program__r.Name,Core_MDF_Partner_Type_nm__c, Core_MDF_CoMarketing_Ultimate_Account__c from Account where Id = :fromAcctId AND Core_MDF_Active_Ind__c = TRUE];
+            // Early return if no account found to prevent "List index out of bounds" error
+            if(fromAccount == null || fromAccount.size() == 0){
+                return toAccounts;
+            }
             //Avoid Deeply Nested IF Statements
-                if(fromAccount != null && fromAccount.size()>0 && coMarketingRecordTypeId != null && fromAccount[0].Core_MDF_Channel_Program__r.Name == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EEF_Program_Name')){
+                if(coMarketingRecordTypeId != null && fromAccount[0].Core_MDF_Channel_Program__r.Name == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EEF_Program_Name')){
                     Boolean isFromAccPrimary = (fromAccount[0].Core_MDF_Partner_Type_nm__c!=null && fromAccount[0].Core_MDF_Virtual_Corp_Account_Id__c == null && fromAccount[0].Core_MDF_Partner_Type_nm__c.contains(PRIMARY_PARTNER))? true : false ;
         			Boolean isFromAccActivating = (fromAccount[0].Core_MDF_Partner_Type_nm__c!=null && fromAccount[0].Core_MDF_Virtual_Corp_Account_Id__c == null &&fromAccount[0].Core_MDF_Partner_Type_nm__c.contains(ACTIVATING_PARTNER))? true : false ;
         			Boolean isFromAccNode = fromAccount[0].Core_MDF_Virtual_Corp_Account_Id__c != null ?true : false;

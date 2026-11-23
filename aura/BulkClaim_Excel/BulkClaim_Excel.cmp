@@ -1,0 +1,73 @@
+<aura:component controller="BulkClaim_ExcelController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes"
+                access="global">
+    <!--Style-->
+    <aura:html tag="style">
+        <!--To remove blue border-->
+        .toastMessage.forceActionsText{
+        white-space : pre-line !important;
+        }
+    </aura:html>
+    <ltng:require scripts="{!$Resource.KJS1}"/>
+    <ltng:require scripts="{!$Resource.KJS2}"/>
+    <ltng:require scripts="{!$Resource.XLSX}"/>
+    <aura:attribute name="programSearchString" type="string" default="" />
+    <aura:attribute name="fileId" type="String" />
+    <aura:attribute name="isPortal" type="boolean" default="false"/>
+    <aura:attribute name="fileToBeUploaded" type="Object[]" />
+    <aura:attribute name="file" type="Object" />
+    <aura:attribute name="content" type="String" />
+    <aura:attribute name="programId" type="String" default="" />
+    <aura:attribute name="programLabel" type="String" default="" />
+    <aura:attribute name="fileInputValue" type="String" default="" />
+    <aura:attribute name="recordTypeMap" type="Map" default="" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!--Handler event for the lookup component to clear and handle selection-->
+    <aura:handler name="updateLookupIdEvent" event="c:Core_MDF_UpdateLookupId" action="{!c.updateLookUpId}" />
+    <aura:handler name="clearLookupIdEvent" event="c:Core_MDF_ClearLookupId" action="{!c.clearLookUpId}" />
+    
+    <lightning:spinner aura:id="fileprogressBar" class="slds-hide" />
+    
+    <lightning:card title="{!$Label.c.Core_MDF_Upload_Bulk_Claims}"> 
+        
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                <!-- Program -->
+                <c:Core_MDF_LightningSObjectLookUp aura:id="programId" label="{! $Label.c.Core_MDF_Bulk_Claim_Program}" pluralLabel="Programs"
+                                                   sObjectAPIName="ChannelProgram" instanceId="programId" helpText="{! $Label.c.Core_MDF_Enter_program}"
+                                                   listIconSVGPath="/resource/Core_MDF_SLDS262/icons/standard-sprite/svg/symbols.svg#client"
+                                                   listIconClass="slds-icon-standard-user" searchString="{!v.programSearchString}" returnFields="Name"
+                                                   required="true" filterCriteria="{!'(IsActive = true AND Name LIKE \'%' + v.programSearchString +'%\')'}" />
+                <div aura:id="programInputHelpMsg" data-help-message="true" role="alert" class="errorMsg slds-hide">{!$Label.c.Core_MDF_Enter_program}</div>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                <!-- Download Template Link-->
+                <lightning:input name="fileUploader" aura:id="fieldId" type="file" label="{! $Label.c.Core_MDF_Bulk_Claim_Upload_Template}"
+                                 files="{!v.fileToBeUploaded}" accept=".xlsx" onchange="{! c.handleUploadFinished }" multiple="false" />
+                <div aura:id="fileInputHelpMsg" data-help-message="true" role="alert" class="errorMsg slds-hide">{!$Label.c.Core_MDF_Upload_file}</div>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="6" flexibility="auto" padding="around-large" >
+                <div aura:id="downloadTemplate" class="slds-hide">
+                    <aura:if isTrue="{!!v.isPortal}">
+                        <!--Internal User : Bulk Claim Excel templet download link-->
+                        <lightning:formattedUrl value="{! $Label.c.Core_MDF_PFRDetailLink + $Label.c.Core_MDF_FileURLInternal +v.fileId}" tooltip="Template"
+                                                label="{!$Label.c.Core_MDF_Download_template_here}" target="_self" class="slds-button slds-button_brand"/>
+                        <aura:set attribute="else">
+                            <!--External User : Bulk Claim Excel templet download link-->
+                            <lightning:formattedUrl value="{! $Label.c.Core_MDF_PFRCommunityLink +$Label.c.Core_MDF_FileURLInternal +v.fileId}" tooltip="Template"
+                                                    label="{!$Label.c.Core_MDF_Download_template_here}" target="_self" class="slds-button slds-button_brand"/>
+                        </aura:set>
+                    </aura:if>
+                </div>
+                <div aura:id="noTemplateAvailable" class="slds-hide">
+                    {!$Label.c.Core_MDF_BulkClaimTemplateNotFound}
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="6" flexibility="auto" padding="around-large">
+                <!-- Import Button -->
+                <lightning:button aura:id="importButtonCmp"  variant="brand" label="{!$Label.c.Core_MDF_Import_Claims}" title="{!$Label.c.Core_MDF_Import_Claims}" 
+                                  onclick="{! c.handleClick }"  />
+            </lightning:layoutItem>
+            
+        </lightning:layout>
+    </lightning:card>
+</aura:component>

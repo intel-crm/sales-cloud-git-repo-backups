@@ -89,7 +89,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Channel MDF,Client CoMarketing Fund,Client CoMarketing Fund Boost,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Ecosystem Extension Fund,Data Center CoMarketing Fund,CoGTM</value>
+            <value>Channel MDF,Client CoMarketing Fund,Client,Client CoMarketing Fund Boost,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Ecosystem Extension Fund,Data Center CoMarketing Fund,CoGTM</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundClaim$Core_MDF_Status__c</column>

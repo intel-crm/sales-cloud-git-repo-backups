@@ -171,25 +171,6 @@
         <type>Checkbox</type>
     </fields>
     <label>ClaimActivityAllocationRecordtypeMapping</label>
-    <listViews>
-        <fullName>All_Columns</fullName>
-        <columns>MasterLabel</columns>
-        <columns>DeveloperName</columns>
-        <columns>NamespacePrefix</columns>
-        <columns>Core_MDF_Activity_Close_Days__c</columns>
-        <columns>Core_MDF_Activity_RecordType_txt__c</columns>
-        <columns>Core_MDF_Allocation_RecordType_txt__c</columns>
-        <columns>Core_MDF_Channel_Program_Name_txt__c</columns>
-        <columns>Core_MDF_Channel_Program_txt__c</columns>
-        <columns>Core_MDF_Claim_RecordType_txt__c</columns>
-        <columns>Core_MDF_ClaimStage_RecordType_txt__c</columns>
-        <columns>Core_MDF_Payment_RecordType_txt__c</columns>
-        <columns>Core_MDF_Enable_Fund_Reservation_chk__c</columns>
-        <columns>IsProtected</columns>
-        <filterScope>Everything</filterScope>
-        <label>All Columns</label>
-        <language>en_US</language>
-    </listViews>
     <pluralLabel>ClaimActivityAllocationRecordtypeMapping</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>

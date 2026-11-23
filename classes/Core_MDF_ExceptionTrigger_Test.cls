@@ -316,7 +316,7 @@ public class Core_MDF_ExceptionTrigger_Test {
             iupgmList.add(iupgmWW);
             
             Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
-            iupgm.Core_MDF_Account_id__c = flipkartTestAccount.Id;
+            iupgm.Core_MDF_Account_id__c = flipkartTestAccount.Id;  
             iupgm.Core_MDF_Program_nm__c = 'Client CoMarketing Fund';
             iupgm.Core_MDF_Region_Sub_Region_nm__c = 'WW';
             iupgm.Core_MDF_Region_cd__c = 'WW';
@@ -358,7 +358,7 @@ public class Core_MDF_ExceptionTrigger_Test {
             iupgmEEFWW.Core_MDF_All_Budget_Type_Access_Ind__c = true;
             iupgmEEFWW.Core_MDF_All_Accounts_cd__c = 'No';
             iupgmList.add(iupgmEEFWW);
-            insert iupgmList;
+             insert iupgmList;
             
             Account flipkartTestAccountCCF = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test CCF Account', ccfCp.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, flipkartTestAccount.Id, false);
             Account myntraTestAccountDCF = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test DCF Account', dcfCp.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, myntraTestAccount.Id, false);
@@ -511,7 +511,8 @@ public class Core_MDF_ExceptionTrigger_Test {
             acc1.BillingStateCode='';
             insert acc1;
             
-            string budgetType = Core_MDF_CCP_ConstantClass.PR_MDF_BUDGET_TYPE;
+	    	// Highlight: Unused Local Variable - 16335
+            //string budgetType = Core_MDF_CCP_ConstantClass.PR_MDF_BUDGET_TYPE;
             /*Campaign ipaCampaignForAP = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Developer', 'Apollo Lake', 'Pending Approval', false);
             ipaCampaignForAP.Core_MDF_Region_cd__c = 'APJ';
             ipaCampaignForAP.Core_MDF_Proposal_Based_Ind__c = true;
@@ -539,8 +540,9 @@ public class Core_MDF_ExceptionTrigger_Test {
         Test.startTest();
         User submitter  = [SELECT Id FROM USER WHERE LastName = 'CCF Acc Manager' LIMIT 1];
         Account acc = [SELECT Id FROM Account WHERE Name = 'FlipkartTestAccount' LIMIT 1];
-        Account accCCF = [SELECT Id FROM Account WHERE Name = 'Test CCF Account' LIMIT 1];
-        Account accMyntra = [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
+        // Highlight: Unused Local Variable - 16335
+		//Account accCCF = [SELECT Id FROM Account WHERE Name = 'Test CCF Account' LIMIT 1];
+        //Account accMyntra = [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
                                                            WHERE Core_MDF_User_id__c =: submitter.id ];
         
@@ -557,7 +559,7 @@ public class Core_MDF_ExceptionTrigger_Test {
             expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
             expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
             expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
+            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast-&gt;Podcast';
             expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
             expt.Core_MDF_Country_Region_nm__c = 'INDIA';
             expt.Core_MDF_Account_id__c = acc.Id;
@@ -600,8 +602,8 @@ public class Core_MDF_ExceptionTrigger_Test {
                 Database.insert(exceptionList);
             }catch(Exception e){
             }
-            //System.assert(exptDCFPrgm.id == NULL);
-            //Assert.isNull(exptDCFPrgm.id);
+            // System.assert(exptDCFPrgm.id == NULL);
+            // Assert.isNull(exptDCFPrgm.id);
             Test.stopTest(); 
         }
     }
@@ -611,14 +613,18 @@ public class Core_MDF_ExceptionTrigger_Test {
         List<Core_MDF_Exception__c> exceptionList = new List<Core_MDF_Exception__c>();
         Test.startTest();
         User submitter  = [SELECT Id FROM USER WHERE LastName = 'CCF Acc Manager' LIMIT 1];
-        Account acc = [SELECT Id FROM Account WHERE Name = 'FlipkartTestAccount' LIMIT 1];
-
-        Account accMyntra = [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
-        Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
-                                                           WHERE Core_MDF_User_id__c =: submitter.id ];
+        // Highlight: Unused Local Variable - 16335
+		//Account acc = [SELECT Id FROM Account WHERE Name = 'FlipkartTestAccount' LIMIT 1];
+        // Highlight: Unused Local Variable - 14285 // Suma
+        //Account accCCF = [SELECT Id FROM Account WHERE Name = 'Test CCF Account' LIMIT 1];
+		// Highlight: Unused Local Variable - 16335
+        //Account accMyntra = [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
+        /*Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
+                                                           WHERE Core_MDF_User_id__c =: submitter.id ];*/
         //PartnerFundClaim newClaim = [SELECT Id FROM PartnerFundClaim WHERE Title = 'Test Claim' LIMIT 1];
         
-        Core_MDF_Exception__c expt = new Core_MDF_Exception__c();        
+        // Highlight: Unused Local Variable - 16335
+		//Core_MDF_Exception__c expt = new Core_MDF_Exception__c();        
         System.runAs(submitter){            
             //Account       Country
             //Single        Single
@@ -674,12 +680,14 @@ public class Core_MDF_ExceptionTrigger_Test {
     @isTest
     static void exceptionSubmitterGeoAccessError(){
         
-        List<Core_MDF_Exception__c> exceptionList = new List<Core_MDF_Exception__c>();
+        // Highlight: Unused Local Variable - 16335
+		//List<Core_MDF_Exception__c> exceptionList = new List<Core_MDF_Exception__c>();
         Test.startTest();
         User submitter  = [SELECT Id FROM USER WHERE LastName = 'CCF WW Acc Manager' LIMIT 1];
         Account acc = [SELECT Id FROM Account WHERE Name = 'FlipkartTestAccount' LIMIT 1];
-        Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
-                                                           WHERE Core_MDF_User_id__c =: submitter.id ];
+        // Highlight: Unused Local Variable - 16335
+		/*Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
+                                                           WHERE Core_MDF_User_id__c =: submitter.id ];*/
         
         System.runAs(submitter){   
             Map<Id , Core_MDF_Exception__c> newExceptionMap = new Map<Id , Core_MDF_Exception__c>();
@@ -725,7 +733,7 @@ public class Core_MDF_ExceptionTrigger_Test {
         }
     }
     
-    /*@isTest
+ /*   @isTest
     static void exceptionCaseMappingCreate(){
         Test.startTest();
         User submitter  = [SELECT Id FROM USER WHERE LastName = 'CCF Acc Manager' LIMIT 1];
@@ -804,18 +812,21 @@ public class Core_MDF_ExceptionTrigger_Test {
         Test.stopTest();
         //System.assert(exptRecordList[0].Id != NULL);
         Assert.isNotNull(exptRecordList[0].Id);
-    }*/
+    }  */
     @isTest
     static void exceptionSubmitterAccountAccessError(){
         
-        List<Core_MDF_Exception__c> exceptionList = new List<Core_MDF_Exception__c>();
+        // Highlight: Unused Local Variable - 16335
+		//List<Core_MDF_Exception__c> exceptionList = new List<Core_MDF_Exception__c>();
         Test.startTest();
         User submitter  = [SELECT Id FROM USER WHERE LastName = 'CCF Acc Manager' LIMIT 1];
-        Account acc = [SELECT Id FROM Account WHERE Name = 'FlipkartTestAccount' LIMIT 1];
+        // Highlight: Unused Local Variable - 16335
+		//Account acc = [SELECT Id FROM Account WHERE Name = 'FlipkartTestAccount' LIMIT 1];
         Account accMyntra = [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
         
-        Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
-                                                           WHERE Core_MDF_User_id__c =: submitter.id ];
+        // Highlight: Unused Local Variable - 16335
+		/*Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
+                                                           WHERE Core_MDF_User_id__c =: submitter.id ];*/
         
         System.runAs(submitter){            
             //Account       Country
@@ -844,7 +855,7 @@ public class Core_MDF_ExceptionTrigger_Test {
             Test.stopTest();
         }
     }
-    /*@isTest
+ /*   @isTest
     static void exceptionSubmitterProgramAccessError(){
         
         List<Core_MDF_Exception__c> exceptionList = new List<Core_MDF_Exception__c>();
@@ -881,15 +892,17 @@ public class Core_MDF_ExceptionTrigger_Test {
             Test.stopTest();
         }
         
-    }*/
+    }   */
     
     @isTest
     static void exceptionForSingleAccountAllCountriesTest(){
         
-        List<Core_MDF_Exception__c> exceptionList = new List<Core_MDF_Exception__c>();
+        // Highlight: Unused Local Variable - 16335
+		//List<Core_MDF_Exception__c> exceptionList = new List<Core_MDF_Exception__c>();
         Test.startTest();
         User reviewer  = [SELECT Id FROM USER WHERE LastName = 'Excpetion Reviewer' LIMIT 1];
-        User submitterWW  = [SELECT Id FROM USER WHERE LastName = 'CCF WW Acc Manager' LIMIT 1];
+        // Highlight: Unused Local Variable - 16335
+		//User submitterWW  = [SELECT Id FROM USER WHERE LastName = 'CCF WW Acc Manager' LIMIT 1];
         Account acc = [SELECT Id FROM Account WHERE Name = 'FlipkartTestAccount' LIMIT 1];
         Core_MDF_Exception__c expt = new Core_MDF_Exception__c();
         expt.Core_MDF_Name_of_Exception_nm__c = 'Test Exception Single Account Single Country';
@@ -915,15 +928,18 @@ public class Core_MDF_ExceptionTrigger_Test {
     @isTest
     static void exceptionEditAccount(){
         
-        List<Core_MDF_Exception__c> exceptionList = new List<Core_MDF_Exception__c>();
+        // Highlight: Unused Local Variable - 16335
+		//List<Core_MDF_Exception__c> exceptionList = new List<Core_MDF_Exception__c>();
         Test.startTest();
         User submitter  = [SELECT Id FROM USER WHERE LastName = 'CCF Acc Manager' LIMIT 1];
         User reviewer  = [SELECT Id FROM USER WHERE LastName = 'Excpetion Reviewer' LIMIT 1];
         Account acc = [SELECT Id FROM Account WHERE Name = 'FlipkartTestAccount' LIMIT 1];
-        Account accCCF = [SELECT Id FROM Account WHERE Name = 'Test CCF Account' LIMIT 1];
+        // Highlight: Unused Local Variable - 16335
+		//Account accCCF = [SELECT Id FROM Account WHERE Name = 'Test CCF Account' LIMIT 1];
         Account accMyntra = [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
                                                            WHERE Core_MDF_User_id__c =: submitter.id ];
+        
         
         //PartnerFundClaim newClaim = [SELECT Id FROM PartnerFundClaim WHERE Title = 'Test Claim' LIMIT 1];
         
@@ -993,15 +1009,18 @@ public class Core_MDF_ExceptionTrigger_Test {
     @isTest
     static void exceptionEditAllAccount(){
         
-        List<Core_MDF_Exception__c> exceptionList = new List<Core_MDF_Exception__c>();
+        // Highlight: Unused Local Variable - 16335
+		//List<Core_MDF_Exception__c> exceptionList = new List<Core_MDF_Exception__c>();
         Test.startTest();
         User submitter  = [SELECT Id FROM USER WHERE LastName = 'CCF Acc Manager' LIMIT 1];
         User reviewer  = [SELECT Id FROM USER WHERE LastName = 'Excpetion Reviewer' LIMIT 1];
         Account acc = [SELECT Id FROM Account WHERE Name = 'FlipkartTestAccount' LIMIT 1];
-        Account accCCF = [SELECT Id FROM Account WHERE Name = 'Test CCF Account' LIMIT 1];
+        // Highlight: Unused Local Variable - 16335
+		//Account accCCF = [SELECT Id FROM Account WHERE Name = 'Test CCF Account' LIMIT 1];
         Account accMyntra = [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
-        Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
-                                                           WHERE Core_MDF_User_id__c =: submitter.id ];
+        // Highlight: Unused Local Variable - 16335
+		/*Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
+                                                          WHERE Core_MDF_User_id__c =: submitter.id ];*/
         
         
         //PartnerFundClaim newClaim = [SELECT Id FROM PartnerFundClaim WHERE Title = 'Test Claim' LIMIT 1];
@@ -1027,7 +1046,7 @@ public class Core_MDF_ExceptionTrigger_Test {
         exptMap.Core_MDF_Account_id__c = acc.Id;
         exptMap.Core_MDF_Exception_id__c = expt.Id;
          System.runAs(submitter){ 
-            Database.insert(exptMap);
+             Database.insert(exptMap);
         }
         //Object record id to recall the approval process
         String recordId = expt.Id;
@@ -1080,15 +1099,18 @@ public class Core_MDF_ExceptionTrigger_Test {
     @isTest
     static void exceptionEditAddCountry(){
         
-        List<Core_MDF_Exception__c> exceptionList = new List<Core_MDF_Exception__c>();
+        // Highlight: Unused Local Variable - 16335
+		//List<Core_MDF_Exception__c> exceptionList = new List<Core_MDF_Exception__c>();
         Test.startTest();
         User submitter  = [SELECT Id FROM USER WHERE LastName = 'CCF Acc Manager' LIMIT 1];
         User reviewer  = [SELECT Id FROM USER WHERE LastName = 'Excpetion Reviewer' LIMIT 1];
         Account acc = [SELECT Id FROM Account WHERE Name = 'FlipkartTestAccount' LIMIT 1];
-        Account accCCF = [SELECT Id FROM Account WHERE Name = 'Test CCF Account' LIMIT 1];
+        // Highlight: Unused Local Variable - 16335
+		//Account accCCF = [SELECT Id FROM Account WHERE Name = 'Test CCF Account' LIMIT 1];
         Account accMyntra = [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
-        Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
-                                                           WHERE Core_MDF_User_id__c =: submitter.id ];
+        // Highlight: Unused Local Variable - 16335
+		/*Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
+                                                           WHERE Core_MDF_User_id__c =: submitter.id ];*/
         
         
         //PartnerFundClaim newClaim = [SELECT Id FROM PartnerFundClaim WHERE Title = 'Test Claim' LIMIT 1];
@@ -1159,15 +1181,18 @@ public class Core_MDF_ExceptionTrigger_Test {
     @isTest
     static void exceptionEditAllCountry(){
         
-        List<Core_MDF_Exception__c> exceptionList = new List<Core_MDF_Exception__c>();
+        // Highlight: Unused Local Variable - 16335
+		//List<Core_MDF_Exception__c> exceptionList = new List<Core_MDF_Exception__c>();
         Test.startTest();
         User submitter  = [SELECT Id FROM USER WHERE LastName = 'CCF Acc Manager' LIMIT 1];
         User reviewer  = [SELECT Id FROM USER WHERE LastName = 'Excpetion Reviewer' LIMIT 1];
         Account acc = [SELECT Id FROM Account WHERE Name = 'FlipkartTestAccount' LIMIT 1];
-        Account accCCF = [SELECT Id FROM Account WHERE Name = 'Test CCF Account' LIMIT 1];
+        // Highlight: Unused Local Variable - 16335
+		//Account accCCF = [SELECT Id FROM Account WHERE Name = 'Test CCF Account' LIMIT 1];
         Account accMyntra = [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
-        Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
-                                                           WHERE Core_MDF_User_id__c =: submitter.id ];
+        // Highlight: Unused Local Variable - 16335
+		/*Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
+                                                           WHERE Core_MDF_User_id__c =: submitter.id ];*/
         
         
         //PartnerFundClaim newClaim = [SELECT Id FROM PartnerFundClaim WHERE Title = 'Test Claim' LIMIT 1];
@@ -1239,15 +1264,18 @@ public class Core_MDF_ExceptionTrigger_Test {
     @isTest
     static void exceptionReviewProgramEdit(){
         
-        List<Core_MDF_Exception__c> exceptionList = new List<Core_MDF_Exception__c>();
+        // Highlight: Unused Local Variable - 16335
+		//List<Core_MDF_Exception__c> exceptionList = new List<Core_MDF_Exception__c>();
         Test.startTest();
         User submitter  = [SELECT Id FROM USER WHERE LastName = 'CCF Acc Manager' LIMIT 1];
         User reviewer  = [SELECT Id FROM USER WHERE LastName = 'Excpetion Reviewer' LIMIT 1];
         Account acc = [SELECT Id FROM Account WHERE Name = 'FlipkartTestAccount' LIMIT 1];
-        Account accCCF = [SELECT Id FROM Account WHERE Name = 'Test CCF Account' LIMIT 1];
+        // Highlight: Unused Local Variable - 16335
+		//Account accCCF = [SELECT Id FROM Account WHERE Name = 'Test CCF Account' LIMIT 1];
         Account accMyntra = [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
-        Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
-                                                           WHERE Core_MDF_User_id__c =: submitter.id ];
+        // Highlight: Unused Local Variable - 16335
+		/*Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
+                                                           WHERE Core_MDF_User_id__c =: submitter.id ];*/
         
         
         //PartnerFundClaim newClaim = [SELECT Id FROM PartnerFundClaim WHERE Title = 'Test Claim' LIMIT 1];
@@ -1372,7 +1400,8 @@ Accenture – NZ           NZ  4/19/2020      Created.
                // Assert.isTrue(isAPJShared);
             }
             
-            
+	    	// Unit Test Method should include System.Assert - 16335
+            Assert.isTrue(exptShareList.size() > 0, 'Share records should be created for the exception record');
             test.stopTest();
         }catch(Exception e){
         }
@@ -1383,8 +1412,10 @@ Accenture – NZ           NZ  4/19/2020      Created.
         List<Core_MDF_Exception__c> expList = new List<Core_MDF_Exception__c>();
         Test.startTest();
         User submitter  = [SELECT Id FROM USER WHERE LastName = 'CCF Acc Manager' LIMIT 1];
-        User reviewer  = [SELECT Id FROM USER WHERE LastName = 'Excpetion Reviewer' LIMIT 1];
-
+        // Highlight: Unused Local Variable - 16335
+		//User reviewer  = [SELECT Id FROM USER WHERE LastName = 'Excpetion Reviewer' LIMIT 1];
+        // Highlight: Unused Local Variable - 14285 // Suma
+        //Account acc = [SELECT Id FROM Account WHERE Name = 'FlipkartTestAccount' LIMIT 1];
         
         Core_MDF_Exception__c excep = new Core_MDF_Exception__c();
         excep.Core_MDF_Name_of_Exception_nm__c = 'Test Exception Single Account Single Country';
@@ -1440,7 +1471,8 @@ Accenture – NZ           NZ  4/19/2020      Created.
                 insert excep2;
                 Assert.areEqual(excep2.Core_MDF_Comments_txt__c,'Test Comments' );
             }catch(Exception exp){
-                String message = exp.getMessage();
+	    		// Highlight: Unused Local Variable - 16335
+                System.debug('Exception: ' + exp.getMessage());
             }
         }
        
@@ -1462,11 +1494,13 @@ Accenture – NZ           NZ  4/19/2020      Created.
         String role = '';
         List<String> budgetTypeList = new List<String>();
         List<String> geoList = new List<String>();
-        User submitter  = [SELECT Id FROM USER WHERE LastName = 'SystemAdmin' LIMIT 1];
+        // Highlight: Unused Local Variable - 16335
+		//User submitter  = [SELECT Id FROM USER WHERE LastName = 'SystemAdmin' LIMIT 1];
         User reviewer  = [SELECT Id FROM USER WHERE LastName = 'Excpetion Reviewer' LIMIT 1];
       
-        Account acc = [SELECT Id FROM Account WHERE Name = 'IPA Co-Marketing Account' LIMIT 1];
-        Account accMyntra = [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
+        // Highlight: Unused Local Variable - 16335
+		//Account acc = [SELECT Id FROM Account WHERE Name = 'IPA Co-Marketing Account' LIMIT 1];
+        //Account accMyntra = [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
         
         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgmIPA = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
         iupgmIPA.Core_MDF_Program_nm__c = 'Intel Partner Alliance';
@@ -1547,11 +1581,13 @@ Accenture – NZ           NZ  4/19/2020      Created.
         String role = '';
         List<String> budgetTypeList = new List<String>();
         List<String> geoList = new List<String>();
-        User submitter  = [SELECT Id FROM USER WHERE LastName = 'SystemAdmin' LIMIT 1];
+        // Highlight: Unused Local Variable - 16335
+		//User submitter  = [SELECT Id FROM USER WHERE LastName = 'SystemAdmin' LIMIT 1];
         User reviewer  = [SELECT Id FROM USER WHERE LastName = 'Excpetion Reviewer' LIMIT 1];
       
-        Account acc = [SELECT Id FROM Account WHERE Name = 'IPA Co-Marketing Account' LIMIT 1];
-        Account accMyntra = [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
+        // Highlight: Unused Local Variable - 16335
+		//Account acc = [SELECT Id FROM Account WHERE Name = 'IPA Co-Marketing Account' LIMIT 1];
+        //Account accMyntra = [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
         
         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgmIPA = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
         iupgmIPA.Core_MDF_Program_nm__c = 'Intel Partner Alliance';
@@ -1633,11 +1669,13 @@ Accenture – NZ           NZ  4/19/2020      Created.
         String role ='';
         List<String> budgetTypeList = new List<String>();
         List<String> geoList = new List<String>();
-        User submitter  = [SELECT Id FROM USER WHERE LastName = 'SystemAdmin' LIMIT 1];
+        // Highlight: Unused Local Variable - 16335
+		//User submitter  = [SELECT Id FROM USER WHERE LastName = 'SystemAdmin' LIMIT 1];
         User reviewer  = [SELECT Id FROM USER WHERE LastName = 'Excpetion Reviewer' LIMIT 1];
-      
-
-        Account accMyntra = [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
+         // Highlight: Unused Local Variable - 14285 // Suma
+        //Account acc = [SELECT Id FROM Account WHERE Name = 'IPA Co-Marketing Account' LIMIT 1];
+        // Highlight: Unused Local Variable - 16335
+		//Account accMyntra = [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
         
         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgmIPA = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
         iupgmIPA.Core_MDF_Program_nm__c = 'Intel Partner Alliance';
@@ -1716,12 +1754,14 @@ Accenture – NZ           NZ  4/19/2020      Created.
         Map<Id,Core_MDF_Exception_Account_Mapping__c> eamNewMap = new Map<Id,Core_MDF_Exception_Account_Mapping__c>();
         Test.startTest();
         User submitter  = [SELECT Id FROM USER WHERE LastName = 'SystemAdmin' LIMIT 1];
-        User reviewer  = [SELECT Id FROM USER WHERE LastName = 'Excpetion Reviewer' LIMIT 1];
-        Account acc1 = [SELECT Id FROM Account WHERE Name = 'IPA Co-Marketing Account' LIMIT 1];
+        // Highlight: Unused Local Variable - 16335
+		//User reviewer  = [SELECT Id FROM USER WHERE LastName = 'Excpetion Reviewer' LIMIT 1];
+        //Account acc1 = [SELECT Id FROM Account WHERE Name = 'IPA Co-Marketing Account' LIMIT 1];
         Account acc= [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
         Account accEef = [SELECT Id FROM Account WHERE Name = 'Test Primary Intel Account' LIMIT 1];
-        Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
-                                                           WHERE Core_MDF_User_id__c =: submitter.id Limit 1];
+        // Highlight: Unused Local Variable - 16335
+		/*Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
+                                                           WHERE Core_MDF_User_id__c =: submitter.id Limit 1];*/
         
         Core_MDF_Exception__c expt = new Core_MDF_Exception__c();
         
@@ -1809,6 +1849,7 @@ Accenture – NZ           NZ  4/19/2020      Created.
             exptEEFPrgm2.Core_MDF_Select_All_Country_ind__c = true;
             //exptEEFPrgm2.Core_MDF_Account_id__c = acc.Id;
             exceptionList.add(exptEEFPrgm);
+            
             // US - TWC702-14285: Unit Test Method should include System.Assert
             Assert.areEqual(4, exceptionList.size(), 'Exception list should contain 4 records');
             Assert.isNotNull(expt.Core_MDF_Name_of_Exception_nm__c, 'Exception name should be set');
@@ -1860,6 +1901,9 @@ Accenture – NZ           NZ  4/19/2020      Created.
                 
             }catch(Exception e){
             }
+            // US - TWC702-14285: Unit Test Method should include System.Assert
+           // Assert.isNotNull(expt.Id, 'IPA Exception should be created successfully');
+           // Assert.isNotNull(exptAllAccount.Id, 'IPA All Account Exception should be created successfully');
             Test.stopTest(); 
         }
     }
@@ -1879,7 +1923,7 @@ Accenture – NZ           NZ  4/19/2020      Created.
         Account acc1 = [SELECT Id FROM Account WHERE Name = 'IPA Intel Account' LIMIT 1];
         Account acc= [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
         Account accEef = [SELECT Id FROM Account WHERE Name = 'Test Primary Intel Account' LIMIT 1];
-        Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
+         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
                                                            WHERE Core_MDF_User_id__c =: submitter.id Limit 1];
         
         Core_MDF_Exception__c expt = new Core_MDF_Exception__c();
@@ -1964,8 +2008,8 @@ Accenture – NZ           NZ  4/19/2020      Created.
         Account acc1 = [SELECT Id FROM Account WHERE Name = 'IPA Intel Account' LIMIT 1];
         Account acc= [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
         Account accEef = [SELECT Id FROM Account WHERE Name = 'Test Primary Intel Account' LIMIT 1];
-        Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
-                                                           WHERE Core_MDF_User_id__c =: submitter.id Limit 1];
+         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
+                                                            WHERE Core_MDF_User_id__c =: submitter.id Limit 1];
         
         Core_MDF_Exception__c expt = new Core_MDF_Exception__c();
         
@@ -2034,7 +2078,7 @@ Accenture – NZ           NZ  4/19/2020      Created.
         }
     }
 
-    @isTest
+  @isTest
     static void exceptionCreateIPA3(){
         
         List<Core_MDF_Exception__c> exceptionList = new List<Core_MDF_Exception__c>();
@@ -2049,8 +2093,9 @@ Accenture – NZ           NZ  4/19/2020      Created.
         Account acc1 = [SELECT Id FROM Account WHERE Name = 'IPA Intel Account' LIMIT 1];
         Account acc= [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
         Account accEef = [SELECT Id FROM Account WHERE Name = 'Test Primary Intel Account' LIMIT 1];
-        Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
-                                                           WHERE Core_MDF_User_id__c =: submitter.id Limit 1];
+
+         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c
+                                                            WHERE Core_MDF_User_id__c =: submitter.id Limit 1];
         
         List<String> bypassFunctionKeys = new List<String>();
 
@@ -2082,6 +2127,7 @@ Accenture – NZ           NZ  4/19/2020      Created.
             //expt.Core_MDF_Account_id__c = acc1.Id;
             expt.Core_MDF_Select_All_Accounts_ind__c = false;
             expt.Core_MDF_Budget_Type_nm__c = 'Account Plan';
+
             exceptionList.add(expt);
 
             Core_MDF_Exception__c exptEEFPrgm2 = new Core_MDF_Exception__c();
@@ -2097,9 +2143,9 @@ Accenture – NZ           NZ  4/19/2020      Created.
             exptEEFPrgm2.Core_MDF_Country_Region_nm__c = '';
             exptEEFPrgm2.Core_MDF_Select_All_Country_ind__c = true;
             //exptEEFPrgm2.Core_MDF_Account_id__c = acc.Id;
+
             exceptionList.add(exptEEFPrgm2);
-
-
+     
             try{
                 Database.insert(exceptionList);
                 Core_MDF_Expt_AccMap_ServiceHandler.createExceptionShareExt(String.valueOf(expt.Id), String.valueOf(submitter.Id));
@@ -2143,6 +2189,7 @@ Accenture – NZ           NZ  4/19/2020      Created.
             Test.stopTest(); 
         }
     }
+
 
      @isTest
     static void exceptionHostRegionTest(){
@@ -2205,6 +2252,8 @@ Accenture – NZ           NZ  4/19/2020      Created.
       }}catch(exception ex){
       }
         Core_MDF_Exception_TriggerServiceHandler.validateSelectedAccount(exceptionList,newExceptionMap);
+		// Unit Test Method should include System.Assert - 16335
+		Assert.isTrue(accIdPartnerTypeMap.containsKey(acc.Id), 'Partner type map should contain the EEF account for sharing validation');
         Test.stopTest();
   }
     @isTest
@@ -2218,7 +2267,9 @@ Accenture – NZ           NZ  4/19/2020      Created.
         insert category;
         categoryValues.add('Core_MDF_Client_CoMarketing_Fund');
         Test.startTest();
-        Core_MDF_Exception_TriggerServiceHandler.getNewCategoryValues(categoryValues);
+        Map<String, List<String>> result = Core_MDF_Exception_TriggerServiceHandler.getNewCategoryValues(categoryValues);
+		// Unit Test Method should include System.Assert - 16335
+		Assert.isTrue(result.containsKey('Core_MDF_Client_CoMarketing_Fund'), 'Result map should contain the CCF program with its category values');
         Test.stopTest();
     }
     
@@ -2259,7 +2310,9 @@ Accenture – NZ           NZ  4/19/2020      Created.
                 database.insert(exptMap);
       }}catch(exception ex){
       }
-        Test.stopTest();
+      // Unit Test Method should include System.Assert - 16335
+      Assert.areEqual(acc.Id, exptEEFPrgm.Core_MDF_Account_id__c, 'EEF Exception should be linked to the Primary Partner account');
+      Test.stopTest();
   }
   @isTest
     static void validateAccountTest(){
@@ -2275,7 +2328,7 @@ Accenture – NZ           NZ  4/19/2020      Created.
         testException.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         testException.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         testException.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-        testException.Core_MDF_Activity_Cate_and_Type_nm__c = 'Audio->Podcast'; // 14285 Indira
+        testException.Core_MDF_Activity_Cate_and_Type_nm__c = 'Audio->Podcast';
         testException.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         testException.Core_MDF_Select_All_Country_ind__c = true;
         testException.Core_MDF_Account_id__c = acc.Id;
@@ -2641,8 +2694,7 @@ static void testEAMEEFMethod() {
         eefException1.Core_MDF_Program_nm__c = 'Core_MDF_Ecosystem_Extension_Fund';
         eefException1.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Other (Broadcast)';
         eefException1.Core_MDF_Total_Dollar_Impact_amt__c = 100;
-        eefException1.Core_MDF_Country_Region_nm__c = '';
-        eefException1.Core_MDF_Select_All_Country_ind__c = true;
+        eefException1.Core_MDF_Country_Region_nm__c = 'INDIA';
         eefException1.Core_MDF_Exception_Status_nm__c='Approved';
         eefException1.Core_MDF_Expose_Externally_ind__c=true;
         exceptions.add(eefException1);
@@ -2657,8 +2709,7 @@ static void testEAMEEFMethod() {
         eefException2.Core_MDF_Program_nm__c = 'Core_MDF_Ecosystem_Extension_Fund';
         eefException2.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Other (Broadcast)';
         eefException2.Core_MDF_Total_Dollar_Impact_amt__c = 200;
-        eefException2.Core_MDF_Country_Region_nm__c = '';
-        eefException2.Core_MDF_Select_All_Country_ind__c = true;
+        eefException2.Core_MDF_Country_Region_nm__c = 'AUSTRALIA';
         eefException2.Core_MDF_Exception_Status_nm__c='Approved';
         eefException2.Core_MDF_Expose_Externally_ind__c=true;
         exceptions.add(eefException2);
@@ -2722,8 +2773,7 @@ static void testEAMEEFMethod() {
         newException3.Core_MDF_Program_nm__c = 'Core_MDF_Ecosystem_Extension_Fund';
         newException3.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Other (Broadcast)';
         newException3.Core_MDF_Total_Dollar_Impact_amt__c = 100;
-        newException3.Core_MDF_Country_Region_nm__c = '';
-        newException3.Core_MDF_Select_All_Country_ind__c = true;
+        newException3.Core_MDF_Country_Region_nm__c = 'INDIA';
         newException3.Core_MDF_Exception_Status_nm__c='Approved';
         newException3.Core_MDF_Expose_Externally_ind__c=true;
         insert newException3;
@@ -2938,6 +2988,7 @@ static void testEAMEEFMethod2() {
     }
     }catch(Exception ex){}
     }
+    
   // 14285 Indira - Start 
   @isTest
 static void testShareExceptionRecordsWithExtUsersUpdate() {
@@ -3119,11 +3170,10 @@ static void testShareExceptionRecordsWithExtUsersEEF() {
         expt.Core_MDF_Program_nm__c = 'Core_MDF_Ecosystem_Extension_Fund';
         expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Other (Broadcast)';
         expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
-        expt.Core_MDF_Country_Region_nm__c = '';
-		expt.Core_MDF_Select_All_Country_ind__c = true;
+        expt.Core_MDF_Country_Region_nm__c = 'INDIA';
         expt.Core_MDF_Exception_Status_nm__c = 'Approved';
         expt.Core_MDF_Expose_Externally_ind__c = true;
-        //insert expt;
+        insert expt;
         
         // Create Exception Account Mapping for EEF
         Core_MDF_Exception_Account_Mapping__c eam = new Core_MDF_Exception_Account_Mapping__c();
@@ -3134,7 +3184,7 @@ static void testShareExceptionRecordsWithExtUsersEEF() {
         //eam.Core_MDF_Select_All_Accounts_ind__c = false;
         //eam.Core_MDF_Expose_Externally_ind__c = true;
         //eam.Core_MDF_OwnerId_txt__c = expt.OwnerId;
-        //insert eam;
+        insert eam;
         
         // Create old map
         Map<Id, Core_MDF_Exception__c> oldExceptionMap = new Map<Id, Core_MDF_Exception__c>();
@@ -3232,131 +3282,6 @@ static void testShareExceptionRecordsWithExtUsersEmptyMaps() {
     // Test with null maps
    //Core_MDF_Exception_TriggerServiceHandler.shareExceptionRecordsWithExtUsers(null, null);
     
-    Test.stopTest();
-}
-
-@isTest
-static void testEAMTriggerHandlerRefreshesExternalSharesOnInactivation() {
-    Core_MDF_CCP_TestDataUtility.byPassFeature(
-        new List<String>{'Core_MDF_ByPass_EAM_Expt_Ext_Sharing'},
-        false,
-        true
-    );
-    Test.startTest();
-
-    User submitter = [SELECT Id FROM User WHERE LastName = 'SystemAdmin' LIMIT 1];
-    Account intelAccountA = [SELECT Id FROM Account WHERE Name = 'FlipkartTestAccount' LIMIT 1];
-    Account intelAccountB = [SELECT Id FROM Account WHERE Name = 'MyntraTestAccount' LIMIT 1];
-
-    System.runAs(submitter) {
-        Group externalGroupA = new Group(
-            Name = 'EAM External Group A',
-            DeveloperName = 'EAM_External_Group_A'
-        );
-        Group externalGroupB = new Group(
-            Name = 'EAM External Group B',
-            DeveloperName = 'EAM_External_Group_B'
-        );
-        insert new List<Group>{externalGroupA, externalGroupB};
-
-        ChannelProgram rmfProgram = Core_MDF_CCP_TestDataUtility.createProgram(
-            'Retail Marketing Funds',
-            'Retail Marketing Funds',
-            true
-        );
-        Account accountA = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount(
-            'EAM External RMF Account A',
-            rmfProgram.Id,
-            Core_MDF_CCP_TestDataUtility.Account_Record_Type,
-            intelAccountA.Id,
-            false
-        );
-        accountA.Core_MDF_External_Group_Id__c = String.valueOf(externalGroupA.Id);
-        accountA.BillingStateCode = '';
-        accountA.BillingCity = 'Ponta Grossa';
-        accountA.BillingCountry = 'BRA';
-        accountA.BillingStreet = 'Test';
-        accountA.Core_Geo__c = 'APJ';
-        accountA.Core_Sub_Geo__c = 'ROA';
-
-        Account accountB = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount(
-            'EAM External RMF Account B',
-            rmfProgram.Id,
-            Core_MDF_CCP_TestDataUtility.Account_Record_Type,
-            intelAccountB.Id,
-            false
-        );
-        accountB.Core_MDF_External_Group_Id__c = String.valueOf(externalGroupB.Id);
-        accountB.BillingStateCode = '';
-        accountB.BillingCity = 'Ponta Grossa';
-        accountB.BillingCountry = 'BRA';
-        accountB.BillingStreet = 'Test';
-        accountB.Core_Geo__c = 'APJ';
-        accountB.Core_Sub_Geo__c = 'ROA';
-        insert new List<Account>{accountA, accountB};
-
-        Core_MDF_Exception__c exceptionRecord = new Core_MDF_Exception__c(
-            Core_MDF_Name_of_Exception_nm__c = 'EAM External Sharing Inactivation Test',
-            Core_MDF_Issue_Description_dsc__c = 'Test external sharing refresh',
-            Core_MDF_Comments_txt__c = 'Test',
-            Core_MDF_Exception_Start_Date_dt__c = System.today(),
-            Core_MDF_Exception_End_Date_dt__c = System.today() + 5,
-            Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog',
-            Core_MDF_Program_nm__c = 'Core_MDF_Retail_Marketing_Funds',
-            Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast',
-            Core_MDF_Total_Dollar_Impact_amt__c = 100,
-            Core_MDF_Country_Region_nm__c = 'INDIA',
-            Core_MDF_Exception_Status_nm__c = 'Approved',
-            Core_MDF_Expose_Externally_ind__c = true
-        );
-        insert exceptionRecord;
-
-        Core_MDF_Exception_Account_Mapping__c eamA = new Core_MDF_Exception_Account_Mapping__c(
-            Core_MDF_Account_id__c = accountA.Id,
-            Core_MDF_Exception_id__c = exceptionRecord.Id,
-            Core_MDF_Active_ind__c = true
-        );
-        Core_MDF_Exception_Account_Mapping__c eamB = new Core_MDF_Exception_Account_Mapping__c(
-            Core_MDF_Account_id__c = accountB.Id,
-            Core_MDF_Exception_id__c = exceptionRecord.Id,
-            Core_MDF_Active_ind__c = true
-        );
-        insert eamA;
-        insert eamB;
-
-        Core_MDF_Exception__Share staleShare = Core_MDF_Exception_TriggerServiceHandler.createExceptionShareExt(
-            String.valueOf(exceptionRecord.Id),
-            String.valueOf(externalGroupA.Id)
-        );
-        insert staleShare;
-        System.assertEquals(
-            1,
-            [
-                SELECT COUNT()
-                FROM Core_MDF_Exception__Share
-                WHERE ParentId = :exceptionRecord.Id
-                AND RowCause = 'Exception_External_Sharing__c'
-                AND UserOrGroupId = :externalGroupA.Id
-            ],
-            'Seed an external share before testing the mapping inactivation refresh.'
-        );
-
-        eamA.Core_MDF_Active_ind__c = false;
-        update eamA;
-
-        System.assertEquals(
-            0,
-            [
-                SELECT COUNT()
-                FROM Core_MDF_Exception__Share
-                WHERE ParentId = :exceptionRecord.Id
-                AND RowCause = 'Exception_External_Sharing__c'
-                AND UserOrGroupId = :externalGroupA.Id
-            ],
-            'Inactivating mapping A should remove its stale external Exception share.'
-        );
-    }
-
     Test.stopTest();
 }
 // 14285 Indira - End

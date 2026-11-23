@@ -3,7 +3,7 @@
         <div class="slds-grid slds-grid_vertical-align-center slds-grid_align-spread">
             <div class="slds-col"> <!--RECORDS PER PAGE-->
                 <div><!--- style={controlPagination} class="slds-list_inline slds-p-bottom_xx-small customSelect"> -->
-                    <label class="slds-text-color_weak slds-p-horizontal_x-small" for="recordsPerPage">Records per page:</label> 
+                    <label class="slds-text-color_weak slds-p-horizontal_x-small" for="recordsPerPage">{label.recPerPage}</label> 
                     <!--<lightning-combobox id="recordsPerPage" onchange={handleRecordsPerPage} options={pageSizeOptions} value={currentRecordsPerPage}> 
                     </lightning-combobox>-->
                     <div class="slds-select_container">
@@ -28,7 +28,7 @@
                         <span><!-- style={controlPrevious}>-->
                             <lightning-button-icon icon-name="utility:left" variant="bare" size="medium" alternative-text="Previous Page" onclick={previousPage}></lightning-button-icon>
                         </span>
-                        <label class="slds-text-color_weak slds-p-horizontal_x-small" for="pageNum">Page:</label> 
+                        <label class="slds-text-color_weak slds-p-horizontal_x-small" for="pageNum">{label.page}</label> 
                         <input type="number" id="pageNum" min="1" max={totalPages} value={pageNumber} maxlength="4" onkeypress={handlePageNumberChange} class="customInput" title="Go to a Page"></input>
                         <span>&nbsp;of&nbsp;<b id="totalPages">{totalPages}</b></span>
                         <span><!-- style={controlNext}>-->

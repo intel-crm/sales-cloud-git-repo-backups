@@ -1,0 +1,18 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="Core_MDF_coMarketingHomePage">
+<aura:handler name="init" value="this" action="{!c.doInit}"/>
+<aura:attribute name="userInfo" type="user"/>  
+   <div aura:id="text">
+        <lightning:card >
+            <p class="slds-p-horizontal_medium">
+               <b> Hi {!v.userInfo.FirstName} ! </b> 
+                <br></br>
+                <b style="color:#0000FF"> Welcome to Devccp!</b>
+                <br></br>
+                Sales CRM values have been updated to align to Sales BU priorities. More details are available in ‘What’s New’ HERE.
+                If your opportunity qualifies for a 2021 KPI, do not submit opportunity until the KPI is mapped on the opportunity.
+                This is typically ~24 hours after you update the opportunity.
+            </p>
+        </lightning:card>
+    </div>
+
+</aura:component>

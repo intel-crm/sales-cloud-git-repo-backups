@@ -18,7 +18,7 @@ Modified By:                      Date:07/25/2018                     Changes:No
     public static List < sObject > fetchLookUpValues(String searchKeyWord, String objectName, String sAdditionalFilter) {
         String sanitizedSearchKey = String.escapeSingleQuotes(searchKeyWord) + '%';
         String sanitizedObjectName = String.escapeSingleQuotes(objectName);
-        String sanitizedAdditionalFilter = String.escapeSingleQuotes(sAdditionalFilter);
+        String sanitizedAdditionalFilter = sAdditionalFilter == null ? '' : String.escapeSingleQuotes(sAdditionalFilter);
         sanitizedAdditionalFilter = sanitizedAdditionalFilter.replace('@quote;','\''); //replacing @quote; with '
         List < sObject > returnList = new List < sObject > ();
         String sQuery  = null;
@@ -42,7 +42,10 @@ Modified By:                      Date:07/25/2018                     Changes:No
         sQuery = sQuery + ' FROM ' + sanitizedObjectName;
         if(UserInfo.getUserType().indexOf('PowerPartner') >= 0)
         {
-            sQuery= sQuery + ' WHERE Name LIKE \'' + sanitizedSearchKey + '\' AND ' + sanitizedAdditionalFilter ;
+            sQuery= sQuery + ' WHERE Name LIKE \'' + sanitizedSearchKey + '\'';
+            if(String.isNotBlank(sanitizedAdditionalFilter)){
+                sQuery = sQuery + ' AND ' + sanitizedAdditionalFilter;
+            }
             if ('campaign'.equalsIgnoreCase(sanitizedObjectName))
             {   
                 
@@ -56,13 +59,13 @@ Modified By:                      Date:07/25/2018                     Changes:No
             {
                 if ('Account'.equalsIgnoreCase(sanitizedObjectName)){
                     //Akash - as part of this story changed order by created date desc to order by name asc for account lookup,[KIIT] Sort the custom account list picklist based on ascending order
-                	sQuery= sQuery + ' ORDER BY Name ASC';
+                    sQuery= sQuery + ' ORDER BY Name ASC';
                 }else{
                     sQuery= sQuery + ' ORDER BY CreatedDate DESC LIMIT 10';
                 }
             }
         }
-        else if(sanitizedAdditionalFilter != null && sanitizedAdditionalFilter != '' )
+        else if(String.isNotBlank(sanitizedAdditionalFilter))
         {
             if ('campaign'.equalsIgnoreCase(sanitizedObjectName))
             {
@@ -72,7 +75,7 @@ Modified By:                      Date:07/25/2018                     Changes:No
                     '\' AND Core_MDF_Opal_Budget_Type_Txt__c!=\''+String.escapeSingleQuotes(System.Label.Core_MDF_BudgetType_DCF1_0)+
                     '\' AND RecordType.DeveloperName!=\''+String.escapeSingleQuotes(System.Label.Core_MDF_PFR_SPCF)+
                     '\' AND RecordType.DeveloperName!=\''+String.escapeSingleQuotes(System.Label.Core_MDF_PFR_CCF_Boost)+'\' ORDER BY CreatedDate DESC LIMIT 10';
-            	  
+                  
             }
             else if ('Account'.equalsIgnoreCase(sanitizedObjectName))
             {
@@ -87,10 +90,10 @@ Modified By:                      Date:07/25/2018                     Changes:No
         else
         {       //Akash - as part of this story changed order by created date desc to order by name asc for account lookup,[KIIT] Sort the custom account list picklist based on ascending order
                 if ('Account'.equalsIgnoreCase(sanitizedObjectName)){
-                    sQuery =  sQuery + ' WHERE Name LIKE \'' + sanitizedSearchKey + + '\' ORDER BY Name ASC LIMIT 10';
+                    sQuery =  sQuery + ' WHERE Name LIKE \'' + sanitizedSearchKey + '\' ORDER BY Name ASC LIMIT 10';
                 }
                 else{
-                    sQuery =  sQuery + ' WHERE Name LIKE \'' + sanitizedSearchKey + + '\' ORDER BY CreatedDate DESC LIMIT 10';
+                    sQuery =  sQuery + ' WHERE Name LIKE \'' + sanitizedSearchKey + '\' ORDER BY CreatedDate DESC LIMIT 10';
                 }
         }
         List < sObject > lstOfRecords  = new List<sObject>();

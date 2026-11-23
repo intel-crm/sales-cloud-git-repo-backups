@@ -76,53 +76,9 @@
         </layoutColumns>
         <style>CustomLinks</style>
     </layoutSections>
-    <platformActionList>
-        <actionListContext>Record</actionListContext>
-        <platformActionListItems>
-            <actionName>Edit</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Delete</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>1</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Clone</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>2</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>ChangeOwnerOne</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>3</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>ChangeRecordType</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>4</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>PrintableView</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>5</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Share</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>6</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>RecordShareHierarchy</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>7</sortOrder>
-        </platformActionListItems>
-    </platformActionList>
     <relatedLists>
         <fields>NAME</fields>
         <fields>Core_Supported_Product_Name__c</fields>
-        <fields>Core_Product__c</fields>
         <fields>Core_Product_EPM_ID__c</fields>
         <fields>Core_Code_Name__c</fields>
         <fields>Core_Platform_Name__c</fields>
@@ -193,12 +149,9 @@
         <excludeButtons>MassChangeOwner</excludeButtons>
         <fields>NAME</fields>
         <fields>Core_IPS_Case_Owner__c</fields>
-        <fields>Core_IPS_Case_Owner_Email__c</fields>
         <fields>Core_IPS_Owner_Group_1__c</fields>
         <fields>Core_IPS_Owner_Group_2__c</fields>
         <fields>Core_IPS_Owner_Group_3__c</fields>
-        <fields>Core_IPS_Owner_Team_1__c</fields>
-        <fields>Core_IPS_Owner_Team_2__c</fields>
         <relatedList>Core_IPS_Case_Owner_Group__c.Core_IPS_Support_Org__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>

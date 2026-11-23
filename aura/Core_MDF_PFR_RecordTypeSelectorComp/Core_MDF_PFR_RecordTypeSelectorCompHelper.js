@@ -51,7 +51,7 @@
         var claimUrl = $A.get("$Label.c.Core_MDF_Claim_URL").toLowerCase();
         var campaignText = $A.get("$Label.c.Core_MDF_CampaignText").toLowerCase();
         var paymentRunUrl = $A.get("$Label.c.Core_MDF_Payment_Run").toLowerCase();
-        var adjustmentUrl = $A.get("$Label.c.Core_MDF_Adjustment").toLowerCase();
+        var adjustmentUrl = "core_mdf_adjustment_request__c";
         var pageRef = component.get("v.pageReference");
 		var isPfrFlag = pageRef && pageRef.state && pageRef.state.c__isPfrPage;
        	if(sPageURL.includes(pfrURL) || component.get("v.checkSaveandNew") || isPfrFlag){

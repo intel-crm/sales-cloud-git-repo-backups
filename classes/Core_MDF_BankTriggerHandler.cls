@@ -14,7 +14,8 @@ public without sharing class Core_MDF_BankTriggerHandler extends TriggerHandler{
 
     public override void beforeUpdate(){
         if (isActive('Core_MDF_BankProcessesOnbeforeUpdate')) {
-			Core_MDF_BankServiceHandler.beforeUpdateBankRecords((Map<Id,Core_MDF_Bank__c>) Trigger.oldMap, (Map<Id,Core_MDF_Bank__c>) Trigger.newMap);
+            System.debug('hmz1');
+            Core_MDF_BankServiceHandler.beforeUpdateBankRecords((Map<Id,Core_MDF_Bank__c>) Trigger.oldMap, (Map<Id,Core_MDF_Bank__c>) Trigger.newMap);
         }
 
 
@@ -46,6 +47,7 @@ public without sharing class Core_MDF_BankTriggerHandler extends TriggerHandler{
             * @param Trigger.oldMap     : Map of the old Banks
             * @param Trigger.newMap     : Map of the new Banks
             */
+            System.debug('After Update');
             Core_MDF_BankServiceHandler.afterUpdateBankRecords((Map<Id,Core_MDF_Bank__c>) Trigger.oldMap,
                                                                (Map<Id,Core_MDF_Bank__c>) Trigger.newMap);
         }

@@ -42,16 +42,40 @@
         <name>Core_MDF_Baseline_Value_nbr__c</name>
     </fields>
     <fields>
+        <label><!-- Brand --></label>
+        <name>Core_MDF_Brand_nm__c</name>
+    </fields>
+    <fields>
         <label><!-- Goal Value --></label>
         <name>Core_MDF_Goal_Value_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Outcome Brands/Technologies --></label>
+        <name>Core_MDF_Other_Brands_Technologies_txt__c</name>
     </fields>
     <fields>
         <label><!-- Outcome Metric --></label>
         <name>Core_MDF_Outcome_Metric_nm__c</name>
     </fields>
     <fields>
+        <label><!-- Outcome Type --></label>
+        <name>Core_MDF_Outcome_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>Business</masterLabel>
+            <translation><!-- Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing</masterLabel>
+            <translation><!-- Marketing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Result value --></label>
         <name>Core_MDF_Result_Value_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Technology --></label>
+        <name>Core_MDF_Technology_txt__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

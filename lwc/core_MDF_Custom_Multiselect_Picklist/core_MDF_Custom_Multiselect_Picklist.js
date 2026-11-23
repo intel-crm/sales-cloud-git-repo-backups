@@ -163,4 +163,42 @@ export default class Core_MDF_Custom_Multiselect_Picklist extends LightningEleme
     handleMouseIn() {
         //this.showDropdown = true;
     }
+    /*get computedDropdownClass() {
+        let axis = this.yaxis;
+        axis = axis + 300;
+        let directionCss = '';
+        if (window.innerHeight < axis) {
+            directionCss = 'showUpperDropDown';
+        } else {
+            directionCss = '';
+        }
+        let classs = 'slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid ' + directionCss;
+        return classs;
+        /*if (this.showDropdown) {
+            if (dropdownHeight === 'standard') {
+                if (window.innerHeight <= VIEWPORT_HEIGHT_SMALL) {
+                    dropdownLengthClass = 'slds-dropdown_length-with-icon-7';
+                } else {
+                    dropdownLengthClass = 'slds-dropdown_length-with-icon-10';
+                }
+            } else if (dropdownHeight === 'small') {
+                dropdownLengthClass = 'slds-dropdown_length-with-icon-5';
+            }
+        }
+        return classSet(
+            `slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid ${dropdownLengthClass}`
+        )
+            .add({
+                'slds-dropdown_left':
+                    alignment === 'left' || alignment === 'auto',
+                'slds-dropdown_center': alignment === 'center',
+                'slds-dropdown_right': alignment === 'right',
+                'slds-dropdown_bottom': alignment === 'bottom-center',
+                'slds-dropdown_bottom slds-dropdown_right slds-dropdown_bottom-right':
+                    alignment === 'bottom-right',
+                'slds-dropdown_bottom slds-dropdown_left slds-dropdown_bottom-left':
+                    alignment === 'bottom-left'
+            })
+            .toString();
+    }*/
 }

@@ -282,7 +282,7 @@
             <targetReference>Get_Active_Version_Record</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <variables>
         <name>recordId</name>
         <dataType>SObject</dataType>

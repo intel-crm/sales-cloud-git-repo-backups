@@ -29,6 +29,7 @@ the method will not commit the changes to the database, for committing, explicit
     public static void fundReservation(Map<ID,PartnerFundClaim> originalClaimsTobeProcessed, Boolean recoveryCheck){
         
         try {
+            system.debug('originalClaimsTobeProcessed@@@' + originalClaimsTobeProcessed);
             // checking the recurdsiveCheckStop to TRUE to avoid recursion
             recursiveCheckStop = true;
             //Record Type Info Map
@@ -42,15 +43,15 @@ the method will not commit the changes to the database, for committing, explicit
             
             List<Core_MDF_Bulk_Transaction__e> bulkTranEvents = new List<Core_MDF_Bulk_Transaction__e>();
             
-            String claimReservationStatusList = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ClaimReservationCheckStatus');
+            String claimReservationStatusList = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ClaimReservationCheckStatus');  //Submitted/PAF
             if(!String.IsBlank(claimReservationStatusList)){
                 for(String claimStatus : claimReservationStatusList.split(';')){
                     claimReservationStatusSet.add(claimStatus);
                 }
             }
+            
             // modifying the incoming claim list to add the related fields like Allocation.Amount, ChannelPartner.Core_MDF_Enabled_Auto_Transfer__c etc
             // and ordering the list according to the Creation Date of the Claims    
-            
             if(recoveryCheck){
                 claimsTobeProcessed = new Map<ID,PartnerFundClaim>(originalClaimsTobeProcessed);
             }else{
@@ -61,6 +62,7 @@ the method will not commit the changes to the database, for committing, explicit
                                                                                          WHERE ID IN:originalClaimsTobeProcessed.values() AND (RecordTypeId IN:recordTypeSet) 
                                                                                          AND Core_MDF_Status__c IN:claimReservationStatusSet ORDER BY CreatedDate]);
             }
+            system.debug('claimsTobeProcessed@@@' + claimsTobeProcessed);
             // Create Map<ClaimId, currentAllocationNodeId>
             Map<Id,String> claimIdToAutoTransferNodeId = new Map<Id,String>();
             
@@ -158,9 +160,8 @@ the method will not commit the changes to the database, for committing, explicit
                 
                 currentAllocationRemainingAmount = mainWrapperInstance.currentAllocationAmount;
                 // autoTransferAllocationremainingAmount = mainWrapperInstance.autoTransferAllocationAmount;
-                
                 for(PartnerFundClaim claim : mainWrapperInstance.associatedClaims){                    
-                    // if funds are available                         
+                    // if funds are available                      
                     if(claim.Amount <= currentAllocationRemainingAmount){
                         // add to the List of claims to be updated to Approved - Payment Due
                         originalClaimsTobeProcessed.get(claim.ID).Core_MDF_Status__c = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Payment_Due');
@@ -192,7 +193,7 @@ the method will not commit the changes to the database, for committing, explicit
                                 
                                 originalClaimsTobeProcessed.get(claim.ID).Core_MDF_Status__c = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Payment_Due');
                                 autoTransferedClaimList.add(claim);
-                                
+                    
                                 currentAllocationRemainingAmount = 0;
                                 // we cannot use the below field as its formula, going with the field update of the fields used in formula
                                 //autoTransferAllocation.Core_MDF_Available_Allocation_Amount__c -= transferAmount
@@ -213,8 +214,9 @@ the method will not commit the changes to the database, for committing, explicit
                             }
                         }
                         // else update the status of Claim to PAF
-                        else{originalClaimsTobeProcessed.get(claim.ID).Core_MDF_Status__c = Label.Core_MDF_Status_Pending_Available_Fund;
-                            }
+                        else {originalClaimsTobeProcessed.get(claim.ID).Core_MDF_Status__c = Label.Core_MDF_Status_Pending_Available_Fund;
+                        }
+                        
                         
                     }    
                     
@@ -233,9 +235,11 @@ the method will not commit the changes to the database, for committing, explicit
                 List<Database.SaveResult> results = EventBus.publish(bulkTranEvents);  
                 for (Database.SaveResult sr : results) {
                     if (sr.isSuccess()) {
+                        
                     } 
                     else { 
                         for(Database.Error err : sr.getErrors()) { 
+                             ); 
                         }
                     }
                 }  
@@ -243,6 +247,18 @@ the method will not commit the changes to the database, for committing, explicit
         }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);throw new DMLException('Exception Occured:::'+e);}
     }
     
+    //Roshan - Sub claim PIC flow POC
+    // public static void updateSubClaimsStatus(Id superClaimId, String newStatus) {
+
+    //     List<PartnerFundClaim> subClaims = [SELECT Id, Core_MDF_Status__c FROM PartnerFundClaim WHERE Core_MDF_Claim_Id__c = :superClaimId];
+    //     if (subClaims.isEmpty()) return;
+
+    //     for (PartnerFundClaim subClaim : subClaims) {
+    //         subClaim.Core_MDF_Status__c = newStatus;
+    //     }
+    //     update subClaims;
+    // }
+
     
     /**
 * @description: Create Wrapper Class, instance of which contains the Account Node, its associated claims 
@@ -308,7 +324,7 @@ public static void OnCancelUpdateActivityAmount(List<PartnerFundClaim> claimList
             && (pfcRecord.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Cancelled') || pfcRecord.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ResubWinClosed'))
                && pfcRecord.Core_MDF_Activity_Status_nm__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Claim_Activity_Closed_Status'))
                {
-                 PartnerFundClaim pfc = new PartnerFundClaim(Id=pfcRecord.id);
+                PartnerFundClaim pfc = new PartnerFundClaim(Id=pfcRecord.id);
                 pfc.RequestId = pfcRecord.RequestId;
                 pfc.Core_MDF_Budget_Type_Options_Nm__c = pfcRecord.Core_MDF_Budget_Type_Options_Nm__c;
                 pfc.Core_MDF_Escalation_Id__c = pfcRecord.Core_MDF_Escalation_Id__c;
@@ -326,6 +342,7 @@ public static void OnCancelUpdateActivityAmount(List<PartnerFundClaim> claimList
             // Rishabh
            // When all related claims are cancelled, the Activity status changes to Planned.
             if(pfcRecord.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Cancelled') && pfcRecord.Core_MDF_Activity_Status_nm__c == inprogress_status){
+                system.debug('Enter in the starting');
                 PartnerFundClaim pfc = new PartnerFundClaim(Id=pfcRecord.id);
                 pfc.RequestId = pfcRecord.RequestId;
                 Core_MDF_Bulk_Transaction__e evtObj = new Core_MDF_Bulk_Transaction__e(); 
@@ -345,9 +362,11 @@ public static void OnCancelUpdateActivityAmount(List<PartnerFundClaim> claimList
             List<Database.SaveResult> results = EventBus.publish(RecordList);
             for (Database.SaveResult sr : results) {
                 if (sr.isSuccess()) {
+                    
                 } 
                 else { 
-                    for(Database.Error err : sr.getErrors()) {
+                    for(Database.Error err : sr.getErrors()) { 
+                        
                     }
                 }
             }
@@ -356,6 +375,49 @@ public static void OnCancelUpdateActivityAmount(List<PartnerFundClaim> claimList
         }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}        
    
 }
+    /***************************************************************************************************** 
+    Method Name:        updateRelatedRecordsOnClaimStatusChange
+    @return  :          void
+    @parameters:        claimList, oldClaimMap
+    Description:        Method to Update Related Records On Claim Status Change
+    @Added By:          Accenture - Vikas Date:04-05-2026
+    Modified By:        Date:            Changes:  
+    ******************************************************************************************************/
+    /*public static void updateRelatedRecordsOnClaimStatusChange(List<PartnerFundClaim> claimList, Map<Id, PartnerFundClaim> oldClaimMap) {
+    
+        // Map of ActivityId -> claim's Core_MDF_Quantity_to_Date_Nbr__c
+        // If multiple claims having same activity, last claim's value will be used
+        Map<Id, Decimal> activityIdToClaimQtyToDateNbr = new Map<Id, Decimal>();
+    
+        for (PartnerFundClaim claim : claimList) {    
+            if (claim.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM && claim.Core_MDF_OutcomeBased_Ind__c == true && claim.Core_MDF_Claim_Id__c == null
+                && oldClaimMap != null && oldClaimMap.get(claim.Id).Core_MDF_Status__c != 'Payment Due' && claim.Core_MDF_Status__c == 'Payment Due' && claim.RequestId != null
+               && claim.Core_MDF_Escalation_Id__c == null) {
+                activityIdToClaimQtyToDateNbr.put(claim.RequestId, claim.Core_MDF_Quantity_to_Date_Nbr__c);
+            }
+        }
+    
+        if (activityIdToClaimQtyToDateNbr.isEmpty()) return;
+    
+        // Query active child outcome records linked to the collected activity Ids
+        List<Core_MDF_Activity_Outcome__c> outcomesToUpdate = new List<Core_MDF_Activity_Outcome__c>();
+    
+        for (Core_MDF_Activity_Outcome__c outcome : [
+            SELECT Id, Core_MDF_Activity_Id__c, Core_MDF_Result_Value_nbr__c
+            FROM Core_MDF_Activity_Outcome__c
+            WHERE Core_MDF_Activity_Id__c IN :activityIdToClaimQtyToDateNbr.keySet()
+            AND Core_MDF_Active_Ind__c = TRUE
+        ]) {
+            outcome.Core_MDF_Result_Value_nbr__c = activityIdToClaimQtyToDateNbr.get(outcome.Core_MDF_Activity_Id__c);
+            outcomesToUpdate.add(outcome);
+        }
+    
+        if (!outcomesToUpdate.isEmpty()) {
+            try {
+                Database.update(outcomesToUpdate);
+            } catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}
+        }
+    }*/
           
     /**
 * @description : Method to check the claim's liability for Fund Reservation and thereby calling it if eligible
@@ -374,17 +436,24 @@ public static void OnCancelUpdateActivityAmount(List<PartnerFundClaim> claimList
         Map<Id,PartnerFundClaim> claimsToBeReserved = new Map<Id,PartnerFundClaim>();
         
         for(PartnerFundClaim pfc : newclaimMap.values()){
-            if (pfc.Core_MDF_Has_Sub_Claims_Ind__c) { continue; }  //Roshan - Super Claim PIC
+
+            //Roshan - Super Claim PIC
+            if (pfc.Core_MDF_Has_Sub_Claims_Ind__c) { continue; }
+
+            system.debug('runningCLaim@@@' + pfc.Id);
             //check if adjustment then break
             Boolean isPICRequiredBasedOnPgm = pfc.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM ? false : isPICRequired;
             if(Core_MDF_Claim_Utility.isType(pfc, Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Claim_Adjustment_Type'))){continue;}
+
             if(!recursiveCheckStop && oldClaimMap != null && isClaimEligible(pfc,oldClaimMap.get(pfc.Id),isPICRequiredBasedOnPgm)){
+                system.debug('inside isClaimEligible01');
                 PartnerFundClaim newpfc = new PartnerFundClaim();
                 newpfc.Id = pfc.Id;
                 claimsToBeReserved.put(newpfc.Id,newpfc);
             }
             else{
                 if(!recursiveCheckStop && oldClaimMap == null && isClaimEligible(pfc,null,isPICRequired)){
+                    system.debug('inside isClaimEligible02');
                     PartnerFundClaim newpfc = new PartnerFundClaim();
                     newpfc.Id = pfc.Id;
                     claimsToBeReserved.put(newpfc.Id,newpfc);
@@ -392,6 +461,8 @@ public static void OnCancelUpdateActivityAmount(List<PartnerFundClaim> claimList
             }
 
         }
+
+        system.debug('claimsToBeReserved@@@' + claimsToBeReserved);
         if(claimsToBeReserved != null && claimsToBeReserved.size()>0){
             fundReservation(claimsToBeReserved,false);
             try {
@@ -412,7 +483,10 @@ public static void OnCancelUpdateActivityAmount(List<PartnerFundClaim> claimList
         }
         else{
             // if PIC is ON
+            system.debug('newclaim@@@' + newclaim);
+            system.debug('oldClaim@@@' + oldClaim);
             if(isPICRequired && oldClaim != null){  
+                system.debug('inside else@@@');
                 // if method called from Service Handler if PIC is turned off or in case of Release Hold 
                 //  
                 if(oldClaim !=null && (
@@ -421,8 +495,10 @@ public static void OnCancelUpdateActivityAmount(List<PartnerFundClaim> claimList
                     || (!newclaim.Core_MDF_Bank_Doc_Hold_Ind__c && oldClaim.Core_MDF_Bank_Doc_Hold_Ind__c)
                 || (newclaim.Core_MDF_PIC_Review_Completed__c && !oldClaim.Core_MDF_PIC_Review_Completed__c)
                 || (!newclaim.Core_MDF_Claim_EvalInProgress_Ind__c && oldClaim.Core_MDF_Claim_EvalInProgress_Ind__c)
+                /*|| (newclaim.Core_MDF_Claim_Id__c != NULL && newClaim.Core_MDF_PIC_Review_Completed__c) */ //Roshan - Super Claim PIC
                 )
                    && (newclaim.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Submitted') || newclaim.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Pending_Available_Fund'))){
+                       system.debug('inside isClaimEligible03');
                        return true;
                    }else{return false;} 
             }else{
@@ -491,6 +567,7 @@ public static void OnCancelUpdateActivityAmount(List<PartnerFundClaim> claimList
             for (Database.SaveResult sr : results) {
                 if (!sr.isSuccess()){
                     for(Database.Error err : sr.getErrors()){
+                        
                         Throw new CustomException(err.getMessage());
                     } 
                 }               
@@ -560,12 +637,169 @@ public static void OnCancelUpdateActivityAmount(List<PartnerFundClaim> claimList
             for (Database.SaveResult sr : results) {
                 if (!sr.isSuccess()){
                     for(Database.Error err : sr.getErrors()){
+                        
                         Throw new CustomException(err.getMessage());
                     } 
                 }               
             } 
         }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}
     } 
+    
+
+    //Roshan - Super Claim PIC
+    // public static void syncSubClaimStatusOnSuperClaimUpdate(List<PartnerFundClaim> newList, Map<Id, PartnerFundClaim> oldMap) {
+
+    //     Set<Id> superToHold = new Set<Id>();
+    //     Set<Id> superToRelease = new Set<Id>();
+
+    //     for (PartnerFundClaim newClm : newList) {
+
+    //         if (newClm.Core_MDF_Has_Sub_Claims_Ind__c) {
+    //             if (oldMap.get(newClm.Id).Core_MDF_Status__c != 'Hold' && newClm.Core_MDF_Status__c == 'Hold') {
+    //                 superToHold.add(newClm.Id);
+    //             }
+
+    //             if (oldMap.get(newClm.Id).Core_MDF_Status__c == 'Hold' && newClm.Core_MDF_Status__c != 'Hold') {
+    //                 superToRelease.add(newClm.Id);
+    //             }
+    //         }
+    //     }
+
+    //     if (superToHold.isEmpty() && superToRelease.isEmpty()) {
+    //         return;
+    //     }
+
+    //     List<PartnerFundClaim> subClaimsToUpdate = new List<PartnerFundClaim>();
+
+    //     if (!superToHold.isEmpty()) {
+    //         subClaimsToUpdate.addAll([SELECT Id, Core_MDF_Status__c FROM PartnerFundClaim WHERE Core_MDF_Claim_Id__c IN :superToHold AND Core_MDF_Status__c != 'Hold']);
+
+    //         for (PartnerFundClaim sub : subClaimsToUpdate) {
+    //             sub.Core_MDF_Status__c = 'Hold';
+    //         }
+    //     }
+
+    //     if (!superToRelease.isEmpty()) {
+    //         List<PartnerFundClaim> releasedSubs = [SELECT Id, Core_MDF_Status__c FROM PartnerFundClaim WHERE Core_MDF_Claim_Id__c IN :superToRelease AND Core_MDF_Status__c = 'Hold'];
+
+    //         for (PartnerFundClaim sub : releasedSubs) {
+    //             sub.Core_MDF_Status__c = 'Submitted';
+    //         }
+
+    //         subClaimsToUpdate.addAll(releasedSubs);
+    //     }
+
+    //     if (!subClaimsToUpdate.isEmpty()) {
+    //         update subClaimsToUpdate;
+    //     }
+    // }
+
+    //Roshan - TWC3117-19133
+    public static final Integer SUPER_CLAIM_SYNC_MAX_RETRIES = 3;
+    public static Set<Id> publishedSuperClaimIds = new Set<Id>();
+
+    public static void publishSuperClaimStatusSync(List<PartnerFundClaim> newList, Map<Id, PartnerFundClaim> oldMap) {
+        try {
+            Set<Id> superClaimIds = collectSuperClaimIdsForSync(newList, oldMap);
+            superClaimIds.removeAll(publishedSuperClaimIds);
+            if (superClaimIds.isEmpty()) { return; }
+
+            List<Core_MDF_SuperClaim_Status_Sync__e> events = new List<Core_MDF_SuperClaim_Status_Sync__e>();
+            for (Id superClaimId : superClaimIds) {
+                events.add(new Core_MDF_SuperClaim_Status_Sync__e(Core_MDF_Super_Claim_Id__c = superClaimId));
+            }
+
+            List<Database.SaveResult> results = EventBus.publish(events);
+            String errorMessage = '';
+            for (Integer i = 0; i < results.size(); i++) {
+                if (results[i].isSuccess()) {
+                    publishedSuperClaimIds.add(events[i].Core_MDF_Super_Claim_Id__c);
+                } else {
+                    errorMessage += 'Publish FAILED for Super Claim Id = ' + events[i].Core_MDF_Super_Claim_Id__c;
+                    for (Database.Error err : results[i].getErrors()) {
+                        errorMessage += ' - Error = ' + err.getMessage();
+                    }
+                    errorMessage += '\n';
+                }
+            }
+            logSuperClaimSyncMessage(errorMessage);
+        } catch (Exception e) {
+            Core_MDF_CCP_UtilityClass.logError(e);
+        }
+    }
+
+    public static Set<Id> collectSuperClaimIdsForSync(List<PartnerFundClaim> newList, Map<Id, PartnerFundClaim> oldMap) {
+        Set<Id> superClaimIds = new Set<Id>();
+        if (newList == null || oldMap == null) { return superClaimIds; }
+
+        for (PartnerFundClaim newClaim : newList) {
+            if (oldMap.get(newClaim.Id) == null) { continue; }
+
+            if ((newClaim.Core_MDF_Status__c != oldMap.get(newClaim.Id).Core_MDF_Status__c) && newClaim.Core_MDF_Claim_Id__c != null) {
+                superClaimIds.add(newClaim.Core_MDF_Claim_Id__c);
+            }
+        }
+        return superClaimIds;
+    }
+
+    // below code runs when Core_MDF_SuperClaim_Status_Sync__e events are received
+    public static void processSuperClaimStatusSyncEvents(List<Core_MDF_SuperClaim_Status_Sync__e> events) {
+        Set<Id> superClaimIds = new Set<Id>();
+        for (Core_MDF_SuperClaim_Status_Sync__e evt : events) {
+            if (String.isNotBlank(evt.Core_MDF_Super_Claim_Id__c)) {
+                try {
+                    superClaimIds.add(Id.valueOf(evt.Core_MDF_Super_Claim_Id__c));
+                } catch (Exception e) {
+                    logSuperClaimSyncMessage('Invalid Super Claim Id on event: ' + evt.Core_MDF_Super_Claim_Id__c);
+                }
+            }
+        }
+
+        try {
+            recalculateSuperClaimStatus(superClaimIds);
+        } catch (Exception e) {
+            if (EventBus.TriggerContext.currentContext().retries < SUPER_CLAIM_SYNC_MAX_RETRIES) {
+                throw new EventBus.RetryableException(e.getMessage());
+            }
+            Core_MDF_CCP_UtilityClass.logErrorWithAdditionalMessage(e, 'Super Claim status sync failed after ' + SUPER_CLAIM_SYNC_MAX_RETRIES + ' retries. Super Claim Ids = ' + String.join(new List<Id>(superClaimIds), ','));
+        }
+    }
+
+    public static void recalculateSuperClaimStatus(Set<Id> superClaimIds) {
+        if (superClaimIds == null || superClaimIds.isEmpty()) { return; }
+
+        Core_MDF_SuperClaimStatusUpdateBatch batchLogic = new Core_MDF_SuperClaimStatusUpdateBatch(superClaimIds, null);
+        Set<String> eligibleStatuses = batchLogic.pref.keySet();
+
+        applySuperClaimStatus(batchLogic, [SELECT Id, Core_MDF_Status__c, Core_MDF_Member_Manual_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c, (SELECT Id, Core_MDF_Status__c FROM Claims__r) FROM PartnerFundClaim WHERE Core_MDF_Status__c IN :eligibleStatuses AND Id IN :superClaimIds]);
+    }
+
+    public static void applySuperClaimStatus(Core_MDF_SuperClaimStatusUpdateBatch batchLogic, List<PartnerFundClaim> superClaims) {
+        List<PartnerFundClaim> scope = new List<PartnerFundClaim>();
+        for (PartnerFundClaim superClaim : superClaims) {
+            for (PartnerFundClaim subClaim : superClaim.Claims__r) {
+                scope.add(superClaim);
+                break;
+            }
+        }
+
+        if (!scope.isEmpty()) {
+            batchLogic.execute(null, scope);
+        }
+    }
+
+    public static void logSuperClaimSyncMessage(String errorMessage) {
+        Core_MDF_CCP_UtilityClass.createLogEntries(new List<Map<String, String>>{new Map<String, String>{
+                'Core_Origin__c'      => 'Core_MDF_ProcessCCP_Claim.SuperClaimStatusSync',
+                'Core_Severity__c'    => 'High',
+                'Core_sObjectType__c' => 'PartnerFundClaim',
+                'Core_Project__c'     => 'Consolidated Co-Marketing Program (CCP)',
+                'Core_Details__c'     => errorMessage
+            }
+        });
+    }
+
+
    /***************************************************************************************************** 
     Method Name:        bulkTransactionEvent
     @return  :          Core_MDF_Bulk_Transaction__e Platform Event

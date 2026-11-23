@@ -39,6 +39,13 @@
     <description>Outcome Based Activities at Risk of Closing</description>
     <filter>
         <criteriaItems>
+            <column>PartnerFundRequest$Campaign.Core_MDF_Program__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Client CoMarketing Fund,Client,Intel Partner Alliance,Data Center CoMarketing Fund</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Fund_Request_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -64,7 +71,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Account Plan</value>
+            <value>MDF,MDF+,OEM CMP,Service Provider CMP,Account Plan</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Campaign</column>
@@ -74,11 +81,11 @@
             <value></value>
         </criteriaItems>
         <criteriaItems>
-            <column>PartnerFundRequest$Core_MDF_Program__c</column>
+            <column>PartnerFundRequest$Core_MDF_Budget_Type_nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Intel Partner Alliance</value>
+            <value>Account Plan</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Tactics_nm__c</column>

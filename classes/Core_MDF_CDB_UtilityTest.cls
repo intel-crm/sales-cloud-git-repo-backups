@@ -31,6 +31,9 @@ public class Core_MDF_CDB_UtilityTest {
         system.runAs(usr){
             List<PermissionSet> picReviewerPermissionSets = [SELECT Id, Name FROM PermissionSet where Name IN ('Core_MDF_CCP_Internal_Claim_Case_Reviewer')];
             PermissionSetAssignment  psa1 = new PermissionSetAssignment(PermissionSetId = picReviewerPermissionSets[0].Id, AssigneeId = usr.Id);
+            //PermissionSetAssignment  psa2 = new PermissionSetAssignment(PermissionSetId = picReviewerPermissionSets[1].Id, AssigneeId = usr.Id);
+            //PermissionSetAssignment  psa3 = new PermissionSetAssignment(PermissionSetId = picReviewerPermissionSets[2].Id, AssigneeId = usr.Id);
+            //PermissionSetAssignment  psa4 = new PermissionSetAssignment(PermissionSetId = picReviewerPermissionSets[3].Id, AssigneeId = usr.Id);
             List<PermissionSetAssignment>  psa = new List<PermissionSetAssignment>{psa1};
                 
                 insert psa;
@@ -89,6 +92,7 @@ public class Core_MDF_CDB_UtilityTest {
                 System.today().addDays(300),
                 false
             );
+            System.debug('Print Budget:'+budget);
             budget.Core_MDF_Budget_Type_Txt__c = 'OEM CMP';
             insert budget;
             

@@ -17,6 +17,10 @@
         <name>Core_MDF_Error_Message_txt__c</name>
     </fields>
     <fields>
+        <label><!-- Error Text --></label>
+        <name>Core_MDF_Error_Text_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- JSON String --></label>
         <name>Core_MDF_JSON_String_txt__c</name>
     </fields>

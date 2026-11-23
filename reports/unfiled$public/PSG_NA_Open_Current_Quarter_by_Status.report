@@ -54,65 +54,6 @@
             <value>Design</value>
         </values>
     </buckets>
-    <buckets>
-        <bucketType>text</bucketType>
-        <developerName>BucketField_81099400</developerName>
-        <masterLabel>PSG Regions</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <sourceColumnName>Opportunity.Core_Business_Unit_Territory__c</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>PSG-NA-ABOS</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-NA-ACAN</sourceValue>
-            </sourceValues>
-            <value>PSG-NA-NE</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>PSG-NA-CHI</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-NA-MINN</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-NA-OHIO</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-NA-WI</sourceValue>
-            </sourceValues>
-            <value>PSG-NA-NC</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>PSG-NA-MID</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-NA-SE</sourceValue>
-            </sourceValues>
-            <value>PSG-NA-SE</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>PSG-NA-NW</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-NA-RM</sourceValue>
-            </sourceValues>
-            <value>PSG-NA-NW</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>PSG-NA-SC</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-NA-SW</sourceValue>
-            </sourceValues>
-            <value>PSG-NA-SW</value>
-        </values>
-    </buckets>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
         <backgroundColor2>#FFFFFF</backgroundColor2>
@@ -122,13 +63,11 @@
             <axisBinding>y</axisBinding>
             <column>TOTAL_PRICE</column>
         </chartSummaries>
-        <chartType>VerticalColumnStacked</chartType>
+        <chartType>VerticalColumn</chartType>
         <enableHoverLabels>true</enableHoverLabels>
         <expandOthers>true</expandOthers>
         <groupingColumn>BucketField_60027637</groupingColumn>
-        <legendPosition>Bottom</legendPosition>
         <location>CHART_TOP</location>
-        <secondaryGroupingColumn>BucketField_81099400</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -140,6 +79,9 @@
         <titleColor>#000000</titleColor>
         <titleSize>18</titleSize>
     </chart>
+    <columns>
+        <field>TYPE</field>
+    </columns>
     <columns>
         <field>ACCOUNT_NAME</field>
     </columns>
@@ -169,19 +111,76 @@
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
+        <field>OWNER_MANAGER</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Technical_Owner_Manager__c</field>
     </columns>
-    <columns>
-        <field>Account.Core_Account_Tier__c</field>
-    </columns>
-    <columns>
-        <field>CREATED_DATE</field>
-    </columns>
-    <columns>
-        <field>PRODUCT_NAME</field>
-    </columns>
     <filter>
-        <booleanFilter>(1 AND 2) AND 3 AND 4 AND 5 AND 6</booleanFilter>
+        <booleanFilter>(1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 11 OR 12 OR 13) AND (9 OR 10) AND 14</booleanFilter>
+        <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>deleon</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>zurlo</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>madormo</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>rather</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>sunil gupta</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>prengler</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>guesner</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>sureena gupta</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Claim_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>12/31/2017 12:00 AM</value>
+        </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Claim_Date__c</column>
             <columnToColumn>false</columnToColumn>
@@ -190,54 +189,47 @@
             <value></value>
         </criteriaItems>
         <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>mirarchi</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>deleon</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>boucher</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Product2.Core_Product_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Win Submitted</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Product_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>FPGA</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Business_Unit_Territory__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>PSG-NA</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Intel_Platform__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Whitley,Ice Lake,Tiger Lake</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Design: Original,Design: Secondary</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>BucketField_60027637</field>
-        <sortOrder>Desc</sortOrder>
+        <field>Opportunity.Core_Business_Unit_Territory__c</field>
+        <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>BucketField_81099400</field>
+        <field>BucketField_60027637</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>PSG NA Opens by Status</name>
+    <name>PSG NA Open Current Quarter by Status</name>
     <params>
         <name>terr</name>
         <value>all</value>

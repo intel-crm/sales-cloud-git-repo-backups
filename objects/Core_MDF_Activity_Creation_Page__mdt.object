@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Create Activity Creation Form Dynamically</description>
+    <fields>
+        <fullName>Core_MDF_Active_ind__c</fullName>
+        <description>Whether the Entry is Active or Not</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Active</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>true</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Activity_Page_Section_txt__c</fullName>
+        <description>Activity Section on which Activity User</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Activity Page Section</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_API_Name_nm__c</fullName>
+        <description>Contains Api name of the field on the Activity to be shown on UI</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field API Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Data_Type_txt__c</fullName>
+        <description>Field Data Type for the Activity on UI</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field Data Type</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Display_Name_nm__c</fullName>
+        <description>To Store the Display Name for the fields</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field Display Name</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Activity Name</fullName>
+                    <default>true</default>
+                    <label>Activity Name</label>
+                </value>
+                <value>
+                    <fullName>Description</fullName>
+                    <default>false</default>
+                    <label>Description</label>
+                </value>
+                <value>
+                    <fullName>Start Date</fullName>
+                    <default>false</default>
+                    <label>Start Date</label>
+                </value>
+                <value>
+                    <fullName>End Date</fullName>
+                    <default>false</default>
+                    <label>End Date</label>
+                </value>
+                <value>
+                    <fullName>Campaign</fullName>
+                    <default>false</default>
+                    <label>Campaign</label>
+                </value>
+                <value>
+                    <fullName>Account</fullName>
+                    <default>false</default>
+                    <label>Account</label>
+                </value>
+                <value>
+                    <fullName>Priority</fullName>
+                    <default>false</default>
+                    <label>Priority</label>
+                </value>
+                <value>
+                    <fullName>Currency</fullName>
+                    <default>false</default>
+                    <label>Currency</label>
+                </value>
+                <value>
+                    <fullName>Budget Currency Local</fullName>
+                    <default>false</default>
+                    <label>Budget Currency Local</label>
+                </value>
+                <value>
+                    <fullName>Country</fullName>
+                    <default>false</default>
+                    <label>Country</label>
+                </value>
+                <value>
+                    <fullName>Target Audience</fullName>
+                    <default>false</default>
+                    <label>Target Audience</label>
+                </value>
+                <value>
+                    <fullName>Product Type</fullName>
+                    <default>false</default>
+                    <label>Product Type</label>
+                </value>
+                <value>
+                    <fullName>Brand</fullName>
+                    <default>false</default>
+                    <label>Brand</label>
+                </value>
+                <value>
+                    <fullName>Activity Category</fullName>
+                    <default>false</default>
+                    <label>Activity Category</label>
+                </value>
+                <value>
+                    <fullName>Activity Type</fullName>
+                    <default>false</default>
+                    <label>Activity Type</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Order_num__c</fullName>
+        <description>Order of the fields on UI for Activity</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Order</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Required_ind__c</fullName>
+        <description>Required on the save or not</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Mandatory/Required</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>true</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Test Activity Creation Page</label>
+    <pluralLabel>Activity Creation Pages</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -5,10 +5,10 @@
     <callout>FINEST</callout>
     <database>FINEST</database>
     <label>Deep_Trace</label>
-    <nba>FINE</nba>
+    <nba>NONE</nba>
     <system>FINE</system>
     <validation>INFO</validation>
     <visualforce>FINER</visualforce>
-    <wave>INFO</wave>
-    <workflow>INFO</workflow>
+    <wave>NONE</wave>
+    <workflow>FINER</workflow>
 </DebugLevel>

@@ -96,7 +96,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value></value>
+            <value>OSC</value>
         </criteriaItems>
         <criteriaItems>
             <column>USERS.NAME</column>
@@ -110,7 +110,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>EMP of Adrian Criddle,EMP of Iain Beckingham,EMP of Ian Jones,EMP of Jennifer Shileika,EMP of Graham Copperwheat,EMP of Jas Bhogal,EMP of Nina Woolvett,EMP of Richard George,EMP of Christine Harrison</value>
+            <value>Adrian Criddle,Graham Palmer,Iain Beckingham,Ian Jones,Jennifer Shileika,Simon Wilyman,Graham Copperwheat,EMP of Jas Bhogal</value>
         </criteriaItems>
         <criteriaItems>
             <column>User.Core_User_Profile_Name__c</column>

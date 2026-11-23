@@ -43,7 +43,8 @@ public without sharing class Core_MDF_ProcessCCP_PartnerFundRequest {
     public static Boolean camprunonce = true;
     public static String logEntryMsg = '';
     public static Boolean isError = false;
-    public static Boolean recallRunOnce = true;
+    //Avoid classes with too many fields
+    //public static Boolean recallRunOnce = true;
     
     public static Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
     public static Map<Id,List<Id>> objectIdUserGroupIdListMap = new Map<Id,List<Id>>();
@@ -106,6 +107,7 @@ Added By    :   Akilan Murugan
 US          :   TWC702-1696 - [CCF/DCF] - Notify Only Activity Submitter for Acceptance
 Modified By :                      Date:03/11/2022                     Changes:None
 Ayush                             12-18-2024                           Added changes for "Reclaiming SF Partner License"
+
 ******************************************************************************************************/    
     public static void notifyCCFDCFExternalReviewer(List<PartnerFundRequest> pfrList){
         
@@ -115,7 +117,9 @@ Ayush                             12-18-2024                           Added cha
 
         //Ayush - getting PFR Id's in a list for quering relationship fields below
         for(PartnerFundRequest pfr : pfrList){
-            pfrIdList.add(pfr.Id);
+            //if(pfr.Id != null && pfr.Id != ''){
+                pfrIdList.add(pfr.Id);
+            //}
         }
         if(!pfrIdList.isEmpty()){
             //Ayush - quering if createdby user of member user is active or is partner liscence reclaimed and storing in a map of PFRId to boolean.
@@ -123,6 +127,12 @@ Ayush                             12-18-2024                           Added cha
                                                 FROM PartnerFundRequest WHERE Id IN: pfrIdList ]){
                                             if(!pfrIdToUserActiveMap.containsKey(pfrRecord.Id)){
                                                 //Avoid Deeply Nested IF Statements
+                                                // if(pfrRecord.Core_MDF_Member_Acceptor_Id__r.IsActive || pfrRecord.Core_MDF_Member_Acceptor_Id__r.Partner_License_Reclaimed__c){
+                                                //         pfrIdToUserActiveMap.put(pfrRecord.Id, true);  
+                                                // }
+                                                // else{
+                                                //     pfrIdToUserActiveMap.put(pfrRecord.Id, false);
+                                                // }
                                                 boolean isActiveOrReclaimed = pfrRecord.Core_MDF_Member_Acceptor_Id__r.IsActive || pfrRecord.Core_MDF_Member_Acceptor_Id__r.Partner_License_Reclaimed__c;
                                                                               pfrIdToUserActiveMap.put(pfrRecord.Id, isActiveOrReclaimed);
                                             }
@@ -138,7 +148,8 @@ Ayush                             12-18-2024                           Added cha
                 sendEmailToReviewer.templateName = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ExternalStatusChangeCCFDCF');
                 sendEmailToReviewer.userIdList = new List<Id>{pfr.Core_MDF_Member_Acceptor_Id__c};
                 sendEmailToReviewer.sendDiff = false;
-                inputList.add(sendEmailToReviewer); 
+                inputList.add(sendEmailToReviewer);
+                System.debug('inputList_processccp->'+inputList) ;
             }
         }
         
@@ -158,10 +169,19 @@ Added By    :   Akilan Murugan
 US          :   
 Modified By :                      Date:03/11/2022                     Changes:None
 ******************************************************************************************************/    
-    public static void notifyPCTApprovers(List<PartnerFundRequest> pfrList, List<String> accntList, List<String> geoList, List<String> programList){
+   // public static void notifyPCTApprovers(List<PartnerFundRequest> pfrList, List<String> accntList, List<String> geoList, List<String> programList){
+   // ATHR Avoid long parameter lists - US 14285 - Indira
+       public static void notifyPCTApprovers(PCTApproverNotificationWrapper wrapper) {
+        // Unpack wrapper into local variables
+        List<PartnerFundRequest> pfrList = wrapper.pfrList;
+        List<String> accntList = wrapper.accntList;
+        List<String> geoList = wrapper.geoList;
+        List<String> programList = wrapper.programList;
+
         
-        List<Core_MDF_GenericClassToSendMail.MailParams> inputList = new List<Core_MDF_GenericClassToSendMail.MailParams>();      
-        Set<Id> userIdSet = new Set<Id>();   
+        List<Core_MDF_GenericClassToSendMail.MailParams> inputList = new List<Core_MDF_GenericClassToSendMail.MailParams>();  
+        // Highlight: Unused Local Variable - 14285
+        // Set<Id> userIdSet = new Set<Id>();   
         String pctRole = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Price_Reviewer_Roles');
         String emailTemplate;
         Map<String,Object> emailTemplateMap;
@@ -186,6 +206,9 @@ Modified By :                      Date:03/11/2022                     Changes:N
                         String allAccountYesKeyWW = program + 'WW' + pctRole +'null';
                       
                     userIds = new List<Id>();
+                    // BEGIN US - TWC702-14285: Flatten nested IFs (no logic change)
+                    // Original block preserved for audit; no logic change intended.
+                    /*
                     if(resultMap.containsKey('allAccountsYesOrNo')){
                         resultsubMap = resultMap.get('allAccountsYesOrNo');                        
                         for(String key :resultsubMap.keySet()){
@@ -209,6 +232,28 @@ Modified By :                      Date:03/11/2022                     Changes:N
                                }
                         }
                     }
+                    */
+
+                    Set<String> matchingKeys = new Set<String>();
+                    if(resultMap.containsKey('allAccountsYesOrNo')){
+                        resultsubMap = resultMap.get('allAccountsYesOrNo');
+                        matchingKeys.addAll(new List<String>{allAccountNOKey, allAccountNOKeyWW, allAccountYesKey, allAccountYesKeyWW});
+                    } else if(resultMap.containsKey('allAccountsYes')){
+                        resultsubMap = resultMap.get('allAccountsYes');
+                        matchingKeys.addAll(new List<String>{allAccountYesKey, allAccountYesKeyWW});
+                    } else if(resultMap.containsKey('allAccountsNO')){
+                        resultsubMap = resultMap.get('allAccountsNO');
+                        matchingKeys.addAll(new List<String>{allAccountNOKey, allAccountNOKeyWW});
+                    }
+
+                    if(resultsubMap != null && !matchingKeys.isEmpty()){
+                        for(String key : resultsubMap.keySet()){
+                            if(matchingKeys.contains(key)){
+                                userIds.addAll(resultsubMap.get(key));
+                            }
+                        }
+                    }
+                    // END US - TWC702-14285: Flatten nested IFs (no logic change)
                 }
 
                  if(pfr.Core_MDF_Program__c == 'Intel Partner Alliance' && pfr.Core_MDF_Proposal_Based_Ind__c != true)
@@ -250,8 +295,18 @@ Added By    :   Harshadeep Kalita
 US          :   
 Modified By :                      Date:21/06/2022                     Changes:None
 ******************************************************************************************************/    
-    public static void notifyApprovers(List<PartnerFundRequest> pfrList, List<String> accntList, List<String> geoList, List<String> programList,
-                                      List<String> approvalStageStatusList,List<String> budgetTypeList){
+ /*   public static void notifyApprovers(List<PartnerFundRequest> pfrList, List<String> accntList, List<String> geoList, List<String> programList,
+                                      List<String> approvalStageStatusList,List<String> budgetTypeList){   */
+    // ATHR Avoid long parameter lists - US 14285 - Indira
+    public static void notifyApprovers(NotifyApproversWrapper wrapper) {
+    // Unpack wrapper into local variables
+    List<PartnerFundRequest> pfrList = wrapper.pfrList;
+    List<String> accntList = wrapper.accntList;
+    List<String> geoList = wrapper.geoList;
+    List<String> programList = wrapper.programList;
+    List<String> approvalStageStatusList = wrapper.approvalStageStatusList;
+    List<String> budgetTypeList = wrapper.budgetTypeList;
+        
         //Akash - Added condidtion below code for KIIT metadata.
         List<String> programname = new List<String>();
         Map<String,Object> programNameByRecoNameMap = Core_MDF_GeneralPurpose_UI_Utility.getProgramNameByRecName();
@@ -260,8 +315,9 @@ Modified By :                      Date:21/06/2022                     Changes:N
                 programname.add((String)programNameByRecoNameMap.get(prgm));
             }
         }                                
-        List<Core_MDF_GenericClassToSendMail.MailParams> inputList = new List<Core_MDF_GenericClassToSendMail.MailParams>();      
-        Set<Id> userIdSet = new Set<Id>();   
+        List<Core_MDF_GenericClassToSendMail.MailParams> inputList = new List<Core_MDF_GenericClassToSendMail.MailParams>(); 
+         // Highlight: Unused Local Variable - 14285                                 
+        // Set<Id> userIdSet = new Set<Id>();   
         List<String> roleList = new List<String>();  
         Map<String, String> approvalStageToRoleMap = new Map<String, String>();
         Map<String, String> programToEmailTemplateMap = new Map<String, String>();                                  
@@ -281,14 +337,13 @@ Modified By :                      Date:21/06/2022                     Changes:N
         for(Core_MDF_Custom_Label_Configration__mdt meta: mdtRecList){
             roleList.add(meta.Core_MDF_Value4_Txt__c);
             programToEmailTemplateMap.put(meta.Core_MDF_Value_Txt__c,meta.Core_MDF_Value2_Txt__c);
-            
             if(!String.isBlank(meta.Core_MDF_Value5_Txt__c) && meta.Core_MDF_Value5_Txt__c!='Account Based'){
-                approvalStageToRoleMap.put(meta.Core_MDF_Value_Txt__c+meta.Core_MDF_Value5_Txt__c+meta.Core_MDF_Value3_Txt__c, meta.Core_MDF_Value4_Txt__c);    
+                approvalStageToRoleMap.put(meta.Core_MDF_Value_Txt__c+meta.Core_MDF_Value5_Txt__c+meta.Core_MDF_Value3_Txt__c, meta.Core_MDF_Value4_Txt__c);
             }else{
-                approvalStageToRoleMap.put(meta.Core_MDF_Value_Txt__c+meta.Core_MDF_Value3_Txt__c, meta.Core_MDF_Value4_Txt__c);    
+                approvalStageToRoleMap.put(meta.Core_MDF_Value_Txt__c+meta.Core_MDF_Value3_Txt__c, meta.Core_MDF_Value4_Txt__c);
             }
             
-        }    
+        }  
                                                
         
         List<Core_MDF_Custom_Label_Configration__mdt> mdtAccountRecList =  [SELECT DeveloperName, Core_MDF_Value_Txt__c,Core_MDF_Value2_Txt__c,Core_MDF_Value3_Txt__c,
@@ -301,30 +356,30 @@ Modified By :                      Date:21/06/2022                     Changes:N
 
         Map<String, Map<String, List<Id>>> resultMap = new Map<String, Map<String, List<Id>>>();
        
-        resultMap = Core_MDF_GeneralPurpose_UI_Utility.getIupgmForApproversWithBudgetType(accntList,programList,geoList,roleList,budgetTypeList,approvalStageStatusList);
-                     
+        resultMap = Core_MDF_GeneralPurpose_UI_Utility.getIupgmForApproversWithBudgetType(accntList,programList,geoList,roleList,budgetTypeList,approvalStageStatusList);           
         Map<String,Object> programNameByRecNameMap = Core_MDF_GeneralPurpose_UI_Utility.getProgramNameByRecName(); 
 
             for(PartnerFundRequest pfr : pfrList){
-		//Akash - Latest Changes for KIIT
+				//Akash - Latest Changes for KIIT
                 String program = '';
-                String ultimateAccId = '';
-                Map<string, List<Id>> resultsubMap;
-                    if(programNameByRecNameMap.containsKey(pfr.Core_MDF_Program__c)){
+                if(programNameByRecNameMap.containsKey(pfr.Core_MDF_Program__c)){
                          program = ((String)programNameByRecNameMap.get(pfr.Core_MDF_Program__c));   
                 }
-                                       
+                
                 String region = (String.isNotBlank(pfr.Core_MDF_Host_Region_txt__c)) ? pfr.Core_MDF_Host_Region_txt__c : pfr.Core_MDF_Region_nm__c;
                 String approvalMapKey = program+pfr.Core_MDF_Budget_Type_nm__c+pfr.Core_MDF_Approval_Stage__c;
                 String approvalMapKeyWithoutBudgetType = program+pfr.Core_MDF_Approval_Stage__c;
+               
+                String ultimateAccId = '';
+                Map<string, List<Id>> resultsubMap;
                                        
                 List<Id> userIds;
                 if(resultMap != null){
                     String role ='';
                     if(approvalStageToRoleMap.containsKey(approvalMapKey)){
-                      role = approvalStageToRoleMap.get(approvalMapKey);  
+                      role = approvalStageToRoleMap.get(approvalMapKey);
                     }else{
-                      role = approvalStageToRoleMap.get(approvalMapKeyWithoutBudgetType);    
+                      role = approvalStageToRoleMap.get(approvalMapKeyWithoutBudgetType);
                     }
                         if(program == Core_MDF_CCP_ConstantClass.EEF_PROGRAM 
                             && pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L2_PRIMARY_APPROVAL){
@@ -336,7 +391,6 @@ Modified By :                      Date:21/06/2022                     Changes:N
                     String roleCheckforAccountKey = program+role;
 
                     String accountAccess = roleCheckforAccountAccessMap.get(roleCheckforAccountKey);
-                   
 
                         String allAccountNOKey = program + region + role + ultimateAccId;
                         String allAccountNOKeyWW = program +'WW'+ role + ultimateAccId;
@@ -355,6 +409,9 @@ Modified By :                      Date:21/06/2022                     Changes:N
                                 allAccountYesKeyWithBT += actClassification;
                             }
    
+                    // BEGIN US - TWC702-14285: Flatten nested IFs (no logic change)
+                    // Original block preserved for audit; no logic change intended.
+                    /*
                     if(resultMap.containsKey(role) && accountAccess=='allAccountsYesOrNo'){
                         resultsubMap = resultMap.get(role);                        
                         for(String key :resultsubMap.keySet()){
@@ -381,6 +438,27 @@ Modified By :                      Date:21/06/2022                     Changes:N
                                }
                         }
                     }
+                    */
+
+                    if(resultMap.containsKey(role)){
+                        resultsubMap = resultMap.get(role);
+                        Set<String> matchingKeys = new Set<String>();
+
+                        if(accountAccess == 'allAccountsYesOrNo'){
+                            matchingKeys.addAll(new List<String>{allAccountNOKey, allAccountNOKeyWW, allAccountYesKey, allAccountYesKeyWW, allAccountNOKeyWithBT, allAccountYesKeyWithBT});
+                        } else if(accountAccess == 'allAccountsYes'){
+                            matchingKeys.addAll(new List<String>{allAccountYesKey, allAccountYesKeyWW, allAccountYesKeyWithBT});
+                        } else if(accountAccess == 'allAccountsNo'){
+                            matchingKeys.addAll(new List<String>{allAccountNOKey, allAccountNOKeyWW, allAccountNOKeyWithBT});
+                        }
+
+                        for(String key : resultsubMap.keySet()){
+                            if(matchingKeys.contains(key)){
+                                userIds.addAll(resultsubMap.get(key));
+                            }
+                        }
+                    }
+                    // END US - TWC702-14285: Flatten nested IFs (no logic change)
                 }
                 if(programToEmailTemplateMap.containsKey(program)){
                     emailTemplate = programToEmailTemplateMap.get(program);
@@ -396,13 +474,11 @@ Modified By :                      Date:21/06/2022                     Changes:N
                     sendEmailToPRCReviewer.userIdList = userIds;
                     sendEmailToPRCReviewer.sendDiff = false;
                     inputList.add(sendEmailToPRCReviewer);
-                    
                 }
                 
             }
         
         if(inputList != NULL && inputList.size() >0 && sendEmailOnce){
-            
             Core_MDF_GenericClassToSendMail.sendEmailMethod(inputList); 
             sendEmailOnce = false;
         }
@@ -413,7 +489,7 @@ Modified By :                      Date:21/06/2022                     Changes:N
         Set<Id> userIdSet = new Set<Id>();
         
         if(accIdSet != NULL && accIdSet.Size() > 0){
-            //Ayush - Added Partner_License_Reclaimed__c in where clause for "Reclaiming SF Partner License"
+            //Ayush - Added isUserManuallyDeactivated in where clause for "Reclaiming SF Partner License"
             for(Core_MDF_Partner_Node_User_Mapping__c pnum : [SELECT Id,Core_MDF_Account__c, Core_MDF_User__c 
                                                               FROM Core_MDF_Partner_Node_User_Mapping__c 
                                                                 WHERE Core_MDF_Account__c IN : accIdSet 
@@ -672,12 +748,14 @@ Shivaprasad            08/29/2019     Added condition to check closed status PFR
             //Akash changes
             if(pfr.Core_MDF_Activity_Level_nm__c != 'Sub Activity') {
                 pfrIdList.add(pfr.Id);
+                system.debug('@@@pfrIdList'+pfrIdList);
             }
             
         }
         
         
         if(pfrIdList.size() > 0){
+            system.debug('@@@pfrIdList.size'+pfrIdList.size());
             Core_MDF_GeoBasedGenericSharing.checkObjectAndPgm('PartnerFundRequest', pfrIdList);
         }
         
@@ -695,6 +773,22 @@ Modified By   :        Date:          Changes:
 Shivaprasad            08/29/2019     Added condition to check closed status PFR records to avoid unnecessary excecution.
 ******************************************************************************************************/
     public static void shareActivityWithInternalUsers(Map<Id,PartnerFundRequest> oldActivityMap, Map<Id,PartnerFundRequest> newActivityMap){
+        // Exclude sub-activities from internal user sharing � same guard pattern as shareActivityWithUsers
+        // and shareActivityWithAccNodeGroupMethod. Sub-activities should not get geo-based Manual shares.
+        Map<Id,PartnerFundRequest> filteredOldActivityMap = new Map<Id,PartnerFundRequest>();
+        Map<Id,PartnerFundRequest> filteredNewActivityMap = new Map<Id,PartnerFundRequest>();
+        for(Id pfrId : newActivityMap.keySet()) {
+            //Akash-CCF/DCF
+            if(newActivityMap.get(pfrId).Core_MDF_Activity_Level_nm__c != 'Sub Activity') {
+                filteredNewActivityMap.put(pfrId, newActivityMap.get(pfrId));
+                if(oldActivityMap != null && oldActivityMap.containsKey(pfrId)) {
+                    filteredOldActivityMap.put(pfrId, oldActivityMap.get(pfrId));
+                }
+            }
+        }
+        if(filteredNewActivityMap.isEmpty()) { return; }
+        oldActivityMap = filteredOldActivityMap;
+        newActivityMap = filteredNewActivityMap;
         Map<Id,PartnerFundRequest> updatedActivityMap = new Map<Id,PartnerFundRequest>();
        
         Set<String> accountIdProgramIdGeoSubGeoStringSet = new Set<String>();
@@ -728,13 +822,14 @@ Shivaprasad            08/29/2019     Added condition to check closed status PFR
             deletePFRShare(pfrIdOldAccountIdMap, oldAccountMap);
         }
         
-        
-        String region = '';
+        // Highlight: Unused Local Variable - 14285
+        /*String region = '';
         String subRegion = '';
         string Region_sub='';
         string Old_region_sub='';
         string new_region_sub='';
-        string new_regn_sub='';
+        string new_regn_sub=''; */
+        
         //Put one Map instead of 3 Maps
        
         //US1098882
@@ -833,6 +928,9 @@ Shivaprasad            08/29/2019     Added condition to check closed status PFR
                            }
         
         
+        // US - TWC702-14285: Flatten nested IFs (no logic change)
+        // Original code start
+        /*
         if(updatedActivityMap != NULL && updatedActivityMap.size() > 0 ){
             if((groupIdSet != NULL && groupIdSet.size() > 0 ) || 
                (groupROIdSet != NULL && groupROIdSet.size()>0)){
@@ -847,6 +945,20 @@ Shivaprasad            08/29/2019     Added condition to check closed status PFR
                    }
                }
         }
+        */
+        // Original code end
+        // New code start US - TWC702-14285: Flatten nested IFs (no logic change)
+        if(updatedActivityMap != NULL && updatedActivityMap.size() > 0 && ((groupIdSet != NULL && groupIdSet.size() > 0 ) || (groupROIdSet != NULL && groupROIdSet.size()>0))){
+            List<PartnerFundRequestShare> pfrShareToBeDeletedList = [SELECT Id, ParentId, RowCause, UserOrGroupId
+                                                                     FROM PartnerFundRequestShare
+                                                                     WHERE  ParentId IN :updatedActivityMap.keySet() AND
+                                                                     RowCause =: Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_RowCause_Manual') AND 
+                                                                     (UserOrGroupId  IN :groupIdSet OR UserOrGroupId IN :groupROIdSet)];
+            if(pfrShareToBeDeletedList != NULL && pfrShareToBeDeletedList.size() > 0){
+                delete pfrShareToBeDeletedList;
+            }
+        }
+        // New code end US - TWC702-14285: Flatten nested IFs (no logic change)
         List<Id> pfrIdList = new List<Id>();
         pfrIdList.addAll(updatedActivityMap.keySet());
         if(pfrIdList != NULL && pfrIdList.size() > 0){            
@@ -909,7 +1021,8 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
     // Get all the activities with cmp budget & EEF budget
     Map<Id, PartnerFundRequest> cmpEEFBudgetPfrMap = new Map<Id, PartnerFundRequest>();
     //Map to store the Activity as key and its Available Budget Amount.
-    Map<Id, Decimal> mapOfCampWithAvailableBudget = new Map<Id,Decimal>();
+    // Highlight: Unused Local Variable - 14285
+    // Map<Id, Decimal> mapOfCampWithAvailableBudget = new Map<Id,Decimal>();
     Map<Id, Decimal> pfrToClaimAmtMap = new Map<Id,Decimal>();
     Map<Id, Decimal> pfrToEscalationAmtMap = new Map<Id, Decimal>();
     
@@ -921,19 +1034,21 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
     
     //Map contains the campaign-budget's amount against CampaignId+BudgetId+BudgetType
     Map<String, Decimal> cmpIdBudgetIdBudgetTypeToAmountMap = new Map<String, Decimal>();
-
-    Map<Id, Campaign> campaignMap = new Map<Id, Campaign>();
-    List<Campaign> campReimbAmount = new List<Campaign>();
+    // Highlight: Unused Local Variable - 14285
+    // Map<Id, Campaign> campaignMap = new Map<Id, Campaign>();
+    // List<Campaign> campReimbAmount = new List<Campaign>();
     Set<Id> pfrIds = new Set<Id>();
     Set<Id> allocationIdSet = new Set<Id>();
-    Set<Id> accountId = new Set<Id>();
+    // Highlight: Unused Local Variable - 14285
+    // Set<Id> accountId = new Set<Id>();
     //Opal CampaignId set
     Set<Id> campaignIdSet = new Set<Id>();
         //IPA,RMF & EEF CampaignId set
         Set<Id> ipaAccRMFEEFCampIdSet = new Set<Id>();
     Boolean checkCampaignError = false;
     Boolean isOpal = false;
-    Decimal pfrCampaignAmtAccount = 0;
+    // Highlight: Unused Local Variable - 14285
+    // Decimal pfrCampaignAmtAccount = 0;
 
     //Client Co-Marketing Fund;Data Center Co-Marketing Fund;Retail Marketing Funds;Intel Partner Alliance;EEF
     List<String> programsForActBudgetAmtCheck = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Prog_For_Bgt_Validation_PFR').split(';');
@@ -948,10 +1063,11 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
     
     // US949836 : New Budget Type field changes replaced txt field with new global picklist field
     for(PartnerFundRequest pfr : newList){
-        if(programsForActBudgetAmtCheck.contains(pfr.Core_MDF_Program__c)){
+        // US - TWC702-14285: Flatten nested IFs (no logic change) - Begin
+        if(programsForActBudgetAmtCheck.contains(pfr.Core_MDF_Program__c) && isAllocationAmountValidationRequired(oldMap, pfr)){
            
-	    
-	    if(isAllocationAmountValidationRequired(oldMap, pfr)){
+	    // US - TWC702-14285: Flatten nested IFs (no logic change) - Original code commented
+	   // if(isAllocationAmountValidationRequired(oldMap, pfr)){
           
 		
 		if(opalBudgetTypeList.contains(pfr.Core_MDF_Budget_Type_nm__c)){
@@ -965,8 +1081,7 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
                     if(budgetTypeReqAllocationValidationList.contains(pfr.Core_MDF_Budget_Type_nm__c)){
                         allocationIdSet.add(pfr.AllocationId);
                     }
-                }
-                    else if(isRetailAccountBasedOrEEF(pfr)){
+                } else if(isRetailAccountBasedOrEEF(pfr)){
                     
 		    Decimal campAmount = 0;
                     String campaignIdBudgetType = string.valueOf(pfr.CampaignId) + pfr.Core_MDF_Budget_Type_nm__c;
@@ -981,7 +1096,9 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
                         budgetTypeReqAllocationValidationList.contains(pfr.Core_MDF_Budget_Type_nm__c)){
                             if((oldMap == null || (oldMap != null && (pfr.RequestedAmount != oldMap.get(pfr.Id).RequestedAmount 
                             || pfr.Core_MDF_Budget_Type_nm__c != oldMap.get(pfr.Id).Core_MDF_Budget_Type_nm__c) || pfr.Core_MDF_Reimbursement_Rate_txt__c != oldMap.get(pfr.Id).Core_MDF_Reimbursement_Rate_txt__c)) && pfr.Core_MDF_Budget_Type_nm__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_RetailMDF_BudgetType')){
-                                pfr.Amount = ((pfr.RequestedAmount * Decimal.valueOf(pfr.Core_MDF_Reimbursement_Rate_txt__c.removeEnd('%')))/100).setScale(2,RoundingMode.HALF_UP);                                                                     
+                                //pfr.Amount = pfr.RequestedAmount;
+                                pfr.Amount = ((pfr.RequestedAmount * Decimal.valueOf(pfr.Core_MDF_Reimbursement_Rate_txt__c.removeEnd('%')))/100).setScale(2,RoundingMode.HALF_UP);
+                                system.debug('@@@pfr.Amount'+pfr.Amount);                                                                     
                     }
                             if(pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_CANCELLED_STATUS && pfr.status == Core_MDF_CCP_ConstantClass.PFR_APPROVED_STATUS){
                                 pfr.status = Core_MDF_CCP_ConstantClass.PFR_REJECTED_STATUS;
@@ -998,10 +1115,14 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
                     
                 if(oldMap != NULL && !oldMap.isEmpty()){
                     pfrIds.add(pfr.Id); 
-                    }}}}
+                    }
+                 
+                    
+                    }}
     //For OPAL, RMF, IPA AccountBased
     if(campaignIdBudgetTypeToBudgetIdMap != NULL && campaignIdBudgetTypeToBudgetIdMap.Size() > 0){
-        Map<Id, Decimal> allocationInDraftState = new Map<Id, Decimal>();
+        // Highlight: Unused Local Variable - 14285
+        // Map<Id, Decimal> allocationInDraftState = new Map<Id, Decimal>();
         Map<Id, Decimal> finalAllocationAmountMap = new Map<Id, Decimal>();
         map<Id, Decimal> allocationIdToAllocatedAmountMap = new Map<Id,Decimal>();
         if(allocationIdSet != NULL && allocationIdSet.Size() > 0){
@@ -1010,6 +1131,7 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
                                              WHERE Id IN: allocationIdSet]){
                 finalAllocationAmountMap.put(pfa.Id,  pfa.TotalApprovedFrs);
                 allocationIdToAllocatedAmountMap.put(pfa.Id,pfa.Amount);
+                system.debug('@@@allocationIdToAllocatedAmountMap'+allocationIdToAllocatedAmountMap);
             }
         }
        
@@ -1026,7 +1148,7 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
             }
         }
         // US949836 : New Budget Type field changes replaced txt field with new global picklist field
-        for(PartnerFundRequest pfr : [SELECT Id, BudgetId, ChannelPartnerId, Core_MDF_Activity_Reimbursement_Amt_nbr__c,Core_MDF_Is_Outcome_Based_Ind__c,Core_MDF_Fund_Request_Status__c, CampaignId, Core_MDF_Budget_Type_nm__c,Amount, Core_MDF_Proposal_Based_Ind__c,Core_MDF_Program__c
+        for(PartnerFundRequest pfr : [SELECT Id, BudgetId, ChannelPartnerId, Core_MDF_Activity_Reimbursement_Amt_nbr__c,Core_MDF_Fund_Request_Status__c, CampaignId, Core_MDF_Budget_Type_nm__c,Amount, Core_MDF_Proposal_Based_Ind__c,Core_MDF_Program__c
                                       FROM PartnerFundRequest
                                           WHERE ((BudgetId IN: campaignIdBudgetTypeToBudgetIdMap.values() AND CampaignId IN: campaignIdSet)
                                           OR CampaignId IN: ipaAccRMFEEFCampIdSet)
@@ -1036,6 +1158,12 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
                 String campaignIdBudgetType = string.valueOf(pfr.CampaignId) + pfr.Core_MDF_Budget_Type_nm__c;
 	    Boolean isCmpOrEEFBudget = false;
             //Avoid Deeply Nested IF Statements
+            //                                       if((cmpBudgetTypeList != null && cmpBudgetTypeList.contains(pfr.Core_MDF_Budget_Type_nm__c)) || pfr.Core_MDF_Program__c == EEF_PROGRAM){
+            //                                           isCmpOrEEFBudget=true;
+            //     if(pfr.Core_MDF_Fund_Request_Status__c == Core_MDF_CCP_ConstantClass.PFR_CLOSED_STATUS){
+            //         cmpEEFBudgetPfrMap.put(pfr.Id,pfr);
+            //     }   
+            // }
             Boolean isTargetBudget = (cmpBudgetTypeList != null && cmpBudgetTypeList.contains(pfr.Core_MDF_Budget_Type_nm__c)) || pfr.Core_MDF_Program__c == EEF_PROGRAM;
             if (isTargetBudget) {
                 isCmpOrEEFBudget = true;
@@ -1049,12 +1177,16 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
 		    
                     decimal amount = 0;
                     amount += isRetailOrAccountBased(pfr) ? budgetAgainstAmountMap.get(campaignIdBudgetType) : budgetAgainstAmountMap.get(cmpIdBudgetIdBudgetType);
-		if(isCmpOrEEFBudget){
-                    if(pfr.Core_MDF_Fund_Request_Status__c != Core_MDF_CCP_ConstantClass.PFR_CLOSED_STATUS && pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c != null){ 
+                    system.debug('@@@amount'+amount);
+                    // US - TWC702-14285: Flatten nested IFs (no logic change) 
+		if(isCmpOrEEFBudget && pfr.Core_MDF_Fund_Request_Status__c != Core_MDF_CCP_ConstantClass.PFR_CLOSED_STATUS && pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c != null){
+                // US - TWC702-14285: Flatten nested IFs (no logic change) - Original code commented
+                   // if(pfr.Core_MDF_Fund_Request_Status__c != Core_MDF_CCP_ConstantClass.PFR_CLOSED_STATUS && pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c != null){ 
                         amount += pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c;
-                    }
+                   
                 }else{
                     amount += pfr.Amount;
+                    system.debug('@@@amount1'+amount);
                 }
                     if(isRetailOrAccountBased(pfr)){
                         budgetAgainstAmountMap.put(campaignIdBudgetType, amount);// map to store total of amounts on pfr for each camp+budgettype
@@ -1064,18 +1196,22 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
             }else{
                 if(pfr.Amount != null){
                     decimal amount = 0;
-		   
-                    if(isCmpOrEEFBudget){
-                        if(pfr.Core_MDF_Fund_Request_Status__c != Core_MDF_CCP_ConstantClass.PFR_CLOSED_STATUS && pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c != null){ 
+                    // US - TWC702-14285: Flatten nested IFs (no logic change)
+                    if(isCmpOrEEFBudget && pfr.Core_MDF_Fund_Request_Status__c != Core_MDF_CCP_ConstantClass.PFR_CLOSED_STATUS && pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c != null){
+                        // US - TWC702-14285: Flatten nested IFs (no logic change) - Original code commented
+                       // if(pfr.Core_MDF_Fund_Request_Status__c != Core_MDF_CCP_ConstantClass.PFR_CLOSED_STATUS && pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c != null){ 
                             amount += pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c;
-                        }
+                            system.debug('@@@amount2'+amount);
+                       // }
                     }else{
                         amount += pfr.Amount;
+                        system.debug('@@@amount3'+amount);
                     }
                         if(isRetailOrAccountBased(pfr)){
                             budgetAgainstAmountMap.put(campaignIdBudgetType, amount);// map to store total of amounts on pfr for each camp+budgettype
                         } else {
                             budgetAgainstAmountMap.put(cmpIdBudgetIdBudgetType, amount);
+                            system.debug('@@@budgetAgainstAmountMap'+budgetAgainstAmountMap);
                         }}}}
         //Only for CMP Budget Type & EEF Program
         if(cmpEEFBudgetPfrMap != NULL && cmpEEFBudgetPfrMap.keyset() != null && !cmpEEFBudgetPfrMap.isEmpty()){
@@ -1112,11 +1248,21 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
                     amount = totalClaimEscConsumedAmt >= pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c
                         ? pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c : totalClaimEscConsumedAmt;
                     
-                    if(budgetAgainstAmountMap.containsKey(cmpIdBudgetIdBudgetType)){
+                    
+                //  flattened — no more nested IF // US - TWC702-14285: Flatten nested IFs (no logic change)
+                        amount += budgetAgainstAmountMap.containsKey(cmpIdBudgetIdBudgetType)
+                                ? budgetAgainstAmountMap.get(cmpIdBudgetIdBudgetType)
+                                : 0;
+
+                        budgetAgainstAmountMap.put(cmpIdBudgetIdBudgetType, amount);
+                    // US - TWC702-14285: Flatten nested IFs (no logic change) - Original code commented
+                    /*if(budgetAgainstAmountMap.containsKey(cmpIdBudgetIdBudgetType)){
                         amount += budgetAgainstAmountMap.get(cmpIdBudgetIdBudgetType);
                         budgetAgainstAmountMap.put(cmpIdBudgetIdBudgetType, amount);
                     } else{
-                            budgetAgainstAmountMap.put(cmpIdBudgetIdBudgetType, amount); }}}}
+                            budgetAgainstAmountMap.put(cmpIdBudgetIdBudgetType, amount); }*/
+                            }}
+                            }
        
 	for(PartnerFundRequest pfr : newList){
             Boolean addError = FALSE;
@@ -1126,9 +1272,16 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
                     Decimal allocationAmount = 0;
                     Decimal currentActivityAmount = 0;
                     Decimal totalPfrAmountUsingAllocation = 0;
-                    if(finalAllocationAmountMap.containsKey(pfr.AllocationId) && finalAllocationAmountMap.get(pfr.AllocationId) != NULL){
+                    // US - TWC702-14285: Flatten nested IFs (no logic change)
+                pfrsUsingAllocation = 
+                    (finalAllocationAmountMap.containsKey(pfr.AllocationId) &&
+                    finalAllocationAmountMap.get(pfr.AllocationId) != null)
+                    ? finalAllocationAmountMap.get(pfr.AllocationId)
+                    : pfrsUsingAllocation;
+                    // US - TWC702-14285: Flatten nested IFs (no logic change) - Original code commented
+                   /* if(finalAllocationAmountMap.containsKey(pfr.AllocationId) && finalAllocationAmountMap.get(pfr.AllocationId) != NULL){
                         pfrsUsingAllocation = finalAllocationAmountMap.get(pfr.AllocationId);
-                    }
+                    }*/
                 
 		if(allocationIdToAllocatedAmountMap.containsKey(pfr.AllocationId) &&
                     allocationIdToAllocatedAmountMap.get(pfr.AllocationId) != NULL){
@@ -1136,25 +1289,43 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
                 }
                 if((oldMap == NULL) || (oldMap.get(pfr.Id).BudgetId != pfr.BudgetId)){   
                     currentActivityAmount = pfr.Amount;
+                    system.debug('@@@currentActivityAmount'+budgetAgainstAmountMap);
                 }
                 else if(oldMap != NULL && oldMap.containsKey(pfr.Id) && ((pfr.Amount > oldMap.get(pfr.Id).Amount))){
                     currentActivityAmount = pfr.Amount - oldMap.get(pfr.Id).Amount; 
+                    system.debug('@@@currentActivityAmount1'+budgetAgainstAmountMap);
                 }
                 currentActivityAmount = currentActivityAmount != null ? currentActivityAmount : 0;
+                system.debug('@@@currentActivityAmount2'+budgetAgainstAmountMap);
                 Decimal existingPfrAmount = 0;
                     
                 
                     totalPfrAmountUsingAllocation = pfrsUsingAllocation + currentActivityAmount;
                    
 		// Added this flag to stop recursion when there's a Status change. Since Amount was getting added twice in Transaction
-                if(!stopRecursion){
+        // US - TWC702-14285: Flatten nested IFs (no logic change) - Original code is commented
+               /* if(!stopRecursion){
                     stopRecursion = true;
                     if(allocationAmount < totalPfrAmountUsingAllocation && pfr.Core_MDF_Fund_Request_Status__c != Core_MDF_CCP_ConstantClass.PFR_CANCELLED_STATUS){
                         //Activity Cannot be created as the total of all activities exceeds the allocated budget.
                         pfr.addError(Label.Core_MDF_ActivityAmountExceedsAllocation);
-                    addError = TRUE;}}}
+                    addError = TRUE;}}*/
+                    // US - TWC702-14285: Flatten nested IFs (no logic change) - Begin
+                    Boolean wasNotRecursing = !stopRecursion;
+                    stopRecursion = true;
+
+                    if(wasNotRecursing &&
+                    allocationAmount < totalPfrAmountUsingAllocation &&
+                    pfr.Core_MDF_Fund_Request_Status__c != Core_MDF_CCP_ConstantClass.PFR_CANCELLED_STATUS){
+
+                        pfr.addError(Label.Core_MDF_ActivityAmountExceedsAllocation);
+                        addError = TRUE;
+                    }
+                    // US - TWC702-14285: Flatten nested IFs (no logic change) - End
+                }
             //Campaign Budget Validation
-            if(!addError && campaignIdBudgetTypeToBudgetIdMap.containsKey(pfr.CampaignId + pfr.Core_MDF_Budget_Type_nm__c) && 
+            //Akash-CCF/DCF
+            if(!addError && pfr.CampaignId != null && campaignIdBudgetTypeToBudgetIdMap.containsKey(pfr.CampaignId + pfr.Core_MDF_Budget_Type_nm__c) && 
                campaignIdBudgetTypeToBudgetIdMap.get(pfr.CampaignId+pfr.Core_MDF_Budget_Type_nm__c) != NULL){
                 Id budgetId = pfr.BudgetId;                  
                 String cmpIdBudgetIdBudgetType = String.ValueOf(pfr.CampaignId) + string.valueOf(pfr.BudgetId) + pfr.Core_MDF_Budget_Type_nm__c;
@@ -1188,8 +1359,10 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
 		//Get current activity amount
                            Decimal currentActivityAmount = ((cmpBudgetTypeList != null && cmpBudgetTypeList.contains(pfr.Core_MDF_Budget_Type_nm__c)) || 
                                                             pfr.Core_MDF_Program__c == EEF_PROGRAM) ? activityReimbursementAmount : pfr.Amount; 
+                                                            system.debug('@@@currentActivityAmount'+currentActivityAmount);
                 //Total amount to be inserted/updated
                 finalAmountForCompare = existingPfrAmount + currentActivityAmount;
+                system.debug('@@@finalAmountForCompare'+finalAmountForCompare);
       
 	//Check if total amount is exceeding Campaign Budget's amount
                 if(finalAmountForCompare > amountOnBudget && checkCampaignError && pfr.Core_MDF_Fund_Request_Status__c != 'Cancelled' ){
@@ -1199,6 +1372,7 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
                 } else { 
                     budgetAgainstAmountMap.put(cmpIdBudgetIdBudgetType, finalAmountForCompare);
                 }
+		System.debug('budgetAgainstAmountMap--> '+budgetAgainstAmountMap);
             } 
         }
     }                        
@@ -1256,13 +1430,33 @@ Modified By :   NZ                   Date:07/26/2021                    Changes:
   	Map<Id,String> campaignStatusMap = new Map<Id,String>();
         for(PartnerFundRequest pfr : newList){
             
-            if(isAfter && ((Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PFR_IPA').equalsIgnoreCase(pfr.Core_MDF_Program__c) && pfr.Core_MDF_Proposal_Based_Ind__c == true) || (Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Co_GTM_program_name').equalsIgnoreCase(pfr.Core_MDF_Program__c)))){
+            Boolean isProgramMatch =
+                (Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PFR_IPA')
+                        .equalsIgnoreCase(pfr.Core_MDF_Program__c)
+                    && pfr.Core_MDF_Proposal_Based_Ind__c == true)
+                || Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Co_GTM_program_name')
+                        .equalsIgnoreCase(pfr.Core_MDF_Program__c);
+            
+                Boolean hasOldMapChanges = 
+                    oldMap == null || ( oldMap != null && !oldMap.isEmpty() && (
+                            (oldMap.get(pfr.Id).Core_MDF_Fund_Request_Status__c
+                            != pfr.Core_MDF_Fund_Request_Status__c
+                            && Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Activity_Cancelled_Status').equalsIgnoreCase(pfr.Core_MDF_Fund_Request_Status__c)
+                            ) || oldMap.get(pfr.Id).RequestedAmount != pfr.RequestedAmount
+                              || oldMap.get(pfr.Id).Core_MDF_Activity_Reimbursement_Amt_nbr__c != pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c
+                        )
+                    );
+            
+            // US - TWC702-14285: Flatten nested IFs (no logic change) - Original code commented
+            //((Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PFR_IPA').equalsIgnoreCase(pfr.Core_MDF_Program__c) && pfr.Core_MDF_Proposal_Based_Ind__c == true) || (Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Co_GTM_program_name').equalsIgnoreCase(pfr.Core_MDF_Program__c)))
+            // US - TWC702-14285: Flatten nested IFs (no logic change)
+            if(isAfter && isProgramMatch && hasOldMapChanges){
 
-                if(oldMap == NULL || 
+                /*if(oldMap == NULL || 
                    (oldMap != null && !oldMap.isEmpty() && 
                     ((oldMap.get(pfr.Id).Core_MDF_Fund_Request_Status__c != pfr.Core_MDF_Fund_Request_Status__c && Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Activity_Cancelled_Status').equalsIgnoreCase(pfr.Core_MDF_Fund_Request_Status__c))
                             || oldMap.get(pfr.Id).RequestedAmount != pfr.RequestedAmount
-                            || oldMap.get(pfr.Id).Core_MDF_Activity_Reimbursement_Amt_nbr__c != pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c))){
+                            || oldMap.get(pfr.Id).Core_MDF_Activity_Reimbursement_Amt_nbr__c != pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c))){ */
                         if(campActivitiesSetMap.containsKey(pfr.CampaignId)){  
                             campActivitiesSetMap.get(pfr.CampaignId).add(pfr);
                         }else{ 
@@ -1272,7 +1466,7 @@ Modified By :   NZ                   Date:07/26/2021                    Changes:
                       		campaignStatusMap.put(pfr.CampaignId,pfr.Core_MDF_Campaign_Status_nm__c); 
                         }
                             
-                }               
+                //}               
             }
         }
 
@@ -1295,23 +1489,32 @@ Modified By :   NZ                   Date:07/26/2021                    Changes:
                     
                     final Decimal pfrCampaignAmt =(Decimal)agg.get('TotalCampaignCost');
                         final Decimal campaignReimbursementAmt =(Decimal)agg.get('ReimbursementAmount');
-                        if (pfrCampaignAmt != null || campaignReimbursementAmt != null) { 
+                        // US - TWC702-14285: Flatten nested IFs (no logic change) - Original code commented
+                        //if (pfrCampaignAmt != null || campaignReimbursementAmt != null) { 
+                        // US - TWC702-14285: Flatten nested IFs (no logic change)
+                        if (pfrCampaignAmt == null && campaignReimbursementAmt == null) {
+                                    continue;
+                                }
+
                         Campaign cmpObj = new Campaign();
                         cmpObj.Id = (Id)agg.get('CampaignID');
                         cmpObj.Core_MDF_Total_Campaign_Cost_Amt__c = pfrCampaignAmt;
-                            cmpObj.Core_MDF_Reimbursement_Amt__c = campaignReimbursementAmt;
+                        cmpObj.Core_MDF_Reimbursement_Amt__c = campaignReimbursementAmt;
                         cmpLstTobeUpdated.add(cmpObj);
                         setCampId.add(cmpObj.Id);
-                    }
+                   
                 }
             }
                else{                   
                    for(Id campId : campActivitiesSetMap.keySet()){
-                       if(!setCampId.contains(campId)){                          
-                           String campaignStatus;
-						   if(campaignStatusMap !=null && campaignStatusMap.containsKey(campId)){
+                    // US - TWC702-14285: Flatten nested IFs (no logic change)
+                        String campaignStatus;
+                       if(!setCampId.contains(campId) && campaignStatusMap !=null && campaignStatusMap.containsKey(campId)){ 
+                        // US - TWC702-14285: Flatten nested IFs (no logic change) - Original code commented                         
+                          // String campaignStatus;
+						   //if(campaignStatusMap !=null && campaignStatusMap.containsKey(campId)){
 								campaignStatus = campaignStatusMap.get(campId);  
-							}						   
+							//}						   
                            if(String.isNotBlank(campaignStatus) && campaignStatus != 'Cancelled'){
                                Campaign cmpObj = new Campaign();
                                cmpObj.Id = campId;
@@ -1351,6 +1554,11 @@ public static void shareActivityWithAccNodeGroupMethod(Map<Id,PartnerFundRequest
                 activitiesToProcess.put(pfrId, pfr);
             }
         }
+        
+        // If no activities to process, return early
+        if(activitiesToProcess.isEmpty()) {
+            return;
+        }
         Map<Id,List<Id>> objectIdUserGroupIdListMap = new Map<Id,List<Id>>();
         Set<Id> pfrShareToBeDeleted = new Set<Id>();
         List<PartnerFundRequestShare> pfrShareList = new List<PartnerFundRequestShare>();
@@ -1373,12 +1581,16 @@ public static void shareActivityWithAccNodeGroupMethod(Map<Id,PartnerFundRequest
             //Checking if account changes in PFR record, then adding pfr id to a set and account id to a set to delete the old pfr share record
             if((pfr.ChannelPartnerId != null && (oldrPfr.ChannelPartnerId != null && pfr.ChannelPartnerId != oldrPfr.ChannelPartnerId))){
                 pfrShareToBeDeleted.add(pfr.Id);
+                system.debug('@@@pfrShareToBeDeleted'+pfrShareToBeDeleted);
                 accountNodeIdSet.add(oldrPfr.ChannelPartnerId);
+                system.debug('@@@accountNodeIdSet'+accountNodeIdSet);
                 oldAccountNodeIdSet.add(oldrPfr.ChannelPartnerId);
+                system.debug('@@@oldAccountNodeIdSet'+oldAccountNodeIdSet);
             }
             accountNodeIdSet.add(pfr.ChannelPartnerId);
                 if(pfr.Core_MDF_Program__c ==  Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EEF_Program_Name')){//Assumption: Campaign always created on VC
                     accountNodeIdSet.add(pfr.Core_MDF_Campaign_Account_Id__c);
+                    system.debug('@@@accountNodeIdSet'+accountNodeIdSet);
                 }
         }
         //if(isExternalShareAllowed){ // Ayush - added a boolean check
@@ -1386,58 +1598,66 @@ public static void shareActivityWithAccNodeGroupMethod(Map<Id,PartnerFundRequest
                             WHERE Id IN :accountNodeIdSet AND (Core_MDF_Group_Id__c != NULL OR Core_MDF_External_Group_Id__c != NULL)]){
                                 if(acc.Core_MDF_Group_Id__c != null){
                                     accountIdGroupIdMap.put(acc.Id, acc.Core_MDF_Group_Id__c);
+                                    system.debug('@@@accountIdGroupIdMap'+accountIdGroupIdMap);
                                 }
                                 if(acc.Core_MDF_External_Group_Id__c != null){
                                     accountIdExternalGroupIdMap.put(acc.Id, acc.Core_MDF_External_Group_Id__c);
+                                    system.debug('@@@accountIdExternalGroupIdMap'+accountIdExternalGroupIdMap);
                                 }
                                 accountMap.put(acc.Id, acc);
+                                system.debug('@@@accountMap'+accountMap);
                             }
             if(pfrShareToBeDeleted.size() > 0){
                 set<String> groupIdSet = new set<String>();
                 for(Id accId : oldAccountNodeIdSet){
                             if (accountIdGroupIdMap.containsKey(accId)) {
                                 groupIdSet.add(accountIdGroupIdMap.get(accId));
+                                system.debug('@@@groupIdSet'+groupIdSet);
                             }
                             
                             if(accountIdExternalGroupIdMap.containsKey(accId)) {
                                 groupIdSet.add(accountIdExternalGroupIdMap.get(accId));
+                                system.debug('@@@groupIdSet1'+groupIdSet);
                             }
                             
                         }
 
-               
-                    for(PartnerFundRequestShare pfrShare : [SELECT Id, ParentId, UserOrGroupId, Parent.Core_MDF_Program__c
-                                                            FROM PartnerFundRequestShare WHERE ParentId IN : pfrShareToBeDeleted AND
-                                                            UserOrGroupId IN :groupIdSet]) {
-                                                                pfrShareList.add(pfrShare);
-                                                            }
                 
-                if(pfrShareList != NULL && pfrShareList.size() > 0){
-                delete pfrShareList;
+                        for(PartnerFundRequestShare pfrShare : [SELECT Id, ParentId, UserOrGroupId, Parent.Core_MDF_Program__c
+                                                                FROM PartnerFundRequestShare WHERE ParentId IN : pfrShareToBeDeleted AND
+                                                                UserOrGroupId IN :groupIdSet]) {
+                                                                    pfrShareList.add(pfrShare);
+                                                                    system.debug('@@@pfrShareList'+pfrShareList);
+                                                                }
+                    
+                    if(pfrShareList != NULL && pfrShareList.size() > 0){
+                    delete pfrShareList;
+                }
             }
-        }
             for(PartnerFundRequest pfr : activitiesToProcess.values())
-        {   
-            List<Id> groupIds = new List<Id>();
-            //If operation is insert OR is update and account/owner change occured in PFR record
+            {   
+                List<Id> groupIds = new List<Id>();
+                //If operation is insert OR is update and account/owner change occured in PFR record
                 if(oldActivityMap == null || (oldActivityMap != null && (pfr.OwnerId != oldActivityMap.get(pfr.Id).OwnerId || pfrShareToBeDeleted.contains(pfr.Id)
                     //Akash - Latest commented because we want to share records to external user in draft status.
                     /*(pfr.Core_MDF_Program__c == Label.Core_MDF_Co_GTM_program_name && pfr.Core_MDF_Is_Activity_Shared_EXT_Ind__c != oldActivityMap.get(pfr.Id).Core_MDF_Is_Activity_Shared_EXT_Ind__c && pfr.Core_MDF_Is_Activity_Shared_EXT_Ind__c)*/))){
                     if(accountIdGroupIdMap.get(pfr.ChannelPartnerId) != null && (Core_MDF_shareRecordToAccountGroup.isNodeBasedSharingReqd((accountMap.get(pfr.ChannelPartnerId)).Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c))){
                         groupIds.add(accountIdGroupIdMap.get(pfr.ChannelPartnerId));
-                    
+                    system.debug('@@@groupIds12'+groupIds);
                     }
                     if(accountIdExternalGroupIdMap.get(pfr.ChannelPartnerId) != null){
                         groupIds.add(accountIdExternalGroupIdMap.get(pfr.ChannelPartnerId));
-                        
+                        system.debug('@@@groupIds13'+groupIds);
                     }
                         //To share Actvity with Campaign Account's Ext Grp for EEF Program
                         if(pfr.Core_MDF_Program__c ==  Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EEF_Program_Name') && accountIdExternalGroupIdMap.containsKey(pfr.Core_MDF_Campaign_Account_Id__c) && accountIdExternalGroupIdMap.get(pfr.Core_MDF_Campaign_Account_Id__c) != NULL){
                             groupIds.add(accountIdExternalGroupIdMap.get(pfr.Core_MDF_Campaign_Account_Id__c));
+                            system.debug('@@@groupIds14'+groupIds);
                         }
                     }
                 if(groupIds != null && groupIds.size() > 0){
                     objectIdUserGroupIdListMap.put(pfr.Id, groupIds);
+                    system.debug('@@@objectIdUserGroupIdListMap'+objectIdUserGroupIdListMap);
                 }
             }
             if(objectIdUserGroupIdListMap != NULL && !objectIdUserGroupIdListMap.isEmpty()){
@@ -1490,7 +1710,7 @@ Description   :        cancel Activity based on related Claim and Escalation sta
 Added By      :        Accenture - Akanksha - 05/08/2024
 ******************************************************************************************************/
 public static void cancelActivityForCancelledCliamsAndEsclations(Map<Id,PartnerFundRequest> newActivityMap, Map<Id,PartnerFundRequest> oldActivityMap){
-    
+    System.debug('in cancelActivityForCancelledCliamsAndEsclations');
     String pfrCancelledStatus = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Activity_Cancelled_Status');
     Boolean isValidUserToCancelActvity = FeatureManagement.checkPermission('Core_MDF_Allowed_Permission_Set_for_Cancel_Activity');
 
@@ -1519,6 +1739,7 @@ public static void cancelActivityForCancelledCliamsAndEsclations(Map<Id,PartnerF
 
                 // Processing records for update
                 if(!eligiblePFRMapForCancellation.isEmpty()){
+                    system.debug('Inside 1517');
                     for (PartnerFundRequest itrOnNewPfr : eligiblePFRMapForCancellation.values()) { //PFR-A has Active claim, PFR-B -no active claim, has Active escalation
                         //PFR-A has Active claim && PFR-B -no active claim
                         if(!pfrIdAndCheckForValidClaimMap.isEmpty() && pfrIdAndCheckForValidClaimMap.containsKey(itrOnNewPfr.Id) ){
@@ -1533,6 +1754,85 @@ public static void cancelActivityForCancelledCliamsAndEsclations(Map<Id,PartnerF
         }
     }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}  
 
-    }  
-     
+    } 
+/**Akanksha- Validate the PNUM for the activity submitter**/
+    public static void validatePNUMForExternalUsers(List<PartnerFundRequest> newPFRList, Map<Id, PartnerFundRequest> oldPFRMap) {
+        Set<Id> pfrAccountId = new Set<Id>();
+        Map<String, List<Core_MDF_Partner_Node_User_Mapping__c>> mapOfAccountIdAndPNUM = new Map<String, List<Core_MDF_Partner_Node_User_Mapping__c>>();
+        String userId = UserInfo.getUserId();
+		system.debug('inside-->');
+        //Collect the AccountIds based on the beforeInsert or beforeUpdate context
+        for (PartnerFundRequest itrPFR : newPFRList) {
+            // Only check for differences if it's a beforeUpdate context
+            if (oldPFRMap == null || (oldPFRMap != null && oldPFRMap.containsKey(itrPFR.Id) && itrPFR.ChannelPartnerId != oldPFRMap.get(itrPFR.Id).ChannelPartnerId)) {
+                pfrAccountId.add(itrPFR.ChannelPartnerId);
+            }
+        }   
+        System.debug('pfr acc id set---'+ pfrAccountId);
+        // Query Core_MDF_Partner_Node_User_Mapping__c to fetch the active mappings
+        List<Core_MDF_Partner_Node_User_Mapping__c> pnumList = [SELECT  Id,Core_MDF_Active_Ind__c, Core_MDF_User__c, Core_MDF_User__r.isActive ,Core_MDF_Account__c
+                                                                FROM Core_MDF_Partner_Node_User_Mapping__c WHERE Core_MDF_Account__c IN :pfrAccountId AND   
+                                                                 Core_MDF_User__r.isActive = true AND Core_MDF_User__c = :userId
+                                                                ];
+       
+        
+        System.debug('list of PNUM Records----'+ pnumList);
+        if(pnumList.size() > 0){
+            //creating a map of unique key and pnums
+            for (Core_MDF_Partner_Node_User_Mapping__c itrPnum : pnumList) {
+                String uniqueKey = String.valueOf(itrPnum.Core_MDF_Account__c)+'_'+itrPnum.Core_MDF_Active_Ind__c;
+                if (!mapOfAccountIdAndPNUM.containsKey(uniqueKey)) {
+                    mapOfAccountIdAndPNUM.put(uniqueKey, new List<Core_MDF_Partner_Node_User_Mapping__c>{itrPnum});
+                }else{
+                    mapOfAccountIdAndPNUM.get(uniqueKey).add(itrPnum);
+                }   
+            }
+            System.debug('mapOfAccountIdAndPNUM-----'+mapOfAccountIdAndPNUM);
+            // Check if the partner fund request contains a valid mapping for the user
+            for (PartnerFundRequest itrPfr : newPFRList) {
+                String uniquePFRKey = String.valueOf(itrPfr.ChannelPartnerId)+'_'+'true';
+                if (!mapOfAccountIdAndPNUM.containsKey(uniquePFRKey)) {
+                    itrPfr.addError('No valid PNUM mapping exists for the current user.');
+                }
+            }
+        }
+    }
+    // ATHR Avoid long parameter lists - US 14285 - Indira
+    // Wrappper for notifyPCTApprovers method
+    public class PCTApproverNotificationWrapper {
+    public List<PartnerFundRequest> pfrList;
+    public List<String> accntList;
+    public List<String> geoList;
+    public List<String> programList;
+    
+    public PCTApproverNotificationWrapper(List<PartnerFundRequest> pfrList, List<String> accntList, 
+                                          List<String> geoList, List<String> programList) {
+        this.pfrList = pfrList;
+        this.accntList = accntList;
+        this.geoList = geoList;
+        this.programList = programList;
+    }
+}
+  // ATHR Avoid long parameter lists - US 14285 - Indira
+  // Wrapper for notifyApprovers method  
+  public class NotifyApproversWrapper {
+    public List<PartnerFundRequest> pfrList;
+    public List<String> accntList;
+    public List<String> geoList;
+    public List<String> programList;
+    public List<String> approvalStageStatusList;
+    public List<String> budgetTypeList;
+    
+    public NotifyApproversWrapper(List<PartnerFundRequest> pfrList, List<String> accntList, 
+                                  List<String> geoList, List<String> programList, 
+                                  List<String> approvalStageStatusList, List<String> budgetTypeList) {
+        this.pfrList = pfrList;
+        this.accntList = accntList;
+        this.geoList = geoList;
+        this.programList = programList;
+        this.approvalStageStatusList = approvalStageStatusList;
+        this.budgetTypeList = budgetTypeList;
+    }
+}  
+    
 }

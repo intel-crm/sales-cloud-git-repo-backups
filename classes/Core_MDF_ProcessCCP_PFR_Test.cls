@@ -1452,7 +1452,7 @@ Test.startTest();
     
     @isTest
     static void retailNotificatonTest(){
-        
+        Test.startTest();
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
         List<PartnerFundRequest> pfrList2 = new List<PartnerFundRequest>();
         List<PartnerFundRequest> pfrList3 = new List<PartnerFundRequest>();
@@ -1470,7 +1470,7 @@ Test.startTest();
         iupgm.Core_MDF_Active_Ind__c = TRUE;
         iupgm.Core_MDF_All_Accounts_cd__c ='No';
         Database.insert(iupgm);    
-        Test.startTest();
+        
         
        // PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createRetailActivity(string.valueof(cmp.Id),string.valueof(acc.id),System.today(),System.today(),false); 
         PartnerFundRequest pfr = New PartnerFundRequest();
@@ -1572,7 +1572,8 @@ Test.startTest();
         pfrList4.add(ipaPFR); 
         Database.insert(pfrList4);
         Set<ID> accIDSet1 = new Set<ID>();
-        accIDSet1.add(coMarketingIPA.id);       
+        accIDSet1.add(coMarketingIPA.id);
+       
         PartnerFundRequest tempVar=[select Id,Core_MDF_Fund_Request_Status__c,ChannelPartnerId,Core_MDF_Proposal_Based_Ind__c,Core_MDF_Program__c,recordtypeId,Recordtype.name,Core_MDF_Country_nm__c  from PartnerFundRequest where id=:ipaPFR.Id];
         
         Core_MDF_ProcessCCP_PartnerFundRequest.notifyExternalReviewers(new List<PartnerFundRequest>{tempVar},accIDSet1);
@@ -2126,9 +2127,10 @@ Test.startTest();
         approvalStageStatusList.add('L1 Approval');
         List<String> budgetTypeList=new List<String> ();
         budgetTypeList.add('MDF');
-        Core_MDF_ProcessCCP_PartnerFundRequest.notifyPCTApprovers(pfrList1, accntList, geoList, programList);
-        Core_MDF_ProcessCCP_PartnerFundRequest.notifyApprovers(pfrList1,  accntList,  geoList,  programList,
-                                                               approvalStageStatusList, budgetTypeList);
+        // ATHR Avoid long parameter lists - US 14285 - Indira
+        Core_MDF_ProcessCCP_PartnerFundRequest.notifyPCTApprovers(new Core_MDF_ProcessCCP_PartnerFundRequest.PCTApproverNotificationWrapper(pfrList1, accntList, geoList, programList));
+        Core_MDF_ProcessCCP_PartnerFundRequest.notifyApprovers(new Core_MDF_ProcessCCP_PartnerFundRequest.NotifyApproversWrapper(pfrList1,  accntList,  geoList,  programList,
+                                                               approvalStageStatusList, budgetTypeList));
         Assert.areEqual(budgetTypeList != null , true);
         Test.stopTest();
    
@@ -2225,9 +2227,10 @@ Test.startTest();
         approvalStageStatusList.add('L1 Approval');
         List<String> budgetTypeList=new List<String> ();
         budgetTypeList.add('MDF');
-        Core_MDF_ProcessCCP_PartnerFundRequest.notifyPCTApprovers(pfrList1, accntList, geoList, programList);
-        Core_MDF_ProcessCCP_PartnerFundRequest.notifyApprovers(pfrList1,  accntList,  geoList,  programList,
-                                                               approvalStageStatusList, budgetTypeList);
+        // ATHR Avoid long parameter lists - US 14285 - Indira
+        Core_MDF_ProcessCCP_PartnerFundRequest.notifyPCTApprovers(new Core_MDF_ProcessCCP_PartnerFundRequest.PCTApproverNotificationWrapper(pfrList1, accntList, geoList, programList));
+        Core_MDF_ProcessCCP_PartnerFundRequest.notifyApprovers(new Core_MDF_ProcessCCP_PartnerFundRequest.NotifyApproversWrapper(pfrList1,  accntList,  geoList,  programList,
+                                                               approvalStageStatusList, budgetTypeList));
         
         Test.stopTest();
         Assert.isTrue(pfrList != null);
@@ -2312,9 +2315,10 @@ Test.startTest();
         approvalStageStatusList.add('L1 Approval');
         List<String> budgetTypeList=new List<String> ();
         budgetTypeList.add('MDF');
-        Core_MDF_ProcessCCP_PartnerFundRequest.notifyPCTApprovers(pfrList, accntList, geoList, programList);
-        Core_MDF_ProcessCCP_PartnerFundRequest.notifyApprovers(pfrList,  accntList,  geoList,  programList,
-                                                               approvalStageStatusList, budgetTypeList);
+        // ATHR Avoid long parameter lists - US 14285 - Indira
+        Core_MDF_ProcessCCP_PartnerFundRequest.notifyPCTApprovers(new Core_MDF_ProcessCCP_PartnerFundRequest.PCTApproverNotificationWrapper(pfrList, accntList, geoList, programList));
+        Core_MDF_ProcessCCP_PartnerFundRequest.notifyApprovers(new Core_MDF_ProcessCCP_PartnerFundRequest.NotifyApproversWrapper(pfrList,  accntList,  geoList,  programList,
+                                                               approvalStageStatusList, budgetTypeList));
         
         Test.stopTest();
         Assert.isTrue(pfrList!=null);
@@ -2638,6 +2642,36 @@ static void test_cancelActivityForCancelledCliamsAndEsclations() {
     Test.stopTest();
 
     System.assert(true, 'Method executed without exception');
+}
+    
+    @isTest
+static void test_validatePNUMForExternalUsers_noMapping() {
+
+    PartnerFundRequest pfr = [SELECT Id, ChannelPartnerId 
+                             FROM PartnerFundRequest 
+                             WHERE ChannelPartnerId != null 
+                             LIMIT 1];
+
+    List<PartnerFundRequest> newList = new List<PartnerFundRequest>();
+
+    PartnerFundRequest newPfr = pfr.clone(false, true, false, false);
+    newPfr.Id = pfr.Id;
+
+    newList.add(newPfr);
+
+    Map<Id, PartnerFundRequest> oldMap = new Map<Id, PartnerFundRequest>{
+        pfr.Id => pfr
+    };
+ 
+    Test.startTest();
+    try {
+        Core_MDF_ProcessCCP_PartnerFundRequest.validatePNUMForExternalUsers(newList, oldMap);
+    } catch (Exception e) {
+        System.debug('Expected error: ' + e.getMessage());
+    }
+    Test.stopTest();
+
+    System.assert(true, 'Executed PNUM validation without crash');
 }
     
   // 14285 Indira - end

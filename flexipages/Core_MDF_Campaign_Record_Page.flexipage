@@ -15,6 +15,10 @@
                     <name>hideChatterActions</name>
                     <value>false</value>
                 </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideSlackAction</name>
+                    <value>false</value>
+                </componentInstanceProperties>
                 <componentName>force:highlightsPanel</componentName>
                 <identifier>force_highlightsPanel</identifier>
                 <visibilityRule>
@@ -90,7 +94,7 @@
         <itemInstances>
             <componentInstance>
                 <componentName>Core_MDF_ProposalApproval</componentName>
-                <identifier>Core_MDF_ProposalApproval</identifier>
+                <identifier>c_Core_MDF_ProposalApproval</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -106,6 +110,9 @@
                     <value>Core_MDF_Proposal_Based_Ind__c</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>fieldAPIoperator</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>isCompactLayout</name>
                     <value>No</value>
                 </componentInstanceProperties>
@@ -118,11 +125,14 @@
                     <value>Campaign</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>operator</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>standardFieldAlign</name>
                     <value>Yes</value>
                 </componentInstanceProperties>
                 <componentName>core_MDF_CustomLayoutConfig</componentName>
-                <identifier>core_MDF_CustomLayoutConfig</identifier>
+                <identifier>c_core_MDF_CustomLayoutConfig</identifier>
                 <visibilityRule>
                     <booleanFilter>1 OR 2</booleanFilter>
                     <criteria>
@@ -187,7 +197,7 @@
                     <name>tableHeader</name>
                 </componentInstanceProperties>
                 <componentName>core_MDF_Custom_Related_List</componentName>
-                <identifier>c_core_MDF_Custom_Related_List4</identifier>
+                <identifier>c_core_MDF_Custom_Related_List</identifier>
                 <visibilityRule>
                     <booleanFilter>(1 AND 5) OR 2 OR 3 OR 4</booleanFilter>
                     <criteria>
@@ -198,12 +208,12 @@
                     <criteria>
                         <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Data Center CoMarketing Fund</rightValue>
+                        <rightValue>Client CoMarketing Fund</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Client CoMarketing Fund</rightValue>
+                        <rightValue>Data Center CoMarketing Fund</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
@@ -269,7 +279,7 @@
                     <value>Core_MDF_Activity_Purpose_Header</value>
                 </componentInstanceProperties>
                 <componentName>core_MDF_Custom_Related_List</componentName>
-                <identifier>c_core_MDF_Custom_Related_List</identifier>
+                <identifier>c_core_MDF_Custom_Related_List2</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -285,12 +295,6 @@
                 <componentInstanceProperties>
                     <name>relatedobjectApiName</name>
                     <value>Core_MDF_Camp_to_ActPartner__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>restrictFieldVisiblityCriteriaFieldAPIName</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>restrictFieldVisiblityFieldAPIName</name>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>sharingFlag</name>
@@ -374,7 +378,7 @@
                     <name>tableHeader</name>
                 </componentInstanceProperties>
                 <componentName>core_MDF_Custom_Related_List</componentName>
-                <identifier>c_core_MDF_Custom_Related_List2</identifier>
+                <identifier>c_core_MDF_Custom_Related_List4</identifier>
                 <visibilityRule>
                     <criteria>
                         <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
@@ -542,7 +546,7 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer</identifier>
+                <identifier>force_relatedListSingleContainer4</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>

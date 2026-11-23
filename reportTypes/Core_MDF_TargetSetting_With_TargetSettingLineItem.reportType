@@ -205,4 +205,65 @@
         </columns>
         <masterLabel>Target Setting Line Items</masterLabel>
     </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Priority_Percentage__c</field>
+            <table>Core_MDF_Target_Setting__c.Forecast_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Spending_Targets_Version__c</field>
+            <table>Core_MDF_Target_Setting__c.Forecast_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Spending_Targets_Id__c</field>
+            <table>Core_MDF_Target_Setting__c.Forecast_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Spending_Targets_Record_Name__c</field>
+            <table>Core_MDF_Target_Setting__c.Forecast_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Spending_Version_Record_Name__c</field>
+            <table>Core_MDF_Target_Setting__c.Forecast_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Campaign_Id__c</field>
+            <table>Core_MDF_Target_Setting__c.Forecast_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_ProgramName_Txt__c</field>
+            <table>Core_MDF_Target_Setting__c.Forecast_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Host_Region_Txt__c</field>
+            <table>Core_MDF_Target_Setting__c.Forecast_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Country_Name_nm__c</field>
+            <table>Core_MDF_Target_Setting__c.Forecast_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Region_Name_nm__c</field>
+            <table>Core_MDF_Target_Setting__c.Forecast_Line_Items__r</table>
+        </columns>
+        <masterLabel>Spending Targets Line Items</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Spending_Targets_Amount__c</field>
+            <table>Core_MDF_Target_Setting__c</table>
+        </columns>
+        <masterLabel>Spending Targets</masterLabel>
+    </sections>
 </ReportType>

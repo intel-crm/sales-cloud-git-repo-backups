@@ -7,7 +7,11 @@
         if(component.get("v.programName") == $A.get("$Label.c.Core_MDF_Co_GTM_program_name")) {
             component.set("v.isCoGTMProgram", true);
         }
-        let outComeBasedFlag = component.get("v.isOutcomeBasedActivity");
+        let partnerFundReqId = component.get("v.simpleNewClaim.RequestId"); //anushya TWC3117-14374
+        let outComeBasedFlag = component.get("v.isOutcomeBasedActivity");  //anushya TWC3117-14374
+
+        console.log("partnerFundReqId===",partnerFundReqId);
+        console.log("outComeBasedFlag===",outComeBasedFlag);
         //Setting File formats
         let fileFormats = $A.get("$Label.c.Core_MDF_AllowedFileTypes").split(",");
         component.set("v.accept", fileFormats);
@@ -15,12 +19,13 @@
         let documentList = [];
         //apex call to get audit document details and user access
         let action = component.get("c.getAuditDocumentDetailsWrapper");
-        //action.setParams({ recordId: recId });
+        //action.setParams({ recordId: recId });  //anushya TWC3117-14374
         action.setParams({ recordId: recId, outComeBasedFlag: outComeBasedFlag  }); //anushya TWC3117-14374
         action.setCallback(this, function (res) {
             let state = res.getState();
             if (state.toLowerCase() === "success") {
                 let auditDocumentDetailsWrapper = res.getReturnValue();
+                console.log('auditDocumentDetailsWrapper:::', auditDocumentDetailsWrapper);
                 //third party rule engine call
                 if(!component.get("v.isCoGTMProgram")) {
                      this.getThirdPartyDetails(component);
@@ -97,6 +102,7 @@
     //To check whether the claim is eligible for PIC Review or not based on the claim Status and display the submit for PIC PopUp accordingly
     //Used in Parent component  - Core_MDF_ManageAuditDocumentWrapperComponent, to be used in PFC_Create
     submitForPIC: function (component) {
+        
         //component.set("v.spinner", true);
         let auditDocumentDetailsWrapper = component.get("v.auditDocumentDetailsWrapper");
         if (auditDocumentDetailsWrapper.isClaimEdit) {
@@ -107,6 +113,11 @@
             action.setCallback(this, function (res) {
                 let state = res.getState();
                 if (state.toLowerCase() === "success") {
+
+                    // let isClaimEligibleForPICReview = res.getReturnValue();
+                    // component.set("v.isClaimEligibleForPICReview", isClaimEligibleForPICReview);
+
+                    // Roshan TWC3117-16573
                     let picStatusWrapper = res.getReturnValue();
                     component.set("v.isClaimEligibleForPICReview", picStatusWrapper.isClaimAvailableForPIC);
                     component.set("v.isOutComeBased", picStatusWrapper.isOutComeBased);
@@ -144,74 +155,83 @@
             uploadedFiles.map(uploadedFile => {
                 var fileNameShorteningInd = $A.get("$Label.c.Core_MDF_SFTNameShortening_Ind");
                 let uploadedFileName = uploadedFile.name;
-                if(fileNameShorteningInd == 'True'){
-                    if(uploadedFileName.includes('%')) {
-                        uploadedFileName = uploadedFileName.replaceAll('%','pct');
+                if (fileNameShorteningInd == 'True') {
+                    if (uploadedFileName.includes('%')) {
+                        uploadedFileName = uploadedFileName.replaceAll('%', 'pct');
                     }
                     extPosition = uploadedFileName.lastIndexOf(".");//extention position 
                     fileExt = uploadedFileName.substring(extPosition);
                     uploadedFileNameWithoutExt = uploadedFileName.substring(0, extPosition);
                     encodedUploadedFileName = encodeURI(uploadedFileNameWithoutExt);
-                    encodedUploadedFileNameWithExt = encodeURI(uploadedFileName.replace(/[{}|\\^~[\]`]/g, "_"));
-                    while(encodedUploadedFileNameWithExt.length > 115){
+                    encodedUploadedFileNameWithExt = encodeURI(uploadedFileName.replace(/[{}|\\^~[\]`"]/g, "_"));
+                    while (encodedUploadedFileNameWithExt.length > 130) {
                         uploadedFileNameWithoutExt = uploadedFileNameWithoutExt.substring(0, 60 - reduction);
                         encodedUploadedFileName = encodeURI(uploadedFileNameWithoutExt);
-                        encodedUploadedFileNameWithExt = encodeURI(uploadedFileNameWithoutExt +fileExt);
-                        reduction = reduction + 5 ;
+                        encodedUploadedFileNameWithExt = encodeURI(uploadedFileNameWithoutExt + fileExt);
+                        reduction = reduction + 5;
                     }
                 }
                 uploadedAuditDocList.push({
                     sobjectType: "Core_MDF_Audit_Document__c",
                     Core_MDF_Document_Title__c: uploadedFile.name,
-                    Core_MDF_Download_Document_Title_txt__c:decodeURI(encodedUploadedFileNameWithExt),
-                    Core_MDF_Encoded_Document_Title_txt__c:encodedUploadedFileNameWithExt,
+                    Core_MDF_Download_Document_Title_txt__c: decodeURI(encodedUploadedFileNameWithExt),
+                    Core_MDF_Encoded_Document_Title_txt__c: encodedUploadedFileNameWithExt,
                     Core_MDF_Document_Id__c: uploadedFile.documentId,
-                    Core_MDF_Document_Types__c: (component.get("v.isCoGTMProgram") || component.get("v.isOutcomeBasedAccountBasedAct")) ? "Proof of Cost;Proof of Execution;Proof of Attribution" : "", //dk change
+                    //Core_MDF_Document_Types__c: component.get("v.isCoGTMProgram") ? "Proof of Cost;Proof of Execution;Proof of Attribution" : "",//dk change
+                    Core_MDF_Document_Types__c: (component.get("v.isCoGTMProgram") || component.get("v.isOutcomeBasedAccountBasedAct")) ? "Proof of Cost;Proof of Execution;Proof of Attribution" : "", //dk change && anushya TWC3117-14374
                     Core_MDF_Old_Document_Id__c: this.generateAppId(),
-                    Core_MDF_App_Document_Types_nm__c: (component.get("v.isCoGTMProgram") || component.get("v.isOutcomeBasedAccountBasedAct")) ? "Proof of Cost;Proof of Execution;Proof of Attribution" : "", // dk change
+                    //Core_MDF_App_Document_Types_nm__c: component.get("v.isCoGTMProgram") ? "Proof of Cost;Proof of Execution;Proof of Attribution" : "",//dk change
+                    Core_MDF_App_Document_Types_nm__c: (component.get("v.isCoGTMProgram") || component.get("v.isOutcomeBasedAccountBasedAct")) ? "Proof of Cost;Proof of Execution;Proof of Attribution" : "", // dk change && anushya TWC3117-14374
                     Core_MDF_ContentVersion_Id__c: uploadedFile.contentVersionId,
                     isNewDocument: true,
                 });
                 contentDocumentIds.push(uploadedFile.documentId);
-                
-                
+
+
             });
         } else {
             uploadedFiles.map(uploadedFile => {
-                var fileNameShorteningInd = $A.get("$Label.c.Core_MDF_SFTNameShortening_Ind");
+                var fileNameShorteningInd = $A.get("$Label.c.Core_MDF_SFTNameShortening_Ind");//True//TRUE
                 let uploadedFileName = uploadedFile.name;
-                if(fileNameShorteningInd == 'True'){
-                    if(uploadedFileName.includes('%')) {
-                        uploadedFileName = uploadedFileName.replaceAll('%','pct');
+                if (fileNameShorteningInd == 'True') {//have uppercase conversion and validate
+                    if (uploadedFileName.includes('%')) {
+                        uploadedFileName = uploadedFileName.replaceAll('%', 'pct');
                     }
                     extPosition = uploadedFileName.lastIndexOf(".");//extention position 
                     fileExt = uploadedFileName.substring(extPosition);
                     uploadedFileNameWithoutExt = uploadedFileName.substring(0, extPosition);
                     encodedUploadedFileName = encodeURI(uploadedFileNameWithoutExt);
-                    encodedUploadedFileNameWithExt = encodeURI(uploadedFileName.replace(/[{}|\\^~[\]`]/g, "_"));
-                    while(encodedUploadedFileNameWithExt.length > 115){
+                    encodedUploadedFileNameWithExt = encodeURI(uploadedFileName.replace(/[{}|\\^"~[\]`]/g, "_"));
+                    while (encodedUploadedFileNameWithExt.length > 130) {
                         uploadedFileNameWithoutExt = uploadedFileNameWithoutExt.substring(0, 60 - reduction);
                         encodedUploadedFileName = encodeURI(uploadedFileNameWithoutExt);
-                        encodedUploadedFileNameWithExt = encodeURI(uploadedFileNameWithoutExt +fileExt);
-                        reduction = reduction + 5 ;
+                        encodedUploadedFileNameWithExt = encodeURI(uploadedFileNameWithoutExt + fileExt);
+                        reduction = reduction + 5;
                     }
                 }
 
                 uploadedAuditDocList.push({
                     sobjectType: "Core_MDF_Audit_Document__c",
                     Core_MDF_Document_Title__c: uploadedFile.name,
-                    Core_MDF_Download_Document_Title_txt__c:decodeURI(encodedUploadedFileNameWithExt),
-                    Core_MDF_Encoded_Document_Title_txt__c:encodedUploadedFileNameWithExt,
+                    Core_MDF_Download_Document_Title_txt__c: decodeURI(encodedUploadedFileNameWithExt),
+                    Core_MDF_Encoded_Document_Title_txt__c: encodedUploadedFileNameWithExt,
                     Core_MDF_Document_Id__c: uploadedFile.documentId,
                     //Deafult Proof of Cost;Proof of Execution;Proof of Attribution for CoGTM
-                    Core_MDF_Document_Types__c: (component.get("v.isCoGTMProgram") || component.get("v.isOutcomeBasedAccountBasedAct")) ? "Proof of Cost;Proof of Execution;Proof of Attribution" : "", //dk change
-                    Core_MDF_App_Document_Types_nm__c: (component.get("v.isCoGTMProgram") || component.get("v.isOutcomeBasedAccountBasedAct")) ? "Proof of Cost;Proof of Execution;Proof of Attribution" : "", // dk change
+                    //Core_MDF_Document_Types__c: component.get("v.isCoGTMProgram") ? "Proof of Cost;Proof of Execution;Proof of Attribution" : "",
+                    Core_MDF_Document_Types__c: (component.get("v.isCoGTMProgram") || component.get("v.isOutcomeBasedAccountBasedAct")) ? "Proof of Cost;Proof of Execution;Proof of Attribution" : "", //dk change && anushya TWC3117-14374
+                    //Core_MDF_App_Document_Types_nm__c: component.get("v.isCoGTMProgram") ? "Proof of Cost;Proof of Execution;Proof of Attribution" : "",
+                    Core_MDF_App_Document_Types_nm__c: (component.get("v.isCoGTMProgram") || component.get("v.isOutcomeBasedAccountBasedAct")) ? "Proof of Cost;Proof of Execution;Proof of Attribution" : "", // dk change && anushya TWC3117-14374
+                    //Core_MDF_Document_Types__c: "",
                     Core_MDF_Old_Document_Id__c: this.generateAppId(),
+                    //Core_MDF_App_Document_Types_nm__c: "",
                     Core_MDF_ContentVersion_Id__c: uploadedFile.contentVersionId,
                     isNewDocument: false,
                 });
                 contentDocumentIds.push(uploadedFile.documentId);
-                
+
+                //uploadedFile.contentvesionId where is it?
+                //rename - old doc id to appfileId
+
             });
         }
         component.set("v.contentDocumentIds", contentDocumentIds);
@@ -220,11 +240,11 @@
         component.set("v.existingDocList", existingDocList);
         this.getDocumentDetails(component, existingDocList);
         //Co-GTM -> Added by VB
-        if (component.get("v.isCoGTMProgram") || component.get("v.isOutcomeBasedAccountBasedAct")) { 
+        if (component.get("v.isCoGTMProgram") || component.get("v.isOutcomeBasedAccountBasedAct")) { //anushya TWC3117-14374
             component.set("v.isOpen", false);
             component.set("v.displayUploadedFiles", true);
-            component.set("v.disableManageDocumentButton", false);
-            this.checkForChangeInDocumentList(component);
+            component.set("v.disableManageDocumentButton", false);//dk change
+            this.checkForChangeInDocumentList(component);//dk change
         } else {
             component.set("v.isOpen", true);
         }
@@ -291,6 +311,7 @@
                             requiredDocumentTypes.push(mdt.Document_Type_Label);
                             requiredDocumentTypesList.push(mdt.Core_MDF_Document_Type_nm__c);
                         } else {
+                            //Aditya - PIC status update
                             if (claimStatus === $A.get("Core_MDF_Claim_Status_Payment_Clearance_Processing") || claimStatus === $A.get("$Label.c.Core_MDF_Claim_Status_PIC_Pending") || claimStatus === $A.get("$Label.c.Core_MDF_Claim_Status_Paid_and_PIC_Pending")) {
                                 requiredDocumentTypesList.push(mdt.Core_MDF_Document_Type_nm__c);
                             }
@@ -336,7 +357,7 @@
         let typeOfDocuments = component.get("v.typeOfDocuments");
         auditDocumentList.map(auditDoc => {
             auditDoc.Core_MDF_App_Document_Types_nm__c = applicableDocumentTypes;
-            selectedDocumentTypesList = (!$A.util.isUndefinedOrNull(auditDoc.Core_MDF_Document_Types__c) &&  !$A.util.isEmpty(auditDoc.Core_MDF_Document_Types__c) && auditDoc.Core_MDF_Document_Types__c != "") ? auditDoc.Core_MDF_Document_Types__c.split(';') : [];
+            selectedDocumentTypesList = (!$A.util.isUndefinedOrNull(auditDoc.Core_MDF_Document_Types__c) && !$A.util.isEmpty(auditDoc.Core_MDF_Document_Types__c) && auditDoc.Core_MDF_Document_Types__c != "") ? auditDoc.Core_MDF_Document_Types__c.split(';') : [];
             if (auditDoc.Core_MDF_Document_Id__c === selectedDocumentId) {
                 typeOfDocuments.find(docType => {
                     if (docType.documentName === selectedDocumentType) {
@@ -404,6 +425,7 @@
             this.displayToastMesages(toastMessage, "3000", "error");
         }
         component.set("v.typeOfDocuments", docTypeArray);
+        // console.log("dhakshinesh doctype:",docTypeArray );
     },
 
     /*To Fire an event to parent  component(Core_MDF_ManageAuditDocumentWrapperComponent), 
@@ -431,9 +453,9 @@
                     };
                     auditDocumentListToInsertOrUpdate.push(auditDocumentWrapper);
                 }
-            } 
+            }
             //Document type selection issue fix
-            else if(!$A.util.isUndefined(existingDoc) &&  ($A.util.isUndefinedOrNull(existingDoc.Core_MDF_Document_Types__c) || $A.util.isEmpty(existingDoc.Core_MDF_Document_Types__c) || existingDoc.Core_MDF_Document_Types__c == "")) {
+            else if (!$A.util.isUndefined(existingDoc) && ($A.util.isUndefinedOrNull(existingDoc.Core_MDF_Document_Types__c) || $A.util.isEmpty(existingDoc.Core_MDF_Document_Types__c) || existingDoc.Core_MDF_Document_Types__c == "")) {
                 let existingDocumentTypes = existingDoc.Core_MDF_Document_Types__c;
                 let auditDocumentTypes = auditDoc.Core_MDF_Document_Types__c;
                 if (existingDocumentTypes !== auditDocumentTypes) {
@@ -458,6 +480,7 @@
             enableSubmitButtonEvent.setParams({ auditDocumentListToInsertOrUpdate: auditDocumentListToInsertOrUpdate, disableSubmitButton: true });
             enableSubmitButtonEvent.fire();
         }
+        // console.log("dhakshinesh check for change in doc list:", auditDocumentList);
     },
 
     //To check whether one document type is selected on each file or not
@@ -471,13 +494,14 @@
             } else {
                 noDocTypeSelected = true;
             }
-            if (documentTypes.length > 0 && !noDocTypeSelected ) {
+            if (documentTypes.length > 0 && !noDocTypeSelected) {
                 component.set("v.isAnyOneDocumentTypeSelectedOnEachDocument", true);
             } else {
                 component.set("v.isAnyOneDocumentTypeSelectedOnEachDocument", false);
                 noDocTypeSelected = true;
             }
         });
+        // console.log("dhakshinesh doctype line 482:",documentTypes );
 
     },
 
@@ -564,36 +588,36 @@
         });
         toastEvent.fire();
     },
-    generateAESKey: function() {
+    generateAESKey: function () {
         // Generate a random 128-bit (16 bytes) key
         var array = new Uint8Array(16);
         window.crypto.getRandomValues(array);
         return array;
     },
 
-    byteArrayToHex: function(byteArray) {
-        return Array.from(byteArray, function(byte) {
+    byteArrayToHex: function (byteArray) {
+        return Array.from(byteArray, function (byte) {
             return ('0' + (byte & 0xFF).toString(16)).slice(-2);
         }).join('');
     },
 
-    formatDateTime:function(date) {
+    formatDateTime: function (date) {
         let year = date.getFullYear();
         let month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-indexed
         let day = date.getDate().toString().padStart(2, '0');
         let hours = date.getHours().toString().padStart(2, '0');
         let minutes = date.getMinutes().toString().padStart(2, '0');
         let seconds = date.getSeconds().toString().padStart(2, '0');
-    
+
         return `${year}${month}${day} ${hours}${minutes}${seconds}`;// formating --::
     },
 
-    deleteWhitespace: function(str) {
+    deleteWhitespace: function (str) {
         // Remove all whitespace from a string
         return str.replace(/\s+/g, '');
     },
 
-    generateAppId: function() {
+    generateAppId: function () {
         // Generate AES key
         var key = this.generateAESKey();
         // Convert byte array to hex string  hexadecimal (base 16) representation of the inputBlob .

@@ -2,8 +2,8 @@
 public class Core_MDF_CustomLayoutConfig_Contrl_Test {
     @TestSetup
     public static void createData(){
-        
-
+        // Highlight: Unused Local Variable - 14285 / Suma
+       // Profile sysAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator'];
         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
         usr.LastName = 'User Test';
@@ -39,7 +39,7 @@ public class Core_MDF_CustomLayoutConfig_Contrl_Test {
             List<String> result1 = new List<String>();
             myset1.addAll(bypassFunctionKeys);
             result1.addAll(myset1);
-			List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
+            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
             
             List<Core_MDF_Custom_Layout_Section__c> sections= new List<Core_MDF_Custom_Layout_Section__c>();
             Core_MDF_Custom_Layout_Section__c sec1 = new Core_MDF_Custom_Layout_Section__c(Core_MDF_Section_Name_txt__c='Section 1',Core_MDF_Object_Name_txt__c='Campaign',Core_MDF_No_Of_Columns_nm__c= '1', Core_MDF_Sequence_No_nbr__c= 1.0, Core_MDF_Field_View_nm__c = 'Detail Layout');
@@ -87,6 +87,8 @@ public class Core_MDF_CustomLayoutConfig_Contrl_Test {
             accList.add(iPACoMarketingAcc);
             Database.insert(accList);
             
+            /*************************************************************************/
+            
            Campaign IPAMdfCamp1 = new Campaign(Name = 'Test Campaign 1',Core_MDF_Program__c = 'Intel Partner Alliance',StartDate = System.today(),EndDate = System.today().adddays(30),
                                                 Core_MDF_Account__c =IPAMDFCoMarketingAccount.id, Core_MDF_Proposal_Based_Ind__c = false); 
             IPAMdfCamp1.Core_MDF_Market__c = 'India';
@@ -115,7 +117,7 @@ public class Core_MDF_CustomLayoutConfig_Contrl_Test {
             camp4.Core_MDF_Budget_Type_txt__c = 'Proposal I MDF';
             camp4.Core_MDF_Reimbursement_Amt__c = 200.0;
             camp4.Core_MDF_Opal_Budget_Type_Txt__c = 'Proposal I MDF';
-            camp4.Core_MDF_Technology__c = '';  // 14285 Indira
+            camp4.Core_MDF_Technology__c = '';
             camp4.Core_MDF_Market__c = 'AFGHANISTAN';
             
             Database.insert(camp4);
@@ -177,7 +179,7 @@ public class Core_MDF_CustomLayoutConfig_Contrl_Test {
             msg=Core_MDF_CustomLayoutConfig_Controller.updateCampRecord(String.valueOf(camp1.id), 'Cancelled');
         }
         Test.stopTest();
-        Assert.areNotEqual(0, res);
+         Assert.areNotEqual(0, res); 
         Assert.areEqual('sucess', msg);
     }
 

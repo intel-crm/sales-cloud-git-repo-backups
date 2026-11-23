@@ -973,6 +973,21 @@
         <picklistField>Core_MDF_Payment_Nature_nm__c</picklistField>
         <picklistObject>Core_MDF_Payment_Run__c</picklistObject>
     </dynamicChoiceSets>
+    <ends>
+        <name>END_ELEMENT_4</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_5</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_6</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
     <environments>Default</environments>
     <formulas>
         <name>Account15CharId</name>
@@ -1215,6 +1230,9 @@ MID(
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
+        <connector>
+            <targetReference>END_ELEMENT_4</targetReference>
+        </connector>
         <fields>
             <name>New_Normal_Payment_Run</name>
             <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;New Normal Payment Run&lt;/span&gt;&lt;/p&gt;</fieldText>
@@ -2177,6 +2195,9 @@ MID(
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
+        <connector>
+            <targetReference>END_ELEMENT_5</targetReference>
+        </connector>
         <fields>
             <name>OOC_Error_Message</name>
             <extensionName>flowruntime:message</extensionName>
@@ -2217,6 +2238,9 @@ MID(
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
+        <connector>
+            <targetReference>END_ELEMENT_6</targetReference>
+        </connector>
         <fields>
             <name>OOC_Success_Message</name>
             <extensionName>flowruntime:message</extensionName>

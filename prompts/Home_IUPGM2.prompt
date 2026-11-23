@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Home_IUPGM2</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>IUPGM</actionButtonLabel>
+        <actionButtonLink>https://intel--crmdevccp.lightning.force.com/lightning/o/Core_MDF_Int_Users_Partner_Geo_Mapping__c/list?filterName=00Bg0000001xQHbEAM</actionButtonLink>
+        <body>CCP Program Introduce new feature IUPGM. This is used to assign Account Managers to an Account and Geo. To Know more, Click IUPGM Button</body>
+        <customApplication>Core_MDF_CoMarketing</customApplication>
+        <delayDays>2</delayDays>
+        <dismissButtonLabel>Dismiss</dismissButtonLabel>
+        <displayPosition>TopCenter</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <endDate>2020-04-29</endDate>
+        <isPublished>false</isPublished>
+        <masterLabel>Home_IUPGM2</masterLabel>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2020-04-22</startDate>
+        <targetPageKey1>home</targetPageKey1>
+        <targetPageType>standard__namedPage</targetPageType>
+        <timesToDisplay>30</timesToDisplay>
+        <title>Welcome to Co-Marketing Program</title>
+        <uiFormulaRule>
+            <booleanFilter>1 OR 2</booleanFilter>
+            <criteria>
+                <leftValue>{!$User.Profile.Key}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>Admin</rightValue>
+            </criteria>
+            <criteria>
+                <leftValue>{!$User.Profile.Key}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>custom_it admin</rightValue>
+            </criteria>
+        </uiFormulaRule>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>SpecificProfiles</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

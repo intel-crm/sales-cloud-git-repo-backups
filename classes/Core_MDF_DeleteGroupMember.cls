@@ -7,7 +7,7 @@
 * Accenture - VK       08-12-2020         Queueable class to delete group member records when IUPGM is inactivated from Batch
 *****************************************************************************************************************************************/
 public class Core_MDF_DeleteGroupMember implements Queueable {
-	
+    
     List<GroupMember> gmListToBeDeleted = new List<GroupMember>();
     //List<User> userListForUpdate = new List<User>();
     //US1073355 - Marketing User update with Platform Event changes

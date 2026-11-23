@@ -1,0 +1,29 @@
+<messaging:emailTemplate subject="Access Request Update - {!relatedTo.Core_MDF_Request_Status__c}" 
+    recipientType="User" 
+    relatedToType="Core_MDF_User_Input__c">
+
+    <messaging:htmlEmailBody >
+
+        <html>
+        <body style="font-family: Arial;">
+
+            
+            <p>Dear Intel employee,</p>
+
+            <p>Your IUPGM access request has been processed.</p>
+
+            <p><b>Status:</b> {!relatedTo.Core_MDF_Request_Status__c}</p>
+            <p><b>Role:</b> {!relatedTo.Core_MDF_IUPGM_Role__c}</p>
+            <p><b>Program:</b> {!relatedTo.Core_MDF_IUPGM_Program__c}</p>
+            <p><b>Details:</b> {!relatedTo.Core_MDF_Request_Status_Message__c}</p>
+
+            <br/>
+
+            <p>Thank You,<br/>
+            Intel® Partner Investment Center</p>
+
+        </body>
+        </html>
+
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

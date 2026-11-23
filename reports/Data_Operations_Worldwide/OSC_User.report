@@ -25,21 +25,22 @@
         <field>LAST_LOGIN</field>
     </columns>
     <columns>
-        <field>Account.Core_Account_Coverage__c</field>
-    </columns>
-    <columns>
-        <field>User.Core_User_Coverage__c</field>
-    </columns>
-    <columns>
-        <field>User.Core_Manager__c</field>
+        <field>User.Core_Is_OSC__c</field>
     </columns>
     <filter>
         <criteriaItems>
-            <column>DEPARTMENT</column>
+            <column>User.Core_Is_OSC__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>US Inside</value>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACTIVE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -47,7 +48,7 @@
     <name>OSC User</name>
     <params>
         <name>active</name>
-        <value>all</value>
+        <value>active</value>
     </params>
     <params>
         <name>co</name>
@@ -57,8 +58,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>User.Core_Manager__c</sortColumn>
-    <sortOrder>Asc</sortOrder>
+    <sortColumn>LAST_LOGIN</sortColumn>
+    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>LAST_LOGIN</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

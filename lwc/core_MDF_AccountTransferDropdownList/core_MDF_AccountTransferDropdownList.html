@@ -1,0 +1,68 @@
+<!-- Generic Custom Dropdown with Search LWC -->
+<template>
+    <div class="slds-form-element">
+        <div class="slds-form-element_control">
+            <!-- Combobox Container -->
+            <div class="slds-combobox_container">
+                <div class={dropDownClass} aria-expanded="true" aria-haspopup="listbox" role="combobox">
+                    <!--<div class="slds-combobox__form-element" role="none">-->
+                        <div class="slds-input-has-icon slds-input-has-icon_right" role="none">
+                            <!-- Readonly Input to display selected value -->
+                            <lightning-input type="search"
+                                class="slds-p-around_xx-small slds-has-focus slds-combobox__input-value toSObject"
+                                id="toSObject" autocomplete="off" data-id="select-sobject-id" label={fieldLabel}
+                                aria-autocomplete="list" aria-controls="listbox-id-11" role="textbox"
+                                placeholder="Search..." onkeyup={handleKeyPress} onclick={handleInputClick} value={recordName} required></lightning-input>
+                        </div>
+                    <!--</div>-->
+                    <!-- List box to show dropdown options -->
+                    <!-- <template if:true={showDropDown}> -->
+                        <template if:true={hasListToDisplay}>
+                            <div id="listbox-id-11" class="slds-dropdown slds-dropdown_fluid" role="listbox"  onmouseleave={toggleDropDown}>
+                                <ul class="slds-listbox slds-listbox_vertical slds-dropdown_length-5 customClass slds-dropdown_length-with-icon-7" tabindex="0"
+                                    role="presentation" onblur={checkForToAccount}>
+                                    <template for:each={inputListToDisplay} for:item="optionList">
+                                        <!-- li to display each option in the list -->
+                                        <li key={optionList.objectId} role="presentation" class="slds-listbox__item"
+                                            data-label={optionList.objectLabel} data-value={optionList.objectId} onclick={optionListClickHandler}
+                                            title={optionList.objectLabel}>
+                                            <div id={optionList.objectLabel}
+                                                class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small"
+                                                role="optionList">
+                                                <span class="slds-media__figure slds-listbox__option-icon"></span>
+                                                <span class="slds-truncate">
+                                                    <span>{optionList.objectLabel}</span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <!--/ li to display each option in the list -->
+                                    </template>
+                                </ul>
+                            </div>
+                        </template>
+                        <template if:false={hasListToDisplay}>
+                            <div id="listbox-id-1" class="slds-dropdown slds-dropdown_fluid" role="listbox"  onmouseleave={toggleDropDown}>
+                                <ul class="slds-listbox slds-listbox_vertical slds-dropdown_length-5 customClass slds-dropdown_length-with-icon-7" tabindex="0"
+                                    role="presentation">
+                                    <div class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small">
+                                        <span class="slds-media__figure slds-listbox__option-icon"></span>
+                                                <span class="slds-truncate">
+                                                    <span>Choose one...</span>
+                                                </span>
+                                    </div>
+                                </ul>
+                            </div>
+                        </template>
+                    <!-- </template> -->
+                   
+                    <!--/ List box to show dropdown options -->
+                    <div>
+
+                    </div>
+                </div>
+            </div>
+            <!--/ Combobox Container -->
+        </div>
+    </div>
+</template>
+<!--/ Generic Custom Dropdown with Search LWC -->

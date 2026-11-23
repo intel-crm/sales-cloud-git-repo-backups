@@ -45,7 +45,7 @@ public class Core_EnvironmentVariablesController_Test{
         System.Assert(createProductRecord.Id != null, 'Record not created');
         // Creating Support Org (Core_IPS_Product_Organization__c) Record
         Core_IPS_Product_Organization__c SupportOrgRecord = TestUtilities.getSupportOrg();
-        //SupportOrgRecord.OwnerId = QueueRecord.Id;
+        SupportOrgRecord.OwnerId = QueueRecord.Id;
         insert SupportOrgRecord;
         System.Assert(SupportOrgRecord.Id != null, 'Record not created');
         // Creating Core Supported Product
@@ -92,9 +92,8 @@ public class Core_EnvironmentVariablesController_Test{
         System.runAs(userRecord){
         // Testing Visualforce Page
         Test.startTest();
-            //commented for Classic EOL : Tejaswini
-      /*  PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
-        Test.setCurrentPage(pageRef); */
+        PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
+        Test.setCurrentPage(pageRef);
         ApexPages.StandardController StndContr = new ApexPages.standardController(supportedProductRecord);
         ApexPages.CurrentPage().getparameters().put('id',supportedProductRecord.Id);
         Core_EnvironmentVariablesController AddEnvVarContr = new Core_EnvironmentVariablesController(StndContr);
@@ -113,15 +112,14 @@ public class Core_EnvironmentVariablesController_Test{
         System.runAs(userRecord){
         // Testing Visualforce Page
         Test.startTest();
-            //commented for Classic EOL : Tejaswini
-      /*  PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
-        Test.setCurrentPage(pageRef); */
+        PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
+        Test.setCurrentPage(pageRef);
         ApexPages.StandardController StndContr = new ApexPages.standardController(supportedProductRecord);
         ApexPages.CurrentPage().getparameters().put('id',supportedProductRecord.Id);
         Core_EnvironmentVariablesController AddEnvVarContr = new Core_EnvironmentVariablesController(StndContr);
         Core_EnvironmentVariablesController.EnvironmentVarSel WrapperObj = new Core_EnvironmentVariablesController.EnvironmentVarSel ();
         AddEnvVarContr.searchText = 'Issue';
-        //AddEnvVarContr.getEnvironmentVariables_SupProd();
+        AddEnvVarContr.getEnvironmentVariables_SupProd();
         Test.stopTest();
         }
     }
@@ -133,9 +131,8 @@ public class Core_EnvironmentVariablesController_Test{
         System.runAs(userRecord){
         // Testing Visualforce Page
         Test.startTest();
-            //commented for Classic EOL : Tejaswini
-      /*  PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
-        Test.setCurrentPage(pageRef); */
+        PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
+        Test.setCurrentPage(pageRef);
         ApexPages.StandardController StndContr = new ApexPages.standardController(supportedProductRecord);
         ApexPages.CurrentPage().getparameters().put('id',supportedProductRecord.Id);
         Core_EnvironmentVariablesController AddEnvVarContr = new Core_EnvironmentVariablesController(StndContr);
@@ -146,9 +143,8 @@ public class Core_EnvironmentVariablesController_Test{
         getRecords();
         // Testing Visualforce Page
         Test.startTest();
-        //commented for Classic EOL : Tejaswini
-      /*  PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
-        Test.setCurrentPage(pageRef); */
+        PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
+        Test.setCurrentPage(pageRef);
         ApexPages.StandardController StndContr = new ApexPages.standardController(supportedProductRecord);
         ApexPages.CurrentPage().getparameters().put('id',supportedProductRecord.Id);
         Core_EnvironmentVariablesController AddEnvVarContr = new Core_EnvironmentVariablesController(StndContr);
@@ -182,7 +178,7 @@ public class Core_EnvironmentVariablesController_Test{
         System.Assert(createProductRecord.Id != null, 'Record not created');
         // Creating Support Org (Core_Product_Organization__c) Record
         Core_IPS_Product_Organization__c SupportOrgRecord = TestUtilities.getSupportOrg();
-        //SupportOrgRecord.OwnerId = QueueRecord.Id;
+        SupportOrgRecord.OwnerId = QueueRecord.Id;
         insert SupportOrgRecord;
         System.Assert(SupportOrgRecord.Id != null, 'Record not created');
         // Creating Core Supported Product
@@ -209,9 +205,8 @@ public class Core_EnvironmentVariablesController_Test{
         insert ListofIpsLables;
         // Testing Visualforce Page
         Test.startTest();
-        //commented for Classic EOL : Tejaswini
-      /*  PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
-        Test.setCurrentPage(pageRef); */
+        PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
+        Test.setCurrentPage(pageRef);
         ApexPages.StandardController StndContr = new ApexPages.standardController(supportedProductRecord);
         ApexPages.CurrentPage().getparameters().put('id',supportedProductRecord.Id);
         Core_EnvironmentVariablesController AddEnvVarContr = new Core_EnvironmentVariablesController(StndContr);
@@ -258,9 +253,8 @@ public class Core_EnvironmentVariablesController_Test{
         insert ListofIpsLables;
         // Testing Visualforce Page
         Test.startTest();
-        //commented for Classic EOL : Tejaswini
-      /*  PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
-        Test.setCurrentPage(pageRef); */
+        PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
+        Test.setCurrentPage(pageRef);
         ApexPages.StandardController StndContr = new ApexPages.standardController(supportedProductRecord);
         ApexPages.CurrentPage().getparameters().put('id',supportedProductRecord.Id);
         Core_EnvironmentVariablesController AddEnvVarContr = new Core_EnvironmentVariablesController(StndContr);
@@ -333,9 +327,8 @@ public class Core_EnvironmentVariablesController_Test{
         System.runAs(userRecord){
         // Testing Visualforce Page
         Test.startTest();
-            //commented for Classic EOL : Tejaswini
-      /*  PageReference pageRef = Page.Core_addEnvironmentDetailsToIssueSubCat;
-        Test.setCurrentPage(pageRef); */
+        PageReference pageRef = Page.Core_addEnvironmentDetailsToIssueSubCat;
+        Test.setCurrentPage(pageRef);
         ApexPages.StandardController StndContr = new ApexPages.standardController(CaseSubCategory);
         ApexPages.CurrentPage().getparameters().put('id',CaseSubCategory.Id);
         Core_EnvironmentVariablesController AddEnvVarContr = new Core_EnvironmentVariablesController(StndContr);
@@ -350,9 +343,8 @@ public class Core_EnvironmentVariablesController_Test{
         System.runAs(userRecord){
         // Testing Visualforce Page
         Test.startTest();
-            //commented for Classic EOL : Tejaswini
-      /*  PageReference pageRef = Page.Core_addEnvironmentDetailsToIssueSubCat;
-        Test.setCurrentPage(pageRef); */
+        PageReference pageRef = Page.Core_addEnvironmentDetailsToIssueSubCat;
+        Test.setCurrentPage(pageRef);
         ApexPages.StandardController StndContr = new ApexPages.standardController(CaseSubCategory);
         ApexPages.CurrentPage().getparameters().put('id',CaseSubCategory.Id);
         Core_EnvironmentVariablesController AddEnvVarContr = new Core_EnvironmentVariablesController(StndContr);
@@ -369,8 +361,7 @@ public class Core_EnvironmentVariablesController_Test{
     /************************************************************************************************
     Testing Core_IPS_Environment_Details Visualforce Page - Object : Core_Product_Issue_Category__c  
     *************************************************************************************************/
-    // Commented by chetan as part of classic EOL 
-  /*static testmethod void getAssignedEnvironmentVariablestest(){
+  static testmethod void getAssignedEnvironmentVariablestest(){
         getRecords();
         System.runAs(userRecord){
         // Testing Visualforce Page
@@ -385,5 +376,5 @@ public class Core_EnvironmentVariablesController_Test{
         pg = AddEnvVarContr.saveEvn();
         Test.stopTest();
         }
-    }*/
+    }
 }

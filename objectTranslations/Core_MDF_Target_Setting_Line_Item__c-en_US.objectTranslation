@@ -122,6 +122,10 @@
             <translation><!-- MACAU --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>MAINLAND CHINA</masterLabel>
+            <translation><!-- MAINLAND CHINA --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>MEXICO</masterLabel>
             <translation><!-- MEXICO --></translation>
         </picklistValues>
@@ -367,6 +371,10 @@
         <name>Core_MDF_Region_nm__c</name>
     </fields>
     <fields>
+        <label><!-- Spending Targets Id --></label>
+        <name>Core_MDF_Spending_Targets_Id__c</name>
+    </fields>
+    <fields>
         <label><!-- Spending Targets Record Name --></label>
         <name>Core_MDF_Spending_Targets_Record_Name__c</name>
     </fields>
@@ -421,4 +429,12 @@
         <errorMessage><!-- Region is Mandatory for CCF and DCF Programs. --></errorMessage>
         <name>Core_MDF_Region_Should_Not_Be_Blank</name>
     </validationRules>
+    <webLinks>
+        <label><!-- Core_MDF_AccessTop_Accounts --></label>
+        <name>Core_MDF_AccessTop_Accounts</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_MDF_All_Other_Accounts --></label>
+        <name>Core_MDF_All_Other_Accounts</name>
+    </webLinks>
 </CustomObjectTranslation>

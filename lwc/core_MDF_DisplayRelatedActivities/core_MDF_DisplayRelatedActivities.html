@@ -1,0 +1,42 @@
+<!--
+  @File Name          : core_MDF_DisplayRelatedActivities.html
+  @Description        : 
+  @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Group              : 
+  @Last Modified By   : Accenture - VK
+  @Last Modified On   : 5/20/2020, 10:55:07 PM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    5/20/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
+-->
+<template>
+    <template if:true={hasValidData}>
+        <div class="slds-box slds-box_small slds-p-around_none" style="background-color:#FFFFFF"  >
+        
+            <h1 id="standard" class="slds-box slds-theme_shade slds-text-heading_small">
+                <lightning-icon icon-name="standard:client" alternative-text="Activities" title="Activities"></lightning-icon>
+                <span class="slds-p-left_small"> <b>Activities</b></span>
+            </h1>
+
+            <div class="slds-box slds-box_small slds-truncate slds-p-around_none" style="background-color:#FFFFFF" >
+                <lightning-accordion allow-multiple-sections-open class="slds-p-around_none slds-has-flexi-truncate">
+                    <template for:each={pfrList} for:item="pfr">
+                        <div  key = {pfr.Id} class="slds-box slds-box_small">
+                            <lightning-accordion-section  class = "slds-truncate"  key = {pfr.Id} label={pfr.Title}>                                
+                                <div class="slds-scrollable_x" style="height:7rem;" >
+                                    <lightning:card title="Read Only lightning:recordForm">
+                                        <div class="slds-p-left_large slds-p-right_medium">	
+                                                <lightning-record-form record-id={pfr.Id} object-api-name="PartnerFundRequest"
+                                                 layout-type="Full" columns="2" mode="readonly">
+                                                </lightning-record-form>   
+                                        </div>
+                                    </lightning:card>
+                                </div>                                
+                            </lightning-accordion-section>
+                        </div>
+                    </template>
+                </lightning-accordion>
+            </div>
+        </div>
+    </template>
+</template>

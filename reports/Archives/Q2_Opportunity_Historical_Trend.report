@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_22699851</developerName>
+        <masterLabel>PRC Biz Group</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>OWNER_MANAGER</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Wenkang Li</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Henry Ye</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Howard Chang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Leo Chan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Weichen Ye</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Karl Meng</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Qingchun Huang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jacky Ma</sourceValue>
+            </sourceValues>
+            <value>ISG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Wen A Li</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Kit Ho Chee</sourceValue>
+            </sourceValues>
+            <value>Internet</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Dennis Iun</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ji Pang</sourceValue>
+            </sourceValues>
+            <value>Huawei</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Hao H Zhang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Michael Tan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Alan Wang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>rong liu</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Wei Guo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>yimin huang</sourceValue>
+            </sourceValues>
+            <value>Client &amp; IoT</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Gary Gao</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Patton Chan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Michael Deng</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Yidong Wang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sonny Jin</sourceValue>
+            </sourceValues>
+            <value>Ecosystem</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Sheng Jin</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Wilson Guo</sourceValue>
+            </sourceValues>
+            <value>DCG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Michael Han</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Erik Reid</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>MS Kwon</sourceValue>
+            </sourceValues>
+            <value>Lenovo</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Zhichen Yang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Yibin Chen</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Evyns Chan</sourceValue>
+            </sourceValues>
+            <value>OSC</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <aggregate>Sum</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>TAMOUNT</column>
+        </chartSummaries>
+        <chartType>HorizontalBarStacked</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>INTERVAL_DATE</groupingColumn>
+        <legendPosition>Bottom</legendPosition>
+        <location>CHART_TOP</location>
+        <secondaryGroupingColumn>BucketField_22699851</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <title>Q2 Opportunity Historical Trend</title>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OWNER_MANAGER</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>TAMOUNT</field>
+    </columns>
+    <columns>
+        <field>TPROBABILITY</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Account.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>PRC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Qualify,Define,Develop,Design,Design Win,Production Win</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>FiscalWeek</dateGranularity>
+        <field>INTERVAL_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>TSTAGE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_22699851</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Q2 Opportunity Historical Trend</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityTrend</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_PREV1</interval>
+    </timeFrameFilter>
+</Report>

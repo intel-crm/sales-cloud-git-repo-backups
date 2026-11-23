@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppOauthConfigurablePolicies xmlns="http://soap.sforce.com/2006/04/metadata">
+    <clientCredentialsFlowUser>vikasx.soni@intel.com.devccp</clientCredentialsFlowUser>
+    <externalClientApplication>AI_POC</externalClientApplication>
+    <ipRelaxationPolicyType>Enforce</ipRelaxationPolicyType>
+    <isClientCredentialsFlowEnabled>true</isClientCredentialsFlowEnabled>
+    <isGuestCodeCredFlowEnabled>false</isGuestCodeCredFlowEnabled>
+    <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+    <label>AI_POC_oauthPlcy</label>
+    <permittedUsersPolicyType>AllSelfAuthorized</permittedUsersPolicyType>
+    <refreshTokenPolicyType>Infinite</refreshTokenPolicyType>
+    <requiredSessionLevel>STANDARD</requiredSessionLevel>
+    <startUrl>https://intel--crmdevccp.sandbox.lightning.force.com</startUrl>
+</ExtlClntAppOauthConfigurablePolicies>

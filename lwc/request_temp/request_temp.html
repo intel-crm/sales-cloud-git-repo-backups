@@ -1,0 +1,150 @@
+<template>
+    <template if:true={phoneOrDesktop}>
+      <div class="slds-card">
+        <template for:each={recordsToRender} for:item="rec">
+          <div class="slds-card" key={rec.name}>
+            <lightning-layout class="slds-page-header slds-page-header--object-home">
+              <lightning-layout-item>
+                <lightning-icon icon-name="standard:approval"></lightning-icon>
+  
+              </lightning-layout-item>
+              <lightning-layout-item size="11" padding="horizontal-small">
+                <h1 class="slds-text-heading--label">Aquest</h1>
+                <dd class="slds-item_detail slds-truncate slds-text-heading_medium" key={rec.name}><b>{rec.name}</b>
+                </dd>
+              </lightning-layout-item>
+            </lightning-layout>
+          </div>
+          <div class="slds-p-around_small" key={rec.name}>
+            <div class="c-container" key={rec.name}>
+  
+              <template for:each={rec.fields} for:item="recfield">
+                <div class="slds-grid slds-wrap" key={recfield.fieldLabel}>
+                  <div class="slds-col">
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="4">
+                        <lightning-accordion allow-multiple-sections-open
+                         onsectiontoggle={handleSectionToggle}
+                         active-section-name={activeSections}>
+        <lightning-accordion-section name="A" label="Accordion Title A">
+                      <div class="slds-region_wide" style="width:360px">
+                        <dl class="slds-list_horizontal">
+  
+                          <dt class="slds-item_label slds-text-color_weak slds-truncate">{recfield.fieldLabel}:</dt>
+                          <dd class="slds-item_detail slds-truncate">{recfield.fieldValue}</dd>
+      
+                        </dl>
+  
+                        </div>
+                        </lightning-accordion-section>
+                        </lightning-accordion>
+                    </lightning-layout-item>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </div>
+  
+        </template>
+      </div>
+    </template>
+    <template if:false={phoneOrDesktop}>
+      <div class="slds-card">
+        <template for:each={recordsToRender} for:item="rec">
+          <div class="slds-card" key={rec.name}>
+            <lightning-layout class="slds-page-header slds-page-header--object-home" key={rec.name}>
+  
+              <lightning-layout-item>
+                <lightning-icon icon-name="standard:approval"></lightning-icon>
+  
+              </lightning-layout-item>
+              <lightning-layout-item size="11" padding="horizontal-small">
+                <h1 class="slds-text-heading--label">Approval Request</h1>
+                <dd class="slds-item_detail slds-truncate slds-text-heading_medium" key={rec.name}><b>{rec.name}</b></dd>
+              </lightning-layout-item>
+  
+            </lightning-layout>
+          </div>
+  
+  
+          <div class="slds-p-around_small" key={rec.name}>
+            <!--   <div class="c-container" key={rec.name}>-->
+            <lightning-layout multiple-rows>
+              <template for:each={rec.fields} for:item="recfield">
+  
+                <div class="slds-grid slds-wrap" key={recfield.fieldLabel}>
+                  <div class="slds-col">
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="4">
+  
+                      <div class="header-column slds-size_1-of-1 slds-max-small-size_1-of-5">
+                        <p class="field-title">{recfield.fieldLabel}</p>
+                        <p>{recfield.fieldValue}</p>
+                      </div>
+                    </lightning-layout-item>
+                  </div>
+                </div>
+              </template>
+  
+            </lightning-layout>
+          </div>
+          <!-- </div>-->
+  
+        </template>
+      </div>
+    </template>
+  
+    <div class="slds-card">
+      <lightning-layout class="slds-page-header slds-page-header--object-home">
+        <div class="slds-tabs_default">
+          <ul class="slds-tabs_default__nav" role="tablist">
+            <li class="slds-tabs_default__item slds-is-active" title="Item One" role="presentation">
+              <a class="slds-tabs_default__link" href="#" role="tab" tabindex="0" aria-selected="true"
+                aria-controls="tab-default-1" id="tab-default-1__item">
+                <dd class="slds-item_detail slds-truncate slds-text-heading_small"><b>Details</b></dd>
+              </a>
+            </li>
+          </ul>
+          <br />
+          <div class="c-container">
+            <div class="slds-card">
+              <lightning-layout horizontalalign="space">
+                <lightning-layout-Item padding="around-small">
+                  <div class="custom-box">
+                    <dd class="slds-item_detail slds-truncate slds-text-heading_small"><b>Approval Details</b></dd>
+                  </div>
+                </lightning-layout-Item>
+              </lightning-layout>
+            </div>
+          </div>
+          <template for:each={fieldsToDisplay} for:item="rec">
+            <div class="slds-form slds-form_stacked" key={rec.name}>
+              <template for:each={rec.fields} for:item="recfield">
+  
+  
+                <div class="slds-form" role="list" key={recfield.fieldLabel}>
+                  <div class="slds-form__row">
+  
+                    <div class="slds-grid slds-gutters_small full cols-4 forcePageBlockSectionView"
+                      key={recfield.fieldLabel}>
+                      <div
+                        class="slds-col slds-grid slds-has-flexi-truncate full forcePageBlockItem forcePageBlockItemView">
+                        <div class="slds-form_horizontal slds-form slds-grid slds-wrap">
+                          <div class="slds-form-element__label">
+                            <span class="test-id__field-label slds-form-element__label">{recfield.fieldLabel}</span>
+                          </div>
+                          <div class="slds-form-element__control slds-grid">
+                            <span class="slds-form-element__static slds-grow">{recfield.fieldValue}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+              </template>
+            </div>
+          </template>
+        </div>
+      </lightning-layout>
+  
+    </div>
+  </template>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>RENISHAW P L C Customer Executive</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>RENISHAW P L C Customer Executive</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_11637718_Tomasz_Czajko</parentRole>
+</Role>

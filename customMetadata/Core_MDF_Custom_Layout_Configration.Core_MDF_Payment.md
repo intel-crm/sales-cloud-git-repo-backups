@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>Core_MDF_Field_API_Name__c</field>
-        <value xsi:type="xsd:string">Name</value>
+        <value xsi:type="xsd:string">Id</value>
     </values>
     <values>
         <field>Core_MDF_Record_Status_txt__c</field>

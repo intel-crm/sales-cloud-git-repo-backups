@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>amal.thomas@intel.com</contactEmail>
+    <label>LimitsConnectedApp</label>
+    <oauthConfig>
+        <callbackUrl>https://intel--crmdevccp.sandbox.my.salesforce.com/services/authcallback/LimitsAuthProvider</callbackUrl>
+        <consumerKey>3MVG9ahGHqp.k2_yt2nTHU9QGHJ_ZA3uotJC9CR2.Qmq8.cz3.nDtyqvpSKidefqVDI4GaRZFR8OmAGQraczp</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isDPopEnabled>false</isDPopEnabled>
+        <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+        <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isIpBindingEnabled>false</isIpBindingEnabled>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPKImTLSEnabled>false</isPKImTLSEnabled>
+        <isPkceRequired>true</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Full</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

@@ -28,6 +28,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Group_Id_txt__c</field>
+            <table>Customer_Disclaimer__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>LastModifiedBy</field>
             <table>Customer_Disclaimer__c</table>
         </columns>

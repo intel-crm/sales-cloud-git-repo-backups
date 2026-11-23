@@ -128,14 +128,11 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Banner_Text_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
+        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -362,88 +359,15 @@
     <label>Banner Text</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>Core_CRM_Project__c</columns>
-        <columns>core_isActive__c</columns>
-        <columns>core_CRM_type__c</columns>
-        <columns>Core_Start_Date__c</columns>
-        <columns>Core_End_Date__c</columns>
-        <columns>Core_Text_Message__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>Home_Page</fullName>
-        <columns>NAME</columns>
-        <columns>Core_CRM_Project__c</columns>
-        <columns>core_isActive__c</columns>
-        <columns>core_CRM_type__c</columns>
-        <columns>Core_Start_Date__c</columns>
-        <columns>Core_End_Date__c</columns>
-        <columns>Core_Text_Message__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>core_CRM_type__c</field>
-            <operation>equals</operation>
-            <value>Home Page</value>
-        </filters>
-        <label>Home Page</label>
-    </listViews>
-    <listViews>
-        <fullName>KPI_Body</fullName>
-        <columns>NAME</columns>
-        <columns>Core_CRM_Project__c</columns>
-        <columns>core_isActive__c</columns>
-        <columns>core_CRM_type__c</columns>
-        <columns>Core_Start_Date__c</columns>
-        <columns>Core_End_Date__c</columns>
-        <columns>Core_Text_Message__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>core_CRM_type__c</field>
-            <operation>equals</operation>
-            <value>KPI Body</value>
-        </filters>
-        <label>KPI Body</label>
-    </listViews>
-    <listViews>
-        <fullName>KPI_Header</fullName>
-        <columns>NAME</columns>
-        <columns>Core_CRM_Project__c</columns>
-        <columns>core_isActive__c</columns>
-        <columns>core_CRM_type__c</columns>
-        <columns>Core_Start_Date__c</columns>
-        <columns>Core_End_Date__c</columns>
-        <columns>Core_Text_Message__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>core_CRM_type__c</field>
-            <operation>equals</operation>
-            <value>KPI Header</value>
-        </filters>
-        <label>KPI Header</label>
     </listViews>
     <nameField>
         <label>Banner Text Name</label>
         <type>Text</type>
     </nameField>
     <pluralLabel>Banner Text</pluralLabel>
-    <searchLayouts>
-        <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
-        <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
-        <excludedStandardButtons>Accept</excludedStandardButtons>
-        <excludedStandardButtons>MassAssignRecordLabel</excludedStandardButtons>
-        <excludedStandardButtons>Import</excludedStandardButtons>
-        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
-        <excludedStandardButtons>PrintableListView</excludedStandardButtons>
-        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
-        <searchResultsAdditionalFields>Core_CRM_Project__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_Text_Message__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>core_CRM_type__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_Start_Date__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_End_Date__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>core_isActive__c</searchResultsAdditionalFields>
-    </searchLayouts>
+    <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
     <validationRules>
         <fullName>Core_StartDate_EndDate_Validation</fullName>

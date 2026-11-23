@@ -128,16 +128,22 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
+        <content>Custom_Configuration_Record_Page</content>
         <formFactor>Large</formFactor>
-        <type>Default</type>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
+        <content>Custom_Configuration_Record_Page</content>
         <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>true</allowInChatterGroups>
@@ -328,6 +334,22 @@
         </valueSet>
     </fields>
     <label>Custom Configuration</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Permission_Set_Api_Name__c</columns>
+        <columns>Core_MDF_Record_Type_Developer_Name__c</columns>
+        <columns>Core_MDF_Status__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>Core_MDF_Approval_Stage__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CREATEDBY_USER</field>
+            <operation>equals</operation>
+            <value>Alekhya Kameshwari</value>
+        </filters>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>CC-{0000}</displayFormat>
         <label>Custom Configuration Name</label>

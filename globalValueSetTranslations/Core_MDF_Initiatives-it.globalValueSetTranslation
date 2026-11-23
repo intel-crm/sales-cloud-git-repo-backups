@@ -13,7 +13,7 @@
         <translation><!-- AI Inferencing --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>AI Inferencing – Edge</masterLabel>
+        <masterLabel>AI Inferencing –  Edge</masterLabel>
         <translation>Inferenza IA - Edge</translation>
     </valueTranslation>
     <valueTranslation>
@@ -22,7 +22,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Cloud Networking - Data &amp; Security</masterLabel>
-        <translation>Reti nel cloud - Dati e sicurezza</translation>
+        <translation><!-- Cloud Networking - Data &amp; Security --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Connectivity</masterLabel>
@@ -106,27 +106,27 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel Accelerated (Solutions)</masterLabel>
-        <translation>Soluzioni &quot;Intel Accelerated&quot;</translation>
+        <translation>Soluzioni Intel Accelerated</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Partner Alliance AI Accelerator</masterLabel>
-        <translation>Acceleratore IA Intel® Partner Alliance</translation>
+        <translation><!-- Intel® Partner Alliance AI Accelerator --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Partner Alliance Edge Accelerator</masterLabel>
-        <translation>Acceleratore Edge Intel® Partner Alliance</translation>
+        <translation><!-- Intel® Partner Alliance Edge Accelerator --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Partner Alliance Networking Accelerator</masterLabel>
-        <translation>Acceleratore di rete Intel® Partner Alliance</translation>
+        <translation><!-- Intel® Partner Alliance Networking Accelerator --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>IoT Edge AI - IoT/Vision/Video</masterLabel>
-        <translation>IA edge IoT - IoT/Visione/Video</translation>
+        <translation><!-- IoT Edge AI - IoT/Vision/Video --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>IoT Edge AI - Networking/Security</masterLabel>
-        <translation>IA edge IoT - Networking/Sicurezza</translation>
+        <translation><!-- IoT Edge AI - Networking/Security --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Leading Edge FPGA</masterLabel>
@@ -142,7 +142,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Market Ready Solution/RFP Ready Kit</masterLabel>
-        <translation>Soluzione pronta per il mercato/Kit pronto per RFP</translation>
+        <translation><!-- Market Ready Solution/RFP Ready Kit --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Multi-Access Edge Computing</masterLabel>
@@ -162,11 +162,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Networking - Visual Cloud/Video</masterLabel>
-        <translation>Networking - Visual cloud/Video</translation>
+        <translation><!-- Networking - Visual Cloud/Video --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Networking - private wireless networks</masterLabel>
-        <translation>Networking - Reti wireless private</translation>
+        <translation><!-- Networking - private wireless networks --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>None</masterLabel>
@@ -181,7 +181,7 @@
         <translation><!-- P5G &amp; MEC​ --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Private Wireless Networks</masterLabel>
+        <masterLabel>Private Wireless Networks</masterLabel>
         <translation>Reti wireless private</translation>
     </valueTranslation>
     <valueTranslation>
@@ -211,6 +211,14 @@
     <valueTranslation>
         <masterLabel>Sustainability</masterLabel>
         <translation>Sostenibilità</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Test Initiative</masterLabel>
+        <translation><!-- Test Initiative --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Test LOV Initiatives</masterLabel>
+        <translation><!-- Test LOV Initiatives --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Visual Cloud</masterLabel>

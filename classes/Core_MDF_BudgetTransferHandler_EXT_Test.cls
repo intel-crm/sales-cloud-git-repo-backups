@@ -20,7 +20,8 @@ public class Core_MDF_BudgetTransferHandler_EXT_Test {
         ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', true);//US - TWC702-14285: Worked on this test class (no logic/structure change)
         cp1.Core_MDF_Technical_Program_Name__c='';
         
-
+        // Highlight: Unused Local Variable - 14285
+        //ChannelProgram cp2 = Core_MDF_CCP_TestDataUtility.createProgram ('Data Center Co-Marketing Fund','Data Center CoMarketing Fund', true);
         
         // Creating Account with utility class
         Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
@@ -40,7 +41,7 @@ public class Core_MDF_BudgetTransferHandler_EXT_Test {
         Database.update(accList);
         
         //adding bypass feature to bypass access validation
-			List<String> bypassFunctionKeys = new List<String>();
+            List<String> bypassFunctionKeys = new List<String>();
             bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
             bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
             bypassFunctionKeys.add('ByPass_BlockLegacyBudgetCreation');
@@ -80,7 +81,7 @@ public class Core_MDF_BudgetTransferHandler_EXT_Test {
     }
     @isTest static void validateTransferAllocationAmountForPendingReviewBudget(){
         //adding bypass feature to bypass access validation
-			List<String> bypassFunctionKeys = new List<String>();
+            List<String> bypassFunctionKeys = new List<String>();
             bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
             bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
             

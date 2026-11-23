@@ -1,0 +1,64 @@
+<apex:page standardController="PartnerFundClaim" recordSetVar="claims" extensions="Core_MDF_RedirectToAuraComp" lightningStylesheets="True" >
+<apex:includeLightning />  
+ <div id="LcDisplayId"></div> 
+    <apex:outputPanel layout="none" rendered="{!not($Permission.Core_MDF_Permission_to_Release_Bank_Document_Hold_For_Payment_Admin)}">
+ <script>
+     var selClaims = "{!selectedClaims}"
+     var claimId = "{!setOfClaims}"
+     console.log('Inside VF Page', selClaims);
+        console.log('Inside VF Claim Ids', claimId);
+    $Lightning.use("c:Test_BDH_App", function() {
+      /* 'LcForVf' is Lightning Component Name which we are Displaying In Vf Page 
+       * syntax for create lightning component dynamically :
+       * $Lightning.createComponent(String type, Object attributes, String locator, function callback) */
+    $Lightning.createComponent("c:Test_BDH_Claims",
+    { 
+      // Set Lightning Component Attributes Property before creating Lightning Component In Visualforce page 
+        //ClaimId : claimId,
+        //mydata    : selClaims,
+         claimsData : claimId
+        //claimsList :selClaims
+        
+ 	},
+   "LcDisplayId",
+    function(component) {
+        //component.set("v.ClaimsIds" , selClaims);
+        //component.set("v.mydata",selClaims);
+    });
+ });
+    /* var selectedClaims = "{!setOfClaims}";
+      console.log('Inside Script',selectedClaims);
+        $Lightning.use("c:Test_BDH_App", function() {
+		$Lightning.createComponent("c:Test_BDH_Claims",
+          { ClaimsIds : selectedClaims},
+            "lightning",
+             function(cmp) {
+                // do some stuff
+                 console.log('Inside Aura component');
+                 alert('Inside Aura Comp');
+           });
+ });*/
+ </script>
+
+   <!-- <flow:interview name="Test_ScreenFlow_For_BDH_Release">
+        <apex:param name="ClaimsList" value="{!selectedClaims}" />
+    </flow:interview>  -->
+  <div>
+      <t></t>
+  </div>
+        <!--<div align="center" draggable="false" >-->
+            <apex:form >
+        <apex:pageBlock >
+       <!-- <apex:pageBlockButtons>-->
+   
+      
+        <div align="center">  
+        <apex:commandButton value="Submit" style="background:LightBlue;width:150px;" action="{!releaseHold}"/>
+             </div> 
+      
+           </apex:pageBlock>
+                   </apex:form>
+  
+ </apex:outputPanel> 
+     
+</apex:page>

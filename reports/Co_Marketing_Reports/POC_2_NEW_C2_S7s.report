@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PartnerFundClaim$Core_MDF_Reimbursable_Transaction_Amount__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Country_Location_nm__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Region_Cd__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Program__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>PartnerFundClaim$Core_MDF_Claim_Review_Case__c.CaseNumber</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <name>POC 2 NEW C2</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>PartnerFundClaim_Reports__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PartnerFundClaim$Core_MDF_Activity_End_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

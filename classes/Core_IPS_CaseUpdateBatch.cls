@@ -54,11 +54,17 @@ global class Core_IPS_CaseUpdateBatch implements Database.Batchable<sObject> {
                 if(!mapUser.containsKey(objCase.OwnerId)) continue;
                 Boolean doAdd = false;
                 if(objCase.Core_IPS_Owner_Manager__c != mapUser.get(objCase.OwnerId).ManagerId) {
-                    objCase.Core_IPS_Owner_Manager__c = mapUser.get(objCase.OwnerId).ManagerId;
+                    /*US1021248 - 05/26/2021 - Vishal - FLS Check for security vulnerability --*/
+                    if (Schema.sObjectType.Case.fields.Core_IPS_Owner_Manager__c.isUpdateable()) {
+                        objCase.Core_IPS_Owner_Manager__c = mapUser.get(objCase.OwnerId).ManagerId;
+                    }
                     doAdd = true;
                 }
                 if(objCase.Core_IPS_Owner_2nd_Manager__c != mapUser.get(objCase.OwnerId).Manager.ManagerId) {
-                    objCase.Core_IPS_Owner_2nd_Manager__c = mapUser.get(objCase.OwnerId).Manager.ManagerId;
+                    /*US1021248 - 05/26/2021 - Vishal - FLS Check for security vulnerability --*/
+                    if (Schema.sObjectType.Case.fields.Core_IPS_Owner_2nd_Manager__c.isUpdateable()) {
+                        objCase.Core_IPS_Owner_2nd_Manager__c = mapUser.get(objCase.OwnerId).Manager.ManagerId;
+                    }
                     doAdd = true;
                 }
                 if(doAdd) lstCase2Update.add(objCase);
@@ -89,7 +95,12 @@ global class Core_IPS_CaseUpdateBatch implements Database.Batchable<sObject> {
                         if(successOwnerId.contains(objUMT.Name))
                             lst2Delete.add(objUMT);
                     }
-                    if(lst2Delete.size()>0) Database.delete(lst2Delete,false);
+                    if(lst2Delete.size()>0) {
+                        /*US1038641 - 06/23/2021 - Yamini - CRUD Delete Check for security vulnerability --*/
+                        if (Core_IPS_User_Manager_Tracker__c.sObjectType.getDescribe().isDeletable()) {
+                        Database.delete(lst2Delete,false);
+                        }
+                    }
                 }
             }
         }
@@ -111,7 +122,13 @@ global class Core_IPS_CaseUpdateBatch implements Database.Batchable<sObject> {
                 if(objUMT.CreatedDate < Date.Today().addDays(-16))
                     lst2Delete.add(objUMT);
             }
-            if(lst2Delete.size()>0) Database.delete(lst2Delete,false);
+            if(lst2Delete.size()>0) 
+            {
+                /*US1038641 - 06/23/2021 - Yamini - CRUD Delete Check for security vulnerability --*/
+                if (Core_IPS_User_Manager_Tracker__c.sObjectType.getDescribe().isDeletable()) {
+                Database.delete(lst2Delete,false);
+                }
+            }
         }
         
     }

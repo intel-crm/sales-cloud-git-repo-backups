@@ -305,6 +305,7 @@
         <fullName>Core_Opportunity__c</fullName>
         <label>Opportunity</label>
         <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>MAG Questionnaires</relationshipLabel>
         <relationshipName>MAG_Questionnaires</relationshipName>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>true</reparentableMasterDetail>
@@ -562,14 +563,14 @@
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
     </fields>
-    <label>MINDS Questionnaire</label>
+    <label>MAG Questionnaire</label>
     <nameField>
         <displayFormat>MAG-{00000000}</displayFormat>
         <label>MAG Questionnaire Number</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>MINDS Questionnaires</pluralLabel>
+    <pluralLabel>MAG Questionnaires</pluralLabel>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>

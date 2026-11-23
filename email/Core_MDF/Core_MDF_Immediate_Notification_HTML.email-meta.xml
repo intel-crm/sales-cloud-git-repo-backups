@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Blank</letterhead>
+    <name>Core_MDF_Immediate Notification HTML</name>
+    <style>freeForm</style>
+    <subject>Case Notification</subject>
+    <textOnly>&lt;messaging:emailTemplate subject=&quot;{!$Label.Core_MDF_Audit_Creation_SubjectBody1}{!RelatedTo.Core_MDF_Claim_Number__c}&quot; relatedToType=&quot;Case&quot; language=&quot;{!relatedTo.Core_MDF_Claim_Submitter_Language__c}&quot;&gt;
+&lt;messaging:htmlEmailBody &gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;p&gt;{!$Label.Core_MDF_EmailTemp_StatusUpdate_DearMember}&lt;br/&gt;&lt;br/&gt;
+{!$Label.Core_MDF_Audit_Creation_Body2}&lt;br/&gt;&lt;br/&gt;
+{!$Label.Core_MDF_Audit_Creation_Field1} {!RelatedTo.Core_MDF_Claim_Number__c}
+&lt;br/&gt;{!$Label.Core_MDF_Audit_Creation_Field2} {!RelatedTo.Core_MDF_ActivityName__c}
+&lt;br/&gt;{!$Label.Core_MDF_Audit_Creation_Field3} {!RelatedTo.Core_MDF_CampaignName__c }
+&lt;br/&gt;{!$Label.Core_MDF_Audit_Creation_Field4} {!RelatedTo.Core_MDF_Activity_Type__c}
+&lt;br/&gt;{!$Label.Core_MDF_Audit_Creation_Field5} {!RelatedTo.Core_MDF_Country_Region__c}
+&lt;br/&gt;{!$Label.Core_MDF_Audit_Creation_Field6} {!RelatedTo.Core_MDF_Document_Submission_DueDate_dtm__c}
+&lt;br/&gt;{!$Label.Core_MDF_Audit_Creation_BodyLink+&apos; &apos;}
+&lt;apex:outputLink rendered=&quot;{!IF(relatedTo.Core_MDF_Claim_Submitter__r.UserType == &apos;PowerPartner&apos;,true,false)}&quot;
+value=&quot;{!$Label.Core_MDF_PFRCommunityLink+RelatedTo.Id}&quot;&gt;{!RelatedTo.CaseNumber}&lt;br/&gt;&lt;br/&gt;
+&lt;/apex:outputLink&gt;
+&lt;apex:outputLink rendered=&quot;{!IF(relatedTo.Core_MDF_Claim_Submitter__r.UserType != &apos;PowerPartner&apos;,true,false)}&quot;
+value=&quot;{!$Label.Core_MDF_PFRDetailLink+RelatedTo.Id}&quot;&gt;{!RelatedTo.CaseNumber}&lt;br/&gt;&lt;br/&gt;
+&lt;/apex:outputLink&gt;
+{!$Label.Core_MDF_Audit_Creation_Body3}&lt;br/&gt;&lt;/P&gt;
+&lt;p&gt; {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}&lt;br/&gt;
+{!$Label.Core_MDF_Audit_Creation_Body8}&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+&lt;/messaging:htmlEmailBody&gt;
+&lt;/messaging:emailTemplate&gt;</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

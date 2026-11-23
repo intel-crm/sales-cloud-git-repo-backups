@@ -18,31 +18,38 @@ public class Core_MDF_PaymentXMLGenerator {
             Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_XMLWorksheetStart')+ worksheetName + '"> ' + Core_MDF_PaymentUtility.newline +
             Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_XMLTableStart') + ' ' + Core_MDF_PaymentUtility.newline +
             Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_XMLColumn') + ' ' + Core_MDF_PaymentUtility.newline;
-        
-        if(!paymentFileContent.isEmpty())
-        {
+        //ATHR - Deeply Nested if 16209
+        if (paymentFileContent.isEmpty()) {
+            xmlString += Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_XMLTableEnd') + ' ' + Core_MDF_PaymentUtility.newline + Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_XMLWorksheetEnd') + ' ' + Core_MDF_PaymentUtility.newline + Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_XMLWorkbookEnd') + ' ' + Core_MDF_PaymentUtility.newline;
+            return xmlString;
+        }
+        //if(!paymentFileContent.isEmpty())
+        //{
             for(List<String> row: paymentFileContent)
             {
-                if(!row.isEmpty())
-                {
+                //ATHR - Deeply Nested if 16209
+                if(row.isEmpty()) continue;
+                //if(!row.isEmpty())
+                //{
                     //Row Beginning
                     xmlString += Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_XMLRowStart') + ' ' + Core_MDF_PaymentUtility.newline;
                     for(String cellValue : row)
-                    {
-                        if(String.isEmpty(cellValue))
+                    {   //ATHR - Deeply Nested if 16209
+                        /*if(String.isEmpty(cellValue))
                         {
                             xmlString+= Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_XMLCellStart') + Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_XMLCellEnd') + ' ' + Core_MDF_PaymentUtility.newline;
                         }
                         else
                         {
                             xmlString+= Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_XMLCellStart')+ cellValue + Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_XMLCellEnd') + ' ' + Core_MDF_PaymentUtility.newline;
-                        }
+                        }*/
+                        xmlString += Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_XMLCellStart') + (String.isEmpty(cellValue) ? '' : cellValue) + Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_XMLCellEnd') + ' ' + Core_MDF_PaymentUtility.newline;
                     }
                     //Row End
                     xmlString+= Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_XMLRowEnd') + ' ' + Core_MDF_PaymentUtility.newline;
-                }
+                //}
             }
-        }
+        //}
         //File Footer
         xmlString+= Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_XMLTableEnd') + ' ' + Core_MDF_PaymentUtility.newline + Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_XMLWorksheetEnd') + ' ' + Core_MDF_PaymentUtility.newline + Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_XMLWorkbookEnd') + ' ' + Core_MDF_PaymentUtility.newline;        
         

@@ -13,10 +13,10 @@ Description : Display a warning message on Opportunity detail section below the 
     <apex:form >
         <apex:outputPanel rendered="true">
             <apex:outputPanel rendered="{!$User.UITheme == 'Theme3'}">
-                <div  style="font-weight:bold;color:blue;font-size:10px;">{!$Label.Core_Msg_OnKPIUpdate_Label}: <a href="http:goto/matchingKPIs" target="_blank">goto/matchingKPIs</a> for details</div>
+                <div  style="font-weight:bold;color:orange;margin-left:35%;">{!$Label.Core_Msg_OnKPIUpdate_Label}</div>
             </apex:outputPanel>
             <apex:outputPanel rendered="{!$User.UITheme != 'Theme3'}">
-                <div  style="font-weight:bold;color:blue;font-size:10px;">{!$Label.Core_Msg_OnKPIUpdate_Label}: <a href="http:goto/matchingKPIs" target="_blank">goto/matchingKPIs</a> for details</div>
+                <div  style="font-weight:bold;color:orange;">{!$Label.Core_Msg_OnKPIUpdate_Label}</div>
             </apex:outputPanel>
         </apex:outputPanel>
     </apex:form>

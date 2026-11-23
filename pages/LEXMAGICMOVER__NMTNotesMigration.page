@@ -432,23 +432,7 @@ This page should be only used by admin to migrte public and private legacy notes
             );
             
             
-        }  
-        
-        //method used to check what migration user is doing and collect the info that will pass on to the controller
-        function runSyncRemote(){
-            document.getElementById('syncButton').style.pointerEvents = 'none';
-            Visualforce.remoting.Manager.invokeAction(
-                '{!$RemoteAction.NMTNotesMigrationController.syncRemote}',
-                function(result, event){
-                    console.log('element');
-                    console.log(document.getElementById('bulkMigration:syncLabelPanel'));
-                    document.getElementById('bulkMigration:syncLabelPanel').style.display = 'inline';
-                    document.getElementById('bulkMigration:syncButtonPanel').style.display = 'none';
-                    j$('#syncLabelDiv').removeClass('slds-hide');
-                }, 
-                {escape: true}
-            );
-        }
+        }   
         
         //method used to call delete methon within the controller
         function deleteRemote(){
@@ -858,38 +842,6 @@ This page should be only used by admin to migrte public and private legacy notes
                 </div>
             </div>
         </div>
-        <!--IF NO DATA SYNCHRONIZED -->
-        <!-- Warning bubble -->
-        <apex:outputPanel id="syncDataPanel">
-            <div id="syncData" class="{!showHideDataSync} {!notPermissionIssue} slds-grid">
-                <div class="slds-size--2-of-2">                        
-                    <div class="slds-card slds-m-horizontal--small ">
-                        <div class="slds-m-top--x-small slds-clearfix" style="margin-top: 1%; margin-bottom: 1%;">
-                            <div id="processingRemoteSetting" class="slds-m-bottom-x-small slds-m-top--x-small slds-m-left--small slds-float--left" style="width: 60%">                                
-                                The Notes Conversion tool has changed the way we track which classic notes have been converted to enhanced notes.  
-                                As a result, you'll need to run this script to proceed so that we can migrate data to enable you to delete the classic notes you've already converted.
-                            </div>
-                            <apex:outputPanel id="syncButtonPanel">
-                                <div id="syncButtonDiv"  class="slds-float--right {!showHideButtonSync}" >
-                                    <a href="#" onClick="runSyncRemote()"                                           
-                                       id="syncButton" reRender="syncDataPanel"
-                                       class="slds-float--left slds-button slds-button--neutral  slds-m-right--small slds-m-bottom--x-small">
-                                        Run Script</a>
-                                </div>
-                            </apex:outputPanel>
-                            <apex:outputPanel id="syncLabelPanel">
-                                <div id="syncLabelDiv"  class="slds-float--right {!showHideLabelSync}" >
-                                    <apex:outputLabel value="Running Script"
-                                                      id="LabelSync"
-                                                      styleClass="slds-m-bottom--x-small slds-m-top--xxx-small 
-                                                                  slds-m-left--large slds-m-right--large inProgressLabel slds-badge slds-truncate"/>
-                                </div>
-                            </apex:outputPanel>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </apex:outputPanel>
         <!--IF NO REMOTE SETTING ON PE -->
         <!-- Warning bubble -->
         <div class="{!showHideRemotePE} slds-grid">

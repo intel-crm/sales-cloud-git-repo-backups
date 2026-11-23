@@ -23,6 +23,7 @@
                                         <aura:unescapedHtml value="{!$Label.c.Core_MDF_ClaimSaveButtonInformationMessage}"></aura:unescapedHtml>
                                     </aura:set>
                                 </aura:if>
+                               <!--<aura:unescapedHtml value="{!$Label.c.Core_MDF_Confirm_Modal_Popup_Content5}"></aura:unescapedHtml> -->
                                 <!--TWC3117-18501-->
                                <aura:set attribute="else">
                                 <aura:if isTrue="{!v.isThirdParty}">
@@ -61,6 +62,7 @@
                         <lightning:button variant="brand" class="slds-m-right_small" label="{!$Label.c.Core_MDF_Ok_Button}" onclick="{!c.firePopSubmitEvent}"/>
                         <aura:set attribute="else">
                             <!-- Final Outcome-based claim scenario -->
+                            <!--<aura:if isTrue="{!v.isOutcomeBasedAccountBasedAct}">--> <!--TWC3117-18501-->
                             <aura:if isTrue="{!or(v.isOutcomeBasedAccountBasedAct, v.isCoGtm)}"> <!--TWC3117-18501-->
                                 <lightning:button variant="neutral" label="{!$Label.c.Core_MDF_Cancel_Claim_No}" onclick="{!c.firePopCloseEvent}"/>
                                 <lightning:button variant="brand" class="slds-m-right_small" label="{!$Label.c.Core_MDF_Cancel_Claim_Yes}" onclick="{!c.firePopSubmitEvent}"/>

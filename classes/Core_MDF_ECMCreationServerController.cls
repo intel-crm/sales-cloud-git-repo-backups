@@ -110,7 +110,14 @@ public without sharing class Core_MDF_ECMCreationServerController {
     public static Boolean saveECMRecordsCtrl(String caseRecordId, String listToSaveString) {
         //List of Exception Case Mapping to be inserted
         List<Core_MDF_Exception_Case_Mapping__c> ecmList = new List<Core_MDF_Exception_Case_Mapping__c>();
+        // Highlight: Unused Local Variable - 14285
+        // List<Core_MDF_Exception_Case_Mapping__c> ecmListToBeDeleted = new List<Core_MDF_Exception_Case_Mapping__c>();
+        
+        //List<Core_MDF_Exception_Case_Mapping__Share> ecmShareList = new List<Core_MDF_Exception_Case_Mapping__Share>();
+       
         try{
+            // Highlight: Unused Local Variable - 14285
+            //Case caseRecord = [SELECT Id, Core_MDF_Claim_ID__c, Account.Core_MDF_CoMarketing_Ultimate_Account__c, Account.Core_MDF_Channel_Program__r.Name FROM Case WHERE Id = :caseRecordId LIMIT 1];
             for(ExceptionWrapper ew : (List<ExceptionWrapper>)JSON.deserialize(listToSaveString, List<ExceptionWrapper>.class)){
                 if(ew.isECMAlreadyCreated && !String.isNotBlank(ew.ecmRecordId)){
                     //Creation of Exception Case Mapping Record
@@ -130,13 +137,17 @@ public without sharing class Core_MDF_ECMCreationServerController {
             }
 
             List<ExceptionWrapper> ewList = (List<ExceptionWrapper>)JSON.deserialize(listToSaveString, List<ExceptionWrapper>.class);
+            // Highlight: Unused Local Variable - 14285
+           // String accountId = ewList[0].corpAccountId;
+           // String cpId = ewList[0].channelProgramId;
+
             //Insert Exception Case Mapping Record List
             if(ecmList.size() > 0){
                 insert ecmList;
             }
 
             /* Core_MDF_Partner_Group_Mapping__c pgmRecord = [SELECT Id, Core_MDF_Account__c, Core_MDF_Type_of_Access__c, Core_MDF_Group_Id__c, Core_MDF_Channel_Program__c,
-                                                           	     Core_MDF_Region_cd__c
+                                                                 Core_MDF_Region_cd__c
                                                            FROM Core_MDF_Partner_Group_Mapping__c
                                                            WHERE Core_MDF_Account__c = :accountId AND
                                                                  Core_MDF_Type_of_Access__c = 'Internal' AND
@@ -174,6 +185,25 @@ public without sharing class Core_MDF_ECMCreationServerController {
             if (caseRecord != NULL && String.isNotBlank(caseRecord.Core_MDF_Claim_ID__c)) {
                 Id channelProgramRecordId;
                 Id corpAccountRecordId = null;
+                
+                //if(caseRecord.Core_MDF_Claim_ID__c != NULL){
+                    //claimRecordId = caseRecord.Core_MDF_Claim_ID__c;
+                //}
+
+                //if (caseRecord.Account.Core_MDF_Channel_Program__c != NULL) {
+                    //channelProgramRecordId = caseRecord.Account.Core_MDF_Channel_Program__c;
+                //}
+
+                //if (caseRecord.Account.Core_MDF_CoMarketing_Ultimate_Account__c != NULL || caseRecord.Account.Core_Account_ID__c != NULL) {
+                //corpAccountRecordId = (caseRecord.Account.Core_MDF_Channel_Program__r.Name == 'Retail Marketing Funds') ? 
+                    //caseRecord.Account.Core_Account_ID__c : caseRecord.Account.Core_MDF_CoMarketing_Ultimate_Account__c;
+                    // if (caseRecord.Account.Core_MDF_Channel_Program__r.Name == 'Retail Marketing Funds') {
+                    //     corpAccountRecordId = caseRecord.Account.Core_Account_ID__c;
+                    // } else {
+                    //     corpAccountRecordId = caseRecord.Account.Core_MDF_CoMarketing_Ultimate_Account__c;
+                    // }
+                //}
+                //exceptionMap = Core_MDF_PICReviewScreen_Controller.fetchExceptionsByClaimId(caseRecord.Core_MDF_Claim_ID__c, corpAccountRecordId);
             }
             if(caseRecord.Core_MDF_Claim_ID__c != NULL){
                 claimRecordId = caseRecord.Core_MDF_Claim_ID__c;

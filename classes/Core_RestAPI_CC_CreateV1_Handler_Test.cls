@@ -19,63 +19,10 @@ public class Core_RestAPI_CC_CreateV1_Handler_Test {
     public static void setupData(){
         Test.startTest();
         Core_RestAPI_TestUtilities.setupCustomSetting();
-        Core_IPS_Labels__c lable = new Core_IPS_Labels__c();
-        lable.name='Comment Source - Email';
-        lable.value__c='Customer Portal';
-        insert lable;
-        
-         Core_IPS_Labels__c lablenew = new Core_IPS_Labels__c();
-        lablenew.name='Comment Source - B2B API';
-        lablenew.value__c='B2B API';
-        insert lablenew;
-        
-        Core_IPS_Labels__c lable5 = new Core_IPS_Labels__c();
-        lable5.name='Data Migration';
-        lable5.value__c='Customer Portal';
-        insert lable5;
-        
-        Core_IPS_Labels__c lable2 = new Core_IPS_Labels__c();
-        lable2.name='Agent';
-        lable2.value__c='Customer Portal';
-        insert lable2;
-        
-        Core_IPS_Labels__c lable3 = new Core_IPS_Labels__c();
-        lable3.name='Comment Source - Data Migration';
-        lable3.value__c='Customer Portal';
-        insert lable3;
-        
-        Core_IPS_Labels__c label = new Core_IPS_Labels__c();
-        label.name='Comment Source - Internal';
-        label.value__c='Internal Portal';
-        insert label;
-        
-        Core_IPS_Labels__c lable1 = new Core_IPS_Labels__c();
-        lable1.name='Comment Source - N/A';
-        lable1.value__c='B2B API';
-        insert lable1;
-        
-        Core_IPS_Labels__c lable6 = new Core_IPS_Labels__c();
-        lable6.name='Comment Source - Customer';
-        lable6.value__c='B2B API';
-        insert lable6;
-        
-        Core_IPS_Labels__c lable7 = new Core_IPS_Labels__c();
-        lable7.name='Partner - DFAE';
-        lable7.value__c='B2B API';
-        insert lable7;
-        
-        Core_IPS_Labels__c lable8 = new Core_IPS_Labels__c();
-        lable8.name='Partner - Agent';
-        lable8.value__c='B2B API';
-        insert lable8;
-        
-        Core_IPS_Labels__c lable9 = new Core_IPS_Labels__c();
-        lable9.name='FAE';
-        lable9.value__c='B2B API';
-        insert lable9;
-        
+        System.debug('Test Setup entered');
         TestUtilities.getCustomerUsersWithAccountsAndContacts('RestApiUnitTest', 1, 1,0,1,'IPS External Customer', 0);
         System.runAs(adminUser){
+        System.debug('Test System.runAs Entered'+adminUser.id);
         List<RecordType> ObjRecordType = [Select Id from RecordType where name='IPS Case Create'];
         List<contact> objcon=[select id from contact where id!=null ];
         objCase=new Case();
@@ -126,6 +73,7 @@ public class Core_RestAPI_CC_CreateV1_Handler_Test {
         caseObj.OwnerId = adminUser.Id;
         caseObj.RecordTypeId=CaseRecordtype.get('IPS Case Create');
         insert caseObj;
+        System.debug(''+caseObj);
         case caseType=[select id,casenumber,Subject,Description,Status,Priority,RecordTypeId from case where id=:caseObj.id];
     } 
          Test.stopTest();
@@ -133,6 +81,7 @@ public class Core_RestAPI_CC_CreateV1_Handler_Test {
     //This method is to create case comments using Rest Response
     @isTest public static void test_CreateCaseComments(){
         List<Case> caseObj=[select casenumber,Subject from Case where Subject='Post TestSubject' AND casenumber!= null ];  
+        System.debug('TEst class PostCase comments Entered');
         RestRequest  request = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
         request.httpMethod = 'POST';
         RestContext.request = request; 
@@ -148,6 +97,7 @@ public class Core_RestAPI_CC_CreateV1_Handler_Test {
     } 
      @isTest public static void test_CreateCaseComments1(){
         List<Case> caseObj=[select casenumber,Subject from Case where Subject='Post TestSubject' AND casenumber!= null ];  
+        System.debug('TEst class PostCase comments Entered');
         RestRequest  request = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
         request.httpMethod = 'POST';
         RestContext.request = request; 
@@ -259,6 +209,7 @@ public class Core_RestAPI_CC_CreateV1_Handler_Test {
         }
         }
         catch(Exception e){
+        System.debug('Exception raised'+e);
         }
       
     }

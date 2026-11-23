@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Tasha Chuang</description>
+    <description>EMP of Jason Chen</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_10648738_Alex_Cheng</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_10674565_Tasha_Chuang</parentRole>
+    <parentRole>EMP_10452931_Jason_Chen</parentRole>
 </Role>

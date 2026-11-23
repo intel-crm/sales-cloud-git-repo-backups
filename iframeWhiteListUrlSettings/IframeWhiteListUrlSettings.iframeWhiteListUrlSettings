@@ -14,34 +14,6 @@
     </iframeWhiteListUrls>
     <iframeWhiteListUrls>
         <context>VisualforcePages</context>
-        <url>https://intel--c.na104.visual.force.com</url>
-    </iframeWhiteListUrls>
-    <iframeWhiteListUrls>
-        <context>VisualforcePages</context>
-        <url>https://intel--gblite.na104.visual.force.com</url>
-    </iframeWhiteListUrls>
-    <iframeWhiteListUrls>
-        <context>VisualforcePages</context>
-        <url>https://intel--gblite.vf.force.com</url>
-    </iframeWhiteListUrls>
-    <iframeWhiteListUrls>
-        <context>VisualforcePages</context>
-        <url>https://intel--c.vf.force.com</url>
-    </iframeWhiteListUrls>
-    <iframeWhiteListUrls>
-        <context>VisualforcePages</context>
-        <url>https://intel--gblite.visualforce.com</url>
-    </iframeWhiteListUrls>
-    <iframeWhiteListUrls>
-        <context>VisualforcePages</context>
-        <url>https://intel--c.visualforce.com</url>
-    </iframeWhiteListUrls>
-    <iframeWhiteListUrls>
-        <context>LightningOut</context>
-        <url>*.slack.com</url>
-    </iframeWhiteListUrls>
-    <iframeWhiteListUrls>
-        <context>LightningOut</context>
-        <url>*.slack-gov.com</url>
+        <url>https://www.google.com</url>
     </iframeWhiteListUrls>
 </IframeWhiteListUrlSettings>

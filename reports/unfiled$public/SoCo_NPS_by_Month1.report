@@ -116,7 +116,7 @@
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Month</dateGranularity>
+        <dateGranularity>Week</dateGranularity>
         <field>CLOSED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>

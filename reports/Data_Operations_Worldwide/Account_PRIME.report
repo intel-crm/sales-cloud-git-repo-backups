@@ -15,22 +15,21 @@
     <columns>
         <field>USERS.NAME</field>
     </columns>
-    <columns>
-        <field>Account.Core_Account_DCG_Tier__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_CIM_ID__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Prime_Id__c</field>
-    </columns>
     <filter>
+        <booleanFilter>1 or 2</booleanFilter>
         <criteriaItems>
-            <column>Account.Core_Account_ID__c</column>
+            <column>Account.Core_Prime_Account_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0013b00001qZmI5AAK</value>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -45,8 +44,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Account.Core_Prime_Account_Name__c</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

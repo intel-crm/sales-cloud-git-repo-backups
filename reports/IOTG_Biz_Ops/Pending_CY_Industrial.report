@@ -74,7 +74,7 @@
         <field>Opportunity.Core_Product_Application__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Pending Industrial</name>
+    <name>Pending CY Industrial</name>
     <params>
         <name>terr</name>
         <value>all</value>

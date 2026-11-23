@@ -106,7 +106,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>UNIQUEST,altima,arrow,macnica,digi-key,GALAXY FAR EAST CORPORATION,IPS Intel</value>
+            <value>altima,arrow,macnica,digi-key</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -116,7 +116,7 @@
         <field>OWNER</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Obsolete - NPS - PSG JPRAE by AE</name>
+    <name>Customer Survey NPS - PSG JPRAE by AE</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -134,6 +134,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2019-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2019-01-01</startDate>
     </timeFrameFilter>
 </Report>

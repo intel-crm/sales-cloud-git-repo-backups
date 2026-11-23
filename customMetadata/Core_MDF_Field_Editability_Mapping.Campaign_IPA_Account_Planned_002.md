@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>Core_MDF_Field_API_Name__c</field>
-        <value xsi:type="xsd:string">Description,StartDate,EndDate,Core_MDF_Focus_Area_nm__c,Core_MDF_Initiative_nm__c,Core_MDF_Region_cd__c,Core_MDF_Market__c,Core_MDF_Audience__c,Core_MDF_Technology__c,Core_MDF_Brand__c,Core_MDF_IPA_Priority_nm__c,Core_MDF_Product_Type__c,Core_MDF_Ecosystem_Partner_Nm__c,Core_MDF_Industry_Nm__c,Core_MDF_Key_Performance_Indicator__c,Core_MDF_Messaging__c,Core_MDF_Comments_Internal_Only__c,Core_MDF_Comments__c,Core_MDF_Custom_Reimbursement_Rate_pct__c,Core_MDF_Campaign_Scoring_txt__c,Core_MDF_Focus_Area_nm__c,Core_MDF_Initiatives_nm__c,Core_MDF_Other_Ecosystem_Partner_txt__c</value>
+        <value xsi:type="xsd:string">Description,StartDate,EndDate,Core_MDF_Focus_Area_nm__c,Core_MDF_Initiative_nm__c,Core_MDF_Region_cd__c,Core_MDF_Market__c,Core_MDF_Audience__c,Core_MDF_Technology__c,Core_MDF_Brand__c,Core_MDF_IPA_Priority_nm__c,Core_MDF_Product_Type__c,Core_MDF_Ecosystem_Partner_Nm__c,Core_MDF_Industry_Nm__c,Core_MDF_Key_Performance_Indicator__c,Core_MDF_Messaging__c,Core_MDF_Comments_Internal_Only__c,Core_MDF_Comments__c,Core_MDF_Custom_Reimbursement_Rate_pct__c,Core_MDF_Campaign_Scoring_txt__c,Core_MDF_Focus_Area_nm__c,Core_MDF_Initiatives_nm__c,Core_MDF_Other_Ecosystem_Partner_txt__c,Core_MDF_Campaign_Outcomes__c.Core_MDF_Initial_Baseline_Quantity_nbr__c,Core_MDF_Campaign_Outcomes__c.Core_MDF_Goal_Quantity_nbr__c,Core_MDF_Campaign_Outcomes__c.Core_MDF_Outcome_Criteria_txt__c</value>
     </values>
     <values>
         <field>Core_MDF_Field_ReadOnly_API_Name__c</field>

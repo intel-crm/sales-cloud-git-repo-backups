@@ -87,6 +87,13 @@
 							<button class="slds-button slds-button_outline-brand"
 								disabled={disableBulkApproval} name="Reject"
 								onclick={handleApproveReject}>Reject</button>
+							
+							<!-- Gayathri - Smart Assist button for bulk operations - only visible when PartnerFundRequest records are selected -->
+							<template if:true={showSmartAssistBulk}>
+								<button class="slds-button slds-button_outline-brand"
+									disabled={disableBulkApproval} name="AISuggestion"
+									onclick={handleAISuggestion}>Smart Assist</button>
+							</template>
 						</div>
 
 						<div style="padding-top:1.5%"></div>
@@ -259,6 +266,18 @@
 															name="Reject"
 															onclick={handleApproveReject}>Reject</button>
 													</li>
+													
+													<!-- Gayathri - Smart Assist button for single records - MOVED AFTER REJECT BUTTON -->
+													<template if:true={rec.isPartnerFundRequest}>
+														<li>
+															<button class="slds-button slds-button_neutral"
+																data-record-id={rec.object}
+																data-id={rec.id}
+																disabled={isDisableSingleApproval}
+																name="AISuggestion"
+																onclick={handleAISuggestion}>Smart Assist</button>
+														</li>
+													</template>
 												</ul>
 											</div>
 										</div>
@@ -383,6 +402,7 @@
 																			</div>
 																		</div>
 																	</template>
+																
 																</div>
 															</div>
 
@@ -559,6 +579,7 @@
 																					{field.value}
 																				</div>
 																			</template>
+																			
 																		</div>
 																	</div>
 																</div>
@@ -676,15 +697,15 @@
 					<!--/div-->
 					
 				</div>
-			<template if:false={popUpSpinner}>
-				<footer class="slds-modal__footer">
-					<button class="slds-button slds-button_neutral" onclick={closeModal}
-						title="Cancel">Cancel</button>
-					<button class="slds-button slds-button_brand" onclick={handleSubmitForApproval}
-						disabled={disableBulkApproveButton}
-						title={approvalButtonName}>{approvalButtonName}</button>
-				</footer>
-			</template>
+				<template if:false={popUpSpinner}>
+					<footer class="slds-modal__footer">
+						<button class="slds-button slds-button_neutral" onclick={closeModal}
+							title="Cancel">Cancel</button>
+						<button class="slds-button slds-button_brand" onclick={handleSubmitForApproval}
+							disabled={disableBulkApproveButton}
+							title={approvalButtonName}>{approvalButtonName}</button>
+					</footer>
+				</template>
 			</div>
 		</section>
 		<div class="slds-backdrop slds-backdrop_open"></div>

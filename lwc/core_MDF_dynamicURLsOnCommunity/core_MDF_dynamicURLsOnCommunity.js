@@ -25,6 +25,7 @@ BRAND_TABLE_HEADER_3 = Core_MDF_BrandTableHeader3
 BRAND_TABLE_HEADER_4 = Core_MDF_BrandTableHeader4;
 
 
+
 connectedCallback() {
     this.handleCommunityContent();
 }
@@ -50,12 +51,12 @@ handleCommunityContent(){
 }
 
     getHomeContent() {
+        console.log('SECTION CODE FROM UI---',this.sectionCode);
         getHomeContent({sectionCode : this.sectionCode })
         .then(data => {
            this.homeContent  = data;
         })
         .catch(error => {
-          console.log('error-->' , error);
           this.showToastMessage('Error',APPLICATION_ERROR, 'error', 'sticky');
         });
     }
@@ -65,11 +66,9 @@ handleCommunityContent(){
     getResourceContent() {
         getResourceContent({sectionCode : this.sectionCode })
         .then(data => {
-            console.log('resource result-->', JSON.stringify(data));
            this.resourceContent  = data;
         })
         .catch(error => {
-          console.log('error-->' , error);
           this.showToastMessage('Error',APPLICATION_ERROR, 'error', 'sticky');
         });
     }
@@ -77,11 +76,10 @@ handleCommunityContent(){
     getBrandContent() {
         getBrandContent({sectionCode : this.sectionCode })
         .then(data => {
-           console.log(' brand result-->', JSON.stringify(data));
+          data.sort(function(index1,index2){return index1.sortOrder - index2.sortOrder });
            this.brandContent  = data;
         })
         .catch(error => {
-          console.log('error-->' , error);
           this.showToastMessage('Error',APPLICATION_ERROR, 'error', 'sticky');
         });
     }
@@ -96,4 +94,5 @@ handleCommunityContent(){
             })
         );
     }
+
 }

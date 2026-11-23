@@ -1,26 +1,16 @@
 /**************************************************************************************
 Apex Class Name: Core_IPS_MoveContactWithCases_Controller  
-Test Class : Core_IPS_MoveContactWithCases_Ctrlr_Test
 Version     : 1.0 
 Created Date: Dec 2016
 Description : For moving the contact from one account to another account along with the cases and entitlements
-* Modification Log :
-* Developer                   Date                   Description
-* ------------------------------------------------------------------------------------
-* Ganapati                    03/10/2019              Modified for US436541
 *************************************************************************************/
-public without sharing class  Core_IPS_MoveContactWithCases_Controller {
+public class  Core_IPS_MoveContactWithCases_Controller {
     
     private static final String PENDING = 'Pending';
     private static final String CLOSED = 'Closed';
     private static final String SUCCESS = 'Success';
     private static final String UPDATE_REASON_CHANGE_ACCOUNT = 'Change Account';
     
-    // Added by Ganapati for US436541 - start
-    public static  final String ipsAssetRecTypeId = schema.sobjecttype.Asset.getrecordtypeinfosbyname().get('IPS Asset').getRecordTypeId();
-    public static boolean checkRecursion = false;	 
-    public static List<Case> finalLstUpdateCase = new List<Case>();
-    // Added by Ganapati for US436541 - end
     public List<Asset> assetWithProjectId {get;set;}
     public List<Asset> assetWithOUTprojectId {get;set;}
     
@@ -42,12 +32,14 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
     public Boolean displayPopUp{get;set;}
     public Boolean hidePoppup = false;
     public String moveAccoutWarningMessage{get;set;}
-    
     //All the entitlements for the contact
     public List<EntitlementWrapper> entitlements {set; get{
+        system.debug(' Invoked entitlements !..  > keepEntitlements '+keepEntitlements);
+        system.debug(' Invoked entitlements !..  > entitlements '+entitlements);
         for(EntitlementWrapper k : entitlements){
             k.keepEntitlement  = keepEntitlements;
         }
+        system.debug(' Invoked entitlements !..  > entitlements '+entitlements);
         return entitlements;
     }}
     
@@ -62,7 +54,7 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
     
     public String errorMsg {get;set;}
     //Total cases 
-    //public List<Case> contactCases {get;set;} // commented by Ganapati for US436541 - not used anywhere
+    public List<Case> contactCases {get;set;}
     
     //Target Account to which the contact is getting moved to 
     @TestVisible private Account targetAccountObj = null;
@@ -71,12 +63,13 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
     private Account getTargetAccountObj(){
         if(targetAccountObj == null){
             try{
-                targetAccountObj = [select Id, Name, Core_IsODM__c, Core_CNDA_Number__c, Core_CIM_ID__c,Core_Business_Party_Id__c, Core_English_Only_Name__c, Core_Export_Compliance_Block__c , 
+                targetAccountObj = [select Id, Name, Core_IsODM__c, Core_CNDA_Number__c, Core_CIM_ID__c, Core_English_Only_Name__c, Core_Export_Compliance_Block__c , 
                                     Core_IPS_Active__c, Core_B2B_Entitlement__c, Core_Export_Compliance_Block_Reason__c, Owner.UserRole.Name, Core_PSG_Account__c
                                     FROM Account where ID =: targetAccount.AccountId Limit 1];
             }catch(Exception e){
                 ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.INFO,' Account : INVALID ACCOUNT ')); // '+tg.Name+' removed by prem
             }
+            System.debug(' getTargetAccountObj Querying the target Account Object fields '+targetAccountObj);
         }
         return targetAccountObj;
         
@@ -85,6 +78,7 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
     
     //List of Cases which associated with IPS Project
     public List<CaseWrapper> casesWithProjectId {set; get{
+        system.debug(' Invoked casesWithProjectId !.. hasAccessToAcctSelection '+hasAccessToAcctSelection);
         if( (casesWithProjectId != null && casesWithProjectId.size() > 0) || hasSelectedEntitlements == true ){
             if(!hasAccessToAcctSelection){
                 errorMsg =  'Only Data Ops can move Contacts from one '+
@@ -95,6 +89,7 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
             }
         }
         ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.WARNING,'Note that if Cases or Accounts are on GEC hold then no movement can happen.'));
+        System.debug('======================= '+errorMsg);
         return casesWithProjectId;
     }}
     
@@ -105,9 +100,10 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
         
         for(CaseWrapper c : casesWithOUTprojectId){
             //if(keepCases == true && c.keepCase == false )
-            c.keepCase  = keepCases;
+                c.keepCase  = keepCases;
         }
         caseCount   = casesWithOUTprojectId.size();
+        system.debug(' Invoked casesWithOUTprojectId !.. '+casesWithOUTprojectId);
         return casesWithOUTprojectId;
     }}
     
@@ -119,10 +115,7 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
         keepCases = false;
         keepEntitlements = false;
         contactLookUp = new Case();
-        //FLS Check Added - Nishitha
-        if(Case.SObjectType.getDescribe().isAccessible()){
-        	contactLookUp.Id = [select Id from Case Limit 1].Id;
-        }
+        contactLookUp.Id = [select Id from Case Limit 1].Id;
         targetAccount = new Contact();
         userAuthorized = false;
         String temp = '';
@@ -136,22 +129,20 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
                 break;
             }
         }
+        System.debug(' userAuthorized +++++ >> '+userAuthorized);
     }
     
     //Default constructor
     public Core_IPS_MoveContactWithCases_Controller (ApexPages.standardcontroller controller){
-        
+       
         try{
             initialize();
-            //FLS Check Added - Nishitha
-            if(Contact.SObjectType.getDescribe().isAccessible()){
-
+            
             currContact = [Select Id, Account.Name, Name, AccountId,Core_IPS_Active__c, FirstName, Account.Core_Export_Compliance_Block__c, 
                            Account.Core_Export_Compliance_Block_Reason__c, Account.Core_IsODM__c, Account.Core_IPS_Active__c,Account.Core_PSG_Account__c,
                            Owner.email, Core_IPS_Intel_Support_Owner__r.email,Core_ERPM_Integration_Status__c, Core_AGS_Integration_Status__c, ownerid, 
                            Core_IPS_Intel_Support_Owner__c, account.ownerID, LastName, Account.Core_B2B_Entitlement__c, Core_Contact_B2B_Indicator__c 
                            From Contact Where id =: controller.getId()];   
-            }
             onloadAccount = currContact.Accountid;
             
             //Retrieve Cases
@@ -164,6 +155,7 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
         }catch(Exception e){
             currContact = null;
         }
+        System.debug(' Current Contact ++++  '+currContact);
         
         
     }
@@ -173,9 +165,7 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
     //Retrieve the Entitlements associated with the selected contact for displaying in UI
     public PageReference retrieveEntitlements(){
         entitlements = new List<EntitlementWrapper>();
-        //FLS Check Added - Nishitha
-        if(Core_Contact_Entitlement__c.SObjectType.getDescribe().isAccessible()){
-            for(Core_Contact_Entitlement__c cce : [SELECT Name , Core_Contact_Id__c, Core_Engagement_Tier__c, Core_Entitlement_Id__c, Core_From_Source__c,   
+        for(Core_Contact_Entitlement__c cce : [SELECT Name , Core_Contact_Id__c, Core_Engagement_Tier__c, Core_Entitlement_Id__c, Core_From_Source__c,   
                                                Core_Selected__c,Core_Entitlement_Id__r.Core_Display_Name__c,  Core_Contact_Id__r.Name, Core_Type__c 
                                                FROM Core_Contact_Entitlement__c 
                                                WHERE Core_Contact_Id__c =: currContact.Id AND Core_Entitlement_Id__r.Core_IsActive__c = true])
@@ -184,11 +174,11 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
             if(cce.Core_Selected__c == true)
                 hasSelectedEntitlements = true;
         }
-        }
         
         // INFO 1. If the contact doesn't have any Entitlements or Collateral then allow User with R/W to the Contact can select new Account
         boolean noEntitlements = ((entitlements != null && entitlements.size() == 0) || entitlements == null || hasSelectedEntitlements == false);
         boolean noCases = ((casesWithOUTprojectId != null && casesWithOUTprojectId.size() == 0) || casesWithOUTprojectId == null );
+        System.debug(' noEntitlements :'+noEntitlements+' noCases :'+noCases+' hasAccessToAcctSelection :'+hasAccessToAcctSelection+' userAuthorized :'+userAuthorized);
         if(noEntitlements && noCases){
             hasAccessToAcctSelection = Schema.sObjectType.Contact.isUpdateable() ;
         }else if(!noEntitlements || !noCases){
@@ -199,12 +189,16 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
                 //ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.INFO,' User do not have the permission to perform the  operation. Only Data Ops can perform the change'));
             }
         }
+        
+        System.debug(' noEntitlements :'+noEntitlements+' noCases :'+noCases+' hasAccessToAcctSelection :'+hasAccessToAcctSelection+' userAuthorized :'+userAuthorized);
+        System.debug(' entitlements >>> '+entitlements);
         return null;
     }
     
     //Retrieves all the Cases & Assets for displaying in UI.
     public void getCases(){
         final String AcctId = currContact != null ? currContact.AccountId : null;
+        System.debug(' +++++++ Account Name '+AcctId);
         
         casesWithProjectId = new List<CaseWrapper>();
         casesWithOUTprojectId = new List<CaseWrapper>();
@@ -214,8 +208,9 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
         assetWithOUTprojectIdFitered = new List<AssetWrapper>();        
         assetWithOUTprojectId = new List<Asset>();
         assetWithProjectId = new List<Asset>();
-        //FLS Check Added - Nishitha
-        if(Case.SObjectType.getDescribe().isAccessible()){
+        
+        System.debug(' Retreiving cases for Contact Id : '+currContact);
+        
         for(Case c:  [Select id,Product.name,caseNumber,status,Contactid,Core_IPS_Supported_Product__r.Name,Contact.Name,contact.Accountid,Core_IPS_Product_Org1__r.Name,
                       Core_IPS_Project_Case__r.Name,Core_IPS_Project_Case__c,AccountId,Core_IPS_Product_Org1__c, Core_IPS_GEC_Case__c, 
                       Core_IPS_Supported_Product__c,Core_IPS_GEC_Status__c,asset.status,asset.recordtypeid,Core_IPS_Supported_Product__r.Core_Supported_Product_Name__c, 
@@ -228,6 +223,7 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
                 gecCaseFound = true;
                 ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.INFO,' GEC Case Found, moving contact is not allowed.'));
             }
+            System.debug(' Core_IPS_Project_Case__c = '+c.Core_IPS_Project_Case__c);
             if(c.Core_IPS_Project_Case__c != null){
                 casesWithProjectId.add(new CaseWrapper(c, false)); 
                 assetIdsWithProject.add(c.AssetId);
@@ -236,7 +232,10 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
                 assetIdsWithOutProject.add(c.AssetId);
             }             
         }
-        }
+        
+        System.debug(' assetIds With Project = '+assetIdsWithProject);
+        System.debug(' assetIds With Out Project = '+assetIdsWithOutProject);
+        System.debug(' casesWithOUTprojectId = '+casesWithOUTprojectId);
         
         //To reuse the SOQL with different conditions below
         final String ASSET_QUERY = 'Select Id, Name, Core_IPS_Asset__c, Core_IPS_Project__c, Core_IPS_Project_Name__c, AccountId, Product2Id, InstallDate, UsageEndDate, Status FROM  Asset ';
@@ -265,6 +264,11 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
             }
         }
         
+        System.debug(' Cases '+contactCases);
+        System.debug(' caseAssetWithProjectId '+assetWithProjectId);
+        System.debug(' caseAssetWithOUTprojectId '+assetWithOUTprojectId);
+        System.debug(' caseAssetWithProjectIdFitered = '+assetWithProjectIdFitered);
+        System.debug(' caseAssetWithOUTprojectIdFitered = '+assetWithOUTprojectIdFitered);
         
         //return null;
     }
@@ -275,7 +279,9 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
         
         boolean flag = false;
         //Account tg = null;
-        
+        System.debug(' >>> Validation >> '+keepCases);
+        System.debug(' >>> contactLookUp.contactid >> '+contactLookUp.contactid);   
+
         if(currContact.AccountId == targetAccount.AccountId){
             ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.INFO,' Current account and target account is same.'));
             return flag;
@@ -298,13 +304,13 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
             return flag;
         }
         
-        if(targetAccountObj.Core_PSG_Account__c == false && currContact.Account.Core_PSG_Account__c ==true && !hidePoppup){
-            moveAccoutWarningMessage= System.Label.Core_IPS_Move_AccWarning_Message;
-            if(!hidePoppup){
-                displayPopUp = true;   
-            }  
-            return flag;
-        }
+         if(targetAccountObj.Core_PSG_Account__c == false && currContact.Account.Core_PSG_Account__c ==true && !hidePoppup){
+           moveAccoutWarningMessage= System.Label.Core_IPS_Move_AccWarning_Message;
+           if(!hidePoppup){
+             displayPopUp = true;   
+           }  
+           return flag;
+         }
         //Validate source and targert are of same ODM Type
         boolean targetAccountODMflag = targetAccountObj.Core_IsODM__c;
         if(targetAccountODMflag != currContact.Account.Core_IsODM__c && keepEntitlements == true){
@@ -317,13 +323,8 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
             return flag;
         }
         
-        /*if(String.isBlank(targetAccountObj.Core_CIM_ID__c)  && keepEntitlements == true ){
+        if(String.isBlank(targetAccountObj.Core_CIM_ID__c)  && keepEntitlements == true ){
             ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'CIM ID must be filled manually by the user on the Account record : '+targetAccountObj.Name));
-            return flag;
-        }*/
-        
-	if(String.isBlank(targetAccountObj.Core_Business_Party_Id__c)  && keepEntitlements == true ){
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Unified Id must be filled manually by the user on the Account record : '+targetAccountObj.Name));
             return flag;
         }
         
@@ -342,24 +343,26 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
             ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,' Account :'+targetAccountObj.Name+' is on  GEC Hold '));
             return flag;
         }
-        
+
         //Do Not proces if IPS Active flag is false and keepEntitlements = true in Target Account
         //if(currContact.Account.Core_IPS_Active__c == true && targetAccountObj.Core_IPS_Active__c == false  && keepEntitlements == true){
         //    ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Please contact IT Support to have them manually set the IPS Active flag on the Account record : '+targetAccountObj.Name));
         //    return flag;
         //}
-        
+
         //Do Not proces if B2B flag is false and keepEntitlements = true in Target Account
         //if(currContact.Account.Core_B2B_Entitlement__c == true && targetAccountObj.Core_B2B_Entitlement__c == false  && keepEntitlements == true){
         //    ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Please contact IT Support to have them manually set the B2B Entitlement flag on the Account record : '+targetAccountObj.Name));
         //    return flag;
         //}
-        
+
         // Validate target Account's owner has a role setup
         if(targetAccountObj.Core_IPS_Active__c == true  && keepEntitlements == true && String.isBlank(targetAccountObj.Owner.UserRole.Name)){
             ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Please contact IT Support to have them manually set the UserRole to Account :'+targetAccountObj.Name+'\'s Owner :'));
             return flag;
         }
+        
+        
         return true;
     }
     
@@ -373,37 +376,38 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
     }
     
     public pageReference moveAccountchange(){
-        hidePoppup= true;
-        PageReference page=updateCasesOnSave();
-        hidePoppup= false;
-        displayPopUp = false;
-        return page;
+   hidePoppup= true;
+    PageReference page=updateCasesOnSave();
+    hidePoppup= false;
+    displayPopUp = false;
+    return page;
     }
     
     
     //Method to update Accounts and Move Cases to New Account
-    public  List<Core_IPS_Account_Change_Status__c> accChangeStsLst;
-    public Contact currContact1;
     public PageReference updateCasesOnSave(){
         PageReference page = null;
         String strStatus = '';
-        // Added by Ganapati for US436541 - start - to check if account change is already in progress 
-        // FLS Check Added - Nishitha
-        if(Core_IPS_Account_Change_Status__c.SObjectType.getDescribe().isAccessible()){
-        	accChangeStsLst = [SELECT Id, Core_IPS_Contact__c, Core_IPS_Status__c FROM Core_IPS_Account_Change_Status__c WHERE Core_IPS_Contact__c = :currContact.Id LIMIT 1];
-        }
-            if(!accChangeStsLst.isEmpty() && 'In Progress'.equalsIgnoreCase(accChangeStsLst[0].Core_IPS_Status__c)) {
-            // return to page if account change is already in progress
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Account change for this contact already in Progress. Please try later.'));
-            return page;
-        } 
-        // Added by Ganapati for US436541 - end
+       
+          system.debug('====account'+targetAccountObj);
+          system.debug('====cntact'+currContact.Account);
+        
+        System.debug('==updateCasesOnSave.currContact===='+currContact.AccountId);
+        System.debug('==updateCasesOnSave.onloadAccount===='+onloadAccount);
+        System.debug('== updateCasesOnSave Target Account '+onloadAccount);
+        System.debug('== updateCasesOnSave LookUp Contact '+onloadAccount);
+        System.debug('==filterCasesAndUpdateContact casesWithOUTprojectId====TESTING '+casesWithOUTprojectId);
+        
         Savepoint sp = Database.setSavepoint();
         
         //return to page if Any of the validation fails;
-        if(!hasValidInputs()){
+        if(!hasValidInputs())
             return page;
-        }
+       
+        System.debug(' >>>>>>>> Target Account '+targetAccount.AccountId);
+        System.debug(' >>>>>>>> Target Account Object '+targetAccountObj);
+        System.debug(' >>>>>>>> Current Contact '+currContact.accountId);
+        
         
         try{
             
@@ -412,85 +416,82 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
             
             //----------------  Step 2 : Move contacts and Cases-------------------
             //Method filters contact update cases and returns cases that account and assets to be update
-            //List<Case> lstMoveAcc = filterCasesAndUpdateContact(); // commented by Ganapati for US436541 - functinality included inline below
-            List<Case> lCaseToUpdateContact = new List<Case>(); 
-        	List<Case> lCaseToUpdateAccount = new List<Case>();
-            for(CaseWrapper cseWOutPrjt : casesWithOUTprojectId){
-                if(cseWOutPrjt.keepCase == true && contactLookUp.contactid !=null){
-                    cseWOutPrjt.cs.contactid = contactLookUp.contactid;
-                    lCaseToUpdateContact.add(cseWOutPrjt.cs); 
-                    
-                }else if(cseWOutPrjt.keepCase == false){
-                    lCaseToUpdateAccount.add(cseWOutPrjt.cs);
-                    
-                }
-        	} 
+            List<Case> lstMoveAcc = filterCasesAndUpdateContact();
+            System.debug(' >>>>>>>> '+lstMoveAcc);
+            
+            
             //Step 3: Method update account and assets to the cases and returns success or error message
-            //strStatus = updateAssetsToCase(lstMoveAcc, targetAccount.accountId); // Commented by Ganapati for US436541 - changed function definition
-            //strStatus = updateAssetsToCase(new Map<Id, Case>(lstMoveAcc), targetAccount.accountId, targetAccountObj, currContact, keepEntitlements);
-            strStatus = updateAssetsToCase(lCaseToUpdateContact, lCaseToUpdateAccount, targetAccount.accountId, targetAccountObj, currContact);// Added by Ganapati for US436541 - start
-
+            strStatus = updateAssetsToCase( lstMoveAcc, targetAccount.accountId);
+            
+            system.debug('=== strStatus ===='+strStatus);
+            
             if(SUCCESS.equalsIgnoreCase(strStatus)){
-                //FLS Check Added - Nishitha
-                if(Contact.SObjectType.getDescribe().isAccessible()){
-                 currContact1 = [Select Id,Name,Core_ERPM_Integration_Status__c,Core_AGS_Integration_Status__c,AccountId,Core_Account_Changeable__c,Core_IPS_Active__c from contact where id =: currContact.id limit 1];
-                }
-                if(keepEntitlements == false){
-                    currContact1.Core_AGS_Integration_Status__c = PENDING;
-                }
-                
+                system.debug('===updateCasesOnSave.currContact ===='+currContact);
+                Contact currContact1 = [Select Id,Name,Core_ERPM_Integration_Status__c,Core_AGS_Integration_Status__c,AccountId,Core_Account_Changeable__c,Core_IPS_Active__c from contact where id =: currContact.id limit 1];
+                system.debug('===updated currContact ===='+currContact);
                 currContact1.Core_ERPM_Integration_Status__c = PENDING;
-                //currContact1.Core_AGS_Integration_Status__c = PENDING;
+                currContact1.Core_AGS_Integration_Status__c = PENDING;
                 currContact1.AccountId = targetAccount.accountId;
                 currContact1.Core_Account_Changeable__c= true;
+                //System.debug(' >>>> Contact Modified  '+[Select Id, Name, Core_IPS_Active__c from contact where id =: currContact.id]);
+                //System.debug(' >>>> currContact   '+currContact);
                 Core_Contact_AccountChange_Handler.IS_CHANGE_ACCOUNT = true;
                 update currContact1;
-    
+                
                 //Update the addtional Fields to Account, B2B and IPS
                 updateTargetAccountAdditionalFields(currContact1);
                 
-                page = new PageReference('/'+currContact.id); 
+                page = new PageReference('/'+currContact.id);
+                
             }else if(String.isNotEmpty(strStatus)){
-            	ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error, strStatus));
+                ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error, strStatus));
             }
-        } catch(DMLException ex) { //added by sugandha for US79061
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error,ex.getdmlMessage(0)));
-            Database.rollback(sp);
-		} catch(Exception e){
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error, e.getMessage()));
+        }
+        //added by sugandha for US79061
+        Catch(DMLException ex){ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error,ex.getdmlMessage(0)));
             Database.rollback(sp);
         }
+        catch(Exception e){
+            system.debug('excep msg::'+e.getMessage());
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error, e.getMessage()));
+            Database.rollback(sp);
+          
+        }
+        
         return page;
     }
     
     //Set the target accounts additional fields, currently IPS and B2B flags are setting as per the source contact/Account fields
-    public Contact contactref;
     @TestVisible private void updateTargetAccountAdditionalFields(Contact curCont ){
-        if(Contact.SObjectType.getDescribe().isAccessible()){
-         contactref = [SELECT id,accountid,Account.Core_IPS_Active__c,Core_IPS_Active__c FROM Contact where id =: curCont.id limit 1];
-        }
-            Account acc = new Account();
+        System.debug('     updateTargetAccountAdditionalFields Invoked ');
+        Contact contactref = [SELECT id,accountid,Account.Core_IPS_Active__c,Core_IPS_Active__c FROM Contact where id =: curCont.id limit 1];
+        Account acc = new Account();
         //Code to update IPS flag in account if the contact IPS flag is true
         if(curCont.Core_IPS_Active__c == true && contactref.Account.Core_IPS_Active__c == false && keepEntitlements == true && contactref != null ){
+            System.debug('     Updating target Account IPS flag to true');
             acc.Id = contactref.Accountid;
             acc.Core_IPS_Active__c = true;
         }
         
         //Set the Account.B2b indicator to true if it is false when the current contact B2B indicator is true
         if(currContact.Core_Contact_B2B_Indicator__c == true && targetAccountObj.Core_B2B_Entitlement__c == false && keepEntitlements == true && contactref != null ){
+            System.debug('     Updating target Account B2B flag to true');
             acc.Id = contactref.Accountid;
             acc.Core_B2B_Entitlement__c = true;
         }
         
         //Update acc Only if IPSFlag or B2B flag is set.
-        if(String.isNotBlank(acc.Id)) {
+        if(String.isNotBlank(acc.Id))
             update acc;
-        }   
+        
     }
-    
+        
     //Method to update contacts for the cases which are selected to move
-    /* Entitle method commented by Ganapati for US436541 - start - functionality included where it get called
-     * public List<Case> filterCasesAndUpdateContact(){
+    public List<Case> filterCasesAndUpdateContact(){
+        
+        System.debug('==filterCasesAndUpdateContact contactLookUp====='+contactLookUp );
+        System.debug('==filterCasesAndUpdateContact casesWithProjectId===='+casesWithProjectId);
+        System.debug('==filterCasesAndUpdateContact casesWithOUTprojectId===='+casesWithOUTprojectId);
         
         List<Case> lCaseToUpdateContact = new List<Case>(); 
         List<Case> lCaseToUpdateAccount = new List<Case>();
@@ -507,18 +508,20 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
             }
         } 
         
-        
+        System.debug(' ++++++++++++++++++++ lCaseToUpdateContact '+lCaseToUpdateContact);
+        System.debug(' ++++++++++++++++++++ lCaseToUpdateAccount '+lCaseToUpdateAccount);
         if(lCaseToUpdateContact.size()>0){
             try{
                 update lCaseToUpdateContact;
             }catch(Exception e){
                 ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error, 'Error Occured while filtering Selected cases'));
+                System.debug(' Exception >>> '+e.getMessage());
                 throw e;
             }
         }
         
         return lCaseToUpdateAccount;
-    }*/
+    }
     
     public PageReference cancelPage(){
         return new PageReference('/'+currContact.id);
@@ -538,58 +541,25 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
                 ceObject.Core_Selected__c = false;
                 ceObject.Core_Status__c = PENDING;
                 ceObject.Core_Update_Reason__c = UPDATE_REASON_CHANGE_ACCOUNT;
-                ceObject.Core_Status_of_Assignment_Failure__c = 'Pending Removal';
                 //ceList.add(ceObject);
             }
-            
-            //US:US390485 - Dev:Aparna - Description:updating records in future call to overcome 101 Error - Date:26/6/2019
-            //update ceList;
-            
-            string cntEntrecords=JSON.serialize(ceList);
-            if(string.isNotblank(cntEntrecords)){
-                updateCntEntitlementInFuture(cntEntrecords);
-            }
-            //End for US390485
+            update ceList;
         }
-    } 
+        
+    }    
     
-    /***********************************************************************************
-Version     : 1.0 
-Created Date: 26/6/2019
-Function    : Future call to overcome 101 Error when changing Account on contact
-Input Parameters: List
-Output Parameters: None
-Number of Queries Within this Method: 0
-Modification Log :
-* Developer                   Date                   Description
-* ----------------------------------------------------------------------------                 
-* Aparna                    26/6/2019               US390485-Created
-***********************************************************************************/
-    @future
-    public static void updateCntEntitlementInFuture(string strList){
-        try {
-            List<Core_Contact_Entitlement__c > newCntEntList = (List<Core_Contact_Entitlement__c >)JSON.deserialize(strList, List<Core_Contact_Entitlement__c >.class);
-            if(newCntEntList !=null && newCntEntList .size()>0){
-                database.update(newCntEntList); 
-            } 
-        } catch(Exception e){ 
-            Core_IPS_ExceptionHandling.logEntryWithException(e, 'Contact_Entitlement', 'Core_IPS_MoveContactWithCases_Controller');
-
-        }
-    }
-    //End for US390485
-
+    
+    
     //Wrapper class for the IPS projects
     List<Core_IPS_Project_Member__c> ipsProjects = null;
     public List<Core_IPS_Project_Member__c> getIPSProjects(){
         if(ipsProjects == null)
-            if(Core_IPS_Project_Member__c.SObjectType.getDescribe().isAccessible()){
             ipsProjects = [Select Core_IPS_Project__r.Name,  Core_IPS_Contact_Account__c, Core_IPS_Provisioning_Date__c , Core_Selective_Member__c, Core_Status__c, Core_User__c  
                            FROM Core_IPS_Project_Member__c where Core_IPS_Contact__c  = :currContact.Id];
-            }
         return ipsProjects;
     }
-
+    
+    
     //Wrapper Class for the entitlements
     public class EntitlementWrapper{
         public boolean keepEntitlement {get;set;}
@@ -625,123 +595,96 @@ Modification Log :
     }
     
     /* This method is to retrive all the assets for the new accounts and assign to the respected cases or creating an asset if requires. */   
-    //public static String updateAssetsToCase(List<Case> lstCases, Id accId){ // Commented by Ganapati for US436541
-    public static String updateAssetsToCase(List<Case> lCaseToUpdateContact,List<Case> lstCases, Id accId, Account targetAccountObj, Contact currContact){  // Modified by Ganapati for US436541
-        //Map<Id,Id> mapConIdTobe = new Map<Id,id>(); // Commented by Ganapati for US436541 - not used any where
+    public static String updateAssetsToCase(List<Case> lstCases, Id accId){
+        Map<Id,Id> mapConIdTobe = new Map<Id,id>();
         String strReturn;
         List<Asset> lstCreateAsset = new List<Asset>();
         List<Case> lstUpdateCase = new List<Case>();
-        List<Case> newLstUpdateCase = new List<Case>();
-        Date todayDate = System.today(); // Added by Ganapati for US436541
-        //List<Asset> lstAssetsForNewAcc = new List<Asset>(); // Commented by Ganapati for US436541 - not used any where
+        List<Asset> lstAssetsForNewAcc = new List<Asset>();
         Map<String,Asset> mapAsset = new Map<String,Asset>();
         List<Case> lstCaseForReupdate = new List<Case>();
-        //List<Core_IPS_Account__c> lstIPSAccounts = new List<Core_IPS_Account__c>(); // Commented by Ganapati for US436541 - not used any where
+        List<Core_IPS_Account__c> lstIPSAccounts = new List<Core_IPS_Account__c>();
         Set<String> stTobeUpdatedAsset = new Set<String>();
         Id assetPublicRecordId=schema.sobjecttype.Asset.getrecordtypeinfosbyname().get('IPS Public Product').getRecordTypeId();
-        //lstAssetsForNewAcc = [SELECT id,Core_IPS_Project__c,Core_Product_Organization__c,Core_Supported_Product__c,Accountid FROM Asset WHERE Accountid = : accId]; // Commented by Ganapati for US436541
+        lstAssetsForNewAcc = [SELECT id,Core_IPS_Project__c,Core_Product_Organization__c,Core_Supported_Product__c,Accountid FROM Asset WHERE Accountid = : accId];
         
-        //for(Asset objAssetRef : lstAssetsForNewAcc){// Commented by Ganapati for US436541
-        if(Asset.SObjectType.getDescribe().isAccessible()){
-            for(Asset objAssetRef : [SELECT id,Core_IPS_Project__c,Core_Product_Organization__c,Core_Supported_Product__c,Accountid FROM Asset WHERE Accountid = : accId]){// Added by Ganapati for US436541
-                //if(objAssetRef.Accountid != null) { // Commented by Ganapati for US436541 - only assets which have account id have queried
+        System.debug('Core_Contact_Status_Update_Handler.updateAssets ==lstAssetsForNewAcc===>'+lstAssetsForNewAcc);
+        
+        for(Asset objAssetRef : lstAssetsForNewAcc){
+            if(objAssetRef.Accountid != null) {
                 mapAsset.put(string.valueof(objAssetRef.Accountid) + string.valueof(objAssetRef.Core_Product_Organization__c)  +  string.valueof(objAssetRef.Core_Supported_Product__c),objAssetRef);
-                //}
             }
         }
+        System.debug('Core_Contact_Status_Update_Handler===mapAsset===>'+mapAsset);
+        
         
         for(Case objCaseRef : lstCases){
+            
             objCaseRef.AccountId = accId;
+            
+            System.debug('Core_Contact_Status_Update_Handler.updateAssets===Core_IPS_Project_Case__c====>'+objCaseRef.Core_IPS_Project_Case__c);
+            System.debug('Core_Contact_Status_Update_Handler.updateAssets===Core_IPS_Product_Org1__c====>'+objCaseRef.Core_IPS_Product_Org1__c);
+            System.debug('Core_Contact_Status_Update_Handler.updateAssets===Core_IPS_Supported_Product__c====>'+objCaseRef.Core_IPS_Supported_Product__c);
+            System.debug('Core_Contact_Status_Update_Handler.updateAssets===AccountID====>'+objCaseRef.AccountID);
+            System.debug('====Productid===>'+objCaseRef.Productid);
+            System.debug('====Productid===>'+objCaseRef.Product.name);
+            System.debug('objCaseRef.Asset.recordtypeid!=assetPublicRecordId'+objCaseRef.Asset.recordtypeid+'::'+assetPublicRecordId);
             if(objCaseRef.Core_IPS_Project_Case__c == null && objCaseRef.AccountID != null && objCaseRef.Core_IPS_Product_Org1__c !=null && objCaseRef.Core_IPS_Supported_Product__c!= null && objCaseRef.Asset.recordtypeid!=assetPublicRecordId){
                 string strKey_Asset = string.valueof(objCaseRef.AccountID) + string.valueof(objCaseRef.Core_IPS_Product_Org1__c)  +  string.valueof(objCaseRef.Core_IPS_Supported_Product__c) ;
-                if(!mapAsset.isEmpty() && mapAsset.containsKey(strKey_Asset)) {
+                
+                if(!mapAsset.isEmpty() && mapAsset.containsKey(strKey_Asset)){
                     objCaseRef.AssetId = mapAsset.get(strKey_Asset).id;
-                    // Added by Ganapati for US436541 - start
-                    if(checkRecursion == false) {
-                        lstUpdateCase.add(objCaseRef);
-                    } else {
-                        newLstUpdateCase.add(objCaseRef);
-                    }
-                    // Added by Ganapati for US436541 - end
-                } else {
+                    lstUpdateCase.add(objCaseRef);
+                }else{
+                    system.debug('===objCaseRef.supportedprofuct.name==>'+objCaseRef.Core_IPS_Supported_Product__c);
+                    system.debug('===objCaseRef.supportedprofuct.name==>'+objCaseRef.Core_IPS_Supported_Product__r.Core_Supported_Product_Name__c);
+                    system.debug('===strKey_Asset==>'+strKey_Asset);
+                    system.debug('===stTobeUpdatedAsset.contains(strKey_Asset)==>'+stTobeUpdatedAsset.contains(strKey_Asset));
                     if(objCaseRef.Core_IPS_Supported_Product__r.Core_Supported_Product_Name__c!=null && !stTobeUpdatedAsset.contains(strKey_Asset)){
                         Asset objAsset = new Asset();
                         objAsset.Name = objCaseRef.Core_IPS_Supported_Product__r.Core_Supported_Product_Name__c;
                         objAsset.Product2Id=objCaseRef.Core_IPS_Supported_Product__r.Core_Product__c;
                         objAsset.Core_IPS_Asset__c=true;
                         objAsset.core_alias__c=objCaseRef.Core_IPS_Supported_Product__r.Core_Supported_Product_Alias__c;
-                        objAsset.recordtypeid = ipsAssetRecTypeId;
+                        objAsset.recordtypeid = schema.sobjecttype.Asset.getrecordtypeinfosbyname().get('IPS Asset').getRecordTypeId();
                         objAsset.AccountId = objCaseRef.AccountId;
                         objAsset.Core_Product_Organization__c = objCaseRef.Core_IPS_Product_Org1__c;
                         objAsset.Core_Supported_Product__c = objCaseRef.Core_IPS_Supported_Product__c;
                         objAsset.Status = 'Inactive';
-                        /* Commented by Ganapati for US436541
-                        objAsset.InstallDate = system.today()-1; 
+                        objAsset.InstallDate = system.today()-1;
                         objAsset.UsageEndDate = system.today();
-                         Commented by Ganapati for US436541 - end */
-                        // Added by Ganapati for US436541 -start
-                        objAsset.InstallDate = todayDate - 1; 
-                        objAsset.UsageEndDate = todayDate;
-                        // Added by Ganapati for US436541 -end
+                        
                         lstCreateAsset.add(objAsset);
                         stTobeUpdatedAsset.add(strKey_Asset);
                     }
                     lstCaseForReupdate.add(objCaseRef);
-                }   
-            } else if(objCaseRef.Asset.recordtypeid==assetPublicRecordId) {
+                }
+                
+            }else if(objCaseRef.Asset.recordtypeid==assetPublicRecordId){
                 lstUpdateCase.add(objCaseRef);
             }
+            
         }
+        System.debug('Core_Contact_Status_Update_Handler.updateAssets====lstUpdateCase===>'+lstUpdateCase);
+        System.debug('Core_Contact_Status_Update_Handler.updateAssets====lstCreateAsset===>'+lstCreateAsset);
         try{
-            /* Commented by Ganapati for US436541
             if(lstUpdateCase.size()>0){
-            	update lstUpdateCase;  
-            }*/
-            if(checkRecursion == false) { // Added by Ganapati for US436541
-                if(!lstUpdateCase.isEmpty()) {
-                    finalLstUpdateCase.addAll(lstUpdateCase);
-                }
-                if(!lCaseToUpdateContact.isEmpty()) {
-                    finalLstUpdateCase.addAll(lCaseToUpdateContact);
-                }
-            }
-            if(checkRecursion && !newLstUpdateCase.isEmpty()) {
-            	finalLstUpdateCase.addAll(newLstUpdateCase);
+                update lstUpdateCase;  
             }
             if(lstCreateAsset.size()>0){
                 insert lstCreateAsset; 
-                if(lstCaseForReupdate.size()>0) {
-                    //updateAssetsToCase(lstCaseForReupdate,accId); // Commented by Ganapati for US436541
-                    // Added by Ganapati for US436541 - start
-                    checkRecursion = true; 
-                    updateAssetsToCase(new List<Case>(), lstCaseForReupdate, accId, targetAccountObj, currContact);
-                    checkRecursion = false;
-                    // Added by Ganapati for US436541 - end
+                if(lstCaseForReupdate.size()>0){
+                    updateAssetsToCase(lstCaseForReupdate,accId);
                 }
             }
-            // Added by Ganapati for US436541 - start
-            if(checkRecursion == false) {
-                if(!finalLstUpdateCase.isEmpty()) {
-                    if(finalLstUpdateCase.size() <= Integer.valueOf(Label.Core_IPS_CaseUpdateLstSize) || !Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('ActiveOrDeactiveCaseUpdateBatch')) {
-                    	update finalLstUpdateCase;    
-                    } else if(Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('ActiveOrDeactiveCaseUpdateBatch')) {
-
-                        Core_IPS_Account_Change_Status__c accChangeSts = new Core_IPS_Account_Change_Status__c();
-                        accChangeSts.Core_IPS_Contact__c = currContact.Id;
-                        accChangeSts.Core_IPS_Status__c = 'In Progress';
-                        insert accChangeSts;
-                        Core_IPS_MoveContactWithCases_Batch moveContactsBatch = new Core_IPS_MoveContactWithCases_Batch(finalLstUpdateCase, accId, targetAccountObj, currContact);  
-                        Database.executeBatch(moveContactsBatch, Integer.valueOf(Label.Core_IPS_caseUpdateBatchSize));   
-                    }
-                }
-            }
-            // Added by Ganapati for US436541 - end
             strReturn = SUCCESS;
         }catch(Exception e){
-
+            system.debug('Core_Contact_Status_Update_Handler.updateAssets Exception:'+e);
             strReturn = e.getMessage();
+            
             throw e;
         }
         return strReturn;
     }
+    
 }

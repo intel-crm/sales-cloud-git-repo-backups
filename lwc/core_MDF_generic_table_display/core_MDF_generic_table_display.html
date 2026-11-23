@@ -1,0 +1,81 @@
+<template >
+    <!-- <div class="custom-table-wrapper">
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered	">
+        <thead>
+            <tr>
+                <th>Outcomes</th>
+                <th>Baseline Quantity*</th>
+                <th>Goal Quantity*</th>
+                <th> Quantity</th>
+                <th>Outcome Criteria</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>{row1Label}</th>
+                <td><lightning-input type="number"></lightning-input></td>
+                <td><lightning-input type="number"></lightning-input></td>
+                <td><lightning-input type="number"></lightning-input></td>
+                <td><lightning-textarea maxlength="1000"></lightning-textarea></td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+<!-- <table class="slds-table slds-table_bordered">
+    <thead>
+        <tr>
+            <th>{rowLabel}</th> 
+            <template for:each={items} for:item="header" for:index="index">
+                <th key={inde}>{header}</th>
+            </template>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{row1Label}</td> 
+            <template for:each={items} for:item="item" for:index="index">
+                <td key={inde}>
+                    <lightning-input 
+                        type="number" 
+                        name={item}
+                        onchange={handleInputChange}>
+                    </lightning-input>
+                </td>
+            </template>
+        </tr>
+    </tbody>
+</table> -->
+<lightning-card title={rowLabel}>
+    <div class="slds-p-around_medium">
+        <!-- Row Label -->
+        <lightning-layout>
+            <lightning-layout-item size="12" class="slds-p-bottom_small">
+                <strong>{row1Label}</strong>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <lightning-layout multiple-rows>
+            <!-- Label-only fields -->
+            <template for:each={labelFields} for:item="item">
+                <lightning-layout-item key={item.label} size="2" class="slds-p-horizontal_x-small">
+                    <div class="slds-p-vertical_small">
+                        <strong>{item.label}</strong>
+                    </div>
+                </lightning-layout-item>
+            </template>
+
+            <!-- Input fields -->
+            <template for:each={inputFields} for:item="item">
+                <lightning-layout-item key={item.label} size="2" class="slds-p-horizontal_x-small">
+                    <lightning-input 
+                        name={item.label} 
+                        label={item.label} 
+                        type={item.type}
+                        onchange={handleInputChange}>
+                    </lightning-input>
+                </lightning-layout-item>
+            </template>
+        </lightning-layout>
+    </div>
+</lightning-card>
+</template>

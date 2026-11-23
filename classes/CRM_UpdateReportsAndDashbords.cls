@@ -1,5 +1,4 @@
 public without sharing class CRM_UpdateReportsAndDashbords {
-    public class CustomException extends Exception{}
     @AuraEnabled 
     public static Boolean shareReportFolder(List<id> selectedRowIds,Id toUser, String obj ,Core_MDF_Custom_Utility_Config__c objConfigRec) {
         Set<string> reFolder = new Set<string>();
@@ -60,9 +59,7 @@ public without sharing class CRM_UpdateReportsAndDashbords {
             if(!dashFoldDevlNamlst.isEmpty()){
                 updateDashFolders(dashFoldDevlNamlst,userName);
             }
-            if(!dashApiNamr.isEmpty()){
-                CRM_CheckUserAccess_Dashboard.updateRunningUser(dashApiNamr,userId.Id);
-            }
+           CRM_CheckUserAccess_Dashboard.updateRunningUser(dashApiNamr,userId.Id); 
         }
         return true;
     }
@@ -71,67 +68,43 @@ public without sharing class CRM_UpdateReportsAndDashbords {
     @future(callout=true)
     public static Void updateReFolders(Set<string> reFoldDevlNamlst,String userName){
         List<CRM_MetadataService.ReportFolder> Repfolderlst = new List<CRM_MetadataService.ReportFolder>();
-        List<CRM_MetadataService.FolderShare> addAllShare = new List<CRM_MetadataService.FolderShare>();
-        try{
-            for(String FdName : reFoldDevlNamlst){
-                CRM_MetadataService.ReportFolder Refolder = new CRM_MetadataService.ReportFolder();
-                Refolder.fullName = FdName;  // Folder Developer Name
-                Refolder.accessType = 'Public';
-                CRM_MetadataService.FolderShare share = new CRM_MetadataService.FolderShare();
-                share.accessLevel = 'EditAllContents';  // View or EditAllContents or Manage
-                share.sharedTo = userName;    //TO UserName or Group ID
-                share.sharedToType = 'User';
-                addAllShare.add(share);
-                CRM_MetadataService.MetadataPort service = serviceSession ();
-                CRM_MetadataService.ReportFolder existingFolderMetadata = (CRM_MetadataService.ReportFolder) service.readMetadata('ReportFolder', new String[] { FdName }).getRecords()[0];
-                If(existingFolderMetadata.folderShares != null){
-                    addAllShare.addAll(existingFolderMetadata.folderShares);
-                }
-                Refolder.folderShares = addAllShare;
+        for(String FdName : reFoldDevlNamlst){
+            
+            CRM_MetadataService.ReportFolder Refolder = new CRM_MetadataService.ReportFolder();
+            Refolder.fullName = FdName;  // Folder Developer Name
+            Refolder.accessType = 'Public';
+            CRM_MetadataService.FolderShare share = new CRM_MetadataService.FolderShare();
+            share.accessLevel = 'View';  // View or EditAllContents or Manage
+            share.sharedTo = userName;    //TO UserName or Group ID
+            share.sharedToType = 'User';
+            Refolder.folderShares = new List<CRM_MetadataService.FolderShare>{ share };
                 Repfolderlst.add(Refolder);
-            }
-            CreatesessionId( Repfolderlst);  
         }
-        catch(Exception Ex){
-            system.debug(Ex.getMessage());
-            Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(EX,'Critical','CRM','Reports','Mass Access Ownership Transfer',null);
-        }
-          
+        CreatesessionId( Repfolderlst);    
     }
     @future(callout=true)
     public static Void updateDashFolders(Set<string> reFoldDevlNamlst,String userName){
         List<CRM_MetadataService.DashboardFolder> dFolderlst = new List<CRM_MetadataService.DashboardFolder>();
-        List<CRM_MetadataService.FolderShare> addAllShare = new List<CRM_MetadataService.FolderShare>();
-        try{ 
-            for(String FdName : reFoldDevlNamlst){
-                CRM_MetadataService.DashboardFolder dashFolder = new CRM_MetadataService.DashboardFolder();
-                dashFolder.fullName = FdName;  // Folder Developer Name
-                dashFolder.accessType = 'Public';
-                CRM_MetadataService.FolderShare share = new CRM_MetadataService.FolderShare();
-                share.accessLevel = 'EditAllContents';  // View or EditAllContents or Manage
-                share.sharedTo = userName;    //TO UserName or Group ID
-                share.sharedToType = 'User';
-                addAllShare.add(share);
-                CRM_MetadataService.MetadataPort service = serviceSession ();
-                CRM_MetadataService.DashboardFolder existingFolderMetadata = (CRM_MetadataService.DashboardFolder) service.readMetadata('DashboardFolder', new String[] { FdName }).getRecords()[0];
-                If(existingFolderMetadata.folderShares != null){
-                    addAllShare.addAll(existingFolderMetadata.folderShares);
-                }
-                dashFolder.folderShares = addAllShare;
+        for(String FdName : reFoldDevlNamlst){
+            
+            CRM_MetadataService.DashboardFolder dashFolder = new CRM_MetadataService.DashboardFolder();
+            dashFolder.fullName = FdName;  // Folder Developer Name
+            dashFolder.accessType = 'Public';
+            CRM_MetadataService.FolderShare share = new CRM_MetadataService.FolderShare();
+            share.accessLevel = 'EditAllContents';  // View or EditAllContents or Manage
+            share.sharedTo = userName;    //TO UserName or Group ID
+            share.sharedToType = 'User';
+            dashFolder.folderShares = new List<CRM_MetadataService.FolderShare>{ share };
                 dFolderlst.add(dashFolder);
-                
-            }
-            CreatesessionId( dFolderlst);
+            
         }
-        catch(Exception Ex){
-            system.debug(Ex.getMessage());
-            Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(EX,'Critical','CRM','Dashboard','Mass Access Ownership Transfer',null);
-        }
-        
+        CreatesessionId( dFolderlst);
     }
     public static Void CreatesessionId(List<CRM_MetadataService.Metadata> Repfolderlst){
         try {
-        CRM_MetadataService.MetadataPort service = serviceSession ();
+        CRM_MetadataService.MetadataPort service = new CRM_MetadataService.MetadataPort();
+        service.SessionHeader = new CRM_MetadataService.SessionHeader_element();
+        service.SessionHeader.sessionId = UserInfo.getSessionId();
         if(Repfolderlst.Size()>10){
             List<CRM_MetadataService.Metadata> subList = new List<CRM_MetadataService.Metadata>();
             for (Integer lstsize = 0; lstsize< Repfolderlst.Size(); lstsize++) {
@@ -151,32 +124,19 @@ public without sharing class CRM_UpdateReportsAndDashbords {
         }
         else{
             CRM_MetadataService.SaveResult[] results = service.updateMetadata(Repfolderlst);
+            for (CRM_MetadataService.SaveResult result : results) {if (result.success) {System.debug('<Line106> Success'); }}
             for (CRM_MetadataService.SaveResult result : results) {
                 if (!result.success) {
-                    String errorMsg = '';
                     for (CRM_MetadataService.Error err : result.errors) {
-                        errorMsg=errorMsg+err.message;
-                        System.debug('Error sharing folder: ' + err.message);  
+                        System.debug('Error sharing folder: ' + err.message);
                     }
-                    Throw new CustomException(errorMsg);
                 }
             }
         }
     } 
-        catch(CustomException Ex){
-            system.debug(Ex.getMessage());
-            Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(EX,'Critical','CRM','Reports/Dashboard Grant Access','Mass Access Ownership Transfer',null);
-        }
         catch(Exception Ex){
             system.debug(Ex.getMessage());
-            Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(EX,'Critical','CRM','Reports/Dashboard Grant Access','Mass Access Ownership Transfer',null);
         }   
     }
     
-    Private Static CRM_MetadataService.MetadataPort serviceSession (){
-        CRM_MetadataService.MetadataPort service = new CRM_MetadataService.MetadataPort();
-        service.SessionHeader = new CRM_MetadataService.SessionHeader_element();
-        service.SessionHeader.sessionId = UserInfo.getSessionId();
-        return service;
-    }
 }

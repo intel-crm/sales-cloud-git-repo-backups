@@ -1,5 +1,6 @@
 /****************************************************************************************************************************************
 * Class Name  : Core_MDF_Audit_Document_TriggerHandler 
+* Test Class  : Core_MDF_Audit_Document_Trigger_Test
 * Version     : 1.0 
 * Created Date: 15-02-2022   
 * Modification Log :
@@ -13,6 +14,8 @@ public class Core_MDF_Audit_Document_TriggerHandler extends TriggerHandler{
     	public override void beforeInsert() {
              if (isActive('Core_MDF_Audit_Doc_Duplicate_Check')) {
                 Core_MDF_Audit_Document_ServiceHandler.dulpicateCheck((List<Core_MDF_Audit_Document__c>) Trigger.new);
+                 Core_MDF_Audit_Document_ServiceHandler.titleCharLength((List<Core_MDF_Audit_Document__c>) Trigger.new);
+                 
             }
         }
     

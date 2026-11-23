@@ -196,7 +196,7 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -230,23 +230,13 @@
     <columns>
         <field>STAGE_NAME</field>
     </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Approved_KPI_Product_Group__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>ROLLUP_DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>wood,Gordon. cook,weston,o&apos;donnell,rodman,descheemaeker,herrmann,haynes,mushahwar,swanger</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>ruiz,benjamin miller,greg thomson,zachary smiley</value>
+            <value>Gordon Allison,Courtney Harrison,Foote,O&apos;Donnell,Swanger,Rodman,Weston,Herrmann,Descheemaeker</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -274,7 +264,7 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</sortColumn>
+    <sortColumn>OpportunityLineItem.Core_BU_Short_Name__c</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>

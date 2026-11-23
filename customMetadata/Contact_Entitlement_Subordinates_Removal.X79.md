@@ -4,11 +4,11 @@
     <protected>false</protected>
     <values>
         <field>Core_Condition__c</field>
-        <value xsi:type="xsd:string">a2W3b00000EW3fi,a2W3b00000DaquB,a2W3b00000Daqu3,a2W3b00000Daqu2,a2W3b00000Daqu5,a2W3b00000GlZgy</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_Entitlement_Id__c</field>
-        <value xsi:type="xsd:string">a2W3b00000Daqu1</value>
+        <value xsi:type="xsd:string">a2Wg0000000ntD6</value>
     </values>
     <values>
         <field>Core_Entitlement_Name__c</field>
@@ -16,10 +16,10 @@
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Id__c</field>
-        <value xsi:type="xsd:string">a2W3b00000Daqu4</value>
+        <value xsi:type="xsd:string">a2Wg0000000nv8q</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Name__c</field>
-        <value xsi:type="xsd:string">RMF External Claim Submitter</value>
+        <value xsi:type="xsd:string">Retail Claim Submitter</value>
     </values>
 </CustomMetadata>

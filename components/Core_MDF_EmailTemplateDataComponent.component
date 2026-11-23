@@ -2,15 +2,15 @@
     <apex:attribute name="actId" type="Id" description="Id of the activity" assignTo="{!activityId}"/>
     <apex:attribute name="flag" type="String" description="Flag to print specific value"/>
     <apex:panelGroup rendered="{!flag == 'ActType'}">
-    	<apex:outputText value="{!ActivityType}"></apex:outputText>
+        <apex:outputText value="{!ActivityType}"></apex:outputText>
     </apex:panelGroup> 
     <apex:panelGroup rendered="{!flag == 'RecType'}">
-    	<apex:outputText value="{!ActivityRecordTypeName}"></apex:outputText>
+        <apex:outputText value="{!ActivityRecordTypeName}"></apex:outputText>
     </apex:panelGroup> 
     <apex:panelGroup rendered="{!flag == 'PriorStatus'}">
-    	<apex:outputText value="{!ActivityPriorStatus}"></apex:outputText>
+        <apex:outputText value="{!ActivityPriorStatus}"></apex:outputText>
     </apex:panelGroup>
     <apex:panelGroup rendered="{!flag == 'Status'}">
-    	<apex:outputText value="{!ActivityStatus}"></apex:outputText>
+        <apex:outputText value="{!ActivityStatus}"></apex:outputText>
     </apex:panelGroup>
 </apex:component>

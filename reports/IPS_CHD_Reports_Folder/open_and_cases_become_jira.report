@@ -8,11 +8,26 @@
         <sourceColumnName>Case.Core_IPS_Escalated_Level__c</sourceColumnName>
         <useOther>false</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Development/Engineering</sourceValue>
+            </sourceValues>
             <value>Moved to Engineering</value>
         </values>
         <values>
             <sourceValues>
+                <sourceValue>Front Line Support</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>Domain Expert</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Consult with Front Line Support</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Consult with Domain Expert</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Escalate to Domain Expert</sourceValue>
             </sourceValues>
             <value>By TCS</value>
         </values>

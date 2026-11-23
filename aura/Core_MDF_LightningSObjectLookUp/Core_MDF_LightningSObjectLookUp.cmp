@@ -1,5 +1,5 @@
 <aura:component controller="Core_MDF_LookupSObjectController" implements="lightning:availableForFlowScreens" access="global">
-   <ltng:require styles="{!$Resource.Core_MDF_SLDS262 + '/styles/salesforce-lightning-design-system.css'}" />
+   <!--<ltng:require styles="{!$Resource.Core_MDF_SLDS262 + '/styles/salesforce-lightning-design-system.css'}" />-->
     <!-- Attributes -->
     <aura:attribute name="sObjectAPIName" type="String" required="true" 
                     description="The API name of the SObject to search" />
@@ -13,7 +13,7 @@
                     description="Indicates the lookup is required or not" />
     <aura:attribute name="pluralLabel" type="String" required="true" 
                     description="The plural label to assign to the lookup, eg: Accounts" />
-    <aura:attribute name="listIconSVGPath" type="String" default="{!$Resource.Core_MDF_SLDS262 + '/icons/custom-sprite/svg/symbols.svg#custom11'}" 
+    <aura:attribute name="listIconSVGPath" type="String" default="{!$Resource.Core_MDF_SLDS262 + '/icons/custom-sprite/svg/symbols.svg#custom11'}"
                     description="The static resource path to the svg icon to use." />
     <aura:attribute name="listIconClass" type="String" default="slds-icon-custom-11" 
                     description="The SLDS class to use for the icon." />
@@ -31,15 +31,17 @@
                     description="The resulting matches returned by the Apex controller." />
     <aura:attribute name="labelClass" type="String" required="false" default="slds-form-element__label"
                     description="The style class to be assigned to label text" />
+    <!--added by VB - IGHF-->
+    <aura:attribute name="staticResourceForSearch" type="string"/>
+    <aura:attribute name="staticResourceForClose" type="string"/>
 
+
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
     <aura:method name="clearLookupPill" action="{!c.clear2}" description="Runs the init method again "/>
     <aura:method name="select2" action="{!c.select2}" description="Runs the init method again "/>
-    
- 
-    
     <!-- Events -->
     <aura:registerEvent name="updateLookupIdEvent" type="c:Core_MDF_UpdateLookupId"/>    
-    <aura:registerEvent name="clearLookupIdEvent" type="c:Core_MDF_ClearLookupId"/>    
+    <aura:registerEvent name="clearLookupIdEvent" type="c:Core_MDF_ClearLookupId"/>   
     
     <!-- Lookup Markup : See https://www.lightningdesignsystem.com/components/lookups -->
     <div class="slds"> 
@@ -56,7 +58,8 @@
                             <lightning:icon class="closeIcon" iconName="utility:close" alternativeText="close" size="x-small" />
                         </div>
                         <aura:set attribute="else">
-                            
+                            <!--<c:Core_MDF_svgIcon class="slds-input__icon" xlinkHref="{!$Resource.Core_MDF_SLDS262 +'/icons/utility-sprite/svg/symbols.svg#search'}" />-->
+                            <!--<lightning:icon class="searchIcon" iconName="utility:Search" alternativeText="Search" size="x-small" />-->
                             <lightning:icon class="slds-input__icon slds-show" iconName="utility:search" size="x-small" alternativeText="search"/> 
                         </aura:set>
                     </aura:if>
@@ -64,13 +67,13 @@
                     <div aura:id="lookup-pill" class="slds-pill-container slds-hide">
                         <span class="slds-pill slds-pill_bare">
                             <span class="slds-pill__label">
-                               
+                                <!--<c:Core_MDF_svgIcon class="{!'slds-icon ' + v.listIconClass + ' slds-icon_small'}" xlinkHref="{!$Resource.Core_MDF_SLDS262 + '/icons/utility-sprite/svg/symbols.svg#close'}" />-->
                                 <lightning:icon class="slds-icon slds-icon-standard-user slds-icon_small" iconName="standard:client" size="small" alternativeText="User"/>&nbsp;{!v.searchString}
                             </span>
                             <button aura:id="clearIcon" class="slds-button slds-button_icon-bare" onclick="{!c.clear}">
-                               
+                                <!--<c:Core_MDF_svgIcon class="slds-button__icon" xlinkHref="{!$Resource.Core_MDF_SLDS262 + '/icons/utility-sprite/svg/symbols.svg#close'}" />-->
                                 <lightning:icon class="closeIcon" iconName="utility:close" alternativeText="Remove" size="x-small" />
-                               
+                                <!--<span class="slds-assistive-text">Remove</span>-->
                             </button>
                         </span>
                     </div> 
@@ -82,7 +85,7 @@
             <div aura:id="lookuplist" class="slds-lookup__menu slds-hide" role="listbox">
                 <div class="slds-lookup__item">
                     <button class="slds-button">
-                        
+                        <!--<c:Core_MDF_svgIcon class="slds-icon slds-icon-text-default slds-icon_small" xlinkHref="{!$Resource.Core_MDF_SLDS262 +'/icons/utility-sprite/svg/symbols.svg#search'}" />-->
                         <lightning:icon iconName="utility:search" size="small" alternativeText="search"/> 
                         &quot;{!v.searchString}&quot; in {!v.pluralLabel}
                     </button>
@@ -90,9 +93,10 @@
                 <ul aura:id="lookuplist-items" class="slds-lookup__list dropdownStyle" role="presentation">
                     <aura:iteration items="{!v.matches}" var="match">
                         <li class="slds-lookup__item">
-                            <a id="{!globalId + '_id_' + match.objectId}" role="option" onclick="{!c.select}">
+                            <span id="{!globalId + '_id_' + match.objectId}" role="option" onclick="{!c.select}">
+                                <!--<c:Core_MDF_svgIcon class="{!'slds-icon ' + v.listIconClass + ' slds-icon_small'}" xlinkHref="{!v.listIconSVGPath}" />-->
                                 <lightning:icon class="slds-icon slds-icon-standard-user slds-icon_small" iconName="standard:client" size="small" alternativeText="User"/>{!match.objectLabel} 
-                            </a>
+                            </span>
                         </li>
                     </aura:iteration>
                 </ul>

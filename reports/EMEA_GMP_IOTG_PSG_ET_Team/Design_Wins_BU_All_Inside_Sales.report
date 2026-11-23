@@ -15,7 +15,7 @@
         <groupingColumn>FULL_NAME</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
-        <secondaryGroupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</secondaryGroupingColumn>
+        <secondaryGroupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</secondaryGroupingColumn>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -40,6 +40,9 @@
         <field>STAGE_NAME</field>
     </columns>
     <columns>
+        <field>PRODUCT_PRICE</field>
+    </columns>
+    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
     </columns>
@@ -60,9 +63,6 @@
     </columns>
     <columns>
         <field>Opportunity.Core_Sales_Groups__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Product_Segment__c</field>
     </columns>
     <filter>
         <booleanFilter>1 AND 2 AND 3</booleanFilter>
@@ -97,7 +97,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Design Wins (BU) All Inside Sales</name>
@@ -126,6 +126,6 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <interval>INTERVAL_CURRENT</interval>
     </timeFrameFilter>
 </Report>

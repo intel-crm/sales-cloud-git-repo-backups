@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Cameron Chehreh</description>
+    <description>EMP of Murray Swanger</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_10501312_Elizabeth_McGee</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_12097145_Cameron_Chehreh</parentRole>
+    <parentRole>EMP_10074002_Murray_Swanger</parentRole>
 </Role>

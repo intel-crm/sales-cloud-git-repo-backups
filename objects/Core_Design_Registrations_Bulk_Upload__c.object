@@ -79,7 +79,6 @@
     <label>Design Registrations Bulk Upload</label>
     <listViews>
         <fullName>All_Records</fullName>
-        <columns>NAME</columns>
         <columns>Core_Active_Ind__c</columns>
         <columns>Core_Header_Or_Product_Ind__c</columns>
         <columns>Core_Field_Data_Type_Txt__c</columns>
@@ -92,7 +91,6 @@
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All Records</label>
-        <language>en_US</language>
     </listViews>
     <visibility>Public</visibility>
 </CustomObject>

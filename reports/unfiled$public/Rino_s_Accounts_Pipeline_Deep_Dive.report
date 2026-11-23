@@ -51,7 +51,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterThan</operator>
-            <value>10</value>
+            <value>10.0</value>
         </criteriaItems>
         <criteriaItems>
             <column>FULL_NAME</column>

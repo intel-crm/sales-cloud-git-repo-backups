@@ -4,4 +4,6 @@
     <aura:attribute name="isMetricsBlank" type="String" default="false" />
     <aura:attribute name="activityToAttrList" type="Object" default="{}" />
     <aura:attribute name="isBlankTacticMetrics" type="Boolean" default="false" />
+  <!--  <aura:attribute name="doc" type="String[]" default="" />-->
+     <!--<aura:attribute name="doc" type="Map" default="{}" />-->
 </aura:event>

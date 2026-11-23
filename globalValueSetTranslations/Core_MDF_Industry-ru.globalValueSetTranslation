@@ -30,7 +30,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>B2B general</masterLabel>
-        <translation>B2B, общее</translation>
+        <translation>B2B</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>B2C, no industry</masterLabel>
@@ -97,10 +97,6 @@
         <translation>Другое</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Others</masterLabel>
-        <translation><!-- Others --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Professional and Business Services</masterLabel>
         <translation>Профессиональные и коммерческие услуги</translation>
     </valueTranslation>
@@ -114,7 +110,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Robotics</masterLabel>
-        <translation>Робототехника</translation>
+        <translation><!-- Robotics --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Software</masterLabel>
@@ -127,6 +123,10 @@
     <valueTranslation>
         <masterLabel>Telecommunications</masterLabel>
         <translation>Телекоммуникации</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Test LOV Industry</masterLabel>
+        <translation><!-- Test LOV Industry --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Transportation and Warehouse</masterLabel>

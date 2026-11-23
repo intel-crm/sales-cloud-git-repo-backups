@@ -125,6 +125,56 @@
             <field>Core_MDF_Account__c.Core_CIM_ID__c</field>
             <table>Core_MDF_Partner_Group_Mapping__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Account_ProgramName_txt__c</field>
+            <table>Core_MDF_Partner_Group_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AccountProgramId_Txt__c</field>
+            <table>Core_MDF_Partner_Group_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Budget_Type_Access_nm__c</field>
+            <table>Core_MDF_Partner_Group_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_BudgetType_nm__c</field>
+            <table>Core_MDF_Partner_Group_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Payment_Type_nm__c</field>
+            <table>Core_MDF_Partner_Group_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_CMF_Id__c</field>
+            <table>Core_MDF_Partner_Group_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_All_Access_Group_Id__c</field>
+            <table>Core_MDF_Partner_Group_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_All_Access_Group_Nm__c</field>
+            <table>Core_MDF_Partner_Group_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Virtual_Corp_nm__c</field>
+            <table>Core_MDF_Partner_Group_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_CoMarketingActiveAccount_Nm__c</field>
+            <table>Core_MDF_Partner_Group_Mapping__c</table>
+        </columns>
         <masterLabel>Partner Group Mapping</masterLabel>
     </sections>
 </ReportType>

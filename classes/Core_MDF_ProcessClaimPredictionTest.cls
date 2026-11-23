@@ -16,7 +16,7 @@ private class Core_MDF_ProcessClaimPredictionTest {
         
         List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
         
-        ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', true);
+        ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', true);
         
         Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Acc New 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
         
@@ -44,10 +44,10 @@ private class Core_MDF_ProcessClaimPredictionTest {
         
         List<Core_Entitlement__c> entitlementList = new List<Core_Entitlement__c>();
         
-        Core_Entitlement__c entitlementCCF = Core_MDF_CCP_TestDataUtility.createEntitlement('Client User',agsRoleCCF.Id ,'Intel® Partner Investment Center','CCF User',erpmEngagementCCF.Id , true,Core_MDF_CCP_ConstantClass.CCF_PROGRAM,false);
+        Core_Entitlement__c entitlementCCF = Core_MDF_CCP_TestDataUtility.createEntitlement('Client User',agsRoleCCF.Id ,'Consolidated Co-marketing Platform','CCF User',erpmEngagementCCF.Id , true,'Client',false);
         entitlementList.add(entitlementCCF);
         
-        Core_Entitlement__c entitlementCCFClaimSub = Core_MDF_CCP_TestDataUtility.createEntitlement('Client Claim Submitter',agsRoleCCFClaimSub.Id ,'Intel® Partner Investment Center','CCF Claim Submitter',erpmEngagementCCF.Id , true,Core_MDF_CCP_ConstantClass.CCF_PROGRAM,false);
+        Core_Entitlement__c entitlementCCFClaimSub = Core_MDF_CCP_TestDataUtility.createEntitlement('Client Claim Submitter',agsRoleCCFClaimSub.Id ,'Consolidated Co-marketing Platform','CCF Claim Submitter',erpmEngagementCCF.Id , true,'Client',false);
         entitlementList.add(entitlementCCFClaimSub);
         
         Database.insert(entitlementList); 
@@ -147,9 +147,8 @@ private class Core_MDF_ProcessClaimPredictionTest {
         BankList.add(bank2); 
         
         //Database.update(BankList);
-        Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 13','Gaming','Intel® Core™ i7 Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today().addDays(-15), System.today().addDays(15), 10000, 'Always Connected PC', acc2.Id,'Desktop', false);             
-        camp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
-            insert camp;
+        Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 13','Gaming','Intel® Core™ i7 Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today().addDays(-15), System.today().addDays(15), 10000, 'Always Connected PC', acc2.Id,'Desktop', true);             
+        
         //Database.update(abm);
         Core_MDF_CCP_TestDataUtility.insertCurrencyExchangeRates(); 
         //test.startTest();
@@ -234,7 +233,8 @@ private class Core_MDF_ProcessClaimPredictionTest {
             PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, pfr.Id, System.today(), System.today(), 50.00, System.today(), bank1.Id, false);
             claim1.Core_MDF_Currency__c='USD';//INR
             list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
-            Core_MDF_PartnerFundClaim.ClaimWrap claimWrapResult = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,null,null);            
+           // Highlight: Unused Local Variable - Indira
+          /*  Core_MDF_PartnerFundClaim.ClaimWrap claimWrapResult = */ Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,null,null, false, null, false, null, false);            
             //System.assertEquals(claim1.ID,res);
 
             Core_MDF_Claim_Prediction__c t = new Core_MDF_Claim_Prediction__c();

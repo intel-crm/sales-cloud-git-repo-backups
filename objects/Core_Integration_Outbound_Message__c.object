@@ -183,71 +183,10 @@
         <visibleLines>2</visibleLines>
     </fields>
     <fields>
-        <fullName>Core_Retry_Number__c</fullName>
-        <externalId>false</externalId>
-        <label>Retry Number</label>
-        <precision>2</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Status_Message__c</fullName>
-        <label>Status Message</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>TextArea</type>
-    </fields>
-    <fields>
-        <fullName>Core_Status__c</fullName>
-        <label>Status</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Pending</fullName>
-                    <default>true</default>
-                    <label>Pending</label>
-                </value>
-                <value>
-                    <fullName>Successful</fullName>
-                    <default>false</default>
-                    <label>Successful</label>
-                </value>
-                <value>
-                    <fullName>Failed</fullName>
-                    <default>false</default>
-                    <label>Failed</label>
-                </value>
-                <value>
-                    <fullName>Discard</fullName>
-                    <default>false</default>
-                    <label>Discard</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
         <fullName>Core_Tags__c</fullName>
         <externalId>false</externalId>
         <label>Tags</label>
         <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PRM_Account_ID__c</fullName>
-        <externalId>false</externalId>
-        <label>Account ID</label>
-        <length>20</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -317,24 +256,7 @@
     </listViews>
     <listViews>
         <fullName>All1</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Created_Date_Time__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>Core_MessageType__c</columns>
-        <columns>OBJECT_ID</columns>
-        <columns>Core_Payload__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_MessageType__c</field>
-            <operation>equals</operation>
-            <value>Account Integration</value>
-        </filters>
-        <filters>
-            <field>NAME</field>
-            <operation>equals</operation>
-            <value>IOM-16465570</value>
-        </filters>
         <label>All</label>
     </listViews>
     <listViews>
@@ -346,14 +268,9 @@
         <columns>UPDATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>CREATED_DATE</field>
+            <field>LAST_UPDATE</field>
             <operation>equals</operation>
             <value>TODAY</value>
-        </filters>
-        <filters>
-            <field>Core_MessageType__c</field>
-            <operation>equals</operation>
-            <value>Account Integration</value>
         </filters>
         <label>All Messages Today</label>
     </listViews>
@@ -535,42 +452,6 @@
         <columns>UPDATEDBY_USER</columns>
         <filterScope>Mine</filterScope>
         <label>My Messages</label>
-    </listViews>
-    <listViews>
-        <fullName>OPID_Payloads</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Status__c</columns>
-        <columns>Core_MessageType__c</columns>
-        <columns>Core_Payload__c</columns>
-        <columns>Core_Created_Date_Time__c</columns>
-        <columns>CREATED_DATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_MessageType__c</field>
-            <operation>equals</operation>
-            <value>OPID Request</value>
-        </filters>
-        <label>OPID Payloads</label>
-    </listViews>
-    <listViews>
-        <fullName>PRM_Service_Cloud_Integrations</fullName>
-        <columns>NAME</columns>
-        <columns>Core_MessageType__c</columns>
-        <columns>Core_Payload__c</columns>
-        <columns>Core_Created_Date_Time__c</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_MessageType__c</field>
-            <operation>contains</operation>
-            <value>Account Integration,Contact Integration</value>
-        </filters>
-        <filters>
-            <field>Core_Created_Date_Time__c</field>
-            <operation>greaterOrEqual</operation>
-            <value>1/1/2026 12:00 AM</value>
-        </filters>
-        <label>PRM Service Cloud Integrations</label>
     </listViews>
     <listViews>
         <fullName>Siebel_Quote_Messages</fullName>

@@ -98,7 +98,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>Service Provider,Telco/Service Provider,Comm Service Provider (CoSP)</value>
+            <value>Service Provider,Telco/Service Provider</value>
         </criteriaItems>
         <criteriaItems>
             <column>INDUSTRY</column>
@@ -120,13 +120,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>Skylake,Cascade Lake,SOC</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>nokia,genesys,ringcentral,everyware</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -3,42 +3,42 @@
     <caseValues>
         <caseType>Nominative</caseType>
         <plural>false</plural>
-        <value>Zuordnung von Ausnahmekonto</value>
+        <value>Exception Account Mapping</value>
     </caseValues>
     <caseValues>
         <caseType>Nominative</caseType>
         <plural>true</plural>
-        <value>Zuordnungen von Ausnahmekonten</value>
+        <value>Exception Account Mappings</value>
     </caseValues>
     <caseValues>
         <caseType>Accusative</caseType>
         <plural>false</plural>
-        <value>Zuordnung von Ausnahmekonto</value>
+        <value>Exception Account Mapping</value>
     </caseValues>
     <caseValues>
         <caseType>Accusative</caseType>
         <plural>true</plural>
-        <value>Zuordnungen von Ausnahmekonten</value>
+        <value>Exception Account Mappings</value>
     </caseValues>
     <caseValues>
         <caseType>Genitive</caseType>
         <plural>false</plural>
-        <value>Zuordnung von Ausnahmekonto</value>
+        <value>Exception Account Mapping</value>
     </caseValues>
     <caseValues>
         <caseType>Genitive</caseType>
         <plural>true</plural>
-        <value>Zuordnungen von Ausnahmekonten</value>
+        <value>Exception Account Mappings</value>
     </caseValues>
     <caseValues>
         <caseType>Dative</caseType>
         <plural>false</plural>
-        <value>Zuordnung von Ausnahmekonto</value>
+        <value>Exception Account Mapping</value>
     </caseValues>
     <caseValues>
         <caseType>Dative</caseType>
         <plural>true</plural>
-        <value>Zuordnungen von Ausnahmekonten</value>
+        <value>Exception Account Mappings</value>
     </caseValues>
     <fields>
         <label><!-- Account --></label>
@@ -66,7 +66,7 @@
         <name>Core_MDF_Exception_Status_txt__c</name>
     </fields>
     <fields>
-        <label>Ausnahme</label>
+        <label><!-- Exception --></label>
         <name>Core_MDF_Exception_id__c</name>
         <relationshipLabel>Zuordnungen von Ausnahmekonten</relationshipLabel>
     </fields>

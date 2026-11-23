@@ -89,6 +89,10 @@
                 <type>FieldUpdate</type>
             </action>
             <action>
+                <name>Core_MDF_Clear_IntelCon_Diff</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
                 <name>Core_MDF_User_Role_to_L1_Primary_App</name>
                 <type>FieldUpdate</type>
             </action>
@@ -537,7 +541,7 @@
         </rejectionActions>
     </approvalStep>
     <description>Activity Approval Process for EEF Program</description>
-    <emailTemplate>Testt/Core_MDF_Activity_Approval_Notification</emailTemplate>
+    <emailTemplate>unfiled$public/Core_MDF_Activity_Approval_Notification</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <booleanFilter>1 AND (2 OR 3 OR 4)</booleanFilter>

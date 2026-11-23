@@ -9,14 +9,14 @@
             <column>RowCount</column>
         </chartSummaries>
         <chartType>VerticalColumn</chartType>
-        <enableHoverLabels>true</enableHoverLabels>
+        <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
         <groupingColumn>CREATED_DATEONLY</groupingColumn>
         <location>CHART_TOP</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
-        <showValues>true</showValues>
+        <showValues>false</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
@@ -37,7 +37,7 @@
     </filter>
     <format>Matrix</format>
     <groupingsDown>
-        <dateGranularity>Month</dateGranularity>
+        <dateGranularity>Week</dateGranularity>
         <field>CREATED_DATEONLY</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>

@@ -34,6 +34,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Core_MDF_TotalInvoice_Amt_Local__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Core_MDF_SurePay_Processed_Ind__c</field>
             </layoutItems>
         </layoutColumns>
@@ -220,7 +224,25 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Country_Location_nm__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_MDF_CSP_Intel_Based_Revenue_Amt__c</field>
+            </layoutItems>
         </layoutColumns>
+        <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Additional Details</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_MDF_Batch_Nbr__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
@@ -229,6 +251,10 @@
         <editHeading>true</editHeading>
         <label>Hold Details</label>
         <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Audit_Hold__c</field>
+            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Payment_Hold_ind__c</field>
@@ -241,8 +267,20 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Member_Manual_Hold_Ind__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Criteria_Hold_Ind__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Recovery_Hold_Ind__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Claim_Review_Case__c</field>
+            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_MDF_ESD_Hold__c</field>
@@ -254,6 +292,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Member_Manual_Hold_Comments_Txt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Criteria_Hold_No_Id__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -317,21 +359,6 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>PartnerFundClaim.Core_MDF_Complete_PIC_Review</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>7</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>PartnerFundClaim.Core_MDF_Submit_For_PIC</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>8</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>PartnerFundClaim.Core_MDF_Clone_Claim</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>9</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>Edit</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>0</sortOrder>
@@ -366,6 +393,21 @@
             <actionType>QuickAction</actionType>
             <sortOrder>6</sortOrder>
         </platformActionListItems>
+        <platformActionListItems>
+            <actionName>PartnerFundClaim.Core_MDF_Complete_PIC_Review</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>7</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>PartnerFundClaim.Core_MDF_Submit_For_PIC</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>8</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>PartnerFundClaim.Core_MDF_Clone_Claim</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>9</sortOrder>
+        </platformActionListItems>
     </platformActionList>
     <quickActionList>
         <quickActionListItems>
@@ -393,7 +435,7 @@
     <relatedLists>
         <excludeButtons>MassChangeOwner</excludeButtons>
         <excludeButtons>New</excludeButtons>
-        <fields>Core_MDF_Int_Document_Name__c</fields>
+        <fields>NAME</fields>
         <fields>CREATED_DATE</fields>
         <relatedList>Core_MDF_Audit_Document__c.Core_MDF_Claim__c</relatedList>
     </relatedLists>
@@ -446,11 +488,24 @@
         <fields>NAME</fields>
         <fields>Core_MDF_VAT_Amt__c</fields>
         <fields>Core_MDF_Status_Txt__c</fields>
+        <fields>Core_MDF_VAT_Comments_txt__c</fields>
         <relatedList>Core_MDF_Claim_VAT_Info__c.Core_MDF_Claim_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <relatedList>Junction_Object__c.Claim__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
         <relatedList>Core_MDF_AI_Tracking__c.Core_MDF_Claim_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_MDF_Claim_Payment_Link__c.Core_MDF_Claim_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_MDF_Claim_Payment_Link__c.Core_MDF_Sub_Claim_Id__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>

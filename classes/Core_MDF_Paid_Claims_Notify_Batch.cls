@@ -85,14 +85,17 @@ public without sharing class Core_MDF_Paid_Claims_Notify_Batch implements Databa
             Core_MDF_Email_NotificationLoggingBatch emailNotifyLogBatch = new Core_MDF_Email_NotificationLoggingBatch(internalUserIds,externalUserIds,Core_MDF_CCP_ConstantClass.Paid_Claims_Notification,claimObjForEmailPreferences);
             // custom metadata with batch size value 
             Integer batchSize = Core_MDF_CustomLabelConfig.getIntegerValues('Core_MDF_PaidClaim_NotifyLogBatchSize');
+            // Highlight: Unused Local Variable - 14285
             Id batchInstanceId = Database.executeBatch(emailNotifyLogBatch,batchSize);
+           
         }      
     }
     /*To return values from claim records for to create wrapper instance*/
     Public static Core_MDF_ScheduledNotificationHandler.InputWrapper getRecordDetails(PartnerFundClaim claimRec) {
         Set<Id> userIdSet = new Set<Id>();
         Set<Id> accIdSet = new Set<Id>();
-        Set<Id> claimIdSet = new Set<Id>();
+        // Highlight: Unused Local Variable - 14285
+        // Set<Id> claimIdSet = new Set<Id>();
         Set<string> progSetInt = new Set<string>();
         Set<string> progSetExt = new Set<string>();
         Set<string> progBudgetTypeKeySet = new Set<string>();
@@ -103,6 +106,15 @@ public without sharing class Core_MDF_Paid_Claims_Notify_Batch implements Databa
         if(isValidClaimRecord(claimRec)){
                
                 if(Owner_Based_Notification_Prog.contains(prog) && claimRec.Request.Core_MDF_Intel_Activity_Owner_Id__c != NULL && (claimRec.Request.Core_MDF_Intel_Activity_Owner_Id__r.IsActive || claimRec.Request.Core_MDF_Intel_Activity_Owner_Id__r.Partner_License_Reclaimed__c)) {
+                    progBudgetTypeKeySet.add(prog + claimRec.Request.Core_MDF_Budget_Type_nm__c);
+                    userIdSet.add(claimRec.Request.Core_MDF_Intel_Activity_Owner_Id__c);
+                    accIdSet.add(Id.valueOf(claimRec.Request.Core_MDF_Ultimate_Account_Id__c));
+                    progSetInt.add(prog); //Client
+                    cpIdSet.add(claimRec.ChannelPartnerId); 
+                    
+                }
+                else if(prog == 'Ecosystem Extension Fund' && Owner_Based_Notification_Prog.contains(prog) &&  claimRec.Request.Core_MDF_Primary_Intel_Owner_Id__c!=NULL && 
+                    (claimRec.Request.Core_MDF_Primary_Intel_Owner_Id__r.IsActive || claimRec.Request.Core_MDF_Primary_Intel_Owner_Id__r.Partner_License_Reclaimed__c)){
                     progBudgetTypeKeySet.add(prog + claimRec.Request.Core_MDF_Budget_Type_nm__c);
                     userIdSet.add(claimRec.Request.Core_MDF_Intel_Activity_Owner_Id__c);
                     accIdSet.add(Id.valueOf(claimRec.Request.Core_MDF_Ultimate_Account_Id__c));

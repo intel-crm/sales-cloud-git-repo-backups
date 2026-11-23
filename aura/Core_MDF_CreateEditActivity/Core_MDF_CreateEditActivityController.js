@@ -1,15 +1,28 @@
 ({   
     // Function Called On Change of the date fields on the Form to construct campaign lookup filter
     createAdditionalfilter : function(component, event, helper) {
-        var startDate = event.getSource().get("v.value");
-	helper.validateStartDate(component, startDate);
+        // Log the start of the function execution
+    console.log("createAdditionalfilter function called");
 
+    // Log the initial state of the component
+    console.log("Initial Start Date:", component.get("v.newPFR.Core_MDF_Start_Date__c"));
+    console.log("Initial End Date:", component.get("v.newPFR.Core_MDF_End_Date__c"));
+    console.log("Record Type Developer Name:", component.get("v.recordtypeDeveloperName"));
+    console.log("Mode:", component.get("v.mode"));
+    console.log("Is Activity Creation On Campaign:", component.get("v.isActivityCreationOnCampaign"));
+
+    // Log the disabled state of the start date field
+    var isStartDateDisabled = component.get("v.pfrFieldEditablity.Core_MDF_Start_Date__c");
+    console.log("Is Start Date Field Disabled:", isStartDateDisabled);
+    var startDate = event.getSource().get("v.value");
+	helper.validateStartDate(component, startDate);
         //Variable Reimbursement Rate changes
         helper.resetHelper(component);
         var checkStartDate = component.get("v.newPFR.Core_MDF_Start_Date__c");
         var recordTypeDeveloperName = component.get("v.recordtypeDeveloperName");
         if(component.get("v.newPFR.Core_MDF_End_Date__c")== null){
         component.set("v.newPFR.Core_MDF_End_Date__c",checkStartDate);
+        console.log("End Date set to Start Date:", checkStartDate);
        }
         var newEndDate = component.get("v.newPFR.Core_MDF_End_Date__c");
         var recordTypeDeveloperName = component.get("v.recordtypeDeveloperName");
@@ -33,9 +46,9 @@
              helper.checkAvailAllocationAmt(component);
         }
         component.set("v.startDate", component.get("v.newPFR.Core_MDF_Start_Date__c"));
+        
     } ,
-    
-openOutcomeBasedCampaign: function(component, event, helper) {
+    openOutcomeBasedCampaign: function(component, event, helper) {
     var navService = component.find("navService");
     var communityUrl = component.get("v.externalper");
     if(communityUrl){
@@ -56,7 +69,6 @@ openOutcomeBasedCampaign: function(component, event, helper) {
     }
     navService.navigate(pageReference);
 },
-
     //Test code start
         
     //Function called for filtering country values---Rishabh
@@ -190,7 +202,8 @@ openOutcomeBasedCampaign: function(component, event, helper) {
         var actSpendingAmtDecimalVal;
         component.set("v.ErrorMsgForSpendingLimit", "");        
        if (actSpendingAmount<=0 ||actSpendingAmount=='' || actSpendingAmount==null  ){
-            if(recordTypeDeveloperName== $A.get("$Label.c.Core_MDF_IPA_RecordType") && !component.get("v.isPropBasedCampaign") ) {
+            if(recordTypeDeveloperName== $A.get("$Label.c.Core_MDF_IPA_RecordType") &&
+        !component.get("v.isPropBasedCampaign") ) {
                                                  
                 component.set("v.IPAIntelContri", ' ');
             }
@@ -251,24 +264,23 @@ openOutcomeBasedCampaign: function(component, event, helper) {
 	
     },
 
-  
-       calculateMaxIntelInvestment: function(component, event, helper) {
-        var rawMaximum = event.getSource().get("v.value");
-        var maximumIntelInvestment = parseFloat(rawMaximum);
-       
-        var maximumValueToStore=$A.util.isEmpty(rawMaximum)||isNaN(maximumIntelInvestment)?null:maximumIntelInvestment;
-component.set("v.maximumIntelInvestment",maximumValueToStore);
-component.set("v.newPFR.Core_MDF_Maximum_Intel_Investment_amt__c",maximumValueToStore);
-component.set("v.showErrorMsgForMaxIntelInvest", false);
-component.set("v.ErrorMsgForMaxIntelInvest", "");
+// Handles Maximum Intel Investment for IPA Proposal Based Activities
+calculateProposalMaxIntelInvestment: function(component, event, helper) {
+    if (!component.get("v.isPropBasedCampaign")) {
+        return;
+    }
 
-helper.calcIntelContribution(
-    component,
-    component.get("v.newPFR.RequestedAmount"),
-    component.get("v.ActReimbursementRt") ||
-        component.get("v.SelReimbursementRate")
-);
-    }, // Indu IPA Proposal
+    var maxIntel = parseFloat(event.getSource().get("v.value")) || 0;
+
+    component.set(
+        "v.newPFR.Core_MDF_Maximum_Intel_Investment_amt__c",
+        maxIntel
+    );
+    component.set("v.chkBdgtCpExcd", false);
+
+    helper.validateProposalMaximumIntelInvestment(component);
+    helper.getActivityAmount(component);
+},
     // Function called on click of Cancel or "X" on the layout 
     closeModal: function(component, event, helper) {
         if((component.get("v.recordtypeDeveloperName") == $A.get("$Label.c.Core_MDF_IPA_RecordType")) &&(component.get("v.isPropBasedCampaign") == true)){
@@ -309,6 +321,7 @@ helper.calcIntelContribution(
         cmpEvent.setParams({"detail" : actRec}); 
         cmpEvent.fire(); 
     },
+
     // Function called on click of Cancel or "X" on the layout
     closeModalClosedActivtiy: function (component, event, helper) {
         if(component.get("v.recordtypeDeveloperName") == $A.get("$Label.c.Core_MDF_IPA_RecordType")){
@@ -348,14 +361,32 @@ helper.calcIntelContribution(
             return validSoFar && inputCmp.get('v.validity').valid;
         }, true);
         var localmsg = "";
+        // Final validation for IPA Proposal Maximum Intel Investment
+if (component.get("v.isPropBasedCampaign") &&
+    !helper.validateProposalMaximumIntelInvestment(
+        component
+    )) {
+
+    validData = false;
+
+    var maximumIntelInvestmentError =
+        component.get(
+            "v.ErrorMsgForMaxIntelInvest"
+        );
+
+    if (helper.isNotBlank(
+            maximumIntelInvestmentError
+        ) &&
+        localmsg.indexOf(
+            maximumIntelInvestmentError
+        ) === -1) {
+
+        localmsg +=
+            maximumIntelInvestmentError +
+            '\n';
+    }
+}
 	var recordTypeDeveloperName = component.get("v.recordtypeDeveloperName");
-    helper.applyIPAProposalReimbursementRate(
-    component,
-    helper.isNotBlank(component.get("v.ActReimbursementRt"))
-        ? component.get("v.ActReimbursementRt")
-        : component.get("v.SelReimbursementRate"),
-    true
-); // Indu IPA Proposal
         if(component.get("v.recordtypeDeveloperName") == $A.get("$Label.c.Core_MDF_IPA_RecordType")
           && (component.get("v.mode") != 'clone' && !component.get("v.externalper") && component.get("v.selectedLookUpRecord.Core_MDF_Proposal_Based_Ind__c") != true) ){
             var Actreim=component.get("v.ActReimbursementRt");
@@ -412,7 +443,6 @@ helper.calcIntelContribution(
              validData = false; 
               localmsg = $A.get("$Label.c.Core_MDF_Empty_Field_Error");
         }
-        
         if(!helper.isNotBlank(component.get("v.SelReimbursementRate"))
             && (component.get("v.selectedLookUpRecord.Core_MDF_Proposal_Based_Ind__c") 
                  || component.get("v.newPFR.Core_MDF_Proposal_Based_Ind__c"))){
@@ -494,7 +524,19 @@ helper.calcIntelContribution(
             var selCategory = component.get("v.SelCategory");
             var selectedTactics = component.get("v.selectedTacticsOptions") || [];
             var isEventCategory = eventCategories.includes(selCategory);
-            if (component.get("v.externalper") && helper.isNotBlank(selCategory) && (isEventCategory) && dateDifference < $A.get("$Label.c.Core_MDF_60DaysMoreThan_50K") && component.get("v.IPAIntelContri") >= $A.get("$Label.c.Core_MDF_ManagerApprovalThreshold")) {
+            var intelContributionForThreshold =
+    component.get("v.isPropBasedCampaign")
+        ? Number(
+            component.get(
+                "v.newPFR.Core_MDF_Maximum_Intel_Investment_amt__c"
+            )
+          ) || 0
+        : Number(
+            component.get(
+                "v.IPAIntelContri"
+            )
+          ) || 0;
+            if (component.get("v.externalper") && helper.isNotBlank(selCategory) && (isEventCategory) && dateDifference < $A.get("$Label.c.Core_MDF_60DaysMoreThan_50K") && intelContributionForThreshold >= $A.get("$Label.c.Core_MDF_ManagerApprovalThreshold")) {
                 var alertMsg = $A.get("$Label.c.Core_MDF_Activity_Event_60_Days");
                 helper.displaySuccessErrorMsg(alertMsg, "Error!", "error");
                 validData = false;
@@ -559,6 +601,8 @@ helper.calcIntelContribution(
                 validData = false;
                 localmsg = localmsg + $A.get("$Label.c.Core_MDF_POPrequirementsError") + '\n';
         }
+        //IPA-Jegan
+        //var selectedTacticsOptions = component.get('v.selectedTacticsOptions');
         //When the user selects Outcome based values but the Campaign is Non-Outcome based
         if (recordTypeName == $A.get("$Label.c.Core_MDF_IPA_RecordType") && component.get("v.SelectedStatus") != $A.get("$Label.c.Core_MDF_Activity_Cancelled_Status") && !component.get('v.showActTactics')) {
             if(component.get('v.outcomeBasedOptInInd')){
@@ -599,7 +643,7 @@ helper.calcIntelContribution(
         //Outcome Based change - Throw error when field is empty and outcome-based is selected as activity category
         if(recordTypeName == $A.get("$Label.c.Core_MDF_IPA_RecordType") && $A.util.isEmpty(component.get("v.selectedTacticsOptions")) 
             && (component.get("v.SelCategory") == $A.get("$Label.c.Core_MDF_Outcome_Based_CatType"))){
-            if(!notValidActCatSelection){
+            if(!notValidActCatSelection){//IPA-Jegan
                 validData = false;
                 localmsg = localmsg + $A.get("$Label.c.Core_MDF_Activity_Tactics_Error") + '\n';
             }
@@ -704,67 +748,14 @@ helper.calcIntelContribution(
             localmsg = localmsg + $A.get("$Label.c.Core_MDF_PendingReviewError") + '\n';
             validData = false;
         }*/
-       
+        
         //Error for 'Budget Amount'
         var budgetAmount = component.find("BudgetAmount");
          var actSpendingAmount= component.get("v.BudgetLocal");
-            var isIPAProposalZeroInvestmentCancellation =
-    (component.get("v.ipaApproverPer")||component.get("v.ipaL2Approver")) &&
-    (component.get("v.selectedLookUpRecord.Core_MDF_Approval_Stage_nm__c")=='L1 Approval'||component.get("v.selectedLookUpRecord.Core_MDF_Approval_Stage_nm__c")=='L2 Regional Marketing'||component.get("v.selectedLookUpRecord.Core_MDF_Approval_Stage_nm__c")=='L2 Regional Sales') &&
-    component.get("v.newPFR.Core_MDF_Budget_Amount_Local_amt__c")==0;
-         var maximumChanged =
-    component.get("v.mode") != "edit" ||
-    parseFloat(
-        component.get(
-            "v.oldPFR.Core_MDF_Maximum_Intel_Investment_amt__c"
-        )
-    ) != parseFloat(component.get("v.maximumIntelInvestment"));
-
-var totalInvestmentChanged =
-    component.get("v.mode") != "edit" ||
-    parseFloat(component.get("v.oldPFR.RequestedAmount")) !=
-    parseFloat(component.get("v.newPFR.RequestedAmount"));
-             if (helper.isIPAProposalBased(component) &&
-    !isIPAProposalZeroInvestmentCancellation &&
-    (maximumChanged || totalInvestmentChanged)) {
-            var rawMaximumIntelInvestment =
-                component.get("v.maximumIntelInvestment");
-            var maximumIntelInvestment =
-                parseFloat(rawMaximumIntelInvestment);
-            var totalInvestment =
-                parseFloat(component.get("v.newPFR.RequestedAmount"));
-            var maximumHasDecimal =
-                !isNaN(maximumIntelInvestment) &&
-                maximumIntelInvestment !==
-                    Math.floor(maximumIntelInvestment);
-
-           if (maximumChanged &&
-    ($A.util.isEmpty(rawMaximumIntelInvestment) ||
-     isNaN(maximumIntelInvestment) ||
-     maximumIntelInvestment < 1 ||
-     maximumHasDecimal)) {
-    component.set("v.showErrorMsgForMaxIntelInvest", true);
-                component.set(
-                    "v.ErrorMsgForMaxIntelInvest",
-                    $A.get("$Label.c.Core_MDF_MaxIntelInvest_grtthanzero_Error")
-                );
-                localmsg = localmsg +
-                    $A.get("$Label.c.Core_MDF_MaxIntelInvest_grtthanzero_Error") +
-                    "\n";
-                validData = false;
-            } else if (isNaN(totalInvestment) ||
-                maximumIntelInvestment > totalInvestment) {
-                component.set("v.showErrorMsgForMaxIntelInvest", true);
-                component.set(
-                    "v.ErrorMsgForMaxIntelInvest",
-                    $A.get("$Label.c.Core_MDF_MaxIntelInvest_Exceed_Error")
-                );
-                localmsg = localmsg +
-                    $A.get("$Label.c.Core_MDF_MaxIntelInvest_Exceed_Error") +
-                    "\n";
-                validData = false;
-            }
-        }
+        
+      var budgetAmount = component.find("BudgetAmount");
+         var actSpendingAmount= component.get("v.BudgetLocal");
+     
        
      if((recordTypeDeveloperName == $A.get("$Label.c.Core_MDF_IPA_RecordType") &&(component.get("v.isPropBasedCampaign") == true)) ){
             if ((component.get("v.ipaApproverPer")||component.get("v.ipaL2Approver")) && (component.get("v.selectedLookUpRecord.Core_MDF_Approval_Stage_nm__c") == 'L1 Approval'||
@@ -812,7 +803,7 @@ var totalInvestmentChanged =
                 $A.util.isEmpty(component.get("v.newPFR.Core_MDF_Start_Date__c")) ||
                 $A.util.isEmpty(component.get("v.newPFR.Core_MDF_End_Date__c")) ||
                 ($A.util.isEmpty(component.get("v.SelCategory")) && component.get("v.pfrRequiredFields.Core_MDF_ActivityCategory__c")) || 
-                ($A.util.isEmpty(component.get("v.SelActivityType")) && component.get("v.pfrRequiredFields.Core_MDF_Activity_Types__c"))) { 
+                ($A.util.isEmpty(component.get("v.SelActivityType")) && component.get("v.pfrRequiredFields.Core_MDF_Activity_Types__c")) ){ 
                 var activityCat = component.find("activityCat");
                 if(activityCat !=null && activityCat != undefined)
                 {
@@ -1053,7 +1044,7 @@ var totalInvestmentChanged =
             }
                 
            }
-            
+           
            var segDisplayComp = component.find("displaySegment");        
             var spifAmount;
             if (segDisplayComp != null) {
@@ -1219,7 +1210,7 @@ var totalInvestmentChanged =
             component.set("v.newPFR.RecordTypeId",component.get("v.recordtype"));
             component.set("v.newPFR.Core_MDF_Other_Channel_Partner__c",component.get("v.SelOtherChannelPartner"));
             component.set("v.newPFR.Core_MDF_Channel_Partner_Led__c",component.get("v.CPLed"));
-            
+           
            
 	      //OPAL Past Dated Activity Submission process
             if(!component.get("v.externalper")){
@@ -1240,12 +1231,6 @@ var totalInvestmentChanged =
 
             component.set("v.newPFR.Core_MDF_Budget_Currency_cd__c",component.get("v.budgetCurrency"));
             component.set("v.newPFR.Core_MDF_Budget_Amount_Local_amt__c",component.get("v.BudgetLocal"));
-            if (helper.isIPAProposalBased(component)) {
-                component.set(
-                    "v.newPFR.Core_MDF_Maximum_Intel_Investment_amt__c",
-                    component.get("v.maximumIntelInvestment")
-                );
-            }
             component.set("v.newPFR.Core_MDF_Joint_Content_ind__c",component.get("v.JointContent"));
             //Country Multi Select           
             //[Tech] - [IPA] Hide Country/Region field in Activity form layout   
@@ -1503,6 +1488,7 @@ var totalInvestmentChanged =
              component.set("v.newPFR.Core_MDF_Is_Field_Modified__c",true); 
           }
             //Print Media, VR ,Upload File, Event Validation
+            console.log('ValidData-->'+validData);
             helper.checkExtraQuestionAndUploadFile(component);
             //ATF Flag
             var todDate = helper.getTodayDateLocalTime();
@@ -1548,39 +1534,11 @@ var totalInvestmentChanged =
     },
     
     // Function called on click of negative scenrio(Cancel or close) on the popup
-    hidePopup : function(component,event,helper){
+    hidePopup : function(component,event){
         
         var EventData = event.getParam("ButtonClick");
         var popupType = event.getParam("popupName");
         
-        // Resume the pending cancellation after budget-cap confirmation.
-        var cancelledStatus = $A.get("$Label.c.Core_MDF_Activity_Cancelled_Status");
-
-        if (
-            popupType === "budgetCap" &&
-            component.get("v.SelectedStatus") === cancelledStatus &&
-            component.get("v.newPFR.Core_MDF_Fund_Request_Status__c") === cancelledStatus &&
-            component.get("v.checkCloneAttribute") !== true
-        ) {
-            var popupWasOpen = component.get("v.ShowEventPopup");
-
-            component.set("v.ShowEventPopup", false);
-            component.set("v.PopupType", null);
-
-            if (EventData === true && popupWasOpen === true) {
-                component.set("v.chkBdgtCpExcd", true);
-                helper.saveHelperMethod(component, component.get("v.newPFR"));
-            } else if (EventData === false) {
-                component.set("v.chkBdgtCpExcd", false);
-                component.set(
-                    "v.newPFR.Core_MDF_Fund_Request_Status__c",
-                    component.get("v.oldPFR.Core_MDF_Fund_Request_Status__c")
-                );
-            }
-
-            return;
-        } //indu
-
         if(popupType == 'Event'){
             component.set("v.PopupButtonValue",EventData);
             component.set("v.PopupType",null);
@@ -1663,7 +1621,8 @@ var totalInvestmentChanged =
     	helper.partnerEffortMetricForActivityCreation(component);
         helper.getInitialDataFromServer(component, event);
         helper.onStartDateChange(component);
-	      var recordTypeDeveloperName;
+        component.set("v.newPFR.Core_MDF_Is_Outcome_Based_Ind__c", false);
+	    var recordTypeDeveloperName;
 	    
         //Ramapriya - on click of edit validate claim status for In-progress activities
         if(component.get("v.mode") == 'edit' && component.get("v.newPFR.Core_MDF_Fund_Request_Status__c") == 'In-Progress') 
@@ -1674,7 +1633,7 @@ var totalInvestmentChanged =
             
         if(component.get("v.mode") == 'edit'){
             helper.getFieldEditabilityMapping(component, event);              
-            }
+        }
 	
         if(component.get("v.apitoLabelConvert") == null){
             var fields = $A.get("$Label.c.Core_MDF_PFRPicklistField");
@@ -1898,6 +1857,7 @@ var totalInvestmentChanged =
                 {
                     component.set("v." + key,mapResults[key]);
                 }
+                
             }else{
                 var errorMessage = $A.get("$Label.c.Core_MDF_ApplicationErrorMessage");
                 helper.displaySuccessErrorMsg(errorMessage, "Error", "error");
@@ -1932,22 +1892,16 @@ var totalInvestmentChanged =
                 && component.get("v.mode") == ''
               	&& helper.isNotBlank(component.get("v.selectedLookUpRecord.Core_MDF_Budget_Type_txt__c"))){
                     //Akash-RR%
-                    /*if(component.get("v.selectedLookUpRecord.Core_MDF_CampOutcomeOpt_In_Ind__c")){
+                    if(component.get("v.selectedLookUpRecord.Core_MDF_CampOutcomeOpt_In_Ind__c")){
                         var reimburesmentRate = $A.get("$Label.c.Core_MDF_BudgetType_RRate100");
                         component.set("v.SelReimbursementRate", reimburesmentRate);
                         component.set("v.newPFR.Core_MDF_Reimbursement_Rate_txt__c", reimburesmentRate);
                     }
                     else{
-                        //Akash - TWC702-14284
                         var reimburesmentRate = component.get("v.selectedLookUpRecord.Core_MDF_Budget_Type_txt__c") == $A.get("$Label.c.Core_MDF_Proposal_I_Label") ? $A.get("$Label.c.Core_MDF_ReimburesementNum50") : component.get("v.selectedLookUpRecord.Core_MDF_Budget_Type_txt__c") == $A.get("$Label.c.Core_MDF_Proposal_II_Label") ? $A.get("$Label.c.Core_MDF_ReimburesementNum25") : '';
                         component.set("v.SelReimbursementRate", reimburesmentRate);
                         component.set("v.newPFR.Core_MDF_Reimbursement_Rate_txt__c", reimburesmentRate);
-                    }*/
-                    helper.applyIPAProposalReimbursementRate(
-    component,
-    $A.get("$Label.c.Core_MDF_BudgetType_RRate100"),
-    true
-); // Indu IPA proposal
+                    }
                     if(component.get("v.selectedLookUpRecord.Core_MDF_CampOutcomeOpt_In_Ind__c") && component.get("v.selectedLookUpRecord.Core_MDF_Proposal_Based_Ind__c") == true && component.get("v.newPFR.Core_MDF_Reimbursement_Rate_txt__c") == $A.get("$Label.c.Core_MDF_BudgetType_RRate100") && component.get("v.SelReimbursementRate") == $A.get("$Label.c.Core_MDF_BudgetType_RRate100")){
                         component.set("v.isPropBasedOutcomeCampaign",true);
                     }
@@ -2051,7 +2005,7 @@ var totalInvestmentChanged =
                 }
                
                }
-	       //Display Domain Type field only when Activity Category is Digital 2025
+               //Display Domain Type field only when Activity Category is Digital 2025
         let activityCategory = ($A.get("$Label.c.Core_MDF_2025_Domain_Type_ActivityCategory").split(';')).includes(component.get("v.SelCategory")) ? true : false
         if (helper.isNotBlank(activityCategory) && activityCategory){
             component.set("v.isDomainTypeVisible", true);
@@ -2131,6 +2085,39 @@ var totalInvestmentChanged =
              sObectEvent.fire(); 
             }
         }
+        /*console.log('component.get("v.mode") edit -> ',component.get("v.mode"));
+        if (component.get("v.mode") === 'edit') {
+            console.log('Enter in-progress edit if');
+            console.log('component.get("v.mode") edit if -> ',component.get("v.mode"));
+            var activityId = component.get("v.newPFR.Id");
+
+            var action = component.get("c.isInprogresPendingReviewEditRestricted");
+            action.setParams({ activityId: activityId });
+
+            action.setCallback(this, function(response) {
+                var state = response.getState();
+                if (state === "SUCCESS") {
+                    var isRestricted = response.getReturnValue();
+                    if (isRestricted) {
+                        var alertMsg = 'No In-progress edit allowed';
+                        helper.displaySuccessErrorMsg(alertMsg, "Error", "error");
+
+                       var sObjectEvent = $A.get("e.force:navigateToSObject");
+                        sObjectEvent.setParams({
+                            "recordId": activityId,
+                            "slideDevName": "detail"
+                        });
+                        sObjectEvent.fire();
+                    }
+                } else {
+                    console.error("Failed " + state);
+                }
+            });
+
+            $A.enqueueAction(action);
+        }*/
+    
+
         if(component.get("v.mode") == 'edit'){
 		if(((component.get("v.recordtypeDeveloperName") == $A.get("$Label.c.Core_MDF_IPA_RecordType") ||
 		component.get("v.newPFR.Core_MDF_Program__c") == ($A.get("$Label.c.Core_MDF_IPA_Program_Name"))) &&
@@ -2168,8 +2155,7 @@ var totalInvestmentChanged =
                 component.set("v.checkStatusAttribute",false);
             }
             if(!component.get("v.checkCloneAttribute")) {
-                component.set("v.mode", "edit");
-                helper.checkIPAProposalEditWarning(component);// Indu IPA Proposal    
+                component.set("v.mode", "edit");    
             }//not in QA
             var result;
             var actionLoadPfr = component.get("c.loadPFRRecord");
@@ -2212,12 +2198,15 @@ var totalInvestmentChanged =
                     }
                     //Make Attribution fields blank while cloning an activity
                     if (component.get("v.mode") == 'clone') {
-              	    	component.set("v.newPFR.Core_MDF_Attribution_Variance_Pos_txt__c", null);
-		    	component.set("v.newPFR.Core_MDF_Attribution_Variance_Neg_txt__c", null);
-		    	//POP and Attribution Requiremnents Field blank on clone
+              			component.set("v.newPFR.Core_MDF_Attribution_Variance_Pos_txt__c", null);
+			 			component.set("v.newPFR.Core_MDF_Attribution_Variance_Neg_txt__c", null);
+                        //POP and Attribution Requiremnents Field blank on clone
                         component.set("v.newPFR.Core_MDF_POP_Requirements_txt__c", null);
                         component.set("v.newPFR.Core_MDF_Attribution_Requirements_txt__c", null);
-			}
+					}
+                    if (component.get("v.mode") == 'clone' && (helper.isLatestCategory(component))){
+                        component.set("v.newPFR.Core_MDF_Activity_SubType_nm__c", null);
+                    }
                     
                     if(helper.isNotBlank(result.Core_MDF_NEX_Ind__c) && component.get("v.checkCloneAttribute") == true && component.get("v.selectedLookUpRecord.Core_MDF_Proposal_Based_Ind__c") == false ){
                         component.set("v.newPFR.Core_MDF_NEX_Ind__c",false);
@@ -2228,7 +2217,6 @@ var totalInvestmentChanged =
                     if(helper.isNotBlank(result.Core_MDF_Metrics_txt__c) && component.get("v.checkCloneAttribute") == true){
                         component.set("v.newPFR.Core_MDF_Metrics_txt__c",null);
                     }
-                    
 
                     if(helper.isNotBlank(result.Core_MDF_Tactics_nm__c) && component.get("v.checkCloneAttribute") == true && component.get("v.selectedLookUpRecord.Core_MDF_Proposal_Based_Ind__c") ){
                         component.set("v.selectedTacticsOptions", Array.isArray(result.Core_MDF_Tactics_nm__c) ? result.Core_MDF_Tactics_nm__c : result.Core_MDF_Tactics_nm__c.split(';'));
@@ -2239,10 +2227,6 @@ var totalInvestmentChanged =
                     }
                     component.set("v.BudgetLocal",result.Core_MDF_Budget_Amount_Local_amt__c);
                     component.set("v.budgetCurrency",result.Core_MDF_Budget_Currency_cd__c);
-                     component.set(
-                        "v.maximumIntelInvestment",
-                        result.Core_MDF_Maximum_Intel_Investment_amt__c
-                    ); // Indu IPA Proposal
                     if(helper.isNotBlank(result.Core_MDF_Intel_Activity_Owner_Id__c) && helper.isNotBlank(result.Core_MDF_Intel_Activity_Owner_Id__r.Name)){
                     component.set("v.existingIntelOwner",result.Core_MDF_Intel_Activity_Owner_Id__r.Name);
                     }
@@ -2274,10 +2258,22 @@ var totalInvestmentChanged =
                             }
                         }
                    
-                     if(result.Core_MDF_Activity_Reimbursement_Amt_nbr__c != null && result.Core_MDF_Activity_Reimbursement_Amt_nbr__c != undefined &&component.get("v.recordtypeDeveloperName") == $A.get("$Label.c.Core_MDF_IPA_RecordType")){
-                            component.set("v.IPAIntelContri",result.Core_MDF_Activity_Reimbursement_Amt_nbr__c);
-                          	component.set("v.newPFR.Core_MDF_Activity_Reimbursement_Amt_nbr__c",result.Core_MDF_Activity_Reimbursement_Amt_nbr__c);
-                        }
+                     if (!result.Core_MDF_Proposal_Based_Ind__c &&
+    result.Core_MDF_Activity_Reimbursement_Amt_nbr__c != null &&
+    result.Core_MDF_Activity_Reimbursement_Amt_nbr__c != undefined &&
+    component.get("v.recordtypeDeveloperName") ==
+        $A.get("$Label.c.Core_MDF_IPA_RecordType")) {
+
+    component.set(
+        "v.IPAIntelContri",
+        result.Core_MDF_Activity_Reimbursement_Amt_nbr__c
+    );
+
+    component.set(
+        "v.newPFR.Core_MDF_Activity_Reimbursement_Amt_nbr__c",
+        result.Core_MDF_Activity_Reimbursement_Amt_nbr__c
+    );
+}
                      
                       
                     if(result.Core_MDF_Budget_Type_nm__c != null && ((recordTypeDeveloperName == $A.get("$Label.c.Core_MDF_IPA_RecordType")) && !result.Core_MDF_Proposal_Based_Ind__c)){
@@ -2310,7 +2306,7 @@ var totalInvestmentChanged =
                     component.set("v.newPFR.Core_MDF_Other_Event_Name_txt__c", result.Core_MDF_Other_Event_Name_txt__c);
                     component.set("v.selActivityEventName", result.Core_MDF_Event_Name_nm__c);
                     component.set("v.SelCategory",result.Core_MDF_ActivityCategory__c);
-                    // PCT CHnages- After SelCategory is set
+                    // PCT CHnages ALekhya- After SelCategory is set
                     // Check if "Seller Incentive" is selected to show PCT Approval checkbox
                     if(component.get("v.mode") == 'edit' || component.get("v.mode") == 'clone'){
                         var selectedOptions = component.get("v.selectedTacticsOptions");
@@ -2352,6 +2348,7 @@ var totalInvestmentChanged =
                     if(!$A.util.isEmpty(component.get("v.selectedTacticsOptions")) && component.get("v.selectedTacticsOptions") != undefined){
                         component.set("v.isShowClassificationField", true);
                     } 
+                    
 		    //Read only "Strategic Marketing Fund" checkbox inheriting values from Campaign
                   
                       component.set("v.IsStrategicMarketingFundVisible", false);
@@ -2421,6 +2418,9 @@ var totalInvestmentChanged =
                      
                        component.set("v.SelOtherChannelPartner",result.Core_MDF_Other_Channel_Partner__c);
                      
+                    }
+                    if(component.get("v.checkCloneAttribute") == true){
+                        component.set("v.newPFR.Core_MDF_Internal_Tracking_txt__c", null);
                     }
                     component.set("v.selectedEventFormat", result.Core_MDF_Event_Format_Nm__c); // Event Format Data
                     if (component.get("v.checkCloneAttribute")) {
@@ -2617,6 +2617,7 @@ var totalInvestmentChanged =
                     if (component.get("v.ipaAcctMgr") && component.get("v.priceReviewersPer") && 
                     component.get("v.approvalStage") == "Price Reviewer" &&
                     component.get("v.newPFR.Core_MDF_Program__c") == $A.get("$Label.c.Core_MDF_IPA_Program_Name") &&
+                   /* component.get("v.newPFR.Core_MDF_Proposal_Based_Ind__c") == false &&*/
                     component.get("v.CurrentStatus") == "Pending Review") {
                     helper.setIPADualRoleEditability(component);
                     }
@@ -2624,12 +2625,6 @@ var totalInvestmentChanged =
                     //Ayush - added sanitize method for semgrep fix.
                     var mergedObject = Object.assign(newObject, helper.sanitizeResults(result));
                     component.set("v.oldPFR", mergedObject);
-                    helper.applyIPAProposalReimbursementRate(
-    component,
-    result.Core_MDF_Reimbursement_Rate__c ||
-        result.Core_MDF_Reimbursement_Rate_txt__c,
-    false
-); // Indu IPA Proposal
 //For IPA L2 Approver -To check for IUPGM 
                     var ipaL2Approver = component.get("v.ipaL2Approver");
                     var ipaApproverPer = component.get("v.ipaApproverPer");
@@ -2737,7 +2732,8 @@ var totalInvestmentChanged =
             component.set("v.checkStatusAttribute",false);
             //Render page for new record scenario
             //fetch the selected record type
-            // *** PCT Changes CHECKBOX CODE RIGHT HERE ***
+            // *** ADD THE PCT Changes Alekhya CHECKBOX CODE RIGHT HERE ***
+    // Initialize PCT checkbox as hidden for new records
     component.set("v.showPCTApprovalCheckbox", false);
     component.set("v.newPFR.Core_MDF_Skip_PCT_Approval_ind__c", false);
     // *** END OF ADDITION ***
@@ -2797,7 +2793,7 @@ var totalInvestmentChanged =
         component.set("v.selActivityEventName", null);
         component.set("v.newPFR.Core_MDF_Other_Event_Name_txt__c", null);
         component.set("v.isDomainTypeVisible", false);
-	component.set("v.SelDomainType",null);
+        component.set("v.SelDomainType",null);
         helper.resetHelper(component);
         helper.fetchActType(component);
         
@@ -2805,6 +2801,18 @@ var totalInvestmentChanged =
         if (($A.get("$Label.c.Core_MDF_2025_Domain_Type_ActivityCategory").split(';')).includes(component.get("v.SelCategory"))) {
             component.set("v.isDomainTypeVisible", true);
         }
+          // ADD THIS: PCT CHanges Alekhya Check if "Seller Incentive" is selected in category to show PCT Approval checkbox
+        // var showPCTCheckbox = component.get("v.SelCategory") === $A.get("$Label.c.Core_MDF_Seller_Incentive_Value");
+        // component.set("v.showPCTApprovalCheckbox", showPCTCheckbox);
+        
+        // //Reset the checkbox value when Seller Incentive is not selected
+        // if (!showPCTCheckbox) {
+        //     component.set("v.newPFR.Core_MDF_Skip_PCT_Approval_ind__c", false);
+        // }
+        // else if (component.get("v.newPFR.Core_MDF_Skip_PCT_Approval_ind__c") === undefined || 
+        //          component.get("v.newPFR.Core_MDF_Skip_PCT_Approval_ind__c") === null) {
+        //     component.set("v.newPFR.Core_MDF_Skip_PCT_Approval_ind__c", false);
+        // }
         //Outcome Based changes - Visibility of tactics multiselect based on category selected
         if(component.get("v.SelCategory") == $A.get("$Label.c.Core_MDF_Outcome_Based_CatType")){
             component.set("v.showActTactics",true); 
@@ -2816,12 +2824,12 @@ var totalInvestmentChanged =
         
        if(recordTypeDeveloperName == $A.get("$Label.c.Core_MDF_IPA_RecordType") && (component.get("v.selectedLookUpRecord.Core_MDF_Proposal_Based_Ind__c") == false || component.get("v.newPFR.Core_MDF_Proposal_Based_Ind__c") == false)){
                         
-                        helper.activityPicker(component, $A.get("$Label.c.Core_MDF_IPA_Account_Based"),true);
+                        helper.activityPicker(component, $A.get("$Label.c.Core_MDF_IPA_Account_Based"));
                     }
          else if(recordTypeDeveloperName == $A.get("$Label.c.Core_MDF_IPA_RecordType") && (component.get("v.selectedLookUpRecord.Core_MDF_Proposal_Based_Ind__c") == true || component.get("v.newPFR.Core_MDF_Proposal_Based_Ind__c") == true)){
                        
-                        helper.activityPicker(component, $A.get("$Label.c.Core_MDF_IPA_Proposal_Based"),true);
-                    } //Indu defect
+                        helper.activityPicker(component, $A.get("$Label.c.Core_MDF_IPA_Proposal_Based"));
+                    }
         
 	//onchange of activity category spinner is off
 	
@@ -2923,12 +2931,22 @@ var totalInvestmentChanged =
                 		component.set("v.newPFR.Core_MDF_POP_Requirements_txt__c", null);
                 		component.set("v.newPFR.Core_MDF_Attribution_Requirements_txt__c", null);
 			}
+        //Display Domain Type field only when Activity Category is Digital 2025
+        /*let activityCategory = ($A.get("$Label.c.Core_MDF_2025_Domain_Type_ActivityCategory").split(';')).includes(component.get("v.SelCategory")) ? true : false
+        if (helper.isNotBlank(activityCategory) && activityCategory){
+            component.set("v.isDomainTypeVisible", true);
+        } else {
+            component.set("v.isDomainTypeVisible", false);
+        }*/
+        
         helper.fetchEventFormat(component);
         //this to fetch the activity subtype on the basis of selected act type
         helper.fetchActSubTypeMulti(component);             
         helper.fetchEventName(component);
+        //helper.fetchDomainTypeOptions(component);
         helper.fetchActClassification(component);
         helper.resetHelper(component);
+       
         //to check whether to dispaly Segment SPIF Activity Questions section or not
         window.setTimeout(
             $A.getCallback(function() {   
@@ -2960,6 +2978,7 @@ var totalInvestmentChanged =
     // Skip PCT Approval-NEW METHOD - Handle PCT Approval checkbox changes
     handlePCTApprovalChange: function(component, event, helper) {
         var isChecked = event.getSource().get("v.checked");
+        // Ensure it's a proper boolean value
         component.set("v.newPFR.Core_MDF_Skip_PCT_Approval_ind__c", Boolean(isChecked));
     },
     //Outcome Based Changes - aura handler on change of tactics field
@@ -3013,7 +3032,20 @@ var totalInvestmentChanged =
                     tacticMetricsValues = lwcTacticMetricsComp.handleTacticChange({selectedTactics: component.get("v.selectedTacticsOptions")});
                     //isTacticMetricsModified = lwcTacticMetricsComp.isTacticMetricsModified();
                 }
-               
+               /*component.set("v.tacticMetricsValues",'');
+                if(tacticMetricsValues.length > 0){ 
+                      if (helper.isNotBlank(tacticMetricsValues)) {                     
+                          var tacticMetricsVal = JSON.parse(JSON.stringify(tacticMetricsValues));
+                          component.set("v.tacticMetricsValues", tacticMetricsVal);
+			              //component.set("v.isSPIFSecModified",isTacticMetricsModified);
+                          if(isTacticMetricsModified && component.get("v.mode") == 'edit'){ 
+                            component.set("v.newPFR.Core_MDF_Metrics_Modified_ind__c",true);
+                          }
+                          if(component.get("v.checkCloneAttribute")){
+                              component.set("v.tacticMetricsValues", tacticMetricsVal);
+                          }  
+                      }
+                }*/
             }
         // ADD THIS: PCT CHanges Check if "Seller Incentive" is selected in category to show PCT Approval checkbox
         var selectedOptions = component.get("v.selectedTacticsOptions");
@@ -3031,7 +3063,9 @@ var totalInvestmentChanged =
         }
             
         }
-        
+        /*else{
+            component.set("v.tacticMetricsValues", null);
+        }*/
     },
     //call to KPI component
     getKPIAttributes: function (component, event, helper) {
@@ -3122,6 +3156,8 @@ var totalInvestmentChanged =
     // Function called on the picklist fields
     resetPicklistValues:function(component, event, helper){
          helper.loadFieldsetFields(component);
+         console.log(component.get('v.selectedLookUpRecord'));
+         console.log('Selected Record: ' + JSON.stringify(component.get('v.selectedLookUpRecord')));
         if(component.get("v.apitoLabelConvert") == null){
             var fields = $A.get("$Label.c.Core_MDF_PFRPicklistField");
             var fieldlist = fields.split(",");
@@ -3151,22 +3187,16 @@ var totalInvestmentChanged =
            && component.get("v.mode") == '' 
            && helper.isNotBlank(component.get("v.selectedLookUpRecord.Core_MDF_Budget_Type_txt__c"))){
             //Akash-RR%
-            /*if(component.get("v.selectedLookUpRecord.Core_MDF_CampOutcomeOpt_In_Ind__c")){
+            if(component.get("v.selectedLookUpRecord.Core_MDF_CampOutcomeOpt_In_Ind__c")){
                 var reimburesmentRate = $A.get("$Label.c.Core_MDF_BudgetType_RRate100");
                 component.set("v.SelReimbursementRate", reimburesmentRate);
                 component.set("v.newPFR.Core_MDF_Reimbursement_Rate_txt__c", reimburesmentRate);
             }
             else{
-                //Akash - TWC702-14284
                 var reimburesmentRate = component.get("v.selectedLookUpRecord.Core_MDF_Budget_Type_txt__c") == $A.get("$Label.c.Core_MDF_Proposal_I_Label") ? $A.get("$Label.c.Core_MDF_ReimburesementNum50") : component.get("v.selectedLookUpRecord.Core_MDF_Budget_Type_txt__c") == $A.get("$Label.c.Core_MDF_Proposal_II_Label") ? $A.get("$Label.c.Core_MDF_ReimburesementNum25") : '';
                 component.set("v.SelReimbursementRate", reimburesmentRate);
                 component.set("v.newPFR.Core_MDF_Reimbursement_Rate_txt__c", reimburesmentRate);
-            }*/ 
-            helper.applyIPAProposalReimbursementRate(
-    component,
-    $A.get("$Label.c.Core_MDF_BudgetType_RRate100"),
-    true
-); // Indu IPA Proposal
+            }
             if(component.get("v.selectedLookUpRecord.Core_MDF_CampOutcomeOpt_In_Ind__c") && component.get("v.selectedLookUpRecord.Core_MDF_Proposal_Based_Ind__c") && component.get("v.newPFR.Core_MDF_Reimbursement_Rate_txt__c") == $A.get("$Label.c.Core_MDF_BudgetType_RRate100") && component.get("v.SelReimbursementRate") == $A.get("$Label.c.Core_MDF_BudgetType_RRate100")){
                 component.set("v.isPropBasedOutcomeCampaign",true);
             }
@@ -3533,7 +3563,7 @@ var totalInvestmentChanged =
              }
         //Ayush - Commented empty check and added null check as Ecosystem Partner value was not getting cleared even if we remove all the selected values on UI.     
         //if(!$A.util.isEmpty(selectedEcosystemPartnerOptions) && selectedEcosystemPartnerOptions != undefined){
-        if(selectedEcosystemPartnerOptions != undefined && selectedEcosystemPartnerOptions != null){
+        if(selectedEcosystemPartnerOptions != undefined && selectedEcosystemPartnerOptions != null){              
              component.set("v.newPFR.Core_MDF_EcosystemPartner_nm__c", selectedEcosystemPartnerOptions);
         }
     },
@@ -3633,7 +3663,7 @@ var totalInvestmentChanged =
             component.set("v.AllFocusAreaOptions", "[]"); 
         }else{
             component.set("v.BudgetLocal",component.get("v.newPFR.Core_MDF_Budget_Amount_Local_amt__c"));
-            }
+            } 
         var startDate = component.get("v.newPFR.Core_MDF_Start_Date__c");
         helper.validateStartDate(component, startDate);
     },
@@ -3911,35 +3941,14 @@ var totalInvestmentChanged =
         }
     },*/
 	calcContribution: function (component, event, helper) {
-       var reimbursementSource =
-    event && event.getSource
-        ? event.getSource()
-        : null;
-
-var isActivityRateInput =
-    reimbursementSource &&
-    reimbursementSource.get &&
-    reimbursementSource.get("v.name") === "ActivityReimbursementRate";
-
-var selectedReimbursementRate =
-    isActivityRateInput
-        ? component.get("v.ActReimbursementRt")
-        : component.get("v.SelReimbursementRate");
-
-helper.applyIPAProposalReimbursementRate(
-    component,
-    selectedReimbursementRate,
-    true
-); // Indu IPA Proposal
+        
         var ActReimbRt = component.get("v.ActReimbursementRt"); 
         ActReimbRt=ActReimbRt.trim();
-        //Akash - TWC702-14284
         var maxActReimbRate = parseFloat($A.get("$Label.c.Core_MDF_ReimburesementNum"));
         var maxActReimbRatezero = parseFloat($A.get("$Label.c.Core_MDF_ReimburesementNumzero"));
         // reset the error state 
         component.set("v.actReimbRateError", false);
         if(helper.isNotBlank(ActReimbRt)){
-            //Akash - TWC702-14284
             if(ActReimbRt<maxActReimbRatezero){
             
                 component.set("v.actReimbRateError",true);
@@ -3977,9 +3986,25 @@ helper.applyIPAProposalReimbursementRate(
                 helper.updateRRPickValues(component,component.get("v.ActReimbursementRt"));
             }
         }
+        if (component.get("v.isPropBasedCampaign")) {
 
-        
-        
+    /*
+     * Run the existing USD conversion process when a Local
+     * Total Investment value is present.
+     */
+    if (helper.isNotBlank(
+            component.get("v.BudgetLocal")
+        )) {
+
+        helper.budgetAmountcalculatefunction(
+            component
+        );
+    }
+
+    helper.getActivityAmount(component);
+
+    return;
+}
         var campReimbRt = component.get("v.selectedLookUpRecord.Core_MDF_ReimbursementRate_pct__c");
         var budgetAmnt = component.get("v.BudgetLocal");
         
@@ -3989,12 +4014,8 @@ helper.applyIPAProposalReimbursementRate(
             helper.budgetAmountcalculatefunction(component, budgetAmnt, ActReimbRt);
         } else if (campReimbRt != undefined && campReimbRt != null && campReimbRt != ''&& budgetAmnt != undefined && budgetAmnt != null && budgetAmnt != ''){
                     
-                var Contri = helper.getEffectiveIPAIntelInvestment(
-    component,
-    budgetAmnt * (parseFloat(campReimbRt) / 100),
-    component.get("v.newPFR")
-);// Indu IPA Proposal
-component.set("v.IPAIntelContri", Contri);
+                var Contri = budgetAmnt* (parseFloat(campReimbRt)/100); 
+                component.set("v.IPAIntelContri", Contri);
             helper.getActivityAmount(component);
             helper.budgetAmountcalculatefunction(component, budgetAmnt, ActReimbRt);
         }
@@ -4014,7 +4035,6 @@ component.set("v.IPAIntelContri", Contri);
         
     },
     addPercentage: function (component, event, helper) {
-        //Akash - TWC702-14284
         var maxActReimbRate = parseFloat($A.get("$Label.c.Core_MDF_ReimburesementNum"));
         var maxActReimbRatezero = parseFloat($A.get("$Label.c.Core_MDF_ReimburesementNumzero"));
         var newReimbRate = component.get("v.newPFR.Core_MDF_Reimbursement_Rate_txt__c");
@@ -4027,7 +4047,7 @@ component.set("v.IPAIntelContri", Contri);
 			else{
                 newReimbRate = newReimbRate.trim();
             }
-			//Akash - TWC702-14284
+			
 			if(removedPercent<maxActReimbRatezero){
 				component.set("v.actReimbRateError",true);
 				component.set("v.actReimbErrorMsg", $A.get("$Label.c.Core_MDF_Neg_Val_ActRR_Error" ));
@@ -4056,16 +4076,12 @@ component.set("v.IPAIntelContri", Contri);
                 //&& helper.isNotBlank(component.get("v.selectedLookUpRecord.Core_MDF_Budget_Type_txt__c"))
                 ){
                 if(helper.isNotBlank(component.get("v.selectedLookUpRecord.Core_MDF_Budget_Type_txt__c"))){
-                    //Akash - TWC702-14284
-                    /*var reimburesmentRate = component.get("v.selectedLookUpRecord.Core_MDF_Budget_Type_txt__c") == $A.get("$Label.c.Core_MDF_Proposal_I_Label") ? $A.get("$Label.c.Core_MDF_ReimburesementNum50") : component.get("v.selectedLookUpRecord.Core_MDF_Budget_Type_txt__c") == $A.get("$Label.c.Core_MDF_Proposal_II_Label") ? $A.get("$Label.c.Core_MDF_ReimburesementNum25") : '';*/
-                    var reimburesmentRate = $A.get("$Label.c.Core_MDF_BudgetType_RRate100");
+                    var reimburesmentRate = component.get("v.selectedLookUpRecord.Core_MDF_Budget_Type_txt__c") == $A.get("$Label.c.Core_MDF_Proposal_I_Label") ? $A.get("$Label.c.Core_MDF_ReimburesementNum50") : component.get("v.selectedLookUpRecord.Core_MDF_Budget_Type_txt__c") == $A.get("$Label.c.Core_MDF_Proposal_II_Label") ? $A.get("$Label.c.Core_MDF_ReimburesementNum25") : '';
                     component.set("v.SelReimbursementRate", reimburesmentRate);
                     component.set("v.newPFR.Core_MDF_Reimbursement_Rate_txt__c", reimburesmentRate);
                 }
                 else if(helper.isNotBlank(component.get("v.newPFR.Core_MDF_Budget_Type_nm__c"))){
-                    //Akash - TWC702-14284
-                    /*var reimburesmentRate = component.get("v.newPFR.Core_MDF_Budget_Type_nm__c") == $A.get("$Label.c.Core_MDF_Proposal_I_Label") ? $A.get("$Label.c.Core_MDF_ReimburesementNum50") : component.get("v.newPFR.Core_MDF_Budget_Type_nm__c") == $A.get("$Label.c.Core_MDF_Proposal_II_Label") ? $A.get("$Label.c.Core_MDF_ReimburesementNum25"): '';*/
-                    var reimburesmentRate = $A.get("$Label.c.Core_MDF_BudgetType_RRate100"); // Indu IPA proposal
+                    var reimburesmentRate = component.get("v.newPFR.Core_MDF_Budget_Type_nm__c") == $A.get("$Label.c.Core_MDF_Proposal_I_Label") ? $A.get("$Label.c.Core_MDF_ReimburesementNum50") : component.get("v.newPFR.Core_MDF_Budget_Type_nm__c") == $A.get("$Label.c.Core_MDF_Proposal_II_Label") ? $A.get("$Label.c.Core_MDF_ReimburesementNum25"): '';
                     component.set("v.SelReimbursementRate", reimburesmentRate);
                     component.set("v.newPFR.Core_MDF_Reimbursement_Rate_txt__c", reimburesmentRate);
                 }
@@ -4083,13 +4099,6 @@ component.set("v.IPAIntelContri", Contri);
         else if(component.get("v.ActReimbursementRt") == "" && component.get("v.selectedLookUpRecord.Core_MDF_Proposal_Based_Ind__c") == false){
 			component.set("v.newPFR.Core_MDF_Reimbursement_Rate_txt__c",component.get("v.ActReimbursementRt"));
 		}
-        helper.applyIPAProposalReimbursementRate(
-    component,
-    helper.isNotBlank(component.get("v.ActReimbursementRt"))
-        ? component.get("v.ActReimbursementRt")
-        : component.get("v.SelReimbursementRate"),
-    true
-); // Indu IPA proposal
     },
     removePercentage: function (component, event, helper) {
         

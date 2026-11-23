@@ -72,9 +72,6 @@
             <sourceValues>
                 <sourceValue>CHD – WiFi-Telco</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>CHD – WiFi</sourceValue>
-            </sourceValues>
             <value>BL Wi-Fi</value>
         </values>
     </buckets>
@@ -83,50 +80,34 @@
         <developerName>BucketField_2867399</developerName>
         <masterLabel>EscLevel (bucket)</masterLabel>
         <nullTreatment>n</nullTreatment>
-        <otherBucketLabel>Other</otherBucketLabel>
         <sourceColumnName>Case.Core_IPS_Escalated_Level__c</sourceColumnName>
-        <useOther>true</useOther>
+        <useOther>false</useOther>
         <values>
             <sourceValues>
-                <sourceValue>Level 1 / Front Line</sourceValue>
+                <sourceValue>Front Line Support</sourceValue>
             </sourceValues>
             <sourceValues>
-                <sourceValue>Consult Level 1 / Front Line</sourceValue>
+                <sourceValue>Consult with Front Line Support</sourceValue>
             </sourceValues>
             <sourceValues>
-                <sourceValue>Consult Level 2</sourceValue>
+                <sourceValue>Consult with Domain Expert</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>Consult Domain Expert</sourceValue>
-            </sourceValues>
-            <value>L1-FrontLine</value>
+            <value>1-FrontLine</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Escalate to Domain Expert</sourceValue>
+            </sourceValues>
             <sourceValues>
                 <sourceValue>Domain Expert</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>Level 2</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Domain Expert (Direct)</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Consult Level 3</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Consult Engineering</sourceValue>
-            </sourceValues>
-            <value>L2-Domain</value>
+            <value>2-Domain</value>
         </values>
         <values>
             <sourceValues>
-                <sourceValue>Level 3</sourceValue>
+                <sourceValue>Development/Engineering</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>Engineering</sourceValue>
-            </sourceValues>
-            <value>L3-Engineering</value>
+            <value>3-Dev/Engg</value>
         </values>
     </buckets>
     <buckets>
@@ -269,7 +250,7 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>CREATED_DATEONLY</sortColumn>
+    <sortColumn>CASE_NUMBER</sortColumn>
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>

@@ -62,7 +62,7 @@ Modification Log :
         List<Case> ListOfCases = TestUtilities.getListOfCases(10);
         for(Case CaseRec : ListOfCases){
             for(RecordType rt: rtList){
-                if(rt.Name=='CEP Case'){
+                if(rt.Name=='IPS Case Create'){
                     CaseRec.ContactId = ListOfContacts[0].id;
                     CaseRec.accountId = ListOfAccounts[0].Id;
                     CaseRec.RecordTypeId = rt.Id;
@@ -80,7 +80,7 @@ Modification Log :
         for(StandardActionRedirection__C stdAct:ListStdActions){
             stdAct.Name='22';
             stdAct.Action__c='New';
-            stdAct.Record_Type__c='CEP_Case';
+            stdAct.Record_Type__c='IPS_Case_Create';
             stdAct.URI__c='/Caseid/e?nooverride=1&retURL=';
         }
         System.runAs(ListOfUser.get(0)){
@@ -142,7 +142,7 @@ Modification Log :
         List<Case> ListOfCases = TestUtilities.getListOfCases(10);
         for(Case CaseRec : ListOfCases){
             for(RecordType rt: rtList){
-                if(rt.Name=='CEP Case'){
+                if(rt.Name=='IPS Case Create'){
                     CaseRec.ContactId = ListOfContacts[0].id;
                     CaseRec.accountId = ListOfAccounts[0].Id;
                     CaseRec.RecordTypeId = rt.Id;
@@ -160,7 +160,7 @@ Modification Log :
         for(StandardActionRedirection__C stdAct:ListStdActions){
             stdAct.Name='22';
             stdAct.Action__c='New';
-            stdAct.Record_Type__c='CEP_Case';
+            stdAct.Record_Type__c='IPS_Case_Create';
             stdAct.URI__c='/Caseid/e?nooverride=1&retURL=';
         }
         System.runAs(ListOfUser.get(0)){
@@ -181,6 +181,74 @@ Modification Log :
             ref=pagExt.redirect2();
         }
         System.assert(ref!=null, 'Empty Url');
+        Test.stopTest();
+    }
+    static testmethod void auditRectypeTest(){
+        getrecords();
+        // Get intelSupportOwner Id (User Id)
+        Id intelSupportOwner = ListOfUser.get(0).id;
+        // Create Account
+        List<Account> ListOfAccounts = TestUtilities.getListOfAccounts(1);
+        System.runAs(ListOfUser[0]){
+        	insert ListOfAccounts;
+        }
+        System.assert(ListOfAccounts[0].Id != null, 'Record not created');
+        // Create Contact
+        List<Contact> ListOfContacts = TestUtilities.getListOfContact(2);
+        for(Contact ContactRec : ListOfContacts){
+            ContactRec.Accountid = ListOfAccounts.get(0).Id;
+            ContactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
+        }
+        System.runAs(Listofuser[0]){
+        	insert ListOfContacts;
+        }
+        System.assert(ListOfContacts[0].Id != null, 'Record not created');
+        List<RecordType> rtList = [SELECT id,developerName,name FROM RecordType where SobjectType='Case'];
+        // Create Case
+          string  rtId= '';
+        List<Case> ListOfCases = TestUtilities.getListOfCases(10);
+        for(Case CaseRec : ListOfCases){
+            for(RecordType rt: rtList){
+                if(rt.Name=='Audit'){
+                    CaseRec.ContactId = ListOfContacts[0].id;
+                    CaseRec.accountId = ListOfAccounts[0].Id;
+                    CaseRec.RecordTypeId = rt.Id;
+                    rtId = rt.Id;
+                    CaseRec.OwnerId = intelSupportOwner;                         
+                }
+            }
+        }
+        System.runAs(ListOfUser.get(0)){
+            insert ListOfCases;
+        }
+        System.assert(ListOfCases[0].Id != null, 'Record not created');
+        Test.startTest();
+        List<StandardActionRedirection__C> ListStdActions = TestUtilities.getStandardActionRedirection(1);
+        for(StandardActionRedirection__C stdAct:ListStdActions){
+            stdAct.Name='22';
+            stdAct.Action__c='New';
+            stdAct.Record_Type__c='Core_MDF_Audit';
+            //stdAct.URI__c='/Caseid/e?nooverride=1&retURL=';
+        }
+        System.runAs(ListOfUser.get(0)){
+            insert ListStdActions;
+        }
+        ApexPages.StandardController Controller = new ApexPages.StandardController(ListOfCases.get(0));
+        PageReference pageRef = Page.Core_Case_New_LandingPage;
+        //pageRef.getParameters().put('RecordType',rtId);
+        pageRef.getParameters().put('cancelURL','abc');
+        pageRef.getParameters().put('ent','abc');
+        pageRef.getParameters().put('_CONFIRMATIONTOKEN','abc');
+        pageRef.getParameters().put('save_new_url','asasas');
+        //pageRef.getParameters().put('id', ListOfCases.get(0).id);
+        Test.setCurrentPage(pageRef);
+        Pagereference ref;
+        Core_Case_ActionController pagExt = new Core_Case_ActionController(Controller);
+        System.runAs(ListOfUser.get(0)){
+            ref=pagExt.redirect2();
+        }
+        System.assert(ref!=null, 'Empty Url');
+        //System.assert(ApexPages.hasMessages(ApexPages.severity.ERROR));
         Test.stopTest();
     }
 }

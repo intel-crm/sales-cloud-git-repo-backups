@@ -168,6 +168,20 @@
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <fields>
+        <fullName>Core_MDF_Count_Nbr__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Batch_Scheduler__r.Core_MDF_Completed_Item_Count_Nbr__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Error_Message__c</fullName>
         <label>Error Message</label>
         <required>false</required>
@@ -197,20 +211,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_Number_of_errors__c</fullName>
-        <description>Number of Errors/Failures from Async Apex Job</description>
-        <externalId>false</externalId>
-        <inlineHelpText>Number of Errors/Failures from Async Apex Job</inlineHelpText>
-        <label>Number of errors</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Scheduled_Time_Dt__c</fullName>
         <description>Time at which batch needs to be executed</description>
         <label>Scheduled Time</label>
@@ -218,16 +218,6 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Status_Detail__c</fullName>
-        <description>Status Detail from Async Apex job</description>
-        <inlineHelpText>Status Detail from Async Apex job</inlineHelpText>
-        <label>Status Detail</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>TextArea</type>
     </fields>
     <fields>
         <fullName>Core_MDF_Status_Txt__c</fullName>
@@ -362,7 +352,12 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Batch Scheduler Line Items</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts>
+        <excludedStandardButtons>New</excludedStandardButtons>
+        <searchResultsAdditionalFields>Core_MDF_Scheduled_Time_Dt__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_Status_Txt__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_Execution_Time_Dt__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

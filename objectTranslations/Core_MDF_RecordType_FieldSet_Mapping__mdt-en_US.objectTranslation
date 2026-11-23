@@ -285,6 +285,10 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Current Object --></label>
+        <name>Core_MDF_Current_Object__c</name>
+    </fields>
+    <fields>
         <label><!-- CurrentObject --></label>
         <name>Core_MDF_Current_Object_nm__c</name>
         <picklistValues>
@@ -315,6 +319,10 @@
             <masterLabel>edit</masterLabel>
             <translation><!-- edit --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FieldSet API Name --></label>
+        <name>Core_MDF_FieldSet_API_Name__c</name>
     </fields>
     <fields>
         <label><!-- Field Set API Name --></label>
@@ -586,6 +594,10 @@
     </fields>
     <fields>
         <label><!-- Object API Name --></label>
+        <name>Core_MDF_Object_API_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object API Name --></label>
         <name>Core_MDF_Object_API_Name_nm__c</name>
         <picklistValues>
             <masterLabel>Campaign</masterLabel>
@@ -599,6 +611,10 @@
             <masterLabel>Core_MDF_Custom_Picklist__c</masterLabel>
             <translation><!-- Core_MDF_Custom_Picklist__c --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- RecordType Developer Name --></label>
+        <name>Core_MDF_RecordType_Developer_Name__c</name>
     </fields>
     <fields>
         <label><!-- Record Type Developer Name --></label>

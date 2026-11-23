@@ -23,21 +23,14 @@ public class Core_RestAPI_CaseCommentV1_Handler_Test{
             for(Integer i =0;i<lstCase.size()/2;i++){
                 Case c = lstCase[i];
                c.OwnerId = commUser.Id;
-                //Added by Sowmya - Start - 27/09/2024 - TWC745-6800 - Fix test coverage for all failed classes 
-        		c.Core_IPS_Customer_Visible__c = true;
-                //Sowmya - End - 24/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
-        
             }
             for(Integer i =lstCase.size()/2;i<lstCase.size();i++){
                 Case c = lstCase[i];
                  c.OwnerId = adminUser.Id;
-                //Added by Sowmya - Start - 27/09/2024 - TWC745-6800 - Fix test coverage for all failed classes 
-        		 c.Core_IPS_Customer_Visible__c = true;
-                //Sowmya - End - 22/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
-        
             }
             insert lstCase;
             List<Core_IPS_Case_Comments__c> lstCaseComments = Core_RestAPI_TestUtilities.getCaseComments(10);
+            System.debug('lstCaseComments --->'+lstCaseComments);
             for(Integer i=0 ;i< lstCaseComments.size();i++){
                 Core_IPS_Case_Comments__c objComments = lstCaseComments[i];
                 objComments.Core_IPS_Case__c = lstCase[i].id;
@@ -47,6 +40,7 @@ public class Core_RestAPI_CaseCommentV1_Handler_Test{
             
             //System.runAs(IPSAgentUser){
             List<Core_IPS_Case_Comments__c> lstCaseCommentsIPSAgent= Core_RestAPI_TestUtilities.getCaseComments(10);
+            System.debug('lstCaseComments --->'+lstCaseCommentsIPSAgent);
             for(Integer i=0 ;i< lstCaseCommentsIPSAgent.size();i++){
                 Core_IPS_Case_Comments__c objComments = lstCaseCommentsIPSAgent[i];
                 objComments.Core_IPS_Comment_Author_Type__c = 'Agent';
@@ -57,19 +51,23 @@ public class Core_RestAPI_CaseCommentV1_Handler_Test{
             
             //System.runAs(SalesB2BUser){
             List<Core_IPS_Case_Comments__c> lstCaseCommentSales= Core_RestAPI_TestUtilities.getCaseComments(10);
+            System.debug('lstCaseCommentSales--->'+lstCaseCommentSales);
             for(Integer i=0 ;i< lstCaseCommentSales.size();i++){
                 Core_IPS_Case_Comments__c objComments = lstCaseCommentSales[i];
                 objComments.Core_IPS_Case__c = lstCase[i].id;
             }
             insert lstCaseCommentSales;
             //}
+            System.debug('commUser.Id--->'+commUser.Id);
             objCase = [Select CaseNumber FROM Case where OwnerId =: commUser.Id Limit 1];
+            System.debug('objCase.CaseNumber --->'+objCase.CaseNumber);
             RestRequest requestObj = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
             requestObj.resourcePath ='/services/apexrest/v1.0/cases/'+objCase.CaseNumber+'/comments';
             requestObj.requestUri ='/v1.0/cases/'+objCase.CaseNumber+'/comments';
             requestObj.httpMethod = 'GET';
             RestContext.request = requestObj;
-           
+            System.debug(' RestContext.request '+RestContext.request);
+            
             Core_RestAPI_CaseCommentV1_Handler handler = new Core_RestAPI_CaseCommentV1_Handler(System.now(), 'Core_RestAPI_CaseCommentsV1'); 
             Core_RestAPI_Response finalResponse = null;
             handler.response.successContent = null;
@@ -85,11 +83,13 @@ public class Core_RestAPI_CaseCommentV1_Handler_Test{
     @isTest public static void test_getComment_Positive(){
         commUser = [Select Name FROM User WHERE ContactId IN (Select Id FROM Contact)];
         objCase = [Select CaseNumber FROM Case where OwnerId =: commUser.Id Limit 1];
+        System.debug('objCase.CaseNumber --->'+objCase.CaseNumber);
         RestRequest requestObj = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
         requestObj.resourcePath ='/services/apexrest/v1.0/cases/'+objCase.CaseNumber+'/comments';
         requestObj.requestUri ='/v1.0/cases/'+objCase.CaseNumber+'/comments';
         requestObj.httpMethod = 'GET';
         RestContext.request = requestObj;
+        System.debug(' RestContext.request '+RestContext.request);
         
         Core_RestAPI_CaseCommentV1_Handler handler = new Core_RestAPI_CaseCommentV1_Handler(System.now(), 'Core_RestAPI_CaseCommentsV1'); 
         Core_RestAPI_Response response = handler.getCaseComments();
@@ -104,11 +104,13 @@ public class Core_RestAPI_CaseCommentV1_Handler_Test{
     @isTest public static void test_getComments_Negative(){
         commUser = [Select Name FROM User WHERE ContactId IN (Select Id FROM Contact)];
         objCase = [Select CaseNumber FROM Case where OwnerId =: commUser.Id Limit 1];
+        System.debug('objCase.CaseNumber --->'+objCase.CaseNumber);
         RestRequest requestObj = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
         requestObj.resourcePath ='/services/apexrest/v1.0/cases/'+objCase.CaseNumber+'/comments';
         requestObj.requestUri ='/v1.0/cases/'+objCase.CaseNumber+'/comments';
         requestObj.httpMethod = 'GET';
         RestContext.request = requestObj;
+        System.debug(' RestContext.request '+RestContext.request);
         Core_RestAPI_CaseCommentV1_Handler handler = new Core_RestAPI_CaseCommentV1_Handler(System.now(), 'Core_RestAPI_CaseCommentsV1'); 
         Core_RestAPI_Response finalResponse = null;
         handler.response.successContent = null;
@@ -128,11 +130,13 @@ public class Core_RestAPI_CaseCommentV1_Handler_Test{
     @isTest public static void test_doValidations_Positive(){
         commUser = [Select Name FROM User WHERE ContactId IN (Select Id FROM Contact)];
         objCase = [Select CaseNumber FROM Case where OwnerId =: commUser.Id Limit 1];
+        System.debug('objCase.CaseNumber --->'+objCase.CaseNumber);
         RestRequest requestObj = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
         requestObj.resourcePath ='/services/apexrest/v1.0/cases/'+objCase.CaseNumber+'/comments';
         requestObj.requestUri ='/v1.0/cases/'+objCase.CaseNumber+'/comments';
         requestObj.httpMethod = 'GET';
         RestContext.request = requestObj;
+        System.debug(' RestContext.request '+RestContext.request);
         Core_RestAPI_CaseCommentV1_Handler handler = new Core_RestAPI_CaseCommentV1_Handler(System.now(), 'Core_RestAPI_CaseCommentsV1'); 
         handler.doValidations();
     }
@@ -146,11 +150,13 @@ public class Core_RestAPI_CaseCommentV1_Handler_Test{
         Boolean exceptionThrown = false;
         try{
             objCase = [Select CaseNumber FROM Case where OwnerId =: commUser.Id Limit 1];
+            System.debug('objCase.CaseNumber --->'+objCase.CaseNumber);
             RestRequest requestObj = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
             requestObj.resourcePath ='/services/apexrest/v1.0/cases/'+objCase.CaseNumber+'/comments';
             requestObj.requestUri ='/v1.0/cases/'+objCase.CaseNumber+'/comments';
             requestObj.httpMethod = 'GET';
             RestContext.request = requestObj;
+            System.debug(' RestContext.request '+RestContext.request);
             Core_RestAPI_CaseCommentV1_Handler handler = new Core_RestAPI_CaseCommentV1_Handler(System.now(), 'Core_RestAPI_CaseCommentsV1'); 
             handler.doValidations();
         }catch(Exception e){

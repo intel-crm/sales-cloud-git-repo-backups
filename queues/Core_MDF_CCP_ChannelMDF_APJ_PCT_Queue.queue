@@ -3,6 +3,11 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <name>CCP Channel MDF APJ PCT Queue</name>
+    <queueMembers>
+        <users>
+            <user>apjpctreviewer@intel.com.crm</user>
+        </users>
+    </queueMembers>
     <queueSobject>
         <sobjectType>PartnerFundRequest</sobjectType>
     </queueSobject>

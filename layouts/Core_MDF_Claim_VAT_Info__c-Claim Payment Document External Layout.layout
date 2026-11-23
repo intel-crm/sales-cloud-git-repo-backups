@@ -3,6 +3,7 @@
     <excludeButtons>ChangeRecordType</excludeButtons>
     <excludeButtons>Clone</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
+    <excludeButtons>GenerateKnowledge</excludeButtons>
     <excludeButtons>IsotopeSubscription</excludeButtons>
     <excludeButtons>PrintableView</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
@@ -31,6 +32,10 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_MDF_Vat_Inv_Guide_Link__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_VAT_Comments_txt__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

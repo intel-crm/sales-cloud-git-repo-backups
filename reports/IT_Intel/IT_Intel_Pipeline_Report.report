@@ -98,6 +98,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>FK_OPP_CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_PREVY</interval>
+        <interval>INTERVAL_PREVFY</interval>
     </timeFrameFilter>
 </Report>

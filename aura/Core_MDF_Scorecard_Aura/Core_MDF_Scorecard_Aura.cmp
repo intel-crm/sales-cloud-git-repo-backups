@@ -16,60 +16,60 @@
         </aura:if>
  	<!--Audit end-->
         <aura:if isTrue="{!v.editFlag}">
-        <div class="slds-p-around_medium">
-            <lightning:button class="slds-float_right"
-                              value = "{!v.scoreCardId}"
-                              variant="neutral"
-                              label="Edit"
-                              title="Edit"
-                              onclick="{!c.callEditScorecard}"/>                                    
-        </div>  
+            <div class="slds-p-around_medium">
+                <lightning:button class="slds-float_right"
+                                  value = "{!v.scoreCardId}"
+                                  variant="neutral"
+                                  label="Edit"
+                                  title="Edit"
+                                  onclick="{!c.callEditScorecard}"/>                                    
+            </div>  
         </aura:if>
         <force:recordView recordId="{!v.scoreCardId}"/>
     </div>
     <div class="slds-p-top_medium slds-grid">
-            <div class="slds-col slds-size_3-of-3">
-                <table class="slds-p-around_small">
-                    <tr class="borderedTable">
-                        <th colspan="2" class="borderedTable" style="text-align:center;white-space:pre-line;background-color: #f3f3f3;padding-left: 4rem;"><b>{!$Label.c.Core_MDF_ClaimScoreExplanation}</b></th>
-                    </tr>
-                    <tr class="borderedTable">
-                        <th class="borderedTable columnPadding" style="text-align:center;white-space:pre-line;background-color: #f3f3f3"><b>{!$Label.c.Core_MDF_Score}</b></th>
-                        <th class="borderedTable" style="text-align:center;white-space:pre-line;background-color: #f3f3f3;;padding-left:0rem"><b>{!$Label.c.Core_MDF_Explanation}</b></th>
-                    </tr>
-                    <tr class="borderedTable">
-                        <td style="text-align:center" class="borderedTable">8</td>
-                        <td class="borderedTable">
+        <div class="slds-col slds-size_3-of-3">
+            <table class="slds-p-around_small">
+                <tr class="borderedTable">
+                    <th colspan="2" class="borderedTable" style="text-align:center;white-space:pre-line;background-color: #f3f3f3;padding-left: 4rem;"><b>{!$Label.c.Core_MDF_ClaimScoreExplanation}</b></th>
+                </tr>
+                <tr class="borderedTable">
+                    <th class="borderedTable columnPadding" style="text-align:center;white-space:pre-line;background-color: #f3f3f3"><b>{!$Label.c.Core_MDF_Score}</b></th>
+                    <th class="borderedTable" style="text-align:center;white-space:pre-line;background-color: #f3f3f3;;padding-left:0rem"><b>{!$Label.c.Core_MDF_Explanation}</b></th>
+                </tr>
+                <tr class="borderedTable">
+                    <td style="text-align:center" class="borderedTable">8</td>
+                    <td class="borderedTable">
                         <b><u>{!$Label.c.Core_MDF_Case_Score}:</u></b>&nbsp;{!$Label.c.Core_MDF_Scorecard_Explanation1_PV8}&nbsp;<b>{!$Label.c.Core_MDF_Scorecard_Explanation_Bold_PV8}</b>&nbsp;{!$Label.c.Core_MDF_Scorecard_Explanation2_PV8}.</td>
-                    </tr>
-                    <tr class="borderedTable">
-                        <td style="text-align:center" class="borderedTable">4</td>
-                        <td class="borderedTable">
+                </tr>
+                <tr class="borderedTable">
+                    <td style="text-align:center" class="borderedTable">4</td>
+                    <td class="borderedTable">
                         <b><u>{!$Label.c.Core_MDF_Case_Score}:</u></b>&nbsp;{!$Label.c.Core_MDF_Scorecard_Explanation1_PV4}&nbsp;<b>{!$Label.c.Core_MDF_Scorecard_Explanation_Bold_PV1}</b>&nbsp;{!$Label.c.Core_MDF_Scorecard_Explanation2_PV4}</td>
-                    </tr>
-                    <tr class="borderedTable">
-                        <td style="text-align:center" class="borderedTable">2</td>
-                        <td class="borderedTable">
+                </tr>
+                <tr class="borderedTable">
+                    <td style="text-align:center" class="borderedTable">2</td>
+                    <td class="borderedTable">
                         <b><u>{!$Label.c.Core_MDF_Case_Score}:</u></b>&nbsp;{!$Label.c.Core_MDF_Scorecard_Explanation1_PV2}&nbsp;<b>{!$Label.c.Core_MDF_Scorecard_Explanation_Bold_PV1}</b>&nbsp;{!$Label.c.Core_MDF_Scorecard_Explanation3_PV1}</td>
-                    </tr>
-                    <tr class="borderedTable">
-                        <td style="text-align:center" class="borderedTable">1</td>
-                        <td class="borderedTable">
+                </tr>
+                <tr class="borderedTable">
+                    <td style="text-align:center" class="borderedTable">1</td>
+                    <td class="borderedTable">
                         <b><u>{!$Label.c.Core_MDF_Case_Score}:</u></b>&nbsp;{!$Label.c.Core_MDF_Scorecard_Explanation1_PV1}&nbsp;<b>{!$Label.c.Core_MDF_Scorecard_Explanation_Bold_PV1}</b>&nbsp;{!$Label.c.Core_MDF_Scorecard_Explanation4_PV1}</td>
-                    </tr>
-                    <tr class="borderedTable">
-                        <td style="text-align:center" class="borderedTable">0</td>
-                        <td class="borderedTable">
+                </tr>
+                <tr class="borderedTable">
+                    <td style="text-align:center" class="borderedTable">0</td>
+                    <td class="borderedTable">
                         <b><u>{!$Label.c.Core_MDF_Case_Score}:</u></b>&nbsp;{!$Label.c.Core_MDF_Scorecard_Explanation1_PV0}&nbsp;<b>{!$Label.c.Core_MDF_Scorecard_Explanation_Bold_PV0}</b>&nbsp;{!$Label.c.Core_MDF_Scorecard_Explanation3_PV0}</td>
-                    </tr>
-		    <tr class="borderedTable">
+                </tr>
+                <tr class="borderedTable">
                     <td style="text-align:center" class="borderedTable">{!$Label.c.Core_MDF_Manual_Recovery}</td>
                     <td class="borderedTable">
                         {!$Label.c.Core_MDF_Manual_Recovery_New}&nbsp;-&nbsp;<b>{!$Label.c.Core_MDF_Scorecard_Recovery_Exp_Bold}</b>
                     </td>
-                    </tr>
-                </table>
-            </div>
+                </tr>
+            </table>
         </div>
-
+    </div>
+    
 </aura:component>

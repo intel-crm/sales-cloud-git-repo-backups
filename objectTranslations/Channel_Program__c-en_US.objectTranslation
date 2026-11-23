@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Channel Program</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Channel Program</value>
+    </caseValues>
+    <fields>
+        <label><!-- Ignore Allocation with External User --></label>
+        <name>Ignore_Allocation_with_External_User__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

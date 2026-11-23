@@ -158,8 +158,8 @@ public class Core_MDF_PFC_ThirdPartyPOP_TestClass {
         System.runAs(sysAdmUsr){
         insert arpBank;
         }
-        
-        Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(arpEMEAFrance.Id,arpBank.Id,true);
+        // Highlight: Unused Local Variable
+       // Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(arpEMEAFrance.Id,arpBank.Id,true);
 
         List<Campaign> campList = new List<Campaign>();
         Campaign arpCamp = Core_MDF_CCP_TestDataUtility.createCampaign('ARP Campaign','Gaming','Intel® Core™ i7+ Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today().addDays(-5), System.today().addDays(+5), 10000, 'Consumer Chromebook', arpCCFVC.Id, '2-in-1', false);
@@ -303,7 +303,8 @@ public class Core_MDF_PFC_ThirdPartyPOP_TestClass {
         
         Core_MDF_PFC_ThirdPartyPOP.wrapperThirdPartyPOP obj = new Core_MDF_PFC_ThirdPartyPOP.wrapperThirdPartyPOP();
         PartnerFundRequest arpFranceActivity = [Select id,Core_MDF_Reimbursement_Rate_pct__c,Core_MDF_Reimbursement_Rate_txt__c, Core_MDF_Start_Date__c from PartnerFundRequest where Title = 'France Activity'];
-        PartnerFundRequest arpFranceActivityLegacy = [Select id,Core_MDF_Reimbursement_Rate_pct__c,Core_MDF_Reimbursement_Rate_txt__c, Core_MDF_Start_Date__c from PartnerFundRequest where Title = 'France Activity Legacy'];
+        // Highlight: Unused Local Variable
+       // PartnerFundRequest arpFranceActivityLegacy = [Select id,Core_MDF_Reimbursement_Rate_pct__c,Core_MDF_Reimbursement_Rate_txt__c, Core_MDF_Start_Date__c from PartnerFundRequest where Title = 'France Activity Legacy'];
         Core_MDF_Bank__c arpBank = [Select id from Core_MDF_Bank__c WHERE Name = 'Test' limit 1];
         arpBank.Core_MDF_Bank_Status__c = 'Active';
         arpBank.Core_MDF_ESD_Hold_Indicator__c=false;

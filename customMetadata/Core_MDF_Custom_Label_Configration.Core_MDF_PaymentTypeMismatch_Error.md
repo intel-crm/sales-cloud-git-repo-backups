@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>Core_MDF_Value2_Txt__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">Payment Type should be same as its Parent Account. Use &quot;Payment Type Node Level&quot; field if the node&apos;s payment type is different from its Parent Account or Update the Virtual Corps Payment type if the entire hierarchy&apos;s payment type is to be updated.</value>
     </values>
     <values>
         <field>Core_MDF_Value3_Txt__c</field>
@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">Payment Type should be same as its Parent Account. Use &quot;Payment Type Node Level&quot; field if the node&apos;s payment type is different from its Parent Account or Update the Virtual Corps Payment type if the entire hierarchy&apos;s payment type is to be updated.</value>
+        <value xsi:type="xsd:string">Payment Type cannot be empty for the selected Program.</value>
     </values>
 </CustomMetadata>

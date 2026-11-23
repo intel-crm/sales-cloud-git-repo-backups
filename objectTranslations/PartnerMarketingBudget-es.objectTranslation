@@ -37,6 +37,10 @@
         <name>partnermarketingbudget_name</name>
     </fields>
     <fields>
+        <label><!-- Budget External Id --></label>
+        <name>Budget_External_Id__c</name>
+    </fields>
+    <fields>
         <label><!-- Account (Company) --></label>
         <name>Core_MDF_AccountCompany__c</name>
     </fields>
@@ -93,6 +97,11 @@
     <fields>
         <label>Comentarios de presupuesto</label>
         <name>Core_MDF_Budget_Comments__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field represents percentage of budget consumed by claims submitted for the budget period that are in either Payment Due, Pending Payment or Paid Status. --></help>
+        <label><!-- Budget Consumption % --></label>
+        <name>Core_MDF_Budget_Consumption__c</name>
     </fields>
     <fields>
         <label><!-- Budget Identifier --></label>
@@ -161,6 +170,10 @@
         <picklistValues>
             <masterLabel>Co-Engineering</masterLabel>
             <translation><!-- Co-Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-Investment</masterLabel>
+            <translation><!-- Co-Investment --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>DCF 1.0</masterLabel>
@@ -296,6 +309,16 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Marketing Approval required for funding Co-Selling Tactic(s) --></help>
+        <label><!-- Co-Marketing --></label>
+        <name>Core_MDF_Co_Marketing_ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Field Sales Approval required for funding Co-Marketing Tactic(s) --></help>
+        <label><!-- Co-Selling --></label>
+        <name>Core_MDF_Co_Selling_ind__c</name>
+    </fields>
+    <fields>
         <label><!-- Created By --></label>
         <name>Core_MDF_CreatedBy_Nm__c</name>
     </fields>
@@ -303,6 +326,34 @@
         <help><!-- Enter the amount the budget should be reduced by --></help>
         <label><!-- Budget Reduction Amount --></label>
         <name>Core_MDF_Decrease_Budget_Amount_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_MDF_Geo__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Intermediate Budget --></label>
+        <name>Core_MDF_Intermediate_Budget__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsApprovalProcessBypassed --></label>
+        <name>Core_MDF_IsApprovalProcessBypassed_Ind__c</name>
     </fields>
     <fields>
         <label><!-- Last Modified By --></label>
@@ -332,12 +383,33 @@
         <relationshipLabel><!-- Partner Marketing Budgets --></relationshipLabel>
     </fields>
     <fields>
+        <help><!-- Revenue Segment --></help>
+        <label><!-- Revenue Segment --></label>
+        <name>Core_MDF_Revenue_Segment_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub Region --></label>
+        <name>Core_MDF_Sub_Geo__c</name>
+        <picklistValues>
+            <masterLabel>LAR</masterLabel>
+            <translation><!-- LAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAR</masterLabel>
+            <translation><!-- NAR --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Ultimate Account Id --></label>
         <name>Core_MDF_Ultimate_Account_Id__c</name>
     </fields>
     <fields>
         <label><!-- Budget Reference Number --></label>
         <name>Core_MDF_budget_ref_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Test validation Rule --></label>
+        <name>Test_validation_Rule__c</name>
     </fields>
     <gender>Masculine</gender>
     <recordTypes>
@@ -351,9 +423,19 @@
         <name>Core_MDF_Channel_MDF_Proposal_Based</name>
     </recordTypes>
     <recordTypes>
+        <description><!-- This record type is used for OPAL program --></description>
+        <label><!-- CoMarketing OPAL --></label>
+        <name>Core_MDF_CoMarketing_OPAL</name>
+    </recordTypes>
+    <recordTypes>
         <description><!-- Record Type for Co-GTM --></description>
         <label><!-- Co-GTM --></label>
         <name>Core_MDF_Co_GTM</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type for Co-Inv --></description>
+        <label><!-- Co-Inv --></label>
+        <name>Core_MDF_Co_Inv</name>
     </recordTypes>
     <recordTypes>
         <description><!-- It will be used for Co-Marketing purposes. --></description>
@@ -381,6 +463,14 @@
         <name>Core_MDF_Retail_Marketing_Funds</name>
     </recordTypes>
     <validationRules>
+        <errorMessage><!-- Budget cannot be created because associated Account Node is inactive --></errorMessage>
+        <name>Check_Account_InActive</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter an amount that&apos;s greater than or equal to the allocations within this budget. --></errorMessage>
+        <name>Core_MDF_Amt_Not_Less_Than_Saved_CoInv</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Budget Type is mandatory for the selected program --></errorMessage>
         <name>Core_MDF_BudgetTypMandatoryForOEM</name>
     </validationRules>
@@ -397,8 +487,16 @@
         <name>Core_MDF_Budget_Decrease_Amount_Create</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- You are not authorized to create the Budgets for the Selected Budget Type --></errorMessage>
+        <name>Core_MDF_Budget_Loader_OR_Approver</name>
+    </validationRules>
+    <validationRules>
         <errorMessage>El Programa no es el mismo que el Programa de canal del Socio del presupuesto Por favor, actualice.</errorMessage>
         <name>Core_MDF_Budget_Partner_and_Program_rule</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Budget duration cannot be more than 5 quarters --></errorMessage>
+        <name>Core_MDF_Budget_Retail_Quarter</name>
     </validationRules>
     <validationRules>
         <errorMessage>La Fecha de finalización debe ser posterior a la Fecha de inicio.</errorMessage>
@@ -417,7 +515,7 @@
         <name>Core_MDF_Negative_Decrease_Amount</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Maximum Approved Budget cannot be negative. --></errorMessage>
+        <errorMessage><!-- Max Approved Budget cannot be negative. --></errorMessage>
         <name>Core_MDF_Negative_Max_Approved_Amount</name>
     </validationRules>
     <validationRules>
@@ -437,6 +535,10 @@
         <name>Core_MDF_Program_Cannot_Be_Edited</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Cannot create budget for the selected Program/Budget Type --></errorMessage>
+        <name>Core_MDF_RestrictLegacyBudgetCreation</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- You are not authorized to create the record for the selected Account --></errorMessage>
         <name>Core_MDF_Restrict_AccountSelection</name>
     </validationRules>
@@ -447,6 +549,14 @@
     <validationRules>
         <errorMessage><!-- Budget Type is not applicable for selected program --></errorMessage>
         <name>Core_MDF_ValidateBudgetTypForCCPProgram</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Invalid Checkbox Selection: For &apos;Co-marketing&apos;, check only &apos;Marketing Approval of Co-Marketing&apos;. For &apos;Co-Selling&apos;, check only &apos;Field Sales Approval of Co-Selling&apos;. Both checkboxes cannot be selected simultaneously. --></errorMessage>
+        <name>Core_MDF_Validate_Budget_Class_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Exception --></errorMessage>
+        <name>Test_validation_Rule</name>
     </validationRules>
     <webLinks>
         <label><!-- Core_MDF_Export_List_View --></label>

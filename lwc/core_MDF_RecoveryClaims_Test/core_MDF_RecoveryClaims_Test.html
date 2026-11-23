@@ -1,0 +1,37 @@
+<template>
+
+    <lightning-card title='Claims to Recover From (PAF/PD)'>
+      
+        <div style="padding-bottom:10px;">
+            <!-- <p style="margin-left: 750px;">Total Recovery Amount:<p class="slds-text-color_success" style="">121.12</p></p> -->
+        </div>
+      
+    <div style="height:500px;width:100%">
+        <lightning-datatable selected-rows={preSelectedRows} data={data} columns={columns} key-field="Id"
+            onrowselection={getSelectedRec} oncellchange={checkCellValue} draft-values={draftValues} errors={errors}
+            onsave={handleSave} suppress-bottom-bar show-row-number-column>
+        </lightning-datatable>
+    </div>
+
+
+               <!--Program selected: {progValue}, Account selected : {acctValue}, Quarter selected : {quarter}-->
+               
+               
+           
+<!--pagination-->
+<!--<div class="slds-p-vertical_xx-small"></div>
+                <lightning-layout horizontal-align="space">
+                    <lightning-layout-item flexibility="auto">
+                        <lightning-button label="Previous" icon-name="utility:chevronleft" onclick={previousHandler}>
+                        </lightning-button>
+                    </lightning-layout-item>
+                    <lightning-layout-item flexibility="auto">
+                        Page {page} of {totalPage}
+                    </lightning-layout-item>
+                    <lightning-layout-item flexibility="auto">
+                        <lightning-button label="Next" icon-name="utility:chevronright" icon-position="right"
+                            onclick={nextHandler}></lightning-button>
+                    </lightning-layout-item>
+                </lightning-layout>-->
+            </lightning-card>
+</template>

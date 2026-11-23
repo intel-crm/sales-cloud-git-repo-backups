@@ -48,12 +48,6 @@
                     <label>Client Specialties MDF</label>
                 </value>
                 <value>
-                    <fullName>Datacenter Market Accelerate</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Datacenter Market Accelerate</label>
-                </value>
-                <value>
                     <fullName>Data Center Market Accelerate</fullName>
                     <default>false</default>
                     <label>Data Center Market Accelerate</label>
@@ -143,7 +137,6 @@
                 <value>
                     <fullName>Intel MDF Account Based1</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>Intel MDF Account Based1</label>
                 </value>
                 <value>
@@ -185,7 +178,6 @@
                 <value>
                     <fullName>ODM Growth Plan- MDF</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>ODM Growth Plan- MDF</label>
                 </value>
                 <value>
@@ -344,6 +336,20 @@
         <unique>false</unique>
     </fields>
     <label>BudgetType Benefit Mapping</label>
+    <listViews>
+        <fullName>My_view_HA_metadata</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>NamespacePrefix</columns>
+        <columns>Core_MDF_Partner_Benefit__c</columns>
+        <columns>Core_MDF_Budget_Type__c</columns>
+        <columns>Core_MDF_IsActive__c</columns>
+        <columns>Core_MDF_RecordType__c</columns>
+        <columns>Core_MDF_Record_Developer_Nm__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>My view HA metadata</label>
+        <language>en_US</language>
+    </listViews>
     <pluralLabel>BudgetType Benefit Mappings</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>

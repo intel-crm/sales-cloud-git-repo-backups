@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>send_email</name>
+        <label>send email</label>
+        <locationX>248</locationX>
+        <locationY>51</locationY>
+        <actionName>Core_MDF_InternalAudit__c.Core_MDF_Send_emal_to_user_admin_on_internal_audit_record_creation</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <stringValue>a4ng0000000obpLAAQ</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_MDF_InternalAudit__c.Core_MDF_Send_emal_to_user_admin_on_internal_audit_record_creation</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>send_emails</name>
+        <label>send email</label>
+        <locationX>131</locationX>
+        <locationY>277</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <stringValue>Body of email</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <stringValue>testvduseradm@mailinator.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>vaishalix.dewangan@intelc.om</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>subject of email</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <apiVersion>49.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <interviewLabel>Invoking from PB to check email alert {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Invoking from PB to check email alert</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>send_emails</targetReference>
+        </connector>
+    </start>
+    <status>Draft</status>
+</Flow>

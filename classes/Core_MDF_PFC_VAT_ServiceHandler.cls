@@ -18,22 +18,27 @@ public with sharing class Core_MDF_PFC_VAT_ServiceHandler {
     private static String caseStatusUnderReview= Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Case_Status_Under_Review');
     private static String statusApproved=Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Approved');
     //private static String dummyAcctOwnerId=Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Dummy_Account_Owner_Id');
+    
       static{
+
         // Schema.DescribeSObjectResult recordType = Core_MDF_Claim_VAT_Info__c.SObjectType.getDescribe();
         // List<Schema.RecordTypeInfo> recordTypeList = recordType.getRecordTypeInfos();
         // Map<string,Id> recTypeIdMap = new Map<string,Id>();
         // for(Schema.RecordTypeInfo rt:recordTypeList){
         //     recTypeIdMap.put(rt.getDeveloperName(),rt.getRecordTypeId());
         // }
-  
-  //ATHR fixes - RP
-  Map<Id, Schema.RecordTypeInfo> rtMapById = Schema.SObjectType.Core_MDF_Claim_VAT_Info__c.getRecordTypeInfosById();
-  Map<String, Id> recTypeIdMap = new Map<String, Id>();
-  for (Schema.RecordTypeInfo rt : rtMapById.values()) {
-    recTypeIdMap.put(rt.getDeveloperName(), rt.getRecordTypeId());
-  }
+        // paymentDocumentRecordTypeId = recTypeIdMap.get('Core_MDF_Payment_Document');
+        // submitForApprovalRecordTypeId = recTypeIdMap.get('Core_MDF_Submit_for_Approval');
+
+        //ATHR fixes - RP
+        Map<Id, Schema.RecordTypeInfo> rtMapById = Schema.SObjectType.Core_MDF_Claim_VAT_Info__c.getRecordTypeInfosById();
+        Map<String, Id> recTypeIdMap = new Map<String, Id>();
+        for (Schema.RecordTypeInfo rt : rtMapById.values()) {
+            recTypeIdMap.put(rt.getDeveloperName(), rt.getRecordTypeId());
+        }
         paymentDocumentRecordTypeId = recTypeIdMap.get('Core_MDF_Payment_Document');
         submitForApprovalRecordTypeId = recTypeIdMap.get('Core_MDF_Submit_for_Approval');
+
     }
 /****************************************************************************************************************************************
     Method Name:                                             validateVATInvoiceandFiles
@@ -45,6 +50,7 @@ public with sharing class Core_MDF_PFC_VAT_ServiceHandler {
     Modified By :                                            Accenture- TS, Modified Date:21-JAN-2021
 *****************************************************************************************************************************************/ 
     public static void validateVATInvoiceandFiles(List<Core_MDF_Claim_VAT_Info__c> newVATList, Map<Id,Core_MDF_Claim_VAT_Info__c> oldMap){
+   
         List<Core_MDF_Claim_VAT_Info__c> pfcVAT = new List<Core_MDF_Claim_VAT_Info__c>();
         Map<Id,Core_MDF_Claim_VAT_Info__c> pfcOldVAT = new Map<Id,Core_MDF_Claim_VAT_Info__c>();
         map<Id, Boolean> recIdDocIdMap = new map<Id, Boolean>();
@@ -54,6 +60,7 @@ public with sharing class Core_MDF_PFC_VAT_ServiceHandler {
         Set<String> setOfLegalEntities = new Set<String>();
         try {
 
+          
 
             pfcVAT = (List<Core_MDF_Claim_VAT_Info__c>) newVATList ;            
             //pfcOldVAT = (Map<Id,Core_MDF_Claim_VAT_Info__c>) oldVATMap;                
@@ -71,6 +78,7 @@ public with sharing class Core_MDF_PFC_VAT_ServiceHandler {
             for(Core_MDF_CCP_VAT_Config__mdt vatConfig : [Select id,label,DeveloperName,Core_MDF_Program__c,Core_MDF_Legal_Entity__c from Core_MDF_CCP_VAT_Config__mdt where Core_MDF_Invoice_Number_Optional__c=true]){
                 mapOfLegalEntites.put(vatConfig.Core_MDF_Legal_Entity__c+'-'+vatConfig.Core_MDF_Program__c,true);
             }
+           
             // Prepare a map of Payment Document Id and Claim's country
             for(Core_MDF_Claim_VAT_Info__c vatinfo : [SELECT Id, Core_MDF_Claim_Id__r.Core_MDF_Country_Location_nm__c,Core_MDF_Claim_Id__r.Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c,Core_MDF_Claim_Id__r.Core_MDF_Program__c                                                       
                                                       FROM Core_MDF_Claim_VAT_Info__c WHERE Id IN:vatinfoIds LIMIT 50000])
@@ -83,6 +91,7 @@ public with sharing class Core_MDF_PFC_VAT_ServiceHandler {
                 }
             }
             
+            
             // Validate the invoice number and file are having values while submitting for approval
             // Invoice number is not mandatory for IPA - JAPAN
             for(Core_MDF_Claim_VAT_Info__c vatinfo : pfcVAT){
@@ -94,6 +103,8 @@ public with sharing class Core_MDF_PFC_VAT_ServiceHandler {
                 Boolean hasClaimSubAccess = (FeatureManagement.checkPermission('Core_MDF_CCP_Claim_Submitter')|| 
                                      FeatureManagement.checkPermission('Core_MDF_IPAClaimSubmitter') || 
                                      FeatureManagement.checkPermission('Core_MDF_RetailClaimSubmitter') || FeatureManagement.checkPermission('Core_MDF_CCP_External_Co_GTM_Claim_Submitter')) ? true : false;
+                system.debug('Dhakshinesh1->'+ hasClaimSubAccess);
+                system.debug('Dhakshinesh->'+ hasClaimSubAccess);
                 
                 String oldStatus = oldMap.get(vatinfo.Id).Core_MDF_Status_Txt__c;
                 
@@ -137,7 +148,7 @@ public with sharing class Core_MDF_PFC_VAT_ServiceHandler {
         string defaultOwner =Label.Core_MDF_Dummy_Account_Owner_Id ;
         vatIdNoOfFiles = new Map<Id,Integer>(); 
 
-        for(ContentDocumentLink cntLink : [Select Id, LinkedEntityId, ContentDocumentId From ContentDocumentLink Where LinkedEntityId IN :lstvatIds and ContentDocument.OwnerId !=: defaultOwner]) {
+        for(ContentDocumentLink cntLink : [Select Id, LinkedEntityId From ContentDocumentLink Where LinkedEntityId IN :lstvatIds and ContentDocument.OwnerId !=: defaultOwner]) { //HP:ATHR Fix
 
             if (!mapCntIdParentId.containsKey(cntLink.LinkedEntityId)){
                 mapCntIdParentId.put(cntLink.LinkedEntityId, true);
@@ -153,7 +164,6 @@ public with sharing class Core_MDF_PFC_VAT_ServiceHandler {
 
         }
 
-      
         return mapCntIdParentId ;
     }
 /****************************************************************************************************************************************
@@ -173,7 +183,7 @@ public with sharing class Core_MDF_PFC_VAT_ServiceHandler {
                 {
                     //Updating RecordType to 'Submit for Approval'
                     vatinfo.RecordTypeId = submitForApprovalRecordTypeId;
-                    
+                   
                 }
                 // On update of VAT record, calling updateRecordTypeOnBeforeUpdate
                 if(isUpdate)
@@ -199,7 +209,7 @@ public with sharing class Core_MDF_PFC_VAT_ServiceHandler {
         {   
             //Updating RecordType to 'Submit for Approval'
             vatinfo.RecordTypeId = submitForApprovalRecordTypeId;
-            
+        
         }
         //this is to update record type to 'Payment Document' if status is not equal to Revision Required/ Pending Documents
         if(vatinfo.Core_MDF_Status_Txt__c != oldVATMap.get(vatinfo.Id).Core_MDF_Status_Txt__c &&
@@ -207,7 +217,7 @@ public with sharing class Core_MDF_PFC_VAT_ServiceHandler {
         {
             ////Update Recordtype to 'Payment Document' 
             vatinfo.RecordTypeId = paymentDocumentRecordTypeId;
-           
+          
         }
     }
 
@@ -223,9 +233,11 @@ public with sharing class Core_MDF_PFC_VAT_ServiceHandler {
     {
         try{
             for(Core_MDF_Claim_VAT_Info__c vatinfo : newVATList){
+               
                 // On insert of VAT record, claim submitter and RSM reminder notification date will be populated
                 if(isInsert)
                 {
+                    
                     vatinfo.Core_MDF_ClaimSubmitterReminder_Dtm__c = addBusinessDays(system.today(),3);
                     vatinfo.Core_MDF_RSMReminderDate_Dtm__c = addBusinessDays(system.today(),5);
                 }
@@ -255,8 +267,10 @@ public with sharing class Core_MDF_PFC_VAT_ServiceHandler {
            && vatinfo.Core_MDF_RSMRemNotificationSent_Ind__c != oldVATMap.get(vatinfo.Id).Core_MDF_RSMRemNotificationSent_Ind__c && 
            vatinfo.Core_MDF_RSMRemNotificationSent_Ind__c)
         {
+            
             vatinfo.Core_MDF_RSMReminderDate_Dtm__c = addBusinessDays(system.today(),5);
             vatinfo.Core_MDF_RSMRemNotificationSent_Ind__c = FALSE;
+           
         }
         
         //this is to update 3 days and 5 days reminder date fields if status is changing from Under Review to Revision Required/ Pending Documents 
@@ -297,6 +311,7 @@ public with sharing class Core_MDF_PFC_VAT_ServiceHandler {
         
         //Updating reminder date field.
         //when VAT record is rejected, reminder notificaiton will be sent to claim owner and RSMs.
+       
         vatinfo.Core_MDF_ClaimSubmitterReminder_Dtm__c = addBusinessDays(system.today(),3);
         vatinfo.Core_MDF_RSMReminderDate_Dtm__c = addBusinessDays(system.today(),5);
         
@@ -320,6 +335,7 @@ public with sharing class Core_MDF_PFC_VAT_ServiceHandler {
         Datetime dt = (DateTime)inputDate;
         String dayOfWeek = dt.format('EEEE',UserInfo.getLocale()); 
         result = (dayOfWeek == 'Saturday' || dayOfWeek == 'Sunday') ? true : false;
+        
         return result;
     }    
 
@@ -332,6 +348,7 @@ public with sharing class Core_MDF_PFC_VAT_ServiceHandler {
 *****************************************************************************************************************************************/    
     public static Date addBusinessDays(Date startDate, Integer businessDaysToAdd){ 
         Date finalDate = startDate;
+      
         Integer daysToAdd = 1;
         while(businessDaysToAdd != 0)
         {
@@ -342,6 +359,7 @@ public with sharing class Core_MDF_PFC_VAT_ServiceHandler {
                 businessDaysToAdd -= daysToAdd;
             }
         }
+        
         return finalDate;
     }
    /****************************************************************************************************************************************
@@ -357,6 +375,7 @@ public with sharing class Core_MDF_PFC_VAT_ServiceHandler {
     List<ID> vatIDs = new List<ID>();
         
     try{
+       
         if (vatRecords != null && vatRecords.size() > 0){
 
             for(Core_MDF_Claim_VAT_Info__c vatRecord : vatRecords ){
@@ -521,6 +540,7 @@ public with sharing class Core_MDF_PFC_VAT_ServiceHandler {
             Integer fileSize = contentIdAndSize.get(docLink.ContentDocumentId);
             String fileExt = contentIdAndfileExtension.get(docLink.ContentDocumentId);
             
+          
             if (fileSize != null && fileSize >  Integer.valueOf(Label.Core_MDF_VAT_File_Size)){
                 docLink.addError('File size should not be more than 5MB.'); // Bydefault system error has thrown by system so not required to add label.
             }
@@ -563,6 +583,7 @@ public with sharing class Core_MDF_PFC_VAT_ServiceHandler {
  
     public static void releaseClaimWhenVatisCancelled(List<Core_MDF_Claim_VAT_Info__c> vatInfoList,Map<Id,Core_MDF_Claim_VAT_Info__c> oldVatMap,Map<Id,Core_MDF_Claim_VAT_Info__c> newVatMap)
     {
+        
         Set<Id> claimIdsToRelease = new Set<Id>();
         for(Core_MDF_Claim_VAT_Info__c vatInfo : vatInfoList)
         {

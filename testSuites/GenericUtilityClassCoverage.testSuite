@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_MDF_BankAccountTriggerHandler_Test</testClassName>
+    <testClassName>Core_MDF_BankTrigger_Test</testClassName>
+    <testClassName>Core_MDF_CCP_GenericUtility_Test</testClassName>
+    <testClassName>Core_MDF_ECM_Trigger_Test</testClassName>
+    <testClassName>Core_MDF_ExceptionTrigger_Test</testClassName>
+    <testClassName>Core_MDF_UpdateActivityFields_Test</testClassName>
+</ApexTestSuite>

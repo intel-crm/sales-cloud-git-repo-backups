@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Bulk Upload Batch</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Bulk Upload Batch</value>
+    </caseValues>
+    <fields>
+        <label><!-- Batch Status --></label>
+        <name>Core_MDF_Batch_Status__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In-progress</masterLabel>
+            <translation><!-- In-progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Upload Successful</masterLabel>
+            <translation><!-- Upload Successful --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Validation Successful</masterLabel>
+            <translation><!-- Validation Successful --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Batch id of line items --></help>
+        <label><!-- Bulk Upload Batch Id --></label>
+        <name>Core_MDF_Bulk_Upload_Batch_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Columns --></label>
+        <name>Core_MDF_Columns__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Name --></label>
+        <name>Core_MDF_Object_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Failure --></label>
+        <name>Core_MDF_Total_Failure__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Record Count --></label>
+        <name>Core_MDF_Total_Record_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Success --></label>
+        <name>Core_MDF_Total_Success__c</name>
+    </fields>
+    <fields>
+        <label><!-- Upload Type --></label>
+        <name>Core_MDF_Upload_Type__c</name>
+        <picklistValues>
+            <masterLabel>Save</masterLabel>
+            <translation><!-- Save --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Validate</masterLabel>
+            <translation><!-- Validate --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

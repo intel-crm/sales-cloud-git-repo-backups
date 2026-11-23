@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_MDF_ClmRecovery_ServiceHandlerTest</testClassName>
+    <testClassName>Core_MDF_CloseActivity_Test</testClassName>
+    <testClassName>Core_MDF_CommunityRedirect_Test</testClassName>
+    <testClassName>Core_MDF_ContentVersion_Test</testClassName>
+    <testClassName>Core_MDF_Create_Budget_Test</testClassName>
+    <testClassName>Core_MDF_Create_CCP_Cases_Test</testClassName>
+    <testClassName>Core_MDF_CustLayout_ServiceHandler_Test</testClassName>
+    <testClassName>Core_MDF_CustomLabelConfig_Test</testClassName>
+    <testClassName>Core_MDF_CustomLayoutConfig_Contrl_Test</testClassName>
+    <testClassName>Core_MDF_CustomMultiSelectPicklist_test</testClassName>
+    <testClassName>Core_MDF_DeletePNUM_Batch_Test</testClassName>
+    <testClassName>Core_MDF_DetermineEmailRecipients_Test</testClassName>
+    <testClassName>Core_MDF_ECM_Trigger_Test</testClassName>
+    <testClassName>Core_MDF_ECMCreationController_Test</testClassName>
+    <testClassName>Core_MDF_Escalation_ServiceHandler_Test</testClassName>
+    <testClassName>Core_MDF_ExceptionTrigger_Test</testClassName>
+    <testClassName>Core_MDF_ExternalUserSharing_Test</testClassName>
+    <testClassName>Core_MDF_FileUploadController_Test</testClassName>
+    <testClassName>Core_MDF_GeneralPurpose_UI_Utility_Test</testClassName>
+    <testClassName>Core_MDF_GeoBasedGenericSharing_Test</testClassName>
+    <testClassName>Core_MDF_HistoryController_Test</testClassName>
+    <testClassName>Core_MDF_IAH_Partnership_Score_Test</testClassName>
+    <testClassName>Core_MDF_InactivateIUPGM_Test</testClassName>
+</ApexTestSuite>

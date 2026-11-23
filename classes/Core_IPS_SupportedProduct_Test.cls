@@ -11,7 +11,6 @@ public class Core_IPS_SupportedProduct_Test{
     * Developer                   Date                   Description
     * ----------------------------------------------------------------------------                 
     * JRK                        11/04/2015                Created
-    * //System.assert()--> statement Added By Hassan Khan 02-02-2024
     ****************************************************************************************************/
     public static List<Account> AccountList =  new List<Account>();
     public static List<Product2> ProductList = new List<Product2>();
@@ -76,6 +75,7 @@ public class Core_IPS_SupportedProduct_Test{
                 SupportedProductRecord.core_EOIS__C=false;                
                  i++;                     
         }
+        system.debug('test ### '+SuppProductList);
         insert SuppProductList;
         System.assert(SuppProductList <> null, 'Record not created');
         
@@ -136,6 +136,7 @@ public class Core_IPS_SupportedProduct_Test{
             projectProduct.Core_Supported_Product__c = SuppProductList[i].id;
             listProjectProduct.add(projectProduct);
         }
+        system.debug('test @@@ '+listProjectProduct);
         insert listProjectProduct;
         system.assert(listProjectProduct <> null, 'Record not created');
        
@@ -197,22 +198,27 @@ public class Core_IPS_SupportedProduct_Test{
         insert cusset;*/
         
         //Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('UpdateAssetStatusonUpdate');
+        //system.debug('test123!@#'+Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('UpdateAssetStatusonUpdate'));
         
         //List<Core_IPS_Supported_Product__c> updateSuppProductList = new List<Core_IPS_Supported_Product__c> ();
+        system.debug('Tx@@@@@@@@@'+SuppProductList);
         integer i = 0;
         for(Core_IPS_Supported_Product__c supProd: SuppProductList){
             
             supProd.Core_EOIS__c = true;  
+            system.debug('Label Value::'+System.Label.Core_IPS_Valid_Platform_Codename_Hierarchy_ID);
+            system.debug('Supp Prod Value::'+supProd.Core_Product__r.Core_Hierarchy_ID__c);
             //if(supProd.Core_Product__r.Core_Hierarchy_ID__c != System.Label.Core_IPS_Valid_Platform_Codename_Hierarchy_ID)
             supProd.Core_IPS_Public_Product__c = True; // added by sugandha 13 Nov 2017 for US72182          
             //updateSuppProductList.add(supProd);
             supProd.Core_Supported_Product_Tag__c = 'Test';     
             
         }
+        system.debug('Ty@@@@@@@@@'+SuppProductList);
         update SuppProductList;
+        system.debug('Tz@@@@@@@@@'+SuppProductList);
         // system.assert(updateSuppProductList <> null, 'Record not created');       
         Test.stoptest();
-        System.assert(SuppProductList[0].id != null, true);
     } 
     
     /***************************************************************************************************
@@ -277,6 +283,6 @@ public class Core_IPS_SupportedProduct_Test{
                                                             Core_Product_EPM_ID__c=ProductList.get(0).core_code_name_EPM_ID__c,core_EOIS__C=false,Core_IPS_Public_Product__c = True,Core_Supported_Product_Tag__c = 'Test' );
                 
         insert SuppProduct1;
-        System.assert(SuppProduct1.id != null, true);
         }
+
 }

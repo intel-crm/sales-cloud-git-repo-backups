@@ -106,42 +106,47 @@ public without sharing class Core_MDF_IAH_Partnership_Score {
         
         try{
             wrapperPartnershipScoreObj wpsc = (wrapperPartnershipScoreObj)JSON.deserialize(input.getBody(),wrapperPartnershipScoreObj.class);
-            partnershipScoreList = wpsc.elements;
+            partnershipScoreList = wpsc.elements != null ? wpsc.elements : new List<Elements>();
             Map<Id,string> programIdToLabelMap = new Map<Id,string>();
 			for(Core_MDF_ChannelProgram__mdt channelProgram : [Select Id, Core_MDF_Technical_Program_Name__c,Core_MDF_Program_ID__c FROM Core_MDF_ChannelProgram__mdt LIMIT 1000]){
                 programIdToLabelMap.put(channelProgram.Core_MDF_Program_ID__c, channelProgram.Core_MDF_Technical_Program_Name__c);
             }
             for(Elements rec:partnershipScoreList)
             {
-                if(rec!=Null)
-                {
-                    Id virtualCorpAccountId = (intelAccountIdToProgramToVirtualCorpAccountId.containsKey(rec.account_id) && intelAccountIdToProgramToVirtualCorpAccountId.get(rec.account_id).containsKey(rec.program_id)) ? intelAccountIdToProgramToVirtualCorpAccountId.get(rec.account_id).get(rec.program_id) : null;
-                    if((accountIdsList.isEmpty() || accountIdsList.contains(rec.account_id)) && String.isNotBlank(virtualCorpAccountId)){
-                        Core_MDF_Partnership_Score__c newobj = new Core_MDF_Partnership_Score__c();
-                        newobj.Core_MDF_Account_Id__c = rec.account_id;
-                        newobj.Core_MDF_Channel_Program_Id__c = rec.program_id;
-                        newObj.Core_MDF_Virtual_Corp_Account_Id__c = virtualCorpAccountId;
-                        if((rec.program_id)!=null){
-                            newobj.Core_MDF_Program_nm__c = programIdToLabelMap.get(String.valueOf(rec.program_id).substring(0, 15));
-                        }
-                        newobj.Core_MDF_Quarter_Year_Nm__c = rec.quarter_nm;
-                        newobj.Core_MDF_Zone_nm__c = rec.zone_nm;
-                        newobj.Core_MDF_Aggregate_Claim_Score_Nbr__c=rec.aggregate_claim_score_nbr;
-                        newobj.Core_MDF_Partial_Value_Score_Nbr__c=rec.partial_value_score_nbr;
-                        //newobj.Core_MDF_Partnership_Grade_Nbr__c=rec.partnership_grade_nbr;//commentit out
-                        newobj.Core_MDF_Partnership_Score_Nbr__c=rec.partnership_score_nbr;
-                        newobj.Core_MDF_Recovery_Amt__c=rec.recovery_amt;
-                        newobj.Core_MDF_Manual_Recovery_Amt__c=rec.manual_recovery_amt;
-                        newobj.Core_MDF_Trend_Value_Nm__c=rec.trend_nm;//trend_nm from IAH B4//take the first string
-                        newobj.Core_MDF_External_Id__c = rec.program_id + virtualCorpAccountId + rec.quarter_nm;
-                        newobj.Core_MDF_Trend_Difference_Score_Nbr__c =String.valueOf(rec.trend_difference_score_nbr);
-                        List<Core_MDF_Partnership_Score__c> cFAmtToBeInserted = pscarryfwdMap.containsKey(rec.program_id + virtualCorpAccountId + rec.quarter_nm) ? pscarryfwdMap.get(rec.program_id + virtualCorpAccountId + rec.quarter_nm) : new List<Core_MDF_Partnership_Score__c>();
-                        if(cFAmtToBeInserted != null && !cFAmtToBeInserted.isEmpty()){
-                            newobj.Core_MDF_Partnership_Score_Id__c = cFAmtToBeInserted[0].Id;
-                        }
-                    partnershipScoreInsertObjs.add(newobj);
-                    }
+                //ATHR - Deeply Nested if 16209
+                if(rec!=Null) continue;
+                //if(rec==Null)
+                //{
+                Id virtualCorpAccountId = (intelAccountIdToProgramToVirtualCorpAccountId.containsKey(rec.account_id) && intelAccountIdToProgramToVirtualCorpAccountId.get(rec.account_id).containsKey(rec.program_id)) ? intelAccountIdToProgramToVirtualCorpAccountId.get(rec.account_id).get(rec.program_id) : null;
+                //ATHR - Deeply Nested if 16209
+                if((!accountIdsList.isEmpty() && !accountIdsList.contains(rec.account_id)) || String.isBlank(virtualCorpAccountId)) continue;
+                //if((accountIdsList.isEmpty() || accountIdsList.contains(rec.account_id)) && String.isNotBlank(virtualCorpAccountId)){
+                Core_MDF_Partnership_Score__c newobj = new Core_MDF_Partnership_Score__c();
+                //updated
+                //newobj.Core_MDF_Account_Id__c = rec.account_id;
+                newobj.Core_MDF_Channel_Program_Id__c = rec.program_id;
+                newObj.Core_MDF_Virtual_Corp_Account_Id__c = virtualCorpAccountId;
+                if((rec.program_id)!=null){
+                    newobj.Core_MDF_Program_nm__c = programIdToLabelMap.get(String.valueOf(rec.program_id).substring(0, 15));
                 }
+                newobj.Core_MDF_Quarter_Year_Nm__c = rec.quarter_nm;
+                newobj.Core_MDF_Zone_nm__c = rec.zone_nm;
+                newobj.Core_MDF_Aggregate_Claim_Score_Nbr__c=rec.aggregate_claim_score_nbr;
+                newobj.Core_MDF_Partial_Value_Score_Nbr__c=rec.partial_value_score_nbr;
+                //newobj.Core_MDF_Partnership_Grade_Nbr__c=rec.partnership_grade_nbr;//commentit out
+                newobj.Core_MDF_Partnership_Score_Nbr__c=rec.partnership_score_nbr;
+                newobj.Core_MDF_Recovery_Amt__c=rec.recovery_amt;
+                newobj.Core_MDF_Manual_Recovery_Amt__c=rec.manual_recovery_amt;
+                newobj.Core_MDF_Trend_Value_Nm__c=rec.trend_nm;//trend_nm from IAH B4//take the first string
+                newobj.Core_MDF_External_Id__c = rec.program_id + virtualCorpAccountId + rec.quarter_nm;
+                newobj.Core_MDF_Trend_Difference_Score_Nbr__c =String.valueOf(rec.trend_difference_score_nbr);
+                List<Core_MDF_Partnership_Score__c> cFAmtToBeInserted = pscarryfwdMap.containsKey(rec.program_id + virtualCorpAccountId + rec.quarter_nm) ? pscarryfwdMap.get(rec.program_id + virtualCorpAccountId + rec.quarter_nm) : new List<Core_MDF_Partnership_Score__c>();
+                if(cFAmtToBeInserted != null && !cFAmtToBeInserted.isEmpty()){
+                    newobj.Core_MDF_Partnership_Score_Id__c = cFAmtToBeInserted[0].Id;
+                }
+                partnershipScoreInsertObjs.add(newobj);
+                //}
+                //}
             }
             
             
@@ -162,7 +167,8 @@ public without sharing class Core_MDF_IAH_Partnership_Score {
         }
         String prevQuarterYear = PreviousQuarter(quarter);
         Map<String,Id> progAcctAndPSIDmap = new Map<String,Id>();
-		List<Core_MDF_Partnership_Score__c> partScoreList = [SELECT Id, Core_MDF_External_Id__c,Core_MDF_Account_Id__c,Core_MDF_Quarter_Year_Nm__c, Core_MDF_Virtual_Corp_Account_Id__c, Core_MDF_Channel_Program_Id__c 
+        //updated 
+		List<Core_MDF_Partnership_Score__c> partScoreList = [SELECT Id, Core_MDF_External_Id__c,Core_MDF_AccountID_id__c,Core_MDF_Quarter_Year_Nm__c, Core_MDF_Virtual_Corp_Account_Id__c, Core_MDF_Channel_Program_Id__c 
                                                              FROM Core_MDF_Partnership_Score__c 
                                                              WHERE Core_MDF_Quarter_Year_Nm__c IN (:quarter, :prevQuarterYear)];
         for(Core_MDF_Partnership_Score__c psRec : partScoreList){
@@ -179,7 +185,8 @@ public without sharing class Core_MDF_IAH_Partnership_Score {
         String key2 = newprogAcctId+prevQuarterYear;
         if(!progAcctAndPSIDmap.containsKey(key)){
             Core_MDF_Partnership_Score__c ps = new Core_MDF_Partnership_Score__c();
-            ps.Core_MDF_Account_Id__c = a.Core_MDF_CoMarketing_Ultimate_Account__c;
+            //updated 
+            //ps.Core_MDF_Account_Id__c = a.Core_MDF_CoMarketing_Ultimate_Account__c;
             ps.Core_MDF_Virtual_Corp_Account_Id__c = a.Id;
             ps.Core_MDF_Channel_Program_Id__c = a.Core_MDF_Channel_Program__c;
             ps.Core_MDF_Quarter_Year_Nm__c = quarter;
@@ -193,14 +200,14 @@ public without sharing class Core_MDF_IAH_Partnership_Score {
         	}
         Map<String, Core_MDF_Partnership_Score_Detail__c> psKeyTopsdRecordList = new Map<String, Core_MDF_Partnership_Score_Detail__c>();
         for (Core_MDF_Partnership_Score__c ps : uniquekey.values()) {
-        Core_MDF_Partnership_Score_Detail__c psd = new Core_MDF_Partnership_Score_Detail__c();
-        psd.Core_MDF_External_ID__c = ps.Core_MDF_External_Id__c;
-        psd.Core_MDF_Partnership_Score_Id__c = ps.Id;
-        psKeyTopsdRecordList.put(ps.Core_MDF_External_Id__c, psd);
+            Core_MDF_Partnership_Score_Detail__c psd = new Core_MDF_Partnership_Score_Detail__c();
+            psd.Core_MDF_External_ID__c = ps.Core_MDF_External_Id__c;
+            psd.Core_MDF_Partnership_Score_Id__c = ps.Id;
+            psKeyTopsdRecordList.put(ps.Core_MDF_External_Id__c, psd);
         }
     	if (!psKeyTopsdRecordList.isEmpty()) {
         	createPSDandRecoveryDashboardRecords(psKeyTopsdRecordList);
-    		}
+    	}
     }
     
     private static String CurrentQuarter() {
@@ -285,22 +292,22 @@ public without sharing class Core_MDF_IAH_Partnership_Score {
             }
        return href;
    }
+
+   //returns a map of Core_MDF_External_Id__c ending with current quarter - 1 and the PS record of current quarter - 2
     public static Map<string, List<Core_MDF_Partnership_Score__c>> getValuesforforCarryFwd(string quarter){
         Map<String, List<Core_MDF_Partnership_Score__c >> pScoretodetail = new Map<String, List<Core_MDF_Partnership_Score__c >> ();
         List<Core_MDF_Partnership_Score__c> pgdList;
         String qtrforCarryfwdAmt;
         String qtrforprevQtr;
         if(String.isNotBlank(quarter)){   
-            qtrforprevQtr = quarter;    
+            qtrforprevQtr = quarter;
             List<String> qysplit = quarter.split(' ');
             List<String> qsplit = qysplit[0].split('');
             Integer quarterInteger = integer.valueof(qsplit[1]);
             Integer yearInteger = integer.valueof(qysplit[1]);
             yearInteger = (quarterInteger==1)?yearInteger-1:yearInteger;
             quarterInteger = (quarterInteger==1)?4:quarterInteger-1;
-            qtrforCarryfwdAmt = 'Q'+quarterInteger+' '+yearInteger;
-            
-            
+            qtrforCarryfwdAmt = 'Q'+quarterInteger+' '+yearInteger; 
         }
         else{
             List<string> qtr = Core_MDF_RecoveryClaimReportViewCtrl.getQuarterOptionsMap();
@@ -313,7 +320,7 @@ public without sharing class Core_MDF_IAH_Partnership_Score {
             
         }
         try{
-        for(Core_MDF_Partnership_Score__c psdrec:[Select Id,Core_MDF_Program_Nm__c,Core_MDF_Account_Id__c,Core_MDF_External_Id__c,Core_MDF_Balance_Amount_Amt__c FROM Core_MDF_Partnership_Score__c Where Core_MDF_Quarter_Year_Nm__c =: qtrforCarryfwdAmt ]) {
+        for(Core_MDF_Partnership_Score__c psdrec:[Select Id,Core_MDF_Program_Nm__c,Core_MDF_AccountID_id__c,Core_MDF_External_Id__c,Core_MDF_Balance_Amount_Amt__c FROM Core_MDF_Partnership_Score__c Where Core_MDF_Quarter_Year_Nm__c =: qtrforCarryfwdAmt ]) {
 			   string ExtIdKey = psdrec.Core_MDF_External_Id__c;
                               pgdList = pScoretodetail.get(ExtIdKey) == null? new List<Core_MDF_Partnership_Score__c>() : pScoretodetail.get(ExtIdKey);
 			   pgdList.add(psdrec);

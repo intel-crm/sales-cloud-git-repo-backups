@@ -44,13 +44,6 @@
     <columns>
         <field>CUST_CREATED_DATE</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Distributor__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>AMOUNT</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -71,7 +64,35 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>nuc</value>
+            <value>DN</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Support_Completed__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Risk_Reason__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Supply</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OPPORTUNITY_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>escalation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>2019-Q2</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -98,7 +119,7 @@
     </params>
     <params>
         <name>open</name>
-        <value>open</value>
+        <value>all</value>
     </params>
     <params>
         <name>probability</name>
@@ -113,10 +134,10 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>false</showSubTotals>
-    <sortColumn>AMOUNT</sortColumn>
-    <sortOrder>Desc</sortOrder>
+    <sortColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <interval>INTERVAL_CURRENT</interval>
     </timeFrameFilter>
 </Report>

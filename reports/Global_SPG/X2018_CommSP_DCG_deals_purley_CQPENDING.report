@@ -119,7 +119,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>excludes</operator>
-            <value>NFV Other,Visual Cloud,NFV Workload</value>
+            <value>Analytics,NFV Other,Visual Cloud,NFV Workload</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

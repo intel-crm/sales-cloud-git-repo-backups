@@ -105,7 +105,7 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>Core_MDF_Approver_5__c</name>
+                <name>Core_MDF_Approver_8__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -113,15 +113,11 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_2__c</name>
+                <name>Core_MDF_Approver_5__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_3__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_10__c</name>
+                <name>Core_MDF_Approver_9__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -129,7 +125,7 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_6__c</name>
+                <name>Core_MDF_Approver_3__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -137,11 +133,15 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_8__c</name>
+                <name>Core_MDF_Approver_6__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_9__c</name>
+                <name>Core_MDF_Approver_2__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_10__c</name>
                 <type>relatedUserField</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
@@ -201,6 +201,18 @@
         </approvalActions>
         <assignedApprover>
             <approver>
+                <name>Core_MDF_Approver_4__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_1__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_10__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
                 <name>Core_MDF_Approver_6__c</name>
                 <type>relatedUserField</type>
             </approver>
@@ -213,27 +225,15 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_7__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_10__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_4__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
                 <name>Core_MDF_Approver_3__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_2__c</name>
+                <name>Core_MDF_Approver_7__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_1__c</name>
+                <name>Core_MDF_Approver_2__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -629,26 +629,10 @@
         </assignedApprover>
         <description>Customer Acceptance for Amount &lt;25K</description>
         <entryCriteria>
-            <booleanFilter>1 AND 2 AND (3 OR 4)</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
                 <value>Pending Approval</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>PartnerFundRequest.RequestedAmount</field>
-                <operation>lessThan</operation>
-                <value>25000</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>PartnerFundRequest.Core_MDF_Approval_Step_Completed__c</field>
-                <operation>equals</operation>
-                <value>1</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>PartnerFundRequest.Core_MDF_Approval_Step_Completed__c</field>
-                <operation>equals</operation>
-                <value>2</value>
             </criteriaItems>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
@@ -678,7 +662,7 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>Core_MDF_Approver_4__c</name>
+                <name>Core_MDF_Approver_1__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -686,19 +670,11 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_8__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
                 <name>Core_MDF_Approver_5__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_1__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_MDF_Approver_2__c</name>
+                <name>Core_MDF_Approver_4__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -706,11 +682,19 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_MDF_Approver_10__c</name>
+                <name>Core_MDF_Approver_8__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
                 <name>Core_MDF_Approver_6__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_2__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_Approver_10__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -780,7 +764,7 @@
         </assignedApprover>
         <description>Level 1 Manager Approval i.e. Activity Submitter&apos;s Manager approval when Amount &gt;= 25k but &lt;250k and PCT is not applicable</description>
         <entryCriteria>
-            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
@@ -808,6 +792,11 @@
             </criteriaItems>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_ATF_Approval_Reqd_ind__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_After_the_Fact_Approved_ind__c</field>
                 <operation>equals</operation>
                 <value>False</value>
             </criteriaItems>
@@ -846,7 +835,7 @@
         </assignedApprover>
         <description>Level 1 Manager Approval i.e. Activity Submitter&apos;s Manager approval when Amount &gt;= 25k but &lt;250k and PCT is applicable</description>
         <entryCriteria>
-            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
@@ -874,6 +863,11 @@
             </criteriaItems>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_ATF_Approval_Reqd_ind__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_After_the_Fact_Approved_ind__c</field>
                 <operation>equals</operation>
                 <value>False</value>
             </criteriaItems>
@@ -916,7 +910,7 @@
         </assignedApprover>
         <description>APJ Price Review for amount &gt;=25k and &lt;250k</description>
         <entryCriteria>
-            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+            <booleanFilter>1 AND 2 AND 3 AND 4  AND 6 AND (5 OR (7 AND 8))</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
@@ -946,6 +940,16 @@
                 <field>PartnerFundRequest.Core_MDF_ATF_Approval_Reqd_ind__c</field>
                 <operation>equals</operation>
                 <value>False</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_After_the_Fact_Approved_ind__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_Approval_Step_Completed__c</field>
+                <operation>equals</operation>
+                <value>1</value>
             </criteriaItems>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
@@ -986,7 +990,7 @@
         </assignedApprover>
         <description>PRC Price Review for amount &gt;=25k and &lt;250k</description>
         <entryCriteria>
-            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+            <booleanFilter>1 AND 2 AND 3 AND 4 AND 6 AND (5 OR (7 AND 8))</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
@@ -1016,6 +1020,16 @@
                 <field>PartnerFundRequest.Core_MDF_ATF_Approval_Reqd_ind__c</field>
                 <operation>equals</operation>
                 <value>False</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_After_the_Fact_Approved_ind__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_Approval_Step_Completed__c</field>
+                <operation>equals</operation>
+                <value>1</value>
             </criteriaItems>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
@@ -1056,7 +1070,7 @@
         </assignedApprover>
         <description>EMEA Price Review for amount &gt;=25k and &lt;250k</description>
         <entryCriteria>
-            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+            <booleanFilter>1 AND 2 AND 3 AND 4 AND 6 AND (5 OR (7 AND 8))</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
@@ -1086,6 +1100,16 @@
                 <field>PartnerFundRequest.Core_MDF_ATF_Approval_Reqd_ind__c</field>
                 <operation>equals</operation>
                 <value>False</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_After_the_Fact_Approved_ind__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_Approval_Step_Completed__c</field>
+                <operation>equals</operation>
+                <value>1</value>
             </criteriaItems>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
@@ -1126,7 +1150,7 @@
         </assignedApprover>
         <description>ASMO NAR Price Review for amount &gt;=25k and &lt;250k</description>
         <entryCriteria>
-            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+            <booleanFilter>1 AND 2 AND 3 AND 4 AND 6 AND (5 OR (7 AND 8))</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
@@ -1156,6 +1180,16 @@
                 <field>PartnerFundRequest.Core_MDF_ATF_Approval_Reqd_ind__c</field>
                 <operation>equals</operation>
                 <value>False</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_After_the_Fact_Approved_ind__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_Approval_Step_Completed__c</field>
+                <operation>equals</operation>
+                <value>1</value>
             </criteriaItems>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
@@ -1196,7 +1230,7 @@
         </assignedApprover>
         <description>ASMO LAR Price Review for amount &gt;=25k and &lt;250k</description>
         <entryCriteria>
-            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+            <booleanFilter>1 AND 2 AND 3 AND 4  AND 6 AND (5 OR (7 AND 8))</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
@@ -1226,6 +1260,16 @@
                 <field>PartnerFundRequest.Core_MDF_ATF_Approval_Reqd_ind__c</field>
                 <operation>equals</operation>
                 <value>False</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_After_the_Fact_Approved_ind__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_Approval_Step_Completed__c</field>
+                <operation>equals</operation>
+                <value>1</value>
             </criteriaItems>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
@@ -1262,31 +1306,10 @@
         </assignedApprover>
         <description>Customer Acceptance for Amount &gt;=25K and &lt;250k</description>
         <entryCriteria>
-            <booleanFilter>1 AND 2 AND 3 AND (4 OR 5)</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
                 <value>Pending Approval</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>PartnerFundRequest.RequestedAmount</field>
-                <operation>greaterOrEqual</operation>
-                <value>25000</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>PartnerFundRequest.RequestedAmount</field>
-                <operation>lessThan</operation>
-                <value>250000</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>PartnerFundRequest.Core_MDF_Approval_Step_Completed__c</field>
-                <operation>equals</operation>
-                <value>2</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>PartnerFundRequest.Core_MDF_Approval_Step_Completed__c</field>
-                <operation>equals</operation>
-                <value>3</value>
             </criteriaItems>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
@@ -1343,6 +1366,11 @@
                 <operation>equals</operation>
                 <value>False</value>
             </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_After_the_Fact_Approved_ind__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </criteriaItems>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
         <label>Level 1 Manager Approval</label>
@@ -1382,6 +1410,7 @@
         </assignedApprover>
         <description>Level 2 Manager Approval i.e. Level 1&apos;s Manager approval when Amount &gt;250k and PCT is not applicable</description>
         <entryCriteria>
+            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
@@ -1404,6 +1433,11 @@
             </criteriaItems>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_ATF_Approval_Reqd_ind__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_After_the_Fact_Approved_ind__c</field>
                 <operation>equals</operation>
                 <value>False</value>
             </criteriaItems>
@@ -1506,7 +1540,7 @@
         </assignedApprover>
         <description>APJ Price Review for amount &gt;=250k</description>
         <entryCriteria>
-            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+            <booleanFilter>1 AND 2 AND 4 AND 5 AND ( 3 OR (6 AND 7))</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
@@ -1531,6 +1565,16 @@
                 <field>PartnerFundRequest.Core_MDF_ATF_Approval_Reqd_ind__c</field>
                 <operation>equals</operation>
                 <value>False</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_After_the_Fact_Approved_ind__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_Approval_Step_Completed__c</field>
+                <operation>equals</operation>
+                <value>1</value>
             </criteriaItems>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
@@ -1571,7 +1615,7 @@
         </assignedApprover>
         <description>PRC Price Review for amount &gt;=250k</description>
         <entryCriteria>
-            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+            <booleanFilter>1 AND 2 AND 4 AND 5 AND (3 OR (6 AND 7))</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
@@ -1596,6 +1640,16 @@
                 <field>PartnerFundRequest.Core_MDF_ATF_Approval_Reqd_ind__c</field>
                 <operation>equals</operation>
                 <value>False</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_Approval_Step_Completed__c</field>
+                <operation>equals</operation>
+                <value>1</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_After_the_Fact_Approved_ind__c</field>
+                <operation>equals</operation>
+                <value>True</value>
             </criteriaItems>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
@@ -1636,7 +1690,7 @@
         </assignedApprover>
         <description>ASMO LAR Price Review for amount &gt;=250k</description>
         <entryCriteria>
-            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+            <booleanFilter>1 AND 2  AND 4 AND 5 AND ( 3 OR ( 6 AND 7))</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
@@ -1661,6 +1715,16 @@
                 <field>PartnerFundRequest.Core_MDF_ATF_Approval_Reqd_ind__c</field>
                 <operation>equals</operation>
                 <value>False</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_After_the_Fact_Approved_ind__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_Approval_Step_Completed__c</field>
+                <operation>equals</operation>
+                <value>1</value>
             </criteriaItems>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
@@ -1701,7 +1765,7 @@
         </assignedApprover>
         <description>ASMO NAR Price Review for amount &gt;=250k</description>
         <entryCriteria>
-            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+            <booleanFilter>1 AND 2  AND 4 AND 5 AND (3 OR (6 AND 7))</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
@@ -1726,6 +1790,16 @@
                 <field>PartnerFundRequest.Core_MDF_ATF_Approval_Reqd_ind__c</field>
                 <operation>equals</operation>
                 <value>False</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_After_the_Fact_Approved_ind__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_Approval_Step_Completed__c</field>
+                <operation>equals</operation>
+                <value>1</value>
             </criteriaItems>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
@@ -1766,7 +1840,7 @@
         </assignedApprover>
         <description>EMEA Price Review for amount &gt;=250k</description>
         <entryCriteria>
-            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+            <booleanFilter>1 AND 2 AND 4 AND 5 AND (3 OR (6 AND 7))</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
@@ -1791,6 +1865,16 @@
                 <field>PartnerFundRequest.Core_MDF_ATF_Approval_Reqd_ind__c</field>
                 <operation>equals</operation>
                 <value>False</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_After_the_Fact_Approved_ind__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_Approval_Step_Completed__c</field>
+                <operation>equals</operation>
+                <value>1</value>
             </criteriaItems>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
@@ -1827,26 +1911,11 @@
         </assignedApprover>
         <description>Customer Acceptance for Amount &gt;250k</description>
         <entryCriteria>
-            <booleanFilter>1 AND 2 AND (3 OR 4)</booleanFilter>
+            <booleanFilter>1</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
                 <value>Pending Approval</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>PartnerFundRequest.RequestedAmount</field>
-                <operation>greaterOrEqual</operation>
-                <value>250000</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>PartnerFundRequest.Core_MDF_Approval_Step_Completed__c</field>
-                <operation>equals</operation>
-                <value>3</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>PartnerFundRequest.Core_MDF_Approval_Step_Completed__c</field>
-                <operation>equals</operation>
-                <value>4</value>
             </criteriaItems>
         </entryCriteria>
         <label>Customer Acceptance</label>
@@ -1866,7 +1935,7 @@
         </rejectionActions>
     </approvalStep>
     <description>Approval Process flow to handle the activity approval process</description>
-    <emailTemplate>Testt/Core_MDF_NotifyActivityApprovers</emailTemplate>
+    <emailTemplate>unfiled$public/Core_MDF_NotifyActivityApprovers</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <booleanFilter>(1 OR 2 OR 3 OR (4 AND 5 )) AND 6</booleanFilter>

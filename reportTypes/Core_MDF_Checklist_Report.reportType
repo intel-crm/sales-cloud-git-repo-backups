@@ -48,6 +48,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Impact_Amount_Summation_nbr__c</field>
+            <table>Core_MDF_Claim_Case_Checklist__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Impact_Amount__c</field>
             <table>Core_MDF_Claim_Case_Checklist__c</table>
         </columns>
@@ -94,6 +99,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Completion_Percentage__c</field>
+            <table>Core_MDF_Claim_Case_Checklist__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_Checklist_Status_Nm__c</field>
+            <table>Core_MDF_Claim_Case_Checklist__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_Generated_Comments_Txt__c</field>
             <table>Core_MDF_Claim_Case_Checklist__c</table>
         </columns>
         <masterLabel>Claim Case Checklists</masterLabel>

@@ -29,7 +29,7 @@ private class Core_MDF_ClaimReviewChecklist_Test {
         Map<string,string> impactAmount = new Map<string,string>();
         Map<string,string> comments = new Map<string,string>();
         integer result; 
-        // Highlight: Unused Local Variable
+        // Highlight: Unused Local Variable - Indira
         // string caseStatus;
         Case record = [select id from Case limit 1];
 
@@ -171,6 +171,7 @@ private class Core_MDF_ClaimReviewChecklist_Test {
                         Case record = [select id from Case limit 1];
                         caseRecordId = record.id;
                         
+                         // Highlight: Unused Local Variable - Indira
                         //List<Core_MDF_Checklist_Items__mdt> testMetadata = new List<Core_MDF_Checklist_Items__mdt>();
                         List<Core_MDF_Claim_Case_Checklist__c> testChecklistRecord = new List<Core_MDF_Claim_Case_Checklist__c>();
 
@@ -223,7 +224,7 @@ private class Core_MDF_ClaimReviewChecklist_Test {
         es.Core_MDF_Do_not_Auto_Create_Claim_Ind__c = true;
         insert es;
         Core_MDF_ClaimReviewChecklist.getCaseIdFromEscalation(es.Id);
-        // Unit Test Method should include System.Assert
+        // Unit Test Method should include System.Assert - Indira
         System.assertEquals(testCase.Id, es.Core_MDF_Case_ID_Number_id__c, 'Escalation should be linked to the correct Case.');
     }
    

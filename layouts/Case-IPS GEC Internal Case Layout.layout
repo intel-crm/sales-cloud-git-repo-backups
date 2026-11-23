@@ -50,8 +50,16 @@
                 <field>Core_ConEmail__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_IPS_Case_Owner__c</field>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Media_Vehicle_txt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Document_Upload_Status_txt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Earlier_Quarter_Closed_Dt__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -219,53 +227,6 @@
     <layoutSections>
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
-        <editHeading>false</editHeading>
-        <label>Hot Case Management</label>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_HC_Hot_Issue__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_HC_Customer_Disposition__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_HC_Executive_Summary__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_HC_Help_Needed__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_HC_Debug_Progress__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Date_and_time_of_hot__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_HC_Intel_Disposition__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_HC_Latest_Update__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_HC_Next_Actions__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <style>TwoColumnsLeftToRight</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
         <label>System/Integration Information</label>
         <layoutColumns>
@@ -344,7 +305,15 @@
         <detailHeading>true</detailHeading>
         <editHeading>false</editHeading>
         <label>Case Comments</label>
-        <layoutColumns/>
+        <layoutColumns>
+            <layoutItems>
+                <height>700</height>
+                <page>Core_IPS_CaseComments</page>
+                <showLabel>false</showLabel>
+                <showScrollbars>true</showScrollbars>
+                <width>100%</width>
+            </layoutItems>
+        </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
@@ -400,14 +369,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_IPS_Minds__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_IPS_Country_Region__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
                 <field>Description</field>
             </layoutItems>
         </layoutColumns>
@@ -435,10 +396,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_IPS_Owner_2nd_Manager__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_IPS_Case_Owner_Groups__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -470,7 +427,15 @@
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
         <label>Case Attachments</label>
-        <layoutColumns/>
+        <layoutColumns>
+            <layoutItems>
+                <height>500</height>
+                <page>Core_IPS_CaseAttachment_Visibility</page>
+                <showLabel>false</showLabel>
+                <showScrollbars>false</showScrollbars>
+                <width>100%</width>
+            </layoutItems>
+        </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
@@ -493,7 +458,7 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>false</editHeading>
-        <label>MINDS Responses</label>
+        <label>GEC Details/MAG Questionnaire</label>
         <layoutColumns>
             <layoutItems>
                 <height>200</height>
@@ -505,44 +470,6 @@
         </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>
-    <platformActionList>
-        <actionListContext>Record</actionListContext>
-        <platformActionListItems>
-            <actionName>CaseHierarchy</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>PrintableView</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>1</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>MergeCase</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>2</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>StartOutboundConversation</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>3</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>FeedItem.TextPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>4</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>FeedItem.QuestionPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>5</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>MassAccept</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>6</sortOrder>
-        </platformActionListItems>
-    </platformActionList>
     <quickActionList>
         <quickActionListItems>
             <quickActionName>FeedItem.TextPost</quickActionName>
@@ -577,24 +504,10 @@
     <relatedLists>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
-        <fields>Agent_Name__c</fields>
         <relatedList>Core_IPS_Case_Interested_Party__c.Case__c</relatedList>
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>Status__c</fields>
-        <fields>Sub_Status__c</fields>
-        <fields>Escalated_Level__c</fields>
-        <fields>From__c</fields>
-        <fields>Until__c</fields>
-        <fields>Total_Hours__c</fields>
-        <fields>Total_Days__c</fields>
-        <relatedList>Status_Ownership_Duration__c.Parent__c</relatedList>
-        <sortField>From__c</sortField>
-        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedObjects>ContactId</relatedObjects>
     <relatedObjects>AccountId</relatedObjects>

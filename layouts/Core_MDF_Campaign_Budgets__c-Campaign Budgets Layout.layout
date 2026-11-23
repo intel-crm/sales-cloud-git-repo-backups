@@ -20,8 +20,12 @@
                 <field>Core_MDF_Budget_Amt__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Core_MDF_Reimbursement_Amt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Active_ind__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -78,7 +82,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h2i000000RdE4</masterLabel>
+        <masterLabel>00hg0000000rtMk</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

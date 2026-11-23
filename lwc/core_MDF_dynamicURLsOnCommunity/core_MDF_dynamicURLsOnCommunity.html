@@ -10,7 +10,7 @@
                     <span style="padding-left :1%" class="content">{contentConfigObj.contentLabel}</span></a></p>
                 </template>
                 <template if:false={contentConfigObj.isIconRequired}>
-                    <p class="cta-item"><a style="display :flex;align-items:center;" target="_blank" href={contentConfigObj.contentUrl}>
+                    <p class="cta-item"><a style="display :flex;align-items:center;" target="_blank" href={contentConfigObj.contentUrl} title={contentConfigObj.contentHelpText}>
                     <button type="button" class="btn btn-primary">›</button>
                     <span class="content">{contentConfigObj.contentLabel}</span></a></p>
                 </template>

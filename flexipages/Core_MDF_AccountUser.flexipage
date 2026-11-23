@@ -8,6 +8,10 @@
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>enableActionsConfiguration</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>hideChatterActions</name>
                     <value>false</value>
                 </componentInstanceProperties>
@@ -26,24 +30,141 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>fieldsToMask</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>internalUserName</name>
                     <value>Intel System User</value>
                 </componentInstanceProperties>
                 <componentName>core_MDF_HistoryComponent</componentName>
-                <identifier>core_MDF_HistoryComponent</identifier>
+                <identifier>c_core_MDF_HistoryComponent</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-91761e77-6ae3-4b68-b9b9-e495418af75f</name>
+        <name>Facet-94856971-2800-4649-9181-4bf5f672d7bb</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Name</fieldItem>
+                <identifier>RecordNameField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Core_MDF_Account__c</fieldItem>
+                <identifier>RecordCore_MDF_Account_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Core_MDF_User__c</fieldItem>
+                <identifier>RecordCore_MDF_User_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Core_MDF_Active_Ind__c</fieldItem>
+                <identifier>RecordCore_MDF_Active_Ind_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Core_MDF_CreatedBy_Nm__c</fieldItem>
+                <identifier>RecordCore_MDF_CreatedBy_Nm_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-24f3b10b-5bfe-41e3-a32b-04ffec7827a3</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Core_MDF_Owner_Nm__c</fieldItem>
+                <identifier>RecordCore_MDF_Owner_Nm_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Core_MDF_Last_ModifiedBy_Nm__c</fieldItem>
+                <identifier>RecordCore_MDF_Last_ModifiedBy_Nm_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-37913ac2-458e-4828-92a8-b07de9a85539</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>force:detailPanel</componentName>
-                <identifier>force_detailPanel</identifier>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-24f3b10b-5bfe-41e3-a32b-04ffec7827a3</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-797c66ee-ca45-4390-8c7c-cbbe006c7078</name>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-37913ac2-458e-4828-92a8-b07de9a85539</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-25856df4-2e1f-4798-bd7d-98eef8d985a9</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>columns</name>
+                    <value>Facet-25856df4-2e1f-4798-bd7d-98eef8d985a9</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>horizontalAlignment</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Section</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:fieldSection</componentName>
+                <identifier>flexipage_fieldSection</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-6dea834e-51ed-497f-9847-64f12ea3bf32</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -55,31 +176,31 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-91761e77-6ae3-4b68-b9b9-e495418af75f</value>
+                    <value>Facet-94856971-2800-4649-9181-4bf5f672d7bb</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
                     <value>Standard.Tab.relatedLists</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
-                <identifier>relatedListsTab</identifier>
+                <identifier>flexipage_tab</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-797c66ee-ca45-4390-8c7c-cbbe006c7078</value>
+                    <value>Facet-6dea834e-51ed-497f-9847-64f12ea3bf32</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
                     <value>Standard.Tab.detail</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
-                <identifier>detailTab</identifier>
+                <identifier>flexipage_tab2</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-61502ce4-9fe3-461b-97d1-9c05c46be012</name>
+        <name>Facet-615f20d2-0699-44b6-a6a0-c463c607aec7</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -87,10 +208,10 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>tabs</name>
-                    <value>Facet-61502ce4-9fe3-461b-97d1-9c05c46be012</value>
+                    <value>Facet-615f20d2-0699-44b6-a6a0-c463c607aec7</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tabset</componentName>
-                <identifier>flexipage_tabset</identifier>
+                <identifier>flexipage_tabset2</identifier>
             </componentInstance>
         </itemInstances>
         <name>main</name>
@@ -99,6 +220,10 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>showLegacyActivityComposer</name>
+                    <value>false</value>
+                </componentInstanceProperties>
                 <componentName>runtime_sales_activities:activityPanel</componentName>
                 <identifier>runtime_sales_activities_activityPanel</identifier>
             </componentInstance>
@@ -110,6 +235,10 @@
     <sobjectType>Core_MDF_Partner_Node_User_Mapping__c</sobjectType>
     <template>
         <name>flexipage:recordHomeTemplateDesktop</name>
+        <properties>
+            <name>enablePageActionConfig</name>
+            <value>false</value>
+        </properties>
     </template>
     <type>RecordPage</type>
 </FlexiPage>

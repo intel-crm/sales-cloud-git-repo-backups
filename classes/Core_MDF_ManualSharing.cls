@@ -130,7 +130,8 @@ Modified By:        Date:       Changes:
             }            
             if(shareRecordList!=Null && shareRecordList.size()>0){
                 Core_MDF_Batch_ShareRecordInsert batchInstance = new Core_MDF_Batch_ShareRecordInsert(shareRecordList);
-                Id batchId = Database.executeBatch(batchInstance,500);// custom  setting - 2000
+                
+                 Id batchId =  Database.executeBatch(batchInstance,500);// custom  setting - 2000
             }
         }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}
     }
@@ -146,12 +147,14 @@ Modified By:        Date:       Changes:
     public static void sharingAccountTransfer(List<Core_MDF_Budget_Transfer_Log__c> accountTransferList) {  
         
         // Account & Channel Program To Group Ids Map
-        Map<String,id> accountChannelProgramToGroupIdsMap = new Map <String,Id>();
+        // Highlight: Unused Local Variable - 14285
+        // Map<String,id> accountChannelProgramToGroupIdsMap = new Map <String,Id>();
         
         // Record Id To Group Id Map
-        Map<Id,List<Id>> recordIdToGrpIdMap = new Map<Id,List<Id>>();
+        // Highlight: Unused Local Variable - 14285
+        // Map<Id,List<Id>> recordIdToGrpIdMap = new Map<Id,List<Id>>();
+        // String typeOfAccess = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PGM_Ext_AccessType');//External
         
-        String typeOfAccess = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PGM_Ext_AccessType');//External
         //Getting all the account ids from Account Transfer Log list - Accenture VD
         //List<Id> acctTransLogIds = new List<Id>();
         
@@ -179,8 +182,8 @@ Modified By:        Date:       Changes:
         
         //budget set
         Set<Id> pmbSet = new Set<Id>();
-        
-        //String cmdfProgram = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ChannelMDF_Program_Name');
+        // Highlight: Unused Local Variable - 14285
+        // String cmdfProgram = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ChannelMDF_Program_Name');
         
         try{
             // For loop on Core_MDF_Budget_Transfer_Log__c List
@@ -375,6 +378,7 @@ Modified By:        Date:       Changes:
                                                                        from Core_MDF_ObjRecType_Budget_FieldSetMap__mdt LIMIT 1000]){ //TWC3117-18333
                                                                            mapOfRecordTypes.put(recTypeMetaData.Core_MDF_Channel_Program_txt__c,recTypeMetaData.Core_MDF_Region_cd__c);  
                                                                        }
+        System.debug('MDT OPtimisation mapOfRecordTypes '+ mapOfRecordTypes);
         return mapOfRecordTypes;
     }
     /***************************************************************************************************** 

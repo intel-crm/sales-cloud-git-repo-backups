@@ -13,6 +13,7 @@
         <name>Core_MDF_Category__c</name>
     </fields>
     <fields>
+        <help><!-- Multiple values can be stored by semi colon separated --></help>
         <label><!-- Value --></label>
         <name>Core_MDF_Value__c</name>
     </fields>

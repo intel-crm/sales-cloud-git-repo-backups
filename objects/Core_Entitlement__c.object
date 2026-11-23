@@ -154,42 +154,6 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
-        <fullName>Approval_Type__c</fullName>
-        <label>Approval Type</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Manual</fullName>
-                    <default>true</default>
-                    <label>Manual</label>
-                </value>
-                <value>
-                    <fullName>Automatic</fullName>
-                    <default>false</default>
-                    <label>Automatic</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>Business_Types_Code__c</fullName>
-        <externalId>false</externalId>
-        <inlineHelpText>Filling this field will Automatically create Business Types</inlineHelpText>
-        <label>Business Types Code</label>
-        <length>80</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_AGS_Role_Id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>AGS Role</label>
@@ -217,9 +181,9 @@
                     <label>Order Management</label>
                 </value>
                 <value>
-                    <fullName>Design and Technology Content (Resource &amp; Design Center)</fullName>
+                    <fullName>Technical Content &amp; Tools (Resource &amp; Design Center and others)</fullName>
                     <default>false</default>
-                    <label>Design and Technology Content (Resource &amp; Design Center)</label>
+                    <label>Technical Content &amp; Tools (Resource &amp; Design Center and others)</label>
                 </value>
                 <value>
                     <fullName>Pricing</fullName>
@@ -232,9 +196,9 @@
                     <label>Support</label>
                 </value>
                 <value>
-                    <fullName>Configure To Order</fullName>
+                    <fullName>Data Center Blocks Configurator</fullName>
                     <default>false</default>
-                    <label>Configure To Order</label>
+                    <label>Data Center Blocks Configurator</label>
                 </value>
                 <value>
                     <fullName>Partner Portal</fullName>
@@ -242,9 +206,14 @@
                     <label>Partner Portal</label>
                 </value>
                 <value>
-                    <fullName>Intel® Partner Investment Center</fullName>
+                    <fullName>Programmable Solutions Group</fullName>
                     <default>false</default>
-                    <label>Intel® Partner Investment Center</label>
+                    <label>Programmable Solutions Group</label>
+                </value>
+                <value>
+                    <fullName>Consolidated Co-marketing Platform</fullName>
+                    <default>false</default>
+                    <label>Consolidated Co-marketing Platform</label>
                 </value>
                 <value>
                     <fullName>Intel Partner Alliance (IPA)</fullName>
@@ -252,98 +221,15 @@
                     <label>Intel Partner Alliance (IPA)</label>
                 </value>
                 <value>
-                    <fullName>Intel Quote Request</fullName>
+                    <fullName>Intel® Partner Investment Center</fullName>
                     <default>false</default>
-                    <label>Intel Quote Request</label>
-                </value>
-                <value>
-                    <fullName>Data Center Blocks Configurator</fullName>
-                    <default>false</default>
-                    <label>Data Center Blocks Configurator</label>
-                </value>
-                <value>
-                    <fullName>Programmable Solutions Group</fullName>
-                    <default>false</default>
-                    <label>Programmable Solutions Group</label>
-                </value>
-                <value>
-                    <fullName>Technical Content &amp; Tools (Intel Developer Zone &amp; Others)</fullName>
-                    <default>false</default>
-                    <label>Technical Content &amp; Tools (Intel Developer Zone &amp; Others)</label>
-                </value>
-                <value>
-                    <fullName>Return for Credit</fullName>
-                    <default>false</default>
-                    <label>Return for Credit</label>
-                </value>
-                <value>
-                    <fullName>OLO (Online Label Ordering)</fullName>
-                    <default>false</default>
-                    <label>OLO (Online Label Ordering)</label>
-                </value>
-                <value>
-                    <fullName>CIM-PRIME EOL - New Programs</fullName>
-                    <default>false</default>
-                    <label>CIM-PRIME EOL - New Programs</label>
-                </value>
-                <value>
-                    <fullName>CDM (Consumption Data Management)</fullName>
-                    <default>false</default>
-                    <label>CDM (Consumption Data Management)</label>
-                </value>
-                <value>
-                    <fullName>Test Entitlements - Access and Entitlements</fullName>
-                    <default>false</default>
-                    <label>Test Entitlements - Access and Entitlements</label>
-                </value>
-                <value>
-                    <fullName>Retail Partner Systems (RPS)</fullName>
-                    <default>false</default>
-                    <label>Retail Partner Systems (RPS)</label>
-                </value>
-                <value>
-                    <fullName>Retail partners</fullName>
-                    <default>false</default>
-                    <label>Retail partners</label>
-                </value>
-                <value>
-                    <fullName>EPS Verified</fullName>
-                    <default>false</default>
-                    <label>EPS Verified</label>
-                </value>
-                <value>
-                    <fullName>Intel On Demand</fullName>
-                    <default>false</default>
-                    <label>Intel On Demand</label>
-                </value>
-                <value>
-                    <fullName>Intel Developer Cloud Enterprise</fullName>
-                    <default>false</default>
-                    <label>Intel Developer Cloud Enterprise</label>
-                </value>
-                <value>
-                    <fullName>Configure To Order &amp; Configure Price Quote Portals</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Configure To Order &amp; Configure Price Quote Portals</label>
-                </value>
-                <value>
-                    <fullName>Consolidated Co-marketing Platform</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Consolidated Co-marketing Platform</label>
+                    <label>Intel® Partner Investment Center</label>
                 </value>
                 <value>
                     <fullName>Programmable Solutions Group – Non Partner</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Programmable Solutions Group – Non Partner</label>
-                </value>
-                <value>
-                    <fullName>RPS Agency</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>RPS Agency</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -373,37 +259,11 @@
         <deleteConstraint>Restrict</deleteConstraint>
         <label>ERPM Engagement</label>
         <referenceTo>Core_ERPM_Engagement__c</referenceTo>
-        <relationshipLabel>Entitlement Details</relationshipLabel>
         <relationshipName>ERPM_Engagements</relationshipName>
-        <required>false</required>
+        <required>true</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_Entitlement_Type__c</fullName>
-        <description>Type of Entitlement, whether it is Salesforce based Internal Entitlement or External AGS Entitlement.</description>
-        <label>Entitlement Type</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>AGS</fullName>
-                    <default>false</default>
-                    <label>AGS</label>
-                </value>
-                <value>
-                    <fullName>Salesforce</fullName>
-                    <default>false</default>
-                    <label>Salesforce</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
     </fields>
     <fields>
         <fullName>Core_Help_Text__c</fullName>
@@ -411,7 +271,7 @@
         <label>Help Text</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -502,6 +362,11 @@
                     <label>Datacenter</label>
                 </value>
                 <value>
+                    <fullName>Co-Inv</fullName>
+                    <default>false</default>
+                    <label>Co-Inv</label>
+                </value>
+                <value>
                     <fullName>Service Provider Co-Marketing Fund (SPCF)</fullName>
                     <default>false</default>
                     <label>Service Provider Co-Marketing Fund (SPCF)</label>
@@ -522,201 +387,24 @@
                     <label>Cloud Service Provider Benefits</label>
                 </value>
                 <value>
-                    <fullName>Value Exchange</fullName>
-                    <default>false</default>
-                    <label>Value Exchange</label>
-                </value>
-                <value>
-                    <fullName>Communities</fullName>
-                    <default>false</default>
-                    <label>Communities</label>
-                </value>
-                <value>
                     <fullName>Retail Marketing Funds (RMF)</fullName>
                     <default>false</default>
                     <label>Retail Marketing Funds (RMF)</label>
                 </value>
                 <value>
-                    <fullName>Intel On Demand</fullName>
+                    <fullName>Channel MDF (CMDF)</fullName>
                     <default>false</default>
-                    <label>Intel On Demand</label>
+                    <label>Channel MDF (CMDF)</label>
                 </value>
                 <value>
-                    <fullName>Channel MDF</fullName>
+                    <fullName>Value Exchange</fullName>
                     <default>false</default>
-                    <label>Channel MDF</label>
+                    <label>Value Exchange</label>
                 </value>
                 <value>
-                    <fullName>IPA Marketing Development Fund (MDF)</fullName>
+                    <fullName>EGF</fullName>
                     <default>false</default>
-                    <label>IPA Marketing Development Fund (MDF)</label>
-                </value>
-                <value>
-                    <fullName>Ecosystem Extension Fund (EEF)</fullName>
-                    <default>false</default>
-                    <label>Ecosystem Extension Fund (EEF)</label>
-                </value>
-                <value>
-                    <fullName>Co-GTM</fullName>
-                    <default>false</default>
-                    <label>Co-GTM</label>
-                </value>
-                <value>
-                    <fullName>Client Co-Marketing Fund (CCF)</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Client Co-Marketing Fund (CCF)</label>
-                </value>
-                <value>
-                    <fullName>Data Center Co-Marketing Fund (DCF)</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Data Center Co-Marketing Fund (DCF)</label>
-                </value>
-                <value>
-                    <fullName>Silicon as a Service (SiaaS)</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Silicon as a Service (SiaaS)</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>ER_Program__c</fullName>
-        <label>Engagement Code</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>DZP</fullName>
-                    <default>false</default>
-                    <label>DZP</label>
-                </value>
-                <value>
-                    <fullName>IQR</fullName>
-                    <default>false</default>
-                    <label>IQR</label>
-                </value>
-                <value>
-                    <fullName>PSG</fullName>
-                    <default>false</default>
-                    <label>PSG</label>
-                </value>
-                <value>
-                    <fullName>RPS_Agency</fullName>
-                    <default>false</default>
-                    <label>RPS_Agency</label>
-                </value>
-                <value>
-                    <fullName>Dev_Cloud_Ent</fullName>
-                    <default>false</default>
-                    <label>Dev_Cloud_Ent</label>
-                </value>
-                <value>
-                    <fullName>Siaas_Service</fullName>
-                    <default>false</default>
-                    <label>Siaas_Service</label>
-                </value>
-                <value>
-                    <fullName>EPS_Verified_C</fullName>
-                    <default>false</default>
-                    <label>EPS_Verified_C</label>
-                </value>
-                <value>
-                    <fullName>IPS</fullName>
-                    <default>false</default>
-                    <label>IPS</label>
-                </value>
-                <value>
-                    <fullName>PSG_SEP</fullName>
-                    <default>false</default>
-                    <label>PSG_SEP</label>
-                </value>
-                <value>
-                    <fullName>OnDemand_Rev</fullName>
-                    <default>false</default>
-                    <label>OnDemand_Rev</label>
-                </value>
-                <value>
-                    <fullName>ESR</fullName>
-                    <default>false</default>
-                    <label>ESR</label>
-                </value>
-                <value>
-                    <fullName>IBR</fullName>
-                    <default>false</default>
-                    <label>IBR</label>
-                </value>
-                <value>
-                    <fullName>IIPAM</fullName>
-                    <default>false</default>
-                    <label>IIPAM</label>
-                </value>
-                <value>
-                    <fullName>ISvC_Auth_Cntct</fullName>
-                    <default>false</default>
-                    <label>ISvC_Auth_Cntct</label>
-                </value>
-                <value>
-                    <fullName>PFT</fullName>
-                    <default>false</default>
-                    <label>PFT</label>
-                </value>
-                <value>
-                    <fullName>QDMS</fullName>
-                    <default>false</default>
-                    <label>QDMS</label>
-                </value>
-                <value>
-                    <fullName>RPS_Retailer</fullName>
-                    <default>false</default>
-                    <label>RPS_Retailer</label>
-                </value>
-                <value>
-                    <fullName>Tend_Mgmt</fullName>
-                    <default>false</default>
-                    <label>Tend_Mgmt</label>
-                </value>
-                <value>
-                    <fullName>WebQuote</fullName>
-                    <default>false</default>
-                    <label>WebQuote</label>
-                </value>
-                <value>
-                    <fullName>WOM</fullName>
-                    <default>false</default>
-                    <label>WOM</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>Entitlement_B2B_B2C_Indicator__c</fullName>
-        <description>This field will tell whether the given entitlement will follow B2B or B2C path for Azure user provisioning</description>
-        <label>Entitlement B2B / B2C Indicator</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>B2B</fullName>
-                    <default>false</default>
-                    <label>B2B</label>
-                </value>
-                <value>
-                    <fullName>B2C</fullName>
-                    <default>false</default>
-                    <label>B2C</label>
+                    <label>EGF</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -738,9 +426,10 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>Core_Display_Name__c</columns>
-        <columns>Core_IsActive__c</columns>
+        <columns>Core_Permission_Set_API_Nm__c</columns>
         <columns>Core_ERPM_Engagement_Id__c</columns>
         <columns>Core_AGS_Role_Id__c</columns>
+        <columns>Core_IsActive__c</columns>
         <columns>Core_Category__c</columns>
         <columns>Core_Sub_Category__c</columns>
         <columns>Core_Help_Text__c</columns>
@@ -748,86 +437,11 @@
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>Engagement_List</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Display_Name__c</columns>
-        <columns>Core_IsActive__c</columns>
-        <columns>Core_ERPM_Engagement_Id__c</columns>
-        <columns>Core_AGS_Role_Id__c</columns>
-        <columns>Core_Category__c</columns>
-        <columns>Core_Sub_Category__c</columns>
-        <columns>Core_Help_Text__c</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>CREATEDBY_USER</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_AGS_Role_Id__c</field>
-            <operation>equals</operation>
-        </filters>
-        <label>Engagement List - All</label>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Entitlement_List</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Display_Name__c</columns>
-        <columns>Core_IsActive__c</columns>
-        <columns>Core_ERPM_Engagement_Id__c</columns>
-        <columns>Core_AGS_Role_Id__c</columns>
-        <columns>Core_Category__c</columns>
-        <columns>Core_Sub_Category__c</columns>
-        <columns>Core_Help_Text__c</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_IsActive__c</field>
-            <operation>equals</operation>
-            <value>1</value>
-        </filters>
-        <label>Entitlement List - Active</label>
         <language>en_US</language>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Entitlement_List_Permission_Sets</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Display_Name__c</columns>
-        <columns>Core_IsActive__c</columns>
-        <columns>Core_ERPM_Engagement_Id__c</columns>
-        <columns>Core_AGS_Role_Id__c</columns>
-        <columns>Core_Permission_Set_API_Nm__c</columns>
-        <columns>Core_Public_Group_API_Nm__c</columns>
-        <columns>Core_Category__c</columns>
-        <columns>Core_Sub_Category__c</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_AGS_Role_Id__c</field>
-            <operation>notEqual</operation>
-        </filters>
-        <filters>
-            <field>Core_IsActive__c</field>
-            <operation>equals</operation>
-            <value>1</value>
-        </filters>
-        <label>Entitlement List - Permission Sets</label>
-        <language>en_US</language>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
     </listViews>
     <nameField>
         <label>Entitlement Name</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>
     <pluralLabel>Entitlement Details</pluralLabel>

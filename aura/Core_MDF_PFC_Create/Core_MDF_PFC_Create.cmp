@@ -1,10 +1,3 @@
-<!--
-  @description       : 
-  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
-  @group             : 
-  @last modified on  : 01-22-2026
-  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
--->
 <aura:component controller="Core_MDF_PartnerFundClaim"
     implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,lightning:actionOverride,force:lightningQuickActionWithoutHeader">
     <!--Style-->
@@ -18,19 +11,26 @@
         width: 70%;
         max-width: 75rem;
         min-width: 40rem;
-        }
+        }        
+        
     </aura:html>
 
-    <ltng:require styles="{!$Resource.Core_MDF_SLDS262 + '/styles/salesforce-lightning-design-system.css'}" />
+    <aura:if isTrue="{!v.isPortal}">
+        <ltng:require styles="{!$Resource.Core_MDF_SLDS262 + '/styles/salesforce-lightning-design-system.css'}" />
+    </aura:if>
+    <!-- <ltng:require styles="{!$Resource.Core_MDF_SLDS262 + '/styles/salesforce-lightning-design-system.css'}" /> -->
     <aura:attribute name="simpleNewClaim" type="PartnerFundClaim" default="{ 'sobjectType': 'PartnerFundClaim',
                                                                            'Description':'',
                                                                            'Amount':'',
                                                                            'Title':''
                                                                            }" />
+     <lightning:overlayLibrary aura:id="overlayLib"/><!--Added-->
+    <aura:attribute name="recordId" type="String"/>
     <aura:attribute name="accept" type="List" description="list of file formats which are allowed to upload" />
     <aura:attribute name="fileName" type="String" default="" />
     <aura:attribute name="invoiceDocId" type="String" default="" />
     <aura:attribute name="isClaimEzyEnabled" type="Boolean" default="false" />
+    <aura:attribute name="base64String" type="String" />
     <aura:attribute name="changedFieldsfromUI" type="String[]" />
     <aura:attribute name="claimSubSearchString" type="String" default="" /><!-- added by Vaishali for owner change-->
     <aura:attribute name="claimSubSearchCriteria" type="String" default="" /><!-- added by Vaishali for owner change-->
@@ -51,6 +51,7 @@
     <!--added by Vaishali for owner change-->
     <aura:attribute name="currList" type="List" />
     <aura:attribute name="tempStatus" type="String" />
+    
     <aura:attribute name="ObjectName" type="String" default="PartnerFundClaim" access="global" />
     <aura:attribute name="fieldName" type="String" default="Core_MDF_Currency__c" access="global" />
     <aura:attribute name="isError" type="Boolean" default="false" />
@@ -108,9 +109,10 @@
     <aura:attribute name="activityStatusCommaSeparated" type="String" />
     <aura:attribute name="isPortal" type="boolean" default="false" />
     <aura:attribute name="activityRegion" type="String" default="" />
+    <aura:attribute name="bankRegion" type="String" default="" />
     <aura:attribute name="activityClosureTypeList" type="String[]" />
     <aura:attribute name="activityClosureTypeSeparated" type="String" />
-    <aura:attribute name="isEdit" type="Boolean" default="false" />
+    <aura:attribute name="isEdit" type="Boolean" default="false" /><!-- Naveen-SubClaim -->
     <!--Attribute to Store Clone Button Variable-->
     <aura:attribute name="isCloneClaim" type="Boolean" description=" tells if it is clone record" />
     <!--To hold error msg (permission/status), in case of claim create from activity-->
@@ -121,6 +123,7 @@
     <aura:attribute name="sObjectId" type="Id" />
     <!--Attribute to hold escalation objectID coming from lookup cmp-->
     <aura:attribute name="escObjectId" type="Id" />
+   
     <!--Attribute to check current user is CCR or CCRM -->
     <aura:attribute name="isUserClaimCaseReviewerOrManager" type="boolean" />
     <!--Attribute to check current user is mystery shopper -->
@@ -135,7 +138,7 @@
     <!--Attribute to hold activity subtypes-->
     <aura:attribute name="activitySubTypesMap" type="map" default="" />
     <!--Attribute to hold activity budget-->
-    <aura:attribute name="activityBudgetType" type="String" default=""/>
+    <aura:attribute name="activityBudgetType" type="String" default="" />
     <!--Flag to check current updated claim country existance into fetched acitivity countries-->
     <aura:attribute name="isClaimCountryAvailInAct" type="Boolean" />
     <!--Flag to check current updated claim bank existance into fetched bank mapping values-->
@@ -164,7 +167,7 @@
 
     <aura:attribute name="ContentDocumentIds" type="String[]" default=""
         description="Stores the Uploaded Document Ids" />
-    <aura:attribute name="auditDocument" type="Core_MDF_Audit_Document__c[]" default="[]" />
+    <aura:attribute name="auditDocument" type="Core_MDF_Audit_Document__c[]" />
 
     <!-- Attribute to check file upload condition -->
     <aura:attribute name="checkfileuploadcondition" type="Boolean" default="false" />
@@ -212,7 +215,7 @@
 
     <!-- Boolean Attribute Used for Showing Or Hiding Applicable VAT Percentage Picklist field-->
     <aura:attribute name="showApplicableVatPercentage" type="Boolean" default="false" />
-    <aura:attribute name="applicableVATPercentageMap" type="Map"/>
+    <aura:attribute name="applicableVATPercentageMap" type="Map" />
 
     <!-- Boolean Attribute Used for Showing Or Hiding Vat Opt In Picklist field-->
     <aura:attribute name="vatOptInPicklistVisible" type="Boolean" default="false" />
@@ -232,26 +235,26 @@
     <aura:attribute name="showEscLookupPill" type="boolean" default="false" />
     <!-- Boolean Attribute to indicate if activity is proposal based-->
     <aura:attribute name="isProposalbasedInd" type="boolean" default="false" />
+    <!--<aura:attribute name="isCMDFPgm" type="boolean" default="false" />-->
     <!--to show hide SPIF section-->
     <aura:attribute name="isSpifSectionVisible" type="Boolean" default="true" />
     <aura:attribute name="activeSections" type="List" default="['spifAccordionSection']" />
     <aura:attribute name="isIPAPgm" type="boolean" />
     <!--Flag to display confirmation popup to set the claim to PIC Pending-->
     <aura:attribute name="showConfirmationPopupForPIC" type="boolean" default="false" />
-
     <!--attribute to store program name from activity - added by VB -->
     <aura:attribute name="programName" type="String" description="To store the value of program from activity" />
-    
-
     <!--Flag to map Core_MDF_Log_Info_txt__c field -->
     <aura:attribute name="byPassLogInfoFieldMapping" type="Boolean" default="false" />
     <aura:attribute name="isDocSubmissionMandatory" type="Boolean" default="false" />
     <aura:attribute name="isClaimEligibleForPICReview" type="Boolean" default="false" />
     <aura:attribute name="isAllMandatoryDocumentTypesSubmitted" type="Boolean" default="false" />
-    <aura:attribute name="isClaimSubmittedForPIC" type="Boolean" default="false"/>
-    <aura:attribute name="localizedBudgetType" type="Boolean" default="false" description="To hold the localized budget type value"/>
-    <aura:attribute name="isNewClaimCreate" type="Boolean" default="false" description="Indicates claim creation using standard new button and from campaign"/>
-    <aura:attribute name="isDocumentTypeNotSelected" type="Boolean" default="false"/>
+    <aura:attribute name="isClaimSubmittedForPIC" type="Boolean" default="false" />
+    <aura:attribute name="localizedBudgetType" type="Boolean" default="false"
+        description="To hold the localized budget type value" />
+    <aura:attribute name="isNewClaimCreate" type="Boolean" default="false"
+        description="Indicates claim creation using standard new button and from campaign" />
+    <aura:attribute name="isDocumentTypeNotSelected" type="Boolean" default="false" />
     <aura:attribute name="vatMdtRecord" type="Object" description="To Hold the vat metadata record based on the bank's legal entity code" />
     <aura:attribute name="oldBankId" type="Id" description="To Hold bank Id in edit scenario" />
     <aura:attribute name="oldVATOptIn" type="String" description="To Hold VAT OptIn value in edit scenario" />
@@ -259,53 +262,84 @@
     <aura:handler event="c:Core_MDF_ThirdPartyPOPEvent" action="{!c.handle3rdPartyPOPEvent}" />
     <aura:handler name="popSubmitEvent" event="c:popSubmitEvent" action="{!c.handlePopSubmitEvent}" />
     <aura:handler name="popCloseEvent" event="c:popCloseEvent" action="{!c.handlePopCloseEvent}" />
-    
+    <aura:attribute name="region" type="String" />
+    <aura:attribute name="selMarketingKeyPerFIndOnAct" type="String" description="To hold the marketing key performance indicators selected on the activity" default=""/>
     <aura:attribute name="isNEXActivity" type="Boolean" default="false" description="To hold the NEX indicator from activity"/>
-    <aura:attribute name="countryCodeToRegionMap" type="Map" description="Map to store Country Code To Geo Mapping"/>
-    
+    <aura:attribute name="kpiPLValueToFieldAPIName" type="Object" description="To hold the object of values where Key is the Picklist value and value is the quantity field API Name"/>
+    <aura:attribute name="kpiPLValueToFieldLabel" type="Object" description="To hold the object of values where Key is the Picklist value and value is the localized field label"/>
+    <aura:attribute name="countryCodeToRegionMap" type="Map" description="To store bank "/>
+    <!--<aura:attribute name="kpiQtyFieldValues" type="Map" default="{}" description="To hold the values of the KPI quantity fields selected on Activity"/> -->
     <aura:attribute name="isClearedOnClone" type="Boolean" description="To determine whether the value on KPI fields should be removed or retained" default="true"/>
     <aura:attribute name="isDecimalApplicable" type="Boolean" description="To determine whether the decimal values are applicable for IPA KPI Metrics or not" default="false"/>
     <aura:attribute name="showExcludedTaxMessage" type="Boolean" description="To show the excluded tax message when the claim's execution start date is from 2025" default="false"/>
+    <!-- Attribute to store Domain Type from Activity - RP -->
+    <aura:attribute name="domainTypePFR" type="String" description="To store Domain Type from Activity" />
     <aura:attribute name="isCoGtm" type="Boolean" default="false" />
     <!--IPA-Jegan-->
     <aura:attribute name="campaignPurposeWrapper" type="Object"/>
     <aura:attribute name="isOutcomeBased" type="Boolean" default="false" />
+    <!--<aura:attribute name="tacticMetricsEditable" type="Boolean" default="false" />-->
     <aura:attribute name="tacticMetricsEditable" type="Boolean"/>
     <aura:attribute name="columns" type="List" />
     <aura:attribute name="rows" type="List" />
+    <aura:attribute name="businessPurposeRows" type="List" default="[]" />
+    <aura:attribute name="marketingPurposeRows" type="List" default="[]" />
     <aura:attribute name="editableTacticMetric" type="Boolean" default="true" />
     <aura:attribute name="claimAttributeList" type="Object[]" />
-    <aura:attribute name="reimbursableAmountUsd" type="Decimal" />
+    <aura:attribute name="reimbursableAmountUsd" type="Decimal" /><!--@@Update the name-->
     <aura:attribute name="claimDataOnLoad" type="PartnerFundClaim" description="To hold the claim details during the load during claim edit"/>
     <aura:attribute name="kpiDetailsOnLoad" type="Object" description="To hold the kpi details during the load of the claim UI during claim edit"/>
-    <aura:attribute name="claimFieldsForAIPIC" type="Array" Description="To hold the list of claim fields and KPI fields which indicates whether the AI CDB callout should be triggered or not"/>
+   <!--Commented by VB - AI PIC-->
+    <!--<aura:attribute name="tacticsMetricsOnLoad" type="Object" description="To hold the tactics metrics details during the load of the claim UI during claim edit"/>
+    <aura:attribute name="tacticsSpendingsOnLoad" type="Object" description="To hold the tactics spendings details during the load of the claim UI during claim edit"/> -->    <aura:attribute name="claimFieldsForAIPIC" type="Array" Description="To hold the list of claim fields and KPI fields which indicates whether the AI CDB callout should be triggered or not"/>
     <aura:attribute name="hasAnyChangeOnAuditDoc" type="Boolean" Description="Indicates any change in the audit document during claim edit"/>
-    <aura:attribute name="isProgramEnabledForAIPIC" type="Boolean" default="false"/>
-    <aura:attribute name="isActivityPurposeVisible" type="Boolean" default="true" />
-    <aura:attribute name="isCampaignPurposeVisible" type="Boolean" default="false" />
-    <aura:attribute name="tableTitle" type="String"/>
-    <aura:attribute name="isOutcomeBasedAccountBasedAct" type="Boolean" default="false"/>
-    <aura:attribute name="isOutcomeBasedActivity" type="Boolean" default="false"/>
-    <aura:attribute name="outcomeDesc" type="string" default="" />
-    <aura:attribute name="subClaimList" type="PartnerFundClaim[]" />
-    <aura:attribute name="isSuperClaim" type="Boolean" default="false"/>
-    <aura:attribute name="isOutcomeBasedIntUrl" type="Boolean" default="false" /> <!--Added by AJ-->
-    <aura:attribute name="isOutcomeBasedExtUrl" type="Boolean" default="false" /> <!--Added by AJ-->
-    <aura:attribute name="actionType" type="String" />
+
     
+    <aura:attribute name="isAmountInvalid" type="Boolean" default="false"/>
+    <aura:attribute name="isProgramEnabledForAIPIC" type="Boolean" default="false"/>
+
+    <aura:attribute name="isActivityPurposeVisible" type="Boolean" default="true" /> <!-- TWC3117-14942 -->
+    <aura:attribute name="isCampaignPurposeVisible" type="Boolean" default="false" /> <!-- TWC3117-14942 -->
+    <aura:attribute name="tableTitle" type="String"/><!-- TWC3117-14942 -->
+    <aura:attribute name="isOutcomeBasedAccountBasedAct" type="Boolean" default="false"/><!-- TWC3117-15268 -->
+    <aura:attribute name="isOutcomeBasedActivity" type="Boolean" default="false"/><!-- anushya TWC3117-14374 -->
+
+    <aura:attribute name="outcomeDesc" type="string" default="" /><!-- TWC3117-15268 -->
+    <aura:attribute name="subClaimList" type="PartnerFundClaim[]" /><!--TWC3117-15268-->
+    <aura:attribute name="isSuperClaim" type="Boolean" default="false"/><!--TWC3117-15268-->
+    <aura:attribute name="isSubClaim" type="Boolean" default="false"/>
+
+    <aura:attribute name="isOutcomeBasedIntUrl" type="Boolean" default="false" /> <!--Added by AJ-->
+	<aura:attribute name="isOutcomeBasedExtUrl" type="Boolean" default="false" /> <!--Added by AJ-->
+
+
+    <!--added by VB - IGHF dependency-->
+    <aura:attribute name="listIconSVGPath" type="String" description="SVG Icon for activity lookup"/>
+
+    <aura:attribute name="actionType" type="String" />
+
     <!--Used to identify any change in the audit document(fired from Core_MDF_ManageAuditDocument_Revamp)-->
     <aura:handler name="enableSubmitButtonEvent" event="c:Core_MDF_EnableSubmitbuttonEvent"
         action="{!c.handleDocumentTypeChange}" />
+    
     <div aura:id="modalIdForCommunityRecord" role="dialog" tabindex="-1" aria-labelledby="header43"
         class="slds-modal slds-modal_medium slds-fade-in-open">
-   
         <aura:if isTrue="{!v.spinner}">
             <lightning:spinner class="spnr" alternativeText="Loading" size="medium" variant="brand" />
         </aura:if>
-        <div class="{!v.isNewClaimCreate ? 'slds-modal__container' : 'slds-modal__container claimClone-modal'}">
+        <!--<div class="{!or(v.isClaimEdit, v.isNewClaimCreate) ? 'slds-modal__container' : 'slds-modal__container claimClone-modal'}"> -->
+            <div class="{!v.isNewClaimCreate ? 'slds-modal__container' : 'slds-modal__container claimClone-modal'}">
             <!-- Heading (Header of the Modal) -->
             <div class="slds-modal__header">
-                <lightning:buttonIcon iconName="utility:close" variant="bare" size="large" class="slds-button slds-button_icon slds-modal__close" onclick="{! c.closeModal }" alternativeText="Close" />
+
+                
+                    <!--<lightning:buttonIcon iconName="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" onclick="{! c.closeModal }" 
+                    alternativeText="Close" />-->
+
+                    <!-- <aura:if isTrue="{!not(v.hideHeaderClose)}"> -->
+                        <lightning:buttonIcon iconName="utility:close" variant="bare" size="large" class="slds-button slds-button_icon slds-modal__close" onclick="{! c.closeModal }" alternativeText="Close" />
+                    <!-- </aura:if> -->
+                
                 <!-- <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse .modalCloseButton" title="Close"
                     onclick="{!c.closeModal}">
                      <lightning:icon class="slds-icon" iconName="utility:close" alternativeText="Close" />  [commented line]
@@ -317,6 +351,7 @@
                     <lightning:progressIndicator type="path" currentStep="{!v.currentStep}" variant="base">
                         <lightning:progressStep label="{!$Label.c.Core_MDF_Claim_Details}" value="1"
                             onclick="{!c.navigateOverTab}" />
+                            <!--IPA-Jegan-->
                         <aura:if isTrue="{!or(v.isKpiSectionVisible, v.isOutcomeBased)}">
                             <lightning:progressStep label="{!$Label.c.Core_MDF_KpiSection_Label}" value="2"
                                 onclick="{!c.navigateOverTab}" />
@@ -326,6 +361,7 @@
                                 onclick="{!c.navigateOverTab}" />
                         </aura:if>
                     </lightning:progressIndicator>
+                  
                 </aura:if>
 
                 <!--Edit changes-->
@@ -339,19 +375,20 @@
                                 <h2 id="header43" class="slds-text-heading--medium">{!$Label.c.Core_MDF_EditClaim}</h2>
                             </aura:set>
                         </aura:if>
-                    </aura:set>
+                    </aura:set>                     
                 </aura:if>
                 <br />
 
             </div>
             <aura:if isTrue="{!or(v.isValidActivityToCreateClaim ,v.isClaimEditable,v.isClaimEdit)}">
-                <div class="slds-modal__content slds-p-around--medium">
+            <!--<aura:if isTrue="{not(!v.isClaimEdit))}">-->
+                <div class="slds-modal__content slds-p-around--medium modalBody">
                     <div class="{!v.currentStep == '1' ? 'slds-show' : 'slds-hide'}" style="color:black">
                         <!-- Display the new claim form -->
 
                         <div class="slds-grid slds-wrap">
-			
-                        <!--GEN AI Assisted Claim upload Start-->
+
+                            <!--GEN AI Assisted Claim upload Start-->
                             <aura:if isTrue="{!and(v.isClaimEzyEnabled, not(v.isClaimEdit))}">
                                 <div class="slds-p-around_small">
                                     <div style="color:blue;">{!$Label.c.Core_MDF_Claim_ezy_UploadText1}</div>
@@ -363,17 +400,19 @@
                                 </div>
                             </aura:if>
                             <!--GEN AI Assisted Claim upload End-->
-                        
-			
+
                             <!--Title and activity lookup will be swap,
 							 actitvy lookup will be first and title will be next to it,  in case of retail-->
                             <aura:if isTrue="{!v.isClaimActivitySwap}">
                                 <div class="slds-col slds-size_1-of-2 slds-p-around_small">
                                     <!--activity will be in disabled mode , in case of edit/cone-->
                                     <aura:if isTrue="{!v.activityDisabled}">
-                                        <lightning:input aura:id="ActIdEditRetail" name="ActivityIdEdit"
-                                            label="{!$Label.c.Core_MDF_Activity_OutcomeBasedCampaign_Title}" value="{!v.activitySearchString}"
-                                            disabled="true" />
+                                        <!--<lightning:input aura:id="ActIdEditRetail" name="ActivityIdEdit"
+                                            label="{!$Label.c.Core_MDF_Request}" value="{!v.activitySearchString}"
+                                            disabled="true" />-->
+                                        <lightning:input aura:id="ActIdEdit" name="ActivityIdEdit"
+                                                label="{!$Label.c.Core_MDF_Activity_OutcomeBasedCampaign_Title}" value="{!v.activitySearchString}"
+                                                disabled="true" /><!--TWC3117-15268-->
                                         <aura:set attribute="else">
                                             <c:Core_MDF_LightningSObjectLookUp aura:id="activityIdRetail"
                                                 label="{!$Label.c.Core_MDF_Activity_OutcomeBasedCampaign_Title}"
@@ -394,7 +433,6 @@
                                         value="{!v.simpleNewClaim.Title}" title="{!$Label.c.Core_MDF_Title_Help}"
                                         disabled="{!v.isEditDisabled}" />
                                 </div>
-
                                 <aura:set attribute="else">
                                     <!-- Title will be first and actitvy lookup will be next to it,  in case of CCP-->
                                     <div class="slds-col slds-size_1-of-2 slds-p-around_small">
@@ -406,9 +444,12 @@
                                     <div class="slds-col slds-size_1-of-2 slds-p-around_small">
                                         <!--activity will be in disabled mode , in case of edit/cone-->
                                         <aura:if isTrue="{!v.activityDisabled}">
+                                            <!--<lightning:input aura:id="ActIdEdit" name="ActivityIdEdit"
+                                                label="{!$Label.c.Core_MDF_Request}" value="{!v.activitySearchString}"
+                                                disabled="true" />-->
                                             <lightning:input aura:id="ActIdEdit" name="ActivityIdEdit"
                                                 label="{!$Label.c.Core_MDF_Activity_OutcomeBasedCampaign_Title}" value="{!v.activitySearchString}"
-                                                disabled="true" />
+                                                disabled="true" /><!--TWC3117-15268-->
 
                                             <aura:set attribute="else">
                                                 <!--<aura:if isTrue="{!v.showActivityLookupPill}">-->
@@ -430,7 +471,7 @@
 
                             <!--Escalation Lookup will be disabled for retail claim submitter,while claim create from escalation-->
                             <!--if user is claim case reviewer/manager , in case of edit or if activity is not selected-->
-                            <aura:if isTrue = "{!v.simpleNewClaim.RequestId}">
+                            <aura:if isTrue = "{!v.simpleNewClaim.RequestId}"><!-- TWC3117-15268 -->
                             <aura:if isTrue="{!v.escalationDisabled}">
                                 <div class="slds-col slds-size_1-of-2 slds-p-around_small">
                                     <lightning:input aura:id="escIdEdit" name="EscalationIdEdit"
@@ -469,6 +510,7 @@
                                 </div>
                             </aura:if> -->
                             <!--claim owner for claim case reviewer/manager  -->
+                            
                             <aura:if isTrue="{!v.claimSubDisabled}">
                                 <div class="slds-col slds-size_2-of-2 slds-p-around_small">
                                     <lightning:input aura:id="claimSubmitter" name="Claim Submitter"
@@ -481,8 +523,8 @@
                                             <c:Core_MDF_LightningSObjectLookUp aura:id="claimownerId"
                                                 label="Claim Submitter" pluralLabel="Claim Submitters"
                                                 sObjectAPIName="User" instanceId="claimownerId" required="true"
+                                                listIconSVGPath="/resource/Core_MDF_SLDS262/icons/standard-sprite/svg/symbols.svg#client"
                                                 listIconClass="slds-icon-standard-user"
-												listIconSVGPath="/resource/Core_MDF_SLDS262/icons/standard-sprite/svg/symbols.svg#client"
                                                 searchString="{!v.claimSubSearchString}" returnFields="Name,Email"
                                                 filterCriteria="{!'Name LIKE @quote;%' + v.claimSubSearchString + '%@quote; AND ' + v.claimSubSearchCriteria + ''}" />
                                         </div>
@@ -503,22 +545,22 @@
                                     value="{!v.simpleNewClaim.ChannelPartner}" disabled="true"
                                     title="{!$Label.c.Core_MDF_Account_Node_Help}" />
                             </div>
-                            <aura:if isTrue="{!(v.isOutcomeBasedAccountBasedAct)}">
+                            <aura:if isTrue="{!(v.isOutcomeBasedAccountBasedAct)}"><!-- TWC3117-15268 -->
                             <div aura:id="OutcomeDescDiv" class="slds-col slds-size_1-of-2 slds-p-around_small">
                             <lightning:textarea aura:id="outcomeDescription" name="outcomeDesc"
                                                     label="{!$Label.c.Core_MDF_Outcome_Description}" disabled="true" value="{!v.outcomeDesc}"/>
                             </div>
                             <div class="slds-col slds-size_1-of-2"></div>
                             <aura:set attribute="else">
-                            <div aura:id="CampaignNameDiv" class="slds-col slds-size_1-of-2 slds-p-around_small">
+							<div aura:id="CampaignNameDiv" class="slds-col slds-size_1-of-2 slds-p-around_small">
                                 <lightning:textarea aura:id="campaignName" name="Name"
-                                    label="{!$Label.c.Core_MDF_Campaign_Name}" disabled="true" value="{!v.campaignName}"
-                                    title="{!$Label.c.Core_MDF_Campaign_Name_Help}" />
+                                                    label="{!$Label.c.Core_MDF_Campaign_Name}" disabled="true" value="{!v.campaignName}"
+                                                    title="{!$Label.c.Core_MDF_Campaign_Name_Help}" />
                             </div>
                             <div aura:id="CampaignDescDiv" class="slds-col slds-size_1-of-2 slds-p-around_small">
                                 <lightning:textarea aura:id="campaignDescription" name="Description"
-                                    label="{!$Label.c.Core_MDF_Campaign_description}" disabled="true"
-                                    value="{!v.campaignDesc}" title="{!$Label.c.Core_MDF_Campaign_description_Help}" />
+                                                    label="{!$Label.c.Core_MDF_Campaign_description}" disabled="true"
+                                                    value="{!v.campaignDesc}" title="{!$Label.c.Core_MDF_Campaign_description_Help}" />
                             </div>
                             </aura:set>
                             </aura:if>
@@ -542,8 +584,8 @@
                             <!--Below Div is for displaying IPA budget type -->
                             <div aura:id="BudgetTypeIPADiv" class="slds-col slds-size_1-of-2 slds-p-around_small">
                                 <lightning:input name="Core_MDF_Budget_Type_Nm__c"
-                                    label="{!$Label.c.Core_MDF_Budget_Type}" value="{!v.localizedBudgetType}" disabled="true"
-                                    title="{!$Label.c.Core_MDF_BudgetType_HelpTxt}" />
+                                    label="{!$Label.c.Core_MDF_Budget_Type}" value="{!v.localizedBudgetType}"
+                                    disabled="true" title="{!$Label.c.Core_MDF_BudgetType_HelpTxt}" />
                             </div>
 
                             <div aura:id="ActReimbursementPerDiv" class="slds-col slds-size_1-of-2 slds-p-around_small">
@@ -559,7 +601,8 @@
 
                                 </div>
                             </aura:if>
-                            <aura:if isTrue="{!(v.isOutcomeBasedAccountBasedAct)}">
+                            
+                            <aura:if isTrue="{!(v.isOutcomeBasedAccountBasedAct)}"><!-- TWC3117-15268 -->
                             <div class="slds-col slds-size_1-of-2 slds-p-around_small">
                                 <lightning:input type="date" aura:id="ActStartDate"
                                     name="Core_MDF_Activity_Start_Date__c"
@@ -589,7 +632,7 @@
                             </div>
                                 </aura:set>
                             </aura:if>
-			    <aura:if isTrue="{!not(v.isOutcomeBasedAccountBasedAct)}">
+							<aura:if isTrue="{!not(v.isOutcomeBasedAccountBasedAct)}"><!-- TWC3117-15268 -->
                             <div class="slds-col slds-size_1-of-2 slds-p-around_small">
                                 <lightning:input aura:id="ActCategory" name="Core_MDF_Activity_Category__c"
                                     label="{!$Label.c.Core_MDF_ActivityCategory}"
@@ -602,7 +645,7 @@
                                     value="{!v.simpleNewClaim.Core_MDF_Activity_Types__c}" disabled="true"
                                     title="{!$Label.c.Core_MDF_Act_Type_Help}" />
                             </div>
-			    </aura:if>
+							</aura:if>
                             <aura:if isTrue="{!v.recordtypeDeveloperName == $Label.c.Core_MDF_RetailProgram}">
                                 <div aura:id="ActSubTypesDiv"
                                     class="slds-show slds-col slds-size_1-of-2 slds-p-around_small">
@@ -633,17 +676,15 @@
                             <!-- Below Div adds budget type for non-IPA programs -->
                             <div aura:id="BudgetTypeDiv" class="slds-col slds-size_1-of-2 slds-p-around_small">
                                 <lightning:input name="Core_MDF_Budget_Type_Nm__c"
-                                    label="{!$Label.c.Core_MDF_Budget_Type}" value="{!v.localizedBudgetType}" disabled="true"
-                                    title="{!$Label.c.Core_MDF_BudgetType_HelpTxt}" />
+                                    label="{!$Label.c.Core_MDF_Budget_Type}" value="{!v.localizedBudgetType}"
+                                    disabled="true" title="{!$Label.c.Core_MDF_BudgetType_HelpTxt}" />
                             </div>
-                            <div aura:id="ActBrandsDiv"
-                            class="slds-show slds-col slds-size_1-of-2 slds-p-around_small">
+                            <div aura:id="ActBrandsDiv" class="slds-show slds-col slds-size_1-of-2 slds-p-around_small">
 
-                            <lightning:textarea aura:id="ActBrands" name="Core_MDF_Brand_nm__c"
-                                label="{!$Label.c.Core_MDF_Brands}"
-                                value="{!v.simpleNewClaim.Core_MDF_Brand_nm__c}" disabled="true"
-                                title="{!$Label.c.Core_MDF_Act_Brand_Help}" />
-                             </div>
+                                <lightning:textarea aura:id="ActBrands" name="Core_MDF_Brand_nm__c"
+                                    label="{!$Label.c.Core_MDF_Brands}" value="{!v.simpleNewClaim.Core_MDF_Brand_nm__c}"
+                                    disabled="true" title="{!$Label.c.Core_MDF_Act_Brand_Help}" />
+                            </div>
                             <div aura:id="ActTargetAudianceDiv" class="slds-col slds-size_1-of-2 slds-p-around_small">
                                 <lightning:input aura:id="ActTargetAudiance" name="Core_MDF_Target_Audience__c"
                                     label="{!$Label.c.Core_MDF_TargetAudience}"
@@ -666,6 +707,7 @@
                                     </div>
                                 </aura:If>
                             </div>
+                            
                             <div class="slds-col slds-size_1-of-2 slds-p-around_small">
                                 <lightning:input aura:id="claimActStartDate" type="Date"
                                     name="Core_MDF_Actual_Activity_Start_Run_Date__c"
@@ -675,6 +717,7 @@
                                     disabled="{!v.isEditDisabled}"
                                     onchange="{!c.handleDateChange}"/>
                             </div>
+
                             <div class="slds-col slds-size_1-of-2 slds-p-around_small">
                                 <lightning:input aura:id="claimActEndDate" type="Date"
                                     name="Core_MDF_Actual_Activity_End_Run_Date__c"
@@ -682,6 +725,7 @@
                                     value="{!v.simpleNewClaim.Core_MDF_Ad_Run_End_Date__c}"
                                     title="{!$Label.c.Core_MDF_Ad_Run_End_Date_Help}" disabled="{!v.isEditDisabled}" onchange="{!c.handleDateValidation}"/>
                             </div>
+
                             <div aura:id="claimMediaVehicleDiv"
                                 class="slds-show slds-col slds-size_1-of-2 slds-p-around_small">
                                 <lightning:input aura:id="claimMediaVehicle" name="Core_MDF_Media_Vehicle__c"
@@ -689,7 +733,7 @@
                                     value="{!v.simpleNewClaim.Core_MDF_Media_Vehicle__c}"
                                     title="{!$Label.c.Core_MDF_Media_Vehicle_Help}" disabled="{!v.isEditDisabled}" />
                             </div>
-
+                            <!--<aura:if isTrue="{!and(v.isNewClaimCreate, v.isSuperClaim)}">TWC3117-15268-->
                             <div aura:id="claimBankDiv"
                                 class="{!v.hideBank == true ? 'slds-hide' : 'slds-show slds-col slds-size_1-of-2 slds-p-around_small'}">
                                 <lightning:select value="{!v.simpleNewClaim.Core_MDF_Bank__c}" aura:id="claimBank"
@@ -709,6 +753,7 @@
                                     </aura:iteration>
                                 </lightning:select>
                             </div>
+                            <!--</aura:if>-->
 
                             <aura:if
                                 isTrue="{!or(v.recordtypeDeveloperName == $Label.c.Core_MDF_Claim_SPCF_Program,v.activityRecordTypeDevName == $Label.c.Core_MDF_PFR_SPCF)}">
@@ -730,7 +775,7 @@
                                 </div>
                                 <div class="slds-col slds-size_1-of-2 slds-p-around_small">
                                     <lightning:input aura:id="claimNoOfLeads" name="Core_MDF_NoOfLeads_Nbr__c"
-                                        value="{!v.simpleNewClaim.Core_MDF_NoOfLeads_Nbr__c}"
+                                        value="{!v.simpleNewClaim.Core_MDF_No_of_Leads_nbr__c}"
                                         label="{!$Label.c.Core_MDF_NoOfLeads}" required="true"
                                         title="{!$Label.c.Core_MDF_NoOfLeads_Help}" type="number" min="0"
                                         disabled="{!v.isEditDisabled}" />
@@ -757,7 +802,7 @@
                                 maxlength="255" value="{!v.simpleNewClaim.Core_MDF_Invoice_Number__c}"
                                 title="{!$Label.c.Core_MDF_Invoice_Number_Help}" disabled="{!v.isEditDisabled}" onchange="{! c.handleChange}"/>
                             </div>
-                            <div class="slds-col slds-size_1-of-2 slds-p-around_small">
+							                            <div class="slds-col slds-size_1-of-2 slds-p-around_small">
                                 <lightning:select value="{!v.simpleNewClaim.Core_MDF_Currency__c}"
                                     aura:id="claimCurrency" name="Core_MDF_Currency__c"
                                     label="{!$Label.c.Core_MDF_Core_MDF_Currency}" required="true"
@@ -790,7 +835,7 @@
                                     title="{!$Label.c.Core_MDF_Reimbursement_Percent_Help}" />
                             </div>
                             <!-- -->
-                            <div class="slds-col slds-size_1-of-2 slds-p-around_small">
+							<div class="slds-col slds-size_1-of-2 slds-p-around_small">
                                 <lightning:input type="number" aura:id="claimInvoiceAmntLocal"
                                     name="Core_MDF_Total_Invoice_Amount_Local__c"
                                     label="{!$Label.c.Core_MDF_Total_Invoice_Amount_Local}" required="true"
@@ -798,7 +843,7 @@
                                     title="{!$Label.c.Core_MDF_Total_Invoice_Amount_Local_Help}" min="0" step="any"
                                     disabled="{!v.isEditDisabled}" onchange="{!c.handleChange}" onblur="{!c.handleBlur}" />
                                     <aura:if isTrue="{!v.showExcludedTaxMessage}">
-                                 <p class="informativeText">{!$Label.c.Core_MDF_Exclude_Tax_Message}</p>
+                                        <p class="informativeText">{!$Label.c.Core_MDF_Exclude_Tax_Message}</p>
                                     </aura:if>
                                 <!--disabled="{!v.isEditDisabled}" -->
                             </div>
@@ -817,7 +862,7 @@
                                     label="{!$Label.c.Core_MDF_Taxes_Local}" required="true"
                                     value="{!v.simpleNewClaim.Core_MDF_Taxes_Local__c}"
                                     title="{!$Label.c.Core_MDF_Taxes_Local_Help}" min="0" step="any"
-                                    disabled="{!v.isEditDisabled}" onchange="{! c.handleChange}"/>
+                                    disabled="{!v.isEditDisabled}" onchange="{! c.handleChange}" />
                             </div>
                             <div class="slds-col slds-size_1-of-2 slds-p-around_small">
                                 <lightning:textarea aura:id="claimComments" name="Core_MDF_Claim_Comments__c"
@@ -825,6 +870,15 @@
                                     label="{!$Label.c.Core_MDF_Description}" maxlength="255"
                                     title="{!$Label.c.Core_MDF_Claim_Comments_Help}" disabled="{!v.isEditDisabled}" />
                             </div>
+                            <!--<aura:if isTrue="{!v.recordtypeDeveloperName == $Label.c.Core_MDF_EEF_RecordType}">
+                                <div aura:id="cspIntelBasedRevenue" class="slds-col slds-size_1-of-2 slds-p-around_small">
+                                    <lightning:input aura:id="cspIntelBasedRevenue" type="number" name="Core_MDF_CSP_Intel_Based_Revenue_Amt__c"
+                                        label="{!$Label.c.Core_MDF_CSP_Intel_Based_Revenue}" required="true"
+                                        value="{!v.simpleNewClaim.Core_MDF_CSP_Intel_Based_Revenue_Amt__c}"
+                                        title="{!$Label.c.Core_MDF_Taxes_Local_Help}" min="0" step="any"
+                                        disabled="{!v.isEditDisabled}" />
+                                </div>
+                            </aura:if>-->
 
                             <aura:if isTrue="{!v.vatOptInPicklistVisible}">
                                 <div aura:id="vatOptInDiv" class="slds-col slds-size_1-of-2 slds-p-around_small">
@@ -839,6 +893,7 @@
                                 </div>
                             </aura:if>
 
+                            <!-- Sure Pay changes - RP -->
                             <aura:if isTrue="{!not(v.isOutcomeBasedAccountBasedAct)}"><!-- TWC3117-15268 -->
                             <div aura:id="processingPrefDiv" class="slds-col slds-size_1-of-2 slds-p-around_small">
                                 <lightning:select aura:id="processingPref"
@@ -850,22 +905,26 @@
                                 </lightning:select>
                             </div>
                             </aura:if>
-			    
+
                             <aura:if isTrue="{!v.showApplicableVatPercentage}">
-                                <div aura:id="applicableVatPercentageDiv" class="slds-col slds-size_1-of-2 slds-var-p-around_small">
+                                <div aura:id="applicableVatPercentageDiv"
+                                    class="slds-col slds-size_1-of-2 slds-var-p-around_small">
                                     <lightning:select aura:id="applicableVatPercentage"
-                                        value="{!v.simpleNewClaim.Core_MDF_Applicable_VAT_Percentage_nm__c}" name="applicableVatPercentagePicklist"
+                                        value="{!v.simpleNewClaim.Core_MDF_Applicable_VAT_Percentage_nm__c}"
+                                        name="applicableVatPercentagePicklist"
                                         label="{!$Label.c.Core_MDF_Applicable_VAT_Percentage}" required="true">
-                                        
+
                                         <option value="">{!$Label.c.Core_MDF_Select}</option>
-                                        <aura:iteration items="{!v.applicableVATPercentageMap}" var="item" indexVar="key">
-                                            <option text="{!item.value}" value="{!item.key}" selected="{!item.key == v.simpleNewClaim.Core_MDF_Applicable_VAT_Percentage_nm__c}" />
+                                        <aura:iteration items="{!v.applicableVATPercentageMap}" var="item"
+                                            indexVar="key">
+                                            <option text="{!item.value}" value="{!item.key}"
+                                                selected="{!item.key == v.simpleNewClaim.Core_MDF_Applicable_VAT_Percentage_nm__c}" />
                                         </aura:iteration>
-                                        
+
                                     </lightning:select>
                                 </div>
                             </aura:if>
-
+							<!--</aura:if>-->
                             <!-- US1076372: [IPA] Bank Link on Claim screens - Create/Clone : Added by Areefa-->
                             <div aura:id="claimBankDocUrlDiv"
                                 class="slds-col slds-size_2-of-2 slds-p-around_small lgtAcctSec">
@@ -875,25 +934,49 @@
                                         <lightning:accordionSection class="slds-size_2-of-2 lgtAcctSec"
                                             label="{!$Label.c.Core_MDF_IPA_BankUrl_Accordion_Header}">
                                             <lightning:formattedRichText
-                                                value="{!$Label.c.Core_MDF_IPA_BankLink_Verbage1}" />                                        
+                                                value="{!$Label.c.Core_MDF_IPA_BankLink_Verbage1}" />
+                                            <!--<aura:if isTrue="{!v.isCMDFPgm}">
+                                                <lightning:formattedUrl value="{!$Label.c.Core_MDF_CMDF_BankDocLink}"
+                                                    label="{!' '+$Label.c.Core_MDF_IPA_BankLink_Verbage2+' '}"
+                                                    target="_blank" />
+                                                <aura:set attribute="else">-->
                                                     <lightning:formattedUrl value="{!$Label.c.Core_MDF_IPA_BankDocLink}"
                                                         label="{!' '+$Label.c.Core_MDF_IPA_BankLink_Verbage2+' '}"
                                                         target="_blank" />
+                                                <!--</aura:set>
+                                            </aura:if>-->
                                             <lightning:formattedRichText
                                                 value="{!$Label.c.Core_MDF_IPA_BankLink_Verbage3}" />
+                                            <!--<aura:if isTrue="{!v.isCMDFPgm}">
+                                                <lightning:formattedEmail
+                                                    value="{!$Label.c.Core_MDF_CMDFBankCorporateOrganizationMailId}"
+                                                    label="{!' '+$Label.c.Core_MDF_IPABankCorporateOrganizationMail+'.'}"
+                                                    hideIcon="true" />
+                                                <aura:set attribute="else">-->
                                                     <lightning:formattedEmail
                                                         value="{!$Label.c.Core_MDF_IPABankCorporateOrganizationMailId}"
                                                         label="{!' '+$Label.c.Core_MDF_IPABankCorporateOrganizationMail+'.'}"
                                                         hideIcon="true" />
+
+                                                <!--</aura:set>
+
+                                            </aura:if>-->
+                                            
+
                                         </lightning:accordionSection>
                                     </lightning:accordion>
                                 </div>
                             </div>
+                                <!--TWC3117-15268-->
+                        <!--<aura:if isTrue="{!v.simpleNewClaim.RequestId == '0RJDz00000098ZZOAY'}">-->               
+                        <!--<aura:if isTrue="{!v.isSuperClaim}">-->
                         <aura:if isTrue="{!v.isSuperClaim}">
-                        	<c:core_MDF_subClaimItemCreation aura:id="subClaimLwc" recordId="{!v.simpleNewClaim.Id}" recordtypeName="{!v.recordtypeName}" objectApiName="PartnerFundClaim" technicalProgName="{!v.programName}" superActivityId="{!v.simpleNewClaim.RequestId}" totalRequestedAmount="{!v.simpleNewClaim.Core_MDF_Total_Invoice_Amount_Local__c}" totalCostNotReimbursable="{!v.simpleNewClaim.Core_MDF_OtherCostsnotReimbursable_Local__c}" onsubclaimchange="{!c.handleSubClaimChange}" isEditorClone="{!v.isEdit}" clonedEditClaimId="{!v.clonedClaimId}" isClaimEditable="{!v.isClaimEditable}" isCloneClaim="{!v.isCloneClaim}" claimCountry="{!v.simpleNewClaim.Core_MDF_Country_Location_nm__c}"/>
+                            <!-- Roshan - Sub claim VAT sync - added claimCountry -->
+                            <!--added budgetType for TWC3117-18459-->
+                            <c:core_MDF_subClaimItemCreation aura:id="subClaimLwc" recordId="{!v.simpleNewClaim.Id}" recordtypeName="{!v.recordtypeName}" objectApiName="PartnerFundClaim" technicalProgName="{!v.programName}" superActivityId="{!v.simpleNewClaim.RequestId}" totalRequestedAmount="{!v.simpleNewClaim.Core_MDF_Total_Invoice_Amount_Local__c}" totalCostNotReimbursable="{!v.simpleNewClaim.Core_MDF_OtherCostsnotReimbursable_Local__c}" onsubclaimchange="{!c.handleSubClaimChange}" isEditorClone="{!v.isEdit}" clonedEditClaimId="{!v.clonedClaimId}" isClaimEditable="{!v.isClaimEditable}" isCloneClaim="{!v.isCloneClaim}" claimCountry="{!v.simpleNewClaim.Core_MDF_Country_Location_nm__c}" budgetType="{!v.budgetType}"/>
                         </aura:if>
                             </aura:if>   
-                        </div>
+                        </div>                        
                     </div>
 
 
@@ -912,7 +995,8 @@
                                 </div>
                             </div>
                             </aura:if>
-                            <aura:if isTrue="{!v.isActivityPurposeVisible}">
+                            
+                            <aura:if isTrue="{!v.isActivityPurposeVisible}">  
                                 <div class=" slds-p-bottom_medium">
                                 <div class="slds-box slds-theme_default custom-box slds-p-bottom_medium">
                                     <c:core_MDF_CustomDataTable aura:id="activityPurposeCmp"
@@ -926,16 +1010,18 @@
                             <c:core_MDF_Tactics_Matric aura:id="tacticMetricCmp"
                                 editable="{!v.tacticMetricsEditable}"                     
                                 activityId="{!v.simpleNewClaim.RequestId}" 
-                                recordId="{!v.simpleNewClaim.Id}"/>
-                    
-				            <aura:if isTrue="{!not(empty(v.tacticMetricsEditable))}">
+                                recordId="{!v.simpleNewClaim.Id}"
+                                objectName="PartnerFundClaim"/>
+                            	
+                                <!--Add this event later for AI PIC  ontacticSpendingEvent="{!c.getTacticSpendingDetailsOnLoad}"-->
+                            <aura:if isTrue="{!not(empty(v.tacticMetricsEditable))}">
                             <c:core_MDF_Tactic_Spending  aura:id="tacticSpendingCmp"
                                 activityId="{!v.simpleNewClaim.RequestId}" 
                                 recordId="{!v.simpleNewClaim.Id}" 
                                 editable="{!v.tacticMetricsEditable}" 
                                 reimbursableAmountUsd="{!v.reimbursableAmountUsd}"
-                                                        editCmp = "true"/>
-				            </aura:if>
+                                objectName="PartnerFundClaim"/>
+                            </aura:if>
                             <aura:set attribute="else">
                                 <!-- This section displays the activity KPI field in read only mode -->
                                 <aura:renderIf isTrue="{!not(empty(v.simpleNewClaim.RequestId))}">
@@ -957,10 +1043,12 @@
                                         recordtypeDeveloperName="{!v.recordtypeDeveloperName}"/>
                                     <aura:set attribute="else">
                                         <!-- This section displays the KPI metrics field in editable mode -->
+                                         <!-- Commented kpiQtyFieldValuesFromAct="{!v.kpiQtyFieldValues}" -->
                                         <c:core_MDF_KPI_Fields onkpiCompVisibilityEvent="{!c.setKpiFlag}" aura:id="kpiDetail"
                                             onkpiFieldDetailsOnLoad="{!c.getKPIDetailsOnLoad}"
                                             isProposalBased="{!v.isProposalbasedInd}" 
                                             isProposalBasedActivity="{!v.isProposalbasedInd}" 
+                                            isNEXActivity="{!v.isNEXActivity}"
                                             clearedOnClone="{!v.isClearedOnClone}"
                                             decimalApplicable="{!v.isDecimalApplicable}"/>
                                     </aura:set>
@@ -978,7 +1066,8 @@
                                 isFileUploadOnClaimCreation="{!v.isPOPEnabled}" aura:id="manageAuditRevamp"
                                 simpleNewClaim="{!v.simpleNewClaim}" editClaimId="{!v.simpleNewClaim.Id}"
                                 isClaimEdit="{!v.isClaimEdit}" programName="{!v.programName}"
-                                actyPOPDescReq="{!v.actyPOPDescReq}"/>
+                                actyPOPDescReq="{!v.actyPOPDescReq}" />
+                            <!-- <c:test_SFT_FileUpload/> -->
                         </div>
                     </aura:if>
                 </div>
@@ -1066,12 +1155,20 @@
                                     </aura:if>
                                 </aura:set>
                             </aura:if>
-                            <!--TWC3117-18501 start-->                            
+                            <!--TWC3117-18501 start-->
+                            <!--<aura:set attribute="else">
+                                 Non Final Outcome Based Claim: Save
+                                <lightning:button class="slds-float-right" name='saveClaim' variant="brand" aura:id="finishButton"
+                                    label="{!$Label.c.Core_MDF_Save_Button}" title="{!$Label.c.Core_MDF_Save_Button}" onclick="{!c.finish}"
+                                    disabled="{!v.isSaveDisabled}" />
+                            </aura:set>-->
                             <aura:set attribute="else">
-                                <!-- Co-GTM create/clone -->                                
+                                <!-- Co-GTM create/clone with at least one uploaded document -->                                
                                 <aura:if isTrue="{!and(
                                     v.isCoGtm,
+                                    not(empty(v.auditDocument)),
                                     or(
+                                        v.isCloneClaim,
                                         empty(v.simpleNewClaim.Id),
                                         and(
                                             v.isClaimEdit,
@@ -1088,12 +1185,14 @@
                                         title="{!$Label.c.Core_MDF_Submit_Button_Label}"
                                         onclick="{!c.finish}"
                                         disabled="{!v.isSaveDisabled}" />
+
                                     <lightning:button
                                         name="saveAsDraftClaim"
                                         variant="neutral"
                                         label="{!$Label.c.Core_MDF_SaveAsDraft_Button}"
                                         title="{!$Label.c.Core_MDF_SaveAsDraft_Button}"
                                         onclick="{!c.finish}" />
+
                                     <aura:set attribute="else">
                                         <!-- Existing behavior for other non-final-outcome claims -->
                                         <lightning:button
@@ -1109,6 +1208,7 @@
                                 </aura:if>
                             </aura:set>
                             <!--TWC3117-18501 end-->
+
                         </aura:if>
                     </aura:if>
                     <aura:set attribute="else">
@@ -1119,6 +1219,7 @@
                 </aura:if>
             </div>
         </div>
+        
         <aura:if isTrue="{!v.isConfirmPopupVisible}">
             <c:Core_MDF_UploadDocConfirmation
                 isThirdParty="{!v.simpleNewClaim.Core_MDF_3rd_Party_POP_Doc_Required_Ind__c}"
@@ -1198,9 +1299,9 @@
 
                 <div class="slds-modal__container submitForPIC-modal">
                     <header class="slds-modal__header">
-
                         <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">
                             <!-- Aditya - TWC3117-16655 -->
+                           <!-- {!$Label.c.Core_MDF_Submit_For_PIC} -->
                            <aura:if isTrue="{!v.isOutcomeBasedAccountBasedAct}"> {!$Label.c.Core_MDF_Submit_For_Payment_Clearance}
                                <aura:set attribute="else"> {!$Label.c.Core_MDF_Submit_For_PIC}
                                </aura:set>
@@ -1208,6 +1309,7 @@
                         </h2>
                     </header>
                     <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                        <!-- <div>{!$Label.c.Core_MDF_Submit_For_PIC_Confirmation_Message}</div> -->
                         <div>{!v.isOutcomeBasedAccountBasedAct ? $Label.c.Core_MDF_Submit_For_Payment_Confirmation_Message : $Label.c.Core_MDF_Submit_For_PIC_Confirmation_Message}</div>
                     </div>
 
@@ -1221,8 +1323,6 @@
             </section>
             <div class="slds-backdrop slds-backdrop_open" aura:id="backdropForConfirmationPopup"></div>
         </aura:if>
-
-
     </div>
     <!--Error Modal-->
     <div class="slds-hide" aura:id="errorToast" style="height: 4rem;">
@@ -1236,19 +1336,20 @@
                     <h2 class="slds-text-heading_small ">{!v.claimErrorMsg}</h2>
                 </div>
                 <div class="slds-notify__close">
-                    <lightning:buttonIcon iconName="utility:close" variant="bare" size="medium" class="slds-button slds-button_icon slds-modal__close" onclick="{! c.closeErrorToast }" alternativeText="{!$Label.c.Core_MDF_Close}" />
-                    <!--<button aura:id="toastCloseButton" class="slds-button slds-button_icon slds-button_icon-inverse"
+
+                    <!-- <lightning:buttonIcon iconName="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" onclick="{! c.closeErrorToast }" alternativeText="Close" /> -->
+
+                    <button aura:id="toastCloseButton" class="slds-button slds-button_icon slds-modal__close"
                         title="Close" onclick="{!c.closeErrorToast}">
-                        <lightning:icon iconName="utility:close" alternativeText="Close" variant="close" size="small" />
+                        <lightning:icon iconName="utility:close" alternativeText="Close" size="small" />
                         <span class="slds-assistive-text">{!$Label.c.Core_MDF_Close}</span>
-                    </button>-->
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-
     <aura:if isTrue="{!and(!v.recordId ,!v.batchRecordId)}">
-
         <div aura:id="backdropIdForNewRecord" class="slds-backdrop slds-backdrop--open"></div>
     </aura:if>
+    
 </aura:component>

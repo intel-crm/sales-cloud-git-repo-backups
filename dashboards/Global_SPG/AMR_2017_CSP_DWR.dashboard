@@ -300,7 +300,7 @@
                 <column>OpportunityLineItem.Core_Account_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -308,7 +308,7 @@
             <enableHover>true</enableHover>
             <expandOthers>false</expandOthers>
             <footer>Status=Win approved</footer>
-            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
+            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
             <groupingSortProperties/>
             <header>2017 DWR Won YTD</header>
             <legendPosition>Bottom</legendPosition>
@@ -337,7 +337,7 @@
                 <column>OpportunityLineItem.Core_Account_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -346,7 +346,7 @@
             <expandOthers>false</expandOthers>
             <footer>Status=Win approved</footer>
             <groupingColumn>OpportunityLineItem.Core_KPI_Date__c</groupingColumn>
-            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
+            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
             <groupingSortProperties/>
             <header>Quarterly DWR Won</header>
             <legendPosition>Bottom</legendPosition>
@@ -374,7 +374,7 @@
                 <column>OpportunityLineItem.Core_Account_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -410,7 +410,7 @@
                 <column>OpportunityLineItem.Core_Account_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -446,7 +446,7 @@
                 <column>OpportunityLineItem.Core_Account_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -482,7 +482,7 @@
                 <column>OpportunityLineItem.Core_Account_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -490,7 +490,7 @@
             <enableHover>true</enableHover>
             <expandOthers>false</expandOthers>
             <groupingColumn>OpportunityLineItem.Core_KPI_Date__c</groupingColumn>
-            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
+            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
             <groupingSortProperties/>
             <header>2017 DWR at Risk (Unweighted)</header>
             <legendPosition>Bottom</legendPosition>
@@ -512,7 +512,7 @@
                 <column>OpportunityLineItem.Core_Account_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>ACCOUNT_NAME</column>
@@ -565,7 +565,7 @@
                 <column>OpportunityLineItem.Core_Account_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -573,7 +573,7 @@
             <enableHover>true</enableHover>
             <expandOthers>false</expandOthers>
             <footer>Status=Pending, Win submitted, On hold</footer>
-            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
+            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
             <groupingSortProperties/>
             <header>2017 DWR Pending Pipeline (Unweighted)</header>
             <legendPosition>Bottom</legendPosition>
@@ -602,7 +602,7 @@
                 <column>OpportunityLineItem.Core_Account_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -638,7 +638,7 @@
                 <column>OpportunityLineItem.Core_Account_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -674,7 +674,7 @@
                 <column>OpportunityLineItem.Core_Account_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -710,7 +710,7 @@
                 <column>OpportunityLineItem.Core_Account_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -718,7 +718,7 @@
             <enableHover>true</enableHover>
             <expandOthers>false</expandOthers>
             <groupingColumn>OpportunityLineItem.Core_KPI_Date__c</groupingColumn>
-            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
+            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
             <groupingSortProperties/>
             <header>2017 Cancelled DWR</header>
             <legendPosition>Bottom</legendPosition>
@@ -739,7 +739,7 @@
                 <column>OpportunityLineItem.Core_Account_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OpportunityLineItem.Core_Account_Name__c</column>
@@ -787,7 +787,7 @@
                 <column>OpportunityLineItem.Core_Account_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <displayUnits>Millions</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -795,7 +795,7 @@
             <enableHover>true</enableHover>
             <expandOthers>false</expandOthers>
             <footer>Status=Pending, Win submitted, On hold</footer>
-            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
+            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
             <groupingSortProperties/>
             <header>2017 DWR Pending Pipeline (Weighted)</header>
             <legendPosition>Bottom</legendPosition>
@@ -824,7 +824,7 @@
                 <column>OpportunityLineItem.Core_Account_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -861,7 +861,7 @@
                 <column>OpportunityLineItem.Core_Account_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -891,10 +891,10 @@
                 <column>OpportunityLineItem.Core_Account_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardTableColumn>
             <dashboardTableColumn>
                 <aggregateType>Sum</aggregateType>
@@ -931,7 +931,7 @@
                 <column>OpportunityLineItem.Core_Account_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OpportunityLineItem.Core_Account_Name__c</column>
@@ -982,7 +982,7 @@
                 <column>OpportunityLineItem.Core_Account_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -1011,7 +1011,7 @@
                 <column>OpportunityLineItem.Core_Account_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OpportunityLineItem.Core_Account_Name__c</column>

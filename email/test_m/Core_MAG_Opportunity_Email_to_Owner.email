@@ -1,0 +1,39 @@
+Dear {!Opportunity.OwnerFullName},
+
+This is to inform you that the Opportunity described as '{!Opportunity.Name}' with Opportunity ID {!Opportunity.Id} pertaining to the Account '{!Account.Name}' needs to be reviewed by the Global Export Compliance (GEC) team because of potential MAG (Military Aerospace Government) implications.  
+
+Please answer the questions below immediately to initiate the GEC review and enable this opportunity to move forward in the cycle. It takes several days to complete the review and in some cases the GEC team will come back with requests for additional information.  The opportunity may not be submitted for approval until the review is complete and the GEC Team is able to determine whether the hold may be removed, so please answer any follow up e-mails quickly.
+
+[Note: If you have already filled out this questionnaire for this exact opportunity, please provide the ACE OPPORTUNITY ID so that the GEC team may disposition this opportunity based on your previous questionnaire.]
+ 
+(1) Will Intel make the sale directly to this customer?  Describe the nature of Intel’s relationship with the customer and any other parties involved.
+
+(2) Is the customer the end user?   What will the customer / end user do with the product? Please provide the specific end-use for the Intel product regardless of whether the customer is the end user.
+
+(3) Will Intel provide ANY technical support (design-in, troubleshooting, fixing bugs, integration, analyst testing, etc.) and/or enable a non-commercial (including but not limited to government, defense, military, para military or aerospace) end item/application?   
+- If yes, please provide details regarding the kind of support Intel will provide?  
+- Who will provide the support, in what location and are there any restrictions around who can provide the support?
+
+(4) Will Intel provide any training to the customer / end user?  If yes, will training be generic Intel training or is an interactive and/or flexible training needed to meet Customer needs?
+
+(5) Will Intel provide any specific technical data as part of the transaction? 
+- If yes, please provide Intel Product names associated with this opportunity?
+
+(6) As part of this engagement, will this customer transfer any technical data to Intel (e.g. information, guidelines, designs, schematics, specifications or other information)?
+- If yes, describe the type (e.g. information, guidelines, designs, schematics, specifications, libraries, code etc.) of the data that customer will provide. Do not provide the actual data itself.
+- How will this data be transferred (electronic or physical form)?
+
+(7) Will the Intel product be changed/developed or enhanced in any way? If yes, by whom? 
+
+(8) If this opportunity relates to a military customer or for military end-use, will Intel be selling or shipping microprocessors? 
+
+Please refer to ‘Doing Business with Military, Aerospace & Government (MAG) Customers – Guidelines’ document for guidance on how to engage with your customer(s) in an ITAR Compliant manner while the GEC review is in progress: https://sp2010.amr.ith.intel.com/sites/gec/_layouts/DocIdRedir.aspx?ID=INTEL-5-104
+
+Please refer to ‘Export of Defense Services’ for more details: 
+https://sp2010.amr.ith.intel.com/sites/gec/SitePages/Defense%20Services.aspx
+
+You may be contacted by a representative from the Global Export Compliance team for more details.
+
+Regards,
+
+Export Customer

@@ -13,8 +13,8 @@ Modification Log    :
 ****************************************************************************************************************************/
 public class PRM_Account_Specialty_Assoc_Handler extends TriggerHandler {
     public static boolean iPAFirstRun = true;
-    //public static boolean ipaRefresh = Boolean.valueOf(label.PRM_IPARefresh);  //IPA2.0-TWC727-2861
-    public override void beforeInsert() {
+    
+    /*public override void beforeInsert() {
         if(isActive('PRM_Account_Specialty_Assoc_Switch') && PRM_Account_Specialty_Assoc_Utility.firstRunBeforeInsert){     //Retrieved from Custom Metadata
             PRM_Account_Specialty_Assoc_Utility.firstRunBeforeInsert = false;
             PRM_Account_Specialty_Assoc_Utility.specialtyDuplicateCheck(Trigger.new,null);
@@ -23,20 +23,17 @@ public class PRM_Account_Specialty_Assoc_Handler extends TriggerHandler {
         }
     }
     public override void beforeUpdate() {
-        if(isActive('PRM_Account_Specialty_Assoc_Switch')){
-            PRM_Account_Specialty_Assoc_Utility.updateStartandEndDates(Trigger.new,(Map<Id,PRM_Account_Specialty_Association__c>) Trigger.oldMap);    
-        }
         if(isActive('PRM_Account_Specialty_Assoc_Switch') && PRM_Account_Specialty_Assoc_Utility.firstRunBeforeUpdate) {     //Retrieved from Custom Metadata
             PRM_Account_Specialty_Assoc_Utility.firstRunBeforeUpdate = false;
             PRM_Account_Specialty_Assoc_Utility.specialtyDuplicateCheck(Trigger.new,(Map<Id,PRM_Account_Specialty_Association__c>) Trigger.oldMap);
-            //PRM_Account_Specialty_Assoc_Utility.updateStartandEndDates(Trigger.new,(Map<Id,PRM_Account_Specialty_Association__c>) Trigger.oldMap);
+            PRM_Account_Specialty_Assoc_Utility.updateStartandEndDates(Trigger.new,(Map<Id,PRM_Account_Specialty_Association__c>) Trigger.oldMap);
             PRM_Account_Specialty_Assoc_Utility.updateSuppressEmail(Trigger.new,(Map<Id,PRM_Account_Specialty_Association__c>) Trigger.oldMap);
             PRM_Account_Specialty_Assoc_Utility.suppressEmail(Trigger.new);
         }
-    }
+    }*/
     public override void afterInsert(){
         //system.debug('Entered  ASA afterInsert records');
-        if(isActive('PRM_Account_Specialty_Assoc_Switch') && PRM_Account_Specialty_Assoc_Utility.firstRunAfterInsert) {     //Retrieved from Custom Metadata
+        /*if(isActive('PRM_Account_Specialty_Assoc_Switch') && PRM_Account_Specialty_Assoc_Utility.firstRunAfterInsert) {     //Retrieved from Custom Metadata
             PRM_Account_Specialty_Assoc_Utility.firstRunAfterInsert = false;
         //    PRM_Account_Specialty_Assoc_Utility.updatePartnerSpecialityOnAccount(trigger.New, (map<id, PRM_Account_Specialty_Association__c>)trigger.oldMap);
          //   PRM_EmailUtility.sendEmailToPrimaryContacts(trigger.New,(map<id, PRM_Account_Specialty_Association__c>)trigger.oldMap);//Vijay - US554284 As part of this story, need to send emails to Primary contacts of the Account
@@ -48,10 +45,14 @@ public class PRM_Account_Specialty_Assoc_Handler extends TriggerHandler {
             PRM_SalesCloudAccountIntStatus_Handler.setAccountIPAIntegrationStatusToPending( (List<PRM_Account_Specialty_Association__c>) Trigger.new);
             //system.enqueueJob(new PRM_SalesCloudAccountIntStatus_Handler((List<PRM_Account_Specialty_Association__c>)Trigger.new, null, null));
             iPAFirstRun = false;
+        }*/
+
+        if(isActive('Core_MDF_AfterInsert_AccSpecialityAssoc')){
+            //PRM_Account_Specialty_Assoc_Utility.callAccountAndPgmSyncPlatformEvent((Map<Id,PRM_Account_Specialty_Association__c>)Trigger.newMap, (Map<Id,PRM_Account_Specialty_Association__c>)Trigger.oldMap, 'Insert');
         }
     }
     public override void afterUpdate(){
-        if(isActive('PRM_Account_Specialty_Assoc_Switch')) {     //Retrieved from Custom Metadata
+        /*if(isActive('PRM_Account_Specialty_Assoc_Switch')) {     //Retrieved from Custom Metadata
              
             if(trigger.IsUpdate && PRM_EmailUtility.firstRun) {//Vijay - US554284 As part of this story, need to send emails to Primary contacts of the Account
                 PRM_EmailUtility.firstRun = false;
@@ -70,7 +71,7 @@ public class PRM_Account_Specialty_Assoc_Handler extends TriggerHandler {
         
         //Set IPA integration status to pending - IPA integration
         //Added by Anand TB - US607581
-        /*if(isActive('ASA_Update_IPA_Integration_Trigger') && iPAFirstRun && (!ipaRefresh  || test.isrunningtest())) { //IPA2.0-TWC-272-2861
+        if(isActive('ASA_Update_IPA_Integration_Trigger') && iPAFirstRun) {
             boolean isUpdated = false;
             for(PRM_Account_Specialty_Association__c newAsa : (List<PRM_Account_Specialty_Association__c>)Trigger.new) {
                 PRM_Account_Specialty_Association__c oldAsa = (PRM_Account_Specialty_Association__c)Trigger.oldMap.get(newAsa.Id);
@@ -84,7 +85,11 @@ public class PRM_Account_Specialty_Assoc_Handler extends TriggerHandler {
                 PRM_SalesCloudAccountIntStatus_Handler.setAccountIPAIntegrationStatusToPending( (List<PRM_Account_Specialty_Association__c>) Trigger.new);
                 iPAFirstRun = false;
             }
-        }*/ // IPA Refresh - switch removal
+        }*/
+
+        if(isActive('Core_MDF_AfterUpdate_AccSpecialityAssoc')){
+            //PRM_Account_Specialty_Assoc_Utility.callAccountAndPgmSyncPlatformEvent((Map<Id,PRM_Account_Specialty_Association__c>)Trigger.newMap, (Map<Id,PRM_Account_Specialty_Association__c>)Trigger.oldMap, 'Update');
+        }
     }
     
 }

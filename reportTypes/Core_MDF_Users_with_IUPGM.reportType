@@ -465,6 +465,11 @@
             <field>PostalCode</field>
             <table>User</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Partner_License_Reclaimed__c</field>
+            <table>User</table>
+        </columns>
         <masterLabel>Users</masterLabel>
     </sections>
     <sections>
@@ -587,6 +592,26 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Account_id__c.Core_MDF_CoMarketing_Ultimate_Account__c</field>
+            <table>User.Internal_Users_Partner_Geo_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Activity_Classification_nm__c</field>
+            <table>User.Internal_Users_Partner_Geo_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Approval_Region_nm__c</field>
+            <table>User.Internal_Users_Partner_Geo_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Days_After_Modified__c</field>
+            <table>User.Internal_Users_Partner_Geo_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Intel_Account__c</field>
             <table>User.Internal_Users_Partner_Geo_Mappings__r</table>
         </columns>
         <masterLabel>Internal Users Partner Geo Mappings</masterLabel>

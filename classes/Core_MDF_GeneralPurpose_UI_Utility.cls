@@ -12,7 +12,7 @@
     public  without sharing Class Core_MDF_GeneralPurpose_UI_Utility{
         //Variable Declcartions
         public static List<String> geoList;
-        public static List<String> subGeoList;  
+        public static List<String> subGeoList;
 
         /*-------------------------------------------------------------------------------------------------------
         Method Name         : getIntelActivityOwners
@@ -21,154 +21,123 @@
         Description         : Get the List of users by fetching the userds if IUPGM is created for those users.
         ---------------------------------------------------------------------------------------------------------*/
         @AuraEnabled
-        public static IntelMainOwnerWrapper getIntelActivityOwners(String accId,String primaryAcctId,String program, List<String> country,String budgetType,Boolean isPlannedEdited) { 
+        public static IntelMainOwnerWrapper getIntelActivityOwners(String accId, String primaryAcctId, String program, List<String> country, String budgetType, Boolean isPlannedEdited) {
+            ActivityOwnerRequest request = new ActivityOwnerRequest(accId, primaryAcctId, program, country, budgetType, isPlannedEdited);
+            return getIntelActivityOwners(request);
+        }
+
+        private static IntelMainOwnerWrapper getIntelActivityOwners(ActivityOwnerRequest request) {
+            System.debug('=== METHOD START ===');
+            System.debug('Input Parameters - accId: ' + request.accId + ', primaryAcctId: ' + request.primaryAcctId + ', program: ' + request.program + ', country: ' + request.country + ', budgetType: ' + request.budgetType + ', isPlannedEdited: ' + request.isPlannedEdited);
             String region = '';
-            //Map to store list of roles for Program+BudgetType combination
-            Map<String, List<string>> programBudgetTypeWiseAcctMgrMap = new Map<String,List<String>>(); 
+
+            Map<String, List<String>> programBudgetTypeWiseAcctMgrMap = new Map<String, List<String>>();
             IntelMainOwnerWrapper resultWrapper = new IntelMainOwnerWrapper();
-            Map<String,String> recordtypeMap = new Map<String,String>();    
+
+            Map<String, String> recordtypeMap = new Map<String, String>();
             List<String> accountList = new List<String>();
-           
-            //recordtypeMap.put('Core_MDF_Channel_MDF','Channel MDF');
+
             recordtypeMap.put('Core_MDF_Client_CoMarketing_Fund', Core_MDF_CCP_ConstantClass.CCF_TECHNICAL_PROGRAM_NAME);
-            recordtypeMap.put('Core_MDF_Client_CoMarketing_Fund_Boost','Client CoMarketing Fund Boost');
+            recordtypeMap.put('Core_MDF_Client_CoMarketing_Fund_Boost', 'Client CoMarketing Fund Boost');
             recordtypeMap.put('Core_MDF_Data_Center_CoMarketing_Fund', Core_MDF_CCP_ConstantClass.DCF_TECHNICAL_PROGRAM_NAME);
-            recordtypeMap.put('Core_MDF_Intel_Partner_Alliance','Intel Partner Alliance');
-            recordtypeMap.put('Core_MDF_Retail_Marketing_Funds','Retail Marketing Funds'); 
-            recordtypeMap.put('Core_MDF_Service_Provider_CoMarketing_Fund','Service Provider CoMarketing Fund');
-            recordtypeMap.put('Core_MDF_Ecosystem_Extension_Fund','Ecosystem Extension Fund');
+            recordtypeMap.put('Core_MDF_Intel_Partner_Alliance', 'Intel Partner Alliance');
+            recordtypeMap.put('Core_MDF_Retail_Marketing_Funds', 'Retail Marketing Funds');
+            recordtypeMap.put('Core_MDF_Service_Provider_CoMarketing_Fund', 'Service Provider CoMarketing Fund');
+            recordtypeMap.put('Core_MDF_Ecosystem_Extension_Fund', 'Ecosystem Extension Fund');
+
+            String program = request.program;
             if(recordtypeMap.containsKey(program)){
                 program = recordtypeMap.get(program);
             }
-            getGeoDetails(country);
-            //Map returns list of account manager roles for Program+BT as key 
-            programBudgetTypeWiseAcctMgrMap = getAccountMannagerRoles();   
+
+            getGeoDetails(request.country);
+            programBudgetTypeWiseAcctMgrMap = getAccountMannagerRoles();
+
             String primaryAccountId;
-            if(program == Core_MDF_CCP_ConstantClass.PFR_EEF_PROGRAM){ 
-                primaryAccountId = getUltimateAccountId(primaryAcctId);
+            if(program == Core_MDF_CCP_ConstantClass.PFR_EEF_PROGRAM){
+                primaryAccountId = getUltimateAccountId(request.primaryAcctId);
                 accountList.add(primaryAccountId);
             }
-            String accountId = getUltimateAccountId(accId);
+
+            String accountId = getUltimateAccountId(request.accId);
             accountList.add(accountId);
-           
-            List<string> roleList = new List<string>();
+
+            List<String> roleList = new List<String>();
             String key;
-            if(program=='Intel Partner Alliance'){
-                key =program;
+            if(program == 'Intel Partner Alliance'){
+                key = program;
             }else{
-                key =program + budgetType;   
+                key = program + request.budgetType;
             }
-            
+
             if(programBudgetTypeWiseAcctMgrMap.containsKey(key)){
-                for(String roleName : programBudgetTypeWiseAcctMgrMap.get(key)){
-                    roleList.add(roleName);
-                }         
+            roleList.addAll(programBudgetTypeWiseAcctMgrMap.get(key));
             }
-           
-                String geoStr='';
-                geoList.add('WW'); 
-                if(!geoList.isEmpty()){
-                    geoStr ='(\'' + String.join(geoList, '\', \'') + '\')';
-                    region = String.escapeSingleQuotes(geoStr).replaceAll('\\\\','');
-                   
-            }  
-            
-            String acctstr='';
-            String roleStr='';
-            string accountUltimate='';
-            string roleNames='';
 
-            if(!accountList.isEmpty()){
-                acctstr ='(\'' + String.join(accountList, '\', \'') + '\')';
-                    accountUltimate = String.escapeSingleQuotes(acctstr).replaceAll('\\\\','');
-              }
-              if(!roleList.isEmpty()){
-                roleStr ='(\'' + String.join(roleList, '\', \'') + '\')';
-                roleNames = String.escapeSingleQuotes(roleStr).replaceAll('\\\\','');
-              }
-             
-                String qryStr = '';
-            if(isPlannedEdited){
-                qryStr = 'SELECT Id, Core_MDF_User_id__c ,Core_MDF_Role_nm__c'+
-                                ' FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c'+
-                                ' WHERE Core_MDF_Program_nm__c =:program' +
-                                ' and Core_MDF_Account_id__c IN '+ accountUltimate +
-                                ' and Core_MDF_Region_cd__c INCLUDES ' + region +
-                                ' and Core_MDF_Role_nm__c IN '+ roleNames +
-                                ' and Core_MDF_is_User_Active_ind__c = true '+
-                                ' and Core_MDF_Active_Ind__c = true' +
-                                ' and Core_MDF_Is_Not_an_Approver_Ind__c = false';
+            if(geoList == null){
+                geoList = new List<String>();
             }
-            else if (!isPlannedEdited){
+            geoList.add('WW');
+
+            String qryStr = '';
+            if(request.isPlannedEdited){
                 qryStr = 'SELECT Id, Core_MDF_User_id__c ,Core_MDF_Role_nm__c'+
-                                ' FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c'+
-                                ' WHERE Core_MDF_Program_nm__c =:program' +
-                                ' and Core_MDF_Account_id__c IN '+ accountUltimate +
-                                ' and Core_MDF_Region_cd__c INCLUDES ' + region +
-                                ' and Core_MDF_Role_nm__c IN '+ roleNames;
+                            ' FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c'+
+                            ' WHERE Core_MDF_Program_nm__c =:program' +
+                            ' and Core_MDF_Account_id__c IN :accountList ' +
+                            ' and Core_MDF_Region_cd__c INCLUDES :geoList ' +
+                            ' and Core_MDF_Role_nm__c IN :roleList' +
+                            ' and Core_MDF_is_User_Active_ind__c = true ' +
+                            ' and Core_MDF_Active_Ind__c = true' +
+                            ' and Core_MDF_Is_Not_an_Approver_Ind__c = false';
+            } else {
+                qryStr = 'SELECT Id, Core_MDF_User_id__c ,Core_MDF_Role_nm__c'+
+                            ' FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c'+
+                            ' WHERE Core_MDF_Program_nm__c =:program' +
+                            ' and Core_MDF_Account_id__c IN :accountList' +
+                            ' and Core_MDF_Region_cd__c INCLUDES :geoList ' +
+                            ' and Core_MDF_Role_nm__c IN :roleList';
             }
-                
+
             try{
-                
+                Set<Id> primaryUserIdSet = new Set<Id>();
+                Set<Id> activityUserIdSet = new Set<Id>();
+                List<String> primaryOwnerRoles = new List<String>{'Core_MDF_Internal_EEF_Primary_Partner_Acct_Mgr'};
 
-                set<id> primaryUserIdSet = new Set<id>();
-                set<id> activityUserIdSet = new Set<id>();
-                list<string> primaryOwnerRoles =  new List<string>{'Core_MDF_Internal_EEF_Primary_Partner_Acct_Mgr'}; //add in customsetting
-                    
-                List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList= Database.Query(qryStr);
-                
-                for( Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm: iupgmList){   
-                    // userIdSet.add(iupgm.Core_MDF_User_id__c);
-                    if(primaryOwnerRoles.contains(iupgm.Core_MDF_Role_nm__c)){ 
+                List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = Database.Query(qryStr);
+                for(Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm: iupgmList){
+                    if(primaryOwnerRoles.contains(iupgm.Core_MDF_Role_nm__c)){
                         primaryUserIdSet.add(iupgm.Core_MDF_User_id__c);
-                    }
-                    else
-                    {  
+                    } else {
                         activityUserIdSet.add(iupgm.Core_MDF_User_id__c);
                     }
                 }
-               
-                
-                  //  for(user userObj : [SELECT Id, Name,FirstName, LastName, Email FROM User WHERE Id IN: userIdSet Order by Name asc]){
-                    for(user userObj : [SELECT Id, Name,FirstName, LastName, Email FROM User WHERE (Id IN: primaryUserIdSet Or Id IN: activityUserIdSet) Order by Name asc]){
-                        
-                        if(primaryUserIdSet.contains(userObj.Id)){
-                            resultWrapper.intelPrimaryOwnerList.add(getWrapperInstance(userObj,true));
-                        }
-                        if(activityUserIdSet.contains(userObj.Id)){
-                            resultWrapper.intelActivityOwnerList.add(getWrapperInstance(userObj,false));
-                        }
-                        
-                        
-                        
-                     /*   IntelOwnerWrapper actOwnerObj = new IntelOwnerWrapper();
-                                        actOwnerObj.userId = userObj.Id; 
-                                        actOwnerObj.fullName= userObj.Name;
-                                        actOwnerObj.firstName = userObj.FirstName;
-                                        actOwnerObj.lastName = userObj.LastName;
-                                        actOwnerObj.email = userObj.Email;
-                                        resultWrapperList.add(actOwnerObj);*/
-                    
+
+                 List<User> userList = [SELECT Id, Name, FirstName, LastName, Email FROM User WHERE (Id IN :primaryUserIdSet OR Id IN :activityUserIdSet) ORDER BY Name ASC];
+                 for(User userObj : userList){
+					if(primaryUserIdSet.contains(userObj.Id)){
+                        resultWrapper.intelPrimaryOwnerList.add(getWrapperInstance(userObj, true));
+                    }
+                    if(activityUserIdSet.contains(userObj.Id)){
+                        resultWrapper.intelActivityOwnerList.add(getWrapperInstance(userObj, false));
+                    }
                 }
             } catch(Exception e){
                 Core_MDF_CCP_UtilityClass.logError(e);
-                
             }
-            
-            
+
             return resultWrapper;
         }
-        
-          
-        public static IntelOwnerWrapper getWrapperInstance(user userObj,boolean isPrimary){
+
+        public static IntelOwnerWrapper getWrapperInstance(User userObj, Boolean isPrimary){
             IntelOwnerWrapper intelOwnerObj = new IntelOwnerWrapper();
-            intelOwnerObj.isPrimary = isPrimary; 
-            intelOwnerObj.userId = userObj.id;
-            intelOwnerObj.fullName= userObj.name;
+            intelOwnerObj.isPrimary = isPrimary;
+            intelOwnerObj.userId = userObj.Id;
+            intelOwnerObj.fullName = userObj.Name;
             intelOwnerObj.firstName = userObj.FirstName;
-            intelOwnerObj.lastName =  userObj.LastName;
+            intelOwnerObj.lastName = userObj.LastName;
             intelOwnerObj.email = userObj.Email;
-            return intelOwnerObj;        
+            return intelOwnerObj;
         }
         
         /*-------------------------------------------------------------------------------------------------------
@@ -178,14 +147,24 @@
             Description         : Idetify is looged in user is approver for record.
         ---------------------------------------------------------------------------------------------------------*/
         @AuraEnabled
-        public static Boolean isApprover(String accId,String primaryAcctId,String program, List<String> country,String budgetType,String userId) { 
+        public static Boolean isApprover(String accId, String primaryAcctId, String program, List<String> country, String budgetType, String userId) {
+            ActivityOwnerRequest request = new ActivityOwnerRequest(accId, primaryAcctId, program, country, budgetType, userId);
+            return isApprover(request);
+        }
+
+        private static Boolean isApprover(ActivityOwnerRequest request) {
             Boolean result;
+            // Highlight: Unused Local Variable - 14285
+            // Set<String> customPermissionSet = new Set<String>();
+            // String role;
             String region ='';
+            // Highlight: Unused Local Variable - 14285
+            // Set<String> roles = new Set<String>();
+            // Set<Id> userIdSet = new Set<Id>();
             List<string> roleList = new List<string>(); //EEF
             List<Id> accountIdList = new List<Id>();
             String primaryAccountId;
-             
-
+                         
             //Map<String, string> programBudgetTypeWiseAcctMgrMap = new Map<String,String>();
             Map<String, List<String>> programBudgetTypeWiseAcctMgrMap = new Map<String, List<String>>();
             Map<String,String> recordtypeMap = new Map<String,String>();        
@@ -199,20 +178,25 @@
             recordtypeMap.put('Core_MDF_Ecosystem_Extension_Fund','Ecosystem Extension Fund');
             recordtypeMap.put('Core_MDF_Co_GTM','CoGTM');
            
+            String program = request.program;
             if(program !=null && recordtypeMap.containsKey(program)){
                 program = recordtypeMap.get(program);
             }
-            getGeoDetails(country);
+            getGeoDetails(request.country);
+            if(geoList == null){
+                geoList = new List<String>();
+            }
+            geoList.add('WW');
             // List<IntelActivityOwnerWrapper> resultWrapperList = new List<IntelActivityOwnerWrapper>();
 
            
             programBudgetTypeWiseAcctMgrMap = getAccountMannagerRoles(); 
             String accountId ='';
-            if(accId != ''){
-               accountId = getUltimateAccountId(accId); 
+            if(request.accId != ''){
+               accountId = getUltimateAccountId(request.accId); 
             }
-            if(program == Core_MDF_CCP_ConstantClass.PFR_EEF_PROGRAM && primaryAcctId != '' ){ 
-                primaryAccountId = getUltimateAccountId(primaryAcctId);
+            if(program == Core_MDF_CCP_ConstantClass.PFR_EEF_PROGRAM && request.primaryAcctId != '' ){ 
+                primaryAccountId = getUltimateAccountId(request.primaryAcctId);
                 accountIdList.add(primaryAccountId);
             }
             accountIdList.add(accountId);
@@ -221,38 +205,43 @@
            if(program=='Intel Partner Alliance'){
                 key =program;
             }else{
-                key =program + budgetType;   
+                key =program + request.budgetType;   
             }
             
            /* if(programBudgetTypeWiseAcctMgrMap.containsKey(key)){
                 roles.add(programBudgetTypeWiseAcctMgrMap.get(key));
             }*/
             if(programBudgetTypeWiseAcctMgrMap.containsKey(key)){
-                for(String roleName : programBudgetTypeWiseAcctMgrMap.get(key)){
-                    roleList.add(roleName);
-                }         
+                roleList.addAll(programBudgetTypeWiseAcctMgrMap.get(key));
             }
-                String geoStr='';
-                String acctstr='';
-                string roleStr='';
-                 string accountUltimate='';
-                 string roleNames='';
-
-                geoList.add('WW');
-           
+                //String geoStr='';
+                //String acctstr='';
+                //string roleStr='';
+                 //string accountUltimate='';
+                 //string roleNames='';
+                    if(geoList == null){
+                        geoList = new List<String>();
+                    }
+                	geoList.add('WW');
+            //Fix start
                 if(!geoList.isEmpty()){
-                    geoStr ='(\'' + String.join(geoList, '\', \'') + '\')';
+                    String geoStr = '(\'' + String.join(geoList, '\', \'') + '\')';
                     region = String.escapeSingleQuotes(geoStr).replaceAll('\\\\','');
+                }
+           //Fix End
+                if(!geoList.isEmpty()){
+                   // geoStr ='(\'' + String.join(geoList, '\', \'') + '\')';
+                    //region = String.escapeSingleQuotes(geoStr).replaceAll('\\\\','');
                    }  
             
                if(!accountIdList.isEmpty()){
-                acctstr ='(\'' + String.join(accountIdList, '\', \'') + '\')';
-                    accountUltimate = String.escapeSingleQuotes(acctstr).replaceAll('\\\\','');
+                //acctstr ='(\'' + String.join(accountIdList, '\', \'') + '\')';
+                    //accountUltimate = String.escapeSingleQuotes(acctstr).replaceAll('\\\\','');
               }
 
               if(!roleList.isEmpty()){
-                roleStr ='(\'' + String.join(roleList, '\', \'') + '\')';
-                roleNames = String.escapeSingleQuotes(roleStr).replaceAll('\\\\','');
+                //roleStr ='(\'' + String.join(roleList, '\', \'') + '\')';
+                //roleNames = String.escapeSingleQuotes(roleStr).replaceAll('\\\\','');
               }
             
             try{      
@@ -260,15 +249,22 @@
                     String qryStr = 'SELECT Id, Core_MDF_User_id__c '+
                                 ' FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c'+
                                 ' WHERE Core_MDF_Program_nm__c =: program' +
-                                ' and Core_MDF_Account_id__c IN '+ accountUltimate +
-                                ' and Core_MDF_Region_cd__c INCLUDES ' + region +
-                                ' and Core_MDF_Role_nm__c IN '+ roleNames +
+                                ' and Core_MDF_Account_id__c IN :accountIdList' +
+                                ' and Core_MDF_Region_cd__c INCLUDES :geoList' +
+                                ' and Core_MDF_Role_nm__c IN :roleList' +
                                 ' and Core_MDF_is_User_Active_ind__c = true '+
                                 ' and Core_MDF_Active_Ind__c = true' +
                                 ' and Core_MDF_Is_Not_an_Approver_Ind__c = false'+  
                                 ' and Core_MDF_User_id__c =:userId';
                 
-               
+                //String userId = request.userId;
+
+                System.debug('ISAPPROVER PROGRAM = [' + program + ']');
+System.debug('ISAPPROVER KEY = [' + key + ']');
+System.debug('ISAPPROVER AVAILABLE KEYS = ' + programBudgetTypeWiseAcctMgrMap.keySet());
+System.debug('ISAPPROVER ROLE LIST = ' + roleList);
+System.debug('ISAPPROVER FINAL QUERY = ' + qryStr);
+
                 List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList= Database.Query(qryStr);
               
                 if(iupgmList!=null && !iupgmList.isEmpty()){
@@ -280,8 +276,7 @@
                 
             } catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}
                 
-        return result;
-        
+            return result;
         }
         
         
@@ -408,100 +403,98 @@
     Modified By:        Date:              Changes: 
     Ayush               13/01/2025         Added Partner_License_Reclaimed__c in where clause for "Reclaiming SF Partner License" 
     ---------------------------------------------------------------------------------------------------------*/
-        @AuraEnabled
-        public static List<MemberActivityOwnerWrapper> getMemberactivityOwners(String accId, Boolean isPlannedEdit) { 
-           
-            Map<Id, Core_MDF_Partner_Node_User_Mapping__c> userIdDetailsMap = new Map<Id, Core_MDF_Partner_Node_User_Mapping__c>();
+    @AuraEnabled
+    public static List<MemberActivityOwnerWrapper> getMemberactivityOwners(String accId, Boolean isPlannedEdit) { 
+       
+        Map<Id, Core_MDF_Partner_Node_User_Mapping__c> userIdDetailsMap = new Map<Id, Core_MDF_Partner_Node_User_Mapping__c>();
+        
+        
+        String qryStr = '';
+        if(isPlannedEdit){
             
+            qryStr = 'SELECT Id, Core_MDF_User__c, Core_MDF_User__r.Name,Core_MDF_User__r.FirstName,Core_MDF_User__r.LastName,Core_MDF_User__r.Email'+                          
+                ' FROM Core_MDF_Partner_Node_User_Mapping__c' +
+                ' WHERE Core_MDF_Account__c =:accId' +
+                ' and Core_MDF_Active_Ind__c = true' +
+                ' and (Core_MDF_User__r.isActive = true or Core_MDF_User__r.Partner_License_Reclaimed__c = TRUE)'; //Added Partner_License_Reclaimed__c in where clause for "Reclaiming SF Partner License"
+        }
+        else if (!isPlannedEdit){
             
-            String qryStr = '';
-            if(isPlannedEdit){
-                
-                qryStr = 'SELECT Id, Core_MDF_User__c, Core_MDF_User__r.Name,Core_MDF_User__r.FirstName,Core_MDF_User__r.LastName,Core_MDF_User__r.Email'+                          
-                    ' FROM Core_MDF_Partner_Node_User_Mapping__c' +
-                    ' WHERE Core_MDF_Account__c =:accId' +
-                    ' and Core_MDF_Active_Ind__c = true' +
-                    ' and (Core_MDF_User__r.isActive = true or Core_MDF_User__r.Partner_License_Reclaimed__c = TRUE)'; //Added Partner_License_Reclaimed__c in where clause for "Reclaiming SF Partner License"
-            }
-            else if (!isPlannedEdit){
-                
-                qryStr = 'SELECT Id, Core_MDF_User__c,Core_MDF_User__r.Name,Core_MDF_User__r.FirstName,Core_MDF_User__r.LastName,Core_MDF_User__r.Email'+
-                    ' FROM Core_MDF_Partner_Node_User_Mapping__c'+
-                    ' WHERE Core_MDF_Account__c =:accId';
-            }
-           
-            List<MemberActivityOwnerWrapper> resultWrapperList = new List<MemberActivityOwnerWrapper>();
-            
-            
-            try{
-                if(String.isNotBlank(accId)){
-                    List<Core_MDF_Partner_Node_User_Mapping__c> pnumList= Database.Query(qryStr);
-                    for( Core_MDF_Partner_Node_User_Mapping__c pnumObj: pnumList){   
-                        userIdDetailsMap.put(pnumObj.Core_MDF_User__c, pnumObj);
-                    }
-                    
-                    
-                    if(userIdDetailsMap.keySet() != NULL  && userIdDetailsMap.keySet().size() > 0){
-                        for(PermissionSetAssignment usrPer : [SELECT Id, AssigneeId, Assignee.AccountId, Assignee.IsActive, PermissionSet.Name 
-                                                            FROM PermissionSetAssignment WHERE AssigneeId IN :userIdDetailsMap.keySet()
-                                                            AND (PermissionSet.Name =: Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCP_External_Activity_Submitter') OR 
-                                                                 PermissionSet.Name =: Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_External_EEF_Activity_Submitter'))]) {
-                                                                MemberActivityOwnerWrapper extActSubmitterObj = new MemberActivityOwnerWrapper();
-                                                                extActSubmitterObj.userId = usrPer.AssigneeId;
-                                                                extActSubmitterObj.fullName= userIdDetailsMap.get(usrPer.AssigneeId).Core_MDF_User__r.Name;
-                                                                extActSubmitterObj.firstName = userIdDetailsMap.get(usrPer.AssigneeId).Core_MDF_User__r.FirstName;
-                                                                extActSubmitterObj.lastName = userIdDetailsMap.get(usrPer.AssigneeId).Core_MDF_User__r.LastName;
-                                                                extActSubmitterObj.email = userIdDetailsMap.get(usrPer.AssigneeId).Core_MDF_User__r.Email;
-                                                                resultWrapperList.add(extActSubmitterObj);
-                                                            }
-                    }
+            qryStr = 'SELECT Id, Core_MDF_User__c,Core_MDF_User__r.Name,Core_MDF_User__r.FirstName,Core_MDF_User__r.LastName,Core_MDF_User__r.Email'+
+                ' FROM Core_MDF_Partner_Node_User_Mapping__c'+
+                ' WHERE Core_MDF_Account__c =:accId';
+        }
+       
+        List<MemberActivityOwnerWrapper> resultWrapperList = new List<MemberActivityOwnerWrapper>();
+        
+        
+        try{
+            if(String.isNotBlank(accId)){
+                List<Core_MDF_Partner_Node_User_Mapping__c> pnumList= Database.Query(qryStr);
+                for( Core_MDF_Partner_Node_User_Mapping__c pnumObj: pnumList){   
+                    userIdDetailsMap.put(pnumObj.Core_MDF_User__c, pnumObj);
                 }
                 
                 
-            } catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}
+                if(userIdDetailsMap.keySet() != NULL  && userIdDetailsMap.keySet().size() > 0){
+                    for(PermissionSetAssignment usrPer : [SELECT Id, AssigneeId, Assignee.AccountId, Assignee.IsActive,Assignee.Partner_License_Reclaimed__c, PermissionSet.Name 
+                                                        FROM PermissionSetAssignment WHERE AssigneeId IN :userIdDetailsMap.keySet()
+                                                        AND (PermissionSet.Name =: Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCP_External_Activity_Submitter') OR 
+                                                             PermissionSet.Name =: Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_External_EEF_Activity_Submitter'))]) {
+                                                            MemberActivityOwnerWrapper extActSubmitterObj = new MemberActivityOwnerWrapper();
+                                                            extActSubmitterObj.userId = usrPer.AssigneeId;
+                                                            extActSubmitterObj.fullName= userIdDetailsMap.get(usrPer.AssigneeId).Core_MDF_User__r.Name;
+                                                            extActSubmitterObj.firstName = userIdDetailsMap.get(usrPer.AssigneeId).Core_MDF_User__r.FirstName;
+                                                            extActSubmitterObj.lastName = userIdDetailsMap.get(usrPer.AssigneeId).Core_MDF_User__r.LastName;
+                                                            extActSubmitterObj.email = userIdDetailsMap.get(usrPer.AssigneeId).Core_MDF_User__r.Email;
+                                                            resultWrapperList.add(extActSubmitterObj);
+                                                        }
+                }
+            }
             
-            return resultWrapperList;
             
-        }
+        } catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}
+        
+        return resultWrapperList;
+        
+    }
     /*---------------------------------------------------------------------------------------------------
     Method Name         : CheckExternalActivitySubmitterActive
     @Input Parameters   : Account, User Id
     @return             : Boolean
     Description         : Identify if External Submitter Active.
-    Modified By:        Date:              Changes: 
-    Ayush               13/01/2025         Added Partner_License_Reclaimed__c in where clause for "Reclaiming SF Partner License" 
     ----------------------------------------------------------------------------------------------------*/
-        @AuraEnabled
-        public static Boolean isSubmitterActive(String accId, String userId) {
-            Boolean result;
+    @AuraEnabled
+    public static Boolean isSubmitterActive(String accId, String userId) {
+        Boolean result;
            
+        
+        
+        try{
+            String qryStr = 'SELECT Id,Core_MDF_User__c,Core_MDF_User__r.isActive'+
+                ' FROM Core_MDF_Partner_Node_User_Mapping__c' +
+                ' WHERE Core_MDF_Account__c =:accId' +
+                ' and Core_MDF_Active_Ind__c = true' +
+                ' and (Core_MDF_User__r.isActive = true or Core_MDF_User__r.Partner_License_Reclaimed__c = TRUE)'+
+                ' and Core_MDF_User__c =:userId';
             
-            //Added Partner_License_Reclaimed__c in where clause for "Reclaiming SF Partner License"
-            try{
-                String qryStr = 'SELECT Id,Core_MDF_User__c,Core_MDF_User__r.isActive'+
-                    ' FROM Core_MDF_Partner_Node_User_Mapping__c' +
-                    ' WHERE Core_MDF_Account__c =:accId' +
-                    ' and Core_MDF_Active_Ind__c = true' +
-                    ' and (Core_MDF_User__r.isActive = true or Core_MDF_User__r.Partner_License_Reclaimed__c = TRUE)'+
-                    ' and Core_MDF_User__c =:userId';
-                
-                List<Core_MDF_Partner_Node_User_Mapping__c> pnumList= Database.Query(qryStr);
-                
-                
-                if(pnumList!=null && !pnumList.isEmpty()){
-                    result = true;
-                }
-                else{
-                    result = false;
-                }
-                
-                
-            } 
-            catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}
+            List<Core_MDF_Partner_Node_User_Mapping__c> pnumList= Database.Query(qryStr);
             
-        return result;
             
-        }
+            if(pnumList!=null && !pnumList.isEmpty()){
+                result = true;
+            }
+            else{
+                result = false;
+            }
+            
+            
+        } 
+        catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}
+        
+    return result;
+        
+    }
         
         
         /*----------------------------------------------------------------------------
@@ -563,41 +556,51 @@ Description  : Wrapper class for User details
     ******************************************************************************************************/ 
         
         @AuraEnabled
-        public static Boolean isRecordApprover(String accId, String program, List<String> country, String approvalStage, String userId) { 
+        public static Boolean isRecordApprover(String accId, String program, List<String> country, String approvalStage, String userId) {
+            RecordApprovalRequest request = new RecordApprovalRequest(accId, program, country, approvalStage, userId);
+            return isRecordApprover(request);
+        }
+
+        private static Boolean isRecordApprover(RecordApprovalRequest request) {
             Boolean result;
+            // Highlight: Unused Local Variable - 14285
+            // List<String> roles = new List<String>();
+            // List<String> pctRolesList = new List<String>();
             List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
             String pctRoleSet;
             
             Map<String,Object> programNameByRecTypeDevNameMap = getProgramNameByRecordTypeDevName();
-                if(programNameByRecTypeDevNameMap.containsKey(program)){
-                    program = (String)programNameByRecTypeDevNameMap.get(program);
-                }
+            String program = request.program;
+            if(programNameByRecTypeDevNameMap.containsKey(program)){
+                program = (String)programNameByRecTypeDevNameMap.get(program);
+            }
             
-            String accountId = getUltimateAccountId(accId);
-            getGeoDetails(country);
+            String accountId = getUltimateAccountId(request.accId);
+            getGeoDetails(request.country);
             String geoStr='';
             if(!geoList.isEmpty()){
                 geoList.add('WW');
                 geoStr ='(\'' + String.join(geoList, '\', \'') + '\')';
             }
-            if(approvalStage == 'Price Reviewer'){
+            if(request.approvalStage == 'Price Reviewer'){
                 pctRoleSet = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Price_Reviewer_Roles');
             }
-            else if(approvalStage == 'L1 Approval'){
-            pctRoleSet = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Proposal_L1_Approver');
+            else if(request.approvalStage == 'L1 Approval'){
+                pctRoleSet = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Proposal_L1_Approver');
             }
-            else if(approvalStage =='Program Office Reviewer'){
-            pctRoleSet = 'Core_MDF_CCP_Internal_Proposal_Activity_POR_Approver'; 
+            else if(request.approvalStage =='Program Office Reviewer'){
+                pctRoleSet = 'Core_MDF_CCP_Internal_Proposal_Activity_POR_Approver'; 
             }
-            else if(approvalStage =='L2 Approval'){
-            pctRoleSet = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Proposal_L2_Approver');
+            else if(request.approvalStage =='L2 Approval'){
+                pctRoleSet = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Proposal_L2_Approver');
             }
-            else if(approvalStage =='Geo Lead Approval'){
-            pctRoleSet = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Geo_Lead_Roles');
+            else if(request.approvalStage =='Geo Lead Approval'){
+                pctRoleSet = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Geo_Lead_Roles');
             }
+            
            
             try{
-                iupgmList = getIupgmRecords(accountId, program, userId, geoStr, pctRoleSet); 
+                iupgmList = getIupgmRecords(accountId, program, request.userId, geoStr, pctRoleSet); 
                 if(iupgmList != null && iupgmList.size() > 0){
                     result = true;
                 }
@@ -616,51 +619,48 @@ Description  : Wrapper class for User details
     Added By      :        Ayush - 05/09/2022
     ******************************************************************************************************/     
         @AuraEnabled
-        public static Boolean isRecordApproverWithBudgetType(String accId, String program, List<String> country, String approvalStage, String userId, String budgetType) { 
+        public static Boolean isRecordApproverWithBudgetType(String accId, String program, List<String> country, String approvalStage, String userId, String budgetType) {
+            RecordApprovalRequest request = new RecordApprovalRequest(accId, program, country, approvalStage, userId, budgetType);
+            return isRecordApproverWithBudgetType(request);
+        }
+
+        private static Boolean isRecordApproverWithBudgetType(RecordApprovalRequest request) {
             Boolean result;
+            // Highlight: Unused Local Variable - 14285
+            // List<String> roles = new List<String>();
+            // List<String> pctRolesList = new List<String>();
             List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
             String pctRoleSet;
             try{
-            Map<String,Object> programNameByRecTypeDevNameMap = getProgramNameByRecordTypeDevName();
+                Map<String,Object> programNameByRecTypeDevNameMap = getProgramNameByRecordTypeDevName();
+                String program = request.program;
                 if(programNameByRecTypeDevNameMap.containsKey(program)){
                     program = (String)programNameByRecTypeDevNameMap.get(program);
                 }
             
-            String accountId = getUltimateAccountId(accId);
-            getGeoDetails(country);
-            String geoStr='';
-            if(!geoList.isEmpty()){
-                geoList.add('WW');
-                geoStr ='(\'' + String.join(geoList, '\', \'') + '\')';
+                String accountId = getUltimateAccountId(request.accId);
+                getGeoDetails(request.country);
+                String geoStr='';
+                if(!geoList.isEmpty()){
+                    geoList.add('WW');
+                    geoStr ='(\'' + String.join(geoList, '\', \'') + '\')';
+                }
+                if(request.approvalStage == 'Price Reviewer'){
+                    pctRoleSet = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Price_Reviewer_Roles');
+                }
+                else if(request.approvalStage == 'L1 Approval'){
+                    if(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Technical_program_name').equals(program) ){
+                        pctRoleSet = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Proposal_L1_Approver'); 
+                    }
+                }
+                else if(request.approvalStage =='Program Office Reviewer'){
+                    pctRoleSet = 'Core_MDF_CCP_Internal_Proposal_Activity_POR_Approver'; 
+                }
+                else if(request.approvalStage =='L2 Approval'){
+                    pctRoleSet = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Proposal_L2_Approver');
+                }
                 
-            }
-            if(approvalStage == 'Price Reviewer'){
-                pctRoleSet = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Price_Reviewer_Roles');
-            }
-            else if(approvalStage == 'L1 Approval'){
-            //added H
-                if(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Technical_program_name').equals(program) ){
-                pctRoleSet = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Proposal_L1_Approver'); 
-                }/*else{
-                    pctRoleSet = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_L1_Approver_Role');
-                }*/
-            
-            }
-            else if(approvalStage =='Program Office Reviewer'){
-            pctRoleSet = 'Core_MDF_CCP_Internal_Proposal_Activity_POR_Approver'; 
-            }
-            else if(approvalStage =='L2 Approval'){
-            pctRoleSet = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Proposal_L2_Approver');
-                //added H
-                /*if(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Technical_program_name').equals(program) ){
-                pctRoleSet = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Proposal_L2_Approver');
-                }else{
-                    pctRoleSet = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_L2_Approver_Role');
-                }*/
-            }
-            
-            
-                iupgmList = getIupgmRecordsWithBudgetType(accountId, program, userId, geoStr, pctRoleSet, budgetType); 
+                iupgmList = getIupgmRecordsWithBudgetType(accountId, program, request.userId, geoStr, pctRoleSet, request.budgetType); 
                
                 if(iupgmList != null && iupgmList.size() > 0){
                     result = true;
@@ -680,60 +680,83 @@ Description  : Wrapper class for User details
     Description   :        Returns IUPGM records if IUPGM exists given program, account id, user and geos.
     Added By      :        Accenture - Sai - 04/03/2021
     ******************************************************************************************************/ 
-        @AuraEnabled
-        public static List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> getIupgmRecords(String accId, String program, String userId, String geoStr, String roles) { 
-            List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
-            String category = 'Core_MDF_GeneralPurpose_UI_Utility_Role_Mappings';
-            String allAccountsYes = 'Yes';
-            String allAccountsNo = 'No';
-            try{
-            List<Core_MDF_Custom_Label_Configration__mdt> mdtRecList = [SELECT DeveloperName, Core_MDF_Value_Txt__c,Core_MDF_Value2_Txt__c,Core_MDF_Value3_Txt__c,
-                                                                        Core_MDF_Value4_Txt__c,Core_MDF_Category_Txt__c, Core_MDF_Org_Specific_Ind__c 
-                                                                        FROM Core_MDF_Custom_Label_Configration__mdt WHERE Core_MDF_Category_Txt__c =: category
-                                                                        AND Core_MDF_Value_Txt__c =: program AND Core_MDF_Value2_Txt__c =: roles LIMIT 1];
-            String value ='';
-                if(!mdtRecList.isEmpty() && mdtRecList.size() >0){
-                value = mdtRecList[0].Core_MDF_Value3_Txt__c;
-                
-            String qryStr;
-        if(String.isNotBlanK(geoStr)){
-            
-            geoStr = String.escapeSingleQuotes(geoStr);
-            
-            geoStr = geoStr.replaceAll('\\\\','');
-            
+@AuraEnabled
+public static List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> getIupgmRecords(String accId, String program, String userId, String geoStr, String roles) {
+    IupgmQueryRequest request = new IupgmQueryRequest(accId, program, userId, geoStr, roles);
+    return getIupgmRecords(request);
+}
 
-            }
-                qryStr = 'SELECT Id, Core_MDF_User_id__c '+
-                    ' FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c'+
-                    ' WHERE Core_MDF_Program_nm__c =: program' +
-                    ' and Core_MDF_Region_cd__c INCLUDES ' + geoStr +
-                    ' and Core_MDF_Role_nm__c =: roles'+
-                    ' and Core_MDF_is_User_Active_ind__c = true '+
-                    ' and Core_MDF_Active_Ind__c = true' +
-                    ' and Core_MDF_Is_Not_an_Approver_Ind__c = false'+
-                    ' and Core_MDF_User_id__c =:userId';
-                switch on value{
-                    when 'allAccountsYesOrNo'{
-                        qryStr += ' and (Core_MDF_All_Accounts_cd__c = ' + '\'' + String.escapeSingleQuotes(allAccountsYes) + '\'' +
-                            ' OR (Core_MDF_All_Accounts_cd__c = ' +  '\'' + String.escapeSingleQuotes(allAccountsNo) + '\'' +
-                            ' and Core_MDF_Account_id__c =:accId))';
-                    }
-                    when 'allAccountsNo'{
-                        qryStr += ' and  (Core_MDF_All_Accounts_cd__c = ' + '\'' + String.escapeSingleQuotes(allAccountsNo) + '\'' +
-                            ' and Core_MDF_Account_id__c =:accId)' ;
-                    }
-                    when 'allAccountsYes'{
-                        qryStr += ' and Core_MDF_All_Accounts_cd__c = ' + '\'' + String.escapeSingleQuotes(allAccountsYes) + '\'';
-                    }
-                }
-                
-                iupgmList= Database.Query(qryStr);
-            
-            }
-        } catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}      
-            return iupgmList;
+private static List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> getIupgmRecords(IupgmQueryRequest request) {
+    String accId = request.accId;
+    String program = request.program;
+    String userId = request.userId;
+    String geoStr = request.geoStr;
+    String roles = request.roles;
+
+    List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
+    String category = 'Core_MDF_GeneralPurpose_UI_Utility_Role_Mappings';
+    String allAccountsYes = 'Yes';
+    String allAccountsNo = 'No';
+    
+    try{
+        List<Core_MDF_Custom_Label_Configration__mdt> mdtRecList = [SELECT DeveloperName, Core_MDF_Value_Txt__c,Core_MDF_Value2_Txt__c,Core_MDF_Value3_Txt__c,
+                                                                    Core_MDF_Value4_Txt__c,Core_MDF_Category_Txt__c, Core_MDF_Org_Specific_Ind__c 
+                                                                    FROM Core_MDF_Custom_Label_Configration__mdt WHERE Core_MDF_Category_Txt__c =: category
+                                                                    AND Core_MDF_Value_Txt__c =: program AND Core_MDF_Value2_Txt__c =: roles LIMIT 1];
+        String value ='';
+        if(!mdtRecList.isEmpty() && mdtRecList.size() > 0){
+            value = mdtRecList[0].Core_MDF_Value3_Txt__c;
         }
+
+        
+        List<String> geoList = new List<String>();
+        if(String.isNotBlank(geoStr)){
+            
+            String cleanGeoStr = geoStr.replaceAll('[()\'"]', '').trim();
+            for(String geo : cleanGeoStr.split(',')) {
+                String trimmedGeo = geo.trim();
+                if(String.isNotBlank(trimmedGeo)) {
+                    geoList.add(trimmedGeo);
+                }
+            }
+        }
+
+        String qryStr = 'SELECT Id, Core_MDF_User_id__c '+
+            ' FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c'+
+            ' WHERE Core_MDF_Program_nm__c = :program' +
+            ' AND Core_MDF_Region_cd__c INCLUDES :geoList' +         
+            ' AND Core_MDF_Role_nm__c = :roles'+                     
+            ' AND Core_MDF_is_User_Active_ind__c = true '+
+            ' AND Core_MDF_Active_Ind__c = true' +
+            ' AND Core_MDF_Is_Not_an_Approver_Ind__c = false'+
+            ' AND Core_MDF_User_id__c = :userId';
+
+        
+        switch on value{
+           when 'allAccountsYesOrNo'{
+            qryStr += ' AND (Core_MDF_All_Accounts_cd__c = :allAccountsYes' +
+                      ' OR (Core_MDF_All_Accounts_cd__c = :allAccountsNo' +
+                      ' AND Core_MDF_Account_id__c = :accId))';
+            }
+            when 'allAccountsNo'{
+            qryStr += ' AND (Core_MDF_All_Accounts_cd__c = :allAccountsNo' +
+                      ' AND Core_MDF_Account_id__c = :accId)';
+            }
+            when 'allAccountsYes'{
+                qryStr += ' AND Core_MDF_All_Accounts_cd__c = :allAccountsYes';
+            }
+        }
+        
+        System.debug('Final Query: ' + qryStr);
+        System.debug('Parameters - program: ' + program + ', geoList: ' + geoList + ', roles: ' + roles + ', userId: ' + userId + ', accId: ' + accId);
+        
+        iupgmList = Database.Query(qryStr);
+        
+    } catch(Exception e){
+        Core_MDF_CCP_UtilityClass.logError(e);
+    }      
+    return iupgmList;
+}
         /***************************************************************************************************** 
     Method Name   :        getIupgmRecordsWithBudgetType
     @return       :        List of IUPGM records
@@ -741,93 +764,120 @@ Description  : Wrapper class for User details
     Description   :        Returns IUPGM records if IUPGM exists given program, account id, user, geos and budgetType.
     Added By      :        Ayush - 05/09/2022
     ******************************************************************************************************/    
-        @AuraEnabled
-        public static List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> getIupgmRecordsWithBudgetType(String accId, String program, String userId, String geoStr, String roles, String budgetType) { 
-            List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
-            String category = 'Core_MDF_GeneralPurpose_UI_Utility_Role_Mappings';
-            String allAccountsYes = 'Yes';
-            String allAccountsNo = 'No';
-           
-            
-            
-            try{
-            List<Core_MDF_Custom_Label_Configration__mdt> mdtRecList = [SELECT DeveloperName, Core_MDF_Value_Txt__c,Core_MDF_Value2_Txt__c,Core_MDF_Value3_Txt__c,
-                                                                        Core_MDF_Value4_Txt__c,Core_MDF_Category_Txt__c, Core_MDF_Org_Specific_Ind__c 
-                                                                        FROM Core_MDF_Custom_Label_Configration__mdt WHERE Core_MDF_Category_Txt__c =: category
-                                                                        AND Core_MDF_Value_Txt__c =: program AND Core_MDF_Value2_Txt__c =: roles LIMIT 1];
-            String value ='';
-                if(mdtRecList !=null && mdtRecList.size() >0){
-                value = mdtRecList[0].Core_MDF_Value3_Txt__c;
-                } 
-            String qryStr;
-            if(String.isNotBlanK(geoStr)){
-               
-                geoStr = String.escapeSingleQuotes(geoStr);
-              
-                geoStr = geoStr.replaceAll('\\\\','');
-               
-                
-            }
-            if(String.isNotBlanK(budgetType)){
-               
-                budgetType = '(\''+ budgetType + '\')';
-                budgetType = String.escapeSingleQuotes(budgetType);
-               
-                budgetType = budgetType.replaceAll('\\\\','');
-                
-                
-            }
-                qryStr = 'SELECT Id, Core_MDF_User_id__c,Core_MDF_GeoSubGeo_Budget_Type_nm__c'+
-                    ' FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c'+
-                    ' WHERE Core_MDF_Program_nm__c =: program' +
-                    ' and Core_MDF_Region_cd__c INCLUDES ' + geoStr +
-                    ' and Core_MDF_Role_nm__c =: roles'+
-                    ' and Core_MDF_is_User_Active_ind__c = true '+
-                    ' and Core_MDF_Active_Ind__c = true' +
-                    ' and Core_MDF_Is_Not_an_Approver_Ind__c = false'+
-                    ' and Core_MDF_User_id__c =:userId'+
-                    ' and (Core_MDF_All_Budget_Type_Access_Ind__c = true or Core_MDF_Budget_Type_nm__c INCLUDES '+budgetType +'  )';
-                switch on value{
-                    when 'allAccountsYesOrNo'{
-                        qryStr += ' and (Core_MDF_All_Accounts_cd__c = ' + '\'' + String.escapeSingleQuotes(allAccountsYes) + '\'' +
-                            ' OR (Core_MDF_All_Accounts_cd__c = ' +  '\'' + String.escapeSingleQuotes(allAccountsNo) + '\'' +
-                            ' and Core_MDF_Account_id__c =:accId))';
-                    }
-                    when 'allAccountsNo'{
-                        qryStr += ' and (Core_MDF_All_Accounts_cd__c = ' + '\'' + String.escapeSingleQuotes(allAccountsNo) + '\'' +
-                            ' and Core_MDF_Account_id__c =:accId)' ;
-                    }
-                    when 'allAccountsYes'{
-                        qryStr += ' and Core_MDF_All_Accounts_cd__c = ' + '\'' + String.escapeSingleQuotes(allAccountsYes) + '\'';
-                    }
+@AuraEnabled
+public static List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> getIupgmRecordsWithBudgetType(String accId, String program, String userId, String geoStr, String roles, String budgetType) {
+    IupgmQueryRequest request = new IupgmQueryRequest(accId, program, userId, geoStr, roles, budgetType);
+    return getIupgmRecordsWithBudgetType(request);
+}
+
+private static List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> getIupgmRecordsWithBudgetType(IupgmQueryRequest request) {
+    String accId = request.accId;
+    String program = request.program;
+    String userId = request.userId;
+    String geoStr = request.geoStr;
+    String roles = request.roles;
+    String budgetType = request.budgetType;
+
+    List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
+    String category = 'Core_MDF_GeneralPurpose_UI_Utility_Role_Mappings';
+    String allAccountsYes = 'Yes';
+    String allAccountsNo = 'No';
+    
+    try{
+        List<Core_MDF_Custom_Label_Configration__mdt> mdtRecList = [SELECT DeveloperName, Core_MDF_Value_Txt__c,Core_MDF_Value2_Txt__c,Core_MDF_Value3_Txt__c,
+                                                                    Core_MDF_Value4_Txt__c,Core_MDF_Category_Txt__c, Core_MDF_Org_Specific_Ind__c 
+                                                                    FROM Core_MDF_Custom_Label_Configration__mdt WHERE Core_MDF_Category_Txt__c =: category
+                                                                    AND Core_MDF_Value_Txt__c =: program AND Core_MDF_Value2_Txt__c =: roles LIMIT 1];
+        String value ='';
+        if(mdtRecList !=null && mdtRecList.size() > 0){
+            value = mdtRecList[0].Core_MDF_Value3_Txt__c;
+        } 
+        
+
+        List<String> geoList = new List<String>();
+        if(String.isNotBlank(geoStr)){
+            String cleanGeoStr = geoStr.replaceAll('[()\'"]', '').trim();
+            for(String geo : cleanGeoStr.split(',')) {
+                String trimmedGeo = geo.trim();
+                if(String.isNotBlank(trimmedGeo)) {
+                    geoList.add(trimmedGeo);
                 }
-                //iupgmList= Database.Query(qryStr);
-                for(Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgmRecord: Database.Query(qryStr)){
-                    if(iupgmRecord.Core_MDF_GeoSubGeo_Budget_Type_nm__c != null){
-                        for(String geoBudgetTypeStr : iupgmRecord.Core_MDF_GeoSubGeo_Budget_Type_nm__c.split(';')){
-                            String geo = geoBudgetTypeStr.split('->')[0] ;                             
-                            String budtype = geoBudgetTypeStr.split('->')[1] ;
-                                if(geo == 'ASMO-LAR' || geo == 'ASMO-NAR' || geo == 'ASMO'){
-                                geo = 'ASMO';
-                                }
-                            if(geoStr.contains(geo) && budgetType.contains(budtype)){
-                                    iupgmList.add(iupgmRecord);
-                                    break;
-                                }
-                                
-                        }
-                    }
-                    else{
-                            iupgmList.add(iupgmRecord);
-                    }
-                }
-               
-            } catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}      
-            return iupgmList;
+            }
+        }
+
+
+        
+        String qryStr = 'SELECT Id, Core_MDF_User_id__c,Core_MDF_GeoSubGeo_Budget_Type_nm__c'+
+            ' FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c'+
+            ' WHERE Core_MDF_Program_nm__c = :program' +
+            ' AND Core_MDF_Region_cd__c INCLUDES :geoList' +                    
+            ' AND Core_MDF_Role_nm__c = :roles'+                                
+            ' AND Core_MDF_is_User_Active_ind__c = true '+
+            ' AND Core_MDF_Active_Ind__c = true' +
+            ' AND Core_MDF_Is_Not_an_Approver_Ind__c = false'+
+            ' AND Core_MDF_User_id__c = :userId'+
+            ' AND (Core_MDF_All_Budget_Type_Access_Ind__c = true OR Core_MDF_Budget_Type_nm__c INCLUDES :budgetType)';  
+
+        
+        switch on value{
+            when 'allAccountsYesOrNo'{
+                qryStr += ' AND (Core_MDF_All_Accounts_cd__c = :allAccountsYes' +
+                    ' OR (Core_MDF_All_Accounts_cd__c = :allAccountsNo' +
+                    ' AND Core_MDF_Account_id__c = :accId))';
+            }
+            when 'allAccountsNo'{
+                qryStr += ' AND (Core_MDF_All_Accounts_cd__c = :allAccountsNo' +
+                    ' AND Core_MDF_Account_id__c = :accId)';
+            }
+            when 'allAccountsYes'{
+                qryStr += ' AND Core_MDF_All_Accounts_cd__c = :allAccountsYes';
+            }
         }
         
+        
+        System.debug('Final Query: ' + qryStr);
+        System.debug('Parameters - program: ' + program + ', geoList: ' + geoList + ', roles: ' + roles + ', budgetType: ' + budgetType + ', userId: ' + userId + ', accId: ' + accId);
+        
+        // Execute query and process results
+        for(Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgmRecord: Database.Query(qryStr)){
+            if(iupgmRecord.Core_MDF_GeoSubGeo_Budget_Type_nm__c != null){
+                for(String geoBudgetTypeStr : iupgmRecord.Core_MDF_GeoSubGeo_Budget_Type_nm__c.split(';')){
+                    String geo = geoBudgetTypeStr.split('->')[0];                             
+                    String budtype = geoBudgetTypeStr.split('->')[1];
+                    if(geo == 'ASMO-LAR' || geo == 'ASMO-NAR' || geo == 'ASMO'){
+                        geo = 'ASMO';
+                    }
+                    
+                    Boolean geoMatch = false;
+                    for(String geoItem : geoList) {
+                        if(geoItem.equals(geo)) {
+                            geoMatch = true;
+                            break;
+                        }
+                    }
+                    if(geoMatch && budtype.equals(budgetType)){
+                        iupgmList.add(iupgmRecord);
+                        break;
+                    }
+                }
+            }
+            else{
+                iupgmList.add(iupgmRecord);
+            }
+        }
+       
+    } catch(Exception e){
+        Core_MDF_CCP_UtilityClass.logError(e);
+        System.debug('Exception in getIupgmRecordsWithBudgetType: ' + e.getMessage());
+        System.debug('Stack trace: ' + e.getStackTraceString());
+    }      
+    return iupgmList;
+}
+        
 	public static Map<String, Map<String, List<Id>>> getIupgmRecordsForApprovers(List<String> accList, List<String> progList, List<String> geoList, List<String> roles, String category) {  //Roshan
-        //public static Map<String, Map<String, List<Id>>> getIupgmRecordsForApprovers(List<String> accList, List<String> progList, List<String> geoList, List<String> roles) {     
+        //public static Map<String, Map<String, List<Id>>> getIupgmRecordsForApprovers(List<String> accList, List<String> progList, List<String> geoList, List<String> roles) {  
+            // Highlight: Unused Local Variable - 14285
+            // Map<String,String> recordtypeMap = new Map<String,String>();
             List<String> program = new List<String>();
             //String classificationVal;
             Map<String,Object> programNameByRecNameMap = getProgramNameByRecName();
@@ -847,7 +897,11 @@ Description  : Wrapper class for User details
                                                                         FROM Core_MDF_Custom_Label_Configration__mdt WHERE Core_MDF_Category_Txt__c =: category
                                                                         AND Core_MDF_Value_Txt__c IN: program AND Core_MDF_Value2_Txt__c IN: roles];
         
+            system.debug('mdtRecList@@@' + mdtRecList);
+            // Highlight: Unused Local Variable - 14285
+            // List<String> values = new List<String>();
             
+
             for(Core_MDF_Custom_Label_Configration__mdt mdtRec: mdtRecList){
                     roleCheckforAccountAccessMap.put(mdtRec.Core_MDF_Value_Txt__c+mdtRec.Core_MDF_Value2_Txt__c,mdtRec.Core_MDF_Value3_Txt__c);
             }
@@ -864,6 +918,8 @@ Description  : Wrapper class for User details
                     geoStr = String.escapeSingleQuotes(geoStr);
                     geoStr = geoStr.replaceAll('\\\\','');
             }
+
+            system.debug('geoStr@@@' + geoStr);
         
             try{
                 qryStr = 'SELECT Id, Core_MDF_User_id__c,Core_MDF_Region_cd__c, '+
@@ -878,12 +934,19 @@ Description  : Wrapper class for User details
                     ' and Core_MDF_Is_Not_an_Approver_Ind__c = false';
                 
             
+                system.debug('qryStr@@@' + qryStr);
+
                 iupgmList= Database.Query(qryStr);
                 Map<string,List<Id>> subMap = new Map<string,List<Id>>();
                 for(Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgmObj : iupgmList){
                     
                     String key =iupgmObj.Core_MDF_Program_nm__c +iupgmObj.Core_MDF_Role_nm__c;                
-                    if(roleCheckforAccountAccessMap.containsKey(key)){
+                   //early return
+                   ////US - TWC702-14285: Flatten nested IFs (no logic change)
+                    if(!roleCheckforAccountAccessMap.containsKey(key)){
+                        System.debug('DEBUG: Key not found → ' + key);
+                        continue;
+                    }
                         List<String> geoStrList;
                         if(iupgmObj.Core_MDF_Region_cd__c != NULL){
                             geoStrList = iupgmObj.Core_MDF_Region_cd__c.split(';');
@@ -924,20 +987,23 @@ Description  : Wrapper class for User details
                             resultMap.put(iupgmObj.Core_MDF_Role_nm__c, subMap);
                         }
                     }
-                    }
+                    
                 }
+                System.debug('@@resultMap: '+resultMap);
             
             } catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}
             return resultMap;
-        }
+    }
     /***************************************************************************************************** 
     Method Name   :        getIupgmForApproversWithBudgetType
     @return       :        List of IUPGM records for all Approvers
     @parameters   :        AccountId, programName, List of coutries, user Id, budgetType
     Description   :        Returns IUPGM records if IUPGM exists given program, account id, user, geos and budgetType.
     Added By      :        Ayush - 02/09/2022
-    ******************************************************************************************************/     
+    ******************************************************************************************************/         
     public static Map<String, Map<String, List<Id>>> getIupgmForApproversWithBudgetType(List<String> accList, List<String> progList, List<String> geoList, List<String> roles, List<String> budgetTypeList,List<String> approvalStageList) {     
+        // Highlight: Unused Local Variable - 14285
+        // Map<String,String> recordtypeMap = new Map<String,String>();
         List<String> program = new List<String>();
 
         List<String> classificationValList = new List<String>();
@@ -967,8 +1033,9 @@ Description  : Wrapper class for User details
                                                                     Core_MDF_Value4_Txt__c,Core_MDF_Category_Txt__c, Core_MDF_Org_Specific_Ind__c
                                                                     FROM Core_MDF_Custom_Label_Configration__mdt WHERE Core_MDF_Category_Txt__c =: category
                                                                     AND Core_MDF_Value_Txt__c IN: program AND Core_MDF_Value2_Txt__c IN: roles];
-    
-        
+            
+        // Highlight: Unused Local Variable - 14285
+        // List<String> values = new List<String>();
         for(Core_MDF_Custom_Label_Configration__mdt mdtRec: mdtRecList){
                 roleCheckforAccountAccessMap.put(mdtRec.Core_MDF_Value_Txt__c+mdtRec.Core_MDF_Value2_Txt__c,mdtRec.Core_MDF_Value3_Txt__c);
         }
@@ -1048,117 +1115,112 @@ Description  : Wrapper class for User details
                 // }
                 //String key =(iupgmObj.Core_MDF_Program_nm__c=='Client Comarketing Fund'?'Client':iupgmObj.Core_MDF_Program_nm__c=='Data Center Comarketing Fund'?'Datacenter':iupgmObj.Core_MDF_Program_nm__c) +iupgmObj.Core_MDF_Role_nm__c;
                     
-                if(roleCheckforAccountAccessMap.containsKey(key)){
-                    List<String> geoStrList;
-                    List<string> geoBudgetTypeList = new List<string> ();
-                    if(iupgmObj.Core_MDF_GeoSubGeo_Budget_Type_nm__c != null){
-                        for(String geoBudgetTypeStr : iupgmObj.Core_MDF_GeoSubGeo_Budget_Type_nm__c.split(';')){
-                            String geo = geoBudgetTypeStr.split('->')[0] ;                             
-                            String budtype = geoBudgetTypeStr.split('->')[1] ;
-                            if(geo == 'ASMO-LAR' || geo == 'ASMO-NAR' || geo == 'ASMO'){
+                // Early exit if key not found
+                //US - TWC702-14285: Flatten nested IFs (no logic change)
+            if(!roleCheckforAccountAccessMap.containsKey(key)){
+                System.debug('DEBUG: Key not found in map → ' + key);
+                continue; // or continue if this is in a loop 
+            }
+
+            // Process geo budget type list
+            List<String> geoBudgetTypeList = new List<String>();
+
+            if(iupgmObj.Core_MDF_GeoSubGeo_Budget_Type_nm__c != null){
+                for(String geoBudgetTypeStr : iupgmObj.Core_MDF_GeoSubGeo_Budget_Type_nm__c.split(';')){
+                    String geo = geoBudgetTypeStr.split('->')[0];                             
+                    String budtype = geoBudgetTypeStr.split('->')[1];
+                    
+                   if(geo == 'ASMO-LAR' || geo == 'ASMO-NAR' || geo == 'ASMO'){
                                 geo = 'ASMO';
                             }
                             geoBudgetTypeList.add(geo+budtype);
-                        }
-                    }
-                    else if(iupgmObj.Core_MDF_Region_cd__c != NULL){
-                        // geoStrList = iupgmObj.Core_MDF_Region_cd__c.split(';');
-                        for(String geo:iupgmObj.Core_MDF_Region_cd__c.split(';')){
-                            geoBudgetTypeList.add(geo);
-                        }
-                    }
-                    
-                    for(String geo: geoBudgetTypeList){
-                    String subMapKey =iupgmObj.Core_MDF_Program_nm__c +geo+iupgmObj.Core_MDF_Role_nm__c+iupgmObj.Core_MDF_Account_id__c;
-                    subMap = new Map<string,List<Id>>();
-                    
-                    if(roleCheckforAccountAccessMap.get(key) == 'allAccountsYesOrNo'){ 
-                        if(resultMap.containsKey(iupgmObj.Core_MDF_Role_nm__c)){
-                            subMap = resultMap.get(iupgmObj.Core_MDF_Role_nm__c);
-                        }
-                        if(iupgmObj.Core_MDF_Activity_Classification_nm__c!=null){
-                            for(String classification : iupgmObj.Core_MDF_Activity_Classification_nm__c.split(';')){
-                               
-                                subMapKey = iupgmObj.Core_MDF_Program_nm__c +geo+iupgmObj.Core_MDF_Role_nm__c+iupgmObj.Core_MDF_Account_id__c+classification;
-                                if(!subMap.containsKey(subMapKey)){
-                            subMap.put(subMapKey, new List<Id>());
-                        }
-                        subMap.get(subMapKey).add(iupgmObj.Core_MDF_User_id__c); 
-                            }
-                        }
-                        else{
-                        if(!subMap.containsKey(subMapKey)){
-                            subMap.put(subMapKey, new List<Id>());
-                        }
-                        subMap.get(subMapKey).add(iupgmObj.Core_MDF_User_id__c);
-                        }
-                        resultMap.put(iupgmObj.Core_MDF_Role_nm__c, subMap);
-                    
-                    }
-                    else if(roleCheckforAccountAccessMap.get(key) == 'allAccountsYes' && iupgmObj.Core_MDF_All_Accounts_cd__c=='YES'){
+                }
+            }
+            else if(iupgmObj.Core_MDF_Region_cd__c != NULL){
+                geoBudgetTypeList.addAll(iupgmObj.Core_MDF_Region_cd__c.split(';'));
+            }
 
-                    if(resultMap.containsKey(iupgmObj.Core_MDF_Role_nm__c)){
-                            subMap = resultMap.get(iupgmObj.Core_MDF_Role_nm__c);
-                        }
-                        if(iupgmObj.Core_MDF_Activity_Classification_nm__c!=null){
-                            for(String classification : iupgmObj.Core_MDF_Activity_Classification_nm__c.split(';')){
-                               
-                                subMapKey = iupgmObj.Core_MDF_Program_nm__c +geo+iupgmObj.Core_MDF_Role_nm__c+iupgmObj.Core_MDF_Account_id__c+classification;
-                                if(!subMap.containsKey(subMapKey)){
-                            subMap.put(subMapKey, new List<Id>());
-                        }
-                        subMap.get(subMapKey).add(iupgmObj.Core_MDF_User_id__c); 
-                            }
-                        }
-                        else{
+            // Process each geo in the list
+            for(String geo : geoBudgetTypeList){
+                String baseSubMapKey = iupgmObj.Core_MDF_Program_nm__c + geo + iupgmObj.Core_MDF_Role_nm__c + iupgmObj.Core_MDF_Account_id__c;
+                system.debug('subMapKey@@@' + baseSubMapKey);
+                
+                String accessType = roleCheckforAccountAccessMap.get(key);
+                
+                // Check if this record should be processed
+                //US - TWC702-14285: Flatten nested IFs (no logic change)
+                Boolean shouldProcess = false;
+                
+                if(accessType == 'allAccountsYesOrNo'){
+                    shouldProcess = true;
+                }
+                System.debug('DEBUG: Final shouldProcess = ' + shouldProcess);
+                
+                if(!shouldProcess && accessType == 'allAccountsYes' && iupgmObj.Core_MDF_All_Accounts_cd__c == 'YES'){
+                    shouldProcess = true;
+                }
+                
+                if(!shouldProcess && accessType == 'allAccountsNo' && 
+                iupgmObj.Core_MDF_All_Accounts_cd__c == 'NO' && 
+                accList.contains(iupgmObj.Core_MDF_Account_id__c)){
+                    shouldProcess = true;
+                }
+                
+                // Skip if conditions not met
+                //US - TWC702-14285: Flatten nested IFs (no logic change)
+                if(!shouldProcess){
+                    System.debug('DEBUG: Skipping record. shouldProcess = ' + shouldProcess + ', key = ' + key);
+                    continue;
+                }
+                
+                // Get or create subMap
+                subMap = new Map<String, List<Id>>();
+                if(resultMap.containsKey(iupgmObj.Core_MDF_Role_nm__c)){
+                    subMap = resultMap.get(iupgmObj.Core_MDF_Role_nm__c);
+                }
+                
+                // Process classifications or use base key
+                if(iupgmObj.Core_MDF_Activity_Classification_nm__c != null){
+                    for(String classification : iupgmObj.Core_MDF_Activity_Classification_nm__c.split(';')){
+                        String subMapKey = baseSubMapKey + classification;
+                        
                         if(!subMap.containsKey(subMapKey)){
                             subMap.put(subMapKey, new List<Id>());
                         }
                         subMap.get(subMapKey).add(iupgmObj.Core_MDF_User_id__c);
-                        }
-                        resultMap.put(iupgmObj.Core_MDF_Role_nm__c, subMap);
                     }
-                    else if(roleCheckforAccountAccessMap.get(key) == 'allAccountsNo' && iupgmObj.Core_MDF_All_Accounts_cd__c=='NO' && accList.contains(iupgmObj.Core_MDF_Account_id__c)){
-                        if(resultMap.containsKey(iupgmObj.Core_MDF_Role_nm__c)){
-                            subMap = resultMap.get(iupgmObj.Core_MDF_Role_nm__c);
-                        }
-                        if(iupgmObj.Core_MDF_Activity_Classification_nm__c!=null){
-                            for(String classification : iupgmObj.Core_MDF_Activity_Classification_nm__c.split(';')){
-                               
-                                subMapKey = iupgmObj.Core_MDF_Program_nm__c +geo+iupgmObj.Core_MDF_Role_nm__c+iupgmObj.Core_MDF_Account_id__c+classification;
-                                if(!subMap.containsKey(subMapKey)){
-                            subMap.put(subMapKey, new List<Id>());
-                        }
-                        subMap.get(subMapKey).add(iupgmObj.Core_MDF_User_id__c); 
-                            }
-                        }
-                        else{
-                        if(!subMap.containsKey(subMapKey)){
-                            subMap.put(subMapKey, new List<Id>());
-                        }
-                        subMap.get(subMapKey).add(iupgmObj.Core_MDF_User_id__c);
-                        }
-                        resultMap.put(iupgmObj.Core_MDF_Role_nm__c, subMap);
-                //  }
+                } else {
+                    if(!subMap.containsKey(baseSubMapKey)){
+                        subMap.put(baseSubMapKey, new List<Id>());
+                    }
+                    subMap.get(baseSubMapKey).add(iupgmObj.Core_MDF_User_id__c);
                 }
-                }
+                
+                resultMap.put(iupgmObj.Core_MDF_Role_nm__c, subMap);
             }
             }
             
         } catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}
+        System.debug('resultMap-> '+resultMap);
         return resultMap;
-    }  
+        
+    } 
         
         @AuraEnabled
         public static Map<String, Map<String, List<Id>>> getIupgmRecordsPCT(List<String> accList, List<String> progList, List<String> geoList, String roles) {     
             
             List<String> program = new List<String>();     
             Map<String,Object> programNameByRecNameMap = getProgramNameByRecName();
+            system.debug('programNameByRecNameMap@@@' + programNameByRecNameMap);
             for(String prgm : progList){
+                system.debug('prgm@@@' + prgm);
                 if(programNameByRecNameMap.containsKey(prgm)){
                     program.add((String)programNameByRecNameMap.get(prgm));
                 }
             }
+
+            system.debug('program@@@' + program);
+            system.debug('roles@@@' + roles);
             
            
             Map<String,string> roleCheckforAccountAccessMap = new Map<String,string>();
@@ -1168,6 +1230,8 @@ Description  : Wrapper class for User details
                                                                         Core_MDF_Value4_Txt__c,Core_MDF_Category_Txt__c, Core_MDF_Org_Specific_Ind__c
                                                                         FROM Core_MDF_Custom_Label_Configration__mdt WHERE Core_MDF_Category_Txt__c =: category
                                                                         AND Core_MDF_Value_Txt__c IN: program AND Core_MDF_Value2_Txt__c =: roles];
+            // Highlight: Unused Local Variable - 14285
+            // List<String> values = new List<String>();
             for(Core_MDF_Custom_Label_Configration__mdt mdtRec: mdtRecList){
                     roleCheckforAccountAccessMap.put(mdtRec.Core_MDF_Value_Txt__c+mdtRec.Core_MDF_Value2_Txt__c,mdtRec.Core_MDF_Value3_Txt__c);
             }
@@ -1193,22 +1257,31 @@ Description  : Wrapper class for User details
                     ' Core_MDF_Program_nm__c, Core_MDF_Role_nm__c,Core_MDF_Approval_Region_nm__c, ' +
                     ' Core_MDF_All_Accounts_cd__c, Core_MDF_Account_id__c ' +
                     ' FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c'+
-                    ' WHERE Core_MDF_Program_nm__c IN: program' +
+                    ' WHERE Core_MDF_Program_nm__c =:program' +
                     //' and Core_MDF_Region_cd__c INCLUDES ' + geoStr +
-                    ' and Core_MDF_Role_nm__c =: roles'+
+                    ' and Core_MDF_Role_nm__c =:roles'+
                     ' and Core_MDF_is_User_Active_ind__c = true '+
                     ' and Core_MDF_Active_Ind__c = true' +
                     ' and Core_MDF_Is_Not_an_Approver_Ind__c = false';
                 
                 //qryStr += (isApprovalBasedOnApprovalRegion(program[0],roles)) ? ' and Core_MDF_Approval_Region_nm__c INCLUDES' + geoStr : 'and Core_MDF_Region_cd__c INCLUDES' + geoStr;
 
+                system.debug('queryString@@@' + qryStr);
                
                 iupgmList= Database.Query(qryStr);
+
+                system.debug('iupgmList@@@' + iupgmList);
+                system.debug('roleCheckforAccountAccessMap@@@' + roleCheckforAccountAccessMap);
                 
                 Map<string,List<Id>> subMap = new Map<string,List<Id>>();
                 for(Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgmObj : iupgmList){
                     String key =iupgmObj.Core_MDF_Program_nm__c +iupgmObj.Core_MDF_Role_nm__c;                
-                    if(roleCheckforAccountAccessMap.containsKey(key)){
+                    //early exit
+                    //US - TWC702-14285: Flatten nested IFs (no logic change)
+                    if(!roleCheckforAccountAccessMap.containsKey(key)){
+                        System.debug('DEBUG: key not found in roleCheckforAccountAccessMap → ' + key);
+                        continue;
+                    }
                         List<String> geoStrList;
                          geoStrList = iupgmObj.Core_MDF_Approval_Region_nm__c != null 
                         ? iupgmObj.Core_MDF_Approval_Region_nm__c.split(';') : iupgmObj.Core_MDF_Region_cd__c != null 
@@ -1249,7 +1322,6 @@ Description  : Wrapper class for User details
                             resultMap.put('allAccountsNo', subMap);
                         }
                         }
-                    }
                 }
                 
             } catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}
@@ -1284,9 +1356,11 @@ Description  : Wrapper class for User details
         String program; 
         String budgetType;
         String activityClassification;
-        String reviewType;
+    String reviewType;
         Map<String,Object> programNameByRecTypeDevNameMap;
         Boolean isProposalBased = false;
+        // Highlight: Unused Local Variable - 14285
+        // List<String> activityClassficationList = new List<String>();
         InputDetailsWrapper resultObj;
         //get Object Name for sobject   
         String objectName = sObj != null ? sObj.id.getSObjectType().getDescribe().getName() :'';
@@ -1308,7 +1382,7 @@ Description  : Wrapper class for User details
                     approvalStage = pfrObj.Core_MDF_Proposal_Based_Ind__c == false ? pfrObj.Core_MDF_Approval_Stage__c : pfrObj.Campaign.Core_MDF_Approval_Stage_nm__c;
                     budgetType = pfrObj.Core_MDF_Budget_Type_nm__c;         
                     isProposalBased = pfrObj.Core_MDF_Proposal_Based_Ind__c;
-            	    reviewType = pfrObj.Core_MDF_Additional_Review_Type_txt__c!=null?pfrObj.Core_MDF_Additional_Review_Type_txt__c:'';
+            reviewType = pfrObj.Core_MDF_Additional_Review_Type_txt__c;
                     program = pfrObj.recordType.DeveloperName;
                     //Activity classification
                     if(approvalStage == Core_MDF_CCP_ConstantClass.L2_REGIONAL_MARKETING){
@@ -1324,7 +1398,8 @@ Description  : Wrapper class for User details
                     Campaign campaignObj = (Campaign)sObj;
                     recordTypeDevName = campaignObj.recordType.DeveloperName;    
                     accountId = campaignObj.Core_MDF_Ultimate_Account_txt__c;
-                    geo = campaignObj.Core_MDF_Region_cd__c;    
+                    //geo = campaignObj.recordType.DeveloperName == 'Core_MDF_Co_GTM' ? 'WW' : campaignObj.Core_MDF_Region_cd__c;   //Roshan - Added for inprogress Co-GTM changes. 
+                    geo = campaignObj.Core_MDF_Region_cd__c;
                     subGeo = campaignObj.Core_MDF_Sub_Region_cd__c;
                     hostGeo = campaignObj.Core_MDF_Host_Region_cd__c;
                     approvalStage = campaignObj.Core_MDF_Approval_Stage_nm__c;
@@ -1342,30 +1417,40 @@ Description  : Wrapper class for User details
                     else{
                         activityClassification = '';
                     }
+
                 }
                 when 'PartnerMarketingBudget' {     // when PartnerFundRequest
+                    system.debug('Processing PartnerMarketingBudget');
                     PartnerMarketingBudget pmbObj = (PartnerMarketingBudget)sObj;
+                    system.debug('Processing pmbObj: ' + pmbObj);
                     recordTypeDevName = pmbObj.recordType.DeveloperName;
+                    system.debug('Processing recordTypeDevName: ' + recordTypeDevName);
                     accountId = pmbObj.Core_MDF_Ultimate_Account_Id__c;
+                    system.debug('Processing accountId: ' + accountId);
                     geo = 'WW';
                     budgetType = pmbObj.Core_MDF_Budget_Type_Txt__c;
+                    system.debug('Processing budgetType: ' + budgetType);
                     program = programNameByRecNameMap.containsKey(pmbObj.Core_MDF_Program_Nm__c) ? (String)programNameByRecNameMap.get(pmbObj.Core_MDF_Program_Nm__c) : pmbObj.Core_MDF_Program_Nm__c;
+                    system.debug('Processing program: ' + program);
                     //program = program.replaceAll('[^a-zA-Z0-9\\s+]', '');
                     approvalStage = 'None';
                 }
-                when 'PartnerFundClaim' {  //Roshan - Co-GTM claim setup
+                when 'PartnerFundClaim' {  //Claim approval setup
                     PartnerFundClaim pfcObj = (PartnerFundClaim)sObj;
-                    recordTypeDevName = pfcObj.recordType.DeveloperName;    
+                    recordTypeDevName = pfcObj.recordType.DeveloperName;
                     accountId = pfcObj.Core_MDF_Ultimate_Account_ID__c;
                     geo = pfcObj.Core_MDF_Campaign_Id__r.Core_MDF_Region_cd__c;  //used for cogtm
                     //hostGeo = pfcObj.Core_MDF_Campaign_Id__r.Core_MDF_Host_Region_cd__c;  //used for ipa outcome based
-                    hostGeo = pfcObj.Request.Core_MDF_Host_Region_txt__c;  //Roshan
+                    hostGeo = pfcObj.Request.Core_MDF_Host_Region_txt__c;  //Roshan - Super Activity changes
                     budgetType = pfcObj.Core_MDF_Budget_Type_Options_Nm__c;
                     isProposalBased = pfcObj.Core_MDF_Proposal_Based_Ind__c;
-                    program = pfcObj.ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c;  //Roshan
+                    //program = pfcObj.Core_MDF_Campaign_Id__r.Core_MDF_Program__c;
+                    //program = (recordTypeDevName == Core_MDF_CCP_ConstantClass.CMP_CO_GTM_RECORDTYPE) ? pfcObj.Core_MDF_Campaign_Id__r.Core_MDF_Program__c : pfcObj.Core_MDF_Program__c;  //Roshan - Super Activity changes
+                    program = pfcObj.ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c;  //Roshan - Super Activity changes
                     approvalStage = pfcObj.Core_MDF_Approval_Stage_nm__c;
                 }
-                when else {       
+                when else {
+                    system.debug('1453@@');       
                     return false;
                 }       
             }
@@ -1380,8 +1465,8 @@ Description  : Wrapper class for User details
             geo= String.isNotBlank(geo)? String.escapeSingleQuotes(geo):'';
             hostGeo = String.isNotBlank(hostGeo)? String.escapeSingleQuotes(hostGeo):'';
             geo  = string.isNotBlank(hostGeo) ? hostGeo : geo;
-            String geoStr = getGeoWithWWAsString(geo);
-            String geoBudgetTypeStr =  getGeoBudgetTypeWithWWAsString(geo, budgetType);
+            String geoStr = getGeoWithWWAsString(geo);  // ('EMEA', 'PRC', 'APJ', 'ASMO', 'INDIA', 'WW')
+            String geoBudgetTypeStr =  getGeoBudgetTypeWithWWAsString(geo, budgetType);  // ('EMEA;PRC;APJ;ASMO;INDIA->Account Plan', 'WW->Account Plan')
             //Activity classfication check
             activityClassification = (String.isNotBlank(activityClassification)) ?  activityClassification.contains(',') ?  activityClassification : getActivityClassificationAsString(activityClassification) :'';     
             //prepare inputwrapper instance
@@ -1396,26 +1481,33 @@ Description  : Wrapper class for User details
             objInputDetailsWrapper.isProposalBased = isProposalBased;
             objInputDetailsWrapper.activityClassification = activityClassification;
             objInputDetailsWrapper.userId = userId;
+
+            system.debug('objInputDetailsWrapper@@@' + objInputDetailsWrapper);
+
             
             //Get the role by approval stage
             if(objInputDetailsWrapper != null){
                 resultObj = getRoleNameByApprovalStage(objInputDetailsWrapper);
                 if(approvalStage=='Additional Reviewer'){
-           	 resultObj.role=(program=='Client CoMarketing Fund' && reviewType=='Field Review') ? 'Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr':
+            resultObj.role=(program=='Client CoMarketing Fund' && reviewType=='Field Review') ? 'Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr':
                     (program=='Client CoMarketing Fund' && reviewType=='Marketing Review') ? 'Core_MDF_CCP_Internal_CCF_Acct_Mgr':
                     (program=='Data Center CoMarketing Fund' && reviewType=='Field Review') ? 'Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr':
                     (program=='Data Center CoMarketing Fund' && reviewType=='Marketing Review') ? 'Core_MDF_CCP_Internal_DCF_Acct_Mgr':null;                
-            }
+        }
             }
             //Get the role by approval stage
             /*if(objInputDetailsWrapper != null){
                 resultObj = getRoleNameByApprovalStage(objInputDetailsWrapper);
             }*/
+
           
             if(resultObj != null){
+                system.debug('resultObj@@@' + resultObj);
                 List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> resultList = getIUPGMRecords(resultObj);
+                system.debug('result@@@' + resultList);
                
                 if(resultList !=null && !resultList.isEmpty()){
+                    
                     result = true;
                 }
                 else{
@@ -1428,11 +1520,13 @@ Description  : Wrapper class for User details
         return result;
     }
         
-        public static string getGeoWithWWAsString(String geo){
-        String geoStr;
+        public static string getGeoWithWWAsString(String geo) {
+            String geoStr;
           
-        List<String> varGeoList = new List<String>();
-        if(String.isNotBlank(geo)){
+            List<String> varGeoList = new List<String>();
+            if(String.isNotBlank(geo)) {
+        
+                //varGeoList.add(geo);
 
                 // Roshan - CoGTM multi geo fix
                 if(geo.contains(';')) {
@@ -1444,11 +1538,11 @@ Description  : Wrapper class for User details
                 } else {
                     varGeoList.add(geo);
                 }
+
                 varGeoList.add('WW');
                 geoStr ='(\'' + String.join(varGeoList, '\', \'') + '\')';
-        }
-         
-        return geoStr;
+            }
+            return geoStr;
         }
         
         public static string getGeoBudgetTypeWithWWAsString(String geo, String budgetType){
@@ -1533,25 +1627,28 @@ Description  : Wrapper class for User details
                     ' and Core_MDF_Role_nm__c =: role'+
                     ' and Core_MDF_is_User_Active_ind__c = true '+
                     ' and Core_MDF_Active_Ind__c = true' +
-                    ' and Core_MDF_Is_Not_an_Approver_Ind__c = false';
+                    ' and Core_MDF_Is_Not_an_Approver_Ind__c = false'; 
                     //' and Core_MDF_User_id__c =: userId';
-					//16852
+                    
+                    System.debug('First check '+ qryStr);
                     if(String.isNotBlank(userId)){
                         qryStr += ' and Core_MDF_User_id__c =: userId';
-                    }                    
-
+                    }
                         qryStr += ' and (Core_MDF_All_Accounts_cd__c = ' + '\'' + String.escapeSingleQuotes(allAccountsYes) + '\'' +
                             ' OR (Core_MDF_All_Accounts_cd__c = ' +  '\'' + String.escapeSingleQuotes(allAccountsNo) + '\'' +
                             ' and Core_MDF_Account_id__c =:accId))';
+                            System.debug('second check '+ qryStr);
             
             geoBudgetType = String.escapeSingleQuotes(geoBudgetType).replaceAll('\\\\','');
-             region = String.escapeSingleQuotes(region).replaceAll('\\\\','');
-             activityClassification = String.escapeSingleQuotes(activityClassification).replaceAll('\\\\','');
-            
+         region = String.escapeSingleQuotes(region).replaceAll('\\\\','');
+         activityClassification = String.escapeSingleQuotes(activityClassification).replaceAll('\\\\','');
+         System.debug('third check '+ geoBudgetType);
+          System.debug('fourth check '+ region);
+           System.debug('fifth check '+ activityClassification);
             
             //2. Filter condition for Geo/Geo->BudgetType 
             // CHANGE START - Added by Shravani as part of Unhandled Exception fix (added null checks for region and geoBudgetType) 
-            // if region is blank use WW
+            //region = String.isBlank(region) ? '(\'WW\')' : region; // if regoin is blank use WW
             if(String.isBlank(region)){
                 region = '(\'WW\')'; 
             }
@@ -1559,14 +1656,18 @@ Description  : Wrapper class for User details
                 if(String.isNotBlank(geoBudgetType)){
                     qryStr +=' and ((Core_MDF_All_Budget_Type_Access_Ind__c = false and Core_MDF_GeoSubGeo_Budget_Type_nm__c INCLUDES ' + geoBudgetType +')' 
                             + ' OR (Core_MDF_All_Budget_Type_Access_Ind__c = true and Core_MDF_Region_cd__c INCLUDES ' + region +'))'; 
+                            System.debug('6th check '+ qryStr); 
                 }else{
                     qryStr +=' and (Core_MDF_All_Budget_Type_Access_Ind__c = true and Core_MDF_Region_cd__c INCLUDES ' + region +')'; 
+                            System.debug('6th check for else'+ qryStr); 
 
                 }
             }else if(isApprovalBasedOnApprovalRegion(program,role)){
-                qryStr +=' and (Core_MDF_Approval_Region_nm__c INCLUDES ' + region + ')';   
+                qryStr +=' and (Core_MDF_Approval_Region_nm__c INCLUDES ' + region + ')'; 
+                System.debug('7th check '+ qryStr);   
             }else{
-                qryStr +=' and (Core_MDF_Region_cd__c INCLUDES ' + region + ')';     
+                qryStr +=' and (Core_MDF_Region_cd__c INCLUDES ' + region + ')'; 
+                System.debug('8th check '+ qryStr);      
             }
             // CHANGE END - Unhandled Exception fix
         
@@ -1574,10 +1675,14 @@ Description  : Wrapper class for User details
             // 3. Filter condition for Activity classification
             if(isActivityClassificationCheckReq && String.isNotBlank(activityClassification)){
                 qryStr += ' and Core_MDF_Activity_Classification_nm__c INCLUDES ' + activityClassification;
+                System.debug('9th check '+ qryStr); 
             }
-            
+            system.debug('role@@@' + role);
+            system.debug('query@@@' + userId);
+            system.debug('query@@@' + qryStr);
             // Fetch the query data
             iupgmRecordList =  Database.Query(qryStr);
+            system.debug('iupgmRecordList@@@' + iupgmRecordList);
         
         //}
         }
@@ -1652,6 +1757,100 @@ Description  : Wrapper class for User details
         public Boolean isActivityClassificationCheckRequired {get;set;}
         public Boolean isBudgetTypeCheckRequired {get;set;}
         public InputDetailsWrapper(){}
+    }
+
+    /*---------------------------------------------------------------------------------------------
+    Class Name          : ActivityOwnerRequest
+    Description         : Request wrapper for activity owner related methods (getIntelActivityOwners, isApprover)
+    ---------------------------------------------------------------------------------------------- */
+    public class ActivityOwnerRequest {
+        public String accId;
+        public String primaryAcctId;
+        public String program;
+        public List<String> country;
+        public String budgetType;
+        public Boolean isPlannedEdited;
+        public String userId; // used for isApprover
+
+        public ActivityOwnerRequest(String accId, String primaryAcctId, String program, List<String> country, String budgetType, Boolean isPlannedEdited) {
+            this.accId = accId;
+            this.primaryAcctId = primaryAcctId;
+            this.program = program;
+            this.country = country;
+            this.budgetType = budgetType;
+            this.isPlannedEdited = isPlannedEdited;
+        }
+
+        public ActivityOwnerRequest(String accId, String primaryAcctId, String program, List<String> country, String budgetType, String userId) {
+            this.accId = accId;
+            this.primaryAcctId = primaryAcctId;
+            this.program = program;
+            this.country = country;
+            this.budgetType = budgetType;
+            this.userId = userId;
+        }
+    }
+
+    /*---------------------------------------------------------------------------------------------
+    Class Name          : RecordApprovalRequest
+    Description         : Request wrapper for record approval methods (isRecordApprover, isRecordApproverWithBudgetType)
+    ---------------------------------------------------------------------------------------------- */
+    public class RecordApprovalRequest {
+        public String accId;
+        public String program;
+        public List<String> country;
+        public String approvalStage;
+        public String userId;
+        public String budgetType; // optional, null for isRecordApprover
+
+        public RecordApprovalRequest(String accId, String program, List<String> country, String approvalStage, String userId) {
+            this.accId = accId;
+            this.program = program;
+            this.country = country;
+            this.approvalStage = approvalStage;
+            this.userId = userId;
+            this.budgetType = null;
+        }
+
+        public RecordApprovalRequest(String accId, String program, List<String> country, String approvalStage, String userId, String budgetType) {
+            this.accId = accId;
+            this.program = program;
+            this.country = country;
+            this.approvalStage = approvalStage;
+            this.userId = userId;
+            this.budgetType = budgetType;
+        }
+    }
+
+    /*---------------------------------------------------------------------------------------------
+    Class Name          : IupgmQueryRequest
+    Description         : Request wrapper for IUPGM query methods (getIupgmRecords, getIupgmRecordsWithBudgetType)
+    ---------------------------------------------------------------------------------------------- */
+    public class IupgmQueryRequest {
+        public String accId;
+        public String program;
+        public String userId;
+        public String geoStr;
+        public String roles;
+        public String budgetType; // optional
+
+        public IupgmQueryRequest(String accId, String program, String userId, String geoStr, String roles) {
+            this.accId = accId;
+            this.program = program;
+            this.userId = userId;
+            this.geoStr = geoStr;
+            this.roles = roles;
+            this.budgetType = null;
+        }
+
+        public IupgmQueryRequest(String accId, String program, String userId, String geoStr, String roles, String budgetType) {
+            this.accId = accId;
+            this.program = program;
+            this.userId = userId;
+            this.geoStr = geoStr;
+            this.roles = roles;
+            this.budgetType = budgetType;
+        }
     }
 
     }

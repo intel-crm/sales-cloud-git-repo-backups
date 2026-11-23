@@ -45,7 +45,8 @@ public without sharing class Core_MDF_IUPGM_ApprovalRequest {
         set<string> iupgmProgram = new set<string>();
         set<string> iupgmRoles = new set<string>();
         set<string> progNameSet = new set<string>();
-        List<PartnerFundRequest> pfrToApprove = new List<PartnerFundRequest>();
+        // Highlight: Unused Local Variable - 14285
+        // List<PartnerFundRequest> pfrToApprove = new List<PartnerFundRequest>();
         List<ApprovalWrapper> approvalWrapList = new List<ApprovalWrapper>();
         List<Core_MDF_CCP_IUPGM_Approver_Mapping__c> iupgmApproverList = new List<Core_MDF_CCP_IUPGM_Approver_Mapping__c>();
         Map<string,Map<string,set<string>>> objectToApprovalStageMap = new Map<string,map<string,set<string>>>(); 
@@ -117,53 +118,68 @@ public without sharing class Core_MDF_IUPGM_ApprovalRequest {
                 
                 
                 
-                for(Core_MDF_Program_Budget_RecordType__mdt mdtConfiq: [select Id,Core_MDF_Program__c, Core_MDF_Account_Manager_PS_API_Name__c, Core_MDF_BudgetType__c 
-                                                                        FROM Core_MDF_Program_Budget_RecordType__mdt 
-                                                                        where Core_MDF_BudgetType__c != null AND Core_MDF_Account_Manager_PS_API_Name__c != null ]){
-                                                                            if(permissionSetList.contains(mdtConfiq.Core_MDF_Account_Manager_PS_API_Name__c)){
-                                                                                if(psToProgToBTSetMap.containsKey(mdtConfiq.Core_MDF_Account_Manager_PS_API_Name__c)){
-                                                                                    if(psToProgToBTSetMap.get(mdtConfiq.Core_MDF_Account_Manager_PS_API_Name__c).containsKey(mdtConfiq.Core_MDF_Program__c  )){
-                                                                                        psToProgToBTSetMap.get(mdtConfiq.Core_MDF_Account_Manager_PS_API_Name__c).get(mdtConfiq.Core_MDF_Program__c).add(mdtConfiq.Core_MDF_BudgetType__c);
-                                                                                    }else{
-                                                                                        psToProgToBTSetMap.get(mdtConfiq.Core_MDF_Account_Manager_PS_API_Name__c).put(mdtConfiq.Core_MDF_Program__c,new set<string>{mdtConfiq.Core_MDF_BudgetType__c});
-                                                                                    }
-                                                                                }else{
-                                                                                    map<String,set<string>> progToBTSetMap = new map<String,set<string>>();
-                                                                                    progToBTSetMap.put(mdtConfiq.Core_MDF_Program__c,new set<string>{mdtConfiq.Core_MDF_BudgetType__c});
-                                                                                    psToProgToBTSetMap.put(mdtConfiq.Core_MDF_Account_Manager_PS_API_Name__c, progToBTSetMap);
-                                                                                }
-                                                                                
-                                                                                
+for(Core_MDF_Program_Budget_RecordType__mdt mdtConfiq: [select Id,Core_MDF_Program__c, Core_MDF_Account_Manager_PS_API_Name__c, Core_MDF_BudgetType__c 
+                                                        FROM Core_MDF_Program_Budget_RecordType__mdt 
+                                                        where Core_MDF_BudgetType__c != null AND Core_MDF_Account_Manager_PS_API_Name__c != null ]){
+                                                                            // Avoid deeply nested IF statements - US - TWC702-14285
+                                                                            if(!permissionSetList.contains(mdtConfiq.Core_MDF_Account_Manager_PS_API_Name__c)){
+                                                                                continue; //US - TWC702-14285
+                                                                            }
+                                                                            if(!psToProgToBTSetMap.containsKey(mdtConfiq.Core_MDF_Account_Manager_PS_API_Name__c)){
+                                                                                // Create new map for this permission set
+                                                                                map<String,set<string>> progToBTSetMap = new map<String,set<string>>();
+                                                                                progToBTSetMap.put(mdtConfiq.Core_MDF_Program__c,new set<string>{mdtConfiq.Core_MDF_BudgetType__c});
+                                                                                psToProgToBTSetMap.put(mdtConfiq.Core_MDF_Account_Manager_PS_API_Name__c, progToBTSetMap);
+                                                                            } else if(!psToProgToBTSetMap.get(mdtConfiq.Core_MDF_Account_Manager_PS_API_Name__c).containsKey(mdtConfiq.Core_MDF_Program__c)){
+                                                                                // Add program to existing permission set map
+                                                                                psToProgToBTSetMap.get(mdtConfiq.Core_MDF_Account_Manager_PS_API_Name__c).put(mdtConfiq.Core_MDF_Program__c,new set<string>{mdtConfiq.Core_MDF_BudgetType__c});
+                                                                            } else {
+                                                                                // Add budget type to existing program set
+                                                                                psToProgToBTSetMap.get(mdtConfiq.Core_MDF_Account_Manager_PS_API_Name__c).get(mdtConfiq.Core_MDF_Program__c).add(mdtConfiq.Core_MDF_BudgetType__c);
                                                                             }
                                                                         }
                 
                 for(Core_MDF_CCP_IUPGM_Approver_Mapping__c csObj: iupgmApproverList){
-                    if(permissionSetList.contains(csObj.Core_MDF_Role_txt__c)){
-                        iupgmBasedApprovalObj.add(csObj.Core_MDF_Object_Name_txt__c);
-                        if(string.isNotBlank(csObj.Core_MDF_Role_txt__c ) && string.isNotBlank(csObj.Core_MDF_Approval_Stage_txt__c)){
-                            if(objectToApprovalStageMap.containsKey(csObj.Core_MDF_Object_Name_txt__c)){
-                                if(objectToApprovalStageMap.get(csObj.Core_MDF_Object_Name_txt__c).containsKey(csObj.Core_MDF_Role_txt__c   )){
-                                    objectToApprovalStageMap.get(csObj.Core_MDF_Object_Name_txt__c).get(csObj.Core_MDF_Role_txt__c).add(csObj.Core_MDF_Approval_Stage_txt__c);
-                                }else{
-                                    objectToApprovalStageMap.get(csObj.Core_MDF_Object_Name_txt__c).put(csObj.Core_MDF_Role_txt__c,new set<string>{csObj.Core_MDF_Approval_Stage_txt__c});
-                                }
-                            }else{
-                                map<String,set<string>> roleToApprovalStageSetMap = new map<String,set<string>>();
-                                roleToApprovalStageSetMap.put(csObj.Core_MDF_Role_txt__c,new set<string>{csObj.Core_MDF_Approval_Stage_txt__c});
-                                objectToApprovalStageMap.put(csObj.Core_MDF_Object_Name_txt__c, roleToApprovalStageSetMap);
-                            }
-                        }
-                        
+                    // Guard clause to avoid deeply nested IF statements - US - TWC702-14285
+                    if(!permissionSetList.contains(csObj.Core_MDF_Role_txt__c)){
+                        continue;
+                    }
+                    
+                    iupgmBasedApprovalObj.add(csObj.Core_MDF_Object_Name_txt__c);
+                    
+                    // Guard clause for role and stage validation - US - TWC702-14285
+                    if(string.isBlank(csObj.Core_MDF_Role_txt__c ) || string.isBlank(csObj.Core_MDF_Approval_Stage_txt__c)){
                         programSet.add(csObj.Core_MDF_Program_txt__c);  
                         rolesSet.add(csObj.Core_MDF_Role_txt__c	);
+                        continue;
                     }
+                    
+                    // Process approval stage mapping
+                    if(objectToApprovalStageMap.containsKey(csObj.Core_MDF_Object_Name_txt__c)){
+                        if(objectToApprovalStageMap.get(csObj.Core_MDF_Object_Name_txt__c).containsKey(csObj.Core_MDF_Role_txt__c   )){
+                            objectToApprovalStageMap.get(csObj.Core_MDF_Object_Name_txt__c).get(csObj.Core_MDF_Role_txt__c).add(csObj.Core_MDF_Approval_Stage_txt__c);
+                        }else{
+                            objectToApprovalStageMap.get(csObj.Core_MDF_Object_Name_txt__c).put(csObj.Core_MDF_Role_txt__c,new set<string>{csObj.Core_MDF_Approval_Stage_txt__c});
+                        }
+                    }else{
+                        map<String,set<string>> roleToApprovalStageSetMap = new map<String,set<string>>();
+                        roleToApprovalStageSetMap.put(csObj.Core_MDF_Role_txt__c,new set<string>{csObj.Core_MDF_Approval_Stage_txt__c});
+                        objectToApprovalStageMap.put(csObj.Core_MDF_Object_Name_txt__c, roleToApprovalStageSetMap);
+                    }
+                    
+                    programSet.add(csObj.Core_MDF_Program_txt__c);  
+                    rolesSet.add(csObj.Core_MDF_Role_txt__c	);
                 }
             }
             
             if(!programSet.isEmpty() && !rolesSet.isEmpty()){
                 
                 //map<string,set<string>> roleToStageSetMap = new map<string,set<string>>();
-                if(!objectToApprovalStageMap.isEmpty() && !objectToApprovalStageMap.values().isEmpty()){
+                // Guard clause to avoid deeply nested IF statements - US - TWC702-14285
+                if(objectToApprovalStageMap.isEmpty() || objectToApprovalStageMap.values().isEmpty()){
+                    // Skip processing if no approval stages are configured
+                    // Continue with rest of the method
+                } else {
                     for(map<string,set<string>> roleToStageMap : objectToApprovalStageMap.values()){
                         for(string role: roleToStageMap.keySet()){
                             if(roleToStageSetMap.containsKey(role)){
@@ -194,41 +210,46 @@ public without sharing class Core_MDF_IUPGM_ApprovalRequest {
                                                                           iupgmProgram.add(iupgm.Core_MDF_Program_nm__c);
                                                                           iupgmRoles.add(iupgm.Core_MDF_Role_nm__c);
                                                                           
-                                                                          if(!psToProgToBTSetMap.isEmpty() && !psToProgToBTSetMap.values().isEmpty()){
-                                                                              if(psToProgToBTSetMap.containsKey(iupgm.Core_MDF_Role_nm__c) && psToProgToBTSetMap.get(iupgm.Core_MDF_Role_nm__c) != null){
-                                                                                  
-                                                                                  Map<string,set<string>> progToBTMap = psToProgToBTSetMap.get(iupgm.Core_MDF_Role_nm__c);
-                                                                                  for(string prog: progToBTMap.keySet()){
-                                                                                      string progLabel = progTechNameToLabelMap.containsKey(prog) ? progTechNameToLabelMap.get(prog) : '';
-                                                                                      if(string.isNotBlank(progLabel)){
-                                                                                          if(progToBudgetSetMap.containsKey(progLabel)){
-                                                                                              progToBudgetSetMap.get(progLabel).addAll(progToBTMap.get(prog));
-                                                                                          }else{
-                                                                                              progToBudgetSetMap.put(progLabel, progToBTMap.get(prog));
-                                                                                          }
-                                                                                      }                               
-                                                                                  }
-                                                                                  
-                                                                              }
-                                                                          }
+            // Guard clause to avoid deeply nested IF statements - US - TWC702-14285
+        if(psToProgToBTSetMap.isEmpty() || psToProgToBTSetMap.values().isEmpty()){
+            continue;
+        }
+        
+        // Guard clause to avoid deeply nested IF statements - US - TWC702-14285
+        if(!psToProgToBTSetMap.containsKey(iupgm.Core_MDF_Role_nm__c) || psToProgToBTSetMap.get(iupgm.Core_MDF_Role_nm__c) == null){
+            continue;
+        }
+        
+        Map<string,set<string>> progToBTMap = psToProgToBTSetMap.get(iupgm.Core_MDF_Role_nm__c);
+        for(string prog: progToBTMap.keySet()){
+            string progLabel = progTechNameToLabelMap.containsKey(prog) ? progTechNameToLabelMap.get(prog) : '';
+            if(string.isNotBlank(progLabel)){
+                if(progToBudgetSetMap.containsKey(progLabel)){
+                    progToBudgetSetMap.get(progLabel).addAll(progToBTMap.get(prog));
+                }else{
+                    progToBudgetSetMap.put(progLabel, progToBTMap.get(prog));
+                }
+            }                               
+        }
                                                                           
                                                                           if(string.isNotBlank(iupgm.Core_MDF_Activity_Classification_nm__c)){
                                                                               iupgmClassifications.addAll(iupgm.Core_MDF_Activity_Classification_nm__c.split(';'));
                                                                           }
                                                                           
-                                                                          if(!roleToStageSetMap.isEmpty() && roleToStageSetMap.containsKey(iupgm.Core_MDF_Role_nm__c) && !roleToStageSetMap.get(iupgm.Core_MDF_Role_nm__c).isEmpty()){
-                                                                              if(!iupgmClassifications.isEmpty()){
-                                                                                  set<string> confiqApprovalStage = roleToStageSetMap.get(iupgm.Core_MDF_Role_nm__c);
-                                                                                  for(string iupgmStage: iupgmClassifications){
-                                                                                      for(string confiqStage: confiqApprovalStage){
-                                                                                          if(confiqStage.contains(iupgmStage)){
-                                                                                              approvalStageSet.add(confiqStage);
-                                                                                          }
+                                                                          // US - TWC702-14285: Flatten nested IFs (no logic change)
+                                                                          Set<string> confiqApprovalStage = roleToStageSetMap.get(iupgm.Core_MDF_Role_nm__c);
+                                                                          if (roleToStageSetMap.isEmpty() || confiqApprovalStage == null || confiqApprovalStage.isEmpty()) {
+                                                                              // nothing to add
+                                                                          } else if (iupgmClassifications != null && !iupgmClassifications.isEmpty()) {
+                                                                              for (string iupgmStage : iupgmClassifications) {
+                                                                                  for (string confiqStage : confiqApprovalStage) {
+                                                                                      if (confiqStage.contains(iupgmStage)) {
+                                                                                          approvalStageSet.add(confiqStage);
                                                                                       }
                                                                                   }
-                                                                              }else{
-                                                                                  approvalStageSet = roleToStageSetMap.get(iupgm.Core_MDF_Role_nm__c);
                                                                               }
+                                                                          } else {
+                                                                              approvalStageSet = confiqApprovalStage;
                                                                           }                      
                                                                           
                                                                           if(!approvalStageSet.isEmpty()){
@@ -254,16 +275,18 @@ public without sharing class Core_MDF_IUPGM_ApprovalRequest {
                     isIUPGMBasedApprover = true;
                 }
                 
-                if(isIUPGMBasedApprover){
-                    for (ChannelProgram cp : [SELECT Id, Name                               
-                                              FROM ChannelProgram                               
-                                              WHERE Name IN: progNameSet]){                               
-                                                  progToIdMap.put(cp.Name,cp.Id);                             
-                                              } 
-                    
-                    if(!progTechNameToLabelMap.isEmpty()){
-                        for(string prog: iupgmProgram){
-                            if(progTechNameToLabelMap.containsKey(prog)){
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                if (!isIUPGMBasedApprover) {
+                    // nothing to do when approver flag is false
+                } else {
+                    for (ChannelProgram cp : [SELECT Id, Name 
+                                              FROM ChannelProgram 
+                                              WHERE Name IN : progNameSet]) {
+                        progToIdMap.put(cp.Name, cp.Id);
+                    }
+                    if (!progTechNameToLabelMap.isEmpty()) {
+                        for (string prog : iupgmProgram) {
+                            if (progTechNameToLabelMap.containsKey(prog)) {
                                 programNameSet.add(progTechNameToLabelMap.get(prog));
                             }
                         }
@@ -294,7 +317,7 @@ public without sharing class Core_MDF_IUPGM_ApprovalRequest {
                         approvalWrapList.add(appWrapObj);
                     }
                     
-                    // Gayathri-Get outcome-based PFR approvers separately
+                    // Get outcome-based PFR approvers separately
                     ApprovalWrapper outcomeBasedWrapObj = getPFRApprovers(programNameSet,approvalStage,'PartnerFundRequest', true);
                     if(outcomeBasedWrapObj != null){
                         approvalWrapList.add(outcomeBasedWrapObj);
@@ -317,7 +340,11 @@ public without sharing class Core_MDF_IUPGM_ApprovalRequest {
                     }
                 }
                 if(objectToApprovalStageMap.containsKey('PartnerFundClaim') && !objectToApprovalStageMap.get('PartnerFundClaim').isEmpty()){
-                    set<string> approvalStage = new set<string>();approvalStage = getApprovalRoles(objectToApprovalStageMap,iupgmRoles,'PartnerFundClaim');ApprovalWrapper appWrapObj = getPFCApprovers(programNameSet,approvalStage,'PartnerFundClaim');if(appWrapObj != null){approvalWrapList.add(appWrapObj);
+                    set<string> approvalStage = new set<string>();
+                    approvalStage = getApprovalRoles(objectToApprovalStageMap,iupgmRoles,'PartnerFundClaim');
+                    ApprovalWrapper appWrapObj = getPFCApprovers(programNameSet,approvalStage,'PartnerFundClaim');
+                    if(appWrapObj != null){
+                        approvalWrapList.add(appWrapObj);
                     }
                 }
         }
@@ -338,13 +365,15 @@ public without sharing class Core_MDF_IUPGM_ApprovalRequest {
                 
                 for(string objName: approvalReqObjMdtPIMap.keyset()){
                     ApprovalWrapper appWrapObj = getApproversBasedOnPI(objName);
-                    if(appWrapObj != null){ Boolean isObjectAvailable = false;
-                        if(!approvalWrapList.isEmpty()){for(ApprovalWrapper wrap: approvalWrapList){if(wrap.objectName == appWrapObj.objectName && wrap.icon == appWrapObj.icon){wrap.count += appWrapObj.count; isObjectAvailable = true;wrap.recordsToApprove.addAll(appWrapObj.recordsToApprove);
-                                }
-                            }
+                    if(appWrapObj == null) continue; //US - TWC702-14285
+                    Boolean isObjectAvailable = false;
+                    for(ApprovalWrapper wrap: approvalWrapList){
+                        if(wrap.objectName == appWrapObj.objectName && wrap.icon == appWrapObj.icon){
+                            wrap.count += appWrapObj.count; isObjectAvailable = true;wrap.recordsToApprove.addAll(appWrapObj.recordsToApprove);
+                            break; //US - TWC702-14285
                         }
-                        if(!isObjectAvailable){approvalWrapList.add(appWrapObj);}
-                    } 
+                    }
+                   if(!isObjectAvailable)approvalWrapList.add(appWrapObj);
                 }
             }
         }
@@ -385,7 +414,8 @@ public without sharing class Core_MDF_IUPGM_ApprovalRequest {
      
         //Approval Region is populated for IPA Price Reviewer role.
         if(iupgm.Core_MDF_Program_nm__c=='CoGTM'){
-           geoSubGeoList.add('EMEA;PRC;APJ;ASMO');geoSubGeoList.add('WW');
+           geoSubGeoList.add('EMEA;PRC;APJ;ASMO');
+           geoSubGeoList.add('WW');
            //geoSubGeoList.add(Core_MDF_CCP_ConstantClass.CAMPAIGN_ALL_REGION);
         }else{
         geoSubGeoList = iupgm.Core_MDF_Approval_Region_nm__c != null 
@@ -398,18 +428,15 @@ public without sharing class Core_MDF_IUPGM_ApprovalRequest {
         }
         
         
-        if(!regionToBudgetSet.isEmpty()){
-            for(string regionBT : regionToBudgetSet){
-                if(regionBT.contains('->')){
-                    List<string> regionToBT = regionBT.split('->');
-                    string geo = regionToBT[0];
-                    string budget = regionToBT[1];
-                    if(regionToBudgetTypeMap.containsKey(geo)){
-                        regionToBudgetTypeMap.get(geo).add(budget);
-                    }else{
-                        regionToBudgetTypeMap.put(geo,new List<string>{budget});
-                    }
-                }
+        for (String regionBT : regionToBudgetSet) {
+            if (!regionBT.contains('->')) continue; //US - TWC702-14285
+            List<String> regionToBT = regionBT.split('->');
+            String geo = regionToBT[0];
+            String budget = regionToBT[1];
+            if (regionToBudgetTypeMap.containsKey(geo)) {
+                regionToBudgetTypeMap.get(geo).add(budget);
+            } else {
+                regionToBudgetTypeMap.put(geo, new List<String>{ budget });
             }
         }
         if(((/*CHANNEL_MDF_PROG.equals(iupgm.Core_MDF_Program_nm__c) ||*/ IPA_PROG.equals(iupgm.Core_MDF_Program_nm__c))
@@ -418,22 +445,24 @@ public without sharing class Core_MDF_IUPGM_ApprovalRequest {
                 // Key for Specific Budget Type
                 if(!geoSubGeoList.isEmpty()){
                     for(string geo: geoSubGeoList){
-                        if(regionToBudgetTypeMap.containsKey(geo) && !regionToBudgetTypeMap.get(geo).isEmpty()){
-                            for(string budgetType: regionToBudgetTypeMap.get(geo)){ 
-                                budgetType = budgetType.replaceAll('\\s+', '');
-                                for(string str: approvalStageSet){
-                                    string approvalStage = str.replaceAll('\\s+', '');
-                                    string allAccSpecificBTKey = geo + '->' + (string)iupgm.Core_MDF_Channel_Program_id__c + '_' + approvalStage + '_' + budgetType;
-                                    allAccSpecificBTSet.add(allAccSpecificBTKey);
-                                    
-                                    //Add account
-                                    if(iupgm.Core_MDF_All_Accounts_cd__c == STR_No){
-                                        string singleAccSpecificBTKey = allAccSpecificBTKey + '_' + (string)iupgm.Core_MDF_Account_id__c;
-                                        singleAccSpecificBTSet.add(singleAccSpecificBTKey);
-                                    }
-                                    
-                                } 
-                            }
+                        // Guard clause to avoid deeply nested IF statements - US - TWC702-14285
+                        if(!regionToBudgetTypeMap.containsKey(geo) || regionToBudgetTypeMap.get(geo).isEmpty()){
+                            continue;
+                        }
+                        for(string budgetType: regionToBudgetTypeMap.get(geo)){ 
+                            budgetType = budgetType.replaceAll('\\s+', '');
+                            for(string str: approvalStageSet){
+                                string approvalStage = str.replaceAll('\\s+', '');
+                                string allAccSpecificBTKey = geo + '->' + (string)iupgm.Core_MDF_Channel_Program_id__c + '_' + approvalStage + '_' + budgetType;
+                                allAccSpecificBTSet.add(allAccSpecificBTKey);
+                                
+                                //Add account
+                                if(iupgm.Core_MDF_All_Accounts_cd__c == STR_No){
+                                    string singleAccSpecificBTKey = allAccSpecificBTKey + '_' + (string)iupgm.Core_MDF_Account_id__c;
+                                    singleAccSpecificBTSet.add(singleAccSpecificBTKey);
+                                }
+                                
+                            } 
                         }
                     }
                 }
@@ -474,7 +503,7 @@ public without sharing class Core_MDF_IUPGM_ApprovalRequest {
         return keyWrap;
     }
     
-    // Gayathri-handles both normal and outcome-based PFR
+// MODIFIED METHOD: Original getPFRApprovers now excludes outcome-based activities
     Public static ApprovalWrapper getPFRApprovers(set<string> programNameSet, set<string> approvalStageSet, string objName, Boolean isOutcomeBased){
         
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
@@ -500,12 +529,12 @@ public without sharing class Core_MDF_IUPGM_ApprovalRequest {
         paramWrap.approvalStageSet = approvalStageSet;
         pfrList = Core_MDF_IUPGM_ApprovalRequestData.getPfrRecordData(paramWrap);
 
-        
+    
         if(!pfrList.isEmpty()){
             for(PartnerFundRequest pfr: pfrList){
             
 	            // Gayathri-Filter based on outcome-based flag
-	            if(isOutcomeBased != null && isOutcomeBased) {
+	            /*if(isOutcomeBased != null && isOutcomeBased) {
 	                // Only process outcome-based activities
 	                if(pfr.Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.IPA_PROGRAM || 
 	                   pfr.Core_MDF_Is_Outcome_Based_Ind__c != true) {
@@ -517,8 +546,25 @@ public without sharing class Core_MDF_IUPGM_ApprovalRequest {
 	                   pfr.Core_MDF_Is_Outcome_Based_Ind__c == true) {
 	                    continue;
 	                }
-	            }
+	            }*/
 	            // If isOutcomeBased is null, process all activities (backward compatibility)
+                if (isOutcomeBased != null && isOutcomeBased) {
+                    // Only process outcome-based activities
+                    if (
+                        pfr.Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.IPA_PROGRAM ||
+                        pfr.Core_MDF_Is_Outcome_Based_Ind__c != true
+                    ) {
+                        continue;
+                    }
+                } else if (isOutcomeBased != null && !isOutcomeBased) {
+                    // Only process non-outcome-based activities
+                    if (
+                        pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM &&
+                        pfr.Core_MDF_Is_Outcome_Based_Ind__c == true
+                    ) {
+                        continue;
+                    }
+                }// indu
             
                 string allAccAllBTSetKey,allAccSpecificBTSetKey,singleAccAllBTSetKey,singleAccSpecificBTSetKey;
                 string budgetType = string.isNotBlank(pfr.Core_MDF_Budget_Type_nm__c) ? pfr.Core_MDF_Budget_Type_nm__c.replaceAll('\\s+', '') : '';
@@ -532,7 +578,8 @@ public without sharing class Core_MDF_IUPGM_ApprovalRequest {
                         if(pfr.Core_MDF_Approval_Stage__c != 'Additional Reviewer' && progToBudgetSetMap.get(pfr.Core_MDF_Program__c).contains(pfr.Core_MDF_Budget_Type_nm__c)){
                                 allAccAllBTSetKey = pfr.Core_MDF_Sub_Region_nm__c != null ? region + '-' + pfr.Core_MDF_Sub_Region_nm__c +'->' + progId + '_' + approvalStage  : region +'->'+ progId + '_' + approvalStage;
                             }
-                         else if(pfr.Core_MDF_Approval_Stage__c == 'Additional Reviewer' && hasAdditionalReviewAccess(pfr)){allAccAllBTSetKey = pfr.Core_MDF_Sub_Region_nm__c != null ? region + '-' + pfr.Core_MDF_Sub_Region_nm__c +'->' + progId + '_' + approvalStage  : region +'->'+ progId + '_' + approvalStage;
+                         else if(pfr.Core_MDF_Approval_Stage__c == 'Additional Reviewer' && hasAdditionalReviewAccess(pfr)){
+                                allAccAllBTSetKey = pfr.Core_MDF_Sub_Region_nm__c != null ? region + '-' + pfr.Core_MDF_Sub_Region_nm__c +'->' + progId + '_' + approvalStage  : region +'->'+ progId + '_' + approvalStage;
                         }
                         
                     }
@@ -541,25 +588,39 @@ public without sharing class Core_MDF_IUPGM_ApprovalRequest {
                     }
                 }
                 
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
                 if(string.isNotBlank(allAccAllBTSetKey)){
                     allAccSpecificBTSetKey = budgetType != null ? allAccAllBTSetKey + '_' + budgetType : '';
                 }
                 
-                if(string.isNotBlank(pfr.Core_MDF_Program__c)){
-                    if(string.isNotBlank(allAccAllBTSetKey)){
-                        if(pfr.Core_MDF_Program__c == RMF_PROG && pfr.Core_MDF_Approval_Stage__c != 'Price Reviewer'){
-                            singleAccAllBTSetKey = allAccAllBTSetKey + '_' +pfr.ChannelPartnerId;
-                            }else if(pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM 
-                                     && (pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L1_APPROVAL_PRIMARY_PARTNER 
-                                    || pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L2_PRIMARY_APPROVAL)
-                                    && string.isNotBlank(pfr.Core_MDF_Campaign_Ultimate_Account_Id__c)){
-                                        singleAccAllBTSetKey = allAccAllBTSetKey + '_' + pfr.Core_MDF_Campaign_Ultimate_Account_Id__c;
-                        }else if(string.isNotBlank(pfr.Core_MDF_Ultimate_Account_Id__c)){
-                            singleAccAllBTSetKey = allAccAllBTSetKey + '_' + pfr.Core_MDF_Ultimate_Account_Id__c;
-                        }
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                if(string.isNotBlank(pfr.Core_MDF_Program__c) && string.isNotBlank(allAccAllBTSetKey)){
+                    // Avoid deeply nested IF statements - US - TWC702-14285
+                    if(pfr.Core_MDF_Program__c == RMF_PROG && pfr.Core_MDF_Approval_Stage__c != 'Price Reviewer'){
+                        singleAccAllBTSetKey = allAccAllBTSetKey + '_' +pfr.ChannelPartnerId;
+                    }else if(pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM 
+                             && (pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L1_APPROVAL_PRIMARY_PARTNER 
+                            || pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L2_PRIMARY_APPROVAL)
+                             && string.isNotBlank(pfr.Core_MDF_Campaign_Ultimate_Account_Id__c)){
+                        singleAccAllBTSetKey = allAccAllBTSetKey + '_' + pfr.Core_MDF_Campaign_Ultimate_Account_Id__c;
+                    }else if(string.isNotBlank(pfr.Core_MDF_Ultimate_Account_Id__c)){
+                        singleAccAllBTSetKey = allAccAllBTSetKey + '_' + pfr.Core_MDF_Ultimate_Account_Id__c;
                     }
-                    if(string.isNotBlank(allAccSpecificBTSetKey)){
-                        if(pfr.Core_MDF_Program__c == RMF_PROG && pfr.Core_MDF_Approval_Stage__c != 'Price Reviewer'){singleAccSpecificBTSetKey = allAccSpecificBTSetKey + '_' +pfr.ChannelPartnerId;}else if(pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM && (pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L1_APPROVAL_PRIMARY_PARTNER || pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L2_PRIMARY_APPROVAL) && string.isNotBlank(pfr.Core_MDF_Campaign_Ultimate_Account_Id__c)){singleAccSpecificBTSetKey = allAccSpecificBTSetKey + '_' + pfr.Core_MDF_Campaign_Ultimate_Account_Id__c;}else if(string.isNotBlank(pfr.Core_MDF_Ultimate_Account_Id__c)){singleAccSpecificBTSetKey = allAccSpecificBTSetKey + '_' + pfr.Core_MDF_Ultimate_Account_Id__c; } }
+                }
+                
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                if(string.isNotBlank(pfr.Core_MDF_Program__c) && string.isNotBlank(allAccSpecificBTSetKey)){
+                    // Avoid deeply nested IF statements - US - TWC702-14285
+                    if(pfr.Core_MDF_Program__c == RMF_PROG && pfr.Core_MDF_Approval_Stage__c != 'Price Reviewer'){
+                        singleAccSpecificBTSetKey = allAccSpecificBTSetKey + '_' +pfr.ChannelPartnerId;
+                    }else if(pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM 
+                             && (pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L1_APPROVAL_PRIMARY_PARTNER 
+                            || pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L2_PRIMARY_APPROVAL)
+                             && string.isNotBlank(pfr.Core_MDF_Campaign_Ultimate_Account_Id__c)){
+                        singleAccSpecificBTSetKey = allAccSpecificBTSetKey + '_' + pfr.Core_MDF_Campaign_Ultimate_Account_Id__c;
+                    }else if(string.isNotBlank(pfr.Core_MDF_Ultimate_Account_Id__c)){
+                        singleAccSpecificBTSetKey = allAccSpecificBTSetKey + '_' + pfr.Core_MDF_Ultimate_Account_Id__c;
+                    }
                 }
                 
                 string WW_allAccAllBTSetKey;
@@ -572,7 +633,9 @@ public without sharing class Core_MDF_IUPGM_ApprovalRequest {
                     WW_allAccAllBTSetKey = STR_WW + '->' + tempList[1];
                 }
                 
-                if(string.isNotBlank(allAccSpecificBTSetKey) && allAccSpecificBTSetKey.contains('->')){List<string> tempList = allAccSpecificBTSetKey.split('->');WW_allAccSpecificBTSetKey = STR_WW + '->' + tempList[1];
+                if(string.isNotBlank(allAccSpecificBTSetKey) && allAccSpecificBTSetKey.contains('->')){
+                    List<string> tempList = allAccSpecificBTSetKey.split('->');
+                    WW_allAccSpecificBTSetKey = STR_WW + '->' + tempList[1];
                 }
                 if(string.isNotBlank(singleAccAllBTSetKey) && singleAccAllBTSetKey.contains('->')){
                     List<string> tempList = singleAccAllBTSetKey.split('->');
@@ -603,7 +666,9 @@ public without sharing class Core_MDF_IUPGM_ApprovalRequest {
             
             if(objNameToSObjectMap != null && objNameToSObjectMap.containsKey(objName)){
                 for(ProcessInstanceWorkItem piwi : [SELECT Id, ProcessInstance.TargetObjectId, ProcessInstance.TargetObject.Type,
-                                                    ProcessInstance.TargetObject.Name,CreatedBy.name,CreatedDate FROM ProcessInstanceWorkItem WHERE ProcessInstance.TargetObjectId IN: pfrIds
+                                                    ProcessInstance.TargetObject.Name,CreatedBy.name,CreatedDate 
+                                                    FROM ProcessInstanceWorkItem
+                                                    WHERE ProcessInstance.TargetObjectId IN: pfrIds
                                                     AND ProcessInstance.Status =: Core_MDF_CCP_ConstantClass.PFR_PENDING_STATUS
                                                     AND ProcessInstance.TargetObject.Type =: objName]){
                                                         iupgmBasedApprovalIds.add(piwi.ProcessInstance.TargetObjectId);
@@ -642,7 +707,8 @@ Added By    :   Saikat Manna
         List<Campaign> campList = new List<Campaign>();
         List<Campaign> campToApproveList = new List<Campaign>();
         Set<Id> campaignIdSet = new Set<Id>();
-        List<SObject> objList = new List<SObject>();
+        // Highlight: Unused Local Variable - 14285
+        // List<SObject> objList = new List<SObject>();
         List<RecordsToApprove> recordWrapList = new List<RecordsToApprove>();
         ApprovalWrapper approvalWrap = new ApprovalWrapper();
         userPermissionApproval userPermissionWrap= new userPermissionApproval();
@@ -687,18 +753,30 @@ Added By    :   Saikat Manna
                 }
                 
                 //EMEA;PRC;APJ;ASMO->0PkD30000009JRGKA2_L2 Approval
-                if(string.isNotBlank(allAccAllBTSetKey)){allAccSpecificBTSetKey = budgetType != null ? allAccAllBTSetKey + '_' + budgetType : ''; }
+                if(string.isNotBlank(allAccAllBTSetKey)){
+                    allAccSpecificBTSetKey = budgetType != null ? allAccAllBTSetKey + '_' + budgetType : '';
+                }
                 //EMEA;PRC;APJ;ASMO->0PkD30000009JRGKA2_L2 Approval_Co-Engineering
                 //Avoid Deeply Nested IF Statements
-                    if(string.isNotBlank(obj.Core_MDF_Program__c) && string.isNotBlank(allAccAllBTSetKey)){singleAccAllBTSetKey = allAccAllBTSetKey + '_' + ultAccount;
+                    if(string.isNotBlank(obj.Core_MDF_Program__c) && string.isNotBlank(allAccAllBTSetKey)){
+                        singleAccAllBTSetKey = allAccAllBTSetKey + '_' + ultAccount;
                     }
-                    if(string.isNotBlank(obj.Core_MDF_Program__c) && string.isNotBlank(allAccSpecificBTSetKey)){singleAccSpecificBTSetKey = allAccSpecificBTSetKey + '_' + ultAccount;}
+                    if(string.isNotBlank(obj.Core_MDF_Program__c) && string.isNotBlank(allAccSpecificBTSetKey)){
+                        singleAccSpecificBTSetKey = allAccSpecificBTSetKey + '_' + ultAccount;
+                    }
                 
-                if(string.isNotBlank(allAccAllBTSetKey) && allAccAllBTSetKey.contains('->')){List<string> tempList = allAccAllBTSetKey.split('->');WW_allAccAllBTSetKey = STR_WW + '->' + tempList[1];
+                if(string.isNotBlank(allAccAllBTSetKey) && allAccAllBTSetKey.contains('->')){
+                    List<string> tempList = allAccAllBTSetKey.split('->');
+                    WW_allAccAllBTSetKey = STR_WW + '->' + tempList[1];
                 }
-                if(string.isNotBlank(allAccSpecificBTSetKey) && allAccSpecificBTSetKey.contains('->')){List<string> tempList = allAccSpecificBTSetKey.split('->');WW_allAccSpecificBTSetKey = STR_WW + '->' + tempList[1];
+                if(string.isNotBlank(allAccSpecificBTSetKey) && allAccSpecificBTSetKey.contains('->')){
+                    List<string> tempList = allAccSpecificBTSetKey.split('->');
+                    WW_allAccSpecificBTSetKey = STR_WW + '->' + tempList[1];
                 }
-                if(string.isNotBlank(singleAccAllBTSetKey) && singleAccAllBTSetKey.contains('->')){List<string> tempList = singleAccAllBTSetKey.split('->');WW_singleAccAllBTSetKey = STR_WW + '->' + tempList[1]; }
+                if(string.isNotBlank(singleAccAllBTSetKey) && singleAccAllBTSetKey.contains('->')){
+                    List<string> tempList = singleAccAllBTSetKey.split('->');
+                    WW_singleAccAllBTSetKey = STR_WW + '->' + tempList[1];
+                }
                 if(string.isNotBlank(singleAccSpecificBTSetKey) && singleAccSpecificBTSetKey.contains('->')){
                     List<string> tempList = singleAccSpecificBTSetKey.split('->');
                     WW_singleAccSpecificBTSetKey = STR_WW + '->' + tempList[1];
@@ -707,7 +785,8 @@ Added By    :   Saikat Manna
                 if((!allAccAllBTSet.isEmpty() && string.isNotBlank(allAccAllBTSetKey) && string.isNotBlank(WW_allAccAllBTSetKey) && (allAccAllBTSet.contains(allAccAllBTSetKey) || allAccAllBTSet.contains(WW_allAccAllBTSetKey) )) ||
                    (!allAccSpecificBTSet.isEmpty() && string.isNotBlank(allAccSpecificBTSetKey) && string.isNotBlank(WW_allAccSpecificBTSetKey) && (allAccSpecificBTSet.contains(allAccSpecificBTSetKey) || allAccSpecificBTSet.contains(WW_allAccSpecificBTSetKey))) ||
                    (!singleAccAllBTSet.isEmpty() && string.isNotBlank(singleAccAllBTSetKey) && string.isNotBlank(WW_singleAccAllBTSetKey) && (singleAccAllBTSet.contains(singleAccAllBTSetKey) || singleAccAllBTSet.contains(WW_singleAccAllBTSetKey))) ||
-                   (!singleAccSpecificBTSet.isEmpty() && string.isNotBlank(singleAccSpecificBTSetKey) && string.isNotBlank(WW_singleAccSpecificBTSetKey) && (singleAccSpecificBTSet.contains(singleAccSpecificBTSetKey) || singleAccSpecificBTSet.contains(WW_singleAccSpecificBTSetKey)))){campToApproveList.add(obj);
+                   (!singleAccSpecificBTSet.isEmpty() && string.isNotBlank(singleAccSpecificBTSetKey) && string.isNotBlank(WW_singleAccSpecificBTSetKey) && (singleAccSpecificBTSet.contains(singleAccSpecificBTSetKey) || singleAccSpecificBTSet.contains(WW_singleAccSpecificBTSetKey)))){
+                       campToApproveList.add(obj);
                        campaignIdSet.add(obj.Id);
                    }
             
@@ -717,14 +796,25 @@ Added By    :   Saikat Manna
                 //Check FLS
                 if(!objNameToSObjectMap.containsKey(objName)){
                     List<sObject> sObjList = new List<sObject>{campToApproveList[0]};
-                    objNameToSObjectMap = getFLSDetails(objName,sObjList);}if(objNameToSObjectMap != null && objNameToSObjectMap.containsKey(objName)){
+                    objNameToSObjectMap = getFLSDetails(objName,sObjList);
+                }
+                if(objNameToSObjectMap != null && objNameToSObjectMap.containsKey(objName)){
                     for(ProcessInstanceWorkItem piwi : [SELECT Id, ProcessInstance.TargetObjectId, ProcessInstance.TargetObject.Type,
-                                                        ProcessInstance.TargetObject.Name,CreatedBy.name,CreatedDate FROM ProcessInstanceWorkItem WHERE ProcessInstance.TargetObjectId IN: campaignIdSet
+                                                        ProcessInstance.TargetObject.Name,CreatedBy.name,CreatedDate 
+                                                        FROM ProcessInstanceWorkItem
+                                                        WHERE ProcessInstance.TargetObjectId IN: campaignIdSet
                                                         AND ProcessInstance.TargetObject.Type =: objName
-                                                        AND ProcessInstance.Status =: Core_MDF_CCP_ConstantClass.PFR_PENDING_STATUS]){iupgmBasedApprovalIds.add(piwi.ProcessInstance.TargetObjectId); recordIdToPiwiIdMap.put(piwi.ProcessInstance.TargetObjectId, piwi.Id); 
+                                                        AND ProcessInstance.Status =: Core_MDF_CCP_ConstantClass.PFR_PENDING_STATUS]){
+                                                            iupgmBasedApprovalIds.add(piwi.ProcessInstance.TargetObjectId);
+                                                            recordIdToPiwiIdMap.put(piwi.ProcessInstance.TargetObjectId, piwi.Id); 
                                                         }
                     for(Campaign obj: campToApproveList){
-                        recordWrapList.add(getobjRecordDetails(obj, objName)); }}}} approvalWrap.count = recordWrapList.size();
+                        recordWrapList.add(getobjRecordDetails(obj, objName));
+                    }
+                }
+            }
+        }
+        approvalWrap.count = recordWrapList.size();
         approvalWrap.byPassBulk = mdtValues.Core_MDF_Checkbox_Field_1_Ind__c;
         approvalWrap.RecordsToApprove = recordWrapList;
         approvalWrap.userPermission = userPermissionWrap;
@@ -741,14 +831,18 @@ Method Name :   getBudgetApprovers
 Description :   to get the Campaign records for approvals
 Added By    :   Shiva                  
 ******************************************************************************************************/
-    Public static ApprovalWrapper getBudgetApprovers(set<string> programNameSet, set<string> approvalStageSet, string objName){string MDFPLUS_BUDGET_TYPE = Core_MDF_CCP_ConstantClass.MDFPLUS_BUDGET_TYPE;
+    Public static ApprovalWrapper getBudgetApprovers(set<string> programNameSet, set<string> approvalStageSet, string objName){
+        
+        string MDFPLUS_BUDGET_TYPE = Core_MDF_CCP_ConstantClass.MDFPLUS_BUDGET_TYPE;
         string MDF_BUDGET_TYPE = Core_MDF_CCP_ConstantClass.MDF_BUDGET_TYPE;
-        string IPA_PROG = Core_MDF_CCP_ConstantClass.IPA_PROGRAM;string Co_GTM_PROG = Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM;
+        string IPA_PROG = Core_MDF_CCP_ConstantClass.IPA_PROGRAM;
+        string Co_GTM_PROG = Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM;
         
         List<PartnerMarketingBudget> budgetObjRecordList = new List<PartnerMarketingBudget>();
         List<PartnerMarketingBudget> budgetToApproveList = new List<PartnerMarketingBudget>();
         Set<Id> budgetIdSet = new Set<Id>();
-        List<SObject> objList = new List<SObject>();
+        // Highlight: Unused Local Variable - 14285
+        // List<SObject> objList = new List<SObject>();
         List<RecordsToApprove> recordWrapList = new List<RecordsToApprove>();
         ApprovalWrapper approvalWrap = new ApprovalWrapper();
         Core_MDF_CCP_Custom_Metadata_Utility__c mdtValues = approvalReqObjMdtPIMap.get(objName);
@@ -811,7 +905,9 @@ Added By    :   Shiva
                     }
                     if((!allAccAllBTSet.isEmpty() && string.isNotBlank(allAccAllBTSetKey) && string.isNotBlank(WW_allAccAllBTSetKey) && (allAccAllBTSet.contains(allAccAllBTSetKey) || allAccAllBTSet.contains(WW_allAccAllBTSetKey) )) ||
                        (!allAccSpecificBTSet.isEmpty() && string.isNotBlank(allAccSpecificBTSetKey) && string.isNotBlank(WW_allAccSpecificBTSetKey) && (allAccSpecificBTSet.contains(allAccSpecificBTSetKey) || allAccSpecificBTSet.contains(WW_allAccSpecificBTSetKey))) ||
-                       (!singleAccAllBTSet.isEmpty() && string.isNotBlank(singleAccAllBTSetKey) && string.isNotBlank(WW_singleAccAllBTSetKey) && (singleAccAllBTSet.contains(singleAccAllBTSetKey) || singleAccAllBTSet.contains(WW_singleAccAllBTSetKey))) || (!singleAccSpecificBTSet.isEmpty() && string.isNotBlank(singleAccSpecificBTSetKey) && string.isNotBlank(WW_singleAccSpecificBTSetKey) && (singleAccSpecificBTSet.contains(singleAccSpecificBTSetKey) || singleAccSpecificBTSet.contains(WW_singleAccSpecificBTSetKey)))){ budgetToApproveList.add(obj);
+                       (!singleAccAllBTSet.isEmpty() && string.isNotBlank(singleAccAllBTSetKey) && string.isNotBlank(WW_singleAccAllBTSetKey) && (singleAccAllBTSet.contains(singleAccAllBTSetKey) || singleAccAllBTSet.contains(WW_singleAccAllBTSetKey))) ||
+                       (!singleAccSpecificBTSet.isEmpty() && string.isNotBlank(singleAccSpecificBTSetKey) && string.isNotBlank(WW_singleAccSpecificBTSetKey) && (singleAccSpecificBTSet.contains(singleAccSpecificBTSetKey) || singleAccSpecificBTSet.contains(WW_singleAccSpecificBTSetKey)))){
+                           budgetToApproveList.add(obj);
                            budgetIdSet.add(obj.Id);
                        }
                     
@@ -831,22 +927,30 @@ Added By    :   Shiva
                     if(string.isNotBlank(WW_allAccAllBTSetKey)){
                         WW_singleAccAllBTSetKey = WW_allAccAllBTSetKey + '_' + ultAccount;
                     }
-                    if(string.isNotBlank(WW_allAccSpecificBTSetKey)){WW_singleAccSpecificBTSetKey = WW_allAccSpecificBTSetKey + '_' + ultAccount;
+                    if(string.isNotBlank(WW_allAccSpecificBTSetKey)){
+                        WW_singleAccSpecificBTSetKey = WW_allAccSpecificBTSetKey + '_' + ultAccount;
                     }
                     
-                    if((!allAccAllBTSet.isEmpty() && string.isNotBlank(WW_allAccAllBTSetKey) && allAccAllBTSet.contains(WW_allAccAllBTSetKey) ) || (!allAccSpecificBTSet.isEmpty() && string.isNotBlank(WW_allAccSpecificBTSetKey) && allAccSpecificBTSet.contains(WW_allAccSpecificBTSetKey)) || (!singleAccAllBTSet.isEmpty() && string.isNotBlank(WW_singleAccAllBTSetKey) && singleAccAllBTSet.contains(WW_singleAccAllBTSetKey)) || (!singleAccSpecificBTSet.isEmpty() && string.isNotBlank(WW_singleAccSpecificBTSetKey) && singleAccSpecificBTSet.contains(WW_singleAccSpecificBTSetKey))){budgetToApproveList.add(obj);
+                    if((!allAccAllBTSet.isEmpty() && string.isNotBlank(WW_allAccAllBTSetKey) && allAccAllBTSet.contains(WW_allAccAllBTSetKey) ) ||
+                       (!allAccSpecificBTSet.isEmpty() && string.isNotBlank(WW_allAccSpecificBTSetKey) && allAccSpecificBTSet.contains(WW_allAccSpecificBTSetKey)) ||
+                       (!singleAccAllBTSet.isEmpty() && string.isNotBlank(WW_singleAccAllBTSetKey) && singleAccAllBTSet.contains(WW_singleAccAllBTSetKey)) ||
+                       (!singleAccSpecificBTSet.isEmpty() && string.isNotBlank(WW_singleAccSpecificBTSetKey) && singleAccSpecificBTSet.contains(WW_singleAccSpecificBTSetKey))){
+                           budgetToApproveList.add(obj);
                            budgetIdSet.add(obj.Id);
                        }
                 }
                 
             }
         }
+            // US - TWC702-14285: Flatten nested IFs (no logic change)
             if(!budgetToApproveList.isEmpty()){
-                //Check FLS
-                if(!objNameToSObjectMap.containsKey(objName)){
+                // Guard clause to avoid deeply nested IF statements - US - TWC702-14285
+                if(objNameToSObjectMap == null || !objNameToSObjectMap.containsKey(objName)){
+                    // Check FLS
                     List<sObject> sObjList = new List<sObject>{budgetToApproveList[0]};
                     objNameToSObjectMap = getFLSDetails(objName,sObjList);
                 }
+                // Guard clause to avoid deeply nested IF statements - US - TWC702-14285
                 if(objNameToSObjectMap != null && objNameToSObjectMap.containsKey(objName)){
                     for(ProcessInstanceWorkItem piwi : [SELECT Id, ProcessInstance.TargetObjectId, ProcessInstance.TargetObject.Type,
                                                         ProcessInstance.TargetObject.Name,CreatedBy.name,CreatedDate 
@@ -870,16 +974,22 @@ Added By    :   Shiva
             return approvalWrap;
         }else{
             return null;
-        }  }
+        }
+        
+    }
       /*****************************************************************************************************
 Method Name :   getPFCApprovers
 Description :   to get the Claim records for approvals
 Added By    :   Akash                  
 ******************************************************************************************************/
-    Public static ApprovalWrapper getPFCApprovers(set<string> programNameSet, set<string> approvalStageSet, string objName){ string IPA_PROG = Core_MDF_CCP_ConstantClass.IPA_PROGRAM;string Co_GTM_PROG = Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM;
+    Public static ApprovalWrapper getPFCApprovers(set<string> programNameSet, set<string> approvalStageSet, string objName){
+        
+        string IPA_PROG = Core_MDF_CCP_ConstantClass.IPA_PROGRAM;
+        string Co_GTM_PROG = Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM;
         
         List<PartnerFundClaim> claimObjRecordList = new List<PartnerFundClaim>();
-        List<PartnerFundClaim> claimToApproveList = new List<PartnerFundClaim>();Set<Id> claimIdSet = new Set<Id>();
+        List<PartnerFundClaim> claimToApproveList = new List<PartnerFundClaim>();
+        Set<Id> claimIdSet = new Set<Id>();
         List<SObject> objList = new List<SObject>();
         List<RecordsToApprove> recordWrapList = new List<RecordsToApprove>();
         ApprovalWrapper approvalWrap = new ApprovalWrapper();
@@ -923,8 +1033,17 @@ Added By    :   Akash
                         }
                     }
 
-                    if(string.isNotBlank(allAccAllBTSetKey) && allAccAllBTSetKey.contains('->')){List<string> tempList = allAccAllBTSetKey.split('->');WW_allAccAllBTSetKey = STR_WW + '->' + tempList[1]; } if(string.isNotBlank(allAccSpecificBTSetKey) && allAccSpecificBTSetKey.contains('->')){ List<string> tempList = allAccSpecificBTSetKey.split('->');WW_allAccSpecificBTSetKey = STR_WW + '->' + tempList[1];  }
-                    if(string.isNotBlank(singleAccAllBTSetKey) && singleAccAllBTSetKey.contains('->')){List<string> tempList = singleAccAllBTSetKey.split('->');WW_singleAccAllBTSetKey = STR_WW + '->' + tempList[1];
+                    if(string.isNotBlank(allAccAllBTSetKey) && allAccAllBTSetKey.contains('->')){
+                        List<string> tempList = allAccAllBTSetKey.split('->');
+                        WW_allAccAllBTSetKey = STR_WW + '->' + tempList[1];
+                    }
+                    if(string.isNotBlank(allAccSpecificBTSetKey) && allAccSpecificBTSetKey.contains('->')){
+                        List<string> tempList = allAccSpecificBTSetKey.split('->');
+                        WW_allAccSpecificBTSetKey = STR_WW + '->' + tempList[1];
+                    }
+                    if(string.isNotBlank(singleAccAllBTSetKey) && singleAccAllBTSetKey.contains('->')){
+                        List<string> tempList = singleAccAllBTSetKey.split('->');
+                        WW_singleAccAllBTSetKey = STR_WW + '->' + tempList[1];
                     }
                     if(string.isNotBlank(singleAccSpecificBTSetKey) && singleAccSpecificBTSetKey.contains('->')){
                         List<string> tempList = singleAccSpecificBTSetKey.split('->');
@@ -958,7 +1077,19 @@ Added By    :   Akash
                                                             recordIdToPiwiIdMap.put(piwi.ProcessInstance.TargetObjectId, piwi.Id); 
                                                         }
                     for(PartnerFundClaim obj: claimToApproveList){
-                        recordWrapList.add(getobjRecordDetails(obj, objName)); } } } approvalWrap.count = recordWrapList.size();approvalWrap.byPassBulk = mdtValues.Core_MDF_Checkbox_Field_1_Ind__c;approvalWrap.RecordsToApprove = recordWrapList;if(!recordWrapList.isEmpty()){return approvalWrap;    }else{return null; }
+                        recordWrapList.add(getobjRecordDetails(obj, objName));
+                    }
+                }
+            }
+        
+        approvalWrap.count = recordWrapList.size();
+        approvalWrap.byPassBulk = mdtValues.Core_MDF_Checkbox_Field_1_Ind__c;
+        approvalWrap.RecordsToApprove = recordWrapList;
+        if(!recordWrapList.isEmpty()){
+            return approvalWrap;
+        }else{
+            return null;
+        }
         
     }
       
@@ -971,31 +1102,41 @@ Added By    :   Saikat Manna
     Public static ApprovalWrapper getApproversBasedOnPI(String objName){
         List<RecordsToApprove> recordWrapList = new List<RecordsToApprove>();
         List<SObject> objList = new List<SObject>();
-        ApprovalWrapper approvalWrap = new ApprovalWrapper(); Set<String> objRecIds = new Set<String>(); String icon = '';
+        ApprovalWrapper approvalWrap = new ApprovalWrapper();
+        Set<String> objRecIds = new Set<String>();
+        String icon = '';
         String objectName = '';
         Core_MDF_CCP_Custom_Metadata_Utility__c mdtValues = approvalReqObjMdtPIMap.get(objName);
         
         
         for(ProcessInstanceWorkItem piwi : [SELECT Id, ProcessInstance.TargetObjectId, ProcessInstance.TargetObject.Type,
                                             ProcessInstance.TargetObject.Name,CreatedBy.name,CreatedDate 
-                                            FROM ProcessInstanceWorkItem WHERE ProcessInstance.Status =: Core_MDF_CCP_ConstantClass.PFR_PENDING_STATUS AND ProcessInstance.TargetObject.Type =: objName
+                                            FROM ProcessInstanceWorkItem
+                                            WHERE ProcessInstance.Status =: Core_MDF_CCP_ConstantClass.PFR_PENDING_STATUS
+                                            AND ProcessInstance.TargetObject.Type =: objName
                                             AND Id NOT IN: inProgressPIWITrackingIds
                                             AND ProcessInstance.TargetObjectId NOT IN: iupgmBasedApprovalIds
                                             AND (Actor.Id =: UserInfo.getUserId() OR Actor.Id IN: queueIds) ORDER BY CreatedDate DESC]){
-                                                objRecIds.add(piwi.ProcessInstance.TargetObjectId); recordIdToPiwiIdMap.put(piwi.ProcessInstance.TargetObjectId, piwi.Id); 
+                                                objRecIds.add(piwi.ProcessInstance.TargetObjectId); 
+                                                recordIdToPiwiIdMap.put(piwi.ProcessInstance.TargetObjectId, piwi.Id); 
                                             }
         if(!objRecIds.isEmpty()){
-            ParamWrapper paramWrap = new ParamWrapper();paramWrap.fieldApiNames = String.valueOf(mdtValues.Core_MDF_Field_7_txt__c);paramWrap.objName = objName; paramWrap.objRecIds = objRecIds;objList = Core_MDF_IUPGM_ApprovalRequestData.getPIRecordData(paramWrap);
+            ParamWrapper paramWrap = new ParamWrapper();
+            paramWrap.fieldApiNames = String.valueOf(mdtValues.Core_MDF_Field_7_txt__c);
+            paramWrap.objName = objName; paramWrap.objRecIds = objRecIds;
+            objList = Core_MDF_IUPGM_ApprovalRequestData.getPIRecordData(paramWrap);
         }
         
         if(!objList.isEmpty()){
             //Check FLS
             if(!objNameToSObjectMap.containsKey(objName)){List<sObject> sObjList = new List<sObject>{objList[0]}; objNameToSObjectMap = getFLSDetails(objName,sObjList);
             }
-            if(objNameToSObjectMap != null && objNameToSObjectMap.containsKey(objName)){for(SObject obj: objList){ recordWrapList.add(getobjRecordDetails(obj, objName));
+            if(objNameToSObjectMap != null && objNameToSObjectMap.containsKey(objName)){
+                for(SObject obj: objList){ recordWrapList.add(getobjRecordDetails(obj, objName));
                 }
             }
-            approvalWrap.icon = String.valueOf(mdtValues.Core_MDF_Field_8_txt__c);approvalWrap.objectName = String.valueOf(mdtValues.Core_MDF_Field_9_txt__c); 
+            approvalWrap.icon = String.valueOf(mdtValues.Core_MDF_Field_8_txt__c);
+            approvalWrap.objectName = String.valueOf(mdtValues.Core_MDF_Field_9_txt__c); 
         }  
         approvalWrap.RecordsToApprove = recordWrapList;
         approvalWrap.byPassBulk = mdtValues.Core_MDF_Checkbox_Field_1_Ind__c;
@@ -1007,6 +1148,17 @@ Added By    :   Saikat Manna
         }
     } 
     
+    private static Boolean isOutcomeBasedApprovalRecord(
+            String programName,
+            Boolean outcomeBased
+        ) {
+            return outcomeBased == true && (
+                programName == Core_MDF_CCP_ConstantClass.IPA_PROGRAM ||
+                programName == Core_MDF_CCP_ConstantClass.PFR_IPA_PROGRAM ||
+                programName == Label.Core_MDF_CCF_Program_Name ||
+                programName == Label.Core_MDF_Non_Localized_DCF_Program_Name
+            );
+        } //indu
     /*****************************************************************************************************
 Method Name :   getobjRecordDetails
 Description :   Creates records wrapper
@@ -1018,22 +1170,24 @@ Added By    :   Saikat Manna
         List<string> tableViewFieldsList = new List<string>();
         String title = '';
         
+        
         RecordsToApprove recordWrap = new RecordsToApprove();
         recordWrap.id = obj.Id;
         recordWrap.piwiId = recordIdToPiwiIdMap.containsKey(obj.Id) ? recordIdToPiwiIdMap.get(obj.Id) : null;
-		 // Check if the record is IPA program and Outcome based
-        if (objName == 'PartnerFundRequest') {
-             recordWrap.isIPAOutcomeBased =
-               (String) obj.get('Core_MDF_Program__c') == Core_MDF_CCP_ConstantClass.PFR_IPA_PROGRAM &&
-               (Boolean) obj.get('Core_MDF_Is_Outcome_Based_Ind__c');
-         }// indu defect fix
+        // Check if the record is IPA program and Outcome based
+        recordWrap.isIPAOutcomeBased =
+        objName == 'PartnerFundRequest' &&
+        isOutcomeBasedApprovalRecord(
+            (String) obj.get('Core_MDF_Program__c'),
+            (Boolean) obj.get('Core_MDF_Is_Outcome_Based_Ind__c')
+        ); //indu
         
         Core_MDF_CCP_Custom_Metadata_Utility__c mdtValues = approvalReqObjMdtPIMap.get(objName);
         
         if (mdtValues != null){
             //String detailFieldsStr = mdtValues.Core_MDF_Field_6_txt__c;
             //Added  
-            String detailFieldsStr = (
+            /*String detailFieldsStr = (
                 objName == 'PartnerFundRequest' &&
                 (String)obj.get('Core_MDF_Program__c') == Core_MDF_CCP_ConstantClass.PFR_IPA_PROGRAM  &&
                 (Boolean)obj.get('Core_MDF_Is_Outcome_Based_Ind__c') == true
@@ -1048,8 +1202,15 @@ Added By    :   Saikat Manna
                 (Boolean)obj.get('Core_MDF_Is_Outcome_Based_Ind__c') == true
             ) 
                 ? mdtValues.Core_MDF_Field_13_txt__c 
-                : mdtValues.Core_MDF_Field_5_txt__c;
-            String tableViewFieldsStr = mdtValues.Core_MDF_Field_11_txt__c;
+                : mdtValues.Core_MDF_Field_5_txt__c;*/
+            String detailFieldsStr = recordWrap.isIPAOutcomeBased
+                ? mdtValues.Core_MDF_Field_14_txt__c
+                : mdtValues.Core_MDF_Field_6_txt__c;
+
+            String compactFieldsStr = recordWrap.isIPAOutcomeBased
+                ? mdtValues.Core_MDF_Field_13_txt__c
+                : mdtValues.Core_MDF_Field_5_txt__c; 
+            String tableViewFieldsStr = mdtValues.Core_MDF_Field_11_txt__c; //indu
             
             title = String.valueOf(obj.get(mdtValues.Core_MDF_Field_12_txt__c));
             detailFieldsList = string.isNotBlank(detailFieldsStr) ? detailFieldsStr.split(',') : new List<string>();
@@ -1081,32 +1242,36 @@ Added By    :   Saikat Manna
         for(string field : fieldsList){
             FieldsWrapper fieldsWrap = new FieldsWrapper();
             List<string> labelToApiName = field.split(':');
-            if(!labelToApiName.isEmpty()){
-                fieldsWrap.label = labelToApiName[0];
-                if(obj.get(labelToApiName[1]) != null){
-                    string fieldApiName = labelToApiName[1];
-                if(objNameToSObjectMap.containsKey(objectName) && objNameToSObjectMap.get(objectName).isSet(fieldApiName)){
-                    if(labelToApiName.size() > 2 && String.isNotBlank(labelToApiName[2])){
-                        string lookUpApiName = labelToApiName[2];
-                        fieldsWrap.value = String.valueOf(obj.getSObject(lookUpApiName.substringbefore('-')).get(lookUpApiName.substringafter('-')));
-                        fieldsWrap.redirect = string.valueOf(obj.get(fieldApiName));
-                    } else{
+            // Guard clause to avoid deeply nested IF statements - US - TWC702-14285
+            if(labelToApiName.isEmpty()){
+                continue;
+            }
+            fieldsWrap.label = labelToApiName[0];
+            if(obj.get(labelToApiName[1]) != null){
+                string fieldApiName = labelToApiName[1];
+            // Guard clause to avoid deeply nested IF statements - US - TWC702-14285
+            if(!objNameToSObjectMap.containsKey(objectName) || !objNameToSObjectMap.get(objectName).isSet(fieldApiName)){
+                continue;
+            }
+                if(labelToApiName.size() > 2 && String.isNotBlank(labelToApiName[2])){
+                    string lookUpApiName = labelToApiName[2];
+                    fieldsWrap.value = String.valueOf(obj.getSObject(lookUpApiName.substringbefore('-')).get(lookUpApiName.substringafter('-')));
+                    fieldsWrap.redirect = string.valueOf(obj.get(fieldApiName));
+                } else{
 
-                        string fieldType = (!objNameToApiNameToType.isEmpty() && objNameToApiNameToType.containsKey(objectName)) ? 
-                                            string.valueOf(objNameToApiNameToType.get(objectName).get(fieldApiName).getDescribe().getType()) : '';
-                        
-                        if(fieldType == 'CURRENCY'){
-                            fieldsWrap.value =  '$' + string.valueOf(obj.get(fieldApiName));
-                        }else if(fieldType == 'DATE' || fieldType == 'DATETIME'){
-                            fieldsWrap.value = string.valueOf(obj.get(fieldApiName)).removeEnd('00:00:00');
-                        }else{
-                            fieldsWrap.value = string.valueOf(obj.get(fieldApiName));
-                        }
-                        
+                    string fieldType = (!objNameToApiNameToType.isEmpty() && objNameToApiNameToType.containsKey(objectName)) ? 
+                                        string.valueOf(objNameToApiNameToType.get(objectName).get(fieldApiName).getDescribe().getType()) : '';
+                    
+                    if(fieldType == 'CURRENCY'){
+                        fieldsWrap.value =  '$' + string.valueOf(obj.get(fieldApiName));
+                    }else if(fieldType == 'DATE' || fieldType == 'DATETIME'){
+                        fieldsWrap.value = string.valueOf(obj.get(fieldApiName)).removeEnd('00:00:00');
+                    }else{
+                        fieldsWrap.value = string.valueOf(obj.get(fieldApiName));
                     }
-                    recordDetailWrapList.add(fieldsWrap); 
+                    
                 }
-                }
+                recordDetailWrapList.add(fieldsWrap); 
             }
         
         }
@@ -1169,11 +1334,16 @@ Added By    :   Shiva
                                                                              WHERE Core_MDF_Target_Record_Id__c =: piwiToApproveIds 
                                                                              AND Core_MDF_Execution_InProgress_Ind__c = true];
                         
-                        if(!approvalRequestMap.isEmpty()){
-                            if((approvalRequestMap.size() == processInstanceList.size()) && (recTrackingList == null || (recTrackingList != null && recTrackingList.isEmpty()))){
-                                for(ProcessInstanceWorkItem piwitm : processInstanceList){
-                                    String appComment = approvalRequestMap.get(piwitm.ProcessInstance.TargetObjectId).comments  != null 
-                                        ? approvalRequestMap.get(piwitm.ProcessInstance.TargetObjectId).comments : '';                
+                        if (!approvalRequestMap.isEmpty()) {
+                            // ATHR: Nested IF Statement Control - reduce nesting with guard clause (no logic change) - US - TWC702-14285
+                            Boolean countsMatch = approvalRequestMap.size() == processInstanceList.size();
+                            Boolean noInProgressTracking = (recTrackingList == null || recTrackingList.isEmpty());
+                            if (!countsMatch || !noInProgressTracking) {
+                                anotherUserResponded = true;
+                            } else {
+                                for (ProcessInstanceWorkItem piwitm : processInstanceList) {
+                                    String appComment = approvalRequestMap.get(piwitm.ProcessInstance.TargetObjectId).comments != null
+                                        ? approvalRequestMap.get(piwitm.ProcessInstance.TargetObjectId).comments : '';
                                     
                                     ApprovalRequestWrapper approvalWrap = new ApprovalRequestWrapper();
                                     approvalWrap.requestId = piwitm.Id;
@@ -1188,28 +1358,31 @@ Added By    :   Shiva
                                     req.setComments(appComment);
                                     req.setWorkitemId(piwitm.Id);
                                     pwrList.add(req);
-                                }  
+                                }
                                 
                                 ProcessResultWrapper processResWrapper = new ProcessResultWrapper();
                                 addrecordTrackingRequests(approvalWrapList);
-                                if(!pwrList.isEmpty()){
+                                if (!pwrList.isEmpty()) {
                                     
-                                    fieldPopulateForApprovalComment(approvalWrapperList,buttonName);
+                                    fieldPopulateForApprovalComment(approvalWrapperList, buttonName);
                                     
                                     processResWrapper = processBulkApprovalRequests(pwrList);
-                                    if(!processResWrapper.approvalSuccessResult.isEmpty() && processResWrapper.errorItemsList.isEmpty()){
+                                    if (!processResWrapper.approvalSuccessResult.isEmpty() && processResWrapper.errorItemsList.isEmpty()) {
                                         resultWrap.isSuccess = true;
                                         resultWrap.approvalSuccessResult = processResWrapper.approvalSuccessResult;
-                                    }
-                                    else if(!processResWrapper.errorItemsList.isEmpty()){
+                                    } else if (!processResWrapper.errorItemsList.isEmpty()) {
                                         resultWrap.showContent = processResWrapper.allItemsList.size() > 1 ? true : false;
                                         resultWrap.isSuccess = false; resultWrap.variant = 'error';
                                         resultWrap.approvalErrorResult = processResWrapper.approvalErrorResult;
                                         resultWrap.approvalSuccessResult = processResWrapper.approvalSuccessResult;
-                                        if(processResWrapper.approvalSuccessResult != null && !processResWrapper.approvalSuccessResult.isEmpty()){
-                                            resultWrap.approvalTotalResult.addAll(processResWrapper.approvalSuccessResult); } resultWrap.approvalTotalResult.addAll(processResWrapper.approvalErrorResult); }  PostApprovalCommentUpdate(approvalWrapperList,buttonName);}
-                            }else{
-                                anotherUserResponded = true;
+                                        if (processResWrapper.approvalSuccessResult != null && !processResWrapper.approvalSuccessResult.isEmpty()) {
+                                            resultWrap.approvalTotalResult.addAll(processResWrapper.approvalSuccessResult);
+                                        }
+                                        resultWrap.approvalTotalResult.addAll(processResWrapper.approvalErrorResult);
+                                    }
+                                    
+                                    PostApprovalCommentUpdate(approvalWrapperList, buttonName);
+                                }
                             }
                         }
                     }else{
@@ -1230,7 +1403,9 @@ Added By    :   Shiva
                 }                                                                 
             }
             catch(Exception e){
-                Core_MDF_CCP_UtilityClass.logError(e);resultWrap.isSuccess = false; resultWrap.variant = 'error';resultWrap.showContent = false; resultWrap.message = e.getMessage();
+                Core_MDF_CCP_UtilityClass.logError(e);
+                resultWrap.isSuccess = false; resultWrap.variant = 'error';
+                resultWrap.showContent = false; resultWrap.message = e.getMessage();
             }
         }
         return JSON.serialize(resultWrap);
@@ -1242,7 +1417,9 @@ Added By    :   Shiva
         
         Map<String, Boolean> campaignToClaimMap = new Map<String, Boolean>();
         try{
-            for(AggregateResult result:[SELECT Core_MDF_Campaign_Id__c,Count(Id) ClaimCount FROM PartnerFundClaim WHERE Core_MDF_Campaign_Id__c in:campaignId AND Core_MDF_Program__c = 'Intel Partner Alliance' AND Core_MDF_Status__c != 'Cancelled'
+            for(AggregateResult result:[SELECT Core_MDF_Campaign_Id__c,Count(Id) ClaimCount FROM PartnerFundClaim 
+                                        WHERE Core_MDF_Campaign_Id__c in:campaignId
+                                        AND Core_MDF_Program__c = 'Intel Partner Alliance' AND Core_MDF_Status__c != 'Cancelled'
                                         GROUP BY Core_MDF_Campaign_Id__c]){
                                             String campId= (String) result.get('Core_MDF_Campaign_Id__c');
                                             campaignToClaimMap.put(campId,true);
@@ -1259,7 +1436,11 @@ Added By    :   Shiva
     public static void fieldPopulateForApprovalComment(List<ApprovalRequestWrapper> approvalWrapperList, string buttonName){
         
         List<sObject> objToUpdateList = new List<sObject>();
-        string IPA_PROG = Core_MDF_CCP_ConstantClass.IPA_PROGRAM;  string COGTM_PROG = Core_MDF_CCP_ConstantClass.Co_GTM_TECHNICAL_PROGRAM;  string PRICE_REVIEWER = Core_MDF_CCP_ConstantClass.PRICE_REVIEWER; try{
+        string IPA_PROG = Core_MDF_CCP_ConstantClass.IPA_PROGRAM;
+        string COGTM_PROG = Core_MDF_CCP_ConstantClass.Co_GTM_TECHNICAL_PROGRAM;
+        string PRICE_REVIEWER = Core_MDF_CCP_ConstantClass.PRICE_REVIEWER;
+        
+        try{
             ObjectWrapper objWrap = getRecordsToUpdate(approvalWrapperList);
             if(!objWrap.sObjectList.isEmpty()){
                 List<sObject> objList = objWrap.sObjectList;
@@ -1285,21 +1466,36 @@ Added By    :   Shiva
                            objToUpdateList.add(campObj);  
                        }    
                     }
-                } else if(objName == 'Claim'){for(PartnerFundClaim pfc : (List<PartnerFundClaim>)objList){String appComment = objApprovalRequestMap.get(pfc.Id).comments != null ?  objApprovalRequestMap.get(pfc.Id).comments : '';
+                } else if(objName == 'Claim'){
+                    for(PartnerFundClaim pfc : (List<PartnerFundClaim>)objList){
+                    String appComment = objApprovalRequestMap.get(pfc.Id).comments != null ?  objApprovalRequestMap.get(pfc.Id).comments : '';
                     String actionButtonName = objApprovalRequestMap.get(pfc.Id).actionStatus;
                     String claimStatus;
-                    if(pfc.Core_MDF_Program__c == IPA_PROG &&  pfc.Core_MDF_OutcomeBased_Ind__c && (actionButtonName != null && actionButtonName == 'Reject')) {claimStatus = Core_MDF_CCP_ConstantClass.PENDING_CLARIFICATION; } PartnerFundClaim pfcObj;
-                    if(pfc.Core_MDF_Program__c == IPA_PROG || pfc.Core_MDF_Program__c == COGTM_PROG){pfcObj = new PartnerFundClaim(Id = pfc.Id,Core_MDF_Comments_Appvr_Only_txt__c = appComment); if(pfc.Core_MDF_Program__c == IPA_PROG &&  pfc.Core_MDF_OutcomeBased_Ind__c) { pfcObj.Core_MDF_Status__c = claimStatus;
+                    if(pfc.Core_MDF_Program__c == IPA_PROG &&  pfc.Core_MDF_OutcomeBased_Ind__c && (actionButtonName != null && actionButtonName == 'Reject')) {
+                        claimStatus = Core_MDF_CCP_ConstantClass.PENDING_CLARIFICATION;
+                    }
+                   
+                    PartnerFundClaim pfcObj;
+                    if(pfc.Core_MDF_Program__c == IPA_PROG || pfc.Core_MDF_Program__c == COGTM_PROG){
+                           pfcObj = new PartnerFundClaim(Id = pfc.Id,Core_MDF_Comments_Appvr_Only_txt__c = appComment);
+                           if(pfc.Core_MDF_Program__c == IPA_PROG &&  pfc.Core_MDF_OutcomeBased_Ind__c) {
+                            pfcObj.Core_MDF_Status__c = claimStatus;
                            }
                            objToUpdateList.add(pfcObj);  
-                       } } } }
+                       }    
+                }
+                }
+           }
             
-            if(!objToUpdateList.isEmpty()){update objToUpdateList; }
+            if(!objToUpdateList.isEmpty()){update objToUpdateList;
+            }
         }catch(Exception ex){Core_MDF_CCP_UtilityClass.logError(ex);
            
-        } }
+        }
+    }
     
-    public static void PostApprovalCommentUpdate(List<ApprovalRequestWrapper> approvalWrapperList, string buttonName){ List<sObject> objToUpdateList = new List<sObject>();
+    public static void PostApprovalCommentUpdate(List<ApprovalRequestWrapper> approvalWrapperList, string buttonName){
+        List<sObject> objToUpdateList = new List<sObject>();
         string IPA_PROG = Core_MDF_CCP_ConstantClass.IPA_PROGRAM;
         try{
           ObjectWrapper objWrap = getRecordsToUpdate(approvalWrapperList);
@@ -1483,12 +1679,20 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
                     break;
                 }
                 errorProcessItemsList.add(pwrList[index]);
-            } allProcessItemsList.add(pwrList[index]); index++; } processResWrapper.successItemsList = successProcessItemsList; processResWrapper.allItemsList = allProcessItemsList;
+            }
+            allProcessItemsList.add(pwrList[index]);
+            index++;
+        }
+        
+        processResWrapper.successItemsList = successProcessItemsList;
+        processResWrapper.allItemsList = allProcessItemsList;
         processResWrapper.errorItemsList = errorProcessItemsList;
         processResWrapper.approvalErrorResult = approvalResultErrorList;
         processResWrapper.approvalSuccessResult = approvalResultSuccessList;
         
-        if(!isBulkData){ List<String> workItemsIds = new List<String>(); workItemsIds = getRecordIdsFromExecuteBatch(processResWrapper);
+        if(!isBulkData){
+            List<String> workItemsIds = new List<String>();
+            workItemsIds = getRecordIdsFromExecuteBatch(processResWrapper);
             deleteRecordTracingRecords(workItemsIds);
         }
         
@@ -1537,7 +1741,8 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
         set<string> iupgmProgram = new set<string>();
         set<string> iupgmRoles = new set<string>();
         set<string> progNameSet = new set<string>();
-        List<PartnerFundRequest> pfrToApprove = new List<PartnerFundRequest>();
+        // Highlight: Unused Local Variable - 14285
+        // List<PartnerFundRequest> pfrToApprove = new List<PartnerFundRequest>();
         List<ApprovalWrapper> approvalWrapList = new List<ApprovalWrapper>();
         List<Core_MDF_CCP_IUPGM_Approver_Mapping__c> iupgmApproverList = new List<Core_MDF_CCP_IUPGM_Approver_Mapping__c>();
         Map<string,Map<string,set<string>>> objectToApprovalStageMap = new Map<string,map<string,set<string>>>(); 
@@ -1603,7 +1808,7 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
                 for(Core_MDF_Program_Budget_RecordType__mdt mdtConfiq: [select Id,Core_MDF_Program__c, Core_MDF_Account_Manager_PS_API_Name__c, Core_MDF_BudgetType__c 
                                                                         FROM Core_MDF_Program_Budget_RecordType__mdt 
                                                                         where Core_MDF_BudgetType__c != null AND Core_MDF_Account_Manager_PS_API_Name__c != null ]){
-                                                                            if(permissionSetList.contains(mdtConfiq.Core_MDF_Account_Manager_PS_API_Name__c)){
+                                                                            /*if(permissionSetList.contains(mdtConfiq.Core_MDF_Account_Manager_PS_API_Name__c)){
                                                                                 if(psToProgToBTSetMap.containsKey(mdtConfiq.Core_MDF_Account_Manager_PS_API_Name__c)){
                                                                                     if(psToProgToBTSetMap.get(mdtConfiq.Core_MDF_Account_Manager_PS_API_Name__c).containsKey(mdtConfiq.Core_MDF_Program__c  )){
                                                                                         psToProgToBTSetMap.get(mdtConfiq.Core_MDF_Account_Manager_PS_API_Name__c).get(mdtConfiq.Core_MDF_Program__c).add(mdtConfiq.Core_MDF_BudgetType__c);
@@ -1617,7 +1822,18 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
                                                                                 }
                                                                                 
                                                                                 
+                                                                            }*/
+                                                                            // US - TWC702-14285
+                                                                            if(!permissionSetList.contains(mdtConfiq.Core_MDF_Account_Manager_PS_API_Name__c)){
+                                                                                continue;
                                                                             }
+                                                                            if(!psToProgToBTSetMap.containsKey(mdtConfiq.Core_MDF_Account_Manager_PS_API_Name__c)){
+                                                                                psToProgToBTSetMap.put(mdtConfiq.Core_MDF_Account_Manager_PS_API_Name__c, new map<String,set<string>>());
+                                                                            }
+                                                                            if(!psToProgToBTSetMap.get(mdtConfiq.Core_MDF_Account_Manager_PS_API_Name__c).containsKey(mdtConfiq.Core_MDF_Program__c)){
+                                                                                psToProgToBTSetMap.get(mdtConfiq.Core_MDF_Account_Manager_PS_API_Name__c).put(mdtConfiq.Core_MDF_Program__c, new set<string>());
+                                                                            }
+                                                                            psToProgToBTSetMap.get(mdtConfiq.Core_MDF_Account_Manager_PS_API_Name__c).get(mdtConfiq.Core_MDF_Program__c).add(mdtConfiq.Core_MDF_BudgetType__c);
                                                                         }
                 
                 for(Core_MDF_CCP_IUPGM_Approver_Mapping__c csObj: iupgmApproverList){
@@ -1646,7 +1862,11 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
             if(!programSet.isEmpty() && !rolesSet.isEmpty()){
                 
                 //map<string,set<string>> roleToStageSetMap = new map<string,set<string>>();
-                if(!objectToApprovalStageMap.isEmpty() && !objectToApprovalStageMap.values().isEmpty()){
+               // if(!objectToApprovalStageMap.isEmpty() && !objectToApprovalStageMap.values().isEmpty()){
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                if(objectToApprovalStageMap.isEmpty() || objectToApprovalStageMap.values().isEmpty()) {
+                    // nothing to do when map is empty
+                } else {
                     for(map<string,set<string>> roleToStageMap : objectToApprovalStageMap.values()){
                         for(string role: roleToStageMap.keySet()){
                             if(roleToStageSetMap.containsKey(role)){
@@ -1677,41 +1897,48 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
                                                                           iupgmProgram.add(iupgm.Core_MDF_Program_nm__c);
                                                                           iupgmRoles.add(iupgm.Core_MDF_Role_nm__c);
                                                                           
-                                                                          if(!psToProgToBTSetMap.isEmpty() && !psToProgToBTSetMap.values().isEmpty()){
-                                                                              if(psToProgToBTSetMap.containsKey(iupgm.Core_MDF_Role_nm__c) && psToProgToBTSetMap.get(iupgm.Core_MDF_Role_nm__c) != null){
-                                                                                  
+                                                                         // if(!psToProgToBTSetMap.isEmpty() && !psToProgToBTSetMap.values().isEmpty()){
+                                                                           //   if(psToProgToBTSetMap.containsKey(iupgm.Core_MDF_Role_nm__c) && psToProgToBTSetMap.get(iupgm.Core_MDF_Role_nm__c) != null){
+                                                                                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                                                                          if(!psToProgToBTSetMap.isEmpty() && !psToProgToBTSetMap.values().isEmpty() &&
+                                                                             psToProgToBTSetMap.containsKey(iupgm.Core_MDF_Role_nm__c) && psToProgToBTSetMap.get(iupgm.Core_MDF_Role_nm__c) != null){ 
                                                                                   Map<string,set<string>> progToBTMap = psToProgToBTSetMap.get(iupgm.Core_MDF_Role_nm__c);
                                                                                   for(string prog: progToBTMap.keySet()){
                                                                                       string progLabel = progTechNameToLabelMap.containsKey(prog) ? progTechNameToLabelMap.get(prog) : '';
-                                                                                      if(string.isNotBlank(progLabel)){
-                                                                                          if(progToBudgetSetMap.containsKey(progLabel)){
+                                                                                      //if(string.isNotBlank(progLabel)){
+                                                                                         // if(progToBudgetSetMap.containsKey(progLabel)){
+                                                                                        // US - TWC702-14285: Flatten nested IFs (no logic change)
+                                                                                  if(string.isBlank(progLabel)){
+                                                                                      // do nothing
+                                                                                  }else if(progToBudgetSetMap.containsKey(progLabel)){    
                                                                                               progToBudgetSetMap.get(progLabel).addAll(progToBTMap.get(prog));
                                                                                           }else{
                                                                                               progToBudgetSetMap.put(progLabel, progToBTMap.get(prog));
-                                                                                          }
+                                                                                         // }
                                                                                       }                               
                                                                                   }
                                                                                   
-                                                                              }
+                                                                              //}
                                                                           }
                                                                           
                                                                           if(string.isNotBlank(iupgm.Core_MDF_Activity_Classification_nm__c)){
                                                                               iupgmClassifications.addAll(iupgm.Core_MDF_Activity_Classification_nm__c.split(';'));
                                                                           }
                                                                           
-                                                                          if(!roleToStageSetMap.isEmpty() && roleToStageSetMap.containsKey(iupgm.Core_MDF_Role_nm__c) && !roleToStageSetMap.get(iupgm.Core_MDF_Role_nm__c).isEmpty()){
-                                                                              if(!iupgmClassifications.isEmpty()){
-                                                                                  set<string> confiqApprovalStage = roleToStageSetMap.get(iupgm.Core_MDF_Role_nm__c);
-                                                                                  for(string iupgmStage: iupgmClassifications){
-                                                                                      for(string confiqStage: confiqApprovalStage){
-                                                                                          if(confiqStage.contains(iupgmStage)){
-                                                                                              approvalStageSet.add(confiqStage);
-                                                                                          }
+                                                                          // US - TWC702-14285: Flatten nested IFs (no logic change)
+                                                                          Set<string> confiqApprovalStage = roleToStageSetMap.get(iupgm.Core_MDF_Role_nm__c);
+                                                                          if (roleToStageSetMap.isEmpty() || confiqApprovalStage == null || confiqApprovalStage.isEmpty()) {
+                                                                              // nothing to add
+                                                                          } else if (iupgmClassifications != null && !iupgmClassifications.isEmpty()) {
+                                                                              for (string iupgmStage : iupgmClassifications) {
+                                                                                  for (string confiqStage : confiqApprovalStage) {
+                                                                                      if (confiqStage.contains(iupgmStage)) {
+                                                                                          approvalStageSet.add(confiqStage);
                                                                                       }
                                                                                   }
-                                                                              }else{
-                                                                                  approvalStageSet = roleToStageSetMap.get(iupgm.Core_MDF_Role_nm__c);
                                                                               }
+                                                                          } else {
+                                                                              approvalStageSet = confiqApprovalStage;
                                                                           }                      
                                                                           
                                                                           if(!approvalStageSet.isEmpty()){
@@ -1736,13 +1963,15 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
                     isIUPGMBasedApprover = true;
                 }
                 
-                if(isIUPGMBasedApprover){
-                    for (ChannelProgram cp : [SELECT Id, Name                               
-                                              FROM ChannelProgram                               
-                                              WHERE Name IN: progNameSet]){                               
-                                                  progToIdMap.put(cp.Name,cp.Id);                             
-                                              } 
-                    
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                if(!isIUPGMBasedApprover) {
+                    // nothing to do when approver flag is false
+                }else{
+                    for (ChannelProgram cp : [SELECT Id, Name 
+                                              FROM ChannelProgram 
+                                              WHERE Name IN: progNameSet]){
+                        progToIdMap.put(cp.Name,cp.Id);
+                    }
                     if(!progTechNameToLabelMap.isEmpty()){
                         for(string prog: iupgmProgram){
                             if(progTechNameToLabelMap.containsKey(prog)){
@@ -1772,6 +2001,9 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
                         approvalWrapList.add(outcomeBasedWrapObj);
                     }
                 }
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                // Original nested if code:
+                /* Original code:
                 if(objectToApprovalStageMap.containsKey('Campaign') && !objectToApprovalStageMap.get('Campaign').isEmpty()){
                     set<string> approvalStage = new set<string>();
                     approvalStage = getApprovalRoles(objectToApprovalStageMap,iupgmRoles,'Campaign');
@@ -1780,6 +2012,21 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
                         approvalWrapList.add(appWrapObj);
                     }
                 }
+                */
+                // Flattened version:
+                if(!objectToApprovalStageMap.containsKey('Campaign') || objectToApprovalStageMap.get('Campaign').isEmpty()) {
+                    // nothing to add
+                } else {
+                    set<string> approvalStage = new set<string>();
+                    approvalStage = getApprovalRoles(objectToApprovalStageMap,iupgmRoles,'Campaign');
+                    ApprovalWrapper appWrapObj = getCampaignApproversForHomePage(programNameSet,approvalStage,'Campaign');
+                    if(appWrapObj != null){
+                        approvalWrapList.add(appWrapObj);
+                    }
+                }
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                // Original nested if code:
+                /* Original code:
                 if(objectToApprovalStageMap.containsKey('PartnerMarketingBudget') && !objectToApprovalStageMap.get('PartnerMarketingBudget').isEmpty()){
                     set<string> approvalStage = new set<string>();
                     approvalStage = getApprovalRoles(objectToApprovalStageMap,iupgmRoles,'PartnerMarketingBudget');
@@ -1788,6 +2035,22 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
                         approvalWrapList.add(appWrapObj);
                     }
                 }
+                */
+                // Flattened version:
+                if(!objectToApprovalStageMap.containsKey('PartnerMarketingBudget') || objectToApprovalStageMap.get('PartnerMarketingBudget').isEmpty()) {
+                    // nothing to add
+                } else {
+                    set<string> approvalStage = new set<string>();
+                    approvalStage = getApprovalRoles(objectToApprovalStageMap,iupgmRoles,'PartnerMarketingBudget');
+                    ApprovalWrapper appWrapObj = getBudgetApproversForHomePage(programNameSet,approvalStage,'PartnerMarketingBudget');
+                    if(appWrapObj != null){
+                        approvalWrapList.add(appWrapObj);
+                    }
+                }
+                // US - TWC702-14285: Flattened nested IFs complete
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                // Original nested if code:
+                /* Original code:
                 if(objectToApprovalStageMap.containsKey('PartnerFundClaim') && !objectToApprovalStageMap.get('PartnerFundClaim').isEmpty()){
                     set<string> approvalStage = new set<string>();
                     approvalStage = getApprovalRoles(objectToApprovalStageMap,iupgmRoles,'PartnerFundClaim');
@@ -1796,6 +2059,19 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
                         approvalWrapList.add(appWrapObj);
                     }
                 }
+                */
+                // Flattened version:
+                if(!objectToApprovalStageMap.containsKey('PartnerFundClaim') || objectToApprovalStageMap.get('PartnerFundClaim').isEmpty()) {
+                    // nothing to add
+                } else {
+                    set<string> approvalStage = new set<string>();
+                    approvalStage = getApprovalRoles(objectToApprovalStageMap,iupgmRoles,'PartnerFundClaim');
+                    ApprovalWrapper appWrapObj = getPFCApproversForHomePage(programNameSet,approvalStage,'PartnerFundClaim');
+                    if(appWrapObj != null){
+                        approvalWrapList.add(appWrapObj);
+                    }
+                }
+                // US - TWC702-14285: Flattened nested IFs complete
         }
         
         
@@ -1805,12 +2081,19 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
             
             if(groupIds != null && !groupIds.isEmpty()){
                 
-                for(GroupMember gm : [SELECT group.name,group.id,group.type FROM GroupMember WHERE (UserOrGroupId =: groupIds OR group.id =: groupIds) AND group.type = 'Queue' limit 10000]){ queueIds.add(gm.group.id);  }
+                for(GroupMember gm : [SELECT group.name,group.id,group.type 
+                                      FROM GroupMember 
+                                      WHERE (UserOrGroupId =: groupIds OR group.id =: groupIds) AND group.type = 'Queue' limit 10000]){
+                                              queueIds.add(gm.group.id);    
+                                          }
                 }
                 
                 for(string objName: approvalReqObjMdtPIMap.keyset()){
 
                     ApprovalWrapper appWrapObj = getApproversBasedOnPIForHomePage(objName);
+                    // US - TWC702-14285: Flatten nested IFs (no logic change)
+                    // Original nested if code:
+                    /* Original code:
                     if(appWrapObj != null){Boolean isObjectAvailable = false;
                         if(!approvalWrapList.isEmpty()){
                             for(ApprovalWrapper wrap: approvalWrapList){
@@ -1819,7 +2102,21 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
                             }
                         }
                         if(!isObjectAvailable){ approvalWrapList.add(appWrapObj); }
-                    } 
+                    }
+                    */
+                    // Flattened version:
+                    if(appWrapObj == null) {
+                        continue;
+                    }
+                    Boolean isObjectAvailable = false;
+                    if(!approvalWrapList.isEmpty()){
+                        for(ApprovalWrapper wrap: approvalWrapList){
+                            if(wrap.objectName == appWrapObj.objectName){ wrap.count += appWrapObj.count; isObjectAvailable = true;
+                            }
+                        }
+                    }
+                    if(!isObjectAvailable){ approvalWrapList.add(appWrapObj); }
+                    // US - TWC702-14285: Flattened nested IFs complete
                 }
             }
         }
@@ -1832,11 +2129,13 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
     Method Name :   getPFRApproversForHomePage
     Description :   Method to get count of records on Co-marketing Home Page 
     ******************************************************************************************************/
-    //Gayathri-Handle both normal and outcome-based PFR approvers for home page
-     Public static ApprovalWrapper getPFRApproversForHomePage(set<string> programNameSet, set<string> approvalStageSet, string objName, Boolean isOutcomeBased){
+    // Gayathri-Handle both normal and outcome-based PFR approvers for home page
+    Public static ApprovalWrapper getPFRApproversForHomePage(set<string> programNameSet, set<string> approvalStageSet, string objName, Boolean isOutcomeBased){
+    
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
         List<PartnerFundRequest> pfrToApproveList = new List<PartnerFundRequest>();
-        List<RecordsToApprove> recordWrapList = new List<RecordsToApprove>();
+        // Highlight unused local variable - 14285 - Indira
+       // List<RecordsToApprove> recordWrapList = new List<RecordsToApprove>();
         ApprovalWrapper approvalWrap = new ApprovalWrapper();
         Core_MDF_CCP_Custom_Metadata_Utility__c mdtValues = approvalReqObjMdtPIMap.get(objName);
         approvalWrap.icon = String.valueOf(mdtValues.Core_MDF_Field_8_txt__c);
@@ -1859,7 +2158,7 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
             for(PartnerFundRequest pfr: pfrList){
             
             // Gayathri-Filter based on outcome-based flag
-            if(isOutcomeBased != null && isOutcomeBased) {
+            /*if(isOutcomeBased != null && isOutcomeBased) {
                 // Only process outcome-based activities
                 if(pfr.Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.IPA_PROGRAM || 
                    pfr.Core_MDF_Is_Outcome_Based_Ind__c != true) {
@@ -1871,8 +2170,25 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
                    pfr.Core_MDF_Is_Outcome_Based_Ind__c == true) {
                     continue;
                 }
-            }
+            }*/
             // If isOutcomeBased is null, process all activities (backward compatibility)
+            if (isOutcomeBased != null && isOutcomeBased) {
+                // Only process outcome-based activities
+                if (
+                    pfr.Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.IPA_PROGRAM ||
+                    pfr.Core_MDF_Is_Outcome_Based_Ind__c != true
+                ) {
+                    continue;
+                }
+            } else if (isOutcomeBased != null && !isOutcomeBased) {
+                // Only process non-outcome-based activities
+                if (
+                    pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM &&
+                    pfr.Core_MDF_Is_Outcome_Based_Ind__c == true
+                ) {
+                    continue;
+                }
+            }// indu
             
                 string allAccAllBTSetKey,allAccSpecificBTSetKey,singleAccAllBTSetKey,singleAccSpecificBTSetKey;
                 string budgetType = string.isNotBlank(pfr.Core_MDF_Budget_Type_nm__c) ? pfr.Core_MDF_Budget_Type_nm__c.replaceAll('\\s+', '') : '';
@@ -1880,6 +2196,9 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
                 string approvalStage = string.isNotBlank(pfr.Core_MDF_Approval_Stage__c) ? pfr.Core_MDF_Approval_Stage__c.replaceAll('\\s+', '') : '';
                 string region = pfr.Core_MDF_Host_Region_or_Region_txt__c;//For IPA & !PCT it stores Host Geo, else Transaction geo. 
                 
+                // US - TWC702-14285: Flatten nested IFs (no logic change)
+                // Original nested if code:
+                /* Original code:
                 if(string.isNotBlank(region)){
                     if(progToBudgetSetMap.containsKey(pfr.Core_MDF_Program__c) && progToBudgetSetMap.get(pfr.Core_MDF_Program__c) != null){
                          if(pfr.Core_MDF_Approval_Stage__c != 'Additional Reviewer' && progToBudgetSetMap.get(pfr.Core_MDF_Program__c).contains(pfr.Core_MDF_Budget_Type_nm__c)){
@@ -1893,15 +2212,29 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
                         allAccAllBTSetKey = pfr.Core_MDF_Sub_Region_nm__c != null ? region + '-' + pfr.Core_MDF_Sub_Region_nm__c +'->' + progId + '_' + approvalStage  : region +'->'+ progId + '_' + approvalStage;
                     }
                 }
+                */
+                // Flattened version:
+                if(string.isNotBlank(region) && (!progToBudgetSetMap.containsKey(pfr.Core_MDF_Program__c) || progToBudgetSetMap.get(pfr.Core_MDF_Program__c) == null)){
+                    allAccAllBTSetKey = pfr.Core_MDF_Sub_Region_nm__c != null ? region + '-' + pfr.Core_MDF_Sub_Region_nm__c +'->' + progId + '_' + approvalStage  : region +'->'+ progId + '_' + approvalStage;
+                } else if(string.isNotBlank(region) && pfr.Core_MDF_Approval_Stage__c != 'Additional Reviewer' && progToBudgetSetMap.get(pfr.Core_MDF_Program__c).contains(pfr.Core_MDF_Budget_Type_nm__c)){
+                    allAccAllBTSetKey = pfr.Core_MDF_Sub_Region_nm__c != null ? region + '-' + pfr.Core_MDF_Sub_Region_nm__c +'->' + progId + '_' + approvalStage  : region +'->'+ progId + '_' + approvalStage;
+                } else if(string.isNotBlank(region) && pfr.Core_MDF_Approval_Stage__c == 'Additional Reviewer' && hasAdditionalReviewAccess(pfr)){
+                    allAccAllBTSetKey = pfr.Core_MDF_Sub_Region_nm__c != null ? region + '-' + pfr.Core_MDF_Sub_Region_nm__c +'->' + progId + '_' + approvalStage  : region +'->'+ progId + '_' + approvalStage;
+                }
+                // US - TWC702-14285: Flattened nested IFs complete
                 
                 if(string.isNotBlank(allAccAllBTSetKey)){
                     allAccSpecificBTSetKey = budgetType != null ? allAccAllBTSetKey + '_' + budgetType : '';
                 }
                 
                 if(string.isNotBlank(pfr.Core_MDF_Program__c)){
+                    // US - TWC702-14285: Flatten nested IFs (no logic change)
+                    // Original nested code commented out
+                    /*
                     if(string.isNotBlank(allAccAllBTSetKey)){
                         if(pfr.Core_MDF_Program__c == RMF_PROG && pfr.Core_MDF_Approval_Stage__c != 'Price Reviewer'){
-                            singleAccAllBTSetKey = allAccAllBTSetKey + '_' +pfr.ChannelPartnerId; } else if(pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM 
+                            singleAccAllBTSetKey = allAccAllBTSetKey + '_' +pfr.ChannelPartnerId;
+                        } else if(pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM 
                                   && (pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L1_APPROVAL_PRIMARY_PARTNER 
                                 || pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L2_PRIMARY_APPROVAL)
                                 && string.isNotBlank(pfr.Core_MDF_Campaign_Ultimate_Account_Id__c)){
@@ -1911,6 +2244,23 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
                             singleAccAllBTSetKey = allAccAllBTSetKey + '_' + pfr.Core_MDF_Ultimate_Account_Id__c;
                         }
                     }
+                    */
+                    // New flattened code
+                    if(string.isNotBlank(allAccAllBTSetKey) && pfr.Core_MDF_Program__c == RMF_PROG && pfr.Core_MDF_Approval_Stage__c != 'Price Reviewer'){
+                        singleAccAllBTSetKey = allAccAllBTSetKey + '_' +pfr.ChannelPartnerId;
+                    } else if(string.isNotBlank(allAccAllBTSetKey) && pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM 
+                              && (pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L1_APPROVAL_PRIMARY_PARTNER 
+                            || pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L2_PRIMARY_APPROVAL)
+                            && string.isNotBlank(pfr.Core_MDF_Campaign_Ultimate_Account_Id__c)){
+                        singleAccAllBTSetKey = allAccAllBTSetKey + '_' + pfr.Core_MDF_Campaign_Ultimate_Account_Id__c;
+                        
+                    }else if(string.isNotBlank(allAccAllBTSetKey) && string.isNotBlank(pfr.Core_MDF_Ultimate_Account_Id__c)){
+                        singleAccAllBTSetKey = allAccAllBTSetKey + '_' + pfr.Core_MDF_Ultimate_Account_Id__c;
+                    }
+                    // End of flattened code
+                    // US - TWC702-14285: Flatten nested IFs (no logic change)
+                    // Original nested code commented out
+                    /*
                     if(string.isNotBlank(allAccSpecificBTSetKey)){
                         if(pfr.Core_MDF_Program__c == RMF_PROG && pfr.Core_MDF_Approval_Stage__c != 'Price Reviewer'){
                             singleAccSpecificBTSetKey = allAccSpecificBTSetKey + '_' +pfr.ChannelPartnerId;
@@ -1918,9 +2268,26 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
                                   && (pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L1_APPROVAL_PRIMARY_PARTNER 
                                 || pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L2_PRIMARY_APPROVAL)
                                  && string.isNotBlank(pfr.Core_MDF_Campaign_Ultimate_Account_Id__c)){
-                            singleAccSpecificBTSetKey = allAccSpecificBTSetKey + '_' + pfr.Core_MDF_Campaign_Ultimate_Account_Id__c; }else if(string.isNotBlank(pfr.Core_MDF_Ultimate_Account_Id__c)){ singleAccSpecificBTSetKey = allAccSpecificBTSetKey + '_' + pfr.Core_MDF_Ultimate_Account_Id__c;
+                            singleAccSpecificBTSetKey = allAccSpecificBTSetKey + '_' + pfr.Core_MDF_Campaign_Ultimate_Account_Id__c;
+                             
+                        }else if(string.isNotBlank(pfr.Core_MDF_Ultimate_Account_Id__c)){
+                            singleAccSpecificBTSetKey = allAccSpecificBTSetKey + '_' + pfr.Core_MDF_Ultimate_Account_Id__c;
                         }
                     }
+                    */
+                    // New flattened code
+                    if(string.isNotBlank(allAccSpecificBTSetKey) && pfr.Core_MDF_Program__c == RMF_PROG && pfr.Core_MDF_Approval_Stage__c != 'Price Reviewer'){
+                        singleAccSpecificBTSetKey = allAccSpecificBTSetKey + '_' +pfr.ChannelPartnerId;
+                    } else if(string.isNotBlank(allAccSpecificBTSetKey) && pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM 
+                              && (pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L1_APPROVAL_PRIMARY_PARTNER 
+                            || pfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L2_PRIMARY_APPROVAL)
+                             && string.isNotBlank(pfr.Core_MDF_Campaign_Ultimate_Account_Id__c)){
+                        singleAccSpecificBTSetKey = allAccSpecificBTSetKey + '_' + pfr.Core_MDF_Campaign_Ultimate_Account_Id__c;
+                         
+                    }else if(string.isNotBlank(allAccSpecificBTSetKey) && string.isNotBlank(pfr.Core_MDF_Ultimate_Account_Id__c)){
+                        singleAccSpecificBTSetKey = allAccSpecificBTSetKey + '_' + pfr.Core_MDF_Ultimate_Account_Id__c;
+                    }
+                    // End of flattened code
                 }
                 
                 string WW_allAccAllBTSetKey;
@@ -1928,7 +2295,10 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
                 string WW_singleAccAllBTSetKey;
                 string WW_singleAccSpecificBTSetKey;
                 
-                if(string.isNotBlank(allAccAllBTSetKey) && allAccAllBTSetKey.contains('->')){List<string> tempList = allAccAllBTSetKey.split('->');WW_allAccAllBTSetKey = STR_WW + '->' + tempList[1]; }
+                if(string.isNotBlank(allAccAllBTSetKey) && allAccAllBTSetKey.contains('->')){
+                    List<string> tempList = allAccAllBTSetKey.split('->');
+                    WW_allAccAllBTSetKey = STR_WW + '->' + tempList[1];
+                }
                 
                 if(string.isNotBlank(allAccSpecificBTSetKey) && allAccSpecificBTSetKey.contains('->')){
                     List<string> tempList = allAccSpecificBTSetKey.split('->');
@@ -1960,7 +2330,9 @@ Description   :        Takes List<Approval.ProcessWorkitemRequest> for approval
             }       
         }
         approvalWrap.count = pfrToApproveList.size();
-        if(!pfrToApproveList.isEmpty() && objNameToSObjectMap.containsKey(objName)){return approvalWrap; }else{
+        if(!pfrToApproveList.isEmpty() && objNameToSObjectMap.containsKey(objName)){
+            return approvalWrap;
+        }else{
             return null;
         }
     }
@@ -2008,40 +2380,61 @@ Description :   to get the Campaign records for approvals
                 if(string.isNotBlank(region)){
                     allAccAllBTSetKey = obj.Core_MDF_Sub_Region_cd__c != null ? 
                         region + '-' + obj.Core_MDF_Sub_Region_cd__c +'->' + progId + '_' + approvalStage  
-                        : region +'->'+ progId + '_' + approvalStage; }
+                        : region +'->'+ progId + '_' + approvalStage;
+                }
                 
                 if(string.isNotBlank(allAccAllBTSetKey)){
                     allAccSpecificBTSetKey = budgetType != null ? allAccAllBTSetKey + '_' + budgetType : '';
                 }
                 
-                if(string.isNotBlank(obj.Core_MDF_Program__c)){ if(string.isNotBlank(allAccAllBTSetKey)){ singleAccAllBTSetKey = allAccAllBTSetKey + '_' + ultAccount; } if(string.isNotBlank(allAccSpecificBTSetKey)){
+                if(string.isNotBlank(obj.Core_MDF_Program__c)){
+                    if(string.isNotBlank(allAccAllBTSetKey)){
+                        singleAccAllBTSetKey = allAccAllBTSetKey + '_' + ultAccount;
+                    }
+                    if(string.isNotBlank(allAccSpecificBTSetKey)){
                         singleAccSpecificBTSetKey = allAccSpecificBTSetKey + '_' + ultAccount;
-                    } }
+                    }
+                }
                 
                 if(string.isNotBlank(allAccAllBTSetKey) && allAccAllBTSetKey.contains('->')){
                     List<string> tempList = allAccAllBTSetKey.split('->');
                     WW_allAccAllBTSetKey = STR_WW + '->' + tempList[1];
-                } if(string.isNotBlank(allAccSpecificBTSetKey) && allAccSpecificBTSetKey.contains('->')){
+                }
+                if(string.isNotBlank(allAccSpecificBTSetKey) && allAccSpecificBTSetKey.contains('->')){
                     List<string> tempList = allAccSpecificBTSetKey.split('->');
                     WW_allAccSpecificBTSetKey = STR_WW + '->' + tempList[1];
-                } if(string.isNotBlank(singleAccAllBTSetKey) && singleAccAllBTSetKey.contains('->')){ List<string> tempList = singleAccAllBTSetKey.split('->');
+                }
+                if(string.isNotBlank(singleAccAllBTSetKey) && singleAccAllBTSetKey.contains('->')){
+                    List<string> tempList = singleAccAllBTSetKey.split('->');
                     WW_singleAccAllBTSetKey = STR_WW + '->' + tempList[1];
-                } if(string.isNotBlank(singleAccSpecificBTSetKey) && singleAccSpecificBTSetKey.contains('->')){
+                }
+                if(string.isNotBlank(singleAccSpecificBTSetKey) && singleAccSpecificBTSetKey.contains('->')){
                     List<string> tempList = singleAccSpecificBTSetKey.split('->');
                     WW_singleAccSpecificBTSetKey = STR_WW + '->' + tempList[1];
                 }
                 
-                if((!allAccAllBTSet.isEmpty() && string.isNotBlank(allAccAllBTSetKey) && string.isNotBlank(WW_allAccAllBTSetKey) && (allAccAllBTSet.contains(allAccAllBTSetKey) || allAccAllBTSet.contains(WW_allAccAllBTSetKey) )) || (!allAccSpecificBTSet.isEmpty() && string.isNotBlank(allAccSpecificBTSetKey) && string.isNotBlank(WW_allAccSpecificBTSetKey) && (allAccSpecificBTSet.contains(allAccSpecificBTSetKey) || allAccSpecificBTSet.contains(WW_allAccSpecificBTSetKey))) ||
+                if((!allAccAllBTSet.isEmpty() && string.isNotBlank(allAccAllBTSetKey) && string.isNotBlank(WW_allAccAllBTSetKey) && (allAccAllBTSet.contains(allAccAllBTSetKey) || allAccAllBTSet.contains(WW_allAccAllBTSetKey) )) ||
+                   (!allAccSpecificBTSet.isEmpty() && string.isNotBlank(allAccSpecificBTSetKey) && string.isNotBlank(WW_allAccSpecificBTSetKey) && (allAccSpecificBTSet.contains(allAccSpecificBTSetKey) || allAccSpecificBTSet.contains(WW_allAccSpecificBTSetKey))) ||
                    (!singleAccAllBTSet.isEmpty() && string.isNotBlank(singleAccAllBTSetKey) && string.isNotBlank(WW_singleAccAllBTSetKey) && (singleAccAllBTSet.contains(singleAccAllBTSetKey) || singleAccAllBTSet.contains(WW_singleAccAllBTSetKey))) ||
-                   (!singleAccSpecificBTSet.isEmpty() && string.isNotBlank(singleAccSpecificBTSetKey) && string.isNotBlank(WW_singleAccSpecificBTSetKey) && (singleAccSpecificBTSet.contains(singleAccSpecificBTSetKey) || singleAccSpecificBTSet.contains(WW_singleAccSpecificBTSetKey)))){ campToApproveList.add(obj); iupgmBasedApprovalIds.add(obj.Id);
+                   (!singleAccSpecificBTSet.isEmpty() && string.isNotBlank(singleAccSpecificBTSetKey) && string.isNotBlank(WW_singleAccSpecificBTSetKey) && (singleAccSpecificBTSet.contains(singleAccSpecificBTSetKey) || singleAccSpecificBTSet.contains(WW_singleAccSpecificBTSetKey)))){
+                       campToApproveList.add(obj);
+                       iupgmBasedApprovalIds.add(obj.Id);
                    }
-            } }
+            }
+        }
         
                 
-        if(!campToApproveList.isEmpty()){ if(!objNameToSObjectMap.containsKey(objName)){ List<sObject> sObjList = new List<sObject>{campToApproveList[0]};
+        if(!campToApproveList.isEmpty()){
+            if(!objNameToSObjectMap.containsKey(objName)){
+                List<sObject> sObjList = new List<sObject>{campToApproveList[0]};
                     objNameToSObjectMap = getFLSDetails(objName,sObjList);
             }       
-        } approvalWrap.count = campToApproveList.size(); if(!campToApproveList.isEmpty() && objNameToSObjectMap.containsKey(objName)){ return approvalWrap; }else{ return null;
+        }
+        approvalWrap.count = campToApproveList.size();
+        if(!campToApproveList.isEmpty() && objNameToSObjectMap.containsKey(objName)){
+            return approvalWrap;
+        }else{
+            return null;
         }
         
     }
@@ -2061,8 +2454,9 @@ Description :   to get the Budget records for approvals
         List<PartnerMarketingBudget> budgetObjRecordList = new List<PartnerMarketingBudget>();
         List<PartnerMarketingBudget> budgetToApproveList = new List<PartnerMarketingBudget>();
         Set<Id> budgetIdSet = new Set<Id>();
-        List<SObject> objList = new List<SObject>();
-        List<RecordsToApprove> recordWrapList = new List<RecordsToApprove>();
+        // Highlight: Unused Local Variable - 14285
+        // List<SObject> objList = new List<SObject>();
+        // List<RecordsToApprove> recordWrapList = new List<RecordsToApprove>();
         ApprovalWrapper approvalWrap = new ApprovalWrapper();
         Core_MDF_CCP_Custom_Metadata_Utility__c mdtValues = approvalReqObjMdtPIMap.get(objName);
         approvalWrap.icon = String.valueOf(mdtValues.Core_MDF_Field_8_txt__c);
@@ -2106,31 +2500,43 @@ Description :   to get the Budget records for approvals
                       }
                   
                   if(string.isNotBlank(allAccAllBTSetKey) && allAccAllBTSetKey.contains('->')){
-                      List<string> tempList = allAccAllBTSetKey.split('->'); WW_allAccAllBTSetKey = STR_WW + '->' + tempList[1];
+                      List<string> tempList = allAccAllBTSetKey.split('->');
+                      WW_allAccAllBTSetKey = STR_WW + '->' + tempList[1];
                   }
                   if(string.isNotBlank(allAccSpecificBTSetKey) && allAccSpecificBTSetKey.contains('->')){
-                      List<string> tempList = allAccSpecificBTSetKey.split('->'); WW_allAccSpecificBTSetKey = STR_WW + '->' + tempList[1];
+                      List<string> tempList = allAccSpecificBTSetKey.split('->');
+                      WW_allAccSpecificBTSetKey = STR_WW + '->' + tempList[1];
                   }
                   if(string.isNotBlank(singleAccAllBTSetKey) && singleAccAllBTSetKey.contains('->')){
-                      List<string> tempList = singleAccAllBTSetKey.split('->'); WW_singleAccAllBTSetKey = STR_WW + '->' + tempList[1];
+                      List<string> tempList = singleAccAllBTSetKey.split('->');
+                      WW_singleAccAllBTSetKey = STR_WW + '->' + tempList[1];
                   }
-                  if(string.isNotBlank(singleAccSpecificBTSetKey) && singleAccSpecificBTSetKey.contains('->')){ List<string> tempList = singleAccSpecificBTSetKey.split('->');
+                  if(string.isNotBlank(singleAccSpecificBTSetKey) && singleAccSpecificBTSetKey.contains('->')){
+                      List<string> tempList = singleAccSpecificBTSetKey.split('->');
                       WW_singleAccSpecificBTSetKey = STR_WW + '->' + tempList[1];
                   }
                  
-                  if((!allAccAllBTSet.isEmpty() && string.isNotBlank(allAccAllBTSetKey) && string.isNotBlank(WW_allAccAllBTSetKey) && (allAccAllBTSet.contains(allAccAllBTSetKey) || allAccAllBTSet.contains(WW_allAccAllBTSetKey) )) || (!allAccSpecificBTSet.isEmpty() && string.isNotBlank(allAccSpecificBTSetKey) && string.isNotBlank(WW_allAccSpecificBTSetKey) && (allAccSpecificBTSet.contains(allAccSpecificBTSetKey) || allAccSpecificBTSet.contains(WW_allAccSpecificBTSetKey))) ||
+                  if((!allAccAllBTSet.isEmpty() && string.isNotBlank(allAccAllBTSetKey) && string.isNotBlank(WW_allAccAllBTSetKey) && (allAccAllBTSet.contains(allAccAllBTSetKey) || allAccAllBTSet.contains(WW_allAccAllBTSetKey) )) ||
+                     (!allAccSpecificBTSet.isEmpty() && string.isNotBlank(allAccSpecificBTSetKey) && string.isNotBlank(WW_allAccSpecificBTSetKey) && (allAccSpecificBTSet.contains(allAccSpecificBTSetKey) || allAccSpecificBTSet.contains(WW_allAccSpecificBTSetKey))) ||
                      (!singleAccAllBTSet.isEmpty() && string.isNotBlank(singleAccAllBTSetKey) && string.isNotBlank(WW_singleAccAllBTSetKey) && (singleAccAllBTSet.contains(singleAccAllBTSetKey) || singleAccAllBTSet.contains(WW_singleAccAllBTSetKey))) ||
-                     (!singleAccSpecificBTSet.isEmpty() && string.isNotBlank(singleAccSpecificBTSetKey) && string.isNotBlank(WW_singleAccSpecificBTSetKey) && (singleAccSpecificBTSet.contains(singleAccSpecificBTSetKey) || singleAccSpecificBTSet.contains(WW_singleAccSpecificBTSetKey)))){ budgetToApproveList.add(obj);budgetIdSet.add(obj.Id);
+                     (!singleAccSpecificBTSet.isEmpty() && string.isNotBlank(singleAccSpecificBTSetKey) && string.isNotBlank(WW_singleAccSpecificBTSetKey) && (singleAccSpecificBTSet.contains(singleAccSpecificBTSetKey) || singleAccSpecificBTSet.contains(WW_singleAccSpecificBTSetKey)))){
+                         budgetToApproveList.add(obj);
+                         budgetIdSet.add(obj.Id);
                      }
                   
               }
               //Added EEF check to show record count for budget
               else if(obj.Core_MDF_Budget_Type_Txt__c == MDF_BUDGET_TYPE || obj.Core_MDF_Budget_Type_Txt__c == MDFPLUS_BUDGET_TYPE 
-                      || obj.Core_MDF_Program_Nm__c == EEF_PROGRAM || obj.Core_MDF_Program_Nm__c == Co_GTM_PROG){ string region = 'WW';
+                      || obj.Core_MDF_Program_Nm__c == EEF_PROGRAM || obj.Core_MDF_Program_Nm__c == Co_GTM_PROG){
+                  string region = 'WW';
                   
                   if(string.isNotBlank(region)){
                       WW_allAccAllBTSetKey = region +'->'+ progId + '_' + approvalStage;
-                  } if(string.isNotBlank(WW_allAccAllBTSetKey)){ WW_allAccSpecificBTSetKey = budgetType != null ? WW_allAccAllBTSetKey + '_' + budgetType : '';  }
+                  }
+                  
+                  if(string.isNotBlank(WW_allAccAllBTSetKey)){
+                      WW_allAccSpecificBTSetKey = budgetType != null ? WW_allAccAllBTSetKey + '_' + budgetType : '';
+                  }
                   
                   if(string.isNotBlank(WW_allAccAllBTSetKey)){
                       WW_singleAccAllBTSetKey = WW_allAccAllBTSetKey + '_' + ultAccount;
@@ -2196,27 +2602,57 @@ Description :   to get the claim records for approvals
 
       
       if(!claimObjRecordList.isEmpty()){
-          for(PartnerFundClaim obj: claimObjRecordList){ string allAccAllBTSetKey,allAccSpecificBTSetKey,singleAccAllBTSetKey,singleAccSpecificBTSetKey;string WW_allAccAllBTSetKey, WW_allAccSpecificBTSetKey, WW_singleAccAllBTSetKey, WW_singleAccSpecificBTSetKey; string progId = progToIdMap.get(obj.Core_MDF_Program__c);string budgetType = string.isNotBlank(obj.Core_MDF_Budget_Type_Options_Nm__c) ? obj.Core_MDF_Budget_Type_Options_Nm__c.replaceAll('\\s+', '') : ''; String ultimateAccount = (String)obj.Core_MDF_Ultimate_Account_ID__c;Id ultAccount= ultimateAccount; string approvalStage = string.isNotBlank(obj.Core_MDF_Approval_Stage_nm__c) ? obj.Core_MDF_Approval_Stage_nm__c.replaceAll('\\s+', '') : '';if((obj.Core_MDF_Program__c == IPA_PROG) || (obj.Core_MDF_Program__c == Co_GTM_PROG)){
-                    string region = (obj.Core_MDF_Program__c == IPA_PROG) ? (string.isNotBlank(obj.Core_MDF_Region_Cd__c) ? obj.Core_MDF_Region_Cd__c : '') : (obj.Core_MDF_Program__c == Co_GTM_PROG ? 'EMEA;PRC;APJ;ASMO' : ''); if(string.isNotBlank(region)){ allAccAllBTSetKey = region +'->'+ progId + '_' + approvalStage;
+          for(PartnerFundClaim obj: claimObjRecordList){
+              string allAccAllBTSetKey,allAccSpecificBTSetKey,singleAccAllBTSetKey,singleAccSpecificBTSetKey;
+              string WW_allAccAllBTSetKey, WW_allAccSpecificBTSetKey, WW_singleAccAllBTSetKey, WW_singleAccSpecificBTSetKey;
+              string progId = progToIdMap.get(obj.Core_MDF_Program__c);
+              string budgetType = string.isNotBlank(obj.Core_MDF_Budget_Type_Options_Nm__c) ? obj.Core_MDF_Budget_Type_Options_Nm__c.replaceAll('\\s+', '') : '';
+              String ultimateAccount = (String)obj.Core_MDF_Ultimate_Account_ID__c;
+              Id ultAccount= ultimateAccount;
+              string approvalStage = string.isNotBlank(obj.Core_MDF_Approval_Stage_nm__c) ? obj.Core_MDF_Approval_Stage_nm__c.replaceAll('\\s+', '') : '';
+              
+                if((obj.Core_MDF_Program__c == IPA_PROG) || (obj.Core_MDF_Program__c == Co_GTM_PROG)){
+                    string region = (obj.Core_MDF_Program__c == IPA_PROG) ? (string.isNotBlank(obj.Core_MDF_Region_Cd__c) ? obj.Core_MDF_Region_Cd__c : '') : (obj.Core_MDF_Program__c == Co_GTM_PROG ? 'EMEA;PRC;APJ;ASMO' : '');
+                                                                                                   
+                  
+                  if(string.isNotBlank(region)){
+                      allAccAllBTSetKey = region +'->'+ progId + '_' + approvalStage;
                   }
                   
-                  if(string.isNotBlank(allAccAllBTSetKey)){ allAccSpecificBTSetKey = budgetType != null ? allAccAllBTSetKey + '_' + budgetType : '';
+                  if(string.isNotBlank(allAccAllBTSetKey)){
+                      allAccSpecificBTSetKey = budgetType != null ? allAccAllBTSetKey + '_' + budgetType : '';
                   }
                   
-                  if(string.isNotBlank(obj.Core_MDF_Program__c)){ if(string.isNotBlank(allAccAllBTSetKey)){ singleAccAllBTSetKey = allAccAllBTSetKey + '_' + ultAccount;
+                  if(string.isNotBlank(obj.Core_MDF_Program__c)){
+                      if(string.isNotBlank(allAccAllBTSetKey)){
+                          singleAccAllBTSetKey = allAccAllBTSetKey + '_' + ultAccount;
                       }
-                      if(string.isNotBlank(allAccSpecificBTSetKey)){ singleAccSpecificBTSetKey = allAccSpecificBTSetKey + '_' + ultAccount;
+                      if(string.isNotBlank(allAccSpecificBTSetKey)){
+                          singleAccSpecificBTSetKey = allAccSpecificBTSetKey + '_' + ultAccount;
                       }
                   }
-                    if(string.isNotBlank(allAccAllBTSetKey) && allAccAllBTSetKey.contains('->')){ List<string> tempList = allAccAllBTSetKey.split('->'); WW_allAccAllBTSetKey = STR_WW + '->' + tempList[1];
+                    if(string.isNotBlank(allAccAllBTSetKey) && allAccAllBTSetKey.contains('->')){
+                        List<string> tempList = allAccAllBTSetKey.split('->');
+                        WW_allAccAllBTSetKey = STR_WW + '->' + tempList[1];
                     }
-                    if(string.isNotBlank(allAccSpecificBTSetKey) && allAccSpecificBTSetKey.contains('->')){ List<string> tempList = allAccSpecificBTSetKey.split('->');WW_allAccSpecificBTSetKey = STR_WW + '->' + tempList[1];
+                    if(string.isNotBlank(allAccSpecificBTSetKey) && allAccSpecificBTSetKey.contains('->')){
+                        List<string> tempList = allAccSpecificBTSetKey.split('->');
+                        WW_allAccSpecificBTSetKey = STR_WW + '->' + tempList[1];
                     }
-                    if(string.isNotBlank(singleAccAllBTSetKey) && singleAccAllBTSetKey.contains('->')){ List<string> tempList = singleAccAllBTSetKey.split('->'); WW_singleAccAllBTSetKey = STR_WW + '->' + tempList[1];
+                    if(string.isNotBlank(singleAccAllBTSetKey) && singleAccAllBTSetKey.contains('->')){
+                        List<string> tempList = singleAccAllBTSetKey.split('->');
+                        WW_singleAccAllBTSetKey = STR_WW + '->' + tempList[1];
                     }
-                    if(string.isNotBlank(singleAccSpecificBTSetKey) && singleAccSpecificBTSetKey.contains('->')){ List<string> tempList = singleAccSpecificBTSetKey.split('->'); WW_singleAccSpecificBTSetKey = STR_WW + '->' + tempList[1];
+                    if(string.isNotBlank(singleAccSpecificBTSetKey) && singleAccSpecificBTSetKey.contains('->')){
+                        List<string> tempList = singleAccSpecificBTSetKey.split('->');
+                        WW_singleAccSpecificBTSetKey = STR_WW + '->' + tempList[1];
                     }
-                    if((!allAccAllBTSet.isEmpty() && string.isNotBlank(allAccAllBTSetKey) && string.isNotBlank(WW_allAccAllBTSetKey) && (allAccAllBTSet.contains(allAccAllBTSetKey) || allAccAllBTSet.contains(WW_allAccAllBTSetKey) )) || (!allAccSpecificBTSet.isEmpty() && string.isNotBlank(allAccSpecificBTSetKey) && string.isNotBlank(WW_allAccSpecificBTSetKey) && (allAccSpecificBTSet.contains(allAccSpecificBTSetKey) || allAccSpecificBTSet.contains(WW_allAccSpecificBTSetKey))) ||(!singleAccAllBTSet.isEmpty() && string.isNotBlank(singleAccAllBTSetKey) && string.isNotBlank(WW_singleAccAllBTSetKey) && (singleAccAllBTSet.contains(singleAccAllBTSetKey) || singleAccAllBTSet.contains(WW_singleAccAllBTSetKey))) || (!singleAccSpecificBTSet.isEmpty() && string.isNotBlank(singleAccSpecificBTSetKey) && string.isNotBlank(WW_singleAccSpecificBTSetKey) && (singleAccSpecificBTSet.contains(singleAccSpecificBTSetKey) || singleAccSpecificBTSet.contains(WW_singleAccSpecificBTSetKey)))){ claimToApproveList.add(obj); claimIdSet.add(obj.Id);
+                    if((!allAccAllBTSet.isEmpty() && string.isNotBlank(allAccAllBTSetKey) && string.isNotBlank(WW_allAccAllBTSetKey) && (allAccAllBTSet.contains(allAccAllBTSetKey) || allAccAllBTSet.contains(WW_allAccAllBTSetKey) )) ||
+                       (!allAccSpecificBTSet.isEmpty() && string.isNotBlank(allAccSpecificBTSetKey) && string.isNotBlank(WW_allAccSpecificBTSetKey) && (allAccSpecificBTSet.contains(allAccSpecificBTSetKey) || allAccSpecificBTSet.contains(WW_allAccSpecificBTSetKey))) ||
+                       (!singleAccAllBTSet.isEmpty() && string.isNotBlank(singleAccAllBTSetKey) && string.isNotBlank(WW_singleAccAllBTSetKey) && (singleAccAllBTSet.contains(singleAccAllBTSetKey) || singleAccAllBTSet.contains(WW_singleAccAllBTSetKey))) ||
+                       (!singleAccSpecificBTSet.isEmpty() && string.isNotBlank(singleAccSpecificBTSetKey) && string.isNotBlank(WW_singleAccSpecificBTSetKey) && (singleAccSpecificBTSet.contains(singleAccSpecificBTSetKey) || singleAccSpecificBTSet.contains(WW_singleAccSpecificBTSetKey)))){
+                           claimToApproveList.add(obj);
+                           claimIdSet.add(obj.Id);
                        }
                   
               }       
@@ -2225,7 +2661,9 @@ Description :   to get the claim records for approvals
             if(!claimToApproveList.isEmpty()){
 
                 //Check FLS
-                if(!objNameToSObjectMap.containsKey(objName)){ List<sObject> sObjList = new List<sObject>{claimToApproveList[0]}; objNameToSObjectMap = getFLSDetails(objName,sObjList);
+                if(!objNameToSObjectMap.containsKey(objName)){
+                    List<sObject> sObjList = new List<sObject>{claimToApproveList[0]};
+                    objNameToSObjectMap = getFLSDetails(objName,sObjList);
                 }
                 
             }
@@ -2264,7 +2702,10 @@ Description :   to get the approval process version
                                             }
 
         if(!objRecIds.isEmpty()){
-            ParamWrapper paramWrap = new ParamWrapper();paramWrap.fieldApiNames = String.valueOf(mdtValues.Core_MDF_Field_7_txt__c);paramWrap.objName = objName; paramWrap.objRecIds = objRecIds;objList = Core_MDF_IUPGM_ApprovalRequestData.getPIRecordData(paramWrap);            
+            ParamWrapper paramWrap = new ParamWrapper();
+            paramWrap.fieldApiNames = String.valueOf(mdtValues.Core_MDF_Field_7_txt__c);
+            paramWrap.objName = objName; paramWrap.objRecIds = objRecIds;
+            objList = Core_MDF_IUPGM_ApprovalRequestData.getPIRecordData(paramWrap);            
         }
             if(!objList.isEmpty()){
                 if(!objNameToSObjectMap.containsKey(objName)){ List<sObject> sObjList = new List<sObject>{objList[0]}; objNameToSObjectMap = getFLSDetails(objName,sObjList);
@@ -2278,7 +2719,7 @@ Description :   to get the approval process version
             return null;
         }
         }
-        catch(Exception ex){ 
+        catch(Exception ex){
 	    //Avoid empty catch blocks
             Core_MDF_CCP_UtilityClass.logError(ex);
         }
@@ -2303,7 +2744,8 @@ Added By    :   Aswin Selvaraj / Accenture / 30/Oct/2024
         try{
             SObjectAccessDecision objectAccess = Security.stripInaccessible(AccessType.READABLE, sObjList);
             objFieldAccess.add((sObject)objectAccess.getRecords()[0]);
-        }catch(NoAccessException ex){ Core_MDF_CCP_UtilityClass.logError(ex); noAccess = true;
+        }catch(NoAccessException ex){
+            Core_MDF_CCP_UtilityClass.logError(ex); noAccess = true;
         }
         if(!objFieldAccess.isEmpty() && !noAccess){
             objNameToSObjectMap.put(objName, objFieldAccess[0]);
@@ -2367,7 +2809,7 @@ Added By    :   Aswin Selvaraj / Accenture / 30/Oct/2024
         public List<FieldsWrapper> compactDetails;
         public List<FieldsWrapper> tableViewDetails;
         public List<FieldsWrapper> recordDetails;
-		public Boolean isIPAOutcomeBased = false; //indu
+        public Boolean isIPAOutcomeBased = false; //indu
     }
     
     Public class FieldsWrapper {

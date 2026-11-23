@@ -70,6 +70,7 @@ global class Core_MDF_Batch_ClaimInsert implements Database.Batchable<PartnerFun
                         failedStageRecords.add(stageRecord);
                     } 
                 }
+               
                 
                 stageRecordsToUpdate.addAll(successfulStageRecords);
                 stageRecordsToUpdate.addAll(failedStageRecords);
@@ -102,6 +103,7 @@ global class Core_MDF_Batch_ClaimInsert implements Database.Batchable<PartnerFun
                     pfrClaimMap.put(claim.RequestId, new List<PartnerFundClaim>{claim});
                 }
             }
+            
             if(failedPFR!=null && failedPFR.size()>0)
             {
                 for(Id pfrID : failedPFR)

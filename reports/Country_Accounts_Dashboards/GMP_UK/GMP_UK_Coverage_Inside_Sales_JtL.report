@@ -72,14 +72,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value></value>
+            <value>OSC</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Account.Core_Sales_Groups__c</column>
+            <column>USERS.NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>GMP UK Sales Group</value>
+            <value>Dorota Prokopowicz,Tomasz Czajko</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

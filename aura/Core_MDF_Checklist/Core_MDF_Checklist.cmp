@@ -19,6 +19,8 @@
         <aura:attribute name="underReview" type="String" default="Under Review"/>
     	<aura:attribute name="checklistItemsWithCat" type="List"/>
     	<aura:attribute name="checklistCompletionPer" type="integer" default=""/>
+          <aura:attribute name="errorflag" type="Boolean" default="false"/> <!--Added by AN as part of Unhandled xception fix-->
+      <aura:attribute name="errorMessage" type="String"/>
     	<aura:attribute name="scorecardDetails" type="Object"/><!--Audit Functionality-->
     	<aura:attribute name="aiStatusMessage" type="String"/><!--Audit Functionality-->
         
@@ -71,6 +73,12 @@
                         <lightning:button label="Save" iconName="utility:save" variant="brand" onclick="{!c.updateRecords}"/>
                 </div>
         </aura:if>
+    	<!-- Added by AN as part o Unhandled Exception fix-->
+        <!---<aura:if isTrue="{!not(empty(v.errorMessage))}">
+        <div class="slds-text-color_error">
+            {!v.errorMessage}
+        </div>
+       </aura:if>-->
 
         <!--Checklist Enhancements v1 - Checklist Enhancements v1 - US458776: [Case: Edit] Automatic Status for Checklist Results-->
         <!--<div class="slds-m-around_xx-large">

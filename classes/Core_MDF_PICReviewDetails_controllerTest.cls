@@ -118,7 +118,8 @@ Modified By:        Date:       Changes:
             
             Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(acc1.Id, 'Core_MDF_Client_CoMarketing_Fund', false,'1231231230');
 			insert bank;
-            List<PartnerFundClaim> claimList1 = new List<PartnerFundClaim>();            
+            // Highlight: Unused Local Variable - Indira
+           // List<PartnerFundClaim> claimList1 = new List<PartnerFundClaim>();            
             
             List <PartnerFundClaim> claimList = new List <PartnerFundClaim>();
             PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim1', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, testPartnerFundRequestRecord.Id, System.today(), System.today(), 5000.00, System.today(), bank.Id, false);
@@ -194,12 +195,14 @@ Modified By:        Date:       Changes:
         database.insert(picResultList);
         
         String languagekey1 = 'fr';
-        String languagekey2 = 'az';
+        // Highlight: Unused Local Variable - Indira
+       // String languagekey2 = 'az';
          
         User usr = [SELECT Id,Email from User where LastName = 'SysAdmUser' limit 1];
         System.runAs(usr){
             Test.startTest(); 
-            	String localizedField1 = Core_MDF_PICReviewDetails_controller.getPICReviewLocalizedFieldAPIName(languagekey1);
+            // Highlight: Unused Local Variable - Indira
+            /*	String localizedField1 = */ Core_MDF_PICReviewDetails_controller.getPICReviewLocalizedFieldAPIName(languagekey1);
                 Core_MDF_PICReviewDetails_controller.getUserAndPICReviewResultDetails(claim1.Id);	
                 Core_MDF_PICReviewDetails_controller.getObjectAccess();
             	Core_MDF_PICReviewDetails_controller.getUserDetails();
@@ -207,6 +210,8 @@ Modified By:        Date:       Changes:
                 Core_MDF_PICReviewDetails_controller.getPICReviewDetails(claim1.Id, false);
             Test.stopTest();
         }
-        
+        // Unit Test Method should include System.Assert - Indira
+        System.assertEquals(2, reviewList.size(), 'Review list should contain 2 reviews');
+        System.assertEquals(3, picResultList.size(), 'PIC result list should contain 3 results'); 
     }
 }

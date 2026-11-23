@@ -17,6 +17,7 @@ Method Name:        createGroupForAccountNode
 Description:        This method is used to create Group for Node Based Sharing
 Added By:           Accenture - AS - 24/8/2020
 Modified By:        Date:       Changes: 
+
 *******************************************************************************************************/
     public static List<Account> createGroupForAccountNode(List<Account> coMarketingAccountList){
         //List of  Co-Marketing AccountIds
@@ -119,6 +120,7 @@ Method Name:        recalculateShareAccountWhenOwnerChange
 Description:        This method is to reshare account record with its group when account's owner is changed
 Added By:           Accenture - VD - 07/9/2020
 Modified By:        Date:       Changes: 
+
 *******************************************************************************************************/    
     @InvocableMethod
     public static void recalculateShareAccountWhenOwnerChange(List<Account> accountToBeResharedList){
@@ -222,19 +224,25 @@ Modified By   :        Date:       Changes:
         }                               
         catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}                              
     }
+    //added by JK to replace prime Id field
+    // Roshan - added Core_IPA_One_Partner_Id__c
     public static List<Account> fetchAccounts(String whereClause){
         //String ultimateAccountPrimeIdOrUnifiedField = isUnifiedIdEnabled?'Core_MDF_CoMarketing_Ultimate_Account__r.Core_Unified_Global_Customer_BP_Id__c':'Core_MDF_CoMarketing_Ultimate_Account__r.Core_Prime_Id__c';
         String ultimateAccountPrimeIdOrUnifiedField = 'Core_MDF_CoMarketing_Ultimate_Account__r.Core_Unified_Global_Customer_BP_Id__c';
         //String intelAccountPrimeIdOrUnifiedField = isUnifiedIdEnabled?'Core_Unified_Global_Customer_BP_Id__c':'Core_Prime_Id__c';
         String intelAccountPrimeIdOrUnifiedField = 'Core_Unified_Global_Customer_BP_Id__c';
-        String Query = 'SELECT Id, Name,Core_MDF_CoMarketing_Ultimate_Account__c,RecordTypeId,Core_IPA_One_Partner_Id__c,Core_Intel_Partner_Alliance_PartnerGroup__c,Core_MDF_CoMarketingActive__c,'+'Core_MDF_CoMarketingAgency__c,Core_Geo__c,Core_Sub_Geo__c,IsPartner,'+
+        String Query = 'SELECT Id, Name,Core_MDF_CoMarketing_Ultimate_Account__c,RecordTypeId,Core_Intel_Partner_Alliance_PartnerGroup__c,Core_IPA_One_Partner_Id__c,Core_MDF_CoMarketingActive__c,'+'Core_MDF_CoMarketingAgency__c,Core_Geo__c,Core_Sub_Geo__c,IsPartner,'+
        intelAccountPrimeIdOrUnifiedField+','+ultimateAccountPrimeIdOrUnifiedField+' FROM Account WHERE ';
-        if(String.isNotEmpty(whereClause) && whereClause != null){
-            Query += whereClause;
+       String whereClauseSani = String.escapeSingleQuotes(whereClause);
+       whereClauseSani = whereClauseSani.replaceAll('\\\\','');
+        if(String.isNotEmpty(whereClauseSani) && whereClauseSani != null){
+            Query += whereClauseSani;
         }
+        system.debug('fetchAccountsquery@@@' + Query);
         List<Account> accounts = Database.query(Query);
         return accounts;
     }
+    //added by JK to replace prime ID field
     public static List<PRM_IPA_Affiliation__c> fetchPRMIPAAffiliation(Set<Id> accounts,Set<Id> prmIPAId){
         String primeIdOrUnifiedField = 'PRM_Account__r.Core_Unified_Global_Customer_BP_Id__c';
         //String primeIdOrUnifiedField = isUnifiedIdEnabled?'PRM_Account__r.Core_Unified_Global_Customer_BP_Id__c':'PRM_Account__r.Core_Prime_Id__c';
@@ -248,12 +256,11 @@ Modified By   :        Date:       Changes:
         if(prmIPAId != null){
            Query += ' AND Id IN: prmIPAId AND PRM_Account__r.RecordType.DeveloperName =:accountDeveloperName';
         }
-        List<PRM_IPA_Affiliation__c> prmIPAAff = new List<PRM_IPA_Affiliation__c>();
-        for(PRM_IPA_Affiliation__c ipaAff :Database.Query(Query)){
-            prmIPAAff.add(ipaAff);
-        }
+        List<PRM_IPA_Affiliation__c> prmIPAAff = Database.Query(Query);
         return prmIPAAff;
     }
+
+    // Roshan - added Core_IPA_One_Partner_Id__c
     public static List<Account> fetchUnifiedIdAccounts(Set<String> unifedIdSet){
         //String primeIdOrUnifiedField = isUnifiedIdEnabled?'Core_Unified_Global_Customer_BP_Id__c':'Core_Prime_Id__c';
         String primeIdOrUnifiedField = 'Core_Unified_Global_Customer_BP_Id__c';
@@ -261,11 +268,32 @@ Modified By   :        Date:       Changes:
         String masterAccountRecordtype=Label.Core_MDF_MasterAccount;
        String Query = 'SELECT Id,Name,RecordType.DeveloperName,Core_IPA_One_Partner_Id__c,Core_Intel_Partner_Alliance_PartnerGroup__c,'+primeIdOrUnifiedField+',Core_MDF_CoMarketingActive__c from Account WHERE '
                     +primeIdOrUnifiedField+' IN: unifedIdSet AND '+'('+'RecordType.DeveloperName =:prmRecordType'+' OR'+' ('+'RecordType.DeveloperName =:masterAccountRecordtype'+' AND Core_Intel_Partner_Alliance_PartnerGroup__c = TRUE'+'))';
-        List<Account> accounts = new List<Account>();
-        for(Account acc : Database.query(Query)){
-            accounts.add(acc);
-        }
+                                            system.debug('fetchUnifiedIdAccountsquery@@@'+Query);
+        List<Account> accounts = Database.query(Query);
         return accounts;
     }
+
+    // Roshan - using for acc onboarding
+    // public static List<Account> fetchUnifiedorOPIDAccounts(Set<String> inputIdSet) {
+
+    //     String primeIdOrUnifiedField = isUnifiedIdEnabled ? 'Core_Unified_Global_Customer_BP_Id__c' : 'Core_Prime_Id__c';
+    //     String prmRecordType = Label.PRM_Partner_Account_Group_Record_Type;
+    //     String masterAccountRecordtype = Label.Core_MDF_MasterAccount;
+
+    //     Boolean optAccountBenefitAssociation = Core_MDF_CustomLabelConfig.getBooleanValues('Core_MDF_OptAccountBenefitAssoc');
+    //     String filterField = optAccountBenefitAssociation ? 'Core_IPA_One_Partner_Id__c' : primeIdOrUnifiedField;
+
+    //     String query = 'SELECT Id, Name, RecordType.DeveloperName, Core_IPA_One_Partner_Id__c, Core_Intel_Partner_Alliance_PartnerGroup__c, ' + primeIdOrUnifiedField + ', Core_MDF_CoMarketingActive__c FROM Account WHERE ' +
+    //                     filterField + ' IN :inputIdSet AND (RecordType.DeveloperName = :prmRecordType OR (RecordType.DeveloperName = :masterAccountRecordtype AND Core_Intel_Partner_Alliance_PartnerGroup__c = TRUE))';
+
+    //     System.debug('fetchUnifiedIdAccounts query@@@ ' + query);
+
+    //     List<Account> accounts = new List<Account>();
+    //     for(Account acc : Database.query(Query)){
+    //         accounts.add(acc);
+    //     }
+    //     return accounts;
+    // }
+
     
 }

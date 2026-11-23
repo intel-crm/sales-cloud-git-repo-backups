@@ -15,7 +15,7 @@
         <groupingColumn>CLOSE_DATE</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_TOP</location>
-        <secondaryGroupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</secondaryGroupingColumn>
+        <secondaryGroupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -50,7 +50,7 @@
         <field>QUANTITY</field>
     </columns>
     <filter>
-        <booleanFilter>1</booleanFilter>
+        <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
             <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>
@@ -58,12 +58,19 @@
             <operator>equals</operator>
             <value>Mediha Kayacan</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Karim Bibi Triki</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
     <groupingsAcross>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
     <groupingsDown>
@@ -100,8 +107,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

@@ -24,9 +24,6 @@
     <columns>
         <field>Case.Core_IPS_Product_name__c</field>
     </columns>
-    <columns>
-        <field>Case.Core_IPS_Backend_ID_URL__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Case.Core_Promote_Status__c</column>
@@ -48,20 +45,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Legacy IPS</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>STATUS</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Closed</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CREATED_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_YEAR</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

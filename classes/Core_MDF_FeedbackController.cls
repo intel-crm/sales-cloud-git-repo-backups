@@ -50,6 +50,41 @@ public with sharing class Core_MDF_FeedbackController {
                 currentPageInfo = surveyMap.pageRef;
             }
             
+            /* Set<String> programSet = new Set<String>(); 
+Id ultimateAccountId;
+List<Core_MDF_Partner_Node_User_Mapping__c> pnumList = new List<Core_MDF_Partner_Node_User_Mapping__c>(); 
+List<Core_MDF_Partner_Group_Mapping__c> pgmList = new List<Core_MDF_Partner_Group_Mapping__c>(); 
+Id userId = UserInfo.getUserId();
+User userRecord = [SELECT Id, Contact.AccountId FROM User WHERE Id = :userId]; //query to get loggedin user's Account
+
+if(userId != null){
+fetchSurveyQuestions pnumRecord = new fetchSurveyQuestions();
+pnumList = pnumRecord.fetchPNUMRecords(); //calling fetchPNUMRecords method to get the logged in user's PNUM
+system.debug('@@pnumList ->'+pnumList);
+}
+
+if(pnumList != null && !pnumList.isEmpty()){
+for(Core_MDF_Partner_Node_User_Mapping__c pnumRec : pnumList){
+programSet.add(pnumRec.Core_MDF_Account__r.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c); //adding programs fetched from PNUM query in programset
+ultimateAccountId = pnumRec.Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c; //adding Account Id's fetched from PNUM query in ultimateAccountSet
+system.debug('@@ultimateAccountId PNUM ->'+ultimateAccountId);
+}
+}
+else{ //if PNUM records does not exist fetch account from user's contact's Account and program from external PGMs for the particular user's account 
+if(userRecord.Contact.AccountId != null){
+fetchSurveyQuestions pgmRecord = new fetchSurveyQuestions();
+pgmList = pgmRecord.fetchPGMRecords(userRecord.Contact.AccountId);
+system.debug('@@pgmList ->'+pgmList);
+if(pgmList != null && !pgmList.isEmpty()){
+for(Core_MDF_Partner_Group_Mapping__c pgmRec : pgmList){
+programSet.add(pgmRec.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c); //adding programs fetched from PGM query in programset 
+ultimateAccountId = userRecord.Contact.AccountId; //adding Account Id's fetched from PGM querry
+system.debug('@@ultimateAccountId PGM ->'+ultimateAccountId);
+}
+}
+}
+}*/
+            
             Set<String> programSet = new Set<String>(); 
             Id ultimateAccountId;
             Id userAccountId;
@@ -61,6 +96,10 @@ public with sharing class Core_MDF_FeedbackController {
                 ultimateAccountId = responseWrapper.ultimateAccountId;
                 userAccountId = responseWrapper.userAccountId;
             }
+            
+            //List<String> programList = new List<String>(programSet);
+            //List<Id> ultimateAccountList = new List<Id>(ultimateAccountSet);
+            
             DateTime dtm=System.now();
             surveyObj.Core_MDF_Survey_CapturedOn_Page_txt__c = currentPageInfo;
             surveyObj.Core_MDF_Submitted_By_id__c=UserInfo.getUserId();
@@ -90,14 +129,16 @@ public with sharing class Core_MDF_FeedbackController {
             surveyObj.Core_MDF_User_Account__c = accountToStamp;
             //Insufficient access exception fix - end
 
-            surveyObj.Core_MDF_User_Program_nm__c = !programSet.isEmpty() ? String.join(programSet, ';') : ''; //stamping Program Name from PNUM/PGM with semicolan seperated value
+            surveyObj.Core_MDF_User_Program_nm__c = !programSet.isEmpty() ? String.join(programSet, ';') : ''; 
             insert surveyObj;
-
+            
             List<Core_MDF_Survey_Response__c> surveyResponseList= new List<Core_MDF_Survey_Response__c>();
-            List<String> surveQuestionList= new List<String> ();
+            // Highlight: Unused Local Variable - 14285
+            // List<String> surveQuestionList= new List<String> ();
             for(SurveyDetailsWrapper surveyResult : surveyMap.SurveyDetailsWrapperList){
                 String questionId;
-                String questionLabel;
+                // Highlight: Unused Local Variable - 14285
+                // String questionLabel;
                 String rating;
                 if(surveyResult.questionId != ''){
                     Core_MDF_Survey_Response__c responseData= new Core_MDF_Survey_Response__c();
@@ -120,10 +161,37 @@ public with sharing class Core_MDF_FeedbackController {
             }
             return surveyObj; 
             
-        } catch(Exception e){ 
+        } catch(Exception e){
             Core_MDF_CCP_UtilityClass.logError(e); 
+            //throw e;
+            
+            /****************************************/
+            /*List<Core_Log_Entry__c> logEntryList =  new List<Core_Log_Entry__c>();
+LogEntryDetailsWrapper logEntryWrapper = new LogEntryDetailsWrapper();                              
+
+if(!Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_IUPGMLogEntry')){ // to bypass the log entry record creation
+logEntryWrapper.origin = 'Core_MDF_FeedbackController.submitScoreAction';
+logEntryWrapper.errorMsg = e.getMessage();
+}
+if(!Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_IUPGMLogEntry')){ // to bypass the log entry record creation
+if(logEntryWrapper != null){
+Core_Log_Entry__c logEntryObj = createLogInstance(logEntryWrapper); // calling createLogInstance method with wrapper as parameter
+logEntryList.add(logEntryObj);
+system.debug('@@logEntryList -> '+logEntryList);
+}
+if(!logEntryList.isEmpty()){
+List<Core_MDF_Bulk_Transaction__e> logEntryPEList = createBulkTransactionPlatEventInstance(logEntryList); //calling createBulkTransactionPlatEventInstance method with logEntryObj parameters
+if(!logEntryPEList.isEmpty()){
+system.debug('@@logEntryPEList -> '+logEntryPEList);
+EventBus.publish(logEntryPEList); 
+}
+}
+}*/
+            /***************************************/
+            //throw new AuraHandledException(e.getMessage());
             return null;
         }
+        //return surveyObj;  
     }
     
     @AuraEnabled
@@ -156,19 +224,42 @@ public with sharing class Core_MDF_FeedbackController {
                     frequencyString = 'CALENDAR_QUARTER(LoginTime) = ';
                 }
                 
+                // US - TWC702-14285: Avoid Untrusted/Unescaped Variables in DML Query - Begin
+                /*
+String surveyQuery = 'SELECT Id FROM Core_MDF_Survey__c WHERE Core_MDF_Submitted_By_id__c = '+ '\'' + String.escapeSingleQuotes(UserInfo.getUserId()) + '\'' +
+' AND CreatedDate = ' + String.escapeSingleQuotes(surveyFrequency) + ' LIMIT 1';
+*/
                 String surveyQuery = 'SELECT Id FROM Core_MDF_Survey__c WHERE Core_MDF_Submitted_By_id__c = '+ '\'' + String.escapeSingleQuotes(UserInfo.getUserId()) + '\'' +
-                    ' AND CreatedDate = ' + String.escapeSingleQuotes(surveyFrequency) + ' LIMIT 1';
+                    ' AND CreatedDate = ' + surveyFrequency + ' LIMIT 1';
+                // US - TWC702-14285: Avoid Untrusted/Unescaped Variables in DML Query - End
                 List<Core_MDF_Survey__c> surveyList = Database.query(surveyQuery);
                 if(surveyList.isEmpty() && surveyList.size() == 0){ //If no feedback provided in currect month or quarter (based on our config) then only show the popup.  
                     List<LoginHistory> successLoginList = new List<LoginHistory>();
-
+                    
+                    // US - TWC702-14285: Avoid Untrusted/Unescaped Variables in DML Query - Begin
+                    /*
+String query = 'SELECT Id, LoginTime, Status from LoginHistory WHERE UserId = ' + '\'' + String.escapeSingleQuotes(UserInfo.getUserId()) + '\'' +
+' AND LoginUrl = ' + '\'' +  String.escapeSingleQuotes(Label.Core_MDF_PFRCommunityLink)+ 's/login' + '\''+
+' AND CALENDAR_YEAR(LoginTime) = ' + Date.today().year() +
+' AND ' + String.escapeSingleQuotes(frequencyString) + currentfrequency + 
+' Order by Status ASC';*/
+                    
                     String query = 'SELECT Id, LoginTime, Status from LoginHistory WHERE UserId = ' + '\'' + String.escapeSingleQuotes(UserInfo.getUserId()) + '\'' +
                         ' AND LoginUrl = ' + '\'' +  String.escapeSingleQuotes(Label.Core_MDF_PFRCommunityLink)+ 's/login' + '\''+
                         ' AND CALENDAR_YEAR(LoginTime) = ' + Date.today().year() +
-                        ' AND ' + String.escapeSingleQuotes(frequencyString) + currentfrequency + 
-                        ' Order by Status ASC';
+                        ' AND ' + frequencyString + currentfrequency + 
+                        ' Order by Status ASC'; 
+                    // US - TWC702-14285: Avoid Untrusted/Unescaped Variables in DML Query - End
                     List<LoginHistory> recordsList = Database.query(query);
-                    
+                    // US - TWC702-14285: Flatten nested IFs (no logic change) - commented original code
+                    /* for(LoginHistory loginRecord : recordsList){
+if(loginRecord.Status.toLowercase() == Core_MDF_CCP_ConstantClass.FEEDBACK_SUCCESS_STATUS.toLowerCase()){ //to get only the Success records from query as Status field cannot be added in where clause
+successLoginList.add(loginRecord); 
+if(successLoginList.size() == 2){ // list size = 2 then break to avoid extra for loop iterations as we require only size = 1 to check if it the ist login. If size = 2 means its not the 1st login
+break;
+}
+}
+}*/
                     // US - TWC702-14285: Flatten nested IFs (no logic change) - Begin
                     /* for (LoginHistory loginRecord : recordsList) {
 if (loginRecord.Status.toLowerCase() != Core_MDF_CCP_ConstantClass.FEEDBACK_SUCCESS_STATUS.toLowerCase()) {
@@ -189,6 +280,7 @@ break;
                         }
                         index++;
                     }
+                    
                     // US - TWC702-14285: Flatten nested IFs (no logic change) -End
                     if(!successLoginList.isEmpty() && successLoginList != null && successLoginList.size() == 1){ // to check if success record's count = 1 this means the user is loging in for the first time in particular month or quarter
                         isPopupEnabled = true;
@@ -216,7 +308,8 @@ break;
         public List<SurveyDetailsWrapper> getSurveyQuestions(){
             List<SurveyDetailsWrapper> questionList = new List<SurveyDetailsWrapper>();
             String userLang = UserInfo.getLanguage();
-            Date todayDate = system.today();
+            // Highlight: Unused Local Variable - 14285
+            // Date todayDate = system.today();
             String Ext_UserType = Core_MDF_CCP_ConstantClass.Ext_UserType;
             
             String usrType = (UserInfo.getUserType() == Ext_UserType)? 'External' :  'Internal';
@@ -261,7 +354,7 @@ break;
                     WHERE Core_MDF_Active_Ind__c = TRUE
                     AND Core_MDF_User__c = :UserInfo.getUserId()];
         }
-
+        
         //Method to fetch and return External PGM Records for logged in User's Account Id
         public List<Core_MDF_Partner_Group_Mapping__c> fetchPGMRecords(Id AccountId){
             String extAccessType = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PGM_Ext_AccessType');
@@ -273,47 +366,47 @@ break;
         }
         
     }
-    //Method called to fetch user's account and program details 
-     public static List<SurveyResponseWrapper> getUserAccountAndProgram(){
-         List<SurveyResponseWrapper> surveyResponseWrapperList = new List<SurveyResponseWrapper>();
-        	Set<String> programSet = new Set<String>(); 
-            Id ultimateAccountId;
-            List<Core_MDF_Partner_Node_User_Mapping__c> pnumList = new List<Core_MDF_Partner_Node_User_Mapping__c>(); 
-            List<Core_MDF_Partner_Group_Mapping__c> pgmList = new List<Core_MDF_Partner_Group_Mapping__c>(); 
-            Id userId = UserInfo.getUserId();
-            SurveyResponseWrapper responseWrapper = new SurveyResponseWrapper();
-            User userRecord = [SELECT Id, Contact.AccountId FROM User WHERE Id = :userId]; //query to get loggedin user's Account
-         	responseWrapper.userAccountId = userRecord.Contact.AccountId;
-         	surveyResponseWrapperList.add(responseWrapper);
-            
-            if(userId != null){
-                fetchSurveyQuestions pnumRecord = new fetchSurveyQuestions();
-                pnumList = pnumRecord.fetchPNUMRecords(); //calling fetchPNUMRecords method to get the logged in user's PNUM
+    
+    public static List<SurveyResponseWrapper> getUserAccountAndProgram(){
+        List<SurveyResponseWrapper> surveyResponseWrapperList = new List<SurveyResponseWrapper>();
+        Set<String> programSet = new Set<String>(); 
+        Id ultimateAccountId;
+        List<Core_MDF_Partner_Node_User_Mapping__c> pnumList = new List<Core_MDF_Partner_Node_User_Mapping__c>(); 
+        List<Core_MDF_Partner_Group_Mapping__c> pgmList = new List<Core_MDF_Partner_Group_Mapping__c>(); 
+        Id userId = UserInfo.getUserId();
+        SurveyResponseWrapper responseWrapper = new SurveyResponseWrapper();
+        User userRecord = [SELECT Id, Contact.AccountId FROM User WHERE Id = :userId]; //query to get loggedin user's Account
+        responseWrapper.userAccountId = userRecord.Contact.AccountId;
+        surveyResponseWrapperList.add(responseWrapper);
+        
+        if(userId != null){
+            fetchSurveyQuestions pnumRecord = new fetchSurveyQuestions();
+            pnumList = pnumRecord.fetchPNUMRecords(); //calling fetchPNUMRecords method to get the logged in user's PNUM
+        }
+        //Avoid using debug statements
+        if(pnumList != null && !pnumList.isEmpty()){
+            for(Core_MDF_Partner_Node_User_Mapping__c pnumRec : pnumList){
+                programSet.add(pnumRec.Core_MDF_Account__r.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c); //adding programs fetched from PNUM query in programset
+                responseWrapper.programSet = programSet;
+                responseWrapper.ultimateAccountId = pnumRec.Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c; //adding Account Id's fetched from PNUM query in ultimateAccountSet
+                surveyResponseWrapperList.add(responseWrapper);
             }
-            
-            if(pnumList != null && !pnumList.isEmpty()){
-                for(Core_MDF_Partner_Node_User_Mapping__c pnumRec : pnumList){
-                    programSet.add(pnumRec.Core_MDF_Account__r.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c); //adding programs fetched from PNUM query in programset
-                    responseWrapper.programSet = programSet;
-                    responseWrapper.ultimateAccountId = pnumRec.Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c; //adding Account Id's fetched from PNUM query in ultimateAccountSet
-                    surveyResponseWrapperList.add(responseWrapper);
-                }
-            }
-            else{ //if PNUM records does not exist fetch account from user's contact's Account and program from external PGMs for the particular user's account 
-                if(userRecord.Contact.AccountId != null){
-                    fetchSurveyQuestions pgmRecord = new fetchSurveyQuestions();
-                    pgmList = pgmRecord.fetchPGMRecords(userRecord.Contact.AccountId);
-                    if(pgmList != null && !pgmList.isEmpty()){
-                        for(Core_MDF_Partner_Group_Mapping__c pgmRec : pgmList){
-                            programSet.add(pgmRec.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c); //adding programs fetched from PGM query in programset 
-                            responseWrapper.programSet = programSet;
-                            responseWrapper.ultimateAccountId = pgmRec.Core_MDF_CoMarketingActiveAccount_Id__c; //adding Account Id's fetched from PGM querry
-                            surveyResponseWrapperList.add(responseWrapper);
-                        }
+        }
+        else{ //if PNUM records does not exist fetch account from user's contact's Account and program from external PGMs for the particular user's account 
+            if(userRecord.Contact.AccountId != null){
+                fetchSurveyQuestions pgmRecord = new fetchSurveyQuestions();
+                pgmList = pgmRecord.fetchPGMRecords(userRecord.Contact.AccountId);
+                if(pgmList != null && !pgmList.isEmpty()){
+                    for(Core_MDF_Partner_Group_Mapping__c pgmRec : pgmList){
+                        programSet.add(pgmRec.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c); //adding programs fetched from PGM query in programset 
+                        responseWrapper.programSet = programSet;
+                        responseWrapper.ultimateAccountId = pgmRec.Core_MDF_CoMarketingActiveAccount_Id__c; //adding Account Id's fetched from PGM querry
+                        surveyResponseWrapperList.add(responseWrapper);
                     }
                 }
             }
-         return surveyResponseWrapperList;
+        }
+        return surveyResponseWrapperList;
     } 
     
     public class SurveyDetailsWrapper{
@@ -339,4 +432,61 @@ break;
         public Id ultimateAccountId;
         public Id userAccountId;
     }
+    
+    
+    /***************************************************************************************************** 
+Method Name   :        createLogInstance
+@return       :        logEntryObj
+@parameters   :        logWrapper
+Description   :        creates and returns the log entry object record based on the inputs
+******************************************************************************************************/
+    
+    public static Core_Log_Entry__c createLogInstance(LogEntryDetailsWrapper logWrapper){
+        Core_Log_Entry__c logEntryObj = new Core_Log_Entry__c();
+        /*if(!logWrapper.successIds.isEmpty()){
+logEntryObj.Core_Severity__c = 'Info';
+String logDetails = JSON.serialize(logWrapper.successIds);
+logEntryObj.Core_Details__c = logDetails.length()> 32765? logDetails.subString(0,32765) : logDetails;  
+}
+if(!logWrapper.failedPGMList.isEmpty()){
+logEntryObj.Core_Severity__c = 'Critical';
+String logDetails = JSON.serialize(logWrapper.failedPGMList);
+logEntryObj.Core_Details__c = logDetails.length()> 32765? logDetails.subString(0,32765) : logDetails;
+}
+if(!logWrapper.failedGroupMemberList.isEmpty()){
+logEntryObj.Core_Severity__c = 'Critical';
+String logDetails = JSON.serialize(logWrapper.failedGroupMemberList);
+logEntryObj.Core_Details__c = logDetails.length()> 32765? logDetails.subString(0,32765) : logDetails;
+}*/
+        
+        logEntryObj.Core_Severity__c = 'Critical';
+        //logEntryObj.Core_Project__c = Label.Core_MDF_Program_Name;
+        logEntryObj.Core_When__c = System.now();
+        logEntryObj.Core_Origin__c = logWrapper.origin;
+        logEntryObj.Core_Scope__c = 'Feedback Exception'; // Need to Ask the Scope of Log entry      
+        logEntryObj.Core_Message__c = logWrapper.errorMsg;
+        return logEntryObj;
+    }
+    
+    public static List<Core_MDF_Bulk_Transaction__e> createBulkTransactionPlatEventInstance(List<Core_Log_Entry__c> logEntryList){
+        List<Core_MDF_Bulk_Transaction__e> bulkTransactionList = new List<Core_MDF_Bulk_Transaction__e>();
+        for(Core_Log_Entry__c log : logEntryList){
+            Core_MDF_Bulk_Transaction__e bulkTransactionEvent = new Core_MDF_Bulk_Transaction__e();
+            bulkTransactionEvent.Core_MDF_JSON_Data__c = JSON.serialize(log);
+            bulkTransactionEvent.Core_MDF_Object_Name__c = 'Core_Log_Entry__c';
+            bulkTransactionList.add(bulkTransactionEvent);
+        }
+        return bulkTransactionList;
+    }
+    
+    //Wrapper to store Log Entry Details
+    public class LogEntryDetailsWrapper{
+        public String origin;
+        //public Set<Id> successIds = new Set<Id>();
+        //public List<Core_MDF_Partner_Group_Mapping__c> failedPGMList = new List<Core_MDF_Partner_Group_Mapping__c>();
+        //public List<Groupmember> failedGroupMemberList = new List<Groupmember>();
+        public String errorMsg;
+    }
+    
+    
 }

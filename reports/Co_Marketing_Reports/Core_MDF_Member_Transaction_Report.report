@@ -28,9 +28,6 @@
         <field>PartnerFundRequest$Core_MDF_Sub_Region_nm__c</field>
     </columns>
     <columns>
-        <field>PartnerFundRequest$Core_MDF_Activity_Types__c</field>
-    </columns>
-    <columns>
         <field>PartnerFundRequest$Core_MDF_Activity_SubType_nm__c</field>
     </columns>
     <columns>
@@ -292,6 +289,9 @@
     <columns>
         <field>PartnerFundRequest.PartnerFundClaims$Core_MDF_Processing_Preference_nm__c</field>
     </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_BU_Percent_txt__c</field>
+    </columns>
     <description>A report that provides information on activities, claims, cases and payments in one view.</description>
     <filter>
         <booleanFilter>1 AND 2 AND 3 AND 4 AND ((5 AND 8) OR (12 AND 13)) AND 6 AND 7 AND 9 AND 10 AND 11</booleanFilter>
@@ -328,14 +328,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Client CoMarketing Fund,Client CoMarketing Fund Boost,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Ecosystem Extension Fund,Data Center CoMarketing Fund</value>
+            <value>,Client CoMarketing Fund,Client,Client CoMarketing Fund Boost,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Ecosystem Extension Fund,Data Center CoMarketing Fund</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Budget_Type_nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Client Market Accelerate,Client Specialties MDF,Data Center Market Accelerate,Data Centric Acceleration - MDF,Intel Rise Technology Initiative,MDF,MDF+,OEM CMP,Retail MDF,RSA MD,Service Provider CMP,SOEM Client MDF,SOEM Data Center MDF,Account Plan,Proposal I MDF,Proposal II MDF,Business Client Acceleration - MDF,Cloud,CCF 1.0,DCF 1.0,Co-Engineering</value>
+            <value>,Client Market Accelerate,Client Specialties MDF,Data Center Market Accelerate,Data Centric Acceleration - MDF,Intel Rise Technology Initiative,MDF,MDF+,OEM CMP,Retail MDF,RSA MD,Service Provider CMP,SOEM Client MDF,SOEM Data Center MDF,Account Plan,Proposal I MDF,Proposal II MDF,Business Client Acceleration - MDF,Cloud,CCF 1.0,Co-Engineering</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Ultimate_Account_Name__c</column>
@@ -409,8 +409,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>PartnerFundRequest.PartnerFundClaims$Name</sortColumn>
-    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>PartnerFundRequest$CreatedDate</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

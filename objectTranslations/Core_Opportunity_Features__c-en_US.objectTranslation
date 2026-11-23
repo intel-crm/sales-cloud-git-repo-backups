@@ -9,10 +9,6 @@
         <value>Descriptive Features</value>
     </caseValues>
     <fields>
-        <label><!-- Consumer Sales System --></label>
-        <name>Core_Consumer_Sales_system__c</name>
-    </fields>
-    <fields>
         <label><!-- Feature Name --></label>
         <name>Core_Feature_Name__c</name>
     </fields>

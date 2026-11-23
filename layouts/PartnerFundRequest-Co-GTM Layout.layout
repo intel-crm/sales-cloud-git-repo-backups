@@ -2,6 +2,7 @@
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <excludeButtons>ChangeRecordType</excludeButtons>
     <excludeButtons>Clone</excludeButtons>
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <layoutSections>
         <customLabel>true</customLabel>
         <detailHeading>false</detailHeading>
@@ -9,20 +10,8 @@
         <label>Fields</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>Title</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Activity_Description__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>Core_MDF_Start_Date__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>Core_MDF_End_Date__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -34,15 +23,23 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Core_MDF_Start_Date__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_End_Date__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Core_MDF_Activity_Engineering_Nm__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_MDF_Budget_Currency_cd__c</field>
+                <field>Core_MDF_Other_Engineering_Activity_txt__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_MDF_Other_Engineering_Activity_txt__c</field>
+                <field>Core_MDF_Budget_Currency_cd__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -54,6 +51,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
+                <field>Core_MDF_Reimbursement_Rate__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
                 <field>Core_MDF_Activity_Reimbursement_Amt_nbr__c</field>
             </layoutItems>
             <layoutItems>
@@ -62,11 +63,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>TotalApprovedFcs</field>
+                <field>TotalReimbursedFcs</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>TotalReimbursedFcs</field>
+                <field>TotalApprovedFcs</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -78,15 +79,71 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_MDF_Owner_nm__c</field>
+                <field>CreatedById</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>OwnerId</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_MDF_CreatedBy__c</field>
+                <field>LastModifiedById</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Activity_Spending_Limit_Local_Old__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Activity_Spending_Limit_Local_New__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Reimbursement_Rate_New__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Reimbursement_Rate_Old__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Intel_Contribution_New__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Outcomes_nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Parent_Activity_Id__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Is_Node_Activity__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Node_Acc_Map_Modified_ind__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Open_Rate_txt__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_MDF_Last_Modified_By_nm__c</field>
+                <field>Core_MDF_OEM_CMP_Approval_required__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Ecosystem_Modified_Ind__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Measurement_Approach_nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Other_Measurement_Approach_txt__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>
@@ -104,16 +161,6 @@
     </layoutSections>
     <platformActionList>
         <actionListContext>Record</actionListContext>
-        <platformActionListItems>
-            <actionName>PartnerFundRequest.Close_Activity</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>8</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>PartnerFundRequest.Core_MDF_Reopen_for_Claiming</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>9</sortOrder>
-        </platformActionListItems>
         <platformActionListItems>
             <actionName>Edit</actionName>
             <actionType>StandardButton</actionType>
@@ -153,6 +200,16 @@
             <actionName>FeedItem.PollPost</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>7</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>PartnerFundRequest.Close_Activity</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>8</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>PartnerFundRequest.Core_MDF_Reopen_for_Claiming</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>9</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <quickActionList>
@@ -202,6 +259,38 @@
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedFileList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_MDF_Activity_Attributes__c.Core_MDF_Co_Marketing_Activity__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>Name</fields>
+        <fields>ChannelPartner</fields>
+        <fields>Campaign</fields>
+        <fields>CreatedBy</fields>
+        <fields>Description</fields>
+        <fields>Amount</fields>
+        <fields>DesiredOutcome</fields>
+        <fields>RequestedAmount</fields>
+        <fields>Status</fields>
+        <relatedList>PartnerFundRequest.Core_MDF_Parent_Activity_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_MDF_Outcome_Account_Mapping__c.Core_MDF_OutcomeBased_SubAct_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_MDF_Documents__c.Core_MDF_Activity_id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_MDF_Ecosystem_Partner_Allocation__c.Core_MDF_Activity_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_MDF_AI_Recommendation_Tracking__c.Core_MDF_Activity__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>

@@ -40,7 +40,7 @@ public class Core_MDF_Audit_Rules_Processing_Test {
         claimFunctionalityNameTriggerExecution3.Core_Description__c = 'test';
         Database.insert(claimFunctionalityNameTriggerExecution3);
         
-        ChannelProgram ccfCP = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', true);
+        ChannelProgram ccfCP = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
 
         Account arpIntelAcc = Core_MDF_CCP_TestDataUtility.createAccount ('ARP Test Account', NULL, Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);   
         arpIntelAcc.BillingCity = 'ARP City';         
@@ -65,7 +65,7 @@ public class Core_MDF_Audit_Rules_Processing_Test {
         Database.insert(arpEMEAFrance);
             
         PartnerMarketingBudget  arpPmbRecord = Core_MDF_CCP_TestDataUtility.createBudget('ARP PMB',Core_MDF_CCP_TestDataUtility.budget_Record_Type,arpCCFVC.Id,ccfCP.Id,100000,System.today().addDays(-10),System.today().addDays(10),false);
-		arpPmbRecord.Core_MDF_Budget_Type_Txt__c ='OEM CMP';
+		arpPmbRecord.Core_MDF_Budget_Type_Txt__c ='MDF';
         //arpPmbRecord.Core_MDF_Budget_Status__c = 'Released';
         Database.insert(arpPmbRecord);
         
@@ -74,7 +74,7 @@ public class Core_MDF_Audit_Rules_Processing_Test {
         PartnerFundAllocation pfaARPCCFFrance = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('pfaARPCCFFrance',arpPmbRecord, arpEMEAFrance, 1000, true);
 
         Core_MDF_Bank__c arpBank = Core_MDF_CCP_TestDataUtility.createBank(arpIntelAcc.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1231231230');
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
        // Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(arpEMEAFrance.Id,arpBank.Id,true);
 
         Campaign arpCamp = Core_MDF_CCP_TestDataUtility.createCampaign('ARP Campaign','Gaming','Intel® Core™ i7+ Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today().addDays(-5), System.today().addDays(+5), 10000, 'Consumer Chromebook', arpCCFVC.Id, '2-in-1', false);
@@ -141,6 +141,7 @@ public class Core_MDF_Audit_Rules_Processing_Test {
         auditDoc.Core_MDF_Claim__c = franceClaim.id;
         auditDoc.Core_MDF_App_Document_Types_nm__c = 'Proof of Cost;Proof of Execution;Proof of Attribution';
         auditDoc.Core_MDF_Document_Types__c='Proof of Cost';
+        auditDoc.Core_MDF_Document_Title__c='doc title';
         Database.insert(auditDoc);
         
         Core_MDF_Audit_Rules_Engine__c rule4 = new Core_MDF_Audit_Rules_Engine__c();
@@ -181,7 +182,7 @@ public class Core_MDF_Audit_Rules_Processing_Test {
         
         Core_MDF_Audit_Rules_Engine__c rule1 = new Core_MDF_Audit_Rules_Engine__c();
         rule1.Core_MDF_Program_Nm__c= 'Client CoMarketing Fund';
-        rule1.Core_MDF_Budget_Type_Nm__c= 'OEM CMP';
+        rule1.Core_MDF_Budget_Type_Multi_Nm__c= 'OEM CMP';
         rule1.Core_MDF_Object_Nm__c= 'Core_MDF_Claim_Prediction__c';
         //rule1.Core_MDF_Field_Nm__c= 'Core_MDF_Prediction_Score_PB__c';
         rule1.Core_MDF_Field_Nm__c= 'Core_MDF_New_Prediction_Score_nbr__c';
@@ -237,15 +238,16 @@ public class Core_MDF_Audit_Rules_Processing_Test {
             Map<id,boolean> popMapFalse = new Map<id,boolean>();
             popMapFalse.put(franceClaim.id,false);
             claimIDList.add(franceClaim.id);
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
           /*  Map<id,boolean> popMap = */ Core_MDF_Audit_Rules_Processing.checkPOPDocuments(claimIDList);
             List<string> result = new List<string>();
             result.add('true');
             result.add('Immediate Rules'); 
             result.add('Rule001');
             result.add('POP');
-            //Core_MDF_Audit_Rules_Processing.updateClaimValues(franceClaim,result, popMap);
-            //Core_MDF_Audit_Rules_Processing.updateClaimValues(franceClaim,result, popMapFalse);
+           // Core_MDF_Audit_Rules_Processing.updateClaimValues(franceClaim,result, popMap);
+           // Core_MDF_Audit_Rules_Processing.updateClaimValues(franceClaim,result, popMapFalse);
+           
             test.stopTest();
              Assert.areNotEqual(result,null);
         }
@@ -258,7 +260,7 @@ public class Core_MDF_Audit_Rules_Processing_Test {
             Core_MDF_Audit_Rules_Processing.queryClaimFields(null,null);
             Core_MDF_Audit_Rules_Processing.matchTheClaimsAgainstRules(null,null);
             Core_MDF_Audit_Rules_Processing.executeRandomLogic(null,null);
-           // Core_MDF_Audit_Rules_Processing.updateClaimValues(null,null,null);
+            Core_MDF_Audit_Rules_Processing.updateClaimValues(null,null,null,null);
             Core_MDF_Audit_Rules_Processing.checkPOPDocuments(null);
         }
         Assert.areNotEqual(systemAdmin,null);

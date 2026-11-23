@@ -15,7 +15,7 @@ public class Core_MDF_Audit_Document_Trigger_Test {
         
         System.runAs(usr){
             //adding bypass feature to bypass access validation
-      List<String> bypassFunctionKeys = new List<String>();
+			List<String> bypassFunctionKeys = new List<String>();
             bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
             bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
             
@@ -27,7 +27,7 @@ public class Core_MDF_Audit_Document_Trigger_Test {
             List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
             Core_MDF_CCP_TestDataUtility.createMDFConfigurationData();
             
-            ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', true);
+            ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
             
             //Creating IntelAccount with utility class
             Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, 
@@ -52,7 +52,9 @@ public class Core_MDF_Audit_Document_Trigger_Test {
             Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('TestCamp','Consumer','Intel® Corporate Logo', 
                                                                         'Yes',Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF,
                                                                         'Client CoMarketing Fund',System.today().addDays(-15), 
-                                                                        System.today().addDays(15), 2000, 'Unite',acc.Id,'2-in-1', true);
+                                                                        System.today().addDays(15), 2000, 'Unite',acc.Id,'2-in-1', false);
+            camp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
+            insert camp;
             
             //Creating Budget using utility class
             PartnerMarketingBudget pmb = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget',Core_MDF_CCP_TestDataUtility.budget_Record_Type,
@@ -68,7 +70,7 @@ public class Core_MDF_Audit_Document_Trigger_Test {
             PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                            string.valueof(acc.id),pfa,pmb,'INDIA','Creator',
-                                                                                           'Desktop','Intel® Core™ i7 Processor','Broadcast (Pre-2025)',
+                                                                                           'Desktop','Intel® Core™ i7 Processor','Audio',
                                                                                            'Radio','Draft',false);
             pfr.RequestedAmount = 900000;
             pfr.Amount = 900000;
@@ -89,20 +91,14 @@ public class Core_MDF_Audit_Document_Trigger_Test {
             Database.insert(bank);  
             
             //creating ABM for bank
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
            // Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc.Id,bank.Id,true);
-            PartnerFundRequest indiaActivity = [SELECT Id,Core_MDF_Start_Date__c,Core_MDF_End_Date__c,RecordTypeId,BudgetId,Status,Core_MDF_Fund_Request_Status__c,Core_MDF_Budget_Type_nm__c,Core_MDF_Program__c FROM PartnerFundRequest  LIMIT 1];
-            PartnerFundClaim pfc = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF, 
-                                                                                   indiaActivity.Id, 
-                                                                                   indiaActivity.Core_MDF_Start_Date__c, indiaActivity.Core_MDF_Start_Date__c, 
-                                                                                   100, 
-                                                                                   System.today(), bank.ID, false);
-            pfc.Core_MDF_Currency__c = 'USD';
             
-            insert pfc;
+            
             
             // Creating claims
-           /* List<PartnerFundClaim> pfcList = new List<PartnerFundClaim>();
+            // Highlight: Unused Local Variable - Indira
+           // List<PartnerFundClaim> pfcList = new List<PartnerFundClaim>();
             PartnerFundClaim pfc  = new PartnerFundClaim();
             pfc.Title = 'Test Claim';
             pfc.RequestId = pfr.Id;
@@ -122,7 +118,7 @@ public class Core_MDF_Audit_Document_Trigger_Test {
             pfc.Core_MDF_Bank__c = bank.Id;
             pfc.Core_MDF_Country_Location_nm__c ='INDIA';
             pfc.Core_MDF_RMF_Last_POP_Submission_Dt__c = null;
-            insert pfc;*/
+            insert pfc;
             List<ContentVersion> conVersionLst = new List<ContentVersion>();
             ContentVersion conVersion = new ContentVersion();
             conVersion.ContentLocation = 'S';
@@ -163,21 +159,15 @@ public class Core_MDF_Audit_Document_Trigger_Test {
             auditDoc1.Core_MDF_Document_Types__c='Proof of Cost;Proof of Execution;Proof of Attribution';
             auditDoc1.Core_MDF_App_Document_Types_nm__c= 'Proof of Cost;Proof of Execution;Proof of Attribution';
             insert auditDoc1;
-            for(PartnerFundClaimShare pfsc : [SELECT Id,RowCause, AccessLevel, UserOrGroup.name,UserOrGroupId FROM PartnerFundClaimShare  where ParentId=:pfc.id]){
-                    System.debug('Share Claim-->'+pfsc);
-                    System.debug('Share Claim Name-->'+pfsc.UserOrGroup.name);
-            }
         }
     }
     @isTest static void testDuplicate(){
         user usr = [select id from user where name ='Test User Test' limit 1];
-        //ContentVersion contentVersions1 = [SELECT Id, ContentDocumentId FROM ContentVersion limit 1];
-        //System.debug('contentVersions1-->'+contentVersions1);
+	
         System.runAs(usr){
-            PartnerFundClaim pfc = [SELECT Id from PartnerFundClaim limit 1];
             ContentVersion contentVersions = [SELECT Id, ContentDocumentId FROM ContentVersion limit 1];
             ContentDocument conDoc= [SELECT Id,OwnerId FROM ContentDocument WHERE Id =:contentVersions.ContentDocumentId limit 1];
-            
+            PartnerFundClaim pfc = [SELECT Id from PartnerFundClaim where Title = 'Test Claim' limit 1];
             List<Core_MDF_Audit_Document__c> auditDocList = new List<Core_MDF_Audit_Document__c>();
             Core_MDF_Audit_Document__c auditDoc = new Core_MDF_Audit_Document__c(); 
             auditDoc.Core_MDF_Document_Id__c = conDoc.Id;
@@ -197,13 +187,13 @@ public class Core_MDF_Audit_Document_Trigger_Test {
             auditDocList.add(auditDoc1);
             Core_MDF_Audit_Document_Sharing.shareAuditDocToInternalUsers(auditDocList);
             try{
-            insert auditDocList;            
+            insert auditDocList;
             }
             catch(exception e){
                 
             }
             system.assertEquals(auditDoc.Core_MDF_Claim__c,pfc.Id);
-            // Highlight: Unused Local Variable
+            // Highlight: Unused Local Variable - Indira
            //  Account acc = [select id, Core_MDF_External_Group_Id__c from Account where Name = 'Co-marketing Test Account'];
         }
     }
@@ -211,11 +201,11 @@ public class Core_MDF_Audit_Document_Trigger_Test {
     @isTest
     static void testExceptionofAuditDoc(){
             Core_MDF_Audit_Document_Sharing.shareAuditDocToclaim(null);
-            // Unit Test Method should include System.Assert
+            // Unit Test Method should include System.Assert - Indira
             System.assert(true, 'shareAuditDocToclaim method executed with null parameter');
             
             Core_MDF_Audit_Document_Sharing.shareAuditDocToInternalUsers(null);
-            // Unit Test Method should include System.Assert
+            // Unit Test Method should include System.Assert - Indira
             System.assert(true, 'shareAuditDocToInternalUsers method executed with null parameter');
     }
 }

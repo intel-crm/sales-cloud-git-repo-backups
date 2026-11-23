@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Mass Owner Update is a Custom component where we can do ownership update for bulk records.</description>
+    <label>Mass Owner Update</label>
+    <lwcComponent>core_MDF_CCP_Mass_Owner_Update</lwcComponent>
+    <motif>Custom21: Computer</motif>
+</CustomTab>

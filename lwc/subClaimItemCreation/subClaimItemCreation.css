@@ -1,0 +1,12 @@
+.table-wrapper {
+    overflow-x: auto;
+    width: 100%; /* Ensures table fits within parent container */
+}
+table {
+    width: 100%;  /* Ensure it takes up the available width */
+    max-width: 100%;  /* Prevents table from exceeding container */
+}
+
+.input-wrapper {
+    min-height: 2rem;
+}

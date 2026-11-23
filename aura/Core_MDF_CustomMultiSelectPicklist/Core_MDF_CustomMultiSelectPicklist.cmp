@@ -24,7 +24,6 @@
   <aura:handler name="change" value="{!v.availableOptions}" action="{!c.getAvailableOptions}"/> 
   
   
-
  <lightning:dualListbox aura:id="multiselect" name="multiselect" label="{!v.dispLabel}" disabled="{!v.disabled}" 
                                  fieldLevelHelp= "{!v.helpText}" required="{!v.isRequired}" 
                                  sourceLabel="{!$Label.c.Core_MDF_Avbl_Country}" size="{!v.dynamicSize}" 

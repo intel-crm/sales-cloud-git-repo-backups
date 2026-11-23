@@ -7,22 +7,14 @@
 * Developer                   Date                        Description
 * ----------------------------------------------------------------------------                 
 * Sugandha                    12/11/2017                  Created(UserStory US72550 Iteration 4)
-* Sumukh                      15/09/2020                  Added logic for US772726
-* Sumukh                      03/12/2020                  Added logic for US848571 
 ******************************************************/-->
 <apex:page standardController="Case" sidebar="false" extensions="Core_IPS_AgentCaseClosureController" >
   <style type="text/css">
       .inputStyle{
-            width: 250px;
+          width: 250px;
       }
       .Core_IPS_Knowledge_Base_Link__c {
            width: 400px;
-      }
-      .blue{
-      	color: blue !important;
-      } 
-      .black {
-      
       }
   </style>
   
@@ -34,111 +26,25 @@
            
         <hr class="lightWeightDivider"/>            
         <apex:commandButton value="Return" action="{!CancelOperation}" immediate="true" rendered="{!showReturnBtn}"/>  
-        </apex:outputPanel>
-        
-        <apex:actionstatus id="status1">
-            <apex:facet name="start">
-                <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb;
-                                                                     height: 100%;opacity:0.65;width:100%;">
-                    <div class="waitingHolder" style="top: 74.2px; width: 91px;">
-                        <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
-                        <span class="waitingDescription">Please Wait...</span>
-                    </div>
-                </div>
-            </apex:facet>
-        </apex:actionstatus>                               
-        
+        </apex:outputPanel>               
+
         <apex:pageBlock rendered="{!!showError}">
             <apex:pageMessages id="showmsg"></apex:pageMessages>
             <apex:pageBlockSection title="Reason for Case Closure" columns="1" id="pb">
-			
-                	<apex:pageBlockSectionItem helpText="{!$ObjectType.Case.Fields.Status.InlineHelpText}">
-                		<apex:outputLabel styleClass="blue" value="{!$ObjectType.Case.Fields.Status.Label}" />
-                		<apex:outputField value="{!Case.Status}"/>
-            		</apex:pageBlockSectionItem>
-                	<apex:pageBlockSectionItem helpText="{!$ObjectType.Case.Fields.Core_Sub_Status__c.InlineHelpText}">
-                        <apex:outputLabel styleClass="blue" value="{!$ObjectType.Case.Fields.Core_Sub_Status__c.Label}" />
-                		<apex:outputField value="{!Case.Core_Sub_Status__c}"/>
-                    </apex:pageBlockSectionItem>
-                    <apex:pageBlockSectionItem id="pbitem" helpText="{!$ObjectType.Case.Fields.Core_Closure_Comment__c.InlineHelpText}">
-                        <apex:outputLabel styleClass="blue" value="Comment To Customer" />
-                        
+                    <apex:outputField value="{!Case.Status}"/>
+                    <apex:outputField value="{!Case.Core_Sub_Status__c}"/>
+                    <apex:pageBlockSectionItem id="pbitem">
+                        <apex:outputLabel value="Comment To Customer" />
                         <apex:outputPanel id="Panel">
                                 <div class="requiredInput">
                                 <div class="requiredBlock"></div>
-                                    <apex:inputTextArea richText="true" Label="Comment To Customer" value="{!ClosureComments}" rows="10" styleclass="inputStyle"/>
+                                    <apex:inputTextArea Label="Comment To Customer" value="{!ClosureComments}" rows="4" styleclass="inputStyle"/>
                                 </div>
                         </apex:outputPanel>
                     </apex:pageBlockSectionItem>
-                   
-                    <!-- added by sumukh for US848571 -->
-                    <apex:pageBlockSectionItem id="pgblkitem" >
-                       <apex:pageBlock >
-                         <apex:pageBlockSection id="pb2" > 
-                          <apex:pageBlockSectionItem id="pgblkitem1">
-                            <apex:outputLabel value="{!$ObjectType.case.fields.Core_Case_Closure__c.Label}"/>
-                            <apex:outputPanel > 
-                                <div Class="requiredInput">
-                                    <div Class="requiredBlock"/>                                
-                                    <apex:inputField value="{!Case.Core_Case_Closure__c}"> 
-                                        <apex:actionSupport event="onchange" rerender="showClosureDetails,showClosureDetails1" action="{!displayClosureDetails}" status="status1"/>                                  
-                                    </apex:inputField>                                                                                                                                              
-                                </div>                                                                                                                               
-                            </apex:outputPanel>                                       
-                          </apex:pageBlockSectionItem> 
-                          
-                          <apex:pageBlockSectionItem id="pgblkitem2" >                                 
-                             <apex:outputLabel value="{!$ObjectType.case.fields.Core_IPS_CaseSource_of_Resolution__c.Label}" id="label1" >
-                               <span class="helpButton" id="label1-_help">                                      
-                                      <img src="/s.gif" alt="" class="helpOrb" title=""/>
-                                      <script type="text/javascript">sfdcPage.setHelp('label1', ' <b>  Level 1-- </b> Front Line Support <br/> <b> Level 2-- </b> Product Support Engineer / Application Design-In Center <br/> <b> Level 3-- </b> Product Application Engineer/Customer Product Engineer </br> <b> Engineering-- </b> Development Engineering </br> <b> FAE-- </b> Field Application Engineer  </br> <b> KDB Portal-- </b> Knowledge Database Portal </br> <b>Universal search/Coveo-- </b>Universal search/Coveo </br> <b> RDC-- </b> Resource Design Center </br> <b> VIP-- </b> Validation Internet Portal </br> <b> IPS-- </b> Intel Premier Support Tool </br> <b> TNT-- </b> Tools & Technology Design Team </br> <b> ARK-- </b> Automated Relational Knowledgebase </br> <b> MARK-- </b> Marketing  Automated Relational Knowledgebase </br> <b> QMDS-- </b> Intel® Quality Document Management System </br> <b> Others-- </b> Github, Design in Tools, Download Center, online search, etc </br> ');</script>
-                               </span> 
-                             </apex:outputLabel>                              
-                             <apex:outputPanel >                                                                                                                                  
-                                 <apex:inputField value="{!Case.Core_IPS_CaseSource_of_Resolution__c}" /> 
-                             </apex:outputPanel>   
-                          </apex:pageBlockSectionItem>                                             
-                         </apex:pageBlockSection>
-                       </apex:pageBlock>
-                     </apex:pageBlockSectionItem>
-                    <!-- end by sumukh for US848571 -->
-                    
-                    <apex:outputpanel id="showClosureDetails">
-                    <apex:pageblocksection rendered="{!if(dispClosureDetails==true,true,false)}">
-                      <apex:pageBlockSectionItem >                
-                        <apex:outputLabel value="CaseClosureDetails"/>
-                        <apex:outputPanel styleClass="requiredInput" layout="block"> 
-                              <apex:outputPanel styleClass="requiredBlock" layout="block"/>                            
-                              <apex:inputField value="{!Case.Core_Case_Resolution_Reason__c}" />                            
-                        </apex:outputPanel>                                           
-                      </apex:pageBlockSectionItem>   
-                    </apex:pageblocksection>
-                    </apex:outputpanel>
-                    
-                    <apex:outputpanel id="showClosureDetails1">
-                     <apex:pageblocksection rendered="{!if(dispClosureDetails==false,true,false)}">
-                      <apex:pageBlockSectionItem >                
-                        <apex:outputLabel value="CaseClosureDetails"/>
-                          <apex:outputPanel >                                                          
-                              <apex:inputField value="{!Case.Core_Case_Resolution_Reason__c}" />                            
-                          </apex:outputPanel>                                           
-                      </apex:pageBlockSectionItem>   
-                     </apex:pageblocksection>
-                    </apex:outputpanel>
-                  <!-- End by sumukh for US772726- 15/09/20 -->
-                                       
-                 
-                    
-                    <apex:repeat value="{!$ObjectType.Case.FieldSets.Core_IPS_Request_Case_Closure_FieldSet}" var="c" >
-                        <apex:pageBlockSectionItem helpText="{!$ObjectType.Case.Fields[c].InlineHelpText}">
-                        	<apex:outputLabel value="{!c.label}" styleClass="{!IF(c.label=='Knowledge Base Link','blue','black')}"/>
-                        	<apex:inputfield value="{!newCase[c]}" styleClass="inputStyle {!c}" required="{!OR(c.required, c.dbrequired)}"/>
-                        </apex:pageBlockSectionItem>
+                    <apex:repeat value="{!$ObjectType.Case.FieldSets.Core_IPS_Request_Case_Closure_FieldSet}" var="c"> 
+                        <apex:inputfield value="{!newCase[c]}" styleclass="inputStyle {!c}" required="{!OR(c.required, c.dbrequired)}"/>
                     </apex:repeat>
-                        
-                        
-                        
-                        
             </apex:pageBlockSection>           
             <apex:pageBlockButtons >
                 <apex:commandButton value="Save" action="{!RequestCaseClosure}" />

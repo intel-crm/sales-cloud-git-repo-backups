@@ -13,13 +13,7 @@
         <field>STAGE_NAME</field>
     </columns>
     <columns>
-        <field>CONTACT</field>
-    </columns>
-    <columns>
         <field>AMOUNT</field>
-    </columns>
-    <columns>
-        <field>OPP_QUANTITY</field>
     </columns>
     <columns>
         <field>PROBABILITY</field>
@@ -29,9 +23,6 @@
     </columns>
     <columns>
         <field>Opportunity.Core_Solution_Area__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Solution_Type__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_OEM__c</field>
@@ -49,13 +40,13 @@
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Approved_Date__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Approval_Status__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Status_Update__c</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -63,7 +54,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Uriah Edmunds,David Nguyen,Hannah Freimark,Angela Baroni,Kimberly Kelly,Matthew Harrison,Cooper Prescott,Melissa Gonzalez</value>
+            <value>Cooper Prescott,Matthew Harrison,Angela Baroni</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -99,8 +90,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2021-12-25</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2019-01-01</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

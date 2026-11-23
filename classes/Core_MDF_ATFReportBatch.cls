@@ -185,7 +185,9 @@ global class Core_MDF_ATFReportBatch implements Database.Batchable<SObject>,Data
                     intelContributionDifference = mapOfMDFReimbursement.get(pfrId);
                 } else {
     				// For other budget types, calculate the difference using intelContributionOld
-                    intelContributionDifference = intelContributionNew - (mapOfICValue.get(pfrId) != null ? mapOfICValue.get(pfrId) : 0); // Added null check to avoid NullPointerException
+    				//intelContributionDifference = intelContributionNew - mapOfICValue.get(pfrId);
+                    //intelContributionDifference = intelContributionNew - (mapOfICValue.containsKey(pfrId) ? mapOfICValue.get(pfrId) : 0);
+                    intelContributionDifference = intelContributionNew - (mapOfICValue.get(pfrId) != null ? mapOfICValue.get(pfrId) : 0);
                 } 
                 
                reportWrap = new Core_MDF_ATFReportWrapper(

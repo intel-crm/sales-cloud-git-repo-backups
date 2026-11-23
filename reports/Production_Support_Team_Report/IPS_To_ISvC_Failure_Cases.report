@@ -21,13 +21,14 @@
     <columns>
         <field>CREATED_DATE</field>
     </columns>
-    <columns>
-        <field>Case.Core_Promote_Status__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_IPS_Backend_ID_URL__c</field>
-    </columns>
     <filter>
+        <criteriaItems>
+            <column>Case.Core_IPS_Backend_System__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>ISVC</value>
+        </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Promote_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -42,17 +43,15 @@
             <operator>notEqual</operator>
             <value>Closed</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Backend_System__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
-    <name>Backend Promotion failure : Cases</name>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case.Core_Promote_Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>IPS To ISvC Failure : Cases</name>
     <params>
         <name>units</name>
         <value>h</value>
@@ -68,6 +67,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_CUSTOM</interval>
+        <interval>INTERVAL_LAST7</interval>
     </timeFrameFilter>
 </Report>

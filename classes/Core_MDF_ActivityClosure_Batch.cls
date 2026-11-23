@@ -24,9 +24,8 @@ global class Core_MDF_ActivityClosure_Batch implements Database.Batchable<sObjec
             'Amount,Core_MDF_Proposal_Based_Ind__c,Core_MDF_Is_Outcome_Based_Ind__c,Core_MDF_Activity_Level_nm__c,'+
             '(select Id,Amount from PartnerFundClaims where Core_MDF_Status__c IN : claimStatus AND Core_MDF_Type_Txt__c = \'Claim\') '+
             'FROM PartnerFundRequest '+
-            'WHERE Core_MDF_ToBeClosedDate__c <: todaysDate ' +
-            'AND Core_MDF_Fund_Request_Status__c != \'Closed\' AND Core_MDF_Fund_Request_Status__c != \'Cancelled\' AND Core_MDF_Fund_Request_Status__c != \'Declined\'';
-		
+            'WHERE Core_MDF_Fund_Request_Status__c != \'Closed\' AND Core_MDF_Fund_Request_Status__c != \'Cancelled\' AND Core_MDF_Fund_Request_Status__c != \'Declined\'';
+        
         return Database.getQueryLocator(query);
     }
     
@@ -121,7 +120,7 @@ global class Core_MDF_ActivityClosure_Batch implements Database.Batchable<sObjec
                 }
                 pfrToBeUpdated.Amount = amountSum;
             } 
-            if(pfr.Core_MDF_Fund_Request_Status__c == PLANNED || pfr.Core_MDF_Fund_Request_Status__c == INPROGRESS){	
+            if(pfr.Core_MDF_Fund_Request_Status__c == PLANNED || pfr.Core_MDF_Fund_Request_Status__c == INPROGRESS){    
                 pfrToBeUpdated.Core_MDF_Activity_Closure_Type__c = AUTO;
             }
             else if (pfr.Core_MDF_Fund_Request_Status__c == INPROGRESS_PENDING_REVIEW || 
@@ -174,7 +173,7 @@ global class Core_MDF_ActivityClosure_Batch implements Database.Batchable<sObjec
                         subActivityToUpdate.Amount = subAmountSum;
                     }
                     // Set closure type based on current status
-                    if(subActivity.Core_MDF_Fund_Request_Status__c == PLANNED || subActivity.Core_MDF_Fund_Request_Status__c == INPROGRESS){	
+                    if(subActivity.Core_MDF_Fund_Request_Status__c == PLANNED || subActivity.Core_MDF_Fund_Request_Status__c == INPROGRESS){    
                         subActivityToUpdate.Core_MDF_Activity_Closure_Type__c = AUTO;
                     }
                     else if (subActivity.Core_MDF_Fund_Request_Status__c == INPROGRESS_PENDING_REVIEW || subActivity.Core_MDF_Fund_Request_Status__c == INPROGRESS_PENDING_APPROVAL || subActivity.Core_MDF_Fund_Request_Status__c == INPROGRESS_REVISION_REQUIRED) {
@@ -192,7 +191,7 @@ global class Core_MDF_ActivityClosure_Batch implements Database.Batchable<sObjec
             parentToUpdate.Id = parentActivity.Id;
             parentToUpdate.Amount = 0;
             // Set closure type for parent
-            if(parentActivity.Core_MDF_Fund_Request_Status__c == PLANNED || parentActivity.Core_MDF_Fund_Request_Status__c == INPROGRESS){	
+            if(parentActivity.Core_MDF_Fund_Request_Status__c == PLANNED || parentActivity.Core_MDF_Fund_Request_Status__c == INPROGRESS){  
                 parentToUpdate.Core_MDF_Activity_Closure_Type__c = AUTO;
             }
             else if (parentActivity.Core_MDF_Fund_Request_Status__c == INPROGRESS_PENDING_REVIEW ||  parentActivity.Core_MDF_Fund_Request_Status__c == INPROGRESS_PENDING_APPROVAL || parentActivity.Core_MDF_Fund_Request_Status__c == INPROGRESS_REVISION_REQUIRED) {

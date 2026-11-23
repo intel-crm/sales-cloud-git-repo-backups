@@ -53,6 +53,8 @@ public with sharing class Core_MDF_KPI_FieldsTest {
             Profile ccpCoreAccessProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1];
             Profile partnerProfile = [SELECT Id FROM Profile WHERE Name='Partner' limit 1];
             PermissionSet aacntMngrPS = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_Retail_Account_Manager' LIMIT 1];
+            // Highlight: Unused Local Variable - 14285 // Suma
+            //PermissionSet extApprPS = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_External_Activity_Approver' LIMIT 1];
             
             Contact con  = Core_MDF_CCP_TestDataUtility.createContact(ipaIntelAcc.Id, true);
             User usrBudgetAdmin = Core_MDF_CCP_TestDataUtility.createUser(false);
@@ -97,6 +99,8 @@ public with sharing class Core_MDF_KPI_FieldsTest {
             bank.Core_MDF_Bank_Status__c = 'Active'; 
             Database.update(bank);
             //creating ABM for bank1
+            // Highlight: Unused Local Variable - 14285 // Suma
+            //Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(masterAcc.Id,bank.Id,true);
             test.stopTest();
         }
         

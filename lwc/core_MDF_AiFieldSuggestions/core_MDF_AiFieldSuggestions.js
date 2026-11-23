@@ -1,4 +1,4 @@
-// aiFieldSuggestions.js
+﻿// aiFieldSuggestions.js
 import { LightningElement, api, track } from 'lwc';
 import analyzeDescriptionWithAI from '@salesforce/apex/Core_MDF_AiFieldSuggestions.analyzeDescriptionWithAI';
 import analyzeFileWithAI from '@salesforce/apex/Core_MDF_AiFieldSuggestions.analyzeFileWithAI';
@@ -331,6 +331,7 @@ export default class Core_MDF_AiFieldSuggestions extends LightningElement {
                 [fieldName]: this.suggestions[fieldName]
             };
         }
+        
     }
     
     handleUserInput(event) {
@@ -341,6 +342,7 @@ export default class Core_MDF_AiFieldSuggestions extends LightningElement {
             ...this.userInputs,
             [fieldName]: value
         };
+        
     }
     
     selectAllFields() {
@@ -447,7 +449,7 @@ export default class Core_MDF_AiFieldSuggestions extends LightningElement {
             return candidate;
         };
 
-        // Pattern 0 (highest priority): "IPA - <name>" or "IPA – <name>" — account names start with "IPA -"
+        // Pattern 0 (highest priority): "IPA - <name>" or "IPA â€“ <name>" â€” account names start with "IPA -"
         const ipaNamePattern = /\b(IPA\s*[\-\u2013]\s*[a-z0-9_&()'.,\s]{2,80})/i;
         const ipaNameMatch = text.match(ipaNamePattern);
         if (ipaNameMatch && ipaNameMatch[1]) {
@@ -852,8 +854,11 @@ export default class Core_MDF_AiFieldSuggestions extends LightningElement {
         const accountHint = this.extractAccountHintFromDescription();
 
         // Process newly enabled account/tactic metrics/spending fields.
-        // Keep any non-empty account hint from AI so Aura can resolve it against org Accounts.
-        // Confidence for account name extraction can be noisy for short inputs like "dell ipa".
+        // Only accept account hints that start with "IPA -" — all valid IPA accounts follow
+        // this naming convention. Patterns 1-4 in extractAccountHintFromDescription() are too
+        // loose for narrative descriptions (e.g. Pattern 3 matches "with European customers and
+        // partners" → "European customers and"). Requiring the "IPA -" prefix ensures only
+        // explicitly named IPA accounts (Pattern 0) are used from description text.
         if (accountHint && /^ipa\s*[-\u2013]/i.test(accountHint)) {
             processed.account = { name: accountHint };
         } else if (this.isFieldValuePresent(aiData.account)) {
@@ -991,7 +996,7 @@ export default class Core_MDF_AiFieldSuggestions extends LightningElement {
                 }
             });
 
-            // ✅ ONLY include values that user explicitly selected - NO auto-population
+            // âœ… ONLY include values that user explicitly selected - NO auto-population
 
             // Keep outcome payload complete so baseline/goal/period are not replaced by defaults.
             const hasSelectedOutcomeMetric = Array.isArray(selectedSuggestions.outcomeMetrics) && selectedSuggestions.outcomeMetrics.length > 0;

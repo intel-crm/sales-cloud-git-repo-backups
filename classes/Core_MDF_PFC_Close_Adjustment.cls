@@ -61,7 +61,12 @@ Modified By:        Date:       Changes:
             
             //check User has access to Close claim
             boolean hasAccess = hasAccess();
-            if(hasAccess){
+            //ATHR - Deeply Nested if 16209
+            if(!hasAccess){
+                eligibilityToClose.hasAccess = false;
+                return eligibilityToClose;
+            }
+            //if(hasAccess){
                 // set user access falg
                 eligibilityToClose.hasAccess = true;
                 
@@ -69,10 +74,15 @@ Modified By:        Date:       Changes:
                 PartnerFundClaim  claim = [Select Core_MDF_Type_Txt__c,Core_MDF_Status__c from PartnerFundClaim where Id = : claimId]; 
                 
                 // Claim Type : Adjustment
-                if(Core_MDF_Claim_Utility.isType(claim, Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Claim_Adjustment_Type'))){
+                if(!Core_MDF_Claim_Utility.isType(claim, Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Claim_Adjustment_Type'))) return eligibilityToClose;
+                //if(Core_MDF_Claim_Utility.isType(claim, Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Claim_Adjustment_Type'))){
                     eligibilityToClose.adjustmentClaimType = true;
                     //PAF
-                    if(claim.Core_MDF_Status__c == PAFStatus){  
+                    if (claim.Core_MDF_Status__c != PAFStatus) {
+                        eligibilityToClose.claimCannotBeClose = true;
+                        return eligibilityToClose;
+                    }
+                    //if(claim.Core_MDF_Status__c == PAFStatus){  
                         
                         eligibilityToClose.isPAF = true;
                         // To get the Claim Offset details 
@@ -86,7 +96,7 @@ Modified By:        Date:       Changes:
                         else{                            
                             eligibilityToClose.restrictClaimWithoutOffset = true;
                         }                        
-                    }
+                    /*}
                     else{
                         eligibilityToClose.claimCannotBeClose = true;
                     }                    
@@ -99,7 +109,7 @@ Modified By:        Date:       Changes:
             }else{ 
                 //user doesnot have access
                 eligibilityToClose.hasAccess = false;
-            }
+            }*/
             return eligibilityToClose;} catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);throw e; } ///throw new AuraHandledException(''+e.getMessage());   
     }  
     
@@ -121,11 +131,11 @@ Modified By:        Date:       Changes:
         
          //  Query all claims  
         Map<Id,PartnerFundClaim> claimMap = new Map<Id,PartnerFundClaim>([SELECT Id,Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c 
-                                      				FROM PartnerFundClaim
-                                                    WHERE  Core_MDF_Status__c =: PAFStatus                                  					
+                                                    FROM PartnerFundClaim
+                                                    WHERE  Core_MDF_Status__c =: PAFStatus                                                      
                                                     AND Id IN (SELECT Core_MDF_Adjustment_Claim_Nbr__c
-                                               						FROM Core_MDF_Claim_Offset__c 
-                                               						WHERE Core_MDF_Adjustment_Claim_Nbr__c IN :claimIdList)]); //WHERE Core_MDF_Status__c='Pending Available Fund'
+                                                                    FROM Core_MDF_Claim_Offset__c 
+                                                                    WHERE Core_MDF_Adjustment_Claim_Nbr__c IN :claimIdList)]); //WHERE Core_MDF_Status__c='Pending Available Fund'
        
         if(!claimMap.isEmpty()){                       
             updateClaimCloseStatus(claimMap.values());

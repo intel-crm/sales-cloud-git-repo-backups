@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Core_MDF_BudgetCapShareForExternalUsers</name>
         <label>BudgetCapShareForExternalUsers</label>
-        <locationX>94</locationX>
-        <locationY>1031</locationY>
+        <locationX>537</locationX>
+        <locationY>1079</locationY>
         <actionName>Core_MDF_BudgetCapShare</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -18,12 +18,13 @@
             </value>
         </inputParameters>
         <nameSegment>Core_MDF_BudgetCapShare</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <name>Core_MDF_Share_Budget_record_to_Geo_group</name>
         <label>Share Budget record to Geo group</label>
-        <locationX>50</locationX>
-        <locationY>431</locationY>
+        <locationX>493</locationX>
+        <locationY>479</locationY>
         <actionName>Core_MDF_PMBServiceHandler</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -37,6 +38,7 @@
             </value>
         </inputParameters>
         <nameSegment>Core_MDF_PMBServiceHandler</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <apiVersion>55.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
@@ -44,8 +46,8 @@
         <description>Added this condition so that EEF Budgets are not shared with external User PGM groups</description>
         <name>Check_for_EEF_Program</name>
         <label>Check for EEF Program</label>
-        <locationX>50</locationX>
-        <locationY>539</locationY>
+        <locationX>493</locationX>
+        <locationY>587</locationY>
         <defaultConnector>
             <targetReference>Core_MDF_CreateBudgetShareRecords</targetReference>
         </defaultConnector>
@@ -69,8 +71,8 @@
     <decisions>
         <name>Core_MDF_Call_budgetCapShare_method</name>
         <label>Call budgetCapShare method</label>
-        <locationX>226</locationX>
-        <locationY>923</locationY>
+        <locationX>669</locationX>
+        <locationY>971</locationY>
         <defaultConnector>
             <targetReference>Core_MDF_Just_execute_when_a_New_Budget_record_of_type_CoMarketing_is_created</targetReference>
         </defaultConnector>
@@ -108,15 +110,15 @@
     <decisions>
         <name>Core_MDF_Just_execute_when_a_Budget_record_of_type_CoMarketing_is_updated</name>
         <label>Just execute when a Budget record of type CoMarketing is updated</label>
-        <locationX>226</locationX>
-        <locationY>1523</locationY>
+        <locationX>669</locationX>
+        <locationY>1571</locationY>
         <defaultConnector>
             <targetReference>If_Budget_Status_is_Updated_from_Approved_to_Released_for_a_Co_Marketing_RT</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_CallingSubFlowIfRecordUpdated</name>
-            <conditionLogic>((1 AND (2 AND 3 AND 4) OR (5 AND (6 OR 7))) OR (8 AND (9 AND 10 AND 11 AND 12) OR (13 AND (14 OR 15 OR 16))) OR (17 AND 18) OR ((19 OR 20) AND 21) OR (22 AND 23 AND 24) OR (35 AND 36) OR (37 AND 38)) AND 25 AND (26 OR 27 OR 28 OR (29 AND 30)) AND (31 OR 32 OR 33 OR 34 OR 39)</conditionLogic>
+            <conditionLogic>((1 AND (2 AND 3 AND 4) OR (5 AND (6 OR 7))) OR (8 AND (9 AND 10 AND 11 AND 12) OR (13 AND (14 OR 15 OR 16))) OR (17 AND 18) OR ((19 OR 20) AND 21) OR (22 AND 23 AND 24) OR (35 AND 36) OR (37 AND 38) OR (40 AND 41)) AND 25 AND (26 OR 27 OR 28 OR (29 AND 30)) AND (31 OR 32 OR 33 OR 34 OR 39 OR 42)</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Core_MDF_Program_Nm__c</leftValueReference>
                 <operator>EqualTo</operator>
@@ -390,6 +392,27 @@
                     <elementReference>$Label.Core_MDF_Co_GTM_RecordType</elementReference>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_MDF_Program_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Label.Core_MDF_Co_Inv_program_name</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Permission.Core_MDF_CCP_Internal_Co_Inv_Budget_Loader</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Label.Core_MDF_Co_Inv_RecordType</elementReference>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>Core_MDF_Update_BudgetStatus_to_Pending_review_and_call_Approval_Process</targetReference>
             </connector>
@@ -399,15 +422,15 @@
     <decisions>
         <name>Core_MDF_Just_execute_when_a_New_Budget_record_of_type_CoMarketing_is_created</name>
         <label>Just execute when a New Budget record of type CoMarketing is created</label>
-        <locationX>226</locationX>
-        <locationY>1223</locationY>
+        <locationX>669</locationX>
+        <locationY>1271</locationY>
         <defaultConnector>
             <targetReference>Core_MDF_Just_execute_when_a_Budget_record_of_type_CoMarketing_is_updated</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_CallingSubFlowIfNewRecordOfCoMarketingCreated</name>
-            <conditionLogic>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7)</conditionLogic>
+            <conditionLogic>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8)</conditionLogic>
             <conditions>
                 <leftValueReference>IsNew</leftValueReference>
                 <operator>EqualTo</operator>
@@ -457,6 +480,13 @@
                     <elementReference>$Label.Core_MDF_Co_GTM_RecordType</elementReference>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Label.Core_MDF_Co_Inv_RecordType</elementReference>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>Core_MDF_Update_Budget_Status_to_Pending_review_and_call_Approval_Process</targetReference>
             </connector>
@@ -466,8 +496,8 @@
     <decisions>
         <name>Core_MDF_VerifyIfBudgetStatusReleased</name>
         <label>VerifyIfBudgetStatusReleased</label>
-        <locationX>226</locationX>
-        <locationY>323</locationY>
+        <locationX>669</locationX>
+        <locationY>371</locationY>
         <defaultConnector>
             <targetReference>Core_MDF_Call_budgetCapShare_method</targetReference>
         </defaultConnector>
@@ -519,12 +549,12 @@
     <decisions>
         <name>If_Budget_Status_is_Updated_from_Approved_to_Released_for_a_Co_Marketing_RT</name>
         <label>If Budget Status is Updated from Approved to Released for a Co-Marketing RT</label>
-        <locationX>226</locationX>
-        <locationY>1823</locationY>
+        <locationX>669</locationX>
+        <locationY>1871</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_CallFlowToUpdateStatus</name>
-            <conditionLogic>1 AND ((2 AND (3 OR 4 OR 5 OR 6 OR 10) AND 7) OR (8 AND 9))</conditionLogic>
+            <conditionLogic>1 AND ((2 AND (3 OR 4 OR 5 OR 6 OR 10 OR 11) AND 7) OR (8 AND 9))</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Core_MDF_Budget_Status__c</leftValueReference>
                 <operator>EqualTo</operator>
@@ -595,6 +625,13 @@
                     <elementReference>$Label.Core_MDF_Co_GTM_RecordType</elementReference>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Label.Core_MDF_Co_Inv_RecordType</elementReference>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>Core_MDF_CreateOrUpdateAllocationRecordWhenBudgetIsReleased</targetReference>
             </connector>
@@ -612,6 +649,12 @@
         <name>IsNew</name>
         <dataType>Boolean</dataType>
         <expression>ISNEW()</expression>
+    </formulas>
+    <formulas>
+        <name>vReduceBudgetAmount_CoInv</name>
+        <dataType>Number</dataType>
+        <expression>IF(AND(NOT(ISNULL({!$Record.Core_MDF_Decrease_Budget_Amount_Amt__c})),{!$Record.Core_MDF_Decrease_Budget_Amount_Amt__c}&gt;0,{!$Record.Amount}&gt;={!$Record.Core_MDF_Decrease_Budget_Amount_Amt__c}), {!$Record.Amount}-{!$Record.Core_MDF_Decrease_Budget_Amount_Amt__c}, {!$Record.Amount})</expression>
+        <scale>2</scale>
     </formulas>
     <interviewLabel>Core_MDF_FL_Budget_Status_Update_Sharing_Create_Update_Allocation {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_MDF_FL_Budget_Status_Update_Sharing_Create_Update_Allocation</label>
@@ -635,8 +678,8 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <start>
-        <locationX>100</locationX>
-        <locationY>0</locationY>
+        <locationX>543</locationX>
+        <locationY>48</locationY>
         <connector>
             <targetReference>Core_MDF_VerifyIfBudgetStatusReleased</targetReference>
         </connector>
@@ -644,12 +687,12 @@
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <subflows>
         <name>Core_MDF_CreateBudgetShareRecords</name>
         <label>CreateBudgetShareRecords</label>
-        <locationX>138</locationX>
-        <locationY>647</locationY>
+        <locationX>581</locationX>
+        <locationY>695</locationY>
         <connector>
             <targetReference>Core_MDF_Call_budgetCapShare_method</targetReference>
         </connector>
@@ -700,8 +743,8 @@
     <subflows>
         <name>Core_MDF_CreateOrUpdateAllocationRecordWhenBudgetIsReleased</name>
         <label>Core_MDF_CreateOrUpdateAllocationRecordWhenBudgetIsReleased</label>
-        <locationX>94</locationX>
-        <locationY>1931</locationY>
+        <locationX>1138</locationX>
+        <locationY>2207</locationY>
         <flowName>Core_MDF_CreateOrUpdateAllocationRecordWhenBudgetIsReleased</flowName>
         <inputAssignments>
             <name>vBudgetAccountId</name>
@@ -749,8 +792,8 @@
     <subflows>
         <name>Core_MDF_Update_Budget_Status_to_Pending_review_and_call_Approval_Process</name>
         <label>Update Budget Status to Pending review and call Approval Process</label>
-        <locationX>94</locationX>
-        <locationY>1331</locationY>
+        <locationX>537</locationX>
+        <locationY>1379</locationY>
         <connector>
             <targetReference>Core_MDF_Just_execute_when_a_Budget_record_of_type_CoMarketing_is_updated</targetReference>
         </connector>
@@ -765,8 +808,8 @@
     <subflows>
         <name>Core_MDF_Update_BudgetStatus_to_Pending_review_and_call_Approval_Process</name>
         <label>Update Budget Status to Pending review and call Approval Process</label>
-        <locationX>94</locationX>
-        <locationY>1631</locationY>
+        <locationX>537</locationX>
+        <locationY>1679</locationY>
         <connector>
             <targetReference>If_Budget_Status_is_Updated_from_Approved_to_Released_for_a_Co_Marketing_RT</targetReference>
         </connector>

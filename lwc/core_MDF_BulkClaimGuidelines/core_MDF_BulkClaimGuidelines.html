@@ -1,0 +1,19 @@
+<template>
+    <lightning-accordion allow-multiple-sections-open flexibility="auto">
+        <lightning-accordion-section name="A" label="File Creation Guidelines">
+            <lightning-tabset variant="scoped">
+                <lightning-tab label="Activity SubType Values">
+                    The value from Aura is:- {program}
+                </lightning-tab>
+                <lightning-tab label="Country Values">
+                    Two Content !
+                </lightning-tab>
+                <lightning-tab label="Currency Values">
+                        <template for:each={currencyList} for:item="clmObj" for:index="index">
+                            <p key={clmObj.Id}>{clmObj.Name}</p>
+                        </template>
+                </lightning-tab>
+            </lightning-tabset>
+        </lightning-accordion-section>
+    </lightning-accordion>
+</template>

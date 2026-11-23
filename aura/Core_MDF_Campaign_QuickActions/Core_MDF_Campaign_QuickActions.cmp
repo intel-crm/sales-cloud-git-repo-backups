@@ -1,0 +1,20 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,lightning:actionOverride" access="global" controller="Core_MDF_Campaign_QuickActionController" >
+    <lightning:quickActionAPI aura:id="quickActionAPI" />
+    <ltng:require styles="{!$Resource.Core_MDF_ModalWidthCSS}"/>
+	<aura:attribute name="recordId" type="Id" default="" />
+    <aura:attribute name="recordTypeId" type="Id" default="" />
+    <aura:attribute name="recordTypeName" type="String" default="" />
+    <aura:attribute name="recordTypeDeveloperName" type="String" default="" />
+    <aura:attribute name="campaignStatus" type="String" default="" />
+    <aura:attribute name="mode" type="String" default="" />
+    <aura:attribute name="fieldSetName" type="String" default="" />    
+    <aura:attribute name="recordInfoLoaded" type="Boolean" default="false"/>
+    <aura:attribute name="modeLoaded" type="Boolean" default="false"/>
+
+    <aura:handler name="change" value="{!v.recordInfoLoaded}" action="{!c.fetchFieldSetInfo}" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
+    <!-- <c:core_MDF_Create_Campaign recordId="{!v.recordId}" mode="edit" recordTypeId="012g0000000AAv7AAG" recordTypeName="Intel Partner Alliance" recordTypeDeveloperName="Core_MDF_Intel_Partner_Alliance" objectApiName="Campaign" fieldSetName="Core_MDF_IPA_Campaign_FieldSet" status="Draft"></c:core_MDF_Create_Campaign> -->
+    <aura:if isTrue="{!and(v.fieldSetName,v.modeLoaded)}">
+        <c:core_MDF_Create_Campaign recordId="{!v.recordId}" mode="{!v.mode}" recordTypeId="{!v.recordTypeId}" recordTypeName="{!v.recordTypeName}" recordTypeDeveloperName="{!v.recordTypeDeveloperName}" objectApiName="Campaign" fieldSetName="{!v.fieldSetName}" status="{!v.campaignStatus}"></c:core_MDF_Create_Campaign>
+    </aura:if>
+</aura:component>

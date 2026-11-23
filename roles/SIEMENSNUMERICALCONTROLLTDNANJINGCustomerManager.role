@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>SIEMENS NUMERICAL CONTROL LTD., NANJING Customer Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>SIEMENS NUMERICAL CONTROL LTD., NANJING Customer Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>SIEMENSNUMERICALCONTROLLTDNANJINGCustomerExecutive</parentRole>
+</Role>

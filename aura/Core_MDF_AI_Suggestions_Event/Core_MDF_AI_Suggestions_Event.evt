@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="Event to trigger AI suggestions in parent component">
+    <aura:attribute name="triggerAI" type="Boolean" default="true"/>
+</aura:event>

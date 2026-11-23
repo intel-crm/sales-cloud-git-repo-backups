@@ -1,0 +1,281 @@
+<template>
+
+  <template if:true={phoneOrDesktop}>
+    <template if:true={showApproveRejectButton}>
+      <div class="slds-p-around_medium">
+        <lightning-layout padding="around-small">
+          <lightning-layout-item size="1"></lightning-layout-item>
+          <lightning-layout-item padding="around-small" size="7">
+            <div style="display:inline-block;margin-right:10px;" onclick={handleApproveRejectClick}>
+              <lightning-icon icon-name="action:approval" alternative-text="Approve" title="Approve" size="small">
+              </lightning-icon><br />
+              <div class="slds-text-body_regular">Approve</div>
+            </div>
+          </lightning-layout-item>
+          <lightning-layout-item padding="around-small" size="4">
+            <div style="display:inline-block;margin-right:10px;" onclick={handleApproveRejectClick}>
+              
+              <lightning-icon icon-name="action:close" alternative-text="Reject" title="Reject" size="small">
+              </lightning-icon><br />
+        
+              <div class="slds-text-body_regular">Reject</div>
+            </div>
+          </lightning-layout-item>
+          <lightning-layout-item size="2"></lightning-layout-item>
+        </lightning-layout>
+
+
+        <!-- <strong style="padding-left: 40px"></strong>
+      <lightning-button-icon label="Approve" icon-name="action:approval" onclick={handleClick} size="x-small"
+        alternative-text="Approve"></lightning-button-icon>
+      </lightning-button-icon-stateful>
+      <strong style="padding-left: 30px"></strong>
+      <lightning-button-icon label="Reject" icon-name="action:close" onclick={handleClick} size="x-small"
+        alternative-text="Reject"></lightning-button-icon>
+
+      <strong style="padding-left: 30px"></strong>
+      <lightning-button-icon label="Comments" icon-name="action:share_post" onclick={handleClick} size="x-small"
+        alternative-text="Comments"></lightning-button-icon> -->
+    
+
+      </div>
+    </template>
+    <!-- Modal Starts-->
+    <template if:true={isModalopen}>
+      <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+          <!-- modal header start -->
+          <header class="slds-modal__header">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+              onclick={closeModal}>
+              <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small">
+              </lightning-icon>
+              <span class="slds-assistive-text">Close</span>
+            </button>
+            <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">{popupHeaderText}</h2>
+          </header>
+          <!-- modal body start -->
+          <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+            <div class="slds-form-element">
+              <label class="slds-form-element__label" for="textarea-id-02">Comments</label>
+              <div class="slds-form-element__control">
+                <textarea id="textarea-id-02" rows=10 class="slds-textarea" placeholder="Enter Comments..."
+                  name="textArea" onchange={handleTextAreaChange} autofocus></textarea>
+              </div>
+            </div>
+            <!-- <lightning-textarea name="input1" label="Enter some text" style="height:200px;"></lightning-textarea> -->
+          </div>
+          <template if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+          </template>
+          <!-- modal footer start-->
+          <footer class="slds-modal__footer">
+            <button class="slds-button slds-button_neutral" onclick={closeModal}>Cancel</button>
+            <button class="slds-button slds-button_brand" onclick={handleSave} title="Save">{popupButtonLabel}</button>
+          </footer>
+        </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <!--Modal End-->
+    <div class="slds-card">
+      <template for:each={recordsToRender} for:item="rec">
+        <div class="slds-card" key={rec.name}>
+          <lightning-layout class="slds-page-header slds-page-header--object-home">
+            <lightning-layout-item>
+              <lightning-icon icon-name="standard:approval"></lightning-icon>
+
+            </lightning-layout-item>
+            <lightning-layout-item size="11" padding="horizontal-small">
+              <h1 class="slds-text-heading--label">Approval Requests</h1>
+              <dd class="slds-item_detail slds-truncate slds-text-heading_medium" key={rec.name}><b>{rec.name}</b>
+              </dd>
+            </lightning-layout-item>
+          </lightning-layout>
+        </div>
+        <div class="slds-p-around_small" key={rec.name}>
+          <div class="c-container" key={rec.name}>
+
+            <template for:each={rec.fields} for:item="recfield">
+              <div class="slds-grid slds-wrap" key={recfield.fieldLabel}>
+                <div class="slds-col">
+                  <lightning-layout-item padding="around-small" size="3" medium-device-size="3">
+                    <div class="slds-region_narrow" style="width:360px">
+                    <dl class="slds-dl_horizontal">
+                        <dt class="slds-dl_horizontal_label"> {recfield.fieldLabel} :</dt>
+                        <dd class="slds-dl_horizontal_detail"> &nbsp;&nbsp;{recfield.fieldValue} </dd>
+                      </dl>
+                    </div>
+                  </lightning-layout-item>
+                </div>
+              </div>
+
+            </template>
+          </div>
+        </div>
+
+      </template>
+    </div>
+    <lightning-accordion allow-multiple-sections-open onsectiontoggle={handleSectionToggle}
+      active-section-name={activeSections}>
+      <lightning-accordion-section name="A" label="Details">
+        <template for:each={fieldsToDisplay} for:item="rec">
+          <template for:each={rec.fields} for:item="recfield">
+            <div class="slds-form__item" role="listitem" key={recfield.name}>
+              <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                <span class="slds-form-element__label">{recfield.fieldLabel}</span>
+                <template if:true={recfield.hasRecordLink}>
+                  <div class="slds-form-element__static"><a data-record-id={recfield.recordLink} class="slds-text-link"
+                      onclick={viewRecord}>{recfield.fieldValue}</a>
+                  </div>
+                </template>
+                <template if:false={recfield.hasRecordLink}>
+                  <div class="slds-form-element__control">
+                    <div class="slds-form-element__static">{recfield.fieldValue}
+                  </div>
+                  </div>
+                </template>
+              </div>
+            </div>
+            
+          </template>
+        </template>
+      </lightning-accordion-section>
+    </lightning-accordion>
+  </template>
+  <template if:false={phoneOrDesktop}>
+    <div class="slds-card">
+      <template for:each={recordsToRender} for:item="rec">
+        <div class="slds-card" key={rec.name}>
+          <lightning-layout class="slds-page-header slds-page-header--object-home" key={rec.name}>
+
+            <lightning-layout-item>
+              <lightning-icon icon-name="standard:approval"></lightning-icon>
+
+            </lightning-layout-item>
+            &nbsp;&nbsp;&nbsp;
+            <lightning-layout-item size="10">
+              <h1 class="slds-text-heading--label">Approval Request</h1>
+              <dd class="slds-item_detail slds-truncate slds-text-heading_medium" key={rec.name}><b>{rec.name}</b></dd>
+            </lightning-layout-item>
+            <lightning-layout-item size="1">
+              <template if:true={showApproveRejectButton}>
+                <lightning-button-group>
+                  <lightning-button label="Approve" title="Approve" name="Approve" onclick={handleApproveRejectClick}>>
+                  </lightning-button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <lightning-button label="Reject" title="Reject" name="Reject" onclick={handleApproveRejectClick}>
+                  </lightning-button>
+                  <!-- <lightning-button-icon-stateful icon-name="action:approval" onclick={handleCheck}
+                    alternative-text="Approve"></lightning-button-icon-stateful> -->
+                </lightning-button-group>
+              </template>
+            </lightning-layout-item>
+            <lightning-layout-item size="1"></lightning-layout-item>
+          </lightning-layout>
+        </div>
+        <div class="slds-p-around_small" key={rec.name}>
+          <!--   <div class="c-container" key={rec.name}>-->
+          <lightning-layout multiple-rows>
+            <template for:each={rec.fields} for:item="recfield">
+
+              <div class="slds-grid slds-wrap" key={recfield.fieldLabel}>
+                <div class="slds-col">
+                  <lightning-layout-item padding="around-small" size="12" medium-device-size="4">
+
+                    <div class="header-column slds-size_1-of-1 slds-max-small-size_1-of-5">
+                      <p class="field-title">{recfield.fieldLabel}</p>
+                      <p>{recfield.fieldValue}</p>
+                    </div>
+                  </lightning-layout-item>
+                </div>
+              </div>
+            </template>
+
+          </lightning-layout>
+        </div>
+        <!-- </div>-->
+
+      </template>
+    </div>
+    <!-- Modal Starts-->
+    <template if:true={isModalopen}>
+      <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+          <!-- modal header start -->
+          <header class="slds-modal__header">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+              onclick={closeModal}>
+              <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small">
+              </lightning-icon>
+              <span class="slds-assistive-text">Close</span>
+            </button>
+            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{popupHeaderText}</h2>
+          </header>
+          <!-- modal body start -->
+          <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+            <div class="slds-form-element">
+              <label class="slds-form-element__label" for="textarea-id-01">Comments</label>
+              <div class="slds-form-element__control">
+                <textarea id="textarea-id-01" rows=10 class="slds-textarea" placeholder="Enter Comments..."
+                  name="textArea" onchange={handleTextAreaChange} autofocus></textarea>
+              </div>
+            </div>
+            <!-- <lightning-textarea name="input1" label="Enter some text" style="height:200px;"></lightning-textarea> -->
+          </div>
+          <template if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+          </template>
+          <!-- modal footer start-->
+          <footer class="slds-modal__footer">
+            <button class="slds-button slds-button_neutral" onclick={closeModal}>Cancel</button>
+            <button class="slds-button slds-button_brand" onclick={handleSave} title="Save">{popupButtonLabel}</button>
+          </footer>
+        </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <!--Modal End-->
+    <div class="slds-card">
+      <lightning-layout padding='around-small'>
+        <lightning-layout-item size="12" padding='around-small'>
+          <lightning-tabset>
+            <lightning-tab label="Details">
+              <div class="slds-section slds-is-open">
+                <h3 class="slds-section__title slds-theme_shade">
+                  <span class="slds-truncate slds-p-horizontal_small" title="Section Title">Approval Details</span>
+                </h3>
+                <div aria-hidden="false" class="slds-section__content">
+                  <template for:each={fieldsToDisplay} for:item="rec">
+                    <template for:each={rec.fields} for:item="recfield">
+                      <div class="slds-form__item" role="listitem" key={recfield.name}>
+                        <div
+                          class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                          <span class="slds-form-element__label">{recfield.fieldLabel}</span>
+                          <template if:true={recfield.hasRecordLink}>
+                            <div class="slds-form-element__static"><a data-record-id={recfield.recordLink}
+                                class="slds-text-link" onclick={viewRecord}>{recfield.fieldValue}</a>
+                            </div>
+                          </template>
+                          <template if:false={recfield.hasRecordLink}>
+                            <div class="slds-form-element__control">
+                              <div class="slds-form-element__static">{recfield.fieldValue}</div>
+
+                            </div>
+                          </template>
+                        </div>
+                      </div>
+                    </template>
+                  </template>
+                </div>
+              </div>
+            </lightning-tab>
+          </lightning-tabset>
+        </lightning-layout-item>
+      </lightning-layout>
+    </div>
+  </template>
+
+
+</template>

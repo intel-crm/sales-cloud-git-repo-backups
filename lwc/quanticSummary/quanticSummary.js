@@ -61,10 +61,6 @@ export default class QuanticSummary extends LightningElement {
 
   renderedCallback() {
     initializeWithHeadless(this, this.engineId, this.initialize);
-        const passEvent = new CustomEvent('queryevent', {
-          detail: {qry: this.query}
-      });
-    this.dispatchEvent(passEvent);
   }
 
   /**
@@ -74,8 +70,6 @@ export default class QuanticSummary extends LightningElement {
     this.headless = getHeadlessBundle(this.engineId);
     this.querySummary = this.headless.buildQuerySummary(engine);
     this.summaryAriaMessage = AriaLiveRegion('summary', this);
-    const { logCustomEvent } = CoveoHeadless.loadGenericAnalyticsActions(engine)
-    this.logCustomEvent = (payload) => engine.dispatch(logCustomEvent(payload));
     this.unsubscribe = this.querySummary.subscribe(() => this.updateState());
   };
 
@@ -155,28 +149,4 @@ export default class QuanticSummary extends LightningElement {
       )
     );
   }
-  
-   handleContinueToCaseCreation(){
-   // this.coveoClickEventForDeflection();
-      // this.logCustomEvent({
-      //   evt: 'Continue to Case Creation1',
-      //   type: 'clicked'
-      // });
-      let event = new CustomEvent('clickofcontinuecasecreation',{
-        detail: {
-            value: true
-        },
-        bubbles: true,
-        composed: true
-    });
-    this.dispatchEvent(event)
-  }
-
-  // @api coveoClickEventForDeflection(){
-  //   this.logCustomEvent({
-  //     evt: 'Continue to Case Creation2',
-  //     type: 'clicked'
-  //   });
-  // }
-
 }

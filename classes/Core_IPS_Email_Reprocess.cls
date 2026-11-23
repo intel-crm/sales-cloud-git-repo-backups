@@ -1,4 +1,4 @@
-global without sharing class Core_IPS_Email_Reprocess {
+global class Core_IPS_Email_Reprocess {
 /***************************************************************************************************
 * Apex Class Name: Core_IPS_Email_Reprocess 
 * Version     : 1.0 
@@ -20,7 +20,6 @@ global without sharing class Core_IPS_Email_Reprocess {
 ****************************************************************************************************/
     WebService static String ReprocessExtDownloadNotifEmail(Id[] RecordIds){
         Set<ID> TargetObjectIDSet = new Set<ID>();
-        List<Core_IPS_Email_Log__c> EmailLogLst = new List<Core_IPS_Email_Log__c>();
         Map<Id,String> FailedContactIdErrMsgMap = new Map<Id,String>();
         List<Core_IPS_Email_Log__c> ToBeUpdatedEmailLst = new List<Core_IPS_Email_Log__c>();
         List<Core_IPS_Email_Log__c> ToBeDeletedEmailLst = new List<Core_IPS_Email_Log__c>();
@@ -42,12 +41,9 @@ global without sharing class Core_IPS_Email_Reprocess {
             //Number of Records Processed
             RecordsProcessed = RecordIds.size();
             //Get Error entries 
-            //FLS check added-Venugopal
-            if(Core_IPS_Email_Log__c.SObjectType.getDescribe().isAccessible()){
-                                        EmailLogLst = [select Id, Core_TargetObjectId__c, Core_TemplateID__c, Core_WhatId__c, Core_OrgWideEmailAddressId__c
+            List<Core_IPS_Email_Log__c> EmailLogLst = [select Id, Core_TargetObjectId__c, Core_TemplateID__c, Core_WhatId__c, Core_OrgWideEmailAddressId__c
                                                        from Core_IPS_Email_Log__c where id in :RecordIds and Core_Project__c = 'IPS' and 
                                                        Core_ApplicationArea__c = 'IPS External Download Notification' and Core_Status__c = 'Error'];
-            }
             //Get TargetObjectId's
             if (EmailLogLst != null && EmailLogLst.size() > 0) {
                 for (Core_IPS_Email_Log__c EmailLogObject : EmailLogLst){
@@ -95,10 +91,7 @@ global without sharing class Core_IPS_Email_Reprocess {
                                     ErrorMsg = ErrorMsg.substring(0,255);    
                                 } 
                             }             
-                        /*US1038991 - 07/08/2021 - Vishal - FLS Check for security vulnerability --*/
-                       // if (Schema.sObjectType.Core_IPS_Email_Log__c.fields.Core_Message__c.isUpdateable()) {
-                            EmailUpdObj.Core_Message__c  = ErrorMsg;
-                      //  }
+                        EmailUpdObj.Core_Message__c  = ErrorMsg;
                         ToBeUpdatedEmailLst.add(EmailUpdObj);   
                     } else {
                         //Build ToBeDeleted
@@ -112,10 +105,7 @@ global without sharing class Core_IPS_Email_Reprocess {
                 }
                 //DB Deletes
                 if (ToBeDeletedEmailLst != null && ToBeDeletedEmailLst.size() > 0) {
-                    /*US1038991 - 07/08/2021 - Vishal - FLS Check for security vulnerability --*/
-                    if (Core_IPS_Email_Log__c.sObjectType.getDescribe().isDeletable()) {    
-                         delete ToBeDeletedEmailLst;
-                    }
+                    delete ToBeDeletedEmailLst;
                 }
             }    
             return 'Records Processed: ' + RecordsProcessed + '\nSuccess Count: ' + 

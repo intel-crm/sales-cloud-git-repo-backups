@@ -38,9 +38,14 @@
                 <div class="slds-modal__container">
                     <header class="slds-modal__header">
 
-                     <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick="{!c.hideModal}">
+                        <!-- <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                            
+                            <span class="slds-assistive-text">Close</span>
+                        </button> -->
+
+                    <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick="{!c.hideModal}">
                         <lightning:icon iconName="utility:close" alternativeText="Close" size="small" />
-                        <span class="slds-assistive-text">Close</span>
+                        <span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
                     </button>
 
                         <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!$Label.c.Core_MDF_CCF_Header}</h2>
@@ -72,7 +77,7 @@
                     <header class="slds-modal__header">
                         <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick="{!c.hideModal}">
                             <lightning:icon iconName="utility:close" alternativeText="Close" size="small" />
-                            <span class="slds-assistive-text">Close</span>
+                            <span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
                         </button>
                         <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!$Label.c.Core_MDF_DCF_Header}</h2>
                     </header>
@@ -122,10 +127,29 @@
                 <!--Iterate the child Component for display Table rows 
                -->        
                 <aura:iteration items="{!v.regionWiseRecords}" var="item" >
-                    <c:Core_MDF_GridViewRegionChild RegionwiseInstance="{!item}"
+                    <!-- <c:Core_MDF_GridViewRegionChild RegionwiseInstance="{!item}"
                                                     regionEditable="{!v.regionEditable}"
                                                     showSaveCancelBtn="{!v.showSaveCancelBtn}" 
-                                                    isSecondYearCampaign = "{!v.isSecondYearCampaign}"/>
+                                                    isSecondYearCampaign = "{!v.isSecondYearCampaign}"/> -->
+                    <tr>
+                        <td>{!item.Core_MDF_Region__c}</td>
+                        <!-- ADD $ HERE for First Year Budget -->
+                        <td>
+                            <lightning:formattedNumber
+                                value="{!item.Core_MDF_First_Year_Budget__c}"
+                                style="currency"
+                                currencyCode="USD"/>
+                        </td>
+                        <!-- ADD $ HERE for Second Year Budget -->
+                        <aura:if isTrue="{!v.isSecondYearCampaign}">
+                            <td>
+                                <lightning:formattedNumber
+                                    value="{!item.Core_MDF_Second_Year_Budget__c}"
+                                    style="currency"
+                                    currencyCode="USD"/>
+                            </td>
+                        </aura:if>
+                    </tr>                                
                 </aura:iteration>
             </tbody>
         </table>
@@ -156,10 +180,29 @@
                 <!--Iterate the child Component for display Table rows 
                -->        
                 <aura:iteration items="{!v.categoryWiseRecords}" var="item" >
-                    <c:Core_MDF_GridViewCategoryChild CategorywiseInstance="{!item}"
+                    <!-- <c:Core_MDF_GridViewCategoryChild CategorywiseInstance="{!item}"
                                                       categoryEditable = "{!v.categoryEditable}"
                                                       showSaveCancelBtn="{!v.showSaveCancelBtn}"
-                                                      isSecondYearCampaign = "{!v.isSecondYearCampaign}"/>
+                                                      isSecondYearCampaign = "{!v.isSecondYearCampaign}"/> -->
+                    <tr>
+                        <td>{!item.Core_MDF_Region__c}</td>
+                        <!-- ADD $ HERE for First Year Budget -->
+                        <td>
+                            <lightning:formattedNumber
+                                value="{!item.Core_MDF_First_Year_Budget__c}"
+                                style="currency"
+                                currencyCode="USD"/>
+                        </td>
+                        <!-- ADD $ HERE for Second Year Budget -->
+                        <aura:if isTrue="{!v.isSecondYearCampaign}">
+                            <td>
+                                <lightning:formattedNumber
+                                    value="{!item.Core_MDF_Second_Year_Budget__c}"
+                                    style="currency"
+                                    currencyCode="USD"/>
+                            </td>
+                        </aura:if>
+                    </tr>
                 </aura:iteration>
             </tbody>
         </table>

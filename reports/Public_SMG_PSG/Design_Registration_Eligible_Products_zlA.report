@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>Product2.Core_Product_ID__c</field>
-    </columns>
-    <columns>
-        <field>Product2.Core_Product_Name_EPM_ID__c</field>
-    </columns>
-    <columns>
         <field>NAME</field>
-    </columns>
-    <columns>
-        <field>Product2.Core_OPN__c</field>
     </columns>
     <columns>
         <field>ACTIVE</field>
@@ -18,10 +9,6 @@
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>Product2.Core_Sales_Visible_Flag__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Product2.Core_Avail_for_New_Designs__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -55,13 +42,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value></value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

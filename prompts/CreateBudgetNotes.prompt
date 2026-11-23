@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Create Budget Notes</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>Create Budget</actionButtonLabel>
+        <actionButtonLink>https://intel--crmdevccp.lightning.force.com/lightning/o/PartnerMarketingBudget/new?count=1&amp;nooverride=1&amp;useRecordTypeCheck=1&amp;navigationLocation=MRU_LIST&amp;backgroundContext=%2Flightning%2Fo%2FPartnerMarketingBudget%2Flist%3FfilterName%3DRecent&amp;recordTypeId=012g0000000A3l1AAC</actionButtonLink>
+        <body>&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt;Enter the mandatory required information (marked with an asterisk)&lt;/span&gt;&lt;span style=&quot;font-size: 14pt; color: rgb(157, 195, 230);&quot;&gt; &lt;/span&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt;*:&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;b style=&quot;font-size: 12pt;&quot;&gt;Budget Name&lt;/b&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt; is a free text field, it is recommended you follow a naming convention for easy identification. Eg. “RMF Budget for Amazon Q1 2021” &lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;b style=&quot;font-size: 12pt;&quot;&gt;Description&lt;/b&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt; and &lt;/span&gt;&lt;b style=&quot;font-size: 12pt;&quot;&gt;Comments&lt;/b&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt; are optional fields, available to capture notes and comments.&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;b style=&quot;font-size: 12pt;&quot;&gt;Program&lt;/b&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt; is search look up field, one must type in first few letter of the program name, before making a selection&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;b style=&quot;font-size: 12pt;&quot;&gt;Budget Partner&lt;/b&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt; is search look up field, one must type in first few letter of the account name, before making a selection&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;b style=&quot;font-size: 12pt;&quot;&gt;Budget Reduction Amount&lt;/b&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt; is used to decrease amount from an existing budget, this can be left blank when creating a new budget&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;b style=&quot;font-size: 12pt;&quot;&gt;Budget Amount&lt;/b&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt; is the amount of funds being allocated to the account for the said budget period&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;b style=&quot;font-size: 12pt;&quot;&gt;Start Date&lt;/b&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt; defines start of the budget period&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;b style=&quot;font-size: 12pt;&quot;&gt;End Date&lt;/b&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt; defines end of the budget period&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;b style=&quot;font-size: 12pt;&quot;&gt;Budget Type&lt;/b&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt; is applicable to the RMF program, there are 2 budget types to choose from RSA MD and Retail MDF&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12pt;&quot;&gt;&lt;i&gt;Key Points:&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt;Once the budget is created it is set to pending review requiring approval from a finance manager&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt;Duplicate or overlapping budgets cannot be created. Duplicate/Overlapping budget is one that has the same Budget Partner, Budget Type and same/overlapping start and end dates&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;</body>
+        <customApplication>Core_MDF_CoMarketing</customApplication>
+        <delayDays>1</delayDays>
+        <displayPosition>BottomCenter</displayPosition>
+        <displayType>DockedComposer</displayType>
+        <endDate>2020-08-31</endDate>
+        <header>Create Budget</header>
+        <isPublished>false</isPublished>
+        <masterLabel>Create Budget Notes</masterLabel>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2020-08-07</startDate>
+        <targetPageKey1>PartnerMarketingBudget</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <timesToDisplay>3</timesToDisplay>
+        <title>Create Budget</title>
+        <uiFormulaRule>
+            <booleanFilter>(1) AND (2)</booleanFilter>
+            <criteria>
+                <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_Internal_Retail_Finance_Usr}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>TRUE</rightValue>
+            </criteria>
+            <criteria>
+                <leftValue>{!$User.Profile.Key}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>custom_ccp - core access</rightValue>
+            </criteria>
+        </uiFormulaRule>
+        <userAccess>SpecificPermissions</userAccess>
+        <userProfileAccess>SpecificProfiles</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

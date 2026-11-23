@@ -8,6 +8,10 @@
         <plural>true</plural>
         <value>Claim Case Checklists</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- AI Checklist Fieldset --></label>
+        <name>Core_MDF_AI_Checklist_Fieldset</name>
+    </fieldSets>
     <fields>
         <label><!-- AI Checklist Status --></label>
         <name>Core_MDF_AI_Checklist_Status_Nm__c</name>
@@ -370,6 +374,14 @@
         <name>Core_MDF_Impact_Amount__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Remove Impact Amount from items checked Compliant, or mark items with Impact Amount as Non-compliant --></errorMessage>
+        <name>Core_MDF_Validate_Compliant_Responses</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter Impact Amount (local) greater than or equal to 0 --></errorMessage>
+        <name>Core_MDF_Validate_Impact_Amount</name>
+    </validationRules>
     <validationRules>
         <errorMessage><!-- Enter Impact Amount (local) greater than or equal to 0 --></errorMessage>
         <name>Core_MDF_Validate_NonCompliant_Responses</name>

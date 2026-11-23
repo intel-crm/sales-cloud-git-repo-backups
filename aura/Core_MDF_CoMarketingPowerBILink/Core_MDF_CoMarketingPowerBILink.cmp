@@ -1,0 +1,8 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+         <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Co-Marketing Power BI</h2>
+        <div>	
+            <a href="https://sqlbi-dev.intel.com/Reports/browse/Co-Marketing/CCP" target="_blank" class="slds-p-left_xx-small slds-text-color_success">Co-Marketing Power BI Reports</a>
+        </div>
+    </div>
+</aura:component>

@@ -63,7 +63,7 @@
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Check_budget</name>
-            <conditionLogic>((1 OR 2 OR 3 OR 4) AND 5 AND 6) OR (5 AND 7 AND 8) OR (7 AND 8)</conditionLogic>
+            <conditionLogic>((1 OR 2 OR 3 OR 4 OR 9) AND 5 AND 6) OR (5 AND 7 AND 8) OR (7 AND 8)</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Core_MDF_Budget_Type_nm__c</leftValueReference>
                 <operator>Contains</operator>
@@ -120,6 +120,13 @@
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_MDF_Budget_Type_nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cloud</stringValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>PFR_records_updated_to_Revision_required</targetReference>
             </connector>
@@ -174,5 +181,5 @@
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
 </Flow>

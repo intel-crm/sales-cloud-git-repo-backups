@@ -51,7 +51,7 @@ public class Core_SearchContactController_Test {
         Database.insert(groupCreated,true);
         
         ChannelProgram cprogram = new ChannelProgram();
-        cprogram.Name = 'Client Co-Marketing Fund';
+        cprogram.Name = Core_MDF_CCP_ConstantClass.CCF_PROGRAM;
         cprogram.Core_MDF_Technical_Program_Name__c = 'Client CoMarketing Fund';
         Database.insert(cprogram);
         

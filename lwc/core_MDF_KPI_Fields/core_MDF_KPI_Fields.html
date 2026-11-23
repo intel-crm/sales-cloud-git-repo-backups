@@ -67,7 +67,8 @@
               large-device-size="6" padding="around-small">
               <lightning-input type="number" name="Core_MDF_NoOfImpressions_Nbr" required={kpiRequiredFields.Core_MDF_NoOfImpressions_Nbr__c} 
                 value={kpiValues.Core_MDF_NoOfImpressions_Nbr} label={kpiLabels.Core_MDF_NoOfImpressions_Nbr}
-                max="999999999999999999" step="1" onkeypress={isNumericOnly} disabled={kpiDisabledFields.Core_MDF_NoOfImpressions_Nbr} message-when-step-mismatch = {numberError}>
+                min="1" max="999999999999999999" step="1" onkeypress={isNumericOnly} disabled={kpiDisabledFields.Core_MDF_NoOfImpressions_Nbr}
+                message-when-step-mismatch = {numberError}>
               </lightning-input>
             </lightning-layout-item>
           </template>

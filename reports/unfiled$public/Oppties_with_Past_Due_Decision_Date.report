@@ -85,13 +85,6 @@
             <operator>notContain</operator>
             <value>Ignore</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>OWNER_MANAGER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>gordon,weston,harrison,rodman,o&apos;donnell,herrmann,mushahwar,swanger</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>

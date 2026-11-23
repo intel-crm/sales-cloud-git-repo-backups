@@ -16,7 +16,7 @@
     <aura:attribute name="sameAmountTransferError" type="boolean" default="false" access="public"/>
     <aura:attribute name="amountTransferExceedsError" type="boolean" default="false" access="public"/>
     <aura:attribute name="onSuccessAmount" type="Decimal" access="public"/>
-    
+    <aura:attribute name="accountSelected" type="boolean" access="public"/>
     <aura:attribute name="fromAccountList" type="List" default="[]"/>
     <aura:attribute name="fromAccountSelectedValue" type="Object" access="public" default="{'Id':'','Name':''}" />
     <aura:attribute name="budgetSelectedValue" type="Map" access="public" default="{'Id':'','Name':''}" />
@@ -72,7 +72,7 @@
                                                     isRequired="true"
                                                     onselectedItem="{!c.fromAccountToChange}" 
                                                     oninputFieldValueClear="{!c.ClearFromAccount}"
-                                                    onclick="{!c.fromAccountClick}"/>                
+                                                    onreset="{!c.fromAccountClick}"/>                
                 <!-- Budget  -->
                 <c:core_MDF_Searchable_Dropdownlist aura:id="PMBComponent" 
                                                     fieldLabel="{!$Label.c.Core_MDF_Budget}" 

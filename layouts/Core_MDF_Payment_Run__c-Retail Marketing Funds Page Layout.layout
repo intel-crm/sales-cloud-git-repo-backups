@@ -31,11 +31,23 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_ErrorDetails_Txt__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Note__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Run_For_All_Accounts__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Payment_run_for_Accounts__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>Core_MDF_Budget_Type_Txt__c</field>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Budget_Type_nm__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -117,12 +129,35 @@
             <sortOrder>4</sortOrder>
         </platformActionListItems>
     </platformActionList>
+    <quickActionList>
+        <quickActionListItems>
+            <quickActionName>FeedItem.TextPost</quickActionName>
+        </quickActionListItems>
+        <quickActionListItems>
+            <quickActionName>FeedItem.ContentPost</quickActionName>
+        </quickActionListItems>
+        <quickActionListItems>
+            <quickActionName>FeedItem.MobileSmartActions</quickActionName>
+        </quickActionListItems>
+        <quickActionListItems>
+            <quickActionName>FeedItem.LinkPost</quickActionName>
+        </quickActionListItems>
+        <quickActionListItems>
+            <quickActionName>FeedItem.PollPost</quickActionName>
+        </quickActionListItems>
+        <quickActionListItems>
+            <quickActionName>FeedItem.QuestionPost</quickActionName>
+        </quickActionListItems>
+        <quickActionListItems>
+            <quickActionName>FeedItem.ContentNote</quickActionName>
+        </quickActionListItems>
+    </quickActionList>
     <relatedLists>
         <relatedList>RelatedFileList</relatedList>
     </relatedLists>
     <relatedLists>
+        <fields>Core_MDF_Account_Id__c</fields>
         <fields>NAME</fields>
-        <fields>Core_MDF_Payment_No_Txt__c</fields>
         <fields>Core_MDF_Paid_Amt__c</fields>
         <fields>Core_MDF_Payment_Sent_Dt__c</fields>
         <fields>Core_MDF_Payment_Made_Dt__c</fields>

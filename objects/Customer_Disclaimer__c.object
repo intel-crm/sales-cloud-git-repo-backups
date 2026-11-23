@@ -154,6 +154,18 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
+        <fullName>Core_MDF_Group_Id_txt__c</fullName>
+        <description>Stores the PGM Group id that user is part of</description>
+        <externalId>false</externalId>
+        <label>Group Id</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>NDA_Acceptance_Date_dtm__c</fullName>
         <label>NDA Acceptance Date</label>
         <required>false</required>
@@ -211,10 +223,23 @@
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>OBJECT_ID</columns>
+        <columns>NDA_Acceptance_Date_dtm__c</columns>
+        <columns>Program_txt__c</columns>
+        <columns>Site_URL_txt__c</columns>
+        <columns>User_id__c</columns>
+        <columns>Core_MDF_Group_Id_txt__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>test</fullName>
+        <columns>NAME</columns>
+        <columns>NDA_Acceptance_Date_dtm__c</columns>
+        <columns>Program_txt__c</columns>
+        <columns>Site_URL_txt__c</columns>
+        <columns>User_id__c</columns>
+        <filterScope>Mine</filterScope>
+        <label>test</label>
     </listViews>
     <nameField>
         <displayFormat>NDA-{0000}</displayFormat>

@@ -25,7 +25,7 @@
         <field>Opportunity.Core_Volume__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>FULL_NAME</field>

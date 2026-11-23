@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Core_MDF_Activity_Field_Editability</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Core_MDF_Activity_Field_Editabilitys</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Status --></label>
+        <name>Core_MDF_ActivityStatus__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Category --></label>
+        <name>Core_MDF_Activity_Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Type --></label>
+        <name>Core_MDF_Activity_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget --></label>
+        <name>Core_MDF_Budget__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Permission --></label>
+        <name>Core_MDF_Custom_Permission__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fields to Disable --></label>
+        <name>Core_MDF_Fields_to_Disable__c</name>
+    </fields>
+    <fields>
+        <label><!-- RecordTypeDeveloperName --></label>
+        <name>Core_MDF_RecordTypeDeveloperName__c</name>
+        <picklistValues>
+            <masterLabel>Core_MDF_Client_CoMarketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Client_CoMarketing_Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Client_CoMarketing_Fund_Boost</masterLabel>
+            <translation><!-- Core_MDF_Client_CoMarketing_Fund_Boost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Data_Center_CoMarketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Data_Center_CoMarketing_Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Retail_Marketing_Funds</masterLabel>
+            <translation><!-- Core_MDF_Retail_Marketing_Funds --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Service_Provider_CoMarketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Service_Provider_CoMarketing_Fund --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_MDF_Status__c</name>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Planned</masterLabel>
+            <translation><!-- Planned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Revision Required</masterLabel>
+            <translation><!-- Revision Required --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

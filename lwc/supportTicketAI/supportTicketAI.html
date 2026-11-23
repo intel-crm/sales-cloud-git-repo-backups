@@ -1,0 +1,39 @@
+<template>
+    <lightning-card title="AI Support Ticket Creator">
+        <div class="slds-p-around_medium">
+
+            <lightning-textarea
+                label="Describe your issue"
+                value={userInput}
+                onchange={handleInput}>
+            </lightning-textarea>
+
+            <lightning-input
+                type="file"
+                label="Upload File"
+                onchange={handleFileUpload}>
+            </lightning-input>
+
+            <br/>
+
+            <lightning-button
+                label="Create Ticket"
+                variant="brand"
+                onclick={handleSubmit}>
+            </lightning-button>
+
+            <template if:true={recordId}>
+                <p class="slds-m-top_medium">
+                    ✅ Ticket Created: {recordId}
+                </p>
+            </template>
+
+            <template if:true={error}>
+                <p class="slds-text-color_error">
+                    ❌ {error}
+                </p>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

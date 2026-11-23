@@ -1,0 +1,6 @@
+({
+	redirectm : function(component) {
+    }
+   
+	
+})

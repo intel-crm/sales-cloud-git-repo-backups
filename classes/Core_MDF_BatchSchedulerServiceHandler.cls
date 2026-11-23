@@ -53,7 +53,7 @@ Modified By   :        Date:       		Changes:
                 } 
             }
             
-            batchSchLine = [select id,Core_MDF_Batch_Scheduler__c,Core_MDF_Status_Txt__c,Core_MDF_Batch_Scheduler__r.Core_MDF_Inactive__c,Core_MDF_Batch_Scheduler__r.Core_MDF_Scheduler_Status_Txt__c from Core_MDF_Batch_Scheduler_Line_Item__c where Core_MDF_Batch_Scheduler__c IN:cstSchId and Core_MDF_Status_Txt__c NOT IN('Completed','Failed','Cancelled')];
+            batchSchLine = [select id,Core_MDF_Batch_Scheduler__c,Core_MDF_Status_Txt__c,Core_MDF_Batch_Scheduler__r.Core_MDF_Inactive__c,Core_MDF_Batch_Scheduler__r.Core_MDF_Scheduler_Status_Txt__c from Core_MDF_Batch_Scheduler_Line_Item__c where Core_MDF_Batch_Scheduler__c IN:cstSchId];
             if(batchSchLine!=null && batchSchLine.size()>0){
                 for(Core_MDF_Batch_Scheduler_Line_Item__c obj:batchSchLine){
                     if(obj.Core_MDF_Batch_Scheduler__r.Core_MDF_Inactive__c == True && obj.Core_MDF_Status_Txt__c == 'Pending'){
@@ -111,7 +111,10 @@ Modified By   :        Date:       		Changes:
         List<Core_MDF_Batch_Scheduler_Line_Item__c> batchSchedulerLineItemsList = new List<Core_MDF_Batch_Scheduler_Line_Item__c>();
         try{
         for(Core_MDF_Batch_Scheduler__c sch:schList){
-            if(!sch.Core_MDF_Inactive__c){
+            //ATHR - Deeply Nested if 16209
+            if(sch.Core_MDF_Inactive__c){
+                continue;
+            }
                 // create a new instance of line item
                 Core_MDF_Batch_Scheduler_Line_Item__c batchSchLine = new Core_MDF_Batch_Scheduler_Line_Item__c();
                 // Populate the Batch scheduler lookup id
@@ -147,7 +150,6 @@ Modified By   :        Date:       		Changes:
                     else{continue;}
                 }
                 batchSchedulerLineItemsList.add(batchSchLine);
-            }
         }
         if(batchSchedulerLineItemsList != Null && batchSchedulerLineItemsList.size()>0){
             Database.insert(batchSchedulerLineItemsList);

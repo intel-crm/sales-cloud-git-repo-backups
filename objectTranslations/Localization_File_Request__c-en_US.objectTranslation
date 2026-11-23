@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Localization File Request</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Localization File Requests</value>
+    </caseValues>
+    <fields>
+        <label><!-- Realese --></label>
+        <name>Release__c</name>
+        <picklistValues>
+            <masterLabel>Release-1-2021</masterLabel>
+            <translation><!-- Release-1-2021 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Release-2-2021</masterLabel>
+            <translation><!-- Release-2-2021 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Release-3-2021</masterLabel>
+            <translation><!-- Release-3-2021 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Release-4-2021</masterLabel>
+            <translation><!-- Release-4-2021 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Release-5-2021</masterLabel>
+            <translation><!-- Release-5-2021 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Team --></label>
+        <name>Team__c</name>
+        <picklistValues>
+            <masterLabel>Arcade</masterLabel>
+            <translation><!-- Arcade --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Beatles</masterLabel>
+            <translation><!-- Beatles --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Creed</masterLabel>
+            <translation><!-- Creed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Weezer</masterLabel>
+            <translation><!-- Weezer --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

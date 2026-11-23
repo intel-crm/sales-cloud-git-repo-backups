@@ -1,7 +1,5 @@
 <apex:page standardController="Case" extensions="Core_AAQC_Case_Ask_Commissions_CNTLR">
-<!-- Added integrity and cross origin attributes as suggested by semgrep tool as part of TWC4767-3971: KIIT: Semgrep Scan Results>-->     
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js" integrity="sha384-XxcvoeNF5V0ZfksTnV+bejnCsJjOOIzN6UVwF85WBsAnU3zeYh5bloN+L4WLgeNE" crossorigin="anonymous"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <apex:sectionHeader subtitle="New Case" title="Case Edit"/>
 <!-- Code start Added as a part of US76746 --> 
 <script>

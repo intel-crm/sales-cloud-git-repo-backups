@@ -1,0 +1,159 @@
+<aura:component controller="Core_MDF_HistoryController_copy" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	<aura:attribute name="objectName" type="String" default="Case"/>
+    <aura:attribute name="flag" type="Boolean"/>
+    <aura:attribute name="historyData" type="SObject"/>
+     <aura:attribute name="historyHeaderData" type="SObject"/>
+
+    
+   <!-- call doInit js function on component load to fetch list view details-->   
+    <aura:handler name="init" value="this" action="{!c.doInit}" 
+                  /> 
+    
+    
+    
+  <article
+    class="slds-card slds-card_boundary related_list_card_border_top forceRelatedListCardDesktop"
+  >
+      
+       <div class="related_list_themed_border_top"></div>
+    <div class="slds-card__header slds-grid">
+      <header class="slds-media slds-media--center slds-has-flexi-truncate">
+        <div class="slds-media__body">
+          <h2 class="slds-text-title_bold">
+            <span
+              class="slds-card__header-title slds-truncate slds-m-right--xx-small"
+              title=""
+              >Case History</span
+            >
+          </h2>
+        </div>
+      </header>
+      <div class="slds-no-flex">
+        <div class="actionsContainer"></div>
+      </div>
+    </div>
+
+
+     <aura:if isTrue = "{!v.historyData}">
+    <div class="slds-card__body">
+      <div class="slds-table--header-fixed_container forceBaseListView forceRelatedListPreviewGrid tableHeaderTopBorder">
+        <div class="slds-scrollable--y scrollbarHeight">
+          <table
+            class="forceRecordLayout slds-table slds-no-row-hover slds-table_cell-buffer slds-table_fixed-layout uiVirtualDataGrid--default uiVirtualDataGrid slds-table--header-fixed"
+          >
+            <thead>
+              <tr>
+                <th
+                scope="col"
+                  title="Date"
+                  aria-label="Date"
+                >
+                  <div
+                    class="slds-cell-fixed fixedCellHeight"
+                    >
+                    Date
+                  </div>
+                </th>
+                <th
+                  scope="col"
+                  title="Field"
+                  aria-label="Field"
+                >
+                  <div
+                    class="slds-cell-fixed fixedCellHeight extraSpace"
+                    >
+                    Field
+                  </div>
+                </th> 
+                <th
+                  scope="col"
+                  title="User"
+                  aria-label="User"
+                >
+                  <div
+                    class="slds-cell-fixed fixedCellHeight extraSpace"
+                    >
+                    User
+                  </div>
+                </th>
+                <th
+                  scope="col"
+                  title="Original Value"
+                  aria-label="Original Value"
+                >
+                  <div
+                    class="slds-cell-fixed fixedCellHeight extraSpace"
+                    >
+                    Orginal Value
+                  </div>
+                </th>
+                <th
+                  scope="col"
+                  title="New Value"
+                  aria-label="New Value"
+                >
+                  <div
+                    class="slds-cell-fixed fixedCellHeight extraSpace"
+                    >
+                    New Value
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tfoot></tfoot>
+            <tbody>
+                
+               <aura:iteration items="{!v.historyData}" var="item">
+       <tr key="{!item.id}">
+                   
+                  <td>
+                     
+                    <span class="uiOutputDateTime" >
+                      {!item.createdDate}</span
+                    >
+                    </td>
+                  <td>
+                      <span class="uiOutputDateTime"
+                      >{!item.field}</span
+                    >
+                   </td>
+                  <td>
+                      <span class="uiOutputDateTime forceOutputLookup forceOutputLookupText"
+                      
+                    >
+                      {!item.user}
+                    </span>
+                   </td>
+
+                  <td>
+                   
+                  
+                      <span class="uiOutputText" >
+                        {!item.oldValue}
+                      </span>
+        
+                    
+                  </td>
+                  <td>
+                   
+                  <span class="uiOutputText">
+                        {!item.newValue}</span
+                      >
+     
+                    
+                  </td>
+                  
+                </tr>
+    </aura:iteration>
+ 
+             
+               
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+           </aura:if>
+  </article>
+
+</aura:component>

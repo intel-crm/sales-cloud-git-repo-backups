@@ -2,17 +2,19 @@
 
     <template if:true={isOutcomeBasedActivityVisible}>
         <div>
+            <template if:true={showHeader}>
             <lightning-layout class="slds-page-header slds-page-header--object-home">
                 <lightning-layout-item padding="horizontal-small" size="12" style="width:inherit;">
                     <div class="page-section page-header">
-                        <h1 class="header-title">
+                        <h1 class={headerClass}>
                             {CampaignPurposeHeader}
                         </h1>
                     </div>
                 </lightning-layout-item>
             </lightning-layout>
+            </template>
             <div class={divClass}>
-
+            <template if:false={hasTypedReadOnlyOutcomes}>
                 <table class="slds-table slds-table_bordered slds-m-top_medium">
                     <thead>
                         <tr>
@@ -70,17 +72,28 @@
                                 <td style="width: 100px;">
                                     <div class="combobox-fix">
                                         <lightning-combobox class="responsive-input" name="baseline"
-                                            data-id="baselineInputBox" value={selectedBaseline} variant="label-hidden"
-                                            options={baselineOptions} onchange={handleInputChangeBaseline}
-                                            disabled={editable}>
+                                            data-id="baselineInputBox"
+                                            value={selectedBaseline}
+                                            variant="label-hidden"
+                                            options={baselineOptions}
+                                            onchange={handleInputChangeBaseline}
+                                            disabled={editable}
+                                            required={isCcfDcfPurpose}>
                                         </lightning-combobox>
                                     </div>
                                 </td>
                                 <td>
-                                    <lightning-input class="small-input" type="number" step="1" min="0"
-                                        value={selectedResult} data-id="optionalValue" data-ignore="true"
-                                        onchange={handleResultChanged} disabled={isDisabled} variant="label-hidden"
-                                        required>
+                                    <lightning-input class="small-input"
+                                        type="number"
+                                        step="1"
+                                        min="0"
+                                        value={selectedResult}
+                                        data-id="optionalValue"
+                                        data-ignore="true"
+                                        onchange={handleResultChanged}
+                                        disabled={isDisabled}
+                                        variant="label-hidden"
+                                        required={isPurposeResultRequired}>
                                     </lightning-input>
                                 </td>
                             </tr>
@@ -101,11 +114,248 @@
                             </template>
                         </tbody>
                     </template>
+                    
                 </table>
+            </template>
+            <template if:true={hasTypedReadOnlyOutcomes}>
 
+    <template if:true={hasMarketingOutcomes}>
+
+                <div class="slds-m-top_medium">
+
+                    <h2 class="slds-text-heading_small">{MarketingPurpose}</h2>
+
+                    <table class="slds-table slds-table_bordered slds-m-top_small">
+
+                        <thead>
+
+                            <tr>
+
+                                <th style="vertical-align: middle; background-color: #f3f3f3">{OutComeMetric}</th>
+
+                                <th style="vertical-align: middle; background-color: #f3f3f3">{BaslineValue}</th>
+
+                                <th style="vertical-align: middle; background-color: #f3f3f3">{GoalValue}</th>
+
+                                <th style="vertical-align: middle; background-color: #f3f3f3">{BaselinePeriod}</th>
+
+                                <th style="vertical-align: middle; background-color: #f3f3f3">{ResultValue}</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <template for:each={marketingOutcomes} for:item="o">
+
+                                <tr key={o.outcomeMetricApi}>
+
+                                    <td>{o.outcomeMetric}</td>
+
+                                    <td>{o.baselineValue}</td>
+
+                                    <td>{o.goalValue}</td>
+
+                                    <td>{o.baseLinePeriod}</td>
+
+                                    <td>{o.resultValue}</td>
+
+                                </tr>
+
+                            </template>
+
+                        </tbody>
+
+                    </table>
+
+                    <template for:each={marketingOutcomes} for:item="o">
+
+                        <div key={o.outcomeMetricApi} class="slds-grid slds-wrap slds-p-top_small">
+
+                            <div class="slds-col slds-size_1-of-2 slds-p-right_small">
+
+                                <div class="slds-form-element">
+
+                                    <span class="slds-form-element__label">{BrandsForOutcomeMetric}</span>
+
+                                    <div class="slds-form-element__static">
+                                        {o.brandDisplayValues}
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-2 slds-p-left_small">
+
+                                <div class="slds-form-element">
+
+                                    <span class="slds-form-element__label">{TechnologiesForOutcomeMetric}</span>
+
+                                    <div class="slds-form-element__static">
+                                        {o.technologyDisplayValues}
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-1 slds-p-top_small">
+
+                                <div class="slds-form-element">
+
+                                    <span class="slds-form-element__label">
+                                        {OtherBrandsTechnologies}
+                                    </span>
+
+                                    <div class="slds-form-element__static">
+
+                                        <lightning-formatted-text
+                                            value={o.otherBrandsTechnologies}>
+                                        </lightning-formatted-text>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-1 slds-p-top_small">
+
+                                {o.Description}
+
+                            </div>
+
+                        </div>
+
+                    </template>
+
+                </div>
+
+            </template>
+
+
+            <template if:true={hasBusinessOutcomes}>
+
+                <div class="slds-m-top_medium">
+
+                    <h2 class="slds-text-heading_small">{BusinessPurpose}</h2>
+
+                    <table class="slds-table slds-table_bordered slds-m-top_small">
+
+                        <thead>
+
+                            <tr>
+
+                                <th style="vertical-align: middle; background-color: #f3f3f3">{OutComeMetric}</th>
+
+                                <th style="vertical-align: middle; background-color: #f3f3f3">{BaslineValue}</th>
+
+                                <th style="vertical-align: middle; background-color: #f3f3f3">{GoalValue}</th>
+
+                                <th style="vertical-align: middle; background-color: #f3f3f3">{BaselinePeriod}</th>
+
+                                <th style="vertical-align: middle; background-color: #f3f3f3">{ResultValue}</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <template for:each={businessOutcomes} for:item="o">
+
+                                <tr key={o.outcomeMetricApi}>
+
+                                    <td>{o.outcomeMetric}</td>
+
+                                    <td>{o.baselineValue}</td>
+
+                                    <td>{o.goalValue}</td>
+
+                                    <td>{o.baseLinePeriod}</td>
+
+                                    <td>{o.resultValue}</td>
+
+                                </tr>
+
+                            </template>
+
+                        </tbody>
+
+                    </table>
+
+                    <template for:each={businessOutcomes} for:item="o">
+
+                        <div key={o.outcomeMetricApi} class="slds-grid slds-wrap slds-p-top_small">
+
+                            <div class="slds-col slds-size_1-of-2 slds-p-right_small">
+
+                                <div class="slds-form-element">
+
+                                    <span class="slds-form-element__label">{BrandsForOutcomeMetric}</span>
+
+                                    <div class="slds-form-element__static">
+                                        {o.brandDisplayValues}
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-2 slds-p-left_small">
+
+                                <div class="slds-form-element">
+
+                                    <span class="slds-form-element__label">{TechnologiesForOutcomeMetric}</span>
+
+                                    <div class="slds-form-element__static">
+                                        {o.technologyDisplayValues}
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-1 slds-p-top_small">
+
+                                <div class="slds-form-element">
+
+                                    <span class="slds-form-element__label">
+                                        {OtherBrandsTechnologies}
+                                    </span>
+
+                                    <div class="slds-form-element__static">
+
+                                        <lightning-formatted-text
+                                            value={o.otherBrandsTechnologies}>
+                                        </lightning-formatted-text>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-1 slds-p-top_small">
+
+                                {o.Description}
+
+                            </div>
+
+                        </div>
+
+                    </template>
+
+                </div>
+
+            </template>
+
+        </template>
             </div>
             <!-- Description -->
-            <template if:true={isReadOnly}>
+            <template if:true={showLegacyReadOnlyDescription}>
                 <div class="slds-p-left_medium slds-p-top_small">{description}</div>
             </template>
 

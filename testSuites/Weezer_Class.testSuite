@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_MDF_ATFFlagUpdateBatch_Test</testClassName>
+    <testClassName>Core_MDF_KPI_FieldsTest</testClassName>
+    <testClassName>Core_MDF_PFR_Approval_Test</testClassName>
+    <testClassName>Core_MDF_POP_Details_test</testClassName>
+    <testClassName>Core_MDF_Process_PartnerFundRequest_Test</testClassName>
+    <testClassName>Core_MDF_RecallApprovalHandler_Test</testClassName>
+    <testClassName>Core_MDF_Reopen_Activity_Test</testClassName>
+    <testClassName>Core_MDF_RMF_SchNotification_Batch_Test</testClassName>
+    <testClassName>Core_MDF_Rules_Engine_Test</testClassName>
+    <testClassName>Core_MDF_SendPFREmailNotification_Test</testClassName>
+    <testClassName>Core_MDF_UpdateActivityFields_Test</testClassName>
+</ApexTestSuite>

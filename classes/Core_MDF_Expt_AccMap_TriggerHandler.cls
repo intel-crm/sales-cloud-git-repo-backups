@@ -30,7 +30,7 @@ public class Core_MDF_Expt_AccMap_TriggerHandler extends TriggerHandler{
             Core_MDF_Expt_AccMap_ServiceHandler.shareEAM((Map<Id,Core_MDF_Exception_Account_Mapping__c>) Trigger.newMap);
         }
         if(!Core_MDF_Utility.byPassFeature('Core_MDF_ByPass_EAM_Expt_Ext_Sharing')){
-          Core_MDF_Expt_AccMap_ServiceHandler.shareRecordsWithExtUsers((Map<Id,Core_MDF_Exception_Account_Mapping__c>) Trigger.newMap);
+        Core_MDF_Expt_AccMap_ServiceHandler.shareRecordsWithExtUsers((Map<Id,Core_MDF_Exception_Account_Mapping__c>) Trigger.newMap);
         }
     }
     

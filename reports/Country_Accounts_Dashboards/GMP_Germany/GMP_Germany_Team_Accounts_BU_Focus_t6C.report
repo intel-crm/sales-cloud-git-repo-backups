@@ -14,6 +14,9 @@
         <field>ROLLUP_DESCRIPTION</field>
     </columns>
     <columns>
+        <field>RECORDTYPE</field>
+    </columns>
+    <columns>
         <field>Account.Core_CIM_ID__c</field>
     </columns>
     <columns>
@@ -54,7 +57,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>EMP of Torsten Kahrmann,EMP of Markus Seifert,EMP of Markus Gabler,EMP of Hannes Schwaderer,EMP of Franzi Divis,EMP of Christoph Johann,EMP of Christian Roth,EMP of Christian Ganz,EMP of Christian Anderka,EMP of Andreas Timm,EMP of Michael Krueger</value>
+            <value>EMP of Torsten Kahrmann,EMP of Markus Seifert,EMP of Markus Gabler,EMP of Hannes Schwaderer,EMP of Franzi Divis,EMP of Christoph Johann,EMP of Christian Roth,EMP of Christian Ganz,EMP of Christian Anderka,EMP of Andreas Timm</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

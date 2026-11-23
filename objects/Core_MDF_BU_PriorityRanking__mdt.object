@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Priority Ranking of Business Units</description>
+    <fields>
+        <fullName>Core_MDF_Ranking_nbr__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Ranking</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>CCP BU PriorityRanking</label>
+    <pluralLabel>CCP BU PrioritiyRankings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

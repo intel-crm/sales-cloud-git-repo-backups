@@ -9,7 +9,7 @@ Description : Scheduler class to Schedule Core_AssignRemove_PermissionSet_Batch 
 * Vaibhav                  30/03/2020             Original Version
 *************************************************************************************/
 
-global without sharing class Core_Batch_A_E_PermSet_Mgmt_Scheduler implements Schedulable {
+global class Core_Batch_A_E_PermSet_Mgmt_Scheduler implements Schedulable {
     global void execute(SchedulableContext sc){
         Core_Batch_A_E_PermSet_Mgmt classCon = new Core_Batch_A_E_PermSet_Mgmt();       
         //Parameters of ExecuteBatch(Classcontext,BatchSize)

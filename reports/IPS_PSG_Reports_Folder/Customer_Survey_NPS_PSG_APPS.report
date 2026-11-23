@@ -117,7 +117,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>UNIQUEST,altima,arrow,macnica,digi-key</value>
+            <value>altima,arrow,macnica,digi-key</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -127,7 +127,7 @@
         <field>CLOSED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Obso - Customer Survey NPS - PSG APPS</name>
+    <name>Customer Survey NPS - PSG APPS</name>
     <params>
         <name>units</name>
         <value>d</value>

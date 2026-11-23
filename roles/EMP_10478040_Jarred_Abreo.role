@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Brian Landi</description>
+    <description>EMP of Kevin Constantine</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_10478040_Jarred_Abreo</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_10615873_Brian_Landi</parentRole>
+    <parentRole>EMP_11366348_Kevin_Constantine</parentRole>
 </Role>

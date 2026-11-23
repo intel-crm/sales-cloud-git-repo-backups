@@ -18,12 +18,16 @@
         <name>Core_MDF_Budget_Type_Nm__c</name>
     </fields>
     <fields>
-        <label><!-- Budget Type --></label>
+        <label><!-- Budget Type-old --></label>
         <name>Core_MDF_Budget_Type_Txt__c</name>
     </fields>
     <fields>
         <label><!-- Comments --></label>
         <name>Core_MDF_Comments_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Company --></label>
+        <name>Core_MDF_Company_txt__c</name>
     </fields>
     <fields>
         <label>轉換率</label>
@@ -140,6 +144,10 @@
         <description><!-- DCF MDF Record Type --></description>
         <label><!-- Datacenter MDF --></label>
         <name>Core_MDF_Data_Center_Co_Marketing_Fund_MDF</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Ecosystem Extension Fund --></label>
+        <name>Core_MDF_Ecosystem_Extension_Fund</name>
     </recordTypes>
     <recordTypes>
         <description><!-- IPA Program Record Type --></description>

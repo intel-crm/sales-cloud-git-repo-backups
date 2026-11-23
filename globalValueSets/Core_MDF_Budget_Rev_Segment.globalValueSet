@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Test</fullName>
+        <default>false</default>
+        <label>Test</label>
+    </customValue>
+    <description>Stores Budget Revenue Segments (auto-synced from Core_MDF_CCP_Custom_Metadata_Utility__c)</description>
+    <masterLabel>Budget Rev Segment</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -168,6 +168,16 @@
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <fields>
+        <fullName>Core_MDF_Expected_Spending_Amount_amt__c</fullName>
+        <label>Expected Spending Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Field_Name_nm__c</fullName>
         <label>Field Name</label>
         <required>false</required>
@@ -564,7 +574,7 @@
     <nameField>
         <displayFormat>Attribute-{00000}</displayFormat>
         <label>Activity Attributes Name</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Activity Attributes</pluralLabel>

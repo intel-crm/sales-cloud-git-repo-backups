@@ -73,7 +73,7 @@ public class Core_MDF_ClaimInsertForEinPred_Test {
         // Creating Intel Account with utility class
         Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
         acc1.Core_Account_Type__c = 'Reseller';
-        //acc1.Core_Sales_Groups__c = 'US Sales Group';
+        acc1.Core_Sales_Groups__c = 'US Sales Group';
         acc1.Industry = 'Food & Beverage';
         acc1.Core_MDF_Channel_Program__c = cpCCF.Id;
         acc1.Core_MDF_CoMarketingActive__c = true;
@@ -163,7 +163,7 @@ public class Core_MDF_ClaimInsertForEinPred_Test {
         
         
         //creating ABM for bank1
-       // Highlight: Unused Local Variable 
+       // Highlight: Unused Local Variable - Indira
       //  Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(accCCF.Id,indiaBank.Id,true);
         
         PartnerFundClaim indiaClaim1 = Core_MDF_CCP_TestDataUtility.createClaim('India Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF, 
@@ -218,10 +218,7 @@ public class Core_MDF_ClaimInsertForEinPred_Test {
         
         // Log the error message
         for(Database.Error err : sr.getErrors()) {
-            System.debug('Error returned: ' +
-                         err.getStatusCode() +
-                         ' - ' +
-                         err.getMessage()+' - '+err.getFields());
+          
         }
         
         // Verify that no claim PRediction was created by a trigger.
@@ -237,7 +234,7 @@ public class Core_MDF_ClaimInsertForEinPred_Test {
         Test.startTest();
         try{
             Core_MDF_Claim_Prediction_Event__e evt = new Core_MDF_Claim_Prediction_Event__e(Core_MDF_PE_ID__c='');
-           // Highlight: Unused Local Variable 
+           // Highlight: Unused Local Variable - Indira
           /*  Database.SaveResult sr = */ EventBus.publish(evt);
            // List <Core_MDF_Claim_Prediction__c> obj  = [SELECT Id FROM Core_MDF_Claim_Prediction__c ]; 
             
@@ -252,7 +249,7 @@ public class Core_MDF_ClaimInsertForEinPred_Test {
          Test.startTest();
          Core_MDF_ClaimPredictionServiceHandler.getCodeCoverage();
          Test.stopTest();
-        // Unit Test Method should include System.Assert 
+        // Unit Test Method should include System.Assert - Indira
         System.assert(true, 'Code coverage method executed successfully');
     }
     
@@ -261,7 +258,7 @@ public class Core_MDF_ClaimInsertForEinPred_Test {
          Test.startTest();
          Core_MDF_ClaimPredictionTriggerHandler.getCodeCoverage();
          Test.stopTest();
-        // Unit Test Method should include System.Assert
+        // Unit Test Method should include System.Assert - Indira
         System.assert(true, 'Code coverage method executed successfully');
     }
 }

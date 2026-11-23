@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>XLSX Generation POC</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>XLSX Generation POCs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Address --></label>
+        <name>Address__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name --></label>
+        <name>Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Organization --></label>
+        <name>Organization__c</name>
+    </fields>
+    <fields>
+        <label><!-- Phone Number --></label>
+        <name>Phone_Number__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Add_to_Mass_Merge_List --></label>
+        <name>Add_to_Mass_Merge_List</name>
+    </webLinks>
+</CustomObjectTranslation>

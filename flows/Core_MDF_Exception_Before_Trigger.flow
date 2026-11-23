@@ -5,8 +5,8 @@
     <assignments>
         <name>Add_Extracted_Picklist_Values_to_a_List</name>
         <label>Add Extracted Picklist Values to a List</label>
-        <locationX>666</locationX>
-        <locationY>1427</locationY>
+        <locationX>829</locationX>
+        <locationY>1475</locationY>
         <assignmentItems>
             <assignToReference>ExtractedCountryPicklistValues</assignToReference>
             <operator>Add</operator>
@@ -21,8 +21,8 @@
     <assignments>
         <name>Assign_Blank_value_to_Host_Region</name>
         <label>Assign Blank value to Host Region</label>
-        <locationX>732</locationX>
-        <locationY>2111</locationY>
+        <locationX>895</locationX>
+        <locationY>2159</locationY>
         <assignmentItems>
             <assignToReference>$Record.Core_MDF_HostRegion_txt__c</assignToReference>
             <operator>Assign</operator>
@@ -31,8 +31,8 @@
     <assignments>
         <name>Assign_Country_Field_to_a_Variable</name>
         <label>Assign Country Field to a Variable</label>
-        <locationX>534</locationX>
-        <locationY>1103</locationY>
+        <locationX>697</locationX>
+        <locationY>1151</locationY>
         <assignmentItems>
             <assignToReference>Country_MultiSelect_Picklist_Values</assignToReference>
             <operator>Assign</operator>
@@ -47,8 +47,8 @@
     <assignments>
         <name>Assign_Exception_Status</name>
         <label>Assign Exception Status</label>
-        <locationX>110</locationX>
-        <locationY>503</locationY>
+        <locationX>274</locationX>
+        <locationY>551</locationY>
         <assignmentItems>
             <assignToReference>$Record.Core_MDF_Exception_Status_nm__c</assignToReference>
             <operator>Assign</operator>
@@ -71,8 +71,8 @@
         <description>Set status of exception to draft</description>
         <name>Assign_Exception_Status_Darft</name>
         <label>Assign Exception Status - Darft</label>
-        <locationX>374</locationX>
-        <locationY>503</locationY>
+        <locationX>538</locationX>
+        <locationY>551</locationY>
         <assignmentItems>
             <assignToReference>$Record.Core_MDF_Exception_Status_nm__c</assignToReference>
             <operator>Assign</operator>
@@ -94,8 +94,8 @@
     <assignments>
         <name>Assign_Geo</name>
         <label>Assign Geo</label>
-        <locationX>490</locationX>
-        <locationY>1643</locationY>
+        <locationX>653</locationX>
+        <locationY>1691</locationY>
         <assignmentItems>
             <assignToReference>Country_Region</assignToReference>
             <operator>Assign</operator>
@@ -110,8 +110,8 @@
     <assignments>
         <name>Assign_Region_Field</name>
         <label>Assign Region Field</label>
-        <locationX>402</locationX>
-        <locationY>1835</locationY>
+        <locationX>565</locationX>
+        <locationY>1883</locationY>
         <assignmentItems>
             <assignToReference>$Record.Core_MDF_Region_txt__c</assignToReference>
             <operator>Assign</operator>
@@ -126,8 +126,8 @@
     <assignments>
         <name>Assign_Region_with_all_geos</name>
         <label>Assign Region with all geos</label>
-        <locationX>930</locationX>
-        <locationY>1103</locationY>
+        <locationX>1093</locationX>
+        <locationY>1151</locationY>
         <assignmentItems>
             <assignToReference>$Record.Core_MDF_Region_txt__c</assignToReference>
             <operator>Assign</operator>
@@ -142,8 +142,8 @@
     <assignments>
         <name>Extract_Picklist_Values</name>
         <label>Extract Picklist Values</label>
-        <locationX>666</locationX>
-        <locationY>1535</locationY>
+        <locationX>829</locationX>
+        <locationY>1583</locationY>
         <assignmentItems>
             <assignToReference>Formatted_Picklist_Values</assignToReference>
             <operator>Assign</operator>
@@ -152,15 +152,14 @@
             </value>
         </assignmentItems>
         <connector>
-            <isGoTo>true</isGoTo>
             <targetReference>Check_all_Values_are_Parsed</targetReference>
         </connector>
     </assignments>
     <assignments>
         <name>Format_Multiselect_Picklist_Values</name>
         <label>Format Multiselect Picklist Values</label>
-        <locationX>534</locationX>
-        <locationY>1211</locationY>
+        <locationX>697</locationX>
+        <locationY>1259</locationY>
         <assignmentItems>
             <assignToReference>Formatted_Picklist_Values</assignToReference>
             <operator>Assign</operator>
@@ -175,8 +174,8 @@
     <assignments>
         <name>Set_Select_All_Country_to_True</name>
         <label>Set Select All Country to True</label>
-        <locationX>50</locationX>
-        <locationY>887</locationY>
+        <locationX>213</locationX>
+        <locationY>935</locationY>
         <assignmentItems>
             <assignToReference>$Record.Core_MDF_Select_All_Country_ind__c</assignToReference>
             <operator>Assign</operator>
@@ -189,8 +188,8 @@
         <description>Set status to pending review</description>
         <name>Set_status_as_pending_review</name>
         <label>Set status as pending review</label>
-        <locationX>638</locationX>
-        <locationY>503</locationY>
+        <locationX>801</locationX>
+        <locationY>551</locationY>
         <assignmentItems>
             <assignToReference>$Record.Core_MDF_Exception_Status_nm__c</assignToReference>
             <operator>Assign</operator>
@@ -205,8 +204,8 @@
     <decisions>
         <name>Check_all_Values_are_Parsed</name>
         <label>Check all Values are Parsed</label>
-        <locationX>534</locationX>
-        <locationY>1319</locationY>
+        <locationX>697</locationX>
+        <locationY>1367</locationY>
         <defaultConnector>
             <targetReference>Add_Extracted_Picklist_Values_to_a_List</targetReference>
         </defaultConnector>
@@ -230,8 +229,8 @@
     <decisions>
         <name>Check_based_on_All_Country</name>
         <label>Check based on All Country</label>
-        <locationX>732</locationX>
-        <locationY>995</locationY>
+        <locationX>895</locationX>
+        <locationY>1043</locationY>
         <defaultConnector>
             <targetReference>Assign_Region_with_all_geos</targetReference>
         </defaultConnector>
@@ -256,8 +255,8 @@
         <description>For Co-GTM Program set Select all country value always to true</description>
         <name>Check_for_Co_GTM_Exception_Record</name>
         <label>Check for Co-GTM Exception Record</label>
-        <locationX>506</locationX>
-        <locationY>779</locationY>
+        <locationX>669</locationX>
+        <locationY>827</locationY>
         <defaultConnector>
             <targetReference>Check_for_IPA_Exception_Record</targetReference>
         </defaultConnector>
@@ -281,8 +280,8 @@
     <decisions>
         <name>Check_for_IPA_Exception_Record</name>
         <label>Check for IPA Exception Record</label>
-        <locationX>963</locationX>
-        <locationY>887</locationY>
+        <locationX>1126</locationX>
+        <locationY>935</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Update_Region</name>
@@ -338,8 +337,8 @@
     <decisions>
         <name>Check_for_New_Record</name>
         <label>Check for New Record</label>
-        <locationX>506</locationX>
-        <locationY>287</locationY>
+        <locationX>669</locationX>
+        <locationY>335</locationY>
         <defaultConnector>
             <targetReference>Check_if_all_account_is_true_when_status_is_draft</targetReference>
         </defaultConnector>
@@ -364,8 +363,8 @@
         <description>Check if all account is true when status is draft</description>
         <name>Check_if_all_account_is_true_when_status_is_draft</name>
         <label>Check if all account is true when status is draft</label>
-        <locationX>770</locationX>
-        <locationY>395</locationY>
+        <locationX>933</locationX>
+        <locationY>443</locationY>
         <defaultConnector>
             <targetReference>Check_for_Co_GTM_Exception_Record</targetReference>
         </defaultConnector>
@@ -397,8 +396,8 @@
         <description>Set status to draft if all account is false while creating an exception</description>
         <name>Set_Exception_status_to_Draft_or_Pending_Review</name>
         <label>Set Exception status to Draft or Pending Review</label>
-        <locationX>242</locationX>
-        <locationY>395</locationY>
+        <locationX>406</locationX>
+        <locationY>443</locationY>
         <defaultConnector>
             <targetReference>Assign_Exception_Status_Darft</targetReference>
         </defaultConnector>
@@ -457,8 +456,8 @@ IF(CONTAINS({!Country_Region}, {!Loop_on_Country_Geo_Mapping_Records.Core_MDF_Ge
     <loops>
         <name>Loop_on_Country_Geo_Mapping_Records</name>
         <label>Loop on Country Geo Mapping Records</label>
-        <locationX>402</locationX>
-        <locationY>1535</locationY>
+        <locationX>565</locationX>
+        <locationY>1583</locationY>
         <collectionReference>Country_Geo_Mapping_Records</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -477,7 +476,7 @@ IF(CONTAINS({!Country_Region}, {!Loop_on_Country_Geo_Mapping_Records.Core_MDF_Ge
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -490,8 +489,8 @@ IF(CONTAINS({!Country_Region}, {!Loop_on_Country_Geo_Mapping_Records.Core_MDF_Ge
     <recordLookups>
         <name>Get_Country_Geo_Mapping_Records</name>
         <label>Get Country Geo Mapping Records</label>
-        <locationX>402</locationX>
-        <locationY>1427</locationY>
+        <locationX>565</locationX>
+        <locationY>1475</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Loop_on_Country_Geo_Mapping_Records</targetReference>
@@ -511,8 +510,8 @@ IF(CONTAINS({!Country_Region}, {!Loop_on_Country_Geo_Mapping_Records.Core_MDF_Ge
         <queriedFields>Core_MDF_Geo__c</queriedFields>
     </recordLookups>
     <start>
-        <locationX>380</locationX>
-        <locationY>0</locationY>
+        <locationX>543</locationX>
+        <locationY>48</locationY>
         <connector>
             <targetReference>Check_for_New_Record</targetReference>
         </connector>

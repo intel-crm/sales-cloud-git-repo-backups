@@ -97,7 +97,7 @@
         <field>OPPORTUNITY_ID</field>
     </columns>
     <filter>
-        <booleanFilter>(1 AND 2 AND 3) AND 4</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Product_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -118,13 +118,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>Vision Accelerator Design</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Approved_Total_Price__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>greaterOrEqual</operator>
-            <value>250000</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

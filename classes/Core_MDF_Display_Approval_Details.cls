@@ -203,6 +203,7 @@ Modified By:        Date:      Changes:
         StageWrapper stageWrap = new StageWrapper();
         stageWrap.ApprovalStageCode = stageCode;
         try{
+            //Core_MDF_ApprovalStageConfig__c approvalConfig = Core_MDF_ApprovalStageConfig__c.getValues(stageCode);
             Core_MDF_ApprovalStageConfig__c approvalConfig = [SELECT Id, Name, Core_MDF_Approval_Stage_Label_txt__c, Core_MDF_Approval_Stage_API_txt__c FROM Core_MDF_ApprovalStageConfig__c WHERE Core_MDF_Approval_Stage_API_txt__c =: stageCode LIMIT 1];
             if(approvalConfig!= null){
                 stageWrap.ApprovalStageLabel = approvalConfig.Core_MDF_Approval_Stage_Label_txt__c;

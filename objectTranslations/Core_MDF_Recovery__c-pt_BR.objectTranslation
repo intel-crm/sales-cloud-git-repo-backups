@@ -2,11 +2,11 @@
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseValues>
         <plural>false</plural>
-        <value>Recuperação</value>
+        <value><!-- Recovery --></value>
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>Recuperação</value>
+        <value><!-- Recovery --></value>
     </caseValues>
     <fields>
         <label>Valor (USD)</label>
@@ -23,6 +23,10 @@
         <relationshipLabel><!-- Recoveries --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Quarter Year --></label>
+        <name>Core_MDF_Quarter_Year_Nm__c</name>
+    </fields>
+    <fields>
         <label><!-- Recovered Budget --></label>
         <name>Core_MDF_Recovered_Budget_Nm__c</name>
     </fields>
@@ -30,6 +34,10 @@
         <label>Liquide e, então, seja pago</label>
         <name>Core_MDF_Sure_Pay_Ind__c</name>
     </fields>
-    <gender>Feminine</gender>
+    
     <nameFieldLabel><!-- Recovery Number --></nameFieldLabel>
+    <validationRules>
+        <errorMessage><!-- you cannot create recovery. --></errorMessage>
+        <name>Test_To_Be_Deleted</name>
+    </validationRules>
 </CustomObjectTranslation>

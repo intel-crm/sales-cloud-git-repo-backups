@@ -23,6 +23,10 @@
         <relationshipLabel><!-- Primary to Activating Partners Map --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Duplicate Detected --></label>
+        <name>Core_MDF_Duplicate_Detected_Ind__c</name>
+    </fields>
+    <fields>
         <help><!-- End Date up to which Primary to Activating Partner Map is effective. --></help>
         <label><!-- Effective End Date --></label>
         <name>Core_MDF_Effective_End_Date__c</name>

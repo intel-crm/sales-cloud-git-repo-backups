@@ -20,7 +20,33 @@ public without sharing class Core_MDF_ExternalUserSharing implements Database.Ba
     public static Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
     Set<Id> groupIds = new Set<Id>();
     
-    Set<Id> groupIdForPnumDeleteCheck = new Set<Id>();    
+    Set<Id> groupIdForPnumDeleteCheck = new Set<Id>();   
+    public Core_MDF_ExternalUserSharing(){}
+    
+    public static object generateInstance(String jsonText, String classSignature){
+        object des_Obj;
+        map<String,object> parmValueMap = (Map<String, Object>)JSON.deserializeUntyped(jsonText);
+            if(classSignature == 'Core_MDF_ExternalUserSharing(Boolean forErrorRecordProcess, Set<String> userOrGroupIdSet)'){
+                boolean forErrorRecordProcess = Boolean.valueOf(parmValueMap.get('forErrorRecordProcess'));
+                string userOrGroupIds = string.valueOf(parmValueMap.get('userOrGroupIdSet'));
+                Set<String> userOrGroupIdSet = new Set<String>();
+                if(userOrGroupIds!=null && userOrGroupIds !=''){
+                	userOrGroupIdSet.addAll(userOrGroupIds.split(';'));
+                }
+                des_Obj = new Core_MDF_ExternalUserSharing(forErrorRecordProcess,userOrGroupIdSet);
+            }
+            else if(classSignature == 'Core_MDF_ExternalUserSharing(Boolean forErrorRecordProcess, Set<String> userOrGroupIdSet, Integer counter)'){
+                boolean forErrorRecordProcess = Boolean.valueOf(parmValueMap.get('forErrorRecordProcess'));
+                string userOrGroupIds = string.valueOf(parmValueMap.get('userOrGroupIdSet'));
+                Set<String> userOrGroupIdSet = new Set<String>();
+                if(userOrGroupIds!=null && userOrGroupIds !=''){
+                	userOrGroupIdSet.addAll(userOrGroupIds.split(';'));
+                }
+                Integer counter = Integer.valueOf('counter');
+                des_Obj = new Core_MDF_ExternalUserSharing(forErrorRecordProcess,userOrGroupIdSet,counter);
+            }
+        	return des_Obj;
+    }
     
     public Core_MDF_ExternalUserSharing(Boolean forErrorRecordProcess, Set<String> userOrGroupIdSet) {        
         this.forErrorRecordProcess = forErrorRecordProcess;
@@ -76,6 +102,7 @@ public without sharing class Core_MDF_ExternalUserSharing implements Database.Ba
                 groupIds.add(pgm.Core_MDF_Group_Id__c);
                 // contains external group ids from the group
             }
+           
             String strQuery = '';
             if(forErrorRecordProcess && userOrGroupIdSet != null && !userOrGroupIdSet.isEmpty()) {
                 strQuery = 'SELECT Id, groupId, group.Name, UserOrGroupId FROM GroupMember WHERE GroupId IN:groupIds AND UserOrGroupId IN: userOrGroupIdSet';
@@ -103,6 +130,7 @@ public without sharing class Core_MDF_ExternalUserSharing implements Database.Ba
 
 
         try{
+           
             Map<Id, List<Id>> userorgroupIdtoGroupIdListMap = new Map<Id, List<Id>>();
             Set<Id> inactiveUserIds = new Set<Id>();
             Map<Id, Boolean> userToActiveFlagMap = new Map<Id, Boolean>();
@@ -134,6 +162,7 @@ public without sharing class Core_MDF_ExternalUserSharing implements Database.Ba
             Map<Id, List<Id>> userIdToGroupIdListMap = new Map<Id, List<Id>>();
             //Find the Existing UserShare entries
             for(UserShare ushare :[SELECT Id, UserId, UserOrGroupId,UserOrGroup.Name FROM UserShare WHERE UserId IN :userorgroupIdtoGroupIdListMap.keySet()]) {
+             
                 if(userIdToGroupIdListMap.containsKey(ushare.userId)) {
                     userIdToGroupIdListMap.get(ushare.userId).add(ushare.UserOrGroupId);
                 } else {
@@ -156,6 +185,7 @@ public without sharing class Core_MDF_ExternalUserSharing implements Database.Ba
                     }
                 }
             }
+            
             //Delete all UserShare part of Set<User> wher Reason = Manual
             List<UserShare> ushareRecordsToBeDeleted = new List<UserShare>();
             for(UserShare usharetobedeleted :[SELECT ID, UserOrGroupId FROM UserShare WHERE(UserId IN :inactiveUserIds) AND UserOrGroupId IN :groupIds AND RowCause = :Schema.UserShare.RowCause.Manual LIMIT 10000]) {
@@ -200,7 +230,7 @@ public without sharing class Core_MDF_ExternalUserSharing implements Database.Ba
                 pnumListToBeUpdated  = [Select Id, Core_MDF_User__c, Core_MDF_Account__c
                                         FROM Core_MDF_Partner_Node_User_Mapping__c
                                         WHERE Core_MDF_User__c = :userIdList
-                                        AND Core_MDF_User__r.IsActive = TRUE
+                                        AND (Core_MDF_User__r.IsActive = TRUE OR Core_MDF_User__r.Partner_License_Reclaimed__c = TRUE)
                                        and Core_MDF_Active_Ind__c = true];
 
             }
@@ -249,12 +279,14 @@ public without sharing class Core_MDF_ExternalUserSharing implements Database.Ba
                         successMap.put(dr.getId(), 'Deleted');
                     } else {
                         String errMsg = dr.getErrors() [0].getMessage();
+                        
                         errorMap.put(userShareListToBeDeleted [index].Id, errMsg);
                         userOrGroupIdSet.add(userShareListToBeDeleted [index].UserOrGroupId);
                     }
                     index++;
                 }
             }
+            
             
             Boolean pnumDeleteSwitch =false;
             if(mapFunctionalityNameTriggerExecution.containsKey('callPnumDeleteBatch') &&

@@ -21,6 +21,9 @@
         </values>
         <values>
             <sourceValues>
+                <sourceValue>Prospecting Existing Account</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>Outbound Call</sourceValue>
             </sourceValues>
             <value>Nurturing</value>
@@ -34,6 +37,9 @@
         <values>
             <sourceValues>
                 <sourceValue>Webinar</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Prospecting New Account</sourceValue>
             </sourceValues>
             <value>Campaign</value>
         </values>

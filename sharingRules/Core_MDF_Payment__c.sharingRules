@@ -87,7 +87,7 @@
             <operation>equals</operation>
             <value>RSA MD,Retail MDF</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_MDF_CCP_CCF_ALL_RO</fullName>

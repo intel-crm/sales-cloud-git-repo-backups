@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Eizo Rugged Solutions Customer User</description>
+    <description>TECH SOURCE, INC. Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Eizo Rugged Solutions Customer User</name>
+    <name>TECH SOURCE, INC. Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_10679574_Jatindar_Dhesi</parentRole>
+    <parentRole>TECHSOURCEINCCustomerManager</parentRole>
 </Role>

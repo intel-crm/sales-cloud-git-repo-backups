@@ -2,7 +2,7 @@
 <Queue xmlns="http://soap.sforce.com/2006/04/metadata">
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
-    <name>CCP DCF Prog Admin Escalations L2 Que</name>
+    <name>CCP Datacenter Prog Admin Escl L2 Que</name>
     <queueMembers>
         <publicGroups>
             <publicGroup>Core_MDF_CCP_DCF_Prog_Admin_Escl_L2_Grp</publicGroup>

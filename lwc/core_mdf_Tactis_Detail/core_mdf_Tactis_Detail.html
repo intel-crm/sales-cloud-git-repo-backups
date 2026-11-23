@@ -1,0 +1,50 @@
+<template>
+    <lightning-layout class="slds-page-header slds-page-header--object-home">
+        <lightning-layout-item padding="horizontal-small" size="12" style="width:inherit;">
+          <div class="page-section page-header">
+            <h1 class="slds-text-heading_label">{Metrics}</h1>
+          </div>
+        </lightning-layout-item>
+      </lightning-layout>
+    <lightning-card title="Details">
+        <div class="slds-p-around_medium">
+
+            <table class="slds-table slds-table_bordered slds-m-top_medium">
+                <thead>
+                    <tr>
+                        <th>Tactics</th>
+                        <th>Tactic Metrics 
+                            <lightning-helptext content="All available metrics for each Tactic."></lightning-helptext>
+                        </th>
+                        <th>Goal Values</th>
+                        <th>Spending Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={data} for:item="item">
+                        <template for:each={item.otherKpis} for:item="kpi" for:index="kpiIndex">
+                        <tr key={kpi.id}>
+                            <template if:false={kpiIndex}>
+                            <td style = 'padding: 4px;' rowspan={item.otherKpis.length}>{item.tactic}</td>
+                            </template>
+                            <template lwc:if={kpiIndex}>
+                                <td rowspan={kpi.rowspan}>{item.firstKpi.label}</td>
+                                <td rowspan={kpi.rowspan} style = 'padding: 8px; width: 150px; white-space: normal; word-break: break-word;'>{item.firstKpi.value}</td>
+                            </template>
+                            <template lwc:else>
+                            <td rowspan={kpi.rowspan}>{kpi.label}</td>
+                            <td rowspan={kpi.rowspan} style = 'padding: 8px; width: 150px; white-space: normal; word-break: break-word;'>{kpi.value}</td>
+                            </template>
+                            <template if:false={kpiIndex}>
+                            <td rowspan={item.otherKpis.length} style = 'padding: 8px; width: 120px;'>{item.percentageValue}</td>
+                            </template>
+                        </tr>
+                    </template>
+                    </template>
+                    
+                </tbody>
+            </table>
+        </div>
+        <!--<lightning-button label="Save KPI Data" variant="brand" class="slds-m-top_medium" onclick={handleSave}></lightning-button>-->
+    </lightning-card>
+</template>

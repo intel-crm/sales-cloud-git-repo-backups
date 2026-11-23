@@ -8,8 +8,8 @@
     <openType>onClickJavaScript</openType>
     <protected>false</protected>
     <url>//SFDCpopup(&apos;https://salescrm.intel.com/pipeline-management/use-your-sales-pipeline/&apos;,1024,768);
-SFDCpopup(&apos;https://salescrm.intel.com/weekly-release-updates/&apos;,1024,768);
-
+//SFDCpopup(&apos;http://salescrm.intel.com/weekly-release-updates/&apos;,1024,768);
+SFDCpopup(&apos;http://salescrm.intel.com/whats-new-2/&apos;,1024,768);
 function SFDCpopup (url,w,h){
 
   if (isIE()) { // bypass checks because ie can&apos;t make cross domain requests without relaxing security

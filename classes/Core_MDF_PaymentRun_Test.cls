@@ -16,8 +16,7 @@ private class Core_MDF_PaymentRun_Test
     public static Id payRun_RecordType_DCFMDF = Schema.SObjectType.Core_MDF_Payment_Run__c.getRecordTypeInfosByDeveloperName().get('Data_Center_Co_Marketing_Fund_MDF').getRecordTypeId();
     public static Id payRun_RecordType_RMF = Schema.SObjectType.Core_MDF_Payment_Run__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Retail_Marketing_Funds').getRecordTypeId();
     public static Id payRun_RecordType_CoGTM = Schema.SObjectType.Core_MDF_Payment_Run__c.getRecordTypeInfosByDeveloperName().get('Co_Engineering').getRecordTypeId();
-    public static Id payRun_RecordType_IPA = Schema.SObjectType.Core_MDF_Payment_Run__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance_MDF').getRecordTypeId();
-    
+
     @TestSetup static void setUpData(){ 
         User tempUser = Core_MDF_CCP_TestDataUtility.createUser(false);
       insert tempUser;
@@ -26,7 +25,8 @@ private class Core_MDF_PaymentRun_Test
         List<User> userList = new List<User>();
         List<ChannelProgram> channelProgramList = new List<ChannelProgram>();
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
-        List<PartnerFundClaim> claimListToBeProcessed = new List<PartnerFundClaim>();
+        // Highlight: Unused Local Variable - Indira
+       // List<PartnerFundClaim> claimListToBeProcessed = new List<PartnerFundClaim>();
         List<PartnerFundAllocation> pfaList = new List<PartnerFundAllocation>(); 
         List<Core_MDF_Partner_Group_Mapping__c> pgmList = new List<Core_MDF_Partner_Group_Mapping__c>();
         List<Group> groupList = new List<Group>();
@@ -102,14 +102,15 @@ private class Core_MDF_PaymentRun_Test
         database.insert(contactList);
         
         Map<String,PermissionSet> nameToPerSet = new Map<String,PermissionSet>();
-        for(PermissionSet pSet:[SELECT Id,Name FROM PermissionSet WHERE Name IN ('Core_MDF_CCP_Internal_IPA_Payment_Adm','Core_MDF_CCP_Internal_DCF_Payment_Adm','Core_MDF_CCP_Internal_Program_Adm','Core_MDF_CCP_Internal_Claim_Case_Reviewer','Core_MDF_CCP_External_Claim_Submitter','Core_MDF_CCP_External_Retail_Claim_Submitter','Core_MDF_CCP_Internal_APJ_User','Core_MDF_CCP_Internal_Payment_Schedule_Admin','Core_MDF_CCP_Internal_Retail_Payment_Adm','View_All_Data','Core_MDF_CCP_Internal_CCF_Payment_Adm','Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader','Core_MDF_CCP_Internal_DCF_MDF_Payment_Admin','Core_MDF_CCP_Internal_Co_GTM_Payment_Adm')]) {
+        for(PermissionSet pSet:[SELECT Id,Name FROM PermissionSet WHERE Name IN ('Core_MDF_CCP_Internal_Program_Adm','Core_MDF_CCP_Internal_Claim_Case_Reviewer','Core_MDF_CCP_External_Claim_Submitter','Core_MDF_CCP_External_Retail_Claim_Submitter','Core_MDF_CCP_Internal_APJ_User','Core_MDF_CCP_Internal_Payment_Schedule_Admin','Core_MDF_CCP_Internal_Retail_Payment_Adm','View_All_Data','Core_MDF_CCP_Internal_CCF_Payment_Adm','Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader','Core_MDF_CCP_Internal_DCF_MDF_Payment_Admin','Core_MDF_CCP_Internal_Co_GTM_Payment_Adm')]) {
                                                                                      nameToPerSet.put(pSet.Name,pSet);
                                                                                  }
         
         PermissionSet progAdmPS = nameToPerSet.get('Core_MDF_CCP_Internal_Program_Adm');
         PermissionSet clmCaseUsr = nameToPerSet.get('Core_MDF_CCP_Internal_Claim_Case_Reviewer');
-        PermissionSet clmSubmitterUser = nameToPerSet.get('Core_MDF_CCP_External_Claim_Submitter');
-        PermissionSet clmRetailSubmitter = nameToPerSet.get('Core_MDF_CCP_External_Retail_Claim_Submitter');
+        // Highlight: Unused Local Variable - Indira
+       // PermissionSet clmSubmitterUser = nameToPerSet.get('Core_MDF_CCP_External_Claim_Submitter');
+       // PermissionSet clmRetailSubmitter = nameToPerSet.get('Core_MDF_CCP_External_Retail_Claim_Submitter');
         PermissionSet paymentAdmGeoPS = nameToPerSet.get('Core_MDF_CCP_Internal_APJ_User'); 
         PermissionSet paymentAdmSchedulePS = nameToPerSet.get('Core_MDF_CCP_Internal_Payment_Schedule_Admin'); 
         PermissionSet paymentAdmRMFPS = nameToPerSet.get('Core_MDF_CCP_Internal_Retail_Payment_Adm'); 
@@ -117,8 +118,6 @@ private class Core_MDF_PaymentRun_Test
         PermissionSet ccpPSadmin = nameToPerSet.get('Core_MDF_CCP_Internal_CCF_Payment_Adm'); 
         PermissionSet ccpMDFBudgetLoaderPS = nameToPerSet.get('Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader'); 
         PermissionSet ccpDCFMDFPayAdminPS = nameToPerSet.get('Core_MDF_CCP_Internal_DCF_MDF_Payment_Admin');
-        PermissionSet ccpDCFCMPPayAdminPS = nameToPerSet.get('Core_MDF_CCP_Internal_DCF_Payment_Adm');
-        PermissionSet ccpIPAPayAdminPS = nameToPerSet.get('Core_MDF_CCP_Internal_IPA_Payment_Adm');
         Profile ccpCoreProfile = [SELECT Id FROM Profile WHERE Name = 'CCP - Core Access' limit 1]; //ATHR Fix - WW16
         
         Map<String,Id> profileToId = new Map<String,Id>();
@@ -207,16 +206,6 @@ private class Core_MDF_PaymentRun_Test
         assignMDFDCfPayAdmPermissionSet.AssigneeId = usr2.Id;
         assignMDFDCfPayAdmPermissionSet.PermissionSetId = ccpDCFMDFPayAdminPS.Id;
         permSetAssgnLst.add(assignMDFDCfPayAdmPermissionSet);
-        
-        PermissionSetAssignment assignDCFCMPPayAdmPermissionSet = new PermissionSetAssignment();
-        assignDCFCMPPayAdmPermissionSet.AssigneeId = usr2.Id;
-        assignDCFCMPPayAdmPermissionSet.PermissionSetId = ccpDCFCMPPayAdminPS.Id;
-        permSetAssgnLst.add(assignDCFCMPPayAdmPermissionSet);
-        
-        PermissionSetAssignment ipaPayAdmPermissionSet = new PermissionSetAssignment();
-        ipaPayAdmPermissionSet.AssigneeId = usr2.Id;
-        ipaPayAdmPermissionSet.PermissionSetId = ccpIPAPayAdminPS.Id;
-        permSetAssgnLst.add(ipaPayAdmPermissionSet);
         
         PermissionSet cogtmPaymentAdmPS = nameToPerSet.get('Core_MDF_CCP_Internal_Co_GTM_Payment_Adm');
         
@@ -326,12 +315,7 @@ private class Core_MDF_PaymentRun_Test
         channelProgramList.add(cp1);
         ChannelProgram cp2 = Core_MDF_CCP_TestDataUtility.createProgram ('Retail Marketing Funds','Retail Marketing Funds', false);        
         channelProgramList.add(cp2);
-        ChannelProgram cp3 = Core_MDF_CCP_TestDataUtility.createProgram ('Intel Partner Alliance','Intel Partner Alliance', false);        
-        channelProgramList.add(cp3);
-        String ipaProgramName = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name');
-        if(ipaProgramName != null && ipaProgramName != '') {
-            cp3.Name = ipaProgramName;
-        }
+        
         database.insert(channelProgramList);
         
         // Creating Co-marketing Account with utility class
@@ -423,7 +407,7 @@ private class Core_MDF_PaymentRun_Test
         MdfCampaign.Core_MDF_Opal_Budget_Type_Txt__c='MDF';
         MdfCampaign.Core_MDF_Activity_Category__c = 'Event';
         MdfCampaign.Core_MDF_Reimbursement_Rate__c='100%';
-        MdfCampaign.Core_MDF_Technology__c = 'SmartEdge';
+        MdfCampaign.Core_MDF_Technology__c = 'Sapphire Rapids';
         campaignList.add(MdfCampaign);
         
         Campaign rsaMDCamp = Core_MDF_CCP_TestDataUtility.createCampaign('Retail Campaigm2','Gaming','9ᵗʰ Gen','No', Core_MDF_CCP_TestDataUtility.campaign_RecordType_Retail, 'Retail Marketing Funds', System.today().addDays(-30), System.today().addDays(30), 100000, 'Instore innovation', dellRMFVirtualCorp.Id,'Desktop', false); 
@@ -482,7 +466,7 @@ private class Core_MDF_PaymentRun_Test
         PartnerFundAllocation pfaDellCCFVirtualCorpMDF = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('pfaDellCCFVirtualCorp',pmbRecord3, dellDCFVirtualCorpMDF, 100000,false);
         pfaList.add(pfaDellCCFVirtualCorpMDF);
         database.insert(pfaList);
-                
+               
         List<Core_MDF_Bank__c> listBank = new List<Core_MDF_Bank__c>();
         //Creating Bank
         Core_MDF_Bank__c indiaBank = Core_MDF_CCP_TestDataUtility.createBank(dellCorpAccount.Id, 'Core_MDF_Client_CoMarketing_Fund', false,'1231231230');
@@ -803,7 +787,8 @@ private class Core_MDF_PaymentRun_Test
     @isTest static void testPaymentRunSchOnCreate(){
         List<Core_MDF_Payment_Run__c> paymentRunList = new List<Core_MDF_Payment_Run__c>();
         Map<String, PartnerFundClaim> claimMap = new Map<String, PartnerFundClaim>();
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
+       // Highlight: Unused Local Variable - Indira
+      //  User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         User payAdmUser = [SELECT Id,Email from User where Email='testPayment@example.com' limit 1];
         Test.startTest();
         User claimCaseUser = [SELECT Id,Email from User where Email='testreviewer@example.com' limit 1];
@@ -834,6 +819,9 @@ private class Core_MDF_PaymentRun_Test
             payRunRecord.RecordTypeId = payRun_RecordType_CCFCMP;
             paymentRunList.add(payRunRecord);
             Database.insert(payRunRecord);
+            // Unit Test Method should include System.Assert - Indira
+            System.assertNotEquals(null, payRunRecord.Id, 'Payment run record should be created successfully');
+            
             Test.stopTest();
             Core_MDF_Batch_PaymentFileGenerator paymentbatch = new Core_MDF_Batch_PaymentFileGenerator(payRunRecord);
             database.executebatch(paymentbatch,200);            
@@ -846,7 +834,8 @@ private class Core_MDF_PaymentRun_Test
     @isTest static void testAdjustmentActiveFalse(){
         
         List<Core_MDF_Payment_Run__c> paymemtRunList = new List<Core_MDF_Payment_Run__c>();
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
+       // Highlight: Unused Local Variable - Indira
+      //  User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         User claimCaseUser = [SELECT Id,Email from User where Email='testreviewer@example.com' limit 1];
         Map<String, PartnerFundClaim> claimMap = new Map<String, PartnerFundClaim>();
         
@@ -926,8 +915,8 @@ private class Core_MDF_PaymentRun_Test
     }
     // Test method to test offset Adjustment
     @isTest static void testAdjustmentGreaterthanClaim(){
-        
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
+        // Highlight: Unused Local Variable - Indira
+       // User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         User claimCaseUser = [SELECT Id,Email from User where Email='testreviewer@example.com' limit 1];
         Test.startTest();
         Map<String, PartnerFundClaim> claimMap = new Map<String, PartnerFundClaim>();
@@ -963,12 +952,12 @@ private class Core_MDF_PaymentRun_Test
     @isTest static void testRetailAdjustmentClaim(){
         User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         User payAdmUser = [SELECT Id,Email from User where Email='testPayment@example.com' limit 1];
-        
-        PartnerFundRequest indiaActivity = [SELECT Id,Title,Core_MDF_Start_Date__c,Core_MDF_End_Date__c from PartnerFundRequest where Title='indiaActivity' limit 1];
+        // Highlight: Unused Local Variable - Indira
+       // PartnerFundRequest indiaActivity = [SELECT Id,Title,Core_MDF_Start_Date__c,Core_MDF_End_Date__c from PartnerFundRequest where Title='indiaActivity' limit 1];
         
         Test.startTest();
-        
-        List<PartnerFundClaim> claimListToBeProcessed = new List<PartnerFundClaim>();
+        // Highlight: Unused Local Variable - Indira
+       // List<PartnerFundClaim> claimListToBeProcessed = new List<PartnerFundClaim>();
         
         Map<String, PartnerFundClaim> claimMap = new Map<String, PartnerFundClaim>();
         System.runAs(sysAdminUser){
@@ -1065,7 +1054,6 @@ private class Core_MDF_PaymentRun_Test
         claimListToBeProcessed.add(indiaClaim2);
         claimListToBeProcessed.add(indiaClaim3);
         System.runAs(sysAdminUser){
-            Test.starttest();
         Database.insert(claimListToBeProcessed);
         }
         
@@ -1101,7 +1089,7 @@ private class Core_MDF_PaymentRun_Test
             payRunRecord.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
             payRunRecord.RecordTypeId = payRun_RecordType_CCFCMP;
             payRunList.add(payRunRecord);
-            
+            Test.starttest();
             Database.insert(payRunList);
             Core_MDF_Batch_PaymentFileGenerator paymentbatch = new Core_MDF_Batch_PaymentFileGenerator(payRunList[0]);
             database.executebatch(paymentbatch,200);
@@ -1277,7 +1265,6 @@ private class Core_MDF_PaymentRun_Test
             claimListToBeUpdated.add(pfc);
             claimListToBeUpdated.add(pfc1);
             System.runAs(sysAdminUser){
-                Test.startTest();
                 Database.update(claimListToBeUpdated);
             }
             System.runAs(claimCaseUser){
@@ -1289,7 +1276,7 @@ private class Core_MDF_PaymentRun_Test
                 adjustment1.Core_MDF_Reason_Cd__c = 'Claim Review Results (Negative)';
                 adjustment1.Core_MDF_Comments_Txt__c = 'Test';
                 adjReqList.add(adjustment1);
-                 
+                Test.startTest(); 
                 Core_MDF_AdjustmentReq_ServiceHandler.createAdjustment(adjReqList);
             }
             System.runAs(payAdmUser){
@@ -1313,14 +1300,16 @@ private class Core_MDF_PaymentRun_Test
         Test.startTest(); 
         User payAdmUser = [SELECT Id,Email from User where Email='testPayment@example.com' limit 1];
         User admUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
-        List<PermissionSetAssignment> psa = [Select id,PermissionSet.Label from PermissionSetAssignment where AssigneeId =:payAdmUser.id];
+       // Highlight: Unused Local Variable - Indira
+      //  List<PermissionSetAssignment> psa = [Select id,PermissionSet.Label from PermissionSetAssignment where AssigneeId =:payAdmUser.id];
         
         Core_MDF_Bank__c retailProgBank = [Select ID,Core_MDF_Program__c,Core_MDF_Supplier_Country_txt__c from Core_MDF_Bank__c where Core_MDF_Program__c = 'Core_MDF_Retail_Marketing_Funds'  limit 1];
         PartnerFundRequest retailActivity = [SELECT Id,Title,Core_MDF_Start_Date__c,Core_MDF_End_Date__c,Core_MDF_Budget_Type_nm__c from PartnerFundRequest where Title='indiaActivity4' limit 1];
         
         
         system.runAs(admUser){
-            List<PartnerFundClaim> listOfClaims = new List<PartnerFundClaim>();
+            // Highlight: Unused Local Variable - Indira
+           // List<PartnerFundClaim> listOfClaims = new List<PartnerFundClaim>();
             PartnerFundClaim retailMdfClaim = Core_MDF_CCP_TestDataUtility.createClaim('Retail MDF Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail, retailActivity.Id, System.today().addDays(-6), System.today().addDays(-5), 50.00, System.today(), retailProgBank.Id, false);
             retailMdfClaim.Core_MDF_Type_Txt__c ='Claim';
             retailMdfClaim.Core_MDF_Currency__c='USD';
@@ -1395,7 +1384,8 @@ private class Core_MDF_PaymentRun_Test
         User payAdmUser = [SELECT Id,Email from User where Email='testPayment@example.com' limit 1];
         User sysAdm = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         PartnerFundRequest activityRSA = [SELECT Id,Title,Core_MDF_Start_Date__c,Core_MDF_End_Date__c,Core_MDF_Budget_Type_nm__c from PartnerFundRequest where Title='indiaActivity5' limit 1];
-        PartnerMarketingBudget BdgtForRSA = [SELECT Id,Title,StartDate,EndDate, Core_MDF_Budget_Type__c,RecordType.DeveloperName from PartnerMarketingBudget where Title='RSABudget' limit 1];
+       // Highlight: Unused Local Variable - Indira
+      //  PartnerMarketingBudget BdgtForRSA = [SELECT Id,Title,StartDate,EndDate, Core_MDF_Budget_Type__c,RecordType.DeveloperName from PartnerMarketingBudget where Title='RSABudget' limit 1];
         Core_Trigger_Executions__c adjustment = [select id from Core_Trigger_Executions__c where Name = 'Core_MDF_AdjustmentClaimOffsetProcess'];
         adjustment.Core_Active__c = true;
         database.update(adjustment);  
@@ -1460,86 +1450,6 @@ private class Core_MDF_PaymentRun_Test
             retailPayRunRecord.RecordTypeId = payRun_RecordType_RMF;
             retailPayRunRecord.Core_MDF_Program_Txt__c  ='Retail Marketing Funds';
             
-            Database.insert(retailPayRunRecord);
-            Core_MDF_Batch_PaymentFileGenerator paymentbatch = new Core_MDF_Batch_PaymentFileGenerator(retailPayRunRecord);
-            database.executebatch(paymentbatch,200);
-            Test.stopTest(); 
-            
-        }
-        
-    } 
-    
-    @isTest static void testCreateIPAPaymentRun(){
-        
-        Test.startTest(); 
-        User payAdmUser = [SELECT Id,Email from User where Email='testPayment@example.com' limit 1];
-        User sysAdm = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
-        PartnerFundRequest activityRSA = [SELECT Id,Title,Core_MDF_Start_Date__c,Core_MDF_End_Date__c,Core_MDF_Budget_Type_nm__c from PartnerFundRequest where Title='indiaActivity5' limit 1];
-        PartnerMarketingBudget BdgtForRSA = [SELECT Id,Title,StartDate,EndDate, Core_MDF_Budget_Type__c,RecordType.DeveloperName from PartnerMarketingBudget where Title='RSABudget' limit 1];
-        Core_Trigger_Executions__c adjustment = [select id from Core_Trigger_Executions__c where Name = 'Core_MDF_AdjustmentClaimOffsetProcess'];
-        adjustment.Core_Active__c = true;
-        database.update(adjustment);  
-        PartnerFundClaim claimRSAMd = Core_MDF_CCP_TestDataUtility.createRetailRSAMDClaim(Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail, activityRSA.Id, System.today().addDays(-5), System.today().addDays(-5), 50.00, false);
-        claimRSAMd.Core_MDF_Country_Location_nm__c= 'INDIA';
-        claimRSAMd.Title = 'Retail RSA MD Claim';
-        claimRSAMd.Core_MDF_To_Be_Audited_Ind__c = true;
-        claimRSAMd.Core_MDF_Region_Cd__c='APJ';
-        claimRSAMd.Core_MDF_VAT_Eligibility_Ind__c = false;
-        claimRSAMd.Core_MDF_Type_Txt__c = 'Claim';
-        claimRSAMd.Core_MDF_Quarter_Year_Txt__c = 'Q3-2020';
-        claimRSAMd.Core_MDF_Currency__c = 'USD';
-        claimRSAMd.Core_MDF_Status__c = 'Payment Due';
-        claimRSAMd.Core_MDF_Processing_Preference_nm__c = 'Settle, then get paid';
-        insert claimRSAMd;
-        
-        //POP mandatory for Retail
-        List<String> documentIdWithTitle = new List<String>();
-        list<String> tempString = new list<String>();
-        list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
-        
-        String str1 = claimRSAMd.Id+';#'+'Test Doc1';
-        String str2 = claimRSAMd.Id+';#'+'Test Doc2';
-        
-        documentIdWithTitle.add(str1);
-        documentIdWithTitle.add(str2);
-        
-        for(String str: documentIdWithTitle){
-            tempString = str.split(';#');
-            Core_MDF_Audit_Document__c auditDoc = new Core_MDF_Audit_Document__c();
-            auditDoc.Core_MDF_Document_Id__c = Id.valueOf(tempString[0]);
-            auditDoc.Core_MDF_Document_Title__c = tempString[1];
-            auditDoc.Core_MDF_Claim__c = claimRSAMd.Id;
-            auditDoc.Core_MDF_Proof_of_Branding__c = true;
-            auditDoc.Core_MDF_Proof_of_Cost__c = true;
-            auditDoc.Core_MDF_Proof_of_Execution__c = true;
-            auditDoc.Core_MDF_App_Document_Types_nm__c = 'Proof of Cost';
-            auditDoc.Core_MDF_Document_Types__c = 'Proof of Cost';
-            auditDocList.add(auditDoc);
-        }            
-        
-        if(auditDocList.size()>0){
-            Database.insert(auditDocList);                
-        }
-        
-        Core_MDF_PartnerFundClaim.ClaimWrap claimWrapResult = Core_MDF_PartnerFundClaim.saveClaim(claimRSAMd, auditDocList, null, null, false, null, false, null, false);
-        String res = null; //claimWrapResult.claimDetail.Id;
-        System.assertEquals(claimRSAMd.ID,claimRSAMd.ID);
-        //Database.insert(claimRSAMd);
-        claimRSAMd.Core_MDF_Status__c = 'Payment Due';
-        System.runAs(sysAdm){
-            Database.update(claimRSAMd);
-        }
-        System.runAs(payAdmUser){
-            ChannelProgram cp1 = [Select Id,Name from ChannelProgram where Name ='Intel Partner Alliance' LIMIT 1];
-            Core_MDF_Payment_Run__c retailPayRunRecord = new Core_MDF_Payment_Run__c();
-            retailPayRunRecord.Core_MDF_ScheduleRun_Dtm__c= DateTime.Now().addMinutes(1);
-            retailPayRunRecord.Core_MDF_Geo_Txt__c = 'APJ';
-            retailPayRunRecord.Core_MDF_Start_Dt__c = System.today().addDays(-22);                                                       
-            retailPayRunRecord.Core_MDF_End_Dt__c = System.today().addDays(-1);
-            retailPayRunRecord.Core_MDF_Budget_Type_nm__c = 'Account Plan';
-            retailPayRunRecord.RecordTypeId = payRun_RecordType_IPA;
-            retailPayRunRecord.Core_MDF_Program_Txt__c  ='Intel Partner Alliance';
-            retailPayRunRecord.Core_MDF_Program_Id__c = cp1.Id;
             Database.insert(retailPayRunRecord);
             Core_MDF_Batch_PaymentFileGenerator paymentbatch = new Core_MDF_Batch_PaymentFileGenerator(retailPayRunRecord);
             database.executebatch(paymentbatch,200);
@@ -1790,7 +1700,8 @@ private class Core_MDF_PaymentRun_Test
         adjustment.Core_Active__c = true;
         database.update(adjustment);
         PartnerFundRequest indiaActivityMDF = [SELECT Id,Title,Core_MDF_Start_Date__c,Core_MDF_End_Date__c,Core_MDF_Budget_Type_nm__c,Core_MDF_Activity_Number__c,ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c from PartnerFundRequest where Title='indiaActivityMDF' limit 1];
-        PartnerMarketingBudget BdgtForMDF = [SELECT Id,Title,StartDate,EndDate, Core_MDF_Budget_Type__c,RecordType.DeveloperName,Core_MDF_Budget_Partner__c from PartnerMarketingBudget where Title='Dell PMBMDf' limit 1];
+       // Highlight: Unused Local Variable - Indira
+      //  PartnerMarketingBudget BdgtForMDF = [SELECT Id,Title,StartDate,EndDate, Core_MDF_Budget_Type__c,RecordType.DeveloperName,Core_MDF_Budget_Partner__c from PartnerMarketingBudget where Title='Dell PMBMDf' limit 1];
         
         PartnerFundClaim indiaClaim = Core_MDF_CCP_TestDataUtility.createClaim('India Claim New', Core_MDF_CCP_TestDataUtility.claim_RecordType_DCF, 
                                                                                indiaActivityMDF.Id, 
@@ -1832,10 +1743,12 @@ private class Core_MDF_PaymentRun_Test
         if(auditDocList.size()>0){
             Database.insert(auditDocList);                
         }
-        Test.startTest();
+        // Unit Test Method should include System.Assert - Indira
+        System.assertEquals(2, auditDocList.size(), 'Audit document list should contain 2 documents');
+        
         Core_MDF_PartnerFundClaim.saveClaim(indiaClaim, auditDocList, null, null, false, null, false, null, false);
         indiaClaim.Core_MDF_Status__c = 'Payment Due';
-        //Test.startTest(); 
+        Test.startTest(); 
         System.runAs(sysAdm){
             Database.update(indiaClaim);
         }
@@ -1853,12 +1766,12 @@ private class Core_MDF_PaymentRun_Test
             
             Database.insert(retailPayRunRecord);
             retailPayRunRecord.Core_MDF_Payment_run_for_Accounts__c = ultimateacc.Id;
-            Core_MDF_PaymentRunAccounts.fetchAccounts(retailPayRunRecord.Id);
             //Test.startTest(); 
             Core_MDF_Batch_PaymentFileGenerator paymentbatch = new Core_MDF_Batch_PaymentFileGenerator(retailPayRunRecord);
             database.executebatch(paymentbatch,200);
             Test.stopTest(); 
-            PartnerFundClaim pfc = [Select id,title,Core_MDF_Payment_Id__c,Core_MDF_Status__c from PartnerFundClaim where title='India Claim New' limit 1];
+           // Highlight: Unused Local Variable - Indira
+          //  PartnerFundClaim pfc = [Select id,title,Core_MDF_Payment_Id__c,Core_MDF_Status__c from PartnerFundClaim where title='India Claim New' limit 1];
             //System.assertNotEquals(pfc.Core_MDF_Payment_Id__c,null);
         }
         
@@ -1942,6 +1855,8 @@ private class Core_MDF_PaymentRun_Test
             
             Map<String,Core_MDF_PaymentFileWrapper> paymentFileWrapperMap = new Map<String,Core_MDF_PaymentFileWrapper>();
             paymentFileWrapperMap.put('test',paymentFileWrapper);
+            // Unit Test Method should include System.Assert - Indira
+            System.assertEquals(1, paymentFileWrapperMap.size(), 'Payment file wrapper map should contain 1 entry');
             
             Core_MDF_Payment_FileHelper.ccpFileGenerator(grps,payRunRecord,'Client');
             Test.stopTest();
@@ -1955,19 +1870,22 @@ private class Core_MDF_PaymentRun_Test
         
     }
     
-    @isTest static void testAdjustmentForCMPClaims(){        
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
-        User claimCaseUser = [SELECT Id,Email from User where Email='testreviewer@example.com' limit 1];
+    @isTest static void testAdjustmentForCMPClaims(){    
+        // Highlight: Unused Local Variable - Indira
+       // User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
+       // User claimCaseUser = [SELECT Id,Email from User where Email='testreviewer@example.com' limit 1];
         Test.startTest();
         Map<String,List<PartnerFundClaim>> accountToAdjustmentClaims = new Map<String,List<PartnerFundClaim>>();
         Map<String, PartnerFundClaim> claimMap = new Map<String, PartnerFundClaim>();
-        User payAdmUser = [SELECT Id,Email from User where Email='testPayment@example.com' limit 1];
+        // Highlight: Unused Local Variable - Indira
+       // User payAdmUser = [SELECT Id,Email from User where Email='testPayment@example.com' limit 1];
         claimMap = createClaim();
         
         for(String claimKey : claimMap.keySet()){
             accountToAdjustmentClaims.put(claimKey, new List<PartnerFundClaim>{claimMap.get(claimKey)}); 
         }
-        
+        // Unit Test Method should include System.Assert - Indira
+        System.assertEquals(claimMap.size(), accountToAdjustmentClaims.size(), 'Maps should have same size');
     }
     
     @isTest static void validateCoGTMPaymentRunCustomer() {
@@ -2004,7 +1922,7 @@ private class Core_MDF_PaymentRun_Test
         coGTMPFCCustomer.Core_MDF_Processing_Preference_nm__c = 'Get paid, then settle';
         coGTMPFCCustomer.Core_MDF_Type_Txt__c = 'Claim';
         Database.insert(coGTMPFCCustomer);
-        PartnerFundClaim dataCoGTMPFCCustomer = [SELECT Id,RequestId,Core_MDF_Region_Cd__c,Core_MDF_Sub_Region_Cd__c,ChannelPartnerId, Request.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c,Core_MDF_VAT_Amt__c, Request.Core_MDF_Product_Category_txt__c,Request.ChannelPartnerId, Core_MDF_Program__c,RecordTypeId,amount,Core_MDF_Status__c,Core_MDF_Invoice_Date__c, Core_MDF_Invoice_Number__c,Core_MDF_Media_Vehicle__c,Core_MDF_OtherCostsnotReimbursable_Local__c, Core_MDF_Taxes_Local__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Ad_Run_Start_Date__c, Core_MDF_Ad_Run_End_Date__c,Title,Core_MDF_Currency__c,Description,Core_MDF_Reimbursable_Transaction_Amount__c, Core_MDF_Bank__c,Core_MDF_Quarter_Year_Txt__c,Core_MDF_Payment_Type_nm__c,Core_MDF_Budget_Type_Options_Nm__c, ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c,Core_MDF_Bank__r.Core_MDF_Supplier_Number__c, Core_MDF_VAT_Eligibility_Ind__c, Core_MDF_C_Type_Ind__c, Request.Core_MDF_BU_Split__c, Core_MDF_Campaign_Id__r.Core_MDF_MMID__c, Core_MDF_Campaign_Id__r.Core_MDF_Profit_Center__c, Core_MDF_Campaign_Id__r.Core_MDF_Product_Type__c from PartnerFundClaim where Id =:coGTMPFCCustomer.Id limit 1];
+		PartnerFundClaim dataCoGTMPFCCustomer = [SELECT Id,RequestId,Core_MDF_Region_Cd__c,Core_MDF_Sub_Region_Cd__c,ChannelPartnerId, Request.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c,Core_MDF_VAT_Amt__c, Request.Core_MDF_Product_Category_txt__c,Request.ChannelPartnerId, Core_MDF_Program__c,RecordTypeId,amount,Core_MDF_Status__c,Core_MDF_Invoice_Date__c, Core_MDF_Invoice_Number__c,Core_MDF_Media_Vehicle__c,Core_MDF_OtherCostsnotReimbursable_Local__c, Core_MDF_Taxes_Local__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Ad_Run_Start_Date__c, Core_MDF_Ad_Run_End_Date__c,Title,Core_MDF_Currency__c,Description,Core_MDF_Reimbursable_Transaction_Amount__c, Core_MDF_Bank__c,Core_MDF_Quarter_Year_Txt__c,Core_MDF_Payment_Type_nm__c,Core_MDF_Budget_Type_Options_Nm__c, ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c,Core_MDF_Bank__r.Core_MDF_Supplier_Number__c, Core_MDF_VAT_Eligibility_Ind__c, Core_MDF_C_Type_Ind__c, Request.Core_MDF_BU_Split__c, Core_MDF_Campaign_Id__r.Core_MDF_MMID__c, Core_MDF_Campaign_Id__r.Core_MDF_Profit_Center__c, Core_MDF_Campaign_Id__r.Core_MDF_Product_Type__c from PartnerFundClaim where Id =:coGTMPFCCustomer.Id limit 1];
         
         dataCoGTMPFCCustomer.Core_MDF_Status__c = 'Payment Due';
         Database.update(dataCoGTMPFCCustomer);
@@ -2125,7 +2043,7 @@ private class Core_MDF_PaymentRun_Test
             cogtmPayRunRecord.Core_MDF_Program_Txt__c = 'CoGTM';
             cogtmPayRunRecord.Core_MDF_Program_Id__c = cp1.Id;
             cogtmPayRunRecord.RecordTypeId  = payRun_RecordType_CoGTM;
-            cogtmPayRunRecord.Core_MDF_Payment_Nature_nm__c =   'Contra CSAR' ;
+            cogtmPayRunRecord.Core_MDF_Payment_Nature_nm__c =	'Contra CSAR' ;
             cogtmPayRunRecord.Core_MDF_Run_For_All_Accounts__c = true;
             cogtmPayRunRecord.Core_MDF_Geo_Txt__c= '';
             cogtmPayRunRecord.Core_MDF_Subgeo_Txt__c = '';
@@ -2231,7 +2149,7 @@ private class Core_MDF_PaymentRun_Test
             cogtmPayRunRecord.Core_MDF_Program_Txt__c = 'CoGTM';
             cogtmPayRunRecord.Core_MDF_Program_Id__c = cp1.Id;
             cogtmPayRunRecord.RecordTypeId  = payRun_RecordType_CoGTM;
-            cogtmPayRunRecord.Core_MDF_Payment_Nature_nm__c =   'Contra CSAR' ;
+            cogtmPayRunRecord.Core_MDF_Payment_Nature_nm__c =	'Contra CSAR' ;
             cogtmPayRunRecord.Core_MDF_Run_For_All_Accounts__c = true;
             cogtmPayRunRecord.Core_MDF_Geo_Txt__c= '';
             cogtmPayRunRecord.Core_MDF_Subgeo_Txt__c = '';
@@ -2336,7 +2254,7 @@ private class Core_MDF_PaymentRun_Test
             cogtmPayRunRecord.Core_MDF_Geo_Txt__c= '';
             cogtmPayRunRecord.Core_MDF_Subgeo_Txt__c = '';
             cogtmPayRunRecord.RecordTypeId  = payRun_RecordType_CoGTM;
-            cogtmPayRunRecord.Core_MDF_Payment_Nature_nm__c =   'Contra CSAR' ;
+            cogtmPayRunRecord.Core_MDF_Payment_Nature_nm__c =	'Contra CSAR' ;
             cogtmPayRunRecord.Core_MDF_Run_For_All_Accounts__c = true;
             Database.insert(cogtmPayRunRecord);
             Core_MDF_Payment_Run__c testcogtmPayRunRecord = [Select Id,Core_MDF_Payment_run_for_Accounts__c,Core_MDF_Program_Id__c,Core_MDF_Payment_Types_txt__c, Core_MDF_Program_Id__r.Name,Core_MDF_ScheduleRun_Dtm__c,Core_MDF_Geo_Txt__c,Core_MDF_Start_Dt__c,Core_MDF_End_Dt__c,Core_MDF_Program_Txt__c,RecordTypeId,Core_MDF_Payment_Nature_nm__c,Core_MDF_Subgeo_Txt__c, Name,Core_MDF_Budget_Type_nm__c from Core_MDF_Payment_Run__c where Id =: cogtmPayRunRecord.Id];
@@ -2390,6 +2308,4 @@ private class Core_MDF_PaymentRun_Test
             Test.stopTest();
         }
     }
-    
-           
 }

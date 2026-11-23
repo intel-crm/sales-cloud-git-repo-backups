@@ -212,7 +212,7 @@ public class Core_MDF_Activity_Controller_Test {
         accNodeAttr.Core_MDF_Customer_NonPO_GL_Account_nbr__c = 244200;
         insert accNodeAttr;
         
-        Campaign camp = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test IPA Camp',acc2.Id, System.today().addDays(-30), System.today().addDays(300),budgetType, 1234.00, 'AFGHANISTAN','Consumer','Coffee Lake','Pending Review', false);
+        Campaign camp = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test IPA Camp',acc2.Id, System.today().addDays(-30), System.today().addDays(300),budgetType, 1234.00, 'AFGHANISTAN','Consumer','','Pending Review', false);
         camp.Core_MDF_Region_cd__c = 'APJ';
         camp.Core_MDF_Budget_Type_txt__c = budgetType;
         camp.Core_MDF_Budget__c = budget.Id;
@@ -279,14 +279,14 @@ public class Core_MDF_Activity_Controller_Test {
         
         List<Core_MDF_Activity_Purpose_Controller.ActivityOutcomeWrapper> valuesToSend = new List<Core_MDF_Activity_Purpose_Controller.ActivityOutcomeWrapper>{ w };
         Core_MDF_Activity_Purpose_Controller.saveActivityOutcome(pfr.Id, valuesToSend);
-
+        
         // Test 1: Non-closed status should return false
         Boolean result1 = Core_MDF_Activity_Purpose_Controller.isResultValueEditable(pfr.Id);
         System.assertEquals(false, result1, 'Should return false for non-closed status');
         
         // Test 2: Null ID should return false
         Boolean result2 = Core_MDF_Activity_Purpose_Controller.isResultValueEditable(null);
-        System.assertEquals(false, result2, 'Should return false for null ID'); 
+        System.assertEquals(false, result2, 'Should return false for null ID');  
     }
     
 }

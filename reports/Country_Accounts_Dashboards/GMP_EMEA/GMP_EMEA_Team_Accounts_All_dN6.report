@@ -18,6 +18,9 @@
         <useOther>false</useOther>
     </buckets>
     <columns>
+        <field>RECORDTYPE</field>
+    </columns>
+    <columns>
         <field>User.Core_User_Coverage__c</field>
     </columns>
     <columns>
@@ -55,19 +58,13 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Account.Core_Total_Approved_Revenue_Amount__c</field>
     </columns>
-    <columns>
-        <field>INDUSTRY</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_BU_Focus__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>ROLLUP_DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Henk Van Den Eeckhout,Milan Spalevic,Norberto Carrascal,Tommi Raitio,Artur Dlugosz,Colin MacHale,Mike Creutzer,Andrea Toigo,Mediha Kayacan,Sven Beckmann,Jacques Cesbron,Alexis Garea,Ali Kucuk,Krzysztof Jonak,Jesus Sanchez Paniagua,Yulia Smelkova,Anna Kazmierczak,Krzysztof Janicki,Jaroslaw Tomala,Eran Gal,Mariusz Jadwiszczok,Maurits Tichelman,Joachim Aertebjerg</value>
+            <operator>equals</operator>
+            <value>EMP of Henk Van Den Eeckhout,EMP of Milan Spalevic,EMP of Norberto Carrascal,EMP of Tommi Raitio,EMP of Artur Dlugosz,EMP of Colin MacHale,EMP of Mike Creutzer,EMP of Andrea Toigo,EMP of Mediha Kayacan,EMP of Sven Beckmann,EMP of Jacques Cesbron,EMP of Alexis Garea,EMP of Ali Kucuk,EMP of Krzysztof Jonak,EMP of Jesus Sanchez Paniagua,EMP of Yulia Smelkova,EMP of Anna Kazmierczak,EMP of Krzysztof Janicki,EMP of Jaroslaw Tomala,EMP of Eran Gal,EMP of Mariusz Jadwiszczok,EMP of Maurits Tichelman</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

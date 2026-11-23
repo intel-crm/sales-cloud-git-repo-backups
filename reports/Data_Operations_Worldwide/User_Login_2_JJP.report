@@ -16,16 +16,24 @@
         <field>PROFILE</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>ACTIVE</field>
+        <field>LOGIN_STATUS</field>
+    </columns>
+    <columns>
+        <field>LOGIN_DATETIME</field>
+    </columns>
+    <columns>
+        <field>LOGIN_URL</field>
+    </columns>
+    <columns>
+        <field>LOGIN_IP</field>
     </columns>
     <filter>
         <criteriaItems>
-            <column>EMAIL</column>
+            <column>PROFILE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>rpolk@arrow.com,mvatte@arrow.com,jeremy.white@macnica.com,ben.jackson@mouser.com,krowe@arrow.com,jeremy.nightingale@macnica.com,jtran@arrow.com,mike.larson@macnica.com,todd.smith@macnica.com,danny.newman@arrow.com,raylew@arrow.com,paul.gigliotti@arrow.com,pwong@arrow.com,gcochran@arrow.com,sebastien.laberge@arrow.com,sherhusky@arrow.com</value>
+            <value>CCP - Core Access,Chatter Free User,IPS External Customer,IPS Lenovo B2B  M2M,Partner</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -33,7 +41,7 @@
     <name>User Login 2 JJP</name>
     <params>
         <name>active</name>
-        <value>all</value>
+        <value>active</value>
     </params>
     <params>
         <name>co</name>
@@ -43,8 +51,12 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>LOGIN_DATETIME</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
-        <dateColumn>CREATED_DATE</dateColumn>
+        <dateColumn>LOGIN_DATETIME</dateColumn>
+        <endDate>2019-05-18</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2019-05-17</startDate>
     </timeFrameFilter>
 </Report>

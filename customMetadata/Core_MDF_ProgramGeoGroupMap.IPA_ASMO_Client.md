@@ -16,11 +16,11 @@
     </values>
     <values>
         <field>Core_MDF_Group_Name_RO__c</field>
-        <value xsi:type="xsd:string">Core_MDF_Int_IPA_ASMO_CSM_RO</value>
+        <value xsi:type="xsd:string">Core_MDF_Int_IPA_ASMO_Client_RO</value>
     </values>
     <values>
         <field>Core_MDF_Group_Name__c</field>
-        <value xsi:type="xsd:string">Core_MDF_Int_IPA_ASMO_CSM</value>
+        <value xsi:type="xsd:string">Core_MDF_Int_IPA_ASMO_Client</value>
     </values>
     <values>
         <field>Core_MDF_Payment_Admin_Queue_Id__c</field>

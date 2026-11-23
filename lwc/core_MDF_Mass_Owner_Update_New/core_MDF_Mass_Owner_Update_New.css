@@ -1,0 +1,47 @@
+/*.mass-owner-app {
+	width: 100%;
+	max-height: 500px;
+	height: 500px;
+	overflow-y: scroll;
+	background:lightsteelblue;
+	}*/
+.header-fixed thead {
+  		position: sticky;
+  		top: 0;
+ 		z-index: 1;
+	}
+.container {
+  position: relative;
+  min-height:fit-content;
+  max-height: 300px; /* Set the desired height for the datatable container */
+  overflow: auto;
+}
+
+.custom-dropdowns {
+	display: inline-block;
+	width:20%
+}
+
+.slds-form-element .slds-form-element__control .slds-input {
+	width: 20% !important;
+}
+
+.button-container {
+    display: flex; /* Makes the buttons align in a row */
+}
+
+/* Adds margin between buttons */
+.button-container lightning-button {
+    margin-right: 10px; /* Adjust the value to set the desired space */
+}
+.slds-listbox__item {
+	/* Adjust the width of the list items */
+	width: 300px; /* Example width */
+}
+
+/* Adjust the width of the text within each list item */
+.slds-listbox__option-text {
+	/* Adjust the width of the text within each list item */
+	max-width: 280px; /* Example max-width */
+	/* You can also use width property for precise control */
+}

@@ -98,10 +98,6 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>PartnerFundRequest$RequestedAmount</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>PartnerFundRequest$Core_MDF_Budget_Amount_Local_amt__c</field>
     </columns>
     <columns>
@@ -150,14 +146,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Pending Review,Pending Approval,Revision Required,Planned,In-Progress,In-Progress Revision Required,In-Progress Pending Review,In-Progress Pending Approval,Closed</value>
+            <value>Pending Review,Revision Required,Planned,In-Progress,In-Progress Revision Required,In-Progress Pending Review,In-Progress Pending Approval</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Budget_Type_nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Account Plan</value>
+            <value>MDF,MDF+,OEM CMP,Service Provider CMP,Account Plan</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Is_Outcome_Based_Ind__c</column>
@@ -178,7 +174,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Intel Partner Alliance</value>
+            <value>Intel Partner Alliance,Client,Datacenter</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Tactics_nm__c</column>

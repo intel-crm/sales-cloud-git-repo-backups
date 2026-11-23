@@ -51,7 +51,7 @@
         </assignedApprover>
         <description>Account Manager</description>
         <entryCriteria>
-            <booleanFilter>1 AND 2</booleanFilter>
+            <booleanFilter>1 AND (2 OR 3)</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Approval_Step_Completed__c</field>
                 <operation>equals</operation>
@@ -61,6 +61,11 @@
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
                 <value>Pending Review</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
+                <operation>equals</operation>
+                <value>In-Progress Pending Review</value>
             </criteriaItems>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
@@ -412,10 +417,16 @@
         </assignedApprover>
         <description>Customer Acceptance</description>
         <entryCriteria>
+            <booleanFilter>1 OR 2</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
                 <operation>equals</operation>
                 <value>Pending Approval</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
+                <operation>equals</operation>
+                <value>In-Progress Pending Approval</value>
             </criteriaItems>
         </entryCriteria>
         <label>Customer Acceptance</label>
@@ -451,10 +462,10 @@
         </rejectionActions>
     </approvalStep>
     <description>This approval process is for IPA Account based</description>
-    <emailTemplate>Testt/Core_MDF_Activity_Approval_Notification</emailTemplate>
+    <emailTemplate>unfiled$public/Core_MDF_Activity_Approval_Notification</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
-        <booleanFilter>(1 OR 4 OR 5) AND 2 AND 3</booleanFilter>
+        <booleanFilter>(1 OR 4 OR 5 OR 6 OR 7 OR 8) AND 2 AND 3</booleanFilter>
         <criteriaItems>
             <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
             <operation>equals</operation>
@@ -479,6 +490,21 @@
             <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
             <operation>equals</operation>
             <value>Revision Required</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
+            <operation>equals</operation>
+            <value>In-Progress Pending Review</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
+            <operation>equals</operation>
+            <value>In-Progress Pending Approval</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
+            <operation>equals</operation>
+            <value>In-Progress Revision Required</value>
         </criteriaItems>
     </entryCriteria>
     <finalApprovalActions>
@@ -524,7 +550,7 @@
     </finalRejectionActions>
     <finalRejectionRecordLock>false</finalRejectionRecordLock>
     <label>IPA Approval Process V3</label>
-    <processOrder>1</processOrder>
+    <processOrder>3</processOrder>
     <recallActions>
         <action>
             <name>Clear_Activity_First_Approver</name>

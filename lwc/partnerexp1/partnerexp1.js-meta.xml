@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>68.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>partnerexp1</masterLabel>
+    <description>Embeds a published React application in an Experience Cloud page.</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="reactAppUrl" type="String" label="React app URL" description="Published absolute HTTPS URL accessible to community users. The app must permit framing by this site."/>
+            <property name="frameHeight" type="Integer" label="App height (pixels)" default="800" min="300" max="2000"/>
+            <property name="frameTitle" type="String" label="Accessible app title" default="Partner experience"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

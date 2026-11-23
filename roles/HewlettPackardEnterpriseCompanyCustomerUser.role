@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Hewlett-Packard Enterprise Company Customer User</description>
+    <description>Hewlett Packard Enterprise CRL Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Hewlett-Packard Enterprise Company Customer User</name>
+    <name>Hewlett Packard Enterprise CRL Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>HewlettPackardEnterpriseCompanyCustomerManager</parentRole>
 </Role>

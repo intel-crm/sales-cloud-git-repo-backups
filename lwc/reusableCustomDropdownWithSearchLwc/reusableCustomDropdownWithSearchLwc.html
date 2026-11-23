@@ -1,0 +1,21 @@
+<template>
+    <lightning-input-name
+    label="Default Input Name Field"
+    first-name="John"
+    middle-name="Middleton"
+    last-name="Doe"
+    informal-name="Jo"
+    suffix="The 3rd"
+    salutation="Mr."
+    options={salutationOptions} ></lightning-input-name>
+
+    <div class="slds-form-element slds-m-bottom--small">               
+    <div class="slds-form-element__control">
+            <lightning-input type="search" label="Name" disabled={fieldDisabled}></lightning-input>
+    </div>
+    </div>
+
+    <div class="slds-form-element" style="text-align: center;">
+    <lightning-button label="Disable Input" variant="brand" onclick={disableHandleClick} ></lightning-button>
+    </div>
+</template>

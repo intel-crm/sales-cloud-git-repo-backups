@@ -776,197 +776,57 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>OPID_Hierarchy__c</field>
+            <field>Core_MDF_CCP_Onboarding_for_IPA__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.IsActive</field>
+            <field>Core_MDF_External_Group_Id__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Alias</field>
+            <field>Bhoomi_CLI_Test__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.CompanyName</field>
+            <field>Core_IPA_Partner_Role__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Core_User_Profile_Name__c</field>
+            <field>Core_MDF_Host_Region_nm__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.CreatedBy</field>
+            <field>Core_MDF_Source_nm__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Department</field>
+            <field>Core_Direct_Primary_Account_Id__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Email</field>
+            <field>Core_Direct_Account_Id__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.LastLoginDate</field>
+            <field>Core_MDF_Is_Top_Account_Ind__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Core_Manager__c</field>
+            <field>Core_MDF_Payment_Type_NodeLevel_nm__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.CommunityNickname</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.UserRole</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Title</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Core_User_Country_Code__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Core_User_Coverage__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Core_User_License__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Core_WWID__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.IsActive</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Alias</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.CompanyName</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Core_User_Profile_Name__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.CreatedBy</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Department</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Email</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.LastLoginDate</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Core_Manager__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.CommunityNickname</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.UserRole</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Title</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Core_User_Country_Code__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Core_User_Coverage__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Core_User_License__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Core_WWID__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Data_Simplified_Account_Nm__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDM_Website__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Customer_Aggregation_Type__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Unified_Hierarchy_View__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Business_Party_Id__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Unified_Global_Customer_BP_Id__c</field>
+            <field>Core_MDF_Payment_Type_nm__c</field>
             <table>Account</table>
         </columns>
         <columns>
@@ -976,67 +836,17 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Unified_Intermediate_Customer_BP_Id__c</field>
+            <field>Core_Unified_Global_Customer_BP_Id__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Unified_Intermediate_Customer_Name__c</field>
+            <field>Core_MDF_Virtual_Corp_Account_Id__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Unified_Intermdt_Customer_2_BP_Id__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Unified_Intermdt_Customer_2_Name__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Group_Name__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Group_Id__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Account_Category_Preview__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Account_Primary_Coverage_Preview__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Account_Owner_Preview__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Account_Primary_Coverage__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Account_Category__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Sales_Groups__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Sales_Group_Preview__c</field>
+            <field>Core_MDF_Partner_Type_nm__c</field>
             <table>Account</table>
         </columns>
         <masterLabel>Accounts</masterLabel>

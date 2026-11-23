@@ -5,6 +5,7 @@
         action.setCallback(this, function(response){            
             
             var state = response.getState();
+            var error = response.getError();
             console.log('state', state);
             if(component.isValid() && state === "SUCCESS"){
                 var result = response.getReturnValue();
@@ -24,6 +25,7 @@
                 }
             }
             else if(state === "ERROR"){
+                console.log('Error::',error[0].message);
                 component.set("v.eligibilityErrorMsg", $A.get("$Label.c.Core_MDF_ApplicationErrorMessage"));
             }
         });

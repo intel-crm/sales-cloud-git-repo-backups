@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Outcome Budget Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Outcome Budget Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget --></label>
+        <name>Core_MDF_BudgetId__c</name>
+        <relationshipLabel><!-- Outcome Budget Mappings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Consumed Amount --></label>
+        <name>Core_MDF_Consumed_Amount_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Remaining Amount --></label>
+        <name>Core_MDF_Remaining_Amount_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Amount on Budget --></label>
+        <name>Core_MDF_Total_Amt_on_Budget_nbr__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

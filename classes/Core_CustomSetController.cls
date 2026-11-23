@@ -11,6 +11,7 @@ public class Core_CustomSetController {
     
     private  with sharing class WithSharingSetController{
         ApexPages.StandardSetController getSetCntrlr(String query) {
+            System.debug(' Intializing Set controller With sharing >> Query '+query);   
             return new ApexPages.StandardSetController(Database.getQueryLocator(query));
         }
     }
@@ -80,8 +81,10 @@ public class Core_CustomSetController {
                 sobjectRecords = null;
                 String finalquery = query + getSearchCondition() +' ORDER by Name '+ RECORDS_LIMIT;
                 if(isWithSharing == false){
+                    System.debug(' Intializing Set controller With out Sharing  query'+finalquery);                
                     this.setCntrlr = new ApexPages.StandardSetController(Database.getQueryLocator(finalquery));
                 }else{
+                    System.debug(' Intializing Set controller With Sharing  query'+finalquery);                
                     WithSharingSetController tmp = new WithSharingSetController();
                     this.setCntrlr = tmp.getSetCntrlr(finalquery);
                 }
@@ -93,6 +96,7 @@ public class Core_CustomSetController {
     }
     //Used in Wrapper Class sobjectRecords
     public List<sObject> getRecords(){
+        System.debug(' >>getRecords>> ' +setCntrlr.getRecords());
         return setCntrlr.getRecords();
     }
     //Wrapper to get Selected Records
@@ -102,13 +106,16 @@ public class Core_CustomSetController {
     //Wrapper for Selecting/Unselecting Records from tables.
     public List<Wrapper> sobjectRecords{
         public get{
+            System.debug('\n\n\n --GET METHOD  sobjectRecords -- '+sobjectRecords);
             List<SObject> lst = setCntrlr.getRecords();
             if(sobjectRecords == null || sobjectRecords.isEmpty()){
+                System.debug('Reconstructing---------'+query);
                 
                 sobjectRecords = new List<Wrapper>();
                 for(SObject s : lst){
                     Wrapper w = new Wrapper(s);
                     sobjectRecords.add(w);
+                    System.debug(' >> sobjectRecords====== '+sobjectRecords);
                     //IF -  Existing selected records section
                     //ELSE - selected Section or aviable records section
                     if(isExisting == true){
@@ -124,6 +131,9 @@ public class Core_CustomSetController {
                     w.isExisting = isExisting;
                 }
             }
+            System.debug(' >>>>> sobjectRecords====== '+sobjectRecords);
+            System.debug(' >> Size of records '+setCntrlr.getResultSize()+'\n -- Returning  sobject records '+SObjectRecords);
+            System.debug(' >> selectedRecords '+selectedRecords);
             return sobjectRecords;
         }public set;
     }

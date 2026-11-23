@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <entityName>PartnerFundRequest</entityName>
+    <fieldName>Core_MDF_ActivityCategory__c</fieldName>
+    <masterLabel>testgs</masterLabel>
+    <recordTypeName>Core_MDF_Intel_MDF_Proposal_Based</recordTypeName>
+</PathAssistant>

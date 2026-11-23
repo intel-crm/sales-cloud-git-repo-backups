@@ -47,7 +47,7 @@
     <finalApprovalRecordLock>false</finalApprovalRecordLock>
     <finalRejectionRecordLock>false</finalRejectionRecordLock>
     <label>Budget Approval for EEF</label>
-    <processOrder>4</processOrder>
+    <processOrder>3</processOrder>
     <recordEditability>AdminOnly</recordEditability>
     <showApprovalHistory>true</showApprovalHistory>
 </ApprovalProcess>

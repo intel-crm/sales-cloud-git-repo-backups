@@ -153,7 +153,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Core_Entitlements_Allowed__c</fullName>
         <label>Entitlements Allowed</label>
@@ -280,14 +280,9 @@
                     <label>Advanced Shipment and Invoice Notification</label>
                 </value>
                 <value>
-                    <fullName>XIRIS Disti Reporting</fullName>
+                    <fullName>WebQuote for Distributor</fullName>
                     <default>false</default>
-                    <label>XIRIS Disti Reporting</label>
-                </value>
-                <value>
-                    <fullName>WebQuote Disti (create / manage quotes in Webquote or XIRIS)</fullName>
-                    <default>false</default>
-                    <label>WebQuote Disti (create / manage quotes in Webquote or XIRIS)</label>
+                    <label>WebQuote for Distributor</label>
                 </value>
                 <value>
                     <fullName>Restricted Documents: Self-Signer</fullName>
@@ -305,14 +300,9 @@
                     <label>Customer IDT Uploader and Downloader User</label>
                 </value>
                 <value>
-                    <fullName>Customer IDT User</fullName>
+                    <fullName>Partner Portal - Disti Design Registration</fullName>
                     <default>false</default>
-                    <label>Customer IDT User</label>
-                </value>
-                <value>
-                    <fullName>Partner Portal - DDR</fullName>
-                    <default>false</default>
-                    <label>Partner Portal - DDR</label>
+                    <label>Partner Portal - Disti Design Registration</label>
                 </value>
                 <value>
                     <fullName>Partner Portal - IPS</fullName>
@@ -325,6 +315,61 @@
                     <label>Partner Portal - Leads</label>
                 </value>
                 <value>
+                    <fullName>Auto Expedite Tool</fullName>
+                    <default>false</default>
+                    <label>Auto Expedite Tool</label>
+                </value>
+                <value>
+                    <fullName>Sales Enablement Portal</fullName>
+                    <default>false</default>
+                    <label>Sales Enablement Portal</label>
+                </value>
+                <value>
+                    <fullName>Military &amp; Government Advanced Technology and Design Portal</fullName>
+                    <default>false</default>
+                    <label>Military &amp; Government Advanced Technology and Design Portal</label>
+                </value>
+                <value>
+                    <fullName>Design Solutions Network</fullName>
+                    <default>false</default>
+                    <label>Design Solutions Network</label>
+                </value>
+                <value>
+                    <fullName>AFSDP Download Portal</fullName>
+                    <default>false</default>
+                    <label>AFSDP Download Portal</label>
+                </value>
+                <value>
+                    <fullName>Customer Beta Software Download Portal</fullName>
+                    <default>false</default>
+                    <label>Customer Beta Software Download Portal</label>
+                </value>
+                <value>
+                    <fullName>Intel Partner FAE</fullName>
+                    <default>false</default>
+                    <label>Intel Partner FAE</label>
+                </value>
+                <value>
+                    <fullName>Configure Price Quote-Reseller User</fullName>
+                    <default>false</default>
+                    <label>Configure Price Quote-Reseller User</label>
+                </value>
+                <value>
+                    <fullName>Configure Price Quote-Basic Disti User</fullName>
+                    <default>false</default>
+                    <label>Configure Price Quote-Basic Disti User</label>
+                </value>
+                <value>
+                    <fullName>Configure Price Quote-Full Disti User</fullName>
+                    <default>false</default>
+                    <label>Configure Price Quote-Full Disti User</label>
+                </value>
+                <value>
+                    <fullName>Configure Price Quote-Direct User</fullName>
+                    <default>false</default>
+                    <label>Configure Price Quote-Direct User</label>
+                </value>
+                <value>
                     <fullName>CTO_Portal_Reseller</fullName>
                     <default>false</default>
                     <label>CTO_Portal_Reseller</label>
@@ -333,81 +378,6 @@
                     <fullName>CTO_Portal_Disti</fullName>
                     <default>false</default>
                     <label>CTO_Portal_Disti</label>
-                </value>
-                <value>
-                    <fullName>Intel Partner FAE</fullName>
-                    <default>false</default>
-                    <label>Intel Partner FAE</label>
-                </value>
-                <value>
-                    <fullName>Client User</fullName>
-                    <default>false</default>
-                    <label>Client User</label>
-                </value>
-                <value>
-                    <fullName>Datacenter User</fullName>
-                    <default>false</default>
-                    <label>Datacenter User</label>
-                </value>
-                <value>
-                    <fullName>Client Account Budget Administrator</fullName>
-                    <default>false</default>
-                    <label>Client Account Budget Administrator</label>
-                </value>
-                <value>
-                    <fullName>Datacenter Account Budget Administrator</fullName>
-                    <default>false</default>
-                    <label>Datacenter Account Budget Administrator</label>
-                </value>
-                <value>
-                    <fullName>Client Activity Submitter</fullName>
-                    <default>false</default>
-                    <label>Client Activity Submitter</label>
-                </value>
-                <value>
-                    <fullName>Datacenter Activity Submitter</fullName>
-                    <default>false</default>
-                    <label>Datacenter Activity Submitter</label>
-                </value>
-                <value>
-                    <fullName>Datacenter External Content Viewer</fullName>
-                    <default>false</default>
-                    <label>Datacenter External Content Viewer</label>
-                </value>
-                <value>
-                    <fullName>Client External Content Viewer</fullName>
-                    <default>false</default>
-                    <label>Client External Content Viewer</label>
-                </value>
-                <value>
-                    <fullName>Client Claim Submitter</fullName>
-                    <default>false</default>
-                    <label>Client Claim Submitter</label>
-                </value>
-                <value>
-                    <fullName>Datacenter Claim Submitter</fullName>
-                    <default>false</default>
-                    <label>Datacenter Claim Submitter</label>
-                </value>
-                <value>
-                    <fullName>Client External View All</fullName>
-                    <default>false</default>
-                    <label>Client External View All</label>
-                </value>
-                <value>
-                    <fullName>Datacenter External View All</fullName>
-                    <default>false</default>
-                    <label>Datacenter External View All</label>
-                </value>
-                <value>
-                    <fullName>Client User Administrator</fullName>
-                    <default>false</default>
-                    <label>Client User Administrator</label>
-                </value>
-                <value>
-                    <fullName>Datacenter User Administrator</fullName>
-                    <default>false</default>
-                    <label>Datacenter User Administrator</label>
                 </value>
                 <value>
                     <fullName>SPCF USER</fullName>
@@ -505,139 +475,14 @@
                     <label>Offering Editor</label>
                 </value>
                 <value>
-                    <fullName>Quote Request User</fullName>
-                    <default>false</default>
-                    <label>Quote Request User</label>
-                </value>
-                <value>
-                    <fullName>Quote Request Customer Standard Access</fullName>
-                    <default>false</default>
-                    <label>Quote Request Customer Standard Access</label>
-                </value>
-                <value>
-                    <fullName>Quote Request Customer Full Access</fullName>
-                    <default>false</default>
-                    <label>Quote Request Customer Full Access</label>
-                </value>
-                <value>
-                    <fullName>Quote Request Customer Drafter Access</fullName>
-                    <default>false</default>
-                    <label>Quote Request Customer Drafter Access</label>
-                </value>
-                <value>
-                    <fullName>Quote Request Customer Limited Access</fullName>
-                    <default>false</default>
-                    <label>Quote Request Customer Limited Access</label>
-                </value>
-                <value>
-                    <fullName>Quote Request Customer Read-only Access</fullName>
-                    <default>false</default>
-                    <label>Quote Request Customer Read-only Access</label>
-                </value>
-                <value>
-                    <fullName>Quote Request Customer Region Access</fullName>
-                    <default>false</default>
-                    <label>Quote Request Customer Region Access</label>
-                </value>
-                <value>
-                    <fullName>Auto Expedite Tool</fullName>
-                    <default>false</default>
-                    <label>Auto Expedite Tool</label>
-                </value>
-                <value>
-                    <fullName>Sales Enablement Portal</fullName>
-                    <default>false</default>
-                    <label>Sales Enablement Portal</label>
-                </value>
-                <value>
-                    <fullName>Design Solutions Network</fullName>
-                    <default>false</default>
-                    <label>Design Solutions Network</label>
-                </value>
-                <value>
-                    <fullName>Customer Beta Software Download Portal</fullName>
-                    <default>false</default>
-                    <label>Customer Beta Software Download Portal</label>
-                </value>
-                <value>
-                    <fullName>WebQuote for Distributor</fullName>
-                    <default>false</default>
-                    <label>WebQuote for Distributor</label>
-                </value>
-                <value>
-                    <fullName>Military &amp; Government Advanced Technology and Design Portal</fullName>
-                    <default>false</default>
-                    <label>Military &amp; Government Advanced Technology and Design Portal</label>
-                </value>
-                <value>
-                    <fullName>AFSDP Download Portal</fullName>
-                    <default>false</default>
-                    <label>AFSDP Download Portal</label>
-                </value>
-                <value>
-                    <fullName>PSG External AFSDP Download v2</fullName>
-                    <default>false</default>
-                    <label>PSG External AFSDP Download v2</label>
-                </value>
-                <value>
-                    <fullName>Intel-Led Co-Marketing Program</fullName>
-                    <default>false</default>
-                    <label>Intel-Led Co-Marketing Program</label>
-                </value>
-                <value>
                     <fullName>Technology Sandbox</fullName>
                     <default>false</default>
                     <label>Technology Sandbox</label>
                 </value>
                 <value>
-                    <fullName>DCIF Admin User</fullName>
+                    <fullName>Intel-Led Co-Marketing Program</fullName>
                     <default>false</default>
-                    <label>DCIF Admin User</label>
-                </value>
-                <value>
-                    <fullName>Partner Portal - Disti Design Registration</fullName>
-                    <default>false</default>
-                    <label>Partner Portal - Disti Design Registration</label>
-                </value>
-                <value>
-                    <fullName>Partner Admin Delegate</fullName>
-                    <default>false</default>
-                    <label>Partner Admin Delegate</label>
-                </value>
-                <value>
-                    <fullName>Points Redeem</fullName>
-                    <default>false</default>
-                    <label>Points Redeem</label>
-                </value>
-                <value>
-                    <fullName>Warranty Requestor</fullName>
-                    <default>false</default>
-                    <label>Warranty Requestor</label>
-                </value>
-                <value>
-                    <fullName>Proposal Manager</fullName>
-                    <default>false</default>
-                    <label>Proposal Manager</label>
-                </value>
-                <value>
-                    <fullName>Claim Submitter</fullName>
-                    <default>false</default>
-                    <label>Claim Submitter</label>
-                </value>
-                <value>
-                    <fullName>External View Only</fullName>
-                    <default>false</default>
-                    <label>External View Only</label>
-                </value>
-                <value>
-                    <fullName>IPA MDF User</fullName>
-                    <default>false</default>
-                    <label>IPA MDF User</label>
-                </value>
-                <value>
-                    <fullName>Platform Verification Program (PVP) access</fullName>
-                    <default>false</default>
-                    <label>Platform Verification Program (PVP) access</label>
+                    <label>Intel-Led Co-Marketing Program</label>
                 </value>
                 <value>
                     <fullName>RMF User</fullName>
@@ -665,49 +510,14 @@
                     <label>RMF External Content Viewer</label>
                 </value>
                 <value>
+                    <fullName>Stand Alone Retail user</fullName>
+                    <default>false</default>
+                    <label>Stand Alone Retail user</label>
+                </value>
+                <value>
                     <fullName>RMF External View Only</fullName>
                     <default>false</default>
                     <label>RMF External View Only</label>
-                </value>
-                <value>
-                    <fullName>Cloud Community User</fullName>
-                    <default>false</default>
-                    <label>Cloud Community User</label>
-                </value>
-                <value>
-                    <fullName>FPGA Community User</fullName>
-                    <default>false</default>
-                    <label>FPGA Community User</label>
-                </value>
-                <value>
-                    <fullName>IOT Community User</fullName>
-                    <default>false</default>
-                    <label>IOT Community User</label>
-                </value>
-                <value>
-                    <fullName>Intel Solutions Library</fullName>
-                    <default>false</default>
-                    <label>Intel Solutions Library</label>
-                </value>
-                <value>
-                    <fullName>CCF Boost Special Reports Viewer</fullName>
-                    <default>false</default>
-                    <label>CCF Boost Special Reports Viewer</label>
-                </value>
-                <value>
-                    <fullName>Client Special Reports Viewer</fullName>
-                    <default>false</default>
-                    <label>Client Special Reports Viewer</label>
-                </value>
-                <value>
-                    <fullName>Datacenter Special Reports Viewer</fullName>
-                    <default>false</default>
-                    <label>Datacenter Special Reports Viewer</label>
-                </value>
-                <value>
-                    <fullName>RMF Special Reports Viewer</fullName>
-                    <default>false</default>
-                    <label>RMF Special Reports Viewer</label>
                 </value>
                 <value>
                     <fullName>SPCF Special Reports Viewer</fullName>
@@ -715,274 +525,19 @@
                     <label>SPCF Special Reports Viewer</label>
                 </value>
                 <value>
-                    <fullName>Intel Solutions Library Partner NDA</fullName>
+                    <fullName>CCF Boost Special Reports Viewer</fullName>
                     <default>false</default>
-                    <label>Intel Solutions Library Partner NDA</label>
+                    <label>CCF Boost Special Reports Viewer</label>
                 </value>
                 <value>
-                    <fullName>SDSi Purchase Agent - SBX- external</fullName>
+                    <fullName>RMF Special Reports Viewer</fullName>
                     <default>false</default>
-                    <label>SDSi Purchase Agent - SBX- external</label>
+                    <label>RMF Special Reports Viewer</label>
                 </value>
                 <value>
-                    <fullName>SDSi Purchase Agent - LIV – external</fullName>
+                    <fullName>EGF User</fullName>
                     <default>false</default>
-                    <label>SDSi Purchase Agent - LIV – external</label>
-                </value>
-                <value>
-                    <fullName>Auto_Entitlement_Test_039</fullName>
-                    <default>false</default>
-                    <label>Auto_Entitlement_Test_039</label>
-                </value>
-                <value>
-                    <fullName>Auto_Entitlement_Test_043</fullName>
-                    <default>false</default>
-                    <label>Auto_Entitlement_Test_043</label>
-                </value>
-                <value>
-                    <fullName>Auto_Entitlement_Test_044</fullName>
-                    <default>false</default>
-                    <label>Auto_Entitlement_Test_044</label>
-                </value>
-                <value>
-                    <fullName>Test_Automation</fullName>
-                    <default>false</default>
-                    <label>Test_Automation</label>
-                </value>
-                <value>
-                    <fullName>Auto_Entitlement_Test_053</fullName>
-                    <default>false</default>
-                    <label>Auto_Entitlement_Test_053</label>
-                </value>
-                <value>
-                    <fullName>Test_Ent_01</fullName>
-                    <default>false</default>
-                    <label>Test_Ent_01</label>
-                </value>
-                <value>
-                    <fullName>TestQA_1</fullName>
-                    <default>false</default>
-                    <label>TestQA_1</label>
-                </value>
-                <value>
-                    <fullName>MyTest123</fullName>
-                    <default>false</default>
-                    <label>MyTest123</label>
-                </value>
-                <value>
-                    <fullName>TestEnt012345</fullName>
-                    <default>false</default>
-                    <label>TestEnt012345</label>
-                </value>
-                <value>
-                    <fullName>TestEnt01234</fullName>
-                    <default>false</default>
-                    <label>TestEnt01234</label>
-                </value>
-                <value>
-                    <fullName>AutoEnt002</fullName>
-                    <default>false</default>
-                    <label>AutoEnt002</label>
-                </value>
-                <value>
-                    <fullName>AutoEnt001</fullName>
-                    <default>false</default>
-                    <label>AutoEnt001</label>
-                </value>
-                <value>
-                    <fullName>AutoEnt005</fullName>
-                    <default>false</default>
-                    <label>AutoEnt005</label>
-                </value>
-                <value>
-                    <fullName>Quote Request Customer Drafter Limited Access</fullName>
-                    <default>false</default>
-                    <label>Quote Request Customer Drafter Limited Access</label>
-                </value>
-                <value>
-                    <fullName>PSG Disti Quoting Access</fullName>
-                    <default>false</default>
-                    <label>PSG Disti Quoting Access</label>
-                </value>
-                <value>
-                    <fullName>PSG Licensing User</fullName>
-                    <default>false</default>
-                    <label>PSG Licensing User</label>
-                </value>
-                <value>
-                    <fullName>Points View</fullName>
-                    <default>false</default>
-                    <label>Points View</label>
-                </value>
-                <value>
-                    <fullName>IPA Distributor User</fullName>
-                    <default>false</default>
-                    <label>IPA Distributor User</label>
-                </value>
-                <value>
-                    <fullName>IPA Titanium User</fullName>
-                    <default>false</default>
-                    <label>IPA Titanium User</label>
-                </value>
-                <value>
-                    <fullName>Channel MDF Claim Submitter</fullName>
-                    <default>false</default>
-                    <label>Channel MDF Claim Submitter</label>
-                </value>
-                <value>
-                    <fullName>Channel MDF View Only</fullName>
-                    <default>false</default>
-                    <label>Channel MDF View Only</label>
-                </value>
-                <value>
-                    <fullName>Channel MDF User Administrator</fullName>
-                    <default>false</default>
-                    <label>Channel MDF User Administrator</label>
-                </value>
-                <value>
-                    <fullName>Channel MDF Activity Submitter</fullName>
-                    <default>false</default>
-                    <label>Channel MDF Activity Submitter</label>
-                </value>
-                <value>
-                    <fullName>Channel MDF Content Viewer</fullName>
-                    <default>false</default>
-                    <label>Channel MDF Content Viewer</label>
-                </value>
-                <value>
-                    <fullName>Channel MDF User</fullName>
-                    <default>false</default>
-                    <label>Channel MDF User</label>
-                </value>
-                <value>
-                    <fullName>SEP Business Management</fullName>
-                    <default>false</default>
-                    <label>SEP Business Management</label>
-                </value>
-                <value>
-                    <fullName>SEP MSVP for NA Authorized SalesReps</fullName>
-                    <default>false</default>
-                    <label>SEP MSVP for NA Authorized SalesReps</label>
-                </value>
-                <value>
-                    <fullName>SEP MSVP for NA Authorized Distribution Users</fullName>
-                    <default>false</default>
-                    <label>SEP MSVP for NA Authorized Distribution Users</label>
-                </value>
-                <value>
-                    <fullName>SEP MSVP for JP Authorized Distribution Users</fullName>
-                    <default>false</default>
-                    <label>SEP MSVP for JP Authorized Distribution Users</label>
-                </value>
-                <value>
-                    <fullName>SEP MSVP for JP Authorized SalesReps</fullName>
-                    <default>false</default>
-                    <label>SEP MSVP for JP Authorized SalesReps</label>
-                </value>
-                <value>
-                    <fullName>SEP MSVP for EU Authorized SalesReps</fullName>
-                    <default>false</default>
-                    <label>SEP MSVP for EU Authorized SalesReps</label>
-                </value>
-                <value>
-                    <fullName>SEP MSVP for EU Authorized Distribution Users</fullName>
-                    <default>false</default>
-                    <label>SEP MSVP for EU Authorized Distribution Users</label>
-                </value>
-                <value>
-                    <fullName>SEP Standard Price List</fullName>
-                    <default>false</default>
-                    <label>SEP Standard Price List</label>
-                </value>
-                <value>
-                    <fullName>SEP MSVP for AP Authorized SalesReps</fullName>
-                    <default>false</default>
-                    <label>SEP MSVP for AP Authorized SalesReps</label>
-                </value>
-                <value>
-                    <fullName>SEP MSVP for AP Authorized Distribution Users</fullName>
-                    <default>false</default>
-                    <label>SEP MSVP for AP Authorized Distribution Users</label>
-                </value>
-                <value>
-                    <fullName>SEP External DFAEs</fullName>
-                    <default>false</default>
-                    <label>SEP External DFAEs</label>
-                </value>
-                <value>
-                    <fullName>SEP Blue Angels</fullName>
-                    <default>false</default>
-                    <label>SEP Blue Angels</label>
-                </value>
-                <value>
-                    <fullName>Channel MDF Reports Viewer</fullName>
-                    <default>false</default>
-                    <label>Channel MDF Reports Viewer</label>
-                </value>
-                <value>
-                    <fullName>Web Ticketing</fullName>
-                    <default>false</default>
-                    <label>Web Ticketing</label>
-                </value>
-                <value>
-                    <fullName>Sales Order Management IBR</fullName>
-                    <default>false</default>
-                    <label>Sales Order Management IBR</label>
-                </value>
-                <value>
-                    <fullName>IPA Claim Submitter</fullName>
-                    <default>false</default>
-                    <label>IPA Claim Submitter</label>
-                </value>
-                <value>
-                    <fullName>IPA Claim Submitter (Account Plan MDF)</fullName>
-                    <default>false</default>
-                    <label>IPA Claim Submitter (Account Plan MDF)</label>
-                </value>
-                <value>
-                    <fullName>IPA Claim Submitter (Proposal MDF)</fullName>
-                    <default>false</default>
-                    <label>IPA Claim Submitter (Proposal MDF)</label>
-                </value>
-                <value>
-                    <fullName>IPA Activity Manager (Account Plan MDF)</fullName>
-                    <default>false</default>
-                    <label>IPA Activity Manager (Account Plan MDF)</label>
-                </value>
-                <value>
-                    <fullName>IPA Proposal Manager (Proposal MDF)</fullName>
-                    <default>false</default>
-                    <label>IPA Proposal Manager (Proposal MDF)</label>
-                </value>
-                <value>
-                    <fullName>IPA External View Only (Account Plan MDF)</fullName>
-                    <default>false</default>
-                    <label>IPA External View Only (Account Plan MDF)</label>
-                </value>
-                <value>
-                    <fullName>IPA External View Only (Proposal MDF)</fullName>
-                    <default>false</default>
-                    <label>IPA External View Only (Proposal MDF)</label>
-                </value>
-                <value>
-                    <fullName>Return for Credit (R4C)</fullName>
-                    <default>false</default>
-                    <label>Return for Credit (R4C)</label>
-                </value>
-                <value>
-                    <fullName>Web Ticketing &amp; Return for Credit Dual</fullName>
-                    <default>false</default>
-                    <label>Web Ticketing &amp; Return for Credit Dual</label>
-                </value>
-                <value>
-                    <fullName>RMF Recovery Administrator</fullName>
-                    <default>false</default>
-                    <label>RMF Recovery Administrator</label>
-                </value>
-                <value>
-                    <fullName>Datacenter Recovery Administrator</fullName>
-                    <default>false</default>
-                    <label>Datacenter Recovery Administrator</label>
+                    <label>EGF User</label>
                 </value>
                 <value>
                     <fullName>Client Recovery Administrator</fullName>
@@ -990,255 +545,109 @@
                     <label>Client Recovery Administrator</label>
                 </value>
                 <value>
-                    <fullName>IPA Recovery Administrator (Proposal MDF)</fullName>
+                    <fullName>Client Claim Submitter1</fullName>
                     <default>false</default>
-                    <label>IPA Recovery Administrator (Proposal MDF)</label>
+                    <label>Client Claim Submitter1</label>
                 </value>
                 <value>
-                    <fullName>IPA Recovery Administrator (Account Plan MDF)</fullName>
+                    <fullName>Client Special Reports Viewer</fullName>
                     <default>false</default>
-                    <label>IPA Recovery Administrator (Account Plan MDF)</label>
+                    <label>Client Special Reports Viewer</label>
                 </value>
                 <value>
-                    <fullName>ODM Early Access Program</fullName>
+                    <fullName>Client Account Budget Administrator</fullName>
                     <default>false</default>
-                    <label>ODM Early Access Program</label>
+                    <label>Client Account Budget Administrator</label>
                 </value>
                 <value>
-                    <fullName>OLO Intel Super Subcontractor</fullName>
+                    <fullName>Client Activity Submitter</fullName>
                     <default>false</default>
-                    <label>OLO Intel Super Subcontractor</label>
+                    <label>Client Activity Submitter</label>
                 </value>
                 <value>
-                    <fullName>OLO Label Orderer</fullName>
+                    <fullName>Client Claim Submitter</fullName>
                     <default>false</default>
-                    <label>OLO Label Orderer</label>
+                    <label>Client Claim Submitter</label>
                 </value>
                 <value>
-                    <fullName>OLO ChAMP Label Orderer</fullName>
+                    <fullName>Client External Content Viewer</fullName>
                     <default>false</default>
-                    <label>OLO ChAMP Label Orderer</label>
+                    <label>Client External Content Viewer</label>
                 </value>
                 <value>
-                    <fullName>OLO S-OEM Label Orderer</fullName>
+                    <fullName>Client External View All</fullName>
                     <default>false</default>
-                    <label>OLO S-OEM Label Orderer</label>
+                    <label>Client External View All</label>
                 </value>
                 <value>
-                    <fullName>OLO Subcontractor</fullName>
+                    <fullName>Client User</fullName>
                     <default>false</default>
-                    <label>OLO Subcontractor</label>
+                    <label>Client User</label>
                 </value>
                 <value>
-                    <fullName>OLO Intel Subcontractor</fullName>
+                    <fullName>Client User Administrator</fullName>
                     <default>false</default>
-                    <label>OLO Intel Subcontractor</label>
+                    <label>Client User Administrator</label>
                 </value>
                 <value>
-                    <fullName>Intel On Demand Purchase Agent – VLS Test</fullName>
+                    <fullName>Datacenter Special Reports Viewer</fullName>
                     <default>false</default>
-                    <label>Intel On Demand Purchase Agent – VLS Test</label>
+                    <label>Datacenter Special Reports Viewer</label>
                 </value>
                 <value>
-                    <fullName>Partner Portal- Deal Reg</fullName>
+                    <fullName>Datacenter Recovery Administrator</fullName>
                     <default>false</default>
-                    <label>Partner Portal- Deal Reg</label>
+                    <label>Datacenter Recovery Administrator</label>
                 </value>
                 <value>
-                    <fullName>Deal Reg Financial Incentive Access</fullName>
+                    <fullName>Datacenter Account Budget Administrator</fullName>
                     <default>false</default>
-                    <label>Deal Reg Financial Incentive Access</label>
+                    <label>Datacenter Account Budget Administrator</label>
                 </value>
                 <value>
-                    <fullName>Test Entitlement for Failure</fullName>
+                    <fullName>Datacenter Activity Submitter</fullName>
                     <default>false</default>
-                    <label>Test Entitlement for Failure</label>
+                    <label>Datacenter Activity Submitter</label>
                 </value>
                 <value>
-                    <fullName>RPS_Agency(Marketing Studio)</fullName>
+                    <fullName>Datacenter Claim Submitter</fullName>
                     <default>false</default>
-                    <label>RPS_Agency(Marketing Studio)</label>
+                    <label>Datacenter Claim Submitter</label>
                 </value>
                 <value>
-                    <fullName>EPS Verified Company</fullName>
+                    <fullName>Datacenter External Content Viewer</fullName>
                     <default>false</default>
-                    <label>EPS Verified Company</label>
+                    <label>Datacenter External Content Viewer</label>
                 </value>
                 <value>
-                    <fullName>Intel Developer Cloud Enterprise</fullName>
+                    <fullName>Datacenter External View All</fullName>
                     <default>false</default>
-                    <label>Intel Developer Cloud Enterprise</label>
+                    <label>Datacenter External View All</label>
                 </value>
                 <value>
-                    <fullName>EEF User</fullName>
+                    <fullName>Datacenter User</fullName>
                     <default>false</default>
-                    <label>EEF User</label>
+                    <label>Datacenter User</label>
                 </value>
                 <value>
-                    <fullName>Activating Partner Claim Submitter</fullName>
+                    <fullName>Datacenter User Administrator</fullName>
                     <default>false</default>
-                    <label>Activating Partner Claim Submitter</label>
+                    <label>Datacenter User Administrator</label>
                 </value>
                 <value>
-                    <fullName>Primary Partner Activity Approver</fullName>
+                    <fullName>Co-Inv User</fullName>
                     <default>false</default>
-                    <label>Primary Partner Activity Approver</label>
+                    <label>Co-Inv User</label>
                 </value>
                 <value>
-                    <fullName>Activating Partner User Admin</fullName>
+                    <fullName>Co-Inv External View Only User</fullName>
                     <default>false</default>
-                    <label>Activating Partner User Admin</label>
+                    <label>Co-Inv External View Only User</label>
                 </value>
                 <value>
-                    <fullName>Activating Partner Recovery Administrator</fullName>
+                    <fullName>Co-Inv Claim Submitter</fullName>
                     <default>false</default>
-                    <label>Activating Partner Recovery Administrator</label>
-                </value>
-                <value>
-                    <fullName>Primary Partner User Admin</fullName>
-                    <default>false</default>
-                    <label>Primary Partner User Admin</label>
-                </value>
-                <value>
-                    <fullName>Activating Partner Activity Submitter</fullName>
-                    <default>false</default>
-                    <label>Activating Partner Activity Submitter</label>
-                </value>
-                <value>
-                    <fullName>Primary Partner View Only</fullName>
-                    <default>false</default>
-                    <label>Primary Partner View Only</label>
-                </value>
-                <value>
-                    <fullName>Activating Partner View Only</fullName>
-                    <default>false</default>
-                    <label>Activating Partner View Only</label>
-                </value>
-                <value>
-                    <fullName>Activating Partner Budget Administrator</fullName>
-                    <default>false</default>
-                    <label>Activating Partner Budget Administrator</label>
-                </value>
-                <value>
-                    <fullName>Co-Engineering External View Only</fullName>
-                    <default>false</default>
-                    <label>Co-Engineering External View Only</label>
-                </value>
-                <value>
-                    <fullName>Co-Engineering Budget Administrator</fullName>
-                    <default>false</default>
-                    <label>Co-Engineering Budget Administrator</label>
-                </value>
-                <value>
-                    <fullName>Co-Engineering User Administrator</fullName>
-                    <default>false</default>
-                    <label>Co-Engineering User Administrator</label>
-                </value>
-                <value>
-                    <fullName>Co-Engineering Claim Submitter</fullName>
-                    <default>false</default>
-                    <label>Co-Engineering Claim Submitter</label>
-                </value>
-                <value>
-                    <fullName>Co-Engineering Project Approver</fullName>
-                    <default>false</default>
-                    <label>Co-Engineering Project Approver</label>
-                </value>
-                <value>
-                    <fullName>Co-Engineering User</fullName>
-                    <default>false</default>
-                    <label>Co-Engineering User</label>
-                </value>
-                <value>
-                    <fullName>CDM Third party Consumption Data Submitter</fullName>
-                    <default>false</default>
-                    <label>CDM Third party Consumption Data Submitter</label>
-                </value>
-                <value>
-                    <fullName>CDM External Submitter</fullName>
-                    <default>false</default>
-                    <label>CDM External Submitter</label>
-                </value>
-                <value>
-                    <fullName>Co-Engineering Project Submitter</fullName>
-                    <default>false</default>
-                    <label>Co-Engineering Project Submitter</label>
-                </value>
-                <value>
-                    <fullName>Platform Diagnostics External Upload</fullName>
-                    <default>false</default>
-                    <label>Platform Diagnostics External Upload</label>
-                </value>
-                <value>
-                    <fullName>Deal Incentive User</fullName>
-                    <default>false</default>
-                    <label>Deal Incentive User</label>
-                </value>
-                <value>
-                    <fullName>CCF Account Budget Administrator</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CCF Account Budget Administrator</label>
-                </value>
-                <value>
-                    <fullName>CCF Activity Submitter</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CCF Activity Submitter</label>
-                </value>
-                <value>
-                    <fullName>CCF Claim Submitter</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CCF Claim Submitter</label>
-                </value>
-                <value>
-                    <fullName>CCF External Content Viewer</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CCF External Content Viewer</label>
-                </value>
-                <value>
-                    <fullName>CCF External View All</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CCF External View All</label>
-                </value>
-                <value>
-                    <fullName>CCF Recovery Administrator</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CCF Recovery Administrator</label>
-                </value>
-                <value>
-                    <fullName>CCF Special Reports Viewer</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CCF Special Reports Viewer</label>
-                </value>
-                <value>
-                    <fullName>CCF User</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CCF User</label>
-                </value>
-                <value>
-                    <fullName>CCF User Administrator</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CCF User Administrator</label>
-                </value>
-                <value>
-                    <fullName>CIP General View</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CIP General View</label>
-                </value>
-                <value>
-                    <fullName>CIP VIP View</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CIP VIP View</label>
+                    <label>Co-Inv Claim Submitter</label>
                 </value>
                 <value>
                     <fullName>Configure Price Quote - Direct User</fullName>
@@ -1259,178 +668,22 @@
                     <label>Configure Price Quote - Reseller User</label>
                 </value>
                 <value>
-                    <fullName>Configure Price Quote-Basic Disti User</fullName>
+                    <fullName>Customer IDT User</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
-                    <label>Configure Price Quote-Basic Disti User</label>
+                    <label>Customer IDT User</label>
                 </value>
                 <value>
-                    <fullName>Configure Price Quote-Direct User</fullName>
+                    <fullName>WebQuote Disti (create / manage quotes in Webquote or XIRIS)</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
-                    <label>Configure Price Quote-Direct User</label>
+                    <label>WebQuote Disti (create / manage quotes in Webquote or XIRIS)</label>
                 </value>
                 <value>
-                    <fullName>Configure Price Quote-Full Disti User</fullName>
+                    <fullName>XIRIS Disti Reporting</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
-                    <label>Configure Price Quote-Full Disti User</label>
-                </value>
-                <value>
-                    <fullName>Configure Price Quote-Reseller User</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Configure Price Quote-Reseller User</label>
-                </value>
-                <value>
-                    <fullName>DCF Account Budget Administrator</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>DCF Account Budget Administrator</label>
-                </value>
-                <value>
-                    <fullName>DCF Activity Submitter</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>DCF Activity Submitter</label>
-                </value>
-                <value>
-                    <fullName>DCF Claim Submitter</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>DCF Claim Submitter</label>
-                </value>
-                <value>
-                    <fullName>DCF External Content Viewer</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>DCF External Content Viewer</label>
-                </value>
-                <value>
-                    <fullName>DCF External View All</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>DCF External View All</label>
-                </value>
-                <value>
-                    <fullName>DCF Recovery Administrator</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>DCF Recovery Administrator</label>
-                </value>
-                <value>
-                    <fullName>DCF Special Reports Viewer</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>DCF Special Reports Viewer</label>
-                </value>
-                <value>
-                    <fullName>DCF User</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>DCF User</label>
-                </value>
-                <value>
-                    <fullName>DCF User Administrator</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>DCF User Administrator</label>
-                </value>
-                <value>
-                    <fullName>Developer Zone Collaboration Workspaces</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Developer Zone Collaboration Workspaces</label>
-                </value>
-                <value>
-                    <fullName>Developer Zone Premier(CNDA required)</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Developer Zone Premier(CNDA required)</label>
-                </value>
-                <value>
-                    <fullName>Developer Zone Standard Entitlement</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Developer Zone Standard Entitlement</label>
-                </value>
-                <value>
-                    <fullName>External Content Viewer</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>External Content Viewer</label>
-                </value>
-                <value>
-                    <fullName>Intel On Demand Purchase Agent VLS</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Intel On Demand Purchase Agent VLS</label>
-                </value>
-                <value>
-                    <fullName>Intel On Demand Purchase Agent – VLS</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Intel On Demand Purchase Agent – VLS</label>
-                </value>
-                <value>
-                    <fullName>Intel Premier Support (IPS - PSG users please see help text for more details)</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Intel Premier Support (IPS - PSG users please see help text for more details)</label>
-                </value>
-                <value>
-                    <fullName>Points Manager</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Points Manager</label>
-                </value>
-                <value>
-                    <fullName>Primary Lead Designated Rep</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Primary Lead Designated Rep</label>
-                </value>
-                <value>
-                    <fullName>QDMS-Test</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>QDMS-Test</label>
-                </value>
-                <value>
-                    <fullName>RPS Retailer</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>RPS Retailer</label>
-                </value>
-                <value>
-                    <fullName>SEP for External DFAEs</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SEP for External DFAEs</label>
-                </value>
-                <value>
-                    <fullName>Secure Content Library</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Secure Content Library</label>
-                </value>
-                <value>
-                    <fullName>SiaaS Purchase Agent - LIV – external</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SiaaS Purchase Agent - LIV – external</label>
-                </value>
-                <value>
-                    <fullName>SiaaS Purchase Agent - SBX- external</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SiaaS Purchase Agent - SBX- external</label>
-                </value>
-                <value>
-                    <fullName>Stand Alone Retail user</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Stand Alone Retail user</label>
+                    <label>XIRIS Disti Reporting</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -1445,15 +698,6 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Send_Notification_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>This field is used  to send notification to the requester whenever an A&amp;E grant access request is success/failure</description>
-        <inlineHelpText>If an email notification is sent to the requester for an A&amp;E status, enable the checkbox.</inlineHelpText>
-        <label>Send Notification?</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_User_Type__c</fullName>
@@ -1490,16 +734,6 @@
                     <default>false</default>
                     <label>RMF External User Administrator</label>
                 </value>
-                <value>
-                    <fullName>Channel MDF User Administrator</fullName>
-                    <default>false</default>
-                    <label>Channel MDF User Administrator</label>
-                </value>
-                <value>
-                    <fullName>Co-Engineering User Administrator</fullName>
-                    <default>false</default>
-                    <label>Co-Engineering User Administrator</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -1511,7 +745,6 @@
         <columns>Core_Entitlements_Allowed__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
     </listViews>
     <nameField>
         <label>Entitlement Profile Access Name</label>

@@ -1,5 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_49457126</developerName>
+        <masterLabel>Other Disti</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>FK_$Core_Design_Registration__c.Core_Partner_Account_Name__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Xrosgen</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>WPG Holdings</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Vitec</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Toyota Tsusho</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Tokyo Electron Device</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Synnex</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ryoyo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Pantek</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Okaya</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Digital China</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Avnet</sourceValue>
+            </sourceValues>
+            <value>Other Disti</value>
+        </values>
+    </buckets>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
         <backgroundColor2>#FFFFFF</backgroundColor2>
@@ -12,12 +56,12 @@
         <chartType>VerticalColumn</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>FK_$Core_Design_Registration__c.Core_Partner_Account_Region_Cd__c</groupingColumn>
+        <groupingColumn>CLOSE_DATE</groupingColumn>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
-        <showValues>false</showValues>
+        <showValues>true</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
@@ -26,52 +70,25 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>ADDRESS1_COUNTRY_CODE</field>
-    </columns>
-    <columns>
-        <field>ADDRESS1_STATE_CODE</field>
+        <field>Opportunity.Core_Business_Unit_Territory__c</field>
     </columns>
     <columns>
         <field>FK_$Core_Design_Registration__c.Core_End_Customer_PSG_Tier_Nm__c</field>
     </columns>
     <columns>
-        <field>FK_NAME</field>
-    </columns>
-    <columns>
         <field>FK_$Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</field>
-    </columns>
-    <columns>
-        <field>FK_CUSTENT_OWNER_NAME</field>
-    </columns>
-    <columns>
-        <field>FK_$Core_Design_Registration__c.Core_Intel_Technical_Owner_Id__c</field>
-    </columns>
-    <columns>
-        <field>FK_$Core_Design_Registration__c.Core_Partner_FAE_Nm__c</field>
-    </columns>
-    <columns>
-        <field>FK_$Core_Design_Registration__c.Core_Partner_FSR_Nm__c</field>
-    </columns>
-    <columns>
-        <field>CLOSE_DATE</field>
     </columns>
     <columns>
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
+        <field>FK_$Core_Design_Registration__c.Core_Intel_Technical_Owner_Id__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Technical_Owner_Manager__c</field>
+    </columns>
+    <columns>
         <field>OPPORTUNITY_NAME</field>
-    </columns>
-    <columns>
-        <field>OPPORTUNITY_ID</field>
-    </columns>
-    <columns>
-        <field>Product2.Core_Product_Series__c</field>
-    </columns>
-    <columns>
-        <field>PRODUCT_NAME</field>
-    </columns>
-    <columns>
-        <field>STAGE_NAME</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Status__c</field>
@@ -83,24 +100,8 @@
         <field>OWNER_MANAGER</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Technical_Owner__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Technical_Owner_Manager__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Status_Update__c</field>
-    </columns>
-    <columns>
-        <field>DESCRIPTION</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>QUANTITY</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>UNIT_PRICE</field>
+        <field>FK_$Core_Design_Registration__c.Core_Opportunity_Volume_Cnt__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -116,25 +117,11 @@
     </columns>
     <filter>
         <criteriaItems>
-            <column>FK_$Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Approved</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Pending</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Product_Type__c</column>
+            <column>FK_$Core_Design_Registration__c.Core_End_Customer_PSG_Tier_Nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>FPGA</value>
+            <value>PSG-Tier 4</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -146,22 +133,22 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>FK_$Core_Design_Registration__c.Core_Partner_Account_Id__c</field>
+        <field>FK_$Core_Design_Registration__c.Core_Partner_Account_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Business_Unit_Territory__c</field>
+        <dateGranularity>FiscalQuarter</dateGranularity>
+        <field>CLOSE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2019+ Approved DDR/Open Opps</name>
+    <name>Worldwide Tier 4 Registration Report</name>
     <params>
         <name>terr</name>
         <value>all</value>
     </params>
     <params>
         <name>open</name>
-        <value>open</value>
+        <value>all</value>
     </params>
     <params>
         <name>probability</name>
@@ -180,8 +167,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2024-12-28</endDate>
+        <endDate>2024-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2018-12-30</startDate>
+        <startDate>2019-01-01</startDate>
     </timeFrameFilter>
 </Report>

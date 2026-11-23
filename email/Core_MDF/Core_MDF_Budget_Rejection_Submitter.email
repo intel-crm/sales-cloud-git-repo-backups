@@ -1,0 +1,46 @@
+<messaging:emailTemplate subject="Budget Has Been Rejected" 
+                         recipientType="User" 
+                         relatedToType="PartnerMarketingBudget"
+                         language="en_US">
+<messaging:htmlEmailBody >
+        <html>
+            <body> <div style="font-size:14px;font-family:Calibri"> 
+                                  <p>   
+                                           {!$Label.Core_MDF_EmailTemp_StatusUpdate_DearMember} <br/>
+                                  </p>
+                                    <p>          {!$Label.Core_MDF_EmailTemp_Bdgt_Body1} 
+                                                 {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body5 } &nbsp;                                              
+                                                <apex:outputLink value="{!$Label.Core_MDF_PFRCommunityLink+RelatedTo.Id}">{!$Label.Core_MDF_EmailTemp_Claim_URL1}</apex:outputLink>
+                                                {!$Label.Core_MDF_EmailTemp_Claim_Body3} <br/>
+                                                
+                                                <ul>
+                                                <li>{!$Label.Core_MDF_Budget_Name}&nbsp; {!RelatedTo.Title} </li>
+                                                <li>{!$Label.Core_MDF_Budget_Rejection_Reason}&nbsp; {!RelatedTo.Core_MDF_Budget_Comments__c} </li>
+                                                </ul>
+                                    </p>
+                                    <p>                                                 
+                                                {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}<br/><br/>
+                                                {!RelatedTo.Core_MDF_Program__r.Name} 
+                                                {!$Label.Core_MDF_EmailTemp_Claim_Body5} 
+                                                <br/>   </p>                  
+                         </div>
+                
+               <div style="font-size:11px;font-family:Calibri">
+                                   <p>
+                                     <i>  {!$Label.Core_MDF_EmailTemp_Claim_Footer1}
+                                           <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> {!$Label.Core_MDF_EmailTemp_Claim_URL2} </a>
+                                            {!$Label.Core_MDF_EmailTemp_Claim_Footer2}<br/><br/></i>
+                                            {!$Label.Core_MDF_EmailTemp_Claim_Footer3}
+                                            <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> {!$Label.Core_MDF_EmailTemp_Claim_URL2} </a>
+                                           {!$Label.Core_MDF_EmailTemp_Claim_Footer4}<br/><br/>
+                                    <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Home}" > {!$Label.Core_MDF_EmailTemp_Footer3} </a> | 
+                                    <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Trademarks}"> {!$Label.Core_MDF_EmailTemp_Footer4} </a> | 
+                                    <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Privacy}"> {!$Label.Core_MDF_EmailTemp_Footer5} </a> |
+                                    <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Cookies}"> {!$Label.Core_MDF_EmailTemp_Footer6} </a>
+                            </p>         
+                    
+                    </div>         
+            </body>
+        </html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

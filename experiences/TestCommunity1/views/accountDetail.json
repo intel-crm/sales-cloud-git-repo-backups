@@ -1,0 +1,205 @@
+{
+  "appPageId" : "1f1f0c88-2082-47fd-848d-f4bfea5157f2",
+  "componentName" : "siteforce:sldsThreeCol444Layout",
+  "dataProviders" : [ ],
+  "id" : "c0949141-91df-428a-9a06-6c8d1f691d0a",
+  "label" : "Account Detail",
+  "regions" : [ {
+    "id" : "52c9313d-ded2-4752-a83f-0a142e35f1ac",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Opportunity.Account.Id",
+        "reportId" : "of_accounts_3_months_trending",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "de81d12e-cdcd-46c1-a102-f1d2b04dead7",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Opportunity.Account.Id",
+        "reportId" : "of_accounts_3_months_trending",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "c111e566-4196-4894-bef7-960a5fdc53d0",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Opportunity.Account.Id",
+        "reportId" : "of_accounts_3_months_trending",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "bb339dd8-fa9a-4e75-bff8-2a79be474f1c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "",
+        "reportId" : "TestReportChart",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "db680f43-4642-449f-a611-f608f96f6492",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "4bdd5a6d-f803-43f0-b629-ed026618e798",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "45b85d9c-25b5-45b5-96bf-d4abf845553e",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "d4e93325-3b79-471c-8d6c-fae409cb9fbb",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "dd84ac99-bbd7-44cd-9b61-e0d20c660b88",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Opportunity.Account.Id",
+        "reportId" : "of_accounts_3_months_trending",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "95722290-087a-4bcd-a756-277e376cd110",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Opportunity.Account.Id",
+        "reportId" : "of_accounts_3_months_trending",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "ecd5ca8a-b9e6-49f3-833a-35074161d4e7",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Opportunity.Account.Id",
+        "reportId" : "of_accounts_3_months_trending",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "c3be7605-befe-4c34-977c-8b9ffe0116bc",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "",
+        "reportId" : "TestReportChart",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "138a2248-7f7d-4593-a0b7-4e01fa7639a7",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "4b6ea490-0b70-4d91-af2a-8ce194fcadae",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Opportunity.Account.Id",
+        "reportId" : "of_accounts_3_months_trending",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "a0eb6d3a-3d51-4e99-abbf-6e79b588063d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Opportunity.Account.Id",
+        "reportId" : "of_accounts_3_months_trending",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "79c805c9-7704-4f55-801f-45ed071af4dc",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Opportunity.Account.Id",
+        "reportId" : "of_accounts_3_months_trending",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "384fba5b-2590-4149-abac-01684c31bafc",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "",
+        "reportId" : "TestReportChart",
+        "showRefreshButton" : true,
+        "showTitle" : false
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "25e7f633-72b6-49d2-802b-5fa4dc7c3cb2",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "dcd20363-b0ea-4b46-b99e-946afb1d600c",
+    "regionName" : "sidebarAlt",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-001"
+}

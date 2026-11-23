@@ -2,11 +2,11 @@
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <aggregates>
         <acrossGroupingContext>OpportunityLineItem.Core_KPI_Date__c</acrossGroupingContext>
-        <calculatedFormula>(PARENTGROUPVAL(OpportunityLineItem.Core_Approved_Total_Price__c:SUM, OpportunityLineItem.Core_BU_Short_Name_Old__c, OpportunityLineItem.Core_KPI_Date__c)
+        <calculatedFormula>(PARENTGROUPVAL(OpportunityLineItem.Core_Approved_Total_Price__c:SUM, OpportunityLineItem.Core_BU_Short_Name__c, OpportunityLineItem.Core_KPI_Date__c)
 -PREVGROUPVAL(OpportunityLineItem.Core_Approved_Total_Price__c:SUM, OpportunityLineItem.Core_KPI_Date__c))/PREVGROUPVAL(OpportunityLineItem.Core_Approved_Total_Price__c:SUM, OpportunityLineItem.Core_KPI_Date__c)</calculatedFormula>
         <datatype>percent</datatype>
         <developerName>FORMULA1</developerName>
-        <downGroupingContext>OpportunityLineItem.Core_BU_Short_Name_Old__c</downGroupingContext>
+        <downGroupingContext>OpportunityLineItem.Core_BU_Short_Name__c</downGroupingContext>
         <isActive>true</isActive>
         <isCrossBlock>false</isCrossBlock>
         <masterLabel>% Growth</masterLabel>
@@ -18,7 +18,7 @@
     </columns>
     <filter>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -41,7 +41,7 @@
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>MJ 2016 17 summary</name>

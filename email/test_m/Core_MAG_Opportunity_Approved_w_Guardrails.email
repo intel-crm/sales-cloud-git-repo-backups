@@ -1,0 +1,717 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml" xmlns="http://www.w3.org/TR/REC-html40"><head><meta name=Generator content="Microsoft Word 15 (filtered medium)"><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:Helvetica;
+	panose-1:2 11 6 4 2 2 2 2 2 4;}
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:"Malgun Gothic";
+	panose-1:2 11 5 3 2 0 0 2 0 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@Malgun Gothic";
+	panose-1:2 11 5 3 2 0 0 2 0 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:#0563C1;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:#954F72;
+	text-decoration:underline;}
+p
+	{mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+span.EmailStyle17
+	{mso-style-type:personal-compose;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-family:"Calibri",sans-serif;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+/* List Definitions */
+@list l0
+	{mso-list-id:44260571;
+	mso-list-type:hybrid;
+	mso-list-template-ids:229433442 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:33.0pt;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l0:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:69.0pt;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l0:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:105.0pt;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l0:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:141.0pt;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l0:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:177.0pt;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l0:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:213.0pt;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l0:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:249.0pt;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l0:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:285.0pt;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l0:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:321.0pt;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l1
+	{mso-list-id:248586904;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1071100994 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l1:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l1:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l1:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l1:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l1:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l1:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l1:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l1:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l2
+	{mso-list-id:503981233;
+	mso-list-template-ids:-2041572760;}
+@list l2:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l2:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l2:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l2:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l2:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l2:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l2:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l2:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l2:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l3
+	{mso-list-id:1035036861;
+	mso-list-template-ids:-563944780;}
+@list l3:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l3:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l3:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l3:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l3:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l3:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l3:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l3:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l3:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l4
+	{mso-list-id:1507550384;
+	mso-list-template-ids:-482983732;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l4:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l4:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l4:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l4:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l4:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l4:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l4:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l4:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l5
+	{mso-list-id:1955091957;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1596932134 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l5:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:33.0pt;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l5:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:69.0pt;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l5:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:105.0pt;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l5:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:141.0pt;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l5:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:177.0pt;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l5:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:213.0pt;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l5:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:249.0pt;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l5:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:285.0pt;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l5:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:321.0pt;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l6
+	{mso-list-id:1995529022;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-142862624 -1095084456 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l6:level1
+	{mso-level-start-at:408;
+	mso-level-number-format:bullet;
+	mso-level-text:\F0D8;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;
+	mso-fareast-font-family:"Malgun Gothic";
+	mso-bidi-font-family:"Times New Roman";}
+@list l6:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l6:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l6:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l6:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l6:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l6:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l6:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l6:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext="edit" spidmax="1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext="edit">
+<o:idmap v:ext="edit" data="1" />
+</o:shapelayout></xml><![endif]--></head>
+<body lang=EN-US link="#0563C1" vlink="#954F72">
+    <div class=WordSection1>
+        <blockquote style='margin-top:5.0pt;margin-bottom:5.0pt'>
+            <div>
+                <p class=MsoNormal>Hello {!Opportunity.OwnerFullName},
+                    <o:p></o:p>
+                </p>
+                <p class=MsoNormal style='mso-margin-top-alt:auto;margin-right:15.0pt;mso-margin-bottom-alt:auto;background:white'><span lang=EN>Based on our review of the Export questionnaire that you completed for your MAG opportunity referenced in this email, you have approval with conditions to <b><u>proceed provided you stay within the guardrails below</u></b>:</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='mso-margin-top-alt:3.0pt;margin-right:15.0pt;margin-bottom:3.0pt;margin-left:.5in;text-indent:-.25in;background:white'><span lang=EN style='font-family:Symbol'>·</span><span lang=EN style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=EN>Do not provide any technical advice or assistance including code or SW optimization that supports a defense, space, or military related end use or end item</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='mso-margin-top-alt:3.0pt;margin-right:15.0pt;margin-bottom:3.0pt;margin-left:.5in;text-indent:-.25in;background:white'><span lang=EN style='font-family:Symbol'>·</span><span lang=EN style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=EN>Do not provide training that relates to any military, defense, or space-related requirements or defense articles</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='mso-margin-top-alt:3.0pt;margin-right:15.0pt;margin-bottom:3.0pt;margin-left:.5in;text-indent:-.25in;background:white'><span lang=EN style='font-family:Symbol'>·</span><span lang=EN style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=EN>Do not provide information or technology relating to the production, development or use of Intel products in a defense, space, or military end item or application (beyond information required to ensure safe operation of our products).</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoNormal style='mso-margin-top-alt:auto;margin-right:15.0pt;mso-margin-bottom-alt:auto;background:white'><b><span lang=EN>If the customer wants more information or assistance that goes beyond these guidelines or if requirements for military, defense, or space articles are later introduced by the customer, please contact Intel&#8217;s Trade Department immediately before proceeding further. If you understand your responsibility and can comply with the guidelines above, </span></b><b><span lang=EN style='font-size:10.0pt;font-family:"Arial","sans-serif"'>please reply with &quot;Yes&quot; in the body of your email. If you are unable to comply with the guidelines above, please reply with &quot;No&quot; in the body of your email; GEC will follow up with you to discuss the opportunity or opportunities.</span></b><span lang=EN style='font-size:10.0pt;font-family:"Helvetica","sans-serif"'>&nbsp;</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoNormal style='mso-margin-top-alt:auto;margin-right:15.0pt;mso-margin-bottom-alt:auto;background:white'><span lang=EN>Following are examples of information that CAN be shared with the customer:</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='mso-margin-top-alt:3.0pt;margin-right:15.0pt;margin-bottom:3.0pt;margin-left:33.0pt;text-indent:-.25in;background:white'><span lang=EN style='font-family:Symbol'>·</span><span lang=EN style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=EN>Basic marketing material</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='mso-margin-top-alt:3.0pt;margin-right:15.0pt;margin-bottom:3.0pt;margin-left:33.0pt;text-indent:-.25in;background:white'><span lang=EN style='font-family:Symbol'>·</span><span lang=EN style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=EN>Product roadmap</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='mso-margin-top-alt:3.0pt;margin-right:15.0pt;margin-bottom:3.0pt;margin-left:33.0pt;text-indent:-.25in;background:white'><span lang=EN style='font-family:Symbol'>·</span><span lang=EN style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=EN>Product samples</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='mso-margin-top-alt:3.0pt;margin-right:15.0pt;margin-bottom:3.0pt;margin-left:33.0pt;text-indent:-.25in;background:white'><span lang=EN style='font-family:Symbol'>·</span><span lang=EN style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=EN>Electronic design kits</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='mso-margin-top-alt:3.0pt;margin-right:15.0pt;margin-bottom:3.0pt;margin-left:33.0pt;text-indent:-.25in;background:white'><span lang=EN style='font-family:Symbol'>·</span><span lang=EN style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=EN>Marketing information about product capabilities, features, and how to use them. </span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoNormal style='mso-margin-top-alt:auto;margin-right:15.0pt;mso-margin-bottom-alt:auto;background:white'><span lang=EN>Following are examples of activities that are outside the guardrails above, can NOT be shared, and will require prior GEC notification/approval:</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='mso-margin-top-alt:3.0pt;margin-right:15.0pt;margin-bottom:3.0pt;margin-left:33.0pt;text-indent:-.25in;background:white'><span lang=EN style='font-family:Symbol'>·</span><span lang=EN style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=EN>Facilitate design-in services on the Customer&#8217;s board modified for MAG customers </span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='mso-margin-top-alt:3.0pt;margin-right:15.0pt;margin-bottom:3.0pt;margin-left:33.0pt;text-indent:-.25in;background:white'><span lang=EN style='font-family:Symbol'>·</span><span lang=EN style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=EN>Facilitate co&#8211;development solutions with Customers supporting MAG defense end items</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='mso-margin-top-alt:3.0pt;margin-right:15.0pt;margin-bottom:3.0pt;margin-left:69.0pt;text-indent:-.25in;background:white'><span lang=EN style='font-family:"Courier New"'>o</span><span lang=EN style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp; </span><span lang=EN>General consensus is that Intel does not assist the Customer on Co-Development solutions; however, it is possible for Intel technicians to provide co-development support.</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='mso-margin-top-alt:3.0pt;margin-right:15.0pt;margin-bottom:3.0pt;margin-left:33.0pt;text-indent:-.25in;background:white'><span lang=EN style='font-family:Symbol'>·</span><span lang=EN style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=EN>Facilitate the development of working prototypes in response to any specific capabilities or markets Provide POCs (Proof of Concept) in response to any specific defense capabilities or markets</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='mso-margin-top-alt:3.0pt;margin-right:15.0pt;margin-bottom:3.0pt;margin-left:69.0pt;text-indent:-.25in;background:white'><span lang=EN style='font-family:"Courier New"'>o</span><span lang=EN style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp; </span><span lang=EN>General consensus is that Intel does not assist the Customer on working prototypes; however, it is possible for Intel technicians to build prototypes with the Customer&#8217;s design information.</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='mso-margin-top-alt:3.0pt;margin-right:15.0pt;margin-bottom:3.0pt;margin-left:33.0pt;text-indent:-.25in;background:white'><span lang=EN style='font-family:Symbol'>·</span><span lang=EN style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=EN>Facilitate design reviews of Customer&#8217;s MAG board design (schematics and layouts) </span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='mso-margin-top-alt:3.0pt;margin-right:15.0pt;margin-bottom:3.0pt;margin-left:33.0pt;text-indent:-.25in;background:white'><span lang=EN style='font-family:Symbol'>·</span><span lang=EN style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=EN>Schematic review &#8211; Input/Outputs (I/Os, connectivity issues, interfaces, components</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='mso-margin-top-alt:3.0pt;margin-right:15.0pt;margin-bottom:3.0pt;margin-left:33.0pt;text-indent:-.25in;background:white'><span lang=EN style='font-family:Symbol'>·</span><span lang=EN style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=EN>Layout review &#8211; Board construction, Layer builds, interconnect guidelines, voltage evaluation, or evaluating against topology conditions provided. </span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='mso-margin-top-alt:3.0pt;margin-right:15.0pt;margin-bottom:3.0pt;margin-left:33.0pt;text-indent:-.25in;background:white'><span lang=EN style='font-family:Symbol'>·</span><span lang=EN style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=EN>Create a custom designed microprocessors for a defense/aerospace end item</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='mso-margin-top-alt:3.0pt;margin-right:15.0pt;margin-bottom:3.0pt;margin-left:33.0pt;text-indent:-.25in;background:white'><span lang=EN style='font-family:Symbol'>·</span><span lang=EN style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=EN>Perform technical support or military training for any defense/aerospace end item</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='mso-margin-top-alt:3.0pt;margin-right:15.0pt;margin-bottom:3.0pt;margin-left:33.0pt;text-indent:-.25in;background:white'><span lang=EN style='font-family:Symbol'>·</span><span lang=EN style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=EN>Discuss missile technology</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='mso-margin-top-alt:3.0pt;margin-right:15.0pt;margin-bottom:3.0pt;margin-left:33.0pt;text-indent:-.25in;background:white'><span lang=EN style='font-family:Symbol'>·</span><span lang=EN style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=EN>Enable or support the development of weapons systems</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='mso-margin-top-alt:3.0pt;margin-right:15.0pt;margin-bottom:3.0pt;margin-left:33.0pt;text-indent:-.25in;background:white'><span lang=EN style='font-family:Symbol'>·</span><span lang=EN style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=EN>Reference or perform comparison to US Government systems, programs or operations</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='mso-margin-top-alt:3.0pt;margin-right:15.0pt;margin-bottom:0in;margin-left:33.0pt;margin-bottom:.0001pt;text-indent:-.25in;background:white'><span lang=EN style='font-family:Symbol'>·</span><span lang=EN style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=EN>Discuss, offer or release US Government tactics, doctrine, rules of engagement or employment methods</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoNormal><span lang=EN>&nbsp;</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoNormal style='line-height:14.65pt;vertical-align:baseline'><b><u>IMPORTANT:</u></b>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='text-indent:-.25in;line-height:14.65pt;vertical-align:baseline'><span style='font-family:Wingdings'>Ø</span><span style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp; </span>Should any of your previous responses change, the approval status may change accordingly.&nbsp; Please contact GEC as soon as you determine your prior response needs updating.
+                    <o:p></o:p>
+                </p>
+                <p class=MsoListParagraph style='text-indent:-.25in;line-height:14.65pt;vertical-align:baseline'><span style='font-family:Wingdings'>Ø</span><span style='font-size:7.0pt;font-family:"Times New Roman","serif"'>&nbsp; </span>The scope of this approval is limited to GEC&#8217;s review of the opportunity based on your responses and the relationship to a military, aerospace or government project.&nbsp; All the other requirements, internal and external, beyond export controls must be met according to the specific policies, rules and regulations (if applicable) prior to moving forward with the opportunity.
+                    <o:p></o:p>
+                </p>
+                <p class=MsoNormal>&nbsp;
+                    <o:p></o:p>
+                </p>
+                <p class=MsoNormal>Please let us know if you have any questions or concerns.
+                    <o:p></o:p>
+                </p>
+                <p class=MsoNormal><span style='color:#1F497D'>&nbsp;</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoNormal>Best regards,
+                    <o:p></o:p>
+                </p>
+                <p class=MsoNormal><span style='color:#1F497D'>&nbsp;</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoNormal><span style='color:black'>Global Export </span>Compliance / Global Tax &amp; Trade
+                    <o:p></o:p>
+                </p>
+                <p class=MsoNormal><a href="mailto:Export.customer@intel.com">Export.customer@intel.com</a><span style='color:black'> </span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoNormal><span style='color:#1F497D'>&nbsp;</span>
+                    <o:p></o:p>
+                </p>
+                <p class=MsoNormal>&nbsp;
+                    <o:p></o:p>
+                </p>
+            </div>
+        </blockquote>
+    </div>
+</body>
+</html>

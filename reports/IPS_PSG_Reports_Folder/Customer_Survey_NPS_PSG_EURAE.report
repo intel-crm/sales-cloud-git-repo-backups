@@ -126,7 +126,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>uniquest,altima,arrow,macnica,digi-key,GALAXY FAR EAST CORPORATION,IPS Intel</value>
+            <value>altima,arrow,macnica,digi-key,GALAXY FAR EAST CORPORATION</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -136,7 +136,7 @@
         <field>CLOSED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Obsolete - Customer Survey NPS - PSG EUR</name>
+    <name>Customer Survey NPS - PSG EURAE</name>
     <params>
         <name>units</name>
         <value>d</value>

@@ -1,0 +1,48 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="UserPermissionSetClass" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="permissions" type="List" 
+                    default="[ 'Modify All', 'Manage User', 'View all data' ]"/>
+    
+    <aura:attribute name="displayCountOfPsetsProfsUsers" type="List"/>
+    <aura:attribute name="status" type="List"/>
+    <div class="slds-box">
+        <table id = "mytable" class = "slds-table slds-table_cell-buffer slds-table_bordered" border="4" cellpadding="2" > 
+            
+            <tr bgcolor="orange">
+                
+                <th id = "tstdper"><b>Tested Permission(s)</b></th>
+                
+                <th ><b># Permission Sets</b></th>
+                <th><b># of Profiles</b></th>
+                <th><b>#of Active Users with Permission</b></th>
+                <th><b>Status</b></th>
+                
+                
+            </tr>
+            <aura:iteration items="{!v.displayCountOfPsetsProfsUsers}" var="val" indexVar="key">        
+               <tbody>
+                <tr>
+                    
+                    <td><b>{!val.key}</b></td>
+                    
+                    <aura:iteration items="{!val.value}" var="count">
+                        <aura:if isTrue="{!and(count!='green',and(count!='yellow',count!='red'))}">
+                            <td>{!count}</td>
+                        </aura:if>
+                        <aura:if isTrue="{!count  == 'green'}"> 
+                            
+                            <td bgcolor="green"></td>
+                        </aura:if>
+                        <aura:if isTrue="{!count=='yellow'}"> 
+                            <td bgcolor="yellow"></td>
+                        </aura:if>
+                        <aura:if isTrue="{!count=='red'}"> 
+                            <td bgcolor="red"></td>
+                        </aura:if>
+                    </aura:iteration>
+                </tr>
+                </tbody>
+            </aura:iteration>
+        </table>
+    </div>
+</aura:component>

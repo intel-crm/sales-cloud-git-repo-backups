@@ -6,18 +6,25 @@
 * Developer         : Aditya
 *****************************************************************************************************************************************/
 
-public without sharing class Core_MDF_PIC_NotificationLoggingBatch implements Database.Batchable<EmailLogDetailsWrap>{
+public without sharing class Core_MDF_PIC_NotificationLoggingBatch implements Database.Batchable<EmailLogDetailsWrap> , Database.Stateful{
     //wrapper list to collect both internal and external users
     public List<EmailLogDetailsWrap> emailLogWrapList = new List<EmailLogDetailsWrap>();
     // Email template to send mail
-    EmailTemplate template =[SELECT Id, Name, DeveloperName FROM EmailTemplate WHERE DeveloperName='Core_MDF_PIC_Completed_Notification' LIMIT 1];
+    EmailTemplate template; 
     Set<Id> intUserIdList = new Set<Id>();
     Set<Id> extUserIdList = new Set<Id>();
-    public Core_MDF_PIC_NotificationLoggingBatch(Set<Id> intUserIdList , Set<Id> extUserIdList ){
+    string templateName = '';
+    public Core_MDF_PIC_NotificationLoggingBatch(Set<Id> intUserIdList , Set<Id> extUserIdList , string templateName){
         this.intUserIdList = intUserIdList;
         this.extUserIdList = extUserIdList;
+        this.templateName = templateName;
     }
     public Iterable<EmailLogDetailsWrap> start(Database.BatchableContext bc) {
+        if(templateName!= Null){
+            string query = '';
+            query = 'SELECT Id, Name, DeveloperName FROM EmailTemplate WHERE DeveloperName = : templateName LIMIT 1';
+            template = Database.query(String.escapeSingleQuotes(query));            
+        }
         if(intUserIdList != null && intUserIdList.size()> 0){
             //adding internal users to iterable wrap list
             for(Id usr : intUserIdList) {

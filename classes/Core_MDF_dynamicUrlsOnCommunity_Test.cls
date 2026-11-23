@@ -86,6 +86,5 @@ public class Core_MDF_dynamicUrlsOnCommunity_Test {
                assert.areEqual(contentlist.size() == 1, true);
             }
         }
-    }
-    
+    }  
 }

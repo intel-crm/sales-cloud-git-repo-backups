@@ -219,14 +219,14 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
-    <label>Intel  Attendee</label>
+    <label>Meeting Attendee</label>
     <nameField>
         <displayFormat>MA-{000000}</displayFormat>
         <label>Meeting Attendee ID</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Intel  Attendees</pluralLabel>
+    <pluralLabel>Meeting Attendees</pluralLabel>
     <searchLayouts>
         <listViewButtons>Core_New_Meeting_Attendee</listViewButtons>
         <lookupDialogsAdditionalFields>Core_Attendee_Meeting_Customer_Name__c</lookupDialogsAdditionalFields>

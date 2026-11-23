@@ -3,6 +3,11 @@
     <description>Ability to Maintain Product and Price Book</description>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Bank_Legal_Entity_Code_cd__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PricebookEntry.Core_Product_Name_EPM_ID__c</field>
         <readable>true</readable>
     </fieldPermissions>

@@ -40,7 +40,7 @@
     </values>
     <values>
         <field>Core_MDF_VAT_Mandatory__c</field>
-        <value xsi:type="xsd:boolean">false</value>
+        <value xsi:type="xsd:boolean">true</value>
     </values>
     <values>
         <field>Core_MDF_VAT_Opt_in_Option_Required__c</field>

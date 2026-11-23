@@ -1,17 +1,5 @@
 @isTest public class Core_Batch_AccountCoverage_Test {
-     @isTest
-    static void testBatchExecution() {
-        String result= Core_Batch_AccountShare.dummyMethod1();
-        String result2= Core_Batch_AccountShare.dummyMethod2(); 
-        String result3= Core_Batch_AccountShare.dummyMethod3(); 
-        String result4= Core_Batch_AccountShare.dummyMethod4(); 
-        String result5= Core_Batch_AccountShare.dummyMethod5(); 
-        String result6= Core_Batch_AccountShare.dummyMethod6(); 
-        String result7= Core_Batch_AccountShare.dummyMethod7(); 
-        String result8= Core_Batch_AccountShare.dummyMethod8(); 
-        String result9= Core_Batch_AccountShare.dummyMethod9();
-    }
-   /* 
+    
     @testSetup static void setup() {
         System.debug(' --------------- Core_Batch_AccountCoverage_Test Setting up the test Data-----------------------');
         // 1. Setup The Data for Role Hierarchy
@@ -199,7 +187,7 @@
         do{
             jobCnt = [SELECT Count() FROM AsyncApexJob WHERE Status = 'completed'];
         }while(count == 6);
-        
+        */
         
         System.debug(' Day 2 Account Coverage before Summary '+getAccountExport());
         sum.execute(null, [Select Id, Name, Core_Status__c, Core_Operation__c FROM Core_AccountCoverage_Export__c ]);
@@ -210,7 +198,7 @@
         System.debug(' Result '+[Select Id, Name, Core_Status__c, Core_Operation__c FROM Core_AccountCoverage_Export__c ]);
         //Database.executeBatch(new Core_Batch_AccountCoverage_Summary());
         
-    }*/
+    }
     
     /*
 @isTest public static void testLoadTypeFull(){
@@ -225,8 +213,8 @@ Test.startTest();
 Database.executeBatch(new Core_Batch_AccountCoverage_Delete());
 Test.stopTest();
 //Database.executeBatch(new Core_Batch_AccountCoverage_Summary());
-} 
-    */
+} */
+    
     
     
     

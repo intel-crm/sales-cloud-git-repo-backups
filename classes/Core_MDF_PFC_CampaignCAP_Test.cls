@@ -37,7 +37,7 @@ private class Core_MDF_PFC_CampaignCAP_Test {
         Core_ERPM_Engagement__c erpmEngagementCCF = Core_MDF_CCP_TestDataUtility.createErpmEngagement('CCF', 'CCF', 'DEDUPB2B', 'SEC', true, false);
         Database.insert(erpmEngagementCCF);
         
-        Core_Entitlement__c entitlementCCF = Core_MDF_CCP_TestDataUtility.createEntitlement('Client User',agsRoleCCF.Id ,'Intel® Partner Investment Center','CCF User',erpmEngagementCCF.Id , true,Core_MDF_CCP_ConstantClass.CCF_PROGRAM,false);
+        Core_Entitlement__c entitlementCCF = Core_MDF_CCP_TestDataUtility.createEntitlement('Client User',agsRoleCCF.Id ,'Consolidated Co-marketing Platform','CCF User',erpmEngagementCCF.Id , true,'Client',false);
         Database.insert(entitlementCCF); 
         
         Core_Contact_Entitlement__c contactEntitlementCCF = Core_MDF_CCP_TestDataUtility.createContactEntitlement(conRecord1.Id,entitlementCCF.Id ,true,'Complete', false);
@@ -129,8 +129,8 @@ private class Core_MDF_PFC_CampaignCAP_Test {
         PartnerFundAllocation allocation = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Allocation New',budget,acc2,20000.0,true);
    
         test.startTest();
-        
-        List<Core_MDF_Account_Bank_Mapping__c> abmList = new List<Core_MDF_Account_Bank_Mapping__c>();
+       // Highlight: Unused Local Variable
+       // List<Core_MDF_Account_Bank_Mapping__c> abmList = new List<Core_MDF_Account_Bank_Mapping__c>();
         //creating ABM for bank1
         Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc2.Id,bank.Id,false);        
         Database.insert(abm1);
@@ -188,17 +188,23 @@ private class Core_MDF_PFC_CampaignCAP_Test {
             Account acc2 = [Select id from Account where Name = 'Test Acc New 2'];
             User Usr1 =[Select id from user where email = 'test1@example.com'];
             Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(acc2.Id, Usr1.Id, true);
-            Core_MDF_Bank__c bank1 = [Select Id from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c='1231231230' limit 1];
+            // Highlight: Unused Local Variable
+           // Core_MDF_Bank__c bank1 = [Select Id from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c='1231231230' limit 1];
             PartnerFundRequest pfr = [Select Id,Title from PartnerFundRequest where Title = 'test'];
             PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, pfr.Id, System.today(), System.today(), 50.00, System.today(), null, false);
             claim1.Core_MDF_Currency__c='USD';
-            list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
+            // Highlight: Unused Local Variable
+           // list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
+           
             //Core_MDF_PartnerFundClaim.ClaimWrap claimWrapResult = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,null,null);
             // String res = claimWrapResult.claimDetail.Id;  
             Database.insert(claim1);
             //System.assertEquals(claim1.ID,res);
             
             test.stopTest();
+            // Unit Test Method should include System.Assert
+             System.assertNotEquals(null, claim1.Id, 'Claim should be created successfully');
+            
         }
     }
     
@@ -214,12 +220,14 @@ private class Core_MDF_PFC_CampaignCAP_Test {
                 Account acc2 = [Select id from Account where Name = 'Test Acc New 2'];
                 User Usr1 =[Select id from user where email = 'test1@example.com'];
                 Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(acc2.Id, Usr1.Id, true);
-                Core_MDF_Bank__c bank1 = [Select Id from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c='1231231230' limit 1];
+                // Highlight: Unused Local Variable
+               // Core_MDF_Bank__c bank1 = [Select Id from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c='1231231230' limit 1];
                 PartnerFundRequest pfr = [Select Id,Title,campaignid from PartnerFundRequest where Title = 'test'];
                 //campaign cmpgn = [select id, Core_MDF_Spending_Cap_Amt__c from campaign where id =:pfr.CampaignId ];
- 
-                List<PartnerFundClaim> claimList = new List<PartnerFundClaim>();
-                list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
+                
+                // Highlight: Unused Local Variable
+               // List<PartnerFundClaim> claimList = new List<PartnerFundClaim>();
+               // list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
                 
                 List<PartnerFundClaim> pfcInsert = new List<PartnerFundClaim>();
                 
@@ -252,6 +260,8 @@ private class Core_MDF_PFC_CampaignCAP_Test {
                 }
                 
                 test.stopTest();
+                // Unit Test Method should include System.Assert
+                System.assertEquals(2, pfcInsert.size(), 'PFC Insert list should contain 2 claims');
             }
     }
 }

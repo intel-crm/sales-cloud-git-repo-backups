@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PartnerFundClaim.Case_Review_Documents__r$Name</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim.Case_Review_Documents__r$Core_MDF_Selected_Document_Types_txt__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Name</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Status__c</field>
+    </columns>
+    <description>Audit Documents with Claim attached and without Document Type selected.</description>
+    <filter>
+        <criteriaItems>
+            <column>PartnerFundClaim.Case_Review_Documents__r$Core_MDF_Selected_Document_Types_txt__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundClaim$Core_MDF_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>PIC Pending,Resubmission Required</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>AuditDocsWithClaimWithoutDocType</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Claims_with_Audit_Documents__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PartnerFundClaim$Core_MDF_Activity_End_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

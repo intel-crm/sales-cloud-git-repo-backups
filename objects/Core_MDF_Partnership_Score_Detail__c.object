@@ -203,6 +203,18 @@
         <type>Currency</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_Balance_Amount_New__c</fullName>
+        <formula>((Core_MDF_Total_Recovery_Amt__c +  Core_MDF_Carry_Over_from_Previous_Qtr__c ) - Core_MDF_Recovered_Amt__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Balance Amount New</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Balance_Amt__c</fullName>
         <description>Total + Carry Over - Recovered Amt</description>
         <formula>((Core_MDF_Total_Recovery_Amt__c + Core_MDF_Carry_Over_Amt__c) -  (Core_MDF_Recovered_Amt__c + Core_MDF_Recovery_Offset_Amt__c))</formula>
@@ -248,6 +260,18 @@
         <type>Currency</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_Carry_Over_from_Previous_Qtr__c</fullName>
+        <formula>Core_MDF_Partnership_Score_Detail_Id__r.Core_MDF_Balance_Amount_Amt__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Carry Over from Previous Qtr</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_External_ID__c</fullName>
         <caseSensitive>false</caseSensitive>
         <externalId>true</externalId>
@@ -260,6 +284,42 @@
         <unique>true</unique>
     </fields>
     <fields>
+        <fullName>Core_MDF_External_Id_Invalid_Ind__c</fullName>
+        <formula>IF(
+  ISBLANK(Core_MDF_Partnership_Score_Id__c),
+  TRUE,
+  Core_MDF_External_ID__c &lt;&gt;
+    (
+      CASESAFEID(Core_MDF_Partnership_Score_Id__r.Core_MDF_Channel_Program_Id__c) &amp;
+      CASESAFEID(Core_MDF_Partnership_Score_Id__r.Core_MDF_Virtual_Corp_Account_Id__c) &amp;
+      TEXT(Core_MDF_Partnership_Score_Id__r.Core_MDF_Quarter_Year_Nm__c) &amp;
+      IF(
+        ISPICKVAL(Core_MDF_Region_Cd__c, &quot;&quot;),
+        &quot;&quot;,
+        IF(
+          AND(
+            OR(
+              Core_MDF_Program_Nm__c = &quot;Retail Marketing Funds&quot;,
+              Core_MDF_Program_Nm__c = &quot;Intel Partner Alliance&quot;
+            ),
+            NOT(ISBLANK(Core_MDF_Node_Account_Id__c))
+          ),
+          CASESAFEID(Core_MDF_Node_Account_Id__c),
+          &quot;&quot;
+        ) &amp;
+        IF(ISPICKVAL(Core_MDF_Budget_Type_Nm__c, &quot;&quot;), &quot;null&quot;, TEXT(Core_MDF_Budget_Type_Nm__c)) &amp;
+        TEXT(Core_MDF_Region_Cd__c)
+      )
+    )
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Checked when the External Id does not match the key the IAH pull batch is expected to build.</inlineHelpText>
+        <label>External Id Invalid</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Node_Account_Id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Node Account</label>
@@ -267,7 +327,7 @@
         <relationshipLabel>Partnership Score Details</relationshipLabel>
         <relationshipName>Partnership_Score_Details</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -290,7 +350,7 @@
         <relationshipLabel>Partnership Score Details</relationshipLabel>
         <relationshipName>Partnership_Score_Details</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -544,6 +604,18 @@
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
+    <fields>
+        <fullName>Core_MDF_Virtual_Corp_Account_nm__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Partnership_Score_Id__r.Core_MDF_Virtual_Corp_Account_Id__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Virtual Corp Account Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>Partnership Score Detail</label>
     <listViews>
         <fullName>All</fullName>
@@ -563,7 +635,7 @@
     <nameField>
         <displayFormat>PS - Detail {0000000}</displayFormat>
         <label>PS Detail</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Partnership Score Details</pluralLabel>
@@ -571,7 +643,7 @@
     <sharingModel>ControlledByParent</sharingModel>
     <validationRules>
         <fullName>Core_MDF_Non_Editable_Fields_on_Update</fullName>
-        <active>true</active>
+        <active>false</active>
         <errorConditionFormula>AND( NOT(ISNEW()),  OR(ISCHANGED(Core_MDF_Region_Cd__c),ISCHANGED( Core_MDF_Budget_Type_Nm__c )))</errorConditionFormula>
         <errorMessage>Fields cannot be updated (Budget Type, Region)</errorMessage>
     </validationRules>

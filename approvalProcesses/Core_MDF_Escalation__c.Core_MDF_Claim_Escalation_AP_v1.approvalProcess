@@ -519,7 +519,7 @@
         </rejectBehavior>
     </approvalStep>
     <description>Escalation Approval flow for Late Claim Record Type</description>
-    <emailTemplate>Testt/Core_MDF_Escalation_Email_Template_for_Approvers_Queue</emailTemplate>
+    <emailTemplate>unfiled$public/Core_MDF_Escalation_Email_Template_for_Approvers_Queue</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <criteriaItems>
@@ -560,7 +560,7 @@
     </finalRejectionActions>
     <finalRejectionRecordLock>false</finalRejectionRecordLock>
     <label>Escalation Approval for Late Claim</label>
-    <processOrder>2</processOrder>
+    <processOrder>1</processOrder>
     <recallActions>
         <action>
             <name>Core_MDF_Cancel_Status</name>

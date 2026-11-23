@@ -9,7 +9,7 @@
 ********************************************************************************************************************************/
 
 public class Core_MDF_Batch_RollbackPaidPaymentClaims implements Database.Batchable<sObject>{
-	
+	private static String pendingPayment = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Pending_Payment');
     // Payment Map  
     public Map<Id, Core_MDF_Payment__c> paymentToBeRollbackMap = new Map<Id, Core_MDF_Payment__c>();
     // Set of Payment Ids
@@ -31,7 +31,7 @@ public class Core_MDF_Batch_RollbackPaidPaymentClaims implements Database.Batcha
         try{
             // Update Claim Status back to pending Payment
             for(PartnerFundClaim claim : claimList){
-                claim.Core_MDF_Status__c = Label.Core_MDF_Status_Pending_Payment;
+                claim.Core_MDF_Status__c = pendingPayment;
             }
             if(claimList != NULL && claimList.size()>0){
                 Database.update(claimList);
@@ -46,7 +46,7 @@ public class Core_MDF_Batch_RollbackPaidPaymentClaims implements Database.Batcha
             // Update Payment status back to Pending Payment
             if(paymentToBeRollbackMap != NULL && paymentToBeRollbackMap.size()>0){
                 for(Core_MDF_Payment__c payment : paymentToBeRollbackMap.values()){
-                    payment.Core_MDF_Payment_Status_Txt__c = Label.Core_MDF_Status_Pending_Payment;
+                    payment.Core_MDF_Payment_Status_Txt__c = pendingPayment;
                 }
                 Database.update(paymentToBeRollbackMap.values());
             }

@@ -49,11 +49,14 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>fieldsToMask</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>internalUserName</name>
                     <value>Intel System User</value>
                 </componentInstanceProperties>
                 <componentName>core_MDF_HistoryComponent</componentName>
-                <identifier>core_MDF_HistoryComponent</identifier>
+                <identifier>c_core_MDF_HistoryComponent</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
@@ -126,6 +129,10 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>showLegacyActivityComposer</name>
+                    <value>false</value>
+                </componentInstanceProperties>
                 <componentName>runtime_sales_activities:activityPanel</componentName>
                 <identifier>runtime_sales_activities_activityPanel</identifier>
             </componentInstance>

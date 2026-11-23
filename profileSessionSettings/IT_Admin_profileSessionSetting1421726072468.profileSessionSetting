@@ -4,6 +4,6 @@
     <forceLogout>false</forceLogout>
     <profile>it admin</profile>
     <sessionPersistence>false</sessionPersistence>
-    <sessionTimeout>480</sessionTimeout>
+    <sessionTimeout>0</sessionTimeout>
     <sessionTimeoutWarning>false</sessionTimeoutWarning>
 </ProfileSessionSetting>

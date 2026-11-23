@@ -6,7 +6,7 @@
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>Documenti di pagamento</value>
+        <value>Documento di pagamento</value>
     </caseValues>
     <fields>
         <label>Nome account</label>
@@ -36,9 +36,25 @@
         <relationshipLabel><!-- Payment Documents --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Document Requested Date --></label>
+        <name>Core_MDF_Document_Requested_Dtm__c</name>
+    </fields>
+    <fields>
         <help>Indica il tipo di documento di pagamento che deve essere caricato dal cliente.</help>
         <label>Tipo di documento</label>
         <name>Core_MDF_Document_Type_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- First Reminder Date --></label>
+        <name>Core_MDF_First_Reminder_Date_Dtm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Funding Source Amount --></label>
+        <name>Core_MDF_Funding_Source_Amount_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Funding Source --></label>
+        <name>Core_MDF_Funding_Source_txt__c</name>
     </fields>
     <fields>
         <label><!-- Last Modified By --></label>
@@ -53,6 +69,15 @@
         <name>Core_MDF_Payment_Admin_Reminder_Sent_Ind__c</name>
     </fields>
     <fields>
+        <help><!-- This is the adjustment amount populated as a result of post payment audit --></help>
+        <label><!-- Post Payment Adjustment Amount --></label>
+        <name>Core_MDF_Post_Payment_Adjustment_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Queue Id --></label>
+        <name>Core_MDF_Queue_Id_Txt__c</name>
+    </fields>
+    <fields>
         <label><!-- RSM Reminder Sent --></label>
         <name>Core_MDF_RSMRemNotificationSent_Ind__c</name>
     </fields>
@@ -64,6 +89,10 @@
         <help>Importo del rimborso ante imposte</help>
         <label>Importo rimborso</label>
         <name>Core_MDF_Reimbursement_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Second Reminder Date --></label>
+        <name>Core_MDF_Second_Reminder_Date_Dtm__c</name>
     </fields>
     <fields>
         <help>Lo stato del documento di pagamento</help>
@@ -100,9 +129,21 @@
         <relationshipLabel><!-- Payment Documents (Sub Claim) --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Sub Claim Title --></label>
+        <name>Core_MDF_Sub_Claim_Title_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- DNR:Core_MDF_Unique_Id --></label>
+        <name>Core_MDF_Unique_Id__c</name>
+    </fields>
+    <fields>
         <help>L&apos;importo dell&apos;imposta</help>
         <label>Importo imposte</label>
         <name>Core_MDF_VAT_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- VAT Cancellation Comment --></label>
+        <name>Core_MDF_VAT_Comments_txt__c</name>
     </fields>
     <fields>
         <label><!-- Created By --></label>
@@ -119,7 +160,7 @@
         <name>Core_MDF_VAT_Per__c</name>
     </fields>
     <fields>
-        <label>Linee guida per documenti di pagamento</label>
+        <label><!-- Payment Document Guidelines --></label>
         <name>Core_MDF_Vat_Inv_Guide_Link__c</name>
     </fields>
     <gender>Masculine</gender>
@@ -131,7 +172,7 @@
     </recordTypes>
     <recordTypes>
         <description><!-- Submit for Approval Record Type --></description>
-        <label><!-- Submit for Approval --></label>
+        <label>Invia per l&apos;approvazione</label>
         <name>Core_MDF_Submit_for_Approval</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>

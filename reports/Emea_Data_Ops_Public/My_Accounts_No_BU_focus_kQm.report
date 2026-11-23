@@ -4,19 +4,16 @@
         <field>USERS.NAME</field>
     </columns>
     <columns>
-        <field>Account.Core_Account_ID__c</field>
-    </columns>
-    <columns>
-        <field>ACCOUNT.NAME</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_BU_Focus__c</field>
-    </columns>
-    <columns>
         <field>Account.Core_CIM_ID__c</field>
     </columns>
     <columns>
         <field>Account.Core_Business_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
         <field>Account.Core_Prime_Account_Name__c</field>
@@ -39,6 +36,12 @@
     <columns>
         <field>ADDRESS1_STATE_CODE</field>
     </columns>
+    <columns>
+        <field>Account.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_BU_Focus__c</field>
+    </columns>
     <description>Accounts that need BU Focus field populated</description>
     <filter>
         <criteriaItems>
@@ -50,12 +53,7 @@
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Account.Core_Sales_Groups__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <format>Tabular</format>
     <name>My Accounts - No BU focus</name>
     <params>
         <name>co</name>
@@ -66,8 +64,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Account.Core_Account_BU_Focus__c</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

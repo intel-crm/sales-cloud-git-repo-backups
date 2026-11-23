@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="Event template">
+    <aura:attribute name="validateFields" type="Boolean" description="Flag to check fields are ready to validate"/>
+</aura:event>

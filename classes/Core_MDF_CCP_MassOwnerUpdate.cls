@@ -301,8 +301,24 @@ public with sharing class Core_MDF_CCP_MassOwnerUpdate {
         }
         }
         catch(Exception ex) {
+            //ATHR Avoid long parameter lists BY Anjali US- 15023
+            // Create a map to hold all parameters
+    Map<String, Object> parameterMap = new Map<String, Object>();
+    
+    // Add all parameters to the map
+    parameterMap.put('exception', ex);
+    parameterMap.put('severity', 'Critical');
+    parameterMap.put('projectName', projectName);
+    parameterMap.put('objectName', objectName);
+    parameterMap.put('operation', 'Mass Access Ownership Transfer');
+    parameterMap.put('additionalInfo', null);
+    
+    // Call the method with the parameter map
+    Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(parameterMap);
+
             
-            Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical',projectName,objectName,'Mass Access Ownership Transfer',null);      
+           // Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical',projectName,objectName,'Mass Access Ownership Transfer',null); 
+     //END ATHR Avoid long Parameters     
             throw new AuraHandledException(ex.getMessage());
         }
          return sObjectResultList;
@@ -471,8 +487,26 @@ public with sharing class Core_MDF_CCP_MassOwnerUpdate {
         
         }
          catch(Exception ex) {
+                  //ATHR Avoid long parameter lists BY Anjali US- 15023
+            // Create a map to hold all parameters
+    Map<String, Object> parameterMap = new Map<String, Object>();
+    
+    // Add all parameters to the map
+    parameterMap.put('exception', ex);
+    parameterMap.put('severity', 'Critical');
+    parameterMap.put('projectName', projectName);
+    parameterMap.put('objectName', 'objectNm');
+    parameterMap.put('operation', 'Mass Access Ownership Transfer');
+    parameterMap.put('additionalInfo', null);
+    
+    // Call the method with the parameter map
+    Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(parameterMap);
+
+            
+           // Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical',projectName,objectName,'Mass Access Ownership Transfer',null); 
+     //END ATHR Avoid long Parameters 
            
-            Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical',projectName,objectNm,'Mass Access Ownership Transfer',null);           
+          //  Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical',projectName,objectNm,'Mass Access Ownership Transfer',null);           
             throw new AuraHandledException(ex.getMessage());
         }
        return res;
@@ -565,7 +599,25 @@ public with sharing class Core_MDF_CCP_MassOwnerUpdate {
         return sObjectResultList;
         }
         catch(Exception ex) {
-            Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical',projectName,objectName,'Mass Access Ownership Transfer',null); 
+                 //ATHR Avoid long parameter lists BY Anjali US- 15023
+            // Create a map to hold all parameters
+    Map<String, Object> parameterMap = new Map<String, Object>();
+    
+    // Add all parameters to the map
+    parameterMap.put('exception', ex);
+    parameterMap.put('severity', 'Critical');
+    parameterMap.put('projectName', projectName);
+    parameterMap.put('objectName', objectName);
+    parameterMap.put('operation', 'Mass Access Ownership Transfer');
+    parameterMap.put('additionalInfo', null);
+    
+    // Call the method with the parameter map
+    Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(parameterMap);
+
+            
+           // Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical',projectName,objectName,'Mass Access Ownership Transfer',null); 
+     //END ATHR Avoid long Parameters 
+           // Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical',projectName,objectName,'Mass Access Ownership Transfer',null); 
             throw new AuraHandledException(ex.getMessage());
         }
     }
@@ -673,7 +725,25 @@ public with sharing class Core_MDF_CCP_MassOwnerUpdate {
         }
         catch(Exception ex) {
             updatedWrapper.isError=true;
-            Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical',projectName,objectNm,'Mass Access Ownership Transfer',null); 
+                 //ATHR Avoid long parameter lists BY Anjali US- 15023
+            // Create a map to hold all parameters
+    Map<String, Object> parameterMap = new Map<String, Object>();
+    
+    // Add all parameters to the map
+    parameterMap.put('exception', ex);
+    parameterMap.put('severity', 'Critical');
+    parameterMap.put('projectName', projectName);
+    parameterMap.put('objectName', 'objectNm');
+    parameterMap.put('operation', 'Mass Access Ownership Transfer');
+    parameterMap.put('additionalInfo', null);
+    
+    // Call the method with the parameter map
+    Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(parameterMap);
+
+            
+           // Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical',projectName,objectName,'Mass Access Ownership Transfer',null); 
+     //END ATHR Avoid long Parameters 
+           // Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical',projectName,objectNm,'Mass Access Ownership Transfer',null); 
             
         }
         return updatedWrapper;
@@ -768,7 +838,25 @@ public with sharing class Core_MDF_CCP_MassOwnerUpdate {
         lObjRe = SendRep;
         }
         catch(Exception ex) {
-            Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical','CRM','Report','Mass Access Ownership Transfer',null); 
+                 //ATHR Avoid long parameter lists BY Anjali US- 15023
+            // Create a map to hold all parameters
+    Map<String, Object> parameterMap = new Map<String, Object>();
+    
+    // Add all parameters to the map
+    parameterMap.put('exception', ex);
+    parameterMap.put('severity', 'Critical');
+    parameterMap.put('projectName','CRM');
+    parameterMap.put('objectName', 'Report');
+    parameterMap.put('operation', 'Mass Access Ownership Transfer');
+    parameterMap.put('additionalInfo', null);
+    
+    // Call the method with the parameter map
+    Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(parameterMap);
+
+            
+           // Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical',projectName,objectName,'Mass Access Ownership Transfer',null); 
+     //END ATHR Avoid long Parameters 
+           // Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical','CRM','Report','Mass Access Ownership Transfer',null); 
             throw new AuraHandledException(ex.getMessage());
             
         }

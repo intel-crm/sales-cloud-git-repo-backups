@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>51.0</apiVersion>
+    <available>true</available>
+    <description>Payment Admins will be notified when claims on Bank Document Hold are selected for Audit Process</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_Claim_On_Audit_Hold</name>
+    <style>none</style>
+    <subject>Claim #  which was on Bank Document Hold has been selected for Audit</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -73,8 +73,8 @@ public class Core_MDF_Claim_Score_Notify_Batch_Test {
         
         Test.startTest();
         List<ChannelProgram> cpList = new List<ChannelProgram> ();
-        ChannelProgram ccfCp = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', false);
-        ChannelProgram rmfCp = Core_MDF_CCP_TestDataUtility.createProgram ('Retail Marketing Funds','Retail Marketing Funds', false);
+        ChannelProgram ccfCp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', false);
+        ChannelProgram rmfCp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.RMF_PROGRAM,'Retail Marketing Funds', false);
         cpList.add(ccfCp);
         cpList.add(rmfCp);
         System.runAs(testUser){
@@ -131,11 +131,11 @@ public class Core_MDF_Claim_Score_Notify_Batch_Test {
         Campaign MDFcamp = Core_MDF_CCP_TestDataUtility.createCampaign('TestCampOpal','Consumer','Intel® Corporate Logo', 'MDF or both CMP & MDF',
                                                                        Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund',System.today()-250 , 
                                                                        System.today()+90, 2000, 'Unite', ccfacc.Id,'2-in-1', false);
-        MDFcamp.Core_MDF_Opal_Budget_Type_Txt__c = 'MDF;OEM CMP'; 
+        MDFcamp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP'; 
         campList.add(MDFcamp);
         Campaign retailCampaign = Core_MDF_CCP_TestDataUtility.createCampaign('Retail Campaigm1','Gaming','9ᵗʰ Gen','No', Core_MDF_CCP_TestDataUtility.campaign_RecordType_Retail, 'Retail Marketing Funds', System.today().addDays(-22), System.today().addDays(20), 100000, 'Instore innovation', dellRMFVirtualCorp.Id,'Desktop', false); 
         retailCampaign.Core_MDF_Is_Opal__c='No';
-        retailCampaign.Core_MDF_Opal_Budget_Type_Txt__c= 'Retail MDF';
+        retailCampaign.Core_MDF_Budget_Type_txt__c= 'Retail MDF';
         retailCampaign.Core_MDF_Activity_Category_Type__c =null;
         retailCampaign.Core_MDF_Reimbursement_Rate__c='100%';
         retailCampaign.Core_MDF_Technology__c = 'Intel vPro®';
@@ -271,7 +271,6 @@ public class Core_MDF_Claim_Score_Notify_Batch_Test {
         Core_MDF_Bank__c bank1 = Core_MDF_CCP_TestDataUtility.createBank(ccpIntelAccount.Id, 'Core_MDF_Client_CoMarketing_Fund', false,'1241241240');
         //bank1.Core_MDF_Bank_Status__c='Active';
         bank1.Core_MDF_Bank_Location__c ='AM';
-        bank1.Core_MDF_Effective_Date__c = System.today().addDays(-1);
         system.runAs(testUser){
             insert bank1;
         }
@@ -285,7 +284,7 @@ public class Core_MDF_Claim_Score_Notify_Batch_Test {
         }
         
         List<PartnerFundClaim> pfcList = new List<PartnerFundClaim>();
-        PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('PIC Review Claim', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, MDFpfr.Id, MDFpfr.Core_MDF_Start_Date__c, MDFpfr.Core_MDF_Start_Date__c, 500.00, System.today(), null, false);
+        PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('PIC Review Claim', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, MDFpfr.Id, MDFpfr.Core_MDF_Start_Date__c, MDFpfr.Core_MDF_End_Date__c, 500.00, System.today(), null, false);
         claim1.Core_MDF_Invoice_Date__c = System.today().addDays(-1);
         claim1.Status = Label.Core_MDF_Status_Submitted;
         claim1.Core_MDF_Type_Txt__c ='Claim';
@@ -299,7 +298,7 @@ public class Core_MDF_Claim_Score_Notify_Batch_Test {
         claim1.Core_MDF_PIC_Review_Completed__c = true;
         pfcList.add(claim1);
         
-        PartnerFundClaim claim2 = Core_MDF_CCP_TestDataUtility.createClaim('PIC RMF Review Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail, rmfPfr.Id, rmfPfr.Core_MDF_Start_Date__c, rmfPfr.Core_MDF_Start_Date__c, 500.00, System.today(), retailBank.id, false);
+        PartnerFundClaim claim2 = Core_MDF_CCP_TestDataUtility.createClaim('PIC RMF Review Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail, rmfPfr.Id, rmfPfr.Core_MDF_Start_Date__c, rmfPfr.Core_MDF_End_Date__c, 500.00, System.today(), retailBank.id, false);
         claim2.Core_MDF_Invoice_Date__c = System.today().addDays(-1);
         claim2.Status = Label.Core_MDF_Status_Submitted;
         claim2.Core_MDF_Type_Txt__c ='Claim';
@@ -321,7 +320,7 @@ public class Core_MDF_Claim_Score_Notify_Batch_Test {
         system.runAs(testUser){
             update claim2;
         }
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
       //  List<Case> caseListToBeInserted = new List<Case>();
         Case cs = new Case();
         Id caseAuditRecType = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('Core_MDF_Audit_Closed').getRecordTypeId();
@@ -334,7 +333,7 @@ public class Core_MDF_Claim_Score_Notify_Batch_Test {
         cs.Core_MDF_Claim_Lookup_Id__c = claim1.id;
         cs.Origin = 'Manual Selection';
         cs.Status = 'Closed';
-        cs.Core_MDF_Channel_Program_txt__c = 'Client';
+        cs.Core_MDF_Channel_Program_txt__c = Core_MDF_CCP_ConstantClass.CCF_PROGRAM;
         cs.CreatedDate = system.today()-1;
         cs.ClosedDate = system.today()-1;
         system.runAs(testUser){

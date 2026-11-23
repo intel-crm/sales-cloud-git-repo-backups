@@ -65,6 +65,7 @@ export default class CurrencyConverter extends LightningElement {
                 value: item.value
             }));
         } else if (error) {
+            console.error('Error fetching currency picklist values', error);
         }
     }
 
@@ -146,6 +147,8 @@ export default class CurrencyConverter extends LightningElement {
                 }
             })
             .catch(error => {
+                console.error('Exchange rate error', error);
+                console.error('Error details:', error.body ? error.body.message : error.message);
                 this.convertedAmount = '';
             });
     }
@@ -170,6 +173,7 @@ export default class CurrencyConverter extends LightningElement {
             document.body.removeChild(textArea);
             return successful;
         } catch (err) {
+            console.error('Fallback: Oops, unable to copy', err);
             document.body.removeChild(textArea);
             return false;
         }
@@ -185,6 +189,7 @@ export default class CurrencyConverter extends LightningElement {
             await navigator.clipboard.writeText(text);
             return true;
         } catch (err) {
+            console.error('Async: Could not copy text: ', err);
             // Fallback to the older method
             return this.fallbackCopyTextToClipboard(text);
         }
@@ -229,6 +234,7 @@ export default class CurrencyConverter extends LightningElement {
                 throw new Error('Copy operation failed');
             }
         } catch (error) {
+            console.error('Copy failed:', error);
             
             // Show error toast
             this.dispatchEvent(

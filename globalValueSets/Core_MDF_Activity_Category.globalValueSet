@@ -246,6 +246,11 @@
         <label>Technical Sales 2025</label>
     </customValue>
     <customValue>
+        <fullName>Test LOV Activity Category</fullName>
+        <default>false</default>
+        <label>Test LOV Activity Category</label>
+    </customValue>
+    <customValue>
         <fullName>Training</fullName>
         <default>false</default>
         <label>Training</label>
@@ -261,10 +266,10 @@
         <label>Video 2025</label>
     </customValue>
     <customValue>
-        <fullName>Online</fullName>
+        <fullName>2025 Event</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Online</label>
+        <label>2025 Event</label>
     </customValue>
     <customValue>
         <fullName>Media</fullName>
@@ -273,10 +278,16 @@
         <label>Media</label>
     </customValue>
     <customValue>
-        <fullName>OOH</fullName>
+        <fullName>2025 Digital Media</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>OOH</label>
+        <label>2025 Digital Media</label>
+    </customValue>
+    <customValue>
+        <fullName>Online</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Online</label>
     </customValue>
     <masterLabel>Activity Category</masterLabel>
     <sorted>true</sorted>

@@ -9,6 +9,42 @@
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>height</name>
+                    <type>decorator</type>
+                    <value>1000</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>icon</name>
+                    <type>decorator</type>
+                    <value>agent_session</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <type>decorator</type>
+                    <value>SMG-1AI</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>scrollable</name>
+                    <type>decorator</type>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>width</name>
+                    <type>decorator</type>
+                    <value>340</value>
+                </componentInstanceProperties>
+                <componentName>smgLoader</componentName>
+                <identifier>smgLoader</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>eager</name>
+                    <type>decorator</type>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>entityNames</name>
                     <valueList>
                         <valueListItems>
@@ -112,6 +148,9 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
                     <type>decorator</type>
                     <value>Recent Items</value>
                 </componentInstanceProperties>
@@ -191,6 +230,42 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:filterListCard</componentName>
                 <identifier>flexipage_filterListCard</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>eager</name>
+                    <type>decorator</type>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>height</name>
+                    <type>decorator</type>
+                    <value>480</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>icon</name>
+                    <type>decorator</type>
+                    <value>like</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <type>decorator</type>
+                    <value>Submit Feedback</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>scrollable</name>
+                    <type>decorator</type>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>width</name>
+                    <type>decorator</type>
+                    <value>500</value>
+                </componentInstanceProperties>
+                <componentName>core_MDF_Feedback</componentName>
+                <identifier>core_MDF_Feedback</identifier>
             </componentInstance>
         </itemInstances>
         <name>utilityItems</name>

@@ -8,6 +8,10 @@
         <plural>true</plural>
         <value><!-- Scorecard --></value>
     </caseValues>
+    <fieldSets>
+        <label><!-- AI Scorecard Fieldset --></label>
+        <name>Core_MDF_AI_Scorecard_Fieldset</name>
+    </fieldSets>
     <fields>
         <label><!-- 3rd Party --></label>
         <name>Core_MDF_3rd_Party_Ind__c</name>
@@ -39,6 +43,22 @@
     <fields>
         <label><!-- AI Comments --></label>
         <name>Core_MDF_AI_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- AI Compliant Status --></label>
+        <name>Core_MDF_AI_Compliant_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>AI Compliant</masterLabel>
+            <translation><!-- AI Compliant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AI Non-Compliant</masterLabel>
+            <translation><!-- AI Non-Compliant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AI Processing Failed</masterLabel>
+            <translation><!-- AI Processing Failed --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- AI Generated Engagement Comments --></label>
@@ -112,6 +132,10 @@
         <label><!-- AI Processing Status --></label>
         <name>Core_MDF_AI_Processing_Status_Nm__c</name>
         <picklistValues>
+            <masterLabel>AI In Progress</masterLabel>
+            <translation><!-- AI In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>AI Processing Completed</masterLabel>
             <translation><!-- AI Processing Completed --></translation>
         </picklistValues>
@@ -137,11 +161,15 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Z:Anti-Corruption Question --></label>
+        <name>Core_MDF_Anti_Corruption_Question_Ind__c</name>
+    </fields>
+    <fields>
         <label><!-- Attribution Comments --></label>
         <name>Core_MDF_Attribution_Comments_Txt__c</name>
     </fields>
     <fields>
-        <label><!-- Attribution --></label>
+        <label>Attribution</label>
         <name>Core_MDF_Attribution_Nbr__c</name>
     </fields>
     <fields>
@@ -149,7 +177,7 @@
         <name>Core_MDF_Attribution_PV_Ind__c</name>
     </fields>
     <fields>
-        <label><!-- Baseline --></label>
+        <label><!-- Z:Baseline --></label>
         <name>Core_MDF_Baseline_Ind__c</name>
     </fields>
     <fields>
@@ -160,6 +188,10 @@
     <fields>
         <label><!-- Claim Amount --></label>
         <name>Core_MDF_Claim_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Z:Competitor Requirement Met --></label>
+        <name>Core_MDF_Competitor_Requirement_Met_Ind__c</name>
     </fields>
     <fields>
         <label><!-- Confirmed Irregularity --></label>
@@ -182,11 +214,15 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Z:Embargo countries --></label>
+        <name>Core_MDF_Embargo_countries_Ind__c</name>
+    </fields>
+    <fields>
         <label><!-- Engagement Comments --></label>
         <name>Core_MDF_Engagement_Comments_Txt__c</name>
     </fields>
     <fields>
-        <label><!-- Engagement --></label>
+        <label>Engagement</label>
         <name>Core_MDF_Engagement_Nbr__c</name>
     </fields>
     <fields>
@@ -194,12 +230,68 @@
         <name>Core_MDF_Engagement_PV_Ind__c</name>
     </fields>
     <fields>
+        <label><!-- FV Percent Recovery --></label>
+        <name>Core_MDF_FV_Percent_Recovery__c</name>
+    </fields>
+    <fields>
+        <label><!-- Z:GMET Compliant --></label>
+        <name>Core_MDF_GMET_Compliant_Nm__c</name>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Z:Good Taste Compliant --></label>
+        <name>Core_MDF_Good_Taste_Compliant_Ind__c</name>
+    </fields>
+    <fields>
         <label><!-- Highlight in Partnership Review --></label>
         <name>Core_MDF_Highlight_Partner_Review_Ind__c</name>
     </fields>
     <fields>
+        <label><!-- Z:Intel Mention Compliant --></label>
+        <name>Core_MDF_Intel_Mention_Compliant_Nm__c</name>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Z:Intel logo/Sig ID Compliant --></label>
+        <name>Core_MDF_Intel_logo_Sig_ID_Compliant_Nm__c</name>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <help>Montant de récupération manuelle (MR). Ce que cela signifie pour vous : ce montant sera récupéré.</help>
-        <label>Montant de récupération manuelle (USD)</label>
+        <label>Montant de la récupération manuelle(USD)</label>
         <name>Core_MDF_Manual_Recovery_Amount_USD_Amt__c</name>
     </fields>
     <fields>
@@ -209,6 +301,10 @@
     <fields>
         <label><!-- Modified --></label>
         <name>Core_MDF_Modified_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Z:Non Reimbursable Cost --></label>
+        <name>Core_MDF_Non_Reimbursable_Cost_Ind__c</name>
     </fields>
     <fields>
         <label><!-- PIC Accuracy --></label>
@@ -263,12 +359,52 @@
         <name>Core_MDF_POP__c</name>
     </fields>
     <fields>
+        <label><!-- PV1 Percent Recovery --></label>
+        <name>Core_MDF_PV1_Percent_Recovery__c</name>
+    </fields>
+    <fields>
+        <label><!-- PV2 Percent Recovery --></label>
+        <name>Core_MDF_PV2_Percent_Recovery__c</name>
+    </fields>
+    <fields>
+        <label><!-- PV4 Percent Recovery --></label>
+        <name>Core_MDF_PV4_Percent_Recovery__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Response Zone --></label>
+        <name>Core_MDF_Partner_Response_Zone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Z:Pre Event Requirement Met --></label>
+        <name>Core_MDF_Pre_Event_Requirement_Met_Ind__c</name>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Previous Closed Quarter --></label>
         <name>Core_MDF_Previous_Closed_Quarter_nm__c</name>
     </fields>
     <fields>
         <label><!-- Process Feedback Comments --></label>
         <name>Core_MDF_Process_Feedback_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Z: Eligible Product/Solution Prominent --></label>
+        <name>Core_MDF_Product_Solution_Prominent_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quarter_Test --></label>
+        <name>Core_MDF_Quarter_Test__c</name>
     </fields>
     <fields>
         <label><!-- Quarter --></label>
@@ -287,12 +423,28 @@
         <name>Core_MDF_Right_to_Recover_Amt__c</name>
     </fields>
     <fields>
-        <label><!-- Score --></label>
+        <label>Score</label>
         <name>Core_MDF_Score_Nbr__c</name>
     </fields>
     <fields>
         <label><!-- Support Advice --></label>
         <name>Core_MDF_Support_Advice_Ind__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Unsupported Domain --></label>
+        <name>Core_MDF_Unsupported_Domain_Nm__c</name>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
         <picklistValues>
             <masterLabel>No</masterLabel>
             <translation><!-- No --></translation>
@@ -329,6 +481,22 @@
     <fields>
         <label><!-- Weighted PV Amount --></label>
         <name>Core_MDF_Weighted_PV_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- ZV Percent Recovery --></label>
+        <name>Core_MDF_ZV_Percent_Recovery__c</name>
+    </fields>
+    <fields>
+        <label><!-- Z:Eligible product/solution promoted --></label>
+        <name>Core_MDF_product_solution_promoted_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- TEST POP NA --></label>
+        <name>TEST_POP_NA__c</name>
+    </fields>
+    <fields>
+        <label><!-- Test Recovery Issue --></label>
+        <name>Test_Recovery_Issue__c</name>
     </fields>
     
     <nameFieldLabel><!-- Scorecard Name --></nameFieldLabel>

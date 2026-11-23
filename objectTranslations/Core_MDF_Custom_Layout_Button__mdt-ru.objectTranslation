@@ -76,6 +76,10 @@
             <translation>Отменить заявку</translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Cancel VAT</masterLabel>
+            <translation><!-- Cancel VAT --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Change Owner</masterLabel>
             <translation><!-- Change Owner --></translation>
         </picklistValues>
@@ -89,7 +93,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Close</masterLabel>
-            <translation>Закрыть</translation>
+            <translation>Закрыть действие</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Complete PIC Review</masterLabel>
@@ -128,6 +132,10 @@
             <translation><!-- Notify Partner --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Recall to Payment Clearance</masterLabel>
+            <translation><!-- Recall to Payment Clearance --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Release Hold</masterLabel>
             <translation>Отменить приостановку</translation>
         </picklistValues>
@@ -145,15 +153,27 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Submit for Payment Clearance</masterLabel>
-            <translation>Отправить для проверки платежа</translation>
+            <translation><!-- Submit for Payment Clearance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Summary</masterLabel>
+            <translation><!-- Summary --></translation>
         </picklistValues>
     </fields>
     <fields>
         <label><!-- Button Type --></label>
         <name>Core_MDF_Button_Type_nm__c</name>
         <picklistValues>
+            <masterLabel>Flow</masterLabel>
+            <translation><!-- Flow --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>LightningComponent</masterLabel>
             <translation><!-- LightningComponent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LightningWebComponent</masterLabel>
+            <translation><!-- LightningWebComponent --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Update a Record</masterLabel>

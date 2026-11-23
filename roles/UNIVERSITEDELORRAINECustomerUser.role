@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>UNIVERSITE DE LORRAINE Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>UNIVERSITEDELORRAINECustomerManager</parentRole>
 </Role>

@@ -410,6 +410,7 @@ public class Core_MDF_IUPGM_ServiceHandler_Test{
     
     @isTest
     static void pgmExists(){
+        test.startTest();
         Account acc = [SELECT Id FROM Account WHERE Name = 'CCPTestAccountTemp'];
         ChannelProgram cp = [SELECT Id FROM ChannelProgram WHERE Name = 'Client'];
         //ChannelProgram cpcmdf = [SELECT Id FROM ChannelProgram WHERE Name = 'Channel MDF'];
@@ -421,7 +422,9 @@ public class Core_MDF_IUPGM_ServiceHandler_Test{
         User pausr = [SELECT Id FROM User WHERE LastName = 'Prog Adm Usr'];
         User escReviewerIPA = [SELECT Id FROM User WHERE LastName = 'Escalation Reviewer' LIMIT 1];
         Group groupId = [SELECT Id FROM Group WHERE DeveloperName = 'Core_MDF_CCP_TESTACCTTEMP_CCF_EMEA_INTERNAL'];
-        test.startTest();
+        // Highlight: Unused Local Variable - 14285 // Suma
+        //Group IPAEscGroupId = [SELECT Id FROM Group WHERE DeveloperName = 'Core_MDF_CCP_IPA_APJ_Escltns_L1_Apr_Grp'];
+
         List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
         List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmUpdateList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
         
@@ -550,7 +553,8 @@ public class Core_MDF_IUPGM_ServiceHandler_Test{
         String programName='CMDF';
         String budgetType='Client Specialties MDF';
         Core_MDF_IUPGM_ServiceHandler.geoSubGeoWrapper gsg = new Core_MDF_IUPGM_ServiceHandler.geoSubGeoWrapper();
-        gsg=Core_MDF_IUPGM_ServiceHandler.getAccProgramGeoSubGeo(geoSubGeoStringList,accountName, programName,budgetType);
+        // ATHR Avoid long parameter lists - US 14285 - Indira
+        gsg=Core_MDF_IUPGM_ServiceHandler.getAccProgramGeoSubGeo(new Core_MDF_IUPGM_ServiceHandler.GeoSubGeoRequestWrapper(geoSubGeoStringList,accountName, programName,budgetType));
         test.stopTest();        
         Assert.isTrue(gsg != null);
         
@@ -796,15 +800,19 @@ public class Core_MDF_IUPGM_ServiceHandler_Test{
         String programName='CMDF';
         String budgetType='Client Specialties MDF';
         Core_MDF_IUPGM_ServiceHandler.geoSubGeoWrapper gsg = new Core_MDF_IUPGM_ServiceHandler.geoSubGeoWrapper();
-        gsg=Core_MDF_IUPGM_ServiceHandler.getAccProgramGeoSubGeo(geoSubGeoStringList,accountName, programName,budgetType);
+        // ATHR Avoid long parameter lists - US 14285 - Indira
+        gsg=Core_MDF_IUPGM_ServiceHandler.getAccProgramGeoSubGeo(new Core_MDF_IUPGM_ServiceHandler.GeoSubGeoRequestWrapper(geoSubGeoStringList,accountName, programName,budgetType));
         
         System.assertNotEquals(Null, Core_MDF_IUPGM_ServiceHandler.programGeoSubGeoBudgetMap);
         
         try{
             Map<Id, Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmListMap = new Map<Id, Core_MDF_Int_Users_Partner_Geo_Mapping__c>(iupgmList);
             Core_MDF_IUPGM_ServiceHandler.checkPGM(iupgmListMap);
+            // Highlight: Unused Local Variable - 14285 // Suma
+            //Map<String,List<GroupMember>> newGroupMemberMap  = Core_MDF_IUPGM_ServiceHandler.addRoleSpecificIUPGMGroupMember(iupgmList);
             Core_MDF_IUPGM_ServiceHandler.checkPGM(null);
-            Core_MDF_IUPGM_ServiceHandler.checkUserPermission(null,null,null,null);
+            // ATHR Avoid long parameter lists - US 14285 - Indira
+            Core_MDF_IUPGM_ServiceHandler.checkUserPermission(new Core_MDF_IUPGM_ServiceHandler.UserPermissionCheckWrapper(null,null,null,null));
             Core_MDF_IUPGM_ServiceHandler.deleteGroupMember(' ');
             Core_MDF_IUPGM_ServiceHandler.removeGroupMember(null, null);
             Core_MDF_IUPGM_ServiceHandler.getExistingIupgmUserIdGeoBudgetMap(null);
@@ -1058,7 +1066,8 @@ public class Core_MDF_IUPGM_ServiceHandler_Test{
         iupgmList.add(iupgm2);
         
         // Call checkUserPermission with insert scenario
-        Core_MDF_IUPGM_ServiceHandler.checkUserPermission(iupgmList, true, false, null);
+        // ATHR Avoid long parameter lists - US 14285 - Indira
+        Core_MDF_IUPGM_ServiceHandler.checkUserPermission(new Core_MDF_IUPGM_ServiceHandler.UserPermissionCheckWrapper(iupgmList, true, false, null));
         
         test.stopTest();
     }
@@ -1070,32 +1079,37 @@ public class Core_MDF_IUPGM_ServiceHandler_Test{
         
         // Test with geo-subgeo containing dash
         List<String> geoSubGeoList1 = new List<String>{'APJ-SA', 'EMEA-UK'};
+        // ATHR Avoid long parameter lists - US 14285 - Indira
         Core_MDF_IUPGM_ServiceHandler.geoSubGeoWrapper result1 = 
-            Core_MDF_IUPGM_ServiceHandler.getAccProgramGeoSubGeo(geoSubGeoList1, 'TestAcc', 'CCF', null);
+            Core_MDF_IUPGM_ServiceHandler.getAccProgramGeoSubGeo(new Core_MDF_IUPGM_ServiceHandler.GeoSubGeoRequestWrapper(geoSubGeoList1, 'TestAcc', 'CCF', null));
         System.assertNotEquals(null, result1, 'Result should not be null');
         
         // Test with geo only (no dash)
         List<String> geoSubGeoList2 = new List<String>{'APJ', 'EMEA'};
+        // ATHR Avoid long parameter lists - US 14285 - Indira
         Core_MDF_IUPGM_ServiceHandler.geoSubGeoWrapper result2 = 
-            Core_MDF_IUPGM_ServiceHandler.getAccProgramGeoSubGeo(geoSubGeoList2, 'TestAcc', 'CCF', null);
+            Core_MDF_IUPGM_ServiceHandler.getAccProgramGeoSubGeo(new Core_MDF_IUPGM_ServiceHandler.GeoSubGeoRequestWrapper(geoSubGeoList2, 'TestAcc', 'CCF', null));
         System.assertNotEquals(null, result2, 'Result should not be null');
         
         // Test with budget type '_ALL'
         List<String> geoSubGeoList3 = new List<String>{'APJ-SA'};
+        // ATHR Avoid long parameter lists - US 14285 - Indira
         Core_MDF_IUPGM_ServiceHandler.geoSubGeoWrapper result3 = 
-            Core_MDF_IUPGM_ServiceHandler.getAccProgramGeoSubGeo(geoSubGeoList3, 'TestAcc', 'CCF', '_ALL');
+            Core_MDF_IUPGM_ServiceHandler.getAccProgramGeoSubGeo(new Core_MDF_IUPGM_ServiceHandler.GeoSubGeoRequestWrapper(geoSubGeoList3, 'TestAcc', 'CCF', '_ALL'));
         System.assertNotEquals(null, result3, 'Result should not be null');
         
         // Test with specific budget type
         List<String> geoSubGeoList4 = new List<String>{'APJ-SA'};
+         // ATHR Avoid long parameter lists - US 14285 - Indira
         Core_MDF_IUPGM_ServiceHandler.geoSubGeoWrapper result4 = 
-            Core_MDF_IUPGM_ServiceHandler.getAccProgramGeoSubGeo(geoSubGeoList4, 'TestAcc', 'CCF', 'TestBudget');
+            Core_MDF_IUPGM_ServiceHandler.getAccProgramGeoSubGeo(new Core_MDF_IUPGM_ServiceHandler.GeoSubGeoRequestWrapper(geoSubGeoList4, 'TestAcc', 'CCF', 'TestBudget'));
         System.assertNotEquals(null, result4, 'Result should not be null');
         
         // Test with null parameters
         List<String> geoSubGeoList5 = new List<String>{'APJ'};
+        // ATHR Avoid long parameter lists - US 14285 - Indira
         Core_MDF_IUPGM_ServiceHandler.geoSubGeoWrapper result5 = 
-            Core_MDF_IUPGM_ServiceHandler.getAccProgramGeoSubGeo(geoSubGeoList5, null, null, null);
+            Core_MDF_IUPGM_ServiceHandler.getAccProgramGeoSubGeo(new Core_MDF_IUPGM_ServiceHandler.GeoSubGeoRequestWrapper(geoSubGeoList5, null, null, null));
         System.assertNotEquals(null, result5, 'Result should not be null');
         
         test.stopTest();

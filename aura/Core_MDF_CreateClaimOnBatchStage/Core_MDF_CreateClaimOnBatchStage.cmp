@@ -1,0 +1,5 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="recordtypeDeveloperName" type="String" default="" description="Stores the recordtypeDeveloperName from the parent component" /> 
+    <c:Core_MDF_PFC_Create recordtypeDeveloperName = "Core_MDF_Client_Co_Marketing_Fund" />
+</aura:component>

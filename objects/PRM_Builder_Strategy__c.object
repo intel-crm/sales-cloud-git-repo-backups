@@ -173,16 +173,6 @@
         <type>TextArea</type>
     </fields>
     <label>IPA Affiliation</label>
-    <listViews>
-        <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>OWNER.FIRST_NAME</columns>
-        <columns>OWNER.LAST_NAME</columns>
-        <columns>PRM_Active__c</columns>
-        <columns>CREATED_DATE</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <nameField>
         <label>IPA Affiliation Name</label>
         <trackHistory>false</trackHistory>

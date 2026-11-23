@@ -1,0 +1,7 @@
+<design:component>
+    <design:attribute name="objectName" label="Object Api Name" ></design:attribute>
+     <design:attribute  name="listViewName" label="List View Name"> </design:attribute>
+      <design:attribute name="noOfRows" label="No Of Rows" > </design:attribute>
+        
+   
+</design:component>

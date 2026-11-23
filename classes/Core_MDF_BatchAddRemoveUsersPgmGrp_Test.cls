@@ -36,14 +36,6 @@ public class Core_MDF_BatchAddRemoveUsersPgmGrp_Test {
         te4.Core_Object__c = 'Account';
         te4.Core_Trigger_Events__c = 'after update';
         triggerList.add(te4);
-	Core_Trigger_Executions__c enableIPAMDFAccountOnboarding = new Core_Trigger_Executions__c();
-        enableIPAMDFAccountOnboarding.name = 'Bypass_AccountOnboardOPIDValidations';
-        enableIPAMDFAccountOnboarding.Core_Object__c = 'Core_MDF_Account_Onboarding__c';
-        enableIPAMDFAccountOnboarding.Core_Trigger_Events__c = 'after Insert';
-        enableIPAMDFAccountOnboarding.Core_Active__c = TRUE;
-        enableIPAMDFAccountOnboarding.Core_Description__c = 'Bypass_AccountOnboardOPIDValidations';
-        enableIPAMDFAccountOnboarding.Core_Class_Name__c = 'Core_MDF_AccountOnboardingHelper';
-        triggerList.add(enableIPAMDFAccountOnboarding);
         Core_Trigger_Executions__c te5 = new Core_Trigger_Executions__c();
         te5.Name = 'Core_MDF_PNUM_Addition';
         te5.Core_Active__c = true;
@@ -78,7 +70,6 @@ public class Core_MDF_BatchAddRemoveUsersPgmGrp_Test {
         aba.PRM_Account_Id__c = opid.Id;
         aba.PRM_Partner_Benefit_Id__c = benefit.Id;
         aba.PRM_Status_Nm__c = 'Active';
-        aba.PRM_Status_Reason_Txt__c = 'Test';
         insert aba;
         
         insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Proposal_I_MDF_Benefit', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = true, Core_MDF_Partner_Benefit__c = 'MDFPRPCCP', Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Proposal_Based', Core_MDF_Budget_Type__c = 'Proposal I MDF', Core_MDF_Program_Nm__c = 'Intel Partner Alliance', Core_MDF_RecordType__c = 'Proposal Based');
@@ -304,7 +295,7 @@ public class Core_MDF_BatchAddRemoveUsersPgmGrp_Test {
     @isTest
     static void testBatch3() {
         Test.startTest();
-        Account acc = [SELECT Id FROM Account WHERE Name = '[Prime] Intel Account 1' LIMIT 1];
+        Account acc = [SELECT Id FROM Account WHERE Name = '[Prime] Intel Account 2' LIMIT 1];
         User usr = [SELECT Id FROM User WHERE AccountId = :acc.Id LIMIT 1];
         Core_MDF_Partner_Group_Mapping__c pgm = [SELECT Core_MDF_Account__c, Core_MDF_Group_Id__c FROM Core_MDF_Partner_Group_Mapping__c WHERE Core_MDF_Account__c = :acc.Id LIMIT 1];
         Map<Id, Id> accountIdToGroupIdToAddUsersMap = new Map<Id, Id>{acc.Id => pgm.Core_MDF_Group_Id__c};

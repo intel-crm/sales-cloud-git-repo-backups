@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CMSConnectSource xmlns="http://soap.sforce.com/2006/04/metadata">
+    <connectionType>Public</connectionType>
+    <developerName>aem_dev2</developerName>
+    <languageEnabled>N</languageEnabled>
+    <masterLabel>aem-dev2</masterLabel>
+    <personalizationEnabled>N</personalizationEnabled>
+    <sortOrder>4</sortOrder>
+    <status>ACTIVE</status>
+    <type>AEM</type>
+    <websiteUrl>https://www.intel.com</websiteUrl>
+</CMSConnectSource>

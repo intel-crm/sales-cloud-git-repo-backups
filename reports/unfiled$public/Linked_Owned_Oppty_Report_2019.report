@@ -67,7 +67,7 @@
         <field>ACCOUNT_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Linked + Owned Oppty Report - 2026</name>
+    <name>Linked + Owned Oppty Report - 2019</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -93,6 +93,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2019-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2019-01-01</startDate>
     </timeFrameFilter>
 </Report>

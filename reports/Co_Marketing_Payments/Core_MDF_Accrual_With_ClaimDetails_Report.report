@@ -105,12 +105,14 @@
         <name>Co-Marketing Activity Details</name>
         <params>
             <name>co</name>
-            <value>0</value>
+            <value>1</value>
         </params>
         <reportType>Core_MDF_Co_Marketing_Activity__c</reportType>
         <scope>organization</scope>
         <showGrandTotal>false</showGrandTotal>
         <showSubTotals>false</showSubTotals>
+        <sortColumn>PartnerFundRequest$Core_MDF_Start_Date__c</sortColumn>
+        <sortOrder>Desc</sortOrder>
         <timeFrameFilter>
             <dateColumn>PartnerFundRequest$CreatedDate</dateColumn>
             <interval>INTERVAL_CUSTOM</interval>
@@ -127,10 +129,6 @@
         <columns>
             <aggregateTypes>Sum</aggregateTypes>
             <field>PartnerFundRequest.PartnerFundClaims$Core_MDF_Total_Claim_Recovery_Amount__c</field>
-        </columns>
-        <columns>
-            <aggregateTypes>Sum</aggregateTypes>
-            <field>PartnerFundRequest$ChannelPartner.Core_MDF_Account_Node_Attribute_Id__c.Core_MDF_Final_CSAR_GL_Account_nbr__c</field>
         </columns>
         <columns>
             <aggregateTypes>Sum</aggregateTypes>
@@ -156,7 +154,7 @@
                 <columnToColumn>false</columnToColumn>
                 <isUnlocked>true</isUnlocked>
                 <operator>notEqual</operator>
-                <value>,Bristal org_CCPTest,A&amp;E Test Account JJ</value>
+                <value>Bristal org_CCPTest,A&amp;E Test Account JJ</value>
             </criteriaItems>
             <criteriaItems>
                 <column>PartnerFundRequest$Core_MDF_Start_Date__c</column>
@@ -177,7 +175,7 @@
         <name>Co-Marketing Activity Claim Details</name>
         <params>
             <name>co</name>
-            <value>0</value>
+            <value>1</value>
         </params>
         <reportType>Core_MDF_Co_Marketing_Activity__c</reportType>
         <scope>organization</scope>
@@ -197,7 +195,7 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>PartnerFundRequest$Core_MDF_Activity_Number__c</field>
-        <sortOrder>Desc</sortOrder>
+        <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>MDF Accrual Report</name>
     <params>

@@ -23,6 +23,13 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>Opportunity.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>CCG Sales Group,automotive sales group,undefined</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Solution_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -77,6 +84,6 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Opportunity.Core_Approved_Date__c</dateColumn>
-        <interval>INTERVAL_PREVY</interval>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

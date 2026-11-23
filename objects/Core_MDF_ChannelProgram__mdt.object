@@ -171,6 +171,20 @@
         <type>Checkbox</type>
     </fields>
     <label>Channel Program</label>
+    <listViews>
+        <fullName>All_Fields_View</fullName>
+        <columns>MasterLabel</columns>
+        <columns>Core_MDF_Cmpgn_CAP_Validation_Required__c</columns>
+        <columns>Core_MDF_Act_Budget_Amt_Chk_Reqd__c</columns>
+        <columns>Geo_Based_Sharing_Required__c</columns>
+        <columns>Core_MDF_Ignore_External_Alloc_Sharing__c</columns>
+        <columns>Core_MDF_Ignore_External_Budget_Sharing__c</columns>
+        <columns>Core_MDF_Node_Based_Sharing_Required_Ind__c</columns>
+        <columns>Core_MDF_BankDocHold_Countries_Required__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Fields View</label>
+        <language>en_US</language>
+    </listViews>
     <pluralLabel>Channel Programs</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>

@@ -42,7 +42,7 @@
         <field>Product2.Core_Code_Name__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Product_Segment__c</field>
@@ -127,6 +127,13 @@
             <operator>lessThan</operator>
             <value>-45</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Time_Till_Opportunity_Decision_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>-90</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
@@ -174,6 +181,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2023-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2016-01-01</startDate>
     </timeFrameFilter>
 </Report>

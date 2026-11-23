@@ -21,6 +21,7 @@
             </value>
         </inputParameters>
         <nameSegment>Core_MDF_Claim_Utility</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <description>Check_for_Vat_and_Take_Action</description>
@@ -44,6 +45,7 @@
             </value>
         </inputParameters>
         <nameSegment>Core_MDF_Vat_Utility</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <description>Deny_Claim_and_Vat_Info</description>
@@ -67,8 +69,9 @@
             </value>
         </inputParameters>
         <nameSegment>Core_MDF_Vat_Utility</nameSegment>
+        <offset>0</offset>
     </actionCalls>
-    <apiVersion>49.0</apiVersion>
+    <apiVersion>63.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>assignClaimToCollection</name>
@@ -114,7 +117,7 @@
         <name>Core_MDF_Release_Review_Hold</name>
         <label>Release Review Hold</label>
         <locationX>746</locationX>
-        <locationY>839</locationY>
+        <locationY>838</locationY>
         <assignmentItems>
             <assignToReference>varClaimRecord.Core_MDF_Audit_Hold__c</assignToReference>
             <operator>Assign</operator>
@@ -124,115 +127,6 @@
         </assignmentItems>
         <connector>
             <targetReference>updateClaim_0</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <description>This block sets required attributes of Adjustment Requests and amount will be requested amount from reference claim</description>
-        <name>Core_MDF_Set_Adjustment_Request_For_Non_Compliant</name>
-        <label>Set Adjustment Request For Non-Compliant</label>
-        <locationX>339</locationX>
-        <locationY>189</locationY>
-        <assignmentItems>
-            <assignToReference>varAdjustmentRequestInstance.Core_MDF_Reference_Claim_Nbr__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>varClaimId</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>varAdjustmentRequestInstance.Core_MDF_Reason_Cd__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>varAdjustmentRequestType</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>varAdjustmentRequestInstance.Core_MDF_Amount_Amt__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>varRequestedReimbursementAmount</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>varAdjustmentRequestInstance.Core_MDF_Bypass_Amt_Val_Ind__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>varAdjustmentRequestInstance.Core_MDF_Comments_Txt__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>varAdjustmentRequestComments</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Post_Payment_Non_VAT_Non_Compliant_Adjustment</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Post_Payment_Audit_Negative_Adjustment</name>
-        <label>Post Payment Audit Negative Adjustment</label>
-        <locationX>579</locationX>
-        <locationY>650</locationY>
-        <assignmentItems>
-            <assignToReference>AdjustmentReqCollection</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>varAdjustmentRequestInstance</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Set_Adjustment_Request_2</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Post_Payment_Audit_Positive_Adjustment</name>
-        <label>Post Payment Audit Positive Adjustment</label>
-        <locationX>311</locationX>
-        <locationY>954</locationY>
-        <assignmentItems>
-            <assignToReference>AdjustmentReqCollection</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>varAdjustmentRequestInstance2</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>CreateMultipleRecords</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Post_Payment_Non_VAT_Non_Compliant_Adjustment</name>
-        <label>Post Payment Non VAT Non Compliant Adjustment</label>
-        <locationX>136</locationX>
-        <locationY>356</locationY>
-        <assignmentItems>
-            <assignToReference>AdjustmentReqCollection</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>varAdjustmentRequestInstance</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>CreateMultipleRecords</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Post_Payment_Non_VAT_Partial_Compliant_Adjustment</name>
-        <label>Post Payment Non VAT Partial Compliant Adjustment</label>
-        <locationX>414</locationX>
-        <locationY>615</locationY>
-        <assignmentItems>
-            <assignToReference>AdjustmentReqCollection</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>varAdjustmentRequestInstance</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>CreateMultipleRecords</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -255,7 +149,7 @@
         <description>Set the adjustment amount as in Case in case of Reverse Audit</description>
         <name>Set_Adjustment_Amount_2</name>
         <label>Set Adjustment Amount</label>
-        <locationX>1202</locationX>
+        <locationX>1203</locationX>
         <locationY>283</locationY>
         <assignmentItems>
             <assignToReference>varClaimRecord.Core_MDF_Audit_Adjustment_Amount__c</assignToReference>
@@ -266,111 +160,6 @@
         </assignmentItems>
         <connector>
             <targetReference>assignReleaseHoldValues</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <description>This block sets required attributes of Adjustment Requests and amount will be Adjustment Amount From Case</description>
-        <name>Set_Adjustment_Request</name>
-        <label>Set Adjustment Request</label>
-        <locationX>411</locationX>
-        <locationY>450</locationY>
-        <assignmentItems>
-            <assignToReference>varAdjustmentRequestInstance.Core_MDF_Reference_Claim_Nbr__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>varClaimId</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>varAdjustmentRequestInstance.Core_MDF_Amount_Amt__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>varCaseAdjustmentAmount</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>varAdjustmentRequestInstance.Core_MDF_Reason_Cd__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>varAdjustmentRequestType</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Post_Payment_Non_VAT_Partial_Compliant_Adjustment</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Set_Adjustment_Request_1</name>
-        <label>Set Full Adjustment Request - VAT eligible</label>
-        <locationX>670</locationX>
-        <locationY>422</locationY>
-        <assignmentItems>
-            <assignToReference>varAdjustmentRequestInstance.Core_MDF_Reference_Claim_Nbr__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>varClaimId</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>varAdjustmentRequestInstance.Core_MDF_Amount_Amt__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>varRequestedReimbursementAmount</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>varAdjustmentRequestInstance.Core_MDF_Reason_Cd__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>varAdjustmentRequestType</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>varAdjustmentRequestInstance.Core_MDF_Bypass_Amt_Val_Ind__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>varAdjustmentRequestInstance.Core_MDF_Comments_Txt__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>$Label.Core_MDF_Adjustment_Request_Comments</stringValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Post_Payment_Audit_Negative_Adjustment</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Set_Adjustment_Request_2</name>
-        <label>Set Partial Adjustment Request - Vat Eligible</label>
-        <locationX>579</locationX>
-        <locationY>943</locationY>
-        <assignmentItems>
-            <assignToReference>varAdjustmentRequestInstance2.Core_MDF_Reference_Claim_Nbr__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>varClaimId</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>varAdjustmentRequestInstance2.Core_MDF_Amount_Amt__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>varReimbursementRateAdjAmtDiff</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>varAdjustmentRequestInstance2.Core_MDF_Reason_Cd__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>varAdjustmentRequestTypePos</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Post_Payment_Audit_Positive_Adjustment</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -466,11 +255,11 @@
         <name>checkReleaseHoldOrDenied</name>
         <label>checkReleaseHoldOrDenied</label>
         <locationX>1197</locationX>
-        <locationY>85</locationY>
+        <locationY>84</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>CompliantReleaseHold_0</name>
-            <conditionLogic>1 AND 2 AND (3 OR 4)</conditionLogic>
+            <conditionLogic>(1 OR 5) AND 2 AND (3 OR 4)</conditionLogic>
             <conditions>
                 <leftValueReference>varCaseStatus</leftValueReference>
                 <operator>EqualTo</operator>
@@ -499,6 +288,13 @@
                     <elementReference>varRequestedReimbursementAmount</elementReference>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>varCaseStatus</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Review Completed</stringValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>Set_Adjustment_Amount</targetReference>
             </connector>
@@ -521,7 +317,7 @@
         </rules>
         <rules>
             <name>CompliantPICReleaseHoldOnly</name>
-            <conditionLogic>(1 OR 4) AND (2 OR 3)</conditionLogic>
+            <conditionLogic>(1 OR 4 OR 5) AND (2 OR 3)</conditionLogic>
             <conditions>
                 <leftValueReference>varCaseStatus</leftValueReference>
                 <operator>EqualTo</operator>
@@ -550,6 +346,13 @@
                     <stringValue>PIC Review Completed</stringValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>varCaseStatus</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Review Completed</stringValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>Set_Adjustment_Amount_2</targetReference>
             </connector>
@@ -557,52 +360,15 @@
         </rules>
     </decisions>
     <decisions>
-        <name>ClaimVATOutcome</name>
-        <label>Claim VAT Outcome</label>
-        <locationX>519</locationX>
-        <locationY>303</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>IsVATEligibleTrue</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>varClaimRecord.Core_MDF_VAT_Eligibility_Ind__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Set_Adjustment_Request_1</targetReference>
-            </connector>
-            <label>IsVATEligibleTrue</label>
-        </rules>
-        <rules>
-            <name>IsVATEligibleFalse</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>varClaimRecord.Core_MDF_VAT_Eligibility_Ind__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Set_Adjustment_Request</targetReference>
-            </connector>
-            <label>IsVATEligibleFalse</label>
-        </rules>
-    </decisions>
-    <decisions>
         <description>This block contains 3 outcomes of claim review.</description>
         <name>Core_MDF_Claim_Review_Outcome</name>
         <label>Claim Review Outcome</label>
         <locationX>739</locationX>
-        <locationY>234</locationY>
+        <locationY>229</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_Compliant_With_No_Adjustment</name>
-            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditionLogic>((1 OR 6 )AND (2 OR 3)) OR 4 OR 5</conditionLogic>
             <conditions>
                 <leftValueReference>varCaseStatus</leftValueReference>
                 <operator>EqualTo</operator>
@@ -624,47 +390,31 @@
                     <numberValue>0.0</numberValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>varPicReviewInd</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>varPicReviewInd</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>varCaseStatus</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Review Completed</stringValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>Core_MDF_Release_Review_Hold</targetReference>
             </connector>
             <label>Compliant With No Adjustment</label>
-        </rules>
-        <rules>
-            <name>Compliant_With_Adjustment</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>varCaseStatus</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Compliant</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>varCaseAdjustmentAmount</leftValueReference>
-                <operator>GreaterThan</operator>
-                <rightValue>
-                    <numberValue>0.0</numberValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>ClaimVATOutcome</targetReference>
-            </connector>
-            <label>Compliant With Adjustment</label>
-        </rules>
-        <rules>
-            <name>Core_MDF_Non_compliant</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>varCaseStatus</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Non-compliant</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Core_MDF_Set_Adjustment_Request_For_Non_Compliant</targetReference>
-            </connector>
-            <label>Non-compliant</label>
         </rules>
     </decisions>
     <decisions>
@@ -796,6 +546,7 @@
         </rules>
     </decisions>
     <description>Including PIC process</description>
+    <environments>Default</environments>
     <formulas>
         <name>varAdjustmentRequestComments</name>
         <dataType>String</dataType>
@@ -839,16 +590,6 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordCreates>
-        <name>CreateMultipleRecords</name>
-        <label>CreateMultipleRecords</label>
-        <locationX>300</locationX>
-        <locationY>771</locationY>
-        <connector>
-            <targetReference>Core_MDF_Release_Review_Hold</targetReference>
-        </connector>
-        <inputReference>AdjustmentReqCollection</inputReference>
-    </recordCreates>
     <recordLookups>
         <name>getClaimRecord</name>
         <label>getClaimRecord</label>
@@ -902,7 +643,7 @@
             <targetReference>checkClaimId</targetReference>
         </connector>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>AdjustmentReqCollection</name>
         <dataType>SObject</dataType>
@@ -986,6 +727,14 @@
         <isInput>true</isInput>
         <isOutput>true</isOutput>
         <objectType>PartnerFundClaim</objectType>
+    </variables>
+    <variables>
+        <description>Holds the PIC review ind value</description>
+        <name>varPicReviewInd</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
     </variables>
     <variables>
         <name>varRequestedReimbursementAmount</name>

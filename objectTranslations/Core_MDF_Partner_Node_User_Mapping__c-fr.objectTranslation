@@ -26,7 +26,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>Actif</label>
+        <label><!-- Active --></label>
         <name>Core_MDF_Active_Ind__c</name>
     </fields>
     <fields>
@@ -54,11 +54,15 @@
     <nameFieldLabel><!-- Account User Name --></nameFieldLabel>
     <startsWith>Consonant</startsWith>
     <validationRules>
+        <errorMessage>Cet utilisateur ne possède pas d&apos;accès au programme sélectionné</errorMessage>
+        <name>Core_MDF_Account_User_Validation</name>
+    </validationRules>
+    <validationRules>
         <errorMessage>Le champ Utilisateur ou Compte ne doivent pas rester vides</errorMessage>
         <name>Core_MDF_CCP_User_Should_not_be_empty</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- You do not have permission to create an Account User for the selected Program. --></errorMessage>
+        <errorMessage><!-- You do not have permission to create an Account User for the selected Program1. --></errorMessage>
         <name>Core_MDF_IPA_Program_Admin_Check</name>
     </validationRules>
     <validationRules>
@@ -68,5 +72,9 @@
     <webLinks>
         <label><!-- Core_MDF_Export_List_View --></label>
         <name>Core_MDF_Export_List_View</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_MDF_NewAccountUserButton --></label>
+        <name>Core_MDF_NewAccountUserButton</name>
     </webLinks>
 </CustomObjectTranslation>

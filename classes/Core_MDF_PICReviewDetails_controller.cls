@@ -66,6 +66,7 @@ Modified By:        Date:       Changes:
 
     } catch (Exception e) {throw new AuraHandledException(e.getMessage());
     }
+    system.debug('UserAndPICreviewResultsWrapper@@@' + JSON.serialize(wrapper));
     return wrapper;
   }
 
@@ -83,7 +84,8 @@ Modified By:        Date:       Changes:
     String localizedFieldName = 'Core_MDF_Issue_English_txt__c';
     String userLanguageKey = userLangKey;
     try {
-      if (userLanguageKey != null && userLanguageKey != '') {
+      //if (userLanguageKey != null && userLanguageKey != '') {
+        if (!String.isBlank(userLanguageKey)) { //ATHR Fix WW19
             localizedFieldList = [SELECT Core_MDF_LanguageLocalKey__c,Core_MDF_PIC_Review_Result_Field_Name__c FROM Core_MDF_Email_Translation_Resub_Reqd__mdt WHERE Core_MDF_LanguageLocalKey__c = :userLanguageKey LIMIT 1];
 
             /*if (localizedFieldList != null && localizedFieldList.size() > 0) {
@@ -96,9 +98,10 @@ Modified By:        Date:       Changes:
                   .Core_MDF_PIC_Review_Result_Field_Name__c;
               }
             }*/
-            if (localizedFieldList != null && localizedFieldList.size() > 0 && !String.isBlank(localizedFieldList[0].Core_MDF_PIC_Review_Result_Field_Name__c)) { //ATHR Fix WW19
+            if (!localizedFieldList.isEmpty() && !String.isBlank(localizedFieldList[0].Core_MDF_PIC_Review_Result_Field_Name__c)) { //ATHR Fix WW19
                 localizedFieldName = localizedFieldList[0].Core_MDF_PIC_Review_Result_Field_Name__c;
             }
+
       }
     } catch (exception ex) {Core_MDF_CCP_UtilityClass.logError(ex);throw new AuraHandledException(ex.getMessage());
     }
@@ -172,7 +175,7 @@ Modified By:        Date:       Changes:
 *******************************************************************************************************/
   public static userDetailsWrapper getUserDetails() {
     User userData = [
-      SELECT Id, LanguageLocaleKey, LocaleSidKey, UserType
+      SELECT Id, LanguageLocaleKey, UserType //HP:ATHR Fix
       FROM User
       WHERE Id = :UserInfo.getUserId()
       LIMIT 1
@@ -203,7 +206,7 @@ Modified By:        Date:       Changes:
         String picReviewQuery;
         try{
         boolean isPICReviewerOrCCRMUser = isCCRMUserOrPICReviewer;
-        // Query the Required fields data
+        //Roshan - Final Outcome Based New Status
         if(isPICReviewerOrCCRMUser) {
             picReviewQuery = 'Select '+'Id'+','+'Core_MDF_CycleNumber_nbr__c'+','+'Core_MDF_Review_Status_nm__c'+','+'format(Core_MDF_Review_Date_dt__c) formattedDate'+','+'Core_MDF_ReviewedBy_id__r.Name'+','+'Core_MDF_InternalComments_txt__c,'+
             'Core_MDF_Claim_ID_id__r.Core_MDF_Program__c, Core_MDF_Claim_ID_id__r.Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c, Core_MDF_Claim_ID_id__r.Request.Core_MDF_Is_Outcome_Based_Ind__c, Core_MDF_Claim_ID_id__r.Core_MDF_OutcomeBased_Ind__c from  Core_MDF_PIC_Review__c'+' WHERE Core_MDF_Claim_ID_id__c =:claimId'+' and Core_MDF_AI_PIC_Review_Ind__c = false order by Core_MDF_CycleNumber_nbr__c desc';
@@ -214,6 +217,8 @@ Modified By:        Date:       Changes:
         picReviewList = Database.query(String.escapeSingleQuotes(picReviewQuery));
         }catch(Exception ex){Core_MDF_CCP_UtilityClass.logError(ex);throw new AuraHandledException(ex.getMessage());
         }
+
+        system.debug('picReviewList@@@' + picReviewList);
         return picReviewList;
     }
    /****************************************************************************************************** 
@@ -222,7 +227,7 @@ Method Name:        getPICReviewResultDetails
 @parameters:        set of Pic review ids, internal user bool, localized field name
 Description:        Method to return all the pic review results based on pic review 
 Added By:           Accenture - Vinodhini B       24/7/2022
-Modified By:        Date:       Changes: 
+Modified By:        Date:       Changes:
 *******************************************************************************************************/
     public static Map<Id, List<Core_MDF_PICReviewResult__c>> getPICReviewResultDetails(set<Id> picReviewIds, Boolean isInternalUser, String localizedFieldName) {
     Set<Id> picReviewIdsSet = picReviewIds;
@@ -283,9 +288,11 @@ Modified By:        Date:       Changes:
         for (
           Core_MDF_PICReviewResult__c picReviewResult : listOfPICReviewResults
         ) {
+
             if (!isIntlUser && picReviewResult.Core_MDF_Tactics_nm__c != null) {
                 picReviewResult.Core_MDF_Tactics_nm__c = localizeTacticValues(picReviewResult.Core_MDF_Tactics_nm__c);
             }
+            
           if (
             picIdtoPICReviewResult.containsKey(
               picReviewResult.Core_MDF_PIC_Review_id__c
@@ -302,8 +309,11 @@ Modified By:        Date:       Changes:
             );
           }
         }
+
+
     } catch (exception ex) {Core_MDF_CCP_UtilityClass.logError(ex);throw new AuraHandledException(ex.getMessage());
     }
+    system.debug('picIdtoPICReviewResult@@@' + picIdtoPICReviewResult);
     return picIdtoPICReviewResult;
   }
 //Wrapper class to store userdetails,picreviewdetails,picreviewresultdetails,localizedfieldname

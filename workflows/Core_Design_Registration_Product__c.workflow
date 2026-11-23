@@ -29,14 +29,14 @@
             <name>Core_DDR_Product_Record_Type_To_Locked</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Changes the Record Type, so the design product fields are NOT editable by Intel user.</description>
         <formula>LastModifiedBy.Profile.Name = &apos;Partner&apos; &amp;&amp; NOT(RecordTypeId =  $Label.Core_DDR_Design_Product_Locked_Record_Type_ID)</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
         <fullName>Core_DDR_Retire_Product</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>Updates the Status to Retired one hour after the current date reaches the date specified in &apos;Retired As Of&apos; field.</description>
         <formula>NOT(ISBLANK(Core_Retired_As_Of_Dt__c)) &amp;&amp;  NOT (ISPICKVAL(Core_Design_Product_Status_Nm__c, &apos;Retired&apos;))</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>

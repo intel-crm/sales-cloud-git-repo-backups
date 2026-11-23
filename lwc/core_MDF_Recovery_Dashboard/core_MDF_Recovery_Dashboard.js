@@ -4,7 +4,7 @@ import { NavigationMixin, CurrentPageReference } from 'lightning/navigation';
 
 import getProgPicklistValues from '@salesforce/apex/Core_MDF_RecoveryDashboardController.getProgramIdToNameMap';
 import getAccountPicklistValues from '@salesforce/apex/Core_MDF_RecoveryDashboardController.getAccountIdToNameMap';
-import getQuarterPicklistValues from '@salesforce/apex/Core_MDF_RecoveryDashboardController.getQuarterOptionsMap';
+import getQuarterPicklistValues from '@salesforce/apex/Core_MDF_RecoveryClaimReportViewCtrl.getQuarterOptionsWithoutCurrentQuarter';
 import getRecMappingRec from '@salesforce/apex/Core_MDF_RecoveryDashboardController.getPartnershipScoreRecord';
 
 

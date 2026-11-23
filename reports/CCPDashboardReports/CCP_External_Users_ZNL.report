@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Contact.Contact_Entitlements__r$Core_Entitlement_Id__c</field>
+    </columns>
+    <columns>
+        <field>CDF1</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>Contact.Account.Name + &apos; - &apos; + Contact.Name</calculatedFormula>
+        <dataType>Text</dataType>
+        <description>Account and Contact Name</description>
+        <developerName>CDF1</developerName>
+        <label>Account+Contact</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <description>CCP External Users with Roles</description>
+    <filter>
+        <criteriaItems>
+            <column>Contact.Contact_Entitlements__r$Core_Category__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Consolidated Co-marketing Platform</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Contact$Account</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Contact$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>CCP External Users with Roles</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_MDF_CCP_Contacts_with_Entitlements__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Contact$Core_AGS_Status_Change_Date_Time__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

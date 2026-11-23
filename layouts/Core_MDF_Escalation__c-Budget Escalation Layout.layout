@@ -26,6 +26,10 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Issue_Description_txt__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>CheckCustomPermission__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

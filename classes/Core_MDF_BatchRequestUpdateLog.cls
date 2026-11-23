@@ -126,7 +126,26 @@ public without sharing class Core_MDF_BatchRequestUpdateLog implements Database.
             update postUpdateLogs;
             
             if (errorCount > 0) {
-                Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(new DmlException(combinedErrorMsg), 'Critical', 'CCP', objectApiName, transactionUUID, null);
+                system.debug('combinedErrorMsg@@@' + combinedErrorMsg);
+                //ATHR Avoid long parameter lists BY Anjali US- 15023
+            // Create a map to hold all parameters
+    Map<String, Object> parameterMap = new Map<String, Object>();
+    
+    // Add all parameters to the map
+    parameterMap.put('exception', new DmlException(combinedErrorMsg));
+    parameterMap.put('severity', 'Critical');
+    parameterMap.put('projectName', 'CCP');
+    parameterMap.put('objectName', 'objectApiName');
+    parameterMap.put('operation', 'transactionUUID');
+    parameterMap.put('additionalInfo', null);
+    
+    // Call the method with the parameter map
+    Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(parameterMap);
+
+            
+           // Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical',projectName,objectName,'Mass Access Ownership Transfer',null); 
+     //END ATHR Avoid long Parameters  
+                //Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(new DmlException(combinedErrorMsg), 'Critical', 'CCP', objectApiName, transactionUUID, null);
             }
         }
         

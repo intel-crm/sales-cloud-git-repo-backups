@@ -1,5 +1,20 @@
 ({
 	checkObjectPermission : function(component, event, helper) {
+        /*
+        var action1 = component.get("c.getPFRDetails");
+        action1.setParams({
+            "recordId" : component.get("v.recordId")
+        });
+        action1.setCallback(this, function(response) {
+            var pfrObj = response.getReturnValue();
+            console.log('PFR OBJ - '+JSON.stringify(pfrObj));
+            if($A.get("$Label.c.Core_MDF_IPA_RecordType") == pfrObj.RecordType.DeveloperName) {
+                //alert('Cannot clone IPA Activities.');
+                component.set("v.showErrorOnIPAClone", true);
+            }
+        });
+        $A.enqueueAction(action1);*/
+        
         var action = component.get("c.checkSObjectCreatePermission");
         //pass the object name here for which you want
         //to fetch check the permission
@@ -15,7 +30,22 @@
             }
         });
         $A.enqueueAction(action);
-         
+        /*var pageReference = component.get("v.pageReference");
+        if(pageReference != null){
+            component.set("v.currentRecordId", pageReference.state.c__recordId);
+        }*/
+        //04-07-2022 
+      /*  var recordTypeDevName = component.get("c.getActivityRecordTypeDevname");
+        recordTypeDevName.setParams({
+            "recordId" : component.get("v.recordId")
+        });
+        recordTypeDevName.setCallback(this, function(response) {
+            var result = response.getReturnValue();            
+            	component.set("v.recordtypeDeveloperName", result);
+           
+        });
+        $A.enqueueAction(recordTypeDevName);
+       */ 
         var recordTypeDevNamePropInd = component.get("c.getActRecordTypeDevNamePropInd");
         recordTypeDevNamePropInd.setParams({
             "recordId" : component.get("v.recordId")

@@ -84,8 +84,9 @@
                 mapPermissionSets.set(ps.Id,ps);
             }
             
+			var userLiscence="'Salesforce'";
 			soql = 'SELECT AssigneeId, PermissionSet.ProfileId,PermissionSetId,PermissionSet.Profile.UserLicense.Name,PermissionSet.Type FROM PermissionSetAssignment';
-			conFields =' WHERE Assignee.isActive = true and PermissionSetId =:';
+			conFields =' WHERE Assignee.isActive = true and PermissionSet.Profile.UserLicense.Name='+ userLiscence +' and PermissionSetId =:';
             //console.log('***PSAQuery***'+soql);
             return helper.soql(component,soql,psIds,conFields);
         })

@@ -25,7 +25,9 @@ access="global" Controller="Core_MDF_PFR_Approval">
 <aura:attribute name="isLevel2Approver" type="Boolean" default="false" />
 <aura:attribute name="isPORApprover" type="Boolean" default="false" />
 <aura:attribute name="isGeoLeadApprover" type="Boolean" default="false" />
-    <aura:attribute name="isAdditionalReviewer" type="Boolean" default="false" />
+<aura:attribute name="isRmfL1Approver" type="Boolean" default="false" />
+<aura:attribute name="isRmfL2Approver" type="Boolean" default="false" />
+<aura:attribute name="isAdditionalReviewer" type="Boolean" default="false" />
 <aura:attribute name="isL1ActivatingPartnerApprover" type="Boolean" default="false" />
 <aura:attribute name="isL1PrimaryPartnerApprover" type="Boolean" default="false" />
 <aura:attribute name="isL2PrimaryApprover" type="Boolean" default="false" />

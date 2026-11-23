@@ -1,7 +1,2 @@
-.THIS.backDropForCreateClaim {
-    overflow-y: hidden;
-}
-
-.THIS.backDropForCreateClaim::-webkit-scrolling {
-    display: none;
+.THIS {
 }

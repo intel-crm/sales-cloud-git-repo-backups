@@ -293,6 +293,11 @@
             <field>Core_MDF_Escalation_Id__c</field>
             <table>PartnerFundClaim</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_ClaimReviewClosureHistory_txt__c</field>
+            <table>PartnerFundClaim.Cases__r</table>
+        </columns>
         <masterLabel>Cases</masterLabel>
     </sections>
     <sections>
@@ -521,5 +526,111 @@
             <table>PartnerFundClaim</table>
         </columns>
         <masterLabel>Partner Fund Claim</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Has_Sub_Claims_Ind__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Amount_Percentage__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Claim_Id__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Super_Claim_Status_nm__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_NoOfLeads_Nbr__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Number_of_Recipient_nbr__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Open_Rate_txt__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Reporting_Region__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <masterLabel>Claims</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_Attribution_Comments_Txt__c</field>
+            <table>PartnerFundClaim.Cases__r.Scorecards__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_Engagement_Comments_Txt__c</field>
+            <table>PartnerFundClaim.Cases__r.Scorecards__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_POP_Comments_Txt__c</field>
+            <table>PartnerFundClaim.Cases__r.Scorecards__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_Attribution_Score_Nm__c</field>
+            <table>PartnerFundClaim.Cases__r.Scorecards__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_Engagement_Score_Nm__c</field>
+            <table>PartnerFundClaim.Cases__r.Scorecards__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_POP_Score_Nm__c</field>
+            <table>PartnerFundClaim.Cases__r.Scorecards__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_PII_Present_Nm__c</field>
+            <table>PartnerFundClaim.Cases__r.Scorecards__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_POC_Strength_Nm__c</field>
+            <table>PartnerFundClaim.Cases__r.Scorecards__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_Recommend_Investigation_Ind__c</field>
+            <table>PartnerFundClaim.Cases__r.Scorecards__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_Compliant_Status_Nm__c</field>
+            <table>PartnerFundClaim.Cases__r.Scorecards__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_Comments_Txt__c</field>
+            <table>PartnerFundClaim.Cases__r.Scorecards__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_Processing_Status_Nm__c</field>
+            <table>PartnerFundClaim.Cases__r.Scorecards__r</table>
+        </columns>
+        <masterLabel>Scorecards</masterLabel>
     </sections>
 </ReportType>

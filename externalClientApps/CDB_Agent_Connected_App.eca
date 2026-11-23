@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExternalClientApplication xmlns="http://soap.sforce.com/2006/04/metadata">
-    <contactEmail>sushma.hamom@intel.com</contactEmail>
+    <contactEmail>bharatx.chandrashekar@intel.com</contactEmail>
     <distributionState>Local</distributionState>
     <isProtected>false</isProtected>
     <label>CDB Agent Connected App</label>
-    <orgScopedExternalApp>00Do0000000aRcf:CDB_Agent_Connected_App</orgScopedExternalApp>
+    <orgScopedExternalApp>00Dg0000006V1T1:CDB_Agent_Connected_App</orgScopedExternalApp>
 </ExternalClientApplication>

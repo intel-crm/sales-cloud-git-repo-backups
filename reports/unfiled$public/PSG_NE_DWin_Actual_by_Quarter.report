@@ -93,9 +93,6 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>FULL_NAME</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <columns>
@@ -127,7 +124,7 @@
         <field>Account.Core_Total_Approved_Revenue_Amount__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND (2 OR 3 OR 4)</booleanFilter>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -149,19 +146,17 @@
             <operator>equals</operator>
             <value>Bill Galluccio</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Dan Nitta Mackay</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Quarter</dateGranularity>
         <field>Opportunity.Core_Approved_Date__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>

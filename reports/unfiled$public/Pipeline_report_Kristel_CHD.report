@@ -10,9 +10,6 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Volume__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Opportunity_Products__c</field>
     </columns>
     <columns>
@@ -52,7 +49,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterOrEqual</operator>
-            <value>15</value>
+            <value>15.00</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Product_Segment__c</column>

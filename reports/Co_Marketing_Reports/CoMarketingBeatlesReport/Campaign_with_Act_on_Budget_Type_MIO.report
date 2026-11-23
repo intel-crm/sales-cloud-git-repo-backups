@@ -30,13 +30,13 @@
     </customDetailFormulas>
     <description>Campaigns and Activities on Budget Type</description>
     <filter>
-        <booleanFilter>1 AND 2</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
         <criteriaItems>
             <column>PartnerFundRequest$Campaign.Core_MDF_Program__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Client CoMarketing Fund,Client CoMarketing Fund Boost,Data Center CoMarketing Fund,Ecosystem Extension Fund,Retail Marketing Funds,Service Provider CoMarketing Fund,CoGTM</value>
+            <value>Client CoMarketing Fund,Client,Client CoMarketing Fund Boost,Retail Marketing Funds,Service Provider CoMarketing Fund,Ecosystem Extension Fund,Data Center CoMarketing Fund,CoGTM</value>
         </criteriaItems>
         <criteriaItems>
             <column>CDF1</column>
@@ -44,6 +44,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>T</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_Is_Outcome_Based_Ind__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

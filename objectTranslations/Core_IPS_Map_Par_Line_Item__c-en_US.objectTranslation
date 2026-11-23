@@ -48,10 +48,6 @@
         <name>Core_Asset_Status__c</name>
     </fields>
     <fields>
-        <label><!-- ProfileBasedRecordLink --></label>
-        <name>Core_IPS_ProfileBasedRecordLink__c</name>
-    </fields>
-    <fields>
         <help><!-- The asset referred to by this Product Access Line Item --></help>
         <label><!-- Intel® Product --></label>
         <name>Core_Intel_Product__c</name>
@@ -140,10 +136,6 @@
     <fields>
         <label><!-- isPARRequest --></label>
         <name>Core_isPARRequest__c</name>
-    </fields>
-    <fields>
-        <label><!-- Map Item Internal Assigned Subject --></label>
-        <name>Map_Item_internal_Subject__c</name>
     </fields>
     <recordTypes>
         <description><!-- Record Type for Managed Access Policies (MAP) --></description>

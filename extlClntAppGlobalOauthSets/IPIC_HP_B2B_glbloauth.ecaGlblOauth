@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <callbackUrl>https://test.salesforce.com/services/oauth2/callback</callbackUrl>
+    <certificate>MIIDazCCAlOgAwIBAgIUfGrl7WdrxqwFF34OU/zyfgTrkUIwDQYJKoZIhvcNAQEL
+BQAwRTELMAkGA1UEBhMCSU4xEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM
+GEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yNjA3MDExMDI1MjdaFw0yNzA3
+MDExMDI1MjdaMEUxCzAJBgNVBAYTAklOMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw
+HwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB
+AQUAA4IBDwAwggEKAoIBAQDxeYtrnsGMiiQN9sVQlXtjGvKOR5FT8FXnb+omYl+b
+OUjIE5PLLioe1/pN0xIOisjkksSnkyeMYxaEGd8SY06cXcwhaDkfQKfBOiIGBlh3
+/LBly2cSDFF/T/GJ3z/CUAdEh+41dTWy3McQsltQvkyBXZ8lN8cyFL8LC9Oxrbih
+cJPheF93n3Eu557DCH8Kqo3rFwkmwwVDqWTzTxmRhoPCU3VpP58bu+0ULrIGFQb2
+YMnxso+aJQH5hhpaV5kpL0YpKR86nWlg5sRV3Npk5XIgIDF87AjHDmEZLUnlqfes
+7gE9m0wpZORJFqtU5lfSSFkNgyqdQ91VVKo4wPQdBCPjAgMBAAGjUzBRMB0GA1Ud
+DgQWBBQWhebUs2GE0jtmQFv3NJOl0aRdHTAfBgNVHSMEGDAWgBQWhebUs2GE0jtm
+QFv3NJOl0aRdHTAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA1
+cHWVqvOqjTDsJgvda7isRAPUFk/jiJlBy47C7B1nB3C0stvNHOjr3JZOKQKhXrXp
+Yfz0RLPUHY0uvae/nuXGOvo1uPXSRGsTIO1tc6MdS1LxMMW3EQ9f6VGTQUCpONnb
+5DKuUjSfMXqk1YwzNrHwKKq8O3f9XJjFbGq669bIBu98MzNmtLeQM7ED6A+ZQEU9
+g8w+6kNJ8OrKusbsUjtUvjmo/XimjXxPmPygPHGzoZ6e36RVndZlIqsdLQVwEr5i
+9Ygmt9ZSesc6eFJmk4dZ/G+t0cHDf3lrQs7ThXRFH7UVfnegoq4vWC9B3Pr4S6xR
+s5chZxgQJRI4IO0790gu</certificate>
+    <consumerKey>3MVG9ahGHqp.k2_yt2nTHU9QGHGZNce_ElxXvGYPvYZ1HtGIDoYHJYEwyEaa6blsY.Ptw8Qa87NZPov.6y.P1</consumerKey>
+    <externalClientApplication>IPIC_HP_B2B</externalClientApplication>
+    <isClientCredentialsFlowEnabled>false</isClientCredentialsFlowEnabled>
+    <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>
+    <isCodeCredPostOnly>false</isCodeCredPostOnly>
+    <isConsumerSecretOptional>false</isConsumerSecretOptional>
+    <isDPopEnabled>false</isDPopEnabled>
+    <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+    <isEnforceRefreshTokenTTL>true</isEnforceRefreshTokenTTL>
+    <isIntrospectAllTokens>false</isIntrospectAllTokens>
+    <isMtlsEnabled>false</isMtlsEnabled>
+    <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+    <isPkceRequired>true</isPkceRequired>
+    <isRefreshTokenRotationEnabled>true</isRefreshTokenRotationEnabled>
+    <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+    <isSecretRequiredForTokenExchange>true</isSecretRequiredForTokenExchange>
+    <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+    <label>IPIC_HP_B2B_glbloauth</label>
+    <shouldRotateConsumerKey>false</shouldRotateConsumerKey>
+    <shouldRotateConsumerSecret>false</shouldRotateConsumerSecret>
+</ExtlClntAppGlobalOauthSettings>

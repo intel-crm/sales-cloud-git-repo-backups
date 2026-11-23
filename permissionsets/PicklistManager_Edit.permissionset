@@ -8,18 +8,14 @@
         <apexClass>Core_MDF_Smart_Picklist_MaintainenceTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <classAccesses>
-        <apexClass>PicklistManager</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>PicklistManager_Test</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <description>Gives permission to edit the picklist values using Smart Picklist</description>
+    <description>Allows user to update the Picklist values and Record type assignment details along with backfill to lower environments</description>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Bank_Legal_Entity_Code_cd__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>PicklistManager_Edit</label>
-    <license>Salesforce</license>
     <tabSettings>
         <tab>Smart_Picklist1</tab>
         <visibility>Visible</visibility>

@@ -255,12 +255,9 @@ public class Core_IPS_Helper_Utility_Test{
             IpsAcc.Core_IPS_Project__c = ListOfIpsProjects.get(0).Id;
         }
         System.runAs(Listofuser[0]){
-        try{
         update ListOfAccountShare;
         
         insert ListOfIpsAccounts;
-        }
-catch(Exception e){}
         }
         System.assertEquals(ListOfAccountShare[0].CaseAccessLevel, 'Edit');
         // Create Ips Project
@@ -270,7 +267,7 @@ catch(Exception e){}
         // Create Ips Account
         
         
-        //System.assert(ListOfIpsAccounts[0].Id != null, 'Record not created');
+        System.assert(ListOfIpsAccounts[0].Id != null, 'Record not created');
         Set<ID> SetOfProjId = new Set<ID> ();
         for(Core_IPS_Project__c Prj : ListOfIpsProjects){
             SetOfProjId.add(Prj.Id);
@@ -278,7 +275,7 @@ catch(Exception e){}
         System.runAs(ListOfUser.get(0)){
             Test.startTest();
             Map<Id,Set<Id>> faesByProject = Core_IPS_Helper_Utility.getFAEsByProject(SetOfProjId);
-            //System.assert(!(faesByProject.isEmpty()), 'faesByProject method does not return the records');
+            System.assert(!(faesByProject.isEmpty()), 'faesByProject method does not return the records');
             Map<Id,Set<Id>> projIdUserIdsMap = Core_IPS_Helper_Utility.getIPSCustomerUsersByProject(SetOfProjId);
             System.assert(!(projIdUserIdsMap.isEmpty()), 'getIPSCustomerUsersByProject method does not return the records');
             Test.stopTest();
@@ -980,7 +977,7 @@ catch(Exception e){}
         
         // Query Profiles
         Map<String,ID> profiles = new Map<String,ID>();
-        List<Profile> ProfileList = [select id, name from Profile where name = 'CCP - Core Access'];
+        List<Profile> ProfileList = [select id, name from Profile where name = 'IPS Data Migration'];
         for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
         }
@@ -993,20 +990,19 @@ catch(Exception e){}
         ListOfUserAccount = TestUtilities.getListOfUser(2);
         Integer Count=1;
         for(User Usr : ListOfUserAccount){
-            Usr.ProfileID =  profiles.get('CCP - Core Access');
+            Usr.ProfileID =  profiles.get('IPS Data Migration');
             Usr.UserRoleID = role.id;
             Usr.UserName = Count+'AccountTestnewuser@intel.com';
             Count++;
         }
         Count=0;
         insert ListOfUserAccount;
-        System.assertEquals(ListOfUserAccount.get(0).profileid, profiles.get('CCP - Core Access'));
+        System.assertEquals(ListOfUserAccount.get(0).profileid, profiles.get('IPS Data Migration'));
         
         // Create Account
         List<Account> ListOfAccounts = TestUtilities.getListOfAccounts(1);
         System.runAs(ListOfUser[0]){
-            try{
-            insert ListOfAccounts;
+        insert ListOfAccounts;
             for(Account acc:ListOfAccounts){
                 acc.OwnerId=ListOfUserAccount[0].id;
             }
@@ -1016,7 +1012,6 @@ catch(Exception e){}
                 Share.CaseAccessLevel = 'Edit';
             }
             update ListOfAccountShare;
-            }catch(Exception e){}
         }
         System.assert(ListOfAccounts[0].Id != null, 'Record not created');
         List<Core_IPS_Labels__c> IPSLabel = TestUtilities.getIPSLabel();
@@ -1029,6 +1024,7 @@ catch(Exception e){}
         System.runAs(ListOfUser.get(0)){
             Test.startTest();
             boolean ValueReturned = Core_IPS_Helper_Utility.getFAEsofAccount(ListOfAccounts.get(0),ListOfUserId);
+            System.debug('ValueReturned***********'+ValueReturned);
             System.assert(ValueReturned== null,'Value Returned is true');
             Test.stopTest();
         }
@@ -1443,7 +1439,7 @@ catch(Exception e){}
     * ----------------------------------------------------------------------------                 
     * Deepak Jetty              02/03/2016                Modified
     ****************************************************************************************************/
-    static void getShareCaseMapByUser_PositiveTest(){
+    static testMethod void getShareCaseMapByUser_PositiveTest(){
         getRecords();
         // Query Profiles
         Map<String,ID> profiles = new Map<String,ID>();
@@ -1479,6 +1475,7 @@ catch(Exception e){}
         System.runAs(ListOfUser.get(0)){
             insert ListOfCases;
         }
+        System.debug('List of Cases ===== '+ListOfCases);
         System.assert(ListOfCases[0].Id != null, 'Record not created');
         Test.startTest();
         System.runAs(ListOfUser[0]){
@@ -1496,6 +1493,8 @@ catch(Exception e){}
             insert csList;
             Set<Id> userIdSet = new Set<Id>();
             userIdSet.add(ListOfUserCase[0].id);
+            system.debug('**************************'+userIdSet);
+            System.debug('Case Share Query======    '+[Select Id,CaseId,UserOrGroupId,Rowcause from CaseShare where CaseId IN: ListOfCases]);
             Map<Id,Set<Id>> caseShareMap = Core_IPS_Helper_Utility.getShareCaseMapByUser(userIdSet);
             System.assert(!caseShareMap.isEmpty(),'caseShareMap not returning values');
         }
@@ -1538,7 +1537,7 @@ catch(Exception e){}
     * ----------------------------------------------------------------------------                 
     * Deepak Jetty              02/03/2016                Modified
     ****************************************************************************************************/
-    static void shareAssetMapByProjectMember_PositiveTest(){
+    static testMethod void shareAssetMapByProjectMember_PositiveTest(){
         getRecords();
         // Get intelSupportOwner Id (User Id)
         Id intelSupportOwner = ListOfUser.get(0).id;
@@ -1640,7 +1639,7 @@ catch(Exception e){}
     * ----------------------------------------------------------------------------                 
     * Deepak Jetty              02/03/2016                Created
     ****************************************************************************************************/
-    static void shareAssetMapByAccount_PositiveTest(){
+    static testMethod void shareAssetMapByAccount_PositiveTest(){
         getRecords();
         // Get intelSupportOwner Id (User Id)
         Id intelSupportOwner = ListOfUser.get(0).id;
@@ -1733,7 +1732,6 @@ catch(Exception e){}
     * Deepak Jetty              02/03/2016                Modified
     ****************************************************************************************************/
     static testMethod void deleteProjectMembers_PositiveTest(){
-        Test.startTest();
         getRecords();
         // Get intelSupportOwner Id (User Id)
         Id intelSupportOwner = ListOfUser.get(0).id;
@@ -1756,7 +1754,7 @@ catch(Exception e){}
         // Profile Query
         Profile CustomerProfile = [select Id,name from Profile where UserType = 'PowerCustomerSuccess' limit 1];
         // Creating Customer User
-        List<User> ListOfCustomerUser = TestUtilities.getListOfUser(50);
+        List<User> ListOfCustomerUser = TestUtilities.getListOfUser(200);
         String searchStr = listofAccounts[0].name+'%';
         //UserRole role = [select id from userrole where portaltype='CustomerPortal' limit 1];
         for(User Usr : ListOfCustomerUser){
@@ -1777,7 +1775,7 @@ catch(Exception e){}
         }
         System.assert(ListOfIpsProjects[0].Id != null, 'Record not created');
         // Create Project Members
-        List<Core_IPS_Project_Member__c> ListOfProjectMembers = TestUtilities.getListOfProjectMembers(50);
+        List<Core_IPS_Project_Member__c> ListOfProjectMembers = TestUtilities.getListOfProjectMembers(200);
         for(Core_IPS_Project_Member__c ProjMem : ListOfProjectMembers){
             ProjMem.Core_IPS_Project__c = ListOfIpsProjects.get(0).Id;
             ProjMem.Core_User__c = ListOfCustomerUser[Counter].id;            
@@ -1788,7 +1786,7 @@ catch(Exception e){}
             insert ListOfProjectMembers;
         }
         System.assert(ListOfProjectMembers[0].Id != null, 'Record not created');
-        //Test.startTest();
+        Test.startTest();
         System.runAs(ListOfUser[0]){ 
             Map<Id,Id> userIdAccountIdMap = new Map<Id,Id>();
             for(Core_IPS_Project__c IPSProj: ListOfIpsProjects){
@@ -1858,7 +1856,6 @@ catch(Exception e){}
     * Deepak Jetty              02/03/2016                Modified
     ****************************************************************************************************/
     static testMethod void deactivateProjectMembers_PositiveTest(){
-        Test.startTest();
         getRecords();
         // Get intelSupportOwner Id (User Id)
         Id intelSupportOwner = ListOfUser.get(0).id;
@@ -1870,7 +1867,7 @@ catch(Exception e){}
         System.assert(ListOfAccounts[0].Id != null, 'Record not created');
         integer Counter = 0;
         // Create Contact
-        List<Contact> ListOfContacts = TestUtilities.getListOfContact(50);
+        List<Contact> ListOfContacts = TestUtilities.getListOfContact(200);
         for(Contact ContactRec : ListOfContacts){
             ContactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
             ContactRec.Accountid = ListOfAccounts[0].Id;
@@ -1881,7 +1878,7 @@ catch(Exception e){}
         // Profile Query
         Profile CustomerProfile = [select Id,name from Profile where UserType = 'PowerCustomerSuccess' limit 1];
         // Creating Customer User
-        List<User> ListOfCustomerUser = TestUtilities.getListOfUser(50);
+        List<User> ListOfCustomerUser = TestUtilities.getListOfUser(200);
         String searchStr = listofAccounts[0].name+'%';
         //UserRole role = [select id from userrole where portaltype='CustomerPortal' limit 1];
         for(User Usr : ListOfCustomerUser){
@@ -1902,7 +1899,7 @@ catch(Exception e){}
         }
         System.assert(ListOfIpsProjects[0].Id != null, 'Record not created');
         // Create Project Members
-        List<Core_IPS_Project_Member__c> ListOfProjectMembers = TestUtilities.getListOfProjectMembers(50);
+        List<Core_IPS_Project_Member__c> ListOfProjectMembers = TestUtilities.getListOfProjectMembers(200);
         for(Core_IPS_Project_Member__c ProjMem : ListOfProjectMembers){
             ProjMem.Core_IPS_Project__c = ListOfIpsProjects.get(0).Id;
             ProjMem.Core_User__c = ListOfCustomerUser[Counter].id;            
@@ -1913,7 +1910,7 @@ catch(Exception e){}
             insert ListOfProjectMembers;
         }
         System.assert(ListOfProjectMembers[0].Id != null, 'Record not created');
-       // Test.startTest();
+        Test.startTest();
         System.runAs(ListOfUser[0]){ 
             Map<Id,Id> userIdAccountIdMap = new Map<Id,Id>();
             for(Core_IPS_Project__c IPSProj: ListOfIpsProjects){
@@ -2061,7 +2058,7 @@ catch(Exception e){}
     * ----------------------------------------------------------------------------                 
     * Deepak Jetty              02/03/2016                Created
     ****************************************************************************************************/
-    static  void createProjectMembers_NegativeTest(){
+    static testMethod void createProjectMembers_NegativeTest(){
         getRecords();
         // Get intelSupportOwner Id (User Id)
         Id intelSupportOwner = ListOfUser.get(0).id;
@@ -2117,7 +2114,7 @@ catch(Exception e){}
     * ----------------------------------------------------------------------------                 
     * Deepak Jetty              02/03/2016                Modified
     ****************************************************************************************************/
-    static void getFAEsFromUsers_PositiveTest(){
+    static testMethod void getFAEsFromUsers_PositiveTest(){
         getRecords();
         // Query Profiles
         Map<String,ID> profiles = new Map<String,ID>();
@@ -2136,7 +2133,7 @@ catch(Exception e){}
         for(User Usr : ListOfUserFAEs){
             Usr.ProfileID =  profiles.get('Sales Rep-BB');
             Usr.UserRoleID = role.id;
-            Usr.UserName = Counter+'AccountTest1newuser@intel.com';
+            Usr.UserName = Counter+'AccountTestnewuser@intel.com';
             Counter++;
         }
         Counter =0;

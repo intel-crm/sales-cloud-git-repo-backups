@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>DRS DATA &amp; RESEARCH SERVICES Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>DRSDATARESEARCHSERVICESCustomerManager</parentRole>
 </Role>

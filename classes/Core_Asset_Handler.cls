@@ -1,57 +1,59 @@
-public  class Core_Asset_Handler{
+public class Core_Asset_Handler{
     /***************************************************************************************************
-Method Name:  shareAssetMethod
-Version     : 1.0 
-Created Date: 29 Oct 2015
-Function    : This method does the sharing of Asset with associated Account and Project.
-Input Parameters: Asset List
-Output Parameters: None
-Description:   This method takes list of Asset and share the Asset to related Account and Project.
-Used in     : 
-Number of Queries Within this Method: 0
-Number of Queries in Loop: 0
-Number of Queries from Called methods:  5
-Modification Log :
-* Developer                   Date                   Description
-* ----------------------------------------------------------------------------                 
-* JRK                        10/29/2015              Created
-****************************************************************************************************/
+    Method Name:  shareAssetMethod
+    Version     : 1.0 
+    Created Date: 29 Oct 2015
+    Function    : This method does the sharing of Asset with associated Account and Project.
+    Input Parameters: Asset List
+    Output Parameters: None
+    Description:   This method takes list of Asset and share the Asset to related Account and Project.
+    Used in     : 
+    Number of Queries Within this Method: 0
+    Number of Queries in Loop: 0
+    Number of Queries from Called methods:  5
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * JRK                        10/29/2015              Created
+    ****************************************************************************************************/
     public static void changeAssetOwner(List<Asset> newList){
-        // Venrublity Fix - Refering query to service class 
-        // User userRec = [Select Id, Name, isActive from User where alias IN ('iowne')];
-        //sabira syed Vulnerability Fix - Refering query to service class
-        User userRec = ((List<User>) Core_IPS_QueryService.queryRecords('Select Id, Name, isActive from User where alias IN :aliases', new Map<String,Object>{'aliases' => new List<String>{'iowne'}}))[0];
+        User U = [Select Id, Name, isActive from User where alias IN ('iowne')];
         for(Asset ast: newList){
-            if(userRec.isActive <> false)
-                ast.ownerid = userRec.Id;
+            if(U.isActive <> false)
+            ast.ownerid = U.Id;
         }
-    }  
+    }   
     
+    
+        
     
     
     /***************************************************************************************************
-Method Name:  grantAssetAccesstoFAEs
-Version     : 1.0 
-Created Date: 29 Oct 2015
-Function    : This method does the sharing of Asset with associated Account and Project.
-Input Parameters: Asset List
-Output Parameters: None
-Description:   This method takes list of Asset and share the Asset to related Account and Project.
-Used in     : 
-Number of Queries Within this Method: 0
-Number of Queries in Loop: 0
-Number of Queries from Called methods:  5
-Modification Log :
-* Developer                   Date                   Description
-* ----------------------------------------------------------------------------                 
-* Abhishek Arya              10/29/2015              Created
-****************************************************************************************************/ 
+    Method Name:  grantAssetAccesstoFAEs
+    Version     : 1.0 
+    Created Date: 29 Oct 2015
+    Function    : This method does the sharing of Asset with associated Account and Project.
+    Input Parameters: Asset List
+    Output Parameters: None
+    Description:   This method takes list of Asset and share the Asset to related Account and Project.
+    Used in     : 
+    Number of Queries Within this Method: 0
+    Number of Queries in Loop: 0
+    Number of Queries from Called methods:  5
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Abhishek Arya              10/29/2015              Created
+    ****************************************************************************************************/ 
     @future
     public static void grantAssetAccesstoFAEs(String oldSerializedList,String serializedList){
-        
+    
         //[To create list of Active Assets Only.]
+        system.debug('x$$$$$$$$$'+oldSerializedList);
+        system.debug('y$$$$$$$$'+serializedList);
         
         List<Asset> newAssetList = (List<Asset>)JSON.deserialize(serializedList, List<Asset>.class);
+        system.debug('assets!!!@@'+newAssetList);
         
         List<Asset> newActiveAssetList = new List<Asset>();
         if(newAssetList <> null && newAssetList.size() > 0){
@@ -62,10 +64,10 @@ Modification Log :
                 }
             }
         }
-        
+                
         //[Verifying if Active Assets List is not empty.]
         if(newActiveAssetList.size() > 0){
-            
+        
             //[Logic Below : To get the map of Account Id as key and UserList as values for FAEs.]        
             Map<Id,List<Id>> assetByAccount = new Map<Id,List<Id>>();    
             
@@ -75,6 +77,7 @@ Modification Log :
             Map<Id, Set<id>> allFAEUsersByAccount;
             Map<Id, Set<id>> faesByAccount;
             If(assetByAccount <> null && assetByAccount.size() > 0 && assetByAccount.keyset() <> null){
+                system.debug('!!!#coming in here#!!!');
                 allFAEUsersByAccount = new Map<Id,Set<Id>>();                         
                 faesByAccount = new Map<Id,Set<Id>>();
                 
@@ -84,6 +87,7 @@ Modification Log :
                 //[Verifying if Map has any key-vaue pair. If Yes, Then adding all key-value pair in Map.]
                 if(faesByAccount.size() > 0){
                     allFAEUsersByAccount.putall(faesByAccount);
+                    system.debug('All Users FAE!!!'+allFAEUsersByAccount);
                 }                             
             }        
             
@@ -114,7 +118,7 @@ Modification Log :
             for(Asset asst: oldAssetList){
                 oldMap.put(asst.id,asst);
             }
-            
+
             //[Below logic is to get the assetId v/s set of UserIds via Account and Project.]
             Set<Id> userSetId;
             for(Asset assetObj: newActiveAssetList){
@@ -130,8 +134,10 @@ Modification Log :
                     }                 
                 }
                 assetShareMap.put(assetObj.Id,userSetId);
+                system.debug('Asset share Map !!!'+assetShareMap);
             }              
-           
+            system.debug('@@@@@@'+assetShareMap);        
+            
             //[Calling the sharing method to grant the Access to all Users based on AssetIds.]
             if(assetShareMap <> null && assetShareMap.size() > 0){                        
                 Core_SharingUtility.provideAccess('Asset','assetshare','read',assetShareMap);
@@ -140,28 +146,30 @@ Modification Log :
     }
     
     /***************************************************************************************************
-Method Name:  grantAssetAccesstoFAEs
-Version     : 1.0 
-Created Date: 29 Oct 2015
-Function    : This method does the sharing of Asset with associated Account and Project.
-Input Parameters: Asset List
-Output Parameters: None
-Description:   This method takes list of Asset and share the Asset to related Account and Project.
-Used in     : 
-Number of Queries Within this Method: 0
-Number of Queries in Loop: 0
-Number of Queries from Called methods:  5
-Modification Log :
-* Developer                   Date                   Description
-* ----------------------------------------------------------------------------                 
-* Abhishek Arya              10/29/2015              Created
-****************************************************************************************************/ 
+    Method Name:  grantAssetAccesstoFAEs
+    Version     : 1.0 
+    Created Date: 29 Oct 2015
+    Function    : This method does the sharing of Asset with associated Account and Project.
+    Input Parameters: Asset List
+    Output Parameters: None
+    Description:   This method takes list of Asset and share the Asset to related Account and Project.
+    Used in     : 
+    Number of Queries Within this Method: 0
+    Number of Queries in Loop: 0
+    Number of Queries from Called methods:  5
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Abhishek Arya              10/29/2015              Created
+    ****************************************************************************************************/ 
     @future
     public static void grantAssetAccesstoFAEs(String serializedList){
-        
+    
         //[To create list of Active Assets Only.]
+        system.debug('y$$$$$$$$'+serializedList);
         
         List<Asset> newAssetList = (List<Asset>)JSON.deserialize(serializedList, List<Asset>.class);
+        system.debug('assets!!!@@'+newAssetList);
         
         List<Asset> newActiveAssetList = new List<Asset>();
         if(newAssetList <> null && newAssetList.size() > 0){
@@ -172,10 +180,10 @@ Modification Log :
                 }
             }
         }
-        
+                
         //[Verifying if Active Assets List is not empty.]
         if(newActiveAssetList.size() > 0){
-            
+        
             //[Logic Below : To get the map of Account Id as key and UserList as values for FAEs.]        
             Map<Id,List<Id>> assetByAccount = new Map<Id,List<Id>>();    
             
@@ -185,6 +193,7 @@ Modification Log :
             Map<Id, Set<id>> allFAEUsersByAccount;
             Map<Id, Set<id>> faesByAccount;
             If(assetByAccount <> null && assetByAccount.size() > 0 && assetByAccount.keyset() <> null){
+                system.debug('!!!#coming in here#!!!');
                 allFAEUsersByAccount = new Map<Id,Set<Id>>();                         
                 faesByAccount = new Map<Id,Set<Id>>();
                 
@@ -194,6 +203,7 @@ Modification Log :
                 //[Verifying if Map has any key-vaue pair. If Yes, Then adding all key-value pair in Map.]
                 if(faesByAccount.size() > 0){
                     allFAEUsersByAccount.putall(faesByAccount);
+                    system.debug('All Users FAE!!!'+allFAEUsersByAccount);
                 }                             
             }        
             
@@ -220,8 +230,8 @@ Modification Log :
             //[Initializing the map of Asset Id as key and Set Of related Users as pair.]
             Map<Id,Set<Id>> assetShareMap = new Map<Id,Set<Id>>();
             Map<Id,Asset> oldMap = new Map<Id,Asset>(); 
-            
-            
+
+
             //[Below logic is to get the assetId v/s set of UserIds via Account and Project.]
             Set<Id> userSetId;
             for(Asset assetObj: newActiveAssetList){
@@ -237,7 +247,9 @@ Modification Log :
                     }                 
                 }
                 assetShareMap.put(assetObj.Id,userSetId);
+                system.debug('Asset share Map !!!'+assetShareMap);
             }              
+            system.debug('@@@@@@'+assetShareMap);        
             
             //[Calling the sharing method to grant the Access to all Users based on AssetIds.]
             if(assetShareMap <> null && assetShareMap.size() > 0){                        
@@ -246,26 +258,27 @@ Modification Log :
         }        
     }
     /***************************************************************************************************
-Method Name:  grantAssetAccesstoCustomers
-Version     : 1.0 
-Created Date: Jan 09 2016
-Function    : This method does the sharing of Asset with associated Account and Project(Only For Customers) as
-well as Intel Support Team.
-Input Parameters: Asset List
-Output Parameters: None
-Description:   This method takes list of Asset and share the Asset to related Account and Project(Customer Only) & Intel Support Team.
-Used in     : 
-Number of Queries Within this Method: 3
-Number of Queries in Loop: 0
-Number of Queries from Called methods: 0
-Modification Log :
-* Developer                   Date                   Description
-* ----------------------------------------------------------------------------                 
-* Abhishek Arya              01/09/2016              Created
-****************************************************************************************************/
+    Method Name:  grantAssetAccesstoCustomers
+    Version     : 1.0 
+    Created Date: Jan 09 2016
+    Function    : This method does the sharing of Asset with associated Account and Project(Only For Customers) as
+                  well as Intel Support Team.
+    Input Parameters: Asset List
+    Output Parameters: None
+    Description:   This method takes list of Asset and share the Asset to related Account and Project(Customer Only) & Intel Support Team.
+    Used in     : 
+    Number of Queries Within this Method: 3
+    Number of Queries in Loop: 0
+    Number of Queries from Called methods: 0
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Abhishek Arya              01/09/2016              Created
+    ****************************************************************************************************/
     @future
     public static void grantAssetAccesstoCustomers(String serializedList){
         List<Asset> newAssetList = (List<Asset>)JSON.deserialize(serializedList, List<Asset>.class);
+        system.debug('assets!!!@@'+newAssetList);
         //[To create list of Active Assets Only.]
         List<Asset> newActiveAssetList = new List<Asset>();
         if(newAssetList <> null && newAssetList.size() > 0){
@@ -275,7 +288,7 @@ Modification Log :
                 }
             }
         }
-        
+                
         //[Verifying if Active Assets List is not empty.]
         if(newActiveAssetList.size() > 0){ 
             
@@ -299,43 +312,38 @@ Modification Log :
             
             //[Creating Map to add all Account Specific Assets and grant access.]    
             Map<Id,Set<Id>> grantAccessToAccountBasedAsset = new Map<Id,Set<Id>>();
-            Map<Id,Core_IPS_Project__c> projectById = new Map<Id,Core_IPS_Project__c>();
+            
             //[Processing Project specific Assets only.]
             if(projectIdSet.size() > 0){
-                //FLS check added-Venugopal
-//niyaz commented as part of vulnerability fix
-                //if(Core_IPS_Project__c.SObjectType.getDescribe().isAccessible()){
-                    //projectById = new Map<Id,Core_IPS_Project__c>([Select id, Core_IPS_GroupId__c,Core_IPS_InternalGroupId__c from Core_IPS_Project__c where id IN: projectIdSet]); //modified by Aayushi to share assets with Intel Support Team US102838
-                //Sabira Syed Venrublity Fix - Refering query to service class
-                String projectQuery = 'SELECT Id, Core_IPS_GroupId__c, Core_IPS_InternalGroupId__c FROM Core_IPS_Project__c WHERE Id IN :projectIdSet';
-                List<Core_IPS_Project__c> projectList = (List<Core_IPS_Project__c>) Core_IPS_QueryService.queryRecords(projectQuery, new Map<String, Object>{ 'projectIdSet' => projectIdSet });
-                projectById = new Map<Id,Core_IPS_Project__c>(projectList);
-                   // }
+                Map<Id,Core_IPS_Project__c> projectById = new Map<Id,Core_IPS_Project__c>([Select id, Core_IPS_GroupId__c,Core_IPS_InternalGroupId__c from Core_IPS_Project__c where id IN: projectIdSet]); //modified by Aayushi to share assets with Intel Support Team US102838
                 for(Asset ast: newActiveAssetList){
                     if(ast.Core_IPS_Project__c!=null && projectById.get(ast.Core_IPS_Project__c)!=null){
-                        grantAccessToProjectBasedAsset.put(ast.Id,projectById.get(ast.Core_IPS_Project__c).Core_IPS_GroupId__c);
-                        //start added by Aayushi to share assets with Intel Support Team US102838
+                    grantAccessToProjectBasedAsset.put(ast.Id,projectById.get(ast.Core_IPS_Project__c).Core_IPS_GroupId__c);
+                    //start added by Aayushi to share assets with Intel Support Team US102838
                         if(projectById.get(ast.Core_IPS_Project__c).Core_IPS_InternalGroupId__c!=null){
                             grantInternalAccessToProjectBasedAsset.put(ast.Id,projectById.get(ast.Core_IPS_Project__c).Core_IPS_InternalGroupId__c);    
                         } //end    
                     }
                 }
+                system.debug('##########grantAccessRecords For Projects#####'+grantAccessToProjectBasedAsset+'<-->'+grantInternalAccessToProjectBasedAsset);
             }
             //[Processing Account specific Assets only.]
             if(accountIdSet.size() > 0){
                 Map<Id,Set<Id>> custUserRoleIdsByAccountId = Core_SharingUtility.getCustomerUserRoleIdsByAccountId(accountIdSet);
                 if(custUserRoleIdsByAccountId <> null && custUserRoleIdsByAccountId.size() > 0){
+                    System.debug(custUserRoleIdsByAccountId);
                     List<Id> userRolesList = new List<Id>();
                     for(Id accId:custUserRoleIdsByAccountId.keyset()){
                         userRolesList.addAll(custUserRoleIdsByAccountId.get(accId));    
                     }
                     Map<id,Set<id>> groupIdsByRole = Core_SharingUtility.getGroupIdsByRoleId(userRolesList);
+                    System.debug(GroupIdsByRole);
                     for(Asset astObj:newActiveAssetList){
                         if(astObj.accountId!=null && custUserRoleIdsByAccountId.get(astObj.AccountId)!=null){
                             Set<Id> groupIdSet = new Set<Id>();
                             for(Id userRoleId:custUserRoleIdsByAccountId.get(astObj.AccountId)){                                
                                 for(Id groupId:groupIdsByRole.get(userRoleId)){
-                                    groupIdSet.add(groupId);
+                                        groupIdSet.add(groupId);
                                 }                                    
                             }   
                             grantAccessToAccountBasedAsset.put(astObj.Id,groupIdSet);   
@@ -343,180 +351,169 @@ Modification Log :
                     }
                 }
             }                                    
-           
+            
             //[Verifying if Project based Map is empty or not. If not empty then calling the provide access method.]
             if(grantAccessToProjectBasedAsset.size() > 0){
+                system.debug('##########Total grantAccessToProjectBasedAsset#####'+grantAccessToProjectBasedAsset.size()+grantAccessToProjectBasedAsset);
                 Core_SharingUtility.provideAccess('Asset', 'AssetShare','Read',grantAccessToProjectBasedAsset);                
             }
             if(grantInternalAccessToProjectBasedAsset.size() > 0){
+                system.debug('##########Total grantInternalAccessToProjectBasedAsset#####'+grantInternalAccessToProjectBasedAsset.size()+grantInternalAccessToProjectBasedAsset);
                 Core_SharingUtility.provideAccess('Asset', 'AssetShare','Read',grantInternalAccessToProjectBasedAsset);                
             }
             //[Verifying if Account based Map is empty or not. If not empty then calling the provide access method.]
             if(grantAccessToAccountBasedAsset.size() > 0){
+                system.debug('##########Total grantAccessToAccountBasedAsset#####'+grantAccessToAccountBasedAsset.size()+grantAccessToAccountBasedAsset);
                 Core_SharingUtility.provideAccess('Asset', 'AssetShare','Read',grantAccessToAccountBasedAsset);                
             }                                              
         }        
     }
+  
+    
+    
     
     /***************************************************************************************************
-Method Name:  lItemUpdate
-Version     : 1.0 
-Created Date: 29 Aug 2015
-Function    : This method is used to update the Asset lookup on Product Access Line Item.
-Input Parameters: Asset List
-Output Parameters: None
-Description:   This method takes a list of Assets and updates the Asset lookup of the Line Items associated with.
-Used in     : 
-Number of Queries Within this Method: 1
-Number of Queries in Loop: 0
-Number of Queries from Called methods:  0
-Modification Log :
-* Developer                   Date                   Description
-* ----------------------------------------------------------------------------                 
-* JRK                        08/29/2015              Created
-****************************************************************************************************/
+    Method Name:  LItemUpdate
+    Version     : 1.0 
+    Created Date: 29 Aug 2015
+    Function    : This method is used to update the Asset lookup on Product Access Line Item.
+    Input Parameters: Asset List
+    Output Parameters: None
+    Description:   This method takes a list of Assets and updates the Asset lookup of the Line Items associated with.
+    Used in     : 
+    Number of Queries Within this Method: 1
+    Number of Queries in Loop: 0
+    Number of Queries from Called methods:  0
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * JRK                        08/29/2015              Created
+    ****************************************************************************************************/
     @future
-    public static void lItemUpdate(String serializedList){
-        List<Core_IPS_Map_Par_Line_Item__c> lineItemList = new List<Core_IPS_Map_Par_Line_Item__c>();
+    public static void LItemUpdate(String serializedList){
         List<Asset> assets = (List<Asset>)JSON.deserialize(serializedList, List<Asset>.class);
+        system.debug('assets!!!@@'+assets);
+        System.debug('>>> Litem update '+UserInfo.getName());
         if(assets!=null && assets.size()>0 ){
-            List<String> allMapList = new List<String>();            
+            List<String> AllMapList = new List<String>();            
             for(Asset ast1:assets){
                 if(ast1.Core_Map_List__c!=null){
-                    Integer mapListSize = ast1.Core_Map_List__c.split(';').size();
-                    String mapList = ast1.Core_Map_List__c.split(';').get(mapListSize-1);
-                    allMapList.add(mapList);
+                    Integer MapListSize = ast1.Core_Map_List__c.split(';').size();
+                    String MapList = ast1.Core_Map_List__c.split(';').get(MapListSize-1);
+                    AllMapList.add(MapList);
                 }
             }
-            if(allMapList.size()>0 && allMapList!=null){
-                //FLS check added -Venugopal
-                if(Core_IPS_Map_Par_Line_Item__c.SObjectType.getDescribe().isAccessible()){
-                    lineItemList = [Select id,Core_Account__c,Core_Supported_Product__r.Core_Supported_Product_Name__c,Core_Supported_Product__c,Core_Status__c,Core_MAP_PAR__c,Core_MAP_PAR__r.Core_Product_Organization__c from Core_IPS_Map_Par_Line_Item__c where Core_MAP_PAR__c IN:allMapList];
-                }
+            if(AllMapList.size()>0 && AllMapList!=null){
+                List<Core_IPS_Map_Par_Line_Item__c> LineItemList = [Select id,Core_Account__c,Core_Supported_Product__r.Core_Supported_Product_Name__c,Core_Supported_Product__c,Core_Status__c,Core_MAP_PAR__c,Core_MAP_PAR__r.Core_Product_Organization__c from Core_IPS_Map_Par_Line_Item__c where Core_MAP_PAR__c IN:AllMapList];
                 Map<id,Core_IPS_Map_Par_Line_Item__c> updatelItemMap = new Map<id,Core_IPS_Map_Par_Line_Item__c>();
-                for(Core_IPS_Map_Par_Line_Item__c lItem: lineItemList){                         
+                system.debug('dup li @@@@@@@'+LineItemList);
+                system.debug('dup assets @@@@@@'+assets);
+                for(Core_IPS_Map_Par_Line_Item__c LItem: LineItemList){                         
                     for(Asset ast: assets){
-                        if(lItem.Core_Account__c == ast.Accountid && lItem.Core_Supported_Product__c == ast.Core_Supported_Product__c && lItem.Core_MAP_PAR__r.Core_Product_Organization__c == ast.Core_Product_Organization__c){
-                            lItem.Core_Intel_Product__c = ast.id;                                                        
-                            updatelItemMap.put(lItem.id,lItem);
+                        if(LItem.Core_Account__c == ast.Accountid && LItem.Core_Supported_Product__c == ast.Core_Supported_Product__c && LItem.Core_MAP_PAR__r.Core_Product_Organization__c == ast.Core_Product_Organization__c){
+                            LItem.Core_Intel_Product__c = ast.id;                                                        
+                            updatelItemMap.put(LItem.id,LItem);
                             Core_Asset_Dispatcher.Assetfieldupdated=true;
                         }
                     }  
                 }
+                system.debug('duplicates@@@@@@@'+updatelItemMap);
+                system.debug('duplicates@@@@@@@'+updatelItemMap.keyset()+'@@@@@@values'+updatelItemMap.values());  
                 update updatelItemMap.values(); 
             }
         }
     }  
     
     /***************************************************************************************************
-Method Name:  updateProjProduct
-Version     : 1.0 
-Created Date: 06 Dec 2015
-Function    : This method is used to update the Asset lookup on Product Access Line Item.
-Input Parameters: Asset List
-Output Parameters: None
-Description:   This method takes a list of Assets and updates the Asset lookup of the Line Items associated with.
-Used in     : 
-Number of Queries Within this Method: 1
-Number of Queries in Loop: 0
-Number of Queries from Called methods:  0
-Modification Log :
-* Developer                   Date                   Description
-* ----------------------------------------------------------------------------                 
-* JRK                        12/06/2015              Created
-****************************************************************************************************/
+    Method Name:  UpdateProjProduct
+    Version     : 1.0 
+    Created Date: 06 Dec 2015
+    Function    : This method is used to update the Asset lookup on Product Access Line Item.
+    Input Parameters: Asset List
+    Output Parameters: None
+    Description:   This method takes a list of Assets and updates the Asset lookup of the Line Items associated with.
+    Used in     : 
+    Number of Queries Within this Method: 1
+    Number of Queries in Loop: 0
+    Number of Queries from Called methods:  0
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * JRK                        12/06/2015              Created
+    ****************************************************************************************************/
     @future
-    public static void updateProjProduct(String serializedList){
-        List<Asset> assetList = (List<Asset>)JSON.deserialize(serializedList, List<Asset>.class);
-        Map<Id,Id> projectsandAssets = new Map<Id,Id>();
-        Map<Id,Id> supProdsandAssets = new Map<Id,Id>();
-        Map<Id,Set<Id>> projectsandAssetsMap = new Map<Id,Set<Id>>();
-        List<Core_IPS_Product__c> projProducts = new List<Core_IPS_Product__c>();
-        List<Core_IPS_Product__c> projProductList = new List<Core_IPS_Product__c>();
-        if(assetList <> null && assetList.size()>0){
-            for(Asset ast: assetList){
+    public static void UpdateProjProduct(String serializedList){
+        List<Asset> AssetList = (List<Asset>)JSON.deserialize(serializedList, List<Asset>.class);
+        system.debug('Asset new List>>>>>>>>>>>>>'+AssetList+'>>>> COntext user'+UserInfo.getName()+':'+UserInfo.getProfileId());
+        Map<Id,Id> ProjectsandAssets = new Map<Id,Id>();
+        Map<Id,Id> SupProdsandAssets = new Map<Id,Id>();
+        Map<Id,Set<Id>> ProjectsandAssetsMap = new Map<Id,Set<Id>>();
+        List<Core_IPS_Product__c> ProjProducts = new List<Core_IPS_Product__c>();
+        if(AssetList <> null && AssetList.size()>0){
+            for(Asset ast: AssetList){
                 //Added by Gourav: Mapping logic to take care of multiple Project Products associated to a Project
-                if(projectsandAssetsMap.containsKey(ast.Core_IPS_Project__c)){
-                    Set<Id> assetSet = projectsandAssetsMap.get(ast.Core_IPS_Project__c);
+                if(ProjectsandAssetsMap.containsKey(ast.Core_IPS_Project__c)){
+                    Set<Id> assetSet = ProjectsandAssetsMap.get(ast.Core_IPS_Project__c);
                     assetSet.add(ast.Id);
-                    projectsandAssetsMap.put(ast.Core_IPS_Project__c,assetSet);
+                    ProjectsandAssetsMap.put(ast.Core_IPS_Project__c,assetSet);
                 }else{
-                    projectsandAssetsMap.put(ast.Core_IPS_Project__c,new Set<Id> {ast.id});
+                        ProjectsandAssetsMap.put(ast.Core_IPS_Project__c,new Set<Id> {ast.id});
                 }   
-                supProdsandAssets.put(ast.Core_Supported_Product__c,ast.id);
+                SupProdsandAssets.put(ast.Core_Supported_Product__c,ast.id);
             }
-            
-            if(projectsandAssetsMap <> null && projectsandAssetsMap.size()>0 && supProdsandAssets <> null && supProdsandAssets.size()>0){
-                //FLS check added-Venugopal
-                if(Core_IPS_Product__c.SObjectType.getDescribe().isAccessible()){
-                    // Venrublity Fix - Refering query to service class
-                    // ProjProductList = [Select id,Core_Supported_Product__c,Core_Intel_Product__c,Core_Intel_Product_Status__c,Core_IPS_Project__c from Core_IPS_Product__c 
-                    //                                          where Core_IPS_Project__c IN: ProjectsandAssetsMap.keyset() and Core_Supported_Product__c IN: SupProdsandAssets.keyset()];
-                    projProductList = (List<Core_IPS_Product__c>)Core_IPS_QueryService.queryRecords('Select id,Core_Supported_Product__c,Core_Intel_Product__c,Core_Intel_Product_Status__c,Core_IPS_Project__c from Core_IPS_Product__c where Core_IPS_Project__c IN: ProjectsandAssetsMap and Core_Supported_Product__c IN: SupProdsandAssets', new Map<String,Object>{'ProjectsandAssetsMap'=>projectsandAssetsMap.keyset(),'SupProdsandAssets'=>supProdsandAssets.keyset()});
-                }
-                if(projProductList <> null && projProductList.size()>0){
-                    for(Core_IPS_Product__c projProduct: projProductList){
+            system.debug('Proj Asset Map>>>>>>>>>>>'+ProjectsandAssetsMap);
+            System.debug('>>SupProdsandAssets>>'+SupProdsandAssets);
+            if(ProjectsandAssetsMap <> null && ProjectsandAssetsMap.size()>0 && SupProdsandAssets <> null && SupProdsandAssets.size()>0){
+                List<Core_IPS_Product__c> ProjProductList = [Select id,Core_Supported_Product__c,Core_Intel_Product__c,Core_Intel_Product_Status__c,Core_IPS_Project__c from Core_IPS_Product__c 
+                                                             where Core_IPS_Project__c IN: ProjectsandAssetsMap.keyset() and Core_Supported_Product__c IN: SupProdsandAssets.keyset()];
+                system.debug('1 *>>>>>>>>>>>>>'+ProjProductList);
+                if(ProjProductList <> null && ProjProductList.size()>0){
+                    for(Core_IPS_Product__c ProjProduct: ProjProductList){
                         //Getting Asset Id based on ProjectProduct.SupportedProduct value
-                        projProduct.Core_Intel_Product__c = supProdsandAssets.get(projProduct.Core_Supported_Product__c);
-                        projProducts.add(projProduct);
+                        ProjProduct.Core_Intel_Product__c = SupProdsandAssets.get(ProjProduct.Core_Supported_Product__c);
+                        ProjProducts.add(ProjProduct);
+                        system.debug('2 *>>>>>>>>>>>>>>>>>>>>>>'+ProjProducts+'>>ProjectsandAssets.get(ProjProduct.Core_IPS_Project__c)>>'+ProjectsandAssets.get(ProjProduct.Core_IPS_Project__c));
                     }
-                   
-                    if(projProducts <> null && projProducts.size()>0)
-                        //update ProjProducts; 
-                        Core_IPS_QueryService.updateRecords(projProducts);      
+                    if(ProjProducts <> null && ProjProducts.size()>0)
+                    update ProjProducts;
                 }
             }
         }
     }
-    
-    /***************************************************************************************************
-Version     : 1.0 
-Created Date: 27 Oct 2015
-Function    : This method updates product information on asset from Product Hierarchy Table
-Input Parameters: Asset List
-Output Parameters: None
-Transactions: Before Insert
-Description: This method updates product information on asset from Product Hierarchy Table and codename, 
-alias from supported product object
-Used in     : Core_Asset_Dispatcher
-Number of Queries Within this Method: 1
-Number of Queries in Loop: 0
-Number of Queries from internal method calls:2
-Number of times called: Once for trigger execution
-Modification Log :
-* Developer                   Date                   Description
-* ----------------------------------------------------------------------------                 
-* Jayaprakash T              10/27/2015              Created
-* Jayaprakash T              10/28/2015              added code for updating codename and alias on Asset from Supported product.
-* Yogesh Sharma              19/03/2018              Added code for updating Search/Reporting tag Field on Asset from Supported Product. 
-* Aayushi Singhal			 22/06/2018				Modified by Aayushi for DE40248   
-****************************************************************************************************/     
-    //commented future by Aayushi DE40248
+
+   /***************************************************************************************************
+    Version     : 1.0 
+    Created Date: 27 Oct 2015
+    Function    : This method updates product information on asset from Product Hierarchy Table
+    Input Parameters: Asset List
+    Output Parameters: None
+    Transactions: Before Insert
+    Description: This method updates product information on asset from Product Hierarchy Table and codename, 
+                 alias from supported product object
+    Used in     : Core_Asset_Dispatcher
+    Number of Queries Within this Method: 1
+    Number of Queries in Loop: 0
+    Number of Queries from internal method calls:2
+    Number of times called: Once for trigger execution
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Jayaprakash T              10/27/2015              Created
+    * Jayaprakash T              10/28/2015              added code for updating codename and alias on Asset from Supported product.
+    * Yogesh Sharma              19/03/2018              Added code for updating Search/Reporting tag Field on Asset from Supported Product. 
+    * Aayushi Singhal			 22/06/2018				Modified by Aayushi for DE40248   
+    ****************************************************************************************************/     
+   //commented future by Aayushi DE40248
     // @future
     public static void updateProductInformationOnAsset(/*String serializedList*/ List<Asset> newList ){
-        List<Core_IPS_Supported_Product__c> spList = new List<Core_IPS_Supported_Product__c>();   
-        // List<Asset> newList = (List<Asset>)JSON.deserialize(serializedList, List<Asset>.class);		//commented by Aayushi DE40248
+       // List<Asset> newList = (List<Asset>)JSON.deserialize(serializedList, List<Asset>.class);		//commented by Aayushi DE40248
+        system.debug('Asset new List>>>>>>>>>>>>>'+newList+'User in'+UserInfo.getName());
         if(newList <> null && newList.size() > 0){   
             List<Id> supportedProductIdList = new List<Id>();
             for(Asset asset:newList){
                 supportedProductIdList.add(asset.core_supported_product__c);
             }
-            /*Start -- Tushar -- 12/06/2026 --- CRUD Added as part of vulnerability fix. */
-            if (Core_IPS_Supported_Product__c.SObjectType.getDescribe().isAccessible()) {
-                if (!Schema.SObjectType.Core_IPS_Supported_Product__c
-                    .fields.Core_Code_Name__c.isAccessible()) {
-                        spList = [select Id, Core_Supported_Product_Alias__c, 
-                                  Core_Supported_Product_Tag__c ,Core_Code_Name__c
-                                  from Core_IPS_Supported_Product__c 
-                                  where Id in :supportedProductIdList];
-                    } else {
-                        spList = [select Id, Core_Supported_Product_Alias__c, 
-                                  Core_Code_Name__c, Core_Supported_Product_Tag__c 
-                                  from Core_IPS_Supported_Product__c 
-                                  where Id in :supportedProductIdList];
-                    }
-            }
-            /*End -- Tushar -- 12/06/2026 --- added as part of vulnerability fix. */
+            List<Core_IPS_Supported_Product__c> spList = [select Id,Core_Supported_Product_Alias__c,Core_Code_Name__c,Core_Supported_Product_Tag__c from Core_IPS_Supported_Product__c where Id in:supportedProductIdList];
             if(supportedProductIdList <> null && supportedProductIdList.size()>0){
                 Map<String,Set<String>> platformByProduct=Core_IPS_Caseutility.getPlatform(supportedProductIdList);
                 String platform;
@@ -528,10 +525,10 @@ Modification Log :
                         for(String platformName:platformByProduct.get(asset.core_supported_product__c)){
                             //[Nov/27 - Abhishek Arya(Defect# DE9627) - Commented the below line and put 4 new lines below. Since The final result was observed with comma as postfix.]
                             //platform=platform+platformName+','; 
-                            if(platform == '')
-                                platform = platformName;            
-                            else
-                                platform = platform + ', ' + platformName;                              
+                             if(platform == '')
+                                 platform = platformName;            
+                             else
+                                 platform = platform + ', ' + platformName;                              
                         }                       
                         asset.Core_Platform__c=platform;
                     }
@@ -547,30 +544,31 @@ Modification Log :
                             }
                         }
                     }
+                    System.debug('assetList:'+newList+'  relatedInfoAsset:'+spList);
                 }
                 //}
             }
         }
     }
-    
-    /***************************************************************************************************
-Version     : 1.0 
-Created Date: 02 July 2018
-Function    : This method updates information on Asset from Project
-Input Parameters: Asset List
-Output Parameters: None
-Transactions: Before Insert
-Description: This method updates Project information on asset 
-Used in     : Core_Asset_Dispatcher
-Number of Queries Within this Method: 
-Number of Queries in Loop: 0
-Number of Queries from internal method calls:
-Number of times called: Once for trigger execution
-Modification Log :
-* Developer                   Date                   Description
-* ----------------------------------------------------------------------------                 
-* Aayushi Singhal			 02/11/2018				Created for US113701  
-****************************************************************************************************/
+ 
+ /***************************************************************************************************
+    Version     : 1.0 
+    Created Date: 02 July 2018
+    Function    : This method updates information on Asset from Project
+    Input Parameters: Asset List
+    Output Parameters: None
+    Transactions: Before Insert
+    Description: This method updates Project information on asset 
+    Used in     : Core_Asset_Dispatcher
+    Number of Queries Within this Method: 
+    Number of Queries in Loop: 0
+    Number of Queries from internal method calls:
+    Number of times called: Once for trigger execution
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Aayushi Singhal			 02/11/2018				Created for US113701  
+    ****************************************************************************************************/
     public static void updateProjectInformationOnAsset(List<Asset> newList ){
         if(!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('updatePrivateProjectSharing')) {return;} 
         
@@ -592,5 +590,5 @@ Modification Log :
         }
         
     }
-    
+     
 }

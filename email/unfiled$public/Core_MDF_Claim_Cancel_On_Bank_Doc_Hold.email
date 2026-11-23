@@ -23,7 +23,7 @@
                                                     <li>{!$Label.Core_MDF_EmailTemp_Activity_Type}&nbsp;{!RelatedTo.Core_MDF_Activity_Types__c}<br/></li>
                                                 </apex:outputPanel>
                                                 <apex:outputPanel rendered="{!IF(relatedTo.Core_MDF_Program__c != $Label.Core_MDF_Co_GTM_program_name, true, false)}">
-                                                        <li>{!$Label.Core_MDF_EmailTemp_Claim_Country} {!RelatedTo.Core_MDF_Country_Location_nm__c}  <br/></li>
+                                                    <li>{!$Label.Core_MDF_EmailTemp_Claim_Country} {!RelatedTo.Core_MDF_Country_Location_nm__c}  <br/></li> 
                                                 </apex:outputPanel>
                                                 <li>{!$Label.Core_MDF_EmailTemp_Program}&nbsp; {!relatedTo.Core_MDF_Program__c}</li>
                                                 <apex:outputPanel rendered="{!IF(RelatedTo.Core_MDF_Budget_Type_Options_Nm__c != null,true,false)}">

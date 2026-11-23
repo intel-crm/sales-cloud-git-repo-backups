@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This SubFlow will share the PFA records with Internal Account Managers group.</description>
+    <masterLabel>Core_MDF_PFA_CreateShareRecords</masterLabel>
+</FlowDefinition>

@@ -156,16 +156,18 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Design,Design Win,Production Win,Lost,Cancelled,Production Lost,Production Cancelled,Group Cancelled,Group Closed</value>
+            <value>Design Win,Production Win,Lost,Cancelled,Production Lost,Production Cancelled,Group Cancelled,Group Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PRODUCT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>DK-,BD-</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>FiscalQuarter</dateGranularity>
-        <field>LAST_STAGE_CHANGE_DATE</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>BucketField_63200473</field>
@@ -173,10 +175,15 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
+        <field>BucketField_14228587</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
         <field>OPPORTUNITY_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>PSG Closed Top Opp Outcomes</name>
+    <name>PSG Closed Device Top Opp Outcomes</name>
     <params>
         <name>terr</name>
         <value>all</value>

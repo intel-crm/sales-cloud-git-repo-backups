@@ -113,14 +113,14 @@
         <type>Default</type>
     </actionOverrides>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <deploymentStatus>Deployed</deploymentStatus>
+    <deploymentStatus>InDevelopment</deploymentStatus>
     <description>k_v_f_detail_value_exchange_sfdcs</description>
     <enableFeeds>false</enableFeeds>
     <enableLicensing>false</enableLicensing>
     <enableReports>false</enableReports>
     <enableSearch>true</enableSearch>
     <externalDataSource>ipa_sales_out</externalDataSource>
-    <externalName>fact_detail_value_exchange_sfdcs</externalName>
+    <externalName>k_v_f_detail_value_exchange_sfdcs</externalName>
     <fields>
         <fullName>business_organization_nbr__c</fullName>
         <description>business_organization_nbr</description>
@@ -137,18 +137,17 @@
     </fields>
     <fields>
         <fullName>business_organization_party_id__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
         <description>business_organization_party_id</description>
         <externalDeveloperName>business_organization_party_id</externalDeveloperName>
+        <externalId>false</externalId>
         <isFilteringDisabled>false</isFilteringDisabled>
         <isNameField>false</isNameField>
         <isSortingDisabled>false</isSortingDisabled>
         <label>business_organization_party_id</label>
-        <referenceTo>Account</referenceTo>
-        <relationshipLabel>k_v_f_detail_value_exchange_sfdcs</relationshipLabel>
-        <relationshipName>k_v_f_detail_value_exchange_sfdcs</relationshipName>
+        <length>128</length>
         <required>false</required>
-        <type>Lookup</type>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>change_ts__c</fullName>
@@ -373,20 +372,6 @@
         <isNameField>false</isNameField>
         <isSortingDisabled>false</isSortingDisabled>
         <label>start_dt</label>
-        <length>128</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>value_exchange_period_txt__c</fullName>
-        <description>value_exchange_period_txt</description>
-        <externalDeveloperName>value_exchange_period_txt</externalDeveloperName>
-        <externalId>false</externalId>
-        <isFilteringDisabled>false</isFilteringDisabled>
-        <isNameField>false</isNameField>
-        <isSortingDisabled>false</isSortingDisabled>
-        <label>value_exchange_period_txt</label>
         <length>128</length>
         <required>false</required>
         <type>Text</type>

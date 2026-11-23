@@ -97,7 +97,7 @@
         <field>OPPORTUNITY_ID</field>
     </columns>
     <filter>
-        <booleanFilter>((1 AND 2) AND (3 OR 4 OR 5)) AND 6</booleanFilter>
+        <booleanFilter>(1 AND 2 AND 5) AND (3 OR 4)</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Product_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -124,21 +124,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Vista Creek,Rush Creek,Darby Creek,Mount Kiska,Vista Glacier,Cascade Glacier,Pyramid Lake,Silver Lake</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PRODUCT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Intel® FPGA PAC,Intel® PAC</value>
+            <value>Rush Creek,Darby Creek,Vista Glacier,Cascade Glacier</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Oppty_Approved_Total_Price__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterOrEqual</operator>
-            <value>1000000</value>
+            <value>500000</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

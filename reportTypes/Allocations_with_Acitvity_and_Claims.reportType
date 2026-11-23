@@ -150,6 +150,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Budget_id__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Budget_Type_nm__c</field>
             <table>PartnerFundAllocation.PartnerFundRequests</table>
         </columns>
@@ -165,7 +170,22 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Channel_Program_Reporting__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_ToBeClosedDate__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Country_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Country_Names__c</field>
             <table>PartnerFundAllocation.PartnerFundRequests</table>
         </columns>
         <columns>
@@ -240,6 +260,21 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Reimbursement_Rate_pct__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Reimbursement_Rate_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RequestedAmount</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Start_Date__c</field>
             <table>PartnerFundAllocation.PartnerFundRequests</table>
         </columns>
@@ -250,7 +285,37 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Start_Date_Created_Date__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Status</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Third_Party_Ind__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Ultimate_Account__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Ultimate_Account_Country_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Ultimate_Account_Id__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Ultimate_Account_Name__c</field>
             <table>PartnerFundAllocation.PartnerFundRequests</table>
         </columns>
         <masterLabel>Partner Fund Requests</masterLabel>
@@ -269,6 +334,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Activity_Start_Date__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Activity_SubType_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Activity_Types__c</field>
             <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
         </columns>
         <columns>
@@ -293,7 +368,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Bank_Doc_Hold_Ind__c</field>
+            <field>Bank_Country__c</field>
             <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
         </columns>
         <columns>
@@ -303,7 +378,22 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Bank_Doc_Hold_Ind__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Bank_Supplier_tbd__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Brand_nm__c</field>
             <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
         </columns>
         <columns>
@@ -314,6 +404,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Campaign_Id__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Cap_Type_nm__c</field>
             <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
         </columns>
         <columns>
@@ -329,6 +424,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Claim_Submitter_Id__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Type_Txt__c</field>
             <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
         </columns>
         <columns>
@@ -353,12 +453,92 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Due_Date_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Description</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Doc_Hold_to_Review_Hold_Ind__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Document_Hold_Ind__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Document_Hold_Eligibility_Ind__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Document_Submission_DueDate_dtm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Duplicate_Claim__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Eligible_for_PIC__c</field>
             <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Engagement_Nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Escalation_Id__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Ad_Run_End_Date__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Ad_Run_Start_Date__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Criteria_Hold_Ind__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_RMF_Intel_Hold_Ind__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Criteria_Hold_No_Id__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Intel_Manual_Hold_Ind__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Intel_Manual_Hold_Comments_Txt__c</field>
             <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
         </columns>
         <columns>
@@ -378,7 +558,27 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Last_Reviewed_By_id__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Legacy_Claim_Ind__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Legacy_Reminder_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Member_Manual_Hold_Ind__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Member_Manual_Hold_Comments_Txt__c</field>
             <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
         </columns>
         <columns>
@@ -394,6 +594,11 @@
         <columns>
             <checkedByDefault>true</checkedByDefault>
             <field>Name</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Payment_Id__c</field>
             <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
         </columns>
         <columns>
@@ -423,12 +628,37 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Quarter__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Quarter__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Quarter_Year_Txt__c</field>
             <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Recommend_For_ClaimReview__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RecordType</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Region_Cd__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Reimbursable_TransactionAmt_Loc__c</field>
             <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
         </columns>
         <columns>
@@ -453,7 +683,57 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Payment_lcl_Amount__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Claim_Review_Case__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Audit_Hold__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Review_Hold_Rule_Nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Audit_Type__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Status</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Status_Image__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Sub_Region_Cd__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Taxes_Local__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Third_Party_Ind__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Total_Adjustment_Amt__c</field>
             <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
         </columns>
         <columns>
@@ -473,9 +753,773 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Total_Review_Duration_Mins_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Ultimate_Account_ID__c</field>
             <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
         </columns>
         <masterLabel>Partner Fund Claims</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Excess_Requested_Amount__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Log_Info_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Applicable_VAT_Percentage_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Activity_Status_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_TotalInvoice_Amt_Local__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Payment_Rollback_Reason_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Payment_Type_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Paid_By_Payment_Type_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_StartTime_dtm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_EndTime_dtm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Claim_Creation_Duration_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Claim_Creation_Dur_Min_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Unified_Global_ID__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Unified_Global_Name_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_EFT_Number_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Bank_Legal_Entity_Code_cd__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>test_flow__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Lead_Quantity_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Deployment_Quantity_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Other_Quantity_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_CSP_Intel_Based_Revenue_Amt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Recovery_Hold_Ind__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Page_Views_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Units_Sold_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Design_Wins_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Deals_Registered_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Contacts_Reached_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Dedicated_Personnel_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Trainings_Completed_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Deployments_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Unique_Visitors_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Conversions_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Cost_Per_Lead_amt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Views_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Downloads_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Revenue_of_Units_Sold_amt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Placements_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Individuals_Trained_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Average_time_on_Page_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Social_Media_Engagements_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Average_View_Time_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Intel_Speakerships_Sessions_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Unique_Listeners_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_ASP_Growth_amt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Others_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_SurePay_Processed_Ind__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Campaign_Name_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Campaign_End_Date_dt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Technology__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Product_Type__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Customer_Product_Codename_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Date_After_Modified__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Has_Sub_Claims_Ind__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Amount_Percentage__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Claim_Id__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Super_Claim_Status_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_NoOfLeads_Nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Number_of_Recipient_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Open_Rate_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Reporting_Region__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims</table>
+        </columns>
+        <masterLabel>Claims</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Campaign_Reimbursement_Rate_pct__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Activity_Reimbursement_Rate_pct__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_ATF_Flag_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Campaign_Reimbursement_Rate_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Budget_Type_Reporting_Only_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Content_DocumentIds_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>New_Channel_Partner__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Host_Region_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_IPA_Int_Approver_Comment_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Activity_Classification_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Focus_Area_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_TargetAudience_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_IPA_Industry_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Initiative_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_EcosystemPartner_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Priority_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Industry_Multi_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Opportunity_id__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Campaign_Status_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_StartTime_dtm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_EndTime_dtm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Activity_Creation_Duration_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Activity_Creation_Dur_Min_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Activity_Start_Quarter_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Activity_End_Quarter_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Total_Claims_Already_Paid_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Unified_Global_id__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Unified_Global_Name_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Region_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Campaign_Reimbursement_Amt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Other_Event_Name_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Virtual_Corp_Acct_Name_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_NEX_Ind__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Payment_Type_Node_Level__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_CSP_Intel_Based_Revenue_amt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Primary_Intel_Owner_Id__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Primary_Member_Acceptance_Ind__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_End_Customer_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Campaign_Ultimate_Account_Id__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Campaign_Account_Id__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Approval_Amount_Check__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Internal_Tracking_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Recipients_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Page_Views_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Leads_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Units_Sold_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Design_Wins_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Deals_Registered_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Contacts_Reached_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Dedicated_Personnel_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Trainings_Completed_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Deployments_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Unique_Visitors_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Conversions_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Cost_Per_Lead_amt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Views_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Downloads_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Revenue_of_Units_Sold_amt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Placements_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Individuals_Trained_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Average_time_on_Page_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Social_Media_Engagements_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Average_View_Time_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Unique_Listeners_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_ASP_Growth_amt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Others_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Intel_Speakerships_Sessions_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Trainees_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Days_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_ActivatedInstance_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Instance_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_No_of_Calls_nbr__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Other_Reason_nm_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Activity_StartYear_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Market_Segment_Nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Other_Engineering_Activity_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_POP_Requirement_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Activity_Spending_Limit_Local_Old__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Activity_Spending_Limit_Local_New__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Reimbursement_Rate_New__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Reimbursement_Rate_Old__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Intel_Contribution_New__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Outcomes_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <masterLabel>Co-Marketing Activities</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Parent_Activity_Id__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Is_Node_Activity__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_File_Data__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_OEM_CMP_Approval_required__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Partner_Contact_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Measurement_Approach_nm__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Other_Measurement_Approach_txt__c</field>
+            <table>PartnerFundAllocation.PartnerFundRequests</table>
+        </columns>
+        <masterLabel>Co-Marketing Activties</masterLabel>
     </sections>
 </ReportType>

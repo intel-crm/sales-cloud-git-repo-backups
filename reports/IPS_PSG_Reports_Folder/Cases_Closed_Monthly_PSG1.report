@@ -84,7 +84,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Case.Core_AAQC_Case_recordType</value>
+            <value>Case.Core_AAQC_Case_recordType,Case.CEP_Case</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
@@ -117,7 +117,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <endDate>2020-03-31</endDate>
+        <endDate>2020-01-01</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2018-07-14</startDate>
     </timeFrameFilter>

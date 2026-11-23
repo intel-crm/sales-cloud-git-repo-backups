@@ -324,8 +324,12 @@
         <columns>trailheadapp__Assigned_to_Complete__c</columns>
         <columns>trailheadapp__Badge_Icon__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>trailheadapp__Finished_Date__c</field>
+            <operation>greaterThan</operation>
+            <value>12/12/2018 12:00 AM</value>
+        </filters>
         <label>All</label>
-        <language>en_US</language>
     </listViews>
     <nameField>
         <displayFormat>BADGE-{0000}</displayFormat>

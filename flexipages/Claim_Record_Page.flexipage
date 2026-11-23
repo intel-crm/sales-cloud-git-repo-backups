@@ -16,6 +16,10 @@
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>hideSlackAction</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>numVisibleActions</name>
                     <value>3</value>
                 </componentInstanceProperties>
@@ -67,6 +71,9 @@
                 <componentInstanceProperties>
                     <name>objAPIName</name>
                     <value>PartnerFundClaim</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>operator</name>
                 </componentInstanceProperties>
                 <componentName>Core_MDF_Compact_Layout</componentName>
                 <identifier>c_Core_MDF_Compact_Layout</identifier>
@@ -148,15 +155,11 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>recordId</name>
+                </componentInstanceProperties>
                 <componentName>core_MDF_ClaimAmountExceedingLimitMessage</componentName>
                 <identifier>c_core_MDF_ClaimAmountExceedingLimitMessage</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Excess_Requested_Amount__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>0</rightValue>
-                    </criteria>
-                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <name>header</name>
@@ -194,6 +197,9 @@
                 <componentInstanceProperties>
                     <name>objAPIName</name>
                     <value>PartnerFundClaim</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>operator</name>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>standardFieldAlign</name>
@@ -334,7 +340,7 @@
                     <value>Payment_Breakdown</value>
                 </componentInstanceProperties>
                 <componentName>core_MDF_Custom_Related_List</componentName>
-                <identifier>c_core_MDF_Custom_Related_List</identifier>
+                <identifier>c_core_MDF_Custom_Related_List2</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -386,24 +392,12 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>additionalCriteria</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
                     <name>criteriaFieldAPIName</name>
                     <value>Core_MDF_Claim_Id__c</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedobjectApiName</name>
                     <value>PartnerFundClaim</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>restrictFieldVisiblityCriteriaFieldAPIName</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>restrictFieldVisiblityFieldAPIName</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>sharingFlag</name>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>strFields</name>
@@ -414,7 +408,7 @@
                     <value>Payment_Details</value>
                 </componentInstanceProperties>
                 <componentName>core_MDF_Custom_Related_List</componentName>
-                <identifier>c_core_MDF_Custom_Related_List2</identifier>
+                <identifier>c_core_MDF_Custom_Related_List</identifier>
             </componentInstance>
         </itemInstances>
         <name>detailTabContent</name>
@@ -446,6 +440,10 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>tabs</name>
                     <value>maintabs</value>
                 </componentInstanceProperties>
@@ -467,10 +465,23 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>recordId</name>
-                    <value>{recordId}</value>
                 </componentInstanceProperties>
                 <componentName>core_MDF_PICReviewDetails</componentName>
                 <identifier>c_core_MDF_PICReviewDetails</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>decorate</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;p&gt;&lt;span style=&quot;color: rgb(255, 0, 0);&quot;&gt;Note - Downloaded Document Name Could be smaller than Displayed Name in case the character&amp;nbsp;limit is exceeding system limits.&lt;/span&gt;&lt;/p&gt;</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:richText</componentName>
+                <identifier>flexipage_richText</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -535,14 +546,14 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>fieldsToMask</name>
-                    <value>Core_MDF_Claim_Submitter_Id__c;Core_MDF_Last_Reviewed_By_id__c</value>
+                    <value>Core_MDF_Last_Reviewed_By_id__c</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>internalUserName</name>
                     <value>Intel System User</value>
                 </componentInstanceProperties>
                 <componentName>core_MDF_HistoryComponent</componentName>
-                <identifier>core_MDF_HistoryComponent</identifier>
+                <identifier>c_core_MDF_HistoryComponent</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -817,6 +828,55 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedListApiName</name>
+                    <value>AttachedContentNotes</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListComponentOverride</name>
+                    <value>NONE</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>rowsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>force:relatedListSingleContainer</componentName>
+                <identifier>force_relatedListSingleContainer8</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_Internal_Claim_Case_Reviewer}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_PIC_Reviewer}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_Internal_IPA_Acct_Mgr}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>parentFieldApiName</name>
+                    <value>PartnerFundClaim.Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListApiName</name>
                     <value>Notes__r</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -863,6 +923,10 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>tabs</name>
                     <value>Facet-f742f2c9-4202-42e7-9504-16e60c27dddd</value>

@@ -84,8 +84,8 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Parent Fund Account</displayNameOverride>
-            <field>Core_MDF_Account_Id__c.Core_MDF_Parent_Fund_Account__c</field>
+            <displayNameOverride>Account (Company)</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_AccountCompany__c</field>
             <table>Core_MDF_Claim_Payment_Link__c</table>
         </columns>
         <columns>
@@ -168,12 +168,6 @@
             <checkedByDefault>false</checkedByDefault>
             <displayNameOverride>Claim Submitted by User</displayNameOverride>
             <field>Core_MDF_Claim_Id__c.Core_MDF_CreatedBy_Nm__c</field>
-            <table>Core_MDF_Claim_Payment_Link__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Claim Submitted by Company</displayNameOverride>
-            <field>Core_MDF_Claim_Id__c.Core_MDF_AccountCompany__c</field>
             <table>Core_MDF_Claim_Payment_Link__c</table>
         </columns>
         <columns>

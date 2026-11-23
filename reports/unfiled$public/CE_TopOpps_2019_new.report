@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
+        <field>Opportunity.Core_Technical_Owner_Manager__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Sales_Groups__c</field>
     </columns>
     <columns>
@@ -42,20 +45,36 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Volume__c</field>
     </columns>
-    <columns>
-        <field>Account.Core_Sub_Geo__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_Country__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Product_Segment__c</field>
-    </columns>
-    <columns>
-        <field>CREATED_DATE</field>
-    </columns>
     <filter>
-        <booleanFilter>1 AND (2 OR 15 OR ((12 OR 13 OR 14) AND 15) OR (3 AND 10) OR 4 OR 9 OR (5 AND 10 AND (6 OR 7 OR 8))) AND 11</booleanFilter>
+        <booleanFilter>(19 OR 14 OR 15 OR 16 OR 1 OR 2 OR 3 OR 4 OR 6 OR 7 OR (8 AND (9 OR 10 OR 11 OR 12 OR 13 OR 17))) AND 5 AND 18</booleanFilter>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Thomas Rank</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Petrus Booyens</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Joerg Matschke</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Sebastian Kapitza</value>
+        </criteriaItems>
         <criteriaItems>
             <column>AMOUNT</column>
             <columnToColumn>false</columnToColumn>
@@ -64,25 +83,18 @@
             <value>500000</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER_MANAGER</column>
+            <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Markus Gabler</value>
+            <value>Lola Claesson</value>
         </criteriaItems>
         <criteriaItems>
             <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>DJ Gianduso</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Vladimir Efimov</value>
+            <value>Janine Martinez Osorio</value>
         </criteriaItems>
         <criteriaItems>
             <column>FULL_NAME</column>
@@ -96,6 +108,13 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
+            <value>Diana Barth</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Technical_Owner__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
             <value>Lola Claesson</value>
         </criteriaItems>
         <criteriaItems>
@@ -103,14 +122,28 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>DJ Gianduso</value>
+            <value>Emmanuel Le Roux</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Technical_Owner__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Vladimir Efimov</value>
+            <value>Nicole Selinski</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Technical_Owner__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Janine Martinez Osorio</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Christian Stenzel</value>
         </criteriaItems>
         <criteriaItems>
             <column>FULL_NAME</column>
@@ -120,46 +153,32 @@
             <value>Domen Maraz</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Account.Core_Sub_Geo__c</column>
+            <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>NEUR</value>
+            <operator>equals</operator>
+            <value>Hans-Peter Rosinger</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Technical_Owner__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>DJ Gianduso</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_Country__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Adrian Sparrenborn</value>
+            <value>Denmark,Finland,United Kingdom,Ireland,Liechtenstein,Norway,Sweden,South Africa</value>
         </criteriaItems>
         <criteriaItems>
-            <column>ACCOUNT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Aselsan</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Intracom</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_NAME</column>
+            <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>JAGUAR LAND ROVER</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner_Manager__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Carlo Reinhart</value>
+            <value>DJ Gianduso</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -186,12 +205,12 @@
     <showDetails>true</showDetails>
     <showGrandTotal>false</showGrandTotal>
     <showSubTotals>false</showSubTotals>
-    <sortColumn>CREATED_DATE</sortColumn>
+    <sortColumn>Opportunity.Core_Technical_Owner_Manager__c</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2021-12-31</endDate>
+        <endDate>2020-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2020-01-01</startDate>
+        <startDate>2017-01-01</startDate>
     </timeFrameFilter>
 </Report>

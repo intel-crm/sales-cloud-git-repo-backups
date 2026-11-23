@@ -162,8 +162,8 @@
             <column>CLOSED_DATEONLY</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
-            <operator>greaterOrEqual</operator>
-            <value>LAST_N_MONTHS:2</value>
+            <operator>equals</operator>
+            <value>LAST_N_MONTHS:3</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_CaseType__c</column>
@@ -178,13 +178,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>CHD - Cable,CHD - Comp,CHD - Telco,CHD - Retail,CHD – Wifi</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CLOSED_DATEONLY</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>lessThan</operator>
-            <value>10/28/2020 12:00 AM</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

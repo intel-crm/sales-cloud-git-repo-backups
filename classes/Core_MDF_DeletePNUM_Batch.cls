@@ -37,11 +37,11 @@ public without sharing class Core_MDF_DeletePNUM_Batch implements Database.Batch
             String strQuery = '';
             strQuery = 'SELECT Id, Core_MDF_Account__c, Core_MDF_User__c, '
                         +'Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c, '
-                        +'Core_MDF_Account__r.Core_MDF_Channel_Program__c, Core_MDF_User__r.isActive '
+                        +'Core_MDF_Account__r.Core_MDF_Channel_Program__c, Core_MDF_User__r.isActive, Core_MDF_User__r.Partner_License_Reclaimed__c '
                         +'FROM Core_MDF_Partner_Node_User_Mapping__c '
                         +'WHERE Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c IN : ultimateAccIdSet AND '
                         +'Core_MDF_Account__r.Core_MDF_Channel_Program__c  IN : channelProgramIdSet AND '
-                        +'Core_MDF_User__r.isActive = TRUE AND '
+                        +'(Core_MDF_User__r.isActive = TRUE OR Core_MDF_User__r.Partner_License_Reclaimed__c = TRUE) AND'
                         +'Core_MDF_Active_Ind__c = true';
             return Database.getQueryLocator(strQuery);
             

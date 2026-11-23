@@ -144,7 +144,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>excludes</operator>
-            <value>NFV Other,Visual Cloud,NFV Workload</value>
+            <value>Analytics,NFV Other,Visual Cloud,NFV Workload</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Solution_Type__c</column>

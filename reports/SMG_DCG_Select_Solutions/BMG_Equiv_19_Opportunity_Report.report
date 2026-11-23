@@ -97,12 +97,7 @@
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OPPORTUNITY_ID</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <format>Tabular</format>
     <name>BMG Equiv &apos;19 - Opportunity Report</name>
     <params>
         <name>terr</name>

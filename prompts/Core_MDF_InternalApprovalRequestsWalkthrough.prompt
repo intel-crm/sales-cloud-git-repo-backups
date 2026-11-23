@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Internal Approval Requests Walkthrough</masterLabel>
+    <promptVersions>
+        <body>&lt;p&gt;Get here all pending requests in your queue and check the checkbox to select respective requests to approve/reject.&lt;/p&gt;</body>
+        <customApplication>Core_MDF_CoMarketing</customApplication>
+        <delayDays>1</delayDays>
+        <dismissButtonLabel>Dismiss</dismissButtonLabel>
+        <displayPosition>BottomCenter</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <isPublished>true</isPublished>
+        <masterLabel>Internal Approval Requests Walkthrough Step 1</masterLabel>
+        <publishedDate>2023-03-30</publishedDate>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-02-07</startDate>
+        <stepNumber>1</stepNumber>
+        <targetPageKey1>Core_MDF_Approval_Requests</targetPageKey1>
+        <targetPageType>standard__navItemPage</targetPageType>
+        <timesToDisplay>30</timesToDisplay>
+        <title>List of Pending Approval Requests</title>
+        <uiFormulaRule>
+            <criteria>
+                <leftValue>{!$Permission.CustomPermission.Core_MDF_ApprovalTabGuidance}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>TRUE</rightValue>
+            </criteria>
+        </uiFormulaRule>
+        <userAccess>SpecificPermissions</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+    <promptVersions>
+        <body>&lt;p&gt;Please check last refresh message before proceeding with approval , we recommend you to take latest refresh before you start.&lt;/p&gt;</body>
+        <customApplication>Core_MDF_CoMarketing</customApplication>
+        <dismissButtonLabel>Dismiss</dismissButtonLabel>
+        <displayPosition>TopCenter</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <image>RefreshButton</image>
+        <imageAltText>Refresh Button Image</imageAltText>
+        <imageLocation>Bottom</imageLocation>
+        <isPublished>false</isPublished>
+        <masterLabel>Internal Approval Requests Walkthrough Step 2</masterLabel>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <stepNumber>2</stepNumber>
+        <targetPageKey1>Core_MDF_Approval_Requests</targetPageKey1>
+        <targetPageType>standard__navItemPage</targetPageType>
+        <title>Refresh Button</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+    <promptVersions>
+        <body>&lt;p&gt;Use this option to search any record in your queue.&lt;/p&gt;</body>
+        <customApplication>Core_MDF_CoMarketing</customApplication>
+        <dismissButtonLabel>Dismiss</dismissButtonLabel>
+        <displayPosition>TopCenter</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <image>SearchOption</image>
+        <imageAltText>SearchOption</imageAltText>
+        <imageLocation>Bottom</imageLocation>
+        <isPublished>false</isPublished>
+        <masterLabel>Internal Approval Requests Walkthrough Step 3</masterLabel>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <stepNumber>3</stepNumber>
+        <targetPageKey1>Core_MDF_Approval_Requests</targetPageKey1>
+        <targetPageType>standard__navItemPage</targetPageType>
+        <title>Search a record to Approve/Reject</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+    <promptVersions>
+        <body>&lt;p&gt;If you have more than one requests to approve of any particular object , use this option to save your time. &lt;strong&gt;This option will get enabled only when you select more than one request to approve.&lt;/strong&gt;&lt;/p&gt;</body>
+        <customApplication>Core_MDF_CoMarketing</customApplication>
+        <dismissButtonLabel>Dismiss</dismissButtonLabel>
+        <displayPosition>MiddleCenter</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <image>BulkApproval</image>
+        <imageAltText>Bulk</imageAltText>
+        <imageLocation>Bottom</imageLocation>
+        <isPublished>false</isPublished>
+        <masterLabel>Internal Approval Requests Walkthrough Step 4</masterLabel>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <stepNumber>4</stepNumber>
+        <targetPageKey1>Core_MDF_Approval_Requests</targetPageKey1>
+        <targetPageType>standard__navItemPage</targetPageType>
+        <title>Approve / Reject in bulk</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+    <promptVersions>
+        <body>&lt;p&gt;To approve single request use these Approve or Reject Buttons.&lt;/p&gt;</body>
+        <customApplication>Core_MDF_CoMarketing</customApplication>
+        <dismissButtonLabel>Dismiss</dismissButtonLabel>
+        <displayPosition>MiddleRight</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <image>SingleApproveReject</image>
+        <imageAltText>Approve reject Button</imageAltText>
+        <imageLocation>Bottom</imageLocation>
+        <isPublished>false</isPublished>
+        <masterLabel>Internal Approval Requests Walkthrough Step 5</masterLabel>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <stepNumber>5</stepNumber>
+        <targetPageKey1>Core_MDF_Approval_Requests</targetPageKey1>
+        <targetPageType>standard__navItemPage</targetPageType>
+        <title>Approve / Reject Button</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+    <promptVersions>
+        <body>&lt;p&gt;If you need to add comments for multiple requests, You can now add comments once you click on pencil icon the pop up which will be shown after you click on approve / reject button for bulk requests.&lt;/p&gt;</body>
+        <customApplication>Core_MDF_CoMarketing</customApplication>
+        <dismissButtonLabel>Dismiss</dismissButtonLabel>
+        <displayPosition>BottomCenter</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <image>PencilIcon</image>
+        <imageAltText>Pencil Icon</imageAltText>
+        <imageLocation>Bottom</imageLocation>
+        <isPublished>false</isPublished>
+        <masterLabel>Internal Approval Requests Walkthrough Step 6</masterLabel>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <stepNumber>6</stepNumber>
+        <targetPageKey1>Core_MDF_Approval_Requests</targetPageKey1>
+        <targetPageType>standard__navItemPage</targetPageType>
+        <title>Use Pencil Icon to add Comments</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

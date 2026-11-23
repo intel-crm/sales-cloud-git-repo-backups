@@ -1,22 +1,32 @@
+/*
+* Class Name      : Core_MDF_ActivitySegmentMappingTest
+* Test Class Name : Core_MDF_ActivitySegmentMappingTest
+* Desc        :
+* 
+* Modification Log:
+* Weezer - Ramapriya R      24/07/2024            Modified getProductMappingForSegment to get products mapped to specific segment                  
+*/
+
 @isTest(seeAllData=false)
 public class Core_MDF_ActivitySegmentMappingTest {
     
     @TestSetup
     static void setUpData(){
-        Profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
-        List<User> usrList = new List<User>();
+       	Profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
+		List<User> usrList = new List<User>();
         // Creating User with utility class 
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
         usr.profileId = systemAdminProfile.Id;
         usr.LastName = 'SysAdmUser';
         usrList.add(usr);
-        
+          
         Database.insert(usrList);
         
         System.runAs(usr){
-            Profile ccpCoreAccessProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1];
+          	Profile ccpCoreAccessProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1];
             PermissionSet aacntMngrPS = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_CCF_Acct_Mgr' LIMIT 1];
-
+            // Highlight: Unused Local Variable - 14285
+            //PermissionSet rmfacntMngrPS = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_Retail_Account_Manager' LIMIT 1];
             User ccfaccntmngr = Core_MDF_CCP_TestDataUtility.createUser(false);
             ccfaccntmngr.Email = 'ccfaccntmngr@example.com';
             ccfaccntmngr.Profile = ccpCoreAccessProfile;
@@ -28,8 +38,8 @@ public class Core_MDF_ActivitySegmentMappingTest {
             List<Core_Trigger_Executions__c> transactions = new List<Core_Trigger_Executions__c>();
             transactions.addAll(Core_MDF_CCP_TestDataUtility.byPassFeature(new List<String>{'Bypass_Duplicate_Budget_Check','Bypass_GeoBased_Budget_Sharing','Bypass_MDF_Budget_Access','Bypass_MDF_Budget_Access_Validation','Bypass_MDF_Budget_Status_Validation','Bypass_ShareActivityWithUsers','Bypass_Activity_ApprovalProcess','Bypass_ShareActivityWithAccNodeGroup','ShareActivityWithInternalUsers_Bypass'}, true, false));
             Database.insert(transactions);
-            
-
+            // Highlight: Unused Local Variable - 14285
+            //List<Account> masterAccountList = new List<Account>();
             List<Account> accountList = new List<Account>();
             List<Account> toBeUpdated = new List<Account>();
             List<Campaign> campaignList = new List<Campaign>();
@@ -178,7 +188,11 @@ public class Core_MDF_ActivitySegmentMappingTest {
     static void testgetProductMappingForSegment(){
         
         Account acc = [Select Id From Account where Name = 'Test Account CCF'LIMIT 1];
-
+        // Highlight: Unused Local Variable - 14285
+        //PartnerFundRequest pfr = [Select Id, Title from PartnerFundRequest where title = 'Activity CCF' LIMIT 1];
+        //Account Masteracc = [Select Id From Account where Name = 'Test Account 1'LIMIT 1];
+        //Core_MDF_Activity_Segment_Mapping__c 
+        // = [Select Id from Core_MDF_Activity_Segment_Mapping__c where Core_MDF_Segment_Name_nm__c = 'Chipsets' LIMIT 1];
         Product2 prod=[Select Id,Name,Core_Product_Family__c from Product2 where Name='Intel® B360 Chipset'];
         User user = [SELECT Id,email FROM User WHERE email = 'ccfaccntmngr@example.com' limit 1];
         test.startTest();
@@ -187,7 +201,7 @@ public class Core_MDF_ActivitySegmentMappingTest {
             Core_MDF_ActivitySegmentMapping.getLabelValueMap();
             String ultimateAccId = Core_MDF_ActivitySegmentMapping.getUltimateAccountId(acc.Id);
             res1=Core_MDF_ActivitySegmentMapping.getProductMappingForSegment('Chipsets', ultimateAccId, 'Client CoMarketing Fund');
-
+            Core_MDF_ActivitySegmentMapping.getProductMappingForSegment('Chipsets');
         }
         test.stopTest();
         Assert.areEqual('Intel® B360 Chipset', res1[0].Name);
@@ -213,7 +227,7 @@ public class Core_MDF_ActivitySegmentMappingTest {
        PartnerFundRequest pfr = [Select Id, Title from PartnerFundRequest where title = 'Activity CCF' LIMIT 1];
        test.startTest();
        System.runAs(user){
-         seg=Core_MDF_ActivitySegmentMapping.returnSegments(pfr.Id);
+     	 seg=Core_MDF_ActivitySegmentMapping.returnSegments(pfr.Id);
          Core_MDF_ActivitySegmentMapping.getFieldsToDisplay('Client CoMarketing Fund', 'Podcast');
        }
        test.stopTest();
@@ -229,7 +243,7 @@ public class Core_MDF_ActivitySegmentMappingTest {
        List<Product2> res=new List<Product2>();
        test.startTest();
        System.runAs(user){
-        res=Core_MDF_ActivitySegmentMapping.getProductMappingForAccount(acc.Id,'Client CoMarketing Fund');
+		res=Core_MDF_ActivitySegmentMapping.getProductMappingForAccount(acc.Id,'Client CoMarketing Fund');
        } 
        test.stopTest();
        Assert.areEqual('Intel® B360 Chipset', res[0].Name);
@@ -244,14 +258,14 @@ public class Core_MDF_ActivitySegmentMappingTest {
         Product2 prod=[Select Id,Name from Product2 where Name='Intel® B360 Chipset'];
         User user = [SELECT Id,email FROM User WHERE email = 'ccfaccntmngr@example.com' limit 1];
         test.startTest();
-        String segmentString2 = '[{"Core_MDF_Segment_Name_nm":"Chipsets","segmentId":"'+asm.Id+'","productIdSet":["'+prod.Id+'"],"Core_MDF_Minimum_Forecast_Volume_nbr":"333","Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr":"22", "Core_MDF_Maximum_Cost_of_Bundle_nbr":"222","Core_MDF_Maximum_Bundled_Volume_nbr":"55","Core_MDF_Minimum_Forecast_Volume_nbr__c":"1", "Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c":"23","Core_MDF_SPIF_Notes_internal_only_txt":"333","Core_MDF_Estimated_Share_of_SPIF_amt":"11"}]';   
+        String segmentString2 = '[{"Core_MDF_Segment_Name_nm":"Chipsets","segmentId":"'+asm.Id+'","productIdSet":["'+prod.Id+'"],"Core_MDF_Minimum_Forecast_Volume_nbr":"333","Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr":"22", "Core_MDF_Maximum_Cost_of_Bundle_nbr":"222","Core_MDF_Maximum_Bundled_Volume_nbr":"55","Core_MDF_Minimum_Forecast_Volume_nbr__c":"1", "Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c":"23","Core_MDF_SPIF_Notes_internal_only_txt":"333","Core_MDF_Estimated_Share_of_SPIF_amt":"11"}]';	
          System.runAs(user){
-             wrapper=Core_MDF_ActivitySegmentMapping.getSegmentForActivity(pfr.Id);
+        	 wrapper=Core_MDF_ActivitySegmentMapping.getSegmentForActivity(pfr.Id);
              Core_MDF_ActivitySegmentMapping.createUpdateSegmentAndProductMappingRecords(pfr.Id,segmentString2);
          }
         test.stopTest();
         List<Core_MDF_Segment_Product_Mapping__c> segmentList=wrapper.productList;
-        Assert.areEqual('Intel® B360 Chipset', segmentList[0].Core_MDF_Product_Name_txt__c);
+       	Assert.areEqual('Intel® B360 Chipset', segmentList[0].Core_MDF_Product_Name_txt__c);
        
     }
     
@@ -303,7 +317,7 @@ public class Core_MDF_ActivitySegmentMappingTest {
         test.startTest();
         String segmentString = '[{"Core_MDF_Segment_Name_nm":"Chipsets","productIdSet":["'+prod.Id+'"],"Core_MDF_Minimum_Forecast_Volume_nbr":"333", "Core_MDF_Maximum_Cost_of_Bundle_nbr":"222","Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr":"22","Core_MDF_Maximum_Bundled_Volume_nbr":"55","Core_MDF_Minimum_Forecast_Volume_nbr__c":"1", "Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c":"23","Core_MDF_SPIF_Notes_internal_only_txt":"333","Core_MDF_Estimated_Share_of_SPIF_amt":"11"}]';
          System.runAs(user){
-
+       		productList=Core_MDF_ActivitySegmentMapping.getProductMappingForSegment('Processors');
             Core_MDF_ActivitySegmentMapping.createUpdateSegmentAndProductMappingRecords(pfr.Id,segmentString);
             recTypeLabel = Core_MDF_ActivitySegmentMapping.getRecordTypeLabelByName('Core_MDF_Client_CoMarketing_Fund');
          }

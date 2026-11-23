@@ -12,30 +12,26 @@ Modification Log :
 * ----------------------------------------------------------------------------
 * Dave Hood                 11/17/2016              Original version
 *****************************************************************************************************************************************/
-public  without sharing class Core_IntegrationInboundMessageParsing {
+public class Core_IntegrationInboundMessageParsing {
 
     public static Core_IntegrationUtility.ERPM_Person parsePerson(String messageXml) {
 
         Core_IntegrationUtility.ERPM_Person p = new Core_IntegrationUtility.ERPM_Person(); // Person to return
 
         Dom.Document doc = new Dom.Document();
-        //Kushal - Please remove below line
-        
         doc.load(messageXml);
         Dom.XmlNode personXml = doc.getRootElement();
 
         p.inactIndicator = personXml.getAttributeValue('inact-indicator', null);
         p.isDeleteIndicator = personXml.getAttributeValue('is-delete-indicator', null);
         
-        
+        System.debug('$$$$$ ' + getValue(personXml, 'publish-timestamp'));
         p.publishTimestamp = null;
         if (getValue(personXml, 'publish-timestamp') != '') {
             try {
                 p.publishTimestamp = Core_IntegrationUtility.convertERPMDatetimeStringToDatetime(getValue(personXml, 'publish-timestamp'));
             }
             catch (Exception ex) {
-                Core_Log_Entry__c excepLog = new Core_Log_Entry__c(Core_Message__c = ex.getMessage(), Core_Origin__c = 'parsePerson', Core_Project__c = 'Core_IntegrationInboundMessageParsing' , Core_Details__c = 'Exception for publish-timestamp', Core_Severity__c = 'info', Core_When__c = System.Now());     
-                insert excepLog;
             }
         }
 
@@ -48,8 +44,9 @@ public  without sharing class Core_IntegrationInboundMessageParsing {
 
         if (personAccountsXml != null) {
             for (Dom.XmlNode childNode : personAccountsXml.getChildElements()) {
-                if (childNode.getName() == 'person-account' && childNode.getAttributeValue('inact-indicator', null) == 'N') {
+                if (childNode.getName() == 'person-account') {
                     // We only care about active account relationships
+                    if (childNode.getAttributeValue('inact-indicator', null) == 'N')
                         p.personAccounts.add(parsePersonAccount(childNode));
                 }
             }
@@ -68,100 +65,27 @@ public  without sharing class Core_IntegrationInboundMessageParsing {
                     p.personEngagements.add(parsePersonEngagement(childNode));
             }
         }
-  // Person attributes
-         Dom.XmlNode personAttributesXml = personXml.getChildElement('person-attributes', null);
-         if (personAttributesXml != null) {
-            for (Dom.XmlNode childNode : personAttributesXml.getChildElements()) {
-                if (childNode.getName() == 'attribute'){
-                    
-                    for(Dom.XmlNode Node :childNode.getChildElements()){
-                        
-                        if(Node.getAttributeValue('profession-code', '')<>null){
-                        String ProfessionVal=Node.getAttributeValue('profession-code', '');
-                        p.Profession.Professioncode = String.ValueOf(ProfessionVal);
-                        }
-                    }
-                    
-                    
-                }
-            }
-        }
+
         // <person-physical-addresses>
         Dom.XmlNode personPhysicalAddrsXml = personXml.getChildElement('person-physical-addresses', null);
         parsePersonPhysicalAddresses(p, personPhysicalAddrsXml);
-        
-        // ----------- #REGION :: eRPM Code Changes :: START ------------- //
-        // <Get the eRPM Person Subscription>  
-        p.eRPM_Subscriptions = Get_eRPMSubscriptions(personXml.getChildElement('person-subscription', null));
-        p.changeAgentId = getValue(personXml, 'change-agt-id');
-        // ----------- #REGION :: eRPM Code Changes :: END   ------------- //
-        
+
         return p;
     }
-   
+
     private static void parsePersonPersonInfo(Core_IntegrationUtility.ERPM_Person p, Dom.XmlNode personInfoXml) {
 
         p.erpmPersonId     = getValue(personInfoXml, 'person-id');
         p.enterpriseId     = getValue(personInfoXml, 'enterprise-id');
         p.identityStatus   = getValue(personInfoXml, 'identity-status');
-        p.isIdentityDeleted     = getValue(personInfoXml, 'person-is-identity-deleted');
-        p.deleteStatusReason     = getValue(personInfoXml, 'person-delete-status-reason');
         p.loginId          = getValue(personInfoXml, 'external-login-id');
         p.title            = getValue(personInfoXml, 'person-title');
         p.firstName        = getValue(personInfoXml, 'person-given-name');
         p.lastName         = getValue(personInfoXml, 'person-family-name');
         p.erpmLanguageCode = getValue(personInfoXml, 'language-code');
         p.jobFunctionCode  = getValue(personInfoXml, 'occupation-title-code');
-        p.externalUserState= getValue(personInfoXml, 'externaluserstate');
-        p.externalStateChange= getValue(personInfoXml, 'externaluserstatechangedatetime');
         p.email            = getValue(personInfoXml, 'primary-email-address').toLowerCase(); // Zay 3-27-2017 Added to address ERPM Duplicate problems ;
-        //p.doNotContact     = getValue(personInfoXml, 'all-intel-no-contact-dtm');//Gireesh:US942207-using below code
-        
-        
-
-      /*  if (getValue(personInfoXml, 'externaluserstatechangedatetime') != '') {
-            try {
-                p.externalStateChange = Core_IntegrationUtility.convertAZUREDatetimeStringToDatetime(getValue(personInfoXml, 'externaluserstatechangedatetime'));
-            }
-            catch (Exception ex) {
-            }
-        }*/
-        if (getValue(personInfoXml, 'all-intel-no-contact-dtm') != '') {
-            try {
-                p.marketingDoNotContactDate = Core_IntegrationUtility.convertERPMDatetimeStringToDatetime(getValue(personInfoXml, 'all-intel-no-contact-dtm'));//Gireesh:US959755
-            }
-            catch (Exception ex) {
-                Core_Log_Entry__c logentry = new Core_Log_Entry__c(Core_Message__c = ex.getMessage(), Core_Origin__c = 'parsePersonPersonInfo', Core_Project__c = 'Core_IntegrationInboundMessageParsing' , Core_Details__c = 'Exception for marketingDoNotContactDate', Core_Severity__c = 'info', Core_When__c = System.Now());     
-                insert logentry;
-            }
-        }
-        
-        if (getValue(personInfoXml, 'sales-do-not-contact-dtm') != '') {
-            try {
-                p.salesDoNotContactDate = Core_IntegrationUtility.convertERPMDatetimeStringToDatetime(getValue(personInfoXml, 'sales-do-not-contact-dtm'));//Gireesh:US942207
-            }
-            catch (Exception ex) {
-                Core_Log_Entry__c logentrydetails = new Core_Log_Entry__c(Core_Message__c = ex.getMessage(), Core_Origin__c = 'parsePersonPersonInfo', Core_Project__c = 'Core_IntegrationInboundMessageParsing' , Core_Details__c = 'Exception for salesDoNotContactDate', Core_Severity__c = 'info', Core_When__c = System.Now());     
-                insert logentrydetails;
-            }
-        }
-        
-    p.englishFirstName = getValue(personInfoXml, 'person-english-given-name');
-        p.englishLastName  = getValue(personInfoXml, 'person-english-family-name');
-        if (getValue(personInfoXml, 'sales-do-not-contact-dtm') != '') {
-            try {
-                p.salesDoNotContactDate = Core_IntegrationUtility.convertERPMDatetimeStringToDatetime(getValue(personInfoXml, 'sales-do-not-contact-dtm'));//Gireesh:US942207
-            }
-            catch (Exception ex) {
-                Core_Log_Entry__c exceptionLog = new Core_Log_Entry__c(Core_Message__c = ex.getMessage(), Core_Origin__c = 'parsePersonPersonInfo', Core_Project__c = 'Core_IntegrationInboundMessageParsing' , Core_Details__c = 'Exception for salesDoNotContactDateAndTime', Core_Severity__c = 'info', Core_When__c = System.Now());     
-                insert exceptionLog;
-            }
-        }        
-        // ----------- #REGION :: eRPM Code Changes :: START ------------- //
-        //eRPM - Store EV date and Intel Last Login date
-        p.emailVerificationDate = getValue(personInfoXml, 'email-valid-status-dtm');
-        p.lastLoginDate    = getValue(personInfoXml, 'last-login-dtm');
-        // ----------- #REGION :: eRPM Code Changes :: END ------------- //
+        p.doNotContact     = getValue(personInfoXml, 'all-intel-no-contact-dtm');
     }
 
     private static void parsePersonElectronicAddresses(Core_IntegrationUtility.ERPM_Person p, Dom.XmlNode personElectronicAddrsXml) {
@@ -169,17 +93,17 @@ public  without sharing class Core_IntegrationInboundMessageParsing {
         // Look for specific electronic addresses we need, and store them
         if (personElectronicAddrsXml != null) {
             for (Dom.XmlNode childNode : personElectronicAddrsXml.getChildElements()) {
+                if ((childNode.getName() == 'person-electronic-address') &&
+                    (childNode.getAttributeValue('isnull-indicator', null) != 'Y')) {
 
                     // This is the code that needs to be updated to pull from the child element instead
-                    if ((childNode.getName() == 'person-electronic-address') &&
-                                                                                      (childNode.getAttributeValue('isnull-indicator', null) != 'Y') && childNode.getAttributeValue('electronic-addr-type-code', null) == 'PHONE')
+                    if (childNode.getAttributeValue('electronic-addr-type-code', null) == 'PHONE')
                         p.phone = childNode.getChildElement('electronic-address', null).getText();
-                    else if ((childNode.getName() == 'person-electronic-address') &&
-                                                                                                    (childNode.getAttributeValue('isnull-indicator', null) != 'Y') && childNode.getAttributeValue('electronic-addr-type-code', null) == 'MOB')
+                    else if (childNode.getAttributeValue('electronic-addr-type-code', null) == 'MOB')
                         p.mobilePhone = childNode.getChildElement('electronic-address', null).getText();
-                    else if ((childNode.getName() == 'person-electronic-address') &&
-                                                                                                    (childNode.getAttributeValue('isnull-indicator', null) != 'Y') && childNode.getAttributeValue('electronic-addr-type-code', null) == 'FAX')
+                    else if (childNode.getAttributeValue('electronic-addr-type-code', null) == 'FAX')
                         p.fax = childNode.getChildElement('electronic-address', null).getText();
+                }
             }
         }
     }
@@ -198,6 +122,8 @@ public  without sharing class Core_IntegrationInboundMessageParsing {
                         String currentValue = (addrElement.getText() != null) ? addrElement.getText() : '';
 
                         if (addrElement.getName() == 'address-line1-text')
+                            //System.debug('##### at address-line1-text');
+                            //System.debug('##### addrElement.getText(): ' + addrElement.getText());
                             p.mailingStreet1 = currentValue;
                         else if (addrElement.getName() == 'address-line2-text')
                             p.mailingStreet2 = currentValue;
@@ -228,9 +154,7 @@ public  without sharing class Core_IntegrationInboundMessageParsing {
 
         pa.erpmAccountNumber = getValue(personAccountXml, 'account-number');
         pa.cimId = getValue(personAccountXml, 'cim-id');
-        pa.acctSalesCloudID = getValue(personAccountXml, 'salescloud-id');
         pa.accountName = getValue(personAccountXml, 'account-name');
-        pa.erpmDedupGroupCode = getValue(personAccountXml, 'engg_dedup_grp_cd');
         /*
         Dom.XmlNode personAccountRelationXml = personAccountXml.getChildElement('person-account-relation', null);
         if (personAccountRelationXml != null) {
@@ -243,16 +167,13 @@ public  without sharing class Core_IntegrationInboundMessageParsing {
         if (personAccountChildrenXml != null) {
             for (Dom.XmlNode childNode : personAccountChildrenXml) {
                 if (childNode.getName() == 'person-account-relation') {
-                    //if (childNode.getAttributeValue('inact-indicator', null) == 'N') {
+                    if (childNode.getAttributeValue('inact-indicator', null) == 'N') {
                         Core_IntegrationUtility.ERPM_Person_Account_Relation relation = new Core_IntegrationUtility.ERPM_Person_Account_Relation();
                         relation.engagementCode = childNode.getAttributeValue('engagement-code', null);
                         relation.relationCode = getValue(childNode, 'relation-code');
                         relation.relationName = getValue(childNode, 'relation-name');
-                        //Harshit added : below line to parse value for inactive-indicator : as part of US270245
-                        //relation.inactiveIndicator = getValue(childNode, 'inact-indicator');
-                        relation.inactiveIndicator = childNode.getAttributeValue('inact-indicator', null) =='N' ? false : true;
                         pa.personAccountRelations.add(relation);
-                   // }
+                    }
                 }
             }
         }
@@ -321,7 +242,7 @@ public  without sharing class Core_IntegrationInboundMessageParsing {
         pe.engagementName = getValue(personEnggXml, 'engg-name');
         pe.engagementStatusCode = getValue(personEnggXml, 'engg-status-code');
         pe.effectiveTierCode = getValue(personEnggXml, 'effective-tier-code');
-        pe.effEndEngagmentDate=getValue(personEnggXml, 'effective-end-dtm');
+
         return pe;
     }
 
@@ -339,12 +260,11 @@ public  without sharing class Core_IntegrationInboundMessageParsing {
         return '';
     }
 
-    /*public static Core_IntegrationUtility.ERPM_Account parseAccount(String messageXml) {
+    public static Core_IntegrationUtility.ERPM_Account parseAccount(String messageXml) {
 
         Core_IntegrationUtility.ERPM_Account a = new Core_IntegrationUtility.ERPM_Account(); // Account to return
 
         Dom.Document doc = new Dom.Document();
-        //Kushal - Please remove below line
         doc.load(messageXml);
         Dom.XmlNode accountXml = doc.getRootElement();
 
@@ -366,34 +286,22 @@ public  without sharing class Core_IntegrationInboundMessageParsing {
 
         // <engagements>
         Dom.XmlNode engagementsXml = accountXml.getChildElement('engagements', null);
+
         if (engagementsXml != null) {
             for (Dom.XmlNode childNode : engagementsXml.getChildElements()) {
                 if (childNode.getName() == 'engagement')
                     a.accountEngagements.add(parseAccountEngagement(childNode));
             }
         }
-        
-        // ----------- #REGION :: eRPM Code Changes :: START   ------------- //        
-        // <Get the List of eRPM Account Profile Responses> 
-        a.eRPM_Profile_Responses = Get_eRPMProfileResponses(accountXml.getChildElement('account-responses', null));
-        a.eRPM_Benefits=Get_eRPMBenefits(a, accountXml.getChildElement('account-benefits', null));
-        a.secondaryAddress=parseERPMAccountPhysicalAddresses(a,accountXml.getChildElement('physical-addresses', null));
-        
-        // ----------- #REGION :: eRPM Code Changes :: END   ------------- //
-        return a;
-    }*/
 
-    /*private static void parseAccountAccountInfo(Core_IntegrationUtility.ERPM_Account a, Dom.XmlNode accountInfoXml) {
+        return a;
+    }
+
+    private static void parseAccountAccountInfo(Core_IntegrationUtility.ERPM_Account a, Dom.XmlNode accountInfoXml) {
 
         a.erpmAccountNumber = getValue(accountInfoXml, 'account-number');
         a.name = getValue(accountInfoXml, 'account-name');
         a.enggDedupGroupCode = getValue(accountInfoXml, 'engg-dedup-group-code');
-        // eRPM - Store Number Of employees 
-        a.employees = getValue(accountInfoXml, 'employee-size-code');
-        a.employeeGrp = getValue(accountInfoXml, 'employee-size-grp-code');
-        if(a.employeeGrp != null && a.employeeGrp.Contains(Label.Employee_Size_Code_1_9))
-            a.employeeGrp = '1-9';
-        a.PrimaryAddrType = getValue(accountInfoXml, 'primary-addr-type-code'); // Added to figure out the type of address for IPA engg(ITP,ISA,CSPx2) and B2B enggs.
 
         Dom.XmlNode accountNamesXml = accountInfoXml.getChildElement('account-names', null);
 
@@ -404,57 +312,48 @@ public  without sharing class Core_IntegrationInboundMessageParsing {
                     a.legalName = childNode.getText();
             }
         }
-    }*/
+    }
 
-    /*private static void parseAccountExternalSystems(Core_IntegrationUtility.ERPM_Account a, Dom.XmlNode externalSystemsXml) {
+    private static void parseAccountExternalSystems(Core_IntegrationUtility.ERPM_Account a, Dom.XmlNode externalSystemsXml) {
 
         if (externalSystemsXml != null) {
             for (Dom.XmlNode childNode : externalSystemsXml.getChildElements()) {
-                //if (childNode.getName() == 'account-external-system') {
-                    if ((childNode.getName() == 'account-external-system') && childNode.getAttributeValue('system-name', null) == 'SLSCLDID' &&
-                       childNode.getAttributeValue('inact-indicator', null) == 'N' ) {
+                if (childNode.getName() == 'account-external-system') {
+                    if (childNode.getAttributeValue('system-name', null) == 'SLSCLDID') {
                         a.sfdcId = childNode.getText();
                     }
-                    else if ((childNode.getName() == 'account-external-system') && childNode.getAttributeValue('system-name', null) == 'CIM') {
+                    else if (childNode.getAttributeValue('system-name', null) == 'CIM') {
                         a.cimId = childNode.getText();
                     }
-                //}
+                }
             }
         }
-    }*/
+    }
 
-    /*private static void parseAccountElectronicAddresses(Core_IntegrationUtility.ERPM_Account a, Dom.XmlNode electronicAddrsXml) {
+    private static void parseAccountElectronicAddresses(Core_IntegrationUtility.ERPM_Account a, Dom.XmlNode electronicAddrsXml) {
 
         if (electronicAddrsXml != null) {
             for (Dom.XmlNode childNode : electronicAddrsXml.getChildElements()) {
-                //if ((childNode.getName() == 'electronic-address') &&
-                  //  (childNode.getAttributeValue('isnull-indicator', null) != 'Y') && (childNode.getAttributeValue('inact-indicator', null) != 'Y')) {
+                if ((childNode.getName() == 'electronic-address') &&
+                    (childNode.getAttributeValue('isnull-indicator', null) != 'Y')) {
 
-                    if (((childNode.getName() == 'electronic-address') &&
-                                                                                      (childNode.getAttributeValue('isnull-indicator', null) != 'Y') && (childNode.getAttributeValue('inact-indicator', null) != 'Y')) && childNode.getAttributeValue('electronic-type-code', null) == 'PHONE' && childNode.getAttributeValue('location-type-code', null) == 'BUS')
+                    if (childNode.getAttributeValue('electronic-type-code', null) == 'PHONE')
                         a.phone = childNode.getText();
-                    else if (((childNode.getName() == 'electronic-address') &&
-                                                                                      (childNode.getAttributeValue('isnull-indicator', null) != 'Y') && (childNode.getAttributeValue('inact-indicator', null) != 'Y')) && childNode.getAttributeValue('electronic-type-code', null) == 'FAX' && childNode.getAttributeValue('location-type-code', null) == 'BUS')
+                    else if (childNode.getAttributeValue('electronic-type-code', null) == 'FAX')
                         a.fax = childNode.getText();
-                    //eRPM - Get URL field value and assign it to Account object
-                    else if (((childNode.getName() == 'electronic-address') &&
-                                                                                      (childNode.getAttributeValue('isnull-indicator', null) != 'Y') && (childNode.getAttributeValue('inact-indicator', null) != 'Y')) && childNode.getAttributeValue('electronic-type-code', null) == 'URL' && childNode.getAttributeValue('location-type-code', null) == 'BUS')
-                        a.website = childNode.getText();
-                //}
+                }
             }
         }
-    }*/
+    }
 
-    /*private static void parseAccountPhysicalAddresses(Core_IntegrationUtility.ERPM_Account a, Dom.XmlNode physicalAddrsXml) {
+    private static void parseAccountPhysicalAddresses(Core_IntegrationUtility.ERPM_Account a, Dom.XmlNode physicalAddrsXml) {
+
         if (physicalAddrsXml != null) {
             for (Dom.XmlNode childNode : physicalAddrsXml.getChildElements()) {
-                
-                // a.PrimaryAddrType => Added to figure out the type of address for IPA engg(ITP,ISA,CSPx2) and B2B enggs.
-
                 if ((childNode.getName() == 'physical-address') &&
-                    (childNode.getAttributeValue('address-usg-type-code', null) == a.PrimaryAddrType) &&
+                    (childNode.getAttributeValue('address-usg-type-code', null) == 'PHY') &&
                     (childNode.getAttributeValue('isnull-indicator', null) != 'Y')) {
-                        
+
                     for (Dom.XmlNode addrElement : childNode.getChildElements()) {
 
                         String currentValue = (addrElement.getText() != null) ? addrElement.getText() : '';
@@ -482,11 +381,9 @@ public  without sharing class Core_IntegrationInboundMessageParsing {
                 }
             }
         }
-    }*/
-    
-    
-   
-    /*private static Core_IntegrationUtility.ERPM_Engagement parseAccountEngagement(Dom.XmlNode accountEnggXml) {
+    }
+
+    private static Core_IntegrationUtility.ERPM_Engagement parseAccountEngagement(Dom.XmlNode accountEnggXml) {
 
         Core_IntegrationUtility.ERPM_Engagement engg = new Core_IntegrationUtility.ERPM_Engagement();
 
@@ -494,12 +391,9 @@ public  without sharing class Core_IntegrationInboundMessageParsing {
         engg.engagementName = getValue(accountEnggXml, 'engg-name');
         engg.engagementStatusCode = getValue(accountEnggXml, 'engg-status-code');
         engg.effectiveTierCode = getValue(accountEnggXml, 'effective-tier-code');
-        //Harshit added : below code to parse value for tier code : as part of US270161
-        engg.tierCode = getValue(accountEnggXml, 'tier-code');
-        engg.engagementStatusReasonCode = getValue(accountEnggXml,'engg-status-reason-code');
-        //engg.statusCode=getValue(accountEnggXml, 'engg-status-code');
+
         return engg;
-    }*/
+    }
 
     public static Core_IntegrationUtility.ERPM_Blackbox_Response parseBlackboxResponse(String jsonMessage) {
         
@@ -515,130 +409,5 @@ public  without sharing class Core_IntegrationInboundMessageParsing {
             JSON.deserialize(jsonMessage, Core_IntegrationUtility.AGS_Response.class);
 
         return agsResponse;
-    }    
-    
-    // ----------- #REGION :: eRPM Code Changes :: START ------------- //
-    
-    //Get the List of erpm person subscrition from the eRPM Out Bound Message
-    //Just Read the message from the published XML and parse thru the person XML 
-    //return the list of subscription
-    private static List<Core_IntegrationUtility.eRPM_Subscription> Get_eRPMSubscriptions(Dom.XmlNode eRPM_PersonSubscriptions_XML)
-    {
-        if(eRPM_PersonSubscriptions_XML == null)
-            return null;
-        
-        List<Core_IntegrationUtility.eRPM_Subscription> eRPM_Subscriptions = new List<Core_IntegrationUtility.eRPM_Subscription>();
-        
-        for (Dom.XmlNode childNode : eRPM_PersonSubscriptions_XML.getChildElements()) {
-            if (childNode.getName() == 'subscription')
-            {  
-                Core_IntegrationUtility.eRPM_Subscription subscription = new Core_IntegrationUtility.eRPM_Subscription();
-                subscription.eRPM_EngagementCode = childNode.getAttributeValue('engg-code', null);       
-                subscription.eRPM_SubscriptionCode = getValue(childNode, 'subscription-code');                       
-                subscription.eRPM_SubscriptionStatusCode = getValue(childNode, 'subscription-statuscode') == 'USER-SUB' ?
-                                                'Active' : 'Inactive';
-                eRPM_Subscriptions.add(subscription);
-            }
-        }        
-        return eRPM_Subscriptions;
     }
-    
-    //Read the message from the published XML and parse thru the Account XML , Get the erpm extended attributes for the given account
-    //return the list of profile responses/ extended attributes
-    /*private static List<Core_IntegrationUtility.eRPM_Profile_Response> Get_eRPMProfileResponses(Dom.XmlNode eRPM_ProfileResponses_XML)
-    {
-        if(eRPM_ProfileResponses_XML == null)
-            return null;
-        
-        List<Core_IntegrationUtility.eRPM_Profile_Response> eRPM_Profile_Responses = new List<Core_IntegrationUtility.eRPM_Profile_Response>();
-        
-        for (Dom.XmlNode childNode : eRPM_ProfileResponses_XML.getChildElements()) {
-            if (childNode.getName() == 'response')
-            {
-                Core_IntegrationUtility.eRPM_Profile_Response profResp = new Core_IntegrationUtility.eRPM_Profile_Response();                
-                profResp.eRPM_ResponseCode = getValue(childNode, 'answer-code');                        
-                profResp.eRPM_QuestionCode = getValue(childNode, 'question-code');
-                profResp.eRPM_ResponseText = getValue(childNode, 'response-value-text');
-                eRPM_Profile_Responses.add(profResp);
-            }
-        }        
-        return eRPM_Profile_Responses;
-    }*/
-    
-    //Read the message from the published XML and parse thru the Account XML , Get the erpm Benefit details for the given account
-    //Method will check for allowed benefits for given engagements.
-    //// Added by Manju on 07/09/2019
-    /*private static List<Core_IntegrationUtility.eRPM_Benefit> Get_eRPMBenefits(Core_IntegrationUtility.ERPM_Account acct,Dom.XmlNode eRPM_Benefits_XML)
-    {
-        
-        List<Core_IntegrationUtility.eRPM_Benefit> eRPMBenefits = new List<Core_IntegrationUtility.eRPM_Benefit>();
-        if(eRPM_Benefits_XML!=null){
-            //Get the allowed Benefits from metadata for mapping type benefit
-            List<ERPM_SF_MAPPING_SETTING__mdt> erpmSFBenenfitMapSetting=[SELECT SF_KeyValue__c,eRPM_EngagementCodes__c FROM ERPM_SF_MAPPING_SETTING__mdt 
-                                                    WHERE Mappting_Type__c =:Label.PRM_Benefit];
-      
-            Map<string,List<string>> benMap=new Map<string,List<string>>();
-            for(ERPM_SF_MAPPING_SETTING__mdt benSet : erpmSFBenenfitMapSetting)
-            {
-                benMap.put(benSet.eRPM_EngagementCodes__c, benSet.SF_KeyValue__c.split(',')); 
-            }
-            for (Dom.XmlNode childNode : eRPM_Benefits_XML.getChildElements()) {
-                if (childNode.getName() == 'benefit')
-                {
-                    Core_IntegrationUtility.eRPM_Benefit benefit= new Core_IntegrationUtility.eRPM_Benefit();
-                    benefit.eRPM_BenefitCode = getValue(childNode, 'benefit-code');                       
-                    benefit.eRPM_Benefit_InactiveReason = getValue(childNode, 'benefit-note-txt');
-                    benefit.eRPM_Benefit_InactiveReasonCode = getValue(childNode, 'benefit-inact-reason-code');
-                    benefit.eRPM_BenefitEngagementCode = getValue(childNode, 'engagement-code');
-                    benefit.eRPM_BenefitInactiveIndicator = getValue(childNode, 'inact-ind');
-                    if(benefit.eRPM_BenefitInactiveIndicator != 'Y')
-                        eRPMBenefits.add(benefit);                
-                    if(benMap.Get(benefit.eRPM_BenefitEngagementCode)!=null && !acct.eRPM_isITPBenefitCheck && (benefit.eRPM_BenefitInactiveIndicator.equals('N')) && (benMap.Get(benefit.eRPM_BenefitEngagementCode).contains(benefit.eRPM_BenefitCode))) {
-                        //check for all allowed benefits                        
-                        acct.eRPM_isITPBenefitCheck = true;                        
-                    }
-                }        
-            }            
-           
-        }
-        return eRPMBenefits;
-    }*/
-    
-    /*private static Core_IntegrationUtility.SecondaryAddress parseERPMAccountPhysicalAddresses(Core_IntegrationUtility.ERPM_Account a, Dom.XmlNode physicalAddrsXml) {
-        
-        Core_IntegrationUtility.SecondaryAddress secondaryAddress= new Core_IntegrationUtility.SecondaryAddress();
-        if (physicalAddrsXml != null) {           
-            List<string> enggCodes= new List<string>();   
-            //Get account engagements
-            for(Core_IntegrationUtility.ERPM_Engagement engg :a.accountEngagements)
-            {
-                enggCodes.Add(engg.engagementCode);
-            }
-            //Get Metadata only for respective engagements.         
-            Set<string> eRPMAddressusagetype=new Set<string>();            
-            for(ERPM_SF_MAPPING_SETTING__mdt addSetting :[SELECT eRPM_KeyValue__c FROM ERPM_SF_MAPPING_SETTING__mdt 
-                                                          WHERE Mappting_Type__c =: Label.ERPM_Address_Mapping_Type and eRPM_EngagementCodes__c IN :enggCodes]){                
-                                                              eRPMAddressUsageType.add(addSetting.eRPM_KeyValue__c);
-                                                          }
-            
-            for (Dom.XmlNode childNode : physicalAddrsXml.getChildElements()) {  
-                if ((childNode.getName() == 'physical-address') && (eRPMAddressUsageType.Contains(childNode.getAttributeValue('address-usg-type-code', null))) &&
-                    (childNode.getAttributeValue('isnull-indicator', null) == 'N')) {                     
-                        secondaryAddress.secondaryStreet1 = getValue(childNode, 'address-line1-text');
-                        secondaryAddress.secondaryStreet2 = getValue(childNode, 'address-line2-text');
-                        secondaryAddress.secondaryStreet3 = getValue(childNode, 'address-line3-text');
-                        secondaryAddress.secondaryStreet4 = getValue(childNode, 'address-line4-text');
-                        secondaryAddress.secondaryCity = getValue(childNode, 'city-name');
-                        secondaryAddress.secondaryState = getValue(childNode, 'state-code');
-                        secondaryAddress.secondaryPostalCode = getValue(childNode, 'postal-code');
-                        secondaryAddress.secondaryCountry = getValue(childNode, 'iso-country-code');
-                        return secondaryAddress;
-                    }
-                
-            }
-        }
-        return secondaryAddress;
-    }*/
-   
-    // ----------- #REGION :: eRPM Code Changes :: END   ------------- //
 }

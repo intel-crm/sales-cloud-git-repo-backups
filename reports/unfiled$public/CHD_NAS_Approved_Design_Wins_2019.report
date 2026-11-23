@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>ACCOUNT_NAME</field>
-    </columns>
-    <columns>
-        <field>OPPORTUNITY_NAME</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Approved_Date__c</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>AMOUNT</field>
     </columns>
@@ -58,6 +49,9 @@
     <columns>
         <field>CREATED_DATE</field>
     </columns>
+    <columns>
+        <field>Opportunity.Core_Approved_Date__c</field>
+    </columns>
     <filter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -74,6 +68,13 @@
             <value>Production Cancelled,Lost,Cancelled</value>
         </criteriaItems>
         <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Products__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>2S,E3,E5</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Product_Application__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -85,15 +86,20 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Connected Home</value>
+            <value>Smart &amp; Connected Home</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
-    <groupingsDown>
+    <format>Matrix</format>
+    <groupingsAcross>
         <dateGranularity>Day</dateGranularity>
         <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT_NAME</field>
+        <sortOrder>Desc</sortOrder>
     </groupingsDown>
     <name>CHD NAS Approved Design Wins 2019</name>
     <params>
@@ -119,7 +125,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Opportunity.Core_Approved_Date__c</dateColumn>
-        <endDate>2020-01-10</endDate>
+        <endDate>2019-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2019-01-01</startDate>
     </timeFrameFilter>

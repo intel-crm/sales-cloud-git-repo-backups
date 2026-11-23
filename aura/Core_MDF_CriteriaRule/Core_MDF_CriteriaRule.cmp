@@ -5,13 +5,12 @@
     <aura:attribute name="options" type="String[]"/>
     <aura:attribute name="operatorOptions" type="String[]"/>
     
-    
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>    
     <aura:registerEvent name="navEvt" type="force:navigateToSObject"/>
     
     <div class="slds-modal__header">       
         <center>
-            <center><h2>Criteria Rule Set</h2></center>
+            <center><h1><b>Criteria Rule Set</b></h1></center>
             <table style="width:80%;hieght:80%">
                 <tr >
                     <td style="width:30%;padding: 0 8px 8px 0;" > <a onclick="{!c.addRow}">Add Row</a></td>                

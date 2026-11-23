@@ -2,10 +2,21 @@
 private class Core_MDF_ClaimsAutoClosureBatch_Test {
     
     @TestSetup static void setUpData(){
+        // Create user and assign permission sets first (setup objects)
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
         usr.Email = 'sysadmin@example.com';
         usr.IsActive = true;
         Database.insert(usr);
+        
+        // Assign permission sets in separate transaction to avoid MIXED_DML_OPERATION
+        System.runAs(usr) {
+            PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Finance_Usr'];
+            insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = ps.Id);
+            PermissionSet ps1 = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_User'];
+            insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = ps1.Id);
+            PermissionSet ps2 = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader'];
+            insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = ps2.Id);
+        }
         
         // Creating channel program with utility class
         ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', true);
@@ -46,52 +57,43 @@ private class Core_MDF_ClaimsAutoClosureBatch_Test {
         bypassFunctionKeys.add('Bypass_Bank_Program_InActivation_Check');
         List<Core_Trigger_Executions__c> bypassfunctinalitylist = Core_MDF_CCP_TestDataUtility.byPassFeature(bypassFunctionKeys,true,true);
         
-        // Creating Budget with utility class
-    	System.runAs(usr) {
-            PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Finance_Usr'];
-        	insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = ps.Id);
-            PermissionSet ps1 = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_User'];
-        	insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = ps1.Id);
-            PermissionSet ps2 = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader'];
-        	insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = ps2.Id);
-        }
-        PartnerMarketingBudget pbm = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 2', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 30000, System.today().addDays(-14), System.today().addDays(14), false);
-        pbm.Core_MDF_Budget_Type_Txt__c = 'OEM CMP';
-        pbm.IsIgnoreValidation = true;
-        pbm.Core_MDF_Budget_Status__c = 'Released';
+        // Creating Budget with utility class (now permission sets are already assigned)
         System.runAs(usr) {
+            PartnerMarketingBudget pbm = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 2', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 30000, System.today().addDays(-14), System.today().addDays(14), false);
+            pbm.Core_MDF_Budget_Type_Txt__c = 'OEM CMP';
+            pbm.IsIgnoreValidation = true;
+            pbm.Core_MDF_Budget_Status__c = 'Released';
             Database.insert(pbm);
+        
+            // Creating Allocation with utility class
+            PartnerFundAllocation pfaRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Partner Fund Allocation', pbm, acc2, 30000, true);
+            
+            // Creating Campaign with utility class
+            Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 1','Gaming','Intel® Core™ i7 Processor','MDF or both CMP & MDF', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today().addDays(-3), System.today().addDays(3), 10000, 'Always Connected PC', acc2.Id,'Desktop', true);
+            
+            Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(acc1.Id, 'Core_MDF_Client_CoMarketing_Fund', false,'1249641240');
+            bank.Core_MDF_Bank_Status__c='Active';
+            bank.Core_MDF_Bank_Location__c ='IN';
+            database.insert(bank);
+            
+            Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc2.Id,bank.Id,false);
+            Database.insert(abm1);
+            
+            Test.startTest();
+            // Creating Activity with utility class
+            PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,pfaRecord,pbm,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast (Pre-2025)','Radio','Draft',false);
+            testPartnerFundRequestRecord.Amount = testPartnerFundRequestRecord.RequestedAmount;
+            testPartnerFundRequestRecord.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
+            testPartnerFundRequestRecord.Core_MDF_Start_Date__c = System.today()-2;
+            testPartnerFundRequestRecord.Core_MDF_End_Date__c = System.today()+2;
+            testPartnerFundRequestRecord.Core_MDF_Fund_Request_Status__c = 'In-Progress';
+            testPartnerFundRequestRecord.Core_MDF_Reimbursement_Rate_txt__c = '60%';
+            Database.insert(testPartnerFundRequestRecord);
+            test.stopTest();
         }
-        
-        // Creating Allocation with utility class
-        PartnerFundAllocation pfaRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Partner Fund Allocation', pbm, acc2, 30000, true);
-        
-        // Creating Campaign with utility class
-        Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 1','Gaming','Intel® Core™ i7 Processor','MDF or both CMP & MDF', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today().addDays(-3), System.today().addDays(3), 10000, 'Always Connected PC', acc2.Id,'Desktop', true);
-        
-        Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(acc1.Id, 'Core_MDF_Client_CoMarketing_Fund', false,'1249641240');
-        bank.Core_MDF_Bank_Status__c='Active';
-        bank.Core_MDF_Bank_Location__c ='IN';
-        database.insert(bank);
-        
-        Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc2.Id,bank.Id,false);
-        Database.insert(abm1);
-        
-        Test.startTest();
-        // Creating Activity with utility class
-        PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,pfaRecord,pbm,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast (Pre-2025)','Radio','Draft',false);
-        testPartnerFundRequestRecord.Amount = testPartnerFundRequestRecord.RequestedAmount;
-        testPartnerFundRequestRecord.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
-        testPartnerFundRequestRecord.Core_MDF_Start_Date__c = System.today()-2;
-        testPartnerFundRequestRecord.Core_MDF_End_Date__c = System.today()+2;
-        testPartnerFundRequestRecord.Core_MDF_Fund_Request_Status__c = 'In-Progress';
-        testPartnerFundRequestRecord.Core_MDF_Reimbursement_Rate_txt__c = '60%';
-        Database.insert(testPartnerFundRequestRecord);
-        test.stopTest();
-        
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
        // Core_MDF_PICReviewQuestion__c picReviewQuestion = Core_MDF_CCP_TestDataUtility.createPICReviewQuestion('Does POC document show cost?','POC document does not show cost',10);
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
        // Core_MDF_PICReviewQuestion__c picReviewQuestion1 = Core_MDF_CCP_TestDataUtility.createPICReviewQuestion('Does POE document show execution?','POE document does not show execution',20);
     }
     

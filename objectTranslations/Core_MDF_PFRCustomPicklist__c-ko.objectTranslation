@@ -5,6 +5,14 @@
         <value><!-- PartnerFundRequest Picklist --></value>
     </caseValues>
     <fields>
+        <label><!-- Budget Type 1 --></label>
+        <name>Budget_Type_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Classification --></label>
+        <name>Classification__c</name>
+    </fields>
+    <fields>
         <label><!-- Core_MDF_ActivityCategory --></label>
         <name>Core_MDF_ActivityCategory__c</name>
         <picklistValues>
@@ -77,7 +85,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Out of Home</masterLabel>
-            <translation><!-- Out of Home --></translation>
+            <translation>옥외(OOH)</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Out of Home (Pre-2025)</masterLabel>
@@ -217,7 +225,7 @@
         <name>Core_MDF_Activity_Category_Type__c</name>
     </fields>
     <fields>
-        <label><!-- Engineering Activity --></label>
+        <label><!-- Core_MDF_Activity_Engineering_Nm --></label>
         <name>Core_MDF_Activity_Engineering_Nm__c</name>
         <picklistValues>
             <masterLabel>DVT Board &amp; system build &amp; delivery (ES2/QS)</masterLabel>
@@ -297,7 +305,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Content Library</masterLabel>
-            <translation><!-- Content Library --></translation>
+            <translation>컨텐츠 라이브러리</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>DCF SMF</masterLabel>
@@ -533,7 +541,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Circular</masterLabel>
-            <translation><!-- Circular --></translation>
+            <translation>회전식</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Connected IPOS</masterLabel>
@@ -706,6 +714,10 @@
         <picklistValues>
             <masterLabel>Banner Ad</masterLabel>
             <translation><!-- Banner Ad --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Banner/Display Ad</masterLabel>
+            <translation><!-- Banner/Display Ad --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Benchmarking</masterLabel>
@@ -945,7 +957,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Other (Out Of Home)</masterLabel>
-            <translation><!-- Other (Out Of Home) --></translation>
+            <translation>기타(OOH)</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Other (Print)</masterLabel>
@@ -1040,6 +1052,14 @@
             <translation><!-- Search (SEM) Ad --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Search (SEM) Graphic Ad</masterLabel>
+            <translation><!-- Search (SEM) Graphic Ad --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Search (SEM) Text Ad</masterLabel>
+            <translation><!-- Search (SEM) Text Ad --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Search Engine Marketing (SEM)</masterLabel>
             <translation><!-- Search Engine Marketing (SEM) --></translation>
         </picklistValues>
@@ -1076,12 +1096,24 @@
             <translation><!-- Social Ad --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Social Graphic Ad</masterLabel>
+            <translation><!-- Social Graphic Ad --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Social Online Display</masterLabel>
             <translation>소셜 온라인 디스플레이</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Social Post</masterLabel>
             <translation><!-- Social Post --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Social Text Ad</masterLabel>
+            <translation><!-- Social Text Ad --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Social Video Ad</masterLabel>
+            <translation><!-- Social Video Ad --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Solution Development</masterLabel>
@@ -1132,6 +1164,10 @@
             <translation><!-- Trial Instance --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Video Ad</masterLabel>
+            <translation><!-- Video Ad --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Video Screen</masterLabel>
             <translation>비디오 스크린</translation>
         </picklistValues>
@@ -1140,12 +1176,40 @@
             <translation><!-- Web Content --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Web Page</masterLabel>
+            <translation><!-- Web Page --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>iREP</masterLabel>
             <translation><!-- iREP --></translation>
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Brand --></label>
+        <label><!-- Banner Ads --></label>
+        <name>Core_MDF_BannerAds_Nm__c</name>
+        <picklistValues>
+            <masterLabel>L</masterLabel>
+            <translation><!-- L --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>M</masterLabel>
+            <translation><!-- M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>S</masterLabel>
+            <translation><!-- S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>XL</masterLabel>
+            <translation><!-- XL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>XS</masterLabel>
+            <translation><!-- XS --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Brand(Old) --></label>
         <name>Core_MDF_Brand__c</name>
         <picklistValues>
             <masterLabel>10ᵗʰ Gen</masterLabel>
@@ -1499,6 +1563,10 @@
     <fields>
         <label><!-- Brand --></label>
         <name>Core_MDF_Brand_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type_nm__c</name>
     </fields>
     <fields>
         <label><!-- Country/Region_Old --></label>
@@ -2388,10 +2456,6 @@
             <translation><!-- BRAZIL --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>BRITISH VIRGIN ISLANDS</masterLabel>
-            <translation><!-- BRITISH VIRGIN ISLANDS --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>BRUNEI DARUSSALAM</masterLabel>
             <translation><!-- BRUNEI DARUSSALAM --></translation>
         </picklistValues>
@@ -3101,6 +3165,70 @@
         <name>Core_MDF_Initiative_nm__c</name>
     </fields>
     <fields>
+        <label><!-- Integrated Campaign --></label>
+        <name>Core_MDF_Integrated_Campaign__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- KPI --></label>
+        <name>Core_MDF_KPI_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Newsletter Circulation</masterLabel>
+            <translation><!-- Newsletter Circulation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Number of Clicks</masterLabel>
+            <translation><!-- Number of Clicks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Number of Clicks on Intel Assist</masterLabel>
+            <translation><!-- Number of Clicks on Intel Assist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Number of Impressions</masterLabel>
+            <translation><!-- Number of Impressions --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Type of Newsletter --></label>
+        <name>Core_MDF_NewsletterType_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Contains PC and non-PC products</masterLabel>
+            <translation><!-- Contains PC and non-PC products --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contains PC products</masterLabel>
+            <translation><!-- Contains PC products --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_MDF_Outcome_Region_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Outcome Type --></label>
+        <name>Core_MDF_Outcome_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>Business</masterLabel>
+            <translation><!-- Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing</masterLabel>
+            <translation><!-- Marketing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Outcome Metric --></label>
+        <name>Core_MDF_Outcomes_nm__c</name>
+    </fields>
+    <fields>
         <label><!-- POP Requirement --></label>
         <name>Core_MDF_POP_Requirement_nm__c</name>
         <picklistValues>
@@ -3137,12 +3265,52 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Page to Link to --></label>
+        <name>Core_MDF_PagetoLink_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Intel Promo page</masterLabel>
+            <translation><!-- Intel Promo page --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel SKU page</masterLabel>
+            <translation><!-- Intel SKU page --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel SRT Page</masterLabel>
+            <translation><!-- Intel SRT Page --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Shop-in-Shop page</masterLabel>
+            <translation><!-- Intel Shop-in-Shop page --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Listing page featuring Intel-based devices</masterLabel>
+            <translation><!-- Product Listing page featuring Intel-based devices --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retailer Campaign page</masterLabel>
+            <translation><!-- Retailer Campaign page --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Priority #2 --></label>
         <name>Core_MDF_Priority_2_nm__c</name>
     </fields>
     <fields>
+        <label><!-- Priority #2 old --></label>
+        <name>Core_MDF_Priority_2_nm_test__c</name>
+    </fields>
+    <fields>
         <label><!-- Priority #3 --></label>
         <name>Core_MDF_Priority_3_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Priority #3 old --></label>
+        <name>Core_MDF_Priority_3_nm_test__c</name>
     </fields>
     <fields>
         <label><!-- Priority --></label>
@@ -3541,7 +3709,16 @@
         <label><!-- Technology --></label>
         <name>Core_MDF_Technology__c</name>
     </fields>
+    <fields>
+        <label><!-- Test Activity Subtype Multi --></label>
+        <name>Test_Activity_Subtype_Multi__c</name>
+    </fields>
     <nameFieldLabel><!-- PartnerFundRequest Picklist --></nameFieldLabel>
+    <recordTypes>
+        <description><!-- Channel MDF Record type --></description>
+        <label><!-- Channel MDF --></label>
+        <name>Core_MDF_Channel_MDF</name>
+    </recordTypes>
     <recordTypes>
         <description><!-- Channel MDF - Account based Record type --></description>
         <label><!-- Channel MDF- Account Based --></label>
@@ -3551,6 +3728,11 @@
         <description><!-- Channel MDF - Proposal based Record type --></description>
         <label><!-- Channel MDF- Proposal Based --></label>
         <name>Core_MDF_Channel_MDF_Proposal_Based</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type for Opal Client Program --></description>
+        <label><!-- Client --></label>
+        <name>Core_MDF_Client</name>
     </recordTypes>
     <recordTypes>
         <label><!-- Client Co-Marketing Fund --></label>
@@ -3565,6 +3747,11 @@
         <description><!-- Co-GTM Program Record type --></description>
         <label><!-- Co-GTM --></label>
         <name>Core_MDF_Co_GTM</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type for Opal Data Center Program --></description>
+        <label><!-- Data Center --></label>
+        <name>Core_MDF_DataCenter</name>
     </recordTypes>
     <recordTypes>
         <label><!-- Data Center Co-Marketing Fund --></label>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecommendationStrategy xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contextRecordType>Core_MDF_InternalAudit__c</contextRecordType>
+    <if>
+        <childNode>Add_Auditors_if_needed</childNode>
+        <childNode>To_Generate_Audit_Document</childNode>
+        <childNode>Review_Document</childNode>
+        <label>Current Step Identifier</label>
+        <name>Current_Step_Identifier</name>
+        <childNodeExpression>
+            <childName>Review_Document</childName>
+            <expression>ISPICKVAL($Record.Status__c, &apos;UnderReview&apos;)</expression>
+        </childNodeExpression>
+        <childNodeExpression>
+            <childName>Add_Auditors_if_needed</childName>
+            <expression>ISPICKVAL($Record.Status__c, &apos;Initiated&apos;)</expression>
+        </childNodeExpression>
+        <childNodeExpression>
+            <childName>To_Generate_Audit_Document</childName>
+            <expression>ISPICKVAL($Record.Status__c, &apos;GenerateDocument&apos;)</expression>
+        </childNodeExpression>
+        <onlyFirstMatch>false</onlyFirstMatch>
+    </if>
+    <label>Test Internal Audit things</label>
+    <recommendationLoad>
+        <label>Add Auditors if needed</label>
+        <name>Add_Auditors_if_needed</name>
+        <condition>
+            <field>AcceptanceLabel</field>
+            <operator>EQUALS</operator>
+            <value>
+                <type>TEXT</type>
+                <value>Acknowledge</value>
+            </value>
+        </condition>
+        <condition>
+            <field>Name</field>
+            <operator>EQUALS</operator>
+            <value>
+                <type>TEXT</type>
+                <value>Acknowledge Audit</value>
+            </value>
+        </condition>
+        <conditionLogic>and</conditionLogic>
+        <object>Recommendation</object>
+        <sortField>
+            <name>AcceptanceLabel</name>
+            <nullsFirst>false</nullsFirst>
+            <order>Asc</order>
+        </sortField>
+    </recommendationLoad>
+    <recommendationLoad>
+        <label>To Generate Audit Document</label>
+        <name>To_Generate_Audit_Document</name>
+        <condition>
+            <field>Name</field>
+            <operator>EQUALS</operator>
+            <value>
+                <type>TEXT</type>
+                <value>Generate Audit Document</value>
+            </value>
+        </condition>
+        <condition>
+            <field>AcceptanceLabel</field>
+            <operator>EQUALS</operator>
+            <value>
+                <type>TEXT</type>
+                <value>Done, Take me to Next Step!</value>
+            </value>
+        </condition>
+        <conditionLogic>and</conditionLogic>
+        <object>Recommendation</object>
+    </recommendationLoad>
+    <recommendationLoad>
+        <label>Review Document</label>
+        <name>Review_Document</name>
+        <condition>
+            <field>Name</field>
+            <operator>EQUALS</operator>
+            <value>
+                <type>TEXT</type>
+                <value>Review Audit Document</value>
+            </value>
+        </condition>
+        <condition>
+            <field>AcceptanceLabel</field>
+            <operator>EQUALS</operator>
+            <value>
+                <type>TEXT</type>
+                <value>Done, Take me to Next Step!</value>
+            </value>
+        </condition>
+        <conditionLogic>and</conditionLogic>
+        <object>Recommendation</object>
+    </recommendationLoad>
+    <union>
+        <childNode>Current_Step_Identifier</childNode>
+        <label>Output</label>
+        <name>Output_0a3a8735eef64c799ddeaf8d17384ecd</name>
+    </union>
+</RecommendationStrategy>

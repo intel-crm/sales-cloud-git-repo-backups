@@ -92,7 +92,7 @@ global Class Core_Batch_DDR_PriceBook_Del implements Database.Batchable<sObject>
         }
         catch(Exception err)
         {
-            //System.debug('NotifyPatnerPriceBookBatchApex::'+err.getMessage());
+            System.debug('NotifyPatnerPriceBookBatchApex::'+err.getMessage());
             
             if(logSwitch.get('Core_DDR_LogEntry_Check') != null && logSwitch.get('Core_DDR_LogEntry_Check').Is_Selected__c)
             {   

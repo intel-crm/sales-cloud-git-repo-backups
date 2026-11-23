@@ -27,8 +27,6 @@ public without sharing class Core_MDF_BatchJobRestart implements Schedulable{
         }
     }
     public void execute(SchedulableContext sc) {
-        try
-        {
         //retrieves crontrigger records with the jobname combination 
         List<CronTrigger> ctListWithJob = [SELECT CronJobDetail.Name,createdDate FROM CronTrigger WHERE CronJobDetail.Name Like : jobName order by createdDate desc limit 10];
         //checks there is job exist with the given job name
@@ -40,7 +38,7 @@ public without sharing class Core_MDF_BatchJobRestart implements Schedulable{
             Core_MDF_Configuration__c configBatchName = Core_MDF_Configuration__c.getValues('Batch_Scheduler_Restart_Time_Buffer');
             Integer timeBuffer = Integer.valueOf(configBatchName.Core_MDF_Value__c);
             DateTime lastJobTime = latestCronTrigger.createdDate.addminutes(timeBuffer);
-            if((ctListInExecState.isEmpty() && lastJobTime < system.now()) || Test.isRunningTest()){              
+            if(ctListInExecState.isEmpty() && lastJobTime < system.now()){
                 String errorMsg = 'Batch Scheduler Stopped :: ' + latestCronTrigger + '--Restart time :: '+ system.now();
                 String objectName = 'Batch Scheduler';
                 String subject = Label.Core_MDF_CCP_Support_Email_Subject + ' ' + objectName;
@@ -57,22 +55,14 @@ public without sharing class Core_MDF_BatchJobRestart implements Schedulable{
                 String errorText = Core_MDF_CCP_UtilityClass.createLogEntry(coreLogMap);
                 //rescheduling batch for failed jobs
                 Core_MDF_BatchSchedulerUtility.generateBatchChaining(programs);
-                Core_EmailUtil.SendEmail_ScheduledJob_Exception(true, progNames +'_'+ jobNameStr, '');
             }
         }
         else{
             customException ex=new customException();
             ex.setMessage('This is not a valid job to restart.Please check the input parameter');
             Core_MDF_CCP_UtilityClass.logError(ex);
-            Core_EmailUtil.SendEmail_ScheduledJob_Exception(false, progNames +'_'+ jobNameStr, 'This is not a valid job to restart.Please check the input parameter');
             throw ex;
         }
-        }
-        catch(Exception ex){
-            Core_MDF_CCP_UtilityClass.logError(ex);
-            Core_EmailUtil.SendEmail_ScheduledJob_Exception(false, progNames +'_'+ jobNameStr, ex.getMessage());
-        }
-        
     }      
     
 }

@@ -873,7 +873,7 @@ public inherited sharing class Core_MDF_PFR_RestAPI_InputWrapper {
             return null;
         }
         List<Campaign> campaigns = [
-            SELECT Id, Core_MDF_Account__c, Core_MDF_Program__c,Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c 
+            SELECT Id, Core_MDF_Account__c, Core_MDF_Program__c
             FROM Campaign
             WHERE Id = :campaignId
             LIMIT 1
@@ -889,7 +889,7 @@ public inherited sharing class Core_MDF_PFR_RestAPI_InputWrapper {
                     FROM Account
                     WHERE Id = :accountId
                       AND Core_MDF_Active_Ind__c = true
-                      AND Core_MDF_CoMarketing_Ultimate_Account__c =: campaignContext.Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c
+                      AND (Id = :campaignContext.Core_MDF_Account__c OR ParentId = :campaignContext.Core_MDF_Account__c OR Core_MDF_Parent_Fund_Account__c = :campaignContext.Core_MDF_Account__c)
                       AND Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c = :campaignContext.Core_MDF_Program__c
                     LIMIT :rowLimit
                 ];
@@ -899,9 +899,9 @@ public inherited sharing class Core_MDF_PFR_RestAPI_InputWrapper {
                 FROM Account
                 WHERE Name = :accountName
                   AND Core_MDF_Active_Ind__c = true
-                      AND Core_MDF_CoMarketing_Ultimate_Account__c =: campaignContext.Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c
-                      AND Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c = :campaignContext.Core_MDF_Program__c
-                    LIMIT :rowLimit
+                  AND (Id = :campaignContext.Core_MDF_Account__c OR ParentId = :campaignContext.Core_MDF_Account__c OR Core_MDF_Parent_Fund_Account__c = :campaignContext.Core_MDF_Account__c)
+                  AND Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c = :campaignContext.Core_MDF_Program__c
+                LIMIT :rowLimit
             ];
         }
 
@@ -1194,7 +1194,6 @@ public inherited sharing class Core_MDF_PFR_RestAPI_InputWrapper {
             applyValue(pfr, 'Core_MDF_ActivityCategory__c', ActivityCategory);
             applyValue(pfr, 'Core_MDF_Activity_Types__c', ActivityTypes);
             applyValue(pfr, 'Core_MDF_Channel_Partner__c', EcosystemPartner);
-            applyValue(pfr, 'Core_MDF_Channel_Partner_Led__c', true);
             applyValue(pfr, 'Core_MDF_Industry_Multi_nm__c', Industry);
             applyValue(pfr, 'Core_MDF_MDFReimbursement_Amt__c', ReimbursementAmt);
             applyValue(pfr, 'Core_MDF_Budget_Currency_cd__c', Currency_x);

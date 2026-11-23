@@ -178,9 +178,7 @@ public with sharing class Core_MDF_OutcomeBasedCmpgnTab{
             'Core_MDF_Parent_Activity_Id__c = null',
             'Core_MDF_Activity_Level_nm__c != \'Sub Activity\''
         };
-		programFilter='Intel Partner Alliance';// Biswomohan,added as part of CCF DCf Removal, Will be removed programFilter and budgetFilter
-        budgetFilter='Account Plan';
-		if (String.isNotBlank(statusFilter)) {
+        if (String.isNotBlank(statusFilter)) {
             conditions.add('Core_MDF_Fund_Request_Status__c = \'' + String.escapeSingleQuotes(statusFilter.trim()) + '\'');
         }
         if (String.isNotBlank(programFilter)) {

@@ -2,7 +2,7 @@
   incloseactivity: function (component, event, helper) {
     var permissionSetName;
     var permissionSets = [];
-
+	
     permissionSetName = $A.get(
       "$Label.c.Core_MDF_Close_Activity_Allowed_Roles"
     );
@@ -21,6 +21,7 @@
         response.getReturnValue() != null
       ) {
         if (response.getReturnValue()) {
+          
           component.set("v.userEligible", true);
         } else {
           component.set("v.userEligible", false);
@@ -45,14 +46,17 @@
     var actionclose = component.get("c.checkActivityEligibiltyForClose");
     actionclose.setParams({
       activityId: component.get("v.recordId")
+
     });
+   
     actionclose.setCallback(this, function (response) {
       if (
         response.getState() === "SUCCESS" &&
         response.getReturnValue() != null
       ) {
-
+       
         var wrapInst = response.getReturnValue();
+          console.log('wrapInst',wrapInst);
         if (wrapInst != null) {
           component.set("v.countOfClaimRecords", wrapInst.listOfClaim.length);
           if (!wrapInst.isValidActStatus && !wrapInst.retailActivity && !wrapInst.ipaActivity) {
@@ -77,6 +81,7 @@
               var recordId = component.get("v.recordId");
               var communityBaseUrl = $A.get("$Label.c.Core_MDF_PFRCommunityLink");
               var path = window.location.pathname;
+              
               if (isOutcome) {
                   var isCommunity = path.includes('/s/');
                   if (isCommunity) {
@@ -97,6 +102,12 @@
                       navEvt.fire();
                   }
               }
+          /*  var navEvt = $A.get("e.force:navigateToSObject");
+            navEvt.setParams({
+              "recordId": component.get('v.recordId'),
+              "slideDevName": "detail"
+            });
+            navEvt.fire();*/
             $A.get("e.force:closeQuickAction").fire();
             setTimeout(function () {
               window.location.reload();
@@ -130,6 +141,7 @@
         if (state === "SUCCESS") {
             var result = response.getReturnValue();
             component.set("v.isOutcomeBased", result);
+            console.log('Outcome Based Valuerish -> ', result);
         } 
         else {
             var errorMessage = $A.get("$Label.c.Core_MDF_ApplicationErrorMessage");

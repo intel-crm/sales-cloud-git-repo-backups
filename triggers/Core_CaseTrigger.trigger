@@ -1,23 +1,14 @@
 trigger Core_CaseTrigger on Case (before insert, before update, before delete, after insert, after update, after delete) {
-    
-    if(trigger.isBefore){     
-	    Core_CaseTrigger_Dispatcher.beforeMethod(trigger.oldMap, trigger.newMap, trigger.old , trigger.new);
-        /*Start - TWC777-2514 - 08/08/2024 - Vishal - STOWD - Custom Implementation*/
-        if(trigger.isBefore && trigger.isUpdate){
-            if(!Core_IPS_Status_Ownership_Ctrl_Util.hasHandlerExecuted) {
-                Core_IPS_Status_Ownership_Ctrl_Util.handleBeforeUpdate(Trigger.new, Trigger.oldMap);
-            }
-        
-        }
-        /*End - TWC777-2514 - 08/08/2024 - Vishal - STOWD - Custom Implementation*/
+    if(trigger.isBefore){
+        system.debug('before calling dispatcher===Casebeforetrigger beforeMethod===>'+Trigger.new);
+        Core_CaseTrigger_Dispatcher.beforeMethod(trigger.old, trigger.new, trigger.oldMap, trigger.newMap);
+        system.debug('Casebeforetrigger beforeMethod===>'+Trigger.new);
     }
     if(trigger.isAfter){
-	    Core_CaseTrigger_Dispatcher.afterMethod(trigger.oldMap, trigger.newMap, trigger.old, trigger.new);  
+        system.debug('Before calling dispatcher===Caseaftertrigger afterMethod===>'+Trigger.new);
+        Core_CaseTrigger_Dispatcher.afterMethod(trigger.old, trigger.new, trigger.oldMap, trigger.newMap);
+        system.debug('===Caseaftertrigger afterMethod===>'+Trigger.new);
     }
-  // Addes By Shubham 10/Oct/20205 Hercules Team workflow to Apex trigger
-    if((trigger.isinsert || trigger.isupdate) && Trigger.isAfter){
-        Core_CaseTrigger_Dispatcher.UpdateLastAssignQueufield(trigger.new);     
-}
     
     /*
     // Below lines of Code written for Ask Commission Project
@@ -36,14 +27,18 @@ trigger Core_CaseTrigger on Case (before insert, before update, before delete, a
     
     //RAR Nov-11-2018 Added call to ShareWithMyManager - US84930
     if(trigger.isAfter && trigger.isInsert){
+        system.debug('===Before calling ShareWithMyManager ===Caseaftertrigger afterMethod===>'+trigger.oldMap);    
         Core_AAQC_Case_Ask_Commissions_Handler.ShareWithOBOField(trigger.new);
         Core_AAQC_Case_Ask_Commissions_Handler.ShareWithMyManager(trigger.new,null);
+        system.debug('===After calling ShareWithMyManager ===Caseaftertrigger afterMethod===>'+Trigger.new);        
     }
     
     //RAR Nov-11-2018 Added call to ShareWithMyManager - US84930
     if(trigger.isAfter && trigger.isUpdate){
+        system.debug('===Before calling ShareWithMyManager ===Caseaftertrigger afterMethod===>'+Trigger.new);
         Core_AAQC_Case_Ask_Commissions_Handler.ShareWithOBOField(trigger.new);
         Core_AAQC_Case_Ask_Commissions_Handler.ShareWithMyManager(trigger.new, trigger.oldMap);
+        system.debug('===After calling ShareWithMyManager ===Caseaftertrigger afterMethod===>'+Trigger.new);        
     }*/
 
 }

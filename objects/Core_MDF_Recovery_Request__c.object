@@ -147,7 +147,7 @@
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
-    <enableHistory>true</enableHistory>
+    <enableHistory>false</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>false</enableReports>
     <enableSearch>true</enableSearch>
@@ -163,7 +163,6 @@
         <relationshipLabel>Recovery Requests</relationshipLabel>
         <relationshipName>Recovery_Requests</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -171,7 +170,6 @@
         <fullName>Core_MDF_Active_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Active</label>
-        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -187,7 +185,6 @@
 )</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Active Indicator</label>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -199,7 +196,6 @@
         <label>Claim ID External</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>true</unique>
@@ -213,7 +209,6 @@
         <relationshipLabel>Recovery Requests</relationshipLabel>
         <relationshipName>Recovery_Requests</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -224,7 +219,6 @@
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Claim Number</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -234,7 +228,6 @@
         <description>To store the comment entered while recovering the amount</description>
         <label>Comment</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
     </fields>
@@ -243,7 +236,6 @@
         <defaultValue>false</defaultValue>
         <description>Used to identify whether the Recovery Request record is created through UI or Recovery Batch.</description>
         <label>Is System Created?</label>
-        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -256,7 +248,6 @@
         <relationshipLabel>Recovery Requests</relationshipLabel>
         <relationshipName>Recovery_Requests</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -265,7 +256,6 @@
         <description>Stores the Program name</description>
         <label>Program</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -278,7 +268,6 @@
         <description>Stores the quarter year</description>
         <label>Quarter Year</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -291,7 +280,6 @@
         <defaultValue>false</defaultValue>
         <description>Indicates whether request is ready to recover or not</description>
         <label>Ready to Recover</label>
-        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -307,7 +295,6 @@
 )</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Ready to Recover Indicator</label>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -316,7 +303,6 @@
         <description>To store the Partnership score detail id and the amounts to be recovered</description>
         <label>Recovered Partnership Score Detail</label>
         <length>1000</length>
-        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>4</visibleLines>
@@ -326,19 +312,18 @@
         <description>Denotes the Budget Type and Region from where the claim is recovered</description>
         <label>Recovered Budget</label>
         <length>1000</length>
-        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>4</visibleLines>
     </fields>
     <fields>
         <fullName>Core_MDF_Recovery_Amount_Amt__c</fullName>
+        <defaultValue>0.00</defaultValue>
         <description>to store the Recovery amount</description>
         <label>Recovery Amount</label>
         <precision>18</precision>
         <required>true</required>
         <scale>2</scale>
-        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
@@ -351,7 +336,6 @@
         <relationshipLabel>Recovery Requests</relationshipLabel>
         <relationshipName>Recovery_Requests</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -365,17 +349,40 @@
         <columns>Core_MDF_Claim_Number__c</columns>
         <columns>Core_MDF_Recovery_Amount_Amt__c</columns>
         <columns>Core_MDF_Active_Ind__c</columns>
+        <columns>Core_MDF_Recovered_Budget_Nm__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
     <nameField>
         <displayFormat>RecoveryRequest-{0000}</displayFormat>
         <label>Recovery Request Name</label>
-        <trackHistory>true</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Recovery Requests</pluralLabel>
     <searchLayouts/>
     <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Core_MDF_Quarter_Check</fullName>
+        <active>false</active>
+        <description>Allow to create or Update Recovery Request records only for the Current Quarter - 1.</description>
+        <errorConditionFormula>AND(
+	ISNEW(), 
+	(If(
+		AND(
+			MONTH(TODAY()) &gt;= 4, MONTH(TODAY()) &lt;= 6
+		), (&apos;Q1 &apos; + TEXT(YEAR(TODAY()))),
+		If(
+			AND(MONTH(TODAY()) &gt;= 7, MONTH(TODAY()) &lt;= 9
+			), (&apos;Q2 &apos; + TEXT(YEAR(TODAY()))),
+			If(
+				AND(MONTH(TODAY()) &gt;= 10, MONTH(TODAY()) &lt;= 12
+				), (&apos;Q3 &apos; + TEXT(YEAR(TODAY()))), (&apos;Q4 &apos; + TEXT(YEAR(TODAY()) - 1))
+			)
+		)
+		) !=  TEXT(Core_MDF_Quarter_Year_Nm__c)
+	)
+)</errorConditionFormula>
+        <errorMessage>Record creation not allowed for Older Quarters.</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

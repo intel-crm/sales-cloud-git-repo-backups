@@ -1,0 +1,198 @@
+<template>
+    <lightning-card
+        title="MDF File Upload"
+        icon-name="utility:upload"
+    >
+        <div class="slds-p-around_medium">
+
+            <!-- ── Upload Section ─────────────────────────────────── -->
+            <div class="slds-box slds-theme_shade slds-m-bottom_medium">
+
+                <h3 class="slds-text-heading_small slds-m-bottom_small">
+                    <lightning-icon
+                        icon-name="utility:attach"
+                        size="x-small"
+                        class="slds-m-right_x-small"
+                    ></lightning-icon>
+                    Select File (Max 2GB)
+                </h3>
+
+                <!-- File Input -->
+                <div class="slds-form-element slds-m-bottom_small">
+                    <div class="slds-form-element__control">
+                        <input
+                            type="file"
+                            data-id="fileInput"
+                            onchange={handleFileChange}
+                            disabled={isUploading}
+                            class="slds-file-selector__input"
+                        />
+                    </div>
+                    <p class="slds-form-element__help slds-m-top_x-small">
+                        Supported: All file types | Max size: 2GB
+                    </p>
+                </div>
+
+                <!-- Selected File Info -->
+                <template if:true={selectedFile}>
+                    <div class="slds-box slds-theme_default slds-m-bottom_small">
+                        <div class="slds-grid slds-gutters slds-wrap">
+                            <div class="slds-col slds-size_1-of-2">
+                                <p>
+                                    <strong>📄 Name: </strong>
+                                    {selectedFile.name}
+                                </p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <p>
+                                    <strong>📦 Size: </strong>
+                                    {fileSizeFormatted}
+                                </p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <p>
+                                    <strong>🗂️ Type: </strong>
+                                    {selectedFile.type}
+                                </p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <p>
+                                    <strong>🔢 Chunks: </strong>
+                                    {totalChunks}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- ✅ Upload Progress - ONLY shows when isUploading=true -->
+                <template if:true={isUploading}>
+                    <div class="slds-m-bottom_small">
+                        <p class="slds-text-body_small
+                                  slds-m-bottom_xx-small
+                                  slds-text-align_center">
+                            <strong>{progressLabel}</strong>
+                        </p>
+                        <lightning-progress-bar
+                            value={uploadProgress}
+                            size="large"
+                        ></lightning-progress-bar>
+                        <p class="slds-text-align_center slds-m-top_xx-small">
+                            {uploadProgress}%
+                        </p>
+                        <template if:true={chunkStatusMessage}>
+                            <div class="slds-box slds-theme_info
+                                        slds-p-around_x-small
+                                        slds-m-top_x-small">
+                                <p class="slds-text-body_small">
+                                    {chunkStatusMessage}
+                                </p>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+
+                <!-- Action Buttons -->
+                <div class="slds-button-group slds-m-top_small">
+                    <lightning-button
+                        label="Upload File"
+                        variant="brand"
+                        icon-name="utility:upload"
+                        onclick={handleUpload}
+                        disabled={isUploadDisabled}
+                    ></lightning-button>
+
+                    <template if:true={isUploading}>
+                        <lightning-button
+                            label="Cancel"
+                            variant="destructive"
+                            icon-name="utility:close"
+                            class="slds-m-left_small"
+                            onclick={handleCancel}
+                        ></lightning-button>
+                    </template>
+
+                    <template if:true={selectedFile}>
+                        <template if:false={isUploading}>
+                            <lightning-button
+                                label="Clear"
+                                variant="neutral"
+                                icon-name="utility:clear"
+                                class="slds-m-left_small"
+                                onclick={handleClear}
+                            ></lightning-button>
+                        </template>
+                    </template>
+                </div>
+            </div>
+
+            <!-- ── Status Message ─────────────────────────────────── -->
+            <template if:true={statusMessage}>
+                <div class={statusBoxClass}>
+                    <lightning-icon
+                        icon-name={statusIcon}
+                        size="x-small"
+                        class="slds-m-right_x-small"
+                    ></lightning-icon>
+                    <span>{statusMessage}</span>
+                </div>
+            </template>
+
+            <!-- ── Uploaded Files List ────────────────────────────── -->
+            <div class="slds-m-top_medium">
+                <div class="slds-grid slds-grid_align-spread
+                            slds-m-bottom_small">
+                    <h3 class="slds-text-heading_small">
+                        <lightning-icon
+                            icon-name="utility:file"
+                            size="x-small"
+                            class="slds-m-right_x-small"
+                        ></lightning-icon>
+                        Uploaded Files ({fileCount})
+                    </h3>
+                    <lightning-button
+                        label="Refresh"
+                        variant="neutral"
+                        icon-name="utility:refresh"
+                        onclick={handleRefresh}
+                        disabled={isLoadingFiles}
+                    ></lightning-button>
+                </div>
+
+                <!-- ✅ File list spinner - ONLY shows when isLoadingFiles=true
+                         AND recordId exists -->
+                <template if:true={isLoadingFiles}>
+                    <div class="slds-align_absolute-center slds-p-around_medium">
+                        <lightning-spinner
+                            alternative-text="Loading files..."
+                            size="small"
+                        ></lightning-spinner>
+                    </div>
+                </template>
+
+                <!-- Files Table - only when NOT loading -->
+                <template if:false={isLoadingFiles}>
+                    <template if:true={hasFiles}>
+                        <lightning-datatable
+                            key-field="id"
+                            data={uploadedFiles}
+                            columns={tableColumns}
+                            onrowaction={handleRowAction}
+                            hide-checkbox-column
+                        ></lightning-datatable>
+                    </template>
+
+                    <template if:false={hasFiles}>
+                        <p class="slds-text-color_weak
+                                  slds-text-align_center
+                                  slds-p-around_medium">
+                            📂 No files uploaded yet
+                        </p>
+                    </template>
+                </template>
+
+            </div>
+
+        </div>
+    </lightning-card>
+</template>

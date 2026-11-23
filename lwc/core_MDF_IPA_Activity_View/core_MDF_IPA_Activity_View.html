@@ -1,0 +1,182 @@
+<template>
+    
+    <lightning-accordion allow-multiple-sections-open onsectiontoggle={handleSectionToggle}
+    active-section-name={activeSections} key={rec.Name}>
+        <lightning-accordion-section name="A" label=" ">
+           <div class="slds-form__item" role="list">
+            <div class="slds-form_row">
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                        <span class="slds-form-element__label"> {activityName} </span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{rec.Title}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-form__item" role="listitem">
+                <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                    <span class="slds-form-element__label">{activityType}</span>
+                    <lightning-helptext content="Current Status"></lightning-helptext>
+                    <div class="slds-form-element__control">
+                        <div class="slds-form-element__static">{rec.Core_MDF_Activity_Types__c}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-form__item" role="list">
+            <div class="slds-form_row">
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                        <span class="slds-form-element__label"> {activityDescription} </span>
+                        <lightning-helptext content="A longer description of the activity to be performed"></lightning-helptext>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{rec.Core_MDF_Activity_Description__c}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-form__item" role="listitem">
+                <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                    <span class="slds-form-element__label">{startDate}</span>
+                    <div class="slds-form-element__control">
+                        <div class="slds-form-element__static">{rec.Core_MDF_Start_Date__c}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-form__item" role="list">
+            <div class="slds-form_row">
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                        <span class="slds-form-element__label"> {budgetAmount} </span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{rec.RequestedAmount}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-form__item" role="listitem">
+                <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                    <span class="slds-form-element__label">{endDate}</span>
+                    <div class="slds-form-element__control">
+                        <div class="slds-form-element__static">{rec.Core_MDF_End_Date__c}</div>
+                    </div>
+                </div>
+            </div>
+        </div><div class="slds-form__item" role="list">
+            <div class="slds-form_row">
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                        <span class="slds-form-element__label"> Budget Amount Local </span>
+                        <lightning-helptext content="The rate is an estimate, it may be different when you submit for claiming"></lightning-helptext>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{rec.Core_MDF_Budget_Amount_Local_amt__c}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-form__item" role="listitem">
+                <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                    <span class="slds-form-element__label"> {currency} </span>
+                    <lightning-helptext content="The currency of budget amount"></lightning-helptext>
+                    <div class="slds-form-element__control">
+                        <div class="slds-form-element__static">{rec.Core_MDF_Budget_Currency_cd__c}</div>
+                    </div>
+                </div>
+            </div>
+        </div><div class="slds-form__item" role="list">
+            <div class="slds-form_row">
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                        <span class="slds-form-element__label">{activityCategory}</span>
+                        <lightning-helptext content="The activity category for the marketing activity"></lightning-helptext>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{rec.Core_MDF_ActivityCategory__c}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-form__item" role="listitem">
+                <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                    <span class="slds-form-element__label"> {reimbAmount} </span>
+                    <lightning-helptext content="Amount eligible for reimbursement for this activity"></lightning-helptext>
+                    <div class="slds-form-element__control">
+                        <div class="slds-form-element__static">{rec.Core_MDF_Activity_Reimbursement_Amt_nbr__c}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-form__item" role="list">
+            <div class="slds-form_row">
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                        <span class="slds-form-element__label"> {activitySubtype} </span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{rec.Core_MDF_Activity_SubType_nm__c}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-form__item" role="listitem">
+                <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                    <span class="slds-form-element__label">Intel Business Unit Split %</span>
+                    <div class="slds-form-element__control">
+                        <div class="slds-form-element__static">{rec.Core_MDF_BU_Percent_txt__c}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-form__row slds-p-left_large">
+            <div class="slds-form__item" role="listitem">
+              <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_stacked slds-hint-parent slds-form-element_1-col">
+                <span class="slds-form-element__label">{metrics}</span>
+                <div class="slds-form-element__control">
+                  <div class="slds-form-element__static slds-text-longform">{rec.Core_MDF_Metrics_txt__c}<br/>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  <!--<div class="slds-form__row slds-p-left_large">
+                    <div class="slds-form__item" role="listitem">
+                      <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_stacked slds-hint-parent slds-form-element_1-col">
+                  <c-core_-m-d-f_-display-products record-id={rec.Id}></c-core_-m-d-f_-display-products>
+                  </div>
+                  </div>
+                  </div>
+                  <lightning-layout class="slds-page-header slds-page-header--object-home">
+                    <lightning-layout-item padding="horizontal-small" size="12" style="width:inherit;">
+                        <div class="page-section page-header">
+                            <h1 class="slds-text-heading_label">{spifSectionHeader}</h1>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>-->
+             
+                <!-- <template for:each={rec.segmentList} for:item="seg">
+                <div class="slds-form__item" role="list" key={seg.productFamily}>
+                    <div class="slds-form_row">
+                        <div class="slds-form__item" role="listitem">
+                            <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                                <span class="slds-truncate" title={productFamilyStr} style="white-space: pre-wrap;word-break: break-word;font-weight: bold;">{productFamilyStr}</span>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-form-element__static">{seg.productFamily}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-form__item" role="listitem">
+                        <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                            <span class="slds-truncate" title={productFamilyStr} style="white-space: pre-wrap;word-break: break-word;font-weight: bold;">{productsStr}</span>
+                            <div class="slds-form-element__control">
+                                <div class="slds-form-element__static">{seg.productName}</div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    </template>-->
+
+        </lightning-accordion-section>
+</lightning-accordion>
+
+</template>

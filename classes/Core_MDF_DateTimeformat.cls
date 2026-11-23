@@ -16,7 +16,7 @@ public static String getUserDateFormat() {
 public static String getUserDateTimeFormat() {
     String      userLocale  = UserInfo.getLocale();
     getLocaleToDateTimeFmtMap();
-    if (!localeToDateTimeFmtMap.containsKey(userLocale))    return 'yyyy-mm-dd hh.mm.ss';
+    if (!localeToDateTimeFmtMap.containsKey(userLocale))    return 'M/d/yyyy h:mm a';
     return localeToDateTimeFmtMap.get(userLocale);
 }
 

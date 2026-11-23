@@ -70,7 +70,15 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Custom Permission --></label>
+        <label><!-- Role Access --></label>
+        <name>Core_MDF_Role_Access_txt__c</name>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCP_Budget_Administrator</masterLabel>
+            <translation><!-- Core_MDF_CCP_Budget_Administrator --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Program Access --></label>
         <name>Custom_Permission_txt__c</name>
     </fields>
     <fields>

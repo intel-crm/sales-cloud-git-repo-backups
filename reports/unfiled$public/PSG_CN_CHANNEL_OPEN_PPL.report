@@ -40,26 +40,14 @@
         <field>Product2.Core_OPN__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Distributor__c</field>
-    </columns>
-    <columns>
-        <field>CLOSE_DATE2</field>
-    </columns>
-    <columns>
-        <field>FULL_NAME</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Technical_Owner__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Status__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>TOTAL_PRICE</field>
     </columns>
     <filter>
-        <booleanFilter>((1 or 2 or 3 or 5 or 6 or 7 or 8 or 9 or 10 or 11 or 12) and 4 AND 13) AND 14</booleanFilter>
+        <booleanFilter>(1 OR 2 OR 3 OR 5 OR 6 OR 7 or 8) AND 4</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Technical_Owner__c</column>
             <columnToColumn>false</columnToColumn>
@@ -116,48 +104,6 @@
             <operator>equals</operator>
             <value>Yong Chin See</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>wei da liu</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>zhi gong</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>gang wang</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>joyce wu</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Export_Compliance_Block__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>TOTAL_PRICE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>0</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -195,6 +141,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CUSTOM</interval>
+        <interval>INTERVAL_CURY</interval>
     </timeFrameFilter>
 </Report>

@@ -123,8 +123,17 @@ Modified By:        Date:       Changes:
         String geoOfCountry =  '';
         for(Core_MDF_Hold_Criteria__c newHoldCriteria : holdCriteriaListToBeProcessed){
             //checking if country is selected , the geo has to be selected
+            //ATHR - Deeply Nested if 16209
             if(newHoldCriteria.Core_MDF_Region_Country_txt__c != null){
-              if(newHoldCriteria.Core_MDF_Geo_Txt__c != null){
+                continue;
+            }
+            if(newHoldCriteria.Core_MDF_Geo_Txt__c == null){
+                newHoldCriteria.addError(Label.Core_MDF_GeoCountryMatchError);
+                continue;
+            }
+
+            /*if(newHoldCriteria.Core_MDF_Region_Country_txt__c != null){
+              if(newHoldCriteria.Core_MDF_Geo_Txt__c != null){*/
                   //Split values and store into list
                   geoCountryList = (newHoldCriteria.Core_MDF_Region_Country_txt__c).split(';');
                 for(String geoCountry : geoCountryList){
@@ -138,11 +147,11 @@ Modified By:        Date:       Changes:
                         newHoldCriteria.addError(Label.Core_MDF_GeoCountryMatchError);
                     }
                 }
-              }else{
+              /*}else{
                   //Add error - If country is selected , but geo is not seleted 
                   newHoldCriteria.addError(Label.Core_MDF_GeoCountryMatchError);
                 }
-            }
+            }*/
         }
     }
     /****************************************************************************************************** 
@@ -184,8 +193,16 @@ Modified By:        Date:       Changes:
         String activityCategoryOfType = '';
         for(Core_MDF_Hold_Criteria__c newHoldCriteria : holdCriteriaListToBeProcessed){
             //checking if category-type is selected , then category has to be selected
-            if(newHoldCriteria.Core_MDF_Activity_Category_Type_Txt__c != null){
-              if(newHoldCriteria.Core_MDF_Activity_Category_Txt__c != null){
+            //ATHR - Deeply Nested if 16209
+            if(newHoldCriteria.Core_MDF_Activity_Category_Type_Txt__c == null){
+                continue;
+            }
+            if(newHoldCriteria.Core_MDF_Activity_Category_Txt__c == null){
+                newHoldCriteria.addError(Label.Core_MDF_CategoryTypeMatchError);
+                continue;
+            }
+            /*if(newHoldCriteria.Core_MDF_Activity_Category_Type_Txt__c != null){
+              if(newHoldCriteria.Core_MDF_Activity_Category_Txt__c != null){*/
                   //Split values and store into list
                   activityCategoryTypeList = (newHoldCriteria.Core_MDF_Activity_Category_Type_Txt__c).split(';');
                 for(String activityCategoryType : activityCategoryTypeList){
@@ -199,11 +216,11 @@ Modified By:        Date:       Changes:
                         newHoldCriteria.addError(Label.Core_MDF_CategoryTypeMatchError);
                     }
                 }
-              }else{
+              /*}else{
                   //Add error - If category-type is selected , but category is not seleted
                   newHoldCriteria.addError(Label.Core_MDF_CategoryTypeMatchError);
                   }
-            }
+            }*/
         }
     }
     /****************************************************************************************************** 

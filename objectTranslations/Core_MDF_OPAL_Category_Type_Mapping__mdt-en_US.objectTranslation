@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>OPAL Category Type Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>OPAL Category Type Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Active_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- ActivityCategory_txt --></label>
+        <name>ActivityCategory_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- ActivityType_txt --></label>
+        <name>ActivityType_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Blue Activity Type --></label>
+        <name>Blue_Activity_Type_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Category -&gt;Type --></label>
+        <name>Core_MDF_Activity_Category_Type_txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Stores Budget Type applicable for Activity Category/ Type. --></help>
+        <label><!-- Supported Budget Type_1 --></label>
+        <name>Core_MDF_Supported_Budget_Type_1_txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Stores Budget Type applicable for Activity Category/ Type --></help>
+        <label><!-- Supported Budget Type_2 --></label>
+        <name>Core_MDF_Supported_Budget_Type_2_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Green Activity Type --></label>
+        <name>Green_Activity_Type_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Type Picklist --></label>
+        <name>Record_Type_Picklist__c</name>
+        <picklistValues>
+            <masterLabel>Core_MDF_Channel_MDF</masterLabel>
+            <translation><!-- Core_MDF_Channel_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Client_CoMarketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Client_CoMarketing_Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Data_Center_CoMarketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Data_Center_CoMarketing_Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Intel_Partner_Alliance</masterLabel>
+            <translation><!-- Core_MDF_Intel_Partner_Alliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Retail_Marketing_Funds</masterLabel>
+            <translation><!-- Core_MDF_Retail_Marketing_Funds --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

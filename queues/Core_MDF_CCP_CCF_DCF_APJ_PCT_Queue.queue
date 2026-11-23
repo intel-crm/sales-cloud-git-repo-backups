@@ -2,11 +2,14 @@
 <Queue xmlns="http://soap.sforce.com/2006/04/metadata">
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
-    <name>CCP CCF_DCF APJ PCT Queue</name>
+    <name>CCP Client_Datacenter APJ PCT Queue</name>
     <queueMembers>
         <publicGroups>
             <publicGroup>Core_MDF_CCP_CCF_DCF_APJ_PCT_Grp</publicGroup>
         </publicGroups>
+        <users>
+            <user>12005608@intel.com.crm</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>PartnerFundRequest</sobjectType>

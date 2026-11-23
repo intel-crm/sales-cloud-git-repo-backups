@@ -1,6 +1,7 @@
 ({
     checkRecordAccess: function(component, recordId) {
-var self = this;
+        var self = this;
+
         var action = component.get("c.checkUserRecordAccess");
 
         action.setParams({
@@ -167,6 +168,7 @@ var self = this;
 
         if (!recordId) {
             component.set("v.internalNoteError", "Missing record context. Please refresh and try again.");
+            component.set("v.isSavingInternalNote", false);
             return;
         }
 
@@ -197,6 +199,7 @@ var self = this;
             var errorMessage = self.extractApexError(response.getError(), state, "Error saving Internal Note. Please try again.");
 
             component.set("v.internalNoteError", errorMessage);
+            component.set("v.isSavingInternalNote", false);
             var toastEvent = $A.get("e.force:showToast");
             if (toastEvent) {
                 toastEvent.setParams({
@@ -215,6 +218,7 @@ var self = this;
     handleInternalNoteSaveSuccess: function(component) {
         var saveAndNew = component.get("v.internalNoteSaveAndNew");
         var isEditing = component.get("v.isEditingInternalNote");
+        component.set("v.isSavingInternalNote", false);
 
         if (saveAndNew && !isEditing) {
             component.set("v.internalNoteTitle", "");

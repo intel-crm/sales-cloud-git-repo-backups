@@ -2,15 +2,15 @@
 <GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <valueTranslation>
         <masterLabel>Audio 2025-&gt;Other (Audio)</masterLabel>
-        <translation>オーディオ 2025-&gt;その他 (オーディオ)</translation>
+        <translation><!-- Audio 2025-&gt;Other (Audio) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Audio 2025-&gt;Podcast</masterLabel>
-        <translation>オーディオ 2025-&gt;ポッドキャスト</translation>
+        <translation><!-- Audio 2025-&gt;Podcast --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Audio 2025-&gt;Radio</masterLabel>
-        <translation>オーディオ 2025-&gt;ラジオ</translation>
+        <translation><!-- Audio 2025-&gt;Radio --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Audio-&gt;Other (Audio)</masterLabel>
@@ -66,27 +66,27 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Buyer Incentive 2025-&gt;Offer - Bundle</masterLabel>
-        <translation>購入者インセンティブ 2025-&gt;オファー - バンドル</translation>
+        <translation><!-- Buyer Incentive 2025-&gt;Offer - Bundle --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Buyer Incentive 2025-&gt;Offer - Contest</masterLabel>
-        <translation>購入者インセンティブ 2025-&gt;オファー - コンテスト</translation>
+        <translation><!-- Buyer Incentive 2025-&gt;Offer - Contest --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Buyer Incentive 2025-&gt;Offer - Other</masterLabel>
-        <translation>購入者インセンティブ 2025-&gt;オファー - その他</translation>
+        <translation><!-- Buyer Incentive 2025-&gt;Offer - Other --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Buyer Incentive 2025-&gt;Offer - Rewards</masterLabel>
-        <translation>購入者インセンティブ 2025-&gt;オファー - 報酬</translation>
+        <translation><!-- Buyer Incentive 2025-&gt;Offer - Rewards --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Buyer Incentive 2025-&gt;Offer - Sweepstakes</masterLabel>
-        <translation>購入者インセンティブ 2025-&gt;オファー - 懸賞</translation>
+        <translation><!-- Buyer Incentive 2025-&gt;Offer - Sweepstakes --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Buyer Incentive 2025-&gt;Offer - Target</masterLabel>
-        <translation>購入者インセンティブ 2025-&gt;オファー - ターゲット</translation>
+        <translation><!-- Buyer Incentive 2025-&gt;Offer - Target --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Buyer Incentive-&gt;Offer - Bundle</masterLabel>
@@ -114,11 +114,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Display/Video Ad</masterLabel>
-        <translation>デジタル 2025-&gt;ディスプレイ/ビデオ広告</translation>
+        <translation><!-- Digital 2025-&gt;Display/Video Ad --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Email</masterLabel>
-        <translation>デジタル 2025-&gt;電子メール</translation>
+        <translation><!-- Digital 2025-&gt;Email --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Lead Generation</masterLabel>
@@ -126,23 +126,23 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Other (Digital)</masterLabel>
-        <translation>デジタル 2025-&gt;その他 (デジタル)</translation>
+        <translation><!-- Digital 2025-&gt;Other (Digital) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Search (SEM) Ad</masterLabel>
-        <translation>デジタル 2025-&gt;検索 (SEM) 広告</translation>
+        <translation><!-- Digital 2025-&gt;Search (SEM) Ad --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Social Ad</masterLabel>
-        <translation>デジタル 2025-&gt;ソーシャル広告</translation>
+        <translation><!-- Digital 2025-&gt;Social Ad --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Social Post</masterLabel>
-        <translation>デジタル 2025-&gt;ソーシャルポスト</translation>
+        <translation><!-- Digital 2025-&gt;Social Post --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Web Content</masterLabel>
-        <translation>デジタル 2025-&gt;ウェブコンテンツ</translation>
+        <translation><!-- Digital 2025-&gt;Web Content --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital Media (Pre-2025)-&gt;Channel Partner Website Online Ad</masterLabel>
@@ -199,10 +199,6 @@
     <valueTranslation>
         <masterLabel>Digital Media-&gt;Email</masterLabel>
         <translation>デジタルメディア -&gt; 電子メール</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media-&gt;IndustryPartner.com</masterLabel>
-        <translation><!-- Digital Media-&gt;IndustryPartner.com --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital Media-&gt;Member Website Online Display</masterLabel>
@@ -298,15 +294,15 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Event 2025-&gt;Joint Event</masterLabel>
-        <translation>イベント 2025-&gt;共同開催イベント</translation>
+        <translation><!-- Event 2025-&gt;Joint Event --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Event 2025-&gt;Other (Event)</masterLabel>
-        <translation>イベント 2025-&gt;その他 (イベント)</translation>
+        <translation><!-- Event 2025-&gt;Other (Event) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Event 2025-&gt;Third Party Event</masterLabel>
-        <translation>イベント 2025-&gt;第三者イベント</translation>
+        <translation><!-- Event 2025-&gt;Third Party Event --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Event-&gt;Channel Partner Owned Event</masterLabel>
@@ -393,6 +389,10 @@
         <translation><!-- Innovation -&gt;Engineering --></translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>Lead Generation</masterLabel>
+        <translation><!-- Lead Generation --></translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>Lead Management (Pre-2025)-&gt;Lead Generation</masterLabel>
         <translation>リードの管理 (2025年以前)-&gt;リードの獲得</translation>
     </valueTranslation>
@@ -454,19 +454,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home 2025-&gt;Billboard/Transit</masterLabel>
-        <translation>屋外 2025-&gt;ビルボード / 交通広告</translation>
+        <translation><!-- Out of Home 2025-&gt;Billboard/Transit --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home 2025-&gt;Cinema</masterLabel>
-        <translation>屋外 2025-&gt;シネマ</translation>
+        <translation><!-- Out of Home 2025-&gt;Cinema --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Out of Home 2025-&gt;Other (Out Of Home)</masterLabel>
-        <translation>屋外 2025-&gt;その他 (屋外)</translation>
+        <masterLabel>Out of Home 2025-&gt;Other (Out of Home)</masterLabel>
+        <translation><!-- Out of Home 2025-&gt;Other (Out of Home) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home 2025-&gt;Video Screen</masterLabel>
-        <translation>屋外 2025-&gt;ビデオ画面</translation>
+        <translation><!-- Out of Home 2025-&gt;Video Screen --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home Media (Pre-2025)-&gt;Billboard/Transit</masterLabel>
@@ -542,15 +542,15 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Print 2025-&gt;Collateral</masterLabel>
-        <translation>印刷 2025-&gt;プリント配布資料</translation>
+        <translation><!-- Print 2025-&gt;Collateral --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Print 2025-&gt;Magazine/Newspaper</masterLabel>
-        <translation>印刷 2025-&gt;雑誌 / 新聞</translation>
+        <translation><!-- Print 2025-&gt;Magazine/Newspaper --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Print 2025-&gt;Other (Print)</masterLabel>
-        <translation>印刷 2025-&gt;その他 (印刷物)</translation>
+        <translation><!-- Print 2025-&gt;Other (Print) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Print Media (Pre-2025)-&gt;Catalog/Brochure</masterLabel>
@@ -614,11 +614,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Production 2025-&gt;Content</masterLabel>
-        <translation>製品 2025-&gt;コンテンツ</translation>
+        <translation><!-- Production 2025-&gt;Content --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Production 2025-&gt;Other (Production)</masterLabel>
-        <translation>製品 2025-&gt;その他 (製品)</translation>
+        <translation><!-- Production 2025-&gt;Other (Production) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Production-&gt;Content</masterLabel>
@@ -754,31 +754,31 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness 2025-&gt;Collateral</masterLabel>
-        <translation>販売準備 2025-&gt;プリント配布資料</translation>
+        <translation><!-- Sales Readiness 2025-&gt;Collateral --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness 2025-&gt;Other (Sales Readiness)</masterLabel>
-        <translation>販売準備 2025-&gt;その他 (販売準備)</translation>
+        <translation><!-- Sales Readiness 2025-&gt;Other (Sales Readiness) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness 2025-&gt;Personnel</masterLabel>
-        <translation>販売準備 2025-&gt;人員</translation>
+        <translation><!-- Sales Readiness 2025-&gt;Personnel --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness 2025-&gt;Promotion - Non-Retail</masterLabel>
-        <translation>販売準備 2025-&gt;プロモーション – 非小売</translation>
+        <translation><!-- Sales Readiness 2025-&gt;Promotion - Non-Retail --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness 2025-&gt;Promotion - Retail</masterLabel>
-        <translation>販売準備 2025-&gt;プロモーション – 小売</translation>
+        <translation><!-- Sales Readiness 2025-&gt;Promotion - Retail --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness 2025-&gt;Training Incentive</masterLabel>
-        <translation>販売準備 2025-&gt;トレーニング・インセンティブ</translation>
+        <translation><!-- Sales Readiness 2025-&gt;Training Incentive --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness 2025-&gt;Training/Meeting</masterLabel>
-        <translation>販売準備 2025-&gt;トレーニング / 会議</translation>
+        <translation><!-- Sales Readiness 2025-&gt;Training/Meeting --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness-&gt;Collateral</masterLabel>
@@ -874,19 +874,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Seller Incentive 2025-&gt;SPIF - Contest</masterLabel>
-        <translation>販売者インセンティブ 2025-&gt;SPIF - コンテスト</translation>
+        <translation><!-- Seller Incentive 2025-&gt;SPIF - Contest --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Seller Incentive 2025-&gt;SPIF - Other</masterLabel>
-        <translation>販売者インセンティブ 2025-&gt;SPIF - その他</translation>
+        <translation><!-- Seller Incentive 2025-&gt;SPIF - Other --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Seller Incentive 2025-&gt;SPIF - Target</masterLabel>
-        <translation>販売者インセンティブ 2025-&gt;SPIF - ターゲット</translation>
+        <translation><!-- Seller Incentive 2025-&gt;SPIF - Target --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Seller Incentive 2025-&gt;SPIF - Volume</masterLabel>
-        <translation>販売者インセンティブ 2025-&gt;SPIF - ボリューム</translation>
+        <translation><!-- Seller Incentive 2025-&gt;SPIF - Volume --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Seller Incentive-&gt;SPIF - Contest</masterLabel>
@@ -994,43 +994,43 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Benchmarking</masterLabel>
-        <translation>テクニカルセールス 2025-&gt;ベンチマーク</translation>
+        <translation><!-- Technical Sales 2025-&gt;Benchmarking --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Case Study</masterLabel>
-        <translation>テクニカルセールス 2025-&gt;ケーススタディー</translation>
+        <translation><!-- Technical Sales 2025-&gt;Case Study --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Migration</masterLabel>
-        <translation>テクニカルセールス 2025-&gt;移行</translation>
+        <translation><!-- Technical Sales 2025-&gt;Migration --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Other (Technical Sales)</masterLabel>
-        <translation>テクニカルセールス 2025-&gt;その他 (テクニカルセールス)</translation>
+        <translation><!-- Technical Sales 2025-&gt;Other (Technical Sales) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Proof of Concept</masterLabel>
-        <translation>テクニカルセールス 2025-&gt;プルーフ・オブ・コンセプト</translation>
+        <translation><!-- Technical Sales 2025-&gt;Proof of Concept --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Sales Event</masterLabel>
-        <translation>テクニカルセールス 2025-&gt;販売イベント</translation>
+        <translation><!-- Technical Sales 2025-&gt;Sales Event --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Seed Unit</masterLabel>
-        <translation>テクニカルセールス 2025-&gt;シードユニット</translation>
+        <translation><!-- Technical Sales 2025-&gt;Seed Unit --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;System Demo</masterLabel>
-        <translation>テクニカルセールス 2025-&gt;システムデモ</translation>
+        <translation><!-- Technical Sales 2025-&gt;System Demo --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Telemarketing</masterLabel>
-        <translation>テクニカルセールス 2025-&gt;テレマーケティング</translation>
+        <translation><!-- Technical Sales 2025-&gt;Telemarketing --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Trial Instance</masterLabel>
-        <translation>テクニカルセールス 2025-&gt;トライアル・インスタンス</translation>
+        <translation><!-- Technical Sales 2025-&gt;Trial Instance --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales-&gt;Benchmarking</masterLabel>
@@ -1074,15 +1074,15 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Video 2025-&gt;Other (Video)</masterLabel>
-        <translation>ビデオ 2025-&gt;その他 (ビデオ)</translation>
+        <translation><!-- Video 2025-&gt;Other (Video) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Video 2025-&gt;Streaming</masterLabel>
-        <translation>ビデオ 2025-&gt;ストリーミング</translation>
+        <translation><!-- Video 2025-&gt;Streaming --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Video 2025-&gt;Television</masterLabel>
-        <translation>ビデオ 2025-&gt;テレビ</translation>
+        <translation><!-- Video 2025-&gt;Television --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Video-&gt;Other (Video)</masterLabel>

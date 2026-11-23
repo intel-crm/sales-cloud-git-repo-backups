@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>IUPGM PE</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>IUPGM PE</value>
+    </caseValues>
+    <fields>
+        <label><!-- DML Operation Type --></label>
+        <name>Core_MDF_DML_Operation_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- IUPGM Old Values --></label>
+        <name>Core_MDF_IUPGM_Old_Values__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old Active Ind Value --></label>
+        <name>Core_MDF_Old_Active_Ind_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Id --></label>
+        <name>Core_MDF_Record_Id__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

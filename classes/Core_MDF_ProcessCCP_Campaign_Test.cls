@@ -498,6 +498,8 @@ private class Core_MDF_ProcessCCP_Campaign_Test {
            RmfCamp1.StartDate=System.today()+5;
            RmfCamp1.EndDate=System.today()+10; 
            update RmfCamp1;
+            // Unit Test Method should include System.Assert - Indira
+            System.assertEquals(4, campaignList.size(), 'Campaign list should contain 4 campaigns');
             
             Campaign cmp =  [SELECT Id, Core_MDF_Activity_Category__c, Core_MDF_Activity_Type__c, Core_MDF_Activity_Category_Type__c from Campaign
                              WHERE Id =:camp.Id LIMIT 1];  
@@ -879,6 +881,8 @@ private class Core_MDF_ProcessCCP_Campaign_Test {
         camp.Core_MDF_Proposal_Based_Ind__c = false;
         update camp;
         Test.stopTest();
+       // Unit Test Method should include System.Assert - Indira
+       System.assertEquals(false, camp.Core_MDF_Proposal_Based_Ind__c, 'Proposal Based indicator should be false');
     }
     }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}     
     }
@@ -935,7 +939,9 @@ private class Core_MDF_ProcessCCP_Campaign_Test {
  Database.insert(pfr);
  camp.Core_MDF_Reimbursement_Rate__c='90%';
  update camp;
-    
+ // Unit Test Method should include System.Assert - Indira
+  System.assertEquals(1, campList.size(), 'Campaign list should contain 1 campaign');  
+     
      if(campList.size() > 0){
          Core_MDF_CampaignUtility.notifyFinanceusers(campList);
      }
@@ -956,6 +962,9 @@ private class Core_MDF_ProcessCCP_Campaign_Test {
         campaignList.add(RmfCamp);
         Database.insert (campaignList);
         campMap.put(RmfCamp.Id, RmfCamp);
+         // Unit Test Method should include System.Assert - Indira   
+         System.assertEquals(1, campMap.size(), 'Campaign map should contain 1 campaign');
+            
            Group grp = [Select id from group where name = 'Core CCP Retail ASMO INTERNAL'];
         campIdToGrpsToBeDeleted.put(RmfCamp.Id, new Set<Id>{grp.Id});
         Core_MDF_ProcessCCP_Campaign.shareUnshareCampaignGenericMethod(campMap, campIdToGrpsToBeDeleted);
@@ -963,7 +972,7 @@ private class Core_MDF_ProcessCCP_Campaign_Test {
         Core_MDF_ProcessCCP_Campaign.determineCampaignAttributes(campaignList, campMap, true, true);
         Core_MDF_ProcessCCP_Campaign.shareUnshareCampaign(campaignList, campMap, true, true);
             
-
+        
         }
         }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}     
     }
@@ -1003,9 +1012,9 @@ private class Core_MDF_ProcessCCP_Campaign_Test {
         acc.Core_MDF_Parent_Fund_Account__c = acc1.Id;
         Database.insert(acc); 
         // Prepare campaign
-        /*Campaign c = new Campaign(Name = 'CAP Test Campaign123', StartDate = Date.today().addDays(-1), EndDate = Date.today().addDays(10),Core_MDF_Account__c = acc.id);
-        insert c;*/       
-        Campaign c = [Select id from campaign where name ='Campaign CAP Campaign'];
+        Campaign c = new Campaign(Name = 'CAP Test Campaign123', StartDate = Date.today().addDays(-1), EndDate = Date.today().addDays(10));
+        insert c;       
+        
         PartnerMarketingBudget pmb = [SELECT Id FROM PartnerMarketingBudget LIMIT 1];
             
         PartnerFundAllocation pfa = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Allocation123',pmb,acc,10.0,true);
@@ -1045,17 +1054,10 @@ private class Core_MDF_ProcessCCP_Campaign_Test {
     }
     
     @isTest static void testCheckEdit_removedAndNotRemoved() {
-        Account acc = [Select id from Account where Name ='Co-marketing CCF Test Account'];
-        Campaign oldC = Core_MDF_CCP_TestDataUtility.createCampaign('Campaign CAP Campaign Old','Gaming','Intel® Core™ i7+ Processor','Yes' ,Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today(), System.today().adddays(30), 10000, 'Consumer Chromebook', acc.Id, '2-in-1', false);
-            oldC.Core_MDF_Opal_Budget_Type_Txt__c= 'MDF';
-            Database.insert(oldC);
-        Campaign newC = Core_MDF_CCP_TestDataUtility.createCampaign('Campaign CAP Campaign New','Gaming','Intel® Core™ i7+ Processor','Yes' ,Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today(), System.today().adddays(30), 10000, 'Consumer Chromebook', acc.Id, '2-in-1', false);
-            newC.Core_MDF_Opal_Budget_Type_Txt__c= 'MDF';
-            Database.insert(newC);
-        /*Campaign oldC = new Campaign(Name = 'Old', StartDate = Date.today().addDays(-10), EndDate = Date.today().addDays(10), Core_MDF_Account__c=acc.id);
+        Campaign oldC = new Campaign(Name = 'Old', StartDate = Date.today().addDays(-10), EndDate = Date.today().addDays(10));
         insert oldC;
-        Campaign newC = new Campaign(Name = 'New', StartDate = Date.today().addDays(-10), EndDate = Date.today().addDays(10),Core_MDF_Account__c=acc.id);
-        insert newC;   */     
+        Campaign newC = new Campaign(Name = 'New', StartDate = Date.today().addDays(-10), EndDate = Date.today().addDays(10));
+        insert newC;        
         String fieldApi = 'Description';
         // Set old and new values through update (we'll construct maps and call method directly)
         Campaign oldCampaign = new Campaign(Id = oldC.Id, Description = 'A;B;C');

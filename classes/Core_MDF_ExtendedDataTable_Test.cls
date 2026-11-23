@@ -10,7 +10,9 @@ public class Core_MDF_ExtendedDataTable_Test {
         insert usr;
         
         System.runAs(usr){
-
+          // Highlight: Unused Local Variable - 14285 // Suma
+         //String objName='Contact';
+        //String objectName='Campaign';
         List<String> comList =new List<String>();
         List<Campaign> capList =new List<Campaign>();
         // List<Account> accList = new List<Account>();
@@ -44,7 +46,8 @@ public class Core_MDF_ExtendedDataTable_Test {
         
         comList.add(campCAP.Id);
         String campId = campCAP.Id;
-
+                // Highlight: Unused Local Variable - 14285 // Suma
+            //String filterCondition ='Id ='+ '\'' +  campCAP.Id + '\'';
             
             //Account accCoMarket = [select id from Account WHERE Name = 'Test Account 3'];
             PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(campCAP.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,ccfacc.id,null,null,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event','Channel Partner Owned Event','Draft',false);

@@ -16,14 +16,17 @@ global with sharing  class Core_RestAPI_CaseCommentsV1 {
     @HttpGet
     global static Core_RestAPI_Response doGet(){
     
+        System.debug('Inside the Get method of Case Comment');
         Core_RestAPI_CaseCommentV1_Handler handler = new Core_RestAPI_CaseCommentV1_Handler (ENTRY_TIME, RESTAPI_NAME); 
         Core_RestAPI_Response response = handler.getCaseComments();
         return response;
     }
     @HttpPost
     global static Core_RestAPI_Response doPost(Core_RestAPI_CC_CreateV1_Wrapper caseComments){
+        System.debug('Inside the Post method of Case Comment');
         Core_RestAPI_CC_CreateV1_Handler handler = new Core_RestAPI_CC_CreateV1_Handler(ENTRY_TIME, RESTAPI_NAME,caseComments);
         Core_RestAPI_Response response = handler.createCaseComments();
+        System.debug('Response for Post method==>'+response);
         return response;
         
     }

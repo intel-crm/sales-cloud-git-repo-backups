@@ -1,0 +1,30 @@
+<template>
+    <div class="slds-grid">
+        <div class="slds-col slds-has-flexi-truncate">
+            <div class="slds-media">
+                <div class="slds-media__figure">
+                    <span class="slds-icon_container slds-icon-standard-partner-fund-request" title={title}>
+                        <img class="slds-icon slds-page-header__icon"
+                            src="https://intel--crmdevccp.sandbox.my.salesforce.com/img/icon/t4v35/standard/partner_fund_request_120.png"
+                            alt="Partner Fund Request" aria-hidden="true">
+                    </span>
+                </div>
+                <div class="slds-media__body">
+                    <div class="slds-grid slds-wrap slds-align_absolute-center">
+                        <div class="slds-col slds-truncate slds-p-right_x-small" title={title}>
+                            <h1 class="slds-page-header__title slds-truncate slds-align-middle">{title}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-col slds-no-flex slds-grid slds-align-top">
+            <div class="slds-page-header__col-controls">
+                <div class="slds-button-group" role="group">
+                    <lightning-button variant="brand" label="New" title="New Campaign" onclick={handleNew}>
+                    </lightning-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

@@ -433,6 +433,9 @@
         <locationY>200</locationY>
         <actionName>Core_MDF_BudgetCapShare</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>myDecision4</targetReference>
+        </connector>
         <inputParameters>
             <processMetadataValues>
                 <name>dataType</name>
@@ -476,6 +479,453 @@
             </value>
         </inputParameters>
         <nameSegment>Core_MDF_BudgetCapShare</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>ActionCallType</name>
+            <value>
+                <stringValue>flow</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>flowSelection</name>
+            <value>
+                <stringValue>Core_MDF_FL_Update_the_Budget_Status_to_Pending_Review_and_IsIgnoreValidation_to_true_and_Send_for_Approval</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_5_A1</name>
+        <label>Update Budget Status to Pending review and call Approval Process</label>
+        <locationX>500</locationX>
+        <locationY>200</locationY>
+        <actionName>Core_MDF_FL_Update_the_Budget_Status_to_Pending_Review_and_Send_for_Approval</actionName>
+        <actionType>flow</actionType>
+        <connector>
+            <targetReference>myDecision6</targetReference>
+        </connector>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>vBudgetId</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>vBudgetId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_MDF_FL_Update_the_Budget_Status_to_Pending_Review_and_Send_for_Approval</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>ActionCallType</name>
+            <value>
+                <stringValue>flow</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>flowSelection</name>
+            <value>
+                <stringValue>Core_MDF_FL_Update_the_Budget_Status_to_Pending_Review_and_IsIgnoreValidation_to_true_and_Send_for_Approval</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_7_A1</name>
+        <label>Update Budget Status to Pending review and call Approval Process</label>
+        <locationX>700</locationX>
+        <locationY>200</locationY>
+        <actionName>Core_MDF_FL_Update_the_Budget_Status_to_Pending_Review_and_Send_for_Approval</actionName>
+        <actionType>flow</actionType>
+        <connector>
+            <targetReference>myDecision8</targetReference>
+        </connector>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>vBudgetId</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>vBudgetId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_MDF_FL_Update_the_Budget_Status_to_Pending_Review_and_Send_for_Approval</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>ActionCallType</name>
+            <value>
+                <stringValue>flow</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>flowSelection</name>
+            <value>
+                <stringValue>Core_MDF_CreateOrUpdateAllocationRecordWhenBudgetIsReleased</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_9_A1</name>
+        <label>Core_MDF_CreateOrUpdateAllocationRecordWhenBudgetIsReleased</label>
+        <locationX>900</locationX>
+        <locationY>200</locationY>
+        <actionName>Core_MDF_CreateOrUpdateAllocationRecordWhenBudgetIsReleased</actionName>
+        <actionType>flow</actionType>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>vBudgetAccountId</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>vBudgetAccountId</name>
+            <value>
+                <elementReference>myVariable_current.Core_MDF_Budget_Partner__r.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>vBudgetAmount</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>vBudgetAmount</name>
+            <value>
+                <elementReference>myVariable_current.Amount</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>vBudgetId</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>vBudgetId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>vBudgetName</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>vBudgetName</name>
+            <value>
+                <elementReference>myVariable_current.Title</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>vProgramName</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>vProgramName</name>
+            <value>
+                <elementReference>myVariable_current.Core_MDF_Program__r.Name</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>vTotalAllocationAmount</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>vTotalAllocationAmount</name>
+            <value>
+                <elementReference>myVariable_current.TotalAllocatedAmount</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>vDecreasedBudgetAmount</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>vDecreasedBudgetAmount</name>
+            <value>
+                <elementReference>myVariable_current.Core_MDF_Decrease_Budget_Amount_Amt__c</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_MDF_CreateOrUpdateAllocationRecordWhenBudgetIsReleased</nameSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
@@ -521,6 +971,9 @@
         <label>myDecision2</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision4</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_3</name>
@@ -536,6 +989,96 @@
                 <targetReference>myRule_3_A1</targetReference>
             </connector>
             <label>Call budgetCapShare method</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>2.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision4</name>
+        <label>myDecision4</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision6</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_5</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_5</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_5_A1</targetReference>
+            </connector>
+            <label>Just execute when a New Budget record of type CoMarketing is created</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>3.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision6</name>
+        <label>myDecision6</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision8</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_7</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_7</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_7_A1</targetReference>
+            </connector>
+            <label>Just execute when a Budget record of type CoMarketing is updated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>4.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision8</name>
+        <label>myDecision8</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_9</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_9</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_9_A1</targetReference>
+            </connector>
+            <label>If Budget Status is Updated from Approved to Released for a Co-Marketing RT</label>
         </rules>
     </decisions>
     <description>This PB is used to give access to Internal and External groups for Budgets.</description>
@@ -587,7 +1130,98 @@ AND(ISCHANGED({!myVariable_current.Core_MDF_Budget_Status__c} ),ISPICKVAL({!myVa
         ISPICKVAL({!myVariable_current.Core_MDF_Budget_Status__c},&apos;Released&apos;) 
 	)</expression>
     </formulas>
-    <interviewLabel>Core_MDF_BudgetSharing_Process-17_InterviewLabel</interviewLabel>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND (
+ISNEW(),
+OR(
+[PartnerMarketingBudget].RecordType.DeveloperName = $Label.Core_MDF_Co_Marketing_Record_Type_Developer_Name,
+[PartnerMarketingBudget].RecordType.DeveloperName =
+$Label.Core_MDF_Retail_Record_Type_Developer_Name )
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_5</name>
+        <dataType>Boolean</dataType>
+        <expression>AND (
+ISNEW(),
+OR(
+{!myVariable_current.RecordType.DeveloperName} = {!$Label.Core_MDF_Co_Marketing_Record_Type_Developer_Name},
+{!myVariable_current.RecordType.DeveloperName} =
+{!$Label.Core_MDF_Retail_Record_Type_Developer_Name} )
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND (
+NOT($Permission.Core_MDF_FinanceManager ),
+NOT(ISNEW()),
+OR( 
+	ISCHANGED([PartnerMarketingBudget].StartDate) 
+	,ISCHANGED([PartnerMarketingBudget].EndDate) 
+	,ISCHANGED([PartnerMarketingBudget].Amount)
+	,AND(
+		ISCHANGED([PartnerMarketingBudget].Core_MDF_Decrease_Budget_Amount_Amt__c ),
+		(IF((ISPICKVAL([PartnerMarketingBudget].Core_MDF_Budget_Status__c, &quot;Rejected&quot;)),true, (([PartnerMarketingBudget].Core_MDF_Decrease_Budget_Amount_Amt__c ) &gt; 0)))
+	)
+    ),
+OR(
+[PartnerMarketingBudget].RecordType.DeveloperName = $Label.Core_MDF_Co_Marketing_Record_Type_Developer_Name,
+[PartnerMarketingBudget].RecordType.DeveloperName = $Label.Core_MDF_Retail_Record_Type_Developer_Name ) 
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_7</name>
+        <dataType>Boolean</dataType>
+        <expression>AND (
+NOT({!$Permission.Core_MDF_FinanceManager} ),
+NOT(ISNEW()),
+OR( 
+	ISCHANGED({!myVariable_current.StartDate}) 
+	,ISCHANGED({!myVariable_current.EndDate}) 
+	,ISCHANGED({!myVariable_current.Amount})
+	,AND(
+		ISCHANGED({!myVariable_current.Core_MDF_Decrease_Budget_Amount_Amt__c} ),
+		(IF((ISPICKVAL({!myVariable_current.Core_MDF_Budget_Status__c}, &quot;Rejected&quot;)),true, (({!myVariable_current.Core_MDF_Decrease_Budget_Amount_Amt__c} ) &gt; 0)))
+	)
+    ),
+OR(
+{!myVariable_current.RecordType.DeveloperName} = {!$Label.Core_MDF_Co_Marketing_Record_Type_Developer_Name},
+{!myVariable_current.RecordType.DeveloperName} = {!$Label.Core_MDF_Retail_Record_Type_Developer_Name} ) 
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(TEXT([PartnerMarketingBudget].Core_MDF_Budget_Status__c) == $Label.Core_MDF_Budget_Status_Released,
+OR(AND(ISCHANGED([PartnerMarketingBudget].Core_MDF_Budget_Status__c), 
+OR([PartnerMarketingBudget].RecordType.DeveloperName = $Label.Core_MDF_Co_Marketing_Record_Type_Developer_Name, 
+[PartnerMarketingBudget].RecordType.DeveloperName =
+$Label.Core_MDF_Retail_Record_Type_Developer_Name ),
+PRIORVALUE([PartnerMarketingBudget].Core_MDF_Budget_Status__c) = $Label.Core_MDF_Budget_Status_Approved),
+[PartnerMarketingBudget].RecordType.DeveloperName =
+$Label.Core_MDF_IPA_Record_Type_Developer_Name)
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_9</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(TEXT({!myVariable_current.Core_MDF_Budget_Status__c}) == {!$Label.Core_MDF_Budget_Status_Released},
+OR(AND(ISCHANGED({!myVariable_current.Core_MDF_Budget_Status__c}), 
+OR({!myVariable_current.RecordType.DeveloperName} = {!$Label.Core_MDF_Co_Marketing_Record_Type_Developer_Name}, 
+{!myVariable_current.RecordType.DeveloperName} =
+{!$Label.Core_MDF_Retail_Record_Type_Developer_Name} ),
+PRIORVALUE({!myVariable_current.Core_MDF_Budget_Status__c}) = {!$Label.Core_MDF_Budget_Status_Approved}),
+{!myVariable_current.RecordType.DeveloperName} =
+{!$Label.Core_MDF_IPA_Record_Type_Developer_Name})
+)</expression>
+    </formulas>
+    <interviewLabel>Core_MDF_BudgetSharing_Process-20_InterviewLabel</interviewLabel>
     <label>Core_MDF_BudgetSharing_Process</label>
     <processMetadataValues>
         <name>ObjectType</name>

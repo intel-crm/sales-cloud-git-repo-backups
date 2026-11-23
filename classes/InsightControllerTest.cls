@@ -1,17 +1,10 @@
 @isTest
 private class InsightControllerTest {
-  //  static final String sampleHeadlessConfiguration = '{"platformUrl":"https://platform.cloud.coveo.com","accessToken":"xx564559b1-0045-48e1-953c-3addd1ee4457","organizationId":"searchuisamples"}';
-  //  @IsTest
-   // static void shouldReturnStringifiedConfiguration(){
-   //     Test.startTest();
-   //     System.assertEquals(sampleHeadlessConfiguration, InsightController.getHeadlessConfiguration());
-   //     Test.stopTest();
-   // }
-      static final String sampleHeadlessConfiguration = '{"platformUrl":"https://platform.cloud.coveo.com","accessToken":"xx564559b1-0045-48e1-953c-3addd1ee4457","organizationId":"searchuisamples"}';
-      @IsTest
-    static void InsightControllerTest(){
+    static final String sampleHeadlessConfiguration = '{"platformUrl":"https://platform.cloud.coveo.com","accessToken":"xx564559b1-0045-48e1-953c-3addd1ee4457","organizationId":"searchuisamples"}';
+    @IsTest
+    static void shouldReturnStringifiedConfiguration(){
         Test.startTest();
-         InsightController.getHeadlessConfiguration();
+        System.assertEquals(sampleHeadlessConfiguration, InsightController.getHeadlessConfiguration());
         Test.stopTest();
     }
 }

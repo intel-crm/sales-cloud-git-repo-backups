@@ -350,24 +350,28 @@
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>AND(TEXT([PartnerMarketingBudget].Core_MDF_Budget_Status__c) == $Label.Core_MDF_Budget_Status_Released, 
+                <stringValue>OR(AND(TEXT([PartnerMarketingBudget].Core_MDF_Budget_Status__c) == $Label.Core_MDF_Budget_Status_Released, 
 ISCHANGED([PartnerMarketingBudget].Core_MDF_Budget_Status__c), 
 OR([PartnerMarketingBudget].RecordType.DeveloperName = $Label.Core_MDF_Co_Marketing_Record_Type_Developer_Name, 
 [PartnerMarketingBudget].RecordType.DeveloperName =
 $Label.Core_MDF_Retail_Record_Type_Developer_Name ),
-PRIORVALUE([PartnerMarketingBudget].Core_MDF_Budget_Status__c) = $Label.Core_MDF_Budget_Status_Approved)</stringValue>
+PRIORVALUE([PartnerMarketingBudget].Core_MDF_Budget_Status__c) = $Label.Core_MDF_Budget_Status_Approved),
+AND(TEXT([PartnerMarketingBudget].Core_MDF_Budget_Status__c) == $Label.Core_MDF_Budget_Status_Released,[PartnerMarketingBudget].Core_MDF_IsApprovalProcessBypassed_Ind__c )
+)</stringValue>
             </value>
         </processMetadataValues>
         <name>formula_myRule_1</name>
         <dataType>Boolean</dataType>
-        <expression>AND(TEXT({!myVariable_current.Core_MDF_Budget_Status__c}) == {!$Label.Core_MDF_Budget_Status_Released}, 
+        <expression>OR(AND(TEXT({!myVariable_current.Core_MDF_Budget_Status__c}) == {!$Label.Core_MDF_Budget_Status_Released}, 
 ISCHANGED({!myVariable_current.Core_MDF_Budget_Status__c}), 
 OR({!myVariable_current.RecordType.DeveloperName} = {!$Label.Core_MDF_Co_Marketing_Record_Type_Developer_Name}, 
 {!myVariable_current.RecordType.DeveloperName} =
 {!$Label.Core_MDF_Retail_Record_Type_Developer_Name} ),
-PRIORVALUE({!myVariable_current.Core_MDF_Budget_Status__c}) = {!$Label.Core_MDF_Budget_Status_Approved})</expression>
+PRIORVALUE({!myVariable_current.Core_MDF_Budget_Status__c}) = {!$Label.Core_MDF_Budget_Status_Approved}),
+AND(TEXT({!myVariable_current.Core_MDF_Budget_Status__c}) == {!$Label.Core_MDF_Budget_Status_Released},{!myVariable_current.Core_MDF_IsApprovalProcessBypassed_Ind__c} )
+)</expression>
     </formulas>
-    <interviewLabel>Core_MDF_PB_CreateOrUpdateAllocationRecordWhenBudgetStatusIsUpdatedToReleased-4_InterviewLabel</interviewLabel>
+    <interviewLabel>Core_MDF_PB_CreateOrUpdateAllocationRecordWhenBudgetStatusIsUpdatedToReleased-5_InterviewLabel</interviewLabel>
     <label>Core_MDF_PB_CreateOrUpdateAllocationRecordWhenBudgetStatusIsUpdatedToReleased</label>
     <processMetadataValues>
         <name>ObjectType</name>

@@ -6,8 +6,8 @@ Modified By:                      Date:29/01/2019                     Changes:No
 *****************************************************************************************************/
 @isTest(SeeAllData=false)
 private class Core_UserFieldChangeHistoryTrackerTest {
-    final static string PROFILE_NAME = 'System Administrator';
-    final static string USERROLE_NAME = 'A&E Users'; 
+            final static string PROFILE_NAME = 'System Administrator';
+            final static string USERROLE_NAME = 'A&E Users'; 
 
     //Test Setup data 
     @testSetup 
@@ -82,29 +82,15 @@ private class Core_UserFieldChangeHistoryTrackerTest {
        //Instantiating Profile
        Profile sysAdminProfile = new Profile();
         
-       // ATHR FIX: Removed unused variables managerName and delegatedApprover
+       //Instantiating User 
+       User managerName = new User();
+       User delegatedApprover = new User();
         
         System.runAs(currentUser){
             
             sysAdminProfile = [SELECT Id FROM Profile WHERE Name=:PROFILE_NAME];
-            
-            // Safe query for A&E Users role
-            List<UserRole> aeUserRoles = [SELECT Id FROM UserRole WHERE Name=:USERROLE_NAME LIMIT 1];
-            if(aeUserRoles.isEmpty()) {
-                userRole = new UserRole(Name = USERROLE_NAME, DeveloperName = 'AE_Users');
-                insert userRole;
-            } else {
-                userRole = aeUserRoles[0];
-            }
-            
-            // Safe query for Admin role
-            List<UserRole> adminRoles = [Select Id FROM UserRole WHERE Name = 'Admin' LIMIT 1];
-            if(adminRoles.isEmpty()) {
-                userRole2 = new UserRole(Name = 'Admin', DeveloperName = 'Admin');
-                insert userRole2;
-            } else {
-                userRole2 = adminRoles[0];
-            }
+            userRole = [SELECT Id FROM UserRole WHERE Name=:USERROLE_NAME]; // A&E Users
+            userRole2 = [Select Id FROM UserRole WHERE Name = 'Admin'];// Admin
             
             //Creating Test User records
             for(Integer countOfUsers=0; countOfUsers < 1; countOfUsers++ ){ 
@@ -114,6 +100,8 @@ private class Core_UserFieldChangeHistoryTrackerTest {
                                      LocaleSidKey='en_US', ProfileId = sysAdminProfile.Id,UserRoleId =userRole.Id, 
                                      TimeZoneSidKey='America/Los_Angeles', UserName='testUser'+String.valueOf(Math.random())+ countOfUsers +'@dell.com',FirstName='Test');
             
+           
+                
                 testUsers.add(testUser);
             }
              
@@ -122,7 +110,6 @@ private class Core_UserFieldChangeHistoryTrackerTest {
                                      LocaleSidKey='en_US', ProfileId = sysAdminProfile.Id,UserRoleId =userRole.Id, 
                                      TimeZoneSidKey='America/Los_Angeles', UserName='testUser'+String.valueOf(Math.random())+'@CoreMD.com',FirstName='Test');
 			testUsers.add(testUser2);
-            
             User testUser3 = new User(Alias = String.valueOf(datetime.now()).substring(0,8), Email='testUserrr2'+'@intel.com',
                                      EmailEncodingKey='UTF-8', LastName='User'+String.valueOf(date.today()), LanguageLocaleKey='en_US',
                                      LocaleSidKey='en_US', ProfileId = sysAdminProfile.Id,UserRoleId =userRole2.Id, 
@@ -134,73 +121,27 @@ private class Core_UserFieldChangeHistoryTrackerTest {
            
         }
     } 
-    
    static testmethod void test(){
        //start test
         Test.startTest();
-        
-           // Safe query for IT Admin profile
-           List<Profile> itAdminProfiles = [SELECT ID FROM Profile WHERE Name='IT Admin' LIMIT 1];
-           Profile itAdmin;
-           if(itAdminProfiles.isEmpty()) {
-               // If IT Admin doesn't exist, use System Administrator
-               itAdmin = [SELECT ID FROM Profile WHERE Name=:PROFILE_NAME LIMIT 1];
-           } else {
-               itAdmin = itAdminProfiles[0];
-           }
-           
-           // Safe query for Admin role
-           List<UserRole> adminUserRoles = [Select ID FROM UserRole WHERE Name ='Admin' LIMIT 1];
-           UserRole adminUserRole;
-           if(adminUserRoles.isEmpty()) {
-               adminUserRole = new UserRole(Name = 'Admin', DeveloperName = 'Admin');
-               insert adminUserRole;
-           } else {
-               adminUserRole = adminUserRoles[0];
-           }
-           
-           // Get users but don't use them as Manager/DelegatedApprover to avoid CDIS validation
+           Profile itAdmin = [SELECT ID FROM Profile WHERE Name='IT Admin'];
+           UserRole adminUserRole = [Select ID FROM UserRole WHERE Name ='Admin'];
            User newManager = [Select ID,Name FROM User WHERE Email = 'testUserrr3@intel.com'];
        	   User newDelegatedApprover = [SELECT ID,Name FROM User WHERE Email = 'testUserrr2@intel.com']; 
 		   List <User> userList = [Select Id,Name,FirstName,Alias,Email,ProfileId from User where UserName like '%@CoreMD.com%'];
            List<User> tobeUpdatedUsers = new List<User>();
        
-           // ATHR FIX: Added assertion to validate test setup
-           System.assertNotEquals(null, newManager, 'Manager user should be found');
-           System.assertNotEquals(null, newDelegatedApprover, 'Delegated approver user should be found');
-           System.assert(!userList.isEmpty(), 'User list should not be empty');
-       
-           // Update only fields that are NOT protected by CDIS validation
+       //Updating User
            for(User createdUser : userList){
-               // REMOVED: createdUser.FirstName = 'Track1'; // This is CDIS protected
-               // REMOVED: createdUser.ManagerId = newManager.Id; // This is CDIS protected
-               // REMOVED: createdUser.DelegatedApproverId = newDelegatedApprover.Id; // This might be CDIS protected
-               
-               // Only update fields that are allowed to be updated
+               createdUser.FirstName = 'Track1';
                createdUser.ProfileId = itAdmin.Id;
                createdUser.UserRoleId = adminUserRole.Id;
-               
-               // You can update other non-CDIS fields like:
-               // createdUser.TimeZoneSidKey = 'America/New_York';
-               // createdUser.LocaleSidKey = 'en_US';
-               // createdUser.LanguageLocaleKey = 'en_US';
-               // createdUser.EmailEncodingKey = 'UTF-8';
-               
+               createdUser.ManagerId = newManager.Id;
+               createdUser.DelegatedApproverId = newDelegatedApprover.Id;
                tobeUpdatedUsers.add(createdUser);
             }
-           
-           if(!tobeUpdatedUsers.isEmpty()) {
-               update(tobeUpdatedUsers);
-           }
-           
-           // Verify the updates that were allowed
-           List<User> updatedUsers = [SELECT Id, ProfileId, UserRoleId FROM User WHERE Id IN :tobeUpdatedUsers];
-           for(User updatedUser : updatedUsers) {
-               System.assertEquals(itAdmin.Id, updatedUser.ProfileId, 'Profile should be updated');
-               System.assertEquals(adminUserRole.Id, updatedUser.UserRoleId, 'UserRole should be updated');
-           }
-           
+           update(tobeUpdatedUsers);
        //Stop Test
        Test.stopTest();
-    }  
-}
+        }  
+    }

@@ -3,7 +3,7 @@
 * Version     : 1.0 
 * Created Date: 10-Nov-2020
 * Modification Log :
-* Developer            		Date               Description
+* Developer                Date               Description
 * ---------------------------------------------------------------------------------------------------------------------------------------
 * Accenture - Pranav       10-NOV-2020         Used to Send Email To GSPO With File Attachment For Individual Vat Claims of Payment Run
 *****************************************************************************************************************************************/
@@ -26,17 +26,17 @@ public without sharing class Core_MDF_Batch_SendEmailToGSPO implements Database.
     public Core_MDF_Batch_SendEmailToGSPO(List<PartnerFundClaim> vatClaimList)
     {
         if(vatClaimList != NULL){
-			this.vatClaimList = vatClaimList; 
+      this.vatClaimList = vatClaimList; 
             for(PartnerFundClaim vatPfc : this.vatClaimList){
                 pRunRecordIdSet.add(vatPfc.Core_MDF_Payment_Id__r.Core_MDF_Payment_Run_Id__c);
             }
-        	//pRunRecordId = vatClaimList[0].Core_MDF_Payment_Id__r.Core_MDF_Payment_Run_Id__c;
+          //pRunRecordId = vatClaimList[0].Core_MDF_Payment_Id__r.Core_MDF_Payment_Run_Id__c;
         }
     }
     
     public Database.QueryLocator start(Database.BatchableContext bc) 
     {   
-    String query = 'Select Id, Core_MDF_Approved_File_Id__c,Core_MDF_Claim_Id__r.Title from Core_MDF_Claim_VAT_Info__c where (Core_MDF_Claim_Id__c IN : vatClaimList OR Core_MDF_Sub_Claim_Id__c IN :vatClaimList)';
+    String query = 'Select Id, Core_MDF_Approved_File_Id__c,Core_MDF_Claim_Id__r.Title from Core_MDF_Claim_VAT_Info__c where (Core_MDF_Claim_Id__c IN :vatClaimList OR Core_MDF_Sub_Claim_Id__c IN :vatClaimList)';
         return Database.getQueryLocator(query);
     }
     
@@ -66,9 +66,15 @@ public without sharing class Core_MDF_Batch_SendEmailToGSPO implements Database.
                 gspoEmailWrapper.emailIds = system.label.Core_MDF_GSPOEmailAddress;
                 gspoEmailWrapper.recordId = contentDocIdToVatInfoMap.get(String.valueOf(cversion.ContentDocumentId)).Id;
                 gspoEmailWrapper.templateName = 'Core_MDF_VatNotificationForGSPO';
+                gspoEmailWrapper.objectName ='PFC - PartnerFundClaim';
+                gspoEmailWrapper.notificationName ='PFC_CLM_SCR';
+                gspoEmailWrapper.sendDiff = false;
+                List<String> excludedUserEmailList = new List<String>();
+                //excludedUserEmailList.add('alekhyax.nilagiri@intel.com');
+                gspoEmailWrapper.excludedUserEmailList = excludedUserEmailList;
                 if(cversion.versiondata != NULL && cversion.PathOnClient != null){
                     //Versiondata stores the content or body of the Content Version
-                	emailAttachment.blobData = cversion.versiondata;
+                  emailAttachment.blobData = cversion.versiondata;
                     //PathOnClient stores the filename of the uploaded Content Document
                     emailAttachment.fileName = cversion.PathOnClient;
                 }
@@ -79,7 +85,7 @@ public without sharing class Core_MDF_Batch_SendEmailToGSPO implements Database.
             }
             // Generic Method to Send Emails
             if(gspoEmailWrapperList != NULL && gspoEmailWrapperList.size()>0){
-            	Core_MDF_GenericClassToSendMail.sendEmailMethod(gspoEmailWrapperList);
+              Core_MDF_GenericClassToSendMail.sendEmailMethod(gspoEmailWrapperList);
             }
         }
         catch(Exception e){

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Payment Run Line Item</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Payment Run Line Items</value>
+    </caseValues>
+    <fields>
+        <label><!-- Payment Run ID --></label>
+        <name>Core_MDF_Payment_Run_ID__c</name>
+        <relationshipLabel><!-- Payment Run Line Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_MDF_Status_txt__c</name>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Error</masterLabel>
+            <translation><!-- Error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In-progress</masterLabel>
+            <translation><!-- In-progress --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

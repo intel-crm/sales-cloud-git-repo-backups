@@ -21,7 +21,7 @@ public without sharing class Core_MDF_ApprovalCriteriaHelper {
     @AuraEnabled
     public static List<String> getAllFields(String sObjectName){
     
-    	Map<String,Schema.SObjectType> allObjectsMap = Schema.getGlobalDescribe();
+        Map<String,Schema.SObjectType> allObjectsMap = Schema.getGlobalDescribe();
         list<String> lstFields = new list<String>();
         
         Schema.SObjectType sObj = allObjectsMap.get(sObjectName);

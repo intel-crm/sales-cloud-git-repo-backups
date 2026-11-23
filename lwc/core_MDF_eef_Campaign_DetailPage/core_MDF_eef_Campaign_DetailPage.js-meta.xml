@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+	<apiVersion>57</apiVersion>
+	<isExposed>true</isExposed>
+	<masterLabel>core_MDF_eef_Campaign_DetailPage</masterLabel>
+	<description>To display Related objects details on EEF Campaign Detail Page</description>
+	<targets>
+		<target>lightning__RecordPage</target>
+	</targets>
+</LightningComponentBundle>

@@ -10,18 +10,17 @@ Modification Log :
 *****************************************************************************************************************************************/
 public class Core_ProductOpportunity {
 
-    //The whole method is commented by Kavyashree HR(Infosys Team) as a part of  US757567
     // This method is called from an After Update trigger, and does the following:
     //   - For all Product records being updated, checks to see which ones had a name change
     //   - For all where the name is changing, gets all Opportunity & Opportunity Product records with those Products
     //   - For all of those Opportunities, reconstructs the concatenated Product field
     //   
-    /**public static void oppProductConcatenatedFieldUpdate(List<Product2> oldProductList, List<Product2> newProductList,
+    public static void oppProductConcatenatedFieldUpdate(List<Product2> oldProductList, List<Product2> newProductList,
                                                          Map<Id,Product2> oldProductMap, Map<Id,Product2> newProductMap)
     {
         if (!Core_ProductHandler.alreadyUpdatedOppProductField) {
             
-            Core_ProductHandler.alreadyUpdatedOppProductField = true;   // Ensure no re-entry
+            Core_ProductHandler.alreadyUpdatedOppProductField = true;	// Ensure no re-entry
             
             // Only execute this logic if the trigger is turned on
             if (!Core_ProductHandler.mapFunctionalityNameTriggerExecution.isEmpty()) {
@@ -36,14 +35,14 @@ public class Core_ProductOpportunity {
                         productIdsChanging.add(prod.Id);
                     
                     // Do we have any where the name changed?
-                    if (productIdsChanging.size() > 0) {**/
+                    if (productIdsChanging.size() > 0) {
                         
                         //**********************************************************************************************************
                         // 12/21/2015 - to fix an urgent production issue, this entire section was wrapped in a try-catch block so
                         // product name changes succeed even if the concatenated field can't be updated. The long term fix needs to
                         // be to make the OpportunityLineItem query more selective, by addition an additional filter
                         // *********************************************************************************************************
-                      /**  try {
+                        try {
                         
                             // Grab the Opportunity Products with changed names, and then build a full set of Opportunity Products for
                             // their Opportunities, so we can use that full set to reconstruct the concatenated field
@@ -111,53 +110,5 @@ public class Core_ProductOpportunity {
                 }
             }
         }
-    }**/
-    
-    /*
-     * Method name  : isProductNameChanged
-     * Description  : Method to update Core_IsName_Changed__c checkbox if the name of the product is changed.
-     * Return Type  : Void
-     * Parameter    : List<Product2> , Map<Id,Product2>
-     */
-    public static void isProductNameChanged(List<Product2> newProductList, Map<Id,Product2> oldProductMap){
-        //Updates the check box Core_IsName_Changed__c if the Product name changes which will be picked up by the batch class
-        for (Product2 prod : newProductList){
-            if(prod.Name != oldProductMap.get(prod.Id).Name){
-                prod.Core_Is_Name_Changed_Chk__c = true;
-                prod.Core_Old_Product_Name_Txt__c = oldProductMap.get(prod.Id).Name;
-                prod.Core_ProductName_Changed_Time_Dte__c = System.NOW();
-            }
-        }     
-    }
-    
-    /*
-     * Method name  : updateProcessorNumber
-     * Description  : Method to update the processorNumber if the processor number is not blank and product type is processor, save the value else blank out.
-     * Return Type  : Void
-     * Parameter    : List<Product2>
-     */
-    public static void updateProcessorNumber(List<Product2> newProductList){
-        String substr='';
-        for(Product2 prod : newProductList){
-            /*if(prod.Core_Processor_Number_Nm__c !='' && prod.Core_Product_Type__c == 'Processors'){
-                prod.Core_Processor_Number_Nm__c = prod.Core_Processor_Number_Nm__c;    
-            }
-            else{
-                prod.Core_Processor_Number_Nm__c = '';   
-            }*/
-            //Gireesh:US845281:Copy 255 chars from new Processor Number(Core_Processor_Number_Ta_Nm__c)  to old Processor(Core_Processor_Number_Nm__c)
-            if(prod.Core_Processor_Number_Ta_Nm__c !=''  && (prod.Core_Product_Type__c == 'Processors' || prod.Core_Product_Type__c == 'Partnered Products')){
-                prod.Core_Processor_Number_Ta_Nm__c = prod.Core_Processor_Number_Ta_Nm__c;
-                substr=prod.Core_Processor_Number_Ta_Nm__c;
-               if(prod.Core_Processor_Number_Ta_Nm__c!=Null && (prod.Core_Processor_Number_Ta_Nm__c).length()>=255){
-                    substr= prod.Core_Processor_Number_Ta_Nm__c.substring(0,255);
-                }
-                    prod.Core_Processor_Number_Nm__c=substr;    
-            }
-            else{
-                prod.Core_Processor_Number_Ta_Nm__c = ''; 
-                prod.Core_Processor_Number_Nm__c='';
-            }            
-        }               
     }
 }

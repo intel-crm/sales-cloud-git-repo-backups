@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
-        <fullName>Core_MDF_IPA_All_Internal_RW</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>IPA All Internal RW</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_IPA_INTERNAL_ALL</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Program_nm__c</field>
-            <operation>equals</operation>
-            <value>Intel Partner Alliance</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>Core_MDF_IUPGM_ALL_INTERNAL</fullName>
         <accessLevel>Edit</accessLevel>
         <label>IUPGM ALL INTERNAL</label>
@@ -24,7 +10,7 @@
         <criteriaItems>
             <field>Core_MDF_Program_nm__c</field>
             <operation>equals</operation>
-            <value>Client,Datacenter,Service Provider Co-Marketing Fund,Client Co-Marketing Fund Boost,Retail Marketing Funds,Intel Partner Alliance,Ecosystem Extension Fund,Co-GTM</value>
+            <value>Client,Co-GTM,Datacenter,Service Provider Co-Marketing Fund,Retail Marketing Funds,Client Co-Marketing Fund Boost,Intel Partner Alliance,Ecosystem Extension Fund</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -67,7 +53,7 @@
         <criteriaItems>
             <field>Core_MDF_Program_nm__c</field>
             <operation>equals</operation>
-            <value>Client,Datacenter,Service Provider Co-Marketing Fund,Client Co-Marketing Fund Boost,Retail Marketing Funds,Intel Partner Alliance,Ecosystem Extension Fund,Co-GTM</value>
+            <value>Client,Co-GTM,Datacenter,Service Provider Co-Marketing Fund,Retail Marketing Funds,Client Co-Marketing Fund Boost,Intel Partner Alliance,Ecosystem Extension Fund</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -84,7 +70,7 @@
             <operation>equals</operation>
             <value>Co-GTM</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_MDF_IUPGM_DCF</fullName>
@@ -103,7 +89,6 @@
     <sharingCriteriaRules>
         <fullName>Core_MDF_IUPGM_EEF</fullName>
         <accessLevel>Edit</accessLevel>
-        <description>Rule for EEF Program</description>
         <label>IUPGM EEF</label>
         <sharedTo>
             <group>Core_MDF_Int_EEF_ALL</group>
@@ -130,20 +115,6 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>Core_MDF_IUPGM_IPA_RW</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>IUPGM IPA RW</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_Internal_IPA_Geo_Groups</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Program_nm__c</field>
-            <operation>equals</operation>
-            <value>Intel Partner Alliance</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>Core_MDF_IUPGM_L2_USERS</fullName>
         <accessLevel>Edit</accessLevel>
         <description>Share IUPGM records with the L2 users</description>
@@ -154,7 +125,7 @@
         <criteriaItems>
             <field>Core_MDF_Program_nm__c</field>
             <operation>equals</operation>
-            <value>Client,Datacenter,Service Provider Co-Marketing Fund,Client Co-Marketing Fund Boost,Retail Marketing Funds,Intel Partner Alliance,Ecosystem Extension Fund,Co-GTM</value>
+            <value>Client,Co-GTM,Datacenter,Service Provider Co-Marketing Fund,Retail Marketing Funds,Client Co-Marketing Fund Boost,Intel Partner Alliance,Ecosystem Extension Fund</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

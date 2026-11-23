@@ -1,285 +1,126 @@
 @IsTest
 private class Core_MDF_RestAPI_ConnectedAppPlugin_Test {
 
-    // ============================================================
-    // authorize() tests — null/invalid argument guards
-    // ============================================================
-
     @IsTest
-    static void testAuthorize_BothIdsNull_ReturnsFalse() {
+    static void testAuthorizeReturnsFalseWhenUserIdNull() {
         Core_MDF_RestAPI_ConnectedAppPlugin plugin = new Core_MDF_RestAPI_ConnectedAppPlugin();
 
-        Test.startTest();
-        Boolean result = plugin.authorize(null, null, false, null);
-        Test.stopTest();
-
-        System.assertEquals(false, result, 'Expected false when both userId and ecAppId are null');
-    }
-
-    @IsTest
-    static void testAuthorize_NullUserId_NonNullEcAppId_ReturnsFalse() {
-        Core_MDF_RestAPI_ConnectedAppPlugin plugin = new Core_MDF_RestAPI_ConnectedAppPlugin();
-        Id fakeEcAppId = UserInfo.getUserId();
-
-        Test.startTest();
-        Boolean result = plugin.authorize(null, fakeEcAppId, false, null);
-        Test.stopTest();
-
-        System.assertEquals(false, result, 'Expected false when userId is null');
-    }
-
-    @IsTest
-    static void testAuthorize_NullEcAppId_NonNullUserId_ReturnsFalse() {
-        Core_MDF_RestAPI_ConnectedAppPlugin plugin = new Core_MDF_RestAPI_ConnectedAppPlugin();
-
-        Test.startTest();
-        Boolean result = plugin.authorize(UserInfo.getUserId(), null, false, null);
-        Test.stopTest();
-
-        System.assertEquals(false, result, 'Expected false when ecAppId is null');
-    }
-
-    @IsTest
-    static void testAuthorize_ActiveUser_NoMapping_ReturnsFalse() {
-        Core_MDF_RestAPI_ConnectedAppPlugin plugin = new Core_MDF_RestAPI_ConnectedAppPlugin();
-        Id userId = UserInfo.getUserId();
-        Id fakeEcAppId = UserInfo.getUserId();
-
-        Test.startTest();
-        Boolean result = plugin.authorize(userId, fakeEcAppId, false, null);
-        Test.stopTest();
-
-        // Active user but no custom setting mapping — isMappedExternalClientAppForUser returns false
-        System.assertEquals(false, result, 'Expected false when no user-to-app mapping exists');
-    }
-
-    // ============================================================
-    // isMappedExternalClientAppForUser() tests
-    // ============================================================
-
-    @IsTest
-    static void testIsMappedExternalClientAppForUser_NoCustomSetting_ReturnsFalse() {
-        Id userId = UserInfo.getUserId();
-        Id fakeEcAppId = UserInfo.getUserId();
-
-        Test.startTest();
-        Boolean result = Core_MDF_RestAPI_ConnectedAppPlugin.isMappedExternalClientAppForUser(userId, fakeEcAppId);
-        Test.stopTest();
-
-        System.assertEquals(false, result, 'Expected false when no custom setting mapping exists');
-    }
-
-    @IsTest
-    static void testIsMappedExternalClientAppForUser_MappingExists_WrongAppId_ReturnsFalse() {
-        Id userId = UserInfo.getUserId();
-        // Insert a mapping with a different app ID
-        Core_MDF_External_App_User_Mapping__c mapping = new Core_MDF_External_App_User_Mapping__c(
-            SetupOwnerId = userId,
-            External_Client_App_Id__c = 'SOME_OTHER_APP_ID'
+        Boolean isAuthorized = plugin.authorize(
+            null,
+            UserInfo.getUserId(),
+            false,
+            null
         );
-        insert mapping;
 
-        Id differentFakeEcAppId = UserInfo.getUserId(); // different from the one in setting
-
-        Test.startTest();
-        Boolean result = Core_MDF_RestAPI_ConnectedAppPlugin.isMappedExternalClientAppForUser(userId, differentFakeEcAppId);
-        Test.stopTest();
-
-        System.assertEquals(false, result, 'Expected false when mapped app ID does not match');
+        System.assertEquals(false, isAuthorized, 'Null userId must not be authorized.');
     }
-
-    // ============================================================
-    // hasExternalClientAppAccess() tests
-    // ============================================================
 
     @IsTest
-    static void testHasExternalClientAppAccess_UserWithNoMatchingPermission_ReturnsFalse() {
-        Id userId = UserInfo.getUserId();
-        Id fakeEcAppId = UserInfo.getUserId();
-
-        Test.startTest();
-        Boolean result = Core_MDF_RestAPI_ConnectedAppPlugin.hasExternalClientAppAccess(userId, fakeEcAppId);
-        Test.stopTest();
-
-        // SetupEntityAccess query with a non-ecApp ID will return 0 rows
-        System.assertEquals(false, result, 'Expected false when no SetupEntityAccess record matches');
-    }
-
-    /*@IsTest
-    static void testHasExternalClientAppAccess_NewUserWithNoPermissionSets_ReturnsFalse() {
-        Profile p = [SELECT Id FROM Profile WHERE Name = 'Standard User' LIMIT 1];
-        User testUser = new User(
-            FirstName = 'Test',
-            LastName = 'NoPermission',
-            Email = 'testnopm_' + System.currentTimeMillis() + '@example.com.test',
-            Username = 'testnopm_' + System.currentTimeMillis() + '@example.com.test',
-            Alias = 'tnp',
-            TimeZoneSidKey = 'America/New_York',
-            LocaleSidKey = 'en_US',
-            EmailEncodingKey = 'UTF-8',
-            LanguageLocaleKey = 'en_US',
-            ProfileId = p.Id
+    static void testAuthorizeUsesAllowListForCurrentUser() {
+        Core_MDF_RestAPI_ConnectedAppPlugin plugin = new Core_MDF_RestAPI_ConnectedAppPlugin();
+        Boolean isAuthorized = plugin.authorize(
+            UserInfo.getUserId(),
+            UserInfo.getUserId(),
+            false,
+            null
         );
-        insert testUser;
 
-        Id fakeEcAppId = UserInfo.getUserId();
-
-        Test.startTest();
-        Boolean result;
-        System.runAs(testUser) {
-            result = Core_MDF_RestAPI_ConnectedAppPlugin.hasExternalClientAppAccess(testUser.Id, fakeEcAppId);
-        }
-        Test.stopTest();
-
-        System.assertEquals(false, result, 'Expected false when user has no relevant permission sets');
-    }*/
-
-    // ============================================================
-    // isTemporaryQaBypassProfileAllowed() tests
-    // ============================================================
-
-    @IsTest
-    static void testIsTemporaryQaBypassProfileAllowed_SystemAdministrator_ReturnsTrue() {
-        Test.startTest();
-        Boolean result = Core_MDF_RestAPI_ConnectedAppPlugin.isTemporaryQaBypassProfileAllowed('System Administrator');
-        Test.stopTest();
-
-        System.assertEquals(true, result);
+        System.assertEquals(false, isAuthorized,
+            'Authorization requires both allow-list match and explicit External Client App access.');
     }
 
     @IsTest
-    static void testIsTemporaryQaBypassProfileAllowed_ITAdmin_ReturnsTrue() {
-        Test.startTest();
-        Boolean result = Core_MDF_RestAPI_ConnectedAppPlugin.isTemporaryQaBypassProfileAllowed('IT Admin');
-        Test.stopTest();
+    static void testAuthorizeReturnsFalseWhenEcAppIdNull() {
+        Core_MDF_RestAPI_ConnectedAppPlugin plugin = new Core_MDF_RestAPI_ConnectedAppPlugin();
 
-        System.assertEquals(true, result);
+        Boolean isAuthorized = plugin.authorize(
+            UserInfo.getUserId(),
+            null,
+            false,
+            null
+        );
+
+        System.assertEquals(false, isAuthorized, 'Null ecAppId must not be authorized.');
     }
 
     @IsTest
-    static void testIsTemporaryQaBypassProfileAllowed_StandardUser_ReturnsFalse() {
-        Test.startTest();
-        Boolean result = Core_MDF_RestAPI_ConnectedAppPlugin.isTemporaryQaBypassProfileAllowed('Standard User');
-        Test.stopTest();
+    static void testHasExternalClientAppAccessReturnsFalseForInvalidAppId() {
+        // Use a valid Salesforce Id format for a non-app setup entity to force a safe false path.
+        Id nonAppSetupEntityId = Id.valueOf('001000000000000AAA');
 
-        System.assertEquals(false, result);
+        Boolean hasAccess = Core_MDF_RestAPI_ConnectedAppPlugin.hasExternalClientAppAccess(
+            UserInfo.getUserId(),
+            nonAppSetupEntityId
+        );
+
+        System.assertEquals(false, hasAccess,
+            'User should not have External Client App access for a non-app setup entity Id.');
     }
 
     @IsTest
-    static void testIsTemporaryQaBypassProfileAllowed_NullProfile_ReturnsFalse() {
-        Test.startTest();
-        Boolean result = Core_MDF_RestAPI_ConnectedAppPlugin.isTemporaryQaBypassProfileAllowed(null);
-        Test.stopTest();
+    static void testMappedExternalClientAppReturnsFalseWhenUserNotConfigured() {
+        Boolean isMapped = Core_MDF_RestAPI_ConnectedAppPlugin.isMappedExternalClientAppForUser(
+            UserInfo.getUserId(),
+            Id.valueOf('0so000000000000AAA')
+        );
 
-        System.assertEquals(false, result);
+        System.assertEquals(false, isMapped,
+            'Authorization must fail when user is not mapped to any external client app.');
     }
 
     @IsTest
-    static void testIsTemporaryQaBypassProfileAllowed_EmptyString_ReturnsFalse() {
-        Test.startTest();
-        Boolean result = Core_MDF_RestAPI_ConnectedAppPlugin.isTemporaryQaBypassProfileAllowed('');
-        Test.stopTest();
+    static void testMappedExternalClientAppReturnsFalseWhenAppIdMismatch() {
+        // Uses static placeholder key from plugin map to validate mismatch logic deterministically.
+        Id mappedUserId = Id.valueOf('005XXXXXXXXXXXXAAA');
+        Id wrongEcAppId = Id.valueOf('0so000000000000AAA');
 
-        System.assertEquals(false, result);
+        Boolean isMapped = Core_MDF_RestAPI_ConnectedAppPlugin.isMappedExternalClientAppForUser(
+            mappedUserId,
+            wrongEcAppId
+        );
+
+        System.assertEquals(false, isMapped,
+            'Mapped user should be denied when presented external client app does not match map.');
     }
 
     @IsTest
-    static void testIsTemporaryQaBypassProfileAllowed_PartialMatch_ReturnsFalse() {
-        Test.startTest();
-        Boolean result = Core_MDF_RestAPI_ConnectedAppPlugin.isTemporaryQaBypassProfileAllowed('System');
-        Test.stopTest();
-
-        System.assertEquals(false, result);
-    }
-
-    // ============================================================
-    // TEMP_QA_BYPASS_PROFILE_NAMES constant test
-    // ============================================================
-
-    @IsTest
-    static void testTempQaBypassProfileNames_ContainsExpectedProfiles() {
-        Set<String> profiles = Core_MDF_RestAPI_ConnectedAppPlugin.TEMP_QA_BYPASS_PROFILE_NAMES;
-
-        System.assertNotEquals(null, profiles);
-        System.assert(profiles.contains('System Administrator'));
-        System.assert(profiles.contains('IT Admin'));
-        System.assertEquals(2, profiles.size());
-    }
-
-    // ============================================================
-    // customAttributes() tests
-    // ============================================================
-
-    @IsTest
-    static void testCustomAttributes_ReturnsInputMapUnmodified() {
+    static void testCustomAttributesAndRefresh() {
         Core_MDF_RestAPI_ConnectedAppPlugin plugin = new Core_MDF_RestAPI_ConnectedAppPlugin();
         Map<String, String> inputAttributes = new Map<String, String>{
-            'attr1' => 'value1',
-            'attr2' => 'value2'
+            'preferred_username' => 'integration.user@intel.com',
+            'locale' => 'en_US'
         };
 
-        Test.startTest();
-        Map<String, String> result = plugin.customAttributes(
-            UserInfo.getUserId(), UserInfo.getUserId(), inputAttributes, null
+        Map<String, String> outputAttributes = plugin.customAttributes(
+            UserInfo.getUserId(),
+            UserInfo.getUserId(),
+            inputAttributes,
+            null
         );
-        Test.stopTest();
 
-        System.assertEquals(inputAttributes, result);
-        System.assertEquals('value1', result.get('attr1'));
-        System.assertEquals('value2', result.get('attr2'));
-    }
-
-    @IsTest
-    static void testCustomAttributes_NullInputMap_ReturnsNull() {
-        Core_MDF_RestAPI_ConnectedAppPlugin plugin = new Core_MDF_RestAPI_ConnectedAppPlugin();
-
-        Test.startTest();
-        Map<String, String> result = plugin.customAttributes(
-            UserInfo.getUserId(), UserInfo.getUserId(), null, null
-        );
-        Test.stopTest();
-
-        System.assertEquals(null, result);
-    }
-
-    @IsTest
-    static void testCustomAttributes_EmptyMap_ReturnsEmptyMap() {
-        Core_MDF_RestAPI_ConnectedAppPlugin plugin = new Core_MDF_RestAPI_ConnectedAppPlugin();
-        Map<String, String> emptyMap = new Map<String, String>();
-
-        Test.startTest();
-        Map<String, String> result = plugin.customAttributes(
-            UserInfo.getUserId(), UserInfo.getUserId(), emptyMap, null
-        );
-        Test.stopTest();
-
-        System.assertNotEquals(null, result);
-        System.assert(result.isEmpty());
-    }
-
-    // ============================================================
-    // refresh() tests
-    // ============================================================
-
-    @IsTest
-    static void testRefresh_NoException() {
-        Core_MDF_RestAPI_ConnectedAppPlugin plugin = new Core_MDF_RestAPI_ConnectedAppPlugin();
+        System.assertEquals(inputAttributes, outputAttributes, 'customAttributes should currently pass through formula-defined attributes.');
 
         Test.startTest();
         plugin.refresh(UserInfo.getUserId(), UserInfo.getUserId(), null);
         Test.stopTest();
 
-        System.assert(true, 'refresh() is a no-op and completed without exception');
+        System.assert(true, 'refresh should execute without throwing exceptions.');
     }
 
     @IsTest
-    static void testRefresh_NullIds_NoException() {
+    static void testAuthorizeReturnsFalseOnQueryException() {
         Core_MDF_RestAPI_ConnectedAppPlugin plugin = new Core_MDF_RestAPI_ConnectedAppPlugin();
 
-        Test.startTest();
-        plugin.refresh(null, null, null);
-        Test.stopTest();
+        // Valid Id format, but not a User Id. This forces the query path into handled exception logic.
+        Id nonUserId = Id.valueOf('001000000000000AAA');
 
-        System.assert(true, 'refresh() with null IDs completed without exception');
+        Boolean isAuthorized = plugin.authorize(
+            nonUserId,
+            UserInfo.getUserId(),
+            false,
+            null
+        );
+
+        System.assertEquals(false, isAuthorized, 'Non-User Id should fail authorization via handled exception path.');
     }
 }

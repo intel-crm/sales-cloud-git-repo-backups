@@ -4,6 +4,6 @@
     <hasSidebar>false</hasSidebar>
     <label>Buy GridBuddy</label>
     <motif>Custom43: Jewel</motif>
-    <url>https://www.appbuddy.com/contact/</url>
+    <url>https://appbuddy.secure.force.com/ZWS_zProducts?orgid={!Organization.Id}&amp;ck={!NOW()}</url>
     <urlEncodingKey>UTF-8</urlEncodingKey>
 </CustomTab>

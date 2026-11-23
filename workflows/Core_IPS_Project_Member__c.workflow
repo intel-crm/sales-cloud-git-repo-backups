@@ -32,4 +32,53 @@
         <protected>false</protected>
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
+    <rules>
+        <fullName>Core_IPS_setIsFutureonInsert_True</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Core_IPS_Project_Member__c.Core_IPS_Provisioning_Date__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>This is used for setting the isFutureonInsert field to true, so the insert of Group Member doesn&apos;t run in a future method(refer to Handler class After Update Scenario)</description>
+        <triggerType>onCreateOnly</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Core_IPS_setIsFutureonInsert_True</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <actions>
+                <name>Core_IPS_setProvisioningDate_Null</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <timeLength>0</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Core_IPS_setIsFutureonUpdate_True</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Core_IPS_Project_Member__c.Core_IPS_Provisioning_Date__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_IPS_Project_Member__c.Core_Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
+        </criteriaItems>
+        <description>This is used for setting the isFutureonUpdate field to true, so the insert of Group Member doesn&apos;t run in a future method(refer to Handler class After Update Scenario)</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Core_IPS_setIsFutureonUpdate_True</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <actions>
+                <name>Core_IPS_setProvisioningDate_Null</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <timeLength>0</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
 </Workflow>

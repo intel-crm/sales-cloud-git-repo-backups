@@ -54,8 +54,8 @@
                     <useReportTableSetting>false</useReportTableSetting>
                 </flexComponentProperties>
                 <groupingSortProperties/>
-                <header>Activities  in Pending Review more than a week</header>
-                <report>ActivityModule/Activities_PendingReview_more_than_week_vBP</report>
+                <header>Activities  PendingReview more than week</header>
+                <report>Core_MDF_Activity_Module/Core_MDF_Activities_PendingReview_more_than_week</report>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
             <rowSpan>8</rowSpan>
@@ -73,8 +73,8 @@
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
                 <groupingSortProperties/>
-                <header>CCP Users not logged in for 30 days</header>
-                <report>ActivityModule/New_CCP_Last_Login_Report_piC</report>
+                <header>New CCP Last Login Report</header>
+                <report>Core_MDF_Activity_Module/New_CCP_Last_Login_Report_piC</report>
                 <showPercentage>false</showPercentage>
                 <showPicturesOnCharts>false</showPicturesOnCharts>
                 <showValues>false</showValues>
@@ -85,14 +85,65 @@
             <rowIndex>0</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>8</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <componentType>FlexTable</componentType>
+                <flexComponentProperties>
+                    <decimalPrecision>-1</decimalPrecision>
+                    <flexTableColumn>
+                        <reportColumn>FIRST_NAME</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>LAST_NAME</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>PROFILE</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>DELEGATED_APPROVER</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>ROLE</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableSortInfo>
+                        <sortColumn>FIRST_NAME</sortColumn>
+                        <sortOrder>1</sortOrder>
+                    </flexTableSortInfo>
+                    <hideChatterPhotos>true</hideChatterPhotos>
+                    <useReportTableSetting>false</useReportTableSetting>
+                </flexComponentProperties>
+                <groupingSortProperties/>
+                <header>Users with No Delegated Approver assign</header>
+                <report>Core_MDF_Activity_Module/Core_MDF_Users_with_No_Delegated_Approver_assign</report>
+            </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
         <numberOfColumns>12</numberOfColumns>
         <rowHeight>36</rowHeight>
     </dashboardGridLayout>
     <dashboardType>SpecifiedUser</dashboardType>
-    <description>Reporting Data Discrepancies in Functional DQ</description>
     <isGridLayout>true</isGridLayout>
-    <owner>11540272@intel.com.crm</owner>
-    <runningUser>10675503@intel.com.crm</runningUser>
+    <owner>12101607@intel.com.crm</owner>
+    <runningUser>12101607@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>Weezer Functional DQ Reports</title>
     <titleColor>#000000</titleColor>

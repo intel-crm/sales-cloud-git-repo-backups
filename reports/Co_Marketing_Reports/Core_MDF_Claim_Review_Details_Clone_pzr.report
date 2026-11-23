@@ -109,6 +109,10 @@
     <columns>
         <field>PartnerFundClaim.Cases__r.Scorecards__r$Core_MDF_Score_Nbr__c</field>
     </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PartnerFundClaim.Cases__r$Core_MDF_Audit_Reversal_Count_Nbr__c</field>
+    </columns>
     <description>Co-Marketing Claim Review (Audit) Details</description>
     <filter>
         <criteriaItems>
@@ -123,14 +127,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Client CoMarketing Fund,Client CoMarketing Fund Boost,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Ecosystem Extension Fund,Data Center CoMarketing Fund</value>
+            <value>,Client CoMarketing Fund,Client,Client CoMarketing Fund Boost,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund,Ecosystem Extension Fund,Data Center CoMarketing Fund</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundClaim$Core_MDF_Budget_Type_Options_Nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Business Client Acceleration - MDF,CCF 1.0,Client Market Accelerate,Client Specialties MDF,Data Center Market Accelerate,Data Centric Acceleration - MDF,DCF 1.0,Intel Rise Technology Initiative,IoT Premier - MDF,IoT Targeted - MDF,ODM Growth Plan - Client MDF,MDF,MDF+,OEM CMP,Retail MDF,RSA MD,Service Provider CMP,SOEM Client MDF,SOEM Data Center MDF,Account Plan,Proposal I MDF,Proposal II MDF</value>
+            <value>,Account Plan,Business Client Acceleration - MDF,CCF 1.0,Client Market Accelerate,Client Specialties MDF,Cloud,DCF 1.0,Data Center Market Accelerate,Data Centric Acceleration - MDF,Intel Rise Technology Initiative,IoT Premier - MDF,IoT Targeted - MDF,MDF,MDF+,OEM CMP,Proposal I MDF,Proposal II MDF,RSA MD,Retail MDF,SOEM Client MDF,SOEM Data Center MDF,Service Provider CMP</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundClaim$Core_MDF_AccountCompany__c</column>

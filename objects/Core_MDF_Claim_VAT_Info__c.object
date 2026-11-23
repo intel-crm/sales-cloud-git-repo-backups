@@ -128,11 +128,14 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>VAT_Information_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -150,8 +153,16 @@
         <fields>Core_MDF_Status_Txt__c</fields>
         <label>VAT Layout</label>
     </compactLayouts>
+    <compactLayouts>
+        <fullName>test</fullName>
+        <fields>Name</fields>
+        <fields>Core_MDF_VAT_Invoice_Number_Txt__c</fields>
+        <fields>Core_MDF_VAT_Amt__c</fields>
+        <fields>Core_MDF_Status_Txt__c</fields>
+        <label>test</label>
+    </compactLayouts>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>Store the claims VAT Information</description>
+    <description>Store the claims VAT Information.</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
@@ -235,6 +246,15 @@
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <fields>
+        <fullName>Core_MDF_Document_Requested_Dtm__c</fullName>
+        <description>Holds the Payment Admin Reminder Date</description>
+        <label>Document Requested Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Document_Type_Txt__c</fullName>
         <description>For Positive claim  document type is VAT Invoice and Negative claim is Credit Memo.</description>
         <externalId>false</externalId>
@@ -242,6 +262,38 @@
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <inlineHelpText>Indicates the type of the payment document that needs to be uploaded by the customer.</inlineHelpText>
         <label>Document Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_First_Reminder_Date_Dtm__c</fullName>
+        <label>First Reminder Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Funding_Source_Amount_amt__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Sub_Claim_Id__r.Core_MDF_Requested_Reimbursement_Amt__c</formula>
+        <label>Funding Source Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Funding_Source_txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Sub_Claim_Id__r.Request.ChannelPartner.Name</formula>
+        <label>Funding Source</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -283,6 +335,30 @@ $Label.Core_MDF_Intel_System_User
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_Post_Payment_Adjustment_Amount__c</fullName>
+        <description>To store the Adjustment Amount of claim Post Payment</description>
+        <inlineHelpText>This is the adjustment amount populated as a result of post payment audit</inlineHelpText>
+        <label>Post Payment Adjustment Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Queue_Id_Txt__c</fullName>
+        <defaultValue>&quot;00Gg0000005ou3s&quot;</defaultValue>
+        <externalId>false</externalId>
+        <label>Queue Id</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_RSMRemNotificationSent_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <description>This flag will be true after sending reminder notification to RSM on every 5th day till they take action on VAT record.</description>
@@ -303,13 +379,10 @@ $Label.Core_MDF_Intel_System_User
     <fields>
         <fullName>Core_MDF_Reimbursement_Amt__c</fullName>
         <description>Sum of Claim Reimbursement Amount and Offset Amount</description>
-        <formula>IF(
-    NOT(ISBLANK(Core_MDF_Sub_Claim_Id__c)),
-    Core_MDF_Sub_Claim_Id__r.Amount
-    + Core_MDF_Sub_Claim_Id__r.Core_MDF_Total_Claim_Offsets__c,
-    Core_MDF_Claim_Id__r.Amount
-    + Core_MDF_Claim_Id__r.Core_MDF_Total_Claim_Offsets__c
-)</formula>
+        <formula>IF(NOT(ISBLANK(Core_MDF_Sub_Claim_Id__c)),
+    Core_MDF_Sub_Claim_Id__r.Amount + Core_MDF_Sub_Claim_Id__r.Core_MDF_Total_Claim_Offsets__c,
+    Core_MDF_Claim_Id__r.Amount + Core_MDF_Claim_Id__r.Core_MDF_Total_Claim_Offsets__c
+) - Core_MDF_Post_Payment_Adjustment_Amount__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <inlineHelpText>Reimbursement amount without tax</inlineHelpText>
         <label>Reimbursement amount</label>
@@ -319,6 +392,14 @@ $Label.Core_MDF_Intel_System_User
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Second_Reminder_Date_Dtm__c</fullName>
+        <label>Second Reminder Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
     </fields>
     <fields>
         <fullName>Core_MDF_Status_Txt__c</fullName>
@@ -377,6 +458,30 @@ $Label.Core_MDF_Intel_System_User
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_Sub_Claim_Title_txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Sub_Claim_Id__r.Title</formula>
+        <label>Sub Claim Title</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Unique_Id__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>To have Unique Id for the Record</description>
+        <externalId>false</externalId>
+        <label>DNR:Core_MDF_Unique_Id</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_VAT_Amt__c</fullName>
         <description>Claim VAT Amount</description>
         <formula>IF(NOT(ISBLANK(Core_MDF_Sub_Claim_Id__c)), Core_MDF_Sub_Claim_Id__r.Core_MDF_VAT_Amt__c, Core_MDF_Claim_Id__r.Core_MDF_VAT_Amt__c)</formula>
@@ -389,6 +494,15 @@ $Label.Core_MDF_Intel_System_User
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_VAT_Comments_txt__c</fullName>
+        <description>Captures the VAT comments.</description>
+        <label>VAT Cancellation Comment</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
     </fields>
     <fields>
         <fullName>Core_MDF_VAT_CreatedBy_Nm__c</fullName>
@@ -483,11 +597,11 @@ $Label.Core_MDF_Intel_System_User)</formula>
         TEXT(Core_MDF_Sub_Claim_Id__r.Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c),
         TEXT(Core_MDF_Claim_Id__r.Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c)
     ), &apos;650&apos;, IF(ISPICKVAL($User.UserType,&apos;PowerPartner&apos;), 
-HYPERLINK($Label.Core_MDF_PFRCommunityLink &amp; $Label.Core_MDF_FileURLInternal &amp; &apos;0153b000005OQbF&apos;, $Label.Core_MDF_Click_here),
-HYPERLINK($Label.Core_MDF_PFRDetailLink &amp; $Label.Core_MDF_FileURLInternal &amp; &apos;0153b000005OQbF&apos;, $Label.Core_MDF_Click_here)),
-&apos;420&apos;, IF(ISPICKVAL($User.UserType,&apos;PowerPartner&apos;),
-HYPERLINK($Label.Core_MDF_PFRCommunityLink &amp; $Label.Core_MDF_FileURLInternal &amp; &apos;0153b000005OQbG&apos;, $Label.Core_MDF_Click_here),
-HYPERLINK($Label.Core_MDF_PFRDetailLink &amp; $Label.Core_MDF_FileURLInternal &amp; &apos;0153b000005OQbG&apos;, $Label.Core_MDF_Click_here)), null)</formula>
+HYPERLINK($Label.Core_MDF_PFRCommunityLink &amp; $Label.Core_MDF_FileURLInternal &amp; &apos;015g0000001UdVm&apos;, $Label.Core_MDF_Click_here), 
+HYPERLINK($Label.Core_MDF_PFRDetailLink &amp; $Label.Core_MDF_FileURLInternal &amp; &apos;015g0000001UdVm&apos;, $Label.Core_MDF_Click_here)), 
+&apos;420&apos;, IF(ISPICKVAL($User.UserType,&apos;PowerPartner&apos;), 
+HYPERLINK($Label.Core_MDF_PFRCommunityLink &amp; $Label.Core_MDF_FileURLInternal &amp; &apos;015g0000001UdVh&apos;, $Label.Core_MDF_Click_here), 
+HYPERLINK($Label.Core_MDF_PFRDetailLink &amp; $Label.Core_MDF_FileURLInternal &amp; &apos;015g0000001UdVh&apos;, $Label.Core_MDF_Click_here)), null)</formula>
         <label>Payment Document Guidelines</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -503,6 +617,7 @@ HYPERLINK($Label.Core_MDF_PFRDetailLink &amp; $Label.Core_MDF_FileURLInternal &a
         <columns>Core_MDF_VAT_Invoice_Number_Txt__c</columns>
         <columns>Core_MDF_Status_Txt__c</columns>
         <columns>Core_MDF_Claim_Id__c</columns>
+        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -584,18 +699,20 @@ HYPERLINK($Label.Core_MDF_PFRDetailLink &amp; $Label.Core_MDF_FileURLInternal &a
         <searchResultsAdditionalFields>Core_MDF_Claim_Id__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_MDF_VAT_Amt__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_MDF_Status_Txt__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_Document_Requested_Dtm__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CREATEDBY_USER</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CREATED_DATE</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <validationRules>
         <fullName>Core_MDF_PreventInvNoEditAfterApproval</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>To Prevent the Payment Admin from editing the Vat Invoice Number after the Vat is Approved</description>
         <errorConditionFormula>AND(ISCHANGED(Core_MDF_VAT_Invoice_Number_Txt__c),
 OR(ISPICKVAL(Core_MDF_Status_Txt__c, &apos;Approved&apos;),
 ISPICKVAL(Core_MDF_Status_Txt__c, &apos;Cancelled&apos;),
 ISPICKVAL(Core_MDF_Status_Txt__c, &apos;Denied&apos;)))</errorConditionFormula>
+        <errorDisplayField>Core_MDF_Approved_File_Id__c</errorDisplayField>
         <errorMessage>The Tax Invoice Number cannot be edited in its current status</errorMessage>
     </validationRules>
     <visibility>Public</visibility>

@@ -28,6 +28,10 @@
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>hideSlackAction</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>numVisibleActions</name>
                     <value>3</value>
                 </componentInstanceProperties>
@@ -41,8 +45,22 @@
     <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Name</fieldItem>
                 <identifier>RecordNameField1</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Test_Recovery_Issue__c</fieldItem>
+                <identifier>RecordTest_Recovery_Issue__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-95382617-bd29-48f6-bd25-f8e83c2f8f4a</name>
@@ -51,6 +69,10 @@
     <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Case_Id__c</fieldItem>
                 <identifier>RecordCore_MDF_Case_Id_cField1</identifier>
             </fieldInstance>
@@ -85,12 +107,20 @@
     <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Score_Nbr__c</fieldItem>
                 <identifier>RecordCore_MDF_Score_Score_cField1</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Right_to_Recover_Amt__c</fieldItem>
                 <identifier>RecordCore_MDF_Right_to_Recover_Amt_cField1</identifier>
             </fieldInstance>
@@ -149,6 +179,10 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Attribution_Comments_Txt__c</fieldItem>
                 <identifier>RecordCore_MDF_Attribution_Comments_Txt_cField1</identifier>
             </fieldInstance>
@@ -234,18 +268,30 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Consistency_Ind__c</fieldItem>
                 <identifier>RecordCore_MDF_Consistency_Ind_cField1</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Modified_Ind__c</fieldItem>
                 <identifier>RecordCore_MDF_Modified_Ind_cField1</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_POP_Comments_Txt__c</fieldItem>
                 <identifier>RecordCore_MDF_POP_Comments_Txt_cField1</identifier>
             </fieldInstance>
@@ -293,6 +339,10 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Redaction_Ind__c</fieldItem>
                 <identifier>RecordCore_MDF_Redaction_Ind_cField1</identifier>
             </fieldInstance>
@@ -399,6 +449,10 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Engagement_Comments_Txt__c</fieldItem>
                 <identifier>RecordCore_MDF_Engagement_Comments_Txt_cField1</identifier>
             </fieldInstance>
@@ -474,18 +528,30 @@
     <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Confirmed_Irregularity_Ind__c</fieldItem>
                 <identifier>RecordCore_MDF_Confirmed_Irregularity_Ind_cField1</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Highlight_Partner_Review_Ind__c</fieldItem>
                 <identifier>RecordCore_MDF_Highlight_Partner_Review_Ind_cField1</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Manual_Recovery_Amount_USD_Amt__c</fieldItem>
                 <identifier>RecordCore_MDF_Manual_Recovery_Amount_USD_Amt_cField1</identifier>
             </fieldInstance>
@@ -496,6 +562,10 @@
     <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Recommended_investigation_Ind__c</fieldItem>
                 <identifier>RecordCore_MDF_Recommended_investigation_Ind_cField1</identifier>
             </fieldInstance>
@@ -570,6 +640,10 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Process_Feedback_Comments_Txt__c</fieldItem>
                 <identifier>RecordCore_MDF_Process_Feedback_Comments_Txt_cField1</identifier>
             </fieldInstance>

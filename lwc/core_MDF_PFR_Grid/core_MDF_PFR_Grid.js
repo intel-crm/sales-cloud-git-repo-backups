@@ -15,7 +15,7 @@ import AVAILABLE_BUDGET_LABEL from '@salesforce/label/c.Core_MDF_Available_Budge
 import AMOUNT_LABEL from '@salesforce/label/c.Core_MDF_Amount';
 import ACTIVITY_NUMBER_LABEL from '@salesforce/label/c.Core_MDF_ActivityNumber';
 import ENGINEERING_ACTIVITY_LABEL from '@salesforce/label/c.Core_MDF_Engineering_Activity';
-import Core_MDF_Other_Engineering_Activity from '@salesforce/label/c.Core_MDF_Other_Engineering_Activity';
+import Core_MDF_Other_Engineering_Activity from '@salesforce/label/c.Core_MDF_Other_Engineering_Activity';//made changes by alekhya
 import TARGET_END_DATE_LABEL from '@salesforce/label/c.Core_MDF_Target_End_Date';
 import POP_REQUIRMENT_LABEL from '@salesforce/label/c.Core_MDF_POP_Requirement';
 import NRE_GRID_HEADER from '@salesforce/label/c.Core_MDF_NRE_Grid_Header';
@@ -46,8 +46,9 @@ import Core_MDF_Help_Engineering_Activity_Link from '@salesforce/label/c.Core_MD
 import { NavigationMixin } from 'lightning/navigation';
 import { CurrentPageReference } from 'lightning/navigation';//made changes-Alekhya
 import OTHER_ENGINEERING_VALUES from '@salesforce/label/c.Core_MDF_Other_Engineering_Activity_Values';//made changes-ALekhya
-import CO_ENGINEERING_LABEL from '@salesforce/label/c.Core_MDF_Co_Engineering';
-import INNOVATION_LABEL from '@salesforce/label/c.Core_MDF_Innovation';
+import CO_ENGINEERING_LABEL from '@salesforce/label/c.Core_MDF_Co_Engineering';// made changes-Anjali
+import INNOVATION_LABEL from '@salesforce/label/c.Core_MDF_Innovation';//made chanes-Anjali
+
 
 
 export default class Core_MDF_PFR_Grid extends NavigationMixin(LightningElement) {
@@ -65,8 +66,8 @@ disableCreateActivity = true;
 @track campaignStartDate;
 @track campaignEndDate;
 @track campaignAccountId;
-@track campaignActivityCategory;
-hasCreateAccess = false;
+@track campaignActivityCategory;//made changes-Anjali
+hasCreateAccess = true;
 @api showCreateActivity = false;
 @api showNewActivity = false;
 applicationError = APPLICATION_ERROR;
@@ -95,8 +96,8 @@ limittenActvitiesLabel = Core_MDF_limit10ActvitiesLabel;
 validationErrorLabel = Core_MDF_validationErrorLabel;
 nreGridHeader = NRE_GRID_HEADER;
 coGtmProgramName = coGtmProgramName;
-coEngineeringLabel = CO_ENGINEERING_LABEL;
-innovationLabel = INNOVATION_LABEL;
+coEngineeringLabel = CO_ENGINEERING_LABEL;//made changes-Anjali
+innovationLabel = INNOVATION_LABEL;//made changes-Anjali
 @track showOtherActivityColumn = false;
 @track newRowCount = 0;
 showGrid = true;
@@ -125,6 +126,7 @@ budgetKeyToRecordMap = new Map();
 get disableNewActivityButton(){
     return !(this.showNewActivity && this.newRowCount < 10);
 }
+
 @track columnsMod = [];
 get columns(){
     let cols = [
@@ -138,8 +140,8 @@ get columns(){
                 value: { fieldName: 'recordUrl' },
                 title: { fieldName: 'Core_MDF_Activity_Number__c'}
             },
-            initialWidth: 110
-            
+            initialWidth: 130
+                            
         },{ 
             label: this.engineeringActivityLabel, 
             fieldName: 'Core_MDF_Activity_Engineering_Nm__c', 
@@ -150,9 +152,8 @@ get columns(){
                 options: {fieldName : 'activityEngineeringValues'}, 
                 value: { fieldName: 'Core_MDF_Activity_Engineering_Nm__c' },
                 placeholder: 'Select an option',
-                context: { fieldName: 'Id' }
-                
-            }
+                context: { fieldName: 'Id' } 
+            },
         
         },
         //made changes-Alekhya
@@ -160,7 +161,8 @@ get columns(){
             label: this.otherEngineeringActivityLabel,
             fieldName: 'Core_MDF_Other_Engineering_Activity_txt__c',
             type: 'text',
-            editable: { fieldName: 'isNew' }
+            //editable: { fieldName: 'enableOtherField' }
+            editable: { fieldName: 'isNew' },
         },
         
         { 
@@ -168,7 +170,8 @@ get columns(){
             fieldName: 'Core_MDF_End_Date__c', 
             type: 'date-local', 
             editable: { fieldName: 'isNew' },
-            initialWidth: 130
+            initialWidth: 150,
+            
         },
         { 
             label: this.availableBudgetLabel, 
@@ -176,19 +179,23 @@ get columns(){
             type: 'picklistColumn', 
             editable: { fieldName: 'isNew' },
             hideDefaultActions: true, //hides the dropdown-made changes-Alekhya
+            
             typeAttributes: { 
                 options: {fieldName : 'budgetOptions'},
                 value: { fieldName: 'BudgetId' }, 
-                placeholder: 'Select Budget'
+                placeholder: 'Select Budget',
                 
-            }
+            },
+            
         },
         { 
             label: this.activityAmountLabel, 
             fieldName: 'Core_MDF_Budget_Amount_Local_amt__c', 
             type: 'currency', 
             editable: { fieldName: 'isNew' },
-            initialWidth:100
+            initialWidth:150,
+            
+            
         },
         { 
             label: this.popRequirmentLabel, 
@@ -200,7 +207,8 @@ get columns(){
                 options: {fieldName : 'popReqValues'}, 
                 value: { fieldName: 'Core_MDF_POP_Requirement_nm__c' }, 
                 placeholder: 'Select an option', 
-                context: { fieldName: 'Id' } 
+                context: { fieldName: 'Id' },
+                
             }
         },
         { 
@@ -225,7 +233,7 @@ get columns(){
 set columns(value){
     this.columnsMod = value;
 }
-  
+    
 addPicklistValues(){
     let selectedOption;
     this.data = this.data.map(row => ({
@@ -235,36 +243,19 @@ addPicklistValues(){
         popReqValues : this.popReqValues
     }));
 }
-
-
-/* @wire(getPicklistValues, { recordTypeId: '$recordTypeId', fieldApiName: ACTIVITY_ENGINEERING })
-    ActivityEngineeringPicklistValues({ error, data }) {
-        if (data) {
-            this.activityEngineeringValues = data.values;
-
-            this.data = this.data.map(row => ({
-                ...row,
-                activityEngineeringValues: this.activityEngineeringValues
-            }));
-        }else if (error) {
-            this.handleServerExceptions();
-        }
+//Commented by Rs
+/*@wire(getObjectInfo, { objectApiName: PARTNER_FUND_REQUEST_OBJECT })
+wiredObjectInfo({ data, error }) {
+    if (data) {
+        const recordTypes = data.recordTypeInfos;
+        const rtId = Object.keys(recordTypes).find(
+            key => recordTypes[key].name === this.coGtmProgramName
+        );
+        this.recordTypeId = rtId;
+    }else if(error){
+        this.handleServerExceptions();
     }
-
-    @wire(getPicklistValues, { recordTypeId: '$recordTypeId', fieldApiName: POP_REQUIRMENTS })
-    PopRequirmentsPicklistValues({ error, data }) {
-        if (data) {
-            this.popReqValues = data.values;
-
-            this.data = this.data.map(row => ({
-                ...row,
-                popReqValues: this.popReqValues
-            }));
-        }else if (error) {
-            this.handleServerExceptions();
-        }
-    }*/
-
+}*/
 
 @wire(getObjectInfo, { objectApiName: PFR_CUSTOMPICKLIST_OBJECT })
 wiredObjectInfo({ data, error }) {
@@ -279,8 +270,8 @@ wiredObjectInfo({ data, error }) {
     }
 }
 
-//dependentEngineeringActivityValues = [];
-//dependentPopReqValues = [];
+dependentEngineeringActivityValues = [];
+dependentPopReqValues = [];
 controllingFieldValue = 'CoGTM';
 
 @wire(getPicklistValuesByRecordType, { objectApiName: PFR_CUSTOMPICKLIST_OBJECT, recordTypeId: '$pfrPicklistRecordTypeId' })
@@ -308,7 +299,36 @@ picklistHandler({data, error}) {
     }else if (error) {
         this.handleServerExceptions();
     }
+    
 }
+
+/*@wire(getPicklistValues, { recordTypeId: '$recordTypeId', fieldApiName: ACTIVITY_ENGINEERING })
+ActivityEngineeringPicklistValues({ error, data }) {
+    if (data) {
+        this.activityEngineeringValues = data.values;
+
+        this.data = this.data.map(row => ({
+            ...row,
+            activityEngineeringValues: this.activityEngineeringValues
+        }));
+    }else if (error) {
+        this.handleServerExceptions();
+    }
+}
+
+@wire(getPicklistValues, { recordTypeId: '$recordTypeId', fieldApiName: POP_REQUIRMENTS })
+PopRequirmentsPicklistValues({ error, data }) {
+    if (data) {
+        this.popReqValues = data.values;
+
+        this.data = this.data.map(row => ({
+            ...row,
+            popReqValues: this.popReqValues
+        }));
+    }else if (error) {
+        this.handleServerExceptions();
+    }
+}*/
 
 
 
@@ -338,13 +358,16 @@ getBudgetDetails({ error, data }) {
             this.error = undefined;
         }else{
             this.showGrid = false;
+            
         }
         
     } else if (error) {
         this.error = error;
         this.data = [];
         this.handleServerExceptions();
+        
     }
+        
 }
 
 fetchExistingActivityDetails() {
@@ -373,7 +396,7 @@ fetchExistingActivityDetails() {
                         this.campaignStartDate = new Date(data.activityOrCampaignList[0].Campaign.StartDate);
                         this.campaignEndDate = new Date(data.activityOrCampaignList[0].Campaign.EndDate);
                         this.campaignAccountId = data.activityOrCampaignList[0].Campaign.Core_MDF_Account__c;
-                        this.campaignActivityCategory = data.activityOrCampaignList[0].Campaign.Core_MDF_Activity_Category__c;
+                        this.campaignActivityCategory = data.activityOrCampaignList[0].Campaign.Core_MDF_Activity_Category__c;//made changes-Anjali
                     }else{
                         this.showGrid = data.activityOrCampaignList[0].Core_MDF_Channel_Program__r.Name == this.coGtmProgramName ? true : false;
                         var allowedStatuses = ['Draft', 'Revision Required', 'Planned', 'In Progress'];
@@ -385,7 +408,7 @@ fetchExistingActivityDetails() {
                         this.campaignStartDate = new Date(data.activityOrCampaignList[0].StartDate);
                         this.campaignEndDate = new Date(data.activityOrCampaignList[0].EndDate);
                         this.campaignAccountId = data.activityOrCampaignList[0].Core_MDF_Account__c;
-                        this.campaignActivityCategory = data.activityOrCampaignList[0].Core_MDF_Activity_Category__c;
+                        this.campaignActivityCategory = data.activityOrCampaignList[0].Core_MDF_Activity_Category__c;//made changes-Anjali
                     }
                 }
                 this.isLoading = false;
@@ -397,7 +420,7 @@ fetchExistingActivityDetails() {
                 this.addPicklistValues();
                 this.disableViewRecord();//made changes-Alekhya
             }
-            this.isLoading = false;
+            
         })
         .catch(error => {
             this.error = error;
@@ -405,6 +428,7 @@ fetchExistingActivityDetails() {
             this.handleServerExceptions();
             this.isLoading = false;
         });
+        
 }
 
 getCampaignDetails(hasActiivtyCreateAccess){
@@ -418,7 +442,7 @@ getCampaignDetails(hasActiivtyCreateAccess){
             this.error = error;
         });
 }
-
+// Change By Rs
 @wire(getObjectInfo, { objectApiName: PARTNER_FUND_REQUEST_OBJECT })
 objectInfo({ error, data }) {
     if (data) {
@@ -431,6 +455,7 @@ objectInfo({ error, data }) {
     } else if (error) {
         this.handleServerExceptions();
     }
+    
 }
 
 handleAddRow() {
@@ -488,6 +513,7 @@ handleCellChange(event) {
                 existingRecord.Core_MDF_Other_Engineering_Activity_txt__c = '';
             }
         } else {
+            //this.newRecords.push({ ...update });
             let newRec = { ...update };
             if(newRec.hasOwnProperty('Core_MDF_Activity_Engineering_Nm__c') && newRec.Core_MDF_Activity_Engineering_Nm__c !== 'Other'){
                 newRec.Core_MDF_Other_Engineering_Activity_txt__c = '';
@@ -561,6 +587,7 @@ handleCellChange(event) {
     this.dataErrors = errors;
     this.draftValues = [...draftValues];
     this.disableCreateActivity = false;
+    
 
 }
 
@@ -656,6 +683,8 @@ validateDateField(rowErrors, value, field){
     return rowErrors;
 }
 
+
+
 validateAmount(rowErrors, amount, fieldName, clearExistingError) {
 
     if(clearExistingError){
@@ -716,104 +745,91 @@ handleRowAction(event) {
     //this.showOtherActivityColumn = this.data.some(row => row.Core_MDF_Activity_Engineering_Nm__c === 'Other');//made changes
     if(this.newRecords.length == 0){
         this.disableCreateActivity = true;
+        
     }
 }
 //made changes-Alekhya
 disableViewRecord() {
-    // If there are no existing records, disable the button
-    if (!this.existingRecords || this.existingRecords.length === 0) {
-        this.disableViewActivity = true;
-    } else {
-        this.disableViewActivity = false;
-    }
+// If there are no existing records, disable the button
+if (!this.existingRecords || this.existingRecords.length === 0) {
+    this.disableViewActivity = true;
+} else {
+    this.disableViewActivity = false;
+}
 }
 
 //made changes-Alekhya
 handleViewRecords() {
-    console.log('this.isCommunity: ' + this.isCommunity);
     sessionStorage.setItem('hideViewButton', 'true');
-    if(this.isCommunity){
-        // External user  Experience Cloud
+if(this.isCommunity){
+    // External user  Experience Cloud
             this[NavigationMixin.GenerateUrl]({
-                type: 'comm__namedPage',
-                attributes: {
-                pageName:'activity-expanded-view' 
-            },
-                state: {
-                    c__recordId: this.recordId
-                    //c__hideView: true
-                }
+            type: 'comm__namedPage',
+            attributes: {
+            pageName:'activity-expanded-view' 
+        },
+            state: {
+                c__recordId: this.recordId
+            }
                 }).then(url => {
                 // Open in new tab
-                window.location.href = url;
+            window.location.href = url;
             });
-    
-        } else {
-        //Internal User 
-    this[NavigationMixin.GenerateUrl]({
-        type: 'standard__navItemPage',
-        attributes: { 
-            apiName: 'Activity_Grid'            
-        },
-        state: {
-            c__recordId: this.recordId
-            //expanded: 'true'
-            //c__hideView: true
-        }
-        }).then(url => {
-                window.location.href = url; // new tab
-    });
+
+    } else {
+    //Internal User 
+this[NavigationMixin.GenerateUrl]({
+    type: 'standard__navItemPage',
+    attributes: { 
+        apiName: 'Activity_Grid'            
+    },
+    state: {
+        c__recordId: this.recordId
+    }
+    }).then(url => {
+            window.location.href = url; // new tab
+});
 }
 }
 //made changes-Alekhya
 @wire(CurrentPageReference)
 getStateParameters(currentPageReference) {
-    if (currentPageReference && currentPageReference.state) {
-        const urlRecordId = currentPageReference.state.c__recordId;
-        //const hideView = currentPageReference.state.c__hideView;
-        if (urlRecordId) {
-            this.recordId = urlRecordId;
-            console.log('Received Record Id from URL:', this.recordId);
-            var columns = JSON.parse(JSON.stringify(this.columns));
-            columns.forEach(column => {              
+if (currentPageReference && currentPageReference.state) {
+    const urlRecordId = currentPageReference.state.c__recordId;
+    if (urlRecordId) {
+        this.recordId = urlRecordId;
+        var columns = JSON.parse(JSON.stringify(this.columns));
+        columns.forEach(column => {
+        if (column.fieldName === 'Core_MDF_Activity_Engineering_Nm__c') {
+            column.wrapText = true;
+        }
+        else if(column.fieldName === 'BudgetId'){
+            column.wrapText = true;
+        }
+        else if(column.fieldName === 'Core_MDF_POP_Requirement_nm__c'){
+            column.wrapText = true;
             
-            if (column.fieldName === 'Core_MDF_Activity_Engineering_Nm__c') {
-                //column.initialWidth = 310;
-                column.wrapText = true;
-            }
-            else if(column.fieldName === 'BudgetId'){
-                //column.initialWidth = 500;
-                column.wrapText = true;
-            }
-            else if(column.fieldName === 'Core_MDF_POP_Requirement_nm__c'){
-                //column.initialWidth = 400;
-                column.wrapText = true;
-                //column.wrapTextMaxLines = 3;
-            }
-            else if(column.fieldName === 'Core_MDF_Other_Engineering_Activity_txt__c'){
-                    column.wrapText = true;
-            }
-            if(column.fieldName === 'Core_MDF_Budget_Amount_Local_amt__c'){
-                column.cellAttributes = { alignment: 'left' };
-            }
+        }
+        else if(column.fieldName === 'Core_MDF_Other_Engineering_Activity_txt__c'){//added
+            column.wrapText = true;
+            
+        }
+        else if(column.fieldName === 'Core_MDF_Budget_Amount_Local_amt__c'){
+            column.cellAttributes = { alignment: 'left' };
+        }
 
-        }); 
-        this.columnsMod = columns;        
-        console.log('Expanded view mode enabled');
-        this.hideViewButton = true; // Hide in expanded view
-        }
-        else{
-            this.columnsMod = this.columns;
-            this.hideViewButton = false; // Show in normal view
-        }
+    }); 
+    this.columnsMod = columns;        
+    this.hideViewButton = true; // Hide in expanded view
     }
-        //this.hideViewButton = hideView === 'true';//make change
-        /*if (hideView === 'true') {
-            this.hideViewButton = true;
-        } */
-        else {
-            this.hideViewButton = false;
-            }
+    else{
+        this.columnsMod = this.columns;
+        this.hideViewButton = false; // Show in normal view
+    }
+}
+    else {
+        this.hideViewButton = false;
+        }
 }
 
 
@@ -882,7 +898,7 @@ handleCreateRecords() {
             rowCopy.CampaignId = this.recordId;
             rowCopy.Core_MDF_Budget_Type_nm__c = this.coEngineeringLabel;
             rowCopy.ChannelPartnerId = this.campaignAccountId;
-
+           
             //To populate BudgetId in the final list
             if (rowCopy.BudgetId) {
                 let budgetId = this.budgetIdMap.get(rowCopy.BudgetId);
@@ -891,7 +907,7 @@ handleCreateRecords() {
                 }
             }
                 if(this.campaignActivityCategory === this.innovationLabel){
-                    rowCopy.Core_MDF_Activity_Classification_nm__c = this.coEngineeringLabel; 
+                    rowCopy.Core_MDF_Activity_Classification_nm__c = this.coEngineeringLabel; //Made changes-Anjali
              }
 
             delete rowCopy.Id;

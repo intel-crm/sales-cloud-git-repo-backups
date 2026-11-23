@@ -15,6 +15,21 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>Channel_Program_Sharing_for_CoInv_External</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Channel Program Sharing for CoInv External user</description>
+        <label>Channel Program Sharing for CoInv External</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_CoInv_EXTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Co-Inv</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Core_Channel_Program_All_Users_CCP_Internal_Read_Write</fullName>
         <accessLevel>Edit</accessLevel>
         <label>Channel Program All Users - CCP Internal Read Write</label>
@@ -24,7 +39,7 @@
         <criteriaItems>
             <field>Core_MDF_Technical_Program_Name__c</field>
             <operation>equals</operation>
-            <value>Client,Datacenter,Service Provider Co-Marketing Fund,Client Co-Marketing Fund Boost,Retail Marketing Funds,Intel Partner Alliance,Ecosystem Extension Fund,Co-GTM</value>
+            <value>Client,Co-GTM,Datacenter,Co-Inv,Service Provider Co-Marketing Fund,Retail Marketing Funds,Client Co-Marketing Fund Boost,Intel Partner Alliance</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -141,6 +156,34 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_CCP_COINV_ALL_Read</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Channel Program CCP COINV ALL Read</label>
+        <sharedTo>
+            <group>CORE_MDF_CCP_COINV_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Co-Inv</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_CCP_COINV_INTERNAL_ALL_Read</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Channel Program CCP COINV INTERNAL ALL Read</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_COINV_INTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Co-Inv</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Core_MDF_Channel_Program_CCP_Claim_Case_Reviewer_Internal</fullName>
         <accessLevel>Edit</accessLevel>
         <description>Channel Program - CCP Claim Case Reviewer Internal</description>
@@ -151,7 +194,7 @@
         <criteriaItems>
             <field>Core_MDF_Technical_Program_Name__c</field>
             <operation>equals</operation>
-            <value>Client,Datacenter,Service Provider Co-Marketing Fund,Client Co-Marketing Fund Boost,Retail Marketing Funds,Intel Partner Alliance,Ecosystem Extension Fund,Co-GTM</value>
+            <value>Client,Co-GTM,Datacenter,Service Provider Co-Marketing Fund,Retail Marketing Funds,Client Co-Marketing Fund Boost,Intel Partner Alliance</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -184,19 +227,60 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>Core_MDF_Channel_Program_CCP_Payment_Admin_Manager</fullName>
+        <fullName>Core_MDF_Channel_Program_CCP_DELL_CCF_External_Read</fullName>
         <accessLevel>Read</accessLevel>
-        <description>Channel Program - AGS_CCP Payment Admin Manager</description>
-        <label>Channel Program - CCP Payment Admin Manager</label>
+        <label>Channel Program CCP DELL CCF External Read</label>
         <sharedTo>
-            <group>AGS_CCP_Payment_Admin_Manager</group>
+            <group>Core_MDF_CCP_DELL_CCF_EXTERNAL</group>
         </sharedTo>
         <criteriaItems>
             <field>Core_MDF_Technical_Program_Name__c</field>
-            <operation>notEqual</operation>
-            <value></value>
+            <operation>equals</operation>
+            <value>Client</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_CCP_DELL_CCF_Internal_Read</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Channel Program CCP DELL CCF Internal Read</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_DELL_CCF_INTERNAL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Client</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_CCP_DELL_DCF_External_Read</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Channel Program CCP DELL DCF External Read</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_DELL_DCF_EXTERNAL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Datacenter</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_CCP_DELL_DCF_Internal_Read</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Channel Program CCP DELL DCF Internal Read</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_DELL_DCF_INTERNAL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Datacenter</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_MDF_Channel_Program_CCP_SPCF_EXTERNAL_ALL_Read</fullName>
@@ -402,7 +486,7 @@
             <operation>equals</operation>
             <value>Co-GTM</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_MDF_Channel_Program_sharing_for_NRE_External</fullName>
@@ -417,7 +501,7 @@
             <operation>equals</operation>
             <value>Co-GTM</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_Mdf_Channel_Program_Share_for_Co_GTM_Internal</fullName>
@@ -432,20 +516,6 @@
             <operation>equals</operation>
             <value>Co-GTM</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>PCC_Channel_Program</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>PCC Channel Program</label>
-        <sharedTo>
-            <group>PCC_B2B_Users</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Name</field>
-            <operation>equals</operation>
-            <value>Partner Covers Customer (PCC)</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
 </SharingRules>

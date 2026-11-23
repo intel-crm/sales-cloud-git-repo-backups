@@ -1,0 +1,37 @@
+/*.customLookupDiv{
+    /*margin-left: 39rem;
+    margin-right: 39rem;
+    margin-left: 35rem;
+    margin-right: 30rem;
+}*/
+.dualListDiv{
+    /*margin-left: 32rem;
+    margin-right: 25rem;*/
+    margin-left: 30rem;
+    margin-right: 20rem;
+}
+
+.userSearchDiv{
+    /*margin-right: 28rem;*/
+    margin-right: 41rem;
+    margin-left: 30rem;
+}
+.buttonAlignCenter{
+    margin-left: 50%;
+}
+
+.backgroundDiv{
+    /*outline: auto;*/
+   /* background-color: aliceblue;   */
+   /*background: rgb(250, 250, 249);*/
+   /*remove space between elements*/
+   /*margin-top: -6rem;
+   margin-bottom: -3rem; */
+   background:White;
+}
+.customLookupCmpDiv{
+    /*margin-left: 39rem;
+    margin-right: 39rem;*/
+    margin-left: 35rem;
+    margin-right: 30rem;
+}

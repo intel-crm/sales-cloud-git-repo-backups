@@ -49,7 +49,7 @@
     </columns>
     <crossFilters>
         <criteriaItems>
-            <column>Core_BU_Product_Segment_Old__c</column>
+            <column>Core_BU_Product_Segment__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
             <value>IoT-Retail</value>
@@ -61,7 +61,7 @@
     </crossFilters>
     <crossFilters>
         <criteriaItems>
-            <column>Core_BU_Short_Name_Old__c</column>
+            <column>Core_BU_Short_Name__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>IOTG</value>

@@ -9,10 +9,6 @@
         <value>Case Owner Groups</value>
     </caseValues>
     <fields>
-        <label><!-- Case Owner Email --></label>
-        <name>Core_IPS_Case_Owner_Email__c</name>
-    </fields>
-    <fields>
         <label><!-- Case Owner --></label>
         <name>Core_IPS_Case_Owner__c</name>
         <relationshipLabel><!-- Case Owner Groups --></relationshipLabel>
@@ -28,22 +24,6 @@
     <fields>
         <label><!-- Owner Group 3 --></label>
         <name>Core_IPS_Owner_Group_3__c</name>
-    </fields>
-    <fields>
-        <label><!-- Owner Group Comment --></label>
-        <name>Core_IPS_Owner_Group_Comment__c</name>
-    </fields>
-    <fields>
-        <label><!-- Owner Team 1 --></label>
-        <name>Core_IPS_Owner_Team_1__c</name>
-    </fields>
-    <fields>
-        <label><!-- Owner Team 2 --></label>
-        <name>Core_IPS_Owner_Team_2__c</name>
-    </fields>
-    <fields>
-        <label><!-- Owner Team 3 --></label>
-        <name>Core_IPS_Owner_Team_3__c</name>
     </fields>
     <fields>
         <label><!-- Support Org --></label>
@@ -66,13 +46,5 @@
     <validationRules>
         <errorMessage><!-- Customer users cannot be added as Case Owners --></errorMessage>
         <name>Customer_Users_Cannot_be_added</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Either User or Email is mandatory. --></errorMessage>
-        <name>Either_Owner_or_Email_is_Mandatory</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Invalid Email format --></errorMessage>
-        <name>email_validation</name>
     </validationRules>
 </CustomObjectTranslation>

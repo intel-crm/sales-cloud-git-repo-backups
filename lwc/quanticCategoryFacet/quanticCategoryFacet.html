@@ -40,9 +40,9 @@
                   onkeydown={onKeyDownReset}
                 >
                   <lightning-icon class="slds-m-right_xxx-small" icon-name="utility:chevronleft" size="xx-small"></lightning-icon>
-                  <span class="nowrap">{labels.allCategories}</span>
-                </div> 
-              </li> 
+                  <span class="slds-truncate" title={labels.allCategories}>{labels.allCategories}</span>
+                </div>
+              </li>
             </template>
             <template for:each={nonActiveParents} for:item="v">
               <li class="slds-grid facet__non-active-parent" key={v.value}>
@@ -61,7 +61,7 @@
                   aria-pressed="true"
                   tabindex="0"
                 >
-                  <span class="nowrap parent-text__bold" title={activeParent.value}>{activeParent.value}</span>
+                  <span class="slds-truncate parent-text__bold" title={activeParent.value}>{activeParent.value}</span>
                   <span class="facet__number-of-results parent-text__bold slds-var-m-left_xx-small">({activeParent.numberOfResults})</span>
                 </div>
               </li>
@@ -105,12 +105,12 @@
         </ul>
         <div class="facet__show slds-m-top_x-small slds-p-horizontal_x-small">
           <template if:true={canShowLess}>
-            <button variant="base" label={labels.showLess}  class="facet__show-less slds-p-around_none" onclick={showLess}>
+            <button variant="base" class="facet__show-less slds-p-around_none" onclick={showLess} aria-label={showLessFacetValuesLabel} title={showLessFacetValuesLabel}>
               <span class="facet__show-less_text">{labels.showLess}</span>
             </button>
           </template>
           <template if:true={canShowMore}>
-            <button variant="base" label={labels.showMore} class="facet__show-more slds-p-around_none" onclick={showMore} aria-label={showMoreFacetValuesLabel} title={showMoreFacetValuesLabel}>
+            <button variant="base" class="facet__show-more slds-p-around_none" onclick={showMore} aria-label={showMoreFacetValuesLabel} title={showMoreFacetValuesLabel}>
               <span class="facet__show-more_text">{labels.showMore}</span>
             </button>
           </template>

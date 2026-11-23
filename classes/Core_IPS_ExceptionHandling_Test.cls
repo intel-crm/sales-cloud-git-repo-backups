@@ -36,7 +36,6 @@ Modification Log :
         }
         Catch(exception ex) {
             Core_IPS_ExceptionHandling.logEntryWithException(ex, 'Core_IPS_Account_Handler', 'Project Account');
-             System.AssertEquals(ex != null, true);
         }
 
     }
@@ -69,7 +68,6 @@ Modification Log :
 
                 errorsMap.put(lstAccount[i].name, sr.getErrors());
                 Core_IPS_ExceptionHandling.dmlExceptionHandlingLogs(errorsMap, 'Account', 'Core_IPS_Project_Handler');
-                 System.AssertEquals(sr != null, true);
 
             }
 

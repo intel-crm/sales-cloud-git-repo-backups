@@ -438,6 +438,7 @@
         <fullName>Core_MDF_Bank_Name__c</fullName>
         <description>It will contain the bank name and will be populated from EDW table.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Bank name as per Enterprise Supplier Data for the matching Supplier Number</inlineHelpText>
         <label>Bank Name</label>
         <length>90</length>
         <required>false</required>
@@ -451,7 +452,7 @@
         <description>Bank Status</description>
         <label>Bank Status</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -496,9 +497,25 @@
         <fullName>Core_MDF_Country_Name__c</fullName>
         <label>Country</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Created_By_nm__c</fullName>
+        <description>This will populate as the First Name and Last Name if First Name is not blank. Otherwise, it will give Last Name only.</description>
+        <externalId>false</externalId>
+        <formula>IF (
+ISPICKVAL(CreatedBy.Profile.UserType,&apos;PowerPartner&apos;),
+CreatedBy.FirstName &amp; &apos; &apos; &amp; CreatedBy.LastName,
+$Label.Core_MDF_Intel_System_User
+)</formula>
+        <label>Created By</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_Currency_cd__c</fullName>
@@ -532,7 +549,7 @@
         <defaultValue>false</defaultValue>
         <inlineHelpText>Status of the bank as per Enterprise Supplier Data.  If Yes, all unpaid reimbursement requests assigned to this bank are set to the status of Hold.</inlineHelpText>
         <label>ESD Hold Indicator</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -561,7 +578,7 @@
         <inlineHelpText>Designates if all claims pending for the bank should be held from appearing on the next AP file.  All claims regarding a bank on Hold will be put on Hold also. When Hold is deselected, then Bank will revert to previous status as well as the claims. </inlineHelpText>
         <label>Hold payments from AP file?</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -664,7 +681,7 @@
         <label>INTRMD_BNK_CD</label>
         <length>35</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -716,6 +733,35 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Inactivate_By_Program_txt__c</fullName>
+        <label>Inactivate By Program</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Inactivate_Date_dt__c</fullName>
+        <formula>TODAY()</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Inactive Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Inactive_Date_dt__c</fullName>
+        <defaultValue>TODAY()</defaultValue>
+        <inlineHelpText>Once inactive, the bank is no longer available for selection for a reimbursement request. The system will not allow bank to be inactivated if it has active claims. </inlineHelpText>
+        <label>Inactive Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
     </fields>
     <fields>
         <fullName>Core_MDF_Inactive_by_Program_nm__c</fullName>
@@ -797,6 +843,12 @@
                     <label>100</label>
                 </value>
                 <value>
+                    <fullName>102</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>102</label>
+                </value>
+                <value>
                     <fullName>150</fullName>
                     <default>false</default>
                     <label>150</label>
@@ -830,7 +882,23 @@
         <label>Intermediary Indicator</label>
         <length>100</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Last_Modified_By_nm__c</fullName>
+        <description>This will populate as the First Name and Last Name if First Name is not blank. Otherwise, it will give Last Name only.</description>
+        <externalId>false</externalId>
+        <formula>IF(
+ISPICKVAL(LastModifiedBy.Profile.UserType,&apos;PowerPartner&apos;),
+LastModifiedBy.FirstName &amp; &apos; &apos; &amp; LastModifiedBy.LastName,
+$Label.Core_MDF_Intel_System_User
+)</formula>
+        <label>Last Modified By</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -857,7 +925,7 @@
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -868,6 +936,22 @@
         <externalId>false</externalId>
         <label>ORIG_APP_SYS_CD</label>
         <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Owner_nm__c</fullName>
+        <description>This will populate as the First Name and Last Name if First Name is not blank. Otherwise, it will give Last Name only.</description>
+        <externalId>false</externalId>
+        <formula>IF(
+ISPICKVAL( Owner:User.Profile.UserType ,&apos;PowerPartner&apos;),
+Owner:User.FirstName &amp; &apos; &apos; &amp; Owner:User.LastName ,
+$Label.Core_MDF_Intel_System_User
+)</formula>
+        <label>Owner</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -893,7 +977,7 @@
         <fullName>Core_MDF_Payment_Method_Code__c</fullName>
         <label>Payment Method Code</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -962,6 +1046,11 @@
                     <label>Co-GTM</label>
                 </value>
                 <value>
+                    <fullName>Core_MDF_Co_Inv</fullName>
+                    <default>false</default>
+                    <label>Co-Inv</label>
+                </value>
+                <value>
                     <fullName>Core_MDF_Data_Center_CoMarketing_Fund</fullName>
                     <default>false</default>
                     <label>Datacenter</label>
@@ -1001,6 +1090,18 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_SupplierNumCurrencyProgram_cd__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>false</externalId>
+        <label>Supplier Number Currency Program</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_Supplier_City_txt__c</fullName>
@@ -1180,6 +1281,14 @@
             </valueSetDefinition>
         </valueSet>
     </fields>
+    <fields>
+        <fullName>New__c</fullName>
+        <defaultValue>true</defaultValue>
+        <label>New</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
     <label>Bank</label>
     <listViews>
         <fullName>All</fullName>
@@ -1198,6 +1307,22 @@
         <language>en_US</language>
     </listViews>
     <listViews>
+        <fullName>Core_MDF_Account_Bank_Mapping_List_View</fullName>
+        <columns>Core_MDF_Account__c</columns>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Bank_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Account__c</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </filters>
+        <label>Account Bank Mapping List View</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_IPA_ALL</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
         <fullName>Core_MDF_CCP_Bank</fullName>
         <columns>NAME</columns>
         <columns>Core_MDF_Bank_Alias_Name__c</columns>
@@ -1209,11 +1334,6 @@
         <columns>UPDATEDBY_USER</columns>
         <columns>OWNER.ALIAS</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_MDF_Account__c</field>
-            <operation>equals</operation>
-            <value>UNISTOP</value>
-        </filters>
         <label>Co-Marketing Bank</label>
     </listViews>
     <nameField>
@@ -1222,7 +1342,7 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Banks</pluralLabel>
-    <recordTypeTrackHistory>true</recordTypeTrackHistory>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <recordTypes>
         <fullName>Core_MDF_Bank_Status_Active</fullName>
         <active>true</active>
@@ -2034,10 +2154,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>UAH</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>USD</fullName>
                 <default>false</default>
             </values>
@@ -2077,6 +2193,10 @@
             </values>
             <values>
                 <fullName>Core_MDF_Client_CoMarketing_Fund_Boost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_Co_Inv</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2534,10 +2654,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>UAH</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>USD</fullName>
                 <default>false</default>
             </values>
@@ -2970,10 +3086,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>UAH</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>USD</fullName>
                 <default>false</default>
             </values>
@@ -3013,6 +3125,10 @@
             </values>
             <values>
                 <fullName>Core_MDF_Client_CoMarketing_Fund_Boost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_Co_Inv</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3162,46 +3278,46 @@
         <errorConditionFormula>AND(
   NOT($Permission.Core_MDF_Internal_CSC_User),
   OR(
-AND(
-INCLUDES( Core_MDF_Program__c,&quot;Core_MDF_Client_CoMarketing_Fund&quot;),
-OR($Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin, $Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin,$Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin,$Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm),
-NOT($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin)
-),
-AND(
-INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Data_Center_CoMarketing_Fund&quot;),
-OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin,
-$Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin,$Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin,$Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm),
-NOT($Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin)
-),
-AND(
-INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Service_Provider_CoMarketing_Fund&quot;),
-OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin,
-$Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin,$Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin,$Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm),
-NOT($Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin)
-),
-AND(
-INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Client_CoMarketing_Fund_Boost&quot;),
-OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,
-$Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin,$Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin,$Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm),
-NOT($Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin)
-),
-AND(
-INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Retail_Marketing_Funds&quot;),
-OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,
-$Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin,$Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin,$Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm),
-NOT($Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin)
-),
-AND(
-INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Intel_Partner_Alliance&quot;),
-OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,
-$Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin,$Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm),
-NOT($Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin)
-),
-AND(
-INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Ecosystem_Extension_Fund&quot;),
-OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,
-$Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin,$Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm),
-NOT($Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin)
+    AND(
+      INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Client_CoMarketing_Fund&quot;),
+      OR($Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin, $Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin,$Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin,$Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm),
+      NOT($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin)
+    ),
+    AND(
+      INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Data_Center_CoMarketing_Fund&quot;),
+      OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin,
+      $Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin,$Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin,$Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm),
+      NOT($Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin)
+    ),
+    AND(
+      INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Client_CoMarketing_Fund_Boost&quot;),
+      OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,
+      $Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin,$Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin,$Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm),
+      NOT($Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin)
+    ),
+    AND(
+      INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Retail_Marketing_Funds&quot;),
+      OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,
+      $Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin,$Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin,$Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm),
+      NOT($Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin)
+    ),
+    AND(
+      INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Intel_Partner_Alliance&quot;),
+      OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,
+      $Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin,$Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm),
+      NOT($Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin)
+    ),
+    AND(
+      INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Ecosystem_Extension_Fund&quot;),
+      OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,
+      $Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin,$Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm),
+      NOT($Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin)
+    ),
+    AND(
+      INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Co_GTM&quot;),
+      OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,
+      $Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin,$Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin,$Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin),
+      NOT($Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm)
     )
   )
 )</errorConditionFormula>
@@ -3224,6 +3340,29 @@ NOT($Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin)
         <description>Restricting the AP Hold and Hold Reason Field when bank is Inactive</description>
         <errorConditionFormula>OR(AND( Core_MDF_Ineffective_Selection_ind__c == True, ISCHANGED(Core_MDF_Hold_Payments_from_AP_file_ind__c), ISCHANGED( Core_MDF_Hold_Reason_txt__c )),(AND(Core_MDF_Ineffective_Selection_ind__c == True,OR(ISCHANGED(Core_MDF_Hold_Payments_from_AP_file_ind__c), ISCHANGED( Core_MDF_Hold_Reason_txt__c ))) ))</errorConditionFormula>
         <errorMessage>This bank is in Inactive status and cannot currently be edited</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Inactive_Bank_Date</fullName>
+        <active>false</active>
+        <description>User to select inactive by program along with inactive date</description>
+        <errorConditionFormula>AND(
+NOT(AND( ISBLANK( Core_MDF_Inactive_Date_dt__c ),  
+     ISBLANK( Core_MDF_Inactive_by_Program_nm__c ))
+),
+AND( 
+    OR(ISBLANK(Core_MDF_Inactive_Date_dt__c), TRUE) ,
+       ISBLANK(Core_MDF_Inactive_by_Program_nm__c )   
+     )
+)</errorConditionFormula>
+        <errorDisplayField>Core_MDF_Account__c</errorDisplayField>
+        <errorMessage>Select Inactive by Program with Inactive Date</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Inactive_Bank_Date_in_Future</fullName>
+        <active>true</active>
+        <description>User need to select inactive date in past or today date not a fututre date</description>
+        <errorConditionFormula>Core_MDF_Inactive_Date_dt__c &gt;  TODAY()</errorConditionFormula>
+        <errorMessage>Inactive Date cannot be in future</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_LegalEntityForCCFDCFSPCFCCFB</fullName>
@@ -3319,7 +3458,7 @@ INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Client_CoMarketing_Fund_Boost&quot;)
 		INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Data_Center_CoMarketing_Fund&quot;),
 		INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Service_Provider_CoMarketing_Fund&quot;),
 		INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Client_CoMarketing_Fund_Boost&quot;),
-		INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Ecosystem_Extension_Fund&quot;)
+			INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Ecosystem_Extension_Fund&quot;)
 	)
 )</errorConditionFormula>
         <errorDisplayField>Core_MDF_Tax_codes_cd__c</errorDisplayField>
@@ -3410,8 +3549,19 @@ AND(Core_MDF_ESD_Update__c,ISPICKVAL(PRIORVALUE(Core_MDF_Bank_Status__c),&apos;D
         <errorMessage>Selected Account is not a Comarketing Account.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Core_MDF_errorIfNotNumber</fullName>
+        <active>false</active>
+        <description>Throws error when user tries to enter other than number.</description>
+        <errorConditionFormula>OR( 
+NOT(REGEX( Core_MDF_Bank_Account_Number__c ,&quot;^[0-9]{4}$&quot;)), 
+NOT(REGEX( Core_MDF_Supplier_Number__c ,&quot;^[0-9]{10}$&quot;)) 
+)</errorConditionFormula>
+        <errorMessage>Enter valid Account Number and Supplier Number</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Core_MDF_errorIfNotNumberAN</fullName>
         <active>true</active>
+        <description>Account number should only allow alpha numeric values</description>
         <errorConditionFormula>NOT(REGEX( Core_MDF_Bank_Account_Number__c ,&quot;^[a-zA-Z0-9]{4}$&quot;))</errorConditionFormula>
         <errorMessage>Enter Valid Account Number</errorMessage>
     </validationRules>

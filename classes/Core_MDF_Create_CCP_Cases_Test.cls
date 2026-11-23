@@ -92,7 +92,7 @@ public class Core_MDF_Create_CCP_Cases_Test {
         {
             cccBank = Core_MDF_CCP_TestDataUtility.createBank(cccIntelAcc.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1231231230');
         }
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
        // Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(cccEMEAFrance.Id,cccBank.Id,true);
         
         
@@ -125,7 +125,7 @@ public class Core_MDF_Create_CCP_Cases_Test {
                                                                                                      'Consumer',
                                                                                                      'Desktop',
                                                                                                      'Intel® Core™ i5 Processor',
-                                                                                                     'Broadcast',
+                                                                                                     'Audio',
                                                                                                      'Podcast',
                                                                                                      'Draft',
                                                                                                      false);
@@ -152,7 +152,6 @@ public class Core_MDF_Create_CCP_Cases_Test {
         franceClaim.Amount = 300;
         franceClaim.Core_MDF_Currency__c='USD'; 
         franceClaim.Core_MDF_Audit_Hold__c = true;
-        franceClaim.Core_MDF_Processing_Preference_nm__c = 'Get paid, then settle';
         //Database.insert(franceClaim);
         pfcList.add(franceClaim);
         
@@ -161,7 +160,6 @@ public class Core_MDF_Create_CCP_Cases_Test {
         zVClaim.Core_MDF_Document_Submission_Missed_Ind__c = true;
         zVClaim.Amount = 300;
         zVClaim.Core_MDF_Currency__c='USD'; 
-        zVClaim.Core_MDF_Processing_Preference_nm__c = 'Get paid, then settle';
         pfcList.add(zVClaim);
         Database.insert(pfcList);
         Test.stopTest();
@@ -219,7 +217,7 @@ public class Core_MDF_Create_CCP_Cases_Test {
         PartnerFundClaim franceClaim = [select id,Core_MDF_Status__c,Core_MDF_PIC_Review_Completed__c,Core_MDF_BackendReviewSelection_Ind__c from PartnerFundClaim limit 1];            
         franceClaim.Core_MDF_Status__c ='Paid';
         Database.update(franceClaim);
-        // Unit Test Method should include System.Assert 
+        // Unit Test Method should include System.Assert - Indira
         System.assertEquals('Paid', franceClaim.Core_MDF_Status__c, 'Claim status should be updated to Paid');
        
         Core_MDF_Create_CCP_Cases_Schedulable test = new Core_MDF_Create_CCP_Cases_Schedulable();
@@ -227,22 +225,13 @@ public class Core_MDF_Create_CCP_Cases_Test {
     }
     
     @isTest static void testShouldExecuteBatchJob_EmptyCalendar() {
-        Date batchRunDate = Date.newInstance(2024, 1, 6);
-        // Unit Test Method should include System.Assert
+    	Date batchRunDate = Date.newInstance(2024, 1, 6);
+        // Unit Test Method should include System.Assert - Indira
         System.assertNotEquals(null,batchRunDate,'Batch run date should not be null');
-        // Highlight: Unused Local Variable
+        
+        // Highlight: Unused Local Variable - Indira
     	/*Boolean result = */ Core_MDF_Create_CCP_Cases_Schedulable.shouldExecuteBatchJob(batchRunDate);
         
 	}
-    
-   @isTest static void testSchedulerMethod_2() {
-        PartnerFundClaim franceClaim = [select id,Core_MDF_Status__c,Core_MDF_PIC_Review_Completed__c,Core_MDF_BackendReviewSelection_Ind__c from PartnerFundClaim limit 1];            
-        franceClaim.Core_MDF_Status__c ='Payment Due';
-        Database.update(franceClaim);
-       
-       Core_MDF_Create_CCP_Cases_Batch batchRec = new Core_MDF_Create_CCP_Cases_Batch();
-       Database.executeBatch(batchRec,10);        
-    }
-
     
 }

@@ -48,26 +48,42 @@
     <columns>
         <field>Case.Core_Account_Geo__c</field>
     </columns>
-    <columns>
-        <field>Case.Core_External_Issue_Subcategory__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_CaseType__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Case_Closure__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Case_Resolution_Reason__c</field>
-    </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <booleanFilter>(1 AND 2) OR (3 AND 4) OR (5 AND 6 AND 7)</booleanFilter>
         <criteriaItems>
             <column>Case.Core_IPS_Assigned_Queue__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
+            <value>EMBED - Wireless (ICE) WW,WCS,EMBED - Wireless (CCG) WW</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>EMBED - Wireless (ICE) WW,Pony YC Ma,Andrew Chang,Richard Lin,Henry Lee,ChingWen You,Wei-Yeou Lu,Weiyi Wang,Min-Tsang Li,David Lai,Dadmehr Rezaei,Fernando Teston,Marget Clark,Jo Johari,Amyrul Azuan Mohd Bahar,Richard Chung</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Assigned_Queue__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
             <value>EMBED - Wireless (ICE) WW</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Product_name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Thunder Peak 2,Jefferson Peak 2 (CNVi),Windstorm Peak</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>EMBED - Wireless (ICE) WW,Pony YC Ma,Andrew Chang,Richard Lin,Henry Lee,ChingWen You,Wei-Yeou Lu,Min-Tsang Li,David Lai,Marget Clark,Richard Chung</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
@@ -105,6 +121,6 @@
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2022-01-01</startDate>
+        <startDate>2015-07-01</startDate>
     </timeFrameFilter>
 </Report>

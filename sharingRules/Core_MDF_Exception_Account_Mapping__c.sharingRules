@@ -13,7 +13,7 @@
             <operation>equals</operation>
             <value>Client,Datacenter,Retail Marketing Funds,Intel Partner Alliance,Ecosystem Extension Fund,Client Co-Marketing Fund Boost,Service Provider Co-Marketing Fund,Co-GTM</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_MDF_Exception_Account_Mapping_all_Internal</fullName>
@@ -28,7 +28,7 @@
             <operation>equals</operation>
             <value>Client,Datacenter,Retail Marketing Funds,Intel Partner Alliance,Ecosystem Extension Fund,Client Co-Marketing Fund Boost,Service Provider Co-Marketing Fund,Co-GTM</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_MDF_Exception_CCF_ALL</fullName>
@@ -43,7 +43,7 @@
             <operation>equals</operation>
             <value>Client</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_MDF_Exception_CCF_Boost_ALL</fullName>
@@ -58,7 +58,7 @@
             <operation>equals</operation>
             <value>Client Co-Marketing Fund Boost</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_MDF_Exception_Co_GTM_All</fullName>
@@ -88,7 +88,7 @@
             <operation>equals</operation>
             <value>Ecosystem Extension Fund</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_MDF_Exception_IPA_ALL</fullName>
@@ -103,7 +103,7 @@
             <operation>equals</operation>
             <value>Intel Partner Alliance</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_MDF_Exception_SPCF_ALL</fullName>
@@ -118,7 +118,7 @@
             <operation>equals</operation>
             <value>Service Provider Co-Marketing Fund</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Dore_MDF_Exception_DCF_ALL</fullName>
@@ -133,6 +133,6 @@
             <operation>equals</operation>
             <value>Datacenter</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
 </SharingRules>

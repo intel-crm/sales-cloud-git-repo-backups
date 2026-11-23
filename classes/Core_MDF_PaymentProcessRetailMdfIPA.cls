@@ -70,10 +70,12 @@
                     }
                 }
             }
-            for(Core_MDF_Product_Category__mdt buproductcategory : [Select MasterLabel,DeveloperName, Core_MDF_Budget_Type_Txt__c,Core_MDF_Profit_Center_Txt__c,Core_MDF_Material_Code_Txt__c,Core_MDF_Product_Category_Txt__c FROM Core_MDF_Product_Category__mdt WHERE Core_MDF_Program_Txt__c =: pRun.Core_MDF_Program_Id__r.Name]){
-                profitCenterMMIdMapping.put(buproductcategory.MasterLabel, buproductcategory);               
+
+            for(Core_MDF_Product_Category__mdt buproductcategory : [Select MasterLabel,DeveloperName, Core_MDF_Budget_Type_Txt__c,Core_MDF_Profit_Center_Txt__c,Core_MDF_Material_Code_Txt__c,Core_MDF_Product_Category_Txt__c FROM Core_MDF_Product_Category__mdt WHERE Core_MDF_Program_Txt__c =: pRun.Core_MDF_Program_Id__r.Name ]){
+                profitCenterMMIdMapping.put(buproductcategory.MasterLabel, buproductcategory);
                 productCategoryMap.put(buproductcategory.DeveloperName,buproductcategory);
             }
+            
             
             //Looping over all the Budget Type Split metadata records which are active and putting the values in the Map of List
             for(Core_MDF_BudgetType_ProdCategory_Split__mdt budgetTypeSplit : [Select MasterLabel, DeveloperName, Core_MDF_Active_Ind__c,Core_MDF_Budget_Type_Txt__c,Core_MDF_Product_Category_Txt__c,Core_MDF_Product_Category_Code__c,Core_MDF_Split_Percent_Nbr__c FROM Core_MDF_BudgetType_ProdCategory_Split__mdt WHERE Core_MDF_Active_Ind__c = true]){
@@ -114,99 +116,100 @@
                   }
                 }
 
-            // WW42 deriving cost center based on claim Country, Region and Bank LE
-            String costCenter = '';
-            if((claim.Core_MDF_Program__c == IPAProgram || claim.Core_MDF_Program__c == CoGTMProgram) && claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.noncustomer){
-                String claimCountry = (claim.Core_MDF_Program__c == CoGTMProgram) ? 'WW' : claim.Core_MDF_Country_Location_nm__c;
-                String claimGeo = (claim.Core_MDF_Program__c == CoGTMProgram) ? 'WW' : claim.Core_MDF_Region_Cd__c;
+                // WW42 deriving cost center based on claim Country, Region and Bank LE
+                String costCenter = '';
+                if((claim.Core_MDF_Program__c == IPAProgram || claim.Core_MDF_Program__c == CoGTMProgram) && claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.noncustomer){
+                    String claimCountry = (claim.Core_MDF_Program__c == CoGTMProgram) ? 'WW' : claim.Core_MDF_Country_Location_nm__c;
+                    String claimGeo = (claim.Core_MDF_Program__c == CoGTMProgram) ? 'WW' : claim.Core_MDF_Region_Cd__c;
                 if(!leCodeClaimCountryToCostCenterMap.isEmpty() && leCodeClaimCountryToCostCenterMap != null)
-                {
+                    {
                     costCenter = leCodeClaimCountryToCostCenterMap.ContainsKey(claimCountry) ?  leCodeClaimCountryToCostCenterMap.get(claimCountry).Core_MDF_Value__c : leCodeClaimCountryToCostCenterMap.containsKey(claimGeo) ? leCodeClaimCountryToCostCenterMap.get(claimGeo).Core_MDF_Value__c : '';
-                } 
-                claimToCostCenterMap.put(claim.Id,costCenter);
-            }
-            // Get corresponding node attributes record and stamp glAccount
-            String glAccount = '';
-        
-            if (claim.Core_MDF_Program__c == IPAProgram) {
-                Core_MDF_Account_Node_Attributes__c nodeAttr = (claim.ChannelPartnerId != null) ? accountNodeAttributesMap.get(claim.ChannelPartnerId) : null;
-                if (nodeAttr != null && 
-                ((claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.noncustomer && nodeAttr.Core_MDF_Final_NonPO_GL_Account_nbr__c != null)
-                || (claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customerNonPO && nodeAttr.Core_MDF_Final_Cust_NonPO_GL_Acc_nbr__c != null)
-                || ((claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customer || claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.distributorCash) && nodeAttr.Core_MDF_Final_CSAR_GL_Account_nbr__c != null))) {
-                    if (claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.noncustomer) {
-                        glAccount = String.valueOf(nodeAttr.Core_MDF_Final_NonPO_GL_Account_nbr__c);
-                    } else if (claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customerNonPO) {
-                        glAccount = String.valueOf(nodeAttr.Core_MDF_Final_Cust_NonPO_GL_Acc_nbr__c);
-                    } else if (claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customer || claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.distributorCash) {
-                        glAccount = String.valueOf(nodeAttr.Core_MDF_Final_CSAR_GL_Account_nbr__c);
+                    } 
+                    claimToCostCenterMap.put(claim.Id,costCenter);
+                }
+                // Get corresponding node attributes record and stamp glAccount
+                String glAccount = '';
+            
+                if (claim.Core_MDF_Program__c == IPAProgram) {
+                    Core_MDF_Account_Node_Attributes__c nodeAttr = (claim.ChannelPartnerId != null) ? accountNodeAttributesMap.get(claim.ChannelPartnerId) : null;
+                    if (nodeAttr != null && 
+                    ((claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.noncustomer && nodeAttr.Core_MDF_Final_NonPO_GL_Account_nbr__c != null)
+                    || (claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customerNonPO && nodeAttr.Core_MDF_Final_Cust_NonPO_GL_Acc_nbr__c != null)
+                    || ((claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customer || claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.distributorCash) && nodeAttr.Core_MDF_Final_CSAR_GL_Account_nbr__c != null))) {
+                        if (claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.noncustomer) {
+                            glAccount = String.valueOf(nodeAttr.Core_MDF_Final_NonPO_GL_Account_nbr__c);
+                        } else if (claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customerNonPO) {
+                            glAccount = String.valueOf(nodeAttr.Core_MDF_Final_Cust_NonPO_GL_Acc_nbr__c);
+                        } else if (claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customer || claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.distributorCash) {
+                            glAccount = String.valueOf(nodeAttr.Core_MDF_Final_CSAR_GL_Account_nbr__c);
+                        }
+                    } else {
+                        if (claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.noncustomer) {
+                            glAccount = defaultFileParticulars.Core_MDF_GL_Account__c;
+                        } else if (claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customerNonPO) {
+                            glAccount = defaultFileParticulars.Core_MDF_GL_Account_Customer_NonPO__c;
+                        } else if (claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customer || claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.distributorCash) {
+                            glAccount = defaultFileParticulars.Core_MDF_GL_Account_CSAR__c;
+                        }
                     }
                 } else {
-                    if (claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.noncustomer) {
-                        glAccount = defaultFileParticulars.Core_MDF_GL_Account__c;
-                    } else if (claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customerNonPO) {
-                        glAccount = defaultFileParticulars.Core_MDF_GL_Account_Customer_NonPO__c;
-                    } else if (claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customer || claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.distributorCash) {
-                        glAccount = defaultFileParticulars.Core_MDF_GL_Account_CSAR__c;
-                    }
+                    glAccount = (claim.Core_MDF_Program__c == CoGTMProgram && claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.noncustomer) ? defaultFileParticulars.Core_MDF_GL_Account__c : defaultFileParticulars.Core_MDF_GL_Account_CSAR__c;
                 }
-            } else {
-                glAccount = (claim.Core_MDF_Program__c == CoGTMProgram && claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.noncustomer) ? defaultFileParticulars.Core_MDF_GL_Account__c : defaultFileParticulars.Core_MDF_GL_Account_CSAR__c;
-            }
-                // Get all the claim's Activity's Bu in a list - check with anish for the field
-                if(claim.Request.Core_MDF_BU_Split__c != NULL && claim.Request.Core_MDF_BU_Split__c != ''){claimsBuList = claim.Request.Core_MDF_BU_Split__c.split(';'); }                      
-                // If the List of BUs are not empty and program is applicable for BU split of claims 
-                if(programsforBuSplit.contains(pRun.Core_MDF_Program_Id__r.Name) && claimsBuList != NULL && claimsBuList.size()>0){             
-                    for(String businessUnit : claimsBuList){
-                        
-                        
-                        // Get the corresponding BU's split percent                          
-                        Integer buSplitPercent = Integer.valueOf(claim.Request.get(buActivityFieldsMapping.get(businessUnit)));                        
-                        if(buSplitPercent > 0){  
-                            // Get the Business unit/product category metadata record for the business unit
-                            Core_MDF_Product_Category__mdt businessUnitPCMMID = profitCenterMMIdMapping.get(businessUnit);                         
-                            // For each business unit, add instance of Bu split for claim in a list
-                            //createBuSplitClaimChildRecords(claim, businessUnit, buSplitPercent);
-                            // Check if the incoming claim's budget type matches with the budget types eligible for split
-                            if(budgetTypeProdCategorySplitMap.containsKey(claim.Core_MDF_Budget_Type_Options_Nm__c) && (claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customer || claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.distributorCash)){
-                                //Looping over the List of Budget Type Split metadata records which are related to the eligible Budget Types for Splitting
-                                for(Core_MDF_BudgetType_ProdCategory_Split__mdt budgetTypeSplitRecord : ((List<Core_MDF_BudgetType_ProdCategory_Split__mdt>)budgetTypeProdCategorySplitMap.get(claim.Core_MDF_Budget_Type_Options_Nm__c))){ 
-                                    //Getting the instance of Product Category metadata records which matches the key of the Budget Type Split metadata records
-                                    Core_MDF_Product_Category__mdt productCategoryRecord = productCategoryMap.get(budgetTypeSplitRecord.Core_MDF_Product_Category_Code__c);
-                                    //Creating File Wrapping and sending claim record, business unit, and the Budget Type Split metadata record                               
-                                    fileWrapperKey = createFileWrapperKey(claim, businessUnit, budgetTypeSplitRecord,NULL,NULL);                                           
-                                    // Creating Payment Line Items and putting in a map                                 
-                                    createPaymentFileWrapper(claim, fileWrapperKey, businessUnit, buSplitPercent, productCategoryRecord, budgetTypeSplitRecord,cmfRec,NULL, NULL);
-                                }                            
-                            }
-                            //for Non customer payment type 
-                            else if(claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.noncustomer || claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customerNonPO){
-                                fileWrapperKey = createFileWrapperKey(claim, businessUnit, NULL,costCenter,glAccount);  
-                                createPaymentFileWrapper(claim, fileWrapperKey, businessUnit, buSplitPercent, businessUnitPCMMID, NULL,cmfRec,costCenter,glAccount); 
-                            }
-                            else {                     
-                                fileWrapperKey = createFileWrapperKey(claim, businessUnit, NULL,NULL,glAccount);
-                                createPaymentFileWrapper(claim, fileWrapperKey, businessUnit, buSplitPercent, businessUnitPCMMID, NULL,cmfRec,NULL,glAccount);                            
+                    // Get all the claim's Activity's Bu in a list - check with anish for the field
+                    if(claim.Request.Core_MDF_BU_Split__c != NULL && claim.Request.Core_MDF_BU_Split__c != ''){claimsBuList = claim.Request.Core_MDF_BU_Split__c.split(';'); }                      
+                    // If the List of BUs are not empty and program is applicable for BU split of claims 
+                    if(programsforBuSplit.contains(pRun.Core_MDF_Program_Id__r.Name) && claimsBuList != NULL && claimsBuList.size()>0){             
+                        for(String businessUnit : claimsBuList){
+                            
+                            
+                            // Get the corresponding BU's split percent                          
+                            Integer buSplitPercent = Integer.valueOf(claim.Request.get(buActivityFieldsMapping.get(businessUnit)));                        
+                            if(buSplitPercent > 0){  
+                                // Get the Business unit/product category metadata record for the business unit
+                                Core_MDF_Product_Category__mdt businessUnitPCMMID = profitCenterMMIdMapping.get(businessUnit);                         
+                                // For each business unit, add instance of Bu split for claim in a list
+                                //createBuSplitClaimChildRecords(claim, businessUnit, buSplitPercent);
+                                // Check if the incoming claim's budget type matches with the budget types eligible for split
+                                if(budgetTypeProdCategorySplitMap.containsKey(claim.Core_MDF_Budget_Type_Options_Nm__c) && (claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customer || claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.distributorCash)){
+                                    //Looping over the List of Budget Type Split metadata records which are related to the eligible Budget Types for Splitting
+                                    for(Core_MDF_BudgetType_ProdCategory_Split__mdt budgetTypeSplitRecord : ((List<Core_MDF_BudgetType_ProdCategory_Split__mdt>)budgetTypeProdCategorySplitMap.get(claim.Core_MDF_Budget_Type_Options_Nm__c))){ 
+                                        //Getting the instance of Product Category metadata records which matches the key of the Budget Type Split metadata records
+                                        Core_MDF_Product_Category__mdt productCategoryRecord = productCategoryMap.get(budgetTypeSplitRecord.Core_MDF_Product_Category_Code__c);
+                                        //Creating File Wrapping and sending claim record, business unit, and the Budget Type Split metadata record                               
+                                        fileWrapperKey = createFileWrapperKey(claim, businessUnit, budgetTypeSplitRecord,NULL,NULL);                                           
+                                        // Creating Payment Line Items and putting in a map                                 
+                                        createPaymentFileWrapper(claim, fileWrapperKey, businessUnit, buSplitPercent, productCategoryRecord, budgetTypeSplitRecord,cmfRec,NULL, NULL);
+                                    }                            
+                                }
+                                //for Non customer payment type 
+                                else if(claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.noncustomer || claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customerNonPO){
+                                    fileWrapperKey = createFileWrapperKey(claim, businessUnit, NULL,costCenter,glAccount);  
+                                    createPaymentFileWrapper(claim, fileWrapperKey, businessUnit, buSplitPercent, businessUnitPCMMID, NULL,cmfRec,costCenter,glAccount); 
+                                }
+                                else {                     
+                                    fileWrapperKey = createFileWrapperKey(claim, businessUnit, NULL,NULL,glAccount);
+                                    createPaymentFileWrapper(claim, fileWrapperKey, businessUnit, buSplitPercent, businessUnitPCMMID, NULL,cmfRec,NULL,glAccount);                            
+                                }
                             }
                         }
                     }
-                }
-                // For program where BUs is not applicable or no BUs are found on activity 
-                else{
-                    // Get the Business unit/product category metadata record for the activity's product category                
-                    //Core_MDF_Product_Category__mdt productCategory = profitCenterMMIdMapping.get(claim.Request.Core_MDF_Product_Category_txt__c);   
-	            String BuUnit = (claim.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM && claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customer) ? deriveBUForClaim(claim,buPriorityRankingMap,buProdTypeMap) : null;
-                    Core_MDF_Product_Category__mdt productCategory = (BuUnit != null) ?  profitCenterMMIdMapping.get(BuUnit) : profitCenterMMIdMapping.get(claim.Request.Core_MDF_Product_Category_txt__c);   
-                    fileWrapperKey =  createFileWrapperKey(claim, BuUnit, NULL, costCenter, glAccount);
-                   if(claim.Core_MDF_Program__c == CoGTMProgram)
-                    { 
-                        Integer buSplitPercent = (claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customer) ? Core_MDF_PaymentUtility.CoGTMBU_SplitPercent : null; 
-                        createPaymentFileWrapper(claim, fileWrapperKey, BuUnit, buSplitPercent, productCategory, NULL, cmfRec, costCenter, glAccount);
-                    } 
+                    
+                    // For program where BUs is not applicable or no BUs are found on activity 
                     else{
-                        createPaymentFileWrapper(claim, fileWrapperKey, NULL, NULL, productCategory, NULL, NULL, NULL, glAccount);
-                    }
-                }
+                        // Get the Business unit/product category metadata record for the activity's product category                
+                        //Core_MDF_Product_Category__mdt productCategory = profitCenterMMIdMapping.get(claim.Request.Core_MDF_Product_Category_txt__c);   
+                          String BuUnit = (claim.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM && claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customer) ? deriveBUForClaim(claim,buPriorityRankingMap,buProdTypeMap) : null;
+                          Core_MDF_Product_Category__mdt productCategory = (BuUnit != null) ?  profitCenterMMIdMapping.get(BuUnit) : profitCenterMMIdMapping.get(claim.Request.Core_MDF_Product_Category_txt__c);   
+                          fileWrapperKey =  createFileWrapperKey(claim, BuUnit, NULL, costCenter, glAccount);
+                         if(claim.Core_MDF_Program__c == CoGTMProgram)
+                            { 
+                                Integer buSplitPercent = (claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customer) ? Core_MDF_PaymentUtility.CoGTMBU_SplitPercent : null; 
+                                createPaymentFileWrapper(claim, fileWrapperKey, BuUnit, buSplitPercent, productCategory, NULL, cmfRec, costCenter, glAccount);
+                            } 
+                            else{
+                                createPaymentFileWrapper(claim, fileWrapperKey, NULL, NULL, productCategory, NULL, NULL, NULL, glAccount);
+                            }
+                        }
             }
             // Amount Conversion Required Only for Retail MDF
             if(pRun.Core_MDF_Budget_Type_nm__c!=null && (pRun.Core_MDF_Budget_Type_nm__c.contains(Label.Core_MDF_RetailMDF_BudgetType))
@@ -236,7 +239,8 @@
             {            
                 // key - ultimate Account, Bank, Supplier No, Quarter and Year
                 paymentWrapperKey = fileWrapper.paymentWrapperUniqueKey;
-                if(!fileWrapper.isRecoveryIncluded){ //Ignore Recovery Keys from File Wrapper
+                //ATHR - Deeply Nested if 16209
+                /*if(!fileWrapper.isRecoveryIncluded){ //Ignore Recovery Keys from File Wrapper
                     if(paymentWrapperMap.containsKey(paymentWrapperKey)){
                         // sum of all claim amount for the key - If business unit is non empty then sum the buAmount else sum the claims amount
                         paymentWrapperMap.get(paymentWrapperKey).sumOfClaimsAmount += fileWrapper.sumOfClaimsAmount;
@@ -274,7 +278,33 @@
                         wrapperObject.currencyExchangeRate = fileWrapper.currencyExchangeRate;        
                         paymentWrapperMap.put(paymentWrapperKey, wrapperObject);
                     }
+                }*/
+                
+            if(fileWrapper.isRecoveryIncluded) continue;
+            Core_MDF_PaymentWrapper wrapperObject = paymentWrapperMap.containsKey(paymentWrapperKey) ? paymentWrapperMap.get(paymentWrapperKey) : null;
+            // Initialize if null (replaces containsKey + else)
+            if(wrapperObject == null ){
+                wrapperObject = new Core_MDF_PaymentWrapper();
+                wrapperObject.currencyExchangeRate = fileWrapper.currencyExchangeRate;
+                paymentWrapperMap.put(paymentWrapperKey, wrapperObject);
+            }
+
+            // Common logic (merged)
+            wrapperObject.claimsToBeProcessed.addAll(fileWrapper.claimsToBeProcessed);
+            wrapperObject.sumOfClaimsAmount += fileWrapper.sumOfClaimsAmount;
+
+            if(fileWrapper.includeOnlyClaimAmountForPayment){
+                wrapperObject.includeOnlyClaimAmountForPayment = true;
+                wrapperObject.sumOfClaimsAmountExcludesRecovery += fileWrapper.sumOfClaimsAmountExcludesRecovery;
+            }
+
+            if(prunInstance.Core_MDF_Budget_Type_nm__c!=null && prunInstance.Core_MDF_Budget_Type_nm__c.contains(Label.Core_MDF_RetailMDF_BudgetType)){
+                wrapperObject.sumOfConvertedAmount += fileWrapper.sumOfConvertedAmount;
+                if(fileWrapper.includeOnlyClaimAmountForPayment){
+                    wrapperObject.sumOfConvertedAmountExcludesRecovery += fileWrapper.sumOfConvertedAmountExcludesRecovery;
                 }
+            }
+
             } 
             return paymentWrapperMap ;   
         }
@@ -297,9 +327,10 @@
             Map<Id,Core_MDF_Payment__c> paymentMap = new Map<Id,Core_MDF_Payment__c>();
             //This method fetch payment record type and assign
             String paymentRecTypeDevName = Core_MDF_PaymentProcess.fetchPaymentRecordType(pRunInstance);
-            
-            if(paymentWrapperMap != NULL && paymentWrapperMap.size() > 0)
-            {
+            //ATHR - Deeply Nested if 16209
+            if(paymentWrapperMap == NULL || paymentWrapperMap.isEmpty()) return paymentWrapperMap;
+            //if(paymentWrapperMap != NULL && paymentWrapperMap.size() > 0)
+            //{
                 for (String uniqueKey : paymentWrapperMap.keyset())
                 {
                     //New payment instance
@@ -349,7 +380,7 @@
                         paymentWrapperMap.get(uniqueKey).paymentForClaims = paymentMap.get(paymentRecordsToBeProcessedMap.get(uniqueKey).Id);
                     }
                 }
-            }
+            //}
                 return paymentWrapperMap;
 
         }
@@ -411,10 +442,16 @@
                 }
                 
                 //Includes Claim + Recovery
-                if(mapOfConvertedCurrencies!= NULL && mapOfConvertedCurrencies.containsKey(currConvKey))
-                {
-
-                    if(mapOfConvertedCurrencies.get(currConvKey).conversionRate > 0){
+                //ATHR - Deeply Nested if 16209
+                if(mapOfConvertedCurrencies == NULL || !mapOfConvertedCurrencies.containsKey(currConvKey)){
+                    throw new CustomException('Invalid currency exchange rate');
+                }
+                //if(mapOfConvertedCurrencies!= NULL && mapOfConvertedCurrencies.containsKey(currConvKey))
+                //{
+                    if(mapOfConvertedCurrencies.get(currConvKey).conversionRate <= 0){
+                        throw new CustomException('Conversion rate cannot be Zero');
+                    }
+                    //if(mapOfConvertedCurrencies.get(currConvKey).conversionRate > 0){
                         // Get Exchange rate from the Map
                         Decimal convRate = mapOfConvertedCurrencies.get(currConvKey).conversionRate ;
                         // Update Exchange Record in Payment Wrapper record
@@ -422,9 +459,9 @@
                         // Converting Total Vat Amount into bank's Local Currency
                     	if(paymentFileWrapperRecord.isVatEligible){ paymentFileWrapperRecord.totalConvertedVatAmt = (paymentFileWrapperRecord.totalVatAmt * convRate).setScale(2);
                                                               }
-                    }else{
+                    /*}else{
                         throw new CustomException('Conversion rate cannot be Zero');
-                    }            
+                    } */           
                     // Get local Currency
                     String localCurrency = mapOfConvertedCurrencies.get(currConvKey).outputCurrency;
                     
@@ -433,13 +470,20 @@
                     // Updating sumOfConvertedAmount attribute for each payment wrapper 
                     paymentFileWrapperRecord.sumOfConvertedAmount = convertedAmountinlocalCurr;
                     
-                }else{
+                /*}else{
                     throw new CustomException('Invalid currency exchange rate');
-                }
+                }*/
 
                 //Includes Only Claim
-                if(String.isNotBlank(currConvKeyForClaim)){
-                    if(mapOfConvertedCurrencies != null && mapOfConvertedCurrencies.containsKey(currConvKeyForClaim))
+                //ATHR - Deeply Nested if 16209
+                if(String.isBlank(currConvKeyForClaim))continue;
+                //if(String.isNotBlank(currConvKeyForClaim)){
+                if(mapOfConvertedCurrencies == null || !mapOfConvertedCurrencies.containsKey(currConvKeyForClaim)){
+                   throw new CustomException('Invalid currency exchange rate');
+                }
+                Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount claimConversionData = mapOfConvertedCurrencies.get(currConvKeyForClaim);
+                paymentFileWrapperRecord.sumOfConvertedAmountExcludesRecovery = claimConversionData.convertedAmount;
+                /*if(mapOfConvertedCurrencies != null && mapOfConvertedCurrencies.containsKey(currConvKeyForClaim))
                     {   
                         // Get Amount after conversion into local Currency
                         Decimal convertedAmountinlocalCurr = mapOfConvertedCurrencies.get(currConvKeyForClaim).convertedAmount;
@@ -449,7 +493,7 @@
                     }else{
                         throw new CustomException('Invalid currency exchange rate');
                     }
-                }
+                }*/
             }
             
             return paymentFileWrapper;
@@ -474,7 +518,7 @@
             fileWrapperKey =  String.valueOf(claim.Id)+'_'+claim.Core_MDF_C_Type_Ind__c;    
             }
             else
-            {
+            {//add businessUnit null check
             fileWrapperKey = claim.Core_MDF_VAT_Eligibility_Ind__c? String.valueOf(claim.Id)+'_'+claim.Core_MDF_C_Type_Ind__c+'_'+businessUnit+'_'+budgetTypeSplit?.Core_MDF_Product_Category_Code__c:
             claim.Request.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c +'_' + claim.Core_MDF_Bank__c+'_'+claim.Core_MDF_Bank__r.Core_MDF_Supplier_Number__c + '_' + claim.Request.Core_MDF_Product_Category_txt__c + '_' + claim.Core_MDF_Quarter_Year_txt__c+'_'+claim.Core_MDF_C_Type_Ind__c+'_' +claim.Core_MDF_Budget_Type_Options_Nm__c+'_'+businessUnit+'_'+budgetTypeSplit?.Core_MDF_Product_Category_Code__c;
      
@@ -536,9 +580,10 @@
                 if (glAccount != null) {
                     paymentUniqueKey += '_' + glAccount;
                 }
-                /*if(claim.Core_MDF_Campaign_Id__r.Core_MDF_Profit_Center__c != null)
+                /*if(productCategoryMdt != null)
                 {
-                    paymentUniqueKey = paymentUniqueKey + '_' + claim.Core_MDF_Campaign_Id__r.Core_MDF_Profit_Center__c;
+                  // paymentUniqueKey = paymentUniqueKey + '_' + claim.Core_MDF_Campaign_Id__r.Core_MDF_Profit_Center__c;//use productcategorymdt
+                  paymentUniqueKey = paymentUniqueKey + '_' + productCategoryMdt.Core_MDF_Profit_Center_Txt__c;
                 }*/
                 if(claim.Core_MDF_Campaign_Id__r.Core_MDF_MMID__c != null)
                  {
@@ -608,8 +653,14 @@
             Core_MDF_PaymentFileWrapper fileWrapperObject = new Core_MDF_PaymentFileWrapper();
 
             fileWrapperObject.claimsToBeProcessed.add(claim);
-
-            if(!isRecoveryRow){
+            //ATHR - Deeply Nested if 16209
+            if(isRecoveryRow){
+                tempDecimal = claim.Core_MDF_Total_Claim_Recovery_Amount__c;
+                totalVatAmount = ((claim.Core_MDF_Total_Claim_Recovery_Amount__c * (String.isNotBlank(claim.Core_MDF_Applicable_VAT_Percentage_nm__c) && claim.Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c == '650' ? Decimal.valueOf(claim.Core_MDF_Applicable_VAT_Percentage_nm__c) : String.isNotBlank(claim.Core_MDF_Bank__r.Core_MDF_VAT_pct__c) ? Decimal.valueOf(claim.Core_MDF_Bank__r.Core_MDF_VAT_pct__c) : 0 ))/100);
+                totalVatAmount = totalVatAmount.setScale(2, System.RoundingMode.HALF_UP);
+            }
+            //if(!isRecoveryRow){
+            else{
                 if(addRecoveryAmountInRow && claim.Core_MDF_Total_Claim_Recovery_Amount__c > 0){
                     tempDecimal = claim.Amount + claim.Core_MDF_Total_Claim_Recovery_Amount__c;
                     tempDecimal = tempDecimal.setScale(2, System.RoundingMode.HALF_UP); 
@@ -627,11 +678,11 @@
 
                 
                 
-            }else{
+            }/*else{
                 tempDecimal = claim.Core_MDF_Total_Claim_Recovery_Amount__c;
                 totalVatAmount = ((claim.Core_MDF_Total_Claim_Recovery_Amount__c * (String.isNotBlank(claim.Core_MDF_Applicable_VAT_Percentage_nm__c) && claim.Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c == '650' ? Decimal.valueOf(claim.Core_MDF_Applicable_VAT_Percentage_nm__c) : String.isNotBlank(claim.Core_MDF_Bank__r.Core_MDF_VAT_pct__c) ? Decimal.valueOf(claim.Core_MDF_Bank__r.Core_MDF_VAT_pct__c) : 0 ))/100);
                 totalVatAmount = totalVatAmount.setScale(2, System.RoundingMode.HALF_UP);
-            }
+            }*/
 
             // If Split percent is present then get Claim Amount as well as the Vat amount and multiply with split % for that BU - 
             if(buSplitPercent != NULL && buSplitPercent > 0){ 

@@ -1,5 +1,5 @@
 //US949837 - Added without sharing keyword to fix checkmarx issues
-global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Database.Batchable<sObject>,Database.Stateful {//Audit change
+global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Database.Batchable<sObject>, Database.RaisesPlatformEvents,Database.Stateful {//Audit change
     
     List<PartnerFundClaim> csList = new List<PartnerFundClaim>();
     public List<PartnerFundClaim> claimListObj;
@@ -12,7 +12,7 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
     public static Set<id> zvScorecardClaims = new Set<id>();
     public static Id reviewCaseRecordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('Core_MDF_Audit').getRecordTypeId();
     public static Id reviewCaseClosedRecordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('Core_MDF_Audit_Closed').getRecordTypeId();
-    public Set<Id> caseIdSetForAIAudit = new Set<Id>();//Audit changes 
+    public Set<Id> caseIdSetForAIAudit = new Set<Id>();//Audit changes =
     
     //US591129, US591133: Case SLA, Submission SLA Program Based
     //public static Map<string,integer> programBudgetTypeToSubmissionSLAMap = new Map<string,integer>();
@@ -43,15 +43,17 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
             + 'OwnerId,Core_MDF_Requested_Reimbursement_Amt__c,Core_MDF_AccountCompany__c, Core_MDF_Status__c, Request.Core_MDF_Budget_Type_nm__c, Request.Core_MDF_Activity_SubType_nm__c,'
             + 'ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c, ChannelPartner.Core_MDF_Channel_Program__c, Core_MDF_Region_Cd__c, Core_MDF_Sub_Region_Cd__c,'
             + 'Core_MDF_Audit_Hold__c, Core_MDF_FlaggedForAudit__c,Core_MDF_Media_Vehicle__c, Core_MDF_Ad_Run_Start_Date__c, Core_MDF_Ad_Run_End_Date__c, LastModifiedById, '
-            + 'LastModifiedBy.Profile.Name, ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,Core_MDF_Document_Hold_Ind__c,Core_MDF_Activity_SubType_nm__c,Core_MDF_Document_Submission_Missed_Ind__c '
+            + 'LastModifiedBy.Profile.Name, ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,Core_MDF_Document_Hold_Ind__c,Core_MDF_Activity_SubType_nm__c,Core_MDF_Document_Submission_Missed_Ind__c, Core_MDF_Processing_Preference_nm__c, Core_MDF_Claim_Previous_Status__c '
             + 'FROM PartnerFundClaim '+'WHERE Id IN :claimListObj';
         return Database.getQueryLocator(strQuery);
     }
     
     global void execute(Database.BatchableContext batchContext, List<PartnerFundClaim> scope) {
         try{
+            
             // for creating a case
             if(executionReason == 'CreateCases') {
+                system.debug('hereCreateCases@@@');
                 List<Id> claimIdList = new List<Id>();
                 List<PartnerFundClaim> pfcListWithActivityCampaign = new List<PartnerFundClaim>();
                 Map<Id,PartnerFundClaim> pfcMapWithActivityCampaign;
@@ -109,7 +111,11 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
                                                     Core_MDF_Sub_Region_Cd__c, Core_MDF_Audit_Hold__c,Core_MDF_FlaggedForAudit__c, 
                                                     LastModifiedBy.Profile.Name,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Ad_Run_End_Date__c,
                                                     Core_MDF_Media_Vehicle__c, ChannelPartner.Core_MDF_Group_Id__c,
-                                                    ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,
+                                                    Core_MDF_Processing_Preference_nm__c, Core_MDF_Claim_Previous_Status__c, 
+                                                    ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,Core_MDF_Payment_Type_nm__c, Core_MDF_Bank__c, Core_MDF_Budget_Type_Options_Nm__c ,
+  
+                                                    //ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Core_Account_Country__c, Jahnavi K -- Change of Country reference 
+                                                    //toLabel(ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.BillingCountryCode),
                                                     Core_MDF_Reimbursable_TransactionAmt_Loc__c,Core_MDF_Document_Hold_Ind__c,
                                                     Request.Campaign.Core_MDF_Strategic_Marketing_Fund_Ind__c,Core_MDF_Activity_SubType_nm__c,
                                                     Core_MDF_Doc_Hold_to_Review_Hold_Ind__c,Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c,Core_MDF_Document_Submission_Missed_Ind__c 
@@ -166,18 +172,28 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
                 Set<Id> cancelledCaseIdSet = new Set<Id>();
                 List<Case> cancelledCasesToBeUpdated = new List<Case>();
 
+                system.Debug('pfcListWithActivityCampaign'+pfcListWithActivityCampaign.size());
                 if(pfcListWithActivityCampaign.size() > 0) {
                     
                     //quering the case object where claimId should be in the set 
+                    system.debug('Queries'+limits.getQueries());
+                    system.debug('Limit Queries'+limits.getLimitQueries());
                     for (Case caseRec : [SELECT Id, Core_MDF_Claim_ID__c, Core_MDF_Status__c FROM Case WHERE Core_MDF_Claim_ID__c IN :pfcMapWithActivityCampaign.keySet() limit 50000]) {
                        claimIdandCaseIdMap.put(caseRec.Core_MDF_Claim_ID__c, caseRec.Id);
 
                        //Roshan - Manual Audit for Cancelled Case
-                       if(caseRec.Core_MDF_Status__c == 'Cancelled'){ cancelledCaseIdSet.add(caseRec.Id); }
+                       if(caseRec.Core_MDF_Status__c == 'Cancelled'){
+                           cancelledCaseIdSet.add(caseRec.Id);
+                       }
+
                     }
+                    system.debug('after query execution'+limits.getQueries());
+                    system.Debug('claimIdandCaseIdMap'+claimIdandCaseIdMap);
                     //Ealisha-start
                     Map<string,integer> daysSLAInputMap = new Map<string,integer>{};
                         Map<string,integer> daysSLAOutputMap = new Map<string,integer>{};
+                            //Map<string,date> closureDateInputMap = new Map<string,date>{};
+                            //Map<string,date> closureDateOutputMap = new Map<string,date>{};
                                     Map<id,string> claimIdToKeyMap = new Map<id,string>{};
                                         
                                         for(PartnerFundClaim claim: pfcListWithActivityCampaign){
@@ -185,25 +201,46 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
                                             key= claim.Core_MDF_Program__c+':';
                                             //Added for IPA Audit
                                             // ATHR Fix: TWC3117-18226
-                                            key += (claim.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name')) ? 'NA:' : ((claim.Request.Core_MDF_Budget_Type_nm__c == '' || claim.Request.Core_MDF_Budget_Type_nm__c == NULL ? 'NA' : claim.Request.Core_MDF_Budget_Type_nm__c) + ':');                                            
+                                            /*key += (claim.Core_MDF_Program__c != Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name'))
+                                                ? ((claim.Request.Core_MDF_Budget_Type_nm__c == '' || claim.Request.Core_MDF_Budget_Type_nm__c == NULL ? 'NA' : claim.Request.Core_MDF_Budget_Type_nm__c) + ':')
+                                                : 'NA:';*/
+                                            key += (claim.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name'))
+                                                ? 'NA:' : ((claim.Request.Core_MDF_Budget_Type_nm__c == '' || claim.Request.Core_MDF_Budget_Type_nm__c == NULL ? 'NA' : claim.Request.Core_MDF_Budget_Type_nm__c) + ':');
+                                            //Japan cycle
+                                            //string ultimateAcctCtry = claim.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Core_Account_Country__c;
+                                            //Jahnavi K -- Change of Country reference
+                                            /*string ultimateAcctCtry = claim.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.BillingCountryCode;
+                                            System.debug('ultimateAcctCtry---'+ultimateAcctCtry);
+                                            if(string.isNotBlank(ultimateAcctCtry) && ultimateAcctCtry.toUpperCase() == 'JAPAN' && claim.Request.Core_MDF_Budget_Type_nm__c =='RSA MD'){
+                                                key+= wMap.get(ultimateAcctCtry.toUpperCase()).geo+':'+ null +':'+ ultimateAcctCtry.toUpperCase()+':';  
+                                                System.debug('in line 184'+key);
+                                            }    
+                                            else{
+                                                key+= wMap.get(claim.Core_MDF_Country_Location_nm__c).geo+':'+
+                                                    wMap.get(claim.Core_MDF_Country_Location_nm__c).subGeo+':'+
+                                                    claim.Core_MDF_Country_Location_nm__c+':';  
+                                            }*/                                             
 
                                             key += wMap.get(claim.Core_MDF_Country_Location_nm__c).geo + ':' + wMap.get(claim.Core_MDF_Country_Location_nm__c).subGeo + ':' + claim.Core_MDF_Country_Location_nm__c + ':';
                                              // ATHR Fix: TWC3117-18226
+                                            //key += (claim.Request.Core_MDF_Budget_Type_nm__c != 'RSA MD') ? system.now().date().format() : claim.Request.Core_MDF_End_Date__c.format();
                                             key += (claim.Request.Core_MDF_Budget_Type_nm__c == 'RSA MD') ? claim.Request.Core_MDF_End_Date__c.format() : system.now().date().format();
 
                                             key = key.deleteWhitespace();
-                                            
+                                            //closureDateInputMap.put(key,null);
                                             daysSLAInputMap.put(key,0);
                                             claimIdToKeyMap.put(claim.Id,key);
                                         }
+                    //closureDateOutputMap = Core_MDF_ProcessClaimSubmissionClosure.getDocSubDueDate(closureDateInputMap); 
                     daysSLAOutputMap = Core_MDF_ProcessClaimSubmissionClosure.getDaysSLA(daysSLAInputMap);
                     //Ealisha-end
                     
                     //US591129, US591133: Case SLA, Submission SLA Program Based
                     //Query the Claim Window Metadata to populate the Case SLA and Submission SLA values based on programs
                     //if(programBudgetTypeToSubmissionSLAMap.size()==0 || programBudgetTypeToCaseSLAMap.size()==0) {queryForProgramBasedSLAs();}
-                    
+                    system.debug('pfcListWithActivityCampaign'+pfcListWithActivityCampaign);
                     for(PartnerFundClaim pfc: pfcListWithActivityCampaign) {
+                        system.debug('claimIdandCaseIdMap'+claimIdandCaseIdMap);
                         if(claimIdandCaseIdMap!=NULL && claimIdandCaseIdMap.containsKey(pfc.Id)){
                             PartnerFundClaim claimToUpdate = new PartnerFundClaim(Id = pfc.Id, Core_MDF_Claim_Review_Case__c = claimIdandCaseIdMap.get(pfc.Id));
                             claimListToBeUpdatedWithCaseId.add(claimToUpdate);
@@ -213,10 +250,13 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
                                 cancelledCasesToBeUpdated.add(new Case(Id = claimIdandCaseIdMap.get(pfc.Id), RecordTypeId = reviewCaseRecordTypeId, Status = Core_MDF_CCP_ConstantClass.CASE_OPEN, Core_MDF_Status__c = 'Under Review', Origin = 'Manual'));
                             }
 
+                            system.debug('claimIdandCaseIdMap.get(pfc.Id)'+claimIdandCaseIdMap.get(pfc.Id));
                             continue;
                         }
+                        
                         //Ealisha-start
                         string key = claimIdToKeyMap.get(pfc.Id);
+                        system.debug('After if block');
                         //Ealisha-end 
                         //String caseOrigin = getCaseOrigin(pfc.Core_MDF_Audit_Type__c);
                         Case caseObj = new Case();
@@ -361,6 +401,8 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
                         
                        
                     }
+                    
+                    
                 }
 
                 //Roshan - Manual Audit for Cancelled Case
@@ -386,6 +428,7 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
                     for (Database.SaveResult sr : srList) {
                         if (sr.isSuccess()) {
                             // Operation was successful, so get the ID of the record that was processed
+                            System.debug('Successfully inserted case Id. Case ID: ' + sr.getId());
                             caseIdSetForAIAudit.add(sr.getId());
                         }
                     }             
@@ -404,6 +447,8 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
                     List<Id> caseIdList = new List<Id>();
                     
                     for(Case caseObj : reviewCasesToBeCreatedList) {
+
+                        system.debug('here417@@@');
                         caseIdList.add(caseObj.id);
                         PartnerFundClaim pfcObj = pfcMapWithActivityCampaign.get(caseObj.Core_MDF_Claim_ID__c);
                         pfcObj.Core_MDF_Claim_Review_Case__c = caseObj.Id;
@@ -414,25 +459,30 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
                             //pfcObj.Core_MDF_Status__c = 'Hold';
                             pfcObj.Core_MDF_Audit_Hold__c = pfcObj.Core_MDF_Document_Submission_Missed_Ind__c ? FALSE : TRUE;
                         }
+
                         claimListToBeUpdatedWithCaseId.add(pfcObj);  
+                        system.Debug('claimListToBeUpdatedWithCaseId'+claimListToBeUpdatedWithCaseId);
                     }
                     if(caseIdList.size()>0) {
                         Core_MDF_AuditCaseProcess.auditCaseAssignment(caseIdList);
                     }
                     
+                    
                 }
-               
+                system.debug('claimListToBeUpdatedWithCaseId'+claimListToBeUpdatedWithCaseId);
                 //US949837 - Added extra condition to fix checkmarx issues
                 //  if(claimListToBeUpdatedWithCaseId.size() > 0 && Schema.sObjectType.PartnerFundClaim.isUpdateable()) {
                 if(claimListToBeUpdatedWithCaseId.size() > 0) {
                     Database.SaveResult[] srLst = Database.update(claimListToBeUpdatedWithCaseId, false);
-                    
+                    system.Debug('srLst'+srLst);
                     //Calling insertLogEntryRecord method to insert log entry for failed record
                     insertLogEntryRecord(srLst);
+                    system.debug('AfterLogEntry');
                 }
             }
             // for updating a case
             if(executionReason == 'UpdateCases') {
+                system.debug('hereUpdateCases@@@');
                 Map<Id,Case> claimIDWithCase = new Map<Id,Case>();
                 List<Id> claimIdList = new List<Id>();
                 List<Case> caseListForUpdation = new List<Case>();
@@ -447,21 +497,24 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
                 }
                 
                 //Collecting all claim id's
+                system.Debug('scope'+scope);
                 for(PartnerFundClaim pfc: scope) {
                     claimIdList.add(pfc.id);
                 }
-                
+                system.debug('claimIdList'+claimIdList);
                 //Constructing map of claim and case
                 if(claimIdList.size() > 0) {
                   // Highlight Unused Local Variable - TWC3117-18226 
                   //  List<ContentDocumentLink> docLink = [SELECT ContentDocumentId,Id,LinkedEntityId,ShareType FROM ContentDocumentLink WHERE LinkedEntityId IN:claimIdList]; //POP
                     for(Case cs: [SELECT Id,RecordTypeId,Core_MDF_Claim_ID__c,Core_MDF_Status__c,Core_MDF_Claim_Amount_USD__c,Core_MDF_Claim_Conversion_Exchange_Rate__c,
                                   Core_MDF_Channel_Program_txt__c,Core_MDF_Claim_Local_Currency__c,Core_MDF_Claim_Taxes_Local__c,Core_MDF_Invoice_Date__c,Core_MDF_OtherCostsnotReimbursableLocal__c,
-                                  Core_MDF_TotalTransactionAmountLocal__c,Core_MDF_Total_Offset_Amount_amt__c, Core_MDF_Claim_Submitter__c, Core_MDF_Invoice_Number_txt__c,
+                                  Core_MDF_TotalTransactionAmountLocal__c,Core_MDF_Total_Offset_Amount_amt__c, Core_MDF_Claim_Submitter__c, Core_MDF_Claim_Submitter_Language__c, Core_MDF_Invoice_Number_txt__c,
                                   Core_MDF_Claim_Number__c,Core_MDF_More_Documentation_Required__c,Core_MDF_Activity_End_Date__c,CreatedDate FROM Case WHERE Core_MDF_Claim_ID__c IN :claimIdList]) {
                                       
                                       claimIDWithCase.put(cs.Core_MDF_Claim_ID__c, cs);
                                   }
+                   
+                    system.Debug('claimIDWithCase'+claimIDWithCase);
                     
                     // Added new Case Review Document Fields
                     //POP
@@ -492,11 +545,14 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
                      // ATHR Fix: TWC3117-18226
                     if(!claimIDWithCase.containsKey(pfc.Id)) continue;
                         Case caseObj = claimIDWithCase.get(pfc.Id);
-                        
+                        system.Debug('caseObj'+caseObj);
+                        system.Debug('insideUpdate');
                         //WW09 - Scorecard Changes
                         if(caseObj.Core_MDF_Status__c != 'Compliant' && caseObj.Core_MDF_Status__c != 'Non-compliant' && caseObj.Core_MDF_Status__c != 'Cancelled' && caseObj.Core_MDF_Status__c != 'Review Completed') {
                          // ATHR fix - TWC3117-18226
                        caseObj.Core_MDF_Status__c = (pfc.Core_MDF_Status__c == 'Cancelled') ? pfc.Core_MDF_Status__c : caseObj.Core_MDF_Status__c;
+                       /*caseObj.Core_MDF_Claim_Submitter__c = (pfc.OwnerId != caseObj.Core_MDF_Claim_Submitter__c) ? pfc.OwnerId : caseObj.Core_MDF_Claim_Submitter__c;
+                       caseObj.Core_MDF_Claim_Submitter_Language__c = (pfc.OwnerId != caseObj.Core_MDF_Claim_Submitter__c) ? userIdLocaleMap.get(pfc.OwnerId).LanguageLocaleKey : caseObj.Core_MDF_Claim_Submitter_Language__c;*/
                        caseObj.Core_MDF_Claim_Submitter__c = (pfc.OwnerId == caseObj.Core_MDF_Claim_Submitter__c) ? caseObj.Core_MDF_Claim_Submitter__c : pfc.OwnerId;
                        caseObj.Core_MDF_Claim_Submitter_Language__c = (pfc.OwnerId == caseObj.Core_MDF_Claim_Submitter__c) ? caseObj.Core_MDF_Claim_Submitter_Language__c : userIdLocaleMap.get(pfc.OwnerId).LanguageLocaleKey;
                             caseObj.Core_MDF_Claim_Amount_USD__c = pfc.Amount;
@@ -553,6 +609,7 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
                             toBeUpdatedPfcList.add(tempPfc);
                         }
 
+                        system.Debug('toBeUpdatedPfcList'+toBeUpdatedPfcList);
                 }
                 
                 //Updating cases
@@ -568,7 +625,10 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
                     for (Database.SaveResult sr : srList) {
                          // ATHR Fix: TWC3117-18226
                         if(sr.isSuccess() && activityEndDateUpdatedCaseIds.contains(sr.getId())){
+                            // Operation was successful, so get the ID of the record that was processed
                              // Operation was successful, so get the ID of the record that was processed where Activity end date was updated
+                         // System.debug('Successfully updated case Id. Case ID: ' + sr.getId());
+                         // if(activityEndDateUpdatedCaseIds.contains(sr.getId())){
                                 caseIdSetForAIAudit.add(sr.getId());
                             }
                         
@@ -586,11 +646,14 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
                 //Updating claims which does not have case id
                 //US949837 - Added extra condition to fix checkmarx issues
                 // if(toBeUpdatedPfcList.size() > 0 && Schema.sObjectType.PartnerFundClaim.isUpdateable()) {
+                system.debug('toBeUpdatedPfcList'+toBeUpdatedPfcList);
                 if (toBeUpdatedPfcList.size() > 0){
                     Database.SaveResult[] srList = Database.update(toBeUpdatedPfcList, false);
                     //Calling insertLogEntryRecord method to insert log entry for failed record
                     insertLogEntryRecord(srList);
+                    system.debug('srList'+srList);
                 }
+                
             }
         }
         catch(exception ex) {
@@ -603,7 +666,59 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
     public static String getActivityStartAndEndDate(Date activityStartDate, Date activityEndDate){
         return String.valueOf(activityStartDate.month()) + '/' + String.valueOf(activityStartDate.Day()) + '/' + String.valueOf(activityStartDate.year()) + ' and ' + String.valueOf(activityEndDate.month()) + '/' + String.valueOf(activityEndDate.Day()) + '/' + String.valueOf(activityEndDate.year());
     }
+    
+    //This method is for populating the Checklist values on Case creation
+    /*public static void createChecklistItems(List<case> cases){
+        List<Core_MDF_Claim_Case_Checklist__c> toBeInserted = new List<Core_MDF_Claim_Case_Checklist__c>();
+        set<string> channelProgram = new set<string>();
+        //WW09 - Scorecard Changes
+        List<Case> checklistCreationCases = new List<Case>();
+        //WW09 - Generic Checklist Changes
+        Trigger_Execution__mdt switchOnOrOff = Trigger_Execution__mdt.getInstance('Core_MDF_Generic_Checklist_Switch');
         
+        try{
+            //US527098: Checklist based on Programs
+            for(case record: cases) {
+                //WW09 - Scorecard Changes
+                if(!zvScorecardClaims.contains(record.Core_MDF_Claim_Lookup_Id__c)){
+                    channelProgram.add(record.Core_MDF_Channel_Program_txt__c);
+                    checklistCreationCases.add(record);
+                }
+            }
+            
+            Map<string,List<Core_MDF_Checklist_Items__mdt> > channelProgramToChecklistMetadataMap = queryChecklistMetadata(channelProgram);
+            
+            for(case caseRecord: checklistCreationCases) {
+                
+                //Get Checklist Items based on Program & Budget
+                //WW09 - Generic Checklist Changes
+                string programBTKey = caseRecord.Core_MDF_Channel_Program_txt__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name')? caseRecord.Core_MDF_Channel_Program_txt__c+'null' : caseRecord.Core_MDF_Channel_Program_txt__c + caseRecord.Core_MDF_Budget_Type_Nm__c;
+                string key = switchOnOrOff.Active__c ? 'All'+'null' : programBTKey;
+                List<Core_MDF_Checklist_Items__mdt> checklistMetadata = channelProgramToChecklistMetadataMap.get(key);
+                
+                //Loop through checklist records which are Program specific
+                for(Core_MDF_Checklist_Items__mdt checklistItem : checklistMetadata) {
+                    Core_MDF_Claim_Case_Checklist__c record = new Core_MDF_Claim_Case_Checklist__c();
+                    record.Core_MDF_Case_ID__c = caseRecord.id;
+                    record.Core_MDF_Checklist_Category__c = checklistItem.Core_MDF_Checklist_Type__c;
+                    record.Core_MDF_Checklist_Item__c= checklistItem.Core_MDF_Checklist_Label__c;
+                    record.Core_MDF_Checklist_Description__c= checklistItem.Core_MDF_Description__c;
+                    record.Core_MDF_Checklist_Line_Number__c= checklistItem.Core_MDF_Line_Number__c;
+                    record.Core_MDF_Claim_Case_Review_Findings__c = checklistItem.Core_MDF_Claim_Case_Review_Findings__c;
+                    toBeInserted.add(record);
+                }
+            }
+            //US949837 - Added extra condition to fix checkmarx issue
+            //if(toBeInserted.size() > 0 && Schema.sObjectType.Core_MDF_Claim_Case_Checklist__c.isCreateable()) {
+            if(toBeInserted.size() > 0 ){
+                Database.SaveResult[] srList = Database.insert(toBeInserted, false);
+            }
+        }
+        
+        catch(exception ex) {Core_MDF_CCP_UtilityClass.logError(ex);}
+        
+    }*/
+     //Ealay
      /************************************************************************************************************
         Moved from Custom Metadata (Core_MDF_Checklist_Items__mdt) to Custom Object (Core_MDF_CCP_Custom_Metadata_Utility__c)
  
@@ -663,16 +778,21 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
                     toBeInserted.add(record);
                 }
             }
+
+            system.debug('toBeInserted@@@' + toBeInserted);
             //US949837 - Added extra condition to fix checkmarx issue
             //if(toBeInserted.size() > 0 && Schema.sObjectType.Core_MDF_Claim_Case_Checklist__c.isCreateable()) {
             if(toBeInserted.size() > 0 ){
                 Database.SaveResult[] srList = Database.insert(toBeInserted, false);
             }
+
+        system.debug('createChecklistItems toBeInserted  ' + toBeInserted);
         }
        
         catch(exception ex) {Core_MDF_CCP_UtilityClass.logError(ex);}
        
     }
+    //Ealay
     
     //This method is for creating ScoreCard record on Case creation
     public static void createScoreCard(List<Case> cases){
@@ -682,19 +802,36 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
             for(case record: cases){
                 if(record.id !=null)
                 {
-                Core_MDF_Scorecard__c scoreCard = new Core_MDF_Scorecard__c(Core_MDF_Case_Id__c=record.id);
-                //WW09 - Scorecard Changes
-                if(zvScorecardClaims.contains(record.Core_MDF_Claim_Lookup_Id__c)){
-                    scoreCard.Core_MDF_Attribution_Nbr__c = '0';
-                    scoreCard.Core_MDF_POP__c ='0';
-                    scoreCard.Core_MDF_Engagement_Nbr__c='0';
+                    Core_MDF_Scorecard__c scoreCard = new Core_MDF_Scorecard__c(Core_MDF_Case_Id__c=record.id);
+                    //WW09 - Scorecard Changes
+                    if(zvScorecardClaims.contains(record.Core_MDF_Claim_Lookup_Id__c)){
+                        scoreCard.Core_MDF_Attribution_Nbr__c = '0';
+                        scoreCard.Core_MDF_POP__c ='0';
+                        scoreCard.Core_MDF_Engagement_Nbr__c='0';
+                    }
+                    //Core_MDF_Bulk_Transaction__e evtObj = new Core_MDF_Bulk_Transaction__e(); 
+                    //evtObj.Core_MDF_JSON_Data__c = JSON.serialize(scoreCard); 
+                    //evtObj.Core_MDF_Object_Name__c = 'Core_MDF_Scorecard__c';
+                    //updateRecordList.add(evtObj);
+                     scorecardList.add(scoreCard);
                 }
-                scorecardList.add(scoreCard);
-            }
                
             }
+          
             if(scorecardList!=null && scorecardList.size()>0){
+                //List<Database.SaveResult> results = EventBus.publish(scorecardList);
                 Database.SaveResult[] srList = Database.insert(scorecardList, false);
+                /*for (Database.SaveResult sr : results) {
+                    if (sr.isSuccess()) {
+                     
+                    } 
+                    else { 
+                        for(Database.Error err : sr.getErrors()) { 
+                             
+                        }
+                    }
+                }*/
+                
                 insertLogEntryRecord(srList); 
             }
             
@@ -702,6 +839,47 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
         catch(exception ex) {Core_MDF_CCP_UtilityClass.logError(ex);}
     }
     
+    //Query the Checklist Metadata
+    /*public static Map<string,List<Core_MDF_Checklist_Items__mdt> > queryChecklistMetadata(set<string> channelPrograms){
+        List<Core_MDF_Checklist_Items__mdt> result = new List<Core_MDF_Checklist_Items__mdt>();
+        Map<string,List<Core_MDF_Checklist_Items__mdt> > channelProgramtoChecklistMap = new Map<string,List<Core_MDF_Checklist_Items__mdt> >();
+        set<string> dynamicParam = new set<string>();
+        
+        try{
+            //WW09 - Generic Checklist Changes
+            Trigger_Execution__mdt switchOnOrOff = Trigger_Execution__mdt.getInstance('Core_MDF_Generic_Checklist_Switch');
+            
+            if(switchOnOrOff.Active__c){dynamicParam.add('All');}
+            else{dynamicParam = new Set<string>(channelPrograms);}
+            
+            //US527098: Added Program + Budget filter
+            result = [select Core_MDF_Line_Number__c,Core_MDF_Checklist_Label__c,Core_MDF_Checklist_Type__c,Core_MDF_Description__c,toLabel(Core_MDF_Claim_Case_Review_Findings__c)
+                      ,Core_MDF_Checklist_Channel_Program_Txt__c
+                      ,Core_MDF_Budget_Type_txt__c
+                      from Core_MDF_Checklist_Items__mdt
+                      where Core_MDF_Active__c=true
+                      and Core_MDF_Checklist_Channel_Program_Txt__c in :dynamicParam
+                      order by Core_MDF_Line_Number__c];
+            
+            //Creating Map for Channel Program + Budget to Checklist Records
+            for(Core_MDF_Checklist_Items__mdt metadataRecord:result) {
+                string key = metadataRecord.Core_MDF_Checklist_Channel_Program_Txt__c + metadataRecord.Core_MDF_Budget_Type_txt__c;
+                List<Core_MDF_Checklist_Items__mdt> checklistList = channelProgramtoChecklistMap.get(key);
+                if(checklistList == null) {
+                    checklistList = new List<Core_MDF_Checklist_Items__mdt>();
+                    checklistList.add(metadataRecord);
+                }
+                else{
+                    checklistList.add(metadataRecord);
+                }
+                channelProgramtoChecklistMap.put(key,checklistList);
+            }
+        }
+        
+        catch(exception ex) {Core_MDF_CCP_UtilityClass.logError(ex);}
+        
+        return channelProgramtoChecklistMap;
+    }*/
     //Ealay
     /************************************************************************************************************
         Moved from Custom Metadata (Core_MDF_Checklist_Items__mdt) to Custom Object (Core_MDF_CCP_Custom_Metadata_Utility__c)
@@ -743,6 +921,7 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
                       and Core_MDF_Category__c = 'CheckList'
                       and Core_MDF_Program__c in :dynamicParam
                       order by Core_MDF_Sort_Order_Nbr__c];
+            system.debug('reuslt of checklist '+ result);
            
             //Creating Map for Channel Program + Budget to Checklist Records
             for(Core_MDF_CCP_Custom_Metadata_Utility__c metadataRecord:result) {
@@ -757,12 +936,15 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
                 }
                 channelProgramtoChecklistMap.put(key,checklistList);
             }
+            // system.debug('@checklistList '+ checklistList);
+            system.debug('@channelProgramtoChecklistMap '+ channelProgramtoChecklistMap);
         }
        
         catch(exception ex) {Core_MDF_CCP_UtilityClass.logError(ex);}
        
         return channelProgramtoChecklistMap;
     }
+    //Ealay
     
     // This method will insert log entry records for failed records
     public static void insertLogEntryRecord(Database.SaveResult[] srList){
@@ -874,13 +1056,13 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
                            for(Core_MDF_Audit_Document__c conDoc: claimIdWithConDocId.get(caseObj.Core_MDF_Claim_ID__c)) {                               
                                // adding the document type values to set
                                selDocTypesSet.addAll(conDoc.Core_MDF_Document_Types__c.split(';'));
-                               
+                              
                                // adding the required document types for POP submission to a set
                                reqDocTypesForSubmission = popDocTypesMap.get(caseObj.Core_MDF_Channel_Program_txt__c);
                            } 
                            if(((executionReason == 'UpdateCases'  && caseObj.Core_MDF_More_Documentation_Required__c == false)
                                || executionReason == 'CreateCases') && reqDocTypesForSubmission.size() > 0 && 
-                              (selDocTypesSet.containsAll(reqDocTypesForSubmission))){ 
+                              (selDocTypesSet.containsAll(reqDocTypesForSubmission))){
                                   caseObj.Core_MDF_Status__c = caseObj.RecordTypeId == reviewCaseRecordTypeId?'Under Review': 'Review Completed';
                                   caseObj.Core_MDF_More_Documentation_Required__c = false;
                                   // ATHR fix - TWC3117-18226
@@ -912,8 +1094,8 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
     global void finish(Database.BatchableContext batchContext) {    
         try{
             if(!caseIdSetForAIAudit.isEmpty()) {
-	     Integer auditBatchsize = Integer.valueOf(Core_MDF_Custom_Label_Configration__mdt.getInstance('Core_MDF_AI_Audit_Batch_Size')?.Core_MDF_Value_Txt__c);//Audit batch size
-        
+               Integer auditBatchsize = Integer.valueOf(Core_MDF_Custom_Label_Configration__mdt.getInstance('Core_MDF_AI_Audit_Batch_Size')?.Core_MDF_Value_Txt__c);//WW16.4 date
+            	
               //Invoke Audit AI Batch
                   if(!(Core_MDF_Claim_Utility.bypassCDBCalloutValidationCheck('Core_MDF_ProcessCasesWithAIForAudit','Core_MDF_Bypass_AI_CDB_CallForAudit'))) {
                         Core_MDF_Audit_AI_Integration auditAIIntegrationBatch = new Core_MDF_Audit_AI_Integration(caseIdSetForAIAudit);

@@ -9,9 +9,8 @@ import APPLICATION_ERROR from '@salesforce/label/c.Core_MDF_ApplicationErrorMess
 import Core_MDF_Comments_CharLimit from "@salesforce/label/c.Core_MDF_Comments_CharLimit";
 import checkClaimsAssociatedToCampaign from "@salesforce/apex/Core_MDF_IUPGM_ApprovalRequest.checkClaimsAssociatedToCampaign";
 //Gayathri-Related to Seperate section for outcome-based campaign story
-import CO_MARKETING_ACTIVITY_LABEL from '@salesforce/label/c.Core_MDF_CoMarketing_Activity';
-import OUTCOME_BASED_CAMPAIGN_LABEL from '@salesforce/label/c.Core_MDF_OutcomeBased_Campaign';
-
+import Core_MDF_CoMarketing_Activity from '@salesforce/label/c.Core_MDF_CoMarketing_Activity';
+import Core_MDF_OutcomeBased_Campaign from '@salesforce/label/c.Core_MDF_OutcomeBased_Campaign';
 	
 
 const cols=[
@@ -57,6 +56,8 @@ export default class Core_MDF_Approval_Requests extends NavigationMixin(Lightnin
     isL1Approver = false;
     isL1Approval = false;
     
+// Gayathri - controls Smart Assist visibility in bulk section (used by HTML if:true)
+showSmartAssistBulk = false;
     //made changes-Alekhya
 formatCurrency(value) {
     if (value === null || value === undefined || value === '') return value;
@@ -154,6 +155,7 @@ formatCurrency(value) {
         var campaignIdList = [];
         getRecordsToApprove()
             .then(data => {
+                console.log('data from apex', data);
                 if (data != '') {
                     this.recordsFromApex = JSON.parse(data);
                     //Gayathri-Related to Seperate section for outcome-based campaign story
@@ -170,6 +172,8 @@ formatCurrency(value) {
                                 record.object = content.objectName;
                                 record.icon = content.icon;
                                 record.isSelected = false;
+                                // Gayathri - initialize per-record flag used by single record Smart Assist
+                                record.isPartnerFundRequest = (record.object === 'Co-Marketing Activity' || record.object === 'Outcome-Based Campaign');
                                 this.recordsToFilter.push(record);
                                 //Made changes-ALekhya
                                if (record.object === 'Budget') {
@@ -193,10 +197,9 @@ formatCurrency(value) {
                                     if(field.label == 'ApprovalStage'){
                                         this.cmpObjToApprovalStageMap.set(record.id,field.value);
                                     }
-
                                  });
                                 }
-                            });
+                                });
                             
                             if(this.isL2SalesApprover == false && content.userPermission!=null  ){
                                 this.isL2SalesApprover = content.userPermission.isL2SalesApprover;
@@ -228,17 +231,20 @@ formatCurrency(value) {
                                     });
             })
             .catch(error => {
+                console.error('error from apex1', error);  
+                console.error('error from apex2', error?.body?.message || error?.message);
+                console.error('error from apex3', error?.stack);
                 this.showSpinner = false;
                 this.showToastMessage('Error',APPLICATION_ERROR, 'error', 'sticky');
             });
     }
     //Gayathri-Related to Seperate section for outcome-based campaign story
     // NEW METHOD: Process approval data to separate Co-Marketing Activity records
-    processApprovalRequestData() {
+    /*processApprovalRequestData() {
         let processedData = [];
         
         this.originalApprovalData.forEach(objGroup => {
-            if (objGroup.objectName === CO_MARKETING_ACTIVITY_LABEL) {
+            if (objGroup.objectName === Core_MDF_CoMarketing_Activity) {
                 // Separate Co-Marketing Activity records based on isIPAOutcomeBased flag
                 const separatedSections = this.separateCoMarketingRecords(objGroup);
                 processedData.push(...separatedSections);
@@ -248,7 +254,43 @@ formatCurrency(value) {
         });
         
         this.approvalRequestUI = processedData;
-    }
+    }*/
+        processApprovalRequestData() {
+            const processedData = [];
+            let outcomeBasedSection;
+
+            this.originalApprovalData.forEach(objGroup => {
+                const sections =
+                    objGroup.objectName === Core_MDF_CoMarketing_Activity
+                        ? this.separateCoMarketingRecords(objGroup)
+                        : [objGroup];
+
+                sections.forEach(section => {
+                    if (section.objectName !== Core_MDF_OutcomeBased_Campaign){
+                        processedData.push(section);
+                        return;
+                    }
+
+                    if (!outcomeBasedSection) {
+                        outcomeBasedSection = {
+                            ...section,
+                            recordsToApprove: [...section.recordsToApprove]
+                        };
+
+                        processedData.push(outcomeBasedSection);
+                    } else {
+                        outcomeBasedSection.recordsToApprove.push(
+                            ...section.recordsToApprove
+                        );
+                    }
+
+                    outcomeBasedSection.count =
+                        outcomeBasedSection.recordsToApprove.length;
+                });
+            });
+
+            this.approvalRequestUI = processedData;
+        } //indu
 
     // NEW METHOD: Utility method to separate Co-Marketing records using isIPAOutcomeBased flag
     separateCoMarketingRecords(coMarketingGroup) {
@@ -266,7 +308,7 @@ formatCurrency(value) {
         
         if (regularActivities.length > 0) {
             sections.push({
-                objectName: CO_MARKETING_ACTIVITY_LABEL,
+                objectName: Core_MDF_CoMarketing_Activity,
                 count: regularActivities.length,
                 recordsToApprove: regularActivities,
                 icon: coMarketingGroup.icon,
@@ -277,7 +319,7 @@ formatCurrency(value) {
         
         if (outcomeBasedCampaigns.length > 0) {
             sections.push({
-                objectName: OUTCOME_BASED_CAMPAIGN_LABEL,
+                objectName: Core_MDF_OutcomeBased_Campaign,
                 count: outcomeBasedCampaigns.length,
                 recordsToApprove: outcomeBasedCampaigns,
                 icon: coMarketingGroup.icon,
@@ -288,6 +330,15 @@ formatCurrency(value) {
         
         return sections;
     }
+
+    getApprovalTargetObjectName(displayName) {
+        return (
+            displayName === Core_MDF_CoMarketing_Activity ||
+            displayName === Core_MDF_OutcomeBased_Campaign
+        )
+            ? 'Co-Marketing Activity'
+            : displayName;
+    } //indu
 
     refreshData(){
         location.reload();
@@ -313,6 +364,8 @@ formatCurrency(value) {
         this.contentDetailUI = [];
         this.recordsToFilter.forEach(record => {
             if (record.id == this.specificContentId) {
+            // Gayathri - Ensure flag exists on detail record for single Smart Assist visibility
+            record.isPartnerFundRequest = (record.object === 'Co-Marketing Activity' || record.object === 'Outcome-Based Campaign');
                 this.contentDetailUI.push(record);
             }
             // Format currency for the detailed view-made changes Alekhya
@@ -538,6 +591,11 @@ formatCurrency(value) {
         });
         this.recordsToFilter = JSON.parse(JSON.stringify(this.recordsToFilter));
         this.approvalRequestUI = JSON.parse(JSON.stringify(this.approvalRequestUI));
+        // Gayathri - Update Smart Assist bulk visibility
+        const selectedRecords = this.recordsToFilter.filter(r => r.isSelected);
+        this.showSmartAssistBulk = selectedRecords.length > 0 && 
+                                   selectedRecords.every(r => r.object === 'Co-Marketing Activity' || r.object === 'Outcome-Based Campaign');
+        
         this.showSpinner = false;
     }
     
@@ -660,6 +718,99 @@ formatCurrency(value) {
         this.handleSingelApproveReject();
     }
 
+    // Gayathri - Smart Assist handler
+    handleAISuggestion(event) {
+        const recordId = event.target.dataset.id;
+        
+        if (recordId) {
+            // Single record Smart Assist
+            this.handleSingleSmartAssist(recordId);
+        } else {
+            // Bulk Smart Assist
+            this.handleBulkSmartAssist();
+        }
+    }
+
+    // Gayathri - Handle Smart Assist for single record
+    handleSingleSmartAssist(recordId) {
+        this.showSpinner = true;
+        
+        // Simulate AI processing
+        setTimeout(() => {
+            const selectedRecord = this.recordsToFilter.find(record => record.id === recordId);
+            if (selectedRecord && (selectedRecord.object === 'Co-Marketing Activity' || selectedRecord.object === 'Outcome-Based Campaign')) {
+                let aiSuggestion = '';
+                
+                if (selectedRecord.object === 'Co-Marketing Activity') {
+                    aiSuggestion = 'AI Suggestion: This Co-Marketing Activity aligns with partner engagement strategies and demonstrates strong ROI potential. Recommended for approval based on activity metrics and partner collaboration history.';
+                } else if (selectedRecord.object === 'Outcome-Based Campaign') {
+                    aiSuggestion = 'AI Suggestion: This Outcome-Based Campaign shows strong performance indicators and aligns with strategic objectives. Recommended for approval based on outcome metrics and partner performance history.';
+                } else {
+                    aiSuggestion = 'AI Suggestion: This request meets all compliance requirements and is recommended for approval based on partner performance history.';
+                }
+                this.updateRecordWithAISuggestion(selectedRecord, aiSuggestion);
+                this.showToastMessage('Success', 'Smart Assist suggestion applied successfully!', 'success', 'sticky');
+            }
+            this.showSpinner = false;
+        }, 2000);
+    }
+
+    // Gayathri - Handle Smart Assist for bulk records
+    handleBulkSmartAssist() {
+        this.showSpinner = true;
+        
+        // Simulate AI processing for bulk records
+        setTimeout(() => {
+            const selectedRecords = this.recordsToFilter.filter(record => 
+                record.isSelected && (record.object === 'Co-Marketing Activity' || record.object === 'Outcome-Based Campaign')
+            );
+            
+            let successCount = 0;
+            selectedRecords.forEach(record => {
+                let aiSuggestion = '';
+                
+                if (record.object === 'Co-Marketing Activity') {
+                    aiSuggestion = 'AI Suggestion: Bulk analysis indicates this Co-Marketing Activity supports strategic partner objectives and shows positive engagement metrics. Recommended for approval.';
+                } else if (record.object === 'Outcome-Based Campaign') {
+                    aiSuggestion = 'AI Suggestion: Bulk analysis indicates this Outcome-Based Campaign demonstrates strong performance potential and aligns with strategic goals. Recommended for approval.';
+                } else {
+                    aiSuggestion = 'AI Suggestion: Bulk analysis indicates this request aligns with partner program guidelines and is recommended for approval.';
+                }
+                this.updateRecordWithAISuggestion(record, aiSuggestion);
+                successCount++;
+            });
+            
+            this.showToastMessage('Success', 
+                `Smart Assist suggestions applied to ${successCount} record${successCount > 1 ? 's' : ''}!`, 
+                'success', 'sticky');
+            this.showSpinner = false;
+        }, 3000);
+    }
+    
+    // Gayathri - Update record with AI suggestion
+    updateRecordWithAISuggestion(record, suggestion) {
+        // Update the record's comments with AI suggestion
+        record.comments = suggestion;
+        
+        // Update in all relevant data structures
+        this.approvalRequestUI.forEach(content => {
+            content.recordsToApprove.forEach(rec => {
+                if (rec.id === record.id) {
+                    rec.comments = suggestion;
+                }
+            });
+        });
+        
+        // Update content detail if this record is currently displayed
+        if (this.contentDetailUI.length > 0 && this.contentDetailUI[0].id === record.id) {
+            this.contentDetailUI[0].comments = suggestion;
+        }
+        
+        // Trigger reactivity
+        this.recordsToFilter = JSON.parse(JSON.stringify(this.recordsToFilter));
+        this.approvalRequestUI = JSON.parse(JSON.stringify(this.approvalRequestUI));
+        this.contentDetailUI = JSON.parse(JSON.stringify(this.contentDetailUI));
+    }
        
     handleApproveReject(event) {
         this.approvalButtonName = event.target.name;
@@ -701,7 +852,8 @@ formatCurrency(value) {
                                 requestId: record.id,
                                 comments: record.comments,
                                 actionStatus: this.approvalButtonName,
-                                targetObjectName: selectedObject,
+                                //targetObjectName: selectedObject, indu
+                                targetObjectName: this.getApprovalTargetObjectName(selectedObject),
                                 isDesktop: this.isDesktop,
                                 permanentReject : this.enabledTerminalRejection
                                 
@@ -741,7 +893,8 @@ formatCurrency(value) {
                         requestId: record.id,
                         comments: record.comments,
                         actionStatus: this.approvalButtonName,
-                        targetObjectName: record.object,
+                        //targetObjectName: record.object, indu
+                        targetObjectName: this.getApprovalTargetObjectName(record.object),
                         title: record.title,
                         isDesktop: this.isDesktop,
                         permanentReject: false
@@ -886,7 +1039,7 @@ formatCurrency(value) {
         this.disableBulkApproveButton = false;
     }
 
-    /* handleNavigate(event) {
+   /* handleNavigate(event) {
         var selectedRecId = event.target.dataset.recordId;
         this[NavigationMixin.GenerateUrl]({
             type: 'standard__recordPage',
@@ -927,6 +1080,8 @@ formatCurrency(value) {
 
     }
 }
+
+
 
     showToastMessage(title, message, variant, mode) {
         this.dispatchEvent(

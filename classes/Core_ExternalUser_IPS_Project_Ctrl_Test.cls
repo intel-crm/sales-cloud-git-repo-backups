@@ -20,6 +20,22 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
         Test.stopTest();
     }
     
+    //Validate test Data
+    public static testMethod void test_DataSetup(){
+        system.debug('>>>>>>>>>>>>>>> test_DataSetup  \n\n ');
+        
+        for(User u : [Select Id, Name, Email, UserType, Profile.Name, UserRole.Name From User where createddate = today AND Name Like '%TestAcct%'])
+            system.debug('>>>>>>>>>>>>>>>' +u);
+        
+        for(Account acct: [Select Id, Name, (Select Id, Name, Account.Name FROM Assets), (Select Id, Name From Contacts) FROM Account ]){
+            System.debug(' \n Account ++++ '+acct.Name);
+            for(Asset a : acct.assets)
+                System.debug(' asset '+a);
+            for(contact c : acct.Contacts)
+                System.debug(' Contact '+c);
+        }
+    }
+    
     //Test : Page cannot be accessed by Admin User or internal User
     public static testMethod void test_Step1_CreateIPSProject_Negative() {
         User internalUser = [Select Id FROM User where Profile.Name = 'System Administrator' and isActive = true Limit 1];
@@ -38,6 +54,7 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
         User ipsExternalUser = [Select Id FROM User where ContactId =:con.id];
         system.runAs(ipsExternalUser){
             RecordType rc  = [SELECT Id FROM RecordType where SobjectType = 'Core_IPS_Product__c' AND DeveloperName = 'Core_IPS_Project_Product'];
+            System.debug(' ++++ '+rc);
             Boolean excpOccured = false;
             try{
                 Core_IPS_Project__c cip=new Core_IPS_Project__c();
@@ -101,9 +118,9 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
             ListOfProducts[0].Core_IPS_Visible_Flag_Internal__c = 'Yes';
             ListOfProducts[0].Core_Product_Org__c = 'IPS';
             ListOfProducts[0].Core_Hierarchy_ID__c = '43';
-            if (Schema.sObjectType.Product2.isCreateable()){
-            	insert ListOfProducts;
-            }
+            
+            insert ListOfProducts;
+            
             //Create Supported product Record
             List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
             ListOfSupportedProduct[0].Core_Product__c = ListOfProducts[0].id;
@@ -111,9 +128,8 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
             ListOfSupportedProduct[0].Core_Flag_Status__c = 'Auto Approve';
             ListOfSupportedProduct[0].Core_Product_EPM_ID__c = '75025';
             ListOfSupportedProduct[0].Core_Supported_Product_Name__c = 'Haswell processor';
-            if (Schema.sObjectType.Core_IPS_Supported_Product__c.isCreateable()){
-            	upsert ListOfSupportedProduct;
-            }
+            upsert ListOfSupportedProduct;
+            
             List<Asset> listofAssets= TestUtilities.getAssetList(1);
             listofAssets[0].Product2Id = ListOfProducts[0].id;
             listofAssets[0].Name = 'Haswell processor';
@@ -127,12 +143,12 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
             listofAssets[0].Core_Product_Organization__c =  SupOrg.Id;
             listofAssets[0].InstallDate = system.today();
             
-            if (Schema.sObjectType.Core_IPS_Supported_Product__c.isCreateable()){
-            	insert listofAssets;
-            }
+            insert listofAssets;
+            
             List<Asset> allAssets = [Select Id, Name FROM Asset where Account.Id =: con.AccountId];
             
             RecordType rc  = [SELECT Id FROM RecordType where SobjectType = 'Core_IPS_Product__c' AND DeveloperName = 'Core_IPS_Project_Product'];
+            System.debug(' ++++ '+rc);
             Core_IPS_Project__c cip=new Core_IPS_Project__c();
             ApexPages.StandardController sc = new ApexPages.standardController(cip);
             Core_ExternalUser_IPS_Project_Controller cep = new Core_ExternalUser_IPS_Project_Controller(sc);  
@@ -164,6 +180,7 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
                 
             }
             cep.saveAll();
+            system.debug('ZXXX'+cip.id);
             
             Core_IPS_Account__c  ipsAcct = [Select Id, Name, Core_Status__c FROM Core_IPS_Account__c  where Core_Account__c =: con.AccountId Limit 1]; 
             Core_IPS_Project_Member__c  ipsCont =  [Select Id, Name, Core_User__c, Core_Status__c  FROM Core_IPS_Project_Member__c  where Core_IPS_Contact__c =: con.Id Limit 1]; 
@@ -180,9 +197,12 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
         Contact con = [Select Id, AccountId FROM Contact WHERE  Account.Name = 'TestAcct0' Limit 1];
         List<Contact> ipsContacts = [Select Id, Name FROM Contact where Core_IPS_Active__c  = true AND Account.Name = 'TestAcct0'];
         List<Contact> nonIpsContacts = [Select Id, Name FROM Contact where Core_IPS_Active__c  = false AND Account.Name = 'TestAcct0'];
+        System.debug(' No IPS Contacts '+ipsContacts.size());
+        System.debug(' No of NON IPS Contacts '+nonIpsContacts.size());
         User ipsExternalUser = [Select Id FROM User where ContactId =:con.id];
         system.runAs(ipsExternalUser){
             RecordType rc  = [SELECT Id FROM RecordType where SobjectType = 'Core_IPS_Product__c' AND DeveloperName = 'Core_IPS_Project_Product'];
+            System.debug(' ++++ '+rc);
             Core_IPS_Project__c cip=new Core_IPS_Project__c();
             ApexPages.StandardController sc = new ApexPages.standardController(cip);
             Core_ExternalUser_IPS_Project_Controller cep = new Core_ExternalUser_IPS_Project_Controller(sc);  
@@ -202,9 +222,12 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
         Contact con = [Select Id, AccountId FROM Contact WHERE  Account.Name = 'TestAcct0' Limit 1];
         List<Contact> ipsContacts = [Select Id, Name FROM Contact where Core_IPS_Active__c  = true AND Account.Name = 'TestAcct0'];
         List<Contact> nonIpsContacts = [Select Id, Name FROM Contact where Core_IPS_Active__c  = false AND Account.Name = 'TestAcct0'];
+        System.debug(' No IPS Contacts '+ipsContacts.size());
+        System.debug(' No of NON IPS Contacts '+nonIpsContacts.size());
         User ipsExternalUser = [Select Id FROM User where ContactId =:con.id];
         system.runAs(ipsExternalUser){
             RecordType rc  = [SELECT Id FROM RecordType where SobjectType = 'Core_IPS_Product__c' AND DeveloperName = 'Core_IPS_Project_Product'];
+            System.debug(' ++++ '+rc);
             Core_IPS_Project__c cip=new Core_IPS_Project__c();
             ApexPages.StandardController sc = new ApexPages.standardController(cip);
             Core_ExternalUser_IPS_Project_Controller cep = new Core_ExternalUser_IPS_Project_Controller(sc);  
@@ -235,9 +258,11 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
     public static testMethod void test_Step3_Assets_AvailableForIPSProduct_Success() {
         Contact con = [Select Id, AccountId FROM Contact WHERE  Account.Name = 'TestAcct0' Limit 1];
         List<Asset> allAssets = [Select Id, Name FROM Asset where Account.Id =: con.AccountId];
+        System.debug(' test_IPSContactsAvailableForSelection_Success All assets for the contacts account '+allAssets.size());
         User ipsExternalUser = [Select Id FROM User where ContactId =:con.id];
         system.runAs(ipsExternalUser){
             RecordType rc  = [SELECT Id FROM RecordType where SobjectType = 'Core_IPS_Product__c' AND DeveloperName = 'Core_IPS_Project_Product'];
+            System.debug(' test_IPSContactsAvailableForSelection_Success ++++ '+rc);
             Core_IPS_Project__c cip=new Core_IPS_Project__c();
             ApexPages.StandardController sc = new ApexPages.standardController(cip);
             Core_ExternalUser_IPS_Project_Controller cep = new Core_ExternalUser_IPS_Project_Controller(sc);  
@@ -249,6 +274,8 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
             cep.nextStep();
             Core_CustomSetController setCntrlr = cep.mStep_SetCntlr.get(cep.steps[cep.stepIndex]).get('AvailableRecords');
             List<Core_CustomSetController.Wrapper> wl = setCntrlr.sobjectRecords;
+            System.debug(' test_IPSContactsAvailableForSelection_Success  Assets available '+wl);
+            System.debug(' test_IPSContactsAvailableForSelection_Success  Assets available '+wl.size());
             System.assertEquals(allAssets.size(), wl.size());
         }
     } 
@@ -261,10 +288,12 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
         try{
             Contact con = [Select Id, AccountId FROM Contact WHERE  Account.Name = 'TestAcct0' Limit 1];
             List<Asset> allAssets = [Select Id, Name FROM Asset where Account.Id =: con.AccountId];
+            System.debug(' test_IPSContactsAvailableForSelection_Success All assets for the contacts account '+allAssets.size());
             User ipsExternalUser = [Select Id FROM User where ContactId =:con.id];
             system.runAs(ipsExternalUser){
                 Test.startTest();
                 RecordType rc  = [SELECT Id FROM RecordType where SobjectType = 'Core_IPS_Product__c' AND DeveloperName = 'Core_IPS_Project_Product'];
+                System.debug(' test_IPSContactsAvailableForSelection_Success ++++ '+rc);
                 Core_IPS_Project__c cip=new Core_IPS_Project__c();
                 ApexPages.StandardController sc = new ApexPages.standardController(cip);
                 Core_ExternalUser_IPS_Project_Controller cep = new Core_ExternalUser_IPS_Project_Controller(sc);  
@@ -296,6 +325,7 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
         }Catch(Exception e){
             excpOccured = true;
         }
+        System.assertEquals(true, excpOccured);
     }
     
     //Search Project Members Positive
@@ -303,9 +333,12 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
         Contact con = [Select Id, AccountId FROM Contact WHERE  Account.Name = 'TestAcct0' Limit 1];
         List<Contact> ipsContacts = [Select Id, Name FROM Contact where Core_IPS_Active__c  = true AND Account.Name = 'TestAcct0'];
         List<Contact> nonIpsContacts = [Select Id, Name FROM Contact where Core_IPS_Active__c  = false AND Account.Name = 'TestAcct0'];
+        System.debug(' No IPS Contacts '+ipsContacts.size());
+        System.debug(' No of NON IPS Contacts '+nonIpsContacts.size());
         User ipsExternalUser = [Select Id FROM User where ContactId =:con.id];
         system.runAs(ipsExternalUser){
             RecordType rc  = [SELECT Id FROM RecordType where SobjectType = 'Core_IPS_Product__c' AND DeveloperName = 'Core_IPS_Project_Product'];
+            System.debug(' ++++ '+rc);
             Core_IPS_Project__c cip=new Core_IPS_Project__c();
             ApexPages.StandardController sc = new ApexPages.standardController(cip);
             Core_ExternalUser_IPS_Project_Controller cep = new Core_ExternalUser_IPS_Project_Controller(sc);  
@@ -328,9 +361,13 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
         Contact con = [Select Id, AccountId FROM Contact WHERE  Account.Name = 'TestAcct0' Limit 1];
         List<Contact> ipsContacts = [Select Id, Name FROM Contact where Core_IPS_Active__c  = true AND Account.Name = 'TestAcct0'];
         List<Contact> nonIpsContacts = [Select Id, Name FROM Contact where Core_IPS_Active__c  = false AND Account.Name = 'TestAcct0'];
+        System.debug(' No IPS Contacts '+ipsContacts.size());
+        System.debug(' No of NON IPS Contacts '+nonIpsContacts.size());
         User ipsExternalUser = [Select Id FROM User where ContactId =:con.id];
         system.runAs(ipsExternalUser){
-            RecordType rc  = [SELECT Id FROM RecordType where SobjectType = 'Core_IPS_Product__c' AND DeveloperName = 'Core_IPS_Project_Product'];            Core_IPS_Project__c cip=new Core_IPS_Project__c();
+            RecordType rc  = [SELECT Id FROM RecordType where SobjectType = 'Core_IPS_Product__c' AND DeveloperName = 'Core_IPS_Project_Product'];
+            System.debug(' ++++ '+rc);
+            Core_IPS_Project__c cip=new Core_IPS_Project__c();
             ApexPages.StandardController sc = new ApexPages.standardController(cip);
             Core_ExternalUser_IPS_Project_Controller cep = new Core_ExternalUser_IPS_Project_Controller(sc);  
             cep.ipsProject.Name ='testIPSMember_Success';
@@ -374,9 +411,11 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
     //Inactive all the removed IPS members
     public static testMethod void test_Step2_Remove_IPSMembers_Success2() {
         Contact con = [Select Id, AccountId FROM Contact WHERE  Account.Name = 'TestAcct0' Limit 1];
+        System.debug(' \n\n\n\n test_Step2_Remove_IPSMembers_Success');
         User ipsExternalUser = [Select Id FROM User where ContactId =:con.id];
         system.runAs(ipsExternalUser){
             RecordType rc  = [SELECT Id FROM RecordType where SobjectType = 'Core_IPS_Product__c' AND DeveloperName = 'Core_IPS_Project_Product'];
+            System.debug(' ++++ '+rc);
             Core_IPS_Project__c cip=new Core_IPS_Project__c();
             ApexPages.StandardController sc = new ApexPages.standardController(cip);
             Core_ExternalUser_IPS_Project_Controller cep = new Core_ExternalUser_IPS_Project_Controller(sc);  
@@ -389,6 +428,7 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
             //Initialize set controller
             Core_CustomSetController setCntrlr = cep.mStep_SetCntlr.get(cep.steps[cep.stepIndex]).get('AvailableRecords');
             List<Core_CustomSetController.Wrapper> wl = setCntrlr.sobjectRecords;
+            System.debug(' >>>>>>>>>>>>>>>>>>> test_Step2_Remove_IPSMembers_Success wl '+wl);
             Set<Id> selContIds = new Set<Id>();
             for(Integer i=0;i<2;i++){
                 Core_CustomSetController.Wrapper w = wl[i];
@@ -402,6 +442,7 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
             //Test Closing the session and re-intialing the page controller
             cep.removeMembers();
             List<Core_CustomSetController.Wrapper> availableContacts = setCntrlr.sobjectRecords; 
+            System.debug(' >>>>>>>>>>>>>>>>>>> test_Step2_Remove_IPSMembers_Success availableContacts '+availableContacts);
             
             //Query the IPS members
             Map<Id,Core_IPS_Project_Member__c> mConId_IPSMember = new Map<Id,Core_IPS_Project_Member__c>();
@@ -410,6 +451,7 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
                                                       where Core_IPS_Project__c =:cep.ipsProject.id  AND Core_Status__c = 'Active'])
             {
                 mConId_IPSMember.put(ipsMem.Core_IPS_Contact__c,  ipsMem);
+                System.debug(' >>>>>>>>>>>>>>>>>>> test_Step2_Remove_IPSMembers_Success ipsMem '+availableContacts);
             } 
             //Verify any contact which is already selected shows in available records selection
             for(Core_CustomSetController.Wrapper w: availableContacts){
@@ -425,15 +467,18 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
         try{
             Contact con = [Select Id, AccountId FROM Contact WHERE  Account.Name = 'TestAcct0' Limit 1];
             List<Asset> allAssets = [Select Id, Name FROM Asset where Account.Id =: con.AccountId];
+            System.debug(' test_IPSContactsAvailableForSelection_Success All assets for the contacts account '+allAssets.size());
             User ipsExternalUser = [Select Id FROM User where ContactId =:con.id];
             system.runAs(ipsExternalUser){
                 Test.startTest();
                 RecordType rc  = [SELECT Id FROM RecordType where SobjectType = 'Core_IPS_Product__c' AND DeveloperName = 'Core_IPS_Project_Product'];
+                System.debug(' test_IPSContactsAvailableForSelection_Success ++++ '+rc);
                 Core_IPS_Project__c cip=new Core_IPS_Project__c();
                 
                 cip.Name ='testIPSMember_Success';
                 cip.Core_Project_Description__c ='testIPSMember_Success';
                 insert cip;
+                System.debug('ZXXX'+cip.id);
                 ApexPages.StandardController sc = new ApexPages.standardController(cip);
                 Core_ExternalUser_IPS_Project_Controller cep = new Core_ExternalUser_IPS_Project_Controller(sc);  
                 cep.getLoggerInUser();
@@ -462,7 +507,9 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
         }Catch(Exception e){
             excpOccured = true;
         }
-    }   
+        System.assertEquals(true, excpOccured);
+    }
+    
     
     //Step 2: Remove IPS members  
     public static testMethod void test_Step2_Remove_IPSMembers_Success3() {
@@ -489,9 +536,9 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
             ListOfProducts[0].Core_IPS_Visible_Flag_Internal__c = 'Yes';
             ListOfProducts[0].Core_Product_Org__c = 'IPS';
             ListOfProducts[0].Core_Hierarchy_ID__c = '43';
-            if (Schema.sObjectType.Product2.isCreateable()){
-            	insert ListOfProducts;
-            }
+            
+            insert ListOfProducts;
+            
             //Create Supported product Record
             List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
             ListOfSupportedProduct[0].Core_Product__c = ListOfProducts[0].id;
@@ -499,10 +546,7 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
             ListOfSupportedProduct[0].Core_Flag_Status__c = 'Auto Approve';
             ListOfSupportedProduct[0].Core_Product_EPM_ID__c = '75025';
             ListOfSupportedProduct[0].Core_Supported_Product_Name__c = 'Haswell processor';
-            
-            if (Schema.sObjectType.Core_IPS_Supported_Product__c.isCreateable()){
-            	upsert ListOfSupportedProduct;
-            }
+            upsert ListOfSupportedProduct;
             
             List<Asset> listofAssets= TestUtilities.getAssetList(1);
             listofAssets[0].Product2Id = ListOfProducts[0].id;
@@ -517,12 +561,12 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
             listofAssets[0].Core_Product_Organization__c =  SupOrg.Id;
             listofAssets[0].InstallDate = system.today();
             
-            if (Schema.sObjectType.Asset.isCreateable()){
-            	insert listofAssets;
-            }            
+            insert listofAssets;
+            
             List<Asset> allAssets = [Select Id, Name FROM Asset where Account.Id =: con.AccountId];
             
             RecordType rc  = [SELECT Id FROM RecordType where SobjectType = 'Core_IPS_Product__c' AND DeveloperName = 'Core_IPS_Project_Product'];
+            System.debug(' ++++ '+rc);
             Core_IPS_Project__c cip=new Core_IPS_Project__c();
             ApexPages.StandardController sc = new ApexPages.standardController(cip);
             Core_ExternalUser_IPS_Project_Controller cep = new Core_ExternalUser_IPS_Project_Controller(sc);  
@@ -554,6 +598,7 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
                 
             }
             cep.saveAll();
+            system.debug('IPS Project Created ID : '+cip.id);
             
             //Initialize set controller
             Core_CustomSetController setCntrlr3 = cep.mStep_SetCntlr.get(cep.steps[cep.stepIndex]).get('AvailableRecords');

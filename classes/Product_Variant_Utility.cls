@@ -97,7 +97,7 @@ public without sharing class Product_Variant_Utility {
        
         if(selectedProductId!=null && selectedProductId!=''){ 
             if(Core_IPS_Supported_Product__c.SObjectType.getDescribe().isAccessible()){
-            	supportedProdList=database.Query('select id, Core_Product_Organization__c, Name,Core_IPS_Is_Show_Variant__c,Core_Product__c,Core_Product_EPM_ID__c from Core_IPS_Supported_Product__c where id=:selectedProductId');         
+            supportedProdList=database.Query('select id, Core_Product_Organization__c, Name,Core_IPS_Is_Show_Variant__c,Core_Product__c,Core_Product_EPM_ID__c from Core_IPS_Supported_Product__c where id=:selectedProductId');         
             }
                 if(!supportedProdList.isEmpty() && supportedProdList.size()>0){
                 
@@ -149,7 +149,7 @@ public without sharing class Product_Variant_Utility {
                     //Query on Product for showing the product variant names based on EPM ID 
                     if(ids!=null && ids.size()>0){
                         if(Product2.SObjectType.getDescribe().isAccessible()){
-                        	Productlist = database.Query('select id, Name FROM Product2 where Core_Product_Org__c = :strIPS  and Core_Product_Name_EPM_ID__c IN  :ids order by Name');     
+                        Productlist = database.Query('select id, Name FROM Product2 where Core_Product_Org__c = :strIPS  and Core_Product_Name_EPM_ID__c IN  :ids order by Name');     
                         }
                     }
                     
@@ -265,11 +265,11 @@ Modification Log :
         Set<String> platfomSet;
         List<Core_IPS_Supported_Product__c> suppPrdList;
         List<Core_Flat_Product_Hierarchy__c> fphList = new List<Core_Flat_Product_Hierarchy__c>();
-       	//FLS check added -Venugopal
-        If(suppProductIdList <> null && suppProductIdList.size() > 0){
+         //FLS check added -Venugopal
+        If(suppProductIdList <> null && suppProductIdList.size() > 0 ){
             suppPrdList = new List<Core_IPS_Supported_Product__c>();
-	    if(Core_IPS_Supported_Product__c.SObjectType.getDescribe().isAccessible()){
-            	suppPrdList = [select Id,Core_Flag_Status__c,Core_Code_Name__c,Core_EOIS__c,Core_Prod_EPM_Id__c,Core_Product__r.Core_Sales_Visible_Flag__c,Core_Product__r.Core_Hierarchy_ID__c from Core_IPS_Supported_Product__c where Id in:suppProductIdList AND Core_Product__r.Core_Sales_Visible_Flag__c =:FALSE AND Core_Product__r.Core_Hierarchy_ID__c=:'59'];
+            if(Core_IPS_Supported_Product__c.SObjectType.getDescribe().isAccessible()){
+            suppPrdList = [select Id,Core_Flag_Status__c,Core_Code_Name__c,Core_EOIS__c,Core_Prod_EPM_Id__c,Core_Product__r.Core_Sales_Visible_Flag__c,Core_Product__r.Core_Hierarchy_ID__c from Core_IPS_Supported_Product__c where Id in:suppProductIdList AND Core_Product__r.Core_Sales_Visible_Flag__c =:FALSE AND Core_Product__r.Core_Hierarchy_ID__c=:'59'];
             }
         }   
         

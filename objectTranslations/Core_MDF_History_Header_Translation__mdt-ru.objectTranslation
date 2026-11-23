@@ -96,12 +96,36 @@
             <translation>История совместных маркетинговых действий</translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Digital Media</masterLabel>
+            <translation><!-- Digital Media --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Disbursement Status</masterLabel>
-            <translation>Статус выплаты</translation>
+            <translation><!-- Disbursement Status --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event</masterLabel>
+            <translation><!-- Event --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Funded Headcount</masterLabel>
+            <translation><!-- Funded Headcount --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Hold Criteria List History</masterLabel>
             <translation>История списка критериев удержания</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive</masterLabel>
+            <translation><!-- Incentive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Cultivation</masterLabel>
+            <translation><!-- Lead Cultivation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media</masterLabel>
+            <translation><!-- Legacy Media --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>METRICS</masterLabel>
@@ -139,6 +163,18 @@
             <masterLabel>Payment Run History</masterLabel>
             <translation>История расчетных операций</translation>
         </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof of Performance Documents</masterLabel>
+            <translation><!-- Proof of Performance Documents --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation</masterLabel>
+            <translation><!-- Technical Activation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training</masterLabel>
+            <translation><!-- Training --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <help><!-- Please provide the Object&apos;s API name. --></help>
@@ -146,4 +182,8 @@
         <name>Core_MDF_obj_nm__c</name>
     </fields>
     
+    <validationRules>
+        <errorMessage><!-- History Header Translation field should not be null. --></errorMessage>
+        <name>Core_MDF_HistoryHeaderIsNotEmpty</name>
+    </validationRules>
 </CustomObjectTranslation>

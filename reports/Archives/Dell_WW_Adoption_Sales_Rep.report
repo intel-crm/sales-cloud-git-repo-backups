@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_25332621</developerName>
+        <masterLabel>Last Logged In</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Core_User_Login_Snapshot__c.Core_Last_Login_Duration__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>-1</to>
+            </sourceValues>
+            <value>N/A</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-1</from>
+                <to>7</to>
+            </sourceValues>
+            <value>Last Week</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>7</from>
+                <to>30</to>
+            </sourceValues>
+            <value>8-30 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>30</from>
+                <to>60</to>
+            </sourceValues>
+            <value>&gt; 30 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>60</from>
+            </sourceValues>
+            <value>&gt; 60 Days</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Core_User_Login_Snapshot__c.Core_Full_Name__c</field>
+    </columns>
+    <columns>
+        <field>Core_User_Login_Snapshot__c.Core_WWID__c</field>
+    </columns>
+    <columns>
+        <field>Core_User_Login_Snapshot__c.Core_Profile__c</field>
+    </columns>
+    <columns>
+        <field>Core_User_Login_Snapshot__c.Core_Last_Login__c</field>
+    </columns>
+    <columns>
+        <field>Core_User_Login_Snapshot__c.Core_Last_Login_Duration__c</field>
+    </columns>
+    <columns>
+        <field>CUST_OWNER_ROLE</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CUST_ID</field>
+    </columns>
+    <description>Dell team including all geo&apos;s</description>
+    <filter>
+        <criteriaItems>
+            <column>Core_User_Login_Snapshot__c.Core_Profile__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Sales Rep-BB</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_User_Login_Snapshot__c.Core_WWID__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>10621235,10654157,10639135,10648049,10652500,10651840,11380681,11577046,10557508,11228971,10613867,10641022,11526274,11574173,10702039,10641007,10619455,10081742,10565961,10718992,10500057,10640122,11303150,11223274,11338563,10059243,11267608,11591526,10686134,10685938,11485544,11579765,11336824,10861520,10696622,10830955,10503070,11573669,10673033,10681432,10564243</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Core_User_Login_Snapshot__c.Core_Geo__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_25332621</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Dell WW Adoption Sales Rep</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_User_Login_Snapshot__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>CUST_OWNER_ROLE</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_LAST7</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PartnerMarketingBudget$Name</field>
+    </columns>
+    <columns>
+        <field>PartnerMarketingBudget$Core_MDF_Program__c</field>
+    </columns>
+    <columns>
+        <field>PartnerMarketingBudget.PartnerFundAllocations$Name</field>
+    </columns>
+    <columns>
+        <field>PartnerMarketingBudget.PartnerFundAllocations$Core_MDF_Program_Txt__c</field>
+    </columns>
+    <columns>
+        <field>PartnerMarketingBudget.PartnerFundAllocations$RecordType</field>
+    </columns>
+    <columns>
+        <field>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests$Core_MDF_Activity_Number__c</field>
+    </columns>
+    <columns>
+        <field>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests$Core_MDF_Program__c</field>
+    </columns>
+    <columns>
+        <field>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests$RecordType</field>
+    </columns>
+    <filter>
+        <booleanFilter>(1 AND 2 AND 3) OR (4 AND 5 AND 6)</booleanFilter>
+        <criteriaItems>
+            <column>PartnerMarketingBudget$Core_MDF_Program_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Client Co-Marketing Fund</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerMarketingBudget.PartnerFundAllocations$Core_MDF_Program_Txt__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Client Co-Marketing Fund</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerMarketingBudget.PartnerFundAllocations$RecordType</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>PartnerFundAllocation.Core_MDF_Client_CoMarketing_Fund</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerMarketingBudget$Core_MDF_Program__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Data Center Co-Marketing Fund</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerMarketingBudget.PartnerFundAllocations$Core_MDF_Program_Txt__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Data Center Co-Marketing Fund</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerMarketingBudget.PartnerFundAllocations$RecordType</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>PartnerFundAllocation.Core_MDF_Data_Center_CoMarketing_Fund</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Data Mismatch across objects</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_MDF_PF_Budget_Mismatch_across_Objects__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PartnerMarketingBudget$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

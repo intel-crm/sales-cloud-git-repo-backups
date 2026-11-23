@@ -6,9 +6,6 @@
 * ---------------------------------------------------------------------------------------------------------------------------------------
 * Accenture - HA       11/26/2019         Test Class for Core_MDF_PFR_Approval
 * Refactored           2026               Removed redundant tests, added AI method coverage, increased coverage
-*                                         Fixed for higher org migration: all new labels, custom metadata, and tracking object
-*                                         references are wrapped in try-catch so validation passes even when those
-*                                         artifacts are not yet deployed to the target org.
 *****************************************************************************************************************************************/
 @isTest(SeeAllData=false)
 public class Core_MDF_PFR_Approval_Test {
@@ -132,12 +129,11 @@ public class Core_MDF_PFR_Approval_Test {
 
     // ============================================================
     // HELPER: Get or create a whitelisted user
-    // Safe for orgs where Core_MDF_AI_Approval_Access_Settings label
-    // does not yet exist - falls back to a fixed test email.
+    // Fixed to work when label is blank in Stage environment
     // ============================================================
 
     private static User getOrCreateWhitelistedUser(String lastName) {
-        // Step 1: Try to get email from label - label may not exist in higher org
+        // Step 1: Try to get email from label
         String approvalEmails = '';
         try {
             approvalEmails = Label.Core_MDF_AI_Approval_Access_Settings;
@@ -146,6 +142,7 @@ public class Core_MDF_PFR_Approval_Test {
         }
 
         // Step 2: Determine test email
+        // If label has value use it, otherwise use a fixed test email
         String testEmail = String.isNotBlank(approvalEmails)
             ? approvalEmails.split(',')[0].trim().toLowerCase()
             : 'ai.whitelist.stage.test@intel-cov-test.com';
@@ -175,106 +172,6 @@ public class Core_MDF_PFR_Approval_Test {
         u.LastName = lastName;
         insert u;
         return u;
-    }
-
-    // ============================================================
-    // HELPER: Safe insert of Core_MDF_CCP_Custom_Metadata_Utility__c
-    // Returns the inserted record Id or null if object not deployed.
-    // ============================================================
-    private static Id safeInsertMetadataUtility(Core_MDF_CCP_Custom_Metadata_Utility__c rec) {
-        try {
-            insert rec;
-            return rec.Id;
-        } catch (Exception e) {
-            // Object or field not yet deployed to this org
-            return null;
-        }
-    }
-
-    // ============================================================
-    // HELPER: Safe insert of Core_MDF_AI_Recommendation_Tracking__c
-    // Returns the inserted record or null if object not deployed.
-    // ============================================================
-    private static Core_MDF_AI_Recommendation_Tracking__c safeInsertTrackingRecord(
-            Core_MDF_AI_Recommendation_Tracking__c rec) {
-        try {
-            insert rec;
-            return rec;
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    // ============================================================
-    // HELPER: Safe query of Core_MDF_AI_Recommendation_Tracking__c
-    // Returns empty list if object not deployed.
-    // ============================================================
-    private static List<Core_MDF_AI_Recommendation_Tracking__c> safeQueryTrackingRecords(
-            Id activityId) {
-        try {
-            return [
-                SELECT Id, Core_MDF_AI_Recommendation__c, Core_MDF_AI_Source_Type__c,
-                       Core_MDF_User_Decision__c, Core_MDF_Recommendation_Used__c,
-                       Core_MDF_Decision_Date__c
-                FROM Core_MDF_AI_Recommendation_Tracking__c
-                WHERE Core_MDF_Activity__c = :activityId
-                AND Core_MDF_User__c = :UserInfo.getUserId()
-            ];
-        } catch (Exception e) {
-            return new List<Core_MDF_AI_Recommendation_Tracking__c>();
-        }
-    }
-
-    // ============================================================
-    // HELPER: Safe count of Core_MDF_AI_Recommendation_Tracking__c
-    // Returns 0 if object not deployed.
-    // ============================================================
-    private static Integer safeCountTrackingRecords(Id activityId) {
-        try {
-            return [
-                SELECT COUNT()
-                FROM Core_MDF_AI_Recommendation_Tracking__c
-                WHERE Core_MDF_Activity__c = :activityId
-            ];
-        } catch (Exception e) {
-            return 0;
-        }
-    }
-
-    // ============================================================
-    // HELPER: Create and link a tracking record safely
-    // ============================================================
-    private static Core_MDF_AI_Recommendation_Tracking__c createTrackingRecord(
-            Id pfrId, String recommendation, String details,
-            String stage, DateTime modifiedDate) {
-        Core_MDF_AI_Recommendation_Tracking__c rec =
-            new Core_MDF_AI_Recommendation_Tracking__c(
-                Core_MDF_Activity__c = pfrId,
-                Core_MDF_User__c = UserInfo.getUserId(),
-                Core_MDF_AI_Recommendation__c = recommendation,
-                Core_MDF_AI_Recommendation_Details__c = details,
-                Core_MDF_Approval_Stage__c = stage,
-                Core_MDF_Activity_Last_Modified_Date__c = modifiedDate,
-                Core_MDF_AI_Source_Type__c = 'Approval Process'
-            );
-        return safeInsertTrackingRecord(rec);
-    }
-
-    private static ContentVersion createAndLinkFile(
-            String title, String pathOnClient,
-            String content, Id linkedEntityId) {
-        ContentVersion cv = new ContentVersion(
-            Title = title, PathOnClient = pathOnClient,
-            VersionData = Blob.valueOf(content), IsMajorVersion = true);
-        insert cv;
-        ContentVersion insertedCV = [
-            SELECT Id, ContentDocumentId
-            FROM ContentVersion WHERE Id = :cv.Id LIMIT 1];
-        insert new ContentDocumentLink(
-            ContentDocumentId = insertedCV.ContentDocumentId,
-            LinkedEntityId = linkedEntityId,
-            ShareType = 'V', Visibility = 'AllUsers');
-        return insertedCV;
     }
 
     // ============================================================
@@ -591,7 +488,7 @@ public class Core_MDF_PFR_Approval_Test {
                 'Bypass_MDF_Budget_Update_Validation',
                 'byPass_Cancel_Activity',
                 'byPass_PastDated_Activity',
-                'Core_MDF_Bypass_LateClaimOperations'
+                'Core_MDF_Bypass_LateClaimOperations','Core_MDF_Bypass_PFREmailNotification'
             };
             Core_MDF_CCP_TestDataUtility.byPassFeature(
                 new List<String>(new Set<String>(bypassFunctionKeys)), true, true);
@@ -1038,38 +935,31 @@ public class Core_MDF_PFR_Approval_Test {
             );
 
             // ---- Custom Metadata Utility records for AI ----
-            // Wrapped in try-catch: Core_MDF_CCP_Custom_Metadata_Utility__c
-            // may not be deployed to the target org yet.
-            try {
-                insert new List<Core_MDF_CCP_Custom_Metadata_Utility__c>{
-                    new Core_MDF_CCP_Custom_Metadata_Utility__c(
-                        Name = 'AI Rule APJ IPA 1',
-                        Core_MDF_Category__c = 'AI Powered Approval Process',
-                        Core_MDF_Sub_Category__c = 'Core_MDF_Focus_Area_nm__c',
-                        Core_MDF_Value__c =
-                            'Focus Area must be Cloud or AI for IPA activities',
-                        Core_MDF_Region_Country__c = 'APJ',
-                        Core_MDF_Program__c = 'Intel Partner Alliance',
-                        Core_MDF_Is_Active_Ind__c = true,
-                        Core_MDF_Checkbox_Field_1_Ind__c = true,
-                        Core_MDF_Checkbox_Field_2_Ind__c = false
-                    ),
-                    new Core_MDF_CCP_Custom_Metadata_Utility__c(
-                        Name = 'AI Rule APJ IPA Incentive',
-                        Core_MDF_Category__c = 'AI Powered Approval Process',
-                        Core_MDF_Sub_Category__c = 'Core_MDF_Tactics_nm__c',
-                        Core_MDF_Value__c = 'Incentive tactic requires segment mapping',
-                        Core_MDF_Region_Country__c = 'APJ',
-                        Core_MDF_Program__c = 'Intel Partner Alliance',
-                        Core_MDF_Is_Active_Ind__c = true,
-                        Core_MDF_Checkbox_Field_1_Ind__c = true,
-                        Core_MDF_Checkbox_Field_2_Ind__c = true
-                    )
-                };
-            } catch (Exception e) {
-                // Core_MDF_CCP_Custom_Metadata_Utility__c not yet deployed to this org.
-                // AI field-rule tests will run with empty rules list - still valid coverage.
-            }
+            insert new List<Core_MDF_CCP_Custom_Metadata_Utility__c>{
+                new Core_MDF_CCP_Custom_Metadata_Utility__c(
+                    Name = 'AI Rule APJ IPA 1',
+                    Core_MDF_Category__c = 'AI Powered Approval Process',
+                    Core_MDF_Sub_Category__c = 'Core_MDF_Focus_Area_nm__c',
+                    Core_MDF_Value__c =
+                        'Focus Area must be Cloud or AI for IPA activities',
+                    Core_MDF_Region_Country__c = 'APJ',
+                    Core_MDF_Program__c = 'Intel Partner Alliance',
+                    Core_MDF_Is_Active_Ind__c = true,
+                    Core_MDF_Checkbox_Field_1_Ind__c = true,
+                    Core_MDF_Checkbox_Field_2_Ind__c = false
+                ),
+                new Core_MDF_CCP_Custom_Metadata_Utility__c(
+                    Name = 'AI Rule APJ IPA Incentive',
+                    Core_MDF_Category__c = 'AI Powered Approval Process',
+                    Core_MDF_Sub_Category__c = 'Core_MDF_Tactics_nm__c',
+                    Core_MDF_Value__c = 'Incentive tactic requires segment mapping',
+                    Core_MDF_Region_Country__c = 'APJ',
+                    Core_MDF_Program__c = 'Intel Partner Alliance',
+                    Core_MDF_Is_Active_Ind__c = true,
+                    Core_MDF_Checkbox_Field_1_Ind__c = true,
+                    Core_MDF_Checkbox_Field_2_Ind__c = true
+                )
+            };
 
             User usrg = Core_MDF_CCP_TestDataUtility.createUser(false);
             usrg.LastName = 'User Testg';
@@ -1139,6 +1029,40 @@ public class Core_MDF_PFR_Approval_Test {
             resultMap.put(ps.Name, ps.Id);
         }
         return resultMap;
+    }
+
+    private static Core_MDF_AI_Recommendation_Tracking__c createTrackingRecord(
+            Id pfrId, String recommendation, String details,
+            String stage, DateTime modifiedDate) {
+        Core_MDF_AI_Recommendation_Tracking__c rec =
+            new Core_MDF_AI_Recommendation_Tracking__c(
+                Core_MDF_Activity__c = pfrId,
+                Core_MDF_User__c = UserInfo.getUserId(),
+                Core_MDF_AI_Recommendation__c = recommendation,
+                Core_MDF_AI_Recommendation_Details__c = details,
+                Core_MDF_Approval_Stage__c = stage,
+                Core_MDF_Activity_Last_Modified_Date__c = modifiedDate,
+                Core_MDF_AI_Source_Type__c = 'Approval Process'
+            );
+        insert rec;
+        return rec;
+    }
+
+    private static ContentVersion createAndLinkFile(
+            String title, String pathOnClient,
+            String content, Id linkedEntityId) {
+        ContentVersion cv = new ContentVersion(
+            Title = title, PathOnClient = pathOnClient,
+            VersionData = Blob.valueOf(content), IsMajorVersion = true);
+        insert cv;
+        ContentVersion insertedCV = [
+            SELECT Id, ContentDocumentId
+            FROM ContentVersion WHERE Id = :cv.Id LIMIT 1];
+        insert new ContentDocumentLink(
+            ContentDocumentId = insertedCV.ContentDocumentId,
+            LinkedEntityId = linkedEntityId,
+            ShareType = 'V', Visibility = 'AllUsers');
+        return insertedCV;
     }
 
     // ============================================================
@@ -1593,10 +1517,9 @@ public class Core_MDF_PFR_Approval_Test {
 
     // ============================================================
     // DIRECT GenAI COVERAGE TESTS
-    // These call Core_MDF_GenAIProcessing directly.
-    // NO dependency on labels, custom metadata, permission sets,
-    // or any org config. Guarantees GenAIProcessing coverage in
-    // ANY environment including higher orgs before label deployment.
+    // These call Core_MDF_GenAIProcessing directly - NO dependency
+    // on labels, custom metadata, permission sets, or any org config.
+    // Guarantees Core_MDF_GenAIProcessing coverage in ANY environment.
     // ============================================================
 
     @isTest
@@ -1774,7 +1697,8 @@ public class Core_MDF_PFR_Approval_Test {
     }
 
     // ============================================================
-    // GenAI CALLOUT TESTS - getAIApprovalData and getQueryData
+    // GenAI CALLOUT TESTS via getAISuggestionWithDecision
+    // These cover Core_MDF_PFR_Approval AI methods
     // ============================================================
 
     @isTest
@@ -1875,6 +1799,7 @@ public class Core_MDF_PFR_Approval_Test {
         Core_MDF_GenAIProcessing.contentWrap result =
             Core_MDF_GenAIProcessing.getAIApprovalData('Test prompt blank content');
         Test.stopTest();
+
         Assert.areNotEqual(null, result);
         Assert.areEqual('', result.contentFromChatGPT);
     }
@@ -1886,6 +1811,7 @@ public class Core_MDF_PFR_Approval_Test {
         Core_MDF_GenAIProcessing.contentWrap result =
             Core_MDF_GenAIProcessing.getQueryData('Invoice sample text');
         Test.stopTest();
+
         Assert.areNotEqual(null, result);
         Assert.isTrue(String.isNotBlank(result.contentFromChatGPT));
         Assert.isTrue(result.contentFromChatGPT.contains('Extracted Invoice Data'));
@@ -1899,6 +1825,7 @@ public class Core_MDF_PFR_Approval_Test {
         Core_MDF_GenAIProcessing.contentWrap result =
             Core_MDF_GenAIProcessing.getQueryData('Invoice sample text');
         Test.stopTest();
+
         Assert.areNotEqual(null, result);
         Assert.areEqual('', result.contentFromChatGPT);
     }
@@ -1910,6 +1837,7 @@ public class Core_MDF_PFR_Approval_Test {
         Core_MDF_GenAIProcessing.contentWrap result =
             Core_MDF_GenAIProcessing.getQueryData('Invoice sample text');
         Test.stopTest();
+
         Assert.areEqual(null, result);
     }
 
@@ -1927,7 +1855,6 @@ public class Core_MDF_PFR_Approval_Test {
 
     // ============================================================
     // getAISuggestionWithDecision TESTS
-    // All AI suggestion tests gracefully handle missing labels/metadata
     // ============================================================
 
     @isTest
@@ -1989,9 +1916,6 @@ public class Core_MDF_PFR_Approval_Test {
             Core_MDF_PFR_Approval.AIResponseWrapper result =
                 Core_MDF_PFR_Approval.getAISuggestionWithDecision(pfr.Id);
             Assert.areNotEqual(null, result);
-            // Result depends on whether label has whitelisted user email
-            // and whether custom metadata records exist in this org.
-            // Both success and graceful failure are valid outcomes.
             if (result.success) {
                 Assert.isTrue(String.isNotBlank(result.decision));
                 Assert.isTrue(String.isNotBlank(result.formattedContent));
@@ -2008,23 +1932,15 @@ public class Core_MDF_PFR_Approval_Test {
         PartnerFundRequest pfr = [SELECT Id, Core_MDF_Approval_Stage__c, LastModifiedDate
             FROM PartnerFundRequest
             WHERE Title = 'Test IPA Outcome Activity' LIMIT 1];
-        // Seed the cache safely - Core_MDF_AI_Recommendation_Tracking__c
-        // may not exist in higher org yet.
-        try {
-            Core_MDF_PFR_Approval.storeAIRecommendationWithStage(
-                pfr.Id, 'Approve',
-                'Decision: Approve\nReason: All validation rules passed\nSummary: Compliant',
-                pfr.Core_MDF_Approval_Stage__c, pfr.LastModifiedDate);
-        } catch (Exception e) {
-            // Object/label not yet deployed - cache seeding skipped.
-        }
+        Core_MDF_PFR_Approval.storeAIRecommendationWithStage(
+            pfr.Id, 'Approve',
+            'Decision: Approve\nReason: All validation rules passed\nSummary: Compliant',
+            pfr.Core_MDF_Approval_Stage__c, pfr.LastModifiedDate);
         Test.startTest();
         System.runAs(whitelistedUser) {
             Core_MDF_PFR_Approval.AIResponseWrapper result =
                 Core_MDF_PFR_Approval.getAISuggestionWithDecision(pfr.Id);
             Assert.areNotEqual(null, result);
-            // Cache hit returns success=true with Approve decision if object exists,
-            // otherwise falls through to non-cache path (success may be false).
             if (result.success) {
                 Assert.areEqual('Approve', result.decision);
                 Assert.isTrue(String.isNotBlank(result.formattedContent));
@@ -2111,7 +2027,6 @@ public class Core_MDF_PFR_Approval_Test {
             Core_MDF_PFR_Approval.AIResponseWrapper result =
                 Core_MDF_PFR_Approval.getAISuggestionWithDecision(pfr.Id);
             Assert.areNotEqual(null, result);
-            // success depends on label/metadata presence in this org
         }
         Test.stopTest();
     }
@@ -2146,7 +2061,6 @@ public class Core_MDF_PFR_Approval_Test {
             Core_MDF_PFR_Approval.AIResponseWrapper result =
                 Core_MDF_PFR_Approval.getAISuggestionWithDecision(pfr.Id);
             Assert.areNotEqual(null, result);
-            // When no field rules exist (metadata not deployed), success=false is expected
             Assert.areEqual(false, result.success);
         }
         Test.stopTest();
@@ -2204,7 +2118,6 @@ public class Core_MDF_PFR_Approval_Test {
 
     // ============================================================
     // AI RECOMMENDATION TRACKING TESTS
-    // All wrapped to handle missing Core_MDF_AI_Recommendation_Tracking__c
     // ============================================================
 
     @isTest
@@ -2212,22 +2125,18 @@ public class Core_MDF_PFR_Approval_Test {
         PartnerFundRequest pfr = [SELECT Id FROM PartnerFundRequest
             WHERE Title = 'Test IPA Outcome Activity' LIMIT 1];
         Test.startTest();
-        try {
-            Core_MDF_PFR_Approval.storeAIRecommendation(pfr.Id, 'Approve', 'First call');
-            Core_MDF_PFR_Approval.storeAIRecommendation(pfr.Id, 'Reject', 'Second call - ignored');
-        } catch (Exception e) {
-            // Object not yet deployed - skip assertion on record count
-        }
+        Core_MDF_PFR_Approval.storeAIRecommendation(pfr.Id, 'Approve', 'First call');
+        Core_MDF_PFR_Approval.storeAIRecommendation(pfr.Id, 'Reject', 'Second call - ignored');
         Test.stopTest();
-        List<Core_MDF_AI_Recommendation_Tracking__c> recs =
-            safeQueryTrackingRecords(pfr.Id);
-        // If object exists: expect 1 record with 'Approve' (no duplicate)
-        // If object absent: recs is empty - test still passes
-        if (!recs.isEmpty()) {
-            Assert.areEqual(1, recs.size());
-            Assert.areEqual('Approve', recs[0].Core_MDF_AI_Recommendation__c);
-            Assert.areEqual('Approval Process', recs[0].Core_MDF_AI_Source_Type__c);
-        }
+        List<Core_MDF_AI_Recommendation_Tracking__c> recs = [
+            SELECT Id, Core_MDF_AI_Recommendation__c, Core_MDF_AI_Source_Type__c
+            FROM Core_MDF_AI_Recommendation_Tracking__c
+            WHERE Core_MDF_Activity__c = :pfr.Id
+            AND Core_MDF_User__c = :UserInfo.getUserId()
+        ];
+        Assert.areEqual(1, recs.size());
+        Assert.areEqual('Approve', recs[0].Core_MDF_AI_Recommendation__c);
+        Assert.areEqual('Approval Process', recs[0].Core_MDF_AI_Source_Type__c);
     }
 
     @isTest
@@ -2236,40 +2145,34 @@ public class Core_MDF_PFR_Approval_Test {
             WHERE Title = 'Test IPA Outcome Activity' LIMIT 1];
         PartnerFundRequest pfr2 = [SELECT Id FROM PartnerFundRequest
             WHERE Title = 'Test IPA Incentive Activity' LIMIT 1];
-        // Seed tracking records safely
-        Core_MDF_AI_Recommendation_Tracking__c rec1 =
-            createTrackingRecord(pfr.Id, 'Approve', 'AI said approve', 'L1 Approval', System.now());
-        Core_MDF_AI_Recommendation_Tracking__c rec2 =
-            createTrackingRecord(pfr2.Id, 'Reject', 'AI details', 'L1 Approval', System.now());
+        createTrackingRecord(pfr.Id, 'Approve', 'AI said approve', 'L1 Approval', System.now());
+        createTrackingRecord(pfr2.Id, 'Reject', 'AI details', 'L1 Approval', System.now());
         Test.startTest();
-        try {
-            Core_MDF_PFR_Approval.trackAIRecommendationUsage(
-                pfr.Id, 'Approve', 'AI said approve', 'Approve');
-            Core_MDF_PFR_Approval.trackAIRecommendationUsage(
-                pfr2.Id, 'Reject', 'AI details', 'Reject');
-            Core_MDF_PFR_Approval.trackAIRecommendationUsage(
-                pfr.Id, null, null, 'Approve');
-        } catch (Exception e) {
-            // Object not yet deployed
-        }
+        Core_MDF_PFR_Approval.trackAIRecommendationUsage(
+            pfr.Id, 'Approve', 'AI said approve', 'Approve');
+        Core_MDF_PFR_Approval.trackAIRecommendationUsage(
+            pfr2.Id, 'Reject', 'AI details', 'Reject');
+        Core_MDF_PFR_Approval.trackAIRecommendationUsage(
+            pfr.Id, null, null, 'Approve');
         Test.stopTest();
-        // Validate only if records were actually created
-        if (rec1 != null) {
-            List<Core_MDF_AI_Recommendation_Tracking__c> recs1 =
-                safeQueryTrackingRecords(pfr.Id);
-            if (!recs1.isEmpty()) {
-                Assert.areEqual('Approve', recs1[0].Core_MDF_User_Decision__c);
-                Assert.areEqual(true, recs1[0].Core_MDF_Recommendation_Used__c);
-            }
-        }
-        if (rec2 != null) {
-            List<Core_MDF_AI_Recommendation_Tracking__c> recs2 =
-                safeQueryTrackingRecords(pfr2.Id);
-            if (!recs2.isEmpty()) {
-                Assert.areEqual('Reject', recs2[0].Core_MDF_User_Decision__c);
-                Assert.areEqual(true, recs2[0].Core_MDF_Recommendation_Used__c);
-            }
-        }
+        List<Core_MDF_AI_Recommendation_Tracking__c> recs1 = [
+            SELECT Core_MDF_User_Decision__c, Core_MDF_Recommendation_Used__c
+            FROM Core_MDF_AI_Recommendation_Tracking__c
+            WHERE Core_MDF_Activity__c = :pfr.Id
+            AND Core_MDF_User__c = :UserInfo.getUserId()
+        ];
+        Assert.areEqual(1, recs1.size());
+        Assert.areEqual('Approve', recs1[0].Core_MDF_User_Decision__c);
+        Assert.areEqual(true, recs1[0].Core_MDF_Recommendation_Used__c);
+        List<Core_MDF_AI_Recommendation_Tracking__c> recs2 = [
+            SELECT Core_MDF_User_Decision__c, Core_MDF_Recommendation_Used__c
+            FROM Core_MDF_AI_Recommendation_Tracking__c
+            WHERE Core_MDF_Activity__c = :pfr2.Id
+            AND Core_MDF_User__c = :UserInfo.getUserId()
+        ];
+        Assert.areEqual(1, recs2.size());
+        Assert.areEqual('Reject', recs2[0].Core_MDF_User_Decision__c);
+        Assert.areEqual(true, recs2[0].Core_MDF_Recommendation_Used__c);
     }
 
     // ============================================================
@@ -2283,33 +2186,33 @@ public class Core_MDF_PFR_Approval_Test {
         PartnerFundRequest pfr2 = [SELECT Id FROM PartnerFundRequest
             WHERE Title = 'Test IPA Incentive Activity' LIMIT 1];
         Test.startTest();
-        // Path 1: No record - should not throw
-        try {
-            Core_MDF_PFR_Approval.stampRecallOnLatestTrackingRecord(pfr.Id);
-        } catch (Exception e) {
-            // Object not deployed - acceptable
-        }
-        Assert.areEqual(0, safeCountTrackingRecords(pfr.Id));
-
+        // Path 1: No record
+        Core_MDF_PFR_Approval.stampRecallOnLatestTrackingRecord(pfr.Id);
+        Assert.areEqual(0, [SELECT COUNT()
+            FROM Core_MDF_AI_Recommendation_Tracking__c
+            WHERE Core_MDF_Activity__c = :pfr.Id]);
         // Path 2: Record with no decision - stamp Recall
-        Core_MDF_AI_Recommendation_Tracking__c rec = createTrackingRecord(
-            pfr.Id, 'Approve', 'AI recommended approve', 'L1 Approval', System.now());
-        if (rec != null) {
-            try {
-                Core_MDF_PFR_Approval.stampRecallOnLatestTrackingRecord(pfr.Id);
-            } catch (Exception e) { }
-            List<Core_MDF_AI_Recommendation_Tracking__c> updated =
-                safeQueryTrackingRecords(pfr.Id);
-            if (!updated.isEmpty()) {
-                Assert.areEqual('Recall', updated[0].Core_MDF_User_Decision__c);
-                Assert.areNotEqual(null, updated[0].Core_MDF_Decision_Date__c);
-            }
-        }
-
+        Core_MDF_AI_Recommendation_Tracking__c rec =
+            new Core_MDF_AI_Recommendation_Tracking__c(
+                Core_MDF_Activity__c = pfr.Id,
+                Core_MDF_User__c = UserInfo.getUserId(),
+                Core_MDF_AI_Recommendation__c = 'Approve',
+                Core_MDF_AI_Recommendation_Details__c = 'AI recommended approve',
+                Core_MDF_Approval_Stage__c = 'L1 Approval',
+                Core_MDF_Activity_Last_Modified_Date__c = System.now(),
+                Core_MDF_AI_Source_Type__c = 'Approval Process'
+            );
+        insert rec;
+        Core_MDF_PFR_Approval.stampRecallOnLatestTrackingRecord(pfr.Id);
+        Core_MDF_AI_Recommendation_Tracking__c updated = [
+            SELECT Core_MDF_User_Decision__c, Core_MDF_Decision_Date__c
+            FROM Core_MDF_AI_Recommendation_Tracking__c WHERE Id = :rec.Id
+        ];
+        Assert.areEqual('Recall', updated.Core_MDF_User_Decision__c);
+        Assert.areNotEqual(null, updated.Core_MDF_Decision_Date__c);
         // Path 3: Record already has decision - should NOT overwrite
-        Core_MDF_AI_Recommendation_Tracking__c rec2 = null;
-        try {
-            rec2 = new Core_MDF_AI_Recommendation_Tracking__c(
+        Core_MDF_AI_Recommendation_Tracking__c rec2 =
+            new Core_MDF_AI_Recommendation_Tracking__c(
                 Core_MDF_Activity__c = pfr2.Id,
                 Core_MDF_User__c = UserInfo.getUserId(),
                 Core_MDF_AI_Recommendation__c = 'Approve',
@@ -2319,20 +2222,13 @@ public class Core_MDF_PFR_Approval_Test {
                 Core_MDF_AI_Source_Type__c = 'Approval Process',
                 Core_MDF_User_Decision__c = 'Approve'
             );
-            insert rec2;
-        } catch (Exception e) {
-            rec2 = null;
-        }
-        if (rec2 != null) {
-            try {
-                Core_MDF_PFR_Approval.stampRecallOnLatestTrackingRecord(pfr2.Id);
-            } catch (Exception e) { }
-            List<Core_MDF_AI_Recommendation_Tracking__c> unchanged =
-                safeQueryTrackingRecords(pfr2.Id);
-            if (!unchanged.isEmpty()) {
-                Assert.areEqual('Approve', unchanged[0].Core_MDF_User_Decision__c);
-            }
-        }
+        insert rec2;
+        Core_MDF_PFR_Approval.stampRecallOnLatestTrackingRecord(pfr2.Id);
+        Core_MDF_AI_Recommendation_Tracking__c unchanged = [
+            SELECT Core_MDF_User_Decision__c
+            FROM Core_MDF_AI_Recommendation_Tracking__c WHERE Id = :rec2.Id
+        ];
+        Assert.areEqual('Approve', unchanged.Core_MDF_User_Decision__c);
         Test.stopTest();
     }
 
@@ -2346,31 +2242,20 @@ public class Core_MDF_PFR_Approval_Test {
             FROM PartnerFundRequest
             WHERE Title = 'Test IPA Outcome Activity' LIMIT 1];
         Test.startTest();
-        // No cache - should return null
-        try {
-            Core_MDF_PFR_Approval.AIResponseWrapper result1 =
-                Core_MDF_PFR_Approval.getCachedAIResponse(
-                    pfr.Id, pfr.Core_MDF_Approval_Stage__c, pfr.LastModifiedDate);
-            Assert.areEqual(null, result1);
-        } catch (Exception e) {
-            // Object not deployed - acceptable
-        }
-
+        // No cache
+        Core_MDF_PFR_Approval.AIResponseWrapper result1 =
+            Core_MDF_PFR_Approval.getCachedAIResponse(
+                pfr.Id, pfr.Core_MDF_Approval_Stage__c, pfr.LastModifiedDate);
+        Assert.areEqual(null, result1);
         // With valid cache
-        Core_MDF_AI_Recommendation_Tracking__c cached = createTrackingRecord(
-            pfr.Id, 'Approve', 'Cached AI details',
+        createTrackingRecord(pfr.Id, 'Approve', 'Cached AI details',
             pfr.Core_MDF_Approval_Stage__c, pfr.LastModifiedDate);
-        if (cached != null) {
-            try {
-                Core_MDF_PFR_Approval.AIResponseWrapper result2 =
-                    Core_MDF_PFR_Approval.getCachedAIResponse(
-                        pfr.Id, pfr.Core_MDF_Approval_Stage__c, pfr.LastModifiedDate);
-                if (result2 != null) {
-                    Assert.areEqual(true, result2.success);
-                    Assert.areEqual('Approve', result2.decision);
-                }
-            } catch (Exception e) { }
-        }
+        Core_MDF_PFR_Approval.AIResponseWrapper result2 =
+            Core_MDF_PFR_Approval.getCachedAIResponse(
+                pfr.Id, pfr.Core_MDF_Approval_Stage__c, pfr.LastModifiedDate);
+        Assert.areNotEqual(null, result2);
+        Assert.areEqual(true, result2.success);
+        Assert.areEqual('Approve', result2.decision);
         Test.stopTest();
     }
 
@@ -2379,9 +2264,8 @@ public class Core_MDF_PFR_Approval_Test {
         PartnerFundRequest pfr = [SELECT Id, Core_MDF_Approval_Stage__c, LastModifiedDate
             FROM PartnerFundRequest
             WHERE Title = 'Test IPA Incentive Activity' LIMIT 1];
-        Core_MDF_AI_Recommendation_Tracking__c rec = null;
-        try {
-            rec = new Core_MDF_AI_Recommendation_Tracking__c(
+        Core_MDF_AI_Recommendation_Tracking__c rec =
+            new Core_MDF_AI_Recommendation_Tracking__c(
                 Core_MDF_Activity__c = pfr.Id,
                 Core_MDF_User__c = UserInfo.getUserId(),
                 Core_MDF_AI_Recommendation__c = '',
@@ -2390,20 +2274,13 @@ public class Core_MDF_PFR_Approval_Test {
                 Core_MDF_Activity_Last_Modified_Date__c = pfr.LastModifiedDate,
                 Core_MDF_AI_Source_Type__c = 'Approval Process'
             );
-            insert rec;
-        } catch (Exception e) {
-            rec = null;
-        }
+        insert rec;
         Test.startTest();
-        if (rec != null) {
-            try {
-                Core_MDF_PFR_Approval.AIResponseWrapper result =
-                    Core_MDF_PFR_Approval.getCachedAIResponse(
-                        pfr.Id, pfr.Core_MDF_Approval_Stage__c, pfr.LastModifiedDate);
-                Assert.areEqual(null, result);
-            } catch (Exception e) { }
-        }
+        Core_MDF_PFR_Approval.AIResponseWrapper result =
+            Core_MDF_PFR_Approval.getCachedAIResponse(
+                pfr.Id, pfr.Core_MDF_Approval_Stage__c, pfr.LastModifiedDate);
         Test.stopTest();
+        Assert.areEqual(null, result);
     }
 
     @isTest
@@ -2411,39 +2288,19 @@ public class Core_MDF_PFR_Approval_Test {
         PartnerFundRequest pfr = [SELECT Id, LastModifiedDate FROM PartnerFundRequest
             WHERE Title = 'Test IPA Outcome Activity' LIMIT 1];
         Test.startTest();
-        // Label.Core_MDF_AI_Recommendation_Tracking and the tracking object
-        // may not exist in all orgs. Wrap in try-catch.
-        Boolean storeSucceeded = false;
-        try {
-            Core_MDF_PFR_Approval.storeAIRecommendationWithStage(
-                pfr.Id, 'Approve', 'Stage-based details', 'L1 Approval', pfr.LastModifiedDate);
-            Core_MDF_PFR_Approval.storeAIRecommendationWithStage(
-                pfr.Id, 'Reject', 'Updated details', 'L1 Approval', pfr.LastModifiedDate);
-            storeSucceeded = true;
-        } catch (Exception e) {
-            storeSucceeded = false;
-        }
+        Core_MDF_PFR_Approval.storeAIRecommendationWithStage(
+            pfr.Id, 'Approve', 'Stage-based details', 'L1 Approval', pfr.LastModifiedDate);
+        Core_MDF_PFR_Approval.storeAIRecommendationWithStage(
+            pfr.Id, 'Reject', 'Updated details', 'L1 Approval', pfr.LastModifiedDate);
         Test.stopTest();
-        List<Core_MDF_AI_Recommendation_Tracking__c> recs = new List<Core_MDF_AI_Recommendation_Tracking__c>();
-        try {
-            recs = [
-                SELECT Id, Core_MDF_AI_Recommendation__c, Core_MDF_Approval_Stage__c
-                FROM Core_MDF_AI_Recommendation_Tracking__c
-                WHERE Core_MDF_Activity__c = :pfr.Id
-                AND Core_MDF_Approval_Stage__c = 'L1 Approval'
-            ];
-        } catch (Exception e) {
-            // Object not deployed
-        }
-        if (storeSucceeded) {
-            Assert.areEqual(1, recs.size(),
-                'Expected exactly one upserted record after two calls for the same stage');
-            Assert.areEqual('Reject', recs[0].Core_MDF_AI_Recommendation__c,
-                'Second call should have overwritten the first via upsert');
-        } else {
-            Assert.areEqual(0, recs.size(),
-                'No tracking records expected when label/object is unavailable');
-        }
+        List<Core_MDF_AI_Recommendation_Tracking__c> recs = [
+            SELECT Id, Core_MDF_AI_Recommendation__c, Core_MDF_Approval_Stage__c
+            FROM Core_MDF_AI_Recommendation_Tracking__c
+            WHERE Core_MDF_Activity__c = :pfr.Id
+            AND Core_MDF_Approval_Stage__c = 'L1 Approval'
+        ];
+        Assert.areEqual(1, recs.size());
+        Assert.areEqual('Reject', recs[0].Core_MDF_AI_Recommendation__c);
     }
 
     // ============================================================
@@ -2455,41 +2312,59 @@ public class Core_MDF_PFR_Approval_Test {
         PartnerFundRequest pfr = [SELECT Id FROM PartnerFundRequest
             WHERE Title = 'Test IPA Outcome Activity' LIMIT 1];
         Test.startTest();
-        Core_MDF_AI_Recommendation_Tracking__c seedRec =
-            createTrackingRecord(pfr.Id, 'Approve', 'details', 'L1 Approval', System.now());
-        if (seedRec == null) {
-            // Object not deployed - just call the methods to get coverage, no assertions
-            try {
-                Core_MDF_PFR_Approval.trackAIRecommendationUsage(pfr.Id, 'Approve', 'details', 'Approve');
-                Core_MDF_PFR_Approval.trackAIRecommendationUsage(pfr.Id, 'Reject', 'details', 'Reject');
-                Core_MDF_PFR_Approval.trackAIRecommendationUsage(pfr.Id, 'Request Clarification', 'details', 'Request Clarification');
-                Core_MDF_PFR_Approval.trackAIRecommendationUsage(pfr.Id, 'Reject', 'details', 'Recall');
-                Core_MDF_PFR_Approval.trackAIRecommendationUsage(pfr.Id, 'Approve', 'details', 'Reject');
-                Core_MDF_PFR_Approval.trackAIRecommendationUsage(pfr.Id, '', '', 'Approve');
-            } catch (Exception e) { }
-            Test.stopTest();
-            return;
-        }
+        createTrackingRecord(pfr.Id, 'Approve', 'details', 'L1 Approval', System.now());
         // Approve + Approve = true
-        try { Core_MDF_PFR_Approval.trackAIRecommendationUsage(pfr.Id, 'Approve', 'details', 'Approve'); } catch (Exception e) { }
-        List<Core_MDF_AI_Recommendation_Tracking__c> r1 = safeQueryTrackingRecords(pfr.Id);
-        if (!r1.isEmpty() && r1[0].Core_MDF_User_Decision__c != null) {
-            Assert.areEqual(true, r1[0].Core_MDF_Recommendation_Used__c);
-        }
+        Core_MDF_PFR_Approval.trackAIRecommendationUsage(
+            pfr.Id, 'Approve', 'details', 'Approve');
+        Assert.areEqual(true, [
+            SELECT Core_MDF_Recommendation_Used__c
+            FROM Core_MDF_AI_Recommendation_Tracking__c
+            WHERE Core_MDF_Activity__c = :pfr.Id
+            AND Core_MDF_User__c = :UserInfo.getUserId()
+            ORDER BY CreatedDate DESC LIMIT 1
+        ][0].Core_MDF_Recommendation_Used__c);
         // Reject + Reject = true
-        try { Core_MDF_PFR_Approval.trackAIRecommendationUsage(pfr.Id, 'Reject', 'details', 'Reject'); } catch (Exception e) { }
-        List<Core_MDF_AI_Recommendation_Tracking__c> r2 = safeQueryTrackingRecords(pfr.Id);
-        if (!r2.isEmpty() && r2[0].Core_MDF_User_Decision__c != null) {
-            Assert.areEqual(true, r2[0].Core_MDF_Recommendation_Used__c);
-        }
+        Core_MDF_PFR_Approval.trackAIRecommendationUsage(
+            pfr.Id, 'Reject', 'details', 'Reject');
+        Assert.areEqual(true, [
+            SELECT Core_MDF_Recommendation_Used__c
+            FROM Core_MDF_AI_Recommendation_Tracking__c
+            WHERE Core_MDF_Activity__c = :pfr.Id
+            AND Core_MDF_User__c = :UserInfo.getUserId()
+            ORDER BY CreatedDate DESC LIMIT 1
+        ][0].Core_MDF_Recommendation_Used__c);
         // Clarification + Clarification = true
-        try { Core_MDF_PFR_Approval.trackAIRecommendationUsage(pfr.Id, 'Request Clarification', 'details', 'Request Clarification'); } catch (Exception e) { }
+        Core_MDF_PFR_Approval.trackAIRecommendationUsage(
+            pfr.Id, 'Request Clarification', 'details', 'Request Clarification');
+        Assert.areEqual(true, [
+            SELECT Core_MDF_Recommendation_Used__c
+            FROM Core_MDF_AI_Recommendation_Tracking__c
+            WHERE Core_MDF_Activity__c = :pfr.Id
+            AND Core_MDF_User__c = :UserInfo.getUserId()
+            ORDER BY CreatedDate DESC LIMIT 1
+        ][0].Core_MDF_Recommendation_Used__c);
         // Reject + Recall = true
-        try { Core_MDF_PFR_Approval.trackAIRecommendationUsage(pfr.Id, 'Reject', 'details', 'Recall'); } catch (Exception e) { }
+        Core_MDF_PFR_Approval.trackAIRecommendationUsage(
+            pfr.Id, 'Reject', 'details', 'Recall');
+        Assert.areEqual(true, [
+            SELECT Core_MDF_Recommendation_Used__c
+            FROM Core_MDF_AI_Recommendation_Tracking__c
+            WHERE Core_MDF_Activity__c = :pfr.Id
+            AND Core_MDF_User__c = :UserInfo.getUserId()
+            ORDER BY CreatedDate DESC LIMIT 1
+        ][0].Core_MDF_Recommendation_Used__c);
         // Approve + Reject = false
-        try { Core_MDF_PFR_Approval.trackAIRecommendationUsage(pfr.Id, 'Approve', 'details', 'Reject'); } catch (Exception e) { }
+        Core_MDF_PFR_Approval.trackAIRecommendationUsage(
+            pfr.Id, 'Approve', 'details', 'Reject');
+        Assert.areEqual(false, [
+            SELECT Core_MDF_Recommendation_Used__c
+            FROM Core_MDF_AI_Recommendation_Tracking__c
+            WHERE Core_MDF_Activity__c = :pfr.Id
+            AND Core_MDF_User__c = :UserInfo.getUserId()
+            ORDER BY CreatedDate DESC LIMIT 1
+        ][0].Core_MDF_Recommendation_Used__c);
         // Blank inputs
-        try { Core_MDF_PFR_Approval.trackAIRecommendationUsage(pfr.Id, '', '', 'Approve'); } catch (Exception e) { }
+        Core_MDF_PFR_Approval.trackAIRecommendationUsage(pfr.Id, '', '', 'Approve');
         Test.stopTest();
     }
 
@@ -2680,18 +2555,10 @@ public class Core_MDF_PFR_Approval_Test {
             FROM PartnerFundRequest
             WHERE Title = 'Test IPA Incentive Activity' LIMIT 1];
         Test.startTest();
-        // getFieldSpecificRulesFromMetadata queries Core_MDF_CCP_Custom_Metadata_Utility__c
-        // which may not exist in higher org. Wrap in try-catch.
         List<Core_MDF_CCP_Custom_Metadata_Utility__c> rules1 =
-            new List<Core_MDF_CCP_Custom_Metadata_Utility__c>();
+            Core_MDF_PFR_Approval.getFieldSpecificRulesFromMetadata(pfrOutcome);
         List<Core_MDF_CCP_Custom_Metadata_Utility__c> rules2 =
-            new List<Core_MDF_CCP_Custom_Metadata_Utility__c>();
-        try {
-            rules1 = Core_MDF_PFR_Approval.getFieldSpecificRulesFromMetadata(pfrOutcome);
-            rules2 = Core_MDF_PFR_Approval.getFieldSpecificRulesFromMetadata(pfrIncentive);
-        } catch (Exception e) {
-            // Object not deployed - empty lists are valid
-        }
+            Core_MDF_PFR_Approval.getFieldSpecificRulesFromMetadata(pfrIncentive);
         Test.stopTest();
         Assert.areNotEqual(null, rules1);
         Assert.areNotEqual(null, rules2);
@@ -2936,8 +2803,7 @@ public class Core_MDF_PFR_Approval_Test {
     static void testBuildFieldAnalysisPrompt() {
         List<Core_MDF_CCP_Custom_Metadata_Utility__c> rules =
             new List<Core_MDF_CCP_Custom_Metadata_Utility__c>();
-        // Insert test rule safely
-        Id ruleId = safeInsertMetadataUtility(new Core_MDF_CCP_Custom_Metadata_Utility__c(
+        insert new Core_MDF_CCP_Custom_Metadata_Utility__c(
             Name = 'Test Rule 1',
             Core_MDF_Category__c = 'AI Powered Approval Process',
             Core_MDF_Sub_Category__c = 'Core_MDF_Focus_Area_nm__c',
@@ -2947,15 +2813,10 @@ public class Core_MDF_PFR_Approval_Test {
             Core_MDF_Is_Active_Ind__c = true,
             Core_MDF_Checkbox_Field_1_Ind__c = true,
             Core_MDF_Checkbox_Field_2_Ind__c = false
-        ));
-        if (ruleId != null) {
-            try {
-                rules = [SELECT Id, Name, Core_MDF_Sub_Category__c, Core_MDF_Value__c
-                    FROM Core_MDF_CCP_Custom_Metadata_Utility__c
-                    WHERE Name = 'Test Rule 1' LIMIT 1];
-            } catch (Exception e) { }
-        }
-        // Add a blank sub-category rule safely
+        );
+        rules = [SELECT Id, Name, Core_MDF_Sub_Category__c, Core_MDF_Value__c
+            FROM Core_MDF_CCP_Custom_Metadata_Utility__c
+            WHERE Name = 'Test Rule 1' LIMIT 1];
         Core_MDF_CCP_Custom_Metadata_Utility__c blankRule =
             new Core_MDF_CCP_Custom_Metadata_Utility__c(
                 Name = 'Test Rule Blank Sub',
@@ -2968,19 +2829,15 @@ public class Core_MDF_PFR_Approval_Test {
                 Core_MDF_Checkbox_Field_1_Ind__c = true,
                 Core_MDF_Checkbox_Field_2_Ind__c = false
             );
-        Id blankRuleId = safeInsertMetadataUtility(blankRule);
-        if (blankRuleId != null) {
-            rules.add(blankRule);
-        }
+        insert blankRule;
+        rules.add(blankRule);
         Test.startTest();
         String result1 = Core_MDF_PFR_Approval.buildFieldAnalysisPrompt(rules, false);
-        if (!rules.isEmpty()) {
-            Assert.isTrue(result1.contains('Core_MDF_Focus_Area_nm__c') ||
-                          result1.contains('ANALYSIS INSTRUCTIONS'));
-        }
-        Assert.isTrue(String.isNotBlank(result1));
+        Assert.isTrue(result1.contains('Core_MDF_Focus_Area_nm__c'));
+        Assert.isTrue(result1.contains('ANALYSIS INSTRUCTIONS'));
+        Assert.isFalse(result1.contains('Cross-reference'));
         String result2 = Core_MDF_PFR_Approval.buildFieldAnalysisPrompt(rules, true);
-        Assert.isTrue(String.isNotBlank(result2));
+        Assert.isTrue(result2.contains('Cross-reference'));
         String result3 = Core_MDF_PFR_Approval.buildFieldAnalysisPrompt(
             new List<Core_MDF_CCP_Custom_Metadata_Utility__c>(), false);
         Assert.isTrue(String.isNotBlank(result3));
@@ -3004,21 +2861,16 @@ public class Core_MDF_PFR_Approval_Test {
             Core_MDF_Focus_Area_nm__c, BudgetId, LastModifiedDate
             FROM PartnerFundRequest
             WHERE Title = 'Test IPA Outcome Activity' LIMIT 1];
-        List<Core_MDF_CCP_Custom_Metadata_Utility__c> rules =
-            new List<Core_MDF_CCP_Custom_Metadata_Utility__c>();
-        try {
-            rules = [
-                SELECT Id, Name, Core_MDF_Category__c, Core_MDF_Value__c,
-                       Core_MDF_Region_Country__c, Core_MDF_Program__c,
-                       Core_MDF_Sub_Category__c, Core_MDF_Checkbox_Field_1_Ind__c,
-                       Core_MDF_Checkbox_Field_2_Ind__c
-                FROM Core_MDF_CCP_Custom_Metadata_Utility__c
-                WHERE Core_MDF_Category__c = 'AI Powered Approval Process'
-                AND Core_MDF_Is_Active_Ind__c = true LIMIT 5
-            ];
-        } catch (Exception e) { }
+        List<Core_MDF_CCP_Custom_Metadata_Utility__c> rules = [
+            SELECT Id, Name, Core_MDF_Category__c, Core_MDF_Value__c,
+                   Core_MDF_Region_Country__c, Core_MDF_Program__c,
+                   Core_MDF_Sub_Category__c, Core_MDF_Checkbox_Field_1_Ind__c,
+                   Core_MDF_Checkbox_Field_2_Ind__c
+            FROM Core_MDF_CCP_Custom_Metadata_Utility__c
+            WHERE Core_MDF_Category__c = 'AI Powered Approval Process'
+            AND Core_MDF_Is_Active_Ind__c = true LIMIT 5
+        ];
         if (rules.isEmpty()) {
-            // Insert a rule safely for prompt building coverage
             Core_MDF_CCP_Custom_Metadata_Utility__c rule =
                 new Core_MDF_CCP_Custom_Metadata_Utility__c(
                     Name = 'Prompt Test Rule',
@@ -3031,10 +2883,8 @@ public class Core_MDF_PFR_Approval_Test {
                     Core_MDF_Checkbox_Field_1_Ind__c = true,
                     Core_MDF_Checkbox_Field_2_Ind__c = false
                 );
-            Id rId = safeInsertMetadataUtility(rule);
-            if (rId != null) {
-                rules.add(rule);
-            }
+            insert rule;
+            rules.add(rule);
         }
         Test.startTest();
         try {
@@ -3046,7 +2896,6 @@ public class Core_MDF_PFR_Approval_Test {
             Assert.isTrue(result2.contains('ATTACHED DOCUMENTS CONTENT') ||
                           result2.length() > result1.length());
         } catch (Exception e) {
-            // buildEnhancedPrompt may reference labels not yet deployed
             Assert.isTrue(e.getMessage() != null);
         }
         Test.stopTest();
@@ -3212,7 +3061,6 @@ public class Core_MDF_PFR_Approval_Test {
             WHERE LastName = 'Retail Account Reviewer Test' LIMIT 1];
         PartnerFundRequest pfr = [SELECT Id, OwnerId FROM PartnerFundRequest
             WHERE Title = 'Test IPA Outcome Activity' LIMIT 1];
-        // Seed tracking record safely
         createTrackingRecord(pfr.Id, 'Approve', 'AI recommended approve',
             'L1 Approval', System.now());
         Approval.ProcessSubmitRequest app = new Approval.ProcessSubmitRequest();
@@ -3234,9 +3082,9 @@ public class Core_MDF_PFR_Approval_Test {
             } catch (Exception e) { }
         }
         Test.stopTest();
-        // Count is 1 if object deployed, 0 if not - both are valid
-        Integer cnt = safeCountTrackingRecords(pfr.Id);
-        Assert.isTrue(cnt >= 0);
+        Assert.areEqual(1, [SELECT COUNT()
+            FROM Core_MDF_AI_Recommendation_Tracking__c
+            WHERE Core_MDF_Activity__c = :pfr.Id]);
     }
 
     @isTest
@@ -3245,22 +3093,15 @@ public class Core_MDF_PFR_Approval_Test {
             WHERE LastName = 'Retail Account Reviewer Test' LIMIT 1];
         PartnerFundRequest pfr = [SELECT Id, OwnerId FROM PartnerFundRequest
             WHERE Title = 'Test IPA Outcome Activity' LIMIT 1];
-        // Seed tracking record safely
-        Core_MDF_AI_Recommendation_Tracking__c seedRec = null;
-        try {
-            seedRec = new Core_MDF_AI_Recommendation_Tracking__c(
-                Core_MDF_Activity__c = pfr.Id,
-                Core_MDF_User__c = UserInfo.getUserId(),
-                Core_MDF_AI_Recommendation__c = 'Approve',
-                Core_MDF_AI_Recommendation_Details__c = 'AI recommended approve',
-                Core_MDF_Approval_Stage__c = 'L1 Approval',
-                Core_MDF_Activity_Last_Modified_Date__c = System.now(),
-                Core_MDF_AI_Source_Type__c = 'Approval Process'
-            );
-            insert seedRec;
-        } catch (Exception e) {
-            seedRec = null;
-        }
+        insert new Core_MDF_AI_Recommendation_Tracking__c(
+            Core_MDF_Activity__c = pfr.Id,
+            Core_MDF_User__c = UserInfo.getUserId(),
+            Core_MDF_AI_Recommendation__c = 'Approve',
+            Core_MDF_AI_Recommendation_Details__c = 'AI recommended approve',
+            Core_MDF_Approval_Stage__c = 'L1 Approval',
+            Core_MDF_Activity_Last_Modified_Date__c = System.now(),
+            Core_MDF_AI_Source_Type__c = 'Approval Process'
+        );
         Approval.ProcessSubmitRequest app = new Approval.ProcessSubmitRequest();
         app.setObjectId(pfr.Id);
         app.setSubmitterId(pfr.OwnerId);
@@ -3280,8 +3121,9 @@ public class Core_MDF_PFR_Approval_Test {
             } catch (Exception e) { }
         }
         Test.stopTest();
-        Integer cnt = safeCountTrackingRecords(pfr.Id);
-        Assert.isTrue(cnt >= 0);
+        Assert.areEqual(1, [SELECT COUNT()
+            FROM Core_MDF_AI_Recommendation_Tracking__c
+            WHERE Core_MDF_Activity__c = :pfr.Id]);
     }
 
     @isTest

@@ -1,0 +1,131 @@
+<template>
+    <lightning-card>
+        <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+            <div class="slds-size_1-of-4">
+               
+            </div>
+            <div class="slds-size_2-of-4">
+                <div class="slds-form-element">
+    
+                    <div class="slds-form-element__control">
+                        <div class="slds-combobox_container">
+                        </br>
+        <div class={dynamiClassname} data-id="resultBox" aria-expanded="false" aria-haspopup="listbox" role="combobox" >
+            <div class="slds-form-element__control slds-input-has-icon  slds-input-has-icon_right" role="none">
+        
+            
+         
+            <lightning-input type="search" required="true"  data-id="userinput" label="Select Batch" value={selected} name="searchBatch"  onchange={searchBatch}   field-level-help="Enter Batch"  >
+            </lightning-input>
+    
+    
+        <div id="listbox-id-1" class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" role="listbox">
+            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                <template for:each={BatchesName} for:item="serecord">
+                    <li role="presentation" class="slds-listbox__item" key={serecord}>
+    
+                        <div data-id={serecord}  onclick={setSelectedRecord}  class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                            <div class="slds-media slds-media_center">
+                            <span class="slds-media__figure">
+                                <span class="slds-icon_container slds-icon-standard-user">
+                                    <lightning-icon icon-name="standard:user" ></lightning-icon>
+                                </span>
+                            </span>
+    
+                            <span class="slds-media__body">
+                                <span class="slds-listbox__option-text slds-listbox__option-text_entity">{serecord}</span>
+                            </span>
+                        </div>
+                        </div>
+                    </li>
+                </template>
+            </ul>
+        </div>
+
+        <div if:true={messageFlag}>
+            No result found.
+        </div>
+        <div if:true={LoadingText}>
+            Loading...
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</br>
+        
+        
+                <template if:true={hasParams}>
+
+                    <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+                        <div class="slds-size_1-of-4">
+                           
+                        </div>
+                        <div class="slds-size_2-of-4">
+                        <template for:each={batchParamName} for:item="param">
+                            <lightning-input key={param} type="text" name="input2" label={param} onchange={handleParamChange}></lightning-input>
+                        </template>
+                    </div>
+                    </div>
+        
+                    
+                   
+                   
+                    
+                </template>
+        
+        
+        
+                <!-- <p>Selected values are: {selected}</p> -->
+                <!--<div>
+                    
+                    <lightning-input type="text" name="input2" label="Batch Class" onchange={handleChange}></lightning-input>
+                    
+                </div>-->
+
+                <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+                    <div class="slds-size_1-of-4">
+                       
+                    </div>
+                    <div class="slds-size_2-of-4">
+                
+                        <!-- <h2>Basic Input Number</h2> -->
+                        <lightning-input type="number" name="input1" label="Batch Size" onchange={handleAmountChange}></lightning-input>
+                        <!-- <p>Selected Integer : {amount}</p> -->
+                   
+                    <br>
+                        
+                       
+
+                       
+                        
+                            <lightning-button variant="brand" label="Execute Batch" title="Successful action" onclick={handleClick}></lightning-button>
+                            Batch Job Id: {batchId}
+                           
+                            <br><br>
+                            <lightning-button variant="brand" label="Check Batch Status" title="Check status" onclick={checkBatchStatus}></lightning-button>
+                             
+                            <div style="height:100px;">
+                                <lightning-datatable
+                                key-field="batchId"
+                                data={data}
+                                columns={columns}
+                                hide-checkbox-column>
+                        </lightning-datatable>
+                            </div>
+
+
+                        </div>
+                       
+              
+                </div>
+                
+             
+        
+                    
+        
+    </lightning-card>
+</template>

@@ -57,6 +57,57 @@
     <columns>
         <field>QUANTITY</field>
     </columns>
+    <crossFilters>
+        <criteriaItems>
+            <column>Name</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Milan Spalevic,Rich Sutherland</value>
+        </criteriaItems>
+        <operation>with</operation>
+        <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
+        <relatedTable>OpportunityTeamMember-User</relatedTable>
+        <relatedTableJoinColumn>Opportunity</relatedTableJoinColumn>
+    </crossFilters>
+    <filter>
+        <booleanFilter>(1 OR 2 OR 3 OR 4) AND 5</booleanFilter>
+        <criteriaItems>
+            <column>Opportunity.Core_Solution_Area__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>E&amp;G Analytics Solution,Analytics - Big Data,Analytics - Network Optimization,Automation &amp; Management,Analytics - Media Analytics,Analytics - Security,Analytics - Edge,Analytics - Customer Operations,Analytics - Sales &amp; Marketing,Analytics - Data Monetization Services including AIaaS,Analytics - IT / Cloud,Analytics - RAN,Analytics - Core,Select Solutions - Genomics Analytics,Visual Cloud - Media Analytics,Visual Cloud – Media Analytics</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Solution_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>DCG Enterprise Analytics Deal # (On-Prem),DCG Enterprise Analytics Deal # Workloads (Off-Prem),Analytics</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Solution_Detail__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>E&amp;G Analytics Solution,Analytics - Big Data,&quot;Analytics - Network Optimization, Automation &amp; Management&quot;,Analytics - Media Analytics,Analytics - Security,Analytics - Edge,&quot;Analytics - Customer Operations, Automation &amp; Management&quot;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Solution_Detail__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Analytics - Sales &amp; Marketing,Analytics - Data Monetization Services including AIaaS,Analytics - IT / Cloud,Analytics - RAN,Analytics - Core,Select Solutions - Genomics Analytics,Visual Cloud - Media Analytics</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Dimension Data</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>

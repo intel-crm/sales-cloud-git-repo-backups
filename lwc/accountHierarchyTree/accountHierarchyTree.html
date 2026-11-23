@@ -1,0 +1,7 @@
+<template>
+<div class="slds-box" style="background-color:white;">
+        <template for:each={gridData} for:item="accData">
+                <c-account-hierarchy-treec-child key={accData.name} record-id={accData.name} ></c-account-hierarchy-treec-child>
+        </template>
+</div>    
+</template>

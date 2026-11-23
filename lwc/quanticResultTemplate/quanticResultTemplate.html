@@ -1,12 +1,10 @@
 <template>
-  <div class="lgc-bg slds-border_bottom slds-p-vertical_medium" style="padding-top: 5px; padding-bottom: 32px; padding-right: 24px;
-  padding-left: 24px;">
- <lightning-tile>
-    <div class="slds-grid slds-wrap slds-col slds-grid_vertical-align-center slds-size_1-of-1 slds-text-align_left slds-m-bottom_x-small" style="margin: 0;">
+  <div class="lgc-bg slds-border_bottom slds-p-vertical_medium">
+    <div class={headerCssClass}>
       <div aria-hidden={isAnyPreviewOpen} class="slds-col slds-m-right_small slds-order_2 slds-small-order_2 slds-medium-order_1 slds-large-order_1">
         <slot name="label" onslotchange={handleHeaderSlotChange}></slot>
       </div>
-      <div aria-hidden={isAnyPreviewOpen} class="badge__container slds-col slds-order_1 slds-small-order_1 slds-medium-order_2 slds-large-order_2 slds-m-vertical_xx-small slds-m-right_small">
+      <div aria-hidden={isAnyPreviewOpen} class={badgesSlotCssClass}>
         <slot name="badges" onslotchange={handleHeaderSlotChange}></slot>
       </div>
       <div aria-hidden={resultPreviewShouldNotBeAccessible} class="slds-col slds-order_3 slds-col_bump-left slds-p-right_xx-small">
@@ -28,6 +26,5 @@
         <slot class="slds-wrap" name="bottom-metadata"></slot>
       </div>
     </div>
- </lightning-tile>
   </div>
 </template>

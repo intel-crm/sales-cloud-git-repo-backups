@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>49.0</apiVersion>
+    <apiVersion>55.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>Assign_the_value_to_share_record</name>
@@ -30,55 +30,6 @@
         </assignmentItems>
         <connector>
             <targetReference>Insert_all_the_bank_share_record</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <description>Get the CCF Program Name from the metadata record.</description>
-        <name>Core_MDF_Get_CCF_Program_Name</name>
-        <label>Get CCF Program Name</label>
-        <locationX>765</locationX>
-        <locationY>419</locationY>
-        <assignmentItems>
-            <assignToReference>vCCFChannelProgramId</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>fCCFProgramId</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Core_MDF_Loop_Metadata</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Core_MDF_Get_DCF_Program_Name</name>
-        <label>Get DCF Program Name</label>
-        <locationX>262</locationX>
-        <locationY>381</locationY>
-        <assignmentItems>
-            <assignToReference>vDCFChannelProgramId</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>fDCFProgramId</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Core_MDF_Loop_Metadata</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Core_MDF_Get_SPCF_Program_Name</name>
-        <label>Get SPCF Program Name</label>
-        <locationX>554</locationX>
-        <locationY>378</locationY>
-        <assignmentItems>
-            <assignToReference>vSPCFChannelProgramId</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>fSPCFProgramId</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Core_MDF_Loop_Metadata</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -158,9 +109,6 @@
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
-            <connector>
-                <targetReference>Core_MDF_Check_For_BankProgram_Entitlement_Mapping_Metadata_1</targetReference>
-            </connector>
             <label>Account Not Changed</label>
         </rules>
         <rules>
@@ -191,61 +139,6 @@
                 <targetReference>Core_MDF_Fetch_Bank_Share_Records</targetReference>
             </connector>
             <label>Account changed</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Core_MDF_Align_Bank_Program_with_it_s_respective_values</name>
-        <label>Align Bank Program with it&apos;s respective values</label>
-        <locationX>461</locationX>
-        <locationY>272</locationY>
-        <defaultConnector>
-            <targetReference>Core_MDF_Loop_Metadata</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Core_MDF_CCF</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>sChannelProgam_temp.Core_MDF_Bank_Program_Name__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>vCCFBankProgram</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Core_MDF_Get_CCF_Program_Name</targetReference>
-            </connector>
-            <label>CCF</label>
-        </rules>
-        <rules>
-            <name>Core_MDF_DCF</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>sChannelProgam_temp.Core_MDF_Bank_Program_Name__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>vDCFBankProgram</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Core_MDF_Get_DCF_Program_Name</targetReference>
-            </connector>
-            <label>DCF</label>
-        </rules>
-        <rules>
-            <name>Core_MDF_SPCF</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>sChannelProgam_temp.Core_MDF_Bank_Program_Name__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>vSPCFBankProgram</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Core_MDF_Get_SPCF_Program_Name</targetReference>
-            </connector>
-            <label>SPCF</label>
         </rules>
     </decisions>
     <decisions>
@@ -302,9 +195,6 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
-            <connector>
-                <targetReference>Core_MDF_Check_For_BankProgram_Entitlement_Mapping_Metadata_1</targetReference>
-            </connector>
             <label>No BankShare Records</label>
         </rules>
     </decisions>
@@ -331,6 +221,7 @@
         </rules>
     </decisions>
     <description>Share bank records to Internal Account Managers based on program.</description>
+    <environments>Default</environments>
     <formulas>
         <name>fBankProgramIdLength</name>
         <dataType>Number</dataType>
@@ -358,22 +249,6 @@
     <interviewLabel>Core_MDF_FL_BankShare_InternalAccountManager {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_MDF_FL_BankShare_InternalAccountManager</label>
     <loops>
-        <description>Loop through sCollChannelProgramNames  List</description>
-        <name>Core_MDF_Loop_Metadata</name>
-        <label>Loop Metadata</label>
-        <locationX>469</locationX>
-        <locationY>629</locationY>
-        <assignNextValueToReference>sChannelProgam_temp</assignNextValueToReference>
-        <collectionReference>sCollChannelProgramNames</collectionReference>
-        <iterationOrder>Asc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>Core_MDF_Align_Bank_Program_with_it_s_respective_values</targetReference>
-        </nextValueConnector>
-        <noMoreValuesConnector>
-            <targetReference>Core_MDF_Fetch_PGM</targetReference>
-        </noMoreValuesConnector>
-    </loops>
-    <loops>
         <name>Loop_throiuph_PGM_List</name>
         <label>Loop through PGM List</label>
         <locationX>967</locationX>
@@ -394,6 +269,12 @@
             <stringValue>LightningFlowBuilder</stringValue>
         </value>
     </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordCreates>
         <name>Core_MDF_Insert_Bank_Share_to_Internal_Account_Manager</name>
@@ -408,27 +289,8 @@
         <label>Delete Bank Share List</label>
         <locationX>412</locationX>
         <locationY>765</locationY>
-        <connector>
-            <targetReference>Core_MDF_Check_For_BankProgram_Entitlement_Mapping_Metadata_1</targetReference>
-        </connector>
         <inputReference>sCollBankShareListToBeDeleted</inputReference>
     </recordDeletes>
-    <recordLookups>
-        <description>Fetch all the records of the BankProgram Entitlement Mapping metadata.</description>
-        <name>Core_MDF_Check_For_BankProgram_Entitlement_Mapping_Metadata_1</name>
-        <label>Fetch BankProgram Metadata</label>
-        <locationX>308</locationX>
-        <locationY>629</locationY>
-        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Core_MDF_Loop_Metadata</targetReference>
-        </connector>
-        <object>Core_MDF_BankProgram_Entitlement_Mapping__mdt</object>
-        <outputReference>sCollChannelProgramNames</outputReference>
-        <queriedFields>Id</queriedFields>
-        <queriedFields>Core_MDF_Channel_Program__c</queriedFields>
-        <queriedFields>Core_MDF_Bank_Program_Name__c</queriedFields>
-    </recordLookups>
     <recordLookups>
         <description>Fetch all the existing Bank Share records with &quot;Manual&quot; Rowcause.</description>
         <name>Core_MDF_Fetch_Bank_Share_Records</name>
@@ -515,8 +377,14 @@
         <outputReference>sCollPGMList</outputReference>
         <queriedFields>Core_MDF_Group_Id__c</queriedFields>
     </recordLookups>
-    <startElementReference>Core_MDF_Account_is_changed</startElementReference>
-    <status>Obsolete</status>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Core_MDF_Account_is_changed</targetReference>
+        </connector>
+    </start>
+    <status>Draft</status>
     <variables>
         <name>sBankShareTemp</name>
         <dataType>SObject</dataType>
@@ -524,14 +392,6 @@
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>Core_MDF_Bank__Share</objectType>
-    </variables>
-    <variables>
-        <name>sChannelProgam_temp</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Core_MDF_BankProgram_Entitlement_Mapping__mdt</objectType>
     </variables>
     <variables>
         <description>Contains the list of the bank share which has to be inserted</description>
@@ -549,14 +409,6 @@
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>Core_MDF_Bank__Share</objectType>
-    </variables>
-    <variables>
-        <name>sCollChannelProgramNames</name>
-        <dataType>SObject</dataType>
-        <isCollection>true</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Core_MDF_BankProgram_Entitlement_Mapping__mdt</objectType>
     </variables>
     <variables>
         <description>Gets list of all partnerfunf record id</description>

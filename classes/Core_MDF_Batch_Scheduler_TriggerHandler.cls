@@ -8,7 +8,7 @@
 public class Core_MDF_Batch_Scheduler_TriggerHandler extends TriggerHandler{
     
     public override void beforeInsert(){
-        Core_MDF_BatchSchedulerServiceHandler.validateBatchClassNameOnSchedulerRecord((List<Core_MDF_Batch_Scheduler__c>)Trigger.new);
+       // Core_MDF_BatchSchedulerServiceHandler.validateBatchClassNameOnSchedulerRecord((List<Core_MDF_Batch_Scheduler__c>)Trigger.new);
         Core_MDF_BatchSchedulerServiceHandler.updateGMTTime((List<Core_MDF_Batch_Scheduler__c>)Trigger.new);        
     }
     public override void afterInsert(){

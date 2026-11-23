@@ -19,6 +19,7 @@
         <locationY>200</locationY>
         <actionName>Core_MDF_FL_Update_the_Budget_Status_to_Pending_Review_and_Send_for_Approval</actionName>
         <actionType>flow</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <processMetadataValues>
                 <name>dataType</name>
@@ -82,6 +83,7 @@
         <locationY>200</locationY>
         <actionName>Core_MDF_FL_Update_the_Budget_Status_to_Pending_Review_and_Send_for_Approval</actionName>
         <actionType>flow</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <processMetadataValues>
                 <name>dataType</name>
@@ -218,6 +220,7 @@ OR(
                 <stringValue>AND (
 NOT($Permission.Core_MDF_FinanceManager ),
 NOT(ISNEW()),
+[PartnerMarketingBudget].Core_MDF_IsApprovalProcessBypassed_Ind__c = false,
 OR( 
 	ISCHANGED([PartnerMarketingBudget].StartDate) 
 	,ISCHANGED([PartnerMarketingBudget].EndDate) 
@@ -238,6 +241,7 @@ OR(
         <expression>AND (
 NOT({!$Permission.Core_MDF_FinanceManager} ),
 NOT(ISNEW()),
+{!myVariable_current.Core_MDF_IsApprovalProcessBypassed_Ind__c} = false,
 OR( 
 	ISCHANGED({!myVariable_current.StartDate}) 
 	,ISCHANGED({!myVariable_current.EndDate}) 
@@ -252,7 +256,7 @@ OR(
 {!myVariable_current.RecordType.DeveloperName} = {!$Label.Core_MDF_Retail_Record_Type_Developer_Name} ) 
 )</expression>
     </formulas>
-    <interviewLabel>Core_MDF_PB_PMB_Update_Budget_Status_to_Pending_Review_and_Send_for_Approval-27_InterviewLabel</interviewLabel>
+    <interviewLabel>Core_MDF_PB_PMB_Update_Budget_Status_to_Pending_Review_and_Send_for_Approval-29_InterviewLabel</interviewLabel>
     <label>Core_MDF_PB_PMB_Update_Budget_Status_to_Pending_Review_and_Send_for_Approval</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -280,7 +284,7 @@ OR(
     </processMetadataValues>
     <processType>Workflow</processType>
     <startElementReference>myDecision</startElementReference>
-    <status>Obsolete</status>
+    <status>Draft</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

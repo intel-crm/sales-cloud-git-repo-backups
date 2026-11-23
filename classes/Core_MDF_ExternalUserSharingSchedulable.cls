@@ -12,5 +12,6 @@ public without sharing class Core_MDF_ExternalUserSharingSchedulable implements 
         
         Core_MDF_ExternalUserSharing batchinstance = new Core_MDF_ExternalUserSharing(true,userOrGroupIdSet,counter);
         Database.executeBatch(batchinstance);
+
     }
 }

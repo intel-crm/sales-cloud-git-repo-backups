@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>US NAVY Customer User</description>
+    <description>DEPARTMENT OF NAVY Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>US NAVY Customer User</name>
+    <name>DEPARTMENT OF NAVY Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_12136819_Andrew_Robinson</parentRole>
+    <parentRole>DEPARTMENTOFNAVYCustomerManager</parentRole>
 </Role>

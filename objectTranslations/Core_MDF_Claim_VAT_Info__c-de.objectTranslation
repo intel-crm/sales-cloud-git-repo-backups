@@ -8,7 +8,7 @@
     <caseValues>
         <caseType>Nominative</caseType>
         <plural>true</plural>
-        <value>Zahlungsdokumente</value>
+        <value>Zahlungsdokument</value>
     </caseValues>
     <caseValues>
         <caseType>Accusative</caseType>
@@ -18,7 +18,7 @@
     <caseValues>
         <caseType>Accusative</caseType>
         <plural>true</plural>
-        <value>Zahlungsdokumente</value>
+        <value>Zahlungsdokument</value>
     </caseValues>
     <caseValues>
         <caseType>Genitive</caseType>
@@ -28,7 +28,7 @@
     <caseValues>
         <caseType>Genitive</caseType>
         <plural>true</plural>
-        <value>Zahlungsdokumente</value>
+        <value>Zahlungsdokument</value>
     </caseValues>
     <caseValues>
         <caseType>Dative</caseType>
@@ -38,7 +38,7 @@
     <caseValues>
         <caseType>Dative</caseType>
         <plural>true</plural>
-        <value>Zahlungsdokumente</value>
+        <value>Zahlungsdokument</value>
     </caseValues>
     <fields>
         <label>Kontobezeichnung</label>
@@ -68,9 +68,25 @@
         <relationshipLabel><!-- Payment Documents --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Document Requested Date --></label>
+        <name>Core_MDF_Document_Requested_Dtm__c</name>
+    </fields>
+    <fields>
         <help>Zeigt die Art des Zahlungsdokuments an, das vom Kunden hochgeladen werden muss.</help>
         <label>Dokumenttyp</label>
         <name>Core_MDF_Document_Type_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- First Reminder Date --></label>
+        <name>Core_MDF_First_Reminder_Date_Dtm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Funding Source Amount --></label>
+        <name>Core_MDF_Funding_Source_Amount_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Funding Source --></label>
+        <name>Core_MDF_Funding_Source_txt__c</name>
     </fields>
     <fields>
         <label><!-- Last Modified By --></label>
@@ -85,6 +101,15 @@
         <name>Core_MDF_Payment_Admin_Reminder_Sent_Ind__c</name>
     </fields>
     <fields>
+        <help><!-- This is the adjustment amount populated as a result of post payment audit --></help>
+        <label><!-- Post Payment Adjustment Amount --></label>
+        <name>Core_MDF_Post_Payment_Adjustment_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Queue Id --></label>
+        <name>Core_MDF_Queue_Id_Txt__c</name>
+    </fields>
+    <fields>
         <label><!-- RSM Reminder Sent --></label>
         <name>Core_MDF_RSMRemNotificationSent_Ind__c</name>
     </fields>
@@ -96,6 +121,10 @@
         <help>Kostenerstattungsbetrag ohne Steuern</help>
         <label>Kostenerstattungsbetrag</label>
         <name>Core_MDF_Reimbursement_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Second Reminder Date --></label>
+        <name>Core_MDF_Second_Reminder_Date_Dtm__c</name>
     </fields>
     <fields>
         <help>Der Status des Zahlungsdokuments</help>
@@ -132,9 +161,21 @@
         <relationshipLabel><!-- Payment Documents (Sub Claim) --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Sub Claim Title --></label>
+        <name>Core_MDF_Sub_Claim_Title_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- DNR:Core_MDF_Unique_Id --></label>
+        <name>Core_MDF_Unique_Id__c</name>
+    </fields>
+    <fields>
         <help>Der Steuerbetrag</help>
         <label>Steuerbetrag</label>
         <name>Core_MDF_VAT_Amt__c</name>
+    </fields>
+    <fields>
+        <label>MwSt.-Stornierungskommentar</label>
+        <name>Core_MDF_VAT_Comments_txt__c</name>
     </fields>
     <fields>
         <label><!-- Created By --></label>
@@ -151,7 +192,7 @@
         <name>Core_MDF_VAT_Per__c</name>
     </fields>
     <fields>
-        <label>Richtlinien für Zahlungsdokumente</label>
+        <label><!-- Payment Document Guidelines --></label>
         <name>Core_MDF_Vat_Inv_Guide_Link__c</name>
     </fields>
     <gender>Neuter</gender>
@@ -163,7 +204,7 @@
     </recordTypes>
     <recordTypes>
         <description><!-- Submit for Approval Record Type --></description>
-        <label><!-- Submit for Approval --></label>
+        <label>Zur Genehmigung einreichen</label>
         <name>Core_MDF_Submit_for_Approval</name>
     </recordTypes>
     <validationRules>

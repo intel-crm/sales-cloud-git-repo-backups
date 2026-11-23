@@ -295,7 +295,7 @@
                 <componentName>flexipage:reportChart</componentName>
                 <identifier>flexipage_reportChart</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8</booleanFilter>
                     <criteria>
                         <leftValue>{!$Permission.CustomPermission.Core_MDF_CCF_Recovery_Administrator}</leftValue>
                         <operator>EQUAL</operator>
@@ -330,6 +330,11 @@
                         <leftValue>{!$User.Profile.Name}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>IT Admin</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Core_MDF_Internal_CSC_User}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -355,7 +360,7 @@
                 <componentName>flexipage:reportChart</componentName>
                 <identifier>flexipage_reportChart2</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8</booleanFilter>
                     <criteria>
                         <leftValue>{!$Permission.CustomPermission.Core_MDF_CCF_Recovery_Administrator}</leftValue>
                         <operator>EQUAL</operator>
@@ -390,6 +395,11 @@
                         <leftValue>{!$User.Profile.Name}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>IT Admin</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Core_MDF_Internal_CSC_User}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -415,7 +425,7 @@
                 <componentName>flexipage:reportChart</componentName>
                 <identifier>flexipage_reportChart3</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8</booleanFilter>
                     <criteria>
                         <leftValue>{!$Permission.CustomPermission.Core_MDF_CCF_Recovery_Administrator}</leftValue>
                         <operator>EQUAL</operator>
@@ -450,6 +460,11 @@
                         <leftValue>{!$User.Profile.Name}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>IT Admin</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Core_MDF_Internal_CSC_User}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -475,7 +490,7 @@
                 <componentName>flexipage:reportChart</componentName>
                 <identifier>flexipage_reportChart4</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8</booleanFilter>
                     <criteria>
                         <leftValue>{!$Permission.CustomPermission.Core_MDF_CCF_Recovery_Administrator}</leftValue>
                         <operator>EQUAL</operator>
@@ -510,6 +525,11 @@
                         <leftValue>{!$User.Profile.Name}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>IT Admin</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Core_MDF_Internal_CSC_User}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -539,7 +559,7 @@
                 <componentName>flexipage:reportChart</componentName>
                 <identifier>flexipage_reportChart5</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8</booleanFilter>
                     <criteria>
                         <leftValue>{!$Permission.CustomPermission.Core_MDF_CCF_Recovery_Administrator}</leftValue>
                         <operator>EQUAL</operator>
@@ -574,6 +594,11 @@
                         <leftValue>{!$User.Profile.Name}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>IT Admin</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Core_MDF_Internal_CSC_User}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -599,7 +624,7 @@
                 <componentName>flexipage:reportChart</componentName>
                 <identifier>flexipage_reportChart6</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8</booleanFilter>
                     <criteria>
                         <leftValue>{!$Permission.CustomPermission.Core_MDF_CCF_Recovery_Administrator}</leftValue>
                         <operator>EQUAL</operator>
@@ -634,6 +659,11 @@
                         <leftValue>{!$User.Profile.Name}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>IT Admin</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Core_MDF_Internal_CSC_User}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -659,7 +689,7 @@
                 <componentName>flexipage:reportChart</componentName>
                 <identifier>flexipage_reportChart7</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8</booleanFilter>
                     <criteria>
                         <leftValue>{!$Permission.CustomPermission.Core_MDF_CCF_Recovery_Administrator}</leftValue>
                         <operator>EQUAL</operator>
@@ -694,6 +724,11 @@
                         <leftValue>{!$User.Profile.Name}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>IT Admin</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Core_MDF_Internal_CSC_User}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -719,7 +754,7 @@
                 <componentName>flexipage:reportChart</componentName>
                 <identifier>flexipage_reportChart8</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8</booleanFilter>
                     <criteria>
                         <leftValue>{!$Permission.CustomPermission.Core_MDF_CCF_Recovery_Administrator}</leftValue>
                         <operator>EQUAL</operator>
@@ -754,6 +789,11 @@
                         <leftValue>{!$User.Profile.Name}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>IT Admin</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Core_MDF_Internal_CSC_User}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -783,7 +823,7 @@
                 <componentName>flexipage:reportChart</componentName>
                 <identifier>flexipage_reportChart9</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8</booleanFilter>
                     <criteria>
                         <leftValue>{!$Permission.CustomPermission.Core_MDF_CCF_Recovery_Administrator}</leftValue>
                         <operator>EQUAL</operator>
@@ -818,6 +858,11 @@
                         <leftValue>{!$User.Profile.Name}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>IT Admin</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Core_MDF_Internal_CSC_User}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -843,7 +888,7 @@
                 <componentName>flexipage:reportChart</componentName>
                 <identifier>flexipage_reportChart10</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8</booleanFilter>
                     <criteria>
                         <leftValue>{!$Permission.CustomPermission.Core_MDF_CCF_Recovery_Administrator}</leftValue>
                         <operator>EQUAL</operator>
@@ -878,6 +923,11 @@
                         <leftValue>{!$User.Profile.Name}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>IT Admin</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Core_MDF_Internal_CSC_User}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -903,7 +953,7 @@
                 <componentName>flexipage:reportChart</componentName>
                 <identifier>flexipage_reportChart11</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8</booleanFilter>
                     <criteria>
                         <leftValue>{!$Permission.CustomPermission.Core_MDF_CCF_Recovery_Administrator}</leftValue>
                         <operator>EQUAL</operator>
@@ -938,6 +988,11 @@
                         <leftValue>{!$User.Profile.Name}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>IT Admin</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Core_MDF_Internal_CSC_User}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -966,7 +1021,7 @@
                 <componentName>flexipage:reportChart</componentName>
                 <identifier>flexipage_reportChart12</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8</booleanFilter>
                     <criteria>
                         <leftValue>{!$Permission.CustomPermission.Core_MDF_CCF_Recovery_Administrator}</leftValue>
                         <operator>EQUAL</operator>
@@ -1001,6 +1056,11 @@
                         <leftValue>{!$User.Profile.Name}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>IT Admin</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Core_MDF_Internal_CSC_User}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>

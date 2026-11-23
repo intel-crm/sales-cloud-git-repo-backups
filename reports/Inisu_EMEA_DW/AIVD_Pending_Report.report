@@ -4,7 +4,7 @@
         <field>Account.Core_Sales_Groups__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>Account.Core_Geo__c</field>
@@ -39,7 +39,7 @@
         <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_KPI_Product_Group__c</field>
@@ -64,14 +64,14 @@
             <value>GMP EMEA Sales Territory,GMP France Sales Group,GMP Germany Sales Group,GMP Russia Sales Group,GMP UK Sales Group</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>DCG</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>

@@ -106,7 +106,7 @@
         <field>AMOUNT</field>
     </columns>
     <filter>
-        <booleanFilter>((1 AND (2 OR 3)) AND 4) AND 5</booleanFilter>
+        <booleanFilter>(3 OR 1) AND (2 OR 4)</booleanFilter>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -119,28 +119,21 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Adam Prengler,Amy Guesner,Michael Rather,Sunil Gupta,Brian Mink,Jeffrey Holmbeck,Marci Shihinski,Owen DeLeon</value>
+            <value>Adam Prengler,Amy Guesner,Michael Rather,Sunil Gupta,Brian Mink,Jeffrey Holmbeck</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Lost</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Technical_Owner_Manager__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Adam Prengler,Amy Guesner,Michael Rather,Sunil Gupta,Brian Mink,Jeffrey Holmbeck,Marci Shihinski,Owen DeLeon</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Business_Unit_Territory__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>PSG-NA-RM,PSG-NA-NW,PSG-NA-SW,PSG-NA-ABAS,PSG-NA-SC</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Business_Unit_Territory__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>PSG-NA-RM,PSG-NA-NW,PSG-NA-ACAN</value>
+            <value>Adam Prengler,Amy Guesner,Michael Rather,Sunil Gupta,Brian Mink,Jeffrey Holmbeck</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

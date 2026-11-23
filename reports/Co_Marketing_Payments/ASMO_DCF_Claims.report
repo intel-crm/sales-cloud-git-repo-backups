@@ -42,7 +42,7 @@ Claim Status - Payment Due</description>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Datacenter</value>
+            <value>Data Center Co-Marketing Fund</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundClaim$Core_MDF_Type_Txt__c</column>

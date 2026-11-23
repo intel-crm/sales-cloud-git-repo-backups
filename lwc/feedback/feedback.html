@@ -1,0 +1,41 @@
+<template>
+<div class="slds-m-top_medium slds-m-bottom_x-large">
+    <template for:each={questionSets} for:item="item">
+        <div class="slds-p-around_medium" key={item.quesOrder}>
+            <!--  <lightning-tile key={item.label} label={item.label} type="media"> -->
+              <label class="slds-form-element__label" style="color:#0176d3; font-size: medium;"> {item.label}</label>
+                  <div key={item.quesOrder}>
+
+                    <br></br>
+                    <div class="slds-grid slds-wrap">
+                        <template for:each={item.star} for:item="star">
+                            <div key={star.Id} class="slds-col slds-size_1-of-7">
+                            <input key={star.id} type="radio" id={star.id} name={item.label}
+                                value={star.value} data-id={item.quesId} onchange={rating} />
+                           <div key={star.id}> <label key={star.id} for={star.id}
+                                title={star.displayLabel}>{star.value}</label> </div>
+                            </div>
+                        </template>
+                    </div>
+
+                  </div>
+
+             <!-- </lightning-tile> -->
+             <br>
+          </div>
+    </template>
+    <br>
+
+    <!--  <lightning-tile label="Additional comments" type="media"> -->
+        <label class="slds-form-element__label" style="padding-left:16px; font-size: medium; color:#0176d3"> {additionalComments}</label>
+        <br></br>
+            <div style="padding-left:30px">
+                <textarea id="OptionalFeedback" name="OptionalFeedback" rows="2" cols="30"
+                    placeholder={optionalFeedback} onchange={rating}></textarea>
+            </div>
+      <!--  </lightning-tile> -->
+    <br>
+    <lightning-button label={submitButton} title={submitButton} onclick={submitAction} class="slds-align_absolute-center"> </lightning-button>
+</div>
+
+</template>

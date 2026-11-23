@@ -33,8 +33,9 @@ Modified By:        Date:       Changes:
         List<String> mdfBudgetTypes = Core_MDF_Configuration__c.getValues('BUDGET_TYPE_CLAIM_BANK_HIDE').Core_MDF_Value__c.split(',');
         List<String> ccfdcfprograms = Core_MDF_Configuration__c.getValues('Programs_For_MDF_PaymentRun').Core_MDF_Value__c.split(',');
         for(Core_MDF_PaymentWrapper paymentWrapper : paymentWrapperMap.values())
-        {            
-            if(paymentWrapper.claimsToBeProcessed !=null){
+        {   //ATHR - Deeply Nested if 16209     
+            if(paymentWrapper.claimsToBeProcessed ==null) continue;    
+            //if(paymentWrapper.claimsToBeProcessed !=null){
                 //Get the list of Claim account Nodes for the given payment Id
                 for (PartnerFundClaim pfc : paymentWrapper.claimsToBeProcessed){
                     //For sharing to internal groups
@@ -62,7 +63,7 @@ Modified By:        Date:       Changes:
                         }
                     }
                 }
-            }
+            //}
             
         }
     }

@@ -55,9 +55,6 @@
         <field>OWNER</field>
     </columns>
     <columns>
-        <field>Case.Core_IPS_Owner_Manager__c</field>
-    </columns>
-    <columns>
         <field>Case.Core_IPS_Assigned_Queue__c</field>
     </columns>
     <columns>
@@ -129,7 +126,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>uniquest,altima,arrow,macnica,digi-key,GALAXY FAR EAST CORPORATION,IPS Intel</value>
+            <value>altima,arrow,macnica,digi-key,GALAXY FAR EAST CORPORATION</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -139,7 +136,7 @@
         <field>CLOSED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Obsolete - Customer Survey NPS - PSG NAR</name>
+    <name>Customer Survey NPS - PSG NARAE</name>
     <params>
         <name>units</name>
         <value>d</value>

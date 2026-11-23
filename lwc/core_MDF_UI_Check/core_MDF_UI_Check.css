@@ -1,0 +1,77 @@
+/* Row card look */
+.row-box {
+    display: flex;
+    align-items: flex-start;
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid #d8dde6;
+    border-radius: 0.35rem;
+    background: #fdfdfd;
+}
+
+/* Reduce search box width */
+.custom-input-width {
+    width: 35%;
+    margin-right: 1rem;
+}
+
+/* Percentage box smaller */
+.percentage-width {
+    width: 25%;
+    margin-right: 1rem;
+}
+
+.remove-col {
+    display: flex;
+    align-items: center;
+    padding-top: 25px;
+}
+
+/* Dustbin icon styling */
+.delete-icon {
+    color: #c23934;
+}
+
+/* Allocated text */
+.allocated {
+    margin-top: 0.35rem;
+}
+
+/* Scroll wrapper */
+.scrollable-container {
+    max-height: 280px;
+    overflow-y: auto;
+    padding-right: 30.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Dropdown styling */
+/* .custom-dropdown {
+    border: 1px solid #d8dde6;
+    background: white;
+    list-style: none;
+    padding: 0;
+    margin: 0.25rem 0 0 0;
+    border-radius: 0.25rem;
+    max-height: 180px;
+    overflow-y: auto;
+    position: absolute;
+    width: 32%;
+    z-index: 10;
+} */
+
+.dropdown-item lightning-button {
+    width: 100%;
+    text-align: left;
+}
+
+/* Error box below entire list */
+.error-box {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-left: 4px solid #c23934;
+    background: #fdecea;
+    color: #c23934;
+    border-radius: 0.25rem;
+    font-weight: bold;
+}

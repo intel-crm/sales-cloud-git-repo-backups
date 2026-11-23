@@ -1,0 +1,4 @@
+<design:component>
+    <design:attribute name="objAPIName" datasource="PartnerFundClaim"/>
+    <design:attribute name="isCompactLayout" datasource="Yes, No"/>
+</design:component>

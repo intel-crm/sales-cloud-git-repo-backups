@@ -55,7 +55,7 @@ Accenture – VD       01-06-2020               Created.
         contList.add(con2);
         
         Database.insert(contList);
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
       //  List<Core_AGS_Role__c> agsRoleList = new List<Core_AGS_Role__c>();
         
         Core_AGS_Role__c agsRoleIPA = Core_MDF_CCP_TestDataUtility.createAgsRole('IPA_USER', 'Co-Marketing(Salesforce)-IPA USER', true, true);
@@ -164,10 +164,33 @@ Accenture – VD              01-06-2020         Created.
     @isTest static void creatingPnumTest(){
         
         User usr=[SELECT Id FROM User WHERE Email='systemadm@example.com' LIMIT 1];
-        // Highlight: Unused Local Variable
+        // Highlight: Unused Local Variable - Indira
        // Account intAcc = [Select Id from Account where Name = 'Test Intel Account' LIMIT 1];
         Contact cont = [select id from Contact where email='cont1@example.com' LIMIT 1 ];        
         Contact cont2 = [select id from Contact where email='cont2@example.com' LIMIT 1 ];
+        /*List<Contact> contList = new List<Contact>();
+        Contact cont = Core_MDF_CCP_TestDataUtility.createContact(intAcc.Id, false);
+        cont.Email='cont1@example.com';
+        cont.FirstName = 'Test';
+        cont.LastName = 'con 1';
+        cont.AccountId = intAcc.Id;
+        contList.add(cont);
+        Contact cont2 = Core_MDF_CCP_TestDataUtility.createContact(intAcc.Id, false);
+        cont2.Email='cont2@example.com';
+        cont2.FirstName = 'Test';
+        cont2.LastName = 'con2';
+        cont.AccountId=intAcc.Id;
+        contList.add(cont2);*/
+        //cont2.MailingCountry='India';
+       //cont.MailingCountry = 'India';
+         /*List<Contact> contactList = new List<Contact>();
+            Contact cont = new Contact(Salutation = 'Mr',FirstName = 'Test',LastName='StarkContact',Email='testcontact'+String.valueOf(Math.random())+'@CoreMDF.com',AccountId=intAcc.Id,Phone='123456798');
+             Contact cont2 = new Contact(Salutation = 'Mr',FirstName = 'Test',LastName='StarkAgency',Email='testcontact'+String.valueOf(Math.random())+'@CoreMDF.com',AccountId=intAcc.Id,Phone='123456798');      
+            contactList.add(cont);
+            contactList.add(cont2);
+          Test.startTest();
+            Database.insert(contactList);
+           Test.stopTest();*/
         
         Core_Contact_Entitlement__c contEnt = [select id,Core_Entitlement_Id__r.Name from Core_Contact_Entitlement__c where Core_Contact_Id__c=:cont.Id];
         Account acct = [select id from account where name ='Test Account'];
@@ -196,7 +219,9 @@ Accenture – VD              01-06-2020         Created.
             System.enqueueJob(new Core_MDF_IPA_AccountUserMapping(userIdToCorpIdMap)); 
             
               System.enqueueJob(new Core_MDF_IPA_AccountUserMapping(user2ToCorpIdMap)); 
-         
+            //Core_MDF_IPA_AccountUserMapping.getUserAndItsIntelAcct(null,null,null);
+            //Core_MDF_IPA_AccountUserMapping.getUserAndAcctRecordForPnumCreation(null,null);
+           
             Test.stopTest();
         }
     }

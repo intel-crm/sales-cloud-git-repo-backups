@@ -7,8 +7,14 @@ global with sharing class CommunitiesLoginController {
     
     // Code we will invoke on page load.
     global PageReference forwardToAuthPage() {
-    	String startUrl = System.currentPageReference().getParameters().get('startURL');
-    	String displayType = System.currentPageReference().getParameters().get('display');
+        String startUrl = System.currentPageReference().getParameters().get('startURL');
+        String displayType = System.currentPageReference().getParameters().get('display');
         return Network.forwardToAuthPage(startUrl, displayType);
+    }
+    
+    global PageReference forwardToCustomAuthPage() {
+        String startUrl = System.currentPageReference().getParameters().get('startURL');
+        system.debug('startUrl from login ctrl:'+startUrl);
+        return new PageReference(Site.getPathPrefix() + '/Core_MDF_CustomerDisclaimer?startURL=' + EncodingUtil.urlEncode(startURL, 'UTF-8'));
     }
 }

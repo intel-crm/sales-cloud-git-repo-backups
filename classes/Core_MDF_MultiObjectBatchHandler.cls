@@ -8,6 +8,8 @@ Modification Log :
 *************************************************************************************/
 public without sharing class Core_MDF_MultiObjectBatchHandler {
     
+   
+    
     public class Core_MDF_ObjectQuery {                
         public String objectName;
         public String queryCondition;

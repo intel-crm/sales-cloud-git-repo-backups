@@ -30,18 +30,17 @@
         <components>
             <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
             <chartAxisRange>Auto</chartAxisRange>
-            <componentType>ColumnStacked</componentType>
+            <componentType>Column</componentType>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
             <drillToDetailEnabled>false</drillToDetailEnabled>
             <enableHover>false</enableHover>
             <expandOthers>false</expandOthers>
-            <footer>Note: Embedded queue includes Acceleration cases</footer>
             <groupingSortProperties/>
             <legendPosition>Bottom</legendPosition>
             <report>unfiled$public/NA_RAE_Open_Cases_by_Month</report>
             <showPercentage>false</showPercentage>
-            <showValues>false</showValues>
+            <showValues>true</showValues>
             <sortBy>RowLabelAscending</sortBy>
             <sortLegendValues>false</sortLegendValues>
             <title>Opened Cases by Month - Year to Date</title>
@@ -75,7 +74,6 @@
             <drillToDetailEnabled>false</drillToDetailEnabled>
             <enableHover>true</enableHover>
             <expandOthers>false</expandOthers>
-            <footer>Note: Embedded queue includes Acceleration cases</footer>
             <groupingSortProperties/>
             <legendPosition>Bottom</legendPosition>
             <report>unfiled$public/NA_RAE_Opened_Cases_by_Queue_CW</report>
@@ -112,18 +110,17 @@
         <components>
             <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
             <chartAxisRange>Auto</chartAxisRange>
-            <componentType>ColumnStacked</componentType>
+            <componentType>Column</componentType>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
             <drillToDetailEnabled>false</drillToDetailEnabled>
             <enableHover>false</enableHover>
             <expandOthers>false</expandOthers>
-            <footer>Note: Embedded queue includes Acceleration cases</footer>
             <groupingSortProperties/>
             <legendPosition>Bottom</legendPosition>
             <report>unfiled$public/NA_RAE_Closed_Cases_by_Month</report>
             <showPercentage>false</showPercentage>
-            <showValues>false</showValues>
+            <showValues>true</showValues>
             <sortBy>RowLabelAscending</sortBy>
             <sortLegendValues>false</sortLegendValues>
             <title>Closed Cases by Month - Year to Date</title>
@@ -157,7 +154,6 @@
             <drillToDetailEnabled>false</drillToDetailEnabled>
             <enableHover>true</enableHover>
             <expandOthers>false</expandOthers>
-            <footer>Note: Embedded queue includes Acceleration cases</footer>
             <groupingSortProperties/>
             <legendPosition>Bottom</legendPosition>
             <report>unfiled$public/NA_RAE_Opened_Cases_by_Queue_PW</report>
@@ -170,7 +166,7 @@
             <useReportChart>false</useReportChart>
         </components>
     </middleSection>
-    <owner>11575810@intel.com.crm</owner>
+    <owner>11227287@intel.com.crm</owner>
     <rightSection>
         <columnSize>Wide</columnSize>
         <components>
@@ -231,7 +227,7 @@
             <title>NPS - Year to Date</title>
         </components>
     </rightSection>
-    <runningUser>11575810@intel.com.crm</runningUser>
+    <runningUser>11227287@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>NA RAE - Team Dashboard</title>
     <titleColor>#000000</titleColor>

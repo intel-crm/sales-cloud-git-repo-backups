@@ -1,18 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
-    <sharingCriteriaRules>
-        <fullName>PRM_Account_Request_Queue_Sharing_with_IPA_Admins</fullName>
-        <accessLevel>Read</accessLevel>
-        <description>To share Partner Account Request with IPA Admins</description>
-        <label>PRM_Account_Request_Queue_Sharing_with_IPA_Admins</label>
-        <sharedTo>
-            <group>IPA_All_Intel_Admin_Users</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Process_Type__c</field>
-            <operation>equals</operation>
-            <value>Partner</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-</SharingRules>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata"/>
+

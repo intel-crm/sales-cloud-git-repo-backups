@@ -11,6 +11,9 @@
             <sourceValues>
                 <sourceValue>Storage</sourceValue>
             </sourceValues>
+            <sourceValues>
+                <sourceValue>Server</sourceValue>
+            </sourceValues>
             <value>Server</value>
         </values>
         <values>
@@ -88,7 +91,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Server,5,Client</value>
+            <value>Server,Client</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

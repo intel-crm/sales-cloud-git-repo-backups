@@ -422,6 +422,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_Identity_Status__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>LastName</field>
             <table>Contact</table>
         </columns>
@@ -453,6 +458,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_LinkedIN__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__LinkedIn_Company_Id__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__LinkedIn_Member_Token__c</field>
             <table>Contact</table>
         </columns>
         <columns>
@@ -503,6 +518,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>MailingLongitude</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Login_Id__c</field>
             <table>Contact</table>
         </columns>
         <columns>

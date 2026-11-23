@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>48.0</apiVersion>
+    <available>true</available>
+    <description>To notify Claim Submitter on late claim escalation approval</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_Notify_ClaimSubmitter</name>
+    <style>none</style>
+    <subject>Late Claim Escalation Request ID  is approved</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

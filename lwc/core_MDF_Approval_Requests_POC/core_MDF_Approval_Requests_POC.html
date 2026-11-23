@@ -1,0 +1,364 @@
+<template>
+    <div class="slds-size_8-of-12">
+      <div class="slds-page-header">
+        <div class="slds-page-header__row">
+          <div class="slds-page-header__col-title">
+            <div class="slds-media">
+              <div class="slds-media__figure">
+                <lightning-icon icon-name="standard:approval" alternative-text="Approval" title="Approval">
+                </lightning-icon>
+              </div>
+              <div class="slds-media__body">
+                <div class="slds-page-header__name">
+                  <div class="slds-page-header__name-title">
+                    <h1>
+                      <span> Approval Requests </span>
+                      <span class="slds-page-header__title slds-truncate" title="Items to Approve">Items to Approve</span>
+                    </h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <template if:true={phoneOrDesktop}>
+            <div class="slds-page-header__col-actions slds-size_4-of-12 slds-container_right">
+              <div class="slds-page-header__controls">
+  
+                <lightning-input data-id="searchText" type="search" style="top: 35px;" placeholder="Find"
+                  onchange={handleSearch}></lightning-input>
+                <!--  <lightning-input type="search" placeholder="Search here..." onchange={handleSearchWithApex} value={searchKey}></lightning-input> -->
+              </div>
+            </div>
+          </template>
+          <template if:false={phoneOrDesktop}>
+            <div class="slds-page-header__col-actions">
+              <div class="slds-page-header__controls">
+                <div class="slds-page-header__control">
+                  <template if:true={isBulkAppReqsActive}>
+                    <div>
+                      <lightning-input data-id="searchText" type="search" style="top: 25px; left: 200px;"
+                        placeholder="Search here..." onchange={handleSearch}></lightning-input>
+                    </div>
+                  </template>
+                  <template if:false={isBulkAppReqsActive}>
+                    <div>
+                      <lightning-input data-id="searchText" type="search" style="top: 25px; left: 10px;"
+                        placeholder="Search here..." onchange={handleSearch}></lightning-input>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </template>
+          <!--<lightning-button slot="actions" label="Refresh" icon-name="utility:refresh" variant="brand"
+                alternative-text="Refresh" class="slds-m-left_xx-small" title="Refresh" onclick={reloadrecords}>
+            </lightning-button> -->
+        <!--  <template if:true={isBulkAppReqsActive}>
+            <template if:false={phoneOrDesktop}>
+              <lightning-button slot="actions" variant="brand" label="Submit" title="Submit" icon-name="action:approval"
+                class="slds-m-left_xxx-small" onclick={handleSubmitClick}></lightning-button>
+            </template>
+          </template> -->
+          <template if:false={phoneOrDesktop}>
+            <lightning-button slot="actions" variant="brand" label="Approve" title="Approve" icon-name="action:approval"
+              class="slds-m-left_xxx-small" onclick={handleSubmitClick}></lightning-button>
+              <lightning-button slot="actions" variant="brand" label="Reject" title="Reject" icon-name="utility:error"
+              class="slds-m-left_xxx-small" onclick={handleSubmitClick}></lightning-button>
+          </template>
+        </div>
+  
+        <div class="slds-page-header__row">
+          <div class="slds-page-header__col-meta">
+            <span> Total items : {getTotalItemsCount} </span>
+          </div>
+        </div>
+      </div>
+      <lightning-card>
+        <!--  <template if:true={noApprovalRequestsFoundMessage}>
+          <p> &nbsp; &nbsp; No approval requests found... </p>
+        </template> -->
+        <!-- Template of showing bulk approval requests, actions and comments section is only to IPA desktop users -->
+        <!--  <template if:false={noApprovalRequestsFound}> -->
+        <template if:true={isBulkAppReqsActive}>
+          <template if:false={noSearchResultsFound}>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+              <thead>
+                <tr class="">
+                  <th class="slds-size_8-of-12" scope="col">
+                    <div style="padding-left:5px">
+                      <!--<input type="checkbox" onclick={handleSelectAll} checked={selectAllCheckbox}
+                      disabled={selectAllDisabled} name="Approve All"> Approval Requests-->
+                      <input type="checkbox" onclick={handleSelectAll} checked={selectAllCheckbox} name="Approve All">
+                      &nbsp; &nbsp;
+                      Approval Requests
+                    </div>
+                  </th>
+                  <th class="slds-size_4-of-12" scope="col">
+                    <div class="slds-truncate" title="Comments">Comments</div>
+                  </th>
+                </tr>
+              </thead>
+            </table>
+          </template>
+        </template>
+        <!-- </template> -->
+        <div class="slds-p-horizontal_small">
+          <div class="c-container">
+            <!--Rendering Internal Approval Requests Layout - Bulk Approvals: Desktop View-->
+            <template if:true={isBulkAppReqsActive}>
+              <template if:false={phoneOrDesktop}>
+                <template if:false={isSearchContext}>
+                  <template for:each={recordsToRender} for:item="rec">
+                    <lightning-layout-item padding="around-small" key={rec.recordId}>
+                      <div class="slds-box">
+                        <div class="slds-item_detail slds-truncate slds-text-heading_medium slds-size_6-of-12"> <input type="checkbox"
+                            onclick={handleCheckboxInput} data-id={rec.Id} name={rec.recordId} value={rec.name}> &nbsp;
+                          <a data-record-id={rec.redirectLink} class="slds-text-link" onclick={handleClick}
+                            name={rec.name}>{rec.name}</a>
+                        </div>
+                        <!--<div style="margin-left:53%;">
+                            <template for:each={options} for:item="item">
+                              <fieldset key={item.value} style="display: block; float: left;">
+                                <div class="slds-form-element__control slds-size_4-of-12">
+                                  <span class="slds-radio">
+                                    <input name={rec.recordId} id={item.value} type="radio" value={item.value}
+                                      data-id={rec.recordId} onchange={handleRadioOption} disabled={disabled} title={rec.recordId} />
+                                    <label class="slds-radio__label" for={item.value}>
+                                      <span class="slds-radio_faux"></span>
+                                      <span class="slds-form-element__label">{item.label}</span>
+                                    </label>
+                                  </span>
+                                </div>
+                              </fieldset>
+                            </template> -->
+                        <!--Added by Sai -->
+                      <!--  <div style="margin-left:20%;">
+                          <lightning-radio-group style="bottom: 25px;" data-id={rec.recordId} name={rec.recordId}
+                            options={options} value={value} variant="label-inline" disabled={disabled} type="button"
+                            onchange={handleRadioOption}>
+                          </lightning-radio-group>
+                        </div> -->
+                        <div class="slds-size_4-of-12 slds-float_right">
+                          <lightning-textarea style="bottom: 40px;" data-id={rec.recordId} name={rec.recordId}
+                            disabled={disabled} onchange={handleComments}>
+                          </lightning-textarea>
+                        </div>
+                        <!--  <lightning-accordion allow-multiple-sections-open
+                             active-section-name={activeSections}>
+                    <lightning-accordion-section name={rec.name} label="Click to View Details">-->
+                        <!-- <dd class="slds-item_detail slds-truncate slds-text-heading_medium "><a href={rec.redirectLink} class="slds-text-link" >{rec.name}</a></dd> -->
+                        <div style="padding-top:20px;">
+                          <template for:each={rec.uiDispalyFields} for:item="recfield">
+                            <div key={recfield.fieldLabel}>
+                              <dl class="slds-list_horizontal slds-wrap">
+                                <dt class="slds-dl_horizontal_label">{recfield.fieldLabel}:</dt> &nbsp;
+                                <template if:true={recfield.hasFieldValue}>
+                                  <dd class="slds-dl_horizontal_detail">{recfield.fieldValue}</dd>
+                                </template>
+                                <template if:false={recfield.hasFieldValue}>
+                                  <dd class="slds-dl_horizontal_detail">{recfield.dateTimeFieldValue}</dd>
+                                </template>
+                              </dl>
+                            </div>
+                          </template>
+                        </div>
+                      </div>
+                    </lightning-layout-item>
+                  </template>
+                </template>
+  
+                <!-- Rendering approval requests matching search criteria  for desktop view-->
+                <template if:true={isSearchContext}>
+                  <template if:true={noSearchResultsFound}>
+                    <p> No search results found... </p>
+                  </template>
+                  <template for:each={searchRecordsToRender} for:item="rec">
+                    <lightning-layout-item padding="around-small" key={rec.recordId}>
+                      <div class="slds-box">
+                        <!--<dd class="slds-item_detail slds-truncate slds-text-heading_medium "><a href=""
+                          data-record-id={rec.redirectLink} class="slds-text-link" onclick={handleClick}>{rec.name}</a> -->
+                        <!--Added by Sai-->
+                        <div class="slds-item_detail slds-truncate slds-text-heading_medium"> <input type="checkbox"
+                            onclick={handleCheckboxInput} data-id={rec.Id} name={rec.recordId} value={rec.name}> &nbsp;
+                          <a data-record-id={rec.redirectLink} class="slds-text-link" onclick={handleClick}
+                            name={rec.name}>{rec.name}</a>
+                        </div>
+                        <!-- <div style="margin-left:53%;">
+                            <template for:each={options} for:item="item">
+                              <fieldset key={item.value} style="display: block; float: left;">
+                                <div class="slds-form-element__control">
+                                  <span class="slds-radio">
+                                    <input name={rec.recordId} id={item.value} type="radio" data-id={rec.recordId}
+                                      title={rec.recordId} onchange={handleRadioOption} disabled={disabled} />
+                                    <label class="slds-radio__label" for={item.value}>
+                                      <span class="slds-radio_faux"></span>
+                                      <span class="slds-form-element__label">{item.label}</span>
+                                    </label>
+                                  </span>
+                                </div>
+                              </fieldset>
+                            </template> -->
+                        <!--Added by Sai-->
+                      <!-- <div style="margin-left:20%;">
+                          <lightning-radio-group style="bottom: 25px;" data-id={rec.recordId} name={rec.recordId}
+                            options={options} value={value} variant="label-inline" disabled={disabled} type="button"
+                            onchange={handleRadioOption}>
+                          </lightning-radio-group>
+                        </div> --> 
+                        <div class="slds-size_4-of-12 slds-float_right">
+                          <lightning-textarea style="bottom: 40px;" data-id={rec.recordId} name={rec.recordId}
+                            disabled={disabled} onchange={handleComments}>
+                          </lightning-textarea>
+                        </div>
+                        <!-- <dd class="slds-item_detail slds-truncate slds-text-heading_medium "><a href={rec.redirectLink} class="slds-text-link" >{rec.name}</a></dd> -->
+                        <div style="padding-top:20px;">
+                          <template for:each={rec.uiDispalyFields} for:item="recfield">
+                            <div key={recfield.fieldLabel}>
+                              <dl class="slds-list_horizontal slds-wrap">
+                                <dt class="slds-dl_horizontal_label">{recfield.fieldLabel}:</dt> &nbsp;
+                                <template if:true={recfield.hasFieldValue}>
+                                  <dd class="slds-dl_horizontal_detail">{recfield.fieldValue}</dd>
+                                </template>
+                                <template if:false={recfield.hasFieldValue}>
+                                  <dd class="slds-dl_horizontal_detail">{recfield.dateTimeFieldValue}</dd>
+                                </template>
+                              </dl>
+                            </div>
+                          </template>
+                        </div>
+                      </div>
+                    </lightning-layout-item>
+                  </template>
+                </template>
+              </template>
+            </template>
+  
+            <!--Rendering Internal Approval Requests Layout - No Bulk Approvals: Desktop View-->
+            <template if:false={isBulkAppReqsActive}>
+              <template if:false={phoneOrDesktop}>
+                <template if:false={isSearchContext}>
+                  <template for:each={recordsToRender} for:item="rec">
+                    <lightning-layout-item padding="around-small" key={rec.recordId}>
+                      <div class="slds-box">
+                        <div class="slds-item_detail slds-truncate slds-text-heading_medium">
+                          <a data-record-id={rec.redirectLink} class="slds-text-link" onclick={handleClick}
+                            name={rec.name}>{rec.name}</a>
+                        </div>
+                        <div>
+                          <template for:each={rec.uiDispalyFields} for:item="recfield">
+                            <div key={recfield.fieldLabel}>
+                              <dl class="slds-list_horizontal slds-wrap">
+                                <dt class="slds-dl_horizontal_label">{recfield.fieldLabel}:</dt> &nbsp;
+                                <template if:true={recfield.hasFieldValue}>
+                                  <dd class="slds-dl_horizontal_detail">{recfield.fieldValue}</dd>
+                                </template>
+                                <template if:false={recfield.hasFieldValue}>
+                                  <dd class="slds-dl_horizontal_detail">{recfield.dateTimeFieldValue}</dd>
+                                </template>
+                              </dl>
+                            </div>
+                          </template>
+                        </div>
+                      </div>
+                    </lightning-layout-item>
+                  </template>
+                </template>
+  
+                <!-- Rendering approval requests matching search criteria  for desktop view-->
+                <template if:true={isSearchContext}>
+                  <template if:true={noSearchResultsFound}>
+                    <p> No search results found... </p>
+                  </template>
+                  <template for:each={searchRecordsToRender} for:item="rec">
+                    <lightning-layout-item padding="around-small" key={rec.recordId}>
+                      <div class="slds-box">
+                        <div class="slds-item_detail slds-truncate slds-text-heading_medium">
+                          <a data-record-id={rec.redirectLink} class="slds-text-link" onclick={handleClick}
+                            name={rec.name}>{rec.name}</a>
+                        </div>
+                        <div>
+                          <template for:each={rec.uiDispalyFields} for:item="recfield">
+                            <div key={recfield.fieldLabel}>
+                              <dl class="slds-list_horizontal slds-wrap">
+                                <dt class="slds-dl_horizontal_label">{recfield.fieldLabel}:</dt> &nbsp;
+                                <template if:true={recfield.hasFieldValue}>
+                                  <dd class="slds-dl_horizontal_detail">{recfield.fieldValue}</dd>
+                                </template>
+                                <template if:false={recfield.hasFieldValue}>
+                                  <dd class="slds-dl_horizontal_detail">{recfield.dateTimeFieldValue}</dd>
+                                </template>
+                              </dl>
+                            </div>
+                          </template>
+                        </div>
+                      </div>
+                    </lightning-layout-item>
+                  </template>
+                </template>
+              </template>
+            </template>
+  
+            <!-- Rendering all approval requests for mobile view-->
+            <template if:true={phoneOrDesktop}>
+              <template if:false={isSearchContext}>
+                <template for:each={recordsToRender} for:item="rec">
+                  <lightning-layout-item padding="around-small" key={rec.recordId}>
+                    <div class="slds-box">
+                      <dd class="slds-item_detail slds-truncate slds-text-heading_medium "><a
+                          data-record-id={rec.redirectLink} class="slds-text-link" onclick={handleClickOnMobile}
+                          name={rec.name}>{rec.name}</a></dd>
+                      <!-- <dd class="slds-item_detail slds-truncate slds-text-heading_medium "><a href={rec.redirectLink} class="slds-text-link" >{rec.name}</a></dd> -->
+                      <template for:each={rec.uiDispalyFields} for:item="recfield">
+                        <div key={recfield.fieldLabel}>
+                          <dl class="slds-list_horizontal slds-wrap">
+                            <dt class="slds-dl_horizontal_label">{recfield.fieldLabel}:</dt> &nbsp;
+                            <template if:true={recfield.hasFieldValue}>
+                              <dd class="slds-dl_horizontal_detail">{recfield.fieldValue}</dd>
+                            </template>
+                            <template if:false={recfield.hasFieldValue}>
+                              <dd class="slds-dl_horizontal_detail">{recfield.dateTimeFieldValue}</dd>
+                            </template>
+                          </dl>
+                        </div>
+                      </template>
+                    </div>
+                  </lightning-layout-item>
+                </template>
+              </template>
+  
+              <!-- Rendering approval requests matching search criteria  for mobile view-->
+              <template if:true={isSearchContext}>
+                <template if:true={noSearchResultsFound}>
+                  <p> No search results found... </p>
+                </template>
+                <template for:each={searchRecordsToRender} for:item="rec">
+                  <lightning-layout-item padding="around-small" key={rec.recordId}>
+                    <div class="slds-box">
+                      <dd class="slds-item_detail slds-truncate slds-text-heading_medium "><a
+                          data-record-id={rec.redirectLink} class="slds-text-link" onclick={handleClickOnMobile}
+                          name={rec.name}>{rec.name}</a></dd>
+                      <!-- <dd class="slds-item_detail slds-truncate slds-text-heading_medium "><a href={rec.redirectLink} class="slds-text-link" >{rec.name}</a></dd> -->
+                      <template for:each={rec.uiDispalyFields} for:item="recfield">
+                        <div key={recfield.fieldLabel}>
+                          <dl class="slds-list_horizontal slds-wrap">
+                            <dt class="slds-dl_horizontal_label">{recfield.fieldLabel}:</dt> &nbsp;
+                            <template if:true={recfield.hasFieldValue}>
+                              <dd class="slds-dl_horizontal_detail">{recfield.fieldValue}</dd>
+                            </template>
+                            <template if:false={recfield.hasFieldValue}>
+                              <dd class="slds-dl_horizontal_detail">{recfield.dateTimeFieldValue}</dd>
+                            </template>
+                          </dl>
+                        </div>
+                      </template>
+                    </div>
+                  </lightning-layout-item>
+                </template>
+              </template>
+            </template>
+  
+          </div>
+        </div>
+      </lightning-card>
+    </div>
+  </template>

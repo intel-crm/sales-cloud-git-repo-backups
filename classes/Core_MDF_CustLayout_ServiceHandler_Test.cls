@@ -40,7 +40,7 @@ public class Core_MDF_CustLayout_ServiceHandler_Test{
     @istest
     public static void checkUpdateBadData(){
         List<Core_MDF_Custom_Layout_Configurations__c> record1=[select Core_MDF_Field_API_Name_txt__c,Core_MDF_Record_Type_Name_txt__c,Core_MDF_Section_id__c from Core_MDF_Custom_Layout_Configurations__c where Core_MDF_Object_API_Name_txt__c='Campaign'or Core_MDF_Object_API_Name_txt__c='PartnerFundRequest' ];
-        record1[0].Core_MDF_Field_API_Name_txt__c='	CoreMDFCampaignStatus';
+        record1[0].Core_MDF_Field_API_Name_txt__c=' CoreMDFCampaignStatus';
         record1[1].Core_MDF_Record_Type_Name_txt__c='Intel Partner Alliance';
         Test.startTest();
         Try{database.update(record1[0]);}

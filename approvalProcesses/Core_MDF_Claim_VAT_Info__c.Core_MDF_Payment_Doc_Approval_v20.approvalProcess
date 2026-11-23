@@ -7,12 +7,19 @@
         <type>group</type>
     </allowedSubmitters>
     <allowedSubmitters>
+        <submitter>Core_MDF_CCP_EEF_EXTERNAL_ALL</submitter>
+        <type>group</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
         <submitter>Core_MDF_CCP_IPA_EXTERNAL_ALL</submitter>
         <type>group</type>
     </allowedSubmitters>
     <allowedSubmitters>
         <submitter>Core_MDF_CCP_Retail_EXTERNAL_ALL</submitter>
         <type>group</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <type>owner</type>
     </allowedSubmitters>
     <approvalPageFields>
         <field>Core_MDF_Status_Txt__c</field>
@@ -169,6 +176,30 @@
         <allowDelegate>false</allowDelegate>
         <assignedApprover>
             <approver>
+                <name>Core_MDF_CCP_EEF_Pay_Admin_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>EEF VAT Approval Step</description>
+        <entryCriteria>
+            <criteriaItems>
+                <field>PartnerFundClaim.Core_MDF_Program__c</field>
+                <operation>equals</operation>
+                <value>Ecosystem Extension Fund</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Payment Doc Approval Process</label>
+        <name>EEF_Payment_Doc_Approval_Process</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
                 <name>Core_MDF_CCP_Co_GTM_Payment_Admin</name>
                 <type>queue</type>
             </approver>
@@ -188,11 +219,11 @@
             <type>RejectRequest</type>
         </rejectBehavior>
     </approvalStep>
-    <description>This approval process to approve the payment document records by payment admins for all Geos for RMF/IPA/Co-GTM Programs.</description>
+    <description>This approval process to approve the payment document records by payment admins for all Geos for RMF/IPA/EEF Programs.</description>
     <emailTemplate>unfiled$public/Core_MDF_NotifyPaymentAdminsOnVATInvoice</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
-        <booleanFilter>(1 OR 2) AND (3 OR 4 OR 6) AND (5 OR 7)</booleanFilter>
+        <booleanFilter>(1 OR 2) AND (3 OR 4 OR 6 OR 7) AND (5 OR 8)</booleanFilter>
         <criteriaItems>
             <field>Core_MDF_Claim_VAT_Info__c.Core_MDF_Status_Txt__c</field>
             <operation>equals</operation>
@@ -217,6 +248,11 @@
             <field>PartnerFundClaim.Core_MDF_VAT_Eligibility_Ind__c</field>
             <operation>equals</operation>
             <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PartnerFundClaim.Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Ecosystem Extension Fund</value>
         </criteriaItems>
         <criteriaItems>
             <field>PartnerFundClaim.Core_MDF_Program__c</field>

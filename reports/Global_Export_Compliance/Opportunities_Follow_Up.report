@@ -19,25 +19,11 @@
         <field>STAGE_NAME</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>AMOUNT</field>
-    </columns>
-    <columns>
         <field>OPPORTUNITY_ID</field>
     </columns>
     <columns>
         <field>CREATED_DATE</field>
     </columns>
-    <filter>
-        <criteriaItems>
-            <column>Account.Core_CIM_ID__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>11352611,13656378</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Tabular</format>
     <name>Opportunities Follow Up</name>
     <params>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Product Type Category Split</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Product Type Category Split</value>
+    </caseValues>
+    <fields>
+        <label><!-- Product Category --></label>
+        <name>Core_MDF_Product_Category_txt__c</name>
+        <picklistValues>
+            <masterLabel>Desktop</masterLabel>
+            <translation><!-- Desktop --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Notebook/Mobile</masterLabel>
+            <translation><!-- Notebook/Mobile --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Product Type --></label>
+        <name>Core_MDF_Product_Type_txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

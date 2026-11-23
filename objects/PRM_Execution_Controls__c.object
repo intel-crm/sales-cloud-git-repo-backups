@@ -3,13 +3,6 @@
     <customSettingsType>Hierarchy</customSettingsType>
     <enableFeeds>false</enableFeeds>
     <fields>
-        <fullName>BypassValidationInTransferAdmin__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>BypassValidationInTransferAdmin</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>PRM_Skip_Process_Builder_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Skip Process Builder</label>
@@ -34,21 +27,6 @@
         <fullName>PRM_Skip_Workflow_Rule_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Skip Workflow</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Skip_ValidationRule_ContractStatus__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Skip_ValidationRule_ContractStatus</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Skip_ValidationRule_Order_Status__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>Skips the validation rule for Submitted Order</description>
-        <label>Skip_ValidationRule_Order_Status</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>

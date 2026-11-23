@@ -1,291 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <actionCalls>
-        <description>Call Release Hold</description>
-        <name>Call_Release_Hold</name>
-        <label>Call Release Hold</label>
-        <locationX>578</locationX>
-        <locationY>815</locationY>
-        <actionName>Core_MDF_Claim_Utility</actionName>
-        <actionType>apex</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>inputClaims</name>
-            <value>
-                <elementReference>varClaimRecordsCollection</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>releaseReason</name>
-            <value>
-                <elementReference>releaseReasonColection</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>Core_MDF_Claim_Utility</nameSegment>
-    </actionCalls>
-    <actionCalls>
-        <name>Core_MDF_Notify_Claim_Submitters_on_VAT_Rejection</name>
-        <label>Notify Claim Submitters on VAT Rejection</label>
-        <locationX>1106</locationX>
-        <locationY>455</locationY>
-        <actionName>Core_MDF_Claim_VAT_Info__c.Core_MDF_VAT_Rejection_Notification_to_Submitter</actionName>
-        <actionType>emailAlert</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>SObjectRowId</name>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>Core_MDF_Claim_VAT_Info__c.Core_MDF_VAT_Rejection_Notification_to_Submitter</nameSegment>
-    </actionCalls>
-    <actionCalls>
-        <name>Core_MDF_Sent_Notification_to_Claim_Submitters</name>
-        <label>Sent Notification to Claim Submitters</label>
-        <locationX>50</locationX>
-        <locationY>455</locationY>
-        <actionName>Core_MDF_Claim_VAT_Info__c.Core_MDF_NotifyClaimSubOnInvoiceDoc</actionName>
-        <actionType>emailAlert</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>SObjectRowId</name>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>Core_MDF_Claim_VAT_Info__c.Core_MDF_NotifyClaimSubOnInvoiceDoc</nameSegment>
-    </actionCalls>
     <apiVersion>50.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
-    <assignments>
-        <name>assignReleaseHoldValues_0</name>
-        <label>assignReleaseHoldValues</label>
-        <locationX>578</locationX>
-        <locationY>695</locationY>
-        <assignmentItems>
-            <assignToReference>varClaimRecordsCollection</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>varClaimRecord</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>releaseReasonColection</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>varReleaseReason</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Call_Release_Hold</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <description>Change Adjustment status to PAF</description>
-        <name>Change_Adjustment_status_to_PAF</name>
-        <label>Change Adjustment status to PAF</label>
-        <locationX>314</locationX>
-        <locationY>695</locationY>
-        <assignmentItems>
-            <assignToReference>varClaimRecord.Core_MDF_VAT_Hold_Ind__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>varClaimRecord.Core_MDF_Claim_Previous_Status__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>varClaimRecord.Core_MDF_Status__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>varClaimRecord.Core_MDF_Status__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Label.Core_MDF_Claim_Status_Pending_Available_Fund</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Update_Adjustment</targetReference>
-        </connector>
-    </assignments>
-    <decisions>
-        <description>To check whether the claim is an adjustment</description>
-        <name>Adjustment_Claim</name>
-        <label>Adjustment/Claim</label>
-        <locationX>578</locationX>
-        <locationY>575</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Adjustment</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>varClaimRecord.Core_MDF_Type_Txt__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>$Label.Core_MDF_Claim_Adjustment_Type</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>varClaimRecord.Core_MDF_C_Type_Ind__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>varClaimRecord.Core_MDF_VAT_Eligibility_Ind__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Change_Adjustment_status_to_PAF</targetReference>
-            </connector>
-            <label>Adjustment</label>
-        </rules>
-        <rules>
-            <name>Claim</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>varClaimRecord.Core_MDF_Type_Txt__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Claim</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>varClaimRecord.Core_MDF_C_Type_Ind__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>varClaimRecord.Core_MDF_VAT_Eligibility_Ind__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>assignReleaseHoldValues_0</targetReference>
-            </connector>
-            <label>Claim</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Core_MDF_Verify_status</name>
-        <label>Verify status</label>
-        <locationX>886</locationX>
-        <locationY>335</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Core_MDF_Pending_Document_Status</name>
-            <conditionLogic>(1 OR 2) AND 3 AND (4 OR 5)</conditionLogic>
-            <conditions>
-                <leftValueReference>IsNewRecord</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Core_MDF_Status_Txt__c</leftValueReference>
-                <operator>IsChanged</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Core_MDF_Status_Txt__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>$Label.Core_MDF_Case_Status_Pending_Document</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Core_MDF_Claim_Id__r.Owner:User.UserType</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>$Label.Core_MDF_Partner_User_Type</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Core_MDF_Claim_Id__r.Core_MDF_Claim_Submitter_Id__r.UserType</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>$Label.Core_MDF_Partner_User_Type</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Core_MDF_Sent_Notification_to_Claim_Submitters</targetReference>
-            </connector>
-            <label>Pending Document Status</label>
-        </rules>
-        <rules>
-            <name>VAT_Approved_Status</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Core_MDF_Status_Txt__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>$Label.Core_MDF_Status_Approved</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Core_MDF_Claim_Id__r.Id</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>getClaimRecord</targetReference>
-            </connector>
-            <label>VAT Approved Status</label>
-        </rules>
-        <rules>
-            <name>Core_MDF_Revision_Required_Status</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Core_MDF_Status_Txt__c</leftValueReference>
-                <operator>IsChanged</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Core_MDF_Status_Txt__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>$Label.Core_MDF_PFR_Status_RevisionRequired</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Core_MDF_Notify_Claim_Submitters_on_VAT_Rejection</targetReference>
-            </connector>
-            <label>Revision Required Status</label>
-        </rules>
-        <rules>
-            <name>Core_MDF_Under_Review_Status</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Core_MDF_Status_Txt__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>$Label.Core_MDF_Case_Status_Under_Review</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Core_MDF_Read_Document_Link_Record</targetReference>
-            </connector>
-            <label>Under Review Status</label>
-        </rules>
-    </decisions>
     <description>Merging flow &apos;Core_MDF_VAT_Approved&apos; , flow &apos;Claim VAT Document Owner Update&apos; and process builder &apos;Update VAT fields and Send Email&apos;</description>
     <environments>Default</environments>
     <formulas>
@@ -300,17 +16,6 @@
     </formulas>
     <interviewLabel>Update VAT fields and Send Email {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Update VAT fields and Send Email</label>
-    <loops>
-        <name>Core_MDF_Iterate_the_records</name>
-        <label>Iterate the records</label>
-        <locationX>1458</locationX>
-        <locationY>575</locationY>
-        <collectionReference>Core_MDF_Read_Document_Link_Record</collectionReference>
-        <iterationOrder>Asc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>Core_MDF_Update_Owner_Id</targetReference>
-        </nextValueConnector>
-    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -320,7 +25,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -330,124 +35,37 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordLookups>
-        <name>Core_MDF_Read_Document_Link_Record</name>
-        <label>Read Document Link Record</label>
-        <locationX>1458</locationX>
-        <locationY>455</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Core_MDF_Iterate_the_records</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>LinkedEntityId</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>IsDeleted</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
-        <object>ContentDocumentLink</object>
-        <queriedFields>Id</queriedFields>
-        <queriedFields>ContentDocumentId</queriedFields>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>getClaimRecord</name>
-        <label>getClaimRecord</label>
-        <locationX>578</locationX>
-        <locationY>455</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Adjustment_Claim</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.Core_MDF_Claim_Id__r.Id</elementReference>
-            </value>
-        </filters>
-        <object>PartnerFundClaim</object>
-        <outputReference>varClaimRecord</outputReference>
-        <queriedFields>Id</queriedFields>
-        <queriedFields>Core_MDF_Audit_Adjustment_Amount__c</queriedFields>
-        <queriedFields>Core_MDF_Status__c</queriedFields>
-        <queriedFields>Core_MDF_Claim_Previous_Status__c</queriedFields>
-        <queriedFields>Core_MDF_Audit_Hold__c</queriedFields>
-        <queriedFields>Core_MDF_ESD_Hold__c</queriedFields>
-        <queriedFields>Core_MDF_Payment_Hold_ind__c</queriedFields>
-        <queriedFields>Core_MDF_Criteria_Hold_Ind__c</queriedFields>
-        <queriedFields>Core_MDF_Intel_Manual_Hold_Ind__c</queriedFields>
-        <queriedFields>Core_MDF_Member_Manual_Hold_Ind__c</queriedFields>
-        <queriedFields>Amount</queriedFields>
-        <queriedFields>Core_MDF_VAT_Eligibility_Ind__c</queriedFields>
-        <queriedFields>Core_MDF_VAT_Hold_Ind__c</queriedFields>
-        <queriedFields>Core_MDF_Type_Txt__c</queriedFields>
-        <queriedFields>Core_MDF_C_Type_Ind__c</queriedFields>
-        <queriedFields>Core_MDF_Bank_Doc_Hold_Ind__c</queriedFields>
-        <queriedFields>Core_MDF_Document_Hold_Ind__c</queriedFields>
-    </recordLookups>
-    <recordUpdates>
-        <description>Update the FLAO user as record owner to lock the documents for delete by user</description>
-        <name>Core_MDF_Update_Owner_Id</name>
-        <label>Update Owner Id</label>
-        <locationX>1546</locationX>
-        <locationY>695</locationY>
-        <connector>
-            <targetReference>Core_MDF_Iterate_the_records</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Core_MDF_Iterate_the_records.ContentDocumentId</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>OwnerId</field>
-            <operator>NotEqualTo</operator>
-            <value>
-                <elementReference>$Label.Core_MDF_Dummy_Account_Owner_Id</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <field>OwnerId</field>
-            <value>
-                <elementReference>$Label.Core_MDF_Dummy_Account_Owner_Id</elementReference>
-            </value>
-        </inputAssignments>
-        <object>ContentDocument</object>
-    </recordUpdates>
-    <recordUpdates>
-        <description>Update Adjustment</description>
-        <name>Update_Adjustment</name>
-        <label>Update Adjustment</label>
-        <locationX>314</locationX>
-        <locationY>815</locationY>
-        <inputReference>varClaimRecord</inputReference>
-    </recordUpdates>
     <start>
-        <locationX>760</locationX>
-        <locationY>0</locationY>
+        <locationX>768</locationX>
+        <locationY>35</locationY>
         <connector>
-            <targetReference>Core_MDF_Verify_status</targetReference>
+            <targetReference>Release_Claim_from_hold</targetReference>
         </connector>
         <object>Core_MDF_Claim_VAT_Info__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Obsolete</status>
+    <subflows>
+        <name>Release_Claim_from_hold</name>
+        <label>Release Claim from hold</label>
+        <locationX>661</locationX>
+        <locationY>508</locationY>
+        <flowName>Core_MDF_VAT_Approved</flowName>
+        <inputAssignments>
+            <name>varApprovedStatus</name>
+            <value>
+                <elementReference>$Record.Core_MDF_Status_Txt__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>varClaimId</name>
+            <value>
+                <elementReference>$Record.Core_MDF_Claim_Id__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </subflows>
     <variables>
         <name>releaseReasonColection</name>
         <dataType>String</dataType>

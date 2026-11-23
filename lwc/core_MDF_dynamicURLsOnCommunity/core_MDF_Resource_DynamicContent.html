@@ -18,7 +18,7 @@
                                     <span style="padding-left :1%;font-size:16px" class="content">{lineItem.contentLabel}</span></a></p>
 								</template>	
 								<template if:false={lineItem.isIconRequired}>
-								<p class="cta-item"><a style="display :flex;align-items:center;" target="_blank" href={lineItem.contentUrl}>
+								<p class="cta-item"><a style="display :flex;align-items:center;" target="_blank" href={lineItem.contentUrl} title={lineItem.contentHelpText}>
 										<button type="button" class="btn btn-primary">›</button>
 										<span class="content" style="font-size:16px">{lineItem.contentLabel}</span></a></p>
 								</template>

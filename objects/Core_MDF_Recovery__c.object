@@ -160,7 +160,7 @@
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
@@ -171,7 +171,7 @@
         <relationshipName>Claim_Recoveries</relationshipName>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
@@ -184,16 +184,28 @@
         <relationshipLabel>Recoveries</relationshipLabel>
         <relationshipName>Claim_Recoveries</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Quarter_Year_Nm__c</fullName>
+        <description>To populate Quarter Year</description>
+        <externalId>false</externalId>
+        <formula>TEXT(Core_MDF_PartnershipGradeMaintenance_Nbr__r.Core_MDF_Quarter_Year_Nm__c)</formula>
+        <label>Quarter Year</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_Recovered_Budget_Nm__c</fullName>
         <description>Used to hold the value from Recovery Request object&apos;s Recovered Budget field</description>
         <label>Recovered Budget</label>
         <length>1000</length>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>4</visibleLines>
@@ -202,7 +214,7 @@
         <fullName>Core_MDF_Sure_Pay_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Settle, then get paid?</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -222,11 +234,17 @@
     <nameField>
         <displayFormat>{00000}</displayFormat>
         <label>Recovery Number</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Recoveries</pluralLabel>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Test_To_Be_Deleted</fullName>
+        <active>false</active>
+        <errorConditionFormula>ISNEW()</errorConditionFormula>
+        <errorMessage>you cannot create recovery.</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

@@ -181,11 +181,11 @@
             <value>Connected Home Division</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Case.Core_Sub_Status__c</column>
+            <column>OPEN</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>GEC Hold,Closed,Close-Pending,Invalid</value>
+            <operator>equals</operator>
+            <value>1</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Severity__c</column>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Region_Cd__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Country_Location_nm__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Request.ChannelPartner.Name</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Claim_Comments__c</field>
+    </columns>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PartnerFundClaim$Core_MDF_Qrts_Year_Of_Claim_Start_Date__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Test MD Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Claim_with_Activity__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PartnerFundClaim$Core_MDF_Activity_End_Date__c</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

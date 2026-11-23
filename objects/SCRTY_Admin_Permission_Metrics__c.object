@@ -203,6 +203,27 @@
         <unique>false</unique>
     </fields>
     <label>Admin Permission Metrics</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>SCRTY_Permission_Nm__c</columns>
+        <columns>SCRTY_Permission_Set_Cnt__c</columns>
+        <columns>SCRTY_Profile_Cnt__c</columns>
+        <columns>SCRTY_User_Cnt__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Myview</fullName>
+        <columns>NAME</columns>
+        <columns>SCRTY_Permission_Nm__c</columns>
+        <columns>SCRTY_Permission_Set_Cnt__c</columns>
+        <columns>SCRTY_Profile_Cnt__c</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>SCRTY_User_Cnt__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Myview</label>
+    </listViews>
     <nameField>
         <displayFormat>A-{0000}</displayFormat>
         <label>Admin Permission Metrics</label>

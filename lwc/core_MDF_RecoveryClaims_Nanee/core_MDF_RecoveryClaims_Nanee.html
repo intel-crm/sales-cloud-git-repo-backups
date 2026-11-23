@@ -1,0 +1,49 @@
+<template>
+
+    
+
+    <lightning-card title='Claims to Recover From (PAF/PD)'>
+        
+       <!-- <lightning-button
+        variant="brand"
+                label="Export to CSV"
+                onclick={exportToCSV}>
+        </lightning-button>-->
+
+        <!--<a target="_self" class="slds-button" download="ExportToCSV.csv" href={hrefdata} onclick={exportToCSV}  
+        style="margin-left: 80%;">Export to CSV</a> -->
+
+    <div style="height:500px;">
+        <lightning-datatable
+        selected-rows={preSelectedRows}
+        data={data}
+        columns={columns}
+        key-field="Id"
+        onrowselection={getSelectedRec}
+        oncellchange={checkCellValue}
+        draft-values={draftValues}
+        errors={errors}
+        show-row-number-column>
+</lightning-datatable>
+    </div>
+               <!--Program selected: {progValue}, Account selected : {acctValue}, Quarter selected : {quarter}-->
+               
+               
+           
+<!--pagination-->
+<!--<div class="slds-p-vertical_xx-small"></div>
+                <lightning-layout horizontal-align="space">
+                    <lightning-layout-item flexibility="auto">
+                        <lightning-button label="Previous" icon-name="utility:chevronleft" onclick={previousHandler}>
+                        </lightning-button>
+                    </lightning-layout-item>
+                    <lightning-layout-item flexibility="auto">
+                        Page {page} of {totalPage}
+                    </lightning-layout-item>
+                    <lightning-layout-item flexibility="auto">
+                        <lightning-button label="Next" icon-name="utility:chevronright" icon-position="right"
+                            onclick={nextHandler}></lightning-button>
+                    </lightning-layout-item>
+                </lightning-layout>-->
+            </lightning-card>
+</template>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Additional Recipient</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Additional Recipients</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_MDF_Account__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Ids --></label>
+        <name>Core_MDF_Email_Ids__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

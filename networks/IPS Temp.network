@@ -2,7 +2,7 @@
 <Network xmlns="http://soap.sforce.com/2006/04/metadata">
     <allowInternalUserLogin>false</allowInternalUserLogin>
     <allowMembersToFlag>false</allowMembersToFlag>
-    <changePasswordTemplate>Testt/CommunityChangePasswordEmailTemplate</changePasswordTemplate>
+    <changePasswordTemplate>test_m/CommunityChangePasswordEmailTemplate</changePasswordTemplate>
     <communityRoles/>
     <disablePvtPagesForPwdResetInLWR>false</disablePvtPagesForPwdResetInLWR>
     <disableReputationRecordConversations>false</disableReputationRecordConversations>
@@ -32,10 +32,10 @@
     <enableTopicAssignmentRules>false</enableTopicAssignmentRules>
     <enableTopicSuggestions>true</enableTopicSuggestions>
     <enableUpDownVote>false</enableUpDownVote>
-    <forgotPasswordTemplate>Testt/CommunityForgotPasswordEmailTemplate</forgotPasswordTemplate>
+    <forgotPasswordTemplate>test_m/CommunityForgotPasswordEmailTemplate</forgotPasswordTemplate>
     <gatherCustomerSentimentData>false</gatherCustomerSentimentData>
-    <headlessForgotPasswordTemplate>Testt/CommunityHeadlessForgotPasswordTemplate</headlessForgotPasswordTemplate>
-    <headlessRegistrationTemplate>Testt/CommunityHeadlessRegistrationTemplate</headlessRegistrationTemplate>
+    <headlessForgotPasswordTemplate>unfiled$public/CommunityHeadlessForgotPasswordTemplate</headlessForgotPasswordTemplate>
+    <headlessRegistrationTemplate>unfiled$public/CommunityHeadlessRegistrationTemplate</headlessRegistrationTemplate>
     <networkMemberGroups>
         <profile>it admin</profile>
     </networkMemberGroups>
@@ -58,5 +58,5 @@
         <standardTab>Chatter</standardTab>
     </tabs>
     <urlPathPrefix>IPSTemp</urlPathPrefix>
-    <welcomeTemplate>Testt/CommunityWelcomeEmailTemplate</welcomeTemplate>
+    <welcomeTemplate>test_m/CommunityWelcomeEmailTemplate</welcomeTemplate>
 </Network>

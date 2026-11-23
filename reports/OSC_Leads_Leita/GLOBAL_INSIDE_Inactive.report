@@ -76,7 +76,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>OSC,INSIDE</value>
+            <value>OSC</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Inactive__c</column>

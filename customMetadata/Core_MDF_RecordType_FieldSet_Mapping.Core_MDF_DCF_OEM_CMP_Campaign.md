@@ -11,12 +11,20 @@
         <value xsi:type="xsd:string">OEM CMP</value>
     </values>
     <values>
+        <field>Core_MDF_Current_Object__c</field>
+        <value xsi:type="xsd:string">Campaign</value>
+    </values>
+    <values>
         <field>Core_MDF_Current_Object_nm__c</field>
         <value xsi:type="xsd:string">Campaign</value>
     </values>
     <values>
         <field>Core_MDF_Execution_Context_nm__c</field>
         <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Core_MDF_FieldSet_API_Name__c</field>
+        <value xsi:type="xsd:string">Core_MDF_DCF_Campaign_Fieldset</value>
     </values>
     <values>
         <field>Core_MDF_Field_Set_API_Name_nm__c</field>
@@ -27,8 +35,16 @@
         <value xsi:nil="true"/>
     </values>
     <values>
+        <field>Core_MDF_Object_API_Name__c</field>
+        <value xsi:type="xsd:string">Core_MDF_Custom_Picklist__c</value>
+    </values>
+    <values>
         <field>Core_MDF_Object_API_Name_nm__c</field>
         <value xsi:type="xsd:string">Core_MDF_Custom_Picklist__c</value>
+    </values>
+    <values>
+        <field>Core_MDF_RecordType_Developer_Name__c</field>
+        <value xsi:type="xsd:string">Core_MDF_Data_Center_CoMarketing_Fund</value>
     </values>
     <values>
         <field>Core_MDF_Record_Type_DeveloperName_nm__c</field>

@@ -211,10 +211,12 @@ public class Core_MDF_Audit_AI_Integration implements Database.Batchable<sObject
        if (documentWrappers != null && !documentWrappers.isEmpty()) {
             outboundWrapper.documentDetails = documentWrappers;
         }  
+        system.debug('spifWrappers-->'+spifWrappers);
         //spifWrapper
        if (spifWrappers != null) {
             outboundWrapper.spifDetails = spifWrappers;
         }
+        system.debug('outboundWrapper-->'+outboundWrapper);
       	return JSON.serialize(outboundWrapper);
             
         }
@@ -234,6 +236,7 @@ public class Core_MDF_Audit_AI_Integration implements Database.Batchable<sObject
         // Process each payload
         for (String caseKey : caseKeyToJsonMap.keySet()) {
             String payload = caseKeyToJsonMap.get(caseKey);
+            System.debug('JSON Payload-->'+payload);
             if (String.isBlank(payload)) {
             	continue;
              }
@@ -435,6 +438,8 @@ public static Map<Id, List<ActivitySegmentWrapper>> getSpifData(List<Case> cases
                                                         Core_MDF_Activity_Segment_Mapping_id__r.Core_MDF_Segment_Name_nm__c,
                                                         Core_MDF_Activity_Segment_Mapping_id__r.Core_MDF_Maximum_Bundled_Volume_nbr__c,
                                                         Core_MDF_Activity_Segment_Mapping_id__r.Core_MDF_Maximum_Cost_of_Bundle_nbr__c,
+                                                        Core_MDF_Activity_Segment_Mapping_id__r.Core_MDF_Minimum_Forecast_Volume_nbr__c,
+                                                        Core_MDF_Activity_Segment_Mapping_id__r.Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c,
                                                         Core_MDF_Activity_Segment_Mapping_id__r.Core_MDF_Estimated_Share_of_SPIF_amt__c,
                                                         Core_MDF_Activity_Segment_Mapping_id__r.Core_MDF_Partner_Fund_Request_id__c,
                                                         Core_MDF_Activity_Segment_Mapping_id__r.Core_MDF_SPIF_Notes_internal_only_txt__c 
@@ -458,6 +463,8 @@ public static Map<Id, List<ActivitySegmentWrapper>> getSpifData(List<Case> cases
                 segWrap.segmentName = spm.Core_MDF_Activity_Segment_Mapping_id__r.Core_MDF_Segment_Name_nm__c;
                 segWrap.maxBundledVol = spm.Core_MDF_Activity_Segment_Mapping_id__r.Core_MDF_Maximum_Bundled_Volume_nbr__c;
                 segWrap.maxCostBundle = spm.Core_MDF_Activity_Segment_Mapping_id__r.Core_MDF_Maximum_Cost_of_Bundle_nbr__c;
+                segWrap.minForecastVol = spm.Core_MDF_Activity_Segment_Mapping_id__r.Core_MDF_Minimum_Forecast_Volume_nbr__c;
+                segWrap.incentiveAmtPerUnit = spm.Core_MDF_Activity_Segment_Mapping_id__r.Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c;
                 segWrap.estShareIncentive = spm.Core_MDF_Activity_Segment_Mapping_id__r.Core_MDF_Estimated_Share_of_SPIF_amt__c;
                 segWrap.spifInternalNotes =spm.Core_MDF_Activity_Segment_Mapping_id__r.Core_MDF_SPIF_Notes_internal_only_txt__c;
             
@@ -600,6 +607,8 @@ public static Map<Id, List<ActivitySegmentWrapper>> getSpifData(List<Case> cases
         public String segmentName;
         public Decimal maxCostBundle;
         public Decimal estShareIncentive;
+        public Decimal minForecastVol;
+        public Decimal incentiveAmtPerUnit;
         public String spifInternalNotes;
         public List<spifWrapper> productFamilies;
 
@@ -620,6 +629,7 @@ public static Map<Id, List<ActivitySegmentWrapper>> getSpifData(List<Case> cases
     public class DocumentWrapper {
         public String appFileId;
         public Boolean sftFileAvailableInd;
+        //public String sftFileDownloadURL;
         public String documentType;
         public String downloadDocumentTitle;
         public String documentTitle;
@@ -627,6 +637,7 @@ public static Map<Id, List<ActivitySegmentWrapper>> getSpifData(List<Case> cases
         public DocumentWrapper(Core_MDF_Audit_Document__c document) {
             this.appFileId = document.Core_MDF_Old_Document_Id__c;
             this.sftFileAvailableInd = document.Core_MDF_SFT_File_Download_Ind__c;
+            //this.sftFileDownloadURL = document.Core_MDF_SFT_File_Download_URL__c;
             this.documentType = document.Core_MDF_Document_Types__c;
             this.downloadDocumentTitle = document.Core_MDF_Download_Document_Title_txt__c;
             this.documentTitle = document.Core_MDF_Document_Title__c;

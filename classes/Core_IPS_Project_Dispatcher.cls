@@ -16,6 +16,7 @@ public class Core_IPS_Project_Dispatcher{
          }
          if(trigger.isUpdate){
          /*added by Aayushi 11-03-2017 US80374*/ 
+             System.debug('Project  before update user Dispatcher'+UserInfo.getName());
          Core_IPS_Project_Handler.activateProject(oldMap,newList,newMap);
          }
          if(trigger.isDelete){
@@ -38,8 +39,8 @@ public class Core_IPS_Project_Dispatcher{
              
              Core_IPS_Project_Handler.activateProject(oldMap,newList,newMap);
              Core_IPS_Project_Handler.preventMPNDAforNonNDAAccount(newList);
-             //Rakesh -US107411 -calling a new method(insertRecordInterestedParties) from here
-            Core_IPS_Project_Handler.insertRecordInterestedParties(newList,oldMap);
+             //Rakesh -US107411 -calling a new method(insertRecord_InterestedParties) from here
+            Core_IPS_Project_Handler.insertRecord_InterestedParties(newList,oldMap);
             Core_IPS_Project_Handler.updatePrivateProjectSharing(newList,oldMap);				//added by Aayushi US113701
             //Gourav: Add Internal Proj Owner to IST - US113672 
             Core_IPS_Project_Handler.addInternalProjOwnerToIST(newList,oldMap); 
@@ -47,6 +48,7 @@ public class Core_IPS_Project_Dispatcher{
 			Core_IPS_Project_Handler.addDefaultCaseOwnerToIST(newList,oldMap);
          }
          if(trigger.isDelete){
+             
          }
     }
 }

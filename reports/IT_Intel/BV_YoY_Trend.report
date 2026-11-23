@@ -54,13 +54,6 @@
             <operator>equals</operator>
             <value>Core_Sales_Support_Request__c.Core_DS_IT_Intel</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Core_Sales_Support_Request__c.Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Cancelled,Rejected</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
@@ -81,7 +74,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Sales_Support_Request__c.Core_IT_IAI_Date_of_Topic__c</dateColumn>
-        <endDate>2025-12-31</endDate>
+        <endDate>2018-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2016-01-01</startDate>
     </timeFrameFilter>

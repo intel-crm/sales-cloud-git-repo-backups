@@ -12,15 +12,20 @@ public without sharing class Core_MDF_UpdateActivityFields {
     public static void getActivityRejectionComments(List<flowInputs> inputIdList){
         Set<Id> pfrIDSet = new Set<Id>();
         Set<Id> acctIdSet = new Set<Id>();
-
+        // Highlight: Unused Local Variable - 14285
+        // Map<Id,String> pfrIdCommentsMap = new Map<Id,String>();
         Map<Id,String> pfrIdmemberIdMap = new Map<ID,String>();
         List<PartnerFundRequest> ipaPFRList = new List<PartnerFundRequest>();
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
         Map<Id,List<ProcessInstanceStep>> piAndListofPiStepMap = new Map<Id,List<ProcessInstanceStep>>();
         Map<Id,Id> pfrIdProcessInstId = new Map<Id,Id>();
-
+        // Highlight: Unused Local Variable - 14285
+        // Set<Id> stepNodeIdSet = new Set<Id>();
+        
         Map<Id,String> stepNodeIdStepNameMap = new Map<Id,String>();
-
+        
+        // Highlight: Unused Local Variable - 14285
+        // Map<Id,List<String>> actorIDPermSetMap = new map<Id,List<String>>();
         List<Id> processDefList = new List<id>();
         Boolean priceReviewerFlag = FeatureManagement.checkPermission('Core_MDF_PriceReviewer');
         List<Id> pfrIdList = new List<Id>();

@@ -8,7 +8,7 @@ public class Core_IPS_Account_Dispatcher{
          
         }
         if(trigger.isDelete){
-            Core_IPS_Account_Handler.PreventDelete(oldList);    
+            Core_IPS_Account_Handler.PreventDelete(oldList);
             Core_IPS_Account_Handler.DeleteProjMembers(oldList);
         }
     }  
@@ -24,9 +24,9 @@ public class Core_IPS_Account_Dispatcher{
         }
         if(trigger.isUpdate){
             Core_IPS_Account_Handler.ActivateOrDeactivateProjectMembers(newList, oldMap);
-            Core_IPS_Account_Handler.addProjectMembersOnchangeOfAccount(newList, oldMap);
         }
         if(trigger.isDelete){
+         
         }
     }
 }

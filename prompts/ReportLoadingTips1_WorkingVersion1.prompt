@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Report Loading Tips1_WorkingVersion1</masterLabel>
+    <promptVersions>
+        <body>&lt;p&gt;If your facing to View the Report / taking a too long time to load. Please apply a filter &lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Example:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Filter by &lt;b&gt;Program : &lt;/b&gt;CCF/DCF/SPCF/CCFB&lt;/li&gt;&lt;li&gt;Filter by &lt;b style=&quot;color: rgb(62, 62, 60);&quot;&gt;User :&lt;/b&gt;Active/Inactive &lt;/li&gt;&lt;li&gt;Filter by &lt;b&gt;Date&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;</body>
+        <customApplication>Core_MDF_CoMarketing</customApplication>
+        <delayDays>2</delayDays>
+        <displayType>DockedComposer</displayType>
+        <endDate>2020-08-31</endDate>
+        <header>Account Users Report</header>
+        <isPublished>false</isPublished>
+        <masterLabel>Report Loading Tips1_WorkingVersion1</masterLabel>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2020-08-10</startDate>
+        <targetPageKey1>Report</targetPageKey1>
+        <targetPageKey2>view</targetPageKey2>
+        <targetPageType>standard__recordPage</targetPageType>
+        <timesToDisplay>30</timesToDisplay>
+        <title>Account Users Report</title>
+        <uiFormulaRule>
+            <booleanFilter>1 OR 2</booleanFilter>
+            <criteria>
+                <leftValue>{!$User.Profile.Key}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>custom_it admin</rightValue>
+            </criteria>
+            <criteria>
+                <leftValue>{!$User.Profile.Key}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>Admin</rightValue>
+            </criteria>
+        </uiFormulaRule>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>SpecificProfiles</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

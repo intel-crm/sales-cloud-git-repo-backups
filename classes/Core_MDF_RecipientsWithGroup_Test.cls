@@ -15,7 +15,6 @@ public class Core_MDF_RecipientsWithGroup_Test {
             bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
             bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
 
-
             Set<String> myset1 = new Set<String>();
             List<String> result1 = new List<String>();
             myset1.addAll(bypassFunctionKeys);
@@ -51,11 +50,7 @@ public class Core_MDF_RecipientsWithGroup_Test {
             PermissionSet retailAccManagerPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Retail_Account_Manager' LIMIT 1];
             //PermissionSet reviewerPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager' LIMIT 1];
             PermissionSet claimSubmitterPS = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_External_Retail_Claim_Submitter' LIMIT 1];
-            PermissionSet rmfFinanceManager = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Retail_Finance_Manager' LIMIT 1];
-            PermissionSet rmfFinanceUser = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Retail_Internal_Finance_User' LIMIT 1];
-            PermissionSet rmfUser = [SELECT Id, Name FROM PermissionSet WHERE Name = 'Core_MDF_Retail_USER' LIMIT 1];
-
-
+            
             List<User> userList = new List<User>();
             
             List<PermissionSetAssignment> permissionSetAssignmentList = new List<PermissionSetAssignment>();
@@ -95,7 +90,8 @@ public class Core_MDF_RecipientsWithGroup_Test {
             Core_AGS_Role__c agsRoleRMF = Core_MDF_CCP_TestDataUtility.createAgsRole('Co-Marketing(Salesforce)-RMF User', 'Co-Marketing(Salesforce)-RMF User', true, true);
             Core_ERPM_Engagement__c erpmEngagementRMF = Core_MDF_CCP_TestDataUtility.createErpmEngagement('RPS_Retailer', 'RPS_Retailer', 'DEDUPGPRET', 'SEC', true, true);
             Core_Entitlement__c entitlementRMF = Core_MDF_CCP_TestDataUtility.createEntitlement('RMF User',agsRoleRMF.Id ,'Intel® Partner Investment Center','RMF User',erpmEngagementRMF.Id , true,'Retail Marketing Funds (RMF)',true);
-            Core_Contact_Entitlement__c contactEntitlementRMF = Core_MDF_CCP_TestDataUtility.createContactEntitlement(externalUser.Id,entitlementRMF.Id ,true,'Complete', true);
+           // Highlight: Unused Local Variable - Indira
+           // Core_Contact_Entitlement__c contactEntitlementRMF = Core_MDF_CCP_TestDataUtility.createContactEntitlement(externalUser.Id,entitlementRMF.Id ,true,'Complete', true);
             
             PermissionSetAssignment psa1 = new PermissionSetAssignment(PermissionSetId = retailAccManagerPS.Id, AssigneeId = retailAccountManager.Id);
             permissionSetAssignmentList.add(psa1);
@@ -105,14 +101,6 @@ public class Core_MDF_RecipientsWithGroup_Test {
             
             PermissionSetAssignment psa3 = new PermissionSetAssignment(PermissionSetId = claimSubmitterPS.Id, AssigneeId = extUser.Id);
             permissionSetAssignmentList.add(psa3);
-            
-            PermissionSetAssignment psa4 = new PermissionSetAssignment(PermissionSetId = rmfFinanceManager.Id, AssigneeId = usr.Id);
-            permissionSetAssignmentList.add(psa4);
-            
-            PermissionSetAssignment psa5 = new PermissionSetAssignment(PermissionSetId = rmfFinanceUser.Id, AssigneeId = usr.Id);
-            permissionSetAssignmentList.add(psa5);
-            
-            
             
             insert permissionSetAssignmentList;            
             
@@ -175,11 +163,11 @@ public class Core_MDF_RecipientsWithGroup_Test {
         Account intelRetail = [SELECT Id, Name,Core_MDF_Parent_Fund_Account__c,Core_MDF_CoMarketing_Ultimate_Account__c,Core_Geo__c,
                                Core_MDF_Group_Id__c
                                FROM Account WHERE Name = 'Co-marketing Test Account' limit 1];
-        
-        Id groupId = intelRetail.Core_MDF_Group_Id__c;
+        // Highlight: Unused Local Variable - Indira
+       // Id groupId = intelRetail.Core_MDF_Group_Id__c;
         //System.assert(groupId != NULL);
-        List<Core_MDF_Partner_Group_Mapping__c> pgmRecords = [Select Id,Core_MDF_Group_Id__c,Core_MDF_All_Access_Group_Id__c from Core_MDF_Partner_Group_Mapping__c];
-        //System.runAs(user){
+        List<Core_MDF_Partner_Group_Mapping__c> pgmRecords = [Select Id,Core_MDF_Group_Id__c from Core_MDF_Partner_Group_Mapping__c];
+        System.runAs(user){
            //   PartnerMarketingBudget  pmb = Core_MDF_CCP_TestDataUtility.createRetailBudget('RSABudget',Core_MDF_CCP_TestDataUtility.budget_Retail_Record_Type,intelRetail.Id,retailCp.Id,5000000,System.today(),
                                                                           //         System.today(),false, 'RSA MD');
      //   pmbRecord2.IsIgnoreValidation = true;
@@ -197,7 +185,7 @@ public class Core_MDF_RecipientsWithGroup_Test {
             // Creating Allocation using utility class
             PartnerFundAllocation pfa = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Allocation',pmb,intelRetail,1000000.0,true);            
         
-			//System.runAs(user){
+
             Campaign camp1 = Core_MDF_CCP_TestDataUtility.createCampaign('TestRetailCamp','Gaming','Athena','MDF or both CMP & MDF',
                                                                          Core_MDF_CCP_TestDataUtility.campaign_RecordType_Retail, 
                                                                          'Retail Marketing Funds',
@@ -210,7 +198,7 @@ public class Core_MDF_RecipientsWithGroup_Test {
                                                                                            Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,
                                                                                            string.valueof(intelRetail.id),NULL,NULL,
                                                                                            'AFGHANISTAN','Business','Workstation',
-                                                                                           'EVO','Broadcast',
+                                                                                           'EVO','Audio',
                                                                                            'Podcast','Draft',false);
             
             pfr.Title ='Retail MDF Activity';
@@ -236,7 +224,8 @@ public class Core_MDF_RecipientsWithGroup_Test {
             bank.Core_MDF_Tax_codes_cd__c = 'I0';
             Database.insert(bank);
             //Do Account Bank Mapping for 'bank' and ABM is applicaple only for "Retail MDF" record type
-            Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(intelRetail.ID,bank.Id,true);
+            // Highlight: Unused Local Variable - Indira
+           // Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(intelRetail.ID,bank.Id,true);
             PartnerFundClaim pfc = Core_MDF_CCP_TestDataUtility.createRetailRSAMDClaim(Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail,
                                                                                        pfr.Id, System.today(), System.today(), 50.00, false);
             pfc.Core_MDF_Country_Location_nm__c= 'AFGHANISTAN';
@@ -249,6 +238,7 @@ public class Core_MDF_RecipientsWithGroup_Test {
             cs.recordTypeId = caseAuditRecType;
             cs.AccountId = intelRetail.Id;
             cs.Origin = 'Random Selection'; 
+            cs.Core_MDF_Region_SubRegion_txt__c = 'APJ';
             cs.Core_MDF_Claim_ID__c = pfc.Id;
             insert cs; 
             
@@ -282,6 +272,6 @@ public class Core_MDF_RecipientsWithGroup_Test {
 
 
             test.stopTest();
-        //}
+        }
     }
 }

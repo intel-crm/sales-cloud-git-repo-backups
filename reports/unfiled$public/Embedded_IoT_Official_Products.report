@@ -36,9 +36,6 @@
         <field>Core_IPS_Supported_Product__c.Core_Flag_Status__c</field>
     </columns>
     <columns>
-        <field>CHILD_CREATED_DATE</field>
-    </columns>
-    <columns>
         <field>Core_IPS_Supported_Product__c.Core_Support_Launch_Date__c</field>
     </columns>
     <description>List of all Embedded group&apos;s supported products (no EOIS/dummy products)</description>
@@ -80,8 +77,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>CHILD_CREATED_DATE</sortColumn>
-    <sortOrder>Desc</sortOrder>
+    <sortColumn>Core_IPS_Supported_Product__c.Core_Supported_Product_Name__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CUST_CREATED_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

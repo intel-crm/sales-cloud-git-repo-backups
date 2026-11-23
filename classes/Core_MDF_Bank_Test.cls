@@ -135,8 +135,8 @@ private class Core_MDF_Bank_Test {
             insert erpmEngagementList;
 
             //Creating Entitlement Detail for CCF and DCF with utility class
-            Core_Entitlement__c entitlementCCF = Core_MDF_CCP_TestDataUtility.createEntitlement('Client Account Budget Administrator', agsRoleList[0].Id,'Intel® Partner Investment Center','CCF Account Budget Administrator', erpmEngagementList[0].Id, true,Core_MDF_CCP_ConstantClass.CCF_PROGRAM,false);
-            Core_Entitlement__c entitlementDCF = Core_MDF_CCP_TestDataUtility.createEntitlement('Datacenter Account Budget Administrator', agsRoleList[1].Id,'Intel® Partner Investment Center','DCF Account Budget Administrator', erpmEngagementList[1].Id, true,Core_MDF_CCP_ConstantClass.DCF_PROGRAM,false);
+            Core_Entitlement__c entitlementCCF = Core_MDF_CCP_TestDataUtility.createEntitlement('Client Account Budget Administrator', agsRoleList[0].Id,'Consolidated Co-marketing Platform','CCF Account Budget Administrator', erpmEngagementList[0].Id, true,'Client',false);
+            Core_Entitlement__c entitlementDCF = Core_MDF_CCP_TestDataUtility.createEntitlement('Datacenter Account Budget Administrator', agsRoleList[1].Id,'Consolidated Co-marketing Platform','DCF Account Budget Administrator', erpmEngagementList[1].Id, true,'Datacenter',false);
             List<Core_Entitlement__c> entitlementList = new List<Core_Entitlement__c>();
             entitlementList.add(entitlementCCF);
             entitlementList.add(entitlementDCF);
@@ -315,7 +315,7 @@ private class Core_MDF_Bank_Test {
             pfr.Core_MDF_Reimbursement_Rate_txt__c='100%';
             pfr.Core_MDF_Fund_Request_Status__c='Planned';
             insert pfr;
-			
+            
             PartnerFundRequest pfrClose = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(String.valueof(camp.Id),
 
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
@@ -389,8 +389,8 @@ private class Core_MDF_Bank_Test {
             bankShare.AccessLevel = Label.Core_MDF_Read_Access;
             insert bankShare;
 
-           // Core_MDF_ShareBanktoBudgetAdmins obj = new Core_MDF_ShareBanktoBudgetAdmins();
-           // DataBase.executeBatch(obj);
+            //Core_MDF_ShareBanktoBudgetAdmins obj = new Core_MDF_ShareBanktoBudgetAdmins();
+            //DataBase.executeBatch(obj);
 
             //Query on BankShare to find if record is shared with user or not
             List<Core_MDF_Bank__Share> bankShareRecords = [SELECT Id, ParentId, UserOrGroupId FROM Core_MDF_Bank__Share
@@ -428,9 +428,9 @@ private class Core_MDF_Bank_Test {
             bankShare2.RowCause = Schema.Core_MDF_Bank__Share.RowCause.AccountBudgetAdmin__c;
             bankShare2.AccessLevel = Label.Core_MDF_Read_Access;
             insert bankShare2;
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
             //Core_MDF_ShareBanktoBudgetAdmins obj2 = new Core_MDF_ShareBanktoBudgetAdmins();
-           // DataBase.executeBatch(obj);
+            //DataBase.executeBatch(obj);
 
             //Query on BankShare to find if record is shared with user or not
             List<Core_MDF_Bank__Share> bankShareRecords2 = [SELECT Id, ParentId, UserOrGroupId FROM Core_MDF_Bank__Share
@@ -564,7 +564,6 @@ private class Core_MDF_Bank_Test {
     static void disassociateBankTestWithClaimsAndEscalations(){
 
         User paymentAdmin = [Select Id FROM User Where LastName = 'Bank Payment Admin 123' LIMIT 1];
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         Account testIntelAccount = [Select Id FROM Account WHERE Name = 'Test Account' LIMIT 1];
     Test.startTest();
         Account testCMAccount = [Select Id FROM Account WHERE Name = 'Test Acc CCF' LIMIT 1];
@@ -595,15 +594,12 @@ private class Core_MDF_Bank_Test {
                 System.assert(bankRec.Core_MDF_Bank_Status__c != 'Active');
             }
         }
-        
-        System.runAs(sysAdminUser)
-        {
         Core_MDF_Account_Bank_Mapping__c abmCCF1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(testCMAccount.Id, bankRec.Id, FALSE);
         abmCCF1.Core_MDF_Active_ind__c = TRUE;
         Database.insert(abmCCF1);
 
         PartnerFundRequest pfr = [Select Id, Core_MDF_Activity_Number__c FROM PartnerFundRequest WHERE Title = 'test' and Core_MDF_Fund_Request_Status__c= 'Closed' LIMIT 1];
-        PartnerFundRequest pfrPlan = [Select Id, Core_MDF_Activity_Number__c FROM PartnerFundRequest WHERE Core_MDF_Fund_Request_Status__c = 'Planned' LIMIT 1];
+        PartnerFundRequest pfrPlan = [Select Id, Core_MDF_Activity_Number__c FROM PartnerFundRequest WHERE Title = 'test' and Core_MDF_Fund_Request_Status__c= 'Planned' LIMIT 1];
         
         
         pfr.Amount = 0;
@@ -628,7 +624,7 @@ private class Core_MDF_Bank_Test {
         esc1.Core_MDF_Channel_Program_id__c = cp.Id;
         esc1.recordtypeid= claimRecType;
         Database.insert(esc1);
-        }
+
         System.runAs(paymentAdmin){
             bankRec.Core_MDF_Ineffective_Selection_ind__c = true;
             try{
@@ -900,7 +896,7 @@ private class Core_MDF_Bank_Test {
                 try{
                     insert(bankList);
                 }catch(Exception ex){
-                    // Highlight: Unused Local Variable
+                    // Highlight: Unused Local Variable - Indira
                   //  Boolean expectedExceptionThrown =  ex.getMessage().contains('No issues found for this record but this has been failed because of some other duplicate records in the batch.') ? true : false;
                   //System.assertEquals(expectedExceptionThrown, true, ex.getMessage());
                 }
@@ -967,7 +963,7 @@ private class Core_MDF_Bank_Test {
             update newBank;
             
             System.assertEquals(newBank.Core_MDF_Bank_Status__c, 'Active');
-           // Highlight: Unused Local Variable 
+           // Highlight: Unused Local Variable - Indira
            // Core_MDF_Account_Bank_Mapping__c abmCCF1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(coMarketingAccDCF.Id, newBank.Id, TRUE);
 
             //Change Bank Program when ESD Update = false

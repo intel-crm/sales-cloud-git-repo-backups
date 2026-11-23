@@ -13,30 +13,6 @@
         <name>Core_IPS_Authored_By__c</name>
     </fields>
     <fields>
-        <label><!-- External Comment ID --></label>
-        <name>Core_IPS_BES_ExtCommentID__c</name>
-    </fields>
-    <fields>
-        <label><!-- Promote Status --></label>
-        <name>Core_IPS_BES_Promote_Status__c</name>
-        <picklistValues>
-            <masterLabel>Done</masterLabel>
-            <translation><!-- Done --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Failed</masterLabel>
-            <translation><!-- Failed --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>In Progress</masterLabel>
-            <translation><!-- In Progress --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Sent Successfully</masterLabel>
-            <translation><!-- Sent Successfully --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
         <label><!-- Background Color --></label>
         <name>Core_IPS_BgColor__c</name>
     </fields>
@@ -145,10 +121,6 @@
         <picklistValues>
             <masterLabel>Partner - DFAE</masterLabel>
             <translation><!-- Partner - DFAE --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>System</masterLabel>
-            <translation><!-- System --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -274,8 +246,4 @@
         <name>Case_comment</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage><!-- Not allowed to create or update record related to Org 025 --></errorMessage>
-        <name>IPS_Altera_Go_Live_Comment_Restriction</name>
-    </validationRules>
 </CustomObjectTranslation>

@@ -1,4 +1,5 @@
 import { LightningElement, api, track } from 'lwc';
+//import { NavigationMixin } from 'lightning/navigation';
 import getObjectFields from '@salesforce/apex/Core_MDF_CustomLayoutConfig_Controller.getObjectFields';
 import Core_MDF_Custom_LayoutCSS from '@salesforce/resourceUrl/Core_MDF_Custom_Layout';
 import { loadStyle } from 'lightning/platformResourceLoader';
@@ -11,7 +12,7 @@ export default class Core_MDF_CustomLayoutConfig extends LightningElement {
     @api fieldAPIName;
     @api isSectionVisible;
     @api isCompactLayout;
-    @api recordTypeName; 
+    @api recordTypeName;
     @api standardFieldAlign;
     @api hasToRetainDecimalValues;
     @track objectFields = [];
@@ -25,7 +26,12 @@ export default class Core_MDF_CustomLayoutConfig extends LightningElement {
     @track hasRendered = true;
     @track isShow = false;
     @track parentObjRecordId;
+    @track showLoading = false;
     @track sectionVisible = false;
+    @track openModal = false;
+    @track modalHeader;
+    @track modalBody;
+    @track recordstatus;
     @track siteURL;
     @track errorMessage = '';
     @track isSelected = false;
@@ -35,13 +41,16 @@ export default class Core_MDF_CustomLayoutConfig extends LightningElement {
     @track isInternalUser;
     @track isExternalUser;
     @track campaignCSS = '';
+    @api operator;
     @api fieldAPIoperator;
 
     connectedCallback() {
-         loadStyle(this, Core_MDF_Custom_LayoutCSS);
+        console.log('CustomLayoutLWC--->>>>>');
+        loadStyle(this, Core_MDF_Custom_LayoutCSS);
         if (this.hasRendered) {
+            this.showLoading = true;
             this.hasRendered = false;
-            if(this.isCompactLayout == null){
+            if (this.isCompactLayout == null) {
                 this.isCompactLayout = 'No';
             }
             this.siteURL = window.location.origin;
@@ -49,9 +58,12 @@ export default class Core_MDF_CustomLayoutConfig extends LightningElement {
             if (this.isCompactLayout == 'No' && this.isSectionVisible == 'Yes') {
                 this.sectionVisible = true;
             }
-            console.log('objAPIName--LWC--->>>>>', this.objAPIName);
+            console.log('@@@objAPIName--LWC--->>>>>', this.objAPIName);
+            console.log('@@@isCompactLayout--LWC--->>>>>', this.isCompactLayout);
+            console.log('@@@fieldView--LWC--->>>>>', this.fieldView);
+            console.log('@@fieldAPIName--LWC-->>>>', this.fieldAPIName);
             this.getObjFields();
-            this.campaignCSS = (this.objAPIName === 'Campaign' && this.campaignCSS === '') ? 'slds-p-horizontal_medium' : ''; 
+         /*Commented as a Part of Winter27 UI fix   this.campaignCSS = (this.objAPIName === 'Campaign' && this.campaignCSS === '') ? 'slds-p-horizontal_medium' : ''; */
         }
     }
 
@@ -60,10 +72,11 @@ export default class Core_MDF_CustomLayoutConfig extends LightningElement {
             recordId: this.recordId,
             objAPIName: this.objAPIName,
             fieldAPIName: this.fieldAPIName,
+            //fieldAPIName : this.fieldAPIName ? this.fieldAPIName.split(',').map(f => f.trim()) : [],
             fieldAPIoperator : this.fieldAPIoperator,
             fieldView: this.fieldView
         }).then((result) => {
-            console.log('Result-->' , result);
+            console.log('Result-->', result);
             if (result != null) {
                 this.isShow = true;
                 var objProperties = [];
@@ -85,7 +98,7 @@ export default class Core_MDF_CustomLayoutConfig extends LightningElement {
                         let type;
                         if (result[key][i].fieldValue != '' && result[key][i].fieldValue != null) {
                             if (result[key][i].fieldType == 'REFERENCE') {
-                                
+                                //TWC3117-15824
                                 //record.url = key == 'Internal User' ? `/lightning/r/${result[key][i].parentObjectName}/${result[key][i].fieldValue}/view` : portalBaseURL + communityURLSection + result[key][i].fieldValue;
                                 const hasCustomUrl = !!result[key][i].lookupCustomUrlInd;                                
                                 if (key == 'Internal User') {                                    
@@ -93,7 +106,7 @@ export default class Core_MDF_CustomLayoutConfig extends LightningElement {
                                 } else {                                    
                                     record.url = hasCustomUrl ? portalBaseURL +'s/'+ result[key][i].lookupCustomUrlValue + '?recordId=' + result[key][i].fieldValue : portalBaseURL + communityURLSection + result[key][i].fieldValue;
                                 }
-                                
+                                //TWC3117-15824
                                 record.urlName = result[key][i].fieldValueName;
                                 record.parentObjectId = result[key][i].fieldValue;
                                 record.parentObjectName = result[key][i].parentObjectName;
@@ -118,8 +131,9 @@ export default class Core_MDF_CustomLayoutConfig extends LightningElement {
                                 result[key][i].fieldValue = formatter.format(result[key][i].fieldValue);
                                 type = 'STRING';
                             } else if (result[key][i].fieldType == 'DOUBLE') {
+                                console.log('double value', result[key][i].fieldLabel, result[key][i].fieldValue, typeof result[key][i].fieldValue);
                                 let value = result[key][i].fieldValue;
-                                if(value.indexOf('.') !== -1){
+                                if (value.indexOf('.') !== -1) {
                                     result[key][i].fieldValue = Number(result[key][i].fieldValue.slice(0, result[key][i].fieldValue.lastIndexOf('.') + 0)).toLocaleString('en-US') + '.' + result[key][i].fieldValue.slice(result[key][i].fieldValue.lastIndexOf('.') + 1);
                                 }
                                 type = 'STRING';
@@ -131,6 +145,8 @@ export default class Core_MDF_CustomLayoutConfig extends LightningElement {
                             type = 'STRING';
                         }
                         fieldRecord = result[key][i].fieldValue != '' ? record : '';
+                        console.log('##fieldRecord-> ', JSON.parse(JSON.stringify(fieldRecord)));
+                        console.log('##record-> ', JSON.parse(JSON.stringify(record)));
 
                         let loc;
                         if(this.standardFieldAlign){
@@ -151,6 +167,8 @@ export default class Core_MDF_CustomLayoutConfig extends LightningElement {
                         }else{
                             loc = result[key][i].fieldPosition;
                         }
+                        const regexExp = /<(\/?[a-z][a-z0-9]*)\b[^>]*>/ig;
+                        //if(result[key][i].fieldValue != '' && result[key][i].fieldValue != undefined){
                         objProperties.push({
                             'label': result[key][i].fieldLabel,
                             'value': type != 'STRING' ? fieldRecord : result[key][i].fieldValue,
@@ -158,51 +176,61 @@ export default class Core_MDF_CustomLayoutConfig extends LightningElement {
                             'isbooleanField': result[key][i].fieldType == 'BOOLEAN' ? true : false,
                             'isRichTextField': result[key][i].isRichTextField,
                             'istextField':  (type == 'STRING' && !result[key][i].isRichTextField) ? true : false,
-                            'position': result[key][i].fieldPosition,
+                            'position': result[key][i].fieldPosition, //result[key][i].section == 'Section 2' ? 'Right' : i%2 == 0 ? 'Right' : 'Left',
                             'isAccessible': result[key][i].isAccessible,
-                            'location':loc,
+                            'location': loc,
                             'helpText': result[key][i].helpText,
                             'section': result[key][i].section,
                             'noOfColumns': 12 / result[key][i].noOfColumns,
-                            'isVisible': !result[key][i].hideIfNoValue ? true : result[key][i].fieldValue != '' && result[key][i].fieldValue != undefined ? true : false, //condition to make only those fields visible for which the (hideIfNoValue boolean is false) or (hideIfNoValue boolean is true then check if the field has value) 
-			                      'isSectionHide' : result[key][i].hideSectionIfNoValue // This checkbox field used as indicator if all fields are having empty values and HideIfNoValue check box is true,then we hide the Section.
+                            'isVisible': !result[key][i].hideIfNoValue ? true : result[key][i].fieldValue != '' && result[key][i].fieldValue != undefined ? true : false, //condition to make only those fields visible for which the (hideIfNoValue boolean is false) or (hideIfNoValue boolean is true then check if the field has value)
+                            'isSectionHide': result[key][i].hideSectionIfNoValue // This checkbox field used as indicator if all fields are having empty values and HideIfNoValue check box is true,then we hide the Section.
                         });
+
                         // creating a map based on Section
                         if (this.isCompactLayout == 'No') {
                             if (objMap.has(result[key][i].section)) {
                                 var objList = objMap.get(result[key][i].section);
+                                //  if(objProperties[i] != undefined){
                                 objList.push(objProperties[i]);
                                 objMap.set(result[key][i].section, objList);
+                                //  }
                             } else {
                                 var objList = [];
+                                //if(objProperties[i] != undefined){
                                 objList.push(objProperties[i]);
                                 objMap.set(result[key][i].section, objList);
+                                // }
                             }
                         }
+                        console.log('##objList-> ', objList);
+                        console.log('##objMap-> ', objMap);
+                        console.log('##objProperties-> ', objProperties[i]);
+                        //}
                     }
                 }
-           if (this.isCompactLayout == 'No') {
-                for (const [key, value] of objMap.entries()) {
-                    // The following block of code is used to hide a section if no field have values
-                    let showSection= false; // Initialize a boolean variable 'showSection' to false.                
-                    for (var sec =0;sec<value.length;sec++){           // Start a for loop to iterate over the 'value' array.
-                        if(value[sec].isVisible || (!value[sec].isVisible && !value[sec].isSectionHide)){  //The accordion section should only be displayed, when the any "fields" has a value. If any of the "fields" does not have a value, then the "isSectionVisible" checkbox must be unchecked.
-                                showSection=true;
+                if (this.isCompactLayout == 'No') {
+                    for (const [key, value] of objMap.entries()) {
+                        // The following block of code is used to hide a section if no field have values
+                        let showSection = false; // Initialize a boolean variable 'showSection' to false.                
+                        for (var sec = 0; sec < value.length; sec++) {           // Start a for loop to iterate over the 'value' array.
+                            if (value[sec].isVisible || (!value[sec].isVisible && !value[sec].isSectionHide)) {  //The accordion section should only be displayed, when the any "fields" has a value. If any of the "fields" does not have a value, then the "isSectionVisible" checkbox must be unchecked.
+                                showSection = true;
                                 break;
-                        }    
+                            }
+                        }
+
+                        if (showSection) {
+                            this.objectFields.push({ 'key': key, 'value': value });
+                            if (this.sectionVisible == true) {
+                                this.activeSections.push(key);
+                            }
+                        }
+                        this.showLoading = false;
                     }
-                    if(showSection){
-                        this.objectFields.push({'key': key, 'value': value});
-                        if (this.sectionVisible == true) {
-                            this.activeSections.push(key);
-                        } 
-                    }
-                    this.showLoading = false;
-                }                   
+                }
+            } else {
+                this.showLoading = false;
             }
-        } else {
-            this.showLoading = false;
-        }
         }).catch((error) => {
             console.log('Error in loading. Error : ', error);
         });
@@ -213,6 +241,7 @@ export default class Core_MDF_CustomLayoutConfig extends LightningElement {
         this.parentObjRecordId = null;
         var index = event.target.getAttribute("data-id");
         const toolTipDiv = this.template.querySelector('[data-id="' + index + '"]');
+        console.log('Index-LWC ', toolTipDiv);
         toolTipDiv.style.opacity = 1;
         toolTipDiv.style.display = "block";
         // eslint-disable-next-line

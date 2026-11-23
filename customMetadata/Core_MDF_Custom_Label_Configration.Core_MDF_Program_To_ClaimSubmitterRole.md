@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">Core_MDF_CCP_External_Claim_Submitter,Core_MDF_CCP_External_Retail_Claim_Submitter,Core_MDF_CCP_External_IPA_Claim_Submitter</value>
+        <value xsi:type="xsd:string">Core_MDF_CCP_External_Claim_Submitter,Core_MDF_CCP_External_Retail_Claim_Submitter,Core_MDF_CCP_External_IPA_Claim_Submitter,Core_MDF_CCP_External_EEF_Claim_Submitter</value>
     </values>
 </CustomMetadata>

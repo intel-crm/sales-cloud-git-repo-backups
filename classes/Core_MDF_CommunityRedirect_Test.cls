@@ -21,7 +21,8 @@ public class Core_MDF_CommunityRedirect_Test {
             
             test.stopTest();
         }catch (Exception e){
-            String errorMessage = e.getMessage(); 
+            String errorMessage = e.getMessage(); //in prod file 
+            System.debug(e.getMessage());  
         }
     }
 }

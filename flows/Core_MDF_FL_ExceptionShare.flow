@@ -6,8 +6,8 @@
         <description>Add the share record to the list</description>
         <name>Core_MDF_Assign_all_the_bank_share_record</name>
         <label>Assign all the exception share record</label>
-        <locationX>984</locationX>
-        <locationY>562</locationY>
+        <locationX>270</locationX>
+        <locationY>1382</locationY>
         <assignmentItems>
             <assignToReference>sCollExceptionShareInsertList</assignToReference>
             <operator>Add</operator>
@@ -23,8 +23,8 @@
         <description>Assign the EAMShareTemp record to the List.</description>
         <name>Core_MDF_Assign_all_the_EAM_share_record</name>
         <label>Assign all the EAM share record</label>
-        <locationX>804</locationX>
-        <locationY>562</locationY>
+        <locationX>270</locationX>
+        <locationY>1490</locationY>
         <assignmentItems>
             <assignToReference>sCollEAMShareList</assignToReference>
             <operator>Add</operator>
@@ -40,8 +40,8 @@
         <description>Assign the values to the Exception Account Mapping Temp share record</description>
         <name>Core_MDF_Assign_the_value_to_EAM_Temp_share_record</name>
         <label>Assign the value to EAM Temp share record</label>
-        <locationX>1124</locationX>
-        <locationY>562</locationY>
+        <locationX>270</locationX>
+        <locationY>1274</locationY>
         <assignmentItems>
             <assignToReference>sEAMShareTemp.ParentId</assignToReference>
             <operator>Assign</operator>
@@ -71,8 +71,8 @@
         <description>assign the values to the exception share record</description>
         <name>Core_MDF_Assign_the_value_to_Exception_share_record</name>
         <label>Assign the value to Exception share record</label>
-        <locationX>1124</locationX>
-        <locationY>429</locationY>
+        <locationX>270</locationX>
+        <locationY>1166</locationY>
         <assignmentItems>
             <assignToReference>sExceptionShareTemp.ParentId</assignToReference>
             <operator>Assign</operator>
@@ -101,8 +101,8 @@
     <assignments>
         <name>Core_MDF_Empty_the_EAM_Share_temp_variable</name>
         <label>Empty the EAM Share temp variable</label>
-        <locationX>684</locationX>
-        <locationY>562</locationY>
+        <locationX>270</locationX>
+        <locationY>1598</locationY>
         <assignmentItems>
             <assignToReference>sEAMShareTemp.UserOrGroupId</assignToReference>
             <operator>Assign</operator>
@@ -132,8 +132,8 @@
         <description>Clear the share record values for the next iteration</description>
         <name>Core_MDF_Empty_the_Exception_Share_temp_variable</name>
         <label>Empty the Exception Share temp variable</label>
-        <locationX>802</locationX>
-        <locationY>411</locationY>
+        <locationX>270</locationX>
+        <locationY>1706</locationY>
         <assignmentItems>
             <assignToReference>sExceptionShareTemp.ParentId</assignToReference>
             <operator>Assign</operator>
@@ -163,8 +163,8 @@
         <description>Assign CCF Channel program Id</description>
         <name>Core_MDF_Get_CCF_Program_Name</name>
         <label>Get CCF Program Name</label>
-        <locationX>543</locationX>
-        <locationY>161</locationY>
+        <locationX>468</locationX>
+        <locationY>458</locationY>
         <assignmentItems>
             <assignToReference>vCCFChannelProgramId</assignToReference>
             <operator>Assign</operator>
@@ -180,8 +180,8 @@
         <description>Assign DCF Channel program Id</description>
         <name>Core_MDF_Get_DCF_Program_Name</name>
         <label>Get DCF Program Name</label>
-        <locationX>129</locationX>
-        <locationY>211</locationY>
+        <locationX>732</locationX>
+        <locationY>458</locationY>
         <assignmentItems>
             <assignToReference>vDCFChannelProgramId</assignToReference>
             <operator>Assign</operator>
@@ -197,8 +197,8 @@
         <description>Assign SPCF Channel program Id</description>
         <name>Core_MDF_Get_SPCF_Program_Name</name>
         <label>Get SPCF Program Name</label>
-        <locationX>332</locationX>
-        <locationY>157</locationY>
+        <locationX>996</locationX>
+        <locationY>458</locationY>
         <assignmentItems>
             <assignToReference>vSPCFChannelProgramId</assignToReference>
             <operator>Assign</operator>
@@ -214,8 +214,8 @@
         <description>check the exception and channel program</description>
         <name>Core_MDF_Align_Exception_Program_with_it_s_respective_values</name>
         <label>Align Exception Program with it&apos;s respective values</label>
-        <locationX>221</locationX>
-        <locationY>62</locationY>
+        <locationX>864</locationX>
+        <locationY>350</locationY>
         <defaultConnector>
             <targetReference>Core_MDF_Loop_Metadata</targetReference>
         </defaultConnector>
@@ -270,8 +270,8 @@
         <description>Check if Group Id is not Null for the PGM record.</description>
         <name>Core_MDF_Check_if_Group_Id_is_Not_NULL</name>
         <label>Check if Group Id is Not NULL</label>
-        <locationX>1117</locationX>
-        <locationY>280</locationY>
+        <locationX>402</locationX>
+        <locationY>1058</locationY>
         <defaultConnector>
             <targetReference>Core_MDF_Loop_through_PGM_List</targetReference>
         </defaultConnector>
@@ -296,8 +296,11 @@
         <description>Check if the exception share list is not empty</description>
         <name>Core_MDF_ExceptionShare_List_NOT_EMPTY</name>
         <label>ExceptionShare List NOT EMPTY</label>
-        <locationX>690</locationX>
-        <locationY>90</locationY>
+        <locationX>182</locationX>
+        <locationY>1982</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_4</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_ExceptionShare_List_is_NOT_EMPTY</name>
@@ -319,8 +322,11 @@
         <description>Check if PGM list is empty</description>
         <name>Core_MDF_PGM_Not_NULL</name>
         <label>PGM Not NULL</label>
-        <locationX>484</locationX>
-        <locationY>289</locationY>
+        <locationX>380</locationX>
+        <locationY>842</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_5</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_PGM_NOT_NULL_Decision</name>
@@ -339,6 +345,22 @@
         </rules>
     </decisions>
     <description>Share Exception and Exception Account Mapping records with the Internal Account Managers</description>
+    <ends>
+        <name>END_ELEMENT_4</name>
+        <locationX>314</locationX>
+        <locationY>2090</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_5</name>
+        <locationX>578</locationX>
+        <locationY>950</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_6</name>
+        <locationX>50</locationX>
+        <locationY>2306</locationY>
+    </ends>
+    <environments>Default</environments>
     <formulas>
         <description>Formula containing CCF Channel Program Id</description>
         <name>fCCFProgramId</name>
@@ -361,8 +383,8 @@
         <description>Iterate over the loop to set the channel program Id</description>
         <name>Core_MDF_Loop_Metadata</name>
         <label>Loop Metadata</label>
-        <locationX>247</locationX>
-        <locationY>427</locationY>
+        <locationX>380</locationX>
+        <locationY>242</locationY>
         <assignNextValueToReference>sCPtemp</assignNextValueToReference>
         <collectionReference>sCPcollection</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -376,8 +398,8 @@
     <loops>
         <name>Core_MDF_Loop_through_PGM_List</name>
         <label>Loop through PGM List</label>
-        <locationX>802</locationX>
-        <locationY>277</locationY>
+        <locationX>182</locationX>
+        <locationY>950</locationY>
         <assignNextValueToReference>sPGM</assignNextValueToReference>
         <collectionReference>sCollPGMList</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -395,6 +417,12 @@
         </value>
     </processMetadataValues>
     <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
         <name>OriginBuilderType</name>
         <value>
             <stringValue>LightningFlowBuilder</stringValue>
@@ -405,16 +433,19 @@
         <description>Create Exception Account Mapping share records</description>
         <name>Core_MDF_Create_Exception_Account_Mapping_share_records</name>
         <label>Create Exception Account Mapping share records</label>
-        <locationX>1142</locationX>
-        <locationY>79</locationY>
+        <locationX>50</locationX>
+        <locationY>2198</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_6</targetReference>
+        </connector>
         <inputReference>sCollEAMShareList</inputReference>
     </recordCreates>
     <recordCreates>
         <description>Insert the exception share list</description>
         <name>Core_MDF_Insert_Exception_Share_to_Internal_Account_Manager</name>
         <label>Insert Exception Share to Internal Account Manager</label>
-        <locationX>983</locationX>
-        <locationY>79</locationY>
+        <locationX>50</locationX>
+        <locationY>2090</locationY>
         <connector>
             <targetReference>Core_MDF_Create_Exception_Account_Mapping_share_records</targetReference>
         </connector>
@@ -424,8 +455,8 @@
         <description>Fetch the PGM records based on account and channel program</description>
         <name>Core_MDF_Fetch_PGM</name>
         <label>Fetch PGM</label>
-        <locationX>492</locationX>
-        <locationY>436</locationY>
+        <locationX>380</locationX>
+        <locationY>734</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Core_MDF_PGM_Not_NULL</targetReference>
@@ -482,8 +513,8 @@
         <description>Get the channel program name and program name from BankProgram Entitlement Mapping metatdata</description>
         <name>Core_MDF_Fetch_Program_Mapping_Metadata</name>
         <label>Fetch Program Mapping Metadata</label>
-        <locationX>51</locationX>
-        <locationY>427</locationY>
+        <locationX>380</locationX>
+        <locationY>134</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Core_MDF_Loop_Metadata</targetReference>
@@ -502,14 +533,6 @@
         </connector>
     </start>
     <status>Active</status>
-    <variables>
-        <name>sCollChannelProgramName</name>
-        <dataType>SObject</dataType>
-        <isCollection>true</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Core_MDF_BankProgram_Entitlement_Mapping__mdt</objectType>
-    </variables>
     <variables>
         <name>sCollEAMShareList</name>
         <dataType>SObject</dataType>
@@ -550,14 +573,6 @@
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>Core_MDF_ChannelProgram__mdt</objectType>
-    </variables>
-    <variables>
-        <name>sCPtemp1</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Core_MDF_BankProgram_Entitlement_Mapping__mdt</objectType>
     </variables>
     <variables>
         <name>sEAMShareTemp</name>

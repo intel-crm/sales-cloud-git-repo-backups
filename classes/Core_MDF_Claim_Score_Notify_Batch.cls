@@ -8,12 +8,12 @@ public without sharing class Core_MDF_Claim_Score_Notify_Batch implements Databa
     
     Public static List<string> Intel_Owner_Based_Notification_Prog = Core_MDF_CCP_ConstantClass.Intel_Owner_Based_Notification_Prog;
     Public static List<string> IUPGM_Based_Notification_Prog =Core_MDF_CCP_ConstantClass.IUPGM_Based_Notification_Prog ;
-    Public static List<String> Notification_Enabled_Program = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Claim_Score_Notification').split(',');              
+    Public static List<String> Notification_Enabled_Program = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Claim_Score_Notification').split(',');	
     Public Set<Id> usersToSendMail = new Set<Id>();
     Public static string AUDIT_CLOSED =Core_MDF_CCP_ConstantClass.AUDIT_CLOSED;
     
     Public static string REVIEW_COMPLETED =Core_MDF_CCP_ConstantClass.REVIEW_COMPLETED ;  
-    Public string DAYS_FILTER = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Claim_Score_Notification_Days');              
+    Public string DAYS_FILTER = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Claim_Score_Notification_Days');	
     
     /*Start method - To get Case Records*/
     public Database.QueryLocator start(Database.BatchableContext bc){
@@ -45,7 +45,7 @@ public without sharing class Core_MDF_Claim_Score_Notify_Batch implements Databa
                     userIdSet.addAll(resultWrap.userId);
                     accIdSet.addAll(resultWrap.accountIdSet);
                     progBudgetTypeKeySet.addAll(resultWrap.progBTSet);
-                    progSetInt.addAll(resultWrap.programSetInt);
+                    progSetInt.addAll(resultWrap.programSetInt); 
                 }
             }
             
@@ -91,6 +91,11 @@ public without sharing class Core_MDF_Claim_Score_Notify_Batch implements Databa
         Core_MDF_ScheduledNotificationHandler.InputWrapper inputWrap = new Core_MDF_ScheduledNotificationHandler.InputWrapper();
        
         if(Intel_Owner_Based_Notification_Prog.contains(prog) && caseRec.Core_MDF_Claim_Lookup_Id__c != null && caseRec.Core_MDF_Claim_Lookup_Id__r.Request.Core_MDF_Intel_Activity_Owner_Id__c != NULL && (caseRec.Core_MDF_Claim_Lookup_Id__r.Request.Core_MDF_Intel_Activity_Owner_Id__r.IsActive || caseRec.Core_MDF_Claim_Lookup_Id__r.Request.Core_MDF_Intel_Activity_Owner_Id__r.Partner_License_Reclaimed__c)) {
+            progBudgetTypeKeySet.add(prog + caseRec.Core_MDF_Claim_Lookup_Id__r.Request.Core_MDF_Budget_Type_nm__c);
+            userIdSet.add(caseRec.Core_MDF_Claim_Lookup_Id__r.Request.Core_MDF_Intel_Activity_Owner_Id__c);
+            accIdSet.add(Id.valueOf(caseRec.Core_MDF_Claim_Lookup_Id__r.Request.Core_MDF_Ultimate_Account_Id__c));
+            progSetInt.add(prog);
+        } else if(prog=='Ecosystem Extension Fund' && Intel_Owner_Based_Notification_Prog.contains(prog) && caseRec.Core_MDF_Claim_Lookup_Id__c != null && caseRec.Core_MDF_Claim_Lookup_Id__r.Request.Core_MDF_Primary_Intel_Owner_Id__c != NULL && (caseRec.Core_MDF_Claim_Lookup_Id__r.Request.Core_MDF_Primary_Intel_Owner_Id__r.IsActive || caseRec.Core_MDF_Claim_Lookup_Id__r.Request.Core_MDF_Primary_Intel_Owner_Id__r.Partner_License_Reclaimed__c)) {
             progBudgetTypeKeySet.add(prog + caseRec.Core_MDF_Claim_Lookup_Id__r.Request.Core_MDF_Budget_Type_nm__c);
             userIdSet.add(caseRec.Core_MDF_Claim_Lookup_Id__r.Request.Core_MDF_Intel_Activity_Owner_Id__c);
             accIdSet.add(Id.valueOf(caseRec.Core_MDF_Claim_Lookup_Id__r.Request.Core_MDF_Ultimate_Account_Id__c));

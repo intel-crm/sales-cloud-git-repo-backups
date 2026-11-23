@@ -270,7 +270,6 @@ private class Core_MDF_AI_Integration_Outbound_Test {
         // Query for the IDs needed for the test
         List<PartnerFundRequest> pfrList = [SELECT Id FROM PartnerFundRequest ORDER BY CreatedDate DESC LIMIT 1];
         List<Core_MDF_Bank__c> bankList = [SELECT Id FROM Core_MDF_Bank__c ORDER BY CreatedDate DESC LIMIT 1];
-         User usr = [SELECT Id,Name FROM User where Email = 'sysadmin@example.com' LIMIT 1];
         
         Id pfrId = pfrList[0].Id;
         Id bankId = bankList[0].Id;
@@ -312,11 +311,10 @@ private class Core_MDF_AI_Integration_Outbound_Test {
             claimManual.Id => claimManual,
                 claimAI.Id => claimAI
                 };
-                    system.runAs(usr){       
-                        Test.startTest();
-                        Core_MDF_AI_Integration_Outbound.generateAIResponseForPICProcess(newMapInput, 'update');
-                        Test.stopTest();
-                    }
+                    
+                    Test.startTest();
+        Core_MDF_AI_Integration_Outbound.generateAIResponseForPICProcess(newMapInput, 'update');
+        Test.stopTest();
         
         // Fetch the latest staged AI reviews for both claims
         Core_MDF_PIC_Review__c createdManualBased = [
@@ -374,16 +372,16 @@ private class Core_MDF_AI_Integration_Outbound_Test {
             claim.Id => new Map<Id, Core_CDB_Integration_Log__c>{ priorAI.Id => prevLog }
         };
             Map <Id,Core_MDF_PIC_Review__c> picReviewMap1=new Map <Id,Core_MDF_PIC_Review__c> {priorAI.id => priorAI};
-                Map<Id, PartnerFundClaim> claimMap = new Map<Id, PartnerFundClaim>{ claim.Id => claim };
-                    
-                    Map<String, String> compToJson = new Map<String, String>{
-                        compositeKey => '{"sample":"payload1"}'
-                            };
-                                Map<String, Integer> prevRetry = new Map<String, Integer>{
-                                    compositeKey => 2
-                                        };
-                                            
-                                            Test.startTest();
+            Map<Id, PartnerFundClaim> claimMap = new Map<Id, PartnerFundClaim>{ claim.Id => claim };
+                
+                Map<String, String> compToJson = new Map<String, String>{
+                    compositeKey => '{"sample":"payload1"}'
+                        };
+                            Map<String, Integer> prevRetry = new Map<String, Integer>{
+                                compositeKey => 2
+                                    };
+                                        
+                                        Test.startTest();
         Test.setMock(HttpCalloutMock.class, new SuccessHttpMock());
         // Drive fetch path (builds JSON internally) and then explicitly call future once
         Core_MDF_AI_Integration_Outbound.fetchClaimDocAndPICReviewDetails(claimMap, claimIdToPicReviewIdToFinalCDBLog,picReviewMap1);
@@ -438,18 +436,18 @@ private class Core_MDF_AI_Integration_Outbound_Test {
         Map<Id, Map<Id, Core_CDB_Integration_Log__c>> claimIdToPicReviewIdToFinalCDBLog = new Map<Id, Map<Id, Core_CDB_Integration_Log__c>>{
             claim.Id => new Map<Id, Core_CDB_Integration_Log__c>{ priorAI.Id => prevLog }
         };
-            Map<Id, PartnerFundClaim> claimMap = new Map<Id, PartnerFundClaim>{ claim.Id => claim };
-                
-                // Build payload map and prevRetry map so makeCDBCallout computes newRetryCounter = 3
-                Map<String, String> compToJson = new Map<String, String>{
-                    compositeKey => '{"sample":"payload2"}'
-                        };
-                            Map<String, Integer> prevRetry = new Map<String, Integer>{
-                                compositeKey => 2
-                                    };
-                                        Map<Id,Core_MDF_PIC_Review__c> picReviewMap = new  Map<Id,Core_MDF_PIC_Review__c>{priorAI.Id => priorAI};
-                                            
-                                            Test.startTest();
+        Map<Id, PartnerFundClaim> claimMap = new Map<Id, PartnerFundClaim>{ claim.Id => claim };
+        
+        // Build payload map and prevRetry map so makeCDBCallout computes newRetryCounter = 3
+        Map<String, String> compToJson = new Map<String, String>{
+            compositeKey => '{"sample":"payload2"}'
+        };
+        Map<String, Integer> prevRetry = new Map<String, Integer>{
+            compositeKey => 2
+        };
+            Map<Id,Core_MDF_PIC_Review__c> picReviewMap = new  Map<Id,Core_MDF_PIC_Review__c>{priorAI.Id => priorAI};
+        
+        Test.startTest();
         // Force callout failure so isSuccess = false
         Test.setMock(HttpCalloutMock.class, new FailureHttpMock());
         Core_MDF_AI_Integration_Outbound.fetchClaimDocAndPICReviewDetails(claimMap, claimIdToPicReviewIdToFinalCDBLog,picReviewMap);

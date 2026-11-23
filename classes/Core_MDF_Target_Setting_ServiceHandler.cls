@@ -14,7 +14,7 @@ Called on   :   Before Insert
         }
         catch(Exception e) {
             Core_MDF_CCP_UtilityClass.logError(e);  
-            throw e;
+            throw e; 
         }
     }
     
@@ -43,7 +43,8 @@ Called on   :   After Insert
         List<Core_MDF_Target_Setting_Line_Item__c> lineItemsList= new List<Core_MDF_Target_Setting_Line_Item__c>();
         List<Core_MDF_Target_Setting_LineItem_Config__c> LineItemConfigList = new List<Core_MDF_Target_Setting_LineItem_Config__c>();
         List<String> TopAccEnabledBudgetTypes = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_TrgtStngTopAccEnabledBdgtTypes').split(';');
-
+        // Highlight: Unused Local Variable - 14285
+        // Map<Id, String> accIdToGeoMap = new Map<Id,String>();
         Map<String, List<Core_MDF_Target_Setting_LineItem_Config__c>> programToLineItemListMap = new Map<String, List<Core_MDF_Target_Setting_LineItem_Config__c>>();
         Map<String, List<Account>> programToAccListMap = new Map<String, List<Account>>();
         Set<String> programIdSet = new Set<String>();
@@ -90,6 +91,7 @@ Called on   :   After Insert
                 }
                 if(!targetSettingList.isEmpty()){
                     for(Core_MDF_Target_Setting__c targetSetting : targetSettingList){
+                       // if(idToProgramMap.containsKey(targetSetting.Core_MDF_Program_Name__c) && programToLineItemListMap.containsKey(idToProgramMap.get(targetSetting.Core_MDF_Program_Name__c)) && programToLineItemListMap.get(idToProgramMap.get(targetSetting.Core_MDF_Program_Name__c)) != null){
                       
                         
                             if (!idToProgramMap.containsKey(targetSetting.Core_MDF_Program_Name__c) ||
@@ -104,6 +106,7 @@ Called on   :   After Insert
                                 if(TopAccEnabledBudgetTypes.contains(configRecord.Core_MDF_Budget_Type_txt__c) 
                                 && programToAccListMap.containsKey(configRecord.Core_MDF_Program_txt__c) 
                                 && programToAccListMap.get(configRecord.Core_MDF_Program_txt__c) != null){
+                                   // if(programToAccListMap.containsKey(configRecord.Core_MDF_Program_txt__c) && programToAccListMap.get(configRecord.Core_MDF_Program_txt__c) != null){ //US - TWC702-14285 - Original code commented
                                         for(Account acc : programToAccListMap.get(configRecord.Core_MDF_Program_txt__c)){
                                             //pickup records from custom setting which matches the host region of account 
                                             if(acc.Core_Geo__c == configRecord.Core_MDF_Region_txt__c){
@@ -144,7 +147,7 @@ Called on   :   After Insert
         }
         catch(Exception e) {
             Core_MDF_CCP_UtilityClass.logError(e);  
-            throw e;
+            throw e; 
         } 
     }
     
@@ -161,7 +164,8 @@ Called on   :   Before Insert, Before Update
             Set<String> programSet = new Set<String>();
             Integer recordIdCount = 1;
             Map<String,Core_MDF_Target_Setting__c> idToTargetSetRecMap = new Map<String,Core_MDF_Target_Setting__c>();
-
+            // Highlight: Unused Local Variable - 14285
+            // Set<String> executedRecId = new Set<String>();
             Map<String,Core_MDF_Target_Setting__c> draftTargetSettingMap = new Map<String,Core_MDF_Target_Setting__c>();
             set<String> duplicateRecIdSet = new set<String>();
             Map<String,Core_MDF_Target_Setting__c> subDraftTargetSetMap = new Map<String,Core_MDF_Target_Setting__c>();
@@ -276,7 +280,7 @@ Called on   :   Before Update
             }
             catch(Exception e) {
                 Core_MDF_CCP_UtilityClass.logError(e);  
-                throw e;
+                throw e; 
             }
         }
     }
@@ -349,8 +353,8 @@ Called on   :   Before Insert
         Map<string,string> reportNameToIdMap = new Map<string,string>();
         Set<String> programIdSet = new Set<String>();
         Map<String,String> idToProgramMap = new Map<String,String>();
-        
-
+        // Highlight: Unused Local Variable - 14285
+        // Map<String, Schema.SObjectField> fieldsMap = Schema.getGlobalDescribe().get('Core_MDF_Target_Setting__c').getDescribe().Fields.getMap();
         try{
 
             for(Core_MDF_Target_Setting__c targetSettingRecord : newTargetSettingList){

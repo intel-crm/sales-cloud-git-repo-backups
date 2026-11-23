@@ -90,7 +90,6 @@ public inherited sharing class Core_MDF_PFR_RestAPI_Constants {
     // ==========================================
     public static final String ERR_9060_BUDGET_NOT_AVAIL = '9060';
     public static final String ERR_9061_EXCHANGE_RATE_NOT_FOUND = '9061';
-    public static final String ERR_9062_CLAIM_AVAILABLE_AMOUNT_EXCEEDED = '9062';
 
     // ==========================================
     // Conditionally-mandatory field Errors (9090 series)

@@ -481,7 +481,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Cancelled - Authority,Cancelled - Budget,Cancelled - Duplicate,Cancelled - Timing,Lost - Business Relationship,Lost - Internal Build,Lost - Lack of OEM Support,Lost - Price,Lost - Product Features,Lost - Product Performance,Lost - Schedule</value>
+            <value>Cancelled - Authority,Cancelled - Budget,Cancelled - Duplicate,Cancelled - Entered in Error,Cancelled - Timing,Lost - Business Relationship,Lost - Internal Build,Lost - Lack of OEM Support,Lost - Price,Lost - Product Features,Lost - Product Performance,Lost - Schedule</value>
         </criteriaItems>
         <criteriaItems>
             <column>Product2.Core_Inf_KPI_ProdGroup__c</column>

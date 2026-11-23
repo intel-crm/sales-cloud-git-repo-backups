@@ -163,6 +163,10 @@
             <masterLabel>Solution Provider</masterLabel>
             <translation><!-- Solution Provider --></translation>
         </picklistValues>
+        <picklistValues>
+            <masterLabel>Sponsor</masterLabel>
+            <translation><!-- Sponsor --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Start Date --></label>
@@ -204,5 +208,9 @@
     <validationRules>
         <errorMessage><!-- End Date cannot be less than Today&apos;s Date --></errorMessage>
         <name>PRM_Restrict_Past_End_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Start Date cannot be less than Today&apos;s Date --></errorMessage>
+        <name>PRM_Restrict_Past_Start_Date</name>
     </validationRules>
 </CustomObjectTranslation>

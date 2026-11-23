@@ -380,6 +380,16 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Core_MDF_Current_Object__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Current Object</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Current_Object_nm__c</fullName>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>CurrentObject</label>
@@ -435,6 +445,16 @@
                 </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_FieldSet_API_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>FieldSet API Name</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_Field_Set_API_Name_nm__c</fullName>
@@ -783,6 +803,16 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
+        <fullName>Core_MDF_Object_API_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Object API Name</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Object_API_Name_nm__c</fullName>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Object API Name</label>
@@ -809,6 +839,16 @@
                 </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_RecordType_Developer_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>RecordType Developer Name</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_Record_Type_DeveloperName_nm__c</fullName>

@@ -9,6 +9,10 @@
         <value>Subscription Notification Types</value>
     </caseValues>
     <fields>
+        <label><!-- Access Type --></label>
+        <name>Core_MDF_Access_Type_nm__c</name>
+    </fields>
+    <fields>
         <label><!-- Active --></label>
         <name>Core_MDF_Active_Ind__c</name>
     </fields>
@@ -29,6 +33,18 @@
         <name>Core_MDF_Applicable_Profiles_nm__c</name>
     </fields>
     <fields>
+        <label><!-- Applicable Role --></label>
+        <name>Core_MDF_Applicable_Role_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Conflict Custom Permissions --></label>
+        <name>Core_MDF_Conflict_CustomPermissions_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Conflict Permission Set Groups --></label>
+        <name>Core_MDF_Conflict_PermissionSet_Grp_nm__c</name>
+    </fields>
+    <fields>
         <label><!-- Conflict Permission Sets --></label>
         <name>Core_MDF_Conflict_PermissionSets_nm__c</name>
     </fields>
@@ -45,6 +61,22 @@
         <help><!-- Email Template used to send selected Notification type. --></help>
         <label><!-- Email Template Name --></label>
         <name>Core_MDF_Email_Template_Name_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Emulation Custom Permission --></label>
+        <name>Core_MDF_Emulation_CustomPermissions_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Emulation Permission Set --></label>
+        <name>Core_MDF_Emulation_Pemission_Set_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Emulation Permission Set Groups --></label>
+        <name>Core_MDF_Emulation_PermissionSet_Grp_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Emulation Profile --></label>
+        <name>Core_MDF_Emulation_Profiles_nm__c</name>
     </fields>
     <fields>
         <help><!-- This text will be visible on Subscription UI. --></help>

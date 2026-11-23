@@ -163,18 +163,13 @@
         <description>Parent Account for Executive Meeting Brief</description>
         <label>Account</label>
         <lookupFilter>
-            <active>true</active>
+            <active>false</active>
             <filterItems>
                 <field>Account.Core_Covered_Account__c</field>
                 <operation>equals</operation>
                 <value>True</value>
             </filterItems>
-            <filterItems>
-                <field>Account.RecordTypeId</field>
-                <operation>equals</operation>
-                <value>Intel Account</value>
-            </filterItems>
-            <isOptional>true</isOptional>
+            <isOptional>false</isOptional>
         </lookupFilter>
         <referenceTo>Account</referenceTo>
         <relationshipLabel>Account Meeting Briefs</relationshipLabel>
@@ -188,7 +183,7 @@
     <fields>
         <fullName>Core_Account_Brief_Event__c</fullName>
         <description>List of events for typed to the account brief</description>
-        <inlineHelpText>Select the appropriate event. If no match,  select Other and provide details in the Other Event field</inlineHelpText>
+        <inlineHelpText>List of events for typed to the account brief</inlineHelpText>
         <label>Event</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -199,14 +194,9 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Board of Advisors</fullName>
+                    <fullName>Account Transition</fullName>
                     <default>false</default>
-                    <label>Board of Advisors</label>
-                </value>
-                <value>
-                    <fullName>Computex</fullName>
-                    <default>false</default>
-                    <label>Computex</label>
+                    <label>Account Transition</label>
                 </value>
                 <value>
                     <fullName>Consumer Electronics Show (CES)</fullName>
@@ -214,19 +204,39 @@
                     <label>Consumer Electronics Show (CES)</label>
                 </value>
                 <value>
-                    <fullName>Executive Business Review</fullName>
+                    <fullName>Computex</fullName>
                     <default>false</default>
-                    <label>Executive Business Review</label>
+                    <label>Computex</label>
                 </value>
                 <value>
                     <fullName>Intel 360 (Keynotes/Showcase/ISMC)</fullName>
                     <default>false</default>
-                    <label>Intel 360</label>
+                    <label>Intel 360 (Keynotes/Showcase/ISMC)</label>
+                </value>
+                <value>
+                    <fullName>Intel Developer Forum (IDF)</fullName>
+                    <default>false</default>
+                    <label>Intel Developer Forum (IDF)</label>
+                </value>
+                <value>
+                    <fullName>Intel Event Express</fullName>
+                    <default>false</default>
+                    <label>Intel Event Express</label>
                 </value>
                 <value>
                     <fullName>Intel Extreme Masters (IEM)</fullName>
                     <default>false</default>
                     <label>Intel Extreme Masters (IEM)</label>
+                </value>
+                <value>
+                    <fullName>Intel Solutions Summit (ISS)</fullName>
+                    <default>false</default>
+                    <label>Intel Solutions Summit (ISS)</label>
+                </value>
+                <value>
+                    <fullName>Intel Vertical Summit (IVS)</fullName>
+                    <default>false</default>
+                    <label>Intel Vertical Summit (IVS)</label>
                 </value>
                 <value>
                     <fullName>International Science &amp; Engineering Fair (ISEF)</fullName>
@@ -244,14 +254,9 @@
                     <label>National Retail Federation (NRF)</label>
                 </value>
                 <value>
-                    <fullName>Other (describe in Other Event Field)</fullName>
-                    <default>false</default>
-                    <label>Other (describe in Other Event Field)</label>
-                </value>
-                <value>
-                    <fullName>Partner Connect</fullName>
-                    <default>false</default>
-                    <label>Partner Connect</label>
+                    <fullName>None</fullName>
+                    <default>true</default>
+                    <label>None</label>
                 </value>
                 <value>
                     <fullName>Retail Executive Conference (REC)</fullName>
@@ -350,7 +355,7 @@ CASE( MONTH(TODAY()) ,
     <fields>
         <fullName>Core_Account_Meeting_Background_Meeting__c</fullName>
         <description>Brief Account Background  &amp; Recent meeting history</description>
-        <inlineHelpText>Recent history of customer’s business  in relation to the meeting (e.g. cultural points, initiatives, info and products).</inlineHelpText>
+        <inlineHelpText>Brief Account Background  &amp; Recent meeting history</inlineHelpText>
         <label>Background &amp; Recent Meeting History</label>
         <length>2000</length>
         <trackFeedHistory>true</trackFeedHistory>
@@ -375,7 +380,7 @@ CASE( MONTH(TODAY()) ,
         <description>Customer contact for the account meeting</description>
         <externalId>false</externalId>
         <inlineHelpText>Customer contact for the account meeting</inlineHelpText>
-        <label>Main Customer Contact</label>
+        <label>Customer Contact</label>
         <length>100</length>
         <required>true</required>
         <trackFeedHistory>true</trackFeedHistory>
@@ -387,8 +392,8 @@ CASE( MONTH(TODAY()) ,
     <fields>
         <fullName>Core_Account_Meeting_Date__c</fullName>
         <description>When the account meeting happened</description>
-        <inlineHelpText>The date of the event</inlineHelpText>
-        <label>Meeting Date</label>
+        <inlineHelpText>When the account meeting is happening</inlineHelpText>
+        <label>Date</label>
         <required>false</required>
         <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -398,8 +403,8 @@ CASE( MONTH(TODAY()) ,
     <fields>
         <fullName>Core_Account_Meeting_Dress__c</fullName>
         <description>Dress Type for the account meeting</description>
-        <inlineHelpText>Suggested dress code for the event</inlineHelpText>
-        <label>Dress Code</label>
+        <inlineHelpText>Dress Type for the account meeting</inlineHelpText>
+        <label>Dress</label>
         <required>false</required>
         <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -409,41 +414,22 @@ CASE( MONTH(TODAY()) ,
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Business Attire</fullName>
+                    <fullName>Professional</fullName>
                     <default>false</default>
-                    <label>Business Attire</label>
+                    <label>Professional</label>
                 </value>
                 <value>
                     <fullName>Business Casual</fullName>
                     <default>false</default>
                     <label>Business Casual</label>
                 </value>
-                <value>
-                    <fullName>Other attire ( include details in &apos;Other Event&apos; field)</fullName>
-                    <default>false</default>
-                    <label>Other attire ( include details in &apos;Other Event&apos; field)</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
     <fields>
-        <fullName>Core_Account_Meeting_End_Time__c</fullName>
-        <description>When is the meeting ending</description>
-        <externalId>false</externalId>
-        <inlineHelpText>The end time of the event</inlineHelpText>
-        <label>End Time</label>
-        <length>20</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Account_Meeting_Exec_Summary__c</fullName>
         <description>High-level overview of current engagement, what’s happening, what we are going to focus on etc.)</description>
-        <inlineHelpText>High-level overview of current engagement (e.g what&apos;s happening, what we are going to focus on)</inlineHelpText>
+        <inlineHelpText>High-level overview of current engagement, what’s happening, what we are going to focus on etc.)</inlineHelpText>
         <label>Executive Summary</label>
         <length>2000</length>
         <trackFeedHistory>true</trackFeedHistory>
@@ -492,8 +478,8 @@ CASE( MONTH(TODAY()) ,
         <fullName>Core_Account_Meeting_Intel_Contact__c</fullName>
         <description>Intel contact for the account brief meeting</description>
         <externalId>false</externalId>
-        <inlineHelpText>The main Intel employee that is chairing/organzing the meeting.</inlineHelpText>
-        <label>Intel Main Contact/Meeting Chair</label>
+        <inlineHelpText>Intel contact for the account brief meeting</inlineHelpText>
+        <label>Intel Contact</label>
         <length>100</length>
         <required>true</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -505,7 +491,7 @@ CASE( MONTH(TODAY()) ,
     <fields>
         <fullName>Core_Account_Meeting_Language__c</fullName>
         <description>Language the meeting will be held for the meeting</description>
-        <inlineHelpText>Select the primary language that will be used during the event</inlineHelpText>
+        <inlineHelpText>Language the meeting will be held for the meeting</inlineHelpText>
         <label>Language</label>
         <required>false</required>
         <trackFeedHistory>true</trackFeedHistory>
@@ -519,6 +505,11 @@ CASE( MONTH(TODAY()) ,
                     <fullName>English</fullName>
                     <default>true</default>
                     <label>English</label>
+                </value>
+                <value>
+                    <fullName>Mandarin</fullName>
+                    <default>false</default>
+                    <label>Mandarin</label>
                 </value>
                 <value>
                     <fullName>Japanese</fullName>
@@ -551,6 +542,16 @@ CASE( MONTH(TODAY()) ,
                     <label>German</label>
                 </value>
                 <value>
+                    <fullName>Hindi</fullName>
+                    <default>false</default>
+                    <label>Hindi</label>
+                </value>
+                <value>
+                    <fullName>Arabic</fullName>
+                    <default>false</default>
+                    <label>Arabic</label>
+                </value>
+                <value>
                     <fullName>Russian</fullName>
                     <default>false</default>
                     <label>Russian</label>
@@ -565,71 +566,6 @@ CASE( MONTH(TODAY()) ,
                     <default>false</default>
                     <label>Vietnamese</label>
                 </value>
-                <value>
-                    <fullName>Chinese Simplified</fullName>
-                    <default>false</default>
-                    <label>Chinese Simplified</label>
-                </value>
-                <value>
-                    <fullName>Chinese Traditional</fullName>
-                    <default>false</default>
-                    <label>Chinese Traditional</label>
-                </value>
-                <value>
-                    <fullName>English (Canada)</fullName>
-                    <default>false</default>
-                    <label>English (Canada)</label>
-                </value>
-                <value>
-                    <fullName>English (Great Britain)</fullName>
-                    <default>false</default>
-                    <label>English (Great Britain)</label>
-                </value>
-                <value>
-                    <fullName>English (Ireland)</fullName>
-                    <default>false</default>
-                    <label>English (Ireland)</label>
-                </value>
-                <value>
-                    <fullName>French (Canada)</fullName>
-                    <default>false</default>
-                    <label>French (Canada)</label>
-                </value>
-                <value>
-                    <fullName>Spanish (LAR)</fullName>
-                    <default>false</default>
-                    <label>Spanish (LAR)</label>
-                </value>
-                <value>
-                    <fullName>Spanish (Spain)</fullName>
-                    <default>false</default>
-                    <label>Spanish (Spain)</label>
-                </value>
-                <value>
-                    <fullName>Hebrew</fullName>
-                    <default>false</default>
-                    <label>Hebrew</label>
-                </value>
-                <value>
-                    <fullName>Indonesian</fullName>
-                    <default>false</default>
-                    <label>Indonesian</label>
-                </value>
-                <value>
-                    <fullName>Polish</fullName>
-                    <default>false</default>
-                    <label>Polish</label>
-                </value>
-                <value>
-                    <fullName>Thai</fullName>
-                    <default>false</default>
-                    <label>Thai</label>
-                </value>
-                <value>
-                    <fullName>Turkish</fullName>
-                    <default>false</default>
-                    <label>Turkish</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -637,7 +573,7 @@ CASE( MONTH(TODAY()) ,
         <fullName>Core_Account_Meeting_Location__c</fullName>
         <description>Location of the Meeting</description>
         <externalId>false</externalId>
-        <inlineHelpText>Provide as much detail as necessary to find the location:  e.g. Address, City, State/Province Postal Code, Country and/or building/conference room number.</inlineHelpText>
+        <inlineHelpText>Location of the meeting</inlineHelpText>
         <label>Location</label>
         <length>100</length>
         <required>false</required>
@@ -681,8 +617,8 @@ CASE( MONTH(TODAY()) ,
         <fullName>Core_Account_Meeting_Time__c</fullName>
         <description>When is the meeting happening</description>
         <externalId>false</externalId>
-        <inlineHelpText>The start time of the event</inlineHelpText>
-        <label>Start Time</label>
+        <inlineHelpText>When is the meeting happening</inlineHelpText>
+        <label>Time</label>
         <length>20</length>
         <required>false</required>
         <trackFeedHistory>true</trackFeedHistory>
@@ -694,23 +630,35 @@ CASE( MONTH(TODAY()) ,
     <fields>
         <fullName>Core_Account_Meeting_Tone__c</fullName>
         <description>Tone for the Account meeting</description>
-        <externalId>false</externalId>
-        <inlineHelpText>Tone of the meeting (e.g. bridge building, hostile, friendly, exploratory, etc.)</inlineHelpText>
+        <inlineHelpText>Tone for the Account Meeting</inlineHelpText>
         <label>Tone</label>
-        <length>255</length>
         <required>false</required>
         <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Formal</fullName>
+                    <default>false</default>
+                    <label>Formal</label>
+                </value>
+                <value>
+                    <fullName>Casual</fullName>
+                    <default>false</default>
+                    <label>Casual</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Core_Brief_Existing_Opportunity_1__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <description>Allows user to link to existing opportunities</description>
         <inlineHelpText>Allows user to link to existing opportunities</inlineHelpText>
-        <label>Opportunity 1</label>
+        <label>Existing Opportunity 1</label>
         <referenceTo>Opportunity</referenceTo>
         <relationshipLabel>Account Meeting Briefs</relationshipLabel>
         <relationshipName>Account_Meeting_Briefs</relationshipName>
@@ -723,7 +671,7 @@ CASE( MONTH(TODAY()) ,
     <fields>
         <fullName>Core_Brief_Existing_Opportunity_2__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <label>Opportunity 2</label>
+        <label>Existing Opportunity 2</label>
         <referenceTo>Opportunity</referenceTo>
         <relationshipLabel>Account Meeting Briefs (Existing Opportunity 2)</relationshipLabel>
         <relationshipName>Account_Meeting_Briefs_2</relationshipName>
@@ -736,7 +684,7 @@ CASE( MONTH(TODAY()) ,
     <fields>
         <fullName>Core_Brief_Existing_Opportunity_3__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <label>Opportunity 3</label>
+        <label>Existing Opportunity 3</label>
         <referenceTo>Opportunity</referenceTo>
         <relationshipLabel>Account Meeting Briefs (Existing Opportunity 3)</relationshipLabel>
         <relationshipName>Account_Meeting_Briefs3</relationshipName>
@@ -750,7 +698,7 @@ CASE( MONTH(TODAY()) ,
         <fullName>Core_Brief_Existing_Opportunity_Note_1__c</fullName>
         <description>Used for notes on the opportunity</description>
         <inlineHelpText>Used for notes on the opportunity</inlineHelpText>
-        <label>Opportunity 1 - Notes</label>
+        <label>Existing Opportunity Note 1</label>
         <length>2000</length>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -762,7 +710,7 @@ CASE( MONTH(TODAY()) ,
         <fullName>Core_Brief_Existing_Opportunity_Note_2__c</fullName>
         <description>Notes for existing opportunity</description>
         <inlineHelpText>Notes for existing opportunity</inlineHelpText>
-        <label>Opportunity 2 - Notes</label>
+        <label>Existing Opportunity Note 2</label>
         <length>2000</length>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -774,7 +722,7 @@ CASE( MONTH(TODAY()) ,
         <fullName>Core_Brief_Existing_Opportunity_Note_3__c</fullName>
         <description>Notes for existing opportunities</description>
         <inlineHelpText>Notes for existing opportunities</inlineHelpText>
-        <label>Opportunity 3 - Notes</label>
+        <label>Existing Opportunity 3</label>
         <length>2000</length>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -798,9 +746,9 @@ CASE( MONTH(TODAY()) ,
         <fullName>Core_Executive_Brief_Title__c</fullName>
         <description>Title of the Account Executive Brief</description>
         <externalId>false</externalId>
-        <inlineHelpText>An identifiable and unique name containing the date of the meeting and the account name. Do not include confidential information.</inlineHelpText>
-        <label>Account Meeting Brief Name</label>
-        <length>40</length>
+        <inlineHelpText>Input a title for the brief</inlineHelpText>
+        <label>Executive Brief Title</label>
+        <length>255</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -1052,8 +1000,8 @@ CASE( MONTH(TODAY()) ,
     <fields>
         <fullName>Core_Intel_Contact_Mobile_Number__c</fullName>
         <description>Intel Contact Mobile Phone number</description>
-        <inlineHelpText>Number of Intel Main Contact</inlineHelpText>
-        <label>Intel Main Contact Mobile Number</label>
+        <inlineHelpText>Intel Contact Mobile Phone number</inlineHelpText>
+        <label>Intel Contact Mobile Number</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -1073,7 +1021,7 @@ CASE( MONTH(TODAY()) ,
     </fields>
     <fields>
         <fullName>Core_Time_Zone__c</fullName>
-        <inlineHelpText>Select the time zone for this event</inlineHelpText>
+        <inlineHelpText>Enter the timezone for this meeting</inlineHelpText>
         <label>Time Zone</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -1084,384 +1032,914 @@ CASE( MONTH(TODAY()) ,
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>(GMT-12:00) Dateline</fullName>
+                    <fullName>ACDT</fullName>
                     <default>false</default>
-                    <label>(GMT-12:00) Dateline</label>
+                    <label>ACDT</label>
                 </value>
                 <value>
-                    <fullName>(GMT-11:00) Samoa</fullName>
+                    <fullName>ACST</fullName>
                     <default>false</default>
-                    <label>(GMT-11:00) Samoa</label>
+                    <label>ACST</label>
                 </value>
                 <value>
-                    <fullName>(GMT-10:00) Hawaii</fullName>
+                    <fullName>ACT</fullName>
                     <default>false</default>
-                    <label>(GMT-10:00) Hawaii</label>
+                    <label>ACT</label>
                 </value>
                 <value>
-                    <fullName>(GMT-09:00) Alaska</fullName>
+                    <fullName>ADT</fullName>
                     <default>false</default>
-                    <label>(GMT-09:00) Alaska</label>
+                    <label>ADT</label>
                 </value>
                 <value>
-                    <fullName>(GMT-08:00) Pacific [US &amp; Canada]</fullName>
+                    <fullName>AEDT</fullName>
                     <default>false</default>
-                    <label>(GMT-08:00) Pacific [US &amp; Canada]</label>
+                    <label>AEDT</label>
                 </value>
                 <value>
-                    <fullName>(GMT-07:00) Mountain [US &amp; Canada]</fullName>
+                    <fullName>AEST</fullName>
                     <default>false</default>
-                    <label>(GMT-07:00) Mountain [US &amp; Canada]</label>
+                    <label>AEST</label>
                 </value>
                 <value>
-                    <fullName>(GMT-07:00) Mountain [Mexico]</fullName>
+                    <fullName>AFT</fullName>
                     <default>false</default>
-                    <label>(GMT-07:00) Mountain [Mexico]</label>
+                    <label>AFT</label>
                 </value>
                 <value>
-                    <fullName>(GMT-07:00) Arizona</fullName>
+                    <fullName>AKDT</fullName>
                     <default>false</default>
-                    <label>(GMT-07:00) Arizona</label>
+                    <label>AKDT</label>
                 </value>
                 <value>
-                    <fullName>(GMT-06:00) Central [US &amp; Canada]</fullName>
+                    <fullName>AKST</fullName>
                     <default>false</default>
-                    <label>(GMT-06:00) Central [US &amp; Canada]</label>
+                    <label>AKST</label>
                 </value>
                 <value>
-                    <fullName>(GMT-06:00) Saskatchewan</fullName>
+                    <fullName>AMST</fullName>
                     <default>false</default>
-                    <label>(GMT-06:00) Saskatchewan</label>
+                    <label>AMST</label>
                 </value>
                 <value>
-                    <fullName>(GMT-06:00) Mexico</fullName>
+                    <fullName>AMT</fullName>
                     <default>false</default>
-                    <label>(GMT-06:00) Mexico</label>
+                    <label>AMT</label>
                 </value>
                 <value>
-                    <fullName>(GMT-06:00) Central America</fullName>
+                    <fullName>ART</fullName>
                     <default>false</default>
-                    <label>(GMT-06:00) Central America</label>
+                    <label>ART</label>
                 </value>
                 <value>
-                    <fullName>(GMT-05:00) Eastern [US &amp; Canada]</fullName>
+                    <fullName>AST</fullName>
                     <default>false</default>
-                    <label>(GMT-05:00) Eastern [US &amp; Canada]</label>
+                    <label>AST</label>
                 </value>
                 <value>
-                    <fullName>(GMT-05:00) Indiana [East]</fullName>
+                    <fullName>AWDT</fullName>
                     <default>false</default>
-                    <label>(GMT-05:00) Indiana [East]</label>
+                    <label>AWDT</label>
                 </value>
                 <value>
-                    <fullName>(GMT-05:00) SA Pacific</fullName>
+                    <fullName>AWST</fullName>
                     <default>false</default>
-                    <label>(GMT-05:00) SA Pacific</label>
+                    <label>AWST</label>
                 </value>
                 <value>
-                    <fullName>(GMT-04:00) Venezuela</fullName>
+                    <fullName>AZOST</fullName>
                     <default>false</default>
-                    <label>(GMT-04:00) Venezuela</label>
+                    <label>AZOST</label>
                 </value>
                 <value>
-                    <fullName>(GMT-04:00) Atlantic [Canada]</fullName>
+                    <fullName>AZT</fullName>
                     <default>false</default>
-                    <label>(GMT-04:00) Atlantic [Canada]</label>
+                    <label>AZT</label>
                 </value>
                 <value>
-                    <fullName>(GMT-04:00) Western SA</fullName>
+                    <fullName>BDT</fullName>
                     <default>false</default>
-                    <label>(GMT-04:00) Western SA</label>
+                    <label>BDT</label>
                 </value>
                 <value>
-                    <fullName>(GMT-04:00) Pacific SA</fullName>
+                    <fullName>BIOT</fullName>
                     <default>false</default>
-                    <label>(GMT-04:00) Pacific SA</label>
+                    <label>BIOT</label>
                 </value>
                 <value>
-                    <fullName>(GMT-03:30) Newfoundland</fullName>
+                    <fullName>BIT</fullName>
                     <default>false</default>
-                    <label>(GMT-03:30) Newfoundland</label>
+                    <label>BIT</label>
                 </value>
                 <value>
-                    <fullName>(GMT-03:00) Brasilia</fullName>
+                    <fullName>BOT</fullName>
                     <default>false</default>
-                    <label>(GMT-03:00) Brasilia</label>
+                    <label>BOT</label>
                 </value>
                 <value>
-                    <fullName>(GMT-03:00) Eastern SA</fullName>
+                    <fullName>BRST</fullName>
                     <default>false</default>
-                    <label>(GMT-03:00) Eastern SA</label>
+                    <label>BRST</label>
                 </value>
                 <value>
-                    <fullName>(GMT-03:00) Greenland</fullName>
+                    <fullName>BRT</fullName>
                     <default>false</default>
-                    <label>(GMT-03:00) Greenland</label>
+                    <label>BRT</label>
                 </value>
                 <value>
-                    <fullName>(GMT-02:00) Mid-Atlantic</fullName>
+                    <fullName>BST</fullName>
                     <default>false</default>
-                    <label>(GMT-02:00) Mid-Atlantic</label>
+                    <label>BST</label>
                 </value>
                 <value>
-                    <fullName>(GMT-01:00) Azores</fullName>
+                    <fullName>BTT</fullName>
                     <default>false</default>
-                    <label>(GMT-01:00) Azores</label>
+                    <label>BTT</label>
                 </value>
                 <value>
-                    <fullName>(GMT-01:00) Cape Verde</fullName>
+                    <fullName>CAT</fullName>
                     <default>false</default>
-                    <label>(GMT-01:00) Cape Verde</label>
+                    <label>CAT</label>
                 </value>
                 <value>
-                    <fullName>(GMT) GMT</fullName>
+                    <fullName>CCT</fullName>
                     <default>false</default>
-                    <label>(GMT) GMT</label>
+                    <label>CCT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+01:00) Greenwich (London)</fullName>
+                    <fullName>CDT</fullName>
                     <default>false</default>
-                    <label>(GMT+01:00) Greenwich (London)</label>
+                    <label>CDT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+01:00) Europe Central</fullName>
+                    <fullName>CEDT</fullName>
                     <default>false</default>
-                    <label>(GMT+01:00) Europe Central</label>
+                    <label>CEDT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+01:00) Romance</fullName>
+                    <fullName>CEST</fullName>
                     <default>false</default>
-                    <label>(GMT+01:00) Romance</label>
+                    <label>CEST</label>
                 </value>
                 <value>
-                    <fullName>(GMT+01:00) Europe Western</fullName>
+                    <fullName>CET</fullName>
                     <default>false</default>
-                    <label>(GMT+01:00) Europe Western</label>
+                    <label>CET</label>
                 </value>
                 <value>
-                    <fullName>(GMT+01:00) Africa West Central</fullName>
+                    <fullName>CHADT</fullName>
                     <default>false</default>
-                    <label>(GMT+01:00) Africa West Central</label>
+                    <label>CHADT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+02:00) Europe Eastern</fullName>
+                    <fullName>CHAST</fullName>
                     <default>false</default>
-                    <label>(GMT+02:00) Europe Eastern</label>
+                    <label>CHAST</label>
                 </value>
                 <value>
-                    <fullName>(GMT+02:00) Egypt</fullName>
+                    <fullName>CHOT</fullName>
                     <default>false</default>
-                    <label>(GMT+02:00) Egypt</label>
+                    <label>CHOT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+02:00) FLE</fullName>
+                    <fullName>ChST</fullName>
                     <default>false</default>
-                    <label>(GMT+02:00) FLE</label>
+                    <label>ChST</label>
                 </value>
                 <value>
-                    <fullName>(GMT+02:00) GTB</fullName>
+                    <fullName>CHUT</fullName>
                     <default>false</default>
-                    <label>(GMT+02:00) GTB</label>
+                    <label>CHUT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+02:00) Israel</fullName>
+                    <fullName>CIST</fullName>
                     <default>false</default>
-                    <label>(GMT+02:00) Israel</label>
+                    <label>CIST</label>
                 </value>
                 <value>
-                    <fullName>(GMT+02:00) Africa South</fullName>
+                    <fullName>CIT</fullName>
                     <default>false</default>
-                    <label>(GMT+02:00) Africa South</label>
+                    <label>CIT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+03:00) Russian</fullName>
+                    <fullName>CKT</fullName>
                     <default>false</default>
-                    <label>(GMT+03:00) Russian</label>
+                    <label>CKT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+03:00) Arab</fullName>
+                    <fullName>CLST</fullName>
                     <default>false</default>
-                    <label>(GMT+03:00) Arab</label>
+                    <label>CLST</label>
                 </value>
                 <value>
-                    <fullName>(GMT+03:00) Africa Eastern</fullName>
+                    <fullName>CLT</fullName>
                     <default>false</default>
-                    <label>(GMT+03:00) Africa Eastern</label>
+                    <label>CLT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+03:00) Arabic</fullName>
+                    <fullName>COST</fullName>
                     <default>false</default>
-                    <label>(GMT+03:00) Arabic</label>
+                    <label>COST</label>
                 </value>
                 <value>
-                    <fullName>(GMT+03:30) Iran</fullName>
+                    <fullName>COT</fullName>
                     <default>false</default>
-                    <label>(GMT+03:30) Iran</label>
+                    <label>COT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+04:00) Arabian</fullName>
+                    <fullName>CST</fullName>
                     <default>false</default>
-                    <label>(GMT+04:00) Arabian</label>
+                    <label>CST</label>
                 </value>
                 <value>
-                    <fullName>(GMT+04:00) Caucasus</fullName>
+                    <fullName>CT</fullName>
                     <default>false</default>
-                    <label>(GMT+04:00) Caucasus</label>
+                    <label>CT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+04:30) Afghanistan</fullName>
+                    <fullName>CVT</fullName>
                     <default>false</default>
-                    <label>(GMT+04:30) Afghanistan</label>
+                    <label>CVT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+05:00) Ekaterinburg</fullName>
+                    <fullName>CWST</fullName>
                     <default>false</default>
-                    <label>(GMT+05:00) Ekaterinburg</label>
+                    <label>CWST</label>
                 </value>
                 <value>
-                    <fullName>(GMT+05:00) Asia Western</fullName>
+                    <fullName>CXT</fullName>
                     <default>false</default>
-                    <label>(GMT+05:00) Asia Western</label>
+                    <label>CXT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+05:30) India</fullName>
+                    <fullName>DAVT</fullName>
                     <default>false</default>
-                    <label>(GMT+05:30) India</label>
+                    <label>DAVT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+05:45) Nepal</fullName>
+                    <fullName>DDUT</fullName>
                     <default>false</default>
-                    <label>(GMT+05:45) Nepal</label>
+                    <label>DDUT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+06:00) Asia Central</fullName>
+                    <fullName>DFT</fullName>
                     <default>false</default>
-                    <label>(GMT+06:00) Asia Central</label>
+                    <label>DFT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+05:30) Sri Lanka</fullName>
+                    <fullName>EASST</fullName>
                     <default>false</default>
-                    <label>(GMT+05:30) Sri Lanka</label>
+                    <label>EASST</label>
                 </value>
                 <value>
-                    <fullName>(GMT+06:00) Asia North Central</fullName>
+                    <fullName>EAST</fullName>
                     <default>false</default>
-                    <label>(GMT+06:00) Asia North Central</label>
+                    <label>EAST</label>
                 </value>
                 <value>
-                    <fullName>(GMT+06:30) Myanmar</fullName>
+                    <fullName>EAT</fullName>
                     <default>false</default>
-                    <label>(GMT+06:30) Myanmar</label>
+                    <label>EAT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+07:00) Asia South East</fullName>
+                    <fullName>ECT</fullName>
                     <default>false</default>
-                    <label>(GMT+07:00) Asia South East</label>
+                    <label>ECT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+07:00) Asia North</fullName>
+                    <fullName>EDT</fullName>
                     <default>false</default>
-                    <label>(GMT+07:00) Asia North</label>
+                    <label>EDT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+08:00) China</fullName>
+                    <fullName>EEDT</fullName>
                     <default>false</default>
-                    <label>(GMT+08:00) China</label>
+                    <label>EEDT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+08:00) Malay Peninsula</fullName>
+                    <fullName>EEST</fullName>
                     <default>false</default>
-                    <label>(GMT+08:00) Malay Peninsula</label>
+                    <label>EEST</label>
                 </value>
                 <value>
-                    <fullName>(GMT+08:00) Taipei</fullName>
+                    <fullName>EET</fullName>
                     <default>false</default>
-                    <label>(GMT+08:00) Taipei</label>
+                    <label>EET</label>
                 </value>
                 <value>
-                    <fullName>(GMT+08:00) AUS Western</fullName>
+                    <fullName>EGST</fullName>
                     <default>false</default>
-                    <label>(GMT+08:00) AUS Western</label>
+                    <label>EGST</label>
                 </value>
                 <value>
-                    <fullName>(GMT+08:00) Asia North East</fullName>
+                    <fullName>EGT</fullName>
                     <default>false</default>
-                    <label>(GMT+08:00) Asia North East</label>
+                    <label>EGT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+09:00) Korea</fullName>
+                    <fullName>EIT</fullName>
                     <default>false</default>
-                    <label>(GMT+09:00) Korea</label>
+                    <label>EIT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+09:00) Tokyo</fullName>
+                    <fullName>EST</fullName>
                     <default>false</default>
-                    <label>(GMT+09:00) Tokyo</label>
+                    <label>EST</label>
                 </value>
                 <value>
-                    <fullName>(GMT+09:00) Yakutsk</fullName>
+                    <fullName>FET</fullName>
                     <default>false</default>
-                    <label>(GMT+09:00) Yakutsk</label>
+                    <label>FET</label>
                 </value>
                 <value>
-                    <fullName>(GMT+09:30) AUS Central [Darwin]</fullName>
+                    <fullName>FJT</fullName>
                     <default>false</default>
-                    <label>(GMT+09:30) AUS Central [Darwin]</label>
+                    <label>FJT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+09:30) AUS Central [Adelaide]</fullName>
+                    <fullName>FKST</fullName>
                     <default>false</default>
-                    <label>(GMT+09:30) AUS Central [Adelaide]</label>
+                    <label>FKST</label>
                 </value>
                 <value>
-                    <fullName>(GMT+10:00) AUS Eastern [Brisbane]</fullName>
+                    <fullName>FKT</fullName>
                     <default>false</default>
-                    <label>(GMT+10:00) AUS Eastern [Brisbane]</label>
+                    <label>FKT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+10:00) AUS Eastern [Sydney]</fullName>
+                    <fullName>FNT</fullName>
                     <default>false</default>
-                    <label>(GMT+10:00) AUS Eastern [Sydney]</label>
+                    <label>FNT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+10:00) Tasmania</fullName>
+                    <fullName>GALT</fullName>
                     <default>false</default>
-                    <label>(GMT+10:00) Tasmania</label>
+                    <label>GALT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+10:00) Vladivostok</fullName>
+                    <fullName>GAMT</fullName>
                     <default>false</default>
-                    <label>(GMT+10:00) Vladivostok</label>
+                    <label>GAMT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+10:00) West Pacific</fullName>
+                    <fullName>GET</fullName>
                     <default>false</default>
-                    <label>(GMT+10:00) West Pacific</label>
+                    <label>GET</label>
                 </value>
                 <value>
-                    <fullName>(GMT+11:00) Central Pacific</fullName>
+                    <fullName>GFT</fullName>
                     <default>false</default>
-                    <label>(GMT+11:00) Central Pacific</label>
+                    <label>GFT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+12:00) Fiji</fullName>
+                    <fullName>GILT</fullName>
                     <default>false</default>
-                    <label>(GMT+12:00) Fiji</label>
+                    <label>GILT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+12:00) New Zealand</fullName>
+                    <fullName>GIT</fullName>
                     <default>false</default>
-                    <label>(GMT+12:00) New Zealand</label>
+                    <label>GIT</label>
                 </value>
                 <value>
-                    <fullName>(GMT+13:00) Tonga</fullName>
+                    <fullName>GMT</fullName>
                     <default>false</default>
-                    <label>(GMT+13:00) Tonga</label>
+                    <label>GMT</label>
                 </value>
                 <value>
-                    <fullName>Coordinated Universal Time (UTC)</fullName>
+                    <fullName>GST</fullName>
                     <default>false</default>
-                    <label>Coordinated Universal Time (UTC)</label>
+                    <label>GST</label>
+                </value>
+                <value>
+                    <fullName>GYT</fullName>
+                    <default>false</default>
+                    <label>GYT</label>
+                </value>
+                <value>
+                    <fullName>HADT</fullName>
+                    <default>false</default>
+                    <label>HADT</label>
+                </value>
+                <value>
+                    <fullName>HAEC</fullName>
+                    <default>false</default>
+                    <label>HAEC</label>
+                </value>
+                <value>
+                    <fullName>HAST</fullName>
+                    <default>false</default>
+                    <label>HAST</label>
+                </value>
+                <value>
+                    <fullName>HKT</fullName>
+                    <default>false</default>
+                    <label>HKT</label>
+                </value>
+                <value>
+                    <fullName>HMT</fullName>
+                    <default>false</default>
+                    <label>HMT</label>
+                </value>
+                <value>
+                    <fullName>HOVT</fullName>
+                    <default>false</default>
+                    <label>HOVT</label>
+                </value>
+                <value>
+                    <fullName>HST</fullName>
+                    <default>false</default>
+                    <label>HST</label>
+                </value>
+                <value>
+                    <fullName>IBST</fullName>
+                    <default>false</default>
+                    <label>IBST</label>
+                </value>
+                <value>
+                    <fullName>ICT</fullName>
+                    <default>false</default>
+                    <label>ICT</label>
+                </value>
+                <value>
+                    <fullName>IDT</fullName>
+                    <default>false</default>
+                    <label>IDT</label>
+                </value>
+                <value>
+                    <fullName>IOT</fullName>
+                    <default>false</default>
+                    <label>IOT</label>
+                </value>
+                <value>
+                    <fullName>IRDT</fullName>
+                    <default>false</default>
+                    <label>IRDT</label>
+                </value>
+                <value>
+                    <fullName>IRKT</fullName>
+                    <default>false</default>
+                    <label>IRKT</label>
+                </value>
+                <value>
+                    <fullName>IRST</fullName>
+                    <default>false</default>
+                    <label>IRST</label>
+                </value>
+                <value>
+                    <fullName>IST</fullName>
+                    <default>false</default>
+                    <label>IST</label>
+                </value>
+                <value>
+                    <fullName>JST</fullName>
+                    <default>false</default>
+                    <label>JST</label>
+                </value>
+                <value>
+                    <fullName>KGT</fullName>
+                    <default>false</default>
+                    <label>KGT</label>
+                </value>
+                <value>
+                    <fullName>KOST</fullName>
+                    <default>false</default>
+                    <label>KOST</label>
+                </value>
+                <value>
+                    <fullName>KRAT</fullName>
+                    <default>false</default>
+                    <label>KRAT</label>
+                </value>
+                <value>
+                    <fullName>KST</fullName>
+                    <default>false</default>
+                    <label>KST</label>
+                </value>
+                <value>
+                    <fullName>LHST</fullName>
+                    <default>false</default>
+                    <label>LHST</label>
+                </value>
+                <value>
+                    <fullName>LINT</fullName>
+                    <default>false</default>
+                    <label>LINT</label>
+                </value>
+                <value>
+                    <fullName>MAGT</fullName>
+                    <default>false</default>
+                    <label>MAGT</label>
+                </value>
+                <value>
+                    <fullName>MART</fullName>
+                    <default>false</default>
+                    <label>MART</label>
+                </value>
+                <value>
+                    <fullName>MAWT</fullName>
+                    <default>false</default>
+                    <label>MAWT</label>
+                </value>
+                <value>
+                    <fullName>MDT</fullName>
+                    <default>false</default>
+                    <label>MDT</label>
+                </value>
+                <value>
+                    <fullName>MET</fullName>
+                    <default>false</default>
+                    <label>MET</label>
+                </value>
+                <value>
+                    <fullName>MEST</fullName>
+                    <default>false</default>
+                    <label>MEST</label>
+                </value>
+                <value>
+                    <fullName>MHT</fullName>
+                    <default>false</default>
+                    <label>MHT</label>
+                </value>
+                <value>
+                    <fullName>MIST</fullName>
+                    <default>false</default>
+                    <label>MIST</label>
+                </value>
+                <value>
+                    <fullName>MIT</fullName>
+                    <default>false</default>
+                    <label>MIT</label>
+                </value>
+                <value>
+                    <fullName>MMT</fullName>
+                    <default>false</default>
+                    <label>MMT</label>
+                </value>
+                <value>
+                    <fullName>MSK</fullName>
+                    <default>false</default>
+                    <label>MSK</label>
+                </value>
+                <value>
+                    <fullName>MST</fullName>
+                    <default>false</default>
+                    <label>MST</label>
+                </value>
+                <value>
+                    <fullName>MUT</fullName>
+                    <default>false</default>
+                    <label>MUT</label>
+                </value>
+                <value>
+                    <fullName>MVT</fullName>
+                    <default>false</default>
+                    <label>MVT</label>
+                </value>
+                <value>
+                    <fullName>MYT</fullName>
+                    <default>false</default>
+                    <label>MYT</label>
+                </value>
+                <value>
+                    <fullName>NCT</fullName>
+                    <default>false</default>
+                    <label>NCT</label>
+                </value>
+                <value>
+                    <fullName>NDT</fullName>
+                    <default>false</default>
+                    <label>NDT</label>
+                </value>
+                <value>
+                    <fullName>NFT</fullName>
+                    <default>false</default>
+                    <label>NFT</label>
+                </value>
+                <value>
+                    <fullName>NPT</fullName>
+                    <default>false</default>
+                    <label>NPT</label>
+                </value>
+                <value>
+                    <fullName>NST</fullName>
+                    <default>false</default>
+                    <label>NST</label>
+                </value>
+                <value>
+                    <fullName>NT</fullName>
+                    <default>false</default>
+                    <label>NT</label>
+                </value>
+                <value>
+                    <fullName>NUT</fullName>
+                    <default>false</default>
+                    <label>NUT</label>
+                </value>
+                <value>
+                    <fullName>NZDT</fullName>
+                    <default>false</default>
+                    <label>NZDT</label>
+                </value>
+                <value>
+                    <fullName>NZST</fullName>
+                    <default>false</default>
+                    <label>NZST</label>
+                </value>
+                <value>
+                    <fullName>OMST</fullName>
+                    <default>false</default>
+                    <label>OMST</label>
+                </value>
+                <value>
+                    <fullName>ORAT</fullName>
+                    <default>false</default>
+                    <label>ORAT</label>
+                </value>
+                <value>
+                    <fullName>PDT</fullName>
+                    <default>false</default>
+                    <label>PDT</label>
+                </value>
+                <value>
+                    <fullName>PET</fullName>
+                    <default>false</default>
+                    <label>PET</label>
+                </value>
+                <value>
+                    <fullName>PETT</fullName>
+                    <default>false</default>
+                    <label>PETT</label>
+                </value>
+                <value>
+                    <fullName>PGT</fullName>
+                    <default>false</default>
+                    <label>PGT</label>
+                </value>
+                <value>
+                    <fullName>PHOT</fullName>
+                    <default>false</default>
+                    <label>PHOT</label>
+                </value>
+                <value>
+                    <fullName>PKT</fullName>
+                    <default>false</default>
+                    <label>PKT</label>
+                </value>
+                <value>
+                    <fullName>PMDT</fullName>
+                    <default>false</default>
+                    <label>PMDT</label>
+                </value>
+                <value>
+                    <fullName>PMST</fullName>
+                    <default>false</default>
+                    <label>PMST</label>
+                </value>
+                <value>
+                    <fullName>PONT</fullName>
+                    <default>false</default>
+                    <label>PONT</label>
+                </value>
+                <value>
+                    <fullName>PST</fullName>
+                    <default>false</default>
+                    <label>PST</label>
+                </value>
+                <value>
+                    <fullName>PYST</fullName>
+                    <default>false</default>
+                    <label>PYST</label>
+                </value>
+                <value>
+                    <fullName>PYT</fullName>
+                    <default>false</default>
+                    <label>PYT</label>
+                </value>
+                <value>
+                    <fullName>RET</fullName>
+                    <default>false</default>
+                    <label>RET</label>
+                </value>
+                <value>
+                    <fullName>ROTT</fullName>
+                    <default>false</default>
+                    <label>ROTT</label>
+                </value>
+                <value>
+                    <fullName>SAKT</fullName>
+                    <default>false</default>
+                    <label>SAKT</label>
+                </value>
+                <value>
+                    <fullName>SAMT</fullName>
+                    <default>false</default>
+                    <label>SAMT</label>
+                </value>
+                <value>
+                    <fullName>SAST</fullName>
+                    <default>false</default>
+                    <label>SAST</label>
+                </value>
+                <value>
+                    <fullName>SBT</fullName>
+                    <default>false</default>
+                    <label>SBT</label>
+                </value>
+                <value>
+                    <fullName>SCT</fullName>
+                    <default>false</default>
+                    <label>SCT</label>
+                </value>
+                <value>
+                    <fullName>SGT</fullName>
+                    <default>false</default>
+                    <label>SGT</label>
+                </value>
+                <value>
+                    <fullName>SLST</fullName>
+                    <default>false</default>
+                    <label>SLST</label>
+                </value>
+                <value>
+                    <fullName>SRET</fullName>
+                    <default>false</default>
+                    <label>SRET</label>
+                </value>
+                <value>
+                    <fullName>SRT</fullName>
+                    <default>false</default>
+                    <label>SRT</label>
+                </value>
+                <value>
+                    <fullName>SST</fullName>
+                    <default>false</default>
+                    <label>SST</label>
+                </value>
+                <value>
+                    <fullName>SYOT</fullName>
+                    <default>false</default>
+                    <label>SYOT</label>
+                </value>
+                <value>
+                    <fullName>TAHT</fullName>
+                    <default>false</default>
+                    <label>TAHT</label>
+                </value>
+                <value>
+                    <fullName>THA</fullName>
+                    <default>false</default>
+                    <label>THA</label>
+                </value>
+                <value>
+                    <fullName>TFT</fullName>
+                    <default>false</default>
+                    <label>TFT</label>
+                </value>
+                <value>
+                    <fullName>TJT</fullName>
+                    <default>false</default>
+                    <label>TJT</label>
+                </value>
+                <value>
+                    <fullName>TKT</fullName>
+                    <default>false</default>
+                    <label>TKT</label>
+                </value>
+                <value>
+                    <fullName>TLT</fullName>
+                    <default>false</default>
+                    <label>TLT</label>
+                </value>
+                <value>
+                    <fullName>TMT</fullName>
+                    <default>false</default>
+                    <label>TMT</label>
+                </value>
+                <value>
+                    <fullName>TOT</fullName>
+                    <default>false</default>
+                    <label>TOT</label>
+                </value>
+                <value>
+                    <fullName>TVT</fullName>
+                    <default>false</default>
+                    <label>TVT</label>
+                </value>
+                <value>
+                    <fullName>UCT</fullName>
+                    <default>false</default>
+                    <label>UCT</label>
+                </value>
+                <value>
+                    <fullName>ULAT</fullName>
+                    <default>false</default>
+                    <label>ULAT</label>
+                </value>
+                <value>
+                    <fullName>USZ1</fullName>
+                    <default>false</default>
+                    <label>USZ1</label>
+                </value>
+                <value>
+                    <fullName>UTC</fullName>
+                    <default>false</default>
+                    <label>UTC</label>
+                </value>
+                <value>
+                    <fullName>UYST</fullName>
+                    <default>false</default>
+                    <label>UYST</label>
+                </value>
+                <value>
+                    <fullName>UYT</fullName>
+                    <default>false</default>
+                    <label>UYT</label>
+                </value>
+                <value>
+                    <fullName>UZT</fullName>
+                    <default>false</default>
+                    <label>UZT</label>
+                </value>
+                <value>
+                    <fullName>VET</fullName>
+                    <default>false</default>
+                    <label>VET</label>
+                </value>
+                <value>
+                    <fullName>VLAT</fullName>
+                    <default>false</default>
+                    <label>VLAT</label>
+                </value>
+                <value>
+                    <fullName>VOLT</fullName>
+                    <default>false</default>
+                    <label>VOLT</label>
+                </value>
+                <value>
+                    <fullName>VOST</fullName>
+                    <default>false</default>
+                    <label>VOST</label>
+                </value>
+                <value>
+                    <fullName>VUT</fullName>
+                    <default>false</default>
+                    <label>VUT</label>
+                </value>
+                <value>
+                    <fullName>WAKT</fullName>
+                    <default>false</default>
+                    <label>WAKT</label>
+                </value>
+                <value>
+                    <fullName>WAST</fullName>
+                    <default>false</default>
+                    <label>WAST</label>
+                </value>
+                <value>
+                    <fullName>WAT</fullName>
+                    <default>false</default>
+                    <label>WAT</label>
+                </value>
+                <value>
+                    <fullName>WEDT</fullName>
+                    <default>false</default>
+                    <label>WEDT</label>
+                </value>
+                <value>
+                    <fullName>WEST</fullName>
+                    <default>false</default>
+                    <label>WEST</label>
+                </value>
+                <value>
+                    <fullName>WET</fullName>
+                    <default>false</default>
+                    <label>WET</label>
+                </value>
+                <value>
+                    <fullName>WIT</fullName>
+                    <default>false</default>
+                    <label>WIT</label>
+                </value>
+                <value>
+                    <fullName>WST</fullName>
+                    <default>false</default>
+                    <label>WST</label>
+                </value>
+                <value>
+                    <fullName>YAKT</fullName>
+                    <default>false</default>
+                    <label>YAKT</label>
+                </value>
+                <value>
+                    <fullName>YEKT</fullName>
+                    <default>false</default>
+                    <label>YEKT</label>
+                </value>
+                <value>
+                    <fullName>Z</fullName>
+                    <default>false</default>
+                    <label>Z</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -1469,7 +1947,7 @@ CASE( MONTH(TODAY()) ,
     <fields>
         <fullName>Customer_Overview__c</fullName>
         <description>Brief company description, revenue, key partners, latest news, press releases etc.)</description>
-        <inlineHelpText>Brief company description (e.g.  revenue, key partners, latest news, press releases)</inlineHelpText>
+        <inlineHelpText>Brief company description, revenue, key partners, latest news, press releases etc.)</inlineHelpText>
         <label>Customer Overview</label>
         <length>2000</length>
         <trackFeedHistory>true</trackFeedHistory>
@@ -1666,7 +2144,7 @@ IF(INCLUDES(  Core_Brief_Existing_Opportunity_3__r.Core_Risk_Reason__c   , &quot
     <fields>
         <fullName>Other_Event__c</fullName>
         <description>US71113 - Update Account Briefs with At Risk Info</description>
-        <inlineHelpText>If you select &apos;Other&apos; for Event, please provide event details in this field, including dress code.</inlineHelpText>
+        <inlineHelpText>if the given event is not listed under Events Dropdown then this text box can be used to enter the Event details.</inlineHelpText>
         <label>Other Event</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -1676,7 +2154,7 @@ IF(INCLUDES(  Core_Brief_Existing_Opportunity_3__r.Core_Risk_Reason__c   , &quot
     </fields>
     <label>Account Meeting Brief</label>
     <nameField>
-        <displayFormat>AMB-{00000}</displayFormat>
+        <displayFormat>ABM-{00000}</displayFormat>
         <label>Account Meeting Brief ID</label>
         <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -1711,7 +2189,7 @@ IF(INCLUDES(  Core_Brief_Existing_Opportunity_3__r.Core_Risk_Reason__c   , &quot
      )
 )</errorConditionFormula>
         <errorDisplayField>Core_Account_Meeting_Time__c</errorDisplayField>
-        <errorMessage>Time format need to be HH:MM AM/PM.</errorMessage>
+        <errorMessage>Time format need to be ##:## am/pm.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Check_if_event_is_empty</fullName>
@@ -1721,32 +2199,33 @@ IF(INCLUDES(  Core_Brief_Existing_Opportunity_3__r.Core_Risk_Reason__c   , &quot
         <errorDisplayField>Core_Account_Meeting_Location__c</errorDisplayField>
         <errorMessage>Please fill in the location for this meeting.</errorMessage>
     </validationRules>
-    <validationRules>
-        <fullName>Core_Check_time</fullName>
-        <active>true</active>
-        <description>This is used to formate the end time in HH:MM AM/PM</description>
-        <errorConditionFormula>NOT(
-OR(
-REGEX( Core_Account_Meeting_End_Time__c, &quot;[\\d]{1,2}:[0-5]{1}[0-9] [APap][mM]{1}&quot;)
-,
-REGEX( Core_Account_Meeting_End_Time__c, &quot;[\\d]{1,2}:[0-5]{1}[0-9][APap][mM]{1}&quot;)
-)
-)</errorConditionFormula>
-        <errorDisplayField>Core_Account_Meeting_End_Time__c</errorDisplayField>
-        <errorMessage>Time format need to be HH:MM AM/PM.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_Prevent_Account_AMB</fullName>
-        <active>true</active>
-        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
-AND(
-Account__c != &apos;&apos;,
-Account__r.RecordType.DeveloperName != &apos;Mastered_Account&apos;
-)
-)</errorConditionFormula>
-        <errorMessage>Only Intel Account is permitted on this field. Please select Intel Account and retry again.</errorMessage>
-    </validationRules>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Core_Account_Brief_PPT</fullName>
+        <availability>online</availability>
+        <description>Generates an account brief in PPT format</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Account Brief - PPT</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/SDOC__sdcreate3?doclist=a4E1J0000009aTvUAI&amp;id={!Account_Meeting_Brief__c.Id}&amp;Object=Account_Meeting_Brief__c</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Core_Account_Brief_Word</fullName>
+        <availability>online</availability>
+        <description>Generates a word document for the account brief</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Account Brief - Word</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/SDOC__sdcreate3?doclist=a4E1J0000009aU0UAI&amp;id={!Account_Meeting_Brief__c.Id}&amp;Object=Account_Meeting_Brief__c</url>
+    </webLinks>
     <webLinks>
         <fullName>Core_Lex_AccMeetingBrief_Share</fullName>
         <availability>online</availability>

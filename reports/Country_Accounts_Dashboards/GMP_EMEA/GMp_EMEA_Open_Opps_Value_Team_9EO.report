@@ -69,99 +69,6 @@
             <value>Andreas Timm Team</value>
         </values>
     </buckets>
-    <buckets>
-        <bucketType>text</bucketType>
-        <developerName>BucketField_97786869</developerName>
-        <masterLabel>Team - by owner role</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <otherBucketLabel>Other</otherBucketLabel>
-        <sourceColumnName>ROLLUP_DESCRIPTION</sourceColumnName>
-        <useOther>true</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>EMP of Jacques Cesbron</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>EMP of Markus Gabler</sourceValue>
-            </sourceValues>
-            <value>PSG</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>EMP of Alexis Garea</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>EMP of Eran Gal</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>EMP of Jaroslaw Tomala</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>EMP of Krzysztof Janicki</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>EMP of Mariusz Jadwiszczok</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>EMP of Yulia Smelkova</sourceValue>
-            </sourceValues>
-            <value>Inside Sales</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>EMP of Henk Van Den Eeckhout</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>EMP of Norberto Carrascal</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>EMP of Sven Beckmann</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>EMP of Tommi Raitio</sourceValue>
-            </sourceValues>
-            <value>BizCon</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>EMP of MIke Creutzer</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>EMP of Andrea Toigo</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>EMP of Krzysztof Jonak</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>EMP of Mediha Kayacan</sourceValue>
-            </sourceValues>
-            <value>Billings</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>EMP of Ali Kucuk</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>EMP of Anna Kazmierczak</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>EMP of Jesus Sanchez Paniagua</sourceValue>
-            </sourceValues>
-            <value>Place holder name</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>EMP of Milan Spalevic</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>EMP of Colin MacHale</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>EMP of Artur Dlugosz</sourceValue>
-            </sourceValues>
-            <value>Disti&amp;Scale</value>
-        </values>
-    </buckets>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
         <backgroundColor2>#FFFFFF</backgroundColor2>
@@ -170,11 +77,13 @@
             <axisBinding>y</axisBinding>
             <column>RowCount</column>
         </chartSummaries>
-        <chartType>HorizontalBar</chartType>
+        <chartType>HorizontalBarGrouped</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>FULL_NAME</groupingColumn>
+        <groupingColumn>BucketField_2572062</groupingColumn>
+        <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>FULL_NAME</secondaryGroupingColumn>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -232,9 +141,6 @@
     <columns>
         <field>CREATED_DATE</field>
     </columns>
-    <columns>
-        <field>ROLLUP_DESCRIPTION</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Account.Core_Sales_Groups__c</column>
@@ -248,7 +154,7 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>BucketField_97786869</field>
+        <field>BucketField_2572062</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>

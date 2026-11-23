@@ -35,5 +35,22 @@
         component.set("v.auditDocument", auditDocumentList);
         helper.update3rdPartyDetails(component, thirdPartyWrapper);
         helper.saveClaimResult(component, event, helper);
+    },
+
+    // Roshan - Tactics POC
+    closeTacticsModal: function (component, event, helper) {
+        helper.closeTacticsModal(component, event, helper);
+    },
+
+    saveTacticsAction: function (component, event, helper) {
+        helper.saveTacticsAction(component, event, helper);
+    },
+
+    handleCampaignPurposeChange: function (component, event, helper) {
+        helper.handleCampaignPurposeChange(component, event, helper);
+    },
+
+    handleBackToTactics: function (component, event, helper) {
+        helper.navigateBackToTactics(component);
     }
 })

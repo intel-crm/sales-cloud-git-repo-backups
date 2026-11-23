@@ -88,6 +88,10 @@
     </fields>
     <nameFieldLabel><!-- Adjustment Request Number --></nameFieldLabel>
     <validationRules>
+        <errorMessage><!-- Adjustment can be created on claims associated to activities that are in an &quot;In Progress&quot; state only --></errorMessage>
+        <name>Core_MDF_Adj_Ref_Activity_InProgress</name>
+    </validationRules>
+    <validationRules>
         <errorMessage>調整金額 (米ドル) には 0 より大きい値を入力してください</errorMessage>
         <name>Core_MDF_AdjustmentAmount</name>
     </validationRules>
@@ -127,4 +131,16 @@
         <errorMessage>参照用請求名の値を入力してください</errorMessage>
         <name>Core_MDF_Referance_Claim_Number</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- Status Cannot be changed to Approved now! --></errorMessage>
+        <name>Core_MDF_StatusRestriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Total Adjustment amount has exceeded the Claim reimbursement amount. --></errorMessage>
+        <name>Core_MDF_TotalAdjustmentAmtLessThanClaim</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- New_Adjustment_Request --></label>
+        <name>New_Adjustment_Request</name>
+    </webLinks>
 </CustomObjectTranslation>

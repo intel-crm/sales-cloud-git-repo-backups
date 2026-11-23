@@ -33,7 +33,22 @@
                         
                         <apex:outputPanel rendered="{!relatedTo.Core_MDF_Program__c == 'Intel Partner Alliance'}">
                             <li>{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,'Outcome-Based Campaign #' & ':','Activity # :')}&nbsp;{!RelatedTo.Request.Core_MDF_Activity_Number__c}</li>
-                            <li>{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,'Outcome-Based Campaign Name' & ':','Activity Name :')} <a href="{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,$Label.Core_MDF_Outcome_Internal_Link + RelatedTo.RequestId,$Label.Core_MDF_PFRDetailLink + RelatedTo.RequestId)}"> {!RelatedTo.Request.Title}</a></li>                            
+                            <!--<li>{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,'Outcome-Based Campaign Name' & ':','Activity Name :')} <a href="{!$Label.Core_MDF_PFRDetailLink}{!RelatedTo.RequestId}"> {!RelatedTo.Request.Title}</a></li>-->
+                            <li>{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,'Outcome-Based Campaign Name' & ':','Activity Name :')} <a href="{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,$Label.Core_MDF_Outcome_Internal_Link + RelatedTo.RequestId,$Label.Core_MDF_PFRDetailLink + RelatedTo.RequestId)}"> {!RelatedTo.Request.Title}</a></li>
+                            <!--<li>{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,$Label.Core_MDF_OutcomeBasedCampaign_Name & ':',$Label.Core_MDF_EmailTemp_Claim_Activity_Name)}
+                            <apex:outputLink rendered="{!relatedTo.Core_MDF_Owner_UserType_Txt__c == 'PowerPartner'}"
+                                value="{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,
+                                            $Label.Core_MDF_Outcome_Community_Link + RelatedTo.RequestId,
+                                            $Label.Core_MDF_PFRCommunityLink + RelatedTo.RequestId)}">
+                                {!RelatedTo.Request.Title}
+                            </apex:outputLink>
+                            <apex:outputLink rendered="{!relatedTo.Core_MDF_Owner_UserType_Txt__c == 'Standard'}"
+                                value="{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,
+                                            $Label.Core_MDF_Outcome_Internal_Link + RelatedTo.RequestId,
+                                            $Label.Core_MDF_PFRDetailLink + RelatedTo.RequestId)}">
+                                {!RelatedTo.Request.Title}
+                            </apex:outputLink>
+                        </li>-->
                             <li>Budget Type: {!RelatedTo.Core_MDF_Budget_Type_Options_Nm__c}</li>
                         </apex:outputPanel>
                         

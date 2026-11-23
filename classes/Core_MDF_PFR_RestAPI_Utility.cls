@@ -7,6 +7,7 @@ public inherited sharing class Core_MDF_PFR_RestAPI_Utility {
     private static final String PFR_CUSTOM_PICKLIST_OBJECT_NAME = 'Core_MDF_PFRCustomPicklist__c';
     private static final String ACTIVITY_CATEGORY_FIELD = 'Core_MDF_ActivityCategory__c';
     private static final String ACTIVITY_TYPE_FIELD = 'Core_MDF_Activity_Types__c';
+    private static final String REASON_PAST_DATED_FIELD = 'Core_MDF_ReasonforPastDatedActivity_Nm__c';
     private static final String PFR_REST_API_CATEGORY = 'PFR REST API';
     private static final String EVENT_NAME = 'Event';
     private static final String EVENT_TYPE = 'other';
@@ -15,6 +16,23 @@ public inherited sharing class Core_MDF_PFR_RestAPI_Utility {
     private static final String ACTIVITYTYPE_DIGITAL= 'digital' ;
     private static Map<String, List<ResponseCodeSetting>> externalApiResponseSettingsByCode;
     
+    
+    private static final Set<String> PFR_CUSTOM_PICKLIST_REASON_RECORD_TYPES = new Set<String>{
+        'Core_MDF_Client_CoMarketing_Fund',
+        'Core_MDF_Data_Center_CoMarketing_Fund'
+    };
+    private static final Set<String> PFR_CUSTOM_PICKLIST_CCF_DCF_REASON_VALUES = new Set<String>{
+        'Activity was discussed with Intel but not recorded in tool on time',
+        'Activity was left as draft but never submitted',
+        'Budget was not loaded/approved on time by Intel',
+        'Hierarchy option was not created on time by Intel',
+        'Intel’s tool suffered technical difficulties',
+        'Late approval of account’s MDF-related agreement',
+        'New tool user (internal/external) ramping up',
+        'Onboarding new account',
+        'Original activity was cancelled by mistake',
+        'Other'
+    };
     
     public class ResponseCodeSetting {
         public String name;
@@ -246,7 +264,6 @@ public inherited sharing class Core_MDF_PFR_RestAPI_Utility {
 
             PartnerFundRequest effectivePfr = buildEffectivePfr(pfr, existingPfrMap);
             String recType = recordTypeDeveloperNameById.get(effectivePfr.RecordTypeId);
-            applyReimbursementRateFromBudget(pfr, effectivePfr, activeCampaignBudgetsForRatesMap);
 
             // On update, only validate the fields the external system actually sent in the payload, so an
             // update does not re-run the full create-time validation set on unchanged fields. On create,
@@ -264,7 +281,8 @@ public inherited sharing class Core_MDF_PFR_RestAPI_Utility {
             Boolean checkConditional = !isUpdateAction
                 || pfr.Core_MDF_ActivityCategory__c != null || pfr.Core_MDF_Activity_Types__c != null
                 || pfr.Core_MDF_Event_Name_nm__c != null || pfr.Core_MDF_Other_Event_Name_txt__c != null
-                || pfr.Core_MDF_Domain_Type_nm__c != null;
+                || pfr.Core_MDF_Domain_Type_nm__c != null || pfr.Core_MDF_Attribution_Requirements_txt__c != null
+                || pfr.Core_MDF_POP_Requirements_txt__c != null;
             // New validations for Activity Sub Type and Start Date
             Boolean checkSubType = !isUpdateAction || pfr.Core_MDF_Activity_SubType_nm__c != null || pfr.Core_MDF_Activity_Types__c != null;
             Boolean checkPastDated = !isUpdateAction || pfr.Core_MDF_Start_Date__c != null;
@@ -323,7 +341,6 @@ public inherited sharing class Core_MDF_PFR_RestAPI_Utility {
             // NEW: Validate Budget is linked to the Campaign and Channel Partner via Program
             if (checkBudgetLink) {
                 errors.addAll(validateBudgetLinkedToCampaign(effectivePfr, recType, campaignBudgetsMap));
-                errors.addAll(validateClaimAvailableAmount(effectivePfr));
             }
 
             // NEW: Validate Ecosystem Partner eligibility
@@ -368,27 +385,6 @@ public inherited sharing class Core_MDF_PFR_RestAPI_Utility {
         pfrs.clear();
         pfrs.addAll(validPfrs);
         return validationFailures;
-    }
-
-    private static void applyReimbursementRateFromBudget(PartnerFundRequest incomingPfr, PartnerFundRequest effectivePfr, Map<Id, List<Core_MDF_Campaign_Budgets__c>> campaignBudgetsMap) {
-        String rate = getReimbursementRateFromBudget(effectivePfr, campaignBudgetsMap);
-        if (String.isBlank(rate)) {
-            return;
-        }
-        incomingPfr.Core_MDF_Reimbursement_Rate_txt__c = rate;
-        effectivePfr.Core_MDF_Reimbursement_Rate_txt__c = rate;
-    }
-
-    private static String getReimbursementRateFromBudget(PartnerFundRequest pfr, Map<Id, List<Core_MDF_Campaign_Budgets__c>> campaignBudgetsMap) {
-        if (pfr == null || pfr.CampaignId == null || pfr.BudgetId == null || campaignBudgetsMap == null || !campaignBudgetsMap.containsKey(pfr.CampaignId)) {
-            return null;
-        }
-        for (Core_MDF_Campaign_Budgets__c campaignBudget : campaignBudgetsMap.get(pfr.CampaignId)) {
-            if (campaignBudget.Core_MDF_Budget_Name_Id__c == pfr.BudgetId && campaignBudget.Core_MDF_Reimbursement_Rate_Pct__c != null) {
-                return formatRateValue(campaignBudget.Core_MDF_Reimbursement_Rate_Pct__c);
-            }
-        }
-        return null;
     }
 
     /**
@@ -674,14 +670,15 @@ public inherited sharing class Core_MDF_PFR_RestAPI_Utility {
     /**
      * Finds an existing PartnerFundAllocation for a budget/account pair or creates one when none exists.
      */
-    public static Id getOrCreateAllocationId(Id budgetId, Id activityAccountId) {
+    private static Id getOrCreateAllocationId(Id budgetId, Id activityAccountId) {
         for (PartnerFundAllocation pfa : [SELECT Id FROM PartnerFundAllocation WHERE BudgetId = :budgetId AND ChannelPartnerId = :activityAccountId LIMIT 1]) {
             return pfa.Id;
         }
 
         PartnerMarketingBudget pmb = [SELECT Id, Title, Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c FROM PartnerMarketingBudget WHERE Id = :budgetId LIMIT 1];
 
-        Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recTypeMetaData = [SELECT Core_MDF_Allocation_RecordType_txt__c FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt WHERE Core_MDF_Channel_Program_Name_txt__c = :pmb.Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c LIMIT 1];
+        Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recTypeMetaData = [SELECT Core_MDF_Allocation_RecordType_txt__c FROM Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  WHERE Core_MDF_Channel_Program_Name_txt__c = :pmb.Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c LIMIT 1];
+
         PartnerFundAllocation pfa = new PartnerFundAllocation(
             Title = pmb.Title,
             RecordTypeId = Schema.SObjectType.PartnerFundAllocation
@@ -699,7 +696,7 @@ public inherited sharing class Core_MDF_PFR_RestAPI_Utility {
     /**
      * Loads existing PFR records needed to build effective update records for sparse update payloads.
      */
-    public static Map<Id, PartnerFundRequest> getExistingPfrMap(List<PartnerFundRequest> pfrs) {
+    private static Map<Id, PartnerFundRequest> getExistingPfrMap(List<PartnerFundRequest> pfrs) {
         Set<Id> pfrIds = new Set<Id>();
         for (PartnerFundRequest pfr : pfrs) {
             if (pfr.Id != null) {
@@ -711,7 +708,7 @@ public inherited sharing class Core_MDF_PFR_RestAPI_Utility {
             return new Map<Id, PartnerFundRequest>();
         }
 
-        return new Map<Id, PartnerFundRequest>([SELECT Id, RecordTypeId, CampaignId, ChannelPartnerId, BudgetId, AllocationId, RequestedAmount, Amount, Status, Core_MDF_Budget_Type_nm__c, Core_MDF_Budget_Amount_Local_amt__c, Core_MDF_Reimbursement_Rate_txt__c, Core_MDF_Fund_Request_Status__c, Core_MDF_Approval_Stage__c, Core_MDF_Is_Outcome_Based_Ind__c, Core_MDF_Proposal_Based_Ind__c, Core_MDF_Focus_Area_nm__c, Core_MDF_TargetAudience__c, Core_MDF_TargetAudience_nm__c, Core_MDF_Brand_nm__c, Core_MDF_Initiative_nm__c, Core_MDF_ActivityCategory__c, Core_MDF_Activity_Types__c, Core_MDF_Country_nm__c, Core_MDF_Priorities__c, Core_MDF_Industry_Multi_nm__c, Core_MDF_Priority_nm__c, Core_MDF_ProductType__c, Core_MDF_Channel_Partner__c, Core_MDF_Program__c, Core_MDF_Technology_txt__c, Core_MDF_Outcomes_nm__c, Core_MDF_Start_Date__c, Core_MDF_End_Date__c, Core_MDF_Member_Acceptor_Id__c, Core_MDF_Member_Owner_txt__c, Core_MDF_Event_Name_nm__c, Core_MDF_Other_Event_Name_txt__c, Core_MDF_Domain_Type_nm__c, Core_MDF_Activity_SubType_nm__c, Core_MDF_Opportunity_id__c FROM PartnerFundRequest WHERE Id IN :pfrIds]);
+        return new Map<Id, PartnerFundRequest>([SELECT Id, RecordTypeId, CampaignId, ChannelPartnerId, BudgetId, AllocationId, RequestedAmount, Amount, Status, Core_MDF_Budget_Type_nm__c, Core_MDF_Budget_Amount_Local_amt__c, Core_MDF_Reimbursement_Rate_txt__c, Core_MDF_Fund_Request_Status__c, Core_MDF_Approval_Stage__c, Core_MDF_Is_Outcome_Based_Ind__c, Core_MDF_Proposal_Based_Ind__c, Core_MDF_Focus_Area_nm__c, Core_MDF_TargetAudience__c, Core_MDF_TargetAudience_nm__c, Core_MDF_Brand_nm__c, Core_MDF_Initiative_nm__c, Core_MDF_ActivityCategory__c, Core_MDF_Activity_Types__c, Core_MDF_Country_nm__c, Core_MDF_Priorities__c, Core_MDF_Industry_Multi_nm__c, Core_MDF_Priority_nm__c, Core_MDF_ProductType__c, Core_MDF_Channel_Partner__c, Core_MDF_Program__c, Core_MDF_Technology_txt__c, Core_MDF_Outcomes_nm__c, Core_MDF_Start_Date__c, Core_MDF_End_Date__c, Core_MDF_Member_Acceptor_Id__c, Core_MDF_Event_Name_nm__c, Core_MDF_Other_Event_Name_txt__c, Core_MDF_Attribution_Requirements_txt__c, Core_MDF_POP_Requirements_txt__c, Core_MDF_Domain_Type_nm__c, Core_MDF_Activity_SubType_nm__c, Core_MDF_Opportunity_id__c FROM PartnerFundRequest WHERE Id IN :pfrIds]);
     }
 
     /**
@@ -778,7 +775,7 @@ public inherited sharing class Core_MDF_PFR_RestAPI_Utility {
      * Maps a Campaign program value to the CCF/DCF PartnerFundRequest record type developer name.
      * Returns null when the program is blank or does not correspond to a Client or Data Center program.
      */
-    public static String getRecordTypeDeveloperNameForProgram(String program) {
+    private static String getRecordTypeDeveloperNameForProgram(String program) {
         if (String.isBlank(program)) {
             return null;
         }
@@ -1909,58 +1906,6 @@ public inherited sharing class Core_MDF_PFR_RestAPI_Utility {
     }
 
     /**
-     * Validates that the requested activity amount does not exceed the matching allocation's claim available amount.
-     * Only applies to MDF and MDF+ budget types. Returns empty error list for other budget types.
-     */
-    public static List<String> validateClaimAvailableAmount(PartnerFundRequest pfr) {
-        List<String> errors = new List<String>();
-        
-        // Only validate for MDF and MDF+ budget types
-        if (pfr == null) {
-            return errors;
-        }
-
-        String budgetType = String.isBlank(pfr.Core_MDF_Budget_Type_nm__c) ? '' : pfr.Core_MDF_Budget_Type_nm__c.trim().toUpperCase();
-        if (budgetType != 'MDF' && budgetType != 'MDF+') {
-            return errors;
-        }
-        
-        // Skip validation if required fields are missing
-        if (pfr.BudgetId == null || pfr.ChannelPartnerId == null || pfr.Core_MDF_Budget_Amount_Local_amt__c == null) {
-            return errors;
-        }
-
-        List<PartnerFundAllocation> allocations = [
-            SELECT Id, Core_MDF_Available_Activity_Alloc_Amt__c
-            FROM PartnerFundAllocation
-            WHERE BudgetId = :pfr.BudgetId
-            AND ChannelPartnerId = :pfr.ChannelPartnerId
-            LIMIT 1
-        ];
-
-        if (allocations.isEmpty()) {
-            errors.add(Core_MDF_PFR_RestAPI_Constants.formatError(
-                Core_MDF_PFR_RestAPI_Constants.ERR_9062_CLAIM_AVAILABLE_AMOUNT_EXCEEDED,
-                null
-            ));
-            return errors;
-        }
-
-        Decimal claimAvailableAmount = allocations[0].Core_MDF_Available_Activity_Alloc_Amt__c == null
-            ? 0
-            : allocations[0].Core_MDF_Available_Activity_Alloc_Amt__c;
-            
-        if (pfr.Core_MDF_Budget_Amount_Local_amt__c > claimAvailableAmount) {
-            errors.add(Core_MDF_PFR_RestAPI_Constants.formatError(
-                Core_MDF_PFR_RestAPI_Constants.ERR_9062_CLAIM_AVAILABLE_AMOUNT_EXCEEDED,
-                null
-            ));
-        }
-
-        return errors;
-    }
-
-    /**
      * Validates Activity Sub Type when dependent picklist values exist for the selected Activity Type.
      * For CCF/DCF: Required when Activity Type has sub-type dependencies and none are selected.
      */
@@ -2055,19 +2000,19 @@ public inherited sharing class Core_MDF_PFR_RestAPI_Utility {
         // Check all conditions
         String budgetType = pfr.Core_MDF_Budget_Type_nm__c;
         String activityCategory = pfr.Core_MDF_ActivityCategory__c;
-        //Decimal spendingLimit = pfr.Core_MDF_Budget_Amount_Local_amt__c;
+        Decimal spendingLimit = pfr.Core_MDF_Budget_Amount_Local_amt__c;
         Date startDate = pfr.Core_MDF_Start_Date__c;
 
         String normalizedBudgetType = String.isBlank(budgetType) ? '' : budgetType.replaceAll('\\s+', '').toUpperCase();
         Set<String> qualifyingBudgetTypes = new Set<String>{ 'MDF', 'MDF+', 'OEMCMP', 'ServiceProviderCMP' };
-        Decimal intelContribution = calculateIntelContributionAmount(pfr);
+
         // All conditions must be met for validation to apply
         if (String.isNotBlank(budgetType) &&
             qualifyingBudgetTypes.contains(normalizedBudgetType) &&
             String.isNotBlank(activityCategory) && 
             EVENT_NAME.equalsIgnoreCase(activityCategory) &&
-            intelContribution != null && 
-            intelContribution >= 50000 &&
+            spendingLimit != null && 
+            spendingLimit >= 50000 &&
             startDate != null) {
             
             // Calculate 60 days from today

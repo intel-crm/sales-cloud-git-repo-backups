@@ -5,7 +5,7 @@
     //This method is executed on click of Submit from manage audit document wrapper popup
     handleClickOnSubmit: function (component, event, helper) {
         helper.checkForNewlyUploadedOrEditedAuditDocuments(component, event, helper);
-    },
+    },    
     //This method is executed on click of close from document submission confirmation popup(Non-legacy)
     handlePopCloseEvent: function (component, event, helper) {
         component.set("v.switchClaimStatusToPICPending", false);
@@ -65,4 +65,15 @@
         component.set("v.disableSubmitButton", disableSubmitButton);
     },
 
+    // Roshan - Tactics POC
+    handleBackToBulkTactics: function (component, event, helper) {
+        component.set("v.showConfirmationPopupForPIC", false);
+        component.set("v.isDocSubmissionPopupVisible", false);
+        component.set("v.showCloseConfirmationPopup", false);
+        component.set("v.openManageAuditDocPopup", false);
+
+        let bulkPOPBackEvent = component.getEvent("bulkPOPUploadBackEvent");
+        bulkPOPBackEvent.fire();
+    }
+    
 })

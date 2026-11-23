@@ -8,7 +8,7 @@
 *****************************************************************************************************************************************************************************************************/
 @isTest
 public class Core_ChannelData_Single_Controller_Test {
-    /*static testMethod void channelDataSingleCoverageTest() { 
+    static testMethod void channelDataSingleCoverageTest() { 
 
         User currentUser = [SELECT Id, Name FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1];
 
@@ -59,13 +59,5 @@ public class Core_ChannelData_Single_Controller_Test {
         // STOP Test
         test.stopTest();
     
-    }*/
-    
-     static testMethod void testEmptyClass() {
-        Test.startTest();
-        Core_ChannelData_Single_Controller utility = new Core_ChannelData_Single_Controller();
-		Core_Role_Hierarchy_Accessor utility1 = new Core_Role_Hierarchy_Accessor();
-		FetchAssetContent utility2 = new FetchAssetContent();
-        Test.stopTest();
     }
 }

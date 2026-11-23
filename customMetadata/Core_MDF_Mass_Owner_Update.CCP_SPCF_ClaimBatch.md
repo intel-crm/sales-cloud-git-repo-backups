@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>CCP_SPCF_ClaimBatch</label>
+    <protected>false</protected>
+    <values>
+        <field>Core_MDF_APP__c</field>
+        <value xsi:type="xsd:string">CCP</value>
+    </values>
+    <values>
+        <field>Core_MDF_Object_Label__c</field>
+        <value xsi:type="xsd:string">Claim Batch</value>
+    </values>
+    <values>
+        <field>Core_MDF_Object__c</field>
+        <value xsi:type="xsd:string">Core_MDF_Claim_Batch__c</value>
+    </values>
+    <values>
+        <field>Core_MDF_Program__c</field>
+        <value xsi:type="xsd:string">Service Provider Co-Marketing Fund</value>
+    </values>
+    <values>
+        <field>Core_MDF_System_User_Name__c</field>
+        <value xsi:type="xsd:string">Comarketing FLAO-User</value>
+    </values>
+    <values>
+        <field>Core_MDF_isProgramApplicable__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Ext_Permission_Set_Name__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Int_Permission_Set_Name__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>isActive__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+</CustomMetadata>

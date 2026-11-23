@@ -1,10 +1,3 @@
-/**
- * @description       : Test class for Core_MDF_ContentVersionDwnldUrlAPI
- * @author            : 
- * @group             : 
- * @last modified on  : 03-11-2026
- * @last modified by  : 
-**/
 @IsTest
 private class Core_MDF_ContentVersionDwnldUrlAPI_Test {
     // Align setup with Core_MDF_AI_Integration_Outbound_Test using a System Admin user and full prerequisites
@@ -207,6 +200,7 @@ private class Core_MDF_ContentVersionDwnldUrlAPI_Test {
     private static TestRefs getRefs() {
         TestRefs r = new TestRefs();
         PartnerFundClaim c = [SELECT Id FROM PartnerFundClaim ORDER BY CreatedDate DESC LIMIT 1];
+        system.debug('TEST CLASS PF IS:'+c);
         User u = [SELECT Username FROM User WHERE Username = :USERNAME_BASE LIMIT 1];
         r.claimId = c.Id;
         r.requestUserName = u.Username;

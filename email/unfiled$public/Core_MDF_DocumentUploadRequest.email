@@ -1,0 +1,62 @@
+<messaging:emailTemplate subject="{!$Label.Core_MDF_EmailTemp_Subj1}{!relatedTo.Core_MDF_Claim_Ref_Number__c} {!IF(RelatedTo.Core_MDF_Status__c == $Label.Core_MDF_Claim_Status_Paid_and_Pending_Documents,$Label.Core_MDF_Paid_and_Pending_Documents_Subject,
+                                    $Label.Core_MDF_Pending_Documents_Subject)}"
+                         recipientType="User" 
+                         relatedToType="PartnerFundClaim" 
+                         language="{!relatedTo.Core_MDF_Owner_Language_Locale_Key_txt__c}" 
+                         renderUsingSystemContextWithoutSharing="True">
+    <messaging:htmlEmailBody >
+        <html>
+            <body>
+                <div style="font-size:14px;font-family:Calibri">
+                     <p> <span style="color: #ff0000;"><medium>{!$Label.Core_MDF_IPA_EmailTemp_ActionReq}</medium></span></p>
+                     <p>{!IF(relatedTo.Core_MDF_Owner_UserType_Txt__c == 'PowerPartner',$Label.Core_MDF_EmailTemp_StatusUpdate_DearMember,$Label.Core_MDF_EmailTemp_DearIntelemployee)}<br/><br/>
+                     {!IF(relatedTo.Core_MDF_Status__c == $Label.Core_MDF_Claim_Status_Paid_and_Pending_Documents, $Label.Core_MDF_PostPayment_DocUpload_EmailTemplate_Body1, $Label.Core_MDF_DocUpload_EmailTemplate_Body1)}<br/>
+                     <ul>
+                         <apex:outputPanel rendered="{!IF(RelatedTo.Core_MDF_Owner_UserType_Txt__c != 'PowerPartner',true,false)}">
+                                <li>{!$Label.Core_MDF_EmailTemp_AdjReq_Create_Body4} {!RelatedTo.Core_MDF_AccountCompany__c}</li>
+                         </apex:outputPanel>
+                         <li>{!$Label.Core_MDF_EmailTemp_Subj1} : {!RelatedTo.Core_MDF_Claim_Ref_Number__c}</li>
+                         <li>{!$Label.Core_MDF_EmailTemp_Claim_Activity_Name} {!RelatedTo.Request.Title}</li>
+                         <li>{!$Label.Core_MDF_EmailTemp_Activity_Type} {!RelatedTo.Core_MDF_Activity_Types__c}</li>
+                         <li>{!$Label.Core_MDF_Amount} : ${!RelatedTo.Core_MDF_Requested_Reimbursement_Amt__c}</li>
+                         <li>{!$Label.Core_MDF_Campaign_Name} : {!RelatedTo.Core_MDF_Campaign_Id__r.Name}</li>
+                         <li><span style="color: #ff0000;"><medium>{!$Label.Core_MDF_Audit_Creation_Field6} {!RelatedTo.Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c}</medium></span></li>
+                         <li>{!$Label.Core_MDF_EmailTemp_Claim_Country}&nbsp;<apex:outputField value="{!RelatedTo.Core_MDF_Country_Location_nm__c}" /></li>
+                         <li>{!$Label.Core_MDF_EmailTemp_Program} {!RelatedTo.Core_MDF_Program__c}</li>
+                         <apex:outputPanel rendered="{!IF(RelatedTo.Core_MDF_Budget_Type_Options_Nm__c != null,true,false)}">
+                            <li>{!$Label.Core_MDF_EmailTemp_Budget_Type} {!RelatedTo.Core_MDF_Budget_Type_Options_Nm__c}</li>
+                         </apex:outputPanel>
+                         <li>{!$Label.Core_MDF_Audit_Creation_BodyLink+' '} 
+                         <apex:outputLink rendered="{!IF(RelatedTo.Core_MDF_Owner_UserType_Txt__c == 'PowerPartner',true,false)}"
+                                value="{!$Label.Core_MDF_PFRCommunityLink+RelatedTo.Id}">{!RelatedTo.Core_MDF_Claim_Ref_Number__c}
+                         </apex:outputLink>
+                         <apex:outputLink rendered="{!IF(RelatedTo.Core_MDF_Owner_UserType_Txt__c != 'PowerPartner',true,false)}"
+                                value="{!$Label.Core_MDF_PFRDetailLink+RelatedTo.Id}">{!RelatedTo.Core_MDF_Claim_Ref_Number__c}                  
+                         </apex:outputLink></li>
+                     </ul>
+                     {!IF(relatedTo.Core_MDF_Status__c == $Label.Core_MDF_Claim_Status_Paid_and_Pending_Documents, $Label.Core_MDF_PostPayment_DocUpload_EmailTemplate_Body2, $Label.Core_MDF_DocUpload_EmailTemplate_Body2)}<br/><br/></P>
+                     
+                     {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7} <br/><br/>
+                     <!--{!RelatedTo.Core_MDF_Program__c} {!$Label.Core_MDF_EmailTemp_Claim_Body5}-->
+                     {!$Label.Core_MDF_Email_Signature}
+                     <apex:outputPanel rendered="{!IF(RelatedTo.Core_MDF_Owner_UserType_Txt__c == 'PowerPartner',true,false)}">
+                         <div style="font-size:11px;font-family:Calibri">
+                             <p>
+                                <i>  {!$Label.Core_MDF_EmailTemp_Claim_Footer1}
+                                <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> {!$Label.Core_MDF_EmailTemp_Claim_URL2} </a>
+                                {!$Label.Core_MDF_EmailTemp_Claim_Footer2}<br/><br/></i>
+                                {!$Label.Core_MDF_EmailTemp_Claim_Footer3}
+                                <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> {!$Label.Core_MDF_EmailTemp_Claim_URL2} </a>
+                                {!$Label.Core_MDF_EmailTemp_Claim_Footer4}<br/><br/>
+                                <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Home}" > {!$Label.Core_MDF_EmailTemp_Footer3} </a> | 
+                                <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Trademarks}"> {!$Label.Core_MDF_EmailTemp_Footer4} </a> | 
+                                <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Privacy}"> {!$Label.Core_MDF_EmailTemp_Footer5} </a> |
+                                <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Cookies}"> {!$Label.Core_MDF_EmailTemp_Footer6} </a>
+                              </p>
+                          </div>
+                     </apex:outputPanel>
+                </div>
+            </body>   
+        </html>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

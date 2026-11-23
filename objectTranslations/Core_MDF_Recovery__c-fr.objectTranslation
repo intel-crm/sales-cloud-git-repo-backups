@@ -23,6 +23,10 @@
         <relationshipLabel><!-- Recoveries --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Quarter Year --></label>
+        <name>Core_MDF_Quarter_Year_Nm__c</name>
+    </fields>
+    <fields>
         <label><!-- Recovered Budget --></label>
         <name>Core_MDF_Recovered_Budget_Nm__c</name>
     </fields>
@@ -33,4 +37,8 @@
     <gender>Masculine</gender>
     <nameFieldLabel><!-- Recovery Number --></nameFieldLabel>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- you cannot create recovery. --></errorMessage>
+        <name>Test_To_Be_Deleted</name>
+    </validationRules>
 </CustomObjectTranslation>

@@ -9,6 +9,7 @@ import APPROVEDFILENAME from '@salesforce/schema/Core_MDF_Claim_VAT_Info__c.Core
 import APPROVEDFILEID from '@salesforce/schema/Core_MDF_Claim_VAT_Info__c.Core_MDF_Approved_File_Id__c';
 import ID_FIELD from '@salesforce/schema/Core_MDF_Claim_VAT_Info__c.Id';
 
+import updateApprovedVatFile from '@salesforce/apex/Core_MDF_Vat_Utility.updateApprovedVatFile';
 
 
 const COLS = [
@@ -24,6 +25,7 @@ export default class Core_MDF_VatFiles extends LightningElement {
     @wire(getVatFileNames, { recordId: '$recordId' })
     vatfiles;
 
+
     handleclick(){
         var el = this.template.querySelector('lightning-datatable');
         console.log(el);
@@ -31,13 +33,22 @@ export default class Core_MDF_VatFiles extends LightningElement {
         const vatfields = {}; 
         if(selected.length > 0)
         {
+
             vatfields[APPROVEDFILEID.fieldApiName] = selected[0].Id;
             vatfields[APPROVEDFILENAME.fieldApiName] = selected[0].Title;
             vatfields[ID_FIELD.fieldApiName] = this.recordId;
 
+
             const recordInput = { fields : vatfields};
 
             updateRecord(recordInput)
+
+            // updateApprovedVatFile({
+            //     vatId: this.recordId,
+            //     fileId: selected[0].Id,
+            //     fileName: selected[0].Title
+            // })
+
             .then(() => {
                 this.dispatchEvent(
                     new ShowToastEvent({
@@ -50,6 +61,10 @@ export default class Core_MDF_VatFiles extends LightningElement {
                 const closeQA = new CustomEvent('close');
                 this.dispatchEvent(closeQA);
             }).catch(error => {
+
+                console.log('updateRecorderror@@@', JSON.stringify(error));
+                
+                console.log('**test**',error);
                 this.dispatchEvent(
                     new ShowToastEvent({
                         title: 'Error',

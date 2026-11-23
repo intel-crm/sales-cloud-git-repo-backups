@@ -312,6 +312,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Spending_Targets_Id__c</field>
+            <table>Core_MDF_Target_Setting__c.Spending_Targets_Junctions__r.Spending_Targets_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Spending_Targets_Record_Name__c</field>
             <table>Core_MDF_Target_Setting__c.Spending_Targets_Junctions__r.Spending_Targets_Line_Items__r</table>
         </columns>

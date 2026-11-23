@@ -70,7 +70,7 @@
         <field>CLOSE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2020/21 Pending HPC</name>
+    <name>2019/20 Pending HPC</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -94,8 +94,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

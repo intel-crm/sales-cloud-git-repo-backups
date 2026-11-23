@@ -4,6 +4,6 @@
  <apex:stylesheet value="/sCSS/25.0/sprites/1342034628000/Theme3/default/gc/extended.css" />
     
             <iframe id="gridFrame4" scrolling="auto" height="800" width="100%" frameborder="0"
-              src="/apex/GBTabs_Opportunity_Products">
+              src="/apex/gblite__Grid?gname=Opportunity Products&sh=0&ssb=0&sbb=1">
             </iframe>
 </apex:page>

@@ -12,7 +12,7 @@
 * Intel - Narayani Perachi      9/24/2018                    Changed method name from core_Log_Entry to createLogEntry as per Code Scan suggestions
 * Intel - Narayani Perachi      9/24/2018                    Changed variable name from log_fields to logFields as per Code Scan suggestions
 * Intel - Narayani Perachi      9/24/2018                    Added without sharing to class Core_MDF_CCP_UtilityClass
-* Intel - Narayani Perachi		12/26/2018                   Added Environment Label to the Mail subject to make it more readable
+* Intel - Narayani Perachi      12/26/2018                   Added Environment Label to the Mail subject to make it more readable
 * Intel - NP(11630236)          10/23/2019                   Edited the Subject of the logging record
 *******************************************************************************************************************************************************/
 public without sharing class Core_MDF_CCP_UtilityClass{
@@ -54,6 +54,7 @@ public without sharing class Core_MDF_CCP_UtilityClass{
         resultMap.put('DatabaseResult', idAndUpdateStatus);
         resultMap.put('errorMessage', logEntryMsg);
         } catch(Exception e){
+            //system.debug(e.getMessage());
             Core_MDF_CCP_UtilityClass.logError(e);
         }
         return resultMap;
@@ -74,7 +75,9 @@ public without sharing class Core_MDF_CCP_UtilityClass{
             coreLogMap.put('Core_Support_Email__c', Label.Core_MDF_CCP_Support_Email);
             coreLogMap.put('Core_Support_Link__c', Label.Core_MDF_CCP_Support_Link);
             coreLogMap.put('Core_Tags__c', objectName + '\t' + 'Co-Marketing') ;
-           
+        
+            // Highlight: Unused Local Variable - 14285 
+            // String errorText = createLogEntry(coreLogMap);
             createLogEntry(coreLogMap);
     }
     
@@ -99,6 +102,9 @@ public without sharing class Core_MDF_CCP_UtilityClass{
             coreLogMap.put('Core_Support_Email__c', Label.Core_MDF_CCP_Support_Email);
             coreLogMap.put('Core_Support_Link__c', Label.Core_MDF_CCP_Support_Link);
             coreLogMap.put('Core_Tags__c', objectName + '\t' + 'Co-Marketing') ;
+        
+            // Highlight: Unused Local Variable - 14285
+            // String errorText = createLogEntry(coreLogMap);
             createLogEntry(coreLogMap);
     }
 
@@ -111,7 +117,9 @@ public without sharing class Core_MDF_CCP_UtilityClass{
             DateTime dtWhen = system.now();
             Map<String, Schema.SObjectField> logFields = Schema.SObjectType.Core_Log_Entry__c.fields.getMap();
             if(coreLogMap != null && coreLogMap.size() > 0){    
-                for(String key:coreLogMap.keySet()){        
+                for(String key:coreLogMap.keySet()){
+                    System.debug('Key'+key);
+                    System.debug('val'+coreLogMap.get(key));      
                     if(logFields.containsKey(key)){
                         Schema.DescribeFieldResult field= logFields.get(key).getDescribe();    
                         Integer length = field.getLength();
@@ -129,6 +137,8 @@ public without sharing class Core_MDF_CCP_UtilityClass{
                 }
             }                      
         } catch(Exception e) {
+            System.debug('@@@ *** App Logging Failed ' + e.getMessage());
+            System.debug('@@@ *** Limits.getDmlStatements() ' + Limits.getDmlStatements());
             Core_MDF_CCP_UtilityClass.logError(e);
         }
         return null;    
@@ -144,13 +154,15 @@ public without sharing class Core_MDF_CCP_UtilityClass{
     Modified By:        Date:       Changes: 
     ******************************************************************************************************/
     public static String getErrorDetails(Exception e){
-        return 'Class & Method Name = ' + e.getStackTraceString().substringBefore(':') + ';\n' +
+        return 'Class & Method Name = ' + e.getStackTraceString()?.substringBefore(':') + ';\n' +
                'Exception Message = ' + e.getMessage() + ';\n' +
                'LineNumber = ' + String.valueOf(e.getLineNumber()) + ';\n' +
                'StackTrace = ' + e.getStackTraceString() + ';\n' +
+               'Cause =' + e.getCause() + ';\n' +
+               'Exception Type =' + e.getTypeName() + ';\n' +
                'Logged in user = ' + UserInfo.getName();
     }
-    
+
     /***************************************************************************************************** 
     Method Name:        getErrorDetailsWithCustomMessage
     @return  :          String
@@ -182,7 +194,7 @@ public without sharing class Core_MDF_CCP_UtilityClass{
     Modified By:        Date:       Changes: 
     ******************************************************************************************************/
     public static void logError(Exception e){
-	String message = e.getMessage();
+    String message = e.getMessage();
         
         if(message.contains('FIELD_CUSTOM_VALIDATION_EXCEPTION')){
             
@@ -191,11 +203,10 @@ public without sharing class Core_MDF_CCP_UtilityClass{
         else{
            
             logErrorinLogObject(getErrorDetails(e), e.getStackTraceString().substringBefore(':'));
-            
         }
     }
     /***************************************************************************************************** 
-    Method Name:        logErrorWithAdditionalMessage
+    Method Name:        logError
     @return  :          void
     @parameters:        Exception - This will contain the Exception that is caught in various other classes.
     Description:        Whenever an exception is passed as an argument along with additional message, it will call the getErrorDetails method and
@@ -204,7 +215,7 @@ public without sharing class Core_MDF_CCP_UtilityClass{
     Modified By:        Date:       Changes: 
     ******************************************************************************************************/
     public static void logErrorWithAdditionalMessage(Exception e, String additionalMessage){
-	String message = e.getMessage();
+    String message = e.getMessage();
         
         if(message.contains('FIELD_CUSTOM_VALIDATION_EXCEPTION')){
             logErrorAsNormal(getErrorDetails(e), e.getStackTraceString().substringBefore(':'));
@@ -213,20 +224,81 @@ public without sharing class Core_MDF_CCP_UtilityClass{
             logErrorinLogObject(getErrorDetailsWithAdditionalMessage(e, additionalMessage), e.getStackTraceString().substringBefore(':'));
         }
     }
-
      /***************************************************************************************************** 
-    Method Name:        logSeverityErrorWithPE
+    Method Name:        getErrorDetails
     @return  :          String
-    @parameters:        Core_MDF_Error_Logging__e - This will contain the platform event record that is caught in various other classes. This 
-                        will be called from the logError trigger.
-    Description:        Whenever an platform event record is passed as an argument, it will fetch all the details from the 
-                        the record and return the formed String.
+    @parameters:        Exception - This will contain the Exception that is caught in various other classes. This 
+                        will be called from the logError method.
+    Description:        Whenever an exception is passed as an argument, it will fetch all the details from the 
+                        Exception and return the formed String.
     Added By:           Accenture - AN - 02/02/2025
     Modified By:        Date:       Changes: 
     ******************************************************************************************************/
-   
+    public static void logErrorWithSeverity(string errorMessage,string objectName,String severity)
+    {
+            String subject = Label.Core_MDF_CCP_Support_Email_Subject + ' ' +  objectName;
+            Map<String, String> coreLogMap = new Map<String, String>();
+            coreLogMap.put('Core_Details__c', errorMessage);
+            coreLogMap.put('Core_Message__c', Label.Core_MDF_SFDC_Environment + ': ' + subject);
+            coreLogMap.put('Core_Origin__c', objectName);
+            coreLogMap.put('Core_Project__c',Label.Core_MDF_Program_Name);
+            coreLogMap.put('Core_Scope__c',objectName);
+            coreLogMap.put('Core_Severity__c', severity);
+            coreLogMap.put('Core_Support_Email__c', Label.Core_MDF_CCP_Support_Email);
+            coreLogMap.put('Core_Support_Link__c', Label.Core_MDF_CCP_Support_Link);
+            coreLogMap.put('Core_Tags__c', objectName + '\t' + 'Co-Marketing') ;
+            String errorText = createLogEntry(coreLogMap);
+    }
+
+
+    /***************************************************************************************************** 
+    Method Name:        logErrorWithPE
+    @return  :          void
+    @parameters:        Exception - This will contain the Exception that is caught in various other classes. 
+                        This will be called from multiple locations to log errors in the event bus.
+    Description:        Whenever an exception is passed as an argument, this method will fetch all the details 
+                        from the Exception and log them in the Core_MDF_Error_Logging__e event for tracking.
+    Added By:           Accenture - Roshan - 10/03/2025
+    Modified By:        Date:       Changes: 
+    ******************************************************************************************************/ 
+    public static void logErrorWithPE(Exception ex) {
+        Core_MDF_Error_Logging__e el = new Core_MDF_Error_Logging__e();
+        el.Core_MDF_Stack_Trace_Txt__c = Core_MDF_CCP_UtilityClass.getErrorDetails(ex);
+        el.Core_MDF_Apex_Class_Name_Txt__c = ex.getStackTraceString().substringBefore(':') +';\n'+ 'LineNumber = ' + String.valueOf(ex.getLineNumber());
+        el.Core_MDF_Exception_Message_Txt__c = ex.getMessage();
+        EventBus.publish(el);
+    }
+
+    /***************************************************************************************************** 
+    Method Name:        isWarningVisible
+    @return  :          Boolean
+    @parameters:        
+    Description:        Show the Warning contents based on custom setting flag
+    Added By:           Accenture - JB - 03/12/2025
+    Modified By:        Date:       Changes: 
+    ******************************************************************************************************/ 
+    @AuraEnabled(cacheable=true)
+    public static Boolean isWarningVisible() {
+        List<Core_Trigger_Executions__c> result = [SELECT id, Core_Active__c, Name FROM Core_Trigger_Executions__c WHERE Name = 'EnableWarningMsgCommunity' LIMIT 1];
+        if(!result.isEmpty() ){
+            return result[0].Core_Active__c;
+        }
+        return false;
+    }
+     /***************************************************************************************************** 
+    Method Name:        logErrorWithSeverityforMOU
+    @return  :          String
+    @parameters:        Exception - This will contain the Exception that is caught in various other classes. This 
+                        will be called from the logError method.
+    Description:        Whenever an exception is passed as an argument, it will fetch all the details from the 
+                        Exception and return the formed String.
+    Added By:           Accenture - AN - 02/02/2025
+    Modified By:        Date:       Changes: 
+    ******************************************************************************************************/
+    //public static void logErrorWithSeverityforMOU(string errorMessage,string apexClass, string objectName,String severity,String supportEmail, String supportLink, string tag,String project)
     public static void logSeverityErrorWithPE(Core_MDF_Error_Logging__e el)
     {
+           system.debug('el'+el);
             String subject = Label.Core_MDF_CCP_Support_Email_Subject + ' ' +  el.Core_MDF_Object_Name_Nm__c;
             Map<String, String> coreLogMap = new Map<String, String>();
             coreLogMap.put('Core_Details__c', el.Core_MDF_Details_txt__c);
@@ -251,25 +323,36 @@ public without sharing class Core_MDF_CCP_UtilityClass{
             if(el.Core_MDF_Tag_txt__c!=null){
             coreLogMap.put('Core_Tags__c',  el.Core_MDF_Tag_txt__c) ;
             }
+            System.debug('coreLogMap'+coreLogMap);
+        
+            // Highlight: Unused Local Variable - 14285
+            // String errorText = createLogEntry(coreLogMap);
             createLogEntry(coreLogMap);
     }
     
     /***************************************************************************************************** 
     Method Name:        triggerErrLoggingPE
     @return  :          void
-    @parameters:        Exception,severity,project,object and tag - This will contain the Exception that is caught in various other classes. 
+    @parameters:        Exception - This will contain the Exception that is caught in various other classes. 
                         This will be called from multiple locations to log errors in the event bus.
     Description:        Whenever an exception is passed as an argument, this method will fetch all the details 
                         from the Exception and log them in the Core_MDF_Error_Logging__e event for tracking.
     Added By:           Accenture - AN - 10/03/2025
     Modified By:        Date:       Changes: 
     ******************************************************************************************************/ 
-    public static void triggerErrLoggingPE(Exception ex,String severity,String projectName,String objectNm, String tag,String message) {
+    //public static void triggerErrLoggingPE(Exception ex,String severity,String projectName,String objectNm, String tag,String message) {
+     public static void triggerErrLoggingPE(Map<String, Object> parameterMap) {
+        Exception ex = parameterMap.containsKey('exception') ? (Exception) parameterMap.get('exception') : null;
+        String severity = parameterMap.containsKey('severity') ? (String) parameterMap.get('severity') : '';
+        String projectName = parameterMap.containsKey('projectName') ? (String) parameterMap.get('projectName') : '';
+        String objectNm = parameterMap.containsKey('objectName') ? (String) parameterMap.get('objectName') : '';
+        String tag = parameterMap.containsKey('operation') ? (String) parameterMap.get('operation') : '';
+        String message = parameterMap.containsKey('additionalInfo') ? (String) parameterMap.get('additionalInfo') : null;
         Core_MDF_Error_Logging__e el = new Core_MDF_Error_Logging__e();
         el.Core_MDF_Stack_Trace_Txt__c = Core_MDF_CCP_UtilityClass.getErrorDetails(ex);
         el.Core_MDF_Apex_Class_Name_Txt__c = ex.getStackTraceString().substringBefore(':') +';\n'+ 'LineNumber = ' + String.valueOf(ex.getLineNumber());
         el.Core_MDF_Details_txt__c = Core_MDF_CCP_UtilityClass.getErrorDetails(ex);
-        el.Core_MDF_Exception_Message_Txt__c = message;
+        el.Core_MDF_Exception_Message_Txt__c = message;//ex.getMessage();
         el.Core_MDF_Severity_txt__c = severity!=null?severity:'Normal';
         el.Core_MDF_Project_nm__c = projectName;
         el.Core_MDF_Tag_txt__c = tag;
@@ -353,6 +436,72 @@ Modified By:        Date:       Changes:
             coreLogMaps.add(coreLogMap);
         }
         createLogEntries(coreLogMaps);
+    }
+     public class PicklistDetails {
+        public string active { get; set; }
+        public string defaultValue { get; set; }
+        public string label { get; set; }
+        public string value { get; set; }
+        public string validFor { get; set; }
+        public PicklistDetails() { }
+    }
+     public static Map<Object, List<Map<String,String>>> getFieldDependenciesMaps(String objectName, String controllingField, String dependentField) {
+
+        Schema.SObjectType objType = Schema.getGlobalDescribe().get(objectName);
+        if (objType == null) {
+            return new Map<Object, List<Map<String,String>>>();
+        }
+        Schema.DescribeSObjectResult describeResult = objType.getDescribe();
+
+        Map<String, Schema.SObjectField> objFieldMap = objType.getDescribe().fields.getMap();
+        if (!objFieldMap.containsKey(controllingField) || !objFieldMap.containsKey(dependentField)){
+            return new Map<Object, List<Map<String,String>>>();
+        }
+        List<Schema.PicklistEntry> controllingValues = objFieldMap.get(controllingField).getDescribe().getPicklistValues();
+        List<Schema.PicklistEntry> dependentValues = objFieldMap.get(dependentField).getDescribe().getPicklistValues();
+        return getFieldDependenciesMaps(dependentValues, controllingValues);
+    }
+
+    private static Map<Object, List<Map<String,String>>> getFieldDependenciesMaps(List<Schema.PicklistEntry> dependentValues, List<Schema.PicklistEntry> controllingValues) {
+        Map<Object, List<Map<String,String>>> controllingInfo = new Map<Object, List<Map<String,String>>>();
+
+        for (Schema.PicklistEntry currControllingValue : controllingValues) {
+            controllingInfo.put(currControllingValue.getValue(), new List<Map<String,String>>());
+        }
+
+        for (Schema.PicklistEntry currDependentValue : dependentValues) {
+
+            String jsonString = JSON.serialize(currDependentValue);
+            PicklistDetails info = (PicklistDetails) JSON.deserialize(jsonString, PicklistDetails.class);
+            if(info.validFor == null) {
+                continue;
+            }
+            String hexString = EncodingUtil.convertToHex(EncodingUtil.base64Decode(info.validFor)).toUpperCase();
+            Integer baseCount = 0;
+            for (Integer curr : hexString.getChars()) {
+                Integer val = 0;
+                if (curr >= 65) {
+                    val = curr - 65 + 10;
+                }
+                else {
+                    val = curr - 48;
+                }
+                if ((val & 8) == 8) {
+                    controllingInfo.get(controllingValues[baseCount + 0].getValue()).add(new Map<String, String>{'value' => currDependentValue.getValue(), 'label' => currDependentValue.getLabel()});
+                }
+                if ((val & 4) == 4) {
+                    controllingInfo.get(controllingValues[baseCount + 1].getValue()).add(new Map<String, String>{'value' => currDependentValue.getValue(), 'label' => currDependentValue.getLabel()});
+                }
+                if ((val & 2) == 2) {
+                    controllingInfo.get(controllingValues[baseCount + 2].getValue()).add(new Map<String, String>{'value' => currDependentValue.getValue(), 'label' => currDependentValue.getLabel()});
+                }
+                if ((val & 1) == 1) {
+                    controllingInfo.get(controllingValues[baseCount + 3].getValue()).add(new Map<String, String>{'value' => currDependentValue.getValue(), 'label' => currDependentValue.getLabel()});
+                }
+                baseCount += 4;
+            }
+        }
+        return controllingInfo;
     }
 
 	public static List<String> collectDmlFailureDetails(List<Id> recordIds, Database.SaveResult[] dmlResults){

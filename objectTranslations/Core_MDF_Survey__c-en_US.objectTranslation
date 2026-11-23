@@ -31,6 +31,10 @@
         <relationshipLabel><!-- Surveys --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- User Account --></label>
+        <name>Core_MDF_User_Account_txt__c</name>
+    </fields>
+    <fields>
         <help><!-- To store User&apos;s Program --></help>
         <label><!-- User Program --></label>
         <name>Core_MDF_User_Program_nm__c</name>

@@ -184,6 +184,7 @@
     </fields>
     <fields>
         <fullName>Core_MDF_Estimated_Share_of_SPIF_amt__c</fullName>
+        <inlineHelpText>Estimated</inlineHelpText>
         <label>Estimated Share of SPIF</label>
         <precision>18</precision>
         <required>false</required>
@@ -217,6 +218,28 @@
         <fullName>Core_MDF_Minimum_Forecast_Volume_nbr__c</fullName>
         <externalId>false</externalId>
         <label>Minimum Forecast Volume</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Num_of_Expected_Participants__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Expected Participants</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Num_of_Potential_Winners__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Potential Winners</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>

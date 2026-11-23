@@ -135,11 +135,6 @@
         <default>false</default>
         <label>Q2 2021</label>
     </customValue>
-    <customValue>
-        <fullName>Q1 2021</fullName>
-        <default>false</default>
-        <label>Q1 2021</label>
-    </customValue>
     <masterLabel>Quarter Year</masterLabel>
     <sorted>false</sorted>
 </GlobalValueSet>

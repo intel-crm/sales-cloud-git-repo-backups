@@ -2,8 +2,7 @@
 
 <flow:interview name="Reject_Lead" finishLocation="/{!Lead.Id}" buttonLocation="bottom" >
     <apex:param name="vaLeadID" value="{!Lead.Id}" />
-    <apex:param name="Currentuser" value="{!$User.Id}"/>
-    <apex:param name="LeadState" value="{!Lead.Core_Lead_State__c}"/>
+    <apex:param name="Currentuser" value="{!$User.Id}"/>    
 </flow:interview>
    
 <apex:form >

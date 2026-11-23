@@ -8,8 +8,6 @@ Modification Log :
 * Aayushi                               11/07/2018             Modified US109046
 *****************************************************************************************************/
 public class Core_IPS_Project_Member_Dispatcher{
-    //added Boolean for DE32193
-    public static Boolean ProjMemUpdatedfromProject=false;
     public static boolean ProvideAssetAccess = false;
     public static boolean preventDelete = true;
     public static void beforeMethod(List<Core_IPS_Project_Member__c> oldList, List<Core_IPS_Project_Member__c> newList, 
@@ -32,8 +30,6 @@ public class Core_IPS_Project_Member_Dispatcher{
          if(trigger.isDelete){
              if(preventDelete)
              Core_IPS_Project_Member_Handler.PreventDelete(oldList);
-             
-             Core_IPS_Project_Member_Handler.handleDeleteProjMember(oldList);
          }
     }  
     
@@ -42,22 +38,15 @@ public class Core_IPS_Project_Member_Dispatcher{
          if(trigger.isInsert){
              Core_IPS_Project_Member_Handler.ManageGroupMember(newList); //moved from before insert to here, amritesh 
              //Rakesh -US107411 -calling a new method(interestedParties_ProjectMembers) from here
-             //modified DE32193
-             Core_IPS_Project_Member_Handler.interestedParties_ProjectMembers(newList,null);
+             Core_IPS_Project_Member_Handler.interestedParties_ProjectMembers(newList);
              
          }
          if(trigger.isUpdate){
              Core_IPS_Project_Member_Handler.preventInactivatingProjectMember(oldMap,newList);
-             //Rakesh -US107411 -calling a new method(interestedParties_ProjectMembers) from here
-             //modified DE32193
-             if(!ProjMemUpdatedfromProject){
-                 Core_IPS_Project_Member_Handler.interestedParties_ProjectMembers(newList,oldMap);}
-             Core_IPS_Project_Member_Handler.RemovePSO(newList, oldMap);
-              if(Core_IPS_SkipTriggerHandler.skipQueueable){//US-0050009 Hercules_IPS_ECBFlagIssueFix
-                 return;
-             }
              Core_IPS_Project_Member_Handler.RemoveorReaddProjMember(oldMap,oldList, newList);
-             
+             //Rakesh -US107411 -calling a new method(interestedParties_ProjectMembers) from here
+             Core_IPS_Project_Member_Handler.interestedParties_ProjectMembers(newList);
+             Core_IPS_Project_Member_Handler.RemovePSO(newList, oldMap);
          }
          if(trigger.isDelete){
              Core_IPS_Project_Member_Handler.removeProjectMemberFromGroup(oldList);

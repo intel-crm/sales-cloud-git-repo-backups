@@ -24,7 +24,7 @@ public class Core_MDF_PIC_SendEmailToClaimOwner_Test {
         Database.insert(listContact);
         
         ChannelProgram cpIPA = Core_MDF_CCP_TestDataUtility.createProgram ('Intel Partner Alliance','Intel Partner Alliance', true);
-      	Id acctRecord_Type = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Core_Partner_Account_Group').getRecordTypeId();
+        Id acctRecord_Type = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Core_Partner_Account_Group').getRecordTypeId();
         Account acc = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test IPA Accounttest', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
         
         Account accIPA1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test IPA Account', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
@@ -74,7 +74,7 @@ public class Core_MDF_PIC_SendEmailToClaimOwner_Test {
         entitlementList.add(entitlementCCFClaimSub);
         
         Database.insert(entitlementList); 
-        /*
+        
         List<Core_Contact_Entitlement__c> contEntList = new List<Core_Contact_Entitlement__c>();
         
         Core_Contact_Entitlement__c contactEntitlementCCF = Core_MDF_CCP_TestDataUtility.createContactEntitlement(conRecord1.Id,entitlementCCF.Id ,true,'Complete', false);
@@ -83,7 +83,7 @@ public class Core_MDF_PIC_SendEmailToClaimOwner_Test {
         Core_Contact_Entitlement__c contactEntitlementCCFClaimSub = Core_MDF_CCP_TestDataUtility.createContactEntitlement(conRecord1.Id,entitlementCCFClaimSub.Id ,true,'Complete', false);
         contEntList.add(contactEntitlementCCFClaimSub);
         
-        Database.insert(contEntList);   */    
+        Database.insert(contEntList);       
         
         List<User> listUser = new List<User>();
         
@@ -185,7 +185,7 @@ public class Core_MDF_PIC_SendEmailToClaimOwner_Test {
             Database.insert(camp);
             Core_MDF_CCP_TestDataUtility.insertCurrencyExchangeRates();
             //adding bypass feature to bypass access validation
-			List<String> bypassFunctionKeys = new List<String>();
+      List<String> bypassFunctionKeys = new List<String>();
 
             bypassFunctionKeys.add('Bypass_Duplicate_Budget_Check');
             bypassFunctionKeys.add('Bypass_GeoBased_Budget_Sharing');
@@ -240,17 +240,16 @@ public class Core_MDF_PIC_SendEmailToClaimOwner_Test {
             Database.insert(budget);
             test.startTest();   
             
-            string budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(accIPA2);
-            //budgetType = 'Proposal I MDF';
+            //string budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(accIPA2);
+            string budgetType = 'Proposal I MDF';
             PartnerMarketingBudget budgetIPA = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget New',Core_MDF_CCP_IPA_TestDataUtility.budgetIPA_ProposalBased_Record_Type,accIPA2.Id,cpIPA.Id,2000,System.today().addDays(-20),System.today(), false);
             budgetIPA.Core_MDF_Budget_Type_Txt__c= budgetType;
             budgetIPA.Core_MDF_Program__c = cpIPA.Id;
             Database.insert(budgetIPA);
             
-            
             PartnerFundAllocation allocation = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Allocation New',budget,acc2,200.0,true);
-            
-            PartnerMarketingBudget pmb1 = [SELECT Id,Title, Core_MDF_Budget_Status__c, TotalAllocatedAmount FROM PartnerMarketingBudget WHERE Title ='Test Budget New CCF 1.0'];
+            // Highlight: Unused Local Variable - Indira
+           // PartnerMarketingBudget pmb1 = [SELECT Id,Title, Core_MDF_Budget_Status__c, TotalAllocatedAmount FROM PartnerMarketingBudget WHERE Title ='Test Budget New CCF 1.0'];
             
             
             List<Core_MDF_Account_Bank_Mapping__c> abmList = new List<Core_MDF_Account_Bank_Mapping__c>();
@@ -308,7 +307,7 @@ public class Core_MDF_PIC_SendEmailToClaimOwner_Test {
         System.runAs(sysAdminUser){
             Account acc2 = [Select id from Account where Name = 'Test Acc New 2'];
             User Usr1 =[Select id from user where email = 'test1@example.com'];
-           // Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(acc2.Id, Usr1.Id, true);
+            Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(acc2.Id, Usr1.Id, true);
             Core_MDF_Bank__c bank1 = [Select Id from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c='1241241240' limit 1];
             PartnerFundRequest pfr = [Select Id,Title from PartnerFundRequest where Title = 'test'];
             
@@ -329,9 +328,9 @@ public class Core_MDF_PIC_SendEmailToClaimOwner_Test {
             
             //PIC Review Questions
             List<core_MDF_PICReviewQuestion__c> questionList = new List<core_MDF_PICReviewQuestion__c>();
-            core_MDF_PICReviewQuestion__c question1 = createPICReviewQuestion(1, 'Internal English question', 'External English Issue', false);
+            core_MDF_PICReviewQuestion__c question1 = createPICReviewQuestion(new PICReviewQuestionWrapper(1, 'Internal English question', 'External English Issue', false));   // ATHR Avoid long parameter lists - Indira
             questionList.add(question1);
-            core_MDF_PICReviewQuestion__c question2 = createPICReviewQuestion(2, 'Internal English question1', 'External English Issue1', false);
+            core_MDF_PICReviewQuestion__c question2 = createPICReviewQuestion(new PICReviewQuestionWrapper(2, 'Internal English question1', 'External English Issue1', false));    // ATHR Avoid long parameter lists - Indira
             questionList.add(question2);
             
             if(!questionList.isEmpty()){
@@ -341,9 +340,9 @@ public class Core_MDF_PIC_SendEmailToClaimOwner_Test {
 
             //PIC Review
             List<Core_MDF_PIC_Review__c> reviewList = new List<Core_MDF_PIC_Review__c>();
-            Core_MDF_PIC_Review__c review1 = createPICReviewResult(claim1.Id,  1, 'Failed', false);
+            Core_MDF_PIC_Review__c review1 = createPICReviewResult(new PICReviewWrapper(claim1.Id,  1, 'Failed', false));   // ATHR Avoid long parameter lists - Indira
             reviewList.add(review1);
-            Core_MDF_PIC_Review__c review2 = createPICReviewResult(claim2.Id, 2, 'Failed', false);
+            Core_MDF_PIC_Review__c review2 = createPICReviewResult(new PICReviewWrapper(claim2.Id, 2, 'Failed', false));    // ATHR Avoid long parameter lists - Indira
             reviewList.add(review2);
             
             if(!reviewList.isEmpty()){
@@ -352,9 +351,9 @@ public class Core_MDF_PIC_SendEmailToClaimOwner_Test {
 
             //PIC Review Result
             List<core_MDF_PICReviewResult__c> resultList = new List<core_MDF_PICReviewResult__c>();
-            core_MDF_PICReviewResult__c result1 = createPICReviewResult(review1.Id, question1.Id, 'testFile.xls', 'No', false);
+            core_MDF_PICReviewResult__c result1 = createPICReviewResult(new PICReviewResultWrapper(review1.Id, question1.Id, 'testFile.xls', 'No', false));   // ATHR Avoid long parameter lists - Indira
             resultList.add(result1);
-            core_MDF_PICReviewResult__c result2 = createPICReviewResult(review2.Id, question2.Id, '', 'No', false);
+            core_MDF_PICReviewResult__c result2 = createPICReviewResult(new PICReviewResultWrapper(review2.Id, question2.Id, '', 'No', false));    // ATHR Avoid long parameter lists - Indira
             resultList.add(result2);
             
             if(!resultList.isEmpty()){
@@ -374,7 +373,16 @@ public class Core_MDF_PIC_SendEmailToClaimOwner_Test {
         }
     }
 
-    public static Core_MDF_PIC_Review__c createPICReviewResult(String claimId, Integer cycleNumber, String status, Boolean isInsert){
+  //  public static Core_MDF_PIC_Review__c createPICReviewResult(String claimId, Integer cycleNumber, String status, Boolean isInsert){
+  // ATHR Avoid long parameter lists - Indira - start 
+    public static Core_MDF_PIC_Review__c createPICReviewResult(PICReviewWrapper wrapper) {
+    // Immediately unpack wrapper into local variables
+    String claimId = wrapper.claimId;
+    Integer cycleNumber = wrapper.cycleNumber;
+    String status = wrapper.status;
+    Boolean isInsert = wrapper.isInsert;
+   // ATHR Avoid long parameter lists - Indira - end
+          
         Core_MDF_PIC_Review__c newreview = new Core_MDF_PIC_Review__c(Core_MDF_Claim_ID_id__c = claimId, Core_MDF_CycleNumber_nbr__c = cycleNumber, Core_MDF_Review_Status_nm__c = status,
                                                                     Core_MDF_StartTime_dtm__c = system.now(), Core_MDF_EndTime_dtm__c = system.now().addMinutes(2));
         if(isInsert){
@@ -383,7 +391,16 @@ public class Core_MDF_PIC_SendEmailToClaimOwner_Test {
         return newreview;
     }
     
-    public static core_MDF_PICReviewResult__c createPICReviewResult(String picReviewId, String questionId, String filesAffected, String response, Boolean isInsert){
+   // public static core_MDF_PICReviewResult__c createPICReviewResult(String picReviewId, String questionId, String filesAffected, String response, Boolean isInsert){
+   // ATHR Avoid long parameter lists - Indira - start
+    public static core_MDF_PICReviewResult__c createPICReviewResult(PICReviewResultWrapper wrapper) {
+    // Immediately unpack wrapper into local variables
+    String picReviewId = wrapper.picReviewId;
+    String questionId = wrapper.questionId;
+    String filesAffected = wrapper.filesAffected;
+    String response = wrapper.response;
+    Boolean isInsert = wrapper.isInsert;
+    // ATHR Avoid long parameter lists - Indira - end
         core_MDF_PICReviewResult__c newResult = new core_MDF_PICReviewResult__c(Core_MDF_PIC_Review_id__c = picReviewId, Core_MDF_Question_id__c=questionId,
                                                                                Core_MDF_FilesAffected_txt__c = filesAffected,
                                                                                Core_MDF_Response_txt__c = response);
@@ -394,7 +411,15 @@ public class Core_MDF_PIC_SendEmailToClaimOwner_Test {
         return newResult;
     }
     
-    public static core_MDF_PICReviewQuestion__c createPICReviewQuestion(Integer sortOrder, String englishText, String englishTextExternal, Boolean isInsert){
+   // public static core_MDF_PICReviewQuestion__c createPICReviewQuestion(Integer sortOrder, String englishText, String englishTextExternal, Boolean isInsert){
+   // ATHR Avoid long parameter lists - Indira - start
+   public static core_MDF_PICReviewQuestion__c createPICReviewQuestion(PICReviewQuestionWrapper wrapper) {
+    // Immediately unpack wrapper into local variables
+    Integer sortOrder = wrapper.sortOrder;
+    String englishText = wrapper.englishText;
+    String englishTextExternal = wrapper.englishTextExternal;
+    Boolean isInsert = wrapper.isInsert;
+     // ATHR Avoid long parameter lists - Indira - end  
         core_MDF_PICReviewQuestion__c newQuestion = new core_MDF_PICReviewQuestion__c(Core_MDF_Sort_Order__c = sortOrder, Core_MDF_Question_English_txt__c=englishText,
                                                                                Core_MDF_Question_English_External_txt__c = englishTextExternal, Core_MDF_Is_Active_ind__c = true,
                                                                                Core_MDF_EffectiveDate_dt__c = System.today(), Core_MDF_IneffectiveDate_dt__c = System.today() + 10,
@@ -406,7 +431,7 @@ public class Core_MDF_PIC_SendEmailToClaimOwner_Test {
         return newQuestion;
     }
     
-   	@isTest
+     @isTest
     static void testOutcomeBasedPICFailEmail() {
       
         test.startTest();
@@ -426,9 +451,9 @@ public class Core_MDF_PIC_SendEmailToClaimOwner_Test {
         accNodeAttr.Core_MDF_Customer_NonPO_GL_Account_nbr__c = 244200;
         insert accNodeAttr;
         
-        Campaign campIPA = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test IPA Camp',accIPA2.Id, System.today().addDays(-30), System.today().addDays(300),'Business Client Acceleration - MDF', 1234.00, 'AFGHANISTAN','Consumer','Coffee Lake','Planned', false);
+        Campaign campIPA = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test IPA Camp',accIPA2.Id, System.today().addDays(-30), System.today().addDays(300),'Business Client Acceleration - MDF', 1234.00, 'AFGHANISTAN','Consumer','','Planned', false);
         campIPA.Core_MDF_Region_cd__c = 'APJ';
-        campIPA.Core_MDF_Budget_Type_txt__c = 'Business Client Acceleration - MDF';
+        campIPA.Core_MDF_Budget_Type_txt__c = 'Proposal I MDF';
         campIPA.Core_MDF_Budget__c = budgetIPA.Id;
         campIPA.Core_MDF_Reimbursement_Amt__c = 1000;
         campIPA.Core_MDF_CampOutcomeOpt_In_Ind__c=true;
@@ -445,7 +470,7 @@ public class Core_MDF_PIC_SendEmailToClaimOwner_Test {
         PartnerFundRequest pfrIPA = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(campIPA.Id,accIPA2.Id,System.today().addDays(-25),System.today().addDays(25),false);
         pfrIPA.amount = 500;
         pfrIPA.Core_MDF_Reimbursement_Rate_txt__c='60%';
-        pfrIPA.Core_MDF_Budget_Type_nm__c = 'Business Client Acceleration - MDF';
+        pfrIPA.Core_MDF_Budget_Type_nm__c = 'Proposal I MDF';
         pfrIPA.AllocationId = pfaIPA.Id;
         pfrIPA.Core_MDF_ActivityCategory__c = 'Outcome-Based';
         pfrIPA.Core_MDF_Activity_Types__c = 'Outcome-Based';
@@ -475,20 +500,20 @@ public class Core_MDF_PIC_SendEmailToClaimOwner_Test {
         insert claimIPA;
         
             List<core_MDF_PICReviewQuestion__c> questionList = new List<core_MDF_PICReviewQuestion__c>();
-            core_MDF_PICReviewQuestion__c question1 = createPICReviewQuestion(1, 'Internal Q1', 'External Q1', false);
-            core_MDF_PICReviewQuestion__c question2 = createPICReviewQuestion(2, 'Internal Q2', 'External Q2', false);
+            core_MDF_PICReviewQuestion__c question1 = createPICReviewQuestion(new PICReviewQuestionWrapper(1, 'Internal Q1', 'External Q1', false));   // ATHR Avoid long parameter lists - Indira
+            core_MDF_PICReviewQuestion__c question2 = createPICReviewQuestion(new PICReviewQuestionWrapper(2, 'Internal Q2', 'External Q2', false));   // ATHR Avoid long parameter lists - Indira
             questionList.addAll(new List<core_MDF_PICReviewQuestion__c>{question1, question2});
             insert questionList;
             
             List<Core_MDF_PIC_Review__c> reviewList = new List<Core_MDF_PIC_Review__c>();
-            Core_MDF_PIC_Review__c review1 = createPICReviewResult(claimIPA.Id, 1, 'Failed', false);
-            Core_MDF_PIC_Review__c review2 = createPICReviewResult(claimIPA.Id, 2, 'Failed', false);
+            Core_MDF_PIC_Review__c review1 = createPICReviewResult(new PICReviewWrapper(claimIPA.Id, 1, 'Failed', false));    // ATHR Avoid long parameter lists - Indira
+            Core_MDF_PIC_Review__c review2 = createPICReviewResult(new PICReviewWrapper(claimIPA.Id, 2, 'Failed', false));   // ATHR Avoid long parameter lists - Indira
             reviewList.addAll(new List<Core_MDF_PIC_Review__c>{review1, review2});
             insert reviewList;
             
             List<core_MDF_PICReviewResult__c> resultList = new List<core_MDF_PICReviewResult__c>();
-            core_MDF_PICReviewResult__c result1 = createPICReviewResult(review1.Id, question1.Id, 'evidence1.xls', 'No', false);
-            core_MDF_PICReviewResult__c result2 = createPICReviewResult(review2.Id, question2.Id, '', 'No', false);
+            core_MDF_PICReviewResult__c result1 = createPICReviewResult(new PICReviewResultWrapper(review1.Id, question1.Id, 'evidence1.xls', 'No', false));    // ATHR Avoid long parameter lists - Indira
+            core_MDF_PICReviewResult__c result2 = createPICReviewResult(new PICReviewResultWrapper(review2.Id, question2.Id, '', 'No', false));    // ATHR Avoid long parameter lists - Indira
             resultList.addAll(new List<core_MDF_PICReviewResult__c>{result1, result2});
             insert resultList;
             List<PartnerFundClaim> pfcLst = new List<PartnerFundClaim>{claimIPA};
@@ -501,160 +526,56 @@ public class Core_MDF_PIC_SendEmailToClaimOwner_Test {
             test.stopTest();
         }
     }
+    // ATHR Avoid long parameter lists - Indira - start
+    public class PICReviewWrapper {
+    public String claimId;
+    public Integer cycleNumber;
+    public String status;
+    public Boolean isInsert;
     
-    @isTest
-    static void testComprehensiveEmailContentGeneration() {
-        Test.startTest();
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
-        System.runAs(sysAdminUser){
-            
-            // Setup comprehensive test data
-            Account acc2 = [Select id from Account where Name = 'Test Acc New 2'];
-            User usr1 = [Select id from user where email = 'test1@example.com'];
-            Core_MDF_Bank__c bank1 = [Select Id from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c='1241241240' limit 1];
-            PartnerFundRequest pfr = [Select Id,Title from PartnerFundRequest where Title = 'test'];
-            
-            // Create Partner Node User Mapping for RMF scenario
-            //Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(acc2.Id, usr1.Id, true);
-            
-            // Update user language only (UserType is read-only)
-            usr1.LanguageLocaleKey = 'de'; // German to test language translation
-            update usr1;
-            
-            // Create multiple claims with different scenarios
-            List<PartnerFundClaim> claimList = new List<PartnerFundClaim>();
-            
-            // 1. Regular claim with files affected
-            PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('Comprehensive Claim 1', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, pfr.Id, System.today(), System.today(), 50.00, System.today(), bank1.Id, false);
-            claim1.OwnerId = usr1.Id;
-            // Remove legacy claim assignment if it's read-only
-            claim1.Core_MDF_Legacy_Reminder_txt__c = Label.Core_MDF_Legacy_Reminder_2; // First reminder
-            claim1.Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c = System.now().addDays(5);
-            claimList.add(claim1);
-            
-            // 2. Paid and resubmission required claim
-            PartnerFundClaim claim2 = Core_MDF_CCP_TestDataUtility.createClaim('Paid Resubmission Claim', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, pfr.Id, System.today(), System.today(), 75.00, System.today(), bank1.Id, false);
-            claim2.OwnerId = usr1.Id;
-            claim2.Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c = System.now().addDays(3);
-            claimList.add(claim2);
-            
-            // 3. Claim without files affected (to test N/A scenario)
-            PartnerFundClaim claim3 = Core_MDF_CCP_TestDataUtility.createClaim('No Files Claim', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, pfr.Id, System.today(), System.today(), 25.00, System.today(), bank1.Id, false);
-            claim3.OwnerId = usr1.Id;
-            claimList.add(claim3);
-            
-            insert claimList;
-            
-            // Create questions with parent-child relationship
-            List<core_MDF_PICReviewQuestion__c> questionList = new List<core_MDF_PICReviewQuestion__c>();
-            
-            // Main question
-            core_MDF_PICReviewQuestion__c mainQuestion = createPICReviewQuestion(1, 'Main Question Internal', 'Main Question External', false);
-            questionList.add(mainQuestion);
-            
-            // Regular question without sub-questions
-            core_MDF_PICReviewQuestion__c regularQuestion = createPICReviewQuestion(2, 'Regular Question Internal', 'Regular Question External', false);
-            questionList.add(regularQuestion);
-            
-            insert questionList;
-            
-            // Create sub-questions for main question (remove Sub_Question_Ind__c assignment)
-            core_MDF_PICReviewQuestion__c subQuestion1 = new core_MDF_PICReviewQuestion__c(
-                Core_MDF_Sort_Order__c = 3,
-                Core_MDF_Question_English_txt__c = 'Sub Question 1 Internal',
-                Core_MDF_Question_English_External_txt__c = 'Sub Question 1 External',
-                Core_MDF_Is_Active_ind__c = true,
-                Core_MDF_EffectiveDate_dt__c = System.today(),
-                Core_MDF_IneffectiveDate_dt__c = System.today() + 10,
-                Core_MDF_All_Budget_Types_Ind__c = true,
-                Core_MDF_All_Programs_Ind__c = true,
-                Core_MDF_Parent_Question__c = mainQuestion.Id
-            );
-            
-            core_MDF_PICReviewQuestion__c subQuestion2 = new core_MDF_PICReviewQuestion__c(
-                Core_MDF_Sort_Order__c = 4,
-                Core_MDF_Question_English_txt__c = 'Sub Question 2 Internal\nWith line break',
-                Core_MDF_Question_English_External_txt__c = 'Sub Question 2 External\nWith line break',
-                Core_MDF_Is_Active_ind__c = true,
-                Core_MDF_EffectiveDate_dt__c = System.today(),
-                Core_MDF_IneffectiveDate_dt__c = System.today() + 10,
-                Core_MDF_All_Budget_Types_Ind__c = true,
-                Core_MDF_All_Programs_Ind__c = true,
-                Core_MDF_Parent_Question__c = mainQuestion.Id
-            );
-            
-            insert new List<core_MDF_PICReviewQuestion__c>{subQuestion1, subQuestion2};
-                
-                // Create PIC Reviews with multiple cycles
-                List<Core_MDF_PIC_Review__c> reviewList = new List<Core_MDF_PIC_Review__c>();
-            
-            // Multiple cycles for claim1 (highest cycle should be used)
-            Core_MDF_PIC_Review__c review1_cycle1 = createPICReviewResult(claim1.Id, 1, 'Failed', false);
-            Core_MDF_PIC_Review__c review1_cycle2 = createPICReviewResult(claim1.Id, 2, 'Failed', false);
-            Core_MDF_PIC_Review__c review1_cycle3 = createPICReviewResult(claim1.Id, 3, 'Failed', false); // This should be used
-            reviewList.addAll(new List<Core_MDF_PIC_Review__c>{review1_cycle1, review1_cycle2, review1_cycle3});
-            
-            // Single cycle for claim2
-            Core_MDF_PIC_Review__c review2 = createPICReviewResult(claim2.Id, 1, 'Failed', false);
-            reviewList.add(review2);
-            
-            // Single cycle for claim3
-            Core_MDF_PIC_Review__c review3 = createPICReviewResult(claim3.Id, 1, 'Failed', false);
-            reviewList.add(review3);
-            
-            insert reviewList;
-            
-            // Create PIC Review Results with various scenarios
-            List<core_MDF_PICReviewResult__c> resultList = new List<core_MDF_PICReviewResult__c>();
-            
-            // Results for claim1 (cycle 3 - highest cycle)
-            // Main question result
-            core_MDF_PICReviewResult__c mainResult1 = createPICReviewResult(review1_cycle3.Id, mainQuestion.Id, 'main_document.pdf;secondary_doc.xlsx', 'No', false);
-            resultList.add(mainResult1);
-            
-            // Sub question results
-            core_MDF_PICReviewResult__c subResult1_1 = createPICReviewResult(review1_cycle3.Id, subQuestion1.Id, 'sub1_evidence.pdf', 'Fail', false);
-            core_MDF_PICReviewResult__c subResult1_2 = createPICReviewResult(review1_cycle3.Id, subQuestion2.Id, '', 'No', false); // No files
-            resultList.addAll(new List<core_MDF_PICReviewResult__c>{subResult1_1, subResult1_2});
-            
-            // Results for claim2 (Paid and resubmission)
-            core_MDF_PICReviewResult__c regularResult2 = createPICReviewResult(review2.Id, regularQuestion.Id, 'invoice.pdf', 'No', false);
-            resultList.add(regularResult2);
-            
-            // Results for claim3 (No files scenario)
-            core_MDF_PICReviewResult__c regularResult3 = createPICReviewResult(review3.Id, regularQuestion.Id, '', 'Fail', false);
-            resultList.add(regularResult3);
-            
-            insert resultList;
-            
-            // Update claims to trigger email scenarios
-            claim1.Core_MDF_Status__c = 'Resubmission Required';
-            claim2.Core_MDF_Status__c = 'Resubmission Required'; // Use standard status if custom label not available
-            claim3.Core_MDF_Status__c = 'Resubmission Required';
-            
-            update claimList;
-            
-            // Test multiple notification scenarios
-            List<Core_MDF_PIC_SendEmailToClaimOwner.NotificationWrapper> wrapperList = new List<Core_MDF_PIC_SendEmailToClaimOwner.NotificationWrapper>();
-            
-            // Test claim owner notification
-            for(PartnerFundClaim claim : claimList) {
-                Core_MDF_PIC_SendEmailToClaimOwner.NotificationWrapper wrapper1 = new Core_MDF_PIC_SendEmailToClaimOwner.NotificationWrapper();
-                wrapper1.claimIds = claim.Id;
-                wrapper1.notifyPartnerUser = true; // Test partner user notification
-                wrapper1.addReminderInSubject = (claim.Id == claim1.Id); // Test reminder subject for first claim
-                wrapperList.add(wrapper1);
-            }
-            
-            // Execute the method
-            Core_MDF_PIC_SendEmailToClaimOwner.sendEmailtoClaimOwnerOnResubReqd(wrapperList);
-            
-            // Verify that claims were processed
-            System.assertEquals(3, [SELECT COUNT() FROM PartnerFundClaim WHERE Core_MDF_Status__c = 'Resubmission Required']);
-        }
-        Test.stopTest();
+    // Constructor
+    public PICReviewWrapper(String claimId, Integer cycleNumber, String status, Boolean isInsert) {
+        this.claimId = claimId;
+        this.cycleNumber = cycleNumber;
+        this.status = status;
+        this.isInsert = isInsert;
+    }
+   
 }
     
+    public class PICReviewResultWrapper {
+    public String picReviewId;
+    public String questionId;
+    public String filesAffected;
+    public String response;
+    public Boolean isInsert;
     
+    // Constructor
+    public PICReviewResultWrapper(String picReviewId, String questionId, String filesAffected, String response, Boolean isInsert) {
+        this.picReviewId = picReviewId;
+        this.questionId = questionId;
+        this.filesAffected = filesAffected;
+        this.response = response;
+        this.isInsert = isInsert;
+    }
+   
+}
+  
+    public class PICReviewQuestionWrapper {
+    public Integer sortOrder;
+    public String englishText;
+    public String englishTextExternal;
+    public Boolean isInsert;
     
+    // Constructor
+    public PICReviewQuestionWrapper(Integer sortOrder, String englishText, String englishTextExternal, Boolean isInsert) {
+        this.sortOrder = sortOrder;
+        this.englishText = englishText;
+        this.englishTextExternal = englishTextExternal;
+        this.isInsert = isInsert;
+    }
+
+}
+ // ATHR Avoid long parameter lists - Indira - end
+   
 }

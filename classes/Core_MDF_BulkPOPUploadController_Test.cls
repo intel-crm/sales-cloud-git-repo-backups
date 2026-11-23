@@ -91,10 +91,10 @@ public class Core_MDF_BulkPOPUploadController_Test {
         PartnerFundAllocation allocation = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Allocation New', budget, virtualCorpAccount, 20000.0, false);
         pfaList.add(allocation);
         Database.insert(pfaList);
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
        // List<Campaign> cmpList = new List<Campaign>();
         Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 13', 'Gaming', 'Intel® Core™ i7 Processor','Yes',Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today(), System.today().addDays(15), 10000, 'Always Connected PC', virtualCorpAccount.Id, 'Desktop', false);
-        camp.Core_MDF_Opal_Budget_Type_Txt__c = 'MDF';
+        camp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
         Database.insert(camp);
         
         PartnerFundRequest testPartnerFundRequest = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(String.valueof(camp.Id),
@@ -103,7 +103,7 @@ public class Core_MDF_BulkPOPUploadController_Test {
                                                                                                           'Consumer',
                                                                                                           'Desktop',
                                                                                                           'Intel® Core™ i5 Processor',
-                                                                                                          'Broadcast',
+                                                                                                          'Audio',
                                                                                                           'Podcast',
                                                                                                           'Draft',
                                                                                                           false);
@@ -163,7 +163,7 @@ public class Core_MDF_BulkPOPUploadController_Test {
         claimbatchinstance.Core_MDF_Program_Id__c =  cp.Id;
         claimbatchinstance.Core_MDF_Account__c = [SELECT ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c FROM 
                                                   PartnerFundRequest WHERE ID=:testPartnerFundRequest.Id].ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c;
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
       /*  Database.SaveResult sr = */ Database.insert(claimbatchinstance);
         
         
@@ -205,7 +205,7 @@ public class Core_MDF_BulkPOPUploadController_Test {
     public static void testFetchPendingDocumentsRecords() {
         List<Core_MDF_Claim_Batch__c> claimBatch = [select Id from Core_MDF_Claim_Batch__c limit 1];
         Core_MDF_BulkPOPUploadController.fetchPendingDocumentsRecords(claimBatch[0].Id);
-        // Unit Test Method should include System.Assert 
+        // Unit Test Method should include System.Assert - Indira
          System.assertNotEquals(null,claimBatch,'Claim batch list should not be null');
     }
     
@@ -268,23 +268,23 @@ public class Core_MDF_BulkPOPUploadController_Test {
         
         List<Core_MDF_Audit_Document__c> auditDocListSuccess = [select Id, Core_MDF_Document_Id__c from Core_MDF_Audit_Document__c where Core_MDF_Document_Title__c =: 'Test 1' limit 1];
         List<Core_MDF_Audit_Document__c> auditDocListException = [select Id, Core_MDF_Document_Id__c from Core_MDF_Audit_Document__c where Core_MDF_Document_Title__c =: 'Test 2' limit 1];
-        // Unit Test Method should include System.Assert
+        // Unit Test Method should include System.Assert - Indira
         System.assert(auditDocListSuccess.size() >= 0,'Audit document success query executed successfully');
         System.assert(auditDocListException.size() >= 0,'Audit document exception query executed successfully');
 
         //Success scenario of save claim
-        // Highlight: Unused Local Variable 
-       /* String successMessage = */ Core_MDF_BulkPOPUploadController.saveClaim(claimStageInstance, auditDocListSuccess);
+        // Highlight: Unused Local Variable - Indira
+       /* String successMessage = */ Core_MDF_BulkPOPUploadController.saveClaim(claimStageInstance, auditDocListSuccess,null,null);
         //System.assertEquals('Success', successMessage);
         
         //Exception Scenario of save claim
-        // Highlight: Unused Local Variable
-       /* String ExceptionMessage = */ Core_MDF_BulkPOPUploadController.saveClaim(claimStageInstance1, auditDocListSuccess);
+        // Highlight: Unused Local Variable - Indira
+       /* String ExceptionMessage = */ Core_MDF_BulkPOPUploadController.saveClaim(claimStageInstance1, auditDocListSuccess,null,null);
         //System.assertNotEquals('success', ExceptionMessage);
         
         //Exception scenario of assignDocumentList from SaveClaim
-        // Highlight: Unused Local Variable
-      /*  String ExceptionMessage1 = */ Core_MDF_BulkPOPUploadController.saveClaim(claimStageInstance, auditDocListException);
+        // Highlight: Unused Local Variable - Indira
+      /*  String ExceptionMessage1 = */ Core_MDF_BulkPOPUploadController.saveClaim(claimStageInstance, auditDocListException,null,null);
         //System.assertEquals('Success', ExceptionMessage1);
         
         Test.stopTest();
@@ -302,7 +302,7 @@ public class Core_MDF_BulkPOPUploadController_Test {
         Test.startTest();
             Core_MDF_BulkPOPUploadController.fetchLogInfoByPassCheckValue();
         Test.stopTest();
-        // Unit Test Method should include System.Assert
+        // Unit Test Method should include System.Assert - Indira
         System.assert(true, 'testByPassLogInfoField Method executed successfully');
     }
 }

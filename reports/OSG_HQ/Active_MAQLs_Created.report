@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
+        <field>Lead.Core_Lead_State__c</field>
+    </columns>
+    <columns>
         <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Marketing_Priority__c</field>
     </columns>
     <columns>
         <field>Lead.Core_Lead_Status__c</field>
     </columns>
     <columns>
-        <field>Lead.Core_Lead_State__c</field>
+        <field>Lead.Core_Lead_Sub_Status__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_PSG_Lead__c</field>
     </columns>
     <columns>
         <field>COMPANY</field>
@@ -17,9 +26,6 @@
     </columns>
     <columns>
         <field>LAST_NAME</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_PSG_Lead__c</field>
     </columns>
     <columns>
         <field>LEAD_SOURCE</field>
@@ -45,8 +51,8 @@
             <column>CREATED</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>eloqua</value>
+            <operator>equals</operator>
+            <value>user eloqua</value>
         </criteriaItems>
         <criteriaItems>
             <column>RECORDTYPE</column>

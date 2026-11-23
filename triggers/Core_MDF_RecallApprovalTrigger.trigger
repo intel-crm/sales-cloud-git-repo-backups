@@ -10,5 +10,5 @@
 */
 trigger Core_MDF_RecallApprovalTrigger on Core_MDF_Recall_Approval__e (after insert) {
     new Core_MDF_RecallApprovalTriggerHandler().run(); 
-   //Core_MDF_RecallApprovalServiceHandler.recallApprovalProcess (Trigger.New);
+   Core_MDF_RecallApprovalServiceHandler.recallApprovalProcess (Trigger.New);
 }

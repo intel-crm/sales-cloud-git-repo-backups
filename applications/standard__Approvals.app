@@ -8,8 +8,20 @@
     <label>Approvals</label>
     <navType>Console</navType>
     <tabs>standard-ApprovalsHome</tabs>
+    <tabs>Core_MDF_Exception_Account_Mapping__c</tabs>
+    <tabs>Core_MDF_Campaign_Outcomes__c</tabs>
+    <tabs>Support_Ticket__c</tabs>
     <uiType>Lightning</uiType>
     <workspaceConfig>
+        <mappings>
+            <tab>Core_MDF_Campaign_Outcomes__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_MDF_Exception_Account_Mapping__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Support_Ticket__c</tab>
+        </mappings>
         <mappings>
             <tab>standard-ApprovalsHome</tab>
         </mappings>

@@ -84,6 +84,7 @@ Modified By:        Date:       Changes:
         if(bankIdList != NULL && bankIdList.size() > 0){
             //Core_MDF_GeoBasedGenericSharing.checkObjectAndPgm('Core_MDF_Bank__c', bankIdList);
             createShareForBank(bankIdList,'IntExtSharing');
+            system.debug('line 87');
         }
         updateClaimOnBankHoldOrRelease(newBankMap.values(), oldBankMap);
     }
@@ -180,23 +181,38 @@ Modified By:        Date:    Changes:
 ******************************************************************************************************/
     public static Set<String> fetchprgmSupnoCurrencySet(Set<String> bankCurrency, Set<String> supplierNo, Set<Id> bankIdSet, Set<String> legalEntityCodeSet, Set<Id> accountIdSet, Set<String> bankAccountNumber){
         Set<String> bankSuppNoCurrPrgmSet = new Set<String>();
-        String bankIdQueryStr = '';
-        
+        /* String bankIdQueryStr = '';
+
         if(bankIdSet != NULL && !bankIdSet.isEmpty()){
-            bankIdQueryStr = ' AND Id NOT IN :bankIdSet';
+        bankIdQueryStr = ' AND Id NOT IN :bankIdSet';
         }
+        String bankQuery = 'SELECT Core_MDF_Program__c,Core_MDF_Currency_cd__c,Core_MDF_Supplier_Number__c,Core_MDF_Account__c,Core_MDF_Intel_Company_Code__c,Core_MDF_Bank_Account_Number__c ' +
+        'FROM Core_MDF_Bank__c ' +
+        'WHERE  Core_MDF_Currency_cd__c IN :bankCurrency AND ' +
+        'Core_MDF_Account__c IN :accountIdSet AND ' +
+        'Core_MDF_Intel_Company_Code__c IN :legalEntityCodeSet AND '+
+        'Core_MDF_Supplier_Number__c IN :supplierNo AND ' + 
+        'Core_MDF_Bank_Account_Number__c IN :bankAccountNumber' + String.escapeSingleQuotes(bankIdQueryStr);*/ //ATHR comment
+        
+        //ATHR-Untrusted/Unescaped Variable Fixed
         String bankQuery = 'SELECT Core_MDF_Program__c,Core_MDF_Currency_cd__c,Core_MDF_Supplier_Number__c,Core_MDF_Account__c,Core_MDF_Intel_Company_Code__c,Core_MDF_Bank_Account_Number__c ' +
             'FROM Core_MDF_Bank__c ' +
             'WHERE  Core_MDF_Currency_cd__c IN :bankCurrency AND ' +
             'Core_MDF_Account__c IN :accountIdSet AND ' +
             'Core_MDF_Intel_Company_Code__c IN :legalEntityCodeSet AND '+
             'Core_MDF_Supplier_Number__c IN :supplierNo AND ' + 
-            'Core_MDF_Bank_Account_Number__c IN :bankAccountNumber' + String.escapeSingleQuotes(bankIdQueryStr);
+            'Core_MDF_Bank_Account_Number__c IN :bankAccountNumber';
+        
+        // Add the bank ID exclusion condition safely
+        if(bankIdSet != NULL && !bankIdSet.isEmpty()){
+            bankQuery += ' AND Id NOT IN :bankIdSet';
+        }//ATHR end
         for(Core_MDF_Bank__c bankRecord : Database.query(bankQuery)){
             for(String bankprgm : bankRecord.Core_MDF_Program__c.split(';')){
                 bankSuppNoCurrPrgmSet.add(bankRecord.Core_MDF_Supplier_Number__c + '-' + bankRecord.Core_MDF_Currency_cd__c + '-' + bankprgm + '-' + bankRecord.Core_MDF_Intel_Company_Code__c + '-' + bankRecord.Core_MDF_Account__c + '-' + bankRecord.Core_MDF_Bank_Account_Number__c + ';');
             }
         }
+        system.debug('bankSuppNoCurrPrgmSet '+bankSuppNoCurrPrgmSet);
         return bankSuppNoCurrPrgmSet;
     }
     /*****************************************************************************************************
@@ -213,6 +229,7 @@ Accenture - RG      02/06/2021   Bank recordtype Changes based on bank Status
     public static void beforeUpdateBankRecords(Map<Id, Core_MDF_Bank__c> oldBankMap, Map<Id, Core_MDF_Bank__c> newBankMap){
         try{
             validateBankDataUpdate(oldBankMap, newBankMap);
+            system.debug('Before Update Check Validation');
             updateBankStatusAndRecordType(newBankMap.values(), oldBankMap);
         }
         catch(Exception e){String errorDetails = Core_MDF_CCP_UtilityClass.getErrorDetails(e);logErrorinLogObjectWithReason(errorDetails,Label.Core_MDF_OriginName);}
@@ -278,6 +295,7 @@ Modified By:        Date:    Changes:
         List<Core_MDF_Bank__c> updatedBankList = new List<Core_MDF_Bank__c>();
         Set<Core_MDF_Bank__c> noProgSuppCurrUpdateBankSet = new Set<Core_MDF_Bank__c>();
         Boolean checkForBankInactivationOrProgramInactivation = false;
+        system.debug('inside validateBankDataUpdate');
         
         //Loop over New Bank Data and validate if there is any change in Program or Ineffective Selection
         for(Core_MDF_Bank__c bankRecord : newBankMap.values()){
@@ -285,6 +303,7 @@ Modified By:        Date:    Changes:
                bankRecord.Core_MDF_Ineffective_Selection_ind__c != oldBankMap.get(bankRecord.id).Core_MDF_Ineffective_Selection_ind__c){
                    //Add the bank id as key and bank details as value to updatedBankInactiveOrProgramInactiveMap
                    updatedBankInactiveOrProgramInactiveMap.put(bankRecord.Id, bankRecord);
+                   system.debug('updatedBankInactiveOrProgramInactiveMap1 '+updatedBankInactiveOrProgramInactiveMap);
                }
             //Duplicate Error check
             if(bankRecord.Core_MDF_Program__c != oldBankMap.get(bankRecord.id).Core_MDF_Program__c ||
@@ -295,18 +314,27 @@ Modified By:        Date:    Changes:
                bankRecord.Core_MDF_Bank_Account_Number__c != oldBankMap.get(bankRecord.id).Core_MDF_Bank_Account_Number__c){
                   
                    updatedBankList.add(bankRecord);
+                   system.debug('updatedBankList1 '+updatedBankList);
                }
             else{
                 noProgSuppCurrUpdateBankSet.add(bankRecord);
+                system.debug('noProgSuppCurrUpdateBankSet1 '+noProgSuppCurrUpdateBankSet);
             }
         }
         
         if((updatedBankList != NULL && updatedBankList.size() > 0) || 
            (updatedBankInactiveOrProgramInactiveMap != NULL && updatedBankInactiveOrProgramInactiveMap.size() > 0)){
+            system.debug('inside 309');
                if(updatedBankList != NULL && updatedBankList.size() > 0){//if Program, Supplier Number or Currency or Account or LE or Account Number has changed
+                   system.debug('inside 311');
                    Set<Core_MDF_Bank__c> validBankData = validateDuplicate(updatedBankList, true);
                    if(validBankData != NULL && !validBankData.isEmpty()){
+                    system.debug('inside 314');
+                    system.debug('validBankData'+validBankData);
+                    system.debug('validBankData'+validBankData.size());
+                    system.debug('updatedBankList'+updatedBankList.size());
                        if(validBankData.size() < updatedBankList.size()){//Some Duplicate errors are present in the validBankData
+                        system.debug('inside if validBankData'+validBankData);
                            for(Core_MDF_Bank__c bankRecord : validBankData){
                                bankRecord.addError(Label.Core_MDF_Bank_No_Duplicate_Error);
                            }
@@ -333,6 +361,7 @@ Modified By:        Date:    Changes:
                }
                if(checkForBankInactivationOrProgramInactivation){
                    if(updatedBankInactiveOrProgramInactiveMap != NULL && updatedBankInactiveOrProgramInactiveMap.size() > 0){
+                    system.debug('checkForBankInactivationOrProgramInactivation1'+checkForBankInactivationOrProgramInactivation);
                        if(!Core_MDF_Utility.byPassFeature('Bypass_Bank_Program_InActivation_Check'))
                            if(validateBankInactivationOrProgramInactivation(updatedBankInactiveOrProgramInactiveMap)){
                                beforeUpdateBankLogic(oldBankMap, newBankMap);
@@ -395,7 +424,7 @@ Modified By:        Date:    Changes:
                                                                        }*/
         for(Core_MDF_CCP_Custom_Metadata_Utility__c taxCodeVatPct :[select id,Core_MDF_Name_Criteria__c, Core_MDF_Value__c from Core_MDF_CCP_Custom_Metadata_Utility__c where Core_MDF_Category__c='Bank' and Core_MDF_Sub_Category__c='TAX_MAP']){
             taxCodeVatPctMap.put(taxCodeVatPct.Core_MDF_Name_Criteria__c,taxCodeVatPct.Core_MDF_Value__c);
-                                                                       }
+        }
         return taxCodeVatPctMap;
     }
     
@@ -441,16 +470,16 @@ Modified By:        Date:       Changes:
                     eligibleBankProgramWithoutDashSet.add(technicalProgramName);
                    /* if(bankIdProgramWithoutDashStringSetMap.containsKey(bankRecord.Id)) {
 		    	bankIdProgramWithoutDashStringSetMap.get(bankRecord.Id).add(technicalProgramName);
-                //system.debug('bankIdProgramWithoutDashStringSetMap1'+bankIdProgramWithoutDashStringSetMap);
+                system.debug('bankIdProgramWithoutDashStringSetMap1'+bankIdProgramWithoutDashStringSetMap);
                 } else {
                     bankIdProgramWithoutDashStringSetMap.put(bankRecord.Id,new Set<String>{technicalProgramName});
+                    system.debug('bankIdProgramWithoutDashStringSetMap2'+bankIdProgramWithoutDashStringSetMap);
                 }*/ // ATHR comment
                 //ATHR Fix
                 Set<String> techPrograms = bankIdProgramWithoutDashStringSetMap.get(bankRecord.Id);
                 techPrograms = (techPrograms == null ? new Set<String>() : techPrograms);
                 techPrograms.add(technicalProgramName);
                 bankIdProgramWithoutDashStringSetMap.put(bankRecord.Id, techPrograms);//ATHR end
-                 //system.debug('bankIdProgramWithoutDashStringSetMap2'+bankIdProgramWithoutDashStringSetMap);
                 }
 	    }
             //Check if Program is changed
@@ -463,11 +492,14 @@ Modified By:        Date:       Changes:
                        
                        if(!(((Core_MDF_Bank__c)(Trigger.newMap.get(bankRecord.Id))).Core_MDF_Program__c + ';').contains(programFromBackEndField + ';')){
 	                        String technicalProgramName = Core_MDF_CCP_GenericUtility.getTechnicalProgramName(channelProgramBankProgramMap.get(programFromBackEndField));
+                            system.debug('technicalProgramName1'+technicalProgramName);
 	                        eligibleBankProgramWithoutDashSet.add(technicalProgramName);
 				if(bankIdProgramWithoutDashStringSetMap.containsKey(bankRecord.Id)) {
 					bankIdProgramWithoutDashStringSetMap.get(bankRecord.Id).add(technicalProgramName);
+                    system.debug('bankIdProgramWithoutDashStringSetMap3'+bankIdProgramWithoutDashStringSetMap);
 				} else { 
 	                            bankIdProgramWithoutDashStringSetMap.put(bankRecord.Id,new Set<String>{technicalProgramName});
+                                system.debug('bankIdProgramWithoutDashStringSetMap4'+bankIdProgramWithoutDashStringSetMap);
 	                        }
                        }
                    }
@@ -475,6 +507,7 @@ Modified By:        Date:       Changes:
         }
         if(bankIdProgramWithoutDashStringSetMap != NULL && bankIdProgramWithoutDashStringSetMap.size() > 0){
             transactionSuccessFlag = updateActiveFlagForABMsToTrue(bankIdProgramWithoutDashStringSetMap, eligibleBankProgramWithoutDashSet);
+            system.debug('transactionSuccessFlag1'+transactionSuccessFlag);
         }
         return transactionSuccessFlag;
     }
@@ -545,8 +578,12 @@ Modified By:        Date:       Changes:
                            bankIdClaimProgramSetErrorStringMap.put(abmList.get(index).Core_MDF_Bank__c, new Set<String>{programWithoutDot});
                        }
                     else if(bankIdClaimProgramSetErrorStringMap != NULL && bankIdClaimProgramSetErrorStringMap.size() > 0 && (bankIdClaimProgramSetErrorStringMap.containsKey(abmList.get(index).Core_MDF_Bank__c) && !((bankIdClaimProgramSetErrorStringMap.get(abmList.get(index).Core_MDF_Bank__c)).contains(programWithoutDot)))){//Multiple programs for the same Bank
-                        Set<String> programSet = new Set<String>();programSet = bankIdClaimProgramSetErrorStringMap.get(abmList.get(index).Core_MDF_Bank__c);programSet.add(programWithoutDot);bankIdClaimProgramSetErrorStringMap.put(abmList.get(index).Core_MDF_Bank__c, programSet);
+                        Set<String> programSet = new Set<String>();
+                        programSet = bankIdClaimProgramSetErrorStringMap.get(abmList.get(index).Core_MDF_Bank__c);
+                        programSet.add(programWithoutDot);
+                        bankIdClaimProgramSetErrorStringMap.put(abmList.get(index).Core_MDF_Bank__c, programSet);
                     }
+                    
                 }
                 /* else{bankIdOtherErrorStringMap.put(abmList.get(index).Core_MDF_Bank__c,resultRecord.getErrors().get(0).getMessage());
 } */
@@ -796,26 +833,31 @@ Modified By:        Date:       Changes:
     public static void createShareForBank(List<Id> bankIdList, String context){
         //if(!Core_MDF_Utility.byPassFeature('Bypass_Bank_Internal_Sharing') || !Core_MDF_Utility.byPassFeature('Bypass_Bank_External_Sharing')){ // ATHR Comment
         if(Core_MDF_Utility.byPassFeature('Bypass_Bank_Internal_Sharing') && Core_MDF_Utility.byPassFeature('Bypass_Bank_External_Sharing')){return;}// ATHR Fix - we can do early exist for this
-   
+
             try{
                 String accessType;
                 Boolean intSharing = false;
                 Boolean intPGMSharing = false;
                 Boolean extSharing = false; 
                 context  = !String.isBlank(context) ? context : 'IntExtSharing';
+                system.debug('context1'+context);
                 if(!Core_MDF_Utility.byPassFeature('Bypass_Bank_Internal_Sharing') && !Core_MDF_Utility.byPassFeature('Bypass_Bank_External_Sharing') && context == 'IntExtSharing'){
                     accessType = null;
                     intSharing = true;
                     extSharing = true;
+                    system.debug('line 813');
                 }else if(!Core_MDF_Utility.byPassFeature('Bypass_Bank_Internal_Sharing') && (context == 'IntSharing' || context == 'IntExtSharing')){
                     accessType = Core_MDF_CCP_ConstantClass.INTERNAL;
                     intSharing = true;
+                    system.debug('line 817');
                 }else if(!Core_MDF_Utility.byPassFeature('Bypass_Bank_Internal_Sharing') && (context == 'IntPGMSharing' || context == 'IntExtSharing')){
                     accessType = Core_MDF_CCP_ConstantClass.INTERNAL;
                     intPGMSharing = true;
+                    system.debug('line 821');
                 }else if(!Core_MDF_Utility.byPassFeature('Bypass_Bank_External_Sharing') && (context == 'ExtSharing' || context == 'IntExtSharing')){
                     accessType = Core_MDF_CCP_ConstantClass.EXTERNAL;
                     extSharing = true;
+                    system.debug('line 825');
                 }
                 Map<String,String> channelProgramBankProgramMap = new Map<String,String>();
                 Map<String,String> bankProgramChannelProgramNameMap = new Map<String,String>();
@@ -839,7 +881,9 @@ Modified By:        Date:       Changes:
                 //Fetch the Custom Metadata (Core_MDF_BankProgram_Entitlement_Mapping__mdt) which will contain the Mapping between the Bank Program values, Channel Program.
               /*  for(Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem : ([SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c FROM Core_MDF_BankProgram_Entitlement_Mapping__mdt LIMIT 1000])){
                     channelProgramBankProgramMap.put(bpem.Core_MDF_Channel_Program__c, bpem.Core_MDF_Bank_Program_Name__c);
+                    system.debug('channelProgramBankProgramMap1'+channelProgramBankProgramMap);
                     bankProgramChannelProgramNameMap.put(bpem.Core_MDF_Bank_Program_Name__c, bpem.Core_MDF_Channel_Program__c);
+                    system.debug('bankProgramChannelProgramNameMap1'+bankProgramChannelProgramNameMap);
                 }*/
                 
                 for(Core_MDF_ChannelProgram__mdt bpem : ([SELECT Label, Core_MDF_Bank_Program_Value__c FROM Core_MDF_ChannelProgram__mdt LIMIT 1000])){
@@ -851,14 +895,18 @@ Modified By:        Date:       Changes:
                 for(ChannelProgram cp : [SELECT Id, Name FROM ChannelProgram WHERE Name IN :channelProgramBankProgramMap.keySet()]){
                     if(channelProgramBankProgramMap.get(cp.Name) != NULL){
                         bankProgToCPIdMap.put(channelProgramBankProgramMap.get(cp.Name),cp.Id);
+                        system.debug('bankProgToCPIdMap1'+bankProgToCPIdMap);
                     }
                 }
+                
                 
                 //Get Country Geo Mapping Records
                 List<Core_MDF_CCP_Country_Geo_Mapping__mdt>  CountryMappingRecords = Core_MDF_GenericMetadata.getCountryGeoMappingMdt('');
                 for(Core_MDF_CCP_Country_Geo_Mapping__mdt cgm : CountryMappingRecords) {
                     countryCodeGeoMap.put(cgm.Core_MDF_Code_2_Digits__c,cgm.Core_MDF_Geo__c);
                     countryCodeSubGeoMap.put(cgm.Core_MDF_Code_2_Digits__c,cgm.Core_MDF_Sub_Geo__c);
+                    system.debug('countryCodeGeoMap1'+countryCodeGeoMap);
+                    system.debug('countryCodeSubGeoMap1'+countryCodeSubGeoMap);
                 }                
                 
                 //this is to populate the accountIdSet and channelProgramIdSet
@@ -870,23 +918,34 @@ Modified By:        Date:       Changes:
                     for(String bankProgram : bank.Core_MDF_Program__c.split(semicolon)){
                         if(bankProgToCPIdMap.containsKey(bankProgram) && bankProgToCPIdMap.get(bankProgram) != NULL){
                             channelProgramIdSet.add(bankProgToCPIdMap.get(bankProgram));
+                            system.debug('channelProgramIdSet1'+channelProgramIdSet);
                             uniqueKeySet.add((String)bank.Core_MDF_Account__c + (String)bankProgToCPIdMap.get(bankProgram));
+                            system.debug('uniqueKeySet1'+uniqueKeySet);
                             if(countryCodeGeoMap.containsKey(bank.Core_MDF_Bank_Location__c)){
                                 uniqueKeySet.add((String)bank.Core_MDF_Account__c + (String)bankProgToCPIdMap.get(bankProgram) + (String)countryCodeGeoMap.get(bank.Core_MDF_Bank_Location__c));
+                                system.debug('uniqueKeySet2'+uniqueKeySet);
                                 if(countryCodeSubGeoMap.containsKey(bank.Core_MDF_Bank_Location__c)){
                                     uniqueKeySet.add((String)bank.Core_MDF_Account__c + (String)bankProgToCPIdMap.get(bankProgram) + (String)countryCodeGeoMap.get(bank.Core_MDF_Bank_Location__c) + (String)countryCodeSubGeoMap.get(bank.Core_MDF_Bank_Location__c));
-				    //Added NRE Program Check - Akash
-                                    if(bankProgramChannelProgramNameMap.get(bankProgram) == Label.Core_MDF_IPA_Program_Name || bankProgramChannelProgramNameMap.get(bankProgram) == Label.Core_MDF_Co_GTM_program_name){                                    
+                                    system.debug('uniqueKeySet3'+uniqueKeySet);
+                                    //Added NRE Program Check - Akash
+                                    if(bankProgramChannelProgramNameMap.get(bankProgram) == Label.Core_MDF_IPA_Program_Name || bankProgramChannelProgramNameMap.get(bankProgram) == Label.Core_MDF_Co_GTM_program_name){ 
+                                        system.debug('bank.Id'+bank.Id);
+                                        system.debug('countryCodeGeoMap'+countryCodeGeoMap.get(bank.Core_MDF_Bank_Location__c));
+                                        system.debug('countryCodeSubGeoMap'+countryCodeSubGeoMap.get(bank.Core_MDF_Bank_Location__c));
+                                        system.debug('bankProgramChannelProgramNameMap'+bankProgramChannelProgramNameMap.get(bankProgram));                                   
                                         recordGeoShareForBudgetTypeList.add(new Core_MDF_RecordGeoShare(bank.Id,countryCodeGeoMap.get(bank.Core_MDF_Bank_Location__c),countryCodeSubGeoMap.get(bank.Core_MDF_Bank_Location__c), bankProgramChannelProgramNameMap.get(bankProgram)));
+                                        system.debug('recordGeoShareForBudgetTypeList1'+recordGeoShareForBudgetTypeList);
                                     }else{
                                         recordGeoShareList.add(new Core_MDF_RecordGeoShare(bank.Id,countryCodeGeoMap.get(bank.Core_MDF_Bank_Location__c),countryCodeSubGeoMap.get(bank.Core_MDF_Bank_Location__c), bankProgramChannelProgramNameMap.get(bankProgram)));
+                                        system.debug('recordGeoShareList1'+recordGeoShareList);
                                     }
                                 }
                             }
                         }
                     }
                     if(uniqueKeySet != NULL && uniqueKeySet.size() > 0){
-                        bankIdToUniqueSet.put(bank.Id,new Set<String>(uniqueKeySet));                    
+                        bankIdToUniqueSet.put(bank.Id,new Set<String>(uniqueKeySet));
+                        system.debug('bankIdToUniqueSet1'+bankIdToUniqueSet);                    
                     }
                     uniqueKeySet.clear();
                 }
@@ -895,9 +954,11 @@ Modified By:        Date:       Changes:
                 //Mdt sharing
                 if(intSharing){
                     if(recordGeoShareForBudgetTypeList != NULL && recordGeoShareForBudgetTypeList.size() >0){
+                        system.debug('line 912');  
                         Core_MDF_GeoBasedGenericSharing.shareRecordToGeoGroup('Core_MDF_Bank__c',recordGeoShareForBudgetTypeList);
                     }
                     if(recordGeoShareList != NULL && recordGeoShareList.size() >0){
+                        system.debug('line 916'); 
                         Core_MDF_ShareRecordToGeoGroup.shareRecordToGeoGroup('Core_MDF_Bank__c',recordGeoShareList);
                     }
                 }
@@ -987,7 +1048,7 @@ Modified By:        Date:       Changes:
             for(Core_MDF_Account_Bank_Mapping__c abm : [SELECT Id, Core_MDF_Account__c, Core_MDF_Account__r.Core_MDF_External_Group_Id__c, Core_MDF_Bank__c
                                                         FROM Core_MDF_Account_Bank_Mapping__c
                                                         WHERE Core_MDF_Bank__c IN :newBankMap.keySet()
-                                                        LIMIT 10000]){
+                                                        LIMIT 1000]){
                 
                 if(abm.Core_MDF_Account__r.Core_MDF_External_Group_Id__c != null){
                     //Creation of Bank and Group mapping
@@ -1029,7 +1090,7 @@ Modified By:        Date:       Changes:
             }
 
             if(abmMap != NULL && abmMap.size() > 0){
-                for(Core_MDF_Account_Bank_Mapping__Share abmShareRecord : [SELECT Id, ParentId, UserOrGroupId, AccessLevel, RowCause FROM Core_MDF_Account_Bank_Mapping__Share WHERE ParentId IN :abmMap.keySet() AND RowCause = 'Manual']){abmShareList.add(abmShareRecord);
+                for(Core_MDF_Account_Bank_Mapping__Share abmShareRecord : [SELECT Id FROM Core_MDF_Account_Bank_Mapping__Share WHERE ParentId IN :abmMap.keySet() AND RowCause = 'Manual']){abmShareList.add(abmShareRecord); // HP:ATHR Fix
                                                                                                                                                                                                                                            }
                 if(abmShareList != NULL && abmShareList.size() > 0){delete abmShareList;
                                                                    }
@@ -1158,8 +1219,13 @@ Modified By:        Date:       Changes:
             
             List<String> listOfCountries = new List<String>();
             listOfCountries = cp.Core_MDF_BankDocHold_Countries_Required__c.split(';');
-            channelProgramToCountriesMap.put(cp.Core_MDF_Technical_Program_Name__c, listOfCountries);
+            String programName = cp.Core_MDF_Technical_Program_Name__c;
+            if(cp.Core_MDF_Technical_Program_Name__c == Core_MDF_CCP_ConstantClass.Co_GTM_TECHNICAL_PROGRAM){
+                programName = Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM;
+            }
+            channelProgramToCountriesMap.put(programName, listOfCountries);
         }
+        system.debug('@@channelProgramToCountriesMap==>'+channelProgramToCountriesMap);
         
         for(Core_MDF_Bank__c bankRecord : newBankList){
             if(bankRecord.Core_MDF_ESD_Update__c == true && bankRecord.Core_MDF_Ineffective_Selection_ind__c == false){
@@ -1176,6 +1242,7 @@ Modified By:        Date:       Changes:
                 }
                 // checking if bank is released from esd hold
                 if(bankRecord.Core_MDF_ESD_Hold_Indicator__c == false && oldBankMap.get(bankRecord.Id).Core_MDF_ESD_Hold_Indicator__c != bankRecord.Core_MDF_ESD_Hold_Indicator__c){
+                    System.debug('1245@@@');
                     idToReasonMap.put(bankRecord.Id, new List<string>{Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ESD_Hold')});
                 }
                 // checking if bank is released from payment hold
@@ -1190,11 +1257,16 @@ Modified By:        Date:       Changes:
                    }
                 
             }
+            System.debug('@@1st cond=='+bankRecord.Core_MDF_Bank_Location__c);
+            System.debug('@@2nd cond=='+oldBankMap.get(bankRecord.Id).Core_MDF_Bank_Location__c);
+            
             if((bankRecord.Core_MDF_Bank_Location__c !=NULL && oldBankMap.get(bankRecord.Id).Core_MDF_Bank_Location__c != bankRecord.Core_MDF_Bank_Location__c)){
                 listOfPrograms = bankRecord.Core_MDF_Program_Value__c.split(';');
                 
-                for(string channelProgram : listOfPrograms){
-                    if(channelProgramToCountriesMap.containsKey(channelProgram)){
+                for(string channelProgram : listOfPrograms){//Co-GTM
+                    if(channelProgramToCountriesMap.containsKey(channelProgram)){//CoGTM
+                        System.debug('@@inside if 1st '+channelProgramToCountriesMap.get(channelProgram).contains(bankRecord.Core_MDF_Bank_Location__c));
+                        System.debug('@@inside if 2nd '+channelProgramToCountriesMap.get(channelProgram).contains(oldBankMap.get(bankRecord.Id).Core_MDF_Bank_Location__c));
                         if(channelProgramToCountriesMap.get(channelProgram).contains(bankRecord.Core_MDF_Bank_Location__c) && !channelProgramToCountriesMap.get(channelProgram).contains(oldBankMap.get(bankRecord.Id).Core_MDF_Bank_Location__c)){ 
                             if(idToHoldMap.containsKey(bankRecord.Id)){
                                 idToHoldMap.get(bankRecord.Id).add(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Bank_Document_Hold')); 
@@ -1214,11 +1286,14 @@ Modified By:        Date:       Changes:
                 }
             }
         } 
+        System.debug('idToReasonMap@@@' + idToReasonMap);
         // calling batch to update claims on bank release
         if(idToReasonMap != Null && idToReasonMap.size()>0){
             try{
                 Core_MDF_Configuration__c config = Core_MDF_Configuration__c.getValues('BATCH_UPDATE_CLAIM_ON_BANK_RELEASE');
-                Database.executeBatch(new Core_MDF_Batch_UpdateClaimOnBankRelease(idToReasonMap),Integer.valueOf(config.Core_MDF_Value__c));  
+                //Database.executeBatch(new Core_MDF_Batch_UpdateClaimOnBankRelease(idToReasonMap),Integer.valueOf(config.Core_MDF_Value__c));  
+                System.debug('callingbatch@@@');
+                Database.executeBatch(new Core_MDF_Batch_UpdateClaimOnBankRelease(idToReasonMap),200);  
             }catch (Exception exc) {
                 Core_MDF_CCP_UtilityClass.logError(exc);
             }

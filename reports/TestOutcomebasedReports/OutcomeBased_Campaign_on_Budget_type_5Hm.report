@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PartnerFundRequest$ChannelPartner</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Program__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Name</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Budget_Type_Reporting_Only_nm__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Campaign.Core_MDF_Budget_Type_Reporting_Only_nm__c</field>
+    </columns>
+    <columns>
+        <field>CDF1</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(CONTAINS(PartnerFundRequest.Campaign.Core_MDF_Budget_Type_Reporting_Only_nm__c,PartnerFundRequest.Core_MDF_Budget_Type_Reporting_Only_nm__c),&apos;F&apos;,&apos;T&apos;)</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Budget Type Discrepancy</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <description>OutcomeBased Campaigns and Activities on Budget Type</description>
+    <filter>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_Program__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Client,Client Co-Marketing Fund Boost,Retail Marketing Funds,Service Provider Co-Marketing Fund,Ecosystem Extension Fund,Datacenter,Co-GTM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CDF1</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>T</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_Is_Outcome_Based_Ind__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Outcome-Based Campaign on Budget type</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_MDF_Co_Marketing_Outcome_Based_Campaign__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PartnerFundRequest$Core_MDF_ToBeClosedDate__c</dateColumn>
+        <endDate>2025-09-30</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2022-01-01</startDate>
+    </timeFrameFilter>
+</Report>

@@ -83,7 +83,8 @@ public class Core_MDF_ContentVersion_Test {
             Profile ccpCoreAccessProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1];
             Profile partnerProfile = [SELECT Id FROM Profile WHERE Name='Partner' limit 1];
             PermissionSet aacntMngrPS = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_Retail_Account_Manager' LIMIT 1];
-
+	        // Highlight unused local variable - 14285 - Suma
+            // PermissionSet extApprPS = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_External_Activity_Approver' LIMIT 1];
 
             Contact con  = Core_MDF_CCP_TestDataUtility.createContact(retailIntelAcc.Id, true);
             User usrBudgetAdmin = Core_MDF_CCP_TestDataUtility.createUser(false);
@@ -122,8 +123,8 @@ public class Core_MDF_ContentVersion_Test {
             retailCampaign.Core_MDF_Technology__c = 'Wifi6';
             retailCampaign.Core_MDF_Opal_Budget_Type_Txt__c ='Retail MDF';
             insert retailCampaign;
-            
-            
+            // Highlight unused local variable - 14285 - Suma
+            // List<Core_MDF_Bank__c> listBank = new List<Core_MDF_Bank__c>();            
             
             Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(retailIntelAcc.Id, 'Core_MDF_Retail_Marketing_Funds', false,'1231231230');
             bank.Core_MDF_Bank_Alias_Name__c='Test';
@@ -136,7 +137,8 @@ public class Core_MDF_ContentVersion_Test {
             Database.insert(bank);        
             
             //Do Account Bank Mapping for 'bank' and ABM is applicaple only for "Retail MDF" record type
-
+	        // Highlight unused local variable - 14285 - Suma
+            // Core_MDF_Account_Bank_Mapping__c abm1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(masterAcc.Id,bank.Id,true);
             
             Core_MDF_CCP_TestDataUtility.createPartnerGroupMapping(retailIntelAcc.Id,'Internal',retailIntelAcc.Id,retailCP.Id,'PGM_Retail_TEST',true);
             
@@ -229,7 +231,9 @@ public class Core_MDF_ContentVersion_Test {
     static void testContentVersionFileSizeRestriction()
     {
         User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' and LastName = 'System Adm' limit 1];
-
+	// Highlight unused local variable - 14285 - Suma
+        // boolean submitStatusBFile = false;
+        // boolean submitStatusAFile = false;
         System.runAs(sysAdminUser)
         {
             test.startTest();
@@ -239,7 +243,7 @@ public class Core_MDF_ContentVersion_Test {
             claim1.Core_MDF_Type_Txt__c ='Claim';
             claim1.Core_MDF_Currency__c='USD';
             claim1.Core_MDF_Country_Location_nm__c= 'UNITED KINGDOM'; 
-            claim1.Core_MDF_VAT_Opt_In__c = '';  // 14285 suma
+            claim1.Core_MDF_VAT_Opt_In__c = '';  // 14285 Suma
             claim1.Core_MDF_VAT_Eligibility_Ind__c= true ; 
             claim1.Core_MDF_VAT_Hold_Ind__c = true;
             claim1.Core_MDF_Status__c = 'Hold';

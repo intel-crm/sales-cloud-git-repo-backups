@@ -88,7 +88,9 @@
                             <p class="slds-p-around_x-large slds-m-around--x-large">{!v.errorMsg}</p>
                         </div>
                     </aura:set>
+
                 </aura:if>
+
                 <aura:if isTrue="{!v.Spinner}">
                     <div class="slds-spinner_container">
                         <lightning:spinner alternativeText="Loading" size="medium" variant="brand"/>

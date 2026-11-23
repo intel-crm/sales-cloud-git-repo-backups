@@ -1,0 +1,9 @@
+An Ask Commissions case has been assigned to you or your group
+
+Case ID: {!Case.CaseNumber} 
+Status: {!Case.Status} 
+Case Owner: {!Case.OwnerFullName} 
+
+Please go to Ask Commissions for more details.
+
+***NOTE: Do not reply to this mail as there is no inbox being monitored***

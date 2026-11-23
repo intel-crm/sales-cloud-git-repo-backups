@@ -89,7 +89,29 @@
     <columns>
         <field>ACCOUNT_ID</field>
     </columns>
-    <format>Summary</format>
+    <filter>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Pending,Win Approved,Win Submitted,Production Win</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.Core_WWID__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>10505705,10692594,11117316,10861520,10597076,10709577,11272050,10003631,11723317,10652268,11224750,10681461,10683096,10695274,10639465,10669477,10515319,10101734,10986869,11581516,10202195,11411142,11748965,11223542,10605537,10639801,11413894,10621064</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>OpportunityLineItem.Core_Status__c</field>
+        <sortOrder>Desc</sortOrder>
+    </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>OPPORTUNITY_NAME</field>
@@ -98,11 +120,6 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>ACCOUNT_NAME</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_Status__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Jas_oppty_test2</name>

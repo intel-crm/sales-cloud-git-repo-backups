@@ -157,6 +157,17 @@
         <trackHistory>true</trackHistory>
     </fields>
     <fields>
+        <fullName>Budget_External_Id__c</fullName>
+        <externalId>true</externalId>
+        <label>Budget External Id</label>
+        <length>30</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>ChannelPartnerId</fullName>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
@@ -301,6 +312,21 @@
         <trackHistory>true</trackHistory>
         <type>LongTextArea</type>
         <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Budget_Consumption__c</fullName>
+        <description>Percentage of Budget Consumption</description>
+        <externalId>false</externalId>
+        <formula>IF(Amount &gt; 0, IMAGE(&quot;/img/samples/color_red.gif&quot;,&quot;red&quot;,10,(( TotalApprovedFcs /Amount)*100)) &amp;
+IMAGE(&quot;/img/samples/color_green.gif&quot;,&quot;green&quot;,10, 100 - ((TotalApprovedFcs /Amount)*100)) &amp;
+&quot; &quot; &amp;  TEXT(ROUND(((TotalApprovedFcs /Amount)*100),2)) &amp; &quot;%&quot;, &quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>This field represents percentage of budget consumed by claims submitted for the budget period that are in either Payment Due, Pending Payment or Paid Status.</inlineHelpText>
+        <label>Budget Consumption %</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_Budget_Identifier__c</fullName>
@@ -480,6 +506,11 @@
                     <fullName>Co-Engineering</fullName>
                     <default>false</default>
                     <label>Co-Engineering</label>
+                </value>
+                <value>
+                    <fullName>Co-Investment</fullName>
+                    <default>false</default>
+                    <label>Co-Investment</label>
                 </value>
                 <value>
                     <fullName>Datacenter Market Accelerate</fullName>
@@ -764,6 +795,26 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Core_MDF_Co_Marketing_ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Marketing Approval required for funding Co-Selling Tactic(s)</description>
+        <inlineHelpText>Marketing Approval required for funding Co-Selling Tactic(s)</inlineHelpText>
+        <label>Co-Marketing</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Co_Selling_ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Field Sales Approval required for funding Co-Marketing Tactic(s)</description>
+        <inlineHelpText>Field Sales Approval required for funding Co-Marketing Tactic(s)</inlineHelpText>
+        <label>Co-Selling</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_CreatedBy_Nm__c</fullName>
         <description>Shows the name for external user if created by is external otherwise Intel System User</description>
         <externalId>false</externalId>
@@ -792,6 +843,56 @@ Amount= Amount - Budget_Reduction_Amount</description>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Geo__c</fullName>
+        <label>Region</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>APJ</fullName>
+                    <default>false</default>
+                    <label>APJ</label>
+                </value>
+                <value>
+                    <fullName>ASMO</fullName>
+                    <default>false</default>
+                    <label>ASMO</label>
+                </value>
+                <value>
+                    <fullName>EMEA</fullName>
+                    <default>false</default>
+                    <label>EMEA</label>
+                </value>
+                <value>
+                    <fullName>PRC</fullName>
+                    <default>false</default>
+                    <label>PRC</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Intermediate_Budget__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Intermediate Budget</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_IsApprovalProcessBypassed_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>IsApprovalProcessBypassed</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_MDF_Last_ModifiedBy_Nm__c</fullName>
@@ -874,6 +975,44 @@ $Label.Core_MDF_Intel_System_User
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_Revenue_Segment_nm__c</fullName>
+        <description>Revenue segment (Budget Revenue Segment) the budget is allocated to, mainly for Co-Inv budgets.</description>
+        <inlineHelpText>Revenue Segment</inlineHelpText>
+        <label>Revenue Segment</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Revenue_Segment</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Sub_Geo__c</fullName>
+        <label>Sub Region</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>LAR</fullName>
+                    <default>false</default>
+                    <label>LAR</label>
+                </value>
+                <value>
+                    <fullName>NAR</fullName>
+                    <default>false</default>
+                    <label>NAR</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Ultimate_Account_Id__c</fullName>
         <description>Fetch the Ultimate account Id from the Budget partner to use the same in approval criteria setup</description>
         <externalId>false</externalId>
@@ -925,6 +1064,13 @@ $Label.Core_MDF_Intel_System_User
         <trackHistory>true</trackHistory>
     </fields>
     <fields>
+        <fullName>Test_validation_Rule__c</fullName>
+        <formula>If(Core_MDF_Approver_1__c != NULL, false, true)</formula>
+        <label>Test validation Rule</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Title</fullName>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
@@ -958,7 +1104,247 @@ $Label.Core_MDF_Intel_System_User
         <columns>StartDate</columns>
         <columns>EndDate</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>CreatedDate</field>
+            <operation>equals</operation>
+            <value>TODAY</value>
+        </filters>
         <label>All Budgets</label>
+    </listViews>
+    <listViews>
+        <fullName>Budgets_FY_2019_Retail</fullName>
+        <columns>Name</columns>
+        <columns>Core_MDF_Budget_Partner__c</columns>
+        <columns>Core_MDF_Budget_Status__c</columns>
+        <columns>Amount</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <columns>Core_MDF_Program__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>StartDate</field>
+            <operation>greaterOrEqual</operation>
+            <value>1/1/2019</value>
+        </filters>
+        <filters>
+            <field>EndDate</field>
+            <operation>lessOrEqual</operation>
+            <value>12/31/2019</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </filters>
+        <label>Budgets FY 2019 - Retail</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Internal_Retail_Geo_Groups</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Budgets_Requiring_Approval_Retail</fullName>
+        <columns>Name</columns>
+        <columns>Core_MDF_Budget_Partner__c</columns>
+        <columns>Core_MDF_Budget_Status__c</columns>
+        <columns>Amount</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <columns>Core_MDF_Program__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Budget_Status__c</field>
+            <operation>equals</operation>
+            <value>Pending Review</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </filters>
+        <label>Budgets Requiring Approval - Retail</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Retail_APJ_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_ASMOLAR_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_ASMONAR_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_EMEA_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_PRC_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_WW_Fin_Mgr_Queue_Grp</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Budgets_to_be_Released_Retail</fullName>
+        <columns>Name</columns>
+        <columns>Core_MDF_Budget_Partner__c</columns>
+        <columns>Core_MDF_Budget_Status__c</columns>
+        <columns>Amount</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <columns>Core_MDF_Program__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Budget_Status__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </filters>
+        <label>Budgets to be Released - Retail</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Retail_APJ_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_ASMOLAR_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_ASMONAR_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_EMEA_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_PRC_FinMgr_Q_Grp</group>
+            <group>Core_MDF_CCP_Retail_WW_Fin_Mgr_Queue_Grp</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>CCF_Finance_manager_Queue_group_1</fullName>
+        <columns>Name</columns>
+        <columns>ChannelPartner</columns>
+        <columns>Description</columns>
+        <columns>Amount</columns>
+        <columns>Type</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Client Co-Marketing Fund</value>
+        </filters>
+        <label>CCF Finance manager Queue group 1</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_CCF_Fin_Mgr_Queue_Group</group>
+            <group>Core_MDF_CCP_CCF_Finance_User</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>CCP_CCFB_Finance_Manager_PartnerMarketingBudget</fullName>
+        <columns>Name</columns>
+        <columns>Description</columns>
+        <columns>Amount</columns>
+        <columns>Type</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <columns>ChannelPartner</columns>
+        <filterScope>Queue</filterScope>
+        <label>CCP CCFB Finance Manager Queue</label>
+        <queue>Core_MDF_CCP_CCFB_Finance_Manager_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+            <group>Core_MDF_CCP_CCFB_Fin_Mgr_Queue_Group</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>CCP_CCFB_Finance_Manager_Queue_PartnerMarketingBudget</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP CCFB Finance Manager Queue</label>
+        <queue>CCP_CCFB_Finance_Manager_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>CCP_CCF_Finance_Manager_Queue_PartnerMarketingBudget</fullName>
+        <columns>Name</columns>
+        <columns>Description</columns>
+        <columns>Amount</columns>
+        <columns>Type</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <columns>ChannelPartner</columns>
+        <filterScope>Queue</filterScope>
+        <label>CCP Client Finance Manager</label>
+        <queue>Core_MDF_CCP_CCF_Finance_Manager_Queue</queue>
+        <sharedTo>
+            <group>Core_MDF_CCP_CCF_Fin_Mgr_Queue_Group</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>CCP_CCF_Finance_Manager_Queue_PartnerMarketingBudget1</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP Client Finance Manager Queue</label>
+        <queue>CCP_CCF_Finance_Manager_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>CCP_DCF_Finance_Manager_PartnerMarketingBudget</fullName>
+        <columns>Name</columns>
+        <columns>Description</columns>
+        <columns>Amount</columns>
+        <columns>Type</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <columns>ChannelPartner</columns>
+        <filterScope>Queue</filterScope>
+        <label>CCP Datacenter Finance Manager</label>
+        <queue>Core_MDF_CCP_DCF_Finance_Manager_Queue</queue>
+        <sharedTo>
+            <group>Core_MDF_CCP_DCF_Fin_Mgr_Queue_Group</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>CCP_DCF_Finance_Manager_Queue_PartnerMarketingBudget</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP Datacenter Finance Manager Queue</label>
+        <queue>CCP_DCF_Finance_Manager_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>CCP_Finance_Manager_Queue_PartnerMarketingBudget</fullName>
+        <columns>Name</columns>
+        <columns>Description</columns>
+        <columns>Core_MDF_Budget_Status__c</columns>
+        <columns>Amount</columns>
+        <columns>Type</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <filterScope>Everything</filterScope>
+        <label>CCP Finance Manager Queue</label>
+        <sharedTo/>
+    </listViews>
+    <listViews>
+        <fullName>CCP_SPCF_Finance_Manager_PartnerMarketingBudget</fullName>
+        <columns>Name</columns>
+        <columns>Description</columns>
+        <columns>Amount</columns>
+        <columns>Type</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <columns>ChannelPartner</columns>
+        <filterScope>Queue</filterScope>
+        <label>CCP SPCF Finance Manager Queue</label>
+        <queue>Core_MDF_CCP_SPCF_Finance_Manager_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+            <group>Core_MDF_CCP_SPCF_Fin_Mgr_Queue_Group</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>CCP_SPCF_Finance_Manager_Queue_PartnerMarketingBudget</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP SPCF Finance Manager Queue</label>
+        <queue>CCP_SPCF_Finance_Manager_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDFCCP_ASMO_NAR_Retail_Budget_Queue_PartnerMarketingBudget</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP ASMO NAR Retail Budget Queue</label>
+        <queue>Core_MDF_CCP_ASMO_NAR_RetailBudget_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>Core_MDF_Approval_Request_List</fullName>
@@ -977,7 +1363,6 @@ $Label.Core_MDF_Intel_System_User
             <value>Pending Review</value>
         </filters>
         <label>Budgets Requiring Approval</label>
-        <language>en_US</language>
         <sharedTo>
             <group>Core_MDF_CCP_CCFB_Fin_Mgr_Queue_Group</group>
             <group>Core_MDF_CCP_CCF_Fin_Mgr_Queue_Group</group>
@@ -1017,10 +1402,28 @@ $Label.Core_MDF_Intel_System_User
         </sharedTo>
     </listViews>
     <listViews>
+        <fullName>Core_MDF_CCP_Budget_Approver_Queue_PartnerMarketingBudget</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Internal Budget Approver Queue</label>
+        <queue>Core_MDF_Internal_Budget_Approver_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
         <fullName>Core_MDF_CCP_INDIA_Retail_Budget_Queue_PartnerMarketingBudget</fullName>
         <filterScope>Queue</filterScope>
         <label>CCP INDIA Retail Budget Queue</label>
         <queue>Core_MDF_CCP_INDIA_Retail_Budget_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_CCP_IPA_Finance_Manager_Queue_PartnerMarketingBudget</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP IPA Finance Manager Queue</label>
+        <queue>Core_MDF_CCP_IPA_Finance_Manager_Queue</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
@@ -1062,7 +1465,6 @@ $Label.Core_MDF_Intel_System_User
             <value>Client</value>
         </filters>
         <label>Client Budgets</label>
-        <language>en_US</language>
         <sharedTo>
             <group>Core_MDF_CCP_CCF_Fin_Mgr_Queue_Group</group>
             <group>Core_MDF_CCP_CCF_Finance_User</group>
@@ -1085,11 +1487,30 @@ $Label.Core_MDF_Intel_System_User
             <value>Datacenter</value>
         </filters>
         <label>Datacenter Budgets</label>
-        <language>en_US</language>
         <sharedTo>
             <group>Core_MDF_CCP_DCF_Fin_Mgr_Queue_Group</group>
             <group>Core_MDF_CCP_DCF_Finance_User</group>
             <group>Core_MDF_CCP_DCF_INTERNAL_ALL</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_Ecosystem_Extension_Fund_List</fullName>
+        <columns>Name</columns>
+        <columns>Core_MDF_Budget_Partner__c</columns>
+        <columns>Core_MDF_Budget_Type_Txt__c</columns>
+        <columns>Core_MDF_Budget_Status__c</columns>
+        <columns>Amount</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Ecosystem Extension Fund</value>
+        </filters>
+        <label>EEF Budgets</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_EEF_INTERNAL_ALL</group>
         </sharedTo>
     </listViews>
     <listViews>
@@ -1124,6 +1545,54 @@ $Label.Core_MDF_Intel_System_User
         </sharedTo>
     </listViews>
     <listViews>
+        <fullName>Core_MDF_Partner_Marketing_Budgets_FY_2019</fullName>
+        <booleanFilter>(1 OR 2 OR 5 OR 6) AND 3 AND 4</booleanFilter>
+        <columns>Name</columns>
+        <columns>Core_MDF_Budget_Partner__c</columns>
+        <columns>Core_MDF_Budget_Status__c</columns>
+        <columns>Amount</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <columns>Core_MDF_Program__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Data Center Co-Marketing Fund</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Client Co-Marketing Fund</value>
+        </filters>
+        <filters>
+            <field>StartDate</field>
+            <operation>greaterOrEqual</operation>
+            <value>1/1/2019</value>
+        </filters>
+        <filters>
+            <field>EndDate</field>
+            <operation>lessOrEqual</operation>
+            <value>12/31/2019</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Service Provider Co-marketing Fund</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Client Co-Marketing Fund Boost</value>
+        </filters>
+        <label>Budgets FY 2019</label>
+        <language>en_US</language>
+        <sharedTo>
+            <group>Core_MDF_Finance_Manager_Queue_Group</group>
+            <group>Core_MDF_Finance_User_Group</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
         <fullName>Core_MDF_Rejected</fullName>
         <columns>Name</columns>
         <columns>Core_MDF_Budget_Partner__c</columns>
@@ -1140,7 +1609,6 @@ $Label.Core_MDF_Intel_System_User
             <value>Rejected</value>
         </filters>
         <label>Rejected</label>
-        <language>en_US</language>
         <sharedTo>
             <group>Core_MDF_CCP_CCF_Boost_Finance_User</group>
             <group>Core_MDF_CCP_CCF_Finance_User</group>
@@ -1216,6 +1684,91 @@ $Label.Core_MDF_Intel_System_User
         </sharedTo>
     </listViews>
     <listViews>
+        <fullName>Core_MDF_Top_5_Partner_Marketing_Budgets</fullName>
+        <booleanFilter>(1 OR 2 OR 8 OR 9) AND (3 OR 4 OR 5 OR 6 OR 7)</booleanFilter>
+        <columns>Name</columns>
+        <columns>Core_MDF_Budget_Partner__c</columns>
+        <columns>Core_MDF_Budget_Status__c</columns>
+        <columns>Amount</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <columns>Core_MDF_Program__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Data Center Co-Marketing Fund</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Client Co-Marketing Fund</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Partner__c</field>
+            <operation>contains</operation>
+            <value>Dell</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Partner__c</field>
+            <operation>contains</operation>
+            <value>Fujitsu</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Partner__c</field>
+            <operation>contains</operation>
+            <value>HP</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Partner__c</field>
+            <operation>contains</operation>
+            <value>Huawei</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Partner__c</field>
+            <operation>contains</operation>
+            <value>Lenovo</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Service Provider Co-marketing Fund</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Client Co-Marketing Fund Boost</value>
+        </filters>
+        <label>Top 5 Budgets</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_CCFB_Fin_Mgr_Queue_Group</group>
+            <group>Core_MDF_CCP_CCF_Boost_Finance_User</group>
+            <group>Core_MDF_CCP_CCF_Fin_Mgr_Queue_Group</group>
+            <group>Core_MDF_CCP_CCF_Finance_User</group>
+            <group>Core_MDF_CCP_DCF_Fin_Mgr_Queue_Group</group>
+            <group>Core_MDF_CCP_DCF_Finance_User</group>
+            <group>Core_MDF_CCP_SPCF_Fin_Mgr_Queue_Group</group>
+            <group>Core_MDF_CCP_SPCF_Finance_User</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Dixons_Budget_View</fullName>
+        <columns>Name</columns>
+        <columns>Amount</columns>
+        <columns>Core_MDF_Budget_Status__c</columns>
+        <columns>Core_MDF_Budget_Type__c</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <columns>Core_MDF_Budget_Partner__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Budget_Partner__c</field>
+            <operation>equals</operation>
+            <value>Dixons</value>
+        </filters>
+        <label>Dixons Budget View</label>
+    </listViews>
+    <listViews>
         <fullName>My_Partner_Marketing_Budgets</fullName>
         <columns>Name</columns>
         <columns>Core_MDF_Budget_Partner__c</columns>
@@ -1243,6 +1796,70 @@ $Label.Core_MDF_Intel_System_User
             <value>Retail Marketing Funds</value>
         </filters>
         <label>Retail Budgets</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Internal_Retail_Geo_Groups</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Test_For_Budget_Queue_PartnerMarketingBudget</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Test For Budget Queue</label>
+        <queue>Test_For_Budget_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Test_For_PartnerBudget_Queue_PartnerMarketingBudget</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Test For Budget Queue</label>
+        <queue>Test_For_PartnerBudget_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Top_5_Budgets_Retail</fullName>
+        <booleanFilter>6 AND (1 OR 2 OR 3 OR 4 OR 5)</booleanFilter>
+        <columns>Name</columns>
+        <columns>Core_MDF_Budget_Partner__c</columns>
+        <columns>Core_MDF_Budget_Status__c</columns>
+        <columns>Amount</columns>
+        <columns>StartDate</columns>
+        <columns>EndDate</columns>
+        <columns>Core_MDF_Program__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Budget_Partner__c</field>
+            <operation>contains</operation>
+            <value>Dell</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Partner__c</field>
+            <operation>contains</operation>
+            <value>Fujitsu</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Partner__c</field>
+            <operation>contains</operation>
+            <value>HP</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Partner__c</field>
+            <operation>contains</operation>
+            <value>Huawei</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Partner__c</field>
+            <operation>contains</operation>
+            <value>Lenovo</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </filters>
+        <label>Top 5 Budgets - Retail</label>
         <sharedTo>
             <group>Core_MDF_CCP_Internal_Retail_Geo_Groups</group>
         </sharedTo>
@@ -1281,6 +1898,36 @@ $Label.Core_MDF_Intel_System_User
             <picklist>Core_MDF_Budget_Type__c</picklist>
             <values>
                 <fullName>Intel MDF Account Based2</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Geo__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Sub_Geo__c</picklist>
+            <values>
+                <fullName>LAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NAR</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1340,6 +1987,141 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
         </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Geo__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Sub_Geo__c</picklist>
+            <values>
+                <fullName>LAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NAR</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_CoMarketing_OPAL</fullName>
+        <active>true</active>
+        <description>This record type is used for OPAL program</description>
+        <label>CoMarketing OPAL</label>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Status__c</picklist>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Released</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_Txt__c</picklist>
+            <values>
+                <fullName>Client Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Centric Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF%2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OEM CMP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSA MD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Data Center MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider CMP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type__c</picklist>
+            <values>
+                <fullName>MDF</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Geo__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Sub_Geo__c</picklist>
+            <values>
+                <fullName>LAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NAR</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
     </recordTypes>
     <recordTypes>
         <fullName>Core_MDF_Co_GTM</fullName>
@@ -1370,13 +2152,140 @@ $Label.Core_MDF_Intel_System_User
             <picklist>Core_MDF_Budget_Type_Txt__c</picklist>
             <values>
                 <fullName>Co-Engineering</fullName>
-                <default>false</default>
+                <default>true</default>
             </values>
         </picklistValues>
         <picklistValues>
             <picklist>Core_MDF_Budget_Type__c</picklist>
             <values>
                 <fullName>Co-Engineering</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Geo__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Sub_Geo__c</picklist>
+            <values>
+                <fullName>LAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NAR</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Co_Inv</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>Retail_Co_Marketing_Compact_Layout</compactLayoutAssignment>
+        <description>Record Type for Co-Inv</description>
+        <label>Co-Inv</label>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Status__c</picklist>
+            <values>
+                <fullName>Pending Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Released</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_Txt__c</picklist>
+            <values>
+                <fullName>Co-Investment</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type__c</picklist>
+            <values>
+                <fullName>Co-Investment</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Geo__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Revenue_Segment_nm__c</picklist>
+            <values>
+                <fullName>CCPG CPU Desktop</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCPG CPU Notebook</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCPG CPU Workstation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCG CPU HPC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCG CPU Server</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center DGPU</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IOT</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Sub_Geo__c</picklist>
+            <values>
+                <fullName>LAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NAR</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1456,6 +2365,36 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
         </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Geo__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Sub_Geo__c</picklist>
+            <values>
+                <fullName>LAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NAR</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
     </recordTypes>
     <recordTypes>
         <fullName>Core_MDF_Ecosystem_Extension_Fund</fullName>
@@ -1489,6 +2428,36 @@ $Label.Core_MDF_Intel_System_User
             <picklist>Core_MDF_Budget_Type__c</picklist>
             <values>
                 <fullName>Cloud</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Geo__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Sub_Geo__c</picklist>
+            <values>
+                <fullName>LAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NAR</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1533,6 +2502,36 @@ $Label.Core_MDF_Intel_System_User
             </values>
             <values>
                 <fullName>Scale Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Geo__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Sub_Geo__c</picklist>
+            <values>
+                <fullName>LAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NAR</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1696,6 +2695,36 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
         </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Geo__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Sub_Geo__c</picklist>
+            <values>
+                <fullName>LAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NAR</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
     </recordTypes>
     <recordTypes>
         <fullName>Core_MDF_Retail_Marketing_Funds</fullName>
@@ -1740,6 +2769,36 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
         </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Geo__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Sub_Geo__c</picklist>
+            <values>
+                <fullName>LAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NAR</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
     </recordTypes>
     <searchLayouts>
         <customTabListAdditionalFields>Description</customTabListAdditionalFields>
@@ -1767,6 +2826,26 @@ $Label.Core_MDF_Intel_System_User
         <searchResultsAdditionalFields>EndDate</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Check_Account_InActive</fullName>
+        <active>false</active>
+        <description>Check if Account Node is inactive</description>
+        <errorConditionFormula>Core_MDF_Budget_Partner__r.Core_MDF_Active_Ind__c = False</errorConditionFormula>
+        <errorMessage>Budget cannot be created because associated Account Node is inactive</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Amt_Not_Less_Than_Saved_CoInv</fullName>
+        <active>true</active>
+        <description>On edit, the Amount of a Co-Inv budget (RecordType Core_MDF_Co_Inv, Program Co-Inv) cannot be less than the Amount already saved on the record.</description>
+        <errorConditionFormula>AND(
+    NOT(ISNEW()),
+    RecordType.DeveloperName = &quot;Core_MDF_Co_Inv&quot;,
+    Core_MDF_Program_Nm__c = &quot;Co-Inv&quot;,
+    Amount &lt; PRIORVALUE(Amount)
+)</errorConditionFormula>
+        <errorDisplayField>Amount</errorDisplayField>
+        <errorMessage>Enter an amount that&apos;s greater than or equal to the allocations within this budget.</errorMessage>
+    </validationRules>
     <validationRules>
         <fullName>Core_MDF_BudgetTypMandatoryForOEM</fullName>
         <active>true</active>
@@ -1805,12 +2884,31 @@ ISCHANGED(Core_MDF_Budget_Type_Txt__c))</errorConditionFormula>
         <errorMessage>Budget reduction amount cannot be greater than 0, as budget has not been created yet.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Core_MDF_Budget_Loader_OR_Approver</fullName>
+        <active>false</active>
+        <description>Restricting the MDF Budget Loader/Approver to create Budget CMP/Legacy Budget types</description>
+        <errorConditionFormula>OR(AND($Permission.Core_MDF_CCP_Internal_MDF_Budget_Loader_Approver,NOT(OR(ISPICKVAL(Core_MDF_Budget_Type_Txt__c ,&apos;MDF&apos;),
+ISPICKVAL( Core_MDF_Budget_Type_Txt__c ,&apos;MDF+&apos;)))),
+AND(NOT($Permission.Core_MDF_CCP_Internal_MDF_Budget_Loader_Approver),OR(ISPICKVAL(Core_MDF_Budget_Type_Txt__c ,&apos;MDF&apos;),
+ISPICKVAL( Core_MDF_Budget_Type_Txt__c ,&apos;MDF+&apos;))))</errorConditionFormula>
+        <errorMessage>You are not authorized to create the Budgets for the Selected Budget Type</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Core_MDF_Budget_Partner_and_Program_rule</fullName>
         <active>true</active>
         <description>Program and Budget Partner should be same</description>
         <errorConditionFormula>Core_MDF_Program__c != Core_MDF_Budget_Partner__r.Core_MDF_Channel_Program__c</errorConditionFormula>
         <errorDisplayField>Core_MDF_Program__c</errorDisplayField>
         <errorMessage>The Program is not same as the Channel Program of the Account Node. Please update.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Budget_Retail_Quarter</fullName>
+        <active>false</active>
+        <errorConditionFormula>IF( Core_MDF_Program__r.Name = &apos;Retail Co-Marketing Program&apos;, 
+EndDate - StartDate &gt; 450, 
+False
+)</errorConditionFormula>
+        <errorMessage>Budget duration cannot be more than 5 quarters</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_Checking_Enddate</fullName>
@@ -1842,7 +2940,7 @@ ISCHANGED(Core_MDF_Budget_Type_Txt__c))</errorConditionFormula>
         <fullName>Core_MDF_Negative_Max_Approved_Amount</fullName>
         <active>true</active>
         <errorConditionFormula>(Core_MDF_Maximum_Approved_Budget_Amt__c &lt; 0)</errorConditionFormula>
-        <errorMessage>Maximum Approved Budget cannot be negative.</errorMessage>
+        <errorMessage>Max Approved Budget cannot be negative.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_PartnerNonEditable</fullName>
@@ -1854,14 +2952,7 @@ ISCHANGED(Core_MDF_Budget_Type_Txt__c))</errorConditionFormula>
     <validationRules>
         <fullName>Core_MDF_PreventBudgetEditingByFM</fullName>
         <active>true</active>
-        <errorConditionFormula>AND(AND(OR($Permission.Core_MDF_FinanceManager,$Permission.Core_MDF_BudgetApprover),
-OR(AND(Core_MDF_Program_Nm__c==&apos;Client&apos;,OR(AND(NOT($Permission.Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader),
-NOT($Permission.Core_MDF_CCP_Internal_CCF_User),NOT($Permission.Core_MDF_CCP_Internal_Finance_User)),
-AND($Permission.Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader,NOT($Permission.Core_MDF_CCP_Internal_CCF_User),
-NOT($Permission.Core_MDF_CCP_Internal_Finance_User),OR(Core_MDF_Legacy_Budget_Ind__c,TEXT(Core_MDF_Budget_Type_Txt__c)==&apos;OEM CMP&apos;)),
-AND($Permission.Core_MDF_CCP_Internal_CCF_User,$Permission.Core_MDF_CCP_Internal_Finance_User,NOT($Permission.Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader),NOT(Core_MDF_Legacy_Budget_Ind__c),
-TEXT(Core_MDF_Budget_Type_Txt__c)!=&apos;OEM CMP&apos;),AND($Permission.Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader,$Permission.Core_MDF_CCP_Internal_Finance_User,NOT($Permission.Core_MDF_CCP_Internal_CCF_User),OR(Core_MDF_Legacy_Budget_Ind__c,TEXT(Core_MDF_Budget_Type_Txt__c)==&apos;OEM CMP&apos;)),AND(NOT($Permission.Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader),$Permission.Core_MDF_CCP_Internal_Finance_User,NOT($Permission.Core_MDF_CCP_Internal_CCF_User),OR(Core_MDF_Legacy_Budget_Ind__c,TEXT(Core_MDF_Budget_Type_Txt__c)==&apos;OEM CMP&apos;)))),AND(Core_MDF_Program_Nm__c==&apos;Datacenter&apos;,OR(AND(NOT($Permission.Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader),NOT($Permission.Core_MDF_CCP_Internal_DCF_User),NOT($Permission.Core_MDF_CCP_Internal_Finance_User)),AND($Permission.Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader,NOT($Permission.Core_MDF_CCP_Internal_DCF_User),NOT($Permission.Core_MDF_CCP_Internal_Finance_User),OR(Core_MDF_Legacy_Budget_Ind__c,TEXT(Core_MDF_Budget_Type_Txt__c)==&apos;OEM CMP&apos;,TEXT(Core_MDF_Budget_Type_Txt__c)==&apos;Service Provider CMP&apos;)),AND($Permission.Core_MDF_CCP_Internal_Finance_User,$Permission.Core_MDF_CCP_Internal_DCF_User,NOT($Permission.Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader),NOT(Core_MDF_Legacy_Budget_Ind__c),TEXT(Core_MDF_Budget_Type_Txt__c)!=&apos;OEM CMP&apos;,TEXT(Core_MDF_Budget_Type_Txt__c)!=&apos;Service Provider CMP&apos;),AND($Permission.Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader,$Permission.Core_MDF_CCP_Internal_Finance_User,NOT($Permission.Core_MDF_CCP_Internal_DCF_User),OR(Core_MDF_Legacy_Budget_Ind__c,TEXT(Core_MDF_Budget_Type_Txt__c)==&apos;OEM CMP&apos;,TEXT(Core_MDF_Budget_Type_Txt__c)==&apos;Service Provider CMP&apos;)),AND(NOT($Permission.Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader),$Permission.Core_MDF_CCP_Internal_Finance_User,NOT($Permission.Core_MDF_CCP_Internal_DCF_User),OR(Core_MDF_Legacy_Budget_Ind__c,TEXT(Core_MDF_Budget_Type_Txt__c)==&apos;OEM CMP&apos;,TEXT(Core_MDF_Budget_Type_Txt__c)==&apos;Service Provider CMP&apos;)))),AND(Core_MDF_Program_Nm__c==&apos;Retail Marketing Funds&apos;,NOT($Permission.Core_MDF_CCP_Internal_Retail_Finance_Usr)),AND(Core_MDF_Program_Nm__c==&apos;Intel Partner Alliance&apos;,RecordType.DeveloperName==&apos;Core_MDF_IPA_Account_Based&apos;,NOT($Permission.Core_MDF_CCP_Internal_IPA_Budget_Loader)),AND(Core_MDF_Program_Nm__c==&apos;Co-GTM&apos;,RecordType.DeveloperName==&apos;Core_MDF_Co_GTM&apos;,NOT($Permission.Core_MDF_CCP_Internal_Co_GTM_Budget_Loader))),IF(AND(AND(ISCHANGED(Amount), PRIORVALUE(Core_MDF_Decrease_Budget_Amount_Amt__c )&gt;0
-),ISPICKVAL( Core_MDF_Budget_Status__c , &apos;Released&apos;)),false,IF(OR(ISCHANGED(Amount),ISCHANGED(Type), ISCHANGED(Description),ISCHANGED(OwnerId) ,ISCHANGED(Core_MDF_Program__c) ,ISCHANGED(StartDate), ISCHANGED(Title), ISCHANGED(EndDate),ISCHANGED(Core_MDF_Decrease_Budget_Amount_Amt__c)),true,false))))</errorConditionFormula>
+        <errorConditionFormula>AND( AND( OR( $Permission.Core_MDF_FinanceManager, $Permission.Core_MDF_BudgetApprover ), OR( AND( Core_MDF_Program_Nm__c == &apos;Client&apos;, OR( AND( NOT($Permission.Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader), NOT($Permission.Core_MDF_CCP_Internal_CCF_User), NOT($Permission.Core_MDF_CCP_Internal_Finance_User) ), AND( $Permission.Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader, NOT($Permission.Core_MDF_CCP_Internal_CCF_User), NOT($Permission.Core_MDF_CCP_Internal_Finance_User), OR( Core_MDF_Legacy_Budget_Ind__c, TEXT(Core_MDF_Budget_Type_Txt__c) == &apos;OEM CMP&apos; ) ), AND( $Permission.Core_MDF_CCP_Internal_CCF_User, $Permission.Core_MDF_CCP_Internal_Finance_User, NOT($Permission.Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader), NOT(Core_MDF_Legacy_Budget_Ind__c), TEXT(Core_MDF_Budget_Type_Txt__c) != &apos;OEM CMP&apos; ), AND( $Permission.Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader, $Permission.Core_MDF_CCP_Internal_Finance_User, NOT($Permission.Core_MDF_CCP_Internal_CCF_User), OR( Core_MDF_Legacy_Budget_Ind__c, TEXT(Core_MDF_Budget_Type_Txt__c) == &apos;OEM CMP&apos; ) ), AND( NOT($Permission.Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader), $Permission.Core_MDF_CCP_Internal_Finance_User, NOT($Permission.Core_MDF_CCP_Internal_CCF_User), OR( Core_MDF_Legacy_Budget_Ind__c, TEXT(Core_MDF_Budget_Type_Txt__c) == &apos;OEM CMP&apos; ) ) ) ), AND( Core_MDF_Program_Nm__c == &apos;Datacenter&apos;, OR( AND( NOT($Permission.Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader), NOT($Permission.Core_MDF_CCP_Internal_DCF_User), NOT($Permission.Core_MDF_CCP_Internal_Finance_User) ), AND( $Permission.Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader, NOT($Permission.Core_MDF_CCP_Internal_DCF_User), NOT($Permission.Core_MDF_CCP_Internal_Finance_User), OR( Core_MDF_Legacy_Budget_Ind__c, TEXT(Core_MDF_Budget_Type_Txt__c) == &apos;OEM CMP&apos;, TEXT(Core_MDF_Budget_Type_Txt__c) == &apos;Service Provider CMP&apos; ) ), AND( $Permission.Core_MDF_CCP_Internal_Finance_User, $Permission.Core_MDF_CCP_Internal_DCF_User, NOT($Permission.Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader), NOT(Core_MDF_Legacy_Budget_Ind__c), TEXT(Core_MDF_Budget_Type_Txt__c) != &apos;OEM CMP&apos;, TEXT(Core_MDF_Budget_Type_Txt__c) != &apos;Service Provider CMP&apos; ), AND( $Permission.Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader, $Permission.Core_MDF_CCP_Internal_Finance_User, NOT($Permission.Core_MDF_CCP_Internal_DCF_User), OR( Core_MDF_Legacy_Budget_Ind__c, TEXT(Core_MDF_Budget_Type_Txt__c) == &apos;OEM CMP&apos;, TEXT(Core_MDF_Budget_Type_Txt__c) == &apos;Service Provider CMP&apos; ) ), AND( NOT($Permission.Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader), $Permission.Core_MDF_CCP_Internal_Finance_User, NOT($Permission.Core_MDF_CCP_Internal_DCF_User), OR( Core_MDF_Legacy_Budget_Ind__c, TEXT(Core_MDF_Budget_Type_Txt__c) == &apos;OEM CMP&apos;, TEXT(Core_MDF_Budget_Type_Txt__c) == &apos;Service Provider CMP&apos; ) ) ) ), AND( Core_MDF_Program_Nm__c == &apos;Retail Marketing Funds&apos;, NOT($Permission.Core_MDF_CCP_Internal_Retail_Finance_Usr) ), AND( Core_MDF_Program_Nm__c == &apos;Intel Partner Alliance&apos;, RecordType.DeveloperName == &apos;Core_MDF_IPA_Account_Based&apos;, NOT($Permission.Core_MDF_CCP_Internal_IPA_Budget_Loader) ), AND( Core_MDF_Program_Nm__c == &apos;Co-GTM&apos;, RecordType.DeveloperName == &apos;Core_MDF_Co_GTM&apos;, NOT($Permission.Core_MDF_CCP_Internal_Co_GTM_Budget_Loader) ), AND( Core_MDF_Program_Nm__c == &apos;Co-Inv&apos;, RecordType.DeveloperName == &apos;Core_MDF_Co_Inv&apos;, NOT($Permission.Core_MDF_CCP_Internal_Co_Inv_Budget_Loader) ) ) ), IF( AND( AND( ISCHANGED(Amount), PRIORVALUE(Core_MDF_Decrease_Budget_Amount_Amt__c) &gt; 0 ), ISPICKVAL(Core_MDF_Budget_Status__c, &apos;Released&apos;) ), false, IF( OR( ISCHANGED(Amount), ISCHANGED(Type), ISCHANGED(Description), ISCHANGED(OwnerId), ISCHANGED(Core_MDF_Program__c), ISCHANGED(StartDate), ISCHANGED(Title), ISCHANGED(EndDate), ISCHANGED(Core_MDF_Decrease_Budget_Amount_Amt__c) ), true, false ) ) )</errorConditionFormula>
         <errorMessage>You cannot update the budget attributes other than Budget Status with your current level of access.</errorMessage>
     </validationRules>
     <validationRules>
@@ -1880,6 +2971,19 @@ ISCHANGED( Core_MDF_Budget_Status__c )
         <errorConditionFormula>AND(NOT(ISBLANK(PRIORVALUE(Core_MDF_Program__c))),ISCHANGED(Core_MDF_Program__c))</errorConditionFormula>
         <errorDisplayField>Core_MDF_Program__c</errorDisplayField>
         <errorMessage>Program cannot be changed</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_RestrictLegacyBudgetCreation</fullName>
+        <active>false</active>
+        <description>Restrict User from creating legacy budget</description>
+        <errorConditionFormula>AND( ISNEW() ,
+OR(TEXT(Core_MDF_Budget_Type_Txt__c)=&apos;CCF 1.0&apos;,
+TEXT(Core_MDF_Budget_Type_Txt__c)=&apos;DCF 1.0&apos;,
+ISPICKVAL(Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c,&apos;Client CoMarketing Fund Boost&apos;),
+ISPICKVAL(Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c ,&apos;Service Provider CoMarketing Fund&apos;)
+)
+)</errorConditionFormula>
+        <errorMessage>Cannot create budget for the selected Program/Budget Type</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_Restrict_AccountSelection</fullName>
@@ -1905,6 +3009,19 @@ NOT(ISBLANK(TEXT(Core_MDF_Budget_Type_Txt__c)))),
 AND(RecordType.DeveloperName = $Label.Core_MDF_CoMarketing_Budget_Record_type,ISPICKVAL(Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c,&apos;Client CoMarketing Fund&apos;),OR((TEXT(Core_MDF_Budget_Type_Txt__c)=&apos;DCF 1.0&apos;),(TEXT(Core_MDF_Budget_Type_Txt__c)=&apos;Service Provider CMP&apos;))),
 AND(RecordType.DeveloperName = $Label.Core_MDF_CoMarketing_Budget_Record_type,ISPICKVAL(Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c,&apos;Data Center CoMarketing Fund&apos;),TEXT(Core_MDF_Budget_Type_Txt__c)=&apos;CCF 1.0&apos;))</errorConditionFormula>
         <errorMessage>Budget Type is not applicable for selected program</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Validate_Budget_Class_Check</fullName>
+        <active>false</active>
+        <description>This validation rule ensures that the checkbox selection aligns with the Budget Classification picklist value. - If &apos;Co-marketing&apos; is selected, only the &apos;Marketing Approval of Co-Marketing&apos; checkbox can be checked. - If &apos;Co-Selling&apos; is selected, only the</description>
+        <errorConditionFormula>AND( ISPICKVAL(Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c, &apos;CoInv&apos;), OR( AND( ISPICKVAL(Core_MDF_Budget_Classification__c, &apos;Co-marketing&apos;), Core_MDF_Co_Selling_ind__c = TRUE ), AND( ISPICKVAL(Core_MDF_Budget_Classification__c, &apos;Co-Selling&apos;), Core_MDF_Co_Marketing_ind__c = TRUE ), AND( Core_MDF_Co_Marketing_ind__c = TRUE, Core_MDF_Co_Selling_ind__c = TRUE ) ) )</errorConditionFormula>
+        <errorMessage>Invalid Checkbox Selection: For &apos;Co-marketing&apos;, check only &apos;Marketing Approval of Co-Marketing&apos;. For &apos;Co-Selling&apos;, check only &apos;Field Sales Approval of Co-Selling&apos;. Both checkboxes cannot be selected simultaneously.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Test_validation_Rule</fullName>
+        <active>false</active>
+        <errorConditionFormula>Test_validation_Rule__c</errorConditionFormula>
+        <errorMessage>Exception</errorMessage>
     </validationRules>
     <webLinks>
         <fullName>Core_MDF_Export_List_View</fullName>

@@ -42,7 +42,7 @@
             <operation>notEqual</operation>
             <value>{empty}</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_MDF_Case_Review_Document_Share_L3_Support_users</fullName>
@@ -56,7 +56,7 @@
             <operation>notEqual</operation>
             <value>{empty}</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_MDF_Case_Review_Document_Share_Support_users</fullName>
@@ -71,7 +71,7 @@
             <operation>notEqual</operation>
             <value>{empty}</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_MDF_Share_Documents_To_CDB_Intg_User</fullName>

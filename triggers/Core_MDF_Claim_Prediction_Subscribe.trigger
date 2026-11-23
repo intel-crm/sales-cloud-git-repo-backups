@@ -1,6 +1,7 @@
 /****************************************************************************************************************************************
-* Trigger Name  : Core_MDF_Claim_Prediction_Subscribe
-* Test Class : Core_MDF_Claim_Prediction_Subscribe_Test 
+* Trigger Name  : Core_MDF_Claim_Prediction_Subscribe 
+* Test Class 	: Core_MDF_Claim_Prediction_Subscribe_Test
+		  Core_MDF_ProcessCCP_Claim_Test
 * Version     : 1.0 
 * Created Date: 15-06-2020
 * Modification Log :
@@ -17,7 +18,6 @@ trigger Core_MDF_Claim_Prediction_Subscribe on Core_MDF_Claim_Prediction_Event__
     public class CustomException extends Exception{}
     List <Core_MDF_Claim_Prediction__c> obj = new List <Core_MDF_Claim_Prediction__c>();
     try{
-    
         List<Id> claimIds = new List<Id>();
         Set<Id> cId = new Set<Id>();
         for (Core_MDF_Claim_Prediction_Event__e evt: trigger.new){
@@ -40,7 +40,7 @@ trigger Core_MDF_Claim_Prediction_Subscribe on Core_MDF_Claim_Prediction_Event__
             if(evt.Core_MDF_PE_ID__c!=NULL && !cId.contains(evt.Core_MDF_PE_ID__c))
                 obj.add(new Core_MDF_Claim_Prediction__c(Core_MDF_Claim_id__c=evt.Core_MDF_PE_ID__c,Core_MDF_ClaimBrand_nm__c=claimMap.get(evt.Core_MDF_PE_ID__c).Core_MDF_Brand_Nm__c, Core_MDF_Activity_ID__c=evt.Core_MDF_Activity_ID__c, Core_MDF_Claim_Id_External_id__c = evt.Core_MDF_PE_ID__c,Core_MDF_CycleNumber_Nbr__c = claimIdtoPICcycleMap.get(evt.Core_MDF_PE_ID__c)));
         }
-        
+
         if(runOnce){
             Database.SaveResult[] srListUpdate = Database.update(cpList, false);
             Database.SaveResult[] srListInsert = Database.insert(obj, false);

@@ -7,7 +7,7 @@
     <name>Notify Tech Owner on Product Rejection</name>
     <style>freeForm</style>
     <subject>Product Cancelled on Opportunity {!Opportunity.Name}</subject>
-    <textOnly>Hello {!Opportunity.Core_Opportunity_Owner__c},
+    <textOnly>Hello {!Opportunity.Core_Technical_Owner__c},
 
 The following Opportunity Product has been Cancelled
 

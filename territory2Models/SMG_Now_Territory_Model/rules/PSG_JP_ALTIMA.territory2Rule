@@ -13,14 +13,4 @@
         <operation>equals</operation>
         <value>JPN</value>
     </ruleItems>
-    <ruleItems>
-        <field>Account.RecordTypeId</field>
-        <operation>equals</operation>
-        <value>Intel Account</value>
-    </ruleItems>
-    <ruleItems>
-        <field>Account.Core_Deactivated__c</field>
-        <operation>equals</operation>
-        <value>False</value>
-    </ruleItems>
 </Territory2Rule>

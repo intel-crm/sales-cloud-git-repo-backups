@@ -11,6 +11,7 @@
             {
             	const permission = response.getReturnValue();
             	//If user doesnot have access through error
+                console.log("permission.isAssociatedPFRNotDeclined==>",permission.isAssociatedPFRNotDeclined);
             	if(!$A.util.isUndefinedOrNull(permission) && permission.hasAccessToCloneClaim == true){
                    if(permission.program == 'Intel Partner Alliance' && permission.hasRestrictedStatusToCreateClaim) {
                         component.set("v.accessErrorMsg", $A.get('$Label.c.Core_MDF_Validate_CreateClaim_InProgress_Error'));

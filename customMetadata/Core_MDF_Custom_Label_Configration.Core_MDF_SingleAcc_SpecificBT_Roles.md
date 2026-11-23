@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">Core_MDF_CCP_Internal_Proposal_Activity_POR_Approver;Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr;Core_MDF_CCP_Internal_CCF_Acct_Mgr;Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr;Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver;</value>
+        <value xsi:type="xsd:string">Core_MDF_CCP_Internal_Proposal_Activity_POR_Approver;Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr;Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver;Core_MDF_Internal_Escalation_Reviewer_L1;Core_MDF_Internal_Escalation_Reviewer_L2;</value>
     </values>
 </CustomMetadata>

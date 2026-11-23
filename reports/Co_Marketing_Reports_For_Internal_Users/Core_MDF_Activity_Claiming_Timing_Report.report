@@ -95,7 +95,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Client CoMarketing Fund,Data Center CoMarketing Fund,Ecosystem Extension Fund,Service Provider CoMarketing Fund,Client CoMarketing Fund Boost</value>
+            <value>Client CoMarketing Fund,Client,Client CoMarketing Fund Boost,Service Provider CoMarketing Fund,Ecosystem Extension Fund,Data Center CoMarketing Fund</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundClaim$Core_MDF_Type_Txt__c</column>

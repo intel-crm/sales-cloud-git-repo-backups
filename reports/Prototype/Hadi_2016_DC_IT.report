@@ -49,12 +49,12 @@
             <value>DC NFV</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Server</sourceValue>
+            </sourceValues>
             <value>DC IT/Cloud</value>
         </values>
         <values>
-            <sourceValues>
-                <sourceValue>Workstation</sourceValue>
-            </sourceValues>
             <value>Client</value>
         </values>
     </buckets>
@@ -168,6 +168,9 @@
         <sourceColumnName>Opportunity.Core_Consumption_Market__c</sourceColumnName>
         <useOther>false</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Automation/Building Management</sourceValue>
+            </sourceValues>
             <sourceValues>
                 <sourceValue>Retail</sourceValue>
             </sourceValues>

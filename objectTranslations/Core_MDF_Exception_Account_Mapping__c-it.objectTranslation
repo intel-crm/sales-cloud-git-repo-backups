@@ -2,11 +2,11 @@
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseValues>
         <plural>false</plural>
-        <value>Mapping dell&apos;account di eccezione</value>
+        <value>Exception Account Mapping</value>
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>Mapping degli account di eccezione</value>
+        <value>Exception Account Mappings</value>
     </caseValues>
     <fields>
         <label><!-- Account --></label>
@@ -34,7 +34,7 @@
         <name>Core_MDF_Exception_Status_txt__c</name>
     </fields>
     <fields>
-        <label>Eccezione</label>
+        <label><!-- Exception --></label>
         <name>Core_MDF_Exception_id__c</name>
         <relationshipLabel>Mapping degli account di eccezione</relationshipLabel>
     </fields>

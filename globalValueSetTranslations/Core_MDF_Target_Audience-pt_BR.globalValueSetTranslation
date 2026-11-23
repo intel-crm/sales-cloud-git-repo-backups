@@ -10,7 +10,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Business Owners/SMB</masterLabel>
-        <translation><!-- Business Owners/SMB --></translation>
+        <translation>Proprietários de empresas/PME</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Business owners</masterLabel>
@@ -22,7 +22,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Channel Partner</masterLabel>
-        <translation><!-- Channel Partner --></translation>
+        <translation>Channel Partner</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Commercial</masterLabel>
@@ -223,6 +223,10 @@
     <valueTranslation>
         <masterLabel>Technical Influencer</masterLabel>
         <translation>Influenciador Técnico</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Test LOV Target Audience</masterLabel>
+        <translation><!-- Test LOV Target Audience --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Unmanaged Small Business</masterLabel>

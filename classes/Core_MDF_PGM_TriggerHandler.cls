@@ -20,14 +20,17 @@ public class Core_MDF_PGM_TriggerHandler extends TriggerHandler{
     public override void beforeUpdate(){
        
         if (isActive('Core_MDF_PGMProcessesOnBeforeUpdate')) {
+           
             Core_MDF_PGM_ServiceHandler.populateAccountProgramId((List<Core_MDF_Partner_Group_Mapping__c>) Trigger.new,(Map<id,Core_MDF_Partner_Group_Mapping__c>) Trigger.oldMap);   
             //To update unique AccountIdGroupName adn Group ID field
             Core_MDF_PGM_ServiceHandler.populateAccountIdGroupNameAndGroupId((List<Core_MDF_Partner_Group_Mapping__c>) Trigger.new, (Map<id,Core_MDF_Partner_Group_Mapping__c>) Trigger.oldMap);
-        	
+            
         }
     }
     
     public override void afterInsert() {
+       
+
         if(isActive('Core_MDF_PGMProcessToAddToMasterGroup')){
             //To add the Sub Group to their corresponding Master Groups
             Core_MDF_PGM_ServiceHandler.identifyMasterGroup((List<Core_MDF_Partner_Group_Mapping__c>) Trigger.new, new Set<Id>());
@@ -45,6 +48,7 @@ public class Core_MDF_PGM_TriggerHandler extends TriggerHandler{
     }
     
     public override void afterUpdate() {
+        
         if(isActive('Core_MDF_PGMProcessToAddToMasterGroup')){
             //Identify if the PGM record has changed Channel Program, Type of Access or Group Name fields
             Core_MDF_PGM_ServiceHandler.checkIfValidUpdate((List<Core_MDF_Partner_Group_Mapping__c>) Trigger.new, (Map<id,Core_MDF_Partner_Group_Mapping__c>) Trigger.oldMap);            

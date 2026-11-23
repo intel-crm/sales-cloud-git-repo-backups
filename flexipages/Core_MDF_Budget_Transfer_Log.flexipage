@@ -8,6 +8,10 @@
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>enableActionsConfiguration</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>hideChatterActions</name>
                     <value>false</value>
                 </componentInstanceProperties>
@@ -26,14 +30,17 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>fieldsToMask</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>internalUserName</name>
                     <value>Intel System User</value>
                 </componentInstanceProperties>
                 <componentName>core_MDF_HistoryComponent</componentName>
-                <identifier>core_MDF_HistoryComponent</identifier>
+                <identifier>c_core_MDF_HistoryComponent</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-9621b11a-bf29-4517-8f58-1c291c0125bf</name>
+        <name>Facet-65fee64d-1cef-4bd3-929f-2e4e3eabcba4</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -50,19 +57,15 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>active</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-9621b11a-bf29-4517-8f58-1c291c0125bf</value>
+                    <value>Facet-65fee64d-1cef-4bd3-929f-2e4e3eabcba4</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
                     <value>Standard.Tab.relatedLists</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
-                <identifier>relatedListsTab</identifier>
+                <identifier>flexipage_tab</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>

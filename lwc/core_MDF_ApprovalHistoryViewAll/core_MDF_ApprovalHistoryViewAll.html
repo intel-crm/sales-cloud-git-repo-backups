@@ -1,0 +1,32 @@
+<template>
+
+    <template if:true={dataLoaded}>
+    
+        <div class="slds-card borderline">
+          <header class="slds-media slds-media--center slds-has-flexi-truncate slds-p-around_medium greybg">
+            <div class="slds-media__figure stencil slds-avatar slds-avatar_small">
+                      <lightning-icon class="my-icon" icon-name="standard:approval" size="small"  alternative-text="Indicates approval"></lightning-icon>
+                  </div>
+                  <div class="slds-media__body">
+                    <h2 class="slds-card__header-title">
+                      {historyHeaderData}&nbsp;({dataLength})
+                    </h2>
+                    </div>
+          </header>
+          <template if:true={dataLength}>
+              <template if:true={data}>
+                <div class="bordertop">
+                        <lightning-datatable
+                                  key-field="id"
+                                  data={data}
+                                  columns={columns}
+                                  hide-checkbox-column>
+                                  <!--resize-column-disabled> -->
+                          </lightning-datatable> 
+                </div>     
+              </template>  
+          </template>
+        </div>
+      </template>
+     
+  </template>

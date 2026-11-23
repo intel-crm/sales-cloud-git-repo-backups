@@ -44,6 +44,10 @@
             <translation><!-- Co-Engineering --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Co-Investment</masterLabel>
+            <translation><!-- Co-Investment --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>DCG MAF</masterLabel>
             <translation><!-- DCG MAF --></translation>
         </picklistValues>
@@ -173,7 +177,7 @@
         <name>Core_MDF_Group_Name_RO__c</name>
     </fields>
     <fields>
-        <label><!-- Group Name --></label>
+        <label><!-- Group Name R/W --></label>
         <name>Core_MDF_Group_Name__c</name>
     </fields>
     <fields>
@@ -198,6 +202,10 @@
         <picklistValues>
             <masterLabel>Co-GTM</masterLabel>
             <translation><!-- Co-GTM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-Inv</masterLabel>
+            <translation><!-- Co-Inv --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Datacenter</masterLabel>

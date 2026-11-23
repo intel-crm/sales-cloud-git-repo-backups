@@ -40,15 +40,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_BU_Product_Segment_Old__c</field>
+                <field>Core_BU_Product_Segment__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_BU_Short_Name_Old__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_Owning_BU_ShortName__c</field>
+                <field>Core_BU_Short_Name__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -69,10 +65,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_Opp_OpportunityType__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_Intel_vPro_Platform_Eligibility__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -234,21 +226,21 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
+    <multilineLayoutFields>OpportunityId</multilineLayoutFields>
     <multilineLayoutFields>Product2Id</multilineLayoutFields>
-    <multilineLayoutFields>Quantity</multilineLayoutFields>
     <multilineLayoutFields>Core_Status__c</multilineLayoutFields>
+    <multilineLayoutFields>Quantity</multilineLayoutFields>
     <multilineLayoutFields>Core_Write_In_Product_Name__c</multilineLayoutFields>
     <multilineLayoutFields>UnitPrice</multilineLayoutFields>
     <multilineLayoutFields>Core_Loss_Cancel_Reason__c</multilineLayoutFields>
     <multilineLayoutFields>Core_Competitor__c</multilineLayoutFields>
     <multilineLayoutFields>Core_Vendor__c</multilineLayoutFields>
     <multilineLayoutFields>Core_Competitor_Product__c</multilineLayoutFields>
-    <multilineLayoutFields>OpportunityId</multilineLayoutFields>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1J00000DVfrg</masterLabel>
+        <masterLabel>00h2D000000EgMg</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

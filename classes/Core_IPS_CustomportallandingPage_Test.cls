@@ -11,9 +11,8 @@ static testmethod void Core_IPS_CustomportallandingPageTest1(){
             
             
             
-             //commented for classic EOL: Tejaswini 
-          /*  Core_IPS_CustomportallandingPage landingPage = new Core_IPS_CustomportallandingPage();
-             landingPage.PageInit();*/
+            Core_IPS_CustomportallandingPage landingPage = new Core_IPS_CustomportallandingPage();
+             landingPage.PageInit();
             //Pg  = caseClose.CancelOperation();
             Test.stopTest();
        }
@@ -34,9 +33,10 @@ static testmethod void Core_IPS_CustomportallandingPageTest1(){
              
             Test.startTest();
             
-             //commented for classic EOL: Tejaswini 
-          /*  Core_IPS_CustomportallandingPage landingPage = new Core_IPS_CustomportallandingPage();
-             landingPage.PageInit();*/
+            
+            
+            Core_IPS_CustomportallandingPage landingPage = new Core_IPS_CustomportallandingPage();
+            landingPage.PageInit();
             //Pg  = caseClose.CancelOperation();
             Test.stopTest();
        }
@@ -58,9 +58,9 @@ static testmethod void Core_IPS_CustomportallandingPageTest1(){
             Test.startTest();
             
             
-             //commented for classic EOL: Tejaswini 
-          /*  Core_IPS_CustomportallandingPage landingPage = new Core_IPS_CustomportallandingPage();
-             landingPage.PageInit();*/
+            
+            Core_IPS_CustomportallandingPage landingPage = new Core_IPS_CustomportallandingPage();
+            landingPage.PageInit();
             //Pg  = caseClose.CancelOperation();
             Test.stopTest();
        }

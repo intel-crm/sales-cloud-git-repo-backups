@@ -105,7 +105,8 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
         if(Programs_For_Node_Account.contains(program)){
             query += ' AND Core_MDF_Node_Account_Id__c =: account';
         }else{
-            query += ' AND Core_MDF_Partnership_Score_Id__r.Core_MDF_Account_Id__c =: account';
+            //updated
+            query += ' AND Core_MDF_Partnership_Score_Id__r.Core_MDF_AccountID_id__c =: account';
         }
         
         query += ' ORDER BY Core_MDF_Budget_Type_Nm__c,Core_MDF_Region_Cd__c ASC';
@@ -308,7 +309,7 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
         Datetime currDateTime = System.now();
         Datetime futureDateTime = isL3UserWithItAdminProfile ? currDateTime.addHours(12) : currDateTime + 1; // enable recovery for l3 user till 12 hours before recovery. Allow L3 User to select claims for recovery in Claim Recovery UI till 5PM IST, GMT 16:30
         List<String> validStatuses = new List<String>{'Pending','Scheduled'};
-            for(Core_MDF_Batch_Scheduler__c bs : [SELECT Id, Core_MDF_Batch_Class_Name_Txt__c, Core_MDF_Scheduler_Status_Txt__c, Scheduled_Time_Dt__c, Core_MDF_Object_JSON_Txt__c FROM Core_MDF_Batch_Scheduler__c WHERE Core_MDF_Batch_Class_Name_Txt__c =: 'Core_MDF_Recovery_Batch' AND Core_MDF_Scheduler_Status_Txt__c IN: validStatuses ORDER BY Scheduled_Time_Dt__c ASC]){
+            for(Core_MDF_Batch_Scheduler__c bs : [SELECT Id, Scheduled_Time_Dt__c, Core_MDF_Object_JSON_Txt__c FROM Core_MDF_Batch_Scheduler__c WHERE Core_MDF_Batch_Class_Name_Txt__c =: 'Core_MDF_Recovery_Batch' AND Core_MDF_Scheduler_Status_Txt__c IN: validStatuses ORDER BY Scheduled_Time_Dt__c ASC]){ //HP:ATHR Fix
                 if(String.isNotBlank(bs.Core_MDF_Object_JSON_Txt__c)){
                     bs.Scheduled_Time_Dt__c = isL3UserWithItAdminProfile ? bs.Scheduled_Time_Dt__c : bs.Scheduled_Time_Dt__c.addHours(1);
                     Core_MDF_Recovery_Batch.recoveryDataWrapper wrapResult = (Core_MDF_Recovery_Batch.recoveryDataWrapper) JSON.deserialize(bs.Core_MDF_Object_JSON_Txt__c, Core_MDF_Recovery_Batch.recoveryDataWrapper.class);
@@ -520,7 +521,7 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
                 recommendedRTRClaims.add(rr);
             }else if(eligibleClaims != null && eligibleClaims.size() > 0 && eligibleClaims.containsKey(sc.id)){
                 recommendedClaims.add(rr);
-            }else if(sc.Core_MDF_Budget_Type_Options_Nm__c != 'RSA MD' || (sc.Core_MDF_Budget_Type_Options_Nm__c == 'RSA MD' && String.isNotBlank(budgetGeo) && rr.recoveryBudAmtMap.keySet().contains(budgetGeo))){
+            }else if(sc.Core_MDF_Budget_Type_Options_Nm__c != 'RSA MD' || (sc.Core_MDF_Budget_Type_Options_Nm__c == 'RSA MD' && String.isNotBlank(budgetGeo) && (rr.recoveryBudAmtMap != null && rr.recoveryBudAmtMap.keySet().contains(budgetGeo)))){
                 nonRecommendedClaims.add(rr);
             }
         }
@@ -608,11 +609,12 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
         List<Core_MDF_Partnership_Score_Detail__c> psd = new List<Core_MDF_Partnership_Score_Detail__c>();
         if(Programs_For_Node_Account.contains(program)){
             psd = [SELECT Id, Core_MDF_Budget_Type_Nm__c, Core_MDF_Region_Cd__c,Core_MDF_Total_Recovery_Amt__c, Core_MDF_Carry_Over_Amt__c,Core_MDF_Recovered_Amt__c, Core_MDF_Node_Account_Id__c, Core_MDF_Recovery_Offset_Amt__c, Core_MDF_Recovery_Offset_Comments_txt__c 
-            FROM Core_MDF_Partnership_Score_Detail__c where Core_MDF_Partnership_Score_Id__r.Core_MDF_Program_nm__c=:Program and Core_MDF_Node_Account_Id__c=:account  and Core_MDF_Quarter_Year_Nm__c =:quarter  AND Core_MDF_Region_Cd__c != null order by Core_MDF_Budget_Type_Nm__c,Core_MDF_Region_Cd__c ];
+                   FROM Core_MDF_Partnership_Score_Detail__c where Core_MDF_Partnership_Score_Id__r.Core_MDF_Program_nm__c=:Program and Core_MDF_Node_Account_Id__c=:account  and Core_MDF_Quarter_Year_Nm__c =:quarter  AND Core_MDF_Region_Cd__c != null order by Core_MDF_Budget_Type_Nm__c,Core_MDF_Region_Cd__c ];
         }
         else{
+            //updated - acc_id
             psd = [SELECT Id, Core_MDF_Budget_Type_Nm__c, Core_MDF_Region_Cd__c,Core_MDF_Total_Recovery_Amt__c, Core_MDF_Carry_Over_Amt__c,Core_MDF_Recovered_Amt__c, Core_MDF_Recovery_Offset_Amt__c, Core_MDF_Recovery_Offset_Comments_txt__c 
-            FROM Core_MDF_Partnership_Score_Detail__c where Core_MDF_Partnership_Score_Id__r.Core_MDF_Program_nm__c=:Program and Core_MDF_Partnership_Score_Id__r.Core_MDF_Account_Id__c=:account  and Core_MDF_Quarter_Year_Nm__c =:quarter AND Core_MDF_Region_Cd__c != null order by Core_MDF_Budget_Type_Nm__c,Core_MDF_Region_Cd__c ];
+                   FROM Core_MDF_Partnership_Score_Detail__c where Core_MDF_Partnership_Score_Id__r.Core_MDF_Program_nm__c=:Program and Core_MDF_Partnership_Score_Id__r.Core_MDF_AccountID_id__c=:account  and Core_MDF_Quarter_Year_Nm__c =:quarter AND Core_MDF_Region_Cd__c != null order by Core_MDF_Budget_Type_Nm__c,Core_MDF_Region_Cd__c ];
         }
         for (Core_MDF_Partnership_Score_Detail__c psdrec : psd)
         {
@@ -672,12 +674,12 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
         catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);}  
         return bTResult;
     }
-
+    
     @AuraEnabled
     public static Boolean hasAccessToOffset(String quarter){
         
         Boolean showOffsetButton = false;
-
+        
         Core_MDF_RecoveryClaimReportViewCtrl.FinalRightRows result = Core_MDF_Recovery_Helper.checkQuarterAndYear(quarter);
         if((FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager') 
             || FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Claim_Case_Reviewer') || (FeatureManagement.checkPermission('Core_MDF_CCP_Internal_RMF_Payment_Admin') && FeatureManagement.checkPermission('Core_MDF_CCP_Internal_PRC_User')) 
@@ -686,7 +688,7 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
             }
         return showOffsetButton;
     }
-
+    
     @AuraEnabled
     public static void updatePsdRecords(List<Core_MDF_Partnership_Score_Detail__c> recordList) {
         try {
@@ -698,7 +700,7 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
             throw new AuraHandledException('Error updating records: ' + ex.getMessage());
         }
     }
-
+    
     @AuraEnabled
     public static void updateSobjectList(List<Sobject> sobjectToUpdateList){
         try{
@@ -752,6 +754,7 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
         } else {
             recQuery += ' AND Core_MDF_Claim_Id__r.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c = :accountId';
         }
+        system.debug('recQuery::'+recQuery);
         List<Core_MDF_Recovery__c> recoveries = Database.query(recQuery);            
         
         for (Core_MDF_Recovery__c rec : recoveries) {
@@ -763,6 +766,7 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
                 claimToSurePay.put(claimId, updated < 0 ? 0 : updated);
             }
         }
+        system.debug('claimToSurePay::'+claimToSurePay);
         Decimal total = 0;
         for (Decimal val : claimToSurePay.values()) {
             total += val;
@@ -785,7 +789,7 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
         @AuraEnabled public String budgetType { get; set; }
         @AuraEnabled public String region { get; set; }
     }
-  
+    
     public class BreakdownSummary {
         @AuraEnabled public String budgetType { get; set; }
         @AuraEnabled public String region { get; set; }
@@ -796,7 +800,7 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
         @AuraEnabled public String recoveryOffsetComments { get; set; }
         @AuraEnabled public String id { get; set; }
         @AuraEnabled public Boolean showrecoveryOffsetDetails { get; set; }
-    
+        
     }
     
     //Wrapper Class

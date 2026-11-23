@@ -84,6 +84,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>FK_OPP_CLOSE_DATE</dateColumn>
+        <endDate>2019-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2017-01-01</startDate>
     </timeFrameFilter>

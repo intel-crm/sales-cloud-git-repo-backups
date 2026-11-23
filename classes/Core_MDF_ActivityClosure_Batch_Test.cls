@@ -10,8 +10,8 @@ public class Core_MDF_ActivityClosure_Batch_Test {
         List<String> result12 = new List<String>();
         myset12.addAll(bypassFunctionKeys2);
         result12.addAll(myset12);
-        
-
+        // Highlight: Unused Local Variable - 14285
+        //List<Core_Trigger_Executions__c> bypassfunctinalitylist12 = Core_MDF_CCP_TestDataUtility.byPassFeature(result12,false,true);
         List<String> bypassFunctionKeys = new List<String>();
         bypassFunctionKeys.add('Core_MDF_PFR_Rule_Engine');
         bypassFunctionKeys.add('Bypass_Allocation_Reservation');
@@ -20,7 +20,8 @@ public class Core_MDF_ActivityClosure_Batch_Test {
         List<String> result1 = new List<String>();
         myset1.addAll(bypassFunctionKeys);
         result1.addAll(myset1);
-
+        // Highlight: Unused Local Variable - 14285
+        //List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
         profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
         
         List<user> usrList=new List<User>();

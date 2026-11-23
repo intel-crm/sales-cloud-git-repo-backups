@@ -1,0 +1,77 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+                access="global" Controller="Core_MDF_CampaignPFR_Controller">
+    <aura:attribute name="disablebuttonName" type="Boolean" default="false"/>
+    <aura:attribute name="externalUser" type="Boolean" default="false" />
+    <aura:attribute name="isPriceReviewer" type="Boolean" default="false" />
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="buttonToBeVisible" type="Boolean" default="false" />
+    <aura:attribute name="showApprovalCommentSection" type="Boolean" default="false" />
+    <aura:attribute name="approvalComments" type="String" default="" />
+    <aura:attribute name="btnValue" type="String" />
+    <aura:attribute name="commentType" type="String" /> 
+    <aura:attribute name="loadSpinner" type="Boolean" default="false" />
+    
+    <!-- Onload of the Page the values to be loaded  -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:if isTrue="{!v.buttonToBeVisible}">
+        <lightning:layout horizontalAlign="spread" multipleRows="true">
+            <lightning:layoutItem padding="around-small" size="3" mediumDeviceSize="3"
+                                  largeDeviceSize="3"></lightning:layoutItem>
+            
+            <lightning:layoutItem padding="around-small" size="6" mediumDeviceSize="6"
+                                  largeDeviceSize="6">
+                <div align="center">
+                    <aura:if isTrue="{!v.externalUser}">
+                        <h6 id="header23" class="slds-text-heading--small"> {!$Label.c.Core_MDF_IPA_CustomerAcceptance}</h6>
+                        <br></br>
+                        <lightning:button variant="Neutral"
+                                          label="{!$Label.c.Core_MDF_Retail_Approve}" value="{!$Label.c.Core_MDF_Retail_Approve}" onclick="{!c.approvalAction}" />
+                        <lightning:button variant="Neutral"
+                                          label="{!$Label.c.Core_MDF_Retail_Reject}" value="{!$Label.c.Core_MDF_Retail_Reject}" onclick="{!c.approvalAction}" />
+                    </aura:if>
+                    <aura:if isTrue="{!v.isPriceReviewer}">
+                        <h6 id="header23" class="slds-text-heading--small"> {!$Label.c.Core_MDF_IPA_PriceReviewerAcceptance}</h6>
+                        <br></br>
+                        <lightning:button variant="Neutral"
+                                          label="{!$Label.c.Core_MDF_Retail_Approve}" value="{!$Label.c.Core_MDF_Retail_Approve}" onclick="{!c.approvalAction}" />
+                        <lightning:button variant="Neutral"
+                                          label="{!$Label.c.Core_MDF_Retail_Reject}" value="{!$Label.c.Core_MDF_Retail_Reject}" onclick="{!c.approvalAction}" />
+                    </aura:if>
+                </div>
+            </lightning:layoutItem>
+            
+            <lightning:layoutItem padding="around-small" size="3" mediumDeviceSize="3"
+                                  largeDeviceSize="3"></lightning:layoutItem>
+        </lightning:layout>
+    </aura:if>
+    
+    <aura:if isTrue="{!v.showApprovalCommentSection}">
+        <div role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-modal_small slds-slide-up-saving">
+            <div class="slds-modal__container">
+                <!-- Heading (Header of the Modal) -->
+                <div class="slds-modal__header">
+                    <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeModal}">
+                        X<span class="slds-assistive-text"></span>
+                    </button>
+                    <h1 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!v.commentType}
+                    </h1>
+                </div>
+                
+                <div class="slds-modal__content slds-p-around--medium">
+                    <h2 id="header20" class="slds-text-heading--small">{!$Label.c.Core_MDF_IPA_Comments}</h2>
+                    <lightning:textarea required="false" value="{!v.approvalComments}" />
+                </div>
+                <div class="slds-modal__footer">
+                    <lightning:button class="slds-button slds-button--neutral" onclick="{!c.closeModal}">{!$Label.c.Core_MDF_Cancel}</lightning:button>
+                    <lightning:button class="slds-button slds-button--brand" onclick="{!c.callApprovalProcessAndUpdateField}" disabled="{!v.disablebuttonName}">{!$Label.c.Core_MDF_Save}</lightning:button>
+                    <aura:if isTrue="{!v.loadSpinner}">
+                        <lightning:spinner alternative-text="Loading" size="large"></lightning:spinner>
+                    </aura:if>
+                </div>                
+            </div>
+        </div>
+        <div aura:id="backdropIdForNewRecord" class="slds-backdrop slds-backdrop--open"></div>
+    </aura:if>	
+    
+</aura:component>

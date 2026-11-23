@@ -149,9 +149,9 @@
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
-    <enableHistory>false</enableHistory>
+    <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
-    <enableReports>false</enableReports>
+    <enableReports>true</enableReports>
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
@@ -161,6 +161,7 @@
         <defaultValue>false</defaultValue>
         <inlineHelpText>At least one criteria rule record should be created to make Approver active.</inlineHelpText>
         <label>Active</label>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -172,6 +173,7 @@
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Approval Criteria Description</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -213,6 +215,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Approval_Steps10</relationshipName>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -253,6 +256,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Approval_Steps</relationshipName>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -293,6 +297,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Approval_Steps2</relationshipName>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -333,6 +338,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Approval_Steps3</relationshipName>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -373,6 +379,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Approval_Steps4</relationshipName>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -413,6 +420,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Approval_Steps5</relationshipName>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -453,6 +461,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Approval_Steps6</relationshipName>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -493,6 +502,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Approval_Steps7</relationshipName>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -533,6 +543,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Approval_Steps8</relationshipName>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -573,6 +584,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Approval_Steps9</relationshipName>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -580,6 +592,7 @@
         <fullName>Core_MDF_Approver_Type__c</fullName>
         <label>Approver Type</label>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -604,6 +617,7 @@
         <label>Criteria Rule Count</label>
         <summaryForeignKey>Core_MDF_Criteria_Rule__c.Core_MDF_Approver__c</summaryForeignKey>
         <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Summary</type>
     </fields>
@@ -615,6 +629,7 @@
         <relationshipName>Approvers</relationshipName>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
@@ -625,6 +640,7 @@
         <label>Group Name</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -633,6 +649,7 @@
         <fullName>Core_MDF_Is_Approver_From_Group_ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Is Approver From Group</label>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -643,6 +660,7 @@
         <precision>2</precision>
         <required>false</required>
         <scale>0</scale>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -650,12 +668,19 @@
     <label>Approver</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Approval_Criteria_Description__c</columns>
+        <columns>Core_MDF_Approver_Type__c</columns>
+        <columns>Core_MDF_Criteria__c</columns>
+        <columns>Core_MDF_Criteria_Rule_Count__c</columns>
+        <columns>Core_MDF_Step_Number__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
     <nameField>
         <displayFormat>Appr-{0000}</displayFormat>
         <label>Approvers</label>
+        <trackHistory>true</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Approvers</pluralLabel>

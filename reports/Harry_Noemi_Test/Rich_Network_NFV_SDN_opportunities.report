@@ -18,7 +18,7 @@
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
-        <showValues>true</showValues>
+        <showValues>false</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
@@ -62,7 +62,7 @@
             <column>Name</column>
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
-            <value>Milan Spalevic,Rich Sutherland,Kengo Miura</value>
+            <value>Milan Spalevic,Rich Sutherland</value>
         </criteriaItems>
         <operation>with</operation>
         <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>

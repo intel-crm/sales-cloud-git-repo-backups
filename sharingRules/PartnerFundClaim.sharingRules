@@ -32,7 +32,7 @@
             <operation>notEqual</operation>
             <value>[empty]</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_MDF_Partner_Fund_Claim_CCP_Claim_Case_Reviewer_Internal</fullName>
@@ -66,20 +66,6 @@
             <field>Core_MDF_Status__c</field>
             <operation>equals</operation>
             <value>PIC Pending</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_Share_IPA_Claims_with_Payment_Adm_Mgr</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>Share IPA Claims with Payment Adm Mgr</label>
-        <sharedTo>
-            <group>AGS_CCP_Payment_Admin_Manager</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Intel Partner Alliance Proposal Based,Intel Partner Alliance Account Based</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -125,6 +111,20 @@
             <operation>equals</operation>
             <value>True</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_IPA_Claims_with_Payment_Adm_Mgr</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Share IPA Claims with Payment Adm Mgr</label>
+        <sharedTo>
+            <group>AGS_CCP_Payment_Admin_Manager</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Intel Partner Alliance Proposal Based,Intel Partner Alliance Account Based</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
 </SharingRules>

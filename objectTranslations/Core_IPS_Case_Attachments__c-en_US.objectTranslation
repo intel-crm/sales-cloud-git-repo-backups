@@ -139,93 +139,9 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- BackendType --></label>
-        <name>Core_IPS_BES_BackendType__c</name>
-    </fields>
-    <fields>
-        <label><!-- Promote Status --></label>
-        <name>Core_IPS_BES_Promote_Status__c</name>
-        <picklistValues>
-            <masterLabel>Done</masterLabel>
-            <translation><!-- Done --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Failed</masterLabel>
-            <translation><!-- Failed --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>In Progress</masterLabel>
-            <translation><!-- In Progress --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Sent Successfully</masterLabel>
-            <translation><!-- Sent Successfully --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- BackendId --></label>
-        <name>Core_IPS_BackendId__c</name>
-    </fields>
-    <fields>
         <label><!-- IPS File Upload --></label>
         <name>Core_IPS_File_Upload__c</name>
         <relationshipLabel><!-- IPS Case Attachments --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- IP Type --></label>
-        <name>Core_IPS_IP_Type__c</name>
-        <picklistValues>
-            <masterLabel>Customized Firmware</masterLabel>
-            <translation><!-- Customized Firmware --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Customized SW+FW package</masterLabel>
-            <translation><!-- Customized SW+FW package --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Customized Software</masterLabel>
-            <translation><!-- Customized Software --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Design Review Result</masterLabel>
-            <translation><!-- Design Review Result --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Document (Customer Specific)</masterLabel>
-            <translation><!-- Document (Customer Specific) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Document (Intel Confidential)</masterLabel>
-            <translation><!-- Document (Intel Confidential) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Document (Public)</masterLabel>
-            <translation><!-- Document (Public) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Firmware for debug</masterLabel>
-            <translation><!-- Firmware for debug --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Firmware hotfix</masterLabel>
-            <translation><!-- Firmware hotfix --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SW+FW hotfix package</masterLabel>
-            <translation><!-- SW+FW hotfix package --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Software for debug</masterLabel>
-            <translation><!-- Software for debug --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Software hotfix</masterLabel>
-            <translation><!-- Software hotfix --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Security Compliance --></label>
-        <name>Core_IPS_Security_Compliance__c</name>
     </fields>
     <fields>
         <label><!-- Uploaded By Email --></label>
@@ -308,10 +224,6 @@
         <errorMessage><!-- Status Change not allowed once set to Complete --></errorMessage>
         <name>Core_IPS_Prevent_StatusChng_FromComplete</name>
     </validationRules>
-    <validationRules>
-        <errorMessage><!-- Not allowed to create or update record related to Org 025 --></errorMessage>
-        <name>IPS_Altera_Go_Live_Attmt_Restriction</name>
-    </validationRules>
     <webLinks>
         <label><!-- Core_Attach_File --></label>
         <name>Core_Attach_File</name>
@@ -319,6 +231,10 @@
     <webLinks>
         <label><!-- Core_IPS_External_Attach_File --></label>
         <name>Core_IPS_External_Attach_File</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Link_File --></label>
+        <name>Core_Link_File</name>
     </webLinks>
     <webLinks>
         <label><!-- Core_Refresh_to_See_New_Attachments --></label>

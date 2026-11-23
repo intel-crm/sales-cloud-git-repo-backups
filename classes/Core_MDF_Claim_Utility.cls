@@ -1,6 +1,5 @@
 /****************************************************************************************************************************************
 * Class Name  : Core_MDF_Claim_Utility 
-* Test Class  : Core_MDF_Claim_Utility_Test
 * Version     : 1.0   
 * Created Date: 11-13-2018
 * Modification Log :
@@ -43,7 +42,7 @@ Method Name:        processReleaseHold
 @return  :          void
 @parameters:        
 Description:        This method is used to release the claims that are on hold
-Added By:           Intel - SM - 11/13/2018assign
+Added By:           Intel - SM - 11/13/2018
 Modified By:        Date:       Changes: 
 ******************************************************************************************************
 *  VS               4/4/2019       Added condition to check Payment Hold reason
@@ -59,6 +58,7 @@ Modified By:        Date:       Changes:
         //To Uncheck the Hold Reason
         //ATHR - Deeply Nested if 16209
         if (claims == null || claims.isEmpty()) return;
+
         //if(claims != NULL && claims.size() > 0)
         //{
             for(PartnerFundClaim claim : claims)
@@ -108,11 +108,13 @@ Modified By:        Date:       Changes:
                    && !claim.Core_MDF_Criteria_Hold_Ind__c && !claim.Core_MDF_Bank_Doc_Hold_Ind__c && !claim.Core_MDF_Document_Hold_Ind__c && claim.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Hold')){                       
                        String tempPrevStatus = claim.Core_MDF_Claim_Previous_Status__c;
 
+
                        //Roshan - Super Claim PIC
                         if (claim.Core_MDF_Has_Sub_Claims_Ind__c) {
                             if (tempPrevStatus == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Pending_Available_Fund')) {
                                 claim.Core_MDF_Status__c = tempPrevStatus;
                             } else {
+                                //superClaimsReleasedFromHold.add(claim.Id);
                                 superClaimsReleasedFromHold.add(claim);
                             }
                         } else {
@@ -174,6 +176,21 @@ Modified By:        Date:       Changes:
         }
     }
 
+
+    // if any subclaim in hold -> hold
+
+    // if all subclaims are in paid -> paid
+    // if all subclaims are in pending payment -> pending payment
+    // if all subclaims are in payment due -> payment due
+    // if all subclaims are in PAF -> PAF
+
+    // if any subclaim is in paid/pending payment and others are in hold/paf/payment due -> queued for payment
+    // if any one subclaim is in paf and others are in payment due -> paf
+
+
+
+
+
     
     /***************************************************************************************************** 
 Method Name:        invokeReleaseHold
@@ -210,30 +227,33 @@ Method Name:        updateClaimStatus
 @parameters:        newClaimList and oldClaimMap
 Description:        This method is used to set the claim previous and standard Status on the basic of custom status 
 Added By:           Accenture - JV
-Modified By:        Date:       Changes: 
+Modified By:        Date:        Changes:
 ******************************************************************************************************/
-    public static void updateClaimStatus(List<PartnerFundClaim> newClaimList, Map<Id,PartnerFundClaim> oldClaimMap){ 
+    public static void updateClaimStatus(List<PartnerFundClaim> newClaimList, Map<Id,PartnerFundClaim> oldClaimMap){   //before insert, before update
         List<String> legacyPaidclmStsLst = Core_MDF_CustomLabelConfig.getTextList('Core_MDF_PostPaid_Legacy_Claim_Statuses');
         for(PartnerFundClaim pfc : newClaimList){
             //check if adjustment then break
-            if(Core_MDF_Claim_Utility.isType(pfc, Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Claim_Adjustment_Type')))
-            {
+            if(Core_MDF_Claim_Utility.isType(pfc, Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Claim_Adjustment_Type'))) {
                 continue;
             }
-            if(oldClaimMap!=null && oldClaimMap.size() > 0  && oldClaimMap.get(pfc.ID).Core_MDF_Status__c != pfc.Core_MDF_Status__c){
+            if(oldClaimMap!=null && oldClaimMap.size() > 0 && oldClaimMap.get(pfc.ID).Core_MDF_Status__c != pfc.Core_MDF_Status__c){
                 
                 // To set the claim previous status field before changing claim current status
                 pfc.Core_MDF_Claim_Previous_Status__c = oldClaimMap.get(pfc.ID).Core_MDF_Status__c;
-                
+                //Aditya - PIC Status Update
+                //Added new status
                 if (pfc.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Pending_Available_Fund') 
                     || pfc.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Submitted')
                     || pfc.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Hold')
                     || pfc.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PIC_Pending')
                     || pfc.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_PendingDocs')
-                    || pfc.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ResubReqd')) {
+                    || pfc.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ResubReqd')
+                	|| pfc.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Payment_Clearance_Processing')) {
+
                         pfc.Status = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Submitted');
                     }
                 else if(pfc.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Payment_Due') || pfc.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Pending_Payment')){
+                    system.debug('insideApproved');
                     if (!pfc.Core_MDF_Has_Sub_Claims_Ind__c) {  //Roshan - Super Claim PIC
                         pfc.Status = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Approved');
                     }
@@ -242,15 +262,14 @@ Modified By:        Date:       Changes:
                         || pfc.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ResubWinClosed')){
                             pfc.Status = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Rejected');
                         }
-                //else if(pfc.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Paid')){
                 else if(legacyPaidclmStsLst.contains(pfc.Core_MDF_Status__c)||pfc.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Paid')){   
                     if (!pfc.Core_MDF_Has_Sub_Claims_Ind__c) {  //Roshan - Super Claim PIC
                         pfc.Status = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Paid');
                     }
                 }
-                //Roshan
+
                 if(pfc.Core_MDF_Status__c == 'Pending Review') {
-                    if(pfc.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM || pfc.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM) {  //Swati - added ipa check
+                    if(pfc.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM || pfc.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM) {
                         pfc.Core_MDF_Approval_Stage_nm__c = pfc.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM ? 'Technical Approver' : 'Account Manager';
                         pfc.Core_MDF_Approval_Step_Counter_nbr__c = 1;
                         pfc.Core_MDF_Comments_Appvr_Only_txt__c  = '';
@@ -346,6 +365,7 @@ Modified By:        Date:       Changes:
         Set<Id> requestIdSet = new Set<id>();
         if(claimList != Null && claimList.size()>0)
         {
+            
             for(PartnerFundClaim newClaim : claimList){
                 //check if adjustment then break
                 if(!Core_MDF_Claim_Utility.isType(newClaim, isclaimAdjustmentType))
@@ -447,8 +467,9 @@ from PartnerFundRequest where Id IN: requestIdSet]);*/
         // To find the duplicate claims withing the List of claims to be inserted
         for(PartnerFundClaim newClaim : claimList){
             //check if adjustment then break
+           
             if(Core_MDF_Claim_Utility.isType(newClaim, isclaimAdjustmentType)){   continue; }
-            //IPA adding ActivityType, Amount & its currencyType 
+
             ClaimWrapperClass iKey = new ClaimWrapperClass(pfrMap.get(newClaim.RequestId).Core_MDF_Activity_Number__c , 
                                                            newClaim.Core_MDF_Ad_Run_Start_Date__c , newClaim.Core_MDF_Ad_Run_End_Date__c , 
                                                            newClaim.Core_MDF_Country_Location_nm__c, newClaim.Core_MDF_Media_Vehicle__c , 
@@ -486,10 +507,8 @@ from PartnerFundRequest where Id IN: requestIdSet]);*/
         for(PartnerFundClaim dbClaim : [select Id,Title,Request.Core_MDF_Activity_Number__c, Core_MDF_Ad_Run_Start_Date__c, 
                                         Core_MDF_Ad_Run_End_Date__c,Core_MDF_Country_Location_nm__c,Core_MDF_Media_Vehicle__c,
                                         Core_MDF_AccountCompany__c,Core_MDF_Invoice_Number__c,Core_MDF_Activity_Types__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Currency__c,Core_MDF_Program__c
-                                        from PartnerFundClaim where ((Request.Core_MDF_Activity_Number__c IN: newActivityNumber AND Core_MDF_Ad_Run_Start_Date__c IN: newAdRunStartDate  AND Core_MDF_Ad_Run_End_Date__c IN: newAdRunEndDate AND Core_MDF_Country_Location_nm__c IN: newCountryLocation AND Core_MDF_Media_Vehicle__c IN: newMediaVehicle AND Core_MDF_AccountCompany__c IN: newAccountCompany AND Core_MDF_Invoice_Number__c IN: newInvoiceNumber) AND (Id NOT IN:newClamIds)) order by CreatedDate desc]){                                            
-                                            ClaimWrapperClass dbWrapperInstance = new ClaimWrapperClass(dbClaim.Request.Core_MDF_Activity_Number__c,dbClaim.Core_MDF_Ad_Run_Start_Date__c,dbClaim.Core_MDF_Ad_Run_End_Date__c,dbClaim.Core_MDF_Country_Location_nm__c,dbClaim.Core_MDF_Media_Vehicle__c,dbClaim.Core_MDF_AccountCompany__c,dbClaim.Core_MDF_Invoice_Number__c,dbClaim.Core_MDF_Activity_Types__c,dbClaim.Core_MDF_Total_Invoice_Amount_Local__c,dbclaim.Core_MDF_Currency__c,dbclaim.Core_MDF_Program__c);
-                                            
-                                            
+                                        from PartnerFundClaim where ((Request.Core_MDF_Activity_Number__c IN: newActivityNumber AND Core_MDF_Ad_Run_Start_Date__c IN: newAdRunStartDate  AND Core_MDF_Ad_Run_End_Date__c IN: newAdRunEndDate AND Core_MDF_Country_Location_nm__c IN: newCountryLocation AND Core_MDF_Media_Vehicle__c IN: newMediaVehicle AND Core_MDF_AccountCompany__c IN: newAccountCompany AND Core_MDF_Invoice_Number__c IN: newInvoiceNumber) AND (Id NOT IN:newClamIds)) order by CreatedDate desc]){                                                                                        
+                                            ClaimWrapperClass dbWrapperInstance = new ClaimWrapperClass(dbClaim.Request.Core_MDF_Activity_Number__c,dbClaim.Core_MDF_Ad_Run_Start_Date__c,dbClaim.Core_MDF_Ad_Run_End_Date__c,dbClaim.Core_MDF_Country_Location_nm__c,dbClaim.Core_MDF_Media_Vehicle__c,dbClaim.Core_MDF_AccountCompany__c,dbClaim.Core_MDF_Invoice_Number__c,dbClaim.Core_MDF_Activity_Types__c,dbClaim.Core_MDF_Total_Invoice_Amount_Local__c,dbclaim.Core_MDF_Currency__c,dbclaim.Core_MDF_Program__c);                                                                                        
                                             dbWrapperSet.add(dbWrapperInstance);
                                             if(mapClaimWrapper.containsKey(dbWrapperInstance)){mapClaimWrapper.get(dbWrapperInstance).add(dbClaim);
                                                                                               }
@@ -557,7 +576,7 @@ Modified By:        Date:       Changes:
         for(PartnerFundClaim newClaim: newclaimMap.values()){  
             Boolean isAmountChanged = false;
 
-            // Roshan - TWC3117-11893 Bulk claims going into Submitted status when edited after PIC is Passed
+            //Boolean shouldProcessTaxChange = newClaim.Core_MDF_Taxes_Local__c > 0;
             Boolean shouldProcessTaxChange  = !(oldClaimMap.get(newClaim.Id).Core_MDF_Taxes_Local__c == null && newClaim.Core_MDF_Taxes_Local__c == 0);
 
             //check if adjustment then break
@@ -566,11 +585,20 @@ Modified By:        Date:       Changes:
             if(newClaim.Id == oldClaimMap.get(newClaim.Id).Id 
                &&((newClaim.Core_MDF_Total_Invoice_Amount_Local__c!=null && newClaim.Core_MDF_Total_Invoice_Amount_Local__c != oldClaimMap.get(newClaim.Id).Core_MDF_Total_Invoice_Amount_Local__c)
                   || (newClaim.Core_MDF_OtherCostsnotReimbursable_Local__c!=null && newClaim.Core_MDF_OtherCostsnotReimbursable_Local__c != oldClaimMap.get(newClaim.Id).Core_MDF_OtherCostsnotReimbursable_Local__c)
-                  || (shouldProcessTaxChange && newClaim.Core_MDF_Taxes_Local__c != oldClaimMap.get(newClaim.Id).Core_MDF_Taxes_Local__c)  // Roshan - Added new Boolean field
+                  || (shouldProcessTaxChange && newClaim.Core_MDF_Taxes_Local__c != oldClaimMap.get(newClaim.Id).Core_MDF_Taxes_Local__c)
                   //|| (newClaim.Core_MDF_Audit_Adjustment_Amount__c!=null && newClaim.Core_MDF_Audit_Adjustment_Amount__c != oldClaimMap.get(newClaim.Id).Core_MDF_Audit_Adjustment_Amount__c)
                   || (newClaim.Core_MDF_Currency__c!=null && newClaim.Core_MDF_Currency__c != oldClaimMap.get(newClaim.Id).Core_MDF_Currency__c ) 
                   && !postPaymentClaimStatus.contains(newClaim.Core_MDF_Status__c))){ isAmountChanged = true;   claimListAmountToBeProcessed.add(newClaim);  }
-            if((isAmountChanged) && !claimPICStatuses.contains(newClaim.Core_MDF_Status__c) && newClaim.Core_MDF_Status__c != Core_MDF_CCP_ConstantClass.PENDING_CLARIFICATION) {claimListToUpdateStatusToSubmitted.add(newClaim);}
+            
+                  if((isAmountChanged) && !claimPICStatuses.contains(newClaim.Core_MDF_Status__c) && newClaim.Core_MDF_Status__c != Core_MDF_CCP_ConstantClass.PENDING_CLARIFICATION) {
+
+                claimListToUpdateStatusToSubmitted.add(newClaim);
+            }
+
+            //Update Payment Rollback field
+            /*if(String.isNotBlank(newClaim.Core_MDF_Payment_Rollback_Reason_nm__c) && postPaymentClaimStatus.contains(newClaim.Core_MDF_Status__c)){
+                newClaim.Core_MDF_Payment_Rollback_Reason_nm__c = '';
+            }*/
         }
         
         if(claimListAmountToBeProcessed != NULL && claimListAmountToBeProcessed.size()>0)
@@ -598,6 +626,9 @@ Modified By:        Date:       Changes:
     public static void calculateClaimFieldsForInsert(List<PartnerFundClaim> claimListToBeProcessed) {
         
         List<Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount> inputList = new List<Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount>();
+        //Ankit
+        system.debug('InputList :'+inputList);
+        system.debug('claimListToBeProcessed :'+claimListToBeProcessed);
         for(PartnerFundClaim claimObj : claimListToBeProcessed){
             //check if adjustment then break
             if(Core_MDF_Claim_Utility.isType(claimObj, isclaimAdjustmentType)){continue;}
@@ -605,6 +636,8 @@ Modified By:        Date:       Changes:
             /*claimObj.Core_MDF_Reimbursable_TransactionAmt_Loc__c = claimObj.Core_MDF_OtherCostsnotReimbursable_Local__c!=null 
 && claimObj.Core_MDF_Taxes_Local__c!=null ?  claimObj.Core_MDF_Total_Invoice_Amount_Local__c - (claimObj.Core_MDF_OtherCostsnotReimbursable_Local__c + claimObj.Core_MDF_Taxes_Local__c) : claimObj.Core_MDF_Total_Invoice_Amount_Local__c;
 */
+            //Ankit
+            system.debug('Multi Currency field :'+input);
             //Areefa testing start
             claimObj.Core_MDF_Reimbursable_TransactionAmt_Loc__c = claimObj.Core_MDF_Total_Invoice_Amount_Local__c - 
                 ((claimObj.Core_MDF_OtherCostsnotReimbursable_Local__c!=null? claimObj.Core_MDF_OtherCostsnotReimbursable_Local__c: 0) + 
@@ -620,7 +653,7 @@ Modified By:        Date:       Changes:
         }
         if(inputList != null && inputList.size() > 0){
             Map<string,Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount> usdAmount = Core_MDF_CCP_Multicurrency.getUSDExchangeRateBasedOnDate(inputList);
-
+            system.debug('usdAmount@@@' + usdAmount);
             for(PartnerFundClaim claimObj : claimListToBeProcessed){
                 //check if adjustment then break
                 if(Core_MDF_Claim_Utility.isType(claimObj, isclaimAdjustmentType)){continue;}
@@ -629,7 +662,6 @@ Modified By:        Date:       Changes:
                 Date inputDate = claimObj.CreatedDate == NULL ? System.today() : claimObj.CreatedDate.Date();
                 String key = string.valueof(claimObj.Core_MDF_Reimbursable_TransactionAmt_Loc__c) + '\t' +
                     claimObj.Core_MDF_Currency__c + '\t' + string.valueof(inputDate);
-               
                 if(usdAmount.containsKey(key) && usdAmount.get(key).conversionRate != Null)
                 {
                     claimObj.Core_MDF_Exchange_rate__c = usdAmount.get(key).conversionRate;
@@ -675,7 +707,6 @@ Modified By:        Date:       Changes:
                          (claimObj.Core_MDF_Taxes_Local__c != null ? claimObj.Core_MDF_Taxes_Local__c :0));
                     
                     //Areefa End               
-                    
                     inputClaimMap.get(claimObj.Id).Core_MDF_Reimbursable_TransactionAmt_Loc__c = reimTransactionAmtLocal;
                     input.inputCurrency = claimObj.Core_MDF_Currency__c;
                     input.inputAmount = inputClaimMap.get(claimObj.Id).Core_MDF_Reimbursable_TransactionAmt_Loc__c;
@@ -710,17 +741,21 @@ Modified By:        Date:       Changes:
                 String key = string.valueof(claimObj.Core_MDF_Reimbursable_TransactionAmt_Loc__c) + '\t' + claimObj.Core_MDF_Currency__c + '\t' + string.valueof(inputDate);
                 if(usdAmount.containsKey(key) && usdAmount.get(key).conversionRate != Null)
                 {
+                    System.debug('Inisde 667');
                     inputClaimMap.get(claimObj.Id).Core_MDF_Exchange_rate__c = usdAmount.get(key).conversionRate;
                     inputClaimMap.get(claimObj.Id).Core_MDF_Reimbursable_Transaction_Amount__c = usdAmount.get(key).convertedAmount;
                     inputClaimMap.get(claimObj.Id).Core_MDF_Requested_Reimbursement_Amt__c = claimObj.Core_MDF_Reimbursable_Transaction_Amount__c != NULL ? ((double.valueOf(reimbursementPercent)/100)*claimObj.Core_MDF_Reimbursable_Transaction_Amount__c).setScale(2,System.RoundingMode.HALF_UP) : 0;
                     inputClaimMap.get(claimObj.Id).Core_MDF_Audit_Adjustment_Amount__c = claimObj.Core_MDF_Audit_Adjustment_Amount__c != NULL ? (claimObj.Core_MDF_Audit_Adjustment_Amount__c).setScale(2,System.RoundingMode.HALF_UP) : 0;
                     inputClaimMap.get(claimObj.Id).Amount = (inputClaimMap.get(claimObj.Id).Core_MDF_Requested_Reimbursement_Amt__c - inputClaimMap.get(claimObj.Id).Core_MDF_Audit_Adjustment_Amount__c).setScale(2,System.RoundingMode.HALF_UP);                    
                 }
-                else{inputClaimMap.get(claimObj.Id).Amount = null;}
+                else{inputClaimMap.get(claimObj.Id).Amount = null;
+                    System.debug('Inisde 676 else ');}
             }else{
                 //calculate fields with existing exchange rate
                 Decimal reimTransactionAmtLocal = claimObj.Core_MDF_Total_Invoice_Amount_Local__c-((claimObj.Core_MDF_OtherCostsnotReimbursable_Local__c != null ? claimObj.Core_MDF_OtherCostsnotReimbursable_Local__c : 0)+ (claimObj.Core_MDF_Taxes_Local__c != null ? claimObj.Core_MDF_Taxes_Local__c : 0));
                 inputClaimMap.get(claimObj.Id).Core_MDF_Reimbursable_TransactionAmt_Loc__c = reimTransactionAmtLocal;
+                System.debug('reimTransactionAmtLocal'+reimTransactionAmtLocal);
+                System.debug('inputClaimMap.get(claimObj.Id)'+inputClaimMap.get(claimObj.Id));
                 inputClaimMap.get(claimObj.Id).Core_MDF_Reimbursable_Transaction_Amount__c = (reimTransactionAmtLocal *inputClaimMap.get(claimObj.Id).Core_MDF_Exchange_rate__c).setScale(2);            
                 inputClaimMap.get(claimObj.Id).Core_MDF_Requested_Reimbursement_Amt__c = claimObj.Core_MDF_Reimbursable_Transaction_Amount__c != NULL ? ((double.valueOf(reimbursementPercent)/100)*claimObj.Core_MDF_Reimbursable_Transaction_Amount__c).setScale(2,System.RoundingMode.HALF_UP) : 0;
                 inputClaimMap.get(claimObj.Id).Core_MDF_Audit_Adjustment_Amount__c = claimObj.Core_MDF_Audit_Adjustment_Amount__c != NULL ? (claimObj.Core_MDF_Audit_Adjustment_Amount__c).setScale(2,System.RoundingMode.HALF_UP) : 0;
@@ -768,22 +803,23 @@ Modified By:        Date:       Changes:
         //Set of request Ids
         Set<ID> requestIDs = new Set<ID>();
         setOfBankIds = new Set<Id>();
+        
         for(PartnerFundClaim pfc: claimList){
             requestIDs.add(pfc.RequestId);
             if(pfc.Core_MDF_Bank__c!=null){
                 setOfBankIds.add(pfc.Core_MDF_Bank__c);
             }  
             assignClaimType(pfc);            
-            
         }
         //existing PFRs specific to request IDs
         //Map<Id,PartnerFundRequest> 
         pfrInstance = new Map<ID,PartnerFundRequest>([SELECT ID,RecordType.DeveloperName,Core_MDF_Brand_nm__c,Core_MDF_Budget_Type_nm__c,Core_MDF_Activity_SubType_nm__c, channelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.BillingCountry,channelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c 
-                                                      ,Core_MDF_Proposal_Based_Ind__c,Campaign.Core_MDF_CampOutcomeOpt_In_Ind__c, Core_MDF_Is_Outcome_Based_Ind__c FROM PartnerFundRequest WHERE ID IN:requestIDs]);  //Roshan
+                                                      ,Core_MDF_Proposal_Based_Ind__c,Campaign.Core_MDF_CampOutcomeOpt_In_Ind__c, Core_MDF_Is_Outcome_Based_Ind__c FROM PartnerFundRequest WHERE ID IN:requestIDs]); //Super Activity changes
         
         
         //Record Type Info Map
         Map<String,Schema.RecordTypeInfo> claimRecordTypeMap = Schema.SObjectType.PartnerFundClaim.getRecordTypeInfosByDeveloperName(); 
+        
         for(PartnerFundClaim claimObj : claimList){
             String claimRecTypeDevName;
             if(mapOfRecTypeMetadata !=null && (mapOfRecTypeMetadata.containsKey((pfrInstance.get(claimObj.RequestId)).RecordType.DeveloperName) || mapOfRecTypeMetadata.containsKey((pfrInstance.get(claimObj.RequestId)).RecordType.DeveloperName +'_Proposal_Based')) ){
@@ -797,11 +833,13 @@ Modified By:        Date:       Changes:
                 claimObj.RecordtypeId =  claimRecordTypeMap.get(claimRecTypeDevName).getRecordTypeId();
                
             }
+             System.Debug('pfrInstance.claimObj.RequestId...'+(pfrInstance.get(claimObj.RequestId)).Core_MDF_Is_Outcome_Based_Ind__c);
+
             //check if adjustment then break
             if(!Core_MDF_Claim_Utility.isType(claimObj, isclaimAdjustmentType))
             {
                 // Setting status field at time of claim creation
-                if(claimObj.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM || (claimObj.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM && ((pfrInstance.get(claimObj.RequestId)).Campaign.Core_MDF_CampOutcomeOpt_In_Ind__c ==TRUE || (pfrInstance.get(claimObj.RequestId)).Core_MDF_Is_Outcome_Based_Ind__c == TRUE))) {  //Roshan
+                if(claimObj.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM || (claimObj.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM && ((pfrInstance.get(claimObj.RequestId)).Campaign.Core_MDF_CampOutcomeOpt_In_Ind__c ==TRUE || (pfrInstance.get(claimObj.RequestId)).Core_MDF_Is_Outcome_Based_Ind__c == TRUE))) {  //Super Activity changes
                     claimObj.Core_MDF_Status__c = (claimObj.Core_MDF_Status__c == 'Pending Review' && claimObj.Core_MDF_Claim_Id__c == null) ? claimObj.Core_MDF_Status__c : 'Draft';
                     claimObj.Core_MDF_Approval_Step_Counter_nbr__c = (claimObj.Core_MDF_Status__c == 'Pending Review' && claimObj.Core_MDF_Claim_Id__c == null) ? 1 : 0;
                 } else {
@@ -813,22 +851,21 @@ Modified By:        Date:       Changes:
             }
             
             // setting the Eval In progress flag to True if PIC Functionality is Set          
-            if(isPICRequired && claimObj.Core_MDF_Claim_Id__c == null){
+            if(isPICRequired && claimObj.Core_MDF_Claim_Id__c == null){//15268
                 claimObj.Core_MDF_Claim_EvalInProgress_Ind__c = true;
             }
             //Areefa 11/11/2021 : defualt selection of Activity Subtype
             if(!Core_MDF_Utility.byPassFeature('Bypass_StampingOfActySubType_Check')){            
-                if(oEMProgram.contains(claimObj.Core_MDF_Program__c) && validbudgetTypes.contains(claimObj.Core_MDF_Budget_Type_Options_Nm__c) && pfrInstance.get(claimObj.RequestId).Core_MDF_Activity_SubType_nm__c!=null && claimObj.Core_MDF_Activity_SubType_nm__c==null ){
+                if(oEMProgram.contains(claimObj.Core_MDF_Program__c) && validbudgetTypes.contains(claimObj.Core_MDF_Budget_Type_nm__c) && pfrInstance.get(claimObj.RequestId).Core_MDF_Activity_SubType_nm__c!=null && claimObj.Core_MDF_Activity_SubType_nm__c==null ){
                     claimObj.Core_MDF_Activity_SubType_nm__c = pfrInstance.get(claimObj.RequestId).Core_MDF_Activity_SubType_nm__c;
                 }
             }
-            //Multiselect Brand picklist field changes- WW27/June'2022
             if(pfrInstance.get(claimObj.RequestId).Core_MDF_Brand_nm__c!=null){
                 claimObj.Core_MDF_Brand_nm__c = pfrInstance.get(claimObj.RequestId).Core_MDF_Brand_nm__c;
             }
+            
         }
     }   
-    
     
     /***************************************************************************************************** 
 Method Name:        updateEvalInProgressFlag
@@ -871,11 +908,11 @@ Modified By:        Date:       Changes:
                 continue;
             }
             //check if claim is in submitted and is set for reprocessing OR check if claim is legacy and is edited
-            if((newClaim.Core_MDF_Status__c == label.Core_MDF_Status_Submitted && newClaim.Core_MDF_Reprocess_Claim__c==true && newClaim.Core_MDF_Claim_Id__c == null) || (Core_MDF_PIC_Utility.isLegacy(newClaim) && !newClaim.Core_MDF_PIC_Review_Completed__c && newClaim.Core_MDF_Claim_EvalInProgress_Ind__c && isClaimEdited(newClaim,oldClaimMap) && !claimPICStatuses.contains(newClaim.Core_MDF_Status__c))){
+            if((newClaim.Core_MDF_Status__c == label.Core_MDF_Status_Submitted && newClaim.Core_MDF_Reprocess_Claim__c==true && newClaim.Core_MDF_Claim_Id__c == null) || (Core_MDF_PIC_Utility.isLegacy(newClaim) && !newClaim.Core_MDF_PIC_Review_Completed__c && newClaim.Core_MDF_Claim_EvalInProgress_Ind__c && isClaimEdited(newClaim,oldClaimMap) && !claimPICStatuses.contains(newClaim.Core_MDF_Status__c))){//15268
                 claimListToBeSentToPIC.add(newClaim);
             }
         }
-        if(claimListToBeSentToPIC != NULL && claimListToBeSentToPIC.size() > 0){
+        if(claimListToBeSentToPIC != NULL && claimListToBeSentToPIC.size() > 0 && Core_MDF_PartnerFundClaim.byPassBatch == false){
             ID jobID = System.enqueueJob(new Core_MDF_BatchtoPICClaim(claimListToBeSentToPIC));
         }
     }
@@ -935,6 +972,7 @@ Modified By:        Date:       Changes:
                 }
             
            }
+        System.debug('MDT OPtimisation mapOfRecordTypes '+ mapOfRecordTypes);
         return mapOfRecordTypes;
     }
     
@@ -952,6 +990,7 @@ Roshan              28/02/25    Added a conditon in IF to check only for RecordT
         Set<Id> recordTypeSet = new Set<Id>();
         for(Core_MDF_ObjRecType_Budget_FieldSetMap__mdt recordTypeMetaData : mapOfRecTypeMetadata.values()){ //TWC3117-18333
             if(recordTypeMetaData.Core_MDF_Claim_RecordType_txt__c!=null && claimRecordTypeMap.containsKey(recordTypeMetaData.Core_MDF_Claim_RecordType_txt__c) && recordTypeMetaData.Core_MDF_Enable_Fund_Reservation_chk__c == TRUE){
+                System.debug('recordTypeMetaData.Core_MDF_Claim_RecordType_txt__c'+recordTypeMetaData.Core_MDF_Claim_RecordType_txt__c);
                 recordTypeSet.add(claimRecordTypeMap.get(recordTypeMetaData.Core_MDF_Claim_RecordType_txt__c).getRecordTypeId());   
             }
         }
@@ -1034,7 +1073,7 @@ Modified By:        Date:       Changes:
                 //New escalation instance
                 Core_MDF_Escalation__c escalationRecord = new Core_MDF_Escalation__c(id=pfcRecord.Core_MDF_Escalation_Id__c);
                 //null check for escalation record
-                if(escalationRecord!=null){
+                if(escalationRecord!=null ){
                     //Assign claim id on escalation record
                     escalationRecord.Core_MDF_Claim_Number_id__c = pfcRecord.Id;
                     //Add updated escalation
@@ -1048,6 +1087,52 @@ Modified By:        Date:       Changes:
             Database.update(escalationsToBeUpdatedMap.values());
         }
     }
+    /****************************************************************************************************** 
+    Method Name:        updateDetailsOnSuperClaim
+    @return  :          N/A
+    @parameters:        Claim map
+    Description:        This method is used to update field on super claim
+    Added By:           Accenture - Vikas Soni - 21-01-2026
+    Modified By:        Date:       Changes: 
+    *******************************************************************************************************/
+    /*public static void updateDetailsOnSuperClaim(Map<Id, PartnerFundClaim> newMap) {
+        Set<Id> superClaimIdSet = new Set<Id>();
+		Map<Id, Integer> superClaimIdToSubClaimCountMap = new Map<Id, Integer>();
+        List<PartnerFundClaim> superClaimsUpdateList = new List<PartnerFundClaim>();
+        
+        for (PartnerFundClaim c : newMap.values()) {
+            if (
+                //c.outcomebased == true &&
+                //String.isBlank(c.Core_MDF_Campaign_Id__c) &&
+                c.Core_MDF_Claim_Id__c != null
+            ) {
+                superClaimIdSet.add(c.Core_MDF_Claim_Id__c);
+            }
+        }
+
+        if (superClaimIdSet.isEmpty()) {
+            return;
+        }
+
+        for (AggregateResult ar : [SELECT Core_MDF_Claim_Id__c parentId, COUNT(Id) cnt FROM PartnerFundClaim WHERE Core_MDF_Claim_Id__c IN :superClaimIdSet GROUP BY Core_MDF_Claim_Id__c]) {
+            superClaimIdToSubClaimCountMap.put((Id) ar.get('parentId'), (Integer) ar.get('cnt'));
+        }
+
+        // Update super claims
+        for (Id superClaimId : superClaimIdSet) {
+            superClaimsUpdateList.add(new PartnerFundClaim(
+                Id = superClaimId,
+                Core_MDF_Has_Sub_Claims_Ind__c = (superClaimIdToSubClaimCountMap.containsKey(superClaimId) && superClaimIdToSubClaimCountMap.get(superClaimId) > 0)
+            ));
+        }
+
+        if (!superClaimsUpdateList.isEmpty()) {
+            try {
+                update superClaimsUpdateList;
+            }
+            catch (Exception e) { Core_MDF_CCP_UtilityClass.logError(e); }
+        }
+    }*/
     /****************************************************************************************************** 
 Method Name:        populateOwnerLangLocalonclaimcreate
 @return  :          N/A
@@ -1065,9 +1150,10 @@ Modified By:        Date:       Changes:
                 ownerIdToClaimIDMap.put(pfc.OwnerId,pfc.Id);   
             }
         }
-        if(ownerIdToClaimIDMap!=null && ownerIdToClaimIDMap.size()>0){
+        if(ownerIdToClaimIDMap!=null && ownerIdToClaimIDMap.size()>0 && !ownerIdToClaimIDMap.isEmpty()){
             //Map of existing user
             Map<Id,User> userLocalMap = new Map<Id,User>([Select id,LanguageLocaleKey from User where Id IN:ownerIdToClaimIDMap.Keyset()]);
+
             for(PartnerFundClaim newpfc : newClaimList){
                 if(ownerIdToClaimIDMap.values().contains(newpfc.Id)){
                     //to store owner's language locale key
@@ -1093,7 +1179,7 @@ Modified By:        Date:       Changes:
         //if(newclaimList != NULL && newclaimList.size() > 0){
             for(PartnerFundClaim pfc : newclaimList){
                 //ATHR - Deeply Nested if 16209
-                if (wrapperMapOfCountryRegion == null || wrapperMapOfCountryRegion.isEmpty() || wrapperMapOfCountryRegion.get(pfc.Core_MDF_Country_Location_nm__c) == null || !wrapperMapOfCountryRegion.containskey(pfc.Core_MDF_Country_Location_nm__c)) continue;
+                if (wrapperMapOfCountryRegion == null || wrapperMapOfCountryRegion.isEmpty() || !wrapperMapOfCountryRegion.containskey(pfc.Core_MDF_Country_Location_nm__c)) continue;
                 //if(wrapperMapOfCountryRegion!=Null && wrapperMapOfCountryRegion.size()>0 && wrapperMapOfCountryRegion.containskey(pfc.Core_MDF_Country_Location_nm__c)){
                     pfc.Core_MDF_Region_Cd__c = wrapperMapOfCountryRegion.get(pfc.Core_MDF_Country_Location_nm__c).geo;
                     //Getting Region field from metadata to check it's value
@@ -1184,7 +1270,7 @@ Modified By:        Date:       Changes:
                && pfcRecord.Core_MDF_Budget_Type_Options_Nm__c != Label.Core_MDF_Retail_RSA_MD_Budget_Type
                && (!creditMemoPaymentTypes.contains(pfcRecord.Core_MDF_Paid_By_Payment_Type_nm__c))
                && (budgetTypesToHideBank != null && !budgetTypesToHideBank.contains(pfcRecord.Core_MDF_Budget_Type_Options_Nm__c))
-              && (pfcRecord.RecordType.developername == Label.Core_MDF_IPA_AccountBased_RecType_DevName && pfcRecord.Core_MDF_OutcomeBased_Ind__c && (pfcRecord.Request.Core_MDF_Activity_Level_nm__c == null || pfcRecord.Core_MDF_Claim_Id__c != null))){
+              && (pfcRecord.RecordType.developername == Label.Core_MDF_IPA_AccountBased_RecType_DevName && pfcRecord.Core_MDF_OutcomeBased_Ind__c && (pfcRecord.Request.Core_MDF_Activity_Level_nm__c == null || pfcRecord.Core_MDF_Claim_Id__c != null))){//15268
                    //Unique Key [bank Id - ChannelPartnerId]
                    
                    String uniqueKey = String.valueOf(pfcRecord.Core_MDF_Bank__c+'-'+
@@ -1217,24 +1303,30 @@ Intel   -    Areefa     -    8 Sept,2021
         List<string> excludeBudgetTypes = Core_MDF_CustomLabelConfig.getTextList('Core_MDF_BudgetTypeToExclude');
        
         //To check if the Activity Budget Amount Check is Required for a given Program
+        list<string> checkClaimAmtAgainstActivityBudgetAmt1 = new list<string>();
+        system.debug('inputClaims :'+inputClaims);
         for(Core_MDF_ChannelProgram__mdt program : [Select Label from Core_MDF_ChannelProgram__mdt
                                                     where Core_MDF_Act_Budget_Amt_Chk_Reqd__c= true])
         {
             programsForActBudgetAmtCheck.add(program.Label);
         }
+        System.debug('Amountold :'+ checkClaimAmtAgainstActivityBudgetAmt1);
         List<PartnerFundClaim> listOfClaimsToBeProcessed = new List<PartnerFundClaim>();
         
         for(PartnerFundClaim pfc : inputClaims)
         {
+            //system.debug('pfc Values : '+pfc);
             // excludeBudgetTypes added to Exculde validation for CCF1.0 and DCF1.0 Program
+            //system.debug('programsForActBudgetAmtCheck :'+programsForActBudgetAmtCheck);
             if(programsForActBudgetAmtCheck.contains(pfc.Core_MDF_Program__c) && pfc.Core_MDF_Type_Txt__c.equals(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Claim_Type')) 
                && !(excludeBudgetTypes.contains(string.valueof(pfc.Core_MDF_Budget_Type_Options_Nm__c))))
             {
                 listOfClaimsToBeProcessed.add(pfc); 
             }
         }
+        system.debug('listOfClaimsToBeProcessed :'+listOfClaimsToBeProcessed);
         //ATHR - Deeply Nested if 16209
-        if((listOfClaimsToBeProcessed == null || listOfClaimsToBeProcessed.isEmpty()) && !Test.isRunningTest()) {
+        if(listOfClaimsToBeProcessed.isEmpty() && !test.isRunningTest()) {
             return;
         }
         //if(listOfClaimsToBeProcessed!= null && listOfClaimsToBeProcessed.size() > 0 ||test.isRunningTest())
@@ -1255,7 +1347,7 @@ Intel   -    Areefa     -    8 Sept,2021
             //Map to store the Activity as key and its Available Budget Amount.
             Map<Id,Decimal> mapofActwithAvailableBudget = new Map<Id,Decimal>();
             
-            for(PartnerFundRequest pfr : [Select Id, RequestedAmount,Core_MDF_Activity_Reimbursement_Amt_nbr__c,Core_MDF_Program__c from PartnerFundRequest where Id IN : mapNewClaimwithAct.keySet()])
+            for(PartnerFundRequest pfr : [Select Id,Core_MDF_Activity_Reimbursement_Amt_nbr__c from PartnerFundRequest where Id IN : mapNewClaimwithAct.keySet()]) //HP:ATHR Fix
             { mapofActwithAvailableBudget.put(pfr.Id, pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c); }
             
             //Aggregate result to the Sum of Claims Amount on an Activity
@@ -1287,22 +1379,31 @@ Intel   -    Areefa     -    8 Sept,2021
                     Decimal availableAmount = mapofActwithAvailableBudget.get(pfc.RequestId);
                    
                     //check if requested amount is exceeding
+                    system.debug('Before Amount :'+pfc.Amount);
                     //ATHR - Deeply Nested if 16209
                     /*if(pfc.Amount > availableAmount)
                     {
-                        
+                        system.debug('After Amount :'+availableAmount);
+                        //Bypass Excess Requested Logic for coGTM Claims
+                        //if(pfc.Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM) {
                             // check if all amount available on activity is not consumed
                             if(availableAmount > 0){                            
                                 pfc.Core_MDF_Excess_Requested_Amount__c = pfc.Amount - availableAmount;
                                 pfc.Amount = availableAmount;
                                 mapofActwithAvailableBudget.put(pfc.RequestId, 0); 
+                                System.debug('Amount :' + pfc.Amount);
+                                System.debug('mapofActwithAvailableBudget :'+mapofActwithAvailableBudget);
                             }
                             
                             else{
                                 //if all amount available on activity is consumed
                                 pfc.addError(Label.Core_MDF_Retail_Claim_Amount_ShdBeWithIn_ActyBudgetAmt, true);
                             }
+                        // } else {
+                        //     //Add error if claims amount is more than the activity's available amount
+                        //     pfc.addError(Label.Core_MDF_Retail_Claim_Amount_ShdBeWithIn_ActyBudgetAmt);                                             
 
+                        // }
                     }*/
                     if(pfc.Amount > availableAmount && availableAmount > 0){                            
                         pfc.Core_MDF_Excess_Requested_Amount__c = pfc.Amount - availableAmount;
@@ -1317,6 +1418,10 @@ Intel   -    Areefa     -    8 Sept,2021
                     {
                         //If claim amount is lesser than or equal to the activity's available amount,
                         //process it by deducting claim amount from the available amount
+                        system.debug('mapofActwithAvailableBudget-->'+mapofActwithAvailableBudget);
+                        system.debug('pfc.RequestId-->'+pfc.RequestId);
+                        system.debug('availableAmount-->'+availableAmount);
+                        system.debug('pfc.Amount-->'+pfc.Amount);
                         mapofActwithAvailableBudget.put(pfc.RequestId, (availableAmount != null ? availableAmount : 0) - (pfc.Amount !=null ? pfc.Amount : 0));
                     }
                     
@@ -1486,7 +1591,7 @@ Modified By:        Date:       Changes:
                 if(Core_MDF_Claim_Utility.isType(pfc, isclaimAdjustmentType ) || pfc.Core_MDF_Budget_Type_Options_Nm__c == null ||
                    (pfc.Core_MDF_Budget_Type_Options_Nm__c != null && ignoreBankDocHoldBudgetTypeList.contains(pfc.Core_MDF_Budget_Type_Options_Nm__c))){continue;}
                 //ATHR - Deeply Nested if 16209
-                if(pfrInstance == null || pfrInstance.isEmpty() || pfrInstance.get(pfc.requestId) == null || !pfrInstance.containsKey(pfc.requestId)){
+                if(pfrInstance == null || pfrInstance.isEmpty() || !pfrInstance.containsKey(pfc.requestId)){
                     continue;
                 }
                 //if(pfrInstance != null && pfrInstance.size()>0 && pfrInstance.containsKey(pfc.requestId)){
@@ -1501,7 +1606,8 @@ Modified By:        Date:       Changes:
                         if(channelProgramToCountriesMap != null && channelProgramToCountriesMap.size()>0 && bankCountry != null && channelProgram != null && channelProgramToCountriesMap.containsKey(channelProgram))
                         {
                             //   if(channelProgramToCountriesMap.get(channelProgram).contains(accCountry)){
-                            if(channelProgramToCountriesMap.get(channelProgram).contains(bankCountry)){pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c = true;}          
+                            if(channelProgramToCountriesMap.get(channelProgram).contains(bankCountry))
+                            {pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c = true;}          
                         }
                     }
                 //}
@@ -1557,7 +1663,7 @@ Modified By:        Date:       Changes:
                 if(Core_MDF_Claim_Utility.isType(pfc, isclaimAdjustmentType ) || pfc.Core_MDF_Budget_Type_Options_Nm__c == null ||
                    (pfc.Core_MDF_Budget_Type_Options_Nm__c != null && ignoreBankDocHoldBudgetTypeList.contains(pfc.Core_MDF_Budget_Type_Options_Nm__c))){continue;}
                 //ATHR - Deeply Nested if 16209
-                if(pfc.Core_MDF_Bank__c == null || bankMap.get(pfc.Core_MDF_Bank__c) == null || !bankMap.containsKey(pfc.Core_MDF_Bank__c) || bankMap.get(pfc.Core_MDF_Bank__c).Core_MDF_Bank_Location__c == null){
+                if(pfc.Core_MDF_Bank__c == null || !bankMap.containsKey(pfc.Core_MDF_Bank__c) || bankMap.get(pfc.Core_MDF_Bank__c).Core_MDF_Bank_Location__c == null){
                     continue;
                 }
                 //if(pfc.Core_MDF_Bank__c!=null && bankMap.containsKey(pfc.Core_MDF_Bank__c) && bankMap.get(pfc.Core_MDF_Bank__c).Core_MDF_Bank_Location__c !=null){
@@ -1567,7 +1673,7 @@ Modified By:        Date:       Changes:
                     // Get Ultimate Account's Channel Program
                     String channelProgram = pfc.Core_MDF_Program__c;
                     //ATHR - Deeply Nested if 16209
-                    if(channelProgramToCountriesMap == null || channelProgramToCountriesMap.isEmpty() || channelProgramToCountriesMap.get(channelProgram) == null || !channelProgramToCountriesMap.containsKey(channelProgram) || bankCountry == null || channelProgram == null){
+                    if(channelProgramToCountriesMap == null || channelProgramToCountriesMap.isEmpty() || !channelProgramToCountriesMap.containsKey(channelProgram) || bankCountry == null || channelProgram == null){
                         continue;
                     }
                     //if(channelProgramToCountriesMap != null && channelProgramToCountriesMap.size()>0 && bankCountry != null && channelProgram != null && channelProgramToCountriesMap.containsKey(channelProgram))
@@ -1576,14 +1682,12 @@ Modified By:        Date:       Changes:
                         //   if(channelProgramToCountriesMap.get(channelProgram).contains(accCountry)){
                         if(channelProgramToCountriesMap.get(channelProgram).contains(bankCountry)){   
                             //ATHR - Deeply Nested if 16209
-                            //if(!pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c){pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c = true; } 
-                            pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c = !pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c;
-                            
+                            //if(!pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c){pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c = true; }                            
+                            pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c = true; //19451 Prod Defect fix
                         }else{
                             //if(pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c){pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c = false;}
-                            pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c = !pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c;
+                            pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c = false; //19451 Prod Defect fix
                             if(pfc.Core_MDF_Bank_Doc_Hold_Ind__c && pfc.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Hold')){listOfClaims.add(pfc);}
-                            
                         }          
                     //}
                 //} 
@@ -1641,6 +1745,7 @@ Modified By:        Date:       Changes:
             setOfAllowedProg.addAll(programs);
         }
         for(PartnerFundClaim pfc : newClaimList){
+            system.debug('coming to updatePaymentAdminReminderDate method');
             //check if Bank Document Hold is set to true
             if(setOfAllowedProg.contains(pfc.Core_MDF_Program__c) && pfc.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Hold') && (pfc.Core_MDF_Bank_Doc_Hold_Ind__c &&((oldClaimMap==null) || (!oldClaimMap.get(pfc.id).Core_MDF_Bank_Doc_Hold_Ind__c) || (oldClaimMap.get(pfc.id).Core_MDF_Bank_Doc_Hold_Ind__c && oldClaimMap.get(pfc.id).Core_MDF_Audit_Hold__c && !pfc.Core_MDF_Audit_Hold__c)))){
                 //Getting number of days to be added for current datefrom Configuration custom setting
@@ -1648,6 +1753,7 @@ Modified By:        Date:       Changes:
                 pfc.Core_MDF_Payment_Admin_Reminder_Date_Dtm__c = Core_MDF_PFC_VAT_ServiceHandler.addBusinessDays(system.today(),numOfDays);
                 // Updating below field to true
                 pfc.Core_MDF_FlaggedForBankDocHold_Ind__c = true;
+                system.debug('setting bank doc hold to true');
             }
         }
         
@@ -1687,7 +1793,8 @@ Modified By:        Date:       Changes:
         List<string> oEMProgram = Core_MDF_CustomLabelConfig.getTextList('Core_MDF_OEM_Program_Name'); 
         boolean pfrSelectReq =false;
         for(PartnerFundClaim newClaim: newclaimMap.values()){
-            if(newClaim.Core_MDF_Activity_SubType_nm__c==null && oEMProgram.contains(newClaim.Core_MDF_Program__c) && validbudgetTypes.contains(newClaim.Core_MDF_Budget_Type_Options_Nm__c)){  // check prgm and budget type here only
+      
+            if(newClaim.Core_MDF_Activity_SubType_nm__c==null && oEMProgram.contains(newClaim.Core_MDF_Program__c) && validbudgetTypes.contains(newClaim.Core_MDF_Budget_Type_nm__c)){  // check prgm and budget type here only
                 pfc.add(newClaim);
                 requestIdWithActySubTypeReq.add(newClaim.RequestId);                
                 if(pfrMap!= null && !pfrMap.containsKey(newClaim.RequestId)){
@@ -1719,14 +1826,27 @@ Added By:           Accenture   -   21/march/2022
 Modified By:        Date:       Changes: 
 ************************************************************************************************************************/   
     public static void updateQueuedHoldEmailSent(List<PartnerFundClaim> newClaimList){
+        
         String queuedForHoldStatuses = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_QueuedForHold');
+        System.debug('@@queuedForHoldStatuses'+queuedForHoldStatuses);
         Set<String> queuedForHoldStatusSet = new Set<String>(queuedForHoldStatuses.split(';'));
+        System.debug('@@queuedForHoldStatusSet'+queuedForHoldStatusSet);
+        
         for(PartnerFundClaim pfcRecord : newClaimList){
+            /*if(!pfcRecord.Core_MDF_Queued_Email_Sent_Ind__c && (pfcRecord.Core_MDF_Status__c ==Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PIC_Pending') 
+                                                                || pfcRecord.Core_MDF_Status__c ==Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_PendingDocs') 
+                                                                || pfcRecord.Core_MDF_Status__c==Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ResubReqd') || pfcRecord.Core_MDF_Status__c==Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Draft') || pfcRecord.Core_MDF_Status__c==Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Pending_Clarification') || pfcRecord.Core_MDF_Status__c==Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Pending_Acct_Mgr_Clarification')) && (pfcRecord.Core_MDF_Intel_Manual_Hold_Ind__c || pfcRecord.Core_MDF_Member_Manual_Hold_Ind__c 
+                                                                                                                                                                     || pfcRecord.Core_MDF_ESD_Hold__c || pfcRecord.Core_MDF_Payment_Hold_ind__c || pfcRecord.Core_MDF_Criteria_Hold_Ind__c)){
+                                                                                                                                                                         pfcRecord.Core_MDF_Queued_Email_Sent_Ind__c= true;
+                                                                                                                                                                     }
+        }*/
         if(!pfcRecord.Core_MDF_Queued_Email_Sent_Ind__c && queuedForHoldStatusSet.contains(pfcRecord.Core_MDF_Status__c) && (pfcRecord.Core_MDF_Intel_Manual_Hold_Ind__c || pfcRecord.Core_MDF_Member_Manual_Hold_Ind__c || pfcRecord.Core_MDF_ESD_Hold__c || pfcRecord.Core_MDF_Payment_Hold_ind__c || pfcRecord.Core_MDF_Criteria_Hold_Ind__c)){
             pfcRecord.Core_MDF_Queued_Email_Sent_Ind__c= true;
         }
         }
     }
+
+    
 /*********************************************************************************************************************** 
 Method Name:        bypassCDBCalloutValidationCheck
 @return  :          boolean
@@ -1769,6 +1889,7 @@ public static Boolean bypassCDBCalloutValidationCheck(String mainTriggerSwitch, 
     // Default case - don't bypass
     return false;
 }
+
 /*********************************************************************************************************************** 
 Method Name:        isClaimEligibleForAICDBCallout
 @return  :          boolean
@@ -1780,12 +1901,103 @@ Modified By:        Date:       Changes:
 public static Boolean isClaimEligibleForAICDBCallout(PartnerFundClaim claim) {
     List<String> aiPICEnabledPgms = Label.Core_MDF_AI_POP_Validation_EnabledPrograms.split(';');
     Boolean isClaimEligibleForCDBCallout = false;
-    if(!claim.Core_MDF_OutcomeBased_Ind__c && aiPICEnabledPgms.contains(claim.Core_MDF_Program__c)  && claim.CreatedDate > Date.valueOf(Label.Core_MDF_DateToEnableAIPIC) && 
-    claim.Core_MDF_Status__c == label.Core_MDF_Claim_Status_PIC_Pending) {
+    //if(!claim.Core_MDF_OutcomeBased_Ind__c && aiPICEnabledPgms.contains(claim.Core_MDF_Program__c)  && claim.CreatedDate > Date.valueOf(Label.Core_MDF_DateToEnableAIPIC) && 
+    //claim.Core_MDF_Status__c == label.Core_MDF_Claim_Status_PIC_Pending) { //Pic-Pop Changes Anushya
+    if(!claim.Core_MDF_OutcomeBased_Ind__c && claim.Core_MDF_Budget_Type_Nm__c !=  Label.Core_MDF_Retail_RSAMD_UnTranslated && aiPICEnabledPgms.contains(claim.Core_MDF_Program__c)  && claim.CreatedDate > Date.valueOf(Label.Core_MDF_DateToEnableAIPIC) && 
+    (claim.Core_MDF_Status__c == label.Core_MDF_Claim_Status_PIC_Pending || claim.Core_MDF_Status__c == label.Core_MDF_PaymentClearanceProcessing)) { //Pic-Pop Changes Anushya
         isClaimEligibleForCDBCallout = true;
     } else {
         isClaimEligibleForCDBCallout = false;
     }
     return isClaimEligibleForCDBCallout;
 }
+
+
+
+    //Roshan - Sub claim PIC flow POC
+    /*public static void updateSubClaimsOnApproval(List<PartnerFundClaim> newList, Map<Id, PartnerFundClaim> oldMap) {
+
+        Set<Id> superClaimIds = new Set<Id>();
+        for (PartnerFundClaim pfc : newList) {
+            if (pfc.Core_MDF_Is_Super_Claim__c && pfc.Core_MDF_Status__c == 'PIC Pending' && (oldMap.get(pfc.Id) == null || oldMap.get(pfc.Id).Core_MDF_Status__c != 'PIC Pending')) {
+                superClaimIds.add(pfc.Id);
+            }
+        }
+
+        if (superClaimIds.isEmpty()) return;
+        List<PartnerFundClaim> subClaims = [SELECT Id, Core_MDF_Claim_Id__c, Core_MDF_Status__c FROM PartnerFundClaim WHERE Core_MDF_Claim_Id__c IN :superClaimIds];
+        if (subClaims.isEmpty()) return;
+
+        List<PartnerFundClaim> clmsToUpdate = new List<PartnerFundClaim>();
+
+        for (PartnerFundClaim subClm : subClaims) {
+            subClm.Core_MDF_Status__c = 'Submitted';
+            clmsToUpdate.add(subClm);
+        }
+
+        if (!clmsToUpdate.isEmpty()) { update clmsToUpdate; }
+    }*/
+    
+/*********************************************************************************************************************** 
+Method Name:        preventStatusChangeFromPendingPayment
+@return  :          void
+@parameters:        List of Claims to be updated
+Description:        This method prevents status change from Pending Payment
+Added By:           Accenture   -   11/Nov/2022
+Modified By:        Date:       Changes: 
+************************************************************************************************************************/   
+   /*public static void preventStatusChangeFromPendingPayment(List<PartnerFundClaim> newClaimList,Map<Id,PartnerFundClaim> oldClaimMap)
+    {
+        //List<Core_MDF_Payment__c> getAllPaymentRecords = [select id,Core_MDF_Payment_Status_Txt__c from Core_MDF_Payment__c];
+        for(PartnerFundClaim claimToUpdate : newClaimList)
+        {   
+            Core_MDF_Payment__c associatedPaymentToClaim = new Core_MDF_Payment__c(Id = claimToUpdate.Core_MDF_Payment_Id__c);
+            String statusOfAssociatedPayment = associatedPaymentToClaim.Core_MDF_Payment_Status_Txt__c;
+           
+
+            List<String> postPaymentStatusList = new List<String>{'Paid and PIC Pending', 'Paid and Pending Documents', 'Paid and Resubmission Required'};
+            if((oldClaimMap.get(claimToUpdate.Id)).Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Pending_Payment')&&
+                claimToUpdate.Core_MDF_Status__c != 'Paid' && (claimToUpdate.Core_MDF_Legacy_Claim_Ind__c && !postPaymentStatusList.contains(claimToUpdate.Core_MDF_Status__c)) && 
+                claimToUpdate.Core_MDF_Payment_Id__c != null)
+            {
+                
+                claimToUpdate.Core_MDF_Status__c = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Pending_Payment');
+            }
+
+            //If status updated to Paid
+            if(claimToUpdate.Core_MDF_Payment_Id__c != null && oldClaimMap.get(claimToUpdate.Id).Core_MDF_Status__c =='Paid' && (!claimToUpdate.Core_MDF_Legacy_Claim_Ind__c ||
+                (claimToUpdate.Core_MDF_Legacy_Claim_Ind__c && !postPaymentStatusList.contains(claimToUpdate.Core_MDF_Status__c))))
+            {
+                claimToUpdate.Core_MDF_Status__c = 'Paid';
+            }
+            
+        }
+        }
+    }*/
+    
+    /****************************************************************************************************** 
+Method Name:        shouldBypassBasedOnRecordType
+@return  :          byPass
+@parameters:        Claim List, Record type names
+Description:        This method is used to set bypass flag for recordtype check.
+Added By:           Accenture - 20/June/2025
+Modified By:        Date:       Changes: 
+
+*******************************************************************************************************/ 
+
+  /*  public static Boolean shouldBypassBasedOnRecordType(List<PartnerFundClaim> claimList,Set<String> bypassRecordTypeNames) {
+        if (bypassRecordTypeNames == null || claimList == null) {
+            return false;
+        }
+        
+        for (PartnerFundClaim claim : claimList) {
+            if (claim.RecordType != null &&
+                bypassRecordTypeNames.contains(claim.RecordType.DeveloperName)) {
+                    return true;
+                }
+        }
+        
+        return false;
+    }*/
+    
 }

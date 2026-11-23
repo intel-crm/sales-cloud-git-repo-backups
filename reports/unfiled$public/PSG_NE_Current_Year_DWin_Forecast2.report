@@ -130,7 +130,7 @@
         <field>Opportunity.Core_Business_Unit_Territory__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND (4 OR 5)</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6) OR (7 AND 8))</booleanFilter>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -156,15 +156,36 @@
             <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Bill Galluccio,Boucher</value>
+            <operator>equals</operator>
+            <value>Bill Galluccio</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner_Manager__c</column>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Bob Spurr</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CLOSE_DATE2</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>12/31/2018</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Approved_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>lessThan</operator>
+            <value>10/1/2018 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Technical_Owner__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Boucher,Galluccio</value>
+            <value>Gabriel Torres,Nick J Finamore,Dan Nitta Mackay,Dirk Purfurst,Sean Dresel</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

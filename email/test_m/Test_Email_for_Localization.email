@@ -1,0 +1,11 @@
+<messaging:emailTemplate subject="Test Template" recipientType="User" relatedToType="PartnerFundClaim" language="{!relatedTo.Core_MDF_Owner_LanguageLocaleKey_Cd__c}">
+<messaging:htmlEmailBody >
+<html>
+<body>
+     Hello {!recipient.name},
+    <p>{!$Label.Test_Email_Label}</p>
+
+</body>
+</html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

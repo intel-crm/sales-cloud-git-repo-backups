@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ByPass Field Validation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ByPass Field Validations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- ByPass Validation Date --></label>
+        <name>Core_MDF_ByPass_Validation_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- ByPass for All Program --></label>
+        <name>Core_MDF_ByPass_for_All_Program__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Api Name --></label>
+        <name>Core_MDF_Field_Api_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object --></label>
+        <name>Core_MDF_Object__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program__c</name>
+        <picklistValues>
+            <masterLabel>Client Co-Marketing Fund</masterLabel>
+            <translation><!-- Client Co-Marketing Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Co-Marketing Fund</masterLabel>
+            <translation><!-- Data Center Co-Marketing Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Partner Alliance</masterLabel>
+            <translation><!-- Intel Partner Alliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Marketing Funds</masterLabel>
+            <translation><!-- Retail Marketing Funds --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Release --></label>
+        <name>Core_MDF_Release__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

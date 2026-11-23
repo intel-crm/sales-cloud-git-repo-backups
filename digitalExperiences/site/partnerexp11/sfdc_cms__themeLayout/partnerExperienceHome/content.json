@@ -1,0 +1,14 @@
+{
+  "type" : "sfdc_cms__themeLayout",
+  "title" : "Partner Experience Home",
+  "contentBody" : {
+    "component" : {
+      "attributes" : { },
+      "children" : [ ],
+      "definition" : "c:partnerExperienceShell",
+      "id" : "a513f2dc-e126-4a2d-bbd6-ff96c57f0fce",
+      "type" : "component"
+    }
+  },
+  "urlName" : "partner-experience-home"
+}

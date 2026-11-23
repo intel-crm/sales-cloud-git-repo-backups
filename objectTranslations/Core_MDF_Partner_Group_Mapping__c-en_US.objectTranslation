@@ -145,6 +145,10 @@
             <translation><!-- carolcreechpromotions.com --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>centurylink.com</masterLabel>
+            <translation><!-- centurylink.com --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>cisco.com</masterLabel>
             <translation><!-- cisco.com --></translation>
         </picklistValues>
@@ -850,6 +854,10 @@
         <name>Core_MDF_AccProgInactiveInd_Txt__c</name>
     </fields>
     <fields>
+        <label><!-- Account Group Mismatch --></label>
+        <name>Core_MDF_AccountGroupMismatch_Ind__c</name>
+    </fields>
+    <fields>
         <label><!-- AccountIdGroupName --></label>
         <name>Core_MDF_AccountIdGroupName__c</name>
     </fields>
@@ -860,6 +868,10 @@
     <fields>
         <label><!-- Account Prime/Unified ID --></label>
         <name>Core_MDF_Account_Prime_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account ProgramName --></label>
+        <name>Core_MDF_Account_ProgramName_txt__c</name>
     </fields>
     <fields>
         <label><!-- Account --></label>
@@ -875,8 +887,25 @@
         <name>Core_MDF_All_Access_Group_Nm__c</name>
     </fields>
     <fields>
+        <help><!-- The field stores the email domains of the partner user email ids that are allowed by a certain Account --></help>
+        <label><!-- Allowed Email Domains --></label>
+        <name>Core_MDF_Allowed_Email_Domains_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Budget Type --></label>
         <name>Core_MDF_BudgetType_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type Access --></label>
+        <name>Core_MDF_Budget_Type_Access_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type Old --></label>
+        <name>Core_MDF_Budget_Type_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- CMF Id --></label>
+        <name>Core_MDF_CMF_Id__c</name>
     </fields>
     <fields>
         <label><!-- Channel Program Name --></label>
@@ -960,6 +989,30 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- DNU - Region --></label>
+        <name>Core_MDF_Region_nm__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WW</masterLabel>
+            <translation><!-- WW --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Source --></label>
         <name>Core_MDF_Source_Txt__c</name>
         <picklistValues>
@@ -1005,27 +1058,19 @@
         <name>Core_MDF_Works_For__c</name>
         <relationshipLabel><!-- Partner Group Mapping (Works For) --></relationshipLabel>
     </fields>
-    <fields>
-        <label><!-- SAP Distributor for ALN --></label>
-        <lookupFilter>
-            <errorMessage><!-- Invalid SAP ALN Distributor  has been selected on PGM Record. Please select a valid SAP ALN Distributor --></errorMessage>
-        </lookupFilter>
-        <name>PSG_SAP_Distributor_for_ALN__c</name>
-        <relationshipLabel><!-- Partner Group Mapping (SAP Distributor for ALN) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- SAP Distributor for DPA --></label>
-        <lookupFilter>
-            <errorMessage><!-- Invalid SAP DPA Distributor  has been selected on PGM Record. Please select a valid SAP DPA Distributor --></errorMessage>
-        </lookupFilter>
-        <name>PSG_SAP_Distributor_for_DPA__c</name>
-        <relationshipLabel><!-- Partner Group Mapping (SAP Distributor for DPA) --></relationshipLabel>
-    </fields>
     <recordTypes>
         <label><!-- Co-marketing --></label>
         <name>Core_MDF_Co_marketing</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- All Access Group Name is applicable for CCF and DCF Programs --></errorMessage>
+        <name>Core_MDF_All_Access_Group_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Budget Type Access is not applicable --></errorMessage>
+        <name>Core_MDF_BudgetTypeAccess_Validation</name>
+    </validationRules>
     <validationRules>
         <errorMessage><!-- Selected Payment Type is only applicable for Intel Partner Alliance Program. --></errorMessage>
         <name>Core_MDF_IPA_PaymentTypeValidation</name>
@@ -1047,11 +1092,23 @@
         <name>Core_MDF_Restrict_PGM_Internal_Creation</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- The Region, Sub Region and Budget Type fields are not applicable for External PGM records. --></errorMessage>
+        <name>Core_MDF_Restrict_Update_EXT_PGM_Fields</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- You do not have access to update PGM. --></errorMessage>
         <name>Core_MDF_Update_PGM</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- The Group Name entered is not valid. --></errorMessage>
         <name>Core_MDF_Validate_Group_Name</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Virtual Corp should not be null for CCP programs --></errorMessage>
+        <name>Core_MDF_Validate_Virtual_Corp</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Account Name cannot be changed --></errorMessage>
+        <name>PGM_Account_name_change_not_allowed</name>
     </validationRules>
 </CustomObjectTranslation>

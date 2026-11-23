@@ -22,7 +22,8 @@ public without sharing class Core_MDF_ProcessCamp_RelatedRecords {
         if(Label.Core_MDF_Campaign_CategoryWise_Budget.contains(';')){
             List<String> recTypeDeveloperName1 = Label.Core_MDF_Campaign_CategoryWise_Budget.split(';');
             for(String str: recTypeDeveloperName1){categoryWiseBudgetCampaignRecId.add(Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get(str).getRecordTypeId());} 
-        }      
+        }
+               
     }
 
     
@@ -91,7 +92,26 @@ Added By:                                                Accenture – Raj D  - 
                 
                 // logic for CCF Record Type
                 //CCFB record type check is added by Shridhar to enable Regionwise Grid to CCFB
-                if(regionWiseBudgetCampaignRecId.contains(cmp.RecordTypeId) && cmp.Core_MDF_Market__c != campOldMap.get(cmp.Id).Core_MDF_Market__c){
+                //ATHR Fix WW19 - Start
+                if (!regionWiseBudgetCampaignRecId.contains(cmp.RecordTypeId) ||  cmp.Core_MDF_Market__c == campOldMap.get(cmp.Id).Core_MDF_Market__c) {
+                    continue;
+                }
+                Set<String> newRegionVal = new Set<String>();
+                Map<String, String> lstRValues = new Map<String, String>();
+
+                for (Core_MDF_Regionwise_Campaign_Budget__c rcmpVal : cmpWithRegionwise.get(cmp.Id)) {
+                    Boolean hasValue = cmp.Id == rcmpVal.Core_MDF_Campaign__c && cmpWithRegions.get(cmp.Id).contains(rcmpVal.Core_MDF_Region__c);
+
+                    if (hasValue) {
+                        lstRValues.put(rcmpVal.Core_MDF_Region__c, rcmpVal.Core_MDF_Region__c);
+                    } else {
+                        regionCmpToBeDeleted.add(rcmpVal);
+                    }
+                }
+                cmpWithNewRegions.put(cmp.Id, new List<String>(newRegionVal));
+                //ATHR Fix WW19 - End
+
+                /*if(regionWiseBudgetCampaignRecId.contains(cmp.RecordTypeId) && cmp.Core_MDF_Market__c != campOldMap.get(cmp.Id).Core_MDF_Market__c){
                     
                     Set<String> newRegionVal = new Set<String>();            
                     Set<String> lstRegionVal = new Set<String>();
@@ -118,10 +138,31 @@ Added By:                                                Accenture – Raj D  - 
                         
                     }                    
                     cmpWithNewRegions.put(cmp.Id,new List<String>(newRegionVal));
-                }
+                }*/
                 
                 // logic for DCF Record Type
-                if(categoryWiseBudgetCampaignRecId.contains(cmp.RecordTypeId) && cmp.Core_MDF_Activity_Category__c != campOldMap.get(cmp.Id).Core_MDF_Activity_Category__c){
+                //ATHR Fix WW19 - Start
+                if (!categoryWiseBudgetCampaignRecId.contains(cmp.RecordTypeId) || cmp.Core_MDF_Activity_Category__c == campOldMap.get(cmp.Id).Core_MDF_Activity_Category__c) {
+                    continue;
+                }
+
+                for (Core_MDF_Categorywise_Campaign_Budget__c ccmpVal : cmpWithCategorywise.get(cmp.Id)) {
+                    Boolean hasValue = cmpWithCategories.get(cmp.Id).contains(ccmpVal.Core_MDF_Activity_Category__c);
+                    if (hasValue) {
+                        lstCValues.put(ccmpVal.Core_MDF_Activity_Category__c, ccmpVal.Core_MDF_Activity_Category__c);
+                    } else {
+                        categoryCmpToBeDeleted.add(ccmpVal);
+                    }
+                }
+                for (String sval : cmpWithCategories.get(cmp.Id)) {
+                    if (!lstCValues.containsKey(sval)) {
+                        newCategoryVal.add(sval);
+                    }
+                }
+                cmpWithNewCategories.put(cmp.Id, new List<String>(newCategoryVal));
+                //ATHR Fix WW19 - End
+                
+                /*if(categoryWiseBudgetCampaignRecId.contains(cmp.RecordTypeId) && cmp.Core_MDF_Activity_Category__c != campOldMap.get(cmp.Id).Core_MDF_Activity_Category__c){
                     for(Core_MDF_Categorywise_Campaign_Budget__c ccmpVal: cmpWithCategorywise.get(cmp.Id)){
                         Boolean hasValue = false;                        
                         for(String sval : cmpWithCategories.get(cmp.Id)){                  
@@ -135,7 +176,7 @@ Added By:                                                Accenture – Raj D  - 
                        if(lstCValues.get(sval)==NULL){newCategoryVal.add(sVal);}  
                     }                    
                     cmpWithNewCategories.put(cmp.Id,new List<String>(newCategoryVal));
-                }
+                }*/
             }
             // records to be delete when selected value is removed from campaign
             //US930209 - Added extra condition to fix checkmarx related issues
@@ -215,6 +256,7 @@ public static List<Id> getPartnerAccList(String partAcc){
             partAccList.add(pId);
         }
     }
+    
     return partAccList;
 }
 
@@ -227,23 +269,23 @@ Added By:                                                Accenture – Namratha 
 **************************************************************************************************************************************/   
 
 public static void insertUpdateActivatingPartnerMap(List<Campaign> newCmpList, Map<Id,Campaign> campOldMap, boolean isInsert, boolean isUpdate){ 
-        ChannelProgram prog = [select id , Core_MDF_Technical_Program_Name__c from ChannelProgram where Core_MDF_Technical_Program_Name__c='Ecosystem Extension Fund' limit 1];
-        List<Core_MDF_Camp_to_ActPartner__c> actPartnerList = new List<Core_MDF_Camp_to_ActPartner__c>();
-        //ATHR 
-        Set<Id> campaignIds = new Set<Id>();
-        for (Campaign cmp : newCmpList) {
-            campaignIds.add(cmp.Id);
-        }
-        Map<Id, List<Core_MDF_Camp_to_ActPartner__c>> campaignToActPartnerMap = new Map<Id, List<Core_MDF_Camp_to_ActPartner__c>>();
-        List<Core_MDF_Camp_to_ActPartner__c> accParList = [select id,Core_MDF_Activating_Partner_Account_id__c, Core_MDF_Campaign_Id__c from Core_MDF_Camp_to_ActPartner__c where Core_MDF_Campaign_Id__c IN :campaignIds];
-        
-        for (Core_MDF_Camp_to_ActPartner__c aObj : accParList) {
-            if (!campaignToActPartnerMap.containsKey(aObj.Core_MDF_Campaign_Id__c)) {
-                campaignToActPartnerMap.put(aObj.Core_MDF_Campaign_Id__c, new List<Core_MDF_Camp_to_ActPartner__c>());
+    ChannelProgram prog = [select id , Core_MDF_Technical_Program_Name__c from ChannelProgram where Core_MDF_Technical_Program_Name__c='Ecosystem Extension Fund' limit 1];
+    List<Core_MDF_Camp_to_ActPartner__c> actPartnerList = new List<Core_MDF_Camp_to_ActPartner__c>();
+    //ATHR 
+    Set<Id> campaignIds = new Set<Id>();
+            for (Campaign cmp : newCmpList) {
+                campaignIds.add(cmp.Id);
             }
-            campaignToActPartnerMap.get(aObj.Core_MDF_Campaign_Id__c).add(aObj);
-        }//ATHR
-        for (Campaign cmp : newCmpList){
+            Map<Id, List<Core_MDF_Camp_to_ActPartner__c>> campaignToActPartnerMap = new Map<Id, List<Core_MDF_Camp_to_ActPartner__c>>();
+            List<Core_MDF_Camp_to_ActPartner__c> accParList = [select id,Core_MDF_Activating_Partner_Account_id__c, Core_MDF_Campaign_Id__c from Core_MDF_Camp_to_ActPartner__c where Core_MDF_Campaign_Id__c IN :campaignIds];
+
+            for (Core_MDF_Camp_to_ActPartner__c aObj : accParList) {
+                if (!campaignToActPartnerMap.containsKey(aObj.Core_MDF_Campaign_Id__c)) {
+                    campaignToActPartnerMap.put(aObj.Core_MDF_Campaign_Id__c, new List<Core_MDF_Camp_to_ActPartner__c>());
+                }
+                campaignToActPartnerMap.get(aObj.Core_MDF_Campaign_Id__c).add(aObj);
+            }//ATHR
+            for (Campaign cmp : newCmpList){
             Map<Id,Core_MDF_Camp_to_ActPartner__c> accPartMap = new Map<Id,Core_MDF_Camp_to_ActPartner__c>();
             List<Id> actPartAccounts = new List<Id>();
             if (campaignToActPartnerMap.containsKey(cmp.Id)) {//ATHR
@@ -257,7 +299,10 @@ public static void insertUpdateActivatingPartnerMap(List<Campaign> newCmpList, M
             if(isUpdate){
                 oldActAccounts = getPartnerAccList(campOldMap.get(cmp.Id).Core_MDF_Partner_Mapping_Txt__c);
             }
-            if(cmp.Core_MDF_Program__c == 'Ecosystem Extension Fund'){
+            //if(cmp.Core_MDF_Program__c == 'Ecosystem Extension Fund'){
+                if(cmp.Core_MDF_Program__c != 'Ecosystem Extension Fund'){//ATHR Fix WW19
+                    continue;
+                }
                 accList = getPartnerAccList(cmp.Core_MDF_Partner_Mapping_Txt__c);
                 if(isInsert || isUpdate){
                     for(Id acc:accList){
@@ -288,9 +333,9 @@ public static void insertUpdateActivatingPartnerMap(List<Campaign> newCmpList, M
                     }
                 }
                 
-            }
+            //}
         }
-        
+        System.debug('actPartnerList::'+actPartnerList);
         try{
             if(actPartnerList.Size()>0 && Schema.sObjectType.Core_MDF_Camp_to_ActPartner__c.isCreateable()){               
                 Database.upsert(actPartnerList); 

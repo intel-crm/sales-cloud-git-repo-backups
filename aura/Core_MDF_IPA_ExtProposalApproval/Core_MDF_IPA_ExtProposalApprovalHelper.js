@@ -6,16 +6,23 @@
         action.setParams({cmpId: recId});
         action.setCallback(this, function (response) {
             result = response.getReturnValue();
+            
             if (response.getState() == "SUCCESS" && result != null) {
                 component.set('v.externalUser', result.userPermissionsPowerPartner);
+                component.set('v.isPriceReviewer', result.isPriceReviewer);
                 
-                if (result.userPermissionsPowerPartner){
+                if (result.userPermissionsPowerPartner || result.isPriceReviewer){
                     component.set('v.buttonToBeVisible', true);
+                
+                    
                 } 
                 else {
                     component.set('v.buttonToBeVisible', false);
+                    
                 }
+                
             }
+            
         });
         $A.enqueueAction(action);
     },
@@ -35,6 +42,7 @@
                 if(stateSave === "SUCCESS"){
                     var msgTxt = '';
                     var returnValue = response.getReturnValue();
+                    
                     //Added IF-else condition as part of defect DE120404 fix
                     if(returnValue == true){
                         if (btnType == $A.get("$Label.c.Core_MDF_Retail_Approve")) {
@@ -54,7 +62,7 @@
                     //this.toastMessage($A.get("$Label.c.Core_MDF_Success"),$A.get("$Label.c.Core_MDF_Success"),msgTxt);
                     this.windowTimeOut();
                     component.set("v.loadSpinner",false); 
-                }      
+                }    
             });    
             $A.enqueueAction(aprAction);
         }

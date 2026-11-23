@@ -18,6 +18,7 @@ global with sharing class Core_RestAPI_ProjectCasesV1 {
     {
         Core_RestAPI_ProjectCaseV1_Handler handler = new Core_RestAPI_ProjectCaseV1_Handler(ENTRY_TIME, RESTAPI_NAME); 
         Core_RestAPI_Response response = handler.getProjectCases();//For fetching all Cases of a single Project
+        system.debug('response'+response);
         return response;  
        
     }

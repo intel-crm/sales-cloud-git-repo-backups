@@ -93,9 +93,12 @@ public without sharing class Core_MDF_PaymentProcess {
         
         //This method fetch payment record type and assign
         String paymentRecTypeDevName = fetchPaymentRecordType(pRunInstance);
-        
-        if(paymentWrapperMap != NULL && paymentWrapperMap.size() > 0)
-        {
+        //ATHR - Deeply Nested if 16209
+        if(paymentWrapperMap == null || paymentWrapperMap.isEmpty()){
+            return paymentWrapperMap;
+        }
+        //if(paymentWrapperMap != NULL && paymentWrapperMap.size() > 0)
+        //{
             for (String uniqueKey : paymentWrapperMap.keyset())
             {
                 //New payment instance
@@ -109,7 +112,12 @@ public without sharing class Core_MDF_PaymentProcess {
                 if(pRunInstance.Core_MDF_Program_Id__r.Name != coGTMProgram){
                     payment.Core_MDF_RMF_Actual_Payment_Amt__c = paymentWrapperMap.get(uniqueKey).sumOfClaimsAmount;
                 }
-                if(paymentWrapperMap.get(uniqueKey).claimsToBeProcessed != NULL && paymentWrapperMap.get(uniqueKey).claimsToBeProcessed.size() > 0){
+                //ATHR - Deeply Nested if 16209
+                if(paymentWrapperMap.get(uniqueKey).claimsToBeProcessed == NULL || paymentWrapperMap.get(uniqueKey).claimsToBeProcessed.isEmpty()) {
+                    paymentRecordsToBeProcessedMap.put(uniqueKey, payment);
+                    continue;
+                }
+                //if(paymentWrapperMap.get(uniqueKey).claimsToBeProcessed != NULL && paymentWrapperMap.get(uniqueKey).claimsToBeProcessed.size() > 0){
                     // Account Company
                     payment.Core_MDF_Account_Id__c = paymentWrapperMap.get(uniqueKey).claimsToBeProcessed[0].ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c;
                     //Populating Budget type field on Payment record as part of US-US1017409
@@ -117,25 +125,27 @@ public without sharing class Core_MDF_PaymentProcess {
                         //payment.Core_MDF_Budget_Type_Nm__c =paymentWrapperMap.get(uniqueKey).claimsToBeProcessed[0].Core_MDF_Budget_Type_Options_Nm__c;
                    		payment.Core_MDF_Budget_Type_Nm__c = Core_MDF_PaymentUtility.fetchDistinctBudgetTypes(paymentWrapperMap.get(uniqueKey).claimsToBeProcessed);
                     }
-                }    
+                //}    
                 paymentRecordsToBeProcessedMap.put(uniqueKey,payment);
             }
            
             //insert payment records
-            if(paymentRecordsToBeProcessedMap!=NULL && paymentRecordsToBeProcessedMap.size() > 0){
+            //ATHR - Deeply Nested if 16209
+            if(paymentRecordsToBeProcessedMap==NULL || paymentRecordsToBeProcessedMap.isEmpty()) return paymentWrapperMap;
+            //if(paymentRecordsToBeProcessedMap!=NULL && paymentRecordsToBeProcessedMap.size() > 0){
                 Database.insert(paymentRecordsToBeProcessedMap.values());
 
                 Map<Id,Core_MDF_Payment__c> paymentMap = new Map<Id,Core_MDF_Payment__c>([Select Core_MDF_Payment_Run_Id__c, Core_MDF_Paid_Amt__c, Name, Core_MDF_Payment_No_Txt__c,Id 
                                                         From Core_MDF_Payment__c where ID IN :paymentRecordsToBeProcessedMap.values()]);
-                
-
-                if(paymentMap != NULL && paymentMap.size() > 0){
+                //ATHR - Deeply Nested if 16209
+                if(paymentMap == NULL && paymentMap.isEmpty()) return paymentWrapperMap;
+                //if(paymentMap != NULL && paymentMap.size() > 0){
                     for(String uniqueKey : paymentWrapperMap.keyset()){
                         paymentWrapperMap.get(uniqueKey).paymentForClaims = paymentMap.get(paymentRecordsToBeProcessedMap.get(uniqueKey).Id);
                     }
-                }
-            }
-        }
+                //}
+            //}
+        //}
         return paymentWrapperMap;
     }
     
@@ -240,8 +250,9 @@ public without sharing class Core_MDF_PaymentProcess {
                 paymentRunIdsList.add(pRun.Id);
             }
         }        
-        
-        if(paymentRunIdsList != NULL && paymentRunIdsList.size()>0){
+        //ATHR - Deeply Nested if 16209
+        if(paymentRunIdsList == null || paymentRunIdsList.isEmpty()) return pRunList;
+        //if(paymentRunIdsList != NULL && paymentRunIdsList.size()>0){
             
             List<ContentDocumentLink> cdlList = new List<ContentDocumentLink>();            
             Map<Id, String> pRunToNamesOfFilesMap = new Map<Id, String>();
@@ -250,7 +261,9 @@ public without sharing class Core_MDF_PaymentProcess {
             cdlList = [Select Id, contentDocument.Title, LinkedEntityId from ContentDocumentLink where LinkedEntityId IN : paymentRunIdsList order By contentDocument.Id];
             
             // Get inside this condition only when there are files attached
-            if(cdlList != NULL && cdlList.size()>0){
+            //ATHR - Deeply Nested if 16209
+            if(cdlList == NULL || cdlList.isEmpty()) return pRunList;
+            //if(cdlList != NULL && cdlList.size()>0){
                 // Create a Map of Payment Run Id and Corresponding Payment files titles 
                 for(ContentDocumentLink cdLink : cdlList){                    
                     if(pRunToNamesOfFilesMap.containsKey(cdLink.LinkedEntityId)){
@@ -270,8 +283,8 @@ public without sharing class Core_MDF_PaymentProcess {
                         payRun.Core_MDF_Files_Name_Txt__c = pRunToNamesOfFilesMap.get(payRun.Id);  
                     }
                 }
-            }
-        }
+            //}
+        //}
         return pRunList;
     }
 

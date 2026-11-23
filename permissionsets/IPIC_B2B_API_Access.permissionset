@@ -5,6 +5,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Core_MDF_Campaign_RestAPI</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_MDF_PFC_Metadata_RestAPI</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -13,11 +17,11 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>Core_MDF_PFR_RestAPI</apexClass>
+        <apexClass>Core_MDF_PFC_RestAPI</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>Core_MDF_PFR_RestAPI_PicklistValues</apexClass>
+        <apexClass>Core_MDF_PFR_RestAPI</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -37,6 +41,10 @@
         <name>Core_RestAPI_Response_Codes__c</name>
     </customSettingAccesses>
     <description>For external API access</description>
+    <externalCredentialPrincipalAccesses>
+        <enabled>true</enabled>
+        <externalCredentialPrincipal>Contracts_Retriever_API-Contracts API</externalCredentialPrincipal>
+    </externalCredentialPrincipalAccesses>
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_MDF_Campaign_Budgets__c.Core_MDF_Budget_Amt__c</field>
@@ -60,6 +68,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_MDF_Custom_Layout_Configurations__c.API_Visibility__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Custom_Layout_Configurations__c.Core_MDF_API_Error_Code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Custom_Layout_Configurations__c.Core_MDF_API_Required_Ind__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

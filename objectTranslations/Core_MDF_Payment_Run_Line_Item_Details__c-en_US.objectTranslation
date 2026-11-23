@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Payment Run Line Item Detail</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Payment Run Line Item Details</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account(Company) --></label>
+        <name>Core_MDF_Account_Company__c</name>
+        <relationshipLabel><!-- Payment Run Line Item Details --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Bank --></label>
+        <name>Core_MDF_Bank_Id__c</name>
+        <relationshipLabel><!-- Payment Run Line Item Details --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Payment Run Line Item ID --></label>
+        <name>Core_MDF_Payment_Run_Line_Item_ID__c</name>
+        <relationshipLabel><!-- Payment Run Line Item Details --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Payment --></label>
+        <name>Core_MDF_Payment__c</name>
+        <relationshipLabel><!-- Payment Run Line Item Details --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -6,14 +6,502 @@
         <ruleEntry>
             <assignedTo>Core_PTNR_Global_Partner_Queue</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <booleanFilter>1 OR 2</booleanFilter>
             <criteriaItems>
                 <field>Lead.Core_Partner_Name__c</field>
                 <operation>notEqual</operation>
             </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CCG_Unite_EMEA_Sales_Rangers</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 OR 2</booleanFilter>
             <criteriaItems>
-                <field>Lead.PMP_MDA_BizOrg_Id__c</field>
-                <operation>notEqual</operation>
+                <field>Lead.Core_Marketing_Tactic_ID__c</field>
+                <operation>equals</operation>
+                <value>MKA-1821</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Lead_Conversion_Point__c</field>
+                <operation>contains</operation>
+                <value>EMEAUniteCPL</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CCG_Unite_US_Sales_Rangers</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 OR 2</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Marketing_Tactic_ID__c</field>
+                <operation>equals</operation>
+                <value>MKA-1817</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Lead_Conversion_Point__c</field>
+                <operation>contains</operation>
+                <value>ASMOUniteCPL</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>US_Lead_HOLD</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_PSG_Lead__c</field>
+                <operation>equals</operation>
+                <value>PSG</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CountryCode</field>
+                <operation>equals</operation>
+                <value>USA</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CountryCode</field>
+                <operation>equals</operation>
+                <value>CAN</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_PSG_Leads_ASMO_NAR</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>ASMO</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_PSG_Lead__c</field>
+                <operation>equals</operation>
+                <value>PSG</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_PSG_Leads_EMEA</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>EMEA</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_PSG_Lead__c</field>
+                <operation>equals</operation>
+                <value>PSG</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_PSG_Leads_APJ</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>APJ</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_PSG_Lead__c</field>
+                <operation>equals</operation>
+                <value>PSG</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_PSG_Leads_PRC</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Core_PSG_Lead__c</field>
+                <operation>equals</operation>
+                <value>PSG</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Intel_Connect_Sales_Leads</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Core_Lead_Conversion_Point__c</field>
+                <operation>contains</operation>
+                <value>IntelConnect1</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>DCM_WW_Leads</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Core_Lead_Conversion_Point__c</field>
+                <operation>contains</operation>
+                <value>DCMWW001</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>US_Lead_HOLD</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CountryCode</field>
+                <operation>equals</operation>
+                <value>USA</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Canada_Lead_HOLD</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CountryCode</field>
+                <operation>equals</operation>
+                <value>CAN</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Mexico_Lead_HOLD</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CountryCode</field>
+                <operation>equals</operation>
+                <value>MEX</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Brazil_Lead_HOLD</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CountryCode</field>
+                <operation>equals</operation>
+                <value>BRA</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Americas_TER_Lead_HOLD</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>ASMO</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IJKK_OSC_Embedded_Tele_Prospect</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Tele Accepted Prospect</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>APJ</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sub_Geo__c</field>
+                <operation>equals</operation>
+                <value>IJKK</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Embedded</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_APAC_OSC_Embedded_Tele_Prospect</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Tele Accepted Prospect</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>APJ</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Embedded</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_APJ_OSC_Channel_Tele_Prospect</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Tele Accepted Prospect</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>APJ</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Reseller/Channel</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_APJ_OSC_Education_Tele_Prospect</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Tele Accepted Prospect</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>APJ</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Influencer</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_sub_Segment__c</field>
+                <operation>equals</operation>
+                <value>Intel Education</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_APJ_OSC_Enterprise_Tele_Prospect</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Tele Accepted Prospect</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>APJ</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Influencer</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_sub_Segment__c</field>
+                <operation>equals</operation>
+                <value>ESS</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_Tele_Prospects_ASMO</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Tele Accepted Prospect</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>ASMO</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_Tele_Prospects_EMEA</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Tele Accepted Prospect</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>EMEA</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_Tele_Prospects_PRC</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Tele Accepted Prospect</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>PRC</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IJKK_OSC_Embedded_MQL</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>APJ</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sub_Geo__c</field>
+                <operation>equals</operation>
+                <value>IJKK</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_APAC_OSC_Embedded_MQL</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>APJ</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_APJ_OSC_Channel_MQL</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Unqualified,Marketing Qualified Lead,Tele Qualified Lead,Sales Accepted Lead</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>APJ</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Reseller/Channel</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_APJ_OSC_Education_MQL</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Unqualified,Marketing Qualified Lead,Tele Qualified Lead,Sales Accepted Lead</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>APJ</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Influencer</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_sub_Segment__c</field>
+                <operation>equals</operation>
+                <value>Intel Education</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_APJ_OSC_Enterprise_MQL</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Unqualified,Marketing Qualified Lead,Tele Qualified Lead,Sales Accepted Lead</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>APJ</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Influencer</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_sub_Segment__c</field>
+                <operation>equals</operation>
+                <value>ESS</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_APJ_OSC_Catch_All</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>APJ</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_ASMO_OSC_Admin</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Embedded</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>ASMO</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sub_Geo__c</field>
+                <operation>equals</operation>
+                <value>NAR</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CountryCode</field>
+                <operation>equals</operation>
+                <value>CAN</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Sales Accepted Lead</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_PRC_Sales_Center</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>PRC</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_ASMO_OSC_Admin</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Embedded</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>ASMO</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sub_Geo__c</field>
+                <operation>equals</operation>
+                <value>NAR</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Sales Accepted Lead</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>EMEA_RDC</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Core_Lead_Conversion_Point__c</field>
+                <operation>contains</operation>
+                <value>CNDA</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>EMEA</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
@@ -29,11 +517,6 @@
                 <operation>equals</operation>
                 <value>EMEA</value>
             </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>EMEA_CPL</assignedTo>
@@ -47,11 +530,6 @@
                 <field>Lead.Core_Geo__c</field>
                 <operation>equals</operation>
                 <value>EMEA</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
@@ -67,19 +545,29 @@
                 <operation>equals</operation>
                 <value>EMEA</value>
             </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>EMEA_Inside_Sales</assignedTo>
+            <assignedToType>Queue</assignedToType>
             <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>EMEA</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Core_PSG_Leads_PRC</assignedTo>
+            <assignedTo>Core_Embedded_PRC_OSC_General</assignedTo>
             <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
             <criteriaItems>
-                <field>Lead.Core_PSG_Lead__c</field>
+                <field>Lead.Core_Sales_Segment__c</field>
                 <operation>equals</operation>
-                <value>PSG</value>
+                <value>Embedded</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>PRC</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Lead.Core_Geo__c</field>
@@ -88,139 +576,19 @@
             </criteriaItems>
             <criteriaItems>
                 <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_NAR</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Lead.Core_Sub_Geo__c</field>
                 <operation>equals</operation>
-                <value>NAR</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
+                <value>Marketing Qualified Lead,Unqualified</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>MGL_LDR_Brazil</assignedTo>
+            <assignedTo>Core_Admin_Bucket_EMEA</assignedTo>
             <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 And 2 AND 3</booleanFilter>
             <criteriaItems>
-                <field>Lead.CountryCode</field>
+                <field>Lead.Core_Sales_Segment__c</field>
                 <operation>equals</operation>
-                <value>BRA</value>
+                <value>Embedded</value>
             </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_LAR</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Lead.Core_Sub_Geo__c</field>
-                <operation>equals</operation>
-                <value>LAR</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_French</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Lead.CountryCode</field>
-                <operation>equals</operation>
-                <value>FRA</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_French</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Lead.CountryCode</field>
-                <operation>equals</operation>
-                <value>BEL</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_German</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Lead.CountryCode</field>
-                <operation>equals</operation>
-                <value>DEU</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_German</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Lead.CountryCode</field>
-                <operation>equals</operation>
-                <value>AUT</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_German</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Lead.CountryCode</field>
-                <operation>equals</operation>
-                <value>CHE</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_Russian</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Lead.CountryCode</field>
-                <operation>equals</operation>
-                <value>RUS</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_EMEA</assignedTo>
-            <assignedToType>Queue</assignedToType>
             <criteriaItems>
                 <field>Lead.Core_Geo__c</field>
                 <operation>equals</operation>
@@ -228,83 +596,24 @@
             </criteriaItems>
             <criteriaItems>
                 <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_JAPAN</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Lead.CountryCode</field>
                 <operation>equals</operation>
-                <value>JPN</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
+                <value>Sales Accepted Lead</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>MGL_LDR_South_Korea</assignedTo>
+            <assignedTo>Core_Embedded_PRC_OSC_General</assignedTo>
             <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
             <criteriaItems>
-                <field>Lead.CountryCode</field>
+                <field>Lead.Core_Sales_Segment__c</field>
                 <operation>equals</operation>
-                <value>KOR</value>
+                <value>Embedded</value>
             </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_Indonesia</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Lead.CountryCode</field>
-                <operation>equals</operation>
-                <value>IDN</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_Taiwan</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Lead.CountryCode</field>
-                <operation>equals</operation>
-                <value>TWN</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_APJ</assignedTo>
-            <assignedToType>Queue</assignedToType>
             <criteriaItems>
                 <field>Lead.Core_Geo__c</field>
                 <operation>equals</operation>
-                <value>APJ</value>
+                <value>PRC</value>
             </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_PRC</assignedTo>
-            <assignedToType>Queue</assignedToType>
             <criteriaItems>
                 <field>Lead.Core_Geo__c</field>
                 <operation>equals</operation>
@@ -312,22 +621,569 @@
             </criteriaItems>
             <criteriaItems>
                 <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
+                <operation>equals</operation>
+                <value>Sales Accepted Lead</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_Embedded_PRC_China</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Embedded</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CountryCode</field>
+                <operation>equals</operation>
+                <value>CHN</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CountryCode</field>
+                <operation>equals</operation>
+                <value>CHN</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Sales Accepted Lead</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_Embedded_PRC_Mongolia_HK</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 And 2 AND 3</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Embedded</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CountryCode</field>
+                <operation>equals</operation>
+                <value>MNG,HKG</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Sales Accepted Lead</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_ASMO_OSC_Admin</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Embedded</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>ASMO</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_Admin_Bucket_EMEA</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Embedded</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>EMEA</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_Admin_Bucket_PROC</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Embedded</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>PRC</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>Core_ALL_GLOBAL_Catch_All</assignedTo>
             <assignedToType>Queue</assignedToType>
+            <booleanFilter>1</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Embedded</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_EMEA_OSC</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Influencer</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_sub_Segment__c</field>
+                <operation>equals</operation>
+                <value>ESS</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>EMEA</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Marketing Qualified Lead,Unqualified</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_ASMO_OSC_Admin</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Influencer</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_sub_Segment__c</field>
+                <operation>equals</operation>
+                <value>ESS</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>ASMO</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CountryCode</field>
+                <operation>equals</operation>
+                <value>CAN,USA</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Sales Accepted Lead</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_ASMO_OSC_Admin</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 And 2 AND 3</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Influencer</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_sub_Segment__c</field>
+                <operation>equals</operation>
+                <value>ESS</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>ASMO</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_Admin_Bucket_EMEA</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 And 2 AND 3</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Influencer</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_sub_Segment__c</field>
+                <operation>equals</operation>
+                <value>ESS</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>EMEA</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_Admin_Bucket_PRC</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 And 2</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Influencer</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>PRC</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_ASMO_OSC_Admin</assignedTo>
+            <assignedToType>Queue</assignedToType>
             <booleanFilter>1 AND 2</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Influencer</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_sub_Segment__c</field>
+                <operation>equals</operation>
+                <value>ESS</value>
+            </criteriaItems>
             <criteriaItems>
                 <field>Lead.LastName</field>
                 <operation>notEqual</operation>
             </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_EMEA_OSC</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Influencer</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_sub_Segment__c</field>
+                <operation>equals</operation>
+                <value>Intel Education</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>EMEA</value>
+            </criteriaItems>
             <criteriaItems>
                 <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Marketing Qualified Lead,Unqualified</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_ASMO_OSC_Admin</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Influencer</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_sub_Segment__c</field>
+                <operation>equals</operation>
+                <value>Intel Education</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>ASMO</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sub_Geo__c</field>
+                <operation>equals</operation>
+                <value>NAR</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Sales Accepted Lead</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_ASMO_OSC_Admin</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Influencer</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Influencer</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_sub_Segment__c</field>
+                <operation>equals</operation>
+                <value>Intel Education</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>ASMO</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_Admin_Bucket_EMEA</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Influencer</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_sub_Segment__c</field>
+                <operation>equals</operation>
+                <value>Intel Education</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>EMEA</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_Admin_Bucket_PROC</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Influencer</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_sub_Segment__c</field>
+                <operation>equals</operation>
+                <value>Intel Education</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>PRC</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sub_Geo__c</field>
+                <operation>equals</operation>
+                <value>PROC</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_ASMO_OSC_Admin</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 And 2 AND 3</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Influencer</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Sales_sub_Segment__c</field>
+                <operation>equals</operation>
+                <value>Intel Education</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.LastName</field>
                 <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
+                <value>0</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_CHANNEL_ASMO_Catch_All</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 And 2</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Reseller/Channel</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>ASMO</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_CHANNEL_EMEA_Catch_All</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 And 2 AND 3</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Reseller/Channel</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>EMEA</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Marketing Qualified Lead,Unqualified,Sales Accepted Lead</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_CHANNEL_GLOBAL_Catch_All</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Reseller/Channel</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Marketing Qualified Lead,Unqualified,Sales Accepted Lead</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_CHANNEL_PRC_Catch_All</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND 3</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Reseller/Channel</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>PRC</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Unqualified,Marketing Qualified Lead,Sales Accepted Lead</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_CHANNEL_GLOBAL_Catch_All</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Reseller/Channel</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Unqualified,Marketing Qualified Lead,Sales Accepted Lead</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_COMPUTE_ASMO_Catch_All</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 And 2 AND 3</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Compute</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>ASMO</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Marketing Qualified Lead,Unqualified,Sales Accepted Lead</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_COMPUTE_EMEA_Catch_All</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 And 2 AND 3</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Compute</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>EMEA</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Marketing Qualified Lead,Unqualified,Sales Accepted Lead</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_COMPUTE_APJ_Catch_All</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 And 2 AND 3</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Compute</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>APJ</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Marketing Qualified Lead,Unqualified,Sales Accepted Lead</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_COMPUTE_PRC_Catch_All</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Compute</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>PRC</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Unqualified,Marketing Qualified Lead,Sales Accepted Lead</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_COMPUTE_GLOBAL_Catch_All</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Sales_Segment__c</field>
+                <operation>equals</operation>
+                <value>Compute</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Marketing Qualified Lead,Unqualified,Sales Accepted Lead</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_ALL_GLOBAL_Catch_All</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1</booleanFilter>
+            <criteriaItems>
+                <field>Lead.LastName</field>
+                <operation>notEqual</operation>
             </criteriaItems>
         </ruleEntry>
     </assignmentRule>

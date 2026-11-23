@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Approval Flow Error</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Approval Flow Errors</value>
+    </caseValues>
+    <fields>
+        <label><!-- Fault Message --></label>
+        <name>Fault_Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- Origin --></label>
+        <name>Origin__c</name>
+    </fields>
+    <fields>
+        <label><!-- Severity --></label>
+        <name>Severity__c</name>
+    </fields>
+    <fields>
+        <label><!-- When --></label>
+        <name>When__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

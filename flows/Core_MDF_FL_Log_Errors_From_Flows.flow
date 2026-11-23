@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Check the Null values</description>
+        <name>Core_MDF_Check_the_Null_Values</name>
+        <label>Check the Null Values</label>
+        <locationX>191</locationX>
+        <locationY>52</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Core_MDF_Create_Log_Entry_records</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Core_MDF_Message</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Core_MDF_Origin</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Core_MDF_Severity</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Core_MDF_When</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_MDF_Log_Entry_Records</targetReference>
+            </connector>
+            <label>Create Log Entry records</label>
+        </rules>
+    </decisions>
+    <description>Log Errors from Flows</description>
+    <interviewLabel>Log Errors From Flows</interviewLabel>
+    <label>Log Errors From Flows</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Creates the log entry records</description>
+        <name>Core_MDF_Log_Entry_Records</name>
+        <label>Log Entry Records</label>
+        <locationX>417</locationX>
+        <locationY>48</locationY>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <elementReference>Core_MDF_Details</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Message__c</field>
+            <value>
+                <elementReference>Core_MDF_Message</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <elementReference>Core_MDF_Origin</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Project__c</field>
+            <value>
+                <stringValue>Consolidated Co-Marketing Program (CCP)</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <elementReference>Core_MDF_Severity</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>Core_MDF_When</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_sObjectId__c</field>
+            <value>
+                <elementReference>Core_MDF_sObjectId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_sObjectType__c</field>
+            <value>
+                <elementReference>Core_MDF_sObjectType</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+    </recordCreates>
+    <runInMode>SystemModeWithSharing</runInMode>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Core_MDF_Check_the_Null_Values</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Stores the information about Flow name and Decision name</description>
+        <name>Core_MDF_Details</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue></stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Stores the Decision name of the flow</description>
+        <name>Core_MDF_Message</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue></stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Stores the Flow name</description>
+        <name>Core_MDF_Origin</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue></stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Stores the Severity value which is Critical</description>
+        <name>Core_MDF_Severity</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue></stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Stores the object ID</description>
+        <name>Core_MDF_sObjectId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue></stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Stores the object type</description>
+        <name>Core_MDF_sObjectType</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue></stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Stores the date and time value</description>
+        <name>Core_MDF_When</name>
+        <dataType>DateTime</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

@@ -1,0 +1,30 @@
+<messaging:emailTemplate subject="{!IF(RelatedTo.Core_MDF_Document_Submission_DueDate_dtm__c - NOW() > 5,
+                                    $Label.Core_MDF_Audit_Creation_SubjectBody2,
+                                    $Label.Core_MDF_Audit_Creation_SubjectBody_Retail_1)}{!RelatedTo.Core_MDF_Claim_Number__c}"  
+                                    recipientType="User" 
+                                    relatedToType="Case" 
+                                    language="{!relatedTo.Core_MDF_Claim_Submitter_Language__c}">
+<messaging:htmlEmailBody >
+<html>
+<body>
+     <p>{!$Label.Core_MDF_IPA_Salutation_Internal}<br/><br/>
+     {!$Label.Core_MDF_Audit_Creation_IPA_Internal_Body_1} <br/>
+     
+      <br/>{!$Label.Core_MDF_IPA_Audit_Closure_Internal_Part_2} {!RelatedTo.Core_MDF_AccountCompany_txt__c}
+      <br/>{!$Label.Core_MDF_Audit_Creation_Field1} {!RelatedTo.Core_MDF_Claim_Number__c}
+      <br/>{!$Label.Core_MDF_Audit_Creation_IPA_Field1} {!RelatedTo.Core_MDF_CampaignName__c } 
+      <br/>{!$Label.Core_MDF_Audit_Creation_Field4} {!RelatedTo.Core_MDF_Activity_Type__c}
+      <br/>{!$Label.Core_MDF_Audit_Creation_Field5} {!RelatedTo.Core_MDF_Country_Region__c}
+      <br/>{!$Label.Core_MDF_Audit_Creation_Field6} {!RelatedTo.Core_MDF_Document_Submission_DueDate_dtm__c}
+      <br/>{!$Label.Core_MDF_Audit_Creation_BodyLink+' '} 
+      <apex:outputLink value="{!$Label.Core_MDF_PFRDetailLink+RelatedTo.Id}">{!RelatedTo.CaseNumber}<br/>                    
+      </apex:outputLink></p>
+    
+     
+     <p> {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}<br/>
+      {!$Label.Core_MDF_Audit_Creation_IPA_Body_3}</p>
+      </body>
+    
+</html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

@@ -124,6 +124,7 @@
         <developerName>BucketField_95616230</developerName>
         <masterLabel>Product Type</masterLabel>
         <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
         <sourceColumnName>OpportunityLineItem.Core_Product_Type__c</sourceColumnName>
         <useOther>false</useOther>
         <values>
@@ -512,6 +513,13 @@
             <operator>greaterOrEqual</operator>
             <value>12/31/2018</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_KPI_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>lessThan</operator>
+            <value>12/29/2019</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
@@ -554,8 +562,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2022-12-29</endDate>
+        <endDate>2019-12-29</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2019-01-01</startDate>
+        <startDate>2018-12-31</startDate>
     </timeFrameFilter>
 </Report>

@@ -235,6 +235,16 @@ Database.update(claimsToBeUpdated);
                     }
                 }
                 
-            }	
+            }   
      }
+
+    @AuraEnabled
+    public static void updateApprovedVatFile(Id vatId, Id fileId, String fileName) {
+        update new Core_MDF_Claim_VAT_Info__c(
+            Id = vatId,
+            Core_MDF_Approved_File_Id__c = fileId,
+            Core_MDF_Approved_File_Name_Txt__c = fileName
+        );
+    }
+
 }

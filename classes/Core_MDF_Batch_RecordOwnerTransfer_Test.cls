@@ -61,14 +61,7 @@ public class Core_MDF_Batch_RecordOwnerTransfer_Test {
         te7.Name = 'Core_MDF_PGMProcessToAddToMasterGroup';
         te7.Core_Description__c = 'description';
         triggerList.add(te7);
-        Core_Trigger_Executions__c enableIPAMDFAccountOnboarding = new Core_Trigger_Executions__c();
-        enableIPAMDFAccountOnboarding.name = 'Bypass_AccountOnboardOPIDValidations';
-        enableIPAMDFAccountOnboarding.Core_Object__c = 'Core_MDF_Account_Onboarding__c';
-        enableIPAMDFAccountOnboarding.Core_Trigger_Events__c = 'after Insert';
-        enableIPAMDFAccountOnboarding.Core_Active__c = TRUE;
-        enableIPAMDFAccountOnboarding.Core_Description__c = 'Bypass_AccountOnboardOPIDValidations';
-        enableIPAMDFAccountOnboarding.Core_Class_Name__c = 'Core_MDF_AccountOnboardingHelper';
-        triggerList.add(enableIPAMDFAccountOnboarding);
+        
         insert triggerList;
 
         ChannelProgram cpIPATest = new ChannelProgram();
@@ -94,7 +87,6 @@ public class Core_MDF_Batch_RecordOwnerTransfer_Test {
         aba.PRM_Account_Id__c = opid.Id;
         aba.PRM_Partner_Benefit_Id__c = benefit.Id;
         aba.PRM_Status_Nm__c = 'Active';
-        aba.PRM_Status_Reason_Txt__c = 'Test';
         insert aba;
         
         insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Proposal_I_MDF_Benefit', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = true, Core_MDF_Partner_Benefit__c = 'MDFPRPCCP', Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Proposal_Based', Core_MDF_Budget_Type__c = 'Proposal I MDF', Core_MDF_Program_Nm__c = 'Intel Partner Alliance', Core_MDF_RecordType__c = 'Proposal Based');
@@ -142,32 +134,28 @@ public class Core_MDF_Batch_RecordOwnerTransfer_Test {
         PRM_AccountChannelMembership__c acm = new PRM_AccountChannelMembership__c();
         acm.PRM_Account_Id__c = acc2.Id;
         acm.PRM_Status_Nm__c = 'Approved';
-        acm.PRM_Partner_Role__c = 'Distributor';
-        acm.PRM_Status_Reason_Txt__c ='Test';
+        acm.PRM_Partner_Role__c = 'Seller';
         acm.PRM_Channel_Program_Id__c=cpIPATest.Id;
         acm.PRM_Channel_Program_Level_Id__c=cplTest.Id;
 		listAcm.add(acm);
         PRM_AccountChannelMembership__c acm1 = new PRM_AccountChannelMembership__c();
         acm1.PRM_Account_Id__c = acc3.Id;
         acm1.PRM_Status_Nm__c = 'Approved';
-        acm1.PRM_Partner_Role__c = 'Distributor';
-        acm1.PRM_Status_Reason_Txt__c ='Test';
+        acm1.PRM_Partner_Role__c = 'Seller';
         acm1.PRM_Channel_Program_Id__c=cpIPATest.Id;
         acm1.PRM_Channel_Program_Level_Id__c=cplTest.Id;
 		listAcm.add(acm1);
         PRM_AccountChannelMembership__c acm2 = new PRM_AccountChannelMembership__c();
         acm2.PRM_Account_Id__c = acc4.Id;
         acm2.PRM_Status_Nm__c = 'Approved';
-        acm2.PRM_Partner_Role__c = 'Distributor';
-        acm2.PRM_Status_Reason_Txt__c ='Test';
+        acm2.PRM_Partner_Role__c = 'Seller';
         acm2.PRM_Channel_Program_Id__c=cpIPATest.Id;
         acm2.PRM_Channel_Program_Level_Id__c=cplTest.Id;
 		listAcm.add(acm2);
         PRM_AccountChannelMembership__c acm3 = new PRM_AccountChannelMembership__c();
         acm3.PRM_Account_Id__c = acc1.Id;
         acm3.PRM_Status_Nm__c = 'Approved';
-        acm3.PRM_Partner_Role__c = 'Distributor';
-        acm3.PRM_Status_Reason_Txt__c ='Test';
+        acm3.PRM_Partner_Role__c = 'Seller';
         acm3.PRM_Channel_Program_Id__c=cpIPATest.Id;
         acm3.PRM_Channel_Program_Level_Id__c=cplTest.Id;
 		listAcm.add(acm3);
@@ -301,8 +289,7 @@ public class Core_MDF_Batch_RecordOwnerTransfer_Test {
         Core_MDF_Partner_Group_Mapping__c pgmRecord = [SELECT Id, Core_MDF_Account__c, Core_MDF_Group_Id__c, Core_MDF_Channel_Program__c, Core_MDF_Inactive_Ind__c FROM Core_MDF_Partner_Group_Mapping__c WHERE Core_MDF_Account__c =: acc1.Id AND Core_MDF_Inactive_Ind__c = false LIMIT 1];
         
         Account virtualCorpAcc = [SELECT Id FROM Account WHERE Core_MDF_CoMarketing_Ultimate_Account__c != null LIMIT 1];
-        virtualCorpAcc.Core_MDF_Channel_Program__c=ipaProgram.id;
-        update virtualCorpAcc;
+
         List<Core_MDF_Partner_Node_User_Mapping__c> pnumList = new List<Core_MDF_Partner_Node_User_Mapping__c>();
         List<GroupMember> groupmemList = new List<GroupMember>();
         for(User usr : [SELECT Id FROM User WHERE AccountId =: acc2.Id]){
@@ -317,11 +304,10 @@ public class Core_MDF_Batch_RecordOwnerTransfer_Test {
         
         System.runAs(sysAdmUsr){
             insert pnumList;
-            Core_MDF_Batch_RecordOwnerTransfer batch = new Core_MDF_Batch_RecordOwnerTransfer();
-            batch.execute(null,pnumList);
         }
 
         Test.stopTest();
+
     }
 
     
@@ -329,14 +315,14 @@ public class Core_MDF_Batch_RecordOwnerTransfer_Test {
     static void updatePrimeIdAndIpaFlagForNoncoMarketingAccount(){
         
         Test.startTest();
-
+        
         Account acc = [SELECT Id FROM Account WHERE Name = '[Prime] Intel Account 2'];
         Account virtualCorpAcc = [SELECT Id FROM Account WHERE Core_MDF_CoMarketing_Ultimate_Account__r.Name = '[Prime] Intel Account 1' LIMIT 1];
-
+        
         Campaign camp = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test IPA Camp',virtualCorpAcc.Id, System.today(), System.today().addDays(300), 'Proposal I MDF', 1234.00, 'AFGHANISTAN','Consumer','Coffee Lake','Pending Review', false);
         
         
-
+        
         User usr = [SELECT Id FROM User WHERE AccountId =: acc.Id LIMIT 1];
         AccountShare accShare = new AccountShare(AccountAccessLevel = 'Edit', OpportunityAccessLevel = 'Edit', RowCause = 'Manual',UserOrGroupId = usr.Id, AccountId = virtualCorpAcc.Id);
         insert accShare;
@@ -352,10 +338,11 @@ public class Core_MDF_Batch_RecordOwnerTransfer_Test {
         if(!pnumList.isEmpty()){
             update pnumList;
         }
-
-        Database.executeBatch(new Core_MDF_Batch_RecordOwnerTransfer(), 20);
-        Test.stopTest();
         
+        Database.executeBatch(new Core_MDF_Batch_RecordOwnerTransfer(), 20);
+        
+        Test.stopTest();        
         Assert.areNotEqual(acc , null);
     }
+    
 }

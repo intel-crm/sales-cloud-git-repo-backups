@@ -20,6 +20,10 @@
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>hideSlackAction</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>numVisibleActions</name>
                     <value>3</value>
                 </componentInstanceProperties>
@@ -89,6 +93,16 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Core_MDF_Field_Label_txt__c</fieldItem>
+                <identifier>RecordCore_MDF_Field_Label_txt_cField2</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
                     <value>required</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_User_Type_nm__c</fieldItem>
@@ -141,6 +155,16 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
+                <fieldItem>Record.Core_MDF_Parent_Object_Txt__c</fieldItem>
+                <identifier>RecordCore_MDF_Parent_Object_Txt_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Parent_Object_nm__c</fieldItem>
                 <identifier>RecordCore_MDF_Parent_Object_nm_cField</identifier>
             </fieldInstance>
@@ -157,8 +181,62 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.API_Visibility__c</fieldItem>
                 <identifier>RecordAPI_Visibility__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Core_MDF_API_Required_Ind__c</fieldItem>
+                <identifier>RecordCore_MDF_API_Required_Ind__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Core_MDF_API_Error_Code__c</fieldItem>
+                <identifier>RecordAPI_Error_Code__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Core_MDF_Field_Editability_Rules__c</fieldItem>
+                <identifier>RecordCore_MDF_Status_and_PS_Based_Editability__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Core_MDF_List_Api_Filter_Field_Ind__c</fieldItem>
+                <identifier>RecordCore_MDF_List_Api_Filter_Field_Ind__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Core_MDF_List_Api_Filter_Operator_nm__c</fieldItem>
+                <identifier>RecordCore_MDF_List_Api_Filter_Operator_nm_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-6d94cd03-d9f4-4ae7-8dc3-3d7422c4bb4b</name>

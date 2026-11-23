@@ -6,6 +6,7 @@
     <queueMembers>
         <publicGroups>
             <publicGroup>Core_MDF_CCP_CMDF_ASMO_NAR_Pay_Admin</publicGroup>
+            <publicGroup>Core_MDF_CCP_Int_CMDF_ASMO_NAR</publicGroup>
         </publicGroups>
     </queueMembers>
     <queueSobject>

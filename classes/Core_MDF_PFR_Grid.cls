@@ -87,41 +87,78 @@ public without sharing class Core_MDF_PFR_Grid {
     public static Boolean getCampaignDetails(String campaignId){
         Boolean allowToCreate = false;
         try {
-            // US - TWC702-14285: Flatten nested IFs (no logic change)
-            if(String.isBlank(campaignId)){
+            //// US - TWC702-14285: Flatten nested IFs (no logic change) - Commented original code 
+           // if(String.isNotBlank(campaignId)){
+           // US - TWC702-14285: Flatten nested IFs (no logic change) - Begin
+            if(String.isBlank(campaignId)){ 
                 return allowToCreate;
             }
                 String sanitizedCampaignId = String.escapeSingleQuotes(campaignId);
                 List<String> allowedStatusList = Core_MDF_CCP_ConstantClass.NRE_ALLOWED_STATUSES_TO_CREATE_ACTIVITY;
                 List<Campaign> campList = [SELECT Id, Status, Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c FROM Campaign WHERE Id =: sanitizedCampaignId];
-                if(campList.isEmpty() || !allowedStatusList.contains(campList[0].Status)){
+               // if(!campList.isEmpty() && allowedStatusList.contains(campList[0].Status)){
+                if(campList.isEmpty() || !allowedStatusList.contains(campList[0].Status)){ 
                     return allowToCreate;
                 }
                     Id currentUserId = UserInfo.getUserId();
                     List<String> accMgrRolesList = new List<String>{Label.Core_MDF_CCP_NRE_Account_Manager};
                     
-                    if(FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Co_GTM_Account_Manager')){
-                        List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = [SELECT Id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c 
+                    if(FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Co_GTM_Account_Manager')){List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = [SELECT Id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c 
                                                                                     WHERE Core_MDF_Active_Ind__c = TRUE and Core_MDF_User_id__c =: currentUserId AND 
                                                                                     Core_MDF_Account_id__c =: campList[0].Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c AND 
                                                                                     Core_MDF_Program_nm__c ='CoGTM' AND Core_MDF_Role_nm__c IN: accMgrRolesList];
+                        /*if(!iupgmList.isEmpty()){
+                            allowToCreate = true;
+                        }*/
                         allowToCreate = !iupgmList.isEmpty();
                     }
                     //Akash - Added else if condition.
-                    else if(FeatureManagement.checkPermission('Core_MDF_CCP_External_Co_GTM_Project_Submitter')){
-                        List<Core_MDF_Partner_Node_User_Mapping__c> pnum = [SELECT Id,Core_MDF_Account__c, Core_MDF_User__c
+                    else if(FeatureManagement.checkPermission('Core_MDF_CCP_External_Co_GTM_Project_Submitter')){List<Core_MDF_Partner_Node_User_Mapping__c> pnum = [SELECT Id,Core_MDF_Account__c, Core_MDF_User__c
                                                                             FROM Core_MDF_Partner_Node_User_Mapping__c 
                                                                             WHERE Core_MDF_Account__c =: campList[0].Core_MDF_Account__c AND
                                                                             Core_MDF_Active_Ind__c = TRUE AND Core_MDF_User__c =: currentUserId
                                                                             and Core_MDF_Account__r.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c = 'CoGTM'];
+                        /*if(!pnum.isEmpty()){
+                            allowToCreate = true;
+                        }*/
                         allowToCreate = !pnum.isEmpty();
                     }
+               // }
+          //  }
+          // US - TWC702-14285: Flatten nested IFs (no logic change) -End
         } catch (Exception e) {
             Core_MDF_CCP_UtilityClass.logError(e);
         }
 
         return allowToCreate;
     }
+
+    /****************************************************************************************************** 
+    Method Name:        getCampaignDetails
+    @return  :          Boolean
+    @parameters:        campaignId
+    Description:        To get Campaign Details
+    Added By:           JB - 04/02/2025
+    Modified By:        Date:      Changes: 
+    *******************************************************************************************************/
+    /*@AuraEnabled
+    public static Boolean getCampaignDetails(String campaignId){
+        Boolean allowToCreate = false;
+        try {
+            if(String.isNotBlank(campaignId)){
+                String sanitizedCampaignId = String.escapeSingleQuotes(campaignId);
+                List<String> allowedStatusList = Core_MDF_CCP_ConstantClass.NRE_ALLOWED_STATUSES_TO_CREATE_ACTIVITY;
+                List<Campaign> campList = [SELECT Id, Status FROM Campaign WHERE Id =: sanitizedCampaignId];
+                if(!campList.isEmpty()){
+                    allowToCreate = allowedStatusList.contains(campList[0].Status) ? true : false;
+                }
+            }
+        } catch (Exception e) {
+            Core_MDF_CCP_UtilityClass.logError(e);
+        }
+
+        return allowToCreate;
+    }*/
 
     public class ActivityDetailsWrapper{
         @AuraEnabled public List<Sobject> activityOrCampaignList { get; set; }
@@ -146,8 +183,7 @@ public without sharing class Core_MDF_PFR_Grid {
     
                     String userType = UserInfo.getUserType();
                     String recordBaseUrl = '/';
-                    if(userType == 'PowerPartner'){
-                        recordBaseUrl = Label.Core_MDF_PFRCommunityLink;
+                    if(userType == 'PowerPartner'){recordBaseUrl = Label.Core_MDF_PFRCommunityLink;
                     }
                     activityDetials.recordBaseUrl = recordBaseUrl;
                     return activityDetials;

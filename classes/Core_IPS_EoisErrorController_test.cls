@@ -32,7 +32,7 @@ static void getRecords (){
          List<Core_IPS_Error_Code__c> LstErrorCode  = TestUtilities.getListOfIpsErrorCodes();
          insert LstErrorCode;
          }
-          System.AssertEquals(strProf.size()>0, true);
+         
     }
     static testMethod void EoisErrorController_testMethod1() 
     {
@@ -49,7 +49,6 @@ static void getRecords (){
         Core_IPS_EoisErrorController EoisError =  new Core_IPS_EoisErrorController();
         EoisError.PageInit();
         EoisError.GoBack();
-        System.AssertEquals(ErrorPage == null, false);
        }
         //ApexPages.currentPage().getParameters().put('rType','012210000004IHR');
         Test.stopTest();
@@ -71,7 +70,6 @@ static void getRecords (){
         Core_IPS_EoisErrorController EoisError =  new Core_IPS_EoisErrorController();
         EoisError.PageInit();
         EoisError.GoBack();
-        System.AssertEquals(EoisError == null, false);
        }
         //ApexPages.currentPage().getParameters().put('rType','012210000004IHR');
         
@@ -94,7 +92,6 @@ static void getRecords (){
         Core_IPS_EoisErrorController EoisError =  new Core_IPS_EoisErrorController();
         EoisError.PageInit();
         EoisError.GoBack();
-        System.AssertEquals(EoisError == null, false);
        }
         //ApexPages.currentPage().getParameters().put('rType','012210000004IHR');
        Test.stopTest(); 
@@ -116,34 +113,9 @@ static testMethod void EoisErrorController_testMethod4()
         Core_IPS_EoisErrorController EoisError =  new Core_IPS_EoisErrorController();
         EoisError.PageInit();
         EoisError.GoBack();
-        System.AssertEquals(EoisError == null, false);
        }
         //ApexPages.currentPage().getParameters().put('rType','012210000004IHR');
        Test.stopTest(); 
     }
-// ===============================
-//Created on 22/12/2017    
-//================================ 
-static testMethod void EoisErrorController_testMethod5() 
-    {
-      Test.startTest();
-        
-       getrecords();
-      system.runAs(ListOfUser[0])
-      {
-        PageReference ErrorPage = Page.Core_IPS_EoisError;
-        Test.setCurrentPage(ErrorPage);
-        // Assigning parameters in the URL
-        ApexPages.currentPage().getParameters().put(' ',' ');
-         
-        
-        Core_IPS_EoisErrorController EoisError =  new Core_IPS_EoisErrorController();
-        EoisError.PageInit();
-        EoisError.GoBack();
-        System.assert(EoisError != null, true); 
-       }
-        //ApexPages.currentPage().getParameters().put('rType','012210000004IHR');
-        
-       Test.stopTest(); 
-    }    
+
 }

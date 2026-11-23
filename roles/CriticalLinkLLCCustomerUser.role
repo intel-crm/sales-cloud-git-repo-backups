@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Critical Link LLC Customer User</description>
+    <description>Critical Link, LLC Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Critical Link LLC Customer User</name>
+    <name>Critical Link, LLC Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>CriticalLinkLLCCustomerManager</parentRole>
 </Role>

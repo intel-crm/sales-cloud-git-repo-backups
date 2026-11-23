@@ -17,10 +17,6 @@
         <name>Core_Message__c</name>
     </fields>
     <fields>
-        <label><!-- Next Scheduled Run --></label>
-        <name>Core_Next_Scheduled_Run__c</name>
-    </fields>
-    <fields>
         <label><!-- Object Link --></label>
         <name>Core_Object_Link__c</name>
     </fields>
@@ -31,10 +27,6 @@
     <fields>
         <label><!-- Project --></label>
         <name>Core_Project__c</name>
-    </fields>
-    <fields>
-        <label><!-- Retry_Counter --></label>
-        <name>Core_Retry_Counter__c</name>
     </fields>
     <fields>
         <label><!-- Scope --></label>
@@ -71,10 +63,6 @@
     <fields>
         <label><!-- sObjectType --></label>
         <name>Core_sObjectType__c</name>
-    </fields>
-    <fields>
-        <label><!-- File Name --></label>
-        <name>File_Name__c</name>
     </fields>
     <fields>
         <label><!-- Review Status --></label>

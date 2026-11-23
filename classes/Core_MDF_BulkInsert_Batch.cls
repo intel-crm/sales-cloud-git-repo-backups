@@ -20,7 +20,9 @@ public without sharing class Core_MDF_BulkInsert_Batch implements Database.Batch
                     if (sr.isSuccess()) {} else {for(Database.Error err : sr.getErrors()) { string errorMsg = err.getStatusCode() + ': ' + err.getFields() + ': ' + err.getMessage(); dmlErrorList.add(errorMsg);}
                     } 
                 }
-            }catch(Exception ex){ dmlErrorList.add(ex.getMessage());
+            }catch(Exception ex){ 
+                dmlErrorList.add(ex.getMessage());
+                Core_MDF_CCP_UtilityClass.logError(ex);
             }
             if(dmlErrorList != null && !dmlErrorList.isEmpty()){Map<String, String> coreLogMap = new Map<String, String>();coreLogMap.put('Core_Origin__c','Core_MDF_BulkDML_Batch');coreLogMap.put('Core_Support_Email__c', Label.Core_MDF_CCP_Support_Email);coreLogMap.put('Core_Severity__c','Critical');coreLogMap.put('Core_Project__c','Consolidated Co-Marketing Program (CCP)');Integer strLength = JSON.serialize(dmlErrorList).length();string details;coreLogMap.put('Core_Message__c','Records Failed: '+JSON.serialize(dmlErrorList));details = strLength < LONG_TEXT_AREA_LIMIT ? JSON.serialize(dmlErrorList) : JSON.serialize(dmlErrorList).substring(0,LONG_TEXT_AREA_LIMIT);coreLogMap.put('Core_Details__c',details);string logRecordId = Core_MDF_CCP_UtilityClass.createLogEntry(coreLogMap);
                 }

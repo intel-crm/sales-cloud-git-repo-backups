@@ -121,7 +121,7 @@ Accenture - JV      4/7/2019    Dynamically Mapping the Stage and Claim Records 
         //ATHR Comment - 17214 (deeply nested ifs)
         /*List<PartnerFundClaim>  claimRecords = new List<PartnerFundClaim>();
         if(stageClaimRecs != NULL && stageClaimRecs.size() > 0)
-        {*/	
+        { */	
             //Populate Processing Preference on Claim based on Today's Date
             Date claimDate = System.today();
             // Core_MDF_PartnerFundClaim.PayTypeWrapper payType = Core_MDF_PartnerFundClaim.getDefaultPayTypePicklist(claimDate);
@@ -333,7 +333,7 @@ Modified By:        Date:       Changes:
                     successClaimMap = new Map<Id,PartnerFundClaim>([Select Id,Core_MDF_Claim_Batch_Stage__c, Core_MDF_Claim_Ref_Number__c, RequestId, Request.Status,
                                                                     Request.Core_MDF_Fund_Request_Status__c, Core_MDF_Budget_Type_Nm__c, Core_MDF_Budget_Type_Options_Nm__c, Core_MDF_Program__c, Core_MDF_OutcomeBased_Ind__c, Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,
                                                                     Core_MDF_Ad_Run_Start_Date__c, Core_MDF_Ad_Run_End_Date__c, Core_MDF_Reimbursable_TransactionAmt_Loc__c, Core_MDF_Total_Invoice_Amount_Local__c, Core_MDF_Currency__c,
-                                                                    Core_MDF_Activity_Types__c, CreatedDate FROM PartnerFundClaim where ID IN :succesRecordIdSet]);//query updated for AI PIC
+                                                                    Core_MDF_Activity_Types__c, CreatedDate, request.Core_MDF_Activity_Description__c, request.Core_MDF_POP_Requirements_txt__c, request.Core_MDF_Attribution_Requirements_txt__c, Amount FROM PartnerFundClaim where ID IN :succesRecordIdSet]);//query updated for AI PIC
                     
                     for(PartnerFundClaim claim : successClaimMap.values()){
                         successClaimToClaimStageIdMap.put(claim,claim.Core_MDF_Claim_Batch_Stage__c);
@@ -477,14 +477,36 @@ Modified By:        Date:       Changes:
                 //ATHR Fix - 17214
                 if(successClaimToClaimStageIdMap == null || successClaimToClaimStageIdMap.isEmpty()) { return; }
                     Map<Id, PartnerFundClaim> claimIdToClaimRecMap = new Map<Id, PartnerFundClaim>();//AI PIC
+                    //Roshan - Tactics POC (devccp only)
+                    List<Core_MDF_Claim_Attributes__c> claimAttributeListToInsert = new List<Core_MDF_Claim_Attributes__c>();
+                    List<PartnerFundClaim> claimsToUpdate = new List<PartnerFundClaim>();
                     for (PartnerFundClaim claim : successClaimToClaimStageIdMap.keySet()) {
                         if(auditList!=null && auditList.containsKey(claim.Core_MDF_Claim_Batch_Stage__c)) {
                             Core_MDF_BulkPOPUploadController.assignDocumentList(auditList.get(claim.Core_MDF_Claim_Batch_Stage__c), claim.Id);
                         }
+
+                        //Roshan - Tactics POC (devccp only)
+                        if(wrapperInst.claimStageIdToClaimAttributesMap != null && wrapperInst.claimStageIdToClaimAttributesMap.containsKey(claim.Core_MDF_Claim_Batch_Stage__c)) {
+                            for(Core_MDF_Claim_Attributes__c claimAttribute : wrapperInst.claimStageIdToClaimAttributesMap.get(claim.Core_MDF_Claim_Batch_Stage__c)) {
+                                claimAttribute.Core_MDF_Claim_Id__c = String.isBlank(claimAttribute.Id) ? claim.Id : claimAttribute.Core_MDF_Claim_Id__c;
+                                claimAttributeListToInsert.add(claimAttribute);
+                            }
+                        }
+                        if(wrapperInst.claimStageIdToQuantityToDateMap != null && wrapperInst.claimStageIdToQuantityToDateMap.containsKey(claim.Core_MDF_Claim_Batch_Stage__c)) {
+                            claimsToUpdate.add(new PartnerFundClaim(Id = claim.Id, Core_MDF_Quantity_to_Date_Nbr__c = wrapperInst.claimStageIdToQuantityToDateMap.get(claim.Core_MDF_Claim_Batch_Stage__c)));
+                        }
                         
-                        if(!claim.Core_MDF_OutcomeBased_Ind__c) { //AI PIC
+                        if(!claim.Core_MDF_OutcomeBased_Ind__c ) { //AI PIC -- Is date check needed here ?claim.CreatedDate > Date.valueOf(Label.Core_MDF_DateToEnableAIPIC)
+                        //if(Core_MDF_Claim_Utility.isClaimEligibleForAICDBCallout(claim)) {  //present in devccp only
                         claimIdToClaimRecMap.put(claim.Id, claim); //AI PIC
                         }
+                    }
+                    //Roshan - Tactics POC
+                    if(!claimsToUpdate.isEmpty()) {
+                        Database.update(claimsToUpdate);
+                    }
+                    if(!claimAttributeListToInsert.isEmpty()) {
+                        Database.upsert(claimAttributeListToInsert);
                     }
                     //Added by VB - AI PIC
                     try 
@@ -922,7 +944,7 @@ Accenture - JV     07/04/2019    To check if user has access to given activities
                     }
                  //To check if bank's Intel Company code is not 650 and Applicable VAT Percentage is provided -> Applicable VAT Percentage (Retail MDF)
                  else if(((claimStageRec.Core_MDF_Bank_Nbr__c != null && bankSupplierNumberToLegalEntity.containsKey(claimStageRec.Core_MDF_Bank_Nbr__c) && applicableVATPerRequired.containsKey(bankSupplierNumberToLegalEntity.get(claimStageRec.Core_MDF_Bank_Nbr__c))
-                        && !applicableVATPerRequired.get(bankSupplierNumberToLegalEntity.get(claimStageRec.Core_MDF_Bank_Nbr__c))) || claimStageRec.Core_MDF_Bank_Nbr__c == null) && claimStageRec.Core_MDF_Applicable_VAT_Percentage_nm__c != null ){
+                        && applicableVATPerRequired.get(bankSupplierNumberToLegalEntity.get(claimStageRec.Core_MDF_Bank_Nbr__c))) || claimStageRec.Core_MDF_Bank_Nbr__c == null) && claimStageRec.Core_MDF_Applicable_VAT_Percentage_nm__c != null ){
                         errorList.add(Label.Core_MDF_Bulk_Claim_Applicable_VAT_Percentage_Inapplicable);
                     }
                  //To check if Applicable VAT Percentage is entered in template when applicable(Retail MDF)

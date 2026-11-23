@@ -2,15 +2,15 @@
 <GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <valueTranslation>
         <masterLabel>Audio 2025-&gt;Other (Audio)</masterLabel>
-        <translation>Аудио 2025-&gt;Другое (аудио)</translation>
+        <translation><!-- Audio 2025-&gt;Other (Audio) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Audio 2025-&gt;Podcast</masterLabel>
-        <translation>Аудио 2025-&gt;Подкаст</translation>
+        <translation><!-- Audio 2025-&gt;Podcast --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Audio 2025-&gt;Radio</masterLabel>
-        <translation>Аудио 2025-&gt;Реклама на радио</translation>
+        <translation><!-- Audio 2025-&gt;Radio --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Audio-&gt;Other (Audio)</masterLabel>
@@ -66,27 +66,27 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Buyer Incentive 2025-&gt;Offer - Bundle</masterLabel>
-        <translation>Стимулирование для покупателей 2025-&gt;Предложение — пакет</translation>
+        <translation><!-- Buyer Incentive 2025-&gt;Offer - Bundle --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Buyer Incentive 2025-&gt;Offer - Contest</masterLabel>
-        <translation>Стимулирование для покупателей 2025-&gt;Предложение — конкурс</translation>
+        <translation><!-- Buyer Incentive 2025-&gt;Offer - Contest --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Buyer Incentive 2025-&gt;Offer - Other</masterLabel>
-        <translation>Стимулирование для покупателей 2025-&gt;Предложение — Другое</translation>
+        <translation><!-- Buyer Incentive 2025-&gt;Offer - Other --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Buyer Incentive 2025-&gt;Offer - Rewards</masterLabel>
-        <translation>Стимулирование для покупателей 2025-&gt;Предложение — награды</translation>
+        <translation><!-- Buyer Incentive 2025-&gt;Offer - Rewards --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Buyer Incentive 2025-&gt;Offer - Sweepstakes</masterLabel>
-        <translation>Стимулирование для покупателей 2025-&gt;Предложение — лотерея</translation>
+        <translation><!-- Buyer Incentive 2025-&gt;Offer - Sweepstakes --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Buyer Incentive 2025-&gt;Offer - Target</masterLabel>
-        <translation>Стимулирование для покупателей 2025-&gt;Предложение — цель</translation>
+        <translation><!-- Buyer Incentive 2025-&gt;Offer - Target --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Buyer Incentive-&gt;Offer - Bundle</masterLabel>
@@ -114,11 +114,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Display/Video Ad</masterLabel>
-        <translation>Цифровое 2025-&gt;Отображаемая/видеореклама</translation>
+        <translation><!-- Digital 2025-&gt;Display/Video Ad --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Email</masterLabel>
-        <translation>Цифровое 2025-&gt;Электронные рассылки</translation>
+        <translation><!-- Digital 2025-&gt;Email --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Lead Generation</masterLabel>
@@ -126,23 +126,23 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Other (Digital)</masterLabel>
-        <translation>Цифровое 2025-&gt;Другое (цифровое)</translation>
+        <translation><!-- Digital 2025-&gt;Other (Digital) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Search (SEM) Ad</masterLabel>
-        <translation>Цифровое 2025-&gt;Поиск (SEM) реклама</translation>
+        <translation><!-- Digital 2025-&gt;Search (SEM) Ad --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Social Ad</masterLabel>
-        <translation>Цифровое 2025-&gt;Социальная реклама</translation>
+        <translation><!-- Digital 2025-&gt;Social Ad --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Social Post</masterLabel>
-        <translation>Цифровое 2025-&gt;Социальное сообщение</translation>
+        <translation><!-- Digital 2025-&gt;Social Post --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital 2025-&gt;Web Content</masterLabel>
-        <translation>Цифровое 2025-&gt;Веб-данные</translation>
+        <translation><!-- Digital 2025-&gt;Web Content --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital Media (Pre-2025)-&gt;Channel Partner Website Online Ad</masterLabel>
@@ -199,10 +199,6 @@
     <valueTranslation>
         <masterLabel>Digital Media-&gt;Email</masterLabel>
         <translation>Цифровая реклама -&gt; Электронные рассылки</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital Media-&gt;IndustryPartner.com</masterLabel>
-        <translation><!-- Digital Media-&gt;IndustryPartner.com --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital Media-&gt;Member Website Online Display</masterLabel>
@@ -298,15 +294,15 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Event 2025-&gt;Joint Event</masterLabel>
-        <translation>Мероприятие 2025-&gt;Совместное мероприятие</translation>
+        <translation><!-- Event 2025-&gt;Joint Event --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Event 2025-&gt;Other (Event)</masterLabel>
-        <translation>Мероприятие 2025-&gt;Другое (мероприятие)</translation>
+        <translation><!-- Event 2025-&gt;Other (Event) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Event 2025-&gt;Third Party Event</masterLabel>
-        <translation>Мероприятие 2025-&gt;Мероприятие сторонней компании</translation>
+        <translation><!-- Event 2025-&gt;Third Party Event --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Event-&gt;Channel Partner Owned Event</masterLabel>
@@ -393,6 +389,10 @@
         <translation><!-- Innovation -&gt;Engineering --></translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>Lead Generation</masterLabel>
+        <translation><!-- Lead Generation --></translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>Lead Management (Pre-2025)-&gt;Lead Generation</masterLabel>
         <translation>Управление данными о возможных клиентах (До 2025 года)-&gt;Привлечение возможных клиентов</translation>
     </valueTranslation>
@@ -454,19 +454,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home 2025-&gt;Billboard/Transit</masterLabel>
-        <translation>Наружная реклама 2025-&gt;Реклама на щитах/транспорте</translation>
+        <translation><!-- Out of Home 2025-&gt;Billboard/Transit --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home 2025-&gt;Cinema</masterLabel>
-        <translation>Наружная реклама 2025-&gt;Реклама в кинотеатрах</translation>
+        <translation><!-- Out of Home 2025-&gt;Cinema --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Out of Home 2025-&gt;Other (Out Of Home)</masterLabel>
-        <translation>Наружная реклама 2025-&gt;Другое (наружная реклама)</translation>
+        <masterLabel>Out of Home 2025-&gt;Other (Out of Home)</masterLabel>
+        <translation><!-- Out of Home 2025-&gt;Other (Out of Home) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home 2025-&gt;Video Screen</masterLabel>
-        <translation>Наружная реклама 2025-&gt;Видеоэкран</translation>
+        <translation><!-- Out of Home 2025-&gt;Video Screen --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Out of Home Media (Pre-2025)-&gt;Billboard/Transit</masterLabel>
@@ -542,15 +542,15 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Print 2025-&gt;Collateral</masterLabel>
-        <translation>Распечатать 2025-&gt;Печатные рекламные материалы</translation>
+        <translation><!-- Print 2025-&gt;Collateral --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Print 2025-&gt;Magazine/Newspaper</masterLabel>
-        <translation>Распечатать 2025-&gt;Журнал/газета</translation>
+        <translation><!-- Print 2025-&gt;Magazine/Newspaper --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Print 2025-&gt;Other (Print)</masterLabel>
-        <translation>Распечатать 2025-&gt;Другое (печатная версия)</translation>
+        <translation><!-- Print 2025-&gt;Other (Print) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Print Media (Pre-2025)-&gt;Catalog/Brochure</masterLabel>
@@ -614,11 +614,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Production 2025-&gt;Content</masterLabel>
-        <translation>Производственный выпуск 2025-&gt;Содержание:</translation>
+        <translation><!-- Production 2025-&gt;Content --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Production 2025-&gt;Other (Production)</masterLabel>
-        <translation>Производственный выпуск 2025-&gt;Другое (производство)</translation>
+        <translation><!-- Production 2025-&gt;Other (Production) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Production-&gt;Content</masterLabel>
@@ -754,31 +754,31 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness 2025-&gt;Collateral</masterLabel>
-        <translation>Готовность к продажам 2025-&gt;Печатные рекламные материалы</translation>
+        <translation><!-- Sales Readiness 2025-&gt;Collateral --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness 2025-&gt;Other (Sales Readiness)</masterLabel>
-        <translation>Готовность к продажам 2025-&gt;Другое (готовность к продажам)</translation>
+        <translation><!-- Sales Readiness 2025-&gt;Other (Sales Readiness) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness 2025-&gt;Personnel</masterLabel>
-        <translation>Готовность к продажам 2025-&gt;Персонал</translation>
+        <translation><!-- Sales Readiness 2025-&gt;Personnel --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness 2025-&gt;Promotion - Non-Retail</masterLabel>
-        <translation>Готовность к продажам 2025-&gt;Промоакция — не в розничной торговле</translation>
+        <translation><!-- Sales Readiness 2025-&gt;Promotion - Non-Retail --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness 2025-&gt;Promotion - Retail</masterLabel>
-        <translation>Готовность к продажам 2025-&gt;Промоакция — розничная торговля</translation>
+        <translation><!-- Sales Readiness 2025-&gt;Promotion - Retail --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness 2025-&gt;Training Incentive</masterLabel>
-        <translation>Готовность к продажам 2025-&gt;Стимулы для обучения</translation>
+        <translation><!-- Sales Readiness 2025-&gt;Training Incentive --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness 2025-&gt;Training/Meeting</masterLabel>
-        <translation>Готовность к продажам 2025-&gt;Обучение/собрание</translation>
+        <translation><!-- Sales Readiness 2025-&gt;Training/Meeting --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness-&gt;Collateral</masterLabel>
@@ -874,19 +874,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Seller Incentive 2025-&gt;SPIF - Contest</masterLabel>
-        <translation>Стимулирование продавцов 2025-&gt;SPIF — конкурс</translation>
+        <translation><!-- Seller Incentive 2025-&gt;SPIF - Contest --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Seller Incentive 2025-&gt;SPIF - Other</masterLabel>
-        <translation>Стимулирование продавцов 2025-&gt;SPIF — Другое</translation>
+        <translation><!-- Seller Incentive 2025-&gt;SPIF - Other --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Seller Incentive 2025-&gt;SPIF - Target</masterLabel>
-        <translation>Стимулирование продавцов 2025-&gt;SPIF — цель</translation>
+        <translation><!-- Seller Incentive 2025-&gt;SPIF - Target --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Seller Incentive 2025-&gt;SPIF - Volume</masterLabel>
-        <translation>Стимулирование продавцов 2025-&gt;SPIF — объём</translation>
+        <translation><!-- Seller Incentive 2025-&gt;SPIF - Volume --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Seller Incentive-&gt;SPIF - Contest</masterLabel>
@@ -994,43 +994,43 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Benchmarking</masterLabel>
-        <translation>Технические продажи 2025-&gt;Сравнительный анализ</translation>
+        <translation><!-- Technical Sales 2025-&gt;Benchmarking --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Case Study</masterLabel>
-        <translation>Технические продажи 2025-&gt;История успеха</translation>
+        <translation><!-- Technical Sales 2025-&gt;Case Study --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Migration</masterLabel>
-        <translation>Технические продажи 2025-&gt;Migration</translation>
+        <translation><!-- Technical Sales 2025-&gt;Migration --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Other (Technical Sales)</masterLabel>
-        <translation>Технические продажи 2025-&gt;Другое (технические продажи)</translation>
+        <translation><!-- Technical Sales 2025-&gt;Other (Technical Sales) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Proof of Concept</masterLabel>
-        <translation>Технические продажи 2025-&gt;Подтверждение концепции</translation>
+        <translation><!-- Technical Sales 2025-&gt;Proof of Concept --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Sales Event</masterLabel>
-        <translation>Технические продажи 2025-&gt;Мероприятие по продажам</translation>
+        <translation><!-- Technical Sales 2025-&gt;Sales Event --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Seed Unit</masterLabel>
-        <translation>Технические продажи 2025-&gt;Начальное изделие</translation>
+        <translation><!-- Technical Sales 2025-&gt;Seed Unit --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;System Demo</masterLabel>
-        <translation>Технические продажи 2025-&gt;Демонстрация системы</translation>
+        <translation><!-- Technical Sales 2025-&gt;System Demo --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Telemarketing</masterLabel>
-        <translation>Технические продажи 2025-&gt;Телемаркетинг</translation>
+        <translation><!-- Technical Sales 2025-&gt;Telemarketing --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales 2025-&gt;Trial Instance</masterLabel>
-        <translation>Технические продажи 2025-&gt;Пробный экземпляр</translation>
+        <translation><!-- Technical Sales 2025-&gt;Trial Instance --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Technical Sales-&gt;Benchmarking</masterLabel>
@@ -1074,15 +1074,15 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Video 2025-&gt;Other (Video)</masterLabel>
-        <translation>Видео 2025-&gt;Другое (видео)</translation>
+        <translation><!-- Video 2025-&gt;Other (Video) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Video 2025-&gt;Streaming</masterLabel>
-        <translation>Видео 2025-&gt;Прямая трансляция</translation>
+        <translation><!-- Video 2025-&gt;Streaming --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Video 2025-&gt;Television</masterLabel>
-        <translation>Видео 2025-&gt;Реклама на телевидении</translation>
+        <translation><!-- Video 2025-&gt;Television --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Video-&gt;Other (Video)</masterLabel>

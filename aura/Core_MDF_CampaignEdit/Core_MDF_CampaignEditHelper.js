@@ -5,37 +5,54 @@
             "recordId" : component.get("v.recordId")
         });
         action.setCallback(this, function(response){
+            
             var state = response.getState();
             if (state == "SUCCESS") {
                 var result = response.getReturnValue();
                 component.set("v.campaignRecord", result);
-                this.checkForLegacyProgramAndBudgetTypes(component, event, result);//changes by MD
-                if(component.get("v.isValidCampaigToEdit")) {
-                    component.set("v.recordTypeId", result.RecordTypeId);
-                    component.set("v.campaignName", result.Name);
-                    component.set("v.recordTypeDeveloperName", result.RecordType.DeveloperName);
-                    component.set("v.recordTypeName", result.RecordType.Name);
-                    component.set("v.campaignStatus", result.Status);
-                    component.set("v.mode", "edit");              
-                    component.set("v.proposalBasedIndicator",result.Core_MDF_Proposal_Based_Ind__c);
-                    component.set("v.claimAssociatedIndicator",result.Core_MDF_Claims_Created_Ind__c);
-                    component.set("v.recordInfoLoaded", true);  
-                    this.fetchActivityRecords(component, event);
+                let isNonLegacyRecordtype  = this.checkForLegacyProgramAndBudgetTypes(component, event, result);//changes by MD
+                if(isNonLegacyRecordtype) {
+                    let IsAcctActive = this.checkAccountInactiveOrNot(component, event, result);
+                    if(IsAcctActive)
+                    { 
+                        component.set("v.recordTypeId", result.RecordTypeId);
+                        component.set("v.campaignName", result.Name);
+                        component.set("v.recordTypeDeveloperName", result.RecordType.DeveloperName);
+                        component.set("v.recordTypeName", result.RecordType.Name);
+                        component.set("v.campaignStatus", result.Status);
+                        component.set("v.mode", "edit");              
+                        component.set("v.proposalBasedIndicator",result.Core_MDF_Proposal_Based_Ind__c);
+                        component.set("v.claimAssociatedIndicator",result.Core_MDF_Claims_Created_Ind__c);
+                        component.set("v.recordInfoLoaded", true);  
+                        this.fetchActivityRecords(component, event);
+                    }
+                    else
+                    {
+                        var errorMessage = $A.get("$Label.c.Core_MDF_RestrictCampEditOnNodeInactivation");
+                        this.fireToastEvent(errorMessage, "8000", "error",component);
+                    }
+                }
+                else
+                {
+                    var errorMessage = $A.get("$Label.c.Core_MDF_CampaignEditError");
+                    this.fireToastEvent(errorMessage, "8000", "error",component);  
                 }
             }
             else if (state === "INCOMPLETE") {
+                
                 console.log("Core_MDF_CampaignEdit :: helper:fetchRecordInfo: Server request incomplete");
             }
-            else if (state === "ERROR") {
-                var errors = response.getError();
-                if (errors) {
-                    if (errors[0] && errors[0].message) {
-                        console.log("Core_MDF_CampaignEdit :: helper:fetchRecordInfo: Error message: " + errors[0].message);
+                else if (state === "ERROR") {
+                    
+                    var errors = response.getError();
+                    if (errors) {
+                        if (errors[0] && errors[0].message) {
+                            console.log("Core_MDF_CampaignEdit :: helper:fetchRecordInfo: Error message: " + errors[0].message);
+                        }
+                    } else {
+                        console.log("Core_MDF_CampaignEdit :: helper:fetchRecordInfo: Unknown error");
                     }
-                } else {
-                    console.log("Core_MDF_CampaignEdit :: helper:fetchRecordInfo: Unknown error");
                 }
-            }
         });
         $A.enqueueAction(action);
     },
@@ -47,54 +64,54 @@
         
         var restrictedRecTypes =$A.get("$Label.c.Core_MDF_LegacyRestrictedRecordTypes");
         var restrictedRecTypesList = restrictedRecTypes.split(",");
-                
+        
         var restrictedBudgetTypes =$A.get("$Label.c.Core_MDF_LegacyRestricBudgetTypes");
         var restrictedBudgetTypesList = restrictedBudgetTypes.split(",");        
         if(((!$A.util.isUndefinedOrNull(recordTypeDeveloperName) && recordTypeDeveloperName != '') &&
-           (restrictedRecTypesList.includes(recordTypeDeveloperName))) || 
+            (restrictedRecTypesList.includes(recordTypeDeveloperName))) || 
            ((!$A.util.isUndefinedOrNull(budgetType) && budgetType != '') && 
-           (restrictedBudgetTypesList.includes(budgetType)))) {
-            
-            component.set("v.isValidCampaigToEdit", false);
-            $A.get("e.force:closeQuickAction").fire();
-            var toastEvent = $A.get("e.force:showToast");
-            toastEvent.setParams({
-                title: "Error ",
-                type: "error",
-                duration: 5000,                
-                message: $A.get("$Label.c.Core_MDF_CampaignEditError")
-            });
-            toastEvent.fire();
-            var navEvt = $A.get("e.force:navigateToSObject");
-            navEvt.setParams({
-                "recordId": component.get("v.recordId")
-            });
-            navEvt.fire();
-            setTimeout(function () {
-                window.location.reload();
-            }, 5000);
+            (restrictedBudgetTypesList.includes(budgetType)))) { 
+            return false;
+        }
+        else
+        {
+            return true;
         }
     },
-    
+    checkAccountInactiveOrNot : function(component, event, result)
+    {	
+        let isActiveInd = false;
+        if(!$A.util.isUndefinedOrNull(result) && result != "") {
+            isActiveInd = result.Core_MDF_Account__r.Core_MDF_Active_Ind__c;
+            console.log("isActiveInd"+isActiveInd);
+            //component.set("v.isAccountactive", isActiveInd);
+        }
+        return isActiveInd;
+    },
     checkForEditAccess : function(component, event) {
         var action = component.get("c.checkForEditAccess");
-        var campaignObj =  component.get("v.campaignObj");        
+        //var campaignObj =  component.get("v.campaignObj");        
         action.setParams({
             "objectName" : "Campaign",
             "recTypeDevloperName" : component.get("v.recordTypeDeveloperName"),
             "status" : component.get("v.campaignStatus"),
-           	"campaignId" : component.get("v.recordId"),
+            "campaignId" : component.get("v.recordId"),
             "proposalBasedIndicator" : component.get("v.proposalBasedIndicator"),
             "claimAssociatedIndicator" : component.get("v.claimAssociatedIndicator")
         });
         action.setCallback(this, function(response){
             var state = response.getState();
             if (state == "SUCCESS") {
-                var result = response.getReturnValue();   
+                
+                // alert('Inside check for checkForEditAccess');
+                var result = response.getReturnValue();
+                console.log('hasEditAccess ');
                 component.set("v.hasEditAccess", result);
-                if(result==false){
-                    var errMsg = $A.get('$Label.c.Core_MDF_CloneAccessError');
+                //alert('result' + result);
+                if(result==false){                    
+                   	var errMsg = $A.get('$Label.c.Core_MDF_CloneAccessError');
                     if(!component.get("v.isCommunity")) {
+                        $A.get("e.force:closeQuickAction").fire();
                         var toastEvent = $A.get("e.force:showToast");
                         toastEvent.setParams({
                             title: "Error ",
@@ -118,23 +135,26 @@
                 }             
             }
             else if (state === "INCOMPLETE") {
+                
                 console.log("Core_MDF_CampaignEdit :: helper:checkForEditAccess: Server request incomplete");
             }
-            else if (state === "ERROR") {
-                var errors = response.getError();
-                if (errors) {
-                    if (errors[0] && errors[0].message) {
-                        console.log("Core_MDF_CampaignEdit :: helper:checkForEditAccess: Error message: " + errors[0].message);
+                else if (state === "ERROR") {
+                    
+                    var errors = response.getError();
+                    if (errors) {
+                        if (errors[0] && errors[0].message) {
+                            console.log("Core_MDF_CampaignEdit :: helper:checkForEditAccess: Error message: " + errors[0].message);
+                        }
+                    } else {
+                        console.log("Core_MDF_CampaignEdit :: helper:checkForEditAccess: Unknown error");
                     }
-                } else {
-                    console.log("Core_MDF_CampaignEdit :: helper:checkForEditAccess: Unknown error");
                 }
-            }
         });
         $A.enqueueAction(action);
     },
     
     fetchFieldSetInfo:function(component, event) {
+        
         var action = component.get("c.getRtFieldSetMappings");
         action.setParams({
             objectName : "Campaign",
@@ -143,22 +163,27 @@
         action.setCallback(this, function(response){
             var state = response.getState();
             if (state == "SUCCESS") {
+                
                 component.set("v.fieldSetName", response.getReturnValue());
                 component.set("v.fieldSetLoaded", true);
+                
             }
             else if (state === "INCOMPLETE") {
+                
                 console.log("Core_MDF_CampaignEdit :: helper:fetchFieldSetInfo: Server request incomplete");
             }
-            else if (state === "ERROR") {
-                var errors = response.getError();
-                if (errors) {
-                    if (errors[0] && errors[0].message) {
-                        console.log("Core_MDF_CampaignEdit :: helper:fetchFieldSetInfo: Error message: " + errors[0].message);
+                else if (state === "ERROR") {
+                    
+                    var errors = response.getError();
+                    if (errors) {
+                        if (errors[0] && errors[0].message) {
+                            console.log("Core_MDF_CampaignEdit :: helper:fetchFieldSetInfo: Error message: " + errors[0].message);
+                        }
+                    } else {
+                        
+                        console.log("Core_MDF_CampaignEdit :: helper:fetchFieldSetInfo: Unknown error");
                     }
-                } else {
-                    console.log("Core_MDF_CampaignEdit :: helper:fetchFieldSetInfo: Unknown error");
                 }
-            }
         });
         $A.enqueueAction(action);
     },
@@ -173,16 +198,16 @@
             else if (state === "INCOMPLETE") {
                 console.log("Core_MDF_CampaignEdit :: helper:isCommunity: Server request incomplete");
             }
-            else if (state === "ERROR") {
-                var errors = response.getError();
-                if (errors) {
-                    if (errors[0] && errors[0].message) {
-                        console.log("Core_MDF_CampaignEdit :: helper:isCommunity: Error message: " + errors[0].message);
+                else if (state === "ERROR") {
+                    var errors = response.getError();
+                    if (errors) {
+                        if (errors[0] && errors[0].message) {
+                            console.log("Core_MDF_CampaignEdit :: helper:isCommunity: Error message: " + errors[0].message);
+                        }
+                    } else {
+                        console.log("Core_MDF_CampaignEdit :: helper:isCommunity: Unknown error");
                     }
-                } else {
-                    console.log("Core_MDF_CampaignEdit :: helper:isCommunity: Unknown error");
                 }
-            }
         });
         $A.enqueueAction(action);
     },
@@ -218,6 +243,25 @@
             $A.enqueueAction(action);
         } 
     },
+    //common toast event to handle success and error scenarios
+    fireToastEvent: function (message, duration, type,component) {
+        $A.get("e.force:closeQuickAction").fire();
+        var toastEvent = $A.get("e.force:showToast");
+        toastEvent.setParams({
+            message: message,
+            duration: duration,
+            type: type
+        });
+        toastEvent.fire();
+        var navEvt = $A.get("e.force:navigateToSObject");
+        navEvt.setParams({
+            "recordId": component.get("v.recordId")
+        });
+        navEvt.fire();
+        setTimeout(function () {
+            window.location.reload();
+        }, 5000);
+    }, 
     prepareNodeAccData : function(component, pfrList){
         let vitualCorpToNodeAcc = new Map();
         let nodeAccSet = new Set();
@@ -245,8 +289,39 @@
                         vitualCorpToNodeAcc[keyAccId] = nodeAccountList;
                 });
                 NodeAccountsList = [...nodeAccSet];
+            console.log('vitualCorpToNodeAcc :',vitualCorpToNodeAcc);
             component.set("v.vitualCorpToNodeAcc", vitualCorpToNodeAcc);
             component.set("v.NodeAccountsList", NodeAccountsList);
         }
     },
+    /*fetchVirtualCorpData: function(component) {
+        if(component.get("v.mode") == 'edit'){ //&& (component.get("v.recordTypeDeveloperName") ==  $A.get('$Label.c.Core_MDF_CCF_RecordTypeName') || component.get("v.recordTypeDeveloperName") ==  $A.get('$Label.c.Core_MDF_IPA_RecordType')))){  
+            var action = component.get("c.getVirtualCorpAccounts");
+            action.setParams({
+                virtualCorps : component.get("v.partnerMapping")
+            });
+            action.setCallback(this, function(response){
+                let state = response.getState();
+                if (state == "SUCCESS") {
+                    let result = response.getReturnValue();
+                    component.set("v.vitualCorpToNodeAcc", result.vitualCorpToNodeAcc);
+                    component.set("v.NodeAccountsList", result.NodeAccountsList);
+                    console.log("virCopToNodeAccMap: "+ JSON.stringify(result));
+                    console.log("comp: "+component.get("v.NodeAccountsList"));
+                }
+                else {
+                    let errors = response.getError();
+                    console.log("Core_MDF_CampaignEdit :: helper:fetchVirtualCorpData: Error message: " + errors);
+                    var toastEvent = $A.get("e.force:showToast");
+                    toastEvent.setParams({
+                        message:  $A.get("$Label.c.Core_MDF_ApplicationErrorMessage"),
+                        duration: 5000,
+                        type: "error"
+                    });
+                    toastEvent.fire();
+                }
+            });
+            $A.enqueueAction(action);
+        } 
+    }*/
 })

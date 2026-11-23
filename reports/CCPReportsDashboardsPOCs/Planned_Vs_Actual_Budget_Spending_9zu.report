@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>PartnerFundClaim.Amount:SUM</calculatedFormula>
+        <datatype>number</datatype>
+        <description>Claimed Amount</description>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Claimed Amount</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PartnerMarketingBudget$Amount</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests$Campaign.Core_MDF_First_Year_Budget_Amount__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests$Campaign.Core_MDF_Second_Year_Budget_Amount__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests$RequestedAmount</field>
+    </columns>
+    <description>Planned Vs Actual Budget Spending</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PartnerMarketingBudget$Core_MDF_Budget_Partner__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests$Campaign</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Planned Vs Actual Budget Spending</name>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>Budget_Allocation_Campaigns_Activities_Claims__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PartnerMarketingBudget$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

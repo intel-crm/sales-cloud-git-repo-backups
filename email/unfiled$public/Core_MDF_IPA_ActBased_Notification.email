@@ -27,8 +27,11 @@
                         </apex:outputPanel>
                         <p>&nbsp; &nbsp; &nbsp; {!if(AND(RelatedTo.Core_MDF_Program__c == 'Intel Partner Alliance', ISBLANK(RelatedTo.Campaign.Name)), 'Outcome-Based Campaign Name', 'Activity Name')}: {!RelatedTo.Title}</p>
                         <p>&nbsp; &nbsp; &nbsp; {!if(AND(RelatedTo.Core_MDF_Program__c == 'Intel Partner Alliance', ISBLANK(RelatedTo.Campaign.Name)), 'Outcome-Based Number', 'Activity Number')}: {!RelatedTo.Core_MDF_Activity_Number__c}</p>
-                        <p>&nbsp; &nbsp; &nbsp; Start Date: {!RelatedTo.Core_MDF_Start_Date__c}</p>
-                        <p>&nbsp; &nbsp; &nbsp; End Date: {!RelatedTo.Core_MDF_End_Date__c}</p>
+                        <p>&nbsp; &nbsp; &nbsp; {!if(AND(RelatedTo.Core_MDF_Program__c == 'Intel Partner Alliance', ISBLANK(RelatedTo.Campaign.Name)), 'Outcome-Based Number', 'Activity Number')}: {!RelatedTo.Core_MDF_Activity_Number__c}</p>
+                        <apex:outputPanel rendered="{!RelatedTo.Core_MDF_Is_Outcome_Based_Ind__c}">
+                            <p>&nbsp; &nbsp; &nbsp; Start Date: {!RelatedTo.Core_MDF_Start_Date__c}</p>
+                            <p>&nbsp; &nbsp; &nbsp; End Date: {!RelatedTo.Core_MDF_End_Date__c}</p>
+                        </apex:outputPanel>
                         <p>&nbsp; &nbsp; &nbsp; Budget Type: {!RelatedTo.Core_MDF_Budget_Type_nm__c}</p>
                         <apex:outputPanel rendered="{!if(RelatedTo.Core_MDF_Program__c =='Intel Partner Alliance',true,false)}">
                             <p>&nbsp; &nbsp; &nbsp; Focus Area: {!RelatedTo.Core_MDF_Focus_Area_nm__c}</p>

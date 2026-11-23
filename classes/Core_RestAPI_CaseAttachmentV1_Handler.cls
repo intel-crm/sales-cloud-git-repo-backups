@@ -28,12 +28,15 @@ public with sharing class Core_RestAPI_CaseAttachmentV1_Handler{
     
     //Default constructor
     public Core_RestAPI_CaseAttachmentV1_Handler(DateTime currTime, String APIname){
+        System.debug('GET_CASE_ATTACH_SOQL-->'+GET_CASE_ATTACH_SOQL);
         this.entryTime = currTime;
         this.apiName = APIname;
+        System.debug('Core_RestAPI_CaseAttachmentV1_Handler URI '+RestContext.request.requestURI  );
     }  
     
     //Case Attachments for given case Number
     public Core_RestAPI_Response getCaseAttachments(){
+        System.debug(' Core_RestAPI_CaseAttachmentV1_Handler getCaseAttachments Entered  \n ');
         try{
             //process all validations and skip processing the request if validations fails.
             boolean isRequestValid = doValidations();
@@ -41,23 +44,28 @@ public with sharing class Core_RestAPI_CaseAttachmentV1_Handler{
                 //Process the api request
                 processRequest();
         }catch(Exception e){
+            System.debug(LoggingLevel.ERROR, 'Core_RestAPI_CaseAttachmentV1_Handler Exception : ' + Core_RestAPI_Util.getExceptionAsString(e));    
             Core_RestAPI_Util.processException(e,ERROR_CODE_500, response, apiName, entryTime);
         }finally{ 
+            System.debug('Core_RestAPI_CaseAttachmentV1_Handler Logging transaction and returning the response '+response);        
             if(String.isBlank(response.code))
                 response.code = SUCCESS_CODE_200;
             Core_RestAPI_LoggingUtil.logTransaction(entryTime, response);
         }        
+        System.debug(' Core_RestAPI_CaseAttachmentV1_Handler getCaseAttachments Exiting ');
         return response;
     } 
     
     //Validate the data , Incase of error set the error code to 
     @testVisible private Boolean doValidations(){
+        System.debug('Core_RestAPI_CaseAttachmentV1_Handler  doValidations Invoked ');
         Boolean isRequestValid = true;
         //List<Case> caseList = [Select Id FROM CASE Where CaseNumber =: CASE_NUMBER Limit 1];
         if(!CASE_NUMBER.isNumeric() || ( CASE_NUMBER != null && CASE_NUMBER.length() != 8 )){
             isRequestValid = false;
             Core_RestAPI_Util.processException(null ,MALFORMED_INPUT_9011, response, apiName, entryTime);   
         } else if(Core_RestAPI_Util.isRequestURIValid(CaseAttachmentV1_URI ) == false){
+            system.debug('inside isRequestValid ==>> '+isRequestValid );
             Core_RestAPI_Util.processException(null , INVALID_URI_404, response, apiName, entryTime);   
             isRequestValid = false;
         } 
@@ -68,6 +76,7 @@ public with sharing class Core_RestAPI_CaseAttachmentV1_Handler{
     //Retrieves all the attachments which are only 'Public to Customers' of case
     public void processRequest(){
         
+        System.debug('Core_RestAPI_CaseAttachmentV1_Handler  processRequest Entering SOQL  \n '+GET_CASE_ATTACH_SOQL);
         response.successContent = new List<CaseAttachmentWrapper>();
         CaseAttachmentWrapper csAttachWrpr = null;
         List<Core_IPS_Case_Attachments__c>lstCaseAttach = DATABASE.query(GET_CASE_ATTACH_SOQL);
@@ -85,6 +94,7 @@ public with sharing class Core_RestAPI_CaseAttachmentV1_Handler{
                 
             }
         }
+        System.debug('ProcessRequest response.successContent '+response.successContent);
     }
     //wrapper class for the response fields    
     public class CaseAttachmentWrapper  implements Core_RestAPI_SuccessContent{

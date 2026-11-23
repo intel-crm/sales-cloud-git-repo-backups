@@ -136,7 +136,7 @@ public class Core_MDF_IAH_Partnership_Score_Test {
                         database.insert(newValues2);
                         
                          Core_MDF_IAH_Partnership_Score.insertCurrQuarterData('Q2 2022');
-                        // Highlight: Unused Local Variable 
+                        // Highlight: Unused Local Variable - Indira
                        // List<Core_MDF_Partnership_Score__c> ps = [Select Id, Core_MDF_Quarter_Year_Nm__c, Core_MDF_Account_Id__c, Core_MDF_Partnership_Score_Id__c From Core_MDF_Partnership_Score__c Where Core_MDF_Quarter_Year_Nm__c='Q2 2022'];
                         HTTPResponse res1 = new HTTPResponse();
                 HTTPResponse res2 = new HTTPResponse();

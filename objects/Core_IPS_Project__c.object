@@ -59,13 +59,13 @@
     <actionOverrides>
         <actionName>Edit</actionName>
         <comment>Overriding to enable redirection based on user profiles.</comment>
-        <content>core_IPS_ProjectLandingPage</content>
-        <formFactor>Large</formFactor>
+        <content>Core_Edit_IPSProject</content>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>LightningComponent</type>
+        <type>Visualforce</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -86,13 +86,6 @@
         <actionName>List</actionName>
         <formFactor>Small</formFactor>
         <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>New</actionName>
-        <content>core_IPS_ProjectLandingPage</content>
-        <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>LightningComponent</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
@@ -102,6 +95,11 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
@@ -135,33 +133,23 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Premier_Support_Project_Record_Page1</content>
-        <formFactor>Small</formFactor>
+        <comment>Overriding to provide button redirection based on user profile</comment>
+        <content>Core_Detail_IPSProject</content>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Visualforce</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Premier_Support_Project_Record_Page1</content>
         <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
+        <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>IPS_Project_Compact_Layout</compactLayoutAssignment>
-    <compactLayouts>
-        <fullName>IPS_Project_Compact_Layout</fullName>
-        <fields>Name</fields>
-        <fields>Core_Status__c</fields>
-        <fields>OwnerId</fields>
-        <label>IPS Project Compact Layout</label>
-    </compactLayouts>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>IPS Project</description>
     <enableActivities>true</enableActivities>
@@ -694,27 +682,26 @@
     <label>Premier Support Project</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
         <columns>Core_IPS_Project_ID__c</columns>
         <columns>Core_IPS_GroupId__c</columns>
+        <columns>Core_IPS_Group_Name__c</columns>
+        <columns>NAME</columns>
         <columns>Core_MPNDA__c</columns>
         <columns>Core_Number_of_Accounts__c</columns>
-        <columns>CREATED_DATE</columns>
         <columns>Core_Number_of_Products__c</columns>
         <columns>CREATEDBY_USER</columns>
         <columns>Core_Status__c</columns>
         <columns>RECORDTYPE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
     <listViews>
         <fullName>All_Projects_Active</fullName>
-        <columns>NAME</columns>
         <columns>Core_IPS_Project_ID__c</columns>
+        <columns>NAME</columns>
         <columns>Core_Status__c</columns>
         <columns>Core_MPNDA__c</columns>
         <filterScope>Everything</filterScope>
@@ -722,11 +709,6 @@
             <field>Core_Status__c</field>
             <operation>equals</operation>
             <value>Active</value>
-        </filters>
-        <filters>
-            <field>Core_IPS_Private__c</field>
-            <operation>equals</operation>
-            <value>1</value>
         </filters>
         <label>All Active Projects</label>
         <sharedTo>
@@ -743,25 +725,12 @@
         <filters>
             <field>Core_Status__c</field>
             <operation>equals</operation>
-            <value>Active</value>
+            <value>Inactive,Active</value>
         </filters>
         <label>All Projects</label>
         <sharedTo>
             <allPartnerUsers></allPartnerUsers>
             <group>Core_PG_IPS_External_Customer</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_000_Core_IPS_Project</fullName>
-        <columns>NAME</columns>
-        <filterScope>Queue</filterScope>
-        <label>IPS - Org - Test Org 0</label>
-        <language>en_US</language>
-        <queue>Core_IPS_Org_000</queue>
-        <sharedTo>
-            <group>Core_IPS_Org_000</group>
-            <group>Core_IPS_Org_014</group>
-            <group>Core_PG_IT_Admin</group>
         </sharedTo>
     </listViews>
     <nameField>
@@ -923,7 +892,6 @@
         <searchFilterFields>CREATED_DATE</searchFilterFields>
         <searchFilterFields>Core_IPS_Legacy_Collab_Team_ID__c</searchFilterFields>
         <searchResultsAdditionalFields>Core_IPS_Project_ID__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_Status__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
     <validationRules>
@@ -1005,24 +973,20 @@ ISPICKVAL(Core_Status__c, &quot;Draft&quot;)
         <errorMessage>Project Status value can&apos;t be changed to Draft once the project is active.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Core_IPS_Project_cannot_be_activated</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(ISPICKVAL(Core_Status__c,&apos;New&apos;), 
+Core_Number_of_Accounts__c = 0,
+Core_Number_of_Products__c = 0
+)</errorConditionFormula>
+        <errorMessage>Project cannot be submitted without atleast one Account and one Product</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Core_IPS_Restrict_Changing_Private</fullName>
         <active>true</active>
         <description>This is to Restrict Changing the Private Checkbox When the Project is not in Draft Status</description>
         <errorConditionFormula>ISCHANGED( Core_IPS_Private__c ) &amp;&amp; NOT(  ISPICKVAL(Core_Status__c , &apos;DRAFT&apos;)) &amp;&amp; $Profile.Name &lt;&gt; $Label.Core_IPS_Data_Migration_Profile_Name</errorConditionFormula>
         <errorMessage>Premier Support Projects must be in the Draft state when being set to Private</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>SubRegionNotNullIfRegionExistedOnNewProj</fullName>
-        <active>true</active>
-        <description>Sub-Region is required when creating / Updating the Project with a specified Region</description>
-        <errorConditionFormula>AND(
-NOT(ISBLANK(TEXT(Region__c))),
-ISBLANK(TEXT(Sub_Region__c)),
-NOT(ISCHANGED(Core_Number_of_Products__c)),
-NOT(ISCHANGED(Core_Number_of_Users__c))
-)</errorConditionFormula>
-        <errorDisplayField>Sub_Region__c</errorDisplayField>
-        <errorMessage>Sub-Region is required when creating / Updating the Project with a specified Region</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
     <webLinks>

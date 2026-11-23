@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>CCP Bulk Upload Proposal field mapping</description>
+    <fields>
+        <fullName>Core_MDF_Data_Type_nm__c</fullName>
+        <description>To determine the datatype of the field to be export in template</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Data Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>string</fullName>
+                    <default>true</default>
+                    <label>string</label>
+                </value>
+                <value>
+                    <fullName>Date</fullName>
+                    <default>false</default>
+                    <label>Date</label>
+                </value>
+                <value>
+                    <fullName>Lookup</fullName>
+                    <default>false</default>
+                    <label>Lookup</label>
+                </value>
+                <value>
+                    <fullName>number</fullName>
+                    <default>false</default>
+                    <label>number</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_API_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field API Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Is_Required_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>To check is field required</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Is Required</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_LWCValidationMethodName__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>LWCValidationMethodName</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Mapping_Type__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Mapping Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Field Mapping</fullName>
+                    <default>true</default>
+                    <label>Field Mapping</label>
+                </value>
+                <value>
+                    <fullName>Relationship Mapping</fullName>
+                    <default>false</default>
+                    <label>Relationship Mapping</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Object_API_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Object API Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Object_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Object Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Platform__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Platform</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CCP</fullName>
+                    <default>true</default>
+                    <label>CCP</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Sequence_No_Nbr__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Sequence No</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Technical_Program_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Technical Program Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_ValidationRuleName__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>ValidationRuleName</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_ValidationToBeChecked__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>ValidationToBeChecked</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>Upload File Mapping</label>
+    <pluralLabel>Upload File Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

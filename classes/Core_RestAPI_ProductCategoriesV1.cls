@@ -18,6 +18,7 @@ global with sharing class Core_RestAPI_ProductCategoriesV1{
     global static Core_RestAPI_Response doGet(){
         Core_RestAPI_ProductCategoryV1_Handler handler = new Core_RestAPI_ProductCategoryV1_Handler(ENTRY_TIME, RESTAPI_NAME); 
         Core_RestAPI_Response response = handler.getCategoriesandSubCategories();
+        System.debug('response of getCategories'+response);
         return response;
     }
     

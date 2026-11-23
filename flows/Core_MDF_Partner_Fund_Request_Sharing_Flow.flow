@@ -4,13 +4,14 @@
         <description>This is to delete the PFR Share records for External Users.</description>
         <name>Core_MDF_Delete_PFR_Share_Records_For_External</name>
         <label>Delete PFR Share Records For External</label>
-        <locationX>188</locationX>
-        <locationY>304</locationY>
+        <locationX>467</locationX>
+        <locationY>436</locationY>
         <actionName>Core_MDF_CCP_GenericUtility</actionName>
         <actionType>apex</actionType>
         <connector>
             <targetReference>Fetch_Account_User_Association</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>accountId</name>
             <value>
@@ -24,15 +25,16 @@
             </value>
         </inputParameters>
         <nameSegment>Core_MDF_CCP_GenericUtility</nameSegment>
+        <offset>0</offset>
     </actionCalls>
-    <apiVersion>49.0</apiVersion>
+    <apiVersion>63.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <description>This step is to add the PFR share record to the PFR Share Collection that will be used to create Share Records</description>
         <name>Core_MDF_Add_PFRShare_record_to_the_PFRShareCollection</name>
         <label>Add PFRShare record to the PFRShareCollection</label>
-        <locationX>1133</locationX>
-        <locationY>301</locationY>
+        <locationX>1412</locationX>
+        <locationY>433</locationY>
         <assignmentItems>
             <assignToReference>soColl_PFRShare</assignToReference>
             <operator>Add</operator>
@@ -48,8 +50,8 @@
         <description>This step is to clear the values in the PFR Share Record</description>
         <name>Core_MDF_Assign_Empty_values_to_PFR_Share_Record</name>
         <label>Assign Empty values to PFR Share Record</label>
-        <locationX>890</locationX>
-        <locationY>309</locationY>
+        <locationX>1169</locationX>
+        <locationY>441</locationY>
         <assignmentItems>
             <assignToReference>so_PFRShare.ParentId</assignToReference>
             <operator>Assign</operator>
@@ -79,8 +81,8 @@
         <description>This step is to assign values to the PFR Share record</description>
         <name>Core_MDF_Assign_the_values_to_the_so_PFRShare_record</name>
         <label>Assign the values to the so_PFRShare record</label>
-        <locationX>884</locationX>
-        <locationY>181</locationY>
+        <locationX>1163</locationX>
+        <locationY>313</locationY>
         <assignmentItems>
             <assignToReference>so_PFRShare.ParentId</assignToReference>
             <operator>Assign</operator>
@@ -107,11 +109,47 @@
         </connector>
     </assignments>
     <decisions>
+        <name>Core_MDF_Check_for_Null_Conditions</name>
+        <label>Check for Null Conditions</label>
+        <locationX>184</locationX>
+        <locationY>163</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Core_MDF_Null_Check_for_Fields</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>vAccountId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vOwnerId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vPFRId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_MDF_Check_if_vChannelPartnerIdPriorValue_is_NOT_NULL</targetReference>
+            </connector>
+            <label>Null Check for Fields</label>
+        </rules>
+    </decisions>
+    <decisions>
         <description>This is used to check whether there are any users associated to the given Account, returned by the previous flow</description>
         <name>Core_MDF_Check_if_any_PNUM_records_exist</name>
         <label>Check if any PNUM records exist</label>
-        <locationX>641</locationX>
-        <locationY>149</locationY>
+        <locationX>920</locationX>
+        <locationY>281</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_soColl_PNUMRecods_Exists</name>
@@ -133,8 +171,8 @@
         <description>This decision is used to check whether any share records are to be created</description>
         <name>Core_MDF_Check_if_PFRShare_Collection_has_records</name>
         <label>Check if PFRShare Collection has records</label>
-        <locationX>641</locationX>
-        <locationY>427</locationY>
+        <locationX>920</locationX>
+        <locationY>559</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_soColl_PFRShare_Exists</name>
@@ -155,8 +193,8 @@
     <decisions>
         <name>Core_MDF_Check_if_vChannelPartnerIdPriorValue_is_NOT_NULL</name>
         <label>Check if vChannelPartnerIdPriorValue is NOT NULL</label>
-        <locationX>180</locationX>
-        <locationY>31</locationY>
+        <locationX>459</locationX>
+        <locationY>163</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_vChannelPartnerIdPriorValue_is_NULL</name>
@@ -204,6 +242,7 @@
         </rules>
     </decisions>
     <description>Flow to share the PFR records with the associated users.</description>
+    <environments>Default</environments>
     <formulas>
         <name>vLengthOfvChannelPartnerIdPriorValue</name>
         <dataType>Number</dataType>
@@ -216,8 +255,8 @@
         <description>Loop through the Partner Node User Mapping Collection</description>
         <name>Core_MDF_Loop_through_the_Partner_Node_User_Mapping_Collection</name>
         <label>Loop through the Partner Node User Mapping Collection</label>
-        <locationX>642</locationX>
-        <locationY>301</locationY>
+        <locationX>921</locationX>
+        <locationY>433</locationY>
         <assignNextValueToReference>so_PNUMRecord</assignNextValueToReference>
         <collectionReference>soColl_PNUMRecords</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -234,22 +273,34 @@
             <stringValue>LightningFlowBuilder</stringValue>
         </value>
     </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordCreates>
         <name>Core_MDF_Create_PFRShare_Collection</name>
         <label>Create PFRShare Collection</label>
-        <locationX>642</locationX>
-        <locationY>550</locationY>
+        <locationX>921</locationX>
+        <locationY>682</locationY>
         <inputReference>soColl_PFRShare</inputReference>
     </recordCreates>
-    <startElementReference>Core_MDF_Check_if_vChannelPartnerIdPriorValue_is_NOT_NULL</startElementReference>
+    <start>
+        <locationX>58</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Core_MDF_Check_for_Null_Conditions</targetReference>
+        </connector>
+    </start>
     <status>Active</status>
     <subflows>
         <description>This flow is used to get the list of users associated to the given Account</description>
         <name>Fetch_Account_User_Association</name>
         <label>Fetch Account User Association</label>
-        <locationX>448</locationX>
-        <locationY>147</locationY>
+        <locationX>727</locationX>
+        <locationY>279</locationY>
         <connector>
             <targetReference>Core_MDF_Check_if_any_PNUM_records_exist</targetReference>
         </connector>

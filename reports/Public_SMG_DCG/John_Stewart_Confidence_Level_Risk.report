@@ -72,7 +72,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Swastik Chakraborty,Konstantin Babanakov,Xiaobo Chen,Andy Green,Myles Hu,Jason Lamb,H Reddy,Xiaolei Ren,David Rhoades,Illyse Sheaffer,Volga Simsek,Merritte Stidston,Yuan Xu,Hai Feng Zhu,john chen,mohamed elsaid,meg mu,tom melzer,thomas melzer</value>
+            <value>Swastik Chakraborty,Konstantin Babanakov,Xiaobo Chen,Andy Green,Myles Hu,Jason Lamb,York Ma,Tony Mantione,Chris Martin,H Reddy,Xiaolei Ren,David Rhoades,Illyse Sheaffer,Volga Simsek,Merritte Stidston,Karl Vietmeier,Yuan Xu,Hai Feng Zhu,john chen,otto chow,mohamed elsaid</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -112,6 +112,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

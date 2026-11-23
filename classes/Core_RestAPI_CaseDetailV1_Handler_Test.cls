@@ -18,6 +18,7 @@
         requestObj.requestUri ='/v1.0/cases/';
         requestObj.httpMethod = 'GET';
         RestContext.request = requestObj;
+        System.debug(' RestContext.request '+RestContext.request);
         
     }
     
@@ -26,8 +27,10 @@
         
         Test.startTest();
         Core_RestAPI_TestUtilities.getCustomerUsersWithAccountsAndContacts('RestApiUnitTest', 1, 1,0,1,'IPS External Customer', 0);
+        System.debug(' Core_RestAPI_CaseDetailV1_Handler_Test Account '+[Select Name FROM Account] + ' Contact '+[Select Name FROM Contact]);
 
         commUser = [Select Name FROM User WHERE ContactId IN (Select Id FROM Contact) ];
+        System.debug(' Core_RestAPI_CaseDetailV1_Handler_Test User '+commUser);
         //Insert 5 cases for admin User & 5 cases for Community User
         System.runAs(adminUser){
             
@@ -95,25 +98,31 @@
 
             
             //inserting 10 records of project for Admin user and Community user
+            System.debug('Print the insert cases'+lstCase);
             System.assertEquals(10, lstCase.size());
         }
         Test.stopTest();
+        System.debug(' +++++++++++++++++++++++++++ Core_RestAPI_CaseDetailV1_Handler  Test Data Setup COmpleted +++++++++++++++++++++++++++ \n\n\n\n\n\n');
     }
     
     
     
     //This method test the handler methods: getCaseDetail & processrequest
     @isTest public static void test_getCaseDetail_Positive(){
+        System.debug('In Case Detail Positive');
         commUser = [Select Name FROM User WHERE ContactId IN (Select Id FROM Contact)];
         objCase = [Select CaseNumber FROM Case where OwnerId =: commUser.Id Limit 1];
+        System.debug('objCase.CaseNumber --->'+objCase.CaseNumber);
         RestRequest requestObj = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
         requestObj.resourcePath ='/services/apexrest/v1.0/cases/'+objCase.CaseNumber;
         requestObj.requestUri ='/v1.0/cases/'+objCase.CaseNumber;
         requestObj.httpMethod = 'GET';
         RestContext.request = requestObj;
+        System.debug(' RestContext.request '+RestContext.request);
         Core_RestAPI_CaseDetailV1_Handler handler = new Core_RestAPI_CaseDetailV1_Handler(System.now(), 'Core_RestAPI_CasesV1'); 
         Core_RestAPI_Response response = handler.getCaseDetail();  
         System.assertNotEquals(null, response);
+        System.debug(' >>> response '+response);
         
     }
     
@@ -131,6 +140,7 @@
         }catch(Exception e){
             exceptionThrown = false;   
         }
+        System.debug(' >>> test_getCases_Negative >>>  response '+finalResponse);
         System.assertNotEquals(null, finalResponse);
         System.assertEquals(true, exceptionThrown, 'Handler not thrown any exception if false');
         

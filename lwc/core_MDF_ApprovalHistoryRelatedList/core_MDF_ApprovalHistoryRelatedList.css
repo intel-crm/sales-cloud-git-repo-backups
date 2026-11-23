@@ -19,12 +19,29 @@
 .slds-wordbreak{
     word-break: break-all !important;
 }
+
 /*16852 starts*/
+/*.approver-section {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-top: 1px solid #eee;
+}*/
+
     .approval-flow-modal.slds-modal .slds-modal__container {
         max-width: 95vw !important;
         width: 95vw !important;
         margin: 0 auto !important;
     }
+
+    /*.approval-flow-modal .slds-modal__content.slds-p-around_medium {
+        display: block !important;
+        justify-content: center !important;
+        align-items: center !important;
+        overflow: hidden !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+    }*/
+
     .approval-flow-modal .slds-modal__content {
         display:    block;
         min-height: 300px;
@@ -35,12 +52,17 @@
         width:      100%;
         box-sizing: border-box;
     }
+
     .approval-flow-container {
         display: inline-block;
 	    min-width: 100%;
         box-sizing: border-box;
         text-align: center;
+        /*padding: 24px 20px;
+        justify-content: center;
+        align-items: center;*/
     }
+
     .flow-chart {
         display: inline-flex;
         align-items: center;
@@ -52,6 +74,7 @@
         width: max-content;
 	    text-align: left;
     }
+
     .flow-step {
         display: flex;
         align-items: center;
@@ -60,6 +83,7 @@
         white-space: nowrap;
         height: 100%;
     }
+
     .step-box {
         border: 2px solid #0c426e;
         border-radius: 8px;
@@ -75,33 +99,56 @@
         justify-content: flex-start;
         align-items: center;
         box-sizing: border-box;
+        /*vertical-align: middle;     
+        min-height: 100px;*/
         flex-shrink: 0;
-		overflow-wrap: break-word;
-        word-break: break-word;
+        height: 100%;     
+        overflow-wrap: break-word;
+        word-break: break-word;          
     }
+
     .start-box, .end-box {
         font-weight: bold;
         min-width: 100px !important;
         min-height: 50px;
         justify-content: center;
     }
+
+/*.manager-box {
+    background: #f3f3f3;
+    border-color: #706e6b;
+}
+
+.completed-box {
+    background: #e8f5e8;
+    border-color: #4caf50;
+}
+
+.current-box {
+    background: #fff3e0;
+    border-color: #ff9800;
+}*/
+
 .step-title {
     font-weight: bold;
     margin-bottom: 5px;
     font-size: 1.0em;
     line-height: 1.2;
-    flex-shrink:   0;
+    flex-shrink: 0;
 }
+
 .step-subtitle {
     font-size: 0.9em;
     margin-bottom: 8px;
     line-height: 1.1;
     font-style: italic;
-    flex-shrink:   0;
+    flex-shrink: 0;
 }
+
 .approvers-list {
     font-size: 0.9em;
     line-height: 1.2;
+    /*flex-grow: 1;*/
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -109,10 +156,16 @@
     width: 100%;
     box-sizing: border-box;
 }
+
 .approver-name {
     margin: 1px 0;
     line-height: 1.1;
 }
+
+/*.completed-approver {
+    color: #4caf50;
+}*/
+
 .arrow-right {
     width: 0;
     height: 0;
@@ -123,22 +176,62 @@
     flex-shrink: 0;
     align-self: center;
 }
+
+/*.queue-members-section {
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid #eee;
+    width: 100%;
+}
+
+.queue-members-title {
+    font-weight: bold;
+    font-size: 1.0em;
+    color: #000000;
+    margin-bottom: 3px;
+}
+
+.queue-member {
+    font-size: 0.9em;
+    color: #000000;
+    margin: 1px 0;
+    padding-left: 6px;
+    line-height: 1.1;
+}*/
+/* Ensure the modal content area is properly centered */
+/*.slds-modal__content {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    overflow: visible !important; 
+}*/
+
+/* Ensure modal is wide enough and centered*/
+/*.slds-modal_large .slds-modal__container {
+    max-width: 95vw !important;
+    width: 95vw !important;
+    margin: 0 auto;
+}*/
+
 .eligible-approvers-section {
   margin: 0;
   padding: 0;
 }
+
 .eligible-approvers-list {
   margin: 0;
-  padding-left: 20px;
+  padding-left: 20px; /* Controls indentation */
   list-style-type: disc;
   text-align: left;
 }
+
 .eligible-approver-item {
   margin: 2px 0;
   padding: 0;
   text-align: left;
   line-height: 1.4;
 }
+
 .eligible-approvers-grid {
   display: grid;
   grid-template-columns: 10px 1fr;
@@ -148,45 +241,67 @@
   margin: 0;
   padding: 0;
 }
+
 .grid-row {
   display: contents;
 }
+
 .grid-bullet {
   text-align: right;
   line-height: 1.4;
 }
+
 .grid-approver {
   text-align: left;
   line-height: 1.4;
   word-wrap: break-word;
-	overflow-wrap: break-word;
-  white-space: normal;	
+  overflow-wrap: break-word;
+  white-space: normal;
 }
+
 .approval-flow-container::-webkit-scrollbar {
     height: 12px !important;
 }
+
 .approval-flow-container::-webkit-scrollbar-track {
     background: #f1f1f1;
     border-radius: 4px;
 }
+
 .approval-flow-container::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 4px;
 }
+
 .approval-flow-container::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
 /* For better alignment when few steps */
 @media (max-width: 768px) {
     .step-box {
         min-width: 100px;
         max-width: 200px;
     }
+    
     .approval-flow-container {
         padding: 10px;
     }
+    
     .flow-chart {
         padding: 10px;
     }
 }
+
+/*@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 193, 7, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+    }
+}*/
 /*16852 ends*/

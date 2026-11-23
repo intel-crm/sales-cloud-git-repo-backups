@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_46391313</developerName>
+        <masterLabel>DEG</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_External_Issue_Category__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Audio</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Audio Video Bridge (AVB)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Media</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Media/Perceptual/UI</sourceValue>
+            </sourceValues>
+            <value>Audio DEG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Hardware</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hardware - test</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hardware/Platform</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Test/Validation</sourceValue>
+            </sourceValues>
+            <value>HW DEG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Graphics</sourceValue>
+            </sourceValues>
+            <value>Graphics DEG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Firmware/BIOS</sourceValue>
+            </sourceValues>
+            <value>ABL DEG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Software/Driver/OS</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Software/OS</sourceValue>
+            </sourceValues>
+            <value>BSP DEG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Security</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Security - test</sourceValue>
+            </sourceValues>
+            <value>Security DEG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Camera</sourceValue>
+            </sourceValues>
+            <value>Camera DEG</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>BucketField_46391313</field>
+    </columns>
+    <columns>
+        <field>Case.Core_External_Issue_Category__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Age__c</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Severity__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Sub_Status__c</field>
+    </columns>
+    <columns>
+        <field>CONTACT.NAME</field>
+    </columns>
+    <columns>
+        <field>ALIAS</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATEONLY</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE_BY_ALIAS</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Next_Response_Due_Date__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Last_Private_Case_Comment__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Last_Case_Comment_Timestamp__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Last_Case_Comment_Submitter__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Last_Case_Comment__c</field>
+    </columns>
+    <columns>
+        <field>PRIORITY</field>
+    </columns>
+    <description>All open ASMO projects</description>
+    <filter>
+        <booleanFilter>((((16 OR 15 OR 14 OR 13 OR 12 OR 11 OR 10 OR 9 OR 1 OR 4 OR 5 OR 6 OR 7 OR 8 OR 17 OR 18 OR 19) AND 2 AND 3)))</booleanFilter>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Harman Info 3.5 for GM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STATUS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_Sub_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Close-Pending</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>QNX-Denso TMOT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>QNX-Harman BJEV project</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>QNX others</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>GHS Info 3.5 for GM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Model 3</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Model S/X</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Honda MY 21 -Denso</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Honda MY 21- Wipro</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Harman R1 For FCA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Wipro for HondaMY21</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>21MY TYAA/TYBA Development</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>GM Info 3.5</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>GHS 35Up for Bosch</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>startsWith</operator>
+            <value>GM_HARMAN</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>GM_GHS_Info3.5_MY22</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>GM_Info3.5_MY22</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>ASMO Daily Tickets</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList@Case.Core_IPS_Project_Case__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Case.Core_Next_Response_Due_Date__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

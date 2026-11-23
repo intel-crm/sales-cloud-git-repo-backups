@@ -40,11 +40,6 @@
         overflow-x: hidden;
         }
         
-        .link a {
-        margin-left:1%; 
-        color:blue;
-        }
-        
     </style>
     
     <script>
@@ -70,7 +65,7 @@
                 
                 this.input = $( "<input>" )
                 .appendTo( this.wrapper )
-                .val( {!JSENCODE('value')} )
+                .val( value )
                 .attr( "title", "" )
                 .attr( "placeholder", "--Select--" )
                 .addClass( "custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left" )
@@ -290,7 +285,6 @@
         font-weight: bold;
         font-size: 11px;
         }
-        
     </style>
     
     <script>
@@ -320,7 +314,7 @@
                 $('[id$=RelatedMessage]').css("display","block");
             }
         }); 
-    <!--Ended by Geetha as per user story US92077
+    <!--Ended by Geetha as per user story US92077-->
         //window.document.onload = new function(e)
         //{
         //if({!isMAG})
@@ -329,69 +323,17 @@
         //window.parent.close();  
         //}      
         //}
-        -->
+        
         //Changes for Defect DE38556
-        function showSpinner(){
-            document.getElementById('opaque').style.display='block';
-            var popUp = document.getElementById('spinner');
-            popUp.style.display = 'block';  
-        }
+        function showSpinner()
+    {
+        document.getElementById('opaque').style.display='block';
+        var popUp = document.getElementById('spinner');
+        
+        popUp.style.display = 'block';  
+    }
     
     </script> 
-    
-    <style type="text/css"> 
-        /*Start--US343456--14th June 2019--Aniket--MINDS Case Creation*/       
-        ..MAGSec .detailList tr:first-child td {
-            font-size: 13px;
-        }
-        .MAGSec .detailList tr:nth-child(2) th {
-            width: 60%;
-            text-align: left;
-            padding-left: 30px;
-            padding-top: 15px;
-        }
-        .MAGSec .detailList tr:first-child td {
-            font-size: 13px;
-        }
-        .MAGSec .detailList tr:nth-child(2) th label {
-            color: #000;
-            font-weight: normal;
-            font-size: 12px;
-            
-        }
-        .MAGSec .detailList tr:nth-child(2) td {
-            padding-left: 0;
-        }
-          .MAGSec .detailList tr:nth-child(3) th {
-                text-align: left;
-                padding-left: 30px;
-                font-size: 12px;
-                font-weight: normal;
-                width: 22%;
-                padding-right: 0;
-                color: #000;
-        }
-        .MAGSec .detailList tr:nth-child(3) td {
-                padding-left: 0;
-                position: relative;
-        }
-        .MAGSec .detailList tr:nth-child(3) td table td {
-                padding-left: 0;
-                position: relative;
-        }
-        .MAGSec .detailList tr:nth-child(3) td table td:before {
-            content: '';
-            background-color: #c00;
-            position: absolute;
-            left: -4px;
-            width: 3px;
-            height: 17px;
-            top: 6px;
-            bottom: 1px;
-        }
-        /*End--US343456--14th June 2019--Aniket--MINDS Case Creation*/
-    </style>
-    
     <div id="dialog-confirm" title="Confirmation:" style="display:none;">
         <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>You will lose all your changes. Are you sure you want to Cancel?</p>
     </div>  
@@ -401,7 +343,7 @@
     </div>
     
     <apex:form id="form">  
-        <apex:pageBlock id="pageblock">
+        <apex:pageBlock id="pageblock" rendered="{!if(isMAG,false,true)}">
             
             <apex:pageMessages />
             <apex:actionFunction name="ConfirmBox" action="{!cancelCaseDetails}"/>
@@ -427,33 +369,7 @@
                         </div>
                     </div>
                 </apex:facet>
-            </apex:actionstatus>            
-            <!--Start--US343456--14th June 2019--Aniket--MINDS Case Creation-->
-            <apex:outputPanel >
-                <div class="MAGSec">                                       
-                    <apex:pageBlockSection title="{!$Label.Core_IPS_MINDS_Information}"  columns="1">                       
-                        <apex:pageBlockSectionItem >
-                            <apex:outputLabel value="{!$Label.Core_IPS_My_Settings_Data}" escape="false"/>
-                        </apex:pageBlockSectionItem>                                                
-                        <apex:pageBlockSectionItem >
-                            <apex:outputlabel styleClass="questionsLabel" value="{!$Label.Core_IPS_MAG_Question}"  />
-                            <apex:selectRadio value="{!isMindsFlag}" > 
-                                <apex:selectOption itemValue="true" itemLabel=" Yes " /> 
-                                <apex:selectOption itemValue="false" itemLabel=" No " />
-                            </apex:selectRadio>
-                        </apex:pageBlockSectionItem>                        
-                        <apex:pageBlockSection columns="1">
-                                <apex:pageBlockSectionItem >
-                                    <apex:outputlabel styleClass="countrylabel" value="{!$Label.Core_IPS_MAG_Country_Region}"/>                                     
-                                    <apex:selectList id="countries" value="{!selectedCountry}" size="1" required="true" >
-                                        <apex:selectOptions value="{!countries}"/>
-                                    </apex:selectList>
-                                </apex:pageBlockSectionItem>
-                        </apex:pageBlockSection>
-                    </apex:pageBlockSection>    
-                </div>
-            </apex:outputpanel>
-            <!--End--US343456--14th June 2019--Aniket--MINDS Case Creation-->               
+            </apex:actionstatus>
             <apex:pageblockSection title="Case Details" columns="1" id="caseCustomerDetail">
                 <!--start added by Aayushi US126300-->
                 <apex:outputpanel id="showCustomerVisible" rendered="{!!externalUser}">
@@ -477,7 +393,6 @@
                                 <apex:inputField value="{!cloneCase[f.fieldPath]}" rendered="{!if(f.label=='Severity',true,false)}" id="PriorityId">
                                     <apex:actionSupport event="onchange" rerender="showSeverityReason" action="{!DisplayPriorityReason}" status="status1"/>
                                 </apex:inputField>
-                                <apex:outputText escape="false" id="SeverityMessage" rendered="{!if(f.label=='Severity',true,false)}" styleClass="link" value="{!$Label.Core_IPS_Severity_Details}" />
                             </div>
                         </apex:outputPanel>
                     </apex:pageBlockSectionItem>
@@ -551,14 +466,14 @@
                 
             </apex:pageblockSection>
             <!-- <apex:pageblockSection title="Case Desciption">
-            <apex:repeat value="{!$ObjectType.Case.FieldSets.Issue_Description_Fields}"  var="f">
-            <apex:pageBlockSectionItem >
-            <apex:outputLabel value="{!f.label}"/>
-            <apex:inputField value="{!cloneCase[f.fieldPath]}" required="{!OR(f.required, f.dbrequired)}"/>
-            </apex:pageBlockSectionItem>
-            <br/>
-            </apex:repeat>-->
-            <!--</apex:pageblockSection>-->
+<apex:repeat value="{!$ObjectType.Case.FieldSets.Issue_Description_Fields}"  var="f">
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="{!f.label}"/>
+<apex:inputField value="{!cloneCase[f.fieldPath]}" required="{!OR(f.required, f.dbrequired)}"/>
+</apex:pageBlockSectionItem>
+<br/>
+</apex:repeat>
+</apex:pageblockSection>-->
             
             <apex:pageblockSection title="Product/Project Info" columns="1">
                 <apex:pageBlockSectionItem >
@@ -642,6 +557,89 @@
                                                   selectedSAProductId="{!null}" subCategorySelected="{!subCategorySelected}"
                                                   envDetails="{!envDetails}" subCatenvDetList="{!subCatEnvDetails}"/>
             
+            
+            <!-- Commented by amritesh 12/18/2017 - US85344,US101112 -->
+            <!--<apex:outputPanel id="environment1">
+<apex:pageblockSection title="Environment Details" rendered="{!displayEnvDetails}">
+
+
+
+
+<apex:repeat value="{!envDetails}" var="env">
+
+<apex:pageblockSectionItem id="section" rendered="{!if(env.type=='Text Area (5000)',false,true)}">
+<apex:outputLabel value="{!env.label}" escape="true"></apex:outputLabel>
+<apex:outputPanel id="panel">
+<apex:outputPanel rendered="{!if(env.type=='Text (255)',true,false)}" id="panel1">
+<apex:outputPanel rendered="{!if(env.required==true,true,false)}" styleClass="requiredInput" layout="block">
+<apex:outputPanel styleClass="requiredBlock" layout="block"/>
+<apex:inputText value="{!env.sPlaceHolder}" required="">
+</apex:inputText>
+</apex:outputPanel>
+<apex:outputPanel rendered="{!if(NOT(env.required==true),true,false)}">
+<apex:inputText value="{!env.sPlaceHolder}"/>
+</apex:outputPanel>
+<br/>
+</apex:outputPanel>
+<apex:outputPanel rendered="{!if(env.type=='Picklist', true,false)}">
+<apex:outputPanel rendered="{!if(env.required==true,true,false)}" styleClass="requiredInput" layout="block">
+<apex:outputPanel styleClass="requiredBlock" layout="block"/>
+<apex:selectList value="{!env.selectedValue}" size="1" id="targetId" onchange="changeSelection('{!$Component.targetId}')" >
+<apex:selectOptions value="{!env.pPlaceHolder}"/>
+</apex:selectList>
+</apex:outputPanel>
+<apex:outputPanel rendered="{!if(NOT(env.required==true),true,false)}">
+<apex:selectList value="{!env.selectedValue}" size="1" required="false">
+<apex:selectOptions value="{!env.pPlaceHolder}"/>
+</apex:selectList>
+</apex:outputPanel>
+<br/>
+</apex:outputPanel>
+<apex:outputPanel rendered="{!if(env.type=='Multiselect Picklist', true,false)}">
+<apex:outputPanel rendered="{!if(env.required==true,true,false)}" styleClass="requiredInput" layout="block">
+<apex:outputPanel styleClass="requiredBlock" layout="block"/>                                
+<apex:selectList value="{!env.selectedMValue}" size="3" multiselect="true">
+<apex:selectOptions value="{!env.pPlaceHolder}"/>
+</apex:selectList>
+</apex:outputPanel>
+<apex:outputPanel rendered="{!if(NOT(env.required==true),true,false)}">
+<apex:selectList value="{!env.selectedMValue}" size="3" multiselect="true" required="false">
+<apex:selectOptions value="{!env.pPlaceHolder}"/>
+</apex:selectList>
+</apex:outputPanel>
+<br/>
+</apex:outputPanel>  
+</apex:outputPanel>
+</apex:pageblockSectionItem>
+</apex:repeat>
+
+
+</apex:pageblockSection>
+<apex:pageblockSection title="Environment Details" columns="1" showHeader="false" rendered="{!displayEnvDetails}">
+<apex:repeat value="{!envDetails}" var="env">
+
+<apex:pageblockSectionItem id="section"  rendered="{!if(env.type=='Text Area (5000)',true,false)}">
+<apex:outputLabel value="{!env.label}" escape="true"></apex:outputLabel>
+<apex:outputPanel id="panel">
+<apex:outputPanel rendered="{!if(env.type=='Text Area (5000)',true,false)}">
+<apex:outputPanel rendered="{!if(env.required==true,true,false)}" styleClass="requiredInput" layout="block">
+<apex:outputPanel styleClass="requiredBlock" layout="block"/>                                 
+<apex:inputtextarea value="{!env.tPlaceHolder}" style="width:100%" rows="10" cols="150" /><br/>
+</apex:outputPanel>
+<apex:outputPanel rendered="{!if(NOT(env.required==true),true,false)}">
+<apex:inputtextarea value="{!env.tPlaceHolder}" style="width:100%" rows="10" cols="150" required="false"/><br/>
+</apex:outputPanel>
+</apex:outputPanel>
+</apex:outputPanel>
+</apex:pageblockSectionItem>
+</apex:repeat>
+
+
+</apex:pageblockSection>
+</apex:outputPanel>
+--> 
+            <!-- End of Commented by amritesh 12/18/2017 - US85344,US101112 -->
+            
         </apex:pageBlock>
         
         <!--Added by Geetha as per user story US92077-->
@@ -713,7 +711,11 @@
         </apex:outputPanel>
         
         <!--Ended by Geetha as per user story US92077-->  
-   
+        
+        <!--<apex:pageBlock id="pageblock2" rendered="{!if(isMAG,true,false)}">
+<apex:outputText >As your account is flagged as Military Aerospace and Government, you cannot copy this case. Please submit a new case using the Create New Case button or link.</apex:outputText>
+</apex:pageBlock>-->     
+        
     </apex:form>
     <script>
         $.each($("select[id*=caseCustomerDetail]"), function( index, value ) { 

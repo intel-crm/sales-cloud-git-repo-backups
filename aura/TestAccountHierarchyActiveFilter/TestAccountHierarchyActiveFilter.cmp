@@ -1,0 +1,66 @@
+<aura:component  controller="TestAccountHierarchyActiveFilterCtrl" implements="flexipage:availableForAllPageTypes,force:appHostable" >
+    
+    <aura:attribute name="gridColumns" type="list" />
+    <aura:attribute name="apexresponse" type ="List" />
+    <aura:attribute name="gridData" type="Object" />
+    <aura:attribute name="gridExpandedRows" type="List" access="PRIVATE" />
+    <aura:attribute name="gridOriginalData" type="Object"/>
+    <aura:attribute name="accountNameSearchText" type="String" />
+    <aura:attribute name="channelProgramSearchText" type="String" />
+    <aura:attribute name="getAccountsData" type="Object" />
+    <aura:attribute name="salesforceBaseURL" type="String" /> 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <div class="slds-box" style="background-color:white;">
+        <div class="slds-box"> 
+            <table>
+                <tr style="display: inline-block;">
+
+                    <td>
+                        <table style="vertical-align:top">
+                            <tr>
+                                <td style="padding:10px;font-size:20px;font-weight:bold;">
+                                    Account Hierarchy
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <table style="width:100%;margin-top:10px;">
+                <tr>
+                    
+                    <td width="10%" style="text-align:right;vertical-align:center;">
+                        <b>Account Name:&nbsp;&nbsp;</b> 
+                    </td>
+                    <td width="15%">
+                        <ui:inputText  value="{!v.accountNameSearchText}" class="slds-input textwidth" updateOn="keyup" keyup ="{! c.fetchRecords }" aura:id="searchAcctName"/>
+                        
+                    </td>
+                    <td width="10%" style="text-align:right;vertical-align:center;">
+                        <b>Account Active?:&nbsp;&nbsp;</b> 
+                    </td>
+                    <td width="15%" >
+                       	<ui:inputSelect class="slds-input textwidth" updateOn="change" change = "{!c.fetchRecords}" aura:id="SearchAcctStatus">
+    					<ui:inputSelectOption text="All Accounts" label="All Accounts" value="true"/>
+    					<ui:inputSelectOption text="true" label="Active"/>
+    					<ui:inputSelectOption text="false" label="Inactive"/>
+						</ui:inputSelect>	
+                    </td>
+                    <td width="2%"></td>
+                    <td width="10%">
+                    <lightning:button variant="brand" label="Export All" title="Brand action" onclick="{! c.handleClick }" />
+                    </td>
+                </tr>
+            </table>
+        </div><br/>
+        <div class="slds-box " style="background-color:White;"> 
+            <lightning:treeGrid  
+                                columns="{! v.gridColumns }"
+                                data="{! v.gridData }"
+                                keyField="name"
+                                expandedRows="{! v.gridExpandedRows}"
+                                onrowaction="{! c.onRowSelect }"
+                                aura:id="mytree" />
+        </div>
+    </div>
+</aura:component>

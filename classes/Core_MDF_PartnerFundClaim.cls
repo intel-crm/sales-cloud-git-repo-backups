@@ -8,48 +8,55 @@
 * Intel - SM      10/30/2018          Controller class for New Claim creation functionality
 Aura enabled class calling from Create claim lightning component.
 *******************************************************************************************************/
-
 public without sharing class Core_MDF_PartnerFundClaim {
-    /****************************************************************************************************** 
-Method Name:        saveClaim
-@return  :          String value (Upsert record Id / Failed)
-@parameters:        PartnerFundClaim object
-Description:        This method is used to create and save new claim data.
-Added By:           Accenture - JV - 10/30/2018
-Test Class:	    Core_MDF_PartnerFundClaim_Test, Core_MDF_PFC_IPAClaim_Test
-Modified By:        Date:       Changes: 
-Areefa          25-Sept-19    POP changes added to saveClaim method
-Vinodhini       27-Oct-10     New Param - AI PIC MDF POP Validation
-*******************************************************************************************************/ 
+    static string apiUrl='https://api.einstein.ai/v2/vision/ocr';
+    static string token='';
+    public static boolean byPassBatch = false;
+    
     @AuraEnabled
-    public static ClaimWrap saveClaim(PartnerFundClaim claim, List<Core_MDF_Audit_Document__c> auditDocList, String amountFields,string docId, Boolean isOutcomeBased, List<Core_MDF_Claim_Attributes__c> claimAttributeList, Boolean hasAnyChangeOnClaim, List<PartnerFundClaim> subClaimList, Boolean isClone){
+    public static ClaimWrap saveClaim(PartnerFundClaim claim, List<Core_MDF_Audit_Document__c> auditDocList, String amountFields,string docId, Boolean isOutcomeBased, List<Core_MDF_Claim_Attributes__c> claimAttributeList, Boolean hasAnyChangeOnClaim, List<PartnerFundClaim> subClaimList, Boolean isClone){//15268
+        
         ClaimWrap clmWrap = new ClaimWrap();
-        Savepoint sp = Database.setSavepoint();
+        Savepoint sp = Database.setSavepoint();//15268
+        
         try{
+            System.debug('subClaimList 23: '+ subClaimList);
             List<ContentDocumentLink> contentDocLinkList = new List<ContentDocumentLink>();
             PartnerFundClaim claimRecord = new PartnerFundClaim();
+            //ATHR - Deeply Nested if 16209
+            if(claim == null){
+            	clmWrap.claimDetail = null;
+            	clmWrap.errorDetail = '';
+            	return clmWrap;
+        	}
             if(amountFields != Null)
             {
                 AmountFieldsWrapper wrapper=(AmountFieldsWrapper)JSON.deserialize(amountFields,AmountFieldsWrapper.class);  
-                if(wrapper.totalAmountLocal !=Null){
+                //ATHR - Deeply Nested if 16209
+                if(wrapper.totalAmountLocal !=Null)
                     claim.Core_MDF_Total_Invoice_Amount_Local__c = decimal.valueOf(wrapper.totalAmountLocal);
-                    
-                    if(wrapper.costNotReimbursable !=Null)
-                        claim.Core_MDF_OtherCostsnotReimbursable_Local__c = decimal.valueOf(wrapper.costNotReimbursable);
-                    
-                    if(wrapper.taxesLocal !=Null)
-                        claim.Core_MDF_Taxes_Local__c = decimal.valueOf(wrapper.taxesLocal);
-                }
+                
+                if(wrapper.totalAmountLocal !=Null && wrapper.costNotReimbursable !=Null)
+                    claim.Core_MDF_OtherCostsnotReimbursable_Local__c = decimal.valueOf(wrapper.costNotReimbursable);
+                
+                if(wrapper.totalAmountLocal !=Null && wrapper.taxesLocal !=Null)
+                    claim.Core_MDF_Taxes_Local__c = decimal.valueOf(wrapper.taxesLocal);
+                
                 if(subClaimList != null && !subClaimList.isEmpty() && subClaimList.size()>0)
                     claim.Core_MDF_Has_Sub_Claims_Ind__c = true;
             }
-            if(claim != null){
+            
+            //if(claim != null){
                 Boolean isUpdate = false;
                 if(claim.Id == null){   
+                    if(claim.RecordTypeId==Label.Core_MDF_CoGTM_RecordTypeId){
+                        byPassBatch = true;
+                    }
                     Database.insert(claim);
                     if(isClaimEzyEnabled() && String.isNotBlank(docId)){
                         updateActualValues(claim,docId);
                     }
+                    
                 } 
                 else {
                     isUpdate = true;
@@ -59,7 +66,12 @@ Vinodhini       27-Oct-10     New Param - AI PIC MDF POP Validation
                 if(claim.id!=null && auditDocList!=null && auditDocList.size()>0){
                     assignDocumentList(auditDocList,claim);
                 }
+                
+                //IPA-Jegan
                 //Populate ClaimId in Claim Attribute records to insert
+                system.debug('claim.Id::' + claim.Id);
+                system.debug('isOutcomeBased::' + isOutcomeBased);
+                system.debug('!claimAttributeList.isEmpty()::' + !claimAttributeList.isEmpty());
                 if(claim.Id != null && isOutcomeBased && !claimAttributeList.isEmpty()){
                     
                     
@@ -98,21 +110,25 @@ Vinodhini       27-Oct-10     New Param - AI PIC MDF POP Validation
                 {
                     if(!(Core_MDF_Claim_Utility.bypassCDBCalloutValidationCheck('Core_MDF_ProcessClaimsWithAIForPICReview','Core_MDF_Bypass_AI_CDB_CallForClaims'))) {
                         List<String> aiPICEnabledPgms = Label.Core_MDF_AI_POP_Validation_EnabledPrograms.split(';');
+                        System.debug('date from label'+Date.valueOf(Label.Core_MDF_DateToEnableAIPIC));
+                        //if(aiPICEnabledPgms.contains(claim.Core_MDF_Program__c)  && !claim.Core_MDF_OutcomeBased_Ind__c && claim.CreatedDate > Date.valueOf(Label.Core_MDF_DateToEnableAIPIC) && (!isUpdate || (claim.Core_MDF_Status__c == 'PIC Pending' && isUpdate && hasAnyChangeOnClaim))) {//bypass for IPA non outcome based
                         PartnerFundClaim pfc = new PartnerFundClaim();
                         if(!isUpdate && !claim.Core_MDF_OutcomeBased_Ind__c) {
                             pfc  = [select Id,Core_MDF_Program__c, CreatedDate, Core_MDF_Status__c,Core_MDF_Budget_Type_Nm__c, Core_MDF_OutcomeBased_Ind__c, Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,
-                                    Core_MDF_Ad_Run_Start_Date__c, Core_MDF_Ad_Run_End_Date__c, Core_MDF_Reimbursable_TransactionAmt_Loc__c, Core_MDF_Total_Invoice_Amount_Local__c, Core_MDF_Currency__c, Core_MDF_Activity_Types__c from PartnerFundClaim where Id =: claim.Id];
+                                    Core_MDF_Ad_Run_Start_Date__c, Core_MDF_Ad_Run_End_Date__c, Core_MDF_Reimbursable_TransactionAmt_Loc__c, Core_MDF_Total_Invoice_Amount_Local__c, Core_MDF_Currency__c, Core_MDF_Activity_Types__c, request.Core_MDF_Activity_Description__c, request.Core_MDF_POP_Requirements_txt__c, request.Core_MDF_Attribution_Requirements_txt__c, Amount, Core_MDF_Budget_Type_Options_Nm__c from PartnerFundClaim where Id =: claim.Id];
                             pfc.Core_MDF_Status__c = !Claim.Core_MDF_OutcomeBased_Ind__c ? label.Core_MDF_Claim_Status_PIC_Pending : claim.Core_MDF_Status__c;
-                            
                         } else {
                             pfc = claim;
                         }
+                        System.debug('Core_MDF_Status__c ->'+pfc.Core_MDF_Status__c);
+                        System.debug('claim created date'+pfc.CreatedDate);
+                        System.debug('claim created date'+pfc.Core_MDF_Program__c);
                         
                         if(Core_MDF_Claim_Utility.isClaimEligibleForAICDBCallout(pfc) && (!isUpdate || (isUpdate && hasAnyChangeOnClaim))) {
                             Map<Id, PartnerFundClaim> claimIdToClaimRecMap = new Map<Id, PartnerFundClaim>();
-                            claimIdToClaimRecMap.put(claim.Id, claim);
-                            String Context = isUpdate ? 'update' : 'insert';
-                            Core_MDF_AI_Integration_Outbound.generateAIResponseForPICProcess(claimIdToClaimRecMap, Context);
+                            claimIdToClaimRecMap.put(pfc.Id, pfc);
+                            String context = isUpdate ? 'update' : 'insert';
+                            Core_MDF_AI_Integration_Outbound.generateAIResponseForPICProcess(claimIdToClaimRecMap, context);
                         }
                     }
                 }
@@ -120,8 +136,12 @@ Vinodhini       27-Oct-10     New Param - AI PIC MDF POP Validation
                     Core_MDF_CCP_UtilityClass.logError(e);
                 }
                 
+                System.debug('133===');
                 claimRecord = [Select id,Core_MDF_Excess_Requested_Amount__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Status__c,Core_MDF_Claim_Submitter_Id__c,Core_MDF_Processing_Preference_nm__c,Core_MDF_OtherCostsnotReimbursable_Local__c,Core_MDF_Reimbursable_TransactionAmt_Loc__c,Core_MDF_Requested_Reimbursement_Amt__c,Amount,Title,Core_MDF_Claim_Ref_Number__c,Core_MDF_Currency__c from PartnerFundClaim where id = : claim.id];
+                //15268 starts
                 List<PartnerFundClaim> cloneClaimList = new List<PartnerFundClaim>();
+                System.debug('137===');
+                System.debug('subClaimList 138: '+ subClaimList);
                 if(isClone==null) isClone=false;
                 if (subClaimList != null && !subClaimList.isEmpty()) {
                     for (PartnerFundClaim subClm : subClaimList) {
@@ -131,6 +151,7 @@ Vinodhini       27-Oct-10     New Param - AI PIC MDF POP Validation
                                 pfc.Core_MDF_Bank__c =  String.valueOf(subClm.Core_MDF_Bank__c).startsWith('a40') ? subClm.Core_MDF_Bank__c : null;
                                 pfc.Core_MDF_VAT_Opt_In__c = subClm.Core_MDF_VAT_Opt_In__c;
                                 pfc.Core_MDF_Claim_Id__c = claim.Id;
+                                //pfc.Core_MDF_Escalation_Id__c = claim.Core_MDF_Escalation_Id__c;
                                 pfc.Core_MDF_Status__c = claim.Core_MDF_Status__c;
                                 pfc.Core_MDF_Ad_Run_Start_Date__c = claim.Core_MDF_Ad_Run_Start_Date__c;
                                 pfc.Core_MDF_Ad_Run_End_Date__c = claim.Core_MDF_Ad_Run_End_Date__c;
@@ -158,7 +179,7 @@ Vinodhini       27-Oct-10     New Param - AI PIC MDF POP Validation
                         }
                         else{
                             subClm.Core_MDF_Claim_Id__c = claim.Id;
-			                subClm.Core_MDF_Escalation_Id__c = claim.Core_MDF_Escalation_Id__c;
+                            subClm.Core_MDF_Escalation_Id__c = claim.Core_MDF_Escalation_Id__c;
                             subClm.Core_MDF_Status__c = claim.Core_MDF_Status__c;
                             subClm.Core_MDF_Ad_Run_Start_Date__c = claim.Core_MDF_Ad_Run_Start_Date__c;
                             subClm.Core_MDF_Ad_Run_End_Date__c = claim.Core_MDF_Ad_Run_End_Date__c;
@@ -170,31 +191,47 @@ Vinodhini       27-Oct-10     New Param - AI PIC MDF POP Validation
                             subClm.Core_MDF_Invoice_Date__c = claim.Core_MDF_Invoice_Date__c;
                             subClm.Core_MDF_Invoice_Number__c = claim.Core_MDF_Invoice_Number__c;
                             subClm.Core_MDF_Claim_Comments__c = claim.Core_MDF_Claim_Comments__c;
+                            
                             Decimal pct = subClm.Core_MDF_Amount_Percentage__c; 
                             if (pct == null) continue;
                             Decimal ratio = pct / 100;
                             subClm.Core_MDF_Requested_Reimbursement_Amt__c = claimRecord.Core_MDF_Requested_Reimbursement_Amt__c * ratio;
-                            if (!String.valueOf(subClm.Core_MDF_Bank__c).startsWith('a40')) {
+                            //Decimal reiumAmt = claimRecord.Core_MDF_Requested_Reimbursement_Amt__c * ratio;
+                            //Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount reqReiumAmt = getExchangeRate(claim.Core_MDF_Currency__c,claimRecord.Core_MDF_Requested_Reimbursement_Amt__c * ratio);
+                            //subClm.Core_MDF_Requested_Reimbursement_Amt__c = reqReiumAmt.convertedAmount;
+                            
+                            //TWC3117-18459
+                            /*if (!String.valueOf(subClm.Core_MDF_Bank__c).startsWith('a40')) {
                                 subClm.Core_MDF_Bank__c = null; 
+                            }*/
+
+                            if (String.isBlank(subClm.Core_MDF_Bank__c) || !String.valueOf(subClm.Core_MDF_Bank__c).startsWith('a40')) {
+                                subClm.Core_MDF_Bank__c = null;
                             }
+                            //TWC3117-18459
                         }
                     }
+                    System.debug('subClaimList: '+ subClaimList);
+                    System.debug('cloneClaimList: '+ cloneClaimList);
                     if(!cloneClaimList.isEmpty()){
                         insert cloneClaimList;
                     } else {                        
                         upsert subClaimList;
                     }
+                    System.debug('Sub claims inserted: ' + subClaimList.size());
                 }
+                //15268 ends
+                
                 clmWrap.claimDetail = claimRecord;
                 clmWrap.errorDetail = '';
                 return clmWrap;
                 
-            }else{  
+            /*}else{  
                 clmWrap.claimDetail = null;
                 clmWrap.errorDetail = '';
-                return clmWrap; }
+                return clmWrap; }*/
         }catch(Exception e){
-            Database.rollback(sp);
+            Database.rollback(sp); //15268
             Core_MDF_CCP_UtilityClass.logError(e);
             clmWrap.claimDetail = null;
             clmWrap.errorDetail = 'Exception: '+e.getMessage();
@@ -211,36 +248,51 @@ Description:        This method is used to assignDocumentList to claimId .
 Added By:           Intel - Areefa - 15 Oct 2019
 Modified By:        Date:      Changes: 
 *******************************************************************************************************/
-    public static boolean assignDocumentList(List<Core_MDF_Audit_Document__c> auditDocList,PartnerFundClaim claim) {
-        try {
-            //list of content document link to be insert/update
-            List<ContentDocumentLink> contentDocLinkList = new List<ContentDocumentLink>();
-            if(auditDocList != null && auditDocList.size() >0){
-                for(Core_MDF_Audit_Document__c auditDoc : auditDocList){
-                    //ContentDocumentLink instance will not be created , if record already exists
-                    if(String.isBlank(auditDoc.Core_MDF_Claim__c)){
-                        ContentDocumentLink conDocLink = new ContentDocumentLink();
-                        auditDoc.Core_MDF_Claim__c = claim.Id;  
-                        //Documents uploaded during claim edit should be attached over case as well.
-                        if(claim.Core_MDF_Claim_Review_Case__c!=null){
-                            auditDoc.Core_MDF_Audit__c = claim.Core_MDF_Claim_Review_Case__c;
-                        }
-                        conDocLink.ContentDocumentId = auditDoc.Core_MDF_Document_Id__c;    // documentId
-                        conDocLink.LinkedEntityId = claim.Id;                                //LinkedEntityId: attaching to ClaimId
-                        conDocLink.ShareType='I';
-                        conDocLink.Visibility='AllUsers';
-                        contentDocLinkList.add(conDocLink);
+    public static void assignDocumentList(List<Core_MDF_Audit_Document__c> auditDocList,PartnerFundClaim claim) {
+        //list of content document link to be insert/update
+        List<ContentDocumentLink> contentDocLinkList = new List<ContentDocumentLink>();
+        //Set<Id> contentDocumentIds = new Set<Id>();
+        //ATHR - Deeply Nested if 16209
+        if(auditDocList == null || auditDocList.isEmpty()){
+        	return;
+    	}
+        //if(auditDocList != null && auditDocList.size() >0){
+            for(Core_MDF_Audit_Document__c auditDoc : auditDocList){
+                //ContentDocumentLink instance will not be created , if record already exists
+                //ATHR - Deeply Nested if 16209
+                if(!String.isBlank(auditDoc.Core_MDF_Claim__c)){
+            		continue;
+        		}
+                //if(String.isBlank(auditDoc.Core_MDF_Claim__c)){
+                    ContentDocumentLink conDocLink = new ContentDocumentLink();
+                    auditDoc.Core_MDF_Claim__c = claim.Id;  
+                    //Documents uploaded during claim edit should be attached over case as well.
+                    if(claim.Core_MDF_Claim_Review_Case__c!=null){
+                        auditDoc.Core_MDF_Audit__c = claim.Core_MDF_Claim_Review_Case__c;
                     }
-                }
-                if(auditDocList != null && auditDocList.size() > 0){
-                    Database.upsert(auditDocList); 
-                }
-                if(contentDocLinkList.size()>0){
-                    Database.upsert(contentDocLinkList);
-                }
-                return true;
-            }else { return false;}            
-        } catch (Exception e) { Core_MDF_CCP_UtilityClass.logError(e); return null; }
+                    //contentDocumentIds.add(auditDoc.Core_MDF_Document_Id__c);
+                    conDocLink.ContentDocumentId = auditDoc.Core_MDF_Document_Id__c;    // documentId
+                    conDocLink.LinkedEntityId = claim.Id;                                //LinkedEntityId: attaching to ClaimId
+                    conDocLink.ShareType='I';
+                    conDocLink.Visibility='AllUsers';
+                    contentDocLinkList.add(conDocLink);
+                //}
+            }
+            /*if(contentDocumentIds.size() > 0) {
+contentDocLinkList = [select Id, LinkedEntityId from ContentDocumentLink  where ContentDocumentId IN: contentDocumentIds];
+if(contentDocLinkList.size() > 0) {
+for(ContentDocumentLink conDocLink: contentDocLinkList) {
+conDocLink.LinkedEntityId = claim.Id;
+}
+}
+}*/
+            if(auditDocList != null && auditDocList.size() > 0){
+                Database.upsert(auditDocList); 
+            }
+            if(contentDocLinkList.size()>0){
+                Database.upsert(contentDocLinkList);
+            }
+        //}
         
     }
     
@@ -253,7 +305,6 @@ Added By:           Accenture JV- 10/30/2018
 Modified By:        Date:      Changes: 
 *******************************************************************************************************/
     public static PartnerFundRequest getActivityFields(Id activityId){
-        
         try{
             PartnerFundRequest activityObj = [SELECT Id,Core_MDF_Region_nm__c,Core_MDF_Activity_Number__c,Core_MDF_ActivityCategory__c,Core_MDF_End_Date__c,
                                               Core_MDF_Start_Date__c,Core_MDF_Activity_Types__c,
@@ -261,10 +312,10 @@ Modified By:        Date:      Changes:
                                               Core_MDF_TargetAudience__c,Core_MDF_Reimbursement_Rate__c,
                                               ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Name,
                                               ChannelPartner.Name,ChannelPartner.Id,RecordType.DeveloperName,Core_MDF_Budget_Type_nm__c,toLabel(Core_MDF_Budget_Type_nm__c) LocalizedBudgetType,
-                                              RequestedAmount, Core_MDF_Program__c,ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,
-                                              CampaignId,Campaign.Name,Campaign.Description,toLabel(Core_MDF_Activity_SubType_nm__c) LocalizedActivitySubType,Core_MDF_Activity_SubType_nm__c,Core_MDF_POP_Requirements_txt__c,Core_MDF_Activity_Closure_Type__c,
+                                              RequestedAmount, Core_MDF_Program__c,ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c,ChannelPartner.Core_MDF_Channel_Program__c,
+                                              CampaignId,Campaign.Name,Campaign.Description,Campaign.Core_MDF_Brand__c,toLabel(Core_MDF_Activity_SubType_nm__c) LocalizedActivitySubType,Core_MDF_Activity_SubType_nm__c,Core_MDF_POP_Requirements_txt__c,Core_MDF_Activity_Closure_Type__c,
                                               Core_MDF_Proposal_Based_Ind__c, ChannelPartner.Core_MDF_Channel_Program__r.Name, ChannelPartner.Core_MDF_Payment_Type_nm__c, ChannelPartner.Core_MDF_Payment_Type_NodeLevel_nm__c, 
-                                              Core_MDF_NEX_Ind__c, Core_MDF_Key_Marketing_Indicator_nm__c, Core_MDF_Deployment_Quantity_nbr__c, Core_MDF_Lead_Quantity_nbr__c, Core_MDF_Other_Quantity_nbr__c,Core_MDF_CSP_Intel_Based_Revenue_amt__c,Core_MDF_Is_Outcome_Based_Ind__c,Core_MDF_Activity_Description__c,Core_MDF_Parent_Activity_Id__c,Core_MDF_Activity_Level_nm__c
+                                              Core_MDF_NEX_Ind__c, Core_MDF_Key_Marketing_Indicator_nm__c, Core_MDF_Deployment_Quantity_nbr__c, Core_MDF_Lead_Quantity_nbr__c, Core_MDF_Other_Quantity_nbr__c, Core_MDF_Domain_Type_nm__c,Core_MDF_Is_Outcome_Based_Ind__c,Core_MDF_Activity_Description__c,Core_MDF_Parent_Activity_Id__c,Core_MDF_Activity_Level_nm__c//15268
                                               FROM PartnerFundRequest WHERE Id=:activityId LIMIT 1];
             if(activityObj != null){
                 return activityObj;
@@ -273,6 +324,7 @@ Modified By:        Date:      Changes:
             else{return null;}
         }catch(Exception e){ Core_MDF_CCP_UtilityClass.logError(e); return null; }
     }
+    
     
     /****************************************************************************************************** 
 Method Name:        getActivityDetails
@@ -289,13 +341,17 @@ Modified By:        Date:      Changes:
         List<String> locCountriesFromAct = new List<String>();
         String nonLocalizedCountryValues;
         String localizedCountryValues;
-        Boolean isOutComeBasedActivity = false;
+        Boolean isOutComeBasedActivity = false; //anushya TWC3117-14374
         try{
             ActivityDetailsWrapper activityDetailsWrap = new ActivityDetailsWrapper();
             PartnerFundRequest activityDetails = getActivityFields(activityId);
-            if(activityDetails != null){
+            //ATHR - Deeply Nested if 16209
+            if(activityDetails == null){
+                return null;
+            }
+            //if(activityDetails != null){
                 if(activityDetails.Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM) {
-                    isOutComeBasedActivity = activityDetails.Core_MDF_Is_Outcome_Based_Ind__c;
+                    isOutComeBasedActivity = activityDetails.Core_MDF_Is_Outcome_Based_Ind__c; //anushya TWC3117-14374
                     countryLabelToAPINameMap = getPickListvalues('PartnerFundClaim', 'Core_MDF_Country_Location_nm__c');
                     nonLocCountriesFromAct =  activityDetails.Core_MDF_Country_nm__c.split(';');
                     nonLocCountriesFromAct.sort();
@@ -307,21 +363,21 @@ Modified By:        Date:      Changes:
                         }
                         nonLocalizedCountryValues = String.join(nonLocCountriesFromAct, ';');
                     }
+                    
                     if(locCountriesFromAct != null && locCountriesFromAct.size() > 0) {
                         localizedCountryValues = String.join(locCountriesFromAct, ';');
                     }
                 }
                 activityDetailsWrap.localizedCountryValues = localizedCountryValues;
                 activityDetailsWrap.nonLocalizedCountryValues = nonLocalizedCountryValues;
-                activityDetailsWrap.isOutComeBasedActivity = isOutComeBasedActivity; 
+                activityDetailsWrap.isOutComeBasedActivity = isOutComeBasedActivity;  //anushya TWC3117-14374
                 activityDetailsWrap.activityDetails = activityDetails;
                 return activityDetailsWrap;
-            }
+            /*}
             
-            else{return null;}
+            else{return null;}*/
         }catch(Exception e){ Core_MDF_CCP_UtilityClass.logError(e); return null; }
     }
-    
     
     /****************************************************************************************************** 
 Method Name:        getPickListvalues
@@ -364,7 +420,7 @@ Roshan              19/01/2925  Added changes for "Reclaiming SF Partner License
         Map<Id,Id> contIdUserIdMap = new Map<Id,Id>();
         String retailPgm = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_Program_Name');
         String pRCClaimSubmitter = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCP_PRC_ClaimSubmitter');
-        for(Core_MDF_Partner_Node_User_Mapping__c pnum : [SELECT Core_MDF_Account__c, Core_MDF_User__c, Core_MDF_User__r.ContactId 
+        for(Core_MDF_Partner_Node_User_Mapping__c pnum : [SELECT Core_MDF_User__c, Core_MDF_User__r.ContactId  //HP:ATHR Fix
                                                           FROM Core_MDF_Partner_Node_User_Mapping__c 
                                                           WHERE Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c =: ultimateAccountId 
                                                           AND (Core_MDF_User__r.IsActive = TRUE OR Core_MDF_User__r.Partner_License_Reclaimed__c = TRUE) AND Core_MDF_Active_Ind__c = true
@@ -372,16 +428,16 @@ Roshan              19/01/2925  Added changes for "Reclaiming SF Partner License
         {
             contIdUserIdMap.put(pnum.Core_MDF_User__r.ContactId,pnum.Core_MDF_User__c);
         }
-        Core_MDF_ChannelProgram__mdt channelProgRec = [Select Core_MDF_Technical_Program_Name__c,Core_MDF_ClaimSubEntitlementName_Txt__c 
+        List<Core_MDF_ChannelProgram__mdt> channelProgRec = [Select Core_MDF_Technical_Program_Name__c,Core_MDF_ClaimSubEntitlementName_Txt__c 
                                                        from Core_MDF_ChannelProgram__mdt where Core_MDF_Technical_Program_Name__c =:techProgramName LIMIT 1];                  
         
         Set<String> claimSubEntNameSet = new Set<String>();
-        if(channelProgRec != Null && channelProgRec.Core_MDF_ClaimSubEntitlementName_Txt__c != Null){
-            claimSubEntNameSet.addAll(channelProgRec.Core_MDF_ClaimSubEntitlementName_Txt__c.split(';'));       
+        if(channelProgRec != Null && !channelProgRec.isEmpty() && channelProgRec[0].Core_MDF_ClaimSubEntitlementName_Txt__c != Null){
+            claimSubEntNameSet.addAll(channelProgRec[0].Core_MDF_ClaimSubEntitlementName_Txt__c.split(';'));       
         }
         
         if(contIdUserIdMap!=null && contIdUserIdMap.size()>0 && claimSubEntNameSet != Null && claimSubEntNameSet.size()>0){
-            for(Core_Contact_Entitlement__c contEnt : [select id,Core_Contact_Id__c, Core_Entitlement_Id__r.name 
+            for(Core_Contact_Entitlement__c contEnt : [select id,Core_Contact_Id__c //HP:ATHR Fix
                                                        from Core_Contact_Entitlement__c 
                                                        where Core_Contact_Id__c IN : contIdUserIdMap.keyset() 
                                                        AND Core_Selected__c = true AND Core_Status__c='Complete' 
@@ -395,7 +451,6 @@ Roshan              19/01/2925  Added changes for "Reclaiming SF Partner License
         
         // Adding logic for to add mystery shopper user into the list, based on IUPGM
         if(techProgramName == retailPgm) {  
-            // Roshan - License Reclaim Changes for Internal Users 
             for(Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm:[SELECT id,Core_MDF_User_id__c FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c WHERE (Core_MDF_User_id__r.IsActive = true OR Core_MDF_User_id__r.Partner_License_Reclaimed__c = TRUE) and Core_MDF_Active_Ind__c = true 
                                                                  and Core_MDF_Program_nm__c =: retailPgm and Core_MDF_Account_id__r.Core_MDF_CoMarketing_Ultimate_Account__c =:ultimateAccountId 
                                                                  and Core_MDF_Role_nm__c =:pRCClaimSubmitter]){           
@@ -440,6 +495,7 @@ Modified By:        Date:      Changes:
         } catch (Exception e) { Core_MDF_CCP_UtilityClass.logError(e);}
         return listValues;
     }
+    
     @AuraEnabled
     public static Map<String,String> fetchBankRegion(List<Core_MDF_Bank__c> bankList){
         
@@ -487,10 +543,9 @@ Modified By:        Date:      Changes:
     public static CreateClaimWrapper checkClaimFromActivity(String objectName,Id activityId, Boolean isPartnerUser){
         try {
             CreateClaimWrapper ccw = new CreateClaimWrapper();
-            PartnerFundRequest activity = new PartnerFundRequest();
-            activity = getActivityFields(activityId);
+            PartnerFundRequest activity = getActivityFields(activityId);
             Boolean hasCreateAccess = Core_MDF_checkSObjectCRUDPermission.checkSObjectCreatePermission(objectName);
-            if(activity != null && activity.Core_MDF_Program__c == Label.Core_MDF_IPA_Program_Name ) {
+            if(activity != null && (activity.Core_MDF_Program__c == Label.Core_MDF_IPA_Program_Name)) {
                 Boolean isProposalBasedActivity = activity.Core_MDF_Proposal_Based_Ind__c;
                 if(!isPartnerUser) {
                     ccw.checkCreate = hasCreateAccess;
@@ -555,7 +610,7 @@ Description:        This method is used to check the permission set over logged 
 Added By:           Accenture - AD - 11/26/2018
 Modified By:        Date:       Changes: 
 *******************************************************************************************************/
-    @AuraEnabled
+    @AuraEnabled(cacheable=true)
     public static Boolean isInternalAuditUser(String custPermissionName){
         Boolean isAuditUser = false;
         try {
@@ -646,7 +701,7 @@ Added By:           Accenture - VD - 14/06/2019
 Modified By:        Date:      Changes: 
 *******************************************************************************************************/
     
-    @AuraEnabled 
+    @AuraEnabled (cacheable=true)
     public static UserInfoWrapper fetchUserDetails(){
         try {
             String pRCRMFClaimOperationCustPerName = Core_MDF_Configuration__c.getValues('PRC_CLAIM_OPERATION_CUSTOM_PERMISSION').Core_MDF_Value__c;
@@ -682,6 +737,7 @@ Modified By:        Date:      Changes:
                                                                        from Core_MDF_ObjRecType_Budget_FieldSetMap__mdt Limit 1000]){
                                                                            mapOfRecordTypes.put(recTypeMetaData.Core_MDF_Claim_RecordType_txt__c,recTypeMetaData);
                                                                        }
+        System.debug('MDT OPtimisation mapOfRecordTypes '+ mapOfRecordTypes);
         return mapOfRecordTypes;
     }
     
@@ -736,7 +792,7 @@ Method Name:        getBudgetTypetoHideBank
 Description:        This method is used to check the config to Hide Bank
 Added By:           Intel - SM - 08/04/2021
 Modified By:        Date:      Changes: 
-*******************************************************************************************************/    
+*******************************************************A************************************************/    
     @AuraEnabled
     public static String getBudgetTypetoHideBank(){
         Core_MDF_Configuration__c mc = Core_MDF_Configuration__c.getValues('BUDGET_TYPE_CLAIM_BANK_HIDE');
@@ -773,6 +829,7 @@ custom label: when we make 100% POP, please update this label "Core_MDF_Activity
                                                                             where Core_MDF_Program_nm__c=:program  
                                                                             And Core_MDF_Active_ind__c=true And Core_MDF_Req_Doc_Types_ind__c=true ]){
                                                                                 String key = claimPOPMandatoryInfo.Core_MDF_Program_nm__c + (claimPOPMandatoryInfo.Core_MDF_Budget_Type_txt__c==null?'':claimPOPMandatoryInfo.Core_MDF_Budget_Type_txt__c) ;
+                                                                                
                                                                                 if(key.equals(program+budgetType)){
                                                                                     retvalue = true;
                                                                                 }else if(key.equals(program) && claimPOPMandatoryInfo.Core_MDF_Budget_Type_txt__c == null){
@@ -841,7 +898,8 @@ Modified By:        Date:       Changes:
     public static boolean checkRetailerAccount(PartnerFundClaim pfc){
         boolean isNotRetailerAcct = false;
         List<Core_MDF_Partner_Group_Mapping__c> pGM = new List<Core_MDF_Partner_Group_Mapping__c>();
-        pGM =[select id,Core_MDF_Account__c, Core_MDF_Account__r.Name, Core_MDF_Channel_Program__r.Name from Core_MDF_Partner_Group_Mapping__c where  Core_MDF_Account__c =: pfc.Core_MDF_Ultimate_Account_ID__c  and Core_MDF_Type_of_Access__c='External' and Core_MDF_Channel_Program__r.Name='Retail Marketing Funds' and Core_MDF_Inactive_Ind__c = false];  
+        pGM =[select id,Core_MDF_Account__c, Core_MDF_Account__r.Name, Core_MDF_Channel_Program__r.Name from Core_MDF_Partner_Group_Mapping__c where  Core_MDF_Account__c =: pfc.Core_MDF_Ultimate_Account_ID__c  and Core_MDF_Inactive_Ind__c = false and Core_MDF_Type_of_Access__c='External' and Core_MDF_Channel_Program__r.Name='Retail Marketing Funds'];  
+        
         if (pGM.isEmpty()){
             isNotRetailerAcct = true;
         }
@@ -859,6 +917,85 @@ Modified By:        Date:      Changes:
     public static Boolean fetchLogInfoByPassCheckValue(){
         return Core_MDF_Utility.byPassFeature('Bypass_LogInfoTextFieldMapping');
     }
+    
+    @AuraEnabled
+    public static List <String> getBrandPicklistValues() {
+        //List to store the brand values
+        List<String> listOfBrandValues = new List<String>();
+        
+        //Get the object type from object name. 
+        Schema.SObjectType objType = Schema.getGlobalDescribe().get('PartnerFundClaim');
+        
+        //Describe the sObject using its object type.
+        Schema.DescribeSObjectResult objDescribe = objType.getDescribe();
+        
+        //Get the specific field information from field name. 
+        Schema.DescribeFieldResult objFieldInfo = objDescribe.fields.getMap().get('Core_MDF_Brand_nm__c').getDescribe();
+        
+        //Get the picklist field values.
+        List<Schema.PicklistEntry> picklistvalues = objFieldInfo.getPicklistValues();
+        
+        //Add the picklist values to list.
+        for(Schema.PicklistEntry plv: picklistvalues) {
+            listOfBrandValues.add(plv.getValue());
+        }
+        listOfBrandValues.sort();
+        return listOfBrandValues;
+    }
+    
+    /****************************************************************************************************** 
+Method Name:        getKPIValToAPIName
+@return       :     Map<String, String>
+Description   :     To get the KPI field's picklist value and its dependent field's API Name
+@Added By:          Accenture - RP
+******************************************************************************************************/
+    /*@AuraEnabled
+public static KPIQuantityFieldsWrapper getKPIQuantityMappingWrapper(String objectAPIName) {
+Map<String, String> kpiPLValueToFieldAPIMap = new Map<String, String>(); //Leads: Core_MDF_Lead_Quantity_nbr__c; Deployments: Core_MDF_Deployment_Quantity_nbr__c
+Map<String, String> kpiFieldAPINameToFieldLabel = new Map<String, String>(); //Core_MDF_Lead_Quantity_nbr__c: Localized field label
+Map<String, String> kpiPLValueToFieldLabelMap = new Map<String, String>();
+KPIQuantityFieldsWrapper kpiQtyFieldsWrapper = new KPIQuantityFieldsWrapper();
+try {
+String kpiPickListValueToFieldAPIName = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_KPI_Label_To_API_Name'); //{"Leads":"Core_MDF_Lead_Quantity_nbr__c","Deployments":"Core_MDF_Deployment_Quantity_nbr__c","Others":"Core_MDF_Other_Quantity_nbr__c"}
+List<String> listOfFieldAPINames = Core_MDF_CCP_ConstantClass.KPI_QUANTITY_FIELDS.split(','); //'Core_MDF_Lead_Quantity_nbr__c,Core_MDF_Deployment_Quantity_nbr__c,Core_MDF_Other_Quantity_nbr__c'
+//Get the object type from object name. 
+Schema.SObjectType objType = Schema.getGlobalDescribe().get(objectAPIName);
+//Describe the sObject using its object type.
+Schema.DescribeSObjectResult objDescribe = objType.getDescribe();
+
+Map<String,Schema.SObjectField> objFieldsMap = objDescribe.fields.getMap();
+
+if(listOfFieldAPINames != null && listOfFieldAPINames.size() > 0) {
+for(String field: listOfFieldAPINames) {
+String fieldLabel = objFieldsMap.get(field).getDescribe().getLabel();
+kpiFieldAPINameToFieldLabel.put(field, fieldLabel); //Core_MDF_Lead_Quantity_nbr__c: Localized field label
+}    
+}
+
+if(kpiFieldAPINameToFieldLabel != null && kpiFieldAPINameToFieldLabel.size() > 0) {
+Map<String, Object> kpiPickListValueToFieldAPINameJSON = (Map<String, Object>) JSON.deserializeUntyped(kpiPickListValueToFieldAPIName);
+for (String key : kpiPickListValueToFieldAPINameJSON.keySet()) {
+kpiPLValueToFieldAPIMap.put(key, String.valueOf(kpiPickListValueToFieldAPINameJSON.get(key))); //Leads: Core_MDF_Lead_Quantity_nbr__c; Deployments: Core_MDF_Deployment_Quantity_nbr__c
+}
+}
+
+if(kpiPLValueToFieldAPIMap != null && kpiPLValueToFieldAPIMap.size() > 0) {
+for(String kpi : kpiPLValueToFieldAPIMap.keySet()) {//kpi - picklist value - Leads from mdt
+String fieldAPIName = kpiPLValueToFieldAPIMap.get(kpi);// field api name
+if(kpiFieldAPINameToFieldLabel.containsKey(fieldAPIName) && kpiFieldAPINameToFieldLabel.get(fieldAPIName) != null) {
+kpiPLValueToFieldLabelMap.put(kpi, kpiFieldAPINameToFieldLabel.get(fieldAPIName)); //Leads: Lead Quantity; Deployments: Deployment Quantity
+}
+}
+}
+kpiQtyFieldsWrapper.kpiPLValueToFieldAPIMap = kpiPLValueToFieldAPIMap;
+kpiQtyFieldsWrapper.kpiPLValueToFieldLabelMap = kpiPLValueToFieldLabelMap;    
+} catch(Exception e) {
+Core_MDF_CCP_UtilityClass.logError(e);
+throw new AuraHandledException(e.getMessage());
+}
+return kpiQtyFieldsWrapper;
+}*/
+    
     public class ClaimWrap{
         @AuraEnabled public String errorDetail {get;set;}   // holds the exception message to be sent to component
         @AuraEnabled public PartnerFundClaim claimDetail {get;set;}  // holds claim details to be sent to component
@@ -872,6 +1009,7 @@ Modified By:        Date:      Changes:
         @AuraEnabled
         public string taxesLocal { get; set; }
     }
+    
     public class ActivityDetailsWrapper
     {
         @AuraEnabled
@@ -881,8 +1019,102 @@ Modified By:        Date:      Changes:
         @AuraEnabled
         public string nonLocalizedCountryValues { get; set; }
         @AuraEnabled
-        public Boolean isOutcomeBasedActivity { get; set; } 
-    }    
+        public Boolean isOutcomeBasedActivity { get; set; } //anushya TWC3117-14374
+    }
+    
+    /*public class KPIQuantityFieldsWrapper {
+@AuraEnabled
+public Map<string, String> kpiPLValueToFieldAPIMap{get;set;}//{Leads: Leads_qty_nbr}
+@AuraEnabled
+public Map<string, String> kpiPLValueToFieldLabelMap{get;set;}//{'Leads': 'Lead Quantity'}
+}*/
+    
+    // /****************************************************************************************************** 
+    // Method Name:        fetchExceptionsByClaimId
+    // @return       :     Map<Id, sObject>
+    // Description   :     To get potential Exception a claim could get mapped to
+    // @Added By:          Accenture - RP
+    // ******************************************************************************************************/
+    // @AuraEnabled(cacheable=true)
+    // public static Map<Id, Core_MDF_Exception__c> fetchExceptionsByClaimId(Id claimId, Id corpAccountRecordId) {
+    //     String programName = '';
+    //     Map<Id, Core_MDF_Exception__c> exceptionMap = new Map<Id, Core_MDF_Exception__c>();
+    
+    //     try {
+    //         PartnerFundClaim pfc = fetchPartnerFundClaim(claimId);
+    
+    //         if (pfc != null && pfc.Core_MDF_Program__c != null) {
+    //             if(corpAccountRecordId == null) {
+    //                 corpAccountRecordId = pfc.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Id;
+    //             }
+    //             Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem = fetchBankProgramEntitlementMapping(pfc.Core_MDF_Program__c);
+    
+    //             if (bpem != null && bpem.Core_MDF_Channel_Program__c != null) {
+    //                 programName = bpem.Core_MDF_Bank_Program_Name__c;
+    //                 String activityCategoryType = pfc.Core_MDF_Activity_Category__c + '->' + pfc.Core_MDF_Activity_Types__c;
+    
+    //                 if (String.isNotBlank(activityCategoryType) && pfc.Core_MDF_Activity_Start_Date__c != null && pfc.Core_MDF_Activity_End_Date__c != null) {
+    //                     exceptionMap = fetchExceptions(pfc, programName, activityCategoryType, corpAccountRecordId);
+    //                 }
+    //             }
+    //         }
+    
+    //     } catch (Exception e) {
+    //         throw new AuraHandledException('An unexpected error occurred: ' + e.getMessage());
+    //     }
+    //     return exceptionMap;
+    // }
+    
+    // private static PartnerFundClaim fetchPartnerFundClaim(Id claimId) {
+    //     return [
+    //         SELECT Id, Core_MDF_Activity_Start_Date__c, Core_MDF_Activity_End_Date__c, Core_MDF_Ad_Run_Start_Date__c, Core_MDF_Ad_Run_End_Date__c, 
+    //                Core_MDF_Activity_Category__c, Core_MDF_Activity_Types__c, Core_MDF_Budget_Type_Nm__c, Core_MDF_Program__c, 
+    //                ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Id
+    //         FROM PartnerFundClaim 
+    //         WHERE Id = :claimId 
+    //         LIMIT 1
+    //     ];
+    // }
+    
+    // private static Core_MDF_BankProgram_Entitlement_Mapping__mdt fetchBankProgramEntitlementMapping(String programId) {
+    //     return [
+    //         SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c
+    //         FROM Core_MDF_BankProgram_Entitlement_Mapping__mdt
+    //         WHERE Core_MDF_Channel_Program__c = :programId
+    //         LIMIT 1
+    //     ];
+    // }
+    
+    // private static Map<Id, Core_MDF_Exception__c> fetchExceptions(PartnerFundClaim pfc, String programName, String activityCategoryType, Id corpAccountRecordId) {
+    //     Map<Id, Core_MDF_Exception__c> exceptionMap = new Map<Id, Core_MDF_Exception__c>();
+    
+    //     List<Core_MDF_Exception__c> exceptions = [
+    //         SELECT Id, Name, Core_MDF_Exception_Start_Date_dt__c, Core_MDF_Exception_End_Date_dt__c, Core_MDF_Program_nm__c, 
+    //                Core_MDF_Activity_Cate_and_Type_nm__c, Core_MDF_Account_id__c, Core_MDF_Select_All_Accounts_ind__c, 
+    //                Core_MDF_Name_of_Exception_nm__c, Core_MDF_Exception_Reason_nm__c, Core_MDF_Budget_Type_nm__c, 
+    //                Core_MDF_Exception_Status_nm__c
+    //         FROM Core_MDF_Exception__c
+    //         WHERE Core_MDF_Exception_Status_nm__c = 'Approved'
+    //         AND Core_MDF_Exception_Start_Date_dt__c <= :pfc.Core_MDF_Ad_Run_End_Date__c
+    //         AND Core_MDF_Exception_End_Date_dt__c >= :pfc.Core_MDF_Ad_Run_Start_Date__c
+    //         AND Core_MDF_Program_nm__c = :programName
+    //         AND (Core_MDF_Account_id__c = :corpAccountRecordId OR Core_MDF_Select_All_Accounts_ind__c = true)
+    //         ORDER BY Core_MDF_Name_of_Exception_nm__c
+    //     ];
+    
+    //     for (Core_MDF_Exception__c exceptionRecord : exceptions) {
+    //         if (exceptionRecord.Core_MDF_Activity_Cate_and_Type_nm__c.containsIgnoreCase(activityCategoryType)) {
+    //             if ((exceptionRecord.Core_MDF_Budget_Type_nm__c != null && pfc.Core_MDF_Budget_Type_nm__c != null) &&
+    //                 exceptionRecord.Core_MDF_Budget_Type_nm__c.contains(pfc.Core_MDF_Budget_Type_nm__c)) {
+    //                 exceptionMap.put(exceptionRecord.Id, exceptionRecord);
+    //             } else if (String.isBlank(exceptionRecord.Core_MDF_Budget_Type_nm__c)) {
+    //                 exceptionMap.put(exceptionRecord.Id, exceptionRecord);
+    //             }
+    //         }
+    //     }
+    //     return exceptionMap;
+    // }
+    
     
     /****************************************************************************************************** 
 Method Name:        getProposedData
@@ -897,11 +1129,20 @@ Modified By:        Date:       Changes:
         ProposedDataWrapper dataWrap = new ProposedDataWrapper();
         try{       
             PartnerFundClaim record = new PartnerFundClaim();
-            if(String.isNotBlank(imageData)){ 
+			//ATHR - Deeply Nested if 16209
+            if(String.isBlank(imageData)){
+                throw new StringException('ClaimEzy Upload Error');
+            }
+            //if(String.isNotBlank(imageData)){ 
                 //Azure callout to get ocr request Id 
                 String outputWithOperationLocId = Core_MDF_FormRecognizerIntegration.readDocumentContents(imageData);
                 //Azure callout to get data as string
-                if(outputWithOperationLocId != null){
+            //ATHR - Deeply Nested if 16209
+            if(outputWithOperationLocId == null){    
+                Core_MDF_CCP_UtilityClass.logErrorAsNormal('Operation Location Id is blank in Azure OCR1 Endpoint', 'Core_MDF_AI_Tracking__c');
+                throw new StringException('ClaimEzy Upload Error');
+            }
+            //if(outputWithOperationLocId != null){
                     String prebuildReadText = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ClaimEzy_PrebuildRead');//prebuilt-read
                     String rawData = Core_MDF_FormRecognizerIntegration.getDocumentAsString(prebuildReadText, outputWithOperationLocId);
                     
@@ -919,10 +1160,11 @@ Modified By:        Date:       Changes:
                     }else{
                         Core_MDF_CCP_UtilityClass.logErrorAsNormal('Retured value is blank in Azure OCR2 Endpoint', 'Core_MDF_AI_Tracking__c');
                     }
-                }else{
+                /*}else{
                     Core_MDF_CCP_UtilityClass.logErrorAsNormal('Operation Location Id is blank in Azure OCR1 Endpoint', 'Core_MDF_AI_Tracking__c');
-                }
-            }
+                }*/
+            //}
+            
         }
         catch(exception ex){
             throw ex;
@@ -932,7 +1174,7 @@ Modified By:        Date:       Changes:
             return dataWrap;
         }
         else{
-            throw new StringException('');
+            throw new StringException('ClaimEzy upload error');
         } 
     }
     
@@ -945,12 +1187,11 @@ Added By:           Aditya - 01-07-2024
 Modified By:        Date:       Changes:
 *******************************************************************************************************/ 
     public static List<Map<String, String>> parseInvoiceString(String invoiceString) {
-        
         List<Map<String, String>> detailsList = new List<Map<String, String>>();
         List<String> detailsArray = invoiceString.split('&');
         for(String detail : detailsArray) {
             List<String> detailParts = detail.split(':');
-            if (detailParts.size() >= 2) {
+            if (detailParts.size() >= 2) {   // Indira
             Map<String, String> detailMap = new Map<String, String>{detailParts[0].trim() => detailParts[1].trim()};
                 detailsList.add(detailMap);
             }
@@ -1065,7 +1306,7 @@ Modified By:        Date:       Changes:
     }
     
     /****************************************************************************************************** 
-Method Name:        
+Method Name:        updateActualValues
 @return  :          --
 @parameters:        PartnerFundClaim actualData,String contentDocId
 Description:        This method is used to update AI Tracking record with actual claim values entered by user
@@ -1091,6 +1332,19 @@ Modified By:        Date:       Changes:
         }
     }
     
+    @AuraEnabled
+    public static String getVersionData(String docId){
+        ContentVersion fileContent = [SELECT VersionData, ContentUrl FROM ContentVersion WHERE ContentDocumentId = :docId LIMIT 1];
+        
+        return JSON.serialize(fileContent.VersionData); //Blob[120bytes]
+    }
+    
+    @AuraEnabled
+    public static String getUserSessionId(){
+        
+        return System.UserInfo.getSessionId().SubString(15);
+    }
+    
     
     /****************************************************************************************************** 
 Method Name:        getDocumentData
@@ -1101,15 +1355,48 @@ Added By:           Aditya - 01-07-2024
 Modified By:        Date:       Changes:
 *******************************************************************************************************/
     @AuraEnabled
-    public static ProposedDataWrapper getDocumentData(String docId){     
+	public static ProposedDataWrapper getDocumentData(String docId) {     
+    	ProposedDataWrapper dataWrap = new ProposedDataWrapper();
+    	try {
+        	// Query metadata first - avoids allocating 40+ MB into the heap
+        	ContentVersion fileInfo = [SELECT Id, ContentSize FROM ContentVersion WHERE ContentDocumentId = :docId LIMIT 1];
+
+        	if (fileInfo.ContentSize > Long.valueOf(System.Label.Core_MDF_ClaimEzy_MaxFileSize)) {
+    			dataWrap.isError = true;
+    			dataWrap.errorMsg = Core_MDF_CCP_ConstantClass.FIELD_CUSTOM_VALIDATION_EXCEPTION + System.Label.Core_MDF_Claim_ezy_MaxStringLimitError + ':';
+    			return dataWrap;
+			}
+
+        	// Safe to query VersionData now that size is validated under 5MB
+        	ContentVersion conVer = [SELECT Id, VersionData FROM ContentVersion WHERE Id = :fileInfo.Id LIMIT 1];
+
+        	// Convert to base64
+        	String base64Data = EncodingUtil.base64Encode(conVer.VersionData);
+
+        	// Callout to push the uploaded file in Azure OCR
+        	dataWrap = getProposedData(base64Data, docId);
+
+    	} catch (Exception ex) {
+        	// Simple, clean generic catch block for unexpected system/network errors
+        	Core_MDF_CCP_UtilityClass.logError(ex);
+        	dataWrap.isError = true;
+        	dataWrap.errorMsg = ex.getMessage();
+    	}
+    	return dataWrap;
+	}
+    
+    @AuraEnabled
+    public static ProposedDataWrapper getDocumentData1(String docId, String versionData){//String docId
         ProposedDataWrapper dataWrap = new ProposedDataWrapper();
         try{
             //Get the versiondata based on ContentDocumentId
-            ContentVersion conVer = [SELECT Id,versiondata FROM ContentVersion WHERE ContentDocumentId =: docId];
+            //ContentVersion conVer = [SELECT Id,versiondata, ContentUrl FROM ContentVersion WHERE ContentDocumentId =: docId];
             //Convert to base64
-            String base64Data = EncodingUtil.base64Encode(conVer.VersionData);
+            //String base64Data = EncodingUtil.base64Encode(conVer.VersionData);
+            
+            
             //Callout to push the uploaded file in Azure OCR
-            dataWrap = getProposedData(base64Data, docId);
+            dataWrap = getProposedData(versionData, docId);
             
         }catch(Exception ex){
             String error = ex.getMessage();
@@ -1119,8 +1406,7 @@ Modified By:        Date:       Changes:
                 error = Core_MDF_CCP_ConstantClass.FIELD_CUSTOM_VALIDATION_EXCEPTION + System.Label.Core_MDF_Claim_ezy_MaxStringLimitError + ':';
             }
             Core_MDF_CCP_UtilityClass.logError(ex);
-            dataWrap.isError = true;
-            dataWrap.errorMsg = error;
+            throw new StringException(error);
         }
         return dataWrap;
     }
@@ -1166,21 +1452,90 @@ Modified By:        Date:       Changes:
         @AuraEnabled public String errorMsg;
     }
     
+    // @AuraEnabled(cacheable=true)
+    // public static Map<Id, Core_MDF_Exception__c> fetchExceptionsByClaimId(Id claimId) {
+    //     String programName = '';
+    //     Map<Id, Core_MDF_Exception__c> exceptionMap = new Map<Id, Core_MDF_Exception__c>();
+    
+    //     try {
+    //         PartnerFundClaim pfc = [
+    //             SELECT Id, Core_MDF_Activity_Start_Date__c, Core_MDF_Activity_End_Date__c, Core_MDF_Ad_Run_Start_Date__c, Core_MDF_Ad_Run_End_Date__c, 
+    //                 Core_MDF_Activity_Category__c, Core_MDF_Activity_Types__c, Core_MDF_Budget_Type_Nm__c, Core_MDF_Program__c, 
+    //                 ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Id
+    //             FROM PartnerFundClaim 
+    //             WHERE Id = :claimId 
+    //             LIMIT 1
+    //         ];
+    
+    //         if (pfc != null && pfc.Core_MDF_Program__c != null) {
+    //             Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem = [
+    //                 SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c
+    //                 FROM Core_MDF_BankProgram_Entitlement_Mapping__mdt
+    //                 WHERE Core_MDF_Channel_Program__c = :pfc.Core_MDF_Program__c 
+    //                 LIMIT 1
+    //             ];
+    
+    //             if (bpem != null && bpem.Core_MDF_Channel_Program__c != null) {
+    //                 programName = bpem.Core_MDF_Bank_Program_Name__c;
+    //                 String activityCategoryType = pfc.Core_MDF_Activity_Category__c + '->' + pfc.Core_MDF_Activity_Types__c;
+    
+    //                 // Fetch Exceptions
+    //                 if (String.isNotBlank(activityCategoryType) && pfc.Core_MDF_Activity_Start_Date__c != null && pfc.Core_MDF_Activity_End_Date__c != null) {
+    //                     List<Core_MDF_Exception__c> exceptions = [
+    //                         SELECT Id, Name, Core_MDF_Exception_Start_Date_dt__c, Core_MDF_Exception_End_Date_dt__c, Core_MDF_Program_nm__c, 
+    //                                Core_MDF_Activity_Cate_and_Type_nm__c, Core_MDF_Account_id__c, Core_MDF_Select_All_Accounts_ind__c, 
+    //                                Core_MDF_Name_of_Exception_nm__c, Core_MDF_Exception_Reason_nm__c, Core_MDF_Budget_Type_nm__c, 
+    //                                Core_MDF_Exception_Status_nm__c
+    //                         FROM Core_MDF_Exception__c
+    //                         WHERE Core_MDF_Exception_Status_nm__c = 'Approved'
+    //                         AND Core_MDF_Exception_Start_Date_dt__c <= :pfc.Core_MDF_Ad_Run_Start_Date__c
+    //                         AND Core_MDF_Exception_End_Date_dt__c >= :pfc.Core_MDF_Ad_Run_End_Date__c
+    //                         AND Core_MDF_Program_nm__c = :programName
+    //                         // AND (Core_MDF_Account_id__c = :pfc.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Id OR Core_MDF_Select_All_Accounts_ind__c = true)
+    //                         ORDER BY Core_MDF_Name_of_Exception_nm__c
+    //                     ];
+    
+    
+    //                     for (Core_MDF_Exception__c exceptionRecord : exceptions) {
+    //                         if (exceptionRecord.Core_MDF_Activity_Cate_and_Type_nm__c.containsIgnoreCase(activityCategoryType)) {
+    //                             if ((exceptionRecord.Core_MDF_Budget_Type_nm__c != null && pfc.Core_MDF_Budget_Type_nm__c != null) &&
+    //                                 exceptionRecord.Core_MDF_Budget_Type_nm__c.contains(pfc.Core_MDF_Budget_Type_nm__c)) {
+    //                                 exceptionMap.put(exceptionRecord.Id, exceptionRecord);
+    //                             } else if (String.isBlank(exceptionRecord.Core_MDF_Budget_Type_nm__c)) {
+    //                                 exceptionMap.put(exceptionRecord.Id, exceptionRecord);
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         }
+    
+    //     } catch (Exception e) {
+    //         throw new AuraHandledException('An unexpected error occurred: ' + e.getMessage());
+    //     }
+    //     return exceptionMap;
+    // }
+    
+    
     /****************************************************************************************************** 
 Method Name:        setDefaultSurePayValue
 @return  :          Boolean
 @parameters:        
-Description:        This method is used to return the value for Processing Preference on Claim Create/Clone
-Added By:           Roshan - 19-02-2025
+Description:        This method is used to return the value for Claim Payment Type on Claim Create/Clone
+Added By:           RP - 19-02-2025
 Modified By:        Date:       Changes:
 *******************************************************************************************************/
     @AuraEnabled
     public static PayTypeWrapper getDefaultPayTypePicklist(Date claimCreatedDate, String program, String budgetType) {
         try {
+            
+            //Integer num = 1/0;
+            
             if (program == Label.Core_MDF_Co_GTM_program_name || program == Label.Core_MDF_Retail_Channel_Program_Name || ((program == Label.Core_MDF_CCF_Program_Name || program == Label.Core_MDF_Non_Localized_DCF_Program_Name) && (budgetType == 'MDF' || budgetType == 'MDF+'))) {
                 return new PayTypeWrapper(false, true); // Fast Pay
             }
-            // Getting all weekly periods for the fiscal quarter
+            
+            // Getting all weeks of the current quarter
             List<Period> currentFiscalQuarterDetails = Core_MDF_Calendar_Utility.getFiscalQuarterWeekPeriods(claimCreatedDate);
             
             // Getting all weeks allowed for Fast Pay
@@ -1199,8 +1554,28 @@ Modified By:        Date:       Changes:
             return new PayTypeWrapper(true, false); // Sure Pay for M2/M3
         }
         catch (Exception ex) {
-            Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical',Label.Core_MDF_Program_Name,'PartnerFundClaim',null,null);
+            //Core_MDF_CCP_UtilityClass.logError(ex);
+            //ATHR Avoid long parameter lists BY Anjali US- 15023
+            // Create a map to hold all parameters
+    Map<String, Object> parameterMap = new Map<String, Object>();
+    
+    // Add all parameters to the map
+    parameterMap.put('exception', ex);
+    parameterMap.put('severity', 'Critical');
+    parameterMap.put('projectName', 'Label.Core_MDF_Program_Name');
+    parameterMap.put('objectName', 'PartnerFundClaim');
+    parameterMap.put('operation', null);
+    parameterMap.put('additionalInfo', null);
+    
+    // Call the method with the parameter map
+    Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(parameterMap);
+
+            
+           // Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical',projectName,objectName,'Mass Access Ownership Transfer',null); 
+     //END ATHR Avoid long Parameters  
+            //Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical',Label.Core_MDF_Program_Name,'PartnerFundClaim',null,null);
             throw new AuraHandledException(ex.getMessage());
+            
         }
     }
     
@@ -1220,7 +1595,6 @@ Method Name:        calculateAmountFields
 @parameters:        
 Description:        This method is used to return Calculated Amount field values
 Added By:           JB - 06/09/2025
-Test Class:		Core_MDF_PFC_IPAClaim_Test
 Modified By:        Date:       Changes:
 *******************************************************************************************************/
      @AuraEnabled(cacheable=true)
@@ -1244,15 +1618,13 @@ Modified By:        Date:       Changes:
         
         Core_MDF_Claim_Utility.calculateClaimFieldsForInsert(claimList);
         return claimList[0];
-    }   
-    
+    }
     /****************************************************************************************************** 
 Method Name:        getCampaignPurposeDetails
 @return  :          Boolean
 @parameters:        
 Description:        This method is used to return Campaign Purpose Details
 Added By:           JB - 06/09/2025
-Test Class:		Core_MDF_PFC_IPAClaim_Test
 Modified By:        Date:       Changes:
 *******************************************************************************************************/
     @AuraEnabled(cacheable=true)
@@ -1345,7 +1717,7 @@ Modified By:        Date:       Changes:
                     }
                 }
             }
-            
+
             return campPurposeWrapper;
         }
         catch (Exception ex) {
@@ -1356,7 +1728,7 @@ Modified By:        Date:       Changes:
     }
     
     @AuraEnabled
-    public static List<String> getClaimFieldsForAIPICProcess() {
+    public static List<String> getClaimFieldsForAIPICProcess() {//add try catch later
         List<String> claimFields = new List<String>();
         try {
             for(Schema.FieldSetMember f : Schema.SObjectType.PartnerFundClaim.FieldSets.Core_MDF_Claim_Fields_For_AI_PIC.getFields()) {
@@ -1394,17 +1766,37 @@ Modified By:        Date:       Changes:
         @AuraEnabled public String resultValueLabel {get; set;}
         @AuraEnabled public String resultValueHelpText {get; set;}
     }
+
+    
+    //Roshan
+    @AuraEnabled(cacheable=false)
+    public static Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount getExchangeRate(String currencyCode, Decimal amount) {
+        
+        Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount inputObj = new Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount();
+        inputObj.inputCurrency = currencyCode;
+        inputObj.inputAmount = amount;
+        inputObj.inputDate = System.today();
+        
+        List<Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount> inputList = new List<Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount>{ inputObj };
+            
+            Map<String, Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount> resultMap = Core_MDF_CCP_Multicurrency.getUSDExchangeRateBasedOnDate(inputList);
+        
+        return resultMap.values().get(0);
+    }
+    
     /****************************************************************************************************** 
 Method Name:        getAccountNodes
-@return  :          AccountNodeWrapper list
-Description:        This method is used to fetch account nodes based on the parent activity ID.
-Added By:           Accenture - TK - 22/12/2025
+@return  :          AccountNodeWrapper List
+Description:        This method is used to fetch account node details based on parent activity ID.
+Added By:           Accenture TK- 20/12/2025
 Modified By:        Date:      Changes: 
 *******************************************************************************************************/
+    //15268 starts 
+    
     @AuraEnabled(cacheable=true)
     public static List<AccountNodeWrapper> getAccountNodes(Id superActivityId) {
         String cancelledStatus = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Activity_Cancelled_Status');
-        List<PartnerFundRequest> pfrList = [select id, ChannelPartnerId, ChannelPartner.name,Title,ChannelPartner.Core_MDF_Payment_Type_NodeLevel_nm__c,ChannelPartner.Core_MDF_Payment_Type_nm__c from PartnerFundRequest where Core_MDF_Parent_Activity_Id__c =:superActivityId AND Core_MDF_Fund_Request_Status__c != :cancelledStatus];
+        List<PartnerFundRequest> pfrList = [select id, ChannelPartnerId, ChannelPartner.name,Title,ChannelPartner.Core_MDF_Payment_Type_NodeLevel_nm__c,ChannelPartner.Core_MDF_Payment_Type_nm__c,Core_MDF_Reimbursement_Rate__c from PartnerFundRequest where Core_MDF_Parent_Activity_Id__c =:superActivityId AND Core_MDF_Fund_Request_Status__c != :cancelledStatus];
         Set<Id> accountIds = new Set<Id>();
         for (PartnerFundRequest pfr : pfrList) {
             accountIds.add(pfr.ChannelPartnerId);
@@ -1421,11 +1813,12 @@ Modified By:        Date:      Changes:
             accWrap.accountName = pfr.ChannelPartner.Name;
             accWrap.activityTitle = pfr.Title;
             accWrap.percentage = accountToPercentageMap.get(pfr.ChannelPartnerId);
-            accWrap.paymentType = (pfr.ChannelPartner.Core_MDF_Payment_Type_NodeLevel_nm__c != null && pfr.ChannelPartner.Core_MDF_Payment_Type_NodeLevel_nm__c != '') ? pfr.ChannelPartner.Core_MDF_Payment_Type_NodeLevel_nm__c : pfr.ChannelPartner.Core_MDF_Payment_Type_nm__c;
+            accWrap.paymentType = (pfr.ChannelPartner.Core_MDF_Payment_Type_NodeLevel_nm__c != null && pfr.ChannelPartner.Core_MDF_Payment_Type_NodeLevel_nm__c != '') ? pfr.ChannelPartner.Core_MDF_Payment_Type_NodeLevel_nm__c : pfr.ChannelPartner.Core_MDF_Payment_Type_nm__c;            
             result.add(accWrap);
         }
         return result;
     }
+    
     public class AccountNodeWrapper {
         @AuraEnabled public Id accountId;
         @AuraEnabled public String accountName;
@@ -1438,23 +1831,26 @@ Modified By:        Date:      Changes:
     /****************************************************************************************************** 
 Method Name:        fetchBankRecordsForAccounts
 @return  :          AccountNodeWrapper List
-Description:        This method is used to fetch eligible banks for each account node
-Added By:           Accenture - TK - 22/12/2025
+Description:        This method is used to fetch banks associated to each account node
+Added By:           Accenture TK- 20/12/2025
 Modified By:        Date:      Changes: 
 *******************************************************************************************************/
+    
     @AuraEnabled(cacheable=true)
     public static Map<Id, List<BankWrapper>> fetchBankRecordsForAccounts(List<Id> accountIds) {
         Map<Id, List<BankWrapper>> accountIdToBanksMap = new Map<Id, List<BankWrapper>>();
         if (accountIds == null || accountIds.isEmpty()) return accountIdToBanksMap;
+        system.debug('accountIds::'+accountIds);
         try {
             Set<String> bankStatusSet = new Set<String>();
             String bankStatusList = System.Label.Core_MDF_Claim_Bank_StatusList;
             if (!String.isBlank(bankStatusList)) {
                 for (String bankStatus : bankStatusList.split(';')) bankStatusSet.add(bankStatus);
             }
+            system.debug('accountIdsinsidetry::'+accountIds);
             List<Core_MDF_Account_Bank_Mapping__c> bankRecords = [SELECT Core_MDF_Bank__c, Core_MDF_Bank__r.Name, Core_MDF_Bank__r.Core_MDF_Bank_Status__c, Core_MDF_Bank__r.Core_MDF_Bank_Alias_Name__c, Core_MDF_Account__c,Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c, Core_MDF_Bank__r.Core_MDF_Supplier_Country_txt__c FROM Core_MDF_Account_Bank_Mapping__c WHERE Core_MDF_Bank__r.Core_MDF_Bank_Status__c IN :bankStatusSet AND Core_MDF_Account__c IN :accountIds AND Core_MDF_Active_ind__c = TRUE];
-            
-	    //Sub claim VAT sync
+
+            //Roshan - Sub claim VAT sync
             Map<Id, Core_MDF_Bank__c> banksById = new Map<Id, Core_MDF_Bank__c>();
             for (Core_MDF_Account_Bank_Mapping__c record : bankRecords) {
                 banksById.put(record.Core_MDF_Bank__c, record.Core_MDF_Bank__r);
@@ -1468,9 +1864,11 @@ Modified By:        Date:      Changes:
                 bw.bankAlias = record.Core_MDF_Bank__r.Core_MDF_Bank_Alias_Name__c;
                 bw.bankStatus = record.Core_MDF_Bank__r.Core_MDF_Bank_Status__c;
                 bw.companyCode = record.Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c;
-                //Sub claim VAT Sync
+
+                //Roshan - Sub claim VAT Sync
                 bw.supplierCountryCode = record.Core_MDF_Bank__r.Core_MDF_Supplier_Country_txt__c;
                 bw.bankRegion = countryCodeToRegionMap.get(bw.supplierCountryCode);
+
                 bw.isVatEligible = (record.Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c == String.valueOf('420') || record.Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c == String.valueOf('650')) ? true : false;
                 bw.vatOptIn = !bw.isVatEligible ? 'No' : null;
                 if (!accountIdToBanksMap.containsKey(record.Core_MDF_Account__c)) {
@@ -1483,19 +1881,25 @@ Modified By:        Date:      Changes:
         }
         return accountIdToBanksMap;
     }
+    
     public class BankWrapper {
         @AuraEnabled public String bankId;
         @AuraEnabled public String bankName;
         @AuraEnabled public String bankAlias;
         @AuraEnabled public String bankStatus;
         @AuraEnabled public String companyCode;
-        //Sub claim VAT sync
+
+        //Roshan - Sub claim VAT sync
         @AuraEnabled public String supplierCountryCode;
         @AuraEnabled public String bankRegion;
+
         @AuraEnabled public Boolean isVatEligible;
         @AuraEnabled public String vatOptIn;
+        
     }
+    //15268 ends
     
+    //Naveen-SubClaim
     public class subClaimWrapper {
         @AuraEnabled public Id recordId;
         @AuraEnabled public Id accountId;
@@ -1511,12 +1915,18 @@ Modified By:        Date:      Changes:
         @auraEnabled public Decimal percentage;
         @auraEnabled public PartnerFundClaim claimObj;
         @auraEnabled public String claimPaymentType;
-    }
+        /*@AuraEnabled public Boolean bankDocHoldFlag;
+@AuraEnabled public Boolean manualHoldFlag;
+@AuraEnabled public String fundRequestStatus;
+@AuraEnabled public String escalationId;
+@AuraEnabled public Boolean picReviewCompleted;*/
+    }//Naveen-SubClaim
     
+    //Naveen-SubClaim
     @AuraEnabled(cacheable=true)
     public static List<subClaimWrapper> getSubClaims(Id recordId) {
         if(recordId!=null){
-            List<PartnerFundClaim> pfcList = [select Id,ChannelPartnerId,ChannelPartner.Core_MDF_Payment_Type_NodeLevel_nm__c,ChannelPartner.name,Core_MDF_Bank__c,Core_MDF_Bank__r.name,Core_MDF_VAT_Opt_In__c,Core_MDF_Amount_Percentage__c,ChannelPartner.Core_MDF_Payment_Type_nm__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Claim_Id__c,Core_MDF_Status__c,RequestId,Request.title,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Ad_Run_End_Date__c,Core_MDF_Country_Location_nm__c,Core_MDF_Currency__c,Core_MDF_Claim_Submitter_Id__c,Core_MDF_Processing_Preference_nm__c,Core_MDF_OtherCostsnotReimbursable_Local__c,Core_MDF_Payment_Type_nm__c FROM PartnerFundClaim WHERE Core_MDF_Claim_Id__c =:recordId];
+            List<PartnerFundClaim> pfcList = [select Id,ChannelPartnerId,ChannelPartner.Core_MDF_Payment_Type_NodeLevel_nm__c,ChannelPartner.name,Core_MDF_Bank__c,Core_MDF_Bank__r.name,Core_MDF_VAT_Opt_In__c,Core_MDF_Amount_Percentage__c,ChannelPartner.Core_MDF_Payment_Type_nm__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Claim_Id__c,Core_MDF_Status__c,RequestId,Request.title,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Ad_Run_End_Date__c,Core_MDF_Country_Location_nm__c,Core_MDF_Currency__c,Core_MDF_Claim_Submitter_Id__c,Core_MDF_Processing_Preference_nm__c,Core_MDF_OtherCostsnotReimbursable_Local__c,Core_MDF_Payment_Type_nm__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Intel_Manual_Hold_Ind__c, Core_MDF_Escalation_Id__c, Core_MDF_PIC_Review_Completed__c, Request.Core_MDF_Fund_Request_Status__c FROM PartnerFundClaim WHERE Core_MDF_Claim_Id__c =:recordId AND Core_MDF_Type_Txt__c = 'Claim'];
             Set<Id> accountIds = new Set<Id>();
             List<subClaimWrapper> result = new List<subClaimWrapper>();
             for (PartnerFundClaim pfc : pfcList) {
@@ -1535,10 +1945,15 @@ Modified By:        Date:      Changes:
                 claimWrap.percentage = pfc.Core_MDF_Amount_Percentage__c;
                 claimWrap.claimObj = pfc;
                 claimWrap.claimPaymentType = pfc.Core_MDF_Payment_Type_nm__c;
+                /*claimWrap.bankDocHoldFlag = pfc.Core_MDF_Bank_Doc_Hold_Ind__c;
+claimWrap.manualHoldFlag = pfc.Core_MDF_Intel_Manual_Hold_Ind__c;
+claimWrap.fundRequestStatus = pfc.Request.Core_MDF_Fund_Request_Status__c;
+claimWrap.escalationId = pfc.Core_MDF_Escalation_Id__c;
+claimWrap.picReviewCompleted = pfc.Core_MDF_PIC_Review_Completed__c;*/
                 result.add(claimWrap);
             }
             return result;
-        }
+        }//Naveen-SubClaim
         else{
             return null;
         }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Approve/Reject Budget</masterLabel>
+    <promptVersions>
+        <body>&lt;p&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt;In order to approve/reject a budget&lt;/span&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt;Review budget details&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt;Navigate to the “Related” tab&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 7pt;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt;On the Approval History table, click on Approve/Reject buttons to record review decision&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt;Enter comments and save decision&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;</body>
+        <customApplication>Core_MDF_CoMarketing</customApplication>
+        <delayDays>1</delayDays>
+        <displayPosition>BottomCenter</displayPosition>
+        <displayType>DockedComposer</displayType>
+        <endDate>2020-08-31</endDate>
+        <header>Approve/Reject Budget</header>
+        <isPublished>false</isPublished>
+        <masterLabel>Approve/Reject Budget</masterLabel>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2020-08-07</startDate>
+        <targetPageKey1>PartnerMarketingBudget</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <timesToDisplay>3</timesToDisplay>
+        <title>Approve/Reject Budget</title>
+        <uiFormulaRule>
+            <booleanFilter>(1) AND (2)</booleanFilter>
+            <criteria>
+                <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_Internal_Retail_Finance_Manager}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>TRUE</rightValue>
+            </criteria>
+            <criteria>
+                <leftValue>{!$User.Profile.Key}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>custom_ccp - core access</rightValue>
+            </criteria>
+        </uiFormulaRule>
+        <userAccess>SpecificPermissions</userAccess>
+        <userProfileAccess>SpecificProfiles</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

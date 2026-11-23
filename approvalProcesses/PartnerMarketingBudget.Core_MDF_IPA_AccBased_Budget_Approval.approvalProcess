@@ -52,7 +52,7 @@ ISPICKVAL(Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c,&apos;Intel Par
     <finalApprovalRecordLock>false</finalApprovalRecordLock>
     <finalRejectionRecordLock>false</finalRejectionRecordLock>
     <label>Program Budget Approval for IPA</label>
-    <processOrder>6</processOrder>
+    <processOrder>2</processOrder>
     <recordEditability>AdminOnly</recordEditability>
     <showApprovalHistory>true</showApprovalHistory>
 </ApprovalProcess>

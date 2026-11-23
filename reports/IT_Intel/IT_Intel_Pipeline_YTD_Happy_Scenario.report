@@ -37,13 +37,13 @@
         <field>Core_Sales_Support_Request__c.Core_IT_Geo_Manager__c</field>
     </columns>
     <columns>
+        <field>FK_$Opportunity.Core_Commissionable__c</field>
+    </columns>
+    <columns>
         <field>Core_Sales_Support_Request__c.Status__c</field>
     </columns>
     <columns>
         <field>CUST_CREATED_DATE</field>
-    </columns>
-    <columns>
-        <field>Core_Sales_Support_Request__c.Core_Account_Name__c</field>
     </columns>
     <columns>
         <field>FK_NAME</field>
@@ -69,7 +69,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Cancelled,Rejected</value>
+            <value>Open,Cancelled,Rejected</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -96,6 +96,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>FK_OPP_CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

@@ -27,8 +27,36 @@
             <value>Won</value>
         </values>
     </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <aggregate>Sum</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>OpportunityLineItem.Core_KPI_Total_Price__c</column>
+        </chartSummaries>
+        <chartType>HorizontalBarStacked</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
+        <legendPosition>Bottom</legendPosition>
+        <location>CHART_TOP</location>
+        <secondaryGroupingColumn>BucketField_53210786</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <title>DW by BU Product Segment</title>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
     <columns>
-        <field>OPPORTUNITY_NAME</field>
+        <field>STAGE_NAME</field>
     </columns>
     <columns>
         <field>OPPORTUNITY_ID</field>
@@ -58,11 +86,25 @@
             <value>Lost,Cancelled,Group,Define,Qualify</value>
         </criteriaItems>
         <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>SIEMENS</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>design</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PROBABILITY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>50.0</value>
         </criteriaItems>
         <criteriaItems>
             <column>FULL_NAME</column>
@@ -90,12 +132,12 @@
     <format>Matrix</format>
     <groupingsAcross>
         <dateGranularity>Day</dateGranularity>
-        <field>WON</field>
+        <field>BucketField_53210786</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Siemens Design Win Forecast - By BU</name>

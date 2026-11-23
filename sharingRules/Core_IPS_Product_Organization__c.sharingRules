@@ -30,19 +30,4 @@
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_IPS_All_SupportOrg_R_to_IPS_Agent</fullName>
-        <accessLevel>Read</accessLevel>
-        <description>This rule has been specially added to provide Read Access to IPS Agent to Support Org as IPS Agent Role is no longer a subordinate to IPS Product Org Admin Role</description>
-        <label>Core IPS All SupportOrg R to IPS Agent</label>
-        <sharedTo>
-            <role>EMP_11298293_Kenta_Ueda</role>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>IPS Support Org</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
 </SharingRules>

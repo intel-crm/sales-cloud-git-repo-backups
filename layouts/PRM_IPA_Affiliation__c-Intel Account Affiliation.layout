@@ -16,7 +16,7 @@
                 <field>PRM_Account__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>PRM_Active__c</field>
             </layoutItems>
             <layoutItems>
@@ -24,7 +24,7 @@
                 <field>PRM_Builder_Strategy__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
+                <behavior>Edit</behavior>
                 <field>PRM_Notes__c</field>
             </layoutItems>
         </layoutColumns>

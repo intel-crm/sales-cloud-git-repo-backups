@@ -4,9 +4,6 @@
         <field>FK_$Core_IPS_Supported_Product__c.Core_Support_Org_Name__c</field>
     </columns>
     <columns>
-        <field>FK_CUSTENT_ID</field>
-    </columns>
-    <columns>
         <field>FK_NAME</field>
     </columns>
     <columns>
@@ -45,7 +42,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Connected Home Division</value>
+            <value>Programmable Solutions Group</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -11,13 +11,13 @@ Modification Log :
 * Malhotra, Abhimanyu S       01/23/2016             Add errorMessage Method & RemoveHardcoded messages
 ****************************************************************************************************/       
 
-public with sharing class Core_IPS_File_AssignSPAccount_Controller{ 
-    public List<Core_IPS_File_Assignment__c> existingcoreIPSFASSLst = new List<Core_IPS_File_Assignment__c>();
-    public List<Core_IPS_File_Assignment__c> iPDFAssLst = new List<Core_IPS_File_Assignment__c>();
+public class Core_IPS_File_AssignSPAccount_Controller{
+    public List<Core_IPS_File_Assignment__c> Existing_core_IPS_FASS_Lst = new List<Core_IPS_File_Assignment__c>();
+    public List<Core_IPS_File_Assignment__c> IPDFAssLst = new List<Core_IPS_File_Assignment__c>();
     public boolean delButtonDisabled{get;set;}
     public boolean renderParent{get;set;}
     public List<Wrapper> wrplist{get;set;}
-    public Id iPSFileUploadID;
+    public Id IPSFileUploadID;
     
     public Core_IPS_File_AssignSPAccount_Controller(ApexPages.StandardController controller) 
     {
@@ -32,11 +32,10 @@ public with sharing class Core_IPS_File_AssignSPAccount_Controller{
     public void addRow()
     {
         wrplist.add(new Wrapper());        
-        if(wrplist.size()<2){
+        if(wrplist.size()<2)
             delButtonDisabled=true;
-        }else{
-            delButtonDisabled=false; 
-        }           
+        else
+            delButtonDisabled=false;        
     }
     
     public void delRow()
@@ -44,20 +43,17 @@ public with sharing class Core_IPS_File_AssignSPAccount_Controller{
         Integer i = 0;        
         for(Wrapper wrp : wrplist)
         {
-            if(wrp.flag){
+            if(wrp.flag)
                 break;
-            }    
             i++;
         }        
-        if(wrplist.size() > i){
+        if(wrplist.size() > i)
             wrplist.remove(i);
-        }    
         
-        if(wrplist.size()<2){
+        if(wrplist.size()<2)
             delButtonDisabled=true;
-        }else{
+        else
             delButtonDisabled=false;
-        }    
     }
     
 /***************************************************************************************************
@@ -71,18 +67,17 @@ Modification Log :
 * Johri, Sagar                09/16/2015             Created
 ****************************************************************************************************/         
     public PageReference saveRecord() {            
-        List<String> concatExistingSuppProdANDAccount = new List<String>();
-        List<String> concatNewSuppProdANDAccount = new List<String>();
+        List<String> ConcatExistingSuppProdANDAccount = new List<String>();
+        List<String> ConcatNewSuppProdANDAccount = new List<String>();
         String existingSuppProdName;
         String existingAccountName;        
         String newSuppProdName;
         String newAccountName;
-        //FLS Check Added - Nishitha
-        if(Core_IPS_File_Assignment__c.SObjectType.getDescribe().isAccessible()){
-        existingcoreIPSFASSLst = [Select Id, Core_Account__c, Core_Supported_Product__c from Core_IPS_File_Assignment__c 
+        
+        Existing_core_IPS_FASS_Lst = [Select Id, Core_Account__c, Core_Supported_Product__c from Core_IPS_File_Assignment__c 
                                       where Core_IPS_File_Upload_Master__c =: IPSFileUploadID];        
-       }
-        for(Core_IPS_File_Assignment__c iPSFA : existingcoreIPSFASSLst)
+        
+        for(Core_IPS_File_Assignment__c IPSFA : Existing_core_IPS_FASS_Lst)
         {            
             if(IPSFA.Core_Supported_Product__c != null){
                 existingSuppProdName = IPSFA.Core_Supported_Product__c;
@@ -176,7 +171,7 @@ Modification Log :
             
             else 
             {
-                Schema.Describesobjectresult iPSFileUploadPage = Schema.Sobjecttype.Core_IPS_File_Upload_Master__c;
+                Schema.Describesobjectresult IPSFileUploadPage = Schema.Sobjecttype.Core_IPS_File_Upload_Master__c;
                 String prefix = IPSFileUploadPage.getKeyPrefix();
                 PageReference pageRef = new PageReference('/' + prefix + '/o');
                 pageRef.setRedirect(true);
@@ -208,7 +203,7 @@ Modification Log :
         }        
         else 
         {
-            Schema.Describesobjectresult iPSFileUploadPage = Schema.Sobjecttype.Core_IPS_File_Upload_Master__c;
+            Schema.Describesobjectresult IPSFileUploadPage = Schema.Sobjecttype.Core_IPS_File_Upload_Master__c;
             String prefix = IPSFileUploadPage.getKeyPrefix();
             PageReference pageRef = new PageReference('/' + prefix + '/o');
             pageRef.setRedirect(true);

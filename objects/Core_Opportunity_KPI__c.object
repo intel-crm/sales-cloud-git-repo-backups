@@ -158,21 +158,8 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
-        <fullName>Core_IAH_KPI_Record_ID__c</fullName>
-        <description>Stores the IAH Record ID for the KPI. The formatting is such that the initial 2 numbers suggest the year of the KPI.</description>
-        <externalId>true</externalId>
-        <label>IAH KPI Record ID</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Opp_KPI_Achieved__c</fullName>
         <defaultValue>false</defaultValue>
-        <inlineHelpText>Checked if Opportunity Stage = Design Win OR Opportunity Products corresponding to the KPI are WIN APPROVED.  If not checked, confirm at least 24 hours have passed since approval, and if so, log an AAQ.</inlineHelpText>
         <label>KPI Achieved?</label>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -180,7 +167,6 @@
     </fields>
     <fields>
         <fullName>Core_Opp_KPI_Add_Date__c</fullName>
-        <inlineHelpText>Date the KPI was first populated on the opportunity</inlineHelpText>
         <label>KPI Added Date</label>
         <required>false</required>
         <trackHistory>true</trackHistory>
@@ -191,7 +177,6 @@
         <fullName>Core_Opp_KPI_BU_Owner__c</fullName>
         <description>BU Owner name in text copied form KPI Criteria</description>
         <externalId>false</externalId>
-        <inlineHelpText>SMG BU employee managing the KPI</inlineHelpText>
         <label>KPI BU Owner</label>
         <length>255</length>
         <required>false</required>
@@ -210,7 +195,6 @@
     </fields>
     <fields>
         <fullName>Core_Opp_KPI_Description__c</fullName>
-        <inlineHelpText>Detailed description of the KPI and KPI criteria</inlineHelpText>
         <label>KPI Description</label>
         <length>131072</length>
         <trackHistory>false</trackHistory>
@@ -231,7 +215,6 @@
     </fields>
     <fields>
         <fullName>Core_Opp_KPI_Last_Update_Date__c</fullName>
-        <inlineHelpText>Date the KPI was last updated</inlineHelpText>
         <label>KPI Last Updated Date</label>
         <required>false</required>
         <trackHistory>true</trackHistory>
@@ -265,7 +248,6 @@
     </fields>
     <fields>
         <fullName>Core_Opp_KPI_Threshold_Met__c</fullName>
-        <inlineHelpText>This checkbox field indicates if the Opportunity meets the pre-defined minimum to achieve the KPI; checked indicates the threshold is met, unchecked indicates it does not.  If no KPI threshold applies, ‘N/A’ will be displayed</inlineHelpText>
         <label>Threshold Met?</label>
         <required>false</required>
         <trackHistory>true</trackHistory>
@@ -310,7 +292,7 @@
     </fields>
     <fields>
         <fullName>Core_Opp_KPI_Total_Price__c</fullName>
-        <label>KPI Revenue</label>
+        <label>KPI Total Price</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -320,7 +302,6 @@
     </fields>
     <fields>
         <fullName>Core_Opp_KPI_Type__c</fullName>
-        <inlineHelpText>Defines if the KPI tracks revenue ($) or count (#)</inlineHelpText>
         <label>KPI Type</label>
         <required>false</required>
         <trackHistory>true</trackHistory>
@@ -343,21 +324,6 @@
                     <fullName>Salesforce Pipeline Units</fullName>
                     <default>false</default>
                     <label>Salesforce Pipeline Units</label>
-                </value>
-                <value>
-                    <fullName>Salesforce Production Win Opp Count</fullName>
-                    <default>false</default>
-                    <label>Salesforce Production Win Opp Count</label>
-                </value>
-                <value>
-                    <fullName>Salesforce Production Win $</fullName>
-                    <default>false</default>
-                    <label>Salesforce Production Win $</label>
-                </value>
-                <value>
-                    <fullName>Salesforce Opp KPI Product Group Count</fullName>
-                    <default>false</default>
-                    <label>Salesforce Opp KPI Product Group Count</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -406,18 +372,8 @@
     <label>Opportunity KPI</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Opp_KPI_Achieved__c</columns>
-        <columns>Core_Opp_KPI_Add_Date__c</columns>
-        <columns>Core_Opp_KPI_BatchTime__c</columns>
-        <columns>Core_Opp_KPI_BU_Owner__c</columns>
-        <columns>Core_Opp_KPI_Quantity__c</columns>
-        <columns>Core_Opp_KPI_Total_Price__c</columns>
-        <columns>Core_Opp_KPI_Type__c</columns>
-        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
     </listViews>
     <nameField>
         <label>KPI Name</label>

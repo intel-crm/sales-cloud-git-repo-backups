@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Core_MDF_Category_Txt__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">ExceptionTrigger</value>
     </values>
     <values>
         <field>Core_MDF_Org_Specific_Ind__c</field>

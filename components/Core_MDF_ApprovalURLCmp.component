@@ -1,0 +1,5 @@
+<apex:component controller="Core_MDF_ApprovalURL" access="global" >
+    <apex:attribute name="objID" description="ObjId" type="Id" assignTo="{!recID}" />
+    <apex:attribute name="actorID" description="actorID" type="Id" assignTo="{!actrID}" />
+    <a href = "{!urlStr}">Click here</a>
+</apex:component>

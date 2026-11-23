@@ -39,7 +39,9 @@ public class Core_MDF_Display_Approval_Details_Test {
         // Creating campaigns using utility class
         Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('TestCamp','Consumer','Intel® Corporate Logo','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund',System.today().addDays(-25) , System.today().addYears(+1), 2000, 'Unite', acc.Id,'2-in-1', true);
         Test.startTest();
-
+        // Highlight: Unused Local Variable - 14285 //Suma
+ 
+            //List<PartnerFundRequest> testPartnerFundRequestRecordList = new List<PartnerFundRequest>();
         //adding bypass feature to bypass access validation
             List<String> bypassFunctionKeys = new List<String>();
             bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
@@ -51,7 +53,6 @@ public class Core_MDF_Display_Approval_Details_Test {
             List<String> result1 = new List<String>();
             myset1.addAll(bypassFunctionKeys);
             result1.addAll(myset1);
-
            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
         
                     

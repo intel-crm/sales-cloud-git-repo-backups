@@ -1,0 +1,157 @@
+<template>
+    <lightning-card title="MCP Contract API" icon-name="standard:contract">
+
+        <!-- Spinner -->
+        <template if:true={isLoading}>
+            <lightning-spinner 
+                alternative-text="Loading..." 
+                size="medium">
+            </lightning-spinner>
+        </template>
+
+        <div class="slds-p-around_medium">
+
+            <!-- ─── Input Fields ─── -->
+            <div class="slds-grid slds-gutters slds-m-bottom_medium">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input
+                        data-id="contractNumber"
+                        type="text"
+                        label="Contract Number"
+                        value={contractNumber}
+                        placeholder="e.g. 895412"
+                        onchange={handleContractNumberChange}>
+                    </lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input
+                        type="number"
+                        label="Order Number"
+                        value={orderNumber}
+                        placeholder="e.g. 1"
+                        onchange={handleOrderNumberChange}>
+                    </lightning-input>
+                </div>
+            </div>
+
+            <!-- ─── Action Buttons ─── -->
+            <div class="slds-grid slds-gutters slds-m-bottom_medium">
+                
+                <!--<div class="slds-col">
+                    <lightning-button
+                        label="Authenticate"
+                        title="Authenticate with the contract service"
+                        variant="brand"
+                        icon-name="utility:lock"
+                        onclick={handleAuthenticate}
+                        disabled={isAuthenticateDisabled}>
+                    </lightning-button>
+                </div>
+
+                <div class="slds-col">
+                    <lightning-button
+                        label="1. Initialize Session"
+                        variant="brand"
+                        icon-name="utility:connected_apps"
+                        onclick={handleInitialize}
+                        disabled={isLoading}>
+                    </lightning-button>
+                </div>
+                
+                <div class="slds-col">
+                    <lightning-button
+                        label="2. Load Tools"
+                        variant="neutral"
+                        icon-name="utility:list"
+                        onclick={handleLoadTools}
+                        disabled={isLoading}>
+                    </lightning-button>
+                </div>
+                
+                <div class="slds-col">
+                    <lightning-button
+                        label="3. Get Contract Metadata"
+                        variant="brand-outline"
+                        icon-name="utility:search"
+                        onclick={handleGetContractMetadata}
+                        disabled={isLoading}>
+                    </lightning-button>
+                </div>-->
+                
+                <div class="slds-col">
+                    <lightning-button
+                        label="Get Contract Details"
+                        variant="success"
+                        icon-name="utility:search"
+                        onclick={handleFullFlow}
+                        disabled={isLoading}>
+                    </lightning-button>
+                </div>
+                
+            </div>
+
+            <!-- ─── Session Status ─── -->
+            <template if:true={isInitialized}>
+                <div class="slds-box slds-m-bottom_medium"
+                     style="background:#e8f5e9; border-left:4px solid #2e7d32;">
+                    <p>
+                        ✅ <strong>Session Active</strong>
+                    </p>
+                    <p>
+                        <strong>Session ID:</strong> {sessionDisplay}
+                    </p>
+                </div>
+            </template>
+
+            <!-- ─── Error ─── -->
+            <template if:true={hasError}>
+                <div class="slds-box slds-m-bottom_medium"
+                     style="background:#fdecea; border-left:4px solid #c62828;">
+                    <p>❌ <strong>Error:</strong> {errorMessage}</p>
+                </div>
+            </template>
+
+            <!-- ─── Available Tools ─── -->
+            <template if:true={hasTools}>
+                <lightning-card 
+                    title="Available Tools" 
+                    icon-name="utility:list"
+                    class="slds-m-bottom_medium">
+                    <div class="slds-p-around_small">
+                        <template for:each={availableTools} for:item="tool">
+                            <div key={tool.name} 
+                                 class="slds-box slds-m-bottom_x-small"
+                                 style="background:#f4f6f9;">
+                                <p>
+                                    🔧 <strong>{tool.name}</strong>
+                                </p>
+                                <p>{tool.description}</p>
+                            </div>
+                        </template>
+                    </div>
+                </lightning-card>
+            </template>
+
+            <!-- ─── Response ─── -->
+            <template if:true={hasResponse}>
+                <lightning-card 
+                    title="API Response" 
+                    icon-name="utility:apex">
+                    <div class="slds-p-around_small">
+                        <pre style="overflow:auto; 
+                                    max-height:500px;
+                                    background:#f4f6f9; 
+                                    padding:12px;
+                                    border-radius:4px; 
+                                    font-size:11px;
+                                    white-space:pre-wrap;
+                                    word-break:break-all;">
+{formattedResponse}
+                        </pre>
+                    </div>
+                </lightning-card>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

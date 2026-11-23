@@ -11,65 +11,6 @@
     </aggregates>
     <buckets>
         <bucketType>picklist</bucketType>
-        <developerName>BucketField_86193650</developerName>
-        <masterLabel>Pipeline Stage</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <sourceColumnName>STAGE_NAME</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>Qualify</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Define</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Develop</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Design</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Group</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Group Open</sourceValue>
-            </sourceValues>
-            <value>Open In Pipeline</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Design Win</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Production Win</sourceValue>
-            </sourceValues>
-            <value>Wins</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Lost</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Cancelled</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Production Lost</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Production Cancelled</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Group Cancelled</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Group Closed</sourceValue>
-            </sourceValues>
-            <value>CLosed Lost/Cancelled</value>
-        </values>
-    </buckets>
-    <buckets>
-        <bucketType>picklist</bucketType>
         <developerName>BucketField_70194091</developerName>
         <masterLabel>Prod App Groups</masterLabel>
         <nullTreatment>n</nullTreatment>
@@ -77,27 +18,65 @@
         <sourceColumnName>Opportunity.Core_Product_Application__c</sourceColumnName>
         <useOther>true</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Energy - Other</sourceValue>
+            </sourceValues>
             <value>Energy</value>
         </values>
         <values>
             <value>Transportation</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Industrial - Other</sourceValue>
+            </sourceValues>
             <value>Industrial</value>
         </values>
         <values>
             <value>Medical</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Smart Home</sourceValue>
+            </sourceValues>
             <value>Smart Home</value>
         </values>
         <values>
             <value>Retail</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Blade SBC (Single Board Computer)</sourceValue>
+            </sourceValues>
             <value>Emb Other</value>
         </values>
     </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>FORMULA1</column>
+        </chartSummaries>
+        <chartType>VerticalColumnStacked</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>ACCOUNT_NAME</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>OPPORTUNITY_NAME</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
     <columns>
         <field>STAGE_NAME</field>
     </columns>
@@ -130,9 +109,30 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
     </columns>
-    <columns>
-        <field>BucketField_86193650</field>
-    </columns>
+    <filter>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Qualify,Define,Develop,Design,Design Win,Production Win</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Lost,Cancelled,Deleted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.Core_WWID__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>10505705,10692594,11117316,10861520,10597076,10709577,11272050,10003631,11723317,10652268,11224750,10681461,10683096,10695274,10639465,10669477,10515319,10101734,10986869,11581516,10202195,11411142,11748965,11223542,10605537,10639801,11413894,10621064</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
@@ -166,8 +166,8 @@
         <value>1</value>
     </params>
     <reportType>OpportunityProduct</reportType>
-    <scope>team</scope>
-    <showDetails>true</showDetails>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <sortColumn>PRODUCT_NAME</sortColumn>

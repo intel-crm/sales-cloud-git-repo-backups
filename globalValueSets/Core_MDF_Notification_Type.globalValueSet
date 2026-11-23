@@ -40,6 +40,96 @@
         <default>false</default>
         <label>Recovery data load notification</label>
     </customValue>
+    <customValue>
+        <fullName>PFC_MBR_HLD</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Member Hold</label>
+    </customValue>
+    <customValue>
+        <fullName>PFC_AUD_HLD</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Audit Hold</label>
+    </customValue>
+    <customValue>
+        <fullName>ESC_APP_REQ</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Escalation Approval Request</label>
+    </customValue>
+    <customValue>
+        <fullName>CAS_AUD_REV</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Audit Review</label>
+    </customValue>
+    <customValue>
+        <fullName>Status Update from Draft To Pending Review</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Status Update from Draft To Pending Review</label>
+    </customValue>
+    <customValue>
+        <fullName>Status Update from Pending Review To Planned</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Status Update from Pending Review To Planned</label>
+    </customValue>
+    <customValue>
+        <fullName>Campaign Cancellation</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Campaign Cancellation</label>
+    </customValue>
+    <customValue>
+        <fullName>PAY_RUN_COMPL</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Payment Run Completion</label>
+    </customValue>
+    <customValue>
+        <fullName>PFC_PIC_COMPL</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>PIC Completion</label>
+    </customValue>
+    <customValue>
+        <fullName>PFR _STS_UDT</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Status Update</label>
+    </customValue>
+    <customValue>
+        <fullName>PFC_VAT_APP</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VAT Approval</label>
+    </customValue>
+    <customValue>
+        <fullName>PFR_RED_FOR_CLM</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Ready For Claim</label>
+    </customValue>
+    <customValue>
+        <fullName>PFR - 005</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Approval Process</label>
+    </customValue>
+    <customValue>
+        <fullName>CMP_PROP_APP_REQ</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Proposal Approval Request</label>
+    </customValue>
+    <customValue>
+        <fullName>PFC_MNL_HLD</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Manual Hold</label>
+    </customValue>
     <masterLabel>Notification Type</masterLabel>
     <sorted>false</sorted>
 </GlobalValueSet>

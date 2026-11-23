@@ -154,10 +154,11 @@ private class Core_MDF_RMF_SchNotification_Batch_Test {
             Test.stopTest();
         }
     }*/
-    @isTest 
+/*@isTest this method is in QA9
     static void getCodeCoverageForMainClass(){
          Test.startTest();
          Core_MDF_RMF_ScheduledNotification_Batch.getCodeCoverage();
          Test.stopTest();
     }
+}*/
 }

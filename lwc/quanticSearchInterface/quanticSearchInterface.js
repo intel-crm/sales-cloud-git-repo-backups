@@ -3,7 +3,7 @@ import {
   getHeadlessBindings,
   loadDependencies,
   setEngineOptions,
-  setInitializedCallback
+  setInitializedCallback,
 } from 'c/quanticHeadlessLoader';
 // @ts-ignore
 import getHeadlessConfiguration from '@salesforce/apex/HeadlessController.getHeadlessConfiguration';
@@ -81,6 +81,7 @@ export default class QuanticSearchInterface extends LightningElement {
 
   /** @type {boolean} */
   hasRendered = false;
+
   connectedCallback() {
     loadDependencies(this).then(() => {
       if (!getHeadlessBindings(this.engineId)?.engine) {
@@ -119,6 +120,7 @@ export default class QuanticSearchInterface extends LightningElement {
     }
     this.hasRendered = true;
   }
+
   disconnectedCallback() {
     this.unsubscribeUrlManager?.();
     window.removeEventListener('hashchange', this.onHashChange);
@@ -128,9 +130,9 @@ export default class QuanticSearchInterface extends LightningElement {
    * @param {SearchEngine} engine
    */
   initialize = (engine) => {
-    // if (this.initialized) {
-    //   return;
-    // }
+    if (this.initialized) {
+      return;
+    }
     const {updateQuery} = CoveoHeadless.loadQueryActions(engine);
 
     if (!this.disableStateInUrl) {

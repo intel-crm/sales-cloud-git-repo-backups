@@ -2,7 +2,7 @@
 <StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <sorted>true</sorted>
     <standardValue>
-        <fullName>AFG</fullName>
+        <fullName>AFGHS1</fullName>
         <default>false</default>
         <label>Afghanistan</label>
     </standardValue>
@@ -299,7 +299,7 @@
     <standardValue>
         <fullName>CZE</fullName>
         <default>false</default>
-        <label>Czechia</label>
+        <label>Czech Republic</label>
     </standardValue>
     <standardValue>
         <fullName>COD</fullName>
@@ -410,11 +410,6 @@
         <fullName>GAB</fullName>
         <default>false</default>
         <label>Gabon</label>
-    </standardValue>
-    <standardValue>
-        <fullName>GMB</fullName>
-        <default>false</default>
-        <label>Gambia</label>
     </standardValue>
     <standardValue>
         <fullName>GEO</fullName>
@@ -652,6 +647,11 @@
         <label>Macao SAR China</label>
     </standardValue>
     <standardValue>
+        <fullName>MKD</fullName>
+        <default>false</default>
+        <label>Macedonia</label>
+    </standardValue>
+    <standardValue>
         <fullName>MDG</fullName>
         <default>false</default>
         <label>Madagascar</label>
@@ -825,11 +825,6 @@
         <fullName>PRK</fullName>
         <default>false</default>
         <label>North Korea</label>
-    </standardValue>
-    <standardValue>
-        <fullName>MKD</fullName>
-        <default>false</default>
-        <label>North Macedonia</label>
     </standardValue>
     <standardValue>
         <fullName>NOR</fullName>
@@ -1107,9 +1102,19 @@
         <label>Tanzania</label>
     </standardValue>
     <standardValue>
+        <fullName>TCY</fullName>
+        <default>false</default>
+        <label>Test Country</label>
+    </standardValue>
+    <standardValue>
         <fullName>THA</fullName>
         <default>false</default>
         <label>Thailand</label>
+    </standardValue>
+    <standardValue>
+        <fullName>GMB</fullName>
+        <default>false</default>
+        <label>The Islamic Republic of the Gambia</label>
     </standardValue>
     <standardValue>
         <fullName>TLS</fullName>
@@ -1144,7 +1149,7 @@
     <standardValue>
         <fullName>TUR</fullName>
         <default>false</default>
-        <label>Turkiye</label>
+        <label>Turkey</label>
     </standardValue>
     <standardValue>
         <fullName>TKM</fullName>

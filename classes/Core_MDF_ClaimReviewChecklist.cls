@@ -42,6 +42,7 @@ public without sharing class Core_MDF_ClaimReviewChecklist {
                                                                          resultMap.put(checklistItem.Core_MDF_Checklist_Category__c,checklistItemsList);
                                                                      }
                                                                  }
+            system.debug('resultMap' + resultMap.keyset());
         }
         catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);}       
         return resultMap;   
@@ -66,6 +67,7 @@ public without sharing class Core_MDF_ClaimReviewChecklist {
         toBeUpdatedIds.addAll(comments.keyset());
       
         try{
+            //integer i = 1/0; // Added by AN to replicate the Unhandled exception
             for(string key : toBeUpdatedIds){
             Core_MDF_Claim_Case_Checklist__c record = new Core_MDF_Claim_Case_Checklist__c(id=key); 
             if(checklistSelection.get(key) == 'compliant'){
@@ -93,8 +95,12 @@ public without sharing class Core_MDF_ClaimReviewChecklist {
 
             //system.debug('toBeUpdated' + toBeUpdated);
 
-            if(toBeUpdated.size() > 0){
+            //if(toBeUpdated.size() > 0){
+                if(toBeUpdated == null || toBeUpdated.size() == 0){ //ATHR Fix WW19
+                    return null;
+                }
                 Database.SaveResult[] updateList = Database.update(toBeUpdated,false);
+                system.debug('updateList' + updateList);
                 for(Database.SaveResult result: updateList){
                     if(!result.isSuccess()){
                         for(Database.Error objErr : result.getErrors()){
@@ -110,20 +116,26 @@ public without sharing class Core_MDF_ClaimReviewChecklist {
                     errorFromCase = calculateAdjustmentAmount(caseRecord,compliantIndicator,nonCompliantIndicator);
                 }
                 
-                if(errorForImpactAmount!= null || errorFromCase!=null){ 
+                //if(errorForImpactAmount!= null || errorFromCase!=null){ 
+                    if(errorForImpactAmount == null || errorFromCase ==null){ //ATHR Fix WW19
+                        return null;
+                    } 
                     errorMessageToBeDisplayed = errorForImpactAmount == null ? errorFromCase:errorForImpactAmount;
                     AuraHandledException e = new AuraHandledException(errorMessageToBeDisplayed);
                     e.setMessage(errorMessageToBeDisplayed);
+                    system.debug(e);
                     if(!test.isRunningTest()){throw e;}
-                }
+                //}
                 if(caseRecord != null){
                     updateClaimCaseReviewer(caseRecord);
                 } 
-            } 
+            //} 
+          return checklistCompletion;
         }
 
-        catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);throw new AuraHandledException(ex.getMessage());}
-        return checklistCompletion;
+        catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);//throw new AuraHandledException(ex.getMessage());}
+                         return null;}
+        //return checklistCompletion;
     }
 
     //Method returns the Non-Compliant review reults to be displayed in the Claim Review Results Tab
@@ -137,6 +149,7 @@ public without sharing class Core_MDF_ClaimReviewChecklist {
                                                             FROM Core_MDF_Claim_Case_Checklist__c
                                                             where Core_MDF_Case_ID__c =: caseRecord 
                                                             and Core_MDF_Checklist_Status__c = 'Non-Compliant'];
+            system.debug('result1'+result);  
             // Commented the below code, handling in updateClaimCaseReviewer method
             /*for (Core_MDF_Claim_Case_Checklist__c chklst : result){
                 reviewFindings.add(chklst.Core_MDF_Claim_Case_Review_Findings__c);
@@ -146,6 +159,7 @@ public without sharing class Core_MDF_ClaimReviewChecklist {
             Database.update(cs);*/
         }
         catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);}
+        system.debug('result2'+result);
         return result;
     }
 
@@ -228,15 +242,19 @@ public without sharing class Core_MDF_ClaimReviewChecklist {
                 nonCompliantCount += caseRec.Core_MDF_Checklist_Status__c == 'Non-Compliant'? 1:0;
             }
             
+            system.debug('compliantCount' + compliantCount + 'nonCompliantCount' + nonCompliantCount);
             //DE55189 - User able to see warning message when all Checklists are NA
             if(nonCompliantCount==0 && compliantCount > 0){toBeUpdatedCase.Core_MDF_Review_Case_Status__c = 'Compliant';}
             if(compliantCount==0 && nonCompliantCount > 0){toBeUpdatedCase.Core_MDF_Review_Case_Status__c = 'Non-compliant';}
             
+            system.debug('toBeUpdatedCase.Core_MDF_Review_Case_Status__c' + toBeUpdatedCase.Core_MDF_Review_Case_Status__c);
 
             if(toBeUpdatedCase.Core_MDF_Review_Case_Status__c != null){
                 caseStatusChange=true;
                 if(performUpdate){
+                    system.debug('inside perform update');
                     Database.SaveResult updateCase = Database.update(toBeUpdatedCase,false);
+                    system.debug('updateCase' + updateCase);
                 }
                 } 
         }
@@ -325,6 +343,7 @@ public without sharing class Core_MDF_ClaimReviewChecklist {
                             exceptionMessage = exceptionMessage == null?objErr.getMessage():exceptionMessage;
                         } 
                     }
+                    system.debug('exceptionMessage'+ exceptionMessage);   
             }
         }
         catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);}
@@ -342,6 +361,7 @@ public without sharing class Core_MDF_ClaimReviewChecklist {
                                         AND (PermissionSet.Name = 'Core_MDF_CCP_Internal_Claim_Case_Reviewer' OR PermissionSet.Name = 'Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager')
                                         ];
         
+            system.debug('isAClaimCaseReviewOrManager' + isAClaimCaseReviewOrManager);
         }
 
         catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);}
@@ -414,7 +434,8 @@ public without sharing class Core_MDF_ClaimReviewChecklist {
         } catch(exception ex) { Core_MDF_CCP_UtilityClass.logError(ex); }
         return caseId;
     }  
-
+    
+    
     //Audit functionality Method to get AI Status from Scorecard for displaying appropriate message
     @AuraEnabled
    public static Core_MDF_Scorecard_Helper.ScorecardDetailsWrapper  getAIAuditStatusFromScorecard(Id caseRecordId){

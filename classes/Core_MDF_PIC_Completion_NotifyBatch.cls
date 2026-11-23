@@ -4,21 +4,21 @@
 * Created Date      : 02/12/2023
 * Description       : To Notify Intel Owner on Pic Completion and CCF/DCF Claim Submitter on Pic Pass
 * Developer         : Keerthi
-* Updated                        : Date                                developer                                      description
-                                                                          01/03/2024                   Aditya                                Updated Finish method to call Core_MDF_Email_NotificationLoggingBatch for sending email and logging
+* Updated     		: Date			developer			description
+					  01/03/2024		Aditya			Updated Finish method to call Core_MDF_Email_NotificationLoggingBatch for sending email and logging
 *****************************************************************************************************************************************/
 public without sharing class Core_MDF_PIC_Completion_NotifyBatch implements Database.Batchable<sObject>, Database.Stateful {
     
     Public static List<string> Intel_Owner_Based_Notification_Prog = Core_MDF_CCP_ConstantClass.Intel_Owner_Based_Notification_Prog;
     Public static List<string> IUPGM_Based_Notification_Prog =Core_MDF_CCP_ConstantClass.IUPGM_Based_Notification_Prog ;
     Public static List<String>  Notification_Enabled_Program = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PIC_Completion_Notification').split(',');  
-    
+    Public List<Messaging.SingleEmailMessage> listEmailMsg;
     Set<Id> internalUserIds = new Set<Id>();
     Set<Id> externalUserIds = new Set<Id>();
     Set<Id> ipaInternalUserIdSet = new Set<Id>();
     Set<Id> ipaExternalUserIdSet = new Set<Id>(); // indu
     Public string cancelledStatus = Core_MDF_CCP_ConstantClass.CANCELLED_STATUS;
-    Public string DAYS_FILTER = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PIC_Completion_Notify_Days');              
+    Public string DAYS_FILTER = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PIC_Completion_Notify_Days');	
     public Database.Querylocator start(Database.BatchableContext bc) {
         String query ='SELECT Id,Core_MDF_Claim_ID_id__c, Core_MDF_Review_Date_dt__c,Core_MDF_Claim_ID_id__r.Core_MDF_Status__c,Core_MDF_EndTime_dtm__c,'+
             'Core_MDF_Claim_ID_id__r.Request.Core_MDF_Intel_Activity_Owner_Id__c,Core_MDF_Claim_ID_id__r.Request.Core_MDF_Primary_Intel_Owner_Id__c,Core_MDF_Claim_ID_id__r.Request.Core_MDF_Primary_Intel_Owner_Id__r.IsActive,Core_MDF_Claim_ID_id__r.Core_MDF_Program__c,Core_MDF_Claim_ID_id__r.Core_MDF_Ultimate_Account_ID__c,'+
@@ -50,6 +50,7 @@ public without sharing class Core_MDF_PIC_Completion_NotifyBatch implements Data
         Set<Id> nonIpaAccountNodeIdSet = new Set<Id>();
 
         try{
+
             for(Core_MDF_PIC_Review__c picReviewRecord:picReviewData) {
 
                 string requestProg = picReviewRecord.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Program__c;
@@ -122,28 +123,31 @@ public without sharing class Core_MDF_PIC_Completion_NotifyBatch implements Data
             }//indu
 
         }catch(Exception ex) {
-           Core_MDF_CCP_UtilityClass.logError(ex);
+            Core_MDF_CCP_UtilityClass.logError(ex);
         }
     }
     /*To Notify Intel owners and External CCF/DCF Claim Submitter*/
     Public void finish(Database.BatchableContext bc) {
         String claimObjForEmailPreferences = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EmailPreferenceObjectClaim');
         Integer batchSize = Core_MDF_CustomLabelConfig.getIntegerValues('Core_MDF_PIC_NotifyLogBatchSize');
-        Id batchInstanceId;
+        // Highlight: Unused Local Variable - 14285
+         Id batchInstanceId;
+        
         if((internalUserIds != null && internalUserIds.size() > 0) || (externalUserIds != null && externalUserIds.size() > 0)){
-            //calling batch to send email and log entries      
-            Core_MDF_Email_NotificationLoggingBatch emailNotifyLogBatch = new Core_MDF_Email_NotificationLoggingBatch(internalUserIds,externalUserIds,Core_MDF_CCP_ConstantClass.PIC_Completed_Notification,claimObjForEmailPreferences);
-            // custom metadata with batch size value 
-            //Integer batchSize = Core_MDF_CustomLabelConfig.getIntegerValues('Core_MDF_PIC_NotifyLogBatchSize');
-            batchInstanceId = Database.executeBatch(emailNotifyLogBatch,batchSize); 
-    	}
+
+            Core_MDF_Email_NotificationLoggingBatch emailNotifyLogBatch =
+                new Core_MDF_Email_NotificationLoggingBatch(internalUserIds,externalUserIds,Core_MDF_CCP_ConstantClass.PIC_Completed_Notification,claimObjForEmailPreferences);
+
+           batchInstanceId = Database.executeBatch(emailNotifyLogBatch,batchSize); 
+        }
+
         if((ipaInternalUserIdSet != null && ipaInternalUserIdSet.size() > 0) || (ipaExternalUserIdSet != null && ipaExternalUserIdSet.size() > 0)){
-            //calling batch to send email and log entries
-            Core_MDF_Email_NotificationLoggingBatch ipaEmailNotifyLogBatch = new Core_MDF_Email_NotificationLoggingBatch(ipaInternalUserIdSet,ipaExternalUserIdSet,Core_MDF_CCP_ConstantClass.PIC_Completed_IPA_OutcomeBased_Notification,claimObjForEmailPreferences);
-            // custom metadata with batch size value 
-            //Integer batchSize = Core_MDF_CustomLabelConfig.getIntegerValues('Core_MDF_PIC_NotifyLogBatchSize');
-            batchInstanceId = Database.executeBatch(ipaEmailNotifyLogBatch,batchSize); 
-    	}
+
+            Core_MDF_Email_NotificationLoggingBatch ipaEmailNotifyLogBatch =
+                new Core_MDF_Email_NotificationLoggingBatch(ipaInternalUserIdSet,ipaExternalUserIdSet,Core_MDF_CCP_ConstantClass.PIC_Completed_IPA_OutcomeBased_Notification,claimObjForEmailPreferences);
+
+           batchInstanceId = Database.executeBatch(ipaEmailNotifyLogBatch,batchSize); 
+        }
     }
     
     /*Method to get details from incoming pic review record and creating a wrapper */
@@ -157,15 +161,25 @@ public without sharing class Core_MDF_PIC_Completion_NotifyBatch implements Data
         Core_MDF_ScheduledNotificationHandler.InputWrapper inputWrap = new Core_MDF_ScheduledNotificationHandler.InputWrapper();
         string prog = picReviewRecord.Core_MDF_Claim_ID_id__r.Core_MDF_Program__c;
         
-        if(Intel_Owner_Based_Notification_Prog.contains(prog) && (picReviewRecord.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Intel_Activity_Owner_Id__c !=null && (picReviewRecord.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Intel_Activity_Owner_Id__r.IsActive || picReviewRecord.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Intel_Activity_Owner_Id__r.Partner_License_Reclaimed__c))){
+        
+        //merge if and else if- add program check && m
+        if(Intel_Owner_Based_Notification_Prog.contains(prog) && (picReviewRecord.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Intel_Activity_Owner_Id__c !=null && (picReviewRecord.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Intel_Activity_Owner_Id__r.IsActive || picReviewRecord.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Intel_Activity_Owner_Id__r.Partner_License_Reclaimed__c))
+        || (prog=='Ecosystem Extension Fund' && picReviewRecord.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Primary_Intel_Owner_Id__c !=null && (picReviewRecord.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Primary_Intel_Owner_Id__r.IsActive || picReviewRecord.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Primary_Intel_Owner_Id__r.Partner_License_Reclaimed__c))) {
             
             String progBTKey = prog + picReviewRecord.Core_MDF_Claim_ID_id__r.Core_MDF_Budget_Type_Options_Nm__c;
             progSetInt.add(prog);
             accountIds.add(Id.valueOf(picReviewRecord.Core_MDF_Claim_ID_id__r.Core_MDF_Ultimate_Account_ID__c));
-            intelOwnerSet.add( picReviewRecord.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Intel_Activity_Owner_Id__c);
+            if(picReviewRecord.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Primary_Intel_Owner_Id__c !=null){
+                intelOwnerSet.add( picReviewRecord.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Primary_Intel_Owner_Id__c);
+            }
+            if(picReviewRecord.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Intel_Activity_Owner_Id__c !=null){
+                intelOwnerSet.add( picReviewRecord.Core_MDF_Claim_ID_id__r.Request.Core_MDF_Intel_Activity_Owner_Id__c);
+            }
+
             progBudgetTypeKeySet.add(progBTKey);
             
-        } else if(IUPGM_Based_Notification_Prog.contains(prog)) {
+        } 
+        else if(IUPGM_Based_Notification_Prog.contains(prog)) {
             Id accIds = (prog =='Retail Marketing Funds')? picReviewRecord.Core_MDF_Claim_ID_id__r.Request.ChannelPartnerId:
             Id.valueOf(picReviewRecord.Core_MDF_Claim_ID_id__r.Core_MDF_Ultimate_Account_ID__c);
             accountIds.add(accIds);

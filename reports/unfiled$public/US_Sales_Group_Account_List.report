@@ -45,9 +45,6 @@
     <columns>
         <field>Account.Core_Account_ID__c</field>
     </columns>
-    <columns>
-        <field>Account.Core_Account_Owner_Email__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Account.Core_Sales_Groups__c</column>
@@ -55,13 +52,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>US Sales Group</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>USERS.NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>test,peet</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -153,7 +153,7 @@
     <enableSearch>false</enableSearch>
     <enableSharing>false</enableSharing>
     <enableStreamingApi>false</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Core_Field__c</fullName>
         <externalId>false</externalId>
@@ -190,21 +190,6 @@
         <externalId>false</externalId>
         <label>Opportunity Product ID</label>
         <length>18</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Opportunity_Product_Name__c</fullName>
-        <externalId>false</externalId>
-        <formula>HYPERLINK(
-  &quot;/&quot;&amp;Core_Opportunity_Product_ID__c  ,
-   Core_Opportunity_Product_ID__c ,
-  &quot;_self&quot;
-)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Opportunity Product Name</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>

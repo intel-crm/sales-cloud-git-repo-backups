@@ -37,7 +37,7 @@
         <name>Core_MDF_Audit_Adjustment_Amt__c</name>
     </fields>
     <fields>
-        <label><!-- Brand --></label>
+        <label><!-- BrandOld --></label>
         <name>Core_MDF_Brand_Nm__c</name>
     </fields>
     <fields>
@@ -68,6 +68,10 @@
         <label><!-- Claim Id --></label>
         <name>Core_MDF_Claim_id__c</name>
         <relationshipLabel><!-- core_mdf_claim_prediction --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Company Size --></label>
+        <name>Core_MDF_Company_Size_Ind__c</name>
     </fields>
     <fields>
         <label><!-- Company Size --></label>
@@ -115,6 +119,10 @@
     </fields>
     <fields>
         <label><!-- Prediction Score --></label>
+        <name>Core_MDF_Prediction_Score_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- DNU:Prediction Score --></label>
         <name>Core_MDF_Prediction_Score_PB__c</name>
     </fields>
     <fields>

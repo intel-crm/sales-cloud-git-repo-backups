@@ -40,7 +40,7 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>legal.reviewer.queue@intel.com.crm</name>
+                <name>legal.reviewer.queue@crm.intel.com</name>
                 <type>user</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
@@ -95,7 +95,7 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>businessapprover.queue@intel.com.crm</name>
+                <name>business.approver.queue@intel.com</name>
                 <type>user</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
@@ -162,7 +162,7 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>l2.approver.queue@intel.com.crm</name>
+                <name>l2approver.queue@crm.intel.com</name>
                 <type>user</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
@@ -225,7 +225,7 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>customer.acceptancequeue@intel.com.crm</name>
+                <name>customer.acceptancequeue@crm.intel.com</name>
                 <type>user</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>

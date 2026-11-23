@@ -7,9 +7,6 @@
         <field>Opportunity.Core_Date_Submitted_for_Approval__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Solution_Area__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Approval_Status__c</field>
     </columns>
     <columns>
@@ -19,7 +16,9 @@
         <field>FULL_NAME</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
+        <field>OWNER_MANAGER</field>
+    </columns>
+    <columns>
         <field>AMOUNT</field>
     </columns>
     <columns>
@@ -43,7 +42,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>ming gao,kai hu,xiaodong hang,jay yu,jim gong,qingdong man,yali liang,sam han,ryan sun</value>
+            <value>ming gao,jason1 xia,xiaodong hang,jay yu,jim gong,qingdong man</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Approval_Status__c</column>
@@ -52,28 +51,9 @@
             <operator>equals</operator>
             <value>Submitted</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Lost,Cancelled</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Exclude_From_KPIs__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OWNER_MANAGER</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <format>Tabular</format>
     <name>Q1 Submitted deals</name>
     <params>
         <name>terr</name>
@@ -96,8 +76,12 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>OWNER_MANAGER</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
-        <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <dateColumn>Opportunity.Core_Date_Submitted_for_Approval__c</dateColumn>
+        <endDate>2019-03-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2019-01-01</startDate>
     </timeFrameFilter>
 </Report>

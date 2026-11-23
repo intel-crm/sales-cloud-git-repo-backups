@@ -9,7 +9,13 @@
             <publicGroup>Core_MDF_CCP_Retail_ASMOLAR_FinMgr_Q_Grp</publicGroup>
             <publicGroup>Core_MDF_CCP_Retail_WW_Fin_Mgr_Queue_Grp</publicGroup>
         </publicGroups>
+        <users>
+            <user>retailfinmgrsarah.manuel@intel.com</user>
+        </users>
     </queueMembers>
+    <queueSobject>
+        <sobjectType>Core_MDF_Escalation__c</sobjectType>
+    </queueSobject>
     <queueSobject>
         <sobjectType>PartnerMarketingBudget</sobjectType>
     </queueSobject>

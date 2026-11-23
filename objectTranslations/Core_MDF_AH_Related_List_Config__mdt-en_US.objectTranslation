@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CCP AH Related List Config</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CCP AH Related List Configs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Actor.Alias --></label>
+        <name>Core_MDF_Actor_Alias__c</name>
+    </fields>
+    <fields>
+        <label><!-- Actor.LastName --></label>
+        <name>Core_MDF_Actor_LastName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Actor Masked Label --></label>
+        <name>Core_MDF_Actor_Masked_Label__c</name>
+    </fields>
+    <fields>
+        <label><!-- Actor Masked --></label>
+        <name>Core_MDF_Actor_Masked__c</name>
+    </fields>
+    <fields>
+        <label><!-- Actor.Name --></label>
+        <name>Core_MDF_Actor_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments Masked Label --></label>
+        <name>Core_MDF_Comments_Masked_Label__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments Masked --></label>
+        <name>Core_MDF_Comments_Masked__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>Core_MDF_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- CreatedDate --></label>
+        <name>Core_MDF_CreatedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- For External User --></label>
+        <name>Core_MDF_External_User__c</name>
+    </fields>
+    <fields>
+        <label><!-- Identifier Checkbox Field1 --></label>
+        <name>Core_MDF_Identifier_CheckboxField1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Identifier Checkbox Field2 --></label>
+        <name>Core_MDF_Identifier_CheckboxField2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Identifier TextField1 --></label>
+        <name>Core_MDF_Identifier_TextField1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Identifier TextField2 --></label>
+        <name>Core_MDF_Identifier_TextField2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object API Name --></label>
+        <name>Core_MDF_Object_API_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order By --></label>
+        <name>Core_MDF_Order_By__c</name>
+    </fields>
+    <fields>
+        <label><!-- OriginalActor.Alias --></label>
+        <name>Core_MDF_OriginalActor_Alias__c</name>
+    </fields>
+    <fields>
+        <label><!-- OriginalActor.LastName --></label>
+        <name>Core_MDF_OriginalActor_LastName__c</name>
+    </fields>
+    <fields>
+        <label><!-- OriginalActor Masked Label --></label>
+        <name>Core_MDF_OriginalActor_Masked_Label__c</name>
+    </fields>
+    <fields>
+        <label><!-- OriginalActor Masked --></label>
+        <name>Core_MDF_OriginalActor_Masked__c</name>
+    </fields>
+    <fields>
+        <label><!-- OriginalActor.Name --></label>
+        <name>Core_MDF_OriginalActor_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Permissions --></label>
+        <name>Core_MDF_Permissions__c</name>
+    </fields>
+    <fields>
+        <label><!-- Table Title --></label>
+        <name>Core_MDF_Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- toLabel(StepStatus) --></label>
+        <name>Core_MDF_ToLabel_StepStatus__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Masked label should not be empty if corresponding masked Checkbox is selected --></errorMessage>
+        <name>masked_label</name>
+    </validationRules>
+</CustomObjectTranslation>

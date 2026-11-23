@@ -8,7 +8,7 @@ private class Core_MDF_CampaignBudgetExceptionTest {
     private static void getMessageTest() {
         Core_MDF_CampaignBudgetException exp = new Core_MDF_CampaignBudgetException();
         exp.getMessage();
-        // Unit Test Method should include System.Assert 
+        // Unit Test Method should include System.Assert - Indira
         System.assertNotEquals(null, exp.getMessage(), 'Exception message should not be null.');
     }
 }

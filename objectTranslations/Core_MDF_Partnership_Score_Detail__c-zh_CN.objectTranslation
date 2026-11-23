@@ -17,6 +17,10 @@
         <name>Core_MDF_Balance_Amount_Amt__c</name>
     </fields>
     <fields>
+        <label><!-- Balance Amount New --></label>
+        <name>Core_MDF_Balance_Amount_New__c</name>
+    </fields>
+    <fields>
         <label><!-- Balance Amount --></label>
         <name>Core_MDF_Balance_Amt__c</name>
     </fields>
@@ -33,8 +37,17 @@
         <name>Core_MDF_Carry_Over_Amt__c</name>
     </fields>
     <fields>
+        <label><!-- Carry Over from Previous Qtr --></label>
+        <name>Core_MDF_Carry_Over_from_Previous_Qtr__c</name>
+    </fields>
+    <fields>
         <label><!-- External ID --></label>
         <name>Core_MDF_External_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- Checked when the External Id does not match the key the IAH pull batch is expected to build. --></help>
+        <label><!-- External Id Invalid --></label>
+        <name>Core_MDF_External_Id_Invalid_Ind__c</name>
     </fields>
     <fields>
         <label><!-- Node Account --></label>
@@ -131,6 +144,10 @@
     <fields>
         <label>总回收额</label>
         <name>Core_MDF_Total_Recovery_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Virtual Corp Account Name --></label>
+        <name>Core_MDF_Virtual_Corp_Account_nm__c</name>
     </fields>
     <nameFieldLabel><!-- PS Detail --></nameFieldLabel>
     <validationRules>

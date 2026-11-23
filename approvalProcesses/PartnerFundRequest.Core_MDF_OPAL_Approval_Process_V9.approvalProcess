@@ -39,6 +39,10 @@
         <type>group</type>
     </allowedSubmitters>
     <allowedSubmitters>
+        <submitter>Core_MDF_CCP_DELL_DCF_INTERNAL</submitter>
+        <type>group</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
         <submitter>Core_MDF_Program_Office_Grp</submitter>
         <type>group</type>
     </allowedSubmitters>
@@ -134,6 +138,7 @@
         </assignedApprover>
         <description>Program Office Review</description>
         <entryCriteria>
+            <booleanFilter>1 AND 2 AND 3</booleanFilter>
             <criteriaItems>
                 <field>PartnerFundRequest.Core_MDF_Program_Office_Check_ind__c</field>
                 <operation>equals</operation>
@@ -484,7 +489,7 @@ ROUND(Core_MDF_Activity_Reimbursement_Amt_nbr__c,2) &gt;= VALUE($Label.Core_MDF_
         </rejectionActions>
     </approvalStep>
     <description>This approval process is defined for OPAL program version 9</description>
-    <emailTemplate>Testt/Core_MDF_Activity_Approval_Notification</emailTemplate>
+    <emailTemplate>unfiled$public/Core_MDF_Activity_Approval_Notification</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <booleanFilter>(1 OR 4 OR 5) AND 2 AND 3</booleanFilter>

@@ -6,8 +6,8 @@
         <description>Choose metadata record based on Program and Budget Type</description>
         <name>Core_MDF_Select_based_on_Program_and_Budget</name>
         <label>Select based on Program and Budget</label>
-        <locationX>801</locationX>
-        <locationY>207</locationY>
+        <locationX>820</locationX>
+        <locationY>225</locationY>
         <defaultConnector>
             <targetReference>Core_MDF_Loop_through_metadata</targetReference>
         </defaultConnector>

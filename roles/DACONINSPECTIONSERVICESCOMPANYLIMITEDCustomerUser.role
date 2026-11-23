@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Dexon Technology Public Company Limited Customer User</description>
+    <description>DACON INSPECTION SERVICES COMPANY LIMITED Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Dexon Technology Public Company Limited Customer User</name>
+    <name>DACON INSPECTION SERVICES COMPANY LIMITED Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>DACONINSPECTIONSERVICESCOMPANYLIMITEDCustomerManager</parentRole>
 </Role>

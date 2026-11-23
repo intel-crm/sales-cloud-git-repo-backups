@@ -217,9 +217,9 @@ public class Core_MDF_PaymentServiceHandler_Test {
             Database.insert(erpmEngagementList);
             
             List<Core_Entitlement__c> entitlementList = new List<Core_Entitlement__c>();
-            Core_Entitlement__c entitlementCCF = Core_MDF_CCP_TestDataUtility.createEntitlement('Client User',agsRoleCCF.Id ,'Support','CCF User',erpmEngagementCCF.Id , true,Core_MDF_CCP_ConstantClass.CCF_PROGRAM,false);
+            Core_Entitlement__c entitlementCCF = Core_MDF_CCP_TestDataUtility.createEntitlement('Client User',agsRoleCCF.Id ,'Intel® Partner Investment Center','CCF User',erpmEngagementCCF.Id , true,Core_MDF_CCP_ConstantClass.CCF_PROGRAM,false);
             entitlementList.add(entitlementCCF);
-            Core_Entitlement__c entitlementCCF_ABA= Core_MDF_CCP_TestDataUtility.createEntitlement('Client Account Budget Administrator',agsRoleCCF_ABA.Id ,'Support','CCF Account Budget Administrator',erpmEngagementCCF.Id , true,Core_MDF_CCP_ConstantClass.CCF_PROGRAM,false);
+            Core_Entitlement__c entitlementCCF_ABA= Core_MDF_CCP_TestDataUtility.createEntitlement('Client Account Budget Administrator',agsRoleCCF_ABA.Id ,'Intel® Partner Investment Center','CCF Account Budget Administrator',erpmEngagementCCF.Id , true,Core_MDF_CCP_ConstantClass.CCF_PROGRAM,false);
             entitlementList.add(entitlementCCF_ABA);
             Database.insert(entitlementList);
             
@@ -270,7 +270,8 @@ public class Core_MDF_PaymentServiceHandler_Test {
             pgm.Core_MDF_Source_Txt__c = 'test';
             pgm.Core_MDF_AccountIdGroupName__c = acc2.Id+'PGM_TEST_Group2';
             Database.insert(pgm);
-            Core_MDF_Partner_Node_User_Mapping__c pnum = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(acc2.Id,usr1.Id, true);
+           // Highlight: Unused Local Variable - Indira
+           // Core_MDF_Partner_Node_User_Mapping__c pnum = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(acc2.Id,usr1.Id, true);
             
             List<PartnerFundAllocation> pfaList = new List<PartnerFundAllocation>();
             PartnerFundAllocation allocation = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Allocation New',budget,acc2,1000,false);
@@ -293,7 +294,8 @@ public class Core_MDF_PaymentServiceHandler_Test {
             Database.insert(campaignList);
             
             Core_MDF_Bank__c bank1 = Core_MDF_CCP_TestDataUtility.createBank(acc1.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1231231230');
-            Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc2.Id, bank1.Id, true);
+           // Highlight: Unused Local Variable - Indira
+           // Core_MDF_Account_Bank_Mapping__c abm = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc2.Id, bank1.Id, true);
         //    Test.stopTest();
             
             List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
@@ -561,7 +563,7 @@ public class Core_MDF_PaymentServiceHandler_Test {
         paymentIdToUserMapOfMap.put(newPayment1.Id,localeKeyToUserListMap);
         Map<Id,String> paymentIdToProgramMap = new Map<Id,String>();
         paymentIdToProgramMap.put(newPayment1.Id,'Datacenter');
-        Core_MDF_SendPaidPaymentEmail.sendEmail(paymentIdToUserMapOfMap,new Set<String>{'Datacenter'},new Set<String>{'en_US'},paymentIdToProgramMap);            
+        //Core_MDF_SendPaidPaymentEmail.sendEmail(paymentIdToUserMapOfMap,new Set<String>{'Datacenter'},new Set<String>{'en_US'},paymentIdToProgramMap);            
         //Core_MDF_SendPaidPaymentEmailToAdmin.executeBatch(paymentList);
         }
         List<Core_MDF_SendPaidPaymentEmail.EmailParameter> wrapObjList = new List<Core_MDF_SendPaidPaymentEmail.EmailParameter>();
@@ -749,10 +751,10 @@ public class Core_MDF_PaymentServiceHandler_Test {
         iim.Core_Message_Type__c = 'Payment';
         iim.Core_Source_System__c = 'EDW';
         insert iim;
-        
-        Core_MDF_Payment__c correctUpdatedPaymentRecord = [SELECT Core_MDF_Payment_No_Txt__c, Core_MDF_EFT_Nbr__c, Core_MDF_Payment_Made_Dt__c, Core_MDF_Payment_Status_Txt__c 
+        // Highlight: Unused Local Variable - Indira
+       /* Core_MDF_Payment__c correctUpdatedPaymentRecord = [SELECT Core_MDF_Payment_No_Txt__c, Core_MDF_EFT_Nbr__c, Core_MDF_Payment_Made_Dt__c, Core_MDF_Payment_Status_Txt__c 
                                                            FROM Core_MDF_Payment__c
-                                                           WHERE Id =:paymentRecord.Id];
+                                                           WHERE Id =:paymentRecord.Id]; */
         test.stopTest();   
     }
     

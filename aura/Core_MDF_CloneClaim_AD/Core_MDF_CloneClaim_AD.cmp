@@ -1,0 +1,26 @@
+<aura:component controller="Core_MDF_PartnerFundClaim_Edit" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <!-- To Check whether User Can Clone a record or Not -->
+    <aura:handler name="init" value="{!this}" action="{!c.checkObjectPermission}" />
+ 
+    <!-- Attributes to identify if clone lightning component was called -->
+    <aura:attribute type="Boolean" name="hasCloneAccess" Default="false" 
+                    description="Checks the CRUD permission " />
+    <aura:attribute type="Boolean" name="isCloneClaim" Default="true" 
+                    description="Controls the Clone Part of Claim Component" />
+    <aura:attribute name="accessErrorMsg" type="String" default=""/>
+     
+   
+<!-- Component Starting If User Has Read & Edit Access -->
+    <aura:if isTrue ="{!v.hasCloneAccess}" >
+         <div><c:Core_MDF_PFC_EditSwitch_AD  isClone ="{!v.isCloneClaim}" recordId ="{!v.recordId}"/></div> 
+        <aura:set attribute="else">            
+                <div class = "slds-align_absolute-center">
+                    <lightning:card title="" class="{!if(v.accessErrorMsg != '' ,'slds-show slds-text-heading_small','slds-hide')}">
+                        {!v.accessErrorMsg}
+                    </lightning:card>
+                </div>
+        </aura:set>
+    </aura:if>  
+   
+
+</aura:component>

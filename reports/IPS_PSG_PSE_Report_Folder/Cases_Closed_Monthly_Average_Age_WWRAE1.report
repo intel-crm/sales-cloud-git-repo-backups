@@ -367,7 +367,7 @@
         <chartSummaries>
             <aggregate>Average</aggregate>
             <axisBinding>y</axisBinding>
-            <column>Case.Core_IPS_Age__c</column>
+            <column>AGE</column>
         </chartSummaries>
         <chartType>LineGrouped</chartType>
         <enableHoverLabels>false</enableHoverLabels>
@@ -406,7 +406,6 @@
         <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
-        <aggregateTypes>Average</aggregateTypes>
         <field>Case.Core_IPS_Age__c</field>
     </columns>
     <columns>
@@ -437,7 +436,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Case.Core_AAQC_Case_recordType</value>
+            <value>Case.Core_AAQC_Case_recordType,Case.CEP_Case</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
@@ -471,7 +470,7 @@
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Quarter</dateGranularity>
+        <dateGranularity>Month</dateGranularity>
         <field>CLOSED_DATEONLY</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
@@ -496,7 +495,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
+        <endDate>2019-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2019-01-01</startDate>
+        <startDate>2018-11-01</startDate>
     </timeFrameFilter>
 </Report>

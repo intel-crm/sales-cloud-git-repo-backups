@@ -9,6 +9,10 @@
         <value>CCP ProgramGeoRoleGroupMap</value>
     </caseValues>
     <fields>
+        <label><!-- All Accounts --></label>
+        <name>Core_MDF_All_Accounts__c</name>
+    </fields>
+    <fields>
         <label><!-- Budget Type --></label>
         <name>Core_MDF_Budget_Type_txt__c</name>
     </fields>
@@ -31,6 +35,10 @@
     <fields>
         <label><!-- Is Primary Role --></label>
         <name>Core_MDF_Is_Primary_Role__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Ultimate Account Based? --></label>
+        <name>Core_MDF_Is_Ultimate_Account_Based_Ind__c</name>
     </fields>
     <fields>
         <label><!-- Program --></label>

@@ -103,15 +103,15 @@
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
-            <name>pgmRecords</name>
-            <value>
-                <elementReference>IPAPGMRecords</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
             <name>permissionSetName</name>
             <value>
                 <elementReference>$Label.Core_MDF_IPA_Account_Manager_Permission_Set</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>pgmRecords</name>
+            <value>
+                <elementReference>IPAPGMRecords</elementReference>
             </value>
         </inputParameters>
         <inputParameters>

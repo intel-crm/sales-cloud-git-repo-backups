@@ -66,7 +66,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
-            <value>100</value>
+            <value>100.0</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Products__c</column>
@@ -117,8 +117,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

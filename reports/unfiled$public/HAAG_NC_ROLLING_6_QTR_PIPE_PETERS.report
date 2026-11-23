@@ -138,7 +138,7 @@
         <field>Opportunity.Core_Business_Unit_Territory__c</field>
     </columns>
     <filter>
-        <booleanFilter>(1 AND 2 AND 3 AND 7 AND (4 OR 8)) AND ((5 OR 6) OR (9 AND 10))</booleanFilter>
+        <booleanFilter>(1 AND 2 AND 3 AND 7 AND (4 OR 8)) AND (5 OR 6)</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -194,20 +194,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>THIS_QUARTER</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Adam Martinak</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Timothy Hagen</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

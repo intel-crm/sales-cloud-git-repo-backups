@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnalyticSnapshot xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>Member Summary Dashboard</name>
+    <runningUser>11630236@intel.com.crm</runningUser>
+    <sourceReport>unfiled$public/Case_Reviews_selected_quartersDO</sourceReport>
+    <targetObject>Geo_Reporting__c</targetObject>
+</AnalyticSnapshot>

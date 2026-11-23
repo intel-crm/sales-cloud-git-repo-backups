@@ -1,0 +1,132 @@
+<template>
+	<!-- Spinner Container -->
+		<template if:true={showToUser}>
+			<div class="slds-var-m-top_small">
+				<lightning-card variant="Narrow" style="background-color:white">
+					<div class="slds-grid">						
+						<template if:true={showToUserDropdown}>
+							<div class={dynamiClassnamenew} data-id="resultBox" aria-expanded="false"
+								aria-haspopup="listbox" role="combobox">
+								<div class="slds-form-element__control slds-input-has-icon  slds-input-has-icon_right"
+									role="none">
+									<lightning-input type="search" required="true" data-id="userinputnew"
+										label="From Account" value={valueselectedNew} name="searchFromAccount"
+										onchange={searchToAccount}
+										field-level-help="Enter few characters of Account Name"
+										placeholder="Search by Name" disabled={disableToUserDropdown}>
+									</lightning-input>
+									<div id="listbox-id-3"
+										class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid"
+										role="listbox">
+										<ul class="slds-listbox slds-listbox_vertical" role="presentation">
+											<template for:each={toUserList} for:item="serecord">
+												<li role="presentation" class="slds-listbox__item" key={serecord.recId}>
+
+													<div data-id={serecord.recId} data-name={serecord.recName}
+														onclick={setSelectedRecordNew}
+														class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+														role="option">
+														<div class="slds-media slds-media_center">
+															<span class="slds-media__figure">
+																<span
+																	class="slds-icon_container slds-icon-standard-account">
+																	<lightning-icon icon-name="standard:account">
+																	</lightning-icon>
+																</span>
+															</span>
+
+															<span class="slds-media__body">
+																<span
+																	class="slds-listbox__option-text slds-listbox__option-text_entity">{serecord.recName}</span>
+																<span
+																	class="slds-listbox__option-text slds-listbox__option-text_entity">{serecord.recId}</span>
+															</span>
+														</div>
+													</div>
+												</li>
+											</template>
+										</ul>
+									</div>
+									<div if:true={messageFlagNew}>
+										No result found.
+									</div>
+									<div if:true={LoadingTextNew}>
+										Loading...
+									</div>
+									<div if:true={messageFlag}>
+										No result found.
+									</div>
+								</div>
+							</div>
+						</template>
+						
+					</div>
+				</lightning-card>
+			</div>
+		</template>
+
+		<template if:true={showToUser}>
+			<div class="slds-var-m-top_small">
+				<lightning-card variant="Narrow" style="background-color:white">
+					<div class="slds-grid">						
+						<template if:true={showToUserDropdown}>
+							<div class={dynamiClassnamenew} data-id="resultBox" aria-expanded="false"
+								aria-haspopup="listbox" role="combobox">
+								<div class="slds-form-element__control slds-input-has-icon  slds-input-has-icon_right"
+									role="none">
+									<lightning-input type="search" required="true" data-id="userinputnew1"
+										label="To Account" value={valueselectedNew1} name="searchToAccount"
+										onchange={searchfromAccount}
+										field-level-help="Enter few characters of Account Name"
+										placeholder="Search by Name" disabled={disableToUserDropdown}>
+									</lightning-input>
+									<div id="listbox-id-4"
+										class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid"
+										role="listbox">
+										<ul class="slds-listbox slds-listbox_vertical" role="presentation">
+											<template for:each={fromUserList} for:item="serecord">
+												<li role="presentation" class="slds-listbox__item" key={serecord.recId}>
+
+													<div data-id={serecord.recId} data-name={serecord.recName}
+														onclick={setFromAccount}
+														class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+														role="option">
+														<div class="slds-media slds-media_center">
+															<span class="slds-media__figure">
+																<span
+																	class="slds-icon_container slds-icon-standard-account">
+																	<lightning-icon icon-name="standard:account">
+																	</lightning-icon>
+																</span>
+															</span>
+
+															<span class="slds-media__body">
+																<span
+																	class="slds-listbox__option-text slds-listbox__option-text_entity">{serecord.recName}</span>
+																<span
+																	class="slds-listbox__option-text slds-listbox__option-text_entity">{serecord.recId}</span>
+															</span>
+														</div>
+													</div>
+												</li>
+											</template>
+										</ul>
+									</div>
+									<div if:true={messageFlagNew}>
+										No result found.
+									</div>
+									<div if:true={LoadingTextNew}>
+										Loading...
+									</div>
+									<div if:true={messageFlag}>
+										No result found.
+									</div>
+								</div>
+							</div>
+						</template>
+						
+					</div>
+				</lightning-card>
+			</div>
+		</template>
+</template>

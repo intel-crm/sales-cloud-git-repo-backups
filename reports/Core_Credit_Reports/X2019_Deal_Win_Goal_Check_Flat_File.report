@@ -22,9 +22,6 @@
         <field>Core_Goal__c.Core_Goal_Status__c</field>
     </columns>
     <columns>
-        <field>Core_Goal__c.Core_Goal_Claim_Date__c</field>
-    </columns>
-    <columns>
         <field>Core_Goal__c.Core_Goal_Approved_Date__c</field>
     </columns>
     <columns>

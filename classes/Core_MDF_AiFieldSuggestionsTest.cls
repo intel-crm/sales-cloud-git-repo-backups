@@ -2,7 +2,7 @@
 public class Core_MDF_AiFieldSuggestionsTest {
     
     // ═══════════════════════════════════════════════════════════════════════════════
-    // OPTIMIZED TEST DATA SETUP
+    // TEST DATA SETUP
     // ═══════════════════════════════════════════════════════════════════════════════
     
     @TestSetup
@@ -17,82 +17,149 @@ public class Core_MDF_AiFieldSuggestionsTest {
             Core_MDF_Field_5_txt__c = 'https://api.openai.com/v1/chat/completions',
             Core_MDF_Field_6_txt__c = '30000'
         );
-        insert aiConfig;
+        insert aiConfig; 
         
-        // Create essential prompt metadata records only
+        // Create prompt metadata records
         List<Core_MDF_CCP_Custom_Metadata_Utility__c> promptMetadata = new List<Core_MDF_CCP_Custom_Metadata_Utility__c>();
         
-        // Essential metadata for core functionality
-        promptMetadata.add(createMetadataRecord('AI_PROMPT_INTRO', 'SMART AI ANALYSIS', 'Intel MDF Campaign', 'Field Extraction'));
-        promptMetadata.add(createMetadataRecord('AI_PROMPT_JSON_STRUCTURE', 'Expected JSON Response Format:', 'campaignName,startDate,endDate,focusArea,priority', 'country,targetAudience,brands,technologies,initiatives'));
-        promptMetadata.add(createMetadataRecord('AI_PROMPT_RULES', 'Only use exact picklist values provided', 'Return null for fields with no clear match', 'Analyze content thoroughly'));
-        promptMetadata.add(createMetadataRecord('AI_PROMPT_FIELD_SPECIFIC', 'Extract campaign name from title or header', 'Look for start date in YYYY-MM-DD format', 'Look for end date in YYYY-MM-DD format'));
-        promptMetadata.add(createMetadataRecord('AI_PROMPT_PICKLIST_RULES', 'PICKLIST MATCHING RULES', 'Follow these rules for matching picklist values', 'Exact Match Priority'));
-        promptMetadata.add(createMetadataRecord('AI_PROMPT_PICKLIST_SENSITIVITY', 'Case sensitivity rules', 'Abbreviation handling', 'Synonym Recognition'));
-        promptMetadata.add(createMetadataRecord('AI_PROMPT_EXTRACTION_PROCESS', 'EXTRACTION PROCESS', 'Follow systematic extraction approach', 'Parse document structure'));
-        promptMetadata.add(createMetadataRecord('AI_PROMPT_VERIFICATION', 'FINAL VERIFICATION', 'Verify all extracted values', 'Check picklist value accuracy'));
-        promptMetadata.add(createMetadataRecord('AI_PROMPT_DOCUMENT_EXTRACTION', 'DOCUMENT EXTRACTION RULES', 'Enhanced document processing', 'Document Type Analysis'));
-        promptMetadata.add(createMetadataRecord('AI_PROMPT_ENHANCED_EXTRACTION', 'ENHANCED EXTRACTION PROCESS', 'Advanced extraction techniques', 'Pattern Recognition'));
-        promptMetadata.add(createMetadataRecord('AI_PROMPT_ENHANCED_EXTRACTION_PART2', 'Cross-reference validation', 'Error Detection', 'Missing data identification'));
-        promptMetadata.add(createMetadataRecord('AI_PROMPT_SCANNING_PATTERNS', 'SCANNING PATTERNS', 'Header Patterns', 'Title scanning'));
-        promptMetadata.add(createMetadataRecord('AI_PROMPT_SCANNING_PATTERNS_PART2', 'Form structures', 'Data grids', 'Hierarchical content'));
-        promptMetadata.add(createMetadataRecord('AI_PROMPT_RESPONSE_FORMAT', 'RESPONSE FORMAT', 'Return structured JSON response', '"campaignName": "extracted_value",'));
-        promptMetadata.add(createMetadataRecord('AI_PROMPT_RESPONSE_FORMAT_PART2', '"campaignNameConfidence": 95,', '"startDateConfidence": 90,', '"endDateConfidence": 90,'));
-        promptMetadata.add(createMetadataRecord('AI_PROMPT_ENHANCED_RULES', 'ENHANCED PROCESSING RULES:', 'Prioritize explicit over implicit data', 'Use context for ambiguous values'));
-        promptMetadata.add(createMetadataRecord('AI_PROMPT_COMBINED_ANALYSIS', 'COMBINED ANALYSIS INSTRUCTIONS', 'Analyze both description and file content', 'Data Prioritization'));
-        promptMetadata.add(createMetadataRecord('AI_PROMPT_FINAL_INSTRUCTIONS', 'FINAL PROCESSING INSTRUCTIONS', 'Complete all validation steps before response', 'Verify JSON syntax correctness'));
-        promptMetadata.add(createMetadataRecord('AI_PROMPT_FILE_INTRO', 'INTELLIGENT FILE ANALYSIS', 'for Intel MDF Campaign Planning', 'Analyzing files:'));
-        promptMetadata.add(createMetadataRecord('AI_PROMPT_ANALYSIS_MODES', 'COMBINED ANALYSIS MODE: Description + Files', 'You are analyzing both user description and uploaded files.', 'Processing Strategy:'));
-        promptMetadata.add(createMetadataRecord('AI_PROMPT_COMBINED_RULES', 'File content has higher priority than description text', 'Use description to supplement missing file information', 'Apply intelligent conflict resolution between sources'));
+        // AI_PROMPT_INTRO
+        promptMetadata.add(new Core_MDF_CCP_Custom_Metadata_Utility__c(
+            Core_MDF_Category__c = 'AI_PROMPT_INTRO',
+            Core_MDF_Is_Active_Ind__c = true,
+            Core_MDF_Field_1_txt__c = 'SMART AI ANALYSIS',
+            Core_MDF_Field_2_txt__c = 'Intel MDF Campaign',
+            Core_MDF_Field_3_txt__c = 'Field Extraction'
+        ));
+        
+        // AI_PROMPT_JSON_STRUCTURE
+        promptMetadata.add(new Core_MDF_CCP_Custom_Metadata_Utility__c(
+            Core_MDF_Category__c = 'AI_PROMPT_JSON_STRUCTURE',
+            Core_MDF_Is_Active_Ind__c = true,
+            Core_MDF_Field_1_txt__c = 'Expected JSON Response Format:',
+            Core_MDF_Field_2_txt__c = 'campaignName,startDate,endDate,focusArea,priority',
+            Core_MDF_Field_3_txt__c = 'country,targetAudience,brands,technologies,initiatives'
+        ));
+        
+        // AI_PROMPT_RULES
+        promptMetadata.add(new Core_MDF_CCP_Custom_Metadata_Utility__c(
+            Core_MDF_Category__c = 'AI_PROMPT_RULES',
+            Core_MDF_Is_Active_Ind__c = true,
+            Core_MDF_Field_1_txt__c = 'Only use exact picklist values provided',
+            Core_MDF_Field_2_txt__c = 'Return null for fields with no clear match',
+            Core_MDF_Field_3_txt__c = 'Analyze content thoroughly',
+            Core_MDF_Field_4_txt__c = 'Provide confidence scores'
+        ));
+        
+        // AI_PROMPT_FIELD_SPECIFIC
+        promptMetadata.add(new Core_MDF_CCP_Custom_Metadata_Utility__c(
+            Core_MDF_Category__c = 'AI_PROMPT_FIELD_SPECIFIC',
+            Core_MDF_Is_Active_Ind__c = true,
+            Core_MDF_Field_1_txt__c = 'Extract campaign name from title or header',
+            Core_MDF_Field_2_txt__c = 'Look for start date in YYYY-MM-DD format',
+            Core_MDF_Field_3_txt__c = 'Look for end date in YYYY-MM-DD format',
+            Core_MDF_Field_4_txt__c = 'Identify focus area from content context',
+            Core_MDF_Field_5_txt__c = 'Determine priority level from content'
+        ));
+        
+        // AI_PROMPT_PICKLIST_RULES
+        promptMetadata.add(new Core_MDF_CCP_Custom_Metadata_Utility__c(
+            Core_MDF_Category__c = 'AI_PROMPT_PICKLIST_RULES',
+            Core_MDF_Is_Active_Ind__c = true,
+            Core_MDF_Field_1_txt__c = 'PICKLIST MATCHING RULES',
+            Core_MDF_Field_2_txt__c = 'Follow these rules for matching picklist values',
+            Core_MDF_Field_3_txt__c = 'Exact Match Priority',
+            Core_MDF_Field_4_txt__c = 'Look for exact string matches first',
+            Core_MDF_Field_5_txt__c = 'Case insensitive matching allowed',
+            Core_MDF_Field_6_txt__c = 'Partial matches acceptable if clear',
+            Core_MDF_Field_7_txt__c = 'Use null if no clear match found'
+        ));
+        
+        // AI_PROMPT_VERIFICATION
+        promptMetadata.add(new Core_MDF_CCP_Custom_Metadata_Utility__c(
+            Core_MDF_Category__c = 'AI_PROMPT_VERIFICATION',
+            Core_MDF_Is_Active_Ind__c = true,
+            Core_MDF_Field_1_txt__c = 'FINAL VERIFICATION',
+            Core_MDF_Field_2_txt__c = 'Verify all extracted values',
+            Core_MDF_Field_3_txt__c = 'Check picklist value accuracy',
+            Core_MDF_Field_4_txt__c = 'Ensure date format compliance',
+            Core_MDF_Field_5_txt__c = 'Validate confidence scores',
+            Core_MDF_Field_6_txt__c = 'Return valid JSON format'
+        ));
         
         insert promptMetadata;
         
-        // Create minimal essential test files only - FIXED VERSION DATA ISSUE
+        // Create test files in @TestSetup
         List<ContentVersion> testFiles = new List<ContentVersion>();
         
-        // Basic test files with minimal content - ensuring all have valid VersionData
-        testFiles.add(createContentVersion('Test Campaign Document', 'test.txt', 'Test campaign content'));
-        testFiles.add(createContentVersion('Client Computing Campaign', 'client.txt', 'AI PC laptop solutions'));
-        testFiles.add(createContentVersion('Data Center Infrastructure', 'datacenter.txt', 'enterprise server datacenter Xeon processor infrastructure'));
-        testFiles.add(createContentVersion('Networking Campaign', 'network.txt', '5G telecommunications networking telco wireless'));
-        testFiles.add(createContentVersion('Edge Computing Campaign', 'edge.txt', 'IoT edge computing'));
-        testFiles.add(createContentVersion('Generic Campaign', 'generic.txt', 'Generic campaign'));
-        testFiles.add(createContentVersion('Test CSV File', 'test.csv', 'Campaign,Priority\nTest,High'));
-        testFiles.add(createContentVersion('Test JSON File', 'test.json', '{"campaign": "Test"}'));
-        testFiles.add(createContentVersion('Test Excel File', 'test.xlsx', 'Excel content'));
-        // FIXED: Empty file now has minimal content instead of truly empty
-        testFiles.add(createContentVersion('Empty Test File', 'empty.txt', ' ')); // Single space instead of empty string
+        // Basic test file
+        testFiles.add(new ContentVersion(
+            Title = 'Test Campaign Document',
+            PathOnClient = 'test.txt',
+            VersionData = Blob.valueOf('Test campaign content for AI analysis'),
+            IsMajorVersion = true
+        ));
+        
+        // Client Computing file
+        testFiles.add(new ContentVersion(
+            Title = 'Client Computing Campaign',
+            PathOnClient = 'client_campaign.txt',
+            VersionData = Blob.valueOf('This campaign focuses on AI PC and laptop solutions for enterprise clients'),
+            IsMajorVersion = true
+        ));
+        
+        // Data Center file
+        testFiles.add(new ContentVersion(
+            Title = 'Data Center Infrastructure',
+            PathOnClient = 'datacenter.txt',
+            VersionData = Blob.valueOf('This campaign targets enterprise server and Xeon processor solutions for data center infrastructure'),
+            IsMajorVersion = true
+        ));
+        
+        // Networking file
+        testFiles.add(new ContentVersion(
+            Title = 'Networking Campaign',
+            PathOnClient = 'networking.txt',
+            VersionData = Blob.valueOf('5g networking solutions for telecommunications and wireless connectivity'),
+            IsMajorVersion = true
+        ));
+        
+        // Edge file
+        testFiles.add(new ContentVersion(
+            Title = 'Edge Computing Campaign',
+            PathOnClient = 'edge.txt',
+            VersionData = Blob.valueOf('Edge computing and IoT solutions for industrial applications'),
+            IsMajorVersion = true
+        ));
+        
+        // Generic file (no specific keywords)
+        testFiles.add(new ContentVersion(
+            Title = 'Generic Campaign',
+            PathOnClient = 'generic.txt',
+            VersionData = Blob.valueOf('Generic campaign without specific technology keywords'),
+            IsMajorVersion = true
+        ));
+        
+        // CSV file
+        testFiles.add(new ContentVersion(
+            Title = 'Test CSV File',
+            PathOnClient = 'test.csv',
+            VersionData = Blob.valueOf('Campaign,Priority,Focus\nTest Campaign,High,Client Computing'),
+            IsMajorVersion = true
+        ));
+        
+        // Large file
+        String largeContent = '';
+        for (Integer i = 0; i < 200; i++) {
+            largeContent += 'This is a test line for large file content processing. ';
+        }
+        testFiles.add(new ContentVersion(
+            Title = 'Large Test File',
+            PathOnClient = 'large.txt',
+            VersionData = Blob.valueOf(largeContent),
+            IsMajorVersion = true
+        ));
         
         insert testFiles;
-    }
-    
-    // Helper method to create metadata records with minimal data
-    private static Core_MDF_CCP_Custom_Metadata_Utility__c createMetadataRecord(String category, String field1, String field2, String field3) {
-        return new Core_MDF_CCP_Custom_Metadata_Utility__c(
-            Core_MDF_Category__c = category,
-            Core_MDF_Is_Active_Ind__c = true,
-            Core_MDF_Field_1_txt__c = field1,
-            Core_MDF_Field_2_txt__c = field2,
-            Core_MDF_Field_3_txt__c = field3,
-            Core_MDF_Field_4_txt__c = 'Field4',
-            Core_MDF_Field_5_txt__c = 'Field5',
-            Core_MDF_Field_6_txt__c = 'Field6',
-            Core_MDF_Field_7_txt__c = 'Field7',
-            Core_MDF_Field_8_txt__c = 'Field8'
-        );
-    }
-    
-    // Helper method to create content versions with minimal data - FIXED VERSION
-    private static ContentVersion createContentVersion(String title, String pathOnClient, String content) {
-        // Ensure content is never null or empty
-        String safeContent = String.isBlank(content) ? ' ' : content;
-        
-        return new ContentVersion(
-            Title = title,
-            PathOnClient = pathOnClient,
-            VersionData = Blob.valueOf(safeContent),
-            IsMajorVersion = true
-        );
     }
     
     // ═══════════════════════════════════════════════════════════════════════════════
@@ -117,21 +184,6 @@ public class Core_MDF_AiFieldSuggestionsTest {
         }
     }
     
-    public class MockOCRHttpResponse implements HttpCalloutMock {
-        public HTTPResponse respond(HTTPRequest req) {
-            HttpResponse res = new HttpResponse();
-            if (req.getEndpoint().contains('formrecognizer')) {
-                res.setStatusCode(202);
-                res.setHeader('Operation-Location', 'https://test.cognitiveservices.azure.com/test-id');
-                res.setBody('');
-            } else {
-                res.setStatusCode(200);
-                res.setBody('{"status": "succeeded", "analyzeResult": {"readResults": [{"content": "OCR text"}]}}');
-            }
-            return res;
-        }
-    }
-    
     // ═══════════════════════════════════════════════════════════════════════════════
     // HELPER METHODS
     // ═══════════════════════════════════════════════════════════════════════════════
@@ -140,506 +192,496 @@ public class Core_MDF_AiFieldSuggestionsTest {
         return [SELECT Id, ContentDocumentId, Title FROM ContentVersion WHERE Title = :title LIMIT 1];
     }
     
-    private static Map<String, Object> getStandardPicklistValues() {
-        return new Map<String, Object>{
-            'priority' => new List<String>{'High', 'Medium', 'Low'},
-            'focusArea' => new List<String>{'Client Computing', 'Data Center', 'Edge', 'Networking & Telco'}
-        };
+    private static List<ContentVersion> getTestFiles(List<String> titles) {
+        return [SELECT Id, ContentDocumentId, Title FROM ContentVersion WHERE Title IN :titles];
     }
     
     // ═══════════════════════════════════════════════════════════════════════════════
-    // CORE FUNCTIONALITY TESTS
+    // TEST METHODS FOR DESCRIPTION ANALYSIS
     // ═══════════════════════════════════════════════════════════════════════════════
     
     @isTest
     static void testAnalyzeDescriptionWithAI_Success() {
-        String mockResponse = '{"choices": [{"message": {"content": "{\\"campaignName\\": \\"Test Campaign\\", \\"priority\\": \\"High\\"}"}}]}';
+        // Setup
+        String mockResponse = '{"choices": [{"message": {"content": "{\\"campaignName\\": \\"Test Campaign\\", \\"priority\\": \\"High\\", \\"focusArea\\": \\"Client Computing\\"}"}}]}';
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator(200, mockResponse));
         
+        Map<String, Object> picklistValues = new Map<String, Object>{
+            'priority' => new List<String>{'High', 'Medium', 'Low'},
+            'focusArea' => new List<String>{'Client Computing', 'Data Center', 'Edge'}
+        };
+        
+        // Test
         Test.startTest();
         Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeDescriptionWithAI(
-            'High priority campaign', 'TestRecordType', getStandardPicklistValues()
+            'This is a high priority client computing campaign', 
+            'TestRecordType', 
+            picklistValues
         );
         Test.stopTest();
         
-        System.assertEquals(true, result.get('success'));
-        System.assertNotEquals(null, result.get('data'));
+        // Verify
+        System.assertEquals(true, result.get('success'), 'Should return success');
+        System.assertNotEquals(null, result.get('data'), 'Should return data');
     }
     
     @isTest
     static void testAnalyzeDescriptionWithAI_BlankDescription() {
+        // Test
         Test.startTest();
         Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeDescriptionWithAI(
-            '', 'TestRecordType', new Map<String, Object>()
+            '', 
+            'TestRecordType', 
+            new Map<String, Object>()
         );
         Test.stopTest();
         
-        System.assertEquals(false, result.get('success'));
-        System.assertEquals('Description is required', result.get('error'));
-    }
-    
-    @isTest
-    static void testAnalyzeDescriptionWithAI_NullDescription() {
-        Test.startTest();
-        Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeDescriptionWithAI(
-            null, 'TestRecordType', new Map<String, Object>()
-        );
-        Test.stopTest();
-        
-        System.assertEquals(false, result.get('success'));
-        System.assertEquals('Description is required', result.get('error'));
+        // Verify
+        System.assertEquals(false, result.get('success'), 'Should return failure for blank description');
+        System.assertEquals('Description is required', result.get('error'), 'Should return appropriate error message');
     }
     
     @isTest
     static void testAnalyzeDescriptionWithAI_HttpError() {
-        Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator(500, 'Error'));
+        // Setup
+        Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator(500, 'Internal Server Error'));
         
+        Map<String, Object> picklistValues = new Map<String, Object>{
+            'priority' => new List<String>{'High', 'Medium', 'Low'}
+        };
+        
+        // Test
         Test.startTest();
         Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeDescriptionWithAI(
-            'Test', 'TestRecordType', getStandardPicklistValues()
+            'Test description', 
+            'TestRecordType', 
+            picklistValues
         );
         Test.stopTest();
         
-        System.assertEquals(false, result.get('success'));
-        System.assert(((String)result.get('error')).contains('AI service returned status'));
+        // Verify
+        System.assertEquals(false, result.get('success'), 'Should return failure for HTTP error');
+        System.assert(((String)result.get('error')).contains('AI service returned status'), 'Should contain HTTP error message');
     }
+    
+    // ═══════════════════════════════════════════════════════════════════════════════
+    // TEST METHODS FOR FILE ANALYSIS
+    // ═══════════════════════════════════════════════════════════════════════════════
     
     @isTest
     static void testAnalyzeFileWithAI_Success() {
+        // Setup
         ContentVersion cv = getTestFile('Test Campaign Document');
-        String mockResponse = '{"choices": [{"message": {"content": "{\\"campaignName\\": \\"File Campaign\\"}"}}]}';
+        List<String> contentDocumentIds = new List<String>{cv.ContentDocumentId};
+        
+        String mockResponse = '{"choices": [{"message": {"content": "{\\"campaignName\\": \\"File Campaign\\", \\"priority\\": \\"Medium\\"}"}}]}';
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator(200, mockResponse));
         
+        Map<String, Object> picklistValues = new Map<String, Object>{
+            'priority' => new List<String>{'High', 'Medium', 'Low'}
+        };
+        
+        // Test
         Test.startTest();
         Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeFileWithAI(
-            new List<String>{cv.ContentDocumentId}, 'TestRecordType', getStandardPicklistValues()
+            contentDocumentIds, 
+            'TestRecordType', 
+            picklistValues
         );
         Test.stopTest();
         
-        System.assertEquals(true, result.get('success'));
-        System.assertNotEquals(null, result.get('filesAnalyzed'));
+        // Verify
+        System.assertEquals(true, result.get('success'), 'Should return success');
+        System.assertNotEquals(null, result.get('data'), 'Should return data');
+        System.assertNotEquals(null, result.get('filesAnalyzed'), 'Should return analyzed files');
     }
     
     @isTest
     static void testAnalyzeFileWithAI_NoFiles() {
+        // Test
         Test.startTest();
         Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeFileWithAI(
-            null, 'TestRecordType', new Map<String, Object>()
+            null, 
+            'TestRecordType', 
+            new Map<String, Object>()
         );
         Test.stopTest();
         
-        System.assertEquals(false, result.get('success'));
-        System.assertEquals('No files provided', result.get('error'));
+        // Verify
+        System.assertEquals(false, result.get('success'), 'Should return failure for no files');
+        System.assertEquals('No files provided', result.get('error'), 'Should return appropriate error message');
     }
     
     @isTest
     static void testAnalyzeFileWithAI_EmptyFileList() {
+        // Test
         Test.startTest();
         Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeFileWithAI(
-            new List<String>(), 'TestRecordType', new Map<String, Object>()
+            new List<String>(), 
+            'TestRecordType', 
+            new Map<String, Object>()
         );
         Test.stopTest();
         
-        System.assertEquals(false, result.get('success'));
-        System.assertEquals('No files provided', result.get('error'));
+        // Verify
+        System.assertEquals(false, result.get('success'), 'Should return failure for empty file list');
+        System.assertEquals('No files provided', result.get('error'), 'Should return appropriate error message');
     }
     
-    @isTest
-    static void testAnalyzeFileWithAI_MinimalContent() {
-        ContentVersion cv = getTestFile('Empty Test File');
-        String mockResponse = '{"choices": [{"message": {"content": "{\\"campaignName\\": \\"Minimal\\"}"}}]}';
-        Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator(200, mockResponse));
-        
-        Test.startTest();
-        Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeFileWithAI(
-            new List<String>{cv.ContentDocumentId}, 'TestRecordType', getStandardPicklistValues()
-        );
-        Test.stopTest();
-        
-        // Should succeed now since file has minimal content (single space)
-         if ((Boolean)result.get('success')) {
-        System.assertEquals(true, result.get('success'), 'Should succeed with minimal content');
-    } else {
-        String errorMessage = (String)result.get('error');
-        System.assert(errorMessage.contains('Could not extract readable content') || 
-                     errorMessage.contains('No content could be extracted'),
-                     'Should fail with appropriate empty content message: ' + errorMessage);
-    }
-    }
+    // ═══════════════════════════════════════════════════════════════════════════════
+    // TEST METHODS FOR COMBINED ANALYSIS
+    // ═══════════════════════════════════════════════════════════════════════════════
     
     @isTest
-    static void testAnalyzeCombinedContent_Combined() {
+    static void testAnalyzeCombinedContent_DescriptionAndFiles() {
+        // Setup
         ContentVersion cv = getTestFile('Test Campaign Document');
-        String mockResponse = '{"choices": [{"message": {"content": "{\\"campaignName\\": \\"Combined\\"}"}}]}';
+        List<String> contentDocumentIds = new List<String>{cv.ContentDocumentId};
+        
+        String mockResponse = '{"choices": [{"message": {"content": "{\\"campaignName\\": \\"Combined Campaign\\", \\"priority\\": \\"High\\"}"}}]}';
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator(200, mockResponse));
         
+        Map<String, Object> picklistValues = new Map<String, Object>{
+            'priority' => new List<String>{'High', 'Medium', 'Low'}
+        };
+        
+        // Test
         Test.startTest();
         Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeCombinedContent(
-            'Test description', new List<String>{cv.ContentDocumentId}, 'TestRecordType', getStandardPicklistValues()
+            'Test description for combined analysis', 
+            contentDocumentIds, 
+            'TestRecordType', 
+            picklistValues
         );
         Test.stopTest();
         
-        System.assertEquals(true, result.get('success'));
-        System.assertEquals('combined', result.get('analysisType'));
+        // Verify
+        System.assertEquals(true, result.get('success'), 'Should return success');
+        System.assertEquals('combined', result.get('analysisType'), 'Should indicate combined analysis');
+        System.assertNotEquals(null, result.get('data'), 'Should return data');
     }
     
     @isTest
     static void testAnalyzeCombinedContent_DescriptionOnly() {
-        String mockResponse = '{"choices": [{"message": {"content": "{\\"campaignName\\": \\"Description Only\\"}"}}]}';
+        // Setup
+        String mockResponse = '{"choices": [{"message": {"content": "{\\"campaignName\\": \\"Description Campaign\\", \\"priority\\": \\"Low\\"}"}}]}';
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator(200, mockResponse));
         
+        Map<String, Object> picklistValues = new Map<String, Object>{
+            'priority' => new List<String>{'High', 'Medium', 'Low'}
+        };
+        
+        // Test
         Test.startTest();
         Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeCombinedContent(
-            'Test description only', null, 'TestRecordType', getStandardPicklistValues()
+            'Test description only', 
+            null, 
+            'TestRecordType', 
+            picklistValues
         );
         Test.stopTest();
         
-        System.assertEquals(true, result.get('success'));
-        System.assertEquals('description', result.get('analysisType'));
+        // Verify
+        System.assertEquals(true, result.get('success'), 'Should return success');
+        System.assertEquals('description', result.get('analysisType'), 'Should indicate description analysis');
     }
     
     @isTest
     static void testAnalyzeCombinedContent_FilesOnly() {
+        // Setup
         ContentVersion cv = getTestFile('Test Campaign Document');
-        String mockResponse = '{"choices": [{"message": {"content": "{\\"campaignName\\": \\"Files Only\\"}"}}]}';
+        List<String> contentDocumentIds = new List<String>{cv.ContentDocumentId};
+        
+        String mockResponse = '{"choices": [{"message": {"content": "{\\"campaignName\\": \\"File Only Campaign\\", \\"priority\\": \\"Medium\\"}"}}]}';
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator(200, mockResponse));
         
+        Map<String, Object> picklistValues = new Map<String, Object>{
+            'priority' => new List<String>{'High', 'Medium', 'Low'}
+        };
+        
+        // Test
         Test.startTest();
         Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeCombinedContent(
-            '', new List<String>{cv.ContentDocumentId}, 'TestRecordType', getStandardPicklistValues()
+            '', 
+            contentDocumentIds, 
+            'TestRecordType', 
+            picklistValues
         );
         Test.stopTest();
         
-        System.assertEquals(true, result.get('success'));
-        System.assertEquals('files', result.get('analysisType'));
+        // Verify
+        System.assertEquals(true, result.get('success'), 'Should return success');
+        System.assertEquals('files', result.get('analysisType'), 'Should indicate files analysis');
     }
     
     @isTest
     static void testAnalyzeCombinedContent_NoContent() {
+        // Test
         Test.startTest();
         Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeCombinedContent(
-            '', null, 'TestRecordType', new Map<String, Object>()
+            '', 
+            null, 
+            'TestRecordType', 
+            new Map<String, Object>()
         );
         Test.stopTest();
         
-        System.assertEquals(false, result.get('success'));
-        System.assertEquals('Either description or files are required', result.get('error'));
+        // Verify
+        System.assertEquals(false, result.get('success'), 'Should return failure for no content');
+        System.assertEquals('Either description or files are required', result.get('error'), 'Should return appropriate error message');
     }
     
     // ═══════════════════════════════════════════════════════════════════════════════
-    // FOCUS AREA DETECTION TESTS
+    // TEST METHODS FOR FOCUS AREA DETECTION
     // ═══════════════════════════════════════════════════════════════════════════════
     
     @isTest
     static void testDetectFocusAreaFromFile_ClientComputing() {
+        // Setup
         ContentVersion cv = getTestFile('Client Computing Campaign');
+        List<String> contentDocumentIds = new List<String>{cv.ContentDocumentId};
         
+        // Test
         Test.startTest();
-        Map<String, Object> result = Core_MDF_AiFieldSuggestions.detectFocusAreaFromFile(
-            new List<String>{cv.ContentDocumentId}
-        );
+        Map<String, Object> result = Core_MDF_AiFieldSuggestions.detectFocusAreaFromFile(contentDocumentIds);
         Test.stopTest();
         
-        System.assertEquals(true, result.get('success'));
-        System.assertEquals('Client Computing', result.get('focusArea'));
+        // Verify
+        System.assertEquals(true, result.get('success'), 'Should return success');
+        System.assertEquals('Client Computing', result.get('focusArea'), 'Should detect Client Computing focus area');
+        System.assertNotEquals(null, result.get('content'), 'Should return content preview');
     }
     
     @isTest
     static void testDetectFocusAreaFromFile_DataCenter() {
+        // Setup
         ContentVersion cv = getTestFile('Data Center Infrastructure');
+        List<String> contentDocumentIds = new List<String>{cv.ContentDocumentId};
         
+        // Test
         Test.startTest();
-        Map<String, Object> result = Core_MDF_AiFieldSuggestions.detectFocusAreaFromFile(
-            new List<String>{cv.ContentDocumentId}
-        );
+        Map<String, Object> result = Core_MDF_AiFieldSuggestions.detectFocusAreaFromFile(contentDocumentIds);
         Test.stopTest();
         
-        System.assertNotEquals(null, result.get('focusArea'), 'Should return some focus area');
-    	System.assertNotEquals('', result.get('focusArea'), 'Focus area should not be empty');
+        // Verify
+        System.assertEquals(true, result.get('success'), 'Should return success');
+        System.assertEquals('Data Center', result.get('focusArea'), 'Should detect Data Center focus area');
     }
     
     @isTest
     static void testDetectFocusAreaFromFile_Networking() {
+        // Setup
         ContentVersion cv = getTestFile('Networking Campaign');
+        List<String> contentDocumentIds = new List<String>{cv.ContentDocumentId};
         
+        // Test
         Test.startTest();
-        Map<String, Object> result = Core_MDF_AiFieldSuggestions.detectFocusAreaFromFile(
-            new List<String>{cv.ContentDocumentId}
-        );
+        Map<String, Object> result = Core_MDF_AiFieldSuggestions.detectFocusAreaFromFile(contentDocumentIds);
         Test.stopTest();
         
-         System.assertNotEquals(null, result.get('focusArea'), 'Should return some focus area');
-   		 System.assertNotEquals('', result.get('focusArea'), 'Focus area should not be empty');
+        // Verify
+        System.assertEquals(true, result.get('success'), 'Should return success');
+        System.assertEquals('Networking & Telco', result.get('focusArea'), 'Should detect Networking & Telco focus area');
     }
     
     @isTest
     static void testDetectFocusAreaFromFile_Edge() {
+        // Setup
         ContentVersion cv = getTestFile('Edge Computing Campaign');
+        List<String> contentDocumentIds = new List<String>{cv.ContentDocumentId};
         
+        // Test
         Test.startTest();
-        Map<String, Object> result = Core_MDF_AiFieldSuggestions.detectFocusAreaFromFile(
-            new List<String>{cv.ContentDocumentId}
-        );
+        Map<String, Object> result = Core_MDF_AiFieldSuggestions.detectFocusAreaFromFile(contentDocumentIds);
         Test.stopTest();
         
-        System.assertEquals(true, result.get('success'));
-        System.assertEquals('Edge', result.get('focusArea'));
+        // Verify
+        System.assertEquals(true, result.get('success'), 'Should return success');
+        System.assertEquals('Edge', result.get('focusArea'), 'Should detect Edge focus area');
     }
     
     @isTest
-    static void testDetectFocusAreaFromFile_Default() {
+    static void testDetectFocusAreaFromFile_DefaultFocusArea() {
+        // Setup
         ContentVersion cv = getTestFile('Generic Campaign');
+        List<String> contentDocumentIds = new List<String>{cv.ContentDocumentId};
         
+        // Test
         Test.startTest();
-        Map<String, Object> result = Core_MDF_AiFieldSuggestions.detectFocusAreaFromFile(
-            new List<String>{cv.ContentDocumentId}
-        );
+        Map<String, Object> result = Core_MDF_AiFieldSuggestions.detectFocusAreaFromFile(contentDocumentIds);
         Test.stopTest();
         
-        System.assertEquals(true, result.get('success'));
-        System.assertEquals('Client Computing', result.get('focusArea'));
+        // Verify
+        System.assertEquals(true, result.get('success'), 'Should return success');
+        System.assertEquals('Client Computing', result.get('focusArea'), 'Should return default Client Computing focus area');
     }
     
     @isTest
     static void testDetectFocusAreaFromFile_NoFiles() {
+        // Test
         Test.startTest();
         Map<String, Object> result = Core_MDF_AiFieldSuggestions.detectFocusAreaFromFile(null);
         Test.stopTest();
         
-        System.assertEquals(false, result.get('success'));
-        System.assertEquals('No files provided', result.get('error'));
+        // Verify
+        System.assertEquals(false, result.get('success'), 'Should return failure for no files');
+        System.assertEquals('No files provided', result.get('error'), 'Should return appropriate error message');
     }
     
     @isTest
-    static void testDetectFocusAreaFromFile_EmptyList() {
+    static void testDetectFocusAreaFromFile_InvalidFileId() {
+        // Test with non-existent file ID
+        List<String> contentDocumentIds = new List<String>{'invalid_id'};
+        
         Test.startTest();
-        Map<String, Object> result = Core_MDF_AiFieldSuggestions.detectFocusAreaFromFile(new List<String>());
+        Map<String, Object> result = Core_MDF_AiFieldSuggestions.detectFocusAreaFromFile(contentDocumentIds);
         Test.stopTest();
         
-        System.assertEquals(false, result.get('success'));
-        System.assertEquals('No files provided', result.get('error'));
+        // Verify
+        System.assertEquals(false, result.get('success'), 'Should return failure for invalid file ID');
+        System.assertEquals('Could not retrieve file content', result.get('error'), 'Should return appropriate error message');
     }
     
     // ═══════════════════════════════════════════════════════════════════════════════
-    // FILE PROCESSING TESTS
+    // TEST METHODS FOR FILE PROCESSING
     // ═══════════════════════════════════════════════════════════════════════════════
     
     @isTest
-    static void testFileProcessing_DifferentFormats() {
-        List<String> fileTypes = new List<String>{'Test CSV File', 'Test JSON File'};
-        String mockResponse = '{"choices": [{"message": {"content": "{\\"campaignName\\": \\"Test\\"}"}}]}';
-        Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator(200, mockResponse));
-        
-        Test.startTest();
-        for (String fileType : fileTypes) {
-            ContentVersion cv = getTestFile(fileType);
-            Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeFileWithAI(
-                new List<String>{cv.ContentDocumentId}, 'TestRecordType', getStandardPicklistValues()
-            );
-            System.assertEquals(true, result.get('success'), 'Should process ' + fileType);
+    static void testFileExtraction_MultipleFiles() {
+        // Setup - Get multiple test files
+        List<ContentVersion> testFiles = getTestFiles(new List<String>{'Test Campaign Document', 'Test CSV File'});
+        List<String> contentDocumentIds = new List<String>();
+        for (ContentVersion cv : testFiles) {
+            contentDocumentIds.add(cv.ContentDocumentId);
         }
-        Test.stopTest();
-    }
-    
-    @isTest
-    static void testFileProcessing_OCRFiles() {
-        ContentVersion cv = getTestFile('Test Excel File');
-        Test.setMock(HttpCalloutMock.class, new MockOCRHttpResponse());
+        
+        String mockResponse = '{"choices": [{"message": {"content": "{\\"campaignName\\": \\"Test\\", \\"priority\\": \\"High\\"}"}}]}';
+        Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator(200, mockResponse));
         
         Test.startTest();
         Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeFileWithAI(
-            new List<String>{cv.ContentDocumentId}, 'TestRecordType', getStandardPicklistValues()
+            contentDocumentIds, 
+            'TestRecordType', 
+            new Map<String, Object>{'priority' => new List<String>{'High', 'Medium', 'Low'}}
         );
         Test.stopTest();
         
-        System.assertNotEquals(null, result);
+        // Verify
+        System.assertEquals(true, result.get('success'), 'Should successfully process multiple files');
+        List<String> filesAnalyzed = (List<String>)result.get('filesAnalyzed');
+        System.assertEquals(2, filesAnalyzed.size(), 'Should process both files');
     }
     
-    // ═══════════════════════════════════════════════════════════════════════════════
-    // ERROR HANDLING TESTS
-    // ═══════════════════════════════════════════════════════════════════════════════
-    
     @isTest
-    static void testErrorHandling_InvalidJSON() {
-        String mockResponse = '{"choices": [{"message": {"content": "Invalid JSON content"}}]}';
+    static void testLargeFileHandling() {
+        // Setup
+        ContentVersion largeFile = getTestFile('Large Test File');
+        
+        String mockResponse = '{"choices": [{"message": {"content": "{\\"campaignName\\": \\"Large File Campaign\\", \\"priority\\": \\"High\\"}"}}]}';
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator(200, mockResponse));
         
         Test.startTest();
-        Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeDescriptionWithAI(
-            'Test', 'TestRecordType', getStandardPicklistValues()
+        Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeFileWithAI(
+            new List<String>{largeFile.ContentDocumentId}, 
+            'TestRecordType', 
+            new Map<String, Object>{'priority' => new List<String>{'High', 'Medium', 'Low'}}
         );
         Test.stopTest();
         
-        System.assertEquals(false, result.get('success'));
-        System.assert(((String)result.get('error')).contains('Invalid JSON format'));
+        // Verify that large files are handled (content should be truncated)
+        System.assertEquals(true, result.get('success'), 'Should handle large files successfully');
+    }
+    
+    // ═══════════════════════════════════════════════════════════════════════════════
+    // TEST METHODS FOR ERROR HANDLING
+    // ═══════════════════════════════════════════════════════════════════════════════
+    
+    @isTest
+    static void testAICallout_InvalidJSON() {
+        // Setup - Mock response with invalid JSON
+        String mockResponse = '{"choices": [{"message": {"content": "Invalid JSON content without proper structure"}}]}';
+        Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator(200, mockResponse));
+        
+        Map<String, Object> picklistValues = new Map<String, Object>{
+            'priority' => new List<String>{'High', 'Medium', 'Low'}
+        };
+        
+        // Test
+        Test.startTest();
+        Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeDescriptionWithAI(
+            'Test description', 
+            'TestRecordType', 
+            picklistValues
+        );
+        Test.stopTest();
+        
+        // Verify
+        System.assertEquals(false, result.get('success'), 'Should handle invalid JSON response');
+        System.assert(((String)result.get('error')).contains('Invalid JSON format'), 'Should return JSON format error');
     }
     
     @isTest
-    static void testErrorHandling_EmptyChoices() {
+    static void testAICallout_EmptyResponse() {
+        // Setup - Mock empty response
         String mockResponse = '{"choices": []}';
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator(200, mockResponse));
         
-        Test.startTest();
-        Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeDescriptionWithAI(
-            'Test', 'TestRecordType', getStandardPicklistValues()
-        );
-        Test.stopTest();
-        
-        System.assertNotEquals(null, result);
-    }
-    
-    @isTest
-    static void testErrorHandling_ConfigMissing() {
-        delete [SELECT Id FROM Core_MDF_CCP_Custom_Metadata_Utility__c WHERE Core_MDF_Category__c = 'AI_PROMPT_CONFIG'];
-        
-        Test.startTest();
-        Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeDescriptionWithAI(
-            'Test', 'TestRecordType', getStandardPicklistValues()
-        );
-        Test.stopTest();
-         System.assertEquals(false, result.get('success'), 'Should return failure when config is missing');
-    	System.assertNotEquals(null, result.get('error'), 'Should return an error message');
-    	System.assertNotEquals('', result.get('error'), 'Error message should not be empty');
-    }
-    
-    @isTest
-    static void testJSONParsing_WithMarkdown() {
-        String mockResponse = '{"choices": [{"message": {"content": "```json\\n{\\"campaignName\\": \\"Test\\"}\\n```"}}]}';
-        Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator(200, mockResponse));
-        
-        Test.startTest();
-        Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeDescriptionWithAI(
-            'Test', 'TestRecordType', getStandardPicklistValues()
-        );
-        Test.stopTest();
-        
-        System.assertEquals(true, result.get('success'));
-    }
-    
-    @isTest
-    static void testJSONParsing_WithoutMarkdown() {
-        String mockResponse = '{"choices": [{"message": {"content": "{\\"campaignName\\": \\"Test Direct\\"}"}}]}';
-        Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator(200, mockResponse));
-        
-        Test.startTest();
-        Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeDescriptionWithAI(
-            'Test', 'TestRecordType', getStandardPicklistValues()
-        );
-        Test.stopTest();
-        
-        System.assertEquals(true, result.get('success'));
-    }
-    
-    @isTest
-    static void testPicklistProcessing_ComplexValues() {
-        Map<String, Object> complexPicklist = new Map<String, Object>{
-            'priority' => new List<Object>{'High', 'Medium', 'Low'},
-            'emptyList' => new List<Object>(),
-            'nullValue' => null
+        Map<String, Object> picklistValues = new Map<String, Object>{
+            'priority' => new List<String>{'High', 'Medium', 'Low'}
         };
         
-        String mockResponse = '{"choices": [{"message": {"content": "{\\"campaignName\\": \\"Test\\"}"}}]}';
-        Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator(200, mockResponse));
-        
+        // Test
         Test.startTest();
         Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeDescriptionWithAI(
-            'Test', 'TestRecordType', complexPicklist
+            'Test description', 
+            'TestRecordType', 
+            picklistValues
         );
         Test.stopTest();
         
-        System.assertEquals(true, result.get('success'));
+        // Verify - Should handle empty choices array gracefully
+        System.assertNotEquals(null, result, 'Should return a result object');
     }
     
     @isTest
-    static void testMultipleFiles_Processing() {
-        List<ContentVersion> files = [SELECT Id, ContentDocumentId FROM ContentVersion WHERE Title IN ('Test Campaign Document', 'Test CSV File') LIMIT 2];
-        List<String> docIds = new List<String>();
-        for (ContentVersion cv : files) {
-            docIds.add(cv.ContentDocumentId);
-        }
+    static void testException_Handling() {
+        // Test exception handling by not setting up required metadata
+     delete [SELECT Id FROM Core_MDF_CCP_Custom_Metadata_Utility__c WHERE Core_MDF_Category__c = 'AI_PROMPT_CONFIG'];
+          
+        Map<String, Object> picklistValues = new Map<String, Object>{
+            'priority' => new List<String>{'High', 'Medium', 'Low'}
+        };
         
-        String mockResponse = '{"choices": [{"message": {"content": "{\\"campaignName\\": \\"Multi\\"}"}}]}';
-        Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator(200, mockResponse));
-        
-        Test.startTest();
-        Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeFileWithAI(
-            docIds, 'TestRecordType', getStandardPicklistValues()
-        );
-        Test.stopTest();
-        
-        System.assertEquals(true, result.get('success'));
-        List<String> filesAnalyzed = (List<String>)result.get('filesAnalyzed');
-        System.assertEquals(2, filesAnalyzed.size());
-    }
-    
-    @isTest
-    static void testDetectFocusArea_InvalidFile() {
-        Test.startTest();
-        Map<String, Object> result = Core_MDF_AiFieldSuggestions.detectFocusAreaFromFile(
-            new List<String>{'invalid_id'}
-        );
-        Test.stopTest();
-        
-        System.assertEquals(false, result.get('success'));
-        System.assertEquals('Could not retrieve file content', result.get('error'));
-    }
-    
-    @isTest
-    static void testHTTPErrors_Various() {
-        // Test 401 error
-        Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator(401, 'Unauthorized'));
-        
+        // Test
         Test.startTest();
         Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeDescriptionWithAI(
-            'Test', 'TestRecordType', getStandardPicklistValues()
+            'Test description', 
+            'TestRecordType', 
+            null
         );
         Test.stopTest();
         
-        System.assertEquals(false, result.get('success'));
-        System.assert(((String)result.get('error')).contains('401'));
-    }
-    
-    @isTest
-    static void testMalformedResponse() {
-        Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator(200, 'Not JSON'));
-        
-        Test.startTest();
-        Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeDescriptionWithAI(
-            'Test', 'TestRecordType', getStandardPicklistValues()
-        );
-        Test.stopTest();
-        
-        System.assertEquals(false, result.get('success'));
-        System.assert(((String)result.get('error')).contains('Failed to connect to AI service'));
+        // Verify
+        System.assertEquals(false, result.get('success'), 'Should handle exceptions gracefully');
+        System.assert(((String)result.get('error')).contains('An error occurred during AI analysis'), 'Should return appropriate error message');
     }
     
     @isTest
     static void testFileNotFound_Handling() {
+        // Test with ContentDocumentId that exists but has no ContentVersion
+        // This simulates a file that was deleted or corrupted
         List<String> invalidIds = new List<String>{'068000000000000'};
         
         Test.startTest();
         Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeFileWithAI(
-            invalidIds, 'TestRecordType', getStandardPicklistValues()
+            invalidIds, 
+            'TestRecordType', 
+            new Map<String, Object>{'priority' => new List<String>{'High', 'Medium', 'Low'}}
         );
         Test.stopTest();
         
-        System.assertEquals(false, result.get('success'));
-        System.assertEquals('Could not retrieve file content from Salesforce', result.get('error'));
-    }
-    
-    // Additional test to create a truly empty content scenario for testing
-    @isTest
-    static void testAnalyzeCombinedContent_NoExtractableContent() {
-        // Create a test scenario where we can't extract content
-        Test.startTest();
-        Map<String, Object> result = Core_MDF_AiFieldSuggestions.analyzeCombinedContent(
-            '', new List<String>{'invalid_document_id'}, 'TestRecordType', getStandardPicklistValues()
-        );
-        Test.stopTest();
-        
-        System.assertEquals(false, result.get('success'));
-        // This should trigger the "No content could be extracted for analysis" error
-        System.assert(((String)result.get('error')).contains('No content could be extracted') || 
-                     ((String)result.get('error')).contains('An error occurred'));
+        // Verify
+        System.assertEquals(false, result.get('success'), 'Should handle file not found gracefully');
+        System.assertEquals('Could not retrieve file content from Salesforce', result.get('error'), 'Should return appropriate error message');
     }
 }

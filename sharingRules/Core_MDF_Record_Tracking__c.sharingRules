@@ -34,7 +34,7 @@
             <operation>equals</operation>
             <value>AGS IUPGM Sync</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_MDF_Record_Tracking_IUPGM_Monitor</fullName>
@@ -49,7 +49,7 @@
             <operation>equals</operation>
             <value>MonitorIUPGM</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_MDF_Record_Tracking_Power_BI_SF_Report</fullName>
@@ -78,6 +78,6 @@
             <operation>equals</operation>
             <value>Activity Approval By Mobile</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
 </SharingRules>

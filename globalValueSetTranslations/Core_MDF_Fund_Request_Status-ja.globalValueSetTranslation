@@ -45,6 +45,10 @@
         <translation>計画済み</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>Rejected</masterLabel>
+        <translation><!-- Rejected --></translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>Revision Required</masterLabel>
         <translation>要修正</translation>
     </valueTranslation>

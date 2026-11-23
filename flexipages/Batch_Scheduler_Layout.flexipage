@@ -51,6 +51,10 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Scheduler_Status_Txt__c</fieldItem>
                 <identifier>RecordCore_MDF_Scheduler_Status_Txt__cField</identifier>
                 <visibilityRule>
@@ -93,6 +97,10 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Next_Batch_Run_Time_Txt__c</fieldItem>
                 <identifier>RecordCore_MDF_Next_Batch_Run_Time_Txt__cField</identifier>
                 <visibilityRule>
@@ -101,6 +109,36 @@
                         <operator>NE</operator>
                     </criteria>
                 </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Core_MDF_Object_JSON_Txt__c</fieldItem>
+                <identifier>RecordCore_MDF_Object_JSON_Txt_cField1</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Core_MDF_Class_Signature_Note_Txt__c</fieldItem>
+                <identifier>RecordCore_MDF_Class_Signature_Note1_Txt_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Core_MDF_Batch_Class_Signature_Txt__c</fieldItem>
+                <identifier>RecordCore_MDF_Batch_Class_Signature_Txt_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -183,32 +221,6 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldItem>Record.Core_MDF_Object_JSON_Txt__c</fieldItem>
-                <identifier>RecordCore_MDF_Object_JSON_Txt_cField1</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_Class_Signature_Note_Txt__c</fieldItem>
-                <identifier>RecordCore_MDF_Class_Signature_Note1_Txt_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_Batch_Class_Signature_Txt__c</fieldItem>
-                <identifier>RecordCore_MDF_Batch_Class_Signature_Txt_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
                     <value>required</value>
@@ -283,68 +295,6 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_Enable_Email_Notification__c</fieldItem>
-                <identifier>RecordCore_MDF_Enable_Email_Notification_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_Include_All_Notifications__c</fieldItem>
-                <identifier>RecordCore_MDF_Notify_Failures_Only_cField</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Enable_Email_Notification__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Core_MDF_Email_Receipients__c</fieldItem>
-                <identifier>RecordCore_MDF_Email_Receipients_cField</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Enable_Email_Notification__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-dfc26115-e87d-4d33-8ead-3a7fd2bd9ebf</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-dfc26115-e87d-4d33-8ead-3a7fd2bd9ebf</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column2</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-0b9ce8e5-d69e-4c6f-8384-258c14cf33b8</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
                     <name>columns</name>
@@ -360,24 +310,6 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>columns</name>
-                    <value>Facet-0b9ce8e5-d69e-4c6f-8384-258c14cf33b8</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Email Notification</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection2</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-0b04cddb-6046-4976-8400-12806619925b</name>

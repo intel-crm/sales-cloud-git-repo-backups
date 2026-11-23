@@ -44,6 +44,13 @@
             <value>Qualify,Define,Develop,Design,Design Win,Production Win</value>
         </criteriaItems>
         <criteriaItems>
+            <column>AMOUNT</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Technical_Owner__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>

@@ -27,8 +27,8 @@
                     </button>-->
                 </div>
                 <div class="slds-modal__content slds-p-around--medium">
-                <!--<aura:if isTrue="{!or(v.recordtypeDeveloperName == $Label.c.Core_MDF_Channel_MDF,v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType)}">-->
-                        <aura:if isTrue="{!v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType}">
+                    <!--<aura:if isTrue="{!or(v.recordtypeDeveloperName == $Label.c.Core_MDF_Channel_MDF,v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType)}">-->
+                           <aura:if isTrue="{!v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType}">
                    <c:Core_MDF_CreateEditActivity communityRecordId ="{!v.recordId}" checkCommunityAttribute ="{!v.communityAttribute}" /> 
                   <aura:set attribute="else"> 
                     <c:Core_Intel_createEditPFR communityRecordId ="{!v.recordId}" checkCommunityAttribute ="{!v.communityAttribute}" />

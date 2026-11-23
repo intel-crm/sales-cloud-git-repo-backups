@@ -11,7 +11,7 @@ private class Core_MDF_PFR_Grid_Test {
            // DeveloperName = 'Admin'
         );
         insert usRole;
-        UserRole usRole1 = [SELECT Id,Name FROM UserRole where Name like '%Partner User%' LIMIT 1];        
+		UserRole usRole1 = [SELECT Id,Name FROM UserRole where Name like '%Partner User%' LIMIT 1];        
         // Creating User with utility class 
         User testUser = Core_MDF_CCP_TestDataUtility.createUser(false);
         testUser.LastName = 'Test User1';
@@ -75,11 +75,9 @@ private class Core_MDF_PFR_Grid_Test {
             bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
             bypassFunctionKeys.add('Core_MDF_BudgetCapValidation');
             bypassFunctionKeys.add('Core_MDF_BypassBudgCapIUPGMValidation');
-           bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation');
             List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(bypassFunctionKeys,true,true);
             List<String> bypassFunctionKeys1 = new List<String>();
             bypassFunctionKeys1.add('BypassCampaignBenefitValidation');
-            
             List<Core_Trigger_Executions__c> bypassfunctinalitylist = Core_MDF_CCP_TestDataUtility.byPassFeature(bypassFunctionKeys,true,false);
             
             ChannelProgram ipaCP = Core_MDF_CCP_TestDataUtility.createProgram ('Intel Partner Alliance','Intel Partner Alliance', true);
@@ -161,9 +159,12 @@ private class Core_MDF_PFR_Grid_Test {
            // iupgm3.Core_MDF_Budget_Type_nm__c='Business Client Acceleration - MDF';
             iupgmList.add(iupgm3);
            
-            Database.insert(iupgmList);
+           // Database.insert(iupgmList);
              
-     
+        // Highlight: Unused Local Variable - 14285 // Suma
+        //List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList1=[select id,Core_MDF_Is_Not_an_Approver_Ind__c from Core_MDF_Int_Users_Partner_Geo_Mapping__c];
+          
+           
             List<Contact> conList = new List<Contact>();
             Contact con = Core_MDF_CCP_TestDataUtility.createContact (ipaUltimateAccount.Id, false);
             con.RecordTypeId = Core_MDF_CCP_TestDataUtility.Intel_Contact_Record_Type;
@@ -178,23 +179,6 @@ private class Core_MDF_PFR_Grid_Test {
             conList.add(con2);
             
             Database.insert(conList);
-           
-           // Use a list query instead of direct assignment
-           List<User> accountOwnerList = [SELECT Id, UserRoleId FROM User WHERE Id = :ipaUltimateAccount.OwnerId];
-           
-           if (!accountOwnerList.isEmpty()) {
-               User accountOwner = accountOwnerList[0];
-               if (accountOwner.UserRoleId == null) {
-                   accountOwner.UserRoleId = usRole.Id;
-                   update accountOwner;
-                   
-               }
-           } else {
-               
-               // Set the account owner to a user that exists and has a role
-               ipaUltimateAccount.OwnerId = testUser.Id; // testUser already has usRole.Id
-               update ipaUltimateAccount;
-           }
             
             Profile partnerProfile = [SELECT Id FROM Profile WHERE Name='Partner' LIMIT 1];
             Profile ccpCoreProfileId = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1];
@@ -207,21 +191,21 @@ private class Core_MDF_PFR_Grid_Test {
             extUsr1.ProfileId = partnerProfile.Id;
             extUsr1.ContactId = con.Id;
             extUsr1.IsActive = TRUE;
-           	//extUsr1.UserRoleId=usRole1.id;
+           	extUsr1.UserRoleId=usRole1.id;
             usrList.add(extUsr1);
             
             User extUsr2 = Core_MDF_CCP_TestDataUtility.createUser(false);
             extUsr2.LastName = 'User Test2';
             extUsr2.ProfileId = partnerProfile.Id;
             extUsr2.ContactId = con1.Id;
-           //extUsr2.UserRoleId=usRole1.id;
+           extUsr2.UserRoleId=usRole1.id;
             extUsr2.IsActive = TRUE;
             usrList.add(extUsr2);
             
             User extUsr3 = Core_MDF_CCP_TestDataUtility.createUser(false);
             extUsr3.LastName = 'User Test3';
             extUsr3.ProfileId = partnerProfile.Id;
-            //extUsr3.UserRoleId=usRole1.id;
+            extUsr3.UserRoleId=usRole1.id;
             extUsr3.ContactId = con2.Id;
             extUsr3.IsActive = TRUE;
             usrList.add(extUsr3);
@@ -252,8 +236,8 @@ private class Core_MDF_PFR_Grid_Test {
             permissionSetAssignmentList.add(psa4);    
             
             Database.insert(permissionSetAssignmentList);
-
-
+			// Highlight: Unused Local Variable - 14285 // Suma
+            //List<Core_AGS_Role__c> agsRoleList = new List<Core_AGS_Role__c>();
             
             Core_AGS_Role__c agsRoleIPA = Core_MDF_CCP_TestDataUtility.createAgsRole('IPA_USER', 'Co-Marketing(Salesforce)-IPA USER', true, true);
             
@@ -348,7 +332,7 @@ private class Core_MDF_PFR_Grid_Test {
             ipaCampaignForAP.Core_MDF_Opal_Budget_Type_Txt__c ='Client Specialties MDF';
             ipaCampaignForAP.Core_MDF_Proposal_Based_Ind__c = true;
            	ipaCampaignForAP.Core_MDF_Budget_Type_txt__c = 'Client Specialties MDF';
-           	ipaCampaignForAP.Core_MDF_Technology__c='';
+           	ipaCampaignForAP.Core_MDF_Technology__c='Intel® Core™ Ultra Series 2 (Lunar Lake)';
             database.insert(ipaCampaignForAP);
             User manager = Core_MDF_CCP_TestDataUtility.createUser(false);
             manager.LastName = 'User Test Manager';

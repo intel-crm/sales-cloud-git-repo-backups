@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>VideoListView</masterLabel>
+    <promptVersions>
+        <body>&lt;p&gt;Learn more about, How to create your own &quot;Custom List View&quot;&lt;/p&gt;</body>
+        <customApplication>Core_MDF_CoMarketing</customApplication>
+        <delayDays>2</delayDays>
+        <displayType>DockedComposer</displayType>
+        <endDate>2020-05-30</endDate>
+        <header>List View</header>
+        <isPublished>false</isPublished>
+        <masterLabel>VideoListView</masterLabel>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2020-04-23</startDate>
+        <targetPageKey1>PartnerFundClaim</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <timesToDisplay>30</timesToDisplay>
+        <title>Custom List View</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+        <videoLink>https://www.youtube.com/embed/Ko-gcObzTVo.</videoLink>
+    </promptVersions>
+</Prompt>

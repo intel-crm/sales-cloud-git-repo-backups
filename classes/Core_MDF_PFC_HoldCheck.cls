@@ -87,11 +87,13 @@ public without sharing class Core_MDF_PFC_HoldCheck{
     *     VS            4/4/2019    Added condition to check if claim is Payment Hold and make it true
     *******************************************************************************************************/
     public static void checkESDHoldAndUpdateClaimStatusForInsert(Set<ID> bankIDs,List<PartnerFundClaim> claimListToBeProcessed){ 
-        if(bankIDs !=null & bankIDs.size()>0){
+        //ATHR - Deeply Nested if 16209
+        if(bankIDs ==null || bankIDs.isEmpty() || claimListToBeProcessed ==null || claimListToBeProcessed.isEmpty()) return;
+        //if(bankIDs !=null & bankIDs.size()>0){
             bankIdTobankInstance = new Map<ID,Core_MDF_Bank__c>([SELECT ID,Core_MDF_Bank_Status__c,Core_MDF_Bank_Location__c,Core_MDF_ESD_Hold_Indicator__c,Core_MDF_Hold_Payments_from_AP_file_ind__c,Core_MDF_VAT_pct__c,Core_MDF_Intel_Company_Code__c FROM Core_MDF_Bank__c WHERE ID IN:bankIDs]);
             
             List<PartnerFundClaim> claimsToBeReleased = new List<PartnerFundClaim>();
-            if(claimListToBeProcessed!=null && claimListToBeProcessed.size()>0){
+            //if(claimListToBeProcessed!=null && claimListToBeProcessed.size()>0){
                 for(PartnerFundClaim pfc : claimListToBeProcessed){ 
                     //check if adjustment then break
                     if(Core_MDF_Claim_Utility.isType(pfc, Label.Core_MDF_Claim_Adjustment_Type)){continue;}
@@ -102,7 +104,9 @@ public without sharing class Core_MDF_PFC_HoldCheck{
                     {
                         //commenting for PIC changes
                         //after PIC process
-                        //pfc.Core_MDF_Status__c = Label.Core_MDF_Hold_Status;
+                        /*if(pfc.Core_MDF_Program__c == 'Intel Partner Alliance'){
+                          pfc.Core_MDF_Status__c = Label.Core_MDF_Hold_Status;
+                        }*/
                         if(bankIdTobankInstance.get(pfc.Core_MDF_Bank__c).Core_MDF_ESD_Hold_Indicator__c){                            
                             pfc.Core_MDF_ESD_Hold__c = true;
                         }
@@ -112,8 +116,8 @@ public without sharing class Core_MDF_PFC_HoldCheck{
                         //bankIdVatPercent.put(pfc.Core_MDF_Bank__c, bankIdTobankInstance.get(pfc.Core_MDF_Bank__c).Core_MDF_VAT_pct__c);
                     }
                 }
-            }
-        }
+            //}
+        //}
     }
     
      /****************************************************************************************************** 
@@ -129,10 +133,12 @@ public without sharing class Core_MDF_PFC_HoldCheck{
     **********************************************************************************************************************/
     public static void checkESDHoldAndUpdateClaimStatusForUpdate(Set<ID> bankIDs,List<PartnerFundClaim> claimListToBeProcessed,Map<Id,PartnerFundClaim> inputClaimMap,Map<Id,PartnerFundClaim> oldClaimMap){
         List<String> claimPICStatuses = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ClaimPICStatus').split(';');
-        if(bankIDs !=null & bankIDs.size()>0){
+        //ATHR - Deeply Nested if 16209
+        if(bankIDs ==null || bankIDs.isEmpty() || claimListToBeProcessed ==null || claimListToBeProcessed.isEmpty()) return;
+        //if(bankIDs !=null & bankIDs.size()>0){
             bankIdTobankInstance = new Map<ID,Core_MDF_Bank__c>([SELECT ID,Core_MDF_Bank_Status__c,Core_MDF_Bank_Location__c,Core_MDF_ESD_Hold_Indicator__c,Core_MDF_Hold_Payments_from_AP_file_ind__c,Core_MDF_Program__c,Core_MDF_VAT_pct__c,Core_MDF_Intel_Company_Code__c FROM Core_MDF_Bank__c WHERE ID IN:bankIDs]);
             List<PartnerFundClaim> claimsToBeReleased = new List<PartnerFundClaim>();
-            if(claimListToBeProcessed!=null && claimListToBeProcessed.size()>0){
+            //if(claimListToBeProcessed!=null && claimListToBeProcessed.size()>0){
                 for(PartnerFundClaim pfc : claimListToBeProcessed){ 
                     
                     if(pfc == inputClaimMap.get(pfc.Id) &&
@@ -143,7 +149,7 @@ public without sharing class Core_MDF_PFC_HoldCheck{
                     {   
                       
                          //after PIC process  
-                        if(pfc.Core_MDF_PIC_Review_Completed__c || (pfc.Core_MDF_Claim_Approval_Dt__c != null && pfc.Core_MDF_Approval_Step_Counter_nbr__c == 0)){
+                        if(pfc.Core_MDF_PIC_Review_Completed__c || (pfc.Core_MDF_Claim_Approval_Dt__c != null && pfc.Core_MDF_Approval_Step_Counter_nbr__c == 0)){ //Ajinkya - Added
                             inputClaimMap.get(pfc.Id).Core_MDF_Status__c = Label.Core_MDF_Hold_Status;
                         }
                         if(bankIdTobankInstance.get(pfc.Core_MDF_Bank__c).Core_MDF_ESD_Hold_Indicator__c){
@@ -162,7 +168,7 @@ public without sharing class Core_MDF_PFC_HoldCheck{
                         claimsToBeReleased.add(pfc);
                     }
                 }
-            }
+            //}
             // Release the Hold for the claims added in claimsToBeReleased list
             if(claimsToBeReleased != NULL && claimsToBeReleased.size() > 0){
                 for( PartnerFundClaim  claims :  claimsToBeReleased ){
@@ -170,5 +176,5 @@ public without sharing class Core_MDF_PFC_HoldCheck{
                 }             
             }  
         }
-    }
+    //}
 }

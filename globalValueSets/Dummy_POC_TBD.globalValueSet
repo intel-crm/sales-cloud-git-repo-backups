@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Accommodation and Food Services</fullName>
+        <default>false</default>
+        <label>Accommodation and Food Services</label>
+    </customValue>
+    <customValue>
+        <fullName>Agriculture</fullName>
+        <default>false</default>
+        <label>Agriculture</label>
+    </customValue>
+    <customValue>
+        <fullName>Amusement and Gambling</fullName>
+        <default>false</default>
+        <label>Amusement and Gambling</label>
+    </customValue>
+    <customValue>
+        <fullName>Arts, Entertainment and Recreation</fullName>
+        <default>false</default>
+        <label>Arts, Entertainment and Recreation</label>
+    </customValue>
+    <customValue>
+        <fullName>Arts and Entertainment</fullName>
+        <default>false</default>
+        <label>Arts and Entertainment</label>
+    </customValue>
+    <customValue>
+        <fullName>Automotive</fullName>
+        <default>false</default>
+        <label>Automotive</label>
+    </customValue>
+    <customValue>
+        <fullName>Automotive (Non Manufacturing)</fullName>
+        <default>false</default>
+        <label>Automotive (Non Manufacturing)</label>
+    </customValue>
+    <customValue>
+        <fullName>B2B general</fullName>
+        <default>false</default>
+        <label>B2B general</label>
+    </customValue>
+    <customValue>
+        <fullName>B2C, no industry</fullName>
+        <default>false</default>
+        <label>B2C, no industry</label>
+    </customValue>
+    <customValue>
+        <fullName>Communications</fullName>
+        <default>false</default>
+        <label>Communications</label>
+    </customValue>
+    <customValue>
+        <fullName>Construction</fullName>
+        <default>false</default>
+        <label>Construction</label>
+    </customValue>
+    <customValue>
+        <fullName>Defense and Space</fullName>
+        <default>false</default>
+        <label>Defense and Space</label>
+    </customValue>
+    <customValue>
+        <fullName>Education</fullName>
+        <default>false</default>
+        <label>Education</label>
+    </customValue>
+    <customValue>
+        <fullName>Energy and Utilities</fullName>
+        <default>false</default>
+        <label>Energy and Utilities</label>
+    </customValue>
+    <customValue>
+        <fullName>Finance and Insurance</fullName>
+        <default>false</default>
+        <label>Finance and Insurance</label>
+    </customValue>
+    <customValue>
+        <fullName>Gaming</fullName>
+        <default>false</default>
+        <label>Gaming</label>
+    </customValue>
+    <customValue>
+        <fullName>Government</fullName>
+        <default>false</default>
+        <label>Government</label>
+    </customValue>
+    <customValue>
+        <fullName>Health &amp; Life Sciences</fullName>
+        <default>false</default>
+        <label>Health &amp; Life Sciences</label>
+    </customValue>
+    <customValue>
+        <fullName>Healthcare</fullName>
+        <default>false</default>
+        <label>Healthcare</label>
+    </customValue>
+    <customValue>
+        <fullName>Manufacturing</fullName>
+        <default>false</default>
+        <label>Manufacturing</label>
+    </customValue>
+    <customValue>
+        <fullName>Media</fullName>
+        <default>false</default>
+        <label>Media</label>
+    </customValue>
+    <customValue>
+        <fullName>NA</fullName>
+        <default>false</default>
+        <label>NA</label>
+    </customValue>
+    <customValue>
+        <fullName>Not For Profit</fullName>
+        <default>false</default>
+        <label>Not For Profit</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Professional and Business Services</fullName>
+        <default>false</default>
+        <label>Professional and Business Services</label>
+    </customValue>
+    <customValue>
+        <fullName>Real Estate, Rental and Leasing</fullName>
+        <default>false</default>
+        <label>Real Estate, Rental and Leasing</label>
+    </customValue>
+    <customValue>
+        <fullName>Retail</fullName>
+        <default>false</default>
+        <label>Retail</label>
+    </customValue>
+    <customValue>
+        <fullName>Robotics</fullName>
+        <default>false</default>
+        <label>Robotics</label>
+    </customValue>
+    <customValue>
+        <fullName>Software</fullName>
+        <default>false</default>
+        <label>Software</label>
+    </customValue>
+    <customValue>
+        <fullName>Software and Services</fullName>
+        <default>false</default>
+        <label>Software and Services</label>
+    </customValue>
+    <customValue>
+        <fullName>Telecommunications</fullName>
+        <default>false</default>
+        <label>Telecommunications</label>
+    </customValue>
+    <customValue>
+        <fullName>Test LOV Industry</fullName>
+        <default>false</default>
+        <label>Test LOV Industry</label>
+    </customValue>
+    <customValue>
+        <fullName>Transportation, Travel and Warehousing</fullName>
+        <default>false</default>
+        <label>Transportation, Travel and Warehousing</label>
+    </customValue>
+    <customValue>
+        <fullName>Transportation and Warehouse</fullName>
+        <default>false</default>
+        <label>Transportation and Warehouse</label>
+    </customValue>
+    <masterLabel>Dummy POC[TBD]</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

@@ -28,7 +28,7 @@
     </values>
     <values>
         <field>Core_MDF_Campaign_Picklist_Fields__c</field>
-        <value xsi:type="xsd:string">Core_MDF_Opal_Budget_Type_Txt__c,Core_MDF_Priority__c,Core_MDF_Priority_2_nm__c,Core_MDF_Priority_3_nm__c,Core_MDF_Audience__c,Core_MDF_Brand__c,Core_MDF_Activity_Category_Type__c,Core_MDF_Market__c,Core_MDF_Product_Type__c,Core_MDF_Industry_Nm__c</value>
+        <value xsi:type="xsd:string">Core_MDF_Opal_Budget_Type_Txt__c,Core_MDF_Priority__c,Core_MDF_Priority_2_nm__c,Core_MDF_Priority_3_nm__c,Core_MDF_Audience__c,Core_MDF_Brand__c,Core_MDF_Activity_Category_Type__c,Core_MDF_Market__c,Core_MDF_Product_Type__c</value>
     </values>
     <values>
         <field>Core_MDF_Campaign_Text_Fields__c</field>
@@ -64,7 +64,7 @@
     </values>
     <values>
         <field>Core_MDF_Program_ID__c</field>
-        <value xsi:type="xsd:string">0Pk1J000000CaSe</value>
+        <value xsi:type="xsd:string">0Pkg00000008OTT</value>
     </values>
     <values>
         <field>Core_MDF_Program_Name__c</field>

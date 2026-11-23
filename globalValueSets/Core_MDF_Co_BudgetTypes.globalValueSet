@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Co-Marketing</fullName>
+        <default>false</default>
+        <label>Co-Marketing</label>
+    </customValue>
+    <customValue>
+        <fullName>Co-Selling</fullName>
+        <default>false</default>
+        <label>Co-Selling</label>
+    </customValue>
+    <description>New Co budget Types</description>
+    <masterLabel>Co_BudgetTypes</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

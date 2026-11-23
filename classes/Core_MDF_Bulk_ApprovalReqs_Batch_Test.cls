@@ -64,7 +64,7 @@ private class Core_MDF_Bulk_ApprovalReqs_Batch_Test {
         
         //String budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount);
         List<Campaign> campaignList = new List<Campaign>();
-        Campaign ipaCampaignForAP1 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 1',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', '', 'Planned', false);//14285 Suma start
+        Campaign ipaCampaignForAP1 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 1',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', '', 'Planned', false);
         Campaign ipaCampaignForAP2 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 2',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', '', 'Planned', false);
         Campaign ipaCampaignForAP3 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 3',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', '', 'Planned', false);
         Campaign ipaCampaignForAP4 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 4',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', '', 'Planned', false);
@@ -74,7 +74,7 @@ private class Core_MDF_Bulk_ApprovalReqs_Batch_Test {
         Campaign ipaCampaignForAP8 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 8',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', '', 'Planned', false);
         Campaign ipaCampaignForAP9 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 9',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', '', 'Planned', false);
         Campaign ipaCampaignForAP10 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 10',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', '', 'Planned', false);
-        Campaign ipaCampaignForAP11 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 11',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', '', 'Planned', false);// 14285 end
+        Campaign ipaCampaignForAP11 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 11',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', '', 'Planned', false);
         campaignList.add(ipaCampaignForAP1);campaignList.add(ipaCampaignForAP2);campaignList.add(ipaCampaignForAP3);campaignList.add(ipaCampaignForAP4);
         campaignList.add(ipaCampaignForAP5);campaignList.add(ipaCampaignForAP6);campaignList.add(ipaCampaignForAP7);campaignList.add(ipaCampaignForAP8);
         campaignList.add(ipaCampaignForAP9);campaignList.add(ipaCampaignForAP10);campaignList.add(ipaCampaignForAP11);
@@ -91,7 +91,7 @@ private class Core_MDF_Bulk_ApprovalReqs_Batch_Test {
         private String comments;
     }
     
-    @isTest
+  @isTest
     private static void executeBulkApprovalsBatchTest() {
         
        

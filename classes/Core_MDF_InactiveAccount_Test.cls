@@ -20,7 +20,7 @@ Accenture – VD        3-28-2019                 Created.
 *****************************************************************************************************************************************/   
     @TestSetup static void setupMethodForCheckingValidations(){
         
-		
+        
     Profile ccpCoreProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1];
         PermissionSet progAdmPS = [Select Id from PermissionSet where name='Core_MDF_CCP_Internal_Program_Adm' LIMIT 1];
         PermissionSet budgetLoaderPS = [Select Id from PermissionSet where name='Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader' LIMIT 1];
@@ -58,7 +58,7 @@ Accenture – VD        3-28-2019                 Created.
         }
         
         // Creating channel program with utility class
-        ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', true);
+        ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
         
         // Creating IntelAccount with utility class
         Account intAcc = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Intel Account',Core_MDF_CCP_TestDataUtility.intel_Account_Record_Type, true);
@@ -78,7 +78,7 @@ Accenture – VD        3-28-2019                 Created.
         Account acc1 = Core_MDF_CCP_TestDataUtility.createAccount('Test Account1', cp.Id,Core_MDF_CCP_TestDataUtility.account_Record_Type, false);
         acc1.Core_MDF_Parent_Fund_Account__c = acc.Id;
         listOfAcct.add(acc1);
-		
+        
         Account acc2 = Core_MDF_CCP_TestDataUtility.createAccount('Test Account2', cp.Id, Core_MDF_CCP_TestDataUtility.account_Record_Type, false);
         acc2.Core_MDF_Parent_Fund_Account__c = acc.Id;
         listOfAcct.add(acc2);
@@ -86,7 +86,7 @@ Accenture – VD        3-28-2019                 Created.
         Account acc3 = Core_MDF_CCP_TestDataUtility.createAccount('Test Account3', cp.Id, Core_MDF_CCP_TestDataUtility.account_Record_Type, false);
         acc3.Core_MDF_Parent_Fund_Account__c = acc.Id;
         listOfAcct.add(acc3);
-		
+        
         Account acc4 = Core_MDF_CCP_TestDataUtility.createAccount('Test Account4', cp.Id, Core_MDF_CCP_TestDataUtility.account_Record_Type, false);
         acc4.Core_MDF_Parent_Fund_Account__c = acc.Id;
         listOfAcct.add(acc4);
@@ -95,7 +95,7 @@ Accenture – VD        3-28-2019                 Created.
         
         acc2.Core_MDF_Active_Ind__c = false;
         Database.update(acc2);
-	Core_MDF_CCP_TestDataUtility.createMDFConfigurationData();
+    Core_MDF_CCP_TestDataUtility.createMDFConfigurationData();
         // Creating campaigns using utility class
         /*Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('TestCamp','Consumer','Intel® Corporate Logo', 
                                                                     Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF,
@@ -127,10 +127,10 @@ Accenture – VD        3-28-2019                 Created.
         }*/
         
         //adding bypass feature to bypass access validation
-			List<String> bypassFunctionKeys = new List<String>();
+            List<String> bypassFunctionKeys = new List<String>();
             bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
             bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
-        	bypassFunctionKeys.add('Bypass_MDF_Budget_Creation');
+            bypassFunctionKeys.add('Bypass_MDF_Budget_Creation');
             
             Set<String> myset1 = new Set<String>();
             List<String> result1 = new List<String>();
@@ -143,9 +143,9 @@ Accenture – VD        3-28-2019                 Created.
         PartnerMarketingBudget pmb = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget',Core_MDF_CCP_TestDataUtility.budget_Record_Type,
                                                                                acc.Id,cp.Id,5000000,System.today().addDays(-15),System.today().addDays(110), 
                                                                                false);
-        pmb.Core_MDF_Budget_Type_Txt__c = 'OEM CMP';
+        pmb.Core_MDF_Budget_Type_Txt__c = 'MDF';
         //system.runAs(usr1){
-        	database.insert(pmb);
+            database.insert(pmb);
          //}
         // Creating Allocation using utility class
         List<PartnerFundAllocation> pfaList = new List<PartnerFundAllocation>();
@@ -244,9 +244,9 @@ Accenture – VD        3-28-2019                 Created.
         pfcUpdateList.add(pfcPaid2);
         
         Database.update(pfcUpdateList);               
-		                
+                        
         test.stopTest(); 
-		                
+                        
         List<Case> caseListToBeInserted = new List<Case>();
         Case cs = new Case();
         Id caseAuditRecType = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('Core_MDF_Audit_Closed').getRecordTypeId();
@@ -323,7 +323,7 @@ Accenture – VD              05/Mar/2020         Created.
         User usr = [SELECT Id FROM User WHERE LastName='User Test' LIMIT 1];
         Core_MDF_Bank__c bank = [Select id,Core_MDF_Supplier_Number__c from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c='9966467890'];
         PartnerFundRequest pfr2 = [Select Id,Core_MDF_Fund_Request_Status__c,ChannelPartnerId from PartnerFundRequest where ChannelPartnerId =:acc4.Id];
-        // Highlight: Unused Local Variable
+        // Highlight: Unused Local Variable - Indira
        // PartnerFundClaim pfc = [Select id from PartnerFundClaim where title='Test Claim2'];
         Core_MDF_Account_Bank_Mapping__c bankMap2= [Select Core_MDF_Account__c,Core_MDF_Bank__c,Core_MDF_Active_ind__c from Core_MDF_Account_Bank_Mapping__c where Core_MDF_Bank__c=:bank.Id and Core_MDF_Account__c=:acc4.Id];
         System.runAs(usr){
@@ -338,7 +338,7 @@ Accenture – VD              05/Mar/2020         Created.
         }        
         //inactivating Node
         System.runAs(usr1){
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
            /* Core_MDF_InactivateAccount.accountInactivationWrapper result = */ Core_MDF_InactivateAccount.isAccountEligibileForInactivation(acc4.Id);
             //System.assertEquals(FALSE, result.hasActiveClaims);
         }
@@ -378,7 +378,7 @@ Accenture – VD              03/28/2019         Created.
        System.runAs(usr1){
            Core_MDF_InactivateAccount.accountInactivationWrapper resultTopVirtual = Core_MDF_InactivateAccount.isAccountEligibileForInactivation(acct.Id);
            System.assertEquals(TRUE, resultTopVirtual.isTopVirtualNode);
-          // Highlight: Unused Local Variable
+          // Highlight: Unused Local Variable - Indira
          /*  Core_MDF_InactivateAccount.accountInactivationWrapper resultNotTopVirtual = */ Core_MDF_InactivateAccount.isAccountEligibileForInactivation(acct1.Id);
            //System.assertEquals(FALSE, resultNotTopVirtual.isTopVirtualNode);
        }
@@ -464,7 +464,7 @@ Accenture – VD              03/28/2019         Created.
         
         //Creating account instance
         Account act1 = [SELECT Id FROM Account WHERE Name='Test Account1' LIMIT 1];
-       // Highlight: Unused Local Variable 
+       // Highlight: Unused Local Variable - Indira
        // Account act = [SELECT Id FROM Account WHERE Name='Test Account' LIMIT 1];
         User usr1 = [SELECT Id FROM User WHERE LastName='ProgAdmUser' LIMIT 1];
         System.runAs(usr1){

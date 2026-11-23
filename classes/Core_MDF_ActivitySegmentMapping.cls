@@ -162,7 +162,8 @@ public with sharing class Core_MDF_ActivitySegmentMapping {
         try{
             Core_MDF_ActivitySegmentMapping.SegmentWrapper wrapper = new Core_MDF_ActivitySegmentMapping.SegmentWrapper();
             	List<PartnerFundClaim> claimList = new List<PartnerFundClaim>();
-
+                // US-14285 Removed UNUSED LOCAL VARIABLE HIGHLIGHT
+            	//Id RequestId;
                 if(claimId!=null){
             	//PartnerFundClaim claim = [SELECT Id, RequestId FROM PartnerFundClaim WHERE Id =: claimId];
             	 	claimList = [SELECT Id, RequestId FROM PartnerFundClaim WHERE Id =: claimId];
@@ -279,7 +280,7 @@ public with sharing class Core_MDF_ActivitySegmentMapping {
             Map<String, Core_MDF_Segment_Product_Mapping__c> existingSegmentIdProdIdMap = new Map<String, Core_MDF_Segment_Product_Mapping__c>();        
             Map<String, Core_MDF_Activity_Segment_Mapping__c> existingSegmentsNameMap = new Map<String, Core_MDF_Activity_Segment_Mapping__c>();
             Map<String, Core_MDF_Activity_Segment_Mapping__c> newSegmentNameMap = new Map<String, Core_MDF_Activity_Segment_Mapping__c>();
-
+            //Map<Id, List<Core_MDF_Segment_Product_Mapping__c>> existingSegmentProductsLstMap = new Map<Id, List<Core_MDF_Segment_Product_Mapping__c>>(); // US-14285 Removed UNUSED LOCAL VARIABLE
             Map<Id, Core_MDF_Activity_Segment_Mapping__c> existingSegmentsMap = new Map<Id, Core_MDF_Activity_Segment_Mapping__c>([select Id, Core_MDF_Partner_Fund_Request_id__c, Core_MDF_Segment_Name_nm__c, Core_MDF_Active_ind__c,Core_MDF_Minimum_Forecast_Volume_nbr__c,Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c,Core_MDF_Estimated_Share_of_SPIF_amt__c, Core_MDF_Maximum_Bundled_Volume_nbr__c, Core_MDF_SPIF_Notes_internal_only_txt__c, Core_MDF_SPIF_Notes_txt__c   from Core_MDF_Activity_Segment_Mapping__c where Core_MDF_Partner_Fund_Request_id__c = :pfrId]);
             SystemOperations sysOp = new SystemOperations();
             if(!existingSegmentsMap.isEmpty()) {

@@ -313,22 +313,4 @@
         </columns>
         <masterLabel>Design Registrations</masterLabel>
     </sections>
-    <sections>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PCC_Design_Type__c</field>
-            <table>Core_Design_Registration__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PCC_ODM_Board_partner__c</field>
-            <table>Core_Design_Registration__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PCC_ODM_Board_Partner_Account__c</field>
-            <table>Core_Design_Registration__c</table>
-        </columns>
-        <masterLabel>Design-Deal Registrations</masterLabel>
-    </sections>
 </ReportType>

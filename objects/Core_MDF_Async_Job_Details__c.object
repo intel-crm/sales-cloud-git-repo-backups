@@ -155,7 +155,7 @@
     <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>Core_MDF_Job_Id__c</fullName>
-        <description>this field stores the Async Job Id.</description>
+        <description>This field stores the Async Job Id.</description>
         <externalId>false</externalId>
         <label>Job Id</label>
         <length>255</length>

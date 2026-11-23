@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <name>APJ OSC Enterprise MQL</name>
+    <queueMembers>
+        <users>
+            <user>11364893@intel.com.crm</user>
+            <user>11750428@intel.com.crm</user>
+            <user>11398101@intel.com.crm</user>
+            <user>10452027@intel.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+</Queue>

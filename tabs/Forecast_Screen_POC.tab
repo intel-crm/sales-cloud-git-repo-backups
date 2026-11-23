@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Forecast Screen POC</label>
+    <lwcComponent>core_MDF_Forecast_POC</lwcComponent>
+    <motif>Custom60: Umbrella</motif>
+</CustomTab>

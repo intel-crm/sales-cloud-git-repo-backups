@@ -9,6 +9,10 @@
         <value>BankProgram Entitlement Mappings</value>
     </caseValues>
     <fields>
+        <label><!-- Bank Custom Permission Name --></label>
+        <name>Core_MDF_Bank_Custom_Permission_Name__c</name>
+    </fields>
+    <fields>
         <label><!-- Bank Program Name --></label>
         <name>Core_MDF_Bank_Program_Name__c</name>
     </fields>

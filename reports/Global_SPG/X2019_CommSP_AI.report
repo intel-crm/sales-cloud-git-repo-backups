@@ -98,7 +98,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>Service Provider,Telco/Service Provider,Comm Service Provider (CoSP)</value>
+            <value>Service Provider,Telco/Service Provider</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Commissionable__c</column>
@@ -134,13 +134,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
             <value>AI on IA Deep Learning - Inference,AI on IA Deep Learning - Training</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>nokia,genesys,ringcentral,everyware</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

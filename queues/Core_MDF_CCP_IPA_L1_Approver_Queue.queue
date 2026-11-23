@@ -3,6 +3,13 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <name>CCP IPA L1 Approver Queue</name>
+    <queueMembers>
+        <users>
+            <user>12010928@intel.com.crm</user>
+            <user>12184888@intel.com.crm</user>
+            <user>ipaproposall1approver@intel.com.crm</user>
+        </users>
+    </queueMembers>
     <queueSobject>
         <sobjectType>PartnerFundRequest</sobjectType>
     </queueSobject>

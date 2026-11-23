@@ -34,7 +34,6 @@ export class utilityModule {
 }
 
 //constants to be re-used in any of the JS files
-
 //KPI Metrics constants
 export const OLD_KPI_FIELDS_PB = ['Core_MDF_Lead_Quantity_nbr__c', 'Core_MDF_Deployment_Quantity_nbr__c', 'Core_MDF_Other_Quantity_nbr__c'];
 export const OLD_KPI_FIELDS_AB = ['Core_MDF_Metrics_txt__c'];
@@ -42,12 +41,11 @@ export const OLD_KPI_FIELDS_ALL = ['Core_MDF_Lead_Quantity_nbr__c', 'Core_MDF_De
 
 
 //TWC3117-10490 - [CCF/DCF/IPA] - Reimbursement Rate Values
-// This method is used to check the existing RR% on a campaign budget and add it if its not present in the current values
 export function addExistingReimbursementRate(existingCampRRVal, rrOptions) {
   let finalRROptions = [];
   if(rrOptions !== undefined && rrOptions !== null && rrOptions !== "" && rrOptions.length > 0) {
     finalRROptions = JSON.parse(JSON.stringify(rrOptions));
- 
+  
     if (existingCampRRVal) {
       if (!finalRROptions.some(option => option.value === existingCampRRVal)) {
         const numericValue = parseFloat(existingCampRRVal);

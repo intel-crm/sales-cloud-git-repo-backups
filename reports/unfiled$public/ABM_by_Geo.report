@@ -119,7 +119,7 @@
         <field>OpportunityLineItem.Core_KPI_Date__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Commissionable__c</field>
@@ -274,11 +274,11 @@
             <value>DCGMSL_PRC_SP</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OPPORTUNITY_ID</column>
+            <column>Opportunity.Core_Opp_Prime_Account_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>0061J00000U6sYv</value>
+            <value>NTT</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -317,7 +317,7 @@
     </params>
     <reportType>OpportunityProduct</reportType>
     <scope>organization</scope>
-    <showDetails>false</showDetails>
+    <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>

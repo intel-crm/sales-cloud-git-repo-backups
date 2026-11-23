@@ -54,7 +54,7 @@
     </columns>
     <crossFilters>
         <criteriaItems>
-            <column>Core_BU_Short_Name_Old__c</column>
+            <column>Core_BU_Short_Name__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>IOTG</value>
@@ -65,7 +65,7 @@
         <relatedTableJoinColumn>Opportunity</relatedTableJoinColumn>
     </crossFilters>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND (4 OR 5)</booleanFilter>
+        <booleanFilter>(1 AND 2 AND 3 AND (4 OR 5)) AND 6 AND 7</booleanFilter>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -100,6 +100,20 @@
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>Vision Solution</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Design: Original,Design: Secondary</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>GMP UK Sales Group</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

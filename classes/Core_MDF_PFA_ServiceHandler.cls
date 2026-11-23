@@ -24,6 +24,7 @@ public without sharing class Core_MDF_PFA_ServiceHandler{
         }     
         catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}   
         if(updatedAllocations!=null && updatedAllocations.size()>0 ) {
+           
             Core_MDF_Process_PAF_Claim.fetchClaimsByAllocationIds(updatedAllocations.keySet());
             
         } 
@@ -42,6 +43,7 @@ Modified By:        Date:       Changes:
     @InvocableMethod
     public static void invokeAllocationShareRecordToGeoGroup(List<PartnerFundAllocation> listOfPFA)
     {
+        
         if(!Core_MDF_Utility.byPassFeature('Bypass_GeoBased_Allocation_Sharing')){
             //To share record on the basis of Channel Program and geo      
             List<Core_MDF_RecordGeoShare> recordGeoShareList= new List<Core_MDF_RecordGeoShare>();
@@ -103,8 +105,8 @@ Modified By:        Date:       Changes:
                     if(!primaryAccIds.isEmpty() && primaryAccIds.contains(acc.Id)){
                         primaryAccIdToAccountMap.put(acc.id,acc);
                     }else{
-                    //To get account's geo and subgeo field
-                    accountIdToAccountMap.put(acc.Id,acc);
+                         //To get account's geo and subgeo field
+                        accountIdToAccountMap.put(acc.Id,acc);
                     }
                     
                     programIds.add(acc.Core_MDF_Channel_Program__c);
@@ -123,6 +125,7 @@ Modified By:        Date:       Changes:
                 for(PartnerFundAllocation pfaObj : listOfPFA){
                     Account account = accountIdToAccountMap.get(pfaObj.ChannelPartnerId);
                     //To share record on the basis of Channel Program and geo
+                   
                   /*  if(cpIdToTechProgNameMap.get(account.Core_MDF_Channel_Program__c)== Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Technical_program_name') || 
                        cpIdToTechProgNameMap.get(account.Core_MDF_Channel_Program__c)== Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ChannelMDF_Program_Name'))*/
                      if(programsIncludedBTSharing.contains(cpIdToTechProgNameMap.get(account.Core_MDF_Channel_Program__c)))
@@ -144,7 +147,7 @@ Modified By:        Date:       Changes:
                        && accountIdToAccountMap.get(pfaObj.ChannelPartnerId).Core_MDF_Group_Id__c != Null)
                     {
                         allocationIdGroupIdListMap.put(pfaObj.Id, new List<Id>{accountIdToAccountMap.get(pfaObj.ChannelPartnerId).Core_MDF_Group_Id__c});
-                    } 
+                    }
                     //To share allocation record to Primary account groups when allocation is created on Activating account
                     if(pfaObj.Core_MDF_Program_Txt__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EEF_Program_Name') && allocIdToBudgetCpId.containsKey(pfaObj.id) &&
                        primaryAccIdToAccountMap.containsKey(allocIdToBudgetCpId.get(pfaObj.id))

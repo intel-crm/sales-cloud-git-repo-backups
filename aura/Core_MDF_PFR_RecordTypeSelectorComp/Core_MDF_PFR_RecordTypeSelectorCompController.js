@@ -60,7 +60,7 @@
         }else if(component.get("v.isPaymentRunPage")){
             objName = $A.get("$Label.c.Core_MDF_Payment_Run"); 
         }else if(component.get("v.isAdjustmentPage")){
-            objName = $A.get("$Label.c.Core_MDF_Adjustment");
+            objName = "Core_MDF_Adjustment_Request__c"; 
         }else{
             objName = $A.get("$Label.c.Core_MDF_PFCText");
          }
@@ -408,6 +408,7 @@
     
     // Function Called on Cancel or "X"
     closeModal: function(component, event, helper) {
+        console.log('Inside closeModal');
         //Chnages for Claim
         var isPfr = component.get("v.isPfrUrl");
         var objName;
@@ -426,7 +427,7 @@
             }else if(component.get("v.isPaymentRunPage")){
                 objName = $A.get("$Label.c.Core_MDF_Payment_Run"); 
             }else if(component.get("v.isAdjustmentPage")){
-                objName = $A.get("$Label.c.Core_MDF_Adjustment"); 
+                objName = "Core_MDF_Adjustment_Request__c"; 
             }else{
                 objName = $A.get("$Label.c.Core_MDF_PFCText");
             }

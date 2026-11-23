@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Activity 2020 Picklist values</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Activity 2020 Picklist values</value>
+    </caseValues>
+    <fields>
+        <label><!-- Record Type id --></label>
+        <name>Core_MDF_PFR_RecordType_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- PFR date --></label>
+        <name>Core_MDF_PFR_StartDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Picklist Value --></label>
+        <name>Core_MDF_Picklist_Value_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- Picklist value --></label>
+        <name>Core_MDF_Picklist_Value__c</name>
+    </fields>
+    <startsWith>Vowel</startsWith>
+</CustomObjectTranslation>

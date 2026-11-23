@@ -9,7 +9,7 @@
         var regionWiseRecTypes = $A.get("$Label.c.Core_MDF_Campaign_RegionWise_Budget").split(';'); 
         var categoryWiseRecTypes = $A.get("$Label.c.Core_MDF_Campaign_CategoryWise_Budget").split(';'); 
         
-       // if(recType == 'Core_MDF_Client_CoMarketing_Fund' || recType == 'Core_MDF_Client_CoMarketing_Fund_Boost'){      
+        //if(recType == 'Core_MDF_Client_CoMarketing_Fund' || recType == 'Core_MDF_Client_CoMarketing_Fund_Boost'){      
         if(regionWiseRecTypes.includes(recType)){            
             var action = component.get("c.regionalData");
             let budgetType;

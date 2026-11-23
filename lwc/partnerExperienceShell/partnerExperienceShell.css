@@ -1,0 +1,240 @@
+:host {
+  display: block;
+  --partner-navy: #0c2038;
+  --partner-sidebar: #102e50;
+  --partner-accent: #45c6f4;
+  --partner-sidebar-width: 230px;
+}
+
+.partner-shell {
+  min-height: 100vh;
+  background: #f3f6fa;
+  color: #172b45;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.partner-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  min-height: 74px;
+  padding: 0.75rem 1.5rem;
+  background: var(--partner-navy);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 1.2rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+.intel-logo {
+  display: block;
+  object-fit: contain;
+  width: 76px;
+  height: 40px;
+}
+
+.brand-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  margin-left: clamp(0rem, 3vw, 4rem);
+}
+
+.navigation-search {
+  width: 100%;
+  min-height: 40px;
+  padding: 0.6rem 1rem 0.6rem 2.75rem;
+  border: 1px solid #aeb9c8;
+  border-radius: 6px;
+  background: #fff;
+  color: #172b45;
+  font-size: 0.9rem;
+}
+
+.navigation-search::placeholder {
+  color: #526174;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 0.9rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+  --slds-c-icon-color-foreground-default: #526174;
+}
+
+.partner-body {
+  display: grid;
+  grid-template-columns: var(--partner-sidebar-width) minmax(0, 1fr);
+  min-height: calc(100vh - 74px);
+}
+
+.partner-sidebar {
+  padding: 1rem 0.65rem 2rem 0;
+  background: linear-gradient(160deg, #102b4d, var(--partner-sidebar));
+}
+
+.navigation-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navigation-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  min-height: 50px;
+  margin-bottom: 0.3rem;
+  padding: 0.7rem 0.8rem 0.7rem 1.25rem;
+  border: 0;
+  border-left: 5px solid transparent;
+  border-radius: 0 5px 5px 0;
+  background: transparent;
+  color: #e6edf7;
+  font: inherit;
+  font-size: 0.8rem;
+  text-align: left;
+  text-decoration: none;
+  --slds-c-icon-color-foreground-default: #d7e8f7;
+}
+
+.home-link {
+  border-left-color: var(--partner-accent);
+  background: #164479;
+  color: #fff;
+  font-weight: 600;
+}
+
+.home-link:hover {
+  background: #20558c;
+}
+
+.unavailable-item {
+  cursor: not-allowed;
+  color: #c6d3e2;
+}
+
+.item-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.unavailable-label {
+  color: #b6c6d9;
+  font-size: 0.65rem;
+}
+
+.no-matches {
+  padding: 1rem 1.5rem;
+  color: #e6edf7;
+  font-size: 0.9rem;
+}
+
+.home-content {
+  min-width: 0;
+  padding: 1rem;
+}
+
+.menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid #71869f;
+  border-radius: 4px;
+  background: transparent;
+  --slds-c-icon-color-foreground-default: #fff;
+}
+
+.assistive-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  z-index: 1;
+  padding: 0.75rem;
+  transform: translateY(-150%);
+  background: #fff;
+  color: #003c71;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--partner-accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .partner-header {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .search-container {
+    flex-basis: 100%;
+    max-width: none;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  .brand {
+    gap: 0.5rem;
+  }
+
+  .brand-title {
+    font-size: 1rem;
+    white-space: normal;
+  }
+
+  .partner-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .partner-sidebar {
+    display: none;
+  }
+
+  .menu-open .partner-sidebar {
+    display: block;
+  }
+
+  .home-content {
+    padding: 0.75rem;
+  }
+}

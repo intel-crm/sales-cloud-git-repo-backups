@@ -1,24 +1,27 @@
 <template>
-  <template if:true={dataLoaded}>  
-      <div class="slds-card borderline borderbtm">
-        <header class="slds-media slds-media--center slds-has-flexi-truncate slds-p-around_medium greybg">
-          <div class="slds-media__figure stencil slds-avatar slds-avatar_small">
-            <lightning-icon class="my-icon" icon-name="standard:approval" size="small"  alternative-text="Indicates approval"></lightning-icon>
-          </div>
-          <div class="slds-media__body">
-            <h2 class="slds-card__header-title">
-              {historyHeaderData}&nbsp;({dataLength})
-            </h2>
-          </div>
+  <template if:true={dataLoaded}>
+    <div class="slds-card borderline borderbtm">
+      <header class="slds-media slds-media--center slds-has-flexi-truncate slds-p-around_medium greybg">
+        <div class="slds-media__figure stencil slds-avatar slds-avatar_small">
+          <lightning-icon class="my-icon" icon-name="standard:approval" size="small"
+            alternative-text="Indicates approval"></lightning-icon>
+        </div>
+        <div class="slds-media__body">
+          <h2 class="slds-card__header-title">
+            {historyHeaderData}&nbsp;({dataLength})
+          </h2>
+        </div>
         <!-- Button to show all approvers 16852 starts-->
         <div class="slds-no-flex slds-m-left_auto" if:true={shouldShowAllApproversButton}>
-          <lightning-button variant="neutral" label={labels.SHOW_ALL_APPROVERS} onclick={handleShowAllApprovers} class="slds-m-left_x-small" disabled={isLoading}></lightning-button>
+          <lightning-button variant="neutral" label={labels.SHOW_ALL_APPROVERS} onclick={handleShowAllApprovers}
+            class="slds-m-left_x-small" disabled={isLoading}></lightning-button>
         </div>
         <!-- Button to show all approvers 16852 ends-->
-        </header>
+      </header>
 
       <!-- Approval Flow Modal 16852 starts-->
       <template if:true={showApprovalFlow}>
+        <!--<section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_large">-->
         <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_large approval-flow-modal">
           <div class="slds-modal__container">
             <header class="slds-modal__header">
@@ -42,6 +45,7 @@
                   <div class="flow-step start-step">
                     <div class="step-box start-box">{labels.START}</div>
                   </div>
+
                   <!-- Completed Steps -->
                   <template for:each={completedStepGroups} for:item="stepGroup">
                     <div key={stepGroup.uniqueKey} class="flow-step completed-step">
@@ -58,10 +62,20 @@
                               </div>
                             </div>
                           </template>
+                          <!-- Eligible approvers from IUPGM -->
+                          <!--<template if:true={stepGroup.eligibleApprovers}>
+                            <div class="queue-members-section">
+                              <div class="queue-members-title">Eligible Approvers</div>
+                              <template for:each={stepGroup.eligibleApprovers} for:item="ename">
+                                <div key={ename} class="queue-member">• {ename}</div>
+                              </template>
+                            </div>
+                          </template>-->
                         </div>
                       </div>
                     </div>
                   </template>
+
                   <!-- Current Step -->
                   <template if:true={hasCurrentStep}>
                     <div class="flow-step current-step">
@@ -72,8 +86,24 @@
                         <div class="approvers-list">
                           <template for:each={approvalFlowData.currentStepApprovers} for:item="approver">
                             <div key={approver.name} class="approver-group">
+                              <!--<template if:true={approver.isQueue}>
+                                <div class="queue-name">{approver.name}</div>
+                              </template>
+                              <template if:false={approver.isQueue}>-->
                                   <div class="approver-name">{approver.name}</div>
+                              <!--</template>-->
                               <div class="eligible-approvers-section">
+                                <!--<template if:true={approver.isQueue}>
+                                  <div class="eligible-approvers-grid">
+                                  <template for:each={approver.queueMembers} for:item="member">
+                                    <div key={member} class="grid-row">
+                                      <span class="grid-bullet">•</span>
+                                      <span class="grid-approver">{member}</span>
+                                    </div>
+                                  </template>
+                                  </div>
+                                </template>-->
+
                                 <!-- Eligible Approvers for Current Step -->
                                 <template if:true={approver.hasEligibleApprovers}>
                                     <div class="eligible-approvers-grid">
@@ -92,6 +122,14 @@
                       </div>
                     </div>
                   </template>
+
+                  <!-- End Node (only show if process is completed) -->
+                  <!--<template if:true={shouldShowEndStep}>
+                    <div class="flow-step end-step">
+                      <div class="arrow-right"></div>
+                      <div class="step-box end-box">End</div>
+                    </div>
+                  </template>-->
                 </div>
                 </div>
               </template>
@@ -103,7 +141,9 @@
         </section>
         <div class="slds-backdrop slds-backdrop_open"></div>
       </template>
-        <template if:true={dataLength}>
+      <!-- Approval Flow Modal 16852 ends-->
+
+      <!--<template if:true={dataLength}>
           <div style={setDatatableHeight}>
             <lightning-datatable
                     key-field="id"
@@ -113,7 +153,23 @@
                     hide-checkbox-column>
             </lightning-datatable>
           </div> 
-        </template> 
+          
+        </template> -->
+
+      <template if:true={dataLength}>
+        <div style={setDatatableHeight}>
+          <lightning-datatable key-field="id" data={fullDataSet} columns={columns}
+            class="slds-table_header-fixed_container slds-scrollable_x slds-border_top slds-wordbreak"
+            hide-checkbox-column>
+            <template slot="comments">
+              <lightning-primitive-cell-factory lightning-datatable_table="" data-label="Comments"
+                class="slds-cell-wrap" style="color: red;">
+                {{value}}
+              </lightning-primitive-cell-factory>
+            </template>
+          </lightning-datatable>
+        </div>
+      </template>
     </div>
-  </template> 
+  </template>
 </template>

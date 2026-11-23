@@ -36,13 +36,13 @@
             <axisBinding>y</axisBinding>
             <column>AMOUNT</column>
         </chartSummaries>
-        <chartType>VerticalColumnStacked</chartType>
+        <chartType>HorizontalBarStacked</chartType>
         <enableHoverLabels>true</enableHoverLabels>
         <expandOthers>true</expandOthers>
         <groupingColumn>CLOSE_DATE</groupingColumn>
-        <legendPosition>Right</legendPosition>
+        <legendPosition>Bottom</legendPosition>
         <location>CHART_TOP</location>
-        <secondaryGroupingColumn>STAGE_NAME</secondaryGroupingColumn>
+        <secondaryGroupingColumn>BucketField_71676151</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -69,6 +69,9 @@
         <field>PROBABILITY</field>
     </columns>
     <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
         <field>FULL_NAME</field>
     </columns>
     <columns>
@@ -83,14 +86,21 @@
     <columns>
         <field>Opportunity.Core_Volume__c</field>
     </columns>
-    <description>Indicates Siemens Report - Design Win Information.</description>
+    <description>Indicates Siemens Report - Design Win Information.Only opportunities with probability greater than 50% are shown.Opportunities between 70-99% are considered forecasted</description>
     <filter>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
-            <value>Lost,Cancelled,Group</value>
+            <value>Lost,Cancelled,Group,Define,Qualify</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>siemens</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -104,7 +114,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>matschke,angelo,wang,renganathan,kwak,purfurst,gould,lamb,foruria,rizer,fadaie,ong,loi,Schwingenschloegl</value>
+            <value>roberts,bigbee,kim,matschke,angelo,wang,renganathan.kwak,purfurst,gould,lamb,foruria,rizer,fadaie,ong,loi,Schwingenschloegl,zhang</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PROBABILITY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>50.0</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Commissionable__c</column>
@@ -112,13 +129,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Yes</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opp_Prime_Account_Name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Siemens</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -130,8 +140,8 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>STAGE_NAME</field>
-        <sortOrder>Asc</sortOrder>
+        <field>BucketField_71676151</field>
+        <sortOrder>Desc</sortOrder>
     </groupingsDown>
     <name>Siemens Design Win Forecast - By Quarter</name>
     <params>
@@ -157,8 +167,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

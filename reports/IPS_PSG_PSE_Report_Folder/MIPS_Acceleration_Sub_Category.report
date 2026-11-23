@@ -2,23 +2,6 @@
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <buckets>
         <bucketType>text</bucketType>
-        <developerName>BucketField_49032914</developerName>
-        <masterLabel>Acceleration Category</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <sourceColumnName>Case.Core_External_Issue_Category__c</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel OFS</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Acceleration</sourceValue>
-            </sourceValues>
-            <value>Acceleration</value>
-        </values>
-    </buckets>
-    <buckets>
-        <bucketType>text</bucketType>
         <developerName>BucketField_53185288</developerName>
         <masterLabel>Product Name</masterLabel>
         <nullTreatment>n</nullTreatment>
@@ -37,9 +20,6 @@
             <sourceValues>
                 <sourceValue>FPGA Interface Manager</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>FPGA Interface Manager (FIM)</sourceValue>
-            </sourceValues>
             <value>FIM</value>
         </values>
         <values>
@@ -51,21 +31,6 @@
         <values>
             <sourceValues>
                 <sourceValue>Acceleration Software Dev</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>GitHub</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>High Level Design</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Software Development</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Software</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Workload/AFU Development</sourceValue>
             </sourceValues>
             <value>Software</value>
         </values>
@@ -91,61 +56,13 @@
             <sourceValues>
                 <sourceValue>Acceleration Server</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>Server</sourceValue>
-            </sourceValues>
             <value>Server</value>
         </values>
         <values>
             <sourceValues>
-                <sourceValue>BMC  (Baseboard Mgmt Controller)</sourceValue>
+                <sourceValue>High Level Design</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>BMC Development</sourceValue>
-            </sourceValues>
-            <value>BMC</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Build &amp; Test Infrastructure</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Build</sourceValue>
-            </sourceValues>
-            <value>Build and Test</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>oneAPI</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>OneAPI/OpenCL</sourceValue>
-            </sourceValues>
-            <value>OneAPI</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Security for Acceleration</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Security</sourceValue>
-            </sourceValues>
-            <value>Security</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Customer Form /Questionnaire</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Electrical Failure /Visual Defect</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Quality/Reliability</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Quality / Reliability Process</sourceValue>
-            </sourceValues>
-            <value>Quality</value>
+            <value>HLD</value>
         </values>
     </buckets>
     <buckets>
@@ -280,16 +197,13 @@
     <columns>
         <field>Case.Core_Product_Organization__c</field>
     </columns>
-    <columns>
-        <field>BucketField_49032914</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>RECORDTYPE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Case.Core_AAQC_Case_recordType</value>
+            <value>Case.Core_AAQC_Case_recordType,Case.CEP_Case</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
@@ -299,31 +213,24 @@
             <value>Programmable Solutions Group</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Case.Core_Sub_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>invalid</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>BucketField_49032914</column>
+            <column>Case.Core_External_Issue_Category__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Acceleration</value>
         </criteriaItems>
         <criteriaItems>
-            <column>ACCOUNT.NAME</column>
+            <column>Case.Core_Sub_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>IPS Test Account</value>
+            <value>invalid</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Quarter</dateGranularity>
+        <dateGranularity>Month</dateGranularity>
         <field>CREATED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
@@ -353,8 +260,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <endDate>2024-12-31</endDate>
+        <endDate>2019-12-28</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2020-01-01</startDate>
+        <startDate>2018-07-01</startDate>
     </timeFrameFilter>
 </Report>

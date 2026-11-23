@@ -48,6 +48,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Budget_Type_Nm__c</field>
+            <table>Core_MDF_Claim_Prediction__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Claim_Created_Dt__c</field>
             <table>Core_MDF_Claim_Prediction__c</table>
         </columns>
@@ -189,6 +194,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_New_Prediction_Score_nbr__c</field>
+            <table>Core_MDF_Claim_Prediction__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Company_Size__c</field>
             <table>Core_MDF_Claim_Prediction__c</table>
         </columns>
         <masterLabel>Claim Prediction</masterLabel>

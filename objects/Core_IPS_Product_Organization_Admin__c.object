@@ -174,18 +174,6 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>Core_IPS_Supported_Org_Admin__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>Opportunity PAR</label>
-        <referenceTo>Core_IPS_Opportunity_PAR__c</referenceTo>
-        <relationshipLabel>Support Org Admins</relationshipLabel>
-        <relationshipName>Support_Org_Admins</relationshipName>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>Core_IPS_Unique_Admin_User__c</fullName>
         <caseSensitive>false</caseSensitive>
         <description>Hidden field not shown on layouts. Populated thru a WF rule. Is a concatenation of Support Org Number &amp; User WWID to ensure each user is added only once per Support Org.</description>

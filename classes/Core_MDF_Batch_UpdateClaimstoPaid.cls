@@ -16,7 +16,6 @@ public without sharing class Core_MDF_Batch_UpdateClaimstoPaid implements Databa
 	public Set<Id> paymentIdsSet;
     // Payment records to be rollbacked
 	public Map<Id, Core_MDF_Payment__c> failedPaymentMap = new Map<Id, Core_MDF_Payment__c>();
-    
     // Get Incoming Payments
     public Core_MDF_Batch_UpdateClaimstoPaid(Map<Id, Core_MDF_Payment__c> paymentMap){
         this.paymentMap = paymentMap;

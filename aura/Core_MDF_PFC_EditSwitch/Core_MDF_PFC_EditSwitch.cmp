@@ -1,26 +1,98 @@
-<aura:component controller="Core_MDF_PartnerFundClaim_Edit" implements="lightning:actionOverride" access="global">
-
+<aura:component controller="Core_MDF_PartnerFundClaim_Edit"
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,lightning:actionOverride,force:lightningQuickActionWithoutHeader"
+    access="global">
     <!-- This component acts as a Switch between CoMarketing Edit functionality and Standard Edit Functionality-->
 
     <!-- Check the record type of the Incoming  Record Id -->
-    <aura:attribute name="simpleNewClaim" type="PartnerFundClaim"/>
+    <aura:attribute name="simpleNewClaim" type="PartnerFundClaim" />
     <aura:attribute name="claimDetailsOnLoad" type="PartnerFundClaim" />
-    <aura:attribute name="recordId" type="String" default=""/>   
-    <aura:attribute name="activityCountriesMap" type="Map"/>
-    <aura:attribute name="activitySubTypesMap" type="Map"/>
-    <aura:attribute name="activityBudgetType" type="String" default=""/>
+    <aura:attribute name="recordId" type="String" default="" />
+    <aura:attribute name="activityCountriesMap" type="Map" />
+    <aura:attribute name="activitySubTypesMap" type="Map" />
+    <aura:attribute name="activityBudgetType" type="String" default="" />
     <!-- Attribute to Store Clone Button value and pass to "Core_MDF_PFC_Create" to component -->
-    <aura:attribute name="isClone" type="Boolean" />
+    <aura:attribute name="isClone" type="Boolean"/>
     <!-- Attribute to Store the error message when user clicks on edit on a CRR Positive claim -->
-    <aura:attribute name="accessErrorMsg" type="String" default=""/>
-    <aura:attribute name="isEdit" type="Boolean" default="true" />
-    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
-            
+    <aura:attribute name="accessErrorMsg" type="String" default="" />
+    <aura:attribute name="isEdit" type="Boolean" default="true" /><!-- Naveen-SubClaim -->
+
+    
+    <aura:attribute name="isValidCloneOrEditUser" type="Boolean" default="false" />
+    <aura:attribute name="showErrorModalOnEditClaim" type="Boolean" default="false" />
+    <aura:attribute name="kpiPLValueToFieldAPIName" type="Object" description="To hold the object of values where Key is the Picklist value and value is the quantity field API Name"/>
+    <aura:attribute name="kpiPLValueToFieldLabel" type="Object" description="To hold the object of values where Key is the Picklist value and value is the localized field label"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
     <aura:if isTrue="{!not(empty(v.simpleNewClaim.Id))}">
         <c:Core_MDF_PFC_Create simpleNewClaim="{!v.simpleNewClaim}" isCloneClaim="{!v.isClone}"
             activityCountriesMap="{!v.activityCountriesMap}" activitySubTypesMap="{!v.activitySubTypesMap}"
-            activityBudgetType="{!v.activityBudgetType}"
-            claimDataOnLoad="{!v.claimDetailsOnLoad}" isEdit="{!v.isEdit}"/>
+            activityBudgetType="{!v.activityBudgetType}" kpiPLValueToFieldLabel="{!v.kpiPLValueToFieldLabel}"
+            kpiPLValueToFieldAPIName="{!v.kpiPLValueToFieldAPIName}" claimDataOnLoad="{!v.claimDetailsOnLoad}" 
+            isEdit="{!v.isEdit}"/>
     </aura:if>
-  
+    <!--<aura:if isTrue="{!v.isValidCloneOrEditUser}">
+        <aura:set attribute="else">
+            <aura:if isTrue="{!v.isClone}">
+                <div class="slds-align_absolute-center">
+                    <lightning:card title=""
+                        class="{!if(v.accessErrorMsg != '' ,'slds-show slds-text-heading_small','slds-hide')}">
+                        {!v.accessErrorMsg}
+                    </lightning:card>
+                </div>
+                <aura:set attribute="else">
+                    <aura:if isTrue="{!v.showErrorModalOnEditClaim}">
+                        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                            aria-describedby="modal-content-id-1"
+                            class="slds-modal slds-fade-in-open slds-modal_medium slds-text-align_center">
+                            <div class="slds-modal__container errorModal">
+                                <header class="slds-modal__header">
+                                    <button
+                                        class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                        title="Close" onclick="{!c.closeModal}">
+                                        <lightning:icon iconName="utility:close" alternativeText="Close" variant="inverse"
+                                            size="small" />
+                                        <span class="slds-assistive-text">{!$Label.c.Core_MDF_Close}</span>
+                                    </button>
+                                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                                        {!$Label.c.Core_MDF_EditClaim}</h2>
+                                </header>
+                                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                                    <lightning:card title=""
+                                        class="{!if(v.accessErrorMsg != '' ,'slds-show slds-text-heading_small','slds-hide')}">
+                                        {!v.accessErrorMsg}
+                                    </lightning:card>
+                                </div>
+                                <footer class="slds-modal__footer">
+                                    <lightning:button variant="brand" label="{!$Label.c.Core_MDF_Cancel_Button}"
+                                        title="{!$Label.c.Core_MDF_Cancel_Button}" onclick="{!c.closeModal}" />
+                                </footer>
+                            </div>
+                        </section>
+                        <div class="slds-backdrop slds-backdrop_open" aura:id="backdropForErrorModal"></div>
+                    </aura:if>
+                </aura:set>
+            </aura:if>
+        </aura:set> -->
+        <!--if it is a edit scenario and it is an CRR Positive claim 
+    <aura:set attribute="else">
+        <div class="dialog" style="height: 840px;">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Edit Claim</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <p>{!v.accessErrorMsg}</p> 
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick="{!c.closeModel}">Close</button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+    </aura:set> -->
 </aura:component>

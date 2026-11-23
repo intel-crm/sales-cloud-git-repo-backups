@@ -16,7 +16,7 @@ public with sharing class Core_MDF_CommunityRedirectController {
     @parameters:        N/A
     Description:        This method is used to get current session type
     Added By:           Accenture - AD - 7/29/2020
-    Modified By:        Date:       	Changes: 
+    Modified By:        Date:           Changes: 
     *******************************************************************************************************/
     @AuraEnabled
     public static String getCurrentSession(){

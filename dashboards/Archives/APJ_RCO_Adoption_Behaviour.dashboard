@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dashboard xmlns="http://soap.sforce.com/2006/04/metadata">
+    <backgroundEndColor>#FFFFFF</backgroundEndColor>
+    <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
+    <backgroundStartColor>#FFFFFF</backgroundStartColor>
+    <dashboardType>SpecifiedUser</dashboardType>
+    <description>This Dashboard shows APJ RCO users (ASMs, CAMs, CPMs, DBMs)</description>
+    <isGridLayout>false</isGridLayout>
+    <leftSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarStacked100</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>true</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Shows opportunities with future and past due decision dates. Excludes &quot;Win Submitted&quot; or &quot;Flag for Deletion&quot; status. Program goal of &gt;95% oppty with future decision dates from previous baseline of &lt;75% current.</footer>
+            <groupingColumn>User.Core_User_Geo__c</groupingColumn>
+            <groupingColumn>Opportunity.Core_Opportunity_Past_Due__c</groupingColumn>
+            <groupingSortProperties/>
+            <header>Pipeline Bahaviour</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>Archives/RCO_Own_Pending_Opp_Past_Due</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Oppty Decision Date (% Future/Past Due)</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarStacked100</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Shows opportunities in Develop and Design stages with activity in the last 30 days, where activity is defined as a change in Decision Date, Stage, Opportunity Value ($), Volume, or Description. Goal for 2015 is 60%.</footer>
+            <groupingColumn>User.Core_User_Geo__c</groupingColumn>
+            <groupingColumn>Opportunity.Core_Opportunity_Activity_Measure__c</groupingColumn>
+            <groupingSortProperties/>
+            <header>Pipeline Behaviour</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>Archives/RCO_Owned_Active_Report</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>% Activity</title>
+            <useReportChart>false</useReportChart>
+        </components>
+    </leftSection>
+    <middleSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>BarStacked100</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Target 60% in Qualify and Define. This metric is a rolling 30-day summary based on the opportunity Created Date. Variation expected across business segments and customer types.</footer>
+            <groupingSortProperties/>
+            <header>Pipeline Behaviour</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>Archives/RCO_Early_Stage_Opportunities</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Create Early Stage</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>BarStacked100</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>false</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Goals: Weekly (75%), Monthly (90%). Snapshot of &apos;Last Login Date&apos; taken once per week. &quot; - &quot; indicates users who have never logged in.</footer>
+            <groupingSortProperties/>
+            <header>Adoption</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>Archives/RCO_Sales_Mgr_Login_Weekly_Total</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Login Trend - Manager</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarStacked100</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <groupingColumn>Core_User_Login_Snapshot__c.Core_Sub_Geo__c</groupingColumn>
+            <groupingColumn>BucketField_25332621</groupingColumn>
+            <groupingSortProperties/>
+            <header>Adoption</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>Archives/RCO_Adoption_Login_Snapshot_All</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Last Login Date</title>
+            <useReportChart>false</useReportChart>
+        </components>
+    </middleSection>
+    <owner>10652134@intel.com.crm</owner>
+    <rightSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarStacked100</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Considers opportunities that have moved to Design Win within the last 30 days. Measures # days between opportunity creation to Design Win. Goal is &gt;90% for ’15.</footer>
+            <groupingColumn>User.Core_User_Geo__c</groupingColumn>
+            <groupingColumn>BucketField_43835160</groupingColumn>
+            <groupingSortProperties/>
+            <header>Pipeline Behaviour</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>Archives/RCO_Submitted_Oppty_Time_from_Create</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>% Early Entry</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>BarStacked100</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>false</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Goals: Weekly (75%), Monthly (90%). Snapshot of &apos;Last Login Date&apos; taken once per week. &quot; - &quot; indicates users who have never logged in.</footer>
+            <groupingSortProperties/>
+            <header>Adoption</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>Archives/RCO_Sales_Rep_BB_Login_Weekly_Total</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Login Trend - Sales Rep</title>
+            <useReportChart>false</useReportChart>
+        </components>
+    </rightSection>
+    <runningUser>10652134@intel.com.crm</runningUser>
+    <textColor>#000000</textColor>
+    <title>APJ RCO Adoption/Pipeline Behaviour</title>
+    <titleColor>#000000</titleColor>
+    <titleSize>14</titleSize>
+</Dashboard>

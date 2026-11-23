@@ -1,6 +1,12 @@
 ({
     // Method is called on component Initalization
     doInit: function (component, event, helper) {
+        component.set('v.listIconSVGPath', '/resource/Core_MDF_SLDS262/icons/standard-sprite/svg/symbols.svg#client');
+        //  if (component.get("v.simpleNewClaim.Id") != '' && component.get("v.simpleNewClaim.Id") != undefined) {
+        //     if(!component.get("v.isCloneClaim")) {
+        //         component.set("v.claimDataOnLoad", JSON.parse(JSON.stringify(component.get("v.simpleNewClaim"))));
+        //     }
+        //  }
         helper.doInit(component, event, helper); 
     },
 
@@ -8,6 +14,29 @@
     closeModal: function (component, event, helper) {
         helper.closeModel(component);
     },
+   //made changes ALekhya
+    openCurrencyConverter : function(component, event, helper) {
+    $A.createComponent(
+        "c:core_MDF_Currency_Convertor",
+        {
+            recordId: component.get("v.simpleNewClaim.Id"),
+            activityId: component.get("v.simpleNewClaim.RequestId")
+        },
+        function(content, status) {
+            if (status === "SUCCESS") {
+                component.find("overlayLib").showCustomModal({
+                    header: "Currency Converter",
+                    body: content,
+                    showCloseButton: true,
+                    cssClass: "slds-modal_small custom-extra-small"
+                });
+            } else {
+                console.error("Failed to create LWC:", status);
+            }
+        }
+    );
+},
+
 
     // This method fetches the Activity details
     fetchActivityDetails: function (component, event, helper) {
@@ -153,47 +182,75 @@
     },
 
     handleChange:function (component, event, helper) {
+        //alert('On change');
         helper.handleChange(component, event, helper);
     },
 
     handleDateChange: function(component, event, helper) {
         helper.handleStartDateChange(component, event, helper);
     },
+    //IPA-Jegan
     handleCampaignPurposeChange: function(component, event, helper) {
         helper.handleCampaignPurposeChange(component, event, helper);
     },
+
+    // getKPIFieldValues: function(component, event, helper) {
+    //     let activityValues = component.getParam('apiNameToValueMap');
+    //     component.set("v.kpiFieldValuesFromAct", activityValues);
+    // },
+
     handleDateValidation: function (component, event, helper) {
         helper.validateClaimDates(component, "claimActEndDate");
     },
+
     handleAmountValidation: function (component, event, helper) {
         helper.handleAmountValidation(component);
     },
+
     getKPIDetailsOnLoad: function(component, event, helper) {
         component.set('v.kpiDetailsOnLoad', event.getParam('kpiFieldsAndValMap'));
     },
+    
+    //commented by VB - AI PIC
+    /*getTacticMetricDetailsOnLoad: function(component, event) {
+        console.log('tactics metrics on load', event.getParam('tacticMetricsOnLoad'));
+       component.set("v.tacticsMetricsOnLoad",event.getParam('tacticMetricsOnLoad'));
+    },
+
+     getTacticSpendingDetailsOnLoad: function(component, event) {
+        console.log('tactics spendings on load', event.getParam('tacticSpendingsOnLoad'));
+        component.set("v.tacticsSpendingsOnLoad",event.getParam('tacticSpendingsOnLoad'));
+    },*/
+
     handleDocumentTypeChange: function(component, event) {
         component.set("v.hasAnyChangeOnAuditDoc", !event.getParam("disableSubmitButton"));
     },
+    
+    //TWC3117-15268
     handleSubClaimChange : function(component, event, helper) {
         try {
             const subClaims = event.getParam('subClaims'); 
+            //console.log('Received SubClaims from LWC:', JSON.stringify(subClaims));
+            
             if (!Array.isArray(subClaims)) {
+                console.error('SubClaimChange detail not an array:', subClaims);
                 return;
             }
             var subClaimList;
-            if (component.get("v.isEdit")) {
+            if (component.get("v.isEdit")) {//Naveen-SubClaim
             subClaimList = subClaims.map(claim => ({
                 sobjectType: 'PartnerFundClaim',
                 Id: claim.claimId,
                 Core_MDF_Bank__c: claim.selectedBank === $A.get("$Label.c.Core_MDF_CreditBased_BankNotApplicable") ? '' : claim.selectedBank,
                 Core_MDF_VAT_Opt_In__c: claim.vatValue,
                 RequestId: claim.requestId,
+                //Title: claim.Title, 
                 ChannelPartnerId: claim.nodeaccId,
                 Core_MDF_Total_Invoice_Amount_Local__c: claim.nodeAmount,
                 Core_MDF_OtherCostsnotReimbursable_Local__c : claim.reimbursableAmount,
                 Core_MDF_Amount_Percentage__c: claim.percentage,
                 Core_MDF_Paid_By_Payment_Type_nm__c: claim.paymentType,
-                Core_MDF_Applicable_VAT_Percentage_nm__c: claim.vatPercentage
+                Core_MDF_Applicable_VAT_Percentage_nm__c: claim.vatPercentage  //Roshan
             }));
             }
             else {
@@ -204,13 +261,17 @@
                 Core_MDF_Total_Invoice_Amount_Local__c: node.nodeAmount,
                 Core_MDF_Bank__c: node.selectedBank === $A.get("$Label.c.Core_MDF_CreditBased_BankNotApplicable") ? '' : node.selectedBank,
                 RequestId: node.requestId,
+                //Title: node.Title,              
                 Core_MDF_OtherCostsnotReimbursable_Local__c : node.reimbursableAmount,
                 Core_MDF_VAT_Opt_In__c: node.vatValue,
                 Core_MDF_Paid_By_Payment_Type_nm__c: node.paymentType,
-                Core_MDF_Applicable_VAT_Percentage_nm__c: node.vatPercentage
+                Core_MDF_Applicable_VAT_Percentage_nm__c: node.vatPercentage  //Roshan
             }));
-            }
+            }//Naveen-SubClaim
+            
+            
             component.set("v.subClaimList", subClaimList);
+            console.log('Mapped SubClaim List:', JSON.stringify(subClaimList));
         } catch (err) {
             console.error('Error in handleSubClaimChange:', err);
         }

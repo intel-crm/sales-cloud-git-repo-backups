@@ -1,0 +1,220 @@
+<aura:component controller="AccountHierarchyController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,lightning:actionOverride,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"  access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />  
+    <aura:attribute name="items" type="Object"/>  
+    <aura:attribute name="recordId" type="String"/>  
+    <aura:attribute name="accwrplst" type="object"/>
+    <aura:attribute name="chldaccnts" type="Account[]"/>  
+    <!-- <lightning:tree items="{!v.items}" header="Account Hierarchy" onselect="{!c.handleSelect}"/>  -->
+    
+    <div style="border:1px solid #dddbda;padding:10px;width:100%;color:#080707;font-size:1.5em;font-weight:bold;font-family:Helvetica;BackGround-color:#f3f2f2">
+        Account Hierarchy
+    </div>
+    <div style="border:1px solid #dddbda;box-shadow: 5px 5px 2px #aaaaaa;padding:10px;width:100%;font-weight:bold;background-color:white;">
+        <aura:if isTrue="{!v.accwrplst.length > 0}">
+            <table class="slds-table  slds-table_cell-buffer" style="width:100%;" border="0">
+                <thead>
+                    <tr class="" style="width:100%;background-color:#AFEEEE;">
+                        <td scope="col" style="width:4%;background-color:#AFEEEE;">
+                            <div class="slds-truncate" title="select All"></div>
+                        </td>
+                        <td scope="col" style="width:30%;background-color:#AFEEEE;">
+                            <div class="slds-truncate" title="">ACCOUNT NAME</div>
+                        </td>
+                        <td scope="col" style="width:12%;background-color:#AFEEEE;text-align:center;">
+                            <div class="slds-truncate" title="">ACCOUNT SITE</div>
+                        </td>
+                        <td scope="col" style="width:15%;background-color:#AFEEEE;text-align:center;">
+                            <div class="slds-truncate" title="">BILLING STATE/PROVINCE</div>
+                        </td>
+                        <td scope="col" style="width:12%;background-color:#AFEEEE;text-align:center;">
+                            <div class="slds-truncate" title="">PHONE</div>
+                        </td>
+                        <td scope="col" style="width:12%;background-color:#AFEEEE;text-align:center;">
+                            <div class="slds-truncate" title="">TYPE</div>
+                        </td>
+                        <td scope="col" style="width:15%;background-color:#AFEEEE;">
+                            <div class="slds-truncate" title="">ACCOUNT OWNER ALIAS</div>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+            <aura:iteration items="{!v.accwrplst}" var="dobletyobj" indexVar="index">
+                <table class="slds-table  slds-table_cell-buffer" style="width:100%;" border="0">
+                    <tr>
+                        <td width="4%">
+                            <!-- <ui:outputText value="{!index+1}"/> -->
+                            <aura:if isTrue="{!dobletyobj.shwoppwrp}">
+                                <lightning:buttonIcon iconName="utility:down"  variant="container" value="{!dobletyobj.acc.Id}" onclick="{!c.handleClick}" />
+                                <aura:set attribute="else">
+                                    <lightning:buttonIcon iconName="utility:right" variant="container" value="{!dobletyobj.acc.Id}" onclick="{!c.handleClick}"/>
+                                </aura:set>
+                            </aura:if>
+                        </td>
+                        <td width="30%" >
+                            <div class="slds-truncate" style="font-size:15px;text-align:left;">
+                                <ui:outputText value="{!dobletyobj.acc.Name}" />
+                            </div>
+                        </td>
+                        <td width="12%" style="font-size:15px;text-align:center;">
+                            <ui:outputText value="{!dobletyobj.acc.Site}"/>
+                        </td>
+                        <td width="15%" style="font-size:15px;text-align:center;">
+                            <ui:outputText value="{!dobletyobj.acc.BillingState}"/>
+                        </td>
+                        <td width="12%" style="font-size:15px;text-align:center;">
+                            <ui:outputText value="{!dobletyobj.acc.Phone}"/>
+                        </td>
+                        <td width="12%" style="text-align:center;">
+                            <ui:outputText value="{!dobletyobj.acc.Type}"/>
+                        </td>
+                        <td width="15%" style="font-size:15px;text-align:center;">
+                            <ui:outputText value="{!dobletyobj.acc.Owner.Alias}"/>
+                        </td>
+                    </tr>
+                </table>
+                
+                <!--  CHILD -->
+                <aura:if isTrue="{!dobletyobj.shwoppwrp}" >
+                    <!-- <table class="slds-table  slds-table_cell-buffer" style="width:100%;" border="0">
+                                            <thead>
+                                                <tr class="" style="width:100%;background-color:#D6EAF8;">
+                                                    <td scope="col" style="width:4%;background-color:#D6EAF8;">
+                                                    </td>
+                                                    <td scope="col" style="width:4%;background-color:#D6EAF8;">
+                                                        <div class="slds-truncate" title="S.NO">S.NO</div>
+                                                    </td>
+                                                    <td scope="col" style="width:25%;background-color:#D6EAF8;">
+                                                        <div class="slds-truncate" title="">Account Name</div>
+                                                    </td>
+                                                    <td scope="col" style="width:67%;background-color:#D6EAF8;">
+                                                    </td>
+                                                </tr>
+                                            </thead>
+                                        </table> -->
+                    <aura:iteration items="{!dobletyobj.chldlistobj}" var="cnt" indexVar="index">
+                        <table class="slds-table  slds-table_cell-buffer" style="width:100%;" border="0">
+                            
+                            <tr>
+                                <td width="4%">
+                                </td>
+                                <td width="4%">
+                                    <aura:if isTrue="{!dobletyobj.shwoppwrp2}">
+                                        <lightning:buttonIcon iconName="utility:down"  variant="container" value="{!cnt.chacc.Id}" onclick="{!c.getsubchild}" />
+                                        <aura:set attribute="else">
+                                            <lightning:buttonIcon iconName="utility:right" variant="container" value="{!cnt.chacc.Id}" onclick="{!c.getsubchild}"/>
+                                        </aura:set>
+                                    </aura:if>
+                                </td>
+                                <td width="26%" >
+                                    <div class="slds-truncate" style="font-size:15px;text-align:left;">
+                                        <ui:outputText value="{!cnt.chacc.Name}"/>
+                                    </div>
+                                </td>
+                                <td width="12%" style="font-size:15px;text-align:center;">
+                                    <ui:outputText value="{!cnt.chacc.Site}"/>
+                                </td>
+                                <td width="15%" style="font-size:15px;text-align:center;">
+                                    <ui:outputText value="{!cnt.chacc.BillingState}"/>
+                                </td>
+                                <td width="12%" style="font-size:15px;text-align:center;">
+                                    <ui:outputText value="{!cnt.chacc.Phone}"/>
+                                </td>
+                                <td width="12%" style="font-size:15px;text-align:center;">
+                                    <ui:outputText value="{!cnt.chacc.Type}"/>
+                                </td>
+                                <td width="15%" style="font-size:15px;text-align:center;">
+                                    <ui:outputText value="{!cnt.chacc.Owner.Alias}"/>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <!-- SUB  CHILD -->
+                        <aura:if isTrue="{!cnt.shwoppwrp2}" >
+                            <table class="slds-table  slds-table_cell-buffer" style="width:100%;" border="0">
+                                <!--<thead width="100%">
+                                                        <tr class="slds-text-title_caps" width="100%">
+                                                           
+                                                            <th scope="col" width="17%" style="text-align:center">
+                                                                <div class="slds-truncate SECTION_INFORMATIONONE" title="Subject"><b>Subject</b></div>
+                                                            </th>
+                                                            <th scope="col" width="17%" style="text-align:center">
+                                                                <div class="slds-truncate SECTION_INFORMATIONONE" title="Assigned To"><b>Assigned To</b></div>
+                                                            </th>
+                                                            <th scope="col" width="15%" style="text-align:center">
+                                                                <div class="slds-truncate SECTION_INFORMATIONONE" title="Due Date"><b>Due Date</b></div>
+                                                            </th>
+                                                            <th scope="col" width="15%" style="text-align:center">
+                                                                <div class="slds-truncate SECTION_INFORMATIONONE" title="Priority"><b>Priority</b></div>
+                                                            </th>
+                                                            <th scope="col" width="15%">
+                                                                <div class="slds-truncate SECTION_INFORMATIONONE" title="Status"><Center><b>Status</b></Center></div>
+                                                            </th>
+                                                            <th scope="col" width="16%">
+                                                                <div class="slds-truncate SECTION_INFORMATIONONE" title="Related To"><Center><b>Related To</b></Center></div>
+                                                            </th>                                                
+                                                        </tr>
+                                                    </thead>-->
+                                <tbody width="100%">
+                                    <aura:iteration items="{!cnt.subchldacclist}" var="subcnt">
+                                        <table class="slds-table  slds-table_cell-buffer" style="width:100%;" border="0">
+                                            
+                                            <tr>
+                                                <td width="4%">
+                                                </td>
+                                                <td width="8%">
+                                                    
+                                                </td>
+                                                <td width="22%" >
+                                                    <div class="slds-truncate" style="font-size:15px;text-align:left;">
+                                                        <ui:outputText value="{!subcnt.Name}"/>
+                                                    </div>
+                                                </td>
+                                                <td width="12%" style="font-size:15px;text-align:center;">
+                                                    <ui:outputText value="{!subcnt.Site}"/>
+                                                </td>
+                                                <td width="15%" style="font-size:15px;text-align:center;">
+                                                    <ui:outputText value="{!subcnt.BillingState}"/>
+                                                </td>
+                                                <td width="12%" style="font-size:15px;text-align:center;">
+                                                    <ui:outputText value="{!subcnt.Phone}"/>
+                                                </td>
+                                                <td width="12%" style="font-size:15px;text-align:center;">
+                                                    <ui:outputText value="{!subcnt.Type}"/>
+                                                </td>
+                                                <td width="15%" style="font-size:15px;text-align:center;">
+                                                    <ui:outputText value="{!subcnt.Owner.Alias}"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </aura:iteration>
+                                    
+                                    <aura:if isTrue="{!cnt.subchldacclist.length == 0}">
+                                        <center>
+                                            <span style="font-size:15px;">
+                                                No records found.
+                                            </span>
+                                        </center>
+                                    </aura:if>
+                                </tbody>
+                            </table>
+                            
+                        </aura:if>
+                        <!-- END OF SUB  CHILD -->
+                        
+                    </aura:iteration>
+                    <aura:if isTrue="{!dobletyobj.chldlistobj.length == 0}">
+                        <center>
+                            <span style="font-size:15px;">
+                                No records found.
+                            </span>
+                        </center>
+                    </aura:if>
+                    
+                </aura:if>
+                <!-- END OF CHILD -->
+            </aura:iteration>
+            
+        </aura:if>
+        <br/>
+    </div>
+</aura:component>

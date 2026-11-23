@@ -14,7 +14,8 @@ IF(INCLUDES($Record.Core_MDF_Program__c, &quot;Core_MDF_Client_CoMarketing_Fund_
 IF(INCLUDES($Record.Core_MDF_Program__c, &quot;Core_MDF_Retail_Marketing_Funds&quot;),&quot;Retail Marketing Funds;&quot;,NULL)+
 IF(INCLUDES($Record.Core_MDF_Program__c, &quot;Core_MDF_Intel_Partner_Alliance&quot;),&quot;Intel Partner Alliance;&quot;,NULL)+
 IF(INCLUDES($Record.Core_MDF_Program__c, &quot;Core_MDF_Ecosystem_Extension_Fund&quot;),&quot;Ecosystem Extension Fund;&quot;,NULL)+
-IF(INCLUDES($Record.Core_MDF_Program__c, &quot;Core_MDF_Co_GTM&quot;),&quot;Co-GTM;&quot;,NULL)</expression>
+    IF(INCLUDES($Record.Core_MDF_Program__c, &quot;Core_MDF_Co_GTM&quot;),&quot;Co-GTM;&quot;,NULL)+
+    IF(INCLUDES($Record.Core_MDF_Program__c, &quot;Core_MDF_Co_Inv&quot;),&quot;Co-Inv;&quot;,NULL)</expression>
     </formulas>
     <interviewLabel>Core_MDF_Update_Bank_Program_Value {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_MDF_Update_Bank_Program_Value</label>
@@ -28,15 +29,15 @@ IF(INCLUDES($Record.Core_MDF_Program__c, &quot;Core_MDF_Co_GTM&quot;),&quot;Co-G
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordUpdates>
         <name>Core_MDF_Update_the_Bank_Program_Value</name>
         <label>Update the Bank Program Value</label>
-        <locationX>176</locationX>
-        <locationY>323</locationY>
+        <locationX>527</locationX>
+        <locationY>371</locationY>
         <inputAssignments>
             <field>Core_MDF_Program_Value__c</field>
             <value>
@@ -46,8 +47,8 @@ IF(INCLUDES($Record.Core_MDF_Program__c, &quot;Core_MDF_Co_GTM&quot;),&quot;Co-G
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>50</locationX>
-        <locationY>0</locationY>
+        <locationX>401</locationX>
+        <locationY>48</locationY>
         <connector>
             <targetReference>Core_MDF_Update_the_Bank_Program_Value</targetReference>
         </connector>

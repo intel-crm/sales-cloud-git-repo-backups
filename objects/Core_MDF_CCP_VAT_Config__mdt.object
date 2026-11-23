@@ -84,6 +84,11 @@
                     <label>Channel MDF</label>
                 </value>
                 <value>
+                    <fullName>Ecosystem Extension Fund</fullName>
+                    <default>false</default>
+                    <label>Ecosystem Extension Fund</label>
+                </value>
+                <value>
                     <fullName>CoGTM</fullName>
                     <default>false</default>
                     <label>CoGTM</label>

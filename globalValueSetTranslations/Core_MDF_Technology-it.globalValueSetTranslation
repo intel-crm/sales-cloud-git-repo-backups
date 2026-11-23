@@ -26,7 +26,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Alder Lake - 12th Gen Core</masterLabel>
-        <translation>Alder Lake - Core di dodicesima generazione</translation>
+        <translation><!-- Alder Lake - 12th Gen Core --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Alder Lake - 12th Gen Core K-SKU</masterLabel>
@@ -50,7 +50,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Amber Lake - 8th Gen Core</masterLabel>
-        <translation>Amber Lake - Core di ottava generazione</translation>
+        <translation><!-- Amber Lake - 8th Gen Core --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Apollo Lake</masterLabel>
@@ -114,7 +114,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Coffee Lake - 8th Gen Core</masterLabel>
-        <translation>Coffee Lake - Core di ottava generazione</translation>
+        <translation><!-- Coffee Lake - 8th Gen Core --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Coffee Lake - H</masterLabel>
@@ -126,7 +126,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Coffee Lake Refresh - 8th Gen Core</masterLabel>
-        <translation>Coffee Lake Refresh - Core di ottava generazione</translation>
+        <translation><!-- Coffee Lake Refresh - 8th Gen Core --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Coffee Lake – H - 8th Gen Core</masterLabel>
@@ -142,7 +142,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Comet Lake - 10th Gen Core</masterLabel>
-        <translation>Comet Lake - Core di decima generazione</translation>
+        <translation><!-- Comet Lake - 10th Gen Core --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Converged Edge Media Platform</masterLabel>
@@ -274,7 +274,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Ice Lake - 10th Gen Core</masterLabel>
-        <translation>Ice Lake - Core di decima generazione</translation>
+        <translation><!-- Ice Lake - 10th Gen Core --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Integrated Graphics</masterLabel>
@@ -310,7 +310,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel(R) Graphics</masterLabel>
-        <translation>Grafica Intel(R)</translation>
+        <translation><!-- Intel(R) Graphics --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® 4th Generation Xeon® Scalable Processors</masterLabel>
@@ -334,7 +334,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Arc™ A-series Graphics</masterLabel>
-        <translation>Intel®™ Arc A-series Grafica</translation>
+        <translation><!-- Intel® Arc™ A-series Graphics --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Arc™ Pro B50 graphics</masterLabel>
@@ -347,10 +347,6 @@
     <valueTranslation>
         <masterLabel>Intel® Arc™ graphics</masterLabel>
         <translation><!-- Intel® Arc™ graphics --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Aria® 10 PFGAs</masterLabel>
-        <translation><!-- Intel® Aria® 10 PFGAs --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Arria® 10 PFGAs</masterLabel>
@@ -370,7 +366,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ Series 3 (Wildcat Lake)</masterLabel>
-        <translation>Intel® Core™ Serie 3 (Wildcat Lake)</translation>
+        <translation><!-- Intel® Core™ Series 3 (Wildcat Lake) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ Series 3 processors</masterLabel>
@@ -390,7 +386,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ Ultra Series 1 (Meteor Lake)</masterLabel>
-        <translation>Intel® Core™ Ultra Serie 1 (Meteor Lake)</translation>
+        <translation><!-- Intel® Core™ Ultra Series 1 (Meteor Lake) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ Ultra Series 2 (Arrow Lake)</masterLabel>
@@ -485,8 +481,16 @@
         <translation><!-- Intel® Optane™ Memory w SSD --></translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>Intel® Pentium® Gold Processor</masterLabel>
+        <translation><!-- Intel® Pentium® Gold Processor --></translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>Intel® Pentium® P6000 processor</masterLabel>
         <translation>Processori Intel® Pentium® P6000</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Processor (N/U Series)</masterLabel>
+        <translation><!-- Intel® Processor (N/U Series) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Processor N Series processors</masterLabel>
@@ -542,19 +546,19 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® 6 Processors (Granite Rapids E-Core)</masterLabel>
-        <translation>Processori Intel® Xeon® 6 (Efficient-core Granite Rapids)</translation>
+        <translation><!-- Intel® Xeon® 6 Processors (Granite Rapids E-Core) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® 6 Processors (Granite Rapids P-Core)</masterLabel>
-        <translation>Processori Intel® Xeon® 6 (Performance-core Granite Rapids)</translation>
+        <translation><!-- Intel® Xeon® 6 Processors (Granite Rapids P-Core) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® 6 SoC (Granite Rapids-D)</masterLabel>
-        <translation>SoC Intel® Xeon® 6 (Granite Rapids-D)</translation>
+        <translation><!-- Intel® Xeon® 6 SoC (Granite Rapids-D) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® 6 W Processors</masterLabel>
-        <translation>Processeurs Intel® Xeon® 6 W</translation>
+        <translation><!-- Intel® Xeon® 6 W Processors --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® 6300 Processors</masterLabel>
@@ -638,11 +642,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Movidius VPU - Keem Bay</masterLabel>
-        <translation>VPU Movidius - Keem Bay</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Movidius VPU - Other</masterLabel>
-        <translation>VPU Movidius - Altro</translation>
+        <translation><!-- Movidius VPU - Keem Bay --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Movius VPU - Other</masterLabel>
@@ -698,7 +698,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Other</masterLabel>
-        <translation>Altro</translation>
+        <translation><!-- Other --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>P4</masterLabel>
@@ -726,11 +726,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Purley</masterLabel>
-        <translation><!-- Purley --></translation>
+        <translation>Purley</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Purley - 1st/2nd Gen Xeon Scalable</masterLabel>
-        <translation>Purley - Xeon scalabile di prima / seconda generazione</translation>
+        <translation><!-- Purley - 1st/2nd Gen Xeon Scalable --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>QuickAssist Technology (QAT)</masterLabel>
@@ -754,7 +754,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Raptor Lake - 13th Gen Core</masterLabel>
-        <translation>Raptor Lake - Core di tredicesima generazione</translation>
+        <translation><!-- Raptor Lake - 13th Gen Core --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Raptor Lake - 13th Gen Core K-SKU</masterLabel>
@@ -762,15 +762,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Raptor Lake – HX/S (RPL) 14th Gen</masterLabel>
-        <translation>Raptor Lake – HX/S (RPL) di quattordicesima generazione</translation>
+        <translation><!-- Raptor Lake – HX/S (RPL) 14th Gen --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Raptor Lake – U (RPL)</masterLabel>
-        <translation>Raptor Lake – U (RPL)  </translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Razor Lake</masterLabel>
-        <translation><!-- Razor Lake --></translation>
+        <translation><!-- Raptor Lake – U (RPL) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Rendering Toolkit &amp; Deep Neural Network Library </masterLabel>
@@ -790,7 +786,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Rocket Lake - 11th Gen Core</masterLabel>
-        <translation>Rocket Lake - Core di undicesima generazione</translation>
+        <translation><!-- Rocket Lake - 11th Gen Core --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>SGX</masterLabel>
@@ -805,10 +801,6 @@
         <translation><!-- Sapphire Rapids --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Sapphire Rapids - 4th Gen Xeon Scalable</masterLabel>
-        <translation>Sapphire Rapids - Xeon scalabile di quarta generazione</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Sapphire Rapids - HBM</masterLabel>
         <translation><!-- Sapphire Rapids - HBM --></translation>
     </valueTranslation>
@@ -817,12 +809,20 @@
         <translation>Scalable Video Technology (SVT)</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>Series 4 Intel® Core™ (Wildcat Lake Refresh)</masterLabel>
+        <translation><!-- Series 4 Intel® Core™ (Wildcat Lake Refresh) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Series 4 Intel® Core™ Ultra (Nova Lake)</masterLabel>
+        <translation><!-- Series 4 Intel® Core™ Ultra (Nova Lake) --></translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>SigOpt</masterLabel>
         <translation><!-- SigOpt --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Skylake</masterLabel>
-        <translation><!-- Skylake --></translation>
+        <translation>Skylake</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>SmartEdge</masterLabel>
@@ -850,7 +850,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Tiger Lake - 11th Gen Core</masterLabel>
-        <translation>Tiger Lake - Core di undicesima generazione</translation>
+        <translation><!-- Tiger Lake - 11th Gen Core --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Tiger Lake - 11th Gen Core K-SKU</masterLabel>
@@ -874,7 +874,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Whiskey Lake - 8th Gen Core</masterLabel>
-        <translation>Whiskey Lake - Core di ottava generazione</translation>
+        <translation><!-- Whiskey Lake - 8th Gen Core --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Wi-Fi 6</masterLabel>
@@ -946,7 +946,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>vPro Fleet Services</masterLabel>
-        <translation>Servizi Flotta vPro</translation>
+        <translation><!-- vPro Fleet Services --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>vRAN Boost</masterLabel>

@@ -153,15 +153,15 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
-    <label>xOpportunity</label>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <label>Opportunity</label>
     <nameField>
         <displayFormat>DWGOPP-{00000000}</displayFormat>
         <label>Opportunity  Name</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>xOpportunities</pluralLabel>
+    <pluralLabel>Opportunities</pluralLabel>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>

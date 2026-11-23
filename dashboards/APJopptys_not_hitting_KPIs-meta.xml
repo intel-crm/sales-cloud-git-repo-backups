@@ -5,5 +5,15 @@
         <sharedTo>AllInternalUsers</sharedTo>
         <sharedToType>Organization</sharedToType>
     </folderShares>
-    <name>APJ RBM</name>
+    <folderShares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>11830184@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>11568039@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <name>APJ-opptys not hitting KPIs</name>
 </DashboardFolder>

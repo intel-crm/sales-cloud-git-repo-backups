@@ -40,9 +40,6 @@
         <field>Core_Sales_Support_Request__c.Status__c</field>
     </columns>
     <columns>
-        <field>Core_Sales_Support_Request__c.Core_Account_Name__c</field>
-    </columns>
-    <columns>
         <field>FK_NAME</field>
     </columns>
     <columns>
@@ -52,6 +49,16 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>FK_OPP_AMOUNT</field>
     </columns>
+    <filter>
+        <criteriaItems>
+            <column>FK_OPP_CLOSE_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>THIS_YEAR</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
     <format>Matrix</format>
     <groupingsAcross>
         <dateGranularity>Day</dateGranularity>
@@ -76,6 +83,5 @@
     <timeFrameFilter>
         <dateColumn>FK_OPP_CLOSE_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-01-01</startDate>
     </timeFrameFilter>
 </Report>

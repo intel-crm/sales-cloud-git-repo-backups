@@ -1,6 +1,7 @@
-<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
-                access="global" Controller="Core_MDF_CampaignPFR_Controller">
-    <aura:attribute name="disablebuttonName" type="Boolean" default="false"/>
+<aura:component
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+    access="global" Controller="Core_MDF_CampaignPFR_Controller">
+    <aura:attribute name="disablebuttonName" type="Boolean" default="false" />
     <aura:attribute name="externalUser" type="Boolean" default="false" />
     <aura:attribute name="isPriceReviewer" type="Boolean" default="false" />
     <aura:attribute name="isL1Approver" type="Boolean" default="false" />
@@ -15,7 +16,7 @@
     <aura:attribute name="showApprovalCommentSection" type="Boolean" default="false" />
     <aura:attribute name="approvalComments" type="String" default="" />
     <aura:attribute name="btnValue" type="String" />
-    <aura:attribute name="commentType" type="String" /> 
+    <aura:attribute name="commentType" type="String" />
     <aura:attribute name="loadSpinner" type="Boolean" default="false" />
     <aura:attribute name="hideApproveButtonForL1orL2" type="Boolean" default="false" />
     <!-- Boolean Attributes to determine terminal rejection-->
@@ -25,51 +26,64 @@
     <aura:attribute name="hasUserClickedOnReject" type="Boolean" default="false" description="" />
     <aura:attribute name="isLegalReviewer" type="Boolean" default="false" />
     <aura:attribute name="isL2Approver" type="Boolean" default="false" />
+    <!-- Aditya -->
     <aura:attribute name="isBusinessApprover" type="Boolean" default="false" />
     <aura:attribute name="programName" type="String"/>
-    
-
     <aura:attribute name="isTechnicalApprover" type="Boolean" default="false" />
     <aura:attribute name="isExternalClaimSubmitter" type="Boolean" default="false" />
     <aura:attribute name="isInternalClaimSubmitter" type="Boolean" default="false" />
+    <!--Swati IPA claim-->
     <aura:attribute name="isAccountManagerApprover" type="Boolean" default="false" />
+
 
     <!-- Onload of the Page the values to be loaded  -->
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
-    
+    <!-- To check cogtm program-->
+    <aura:attribute name="isCoGtmProgram" type="Boolean" default="false" />
     <aura:if isTrue="{!v.buttonToBeVisible}">
         <lightning:layout horizontalAlign="spread" multipleRows="true">
-            <lightning:layoutItem padding="around-small" size="3" mediumDeviceSize="3"
-                                  largeDeviceSize="3"></lightning:layoutItem>
-            
-            <lightning:layoutItem padding="around-small" size="6" mediumDeviceSize="6"
-                                  largeDeviceSize="6">
+            <lightning:layoutItem padding="around-small" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small" size="6" mediumDeviceSize="6" largeDeviceSize="6">
                 <div align="center">
                     <aura:if isTrue="{!v.isInternalProposalManager}">
-                        <lightning:button variant="Neutral" label="{!$Label.c.Core_MDF_Activity_Recall_Nm}" value="{!$Label.c.Core_MDF_Activity_Recall_Nm}" disabled="{!v.disablebuttonName}" onclick="{!c.approvalAction}" />
+                        <lightning:button variant="Neutral" label="{!$Label.c.Core_MDF_Activity_Recall_Nm}"
+                            value="{!$Label.c.Core_MDF_Activity_Recall_Nm}" disabled="{!v.disablebuttonName}"
+                            onclick="{!c.approvalAction}" />
+                        <!-- <aura:if isTrue="{!v.loadSpinner}">
+                            <lightning:spinner alternative-text="Loading" size="large"></lightning:spinner>
+                        </aura:if> -->
                     </aura:if>
                     <aura:if isTrue="{!v.isExternalManager}">
-                        <lightning:button variant="Neutral" label="{!$Label.c.Core_MDF_Activity_Recall_Nm}" value="{!$Label.c.Core_MDF_Activity_Recall_Nm}" disabled="{!v.disablebuttonName}" onclick="{!c.approvalAction}" />
+                        <lightning:button variant="Neutral" label="{!$Label.c.Core_MDF_Activity_Recall_Nm}"
+                            value="{!$Label.c.Core_MDF_Activity_Recall_Nm}" disabled="{!v.disablebuttonName}"
+                            onclick="{!c.approvalAction}" />
+                        <!-- <aura:if isTrue="{!v.loadSpinner}">
+                            <lightning:spinner alternative-text="Loading" size="large"></lightning:spinner>
+                        </aura:if> -->
                     </aura:if>
                     <aura:if isTrue="{!v.externalUser}">
-                        <p id="header23" class="slds-text-heading--small headings"> {!$Label.c.Core_MDF_IPA_CustomerAcceptance}</p>
+                        <p id="header23" class="slds-text-heading--small headings">
+                            {!$Label.c.Core_MDF_IPA_CustomerAcceptance}</p>
                         <br></br>
-                        <lightning:button variant="Neutral"
-                                          label="{!$Label.c.Core_MDF_Retail_Approve}" value="{!$Label.c.Core_MDF_Retail_Approve}" onclick="{!c.approvalAction}" />
-                        <lightning:button variant="Neutral"
-                                          label="{!$Label.c.Core_MDF_Retail_Reject}" value="{!$Label.c.Core_MDF_Retail_Reject}" onclick="{!c.approvalAction}" />
+                        <lightning:button variant="Neutral" label="{!$Label.c.Core_MDF_Retail_Approve}"
+                            value="{!$Label.c.Core_MDF_Retail_Approve}" onclick="{!c.approvalAction}" />
+                        <lightning:button variant="Neutral" label="{!$Label.c.Core_MDF_Retail_Reject}"
+                            value="{!$Label.c.Core_MDF_Retail_Reject}" onclick="{!c.approvalAction}" />
                     </aura:if>
+
                     <aura:if isTrue="{!v.isPriceReviewer}">
                         <p class="slds-text-heading--small headings">
-                            Price Reviewer Acceptance</p>                        
-			<br></br>
-                        <lightning:button variant="Neutral"
-                                          label="{!$Label.c.Core_MDF_Retail_Approve}" value="{!$Label.c.Core_MDF_Retail_Approve}" onclick="{!c.approvalAction}" />
-                        <lightning:button variant="Neutral"
-                                          label="{!$Label.c.Core_MDF_Retail_Reject}" value="{!$Label.c.Core_MDF_Retail_Reject}" onclick="{!c.approvalAction}" />
-
+                            Price Reviewer Acceptance</p>
+                        <br></br>
+                        <lightning:button variant="Neutral" label="{!$Label.c.Core_MDF_Retail_Approve}"
+                            value="{!$Label.c.Core_MDF_Retail_Approve}" onclick="{!c.approvalAction}" />
+                        <lightning:button variant="Neutral" label="{!$Label.c.Core_MDF_Retail_Reject}"
+                            value="{!$Label.c.Core_MDF_Retail_Reject}" onclick="{!c.approvalAction}" />
                     </aura:if>
-		    <!-- Aditya -->
+
+                    <!-- Aditya -->
                     <aura:if isTrue="{!v.isBusinessApprover}">
                         <p class="slds-text-heading--small headings">
                             Business Approver Acceptance</p>
@@ -79,9 +93,10 @@
                         <lightning:button variant="Neutral" label="{!$Label.c.Core_MDF_Retail_Reject}"
                             value="{!$Label.c.Core_MDF_Retail_Reject}" onclick="{!c.approvalAction}" />
                     </aura:if>
-		    
+
                     <aura:if isTrue="{!v.isLegalReviewer}">
-                        <p id="header23" class="slds-text-heading--small headings">Legal Reviewer Acceptance</p>
+                        <p id="header23" class="slds-text-heading--small headings">
+                            Legal Reviewer Acceptance</p>
                         <br></br>
                         <lightning:button variant="Neutral" label="{!$Label.c.Core_MDF_Retail_Approve}"
                             value="{!$Label.c.Core_MDF_Retail_Approve}" onclick="{!c.approvalAction}" />
@@ -90,7 +105,8 @@
                     </aura:if>
 
                     <aura:if isTrue="{!v.isL2Approver}">
-                        <p id="header23" class="slds-text-heading--small headings">L2 Approver Acceptance</p>
+                        <p id="header23" class="slds-text-heading--small headings">
+                            L2 Approver Acceptance</p>
                         <br></br>
                         <lightning:button variant="Neutral" label="{!$Label.c.Core_MDF_Retail_Approve}"
                             value="{!$Label.c.Core_MDF_Retail_Approve}" onclick="{!c.approvalAction}" />
@@ -131,55 +147,62 @@
                     </aura:if>
 
                     <aura:if isTrue="{!v.isUserPORApprover}">
-                        <p id="header23" class="slds-text-heading--small headings">Program Office Reviewer Acceptance</p>
+                        <p id="header23" class="slds-text-heading--small headings">Program Office Reviewer Acceptance
+                        </p>
                         <br></br>
-                        <lightning:button variant="Neutral"
-                                          label="{!$Label.c.Core_MDF_Retail_Approve}" value="{!$Label.c.Core_MDF_Retail_Approve}" onclick="{!c.approvalAction}" />
-                        <lightning:button variant="Neutral"
-                                          label="{!$Label.c.Core_MDF_Retail_Reject}" value="{!$Label.c.Core_MDF_Retail_Reject}" onclick="{!c.approvalAction}" />
+                        <lightning:button variant="Neutral" label="{!$Label.c.Core_MDF_Retail_Approve}"
+                            value="{!$Label.c.Core_MDF_Retail_Approve}" onclick="{!c.approvalAction}" />
+                        <lightning:button variant="Neutral" label="{!$Label.c.Core_MDF_Retail_Reject}"
+                            value="{!$Label.c.Core_MDF_Retail_Reject}" onclick="{!c.approvalAction}" />
                     </aura:if>
-                    
+
                     <aura:if isTrue="{!v.isL1Approver}">
-                        <p id="header23" class="slds-text-heading--small headings"> {!$Label.c.Core_MDF_IPA_L1ApproverAcceptance}</p>
+                        <p id="header23" class="slds-text-heading--small headings">
+                            {!$Label.c.Core_MDF_IPA_L1ApproverAcceptance}</p>
                         <br></br>
                         <aura:if isTrue="{!!v.hideApproveButtonForL1orL2}">
-                            <lightning:button variant="Neutral"
-                                          label="{!$Label.c.Core_MDF_Retail_Approve}" value="{!$Label.c.Core_MDF_Retail_Approve}" onclick="{!c.approvalAction}" />
+                            <lightning:button variant="Neutral" label="{!$Label.c.Core_MDF_Retail_Approve}"
+                                value="{!$Label.c.Core_MDF_Retail_Approve}" onclick="{!c.approvalAction}" />
                         </aura:if>
-                        <lightning:button variant="Neutral"
-                                          label="{!$Label.c.Core_MDF_Retail_Reject}" value="{!$Label.c.Core_MDF_Retail_Reject}" onclick="{!c.approvalAction}" />
+                        <lightning:button variant="Neutral" label="{!$Label.c.Core_MDF_Retail_Reject}"
+                            value="{!$Label.c.Core_MDF_Retail_Reject}" onclick="{!c.approvalAction}" />
                     </aura:if>
-                    
+
                     <aura:if isTrue="{!v.isL2MarketingApprover}">
                         <p id="header23" class="slds-text-heading--small headings">L2 Regional Marketing Approval</p>
                         <br></br>
-                         <aura:if isTrue="{!!v.hideApproveButtonForL1orL2}">
-                        <lightning:button variant="Neutral"
-                                          label="{!$Label.c.Core_MDF_Retail_Approve}" value="{!$Label.c.Core_MDF_Retail_Approve}" onclick="{!c.approvalAction}" />
+                        <aura:if isTrue="{!!v.hideApproveButtonForL1orL2}">
+                            <lightning:button variant="Neutral" label="{!$Label.c.Core_MDF_Retail_Approve}"
+                                value="{!$Label.c.Core_MDF_Retail_Approve}" onclick="{!c.approvalAction}" />
                         </aura:if>
-                        <lightning:button variant="Neutral"
-                                          label="{!$Label.c.Core_MDF_Retail_Reject}" value="{!$Label.c.Core_MDF_Retail_Reject}" onclick="{!c.approvalAction}" />
+                        <!--<lightning:button variant="Neutral"
+                                          label="{!$Label.c.Core_MDF_Retail_Approve}" value="{!$Label.c.Core_MDF_Retail_Approve}" onclick="{!c.approvalAction}" />-->
+                        <lightning:button variant="Neutral" label="{!$Label.c.Core_MDF_Retail_Reject}"
+                            value="{!$Label.c.Core_MDF_Retail_Reject}" onclick="{!c.approvalAction}" />
                     </aura:if>
                     <aura:if isTrue="{!v.isL2SalesApprover}">
                         <p id="header23" class="slds-text-heading--small headings">L2 Regional Sales Approval</p>
                         <br></br>
-                         <aura:if isTrue="{!!v.hideApproveButtonForL1orL2}">
-                        <lightning:button variant="Neutral"
-                                          label="{!$Label.c.Core_MDF_Retail_Approve}" value="{!$Label.c.Core_MDF_Retail_Approve}" onclick="{!c.approvalAction}" />
-                         </aura:if>
-                        <lightning:button variant="Neutral"
-                                          label="{!$Label.c.Core_MDF_Retail_Reject}" value="{!$Label.c.Core_MDF_Retail_Reject}" onclick="{!c.approvalAction}" />
+                        <aura:if isTrue="{!!v.hideApproveButtonForL1orL2}">
+                            <lightning:button variant="Neutral" label="{!$Label.c.Core_MDF_Retail_Approve}"
+                                value="{!$Label.c.Core_MDF_Retail_Approve}" onclick="{!c.approvalAction}" />
+                        </aura:if>
+                        <!--<lightning:button variant="Neutral"
+                                          label="{!$Label.c.Core_MDF_Retail_Approve}" value="{!$Label.c.Core_MDF_Retail_Approve}" onclick="{!c.approvalAction}" />-->
+                        <lightning:button variant="Neutral" label="{!$Label.c.Core_MDF_Retail_Reject}"
+                            value="{!$Label.c.Core_MDF_Retail_Reject}" onclick="{!c.approvalAction}" />
                     </aura:if>
                 </div>
             </lightning:layoutItem>
-            
-            <lightning:layoutItem padding="around-small headings" size="3" mediumDeviceSize="3"
-                                  largeDeviceSize="3"></lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small headings" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+            </lightning:layoutItem>
         </lightning:layout>
     </aura:if>
     
     <aura:if isTrue="{!v.showApprovalCommentSection}">
-        <div role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-modal_small slds-slide-up-saving">
+        <div role="dialog" tabindex="-1" aria-labelledby="header43"
+            class="slds-modal slds-modal_small slds-slide-up-saving">
             <div class="slds-modal__container">
                 <!-- Heading (Header of the Modal) -->
                 <div class="slds-modal__header">
@@ -189,6 +212,7 @@
                         <lightning:icon iconName="utility:close" alternativeText="Close" size="small" />
                         <span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
                     </button>
+
                     <h1 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!v.commentType}
                     </h1>
                 </div>
@@ -209,8 +233,10 @@
                         </aura:if>
                     </aura:if>
                     <h2 id="header20" class="slds-text-heading--small">{!$Label.c.Core_MDF_IPA_Comments}</h2>
-                    <lightning:textarea required="false" value="{!v.approvalComments}" maxlength ="1000"/>
-                    <p class="slds-text-heading--small comments_charlimit_for_color">{!$Label.c.Core_MDF_Comments_CharLimit}</p>
+                    <lightning:textarea required="false" value="{!v.approvalComments}" maxlength="1000"
+                        aura:id="approvalComments"/>
+                    <p class="slds-text-heading--small comments_charlimit_for_color">
+                        {!$Label.c.Core_MDF_Comments_CharLimit}</p>
                     <aura:if isTrue="{!v.showDeclinePopupInd}">
                         <!-- showDeclinePopupInd Box starts here-->
                         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
@@ -257,10 +283,10 @@
                     <aura:if isTrue="{!v.loadSpinner}">
                         <lightning:spinner alternative-text="Loading" size="large"></lightning:spinner>
                     </aura:if>
-                </div>                
+                </div>
             </div>
         </div>
         <div aura:id="backdropIdForNewRecord" class="slds-backdrop slds-backdrop--open"></div>
-    </aura:if>	
-    
+    </aura:if>
+
 </aura:component>

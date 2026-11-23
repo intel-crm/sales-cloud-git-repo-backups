@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>SIEMENS RAIL AUTOMATION S.A.U. Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>SIEMENSRAILAUTOMATIONSAUCustomerManager</parentRole>
 </Role>

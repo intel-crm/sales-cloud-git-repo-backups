@@ -31,17 +31,22 @@ public  class Core_RestAPI_ProductCategoryV1_Handler{
     
     
     public Core_RestAPI_ProductCategoryV1_Handler(DateTime currTime, String APIname){
+        System.debug('GET_SUPPORTED_PRODUCT_ID -->'+GET_SUPPORTED_PRODUCT_ID );
+        System.debug('GET_PRODUCTS_CATEGORIES_SOQL'+GET_PRODUCTS_CATEGORIES_SOQL);
         this.entryTime = currTime;
         this.apiName= APIname;
         response.successContent = new List<ProductCategoriesWrapper>();
+        System.debug('Core_RestAPI_ProductCategoryV1_Handler  URI '+RestContext.request.requestURI  );
     }
     
     //Retrieve Product's categories and Sub Categories for the logged in User
     public Core_RestAPI_Response getCategoriesandSubCategories(){
         
+        System.debug(' Core_RestAPI_ProductCategoryV1_Handler getCategoriesandSubCategories Entered  \n ');
         try{
             //Validations if need to be handled in util class      
             boolean isRequestValid = doValidations();
+            System.debug('isRequestValid -->'+isRequestValid );
             //Process the api request
             if(isRequestValid == true){
                 processRequest(); 
@@ -51,21 +56,25 @@ public  class Core_RestAPI_ProductCategoryV1_Handler{
             Core_RestAPI_Util.processException( e, ERROR_CODE_500, response, apiName, entryTime); 
             
         }finally{ 
+            System.debug('Core_RestAPI_ProductCategoryV1_Handler Logging transaction and returning the response '+response);
             if(String.isBlank(response.code))
                 response.code = SUCCESS_CODE_200;
             Core_RestAPI_LoggingUtil.logTransaction(entryTime, response);
         }     
+        System.debug(' Core_RestAPI_ProductCategoryV1_Handler getCategoriesandSubCategories Exiting ');
         return response;
     } 
     
     //Validate the data , Incase of error set the error code to 
     @testVisible private Boolean doValidations(){
         
+        System.debug('Core_RestAPI_ProductCategoryV1_Handler doValidations Invoked '+PRODUCT_ID);
         Boolean isRequestValid = true;
         if (Core_RestAPI_Util.isProductIdValid(PRODUCT_ID)){
             Core_RestAPI_Util.processException(null ,MALFORMED_INPUT_9011, response, apiName, entryTime);
             isRequestValid = false;
         }else if(Core_RestAPI_Util.isRequestURIValid(ProductCategoryV1_URI) == false){
+            System.debug('inside isRequestValid ==>> '+isRequestValid );
             Core_RestAPI_Util.processException(null , INVALID_URI_404, response, apiName, entryTime);   
             isRequestValid = false;
         } 
@@ -74,12 +83,14 @@ public  class Core_RestAPI_ProductCategoryV1_Handler{
     //Execute the SOQL and populate the result to wrapper list objects
     public void processRequest(){
         
+        System.debug('Core_RestAPI_ProductCategoryV1_Handler processRequest Entering SOQL  \n '+GET_PRODUCTS_CATEGORIES_SOQL);
         Map<String, List<Core_IPS_Product_Issue_Category__c>> mProdIssueCat = new Map<String,List<Core_IPS_Product_Issue_Category__c>>();
         
         //Running the Query to get all categories and subcategories based on the product id
         List<Asset> objSupportedProductName = Database.query(GET_SUPPORTED_PRODUCT_ID);
         if(!objSupportedProductName.isEmpty()){
             SUPPORTED_PRODUCT_NAME = objSupportedProductName[0].Core_Supported_Product__r.Name; 
+            system.debug('SUPPORTED_PRODUCT_NAME  ==>> '+SUPPORTED_PRODUCT_NAME); 
             List<Core_IPS_Product_Issue_Category__c > lstProdIssueCat= Database.query(GET_PRODUCTS_CATEGORIES_SOQL);
             
             if(!lstProdIssueCat.isEmpty()){
@@ -109,6 +120,7 @@ public  class Core_RestAPI_ProductCategoryV1_Handler{
         }else{
             Core_RestAPI_Util.processException(null,MALFORMED_INPUT_9011 , response, apiName, entryTime); 
         }
+        System.debug('processRequest response.successContent '+response.successContent);
     }
     
     //IMPORTANT : Wrapper class must implement the interface Core_RestAPI_SuccessContent

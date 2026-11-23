@@ -1,0 +1,16 @@
+<messaging:emailTemplate subject="Notification: Number of Activities Closed" recipientType="User" >
+
+<messaging:htmlEmailBody >
+Dear Internal User,
+
+<p>This email is to notify you that we are closing the Activities for you as the end date has been exceeded.</p>
+
+<p>Please reach out to us incase you have any queries.</p>
+
+               
+Thank you,
+Program Team.
+
+
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

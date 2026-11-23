@@ -154,6 +154,19 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
+        <fullName>Core_MDF_Access_Type_nm__c</fullName>
+        <description>This field hold different access levels like profile, Permission Set, Custom Permissison etc.</description>
+        <label>Access Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Access_Type</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Active_Ind__c</fullName>
         <defaultValue>true</defaultValue>
         <description>This fields indicates whether selected Notification type is active or not.</description>
@@ -223,10 +236,6 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
-                <valueName>Core_MDF_CCP_Internal_Co_GTM_Business_Approver</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
                 <valueName>Core_MDF_CCP_Internal_IPA_Acct_Mgr</valueName>
             </valueSettings>
             <valueSettings>
@@ -244,6 +253,10 @@
             <valueSettings>
                 <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
                 <valueName>Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Internal_Co_GTM_Business_Approver</valueName>
             </valueSettings>
         </valueSet>
         <visibleLines>3</visibleLines>
@@ -267,6 +280,45 @@
                 <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
                 <valueName>System Administrator</valueName>
             </valueSettings>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Applicable_Role_nm__c</fullName>
+        <description>This field holds applicable Profile,Permission Sets,Custom Permission etc.</description>
+        <label>Applicable Role</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Subscription_PermissionSets_nm</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Conflict_CustomPermissions_nm__c</fullName>
+        <label>Conflict Custom Permissions</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Subs_Custom_Permissions_nm</valueSetName>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Conflict_PermissionSet_Grp_nm__c</fullName>
+        <label>Conflict Permission Set Groups</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Subs_PermissionSet_Grp_nm</valueSetName>
         </valueSet>
         <visibleLines>3</visibleLines>
     </fields>
@@ -317,6 +369,58 @@
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Emulation_CustomPermissions_nm__c</fullName>
+        <label>Emulation Custom Permission</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Subs_Custom_Permissions_nm</valueSetName>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Emulation_Pemission_Set_nm__c</fullName>
+        <label>Emulation Permission Set</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Subscription_PermissionSets_nm</valueSetName>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Emulation_PermissionSet_Grp_nm__c</fullName>
+        <label>Emulation Permission Set Groups</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Subs_PermissionSet_Grp_nm</valueSetName>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Emulation_Profiles_nm__c</fullName>
+        <label>Emulation Profile</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Subscription_Profiles_nm</valueSetName>
+        </valueSet>
+        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Core_MDF_Help_Text_txt__c</fullName>
@@ -469,11 +573,16 @@
             <restricted>true</restricted>
             <valueSetName>Core_MDF_Notification_Type</valueSetName>
             <valueSettings>
+                <controllingFieldValue>CS - Case</controllingFieldValue>
+                <valueName>CASE_WKLY_EMAIL_CLM_SCR</valueName>
+            </valueSettings>
+            <valueSettings>
                 <controllingFieldValue>PFC - PartnerFundClaim</controllingFieldValue>
                 <valueName>PFC_PIC_FAIL_RWC</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>PFC - PartnerFundClaim</controllingFieldValue>
+                <controllingFieldValue>REC - Recovery</controllingFieldValue>
                 <valueName>PFC_CLM_SCR</valueName>
             </valueSettings>
             <valueSettings>
@@ -491,10 +600,6 @@
             <valueSettings>
                 <controllingFieldValue>PFR - PartnerFundRequest</controllingFieldValue>
                 <valueName>PFR_REM_FOR_UNCLM_ACTS</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CS - Case</controllingFieldValue>
-                <valueName>CASE_WKLY_EMAIL_CLM_SCR</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>REC - Recovery</controllingFieldValue>
@@ -587,6 +692,41 @@
         <active>true</active>
         <label>Subscription Based Notification Record Type</label>
         <picklistValues>
+            <picklist>Core_MDF_Access_Type_nm__c</picklist>
+            <values>
+                <fullName>CRM - Custom Permission</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CRM - Permission Set</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CRM - Permission Set Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CRM - Profile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comarketing - Custom Permission</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comarketing - Permission Set</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comarketing - Permission Set Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comarketing - Profile</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Core_MDF_Applicable_CustomPermissions_nm__c</picklist>
             <values>
                 <fullName>Core_MDF_Internal_CSC_User</fullName>
@@ -646,10 +786,6 @@
                 <fullName>Core_MDF_CCP_RMF_PRC_Claim_Operations</fullName>
                 <default>false</default>
             </values>
-            <values>
-                <fullName>Core_MDF_Internal_CSC_User</fullName>
-                <default>false</default>
-            </values>
         </picklistValues>
         <picklistValues>
             <picklist>Core_MDF_Applicable_Profiles_nm__c</picklist>
@@ -663,14 +799,175 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Core_MDF_Conflict_PermissionSets_nm__c</picklist>
+            <picklist>Core_MDF_Applicable_Role_nm__c</picklist>
+            <values>
+                <fullName>Core_MDF_CCP_CSC_Claim_Submitter</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_CCF_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_Claim_Case_Reviewer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_DCF_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_IPA_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_Retail_Account_Manager</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_RMF_PRC_Claim_Operations</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Conflict_CustomPermissions_nm__c</picklist>
             <values>
                 <fullName>Core_MDF_Internal_CSC_User</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Core_MDF_Conflict_PermissionSet_Grp_nm__c</picklist>
+            <values>
+                <fullName>Core_MDF_Claim_Case_Reviewer_Manager_Group</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Conflict_PermissionSets_nm__c</picklist>
+            <values>
+                <fullName>Core_MDF_CCP_CSC_Claim_Submitter</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_CCF_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_Claim_Case_Reviewer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_DCF_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_IPA_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_Retail_Account_Manager</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_RMF_PRC_Claim_Operations</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Core_MDF_Conflict_Profiles_nm__c</picklist>
+            <values>
+                <fullName>IT Admin</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>System Administrator</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Emulation_CustomPermissions_nm__c</picklist>
+            <values>
+                <fullName>Core_MDF_Internal_CSC_User</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Emulation_Pemission_Set_nm__c</picklist>
+            <values>
+                <fullName>Core_MDF_CCP_CSC_Claim_Submitter</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_CCF_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_Claim_Case_Reviewer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_DCF_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_IPA_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_Retail_Account_Manager</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_RMF_PRC_Claim_Operations</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Emulation_PermissionSet_Grp_nm__c</picklist>
+            <values>
+                <fullName>Core_MDF_Claim_Case_Reviewer_Manager_Group</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Emulation_Profiles_nm__c</picklist>
             <values>
                 <fullName>IT Admin</fullName>
                 <default>false</default>
@@ -734,10 +1031,6 @@
             </values>
             <values>
                 <fullName>Core_MDF_CCP_RMF_PRC_Claim_Operations</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Core_MDF_Internal_CSC_User</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

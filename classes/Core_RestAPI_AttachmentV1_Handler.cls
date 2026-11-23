@@ -7,7 +7,7 @@
 * ---------------------------------------------------------------------------------------------------------------------------------------
 * Hayata Takeshita         12/02/2018               Handler class  for uploading a single attachment
 *****************************************************************************************************************************************/
-public with sharing class Core_RestAPI_AttachmentV1_Handler{
+public with sharing class Core_RestAPI_AttachmentV1_Handler {
     private DateTime entryTime = null;
     private String apiName; 
     
@@ -22,8 +22,8 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
     private static final String ATTACHMENT_VISIBILITY = 'Public to Customers';
     private static final String ATTACHMENT_TYPE = 'Attachment';
     private static final String ATTACHMENT_UPLOAD_STATUS = 'Complete';
-    private static final String SFT_APP_NAME = Label.SFT_APP_NAME;
-    private static final String SFT_DESTINATION_FILEPATH = Label.SFT_DESTINATION_FILEPATH;    
+    private static final String SFT_APP_NAME = 'IPS_SCFT';
+    private static final String SFT_DESTINATION_FILEPATH = '/SCFT_Repo';    
     
     private static final String ERROR_CODE_500 = '500';
     private static final String ERROR_CODE_503 = '503';
@@ -46,16 +46,16 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
     private Core_RestAPI_AttachmentV1_Wrapper objAttachmentParams = null;
     
     //Default constructor
-    public Core_RestAPI_AttachmentV1_Handler (DateTime currTime, String aPIname, Core_RestAPI_AttachmentV1_Wrapper requestParams) {
+    public Core_RestAPI_AttachmentV1_Handler (DateTime currTime, String APIname, Core_RestAPI_AttachmentV1_Wrapper requestParams) {
         this.entryTime = currTime;
         this.apiName = APIname;
         this.objAttachmentParams = requestParams;
-        
+        System.debug('Core_RestAPI_AttachmentV1_Handler URI '+RestContext.request.requestURI  );
     }
     
     //Create attachment for the given case number
     public Core_RestAPI_Response createAttachment(){
-        
+        System.debug(' Core_RestAPI_AttachmentV1_Handler createAttachment Entered  \n ');
         
         try{
             //process all validations and skip processing the request if validations fails.
@@ -64,7 +64,6 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
                 Core_RestAPI_Util.processException(null , validationErrorCode, response, apiName, entryTime, objAttachmentParams);
                 response.errorContent.errorMessage += validationErrorMessage;
             } else {
-                
                 processRequest();
             }
         }catch(SFT_Internal_Exception e){
@@ -74,19 +73,19 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
             response.successContent = null;
             Core_RestAPI_Util.processException(e, ERROR_CODE_500, response, apiName, entryTime , objAttachmentParams );
         }finally{
-            
+            System.debug(' Core_RestAPI_AttachmentV1_Handler Logging transaction and returning the response '+response);
             if(String.isBlank(response.code))
                 response.code = SUCCESS_CODE_200;
             Core_RestAPI_LoggingUtil.logTransaction(entryTime, response);
             
         } 
-        
+        System.debug(' Core_RestAPI_AttachmentV1_Handler createAttachment Exiting ');
         return response;
     }
     
     //Validate the data , Incase of error set the error code to 
     @testVisible private Boolean doValidations() {
-        
+        System.debug('createLargeAttachment doValidations Invoked ');
         Boolean isRequestValid = true;
 
         if(isValidFilename(objAttachmentParams.Filename) == false) {
@@ -101,7 +100,7 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
             validationErrorMessage = ': Description was empty or exceeded the max length of ' + MAX_FILE_DESCRIPTION_LENGTH;
         }
         
-        
+        system.debug(' CASE_NUMBER: ' + CASE_NUMBER);
         if(!CASE_NUMBER.isNumeric() ) {
             isRequestValid = false;
             validationErrorCode = MALFORMED_INPUT_9011;
@@ -138,7 +137,7 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
     
     //add attachment to case.
     public void processRequest(){
-        
+        System.debug(' Core_RestAPI_AttachmentV1_Handler processRequest');
         List<Core_IPS_Case_Attachments__c> lAttach = new List<Core_IPS_Case_Attachments__c>();
 
         //isValidCase should already have been called during validations.  This is for safety.
@@ -146,7 +145,7 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
         
         //objCase will be not null if contact's account matches user's account.
         if(objCase != null) {
-            
+            system.debug(' Core_RestAPI_AttachmentV1_Handler processRequest Create Attachment For: ' + objCase.Id);
             Core_IPS_Case_Attachments__c oAttach = createAttachmentRecord(true);
             
             callSFTMoveFile(oAttach);        
@@ -159,9 +158,9 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
                                                                        oAttach.Core_File_GUID__c,
                                                                        objCase.Id});
 
-                
+                system.debug(' insert oAttach');
                 insert oAttach;
-                                
+                
                 Id idAttach = oAttach.Id;
                 for(Core_IPS_Case_Attachments__c oAtt : Database.Query(GET_ATTACHMENT_SOQL)) {
                     CaseAttachmentWrapper oAttachWrpr = new CaseAttachmentWrapper();
@@ -172,22 +171,26 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
         }
 
         response.successContent = lAttachWrpr;
-        
+        system.debug(' response.successContent: ' + response.successContent);
 
         if(response.successContent != null && response.successContent.isEmpty()) {
             Core_RestAPI_Util.processException(null, ERROR_CODE_500, response, apiName, entryTime);
         }
         
-        
+        System.debug(' >> processRequest response.successContent '+response.successContent);
     }
     
     @TestVisible private boolean callSFTMoveFile(Core_IPS_Case_Attachments__c oAttach) {
-    
-        
+        system.debug(' Using MoveFile');
         boolean isSuccess = false;
-        /*--START --US-US1018637-- 01-05-2021 -- Farooq -- change from old callout to APIGEE--*/
-        String strSourceFilePath = objCase.Contact.Account.Core_IPS_SFT_Partner_Path__c; 
+        Core_System_Credentials__c sObjRecSystemCred = Core_System_Credentials__c.getValues('Core_SFT_MoveFile');
+        String strUsername = sObjRecSystemCred.Core_UserName__c;
+        String strPassword = sObjRecSystemCred.Core_Password__c;
+        String strEndpoint = sObjRecSystemCred.Core_End_Point_URL__c;
+
+        String strSourceFilePath = objCase.Contact.Account.Core_IPS_SFT_Partner_Path__c;
         String strSourceFileName = objAttachmentParams.filename;
+        
         String strBody = '{' +
                             '"AppName": "' + SFT_APP_NAME + '",' +
                             '"SourceFilePath": "' + strSourceFilePath + '",' +
@@ -199,52 +202,57 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
         
         strBody = strBody + '"DestinationFilePath": "' + SFT_DESTINATION_FILEPATH + '"}';
         
+        system.debug('strEndpoint: ' + strEndpoint);
+        system.debug('strBody: ' + strBody);
+
+        Http h = new Http();
+        HttpRequest req = new HttpRequest();
+        req.setMethod('POST');
         
-	String ips_Myintel_EndPoint = 'callout:Core_SFT_MoveFile_NamedCred'; //TWC745-6469-IPS Named Credentials chnage
-            Http http = new Http();
-            HttpRequest request = new HttpRequest();
-            request.setEndpoint(ips_Myintel_EndPoint);
-            request.setMethod('POST');
-            
-            request.setHeader('Content-Type', 'application/json');
-            request.setBody(strBody);
-            HttpResponse response = http.send(request);
-            String resBody = response.getBody();
-            
-            JSONParser parser = JSON.createParser(response.getBody());
-            ResponseMoveFile oMoveFile = null;
-            oMoveFile = (ResponseMoveFile)JSON.deserialize(resBody, ResponseMoveFile.class);
-            
-            if (response.getStatusCode() == 200) {  // successful
-                if(String.isEmpty(oMoveFile.message) == true) {  //if Message has a value, there was an error.
-                    isSuccess = true;
-                    oAttach.Core_File_GUID__c = oMoveFile.destinationFileName;
-                    
-                    if(String.isEmpty(oMoveFile.fileSize) == false) {
-                        oAttach.Core_File_Size__c = fileSizeToString(Long.valueOf(oMoveFile.fileSize));    
-                    }
-                } else { //there was an error
-                    throw new SFT_Internal_Exception('SFT MoveFile returned: ' + oMoveFile.message + ' in Core_RestAPI_AttachmentV1_Handler.callSFTMoveFile');
+        req.setEndpoint(strEndpoint);
+
+        Blob basicAuth = Blob.valueOf(strUsername+ ':' + strPassword);
+        String authorizationHeader = 'Basic ' + EncodingUtil.base64Encode(basicAuth);
+        system.debug(' authorizationHeader: ' + authorizationHeader);
+        req.setHeader('Authorization', authorizationHeader);
+        req.setHeader('Content-Type', 'application/json');
+//        system.debug(' req.Header: ' + req.getHeader('Authorization'));
+//        system.debug(' req.Header: ' + req.getHeader('Content-Type'));
+
+        req.setBody(strBody);
+        
+        HttpResponse res = h.send(req);
+        system.debug('res: ' + res.toString());
+        String resBody = res.getBody();
+        system.debug('resBody: ' + resBody);
+        
+        JSONParser parser = JSON.createParser(res.getBody());
+        responseMoveFile oMoveFile = null;
+        oMoveFile = (responseMoveFile)JSON.deserialize(resBody, responseMoveFile.class);
+        system.debug(' oMoveFile: ' + oMoveFile);
+        if (res.getStatusCode() == 200) {  // successful
+            if(String.isEmpty(oMoveFile.Message) == true) {  //if Message has a value, there was an error.
+                isSuccess = true;
+                oAttach.Core_File_GUID__c = oMoveFile.DestinationFileName;
+                
+                if(String.isEmpty(oMoveFile.FileSize) == false) {
+                    oAttach.Core_File_Size__c = fileSizeToString(Long.valueOf(oMoveFile.FileSize));    
                 }
-            } else { //http.send was not successful
-                throw new SFT_Internal_Exception('SFT MoveFile returned with HTTP Status: ' + response.getStatusCode() +
-                                                 'and Status: ' + response.getStatus() + ' in Core_RestAPI_AttachmentV1_Handler.callSFTMoveFile');
-            }          
-            
-        
-        //HttpResponse res = h.send(req);
-        
-        
+            } else { //there was an error
+                throw new SFT_Internal_Exception('SFT MoveFile returned: ' + oMoveFile.Message + ' in Core_RestAPI_AttachmentV1_Handler.callSFTMoveFile');
+            }
+        } else { //http.send was not successful
+            throw new SFT_Internal_Exception('SFT MoveFile returned with HTTP Status: ' + res.getStatusCode() +
+                                            'and Status: ' + res.getStatus() + ' in Core_RestAPI_AttachmentV1_Handler.callSFTMoveFile');
+        }
 
         return isSuccess;
     }
     
     @TestVisible private Core_IPS_Case_Attachments__c createAttachmentRecord(boolean createFileGUID) {
-    
         Core_IPS_Case_Attachments__c oAttach = new Core_IPS_Case_Attachments__c();
-        if (Schema.sObjectType.Core_IPS_Case_Attachments__c.fields.Core_Case__c.isCreateable()) {// Fls Create fix - Gangadhar
-        	oAttach.Core_Case__c = objCase.Id;
-        }
+        oAttach.Core_Case__c = objCase.Id;
+
         oAttach.Core_File_Name__c = objAttachmentParams.filename;
         oAttach.Core_File_Description__c = objAttachmentParams.fileDescription;
         oAttach.Core_Last_Status_Updated_At__c = System.now();
@@ -258,7 +266,7 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
             oAttach.Core_File_GUID__c = (CASE_NUMBER + '-' + (DateTime.now()).getTime()  + '-' + oAttach.Core_File_Name__c.replaceAll(' ', '-')).left(MAX_FILE_GUID_LENGTH);
         }
 
-        
+        system.debug(' Core_IPS_Case_Attachments__c createAttachmentRecord oAttach: ' + oAttach);
         return oAttach;
     }
 
@@ -292,11 +300,11 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
         Case objCaseFound = null;
         
         //GET_CASE_SOQL returns record if contact's account matches user's account
-
+        system.debug( ' GET_CASE_SOQL: '+ GET_CASE_SOQL);
         for(Case cs : Database.Query(GET_CASE_SOQL))  //there should only be one case
         {
             objCaseFound = cs;
-
+            system.debug(' Case is valid.');
         }
         
         if(objCaseFound == null) {
@@ -329,7 +337,7 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
                 idUserAccount = u.Contact.Account.Id;
             }
         }
-
+        system.debug(' getAccountIdOfUser: ' + idUserAccount);
         
         return idUserAccount;
     }

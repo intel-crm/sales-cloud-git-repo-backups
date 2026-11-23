@@ -8,10 +8,6 @@
         <label>Fields</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>PRM_Notes__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Name</field>
             </layoutItems>
@@ -20,7 +16,7 @@
                 <field>PRM_Account__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>PRM_Active__c</field>
             </layoutItems>
             <layoutItems>
@@ -41,9 +37,6 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
-    <miniLayout>
-        <fields>PRM_Notes__c</fields>
-    </miniLayout>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
@@ -53,7 +46,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h2i000000LGps</masterLabel>
+        <masterLabel>00h2i000000SBAg</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

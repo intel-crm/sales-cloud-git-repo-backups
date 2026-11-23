@@ -6,9 +6,123 @@
                     <!--<lightning-card title={campaignPurposeHeader}>-->
                     <lightning-card title={tableHeader}>
                         <div class="slds-scrollable_x">
+                            <!-- CCF/DCF Business and Marketing tables -->
+                            <template if:true={data.isCcfDcfPurpose}>
+
+                                <!-- Runs once when only one purpose exists.
+                                    Runs twice when Business and Marketing both exist. -->
+                                <template for:each={purposeRows} for:item="purposeRow">
+
+                                    <div
+                                        key={purposeRow.rowKey}
+                                        class="slds-p-horizontal_small slds-p-bottom_large">
+
+                                        <!-- Business Purpose or Marketing Purpose -->
+                                        <h3 class="slds-text-heading_small slds-p-top_medium slds-p-bottom_small">
+                                            {purposeRow.purposeLabel}
+                                        </h3>
+
+                                        <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-m-top_small">
+                                            <thead>
+                                                <tr>
+                                                    <!-- Outcome Type column is not displayed -->
+
+                                                    <th>{data.outcomeMetricLabel}</th>
+
+                                                    <th>
+                                                        <div class="slds-grid slds-grid_vertical-align-center">
+                                                            <span>
+                                                                {data.baselineQuantityLabel}
+                                                            </span>
+
+                                                            <lightning-helptext
+                                                                if:true={data.baselineQuantityHelpText}
+                                                                content={data.baselineQuantityHelpText}
+                                                                class="slds-p-bottom_xx-small slds-m-left_xx-small">
+                                                            </lightning-helptext>
+                                                        </div>
+                                                    </th>
+
+                                                    <th>
+                                                        <div class="slds-grid slds-grid_vertical-align-center">
+                                                            <span>
+                                                                {data.goalQuantityLabel}
+                                                            </span>
+
+                                                            <lightning-helptext
+                                                                if:true={data.goalQuantityHelpText}
+                                                                content={data.goalQuantityHelpText}
+                                                                class="slds-p-bottom_xx-small slds-m-left_xx-small">
+                                                            </lightning-helptext>
+                                                        </div>
+                                                    </th>
+
+                                                    <th>
+                                                        <div class="slds-grid slds-grid_vertical-align-center">
+                                                            <span>
+                                                                {data.quantityToDateLabel}
+                                                            </span>
+
+                                                            <lightning-helptext
+                                                                if:true={data.quantityToDateHelpText}
+                                                                content={data.quantityToDateHelpText}
+                                                                class="slds-p-bottom_xx-small slds-m-left_xx-small">
+                                                            </lightning-helptext>
+                                                        </div>
+                                                    </th>
+
+                                                    <th>
+                                                        <div class="slds-grid slds-grid_vertical-align-center">
+                                                            <span>
+                                                                {data.baselinePeriodLabel}
+                                                            </span>
+
+                                                            <lightning-helptext
+                                                                if:true={data.baselinePeriodHelpText}
+                                                                content={data.baselinePeriodHelpText}
+                                                                class="slds-p-bottom_xx-small slds-m-left_xx-small">
+                                                            </lightning-helptext>
+                                                        </div>
+                                                    </th>
+
+                                                    <th>
+                                                        <div class="slds-grid slds-grid_vertical-align-center">
+                                                            <span>
+                                                                {data.resultValueLabel}
+                                                            </span>
+
+                                                            <lightning-helptext
+                                                                if:true={data.resultValueHelpText}
+                                                                content={data.resultValueHelpText}
+                                                                class="slds-p-bottom_xx-small slds-m-left_xx-small">
+                                                            </lightning-helptext>
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr>
+                                                    <td>{purposeRow.outcomeMetric}</td>
+                                                    <td>{purposeRow.baselineQuantity}</td>
+                                                    <td>{purposeRow.goalQuantity}</td>
+                                                    <td>{purposeRow.quantityToDate}</td>
+                                                    <td>{purposeRow.baselinePeriod}</td>
+                                                    <td>{purposeRow.resultValue}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </template>
+                            </template>
+                        <template if:false={data.isCcfDcfPurpose}>
                         <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-m-top_small">
                             <thead>
                                 <tr>
+                                    <template if:true={data.isCcfDcfPurpose}>
+                                        <th>{data.outcomeTypeLabel}</th>
+                                    </template>
                                     <th>{data.outcomeMetricLabel}</th>
                                     <th>
                                         <div class="slds-grid slds-grid_vertical-align-center">
@@ -34,14 +148,16 @@
                                             <lightning-helptext if:true={data.quantityToDateHelpText} content={data.quantityToDateHelpText} class="slds-p-bottom_xx-small slds-m-left_xx-small"></lightning-helptext>
                                         </div>
                                     </th>
-                                    <th>
-                                        <div class="slds-grid slds-grid_vertical-align-center">
-                                            <span>
-                                                {data.outcomeCriteriaLabel}
-                                            </span>
-                                            <lightning-helptext if:true={data.outcomeCriteriaHelpText} content={data.outcomeCriteriaHelpText} class="slds-p-bottom_xx-small slds-m-left_xx-small"></lightning-helptext>
-                                        </div>                      
-                                    </th>
+                                    <template if:false={data.isCcfDcfPurpose}>
+                                        <th>
+                                            <div class="slds-grid slds-grid_vertical-align-center">
+                                                <span>
+                                                    {data.outcomeCriteriaLabel}
+                                                </span>
+                                                <lightning-helptext if:true={data.outcomeCriteriaHelpText} content={data.outcomeCriteriaHelpText} class="slds-p-bottom_xx-small slds-m-left_xx-small"></lightning-helptext>
+                                            </div>
+                                        </th>
+                                    </template>
                                     <th>
                                         <div class="slds-grid slds-grid_vertical-align-center">
                                             <span>
@@ -50,17 +166,31 @@
                                             <lightning-helptext if:true={data.baselinePeriodHelpText} content={data.baselinePeriodHelpText} class="slds-p-bottom_xx-small slds-m-left_xx-small"></lightning-helptext>
                                         </div>                      
                                     </th>
-                                    <th>
+                                    <!--<th>
                                         <div class="slds-grid slds-grid_vertical-align-center">
                                             <span>
                                                 {data.resultValueLabel}
                                             </span>
                                             <lightning-helptext if:true={data.resultValueHelpText} content={data.resultValueHelpText} class="slds-p-bottom_xx-small slds-m-left_xx-small"></lightning-helptext>
                                         </div>                      
-                                    </th>
+                                    </th>-->
                                 </tr>
                             </thead>
                             <tbody>
+                            <template if:true={data.isCcfDcfPurpose}>
+                                <template for:each={data.purposeRows} for:item="purposeRow">
+                                    <tr key={purposeRow.rowKey}>
+                                        <td>{purposeRow.outcomeTypeLabel}</td>
+                                        <td>{purposeRow.outcomeMetric}</td>
+                                        <td>{purposeRow.baselineQuantity}</td>
+                                        <td>{purposeRow.goalQuantity}</td>
+                                        <td>{purposeRow.quantityToDate}</td>
+                                        <td>{purposeRow.baselinePeriod}</td>
+                                        <td>{purposeRow.resultValue}</td>
+                                    </tr>
+                                </template>
+                            </template>
+                            <template if:false={data.isCcfDcfPurpose}>
                                 <tr>
                                     <td>{data.outcomeMetric}</td>
                                     <td>{data.baselineQuantity}</td>
@@ -70,8 +200,10 @@
                                     <td>{data.baselinePeriod}</td>
                                     <td>{data.resultValue}</td>
                                 </tr>
-                            </tbody>
+                            </template>
+                        </tbody>
                         </table>
+                        </template>
                         </div>
                     </lightning-card>
                 </div>

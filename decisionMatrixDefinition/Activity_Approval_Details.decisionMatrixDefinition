@@ -53,7 +53,7 @@
             <displaySequence>8</displaySequence>
             <isWildcardColumn>false</isWildcardColumn>
             <name>AmountRange</name>
-            <rangeValue>0,25000,50000,150000,250000,1000000</rangeValue>
+            <rangeValue>0,25000,50000,150000,250000,251111,500000,1000000</rangeValue>
         </columns>
         <columns>
             <columnType>Input</columnType>

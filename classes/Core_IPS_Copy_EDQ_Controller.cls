@@ -26,14 +26,11 @@ public with sharing class Core_IPS_Copy_EDQ_Controller {
     }
     
     public void init() {
-        if(objSupProd==null || objSupProd.Id==null) { ErrorMessage = 'Invalid URL !!';
-	    return;
-	}
+        if(objSupProd==null || objSupProd.Id==null) { ErrorMessage = 'Invalid URL !!'; return; }
         
         UserRecordAccess objUserRecAccess = [SELECT RecordId,HasEditAccess FROM UserRecordAccess WHERE UserId=:UserInfo.getUserId() AND RecordId=:objSupProd.Id];
         if(objUserRecAccess==null || objUserRecAccess.HasEditAccess!=true) {
-            ErrorMessage = 'You dont have access to Copy Environment Details !!';
-	    return;
+            ErrorMessage = 'You dont have access to Copy Environment Details !!'; return;
         }
         
         //Get all supported products from same support org
@@ -45,38 +42,32 @@ public with sharing class Core_IPS_Copy_EDQ_Controller {
     //Copy environment details to the selected supported product. Called from Visualforce
     public Pagereference copyDetails() {
         if(String.isBlank(selectedSupProd)) {
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.SEVERITY.ERROR, 'Please select a Supported Product'));
-	    return null;
+             ApexPages.addMessage(new ApexPages.Message(ApexPages.SEVERITY.ERROR, 'Please select a Supported Product')); return null;
         }
         Savepoint sp = Database.setSavepoint();
         try {
             //Get Environment Details Operational
-             // SOQL Injection Fix - Start -  Shipra
-            Map<String, Object> bindMap = new Map<String, Object>{ 'supportProdId' => objSupProd.Id, 'Status' => 'Active'};
             String queryEDO = 'SELECT ' + getAllFieldStr(Core_IPS_Assigned_Environment_Variables__c.SobjectType) +
-                			  ' FROM Core_IPS_Assigned_Environment_Variables__c WHERE Core_Supported_Product__c= :supportProdId AND Core_Status__c= :Status ORDER BY Name';
-            List<Core_IPS_Assigned_Environment_Variables__c> lstEDO = Database.queryWithBinds(queryEDO, bindMap,AccessLevel.USER_MODE);
+                			  ' FROM Core_IPS_Assigned_Environment_Variables__c WHERE Core_Supported_Product__c=\''+objSupProd.Id+'\' AND Core_Status__c=\'Active\' ORDER BY Name';
+            
+            List<Core_IPS_Assigned_Environment_Variables__c> lstEDO = Database.query(queryEDO);
+            
             //Get Case Categories
-
             String queryCaseCategories = 'SELECT ' + getAllFieldStr(Core_IPS_Product_Issue_Category__c.SobjectType) +
                 						 //',(SELECT ' + getAllFieldStr(Core_IPS_Product_Issue_Category__c.SobjectType) + ' FROM Product_Issue_Sub_Categories__r ORDER BY Name)' +
-                			  			 ' FROM Core_IPS_Product_Issue_Category__c WHERE Core_Supported_Product__c= :supportProdId AND Core_Status__c= :Status ORDER BY Name';
-     
-            List<Core_IPS_Product_Issue_Category__c> lstCaseCat = Database.queryWithBinds(queryCaseCategories, bindMap,AccessLevel.USER_MODE);
-
-            //Get Case SubCategories
-            Map<String, Object> bindMap2 = new Map<String, Object>{  'Status' => 'Active','caseList' =>lstCaseCat};
-
-            String queryCaseSubCategories = 'SELECT ' + getAllFieldStr(Core_IPS_Product_Issue_Category__c.SobjectType) +
-                						 ',(SELECT ' + getAllFieldStr(Core_IPS_Assigned_Environment_Variables__c.SobjectType) + ' FROM Environment_Detail_Operationals__r WHERE Core_Status__c= :Status ORDER BY Name)' +
-                			  			 ' FROM Core_IPS_Product_Issue_Category__c WHERE Core_Product_Issue_Category__c IN :caseList AND Core_Status__c= :Status ORDER BY Name';
+                			  			 ' FROM Core_IPS_Product_Issue_Category__c WHERE Core_Supported_Product__c=\''+objSupProd.Id+'\' AND Core_Status__c=\'Active\' ORDER BY Name';
+                        
+            List<Core_IPS_Product_Issue_Category__c> lstCaseCat = Database.query(queryCaseCategories);
             
-            List<Core_IPS_Product_Issue_Category__c> lstCaseSubCat = Database.queryWithBinds(queryCaseSubCategories, bindMap2,AccessLevel.USER_MODE);
-             // SOQL Injection Fix - End -  Shipra
-
+            //Get Case SubCategories
+            String queryCaseSubCategories = 'SELECT ' + getAllFieldStr(Core_IPS_Product_Issue_Category__c.SobjectType) +
+                						 ',(SELECT ' + getAllFieldStr(Core_IPS_Assigned_Environment_Variables__c.SobjectType) + ' FROM Environment_Detail_Operationals__r WHERE Core_Status__c=\'Active\' ORDER BY Name)' +
+                			  			 ' FROM Core_IPS_Product_Issue_Category__c WHERE Core_Product_Issue_Category__c IN :lstCaseCat AND Core_Status__c=\'Active\' ORDER BY Name';
+            
+            List<Core_IPS_Product_Issue_Category__c> lstCaseSubCat = Database.query(queryCaseSubCategories);
+            
             if((lstEDO==null || lstEDO.size()==0) && (lstCaseCat==null || lstCaseCat.size()==0)) {
-                ApexPages.addMessage(new ApexPages.Message(ApexPages.SEVERITY.ERROR, 'No Environment Details and Case Categories present to Copy !!'));
-		return null;
+                ApexPages.addMessage(new ApexPages.Message(ApexPages.SEVERITY.ERROR, 'No Environment Details and Case Categories present to Copy !!')); return null;
             }
             
             //delete existing Environment details & Case Category,Sub Category
@@ -140,8 +131,7 @@ public with sharing class Core_IPS_Copy_EDQ_Controller {
             return new Pagereference('/' + selectedSupProd);
             
         } catch(Exception ex) {
-            Database.rollback(sp);
-	    ApexPages.addMessage(new ApexPages.message(ApexPages.Severity.ERROR, ex.getMessage()));       
+            Database.rollback(sp); ApexPages.addMessage(new ApexPages.message(ApexPages.Severity.ERROR, ex.getMessage())); system.debug(ex.getStackTraceString());            
         }
         return null;
     }

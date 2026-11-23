@@ -37,30 +37,6 @@
         <masterLabel>Owner Complete</masterLabel>
         <scale>0</scale>
     </aggregates>
-    <chart>
-        <backgroundColor1>#FFFFFF</backgroundColor1>
-        <backgroundColor2>#FFFFFF</backgroundColor2>
-        <backgroundFadeDir>Diagonal</backgroundFadeDir>
-        <chartSummaries>
-            <axisBinding>y</axisBinding>
-            <column>FORMULA1</column>
-        </chartSummaries>
-        <chartType>HorizontalBar</chartType>
-        <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>true</expandOthers>
-        <groupingColumn>User.Core_User_Geo__c</groupingColumn>
-        <location>CHART_BOTTOM</location>
-        <showAxisLabels>true</showAxisLabels>
-        <showPercentage>false</showPercentage>
-        <showTotal>false</showTotal>
-        <showValues>false</showValues>
-        <size>Medium</size>
-        <summaryAxisRange>Auto</summaryAxisRange>
-        <textColor>#000000</textColor>
-        <textSize>12</textSize>
-        <titleColor>#000000</titleColor>
-        <titleSize>18</titleSize>
-    </chart>
     <columns>
         <field>ACCOUNT.NAME</field>
     </columns>
@@ -70,22 +46,7 @@
     <columns>
         <field>Account.Core_Account_Team_Audit_Due_Date__c</field>
     </columns>
-    <filter>
-        <criteriaItems>
-            <column>User.Core_User_Geo__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>User.Core_User_Geo__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>USERS.NAME</field>
@@ -99,13 +60,13 @@
         <value>1</value>
     </params>
     <reportType>AccountList</reportType>
-    <scope>team</scope>
+    <scope>organization</scope>
     <showDetails>false</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Account.Core_Account_Team_Audit_Due_Date__c</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2020-04-14</startDate>
+        <startDate>2019-04-17</startDate>
     </timeFrameFilter>
 </Report>

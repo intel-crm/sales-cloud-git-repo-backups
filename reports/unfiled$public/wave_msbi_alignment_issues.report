@@ -13,7 +13,7 @@
         <field>Opportunity.Core_Commissionable__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>User.Core_User_Geo__c</field>
@@ -35,7 +35,7 @@
             <value>006o000000ErZjK,006o000000Gl7iH,006o000000JPxvz,006o000000Namxw,006o000000NX36R,006o000000NXsfh,006o000000NYPri,006o000000NYZpA,006o000000NZ85q,006o000000OP7tS,006o000000OPF9F,006o000000OPGPh,006o000000OPIH3</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>

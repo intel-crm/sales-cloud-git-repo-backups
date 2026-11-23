@@ -16,64 +16,12 @@
             <translation><!-- AFSDP Download Portal --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Activating Partner Activity Submitter</masterLabel>
-            <translation><!-- Activating Partner Activity Submitter --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Activating Partner Budget Administrator</masterLabel>
-            <translation><!-- Activating Partner Budget Administrator --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Activating Partner Claim Submitter</masterLabel>
-            <translation><!-- Activating Partner Claim Submitter --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Activating Partner Recovery Administrator</masterLabel>
-            <translation><!-- Activating Partner Recovery Administrator --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Activating Partner User Admin</masterLabel>
-            <translation><!-- Activating Partner User Admin --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Activating Partner View Only</masterLabel>
-            <translation><!-- Activating Partner View Only --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Advanced Shipment and Invoice Notification</masterLabel>
             <translation><!-- Advanced Shipment and Invoice Notification --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Auto Expedite Tool</masterLabel>
             <translation><!-- Auto Expedite Tool --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>AutoEnt001</masterLabel>
-            <translation><!-- AutoEnt001 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>AutoEnt002</masterLabel>
-            <translation><!-- AutoEnt002 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>AutoEnt005</masterLabel>
-            <translation><!-- AutoEnt005 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Auto_Entitlement_Test_039</masterLabel>
-            <translation><!-- Auto_Entitlement_Test_039 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Auto_Entitlement_Test_043</masterLabel>
-            <translation><!-- Auto_Entitlement_Test_043 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Auto_Entitlement_Test_044</masterLabel>
-            <translation><!-- Auto_Entitlement_Test_044 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Auto_Entitlement_Test_053</masterLabel>
-            <translation><!-- Auto_Entitlement_Test_053 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>CCF Boost Account Budget Administrator</masterLabel>
@@ -108,52 +56,12 @@
             <translation><!-- CCF Boost User Administrator --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>CDM External Submitter</masterLabel>
-            <translation><!-- CDM External Submitter --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>CDM Third party Consumption Data Submitter</masterLabel>
-            <translation><!-- CDM Third party Consumption Data Submitter --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>CTO_Portal_Disti</masterLabel>
             <translation><!-- CTO_Portal_Disti --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>CTO_Portal_Reseller</masterLabel>
             <translation><!-- CTO_Portal_Reseller --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Channel MDF Activity Submitter</masterLabel>
-            <translation><!-- Channel MDF Activity Submitter --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Channel MDF Claim Submitter</masterLabel>
-            <translation><!-- Channel MDF Claim Submitter --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Channel MDF Content Viewer</masterLabel>
-            <translation><!-- Channel MDF Content Viewer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Channel MDF Reports Viewer</masterLabel>
-            <translation><!-- Channel MDF Reports Viewer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Channel MDF User</masterLabel>
-            <translation><!-- Channel MDF User --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Channel MDF User Administrator</masterLabel>
-            <translation><!-- Channel MDF User Administrator --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Channel MDF View Only</masterLabel>
-            <translation><!-- Channel MDF View Only --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Claim Submitter</masterLabel>
-            <translation><!-- Claim Submitter --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Client Account Budget Administrator</masterLabel>
@@ -166,6 +74,10 @@
         <picklistValues>
             <masterLabel>Client Claim Submitter</masterLabel>
             <translation><!-- Client Claim Submitter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Claim Submitter1</masterLabel>
+            <translation><!-- Client Claim Submitter1 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Client External Content Viewer</masterLabel>
@@ -192,36 +104,32 @@
             <translation><!-- Client User Administrator --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Cloud Community User</masterLabel>
-            <translation><!-- Cloud Community User --></translation>
+            <masterLabel>Co-Inv Claim Submitter</masterLabel>
+            <translation><!-- Co-Inv Claim Submitter --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Co-Engineering Budget Administrator</masterLabel>
-            <translation><!-- Co-Engineering Budget Administrator --></translation>
+            <masterLabel>Co-Inv External View Only User</masterLabel>
+            <translation><!-- Co-Inv External View Only User --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Co-Engineering Claim Submitter</masterLabel>
-            <translation><!-- Co-Engineering Claim Submitter --></translation>
+            <masterLabel>Co-Inv User</masterLabel>
+            <translation><!-- Co-Inv User --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Co-Engineering External View Only</masterLabel>
-            <translation><!-- Co-Engineering External View Only --></translation>
+            <masterLabel>Configure Price Quote-Basic Disti User</masterLabel>
+            <translation><!-- Configure Price Quote-Basic Disti User --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Co-Engineering Project Approver</masterLabel>
-            <translation><!-- Co-Engineering Project Approver --></translation>
+            <masterLabel>Configure Price Quote-Direct User</masterLabel>
+            <translation><!-- Configure Price Quote-Direct User --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Co-Engineering Project Submitter</masterLabel>
-            <translation><!-- Co-Engineering Project Submitter --></translation>
+            <masterLabel>Configure Price Quote-Full Disti User</masterLabel>
+            <translation><!-- Configure Price Quote-Full Disti User --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Co-Engineering User</masterLabel>
-            <translation><!-- Co-Engineering User --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Co-Engineering User Administrator</masterLabel>
-            <translation><!-- Co-Engineering User Administrator --></translation>
+            <masterLabel>Configure Price Quote-Reseller User</masterLabel>
+            <translation><!-- Configure Price Quote-Reseller User --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Customer Beta Software Download Portal</masterLabel>
@@ -232,16 +140,8 @@
             <translation><!-- Customer IDT Uploader and Downloader User --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Customer IDT User</masterLabel>
-            <translation><!-- Customer IDT User --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Customer Sales Order Reporting</masterLabel>
             <translation><!-- Customer Sales Order Reporting --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>DCIF Admin User</masterLabel>
-            <translation><!-- DCIF Admin User --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Datacenter Account Budget Administrator</masterLabel>
@@ -280,14 +180,6 @@
             <translation><!-- Datacenter User Administrator --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Deal Incentive User</masterLabel>
-            <translation><!-- Deal Incentive User --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Deal Reg Financial Incentive Access</masterLabel>
-            <translation><!-- Deal Reg Financial Incentive Access --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Design Solutions Network</masterLabel>
             <translation><!-- Design Solutions Network --></translation>
         </picklistValues>
@@ -300,12 +192,8 @@
             <translation><!-- Distribution Sales Out Channel Management Reporting --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>EEF User</masterLabel>
-            <translation><!-- EEF User --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EPS Verified Company</masterLabel>
-            <translation><!-- EPS Verified Company --></translation>
+            <masterLabel>EGF User</masterLabel>
+            <translation><!-- EGF User --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Electronic Order Acknowledgement</masterLabel>
@@ -320,88 +208,12 @@
             <translation><!-- External Channel Management Reporting --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>External View Only</masterLabel>
-            <translation><!-- External View Only --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>FPGA Community User</masterLabel>
-            <translation><!-- FPGA Community User --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IOT Community User</masterLabel>
-            <translation><!-- IOT Community User --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IPA Activity Manager (Account Plan MDF)</masterLabel>
-            <translation><!-- IPA Activity Manager (Account Plan MDF) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IPA Claim Submitter</masterLabel>
-            <translation><!-- IPA Claim Submitter --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IPA Claim Submitter (Account Plan MDF)</masterLabel>
-            <translation><!-- IPA Claim Submitter (Account Plan MDF) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IPA Claim Submitter (Proposal MDF)</masterLabel>
-            <translation><!-- IPA Claim Submitter (Proposal MDF) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IPA Distributor User</masterLabel>
-            <translation><!-- IPA Distributor User --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IPA External View Only (Account Plan MDF)</masterLabel>
-            <translation><!-- IPA External View Only (Account Plan MDF) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IPA External View Only (Proposal MDF)</masterLabel>
-            <translation><!-- IPA External View Only (Proposal MDF) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IPA MDF User</masterLabel>
-            <translation><!-- IPA MDF User --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IPA Proposal Manager (Proposal MDF)</masterLabel>
-            <translation><!-- IPA Proposal Manager (Proposal MDF) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IPA Recovery Administrator (Account Plan MDF)</masterLabel>
-            <translation><!-- IPA Recovery Administrator (Account Plan MDF) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IPA Recovery Administrator (Proposal MDF)</masterLabel>
-            <translation><!-- IPA Recovery Administrator (Proposal MDF) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IPA Titanium User</masterLabel>
-            <translation><!-- IPA Titanium User --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel Developer Cloud Enterprise</masterLabel>
-            <translation><!-- Intel Developer Cloud Enterprise --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel On Demand Purchase Agent – VLS Test</masterLabel>
-            <translation><!-- Intel On Demand Purchase Agent – VLS Test --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Intel Partner FAE</masterLabel>
             <translation><!-- Intel Partner FAE --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel Premier Support</masterLabel>
             <translation><!-- Intel Premier Support --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel Solutions Library</masterLabel>
-            <translation><!-- Intel Solutions Library --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel Solutions Library Partner NDA</masterLabel>
-            <translation><!-- Intel Solutions Library Partner NDA --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel-Led Co-Marketing Program</masterLabel>
@@ -436,40 +248,8 @@
             <translation><!-- Military &amp; Government Advanced Technology and Design Portal --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>MyTest123</masterLabel>
-            <translation><!-- MyTest123 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ODM Early Access Program</masterLabel>
-            <translation><!-- ODM Early Access Program --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>ODM/Price Mask</masterLabel>
             <translation><!-- ODM/Price Mask --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>OLO ChAMP Label Orderer</masterLabel>
-            <translation><!-- OLO ChAMP Label Orderer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>OLO Intel Subcontractor</masterLabel>
-            <translation><!-- OLO Intel Subcontractor --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>OLO Intel Super Subcontractor</masterLabel>
-            <translation><!-- OLO Intel Super Subcontractor --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>OLO Label Orderer</masterLabel>
-            <translation><!-- OLO Label Orderer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>OLO S-OEM Label Orderer</masterLabel>
-            <translation><!-- OLO S-OEM Label Orderer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>OLO Subcontractor</masterLabel>
-            <translation><!-- OLO Subcontractor --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Offering Editor</masterLabel>
@@ -488,32 +268,12 @@
             <translation><!-- Order Status &amp; Shipment Tracking --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>PSG Disti Quoting Access</masterLabel>
-            <translation><!-- PSG Disti Quoting Access --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PSG External AFSDP Download v2</masterLabel>
-            <translation><!-- PSG External AFSDP Download v2 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PSG Licensing User</masterLabel>
-            <translation><!-- PSG Licensing User --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Partner Admin</masterLabel>
             <translation><!-- Partner Admin --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Partner Admin Delegate</masterLabel>
-            <translation><!-- Partner Admin Delegate --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Partner Portal</masterLabel>
             <translation><!-- Partner Portal --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Partner Portal - DDR</masterLabel>
-            <translation><!-- Partner Portal - DDR --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Partner Portal - Disti Design Registration</masterLabel>
@@ -528,40 +288,8 @@
             <translation><!-- Partner Portal - Leads --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Partner Portal- Deal Reg</masterLabel>
-            <translation><!-- Partner Portal- Deal Reg --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Platform Diagnostics External Upload</masterLabel>
-            <translation><!-- Platform Diagnostics External Upload --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Platform Verification Program (PVP) access</masterLabel>
-            <translation><!-- Platform Verification Program (PVP) access --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Points Redeem</masterLabel>
-            <translation><!-- Points Redeem --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Points View</masterLabel>
-            <translation><!-- Points View --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Price Masking Order Status/Shipping Info</masterLabel>
             <translation><!-- Price Masking Order Status/Shipping Info --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Primary Partner Activity Approver</masterLabel>
-            <translation><!-- Primary Partner Activity Approver --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Primary Partner User Admin</masterLabel>
-            <translation><!-- Primary Partner User Admin --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Primary Partner View Only</masterLabel>
-            <translation><!-- Primary Partner View Only --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Product Information (Price and Availability) Includes WOM Product Details</masterLabel>
@@ -570,42 +298,6 @@
         <picklistValues>
             <masterLabel>Product Information (Product Details)</masterLabel>
             <translation><!-- Product Information (Product Details) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Proposal Manager</masterLabel>
-            <translation><!-- Proposal Manager --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Quote Request Customer Drafter Access</masterLabel>
-            <translation><!-- Quote Request Customer Drafter Access --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Quote Request Customer Drafter Limited Access</masterLabel>
-            <translation><!-- Quote Request Customer Drafter Limited Access --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Quote Request Customer Full Access</masterLabel>
-            <translation><!-- Quote Request Customer Full Access --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Quote Request Customer Limited Access</masterLabel>
-            <translation><!-- Quote Request Customer Limited Access --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Quote Request Customer Read-only Access</masterLabel>
-            <translation><!-- Quote Request Customer Read-only Access --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Quote Request Customer Region Access</masterLabel>
-            <translation><!-- Quote Request Customer Region Access --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Quote Request Customer Standard Access</masterLabel>
-            <translation><!-- Quote Request Customer Standard Access --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Quote Request User</masterLabel>
-            <translation><!-- Quote Request User --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>RMF External Activity Approver</masterLabel>
@@ -628,20 +320,12 @@
             <translation><!-- RMF External View Only --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>RMF Recovery Administrator</masterLabel>
-            <translation><!-- RMF Recovery Administrator --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>RMF Special Reports Viewer</masterLabel>
             <translation><!-- RMF Special Reports Viewer --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>RMF User</masterLabel>
             <translation><!-- RMF User --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>RPS_Agency(Marketing Studio)</masterLabel>
-            <translation><!-- RPS_Agency(Marketing Studio) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Resource &amp; Design Center Collaboration Workspaces</masterLabel>
@@ -662,66 +346,6 @@
         <picklistValues>
             <masterLabel>Return Services Request</masterLabel>
             <translation><!-- Return Services Request --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Return for Credit (R4C)</masterLabel>
-            <translation><!-- Return for Credit (R4C) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SDSi Purchase Agent - LIV – external</masterLabel>
-            <translation><!-- SDSi Purchase Agent - LIV – external --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SDSi Purchase Agent - SBX- external</masterLabel>
-            <translation><!-- SDSi Purchase Agent - SBX- external --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SEP Blue Angels</masterLabel>
-            <translation><!-- SEP Blue Angels --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SEP Business Management</masterLabel>
-            <translation><!-- SEP Business Management --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SEP External DFAEs</masterLabel>
-            <translation><!-- SEP External DFAEs --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SEP MSVP for AP Authorized Distribution Users</masterLabel>
-            <translation><!-- SEP MSVP for AP Authorized Distribution Users --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SEP MSVP for AP Authorized SalesReps</masterLabel>
-            <translation><!-- SEP MSVP for AP Authorized SalesReps --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SEP MSVP for EU Authorized Distribution Users</masterLabel>
-            <translation><!-- SEP MSVP for EU Authorized Distribution Users --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SEP MSVP for EU Authorized SalesReps</masterLabel>
-            <translation><!-- SEP MSVP for EU Authorized SalesReps --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SEP MSVP for JP Authorized Distribution Users</masterLabel>
-            <translation><!-- SEP MSVP for JP Authorized Distribution Users --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SEP MSVP for JP Authorized SalesReps</masterLabel>
-            <translation><!-- SEP MSVP for JP Authorized SalesReps --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SEP MSVP for NA Authorized Distribution Users</masterLabel>
-            <translation><!-- SEP MSVP for NA Authorized Distribution Users --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SEP MSVP for NA Authorized SalesReps</masterLabel>
-            <translation><!-- SEP MSVP for NA Authorized SalesReps --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SEP Standard Price List</masterLabel>
-            <translation><!-- SEP Standard Price List --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>SPCF Account Budget Administrator</masterLabel>
@@ -760,8 +384,8 @@
             <translation><!-- Sales Enablement Portal --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Sales Order Management IBR</masterLabel>
-            <translation><!-- Sales Order Management IBR --></translation>
+            <masterLabel>Stand Alone Retail user</masterLabel>
+            <translation><!-- Stand Alone Retail user --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Supply Assurance (includes Order Placement Role and e-Ack)</masterLabel>
@@ -772,62 +396,13 @@
             <translation><!-- Technology Sandbox --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Test Entitlement for Failure</masterLabel>
-            <translation><!-- Test Entitlement for Failure --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>TestEnt01234</masterLabel>
-            <translation><!-- TestEnt01234 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>TestEnt012345</masterLabel>
-            <translation><!-- TestEnt012345 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>TestQA_1</masterLabel>
-            <translation><!-- TestQA_1 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Test_Automation</masterLabel>
-            <translation><!-- Test_Automation --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Test_Ent_01</masterLabel>
-            <translation><!-- Test_Ent_01 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Warranty Requestor</masterLabel>
-            <translation><!-- Warranty Requestor --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Web Ticketing</masterLabel>
-            <translation><!-- Web Ticketing --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Web Ticketing &amp; Return for Credit Dual</masterLabel>
-            <translation><!-- Web Ticketing &amp; Return for Credit Dual --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WebQuote Disti (create / manage quotes in Webquote or XIRIS)</masterLabel>
-            <translation><!-- WebQuote Disti (create / manage quotes in Webquote or XIRIS) --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>WebQuote for Distributor</masterLabel>
             <translation><!-- WebQuote for Distributor --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>XIRIS Disti Reporting</masterLabel>
-            <translation><!-- XIRIS Disti Reporting --></translation>
         </picklistValues>
     </fields>
     <fields>
         <label><!-- Profile Id --></label>
         <name>Core_Profile_Id__c</name>
-    </fields>
-    <fields>
-        <help><!-- If an email notification is sent to the requester for an A&amp;E status, enable the checkbox. --></help>
-        <label><!-- Send Notification? --></label>
-        <name>Core_Send_Notification_Ind__c</name>
     </fields>
     <fields>
         <label><!-- User Type --></label>
@@ -837,16 +412,8 @@
             <translation><!-- CCF Boost User Administrator --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Channel MDF User Administrator</masterLabel>
-            <translation><!-- Channel MDF User Administrator --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Client User Administrator</masterLabel>
             <translation><!-- Client User Administrator --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Co-Engineering User Administrator</masterLabel>
-            <translation><!-- Co-Engineering User Administrator --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Datacenter User Administrator</masterLabel>

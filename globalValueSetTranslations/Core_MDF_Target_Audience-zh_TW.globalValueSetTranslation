@@ -10,7 +10,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Business Owners/SMB</masterLabel>
-        <translation><!-- Business Owners/SMB --></translation>
+        <translation>企業主/中小企業 </translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Business owners</masterLabel>
@@ -50,7 +50,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>DIY</masterLabel>
-        <translation><!-- DIY --></translation>
+        <translation>DIY</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Developer</masterLabel>
@@ -223,6 +223,10 @@
     <valueTranslation>
         <masterLabel>Technical Influencer</masterLabel>
         <translation>技術影響力權威</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Test LOV Target Audience</masterLabel>
+        <translation><!-- Test LOV Target Audience --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Unmanaged Small Business</masterLabel>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>VAT Claim details</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>Approval Requests</actionButtonLabel>
+        <actionButtonLink>https://intel--crmdevccp.lightning.force.com/lightning/o/ProcessInstanceWorkitem/list?filterName=00Bo0000002lSkWEAU</actionButtonLink>
+        <body>&lt;p&gt;1.How to identify Claim is Eligible for VAT?&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Once claim is created for UK country, on claim detail page you can see &apos;VAT hold&apos; checkbox for VAT eligible claim&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;img src=&quot;https://intel--CRMDEVCCP--c.documentforce.com/servlet/rtaImage?refid=0EMg0000000qBXP&quot; alt=&quot;image.png&quot;&gt;&lt;/p&gt;&lt;p&gt;2.How to Navigate to VAT Record?&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Goto related section of claim , you will find VAT section.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;img src=&quot;https://intel--CRMDEVCCP--c.documentforce.com/servlet/rtaImage?refid=0EMg0000000qBXZ&quot; alt=&quot;image.png&quot;&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;3.Where to find the Pending VAT Approvals&lt;/p&gt;&lt;p&gt;. Click on below &apos;Approval Request&apos; Button&lt;/p&gt;</body>
+        <customApplication>Core_MDF_CoMarketing</customApplication>
+        <delayDays>1</delayDays>
+        <displayType>DockedComposer</displayType>
+        <endDate>2020-11-30</endDate>
+        <header>Claim</header>
+        <isPublished>false</isPublished>
+        <masterLabel>VAT Claim details</masterLabel>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2020-11-11</startDate>
+        <targetPageKey1>PartnerFundClaim</targetPageKey1>
+        <targetPageKey2>view</targetPageKey2>
+        <targetPageType>standard__recordPage</targetPageType>
+        <themeColor>Theme1</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>10</timesToDisplay>
+        <title>Claim Functionality</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

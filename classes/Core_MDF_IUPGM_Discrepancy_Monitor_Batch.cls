@@ -64,7 +64,8 @@ global with sharing class Core_MDF_IUPGM_Discrepancy_Monitor_Batch implements Da
             Set<String> budgetTypeSet = new Set<String>();
             Map<String,Id> accProgGeoGrpIdSetMap = new Map<String,Id>();
             Map<String,Set<Id>> accProgGeoUserIdSetMap = new Map<String,Set<Id>>();
-            Map<Id,Set<Id>> groupIdToUserIdSetMap = new Map<Id,Set<Id>>();
+            // Highlight: Unused Local Variable - 14285
+            // Map<Id,Set<Id>> groupIdToUserIdSetMap = new Map<Id,Set<Id>>();
             Set<String> groupIdUserIdSet = new Set<String>();
             Map<String,Map<Id,List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>>> iupgmKeyToUserIdToRecordMap = new Map<String,Map<Id,List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>>>(); //
             List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> missingPGMList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
@@ -74,12 +75,12 @@ global with sharing class Core_MDF_IUPGM_Discrepancy_Monitor_Batch implements Da
             Map<String, Core_MDF_Partner_Group_Mapping__c> keyToPGMRecordMap = new Map<String, Core_MDF_Partner_Group_Mapping__c>();
             List<contentWrapper> contentWrapperLst = new List<contentWrapper>();
             
-            
-            String accProgGeoBudTypeKey = '';
+            // Highlight: Unused Local Variable - 14285
+            // String accProgGeoBudTypeKey = '';
             Set<Id> userIdSet = new Set<Id>();
             Set<Id> groupIdSet = new Set<Id>();
-            
-            Map<Id,Group> groupIdToGroupMap = new Map<Id,Group>();
+            // Highlight: Unused Local Variable - 14285
+            // Map<Id,Group> groupIdToGroupMap = new Map<Id,Group>();
             
             for(Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm : iupgmObjList){
                 Set<String> geoSubGeoSet =  new Set<String>();
@@ -98,7 +99,11 @@ global with sharing class Core_MDF_IUPGM_Discrepancy_Monitor_Batch implements Da
                 }
                 
                 if(iupgm.Core_MDF_Budget_Type_nm__c != null){ // budget type exists
-                    if(iupgm.Core_MDF_GeoSubGeo_Budget_Type_nm__c != null){
+                    // Nested IF reduction: guard for blank/null to avoid deep nesting and unsafe splits - US - TWC702-14285
+                    if (String.isBlank(iupgm.Core_MDF_GeoSubGeo_Budget_Type_nm__c)) {
+                        // no-op: behavior matches previous null-check (skip inner processing)
+                        continue; //US - TWC702-14285
+                    } 
                         for(String geoBudgetTypeStr : iupgm.Core_MDF_GeoSubGeo_Budget_Type_nm__c.split(';')){
                             String geo = geoBudgetTypeStr.split('->')[0] ;                             
                             String budgetType = geoBudgetTypeStr.split('->')[1] ;
@@ -123,7 +128,7 @@ global with sharing class Core_MDF_IUPGM_Discrepancy_Monitor_Batch implements Da
                                 iupgmKeyToUserIdToRecordMap.put(accProgGeoKey, userIdToIUPGMListMap); // {001g0000024cdfQQZ;Intel Partner Alliance;APJ;ProposalI:{UserID:{IUPGM1, IUPGM2}}}
                             }
                         }
-                    }
+                    
                 }
                 else{ // without budget type keys
                     for(String geo : geoSubGeoSet){
@@ -162,23 +167,25 @@ global with sharing class Core_MDF_IUPGM_Discrepancy_Monitor_Batch implements Da
                                                              AND Core_MDF_Region_cd__c IN : regionSet
                                                              AND Core_MDF_Type_Of_Access__c = 'Internal'
                                                              AND Core_MDF_Inactive_Ind__c = FALSE]){
-                                                                 
-                                                                 String accProgGeoBudTypePGMKey = '';
+                                                                 // Highlight: Unused Local Variable - 14285
+                                                                 // String accProgGeoBudTypePGMKey = '';
                                                                  String accProgGeoPGMKey = '';
                                                                  if(pgm.Core_MDF_BudgetType_nm__c != NULL){
-                                                                     if(budgetTypeSet.contains(pgm.Core_MDF_BudgetType_nm__c)){ 
-                                                                         accProgGeoPGMKey = pgm.Core_MDF_Account__c + ';' +pgm.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c + ';' + pgm.Core_MDF_Region_cd__c +'-'+ pgm.Core_MDF_Sub_Region_cd__c + ';' + pgm.Core_MDF_BudgetType_nm__c;                               
-                                                                         //if sub region is null, then -null has to be removed 
-                                                                         if(accProgGeoPGMKey.contains('-null')){                               
-                                                                             accProgGeoPGMKey = accProgGeoPGMKey.remove('-null');
-                                                                         }
-                                                                         if(pgm.Core_MDF_Group_id__c != null){
-                                                                             accProgGeoGrpIdSetMap.put(accProgGeoPGMKey, pgm.Core_MDF_Group_id__c);// {001g0000024cdfQQZ;Intel Partner Alliance;APJ;ProposalI:{GroupId1}, 001g0000024cdfQQZ;Intel Partner Alliance;EMEA,ProposalI:{GroupId2}}
-                                                                         }
-                                                                         if(accProgGeoPGMKey != null && accProgGeoPGMKey != '' && pgm != null && !keyToPGMRecordMap.containsKey(accProgGeoPGMKey)){ 
-                                                                             keyToPGMRecordMap.put(accProgGeoPGMKey, pgm);
-                                                                         }  
-                                                                     }                           
+                                                                     // Early-continue guard to reduce nesting and avoid empty-if - US - TWC702-14285
+                                                                     if(!budgetTypeSet.contains(pgm.Core_MDF_BudgetType_nm__c)) {
+                                                                         continue; //US - TWC702-14285
+                                                                     }
+                                                                     accProgGeoPGMKey = pgm.Core_MDF_Account__c + ';' +pgm.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c + ';' + pgm.Core_MDF_Region_cd__c +'-'+ pgm.Core_MDF_Sub_Region_cd__c + ';' + pgm.Core_MDF_BudgetType_nm__c;                               
+                                                                     //if sub region is null, then -null has to be removed 
+                                                                     if(accProgGeoPGMKey.contains('-null')){                               
+                                                                         accProgGeoPGMKey = accProgGeoPGMKey.remove('-null');
+                                                                     }
+                                                                     if(pgm.Core_MDF_Group_id__c != null){
+                                                                         accProgGeoGrpIdSetMap.put(accProgGeoPGMKey, pgm.Core_MDF_Group_id__c);// {001g0000024cdfQQZ;Intel Partner Alliance;APJ;ProposalI:{GroupId1}, 001g0000024cdfQQZ;Intel Partner Alliance;EMEA,ProposalI:{GroupId2}}
+                                                                     }
+                                                                     if(accProgGeoPGMKey != null && accProgGeoPGMKey != '' && pgm != null && !keyToPGMRecordMap.containsKey(accProgGeoPGMKey)){ 
+                                                                         keyToPGMRecordMap.put(accProgGeoPGMKey, pgm);
+                                                                     }  
                                                                  }
                                                                  else{          
                                                                      accProgGeoPGMKey = pgm.Core_MDF_Account__c + ';' + pgm.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c + ';' + pgm.Core_MDF_Region_cd__c +'-'+ pgm.Core_MDF_Sub_Region_cd__c;                             
@@ -211,34 +218,36 @@ global with sharing class Core_MDF_IUPGM_Discrepancy_Monitor_Batch implements Da
                                       groupIdUserIdSet.add(gm.GroupId+ ';' +gm.UserOrGroupId);
                                       }
             }
-            
+            ////US - TWC702-14285
             for(String accProgGeoKey : accProgGeoUserIdSetMap.keySet()){
-                if(accProgGeoGrpIdSetMap.containsKey(accProgGeoKey)){ //PGM Exists
-                    if(accProgGeoGrpIdSetMap.get(accProgGeoKey) != null){ // Group Id Exists
-                        for(Id userId : accProgGeoUserIdSetMap.get(accProgGeoKey)){
-                            String groupIdUserId = accProgGeoGrpIdSetMap.get(accProgGeoKey) + ';' + userId;
-                            if(!groupIdUserIdSet.contains(groupIdUserId)){ // sheet for missing group member
-                                if(iupgmKeyToUserIdToRecordMap.get(accProgGeoKey).containsKey(userId)){
-                                    missingGrpMemberList.addAll(iupgmKeyToUserIdToRecordMap.get(accProgGeoKey).get(userId));
-                                    keySet.add(accProgGeoKey);
-                                }
-                            }
-                        }
-                    }
-                    else{ // sheet where PGM presnt Group Not present
-                        if(iupgmKeyToUserIdToRecordMap.containsKey(accProgGeoKey)){
-                            missingGroupList.addAll(iupgmKeyToUserIdToRecordMap.get(accProgGeoKey).values()[0]);
-                            keySet.add(accProgGeoKey);
+                // Simplified nested IF structure using guard clauses for the specific statement requested - //US - TWC702-14285
+                if(!accProgGeoGrpIdSetMap.containsKey(accProgGeoKey)&& iupgmKeyToUserIdToRecordMap.containsKey(accProgGeoKey)
+                 && iupgmKeyToUserIdToRecordMap.get(accProgGeoKey) != null){ //Sheet for Missing PGM 
+                   // if(iupgmKeyToUserIdToRecordMap.containsKey(accProgGeoKey) && iupgmKeyToUserIdToRecordMap.get(accProgGeoKey) != null){
+                        missingPGMList.addAll(iupgmKeyToUserIdToRecordMap.get(accProgGeoKey).values()[0]);
+                    //}
+                    continue; //US - TWC702-14285
+                }
+                
+                // PGM Exists - now flattened to avoid the nested if statement
+                Id groupId = accProgGeoGrpIdSetMap.get(accProgGeoKey);
+                if(groupId != null){ // Group Id Exists - replaced the nested if with direct check
+                    for(Id userId : accProgGeoUserIdSetMap.get(accProgGeoKey)){
+                        String groupIdUserId = groupId + ';' + userId;
+                        if(!groupIdUserIdSet.contains(groupIdUserId)&& iupgmKeyToUserIdToRecordMap.get(accProgGeoKey).containsKey(userId)){ // sheet for missing group member
+                            //if(iupgmKeyToUserIdToRecordMap.get(accProgGeoKey).containsKey(userId)){
+                                missingGrpMemberList.addAll(iupgmKeyToUserIdToRecordMap.get(accProgGeoKey).get(userId));
+                                keySet.add(accProgGeoKey);
+                           // }
                         }
                     }
                 }
-                else{ //Sheet for Missing PGM 
+                else{ // sheet where PGM present Group Not present
                     if(iupgmKeyToUserIdToRecordMap.containsKey(accProgGeoKey)){
-                        if(iupgmKeyToUserIdToRecordMap.containsKey(accProgGeoKey) && iupgmKeyToUserIdToRecordMap.get(accProgGeoKey) != null){
-                            missingPGMList.addAll(iupgmKeyToUserIdToRecordMap.get(accProgGeoKey).values()[0]);
-                        }
+                        missingGroupList.addAll(iupgmKeyToUserIdToRecordMap.get(accProgGeoKey).values()[0]);
+                        keySet.add(accProgGeoKey);
                     }
-                } 
+                }
             }
             
             if(!missingGrpMemberList.isEmpty() && keyToPGMRecordMap != null){
@@ -399,30 +408,35 @@ Description         : This method creates file based on progam.
                     List<String> geoList = iupgmRecord.Core_MDF_Region_Sub_Region_nm__c.split(';');
                     geoSubGeoSet.addAll(new Set<String>(geoList));
                 }
+                //US - TWC702-14285
                 if(iupgmRecord.Core_MDF_Budget_Type_nm__c != null){ // budget type exists
-                    if(iupgmRecord.Core_MDF_GeoSubGeo_Budget_Type_nm__c != null){
-                        for(String geoBudgetTypeStr : iupgmRecord.Core_MDF_GeoSubGeo_Budget_Type_nm__c.split(';')){
-                            String geo = geoBudgetTypeStr.split('->')[0] ;                             
-                            String budgetType = geoBudgetTypeStr.split('->')[1] ;
-                            accProgGeoKey = iupgmRecord.Core_MDF_Account_id__c + ';' + iupgmRecord.Core_MDF_Program_nm__c + ';' + geo + ';' + budgetType; // 001g0000024cdfQQZ;Intel Partner Alliance;APJ;ProposalI
+                    // Guard clause to avoid nested IF and improve readability
+                    if(iupgmRecord.Core_MDF_GeoSubGeo_Budget_Type_nm__c == null) {
+                        // Skip processing if no geo budget type data
+                        continue; //US - TWC702-14285
+                    }
+                    
+                    for(String geoBudgetTypeStr : iupgmRecord.Core_MDF_GeoSubGeo_Budget_Type_nm__c.split(';')){
+                        String geo = geoBudgetTypeStr.split('->')[0] ;                             
+                        String budgetType = geoBudgetTypeStr.split('->')[1] ;
+                        accProgGeoKey = iupgmRecord.Core_MDF_Account_id__c + ';' + iupgmRecord.Core_MDF_Program_nm__c + ';' + geo + ';' + budgetType; // 001g0000024cdfQQZ;Intel Partner Alliance;APJ;ProposalI
+                        
+                        if(keyToPGMRecordMap != null && keyToPGMRecordMap.containsKey(accProgGeoKey) && keySet.contains(accProgGeoKey)){ // if PGM is not null then only populate PGM fields
+                            contentWrapper contentWraperRec = new contentWrapper();
                             
-                            if(keyToPGMRecordMap != null && keyToPGMRecordMap.containsKey(accProgGeoKey) && keySet.contains(accProgGeoKey)){ // if PGM is not null then only populate PGM fields
-                                contentWrapper contentWraperRec = new contentWrapper();
-                                
-                                contentWraperRec.IUPGMId = iupgmRecord.Id;
-                                contentWraperRec.accountId = iupgmRecord.Core_MDF_Account_id__c;
-                                contentWraperRec.accountName = iupgmRecord.Core_MDF_Account_id__r.Name;
-                                contentWraperRec.program = iupgmRecord.Core_MDF_Program_nm__c;
-                                contentWraperRec.role = iupgmRecord.Core_MDF_Role_nm__c;
-                                contentWraperRec.region = iupgmRecord.Core_MDF_Region_Sub_Region_nm__c;
-                                contentWraperRec.budgetType = iupgmRecord.Core_MDF_Budget_Type_nm__c;
-                                contentWraperRec.userId = iupgmRecord.Core_MDF_User_id__c;
-                                contentWraperRec.allBudgetTypeAccess = iupgmRecord.Core_MDF_All_Budget_Type_Access_Ind__c;
-                                contentWraperRec.PGMId = keyToPGMRecordMap.get(accProgGeoKey).Id;
-                                contentWraperRec.groupId = keyToPGMRecordMap.get(accProgGeoKey).Core_MDF_Group_Id__c;
-                                contentWraperRec.groupName = keyToPGMRecordMap.get(accProgGeoKey).Core_MDF_Group_Name__c;
-                                contentWrapperList.add(contentWraperRec);
-                            }
+                            contentWraperRec.IUPGMId = iupgmRecord.Id;
+                            contentWraperRec.accountId = iupgmRecord.Core_MDF_Account_id__c;
+                            contentWraperRec.accountName = iupgmRecord.Core_MDF_Account_id__r.Name;
+                            contentWraperRec.program = iupgmRecord.Core_MDF_Program_nm__c;
+                            contentWraperRec.role = iupgmRecord.Core_MDF_Role_nm__c;
+                            contentWraperRec.region = iupgmRecord.Core_MDF_Region_Sub_Region_nm__c;
+                            contentWraperRec.budgetType = iupgmRecord.Core_MDF_Budget_Type_nm__c;
+                            contentWraperRec.userId = iupgmRecord.Core_MDF_User_id__c;
+                            contentWraperRec.allBudgetTypeAccess = iupgmRecord.Core_MDF_All_Budget_Type_Access_Ind__c;
+                            contentWraperRec.PGMId = keyToPGMRecordMap.get(accProgGeoKey).Id;
+                            contentWraperRec.groupId = keyToPGMRecordMap.get(accProgGeoKey).Core_MDF_Group_Id__c;
+                            contentWraperRec.groupName = keyToPGMRecordMap.get(accProgGeoKey).Core_MDF_Group_Name__c;
+                            contentWrapperList.add(contentWraperRec);
                         }
                     }
                 }

@@ -19,7 +19,7 @@
     <aura:attribute name="claimErrorMsg" type="String" />
     <aura:attribute name="accessErrorMsg" type="String" default=""/>    
     <aura:attribute name="fadeTimeout" type="Integer" default="5000"/>
-    <aura:attribute name="errorMsg" type="String" access="public"/>
+    <aura:attribute name="errorMsg" type="String" access="public"/>      
     <!--Added by VB-->
     <aura:attribute name="isCustomComp" type="boolean" default="false" description="Indicates whether this component is rendered from standard quick action or from custom compact layout"/>
 
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 
-            </div>   
+            </div>           
             <!-- Footer -->
             <aura:if isTrue="{!v.isCustomComp}"> 
                 <footer class="slds-modal__footer">
@@ -88,9 +88,14 @@
             <!--    </lightning:layout> -->
             <aura:set attribute="else">
                 <div class = "slds-align_absolute-center">
-                    <lightning:card title="" class="{!if(v.accessErrorMsg != '' ,'slds-show slds-text-heading_small','slds-hide')}">
+                    <lightning:card title="" 
+                    class="{!if(v.accessErrorMsg != '', 'slds-show slds-text-heading_small', 'slds-hide')}">
                         {!v.accessErrorMsg}
                     </lightning:card>
+
+                    <!-- <lightning:card title="" class="{!if(v.accessErrorMsg != '' ,'slds-show slds-text-heading_small','slds-hide')}">
+                        {!v.accessErrorMsg}
+                    </lightning:card> -->
                 </div>
                 <aura:if isTrue="{!v.isCustomComp}"> 
                     <footer class="slds-modal__footer">

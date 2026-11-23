@@ -148,7 +148,9 @@ public with sharing class Core_MDF_PaymentServiceHandler {
     public static void updatePaymentRecords(Map<Id,Core_Integration_Inbound_Message__c> inboundMap) {
         Integer eftCharLimit = Core_MDF_CCP_ConstantClass.EFT_Char_Limit;
         //Checks whether the trigger is Active
-        if (TriggerHandler.isActive('Core_MDF_UpdatePaymentRecordsFromIIM')) {
+        //ATHR - Deeply Nested if 16209
+        if (!TriggerHandler.isActive('Core_MDF_UpdatePaymentRecordsFromIIM')) return;
+        //if (TriggerHandler.isActive('Core_MDF_UpdatePaymentRecordsFromIIM')) {
             List<Core_MDF_PaymentJSONParser> jsonParsedList = new List<Core_MDF_PaymentJSONParser>();           
             Map<Id, List<Core_MDF_PaymentJSONParser>> iimIdJSONParsedListMap = new Map<Id, List<Core_MDF_PaymentJSONParser>>();           
             //Creates a new instance of the Map class. String is the data type of keys and the values is Custom Object.
@@ -170,7 +172,9 @@ public with sharing class Core_MDF_PaymentServiceHandler {
             try{
                 for(Id iimId : iimIdJSONParsedListMap.keySet()) {
                     for(Core_MDF_PaymentJSONParser jsonParsed : iimIdJSONParsedListMap.get(iimId)) {
-                        if((Label.Core_MDF_Payment_Status_IIM).equalsIgnoreCase(jsonParsed.core_MDF_Payment_Status_Txt.trim())) {//from IIM, it will come as PAID
+                        //ATHR - Deeply Nested if 16209
+                        if(!Label.Core_MDF_Payment_Status_IIM.equalsIgnoreCase(jsonParsed.core_MDF_Payment_Status_Txt.trim())) continue;
+                        //if((Label.Core_MDF_Payment_Status_IIM).equalsIgnoreCase(jsonParsed.core_MDF_Payment_Status_Txt.trim())) {//from IIM, it will come as PAID
                             //Calling the getConvertDate method to get the correct Date format
                             Date formattedDate = getConvertDate(jsonParsed.core_MDF_Payment_Made_Dt.trim());                        
                             //Creating new payment record and assigning the JSON parsed value to the Payment fields
@@ -187,7 +191,7 @@ public with sharing class Core_MDF_PaymentServiceHandler {
                             paymentNoIdPaymentMap.put(paymentNo,paymentRecord);
                             paymentNoStrIIMIdMap.put(jsonParsed.core_MDF_Payment_No_Txt.trim(), iimId);
                             paymentNoStr = jsonParsed.core_MDF_Payment_No_Txt.trim();
-                        }                    
+                        //}                    
                     }
                 }
                 //updatePymtAndClaim(paymentNoIdPaymentMap)
@@ -220,7 +224,7 @@ public with sharing class Core_MDF_PaymentServiceHandler {
             finally {
                 updateIIMRecords(iimIdErrorCounterMap);
             }
-        }
+        //}
     }
     private static string getPaymentNFromIIMString(String paymentNo){
         List<String> payNoSplits = paymentNo.split('/');

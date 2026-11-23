@@ -37,7 +37,7 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Product2.Core_Product_Type__c</field>
@@ -87,9 +87,6 @@
     <columns>
         <field>ADDRESS1_COUNTRY_CODE</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Risk_Reason__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -104,13 +101,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>GMP Americas Sales Territory</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ADDRESS1_COUNTRY_CODE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>BRA,GUM,MEX,USA</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

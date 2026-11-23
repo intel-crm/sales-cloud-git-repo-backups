@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">CLIENT RECOVERY ADMINISTRATOR;DATACENTER RECOVERY ADMINISTRATOR;ACTIVATING PARTNER RECOVERY ADMINISTRATOR</value>
+        <value xsi:type="xsd:string">CLIENT RECOVERY ADMINISTRATOR;DATACENTER RECOVERY ADMINISTRATOR;Activating Partner Recovery Administrator</value>
     </values>
 </CustomMetadata>

@@ -25,7 +25,6 @@ public with sharing class Core_IPS_AddDependentAnswersExt {
     }
     
     public Pagereference init() {
-        List<Core_IPS_Question__c> childQuestionList;
         wrapperQusAnsList = new List<questionAnsWrapper>();
         lstSelAnswers = new List<SelectOption>();
         parentAnsId = stdcon.getId();
@@ -34,12 +33,9 @@ public with sharing class Core_IPS_AddDependentAnswersExt {
         if(parentAnsId != null) {                        
             
             //Get Question Id of current answer.
-            //FLS Check Added - Nishitha
-            if(Core_IPS_Answer__c.SObjectType.getDescribe().isAccessible()){
-                for(Core_IPS_Answer__c objAns : [select Id,Core_IPS_Answer__c,Core_IPS_Question__c,Core_IPS_Question__r.Core_IPS_Question__c from Core_IPS_Answer__c where id=: parentAnsId])           
-                {
-                    parentAnswer = objAns;
-                }
+            for(Core_IPS_Answer__c objAns : [select Id,Core_IPS_Answer__c,Core_IPS_Question__c,Core_IPS_Question__r.Core_IPS_Question__c from Core_IPS_Answer__c where id=: parentAnsId])           
+            {
+                parentAnswer = objAns;
             }
             //parentAnswer = (Core_IPS_Answer__c) stdcon.getRecord();
             if(parentAnswer==null) {
@@ -49,10 +45,8 @@ public with sharing class Core_IPS_AddDependentAnswersExt {
             quesId = parentAnswer.Core_IPS_Question__c;
             
             //Retrive all the child questions and answers.
-            //FLS Check Added - Nishitha
-            if(Core_IPS_Question__c.SObjectType.getDescribe().isAccessible()){
-                childQuestionList = [select id,Name,Core_IPS_Question__c,(select Id,Name,Core_IPS_Answer__c,Core_IPS_Parent_Answer__c from Core_Answers__r ORDER BY Core_IPS_Order_No__c,Core_IPS_Answer__c) from Core_IPS_Question__c where (Core_IPS_Parent_Question__c =:quesId OR Id=:quesId) AND (Core_IPS_Datatype__c=:Core_IPS_Helper_Utility.getIPSLabel('Core_IPS_Picklist') OR                                                                                                                                                                                                                                                                                                       Core_IPS_Datatype__c=:Core_IPS_Helper_Utility.getIPSLabel('Core_IPS_Multi_Select'))]; 
-            }
+            List<Core_IPS_Question__c> childQuestionList = [select id,Name,Core_IPS_Question__c,(select Id,Name,Core_IPS_Answer__c,Core_IPS_Parent_Answer__c from Core_Answers__r ORDER BY Core_IPS_Order_No__c,Core_IPS_Answer__c) from Core_IPS_Question__c where (Core_IPS_Parent_Question__c =:quesId OR Id=:quesId) AND (Core_IPS_Datatype__c=:Core_IPS_Helper_Utility.getIPSLabel('Core_IPS_Picklist') OR
+Core_IPS_Datatype__c=:Core_IPS_Helper_Utility.getIPSLabel('Core_IPS_Multi_Select'))];            
             Integer countDependentQuestions = 0;
             Integer countDependentAnswers = 0;
             if(childQuestionList != NULL && childQuestionList.size() > 0) {                
@@ -79,11 +73,9 @@ public with sharing class Core_IPS_AddDependentAnswersExt {
         } else if(String.isNotBlank(getParam('qid'))) {
             
             quesId = getParam('qid');
-            //FLS Check Added - Nishitha
-            if(Core_IPS_Answer__c.SObjectType.getDescribe().isAccessible()){
-                for(Core_IPS_Answer__c objAns : [select Id,Name,Core_IPS_Answer__c,Core_IPS_Parent_Answer__c from Core_IPS_Answer__c WHERE Core_IPS_Question__c=:quesId ORDER BY Core_IPS_Order_No__c,Core_IPS_Answer__c LIMIT 1]) {
-                    parentAnsId = objAns.Id;
-                }
+            
+            for(Core_IPS_Answer__c objAns : [select Id,Name,Core_IPS_Answer__c,Core_IPS_Parent_Answer__c from Core_IPS_Answer__c WHERE Core_IPS_Question__c=:quesId ORDER BY Core_IPS_Order_No__c,Core_IPS_Answer__c LIMIT 1]) {
+                parentAnsId = objAns.Id;
             }
             if(parentAnsId != null) {   
                 ApexPages.currentPage().getParameters().put('retURL','/'+quesId);             
@@ -113,8 +105,7 @@ public with sharing class Core_IPS_AddDependentAnswersExt {
     private String getParam(String strP) {
         String returnParam = null;
         if(String.isNotBlank(strP)) {
-            /*TWC745-112 - 11/08/2021 - Vishal - IPS Security Vulnerability --*/
-            returnParam = ApexPages.currentPage().getParameters().get(String.valueOf(strP)).escapeHtml4();
+            returnParam = ApexPages.currentPage().getParameters().get(strP);
         }
         return returnParam;
     }
@@ -172,7 +163,6 @@ public with sharing class Core_IPS_AddDependentAnswersExt {
                 }
             }             
         }
-        
         if(answersList.size()>0) {
             update answersList; 
         }     
@@ -185,6 +175,7 @@ public with sharing class Core_IPS_AddDependentAnswersExt {
         }
         catch(Exception e) {
             ApexPages.addMessages(e);
+            System.debug('-------Error :'+e.getMessage());            
         } 
         return null;
     }
@@ -196,6 +187,7 @@ public with sharing class Core_IPS_AddDependentAnswersExt {
         }
         catch(Exception e) {
             ApexPages.addMessages(e);
+            System.debug('-------Error :'+e.getMessage());            
         } 
         return null;
     }

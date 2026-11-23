@@ -3,11 +3,16 @@
            applyHtmlTag="false">
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <style type="text/css">
+            /* .output {
+                margin: 0px 0px !important;
+                padding: 0px 0px !important;
+            } */
+        </style>
     </head>   
     <apex:outputPanel >
         <apex:panelGrid columns="1">
             <apex:outputPanel style="float:left">
-               
                 <apex:outputText value="Intel Confidential"/>
                 <br/>
                 <apex:outputText value="Export Date: {!reportDate}"/>
@@ -24,8 +29,10 @@
                 <apex:pageBlockTable value="{!block}" var="dataRecord" border="1" width="200%">                
                     <apex:repeat value="{!lstColumn}" var="varfield" >
                         <apex:column headerValue="{!varfield.label}">
-                            <apex:outputText value="{!dataRecord[varField.fieldNameOrPath]}" rendered="{!varField.isDateType == False}"/>
-                            <apex:outputText value=" {!dataRecord[varField.fieldNameOrPath]}" rendered="{!varField.isDateType == True}" />
+                            <pre style="margin:0px 0px;padding:0px 0px;font-family:'Calibri';border:0px">
+                                <apex:outputText value="{!dataRecord[varField.fieldNameOrPath]}" rendered="{!varField.isDateType == False}"/>
+                                <apex:outputText value="{!dataRecord[varField.fieldNameOrPath]}" rendered="{!varField.isDateType == True}"/>
+                            </pre>
                         </apex:column>
                     </apex:repeat>                                                                                    
                  </apex:pageBlockTable>

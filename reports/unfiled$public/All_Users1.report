@@ -24,19 +24,6 @@
     <columns>
         <field>Contact.Core_IPS_Intel_Support_Owner__c</field>
     </columns>
-    <columns>
-        <field>User.Core_Manager__c</field>
-    </columns>
-    <filter>
-        <criteriaItems>
-            <column>PROFILE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>external</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Tabular</format>
     <name>All Users</name>
     <params>

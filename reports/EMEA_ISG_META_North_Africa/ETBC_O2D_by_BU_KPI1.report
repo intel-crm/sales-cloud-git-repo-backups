@@ -158,11 +158,8 @@
         <field>Opportunity.Core_Opportunity_Products__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Opportunity_Count__c</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Core_Opportunity_KPI__c.Core_Opp_KPI_Total_Price__c</field>
+        <field>Opportunity.Core_Opportunity_Count__c</field>
     </columns>
     <crossFilters>
         <operation>with</operation>
@@ -172,6 +169,13 @@
     </crossFilters>
     <filter>
         <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <column>CUST_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>CCG Performance Deal #,CCG Public Sector Deal #,CCG Unite Deal #,CCG vPro Deal #,CCG Gateway Deal #,CCG Partner-Led Deal #,CCG vPro Adoption Technologies Deal #,DCG AI on Intel for Deep Learning Deal #,DCG Enterprise &amp; Gov&apos;t Deal #,DCG/NSG Optane Persistent Memory &amp; SSD Deal #,DCG Cloud New Services Deal #,DCG Partner Enablement Deal #,DCG Comms Infrastructure Deal #,IOTG All Deal #,NSG NAND Datacenter Deal #,PSG All Deal #</value>
+        </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Exclude_From_KPIs__c</column>
             <columnToColumn>false</columnToColumn>
@@ -185,13 +189,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>O2D</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CUST_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Deal $</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

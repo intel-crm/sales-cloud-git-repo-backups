@@ -9,11 +9,11 @@
 *****************************************************************************************************************************************/
 public without sharing class Core_MDF_Batch_SharingWithNewAcctGrp implements Database.Batchable<sObject>
 {
-	list<Account> accountList = new List<Account>();
+    list<Account> accountList = new List<Account>();
     Set<Id> programIdsSet = new Set<Id>();
-	List<PartnerMarketingBudget> budgetList = new List<PartnerMarketingBudget>();
+    List<PartnerMarketingBudget> budgetList = new List<PartnerMarketingBudget>();
     // Map of ultimate Acount and its channel program as key and List of group Ids as value
-	Map<String, List<Id>> ultimateAcctIdProgramIdToGroupIdsListMap = new Map<String, List<Id>>();
+    Map<String, List<Id>> ultimateAcctIdProgramIdToGroupIdsListMap = new Map<String, List<Id>>();
     // Final Map of object Id and List of Group Ids to share with
     Map<Id, List<Id>> objectIdGroupIdListMap = new Map<Id,List<Id>>();
     // Record Type for comarketing Account
@@ -22,11 +22,11 @@ public without sharing class Core_MDF_Batch_SharingWithNewAcctGrp implements Dat
     Set<Id> ultimateAccountIdsSet = new Set<Id>();
     String budgetEscalationType = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Budget_Escalation_Type');//Budget
     List<Core_MDF_Escalation__c> budgetEscalationList = new List<Core_MDF_Escalation__c>();
-	Map<Id, List<Id>> escalationIdToGroupIdListMap = new Map<Id,List<Id>>();
+    Map<Id, List<Id>> escalationIdToGroupIdListMap = new Map<Id,List<Id>>();
     
     public Core_MDF_Batch_SharingWithNewAcctGrp(List<Account> acctList)
     {
-		this.accountList = acctList;
+        this.accountList = acctList;
     }
     public Database.QueryLocator start(Database.BatchableContext bc) 
     {
@@ -47,6 +47,7 @@ public without sharing class Core_MDF_Batch_SharingWithNewAcctGrp implements Dat
                     if(acc.Core_MDF_Parent_Fund_Account__r == NULL || acc.Core_MDF_Parent_Fund_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c == NULL || acc.Core_MDF_Channel_Program__c == NULL) {
                         continue;
                     }
+
                     // Set of ultimate Account Id
                     ultimateAccountIdsSet.add(acc.Core_MDF_Parent_Fund_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c);
                     // Set of Program Ids of the account
@@ -63,8 +64,8 @@ public without sharing class Core_MDF_Batch_SharingWithNewAcctGrp implements Dat
                         {
                             ultimateAcctIdProgramIdToGroupIdsListMap.get(intelAcctIdProgId).add(acc.Core_MDF_Group_Id__c);
                         }
-                    }
-               
+                }
+                
                 
                 // Calling createBudgetShareRecords me to share budgets with new Account's Groups
                 createBudgetShareRecords();
@@ -89,7 +90,7 @@ public without sharing class Core_MDF_Batch_SharingWithNewAcctGrp implements Dat
         // Iterating over Budget for ultimateAccountIdsSet and programIdsSet            
         for(PartnerMarketingBudget pmb : [Select Id, Core_MDF_Budget_Partner__c, Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__c, Core_MDF_Program__c from PartnerMarketingBudget where Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__c IN: ultimateAccountIdsSet AND Core_MDF_Program__c IN: programIdsSet])
         {
-            
+          
             // ultimate Account and channel program String Key
             String ultimateAcctProgramKey = String.valueOf(pmb.Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__c) + String.valueOf(pmb.Core_MDF_Program__c);
             if(ultimateAcctProgramKey != NULL && ultimateAcctIdProgramIdToGroupIdsListMap.containsKey(ultimateAcctProgramKey))
@@ -133,5 +134,8 @@ public without sharing class Core_MDF_Batch_SharingWithNewAcctGrp implements Dat
             Core_MDF_GenericShareRecordActionClass.createShareRecordList(rmsInst);
         } 
     }
-    public void finish(Database.BatchableContext bc){}
+    public void finish(Database.BatchableContext bc)
+    {
+        
+    }
 }

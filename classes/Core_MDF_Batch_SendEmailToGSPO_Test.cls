@@ -23,7 +23,6 @@ public class Core_MDF_Batch_SendEmailToGSPO_Test {
         Profile sysAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator'];
         
         User usrs = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usrs.Username = 'sysadmin.test@example.com';
         usrs.Email = 'sysadmin@example.com';
         usrs.LastName = 'System Adm';
         usrs.ProfileId = sysAdminProfile.Id;
@@ -250,7 +249,7 @@ public class Core_MDF_Batch_SendEmailToGSPO_Test {
      @isTest
     static void testNotificationToGSPO()
     {
-        User sysAdminUser = [SELECT Id,Email from User where Username = 'sysadmin.test@example.com' limit 1];
+        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' and LastName = 'System Adm' limit 1];
         User rmfPaymentAdmin = [SELECT Id,Email from User where Email='retailpaymentadmin@example.com' limit 1];
         PartnerFundClaim claimins;
         Core_MDF_Claim_VAT_Info__c vatInfo;
@@ -260,7 +259,17 @@ public class Core_MDF_Batch_SendEmailToGSPO_Test {
 
             Core_MDF_Bank__c bank1 = [Select Id from Core_MDF_Bank__c where Core_MDF_Bank_Alias_Name__c='Test' limit 1];
             PartnerFundRequest pfr = [Select Id,Title,Core_MDF_Reimbursement_Rate__c from PartnerFundRequest where Title = 'Test Retail Activity'];
-          PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('Test Retail Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail, pfr.Id, System.today(), System.today(), 50.00, System.today(), bank1.Id, false);
+        /*    PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('Test Retail Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail, pfr.Id, System.today(), System.today(), 50.00, System.today(), bank1.Id, false);
+            claim1.Core_MDF_Type_Txt__c ='Claim';
+            claim1.Core_MDF_Currency__c='USD';
+            claim1.Core_MDF_Country_Location_nm__c= 'UNITED KINGDOM'; 
+            claim1.Core_MDF_VAT_Eligibility_Ind__c= true ; 
+            claim1.Core_MDF_VAT_Hold_Ind__c = true;
+            claim1.Core_MDF_Status__c = 'Hold';
+            database.insert(claim1); */
+            
+              //PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('Test Retail Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail, pfr.Id, System.today()+10, System.today()+100, 50.00, System.today(), bank1.Id, false);
+              PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('Test Retail Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail, pfr.Id, System.today(), System.today(), 50.00, System.today(), bank1.Id, false);
              claim1.Core_MDF_Type_Txt__c ='Claim';
               claim1.Core_MDF_Currency__c='USD';
             claim1.Core_MDF_VAT_Opt_In__c='';
@@ -268,15 +277,27 @@ public class Core_MDF_Batch_SendEmailToGSPO_Test {
             claim1.Core_MDF_VAT_Eligibility_Ind__c= true ; 
             claim1.Core_MDF_VAT_Hold_Ind__c = true;
             claim1.Core_MDF_Status__c = 'Hold';
+            //claim1.Core_MDF_Status__c = 'Submitted';
+            PartnerFundClaim superClaim = claim1.clone(false, false, false, false);
+            superClaim.Title = 'Test Retail Super Claim';
+            superClaim.Core_MDF_Has_Sub_Claims_Ind__c = true;
+            superClaim.Core_MDF_VAT_Eligibility_Ind__c = false;
+            insert superClaim;
+            claim1.Core_MDF_Claim_Id__c = superClaim.Id;
             insert claim1;
             list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
-            
+            //Core_MDF_PartnerFundClaim.ClaimWrap claimWrapResult = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList, null);  
+            //String res = claimWrapResult.claimDetail.Id;
            List<String> documentIdWithTitle = new List<String>();
         list<String> tempString = new list<String>();
-      
+       // list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
+        
         String str1 = claim1.Id+';#'+'Test Doc1';
-       
+       // Highlight: Unused Local Variable
+       // String str2 = claim1.Id+';#'+'Test Doc2';
+        
         documentIdWithTitle.add(str1);
+        //documentIdWithTitle.add(str2);
         
         for(String str: documentIdWithTitle){
             tempString = str.split(';#');
@@ -294,10 +315,38 @@ public class Core_MDF_Batch_SendEmailToGSPO_Test {
         
         if(auditDocList.size()>0){
             Database.insert(auditDocList);                
-        }            
+        }
+             /*List<ContentVersion> conVersionLst1 = new List<ContentVersion>();
+            ContentVersion conVersion1 = new ContentVersion();
+            conVersion1.ContentLocation = 'S';
+            conVersion1.Title = 'Test1';
+            conVersion1.PathOnClient='Test1';
+            conVersion1.ReasonForChange = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ContentVersion_ReasonForChange');
+            conVersion1.VersionData = Blob.valueOf('content1');
+            conVersionLst1.add(conVersion1);
+            Database.insert(conVersionLst1); //Insert contentversion list
+            ContentVersion contentVersions1 = [SELECT Id, ContentDocumentId FROM ContentVersion WHERE Id IN : conVersionLst1 limit 1];
+            
+            ContentDocument conDoc1= [SELECT Id,OwnerId FROM ContentDocument WHERE Id =:contentVersions1.ContentDocumentId limit 1];
+            Core_MDF_Audit_Document__c auditDoc1 = new Core_MDF_Audit_Document__c(); 
+            auditDoc1.Core_MDF_Document_Id__c = conDoc1.Id;
+            auditDoc1.Core_MDF_Document_Title__c = 'Test';
+            auditDoc1.Core_MDF_Claim__c = claim1.Id;
+            auditDoc1.Core_MDF_Document_Types__c='Proof of Cost;Proof of Execution;Proof of Attribution';
+            auditDoc1.Core_MDF_App_Document_Types_nm__c= 'Proof of Cost;Proof of Execution;Proof of Attribution';
+            insert auditDoc1;
+            auditDocList.add(auditDoc1);*/
+            //Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,null);   
+
+           /* PartnerFundClaim claimins = [select id,Core_MDF_VAT_Eligibility_Ind__c,Core_MDF_Status__c,Core_MDF_Audit_Hold__c from PartnerFundClaim where id =: claim1.Id limit 1];
+            claimins.Core_MDF_Status__c = 'Hold';
+            claimins.Core_MDF_VAT_Hold_Ind__c = true;
+            Database.update(claimins); */
+            
              
             Core_MDF_Claim_VAT_Info__c newVatRec = new Core_MDF_Claim_VAT_Info__c();
-            newVatRec.Core_MDF_Claim_Id__c = claim1.Id;
+            newVatRec.Core_MDF_Claim_Id__c = superClaim.Id;
+            newVatRec.Core_MDF_Sub_Claim_Id__c = claim1.Id;
             insert newVatRec;
 
             claimins = [select id,Core_MDF_VAT_Eligibility_Ind__c,Core_MDF_Status__c,Core_MDF_Audit_Hold__c from PartnerFundClaim where id =: claim1.Id limit 1];
@@ -316,7 +365,7 @@ public class Core_MDF_Batch_SendEmailToGSPO_Test {
             List<ContentDocument> documents = [SELECT Id, Title, LatestPublishedVersionId FROM ContentDocument];
 
             // Read the VAT Invoice record
-            vatInfo = [select id from Core_MDF_Claim_VAT_Info__c where Core_MDF_Claim_Id__c =: claimins.id  limit 1];
+            vatInfo = [select id from Core_MDF_Claim_VAT_Info__c where Core_MDF_Sub_Claim_Id__c =: claimins.id  limit 1];
             
             vatInfo.Core_MDF_VAT_Invoice_Number_Txt__c = 'VATINV001';
             vatInfo.Core_MDF_Approved_File_Id__c = documents[0].Id;
@@ -377,9 +426,14 @@ public class Core_MDF_Batch_SendEmailToGSPO_Test {
            List<PartnerFundClaim> listOfClaim = new  List<PartnerFundClaim>();
             listOfClaim.add(claim1);
             Core_MDF_Batch_SendEmailToGSPO sendNotification = new Core_MDF_Batch_SendEmailToGSPO(listOfClaim);
-            Id batchId =  Database.executeBatch(sendNotification);
-            // Unit Test Method should include System.Assert
-            System.assertNotEquals(null, batchId,'GSPO notification batch should execute and return a valid batch ID');
+                        Database.QueryLocatorIterator vatInfoIterator = sendNotification.start(null).iterator();
+                        System.assert(vatInfoIterator.hasNext(), 'Sub-Claim VAT information should be included in the GSPO notification batch');
+                        Core_MDF_Claim_VAT_Info__c selectedVatInfo = (Core_MDF_Claim_VAT_Info__c) vatInfoIterator.next();
+                        System.assertEquals(vatInfo.Id, selectedVatInfo.Id, 'The batch should select VAT information linked through the Sub-Claim lookup');
+             // Highlight: Unused Local Variable - Indira
+           /* Id batchId = */  Database.executeBatch(sendNotification);
+            // Unit Test Method should include System.Assert - Indira
+            System.assertEquals(1, listOfClaim.size(), 'Claim list should have one entry');
         }
         
     }

@@ -3,7 +3,7 @@
     <fieldUpdates>
         <fullName>Populate_User_Id</fullName>
         <field>Core_IPS_Unique_Owner_Group__c</field>
-        <formula>IF( ISBLANK(Core_IPS_Case_Owner_Email__c) , Text(DATETIMEVALUE( NOW() )), Core_IPS_Case_Owner_Email__c)  &amp; Core_IPS_Support_Org__r.Id</formula>
+        <formula>Core_IPS_Case_Owner__r.Id &amp; Core_IPS_Support_Org__r.Id</formula>
         <name>Populate User Id</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
@@ -16,7 +16,7 @@
             <name>Populate_User_Id</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>User.CreatedById</field>
             <operation>notEqual</operation>

@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">Core_MDF_CCP_Internal_MDF_Budget_Manager</value>
+        <value xsi:type="xsd:string">Core_MDF_CCP_Internal_MDF_Budget_Manager;Core_MDF_CCP_Internal_IPA_Budget_Manager</value>
     </values>
 </CustomMetadata>

@@ -4,11 +4,11 @@
     <protected>false</protected>
     <values>
         <field>Core_Condition__c</field>
-        <value xsi:type="xsd:string">a2W3b00000Civfc,a2W3b00000Civfd,a2W3b00000Civfe,a2W3b00000Civff,a2W3b00000Civfg,a2W3b00000EW3ff</value>
+        <value xsi:type="xsd:string">a2Wg0000000nqAa,a2Wg0000000nqAf,a2Wg0000000nqAk,a2Wg0000000nqAp,a2Wg0000000nqAu,a2Wg0000001I8Gr</value>
     </values>
     <values>
         <field>Core_Entitlement_Id__c</field>
-        <value xsi:type="xsd:string">a2W3b00000Civfi</value>
+        <value xsi:type="xsd:string">a2Wg0000000nqB4</value>
     </values>
     <values>
         <field>Core_Entitlement_Name__c</field>
@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Id__c</field>
-        <value xsi:type="xsd:string">a2W3b00000Civfh</value>
+        <value xsi:type="xsd:string">a2Wg0000000nqAz</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Name__c</field>

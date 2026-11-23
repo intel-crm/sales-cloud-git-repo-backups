@@ -28,7 +28,7 @@
     </values>
     <values>
         <field>Core_MDF_Campaign_Picklist_Fields__c</field>
-        <value xsi:type="xsd:string">Core_MDF_Opal_Budget_Type_Txt__c,Core_MDF_Priority__c,Core_MDF_Brand__c,Core_MDF_Technology__c,Core_MDF_Product_Type__c,Core_MDF_Market_Segment_nm__c</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_MDF_Campaign_Text_Fields__c</field>
@@ -64,7 +64,7 @@
     </values>
     <values>
         <field>Core_MDF_Program_ID__c</field>
-        <value xsi:type="xsd:string">0PkHo000000Xwql</value>
+        <value xsi:type="xsd:string">0PkDz0000004kxO</value>
     </values>
     <values>
         <field>Core_MDF_Program_Name__c</field>

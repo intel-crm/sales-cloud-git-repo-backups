@@ -1,0 +1,26 @@
+<aura:component controller="Core_MDF_ReleaseHold" implements="force:hasRecordId,force:lightningQuickAction">
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name = "errorMsg" type = "String"/>
+    <aura:attribute name = "isClaimBatchRecStatusFailed" type = "Boolean" default="false"/>
+    <div>
+        <aura:if isTrue="{!v.isClaimBatchRecStatusFailed}">
+            <div class="slds-text-align_center slds-p-around_x-large slds-m-around--x-large">
+                <div class="slds-card slds-grid slds-align_absolute-center">
+                    <lightning:icon iconName="utility:warning" variant="warning"/>
+                    <p class="slds-p-around_medium slds-align_absolute-center">Are you sure?</p>
+                </div>
+                <br/>
+                <div class="slds-p-around_medium slds-align_absolute-center slds-grid slds-wrap">
+                    <lightning:button variant="brand" label="{!$Label.c.Core_MDF_Cancel_Claim_Yes}" title="{!$Label.c.Core_MDF_Cancel_Claim_Yes}" onclick="{!c.updateClaimBatchRecStatus}"/>
+                    <lightning:button variant="neutral" label="{!$Label.c.Core_MDF_Cancel_Claim_No}" title="{!$Label.c.Core_MDF_Cancel_Claim_No}" onclick="{!c.closeModel}"/>   
+                </div>
+            </div>
+            <aura:set attribute="else">
+                <div class="slds-align_absolute-center slds-text-heading_small slds-p-top_x-large">
+                    <p class="slds-p-around_x-large slds-m-around--x-large">{!v.errorMsg}</p>
+                </div>
+            </aura:set>
+        </aura:if>
+    </div>
+    
+</aura:component>

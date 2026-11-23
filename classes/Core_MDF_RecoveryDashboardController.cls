@@ -29,7 +29,10 @@ public with sharing  class Core_MDF_RecoveryDashboardController {//Core_MDF_Reco
             program = String.escapeSingleQuotes(program);
             account = String.escapeSingleQuotes(account);
             quarter = String.escapeSingleQuotes(quarter);
-            String strQuery = 'select Id,Core_MDF_Program_nm__c,Core_MDF_Account_Id__r.name,Core_MDF_Quarter_nm__c,Core_MDF_Channel_Program_Id__c from Core_MDF_Partnership_Score__c  where Core_MDF_Channel_Program_Id__c  =\''+program+'\' and Core_MDF_Account_Id__c = \''+account+'\' and Core_MDF_Quarter_Year_nm__c = \''+quarter+'\'';
+
+            //updated ->  Core_MDF_Virtual_Corp_Account_Id__r.Core_MDF_Parent_Fund_Account__c
+            //Core_MDF_Account_Id__c.name -> Core_MDF_Account_nm__c
+            String strQuery = 'select Id,Core_MDF_Program_nm__c,Core_MDF_Account_Id__r.name,Core_MDF_Quarter_nm__c,Core_MDF_Channel_Program_Id__c from Core_MDF_Partnership_Score__c  where Core_MDF_Channel_Program_Id__c  =\''+program+'\' and Core_MDF_Virtual_Corp_Account_Id__r.Core_MDF_Parent_Fund_Account__c = \''+account+'\' and Core_MDF_Quarter_Year_nm__c = \''+quarter+'\'';
 
             partnershipScoreRec = Database.query(strQuery);
             
@@ -51,17 +54,7 @@ public with sharing  class Core_MDF_RecoveryDashboardController {//Core_MDF_Reco
      @AuraEnabled
     public static List<String> getQuarterOptionsMap (){
         
-        List<String> finalQuarter = Core_MDF_RecoveryClaimReportViewCtrl.getQuarterOptionsMap();
-        
-        Set<String> quarter = new Set<String>(finalQuarter);
-       
-        Date dat = System.today();
-        
-        //this method call gets up the current qtr based on todays date
-        String currentQuarter = Core_MDF_ReverseAuditDecision.determineQuartYear(dat);
-        //since it is list - direct remove method not available here so converted to set and converted batch to list because js accespt list and not set
-        quarter.remove(currentQuarter);
-        List<String> qtrList = new List<String>(quarter);
+        List<String> qtrList = Core_MDF_RecoveryClaimReportViewCtrl.getQuarterOptionsWithoutCurrentQuarter();
         return qtrList;
     }
     
@@ -89,7 +82,8 @@ public with sharing  class Core_MDF_RecoveryDashboardController {//Core_MDF_Reco
                 accUserDataWrapper.accountDetailsList = accOptForExtUser;
             }else{
                 accUserDataWrapper.isUserExternal = false;
-               
+               //we are getting all the account based on the program
+               //ADITYA - added the INTEL ACCOUNT CHECK
                 for(Account acc: [select Core_MDF_CoMarketing_Ultimate_Account__c,Core_MDF_CoMarketing_Ultimate_Account__r.name from Account where RecordType.DeveloperName ='Core_MDF_Co_Marketing' and Core_MDF_Channel_Program__r.name=: program and Core_MDF_CoMarketing_Ultimate_Account__c != '' WITH SECURITY_ENFORCED order by Core_MDF_CoMarketing_Ultimate_Account__r.name asc]){
                     Core_MDF_RecoveryFilters.AccountOptions accOptions = new Core_MDF_RecoveryFilters.AccountOptions();
                     accOptions.accountName = acc.Core_MDF_CoMarketing_Ultimate_Account__r.name;
@@ -98,7 +92,6 @@ public with sharing  class Core_MDF_RecoveryDashboardController {//Core_MDF_Reco
                     accOpt.add(accOptions);
                 }
                 accUserDataWrapper.accountDetailsList = accOpt;
-                
             }
         }catch(exception error){Core_MDF_CCP_UtilityClass.logError(error);} 
         

@@ -1,4 +1,4 @@
-public without sharing class Core_IssueCategoryController{
+public class Core_IssueCategoryController{
     private id recordId;
     private id currentLoggedInUser;
     private Core_IPS_Product_Issue_Category__c CaseCategoryRecord;
@@ -42,6 +42,7 @@ public without sharing class Core_IssueCategoryController{
                        
                     if(getVFPageName().equalsIgnoreCase('Core_addIssueCategories') || getVFPageName().equalsIgnoreCase('Core_addSubCategories'))
                     {
+                     system.debug(getVFPageName());                     
                      getSubCategories();
                     }
                     else
@@ -89,7 +90,8 @@ public without sharing class Core_IssueCategoryController{
         
         CaseCategorySoql += 'id';
         CaseCategorySoql += ' from Core_IPS_Product_Issue_Category__c where id =:CaseCategoryID';
-        sObject s = Database.query(CaseCategorySoql.escapeHtml4());
+        system.debug(CaseCategorySoql );
+        sObject s = Database.query(CaseCategorySoql);
         Core_IPS_Product_Issue_Category__c casecategory = (Core_IPS_Product_Issue_Category__c)s;
         return casecategory;
         
@@ -172,10 +174,7 @@ public without sharing class Core_IssueCategoryController{
     ****************************************************************************************************/
     public void getSubCategories(){
         set<id> existingIds = new set<id>();
-        //FLS Check Added- Madhuri
-        if(Core_IPS_Product_Issue_Category__c.SObjectType.getDescribe().isAccessible()){
-            CaseCategoryRecord = [select id,name,Core_Issue_Category_Name__r.Name,Core_Status__c,Core_Supported_Product__c, Core_Supported_Product__r.Core_Product_Organization__r.OwnerId, Core_Supported_Product__r.Core_EOIS__c, (select id, Core_Issue_Sub_Category_Name__c from Product_Issue_Sub_Categories__r where Core_Product_Issue_Category__c =: recordId) from Core_IPS_Product_Issue_Category__c where id =: recordId];
-        }
+        CaseCategoryRecord = [select id,name,Core_Issue_Category_Name__r.Name,Core_Status__c,Core_Supported_Product__c, Core_Supported_Product__r.Core_Product_Organization__r.OwnerId, Core_Supported_Product__r.Core_EOIS__c, (select id, Core_Issue_Sub_Category_Name__c from Product_Issue_Sub_Categories__r where Core_Product_Issue_Category__c =: recordId) from Core_IPS_Product_Issue_Category__c where id =: recordId];
         if(CaseCategoryRecord.Core_Status__c == 'Active')
         {
             for(Core_IPS_Product_Issue_Category__c icRec : CaseCategoryRecord.Product_Issue_Sub_Categories__r){
@@ -267,23 +266,17 @@ public without sharing class Core_IssueCategoryController{
     ****************************************************************************************************/
     public void getCategories(){
         set<id> existingIds = new set<id>();
-        //FLS Check Added - Madhuri
-        if(Core_IPS_Supported_product__c.SObjectType.getDescribe().isAccessible()){
-            SupportedProductRecord = [Select id,Core_Product_Organization__c, Core_Product_Organization__r.OwnerId, Core_EOIS__c, (select id, Core_Issue_Category_Name__c from Product_Issue_Categories__r where Core_Supported_Product__c =: recordId) from Core_IPS_Supported_product__c where id =: recordId ];
-        }
+        SupportedProductRecord = [Select id,Core_Product_Organization__c, Core_Product_Organization__r.OwnerId, Core_EOIS__c, (select id, Core_Issue_Category_Name__c from Product_Issue_Categories__r where Core_Supported_Product__c =: recordId) from Core_IPS_Supported_product__c where id =: recordId ];
         for(Core_IPS_Product_Issue_Category__c icRec:SupportedProductRecord.Product_Issue_Categories__r){
            existingIds.add(icRec.Core_Issue_Category_Name__c);
         }
         issueCategoryList = new List<masterIssueCatSel>();
-        //FLS Check Added - Madhuri
-        if(Core_IPS_Master_Issue_Category__c.SObjectType.getDescribe().isAccessible()){
         for(Core_IPS_Master_Issue_Category__c mic: [select id,name from Core_IPS_Master_Issue_Category__c where id not in: existingIds and Core_type__c =:  Core_IPS_Labels__c.getValues('CaseCategory').value__c ORDER BY name]){
             masterIssueCatSel icSel = new masterIssueCatSel();
             icSel.selected=false;
             icSel.masterIssueCat = mic;
             issueCategoryList.add(icSel);
         }
-    }
         ErrorMessage = null;
         checkBusinessRules();           
     }   
@@ -414,7 +407,7 @@ public PageReference checkBusinessRules(){
             ErrorMessage = Core_IPS_Error_Code__c.getValues('G108').Core_Error_Message__c+' '+Ex;
             return null;    
         }
-        //return null;
+        return null;
     }
    
     public string getVFPageName()  
@@ -431,6 +424,7 @@ public PageReference checkBusinessRules(){
     // IN THE RESULTING ARRAY
     pageName = pageNameExtra[0]; 
     // HERE IS YOUR PRODUCT  
+    system.debug('pageName-->'+pageName);                       
     return pageName;                                        
    }
     /***************************************************************************************************

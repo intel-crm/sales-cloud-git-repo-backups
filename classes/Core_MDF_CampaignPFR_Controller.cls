@@ -8,7 +8,7 @@
 *****************************************************************************************************************************************/
 public without sharing class Core_MDF_CampaignPFR_Controller {
     public static Id ipaCampaignRecordId = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
-    public static Id coGTMCampaignRecordId = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();  //Roshan - added CoGTM for customer approval
+    public static Id coGTMCampaignRecordId = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
     public static String extUserType = Core_MDF_CCP_ConstantClass.Ext_UserType;
     public static String pendingStatus = Core_MDF_CCP_ConstantClass.PFR_PENDING_STATUS;
     public static String priceReviewer = Core_MDF_CCP_ConstantClass.PRICE_REVIEWER;
@@ -16,14 +16,14 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
     public static String l2RegionalSales = Core_MDF_CCP_ConstantClass.L2_REGIONAL_SALES;
     public static String l2RegionalMarketing = Core_MDF_CCP_ConstantClass.L2_REGIONAL_MARKETING;
     public static String progOfficeReviewer = Core_MDF_CCP_ConstantClass.PROGRAM_OFFICE_REVIEWER;
-    public static String legalReviewer = Core_MDF_CCP_ConstantClass.LEGAL_REVIEWER;  //Roshan - Co-GTM campaign setup 
-    public static String l2Approval = Core_MDF_CCP_ConstantClass.L2_APPROVAL;  //Roshan - Co-GTM campaign setup (use L2 Sales or create separate for CoGTM?)
+    public static String legalReviewer = Core_MDF_CCP_ConstantClass.LEGAL_REVIEWER;
+    public static String l2Approval = Core_MDF_CCP_ConstantClass.L2_APPROVAL;
     public static String pendingReviewStatus = Core_MDF_CCP_ConstantClass.CAMPAIGN_PENDING_REVIEW;
     public static String pendingApprovalStatus = Core_MDF_CCP_ConstantClass.CAMPAIGN_PENDING_APPROVAL;
     public static String businessApprover = Core_MDF_CCP_ConstantClass.BUSINESS_APPROVER;  //Aditya
-    public static String technicalApprover = Core_MDF_CCP_ConstantClass.Technical_Approver;  //Roshan - Co-GTM Claim
+    public static String technicalApprover = Core_MDF_CCP_ConstantClass.Technical_Approver;
     public static String accountManagerApprover = Core_MDF_CCP_ConstantClass.Account_Manager;  //Swati - IPA Claim
-    public static String ipaProgram = Core_MDF_CCP_ConstantClass.IPA_PROGRAM;  // Roshan 
+    public static String ipaProgram = Core_MDF_CCP_ConstantClass.IPA_PROGRAM;
     
 
     /***************************************************************************************************** 
@@ -156,7 +156,7 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
     @AuraEnabled
     public static Boolean isActiveClaimAssociated(List<Id> cmpClaimAssocList) {
         Boolean isActiveClaimExist = false;
-        Map<Id,List<PartnerFundClaim>> campClaimAssocMap = Core_MDF_Proposal_Based_Campaign_Process.checkClaimsAssociatedToCampaign(cmpClaimAssocList);  //Roshan - Campaign trigger optimisation
+        Map<Id,List<PartnerFundClaim>> campClaimAssocMap = Core_MDF_Proposal_Based_Campaign_Process.checkClaimsAssociatedToCampaign(cmpClaimAssocList);
         if(campClaimAssocMap!=null && campClaimAssocMap.size()>0 && campClaimAssocMap.containsKey(cmpClaimAssocList[0]) && campClaimAssocMap.get(cmpClaimAssocList[0])!=null && campClaimAssocMap.get(cmpClaimAssocList[0]).size()>0){
             isActiveClaimExist = true;
         }
@@ -194,10 +194,13 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
                             Core_MDF_Approval_Stage_nm__c, Core_MDF_Account__c,recordtype.developername, RecordTypeId, Core_MDF_IPA_Approval_Status_nm__c,Core_MDF_Total_Campaign_Cost_Amt__c
                             FROM Campaign WHERE Id =: cmpId];
                 //ATHR - Deeply Nested if 16209
-                if (cmpval == null || cmpval.isEmpty()) return userPermissionApprovalCamp;
+                if (cmpval == null) return userPermissionApprovalCamp;
+
                 //if(cmpval.Size() > 0) {
                     userPermissionApprovalCamp.campaignRecord = cmpval[0];
                     userPermissionApprovalCamp.piwitmGlb = fetchPiwitmId(cmpId);
+                    system.debug('wrapper.piwitmGlb@@@' +  userPermissionApprovalCamp.piwitmGlb);
+                    system.debug('campRecord@@@' +  userPermissionApprovalCamp.campaignRecord);
 
                     List<String> ctryList = new List<String>();
                     if(cmpval[0].Core_MDF_Market__c != null && cmpval[0].Core_MDF_Market__c.contains(';')) {
@@ -226,6 +229,8 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
                         }
                     }
 
+                    system.debug('isUserL1Approver@@@' +  userPermissionApprovalCamp.isUserL1Approver);
+
                     if(cmpval[0].Status == pendingReviewStatus && isCustomPermissionAssigned('Core_MDF_PriceReviewer') && userPermissionApprovalCamp.isUserPCTApprover) {
                         userPermissionApprovalCamp.isPriceReviewer = true; 
                     } else { userPermissionApprovalCamp.isPriceReviewer = false; }
@@ -250,7 +255,10 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
                     if (cmpval[0].Status == pendingReviewStatus && isCustomPermissionAssigned('Core_MDF_PriceReviewer') && userPermissionApprovalCamp.isUserBusinessApprover) {  //Aditya
                         userPermissionApprovalCamp.isBusinessApprover = true;
                     } else { userPermissionApprovalCamp.isBusinessApprover = false; }
+
+                    system.debug('isL1ProposalApprover@@@' +  userPermissionApprovalCamp.isL1ProposalApprover);
                   
+                    system.debug('cmpRec@@@' + cmpval[0].RecordTypeId);
                     //visibility of recall button for internal proposal manager
                     if ((cmpval[0].Status == pendingReviewStatus || cmpval[0].Status == pendingApprovalStatus) && ((cmpval[0].RecordTypeId == ipaCampaignRecordId && isCustomPermissionAssigned('Core_MDF_CCP_Internal_IPA_Acct_Mgr')) || (cmpVal[0].RecordTypeId == coGTMCampaignRecordId &&  isCustomPermissionAssigned('Core_MDF_CCP_Internal_Co_GTM_Account_Manager')))) {
                         userPermissionApprovalCamp.isInternalProposalManager = true;
@@ -307,19 +315,21 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
         EditActivityWrapper wrapper = new EditActivityWrapper();
         try {
             PartnerFundClaim claim = [SELECT Id, Title, Core_MDF_Program__c, ChannelPartner.Name, Core_MDF_Status__c, RecordType.DeveloperName, Core_MDF_Ultimate_Account_ID__c, Core_MDF_Budget_Type_Options_Nm__c, 
-                                        Core_MDF_Proposal_Based_Ind__c, Core_MDF_Campaign_Id__r.Core_MDF_Program__c, Core_MDF_Campaign_Id__r.Core_MDF_Region_cd__c, Core_MDF_Approval_Stage_nm__c, Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c, Core_MDF_Campaign_Id__r.Core_MDF_Host_Region_cd__c, Request.Core_MDF_Host_Region_txt__c, ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c
-                                        FROM PartnerFundClaim WHERE Id =: claimId LIMIT 1];  //Roshan
+                                        Core_MDF_Proposal_Based_Ind__c, Core_MDF_Campaign_Id__r.Core_MDF_Program__c, Core_MDF_Campaign_Id__r.Core_MDF_Region_cd__c, Core_MDF_Approval_Stage_nm__c, Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c, Core_MDF_Campaign_Id__r.Core_MDF_Host_Region_cd__c, Request.Core_MDF_Host_Region_txt__c, ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c 
+                                        FROM PartnerFundClaim WHERE Id =: claimId LIMIT 1];
 
             wrapper.claimRecord = claim;
             wrapper.piwitmGlb = fetchPiwitmId(claimId);
-            
+    
             if (claim.Core_MDF_Approval_Stage_nm__c != null) {
                 if (claim.Core_MDF_Approval_Stage_nm__c == technicalApprover) {
-                    wrapper.isUserTechnicalApprover = Core_MDF_GeneralPurpose_UI_Utility.isRecordApprover(claim, UserInfo.getUserId());  //Roshan
+                    wrapper.isUserTechnicalApprover = Core_MDF_GeneralPurpose_UI_Utility.isRecordApprover(claim, UserInfo.getUserId());
                 } else if (claim.Core_MDF_Approval_Stage_nm__c == accountManagerApprover) {
                     wrapper.isUserAccountManagerApprover = Core_MDF_GeneralPurpose_UI_Utility.isRecordApprover(claim, UserInfo.getUserId());  //Swati
                 }
             }
+            system.debug('isUserAccountManagerApprover@@@' +  wrapper.isUserAccountManagerApprover);
+            
 
             if (claim.Core_MDF_Status__c == pendingReviewStatus && isCustomPermissionAssigned('Core_MDF_CCP_Internal_Co_GTM_Technical_Approver') && wrapper.isUserTechnicalApprover) {
                 wrapper.isTechnicalApprover = true; 
@@ -328,6 +338,7 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
                 wrapper.isAccountManagerApprover = true; 
             } else { wrapper.isAccountManagerApprover = false; }
 
+            system.debug('isAccountManagerApprover@@@' +  wrapper.isAccountManagerApprover);
 
             // Recall button visibility - separate for cogtm and outcomebased
             if (claim.Core_MDF_Status__c == pendingReviewStatus ) {
@@ -346,10 +357,11 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
             String err = Core_MDF_CCP_UtilityClass.getErrorDetails(e);
             Core_MDF_CCP_UtilityClass.logErrorinLogObject(err, 'PartnerFundClaim');
         }
+
+        system.debug('wrapper@@@' +  wrapper);
         return wrapper;
     }
 
-    // Roshan - moving common ProcessInstanceWorkItem query into a helper method
     private static Id fetchPiwitmId(Id recordId) {
         List<ProcessInstanceWorkItem> piwitmList = [
             SELECT Id FROM ProcessInstanceWorkItem
@@ -382,12 +394,13 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
             
             List <ProcessInstanceWorkItem> processInstanceList = [SELECT ProcessInstance.TargetObjectId, Id FROM ProcessInstanceWorkItem WHERE Id =: piwitmId AND ProcessInstance.Status = 'Pending'];
             //ATHR - Deeply Nested if 16209
-            if (processInstanceList == null || processInstanceList.isEmpty()) {
+            if (processInstanceList.isEmpty()) {
                 appRejObj.isSuccess = false;
                 appRejObj.returnMessage = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Another_User_Responded');
                 appRejObj.type = 'warning';
                 return appRejObj;
             }
+
             //if(processInstanceList != null && !processInstanceList.isEmpty()) {
                 Approval.ProcessWorkitemRequest req = new Approval.ProcessWorkitemRequest();
     
@@ -441,26 +454,39 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
         List<PartnerFundClaim> claimsToBeUpdated = new List<PartnerFundClaim>();
         String propApprovalComments = approvalComments;
         String msg='';
+        //Map<Id, PartnerFundClaim> claimIdToClaimMap = new Map<Id, PartnerFundClaim>(); //AI PIC
         Savepoint sp = Database.setSavepoint();
 
         try {
-            PartnerFundClaim claimInst = [SELECT Id, Core_MDF_Status__c, Core_MDF_Comments_Appvr_Only_txt__c, Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c, Core_MDF_OutcomeBased_Ind__c FROM PartnerFundClaim WHERE Id = :claimId];  //Roshan
+            PartnerFundClaim claimInst = [SELECT Id, Core_MDF_Status__c, Core_MDF_Comments_Appvr_Only_txt__c, Core_MDF_OutcomeBased_Ind__c FROM PartnerFundClaim WHERE Id = :claimId];  //Roshan - Super Activity changes
+            //Fields to be included for AI PIC in the above SOQL
+            /*Core_MDF_Budget_Type_Options_Nm__c, Core_MDF_Program__c, Core_MDF_OutcomeBased_Ind__c, Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,
+                    Core_MDF_Ad_Run_Start_Date__c, Core_MDF_Ad_Run_End_Date__c, Core_MDF_Reimbursable_TransactionAmt_Loc__c, Core_MDF_Total_Invoice_Amount_Local__c, Core_MDF_Currency__c,
+                    Core_MDF_Activity_Types__c */
             claimIds.add(claimId);
             
+            system.debug('claimInst@@@' + claimInst);
+            system.debug('piwitmId@@@' + piwitmId);
             List <ProcessInstanceWorkItem> processInstanceList = [SELECT ProcessInstance.TargetObjectId, Id FROM ProcessInstanceWorkItem WHERE Id =: piwitmId AND ProcessInstance.Status = 'Pending'];
+            system.debug('processInstanceList@@@' + processInstanceList);
             
             if(processInstanceList != null && !processInstanceList.isEmpty()){
                 Approval.ProcessWorkitemRequest req = new Approval.ProcessWorkitemRequest();
     
                 if (buttonName == Label.Core_MDF_Retail_Approve){
                     req.setComments(propApprovalComments);
-                    req.setAction('Approve');    
+                    req.setAction('Approve');
+                    //Commented by VB - AI PIC
+                    /*if(claimInst.Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c) {
+                        claimInst.Core_MDF_Status__c = Label.Core_MDF_Claim_Status_PIC_Pending;  
+                    }*/
+                        
                 }
 
                 if (buttonName == Label.Core_MDF_Retail_Reject){          
                     req.setComments(propApprovalComments);
                     req.setAction('Reject'); 
-                    if(claimInst.Core_MDF_OutcomeBased_Ind__c) {  //Roshan
+                    if(claimInst.Core_MDF_OutcomeBased_Ind__c) {  //Roshan - Super Activity changes
                         claimInst.Core_MDF_Status__c = 'Pending Clarification';  
                     } 
                 }
@@ -473,7 +499,7 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
                     }
                     req.setComments(propApprovalComments);
                     req.setAction('Reject');
-                    if(claimInst.Core_MDF_OutcomeBased_Ind__c) {  //Roshan
+                    if(claimInst.Core_MDF_OutcomeBased_Ind__c) {  //Roshan - Super Activity changes
                         claimInst.Core_MDF_Status__c = 'Resubmission Required';   
                     } 
                 }
@@ -484,7 +510,15 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
                 if(claimsToBeUpdated != NULL && !claimsToBeUpdated.isEmpty()){
                     Database.update(claimsToBeUpdated);             
                 }
+
                 approveOrRejectWorkItem(claimInst.Id, req, appRejObj);
+
+                //Commented by VB - AI PIC
+                /*claimIdToClaimMap.put(claimId, claimInst);
+                System.debug('pfc Core_MDF_Status__c'+claimInst.Core_MDF_Status__c);
+                if(claimInst.Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c && claimInst.Core_MDF_Status__c == Label.Core_MDF_Claim_Status_PIC_Pending) {//Add a bypass
+                    Core_MDF_AI_Integration_Outbound.generateAIResponseForPICProcess(claimIdToClaimMap, 'update');
+                }*/
 
             } else {
                 appRejObj.isSuccess = false;
@@ -497,7 +531,6 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
         return appRejObj;
     }
 
-    // Roshan - moving common approval process call ito a helper method
     private static void approveOrRejectWorkItem(Id targetRecordId, Approval.ProcessWorkitemRequest req, ApproveRejectWrapper appRejObj) {
 
         ProcessInstanceWorkItem piwitm = [SELECT ProcessInstance.TargetObjectId, Id FROM ProcessInstanceWorkItem 
@@ -513,7 +546,6 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
         }
     }
 
-    // Roshan - moving duplicate error logging logic into a helper method
     private static void handleApprovalException(Exception e, List<Id> recordIds, String methodName, ApproveRejectWrapper wrapper, Savepoint sp) {
         String msg = e.getMessage();
         String logerror = '';
@@ -584,7 +616,6 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
         public Id piwitmGlb;
         @AuraEnabled
         public Boolean isActiveClaimExist = false;
-        //Roshan - Co-GTM campaign setup
         @AuraEnabled
         public Boolean isUserLegalReviewer = false;
         @AuraEnabled
@@ -598,7 +629,6 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
         public Boolean isUserBusinessApprover = false;
         @AuraEnabled
         public Boolean isBusinessApprover = false;
-        //Roshan - Co-GTM claim setup
         @AuraEnabled
         public PartnerFundClaim claimRecord;
         @AuraEnabled
@@ -629,11 +659,12 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
         @AuraEnabled
         public Boolean isExternalUser;
     }
+
     //16852 starts
     @AuraEnabled
     public static Map<String, List<String>> getEligibleApproversForRecord(Id recordId) {
         Map<String, List<String>> result = new Map<String, List<String>>();
-        String recordTypeDevName;
+         String recordTypeDevName;
         String accountId;
         String geo;
         String subGeo;
@@ -652,8 +683,9 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
         List<String> geoList;
         try {
             if (String.isBlank(objectName)) return result;
+
             switch on objectName {
-                when 'PartnerFundRequest' {
+                when 'PartnerFundRequest' {     // when PartnerFundRequest
                     List<PartnerFundRequest> pfrObj = [SELECT Id, Core_MDF_Program__c, Core_MDF_Ultimate_Account_Id__c, Core_MDF_Region_nm__c, Core_MDF_Approval_Stage__c, Core_MDF_Budget_Type_nm__c,recordType.DeveloperName,Core_MDF_Campaign_Ultimate_Account_Id__c,Core_MDF_Host_Region_or_Region_txt__c,Core_MDF_Sub_Region_nm__c,Core_MDF_Proposal_Based_Ind__c,Campaign.Core_MDF_Approval_Stage_nm__c,Core_MDF_Additional_Review_Type_txt__c FROM PartnerFundRequest WHERE Id = :recordId LIMIT 1];
                     recordTypeDevName = pfrObj[0].recordType.DeveloperName;
                     accountId = pfrObj[0].Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM && (pfrObj[0].Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L1_APPROVAL_PRIMARY_PARTNER || pfrObj[0].Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L2_PRIMARY_APPROVAL) ? pfrObj[0].Core_MDF_Campaign_Ultimate_Account_Id__c : pfrObj[0].Core_MDF_Ultimate_Account_Id__c;
@@ -680,10 +712,10 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
                     geo = campaignObj[0].Core_MDF_Region_cd__c;
                     subGeo = campaignObj[0].Core_MDF_Sub_Region_cd__c;
                     hostGeo = campaignObj[0].Core_MDF_Host_Region_cd__c;
-                    approvalStage = campaignObj[0].Core_MDF_Approval_Stage_nm__c;
+                    approvalStage = campaignObj[0].Core_MDF_Approval_Stage_nm__c;                    
                     budgetType = campaignObj[0].Core_MDF_Budget_Type_txt__c;
                     isProposalBased = campaignObj[0].Core_MDF_Proposal_Based_Ind__c;
-                    program = campaignObj[0].Core_MDF_Program__c;
+                    program = campaignObj[0].Core_MDF_Program__c;                
                     if(approvalStage == Core_MDF_CCP_ConstantClass.L2_REGIONAL_MARKETING){
                         activityClassification = 'Marketing';
                     }
@@ -693,6 +725,7 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
                     else{
                         activityClassification = '';
                     }
+
                 }
                 when 'PartnerFundClaim' {
                     List<PartnerFundClaim> pfcObj = [SELECT Id,recordType.DeveloperName,Core_MDF_Ultimate_Account_ID__c,Core_MDF_Campaign_Id__r.Core_MDF_Region_cd__c,Request.Core_MDF_Host_Region_txt__c,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_Proposal_Based_Ind__c,ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c, Core_MDF_Approval_Stage_nm__c FROM PartnerFundClaim WHERE Id = :recordId LIMIT 1];
@@ -709,6 +742,7 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
                     return result;
                 }       
             }
+
             programNameByRecTypeDevNameMap = Core_MDF_GeneralPurpose_UI_Utility.getProgramNameByRecordTypeDevName();
             if(programNameByRecTypeDevNameMap.containsKey(program)){
                 program = (String)programNameByRecTypeDevNameMap.get(program);
@@ -719,6 +753,7 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
             String geoStr = Core_MDF_GeneralPurpose_UI_Utility.getGeoWithWWAsString(geo);
             String geoBudgetTypeStr =  Core_MDF_GeneralPurpose_UI_Utility.getGeoBudgetTypeWithWWAsString(geo, budgetType);
             activityClassification = (String.isNotBlank(activityClassification)) ?  activityClassification.contains(',') ?  activityClassification : Core_MDF_GeneralPurpose_UI_Utility.getActivityClassificationAsString(activityClassification) :'';     
+
             Core_MDF_GeneralPurpose_UI_Utility.InputDetailsWrapper objInputDetailsWrapper = new Core_MDF_GeneralPurpose_UI_Utility.InputDetailsWrapper();
             objInputDetailsWrapper.objectName = objectName;
             objInputDetailsWrapper.programName = program;
@@ -730,6 +765,9 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
             objInputDetailsWrapper.isProposalBased = isProposalBased;
             objInputDetailsWrapper.activityClassification = activityClassification;
             objInputDetailsWrapper.userId = userId;
+
+            system.debug('objInputDetailsWrapper@@@' + objInputDetailsWrapper);
+
             if(objInputDetailsWrapper != null){
                 resultObj = Core_MDF_GeneralPurpose_UI_Utility.getRoleNameByApprovalStage(objInputDetailsWrapper);
                 if(approvalStage=='Additional Reviewer'){
@@ -739,12 +777,14 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
                     (program=='Data Center CoMarketing Fund' && reviewType=='Marketing Review') ? 'Core_MDF_CCP_Internal_DCF_Acct_Mgr':null;                
                 }
             }
+
             String role = resultObj != null ? resultObj.role : null;
             String geoString = geoStr.replace('(', '').replace(')', '').replace('\'', '');
             List<String> accList = new List<String>{accountId};
             List<String> progList = new List<String>{program};
             List<String> geoListForUtil = geoString.split(',\\s*');
             List<String> roles = new List<String>{role};
+
             List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> resultList = Core_MDF_GeneralPurpose_UI_Utility.getIUPGMRecords(objInputDetailsWrapper);
             if(resultList != null && !resultList.isEmpty()){
                 Set<Id> userIds = new Set<Id>();
@@ -758,6 +798,7 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
                     }
                 }
             }
+            System.debug('@@result: '+result);
         } catch(Exception e){
             Core_MDF_CCP_UtilityClass.logError(e);
         }

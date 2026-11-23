@@ -316,6 +316,12 @@
 					CONTAINS(Core_MDF_Bank__r.Core_MDF_Program_Value__c, &apos;Co-GTM;&apos;) , 
 					Core_MDF_Account__r.Core_MDF_Channel_Program__r.Name = &apos;Co-GTM&apos;
 				) 
+			),
+			( 
+				AND( 
+					CONTAINS(Core_MDF_Bank__r.Core_MDF_Program_Value__c, &apos;Co-Inv;&apos;) , 
+					Core_MDF_Account__r.Core_MDF_Channel_Program__r.Name = &apos;Co-Inv&apos;
+				) 
 			)
 		) 
 	,FALSE,TRUE)

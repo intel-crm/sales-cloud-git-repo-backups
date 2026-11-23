@@ -8,11 +8,9 @@ Modification Log :
 * ----------------------------------------------------------------------------
 * Popcornapps                5/28/2017             Bulkified email change code
 * Popcornapps              6/05/2017               Fixed the bug -- Dataops not able to change email address in production if there is no entitlement associated with contact
-* Team Draco                 22/12/2022            Added logic to stop call to AGS due to ERPM By-pass logic upon Email change
 *************************************************************************************/
 public class Core_Contact_EmailChange_Handler{
     private static final String UPDATE_REASON_EMAIL_CHANGE = 'Email Change';
-    public static boolean initiatedAsEmailChange = false; //Team Draco Change [22/12/2022]
     
     /*This method is to update ContactEntittlement Status & send mail to owner of contact when contact email */
     public static void UpdateEntitlementStatus(Map<ID,Boolean> updatedContactEmail,Map<ID,Contact> oldContact){ 
@@ -66,7 +64,6 @@ public class Core_Contact_EmailChange_Handler{
                             ceObject.Core_Selected__c=false;    
                             ceObject.Core_Status__c = 'Pending';
                             ceObject.Core_Update_Reason__c = UPDATE_REASON_EMAIL_CHANGE;
-                            ceObject.Core_Status_of_Assignment_Failure__c = 'Pending Removal';
                             blnRemovedAccess = true;
                             lstToUpdateConEnt.add(ceObject);
                         }
@@ -79,13 +76,12 @@ public class Core_Contact_EmailChange_Handler{
             mapAllEntitlements.put(conId,AllEntitlementName);
             Contact con = new Contact();
             con.id=conId;
-            //eRPM - trigger logic - atb
-            //con.Core_ERPM_Integration_Status__c = 'Pending';
+            con.Core_ERPM_Integration_Status__c = 'Pending';
             
             // AGS Integration Status Updated when any entitlement removed.
-            //if(blnRemovedAccess){
-           //     con.Core_AGS_Integration_Status__c = 'Pending'; 
-           // }
+            if(blnRemovedAccess){
+                con.Core_AGS_Integration_Status__c = 'Pending'; 
+            }
             lstConToUpdate.add(con);
             Contact c = mapConIdConObj.get(conId);
             String targetObjectID=(!excludedIdsSet.contains(c.ownerID))?c.ownerID:((c.Core_IPS_Intel_Support_Owner__c != null))?c.Core_IPS_Intel_Support_Owner__c:(!excludedIdsSet.contains(c.account.ownerID))?c.account.ownerID:null;
@@ -101,15 +97,11 @@ public class Core_Contact_EmailChange_Handler{
 
         if(lstToUpdateConEnt.size()>0){
             system.debug('== in update==lstToUpdateConEnt==>'+lstToUpdateConEnt);
-            initiatedAsEmailChange = true; //Team Draco Change [22/12/2022]
             update lstToUpdateConEnt;
             system.debug('== after update==');
         } 
         if(lstConToUpdate.size()>0){
-            //update lstConToUpdate;
-            //eRPM - trigger logic - atb
-            system.debug('email change');
-            Core_ERPM_Outbound_Integration.evaluateAndSetERPMOutboundIntegrationStatus(lstConToUpdate, null, true);
+            update lstConToUpdate;
         }
        
         Set<String> stUsers = new Set<String>(mapConIDTargetId.values());

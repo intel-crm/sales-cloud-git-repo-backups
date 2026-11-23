@@ -72,11 +72,6 @@
         <field>Opportunity.Core_Approved_Date__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Opportunity_Type__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
     <name>Won CY Industrial</name>
     <params>
         <name>terr</name>

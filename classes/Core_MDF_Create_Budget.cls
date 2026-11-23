@@ -9,13 +9,13 @@
 *****************************************************************************************************************************************/
 
 public without sharing class Core_MDF_Create_Budget {
-
+    
     //to store IPA Record Type ID
-    public static Id ipaRecordtype = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get(Label.Core_MDF_IPA_Record_Type_Developer_Name).getRecordTypeId();  
+    public static Id ipaRecordtype = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get(Label.Core_MDF_IPA_Record_Type_Developer_Name).getRecordTypeId();    
     //to store IPA Allocation record Type ID
     public static Id ipaPFARecordtype = Schema.SObjectType.PartnerFundAllocation.getRecordTypeInfosByDeveloperName().get(Label.Core_MDF_IPA_RecordType).getRecordTypeId();
     
-/***************************************************************************************************** 
+    /***************************************************************************************************** 
 Method Name:        manageBudget
 @return  :          Map<Campaign,PartnerMarketingBudget>
 @parameters:        List<Campaign>
@@ -41,13 +41,14 @@ Added By:           Intel - SM - 07/07/2020
                     if(camp.Core_MDF_Account__c != pmb.Core_MDF_Budget_Partner__c){
                         campBudgetMapForNewPFA.put(camp,pmb);
                     }
-                    campBudgetMap.put(camp,pmb);
+                    
+                    campBudgetMap.put(camp,pmb);  
                 }
                 else
                 {
                     //List to hold campaigns whose budget has to be updated
                     campToUpdate.add(camp);
-                }
+                }           
             }
             
             if(campBudgetMap != NULL && campBudgetMap.size() > 0)
@@ -57,23 +58,23 @@ Added By:           Intel - SM - 07/07/2020
                 
                 if(campBudgetMapForNewPFA != NULL && campBudgetMapForNewPFA.size() > 0){
                     
-                     createAlloactionForCampaigns(campBudgetMapForNewPFA);
+                    createAlloactionForCampaigns(campBudgetMapForNewPFA);
                 }
             }
-
+            
             if(campToUpdate != NULL && campToUpdate.size() > 0)
             {
                 //update budgets in case of re-approval of proposals
                 updateBudget(campToUpdate);
             }
         }  
-        catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);throw e;}
-     
+        catch(Exception e){
+            Core_MDF_CCP_UtilityClass.logError(e);throw e;}
         
         return campBudgetMap;
     }
     
-/***************************************************************************************************** 
+    /***************************************************************************************************** 
 Method Name:        createBudgetForCampaigns
 @return  :          void
 @parameters:        Campaign
@@ -82,12 +83,14 @@ Added By:           Intel - SM      - 07/07/2020
 Modified By:        Intel - Areefa  - 08/09/2020 - Updating(Amount=camp.Core_MDF_Total_Campaign_Cost_Amt__c) with new campaign Amount field(Core_MDF_Reimbursement_Amount_Amt__c)
 ******************************************************************************************************/      
     public static PartnerMarketingBudget createBudgetForCampaigns(Campaign camp){
-	Id recordType ;	
+        Id recordType;
         if(camp.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name')){
-         	 recordType = ipaRecordtype;
-	}
+            recordType= ipaRecordtype;
+        }
         //to get IPA Program Name
-
+        // Highlight: Unused Local Variable - 14285
+        // String IPAProgramName = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name');
+        
         //to store Campaign Account Id
         id campAccId = camp.Core_MDF_Account__c;
         //to store virtual Corp Account's Id
@@ -101,19 +104,19 @@ Modified By:        Intel - Areefa  - 08/09/2020 - Updating(Amount=camp.Core_MDF
         //updating VC as That account's VC
         //getting an active Account whose Parent Fund Account is equal to that Account's Ultimate Account with a IPA specific Program
         if(acc.Core_MDF_CoMarketing_Ultimate_Account__c != acc.Core_MDF_Parent_Fund_Account__c){
-        	virtualCorpAcc = [Select id from Account where Core_MDF_Parent_Fund_Account__c =: acc.Core_MDF_CoMarketing_Ultimate_Account__c and Core_MDF_Channel_Program__r.Name =: camp.Core_MDF_Program__c and Core_MDF_Active_Ind__c =: true ];
-        	VCAccID = virtualCorpAcc.id;
+            virtualCorpAcc = [Select id from Account where Core_MDF_Parent_Fund_Account__c =: acc.Core_MDF_CoMarketing_Ultimate_Account__c and Core_MDF_Channel_Program__r.Name =: camp.Core_MDF_Program__c and Core_MDF_Active_Ind__c =: true ];
+            VCAccID = virtualCorpAcc.id;
         }
         
         //returning a new Budget with VirtualCorp Account for the Campaign
         return new PartnerMarketingBudget(Title=camp.Name + ' Budget',/*Description=camp.Description,*/StartDate=camp.StartDate,EndDate=camp.EndDate,
-        Core_MDF_Budget_Partner__c=VCAccID,Core_MDF_Program__c=camp.Core_MDF_Channel_Program__c,Core_MDF_Budget_Type_Txt__c=camp.Core_MDF_Budget_Type_txt__c,
-        Amount=camp.Core_MDF_Reimbursement_Amt__c, RecordTypeId = recordType,Core_MDF_Budget_Status__c ='Released');
+                                          Core_MDF_Budget_Partner__c=VCAccID,Core_MDF_Program__c=camp.Core_MDF_Channel_Program__c,Core_MDF_Budget_Type_Txt__c=camp.Core_MDF_Budget_Type_txt__c,
+                                          Amount=camp.Core_MDF_Reimbursement_Amt__c, RecordTypeId = recordType,Core_MDF_Budget_Status__c ='Released');
     }
-
     
     
-/***************************************************************************************************** 
+    
+    /***************************************************************************************************** 
 Method Name:        createAlloactionForCampaigns
 @return  :          void
 @parameters:        Map<Campaign,PartnerMarketingBudget>
@@ -124,12 +127,12 @@ Modified By:
     
     public static void createAlloactionForCampaigns(Map<Campaign,PartnerMarketingBudget> campBudgetMapForNewPFA){
         try
-        {	
-           
+        {   
+            
             //create new list for new Allcotions and pass it to insert
             List<PartnerFundAllocation> newAllocations = new List<PartnerFundAllocation>();
             //create new list for previous Alloction and pass it to update
-        	List<PartnerFundAllocation> oldAllocations = new List<PartnerFundAllocation>();
+            List<PartnerFundAllocation> oldAllocations = new List<PartnerFundAllocation>();
             
             //to store budget id and allocation record mapping
             Map<Id,PartnerFundAllocation> allocMap = new Map<Id,PartnerFundAllocation>();
@@ -137,22 +140,22 @@ Modified By:
             {
                 allocMap.put(pfa.BudgetId, pfa);
             }
-
+            
             if(campBudgetMapForNewPFA != NULL && campBudgetMapForNewPFA.size() > 0 && allocMap != null && allocMap.size() > 0)
             {
                 //to loop thro the each campaign
                 for(Campaign camp : campBudgetMapForNewPFA.keySet())
-                {	
-                Id PFARecordType ; 
-                if(camp.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name')){
-			 PFARecordType = ipaPFARecordtype;
-		}	
-					//from the map for this camp we'll get budget
+                {   
+                    Id PFARecordType;
+                    if(camp.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name')){
+                        PFARecordType = ipaPFARecordtype;
+                    }
+                    //from the map for this camp we'll get budget
                     PartnerMarketingBudget budget = campBudgetMapForNewPFA.get(camp);
                     //Creating new Allocation with that budget and Campaign's Account and Campaign's Amount
                     ////make it generic record type
                     PartnerFundAllocation newAllocation = new PartnerFundAllocation(Title = budget.title, BudgetId = budget.Id, ChannelPartnerId = camp.Core_MDF_Account__c, Amount = budget.Amount, RecordTypeId = PFARecordType);
-        			PartnerFundAllocation allocation = new PartnerFundAllocation();
+                    PartnerFundAllocation allocation = new PartnerFundAllocation();
                     allocation.id = allocMap.get(budget.id).id;
                     //After Creation of new Allocation, Previous Allocation Amount to be 0
                     allocation.Amount = 0;
@@ -172,7 +175,7 @@ Modified By:
     }
     
     
-/***************************************************************************************************** 
+    /***************************************************************************************************** 
 Method Name:        updateBudget
 @return  :          void
 @parameters:        List<Campaign>
@@ -233,12 +236,13 @@ Modified By:        Intel - Areefa  - 08/09/2020 - Updating(Amount=camp.Core_MDF
                     Database.update(allocMap.values());
                     Database.update(budgetMap.values());
                 }
+               // updatePFRStatusToApproved(budgetId);//commenting as part of TWC702-13038[KIIT] [IPA] Proposal Based: In Progress Activity Update: Budget Cap update on Amount edit
             }
         }  
         catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e); throw e;}
     }
-
-/***************************************************************************************************** 
+    
+    /***************************************************************************************************** 
 Method Name:        cancelBudget
 @return  :          void
 @parameters:        List<Campaign>
@@ -257,9 +261,9 @@ Added By:           Intel - SM - 07/07/2020
             }
             //to store budget id and budget record
             Map<Id,PartnerMarketingBudget> budgetMap = new Map<Id,PartnerMarketingBudget>([Select Amount, Core_MDF_Budget_Status__c 
-                                                       from PartnerMarketingBudget
-                                                      Where Id IN :budgetId]);
-          
+                                                                                           from PartnerMarketingBudget
+                                                                                           Where Id IN :budgetId]);
+            
             if(budgetMap != null && budgetMap.size() > 0)
             {
                 //to loop thro the each campaign and update budget status to cancelled, Amount on Budget and Allocation to 0
@@ -268,9 +272,38 @@ Added By:           Intel - SM - 07/07/2020
                     PartnerMarketingBudget budget = budgetMap.get(camp.Core_MDF_Budget__c);
                     budget.Core_MDF_Budget_Status__c = Label.Core_MDF_Claim_Status_Cancelled;
                 }
+                
                 Database.update(budgetMap.values());
+               
             }
         }  
         catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e); throw e;}
     }
+
+//commenting as part of TWC702-13038[KIIT] [IPA] Proposal Based: In Progress Activity Update: Budget Cap update on Amount edit
+/*public static void updatePFRStatusToApproved(Set<Id> budgetIds) {
+    try {
+        Set<String> proposalBudgetTypes = new Set<String>{'Proposal I MDF','Proposal II MDF'};
+        
+        List<PartnerFundRequest> pfrList = [SELECT Id, Status, Core_MDF_Fund_Request_Status__c, Core_MDF_Budget_Type_nm__c
+                                           FROM PartnerFundRequest 
+                                           WHERE BudgetId IN :budgetIds 
+                                           AND Status = 'Draft'
+                                           AND Core_MDF_Budget_Type_nm__c IN :proposalBudgetTypes];
+        System.debug('pfrList->'+pfrList);
+        if(!pfrList.isEmpty()) {
+            for(PartnerFundRequest pfr : pfrList) {
+                pfr.Status = 'Approved';
+            }
+            
+            update pfrList;
+            } else {
+            System.debug('No proposal-based PFR');
+        }
+        
+    } catch(Exception e) {
+        System.debug('Error' + e.getMessage());
+        Core_MDF_CCP_UtilityClass.logError(e);
+    }
+}*/    
 }

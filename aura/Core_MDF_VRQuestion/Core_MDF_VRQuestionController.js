@@ -7,6 +7,9 @@
       
       var ques = component.getEvent("dynamicQuestionEvt");
       var attrValue = event.getSource().get("v.value");
+     // var attrName = event.getSource().get("v.name");
+      
+     // var fetchPar = 'v.newPFRq.'+attrName;
       component.set("v.newPFRq.Core_MDF_Incentive_Opted_In_ind__c",attrValue);
 
     ques
@@ -20,9 +23,11 @@
     var response = component.get("v.newPFRq.Core_MDF_Incentive_Question_ind__c");
 
     if (response == "Yes") {
+      //component.set("v.showVROptIn", true);
      component.set("v.vrQuestionList[0].otherIncentive", true);
     } else if (response == "No") {
           component.set("v.vrQuestionList[0].otherIncentive", false);
+      //component.set("v.showVROptIn", false);
       component.set("v.newPFRq.Core_MDF_Incentive_Opted_In_ind__c", "No");
     }
 

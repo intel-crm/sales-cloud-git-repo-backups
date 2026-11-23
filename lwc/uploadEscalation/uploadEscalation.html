@@ -1,0 +1,71 @@
+<template>
+
+
+        <lightning-card title="Upload Bulk Escalation">
+                <lightning-layout multiple-rows="true" vertical-align="end">
+                    <lightning-layout-item size="6" small-device-size="2" medium-device-size="4" large-device-size="4" padding="around-small">
+                            <div class="slds-form-element">
+                                <div class="slds-form-element__control">
+                                    <lightning-combobox name="recordTypes"
+                                                        label="Escalation Record Types"
+                                                        value={selectedValue}
+                                                        placeholder="-Select-"
+                                                        options={options}
+                                                        onchange={handleChange} ></lightning-combobox>
+                                </div>
+                            </div>
+                    </lightning-layout-item>
+                </lightning-layout><br/>
+            <!-- <div style="margin-left:3%;">
+                <div if:true={selectedValue}>
+                    Selected Record Type Id: <b>{selectedValue}</b>
+                </div>
+            </div> -->
+      
+
+
+            <div style="margin-left:4%">
+                    <div>
+                        <lightning-input label="" name="file uploader" onchange={handleFilesChange} type="file" multiple></lightning-input>
+                    </div><br/>
+                    <div class="slds-text-body_small slds-text-color_error">{fileName}
+                    <template if:true={showLoadingSpinner}>
+                            <lightning-spinner alternative-text="Uploading......" size="medium"></lightning-spinner>
+                        </template>
+                    </div><br/>
+                    <div>
+                        <lightning-button class="slds-m-top--medium" label={UploadFile} onclick={handleSave} variant="brand" disabled={isTrue}></lightning-button>
+                    </div>
+                </div><br/><br/>
+                
+                
+                <!-- Datatable to show the related files of the record -->
+                <div if:true={data} style="margin-left:1%;">
+                        <lightning-datatable columns={columns} 
+                                             data={data} 
+                                             hide-checkbox-column="true" 
+                                             key-field="id"></lightning-datatable>
+                    </div>
+
+
+        <!-- <div style="margin-left:1%;">
+            <lightning-file-upload accept={acceptedFormats} 
+                                   label="Attach receipt" 
+                                   multiple="multiple" 
+                                   onuploadfinished={handleUploadFinished} 
+                                   record-id={recordId}></lightning-file-upload>
+        </div>
+
+
+        <div if:true={error}>
+            {error}
+        </div><br/>
+
+        <div if:true={data} style="margin-left:1%;">
+            <lightning-datatable columns={columns} 
+                                 data={data} 
+                                 hide-checkbox-column="true" 
+                                 key-field="id"></lightning-datatable>
+        </div> -->
+    </lightning-card>
+</template>

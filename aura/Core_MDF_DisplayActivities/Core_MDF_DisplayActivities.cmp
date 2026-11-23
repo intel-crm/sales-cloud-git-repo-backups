@@ -32,7 +32,7 @@
                 <lightning:accordion aura:id="accordion" allowMultipleSectionsOpen="true">
                     <aura:iteration items="{!v.pfrList}" var="pfr" indexVar="indx">
                         <lightning:accordionSection name="{!pfr.Title}" label="{!pfr.Core_MDF_Activity_Number__c +' '+':'+' '+ pfr.Title +' '+':'+' '+ pfr.activityStatus}">
-                            
+
                         
                         <div class="add-margin">
 
@@ -45,8 +45,8 @@
                         </div>
                         
                             <aura:set attribute="actions">
-                                
-                                <br/> 
+
+                                <br/>
                                 <aura:if isTrue="{!v.isInternalUser}">
                                     <div class="slds-p-around_medium">
                                         <p><lightning:formattedUrl class="buttonWrap" label = "{!$Label.c.Core_MDF_View_Activity}" value= "{!pfr.Core_MDF_PFRDetailLink__c}" target="_blank" /></p>
@@ -101,12 +101,12 @@
                                     </div>
                                 </aura:if>
                                
-                            </aura:set>   
-                            
+                            </aura:set>  
+                        
                             <c:Core_MDF_Activity_Upload_File recordId="{!pfr.Id}"/>
                             <br/>
                             <c:core_MDF_Tactics_Form  recordId="{!pfr.Id}" isDetail= "true" programName = "{!v.programName}"/> 
-                            <br/>                   
+                            <br/>                  
                             <c:core_MDF_KPIDetailSection recordIdinput="{!pfr.Id}" 
                                                          objectApiNameinput ="PartnerFundRequest"
                                                          displayHeader = "Metrics"/>                            
@@ -115,6 +115,7 @@
                             <br/>                            
                             <c:core_MDF_POP_Details recordIdinput = "{!pfr.Id}" objectApiNameinput = "PartnerFundRequest" displayLabel="POP"/>
                             
+                        
                         </lightning:accordionSection>
                     </aura:iteration> 
                 </lightning:accordion>
@@ -175,8 +176,8 @@
             </aura:if>
             
             <aura:if isTrue ="{!v.CheckClaimCreate}" >
-                <div class="slds-modal__content slds-p-around--medium">
-                    <c:Core_MDF_PFC_Create activityId ="{!v.requestId}" isNewClaimCreate="{!v.CheckClaimCreate}" isProposalbasedInd="{!v.isProposalBased}"/>
+                <div class="slds-modal__content slds-p-around--medium textWrap">
+                    <c:Core_MDF_PFC_Create activityId ="{!v.requestId}" isNewClaimCreate="{!v.CheckClaimCreate}" isProposalbasedInd="{!v.isProposalBased}" programName="{!v.programName}"/>
                 </div> 
             </aura:if>
             

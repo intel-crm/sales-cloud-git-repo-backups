@@ -141,7 +141,7 @@ public class Core_MDF_Claim_Prediction_Subscribe_Test {
                                           FROM PartnerMarketingBudget
                                           WHERE Title = 'TestBudgetDataCCF'
                                           LIMIT 1];
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
            // Account acc1 = [SELECT Id,Name FROM Account WHERE Name='Test Account 1' LIMIT 1];
             Account accCCF = [SELECT Id, Name
                               FROM Account
@@ -165,7 +165,7 @@ public class Core_MDF_Claim_Prediction_Subscribe_Test {
                                                                                                   'Consumer',
                                                                                                   'Desktop',
                                                                                                   'Intel® Core™ i5 Processor',
-                                                                                                  'Broadcast',
+                                                                                                  'Audio',
                                                                                                   'Podcast',
                                                                                                   'Draft',
                                                                                                   false);
@@ -222,17 +222,17 @@ public class Core_MDF_Claim_Prediction_Subscribe_Test {
         Core_MDF_Claim_Prediction__c cp = new Core_MDF_Claim_Prediction__c();
        cp.Core_MDF_Claim_Id__c = indiaClaim1.Id;
        insert cp;
-       // Unit Test Method should include System.Assert
+       // Unit Test Method should include System.Assert - Indira
         System.assertEquals(1, [SELECT Id FROM Core_MDF_Claim_Prediction__c WHERE Core_MDF_Claim_Id__c = :indiaClaim1.Id].size(), 'One Claim Prediction record should be created');
         System.assertNotEquals(null, cp.Id, 'Claim Prediction should have been inserted successfully');
        
         Test.stopTest();
   
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
       //  List <Core_MDF_Claim_Prediction__c> obj  = [SELECT Id FROM Core_MDF_Claim_Prediction__c ]; 
         // Validate that this claim was found
         
-        //System.assertEquals(1, obj.size());
+       // System.assertEquals(1, obj.size());
         
     }
     
@@ -259,11 +259,7 @@ public class Core_MDF_Claim_Prediction_Subscribe_Test {
         
         // Log the error message
         for(Database.Error err : sr.getErrors()) {
-            System.debug('Error returned: ' +
-                        err.getStatusCode() +
-                        ' - ' +
-                        err.getMessage()+' - '+err.getFields());
-        }
+                   }
         
          // Verify that no claim PRediction was created by a trigger.
         List <Core_MDF_Claim_Prediction__c> obj  = [SELECT Id FROM Core_MDF_Claim_Prediction__c ];
@@ -278,7 +274,7 @@ public class Core_MDF_Claim_Prediction_Subscribe_Test {
         Test.startTest();
         try{
         Core_MDF_Claim_Prediction_Event__e evt = new Core_MDF_Claim_Prediction_Event__e(Core_MDF_PE_ID__c='');
-       // Highlight: Unused Local Variable 
+       // Highlight: Unused Local Variable - Indira
        /* Database.SaveResult sr = */ EventBus.publish(evt);  
         }catch(Exception e){
             System.assertNotEquals(NULL,e);

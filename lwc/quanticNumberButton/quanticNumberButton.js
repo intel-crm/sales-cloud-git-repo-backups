@@ -1,6 +1,4 @@
 import {LightningElement, api} from 'lwc';
-import NavigationButtons from '@salesforce/resourceUrl/NavigationButtons';
-import { loadStyle } from 'lightning/platformResourceLoader'
 
 /**
  * The `QuanticNumberButton` component is used internally to display a button in a set of buttons with numeric labels.
@@ -28,24 +26,6 @@ export default class QuanticNumberButton extends LightningElement {
    * @type {string}
    */
   @api ariaLabelValue;
-  
-   @api isFirstButton;
-  showFirstButton;
-  maxnumber;
-  tempvallue;
-  
- connectedCallback(){
-    loadStyle(this, NavigationButtons);
-    this.maxnumber = this.number;
-    if(this.isFirstButton == "true"){
-      this.showFirstButton = true;
-      this.tempvallue = this.number;
-    }
-    else if (this.isFirstButton == "false"){
-      this.showFirstButton = false;
-      sessionStorage.setItem('Intialvalue',this.number);
-    }
-  }
 
   get isPressed() {
     return `${this.selected}`;
@@ -58,21 +38,8 @@ export default class QuanticNumberButton extends LightningElement {
     );
     return classes.join(' ');
   }
-    get variant() {
-    return this.selected ? 'brand' : 'brand-outline';
-  }
 
-
-  select(event) {
-  
-    if(parseInt(event.target.value) > parseInt(sessionStorage.getItem('Intialvalue'))) {
-      this.selected = parseInt(sessionStorage.getItem('Intialvalue'));
-      this.number = parseInt(sessionStorage.getItem('Intialvalue'));
-      this.dispatchEvent(new CustomEvent('select', {detail: this.number}));
-    }else {
-    this.selected = parseInt(event.target.value);
-    this.number = parseInt(event.target.value);
+  select() {
     this.dispatchEvent(new CustomEvent('select', {detail: this.number}));
-    }
-}
+  }
 }

@@ -1,206 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
-        <fullName>ACT_CoMarketing_Account_Read_All</fullName>
-        <accessLevel>Read</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Read</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Shares all the Accounts of Record Type ‘CoMarketing Account’ in Read Only mode.</description>
-        <label>ACT: CoMarketing Account - Read All</label>
-        <sharedTo>
-            <group>ACT_CoMarketing_Account_Read</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>CoMarketing</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>ACT_CoMarketing_Account_Write_All</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Shares all the Accounts of Record Type ‘CoMarketing Account’ in Read/Write mode.</description>
-        <label>ACT: CoMarketing Account - Write All</label>
-        <sharedTo>
-            <group>ACT_CoMarketing_Account_Write</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>CoMarketing</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>ACT_Direct_Account_Read_All</fullName>
-        <accessLevel>Read</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Read</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Shares all the Accounts of Record Type ‘Direct Account’ in Read Only mode.</description>
-        <label>ACT: Direct Account - Read All</label>
-        <sharedTo>
-            <group>ACT_Direct_Account_Read</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Direct Account</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>ACT_Direct_Account_Write_All</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Shares all the Accounts of Record Type ‘Direct Account’ in Read/Write mode.</description>
-        <label>ACT: Direct Account - Write All</label>
-        <sharedTo>
-            <group>ACT_Direct_Account_Write</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Direct Account</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>ACT_Inactive_Account_Read_All</fullName>
-        <accessLevel>Read</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Read</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Shares all the Accounts of Record Type ‘Inactive Account’ in Read Only mode.</description>
-        <label>ACT: Inactive Account - Read All</label>
-        <sharedTo>
-            <group>ACT_Inactive_Account_Read</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Inactive Account</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>ACT_Inactive_Account_Write_All</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Shares all the Accounts of Record Type ‘Inactive Account’ in Read/Write mode.</description>
-        <label>ACT: Inactive Account - Write All</label>
-        <sharedTo>
-            <group>ACT_Inactive_Account_Write</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Inactive Account</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>ACT_Intel_Account_Read_All</fullName>
-        <accessLevel>Read</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Read</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Shares all the Accounts of Record Type ‘Intel Account’ in Read Only mode.</description>
-        <label>ACT: Intel Account - Read All</label>
-        <sharedTo>
-            <group>ACT_Intel_Account_Read</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Intel Account</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>ACT_Intel_Account_Write_All</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Shares all the Accounts of Record Type ‘Intel Account’ in Read/Write mode.</description>
-        <label>ACT: Intel Account - Write All</label>
-        <sharedTo>
-            <group>ACT_Intel_Account_Write</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Intel Account</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>ACT_Partner_Account_Read_All</fullName>
-        <accessLevel>Read</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Read</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Shares all the Accounts of Record Type ‘Partner Account’ in Read Only mode.</description>
-        <label>ACT: Partner Account - Read All</label>
-        <sharedTo>
-            <group>ACT_Partner_Account_Read</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Partner Account Group</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>ACT_Partner_Account_Write_All</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Shares all the Accounts of Record Type ‘Partner Account’ in Read/Write mode.</description>
-        <label>ACT: Partner Account - Write All</label>
-        <sharedTo>
-            <group>ACT_Partner_Account_Write</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Partner Account Group</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>Account_All_AllEmployees_Read</fullName>
         <accessLevel>Read</accessLevel>
         <accountSettings>
@@ -216,7 +16,7 @@
         <criteriaItems>
             <field>RecordTypeId</field>
             <operation>equals</operation>
-            <value>Partner Account Group,Intel Account</value>
+            <value>Intel Account,Intel Ultimate Account</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -236,7 +36,7 @@
         <criteriaItems>
             <field>RecordTypeId</field>
             <operation>equals</operation>
-            <value>Inactive Account,Intel Account</value>
+            <value>Intel Account,Intel Ultimate Account,Inactive Account</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -256,76 +56,65 @@
         <criteriaItems>
             <field>RecordTypeId</field>
             <operation>equals</operation>
-            <value>Inactive Account,Intel Account</value>
+            <value>Inactive Account,Intel Ultimate Account,Intel Account</value>
         </criteriaItems>
         <criteriaItems>
             <field>Core_Geo__c</field>
             <operation>equals</operation>
             <value>ASMO</value>
         </criteriaItems>
-        <criteriaItems>
-            <field>OwnerId</field>
-            <operation>notEqual</operation>
-            <value>0053b00000DXgwBAAT</value>
-        </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>Account_Warranty_Requestor_Admins_Write</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>This Account Sharing Rule would provide Write Access to All Intel Accounts to AGS_Warranty requestor - Admins to PG users</description>
-        <label>Account_Warranty_Requestor_Admins-Write</label>
-        <sharedTo>
-            <group>Core_Warranty_requestor_Admins</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Intel Account</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>AnE_Admin_Users</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <label>A&amp;E Admin Users</label>
-        <sharedTo>
-            <group>AGS_AnE_Grant_Access_Admin_Users</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Intel Account</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>BU_Core_Access_For_BU_Exec_BU_ProdLeader</fullName>
+        <fullName>Account_Share_Retail_for_INDIA_Read_Only</fullName>
         <accessLevel>Read</accessLevel>
         <accountSettings>
             <caseAccessLevel>None</caseAccessLevel>
             <contactAccessLevel>Read</contactAccessLevel>
             <opportunityAccessLevel>None</opportunityAccessLevel>
         </accountSettings>
-        <description>Shares all the Accounts of Record Type ‘Intel Account’ in Read Only mode.</description>
-        <label>BU _Core _Access_Profile</label>
+        <label>Account Share Retail for INDIA Read Only</label>
         <sharedTo>
-            <group>BU_Core_Access_Exec_ProdLead</group>
+            <group>Core_MDF_CCP_Int_Retail_INDIA_RO</group>
         </sharedTo>
         <criteriaItems>
             <field>RecordTypeId</field>
             <operation>equals</operation>
-            <value>Intel Account</value>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008P1f</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>INDIA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CORE_MDF_ACCOUNT_CCP_CCF_ALL</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Read</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>ACCOUNT CCP CCF ALL</label>
+        <sharedTo>
+            <group>CORE_MDF_CCP_CCF_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008OTT</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -346,6 +135,54 @@
             <field>RecordTypeId</field>
             <operation>equals</operation>
             <value>CoMarketing</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CORE_MDF_ACCOUNT_CCP_Co_GTM_ALL</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Read</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>ACCOUNT CCP Co-GTM ALL</label>
+        <sharedTo>
+            <group>Core_MDF_Int_Co_GTM_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0PkDz0000004kxO</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CORE_MDF_ACCOUNT_CCP_DCF_ALL</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Read</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>ACCOUNT CCP DCF ALL</label>
+        <sharedTo>
+            <group>CORE_MDF_CCP_DCF_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008OTY</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -370,6 +207,30 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>CORE_MDF_ACCOUNT_CCP_SPCF_ALL</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Read</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>ACCOUNT CCP SPCF ALL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_SPCF_All</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008OTd</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Core_Account_All_AllContingent_Workers_Read</fullName>
         <accessLevel>Read</accessLevel>
         <accountSettings>
@@ -385,7 +246,7 @@
         <criteriaItems>
             <field>RecordTypeId</field>
             <operation>equals</operation>
-            <value>Partner Account Group,Intel Account</value>
+            <value>Intel Account,Intel Ultimate Account</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -405,7 +266,7 @@
         <criteriaItems>
             <field>RecordTypeId</field>
             <operation>equals</operation>
-            <value>Inactive Account,Intel Account</value>
+            <value>Intel Account,Intel Ultimate Account,Inactive Account</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -425,7 +286,7 @@
         <criteriaItems>
             <field>RecordTypeId</field>
             <operation>equals</operation>
-            <value>Inactive Account,Intel Account</value>
+            <value>Intel Account,Inactive Account,Intel Ultimate Account</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -450,12 +311,12 @@
         <criteriaItems>
             <field>Channel_Partner_Referance__c</field>
             <operation>notContain</operation>
-            <value>0Pk3b000000GnLUCA0</value>
+            <value>0Pkg00000008P1f</value>
         </criteriaItems>
         <criteriaItems>
             <field>Channel_Partner_Referance__c</field>
             <operation>notContain</operation>
-            <value>0Pk3b000000Gn0v</value>
+            <value>0Pkg00000008aG2</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -475,17 +336,12 @@
         <criteriaItems>
             <field>RecordTypeId</field>
             <operation>equals</operation>
-            <value>Inactive Account,Intel Account</value>
+            <value>Inactive Account,Intel Ultimate Account,Intel Account</value>
         </criteriaItems>
         <criteriaItems>
             <field>Core_Geo__c</field>
             <operation>equals</operation>
             <value>APJ</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>OwnerId</field>
-            <operation>notEqual</operation>
-            <value>0053b00000DXgwBAAT</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -505,17 +361,12 @@
         <criteriaItems>
             <field>RecordTypeId</field>
             <operation>equals</operation>
-            <value>Inactive Account,Intel Account</value>
+            <value>Inactive Account,Intel Ultimate Account,Intel Account</value>
         </criteriaItems>
         <criteriaItems>
             <field>Core_Geo__c</field>
             <operation>equals</operation>
             <value>EMEA</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>OwnerId</field>
-            <operation>notEqual</operation>
-            <value>0053b00000DXgwBAAT</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -535,17 +386,12 @@
         <criteriaItems>
             <field>RecordTypeId</field>
             <operation>equals</operation>
-            <value>Inactive Account,Intel Account</value>
+            <value>Inactive Account,Intel Ultimate Account,Intel Account</value>
         </criteriaItems>
         <criteriaItems>
             <field>Core_Geo__c</field>
             <operation>equals</operation>
             <value>PRC</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>OwnerId</field>
-            <operation>notEqual</operation>
-            <value>0053b00000DXgwBAAT</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -565,17 +411,12 @@
         <criteriaItems>
             <field>RecordTypeId</field>
             <operation>equals</operation>
-            <value>Inactive Account,Intel Account</value>
+            <value>Inactive Account,Intel Ultimate Account,Intel Account</value>
         </criteriaItems>
         <criteriaItems>
             <field>Core_Geo__c</field>
             <operation>equals</operation>
             <value>APJ,ASMO,EMEA,PRC</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>OwnerId</field>
-            <operation>notEqual</operation>
-            <value>0053b00000DXgwBAAT</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -595,38 +436,7 @@
         <criteriaItems>
             <field>RecordTypeId</field>
             <operation>equals</operation>
-            <value>Intel Account</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_FedCRM_Integration_Access</fullName>
-        <accessLevel>Read</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Read</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>This Sharing rule is created for integration between Sales CRM and Fed CRM</description>
-        <label>FedCRM Integration Access</label>
-        <sharedTo>
-            <group>Core_FedCRMIntegration_Acct_Visibility</group>
-        </sharedTo>
-        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
-        <criteriaItems>
-            <field>Core_Sales_Groups__c</field>
-            <operation>equals</operation>
-            <value>Americas US Sales Group</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Intel Account</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Inactive Account</value>
+            <value>Intel Ultimate Account,Intel Account</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -656,6 +466,620 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>Core_MDF_ACCOUNT_CCP_CCFB_ALL</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Read</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>ACCOUNT CCP CCFB ALL</label>
+        <sharedTo>
+            <group>CORE_MDF_CCP_CCFB_All</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008PW9</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_ACCOUNT_CCP_IPA_ALL</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Read</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>ACCOUNT CCP IPA ALL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_IPA_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008aG2</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_ACCOUNT_CCP_IPA_INTERNAL_ALL</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>To share with IPA programa dmina nd IPA proposal approver level1 and level 2</description>
+        <label>ACCOUNT CCP IPA INTERNAL ALL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_IPA_INTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>equals</operation>
+            <value>0Pkg00000008aG2</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_ACCOUNT_CCP_Retail_ALL</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Read</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>ACCOUNT CCP Retail ALL</label>
+        <sharedTo>
+            <group>CORE_MDF_CCP_CCFRetail_All</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>equals</operation>
+            <value>0Pkg00000008P1f</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_ACCOUNT_Sharing_CCP_Retail_ALL</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Read</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>ACCOUNT Sharing CCP Retail ALL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Retail_All</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008P1f</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Account_Share_CCFB_AllGeo_ReadOnly</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>Account Share for CCFB All Geo Read Only</description>
+        <label>Account Share for CCFB All Geo Read Only</label>
+        <sharedTo>
+            <group>Core_MDF_CCFB_Internal_All_Geo_Read_Only</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008PW9</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Account_Share_CCF_AllGeo_ReadOnly</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>Account Share for CCF All Geo Read Only</description>
+        <label>Account Share for CCF All Geo Read Only</label>
+        <sharedTo>
+            <group>Core_MDF_CCF_Internal_All_Geo_Read_Only</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008OTT</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Account_Share_CoGTM_AllGeo_ReadOnly</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Account Share for CoGTM All Geo Read Only</label>
+        <sharedTo>
+            <group>Core_MDF_CoGTM_Internal_All_Geo_Read_Only</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0PkDz0000004kxO</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Account_Share_DCF_AllGeo_ReadOnly</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>Account Share for DCF All Geo Read Only</description>
+        <label>Account Share for DCF All Geo Read Only</label>
+        <sharedTo>
+            <group>Core_MDF_DCF_Internal_All_Geo_Read_Only</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008OTY</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Account_Share_Retail_APJ_ReadOnly</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Read</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>Account Share Retail for APJ Read Only</description>
+        <label>Account Share Retail for APJ Read Only</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Int_Retail_APJ_RO</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008P1f</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>APJ</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Account_Share_Retail_ASMOLAR_ReadOnly</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Read</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>Account Share Retail for ASMO LAR Read Only</description>
+        <label>Account Share Retail for ASMO LAR  Read Only</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Int_Retail_ASMO_LAR_RO</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008P1f</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>ASMO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_Sub_Geo__c</field>
+            <operation>equals</operation>
+            <value>LAR</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Account_Share_Retail_ASMONAR_ReadOnly</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Read</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>Account Share Retail for ASMO NAR Read Only</description>
+        <label>Account Share Retail for ASMO NAR Read Only</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Int_Retail_ASMO_NAR_RO</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008P1f</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>ASMO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_Sub_Geo__c</field>
+            <operation>equals</operation>
+            <value>NAR</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Account_Share_Retail_EMEA_ReadOnly</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Read</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>Account Share Retail for EMEA Read Only</description>
+        <label>Account Share Retail for EMEA Read Only</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Int_Retail_EMEA_RO</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008P1f</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>EMEA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Account_Share_Retail_PRC_ReadOnly</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Read</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>Account Share Retail for PRC Read Only</description>
+        <label>Account Share Retail for PRC Read Only</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Int_Retail_PRC_RO</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008P1f</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>PRC</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Account_Share_Retail_for_All_Read_Only</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Read</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>Account Share Retail for All Read Only</description>
+        <label>Account Share Retail for All Read Only</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Retail_All_RO</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008P1f</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Account_Share_SPCF_AllGeo_ReadOnly</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Account Share for SPCF All Geo Read Only</label>
+        <sharedTo>
+            <group>Core_MDF_SPCF_Internal_All_Geo_Read_Only</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008OTd</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Account_Share_for_IPA_All_Geo_Read_Only</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>Account Share for IPA All Geo Read Only</description>
+        <label>Account Share for IPA All Geo Read Only</label>
+        <sharedTo>
+            <group>Core_MDF_IPA_Internal_All_Geo_Read_Only</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008aG2</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Account_Share_for_Retail_APJ</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Read</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>Account Share for Retail APJ</description>
+        <label>Account Share for Retail APJ</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Int_Retail_APJ</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008P1f</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>APJ</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Account_Share_for_Retail_ASMO_LAR</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Read</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>Account Share for Retail ASMO LAR</description>
+        <label>Account Share for Retail ASMO LAR</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Int_Retail_ASMO_LAR</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008P1f</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>ASMO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_Sub_Geo__c</field>
+            <operation>equals</operation>
+            <value>LAR</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Account_Share_for_Retail_ASMO_NAR</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Read</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>Account Share for Retail ASMO NAR</description>
+        <label>Account Share for Retail ASMO NAR</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Int_Retail_ASMO_NAR</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008P1f</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>ASMO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_Sub_Geo__c</field>
+            <operation>equals</operation>
+            <value>NAR</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Account_Share_for_Retail_EMEA</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Read</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>Account Share for Retail EMEA</description>
+        <label>Account Share for Retail EMEA</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Int_Retail_EMEA</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008P1f</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>EMEA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Account_Share_for_Retail_PRC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Read</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>Account Share for Retail PRC</description>
+        <label>Account Share for Retail PRC</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Int_Retail_PRC</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CoMarketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Channel_Partner_Referance__c</field>
+            <operation>contains</operation>
+            <value>0Pkg00000008P1f</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>PRC</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Core_MDF_Grant_Access_Rule</fullName>
         <accessLevel>Edit</accessLevel>
         <accountSettings>
@@ -672,296 +1096,6 @@
             <operation>equals</operation>
             <value>Intel Account</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_PSG_Accounts_Sharing</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Share all Intel Account and Direct Account Record Types</description>
-        <label>PSG Accounts Sharing</label>
-        <sharedTo>
-            <group>ags_internal_users</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Direct Account,Intel Account</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Cvent_Integration_User_Accounts</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Share all the Intel Accounts to Cvent Integration user.</description>
-        <label>Cvent - Integration User - Accounts</label>
-        <sharedTo>
-            <group>Cvent_Integration_User</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Intel Account</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>ECB_Account_Access_For_Internal_USERS</fullName>
-        <accessLevel>Read</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Read</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Sharing Rule For Providing Visibility to Internal Users For ECB Flagged Accounts.</description>
-        <label>ECB Account Access For Internal USERS</label>
-        <sharedTo>
-            <group>ECB_Accounts_Access</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Inactive Account</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_Export_Compliance_Block__c</field>
-            <operation>equals</operation>
-            <value>True</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>ELQ_Accounts</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Share all the Accounts to Eloqua System.</description>
-        <label>ELQ - Accounts</label>
-        <sharedTo>
-            <group>Core_PG_Eloqua_Integrator</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Intel Account</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>IPA_Internal_Intel_Admin_Users_Account</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Provides Read/Write access to all IPA Accounts.</description>
-        <label>IPA Internal - Intel Admin Users - Account</label>
-        <sharedTo>
-            <group>IPA_All_Intel_Admin_Users</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Intel Account</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_Intel_Partner_Alliance_PartnerGroup__c</field>
-            <operation>equals</operation>
-            <value>True</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>IPA_Internal_Intel_Admin_Users_Account_PAG</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Provides Read/Write access to all PAG Accounts.</description>
-        <label>IPA Internal - Intel Admin Users - Account PAG</label>
-        <sharedTo>
-            <group>IPA_All_Intel_Admin_Users</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Partner Account Group</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>PMP_Internal_Intel_Admin_Users_Account</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Provides Read/Write access to all IPA Accounts.</description>
-        <label>PMP Internal - Intel Admin Users - Account</label>
-        <sharedTo>
-            <group>PMP_All_Intel_Admin_Users</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Intel Account</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_Intel_Partner_Alliance_PartnerGroup__c</field>
-            <operation>equals</operation>
-            <value>True</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>PMP_Internal_Intel_Admin_Users_Account_PAG</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Provides Read/Write access to all PAG Accounts.</description>
-        <label>PMP Internal - Intel Admin Users - Account PAG</label>
-        <sharedTo>
-            <group>PMP_All_Intel_Admin_Users</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Partner Account Group</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>RDC_Integration_Account</fullName>
-        <accessLevel>Read</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Read</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>RDC Integration Account, to share only BTB</description>
-        <label>RDC Integration Account</label>
-        <sharedTo>
-            <group>RDC_Integration</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_B2B_Entitlement__c</field>
-            <operation>equals</operation>
-            <value>True</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>SWS_Account_6Sense_sharing</fullName>
-        <accessLevel>Read</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Read</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <label>SWS Account 6Sense sharing</label>
-        <sharedTo>
-            <group>SWS_6Sense_Admin_Group</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_Deactivated__c</field>
-            <operation>equals</operation>
-            <value>False</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_Account_Primary_Coverage__c</field>
-            <operation>equals</operation>
-            <value>Intel Covered</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Industry</field>
-            <operation>notEqual</operation>
-            <value>Government,Defense and Space</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Is_6Sense_Integration_Enabled__c</field>
-            <operation>equals</operation>
-            <value>True</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_Export_Compliance_Block__c</field>
-            <operation>equals</operation>
-            <value>False</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>SWS_Marketo_Account_Access</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <label>SWS Marketo Account Access</label>
-        <sharedTo>
-            <group>Marketo_Access_Group</group>
-        </sharedTo>
-        <booleanFilter>1 OR (2 AND 3)</booleanFilter>
-        <criteriaItems>
-            <field>Core_Intel_Partner_Alliance_PartnerGroup__c</field>
-            <operation>equals</operation>
-            <value>True</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_Account_Level__c</field>
-            <operation>equals</operation>
-            <value>Level 1,Level 2</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_Account_Primary_Coverage__c</field>
-            <operation>equals</operation>
-            <value>Intel Covered</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>SWS_Unrival_Data_Share</fullName>
-        <accessLevel>Read</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Read</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>SWS Unrival Data Share</description>
-        <label>SWS Unrival Data Share</label>
-        <sharedTo>
-            <group>SWS_Unrival_Data_Share</group>
-        </sharedTo>
-        <booleanFilter>1 AND 2</booleanFilter>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Intel Account</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Is_Shared_With_Unrival__c</field>
-            <operation>equals</operation>
-            <value>True</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
 </SharingRules>

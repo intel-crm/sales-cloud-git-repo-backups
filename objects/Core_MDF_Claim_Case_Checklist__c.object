@@ -154,6 +154,21 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
+    <fieldSets>
+        <fullName>Core_MDF_AI_Checklist_Fieldset</fullName>
+        <description>It is used in AI Audit Integration</description>
+        <displayedFields>
+            <field>Core_MDF_AI_Checklist_Status_Nm__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_MDF_AI_Generated_Comments_Txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>AI Checklist Fieldset</label>
+    </fieldSets>
     <fields>
         <fullName>Core_MDF_AI_Checklist_Status_Nm__c</fullName>
         <description>Holds the Checklist Status suggested by AI</description>
@@ -432,12 +447,6 @@
                     <label>Exceeds Gift &amp; Entertainment guide</label>
                 </value>
                 <value>
-                    <fullName>Exceeds Gifts &amp; Entertainment guide</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Exceeds Gifts &amp; Entertainment guide</label>
-                </value>
-                <value>
                     <fullName>Execution date mismatch</fullName>
                     <default>false</default>
                     <label>Execution date mismatch</label>
@@ -713,6 +722,20 @@
     <pluralLabel>Claim Case Checklists</pluralLabel>
     <searchLayouts/>
     <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Core_MDF_Validate_Compliant_Responses</fullName>
+        <active>false</active>
+        <description>Validates if every Compliant Checklist response does not have an Impact Amount tied to it.</description>
+        <errorConditionFormula>IF(AND(ISPICKVAL(Core_MDF_Checklist_Status__c, &apos;Compliant&apos;),  !ISNULL(Core_MDF_Impact_Amount__c)),true,false)</errorConditionFormula>
+        <errorMessage>Remove Impact Amount from items checked Compliant, or mark items with Impact Amount as Non-compliant</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Validate_Impact_Amount</fullName>
+        <active>false</active>
+        <description>Impact Amount should be greater than 0</description>
+        <errorConditionFormula>if(Core_MDF_Impact_Amount__c &lt;0,true,false)</errorConditionFormula>
+        <errorMessage>Enter Impact Amount (local) greater than or equal to 0</errorMessage>
+    </validationRules>
     <validationRules>
         <fullName>Core_MDF_Validate_NonCompliant_Responses</fullName>
         <active>true</active>

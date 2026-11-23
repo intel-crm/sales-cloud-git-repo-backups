@@ -152,7 +152,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>PRM_Account__c</fullName>
         <deleteConstraint>Restrict</deleteConstraint>
@@ -176,18 +176,7 @@
         <fullName>PRM_Builder_Strategy__c</fullName>
         <deleteConstraint>Restrict</deleteConstraint>
         <label>IPA Affiliation</label>
-        <lookupFilter>
-            <active>true</active>
-            <errorMessage>Association to account is not possible as Affiliation is Inactive</errorMessage>
-            <filterItems>
-                <field>PRM_Builder_Strategy__c.PRM_Active__c</field>
-                <operation>equals</operation>
-                <value>True</value>
-            </filterItems>
-            <isOptional>false</isOptional>
-        </lookupFilter>
         <referenceTo>PRM_Builder_Strategy__c</referenceTo>
-        <relationshipLabel>Account IPA Affiliations</relationshipLabel>
         <relationshipName>IPA_Affiliations</relationshipName>
         <required>true</required>
         <trackHistory>false</trackHistory>
@@ -195,34 +184,9 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>PRM_Builder__c</fullName>
-        <label>Builder</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>AI Builders</fullName>
-                    <default>false</default>
-                    <label>AI Builders</label>
-                </value>
-                <value>
-                    <fullName>Network Builders</fullName>
-                    <default>false</default>
-                    <label>Network Builders</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
         <fullName>PRM_Notes__c</fullName>
-        <inlineHelpText>On update of any field, Reason Text should also be updated</inlineHelpText>
-        <label>Reason Text</label>
-        <required>true</required>
+        <label>Notes</label>
+        <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
@@ -264,50 +228,15 @@
         <fullName>Intel_Account_Affiliation</fullName>
         <active>true</active>
         <label>Intel Account Affiliation</label>
-        <picklistValues>
-            <picklist>PRM_Builder__c</picklist>
-            <values>
-                <fullName>AI Builders</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Network Builders</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
     </recordTypes>
     <recordTypes>
         <fullName>Partner_Account_Group_Affiliation</fullName>
         <active>true</active>
         <label>Partner Account Group Affiliation</label>
-        <picklistValues>
-            <picklist>PRM_Builder__c</picklist>
-            <values>
-                <fullName>AI Builders</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Network Builders</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
     </recordTypes>
     <searchLayouts>
         <excludedStandardButtons>New</excludedStandardButtons>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
-    <validationRules>
-        <fullName>prevention_of_Duplicate_Comb_logic</fullName>
-        <active>true</active>
-        <description>to prevent duplicate combination of account and affiliation</description>
-        <errorConditionFormula>AND(  NOT( $Permission.PCC_Bypass_Automation ),
-    OR(
-    ISCHANGED(PRM_Account__c)
-   ,
-    ISCHANGED( PRM_Builder_Strategy__c )
-	)
-)</errorConditionFormula>
-        <errorMessage>You cannot update Account and Strategy fields</errorMessage>
-    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PDF Conversion POC</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PDF Conversion POCs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- PDF Conversion POCs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Channel Program --></label>
+        <name>Channel_Program__c</name>
+        <relationshipLabel><!-- PDF Conversion POCs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- PDF Genereation Email --></label>
+        <name>PDF_Genereation_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- PDF Number --></label>
+        <name>PDF_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reminder date --></label>
+        <name>Reminder_date__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Add_to_Mass_Merge_List --></label>
+        <name>Add_to_Mass_Merge_List</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- s_docs --></label>
+        <name>s_docs</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -21,6 +21,8 @@ public Without Sharing class Core_MDF_ExtendedDataTable_Controller {
     }
     @AuraEnabled(cacheable = true)
     public static DataTableResponse getReadOnlyDatatable(String objectName,List<String> selectedFields,List<String> selectedIds){
+        DataTableResponse finalWrapper   = new DataTableResponse();
+        try{
         String query='SELECT Id';
         List<SObject> lstDataTableData= new List<SObject>();
         List<DataTableColumns> lstDataColumns = new List<DataTableColumns>();
@@ -36,7 +38,6 @@ public Without Sharing class Core_MDF_ExtendedDataTable_Controller {
         //query metaData based on objectApi 
         fieldsApiToMetadataMap = maintainenceScreenMetaDataMap.get(objectName);
         shareObjectQuery = fieldsApiToMetadataMap.values()[0].Core_MDF_ShareObjectFields__c;
-        
         for(String fieldAPI : fieldsApiToMetadataMap.keySet()){
             fieldTypeOnDataColumns ='text';
             fieldType = fieldsApiToMetadataMap.get(fieldAPI).Core_MDF_Data_Type_Values__c;
@@ -54,8 +55,7 @@ public Without Sharing class Core_MDF_ExtendedDataTable_Controller {
             lstDataColumns.add(datacolumns);                                                         
         }
         query+=' FROM ' +String.escapeSingleQuotes(objectName)+' WHERE Id IN :selectedIds' ;
-        
-	list<sObject> sObjDataList = Database.query(String.escapeSingleQuotes(query));
+        list<sObject> sObjDataList = Database.query(String.escapeSingleQuotes(query));
         lstDataTableData = sObjDataList;
         pfrShareMap = fetchSampleRecs1(objectName, selectedIds);
         String result = shareObjectQuery.remove('select');
@@ -69,18 +69,22 @@ public Without Sharing class Core_MDF_ExtendedDataTable_Controller {
                                                                );  
                 lstSharingDataColumns.add(datacolumns);                                                         
         }
-        DataTableResponse finalWrapper   = new DataTableResponse();
         finalWrapper.lstDataTableData = lstDataTableData;
         finalWrapper.lstDataTableColumns = lstDataColumns;
         finalWrapper.lstSharingTableData = pfrShareMap;
         finalWrapper.shareObjectAPIName = shareObjectAPIName;
         finalWrapper.lstSharingDataTableColumns = lstSharingDataColumns;
-        
+        }
+        catch(Exception e){
+            Core_MDF_CCP_UtilityClass.logError(e);
+        }
         return finalWrapper;        
     }
     @AuraEnabled(cacheable = true)
     public static DataTableResponse getEditableDataTable(String objectName,List<String> selectedFields,List<String> selectedIds){
-           String query='SELECT Id';
+        DataTableResponse finalWrapper   = new DataTableResponse();
+        try{
+        String query='SELECT Id';
         List<SObject> lstDataTableData= new List<SObject>();
         List<optionsObj> lstOptionsObjList = new List<optionsObj>();
         List<optionsObj> blankOptionsObjList = new List<optionsObj>();
@@ -147,11 +151,12 @@ public Without Sharing class Core_MDF_ExtendedDataTable_Controller {
         query+=' FROM ' +String.escapeSingleQuotes(objectName)+' WHERE Id IN :selectedIds' ;
         list<sObject> sObjDataList = Database.query(String.escapeSingleQuotes(query));
         lstDataTableData = sObjDataList;
-        
-      
-        DataTableResponse finalWrapper   = new DataTableResponse();
         finalWrapper.lstDataTableData = lstDataTableData;
         finalWrapper.lstDataTableColumns = lstDataColumns;
+        }
+        catch(Exception e){
+            Core_MDF_CCP_UtilityClass.logError(e);
+        }
         return finalWrapper;
     }
     public class DataTableResponse {
@@ -298,14 +303,12 @@ public Without Sharing class Core_MDF_ExtendedDataTable_Controller {
     }
     public static List<optionsObj> getPicklistValuesForObj(String strObjectName,String strPicklistField){
         List<optionsObj> optionsObjList = new List<optionsObj>();
-      
         Map<String, String> mapPickListValues = new Map<String, String>();
         Schema.SObjectType objSobjectType = Schema.getGlobalDescribe().get(strObjectName);
         Schema.DescribeSObjectResult objDescribeSobject = objSobjectType.getDescribe();
         Map<String, Schema.SObjectField> mapFields = objDescribeSobject.fields.getMap();
         List<Schema.PicklistEntry> lstPickListValues = mapFields.get(strPicklistField).getDescribe().getPickListValues();
         for (Schema.PicklistEntry objPickList : lstPickListValues) {
-            
             optionsObj optionsObjIns1 = new optionsObj(objPickList.getLabel(),objPickList.getValue());
             optionsObjList.add(optionsObjIns1);
 		}
@@ -316,12 +319,11 @@ public Without Sharing class Core_MDF_ExtendedDataTable_Controller {
     public static  Map<String, List<sObject>> fetchSampleRecs1(String ObjectName, List<String> selectedRecId) {
         String shareObjectQuery = '';
         Map<String,Core_MDF_CCP_Maintenance_Screen__mdt> fieldsApiToMetadataMap = new Map<String,Core_MDF_CCP_Maintenance_Screen__mdt>();
-
+        Map<String, List<sObject>> pfrShareMap = new Map<String, List<sObject>>();
+        try{
         fieldsApiToMetadataMap = maintainenceScreenMetaDataMap.get(objectName);
         shareObjectQuery = fieldsApiToMetadataMap.values()[0].Core_MDF_ShareObjectFields__c;
-        Map<String, List<sObject>> pfrShareMap = new Map<String, List<sObject>>();
         shareObjectQuery+=' IN :selectedRecId' ;
-     
         if(ObjectName=='PartnerFundRequest'){
 			List<PartnerFundRequestShare> prfShareRecord = Database.query(shareObjectQuery);
             for(PartnerFundRequestShare rec :prfShareRecord){
@@ -390,7 +392,10 @@ public Without Sharing class Core_MDF_ExtendedDataTable_Controller {
                 }
             }
         }
-       
+        }
+        catch(Exception e){
+            Core_MDF_CCP_UtilityClass.logError(e);
+        }
         return pfrShareMap;
 	}
     // update SObjects dynamically 
@@ -400,29 +405,30 @@ public Without Sharing class Core_MDF_ExtendedDataTable_Controller {
         Boolean isBatchRun = false;
         Set<String> successIdSet = new Set<String>();
         Set<String> failedIdSet = new Set<String>();
-       
+        dataUpdateResult result = new dataUpdateResult();
+        try{
+            String incidentnoTrim = '';
         if(incidentno!=null){
-            incidentno = incidentno.trim();
+            incidentnoTrim = incidentno.trim();
         }
-        
         Schema.SObjectType sObjectType = records.getSObjectType();
         if(records.size()>50){
             isBatchRun =true;
-            Core_MDF_CCP_BatchUpadateBulkData BatchUpadateBulkData= new Core_MDF_CCP_BatchUpadateBulkData(records,incidentno,ObjectName);
+            Core_MDF_CCP_BatchUpadateBulkData BatchUpadateBulkData= new Core_MDF_CCP_BatchUpadateBulkData(records,incidentnoTrim,ObjectName);
             Database.executeBatch(BatchUpadateBulkData,2);            
         }else{
-            List<Database.SaveResult> result = database.update(records, false);
+            List<Database.SaveResult> savedResult = database.update(records, false);
             //Creating recordIdToReasonMap
-            for(Integer i=0;i<result.size();i++){
-                if (!result?.get(i)?.isSuccess()){
-                    String recordId = result?.get(i)?.getId();
-                    Database.Error error = result?.get(i)?.getErrors()?.get(0);
+            for(Integer i=0;i<savedResult.size();i++){
+                if (!savedResult?.get(i)?.isSuccess()){
+                    String recordId = savedResult?.get(i)?.getId();
+                    Database.Error error = savedResult?.get(i)?.getErrors()?.get(0);
                     String failedDML = error?.getMessage();
                     recordIdToReasonMap.put(recordId,failedDML);
                    	failedIdSet.add(recordId);
                 }   
                 else{
-                    String recordId = result?.get(i)?.getId();
+                    String recordId = savedResult?.get(i)?.getId();
                     recordIdToReasonMap.put(recordId,'Success');
                     successIdSet.add(recordId);
                 }
@@ -435,12 +441,16 @@ public Without Sharing class Core_MDF_ExtendedDataTable_Controller {
             Core_MDF_Record_Tracking__c trackingIncidentRecord = new Core_MDF_Record_Tracking__c();
             trackingIncidentRecord.Core_MDF_Object_Name_nm__c = ObjectName;
             trackingIncidentRecord.Core_MDF_Record_Ids__c = successIds;
-            trackingIncidentRecord.Core_MDF_Target_Record_Id__c = incidentno; 
+            trackingIncidentRecord.Core_MDF_Target_Record_Id__c = incidentnoTrim; 
             insert trackingIncidentRecord;
         }
             
        
-        dataUpdateResult result = new dataUpdateResult(recordIdToReasonMap,isBatchRun);
+        result = new dataUpdateResult(recordIdToReasonMap,isBatchRun);
+          }
+        catch(Exception e){
+            Core_MDF_CCP_UtilityClass.logError(e);
+        }
         return result;
 	}
     //wrapper class to update bulk data
@@ -449,6 +459,7 @@ public Without Sharing class Core_MDF_ExtendedDataTable_Controller {
         public Map<String,String> recordIdToReasonMap = new Map<String,String>();
         @AuraEnabled
         public Boolean isBatchRun = false;
+        public dataUpdateResult(){}
         public dataUpdateResult(Map<String,String> recordIdToReasonMap, Boolean isBatchRun)
         {
             this.recordIdToReasonMap = recordIdToReasonMap;
@@ -464,7 +475,7 @@ public Without Sharing class Core_MDF_ExtendedDataTable_Controller {
             
             Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
             List<String> sendTo = new List<String>();
-            sendTo.add(loggedInUserId); 
+            sendTo.add(loggedInUserId);
             mail.setToAddresses(sendTo);
             mail.setSubject(System.Label.Core_MDF_CCP_BulkUpdateEmailSubject); 
             mail.setHtmlBody(getEmailTemplateBody(loggedInUserId,objectSelected,errorMsg));
@@ -479,7 +490,6 @@ public Without Sharing class Core_MDF_ExtendedDataTable_Controller {
                     return true;
                     
                 } else {
-                    //System.debug('The email failed to send: ' +  results[0].errors[0].message);
                 }
             }
         

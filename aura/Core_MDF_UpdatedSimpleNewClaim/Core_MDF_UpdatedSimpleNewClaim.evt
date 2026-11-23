@@ -1,0 +1,5 @@
+<aura:event type="COMPONENT" description="Updated Simple New Claim">
+    <aura:attribute name="updatedSimpleNewClaim" type="PartnerFundClaim" description="New Claim"/>
+<aura:attribute name="isUpdatedClaimValid" type="Boolean" description="Flag to check all form fields validated"/>
+<aura:attribute name="isUpdatedClaimEdit" type="Boolean" description="Flag to check claim clone or edit"/>
+</aura:event>

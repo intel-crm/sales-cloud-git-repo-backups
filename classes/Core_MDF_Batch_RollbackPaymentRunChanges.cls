@@ -31,7 +31,7 @@ public class Core_MDF_Batch_RollbackPaymentRunChanges implements Database.Batcha
         for(PartnerFundClaim claim : listOfClaims)
         {   
             // Change Status of Positive claims to Payment Due and Negative Claim that are of C Type to Pending Available Funds
-            claim.Core_MDF_Status__c = (!claim.Core_MDF_C_Type_Ind__c)?Label.Core_MDF_Claim_Status_Payment_Due : Label.Core_MDF_Claim_Status_Pending_Available_Fund;
+            claim.Core_MDF_Status__c = (!claim.Core_MDF_C_Type_Ind__c)?Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Payment_Due') :Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Pending_Available_Fund');
             // Reseting Payment Field to Empty
             claim.Core_MDF_Payment_Id__c = NULL;
             claim.Core_MDF_Payment_Rollback_Reason_nm__c = 'Payment Run Issue';

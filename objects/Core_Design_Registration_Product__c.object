@@ -154,51 +154,6 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
-    <fieldSets>
-        <fullName>CPQ_Lookup</fullName>
-        <description>Lookup fields</description>
-        <displayedFields>
-            <field>Core_Design_Registration_Id__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Core_Opportunity_Nm__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Core_End_Customer_Account_Nm__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Core_Product_Id__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Core_Product_Id__r.Core_OPN__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Core_Product_Id__r.Core_Product_Density_Value__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>core_cpq_OPN_Concatenation_txt__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>core_cpq_product_hierarchy_txt__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <label>CPQ_Lookup</label>
-    </fieldSets>
     <fields>
         <fullName>Core_Active_Status__c</fullName>
         <formula>Core_Product_Id__r.IsActive</formula>
@@ -211,26 +166,16 @@
     <fields>
         <fullName>Core_Comment_Txt__c</fullName>
         <label>Comments</label>
-        <length>20000</length>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>10</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_DR_Eligible_Status__c</fullName>
-        <formula>Core_Product_Id__r.Core_Design_Registration_Eligible_Ind__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>DR Eligible Status</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
+        <type>TextArea</type>
     </fields>
     <fields>
         <fullName>Core_Design_Product_Status_Nm__c</fullName>
         <description>The status values which drive the Design Registration Product through the process.  Valid values are: Pending,Approved, Rejected,Cancelled, Retired.</description>
-        <inlineHelpText>The status indicates whether the registration product line item is: pending, approved, rejected, or canceled.</inlineHelpText>
-        <label>DR Product Status</label>
+        <inlineHelpText>The status values which drive the Design Registration Product through the process.  Valid values are: Pending, Approved, Rejected, Cancelled.</inlineHelpText>
+        <label>Status</label>
         <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -264,21 +209,16 @@
                     <default>true</default>
                     <label>Pending</label>
                 </value>
-                <value>
-                    <fullName>Expired</fullName>
-                    <default>false</default>
-                    <label>Expired</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
     <fields>
         <fullName>Core_Design_Registration_Id__c</fullName>
         <description>This is the line item&apos;s Parent Design Registration Record.</description>
-        <inlineHelpText>No partner input</inlineHelpText>
-        <label>Design-Deal Registration</label>
+        <inlineHelpText>This is the Design Registration Product&apos;s Parent Design Registration record.</inlineHelpText>
+        <label>Design Registration</label>
         <referenceTo>Core_Design_Registration__c</referenceTo>
-        <relationshipLabel>Design-Deal Registration Products</relationshipLabel>
+        <relationshipLabel>Design Registration Products</relationshipLabel>
         <relationshipName>Design_Registration_Line_Items</relationshipName>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
@@ -305,7 +245,7 @@
         <externalId>false</externalId>
         <formula>Core_Design_Registration_Id__r.Core_Design_Registration_Nm__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Design-Deal Registration Name</label>
+        <label>Design Registration Name</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -330,6 +270,7 @@
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Design Registration Stage</label>
         <referenceTo>Core_Design_Registration_Stage__c</referenceTo>
+        <relationshipLabel>Design Registration Products</relationshipLabel>
         <relationshipName>Design_Registration_Products</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -388,21 +329,9 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_External_Id__c</fullName>
-        <externalId>true</externalId>
-        <label>External Id</label>
-        <length>40</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Full_Year_Qty__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>The number of requested units</inlineHelpText>
-        <label>Quantity</label>
+        <label>Quantity (Full Production Year)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
@@ -514,7 +443,6 @@
         <label>Product</label>
         <lookupFilter>
             <active>true</active>
-            <booleanFilter>((1 AND 2 AND 3) OR (2 AND 3 AND 7)) OR 4 OR 5 OR 6 OR 8</booleanFilter>
             <filterItems>
                 <field>Product2.Core_Design_Registration_Eligible_Ind__c</field>
                 <operation>equals</operation>
@@ -530,38 +458,13 @@
                 <operation>equals</operation>
                 <value>True</value>
             </filterItems>
-            <filterItems>
-                <field>$Profile.Name</field>
-                <operation>equals</operation>
-                <value>System Administrator</value>
-            </filterItems>
-            <filterItems>
-                <field>$Profile.Name</field>
-                <operation>equals</operation>
-                <value>Data Ops</value>
-            </filterItems>
-            <filterItems>
-                <field>$Source.Core_Design_Product_Status_Nm__c</field>
-                <operation>equals</operation>
-                <value>Rejected</value>
-            </filterItems>
-            <filterItems>
-                <field>$Source.PCC_Product_Additional_Attribute__c</field>
-                <operation>notEqual</operation>
-                <value></value>
-            </filterItems>
-            <filterItems>
-                <field>$Source.Core_Design_Product_Status_Nm__c</field>
-                <operation>equals</operation>
-                <value>Expired</value>
-            </filterItems>
             <isOptional>false</isOptional>
         </lookupFilter>
         <referenceTo>Product2</referenceTo>
-        <relationshipLabel>Design-Deal Registration Products</relationshipLabel>
+        <relationshipLabel>Design Registration Products</relationshipLabel>
         <relationshipName>Design_Registration_Line_Items</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -586,542 +489,17 @@
         <type>Date</type>
     </fields>
     <fields>
-        <fullName>Core_Submission_Type__c</fullName>
-        <label>Submission Type</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>M2M</fullName>
-                    <default>false</default>
-                    <label>M2M</label>
-                </value>
-                <value>
-                    <fullName>Partner</fullName>
-                    <default>false</default>
-                    <label>Partner</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
         <fullName>Core_Target_Resale_Amt__c</fullName>
         <description>Same as Sales Price on Oppty Line</description>
-        <inlineHelpText>Target Resale Price is automatically populated by SDC price Once Product is selected  and is read‑only for distributors. In cases where SDC pricing is not available, the field may remain blank at the time of submission and will be completed by Intel during the design registration review process. The displayed Target Resale Price does not constitute approval, endorsement, or a pricing commitment by Intel.</inlineHelpText>
         <label>Target Resale Price</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
-    <fields>
-        <fullName>Core_ThrowValidation__c</fullName>
-        <defaultValue>true</defaultValue>
-        <label>Core_ThrowValidation</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>DDR_Target_Resale_Price_Note__c</fullName>
-        <defaultValue>&quot;Target Resale Price is automatically populated by SDC price Once Product is selected  and is read‑only for distributors. In cases where SDC pricing is not available, the field may remain blank at the time of submission and will be completed by Intel during the design registration review process. The displayed Target Resale Price does not constitute approval, endorsement, or a pricing commitment by Intel.&quot;</defaultValue>
-        <label>Target Resale Price Note</label>
-        <length>1024</length>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>5</visibleLines>
-    </fields>
-    <fields>
-        <fullName>MMID_or_Ordering_code__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <inlineHelpText>Search Product by MMID or Old MMID or Ordering Code</inlineHelpText>
-        <label>MMID or Old MMID or Ordering code</label>
-        <lookupFilter>
-            <active>true</active>
-            <booleanFilter>(9 OR ((1 OR 6) AND (2) AND (4) AND ((3 OR 5) OR (7 AND 8)))) OR 10</booleanFilter>
-            <filterItems>
-                <field>Product_MM_Attribute_Mapping__c.Spec_Code__c</field>
-                <operation>startsWith</operation>
-                <value>S</value>
-            </filterItems>
-            <filterItems>
-                <field>Product_MM_Attribute_Mapping__c.Custom_Indicator__c</field>
-                <operation>notEqual</operation>
-                <value>Y, O</value>
-            </filterItems>
-            <filterItems>
-                <field>Product_MM_Attribute_Mapping__c.L4ProductAvailable__c</field>
-                <operation>equals</operation>
-                <value>True</value>
-            </filterItems>
-            <filterItems>
-                <field>Product_MM_Attribute_Mapping__c.Product_Status__c</field>
-                <operation>notEqual</operation>
-                <value>RT, OB</value>
-            </filterItems>
-            <filterItems>
-                <field>Product_MM_Attribute_Mapping__c.L5ProductAvailable__c</field>
-                <operation>equals</operation>
-                <value>True</value>
-            </filterItems>
-            <filterItems>
-                <field>Product_MM_Attribute_Mapping__c.Spec_Code__c</field>
-                <operation>equals</operation>
-                <value></value>
-            </filterItems>
-            <filterItems>
-                <field>Product_MM_Attribute_Mapping__c.PCC_L4_L5_Available_For_New_Design__c</field>
-                <operation>equals</operation>
-                <value>True</value>
-            </filterItems>
-            <filterItems>
-                <field>$Source.Core_Design_Product_Status_Nm__c</field>
-                <operation>equals</operation>
-                <value>Approved, Cancelled</value>
-            </filterItems>
-            <filterItems>
-                <field>$Source.Core_Design_Product_Status_Nm__c</field>
-                <operation>equals</operation>
-                <value>Rejected, Expired</value>
-            </filterItems>
-            <filterItems>
-                <field>$Profile.Name</field>
-                <operation>equals</operation>
-                <value>System Administrator</value>
-            </filterItems>
-            <isOptional>false</isOptional>
-        </lookupFilter>
-        <referenceTo>Product_MM_Attribute_Mapping__c</referenceTo>
-        <relationshipLabel>Design-Deal Registration Products</relationshipLabel>
-        <relationshipName>Design_Registration_Products1</relationshipName>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>PCC_Additional_Comments__c</fullName>
-        <label>Additional Comments</label>
-        <length>20000</length>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>10</visibleLines>
-    </fields>
-    <fields>
-        <fullName>PCC_Competitor_Name__c</fullName>
-        <externalId>false</externalId>
-        <inlineHelpText>Partner&apos;s competitor assumed to bid for this opportunity</inlineHelpText>
-        <label>Competitor Name</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PCC_Competitor_OEM_Name__c</fullName>
-        <inlineHelpText>Non-Intel based OEM that partner&apos;s competitor will bid for this opportunity.</inlineHelpText>
-        <label>Competitor OEM Name</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetName>PCC_Deal_Competitor_OEM_Name</valueSetName>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>PCC_Competitor_Product_Provider__c</fullName>
-        <externalId>false</externalId>
-        <formula>PCC_Competitor_Product__r.Pricing_Competitor_Product_Provider_Nm__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Competitor Product Provider</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PCC_Competitor_Product__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <inlineHelpText>Non-Intel product underlying platform or system that partner&apos;s competitor will bid for this opportunity.</inlineHelpText>
-        <label>Competitor Product</label>
-        <lookupFilter>
-            <active>true</active>
-            <booleanFilter>((1 OR (4 AND 5)) AND 2 AND 3) OR 6</booleanFilter>
-            <filterItems>
-                <field>Pricing_Competitor_Product__c.RecordTypeId</field>
-                <operation>equals</operation>
-                <value>Client</value>
-            </filterItems>
-            <filterItems>
-                <field>Pricing_Competitor_Product__c.Pricing_Active_cb__c</field>
-                <operation>equals</operation>
-                <value>True</value>
-            </filterItems>
-            <filterItems>
-                <field>$Source.RecordTypeId</field>
-                <operation>equals</operation>
-                <value>Deal Registration Product - Locked, Deal Registration Product - Partner, Deal Registration Product - Intel</value>
-            </filterItems>
-            <filterItems>
-                <field>Pricing_Competitor_Product__c.RecordTypeId</field>
-                <operation>equals</operation>
-                <value>&apos;&apos;</value>
-            </filterItems>
-            <filterItems>
-                <field>Pricing_Competitor_Product__c.Name</field>
-                <operation>equals</operation>
-                <value>Write In Product</value>
-            </filterItems>
-            <filterItems>
-                <field>$Profile.Name</field>
-                <operation>equals</operation>
-                <value>System Administrator</value>
-            </filterItems>
-            <isOptional>false</isOptional>
-        </lookupFilter>
-        <referenceTo>Pricing_Competitor_Product__c</referenceTo>
-        <relationshipLabel>Design-Deal Registration Products</relationshipLabel>
-        <relationshipName>Design_Registration_Products</relationshipName>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>PCC_Competitor_System_Model__c</fullName>
-        <description>Represents the name of the competing system model or platform in the quote.</description>
-        <externalId>false</externalId>
-        <inlineHelpText>Non-Intel based platform or system that partner&apos;s competitor will bid for this opportunity.</inlineHelpText>
-        <label>Competitor System Model</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PCC_Competitor_Write_In_OEM_Name__c</fullName>
-        <externalId>false</externalId>
-        <inlineHelpText>If &apos;Write In Competitor OEM Name&apos; is selected in the Competitor OEM Name field, please enter the name of the unlisted Competitor OEM. If &apos;Write In Competitor OEM Name&apos; is not selected, leave this field blank.</inlineHelpText>
-        <label>Write In Competitor OEM Name</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PCC_DDI_focused__c</fullName>
-        <inlineHelpText>This is to identify the Distributor Design Incentive(DDI) program pay rate at product level</inlineHelpText>
-        <label>DDI Program Pay Rate</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Tier 1</fullName>
-                    <default>false</default>
-                    <label>Tier 1</label>
-                </value>
-                <value>
-                    <fullName>Tier 2</fullName>
-                    <default>false</default>
-                    <label>Tier 2</label>
-                </value>
-                <value>
-                    <fullName>Tier 3</fullName>
-                    <default>false</default>
-                    <label>Tier 3</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>PCC_Deal_Eligible_Status__c</fullName>
-        <formula>PCC_Product_Additional_Attribute__r.Eligible_for_Deal_Reg__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Deal Reg Eligible ?</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>PCC_Eligible_for_DDI_Payment__c</fullName>
-        <inlineHelpText>This is to indicate if the product is eligible for the Distributor Design Incentive(DDI) payment</inlineHelpText>
-        <label>DDI Program Payment Eligible</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Yes</fullName>
-                    <default>false</default>
-                    <label>Yes</label>
-                </value>
-                <value>
-                    <fullName>No</fullName>
-                    <default>false</default>
-                    <label>No</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>PCC_Form_Factor__c</fullName>
-        <inlineHelpText>The type of device into which the product is integrated in</inlineHelpText>
-        <label>Form Factor</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetName>PCC_Deal_Form_Factor</valueSetName>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>PCC_OEM_Name__c</fullName>
-        <inlineHelpText>Please select OEM provider</inlineHelpText>
-        <label>OEM Name</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetName>PCC_Deal_OEM_Name</valueSetName>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>PCC_Payment_Expiration_Date__c</fullName>
-        <inlineHelpText>The is to indicate the expiration date of the Distributor Design Incentive(DDI) payment at product level</inlineHelpText>
-        <label>DDI Program Payment Expiration Date</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>PCC_Product_Additional_Attribute__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <inlineHelpText>Please select products</inlineHelpText>
-        <label>Deal Product</label>
-        <lookupFilter>
-            <active>true</active>
-            <booleanFilter>((2 OR 3) AND (1 OR 3)) OR 4</booleanFilter>
-            <filterItems>
-                <field>Product_Additional_Attribute__c.Is_Product_Active__c</field>
-                <operation>equals</operation>
-                <value>True</value>
-            </filterItems>
-            <filterItems>
-                <field>Product_Additional_Attribute__c.Eligible_for_Deal_Reg__c</field>
-                <operation>equals</operation>
-                <value>True</value>
-            </filterItems>
-            <filterItems>
-                <field>$Source.Core_Design_Product_Status_Nm__c</field>
-                <operation>equals</operation>
-                <value>Rejected</value>
-            </filterItems>
-            <filterItems>
-                <field>$Profile.Name</field>
-                <operation>equals</operation>
-                <value>System Administrator</value>
-            </filterItems>
-            <isOptional>false</isOptional>
-        </lookupFilter>
-        <referenceTo>Product_Additional_Attribute__c</referenceTo>
-        <relationshipLabel>Design-Deal Registration Products</relationshipLabel>
-        <relationshipName>Design_Registration_Products</relationshipName>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>PCC_Programs_Eligible__c</fullName>
-        <externalId>false</externalId>
-        <formula>IF(INCLUDES( PCC_Product_Additional_Attribute__r.Programs_Eligible__c ,&quot;PDI&quot;),&quot;PDI;&quot;,null)</formula>
-        <label>Programs Eligible</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PCC_Quote_Line_Pricing_End_Date__c</fullName>
-        <inlineHelpText>The requested end date of the product line item and last date consumption can happen</inlineHelpText>
-        <label>Quote Line Pricing End Date</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>PCC_Quote_Line_Pricing_Start_Date__c</fullName>
-        <inlineHelpText>The requested date on which the product line item pricing goes into effect and consumption of the product begins</inlineHelpText>
-        <label>Quote Line Pricing Start Date</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>PCC_Recommended_Customer_Price__c</fullName>
-        <label>Recommended Customer Price</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>2</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Currency</type>
-    </fields>
-    <fields>
-        <fullName>PCC_Record_Type_Drp__c</fullName>
-        <description>Check the record type make read only field</description>
-        <externalId>false</externalId>
-        <formula>RecordType.Name</formula>
-        <label>Record Type</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PCC_Standard_Distributor_Price__c</fullName>
-        <label>Standard Distributor Price</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>2</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Currency</type>
-    </fields>
-    <fields>
-        <fullName>PCC_System_Model__c</fullName>
-        <externalId>false</externalId>
-        <inlineHelpText>The OEM model name</inlineHelpText>
-        <label>System Model</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PCC_Total_Design_Registration_Price__c</fullName>
-        <formula>Core_Full_Year_Qty__c  *  Core_Target_Resale_Amt__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Design Registration Total Price</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>2</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Currency</type>
-    </fields>
-    <fields>
-        <fullName>PCC_Write_In_Competitor_Product__c</fullName>
-        <description>This is a free form text field where a user can enter the product if it is not yet available (i.e. future sku).</description>
-        <externalId>false</externalId>
-        <inlineHelpText>If &apos;Write In Product&apos; is selected in the Competitor Product field, please enter the name of the unlisted product. If &apos;Write In Product&apos; is not selected, leave this field blank.</inlineHelpText>
-        <label>Write In Competitor Product</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PCC_Write_In_OEM_Name__c</fullName>
-        <externalId>false</externalId>
-        <inlineHelpText>If &apos;Write In OEM Name&apos; is selected in the OEM Name field, please enter the name of the unlisted OEM. If &apos;Write In OEM Name&apos; is not selected, leave this field blank.</inlineHelpText>
-        <label>Write In OEM Name</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>ProductLookupValidate__c</fullName>
-        <defaultValue>true</defaultValue>
-        <label>ProductLookupValidate</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Product_Selection_information_Message__c</fullName>
-        <defaultValue>&quot;Please select Product or MMID or Old MMID or Ordering code&quot;</defaultValue>
-        <externalId>false</externalId>
-        <label>Product Selection information Message</label>
-        <length>100</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>core_cpq_OPN_Concatenation_txt__c</fullName>
-        <description>This field shall show 
-&apos;Code Name&apos; &apos;-&apos; &apos;Product Density&apos; if the OPN in the DRP is VPLCH (Pre-release) or
-&apos;Product Series&apos; &apos;-&apos; &apos;Product Group&apos; if the OPN in the DRP is VPH (Post-release)</description>
-        <externalId>false</externalId>
-        <formula>IF(Core_Product_Id__r.Core_Hierarchy_ID__c = &apos;59&apos;,   Core_Product_Id__r.Core_Code_Name__c  + &quot; - &quot; +  Core_Product_Id__r.Core_Product_Density_Value__c , 
-IF(Core_Product_Id__r.Core_Hierarchy_ID__c = &apos;43&apos;, Core_Product_Id__r.Core_Product_Series__c +  &quot; - &quot; +  Core_Product_Id__r.Core_Product_Group__c,null))</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>OPN Concatenation</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>core_cpq_product_hierarchy_txt__c</fullName>
-        <description>This field shows the Hierarchy Name of the Product in the DRP Lookup on QL.</description>
-        <externalId>false</externalId>
-        <formula>Core_Product_Id__r.Core_Hierarchy_Name__c</formula>
-        <label>Product Hierarchy</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <label>Design-Deal Registration Product</label>
+    <label>Design Registration Product</label>
     <listViews>
         <fullName>All_Design_Products</fullName>
         <columns>NAME</columns>
@@ -1158,16 +536,11 @@ IF(Core_Product_Id__r.Core_Hierarchy_ID__c = &apos;43&apos;, Core_Product_Id__r.
     </listViews>
     <nameField>
         <displayFormat>DR-PROD-{YYYY}{MM}{DD}-{0000000}</displayFormat>
-        <label>Design-Deal Registration Line ID</label>
+        <label>Design Registration Line ID</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Design-Deal Registration Products</pluralLabel>
-    <profileSearchLayouts>
-        <fields>NAME</fields>
-        <fields>Core_Product_Id__c</fields>
-        <profileName>Partner</profileName>
-    </profileSearchLayouts>
+    <pluralLabel>Design Registration Products</pluralLabel>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <recordTypes>
         <fullName>Core_Design_Registration_Product_Intel</fullName>
@@ -1185,10 +558,6 @@ IF(Core_Product_Id__r.Core_Hierarchy_ID__c = &apos;43&apos;, Core_Product_Id__r.
                 <default>false</default>
             </values>
             <values>
-                <fullName>Expired</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Pending</fullName>
                 <default>true</default>
             </values>
@@ -1198,136 +567,6 @@ IF(Core_Product_Id__r.Core_Hierarchy_ID__c = &apos;43&apos;, Core_Product_Id__r.
             </values>
             <values>
                 <fullName>Retired</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_Submission_Type__c</picklist>
-            <values>
-                <fullName>M2M</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Partner</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Competitor_OEM_Name__c</picklist>
-            <values>
-                <fullName>Acer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Apple</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Dell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Write In Competitor OEM Name</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_DDI_focused__c</picklist>
-            <values>
-                <fullName>Tier 1</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tier 2</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tier 3</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Eligible_for_DDI_Payment__c</picklist>
-            <values>
-                <fullName>No</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Yes</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Form_Factor__c</picklist>
-            <values>
-                <fullName>2 in 1</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>AIO</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cloud Client</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Desktop</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Desktop Workstation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mobile Workstation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Notebook</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_OEM_Name__c</picklist>
-            <values>
-                <fullName>Acer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Apple</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Dell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Write In OEM Name</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1348,10 +587,6 @@ IF(Core_Product_Id__r.Core_Hierarchy_ID__c = &apos;43&apos;, Core_Product_Id__r.
                 <default>false</default>
             </values>
             <values>
-                <fullName>Expired</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Pending</fullName>
                 <default>true</default>
             </values>
@@ -1361,136 +596,6 @@ IF(Core_Product_Id__r.Core_Hierarchy_ID__c = &apos;43&apos;, Core_Product_Id__r.
             </values>
             <values>
                 <fullName>Retired</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_Submission_Type__c</picklist>
-            <values>
-                <fullName>M2M</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Partner</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Competitor_OEM_Name__c</picklist>
-            <values>
-                <fullName>Acer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Apple</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Dell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Write In Competitor OEM Name</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_DDI_focused__c</picklist>
-            <values>
-                <fullName>Tier 1</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tier 2</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tier 3</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Eligible_for_DDI_Payment__c</picklist>
-            <values>
-                <fullName>No</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Yes</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Form_Factor__c</picklist>
-            <values>
-                <fullName>2 in 1</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>AIO</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cloud Client</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Desktop</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Desktop Workstation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mobile Workstation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Notebook</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_OEM_Name__c</picklist>
-            <values>
-                <fullName>Acer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Apple</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Dell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Write In OEM Name</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1511,10 +616,6 @@ IF(Core_Product_Id__r.Core_Hierarchy_ID__c = &apos;43&apos;, Core_Product_Id__r.
                 <default>false</default>
             </values>
             <values>
-                <fullName>Expired</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Pending</fullName>
                 <default>true</default>
             </values>
@@ -1524,613 +625,6 @@ IF(Core_Product_Id__r.Core_Hierarchy_ID__c = &apos;43&apos;, Core_Product_Id__r.
             </values>
             <values>
                 <fullName>Retired</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_Submission_Type__c</picklist>
-            <values>
-                <fullName>M2M</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Partner</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Competitor_OEM_Name__c</picklist>
-            <values>
-                <fullName>Acer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Apple</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Dell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Write In Competitor OEM Name</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_DDI_focused__c</picklist>
-            <values>
-                <fullName>Tier 1</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tier 2</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tier 3</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Eligible_for_DDI_Payment__c</picklist>
-            <values>
-                <fullName>No</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Yes</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Form_Factor__c</picklist>
-            <values>
-                <fullName>2 in 1</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>AIO</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cloud Client</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Desktop</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Desktop Workstation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mobile Workstation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Notebook</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_OEM_Name__c</picklist>
-            <values>
-                <fullName>Acer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Apple</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Dell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Write In OEM Name</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-    </recordTypes>
-    <recordTypes>
-        <fullName>PCC_Deal_Registration_Product_Intel</fullName>
-        <active>true</active>
-        <description>Deal Registration Products created by Internal Users</description>
-        <label>Deal Registration Product - Intel</label>
-        <picklistValues>
-            <picklist>Core_Design_Product_Status_Nm__c</picklist>
-            <values>
-                <fullName>Approved</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cancelled</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pending</fullName>
-                <default>true</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Retired</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_Submission_Type__c</picklist>
-            <values>
-                <fullName>M2M</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Partner</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Competitor_OEM_Name__c</picklist>
-            <values>
-                <fullName>Acer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Apple</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Dell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Write In Competitor OEM Name</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_DDI_focused__c</picklist>
-            <values>
-                <fullName>Tier 1</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tier 2</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tier 3</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Eligible_for_DDI_Payment__c</picklist>
-            <values>
-                <fullName>No</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Yes</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Form_Factor__c</picklist>
-            <values>
-                <fullName>2 in 1</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>AIO</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cloud Client</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Desktop</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Desktop Workstation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mobile Workstation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Notebook</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_OEM_Name__c</picklist>
-            <values>
-                <fullName>Acer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Apple</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Dell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Write In OEM Name</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-    </recordTypes>
-    <recordTypes>
-        <fullName>PCC_Deal_Registration_Product_Locked</fullName>
-        <active>true</active>
-        <description>Deal Registration Product locked for edits.</description>
-        <label>Deal Registration Product - Locked</label>
-        <picklistValues>
-            <picklist>Core_Design_Product_Status_Nm__c</picklist>
-            <values>
-                <fullName>Approved</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cancelled</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pending</fullName>
-                <default>true</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Retired</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_Submission_Type__c</picklist>
-            <values>
-                <fullName>M2M</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Partner</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Competitor_OEM_Name__c</picklist>
-            <values>
-                <fullName>Acer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Apple</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Dell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Write In Competitor OEM Name</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_DDI_focused__c</picklist>
-            <values>
-                <fullName>Tier 1</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tier 2</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tier 3</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Eligible_for_DDI_Payment__c</picklist>
-            <values>
-                <fullName>No</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Yes</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Form_Factor__c</picklist>
-            <values>
-                <fullName>2 in 1</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>AIO</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cloud Client</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Desktop</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Desktop Workstation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mobile Workstation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Notebook</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_OEM_Name__c</picklist>
-            <values>
-                <fullName>Acer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Apple</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Dell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Write In OEM Name</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-    </recordTypes>
-    <recordTypes>
-        <fullName>PCC_Deal_Registration_Product_Partner</fullName>
-        <active>true</active>
-        <description>Deal Registration Product owned by Partner User.</description>
-        <label>Deal Registration Product - Partner</label>
-        <picklistValues>
-            <picklist>Core_Design_Product_Status_Nm__c</picklist>
-            <values>
-                <fullName>Approved</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cancelled</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pending</fullName>
-                <default>true</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Retired</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_Submission_Type__c</picklist>
-            <values>
-                <fullName>M2M</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Partner</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Competitor_OEM_Name__c</picklist>
-            <values>
-                <fullName>Acer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Apple</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Dell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Write In Competitor OEM Name</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_DDI_focused__c</picklist>
-            <values>
-                <fullName>Tier 1</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tier 2</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tier 3</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Eligible_for_DDI_Payment__c</picklist>
-            <values>
-                <fullName>No</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Yes</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_Form_Factor__c</picklist>
-            <values>
-                <fullName>2 in 1</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>AIO</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cloud Client</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Desktop</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Desktop Workstation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mobile Workstation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Notebook</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PCC_OEM_Name__c</picklist>
-            <values>
-                <fullName>Acer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Apple</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Asus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Dell</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lenovo</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Write In OEM Name</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -2156,349 +650,6 @@ IF(Core_Product_Id__r.Core_Hierarchy_ID__c = &apos;43&apos;, Core_Product_Id__r.
         <searchResultsAdditionalFields>LAST_UPDATE</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
-    <validationRules>
-        <fullName>Core_Enter_Comments_for_Rejection</fullName>
-        <active>false</active>
-        <description>Enter the comments for rejection</description>
-        <errorConditionFormula>AND(
-  ISPICKVAL(Core_Design_Product_Status_Nm__c, &apos;Rejected&apos;),
-  ISBLANK(Core_Comment_Txt__c)
-)</errorConditionFormula>
-        <errorDisplayField>Core_Comment_Txt__c</errorDisplayField>
-        <errorMessage>Please enter the comments for rejection</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>DDR_Product_validation_Message</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(NOT(CONTAINS(RecordType.Name, &apos;Deal&apos;)),
-OR(ISCHANGED(Core_Product_Id__c),
-ISCHANGED( MMID_or_Ordering_code__c)),
-NOT(ISNULL( Core_Product_Id__c)),
-TEXT(Core_Design_Product_Status_Nm__c) ==&apos;Pending&apos;,
-NOT($Permission.PCC_Bypass_Automation),
-NOT(AND(ISPICKVAL( Core_Design_Registration_Id__r.Core_Submission_Type__c,&apos;M2M&apos;) ,  ISPICKVAL(Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c,&apos;Draft&apos;)))
-)</errorConditionFormula>
-        <errorDisplayField>Core_Product_Id__c</errorDisplayField>
-        <errorMessage>Editing the product is not allowed. If you want to make changes, please cancel the current product and submit a new one.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>DDR_Restrict_FPGA_Product</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(NOT( $Permission.PCC_Bypass_Automation ),CONTAINS(Core_Product_Id__r.Core_Product_Type__c, &quot;FPGA&quot;))</errorConditionFormula>
-        <errorMessage>Registrations for FPGA product group has been disabled.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PCC_Competitor_System_Model_is_Required</fullName>
-        <active>true</active>
-        <description>Competitor System Model is Required if it is Deal and product is FIN Eligible</description>
-        <errorConditionFormula>AND(Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;,          INCLUDES(PCC_Product_Additional_Attribute__r.Programs_Eligible__c ,&apos;PDI&apos;),  ISBLANK(PCC_Competitor_System_Model__c),NOT( $Permission.PCC_Bypass_Automation ))</errorConditionFormula>
-        <errorDisplayField>PCC_Competitor_System_Model__c</errorDisplayField>
-        <errorMessage>Required</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PCC_Deal_Product_Restriction</fullName>
-        <active>true</active>
-        <description>Deal Product Restriction when opportunity is submitted for approval and lost/cancelled oppty</description>
-        <errorConditionFormula>AND ( 
-	ISNEW(),
-	NOT($Permission.PCC_Bypass_Automation),
-	Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;, NOT(ISBLANK(Core_Design_Registration_Id__r.Core_Opportunity_Id__c)),
-	OR(
-		
-		ISPICKVAL(Core_Design_Registration_Id__r.Core_Opportunity_Id__r.StageName,&apos;Lost&apos;), 
-		ISPICKVAL(Core_Design_Registration_Id__r.Core_Opportunity_Id__r.StageName,&apos;Cancelled&apos;),
-		AND(
-			NOT(ISPICKVAL(Core_Design_Registration_Id__r.Core_Opportunity_Id__r.Core_Approval_Status__c,&apos;Not Submitted&apos;)),
-			NOT(ISPICKVAL(Core_Design_Registration_Id__r.Core_Opportunity_Id__r.Core_Approval_Status__c,&apos;Recalled&apos;)),
-                        NOT(ISPICKVAL(Core_Design_Registration_Id__r.Core_Opportunity_Id__r.Core_Approval_Status__c,&apos;Rejected&apos;))
-		)
-	)
-)</errorConditionFormula>
-        <errorMessage>Products cannot be added at this stage.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PCC_Deal_Product_is_required</fullName>
-        <active>true</active>
-        <description>Deal Product is Required if it is Deal</description>
-        <errorConditionFormula>AND(Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;, ISBLANK( PCC_Product_Additional_Attribute__c ),NOT( $Permission.PCC_Bypass_Automation ))</errorConditionFormula>
-        <errorDisplayField>PCC_Product_Additional_Attribute__c</errorDisplayField>
-        <errorMessage>Required</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PCC_Deal_Product_shoud_be_active</fullName>
-        <active>true</active>
-        <description>Deal Product should be active if deal and Fin Eligible</description>
-        <errorConditionFormula>AND(Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;,  NOT(PCC_Product_Additional_Attribute__r.Is_Product_Active__c ),
-NOT(ISPICKVAL(Core_Design_Product_Status_Nm__c,&apos;Rejected&apos;)),NOT( $Permission.PCC_Bypass_Automation ))</errorConditionFormula>
-        <errorDisplayField>PCC_Product_Additional_Attribute__c</errorDisplayField>
-        <errorMessage>Inactive Product</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PCC_Form_Factor_is_Required</fullName>
-        <active>false</active>
-        <description>Form Factor is Required if it is deal and Fin Eligible</description>
-        <errorConditionFormula>AND(Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;,          INCLUDES(PCC_Product_Additional_Attribute__r.Programs_Eligible__c ,&apos;PDI&apos;),  ISBLANK(  TEXT(PCC_Form_Factor__c )),NOT( $Permission.PCC_Bypass_Automation ))</errorConditionFormula>
-        <errorDisplayField>PCC_Form_Factor__c</errorDisplayField>
-        <errorMessage>Required</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PCC_Pricing_StartEndDate_Edit_Validation</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;,
-OR(ISCHANGED(PCC_Quote_Line_Pricing_Start_Date__c),ISCHANGED(PCC_Quote_Line_Pricing_End_Date__c)),
-TEXT(Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c)==&apos;Draft&apos;,
-TEXT(Core_Design_Product_Status_Nm__c)&lt;&gt;&apos;Pending&apos;,
-NOT($Permission.PCC_Bypass_Automation))</errorConditionFormula>
-        <errorMessage>Updating of Pricing Start / End Date is not allowed for Approved / Rejected / Cancelled Product  Line Item.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PCC_Pricng_end_date_future</fullName>
-        <active>true</active>
-        <description>Quote Line Pricing End Date in the future.</description>
-        <errorConditionFormula>AND(
-Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;, INCLUDES(PCC_Product_Additional_Attribute__r.Programs_Eligible__c ,&apos;PDI&apos;),
-PCC_Quote_Line_Pricing_End_Date__c&lt;today(),
-NOT( $Permission.PCC_Bypass_Automation ),
-NOT(ISPICKVAL(Core_Design_Product_Status_Nm__c,&apos;Rejected&apos;)))</errorConditionFormula>
-        <errorDisplayField>PCC_Quote_Line_Pricing_End_Date__c</errorDisplayField>
-        <errorMessage>Quote Line Pricing End Date must be on/after to the current date</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PCC_Quote_Enddate_Lessthan_Pricing</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;,
-PCC_Quote_Line_Pricing_End_Date__c &gt; Core_Design_Registration_Id__r.PCC_Pricing_End_Date__c ,
-NOT( $Permission.PCC_Bypass_Automation ),
-NOT(ISPICKVAL(Core_Design_Product_Status_Nm__c,&apos;Rejected&apos;)),
-NOT(OR(
-ISPICKVAL( Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c ,&apos;Approved&apos;),
-ISPICKVAL( Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c,&apos;Re-Submitted&apos;)))
-)</errorConditionFormula>
-        <errorDisplayField>PCC_Quote_Line_Pricing_End_Date__c</errorDisplayField>
-        <errorMessage>Quote Line End Date should be on/before Deal Reg Pricing End Date</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PCC_Quote_Startdate_Greaterthan_Pricing</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(
-Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;,
-OR(Core_Design_Registration_Id__r.PCC_Pricing_End_Date__c &lt; PCC_Quote_Line_Pricing_Start_Date__c ,
-PCC_Quote_Line_Pricing_Start_Date__c &lt;  Core_Design_Registration_Id__r.PCC_Pricing_Start_Date__c ),
-NOT( $Permission.PCC_Bypass_Automation ), 
-NOT(ISPICKVAL(Core_Design_Product_Status_Nm__c,&apos;Rejected&apos;)),
-NOT(OR( 
-ISPICKVAL( Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c ,&apos;Approved&apos;),
-ISPICKVAL( Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c,&apos;Re-Submitted&apos;)))
-)</errorConditionFormula>
-        <errorDisplayField>PCC_Quote_Line_Pricing_Start_Date__c</errorDisplayField>
-        <errorMessage>Quote Line Pricing Start Date should be between Deal Reg Pricing Start Date/End Date</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PCC_System_Model_is_Required</fullName>
-        <active>true</active>
-        <description>System Model	is Required if deal and Fin Eligible</description>
-        <errorConditionFormula>AND(Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;, INCLUDES(PCC_Product_Additional_Attribute__r.Programs_Eligible__c ,&apos;PDI&apos;), ISBLANK( PCC_System_Model__c ),NOT( $Permission.PCC_Bypass_Automation ))</errorConditionFormula>
-        <errorDisplayField>PCC_System_Model__c</errorDisplayField>
-        <errorMessage>Required</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PCC_TargetResalePrice_Mandatory</fullName>
-        <active>true</active>
-        <errorConditionFormula>ISBLANK(Core_Target_Resale_Amt__c) &amp;&amp; ISPICKVAL(Core_Design_Product_Status_Nm__c ,&quot;Approved&quot; )</errorConditionFormula>
-        <errorMessage>Target Resale Price should not be blank or zero.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PCC_ValidationOnProductEligibility</fullName>
-        <active>true</active>
-        <description>This validation will fire for M2M and Portal , when when product is not available for new design or not DR eligible or Sales Eligible.</description>
-        <errorConditionFormula>IF(
-    OR(RecordType.Name == &apos;Design Registration Product - Locked&apos;,$Permission.PCC_Bypass_Automation,Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;),
-    false,
-	
-    IF(
-	    ISPICKVAL(Core_Design_Product_Status_Nm__c, &apos;Rejected&apos;),
-        false,
-		
-        IF(
-		AND(ISNEW(),	OR(
-					NOT(Core_Product_Id__r.Core_Avail_for_New_Designs__c),
-					NOT(Core_Product_Id__r.Core_Design_Registration_Eligible_Ind__c),
-					NOT(Core_Product_Id__r.Core_Sales_Visible_Flag__c)
-				)),
-				
-            IF(NOT(ISBLANK(Core_Comment_Txt__c)) &amp;&amp; ISCHANGED(Core_Comment_Txt__c),false, true ),
-			
-            false
-            
-        )
-    )
-)</errorConditionFormula>
-        <errorDisplayField>Core_Product_Id__c</errorDisplayField>
-        <errorMessage>This Product is not eligible for DR submission.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PCC_WriteInComProd_Name_req_if_selected</fullName>
-        <active>true</active>
-        <description>Write in Competitive Product name needs to be provided when the Competitor Product is Write In Product</description>
-        <errorConditionFormula>AND(
-Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;, INCLUDES(PCC_Product_Additional_Attribute__r.Programs_Eligible__c ,&apos;PDI&apos;),
-PCC_Competitor_Product__r.Name= &apos;Write In Product&apos;,
-ISBLANK(PCC_Write_In_Competitor_Product__c) ,
-NOT( $Permission.PCC_Bypass_Automation )
-)</errorConditionFormula>
-        <errorDisplayField>PCC_Write_In_Competitor_Product__c</errorDisplayField>
-        <errorMessage>Write in Competitive Product name needs to be provided when the Competitor Product is Write In Product</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PCC_WriteInCom_OEMName_req_if_selected</fullName>
-        <active>true</active>
-        <description>The Write In Competitor OEM Field is used to provide the name of a 
-product missing from the Competitor OEM Name field. It must be blank 
-unless the &apos;Competitor Write In OEM Name&apos; option is selected in the OEM Name field.</description>
-        <errorConditionFormula>AND(
-Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;, INCLUDES(PCC_Product_Additional_Attribute__r.Programs_Eligible__c ,&apos;PDI&apos;),
-ISPICKVAL( PCC_Competitor_OEM_Name__c , &apos;Write In Competitor OEM Name&apos;),
-ISBLANK(   PCC_Competitor_Write_In_OEM_Name__c ) ,
-NOT( $Permission.PCC_Bypass_Automation )
-)</errorConditionFormula>
-        <errorDisplayField>PCC_Competitor_Write_In_OEM_Name__c</errorDisplayField>
-        <errorMessage>When &apos;Write In Competitor OEM Name&apos; is selected in the Competitor OEM Name field, the name of the unlisted Competitor OEM Name must be provided in the Write In Competitor OEM Name field.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PCC_WriteInCom_Product_Restrict</fullName>
-        <active>true</active>
-        <description>The Write In Competitor OEM Field is used to provide the name of a 
-product missing from the Competitor OEM Name field. It must be blank 
-unless the &apos;Competitor Write In OEM Name&apos; option is selected in the OEM Name field.</description>
-        <errorConditionFormula>AND(
-Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;, INCLUDES(PCC_Product_Additional_Attribute__r.Programs_Eligible__c ,&apos;PDI&apos;),
-NOT(ISPICKVAL( PCC_Competitor_OEM_Name__c , &apos;Write In Competitor OEM Name&apos;)),
-NOT(ISBLANK(   PCC_Competitor_Write_In_OEM_Name__c )),
-NOT( $Permission.PCC_Bypass_Automation) 
-)</errorConditionFormula>
-        <errorDisplayField>PCC_Competitor_Write_In_OEM_Name__c</errorDisplayField>
-        <errorMessage>The Write In Competitor OEM Name field is used to provide the name of a Competitor OEM missing from the Competitor OEM Name field. It must be blank unless the &apos; Write In Competitor OEM Name&apos; option is selected in the Competitor OEM Name field.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PCC_WriteInComp_Prod_Restrict</fullName>
-        <active>true</active>
-        <description>Write In Competitor Product needs to be provided with a value only when the Competitor Product is set with Write in Product</description>
-        <errorConditionFormula>AND(
-Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;, INCLUDES(PCC_Product_Additional_Attribute__r.Programs_Eligible__c ,&apos;PDI&apos;),
-NOT(PCC_Competitor_Product__r.Name = &apos;Write In Product&apos;),
-NOT(ISBLANK(  PCC_Write_In_Competitor_Product__c  )),
-NOT( $Permission.PCC_Bypass_Automation) 
-)</errorConditionFormula>
-        <errorDisplayField>PCC_Write_In_Competitor_Product__c</errorDisplayField>
-        <errorMessage>The Write In Competitor Product field is used to provide the name of a product missing from the Competitor Product field. It must be blank unless the &apos;Write In Product&apos; option is selected in the Competitor Product field.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PCC_WriteInOEM_Name_req_if_selected</fullName>
-        <active>true</active>
-        <description>When &apos;Write In OEM Name&apos; is selected in the OEM Name field, the name
- of the unlisted OEM Name must be provided in the Write In OEM Name field.</description>
-        <errorConditionFormula>AND(
-Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;, INCLUDES(PCC_Product_Additional_Attribute__r.Programs_Eligible__c ,&apos;PDI&apos;),
-ISPICKVAL(PCC_OEM_Name__c , &apos;Write In OEM Name&apos;),
-ISBLANK( PCC_Write_In_OEM_Name__c ) ,
-NOT( $Permission.PCC_Bypass_Automation )
-)</errorConditionFormula>
-        <errorDisplayField>PCC_Write_In_OEM_Name__c</errorDisplayField>
-        <errorMessage>When &apos;Write In OEM Name&apos; is selected in the OEM Name field, the name of the unlisted OEM Name must be provided in the Write In OEM Name field.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PCC_WriteInOEM_Restrict</fullName>
-        <active>true</active>
-        <description>The Write In OEM Field must be blank unless the &apos;Write In OEM Name&apos; option is selected in the OEM Name field.</description>
-        <errorConditionFormula>AND(
-Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;, INCLUDES(PCC_Product_Additional_Attribute__r.Programs_Eligible__c ,&apos;PDI&apos;),
-NOT(ISPICKVAL(PCC_OEM_Name__c , &apos;Write In OEM Name&apos;)),
-NOT(ISBLANK( PCC_Write_In_OEM_Name__c )),NOT( $Permission.PCC_Bypass_Automation )
-)</errorConditionFormula>
-        <errorDisplayField>PCC_Write_In_OEM_Name__c</errorDisplayField>
-        <errorMessage>The Write In OEM Name field is used to provide the name of an OEM missing from the OEM Name field. It must be blank unless the &apos;Write In OEM Name&apos; option is selected in the OEM Name field.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PCC_end_dt_cant_be_mor_thn_hdr_strt</fullName>
-        <active>true</active>
-        <description>Quote Line Pricing End Date should not be earlier than the Deal Reg Header Start Date</description>
-        <errorConditionFormula>AND(
-Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;, INCLUDES(PCC_Product_Additional_Attribute__r.Programs_Eligible__c ,&apos;PDI&apos;),
-    PCC_Quote_Line_Pricing_End_Date__c &lt;   Core_Design_Registration_Id__r.PCC_Pricing_Start_Date__c ,NOT( $Permission.PCC_Bypass_Automation ),
-NOT(ISPICKVAL(Core_Design_Product_Status_Nm__c,&apos;Rejected&apos;)) )</errorConditionFormula>
-        <errorDisplayField>PCC_Quote_Line_Pricing_End_Date__c</errorDisplayField>
-        <errorMessage>Quote Line Pricing End Date should not be earlier than the Deal Reg Start Date</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PCC_strt_Dt_cant_be_mor_thn_end_dt</fullName>
-        <active>true</active>
-        <description>Quote Line Pricing Start Date cannot be more than Quote Line Pricing End Date</description>
-        <errorConditionFormula>AND(
-Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;, INCLUDES(PCC_Product_Additional_Attribute__r.Programs_Eligible__c ,&apos;PDI&apos;),
-    PCC_Quote_Line_Pricing_Start_Date__c &gt;  PCC_Quote_Line_Pricing_End_Date__c,NOT( $Permission.PCC_Bypass_Automation ),
-NOT(ISPICKVAL(Core_Design_Product_Status_Nm__c,&apos;Rejected&apos;)) )</errorConditionFormula>
-        <errorDisplayField>PCC_Quote_Line_Pricing_Start_Date__c</errorDisplayField>
-        <errorMessage>Quote Line Pricing Start Date cannot be more than Quote Line Pricing End Date</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PCC_strt_Dt_cant_be_mor_thn_today</fullName>
-        <active>true</active>
-        <description>Quote Line Pricing Start Date must be today or later.</description>
-        <errorConditionFormula>AND(
-Core_Design_Registration_Id__r.PCC_Registration_Type__c =&apos;Deal Registration&apos;, INCLUDES(PCC_Product_Additional_Attribute__r.Programs_Eligible__c ,&apos;PDI&apos;),
-    PCC_Quote_Line_Pricing_Start_Date__c &lt; today(),
-NOT( $Permission.PCC_Bypass_Automation ),
-NOT(ISPICKVAL(Core_Design_Product_Status_Nm__c,&apos;Rejected&apos;)))</errorConditionFormula>
-        <errorDisplayField>PCC_Quote_Line_Pricing_Start_Date__c</errorDisplayField>
-        <errorMessage>Quote Line Pricing Start Date must be on/after the current date</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Product_selection_error_message</fullName>
-        <active>true</active>
-        <errorConditionFormula>ISNEW() &amp;&amp; AND(TEXT(Core_Submission_Type__c) !=&apos;M2M&apos;, NOT(Core_ThrowValidation__c),NOT($Permission.PCC_Bypass_Automation))</errorConditionFormula>
-        <errorMessage>Please provide value for either Product or MMID or Old MMID or Ordering code, but not both. At least one field must be filled in.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Restrict_new_addition_of_new_product</fullName>
-        <active>true</active>
-        <description>Restrict create/update product if Design registration status is cancelled or rejected or abandoned</description>
-        <errorConditionFormula>AND( NOT(Core_Locked_Ind__c),
-NOT(AND(OR( $Permission.DDR_Internal_Users , $Permission.DDR_PreApprover_Permission ),ISCHANGED(Core_Comment_Txt__c),NOT(ISCHANGED(Core_Design_Product_Status_Nm__c)))),
-OR(ISPICKVAL(Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c,&apos;Cancelled&apos;),
-ISPICKVAL(Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c,&apos;Rejected&apos;),
-ISPICKVAL(Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c,&apos;Abandoned&apos;),
-ISPICKVAL(Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c,&apos;Expired&apos;),
-
-
-
-
-AND(OR($Profile.Name = &apos;Partner&apos;),OR(ISCHANGED(Core_Target_Resale_Amt__c),ISCHANGED(Core_Full_Year_Qty__c), ISCHANGED(Core_Partner_Tracking_Cd__c)),
-
-OR(
-ISPICKVAL(Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c, &apos;Design accepted&apos;),
-ISPICKVAL(Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c, &apos;Re-Submitted&apos;),
-ISPICKVAL(Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c, &apos;Pre-Approved&apos;),
-ISPICKVAL(Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c, &apos;Submitted&apos;)
-),
-
-OR(
-ISPICKVAL(PRIORVALUE(Core_Design_Product_Status_Nm__c), &apos;Approved&apos;),
-ISPICKVAL(PRIORVALUE(Core_Design_Product_Status_Nm__c), &apos;Rejected&apos;),
-ISPICKVAL(PRIORVALUE(Core_Design_Product_Status_Nm__c), &apos;Cancelled&apos;),
-ISPICKVAL(PRIORVALUE(Core_Design_Product_Status_Nm__c), &apos;Retired&apos;)
-)
-)),
-NOT( $Permission.PCC_Bypass_Automation )
-)</errorConditionFormula>
-        <errorMessage>Products cannot be added or edited</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Restrict_products_with_Zero_Qty</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(NOT( Core_Full_Year_Qty__c &gt;0),NOT( $Permission.PCC_Bypass_Automation ))</errorConditionFormula>
-        <errorDisplayField>Core_Full_Year_Qty__c</errorDisplayField>
-        <errorMessage>Quantity must be greater than zero.</errorMessage>
-    </validationRules>
     <visibility>Public</visibility>
     <webLinks>
         <fullName>Core_Approve_Product</fullName>
@@ -2517,12 +668,8 @@ if (&apos;{!Core_Design_Registration_Product__c.Core_Design_Product_Status_Nm__c
     alert(&apos;Design Registration Product is already Approved.&apos;);
 }
 // Check if the Design Registraion Product is InActive
-else if (&apos;{!Core_Design_Registration_Product__c.Core_Active_Status__c}&apos; == false &amp;&amp; &apos;{!Core_Design_Registration_Product__c.Core_Design_Product_Status_Nm__c}&apos; == &apos;Pending&apos;) {
-    alert(&apos;This product  is InActive and cannot be updated.&apos;);
-}
-// Check if the Design Registraion Product is Ineligible
-else if (&apos;{!Core_Design_Registration_Product__c.Core_DR_Eligible_Status__c}&apos; == false &amp;&amp; &apos;{!Core_Design_Registration_Product__c.Core_Design_Product_Status_Nm__c}&apos; == &apos;Pending&apos;) {
-    alert(&apos;This product  is Ineligible and cannot be updated.&apos;);
+else if (&apos;{!Core_Design_Registration_Product__c.Core_Active_Status__c}&apos; == false) {
+    alert(&apos;This product is inactive and cannot be approved. Please remove this product from the Design Registration record and add an Active product.&apos;);
 }
 // Check if the Product is locked
 else if (&apos;{!Core_Design_Registration_Product__c.Core_Locked_Ind__c}&apos; == true) {
@@ -2552,7 +699,7 @@ else {
         <description>This button is used both in  classic &amp; lightning page for Approves all the Pending Products after data validation.</description>
         <displayType>massActionButton</displayType>
         <linkType>page</linkType>
-        <masterLabel>Approve All Pending Product/s</masterLabel>
+        <masterLabel>Approve All Pending Products</masterLabel>
         <openType>replace</openType>
         <page>Core_DRR_ApproveAllPendingProdListButton</page>
         <protected>false</protected>
@@ -2598,6 +745,18 @@ else {
 }</url>
     </webLinks>
     <webLinks>
+        <fullName>Core_Cancel_Product</fullName>
+        <availability>online</availability>
+        <description>Cancels the Product after data validation.</description>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Cancel Product</masterLabel>
+        <openType>sidebar</openType>
+        <page>Core_DDR_Cancel_Product</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
         <fullName>Core_Reject_Product</fullName>
         <availability>online</availability>
         <description>Rejects the Product after data validation.</description>
@@ -2617,14 +776,6 @@ if (&apos;{!Core_Design_Registration_Product__c.Core_Design_Product_Status_Nm__c
 // Check if the Product is locked
 else if (&apos;{!Core_Design_Registration_Product__c.Core_Locked_Ind__c}&apos; == true) {
     alert(&apos;This Product is locked and can only be Cancelled.&apos;);
-}
-// Check if the Design Registraion Product is InActive
-else if (&apos;{!Core_Design_Registration_Product__c.Core_Active_Status__c}&apos; == false &amp;&amp; &apos;{!Core_Design_Registration_Product__c.Core_Design_Product_Status_Nm__c}&apos; == &apos;Pending&apos;) {
-    alert(&apos;This product  is InActive and cannot be updated.&apos;);
-}
-// Check if the Design Registraion Product is Ineligible
-else if (&apos;{!Core_Design_Registration_Product__c.Core_DR_Eligible_Status__c}&apos; == false &amp;&amp; &apos;{!Core_Design_Registration_Product__c.Core_Design_Product_Status_Nm__c}&apos; == &apos;Pending&apos;) {
-    alert(&apos;This product  is Ineligible and cannot be updated.&apos;);
 }
 
 // Reject the Design Registraion Product
@@ -2689,23 +840,10 @@ else {
         <description>This button is used both in classic &amp; lightning page for Rejects all the Pending Products after data validation.</description>
         <displayType>massActionButton</displayType>
         <linkType>page</linkType>
-        <masterLabel>Reject All Pending Product/s</masterLabel>
+        <masterLabel>Reject All Pending Products</masterLabel>
         <openType>replace</openType>
         <page>Core_Reject_Products_Pending</page>
         <protected>false</protected>
         <requireRowSelection>false</requireRowSelection>
-    </webLinks>
-    <webLinks>
-        <fullName>Expired_all_button</fullName>
-        <availability>online</availability>
-        <displayType>massActionButton</displayType>
-        <encodingKey>UTF-8</encodingKey>
-        <height>600</height>
-        <linkType>url</linkType>
-        <masterLabel>Expire All Product/s</masterLabel>
-        <openType>sidebar</openType>
-        <protected>false</protected>
-        <requireRowSelection>true</requireRowSelection>
-        <url>/flow/Set_as_Expired_Bulk?recordId={!Core_Design_Registration__c.Id}&amp;retURL={!URLFOR(Core_Design_Registration__c.Id)}</url>
     </webLinks>
 </CustomObject>

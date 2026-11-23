@@ -1,0 +1,9 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+	<aura:attribute name="showConfirmDialog" type="boolean" default="false"/>
+    
+    <div style="margin-top:1%;">
+        <lightning:button aura:id="reverseAuditButton" variant="brand" label="Reverse Audit" title="Reverse Audit" type="submit" onclick="{!c.reverseAuditCheck}"/>
+    </div>
+    <c:Core_MDF_Confirmation_PopUp recordId="{!v.recordId}" objectName="{!v.sObjectName}" message="{!$Label.c.Core_MDF_Reverse_Audit_Confirm_Message}" actionName="ReverseAudit" showDialog="{!v.showConfirmDialog}"/>
+
+</aura:component>

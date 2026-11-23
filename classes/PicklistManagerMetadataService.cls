@@ -3,7 +3,10 @@ public class PicklistManagerMetadataService {
     
     public class MetadataPort {
         public String endpoint_x = URL.getOrgDomainUrl().toExternalForm() + '/services/Soap/m/42.0';
+       //system.debug('endpoint_x ::'+ endpoint_x);
       	//public String endpoint_x = 'callout:PicklistNamedCredential/services/Soap/m/42.0';
+        //public String endpoint_x = 'https://intel--crmdevccp3.sandbox.my.salesforce.com/services/Soap/m/42.0'; 
+        //public String endpoint_x = 'https://intel--crmdevsls3.sandbox.my.salesforce.com/services/Soap/m/42.0';
         public Map<String,String> inputHttpHeaders_x;
         public Map<String,String> outputHttpHeaders_x;
         public String clientCertName_x;
@@ -11,12 +14,17 @@ public class PicklistManagerMetadataService {
         public String clientCertPasswd_x;
         public Integer timeout_x;
         public PicklistManagerMetadataService.SessionHeader_element SessionHeader;
+        //public MetadataService.DebuggingInfo_element DebuggingInfo;
+        //public MetadataService.DebuggingHeader_element DebuggingHeader;
+        //public MetadataService.CallOptions_element CallOptions;
+        //public MetadataService.AllOrNoneHeader_element AllOrNoneHeader;
         private String SessionHeader_hns = 'SessionHeader=http://soap.sforce.com/2006/04/metadata';
         private String DebuggingInfo_hns = 'DebuggingInfo=http://soap.sforce.com/2006/04/metadata';
         private String DebuggingHeader_hns = 'DebuggingHeader=http://soap.sforce.com/2006/04/metadata';
         private String CallOptions_hns = 'CallOptions=http://soap.sforce.com/2006/04/metadata';
         private String AllOrNoneHeader_hns = 'AllOrNoneHeader=http://soap.sforce.com/2006/04/metadata';
         private String[] ns_map_type_info = new String[]{SOAP_M_URI, 'MetadataService'};
+
         
         public PicklistManagerMetadataService.SaveResult[] updateMetadata(PicklistManagerMetadataService.CustomField[] metadata) {
             PicklistManagerMetadataService.updateMetadata_element request_x = new PicklistManagerMetadataService.updateMetadata_element();
@@ -24,8 +32,20 @@ public class PicklistManagerMetadataService {
             PicklistManagerMetadataService.updateMetadataResponse_element response_x;
             Map<String, PicklistManagerMetadataService.updateMetadataResponse_element> response_map_x = new Map<String, PicklistManagerMetadataService.updateMetadataResponse_element>();
             response_map_x.put('response_x', response_x); 
-            WebServiceCallout.invoke(this,request_x,response_map_x,new String[]{endpoint_x,'',SOAP_M_URI,'updateMetadata',SOAP_M_URI,'updateMetadataResponse','PicklistManagerMetadataService.updateMetadataResponse_element'}); 
+            system.debug('response_x:'+response_x);
+            system.debug('metadata: '+metadata);
+            WebServiceCallout.invoke(
+                this,
+                request_x,
+                response_map_x,
+                new String[]{endpoint_x,
+                    '',
+                    SOAP_M_URI,
+                    'updateMetadata',
+                    SOAP_M_URI,
+                    'updateMetadataResponse','PicklistManagerMetadataService.updateMetadataResponse_element'}); 
             response_x = response_map_x.get('response_x');
+            system.debug('response_x:'+response_x);
             return response_x.result;
         }
         
@@ -35,18 +55,40 @@ public class PicklistManagerMetadataService {
             PicklistManagerMetadataService.updateMetadataResponse_element response_x;
             Map<String, PicklistManagerMetadataService.updateMetadataResponse_element> response_map_x = new Map<String, PicklistManagerMetadataService.updateMetadataResponse_element>();
             response_map_x.put('response_x', response_x);
-            WebServiceCallout.invoke(this,request_x,response_map_x,new String[]{endpoint_x,'',SOAP_M_URI,'updateMetadata',SOAP_M_URI,'updateMetadataResponse','PicklistManagerMetadataService.updateMetadataResponse_element'});
+            WebServiceCallout.invoke(
+              this,
+              request_x,
+              response_map_x,
+              new String[]{endpoint_x,
+              '',
+              SOAP_M_URI,
+              'updateMetadata',
+              SOAP_M_URI,
+              'updateMetadataResponse',
+              'PicklistManagerMetadataService.updateMetadataResponse_element'}
+            );
             response_x = response_map_x.get('response_x');
             return response_x.result;
         }
         
-        /*public PicklistManagerMetadataService.SaveResult[] updateGVSMetadata(PicklistManagerMetadataService.GlobalValueSet[] metadata) {
+        public PicklistManagerMetadataService.SaveResult[] updateGVSMetadata(PicklistManagerMetadataService.GlobalValueSet[] metadata) {
             PicklistManagerMetadataService.updateMetadata_element_GVS request_x = new PicklistManagerMetadataService.updateMetadata_element_GVS();
             request_x.metadata = metadata;
             PicklistManagerMetadataService.updateMetadataResponse_element response_x;
             Map<String, PicklistManagerMetadataService.updateMetadataResponse_element> response_map_x = new Map<String, PicklistManagerMetadataService.updateMetadataResponse_element>();
             response_map_x.put('response_x', response_x);
-            WebServiceCallout.invoke(this,request_x,response_map_x, new String[]{endpoint_x,'',SOAP_M_URI,'updateMetadata',SOAP_M_URI,'updateMetadataResponse','PicklistManagerMetadataService.updateMetadataResponse_element'});
+            WebServiceCallout.invoke(
+              this,
+              request_x,
+              response_map_x,
+              new String[]{endpoint_x,
+              '',
+              SOAP_M_URI,
+              'updateMetadata',
+              SOAP_M_URI,
+              'updateMetadataResponse',
+              'PicklistManagerMetadataService.updateMetadataResponse_element'}
+            );
             response_x = response_map_x.get('response_x');
             return response_x.result;
         }
@@ -58,10 +100,21 @@ public class PicklistManagerMetadataService {
             PicklistManagerMetadataService.IReadResponseElement response_x;
             Map<String, PicklistManagerMetadataService.IReadResponseElement> response_map_x = new Map<String, PicklistManagerMetadataService.IReadResponseElement>();
             response_map_x.put('response_x', response_x);
-            WebServiceCallout.invoke(this,request_x,response_map_x,new String[]{endpoint_x,'',SOAP_M_URI,'readMetadata',SOAP_M_URI,'readMetadataResponse','PicklistManagerMetadataService.readMetadataResponse_element'});
+            WebServiceCallout.invoke(
+              this,
+              request_x,
+              response_map_x,
+              new String[]{endpoint_x,
+              '',
+              SOAP_M_URI,
+              'readMetadata',
+              SOAP_M_URI,
+              'readMetadataResponse',
+              'PicklistManagerMetadataService.readMetadataResponse_element'}
+            );
             response_x = response_map_x.get('response_x');
             return response_x.getResult();
-        }*/
+        }
     }
 
     public interface IReadResult {
@@ -352,7 +405,7 @@ public class PicklistManagerMetadataService {
         private String[] field_order_type_info = new String[]{'metadata'};
     }
     
-    public class updateMetadata_element_GVS {
+     public class updateMetadata_element_GVS {
         public PicklistManagerMetadataService.GlobalValueSet[] metadata;
         private String[] metadata_type_info = new String[]{'metadata',SOAP_M_URI,null,'0','-1','false'};
         private String[] apex_schema_type_info = new String[]{SOAP_M_URI,'true','false'};
@@ -435,7 +488,7 @@ public class PicklistManagerMetadataService {
         private String[] field_order_type_info = new String[]{'fullName','color','default_x','description','isActive', 'allowEmail','closed','controllingFieldValues','converted','cssExposed','forecastCategory','highPriority','probability','reverseRole','reviewed','won'};
     }
     
-     public class GlobalValueSet extends Metadata {
+    public class GlobalValueSet extends Metadata {
         public String type = 'GlobalValueSet';
         public String fullName;
         private String[] fullName_type_info = new String[]{'fullName',SOAP_M_URI,null,'0','1','false'};

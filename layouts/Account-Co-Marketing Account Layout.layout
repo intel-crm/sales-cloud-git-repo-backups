@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <customButtons>Core_Deal_Support</customButtons>
-    <excludeButtons>DataDotComAccountInsights</excludeButtons>
-    <excludeButtons>DataDotComClean</excludeButtons>
-    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <headers>PersonalTagging</headers>
     <layoutSections>
@@ -25,28 +22,20 @@
                 <field>Core_MDF_Enabled_Auto_Transfer__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Active_Ind__c</field>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Auto_Transfer_Account__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_Geo__c</field>
+                <field>Core_IPA_Partner_Role__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Payment_Type_nm__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Partner_Type_nm__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_MDM_Secondary_Country_Nm__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDM_Secondary_State_Cd__c</field>
+                <field>Core_MDF_Payment_Type_NodeLevel_nm__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -59,12 +48,16 @@
                 <field>ParentId</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Auto_Transfer_Account__c</field>
+                <behavior>Readonly</behavior>
+                <field>Core_MDF_Active_Ind__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_MDF_Partner_Type_nm__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_IPA_Partner_Role__c</field>
+                <field>Core_Geo__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -72,7 +65,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_MDF_Payment_Type_NodeLevel_nm__c</field>
+                <field>Core_MDF_Virtual_Corp_Account_Id__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -129,6 +122,21 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
+            <actionName>FeedItem.TextPost</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>CallHighlightAction</actionName>
+            <actionType>ProductivityAction</actionType>
+            <sortOrder>1</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Account.Core_MDF_Inactivate_Account</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>2</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>Account.Account_Transfer</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>3</sortOrder>
@@ -139,28 +147,12 @@
             <sortOrder>4</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Account.Core_MDF_Inactivate_Account</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>2</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>CallHighlightAction</actionName>
-            <actionType>ProductivityAction</actionType>
-            <sortOrder>1</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>Edit</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>5</sortOrder>
         </platformActionListItems>
-        <platformActionListItems>
-            <actionName>FeedItem.TextPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
     </platformActionList>
     <relatedLists>
-        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>Core_MDF_User__c</fields>
         <fields>Core_MDF_Active_Ind__c</fields>
@@ -172,7 +164,41 @@
         <relatedList>Core_MDF_Account_Bank_Mapping__c.Core_MDF_Account__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_MDF_Partnership_Score__c.Core_MDF_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_MDF_Comarketing_CMF_Map__c.Core_MDF_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>ACCOUNT.NAME</fields>
+        <fields>Core_Prime_Account_Name__c</fields>
+        <fields>Core_Sales_Groups__c</fields>
+        <fields>Core_Account_Country__c</fields>
+        <fields>Core_Alt_Language_State_Province__c</fields>
+        <fields>Core_Geo__c</fields>
+        <fields>CORE.USERS.FIRST_NAME</fields>
+        <fields>CORE.USERS.LAST_NAME</fields>
+        <relatedList>Account.Core_Direct_Primary_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Test_Recovery_Mapping__c.Core_MDF_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>ACCOUNT.NAME</fields>
+        <fields>Core_Prime_Account_Name__c</fields>
+        <fields>Core_Sales_Groups__c</fields>
+        <fields>Core_Account_Country__c</fields>
+        <fields>Core_Alt_Language_State_Province__c</fields>
+        <fields>Core_Geo__c</fields>
+        <fields>CORE.USERS.FIRST_NAME</fields>
+        <fields>CORE.USERS.LAST_NAME</fields>
+        <relatedList>Account.Core_MDF_Virtual_Corp_Account_Id__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <runAssignmentRulesDefault>true</runAssignmentRulesDefault>

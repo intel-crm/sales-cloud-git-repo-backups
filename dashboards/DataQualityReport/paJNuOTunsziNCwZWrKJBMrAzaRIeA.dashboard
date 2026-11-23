@@ -55,7 +55,7 @@
                 </flexComponentProperties>
                 <groupingSortProperties/>
                 <header>Activities with Blank/Over Due CloseDate</header>
-                <report>ActivityModule/Activities_with_BlankOver_Due_CloseDate_mUA</report>
+                <report>Core_MDF_Activity_Module/Core_MDF_Activities_with_BlankOver_Due_CloseDate</report>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
             <rowSpan>8</rowSpan>
@@ -67,6 +67,7 @@
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <componentType>FlexTable</componentType>
                 <flexComponentProperties>
+                    <decimalPrecision>-1</decimalPrecision>
                     <flexTableColumn>
                         <reportColumn>PartnerFundRequest.Core_MDF_Activity_Number__c</reportColumn>
                         <showSubTotal>false</showSubTotal>
@@ -98,6 +99,7 @@
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableSortInfo>
+                        <sortColumn>PartnerFundRequest.Core_MDF_Activity_Number__c</sortColumn>
                         <sortOrder>1</sortOrder>
                     </flexTableSortInfo>
                     <hideChatterPhotos>true</hideChatterPhotos>
@@ -105,7 +107,7 @@
                 </flexComponentProperties>
                 <groupingSortProperties/>
                 <header>Activity-Campaign Budget-Type mismatch</header>
-                <report>ActivityModule/ActivityCampaign_BudgetType_mismatch_C1t</report>
+                <report>Core_MDF_Activity_Module/Core_MDF_ActivityCampaign_BudgetType_mismatch</report>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
             <rowSpan>8</rowSpan>
@@ -157,7 +159,7 @@
                 </flexComponentProperties>
                 <groupingSortProperties/>
                 <header>ATF Flag Report</header>
-                <report>ActivityModule/ATF_Flag_Report_FZ8</report>
+                <report>Core_MDF_Activity_Module/Core_MDF_ATF_Flag_Report</report>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
             <rowSpan>8</rowSpan>
@@ -169,6 +171,7 @@
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <componentType>FlexTable</componentType>
                 <flexComponentProperties>
+                    <decimalPrecision>-1</decimalPrecision>
                     <flexTableColumn>
                         <reportColumn>PartnerFundRequest.Core_MDF_Activity_Number__c</reportColumn>
                         <showSubTotal>false</showSubTotal>
@@ -200,6 +203,7 @@
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableSortInfo>
+                        <sortColumn>PartnerFundRequest.Core_MDF_Activity_Number__c</sortColumn>
                         <sortOrder>1</sortOrder>
                     </flexTableSortInfo>
                     <hideChatterPhotos>true</hideChatterPhotos>
@@ -207,7 +211,7 @@
                 </flexComponentProperties>
                 <groupingSortProperties/>
                 <header>CMP Activities Amount!= 0$</header>
-                <report>ActivityModule/CMP_Activities_Amount_0_Nxc</report>
+                <report>Core_MDF_Activity_Module/Core_MDF_CMP_Activities_Amount_0</report>
             </dashboardComponent>
             <rowIndex>8</rowIndex>
             <rowSpan>8</rowSpan>
@@ -259,7 +263,7 @@
                 </flexComponentProperties>
                 <groupingSortProperties/>
                 <header>IntelOwner &amp; MemberAcceptor fields blank</header>
-                <report>ActivityModule/IntelOwner_MemberAcceptor_fields_blank_dN6</report>
+                <report>Core_MDF_Activity_Module/Core_MDF_IntelOwner_MemberAcceptor_fields_blank</report>
             </dashboardComponent>
             <rowIndex>8</rowIndex>
             <rowSpan>8</rowSpan>
@@ -311,7 +315,7 @@
                 </flexComponentProperties>
                 <groupingSortProperties/>
                 <header>Campaign and Activity Data Mismatch</header>
-                <report>ActivityModule/Campaign_and_Activity_Data_Mismatch_Lu3</report>
+                <report>Core_MDF_Activity_Module/Core_MDF_Campaign_and_Activity_Data_Mismatch</report>
             </dashboardComponent>
             <rowIndex>8</rowIndex>
             <rowSpan>8</rowSpan>
@@ -363,7 +367,7 @@
                 </flexComponentProperties>
                 <groupingSortProperties/>
                 <header>Blank L1 Manager &amp; L2 Approver fields</header>
-                <report>ActivityModule/Blank_L1_Manager_L2_Approver_fields_d5J</report>
+                <report>Core_MDF_Activity_Module/Core_MDF_Blank_L1_Manager_L2_Approver_fields</report>
             </dashboardComponent>
             <rowIndex>16</rowIndex>
             <rowSpan>8</rowSpan>
@@ -415,7 +419,7 @@
                 </flexComponentProperties>
                 <groupingSortProperties/>
                 <header>Non-Spif Activities with Price Reviewer</header>
-                <report>ActivityModule/App_Stg_Pr_Reviewer_Non_Spif_V7Y</report>
+                <report>Core_MDF_Activity_Module/Core_MDF_App_Stg_Pr_Reviewer_Non_Spif</report>
             </dashboardComponent>
             <rowIndex>16</rowIndex>
             <rowSpan>8</rowSpan>
@@ -467,7 +471,7 @@
                 </flexComponentProperties>
                 <groupingSortProperties/>
                 <header>CCF/DCF/RMFBlankRequiredFieldsActivities</header>
-                <report>ActivityModule/CCFDCFRMFBlankRequiredFieldsActivities_WoZ</report>
+                <report>Core_MDF_Activity_Module/Core_MDF_CCFDCFRMFBlankRequiredFieldsActivities</report>
             </dashboardComponent>
             <rowIndex>16</rowIndex>
             <rowSpan>8</rowSpan>
@@ -479,6 +483,7 @@
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <componentType>FlexTable</componentType>
                 <flexComponentProperties>
+                    <decimalPrecision>-1</decimalPrecision>
                     <flexTableColumn>
                         <reportColumn>PartnerFundRequest.Name</reportColumn>
                         <showSubTotal>false</showSubTotal>
@@ -510,6 +515,7 @@
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableSortInfo>
+                        <sortColumn>PartnerFundRequest.Name</sortColumn>
                         <sortOrder>1</sortOrder>
                     </flexTableSortInfo>
                     <hideChatterPhotos>true</hideChatterPhotos>
@@ -517,7 +523,7 @@
                 </flexComponentProperties>
                 <groupingSortProperties/>
                 <header>IPA Activities Blank Required Fields - 1</header>
-                <report>ActivityModule/Core_MDF_IPA_Activities_Blank_Required_Fields_1</report>
+                <report>Core_MDF_Activity_Module/Core_MDF_IPA_Activities_Blank_Required_Fields_1</report>
             </dashboardComponent>
             <rowIndex>24</rowIndex>
             <rowSpan>8</rowSpan>
@@ -529,6 +535,7 @@
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <componentType>FlexTable</componentType>
                 <flexComponentProperties>
+                    <decimalPrecision>-1</decimalPrecision>
                     <flexTableColumn>
                         <reportColumn>PartnerFundRequest.Name</reportColumn>
                         <showSubTotal>false</showSubTotal>
@@ -560,6 +567,7 @@
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableSortInfo>
+                        <sortColumn>PartnerFundRequest.Name</sortColumn>
                         <sortOrder>1</sortOrder>
                     </flexTableSortInfo>
                     <hideChatterPhotos>true</hideChatterPhotos>
@@ -567,7 +575,7 @@
                 </flexComponentProperties>
                 <groupingSortProperties/>
                 <header>IPA Activities Blank Required Fields - 2</header>
-                <report>ActivityModule/Core_MDF_IPA_Activities_Blank_Required_Fields_2</report>
+                <report>Core_MDF_Activity_Module/Core_MDF_IPA_Activities_Blank_Required_Fields_2</report>
             </dashboardComponent>
             <rowIndex>24</rowIndex>
             <rowSpan>8</rowSpan>
@@ -630,8 +638,8 @@
     <dashboardType>SpecifiedUser</dashboardType>
     <description>Reporting Data Discrepancies</description>
     <isGridLayout>true</isGridLayout>
-    <owner>11540272@intel.com.crm</owner>
-    <runningUser>10675503@intel.com.crm</runningUser>
+    <owner>12101607@intel.com.crm</owner>
+    <runningUser>12101607@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>Weezer Data Quality Reports</title>
     <titleColor>#000000</titleColor>

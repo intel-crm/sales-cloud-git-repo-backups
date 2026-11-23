@@ -20,8 +20,13 @@ public without Sharing class Core_MDF_Remove_GroupMembers_Queueable implements Q
         list<Id> grmMemIdList = new List<Id>();
         Boolean errorFlag = false;
 
-        //To remove Group Members from respective acccount node groups.
-        if(pnumIdToGrmMemberIdDeleteMap != null && !pnumIdToGrmMemberIdDeleteMap.isEmpty()){
+        //To remove Group Members from respective acccount node groups.        
+        //if(pnumIdToGrmMemberIdDeleteMap != null && !pnumIdToGrmMemberIdDeleteMap.isEmpty()){
+        if(pnumIdToGrmMemberIdDeleteMap == null || pnumIdToGrmMemberIdDeleteMap.isEmpty()){ //ATHR Fix WW19
+            Core_MDF_PNUM_Update_Finalizer fc = new Core_MDF_PNUM_Update_Finalizer(erroredPnumList,grpMemListToInsert);
+            System.attachFinalizer(fc);
+            return;
+        }
             
             Database.DeleteResult[] drList = Database.delete(new List<Id>(pnumIdToGrmMemberIdDeleteMap.values()), false);
             
@@ -29,6 +34,7 @@ public without Sharing class Core_MDF_Remove_GroupMembers_Queueable implements Q
             for (Database.DeleteResult dr : drList) {
                 if (dr.isSuccess()) {
                     // Operation was successful, so get the ID of the record that was processed
+                   
                     grmMemIdList.add(dr.getId());
                 }
                 else {     
@@ -43,7 +49,7 @@ public without Sharing class Core_MDF_Remove_GroupMembers_Queueable implements Q
                     }
                 }
             }
-        }
+        //}
 
         // Create an instance of LoggingFinalizer and attach it
         Core_MDF_PNUM_Update_Finalizer fc = new Core_MDF_PNUM_Update_Finalizer(erroredPnumList,grpMemListToInsert);
@@ -60,6 +66,7 @@ public without Sharing class Core_MDF_Remove_GroupMembers_Queueable implements Q
         
         // Finalizer implementation
         public void execute(FinalizerContext ctx) {
+          
             
             Core_MDF_RecursiveTrigger.isRecursive = true;
 

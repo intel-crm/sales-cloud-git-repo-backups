@@ -16,4 +16,12 @@ public class Core_MDF_ContentVersionTriggerHandler extends TriggerHandler {
     	Core_MDF_ContentVersionServiceHandler.validateVATFileSizeAndExtension(Trigger.New);
      }
     }
+    
+     public override void beforeUpdate() {
+         if(!isActive('Core_MDF_ByPassUpdatingNotesToPrivate') && !isActive('Core_MDF_ByPassNotesUpdatesToPrivate')){
+             Core_MDF_ContentVersionServiceHandler.updateSharingPrivacyForNotes(Trigger.New);
+         } 
+     }
+
+     
 }

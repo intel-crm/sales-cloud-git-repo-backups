@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <excludeButtons>ChangeRecordType</excludeButtons>
+    <excludeButtons>GenerateKnowledge</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -31,6 +32,14 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Recommend_For_ClaimReview__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_TotalInvoice_Amt_Local__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_SurePay_Processed_Ind__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -73,10 +82,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>Core_MDF_Status__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
                 <field>Core_MDF_Ad_Run_Start_Date__c</field>
             </layoutItems>
             <layoutItems>
@@ -86,6 +91,10 @@
             <layoutItems>
                 <behavior>Required</behavior>
                 <field>Core_MDF_Total_Invoice_Amount_Local__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>Core_MDF_Status__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -114,6 +123,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Claim_Comments__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Claim_Cancellation_Reason_txt__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -343,6 +356,16 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
+            <actionName>Edit</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>PartnerFundClaim.Core_MDF_Clone_Claim</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>1</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>PartnerFundClaim.Core_MDF_Cancel_Claim</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>2</sortOrder>
@@ -368,6 +391,11 @@
             <sortOrder>6</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
+            <actionName>PartnerFundClaim.Core_MDF_PFC_Close_Claim</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>7</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>PartnerFundClaim.Core_MDF_Complete_PIC_Review</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>8</sortOrder>
@@ -376,21 +404,6 @@
             <actionName>PartnerFundClaim.Core_MDF_Submit_For_PIC</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>9</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>PartnerFundClaim.Core_MDF_PFC_Close_Claim</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>7</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Edit</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>PartnerFundClaim.Core_MDF_Clone_Claim</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>1</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <quickActionList>
@@ -427,7 +440,6 @@
     </relatedLists>
     <relatedLists>
         <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>Core_MDF_Amount_Amt__c</fields>
         <fields>Core_MDF_PartnershipGradeMaintenance_Nbr__c</fields>
@@ -477,6 +489,22 @@
         <fields>Core_MDF_Title_txt__c</fields>
         <fields>Core_MDF_Comments_txt__c</fields>
         <relatedList>Core_MDF_Notes__c.Core_MDF_Claim_id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Junction_Object__c.Claim__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_MDF_AI_Tracking__c.Core_MDF_Claim_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_MDF_Claim_Payment_Link__c.Core_MDF_Claim_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_MDF_Claim_Payment_Link__c.Core_MDF_Sub_Claim_Id__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>

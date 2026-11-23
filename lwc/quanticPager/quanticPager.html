@@ -1,29 +1,26 @@
 <template>
   <template if:true={hasResults}>
-    <lightning-button-group class="slds-align_absolute-center" style="margin-top:-22px ;">
+    <lightning-button-group>
       <lightning-button
         variant="base"
         disabled={previousDisabled}
         title={labels.previousPage}
-        icon-name="utility:chevronleft"
-        class="slds-m-left_x-small NavigationColor"
+        icon-name="utility:left"
+        class="slds-m-left_x-small"
         onclick={previous}
         aria-label={labels.previousPage}
       ></lightning-button>
   
       <template for:each={currentPagesObjects} for:item="page">
-        <c-quantic-number-button  key={page.number} number={page.number} selected={page.selected} onselect={goto} is-first-button="true" aria-label-value={page.ariaLabelValue} style="padding-top: 8px;" ></c-quantic-number-button> 
-        <!-- <span key={page.number} style="font-size: 18px;" class="slds-text-body_small"> &nbsp;&nbsp;of&nbsp;&nbsp; </span> -->
-        <span key={page.number} class="buttonalign"> <lightning-formatted-text style="font-family: inherit; font-size: large;" value="of" ></lightning-formatted-text> </span>
-        <c-quantic-number-button  key={page.number} number={maxNumberOfPage} selected={page.selected} onselect={goto} is-first-button="false" style="margin-top: 25px;"></c-quantic-number-button>
+        <c-quantic-number-button key={page.number} number={page.number} selected={page.selected} onselect={goto} aria-label-value={page.ariaLabelValue}></c-quantic-number-button>
       </template>
   
       <lightning-button
         disabled={nextDisabled}
         variant="base"
         title={labels.nextPage}
-        icon-name="utility:chevronright"
-        class="slds-m-left_x-small NavigationColor"
+        icon-name="utility:right"
+        class="slds-m-left_x-small"
         onclick={next}
         aria-label={labels.nextPage}
       ></lightning-button>

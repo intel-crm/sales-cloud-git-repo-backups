@@ -121,11 +121,6 @@
         <label>Other</label>
     </customValue>
     <customValue>
-        <fullName>Others</fullName>
-        <default>false</default>
-        <label>Others</label>
-    </customValue>
-    <customValue>
         <fullName>Professional and Business Services</fullName>
         <default>false</default>
         <label>Professional and Business Services</label>
@@ -170,7 +165,12 @@
         <default>false</default>
         <label>Transportation and Warehouse</label>
     </customValue>
+    <customValue>
+        <fullName>Test LOV Industry</fullName>
+        <default>false</default>
+        <label>Test LOV Industry</label>
+    </customValue>
     <description>Store Industry value for IPA</description>
     <masterLabel>Industry</masterLabel>
-    <sorted>true</sorted>
+    <sorted>false</sorted>
 </GlobalValueSet>

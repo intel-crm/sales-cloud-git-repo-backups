@@ -5,6 +5,7 @@ import checkboxStatic from './core_MDF_CustomCheckbox.html';
 import multiselectpicklistColumn from './core_MDF_MultiPicklistColumn.html';
 import urlColumn from './core_MDF_CustomUrl.html';
 
+
 export default class Core_MDF_Custom_Picklist extends LightningDatatable {
     static customTypes = {
         picklistColumn: {
@@ -30,6 +31,7 @@ export default class Core_MDF_Custom_Picklist extends LightningDatatable {
             standardCellLayout: true,
             typeAttributes: ['label', 'value', 'context', 'variant','name','title', 'target']
         }
+        
     };
 
     handleRowSelection(event){

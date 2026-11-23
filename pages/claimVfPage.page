@@ -1,0 +1,8 @@
+<apex:page standardController="PartnerFundClaim" recordSetVar="Pfc" extensions="claimVfController" lightningStylesheets="true">
+    
+    <flow:interview name="pfcClaimMultiselect">
+        <!-- varClaimIds is flow input variable & SelectedClaimIDs is a property in the Apex controller -->
+        <apex:param name="varClaimIds" value="{!SelectedClaimIDs}" />
+    </flow:interview>
+    
+</apex:page>

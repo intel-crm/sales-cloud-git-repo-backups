@@ -16,7 +16,7 @@
             <name>Core_IPS_Case_BK_Field_Map_UniqueKey</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>true</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>

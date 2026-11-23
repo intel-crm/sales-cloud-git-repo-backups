@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Security Dashboard Metric</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Security Dashboard Metrices</value>
+    </caseValues>
+    <fields>
+        <label><!-- Number of Permissions --></label>
+        <name>Core_Number_of_Permissions__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Profiles --></label>
+        <name>Core_Number_of_Profiles__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Users --></label>
+        <name>Core_Number_of_Users__c</name>
+    </fields>
+    <fields>
+        <label><!-- Dashboard Name --></label>
+        <name>Dashboard_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Percentage Mismatch --></label>
+        <name>PMP_Percentage_Mismatch__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Number Of Mismatch Count --></label>
+        <name>PMP_Total_Number_Of_Mismatch_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Number Of Records Processed --></label>
+        <name>PMP_Total_Number_Of_Records_Processed__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- Permissions Security Dashboard --></label>
+        <name>Core_Permissions_Security_Dashboard</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Pag Dashboards --></label>
+        <name>PMP_Pag_Dashboards</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Record Can Not be Edited --></errorMessage>
+        <name>Security_Dashboard_Timestamp_NonEditable</name>
+    </validationRules>
+</CustomObjectTranslation>

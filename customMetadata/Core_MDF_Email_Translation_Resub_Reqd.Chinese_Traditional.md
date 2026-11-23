@@ -35,6 +35,10 @@
         <value xsi:type="xsd:string">預算類型 :</value>
     </values>
     <values>
+        <field>Core_MDF_Claim_Name__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
         <field>Core_MDF_Claim__c</field>
         <value xsi:type="xsd:string">索賠 #</value>
     </values>

@@ -30,14 +30,11 @@ public class Core_AcceptReject_Lead_LexCon_test{
         us.ProfileId = profileId.Id;
         us.LanguageLocaleKey = 'en_US';
         insert us;
-        Core_Opp_Bypass_Validation_Rule__c bypass = new Core_Opp_Bypass_Validation_Rule__c();
-        bypass.Bypass__c=TRUE;
-        insert bypass;
         
         List<Lead> lstLeads = new List<Lead>();
-        RecordType LeadrecordType = [SELECT Id, DeveloperName FROM RecordType where DeveloperName = 'Lead'];        
+        
         Lead lead1 = new Lead();
-        lead1.RecordTypeId = LeadrecordType.id;
+        lead1.RecordTypeId = '012o0000000Tr9E';
         lead1.FirstName = 'Test1';
         lead1.LastName = 'Test12';
         lead1.email = 'gerald.reinartz=intel.com@example.com';
@@ -46,13 +43,12 @@ public class Core_AcceptReject_Lead_LexCon_test{
         lead1.CountryCode = 'USA';
         lead1.LeadSource = 'Partner Program';
         lead1.Core_Partner_Name__c = 'TestPartner1';
-        lead1.Status='Marketing Qualified Lead';
-        lead1.Core_Lead_Status__c = 'New';
+        lead1.Status='Tele Accepted Prospect';
         lead1.Core_Rejection_Comments__c ='Test';
         lstLeads.add(lead1);
-        RecordType PartnerLeadrecordType = [SELECT Id, Name FROM RecordType where name = 'Partner Lead'];         
+        
         Lead lead2 = new Lead();
-        lead2.RecordTypeId = PartnerLeadrecordType.id;
+        lead2.RecordTypeId = '012o0000000Tr9F';
         lead2.FirstName = 'Test12';
         lead2.LastName = 'Test123';
         lead2.email = 'geral.reinartz=intel.com@example.com';
@@ -66,7 +62,7 @@ public class Core_AcceptReject_Lead_LexCon_test{
         lstLeads.add(lead2);
         
         Lead lead3 = new Lead();
-        lead3.RecordTypeId = LeadrecordType.id;
+        lead3.RecordTypeId = System.Label.Core_Partner_Lead_Record_Id;
         lead3.FirstName = 'Test123';
         lead3.LastName = 'Test1234';
         lead3.email = 'gera.reinartz=intel.com@example.com';
@@ -80,7 +76,7 @@ public class Core_AcceptReject_Lead_LexCon_test{
         lstLeads.add(lead3);
         
         Lead lead4 = new Lead();
-        lead4.RecordTypeId = PartnerLeadrecordType.id;
+        lead4.RecordTypeId = '012o0000000Tr9E';
         lead4.FirstName = 'Test1';
         lead4.LastName = 'Test50';
         lead4.email = 'gerald.reinartz=intel.com@example.com';
@@ -95,7 +91,7 @@ public class Core_AcceptReject_Lead_LexCon_test{
         lstLeads.add(lead4);
         
         Lead lead5 = new Lead();
-        lead5.RecordTypeId = PartnerLeadrecordType.id;
+        lead5.RecordTypeId = '012o0000000Tr9F';
         lead5.FirstName = 'Test12';
         lead5.LastName = 'Test123';
         lead5.email = 'geral.reinartz=intel.com@example.com';
@@ -142,7 +138,7 @@ public class Core_AcceptReject_Lead_LexCon_test{
             // Create a fake response
             HttpResponse res = new HttpResponse();
             res.setHeader('Content-Type', 'application/json');
-            res.setBody('{"values":[{"attributes":null,"label":"Hot","validFor":[],"value":"Hot"},{"attributes":null,"label":"Warm","validFor":[],"value":"Warm"},{"attributes":null,"label":"Cold","validFor":[],"value":"Cold"}]}');
+            res.setBody('{"example":"test"}');
             res.setStatusCode(200);
             return res;
         }

@@ -102,9 +102,6 @@
     <columns>
         <field>Core_Design_Registration_Product__c.Core_Comment_Txt__c</field>
     </columns>
-    <columns>
-        <field>Core_Design_Registration__c.Core_End_Customer_Nm__c</field>
-    </columns>
     <description>List of all Design Registrations and their Products.</description>
     <format>Tabular</format>
     <name>All Design Registrations</name>

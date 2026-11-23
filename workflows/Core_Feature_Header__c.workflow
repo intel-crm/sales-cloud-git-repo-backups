@@ -17,7 +17,7 @@
             <name>Core_Feature_Header_Unique_Field_Update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Workflow rule to avoid duplication of combination of Header Type and Header Name for Feature Header records</description>
         <formula>TRUE</formula>
         <triggerType>onAllChanges</triggerType>

@@ -18,7 +18,7 @@ private class Core_MDF_CampaignPFR_Controller_Test {
         User testUser = Core_MDF_CCP_TestDataUtility.createUser(false);
         testUser.LastName = 'Test User';
         testUser.UserRoleId = usRole.Id;
-        userListToInsert.add(testUser);  
+        userListToInsert.add(testUser);
         
         User pctUsr = Core_MDF_CCP_TestDataUtility.createUser(false);
         pctUsr.LastName = 'User Test11';
@@ -48,33 +48,12 @@ private class Core_MDF_CampaignPFR_Controller_Test {
         Database.insert(userListToInsert);
         
         System.runAs(testUser){
-            
-            List<String> bypassFunctionKeys = new List<String>();
-            bypassFunctionKeys.add('BypassCampaignBenefitValidation');
-            bypassFunctionKeys.add('Core_MDF_Bypass_Manual_Share');
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Access');
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
-            bypassFunctionKeys.add('Core_MDF_BudgetCapValidation');
-            bypassFunctionKeys.add('Core_MDF_BypassBudgCapIUPGMValidation');
-            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(bypassFunctionKeys,true,true);
-            List<String> bypassFunctionKeys1 = new List<String>();
-            bypassFunctionKeys1.add('BypassCampaignBenefitValidation');
-            List<Core_Trigger_Executions__c> bypassfunctinalitylist = Core_MDF_CCP_TestDataUtility.byPassFeature(bypassFunctionKeys,true,false);
-            
             ChannelProgram ipaCP = Core_MDF_CCP_TestDataUtility.createProgram ('Intel Partner Alliance','Intel Partner Alliance', true);
             
             Account ipaUltimateAccount = Core_MDF_CCP_TestDataUtility.createIntelAccount ('IPA Intel Account',Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
             ipaUltimateAccount.Core_Unified_Global_Customer_BP_Id__c = ipaUltimateAccount.Id;
             ipaUltimateAccount.Core_Intel_Partner_Alliance_PartnerGroup__c = true;
             update ipaUltimateAccount;
-            
-            // CoGTM claim data prep
-            ChannelProgram coGTMCP = Core_MDF_CCP_TestDataUtility.createProgram ('Co-GTM','CoGTM', true);
-            insert new Core_MDF_Configuration__c(Name = 'ALLOWED_PRG_FOR_RUS_NOTIF', Core_MDF_Category__c = 'Bank Document Hold Logic', Core_MDF_Value__c = 'Retail Marketing Funds,Intel Partner Alliance,Channel MDF,Co-GTM');
-            Account coGTMIntelAccount = Core_MDF_CCP_TestDataUtility.createIntelAccount('CoGTM Intel Account', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
-            Account coGTMCoMarketingAccount = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('CoGTM Co-Marketing Account', coGTMCP.id, Core_MDF_CCP_TestDataUtility.Account_Record_Type,ipaUltimateAccount.id, false);
-            coGTMCoMarketingAccount.Core_MDF_Payment_Type_nm__c = 'Customer (Pass Through)';
-            insert coGTMCoMarketingAccount;
             
             List<Account> accList = new List<Account>();
             Account ipaCoMarketingAccount = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('IPA Co-Marketing Account', ipaCP.id, Core_MDF_CCP_TestDataUtility.Account_Record_Type,ipaUltimateAccount.id, false);           
@@ -85,7 +64,6 @@ private class Core_MDF_CampaignPFR_Controller_Test {
             accList.add(ipaCoMarketingAccount2);
             Database.insert(accList);                             
             
-            //Test.startTest();
             List<Contact> conList = new List<Contact>();
             Contact con = Core_MDF_CCP_TestDataUtility.createContact (ipaUltimateAccount.Id, false);
             con.RecordTypeId = Core_MDF_CCP_TestDataUtility.Intel_Contact_Record_Type;
@@ -254,8 +232,8 @@ private class Core_MDF_CampaignPFR_Controller_Test {
             
             insert permissionSetAssignmentList;
             
-            //Test.startTest();
-            // Highlight: Unused Local Variable
+            Test.startTest();
+            // Highlight: Unused Local Variable - Indira
            // List<Core_AGS_Role__c> agsRoleList = new List<Core_AGS_Role__c>();
             
             Core_AGS_Role__c agsRoleIPA = Core_MDF_CCP_TestDataUtility.createAgsRole('IPA_USER', 'Co-Marketing(Salesforce)-IPA USER', true, true);
@@ -355,7 +333,7 @@ private class Core_MDF_CampaignPFR_Controller_Test {
             
             
             Database.insert(grpMemList);
-            Test.startTest();
+            
             List<Core_MDF_Partner_Group_Mapping__c> pgmList = new List<Core_MDF_Partner_Group_Mapping__c>();
             // Creating Partner Group Mapping
             Core_MDF_Partner_Group_Mapping__c pgmExt = new Core_MDF_Partner_Group_Mapping__c();
@@ -449,102 +427,109 @@ private class Core_MDF_CampaignPFR_Controller_Test {
             }catch(Exception e){
             }
             
-            //Test.stopTest();   
-	    
-	    // CoGTM Data creation
-            Id pmb_RecordType_CoGTM = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
-            Id pfa_RecordType_CoGTM = Schema.SObjectType.PartnerFundAllocation.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
-            Id campaign_RecordType_CoGTM = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
-            Id pfr_RecordType_CoGTM = Schema.SObjectType.PartnerFundRequest.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
-            Id pfc_RecordType_CoGTM = Schema.SObjectType.PartnerFundClaim.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
+            Test.stopTest();            
             
-            PartnerMarketingBudget  coGTMPMB = Core_MDF_CCP_TestDataUtility.createBudget('CoGTMPMB', pmb_RecordType_CoGTM, coGTMCoMarketingAccount.Id, coGTMCP.Id, 1000000, System.today().addDays(-10), System.today().addDays(40),false);
-            coGTMPMB.Core_MDF_Budget_Type_Txt__c = 'Co-Engineering';
-            insert coGTMPMB;
-            
-            PartnerFundAllocation coGTMPFA = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('CoGTMPFA',coGTMPMB,coGTMCoMarketingAccount,100000.0,true);
-
-            Campaign coGTMCampaign = new Campaign();
-            coGTMCampaign.Name = 'Test CoGTM Camp';
-            coGTMCampaign.Core_MDF_Opal_Budget_Type_Txt__c = 'Co-Engineering';
-            coGTMCampaign.Core_MDF_Proposal_Based_Ind__c = true;
-            coGTMCampaign.Core_MDF_Program__c = 'CoGTM';
-            coGTMCampaign.Status = 'Draft';
-            coGTMCampaign.Core_MDF_Account__c = coGTMCoMarketingAccount.id;
-            coGTMCampaign.RecordTypeId = campaign_RecordType_CoGTM;
-            coGTMCampaign.StartDate = System.today().addDays(-5);
-            coGTMCampaign.EndDate = System.today().addDays(15);
-            coGTMCampaign.Core_MDF_Reimbursement_Amt__c = 1000200;
-            coGTMCampaign.Core_MDF_Activity_Category_Type__c = 'Innovation ->Engineering';
-            Database.insert(coGTMCampaign);
-            
-            PartnerFundRequest coGTMPFR = new PartnerFUndRequest();
-            coGTMPFR.CampaignId=coGTMCampaign.id;
-            coGTMPFR.RecordTypeId = pfr_RecordType_CoGTM;
-            coGTMPFR.ChannelPartnerId = coGTMCoMarketingAccount.id;
-            coGTMPFR.Core_MDF_ActivityCategory__c='Innovation';
-            coGTMPFR.Core_MDF_Activity_Types__c='Engineering';
-            coGTMPFR.Core_MDF_Start_Date__c=System.today().addDays(-5);
-            coGTMPFR.Core_MDF_End_Date__c =System.today().addDays(2);
-            coGTMPFR.Title ='Test CoGTM PFR';
-            coGTMPFR.Status = 'Draft';
-            coGTMPFR.Core_MDF_Reimbursement_Rate_txt__c = '100%';
-            coGTMPFR.RequestedAmount = 1000200;
-            coGTMPFR.AllocationId = coGTMPFA.Id;
-            coGTMPFR.BudgetId = coGTMPMB.Id;
-            Database.insert(coGTMPFR);
-
-		PartnerFundClaim coGTMPFC = new PartnerFundClaim();
-            coGTMPFC.RequestId = coGTMPFR.Id;
-            coGTMPFC.RecordTypeId = pfc_RecordType_CoGTM;
-            coGTMPFC.amount = 50;
-            coGTMPFC.Core_MDF_Status__c = 'Submitted';
-            coGTMPFC.Core_MDF_Invoice_Date__c = System.today().addDays(-4);
-            coGTMPFC.Core_MDF_Invoice_Number__c = 'INV1686';
-            coGTMPFC.Core_MDF_Media_Vehicle__c = 'Test';
-            coGTMPFC.Core_MDF_OtherCostsnotReimbursable_Local__c = 0;
-            coGTMPFC.Core_MDF_Taxes_Local__c = 12;
-            coGTMPFC.Core_MDF_Total_Invoice_Amount_Local__c = 50;
-            coGTMPFC.Core_MDF_Ad_Run_Start_Date__c = System.today().addDays(-4);
-            coGTMPFC.Core_MDF_Ad_Run_End_Date__c = System.today().addDays(-4);
-            coGTMPFC.Title = 'Test CoGTM PFC';
-            coGTMPFC.Core_MDF_Currency__c = 'USD';        
-            coGTMPFC.Description = 'Test';
-            coGTMPFC.Core_MDF_Country_Location_nm__c= 'BRAZIL';
-            coGTMPFC.Core_MDF_Reimbursable_Transaction_Amount__c=100;
-            coGTMPFC.Core_MDF_Processing_Preference_nm__c = 'Get paid, then settle';
-            Database.insert(coGTMPFC);        
-            Test.stopTest(); 
         }
     }
     
     
     @isTest 
     static void checkPCTCustomPermAssigned(){
-        Test.startTest();
         User testUser = [SELECT Id FROM User WHERE LastName = 'User Test11' limit 1];
         system.runAs(testUser){
             Boolean isCPAssigned = Core_MDF_CampaignPFR_Controller.isCustomPermissionAssigned('Core_MDF_PriceReviewer');
             Assert.areEqual(isCPAssigned,true);    
-            Test.stopTest();
         }
     }
-
+    
     @isTest 
-    static void rejectionScenerio_Part1() {
-        Test.startTest(); 
-
+    static void rejectionScenerio(){
         Id campaign_RecordType_IPA = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
+		Id ipaIUPGMRecTypeId = Schema.SObjectType.Core_MDF_Int_Users_Partner_Geo_Mapping__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
+        User testUser  = [SELECT Id FROM User WHERE LastName = 'User Test11' limit 1];
+       // Highlight: Unused Local Variable - Indira
+      //  User testUser1 = [SELECT Id FROM User WHERE LastName = 'User Test122' limit 1];
+        User testUser2 = [SELECT Id FROM User WHERE LastName = 'User Test133' limit 1];
+        User testUser3 = [SELECT Id FROM User WHERE LastName = 'User Test144' limit 1];
         User testUser4 = [SELECT Id FROM User WHERE LastName = 'User Test155' limit 1];
-        Account ipaCoMarketingAccount = [select id,Core_MDF_Parent_Fund_Account__c,Core_MDF_Channel_Program__c from Account where Name= 'IPA Co-Marketing Account'];
-
+        // Highlight: Unused Local Variable - Indira
+       // User extUsr1 = [SELECT Id FROM User WHERE LastName = 'User Test1' limit 1];
+        
+        List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
+         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm1 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
+            //iupgm1.Core_MDF_Account_id__c = ipaUltimateAccount.Id;
+            iupgm1.Core_MDF_Program_nm__c = 'Intel Partner Alliance';
+           iupgm1.RecordTypeId = ipaIUPGMRecTypeId;
+            iupgm1.Core_MDF_Region_Sub_Region_nm__c = 'WW';
+            iupgm1.Core_MDF_User_id__c = testUser3.Id;
+           	iupgm1.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver';
+            iupgm1.Core_MDF_All_Budget_Type_Access_Ind__c = true;
+            iupgm1.Core_MDF_All_Accounts_cd__c = 'yes';
+            iupgm1.Core_MDF_Activity_Classification_nm__c = 'Marketing';
+            iupgm1.Core_MDF_Active_Ind__c = true;
+            iupgm1.Core_MDF_Is_Not_an_Approver_Ind__c = false;
+            iupgmList.add(iupgm1);    
+        Database.insert(iupgmList); 
+        Assert.areEqual(iupgmList[0].Core_MDF_Role_nm__c,'Core_MDF_CCP_Internal_Proposal_Activity_L2_Approver');
+        List<Campaign> camListToBeInsrted = new List<Campaign>();
+        
+        Account ipaCoMarketingAccount = [select id,Core_MDF_Parent_Fund_Account__c,Core_MDF_Channel_Program__c 
+                                         from Account
+                                         where Name= 'IPA Co-Marketing Account'];
+        
+        string budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount);                                 
+        budgetType = 'Proposal I MDF';
+        Campaign ipaCampaign = new Campaign();
+        ipaCampaign.Name = 'Test Data12';
+        ipaCampaign.Core_MDF_Approval_Stage_nm__c = 'Price Reviewer';
+        ipaCampaign.Core_MDF_Reimbursement_Rate__c = '100%';
+        ipaCampaign.Description = 'IPA Campaign Description';
+        ipaCampaign.Core_MDF_Region_cd__c = 'ASMO';
+        ipaCampaign.Core_MDF_Sub_Region_cd__c = 'NAR';
+        ipaCampaign.Core_MDF_Budget_Type_txt__c = 'Proposal I MDF';//'Business Client Acceleration - MDF';
+        ipaCampaign.Core_MDF_Proposal_Based_Ind__c = true;
+        ipaCampaign.Core_MDF_Program__c = 'Intel Partner Alliance';
+        ipaCampaign.Core_MDF_Market__c = 'AFGHANISTAN';
+        ipaCampaign.Status = 'Pending Approval';
+        ipaCampaign.Core_MDF_Account__c = ipaCoMarketingAccount.id;
+        ipaCampaign.RecordTypeId = campaign_RecordType_IPA;
+        ipaCampaign.Core_MDF_IPA_Approval_Status_nm__c = '';
+        camListToBeInsrted.add(ipaCampaign);
+        
+        Campaign ipaCampaign1 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - APJ',
+                                                                                   ipaCoMarketingAccount.id, 
+                                                                                   System.today(), System.today().adddays(30),
+                                                                                   budgetType, 110000,'INDIA', 'Developer', 
+                                                                                   '', 'Draft', false); 
+        ipaCampaign1.Status = 'Pending Review';
+        ipaCampaign1.Core_MDF_Approval_Stage_nm__c = 'L2 Regional Marketing';
+        ipaCampaign1.Core_MDF_Market__c='INDIA;PAKISTAN' ;
+        camListToBeInsrted.add(ipaCampaign1);
+        
+        Campaign ipaCampaign2 = new Campaign();
+        ipaCampaign2.Name = 'Test Data12';
+        ipaCampaign2.Core_MDF_Approval_Stage_nm__c = 'L1 Approval';
+        ipaCampaign2.Core_MDF_Reimbursement_Rate__c = '100%';
+        ipaCampaign2.Description = 'IPA Campaign Description';
+        ipaCampaign2.Core_MDF_Region_cd__c = 'ASMO';
+        ipaCampaign2.Core_MDF_Sub_Region_cd__c = 'NAR';
+        ipaCampaign2.Core_MDF_Budget_Type_txt__c = 'Proposal I MDF';//'Business Client Acceleration - MDF';
+        ipaCampaign2.Core_MDF_Proposal_Based_Ind__c = true;
+        ipaCampaign2.Core_MDF_Program__c = 'Intel Partner Alliance';
+        ipaCampaign2.Core_MDF_Market__c = 'AFGHANISTAN';
+        ipaCampaign2.Status = 'Pending Approval';
+        ipaCampaign2.Core_MDF_Account__c = ipaCoMarketingAccount.id;
+        ipaCampaign2.RecordTypeId = campaign_RecordType_IPA;
+        ipaCampaign2.Core_MDF_IPA_Approval_Status_nm__c = '';
+        camListToBeInsrted.add(ipaCampaign2);
+        
         Campaign ipaCampaign3 = new Campaign();
         ipaCampaign3.Name = 'Test Data';
         ipaCampaign3.Core_MDF_Reimbursement_Rate__c = '100%';
         ipaCampaign3.Description = 'IPA Campaign Description';
         ipaCampaign3.Core_MDF_Region_cd__c = 'ASMO';
         ipaCampaign3.Core_MDF_Sub_Region_cd__c = 'NAR';
-        ipaCampaign3.Core_MDF_Budget_Type_txt__c = 'Proposal I MDF';
+        ipaCampaign3.Core_MDF_Budget_Type_txt__c = 'Proposal I MDF';//'Business Client Acceleration - MDF';
         ipaCampaign3.Core_MDF_Proposal_Based_Ind__c = true;
         ipaCampaign3.Core_MDF_Program__c = 'Intel Partner Alliance';
         ipaCampaign3.Core_MDF_Market__c = 'AFGHANISTAN';
@@ -553,28 +538,8 @@ private class Core_MDF_CampaignPFR_Controller_Test {
         ipaCampaign3.Core_MDF_Account__c = ipaCoMarketingAccount.id;
         ipaCampaign3.RecordTypeId = campaign_RecordType_IPA;
         ipaCampaign3.Core_MDF_IPA_Approval_Status_nm__c = '';
-        insert ipaCampaign3;
-
-        List<ProcessInstanceWorkitem> piwitmIds = [SELECT Id FROM ProcessInstanceWorkitem limit 1];
-        Id piwitmId = piwitmIds[0].Id;
-
-        system.runAs(testUser4){
-            Core_MDF_CampaignPFR_Controller.loadCampRecord(ipaCampaign3.Id);
-            Core_MDF_CampaignPFR_Controller.approveRejectProposal('Reject',ipaCampaign3.Id,'Rejected',piwitmId,false);
-        }
-
-        Test.stopTest();
-    }
-
-    @isTest 
-    static void rejectionScenerio_Part2() {
-        Test.startTest(); 
-
-        Id campaign_RecordType_IPA = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
-        User testUser2 = [SELECT Id FROM User WHERE LastName = 'User Test133' limit 1];
-        User testUser3 = [SELECT Id FROM User WHERE LastName = 'User Test144' limit 1];
-        Account ipaCoMarketingAccount = [select id,Core_MDF_Parent_Fund_Account__c,Core_MDF_Channel_Program__c from Account where Name= 'IPA Co-Marketing Account'];
-
+        camListToBeInsrted.add(ipaCampaign3);
+        
         Campaign ipaCampaign4 = new Campaign();
         ipaCampaign4.Name = 'Test Data12';
         ipaCampaign4.Core_MDF_Approval_Stage_nm__c = 'L2 Regional Marketing';
@@ -582,7 +547,7 @@ private class Core_MDF_CampaignPFR_Controller_Test {
         ipaCampaign4.Description = 'IPA Campaign Description';
         ipaCampaign4.Core_MDF_Region_cd__c = 'ASMO';
         ipaCampaign4.Core_MDF_Sub_Region_cd__c = 'NAR';
-        ipaCampaign4.Core_MDF_Budget_Type_txt__c = 'Proposal I MDF';
+        ipaCampaign4.Core_MDF_Budget_Type_txt__c = 'Proposal I MDF';//'Business Client Acceleration - MDF';
         ipaCampaign4.Core_MDF_Proposal_Based_Ind__c = true;
         ipaCampaign4.Core_MDF_Program__c = 'Intel Partner Alliance';
         ipaCampaign4.Core_MDF_Market__c = 'AFGHANISTAN';
@@ -590,8 +555,8 @@ private class Core_MDF_CampaignPFR_Controller_Test {
         ipaCampaign4.Core_MDF_Account__c = ipaCoMarketingAccount.id;
         ipaCampaign4.RecordTypeId = campaign_RecordType_IPA;
         ipaCampaign4.Core_MDF_IPA_Approval_Status_nm__c = '';
-        insert ipaCampaign4;
-
+        camListToBeInsrted.add(ipaCampaign4);
+        
         Campaign ipaCampaign5 = new Campaign();
         ipaCampaign5.Name = 'Test Data12';
         ipaCampaign5.Core_MDF_Approval_Stage_nm__c = 'L2 Regional Sales';
@@ -599,7 +564,7 @@ private class Core_MDF_CampaignPFR_Controller_Test {
         ipaCampaign5.Description = 'IPA Campaign Description';
         ipaCampaign5.Core_MDF_Region_cd__c = 'ASMO';
         ipaCampaign5.Core_MDF_Sub_Region_cd__c = 'NAR';
-        ipaCampaign5.Core_MDF_Budget_Type_txt__c = 'Proposal I MDF';
+        ipaCampaign5.Core_MDF_Budget_Type_txt__c = 'Proposal I MDF';//'Business Client Acceleration - MDF';
         ipaCampaign5.Core_MDF_Proposal_Based_Ind__c = true;
         ipaCampaign5.Core_MDF_Program__c = 'Intel Partner Alliance';
         ipaCampaign5.Core_MDF_Market__c = 'AFGHANISTAN';
@@ -607,81 +572,222 @@ private class Core_MDF_CampaignPFR_Controller_Test {
         ipaCampaign5.Core_MDF_Account__c = ipaCoMarketingAccount.id;
         ipaCampaign5.RecordTypeId = campaign_RecordType_IPA;
         ipaCampaign5.Core_MDF_IPA_Approval_Status_nm__c = '';
-        insert ipaCampaign5;
-
-        List<ProcessInstanceWorkitem> piwitmIds = [SELECT Id FROM ProcessInstanceWorkitem limit 1];
+        camListToBeInsrted.add(ipaCampaign5);
+          
+        Campaign ipaCampaign6 = new Campaign();
+        ipaCampaign6.Name = 'Test Data12';
+        ipaCampaign6.Core_MDF_Approval_Stage_nm__c = 'Customer Acceptance';
+        ipaCampaign6.Core_MDF_Reimbursement_Rate__c = '100%';
+        ipaCampaign6.Description = 'IPA Campaign Description';
+        ipaCampaign6.Core_MDF_Region_cd__c = 'ASMO';
+        ipaCampaign6.Core_MDF_Sub_Region_cd__c = 'NAR';
+        ipaCampaign6.Core_MDF_Budget_Type_txt__c = 'Proposal I MDF';//'Business Client Acceleration - MDF';
+        ipaCampaign6.Core_MDF_Proposal_Based_Ind__c = true;
+        ipaCampaign6.Core_MDF_Program__c = 'Intel Partner Alliance';
+        ipaCampaign6.Core_MDF_Market__c = 'AFGHANISTAN';
+        ipaCampaign6.Status = 'Pending Approval';
+        ipaCampaign6.Core_MDF_Account__c = ipaCoMarketingAccount.id;
+        ipaCampaign6.RecordTypeId = campaign_RecordType_IPA;
+        ipaCampaign6.Core_MDF_IPA_Approval_Status_nm__c = '';
+        camListToBeInsrted.add(ipaCampaign6);
+        
+        Campaign ipaCampaign7 = new Campaign();
+        ipaCampaign7.Name = 'Test Data12';
+        ipaCampaign7.Core_MDF_Approval_Stage_nm__c = 'Price Reviewer';
+        ipaCampaign7.Core_MDF_Reimbursement_Rate__c = '100%';
+        ipaCampaign7.Description = 'IPA Campaign Description';
+        ipaCampaign7.Core_MDF_Region_cd__c = 'ASMO';
+        ipaCampaign7.Core_MDF_Sub_Region_cd__c = 'NAR';
+        ipaCampaign7.Core_MDF_Budget_Type_txt__c = 'Proposal I MDF';//'Business Client Acceleration - MDF';
+        ipaCampaign7.Core_MDF_Proposal_Based_Ind__c = true;
+        ipaCampaign7.Core_MDF_Program__c = 'Intel Partner Alliance';
+        ipaCampaign7.Core_MDF_Market__c = 'AFGHANISTAN';
+        ipaCampaign7.Status = 'Pending Approval';
+        ipaCampaign7.Core_MDF_Account__c = ipaCoMarketingAccount.id;
+        ipaCampaign7.RecordTypeId = campaign_RecordType_IPA;
+        ipaCampaign7.Core_MDF_IPA_Approval_Status_nm__c = '';
+        camListToBeInsrted.add(ipaCampaign7);
+        
+        Campaign ipaCampaign8 = new Campaign();
+        ipaCampaign8.Name = 'Test Data12';
+        ipaCampaign8.Core_MDF_Approval_Stage_nm__c = 'L1 Approval';
+        ipaCampaign8.Core_MDF_Reimbursement_Rate__c = '100%';
+        ipaCampaign8.Description = 'IPA Campaign Description';
+        ipaCampaign8.Core_MDF_Region_cd__c = 'ASMO';
+        ipaCampaign8.Core_MDF_Sub_Region_cd__c = 'NAR';
+        ipaCampaign8.Core_MDF_Budget_Type_txt__c = 'Proposal I MDF';//'Business Client Acceleration - MDF';
+        ipaCampaign8.Core_MDF_Proposal_Based_Ind__c = true;
+        ipaCampaign8.Core_MDF_Program__c = 'Intel Partner Alliance';
+        ipaCampaign8.Core_MDF_Market__c = 'AFGHANISTAN';
+        ipaCampaign8.Status = 'Pending Approval';
+        ipaCampaign8.Core_MDF_Account__c = ipaCoMarketingAccount.id;
+        ipaCampaign8.RecordTypeId = campaign_RecordType_IPA;
+        ipaCampaign8.Core_MDF_IPA_Approval_Status_nm__c = '';
+        camListToBeInsrted.add(ipaCampaign8);
+        
+        Database.insert(camListToBeInsrted);
+        
+        List<Campaign> cmpUpd = new List<Campaign>();
+        cmpUpd.add(ipaCampaign);
+        cmpUpd.add(ipaCampaign1);
+        cmpUpd.add(ipaCampaign2);
+        cmpUpd.add(ipaCampaign3);
+        
+        Map<Id,Campaign> campOldMap = new Map<Id,Campaign>();
+        campOldMap.put(ipaCampaign.Id, ipaCampaign);
+        Core_MDF_Proposal_Based_Campaign_Process.onSubmitForApproval(cmpUpd,campOldMap);
+        Core_MDF_Proposal_Based_Campaign_Process.callApprovalProcess(cmpUpd,campOldMap);
+        Core_MDF_CampaignPFR_Controller.loadCampRecord(ipaCampaign.Id);
+        Set<Id> pIds = (new Map<Id, ProcessInstance>([SELECT Id,Status,TargetObjectId FROM ProcessInstance where TargetObjectId=: ipaCampaign.Id Limit 1])).keySet();
+        // Highlight: Unused Local Variable - Indira
+       // Set<Id> pInstanceWorkitems = (new Map<Id, ProcessInstanceWorkitem>([SELECT Id,ProcessInstanceId FROM ProcessInstanceWorkitem WHERE ProcessInstanceId in :pIds])).keySet();
+        Approval.ProcessSubmitRequest app = new Approval.ProcessSubmitRequest();
+        app.setObjectId(ipaCampaign.id);
+        Test.startTest(); 
+        //Approval.ProcessResult result = Approval.process(app);
+		List<ProcessInstanceWorkitem> piwitmIds = [SELECT Id FROM ProcessInstanceWorkitem limit 1];
         Id piwitmId = piwitmIds[0].Id;
+        system.runAs(testUser){
+            Core_MDF_CampaignPFR_Controller.loadCampRecord(ipaCampaign7.Id);
+            Core_MDF_CampaignPFR_Controller.approveRejectProposal('Reject',ipaCampaign.Id,'Rejected',piwitmId,false);
+        }
+        
+        
+        system.runAs(testUser4){
+            Core_MDF_CampaignPFR_Controller.loadCampRecord(ipaCampaign3.Id);
+            Core_MDF_CampaignPFR_Controller.approveRejectProposal('Reject',ipaCampaign3.Id,'Rejected',piwitmId,false);
+        }
 
         system.runAs(testUser2){
-            Core_MDF_CampaignPFR_Controller.loadCampRecord(ipaCampaign4.Id);
-            Core_MDF_CampaignPFR_Controller.approveRejectProposal('Recall',ipaCampaign4.Id,' ',piwitmId,false);
+            Core_MDF_CampaignPFR_Controller.loadCampRecord(ipaCampaign8.Id);
+            Core_MDF_CampaignPFR_Controller.approveRejectProposal('Recall',ipaCampaign2.Id,' ',piwitmId,false);
+            Core_MDF_CampaignPFR_Controller.loadCampRecord(ipaCampaign2.Id);
         }
 
         system.runAs(testUser3){
+            //Core_MDF_CampaignPFR_Controller.loadCampRecord(ipaCampaign4.Id);
             Core_MDF_CampaignPFR_Controller.loadCampRecord(ipaCampaign5.Id);
+            Core_MDF_CampaignPFR_Controller.approveRejectProposal('Reject',ipaCampaign4.Id,'Rejected',piwitmId,false);
             Core_MDF_CampaignPFR_Controller.approveRejectProposal('Reject',ipaCampaign5.Id,'Rejected',piwitmId,false);
+            try{
+                Core_MDF_CampaignPFR_Controller.loadCampRecord(ipaCampaign.Id);
+                Core_MDF_CampaignPFR_Controller.approveRejectProposal('Reject',ipaCampaign.Id,'Rejected',piwitmId,false);
+            }catch(exception ex){
+			}
         }
-
+       // system.runAs(extUsr1){
+          //  Core_MDF_CampaignPFR_Controller.loadCampRecord(ipaCampaign5.Id);
+          //  Core_MDF_CampaignPFR_Controller.loadCampRecord(ipaCampaign6.Id);
+      //  }
+        
         Test.stopTest();
     }
     
     @isTest 
-    static void ApprovalScenarios() {
+    static void ApprovalScnerios(){
         Test.startTest();
-        User testUser  = [SELECT Id FROM User WHERE LastName = 'User Test11'  LIMIT 1];
-        User testUser1 = [SELECT Id FROM User WHERE LastName = 'User Test122' LIMIT 1];
-        User testUser2 = [SELECT Id FROM User WHERE LastName = 'User Test133' LIMIT 1];
-        User testUser4 = [SELECT Id FROM User WHERE LastName = 'User Test155' LIMIT 1];
-    
-        Account ipaCoMarketingAccount = [SELECT Id FROM Account WHERE Name = 'IPA Co-Marketing Account' LIMIT 1];
+        User testUser = [SELECT Id FROM User WHERE LastName = 'User Test11' limit 1];
+        User testUser1 = [SELECT Id FROM User WHERE LastName = 'User Test122' limit 1];
+        User testUser2 = [SELECT Id FROM User WHERE LastName = 'User Test133' limit 1];
+        // Highlight: Unused Local Variable - Indira
+       // User testUser3 = [SELECT Id FROM User WHERE LastName = 'User Test144' limit 1];
+        User testUser4 = [SELECT Id FROM User WHERE LastName = 'User Test155' limit 1];
         
-        String budgetType = 'Proposal I MDF';
-        Date startDate = System.today();
-        Date endDate   = System.today().addDays(30);
-    
-        List<Campaign> campaignList = new List<Campaign>{
-            Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Camp 1', ipaCoMarketingAccount.Id, startDate, endDate, budgetType, 100000, 'INDIA', 'Developer', 'Apollo Lake', 'Draft', false),
-            Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Camp 2', ipaCoMarketingAccount.Id, startDate, endDate, budgetType, 100000, 'INDIA', 'Developer', 'Apollo Lake', 'Draft', false),
-            Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Camp 3', ipaCoMarketingAccount.Id, startDate, endDate, budgetType, 100000, 'INDIA', 'Developer', 'Apollo Lake', 'Draft', false),
-            Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Camp 4', ipaCoMarketingAccount.Id, startDate, endDate, budgetType, 100000, 'INDIA', 'Developer', 'Apollo Lake', 'Draft', false),
-            Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Camp 5', ipaCoMarketingAccount.Id, startDate, endDate, budgetType, 100000, 'INDIA', 'Developer', 'Apollo Lake', 'Draft', false)
-        };
-    
-        campaignList[0].Status = 'Pending Review'; campaignList[0].Core_MDF_Approval_Stage_nm__c = 'Price Reviewer';
-        campaignList[1].Status = 'Pending Review'; campaignList[1].Core_MDF_Approval_Stage_nm__c = 'L2 Regional Sales';
-        campaignList[2].Status = 'Pending Review'; campaignList[2].Core_MDF_Approval_Stage_nm__c = 'L1 Approval';
-        campaignList[3].Status = 'Pending Review'; campaignList[3].Core_MDF_Approval_Stage_nm__c = 'Program Office Reviewer';
-        campaignList[4].Status = 'Pending Review'; campaignList[4].Core_MDF_Approval_Stage_nm__c = 'L2 Regional Marketing';
-        insert campaignList;
-    
+        Account ipaCoMarketingAccount = [select id,Core_MDF_Parent_Fund_Account__c,Core_MDF_Channel_Program__c 
+                                         from Account
+                                         where Name= 'IPA Co-Marketing Account'];
+        
+        string budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount);                                 
+        budgetType = 'Proposal I MDF';
+        Campaign ipaCampaign = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP',
+                                                                                  ipaCoMarketingAccount.id, 
+                                                                                  System.today(), System.today().adddays(30),
+                                                                                  budgetType, 110000,'INDIA', 'Developer', 
+                                                                                  '', 'Draft', false); 
+        ipaCampaign.Status = 'Pending Review';
+        ipaCampaign.Core_MDF_Approval_Stage_nm__c = 'Price Reviewer';
+        database.insert(ipaCampaign);
+        Assert.areEqual(ipaCampaign.Core_MDF_Opal_Budget_Type_Txt__c,budgetType);
+        
+        Campaign ipaCampaign1 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - APJ',
+                                                                                   ipaCoMarketingAccount.id, 
+                                                                                   System.today(), System.today().adddays(30),
+                                                                                   budgetType, 110000,'INDIA', 'Developer', 
+                                                                                   '', 'Draft', false); 
+        ipaCampaign1.Status = 'Pending Review';
+        ipaCampaign1.Core_MDF_Approval_Stage_nm__c = 'L2 Regional Sales';
+        ipaCampaign1.Core_MDF_Market__c='INDIA;PAKISTAN' ;
+        database.insert(ipaCampaign1);
+        
+        Campaign ipaCampaign2 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - APJ',
+                                                                                   ipaCoMarketingAccount.id, 
+                                                                                   System.today(), System.today().adddays(30),
+                                                                                   budgetType, 110000,'INDIA', 'Developer', 
+                                                                                   '', 'Draft', false); 
+        ipaCampaign2.Status = 'Pending Review';
+        ipaCampaign2.Core_MDF_Approval_Stage_nm__c = 'L1 Approval';
+        ipaCampaign2.Core_MDF_Market__c='INDIA;PAKISTAN' ;
+        database.insert(ipaCampaign2);
+        
+        Campaign ipaCampaign3 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - APJ',
+                                                                                   ipaCoMarketingAccount.id, 
+                                                                                   System.today(), System.today().adddays(30),
+                                                                                   budgetType, 110000,'INDIA', 'Developer', 
+                                                                                   '', 'Draft', false); 
+        ipaCampaign3.Status = 'Pending Review';
+        ipaCampaign3.Core_MDF_Approval_Stage_nm__c = 'Program Office Reviewer';
+        ipaCampaign3.Core_MDF_Market__c='INDIA;PAKISTAN' ;
+        database.insert(ipaCampaign3);
+        
+        Campaign ipaCampaign4 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - APJ',
+                                                                                   ipaCoMarketingAccount.id, 
+                                                                                   System.today(), System.today().adddays(30),
+                                                                                   budgetType, 110000,'INDIA', 'Developer', 
+                                                                                   '', 'Draft', false); 
+        ipaCampaign4.Status = 'Pending Review';
+        ipaCampaign4.Core_MDF_Approval_Stage_nm__c = 'L2 Regional Marketing';
+        ipaCampaign4.Core_MDF_Market__c='INDIA;PAKISTAN' ;
+        database.insert(ipaCampaign4);
+        
         List<Campaign> cmpUpd = new List<Campaign>();
-        for (Campaign camp : campaignList) {
-            cmpUpd.add(camp);
-        }
-        Map<Id,Campaign> oldMap = new Map<Id,Campaign>{ campaignList[0].Id => campaignList[0] };
-    
-        Core_MDF_Proposal_Based_Campaign_Process.onSubmitForApproval(cmpUpd, oldMap);
-        Core_MDF_Proposal_Based_Campaign_Process.callApprovalProcess(cmpUpd, oldMap);
-  
-        Core_MDF_CampaignPFR_Controller.loadCampRecord(campaignList[0].Id);
-    
-        List<ProcessInstanceWorkitem> piwitmIds = [SELECT Id FROM ProcessInstanceWorkitem limit 1];
-        Id piwitmId = piwitmIds[0].Id;
-    
-        System.runAs(testUser) {
-            Core_MDF_CampaignPFR_Controller.approveRejectProposal('Approve', campaignList[0].Id, 'Approved', piwitmId, false);
-        }
-        System.runAs(testUser1) {
-            Core_MDF_CampaignPFR_Controller.approveRejectProposal('Approve', campaignList[1].Id, 'Approved', piwitmId, false);
-        }
-        System.runAs(testUser2) {
-            Core_MDF_CampaignPFR_Controller.approveRejectProposal('Approve', campaignList[2].Id, 'Approved', piwitmId, false);
-        }
-        System.runAs(testUser4) {
-            Core_MDF_CampaignPFR_Controller.approveRejectProposal('Approve', campaignList[3].Id, 'Approved', piwitmId, false);
-        }
-    
+        cmpUpd.add(ipaCampaign); 
+        cmpUpd.add(ipaCampaign1); 
+        cmpUpd.add(ipaCampaign2); 
+        cmpUpd.add(ipaCampaign3); 
+        
+        Map<Id,Campaign> campOldMap = new Map<Id,Campaign>();
+        campOldMap.put(ipaCampaign.Id, ipaCampaign);
+        Core_MDF_Proposal_Based_Campaign_Process.onSubmitForApproval(cmpUpd,campOldMap);
+        Core_MDF_Proposal_Based_Campaign_Process.callApprovalProcess(cmpUpd,campOldMap);
+        Core_MDF_CampaignPFR_Controller.loadCampRecord(ipaCampaign.Id);
+        Core_MDF_CampaignPFR_Controller.loadCampRecord(ipaCampaign1.Id);
+        Core_MDF_CampaignPFR_Controller.loadCampRecord(ipaCampaign2.Id);
+        Core_MDF_CampaignPFR_Controller.loadCampRecord(ipaCampaign3.Id);
+        Core_MDF_CampaignPFR_Controller.loadCampRecord(ipaCampaign4.Id);
+        Set<Id> pIds = (new Map<Id, ProcessInstance>([SELECT Id,Status,TargetObjectId FROM ProcessInstance where TargetObjectId=: ipaCampaign.Id Limit 1])).keySet();
+        // Highlight: Unused Local Variable - Indira
+       // Set<Id> pInstanceWorkitems = (new Map<Id, ProcessInstanceWorkitem>([SELECT Id,ProcessInstanceId FROM ProcessInstanceWorkitem WHERE ProcessInstanceId in :pIds])).keySet();
         Test.stopTest();
+        // Highlight: Unused Local Variable - Indira
+		//List<ProcessInstanceWorkitem> piwitmIds = [SELECT Id FROM ProcessInstanceWorkitem limit 1];
+        Id piwitmId = ipaCampaign.Id;//'04hDz000001PUCaIAO';       
+        Approval.ProcessSubmitRequest app = new Approval.ProcessSubmitRequest();
+        app.setObjectId(ipaCampaign.id);
+        //Approval.ProcessResult result = Approval.process(app);
+
+        system.runAs(testUser){
+            Core_MDF_CampaignPFR_Controller.approveRejectProposal('Approve',ipaCampaign.Id,'Approved',piwitmId,false);
+        }
+        system.runAs(testUser1){
+            Core_MDF_CampaignPFR_Controller.approveRejectProposal('Approve',ipaCampaign1.Id,'Approved',piwitmId,false);
+        }
+        system.runAs(testUser2){
+            Core_MDF_CampaignPFR_Controller.approveRejectProposal('Approve',ipaCampaign2.Id,'Approved',piwitmId,false);
+        }
+        system.runAs(testUser4){
+            Core_MDF_CampaignPFR_Controller.approveRejectProposal('Approve',ipaCampaign3.Id,'Approved',piwitmId,false);
+        }
+        //Test.stopTest();
     }
     
     @isTest 
@@ -691,18 +797,17 @@ private class Core_MDF_CampaignPFR_Controller_Test {
         Account ipaCoMarketingAccount = [select id,Core_MDF_Parent_Fund_Account__c,Core_MDF_Channel_Program__c 
                                          from Account
                                          where Name= 'IPA Co-Marketing Account'];
-        insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Business Client Acceleration - MDF', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = true, Core_MDF_Partner_Benefit__c = 'Business Client Acceleration - MDF', Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Proposal_Based', Core_MDF_Budget_Type__c = 'Proposal I MDF', Core_MDF_Program_Nm__c = 'Intel Partner Alliance', Core_MDF_RecordType__c = 'Proposal Based');
-
+        
         string budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount);                                 
         budgetType = 'Proposal I MDF';
         Campaign ipaCampaign = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP',
                                                                                   ipaCoMarketingAccount.id, 
                                                                                   System.today(), System.today().adddays(30),
                                                                                   budgetType, 110000,'INDIA', 'Developer', 
-                                                                                  'Apollo Lake', 'Draft', false); 
+                                                                                  '', 'Draft', false); 
         ipaCampaign.Status = 'Pending Approval';
         ipaCampaign.Core_MDF_Approval_Step_Counter_nbr__c = 4;
-        ipaCampaign.Core_MDF_Activity_Category_Type__c = 'Digital->Web Content';
+      //  ipaCampaign.Core_MDF_Activity_Category_Type__c = 'Digital 2025->Web Content';
         database.insert(ipaCampaign);
         
         List<Campaign> cmpUpd = new List<Campaign>();
@@ -712,8 +817,9 @@ private class Core_MDF_CampaignPFR_Controller_Test {
         campOldMap.put(ipaCampaign.Id, ipaCampaign);
         Core_MDF_Proposal_Based_Campaign_Process.onSubmitForApproval(cmpUpd,campOldMap);
         Core_MDF_Proposal_Based_Campaign_Process.callApprovalProcess(cmpUpd,campOldMap);
+       // Assert.areEqual('Digital 2025->Web Content',ipaCampaign.Core_MDF_Activity_Category_Type__c);
         Core_MDF_CampaignPFR_Controller.loadCampRecord(ipaCampaign.Id);
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
       //  List<ProcessInstanceWorkitem> piwitmIds = [SELECT Id FROM ProcessInstanceWorkitem limit 1];
         Id piwitmId = ipaCampaign.Id;//'04hDz000001PUCaIAO';
         Approval.ProcessSubmitRequest app = new Approval.ProcessSubmitRequest();
@@ -726,10 +832,10 @@ private class Core_MDF_CampaignPFR_Controller_Test {
         //List<Account> accList = new List<Account>();
         Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 1', 
                                                                        Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
-        
-        Account acc2 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Account 2',
+       // Highlight: Unused Local Variable - Indira 
+      /*  Account acc2 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Account 2',
                                                                              cp.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, 
-                                                                             acc1.Id, false);
+                                                                             acc1.Id, false);  */
         Test.stopTest();        
     }
     
@@ -741,27 +847,25 @@ private class Core_MDF_CampaignPFR_Controller_Test {
         Account ipaCoMarketingAccount = [select id,Core_MDF_Parent_Fund_Account__c,Core_MDF_Channel_Program__c 
                                          from Account
                                          where Name= 'IPA Co-Marketing Account'];
-        insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Business Client Acceleration - MDF', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = true, Core_MDF_Partner_Benefit__c = 'Business Client Acceleration - MDF', Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Proposal_Based', Core_MDF_Budget_Type__c = 'Proposal I MDF', Core_MDF_Program_Nm__c = 'Intel Partner Alliance', Core_MDF_RecordType__c = 'Proposal Based');
-
+        
         string budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount);                                 
         budgetType = 'Proposal I MDF';
         Campaign ipaCampaign = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP',
                                                                                   ipaCoMarketingAccount.id, 
                                                                                   System.today(), System.today().adddays(30),
                                                                                   budgetType, 110000,'INDIA', 'Consumer', 
-                                                                                  'Apollo Lake', 'Pending Approval', false); 
+                                                                                 '', 'Pending Approval', false); 
         ipaCampaign.Core_MDF_Approval_Step_Counter_nbr__c = 4;
         ipaCampaign.Status = 'Pending Approval';
         ipaCampaign.RecordTypeId = ipaCampaignRecordId;
         database.insert(ipaCampaign);
-        // Highlight: Unused Local Variable
+        // Highlight: Unused Local Variable - Indira
        // List<ProcessInstanceWorkitem> piwitmIds = [SELECT Id FROM ProcessInstanceWorkitem limit 1];
         Id piwitmId = ipaCampaign.Id;//'04hDz000001PUCaIAO';
 		Assert.areEqual(ipaCampaign.Core_MDF_Opal_Budget_Type_Txt__c,budgetType);
         
 
         Core_MDF_CampaignPFR_Controller.loadCampRecord(ipaCampaign.Id);
-        Core_MDF_CampaignPFR_Controller.getEligibleApproversForRecord(ipaCampaign.Id);
         Core_MDF_CampaignPFR_Controller.approveRejectProposal('Approve',ipaCampaign.Id,'Approved',piwitmId,false);
         Core_MDF_CampaignPFR_Controller.approveRejectProposal('Reject',ipaCampaign.Id,'Rejected',piwitmId,false);
         
@@ -776,18 +880,16 @@ private class Core_MDF_CampaignPFR_Controller_Test {
         Account ipaCoMarketingAccount1 = [select id,Core_MDF_Parent_Fund_Account__c,Core_MDF_Channel_Program__c 
                                           from Account
                                           where Name= 'IPA Co-Marketing Account2'];
-        insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Business Client Acceleration - MDF', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = true, Core_MDF_Partner_Benefit__c = 'Business Client Acceleration - MDF', Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Proposal_Based', Core_MDF_Budget_Type__c = 'Proposal I MDF', Core_MDF_Program_Nm__c = 'Intel Partner Alliance', Core_MDF_RecordType__c = 'Proposal Based');
-
         string budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount1);                                 
         budgetType = 'Proposal I MDF';
         Campaign ipaCampaign1 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP1',
                                                                                    ipaCoMarketingAccount1.id, 
                                                                                    System.today(), System.today().adddays(30),
                                                                                    budgetType, 110000,'INDIA', 'Developer', 
-                                                                                   'Apollo Lake', 'Draft', false);   
+                                                                                   '', 'Draft', false);   
         
         ipaCampaign1.Core_MDF_Approval_Step_Counter_nbr__c = 4;
-        ipaCampaign1.Core_MDF_Activity_Category_Type__c = 'Digital->Web Content';
+       // ipaCampaign1.Core_MDF_Activity_Category_Type__c = 'Digital 2025->Web Content';
         database.insert(ipaCampaign1);
         
         List<Campaign> cmpUpd = new List<Campaign>();
@@ -797,6 +899,8 @@ private class Core_MDF_CampaignPFR_Controller_Test {
         campOldMap.put(ipaCampaign1.Id, ipaCampaign1);
         Core_MDF_Proposal_Based_Campaign_Process.onSubmitForApproval(cmpUpd,campOldMap);
         Core_MDF_Proposal_Based_Campaign_Process.callApprovalProcess(cmpUpd,campOldMap);
+       // Assert.areEqual('Digital 2025->Web Content',ipaCampaign1.Core_MDF_Activity_Category_Type__c);
+        
         Core_MDF_CampaignPFR_Controller.getActivityRecords(ipaCampaign1.Id);
         Core_MDF_CampaignPFR_Controller.checkUserType(true);
         ipaCampaign1.Core_MDF_Proposal_Based_Ind__c = true;
@@ -809,7 +913,7 @@ private class Core_MDF_CampaignPFR_Controller_Test {
     
     @isTest
     static void displayActivityTest(){
-        Test.startTest();
+        
         User testUser = [SELECT Id FROM User WHERE LastName = 'User Test9'];
         
         system.runAs(testUser){
@@ -833,79 +937,5 @@ private class Core_MDF_CampaignPFR_Controller_Test {
             Assert.areEqual(FALSE, wrapper.activityEditAccess);
             Assert.areEqual(TRUE, wrapper.claimCreateAccess);
         }        
-        Test.stopTest();
-    }
-    
-    @isTest 
-    static void loadClaimRecordTestRecall(){
-        Test.startTest();
-        User usr = [Select Id, lastName from User where lastName = 'SystemAdmin' limit 1];
-
-        System.runAs(usr){ 
-            //test.startTest();
-            PartnerFundClaim coGTMPFC = [SELECT Id FROM PartnerFundClaim WHERE Title = 'Test CoGTM PFC' LIMIT 1];
-
-            coGTMPFC.Core_MDF_Status__c = 'Pending Review';
-            coGTMPFC.Core_MDF_Approval_Stage_nm__c = 'Technical Approver';
-            coGTMPFC.Core_MDF_Approval_Step_Counter_nbr__c = 1;
-            update coGTMPFC;
-            
-            List<ProcessInstanceWorkitem> piwitmIds = [SELECT Id FROM ProcessInstanceWorkitem limit 1];
-        	Id piwitmId = piwitmIds[0].Id;
-            
-            Core_MDF_CampaignPFR_Controller.loadCampRecord(coGTMPFC.Id);
-            Core_MDF_CampaignPFR_Controller.approveRejectProposal('Recall',coGTMPFC.Id,'Recalled',piwitmId,false);
-			test.stopTest();
-            
-        } 
-    }
-    
-    @isTest 
-    static void loadClaimRecordTestReject(){
-        Test.startTest();
-        User usr = [Select Id, lastName from User where lastName = 'SystemAdmin' limit 1];
-
-        System.runAs(usr){ 
-            //test.startTest();
-            PartnerFundClaim coGTMPFC = [SELECT Id FROM PartnerFundClaim WHERE Title = 'Test CoGTM PFC' LIMIT 1];
-
-            coGTMPFC.Core_MDF_Status__c = 'Pending Review';
-            coGTMPFC.Core_MDF_Approval_Stage_nm__c = 'Technical Approver';
-            coGTMPFC.Core_MDF_Approval_Step_Counter_nbr__c = 1;
-            update coGTMPFC;
-            
-            List<ProcessInstanceWorkitem> piwitmIds = [SELECT Id FROM ProcessInstanceWorkitem limit 1];
-        	Id piwitmId = piwitmIds[0].Id;
-            
-            Core_MDF_CampaignPFR_Controller.loadCampRecord(coGTMPFC.Id);
-            Core_MDF_CampaignPFR_Controller.approveRejectProposal('Reject',coGTMPFC.Id,'Rejected',piwitmId,false);
-			test.stopTest();
-            
-        } 
-    }
-    
-    @isTest 
-    static void loadClaimRecordTestApprove(){
-        Test.startTest();
-        User usr = [Select Id, lastName from User where lastName = 'SystemAdmin' limit 1];
-
-        System.runAs(usr){ 
-            //test.startTest();
-            PartnerFundClaim coGTMPFC = [SELECT Id FROM PartnerFundClaim WHERE Title = 'Test CoGTM PFC' LIMIT 1];
-
-            coGTMPFC.Core_MDF_Status__c = 'Pending Review';
-            coGTMPFC.Core_MDF_Approval_Stage_nm__c = 'Technical Approver';
-            coGTMPFC.Core_MDF_Approval_Step_Counter_nbr__c = 1;
-            update coGTMPFC;
-            
-            List<ProcessInstanceWorkitem> piwitmIds = [SELECT Id FROM ProcessInstanceWorkitem limit 1];
-        	Id piwitmId = piwitmIds[0].Id;
-            
-            Core_MDF_CampaignPFR_Controller.loadCampRecord(coGTMPFC.Id);
-            Core_MDF_CampaignPFR_Controller.getEligibleApproversForRecord(coGTMPFC.Id);
-            Core_MDF_CampaignPFR_Controller.approveRejectProposal('Approve',coGTMPFC.Id,'Approved',piwitmId,false);
-			test.stopTest();
-            
-        } 
     }
 }

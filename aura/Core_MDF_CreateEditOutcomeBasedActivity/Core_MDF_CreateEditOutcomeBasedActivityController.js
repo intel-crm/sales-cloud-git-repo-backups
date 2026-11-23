@@ -29,11 +29,10 @@
         } else {
             component.set("v.newPFR.Core_MDF_Skip_PCT_Approval_ind__c", false);
             component.set("v.checkStatusAttribute", false);
-           
+            
         }
-
-         helper.loadInitialData(component);
-         helper.checkUserEmailForAIAccess(component);
+        helper.loadInitialData(component);
+        helper.checkUserEmailForAIAccess(component);
         
     } catch(error) {
         component.set("v.showSpinner", false);
@@ -785,7 +784,6 @@ calculateMaxIntelInvestment: function(component, event, helper) {
     // Recalculate reimbursement rate based on new maximum Intel investment
     helper.calculateReimbursementRate(component, budgetAmount, maxIntelContribution,true);
 },
-
 
     hidePopup: function(component, event){
         var EventData = event.getParam("ButtonClick");

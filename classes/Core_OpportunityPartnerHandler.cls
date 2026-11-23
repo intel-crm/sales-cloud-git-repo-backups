@@ -8,7 +8,7 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Nick Krisa, Dave Hood     07/20/2014             Copied from Descriptive Features code and refactored
 ******************************************************************************************************/
-public without sharing class Core_OpportunityPartnerHandler {//TWC3123-5376: codescan fix: added without sharing
+public class Core_OpportunityPartnerHandler {
     
     // API names for all of the fields in Opportunity Facts
     public static set<String> fieldNames = new set<String>{};
@@ -18,36 +18,36 @@ public without sharing class Core_OpportunityPartnerHandler {//TWC3123-5376: cod
     public static final String separator = ';;';
         
     /*
-    * Method name  : opportunityPartnerFactsUpdate
-    * Description  : This method is invoked when a set of Opportunity Partner records is inserted, updated, or deleted,
+	* Method name  : opportunityPartnerFactsUpdate
+	* Description  : This method is invoked when a set of Opportunity Partner records is inserted, updated, or deleted,
                      and performs 4 main steps to "pivot" the Partner Names into fields (based on Partner Type) in the
                      Opportunity Facts table:
                        1. Get all of the Opportunity Facts records that we will need to update
                        2. Figure out which fields need updating and what the updated values should be
                        3. Iterate through the Opportunity Facts records to update the values
                        4. Perform an upsert to the database with those records
-    */     
+	*/     
     public static void opportunityPartnerFactsUpdate(List<Core_Opportunity_Partner__c> lstNewOppPartners,
                                                      List<Core_Opportunity_Partner__c> lstOldOppPartners)
     {
         //---------------------------------------------------------------------------------------------------------------
         // This first section is all about getting the Opportunity Facts records that we'll need to update later on
-        
+    	
         Set<Id> oppIds = new Set<Id>();
         
         // If insert or update
         if (lstNewOppPartners != NULL)
             for(Core_Opportunity_Partner__c oppPartner : lstNewOppPartners)
-                oppIds.add(oppPartner.Core_Opportunity__c);
+            	oppIds.add(oppPartner.Core_Opportunity__c);
         
         // If delete
         if (lstNewOppPartners == NULL)
             for(Core_Opportunity_Partner__c oppPartner : lstOldOppPartners)
-                oppIds.add(oppPartner.Core_Opportunity__c);
+            	oppIds.add(oppPartner.Core_Opportunity__c);
         
         // For updates & deletes, we need to keep track of all of the old OpportunityId/Partner Type combinations, so
         // we can make sure to blank them out later if needed (since the current state of the DB may not have them at all)
-        Set<String> oldOppIdPartnerTypes = new Set<String>();
+    	Set<String> oldOppIdPartnerTypes = new Set<String>();
         
         // If delete or update
         if (lstOldOppPartners != NULL)
@@ -73,9 +73,9 @@ public without sharing class Core_OpportunityPartnerHandler {//TWC3123-5376: cod
         queryString = queryString + ', (select Id from Opportunities__r) from Core_Opportunity_Facts__c WHERE Core_Opportunity_ID__c in :oppIds';
         
         // Query Opportunity Facts, iterate through the results, and place them in our map of Opportunity IDs to Facts
-        for (Core_Opportunity_Facts__c oppFact : Database.query(String.escapeSingleQuotes(queryString))) {  //TWC3123-5376: codescan fix : Avoid Untrusted/Unescaped Variables in DML Query(possible soql injection)-added String.escapeSingleQuotes
+        for (Core_Opportunity_Facts__c oppFact : Database.query(queryString)) {
             if (!oppFact.Opportunities__r.IsEmpty())
-            {mapOppIDsToFacts.put(oppFact.Opportunities__r[0].Id, oppFact);}   
+                mapOppIDsToFacts.put(oppFact.Opportunities__r[0].Id, oppFact);    
         }
         
         //---------------------------------------------------------------------------------------------------------------
@@ -138,11 +138,9 @@ public without sharing class Core_OpportunityPartnerHandler {//TWC3123-5376: cod
                 else
                     fieldValue = convertSetToString(mapOppIdPartnerTypeToPartnerNames.get(oppIdPartnerType));
                 try {
-                    oppFact.put(fieldName, fieldValue);
+                	oppFact.put(fieldName, fieldValue);
                 }
                 catch (Exception e) {
-                    Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'An exception has been thrown for:Class.Core_OpportunityPartnerHandler.opportunityPartnerFactsUpdate',Core_Details__c = e.getMessage(), Core_Origin__c='Core_OpportunityPartnerHandler', Core_Severity__c='Medium', Core_When__c=System.Now(), Core_Project__c = 'Core_OpportunityPartnerHandler.opportunityPartnerFactsUpdate');
-                    Database.insert(logEntry, false);
                 }
                 mapOppIdsToFacts.put(oppId, oppFact);
             }
@@ -209,9 +207,9 @@ public without sharing class Core_OpportunityPartnerHandler {//TWC3123-5376: cod
     
     
     /*
-    * Method name  : opportunityFactsUpdate
-    * Description  :  
-    *     
+	* Method name  : opportunityFactsUpdate
+	* Description  :  
+	*     
     public static void opportunityFactsUpdate(List<Core_Opportunity_Partner__c> lstNewOppPartners, List<Core_Opportunity_Partner__c> lstOldOppPartners,
                                               Map<Id,Core_Opportunity_Partner__c> mapNewOppPartners, Map<Id,Core_Opportunity_Partner__c> mapOldOppPartners)
     {
@@ -227,12 +225,12 @@ public without sharing class Core_OpportunityPartnerHandler {//TWC3123-5376: cod
         // If the operation is insert or update
         if(lstNewOppPartners != NULL)
             for(Core_Opportunity_Partner__c oppPartner : lstNewOppPartners)
-                lstOppIds.add(oppPartner.Core_Opportunity__c);
+            	lstOppIds.add(oppPartner.Core_Opportunity__c);
         
         // If the operation is delete
         if(lstNewOppPartners == NULL)
             for(Core_Opportunity_Partner__c oppPartner : lstOldOppPartners)
-                lstOppIds.add(oppPartner.Core_Opportunity__c);
+            	lstOppIds.add(oppPartner.Core_Opportunity__c);
         
         // Set the query string for querying all fields in Opportunity Facts
         String queryString = 'SELECT ';
@@ -311,9 +309,9 @@ public without sharing class Core_OpportunityPartnerHandler {//TWC3123-5376: cod
     }    
     
     *
-    * Method name  : OpportunityFactsDeleteOp
-    * Description  : Look at Opportunity Partners being deleted and return an appropriate Opportunity Facts record
-    *
+	* Method name  : OpportunityFactsDeleteOp
+	* Description  : Look at Opportunity Partners being deleted and return an appropriate Opportunity Facts record
+	*
     public static Core_Opportunity_Facts__c OpportunityFactsDeleteOp(
         List<Core_Opportunity_Partner__c> listOldOppPartners,
         map<ID,Core_Opportunity_Facts__c> mapOpportunityIDToFact) {
@@ -370,10 +368,10 @@ public without sharing class Core_OpportunityPartnerHandler {//TWC3123-5376: cod
     */
     
     /*
-    * Method name  : opportunityFactsUpdate
-    * Description  : Look at Opportunity Partners being inserted/updated/deleted and return an appropriate Opportunity Facts record
+	* Method name  : opportunityFactsUpdate
+	* Description  : Look at Opportunity Partners being inserted/updated/deleted and return an appropriate Opportunity Facts record
     * NOTE: This currently only works for opportunity partners associated with a single opportunity ID
-    *
+	*
     public static Core_Opportunity_Facts__c opportunityFactsUpdate(List<Core_Opportunity_Partner__c> lstNewOppPartners,
                                                                    Map<ID,Core_Opportunity_Facts__c> mapOppIDsToFacts,
                                                                    String operation)
@@ -455,7 +453,7 @@ public without sharing class Core_OpportunityPartnerHandler {//TWC3123-5376: cod
                 List<String> acctNames = mapFieldsToAcctNames.get(field).split(';');
                 for (String acctName : acctNames) {
                     if (acctName != '')
-                        fieldValue = fieldValue.remove(acctName + ';');
+                		fieldValue = fieldValue.remove(acctName + ';');
                 }
             }
             
@@ -468,78 +466,4 @@ public without sharing class Core_OpportunityPartnerHandler {//TWC3123-5376: cod
         return oppFact;
     }
 */
-    
-    public static void createOppPartnerJSONInsert(List<Core_Opportunity_Partner__c> oppPartnerList){//TWC3123-702 
-        List<String> oppId = new List<String>();
-        List<String> oppIdForKPI = new List<String>();
-        for(Core_Opportunity_Partner__c OppPartner: oppPartnerList){
-            oppId.add(OppPartner.Core_Opportunity__c);      
-        }
-        if(oppId.size()>0){
-            for (Opportunity allOppKPI: [SELECT ID FROM Opportunity WHERE Id IN :oppId and (Core_Opportunity_Coverage_Nm__c <> 'Partner-Led Opportunity' or
-                                         Core_Coverage_Type_Nm__c <> 'Deal Registration')
-                                        ]) {
-                                            oppIdForKPI.add(allOppKPI.Id);
-                                        }
-            if(oppIdForKPI.Size() > 0){
-                oppPartnerJSON(oppIdForKPI);
-            }            
-        }
-    }
-/*
-* Method name  : createOppPartnerJSONUpdate
-* Description  : This Method used to sent a message to azure for any update on the Partner type. Called from After Update
-* Return Type  : void
-* Parameter    : (List<Core_Opportunity_Partner__c> opportunityPartnerList, Map<Id, Core_Opportunity_Partner__c> oldOppPartnerMap).
-*/     
-    public static void createOppPartnerJSONUpdate(List<Core_Opportunity_Partner__c> opportunityPartnerList, Map<Id, Core_Opportunity_Partner__c> oldOppPartnerMap){ //TWC3123-702
-        List<String> oppId = new List<String>();
-        List<String> oppIdForKPI = new List<String>();
-        for(Core_Opportunity_Partner__c OppPartner: opportunityPartnerList){
-            if(OppPartner.Core_Partner_Type__c <> oldOppPartnerMap.get(OppPartner.Id).Core_Partner_Type__c){
-                oppId.add(OppPartner.Core_Opportunity__c);
-            }
-        }
-        if(oppId.size()>0){
-            for (Opportunity allOppKPI: [SELECT ID FROM Opportunity WHERE Id IN :oppId and (Core_Opportunity_Coverage_Nm__c <> 'Partner-Led Opportunity' or
-                                         Core_Coverage_Type_Nm__c <> 'Deal Registration')
-                                        ]) {
-                                            oppIdForKPI.add(allOppKPI.Id);
-                                        }
-            if(oppIdForKPI.Size() > 0){
-                oppPartnerJSON(oppIdForKPI);
-            }            
-        }
-    }
-    
-    public static void oppPartnerJSON(List<String> Oppid){
-      
-        Core_OpportunityJSON updateJob = new Core_OpportunityJSON(Oppid);
-        ID jobID=System.enqueueJob(updateJob);
-        
-      
-    }
-    public static void createOppPartnerJSONAfterDelete(List<Core_Opportunity_Partner__c> oppPartnerList){//TWC3123-702 
-    Core_OpportunityPartnerHandler.createOppPartnerJSONInsert(oppPartnerList);
-    }
-    
-    //TWC3123-5659 - Devashish
-    public static void checkPCCOpptyLock(List<Core_Opportunity_Partner__c> newOpptyPartnerList){
-        Set<Id> oppIds = new Set<Id>();                     
-        for(Core_Opportunity_Partner__c oppPrtnr:newOpptyPartnerList)
-        {
-                oppIds.add(oppPrtnr.Core_Opportunity__c);
-        }
-        if(oppIds.size() > 0){
-            List<Opportunity> OpptyList = [SELECT Id, name, SBQQ__PrimaryQuote__c, Core_Coverage_Type_Nm__c, Core_Opportunity_Coverage_Nm__c FROM Opportunity WHERE Id IN:oppIds AND Core_Opportunity_Coverage_Nm__c ='Partner-Led Opportunity' AND Core_Coverage_Type_Nm__c ='Deal Registration']; 
-            Boolean lock = Core_CRM_Utility.lockOpportunity(OpptyList);
-            if(lock)
-            {
-                for(Core_Opportunity_Partner__c oppPrtnr:newOpptyPartnerList)
-                {
-                    oppPrtnr.adderror(System.Label.Core_LockPCCOppty);
-                }
-            }
-        }
-    }
 }

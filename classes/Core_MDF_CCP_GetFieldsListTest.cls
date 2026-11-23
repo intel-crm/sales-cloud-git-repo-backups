@@ -11,7 +11,5 @@ public class Core_MDF_CCP_GetFieldsListTest {
         // US - TWC702-14285: Unit Test Method should include System.Assert
         System.assert(true, 'Executed getObjectFields, getFieldsType and getPickListValues without exception');
        Test.stopTest();
-    }
-    
-    
+    }   
 }

@@ -2,6 +2,7 @@
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <customButtons>Core_Approve_Product</customButtons>
     <customButtons>Core_Reject_Product</customButtons>
+    <customButtons>Core_Cancel_Product</customButtons>
     <excludeButtons>ChangeOwnerOne</excludeButtons>
     <excludeButtons>ChangeRecordType</excludeButtons>
     <excludeButtons>Clone</excludeButtons>
@@ -22,7 +23,7 @@
                 <field>Core_Product_Id__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_Full_Year_Qty__c</field>
             </layoutItems>
             <layoutItems>
@@ -37,18 +38,6 @@
                 <behavior>Readonly</behavior>
                 <field>Core_Partner_Tracking_Cd__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>PCC_Standard_Distributor_Price__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PCC_Eligible_for_DDI_Payment__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PCC_Payment_Expiration_Date__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -60,8 +49,12 @@
                 <field>Core_Opportunity_Product_Id__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>Core_Design_Product_Status_Nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Product_List_Price_Amt__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -70,18 +63,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_Retired_As_Of_Dt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>DDR_Target_Resale_Price_Note__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>PCC_Recommended_Customer_Price__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PCC_DDI_focused__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -94,7 +75,7 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>PCC_Record_Type_Drp__c</field>
+                <field>RecordTypeId</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -147,29 +128,34 @@
             <sortOrder>0</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>NewTask</actionName>
+            <actionName>FeedItem.ContentNote</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>1</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
+            <actionName>NewTask</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>2</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>Edit</actionName>
             <actionType>StandardButton</actionType>
-            <sortOrder>2</sortOrder>
+            <sortOrder>3</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>Core_Design_Registration_Product__c.Core_Approve_Product_Lex</actionName>
             <actionType>QuickAction</actionType>
-            <sortOrder>3</sortOrder>
+            <sortOrder>4</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>Core_Design_Registration_Product__c.Core_Reject_Product_Lex</actionName>
             <actionType>QuickAction</actionType>
-            <sortOrder>4</sortOrder>
+            <sortOrder>5</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Core_Design_Registration_Product__c.PCC_Cancel_Product</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>5</sortOrder>
+            <actionName>Core_Cancel_Product</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>6</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <relatedLists>
@@ -188,24 +174,13 @@
         <fields>Core_Advanced_Technology__c</fields>
         <relatedList>OpportunityLineItem.Core_Design_Registration_Product_Id__c</relatedList>
     </relatedLists>
-    <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
-        <fields>PCC_MM_ID__c</fields>
-        <fields>PCC_Old_MM_Id__c</fields>
-        <fields>PCC_Ordering_Cd__c</fields>
-        <fields>PCC_L5_Product_Name__c</fields>
-        <fields>PCC_Design_Registration__c</fields>
-        <fields>PCC_Opportunity__c</fields>
-        <relatedList>PCC_DDR_L5_Product_Mapping__c.PCC_Design_Registration_Product__c</relatedList>
-    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1J00000Av4dr</masterLabel>
+        <masterLabel>00h2D000000MpUd</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

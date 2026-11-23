@@ -1,0 +1,10 @@
+:host {
+    display: block;
+    min-width: 0;
+}
+
+.react-frame {
+    display: block;
+    width: 100%;
+    border: 0;
+}

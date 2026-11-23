@@ -35,11 +35,12 @@ public class Core_MDF_ProcessClmSbmClosureTest {
             }
             map<string,date> quarterWindowMap = Core_MDF_ProcessClaimSubmissionClosure.getQuarterEndDate(dueDateMap);
             system.assert(quarterWindowMap != null);
-            map<string,date> submissionWindowMap = Core_MDF_ProcessClaimSubmissionClosure.getSubmissionDueDate(dueDateMap);
-            map<string,date> closureWindowMap = Core_MDF_ProcessClaimSubmissionClosure.getDocSubDueDate(dueDateMap);
-            map<string,date> escSubDate = Core_MDF_ProcessClaimSubmissionClosure.getEscSubDate(dueDateMap);
-            map<string,date> actSubDueDate = Core_MDF_ProcessClaimSubmissionClosure.getActSubDueDate(dueDateMap);
-            map<string,date> quarterStartDate = Core_MDF_ProcessClaimSubmissionClosure.getQuarterStartDate(dueDateMap);
+           // Highlight: Unused Local Variable - Indira
+          /*  map<string,date> submissionWindowMap = */ Core_MDF_ProcessClaimSubmissionClosure.getSubmissionDueDate(dueDateMap);
+          /*  map<string,date> closureWindowMap = */ Core_MDF_ProcessClaimSubmissionClosure.getDocSubDueDate(dueDateMap);
+          /*  map<string,date> escSubDate = */ Core_MDF_ProcessClaimSubmissionClosure.getEscSubDate(dueDateMap);
+          /*  map<string,date> actSubDueDate = */ Core_MDF_ProcessClaimSubmissionClosure.getActSubDueDate(dueDateMap);
+          /*  map<string,date> quarterStartDate = */ Core_MDF_ProcessClaimSubmissionClosure.getQuarterStartDate(dueDateMap);
             Map<string,integer> daysSLAMap = Core_MDF_ProcessClaimSubmissionClosure.getDaysSLA(keyToDaysSLA);
             system.assert(daysSLAMap != null);
             

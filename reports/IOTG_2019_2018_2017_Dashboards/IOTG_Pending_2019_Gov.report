@@ -10,7 +10,6 @@
         <field>TYPE</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>AMOUNT</field>
     </columns>
     <columns>
@@ -60,9 +59,9 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND (4 OR 5) AND 6</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR 5) AND 6 AND 7</booleanFilter>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -103,6 +102,13 @@
             <operator>equals</operator>
             <value>0</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>ROLLUP_DESCRIPTION</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Graham Copperwheat</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -138,10 +144,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>AMOUNT</sortColumn>
-    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_PREVFY</interval>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

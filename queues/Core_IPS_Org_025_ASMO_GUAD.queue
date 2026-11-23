@@ -3,6 +3,11 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <name>PSG-GUAD-SOCO</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Core_IPS_Org_025_ASMO_GUAD</publicGroup>
+        </publicGroups>
+    </queueMembers>
     <queueSobject>
         <sobjectType>Case</sobjectType>
     </queueSobject>

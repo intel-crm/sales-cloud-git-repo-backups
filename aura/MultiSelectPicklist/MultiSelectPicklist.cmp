@@ -1,0 +1,30 @@
+<!--MultiSelectPicklist.cmp-->
+<aura:component controller="SampleAuraController">
+     
+    <!--Declare Event Handlers-->
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" description="Call doInit function on component load to get picklist values"/>
+     
+    <!--Declare Attributes-->
+    <aura:attribute name="GenreList" type="List" default="[]" description="Genre Picklist Values"/>
+    <aura:attribute name="selectedGenreList" type="List" default="[]" description="Selected Genre Picklist Values"/>
+    <div class="slds-col slds-size_1-of-2 slds-p-around_small">
+        <c:Core_MDF_LightningSObjectLookUp aura:id="accountId" label="Account"
+                                           pluralLabel="Account" sObjectAPIName="Account"
+                                           instanceId="accountId" helpText="{!$Label.c.Core_MDF_Activity_Activity_Name_Help}"
+                                           listIconSVGPath="/resource/Core_MDF_SLDS262/icons/standard-sprite/svg/symbols.svg#client"
+                                           listIconClass="slds-icon-standard-user" searchString="{!v.activitySearchString}"
+                                           returnFields="AccountName" required="true"
+                                           filterCriteria="{!'Title LIKE \'%' + v.activitySearchString + '%\''}" />                                       
+    </div> 
+    <div class="slds-m-around_xx-large">
+        <lightning:dualListbox aura:id="selectGenre"
+                               name="Genre"
+                               label="Select Genre"
+                               sourceLabel="Available Genre"
+                               selectedLabel="Selected Genre"
+                               options="{!v.GenreList }"
+                               value="{!v.selectedGenreList}"
+                               onchange="{!c.handleGenreChange}"/>
+        <lightning:button variant="brand" label="Get Selected Genre" onclick="{!c.getSelectedGenre}" />
+    </div>
+</aura:component>

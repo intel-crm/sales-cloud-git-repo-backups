@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AnalyticsSettings xmlns="http://soap.sforce.com/2006/04/metadata">
     <alwaysGenPreviews>false</alwaysGenPreviews>
-    <analyticsAdoptionMetadata>true</analyticsAdoptionMetadata>
+    <analyticsAdoptionMetadata>false</analyticsAdoptionMetadata>
     <autoInstallApps>false</autoInstallApps>
     <bundleCachingOptOut>false</bundleCachingOptOut>
     <canAccessAnalyticsViaAPI>true</canAccessAnalyticsViaAPI>
@@ -28,7 +28,6 @@
     <enableDashboardFlexiTable>true</enableDashboardFlexiTable>
     <enableDashboardSubOrgEmailPref>false</enableDashboardSubOrgEmailPref>
     <enableDataCloudReportingPref>true</enableDataCloudReportingPref>
-    <enableEasySetupAI>false</enableEasySetupAI>
     <enableEmailReportsToPortalUsers>false</enableEmailReportsToPortalUsers>
     <enableExploreInTableau>false</enableExploreInTableau>
     <enableFirebirdEditor>false</enableFirebirdEditor>
@@ -52,20 +51,19 @@
     <enableOrgHierarchyInDcrPref>false</enableOrgHierarchyInDcrPref>
     <enableOrgWideEmailNotification>false</enableOrgWideEmailNotification>
     <enablePredictFunction>false</enablePredictFunction>
-    <enablePupparazziForNotifications>true</enablePupparazziForNotifications>
+    <enablePupparazziForNotifications>false</enablePupparazziForNotifications>
     <enableQueryLiveConnectors>false</enableQueryLiveConnectors>
     <enableRemoteHomeOrgOps>true</enableRemoteHomeOrgOps>
     <enableRemoveFooterForRepDisplay>false</enableRemoveFooterForRepDisplay>
-    <enableRemoveFooterFromRepExp>true</enableRemoveFooterFromRepExp>
+    <enableRemoveFooterFromRepExp>false</enableRemoveFooterFromRepExp>
     <enableReportCdnPref>true</enableReportCdnPref>
     <enableReportCustomTextExportPref>false</enableReportCustomTextExportPref>
     <enableReportEscapeCharsPref>false</enableReportEscapeCharsPref>
     <enableReportHideXlsExportPref>false</enableReportHideXlsExportPref>
-    <enableReportInlineEditPref>false</enableReportInlineEditPref>
+    <enableReportInlineEditPref>true</enableReportInlineEditPref>
     <enableReportNotificationsEnable>true</enableReportNotificationsEnable>
     <enableReportRecordPreviewOrgPref>false</enableReportRecordPreviewOrgPref>
-    <enableReportSubOrgEmailPref>true</enableReportSubOrgEmailPref>
-    <enableReportTypeSearchPref>false</enableReportTypeSearchPref>
+    <enableReportSubOrgEmailPref>false</enableReportSubOrgEmailPref>
     <enableReportingOnSDMPref>false</enableReportingOnSDMPref>
     <enableRequestPrioritySchdl>false</enableRequestPrioritySchdl>
     <enableS1AnalyticsEclairEnable>true</enableS1AnalyticsEclairEnable>
@@ -79,13 +77,9 @@
     <enableTNAppAutoInstall>false</enableTNAppAutoInstall>
     <enableTNAppAutoUpdate>false</enableTNAppAutoUpdate>
     <enableTableauAgenticTransforms>false</enableTableauAgenticTransforms>
-    <enableTableauAssetThumbnail>false</enableTableauAssetThumbnail>
     <enableTableauHyperOutputConnector>false</enableTableauHyperOutputConnector>
-    <enableTableauPlatform>false</enableTableauPlatform>
     <enableTableauSdmAiOptimization>false</enableTableauSdmAiOptimization>
     <enableTableauSeamlessAuth>false</enableTableauSeamlessAuth>
-    <enableTableauSlackApp>false</enableTableauSlackApp>
-    <enableTableauSlackCollab>true</enableTableauSlackCollab>
     <enableUseOldChartsLookAndFeel>false</enableUseOldChartsLookAndFeel>
     <enableWaveAssetsNewDateVersion>false</enableWaveAssetsNewDateVersion>
     <enableWaveIframeDashboard>false</enableWaveIframeDashboard>
@@ -93,7 +87,7 @@
     <enableWaveIndexMVDimV2>false</enableWaveIndexMVDimV2>
     <enableWaveRecordNavigation>false</enableWaveRecordNavigation>
     <enableWaveReplication>true</enableWaveReplication>
-    <enableWaveSharingInheritance>true</enableWaveSharingInheritance>
+    <enableWaveSharingInheritance>false</enableWaveSharingInheritance>
     <enableWaveSqlCFIndexing>false</enableWaveSqlCFIndexing>
     <enableWaveTrendedDatasetCleanup>true</enableWaveTrendedDatasetCleanup>
     <enableWriteToDataCloud>false</enableWriteToDataCloud>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Core_MDF_Mass_Owner_Update</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Core_MDF_Mass_Owner_Update</value>
+    </caseValues>
+    <fields>
+        <label><!-- Core_MDF_APP --></label>
+        <name>Core_MDF_APP__c</name>
+        <picklistValues>
+            <masterLabel>CCP</masterLabel>
+            <translation><!-- CCP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CRM</masterLabel>
+            <translation><!-- CRM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce</masterLabel>
+            <translation><!-- Salesforce --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Core_MDF_Object_Label --></label>
+        <name>Core_MDF_Object_Label__c</name>
+        <picklistValues>
+            <masterLabel>Account</masterLabel>
+            <translation><!-- Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Account Bank Mapping</masterLabel>
+            <translation><!-- Account Bank Mapping --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Campaign</masterLabel>
+            <translation><!-- Campaign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case Review Document</masterLabel>
+            <translation><!-- Case Review Document --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim</masterLabel>
+            <translation><!-- Claim --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim Batch</masterLabel>
+            <translation><!-- Claim Batch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-Marketing Activity</masterLabel>
+            <translation><!-- Co-Marketing Activity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contact</masterLabel>
+            <translation><!-- Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead</masterLabel>
+            <translation><!-- Lead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opportunity</masterLabel>
+            <translation><!-- Opportunity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opportunity Support</masterLabel>
+            <translation><!-- Opportunity Support --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Core_MDF_Object --></label>
+        <name>Core_MDF_Object__c</name>
+        <picklistValues>
+            <masterLabel>Account</masterLabel>
+            <translation><!-- Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Campaign</masterLabel>
+            <translation><!-- Campaign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contact</masterLabel>
+            <translation><!-- Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Account_Bank_Mapping__c</masterLabel>
+            <translation><!-- Core_MDF_Account_Bank_Mapping__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Audit_Document__c</masterLabel>
+            <translation><!-- Core_MDF_Audit_Document__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Claim_Batch__c</masterLabel>
+            <translation><!-- Core_MDF_Claim_Batch__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_Opportunity_Support__c</masterLabel>
+            <translation><!-- Core_Opportunity_Support__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead</masterLabel>
+            <translation><!-- Lead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opportunity</masterLabel>
+            <translation><!-- Opportunity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PartnerFundClaim</masterLabel>
+            <translation><!-- PartnerFundClaim --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PartnerFundRequest</masterLabel>
+            <translation><!-- PartnerFundRequest --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Core_MDF_Program --></label>
+        <name>Core_MDF_Program__c</name>
+        <picklistValues>
+            <masterLabel>Channel MDF</masterLabel>
+            <translation><!-- Channel MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client CoMarketing Fund</masterLabel>
+            <translation><!-- Client CoMarketing Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client CoMarketing Fund Boost</masterLabel>
+            <translation><!-- Client CoMarketing Fund Boost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center CoMarketing Fund</masterLabel>
+            <translation><!-- Data Center CoMarketing Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Partner Alliance</masterLabel>
+            <translation><!-- Intel Partner Alliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Marketing Funds</masterLabel>
+            <translation><!-- Retail Marketing Funds --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider CoMarketing Fund</masterLabel>
+            <translation><!-- Service Provider CoMarketing Fund --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- System_User_Name --></label>
+        <name>Core_MDF_System_User_Name__c</name>
+        <picklistValues>
+            <masterLabel>Comarketing FLAO-User</masterLabel>
+            <translation><!-- Comarketing FLAO-User --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Core_MDF_isProgramApplicable --></label>
+        <name>Core_MDF_isProgramApplicable__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ext_Permission_Set_Name --></label>
+        <name>Ext_Permission_Set_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Int_Permission_Set_Name --></label>
+        <name>Int_Permission_Set_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- isActive --></label>
+        <name>isActive__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

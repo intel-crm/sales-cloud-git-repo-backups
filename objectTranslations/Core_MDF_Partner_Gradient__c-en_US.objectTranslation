@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Gradient</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Gradient</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_MDF_Account__c</name>
+        <relationshipLabel><!-- Partner Gradient --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Composite Score --></label>
+        <name>Core_MDF_Composite_Score_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Final Score --></label>
+        <name>Core_MDF_Final_Score_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partial Value Score --></label>
+        <name>Core_MDF_Partial_Value_Score_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partnership Grade --></label>
+        <name>Core_MDF_Partnership_Grade_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quarter --></label>
+        <name>Core_MDF_Quarter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recovered Amount --></label>
+        <name>Core_MDF_Recovered_Amount_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Recovery Amount --></label>
+        <name>Core_MDF_Total_Recovery_Amount_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Trend Value --></label>
+        <name>Core_MDF_Trend_Value_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Moderate Trend</masterLabel>
+            <translation><!-- Moderate Trend --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Negative Trend</masterLabel>
+            <translation><!-- Negative Trend --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Positive Trend</masterLabel>
+            <translation><!-- Positive Trend --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Zone --></label>
+        <name>Core_MDF_Zone_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Balance Amount --></label>
+        <name>Core_MDF_balance_Amount_Nbr__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

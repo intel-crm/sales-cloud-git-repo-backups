@@ -97,7 +97,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>Service Provider,Telco/Service Provider,Comm Service Provider (CoSP)</value>
+            <value>Service Provider,Telco/Service Provider</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Approval_Status__c</column>
@@ -112,13 +112,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>greaterOrEqual</operator>
             <value>12/31/2018</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>everyware,genesys,nokia,ringcentral</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -146,9 +139,7 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Claim_Date__c</dateColumn>
-        <endDate>2019-12-28</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2019-01-11</startDate>
+        <dateColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Approved_Date__c</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

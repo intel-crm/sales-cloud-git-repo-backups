@@ -36,10 +36,17 @@
             <operator>equals</operator>
             <value>Design Win</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Yaz Yazawa</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>Yaz won 2020</name>
+    <name>Yaz won 2019</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -65,8 +72,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2020-12-31</endDate>
+        <endDate>2019-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2020-01-01</startDate>
+        <startDate>2019-01-01</startDate>
     </timeFrameFilter>
 </Report>

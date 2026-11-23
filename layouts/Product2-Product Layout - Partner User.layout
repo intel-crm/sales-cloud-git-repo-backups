@@ -21,7 +21,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Deactivation_Date__c</field>
+                <field>Core_Processor_Number_Nm__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>
@@ -54,6 +54,10 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_MDF_Segment_Product_Mapping__c.Core_MDF_Product_id__c</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>

@@ -1,0 +1,97 @@
+<template>
+    <lightning-card title="Account Percentage Allocation">
+        <div class="slds-m-around_medium">
+
+            <!-- Scrollable Container -->
+            <div class="scrollable-container">
+                <template for:each={rows} for:item="row" for:index="index">
+
+                    <div key={row.id} class="row-box">
+
+                        <!-- Account Lookup -->
+                        <div class="slds-col custom-input-width">
+                            <lightning-input 
+                                label="Account"
+                                type="search"
+                                data-index={index}
+                                value={row.accountName}
+                                onchange={handleAccountSearch}>
+                            </lightning-input>
+
+                            <!-- Lookup Results -->
+                            <template if:true={row.searchResults}>
+                                <ul class="custom-dropdown">
+                                    <template for:each={row.searchResults} for:item="result">
+                                        <li key={result.Id} class="dropdown-item">
+                                            <lightning-button 
+                                                variant="base"
+                                                label={result.Name}
+                                                onclick={selectAccount}
+                                                data-id={result.Id}
+                                                data-index={index}>
+                                            </lightning-button>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </template>
+                        </div>
+
+                        <!-- Percentage -->
+                        <div class="slds-col percentage-width">
+                            <lightning-input 
+                                label="Percentage"
+                                type="number"
+                                min="0"
+                                max="100"
+                                step="0.01"
+                                data-index={index}
+                                value={row.percent}
+                                onchange={handlePercentChange}>
+                            </lightning-input>
+
+                            <p class="allocated">
+                                <strong>Allocated:</strong> {row.calculatedAmount}
+                            </p>
+                        </div>
+
+                        <!-- Dustbin Remove Button -->
+                        <div class="slds-col remove-col">
+                            <lightning-button-icon 
+                                icon-name="utility:delete"
+                                alternative-text="Remove"
+                                onclick={removeRow}
+                                data-index={index}
+                                variant="bare"
+                                size="medium"
+                                class="delete-icon">
+                            </lightning-button-icon>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Add new row -->
+            <lightning-button 
+                class="slds-m-top_small"
+                label="Add New Account & Percentage"
+                onclick={addRow}
+                disabled={isAddButtonDisabled}>
+            </lightning-button>
+
+            <!-- All errors shown here -->
+            <template if:true={hasErrors}>
+                <div class="error-box">
+                    <template if:true={isPercentOver}>Total percentage cannot exceed 100%.</template>
+                    <template if:true={isPercentUnder}>Total percentage must equal 100%.</template>
+                    <template if:true={hasDuplicate}>Duplicate accounts selected.</template>
+                </div>
+            </template>
+
+            <!-- Success -->
+            <template if:true={isTotal100Percent}>
+                <p class="slds-text-color_success slds-m-top_small">Total percentage is 100%!</p>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

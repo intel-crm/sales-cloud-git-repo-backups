@@ -13,9 +13,5 @@
     </customFields>
     <name>Global Siemens</name>
     <opportunityAccessLevel>Read</opportunityAccessLevel>
-    <ruleAssociations>
-        <inherited>false</inherited>
-        <ruleName>Global_Siemens</ruleName>
-    </ruleAssociations>
     <territory2Type>Named_Strategic_Accounts</territory2Type>
 </Territory2>

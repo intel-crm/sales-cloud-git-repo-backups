@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Arista Network Solutions, Inc. Customer User</description>
+    <description>ARISTA NETWORKS, INC. Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Arista Network Solutions, Inc. Customer User</name>
+    <name>ARISTA NETWORKS, INC. Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_10686511_Almanzo_Ortiz</parentRole>
+    <parentRole>ARISTANETWORKSINCCustomerManager</parentRole>
 </Role>

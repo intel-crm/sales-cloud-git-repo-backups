@@ -15,6 +15,7 @@
         });
         action.setCallback(this, function(response) {
             var permission = response.getReturnValue();
+            console.log('PFR permission - '+permission);
             component.set("v.objectCreatePermission", permission);
         });
         $A.enqueueAction(action);

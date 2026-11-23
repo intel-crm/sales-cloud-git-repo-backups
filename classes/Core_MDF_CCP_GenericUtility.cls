@@ -26,7 +26,7 @@ public without sharing class Core_MDF_CCP_GenericUtility {
             
             try{
                 for(Core_MDF_CCP_Country_Geo_Mapping__mdt mdt : [SELECT MasterLabel, Core_MDF_Geo__c, Core_MDF_Sub_Geo__c, Core_MDF_Code_2_Digits__c,Core_MDF_All_Other_ASMO_Ind__c, Core_MDF_All_Other_EMEA_Ind__c, Core_MDF_All_Other_APJ_Ind__c, Core_MDF_Blocked_in_UI_ind__c
-                                                                 FROM Core_MDF_CCP_Country_Geo_Mapping__mdt LIMIT 1000]){
+                                                                 FROM Core_MDF_CCP_Country_Geo_Mapping__mdt]){
                     countryGeoSubGeoWrapper countryGeoSubGeoInst = new countryGeoSubGeoWrapper();
                     countryGeoSubGeoInst.country = mdt.MasterLabel;
                     countryGeoSubGeoInst.geo = mdt.Core_MDF_Geo__c;
@@ -127,7 +127,7 @@ public without sharing class Core_MDF_CCP_GenericUtility {
     
     @AuraEnabled
     public static List<PermissionSetAssignment> getPermSetAssignmentList(String fields, String whereClause) {
-        
+        //String escQuotes = '\'%' + String.escapeSingleQuotes(whereClause) +'%\'';
         //Take for WW49 as part of Checkmarx scan
         List<PermissionSetAssignment> assignedPermissionSets = new  List<PermissionSetAssignment>();
         String sanitizedFields = String.escapeSingleQuotes(fields);
@@ -138,7 +138,6 @@ public without sharing class Core_MDF_CCP_GenericUtility {
             if (whereClause != null && whereClause.trim() != '') {
                 queryString += ' WHERE ' + sanitizedWhereClause;
             }
-
             if(String.isNotBlank(queryString)){
                 assignedPermissionSets = Database.query(queryString);
             }
@@ -329,56 +328,7 @@ public without sharing class Core_MDF_CCP_GenericUtility {
                 return finalShareRecordList;
             }
             return null;
-        }
-
-        /***************************************************************************************************** 
-        Method Name:        createShareRecForInternalPGMgrps
-        @return  :          List<sObject>
-        @parameters:        *objectName - API Name of the Object for which share records are going to be created
-                            *recordPGMShareList - contains List of Core_MDF_RecordPGMShareWrapper records
-                            *insertRecords - Decide to insert the records or not
-        Description:        Create Share records for all the Objects with Internal PGM Groups
-        Added By:           Accenture 
-        Modified By:        Date:       Changes: 
-        ******************************************************************************************************/
-        public static List<sObject> createShareRecForInternalPGMgrps(String objectName, List<Core_MDF_RecordPGMShareWrapper> recordPGMShareList, Boolean insertRecords){
-            
-            Map<Id,List<Id>> objectIdUserGroupIdListMap = new Map<Id,List<Id>>();
-            Map<Id,List<Id>> objectIdUserGroupIdListMapRead = new Map<Id,List<Id>>();
-            InternalPGMSharingWrapper intPgmWrapper = prepareInternalPGMSharingMaps(objectName, recordPGMShareList);
-            objectIdUserGroupIdListMap = intPgmWrapper.objectIdUserGroupIdListMap;
-            objectIdUserGroupIdListMapRead = intPgmWrapper.objectIdUserGroupIdListMapRead;
-
-             List<sobject> finalShareRecordList = new List<sobject>();
-             if(objectIdUserGroupIdListMapRead != NULL && objectIdUserGroupIdListMapRead.size() > 0){
-                Core_MDF_GenericShareRecordActionClass.RecordManualShareClass rmsInstRead = new Core_MDF_GenericShareRecordActionClass.RecordManualShareClass(objectName, objectIdUserGroupIdListMapRead, 'Read',false);
-                List<sobject> readShareRecords = Core_MDF_GenericShareRecordActionClass.createShareRecordList(rmsInstRead);
-                if(readShareRecords != NULL && readShareRecords.size() >0)
-                {
-                 finalShareRecordList.addAll(readShareRecords);
-                }
-  
-            }
-             if(objectIdUserGroupIdListMap != NULL && objectIdUserGroupIdListMap.size() > 0){
-                Core_MDF_GenericShareRecordActionClass.RecordManualShareClass rmsInst = new Core_MDF_GenericShareRecordActionClass.RecordManualShareClass(objectName, objectIdUserGroupIdListMap, 'Edit',false);
-                List<sobject> editShareRecords = Core_MDF_GenericShareRecordActionClass.createShareRecordList(rmsInst);
-                if(editShareRecords != NULL && editShareRecords.size() >0)
-                {
-                  finalShareRecordList.addAll(editShareRecords);
-                }
-               
-            }
-            if(finalShareRecordList != NULL && finalShareRecordList.size() >0 && insertRecords)
-            {
-                   List<Database.SaveResult> saveResultList = Database.insert(finalShareRecordList);
-                   return finalShareRecordList;
-            }
-
-            return finalShareRecordList;
-        }
-
-        public static InternalPGMSharingWrapper prepareInternalPGMSharingMaps(String objectName, List<Core_MDF_RecordPGMShareWrapper> recordPGMShareList){
-            Set<Id> ultAccountIdSet = new Set<Id>();
+            /*Set<Id> ultAccountIdSet = new Set<Id>();
             Set<string> programSet = new Set<string>();
             Set<String> regionSet = new Set<String>();        
             Map<String,Id> accProgWWBudgetTypeGrpMap= new Map<String,Id>();
@@ -402,6 +352,8 @@ public without sharing class Core_MDF_CCP_GenericUtility {
             List<String> objectsForHostRegSharing = Core_MDF_CustomLabelConfig.getTextList('Core_MDF_HostRegionSharingReqObj');
             Map<Id,List<Id>> objectIdUserGroupIdListMap = new Map<Id,List<Id>>();
             Map<Id,List<Id>> objectIdUserGroupIdListMapRead = new Map<Id,List<Id>>();
+         
+            List<sobject> finalShareRecordList = new List<sobject>();
 
             for(Core_MDF_RecordPGMShareWrapper shareRec : recordPGMShareList)
             {
@@ -412,13 +364,12 @@ public without sharing class Core_MDF_CCP_GenericUtility {
                 }            
             }
             for(Core_MDF_ChannelProgram__mdt cpMdt : [SELECT Label,Core_MDF_Technical_Program_Name__c,Geo_Based_Sharing_Required__c FROM
-                                                      Core_MDF_ChannelProgram__mdt LIMIT 1000])
+                                                      Core_MDF_ChannelProgram__mdt])
             {
                 cpMdtMap.put(cpMdt.Label,cpMdt);
             }
-            //TWC3117-18333
-            for(Core_MDF_ObjRecType_Budget_FieldSetMap__mdt mdtRec : [SELECT Core_MDF_Channel_Program_Name_txt__c,Core_MDF_Region_cd__c FROM
-                                                                    Core_MDF_ObjRecType_Budget_FieldSetMap__mdt WHERE
+            for(Core_MDF_ClaimActAllocRecTypeMapping__mdt mdtRec : [SELECT Core_MDF_Channel_Program_Name_txt__c,Core_MDF_Region_cd__c FROM
+                                                                    Core_MDF_ClaimActAllocRecTypeMapping__mdt WHERE
                                                                     Core_MDF_Region_cd__c != NULL])
             {
                 subGeoSharingReqProgSet.add(mdtRec.Core_MDF_Channel_Program_Name_txt__c);
@@ -536,7 +487,7 @@ public without sharing class Core_MDF_CCP_GenericUtility {
                 geoBasedSharingReq = FALSE;
             }
             //To Loop thro each incoming record and store the groups that it should be shared with
-            for(Core_MDF_RecordPGMShareWrapper record: recordPGMShareList){     
+            for(Core_MDF_RecordPGMShareWrapper record: recordPGMShareList){                  
                 //to store rw group id's
                 List<Id> grpLst = new List<Id>();
                 Set<Id>grpSet = new Set<Id>();
@@ -587,6 +538,362 @@ public without sharing class Core_MDF_CCP_GenericUtility {
                         grpSet.addAll(accProgGrpSetMap.get(accIdProgRecKey));
                     }
                     if(objectsForAllBudTypeSharing.contains(objectName) && accProgGeoGrpSetMap.containsKey(accIdProgGeoRecKey) && accProgGeoGrpSetMap.get(accIdProgGeoRecKey) != NULL){
+                        grpSet.addAll(accProgGeoGrpSetMap.get(accIdProgGeoRecKey));
+                    }                             
+                }
+                grpLst.addAll(grpSet);
+
+                if(record.accessLevel != NULL && record.accessLevel.equalsIgnoreCase('READ'))
+                {
+                  if(objectIdUserGroupIdListMapRead.containsKey(record.recordId)){
+                    objectIdUserGroupIdListMapRead.get(record.recordId).addAll(grpLst);
+                   }else{
+                    objectIdUserGroupIdListMapRead.put(record.recordId, grpLst);
+                   }
+                }
+                else
+                {
+                   if(objectIdUserGroupIdListMap.containsKey(record.recordId)){
+                    objectIdUserGroupIdListMap.get(record.recordId).addAll(grpLst);
+                   }else{
+                    objectIdUserGroupIdListMap.put(record.recordId, grpLst);
+                    }
+
+                }
+
+            }
+           
+             if(objectIdUserGroupIdListMapRead != NULL && objectIdUserGroupIdListMapRead.size() > 0){
+                Core_MDF_GenericShareRecordActionClass.RecordManualShareClass rmsInstRead = new Core_MDF_GenericShareRecordActionClass.RecordManualShareClass(objectName, objectIdUserGroupIdListMapRead, 'Read',false);
+                List<sobject> readShareRecords = Core_MDF_GenericShareRecordActionClass.createShareRecordList(rmsInstRead);
+                if(readShareRecords != NULL && readShareRecords.size() >0)
+                {
+                 finalShareRecordList.addAll(readShareRecords);
+                }
+  
+            }
+             if(objectIdUserGroupIdListMap != NULL && objectIdUserGroupIdListMap.size() > 0){
+                Core_MDF_GenericShareRecordActionClass.RecordManualShareClass rmsInst = new Core_MDF_GenericShareRecordActionClass.RecordManualShareClass(objectName, objectIdUserGroupIdListMap, 'Edit',false);
+                List<sobject> editShareRecords = Core_MDF_GenericShareRecordActionClass.createShareRecordList(rmsInst);
+                if(editShareRecords != NULL && editShareRecords.size() >0)
+                {
+                  finalShareRecordList.addAll(editShareRecords);
+                }
+               
+            }
+            if(finalShareRecordList != NULL && finalShareRecordList.size() >0)
+            {
+                   List<Database.SaveResult> saveResultList = Database.insert(finalShareRecordList);
+                   return finalShareRecordList;
+            }
+
+            return null;*/
+        }
+
+        /***************************************************************************************************** 
+        Method Name:        createShareRecForInternalPGMgrps
+        @return  :          List<sObject>
+        @parameters:        *objectName - API Name of the Object for which share records are going to be created
+                            *recordPGMShareList - contains List of Core_MDF_RecordPGMShareWrapper records
+                            *insertRecords - Decide to insert the records or not
+        Description:        Create Share records for all the Objects with Internal PGM Groups
+        Added By:           Accenture 
+        Modified By:        Date:       Changes: 
+        ******************************************************************************************************/
+        public static List<sObject> createShareRecForInternalPGMgrps(String objectName, List<Core_MDF_RecordPGMShareWrapper> recordPGMShareList, Boolean insertRecords){
+            System.debug('@@@vikas payment- generic utility inside createShareRecForInternalPGMgrps');
+            Map<Id,List<Id>> objectIdUserGroupIdListMap = new Map<Id,List<Id>>();
+            Map<Id,List<Id>> objectIdUserGroupIdListMapRead = new Map<Id,List<Id>>();
+            InternalPGMSharingWrapper intPgmWrapper = prepareInternalPGMSharingMaps(objectName, recordPGMShareList);
+            objectIdUserGroupIdListMap = intPgmWrapper.objectIdUserGroupIdListMap;
+            objectIdUserGroupIdListMapRead = intPgmWrapper.objectIdUserGroupIdListMapRead;
+
+             List<sobject> finalShareRecordList = new List<sobject>();
+             if(objectIdUserGroupIdListMapRead != NULL && objectIdUserGroupIdListMapRead.size() > 0){
+                Core_MDF_GenericShareRecordActionClass.RecordManualShareClass rmsInstRead = new Core_MDF_GenericShareRecordActionClass.RecordManualShareClass(objectName, objectIdUserGroupIdListMapRead, 'Read',false);
+                List<sobject> readShareRecords = Core_MDF_GenericShareRecordActionClass.createShareRecordList(rmsInstRead);
+                if(readShareRecords != NULL && readShareRecords.size() >0)
+                {
+                 finalShareRecordList.addAll(readShareRecords);
+                }
+  
+            }
+             if(objectIdUserGroupIdListMap != NULL && objectIdUserGroupIdListMap.size() > 0){
+                Core_MDF_GenericShareRecordActionClass.RecordManualShareClass rmsInst = new Core_MDF_GenericShareRecordActionClass.RecordManualShareClass(objectName, objectIdUserGroupIdListMap, 'Edit',false);
+                List<sobject> editShareRecords = Core_MDF_GenericShareRecordActionClass.createShareRecordList(rmsInst);
+                if(editShareRecords != NULL && editShareRecords.size() >0)
+                {
+                  finalShareRecordList.addAll(editShareRecords);
+                }
+               
+            }
+            if(finalShareRecordList != NULL && finalShareRecordList.size() >0 && insertRecords)
+            {
+                   List<Database.SaveResult> saveResultList = Database.insert(finalShareRecordList);
+                   return finalShareRecordList;
+            }
+
+            return finalShareRecordList;
+        }
+
+        public static InternalPGMSharingWrapper prepareInternalPGMSharingMaps(String objectName, List<Core_MDF_RecordPGMShareWrapper> recordPGMShareList){
+            Set<Id> ultAccountIdSet = new Set<Id>();
+            Set<string> programSet = new Set<string>();
+            Set<String> regionSet = new Set<String>();        
+            Map<String,Id> accProgWWBudgetTypeGrpMap= new Map<String,Id>();
+            Map<String,Id> accProgWWGrpMap = new Map<String,Id>();
+            Map<String,Id> accProgGeoSubGeoBudgetTypeGrpMap = new Map<String,Id>();
+            Map<String,Id> accProgGeoSubGeoGrpMap= new Map<String,Id>();
+            Map<String,Id> accProgGeoBudgetTypeGrpMap = new Map<String,Id>();
+            Map<String,Id> accProgGeoGrpMap= new Map<String,Id>();
+            Map<String,Set<Id>> accProgBudgetTypeGrpListMap = new Map<String,Set<Id>>();
+            Map<String,Set<Id>> accProgGrpListMap = new Map<String,Set<Id>>();
+            Map<String,Set<Id>> accProgGrpSetMap = new Map<String,Set<Id>>();
+            Map<String,Set<Id>> accProgSubGeoGrpSetMap = new Map<String,Set<Id>>();
+            Map<String,Set<Id>> accProgGeoGrpSetMap = new Map<String,Set<Id>>();
+            Map<String,Core_MDF_ChannelProgram__mdt> cpMdtMap = new Map<String,Core_MDF_ChannelProgram__mdt>();
+            Set<String> subGeoSharingReqProgSet = new Set<String>();
+            Boolean geoBasedSharingReq = FALSE;
+            //List to store all the objects that do not require Geo-based sharing
+            List<String> objectsForAllGeoSharing = Core_MDF_CustomLabelConfig.getTextList('Core_MDF_Objects_for_RO_All_Geo_Sharing');
+            List<String> objectsForAllBudTypeSharing = Core_MDF_CustomLabelConfig.getTextList('Core_MDF_Objects_For_All_BudType_Sharing');
+            List<String> hostRegionSharingReqProg = Core_MDF_CustomLabelConfig.getTextList('Core_MDF_HostRegionSharingReqProg');
+            List<String> objectsForHostRegSharing = Core_MDF_CustomLabelConfig.getTextList('Core_MDF_HostRegionSharingReqObj');
+            Map<Id,List<Id>> objectIdUserGroupIdListMap = new Map<Id,List<Id>>();
+            Map<Id,List<Id>> objectIdUserGroupIdListMapRead = new Map<Id,List<Id>>();
+
+            for(Core_MDF_RecordPGMShareWrapper shareRec : recordPGMShareList)
+            {
+                ultAccountIdSet.add(shareRec.ultAccountId);
+                programSet.add(shareRec.program);
+                if(String.isNotBlank(shareRec.geo)){
+                    regionSet.add(shareRec.geo);
+                }            
+            }
+            for(Core_MDF_ChannelProgram__mdt cpMdt : [SELECT Label,Core_MDF_Technical_Program_Name__c,Geo_Based_Sharing_Required__c FROM
+                                                      Core_MDF_ChannelProgram__mdt])
+            {
+                cpMdtMap.put(cpMdt.Label,cpMdt);
+            }
+            //TWC3117-18333
+            for(Core_MDF_ObjRecType_Budget_FieldSetMap__mdt mdtRec : [SELECT Core_MDF_Channel_Program_Name_txt__c,Core_MDF_Region_cd__c FROM
+                                                                    Core_MDF_ObjRecType_Budget_FieldSetMap__mdt WHERE
+                                                                    Core_MDF_Region_cd__c != NULL])
+            {
+                subGeoSharingReqProgSet.add(mdtRec.Core_MDF_Channel_Program_Name_txt__c);
+            }
+    		System.debug('MDT OPtimisation subGeoSharingReqProgSet '+ subGeoSharingReqProgSet);
+            if(objectsForAllGeoSharing.contains(objectName)){ 
+                
+                System.debug('@@@vikas payment- generic utility:687');
+                for(Core_MDF_Partner_Group_Mapping__c pgm : [SELECT Core_MDF_Account__c, Core_MDF_Account__r.Name, Core_MDF_Channel_Program__c,Core_MDF_Group_Name__c,
+                                                            Core_MDF_Region_cd__c, Core_MDF_Group_Id__c, Core_MDF_Sub_Region_cd__c,Core_MDF_BudgetType_nm__c,Core_MDF_Channel_Program__r.Name 
+                                                            FROM Core_MDF_Partner_Group_Mapping__c
+                                                            WHERE Core_MDF_Account__c IN :ultAccountIdSet AND
+                                                            Core_MDF_Inactive_Ind__c = false AND 
+                                                            Core_MDF_Channel_Program__r.Name IN :programSet AND
+                                                            Core_MDF_Group_Id__c != NULL AND
+                                                            Core_MDF_Region_cd__c != NULL AND
+                                                            Core_MDF_Type_of_Access__c = 'Internal'])
+                {
+                    System.debug('@@@vikas payment- generic utility:698');
+                    if(hostRegionSharingReqProg.contains(pgm.Core_MDF_Channel_Program__r.Name) || (!hostRegionSharingReqProg.contains(pgm.Core_MDF_Channel_Program__r.Name) && cpMdtMap.containsKey(pgm.Core_MDF_Channel_Program__r.Name) && !cpMdtMap.get(pgm.Core_MDF_Channel_Program__r.Name).Geo_Based_Sharing_Required__c)){                
+                        System.debug('@@@vikas payment- generic utility:700');
+                        if(pgm.Core_MDF_BudgetType_nm__c != NULL){
+                            System.debug('@@@vikas payment- generic utility:702');
+                            String accIdProgBudTypePGMKey = (String)pgm.Core_MDF_Account__c + (String)pgm.Core_MDF_Channel_Program__r.Name + pgm.Core_MDF_BudgetType_nm__c;
+                            if(accProgBudgetTypeGrpListMap.containsKey(accIdProgBudTypePGMKey)){
+                                System.debug('@@@vikas payment- generic utility:705');
+                                accProgBudgetTypeGrpListMap.get(accIdProgBudTypePGMKey).add(pgm.Core_MDF_Group_Id__c);
+                            }else{
+                                System.debug('@@@vikas payment- generic utility:708');
+                                accProgBudgetTypeGrpListMap.put(accIdProgBudTypePGMKey, new Set<Id>{pgm.Core_MDF_Group_Id__c});
+                            }
+                            if(objectsForAllBudTypeSharing.contains(objectName)){
+                                System.debug('@@@vikas payment- generic utility:712');
+                                String accIdProgPGMKey = (String)pgm.Core_MDF_Account__c + (String)pgm.Core_MDF_Channel_Program__r.Name;
+                                if(accProgGrpListMap.containsKey(accIdProgPGMKey)){
+                                System.debug('@@@vikas payment- generic utility:715');
+                                    accProgGrpListMap.get(accIdProgPGMKey).add(pgm.Core_MDF_Group_Id__c);
+                                }else{
+                                System.debug('@@@vikas payment- generic utility:718');
+                                    accProgGrpListMap.put(accIdProgPGMKey, new Set<Id>{pgm.Core_MDF_Group_Id__c});
+                                }
+                            }
+                        }else{
+                            System.debug('@@@vikas payment- generic utility:723');
+                            String accIdProgPGMKey = (String)pgm.Core_MDF_Account__c + (String)pgm.Core_MDF_Channel_Program__r.Name;
+                            if(accProgGrpListMap.containsKey(accIdProgPGMKey)){
+                            System.debug('@@@vikas payment- generic utility:726');
+                                accProgGrpListMap.get(accIdProgPGMKey).add(pgm.Core_MDF_Group_Id__c);
+                            }else{
+                            System.debug('@@@vikas payment- generic utility:729');
+                                accProgGrpListMap.put(accIdProgPGMKey, new Set<Id>{pgm.Core_MDF_Group_Id__c});
+                            }
+                        }
+                        if(hostRegionSharingReqProg.contains(pgm.Core_MDF_Channel_Program__r.Name) && objectsForHostRegSharing.contains(objectName)){
+                            System.debug('@@@vikas payment- generic utility:734');
+                            geoBasedSharingReq = TRUE;
+                        }
+                    }else if(!geoBasedSharingReq){
+                        geoBasedSharingReq = TRUE;
+                    }
+                }
+            }
+            if(!objectsForAllGeoSharing.contains(objectName) || geoBasedSharingReq){
+                System.debug('@@@vikas payment- generic utility:743');
+                //Get the PGM based on account and program, filter based on geo and create accountIdProgramIdGeoGroupIdMap and accountIdProgramIdWWGroupIdMap
+                for(Core_MDF_Partner_Group_Mapping__c pgm : [SELECT Core_MDF_Account__c, Core_MDF_Account__r.Name, Core_MDF_Channel_Program__c,Core_MDF_Group_Name__c,
+                                                             Core_MDF_Region_cd__c, Core_MDF_Group_Id__c, Core_MDF_Sub_Region_cd__c,Core_MDF_BudgetType_nm__c,Core_MDF_Channel_Program__r.Name 
+                                                             FROM Core_MDF_Partner_Group_Mapping__c
+                                                             WHERE Core_MDF_Account__c IN :ultAccountIdSet AND
+                                                             Core_MDF_Inactive_Ind__c = false AND 
+                                                             Core_MDF_Channel_Program__r.Name IN :programSet AND
+                                                             Core_MDF_Group_Id__c != NULL AND
+                                                             (Core_MDF_Region_cd__c IN :regionSet OR Core_MDF_Region_cd__c ='WW') AND
+                                                             Core_MDF_Type_of_Access__c = 'Internal'])
+                {
+                    if(pgm.Core_MDF_Region_cd__c == 'WW'){
+                System.debug('@@@vikas payment- generic utility:756');
+                        if(pgm.Core_MDF_BudgetType_nm__c == NULL || String.isEmpty(pgm.Core_MDF_BudgetType_nm__c)){
+                            String accIdProgPGMWWKey = (String)pgm.Core_MDF_Account__c + (String)pgm.Core_MDF_Channel_Program__r.Name;
+                            accProgWWGrpMap.put(accIdProgPGMWWKey,pgm.Core_MDF_Group_Id__c);                        
+                        }else{
+                            //WW budget type
+                            String accIdProgBudTypeWWPGMKey = (String)pgm.Core_MDF_Account__c + (String)pgm.Core_MDF_Channel_Program__r.Name + pgm.Core_MDF_BudgetType_nm__c;
+                            accProgWWBudgetTypeGrpMap.put(accIdProgBudTypeWWPGMKey,pgm.Core_MDF_Group_Id__c);
+                            if(objectsForAllBudTypeSharing.contains(objectName)){
+                                String accIdProgPGMKey = (String)pgm.Core_MDF_Account__c + (String)pgm.Core_MDF_Channel_Program__r.Name;
+                                if(accProgGrpSetMap.containsKey(accIdProgPGMKey)){
+                                    accProgGrpSetMap.get(accIdProgPGMKey).add(pgm.Core_MDF_Group_Id__c);
+                                }else{
+                                    accProgGrpSetMap.put(accIdProgPGMKey, new Set<Id>{pgm.Core_MDF_Group_Id__c});
+                                }
+                            }
+                        }
+                    }else{ //for the 4 Non WW Geos
+                        
+                System.debug('@@@vikas payment- generic utility:775');
+                        if(pgm.Core_MDF_Sub_Region_cd__c == NULL || String.isEmpty(pgm.Core_MDF_Sub_Region_cd__c)){
+                            
+                System.debug('@@@vikas payment- generic utility:778');
+                            if(pgm.Core_MDF_BudgetType_nm__c == NULL || String.isEmpty(pgm.Core_MDF_BudgetType_nm__c)){
+                                String accIdProgGeoPGMKey = (String)pgm.Core_MDF_Account__c + (String)pgm.Core_MDF_Channel_Program__r.Name + pgm.Core_MDF_Region_cd__c;
+                                accProgGeoGrpMap.put(accIdProgGeoPGMKey,pgm.Core_MDF_Group_Id__c);
+                            }
+                            else{
+                                
+                System.debug('@@@vikas payment- generic utility:785');
+                                String accIdProgGeoBudTypePGMKey = (String)pgm.Core_MDF_Account__c + (String)pgm.Core_MDF_Channel_Program__r.Name + pgm.Core_MDF_Region_cd__c + pgm.Core_MDF_BudgetType_nm__c;
+                                accProgGeoBudgetTypeGrpMap.put(accIdProgGeoBudTypePGMKey,pgm.Core_MDF_Group_Id__c);
+                                if(objectsForAllBudTypeSharing.contains(objectName)){
+                                    String accIdProgGeoPGMKey = (String)pgm.Core_MDF_Account__c + (String)pgm.Core_MDF_Channel_Program__r.Name + pgm.Core_MDF_Region_cd__c;
+                                    if(accProgGeoGrpSetMap.containsKey(accIdProgGeoPGMKey)){
+                                        accProgGeoGrpSetMap.get(accIdProgGeoPGMKey).add(pgm.Core_MDF_Group_Id__c);
+                                    }else{
+                                        accProgGeoGrpSetMap.put(accIdProgGeoPGMKey, new Set<Id>{pgm.Core_MDF_Group_Id__c});
+                                    }
+                                }
+                            }                            
+                        }else{
+                            
+                System.debug('@@@vikas payment- generic utility:799');
+                            if(pgm.Core_MDF_BudgetType_nm__c == NULL || String.isEmpty(pgm.Core_MDF_BudgetType_nm__c)){ 
+                                
+                System.debug('@@@vikas payment- generic utility:802');
+                                String accIdProgGeoSubGeoPGMKey = (String)pgm.Core_MDF_Account__c + (String)pgm.Core_MDF_Channel_Program__r.Name + pgm.Core_MDF_Region_cd__c + pgm.Core_MDF_Sub_Region_cd__c;
+                                accProgGeoSubGeoGrpMap.put(accIdProgGeoSubGeoPGMKey,pgm.Core_MDF_Group_Id__c);
+                            }else {   
+                                
+                System.debug('@@@vikas payment- generic utility:807');
+                                String accIdProgGeoSubGeoBudTypePGMKey = (String)pgm.Core_MDF_Account__c + (String)pgm.Core_MDF_Channel_Program__r.Name + pgm.Core_MDF_Region_cd__c + pgm.Core_MDF_Sub_Region_cd__c+pgm.Core_MDF_BudgetType_nm__c;
+                                accProgGeoSubGeoBudgetTypeGrpMap.put(accIdProgGeoSubGeoBudTypePGMKey,pgm.Core_MDF_Group_Id__c);
+                                if(objectsForAllBudTypeSharing.contains(objectName)){
+                                    String accIdProgSubGeoPGMKey = (String)pgm.Core_MDF_Account__c + (String)pgm.Core_MDF_Channel_Program__r.Name + pgm.Core_MDF_Region_cd__c + pgm.Core_MDF_Sub_Region_cd__c;
+                                    if(accProgSubGeoGrpSetMap.containsKey(accIdProgSubGeoPGMKey)){
+                                        accProgSubGeoGrpSetMap.get(accIdProgSubGeoPGMKey).add(pgm.Core_MDF_Group_Id__c);
+                                    }else{
+                                        accProgSubGeoGrpSetMap.put(accIdProgSubGeoPGMKey, new Set<Id>{pgm.Core_MDF_Group_Id__c});
+                                    }
+                                }
+                            }                             
+                        }
+                    }
+                }
+                geoBasedSharingReq = FALSE;
+            }
+            //To Loop thro each incoming record and store the groups that it should be shared with
+            for(Core_MDF_RecordPGMShareWrapper record: recordPGMShareList){     
+                
+                System.debug('@@@vikas payment- generic utility:827');             
+                //to store rw group id's
+                List<Id> grpLst = new List<Id>();
+                Set<Id>grpSet = new Set<Id>();
+                String accIdProgBudTypeRecKey = (String)record.ultAccountId + (String)record.program + record.budgetType;
+                String accIdProgRecKey = (String)record.ultAccountId + (String)record.program;
+                String accIdProgGeoSubGeoBudTypeRecKey = (String)record.ultAccountId + (String)record.program + record.geo + record.subGeo + record.budgetType;
+                String accIdProgGeoSubGeoRecKey = (String)record.ultAccountId + (String)record.program + record.geo + record.subGeo;
+                String accIdProgGeoBudTyperecKey = (String)record.ultAccountId + (String)record.program + record.geo + record.budgetType;
+                String accIdProgGeoRecKey = (String)record.ultAccountId + (String)record.program + record.geo;
+                if(objectsForAllGeoSharing.contains(objectName) && ((hostRegionSharingReqProg.contains(record.program) && ((String.isBlank(record.geo) && objectsForHostRegSharing.contains(objectName)) || !objectsForHostRegSharing.contains(objectName))) || (!hostRegionSharingReqProg.contains(record.program) && cpMdtMap.containsKey(record.program) && !cpMdtMap.get(record.program).Geo_Based_Sharing_Required__c))){
+                    System.debug('@@@vikas payment- generic utility:838');
+                    if(record.budgetType !=null){
+                        System.debug('@@@vikas payment- generic utility:840');
+                        if(accProgBudgetTypeGrpListMap.containsKey(accIdProgBudTypeRecKey) && accProgBudgetTypeGrpListMap.get(accIdProgBudTypeRecKey) != NULL){
+                        System.debug('@@@vikas payment- generic utility:842');
+                            grpSet.addAll(accProgBudgetTypeGrpListMap.get(accIdProgBudTypeRecKey));
+                        }
+                    }
+                    if(accProgGrpListMap.containsKey(accIdProgRecKey) && accProgGrpListMap.get(accIdProgRecKey) != NULL){
+                        System.debug('@@@vikas payment- generic utility:847');
+                        grpSet.addAll(accProgGrpListMap.get(accIdProgRecKey));
+                    }                
+                }else{
+                    System.debug('@@@vikas payment- generic utility:851');
+                    if(record.subGeo !=null && !Core_MDF_CustomLabelConfig.getTextList('Core_MDF_PGMSubGeoSharingNotReqProg').contains(record.program) && cpMdtMap.containsKey(record.program) && subGeoSharingReqProgSet.contains(cpMdtMap.get(record.program).Core_MDF_Technical_Program_Name__c)){
+                        System.debug('@@@vikas payment- generic utility:853');
+                        if(record.budgetType !=null){
+                            System.debug('@@@vikas payment- generic utility:855');
+                            if(accProgGeoSubGeoBudgetTypeGrpMap.containsKey(accIdProgGeoSubGeoBudTypeRecKey) && accProgGeoSubGeoBudgetTypeGrpMap.get(accIdProgGeoSubGeoBudTypeRecKey) != NULL){
+                            System.debug('@@@vikas payment- generic utility:857');
+                                grpSet.add(accProgGeoSubGeoBudgetTypeGrpMap.get(accIdProgGeoSubGeoBudTypeRecKey));
+                            }                        
+                        }
+                        if(accProgGeoSubGeoGrpMap.containsKey(accIdProgGeoSubGeoRecKey) && accProgGeoSubGeoGrpMap.get(accIdProgGeoSubGeoRecKey) != NULL){
+                            System.debug('@@@vikas payment- generic utility:862');
+                            grpSet.add(accProgGeoSubGeoGrpMap.get(accIdProgGeoSubGeoRecKey));
+                        }
+                        if(objectsForAllBudTypeSharing.contains(objectName) && accProgSubGeoGrpSetMap.containsKey(accIdProgGeoSubGeoRecKey) && accProgSubGeoGrpSetMap.get(accIdProgGeoSubGeoRecKey) != NULL){
+                            System.debug('@@@vikas payment- generic utility:866');
+                            grpSet.addAll(accProgSubGeoGrpSetMap.get(accIdProgGeoSubGeoRecKey));
+                        }                  
+                    }
+                    if(record.budgetType !=null){
+                        System.debug('@@@vikas payment- generic utility:871');
+                        if(accProgWWBudgetTypeGrpMap.containsKey(accIdProgBudTypeRecKey) && accProgWWBudgetTypeGrpMap.get(accIdProgBudTypeRecKey) != NULL){
+                            
+                        System.debug('@@@vikas payment- generic utility:874');
+                            grpSet.add(accProgWWBudgetTypeGrpMap.get(accIdProgBudTypeRecKey));
+                        }
+                        if(accProgGeoBudgetTypeGrpMap.containsKey(accIdProgGeoBudTyperecKey) && accProgGeoBudgetTypeGrpMap.get(accIdProgGeoBudTyperecKey) != NULL){
+                             System.debug('@@@vikas payment- generic utility:878');
+                            grpSet.add(accProgGeoBudgetTypeGrpMap.get(accIdProgGeoBudTyperecKey));
+                        }
+                    }
+                    if(accProgWWGrpMap.containsKey(accIdProgRecKey) && accProgWWGrpMap.get(accIdProgRecKey) != NULL){
+                        System.debug('@@@vikas payment- generic utility:883');
+                        grpSet.add(accProgWWGrpMap.get(accIdProgRecKey));
+                    }
+                    if(accProgGeoGrpMap.containsKey(accIdProgGeoRecKey) && accProgGeoGrpMap.get(accIdProgGeoRecKey) != NULL){
+                        System.debug('@@@vikas payment- generic utility:887');
+                        grpSet.add(accProgGeoGrpMap.get(accIdProgGeoRecKey));
+                    }
+                    if(objectsForAllBudTypeSharing.contains(objectName) && accProgGrpSetMap.containsKey(accIdProgRecKey) && accProgGrpSetMap.get(accIdProgRecKey) != NULL){
+                        System.debug('@@@vikas payment- generic utility:891');
+                        grpSet.addAll(accProgGrpSetMap.get(accIdProgRecKey));
+                    }
+                    if(objectsForAllBudTypeSharing.contains(objectName) && accProgGeoGrpSetMap.containsKey(accIdProgGeoRecKey) && accProgGeoGrpSetMap.get(accIdProgGeoRecKey) != NULL){
+                        System.debug('@@@vikas payment- generic utility:895');
                         grpSet.addAll(accProgGeoGrpSetMap.get(accIdProgGeoRecKey));
                     }                             
                 }
@@ -765,15 +1072,15 @@ public without sharing class Core_MDF_CCP_GenericUtility {
     @return  :          String
     @parameters:        Technical Program Name
     Description:        This method is used to get Program Label
-    Added By:           Accenture - AN - 11/11/2024
+    Added By:           Accenture - VS - 11/11/2024
     Modified By:        Date:      Changes: 
     *******************************************************************************************************/
     public static String getProgramLabel(String programName){
         try{
             String programLabel = '';
-
+            //programName = programName.toLowerCase();
             if(String.isNotBlank(programName)){
-               
+                //programLabel = (programName == Core_MDF_CCP_ConstantClass.CCF_TECHNICAL_PROGRAM_NAME.toLowerCase()) ? (Core_MDF_CCP_ConstantClass.CCF_PROGRAM) : (programName == (Core_MDF_CCP_ConstantClass.DCF_TECHNICAL_PROGRAM_NAME.toLowerCase()) ? (Core_MDF_CCP_ConstantClass.DCF_PROGRAM) : (programName == (Core_MDF_CCP_ConstantClass.CCFB_TECHNICAL_PROGRAM_NAME.toLowerCase()))?Core_MDF_CCP_ConstantClass.CCFB_PROGRAM:(programName == (Core_MDF_CCP_ConstantClass.SPCF_TECHNICAL_PROGRAM_NAME.toLowerCase())?Core_MDF_CCP_ConstantClass.SPCF_PROGRAM: programName)); 
                 switch on programName {
                     when 'Client CoMarketing Fund' {
                         programLabel = Core_MDF_CCP_ConstantClass.CCF_PROGRAM;
@@ -792,7 +1099,23 @@ public without sharing class Core_MDF_CCP_GenericUtility {
                     }
                  }
                 }
-               
+                /*if(programName == Core_MDF_CCP_ConstantClass.CCF_TECHNICAL_PROGRAM_NAME.toLowerCase()){
+                    programLabel = Core_MDF_CCP_ConstantClass.CCF_PROGRAM;                
+                }
+                else if(programName == Core_MDF_CCP_ConstantClass.DCF_TECHNICAL_PROGRAM_NAME.toLowerCase()){
+                    programLabel = Core_MDF_CCP_ConstantClass.DCF_PROGRAM; 
+                }
+                else if(programName == Core_MDF_CCP_ConstantClass.CCFB_TECHNICAL_PROGRAM_NAME.toLowerCase()){
+                    programLabel = Core_MDF_CCP_ConstantClass.CCFB_PROGRAM; 
+                }
+                else if(programName == Core_MDF_CCP_ConstantClass.SPCF_TECHNICAL_PROGRAM_NAME.toLowerCase()){
+                    programLabel = Core_MDF_CCP_ConstantClass.SPCF_PROGRAM; 
+                }
+                else{
+                    programLabel = programName;
+                }
+           
+            }*/
             return programLabel;
             
         }catch(Exception e){throw e;}
@@ -804,7 +1127,7 @@ public without sharing class Core_MDF_CCP_GenericUtility {
     @parameters:        Permission Set name list
     Description:        This method is used to get userId and his assigned permission sets by passing permission set names
     Added By:           Accenture - Vikas Soni - 26/12/2024
-    Modified By:        Accenture - Vikas Soni Date: 14/04/2025      Changes: additional conditions for query
+    Modified By:        Date:         Changes: 
     Roshan              06/02/2025    Added Partner_License_Reclaimed__c in where clause for "Reclaiming SF Partner License"
     *******************************************************************************************************/  
     public static Map<Id,Set<String>> getUserIdToPermissionSetsMapByPSNames(List<String> psNameList, String additionalWhereCondition){
@@ -829,7 +1152,7 @@ public without sharing class Core_MDF_CCP_GenericUtility {
     @parameters:        Wrapper object of 'QueryIUPGMRecordsWrapper'
     Description:        This method is used to get IUPGM records by passing data through wrapper
     Added By:           Accenture - Vikas Soni - 26/12/2024
-    Modified By:        Accenture - Vikas Soni Date: 14/04/2025      Changes: additional conditions for query
+    Modified By:        Date:      Changes: 
     *******************************************************************************************************/    
     public static List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> getIUPGMRecordsByWrapper(QueryIUPGMRecordsWrapper queryIUPGMRecordsWrapperObj){
         Set<Id> userIdSet = new Set<Id>();
@@ -1006,5 +1329,17 @@ public without sharing class Core_MDF_CCP_GenericUtility {
         public String objectName;
         public String additionalWhereCondition;
         public String maxRows;
+    }
+
+    public class CustomGenericLookupRecordsWrapper{
+        @AuraEnabled public String id{get;set;}
+        @AuraEnabled public String mainField{get;set;}
+        @AuraEnabled public String subField{get;set;}
+
+        public CustomGenericLookupRecordsWrapper(String idParam, String mainFieldParam, String subFieldParam) {
+            id = idParam;
+            mainField = mainFieldParam;
+            subField = subFieldParam;
+        }
     }
 }

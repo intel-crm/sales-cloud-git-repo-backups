@@ -22,12 +22,15 @@ public class Core_MDF_ECMCreationController_Test {
         System.runAs(usr){
            
             
-            
+             
             ChannelProgram ccfCp = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', true);
-
+            // Highlight: Unused Local Variable - 14285 //Suma
+            //ChannelProgram dcfCp = Core_MDF_CCP_TestDataUtility.createProgram ('Datacenter','Data Center CoMarketing Fund', true);
             
             flipkartTestAccount = Core_MDF_CCP_TestDataUtility.createIntelAccount('FlipkartTestAccount', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
-
+            
+            // Highlight: Unused Local Variable - 14285 //Suma
+            //Account myntraTestAccount = Core_MDF_CCP_TestDataUtility.createIntelAccount('MyntraTestAccount', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
             
             Account accCCF = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test CCF Account', ccfCp.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, flipkartTestAccount.Id, true);
            
@@ -166,7 +169,7 @@ public class Core_MDF_ECMCreationController_Test {
             accshare.CaseAccessLevel = 'None';
             Database.insert(accshare);
             
-            insert iupgmList;
+             insert iupgmList;  
                      
             //Create Bank
             Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(flipkartTestAccount.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1231231230');
@@ -176,9 +179,9 @@ public class Core_MDF_ECMCreationController_Test {
             assert.istrue(bank.Core_MDF_Bank_Status__c == 'Active');
             
             //Create ABM
-            
-            
-            
+            // Highlight: Unused Local Variable - 14285 //Suma
+            //Core_MDF_Account_Bank_Mapping__c abmCCF1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(accCCF.Id, bank.Id, TRUE);
+           
             
             //Create Budget
             PartnerMarketingBudget budget = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget New',
@@ -217,6 +220,7 @@ public class Core_MDF_ECMCreationController_Test {
             pfr.Core_MDF_End_Date__c  = system.today() + 5;
             pfr.Core_MDF_Reimbursement_Rate_txt__c = '50%';
             pfr.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
+           
              //Test.startTest();
             insert pfr;
             
@@ -239,7 +243,7 @@ public class Core_MDF_ECMCreationController_Test {
             Id caseAuditRecType = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('Core_MDF_Audit').getRecordTypeId();
             cs.Status = 'New';
             cs.recordTypeId = caseAuditRecType;
-            cs.Core_MDF_Activity_Category__c = 'Audio';  // 14285 Indira
+            cs.Core_MDF_Activity_Category__c = 'Audio';
             cs.Core_MDF_Activity_Start_Date__c = System.today();
             cs.Core_MDF_Activity_End_Date__c = System.today() + 5;
             cs.Core_MDF_Claim_ID__c = newClaim.Id;
@@ -262,12 +266,12 @@ public class Core_MDF_ECMCreationController_Test {
             expt.Core_MDF_Exception_End_Date_dt__c = System.today();
             expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
             expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Audio->Podcast';  // 14285 Indira
+            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Audio->Podcast';
             expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
             expt.Core_MDF_Country_Region_nm__c = 'INDIA';
             expt.Core_MDF_Account_id__c = /*flipkartTestAccount.Id*/ null;
             expt.Core_MDF_Select_All_Accounts_ind__c = true;
-            expt.Core_MDF_Budget_Type_nm__c = '';  // 14285 Indira
+            expt.Core_MDF_Budget_Type_nm__c = '';
             expList.add(expt); 
             Core_MDF_Exception__c exp = new Core_MDF_Exception__c();
             exp.Core_MDF_Name_of_Exception_nm__c = 'Test SPCF Exception';
@@ -277,7 +281,7 @@ public class Core_MDF_ECMCreationController_Test {
             exp.Core_MDF_Exception_End_Date_dt__c = System.today();
             exp.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
             exp.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-            exp.Core_MDF_Activity_Cate_and_Type_nm__c ='Audio->Radio';  // 14285 Indira
+            exp.Core_MDF_Activity_Cate_and_Type_nm__c ='Audio->Radio';
             exp.Core_MDF_Total_Dollar_Impact_amt__c = 100;
             exp.Core_MDF_Country_Region_nm__c = 'INDIA';
             exp.Core_MDF_Account_id__c = /*flipkartTestAccount.Id*/ null;
@@ -340,7 +344,7 @@ public class Core_MDF_ECMCreationController_Test {
         
         Case cs = [SELECT Id, AccountId, Account.Core_MDF_Channel_Program__r.Name, Core_MDF_Claim_ID__c, Account.Core_MDF_CoMarketing_Ultimate_Account__c
                    FROM Case 
-                   WHERE Core_MDF_Activity_Category__c = 'Audio'];  // 14285 Indira
+                   WHERE Core_MDF_Activity_Category__c = 'Audio'];
         
         String caseId;
         caseId = cs.Id;
@@ -358,7 +362,10 @@ public class Core_MDF_ECMCreationController_Test {
 
         ChannelProgram cp = [SELECT Id FROM ChannelProgram WHERE Name = 'Client' LIMIT 1];
         String cpId = cp.Id;
-        
+        // Highlight: Unused Local Variable - 14285 //Suma
+        /*Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem = [SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c
+                                                              FROM Core_MDF_BankProgram_Entitlement_Mapping__mdt
+                                                              WHERE Core_MDF_Channel_Program__c = :cs.Account.Core_MDF_Channel_Program__r.Name LIMIT 1];*/
        
         Test.stopTest();
         
@@ -405,9 +412,11 @@ public class Core_MDF_ECMCreationController_Test {
         
         Case cs = [SELECT Id, AccountId, Account.Core_MDF_Channel_Program__r.Name
                    FROM Case 
-                   WHERE Core_MDF_Activity_Category__c = 'Audio']; // 14285 Indira
-        
-
+                   WHERE Core_MDF_Activity_Category__c = 'Audio'];
+        // Highlight: Unused Local Variable - 14285 //Suma
+        /*Core_MDF_BankProgram_Entitlement_Mapping__mdt bpem = [SELECT Core_MDF_Bank_Program_Name__c, Core_MDF_Channel_Program__c
+                                                              FROM Core_MDF_BankProgram_Entitlement_Mapping__mdt
+                                                              WHERE Core_MDF_Channel_Program__c = :cs.Account.Core_MDF_Channel_Program__r.Name LIMIT 1];*/
         String ecamCreated;
         ecamCreated = '[{"ecmRecordId":"","exceptionRecord":{"Id":"'+expt.Id+'","Name":"'+expt.Name+'","Core_MDF_Exception_Start_Date_dt__c":"2019-06-24","Core_MDF_Exception_End_Date_dt__c":"2019-06-29","Core_MDF_Program_nm__c":"Core_MDF_Client_CoMarketing_Fund","Core_MDF_Activity_Cate_and_Type_nm__c":"Broadcast->Podcast","Core_MDF_Account_id__c":"'+expt.Core_MDF_Account_id__c+'","Core_MDF_Select_All_Accounts_ind__c":false,"Core_MDF_Name_of_Exception_nm__c":"'+expt.Core_MDF_Name_of_Exception_nm__c+'","Core_MDF_Exception_Reason_nm__c":"'+expt.Core_MDF_Exception_Reason_nm__c+'"},"exceptionRecordLink":"'+'/'+expt.Id+'","isChecked":true,"isECMAlreadyCreated":true}]';
       
@@ -437,7 +446,7 @@ public class Core_MDF_ECMCreationController_Test {
         assert.istrue(expt != NULL); 
         Case cs = [SELECT Id, AccountId, Account.Core_MDF_Channel_Program__r.Name, Core_MDF_Claim_ID__c, Core_MDF_Budget_Type_nm__c, Account.Core_MDF_CoMarketing_Ultimate_Account__c
                    FROM Case 
-                   WHERE Core_MDF_Activity_Category__c = 'Audio'];  // 14285 Indira
+                   WHERE Core_MDF_Activity_Category__c = 'Audio'];
         
         User ccfAccountManager = [Select Id, LastName from User where LastName = 'CCF Acc Manager'];
         

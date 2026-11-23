@@ -29,7 +29,7 @@
         <label>Approve Solution Milestone</label>
         <name>Approve_Solution_Milestone</name>
     </approvalStep>
-    <emailTemplate>Testt/Solution_Milestone_Approval_Email</emailTemplate>
+    <emailTemplate>test_m/Solution_Milestone_Approval_Email</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <criteriaItems>

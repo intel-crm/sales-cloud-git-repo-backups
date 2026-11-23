@@ -6,7 +6,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>ACPC</masterLabel>
-        <translation><!-- ACPC --></translation>
+        <translation>ACPC</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>AIO</masterLabel>
@@ -22,7 +22,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Altera®</masterLabel>
-        <translation><!-- Altera® --></translation>
+        <translation>Altera®</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Appliance</masterLabel>
@@ -30,11 +30,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Athena</masterLabel>
-        <translation><!-- Athena --></translation>
+        <translation>Athena</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Chromebook</masterLabel>
-        <translation><!-- Chromebook --></translation>
+        <translation>Chromebook</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Client</masterLabel>
@@ -54,7 +54,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Component</masterLabel>
-        <translation>구성 요소</translation>
+        <translation><!-- Component --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Data Center DGPU</masterLabel>
@@ -90,7 +90,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel Unite®</masterLabel>
-        <translation><!-- Intel Unite® --></translation>
+        <translation>Intel Unite®</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel vPro®</masterLabel>
@@ -98,7 +98,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intelligent Edge/IoT</masterLabel>
-        <translation>지능형 엣지/사물인터넷</translation>
+        <translation><!-- Intelligent Edge/IoT --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ i3</masterLabel>
@@ -174,7 +174,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Networking &amp; Telecommunications</masterLabel>
-        <translation>네트워킹 및 통신</translation>
+        <translation><!-- Networking &amp; Telecommunications --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Networking/Ethernet</masterLabel>
@@ -186,7 +186,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>OpenVINO™</masterLabel>
-        <translation><!-- OpenVINO™ --></translation>
+        <translation>OpenVINO™</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Other</masterLabel>
@@ -222,15 +222,15 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Service</masterLabel>
-        <translation>서비스</translation>
+        <translation><!-- Service --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Software</masterLabel>
-        <translation>소프트웨어</translation>
+        <translation><!-- Software --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Solution</masterLabel>
-        <translation>솔루션</translation>
+        <translation><!-- Solution --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Storage</masterLabel>

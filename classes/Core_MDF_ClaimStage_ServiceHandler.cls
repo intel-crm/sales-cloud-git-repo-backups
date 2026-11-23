@@ -67,18 +67,23 @@ Modified By:        Date:       Changes:
         //To check the basic validations before processing the bulk claim upload
     public static List<Core_MDF_Claim_Batch_Stage__c> isValidOnInsert(List<Core_MDF_Claim_Batch_Stage__c> newclaimStageList)
     {
+        system.debug('claimstageList::'+newclaimStageList);
         List<Core_MDF_Claim_Batch_Stage__c> claimStage = new List<Core_MDF_Claim_Batch_Stage__c>();
         if(newclaimStageList != NULL && newclaimStageList.size() > 0)
         {
             batch = [SELECT Id, Core_MDF_Program_Id__r.Core_MDF_Technical_Program_Name__c FROM Core_MDF_Claim_Batch__c WHERE Id = :newclaimStageList[0].Core_MDF_Batch_ID__c LIMIT 1];
+            system.debug('batchvd:::'+batch);
             /*lstBulkUploadMappings = [SELECT Core_MDF_Stage_Field_API_Name__c, Core_MDF_Field_DataType_Txt__c,
                                      Core_MDF_Stage_Required_Ind__c
                                      FROM Core_MDF_BulkClaimTemplateParticulars__mdt
                                      WHERE Core_MDF_Channel_program__c = :batch.Core_MDF_Program_Id__r.Core_MDF_Technical_Program_Name__c
                                      AND Core_MDF_Upload_Record_Type__c =:Label.Core_MDF_PFCText];*/
+            //lstBulkUploadMappings = [SELECT Core_MDF_Field_2_txt__c, Core_MDF_Field_1_txt__c, Core_MDF_Checkbox_Field_1_Ind__c FROM Core_MDF_CCP_Custom_Metadata_Utility__c WHERE Core_MDF_Program__c = :batch.Core_MDF_Program_Id__r.Core_MDF_Technical_Program_Name__c AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText AND Core_MDF_Category__c =:Core_MDF_CCP_ConstantClass.BULK_CLAIM_TEMPLATE];
             String whereClause = 'Core_MDF_Program__c = \'' + batch.Core_MDF_Program_Id__r.Core_MDF_Technical_Program_Name__c + '\' ' + 'AND Core_MDF_Sub_Category__c = \'' + Label.Core_MDF_PFCText + '\' ' + 'AND Core_MDF_Category__c = \'' + Core_MDF_CCP_ConstantClass.BULK_CLAIM_TEMPLATE + '\' ';
-            lstBulkUploadMappings = Core_MDF_Custom_Metadata_Utility.getCustomObjectRecords(whereClause);
-         claimStage = isValidForInsert(newclaimStageList);
+        	lstBulkUploadMappings = Core_MDF_Custom_Metadata_Utility.getCustomObjectRecords(whereClause);
+
+            claimStage = isValidForInsert(newclaimStageList);
+          system.debug('claimstageNNN::'+claimStage);
         }
         return claimStage;
         
@@ -113,6 +118,7 @@ and sends them for further processing
         List<Core_MDF_Claim_Batch_Stage__c> claimStgRecordsForIns = new List<Core_MDF_Claim_Batch_Stage__c>();
         List<String> missingFields = new List<String>();
         //Checking the required fields
+        system.debug('newclaimStageList:::::::b'+newclaimStageList);
         for(Core_MDF_Claim_Batch_Stage__c iClaimStg : newclaimStageList)
         {
             missingFields.clear();
@@ -128,16 +134,18 @@ and sends them for further processing
             for(Core_MDF_CCP_Custom_Metadata_Utility__c iBU : lstBulkUploadMappings)
             {	
                 if(iBU.Core_MDF_Checkbox_Field_1_Ind__c && (iClaimStg.get(iBU.Core_MDF_Field_2_txt__c) == null))
-                {
+                {system.debug('hereiam22::');
                     if(mandatoryErrorHeaderText)
                     {
                         iClaimStg.Core_MDF_Message_Txt__c = errorText+' '; 
                         mandatoryErrorHeaderText = FALSE;
+                        system.debug('hereiam::');
                     }
                     missingFields.add(fieldToLabelMap.get(iBU.Core_MDF_Field_2_txt__c));
                     
                 }
             }
+            system.debug('missingFields::'+missingFields);
             //Add the missing field labels to the message box
             if(missingFields != Null && missingFields.size() > 0)
             {
@@ -149,17 +157,20 @@ and sends them for further processing
                 iClaimStg.Core_MDF_Processing_Status_Nm__c = Label.Core_MDF_Status_Submitted;
             }
         }
+        system.debug('listvd:::'+newclaimStageList);
         //Seperate successful stage records to be sent for accessibility check                               
         for(Core_MDF_Claim_Batch_Stage__c iClaimStg : newclaimStageList)
         {
             if(!Label.Core_MDF_Claim_Batch_Failed.equals((iClaimStg.Core_MDF_Processing_Status_Nm__c)))
-            {
+            {	
+                system.debug('Insidpe:::VD');
                 claimStgRecordsForIns.add(iClaimStg);
             } 
         } 
         //Send the valid stage records for checking the users accessiblity
         if(claimStgRecordsForIns.size() > 0 && claimStgRecordsForIns[0].Core_MDF_Batch_ID__c != NULL)
-        {
+        { 
+            system.debug('testHere::');
           claimStageList = Core_MDF_BatchClaimHelper.checkAccessiblityForInsertAndUpdate(claimStgRecordsForIns); //inserting records into stage,if any error adding that error to that stage claim record
             
         }
@@ -169,6 +180,7 @@ and sends them for further processing
     //To check the basic validations before processing the Design registrations and its products
     public static void isValidOnUpdate(List<Core_MDF_Claim_Batch_Stage__c> newClaimStageList, Map<Id,Core_MDF_Claim_Batch_Stage__c> oldClaimStageMap,Map<Id,Core_MDF_Claim_Batch_Stage__c> newclaimStageMap)
     {
+    system.debug('in isValidOnUpdate');
         if(newClaimStageList != NULL && newClaimStageList.size() > 0)
         {
             // To create global Map for custom metadata
@@ -177,9 +189,10 @@ and sends them for further processing
                                      Core_MDF_Stage_Required_Ind__c
                                      FROM Core_MDF_BulkClaimTemplateParticulars__mdt
                                      WHERE Core_MDF_Channel_program__c = :batch.Core_MDF_Program_Id__r.Core_MDF_Technical_Program_Name__c
-                                     AND Core_MDF_Upload_Record_Type__c =:Label.Core_MDF_PFCText];*/            
+                                     AND Core_MDF_Upload_Record_Type__c =:Label.Core_MDF_PFCText];*/
+            //lstBulkUploadMappings = [SELECT Core_MDF_Field_2_txt__c, Core_MDF_Field_1_txt__c, Core_MDF_Checkbox_Field_1_Ind__c FROM Core_MDF_CCP_Custom_Metadata_Utility__c WHERE Core_MDF_Program__c = :batch.Core_MDF_Program_Id__r.Core_MDF_Technical_Program_Name__c AND Core_MDF_Sub_Category__c =:Label.Core_MDF_PFCText AND Core_MDF_Category__c =:Core_MDF_CCP_ConstantClass.BULK_CLAIM_TEMPLATE];
             String whereClause = 'Core_MDF_Program__c = \'' + batch.Core_MDF_Program_Id__r.Core_MDF_Technical_Program_Name__c + '\' ' + 'AND Core_MDF_Sub_Category__c = \'' + Label.Core_MDF_PFCText + '\' ' + 'AND Core_MDF_Category__c = \'' + Core_MDF_CCP_ConstantClass.BULK_CLAIM_TEMPLATE + '\' ';
-            lstBulkUploadMappings = Core_MDF_Custom_Metadata_Utility.getCustomObjectRecords(whereClause);
+        	lstBulkUploadMappings = Core_MDF_Custom_Metadata_Utility.getCustomObjectRecords(whereClause);
 
             // List<Core_MDF_Claim_Batch_Stage__c> : Claim Stage List which contains modified Stage Records
             List<Core_MDF_Claim_Batch_Stage__c> claimStageListToBeProcessed = new List<Core_MDF_Claim_Batch_Stage__c>();
@@ -193,6 +206,7 @@ and sends them for further processing
                       claimStageListToBeProcessed.add(claimStageRecord);
                   }
             }
+            System.debug('claimStageListToBeProcessed::'+claimStageListToBeProcessed);
             // Call the checkValidationsForUpdate process passing the claimStageListToBeProcessed
             if(claimStageListToBeProcessed != NULL && claimStageListToBeProcessed.size() > 0){
                 isValidForUpdate(claimStageListToBeProcessed,newclaimStageMap);
@@ -205,6 +219,7 @@ and sends them for further processing
     //To check the basic validations before processing the Claim Stage Records 
     public static void isValidForUpdate(List<Core_MDF_Claim_Batch_Stage__c> claimStageListToBeProcessed,Map<Id,Core_MDF_Claim_Batch_Stage__c> newclaimStageMap)
     {
+        system.debug('in isValidForUpdate');
         Map<String, Schema.SObjectField> fieldMap = Schema.getGlobalDescribe().get('Core_MDF_Claim_Batch_Stage__c').getDescribe().fields.getMap();
         //To store the labels of the stage fields
         Map<String,String> fieldToLabelMap = new Map<String,String>();
@@ -236,6 +251,7 @@ and sends them for further processing
                     }
                     missingFields.add(fieldToLabelMap.get(iBU.Core_MDF_Field_2_txt__c));
                 }else{
+                    system.debug('entered @@@');
                     // change the Failed status to Successful 
                     newclaimStageMap.get(iClaimStg.Id).Core_MDF_Processing_Status_Nm__c = Label.Core_MDF_Status_Submitted;
                 }
@@ -274,6 +290,7 @@ and sends them for further processing
     public static stageAndClaimRecWrapper handleDuplicateClaims(List<PartnerFundClaim> claimsToBeProcessed,stageAndClaimRecWrapper wrapInst){    
         // check the duplicates for input claim list within the list and with the DB
         Core_MDF_Claim_Utility.duplicateClaimCheckOnInsert(claimsToBeProcessed);
+        system.debug('in handleDuplicateClaims');
        // stageAndClaimRecWrapper wrapInst = new stageAndClaimRecWrapper();
         
         nonduplicateClaimsList = nonduplicateClaimsList == null ? new List<PartnerFundClaim>() : nonduplicateClaimsList;
@@ -307,6 +324,7 @@ And pass the claimsToBeProcessed for duplicates to handleDuplicateClaims method
 */
     public static stageAndClaimRecWrapper handleDuplicateClaimsOnUpdate(List<PartnerFundClaim> claimsToBeProcessed,stageAndClaimRecWrapper wrapperInst){
        // stageAndClaimRecWrapper wrapperInst = new stageAndClaimRecWrapper();
+        system.debug('handleDuplicateClaimsOnUpdate' + claimsToBeProcessed +'---'+wrapperInst);
         
         Set<Id> claimStageSet = new Set<Id>();
         List<Id> claimStageListNotToBeProcessedForDuplicate = new List<Id>();
@@ -369,6 +387,7 @@ And pass the claimsToBeProcessed for duplicates to handleDuplicateClaims method
                 updatedStageRecordList.add(claimStageRecord);
             }
         }
+        system.debug('updatedStageRecordList::'+updatedStageRecordList);
         return updatedStageRecordList;
     }
     
@@ -532,6 +551,10 @@ And pass the claimsToBeProcessed for duplicates to handleDuplicateClaims method
      */   
     public class stageAndClaimRecWrapper{
         public List<PartnerFundClaim> nonduplicateClaims = new List<PartnerFundClaim>();
-        public List<Core_MDF_Claim_Batch_Stage__c> failedStageRecordsList = new List<Core_MDF_Claim_Batch_Stage__c>();       
+        public List<Core_MDF_Claim_Batch_Stage__c> failedStageRecordsList = new List<Core_MDF_Claim_Batch_Stage__c>();
+
+        //Roshan - Tactics POC
+        public Map<Id, List<Core_MDF_Claim_Attributes__c>> claimStageIdToClaimAttributesMap = new Map<Id, List<Core_MDF_Claim_Attributes__c>>();
+        public Map<Id, Integer> claimStageIdToQuantityToDateMap = new Map<Id, Integer>();
     }  
 }

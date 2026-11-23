@@ -266,6 +266,12 @@
         <errorMessage>Please provide an account</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Core_MDF_All_Account_Check</fullName>
+        <active>false</active>
+        <errorConditionFormula>NOT(ISBLANK( Core_MDF_Account__c ))</errorConditionFormula>
+        <errorMessage>Required field missing</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Core_MDF_Do_Not_Select_Account</fullName>
         <active>true</active>
         <description>Throws error when All Account checkbox is true and if Account is entered.</description>

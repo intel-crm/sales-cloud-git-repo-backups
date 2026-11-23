@@ -38,7 +38,14 @@
         <field>ROLLUP_DESCRIPTION</field>
     </columns>
     <filter>
-        <booleanFilter>(1 AND 2)</booleanFilter>
+        <booleanFilter>((1 OR 2) AND 3)</booleanFilter>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Michal Nowak</value>
+        </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Technical_Owner__c</column>
             <columnToColumn>false</columnToColumn>
@@ -51,7 +58,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Persistent</value>
+            <value>persistent</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -82,6 +89,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2019-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2018-12-31</startDate>
     </timeFrameFilter>
 </Report>

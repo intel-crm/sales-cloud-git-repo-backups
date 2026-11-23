@@ -230,12 +230,11 @@ Modification Log :
             
             
             <!--  OPPORTUNITY SEARCH GEO FIELDS  -->        
-            <apex:pageblockSection columns="3" rendered="{!bEmployeeAccessCode}" html-style="margin-left:100px; margin-right: 400px; max-width:1440px">
+            <apex:pageblockSection columns="2" rendered="{!bEmployeeAccessCode}" html-style="margin-left:100px; margin-right: 400px; max-width:1440px">
                 <apex:inputField value="{!inputOpp.Core_Opportunity_Geo_APJ__c}"  label="APJ"  required="false"/>
                 <apex:inputField value="{!inputOpp.Core_Opportunity_Geo_ASMO__c}" label="ASMO" required="false"/>
                 <apex:inputField value="{!inputOpp.Core_Opportunity_Geo_EMEA__c}" label="EMEA" required="false"/>
-                <apex:inputField value="{!inputOpp.Core_Opportunity_Geo_PRC__c}"  label="PRC"  required="false"/>
-                <!--<apex:inputField value="{!inputOpp.CRM_Opportunity_Geo_INDIA__c}"  label="INDIA"  required="false"/>  -->
+                <apex:inputField value="{!inputOpp.Core_Opportunity_Geo_PRC__c}"  label="PRC"  required="false"/>                              
             </apex:pageblockSection>
             <br/>
             <hr class="lightWeightDivider"/>

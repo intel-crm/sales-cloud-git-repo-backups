@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <value><!-- POP Document Type --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <value><!-- POP Document Type --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <value><!-- POP Document Type --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <value><!-- POP Document Type --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <value><!-- POP Document Type --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <value><!-- POP Document Type --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <value><!-- POP Document Type --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <value><!-- POP Document Type --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type_txt__c</name>
+        <picklistValues>
+            <masterLabel>Client Market Accelerate</masterLabel>
+            <translation><!-- Client Market Accelerate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud</masterLabel>
+            <translation><!-- Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Market Accelerate</masterLabel>
+            <translation><!-- Data Center Market Accelerate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel MDF Account Based1</masterLabel>
+            <translation><!-- Intel MDF Account Based1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel MDF Account Based2</masterLabel>
+            <translation><!-- Intel MDF Account Based2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Rise Technology Initiative</masterLabel>
+            <translation><!-- Intel Rise Technology Initiative --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDF</masterLabel>
+            <translation><!-- MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDF+</masterLabel>
+            <translation><!-- MDF+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OEM CMP</masterLabel>
+            <translation><!-- OEM CMP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RSA MD</masterLabel>
+            <translation><!-- RSA MD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail MDF</masterLabel>
+            <translation><!-- Retail MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider CMP</masterLabel>
+            <translation><!-- Service Provider CMP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Document Type --></label>
+        <name>Core_MDF_Document_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>Proof of Attribution</masterLabel>
+            <translation>Nachweis der Zuweisung</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof of Branding</masterLabel>
+            <translation>Branding-Nachweis</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof of Cost</masterLabel>
+            <translation>Kostennachweis</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof of Execution</masterLabel>
+            <translation>Durchführungsnachweis</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Order --></label>
+        <name>Core_MDF_Order_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program_nm__c</name>
+        <picklistValues>
+            <masterLabel>Channel MDF</masterLabel>
+            <translation><!-- Channel MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client</masterLabel>
+            <translation><!-- Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Co-Marketing Fund</masterLabel>
+            <translation><!-- Client Co-Marketing Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Co-Marketing Fund Boost</masterLabel>
+            <translation><!-- Client Co-Marketing Fund Boost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Co-Marketing Fund</masterLabel>
+            <translation><!-- Data Center Co-Marketing Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Datacenter</masterLabel>
+            <translation><!-- Datacenter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ecosystem Extension Fund</masterLabel>
+            <translation><!-- Ecosystem Extension Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Partner Alliance</masterLabel>
+            <translation><!-- Intel Partner Alliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Marketing Funds</masterLabel>
+            <translation><!-- Retail Marketing Funds --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider Co-Marketing Fund</masterLabel>
+            <translation><!-- Service Provider Co-Marketing Fund --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- RecordType DeveloperName --></label>
+        <name>Core_MDF_RecordType_DeveloperName_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Required During Claim Submission? --></label>
+        <name>Core_MDF_Req_Doc_Types_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Required For POP Submission? --></label>
+        <name>Core_MDF_ReqforPOPSubmission_ind__c</name>
+    </fields>
+    
+</CustomObjectTranslation>

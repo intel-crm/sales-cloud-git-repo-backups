@@ -124,7 +124,7 @@
         <field>Account.Core_Total_Approved_Revenue_Amount__c</field>
     </columns>
     <filter>
-        <booleanFilter>(1 AND (2 OR 3)) AND 4 AND 5</booleanFilter>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -137,28 +137,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Adam Prengler,Amy Guesner,Michael Rather,Sunil Gupta,Brian Mink,Jeffrey Holmbeck,Marci Shihinski,Owen DeLeon</value>
+            <value>Adam Prengler,Amy Guesner,Michael Rather,Sunil Gupta,Brian Mink,Jeffrey Holmbeck</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Technical_Owner_Manager__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Adam Prengler,Amy Guesner,Michael Rather,Sunil Gupta,Brian Mink,Jeffrey Holmbeck,Marci Shihinski,Owen DeLeon</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CLOSE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_YEAR</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Business_Unit_Territory__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>PSG-NA-RM,PSG-NA-NW,PSG-NA-ACAN</value>
+            <value>Adam Prengler,Amy Guesner,Michael Rather,Sunil Gupta,Brian Mink,Jeffrey Holmbeck</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

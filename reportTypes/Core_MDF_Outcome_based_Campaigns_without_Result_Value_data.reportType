@@ -88,6 +88,31 @@
             <field>Core_MDF_Activity_Id__c.CreatedBy.Id</field>
             <table>PartnerFundRequest.Activity_Purposes__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_File_Data__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_OEM_CMP_Approval_required__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Partner_Contact_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Measurement_Approach_nm__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Other_Measurement_Approach_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
         <masterLabel>Co-Marketing Activties</masterLabel>
     </sections>
     <sections>

@@ -27,7 +27,7 @@
         <field>PartnerFundRequest$Core_MDF_Activity_Reimbursement_Amt_nbr__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND ((2 AND 3) OR (4 AND 5))</booleanFilter>
+        <booleanFilter>1 AND 2 AND (3 OR (4 AND 5))</booleanFilter>
         <criteriaItems>
             <column>PartnerFundRequest$Campaign.Core_MDF_Budget_Cap__c.Core_MDF_Cap_Type_nm__c</column>
             <columnToColumn>false</columnToColumn>
@@ -36,32 +36,32 @@
             <value>IPA Budget Type Cap</value>
         </criteriaItems>
         <criteriaItems>
-            <column>PartnerFundRequest$Core_MDF_Fund_Request_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Closed,In-Progress,Pending Approval,Planned</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>PartnerFundRequest$Campaign.Status</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Completed,In Progress,Pending Approval,Planned</value>
+            <value>Completed,In Progress,Pending Approval,Pending Review,Planned,Revision Required</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Fund_Request_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Closed,In-Progress</value>
+            <value>In-Progress,Pending Approval,Planned</value>
         </criteriaItems>
         <criteriaItems>
-            <column>PartnerFundRequest$Campaign.Status</column>
+            <column>PartnerFundRequest$Core_MDF_Fund_Request_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Pending Review,Revision Required</value>
+            <value>Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_Activity_Closure_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Auto - Missed Approval</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

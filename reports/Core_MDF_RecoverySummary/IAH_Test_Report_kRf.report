@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Core_MDF_Partnership_Score_Detail__c$Name</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Partnership_Score_Detail__c$Core_MDF_Account_Id__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Partnership_Score_Detail__c$Core_MDF_Budget_Type_Nm__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_MDF_Partnership_Score_Detail__c$Core_MDF_Carry_Over_Amt__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Partnership_Score_Detail__c$Core_MDF_Quarter_Year_Nm__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Partnership_Score_Detail__c$Core_MDF_Program_Nm__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Partnership_Score_Detail__c$Core_MDF_Region_Cd__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>IAH Test Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_MDF_Partnership_Score_Detail__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Core_MDF_Partnership_Score_Detail__c$Name</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Core_MDF_Partnership_Score_Detail__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

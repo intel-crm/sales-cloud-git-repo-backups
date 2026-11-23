@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <description>Send email to the claim owners</description>
         <name>Core_MDF_SendingEmail_to_claim_batch_record</name>
         <label>Core MDF_SendingEmail to claim batch record</label>
         <locationX>871</locationX>
@@ -113,7 +112,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -127,8 +126,8 @@
         <description>Update send email field to false</description>
         <name>Core_MDF_Update_Claim_Batch_Record</name>
         <label>Update Claim Batch Record</label>
-        <locationX>308</locationX>
-        <locationY>408</locationY>
+        <locationX>1349</locationX>
+        <locationY>612</locationY>
         <inputAssignments>
             <field>Core_MDF_Send_Email__c</field>
             <value>
@@ -138,8 +137,8 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>50</locationX>
-        <locationY>0</locationY>
+        <locationX>756</locationX>
+        <locationY>48</locationY>
         <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
         <filterLogic>and</filterLogic>
         <filters>

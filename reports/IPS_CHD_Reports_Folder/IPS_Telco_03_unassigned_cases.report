@@ -78,9 +78,6 @@
         <field>Case.Core_IPS_Last_Update__c</field>
     </columns>
     <columns>
-        <field>Case.Core_First_Response_Completed__c</field>
-    </columns>
-    <columns>
         <field>CREATED_DATEONLY</field>
     </columns>
     <columns>

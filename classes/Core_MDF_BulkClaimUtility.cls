@@ -13,7 +13,7 @@ public without sharing class Core_MDF_BulkClaimUtility {
 
         /**
     * @description: This method is used to validate user has ultimate account access
-    */	  
+    */    
     public static Id validateAccountAccess(){
         Id ultimateAccountId = getUltimateAccountId();
         // To assign the ultimate account Id during test run
@@ -26,7 +26,7 @@ public without sharing class Core_MDF_BulkClaimUtility {
             throw new BulkClaimException(Label.Core_MDF_UltimateAccountAccessError);
         }
     }
-	  
+      
         /**
     * @description: This method is used to create the Claim Batch Record Instance
     * @param ultimateAccountId: Ultimate account whose access to logged in user
@@ -45,7 +45,7 @@ public without sharing class Core_MDF_BulkClaimUtility {
             return null;
         }        
     }
-	
+    
     /**
       * @description: This method is used to Attach the Uploaded template to batch claim record
       * @param claimBatchInstance: claim batch record instance
@@ -67,33 +67,33 @@ public without sharing class Core_MDF_BulkClaimUtility {
                 cdl.ContentDocumentId = [SELECT Id,ContentDocumentId FROM ContentVersion WHERE Id =: cv.Id].ContentDocumentId;
                 cdl.LinkedEntityId = claimBatchInstance.Id;
                 cdl.ShareType = 'V';
-                Database.insert(cdl);
+               // Database.insert(cdl);
 
                 ContentDocument cd = [SELECT Id,OwnerId FROM ContentDocument WHERE Id=:cdl.ContentDocumentId LIMIT 1];
                 updateOwnerToFLAOUser(cd);
         }
     }
 
-	/**
+    /**
       * @description: This method is used to create the Claim Batch Record And Attach the Uploaded template related to it
       * @param ultimateAccountId: Ultimate account whose access to logged in user
       * @param channelProgramId: Channel Program Id of the Channel Program selected by the User while uploading the template
       * @param blobData: Content of the File Uploaded by the User in Blob format
       * @param fileName: uploaded File Name
       */    
-	public static Core_MDF_Claim_Batch__c insertBatchRecordAndAttachUploadedTemplate(Id ultimateAccId, String channelProgramId,
+    public static Core_MDF_Claim_Batch__c insertBatchRecordAndAttachUploadedTemplate(Id ultimateAccId, String channelProgramId,
                                                                                      String fileName, Blob blobData){
-		//claim batch record instance
-		Core_MDF_Claim_Batch__c claimBatchInstance = new Core_MDF_Claim_Batch__c();
-		//insert claim batch record instance
-		claimBatchInstance = insertBatchRecordInstance(ultimateAccId,channelProgramId);
-		if(claimBatchInstance!=null){
-		//Attach the Uploaded file
-		attachUploadedTemplate(claimBatchInstance,fileName,blobData);
-		}
-		return claimBatchInstance;
-		
-	}
+        //claim batch record instance
+        Core_MDF_Claim_Batch__c claimBatchInstance = new Core_MDF_Claim_Batch__c();
+        //insert claim batch record instance
+        claimBatchInstance = insertBatchRecordInstance(ultimateAccId,channelProgramId);
+        if(claimBatchInstance!=null){
+        //Attach the Uploaded file
+        attachUploadedTemplate(claimBatchInstance,fileName,blobData);
+        }
+        return claimBatchInstance;
+        
+    }
     ///Get the ulimate account of the user and store in batch
      public static ID getUltimateAccountId()
     {

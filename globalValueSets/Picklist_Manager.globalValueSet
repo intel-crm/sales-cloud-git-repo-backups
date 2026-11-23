@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>It works!</fullName>
+        <default>false</default>
+        <label>It works!</label>
+    </customValue>
+    <customValue>
+        <fullName>Value 01</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Value 01</label>
+    </customValue>
+    <customValue>
+        <fullName>Value 02</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Value 02</label>
+    </customValue>
+    <customValue>
+        <fullName>Success</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Success</label>
+    </customValue>
+    <masterLabel>Picklist Manager</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

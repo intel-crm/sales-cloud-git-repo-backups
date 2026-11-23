@@ -52,11 +52,12 @@
         <columns>NAME</columns>
         <columns>Core_Entitlement_Id__c</columns>
         <columns>Core_Entitlement_Name__c</columns>
+        <columns>Core_Entitlement_Subordinate_Name__c</columns>
         <columns>Core_Condition__c</columns>
         <columns>Core_Entitlement_Subordinate_Id__c</columns>
-        <columns>Core_Entitlement_Subordinate_Name__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+        <language>en_US</language>
     </listViews>
     <visibility>Protected</visibility>
 </CustomObject>

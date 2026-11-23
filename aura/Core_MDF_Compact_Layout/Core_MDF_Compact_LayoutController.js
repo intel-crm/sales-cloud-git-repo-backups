@@ -1,12 +1,15 @@
 ({
     doInit: function (component, event, helper) {
-        console.log('CompactLayout-Aura ', component.get("v.objAPIName"));
+        console.log('@@@@@@CompactLayout-Aura ', component.get("v.objAPIName"));
         component.set("v.showLoading", true);
         //var siteURL = window.location.origin;
         var portalBaseURL = $A.get("$Label.c.Core_MDF_PFRCommunityLink");
         var communityURLSection = $A.get("$Label.c.Core_MDF_CommunityURLSection");
         var ViewType = component.get("v.isCompactLayout") == 'Yes' ? 'Compact Layout' : 'Detail Layout';
-        console.log('#### ', ViewType);
+        console.log('@@@@@@#### ', ViewType);
+        console.log('@@@@@@recordId: ', component.get("v.recordId"));
+        console.log('@@@@@@objAPIName: ', component.get("v.objAPIName"));
+        console.log('@@@@@@fieldAPIName: ', component.get("v.fieldAPIName"));
         helper.call(component.get("c.getObjectFields"), {
             recordId: component.get("v.recordId"),
             objAPIName: component.get("v.objAPIName"),
@@ -16,7 +19,8 @@
         }).then(function (result) {
             if (result != null) {
                 //this.isShow = true;
-                var hiddenFieldDetailsMap = new Map();
+                console.log('@@@@@@result',result);
+                var objDetailsMap = new Map();
                 var objProperties = [];
                 let index = 1;
                 let fieldRecord;
@@ -35,12 +39,15 @@
                         let type;
                         if (result[key][i].fieldValue != '' && result[key][i].fieldValue != null && !result[key][i].isHiddenFromUI) {
                             if (result[key][i].fieldType == 'REFERENCE') {
+                                //TWC3117-15824
+                                //record.url = key == 'Internal User' ? `/lightning/r/${result[key][i].parentObjectName}/${result[key][i].fieldValue}/view` : portalBaseURL + communityURLSection + result[key][i].fieldValue;
                                 var hasCustomUrl = !!result[key][i].lookupCustomUrlInd;
                                 if (key == 'Internal User') {                                    
                                     record.url = hasCustomUrl ? `/lightning/n/${result[key][i].lookupCustomUrlValue}?c__recordId=${result[key][i].fieldValue}` : `/lightning/r/${result[key][i].parentObjectName}/${result[key][i].fieldValue}/view`;
                                 } else {                                    
                                     record.url = hasCustomUrl ? portalBaseURL +'s/'+ result[key][i].lookupCustomUrlValue + '?recordId=' + result[key][i].fieldValue : portalBaseURL + communityURLSection + result[key][i].fieldValue;
                                 }
+                                //TWC3117-15824
                                 record.urlName = result[key][i].fieldValueName;
                                 record.parentObjectId = result[key][i].fieldValue;
                                 record.parentObjectName = result[key][i].parentObjectName;
@@ -70,12 +77,22 @@
                             }
                         } else {
                             type = 'STRING';
-                            hiddenFieldDetailsMap.set(result[key][i].fieldLabel,result[key][i].fieldValue);
+                            /*if(component.get("v.objAPIName") == 'Campaign'){
+                               if(result[key][i].fieldLabel == 'Approval Alert'){
+                                component.set("v.approvalAlertConfMsg",result[key][i].fieldValue);
+                                console.log("result[key][i].fieldValue",result[key][i].fieldValue);
+                                console.log("@@initial approval alert", component.get("v.approvalAlertConfMsg"));
+                               }
+                               else if(result[key][i].fieldLabel == 'Cancel Alert'){
+                                component.set("v.cancelAlertConfMsg",result[key][i].fieldValue);
+                               }
+                            }*/
+                            objDetailsMap.set(result[key][i].fieldLabel,result[key][i].fieldValue);
                         }
                         fieldRecord = result[key][i].fieldValue != '' ? record : '';
                         var noOfCol = 12 / result[key][i].noOfColumns;                        
                         if(!result[key][i].isHiddenFromUI ){
-                            //Added for cogtm check 
+                            //Added for cogtm check - dhakshinesh
                             if(result[key][i].fieldValue == $A.get("$Label.c.Core_MDF_Co_GTM_program_name")){
                                 component.set("v.isCoGtm",true);
                             }
@@ -92,18 +109,21 @@
                             'noOfColumns': noOfCol
                         });
                     }
+                    }
                 }
-                }
-                component.set("v.hiddenFieldsMap", hiddenFieldDetailsMap);
-                console.log('objProperties -- Aura', objProperties);
+                component.set("v.hiddenFieldsMap", objDetailsMap);
+                console.log('@@@@@@objDetailsMap',objDetailsMap);
+                console.log('@@@@@@gethiddenFieldsMap',component.get("v.hiddenFieldsMap"));
+                console.log('@@@@@@objProperties -- Aura', objProperties);
                 component.set("v.compactLayoutFields", objProperties);
+               
             } else {
                 component.set("v.showLoading", false);
             }
         }).catch((error) => {
-            console.log('Error in loading. Error : ', error);
+            console.log('@@@@@@Error in loading. Error : ', error);
         });
-		var userId = $A.get("$SObjectType.CurrentUser.Id");
+
         helper.call(component.get("c.getObjActions"), {
             recordId: component.get("v.recordId"),
             objAPIName: component.get("v.objAPIName"),
@@ -118,19 +138,20 @@
                 for (var key in result) {
                     recordDetails = key.split("$%@#");
                     component.set("v.cmptLayoutIcon", recordDetails[0]);
+                     console.log('Tab icon ', recordDetails[0]);
                     component.set("v.objLabel", recordDetails[1]);
+                    console.log('object  ', recordDetails[1]);
+                    console.log('title  ', recordDetails[2]);
                     component.set("v.title", recordDetails[2]);
                     var quickActionCount = 0;
                     for (let i = 0; i < result[key].length; i++) {
-                        if(result[key][i].label != 'Sharing' || (result[key][i].label == 'Sharing' && (recordDetails[3] == userId || recordDetails[4] == 'System Administrator' || recordDetails[4] == 'IT Admin'))){
-                            if (quickActionCount < 3) {
-                                quickActionsButtons.push(result[key][i]);
-                            } else {
-                                quickActionsHideButtons.push({
-                                    'label': result[key][i].label,
-                                    'type': result[key][i].orgLabel + ',' + result[key][i].type
-                                });
-                            }
+                        if (quickActionCount < 3) {
+                            quickActionsButtons.push(result[key][i]);
+                        } else {
+                            quickActionsHideButtons.push({
+                                'label': result[key][i].label,
+                                'type': result[key][i].orgLabel + ',' + result[key][i].type
+                            });
                         }
                         quickActionCount = quickActionCount + 1;
                     }
@@ -181,9 +202,14 @@
     },
 
     closeModal: function (component, event, helper) {
+        //TWC3117-19154
+        if (component.get("v.isRecallSaving")) {
+            return;
+        }
+        //TWC3117-19154
         component.set("v.openModalForUpdateButton", false);
         component.set("v.openModalForLtCmp", false);
-        component.set("v.isNotifyOwner", false);
+        component.set("v.isNotifyOwner", false);//Swati
         component.set("v.isDefaultQuickAction", false);
         component.set("v.errorMessage", '');
     },
@@ -200,7 +226,7 @@
                 component.set("v.isSpinner", false);
                 component.set("v.openModalForUpdateButton", false);
 
-                const isCampaign = component.get("v.recordId").startsWith('701');  //Roshan
+                const isCampaign = component.get("v.recordId").startsWith('701');
                 var toastMessage;
                 if(isCampaign) {
                     toastMessage = component.get("v.fieldValue") == 'Cancelled' ? $A.get("$Label.c.Core_MDF_Campaign_has_been_cancelled") : $A.get("$Label.c.Core_MDF_CampaignSaveToast") + ' ' + $A.get("$Label.c.Core_MDF_CampaignToast");
@@ -227,9 +253,10 @@
             console.log('Error in loading for QuickAction. Error : ', error);
         });
     },
-    
+    //Added by Swati
     confirmAction : function(component, event, helper) {        
         var action = component.get("c.notifyPartner");
+        console.log('action : ', action);
         action.setParams({
              recordId: component.get("v.recordId")
         });
@@ -240,7 +267,46 @@
 
     closeModalAndDisplayErrorMsg: function(component, event, helper) {
         let errorMessage = event.getParam('errorLog');
-        let objName = component.get("v.objAPIName");
-        helper.logErrors(component, errorMessage, objName);
-    },    
+            let objName = component.get("v.objAPIName");
+            helper.logErrors(component, errorMessage, objName);
+    },   
+    //TWC3117-19154 start
+    confirmRecall: function (component, event, helper) {
+        if (component.get("v.isRecallSaving")) {
+            return;
+        }
+        component.set("v.isRecallSaving", true);
+        component.set("v.errorMessage", "");
+        var action = component.get("c.recallToPaymentClearance");
+        action.setParams({
+            claimId: component.get("v.recordId")
+        });
+        action.setCallback(this, function (response) {
+            if (!component.isValid()) {
+                return;
+            }
+            component.set("v.isRecallSaving", false);
+            if (response.getState() === "SUCCESS") {
+                component.set("v.openModalForLtCmp", false);
+                component.set("v.openCmp", "");
+
+                var toast = $A.get("e.force:showToast");
+                toast.setParams({
+                    title: "Success",
+                    message: "Claim recalled successfully and sent back for review.",
+                    type: "success"
+                });
+                toast.fire();
+                $A.get("e.force:refreshView").fire();
+            } else {
+                var errors = response.getError();
+                console.error("Core_MDF_Compact_Layout.confirmRecall", errors);
+                var message = errors && errors.length && errors[0].message ? errors[0].message : "Unable to recall the claim. Refresh and try again.";
+                component.set("v.errorMessage", message);
+            }
+        });
+        $A.enqueueAction(action);
+    },
+    //TWC3117-19154 end
+     
 })

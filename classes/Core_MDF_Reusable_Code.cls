@@ -16,6 +16,8 @@ public class Core_MDF_Reusable_Code {
         String multiSelectType = 'MULTIPICKLIST';
         boolean result = false;
 
+        system.debug('@@inputParam.crtValue'+inputParam.crtValue);
+        system.debug('@@inputParam.recValue'+inputParam.recValue);
         if(String.isBlank(inputParam.crtValue) &&
             ((inputParam.operator == EQUAL &&  String.isBlank(inputParam.recValue)) || 
             (inputParam.operator == NOTEQUAL && !(String.isBlank(inputParam.recValue))) ||
@@ -53,12 +55,14 @@ public class Core_MDF_Reusable_Code {
     /** */
     public static boolean stringComp(ValidateRuleParams inputParam) {
         boolean result = false;
-         
-       	inputParam.recValue = (inputParam.recValue == null ||String.isBlank(inputParam.recValue))  ? '' : inputParam.recValue;
+     
+        inputParam.recValue = (inputParam.recValue == null ||String.isBlank(inputParam.recValue))  ? '' : inputParam.recValue;
         inputParam.crtValue = (inputParam.crtValue == null|| String.isBlank(inputParam.crtValue)|| inputParam.crtValue.toLowerCase() == 'null' )? '' : inputParam.crtValue;
-           
+        system.debug('inputParam.recValue.toLowerCase()' + inputParam.recValue.toLowerCase());
+        system.debug('inputParam.crtValue.toLowerCase()' + inputParam.crtValue.toLowerCase());
+        
         if((inputParam.operator == NOTEQUAL && inputParam.recValue != inputParam.crtValue && inputParam.recValue!=null && inputParam.crtValue!=null ) || (inputParam.operator == EQUAL && inputParam.recValue == inputParam.crtValue)) {            
-       
+           system.debug('hi there at 70');
             result= true;
         }
         //In and Not In operators when criteria value is singular
@@ -72,11 +76,16 @@ public class Core_MDF_Reusable_Code {
         else if(inputParam.crtValue.toLowerCase().contains(';')) {
             list<String> criteriaString = inputParam.crtValue.toLowerCase().split(';');
             for(String str: criteriaString) {
+                system.debug('str'+ str);
+                system.debug('inputParam.operator'+ inputParam.operator);
+                system.debug('str.trim()'+ str.trim());
+                system.debug('inputParam.recValue.toLowerCase()'+ inputParam.recValue.toLowerCase());
                 if(inputParam.operator == INOPERATOR && inputParam.recValue.toLowerCase()==str.trim()) {
                     result = true;
                 }
                 else if(inputParam.operator == NOTIN && inputParam.recValue.toLowerCase()!=str.trim()){
                     result = true;
+                    system.debug('str79'+ str);
                     
                 }
                 else if (inputParam.operator == NOTIN && inputParam.recValue.toLowerCase()==str.trim()){
@@ -85,6 +94,7 @@ public class Core_MDF_Reusable_Code {
                 }
             }   
         }
+        system.debug('result'+ result);
         return result;
     }
 
@@ -186,14 +196,17 @@ public class Core_MDF_Reusable_Code {
 
     /* Get data type of any field by passing the Object and Field Name (API Names) */
     public static string getDataTypeOfField(string objectName, string field) {
-        Schema.DescribeSObjectResult sObjRes;
-        Schema.DescribeFieldResult sObjField;
-        
-        sObject sObj = Schema.getGlobalDescribe().get(objectName).newSObject();
-        sObjRes = sObj.getSObjectType().getDescribe(); 
-        sObjField = sObjRes.fields.getMap().get(field).getDescribe();
-        return string.valueOf(sObjField.getType());   
-    }
+    	Schema.DescribeSObjectResult sObjRes;
+    	Schema.DescribeFieldResult sObjField;
+    
+    	// ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+    	Schema.DescribeSObjectResult[] results = Schema.describeSObjects(new List<String>{ objectName });
+    	if(results == null || results.isEmpty()) { return null; }
+    	sObjRes = results[0];
+    	sObjField = sObjRes.fields.getMap().get(field).getDescribe();
+    
+    	return string.valueOf(sObjField.getType());   
+	}
     
     public static Map<string,Map<string,SObjectField>> getDataTypeOfFieldsMap(SObject sObj) {
         Map<string,Map<string,SObjectField>> objNameToApiNameToType = new Map<string,Map<string,SObjectField>>();

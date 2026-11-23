@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customMetadataTypeRecord>API_M_Auth_Provider__mdt.Core_MDF_GenAI_Innovation</customMetadataTypeRecord>
+    <executionUser>12010928@intel.com.crm.crmdevccp</executionUser>
+    <friendlyName>Core_MDF_GenAI_Innovation</friendlyName>
+    <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
+    <isPkceEnabled>false</isPkceEnabled>
+    <plugin>IPA_Apigee_Auth_Provider</plugin>
+    <providerType>Custom</providerType>
+    <requireMfa>false</requireMfa>
+    <sendAccessTokenInHeader>false</sendAccessTokenInHeader>
+    <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
+    <sendSecretInApis>false</sendSecretInApis>
+</AuthProvider>

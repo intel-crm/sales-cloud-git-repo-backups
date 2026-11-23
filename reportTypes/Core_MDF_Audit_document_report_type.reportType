@@ -121,6 +121,41 @@
             <field>Core_MDF_Claim__c.Core_MDF_Status__c</field>
             <table>Core_MDF_Audit_Document__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>testSFTFileUploadId__c</field>
+            <table>Core_MDF_Audit_Document__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Old_Document_Id__c</field>
+            <table>Core_MDF_Audit_Document__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Encoded_Document_Title_txt__c</field>
+            <table>Core_MDF_Audit_Document__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Download_Document_Title_txt__c</field>
+            <table>Core_MDF_Audit_Document__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_ContentVersion_Id__c</field>
+            <table>Core_MDF_Audit_Document__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AI_Processing_Completed_Ind__c</field>
+            <table>Core_MDF_Audit_Document__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Claim_Document_AI_Response_txt__c</field>
+            <table>Core_MDF_Audit_Document__c</table>
+        </columns>
         <masterLabel>Case Review Documents</masterLabel>
     </sections>
 </ReportType>

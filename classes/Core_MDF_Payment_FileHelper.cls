@@ -1,6 +1,6 @@
 public without sharing class Core_MDF_Payment_FileHelper {
     
-     
+    
     
     public static Core_MDF_CCP_Payment_File_Particulars__mdt fileParticulars;
     public static Map<String, Core_MDF_Geo_code_Mapping__mdt>  geoMapping;
@@ -16,7 +16,7 @@ public without sharing class Core_MDF_Payment_FileHelper {
     public static Decimal nonVatLineCounter = 0;
     public static Boolean isVatFile;
     public static String budgetType='';
-    public static String programName=''; 
+    public static String programName='';
     public static String subGeo='';
     public final static String VAT='VAT';
     public final static string MDF = 'MDF';
@@ -24,6 +24,7 @@ public without sharing class Core_MDF_Payment_FileHelper {
     public final static string MDF_RSA = '/MDF/RSA';
     public final static string MDF_IPA = '/MDF/IPA';
     public final static string MDF_CoGTM = '/MDF/COGTM';
+    //TWC3117-17274 - Aditya
     public final static string NRE = 'NRE';
     //public final static string MDF_CMDF = '/MDF/CMDF';
     public final static string CTYPE= 'C';
@@ -98,8 +99,10 @@ Modified By:        Date:       Changes:
         if(grps != NULL && grps.size() > 0){
             for(String k : grps.keySet()) {
                 String budgetType = '';
-                if(grps.get(k).claimsToBeProcessed != Null && grps.get(k).claimsToBeProcessed.size() > 0 && paymentApproverKeyValueMap != Null)
-                {
+                //ATHR - Deeply Nested if 16209
+                if(grps.get(k).claimsToBeProcessed == Null || grps.get(k).claimsToBeProcessed.isEmpty() || paymentApproverKeyValueMap == Null) continue;
+                //if(grps.get(k).claimsToBeProcessed != Null && grps.get(k).claimsToBeProcessed.size() > 0 && paymentApproverKeyValueMap != Null)
+                //{
                     budgetType = grps.get(k).budgetType;
                     //Assign row number in each budget type specific file content
                     if(mapOfbudgetTypeToFileContent.containsKey(budgetType)){
@@ -185,7 +188,7 @@ Modified By:        Date:       Changes:
                     else{
                         mapOfbudgetTypeToFileContent.put(budgetType,paymentRunRecord); //mapping budget type & its specific line item
                     }
-                }
+                //}
                 
             }
         }
@@ -254,8 +257,10 @@ Modified By:        Date:       Changes:
             if(grps != NULL && grps.size() > 0){
                 for(String k : grps.keySet()) {
                     String budgetType = '';
-                    if(grps.get(k).claimsToBeProcessed != Null && grps.get(k).claimsToBeProcessed.size() > 0 && paymentApproverKeyValueMap != Null)
-                    {
+                    //ATHR - Deeply Nested if 16209
+                    if(grps.get(k).claimsToBeProcessed == Null || grps.get(k).claimsToBeProcessed.isEmpty() || paymentApproverKeyValueMap == Null) continue;
+                    //if(grps.get(k).claimsToBeProcessed != Null && grps.get(k).claimsToBeProcessed.size() > 0 && paymentApproverKeyValueMap != Null)
+                    //{
                        
                         PartnerFundCLaim claim = grps.get(k).claimsToBeProcessed[0];
                         Boolean isClaimPaymentTypeCustomerNonPO = (claim.Core_MDF_Payment_Type_nm__c != null && claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.customerNonPO) ? true : false;
@@ -372,7 +377,7 @@ Modified By:        Date:       Changes:
                             //calls a method to return nonVatEligibleRecords
                             nonVatPaymentMap=getNonVATPaymentFileContentAfterSplit(tempPaymentFileContent, '',splitLimit, grps.get(k).includeOnlyClaimAmountForPayment);
                         }
-                    }                                               
+                    //}                                               
                     
                 }
             }
@@ -939,8 +944,9 @@ prodCategoryMapping.put(prodCategory.Core_MDF_Program_Txt__c+prodCategory.Core_M
         
         //Get all invoice numbers for VAT claims
         getVatInvoiceNumbers(paymentFileWrapper);
-        
-        if(paymentFileWrapper != NULL && paymentFileWrapper.size() > 0){
+        //ATHR - Deeply Nested if 16209
+        if(paymentFileWrapper == NULL || paymentFileWrapper.isEmpty()) return;
+        //if(paymentFileWrapper != NULL && paymentFileWrapper.size() > 0){
             for(String k : paymentFileWrapper.keySet()) {
                 if(paymentFileWrapper.get(k).claimsToBeProcessed != Null && paymentFileWrapper.get(k).claimsToBeProcessed.size() > 0 ){
                     String tempPaymentfileContent='';
@@ -957,7 +963,7 @@ prodCategoryMapping.put(prodCategory.Core_MDF_Program_Txt__c+prodCategory.Core_M
                     }
                 }    
             }//Loop ends here                                 
-        } 
+        //} 
         //Looping VAT Payment Map & passing final content as parameters 
         if(vatPaymentMap!=Null && vatPaymentMap.size()>0){ isVatFile=true;
                                                           generateFinalPaymentFileToAttach(vatPaymentMap,pRunInstance);
@@ -1048,6 +1054,7 @@ Modified By:        Date:       Changes:
         if(paymentFileWrapper != NULL && paymentFileWrapper.size()>0){
             for(String k : paymentFileWrapper.keySet()) {
                 if(paymentFileWrapper.get(k).claimsToBeProcessed != Null && paymentFileWrapper.get(k).claimsToBeProcessed.size() > 0  && paymentFileWrapper.get(k).isVatEligible){
+                    //@@@vikas - invoice defect
                     String claimIdForInvoiceNo = (paymentFileWrapper.get(k).claimsToBeProcessed[0].Core_MDF_Program__c == IPAProgram && paymentFileWrapper.get(k).claimsToBeProcessed[0].Core_MDF_Claim_Id__c != null) ? paymentFileWrapper.get(k).claimsToBeProcessed[0].Core_MDF_Claim_Id__c : paymentFileWrapper.get(k).claimsToBeProcessed[0].Id;
                     claimIds.add(claimIdForInvoiceNo);
                 }
@@ -1080,7 +1087,7 @@ Modified By:        Date:       Changes:
         
         line1.add(paymentFileWrapper.claimsToBeProcessed[0].Core_MDF_Bank__r.Core_MDF_Supplier_Number__c);
         line1.add(paymentFileWrapper.quarterNum + paymentFileWrapper.fiscalYear.right(2) + '' + intelWorkWeek.subString(0,4) +Core_MDF_PaymentUtility.blank+ 
-                  (paymentFileWrapper.claimsToBeProcessed[0].Core_MDF_Program__c == CoGTMProgram ? NRE : MDF));
+                  (paymentFileWrapper.claimsToBeProcessed[0].Core_MDF_Program__c == CoGTMProgram ? NRE : MDF)); //aditya
         line1.add(paymentFileWrapper.claimsToBeProcessed[0].Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c);
         line1.add(paymentFileWrapper.fiscalYear + paymentFileWrapper.quarterNum.right(1).leftPad(2 , '0'));
         line1.add(Core_MDF_PaymentUtility.one);
@@ -1098,6 +1105,7 @@ Modified By:        Date:       Changes:
             String nonVatExtCom=generateExternalCommentsForNonVat(paymentFileWrapper);
             line1.add(nonVatExtCom);
         }
+        //aditya
         String headerDesc = populateNVAT(paymentFileWrapper) + (paymentFileWrapper.claimsToBeProcessed[0].Core_MDF_Program__c == CoGTMProgram ? NRE : MDF) + (paymentFileWrapper.isRecoveryIncluded ? '/AR' : '');
         line1.add(headerDesc);
         line1.add(Core_MDF_PaymentUtility.blank);//For Payment Method Code
@@ -1122,7 +1130,7 @@ Modified By:        Date:       Changes:
 
         line1.add(Core_MDF_PaymentUtility.zero);
         line1.add(paymentFileWrapper.profitcenter);
-	line1.add(paymentFileWrapper.glAccount);  // Stamping GL value from wrapper
+		line1.add(paymentFileWrapper.glAccount);  // Stamping GL value from wrapper
 
 
          //WW05 - Standartized tax code as I1
@@ -1135,7 +1143,9 @@ Modified By:        Date:       Changes:
         if(paymentFileWrapper.claimsToBeProcessed[0].Core_MDF_Program__c == IPAProgram){ //Line Item Description for IPA
             line1.add(paymentFileWrapper.geoLocation == ASMORegion ? paymentFileWrapper.quarterNum + paymentFileWrapper.fiscalYear.right(2) +MDF_IPA+ paymentFileWrapper.paymentForClaims.Name +HYPHEN+ paymentFileWrapper.subGeoLocation 
                       : paymentFileWrapper.quarterNum + paymentFileWrapper.fiscalYear.right(2) +MDF_IPA+ paymentFileWrapper.paymentForClaims.Name +HYPHEN+ paymentFileWrapper.geoLocation);
-        }else if(paymentFileWrapper.claimsToBeProcessed[0].Core_MDF_Program__c == CoGTMProgram){
+        }
+        
+        else if(paymentFileWrapper.claimsToBeProcessed[0].Core_MDF_Program__c == CoGTMProgram){
             line1.add(paymentFileWrapper.quarterNum + paymentFileWrapper.fiscalYear.right(2) + MDF_CoGTM + paymentFileWrapper.paymentForClaims.Name);
         }
         else{ //Line Item Description for Retail MDF
@@ -1193,10 +1203,11 @@ Modified By:        Date:       Changes:
         String intelQtr = generateRelevantIntelQtr(paymentFileWrapper);
         line1.add(intelQtr);
         
+        //TWC3117-17274 - Aditya
         if(paymentFileWrapper.claimsToBeProcessed[0].Core_MDF_Program__c == CoGTMProgram){
             line1.add(paymentFileWrapper.quarterNum + paymentFileWrapper.fiscalYear.right(2) + MDF_CoGTM + paymentFileWrapper.paymentForClaims.Name);
-        
-            line1.add(paymentFileWrapper.quarterNum + paymentFileWrapper.fiscalYear.right(2) + MDF_CoGTM + paymentFileWrapper.paymentForClaims.Name);
+            
+            line1.add(paymentFileWrapper.quarterNum + paymentFileWrapper.fiscalYear.right(2) + MDF_CoGTM + paymentFileWrapper.paymentForClaims.Name);           
         } else{
             line1.add(paymentFileWrapper.geoLocation == ASMORegion ? paymentFileWrapper.quarterNum + paymentFileWrapper.fiscalYear.right(2) +MDF_IPA+ paymentFileWrapper.paymentForClaims.Name +HYPHEN+ paymentFileWrapper.subGeoLocation
             : paymentFileWrapper.quarterNum + paymentFileWrapper.fiscalYear.right(2) +MDF_IPA+ paymentFileWrapper.paymentForClaims.Name +HYPHEN+ paymentFileWrapper.geoLocation);
@@ -1225,7 +1236,7 @@ Modified By:        Date:       Changes:
 public static string generateExternalCommentsForNonVat(Core_MDF_PaymentFileWrapper paymentFileWrapper){
         String extnlCom='';
         Boolean isCoGTMContraCSARClaim =  paymentFileWrapper.claimsToBeProcessed[0].Core_MDF_Program__c == CoGTMProgram && (paymentFileWrapper.claimsToBeProcessed[0].Core_MDF_Payment_Type_nm__c == 'Customer' || paymentFileWrapper.claimsToBeProcessed[0].Core_MDF_Payment_Type_nm__c == 'Customer (Credit Memo)');
-        if(paymentFileWrapper.isCtypeInd){ extnlCom=paymentFileWrapper.quarterNum + paymentFileWrapper.fiscalYear.right(2) + '' + intelWorkWeek.subString(0,4) +Core_MDF_PaymentUtility.blank+ (isCoGTMContraCSARClaim ? NRE : MDF) +CM;
+        if(paymentFileWrapper.isCtypeInd){ extnlCom=paymentFileWrapper.quarterNum + paymentFileWrapper.fiscalYear.right(2) + '' + intelWorkWeek.subString(0,4) +Core_MDF_PaymentUtility.blank+ (isCoGTMContraCSARClaim ? NRE : MDF) +CM; //aditya
                                          }
         else if(!paymentFileWrapper.isCtypeInd){
             extnlCom=paymentFileWrapper.quarterNum + paymentFileWrapper.fiscalYear.right(2) + '' + intelWorkWeek.subString(0,4) +Core_MDF_PaymentUtility.blank+ (isCoGTMContraCSARClaim ? NRE : MDF) + (paymentFileWrapper.isRecoveryIncluded ? '/AR' : '');
@@ -1245,7 +1256,7 @@ public static string generateRelevantIntelQtr(Core_MDF_PaymentFileWrapper paymen
     }
 public static string generateReferenceNumber(Core_MDF_PaymentFileWrapper paymentFileWrapper){
         String refNumber='';
-        refNumber= (paymentFileWrapper.claimsToBeProcessed[0].Core_MDF_Program__c == CoGTMProgram ? Core_MDF_PaymentUtility.blank : (paymentFileWrapper.geoLocation + Core_MDF_PaymentUtility.space)) + paymentFileWrapper.quarterNum + paymentFileWrapper.fiscalYear.right(2) + Core_MDF_PaymentUtility.underscore + intelWorkWeek.subString(0,4) + Core_MDF_PaymentUtility.space+ (paymentFileWrapper.claimsToBeProcessed[0].Core_MDF_Program__c == CoGTMProgram ? NRE : MDF);
+        refNumber= (paymentFileWrapper.claimsToBeProcessed[0].Core_MDF_Program__c == CoGTMProgram ? Core_MDF_PaymentUtility.blank : (paymentFileWrapper.geoLocation + Core_MDF_PaymentUtility.space)) + paymentFileWrapper.quarterNum + paymentFileWrapper.fiscalYear.right(2) + Core_MDF_PaymentUtility.underscore + intelWorkWeek.subString(0,4) + Core_MDF_PaymentUtility.space+ (paymentFileWrapper.claimsToBeProcessed[0].Core_MDF_Program__c == CoGTMProgram ? NRE : MDF); //aditya
         
         if(paymentFileWrapper.isCtypeInd)
         {
@@ -1265,6 +1276,7 @@ Modified By:        Date:       Changes:
     
     public static string generateExternalCommentsForVat(Core_MDF_PaymentFileWrapper paymentFileWrapper){
         String extlComments='';
+        //@@@vikas - invoice defect
         String claimIdForInvoiceNo = (paymentFileWrapper.claimsToBeProcessed[0].Core_MDF_Program__c == IPAProgram && paymentFileWrapper.claimsToBeProcessed[0].Core_MDF_Claim_Id__c != null) ? paymentFileWrapper.claimsToBeProcessed[0].Core_MDF_Claim_Id__c : paymentFileWrapper.claimsToBeProcessed[0].id;
         //mapOfInvoiceNoToClaims --->Key= Claim Id, value= VAT Invoice number
         if(!paymentFileWrapper.isCtypeInd && mapOfInvoiceNoToClaims.containsKey(claimIdForInvoiceNo)){
@@ -1434,8 +1446,10 @@ Modified By:        Date:       Changes:
                 String uniqKeyForFileSplit='';
                 //List of claims to be processed
                 List<PartnerFundClaim> listOfPfc = paymentWrapper.get(uniqueKey).claimsToBeProcessed;
-                if(listOfPfc != Null && listOfPfc.size() > 0)
-                {
+                //ATHR - Deeply Nested if 16209
+                if(listOfPfc == Null || listOfPfc.isEmpty()) continue;
+                //if(listOfPfc != Null && listOfPfc.size() > 0)
+                //{
                     for(PartnerFundClaim claim : listOfPfc) {
                         if(program == CoGTMProgram){
                             isCoGTMVistexClaim = (claim.Core_MDF_Payment_Type_nm__c != null && (claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.vistexCash || claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.vistexCreditMemo)) ? true : false;
@@ -1521,7 +1535,7 @@ Modified By:        Date:       Changes:
                             }
                         }
                     }
-                } 
+                //} 
                 
             }
             
@@ -1594,8 +1608,10 @@ Modified By:        Date:       Changes:
                 Core_MDF_Payment__c paymentRecord = paymentWrapper.get(uniqueKey).paymentForClaims;
                 //List of claims to be processed
                 List<PartnerFundClaim> listOfPfc = paymentWrapper.get(uniqueKey).claimsToBeProcessed;
-                if(listOfPfc != Null && listOfPfc.size() > 0)
-                {
+                //ATHR - Deeply Nested if 16209
+                if(listOfPfc == Null || listOfPfc.isEmpty()) continue;
+                //if(listOfPfc != Null && listOfPfc.size() > 0)
+                //{
                     for(PartnerFundClaim claim : listOfPfc) {
                         if(program == CoGTMProgram){
                             isCoGTMVistexClaim = (claim.Core_MDF_Payment_Type_nm__c != null && (claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.vistexCash || claim.Core_MDF_Payment_Type_nm__c == Core_MDF_PaymentUtility.vistexCreditMemo)) ? true : false;
@@ -1650,7 +1666,7 @@ Modified By:        Date:       Changes:
 
                         //Activity Product Type
                         line1.add(getValidFieldValue(!isCoGTMVistexClaim ? claim.Request.Core_MDF_ProductType__c : claim.Request.Campaign.Core_MDF_Product_Type__c));
- 
+
                         //Activity Target Audience
                         line1.add(getValidFieldValue(!isCoGTMVistexClaim ? claim.Request.Core_MDF_TargetAudience__c : Core_MDF_PaymentUtility.blank));
 
@@ -1678,7 +1694,7 @@ Modified By:        Date:       Changes:
                             mapOfAccToFileContent.put(uniqKeyForFileSplit,paymentFileLineItemWithHeader);
                         }
                     }
-                } 
+                //} 
                 
             }
             

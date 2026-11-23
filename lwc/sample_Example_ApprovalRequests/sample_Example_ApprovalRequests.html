@@ -1,0 +1,106 @@
+<template>
+    
+    <div class="slds-page-header">
+        <div class="slds-page-header__row">
+          <div class="">
+            <div class="slds-media">
+              <div class="slds-media__figure">
+                <lightning-icon icon-name="standard:approval" alternative-text="Approval" title="Approval"></lightning-icon>
+              </div>
+              <div class="slds-media__body">
+                <div class="slds-page-header__name">
+                  <div class="slds-page-header__name-title">
+                    <h1>
+                      <span> Approval Requests </span>
+                      <span class="slds-page-header__title slds-truncate" title="Items to Approve">Items to Approve</span>
+                    </h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slds-page-header__col-actions">
+            <div class="slds-page-header__controls">
+              <div class="slds-page-header__control">
+                <div>
+                 <!-- <c-example-Search onprogressvaluechange={handleSearchInput}></c-example-Search> -->
+                 <lightning-input type="search" placeholder="Search here..." onchange={handleSearchInput}></lightning-input>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slds-page-header__row">
+          <div class="">
+            <span> Total items : {getTotalItemsCount} </span>
+          </div>
+        </div> 
+      </div>
+      
+      <lightning-card>
+        
+        <div class="">      
+            <div class="c-container">
+              
+              <template if:true={isMainTable}>
+              <template for:each={recordsToRender} for:item="rec">
+                
+                <lightning-layout-item padding="around-small" key={rec.recordId} >
+                   <div class="slds-box">
+                    <dd class="slds-item_detail slds-truncate slds-text-heading_medium "><a href={rec.redirectLink} data-record-id={rec.redirectLink} onclick={handleClick} rel="noopener noreferrer" target="_blank" >{rec.name}</a></dd>
+                    <!-- <dd class="slds-item_detail slds-truncate slds-text-heading_medium "><a href={rec.redirectLink} class="slds-text-link" >{rec.name}</a></dd> -->
+                <template for:each={rec.uiDispalyFields} for:item="recfield">  
+                    <div key={recfield.fieldLabel}>
+                            <dl class="slds-list_horizontal slds-wrap">
+                                <dt class="slds-item_label slds-text-color_weak slds-truncate">{recfield.fieldLabel}:</dt>
+                                <template if:true={recfield.hasFieldValue}>
+                                    <dd class="slds-item_detail slds-truncate">{recfield.fieldValue}</dd>
+                                </template>
+                                <template if:false={recfield.hasFieldValue}>
+                                    <dd class="slds-item_detail slds-truncate">{recfield.dateTimeFieldValue}</dd>
+                                </template>
+
+                            </dl>
+                    </div>   
+                </template>
+            </div> 
+            </lightning-layout-item>
+        
+                </template>
+              </template>
+              <template if:false={isMainTable}>
+                <template if:true={noSearchResultsFound}>
+                  <p> No search results found... </p>
+                </template>
+                <template for:each={searchRecordsToRender} for:item="rec">
+                
+                  <lightning-layout-item padding="around-small" key={rec.recordId} >
+                     <div class="slds-box">
+                      <dd class="slds-item_detail slds-truncate slds-text-heading_medium "><a data-record-id={rec.redirectLink} class="slds-text-link" onclick={handleClick} target="_blank">{rec.name}</a></dd>
+                      <!-- <dd class="slds-item_detail slds-truncate slds-text-heading_medium "><a href={rec.redirectLink} class="slds-text-link" >{rec.name}</a></dd> -->
+                  <template for:each={rec.uiDispalyFields} for:item="recfield">  
+                      <div key={recfield.fieldLabel}>
+                              <dl class="slds-list_horizontal slds-wrap">
+                                  <dt class="slds-item_label slds-text-color_weak slds-truncate">{recfield.fieldLabel}:</dt>
+                                  <template if:true={recfield.hasFieldValue}>
+                                      <dd class="slds-item_detail slds-truncate">{recfield.fieldValue}</dd>
+                                  </template>
+                                  <template if:false={recfield.hasFieldValue}>
+                                      <dd class="slds-item_detail slds-truncate">{recfield.dateTimeFieldValue}</dd>
+                                  </template>
+  
+                              </dl>
+                      </div>   
+                  </template>
+              </div> 
+              </lightning-layout-item>
+          
+                  </template>
+              </template>
+        
+        </div>
+        </div>
+    </lightning-card>
+   
+</template>

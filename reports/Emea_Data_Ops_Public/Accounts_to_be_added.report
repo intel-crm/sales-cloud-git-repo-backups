@@ -44,7 +44,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Field Sales</value>
+            <value>OSC,Field Sales</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Account_ID__c</column>

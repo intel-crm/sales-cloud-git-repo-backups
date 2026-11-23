@@ -128,21 +128,83 @@
         <template if:true={isCoGTMProg}>
             <template if:true={budgetsExist}>
                 <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
-                    <thead>
+                    <thead class="vinodhini">
                         <tr class="slds-line-height_reset">
                             <th aria-label={budgetNameLabel} style="overflow: hidden;vertical-align: top;"  class="slds-is-resizable slds-col slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_6-of-12" scope="col">
                                 <p class="slds-cell-wrap" title={budgetNameLabel}>{budgetNameLabel}</p>
                             </th>
+                            <!-- Aditya -->
+                            <th aria-label={consumedBudgetAmtLabel} style="overflow: hidden;vertical-align: top;" class="slds-is-resizable slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12" scope="col">
+                                <p class="slds-cell-wrap" title={consumedBudgetAmtLabel}>{consumedBudgetAmtLabel}</p>
+                            </th>
+
+                            <!-- Available Budget Amount -->
+                            <th aria-label={availableBudgetAmtLabel} style="overflow: hidden;vertical-align: top;" class="slds-is-resizable slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12" scope="col">
+                                <p class="slds-cell-wrap" title={availableBudgetAmtLabel}>{availableBudgetAmtLabel}</p>
+                            </th>
+                            <!-- <th aria-label={campReimbAmtLabel} style="overflow: hidden;vertical-align: top;"  class="slds-is-resizable slds-col slds-size_1-of-1 slds-medium-size_1-of-12 slds-large-size_2-of-12" scope="col">
+                                <p class="slds-cell-wrap" title={campReimbAmtLabel}>{campReimbAmtLabel}</p>
+                            </th> -->
                         </tr>
                     </thead>
                     <tbody>
+                        <!--<template if:true={showForm}>-->
                         <template for:each = {campaignBudgets} for:item = "item" for:index="indexVar">
                             <tr key ={item.budgetName} aria-selected="false" class="slds-hint-parent">
                                 <td role="gridcell" tabindex="0">
                                     <div class="slds-text" style="white-space: pre-wrap;" title={item.budgetName}>{item.budgetName}</div>
                                 </td>
+                                <!-- Aditya Consumed Budget Amount -->
+                                <td role="gridcell">
+                                    <div class="slds-text" style="white-space: pre-wrap;" title={item.consumedBudgetAmount}>
+                                        {item.consumedBudgetAmount}
+                                    </div>
+                                </td>
+
+                                <!-- Available Budget Amount -->
+                                <td role="gridcell">
+                                    <div class="slds-text" style="white-space: pre-wrap;" title={item.availableBudgetAmount}>
+                                        {item.availableBudgetAmount}
+                                    </div>
+                                </td>
+                                <!-- <td role="gridcell">
+                                    <div class="" title={item.budgetAmount}>
+                                         US1017349 - changes start: Added extra condition to enable editing Budget Amount
+                                        <template if:true={enableBudgetAmountEdit}>
+                                            <lightning-input type="number"
+                                                name="Budget Amount" 
+                                                class="budgamtcmp"
+                                                variant="label-hidden"
+                                                step="0.01" maxlength="16"
+                                                value={item.budgetAmount} 
+                                                onchange={handleChange}
+                                                data-id={indexVar}                                               
+                                                data-cmp={item.budgetId}
+                                                >
+                                            </lightning-input>
+                                        </template>
+                                        
+                                        <template if:false={enableBudgetAmountEdit}>
+                                            <lightning-input type="number"
+                                                name="Budget Amount" 
+                                                variant="label-hidden"
+                                                step="0.01" maxlength="16"
+                                                value={item.budgetAmount} 
+                                                onchange={handleChange}
+                                                data-id={indexVar}
+                                                disabled={item.disable}
+                                            >
+                                            </lightning-input>
+                                        </template>
+                                         US1017349 - changes end
+                                    </div>
+                                </td> -->
+                            
+                            
+                               
                             </tr>
                         </template>
+                        <!--</template>-->
                     </tbody>
                 </table>
             </template>

@@ -6,15 +6,10 @@ public class Core_MDF_Claim_Utility_Test {
          //Test.startTest();
          
             List<String> bypassFunctionKeys = new List<String>();
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Access');
             bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
             bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
-        	bypassFunctionKeys.add('BypassCampaignBenefitValidation');
-        	bypassFunctionKeys.add('Core_MDF_BudgetCapValidation');
-            bypassFunctionKeys.add('Core_MDF_BypassBudgCapIUPGMValidation');
-            bypassFunctionKeys.add('Core_MDF_Bypass_Manual_Share');
-        	bypassFunctionKeys.add('checkAndSendClaimsForPIC');
-        	bypassFunctionKeys.add('duplicateClaimCheck');
+            bypassFunctionKeys.add('checkAndSendClaimsForPIC');
+            bypassFunctionKeys.add('duplicateClaimCheck');
             
             Set<String> myset1 = new Set<String>();
             List<String> result1 = new List<String>();
@@ -53,22 +48,20 @@ public class Core_MDF_Claim_Utility_Test {
         
         // Creating channel program with utility class
         ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
-		ChannelProgram coGTMCP = Core_MDF_CCP_TestDataUtility.createProgram ('Co-GTM','CoGTM', true);
         
-        insert new Core_MDF_Configuration__c(Name = 'ALLOWED_PRG_FOR_RUS_NOTIF', Core_MDF_Category__c = 'Bank Document Hold Logic', Core_MDF_Value__c = 'Retail Marketing Funds,Intel Partner Alliance,Channel MDF,Co-GTM');
         // Creating Account with utility class
         List<Account> accList = new List<Account>();
-        Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);     
-		insert acc1;        
+        Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
+        acc1.BillingStateCode = '';
+        insert acc1;
         Account acc2 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Account 2', cp1.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, acc1.Id, false);
         acc2.Core_MDF_Parent_Fund_Account__c = acc1.id;
+        acc2.BillingStateCode = '';
         accList.add(acc2);
         Account acc3 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Account 3', cp1.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, acc2.Id, false);
         acc3.Core_MDF_Parent_Fund_Account__c = acc1.id;
+        acc3.BillingStateCode = '';
         accList.add(acc3);
-        Account coGTMCoMarketingAccount = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('CoGTM Co-Marketing Account', coGTMCP.id, Core_MDF_CCP_TestDataUtility.Account_Record_Type,acc1.id, false);
-        coGTMCoMarketingAccount.Core_MDF_Payment_Type_nm__c = 'Customer (Pass Through)';
-        accList.add(coGTMCoMarketingAccount);
     
         Database.insert(accList);
         // Updating Accounts 
@@ -93,32 +86,23 @@ public class Core_MDF_Claim_Utility_Test {
         Database.insert(usr);
         
         System.runAs(usr){
-            Id pmb_RecordType_CoGTM = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
-            Id pfa_RecordType_CoGTM = Schema.SObjectType.PartnerFundAllocation.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
             PartnerMarketingBudget pbm = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 2', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 200000, System.today(),System.today(), false);
         //pbm.IsIgnoreValidation = true;
         pbm.Core_MDF_Budget_Type_Txt__c = 'OEM CMP';
         insert pbm;
-            
-            PartnerMarketingBudget  coGTMPMB = Core_MDF_CCP_TestDataUtility.createBudget('CoGTMPMB', pmb_RecordType_CoGTM, coGTMCoMarketingAccount.Id, coGTMCP.Id, 
-                                                                                         1000000, System.today().addDays(-5), System.today().addDays(5),false);
-            coGTMPMB.Core_MDF_Budget_Type_Txt__c = 'Co-Engineering';
-            insert coGTMPMB;
         
         //pbm.IsIgnoreValidation = true;
        // update pbm;
         
-        PartnerFundAllocation pfaRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test PFA', pbm, acc2, 30000, true);
+         PartnerFundAllocation pfaRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test PFA', pbm, acc2, 30000, true);
             
             PartnerFundAllocation pfa = [Select id, Amount from PartnerFundAllocation where BudgetId =: pbm.Id and Title='Test PFA' limit 1];
             
-            PartnerFundAllocation coGTMPFA = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('CoGTMPFA',coGTMPMB,coGTMCoMarketingAccount,100000.0,true);
-
             Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 12','Gaming','Intel® Core™ i7 Processor', 'Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today(), System.today(), 20000, 'Always Connected PC', acc2.Id,'Desktop', false);
             camp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
             database.insert(camp);
             
-            PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(String.valueof(camp.id),Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,String.valueof(acc2.Id),pfa,pbm,'INDIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast (Pre-2025)','Television','Draft',false);
+            PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(String.valueof(camp.id),Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,String.valueof(acc2.Id),pfa,pbm,'INDIA','Consumer','Desktop','Intel® Corporate Logo','Audio','Podcast','Draft',false);
             testPartnerFundRequestRecord.Title = 'indiaActivity';
             testPartnerFundRequestRecord.Core_MDF_Activity_Description__c = 'indiaActivity';
             testPartnerFundRequestRecord.Core_MDF_Start_Date__c = System.today();
@@ -243,7 +227,7 @@ public class Core_MDF_Claim_Utility_Test {
         User sysAdminUser = [SELECT Id,Email from User where LastName = 'SysAdmUser' limit 1];
         List<PartnerFundClaim> claimList1 = new List<PartnerFundClaim>();
         System.runAs(sysAdminUser){
-            PartnerFundClaim claim = [SELECT Id, Status, Core_MDF_Audit_Hold__c,Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Criteria_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c,Core_MDF_Has_Sub_Claims_Ind__c FROM PartnerFundClaim where Title = 'Test Claim1'];
+            PartnerFundClaim claim = [SELECT Id,Core_MDF_Has_Sub_Claims_Ind__c,Status, Core_MDF_Audit_Hold__c,Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Criteria_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c FROM PartnerFundClaim where Title = 'Test Claim1'];
             claim.Core_MDF_Audit_Hold__c = true;
             claim.Status= 'Submitted';
             claim.Core_MDF_Status__c = 'Hold';
@@ -265,7 +249,7 @@ public class Core_MDF_Claim_Utility_Test {
         User sysAdminUser = [SELECT Id,Email from User where LastName = 'SysAdmUser' limit 1];
         List<PartnerFundClaim> claimList2 = new List<PartnerFundClaim>();
         System.runAs(sysAdminUser){
-            PartnerFundClaim claim2 = [SELECT Id, Status, Core_MDF_Audit_Hold__c,Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Criteria_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c,Core_MDF_Has_Sub_Claims_Ind__c FROM PartnerFundClaim where Title = 'Test Claim1'];
+            PartnerFundClaim claim2 = [SELECT Id,Core_MDF_Has_Sub_Claims_Ind__c, Status, Core_MDF_Audit_Hold__c,Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Criteria_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c FROM PartnerFundClaim where Title = 'Test Claim1'];
             claim2.Core_MDF_ESD_Hold__c = true;
             claim2.Status= 'Submitted';
             claim2.Core_MDF_Status__c = 'Hold';
@@ -290,7 +274,7 @@ public class Core_MDF_Claim_Utility_Test {
         User sysAdminUser = [SELECT Id,Email from User where LastName = 'SysAdmUser' limit 1];
         List<PartnerFundClaim> claimList3 = new List<PartnerFundClaim>();
         System.runAs(sysAdminUser){
-            PartnerFundClaim claim3 = [SELECT Id, Status, Core_MDF_Audit_Hold__c,Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Criteria_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c,Core_MDF_Has_Sub_Claims_Ind__c FROM PartnerFundClaim where Title = 'Test Claim1'];
+            PartnerFundClaim claim3 = [SELECT Id, Status, Core_MDF_Audit_Hold__c,Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Criteria_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c FROM PartnerFundClaim where Title = 'Test Claim1'];
             claim3.Core_MDF_Audit_Hold__c = true;
             claim3.Core_MDF_ESD_Hold__c = true;
             claim3.Status= 'Submitted';
@@ -318,7 +302,7 @@ public class Core_MDF_Claim_Utility_Test {
         List<PartnerFundClaim> claimList4 = new List<PartnerFundClaim>();
         List<PartnerFundClaim> claimList5 = new List<PartnerFundClaim>();
         System.runAs(sysAdminUser){
-            PartnerFundClaim claim4 = [SELECT Id, Status, Core_MDF_Audit_Hold__c,Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Criteria_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c,Core_MDF_Has_Sub_Claims_Ind__c FROM PartnerFundClaim where Title = 'Test Claim1'];
+            PartnerFundClaim claim4 = [SELECT Id,Core_MDF_Has_Sub_Claims_Ind__c, Status, Core_MDF_Audit_Hold__c,Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Criteria_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c FROM PartnerFundClaim where Title = 'Test Claim1'];
             claim4.Core_MDF_Audit_Hold__c = true;
             claim4.Core_MDF_ESD_Hold__c = true;
             claim4.Core_MDF_Payment_Hold_ind__c = true;
@@ -351,7 +335,7 @@ public class Core_MDF_Claim_Utility_Test {
             update claim4;
             /*claim4.Core_MDF_Status__c = Label.Core_MDF_Status_Denied;
             update claim4;*/
-            PartnerFundClaim claim5 = [SELECT Id, Status, Core_MDF_Audit_Hold__c,Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Criteria_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c,Core_MDF_Has_Sub_Claims_Ind__c FROM PartnerFundClaim where Title = 'Test Claim2'];
+            PartnerFundClaim claim5 = [SELECT Id,Core_MDF_Has_Sub_Claims_Ind__c, Status, Core_MDF_Audit_Hold__c,Core_MDF_Status__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Criteria_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c FROM PartnerFundClaim where Title = 'Test Claim2'];
             claim5.Core_MDF_Audit_Hold__c = true;
             claim5.Core_MDF_ESD_Hold__c = true;
             claim5.Core_MDF_Payment_Hold_ind__c = true;
@@ -404,7 +388,7 @@ public class Core_MDF_Claim_Utility_Test {
     @isTest
     public static void updateStatusToSubmittedTest(){
         test.startTest();
-        List<PartnerFundClaim> claims=[SELECT Id, Status,Core_MDF_Ad_Run_End_Date__c,Core_MDF_Program__c,Core_MDF_To_Be_Audited_Ind__c,Core_MDF_Currency__c,Core_MDF_Audit_Adjustment_Amount__c,Core_MDF_Taxes_Local__c,Core_MDF_OtherCostsnotReimbursable_Local__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Invoice_Date__c,Core_MDF_Invoice_Number__c,Core_MDF_Bank__c,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Media_Vehicle__c,Core_MDF_AuditSelectionInProgress__c, Core_MDF_Status__c,Core_MDF_Type_Txt__c, Core_MDF_Audit_Hold__c, Core_MDF_ESD_Hold__c, Core_MDF_Claim_Previous_Status__c FROM PartnerFundClaim limit 5];
+        List<PartnerFundClaim> claims=[SELECT Id, Core_MDF_Program__c,Status,Core_MDF_Ad_Run_End_Date__c,Core_MDF_To_Be_Audited_Ind__c,Core_MDF_Currency__c,Core_MDF_Audit_Adjustment_Amount__c,Core_MDF_Taxes_Local__c,Core_MDF_OtherCostsnotReimbursable_Local__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Invoice_Date__c,Core_MDF_Invoice_Number__c,Core_MDF_Bank__c,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Media_Vehicle__c,Core_MDF_AuditSelectionInProgress__c, Core_MDF_Status__c,Core_MDF_Type_Txt__c, Core_MDF_Audit_Hold__c, Core_MDF_ESD_Hold__c, Core_MDF_Claim_Previous_Status__c FROM PartnerFundClaim limit 5];
         Map<Id,PartnerFundClaim> inputClaimMap=new Map<Id,PartnerFundClaim>();
         for(PartnerFundClaim claim:claims){
              inputClaimMap.put(claim.id,claim);
@@ -412,7 +396,7 @@ public class Core_MDF_Claim_Utility_Test {
         Core_MDF_Claim_Utility.updateStatusToSubmitted(inputClaimMap, claims);
         //Core_MDF_Claim_Utility.sendClaimsToAudit(claims,inputClaimMap);
         test.stopTest();
-        // Unit Test Method should include System.Assert 
+        // Unit Test Method should include System.Assert - Indira
         System.assertEquals(claims.size(), inputClaimMap.size(), 'Map size should match claims list size');
     }
     @isTest
@@ -423,105 +407,22 @@ public class Core_MDF_Claim_Utility_Test {
         for(PartnerFundClaim claim:claims){
              inputClaimMap.put(claim.id,claim);
         }
-        Core_MDF_PFC_Sharing.shareClaimToInternalUsers(claims);
         Core_MDF_Claim_Utility.duplicateClaimCheckOnUpdate(claims,inputClaimMap);
         test.stopTest();
-        // Unit Test Method should include System.Assert 
+        // Unit Test Method should include System.Assert - Indira
        System.assert(inputClaimMap.size() <= claims.size(),'Map should correctly reflect claim list');
     }
     @isTest
     public static void calculateClaimFieldsforUpdateTest(){
         test.startTest();
-          List<PartnerFundClaim> claims=[SELECT Id, Status,Core_MDF_Country_Location_nm__c,Core_MDF_Reimbursable_Transaction_Amount__c,Core_MDF_Exchange_rate__c,Core_MDF_Reimbursement_Percent__c,Core_MDF_AccountCompany__c,Core_MDF_Activity_Types__c,Core_MDF_Ad_Run_End_Date__c,Core_MDF_To_Be_Audited_Ind__c,Core_MDF_Currency__c,Core_MDF_Audit_Adjustment_Amount__c,Core_MDF_Taxes_Local__c,Core_MDF_OtherCostsnotReimbursable_Local__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Invoice_Date__c,Core_MDF_Invoice_Number__c,Core_MDF_Bank__c,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Media_Vehicle__c,Core_MDF_AuditSelectionInProgress__c, Core_MDF_Status__c,Core_MDF_Type_Txt__c, Core_MDF_Audit_Hold__c, Core_MDF_ESD_Hold__c, Core_MDF_Claim_Previous_Status__c FROM PartnerFundClaim limit 5];	
+          List<PartnerFundClaim> claims=[SELECT Id, Status,Core_MDF_Country_Location_nm__c,Core_MDF_Reimbursable_Transaction_Amount__c,Core_MDF_Exchange_rate__c,Core_MDF_Reimbursement_Percent__c,Core_MDF_AccountCompany__c,Core_MDF_Activity_Types__c,Core_MDF_Ad_Run_End_Date__c,Core_MDF_To_Be_Audited_Ind__c,Core_MDF_Currency__c,Core_MDF_Audit_Adjustment_Amount__c,Core_MDF_Taxes_Local__c,Core_MDF_OtherCostsnotReimbursable_Local__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Invoice_Date__c,Core_MDF_Invoice_Number__c,Core_MDF_Bank__c,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Media_Vehicle__c,Core_MDF_AuditSelectionInProgress__c, Core_MDF_Status__c,Core_MDF_Type_Txt__c, Core_MDF_Audit_Hold__c, Core_MDF_ESD_Hold__c, Core_MDF_Claim_Previous_Status__c FROM PartnerFundClaim limit 5];  
         Map<Id,PartnerFundClaim> inputClaimMap=new Map<Id,PartnerFundClaim>();
         for(PartnerFundClaim claim:claims){
              inputClaimMap.put(claim.id,claim);
         }
         Core_MDF_Claim_Utility.calculateClaimFieldsforUpdate(inputClaimMap,inputClaimMap,claims);
         test.stopTest();
-	 // Unit Test Method should include System.Assert
+        // Unit Test Method should include System.Assert - Indira
          System.assert(inputClaimMap.keySet().size() > 0, 'Map should contain claim IDs');
-    }
-
-	@isTest 
-    static void cogtmClaim(){
-        
-                User usr = [Select Id, lastName from User where lastName = 'SysAdmUser' limit 1];
-
-        
-        System.runAs(usr){ 
-            test.startTest();
-	
-            ChannelProgram coGTMCP = [Select Id from ChannelProgram where Name = 'Co-GTM' limit 1];
-            Id pmb_RecordType_CoGTM = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
-            Id pfa_RecordType_CoGTM = Schema.SObjectType.PartnerFundAllocation.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
-            Id campaign_RecordType_CoGTM = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
-            Id pfr_RecordType_CoGTM = Schema.SObjectType.PartnerFundRequest.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
-            Id pfc_RecordType_CoGTM = Schema.SObjectType.PartnerFundClaim.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_GTM').getRecordTypeId();
-
-            Account coGTMCoMarketingAccount = [SELECT Id,Core_MDF_Parent_Fund_Account__c,Core_MDF_Channel_Program__c FROM Account WHERE Name= 'CoGTM Co-Marketing Account'];
-            
-            PartnerMarketingBudget  coGTMPMB = [Select Id from PartnerMarketingBudget where Title = 'CoGTMPMB'];
-            
-            PartnerFundAllocation coGTMPFA = [Select Id from PartnerFundAllocation where Title = 'CoGTMPFA']; 
-
-            Campaign coGTMCampaign = new Campaign();
-            coGTMCampaign.Name = 'Test CoGTM Camp';
-            coGTMCampaign.Core_MDF_Opal_Budget_Type_Txt__c = 'Co-Engineering';
-            coGTMCampaign.Core_MDF_Proposal_Based_Ind__c = true;
-            coGTMCampaign.Core_MDF_Program__c = 'CoGTM';
-            coGTMCampaign.Status = 'Draft';
-            coGTMCampaign.Core_MDF_Account__c = coGTMCoMarketingAccount.id;
-            coGTMCampaign.RecordTypeId = campaign_RecordType_CoGTM;
-            coGTMCampaign.StartDate = System.today().addDays(-5);
-            coGTMCampaign.EndDate = System.today().addDays(15);
-            coGTMCampaign.Core_MDF_Reimbursement_Amt__c = 1000200;
-            coGTMCampaign.Core_MDF_Activity_Category_Type__c = 'Innovation ->Engineering';
-            Database.insert(coGTMCampaign);
-            
-            PartnerFundRequest coGTMPFR = new PartnerFUndRequest();
-            coGTMPFR.CampaignId=coGTMCampaign.id;
-            coGTMPFR.RecordTypeId = pfr_RecordType_CoGTM;
-            coGTMPFR.ChannelPartnerId = coGTMCoMarketingAccount.id;
-            coGTMPFR.Core_MDF_ActivityCategory__c='Innovation';
-            coGTMPFR.Core_MDF_Activity_Types__c='Engineering';
-            coGTMPFR.Core_MDF_Start_Date__c=System.today().addDays(-5);
-            coGTMPFR.Core_MDF_End_Date__c =System.today().addDays(2);
-            coGTMPFR.Title ='Test CoGTM PFR';
-            coGTMPFR.Status = 'Draft';
-            coGTMPFR.Core_MDF_Reimbursement_Rate_txt__c = '100%';
-            coGTMPFR.RequestedAmount = 1000200;
-            coGTMPFR.AllocationId = coGTMPFA.Id;
-            coGTMPFR.BudgetId = coGTMPMB.Id;
-            Database.insert(coGTMPFR);
-                        
-			try { Database.update(coGTMCampaign); } catch (Exception e) {}
-
-            List<PartnerFundClaim> pfcList = new List<PartnerFundClaim>();
-            PartnerFundClaim coGTMPFC = new PartnerFundClaim();
-            coGTMPFC.RequestId = coGTMPFR.Id;
-            coGTMPFC.RecordTypeId = pfc_RecordType_CoGTM;
-            coGTMPFC.amount = 50;
-            coGTMPFC.Core_MDF_Status__c = 'Submitted';
-            coGTMPFC.Core_MDF_Invoice_Date__c = System.today().addDays(-4);
-            coGTMPFC.Core_MDF_Invoice_Number__c = 'INV1686';
-            coGTMPFC.Core_MDF_Media_Vehicle__c = 'Test';
-            coGTMPFC.Core_MDF_OtherCostsnotReimbursable_Local__c = 0;
-            coGTMPFC.Core_MDF_Taxes_Local__c = 12;
-            coGTMPFC.Core_MDF_Total_Invoice_Amount_Local__c = 50;
-            coGTMPFC.Core_MDF_Ad_Run_Start_Date__c = System.today().addDays(-4);
-            coGTMPFC.Core_MDF_Ad_Run_End_Date__c = System.today().addDays(-4);
-            coGTMPFC.Title = 'Test CoGTM PFC';
-            coGTMPFC.Core_MDF_Currency__c = 'USD';        
-            //coGTMPFC.Core_MDF_Bank__c = coGTMBank.id;
-            coGTMPFC.Description = 'Test';
-            //coGTMPFC.Core_MDF_Country_Location_nm__c= 'BRAZIL';
-            //coGTMPFC.Core_MDF_Payment_Type_nm__c = 'Customer (Pass Through)';
-           	coGTMPFC.Core_MDF_Reimbursable_Transaction_Amount__c=100;
-            //Database.insert(coGTMPFC);
-            pfcList.add(coGTMPFC);
-            Core_MDF_PFC_Sharing.shareClaimToInternalUsers(pfcList);
-
-        }
     }
 }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Adjustment Owner Update</description>
+    <interviewLabel>Adjustment Owner Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Adjustment Owner Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Update Adjustment Claim Owner</description>
+        <name>Update_Adjustment_Claim_Owner</name>
+        <label>Update Adjustment Claim Owner</label>
+        <locationX>89</locationX>
+        <locationY>252</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>AdjustmentClaimId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Type_Txt__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Adjustment</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>RefClaimOwner</elementReference>
+            </value>
+        </inputAssignments>
+        <object>PartnerFundClaim</object>
+    </recordUpdates>
+    <startElementReference>Update_Adjustment_Claim_Owner</startElementReference>
+    <status>Active</status>
+    <variables>
+        <name>AdjustmentClaimId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Reference Claim Owner Id</description>
+        <name>RefClaimOwner</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

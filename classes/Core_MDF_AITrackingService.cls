@@ -33,7 +33,7 @@ public with sharing class Core_MDF_AITrackingService {
             insert recordsToInsert;
         }
     }
-    @testVisible
+
     private static String buildDetails(Map<String, Object> entry) {
         Map<String, Object> details = new Map<String, Object>{
             'groupId' => entry.get('groupId'),
@@ -57,7 +57,7 @@ public with sharing class Core_MDF_AITrackingService {
         }
         return JSON.serialize(value);
     }
-    @testVisible
+
     private static Boolean valueAsBoolean(Object value) {
         if (value == null) {
             return false;

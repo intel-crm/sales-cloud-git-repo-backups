@@ -59,6 +59,22 @@ global class Core_MDF_ATFFlagUpdateBatch implements Database.Batchable<sObject>,
                             : pfrActivity.Core_MDF_ATF_Flag_nm__c + ';' + missedExternalApproval;
                         pfrATFList.add(pfrToBeUpdated);
                     }
+                    // if(pfrActivity.Core_MDF_Start_Date__c < System.today() && pfrActivity.Core_MDF_Fund_Request_Status__c == pfrPendingReview){	
+                    //     if(String.isBlank(pfrActivity.Core_MDF_ATF_Flag_nm__c)){
+                    //         pfrToBeUpdated.Core_MDF_ATF_Flag_nm__c =  missedInternalApproval;
+                    //     } else {
+                    //         pfrToBeUpdated.Core_MDF_ATF_Flag_nm__c = pfrActivity.Core_MDF_ATF_Flag_nm__c+ ';' +missedInternalApproval;
+                    //     }
+                    //     pfrATFList.add(pfrToBeUpdated);//Adding to list for missed internal approval
+                    // }
+                    // else if(pfrActivity.Core_MDF_Start_Date__c< System.today() && pfrActivity.Core_MDF_Fund_Request_Status__c == pfrPendingApproval){
+                    //     if(String.isBlank(pfrActivity.Core_MDF_ATF_Flag_nm__c)){
+                    //         pfrToBeUpdated.Core_MDF_ATF_Flag_nm__c =  missedExternalApproval;
+                    //     } else {
+                    //         pfrToBeUpdated.Core_MDF_ATF_Flag_nm__c = pfrActivity.Core_MDF_ATF_Flag_nm__c+ ';'+ missedExternalApproval;   
+                    //     }
+                    //     pfrATFList.add(pfrToBeUpdated);//Adding to list for missed external approval
+                    // }
                 }
                 //Avoid Deeply Nested IF Statements
                 if(!pfrATFList.isEmpty()){
@@ -69,11 +85,28 @@ global class Core_MDF_ATFFlagUpdateBatch implements Database.Batchable<sObject>,
                         if (!sr.isSuccess()) {
                             List<String> errorMessages = new List<String>();
                             for(Database.Error err : sr.getErrors()) {
+                                //System.debug(err.getStatusCode() + ': ' + err.getMessage());
                                 errorMessages.add(err.getStatusCode() + ': ' + err.getMessage());
                             }
                         }
                     }
                 }
+
+                // if(!pfrATFList.isEmpty()){
+                //     Database.SaveResult[] srList = Database.update(pfrATFList,false);
+                //     // Iterate through each returned result
+                //     for (Database.SaveResult sr : srList) {
+                //         if (sr.isSuccess()) {
+                //             // Operation was successful, so get the ID of the record that was processed
+                //           }
+                //         else {
+                //             // Operation failed, so get all errors                
+                //             for(Database.Error err : sr.getErrors()) {
+                //                	//System.debug(err.getStatusCode() + ': ' + err.getMessage());
+                //               }
+                //         }
+                //     }
+                // }
             }
         }
         catch(Exception e){

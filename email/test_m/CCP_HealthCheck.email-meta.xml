@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Blank</letterhead>
+    <name>CCP HealthCheck</name>
+    <style>formalLetter</style>
+    <subject>{!CCP_Apis_Healthheck__c.Name} API has failed</subject>
+    <textOnly>{!CCP_Healthcheck_Report__c.Name} is failed</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

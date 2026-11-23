@@ -18,6 +18,9 @@
             <value>ENY</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Financial Services</sourceValue>
+            </sourceValues>
             <value>FSI</value>
         </values>
         <values>
@@ -33,6 +36,9 @@
             <value>HLS</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Automation/Building Management</sourceValue>
+            </sourceValues>
             <value>IND</value>
         </values>
         <values>
@@ -78,6 +84,9 @@
             <value>ENY</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Financial Services</sourceValue>
+            </sourceValues>
             <value>FSI</value>
         </values>
         <values>
@@ -93,6 +102,9 @@
             <value>HLS</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Automation/Building Management</sourceValue>
+            </sourceValues>
             <value>IND</value>
         </values>
         <values>
@@ -204,6 +216,9 @@
             <value>ENY</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Financial Services</sourceValue>
+            </sourceValues>
             <value>FSI</value>
         </values>
         <values>
@@ -219,6 +234,9 @@
             <value>HLS</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Automation/Building Management</sourceValue>
+            </sourceValues>
             <value>IND</value>
         </values>
         <values>
@@ -352,7 +370,7 @@
             <value>Yes</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>

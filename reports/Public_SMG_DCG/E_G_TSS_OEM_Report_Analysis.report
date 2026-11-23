@@ -89,7 +89,7 @@
         <field>PROBABILITY</field>
     </columns>
     <filter>
-        <booleanFilter>((1 or 2 or 4 or 5) and 3) or ((3 and 6))</booleanFilter>
+        <booleanFilter>(1 or 2 or 4 or 5) and 3</booleanFilter>
         <criteriaItems>
             <column>MEMBER_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -109,7 +109,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>DCG Compute Deal $</value>
+            <value>hybrid,hpc,high performance,analytic,enterprise &amp; gov,workload</value>
         </criteriaItems>
         <criteriaItems>
             <column>MEMBER_NAME</column>
@@ -124,13 +124,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>rooskin,rick larsen,michael tibbs,trent boyer,hua li,jin lin,xiaoling yan,yi luo,koji okomat,ravi gupta,ah fusi,shannon johnson,todd tyer,nan shao,gerhard lu,diwan,bosco ho,xiaofang zhou,qingli weng,yingying wei</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PARENT_ACCOUNT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>hp,hewlett,lenovo,cisco,ibm,oracle,huawei,Supermicro</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

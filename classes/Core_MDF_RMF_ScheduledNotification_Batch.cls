@@ -102,7 +102,5 @@ global class Core_MDF_RMF_ScheduledNotification_Batch {/*implements Database.Bat
         Core_MDF_ScheduledNotificationHandler.notifyRMFUsers(pfrCloseDateMap,japanRetailerAcctIds ,nonJapanRetailerAcctIds);  
         Core_MDF_GenericClassToSendMail.batchExecutionNotifyUser('Core_MDF_Batch_Execution_Notify_User','Core_MDF_RMF_ScheduledNotification_Batch','Core_MDF_Notify_Batch_Email_Users');
     }*/
-    //added dummy method to get the code coverage for this class
-    public static void getCodeCoverage(){
-    }
+    
 }

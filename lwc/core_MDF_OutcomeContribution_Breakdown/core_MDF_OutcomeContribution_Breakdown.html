@@ -1,0 +1,82 @@
+<template>
+ 
+    <div class="slds-p-top_medium">
+      <div class="slds-box slds-theme_default custom-box">
+        <lightning-card title={tactic_Metrics}>
+          <div class="slds-p-around_medium">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+              <thead>
+                <tr>
+                  <th>
+                      <p>Account Node</p>
+                  </th>
+                  <th>
+                     <div class="slds-grid slds-grid_vertical-align-center">
+                      <p>Contribution Amount</p>
+                    <lightning-helptext content={tactic_metrics_help_text} class="slds-p-bottom_xx-small slds-m-left_xx-small"></lightning-helptext>
+                  </div>
+                  </th>
+                  <th>
+                    <div class="slds-grid slds-grid_vertical-align-center">
+                      <p>Contribution Percentage</p>
+                    <lightning-helptext content={GoalValue_for_Claim_Help_Text} class="slds-p-bottom_xx-small slds-m-left_xx-small"></lightning-helptext>
+                  </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                    <template for:each={contributions} for:item="row">
+                        <tr key={row.id}>
+                            <td>
+                                <lightning-combobox
+                                    value={row.accountNode}
+                                    options={accountNames}
+                                    variant="label-hidden"
+                                    data-id={row.id}
+                                    onchange={handleAccountChange}>
+                                </lightning-combobox>
+                            </td>
+                            <td>
+                                <lightning-input 
+                                    type="number" 
+                                    value={row.amount}
+                                    data-id={row.id}
+                                    onchange={handleAmountChange}>
+                                </lightning-input>
+                            </td>
+                            <td>
+                                <lightning-input 
+                                    type="number" 
+                                    value={row.percent}
+                                    data-id={row.id}
+                                    onchange={handlePercentChange}>
+                                </lightning-input>
+                            </td>
+                             <td class="slds-text-align_center">
+                                <template if:true={showDeleteIcon}>
+                                    <lightning-button-icon
+                                        icon-name="utility:delete"
+                                        alternative-text="Delete"
+                                        title="Delete Row"
+                                        data-id={row.id}
+                                        onclick={handleDeleteRow}>
+                                    </lightning-button-icon>
+                                     </template>
+                                </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+             <div class="slds-m-top_small slds-text-align_right">
+                <lightning-button
+                    label="Add row"
+                    variant="brand-outline"
+                    onclick={handleAddRow}>
+                </lightning-button>
+            </div>
+          </div>
+        </lightning-card>
+      </div>
+    </div>
+  
+</template>

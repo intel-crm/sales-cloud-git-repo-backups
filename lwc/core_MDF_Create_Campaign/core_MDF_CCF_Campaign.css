@@ -31,6 +31,11 @@ header {
 footer{
     flex-shrink: 0;
 }
+
+.budgetTypeInfo {
+    background-color: rgb(242 242 242);
+    border-radius: 8px;
+}
 .informative-text {
     color: 	#0176d3;
     font-size: 0.8125rem;

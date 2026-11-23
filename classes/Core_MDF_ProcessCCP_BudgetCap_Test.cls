@@ -23,7 +23,8 @@ Accenture – HP         5/09/2019         Created.
         List<User> userList = new List<User>();
         List<ChannelProgram> channelProgramList = new List<ChannelProgram>();
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
-
+        // Highlight: Unused Local Variable - 14285
+        //List<PartnerFundClaim> claimListToBeProcessed = new List<PartnerFundClaim>();
         List<PartnerFundAllocation> pfaList = new List<PartnerFundAllocation>(); 
         List<Core_MDF_Partner_Group_Mapping__c> pgmList = new List<Core_MDF_Partner_Group_Mapping__c>();
         List<Group> groupList = new List<Group>();
@@ -84,6 +85,7 @@ Accenture – HP         5/09/2019         Created.
         myset1.addAll(bypassFunctionKeys);
         result1.addAll(myset1);
         
+ 
         List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
         
         //Creating Intel Account with utility class
@@ -100,7 +102,7 @@ Accenture – HP         5/09/2019         Created.
         conRecord1.MailingCountry ='Australia';
         contactList.add(conRecord1);
         Contact conRecord2 = Core_MDF_CCP_TestDataUtility.createContact(dellCorpAccount.Id,false);
-      conRecord2.MailingCountry ='Australia';
+        conRecord2.MailingCountry ='Australia';
         contactList.add(conRecord2);
         
         database.insert(contactList);
@@ -123,7 +125,9 @@ Accenture – HP         5/09/2019         Created.
         
         PermissionSet progAdmPS = nameToPerSet.get('Core_MDF_CCP_Internal_Program_Adm');
         PermissionSet clmCaseUsr = nameToPerSet.get('Core_MDF_CCP_Internal_Claim_Case_Reviewer');
-        
+        // Highlight: Unused Local Variable - 14285
+ 		//PermissionSet clmSubmitterUser = nameToPerSet.get('Core_MDF_CCP_External_Claim_Submitter');
+        //PermissionSet clmRetailSubmitter = nameToPerSet.get('Core_MDF_CCP_External_Retail_Claim_Submitter');
         PermissionSet paymentAdmGeoPS = nameToPerSet.get('Core_MDF_CCP_Internal_APJ_User'); 
         PermissionSet paymentAdmSchedulePS = nameToPerSet.get('Core_MDF_CCP_Internal_Payment_Schedule_Admin'); 
         PermissionSet paymentAdmRMFPS = nameToPerSet.get('Core_MDF_CCP_Internal_Retail_Payment_Adm'); 
@@ -420,32 +424,30 @@ Accenture – HP         5/09/2019         Created.
         //Creating campaign
         Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 12','Gaming','Intel® Core™ i7+ Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today().addDays(-10), System.today().addDays(10), 10000, 'Consumer Chromebook', dellCCFVirtualCorp.Id, '2-in-1', false); 
         camp.Core_MDF_Opal_Budget_Type_Txt__c= 'OEM CMP';
-        camp.Core_MDF_Technology__c ='';
         campaignList.add(camp);
     
         Campaign retailCampaign = Core_MDF_CCP_TestDataUtility.createCampaign('Retail Campaigm1','Gaming','9ᵗʰ Gen','No', Core_MDF_CCP_TestDataUtility.campaign_RecordType_Retail, 'Retail Marketing Funds', System.today().addDays(-20), System.today().addDays(20), 100000, 'Instore innovation', dellRMFVirtualCorp.Id,'Desktop', false); 
         retailCampaign.Core_MDF_Is_Opal__c='No';
         retailCampaign.Core_MDF_Opal_Budget_Type_Txt__c= 'Retail MDF';
-       // retailCampaign.Core_MDF_Activity_Category_Type__c =null;
+        retailCampaign.Core_MDF_Activity_Category_Type__c =null;
         retailCampaign.Core_MDF_Reimbursement_Rate__c='100%';
-       // retailCampaign.Core_MDF_Technology__c = 'Wifi6';
+        retailCampaign.Core_MDF_Technology__c = 'Wifi6';
         campaignList.add(retailCampaign);
         
         Campaign MdfCampaign = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp MDF','Gaming','Intel® Core™ i7+ Processor','MDF or both CMP & MDF', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_DCF, 'Data Center CoMarketing Fund', System.today().addDays(-100), System.today().addDays(10), 10000, 'Consumer Chromebook', dellDCFVirtualCorpMDF.Id, '2-in-1', false); 
         MdfCampaign.Core_MDF_Is_Opal__c='Yes MDF or both CMP & MDF';
         MdfCampaign.Core_MDF_Opal_Budget_Type_Txt__c='MDF';
         MdfCampaign.Core_MDF_Activity_Category__c = 'Audio 2025';
-       // MdfCampaign.Core_MDF_Activity_Category_Type__c = 'Audio 2025->Podcast';
-        MdfCampaign.Core_MDF_Technology__c ='';
+        MdfCampaign.Core_MDF_Activity_Category_Type__c = 'Audio 2025->Podcast';
         MdfCampaign.Core_MDF_Reimbursement_Rate__c='100%';
         campaignList.add(MdfCampaign);
         
         Campaign rsaMDCamp = Core_MDF_CCP_TestDataUtility.createCampaign('Retail Campaigm2','Gaming','9ᵗʰ Gen','No', Core_MDF_CCP_TestDataUtility.campaign_RecordType_Retail, 'Retail Marketing Funds', System.today().addDays(-10), System.today().addDays(10), 100000, 'Instore innovation', dellRMFVirtualCorp.Id,'Desktop', false); 
         rsaMDCamp.Core_MDF_Is_Opal__c='No';
         rsaMDCamp.Core_MDF_Opal_Budget_Type_Txt__c='RSA MD';
-        //rsaMDCamp.Core_MDF_Activity_Category_Type__c =null;
+        rsaMDCamp.Core_MDF_Activity_Category_Type__c =null;
         rsaMDCamp.Core_MDF_Reimbursement_Rate__c='100%';
-       // rsaMDCamp.Core_MDF_Technology__c = 'Wifi6';
+        rsaMDCamp.Core_MDF_Technology__c = 'Wifi6';
         campaignList.add(rsaMDCamp);
         //Test.startTest();
         system.runAs(usr2){
@@ -537,7 +539,7 @@ Accenture – HP         5/09/2019         Created.
         Core_MDF_Account_Bank_Mapping__c abm2 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(dellRMFVirtualCorp.Id,retailBank.Id,true);
         accBankMappingList.add(abm2);
         }
-         Test.startTest(); 
+        Test.startTest(); 
         //Creating Partner fund Request for each Geo 
         PartnerFundRequest indiaActivity = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                                  string.valueof(dellCCFVirtualCorp.id),pfaDellCCFVirtualCorp,pmbRecord,
@@ -794,130 +796,130 @@ Accenture – HP         5/09/2019         Created.
         System.runAs(usr1){
             Boolean ruleResult;
             //testing validateRule method for data type DOUBLE with appropriate operators
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('10','10','Equal','DOUBLE');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('10','10','Equal','DOUBLE'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('10','20','Not Equal','DOUBLE');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('10','20','Not Equal','DOUBLE'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('10','40','Equal','DOUBLE');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('10','40','Equal','DOUBLE'));
             Assert.areEqual(false, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('20','20','Not Equal','DOUBLE');  
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('20','20','Not Equal','DOUBLE'));  
             Assert.areEqual(false, ruleResult);
 
             //testing validateRule method for data type PICKLIST with appropriate operators         
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('50%','50%','Equal','PICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('50%','50%','Equal','PICKLIST'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('50%','30%','Not Equal','PICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('50%','30%','Not Equal','PICKLIST'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('50%','30%','Greater Than','PICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('50%','30%','Greater Than','PICKLIST'));
             Assert.areEqual(false, ruleResult);
             
             //testing validateRule method for data type CURRENCY with appropriate operators             
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('5000','2000','Not Equal','CURRENCY');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('5000','2000','Not Equal','CURRENCY'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('5000','5000','Equal','CURRENCY');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('5000','5000','Equal','CURRENCY'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('5000','2000','Greater Than','CURRENCY');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('5000','2000','Greater Than','CURRENCY'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('2000','5000','Less Than','CURRENCY');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('2000','5000','Less Than','CURRENCY'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('5000','4000','Greater Than or Equal','CURRENCY');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('5000','4000','Greater Than or Equal','CURRENCY'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('4000','5000','Less Than or Equal','CURRENCY');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('4000','5000','Less Than or Equal','CURRENCY'));
             Assert.areEqual(true, ruleResult);
             
             //testing validateRule method for data type DATE with appropriate operators  
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(String.valueOf(System.today().addDays(5)),String.valueOf(System.today()),
-                                                                      'Greater Than','DATE');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper(String.valueOf(System.today().addDays(5)),String.valueOf(System.today()),
+                                                                      'Greater Than','DATE'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(String.valueOf(System.today()),String.valueOf(System.today().addDays(5)),
-                                                                      'Less Than','DATE');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper(String.valueOf(System.today()),String.valueOf(System.today().addDays(5)),
+                                                                      'Less Than','DATE'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(String.valueOf(System.today()),String.valueOf(System.today()),'Equal','DATE');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper(String.valueOf(System.today()),String.valueOf(System.today()),'Equal','DATE'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(String.valueOf(System.today()),String.valueOf(System.today()),'Not Equal',
-                                                                      'DATE');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper(String.valueOf(System.today()),String.valueOf(System.today()),'Not Equal',
+                                                                      'DATE'));
             Assert.areEqual(false, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(String.valueOf(System.today()),String.valueOf(System.today()),
-                                                                      'Greater Than or Equal','DATE');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper(String.valueOf(System.today()),String.valueOf(System.today()),
+                                                                      'Greater Than or Equal','DATE'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(String.valueOf(System.today()),String.valueOf(System.today().addDays(1)),
-                                                                      'Less Than or Equal','DATE');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper(String.valueOf(System.today()),String.valueOf(System.today().addDays(1)),
+                                                                      'Less Than or Equal','DATE'));
             Assert.areEqual(true, ruleResult);
             
             //testing validateRule method for data type MULTIPICKLIST with appropriate operators    
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('ALBANIA;AUSTRALIA','ALBANIA;AUSTRALIA','Equal','MULTIPICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('ALBANIA;AUSTRALIA','ALBANIA;AUSTRALIA','Equal','MULTIPICKLIST'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('ALBANIA;AUSTRALIA','ALBANIA;AUSTRALIA','Not Equal','MULTIPICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('ALBANIA;AUSTRALIA','ALBANIA;AUSTRALIA','Not Equal','MULTIPICKLIST'));
             Assert.areEqual(false, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('ALBANIA;AUSTRALIA','ALBANIA;INDIA','Not Equal','MULTIPICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('ALBANIA;AUSTRALIA','ALBANIA;INDIA','Not Equal','MULTIPICKLIST'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('ALBANIA;AUSTRALIA','ALBANIA;INDIA','Equal','MULTIPICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('ALBANIA;AUSTRALIA','ALBANIA;INDIA','Equal','MULTIPICKLIST'));
             Assert.areEqual(false, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('ALBANIA','ALBANIA;AUSTRALIA','Equal','MULTIPICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('ALBANIA','ALBANIA;AUSTRALIA','Equal','MULTIPICKLIST'));
             Assert.areEqual(false, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('ALBANIA;AUSTRALIA','ALBANIA;AUSTRALIA','Greater Than','MULTIPICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('ALBANIA;AUSTRALIA','ALBANIA;AUSTRALIA','Greater Than','MULTIPICKLIST'));
             Assert.areEqual(false, ruleResult);
             
             //testing validateRule method for data type TEXTAREA with appropriate operators
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('Tset','Test','Equal','TEXTAREA');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('Tset','Test','Equal','TEXTAREA'));
             Assert.areEqual(false, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('Test','Test','Equal','TEXTAREA');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('Test','Test','Equal','TEXTAREA'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('Test1','Test','Not Equal','TEXTAREA');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('Test1','Test','Not Equal','TEXTAREA'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('Test1','Test','Not Equal','TESTFIELDTYPE');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('Test1','Test','Not Equal','TESTFIELDTYPE'));
             Assert.areEqual(false, ruleResult);
             
             //testing validateRule method for data type all with appropriate IN,NOT In, Equla and Not Equal operators
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('ALBANIA','ALBANIA;AUSTRALIA','In','MULTIPICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('ALBANIA','ALBANIA;AUSTRALIA','In','MULTIPICKLIST'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('ALBANIA;INDIA','ALBANIA;AUSTRALIA','In','MULTIPICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('ALBANIA;INDIA','ALBANIA;AUSTRALIA','In','MULTIPICKLIST'));
             Assert.areEqual(false, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('ALBANIA;INDIA','ALBANIA;AUSTRALIA','Not In','MULTIPICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('ALBANIA;INDIA','ALBANIA;AUSTRALIA','Not In','MULTIPICKLIST'));
             Assert.areEqual(false, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('10','10','In','STRING');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('10','10','In','STRING'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('10;20','10','In','STRING');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('10;20','10','In','STRING'));
             Assert.areEqual(false, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(NULL,NULL,'In','STRING');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper(NULL,NULL,'In','STRING'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(NULL,'ALBANIA;AUSTRALIA','In','STRING');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper(NULL,'ALBANIA;AUSTRALIA','In','STRING'));
             Assert.areEqual(false, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(NULL,'ALBANIA;AUSTRALIA','Not In','STRING');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper(NULL,'ALBANIA;AUSTRALIA','Not In','STRING'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('ALBANIA','ALBANIA;AUSTRALIA','Not In','STRING');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('ALBANIA','ALBANIA;AUSTRALIA','Not In','STRING'));
             Assert.areEqual(false, ruleResult);     
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('INDIA','ALBANIA;AUSTRALIA','Not In','STRING');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('INDIA','ALBANIA;AUSTRALIA','Not In','STRING'));
             Assert.areEqual(true, ruleResult);    
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(NULL,NULL,'Not In','STRING');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper(NULL,NULL,'Not In','STRING'));
             Assert.areEqual(false, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('ALBANIA','ALBANIA;AUSTRALIA','In','MULTIPICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('ALBANIA','ALBANIA;AUSTRALIA','In','MULTIPICKLIST'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('ALBANIA',NULL,'In','MULTIPICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('ALBANIA',NULL,'In','MULTIPICKLIST'));
             Assert.areEqual(false, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(NULL,'ALBANIA','In','MULTIPICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper(NULL,'ALBANIA','In','MULTIPICKLIST'));
             Assert.areEqual(false, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(NULL,NULL,'In','MULTIPICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper(NULL,NULL,'In','MULTIPICKLIST'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(NULL,NULL,'Not In','MULTIPICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper(NULL,NULL,'Not In','MULTIPICKLIST'));
             Assert.areEqual(false, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('ALBANIA','ALBANIA;AUSTRALIA','Not In','MULTIPICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('ALBANIA','ALBANIA;AUSTRALIA','Not In','MULTIPICKLIST'));
             Assert.areEqual(false, ruleResult);     
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(NULL,'ALBANIA','Not In','MULTIPICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper(NULL,'ALBANIA','Not In','MULTIPICKLIST'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(NULL,NULL,'Equal','MULTIPICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper(NULL,NULL,'Equal','MULTIPICKLIST'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('ALBANIA',NULL,'Equal','STRING');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('ALBANIA',NULL,'Equal','STRING'));
             Assert.areEqual(false, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(NULL,'ALBANIA','Equal','MULTIPICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper(NULL,'ALBANIA','Equal','MULTIPICKLIST'));
             Assert.areEqual(false, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(NULL,NULL,'Not Equal','MULTIPICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper(NULL,NULL,'Not Equal','MULTIPICKLIST'));
             Assert.areEqual(false, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('ALBANIA',NULL,'Not Equal','STRING');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('ALBANIA',NULL,'Not Equal','STRING'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(NULL,'ALBANIA','Not Equal','MULTIPICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper(NULL,'ALBANIA','Not Equal','MULTIPICKLIST'));
             Assert.areEqual(true, ruleResult);
-            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching('INDIA','ALBANIA;AUSTRALIA','Not In','MULTIPICKLIST');
+            ruleResult = Core_MDF_ProcessCCP_BudgetCap.isCriteriaMatching(new Core_MDF_ProcessCCP_BudgetCap.CriteriaMatchingWrapper('INDIA','ALBANIA;AUSTRALIA','Not In','MULTIPICKLIST'));
             Assert.areEqual(true, ruleResult);     
           
             test.stopTest();
@@ -940,13 +942,15 @@ Accenture – HP         5/09/2019         Created.
         database.insert(configSettingList);
         
         Id ipaBudTypeCapRecordtype = Schema.SObjectType.Core_MDF_Budget_Cap__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_IPA_Budget_Type_Cap').getRecordTypeId();
-        List<User> userList = new List<User>();
+       // Highlight: Unused Local Variable - Indira
+       // List<User> userList = new List<User>();
         Map<String,Id> profileToId = new Map<String,Id>();
         for(Profile prfl:[SELECT Id,Name FROM Profile WHERE Name IN ('System Administrator')]) {
             profileToId.put(prfl.Name,prfl.Id);
         }
         User usr = [SELECT Id,Email from User where Email='ipafinanceuser@example.com' limit 1];
-        Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgmDebug = [select id,Core_MDF_Budget_Type_nm__c,/*Core_MDF_Budget_Type_txt__c,*/ Core_MDF_Region_cd__c,Core_MDF_All_Budget_Type_Access_Ind__c,Core_MDF_Role_nm__c,Core_MDF_GeoSubGeo_Budget_Type_nm__c,Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c,Core_MDF_Active_Ind__c,Core_MDF_is_User_Active_ind__c from Core_MDF_Int_Users_Partner_Geo_Mapping__c where Core_MDF_User_id__c = :usr.id];
+        // Highlight: Unused Local Variable - Indira
+       // Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgmDebug = [select id,Core_MDF_Budget_Type_nm__c,/*Core_MDF_Budget_Type_txt__c,*/ Core_MDF_Region_cd__c,Core_MDF_All_Budget_Type_Access_Ind__c,Core_MDF_Role_nm__c,Core_MDF_GeoSubGeo_Budget_Type_nm__c,Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c,Core_MDF_Active_Ind__c,Core_MDF_is_User_Active_ind__c from Core_MDF_Int_Users_Partner_Geo_Mapping__c where Core_MDF_User_id__c = :usr.id];
 
         List<Core_MDF_Budget_Cap__c> ipaBudgetCaps = new List<Core_MDF_Budget_Cap__c>();
         Core_MDF_Budget_Cap__c budgetCapJan = new Core_MDF_Budget_Cap__c();

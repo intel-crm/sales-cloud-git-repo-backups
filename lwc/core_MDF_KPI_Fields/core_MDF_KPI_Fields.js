@@ -3,7 +3,7 @@ import getKPIAttributes from '@salesforce/apex/Core_MDF_KPI_FieldsController.get
 import labelAppError from '@salesforce/label/c.Core_MDF_KPI_ErrorMsg';
 import IPAProgramLabel from '@salesforce/label/c.Core_MDF_IPA_Program_Name';
 import pfcObjectName from '@salesforce/label/c.Core_MDF_PFCText';
-import {OLD_KPI_FIELDS_ALL} from 'c/core_MDF_utilityModule';
+import { OLD_KPI_FIELDS_ALL } from 'c/core_MDF_utilityModule';
 import othersHelpText from '@salesforce/label/c.Core_MDF_KPI_Others_Help_Text';
 import decimalError from '@salesforce/label/c.Core_MDF_KPI_Decimal_Error';
 import numberError from '@salesforce/label/c.Core_MDF_KPI_Number_Error';
@@ -42,6 +42,7 @@ export default class Core_MDF_KPI_Fields extends LightningElement {
     @track cmpPotentialExpected = true;
     @track isEOLedFields = {};
     @track kpiDisabledFields = {};
+    @track kpiHelpTexts = {};
     pfcObjectName = pfcObjectName;
     @track othersHelpText = othersHelpText;
     @track decimalError = decimalError;
@@ -50,12 +51,14 @@ export default class Core_MDF_KPI_Fields extends LightningElement {
     program;
 
 
-   //US917622 - opal changes potential winner/number of expected -start 
+
+    //US917622 - opal changes potential winner/number of expected -start 
     @track inputValueObject = {
-    Core_MDF_Num_of_Potential_Winners_nbr  : null,
-    Core_MDF_No_of_Expected_Participants_nbr  : null,                     
+        Core_MDF_Num_of_Potential_Winners_nbr: null,
+        Core_MDF_No_of_Expected_Participants_nbr: null,
+        //Core_MDF_Num_of_Winners_nbr  : null,                     
     };
-     //US917622 - opal changes potential winner/number of expected -end 
+    //US917622 - opal changes potential winner/number of expected -end 
 
     // Hide the component if other then retail
     @api compVisibility() {
@@ -91,13 +94,14 @@ export default class Core_MDF_KPI_Fields extends LightningElement {
 
         const kpiCompVisibilityEvent = new CustomEvent('kpiCompVisibilityEvent', { detail: { isKpiApplicable } });
         this.dispatchEvent(kpiCompVisibilityEvent);
-
+        //console.log('KPI this.showForm '+this.showForm)
         return this.showForm;
     }
 
     // Initilize the values
     connectedCallback() {
         this.loaded = false;
+        console.log('KPIconencted');
         const kpiconnected = new CustomEvent('kpiconnected', {
             value: true
         });
@@ -105,13 +109,15 @@ export default class Core_MDF_KPI_Fields extends LightningElement {
     }
 
     // Global method will be called from parent component
+    // Global method will be called from parent component
     @api loadKPIAttributes(inputParams) {
 
         this.inputValues = inputParams;
         this.objectName = inputParams.objName;
         this.program = inputParams.program;
         this.loaded = false;
-        //console.log('LoadKPICalled');
+        let kpiValToKpiAPIName = this.kpiPLValueToFieldAPIName; // Key is the Picklist value and value is the quantity field API Name
+        let ipaKPIFieldsArr = [];
         getKPIAttributes({
             inputValues: JSON.stringify(inputParams)
         })
@@ -121,20 +127,28 @@ export default class Core_MDF_KPI_Fields extends LightningElement {
                 this.error = false;
                 this.kpiVisibility = Object.create(data.visibility);
                 this.kpiPicValues = data.picValues;
+                this.kpiHelpTexts = data.helpTexts;
+
+                const activityRecValues = data.actValuesForClaim;
 
                 this.kpiLabels = data.labels;
                 /* US1017582: Technical: [RMF] - [Activity] - Metrics to be made optional - start */
                 const metaDataValues = data.metaDataValues;
                 this.kpiValues = data.recordValue;
                 const selValuesOnActivity = data.activityRecValue;//Used in case of edit claim
+
+
                 this.mdfKpiVisibility = {};
-                if(metaDataValues !== undefined && metaDataValues !== null && metaDataValues !== '') {
+                if (metaDataValues !== undefined && metaDataValues !== null && metaDataValues !== '') {
+                    console.log('added by VB - metaDataValues', metaDataValues);
                     var kpiVisibilityClone = JSON.parse(JSON.stringify(data.visibility));
                     for (let index = 0; index < metaDataValues.length; index++) {
                         const fieldAPIName = metaDataValues[index].Core_MDF_Field_4_txt__c;
                         const fieldName = metaDataValues[index].Core_MDF_Field_4_txt__c.replace('__c', '');
                         if (this.inputValues.objName === this.pfcObjectName && this.inputValues.program === this.IPAProgram) {
                             //Added by VB - IPA KPI Metrics
+                            //Edit - holds values from Claim
+                            //const isFieldValPresentOnClaim = this.validateValSelection(this.kpiValues, fieldName);
                             //Create, Clone,Edit - Holds values from activity
                             const isFieldValPresentOnAct = this.validateValSelection(selValuesOnActivity, fieldName);
                             if (OLD_KPI_FIELDS_ALL.includes(fieldAPIName)) {
@@ -157,9 +171,11 @@ export default class Core_MDF_KPI_Fields extends LightningElement {
 
                     //changes for IPA KPI Metrics - commented above if and added below if
                     if (this.clearedOnClone) {
-                        var recordValueClone = {};
-                        for (var key in data.recordValue) {
+                        let recordValueClone = {};
+                        for (let key in data.recordValue) {
                             recordValueClone[key] = '';
+                            console.log('@@key', key);
+                            console.log('data.recordValue -> ', recordValueClone)
                         }
                         this.kpiValues = recordValueClone;
                     } else {
@@ -168,7 +184,7 @@ export default class Core_MDF_KPI_Fields extends LightningElement {
 
                     if (Object.keys(this.isEOLedFields).length > 0) {
 
-                        for(var key in this.isEOLedFields){
+                        for (var key in this.isEOLedFields) {
                             kpiVisibilityClone[key] = false;
                         }
 
@@ -180,6 +196,7 @@ export default class Core_MDF_KPI_Fields extends LightningElement {
                                 }
                                 else {
                                     this.kpiDisabledFields[key] = false;
+                                    //kpiVisibilityClone[key] = false;
                                 }
                             }
                             else {
@@ -196,6 +213,10 @@ export default class Core_MDF_KPI_Fields extends LightningElement {
                         this.kpiVisibility = kpiVisibilityClone;
                     }
                 }
+
+                console.log('KPI visibility', this.kpiVisibility);
+                console.log('KPI Required', this.kpiRequiredFields);
+                console.log('KPI DisabledFields', this.kpiDisabledFields);
                 /* US1017582: Technical: [RMF] - [Activity] - Metrics to be made optional - end */
                 this.compVisibility();
             })
@@ -223,15 +244,26 @@ export default class Core_MDF_KPI_Fields extends LightningElement {
 
             });
     }
+
     validateValSelection(kpiValues, fieldName) {
         let areValuesSelected;
-        if(kpiValues[fieldName] !== "" && kpiValues[fieldName] !== null && kpiValues[fieldName] !== undefined) {
+        if (kpiValues[fieldName] !== "" && kpiValues[fieldName] !== null && kpiValues[fieldName] !== undefined) {
             areValuesSelected = true;
         } else {
             areValuesSelected = false;
         }
         return areValuesSelected;
     }
+
+    /*getVisibilityOrReqOptions(isFieldValPresentOnAct) {
+        let isVisibleOrMandate;
+        if(this.clearedOnClone) {//create/clone - clearedOnClone will be true
+            isVisibleOrMandate = isFieldValPresentOnAct ? true : false;
+        } else {
+            isVisibleOrMandate = isFieldValPresentOnActOrClaim ? true : false;
+        }
+        return isVisibleOrMandate;
+    }*/
 
     // Method to create properties for the local variable with required fields
     defineProp = function (obj, key, value) {
@@ -324,6 +356,7 @@ export default class Core_MDF_KPI_Fields extends LightningElement {
         allTextAreaValid = [...this.template.querySelectorAll('lightning-textarea')]
             .reduce((validSoFar, inputCmp) => {
                 inputCmp.reportValidity();
+                //inputCmp.showHelpMessageIfInvalid();
                 //console.log('checkValiditycombo->' + inputCmp.checkValidity());
                 return validSoFar && inputCmp.checkValidity();
             }, true);
@@ -339,8 +372,8 @@ export default class Core_MDF_KPI_Fields extends LightningElement {
         if (this.inputValues.program != this.IPAProgram) {
             this.setEditStatus();
         }
-        else{
-            if(this.inputValues.enableKPI == false){
+        else {
+            if (this.inputValues.enableKPI == false) {
                 this.setEditStatus();
             }
         }
@@ -376,40 +409,47 @@ export default class Core_MDF_KPI_Fields extends LightningElement {
     isMetricFieldModified(metricsNewValues) {
         let newKPIValues = metricsNewValues; // metricsNewValues - new metrics values
         let oldKPIValues = this.kpiValues;  // this.kpiValues - old metrics values
-        let isMetricFieldUpdated = false; 
-
+        let isMetricFieldUpdated = false;
+        //console.log('metrics cmp newKPIValues '+JSON.stringify(newKPIValues));
+        //console.log('metrics cmp oldKPIValues '+JSON.stringify(oldKPIValues));
         for (let newKey in newKPIValues) {
-            for(let oldKey in oldKPIValues) { 
-               	let oldval=oldKPIValues[oldKey].toString();
-                if((oldKey+'__c' == newKey) && oldKPIValues[oldKey] != newKPIValues[newKey]) {
-                    if (typeof newKPIValues[newKey]==='string' && typeof oldKPIValues[oldKey]==='string' &&
-                     oldKPIValues[oldKey].trim()== newKPIValues[newKey].trim()){
+            //console.log('old ' +  newKey + '' +oldKPIValues[newKey]  );
+            for (let oldKey in oldKPIValues) {
+                let oldval = oldKPIValues[oldKey].toString();
+
+                if ((oldKey + '__c' == newKey) && oldKPIValues[oldKey] != newKPIValues[newKey]) {
+                    if (typeof newKPIValues[newKey] === 'string' && typeof oldKPIValues[oldKey] === 'string' &&
+                        oldKPIValues[oldKey].trim() == newKPIValues[newKey].trim()) {
                         isMetricFieldUpdated = false;
-                    }else{
-                    isMetricFieldUpdated = true;
+                    } else {
+                        //console.log('Line 240 executed')
+                        isMetricFieldUpdated = true;
                     }
-                   
+
                     break;
                 }
             }
             let key = newKey;
             key = key.slice(0, -3);
-            if(oldKPIValues[key] === undefined && newKPIValues[newKey] !== undefined && newKPIValues[newKey] !== null && newKPIValues[newKey] !== '') {
+            //console.log('After key Sliced => '+key);
+            //console.log('oldKPIValues'+oldKPIValues[newKey]);
+            if (oldKPIValues[key] === undefined && newKPIValues[newKey] !== undefined && newKPIValues[newKey] !== null && newKPIValues[newKey] !== '') {
+                //console.log('Line 245 executed')
                 isMetricFieldUpdated = true;
                 break;
             }
         }
- 
+        //console.log('isMetricFieldUpdated '+isMetricFieldUpdated);
         return isMetricFieldUpdated;
     }
 
     // restrict e,+,-,E characters in  input type number
-    isNumericOnly(event) { 
+    isNumericOnly(event) {
         const charCode = (event.which) ? event.which : event.keyCode;
         var dataType = event.target.getAttribute('data-type');
 
-        if(charCode == 46){ // restrict "." value for non decimal fields
-            if(!((this.decimalApplicable != undefined && this.decimalApplicable) && (dataType != null && dataType == 'Decimal'))){ // restrict "." value for non decimal fields
+        if (charCode == 46) { // restrict "." value for non decimal fields
+            if (!((this.decimalApplicable != undefined && this.decimalApplicable) && (dataType != null && dataType == 'Decimal'))) { // restrict "." value for non decimal fields
                 event.stopPropagation();
                 event.preventDefault();
                 return false;
@@ -422,42 +462,47 @@ export default class Core_MDF_KPI_Fields extends LightningElement {
         }
         return true;
     }
-//US917622 - opal changes potential winner/number of expected -start 
-callPotentialCheck(event){
-    let inputElements = this.template.querySelectorAll("lightning-input");
-    inputElements.forEach(element => {
-        if(element != null){
-            this.inputValueObject[element.name] = element.value;                
+    //US917622 - opal changes potential winner/number of expected -start 
+    callPotentialCheck(event) {
+        let inputElements = this.template.querySelectorAll("lightning-input");
+        console.log('inputelements', inputElements);
+        inputElements.forEach(element => {
+            if (element != null) {
+                this.inputValueObject[element.name] = element.value;
+            }
+        });
+        console.log('this.inputValueObject', this.inputValueObject);
+        if (event.target.name === 'Core_MDF_Num_of_Potential_Winners_nbr' || event.target.name === 'Core_MDF_No_of_Expected_Participants_nbr') {
+            let potentWinn = '';
+            let expNum = '';
+            let calPer = '';
+            if (event.target.name === 'Core_MDF_Num_of_Potential_Winners_nbr') {
+                potentWinn = parseFloat(event.target.value);
+            } else if (this.inputValueObject.Core_MDF_Num_of_Potential_Winners_nbr !== null && this.inputValueObject.Core_MDF_Num_of_Potential_Winners_nbr !== undefined) {
+                potentWinn = parseFloat(this.inputValueObject.Core_MDF_Num_of_Potential_Winners_nbr);
+            }
+            console.log('potentWinn', potentWinn);
+            if (event.target.name === 'Core_MDF_No_of_Expected_Participants_nbr') {
+                expNum = parseFloat(event.target.value);
+            } else if (this.inputValueObject.Core_MDF_No_of_Expected_Participants_nbr !== null && this.inputValueObject.Core_MDF_No_of_Expected_Participants_nbr !== undefined) {
+                expNum = parseFloat(this.inputValueObject.Core_MDF_No_of_Expected_Participants_nbr);
+            }
+            console.log('expNum', expNum);
+            if ((isNaN(potentWinn) == false) && (isNaN(expNum) == false)) {
+                console.log('in line 483');
+                if (expNum >= potentWinn) {
+                    console.log('in line 485');
+                    this.storePercentageofPotentialWinner = '';
+                    calPer = parseFloat((potentWinn / expNum) * 100);
+                    this.storePercentageofPotentialWinner = calPer;
+                    this.cmpPotentialExpected = true;
+                }
+                else {
+                    this.cmpPotentialExpected = false; //set to false if potential winner is greater then expected number
+                }
+            }
         }
-    });
-    if(event.target.name === 'Core_MDF_Num_of_Potential_Winners_nbr'  || event.target.name === 'Core_MDF_No_of_Expected_Participants_nbr'){
-    let potentWinn = '';
-    let expNum = '';
-    let calPer = '';
-    
-    if(event.target.name === 'Core_MDF_Num_of_Potential_Winners_nbr') {
-        potentWinn =parseFloat(event.target.value);
-    }else if(this.inputValueObject.Core_MDF_Num_of_Potential_Winners_nbr !== null && this.inputValueObject.Core_MDF_Num_of_Potential_Winners_nbr !== undefined){
-        potentWinn = parseFloat(this.inputValueObject.Core_MDF_Num_of_Potential_Winners_nbr);
     }
-    if(event.target.name === 'Core_MDF_No_of_Expected_Participants_nbr') {
-        expNum = parseFloat(event.target.value);
-    }else if(this.inputValueObject.Core_MDF_No_of_Expected_Participants_nbr !== null && this.inputValueObject.Core_MDF_No_of_Expected_Participants_nbr !== undefined){
-        expNum = parseFloat(this.inputValueObject.Core_MDF_No_of_Expected_Participants_nbr);
-    }
-    if(( isNaN(potentWinn) == false ) && (isNaN(expNum) == false )){
-        if(expNum >= potentWinn){
-            this.storePercentageofPotentialWinner = '';
-            calPer = parseFloat((potentWinn / expNum) * 100 );
-            this.storePercentageofPotentialWinner = calPer;
-            this.cmpPotentialExpected = true;
-        }
-        else{
-            this.cmpPotentialExpected = false; //set to false if potential winner is greater then expected number
-        }
-    }
-}
-}
 
     @api
     checkValidationPotentialWinners() {
@@ -465,6 +510,7 @@ callPotentialCheck(event){
         let winPartHasInpVal = true;
         let isMetricPotentialWinnerCheck = '';
         if (inputElements.length == 0) {
+            console.log('in KPIFields');
             this.storePercentageofPotentialWinner = '';
             this.cmpPotentialExpected = true;
         }
@@ -478,12 +524,11 @@ callPotentialCheck(event){
             }
         }
 
-        if((this.inputValues.objName === 'PartnerFundClaim' && winPartHasInpVal) || this.inputValues.objName === 'PartnerFundRequest') {
+        if ((this.inputValues.objName === 'PartnerFundClaim' && winPartHasInpVal) || this.inputValues.objName === 'PartnerFundRequest') {
             isMetricPotentialWinnerCheck = this.determineValidationErrMessage();
         }
         return isMetricPotentialWinnerCheck;
     }
-
 
     determineValidationErrMessage() {
         let isMetricPotentialWinnerCheck = '';
@@ -495,6 +540,9 @@ callPotentialCheck(event){
             isMetricPotentialWinnerCheck = 'noExpPotCheck';
         }
         return isMetricPotentialWinnerCheck;
-    } 
+    }
+    //US917622 - opal changes potential winner/number of expected -end 
+
+
 
 }

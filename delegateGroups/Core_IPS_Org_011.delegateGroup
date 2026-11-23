@@ -18,21 +18,10 @@
     <groups>NSG-HP-Client</groups>
     <groups>NSG-Dell-Client</groups>
     <groups>SRVPLT - MICROSOFT CLOUD BLOCKS</groups>
+    <groups>SRVPLT - WALKER PASS</groups>
     <groups>SRVPLT - EMEA NEC</groups>
     <groups>NSG-NetApp</groups>
     <groups>NSG-Google</groups>
-    <groups>SRVPLT – PRC Customers_ISVC</groups>
-    <groups>SRVPLT - AURORA M50CYP HW/FW</groups>
-    <groups>SRVPLT – AURORA DAI-DS SW</groups>
-    <groups>SRVPLT - AURORA Exascale Compute Blade</groups>
-    <groups>SRVPLT - AURORA DAOS SW</groups>
-    <groups>SRVPLT - Eng Enablement Fox Creek Pass</groups>
-    <groups>SRVPLT - Eng Enablement Denali Pass</groups>
-    <groups>SRVPLT - AMERICAN PASS</groups>
-    <groups>SRVPLT - AURORA OVERALL</groups>
-    <groups>SRVPLT - AURORA GENERAL QS</groups>
-    <groups>SRVPLT - EMEA DSG</groups>
-    <groups>SRVPLT - EMEA ICS</groups>
     <groups>IPS - Org Admin - SP</groups>
     <groups>NSG - ASMO</groups>
     <groups>NSG - EMEA</groups>
@@ -54,9 +43,9 @@
     <groups>SRVPLT - ASMO UNICOM</groups>
     <groups>SRVPLT – CANYON VISTA</groups>
     <groups>SRVPLT - ASMO EMC</groups>
+    <groups>SRVPLT - ASMO COHESITY</groups>
     <groups>SRVPLT - BUCHANAN PASS</groups>
     <label>IPS - Org Admin - SP</label>
     <loginAccess>false</loginAccess>
     <roles>IPS Product OrgAdmin</roles>
-    <roles>EMP_11298293_Kenta_Ueda</roles>
 </DelegateGroup>

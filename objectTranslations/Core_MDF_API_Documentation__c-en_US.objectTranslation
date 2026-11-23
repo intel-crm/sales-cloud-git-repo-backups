@@ -4,10 +4,6 @@
         <plural>false</plural>
         <value>Core API Documentation</value>
     </caseValues>
-    <caseValues>
-        <plural>true</plural>
-        <value>Core API Documentation</value>
-    </caseValues>
     <fields>
         <help><!-- e.g., /services/apexrest/v1.0/activity?action=create --></help>
         <label><!-- API Endpoint --></label>

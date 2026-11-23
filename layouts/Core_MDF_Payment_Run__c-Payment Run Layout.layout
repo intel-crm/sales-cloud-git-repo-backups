@@ -24,6 +24,18 @@
                 <behavior>Readonly</behavior>
                 <field>Core_MDF_ErrorDetails_Txt__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Note__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Run_For_All_Accounts__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Payment_run_for_Accounts__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -81,7 +93,7 @@
         <platformActionListItems>
             <actionName>Delete</actionName>
             <actionType>StandardButton</actionType>
-            <sortOrder>4</sortOrder>
+            <sortOrder>2</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <quickActionList>
@@ -113,8 +125,8 @@
     <relatedLists>
         <excludeButtons>MassChangeOwner</excludeButtons>
         <excludeButtons>New</excludeButtons>
+        <fields>Core_MDF_Account_Id__c</fields>
         <fields>NAME</fields>
-        <fields>Core_MDF_Payment_No_Txt__c</fields>
         <fields>Core_MDF_Paid_Amt__c</fields>
         <fields>Core_MDF_Payment_Sent_Dt__c</fields>
         <fields>Core_MDF_Payment_Made_Dt__c</fields>
@@ -125,6 +137,10 @@
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_MDF_Payment_Run_Line_Item__c.Core_MDF_Payment_Run_ID__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

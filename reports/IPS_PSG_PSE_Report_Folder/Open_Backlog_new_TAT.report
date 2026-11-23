@@ -786,7 +786,7 @@
         <field>BucketField_34924917</field>
     </columns>
     <filter>
-        <booleanFilter>((1 AND 2 AND 3 AND 4 AND (5 OR 12) AND 6) AND (7 OR 8 OR 9 OR 10)) AND 11 AND 13 AND 14</booleanFilter>
+        <booleanFilter>((1 AND 2 AND 3 AND 4 AND 5 AND 6) AND (7 OR 8 OR 9 OR 10)) AND 11</booleanFilter>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
             <columnToColumn>false</columnToColumn>
@@ -806,7 +806,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterThan</operator>
-            <value>60</value>
+            <value>30</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_IPS_Age__c</column>
@@ -827,63 +827,42 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>front</value>
+            <value>Front</value>
         </criteriaItems>
         <criteriaItems>
             <column>BucketField_57505999</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>AE,APPS,MAG</value>
+            <value>AE,APPS</value>
         </criteriaItems>
         <criteriaItems>
             <column>BucketField_34924917</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>AE,APPS,MAG</value>
+            <value>AE,APPS</value>
         </criteriaItems>
         <criteriaItems>
             <column>BucketField_9253579</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>AE,APPS,MAG</value>
+            <value>AE,APPS</value>
         </criteriaItems>
         <criteriaItems>
             <column>BucketField_73295762</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>AE,APPS,mag</value>
+            <value>AE,APPS</value>
         </criteriaItems>
         <criteriaItems>
             <column>LAST_UPDATE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>lessThan</operator>
-            <value>11/6/2024 12:00 AM</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Escalated_Level__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Assigned_Queue__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>-FACR</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Test IPS</value>
+            <value>4/30/2019 12:00 AM</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

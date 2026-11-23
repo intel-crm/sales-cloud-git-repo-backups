@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Edit IPA Co-Marketing activities</description>
-    <height>900</height>
+    <height>500</height>
     <label>Edit Activity</label>
     <lightningComponent>Core_MDF_PartnerFundRequest_Edit</lightningComponent>
     <optionsCreateFeedItem>false</optionsCreateFeedItem>

@@ -141,6 +141,11 @@
         <field>Core_MDF_Batch_Scheduler__c.Scheduled_Time_Dt__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Bank_Legal_Entity_Code_cd__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>CRM Internal Custom Batch Scheduler Edit</label>
     <license>Salesforce</license>

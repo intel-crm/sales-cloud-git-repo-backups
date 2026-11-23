@@ -1,12 +1,12 @@
 import { api,LightningElement, track } from 'lwc';
 import getApprovalDetails from '@salesforce/apex/Core_MDF_Display_Approval_Details.getApprovalDetails';
-//import Core_MDF_ApprovalStageComplete from '@salesforce/resourceUrl/Core_MDF_ApprovalStageComplete'; 
+import Core_MDF_ApprovalStageComplete from '@salesforce/resourceUrl/Core_MDF_ApprovalStageComplete'; 
 export default class Core_MDF_Display_Approval_Details extends LightningElement {
 
 showSpinner = false;
 @track displayContent = [];
 @api recordId;
-//svgURL = `${Core_MDF_ApprovalStageComplete}`;
+svgURL = `${Core_MDF_ApprovalStageComplete}`;
 dataAvailable = false;
 
 connectedCallback(){

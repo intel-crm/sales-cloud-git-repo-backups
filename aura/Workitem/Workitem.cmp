@@ -1,0 +1,57 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="ProcessInstance" type="ProcessInstanceWorkitem" />
+    <!--<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>-->  
+   <lightning:card title="Details">
+        <lightning:accordion aura:id="accordion" activeSectionName="A" class="Myclas">
+        <lightning:accordionSection name="A" label="Approval Details" >
+       <!-- <div style="padding-left:4%; background-color:coral;height:12%">Approval Details</div>-->
+        <div class="slds-section slds-is-open" aura:id="CurrentTripSection"> 
+            <div class="slds-section__content" id="fruitsList" style="padding-left:4%"> 
+                <div class="slds-grid slds-wrap slds-grid--pull-padded">
+                    <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2">
+                        <div class="slds-border_bottom slds-form-element">
+                            <label class="slds-form-element__label">Budget Name</label> 
+                            <div class="slds-form-element__control slds-form-element__static">
+                               
+                            </div>	                                    
+                        </div> 
+                        <div class="slds-border_bottom slds-form-element">                        
+                            <label class="slds-form-element__label">Owner</label>
+                            <div class="slds-form-element__control slds-form-element__static">
+                                
+                            </div>                      
+                        </div>
+                        <div class="slds-border_bottom slds-form-element">                       
+                            <label class="slds-form-element__label">Budget Partner</label> 
+                            <div class="slds-form-element__control slds-form-element__static">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2">
+                        <div class="slds-border_bottom slds-form-element">
+                            <label class="slds-form-element__label">Start Date</label> 	 
+                            <div class="slds-form-element__control slds-form-element__static"> 
+                                
+                            </div>
+                        </div>
+                        <div class="slds-border_bottom slds-form-element">
+                            <label class="slds-form-element__label">End Date</label> 	 
+                            <div class="slds-form-element__control slds-form-element__static"> 
+                               
+                            </div>
+                        </div>
+                        <div class="slds-border_bottom slds-form-element">
+                            <label class="slds-form-element__label">Amount</label> 	 
+                            <div class="slds-form-element__control slds-form-element__static"> 
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         </lightning:accordionSection>
+    </lightning:accordion>   
+    </lightning:card>
+</aura:component>

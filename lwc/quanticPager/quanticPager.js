@@ -1,8 +1,11 @@
 import {LightningElement, api, track} from 'lwc';
-import {registerComponentForInit,initializeWithHeadless,getHeadlessBundle,} from 'c/quanticHeadlessLoader';
-import NavigationButtons from '@salesforce/resourceUrl/NavigationButtons';
+import {
+  registerComponentForInit,
+  initializeWithHeadless,
+  getHeadlessBundle,
+} from 'c/quanticHeadlessLoader';
 import {I18nUtils} from 'c/quanticUtils';
-import { loadStyle } from 'lightning/platformResourceLoader'
+
 import nextPage from '@salesforce/label/c.quantic_NextPage';
 import previousPage from '@salesforce/label/c.quantic_PreviousPage';
 import goToPage from '@salesforce/label/c.quantic_GoToPage';
@@ -51,8 +54,7 @@ export default class QuanticPager extends LightningElement {
   currentPage = 1;
   /** @type {AnyHeadless} */
   headless;
-  maxNumberOfPage;
-   @api isNotFirstButton = false;
+
   labels = {
     nextPage,
     previousPage,
@@ -61,7 +63,6 @@ export default class QuanticPager extends LightningElement {
 
   connectedCallback() {
     registerComponentForInit(this, this.engineId);
-    loadStyle(this, NavigationButtons);
   }
 
   renderedCallback() {
@@ -80,7 +81,9 @@ export default class QuanticPager extends LightningElement {
     });
     this.searchStatus = this.headless.buildSearchStatus(engine);
     this.unsubscribe = this.pager.subscribe(() => this.updateState());
-    this.unsubscribeSearchStatus = this.searchStatus.subscribe(() =>this.updateState());
+    this.unsubscribeSearchStatus = this.searchStatus.subscribe(() =>
+      this.updateState()
+    );
   };
 
   disconnectedCallback() {
@@ -94,7 +97,6 @@ export default class QuanticPager extends LightningElement {
     this.currentPages = this.pager.state.currentPages;
     this.currentPage = this.pager.state.currentPage;
     this.hasResults = this.searchStatus.state.hasResults;
-      this.maxNumberOfPage = this.pager.state.maxPage; 
   }
 
   previous() {

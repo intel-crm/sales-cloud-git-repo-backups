@@ -65,6 +65,7 @@ public without sharing class Core_MDF_SuperClaimStatusUpdateBatch implements Dat
             claimList.addAll((List<PartnerFundClaim>) scope);
             List<Partnerfundclaim> updateClaimList = new List<Partnerfundclaim>();
             for(Partnerfundclaim claim : claimList){
+                system.debug('@@@claim parent is'+claim);
             if(claim.Core_MDF_Status__c.equals(superClaimRec.Core_MDF_Field_5_txt__c) && (claim.Core_MDF_Member_Manual_Hold_Ind__c || claim.Core_MDF_Intel_Manual_Hold_Ind__c)){
                     continue;
             }
@@ -73,6 +74,7 @@ public without sharing class Core_MDF_SuperClaimStatusUpdateBatch implements Dat
             Boolean pendingPayment;
             Decimal bestOrder = bestRank;
             for (Partnerfundclaim cl : claim.claims__r) {
+                system.debug('@@@claim child is'+cl);
                 if(!pref.keyset().contains(cl.Core_MDF_Status__c)){
                     otherStatus=true;
                     break;
@@ -103,6 +105,7 @@ public without sharing class Core_MDF_SuperClaimStatusUpdateBatch implements Dat
                 else {
 	            updateclaim.Core_MDF_Status__c = finalStatusMap.get(bestStatus);
                 }
+                system.debug('@@@updateclaim is'+updateclaim);
 	            updateClaimList.add(updateclaim);
             }
         }

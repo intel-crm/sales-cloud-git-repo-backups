@@ -332,6 +332,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>program_picklist_test__c</field>
+            <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Due_Date_nbr__c</field>
             <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
         </columns>
@@ -358,6 +363,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Last_Reviewed_By_id__c</field>
+            <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Third_Party_Ind__c</field>
             <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
         </columns>
         <columns>
@@ -452,6 +462,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_TotalInvoice_Amt_Local__c</field>
+            <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Payment_Rollback_Reason_nm__c</field>
             <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
         </columns>
@@ -503,6 +518,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Bank_Legal_Entity_Code_cd__c</field>
+            <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>test_flow__c</field>
             <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
         </columns>
         <columns>
@@ -652,6 +672,36 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Campaign_Name_nm__c</field>
+            <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Campaign_End_Date_dt__c</field>
+            <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Technology__c</field>
+            <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Product_Type__c</field>
+            <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Customer_Product_Codename_txt__c</field>
+            <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Date_After_Modified__c</field>
+            <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Has_Sub_Claims_Ind__c</field>
             <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
         </columns>
@@ -668,6 +718,31 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Super_Claim_Status_nm__c</field>
+            <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_NoOfLeads_Nbr__c</field>
+            <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Number_of_Recipient_nbr__c</field>
+            <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Open_Rate_txt__c</field>
+            <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Reporting_Region__c</field>
+            <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Account_Name_nm__c</field>
             <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
         </columns>
         <masterLabel>Claims</masterLabel>

@@ -178,7 +178,6 @@
         <columns>MasterLabel</columns>
         <columns>DeveloperName</columns>
         <columns>NamespacePrefix</columns>
-        <columns>IsProtected</columns>
         <columns>Core_MDF_Column_Fields__c</columns>
         <columns>Core_MDF_Data_Type_Values__c</columns>
         <columns>Core_MDF_Field_API_Name__c</columns>
@@ -187,6 +186,7 @@
         <columns>Core_MDF_Object_API_Name__c</columns>
         <columns>Core_MDF_Object_Label__c</columns>
         <columns>Core_MDF_Object_Record_Name__c</columns>
+        <columns>Core_MDF_IsActive__c</columns>
         <columns>LookupNameQuery__c</columns>
         <columns>LookupToObjectName__c</columns>
         <columns>Core_MDF_ShareObjectFields__c</columns>

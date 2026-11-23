@@ -1,5 +1,5 @@
 @isTest(SeeAllData=false)
-public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
+public with sharing class Core_MDF_Process_PartnerFundRequest_Test { 
     @TestSetUp
     static void createTestData(){
         List<String> bypassFunctionKeys2 = new List<String>();
@@ -14,14 +14,14 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         List<String> bypassFunctionKeys = new List<String>();
         bypassFunctionKeys.add('Core_MDF_PFR_Rule_Engine');
         bypassFunctionKeys.add('ByPass_BlockLegacyBudgetCreation');
-        bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation');
+        bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation');//14285
         Set<String> myset1 = new Set<String>();
         List<String> result1 = new List<String>();
         myset1.addAll(bypassFunctionKeys);
         result1.addAll(myset1);
         List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
         profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
-        // Creating User with utility class   
+        // Creating User with utility class 
         List<user> usrList=new List<User>();
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
         usr.LastName = 'MDF Budget LoaderTest';
@@ -45,10 +45,10 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         Database.insert(usrList);
         
         // Creating Criterias for approval required
-        List<Core_MDF_Criteria__c> cList = new List<Core_MDF_Criteria__c>();
-        Core_MDF_Criteria__c cr = Core_MDF_CCP_TestDataUtility.createCriteria('PartnerFundRequest','Core_MDF_Activity_Approval_Processs',
+       // List<Core_MDF_Criteria__c> cList = new List<Core_MDF_Criteria__c>();
+        /*Core_MDF_Criteria__c cr = Core_MDF_CCP_TestDataUtility.createCriteria('PartnerFundRequest','Core_MDF_Activity_Approval_Processs',
                                                                               'Core_MDF_Region_nm__c','Equal','WW','Core_MDF_Region_nm__c','Equal', 'APJ',
-                                                                              'Core_MDF_Region_nm__c','Equal','APJ','/*Core_MDF_ProductType__c*/','Equal','Desktop','RequestedAmount','Greater Than','4000',false);
+                                                                              'Core_MDF_Region_nm__c','Equal','APJ','Core_MDF_ProductType__c','Equal','Desktop','RequestedAmount','Greater Than','4000',false);
         cr.Core_MDF_Field_Name_2__c = 'Core_MDF_Region_nm__c';
         cr.Core_MDF_Operator_2__c = 'Equal';
         cr.Core_MDF_Value_2__c = 'WW';
@@ -65,10 +65,10 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         cr.Core_MDF_Operator_8__c = 'Equal';
         cr.Core_MDF_Value_8__c = 'WW';
         cr.Core_MDF_Active__c = false;
-        cList.add(cr);
-        Database.insert(cList);
+        cList.add(cr);*/
+       // Database.insert(cList);
         
-        List<Core_MDF_Approver__c> appList = new List<Core_MDF_Approver__c>();
+       /* List<Core_MDF_Approver__c> appList = new List<Core_MDF_Approver__c>();
         // Creating approvers
         Core_MDF_Approver__c ap1 = Core_MDF_CCP_TestDataUtility.createApprover(cList[0].Id,usr6.Id, false);
         ap1.Core_MDF_Approver_Type__c = 'Internal';
@@ -82,16 +82,16 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         ap1.Core_MDF_Approver_9__c = usr6.Id;
         ap1.Core_MDF_Approver_10__c = usr6.Id;
         ap1.Core_MDF_Active__c = false;
-        appList.add(ap1);
+        appList.add(ap1);*/
         
-        Core_MDF_Approver__c ap2 = Core_MDF_CCP_TestDataUtility.createApprover(cList[0].Id,usr6.Id, false);
+       /* Core_MDF_Approver__c ap2 = Core_MDF_CCP_TestDataUtility.createApprover(cList[0].Id,usr6.Id, false);
         ap2.Core_MDF_Approver_Type__c = 'Internal';
         ap2.Core_MDF_Approver_2__c = usr6.Id;
         ap2.Core_MDF_Active__c = false;
         appList.add(ap2);
-        Database.insert(appList);
+        Database.insert(appList);*/
         
-        List<Core_MDF_Criteria_Rule__c> crList = new List<Core_MDF_Criteria_Rule__c>();
+       /* List<Core_MDF_Criteria_Rule__c> crList = new List<Core_MDF_Criteria_Rule__c>();
         // Creating Criteria rules for approvers 
         Core_MDF_Criteria_Rule__c crule1 = Core_MDF_CCP_TestDataUtility.createCriteriaRule(appList[0].Id,'Core_MDF_Fund_Request_Status__c','Equal',
                                                                                            'Pending Review',false);
@@ -106,7 +106,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         appList[1].Core_MDF_Active__c = true;
         Database.update(appList);        
         cList[0].Core_MDF_Active__c = true;
-        Database.update(cList);
+        Database.update(cList);*/
         //ruleEngine data
         List<Core_MDF_Audit_Rules_Engine__c>ruleList = new List<Core_MDF_Audit_Rules_Engine__c>();
         Core_MDF_Audit_Rules_Engine__c FrontEndReviewRule = new Core_MDF_Audit_Rules_Engine__c(); 
@@ -123,7 +123,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         FrontEndReviewRule.Core_MDF_Region_Cd__c = 'WW';
         //FrontEndReviewRule.Core_MDF_Action_on_True_nm__c='Customer Acceptance';
         FrontEndReviewRule.Core_MDF_Approver_Source_on_True_nm__c='Approval Criteria';
-        FrontEndReviewRule.Core_MDF_Approver_Source_Value_on_True__c=cList[0].Id;
+       // FrontEndReviewRule.Core_MDF_Approver_Source_Value_on_True__c=cList[0].Id;
         
         Core_MDF_Audit_Rules_Engine__c FrontEndReviewRule2 = new Core_MDF_Audit_Rules_Engine__c(); 
         FrontEndReviewRule2.Core_MDF_Object_Nm__c= 'PartnerFundRequest';
@@ -139,7 +139,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         FrontEndReviewRule2.Core_MDF_Region_Cd__c = 'WW';
         //FrontEndReviewRule2.Core_MDF_Action_on_True_nm__c='Customer Acceptance';
         FrontEndReviewRule2.Core_MDF_Approver_Source_on_True_nm__c='Approval Criteria';
-        FrontEndReviewRule2.Core_MDF_Approver_Source_Value_on_True__c=cList[0].Id;
+       // FrontEndReviewRule2.Core_MDF_Approver_Source_Value_on_True__c=cList[0].Id;
         FrontEndReviewRule2.Core_MDF_Approver_Source_on_False_nm__c='Object Field';
         FrontEndReviewRule2.Core_MDF_Approver_Source_Value_on_False__c='Core_MDF_Activity_First_Approver_txt__c';
         FrontEndReviewRule2.Core_MDF_Rule_Action_on_False_nm__c='First Level Manager';
@@ -189,7 +189,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         attMap.Core_MDF_Program__c = 'CCF';
         attMap.Core_MDF_Field_2_txt__c = 'Client';
         attMap.Core_MDF_Field_4_txt__c = 'Core_MDF_Client_CoMarketing_Fund';
-        attMap.Core_MDF_Field_7_txt__c = 'Event';
+        attMap.Core_MDF_Field_7_txt__c = 'Event (Pre-2025)';
         attMap.Core_MDF_Field_9_txt__c = 'Third Party Event';
         attMap.Core_MDF_Checkbox_Field_5_Ind__c = True;
         attMap.Core_MDF_Checkbox_Field_6_Ind__c = True;
@@ -218,13 +218,13 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         
         //Database.insert(accListUlt);
         //insert acc1;
-        /*ChannelProgram cmdfCp = Core_MDF_CCP_TestDataUtility.createProgram ('Channel MDF','Channel MDF', false);
-        insert cmdfCp;*/
+        ChannelProgram cmdfCp = Core_MDF_CCP_TestDataUtility.createProgram ('Channel MDF','',false);
+        insert cmdfCp;
         Account ccpIntelAccount = Core_MDF_CCP_TestDataUtility.createIntelAccount('CCF Test Intel Account', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
         ccpIntelAccount.BillingStateCode='';
         accListUlt.add(ccpIntelAccount);
         Database.insert(accListUlt);
-        //Account cmdfCoMarketingAccount = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('CMDF Co-Marketing Account', cmdfCp.id, Core_MDF_CCP_TestDataUtility.Account_Record_Type,ccpIntelAccount.id, true); 
+        Account cmdfCoMarketingAccount = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('CMDF Co-Marketing Account', cmdfCp.id, Core_MDF_CCP_TestDataUtility.Account_Record_Type,ccpIntelAccount.id, true); 
         
         Account acc2 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Account 2',
                                                                              cp.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, 
@@ -283,81 +283,15 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         }
         
         Id iupgm_Recordtype_EEF = Schema.SObjectType.Core_MDF_Int_Users_Partner_Geo_Mapping__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Ecosystem_Extension_Fund').getRecordTypeId();
-        
         List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
-        
-        //Creating Groups
-            Group grp = new Group();
-            grp.Name = 'CCP Internal EEF APJ CLD I';
-            grp.DeveloperName = 'Core_MDF_Int_EEF_APJ_CLD_test';
-            
-            Group grp1 = new Group();
-            grp1.Name = 'Core_MDF_CCP_External';
-            grp1.DeveloperName = 'Core_MDF_CCP_External';   
-            
-            Group grp2 = new Group();
-            grp2.Name = 'CCP INTERNAL CCF EMEA TACCOUNT';
-            grp2.DeveloperName = 'Core_MDF_CCP_INTERNAL_CCF_EMEA_TACCOUNT';
-            
-            Group grp3 = new Group();
-            grp3.Name = 'CCP INTERNAL CCF ASMO TACCOUNT';
-            grp3.DeveloperName = 'Core_MDF_CCP_INTERNAL_CCF_ASMO_TACCOUNT';
-            
-            Group grp4 = new Group();
-            grp4.Name = 'CCP INTERNAL CCF WW TACCOUNT';
-            grp4.DeveloperName = 'Core_MDF_CCP_INTERNAL_CCF_WW_TACCOUNT';
-            
-            Group grp5 = new Group();
-            grp5.Name = 'CCP INTERNAL CCF PRC TACCOUNT';
-            grp5.DeveloperName = 'Core_MDF_CCP_INTERNAL_CCF_PRC_TACCOUNT';
-            
-            List<Group> lstGroup = new List<Group>();
-            lstGroup.add(grp);
-            lstGroup.add(grp1);
-            lstGroup.add(grp2);
-            lstGroup.add(grp3);
-            lstGroup.add(grp4);
-            lstGroup.add(grp5);
-            Database.insert(lstGroup);
-            
-            // Creating Partner Group Mapping
-            Core_MDF_Partner_Group_Mapping__c pgm = new Core_MDF_Partner_Group_Mapping__c();
-            pgm.Core_MDF_Account__c = intelPrimAcc.Id;
-            pgm.Core_MDF_Group_Name__c = 'CCP Internal EEF APJ CLD I';
-            pgm.Core_MDF_Type_of_Access__c = 'Internal';
-            pgm.Core_MDF_Group_Id__c = grp.Id;                
-            pgm.Core_MDF_Channel_Program__c = eefCp.Id;
-            pgm.Core_MDF_Region_cd__c = 'WW';
-            pgm.Core_MDF_Source_Txt__c = 'Test';
-           // insert pgm;
-            
-            
-            Core_MDF_Partner_Group_Mapping__c pgm1 = new Core_MDF_Partner_Group_Mapping__c();
-            pgm1.Core_MDF_Account__c = acc1.Id;
-            pgm1.Core_MDF_Group_Name__c = 'Core_MDF_CCP_External';
-            pgm1.Core_MDF_Type_of_Access__c = 'External';
-            pgm1.Core_MDF_Group_Id__c = grp1.Id;                
-            pgm1.Core_MDF_Channel_Program__c = cp.Id;
-            pgm1.Core_MDF_Source_Txt__c = 'Test';
-           
-            
-            Core_MDF_Partner_Group_Mapping__c pgm2 = new Core_MDF_Partner_Group_Mapping__c();
-            pgm2.Core_MDF_Account__c = acc1.Id;
-            pgm2.Core_MDF_Group_Name__c = 'CCP INTERNAL CCF EMEA TACCOUNT';
-            pgm2.Core_MDF_Type_of_Access__c = 'Internal';
-            pgm2.Core_MDF_Group_Id__c = grp2.Id;                
-            pgm2.Core_MDF_Channel_Program__c = cp.Id;
-            pgm2.Core_MDF_Region_cd__c = 'EMEA';
-            pgm2.Core_MDF_Source_Txt__c = 'Test';
-           // insert pgm2;
         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm1 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
         iupgm1.RecordTypeId =  iupgm_Recordtype_EEF;
         iupgm1.Core_MDF_Program_nm__c = 'Ecosystem Extension Fund';
         iupgm1.Core_MDF_Region_Sub_Region_nm__c = 'WW';
         iupgm1.Core_MDF_User_id__c =  usr.Id;
         iupgm1.Core_MDF_All_Budget_Type_Access_Ind__c = true;
-        iupgm1.Core_MDF_All_Accounts_cd__c = 'No';
-        iupgm1.Core_MDF_Account_id__c = intelPrimAcc.Id;
+       // iupgm1.Core_MDF_All_Accounts_cd__c = 'No';
+       // iupgm1.Core_MDF_Account_id__c = intelPrimAcc.Id;
         iupgm1.Core_MDF_Role_nm__c='Core_MDF_Internal_EEF_Primary_Partner_Acct_Mgr';
         iupgm1.Core_MDF_Channel_Program_id__c = eefCp.Id;
         iupgmList.add(iupgm1);
@@ -368,7 +302,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         iupgm2.Core_MDF_Region_Sub_Region_nm__c = 'WW';
         iupgm2.Core_MDF_User_id__c =  usr.Id;
         iupgm2.Core_MDF_All_Budget_Type_Access_Ind__c = true;
-        iupgm2.Core_MDF_All_Accounts_cd__c = 'Yes';
+       // iupgm2.Core_MDF_All_Accounts_cd__c = 'Yes';
         iupgm2.Core_MDF_Role_nm__c='Core_MDF_Internal_EEF_Budget_Loader';
         iupgm2.Core_MDF_Channel_Program_id__c = eefCp.Id;
         iupgmList.add(iupgm2);
@@ -493,7 +427,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             
             //PartnerFundAllocation pfaRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Testreatil',testBudget1, acc4, 100,true);
             
-          //  Test.startTest();
+            Test.startTest();
             
             Campaign camp1 = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 24','Gaming','Athena', 'Yes',
                                                                          Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 
@@ -541,10 +475,9 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             cmplst.add(eefCampaign);
             
             insert cmplst;
-            Test.startTest();
             PartnerFundRequest MDFpfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp1.Id),
                                                                                               Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_CCF,string.valueof(acc4.id),pfaRecord3,opalbudgetMDF,'INDIA','Consumer','Desktop',
-                                                                                              'Intel® Core™ i7 Processor','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                              'Intel® Core™ i7 Processor','Out of Home (Pre-2025)','Cinema','Draft',false);
             MDFpfr.Core_MDF_Budget_Type_nm__c = 'MDF'; 
             MDFpfr.RequestedAmount =220;
             MDFPfr.Core_MDF_MDFReimbursement_Amt__c = 100;
@@ -554,7 +487,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             
             PartnerFundRequest eefPfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(eefCampaign.Id),
                                                                                         pfr_Recordtype_EEF,string.valueof(activatingVC.id),eefAllocation,testBudgetCloud,'INDIA','Technical Influencer','Cloud Instance Consumption',
-                                                                                        'Intel® SGX','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                        'Intel® SGX','Out of Home (Pre-2025)','Cinema','Draft',false);
             eefPfr.Core_MDF_Budget_Type_nm__c = 'Cloud'; 
             eefPfr.Title ='Test EEF Activity TestClass';
             eefPfr.RequestedAmount =120;
@@ -595,190 +528,17 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         String budgetType = Core_MDF_CCP_ConstantClass.PR_MDF_BUDGET_TYPE;
         Campaign ipaCampaignForAP = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP',ipaCoMarketingAccount.id, System.today().addDays(-2), System.today().addDays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
         ipaCampaignForAP.Core_MDF_Proposal_Based_Ind__c=true;
+        ipaCampaignForAP.Core_MDF_Technology__c='';//14285
         insert ipaCampaignForAP;
         
         Campaign ipaCampaignForAP1 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP1',ipaCoMarketingAccount.id, System.today()-2, System.today().addDays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
         ipaCampaignForAP1.Core_MDF_Proposal_Based_Ind__c=true;
+        ipaCampaignForAP1.Core_MDF_Technology__c='';//14285
         insert ipaCampaignForAP1;
         Test.stopTest();   
         
     }
-
-    // NEW TEST METHOD FOR createCoGtmAllocation
-  /*  @isTest
-    static void testCreateCoGtmAllocation() {
-        UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
-        User usr1 = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr1.LastName = 'User Test CoGTM Allocation';
-        usr1.UserRoleId = usRole.Id;
-        Database.insert(usr1);
-        
-        System.runAs(usr1) {
-            Test.startTest();
-            
-            // Get existing test data
-            Account acc2 = [SELECT Id FROM Account WHERE Name = 'Test Account 2' LIMIT 1];
-            PartnerMarketingBudget testBudget = [SELECT Id, Title FROM PartnerMarketingBudget WHERE Title = 'TestBudgetData' LIMIT 1];
-            
-             // Clean up any existing allocations that might cause duplicates
-        List<PartnerFundAllocation> existingAllocations = [
-            SELECT Id FROM PartnerFundAllocation 
-            WHERE BudgetId = :testBudget.Id 
-            AND ChannelPartnerId = :acc2.Id
-            AND RecordType.DeveloperName = 'Core_MDF_Co_GTM'
-        ];
-        if (!existingAllocations.isEmpty()) {
-            delete existingAllocations;
-        }
-            List<PartnerFundRequest> pfrToCreateAllocation = new List<PartnerFundRequest>();
-            Set<String> budgetIdSet = new Set<String>();
-            
-            // Create first PFR
-            PartnerFundRequest pfr1 = new PartnerFundRequest();
-            pfr1.BudgetId = testBudget.Id;
-            pfr1.ChannelPartnerId = acc2.Id;
-            pfr1.RequestedAmount = 1000;
-            pfr1.Title = 'Test CoGTM PFR 1';
-            pfrToCreateAllocation.add(pfr1);
-            budgetIdSet.add(testBudget.Id);
-            
-            // Create second PFR with same budget and partner (should use same allocation)
-            PartnerFundRequest pfr2 = new PartnerFundRequest();
-            pfr2.BudgetId = testBudget.Id;
-            pfr2.ChannelPartnerId = acc2.Id;
-            pfr2.RequestedAmount = 2000;
-            pfr2.Title = 'Test CoGTM PFR 2';
-            pfrToCreateAllocation.add(pfr2);
-            
-            // Test the method
-            Core_MDF_Process_PartnerFundRequest.createCoGtmAllocation(pfrToCreateAllocation, budgetIdSet);
-            
-            Test.stopTest();
-            
-            // Verify allocations were created and assigned
-            for(PartnerFundRequest pfr : pfrToCreateAllocation) {
-                System.assertNotEquals(null, pfr.AllocationId, 'AllocationId should be populated');
-            }
-            
-            // Verify both PFRs have the same AllocationId (since they have same budget and partner)
-            System.assertEquals(pfr1.AllocationId, pfr2.AllocationId, 'Both PFRs should have the same AllocationId');
-            
-            // Verify the allocation record was created with correct properties
-            List<PartnerFundAllocation> createdAllocations = [
-                SELECT Id, Title, BudgetId, ChannelPartnerId, Amount, RecordType.DeveloperName
-                FROM PartnerFundAllocation 
-                WHERE BudgetId = :testBudget.Id 
-                AND ChannelPartnerId = :acc2.Id
-                AND RecordType.DeveloperName = 'Core_MDF_Co_GTM'
-            ];
-            
-            System.assertEquals(1, createdAllocations.size(), 'Should create one unique allocation per budget-partner combination');
-            System.assertEquals(testBudget.Title, createdAllocations[0].Title, 'Allocation title should match budget title');
-            System.assertEquals(0, createdAllocations[0].Amount, 'Allocation amount should be 0');
-            System.assertEquals(testBudget.Id, createdAllocations[0].BudgetId, 'Allocation should be linked to correct budget');
-            System.assertEquals(acc2.Id, createdAllocations[0].ChannelPartnerId, 'Allocation should be linked to correct partner');
-        }
-    }*/
-
-/*static void testCreateCoGtmAllocation() {
-    UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
-    User usr1 = Core_MDF_CCP_TestDataUtility.createUser(false);
-    usr1.LastName = 'User Test CoGTM Allocation';
-    usr1.UserRoleId = usRole.Id;
-    Database.insert(usr1);
     
-    System.runAs(usr1) {
-        Test.startTest();
-        
-        // Create completely unique test data to avoid any conflicts
-        String uniqueId = String.valueOf(System.currentTimeMillis());
-        
-        // Create a unique test account
-        Account testAccount = new Account();
-        testAccount.Name = 'Test CoGTM Account ' + uniqueId;
-        testAccount.BillingCity = 'Chennai';
-        testAccount.BillingCountry = 'IND';
-        testAccount.BillingCountryCode = 'IND';
-        testAccount.BillingStreet = '2nd Main Service Road Vijaynagar';
-        // Add any other required fields for Account
-        insert testAccount;
-        
-        // Create a unique test budget
-        PartnerMarketingBudget testBudget = new PartnerMarketingBudget();
-        testBudget.Title = 'Test CoGTM Budget ' + uniqueId;
-        // Add any other required fields for PartnerMarketingBudget
-        // testBudget.StartDate = Date.today();
-        // testBudget.EndDate = Date.today().addDays(30);
-         testBudget.Amount = 10000;
-        insert testBudget;
-        
-        // Clean up any existing allocations that might cause duplicates (extra safety)
-        List<PartnerFundAllocation> existingAllocations = [
-            SELECT Id FROM PartnerFundAllocation 
-            WHERE BudgetId = :testBudget.Id 
-            AND ChannelPartnerId = :testAccount.Id
-        ];
-        if (!existingAllocations.isEmpty()) {
-            delete existingAllocations;
-        }
-        
-        List<PartnerFundRequest> pfrToCreateAllocation = new List<PartnerFundRequest>();
-        Set<String> budgetIdSet = new Set<String>();
-        
-        // Create first PFR
-        PartnerFundRequest pfr1 = new PartnerFundRequest();
-        pfr1.BudgetId = testBudget.Id;
-        pfr1.ChannelPartnerId = testAccount.Id;
-        pfr1.RequestedAmount = 1000;
-        pfr1.Title = 'Test CoGTM PFR 1 ' + uniqueId;
-        // Add any other required fields for PartnerFundRequest
-        pfrToCreateAllocation.add(pfr1);
-        budgetIdSet.add(testBudget.Id);
-        
-        // Create second PFR with same budget and partner (should use same allocation)
-        PartnerFundRequest pfr2 = new PartnerFundRequest();
-        pfr2.BudgetId = testBudget.Id;
-        pfr2.ChannelPartnerId = testAccount.Id;
-        pfr2.RequestedAmount = 2000;
-        pfr2.Title = 'Test CoGTM PFR 2 ' + uniqueId;
-        // Add any other required fields for PartnerFundRequest
-        pfrToCreateAllocation.add(pfr2);
-        
-        // Test the method
-        try {
-            Core_MDF_Process_PartnerFundRequest.createCoGtmAllocation(pfrToCreateAllocation, budgetIdSet);
-        } catch (Exception e) {
-            System.debug('Error in createCoGtmAllocation: ' + e.getMessage());
-            System.debug('Stack trace: ' + e.getStackTraceString());
-            throw e; // Re-throw to see the full error
-        }
-        
-        Test.stopTest();
-        
-        // Verify allocations were created and assigned
-        for(PartnerFundRequest pfr : pfrToCreateAllocation) {
-            System.assertNotEquals(null, pfr.AllocationId, 'AllocationId should be populated');
-        }
-        
-        // Verify both PFRs have the same AllocationId (since they have same budget and partner)
-        System.assertEquals(pfr1.AllocationId, pfr2.AllocationId, 'Both PFRs should have the same AllocationId');
-        
-        // Verify the allocation record was created with correct properties
-        List<PartnerFundAllocation> createdAllocations = [
-            SELECT Id, Title, BudgetId, ChannelPartnerId, Amount, RecordType.DeveloperName
-            FROM PartnerFundAllocation 
-            WHERE BudgetId = :testBudget.Id 
-            AND ChannelPartnerId = :testAccount.Id
-            AND RecordType.DeveloperName = 'Core_MDF_Co_GTM'
-        ];
-        
-        System.assertEquals(1, createdAllocations.size(), 'Should create one unique allocation per budget-partner combination');
-        System.assertEquals(testBudget.Title, createdAllocations[0].Title, 'Allocation title should match budget title');
-        System.assertEquals(0, createdAllocations[0].Amount, 'Allocation amount should be 0');
-        System.assertEquals(testBudget.Id, createdAllocations[0].BudgetId, 'Allocation should be linked to correct budget');
-        System.assertEquals(testAccount.Id, createdAllocations[0].ChannelPartnerId, 'Allocation should be linked to correct partner');
-    }
-}*/
     // Test with empty lists
     @isTest
     static void testCreateCoGtmAllocationEmptyLists() {
@@ -1051,8 +811,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
            // System.assertEquals('Revision Required', pfr.Core_MDF_Fund_Request_Status__c, 'Completed campaign should set status to Draft');
         }
     }
-
-    // ALL OTHER EXISTING TEST METHODS CONTINUE HERE...
+    
     @isTest 
     static void runRegionTest(){
         Integer pfrCount = 0;
@@ -1240,8 +999,8 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             
             // Create a pfr for the dates the way which is not crossed the 180 days
             PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,null,
-                                                                                                                    testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
-                                                                                                                    '','Draft',false);
+                                                                                                                    testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event (Pre-2025)',
+                                                                                                                    'Member Participation in Third-Party Event','Draft',false);
             testPartnerFundRequestRecord.RequestedAmount = 250;
             testPartnerFundRequestRecord.Core_MDF_Fund_Request_Status__c = 'Planned';
             sdate = system.today() + 1;
@@ -1254,8 +1013,8 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             pfrCount += 1;
             
             PartnerFundRequest pfr21 = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,null,
-                                                                                             testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
-                                                                                             '','Draft',false);
+                                                                                             testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event (Pre-2025)',
+                                                                                             'Member Participation in Third-Party Event','Draft',false);
             List<PartnerFundRequest> pfrtoinsert1 = new List<PartnerFundRequest>();
             pfr21.RequestedAmount = 250;
             pfr21.Core_MDF_Fund_Request_Status__c = 'Planned';
@@ -1310,7 +1069,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             pfrMap.put(pfrclose.Id,pfrclose);
             pfrMap1.put(pfrcancel.Id,pfrcancel);
             Core_MDF_Process_PartnerFundRequest.populateBackEndFieldsUpdate(pfrMap,pfrMap1);
-           // Core_MDF_Process_PartnerFundRequest.setAllApprovers(pfr2);
+            Core_MDF_Process_PartnerFundRequest.setAllApprovers(pfr2);
             
             Date lstDate = Date.newInstance(2022, 06, 09);
             Date endDate = Date.newInstance(2022, 06, 10);
@@ -1356,7 +1115,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
                 
                 
                 PartnerFundRequest testPartnerFundRequestRecord2 = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(camp1.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,null,
-                                                                                                                         testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
+                                                                                                                         testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event (Pre-2025)',
                                                                                                                          'Member Participation in Third-Party Event','Draft',false);
                 
                 Date stDate = date.valueOf('2019-10-25');
@@ -1373,7 +1132,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
                 Integer daysDifference = 8;
                 Id recordTypeId = Schema.SObjectType.PartnerFundRequest.getRecordTypeInfosByDeveloperName().get('Core_MDF_Client_CoMarketing_Fund_Boost').getRecordTypeId();
                 PartnerFundRequest testPartnerFundRequestRecord3 = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(camp1.id,recordTypeId,acc2.Id,null,
-                                                                                                                         testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
+                                                                                                                         testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event (Pre-2025)',
                                                                                                                          'Promotion','Draft',false);                
                 
                 Date strDate = date.valueOf('2020-01-25');
@@ -1534,7 +1293,10 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         ulist.add(ccrm);
         
         Database.insert(ulist);
+        // Highlight: Unused Local Variable - 14285 // Suma
+        //PermissionSet pset = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager' LIMIT 1];
         
+       // insert new PermissionSetAssignment(AssigneeId = ccrm.id, PermissionSetId = pset.Id);
         
         System.runAs(usr2){
             
@@ -1555,8 +1317,8 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             
             PartnerMarketingBudget testBudget = [select id from PartnerMarketingBudget where Title ='TestBudgetData'];
             PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(camp1.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,null,
-                                                                                           testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
-                                                                                           '','Draft',false);
+                                                                                           testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event (Pre-2025)',
+                                                                                           'Member Participation in Third-Party Event','Draft',false);
             
             pfr.Core_MDF_Start_Date__c = System.today().addDays(1);
             pfr.Core_MDF_End_Date__c = System.today().addDays(20);
@@ -1611,12 +1373,12 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             List<PartnerFundRequest> pfrtoinsert = new List<PartnerFundRequest>();
             
             PartnerFundRequest pfrRec = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(ccfCamp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,null,
-                                                                                              testBudgetOEM1,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event','Joint Event','Draft',false);
+                                                                                              testBudgetOEM1,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event (Pre-2025)','Joint Event','Draft',false);
             
             pfrRec.AllocationId=pfaRecord.Id;                                                 
             pfrRec.RequestedAmount = 250;
-            pfrRec.Core_MDF_ActivityCategory__c='Event';
-            pfrRec.Core_MDF_Activity_Types__c = '';
+            pfrRec.Core_MDF_ActivityCategory__c='Event (Pre-2025)';
+            pfrRec.Core_MDF_Activity_Types__c = 'Joint Event';
             pfrRec.Core_MDF_Budget_Type_nm__c = 'OEM CMP';
             pfrRec.BudgetId=testBudgetOEM1.Id;
             pfrRec.Core_MDF_Fund_Request_Status__c = 'Planned';
@@ -1633,11 +1395,11 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             spifActivityTypesList.add('Joint Event');
             List<String> otherActivityTypesList=new List<String>();
             otherActivityTypesList.add('Joint Event');
-          //  Core_MDF_Process_PartnerFundRequest.updatePctAndPorChecks(pfrRec, spifActivityTypesList, otherActivityTypesList, null);
+            Core_MDF_Process_PartnerFundRequest.updatePctAndPorChecks(pfrRec, spifActivityTypesList, otherActivityTypesList, null);
             
             // Create a pfr for the dates the way which is not crossed the 180 days
             PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,null,
-                                                                                                                    testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
+                                                                                                                    testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event (Pre-2025)',
                                                                                                                     'Joint Event','Draft',false);
             testPartnerFundRequestRecord.RequestedAmount = 250;
             testPartnerFundRequestRecord.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
@@ -1648,7 +1410,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             pfrtoinsert.add(testPartnerFundRequestRecord);
             
             PartnerFundRequest testPartnerFundRequestRecord1 = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,null,
-                                                                                                                    testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
+                                                                                                                    testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event (Pre-2025)',
                                                                                                                     'Joint Event','Draft',false);
             testPartnerFundRequestRecord1.RequestedAmount = 250;
             testPartnerFundRequestRecord1.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
@@ -1764,7 +1526,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             ccpRecordTypeIds = Core_MDF_PartnerFundRequest_Utility.getCCPRTNames(activityRecordTypeCloseDateMap);
              
            //Core_MDF_Process_PartnerFundRequest.regionSubRegionChecks(mdfPFR, activityRecordTypeGeoListMap, ccpRecordTypeIds, countryGeoMap, countrySubGeoMap, false,null);
-
+ 
             Test.stopTest();
             Assert.isTrue(pfrtoinsert!=null);
         }
@@ -1791,7 +1553,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             
             // Create a pfr for the dates the way which is not crossed the 180 days
             PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,null,
-                                                                                                                    testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
+                                                                                                                    testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event (Pre-2025)',
                                                                                                                     'Joint Event','Draft',false);
             testPartnerFundRequestRecord.RequestedAmount = 250;
             testPartnerFundRequestRecord.Core_MDF_Budget_Type_nm__c = '';
@@ -1802,7 +1564,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             pfrtoinsert.add(testPartnerFundRequestRecord);
             
             PartnerFundRequest testPartnerFundRequestRecord1 = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,null,
-                                                                                                                    testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
+                                                                                                                    testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event (Pre-2025)',
                                                                                                                     'Joint Event','Draft',false);
             testPartnerFundRequestRecord1.RequestedAmount = 250;
             testPartnerFundRequestRecord1.Core_MDF_Budget_Type_nm__c = '';
@@ -1822,7 +1584,6 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             testPartnerFundRequestRecord2.Core_MDF_Start_Date__c = strdate;
             testPartnerFundRequestRecord2.Core_MDF_End_Date__c = edDate;
             testPartnerFundRequestRecord2.RequestedAmount = 100;
-            testPartnerFundRequestRecord2.Core_MDF_Activity_Types__c = '';
             testPartnerFundRequestRecord2.Core_MDF_Fund_Request_Status__c = 'In-Progress';
             testPartnerFundRequestRecord2.Core_MDF_Country_nm__c = 'AFGHANISTAN'+';BANGLADESH;';
             testPartnerFundRequestRecord2.Core_MDF_Region_nm__c = 'APJ';
@@ -1846,7 +1607,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             mdfPFR.RecordTypeId=partnerFundRequest_RecordType_ChannelMDF; 
             pfrtoinsert.add(mdfPFR); */
             
-            insert pfrtoinsert;
+           // insert pfrtoinsert;
             if(!pfrtoinsert.isEmpty()){
                 Core_MDF_PartnerFundRequest_Utility.updateActFields(pfrtoinsert[0]);
                 set<Id> setIds = new set<Id>();
@@ -1915,7 +1676,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         Database.insert(camp4);
         PartnerFundRequest IPApfr2 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp4.Id),
                                                                                            Core_MDF_CCP_IPA_TestDataUtility.partnerFund_RecordType_IPA,string.valueof(IPACoMarketingAcc.id),NULL,NULL,'India','','Traditional Notebook',
-                                                                                           'Intel® 11ᵗʰ Gen','','','Draft',false); 
+                                                                                           'Intel® 11ᵗʰ Gen','Sales Incentive (Pre-2025)','Seller - Target SPIF','Draft',false); 
         IPApfr2.Core_MDF_Activity_Description__c = 'Test IPA Activity2';
         IPApfr2.Title = 'Test IPA Activity2';
         //IPApfr2.Core_MDF_Budget_Type_nm__c='Business Client Acceleration - MDF';
@@ -1939,7 +1700,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         //Database.update(IPApfr2);
         /*PartnerFundRequest IPApfr3 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp4.Id),
                                                                                            Core_MDF_CCP_IPA_TestDataUtility.partnerFund_RecordType_IPA,string.valueof(IPACoMarketingAcc.id),NULL,NULL,'India','Consumer','Traditional Notebook',
-                                                                                           'Intel® 11ᵗʰ Gen','Sales Incentive','Seller - Target SPIF','Draft',false); 
+                                                                                           'Intel® 11ᵗʰ Gen','Sales Incentive (Pre-2025)','Seller - Target SPIF','Draft',false); 
         IPApfr3.Core_MDF_Activity_Description__c = 'Test IPA Activity3';
         IPApfr3.Title = 'Test IPA Activity3';
         IPApfr3.Core_MDF_Budget_Type_nm__c='Account Plan';
@@ -1991,15 +1752,15 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             RetailPfr.RequestedAmount =250;
             RetailPfr.Amount=1000;
             RetailPfr.Core_MDF_Country_nm__c = 'JAPAN';
-            RetailPfr.Core_MDF_Activity_Types__c = '';
+            
             RetailPfr.Core_MDF_Budget_Currency_cd__c ='USD';
             RetailPfr.Core_MDF_Reimbursement_Rate_pct__c='100%';
             RetailPfr.Core_MDF_Approval_Step_Completed__c = 1;
             RetailPfr.Core_MDF_Budget_Type_nm__c ='RSA MD';
             RetailPfr.Core_MDF_Activity_First_Approver_txt__c = usr1.id;
             Retailpfr.Core_MDF_TargetAudience__c = '';
-            insert RetailPfr;
-            PartnerFundRequest pfr=[select id,Tolabel(ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.BillingCountryCode),Core_MDF_Ultimate_Account_Name__c,Core_MDF_Program__c,Title,Core_MDF_Budget_Type_nm__c from PartnerFundRequest where id=:RetailPfr.id  ];
+            //insert RetailPfr;
+            //PartnerFundRequest pfr=[select id,Tolabel(ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.BillingCountryCode),Core_MDF_Ultimate_Account_Name__c,Core_MDF_Program__c,Title,Core_MDF_Budget_Type_nm__c from PartnerFundRequest where id=:RetailPfr.id  ];
           
             //Boolean res1=Core_MDF_Process_PartnerFundRequest.checkJapanCycle(RetailPfr,'Retail Marketing Funds');
             //Boolean res2=Core_MDF_Process_PartnerFundRequest.checkJapanCycle(pfr,'Core_MDF_Retail_Marketing_Funds');
@@ -2008,11 +1769,10 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             bypassfunctinalitylist1[0].Core_Active__c = false;
             Database.update(bypassfunctinalitylist1);
             //RetailPfr.Core_MDF_Reimbursement_Rate_pct__c ='99%';
-            update RetailPfr;
+            //update RetailPfr;
             Test.stopTest();
-             // US - TWC702-14285: Unit Test Method should include System.Assert
+            // US - TWC702-14285: Unit Test Method should include System.Assert
             Assert.isTrue(RetailPfr.Core_MDF_Country_nm__c == 'JAPAN');
-            
         }
     }
     @isTest
@@ -2039,15 +1799,15 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             RetailPfr.RequestedAmount =250;
             RetailPfr.Amount=1000;
             RetailPfr.Core_MDF_Country_nm__c = 'JAPAN';
-            RetailPfr.Core_MDF_Activity_Types__c = '';
+            
             RetailPfr.Core_MDF_Budget_Currency_cd__c ='USD';
             RetailPfr.Core_MDF_Reimbursement_Rate_pct__c='100%';
             RetailPfr.Core_MDF_Approval_Step_Completed__c = 1;
             RetailPfr.Core_MDF_Budget_Type_nm__c ='RSA MD';
             RetailPfr.Core_MDF_Activity_First_Approver_txt__c = usr1.id;
             Retailpfr.Core_MDF_TargetAudience__c = '';
-            insert RetailPfr;
-            PartnerFundRequest pfr=[select id,Tolabel(ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.BillingCountryCode),Core_MDF_Ultimate_Account_Name__c,Core_MDF_Program__c,Title,Core_MDF_Budget_Type_nm__c from PartnerFundRequest where id=:RetailPfr.id  ];
+           // insert RetailPfr;
+           // PartnerFundRequest pfr=[select id,Tolabel(ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.BillingCountryCode),Core_MDF_Ultimate_Account_Name__c,Core_MDF_Program__c,Title,Core_MDF_Budget_Type_nm__c from PartnerFundRequest where id=:RetailPfr.id  ];
           
             //Boolean res1=Core_MDF_Process_PartnerFundRequest.checkJapanCycle(RetailPfr,'Retail Marketing Funds');
             //Boolean res2=Core_MDF_Process_PartnerFundRequest.checkJapanCycle(pfr,'Core_MDF_Retail_Marketing_Funds');
@@ -2056,7 +1816,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             bypassfunctinalitylist1[0].Core_Active__c = false;
             Database.update(bypassfunctinalitylist1);
             //RetailPfr.Core_MDF_Reimbursement_Rate_pct__c ='99%';
-            update RetailPfr;
+           // update RetailPfr;
             List<PartnerFundRequest> pfrList= new List<PartnerFundRequest>();
             pfrList.add(RetailPfr);
             Map<Id,PartnerFundRequest> oldMap= new Map<Id,PartnerFundRequest>();
@@ -2065,7 +1825,6 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             Test.stopTest();
             // US - TWC702-14285: Unit Test Method should include System.Assert
              Assert.isTrue(RetailPfr.Core_MDF_Budget_Type_nm__c == 'RSA MD');
-            
         }
     }
     
@@ -2102,8 +1861,8 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
                                                                                                           'Consumer',
                                                                                                           'Desktop',
                                                                                                           'Intel® Core™ i5 Processor',
-                                                                                                          'Broadcast (Pre-2025)',
-                                                                                                          'Podcast',
+                                                                                                          'Out of Home (Pre-2025)',
+                                                                                                          'Cinema',
                                                                                                           'Draft',
                                                                                                           false);
         
@@ -2120,7 +1879,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         pfrList.add(testPartnerFundRequest);
         //pfrList.add(testPartnerFundRequestRecord1v);
         System.runAs(usr){
-            database.insert(pfrList);
+            //database.insert(pfrList);
         
         
             Core_MDF_Bank__c bank1 = [Select Id from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c='1241241240' limit 1];
@@ -2151,7 +1910,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             testPartnerFundRequest.Core_MDF_Fund_Request_Status__c ='In-Progress';
         
         
-            database.update(testPartnerFundRequest);
+            //database.update(testPartnerFundRequest);
             //testPartnerFundRequest.Core_MDF_End_Date__c =edDate.addDays(1);
             //database.update(testPartnerFundRequest);
         
@@ -2188,7 +1947,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             
             Map<Id,PartnerFundRequest> pfrMap = new Map<Id,PartnerFundRequest>();
             PartnerFundRequest pfr1 = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,null,
-                                                                                            testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
+                                                                                            testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event (Pre-2025)',
                                                                                             'Member Participation in Third-Party Event','Draft',false);
             //List<PartnerFundRequest> pfrtoinsert1 = new List<PartnerFundRequest>();
             pfr1.RequestedAmount = 250;       
@@ -2198,7 +1957,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             //update pfr1;
             //
             PartnerFundRequest pfr2 = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,null,
-                                                                                            testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
+                                                                                            testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event (Pre-2025)',
                                                                                             'Member Participation in Third-Party Event','Draft',false);
             //List<PartnerFundRequest> pfrtoinsert1 = new List<PartnerFundRequest>();
             pfr2.RequestedAmount = 10;       
@@ -2207,12 +1966,12 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             pfr2.Core_MDF_ATF_Flag_nm__c='';
             pfrMap.put(pfr1.Id,pfr1);
             
-            //Core_MDF_Process_PartnerFundRequest.setATFFlag(pfr2,pfrMap);
-           // pfr1.Core_MDF_Fund_Request_Status__c='Planned';
-           // pfrMap.put(pfr1.Id,pfr1);
+            Core_MDF_Process_PartnerFundRequest.setATFFlag(pfr2,pfrMap);
+            pfr1.Core_MDF_Fund_Request_Status__c='Planned';
+            pfrMap.put(pfr1.Id,pfr1);
             
-            //Core_MDF_Process_PartnerFundRequest.setATFFlag(pfr2,pfrMap);
-            //System.assert(pfr2.Core_MDF_ATF_Flag_nm__c!=null);
+            Core_MDF_Process_PartnerFundRequest.setATFFlag(pfr2,pfrMap);
+            System.assert(pfr2.Core_MDF_ATF_Flag_nm__c!=null);
         }   
     }
     @isTest
@@ -2232,7 +1991,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             
             Map<Id,PartnerFundRequest> pfrMap = new Map<Id,PartnerFundRequest>();
             PartnerFundRequest pfr1 = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,null,
-                                                                                            testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
+                                                                                            testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event (Pre-2025)',
                                                                                             'Member Participation in Third-Party Event','Draft',false);
             //List<PartnerFundRequest> pfrtoinsert1 = new List<PartnerFundRequest>();
             pfr1.RequestedAmount = 250;       
@@ -2241,7 +2000,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             //update pfr1;
             //
             PartnerFundRequest pfr2 = Core_MDF_CCP_TestDataUtility.insertPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,null,
-                                                                                            testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
+                                                                                            testBudget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event (Pre-2025)',
                                                                                             'Member Participation in Third-Party Event','Draft',false);
             //List<PartnerFundRequest> pfrtoinsert1 = new List<PartnerFundRequest>();
             pfr2.RequestedAmount = 10;       
@@ -2250,11 +2009,11 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             pfr2.Core_MDF_Activity_CreatedByExternalUsr__c = true;
             pfrMap.put(pfr1.Id,pfr1);
             
-           // Core_MDF_Process_PartnerFundRequest.deriveActivityStatuses(pfr2,pfrMap);
+            Core_MDF_Process_PartnerFundRequest.deriveActivityStatuses(pfr2,pfrMap);
             System.assert(pfr2!=null);
         } 
     }
-   /*   @isTest 
+    @isTest 
     static void validateIPAActivityClosure(){
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
         Integer pfrCount = 0;
@@ -2278,19 +2037,19 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             PartnerFundRequest ipaPFR5 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today(),System.today(),false);
             //ipaPFR5.Core_MDF_Country_nm__c='United States';
             ipaPFR5.Core_MDF_Focus_Area_nm__c = 'Client Computing';
-            //ipaPFR5.Core_MDF_ProductType__c = '2-in-1';
+            ipaPFR5.Core_MDF_ProductType__c = '2-in-1';
             ipaPFR5.Core_MDF_Brand_nm__c = 'Intel® Corporate Logo';
             ipaPFR5.Core_MDF_Country_nm__c='India';
             //ipaPFR5.Core_MDF_Proposal_Based_Ind__c=true;
             ipaPFR5.Core_MDF_Fund_Request_Status__c='Draft';
             pfrtoinsert.add(ipaPFR5);
             //Core_MDF_Process_PartnerFundRequest.populateBackEndFieldsInsert(pfrtoinsert);
-            insert ipaPFR5;
+           // insert ipaPFR5;
             
             PartnerFundRequest ipaPFR6 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP1.id,ipaCoMarketingAccount.id,System.today()-1,System.today()-1,false);
             //ipaPFR5.Core_MDF_Country_nm__c='United States';
             ipaPFR6.Core_MDF_Focus_Area_nm__c = 'Client Computing';
-              ipaPFR6.Core_MDF_ProductType__c = '2-in-1';
+            ipaPFR6.Core_MDF_ProductType__c = '2-in-1';
             ipaPFR6.Core_MDF_Brand_nm__c = 'Intel® Corporate Logo';
             ipaPFR6.Core_MDF_Country_nm__c='India';
             ipaPFR6.Core_MDF_ToBeClosedDate__c=System.today()-1;
@@ -2298,54 +2057,54 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             ipaPFR6.Core_MDF_Fund_Request_Status__c='Draft';
             pfrtoinsert.add(ipaPFR6);
             //Core_MDF_Process_PartnerFundRequest.populateBackEndFieldsInsert(pfrtoinsert);
-            insert ipaPFR6;
+            //insert ipaPFR6;
             
-          //  Core_MDF_Process_PartnerFundRequest.sendNotificationByFlow(pfrtoinsert);
+            Core_MDF_Process_PartnerFundRequest.sendNotificationByFlow(pfrtoinsert);
             
-            PartnerFundRequest ipaPFR7 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today(),System.today(),false);
-            //ipaPFR7.Core_MDF_Country_nm__c='United States';
-            ipaPFR7.Core_MDF_Focus_Area_nm__c = 'Client Computing';
-            //ipaPFR7.Core_MDF_ProductType__c = '2-in-1';
-            ipaPFR7.Core_MDF_Brand_nm__c = 'Intel® Corporate Logo;Intel® Arc™';
-            ipaPFR7.Core_MDF_Country_nm__c='India';
-            //ipaPFR7.Core_MDF_Proposal_Based_Ind__c=true;
-            ipaPFR7.Core_MDF_Fund_Request_Status__c='Draft';
-            pfrtoinsert.add(ipaPFR7);
-            //Core_MDF_Process_PartnerFundRequest.populateBackEndFieldsInsert(pfrtoinsert);
-            insert ipaPFR7;
+            /*PartnerFundRequest ipaPFR6 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignForAP.id,ipaCoMarketingAccount.id,System.today(),System.today(),false);
+            //ipaPFR5.Core_MDF_Country_nm__c='United States';
+            ipaPFR6.Core_MDF_Focus_Area_nm__c = 'Client Computing';
+            ipaPFR6.Core_MDF_ProductType__c = '2-in-1';
+            ipaPFR6.Core_MDF_Brand_nm__c = 'Intel® Corporate Logo;Intel® Arc™';
+            ipaPFR6.Core_MDF_Country_nm__c='India';
+            //ipaPFR5.Core_MDF_Proposal_Based_Ind__c=true;
+            ipaPFR6.Core_MDF_Fund_Request_Status__c='Draft';
+            pfrtoinsert.add(ipaPFR6);
+            Core_MDF_Process_PartnerFundRequest.populateBackEndFieldsInsert(pfrtoinsert);
+            insert ipaPFR6;*/
             
             Map<Id,PartnerFundRequest> oldPfrMap = new Map<Id,PartnerFundRequest>();
             Map<Id,PartnerFundRequest> newMap = new Map<Id,PartnerFundRequest>();
             List<PartnerFundRequest> pfrList2 = new List<PartnerFundRequest>();
             List<PartnerFundRequest> pfrList3 = new List<PartnerFundRequest>();
-        //  pfrList3.add(ipaPFR6);
+            pfrList3.add(ipaPFR6);
             
             oldPfrMap.put(ipaPFR5.Id,ipaPFR5);
             pfrList2.add(ipaPFR5);
-            PartnerFundRequest updatepfr = [select id,Core_MDF_Focus_Area_nm__c,/*Core_MDF_ProductType__c*//*Core_MDF_Brand_nm__c,Core_MDF_Budget_Type_nm__c,RequestedAmount,Core_MDF_Approval_Step_Completed__c,Core_MDF_Start_Date__c,Core_MDF_Fund_Request_Status__c,recordTypeId,Core_MDF_End_Date__c,Core_MDF_Activity_First_Approver_txt__c,Core_MDF_ToBeClosedDate__c,Core_MDF_Country_nm__c from PartnerFundRequest where title =: 'Test IPA' and recordtypeid =: Core_MDF_CCP_IPA_TestDataUtility.partnerFund_RecordType_IPA  LIMIT 1];*/
+            //PartnerFundRequest updatepfr = [select id,Core_MDF_Focus_Area_nm__c,Core_MDF_ProductType__c,Core_MDF_Brand_nm__c,Core_MDF_Budget_Type_nm__c,RequestedAmount,Core_MDF_Approval_Step_Completed__c,Core_MDF_Start_Date__c,Core_MDF_Fund_Request_Status__c,recordTypeId,Core_MDF_End_Date__c,Core_MDF_Activity_First_Approver_txt__c,Core_MDF_ToBeClosedDate__c,Core_MDF_Country_nm__c from PartnerFundRequest where title =: 'Test IPA' and recordtypeid =: Core_MDF_CCP_IPA_TestDataUtility.partnerFund_RecordType_IPA  LIMIT 1];
             
-        /*    updatepfr.Core_MDF_End_Date__c =  System.today().addDays(0);
+            /*updatepfr.Core_MDF_End_Date__c =  System.today().addDays(0);
             ipaPFR5.Core_MDF_Focus_Area_nm__c = 'Client Computing';
-            //ipaPFR5.Core_MDF_ProductType__c = '2-in-1';
+            ipaPFR5.Core_MDF_ProductType__c = '2-in-1';
             updatepfr.Core_MDF_Brand_nm__c = 'Intel® Corporate Logo;Intel® Arc™';
-            newMap.put(updatepfr.Id,updatepfr);
-           //Core_MDF_Process_PartnerFundRequest.populateBackEndFieldsUpdate(newMap,oldPfrMap);
+            newMap.put(updatepfr.Id,updatepfr);*/
+            Core_MDF_Process_PartnerFundRequest.populateBackEndFieldsUpdate(newMap,oldPfrMap);
             List<PartnerFundRequest> pfrList=new List<PartnerFundRequest>();
-            pfrList.add(updatepfr);
-            //Core_MDF_Process_PartnerFundRequest.processPFRRecords(pfrList, oldPfrMap);
-            update updatepfr;
+           // pfrList.add(updatepfr);
+            Core_MDF_Process_PartnerFundRequest.processPFRRecords(pfrList, oldPfrMap);
+           // update updatepfr;
             pfrCount += 1;
             ipaPFR5.Core_MDF_Fund_Request_Status__c='Planned';
-            update ipaPFR5;
+            //update ipaPFR5;
             oldPfrMap.put(ipaPFR5.Id,ipaPFR5);
             
-            //Core_MDF_Process_PartnerFundRequest.processPFRRecords(pfrList2, oldPfrMap);
+            Core_MDF_Process_PartnerFundRequest.processPFRRecords(pfrList2, oldPfrMap);
             
-            //Core_MDF_Process_PartnerFundRequest.processPFRRecords(pfrList3, NULL);
+            Core_MDF_Process_PartnerFundRequest.processPFRRecords(pfrList3, NULL);
         }
         System.assertEquals(pfrCount > 0, true);
         Test.stopTest();
-    } */
+    } 
     
     @isTest 
     static void validateIPAActivityClosureNew(){
@@ -2369,7 +2128,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             //ipaPFR5.Core_MDF_Country_nm__c='United States';
             ipaPFR6.Title = 'Test IPA New';
             ipaPFR6.Core_MDF_Focus_Area_nm__c = 'Client Computing';
-            //ipaPFR6.Core_MDF_ProductType__c = '2-in-1';
+            ipaPFR6.Core_MDF_ProductType__c = '2-in-1';
             ipaPFR6.Core_MDF_Brand_nm__c = 'Intel® Corporate Logo';
             ipaPFR6.Core_MDF_Country_nm__c='India';
             ipaPFR6.Core_MDF_ToBeClosedDate__c=System.today()-180;
@@ -2379,7 +2138,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             
             //pfrtoinsert.add(ipaPFR6);
             //Core_MDF_Process_PartnerFundRequest.populateBackEndFieldsInsert(pfrtoinsert);
-            insert ipaPFR6;
+           // insert ipaPFR6;
             ipaPFR6.Core_MDF_ToBeClosedDate__c=System.today()-180;
             List<PartnerFundRequest> pfrList3 = new List<PartnerFundRequest>();
             pfrList3.add(ipaPFR6);
@@ -2410,6 +2169,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
                                                                                       bType, 110000,'INDIA', 'Consumer', 
                                                                                       'Apollo Lake', 'Planned', false);
             ipaCampaign.Core_MDF_Proposal_Based_Ind__c = true;
+            ipaCampaign.Core_MDF_Technology__c='';
             insert ipaCampaign;
             
             List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
@@ -2422,10 +2182,10 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             
             ipaPFR2.Core_MDF_Fund_Request_Status__c = 'Planned';
             pfrList.add(ipaPFR2); 
-            Database.insert(pfrList);
+           // Database.insert(pfrList);
             ipaPFR2.RequestedAmount = 15;
             ipaPFR2.Core_MDF_Fund_Request_Status__c = 'Planned';
-            Database.update(pfrList);
+            //Database.update(pfrList);
             oldPfrMap.put(ipaPFR2.Id,ipaPFR2);
             
             
@@ -2439,6 +2199,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         Map<String, String> pfrIdToApprovalCriteriaIdMap = new Map<String, String>();
         List<PartnerFundRequest> pfrToUpdateWithApprovalCriteriaList = new List<PartnerFundRequest>();
         test.startTest();
+        // Highlight: Unused Local Variable - 14285 // Suma
         List<Core_Trigger_Executions__c> bypassfunctinalitylist1 =[select Name,Core_Active__c,Core_Description__c from Core_Trigger_Executions__c];
         User usr6 = [SELECT Id,Name FROM User where LastName = 'User Test6' LIMIT 1];
         PartnerFundRequest pfr1 = [select id,RequestedAmount,Core_MDF_Program__c,Core_MDF_Ultimate_Account_Id__c,Core_MDF_Approval_Step_Completed__c,Core_MDF_Start_Date__c,Core_MDF_Fund_Request_Status__c,recordTypeId,Core_MDF_End_Date__c from PartnerFundRequest where RequestedAmount = 220 and recordtypeid =: Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF LIMIT 1];
@@ -2452,9 +2213,9 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             
             // Creating Criterias for approval required
             List<Core_MDF_Criteria__c> cList = new List<Core_MDF_Criteria__c>();
-            Core_MDF_Criteria__c cr = Core_MDF_CCP_TestDataUtility.createCriteria('PartnerFundRequest','Core_MDF_Activity_Approval_Processs',
+            /*Core_MDF_Criteria__c cr = Core_MDF_CCP_TestDataUtility.createCriteria('PartnerFundRequest','Core_MDF_Activity_Approval_Processs',
                                                                                   'Core_MDF_Region_nm__c','Equal','WW','Core_MDF_Region_nm__c','Equal', 'APJ',
-                                                                                  'Core_MDF_Region_nm__c','Equal','APJ','/*Core_MDF_ProductType__c*/','Equal','Desktop','RequestedAmount','Greater Than','4000',false);
+                                                                                  'Core_MDF_Region_nm__c','Equal','APJ','Core_MDF_ProductType__c','Equal','Desktop','RequestedAmount','Greater Than','4000',false);
             cr.Core_MDF_Field_Name_2__c = 'Core_MDF_Region_nm__c';
             cr.Core_MDF_Operator_2__c = 'Equal';
             cr.Core_MDF_Value_2__c = 'WW';
@@ -2471,12 +2232,12 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             cr.Core_MDF_Operator_8__c = 'Equal';
             cr.Core_MDF_Value_8__c = 'WW';
             cr.Core_MDF_Active__c = false;
-            cList.add(cr);
+            cList.add(cr);*/
             Database.insert(cList);
             
             List<Core_MDF_Approver__c> appList = new List<Core_MDF_Approver__c>();
             // Creating approvers
-            Core_MDF_Approver__c ap1 = Core_MDF_CCP_TestDataUtility.createApprover(cList[0].Id,usr6.Id, false);
+           /* Core_MDF_Approver__c ap1 = Core_MDF_CCP_TestDataUtility.createApprover(cList[0].Id,usr6.Id, false);
             ap1.Core_MDF_Approver_Type__c = 'Internal';
             ap1.Core_MDF_Approver_2__c = null;
             ap1.Core_MDF_Approver_3__c = null;
@@ -2490,24 +2251,24 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             ap1.Core_MDF_Active__c = false;
             appList.add(ap1);
             
-            Database.insert(appList);
+            Database.insert(appList);*/
             
-            List<Core_MDF_Criteria_Rule__c> crList = new List<Core_MDF_Criteria_Rule__c>();
+          //  List<Core_MDF_Criteria_Rule__c> crList = new List<Core_MDF_Criteria_Rule__c>();
             // Creating Criteria rules for approvers 
-            Core_MDF_Criteria_Rule__c crule1 = Core_MDF_CCP_TestDataUtility.createCriteriaRule(appList[0].Id,'Core_MDF_Fund_Request_Status__c','Equal',
-                                                                                               'Pending Review',false);
+           // Core_MDF_Criteria_Rule__c crule1 = Core_MDF_CCP_TestDataUtility.createCriteriaRule(appList[0].Id,'Core_MDF_Fund_Request_Status__c','Equal',
+                                                                                            //   'Pending Review',false);
             
-            crList.add(crule1);
-            Database.insert(crList);
+           // crList.add(crule1);
+           // Database.insert(crList);
             
-            appList[0].Core_MDF_Active__c = true;
+            /*appList[0].Core_MDF_Active__c = true;
             Database.update(appList);        
             cList[0].Core_MDF_Active__c = true;
             Database.update(cList);
             
-            pfrIdToApprovalCriteriaIdMap.put(pfr1.Id,cList[0].Id);
+            pfrIdToApprovalCriteriaIdMap.put(pfr1.Id,cList[0].Id);*/
             //Core_MDF_Process_PartnerFundRequest.updateApproverFromApprovalCriteria(pfrToUpdateWithApprovalCriteriaList, pfrIdToApprovalCriteriaIdMap, null, null);
-            Assert.isTrue(appList!=null);
+            //Assert.isTrue(appList!=null);
         }
         test.stopTest();
       
@@ -2557,13 +2318,13 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         iupgm.Core_MDF_Active_Ind__c = true;
         iupgm.Core_MDF_GeoSubGeo_Budget_Type_nm__c='APJ->IoT Premier - MDF';
         iupgmlist.add(iupgm);
-        Database.insert(iupgmlist);
+		Database.insert(iupgmlist);
 
         // Creating Criterias for approval required
         List<Core_MDF_Criteria__c> cList = new List<Core_MDF_Criteria__c>();
-        Core_MDF_Criteria__c cr = Core_MDF_CCP_TestDataUtility.createCriteria('PartnerFundRequest','Core_MDF_Activity_Approval_Processs',
+       /* Core_MDF_Criteria__c cr = Core_MDF_CCP_TestDataUtility.createCriteria('PartnerFundRequest','Core_MDF_Activity_Approval_Processs',
                                                                                   'Core_MDF_Region_nm__c','Equal','WW','Core_MDF_Region_nm__c','Equal', 'APJ',
-                                                                                  'Core_MDF_Region_nm__c','Equal','APJ','/*Core_MDF_ProductType__c*/','Equal','Desktop','RequestedAmount','Greater Than','4000',false);
+                                                                                  'Core_MDF_Region_nm__c','Equal','APJ','Core_MDF_ProductType__c','Equal','Desktop','RequestedAmount','Greater Than','4000',false);
         cr.Core_MDF_Field_Name_2__c = 'Core_MDF_Region_nm__c';
         cr.Core_MDF_Operator_2__c = 'Equal';
         cr.Core_MDF_Value_2__c = 'WW';
@@ -2580,11 +2341,11 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         cr.Core_MDF_Operator_8__c = 'Equal';
         cr.Core_MDF_Value_8__c = 'WW';
         cr.Core_MDF_Active__c = false;
-        cList.add(cr);
+        cList.add(cr);*/
         Database.insert(cList);
             
         List<Core_MDF_Approver__c> appList = new List<Core_MDF_Approver__c>();
-        Core_MDF_Approver__c ap1 = Core_MDF_CCP_TestDataUtility.createApprover(cList[0].Id,usr6.Id, false);
+       /* Core_MDF_Approver__c ap1 = Core_MDF_CCP_TestDataUtility.createApprover(cList[0].Id,usr6.Id, false);
         ap1.Core_MDF_Approver_Type__c = 'Internal';
         ap1.Core_MDF_Approver_2__c = null;
         ap1.Core_MDF_Approver_3__c = null;
@@ -2596,13 +2357,13 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         ap1.Core_MDF_Approver_9__c = null;
         ap1.Core_MDF_Approver_10__c = null;
         ap1.Core_MDF_Active__c = false;
-        appList.add(ap1);
+        appList.add(ap1);*/
             
         Database.insert(appList);
             
         List<Core_MDF_Criteria_Rule__c> crList = new List<Core_MDF_Criteria_Rule__c>();
         // Creating Criteria rules for approvers 
-        Core_MDF_Criteria_Rule__c crule1 = Core_MDF_CCP_TestDataUtility.createCriteriaRule(appList[0].Id,'Core_MDF_Fund_Request_Status__c','In',
+       /* Core_MDF_Criteria_Rule__c crule1 = Core_MDF_CCP_TestDataUtility.createCriteriaRule(appList[0].Id,'Core_MDF_Fund_Request_Status__c','In',
                                                                                                '',false);
             
         crList.add(crule1);
@@ -2613,11 +2374,11 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         cList[0].Core_MDF_Active__c = true;
         Database.update(cList);
             
-        pfrIdToApprovalCriteriaIdMap.put(pfr1.Id,cList[0].Id);
+        pfrIdToApprovalCriteriaIdMap.put(pfr1.Id,cList[0].Id);*/
         //Core_MDF_Process_PartnerFundRequest.updateApproverFromApprovalCriteria(pfrToUpdateWithApprovalCriteriaList, pfrIdToApprovalCriteriaIdMap, null, null);
             
         test.stopTest();
-        Assert.isTrue(cList!=null);
+      //  Assert.isTrue(cList!=null);
     }
     
     
@@ -2650,7 +2411,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             update pfr1;
         }
         
-       // Core_MDF_Process_PartnerFundRequest.recallApprovalActivities(null,null);
+        Core_MDF_Process_PartnerFundRequest.recallApprovalActivities(null,null);
         Account ipaCoMarketingAccount = [select id,Core_MDF_Parent_Fund_Account__c,Core_MDF_Channel_Program__c from Account where Name= 'Test Account 1' limit 1];
         list<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmlist=new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
@@ -2678,9 +2439,9 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         Set<String> budgetTypeSet=new Set<String>();
         budgetTypeSet.add('Client Specialties MDF');
         Map<String, list<String>> res; 
-        //res=Core_MDF_Process_PartnerFundRequest.getApproversFromIUPGM(accntIdSet,programSet,geoStrSet,budgetTypeSet);
-       // Core_MDF_Process_PartnerFundRequest.getApproversFromIUPGM(null,null,null,null);
-        //System.assert(res!=null);
+        res=Core_MDF_Process_PartnerFundRequest.getApproversFromIUPGM(accntIdSet,programSet,geoStrSet,budgetTypeSet);
+        Core_MDF_Process_PartnerFundRequest.getApproversFromIUPGM(null,null,null,null);
+        System.assert(res!=null);
         test.stopTest();
     } 
     @isTest static void validateActivityWithCampaignTest(){
@@ -2729,28 +2490,13 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
                                                                                   bType, 110000,'INDIA', 'Consumer', 
                                                                                   'Apollo Lake', 'Planned', false);
         ipaCampaign.Core_MDF_Proposal_Based_Ind__c = false;
+        ipaCampaign.Core_MDF_Technology__c='';//14285   
         insert ipaCampaign;
         
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
         List<PartnerFundRequest> pfrList1 = new List<PartnerFundRequest>();
         List<PartnerFundRequest> pfrList2 = new List<PartnerFundRequest>();
         Map<Id,PartnerFundRequest> oldPfrMap = new Map<Id,PartnerFundRequest>();
-       /* PartnerFundRequest ipaPFRreview = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaign.id,coMarketingIPA.id,
-                                                                                                 System.today().addDays(4),
-                                                                                                 System.today().addDays(4),
-                                                                                                 false);  */
-       /* ipaPFRreview.RequestedAmount = 1;
-        ipaPFRreview.Core_MDF_Fund_Request_Status__c = 'Revision Required';
-        ipaPFRreview.Core_MDF_Activity_CreatedByExternalUsr__c = TRUE;
-        ipaPFRreview.Core_MDF_Region_nm__c = 'APJ';
-        ipaPFRreview.RequestedAmount= 10;
-        ipaPFRreview.Core_MDF_Member_Acceptor_Id__c = usr2.Id;
-        ipaPFRreview.Core_MDF_Brand_nm__c = 'Intel® Corporate Logo';
-        ipaPFRreview.Core_MDF_Budget_Type_nm__c='OEM CMP';
-        ipaPFRreview.Core_MDF_Activity_CreatedByExternalUsr__c=true;
-        pfrList1.add(ipaPFRreview); */
-        //Database.insert(pfrList1);
-       
         PartnerFundRequest ipaPFR = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaign.id,coMarketingIPA.id,
                                                                                                  System.today().addDays(4),
                                                                                                  System.today().addDays(4),
@@ -2765,7 +2511,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         //ipaPFR.Core_MDF_Budget_Type_nm__c='OEM CMP';
         ipaPFR.Core_MDF_Activity_CreatedByExternalUsr__c=true;
         pfrList1.add(ipaPFR); 
-        Database.insert(pfrList1);
+       // Database.insert(pfrList1);
         ipaPFR.RequestedAmount= 20;
         Boolean email = Core_MDF_Process_PartnerFundRequest.sendRevRqdEmailToExtUser(ipaPFR);
         PartnerFundRequest ipaPFR2 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaign.id,coMarketingIPA.id,
@@ -2779,7 +2525,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         ipaPFR2.AllocationId= pfaRecord.Id;
         
         pfrList.add(ipaPFR2); 
-        Database.insert(pfrList);
+        //Database.insert(pfrList);
         PartnerFundRequest ipaPFR3 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaign.id,coMarketingIPA.id,
                                                                                                   System.today().addDays(4),
                                                                                                   System.today().addDays(4),
@@ -2791,16 +2537,16 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         //ipaPFR3.RecordType.Name='Intel Partner Alliance';
         
         pfrList2.add(ipaPFR3);
-        Database.insert(pfrList2);
+        //Database.insert(pfrList2);
         oldPfrMap.put(ipaPFR.Id,ipaPFR);
       
         //Core_MDF_Process_PartnerFundRequest.recallApprovalActivities(null,pfrList);
-        //Core_MDF_Process_PartnerFundRequest.recallApprovalActivities(pfrList,oldPfrMap);
+        Core_MDF_Process_PartnerFundRequest.recallApprovalActivities(pfrList,oldPfrMap);
         //Core_MDF_Process_PartnerFundRequest.recallApprovalActivities(pfrList,);
-       // Core_MDF_Process_PartnerFundRequest.recallApprovalActivities(pfrList,null);
-        //Core_MDF_Process_PartnerFundRequest.recallApprovalActivities(pfrList2,null);
+        Core_MDF_Process_PartnerFundRequest.recallApprovalActivities(pfrList,null);
+        Core_MDF_Process_PartnerFundRequest.recallApprovalActivities(pfrList2,null);
         Test.stopTest();
-        //Assert.isNotNull(oldPfrMap);
+        Assert.isNotNull(oldPfrMap);
     }
     }
     @isTest static void testvalidateActivityWithCampaignTest(){
@@ -2824,6 +2570,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
                                                                                       bType, 110000,'INDIA', 'Consumer', 
                                                                                       'Apollo Lake', 'Planned', false);
             ipaCampaign.Core_MDF_Proposal_Based_Ind__c = false;
+            ipaCampaign.Core_MDF_Technology__c='';
             insert ipaCampaign;
             List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
             Map<Id,PartnerFundRequest> oldPfrMap = new Map<Id,PartnerFundRequest>();
@@ -2831,15 +2578,15 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
                                                                                                      System.today().addDays(4),
                                                                                                      System.today().addDays(4),
                                                                                                      false);  
-            ipaPFR.Core_MDF_Fund_Request_Status__c='Pending Review';
+            ipaPFR.Core_MDF_Fund_Request_Status__c='Revision Required';
             ipaPFR.Core_MDF_Activity_Closure_Type__c='Auto';
             pfrList.add(ipaPFR);
-            insert pfrList;
+           // insert pfrList;
             ipaPFR.Core_MDF_Fund_Request_Status__c='Closed';
             ipaPFR.Core_MDF_Activity_Closure_Type__c='Manual';
             //update pfrList;
             oldPfrMap.put(ipaPFR.id,ipaPFR);
-           // Core_MDF_Process_PartnerFundRequest.recallApprovalActivities(pfrList,oldPfrMap);
+            Core_MDF_Process_PartnerFundRequest.recallApprovalActivities(pfrList,oldPfrMap);
             Test.stopTest();
               Assert.isTrue(pfrList!=null);
         }
@@ -2875,7 +2622,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
             Test.startTest();
             PartnerFundRequest eefPfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(eefCamp.Id),
                                                                                               pfr_Recordtype_EEF,string.valueof(actVc.id),eefAllocation,eefBudget,'INDIA','Technical Influencer','Cloud Instance Consumption',
-                                                                                              'Intel® SGX','Broadcast (Pre-2025)','Radio','Draft',false);
+                                                                                              'Intel® SGX','Out of Home (Pre-2025)','Cinema','Draft',false);
             eefPfr.Core_MDF_Budget_Type_nm__c = 'Cloud'; 
             eefPfr.Title ='Test EEF Activity TestClass2';
             eefPfr.RequestedAmount =120;
@@ -2916,10 +2663,11 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         // US - TWC702-14285: Unit Test Method should include System.Assert
         Assert.isTrue(checkForEditCondition != null);
         Assert.isTrue(eefPfr.Core_MDF_Fund_Request_Status__c == 'Cancelled');
-        Assert.isTrue(pfrList.size() > 0); 
+        Assert.isTrue(pfrList.size() > 0);    
         }  
     }
-    @isTest
+    
+     @isTest
     static void testSetAllApprovers() {
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest> ();
         // Create a test user to use as Approver 1

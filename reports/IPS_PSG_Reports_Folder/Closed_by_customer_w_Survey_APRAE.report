@@ -183,7 +183,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>uniquest,altima,arrow,macnica,digi-key,GALAXY FAR EAST CORPORATION,IPS Intel</value>
+            <value>altima,arrow,macnica,digi-key,GALAXY FAR EAST CORPORATION</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -216,6 +216,7 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <interval>INTERVAL_PREVCURY</interval>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2018-07-01</startDate>
     </timeFrameFilter>
 </Report>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
         <field>Core_MDF_Partner_Node_User_Mapping__c$Core_MDF_Account__c.Core_MDF_Active_Ind__c</field>
     </columns>
     <columns>
@@ -73,7 +74,7 @@
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
-    <showSubTotals>false</showSubTotals>
+    <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_MDF_Partner_Node_User_Mapping__c$CreatedDate</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

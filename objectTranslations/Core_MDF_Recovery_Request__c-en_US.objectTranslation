@@ -81,4 +81,8 @@
         <relationshipLabel><!-- Recovery Requests --></relationshipLabel>
     </fields>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Record creation not allowed for Older Quarters. --></errorMessage>
+        <name>Core_MDF_Quarter_Check</name>
+    </validationRules>
 </CustomObjectTranslation>

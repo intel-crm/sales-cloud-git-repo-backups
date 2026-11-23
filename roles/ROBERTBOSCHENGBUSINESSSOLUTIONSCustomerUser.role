@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Bosch Global Software Technologies Private Limited Customer User</description>
+    <description>ROBERT BOSCH ENG &amp; BUSINESS SOLUTIONS Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Bosch Global Software Technologies Private Limited Customer User</name>
+    <name>ROBERT BOSCH ENG &amp; BUSINESS SOLUTIONS Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11646177_Narasimhan_Renganathan</parentRole>
+    <parentRole>ROBERTBOSCHENGBUSINESSSOLUTIONSCustomerManager</parentRole>
 </Role>

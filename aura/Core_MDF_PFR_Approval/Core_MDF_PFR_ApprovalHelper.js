@@ -36,7 +36,7 @@
                    || (result.userPermissionsPowerPartner 
                        && result.pfrInstance.Core_MDF_Fund_Request_Status__c == $A.get("$Label.c.Core_MDF_PFR_Status_PendingReview"))
                     || result.userPermissionsEEFRecall)
-                    && !result.isIPAAccountMgrAndPCTApprover){                   
+                    && !result.isIPAAccountMgrAndPCTApprover){                   
                   
                     component.set('v.rejectInternalVisble', true);
                     component.set('v.buttonName', $A.get("$Label.c.Core_MDF_Activity_Recall_Nm"));
@@ -141,7 +141,22 @@
                     component.set('v.buttonValue', 'Approve');
                     component.set('v.buttonToBeVisible', true);
                     component.set('v.isGeoLeadApprover', true);
-                } else if (result.pfrInstance.Core_MDF_Program__c == 'Ecosystem Extension Fund' 
+                }else if (result.pfrInstance.Core_MDF_Program__c == 'Retail Marketing Funds'
+              			&& result.pfrInstance.Core_MDF_Fund_Request_Status__c == 'Pending Review'
+                          && result.isRmfL1Approver){
+                    component.set("v.buttonName", $A.get("$Label.c.Core_MDF_Retail_Approve"));
+                    component.set('v.buttonValue', 'Approve');
+                    component.set('v.buttonToBeVisible', true);
+                    component.set('v.isGeoLeadApprover', true);
+                }else if (result.pfrInstance.Core_MDF_Program__c == 'Retail Marketing Funds'
+              			&& result.pfrInstance.Core_MDF_Fund_Request_Status__c == 'Pending Review'
+                          && result.isRmfL2Approver){
+                    component.set("v.buttonName", $A.get("$Label.c.Core_MDF_Retail_Approve"));
+                    component.set('v.buttonValue', 'Approve');
+                    component.set('v.buttonToBeVisible', true);
+                    component.set('v.isGeoLeadApprover', true);
+                }
+                  else if (result.pfrInstance.Core_MDF_Program__c == 'Ecosystem Extension Fund' 
                            && result.pfrInstance.Core_MDF_Fund_Request_Status__c == 'Pending Review'){
                             if(result.isL1PrimaryPartnerApprover){
                                 component.set("v.buttonName", $A.get("$Label.c.Core_MDF_Retail_Approve"));
@@ -239,14 +254,18 @@
 
     // NEW: Initialize AI suggestion for Pending Review records
     initializeAISuggestion: function(component) {
+        console.log('DEBUG: initializeAISuggestion called');
         component.set("v.isLoadingAISuggestion", true);
+        console.log('DEBUG: isLoadingAISuggestion set to true');
         
         var recordId = component.get("v.recordId");
+        console.log('DEBUG: recordId = ' + recordId);
         this.callAISuggestionService(component, recordId);
     },
 
     // UPDATED: AI Suggestion Service Method with proper table formatting
     callAISuggestionService: function(component, recordId) {
+        console.log('DEBUG: callAISuggestionService called for recordId: ' + recordId);
         
         // Call Apex method to get AI suggestion
         var action = component.get("c.getAISuggestionWithDecision");
@@ -256,12 +275,17 @@
         
         action.setCallback(this, function(response) {
             var state = response.getState();
+            console.log('DEBUG: getAISuggestionWithDecision response state: ' + state);
             component.set("v.isLoadingAISuggestion", false);
             
             if (state === "SUCCESS") {
                 var aiResponse = response.getReturnValue();
+                console.log('DEBUG: AI Response Success: ' + aiResponse.success);
+                console.log('DEBUG: AI Decision: ' + aiResponse.decision);
+                console.log('DEBUG: AI Error: ' + aiResponse.errorMessage);
                 
                 if (aiResponse && aiResponse.success) {
+                    console.log('DEBUG: AI suggestion loaded successfully');
                     // UPDATED: Parse and format the actual AI response content
                     var formattedContent = this.parseAndFormatAIResponse(aiResponse.formattedContent, aiResponse.decision);
                     component.set("v.aiSuggestionText", formattedContent);
@@ -270,20 +294,23 @@
                     if (aiResponse.decision) {
                         component.set("v.aiDecision", aiResponse.decision);
                         component.set("v.showAIDisclaimer", true);
-                        
+                        console.log('DEBUG: showAIDisclaimer set to true');
                         // *** NEW: Store AI recommendation when successfully loaded ***
                         this.storeAIRecommendation(component, recordId, aiResponse.decision, aiResponse.formattedContent);
                     }
                 } else {
+                    console.log('DEBUG: AI suggestion failed - calling handleAIError');
                     this.handleAIError(component, aiResponse ? aiResponse.errorMessage : "No AI recommendation available");
                 }
                 
             } else {
+                console.log('DEBUG: Apex call failed - state is not SUCCESS');
                 var errorMessage = "Unable to get AI recommendation";
                 var errors = response.getError();
                 
                 if (errors && errors.length > 0) {
                     errorMessage = errors[0].message;
+                    console.log('DEBUG: Error from Apex: ' + errorMessage);
                 }
                 
                 this.handleAIError(component, errorMessage);
@@ -293,6 +320,8 @@
         $A.enqueueAction(action);
     },
 
+    // ========== NEW AI RECOMMENDATION TRACKING METHODS ==========
+    
     /**
      * Store AI recommendation when it's first generated
      */
@@ -325,6 +354,8 @@
         
         $A.enqueueAction(action);
     },
+
+    // ========== END AI RECOMMENDATION TRACKING METHODS ==========
 
     // NEW: Parse and format the actual AI response content
     parseAndFormatAIResponse: function(aiContent, decision) {
@@ -485,6 +516,7 @@
              	this.sendActivityForExternalApproval(component); 
             //TWC702-1949: [Technical] [X-Platform] - Account Based PCT approvers - Added PCT Reviewer
             } else if ((btnValue == 'Approve' || btnValue == 'Reject' || btnValue == 'Recall') && (component.get('v.externalUser') || (component.get("v.rejectInternalVisble") || component.get("v.isOpalActApprovalRequired") || component.get("v.isPCTReviewer") || component.get("v.isLevel1Approver") || component.get("v.isLevel2Approver") || component.get("v.isPORApprover")||component.get("v.isGeoLeadApprover") || component.get("v.isL1PrimaryPartnerApprover") || component.get("v.isL2PrimaryApprover") || component.get("v.isL1ActivatingPartnerApprover") || component.get("v.isPrimaryPartnerApprover") || component.get("v.isActivatingPartnerApprover") || component.get("v.isIPAAccountMgrAndPCTApprover")))) {
+              	console.log('comments',component.get("v.approvalComments"));
                 var mapInstance = component.get("v.pfrMapInstance");
                 var mapStatusInstance = component.get("v.statusMapInstance");
                 mapStatusInstance['Approval Action Comment'] = btnValue; //component.get("v.approvalComments");
@@ -547,7 +579,6 @@
                 action.setCallback(this, function (response) {
                     var state = response.getState();
                     if (state === "SUCCESS") {
-                        
                         this.toastMessage($A.get("$Label.c.Core_MDF_SuccessToastTitle"),'success',$A.get("$Label.c.Core_MDF_Activity_SubmittedForApproval"));
                         this.windowTimeOut();
                     }

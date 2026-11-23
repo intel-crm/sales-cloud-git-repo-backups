@@ -29,14 +29,6 @@
         <name>Core_Approved_Sales_Group__c</name>
     </fields>
     <fields>
-        <label><!-- Start Date --></label>
-        <name>Core_Claim_Date_From__c</name>
-    </fields>
-    <fields>
-        <label><!-- End Date --></label>
-        <name>Core_Claim_Date_To__c</name>
-    </fields>
-    <fields>
         <label><!-- Is Active? --></label>
         <name>Core_IsActive__c</name>
     </fields>

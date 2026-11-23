@@ -57,8 +57,20 @@
     <columns>
         <field>QUANTITY</field>
     </columns>
+    <crossFilters>
+        <criteriaItems>
+            <column>Name</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Milan Spalevic,Rich Sutherland</value>
+        </criteriaItems>
+        <operation>with</operation>
+        <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
+        <relatedTable>OpportunityTeamMember-User</relatedTable>
+        <relatedTableJoinColumn>Opportunity</relatedTableJoinColumn>
+    </crossFilters>
     <filter>
-        <booleanFilter>1 OR 2</booleanFilter>
+        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Solution_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -72,6 +84,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
             <value>SDN - Cisco ACI,SDN - Hyper-V,SDN - Neutron,SDN - NSX,SDN - Nuage,SDN - OpenContrail,SDN - OpenShift,SDN Other - Write in Description,Networking,&quot;Analytics - Network Optimization, Automation &amp; Management&quot;,NFV - NFVi Hardware,NFV - MANO/OSS/BSS,NFV - MEC,NFV - SD-Access/vOLT,NFV - SD-WAN,NFV - uCPE,NFV - vBNG/vBRAS,NFV - vCCAP,NFV - vCDN,NFV - VCMTS,NFV - vCPE Enterprise,NFV - vCPE Residential (vHOME),NFV - vEPC/vGiLAN/PDG,NFV - vLoad-Balancer,NFV - vRAN/cRAN/FlexRAN,NFV - vRouter,NFV - vSBC,NFV - vSecurity,NFV - Enterprise NFV,NFV - Other,Select - NFVI with Ubuntu,Select Solutions - NFVi with Red Hat,Select Solutions - NFVi with Ubuntu,Select Solutions - NFVI Huawei FusionSphere</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Dimension Data</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

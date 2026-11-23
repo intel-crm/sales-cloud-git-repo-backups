@@ -13,9 +13,6 @@
         <field>Opportunity.Sales_Support_Requests__r$Core_Account_Name__c</field>
     </columns>
     <columns>
-        <field>Opportunity$Id</field>
-    </columns>
-    <columns>
         <field>Opportunity$Name</field>
     </columns>
     <columns>
@@ -77,6 +74,6 @@
     <timeFrameFilter>
         <dateColumn>Opportunity$CloseDate</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2019-01-01</startDate>
+        <startDate>2018-12-30</startDate>
     </timeFrameFilter>
 </Report>

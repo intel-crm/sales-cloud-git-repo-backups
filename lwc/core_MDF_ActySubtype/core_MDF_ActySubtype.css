@@ -1,0 +1,5 @@
+.adjustWidth{
+    width:fit-content;
+    min-width:250px;
+    width: -moz-fit-content;
+}

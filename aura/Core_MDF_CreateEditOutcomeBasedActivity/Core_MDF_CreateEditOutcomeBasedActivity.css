@@ -12,6 +12,23 @@
     padding-left: 0.6rem;
 }
 
+.THIS .currency-input-with-symbol .slds-form-element__control {
+    position: relative;
+}
+
+.THIS .currency-input-with-symbol .slds-form-element__control:before {
+    content: "$";
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.THIS .currency-input-with-symbol input {
+    padding-left: 1.2rem;
+}
+
 .THIS .text-right-180{
     color:red ;
     padding-right:180px;
@@ -33,22 +50,6 @@
 
 .THIS .elementLabel .slds-form-element__label {
    font-weight: bold;
-}
-.THIS .currency-input-with-symbol .slds-form-element__control {
-    position: relative;
-}
-
-.THIS .currency-input-with-symbol .slds-form-element__control:before {
-    content: "$";
-    position: absolute;
-    left: 0.75rem;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
-}
-
-.THIS .currency-input-with-symbol input {
-    padding-left: 1.2rem;
 }
 
 .THIS.rrWarning {

@@ -1,0 +1,66 @@
+<template>
+    <div class="slds-box slds-theme_default">
+        <lightning-card>
+            <!-- Create button (unchanged) -->
+            <!-- <div class="slds-m-around_medium slds-grid slds-grid_align-end">
+                    <lightning-button label={createActivityLabel}
+                                      onclick={handleCreateRecords}
+                                      variant="brand"
+                                      disabled={disableCreateActivity}>
+                    </lightning-button>
+            </div> -->
+
+            <div class="slds-m-around_medium">
+                    <!-- <lightning-spinner alternative-text="Loading..." size="medium"></lightning-spinner> -->
+
+                <div class="scrollable-table slds-border_left">
+                        <c-core_-m-d-f_-custom_-picklist
+                            key-field="Id"
+                            data={data}
+                            columns={columnsMod}
+                            onvalueselect={handleSelection}
+                            draft-values={draftValues}
+                            oncellchange={handleCellChange}
+                            errors={dataErrors}
+                            onrowaction={handleRowAction}
+                            hide-checkbox-column
+                            suppress-bottom-bar
+                            show-row-number-column>
+                        </c-core_-m-d-f_-custom_-picklist>
+                </div>
+
+                <!-- New Activity button remains under hasCreateAccess -->
+                <div
+                     class="slds-p-top_medium slds-grid slds-grid_align-start slds-grid_vertical-align-center">
+                        <lightning-button label={newActitvityLabel}
+                                          onclick={handleAddRow}
+                                          disabled={disableNewActivityButton}
+                                          variant="neutral">
+                        </lightning-button>
+                        <div if:true={disableNewActivityButton}
+                             class="slds-p-top_small"
+                             style="color:#0176d3;">
+                             {limittenActvitiesLabel}
+                        </div>
+                </div>
+
+                <!-- View More link — now always visible independent of create access -->
+                <div class="slds-p-top_small slds-grid slds-grid_align-center">
+                    <template if:false={disableViewActivity}>
+                        <template if:false={hideViewButton}>
+                            <a href="javascript:void(0);"
+                               onclick={handleViewRecords}
+                               class="slds-text-link">
+                               {createViewLabel}
+                            </a>
+                        </template>
+                    </template>
+                    <template if:true={disableViewActivity}>
+                        <span class="slds-text-link slds-is-disabled"></span>
+                    </template>
+                </div>
+
+            </div>
+        </lightning-card>
+    </div>
+</template>

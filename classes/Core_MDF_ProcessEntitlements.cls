@@ -19,7 +19,7 @@ global without sharing class Core_MDF_ProcessEntitlements implements Database.Ba
         List<AsyncApexJob> processEntitlementsJob = new List<AsyncApexJob>();
         Set<Id> reprocessContacts = new Set<Id>();
         if(!Test.isRunningTest()){
-            processEntitlementsJob = [select id,CompletedDate,CreatedDate,JobType from AsyncApexJob where ApexClass.name =:processEntitlementsClass and Status ='Completed' and jobtype = 'BatchApex' order by CompletedDate desc limit 1];
+            processEntitlementsJob = [select id,CreatedDate from AsyncApexJob where ApexClass.name =:processEntitlementsClass and Status ='Completed' and jobtype = 'BatchApex' order by CompletedDate desc limit 1]; //HP:ATHR Fix
         }
         if(processEntitlementsJob!= Null && processEntitlementsJob.size()>0){
             rangeToBeSelected = processEntitlementsJob[0].CreatedDate;
@@ -91,7 +91,10 @@ global without sharing class Core_MDF_ProcessEntitlements implements Database.Ba
                 channelProgramToCPIdMap.put(cp.Name, cp.id);
             }
             
-            if(newContactEntitlementList.size()>0){
+            //if(newContactEntitlementList.size()>0){
+                if(newContactEntitlementList.size() == 0){ //ATHR Fix WW19
+                    return;
+                }
                 String requestString ='"Core_MDF_Contact_id__c","Core_MDF_Status_nm__c","Core_MDF_Action_nm__c"'+'\r\n';
                 //1. Loop through the inputs and segregate Entitlement Addition and Removal
                 for(Core_Contact_Entitlement__c ce: newContactEntitlementList){
@@ -160,7 +163,7 @@ global without sharing class Core_MDF_ProcessEntitlements implements Database.Ba
                 if(newEntitlementAssigned.size()>0){
                     List<GroupMember> toBeAddedGM = new List<GroupMember>();                    
                     Map<id,List<id>> userToGroupList = new Map<id,List<id>>();
-					Set<String> processedPGMKeys = new Set<String>();                    
+                    Set<String> processedPGMKeys = new Set<String>();                    
                     for(id contactRecord: newEntitlementAssigned.keyset()){
                         for(string entitlementRecord: newEntitlementAssigned.get(contactRecord)){
                             string channelProgram = ccpEntitlementToCPMap.containsKey(entitlementRecord)?channelProgramToCPIdMap.get(ccpEntitlementToCPMap.get(entitlementRecord)) : null;
@@ -239,7 +242,7 @@ global without sharing class Core_MDF_ProcessEntitlements implements Database.Ba
                                             addFalloutLogs.put(contactRecord,new List<id> {channelProgram});  
                                         }
                                     }
-                                }								                                
+                                }                                                               
                                 //Create fallout logs for Users that have No Group IDs
                                 else{
                                     if(addFalloutLogs.containsKey(contactRecord)){
@@ -404,7 +407,7 @@ global without sharing class Core_MDF_ProcessEntitlements implements Database.Ba
                 if(addFalloutLogsForInactiveUsr.size()>0){
                     loggingRecords(addFalloutLogsForInactiveUsr, 'Inactive User', 'Action Required',conToAccUsrWrap,pgmWrap); 
                 }                
-            }
+            //}
         }
         catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);}
     }
@@ -514,7 +517,10 @@ global without sharing class Core_MDF_ProcessEntitlements implements Database.Ba
                         accProgToVirtualCorpIdMap.put(accProgKey,pgm.Core_MDF_Virtual_Corp_nm__c);
                     }
                     //to store account+channel program specific PGM group id
-                    if(pgm.Core_MDF_Works_For__c != null){
+                    //if(pgm.Core_MDF_Works_For__c != null){
+                        if(pgm.Core_MDF_Works_For__c == null){ //ATHR Fix WW19
+                            continue;
+                        }
                         if(accountToWorksForMap.containskey(pgm.Core_MDF_Account__c)){
                             List<id> worksFor = accountToWorksForMap.get(pgm.Core_MDF_Account__c);
                             if(!worksFor.contains(pgm.Core_MDF_Works_For__c)){
@@ -524,7 +530,7 @@ global without sharing class Core_MDF_ProcessEntitlements implements Database.Ba
                         }else{
                             accountToWorksForMap.put(pgm.Core_MDF_Account__c, new List<id>{pgm.Core_MDF_Works_For__c});
                         }  
-                    }
+                    //}
                 }
             }
             
@@ -573,8 +579,8 @@ global without sharing class Core_MDF_ProcessEntitlements implements Database.Ba
                     Core_MDF_UserGroupMapping_Log__c logobject = new Core_MDF_UserGroupMapping_Log__c();
                     
                     logobject.Core_MDF_User_id__c= contactToUserMap.get(contactID);
-                    // logobject.Core_MDF_Group_id__c = String.valueOf(groupID).startsWith('00G') ? groupID: null;
-                    //Exception Fix
+                   // logobject.Core_MDF_Group_id__c = String.valueOf(groupID).startsWith('00G') ? groupID: null;
+                   //Exception Fix
                     logobject.Core_MDF_Group_id__c = (groupID != null && String.valueOf(groupID).startsWith('00G')) ? groupID: null;
                     logobject.Core_MDF_Contact_id__c = contactID;
                     logobject.Core_MDF_Account_id__c =contactToAccountMap.get(contactID);
@@ -582,7 +588,7 @@ global without sharing class Core_MDF_ProcessEntitlements implements Database.Ba
                         logobject.Core_MDF_Works_For_Account_id__c = accountToWorksForMap.get(contactToAccountMap.get(contactID))[0];                            
                     }
                     //logobject.Core_MDF_Channel_Program_id__c =String.valueOf(groupID).startsWith('00G')?groupToChannelProgram.get(groupID): groupID;  
-                    logobject.Core_MDF_Channel_Program_id__c =(groupID != null && String.valueOf(groupID).startsWith('00G'))?groupToChannelProgram.get(groupID): groupID;  
+                     logobject.Core_MDF_Channel_Program_id__c =(groupID != null && String.valueOf(groupID).startsWith('00G'))?groupToChannelProgram.get(groupID): groupID;  
                     logObject.Core_MDF_Processed_dtm__c = system.now();
                     logobject.Core_MDF_Action_nm__c = action;
                     logObject.Core_MDF_Status_nm__c= status;
@@ -704,7 +710,7 @@ global without sharing class Core_MDF_ProcessEntitlements implements Database.Ba
                 request2.setMethod('PATCH');
                 String endPointUrl2 = 'callout:PicklistNamedCredentialForGVS/services/data/v56.0/jobs/ingest/' + jobId;
                 request2.setEndpoint(endPointUrl2);
-                request2.setHeader('content-type', 'application/json' );				
+                request2.setHeader('content-type', 'application/json' );                
                 request2.setBody('{ "state" : "UploadComplete" }');
                 Http h2 = new Http();
                 HttpResponse resp2 = h2.send(request2);

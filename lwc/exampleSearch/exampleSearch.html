@@ -1,87 +1,69 @@
 <template>
-
- 
-  <div class="search__container " onregisterresulttemplates={handleResultTemplateRegistration} >
-    <lightning-layout style="text-align: center; display: block;">
-      <lightning-layout-item>
-        <div>
-          <h3 class="helpfulArtical"> Helpful articles
-            relating to "{searchText}"</h3>
-        </div>
-      </lightning-layout-item>
-    </lightning-layout>
-    <c-quantic-search-interface engine-id={engineId} search-hub={searchHub} pipeline={pipeline}
-      disable-state-in-url={disableStateInUrl} skip-first-search={skipFirstSearch}>
+  <div class="search__container slds-p-around_medium" onregisterresulttemplates={handleResultTemplateRegistration}>
+    <c-quantic-search-interface engine-id={engineId} search-hub={searchHub} pipeline={pipeline} disable-state-in-url={disableStateInUrl} skip-first-search={skipFirstSearch}>
+      <c-quantic-aria-live></c-quantic-aria-live>
       <div class="slds-grid slds-grid_vertical slds-grid_align-center">
-        <div class="slds-col slds-size_1-of-1 slds-large-size_6-of-12 slds-align-middle searchBarAlign">
+        <div class="slds-col slds-size_1-of-1 slds-large-size_6-of-12 slds-align-middle">
           <div class="slds-m-vertical_small">
-            <c-quantic-search-box engine-id={engineId} subject={caseData.Subject}></c-quantic-search-box>
+            <c-quantic-search-box engine-id={engineId}></c-quantic-search-box>
           </div>
         </div>
         <div class="slds-col">
-          <div class="slds-grid slds-gutters_direct slds-wrap main slds-grid_align-right">
-            
-            <template if:false={noresults}>
-          
-              <div class="slds-col slds-order_2 slds-large-order_1 slds-size_1-of-1 slds-large-size_3-of-12">
-                <template if:true={hasValues}>
-                  <div style="font-weight: normal;font-size: 20px; color: #262626; padding-bottom: 14px;"> Filter by
-          
-                  </div>
-                </template>
-          
-          
-                <c-quantic-facet-manager engine-id={engineId}>
-                  <c-quantic-facet display-values-as="link" field="tabfilter" label="Category" engine-id={engineId}
-                    no-filter-facet-count="noFilterFacetCount" onhasvalues={handleHasValues}></c-quantic-facet>
-                  <!-- <c-quantic-facet display-values-as="link" field="datasource" label="Source" engine-id={engineId}
-                                              facet-id="datasource" no-filter-facet-count="noFilterFacetCount"  onhasvalues={handleHasValues}></c-quantic-facet> -->
-                  <!-- <c-quantic-facet display-values-as="link" field="objecttype" label="Category" engine-id={engineId}
-                                              no-filter-facet-count="noFilterFacetCount"></c-quantic-facet> -->
-                </c-quantic-facet-manager>
-          
-              </div>
-            </template>            
-             
-            <div class="slds-col slds-order_1 slds-large-order_2 slds-size_1-of-1 slds-large-size_9-of-12"
-              >
-              <template if:false={noresults}>
-                <!-- <div class="slds-grid slds-var-m-top_small"> -->
-                <div> 
-                  <c-quantic-summary class="slds-var-m-vertical_x-small slds-medium-size_7-of-12"
-                    onqueryevent={handleQueryEvent} engine-id={engineId}>
-                  </c-quantic-summary>
+          <div class="slds-grid slds-gutters_direct slds-wrap main slds-grid_align-center">
+            <div class="slds-col slds-order_2 slds-large-order_1 slds-size_1-of-1 slds-large-size_3-of-12 facets_container slds-show_large">
+              <c-quantic-facet-manager engine-id={engineId}>
+                <c-quantic-facet field="objecttype" label="Type" engine-id={engineId} data-cy="type"></c-quantic-facet>
+                <c-quantic-facet display-values-as="link" field="filetype" label="File Type" engine-id={engineId}></c-quantic-facet>
+                <c-quantic-numeric-facet field="ytlikecount" label="Youtube Likes" with-input="integer" engine-id={engineId}></c-quantic-numeric-facet>
+                <c-quantic-timeframe-facet engine-id={engineId} field="date" label="Date" with-date-picker>
+                  <c-quantic-timeframe unit="week"></c-quantic-timeframe>
+                  <c-quantic-timeframe unit="month"></c-quantic-timeframe>
+                  <c-quantic-timeframe amount="6" unit="month"></c-quantic-timeframe>
+                  <c-quantic-timeframe unit="year"></c-quantic-timeframe>
+                </c-quantic-timeframe-facet>
+                <c-quantic-category-facet with-search field="geographicalhierarchy" label="Country" engine-id={engineId}></c-quantic-category-facet>
+              </c-quantic-facet-manager>
+            </div>
+            <div class="slds-col slds-order_1 slds-large-order_2 slds-size_1-of-1 slds-large-size_6-of-12">
+              <c-quantic-tab-bar>
+                <c-quantic-tab label="All" engine-id={engineId} is-active></c-quantic-tab>
+                <c-quantic-tab label="Articles" expression="@sfkbid" engine-id={engineId}></c-quantic-tab>
+                <c-quantic-tab label="Issues" expression="@jisourcetype AND NOT @jidocumenttype=&quot;WorkLog&quot;" engine-id={engineId}></c-quantic-tab>
+                <c-quantic-tab label="Community" expression="@objecttype==&quot;Message&quot;" engine-id={engineId}></c-quantic-tab>
+                <c-quantic-tab label="Files" expression="@boxdocumenttype==File OR @spcontenttype==Document" engine-id={engineId}></c-quantic-tab>
+              </c-quantic-tab-bar>
+              <div class="slds-grid slds-var-m-top_small">
+                <c-quantic-summary class="slds-var-m-vertical_x-small slds-small-size_8-of-12 slds-large-size_7-of-12" engine-id={engineId}>
+                </c-quantic-summary>
+                <c-quantic-sort class="slds-var-m-vertical_xxx-small slds-large-size_5-of-12 slds-show_large" engine-id={engineId}>
+                </c-quantic-sort>
+                <div class="slds-small-size_4-of-12 slds-clearfix slds-hide_large">
+                    <div class="slds-float_right">
+                      <c-quantic-refine-toggle engine-id={engineId} full-screen></c-quantic-refine-toggle>
+                    </div>
                 </div>
-              </template>
-
-              <div class="searchResults">
-                <c-quantic-query-error engine-id={engineId}></c-quantic-query-error>
-                <!-- <c-quantic-breadcrumb-manager engine-id={engineId}></c-quantic-breadcrumb-manager> -->
-                <c-quantic-did-you-mean engine-id={engineId}></c-quantic-did-you-mean>
-                <!-- <c-quantic-no-results onnoresult={handlenoResults} engine-id={engineId}></c-quantic-no-results> -->
-
               </div>
-
-              <!-- <div style="background-color: #e9e9e9;" class="slds-m-vertical_xxx-small">
-                <c-quantic-breadcrumb-manager engine-id={engineId}></c-quantic-breadcrumb-manager>
-              </div> -->
-
-              <div style="background-color: white; margin-top: 25px;">
-
-                <c-quantic-result-list engine-id={engineId}></c-quantic-result-list>
-              </div>
+              <c-quantic-query-error engine-id={engineId}></c-quantic-query-error>
+              <c-quantic-breadcrumb-manager engine-id={engineId}></c-quantic-breadcrumb-manager>
+              <c-quantic-did-you-mean engine-id={engineId}></c-quantic-did-you-mean>
+              <c-quantic-no-results engine-id={engineId}></c-quantic-no-results>
+              <c-quantic-result-list engine-id={engineId}></c-quantic-result-list>
               <div class="slds-var-m-vertical_medium">
-                <c-quantic-pager engine-id={engineId} number-of-pages="1"></c-quantic-pager>
+                  <c-quantic-pager engine-id={engineId}></c-quantic-pager>
+                  <c-quantic-results-per-page engine-id={engineId}></c-quantic-results-per-page>
               </div>
             </div>
-          </div>
-          <div style="background-color: white; margin-top: 10px;">
-            <c-quantic-no-results onnoresult={handlenoResults} engine-id={engineId}></c-quantic-no-results>
+            <div class="slds-col slds-order_3 slds-large-order_3 slds-size_1-of-1 slds-large-size_3-of-12">
+              <div class="slds-m-bottom_large">
+                <c-quantic-recent-queries-list engine-id={engineId}></c-quantic-recent-queries-list>
+              </div>
+              <div class="slds-m-bottom_large">
+                <c-quantic-recent-results-list engine-id={engineId}></c-quantic-recent-results-list>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </c-quantic-search-interface>
-
   </div>
-  
 </template>

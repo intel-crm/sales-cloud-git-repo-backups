@@ -248,21 +248,21 @@
     <validationRules>
         <fullName>Core_IPS_PreventEdit</fullName>
         <active>true</active>
-        <errorConditionFormula>ISCHANGED(Core_Account__c )</errorConditionFormula>
+        <errorConditionFormula>OR((ISCHANGED(Core_Members__c)),(ISCHANGED(Core_Account__c )))</errorConditionFormula>
         <errorMessage>Please do not attempt to change the values once created</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
     <webLinks>
-        <fullName>Add_Accounts_LEX</fullName>
+        <fullName>Add_Accounts</fullName>
         <availability>online</availability>
         <displayType>massActionButton</displayType>
         <encodingKey>UTF-8</encodingKey>
         <height>600</height>
         <linkType>url</linkType>
-        <masterLabel>Add Accounts LEX</masterLabel>
+        <masterLabel>Add Accounts</masterLabel>
         <openType>sidebar</openType>
         <protected>false</protected>
-        <requireRowSelection>true</requireRowSelection>
-        <url>/lightning/n/Add_Accounts?c__recordId={!Core_IPS_Project__c.Id}</url>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/Core_addProjectAccounts?projectId={!Core_IPS_Project__c.Id}</url>
     </webLinks>
 </CustomObject>

@@ -145,7 +145,7 @@
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
-    <enableFeeds>true</enableFeeds>
+    <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
@@ -157,7 +157,6 @@
         <fullName>Core_MDF_Activity_Reverse_Transfer_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Activity Reverse Transfer Indicator</label>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
@@ -182,7 +181,6 @@
         <relationshipLabel>Account Transfer Logs</relationshipLabel>
         <relationshipName>Account_Transfer_Logs</relationshipName>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -210,7 +208,6 @@ $Label.Core_MDF_Intel_System_User
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
@@ -223,7 +220,6 @@ $Label.Core_MDF_Intel_System_User
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
@@ -269,7 +265,6 @@ $Label.Core_MDF_Intel_System_User
         <relationshipLabel>Account Transfer Logs</relationshipLabel>
         <relationshipName>Budget_Transfer_Logs</relationshipName>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -281,7 +276,6 @@ $Label.Core_MDF_Intel_System_User
         <referenceTo>Account</referenceTo>
         <relationshipName>Budget_Transfer_Logs</relationshipName>
         <required>true</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -293,7 +287,6 @@ $Label.Core_MDF_Intel_System_User
         <referenceTo>Account</referenceTo>
         <relationshipName>Budget_Transfer_Logs1</relationshipName>
         <required>true</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -305,7 +298,6 @@ $Label.Core_MDF_Intel_System_User
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
@@ -318,7 +310,6 @@ $Label.Core_MDF_Intel_System_User
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
@@ -328,7 +319,6 @@ $Label.Core_MDF_Intel_System_User
         <fullName>Core_MDF_Transfer_Type__c</fullName>
         <label>Transfer Type</label>
         <required>true</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -361,7 +351,6 @@ $Label.Core_MDF_Intel_System_User
         <precision>18</precision>
         <required>true</required>
         <scale>2</scale>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
@@ -375,7 +364,6 @@ $Label.Core_MDF_Intel_System_User
         <label>Unique Field</label>
         <length>200</length>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -384,6 +372,7 @@ $Label.Core_MDF_Intel_System_User
     <label>Account Transfer Log</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
         <columns>Core_MDF_Partner_Marketing_Budget__c</columns>
         <columns>Core_MDF_Budget_Type_Txt__c</columns>
         <columns>Core_MDF_Source_Account__c</columns>
@@ -396,11 +385,9 @@ $Label.Core_MDF_Intel_System_User
         <columns>Core_MDF_To_Account_Current_Balance__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
     </listViews>
     <nameField>
         <label>Account Transfer Log Name</label>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>Text</type>
     </nameField>

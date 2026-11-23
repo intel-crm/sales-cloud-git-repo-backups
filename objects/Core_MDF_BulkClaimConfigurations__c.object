@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Holds records to check if tax and bank values are mandatory on bulk claim template</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_MDF_Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Holds current records status</description>
+        <label>Core MDF Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Bank_Required__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>True if bank is required for current program and budget type combination</description>
+        <label>Core MDF Bank Required</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Budget_Type__c</fullName>
+        <description>Holds budget type value</description>
+        <externalId>false</externalId>
+        <label>Core MDF Budget Type</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Program__c</fullName>
+        <description>Holds program value</description>
+        <externalId>false</externalId>
+        <label>Core MDF Program</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Tax_Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>True if tax is required for current program and budget type combination</description>
+        <label>Core MDF Tax Required</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Core_MDF_BulkClaimConfiguration</label>
+    <visibility>Public</visibility>
+</CustomObject>

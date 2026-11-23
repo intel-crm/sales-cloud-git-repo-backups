@@ -7,6 +7,9 @@
         <publicGroups>
             <publicGroup>Core_MDF_CCP_CMDF_APJ_Pay_Admin</publicGroup>
         </publicGroups>
+        <users>
+            <user>12184888@intel.com.crm</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>PartnerFundClaim</sobjectType>

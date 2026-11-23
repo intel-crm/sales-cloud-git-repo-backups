@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>49.0</apiVersion>
+    <apiVersion>63.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <description>Making Account Share Record Empty</description>
@@ -155,6 +155,7 @@
             <label>AccountShareToBeInserted is NOT EMPTY</label>
         </rules>
     </decisions>
+    <environments>Default</environments>
     <interviewLabel>Core_MDF_PGMIteration {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_MDF_PGMIteration</label>
     <loops>
@@ -179,6 +180,12 @@
         </value>
     </processMetadataValues>
     <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
         <name>OriginBuilderType</name>
         <value>
             <stringValue>LightningFlowBuilder</stringValue>
@@ -192,7 +199,13 @@
         <locationY>392</locationY>
         <inputReference>Core_MDF_AccShareToBeInserted</inputReference>
     </recordCreates>
-    <startElementReference>Core_MDF_Check_if_PGMList_is_NOT_NULL</startElementReference>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Core_MDF_Check_if_PGMList_is_NOT_NULL</targetReference>
+        </connector>
+    </start>
     <status>Active</status>
     <variables>
         <name>Core_MDF_AccId</name>

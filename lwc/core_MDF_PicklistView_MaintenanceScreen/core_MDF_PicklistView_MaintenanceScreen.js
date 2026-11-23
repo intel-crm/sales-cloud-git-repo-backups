@@ -97,7 +97,7 @@ export default class core_MDF_PicklistView_MaintenanceScreen extends LightningEl
     hasReadOnlyAccess;
     noAccess;
     @track displayMessageforNoRTAccess = false;
-
+    @track innerLoading = false;
     columns = [{ label: 'No.', width: '5%' }, { label: 'PickList Value Label', width: '45%' }, { label: 'Picklist Value API Name', width: '50%' }];
     rtColumn = ['Available Values', 'Selected Values'];
     dpColumn = ['Controlling Field', 'Dependent Field'];
@@ -296,6 +296,7 @@ export default class core_MDF_PicklistView_MaintenanceScreen extends LightningEl
     }
     //this method will be called on Expansion of picklist field accordion
     getPicklistValueDetailsOnExpand(event) {
+        this.isLoading=true;
         let fieldAPIName = event.currentTarget.dataset.name;
         this.selectedField = fieldAPIName;
         let fldind = this.fieldOptions.findIndex(fld => fld.value == this.selectedField);
@@ -316,10 +317,10 @@ export default class core_MDF_PicklistView_MaintenanceScreen extends LightningEl
                 }
             }
         });
+        this.isLoading=false;
     }
     //To fetch the recordtype details on clicking of RecordType tab
     getRecordTypeDetails(event) {
-        this.isLoading = true;
         let recordTypeWrapperClass = {};
         let recTypeName = event.currentTarget.dataset.name;
         let recTypeIndex = this.recordTypeInfos.findIndex(rt => rt.name == recTypeName);
@@ -362,6 +363,7 @@ export default class core_MDF_PicklistView_MaintenanceScreen extends LightningEl
         });
 
         console.log('line 478 recordTypeWrapperClass',recordTypeWrapperClass);
+        this.isLoading = true;
         this.getRTValues(recordTypeWrapperClass);
         console.log('rec type id', this.recordTypeId);
         console.log('rectype name line 396', recTypeName);
@@ -495,11 +497,13 @@ export default class core_MDF_PicklistView_MaintenanceScreen extends LightningEl
     }
 
     handleActive() {
+        this.isLoading = true;
         this.showRecordtypeAccordions = true;
         this.recordTypeInfos = [];
         console.log('line 591 sel field',this.selectedField);
         getRTdetailsBasedOnObjectSelection({objName: this.selectedObject,fieldAPI:this.selectedField})
             .then(res => {
+                this.isLoading = true;
                 if(res!= undefined && res != {}){
                     let rTInfo = res;
                     console.log('line 471',rTInfo);
@@ -508,12 +512,14 @@ export default class core_MDF_PicklistView_MaintenanceScreen extends LightningEl
                     });
                 }
                 console.log('at line 477', this.recordTypeInfos);
+                this.isLoading = false;
             }
             ).catch(error => {
                 console.log('error at 619', error);
+                this.isLoading= false;
             });
 
-        
+        this.isLoading = false;
         
     }
 
@@ -629,9 +635,10 @@ export default class core_MDF_PicklistView_MaintenanceScreen extends LightningEl
     }
 
     getRTValues(recordTypeWrapperClass) {
-        this.isLoading = true;
+        //this.isLoading = true;
         getExistingPLValues({ rtwo: recordTypeWrapperClass })
             .then(res => {
+                //this.isLoading = true;
                 if (res != undefined && res != {}) {
                     console.log('line 578', JSON.stringify(res));
                     this.recordTypeSelectedPLValues = [];
@@ -665,6 +672,7 @@ export default class core_MDF_PicklistView_MaintenanceScreen extends LightningEl
                     console.log('line 596', this.picklistValues);
                     
                     this.displayMessageforNoRTAccess = this.picklistValues.length<=0 ? true : false;
+                    this.isLoading = false;
                     
                 }
 
@@ -720,6 +728,7 @@ export default class core_MDF_PicklistView_MaintenanceScreen extends LightningEl
                 console.log('error', error);
                 this.isLoading = false;
             });
+            this.isLoading=false;
     }
 
     handleInputEditCancel(event) {
@@ -742,8 +751,27 @@ export default class core_MDF_PicklistView_MaintenanceScreen extends LightningEl
         this.displayMessage = false;
         let fdata = [];
 
+        getRTdetailsBasedOnObjectSelection({objName: this.selectedObject,fieldAPI:this.selectedField})
+        .then(res => {
+           // this.isLoading = true;
+            if (res != undefined && res != {}) {
+                let rTInfo = res;
+                console.log('line 471', rTInfo);
+                rTInfo.map(rT => {
+                    this.recordTypeInfosonDep.push({ name: rT.name, id: rT.recordTypeId, label: rT.name, isExpanded: false, cssClassName: 'slds-section slds-is-close slds-var-p-left_large slds-var-p-right_large', iconName: 'utility:chevronright', isEdit: false, developerName: rT.developerName });
+                });
+            }
+            console.log('at line 819', this.recordTypeInfosonDep);
+            //this.isLoading = false;
+        }
+        ).catch(error => {
+            //this.isLoading = false;
+            console.log('error', error);
+        });
+
         getDependentFields({ objName: this.selectedObject, fldName: this.selectedField })
             .then(res => {
+                //this.isLoading = true;
                 if (res != undefined && res != {}) {
 
                     let depInfo = res;
@@ -751,29 +779,15 @@ export default class core_MDF_PicklistView_MaintenanceScreen extends LightningEl
                     this.displayMessage=Object.keys(depInfo).length === 0;
                     console.log('line 840',this.displayMessage);
                 }
+                //this.isLoading = false
             }
             ).catch(error => {
                 console.log('error', error);
+                //this.isLoading = false;
             });
+        this.isLoading = false;
 
-        getRTdetailsBasedOnObjectSelection({objName: this.selectedObject,fieldAPI:this.selectedField})
-            .then(res => {
-                if (res != undefined && res != {}) {
-                    let rTInfo = res;
-                    console.log('line 471', rTInfo);
-                    rTInfo.map(rT => {
-                        this.recordTypeInfosonDep.push({ name: rT.name, id: rT.recordTypeId, label: rT.name, isExpanded: false, cssClassName: 'slds-section slds-is-close slds-var-p-left_large slds-var-p-right_large', iconName: 'utility:chevronright', isEdit: false, developerName: rT.developerName });
-                    });
-                }
-                console.log('at line 819', this.recordTypeInfosonDep);
-                this.isLoading = false;
-            }
-            ).catch(error => {
-                this.isLoading = false;
-                console.log('error', error);
-            });
 
-            this.isLoading = false;
     }
     getFDDetails(event) {
         this.isLoading = true;
@@ -901,8 +915,10 @@ export default class core_MDF_PicklistView_MaintenanceScreen extends LightningEl
     /*getMaxRowCount() {
         return Math.max(...Object.values(this.fieldDependenciesMap).map((list) => list.length));
     }*/
-    getFDDetailsBasedonRecordType(event) {
-        this.isLoading = true;
+    async getFDDetailsBasedonRecordType(event) {
+        //this.isLoading = true;
+        //this.innerLoading = true;
+        this.dependentfieldsInfo = [];
         let recTypeName = event.currentTarget.dataset.name;
         let recTypeIndex = this.recordTypeInfosonDep.findIndex(rt => rt.name == recTypeName);
         this.selectedRTName = recTypeName;
@@ -926,8 +942,9 @@ export default class core_MDF_PicklistView_MaintenanceScreen extends LightningEl
         });
         getDependentFields({ objName: this.selectedObject, fldName: this.selectedField })
             .then(res => {
+                this.isLoading = true;
                 if (res != undefined && res != {}) {
-                    this.isLoading = true;
+                    //this.isLoading = true;
                     this.dependentfieldsInfo = [];
                     let depInfo = res;
                     this.displayMessageforNoDependency=false;
@@ -937,6 +954,9 @@ export default class core_MDF_PicklistView_MaintenanceScreen extends LightningEl
                     for (const [key, value] of Object.entries(depInfo)) {
                         console.log('line 832', key);
                         //if(this.dependentfieldsInfo.findIndex(df => df.label == value)== -1){
+                        console.log('obj name at 957',this.selectedObject);
+                        console.log('fieldAPi at 958',key);
+                        console.log('recordtype Id at 959',this.recordTypeInfosonDep[recTypeIndex].id);
                         getDependentPicklistValues({ objName: this.selectedObject, fieldAPI: key,recordtypeId:this.recordTypeInfosonDep[recTypeIndex].id })
                         .then(fdres=>{
                             console.log('1102',fdres);
@@ -949,11 +969,11 @@ export default class core_MDF_PicklistView_MaintenanceScreen extends LightningEl
                                 }
                             }
                             console.log('line 1133',this.dependentfieldsInfo);
-                            this.isLoading = false;
+                            //this.isLoading = false;
                         }
                         ).catch(error=>{
                             console.log('error at 1105',error);
-                            this.isLoading = false;
+                            //this.isLoading = false;
                         }
                         );
 
@@ -969,14 +989,21 @@ export default class core_MDF_PicklistView_MaintenanceScreen extends LightningEl
                 }
                 console.log('this.showRTAccordionOnDependencyTab', this.showRTAccordionOnDependencyTab);
                 console.log('at line 804', this.dependentfieldsInfo);
-                this.isLoading = false;
+                //this.isLoading = false;
+                setTimeout(() => {
+                    this.isLoading = false;
+                }, 4000);
             }
             ).catch(error => {
                 console.log('error', error);
                 this.isLoading = false;
-            });
+            })
+            /*setTimeout(() => {
+                this.isLoading = false;
+            }, 6000);*/
 
-        this.isLoading = false;
+       // this.isLoading = false;
+        //this.innerLoading = false;
 
     }
 

@@ -132,4 +132,7 @@
         </columns>
         <masterLabel>Account Bank Mapping: Info</masterLabel>
     </sections>
+    <sections>
+        <masterLabel>Accounts</masterLabel>
+    </sections>
 </ReportType>

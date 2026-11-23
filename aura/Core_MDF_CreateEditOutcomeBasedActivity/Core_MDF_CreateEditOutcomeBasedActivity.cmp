@@ -100,7 +100,6 @@
     <aura:attribute name="showErrorMsgForSpendingLimit" type="Boolean" default="false" />
     <aura:attribute name="ErrorMsgForSpendingLimit" type="String" default="" />
     <aura:attribute name="showBudgetTypeError" type="Boolean" default="false" />
-
     <!-- RecordType Attributes -->
     <aura:attribute name="recordtype" type="String" default="" description="RecordType ID" />
     <aura:attribute name="recordtypeName" type="String" default="" description="RecordType Name" />
@@ -165,6 +164,7 @@
     <aura:attribute name="SelActivityType" type="String" default="" description="Selected activity Type" />
     <aura:attribute name="startDate" type="Date" description="Start date" />
     <aura:attribute name="budgetTypeVal" type="List" default="[]" description="Budget type values" />
+    <aura:attribute name="budgetTypeCache" type="Object" default="{}" description="Client-side cache of getBudgetType results keyed by account, mode and proposal flag" />
     <aura:attribute name="budgetTypePicklistMap" type="Map" description="Budget type values" />
     <aura:attribute name="singleBudgetType" type="Boolean" default="false" description="Single budget type" />
     <aura:attribute name="SelReimbursementRate" type="String" default="" description="Selected Reimbursement Rate" />

@@ -7,7 +7,7 @@
     <oauthConfig>
         <callbackUrl>https://assists.ai4sales.com/sfdcTokens
 https://preprod-assists.ai4sales.com/sfdcTokens</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6tdLdH4pY25ZVZffOgPsO5ivcerfgQR8kd5ib9FJCUc76w.faZTtFRyV1X_k</consumerKey>
+        <consumerKey>3MVG9ahGHqp.k2_wmbjHwYMdmXxi0GlGb.BVrR3Ac0rC3wl2Y3cSgKemR7MZz7C9n.ilmFIfYJZzU_3k6WfA6</consumerKey>
         <isAdminApproved>true</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -37,14 +37,16 @@ https://preprod-assists.ai4sales.com/sfdcTokens</callbackUrl>
         <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
         <refreshTokenPolicy>specific_lifetime:1:DAYS</refreshTokenPolicy>
     </oauthPolicy>
-    <profileName>Production Release and Checkout</profileName>
+    <profileName>Cloud CRM BSA-Pre Prod</profileName>
     <profileName>Data Ops</profileName>
     <profileName>IT Admin</profileName>
     <profileName>Production Support-Display</profileName>
+    <profileName>Program Core Team</profileName>
     <profileName>Reporting Admin</profileName>
     <profileName>Sales Manager</profileName>
     <profileName>Sales Ops</profileName>
     <profileName>Sales Rep-BB</profileName>
+    <profileName>Production Support</profileName>
     <profileName>Sales Rep-BB-Dual IPS</profileName>
     <profileName>System Administrator</profileName>
 </ConnectedApp>

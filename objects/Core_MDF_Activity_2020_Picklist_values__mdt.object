@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Includes values form Picklist of activity which are not applicable from 1, Jan, 2020</description>
+    <fields>
+        <fullName>Core_MDF_PFR_RecordType_Id__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Record Type id</label>
+        <length>30</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_PFR_StartDate__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>PFR date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Picklist_Value_Text__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Picklist Value</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Picklist_Value__c</fullName>
+        <businessStatus>Active</businessStatus>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Picklist value</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <label>Activity 2020 Picklist values</label>
+    <pluralLabel>Activity 2020 Picklist values</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

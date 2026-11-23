@@ -1183,6 +1183,26 @@ export default class Core_Mass_Access_Ownership_Transfer extends LightningElemen
             this.showLockedRecords = false;
         return result; 
     }
-   
+    getSystemUser(userNameTxt){
+        getUser({ userName: userNameTxt, typeOfUser: this.typeOfFromUser, nodeAccountId: this.accountValueSelected,objConfigRec:this.objMdtRec })
+        .then(result => {
+            this.ownerName = result;
+            if (result.length == 0) {
+                this.disableGetData = true;
+                this.messageFlag = true;
+                console.log('no record');
+            }
+            else {
+                this.messageFlag = false;
+                //this.disableGetData = false;
+               
+                console.log('record present');
+            }
+        })
+        .catch(error => {
+            console.log('-------error-------------' + error.body.message);
+            console.log(error);
+        });
+    }
     
 }

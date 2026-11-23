@@ -66,8 +66,8 @@ public without sharing class Core_MDF_CampaignServiceHandler {
                     proposalBasedCampaignOldMap.put(cmp.Id, oldCampaignMap.get(cmp.Id));
                     if(ipaCampaignRecordTypeIdList.contains(cmp.RecordTypeId)) {
                         ipaCampaignOldMap.put(cmp.Id, oldCampaignMap.get(cmp.Id));
-                    } 
-                    proposalBasedCampaignNewMap.put(cmp.Id,cmp);
+                    }
+                    proposalBasedCampaignNewMap.put(cmp.Id, cmp);
                 }
             } else {
                 ccpCampaignList.add(cmp);
@@ -243,7 +243,7 @@ public without sharing class Core_MDF_CampaignServiceHandler {
                     //if(campIdProcessInstId.containsKey(c.Id) && campIdProcessInstId.get(c.Id) != NULL){
                         Id processInstanceId = campIdProcessInstId.get(c.Id);
                         //ATHR - Deeply Nested if 16209
-                        if(processInstanceId == null || piAndListofPiStepMap.get(processInstanceId) == null || !piAndListofPiStepMap.containsKey(processInstanceId)) {
+                        if(!piAndListofPiStepMap.containsKey(processInstanceId) || piAndListofPiStepMap.get(processInstanceId) == null) {
                             continue;
                         }
                         //if(piAndListofPiStepMap.containsKey(processInstanceId) && piAndListofPiStepMap.get(processInstanceId) != NULL){
@@ -261,7 +261,10 @@ public without sharing class Core_MDF_CampaignServiceHandler {
             }
           //  Core_MDF_IPA_Campaign_Functionality.notifyExternalReviewers(cmp);
             
-        }catch(Exception e){}
+        }catch(Exception e){ 
+            System.debug('Approver Comments Campaign =>'+e.getMessage());
+            
+        }
     }
     
 }

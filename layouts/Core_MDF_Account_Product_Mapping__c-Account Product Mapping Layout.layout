@@ -8,10 +8,6 @@
         <label>Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>Core_MDF_Program_Account_Map__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Name</field>
             </layoutItems>
@@ -38,6 +34,10 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_MDF_Product_Type_txt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>Core_MDF_Program_Account_Map__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -77,9 +77,6 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
-    <miniLayout>
-        <fields>Core_MDF_Program_Account_Map__c</fields>
-    </miniLayout>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>

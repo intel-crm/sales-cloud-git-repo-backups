@@ -48,11 +48,11 @@
             <value>Qualify,Define,Develop,Design</value>
         </criteriaItems>
         <criteriaItems>
-            <column>CLOSE_DATE</column>
+            <column>Opportunity.Core_Past_Due__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>lessThan</operator>
-            <value>TODAY</value>
+            <operator>equals</operator>
+            <value>1</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

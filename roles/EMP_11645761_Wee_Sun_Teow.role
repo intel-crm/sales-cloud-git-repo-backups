@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
-    <caseAccessLevel>Edit</caseAccessLevel>
+    <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Venkat Yadavalli</description>
+    <description>EMP of Rina Rama</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11645761_Wee_Sun_Teow</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_11644139_Venkat_Yadavalli</parentRole>
+    <parentRole>EMP_11728602_Rina_Raman</parentRole>
 </Role>

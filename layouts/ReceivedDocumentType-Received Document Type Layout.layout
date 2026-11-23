@@ -11,6 +11,10 @@
                 <field>ReceivedDocumentId</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Required</behavior>
+                <field>DocumentTypeId</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>PageNumber</field>
             </layoutItems>

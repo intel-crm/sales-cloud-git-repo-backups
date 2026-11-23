@@ -7,8 +7,15 @@
         <field>Core_MDF_Partnership_Score__c.Core_MDF_Account_Id__c</field>
     </columns>
     <columns>
+        <field>Core_MDF_Partnership_Score__c.Core_MDF_Virtual_Corp_Account_Id__c</field>
+    </columns>
+    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>Core_MDF_Partnership_Score__c.Core_MDF_IsRecordShared_ind__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_MDF_Partnership_Score__c.Core_MDF_Balance_Amt_del__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>

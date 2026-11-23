@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Ajay Nijhawan</description>
+    <description>EMP of Rajeev Borah</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11631932_Gaurav_Mishra</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_11525379_Ajay_Nijhawan</parentRole>
+    <parentRole>EMP_10649111_Rajeev_Borah</parentRole>
 </Role>

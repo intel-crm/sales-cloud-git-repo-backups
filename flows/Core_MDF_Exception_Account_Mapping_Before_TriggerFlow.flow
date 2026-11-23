@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>To check if a new EAM record is getting created</description>
+        <name>Check_if_its_a_new_record_creation</name>
+        <label>Check if its a new record creation</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>New_record_creation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>New record creation</label>
+        </rules>
+    </decisions>
+    <description>Trigger flow to run before creating/updating a Exception Account Mapping record</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Store accountid &amp; Exceptionid to avoid duplicate records</description>
+        <name>Store_accountid_to_ExceptionId</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Core_MDF_Account_id__c}&amp;{!$Record.Core_MDF_Exception_id__c}</expression>
+    </formulas>
+    <interviewLabel>Core_MDF_Exception_Account_Mapping_Before_TriggerFlow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_MDF_Exception_Account_Mapping_Before_TriggerFlow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_if_its_a_new_record_creation</targetReference>
+        </connector>
+        <object>Core_MDF_Exception_Account_Mapping__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

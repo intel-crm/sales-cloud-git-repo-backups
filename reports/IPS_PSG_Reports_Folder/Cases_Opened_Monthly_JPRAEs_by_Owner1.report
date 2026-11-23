@@ -393,7 +393,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Case.Core_AAQC_Case_recordType</value>
+            <value>Case.Core_AAQC_Case_recordType,Case.CEP_Case</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
@@ -407,7 +407,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>kaibara,takashi,yoshiaki,minagawa,kawai,akasaka,ushio,komatsu,yamamot</value>
+            <value>kaibara,takashi,yoshiaki,minagawa,kawai,akasaka,ushio,komatsu</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Sub_Status__c</column>
@@ -425,7 +425,7 @@
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
     <groupingsDown>
-        <dateGranularity>Month</dateGranularity>
+        <dateGranularity>Week</dateGranularity>
         <field>CREATED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
@@ -445,6 +445,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_PREVCURY</interval>
+        <endDate>2019-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2018-02-01</startDate>
     </timeFrameFilter>
 </Report>

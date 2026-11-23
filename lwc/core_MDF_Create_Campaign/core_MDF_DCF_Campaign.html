@@ -161,6 +161,7 @@
                                     </lightning-layout-item>
                                 </template>
 
+                                <!--anushya TWC3117-17373-->
                                 <template if:true={showApprovalCheckbox}>
                                     <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
                                         <lightning-input type="checkbox" 
@@ -173,6 +174,7 @@
                                         ></lightning-input>
                                     </lightning-layout-item>
                                 </template>
+                                <!--anushya TWC3117-17373-->
         
                                 <template if:true={availableBudgetWarning.Core_MDF_Opal_Budget_Type_Txt__c}>
                                     <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
@@ -215,7 +217,7 @@
                                         <lightning-input type="number" 
                                         name="Core_MDF_First_Year_Budget_Amount__c" 
                                         step="0.01" maxlength="16"
-					                    formatter="currency"
+					formatter="currency"
                                         field-level-help={campaignFieldHelpText.Core_MDF_First_Year_Budget_Amount__c} 
                                         value={campaignFieldValue.Core_MDF_First_Year_Budget_Amount__c} 
                                         label={campaignFieldLabel.Core_MDF_First_Year_Budget_Amount__c} 
@@ -230,7 +232,7 @@
                                         <lightning-input type="number" 
                                         name="Core_MDF_Second_Year_Budget_Amount__c" 
                                         step="0.01" maxlength="16"
-					                    formatter="currency"
+					formatter="currency"
                                         field-level-help={campaignFieldHelpText.Core_MDF_Second_Year_Budget_Amount__c} 
                                         value={campaignFieldValue.Core_MDF_Second_Year_Budget_Amount__c} 
                                         label={campaignFieldLabel.Core_MDF_Second_Year_Budget_Amount__c} 
@@ -295,7 +297,7 @@
                                         <lightning-input type="number" 
                                         name="Core_MDF_Spending_Cap_Amt__c" 
                                         step="0.01" maxlength="16"
-					                    formatter="currency"
+					formatter="currency"
                                         field-level-help={campaignFieldHelpText.Core_MDF_Spending_Cap_Amt__c} 
                                         value={campaignFieldValue.Core_MDF_Spending_Cap_Amt__c} 
                                         label={campaignFieldLabel.Core_MDF_Spending_Cap_Amt__c} 
@@ -402,6 +404,7 @@
                                         onchange={handlePriorityPctChange}></lightning-input>
                                     </lightning-layout-item>
                                 </template>
+                                <!-- Ealaya TWC3117-14432 changes -->
                                   <template if:true={campaignFieldVisibility.Core_MDF_CampOutcomeOpt_In_Ind__c}>
                                         <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
                                             <lightning-input type="checkbox" 
@@ -418,6 +421,7 @@
                                             </p>
                                         </lightning-layout-item>
                                     </template>
+                                <!-- Ealaya TWC3117-14432 changes -->
         
                              <!--   <template if:true={showForm}>
                                     <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">    
@@ -446,9 +450,11 @@
                                                 <p class="slds-text-color_error slds-m-top_xx-small">
                                                     {label.Core_MDF_Campaign_Outcome_Validation}</p>
                                             </template>
+                                            <!-- Ealaya TWC3117-14432 changes -->
                                             <template if:true={outcomeBasedError}>
                                                 <p class="slds-text-color_error slds-m-top_xx-small">{label.Core_MDF_Campaign_Outcome_Based_Validation}</p>
                                             </template>
+                                            <!-- Ealaya TWC3117-14432 changes -->
                                                 <template if:true={campaignFieldValue.Core_MDF_Outcomes_nm__c}>
                                                     <c-core_-m-d-f_-custom-data-table title={title} columns={columns} table-data={rows}
                                                         ontablechange={handleTableChange}> </c-core_-m-d-f_-custom-data-table>

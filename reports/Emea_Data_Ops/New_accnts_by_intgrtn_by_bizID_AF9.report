@@ -9,15 +9,69 @@
         <sourceColumnName>Account.Core_Sales_Groups__c</sourceColumnName>
         <useOther>true</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Automotive Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CCG Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IOTG Sales Group</sourceValue>
+            </sourceValues>
             <value>BU Groups</value>
         </values>
         <values>
             <sourceValues>
+                <sourceValue>US Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>PRC Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Taiwan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Mexico Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Korea Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Japan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP India Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Brazil Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP APJ Sales Territory</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Americas Sales Territory</sourceValue>
             </sourceValues>
             <value>GMP not EMEA</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>GMP EMEA Sales Territory</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP France Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Germany Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP UK Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Russia Sales Group</sourceValue>
+            </sourceValues>
             <value>GMP EMEA</value>
         </values>
     </buckets>

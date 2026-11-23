@@ -1,0 +1,22 @@
+<messaging:emailTemplate subject="{!$Label.Core_MDF_AuditCreation_with_UnderReviewSts_Subject}{!RelatedTo.Core_MDF_Claim_Number__c}" recipientType="User" relatedToType="Case" language="{!relatedTo.Core_MDF_Claim_Submitter__r.LanguageLocaleKey}" renderUsingSystemContextWithoutSharing="True">
+<messaging:htmlEmailBody >
+<html>
+<body>
+     <p>{!$Label.Core_MDF_EmailTemp_StatusUpdate_DearMember}<br/><br/>
+     {!$Label.Core_MDF_AuditCreation_with_UnderReviewSts_Body}<br/><br/>   
+        {!$Label.Core_MDF_Audit_Creation_Field1} {!RelatedTo.Core_MDF_Claim_Number__c}
+    <br/>{!$Label.Core_MDF_EmailTemp_Budget_Type} {!RelatedTo.Core_MDF_Budget_Type_nm__c}
+    <br/>{!$Label.Core_MDF_Audit_Creation_Field2} {!RelatedTo.Core_MDF_ActivityName__c} 
+    <br/>{!$Label.Core_MDF_Audit_Creation_Field3} {!RelatedTo.Core_MDF_CampaignName__c } 
+      <br/>{!$Label.Core_MDF_Audit_Creation_Field4} {!RelatedTo.Core_MDF_Activity_Type__c}
+      <br/>{!$Label.Core_MDF_Audit_Creation_Field5} {!RelatedTo.Core_MDF_Country_Region__c}
+      </P>
+     
+     <p> {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}<br/>
+      <!--{!$Label.Core_MDF_Audit_Creation_Body8}</p>-->
+      {!$Label.Core_MDF_Email_Signature}</p>
+      </body>
+    
+</html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

@@ -1,0 +1,143 @@
+<!-- sldsValidatorIgnore -->
+<template>
+
+    <lightning-card icon-name="custom:custom19" title='IPA Bulk Upload'>
+        <c-core_-m-d-f_-path-component path={path} onpathselection={onPathSelection}></c-core_-m-d-f_-path-component>
+
+        <!--Download Template start-->
+        <template if:true={path1selected}>
+            <lightning-card>
+
+                <div class="slds-p-left_medium">
+                   <lightning-layout multiple-rows>
+
+                                <lightning-layout-item size="12">
+                                    <div>
+
+
+                           
+                                 <lightning-accordion 
+                                 allow-multiple-sections-open
+                                 active-section-name={activeSections}>
+                                     <lightning-accordion-section name="Options" label="Select Options">
+
+                                        <div>
+                                            <lightning-combobox label={platformpicklistlabel} 
+                                                                name='platform'
+                                                                onchange={handlePlatformValueChange} 
+                                                                options={platformselected}
+                                                                required = true
+                                                                value={selectedPlatformValue}
+                                                                disabled={disablePlatformSelection}></lightning-combobox>
+                                        </div>
+
+                                        <div>
+                                            <lightning-combobox label={programpicklistlabel} 
+                                                                name='programSel' 
+                                                                onchange={handleProgramValueChange} 
+                                                                options={progselected}
+                                                                required = true
+                                                                value={selectedProgramValue}
+                                                                disabled={disableProgramSelection}></lightning-combobox>
+                                        </div>
+
+                                        <div>
+                                            <lightning-combobox label={objectpicklistlabel} 
+                                                                name='objectSel'
+                                                                onchange={handleObjectValueChange} 
+                                                                options={objectselected}
+                                                                required = true
+                                                                value={selectedObjValue}
+                                                                disabled={disableObjectSelection}></lightning-combobox>
+                                        </div>
+
+                                        <div class="slds-text-body--regular slds-text-color_error">
+                                            {nullObjectError}
+                                        </div><br/>
+                                     </lightning-accordion-section>
+                                      
+                                
+
+
+                               
+
+                                       
+        
+                                       
+                                 <lightning-accordion-section name="Download" label="Download Template">
+
+                                     
+                                        <div>
+                                            <lightning-layout-item padding="around-small" size="12">
+                                                <p>Download template here for IPA Bulk Proposal creation: &nbsp;
+                                                <lightning-button icon-name="utility:download" 
+                                                                  label="Download Template" 
+                                                                  title="Download Template"
+                                                                  onclick={handleDownloadClick} variant="brand" disabled={disableTemplateButton}></lightning-button>
+                                                </p>
+                                        </lightning-layout-item>
+                                        </div>
+                                    
+                                 </lightning-accordion-section>
+                                  
+                                 <lightning-accordion-section name="Upload" label="Upload">
+
+                                        <lightning-layout-item>
+                                            <div>
+                                                <div>
+                                                    <lightning-input label="" name="file uploader" onchange ={handleFilesChange} type="file" disabled={disableUploadFile}></lightning-input>
+                                                </div><br/>
+                                                <div class="slds-text-body--regular slds-text-color_error">
+                                                    {fileName}
+                                                </div><br/>
+                                            </div>         
+                                        </lightning-layout-item>
+                                 </lightning-accordion-section>
+                                </lightning-accordion> 
+                                    
+                                    </div>
+                                </lightning-layout-item>
+                                
+                            </lightning-layout>               
+            </div>
+            </lightning-card>           
+        </template>
+
+
+        <template if:true={path2selected}>
+            <lightning-layout multiple-rows="true">
+                
+                <lightning-layout-item padding="around-small" size="12">
+                    <div class="page-section page-header">
+                        <h2>Please find the uploaded data and review the errors:</h2>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="12">    
+        <div if:true={data} class="page-section slds-scrollable">
+            <lightning-datatable  
+                                 columns={columns} 
+                                 data={data} 
+                                 hide-checkbox-column="true" 
+                                 key-field="id"
+                                 wrap-text-max-lines="4">
+            </lightning-datatable>
+        </div>
+</lightning-layout-item>
+<lightning-layout-item flexibility="auto" padding="around-small" size="12">
+    <div class="page-footer page-section">
+        <lightning-button  label={UploadFile} 
+            onclick={saveToFile} 
+            variant="brand" 
+            disabled={disableUploadButton}>
+        </lightning-button>
+        <lightning-button variant="brand" label='Validate' title='Validate' disabled={disableValidate} onclick={handleValidate} class="slds-var-m-left_x-small">
+        </lightning-button> 
+        <lightning-button variant="brand" label='Save' title='Save' disabled={disableValidate} onclick={handleBtnSave} class="slds-var-m-left_x-small">
+        </lightning-button> 
+    </div>
+</lightning-layout-item>
+<p>Bulk Upload Batch Id is {bulkUploadBatchId}</p>
+</lightning-layout>
+</template>
+    </lightning-card>
+</template>

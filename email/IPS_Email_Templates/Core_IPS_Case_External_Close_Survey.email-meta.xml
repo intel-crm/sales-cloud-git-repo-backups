@@ -6,12 +6,14 @@
     <name>Core IPS Case External Close/Survey</name>
     <style>freeForm</style>
     <subject>IPS - Closed Case {!Case.CaseNumber} - {!Case.Account} {!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,&quot; - &quot;)} {!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,Case.Subject)}</subject>
-    <textOnly>Case {!Case.CaseNumber} has been closed.
+    <textOnly>Intel® Premier Support
 
+Case {!Case.CaseNumber} has been closed.
 
-To view the case please: Click Here
+Please provide your feedback go here: http://survey.clicktools.com/app/survey/go.jsp?iv=2w36tezm5keep&amp;q1={!Case.Id}&amp;q2={!Case.AccountId}&amp;q3={!Case.ContactId}&amp;q4={!Case.Contact}&amp;q5={!Case.CaseNumber}
 
-{!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,&quot;Latest Case Comment Submitted By:&quot;)}{!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,Case.Core_IPS_Submitter_First_Name__c)}
+To view the case please go here: {!$Label.Core_IPS_Notification_External_URL}/{!Case.Id}
+
 {!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;This message was designed such that it contains no information which may be considered confidential.&quot;,if(isblank(Case.Core_Last_Case_Comment__c),&quot;&quot;,&quot;Latest Case Communication*: &quot;))}
 {!if(isblank(Case.Core_Last_Case_Comment__c),&quot;&quot;,if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,Case.Core_Last_Case_Comment__c))}
 
@@ -34,7 +36,6 @@ Product: {!Case.Core_IPS_Product_name__c}
 {!if(isblank(Case.Core_IPS_Project_Case__c),&quot;&quot;,&quot;Project: &quot;)}{!Case.Core_IPS_Project_Case__c}
 
 _______________________________________________________________
-
 * Inline images have been removed from this email.  Please open in Intel® Premier Support to view all images.
 
 This message contains Intel Confidential information and should be handled in accordance with your Non-Disclosure Agreement (NDA) with Intel. Access to this e-mail by anyone other than the intended recipient is unauthorized. If you are not the intended recipient (or responsible for delivery of the message to such person), you may not use, copy, distribute, or deliver this message or any part of its contents or take any action in reliance on it, and in such case, you should destroy this message.

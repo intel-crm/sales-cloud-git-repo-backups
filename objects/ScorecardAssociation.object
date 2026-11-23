@@ -130,6 +130,187 @@
     <enableFeeds>false</enableFeeds>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
+        <fullName>COre_MDF_Partial_Value_Score_num__c</fullName>
+        <externalId>false</externalId>
+        <label>Partial Value Score</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Claim_Score_num__c</fullName>
+        <externalId>false</externalId>
+        <label>Claim Score</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_PV1_Score_Claim_Amt__c</fullName>
+        <externalId>false</externalId>
+        <label>PV1 Score Claim Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_PV2_Score_Claim_Amt__c</fullName>
+        <externalId>false</externalId>
+        <label>PV2 Score Claim Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Partner_Repsonse_Zone_nm__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Core_MDF_Partner_Score_num__c &lt; 2 &amp;&amp;  Core_MDF_Trend_pct__c &lt; -5 ,&apos;A4&apos;,  IF(Core_MDF_Partner_Score_num__c &lt; 4 &amp;&amp; Core_MDF_Partner_Score_num__c &gt;= 2 &amp;&amp;  Core_MDF_Trend_pct__c &lt; -5, &apos;A3&apos;, IF(Core_MDF_Partner_Score_num__c &lt; 6 &amp;&amp; Core_MDF_Partner_Score_num__c &gt;= 4 &amp;&amp;  Core_MDF_Trend_pct__c &lt; -5, &apos;A2&apos;, IF(Core_MDF_Partner_Score_num__c &gt; 6 &amp;&amp;  Core_MDF_Trend_pct__c &lt; -5, &apos;A1&apos;, IF(Core_MDF_Partner_Score_num__c &lt; 2 &amp;&amp;  Core_MDF_Trend_pct__c &lt; -5 &amp;&amp;  Core_MDF_Trend_pct__c &lt; 5, &apos;B4&apos;, IF(Core_MDF_Partner_Score_num__c &lt; 4 &amp;&amp; Core_MDF_Partner_Score_num__c &gt;= 2 &amp;&amp;  Core_MDF_Trend_pct__c &gt; -5 &amp;&amp;  Core_MDF_Trend_pct__c &gt; -5 &amp;&amp; Core_MDF_Trend_pct__c &lt; 5, &apos;B3&apos;, IF(Core_MDF_Partner_Score_num__c &lt; 6 &amp;&amp; Core_MDF_Partner_Score_num__c &gt;= 4 &amp;&amp;  Core_MDF_Trend_pct__c &gt; -5 &amp;&amp;  Core_MDF_Trend_pct__c &lt; 5, &apos;B2&apos;, IF(Core_MDF_Partner_Score_num__c &gt; 6 &amp;&amp;  Core_MDF_Trend_pct__c &gt; -5 &amp;&amp;  Core_MDF_Trend_pct__c &lt; 5, &apos;B1&apos;, IF(Core_MDF_Partner_Score_num__c &lt; 2 &amp;&amp;  Core_MDF_Trend_pct__c &gt; 5 , &apos;C4&apos;, IF(Core_MDF_Partner_Score_num__c &lt; 4 &amp;&amp; Core_MDF_Partner_Score_num__c &gt;= 2 &amp;&amp;  Core_MDF_Trend_pct__c &gt; 5, &apos;C3&apos;, IF(Core_MDF_Partner_Score_num__c &lt; 6 &amp;&amp; Core_MDF_Partner_Score_num__c &gt;= 4 &amp;&amp;  Core_MDF_Trend_pct__c &gt; 5, &apos;C2&apos;, IF(Core_MDF_Partner_Score_num__c &gt; 6 &amp;&amp;  Core_MDF_Trend_pct__c &gt; 5, &apos;C1&apos;, &apos;&apos;)
+))))))))
+)
+) )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Partner Repsonse Zone</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Partner_Score_num__c</fullName>
+        <externalId>false</externalId>
+        <label>Partner Score</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Partnership_Grade_num__c</fullName>
+        <externalId>false</externalId>
+        <label>Partnership Grade</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Quarter_cd__c</fullName>
+        <externalId>false</externalId>
+        <label>Quarter</label>
+        <length>2</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Trend_pct__c</fullName>
+        <label>Trend %</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Year_nm__c</fullName>
+        <externalId>false</externalId>
+        <label>Year</label>
+        <length>4</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_ZV_Score_Claim_Amt__c</fullName>
+        <externalId>false</externalId>
+        <label>ZV Score Claim Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Zone_Value_nm__c</fullName>
+        <label>Zone Value</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>A1 - Recover ZV plus 25% of PV1</fullName>
+                    <default>false</default>
+                    <label>A1 - Recover ZV plus 25% of PV1</label>
+                </value>
+                <value>
+                    <fullName>A2 - Recover ZV plus 25% of PV1 plus 10% of PV2</fullName>
+                    <default>false</default>
+                    <label>A2 - Recover ZV plus 25% of PV1 plus 10% of PV2</label>
+                </value>
+                <value>
+                    <fullName>A3 - Recover ZV plus 50% of PV1 plus 25% of PV2</fullName>
+                    <default>false</default>
+                    <label>A3 - Recover ZV plus 50% of PV1 plus 25% of PV2</label>
+                </value>
+                <value>
+                    <fullName>A4 - Recover ZV plus 50% of PV1 plus 25% of PV2</fullName>
+                    <default>false</default>
+                    <label>A4 - Recover ZV plus 50% of PV1 plus 25% of PV2</label>
+                </value>
+                <value>
+                    <fullName>B1 - Recover ZV plus 10% of PV1</fullName>
+                    <default>false</default>
+                    <label>B1 - Recover ZV plus 10% of PV1</label>
+                </value>
+                <value>
+                    <fullName>B2 - Recover ZV plus 25% of PV1</fullName>
+                    <default>false</default>
+                    <label>B2 - Recover ZV plus 25% of PV1</label>
+                </value>
+                <value>
+                    <fullName>B3 - Recover ZV plus 25% of PV1 plus 10% of PV2</fullName>
+                    <default>false</default>
+                    <label>B3 - Recover ZV plus 25% of PV1 plus 10% of PV2</label>
+                </value>
+                <value>
+                    <fullName>B4 - Recover ZV plus 50% of PV1 plus 25% of PV2</fullName>
+                    <default>false</default>
+                    <label>B4 - Recover ZV plus 50% of PV1 plus 25% of PV2</label>
+                </value>
+                <value>
+                    <fullName>C1 - Recover ZV only</fullName>
+                    <default>false</default>
+                    <label>C1 - Recover ZV only</label>
+                </value>
+                <value>
+                    <fullName>C2 - Recover ZV plus 10% of PV1</fullName>
+                    <default>false</default>
+                    <label>C2 - Recover ZV plus 10% of PV1</label>
+                </value>
+                <value>
+                    <fullName>C3 - Recover ZV plus 25% of PV1</fullName>
+                    <default>false</default>
+                    <label>C3 - Recover ZV plus 25% of PV1</label>
+                </value>
+                <value>
+                    <fullName>C4 - Recover ZV plus 25% of PV1 plus 10% of PV2</fullName>
+                    <default>false</default>
+                    <label>C4 - Recover ZV plus 25% of PV1 plus 10% of PV2</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>ScorecardId</fullName>
         <type>MasterDetail</type>
     </fields>

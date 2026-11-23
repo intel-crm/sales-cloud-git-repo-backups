@@ -1,0 +1,15 @@
+<messaging:emailTemplate recipientType="User" relatedToType="Core_MDF_InternalAudit__c"                        
+                         subject="Test audit email">
+                         <messaging:htmlEmailBody >
+<html>
+<body>
+<p>
+Dear Member,
+<br/>
+Count of User Admins : &nbsp; <apex:outputText value="{!FLOOR(RelatedTo.Core_MDF_No_of_User_Admin__c)}"/>
+<br/>
+Please view the record &nbsp; <apex:outputLink value="{!$Label.Core_MDF_Internal_Audit_Community_Link+RelatedTo.Id}">{!$Label.Core_MDF_EmailTemp_Claim_URL1}</apex:outputLink></p>
+</body>
+</html>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

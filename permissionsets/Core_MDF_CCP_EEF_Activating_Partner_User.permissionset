@@ -4,6 +4,14 @@
         <application>Core_MDF_CoMarketing</application>
         <visible>true</visible>
     </applicationVisibilities>
+    <classAccesses>
+        <apexClass>Core_MDF_CCP_ConstantClass</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_Campaign_QuickActionController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
         <name>Core_MDF_Custom_Label_Configration__mdt</name>
@@ -12,6 +20,15 @@
         <enabled>true</enabled>
         <name>Core_MDF_CCP_EEF_Activating_Partner_User</name>
     </customPermissions>
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>Core_MDF_View_Custom_Allocation_Tab</name>
+    </customPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Campaign.Core_Approval_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Campaign.Core_MDF_Account__c</field>
@@ -39,6 +56,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Campaign.Core_MDF_Approval_Step_Counter_nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Campaign.Core_MDF_Audience__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -59,7 +81,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Campaign.Core_MDF_Campaign_IPA_Path_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Campaign.Core_MDF_Channel_Program__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Campaign.Core_MDF_ISV_Accounts__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -70,6 +102,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Campaign.Core_MDF_Is_Opal__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Campaign.Core_MDF_Last_Rejected_Level_Nm__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -149,6 +186,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Campaign.Core_SubSector__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Campaign.Description</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Campaign.EndDate</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -190,6 +237,21 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_MDF_Budget_Transfer_Log__c.Core_MDF_Owner_Nm__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Camp_to_ActPartner__c.Core_MDF_Activating_Partner_Account_id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Camp_to_ActPartner__c.Core_MDF_Active_Ind__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Camp_to_ActPartner__c.Core_MDF_Campaign_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -274,6 +336,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_Campaign_Account_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PartnerFundRequest.Core_MDF_Campaign_Ultimate_Account_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -302,6 +369,16 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>Campaign</object>
+        <viewAllFields>false</viewAllFields>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Core_MDF_Partner_Node_User_Mapping__c</object>
         <viewAllFields>false</viewAllFields>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>

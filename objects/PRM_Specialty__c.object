@@ -384,6 +384,11 @@
                     <label>Service Integrator</label>
                 </value>
                 <value>
+                    <fullName>Sponsor</fullName>
+                    <default>false</default>
+                    <label>Sponsor</label>
+                </value>
+                <value>
                     <fullName>Original Equipment Manufacturer (OEM)</fullName>
                     <default>false</default>
                     <label>Original Equipment Manufacturer (OEM)</label>
@@ -422,12 +427,6 @@
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>SI</label>
-                </value>
-                <value>
-                    <fullName>Sponsor</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Sponsor</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -491,19 +490,9 @@
     </fields>
     <label>Specialty/Select Benefit</label>
     <listViews>
-        <fullName>ALL</fullName>
-        <columns>NAME</columns>
-        <columns>RECORDTYPE</columns>
-        <columns>OWNER.FIRST_NAME</columns>
-        <columns>OWNER.LAST_NAME</columns>
-        <columns>PRM_Access_Level_Nm__c</columns>
-        <columns>PRM_Inactive_Ind__c</columns>
-        <columns>PRM_End_Date_Dt__c</columns>
-        <columns>PRM_Role_Nm__c</columns>
-        <columns>PRM_Description_Txt__c</columns>
-        <columns>CREATED_DATE</columns>
+        <fullName>All</fullName>
         <filterScope>Everything</filterScope>
-        <label>ALL</label>
+        <label>All</label>
     </listViews>
     <nameField>
         <label>Name</label>
@@ -648,6 +637,10 @@
                 <fullName>Solution Integrator</fullName>
                 <default>false</default>
             </values>
+            <values>
+                <fullName>Sponsor</fullName>
+                <default>false</default>
+            </values>
         </picklistValues>
         <picklistValues>
             <picklist>PRM_Tier_Nm__c</picklist>
@@ -667,7 +660,7 @@
     </recordTypes>
     <recordTypes>
         <fullName>PRM_Specialty</fullName>
-        <active>false</active>
+        <active>true</active>
         <label>Specialty</label>
         <picklistValues>
             <picklist>PRM_Access_Level_Nm__c</picklist>
@@ -801,6 +794,10 @@
                 <fullName>Solution Integrator</fullName>
                 <default>false</default>
             </values>
+            <values>
+                <fullName>Sponsor</fullName>
+                <default>false</default>
+            </values>
         </picklistValues>
         <picklistValues>
             <picklist>PRM_Tier_Nm__c</picklist>
@@ -826,7 +823,7 @@
         <fullName>PRM_Restrict_End_Date_Prior_Start_Date</fullName>
         <active>true</active>
         <description>This is used to restrict user from entering the End date prior to the Start Date.</description>
-        <errorConditionFormula>AND( NOT($Permission.PCC_Bypass_Automation),
+        <errorConditionFormula>AND(
 OR(
 ISNEW(),
 ISCHANGED(PRM_End_Date_Dt__c)
@@ -840,7 +837,7 @@ PRM_End_Date_Dt__c &lt;= PRM_Start_Date_Dt__c
         <fullName>PRM_Restrict_Past_End_Date</fullName>
         <active>true</active>
         <description>This is used to restrict user from entering past End Dates.</description>
-        <errorConditionFormula>AND(NOT( $Permission.PCC_Bypass_Automation ),
+        <errorConditionFormula>AND(
 OR(
 ISNEW(),
 ISCHANGED(PRM_End_Date_Dt__c )
@@ -849,6 +846,20 @@ PRM_End_Date_Dt__c &lt;= TODAY()
 )</errorConditionFormula>
         <errorDisplayField>PRM_End_Date_Dt__c</errorDisplayField>
         <errorMessage>End Date cannot be less than Today&apos;s Date</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PRM_Restrict_Past_Start_Date</fullName>
+        <active>false</active>
+        <description>This is used to restrict user from entering past Start dates.</description>
+        <errorConditionFormula>AND(
+    OR( 
+        ISNEW(), 
+        ISCHANGED(PRM_Start_Date_Dt__c ) 
+    ), 
+    PRM_Start_Date_Dt__c &lt; TODAY() 
+)</errorConditionFormula>
+        <errorDisplayField>PRM_Start_Date_Dt__c</errorDisplayField>
+        <errorMessage>Start Date cannot be less than Today&apos;s Date</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

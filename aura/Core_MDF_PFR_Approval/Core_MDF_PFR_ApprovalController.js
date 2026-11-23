@@ -1,6 +1,7 @@
 ({
 
   doInit: function (component, event, helper) {
+      console.log('DEBUG: doInit called');
     // NEW: Check AI approval access and store in separate attribute
     var recordId = component.get("v.recordId");
     var action = component.get("c.hasAIApprovalAccess");
@@ -10,18 +11,23 @@
     action.setCallback(this, function(response) {
         if (response.getState() === "SUCCESS") {
             var hasEmailAccess = response.getReturnValue();
+            console.log('DEBUG: hasAIApprovalAccess returned: ' + hasEmailAccess);
             component.set("v.hasEmailWhitelistAccess", hasEmailAccess);
         } else {
+            console.log('DEBUG: hasAIApprovalAccess failed');
             component.set("v.hasEmailWhitelistAccess", false);
         }
     });
-    $A.enqueueAction(action);  
-   	helper.loadApprovalFlowAction(component, event, helper);
+    $A.enqueueAction(action);
+    console.log('DEBUG: About to call loadApprovalFlowAction');  
+    helper.loadApprovalFlowAction(component, event, helper);
+    console.log('DEBUG: loadApprovalFlowAction call completed');  
   },
   
     approvalAction: function (component, event, helper) {
         var btnvalue = event.getSource().get("v.value");
         component.set('v.btnValue',btnvalue);
+        
         if(btnvalue == 'Approve' || btnvalue == 'Reject'){
             var userID = $A.get("$SObjectType.CurrentUser.Id");
            component.set("v.userId", userID);
@@ -93,17 +99,18 @@
         component.set("v.showSmartAssistPopup", false);
         // Don't clear AI data as we want to keep it for the disclaimer
     },
+
   // Function called on click of Cancel or "X" on the layout 
     closeModal: function(component, event, helper) {
         var recordId = component.get("v.recordId");
         var communityUrl = component.get("v.externalUser");
-        var communityBaseUrl = $A.get("$Label.c.Core_MDF_PFRCommunityLink");
+        
         var outcomebaseActivity= component.get("v.isOutcomebaseActivity");
         if(outcomebaseActivity){
             var communityUrl = component.get("v.externalUser");
             var recordId= component.get("v.recordId");
             var url = communityUrl
-            ? communityBaseUrl + 's/outcome-based-campaign-details?recordId=' + recordId
+            ? '/Partnercenter/s/outcome-based-campaign-details?recordId=' + recordId
             : '/lightning/n/Core_MDF_Outcome_Based_Campaign_Detail?c__recordId=' + recordId;
             window.location.href = url;
         }else{

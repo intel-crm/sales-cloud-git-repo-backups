@@ -361,18 +361,33 @@
         <sourceColumnName>Case.Core_Case_Closure__c</sourceColumnName>
         <useOther>false</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Fix in Intel Software Release</sourceValue>
+            </sourceValues>
             <value>Fix in SW</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Fix in Intel Documentation</sourceValue>
+            </sourceValues>
             <value>Fix in Doc</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Fix in Intel Platform/Tool</sourceValue>
+            </sourceValues>
             <value>Fix in Tool</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Fix in Intel Silicon</sourceValue>
+            </sourceValues>
             <value>Fix in Silicon</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>3rd Party Issue/Fix</sourceValue>
+            </sourceValues>
             <value>Fix in 3rd Party</value>
         </values>
     </buckets>
@@ -448,7 +463,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Case.Core_AAQC_Case_recordType</value>
+            <value>Case.Core_AAQC_Case_recordType,Case.CEP_Case</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
@@ -483,7 +498,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>intel</value>
+            <value>fix</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Case_Closure__c</column>
@@ -491,13 +506,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>customer error/fix</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_Case_Closure__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>manufacturing,regression,fix,missing,updated,customized,optimization,deferred</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -530,6 +538,6 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_PREVCURFY</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

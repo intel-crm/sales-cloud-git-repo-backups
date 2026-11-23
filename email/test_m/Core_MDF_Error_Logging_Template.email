@@ -1,0 +1,18 @@
+<messaging:emailTemplate subject="{!$Label.Core_MDF_SFDC_Environment}: Error Notification" recipientType="User" relatedToType="Core_Log_Entry__c">
+<messaging:htmlEmailBody >
+<html>
+<body>
+     <p>Hi CCP Tech Team,<br/><br/>
+     An error has occurred in {!RelatedTo.Core_Project__c} application.<br/><br/>   
+     <b><u>Below are the details:</u></b>
+    <br/><b>Log ID:</b> {!RelatedTo.Name} 
+    <br/><b>Origin:</b> {!RelatedTo.Core_Origin__c} 
+    <br/><b>Severity:</b> {!RelatedTo.Core_Severity__c}
+    <br/><b>Error Details:</b> {!RelatedTo.Core_Details__c} <br/><br/>
+    <br/><b>To view details:</b> <apex:outputLink value="{!$Label.Core_MDF_PFRDetailLink+RelatedTo.Id}"> Click here<br/><br/></apex:outputLink>
+</P>
+</body>
+    
+</html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

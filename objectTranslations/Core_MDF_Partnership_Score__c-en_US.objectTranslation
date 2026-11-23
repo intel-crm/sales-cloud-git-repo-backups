@@ -6,12 +6,20 @@
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>Partnership Scores</value>
+        <value>Partnership Score</value>
     </caseValues>
+    <fields>
+        <label><!-- Account ID --></label>
+        <name>Core_MDF_AccountID_id__c</name>
+    </fields>
     <fields>
         <label><!-- Account --></label>
         <name>Core_MDF_Account_Id__c</name>
         <relationshipLabel><!-- Partnership Score --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_MDF_Account_nm__c</name>
     </fields>
     <fields>
         <label><!-- Aggregate Claim Score --></label>
@@ -28,8 +36,12 @@
     </fields>
     <fields>
         <help><!-- Final Recovery Amount - Recovered Amount --></help>
-        <label><!-- Balance Unrecovered Old --></label>
+        <label>Balance Unrecovered</label>
         <name>Core_MDF_Balance_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Balance Amount --></label>
+        <name>Core_MDF_Balance_Amt_del__c</name>
     </fields>
     <fields>
         <label><!-- Carry Over Amount --></label>
@@ -40,7 +52,10 @@
         <name>Core_MDF_Carry_Over_Amt__c</name>
     </fields>
     <fields>
-        <help><!-- Channel Program Display only field --></help>
+        <label><!-- Carry Over from Previous Qtr --></label>
+        <name>Core_MDF_Carry_Over_from_Previous_Qtr__c</name>
+    </fields>
+    <fields>
         <label><!-- Channel Program Display --></label>
         <name>Core_MDF_Channel_Program_Display__c</name>
     </fields>
@@ -64,9 +79,17 @@
         <name>Core_MDF_Final_Recovery_Amount_Amt__c</name>
     </fields>
     <fields>
+        <label><!-- Final Recovery Amount New --></label>
+        <name>Core_MDF_Final_Recovery_Amount_New__c</name>
+    </fields>
+    <fields>
         <help><!-- Total Recovery Amount for the Quarter + Carry Over Amount of Previous Quarters --></help>
         <label><!-- Final Recovery Amount --></label>
         <name>Core_MDF_Final_Recovery_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Identification Key --></label>
+        <name>Core_MDF_Identification_Key_Id__c</name>
     </fields>
     <fields>
         <label><!-- IsRecordShared --></label>
@@ -110,6 +133,10 @@
         <name>Core_MDF_Partnership_Score_Nbr__c</name>
     </fields>
     <fields>
+        <label><!-- Past PS --></label>
+        <name>Core_MDF_Past_PartershipScore__c</name>
+    </fields>
+    <fields>
         <label><!-- Petty Rule Applied? --></label>
         <name>Core_MDF_Petty_Rule_Applied_Ind__c</name>
     </fields>
@@ -128,6 +155,10 @@
     <fields>
         <label><!-- Recovered Amount --></label>
         <name>Core_MDF_Recovered_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recovered Amount Old --></label>
+        <name>Core_MDF_Recovered_Amt_del__c</name>
     </fields>
     <fields>
         <label><!-- Recovery Amount --></label>
@@ -233,6 +264,10 @@
         <label><!-- Zone --></label>
         <name>Core_MDF_Zone_nm__c</name>
     </fields>
+    <recordTypes>
+        <label><!-- Partnership Score RecordType --></label>
+        <name>Partnership_Score_RecordType</name>
+    </recordTypes>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Fields cannot be Updated (Account, program, Quarter Year) --></errorMessage>

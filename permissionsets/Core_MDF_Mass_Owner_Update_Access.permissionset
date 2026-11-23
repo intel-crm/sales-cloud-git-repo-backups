@@ -5,6 +5,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CRM_UpdateReportsAndDashbords</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_MDF_CCP_MassOwnerUpdate</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -111,6 +115,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_MDF_Custom_Utility_Config__c.Core_MDF_isActive_ind__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Custom_Utility_Config__c.Core_MDF_isProgramApplicable__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

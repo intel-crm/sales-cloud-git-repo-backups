@@ -36,16 +36,17 @@
             <axisBinding>y</axisBinding>
             <column>AMOUNT</column>
         </chartSummaries>
-        <chartType>Donut</chartType>
+        <chartType>HorizontalBarStacked</chartType>
         <enableHoverLabels>true</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>STAGE_NAME</groupingColumn>
+        <groupingColumn>CLOSE_DATE</groupingColumn>
         <legendPosition>Bottom</legendPosition>
         <location>CHART_TOP</location>
+        <secondaryGroupingColumn>BucketField_71676151</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
-        <showTotal>true</showTotal>
-        <showValues>true</showValues>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
@@ -68,6 +69,9 @@
         <field>PROBABILITY</field>
     </columns>
     <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
         <field>FULL_NAME</field>
     </columns>
     <columns>
@@ -88,7 +92,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
-            <value>Lost,Cancelled,Group</value>
+            <value>Lost,Cancelled,Group,Define,Qualify</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>siemens</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -98,11 +109,18 @@
             <value>design</value>
         </criteriaItems>
         <criteriaItems>
+            <column>PROBABILITY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>50.0</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>matschke,angelo</value>
+            <value>roberts,bigbee,kim,matschke,angelo,wang,renganathan.kwak,purfurst,gould,lamb,foruria,rizer,fadaie,ong,loi,Schwingenschloegl,zhang</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Commissionable__c</column>
@@ -110,13 +128,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Yes</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opp_Prime_Account_Name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Siemens</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -128,10 +139,10 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>STAGE_NAME</field>
-        <sortOrder>Asc</sortOrder>
+        <field>BucketField_71676151</field>
+        <sortOrder>Desc</sortOrder>
     </groupingsDown>
-    <name>Siemens Design Win Pipeline - FY</name>
+    <name>Siemens Design Win Forecast - By Year</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -155,6 +166,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

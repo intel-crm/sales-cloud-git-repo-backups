@@ -15,6 +15,8 @@ public without sharing class Core_MDF_PMBServiceHandler {
     //to get IPA Proposal Based Record Type ID  
     public static Id ipaProposalBasedRT = Schema.SObjectType.PartnerMarketingBudget.getRecordTypeInfosByDeveloperName().get(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Record_Type_Developer_Name')).getRecordTypeId();
     public static Boolean sendEmailOnce = true;
+    // Set only by the Co-Inv Outcome Based Activity flow to skip the IUPGM Budget Partner/Channel Program check for its auto-created budget
+    public static Boolean bypassCoInvBudgetAccessCheck = false;
     /*****************************************************************************************************
 Method Name:        checkPMBDuplicateRecords
 @return  :          void
@@ -268,15 +270,35 @@ Modified By:        Date:       Changes:
                     budgetIdToBudgetParnerIdMap.put(pmb.Id, pmb.Core_MDF_Budget_Partner__c);
                 }
                 //To get account's geo and subgeo field
-                for (Account acc :[Select Id, Core_Geo__c, Core_Sub_Geo__c, Core_MDF_Channel_Program__c,Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c, Core_MDF_CoMarketing_Ultimate_Account__c from Account where id IN :accountIds]) {
-                    //To get account's geo and subgeo field
-                    accountIdToAccountMap.put(acc.Id, acc);
-                    // Storing the Virtual corp account and corresponding Ultimate Account
-                    corpAccountToUltimateAcctMap.put(acc.Id, acc.Core_MDF_CoMarketing_Ultimate_Account__c);
-                }
-                //Iterating to get channel program technical program name
-                for (ChannelProgram cp :[Select Id, Name, Core_MDF_Technical_Program_Name__c from ChannelProgram where id IN :programIds]) {
-                    cpIdToTechProgNameMap.put(cp.Id, cp.Name);
+            // ✅ FIX 1: Use Map Constructor for Account
+            accountIdToAccountMap = new Map<Id, Account>(
+                [SELECT Id, Core_Geo__c, Core_Sub_Geo__c, 
+                        Core_MDF_Channel_Program__c,
+                        Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c, 
+                        Core_MDF_CoMarketing_Ultimate_Account__c 
+                  FROM Account  WHERE Id IN :accountIds]
+            );
+
+            // corpAccountToUltimateAcctMap derived from 
+            // already-fetched map values (no extra SOQL)
+            for (Account acc : accountIdToAccountMap.values()) {
+                corpAccountToUltimateAcctMap.put(acc.Id, 
+                              acc.Core_MDF_CoMarketing_Ultimate_Account__c);
+            }
+
+            // ✅ FIX 2: Use Map Constructor for ChannelProgram
+            Map<Id, ChannelProgram> cpIdToChannelProgramMap = 
+                              new Map<Id, ChannelProgram>(
+                [SELECT Id, Name, Core_MDF_Technical_Program_Name__c 
+                 FROM ChannelProgram 
+                 WHERE Id IN :programIds]
+            );
+
+            // Derive cpIdToTechProgNameMap from 
+            // already-fetched sObject map (no extra SOQL)
+            for (Id cpId : cpIdToChannelProgramMap.keySet()) {
+                cpIdToTechProgNameMap.put(cpId, 
+                              cpIdToChannelProgramMap.get(cpId).Name);
                 }
                 for(PartnerMarketingBudget pmbObj :listOfPMB) {
                     Account account = accountIdToAccountMap.get(pmbObj.Core_MDF_Budget_Partner__c);
@@ -331,6 +353,8 @@ Modified By:        Date:       Changes:
         Boolean hasIPABudgetCreationAccess = FeatureManagement.checkPermission('Core_MDF_CCP_Internal_IPA_Budget_Loader_Approver');
         //check the current user has Co-GTM custom permission or not
         Boolean hasCoGTMBudgetCreationAccess = FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Co_GTM_Budget_Loader_Approver');
+        //check the current user has Co-Inv custom permission or not
+        Boolean hasCoInvBudgetCreationAccess = FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Co_Inv_Budget_Loader_Approver');
         //check the current user has EEF custom permission or not
         Boolean hasEEFBudgetCreationAccess = FeatureManagement.checkPermission('Core_MDF_Internal_EEF_Budget_Loader');
         //list to store the CCF/DCF budget loaders roles
@@ -354,6 +378,7 @@ Modified By:        Date:       Changes:
         Map<Id,PartnerMarketingBudget> ipaPmbIdToPmbMap = new Map<Id,PartnerMarketingBudget>();  
         Map<Id,PartnerMarketingBudget> eefPmbIdToPmbMap = new Map<Id,PartnerMarketingBudget>();
         Map<Id,PartnerMarketingBudget> cogtmPmbIdToPmbMap = new Map<Id,PartnerMarketingBudget>();  
+        Map<Id,PartnerMarketingBudget> coInvPmbIdToPmbMap = new Map<Id,PartnerMarketingBudget>();  
         //account manager permissions
         Boolean hasAccountMgrPermission = FeatureManagement.checkPermission('Core_MDF_Internal_Account_Manager');
         try{
@@ -372,6 +397,9 @@ Modified By:        Date:       Changes:
                 }
                 else if(hasCoGTMBudgetCreationAccess && pmbObj.Core_MDF_Program_Nm__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Co_GTM_program_name')){
                     cogtmPmbIdToPmbMap.put(pmbObj.Id,pmbObj);
+                }
+                else if(hasCoInvBudgetCreationAccess && pmbObj.Core_MDF_Program_Nm__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Co_Inv_program_name')){
+                    coInvPmbIdToPmbMap.put(pmbObj.Id,pmbObj);
                 }
                 if(pmbObj.Core_MDF_Program_Nm__c != Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Technical_program_name') &&
                    pmbObj.Core_MDF_Program_Nm__c != Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EEF_Program_Name') && pmbObj.Core_MDF_Program_Nm__c != Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Co_GTM_program_name') ){
@@ -399,6 +427,9 @@ Modified By:        Date:       Changes:
             }
             if(!cogtmPmbIdToPmbMap.isEmpty()){
                 validateOnCreateOrUpdateBudgetAccess(cogtmPmbIdToPmbMap, Label.Core_MDF_Co_GTM_Technical_program_name);
+            }
+            if(!coInvPmbIdToPmbMap.isEmpty() && !bypassCoInvBudgetAccessCheck){
+                validateOnCreateOrUpdateBudgetAccess(coInvPmbIdToPmbMap, Label.Core_MDF_Co_Inv_Technical_program_name);
             }
             if(!ipaPmbIdToPmbMap.isEmpty()){
                 validateOnCreateOrUpdateBudgetAccess(ipaPmbIdToPmbMap, Label.Core_MDF_IPA_Technical_program_name);
@@ -468,6 +499,9 @@ Modified By:        Date:       Changes:
         }
         else if(technicalProgramName == Core_MDF_CCP_ConstantClass.Co_GTM_TECHNICAL_PROGRAM){
             rolesList = Core_MDF_CustomLabelConfig.getTextList('Core_MDF_Co_GTM_Budget_Roles');
+        }
+        else if(technicalProgramName == Core_MDF_CCP_ConstantClass.Co_Inv_TECHNICAL_PROGRAM){
+            rolesList = Core_MDF_CustomLabelConfig.getTextList('Core_MDF_Co_Inv_Budget_Roles');
         }
         try{            
             
@@ -708,6 +742,7 @@ Boolean hasSPCFUserPermission = FeatureManagement.checkPermission('Core_MDF_CCP_
         Boolean hasIPABudgetPermission = FeatureManagement.checkPermission('Core_MDF_CCP_Internal_IPA_Budget_Loader');
         Boolean hasEEFBudgetPermission = FeatureManagement.checkPermission('Core_MDF_Internal_EEF_Budget_Loader');
         Boolean hasCoGTMBudgetPermission = FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Co_GTM_Budget_Loader');
+        Boolean hasCoInvBudgetPermission = FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Co_Inv_Budget_Loader');
         Boolean hasRetailBudgetPermission = FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Retail_Finance_Usr');
         //finance manager or budget approver
         Boolean hasFinanceManagerPermission = FeatureManagement.checkPermission('Core_MDF_FinanceManager');
@@ -739,6 +774,9 @@ Boolean hasSPCFUserPermission = FeatureManagement.checkPermission('Core_MDF_CCP_
                 else if(newPmbRecord.Core_MDF_Program_Nm__c ==Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Co_GTM_program_name') && !hasCoGTMBudgetPermission){
                     newPmbRecord.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Budget_Creation_Validation'));
                 }
+                    else if(newPmbRecord.Core_MDF_Program_Nm__c ==Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Co_Inv_program_name') && !hasCoInvBudgetPermission){
+                        newPmbRecord.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Budget_Creation_Validation'));
+                    }
                 /*else if(newPmbRecord.Core_MDF_Program_Nm__c ==Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCFB_Program_Name')  && ((!hasCCFBUserPermission && !hasFinanceUserPermission) ||
 (hasFinanceUserPermission && hasCCFBUserPermission && newPmbRecord.Core_MDF_Budget_Type_Txt__c!=null) ||(!hasFinanceUserPermission && hasCCFBUserPermission && newPmbRecord.Core_MDF_Budget_Type_Txt__c==null) ||
 (hasFinanceUserPermission && !hasCCFBUserPermission && newPmbRecord.Core_MDF_Budget_Type_Txt__c==null))){
@@ -772,6 +810,7 @@ Modified By:        Date:       Changes:
         Boolean hasIPABudgetPermission = FeatureManagement.checkPermission('Core_MDF_CCP_Internal_IPA_Budget_Loader');
         Boolean hasRetailBudgetPermission = FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Retail_Finance_Usr');
         Boolean hasCoGTMBudgetPermission = FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Co_GTM_Budget_Loader');
+        Boolean hasCoInvBudgetPermission = FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Co_Inv_Budget_Loader');
         //finance manager or budget approver
         Boolean hasFinanceManagerPermission = FeatureManagement.checkPermission('Core_MDF_FinanceManager');
         Boolean hasBudgetApproverPermission = FeatureManagement.checkPermission('Core_MDF_BudgetApprover');
@@ -801,6 +840,10 @@ Modified By:        Date:       Changes:
                                                                                                                                                (hasCoGTMBudgetPermission && newPmbRecord.Core_MDF_Budget_Status__c != oldPMBMap.get(newPmbRecord.Id).Core_MDF_Budget_Status__c && newPmbRecord.Core_MDF_Budget_Status__c!='Pending Review'))){
                                                                                                                                                    newPmbRecord.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Budget_Status_Validation'));
                                                                                                                                                }
+                    else if(newPmbRecord.Core_MDF_Program_Nm__c ==Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Co_Inv_program_name') && ((!hasCoInvBudgetPermission && newPmbRecord.Core_MDF_Budget_Status__c!=null && oldPMBMap.get(newPmbRecord.Id).Core_MDF_Budget_Status__c==Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Opal_Available_Budget_Status') && newPmbRecord.Core_MDF_Budget_Status__c != oldPMBMap.get(newPmbRecord.Id).Core_MDF_Budget_Status__c) ||
+                                                                                                                                               (hasCoInvBudgetPermission && newPmbRecord.Core_MDF_Budget_Status__c != oldPMBMap.get(newPmbRecord.Id).Core_MDF_Budget_Status__c && newPmbRecord.Core_MDF_Budget_Status__c!='Pending Review'))){
+                            newPmbRecord.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Budget_Status_Validation'));
+                        }
                     else if((newPmbRecord.Core_MDF_Program_Nm__c ==Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCFB_Program_Name')  || newPmbRecord.Core_MDF_Program_Nm__c ==Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_SPCF_Program_Name')) && ((!hasFinanceUserPermission && newPmbRecord.Core_MDF_Budget_Status__c!=null && oldPMBMap.get(newPmbRecord.Id).Core_MDF_Budget_Status__c==Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Opal_Available_Budget_Status') && newPmbRecord.Core_MDF_Budget_Status__c != oldPMBMap.get(newPmbRecord.Id).Core_MDF_Budget_Status__c) ||
                                                                                                                                                                                                                                                                 (hasFinanceUserPermission && newPmbRecord.Core_MDF_Budget_Status__c != oldPMBMap.get(newPmbRecord.Id).Core_MDF_Budget_Status__c && newPmbRecord.Core_MDF_Budget_Status__c!='Pending Review'))){
                                                                                                                                                                                                                                                                     //(hasFinanceUserPermission && (newPmbRecord.Core_MDF_Budget_Status__c=='Pending Review' && !(newPmbRecord.StartDate != oldPMBMap.get(newPmbRecord.Id).StartDate || newPmbRecord.EndDate != oldPMBMap.get(newPmbRecord.Id).EndDate || newPmbRecord.Amount != oldPMBMap.get(newPmbRecord.Id).Amount || newPmbRecord.Core_MDF_Decrease_Budget_Amount_Amt__c != oldPMBMap.get(newPmbRecord.Id).Core_MDF_Decrease_Budget_Amount_Amt__c))))){
@@ -820,8 +863,8 @@ Modified By:        Date:       Changes:
                 }
                 //validate the user's access based on program during update
                 if(!Core_MDF_Utility.byPassFeature('Bypass_MDF_Budget_Update_Validation')){
-                    if(!isBudgetReduction(newPmbRecord,oldPMBMap) && ((newPmbRecord.Amount != oldPMBMap.get(newPmbRecord.Id).Amount && !byPassAmtValidation) || newPmbRecord.Type != oldPMBMap.get(newPmbRecord.Id).Type || newPmbRecord.Description != oldPMBMap.get(newPmbRecord.Id).Description || newPmbRecord.OwnerId != oldPMBMap.get(newPmbRecord.Id).OwnerId || 
-                                                                      newPmbRecord.Core_MDF_Program__c != oldPMBMap.get(newPmbRecord.Id).Core_MDF_Program__c || newPmbRecord.StartDate != oldPMBMap.get(newPmbRecord.Id).StartDate || newPmbRecord.Title != oldPMBMap.get(newPmbRecord.Id).Title || newPmbRecord.EndDate != oldPMBMap.get(newPmbRecord.Id).EndDate || 
+                        if(!isBudgetReduction(newPmbRecord,oldPMBMap) && ((newPmbRecord.Amount != oldPMBMap.get(newPmbRecord.Id).Amount && !byPassAmtValidation) || newPmbRecord.Type != oldPMBMap.get(newPmbRecord.Id).Type || newPmbRecord.Description != oldPMBMap.get(newPmbRecord.Id).Description || newPmbRecord.Core_MDF_Revenue_Segment_nm__c != oldPMBMap.get(newPmbRecord.Id).Core_MDF_Revenue_Segment_nm__c || newPmbRecord.OwnerId != oldPMBMap.get(newPmbRecord.Id).OwnerId || 
+                        newPmbRecord.Core_MDF_Program__c != oldPMBMap.get(newPmbRecord.Id).Core_MDF_Program__c || newPmbRecord.StartDate != oldPMBMap.get(newPmbRecord.Id).StartDate || newPmbRecord.Title != oldPMBMap.get(newPmbRecord.Id).Title || newPmbRecord.EndDate != oldPMBMap.get(newPmbRecord.Id).EndDate || newPmbRecord.Core_MDF_Co_Marketing_ind__c != oldPMBMap.get(newPmbRecord.Id).Core_MDF_Co_Marketing_ind__c || newPmbRecord.Core_MDF_Co_Selling_ind__c != oldPMBMap.get(newPmbRecord.Id).Core_MDF_Co_Selling_ind__c ||
                                                                       (newPmbRecord.Core_MDF_Decrease_Budget_Amount_Amt__c != oldPMBMap.get(newPmbRecord.Id).Core_MDF_Decrease_Budget_Amount_Amt__c && !byPassAmtValidation) || newPmbRecord.Core_MDF_Budget_Partner__c != oldPMBMap.get(newPmbRecord.Id).Core_MDF_Budget_Partner__c ||
                                                                       newPmbRecord.Core_MDF_Budget_Comments__c != oldPMBMap.get(newPmbRecord.Id).Core_MDF_Budget_Comments__c || newPmbRecord.Core_MDF_Budget_Type_Txt__c != oldPMBMap.get(newPmbRecord.Id).Core_MDF_Budget_Type_Txt__c ) && 
                        
@@ -846,6 +889,7 @@ Modified By:        Date:       Changes:
                         (newPmbRecord.Core_MDF_Program_Nm__c ==Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_Channel_Program_Name') && !hasRetailBudgetPermission) ||
                         (newPmbRecord.Core_MDF_Program_Nm__c ==Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EEF_Program_Name') && hasEEFBudgetApproverPermission) ||
                         (newPmbRecord.Core_MDF_Program_Nm__c ==Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Co_GTM_program_name') && !hasCoGTMBudgetPermission) ||
+                        (newPmbRecord.Core_MDF_Program_Nm__c ==Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Co_Inv_program_name') && !hasCoInvBudgetPermission) ||
                         (newPmbRecord.Core_MDF_Program_Nm__c ==Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCFB_Program_Name')  && ((!hasCCFBUserPermission && !hasFinanceUserPermission) ||
                                                                                                                                            (hasFinanceUserPermission && hasCCFBUserPermission && newPmbRecord.Core_MDF_Budget_Type_Txt__c!=null) || (!hasFinanceUserPermission && hasCCFBUserPermission && newPmbRecord.Core_MDF_Budget_Type_Txt__c==null) ||
                                                                                                                                            (hasFinanceUserPermission && !hasCCFBUserPermission && newPmbRecord.Core_MDF_Budget_Type_Txt__c==null))) ||
@@ -1066,9 +1110,9 @@ Modified By:
         if((isInsert == true || (isInsert == false && newPmb.Core_MDF_Budget_Status__c != oldPmb.Core_MDF_Budget_Status__c))
            && newPmb.Core_MDF_Budget_Status__c == Core_MDF_CCP_ConstantClass.Budget_PENDING_REVIEW
            && (newPmb.Core_MDF_Budget_Type__c == Core_MDF_CCP_ConstantClass.MDF_BUDGET_TYPE || newPmb.Core_MDF_Budget_Type__c == Core_MDF_CCP_ConstantClass.MDFPLUS_BUDGET_TYPE
-               || newPmb.Core_MDF_Program_Nm__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM || newPmb.Core_MDF_Program_Nm__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM || newPmb.Core_MDF_Program_Nm__c == Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM)){
-                   isSendEmail = true;
-               }
+               || newPmb.Core_MDF_Program_Nm__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM || newPmb.Core_MDF_Program_Nm__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM || newPmb.Core_MDF_Program_Nm__c == Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM || newPmb.Core_MDF_Program_Nm__c == Core_MDF_CCP_ConstantClass.Co_Inv_PROGRAM)){
+                isSendEmail = true;
+        }
         
         return isSendEmail;
     }

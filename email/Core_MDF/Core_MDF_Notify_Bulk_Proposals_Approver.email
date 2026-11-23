@@ -1,0 +1,36 @@
+<messaging:emailTemplate renderUsingSystemContextWithoutSharing="true"
+                     subject="Bulk Proposal Approval Completed"        
+                     relatedToType="PartnerFundRequest" language="{!recipient.LanguageLocaleKey}" recipientType="User">
+<messaging:htmlEmailBody >
+<html>
+    <body>
+        <div style="font-size:14px;font-family:Calibri">  
+                    <p><span>{!$Label.Core_MDF_EmailTemp_DearIntelemployee}</span></p>
+                    <p><span>
+                          <!--{!$Label.Core_MDF_EmailTemp_Body}-->
+                          Your bulk proposal approvals have been completed successfully. Items that have been successfully approved will not be visible in the "Internal Approvals Page" anymore and the ones that failed would continue to be visible in the "Internal Approvals Page".
+                       </span>
+                    </p> 
+                    <p><span> Click
+                   <apex:outputLink value="{!$Label.Core_MDF_PFRDetailLink+$Label.Core_MDF_Internal_Bulk_Approvals_Tab_Link}"> {!$Label.Core_MDF_EmailTemp_Claim_URL1}</apex:outputLink>
+                   to access the "Internal Approvals Page"
+                    </span>
+                    </p>  
+                    <!-- <apex:outputLink value="Click {!$Label.Core_MDF_PFRCommunityLink+RelatedTo.Id}">{!$Label.Core_MDF_EmailTemp_Claim_URL1} to access the "Internal Approvals Page"</apex:outputLink>-->
+<p></p>
+<p>{!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}<br></br>
+{!RelatedTo.RecordType.Name}{!$Label.Core_MDF_Audit_Creation_IPA_Body_3}
+</p>
+<!--
+<p><span>&nbsp;</span></p>
+<div style="font-family: Calibri;font-size: 11px;">
+<p><em>{!$Label.Core_MDF_IPA_EmailTemp_Footer1}</em>&nbsp;<em>{!$Label.Core_MDF_IPA_EmailTemp_Footer2}&nbsp;<strong><a href="https://intelinside.intel.com/Support?AppSignOn=Yes">{!$Label.Core_MDF_IPA_EmailTemp_Footer3}</a>&nbsp;</strong>{!$Label.Core_MDF_IPA_EmailTemp_Footer4}</em></p>
+<p>{!$Label.Core_MDF_EmailTemp_Claim_Footer3}&nbsp;<strong><a href="https://intelinside.intel.com/Support?AppSignOn=Yes">{!$Label.Core_MDF_IPA_EmailTemp_Footer3}</a>&nbsp;</strong>{!$Label.Core_MDF_EmailTemp_Claim_Footer4}</p>
+<p>{!$Label.Core_MDF_EmailTemp_StatusUpdate_Address}&nbsp;<br /><a href="https://www.intel.com/content/www/us/en/homepage.html">{!$Label.Core_MDF_EmailTemp_Footer3}</a>&nbsp;|&nbsp;<a href="https://www.intel.com/content/www/us/en/legal/trademarks.html">{!$Label.Core_MDF_EmailTemp_Footer4}&nbsp;</a>|&nbsp;<a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html?elqTrackId=d66a216e5b8b472c80e421c11f79cbc2&amp;amp;elqaid=13991&amp;amp;elqat=2">{!$Label.Core_MDF_EmailTemp_Footer5}</a>&nbsp;|&nbsp;<a href="http://www.intel.com/cookies">{!$Label.Core_MDF_EmailTemp_Footer6}</a>&nbsp;</p>
+<p></p>
+         </div>-->
+         </div>
+    </body>
+</html>    
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

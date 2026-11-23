@@ -207,6 +207,20 @@
         <writeRequiresMasterRead>true</writeRequiresMasterRead>
     </fields>
     <fields>
+        <fullName>Core_MDF_CreatedBy_nm__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISPICKVAL(CreatedBy.Profile.UserType,&apos;PowerPartner&apos;),
+CreatedBy.FirstName &amp; &apos; &apos; &amp; CreatedBy.LastName,
+$Label.Core_MDF_Intel_System_User)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Created By</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_CycleNumber_nbr__c</fullName>
         <externalId>false</externalId>
         <label>Cycle Number</label>
@@ -229,7 +243,6 @@
     <fields>
         <fullName>Core_MDF_External_Id__c</fullName>
         <caseSensitive>false</caseSensitive>
-        <description>Used for integration purpose. The value will be concatenation of claim Id and Cycle number</description>
         <externalId>true</externalId>
         <label>External Id</label>
         <length>45</length>
@@ -247,6 +260,22 @@
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Last_ModifiedBy_Nm__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+ISPICKVAL(LastModifiedBy.Profile.UserType,&apos;PowerPartner&apos;),
+LastModifiedBy.FirstName &amp; &apos; &apos; &amp; LastModifiedBy.LastName,
+$Label.Core_MDF_Intel_System_User
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Last Modified By</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_Overall_AI_Confidence_Score_Nm__c</fullName>
@@ -277,6 +306,14 @@
                 </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Recommend_for_Review_Flag_ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Recommend for Review Flag</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_MDF_Review_Date_dt__c</fullName>
@@ -351,6 +388,22 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Reviewed_By_nm__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+ISPICKVAL(Core_MDF_ReviewedBy_id__r.Profile.UserType,&apos;PowerPartner&apos;),
+Core_MDF_ReviewedBy_id__r.FirstName &amp; &apos; &apos; &amp; Core_MDF_ReviewedBy_id__r.LastName,
+$Label.Core_MDF_Intel_System_User
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Reviewed By</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_StartTime_dtm__c</fullName>

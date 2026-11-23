@@ -3,6 +3,11 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>true</doesSendEmailToMembers>
     <name>EMBED - Myriad X HDDL (MCA) SW</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Core_IPS_Org_007_Myriad_X_HDDL_MCA_SW</publicGroup>
+        </publicGroups>
+    </queueMembers>
     <queueSobject>
         <sobjectType>Case</sobjectType>
     </queueSobject>

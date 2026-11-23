@@ -52,6 +52,11 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
+            <actionName>FeedItem.TextPost</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>FeedItem.ContentNote</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>1</sortOrder>
@@ -87,11 +92,6 @@
             <sortOrder>7</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>FeedItem.TextPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>Delete</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>8</sortOrder>
@@ -107,9 +107,9 @@
             <sortOrder>10</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Core_Design_Registration__c.Core_Reject_Design_Lex</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>13</sortOrder>
+            <actionName>Clone</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>11</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>Core_Design_Registration__c.Core_Accept_Design_Lex</actionName>
@@ -117,27 +117,18 @@
             <sortOrder>12</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Clone</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>11</sortOrder>
+            <actionName>Core_Design_Registration__c.Core_Reject_Design_Lex</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>13</sortOrder>
         </platformActionListItems>
     </platformActionList>
-    <relatedLists>
-        <fields>PCC_MM_ID__c</fields>
-        <fields>PCC_Old_MM_Id__c</fields>
-        <fields>PCC_Ordering_Cd__c</fields>
-        <fields>PCC_L5_Product_Name__c</fields>
-        <fields>PCC_Design_Registration_Product__c</fields>
-        <fields>PCC_Opportunity__c</fields>
-        <relatedList>PCC_DDR_L5_Product_Mapping__c.PCC_Design_Registration__c</relatedList>
-    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1J00000Av4dX</masterLabel>
+        <masterLabel>00h2D000000MmQK</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

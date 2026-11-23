@@ -19,6 +19,10 @@
         <value xsi:nil="true"/>
     </values>
     <values>
+        <field>Core_MDF_Budget_Type_nm__c</field>
+        <value xsi:type="xsd:string">Account Plan</value>
+    </values>
+    <values>
         <field>Core_MDF_Channel_Program_Name_txt__c</field>
         <value xsi:type="xsd:string">Intel Partner Alliance</value>
     </values>
@@ -45,6 +49,10 @@
     <values>
         <field>Core_MDF_External_Master_Group_Name_Txt__c</field>
         <value xsi:type="xsd:string">Core_MDF_CCP_IPA_EXTERNAL_ALL</value>
+    </values>
+    <values>
+        <field>Core_MDF_FieldSet_API_Name__c</field>
+        <value xsi:type="xsd:string">Core_MDF_IPA_Acc_Claim_Fieldset</value>
     </values>
     <values>
         <field>Core_MDF_Internal_Master_Group_Name_Txt__c</field>

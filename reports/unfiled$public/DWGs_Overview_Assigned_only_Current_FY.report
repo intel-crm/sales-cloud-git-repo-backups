@@ -155,8 +155,8 @@
             <column>Core_Goal__c.Core_Goal_Category__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Team Member</value>
+            <operator>equals</operator>
+            <value>Assigned</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_Goal__c.Core_Goal_Status__c</column>
@@ -164,13 +164,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Cancelled</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_Goal__c.Core_Goal_Owner__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>zamkov,tsvetkov,turov</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -190,7 +183,7 @@
         <field>Core_Goal__c.Core_Goal_BU_Focus_Area__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>DWGs Overview/Assigned and OA-Current FY</name>
+    <name>DWGs Overview/Assigned only, Current FY</name>
     <params>
         <name>co</name>
         <value>1</value>

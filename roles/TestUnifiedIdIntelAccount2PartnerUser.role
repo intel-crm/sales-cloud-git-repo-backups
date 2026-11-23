@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Test Unified Id Intel Account 2 Partner User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Test Unified Id Intel Account 2 Partner User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>TestUnifiedIdIntelAccount2PartnerManager</parentRole>
+</Role>

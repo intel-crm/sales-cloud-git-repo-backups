@@ -63,7 +63,7 @@ public class Core_MDF_CancelExceptionRecord_Test {
             bypassFunctionKeys.add('Bypass_ValidateActivityWithCampaign');
             bypassFunctionKeys.add('byPass_Cancel_Activity');
             bypassFunctionKeys.add('Core_MDF_Bypass_ATFBatchUpdate');
-            bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation');  // 14285 
+            bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation');  // 14285 Indira
             
             
             Set<String> myset1 = new Set<String>();
@@ -173,8 +173,8 @@ public class Core_MDF_CancelExceptionRecord_Test {
             groupMemberList.add(grpmembCCPInternal);
             
             database.insert(groupMemberList);
-
-
+			//// Highlight: Unused Local Variable - 14285
+           // List<Core_MDF_Partner_Group_Mapping__c> pgm = new List<Core_MDF_Partner_Group_Mapping__c>();
             Core_MDF_Partner_Group_Mapping__c ccfPgm = new Core_MDF_Partner_Group_Mapping__c();
             ccfPgm.Core_MDF_Source_Txt__c = 'test';
             ccfPgm.Core_MDF_Account__c = flipkartTestAccount.Id;
@@ -292,7 +292,8 @@ public class Core_MDF_CancelExceptionRecord_Test {
         database.insert(iupgm);*/
         }
         User submitter  = [SELECT Id FROM USER WHERE LastName = 'CCF Acc Manager Test2' limit 1];
-
+        // Highlight: Unused Local Variable - 14285
+       //Account acc = [SELECT Id FROM Account WHERE Name = 'FlipkartTestAccount' LIMIT 1];
         System.runAs(submitter){ 
             
             Core_MDF_Exception__c expt = new Core_MDF_Exception__c();
@@ -306,7 +307,7 @@ public class Core_MDF_CancelExceptionRecord_Test {
             expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
             expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
             expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email'; // 14285 
+            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email'; // 14285 Indira
             expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
             expt.Core_MDF_Country_Region_nm__c = 'INDIA';
             expt.Core_MDF_Account_id__c = null;
@@ -343,8 +344,8 @@ public class Core_MDF_CancelExceptionRecord_Test {
             database.update(expt);
             Core_MDF_CancelExceptionRecord.CheckExceptionEligibility(expt.Id);   
         } 
-        
-
+        // Highlight: Unused Local Variable - 14285
+        //Core_MDF_Exception__c exptCancelled = [SELECT Id,Core_MDF_Exception_Status_nm__c FROM Core_MDF_Exception__c LIMIT 1];
         //System.assertEquals('Approved',exptCancelled.Core_MDF_Exception_Status_nm__c);
         //Assert.areEqual('Approved', exptCancelled.Core_MDF_Exception_Status_nm__c);
     }
@@ -430,7 +431,8 @@ public class Core_MDF_CancelExceptionRecord_Test {
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
         usr.LastName = 'User Test';
         Database.insert(usr);
-
+       // Highlight: Unused Local Variable - 14285 // Suma
+        //User submitter  = [SELECT Id FROM USER WHERE LastName = 'SystemAdmin' LIMIT 1];
         User reviewer  = [SELECT Id FROM USER WHERE LastName = 'Excpetion Reviewer' LIMIT 1];
 
         Core_MDF_Exception__c expt = new Core_MDF_Exception__c();
@@ -447,9 +449,9 @@ public class Core_MDF_CancelExceptionRecord_Test {
         expt.Core_MDF_Account_id__c = null;
         expt.Core_MDF_Select_All_Accounts_ind__c = true;
         expt.Core_MDF_Region_txt__c='APJ';
-       /*System.runAs(submitter){  //Addded by Sumalatha
+       /*System.runAs(submitter){ 
             //Database.insert(expt);
-        }*/ //Addded by Sumalatha
+        }*/
         System.runAs(usr){
             //Core_MDF_CancelExceptionRecord.cancelExceptionWrapper resultUserhasPerm = Core_MDF_CancelExceptionRecord.isUserEligibiletoCancel(expt.Id);
             //Assert.isFalse(resultUserhasPerm.isUserEligibleToCancel);
@@ -486,8 +488,9 @@ public class Core_MDF_CancelExceptionRecord_Test {
         database.update(approvedExpt);
             Core_MDF_CancelExceptionRecord.cancelExceptionWrapper resultUserhasPerm = Core_MDF_CancelExceptionRecord.isUserEligibiletoCancel(approvedExpt.Id);
             Core_MDF_CancelExceptionRecord.cancelExceptionWrapper cancelException = Core_MDF_CancelExceptionRecord.CheckExceptionEligibility(approvedExpt.Id);
-            
-
+            // Highlight: Unused Local Variable - 14285 // Suma
+            //Core_MDF_Exception__c expt = [SELECT Id, Core_MDF_Exception_Status_nm__c 
+                                          //FROM Core_MDF_Exception__c LIMIT 1];
             
             // US - TWC702-14285: Unit Test Method should include System.Assert
             System.assertNotEquals(null, resultUserhasPerm);
@@ -513,7 +516,7 @@ public class Core_MDF_CancelExceptionRecord_Test {
         expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         expt.Core_MDF_Program_nm__c = 'Core_MDF_Intel_Partner_Alliance';
-        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email'; // 14285 
+        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email'; // 14285 Indira
         expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         expt.Core_MDF_Country_Region_nm__c = 'INDIA';
         expt.Core_MDF_Account_id__c = null;
@@ -539,7 +542,8 @@ public class Core_MDF_CancelExceptionRecord_Test {
      @isTest
     static void testExceptionApproved(){
         try{
-
+        // Highlight: Unused Local Variable - 14285 // Suma
+            //List<Core_MDF_Exception__c> exceptionList = new List<Core_MDF_Exception__c>();
         Test.startTest();
         User submitter  = [SELECT Id FROM USER WHERE LastName = 'SystemAdmin' LIMIT 1];
        User reviewer  = [SELECT Id FROM USER WHERE LastName = 'IPA Excpetion Reviewer' LIMIT 1];
@@ -554,7 +558,7 @@ public class Core_MDF_CancelExceptionRecord_Test {
         expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         expt.Core_MDF_Program_nm__c = 'Core_MDF_Intel_Partner_Alliance';
-        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email'; // 14285 
+        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email'; // 14285 Indira
         expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         expt.Core_MDF_Country_Region_nm__c = 'INDIA';
         expt.Core_MDF_Account_id__c = null;
@@ -588,7 +592,8 @@ public class Core_MDF_CancelExceptionRecord_Test {
      @isTest
     static void testExceptionCancelled(){
         try{
-
+        // Highlight: Unused Local Variable - 14285 // Suma
+            //List<Core_MDF_Exception__c> exceptionList = new List<Core_MDF_Exception__c>();
         Test.startTest();
         User submitter  = [SELECT Id FROM USER WHERE LastName = 'SystemAdmin' LIMIT 1];
         User reviewer  = [SELECT Id FROM USER WHERE LastName = 'Excpetion Reviewer' LIMIT 1];
@@ -601,7 +606,7 @@ public class Core_MDF_CancelExceptionRecord_Test {
         expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         expt.Core_MDF_Program_nm__c = 'Core_MDF_Intel_Partner_Alliance';
-        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email'; // 14285 
+        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email'; // 14285 Indira
         expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         expt.Core_MDF_Country_Region_nm__c = 'INDIA';
         expt.Core_MDF_Account_id__c = null;
@@ -649,7 +654,7 @@ public class Core_MDF_CancelExceptionRecord_Test {
             expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
             expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
             expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email';//14285 
+            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email';//14285 Indira
             expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
             expt.Core_MDF_Country_Region_nm__c = 'INDIA';
             expt.Core_MDF_Account_id__c = acc.Id;
@@ -664,8 +669,8 @@ public class Core_MDF_CancelExceptionRecord_Test {
             Assert.isTrue(result.isSubmitter);
             
             // Verify the record was updated to Cancelled
-            //Core_MDF_Exception__c updatedExpt = [SELECT Core_MDF_Exception_Status_nm__c FROM Core_MDF_Exception__c WHERE Id = :expt.Id]; //Added by sumalatha
-            //Assert.areEqual('Cancelled', updatedExpt.Core_MDF_Exception_Status_nm__c); //Added by sumalatha
+            //Core_MDF_Exception__c updatedExpt = [SELECT Core_MDF_Exception_Status_nm__c FROM Core_MDF_Exception__c WHERE Id = :expt.Id];
+            //Assert.areEqual('Cancelled', updatedExpt.Core_MDF_Exception_Status_nm__c);
         }
         Test.stopTest();
     }
@@ -685,7 +690,7 @@ public class Core_MDF_CancelExceptionRecord_Test {
             expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
             expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
             expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email';//14285 
+            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email';//14285 Indira
             expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
             expt.Core_MDF_Country_Region_nm__c = 'INDIA';
             expt.Core_MDF_Account_id__c = acc.Id;
@@ -700,8 +705,8 @@ public class Core_MDF_CancelExceptionRecord_Test {
             //Assert.isTrue(result.isApproved);
             
             // Verify the record was updated to Cancelled
-            //Core_MDF_Exception__c updatedExpt = [SELECT Core_MDF_Exception_Status_nm__c FROM Core_MDF_Exception__c WHERE Id = :expt.Id]; //Added by sumalatha
-            //Assert.areEqual('Cancelled', updatedExpt.Core_MDF_Exception_Status_nm__c); //Added by sumalatha
+            //Core_MDF_Exception__c updatedExpt = [SELECT Core_MDF_Exception_Status_nm__c FROM Core_MDF_Exception__c WHERE Id = :expt.Id];
+            //Assert.areEqual('Cancelled', updatedExpt.Core_MDF_Exception_Status_nm__c);
         }
         Test.stopTest();
     }
@@ -721,7 +726,7 @@ public class Core_MDF_CancelExceptionRecord_Test {
             expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
             expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
             expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email';//14285 
+            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email';//14285 Indira
             expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
             expt.Core_MDF_Country_Region_nm__c = 'INDIA';
             expt.Core_MDF_Account_id__c = acc.Id;
@@ -732,11 +737,11 @@ public class Core_MDF_CancelExceptionRecord_Test {
             Core_MDF_CancelExceptionRecord.cancelExceptionWrapper result = 
                 Core_MDF_CancelExceptionRecord.checkExceptionEligibility(expt.Id);
             
-       //     Assert.isTrue(result.isDraft); //Added by sumalatha
+       //     Assert.isTrue(result.isDraft);
             
             // Verify the record was updated to Cancelled
-            //Core_MDF_Exception__c updatedExpt = [SELECT Core_MDF_Exception_Status_nm__c FROM Core_MDF_Exception__c WHERE Id = :expt.Id]; //Added by sumalatha
-            //Assert.areEqual('Cancelled', updatedExpt.Core_MDF_Exception_Status_nm__c); //Added by sumalatha
+            //Core_MDF_Exception__c updatedExpt = [SELECT Core_MDF_Exception_Status_nm__c FROM Core_MDF_Exception__c WHERE Id = :expt.Id];
+            //Assert.areEqual('Cancelled', updatedExpt.Core_MDF_Exception_Status_nm__c);
         }
         Test.stopTest();
     }
@@ -756,7 +761,7 @@ public class Core_MDF_CancelExceptionRecord_Test {
             expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
             expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
             expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email';//14285 
+            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email';//14285 Indira
             expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
             expt.Core_MDF_Country_Region_nm__c = 'INDIA';
             expt.Core_MDF_Account_id__c = acc.Id;
@@ -791,7 +796,7 @@ public class Core_MDF_CancelExceptionRecord_Test {
             expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
             expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
             expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email';//14285 
+            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email';//14285 Indira
             expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
             expt.Core_MDF_Country_Region_nm__c = 'INDIA';
             expt.Core_MDF_Account_id__c = acc.Id;
@@ -805,8 +810,8 @@ public class Core_MDF_CancelExceptionRecord_Test {
             //Assert.isTrue(result.isCancelled);
             
             // Verify the record remains Cancelled (no update should happen)
-            //Core_MDF_Exception__c updatedExpt = [SELECT Core_MDF_Exception_Status_nm__c FROM Core_MDF_Exception__c WHERE Id = :expt.Id]; //Added by sumalatha
-            //Assert.areEqual('Cancelled', updatedExpt.Core_MDF_Exception_Status_nm__c); //Added by sumalatha
+            //Core_MDF_Exception__c updatedExpt = [SELECT Core_MDF_Exception_Status_nm__c FROM Core_MDF_Exception__c WHERE Id = :expt.Id];
+            //Assert.areEqual('Cancelled', updatedExpt.Core_MDF_Exception_Status_nm__c);
         }
         Test.stopTest();
     }
@@ -826,7 +831,7 @@ public class Core_MDF_CancelExceptionRecord_Test {
             expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
             expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
             expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email';//14285 
+            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email';//14285 Indira
             expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
             expt.Core_MDF_Country_Region_nm__c = 'INDIA';
             expt.Core_MDF_Account_id__c = acc.Id;
@@ -907,7 +912,7 @@ public class Core_MDF_CancelExceptionRecord_Test {
             expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
             expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
             expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email'; // 14285 
+            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email'; // 14285 Indira
             expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
             expt.Core_MDF_Country_Region_nm__c = 'INDIA';
             expt.Core_MDF_Account_id__c = acc.Id;
@@ -947,7 +952,7 @@ public class Core_MDF_CancelExceptionRecord_Test {
             expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
             expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
             expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email';//14285 
+            expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Digital->Email';//14285 Indira
             expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
             expt.Core_MDF_Country_Region_nm__c = 'INDIA';
             expt.Core_MDF_Account_id__c = acc.Id;

@@ -128,8 +128,9 @@
         //get the export type and the list view name to be set as file name.
         var exportType = component.get("v.exportType");
         var listViewName = component.get("v.currentListViewName");
-       
+        //var blob = new Blob(["\ufeff",convertToCsvOrExcel]);
         var a = window.document.createElement("a");
+        //a.href = window.URL.createObjectURL(blob,{type:"text/plain"});
         a.href = 'data:application/vnd.ms-excel,' + encodeURIComponent(convertToCsvOrExcel);
         if(exportType=='csv'){           
             a.download = listViewName+".csv";
@@ -144,7 +145,7 @@
     },
     
     convertArrayOfObjectsToCSV : function(component,event,sObj){    
-        
+
         var userTimeZone = $A.get("$Locale.timezone");
         var today = $A.localizationService.formatDate(new Date(), "YYYY-MM-DD hh:mm a");
         var listViewName = component.get("v.currentListViewName");
@@ -176,7 +177,7 @@
         // for start next line use '\n' [new line] in lineDivider varaible 
         var exportType = component.get("v.exportType");
         if(exportType=='csv'){           
-        columnDivider = ',';
+            columnDivider = ',';
         }
         else{           
             columnDivider = '\t';
@@ -209,7 +210,7 @@
                         csvStringResult += columnDivider; 
                     } 
                     //in case the name contains '.' we need to separate the values
-                    var a  = skey.split(".");          
+                    var a  = skey.split(".");      //[name]    
                     var b = objectRecords[i];
                     let formattedData = '';
                     //if contains toLable then we need to pop the value inside '() '                   
@@ -220,13 +221,25 @@
                         }else if(keyMap[skey] != undefined && keyMap[skey].type === 'datetime'){// formatting the datetime
                             //We use TimeZone for DateTime as the queried result for DateTime always comes in GMT whereas for Date it comes in User's Timezone
                             var currUserDateTimeValue = (b[a[j]] != undefined) ? new Date(b[a[j]]).toLocaleString("en-US", {year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', timeZone: userTimeZone}) : '';
-                            b[a[j]] =  currUserDateTimeValue != undefined ? ' ' + currUserDateTimeValue.replaceAll(',', '') : '';                
+                            b[a[j]] =  currUserDateTimeValue != undefined ? ' ' + currUserDateTimeValue.replaceAll(',', '') : '';
+                            //b[a[j]] = userLocaleDate;//.replaceAll(',', '');
+                            /*var dateValue = b[a[j]];
+                            var date2 = new Date(dateValue);
+                            
+                            
+                            if(!isNaN(date2.getTime())) {
+                                //var formatedate = $A.localizationService.formatDate(b[a[j]] ," MM/dd/yyyy hh:mm a");
+                                //b[a[j]]= formatedate;
+                                
+                                var userLocaleDate = new Date(b[a[j]]).toLocaleString("en-US", {year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', timeZone: userTimeZone});
+                                b[a[j]] = userLocaleDate;//.replaceAll(',', '');
+                            }*/
+                                  
                         }else if(keyMap[skey] != undefined && keyMap[skey].type === 'date'){// formatting the date
                             //Removing new Date initialization as it was getting intialised with browser's Timezone. 
-                            
+                            //b[a[j]] = (b[a[j]] != undefined) ? new Date(b[a[j]]).toLocaleString("en-US", {year: 'numeric', month: '2-digit', day: '2-digit'}) : '';
                             b[a[j]] = (b[a[j]] != undefined) ? (b[a[j]]).toLocaleString("en-US", {year: 'numeric', month: '2-digit', day: '2-digit'}) : '';
                         }
-                        
                             else if(a[j].includes("Owner")){
                                 var str = b[a[j]];
                                 var type = typeof str;
@@ -236,14 +249,14 @@
                                     var result = str.match(/<a(.*?)<\/a>/g);
                                     //In case the owner comes as text and result is null.
                                     if(result != null){
-                                    var str1=result[0];                                
-                                    var rx = />(.*)<\/a>/g;                                
-                                    var m;var result2 = [];
-                                    while ((m=rx.exec(str1)) !== null) {
-                                        result2.push(m[1]);
-                                    } 
-                                    
-                                    b[a[j]]= result2; 
+                                        var str1=result[0];                                
+                                        var rx = />(.*)<\/a>/g;                                
+                                        var m;var result2 = [];
+                                        while ((m=rx.exec(str1)) !== null) {
+                                            result2.push(m[1]);
+                                        } 
+                                        
+                                        b[a[j]]= result2; 
                                     }
                                 }
                                 
@@ -276,7 +289,7 @@
             component.set("v.accessErrorMsg", e); 
             component.set("v.isLoading",'false');
         }
-        // return the CSV formate String 
+        // return the CSV formate String
         return csvStringResult;        
     }
     

@@ -18,6 +18,8 @@
             <property name="searchPlaceholder" type="String" label="Search Placeholder" />
             <property name="disabled" type="Boolean" label="Disabled" />
             <property name="bypassSharing" type="Boolean" label="Bypass Sharing (avoids Create access requirement)" />
+            <property name="selectedRecordId" type="String" label="Selected Record Id" />
+            <property name="selectedRecordName" type="String" label="Selected Record Name" />
             <property name="selectedId" type="String" label="Selected Record Id" role="outputOnly" />
         </targetConfig>
     </targetConfigs>

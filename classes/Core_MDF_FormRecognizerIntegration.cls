@@ -23,10 +23,10 @@ public class Core_MDF_FormRecognizerIntegration {
             try{
                 String endpoint = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ClaimEzyOCREndpoint1');
                 String formRecognizerEndpoint = 'callout:Core_MDF_CCP_Azure_Document_Intelligence'+ endpoint;//prebuilt-layout;prebuilt-read
-                //String formRecognizerEndpoint = 'https://apis.intel.com/m2r/ccp-generative-ai/v1/analyses/prebuilt-read:analyze?api-version=2023-07-31';
+                //String formRecognizerEndpoint = 'https://apis-stage.intel.com/m2r/ccp-generative-ai/v1/analyses/prebuilt-read:analyze?api-version=2023-07-31';
                 // Request payload
                 String requestBody = '{"base64Source":"' + fileContent + '"}';
-
+				system.debug('@@@requestBody '+requestBody);
                 // Make the HTTP request
                 HttpRequest request = new HttpRequest();
                 request.setEndpoint(formRecognizerEndpoint);
@@ -36,7 +36,8 @@ public class Core_MDF_FormRecognizerIntegration {
                 // Make the HTTP callout
                 Http http = new Http();
                 response = http.send(request);
-
+				System.debug('File AI API Status: ' + response.getStatusCode());
+        		System.debug('File AI API Body: ' + response.getBody());
             }catch(Exception ex){
                 Core_MDF_CCP_UtilityClass.logError(ex); throw ex;
             }
@@ -44,6 +45,7 @@ public class Core_MDF_FormRecognizerIntegration {
             // Process the response
             if (response.getStatusCode() == 200 || response.getStatusCode() == 202) {
                 String extractedValue = response.getHeader('apim-request-id');
+                system.debug('@@@extractedValue '+extractedValue);
                 return extractedValue;
             } else {
                 // Handle error scenarios
@@ -104,7 +106,7 @@ public class Core_MDF_FormRecognizerIntegration {
             jsonResponse = (Map<String, Object>) JSON.deserializeUntyped(subsequentResponse.getBody());
             // Extract the "content" value from "analyzeResult"
             //ATHR - Deeply Nested if 16209
-            if(jsonResponse.get('analyzeResult') == null || !jsonResponse.containsKey('analyzeResult')) {
+            if(!jsonResponse.containsKey('analyzeResult')) {
                 Core_MDF_CCP_UtilityClass.logErrorAsNormal('Azure OCR2 response body not having proper attributes', 'Core_MDF_AI_Tracking__c');
                 return content;
             }

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Activity Segment</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Activity Segments</value>
+    </caseValues>
+    <fields>
+        <label><!-- Segment --></label>
+        <name>Core_MDF_Activity_Segment_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Desktop Chipsets</masterLabel>
+            <translation><!-- Desktop Chipsets --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Desktop Processors</masterLabel>
+            <translation><!-- Desktop Processors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobile Chipsets</masterLabel>
+            <translation><!-- Mobile Chipsets --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobile Processors</masterLabel>
+            <translation><!-- Mobile Processors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multi</masterLabel>
+            <translation><!-- Multi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Server Chipsets</masterLabel>
+            <translation><!-- Server Chipsets --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Server Processors</masterLabel>
+            <translation><!-- Server Processors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solid-State Drive</masterLabel>
+            <translation><!-- Solid-State Drive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workstation Processors</masterLabel>
+            <translation><!-- Workstation Processors --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Co-Marketing Activity --></label>
+        <name>Core_MDF_Co_Marketing_Activity_Nm__c</name>
+        <relationshipLabel><!-- Activity Segments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Estimated Share of SPIF ($/U) --></label>
+        <name>Core_MDF_Estimate_Share_of_SPIF_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Estimated Share of SPIF (Giveaways)  --></label>
+        <name>Core_MDF_Estimated_Share_of_SPIF_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Estimated Value of Prizes --></label>
+        <name>Core_MDF_Estimated_Value_of_Prizes_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Maximum Cost of Bundle --></label>
+        <name>Core_MDF_Maximum_Cost_of_Bundle_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Maximum bundled Volume --></label>
+        <name>Core_MDF_Maximum_bundled_Volume_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Minimum Forecast Volume --></label>
+        <name>Core_MDF_Minimum_Forecast_Volume_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Expected Participants --></label>
+        <name>Core_MDF_Num_of_Expected_Participant_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Potential Winners --></label>
+        <name>Core_MDF_Number_of_Potential_Winners_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- SPIF Amount $/U --></label>
+        <name>Core_MDF_SPIF_Amount_nbe__c</name>
+    </fields>
+    <fields>
+        <label><!-- SPIF Amount $/U --></label>
+        <name>Core_MDF_SPIF_Amount_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- SPIF Notes (internal only) --></label>
+        <name>Core_MDF_SPIF_Notes_txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

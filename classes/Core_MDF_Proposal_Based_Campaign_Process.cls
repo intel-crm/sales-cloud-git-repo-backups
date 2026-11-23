@@ -33,14 +33,14 @@ public without sharing class Core_MDF_Proposal_Based_Campaign_Process {
     public static String revisionRequiredStatus =  Core_MDF_CCP_ConstantClass.CAMPAIGN_REVISION_REQUIRED;
     public static String declinedStatus = Core_MDF_CCP_ConstantClass.CAMPAIGN_DECLINED;
     public static String cancelledStatus = Core_MDF_CCP_ConstantClass.CAMPAIGN_CANCELLED;
-    public static String campaignAccepted =  Core_MDF_CCP_ConstantClass.CAMPAIGN_ACCEPTED;  // Roshan - CoGTM Intermediate status
+    public static String campaignAccepted =  Core_MDF_CCP_ConstantClass.CAMPAIGN_ACCEPTED;  //CoGTM Intermediate status
     //added by JK to replace prime id field with UCD field
     public static boolean isUnifiedIdEnabled = Core_MDF_CustomLabelConfig.getBooleanValues('Core_MDF_UnifiedIdCheck');
     public static List<Core_MDF_BudgetType_Benefit_Mappings__c> budgetTypeBenefitMapping = new List<Core_MDF_BudgetType_Benefit_Mappings__c>();
     public static  String objectApiName = 'Core_MDF_BudgetType_Benefit_Mappings__c';
     public static Set<Id> campsWithActiveEscalations = new Set<Id>();
-    public static Map<Id, List<Core_MDF_Contract_Line_Item__c>> campaignIdToContractsMap = new Map<Id, List<Core_MDF_Contract_Line_Item__c>>();  //Roshan - to store Campaigns with Contract records
-    public static Map<Id,set<String>> campIdActTacticsSet = new Map<Id,set<String>>();  //Roshan - Tactics for IPA Approval
+    public static Map<Id, List<Core_MDF_Contract_Line_Item__c>> campaignIdToContractsMap = new Map<Id, List<Core_MDF_Contract_Line_Item__c>>();  //to store Campaigns with Contract records
+    public static Map<Id,set<String>> campIdActTacticsSet = new Map<Id,set<String>>();  //Tactics for IPA Approval
     public static String ipaProgram = Core_MDF_CCP_ConstantClass.IPA_PROGRAM;
     public static String cogtmProgram = Core_MDF_CCP_ConstantClass.Co_GTM_TECHNICAL_PROGRAM;
     public static Map<Id,Boolean> skipCampPCTApprovalMap = new Map<Id,Boolean>();//16853
@@ -56,17 +56,18 @@ public without sharing class Core_MDF_Proposal_Based_Campaign_Process {
         List<string> excludedActivityClosureTypes = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Excluded_Act_Closure_Types').split(',');
         //US774498: [IPA] : Validation for edits made to Total Campaign cost WW46
         Set<Id> campId = new Set<Id>();
-
+        
         for(Campaign camp : newCampList) {
             campId.add(camp.Id);
             skipCampPCTApprovalMap.put(camp.Id, false);//16853
         }
+        //Gayathri-Add POR indicator(Core_MDF_Program_Office_Check_ind__c) as part of New finance SOX control on Date
         for(PartnerFundRequest propBasedPfr : [SELECT Id,Title,CampaignId,Core_MDF_Fund_Request_Status__c, Core_MDF_ActivityCategory__c, Core_MDF_Activity_SubType_nm__c,Core_MDF_Price_reviewer_check_ind__c,Core_MDF_SPIF_Modified_ind__c,
                                          Core_MDF_Activity_Types__c, RequestedAmount, Core_MDF_Start_Date__c, Core_MDF_End_Date__c,Core_MDF_Budget_Type_nm__c,Core_MDF_BU_Split__c,Core_MDF_BU1_Split_Percent_nbr__c,Core_MDF_BU2_Split_Percent_nbr__c,Core_MDF_BU3_Split_Percent_nbr__c,Core_MDF_BU4_Split_Percent_nbr__c, 
                                          ChannelPartnerId, Core_MDF_Country_nm__c, Core_MDF_Reimbursement_Rate_pct__c, Core_MDF_Activity_Reimbursement_Amt_nbr__c, Core_MDF_SPIF_Segments_Available_ind__c,
                                          Core_MDF_Activity_Closure_Type__c,RecordType.DeveloperName, Core_MDF_Proposal_Based_Ind__c,Core_MDF_Program__c,Core_MDF_Focus_Area_nm__c,Core_MDF_TargetAudience_nm__c,Core_MDF_TargetAudience__c,Core_MDF_Priorities__c,
                                          Core_MDF_Priority_nm__c, Core_MDF_Technology_txt__c, Core_MDF_Industry_Multi_nm__c,Core_MDF_Initiative_nm__c,Core_MDF_ProductType__c,Core_MDF_Brand_nm__c,
-                                         Core_MDF_EcosystemPartner_nm__c,Core_MDF_Activity_Classification_nm__c, Campaign.Core_MDF_Budget_Cap__c, Campaign.Status, Core_MDF_Tactics_nm__c,Core_MDF_Skip_PCT_Approval_ind__c  //16853
+                                         Core_MDF_EcosystemPartner_nm__c,Core_MDF_Activity_Classification_nm__c, Campaign.Core_MDF_Budget_Cap__c, Campaign.Status, Core_MDF_Tactics_nm__c,BudgetId,Budget.StartDate,Core_MDF_Skip_PCT_Approval_ind__c  //Tactics for IPA Approval,16853
                                          FROM PartnerFundRequest 
                                          WHERE CampaignId IN: campId AND 
                                          Core_MDF_Fund_Request_Status__c != 'Declined' AND
@@ -80,8 +81,11 @@ public without sharing class Core_MDF_Proposal_Based_Campaign_Process {
               skipCampPCTApprovalMap.put(propBasedPfr.CampaignId, true); 
             }
             if(Core_MDF_CCP_ConstantClass.VALID_PFR_STATUSES.contains(propBasedPfr.Core_MDF_Fund_Request_Status__c)) {
-           
-                boolean isInProgressOrCompleted = propBasedPfr.CampaignId != null && (propBasedPfr.Core_MDF_Fund_Request_Status__c == 'In-Progress' || propBasedPfr.Core_MDF_Fund_Request_Status__c == 'Completed');
+              // Guard clause - flattens the nested null + status check
+              // ATHR fix - TWC3117-17752
+                boolean isInProgressOrCompleted = propBasedPfr.CampaignId != null 
+                    && (propBasedPfr.Core_MDF_Fund_Request_Status__c == 'In-Progress' 
+                        || propBasedPfr.Core_MDF_Fund_Request_Status__c == 'Completed');
 
                 if(isInProgressOrCompleted && !budgetIdInProgCompPfrListIdMap.containsKey(propBasedPfr.CampaignId)) {
                     budgetIdInProgCompPfrListIdMap.put(propBasedPfr.CampaignId, 0); 
@@ -97,6 +101,7 @@ public without sharing class Core_MDF_Proposal_Based_Campaign_Process {
                     campIdActCatSet.get(propBasedPfr.CampaignId).add(propBasedPfr.Core_MDF_ActivityCategory__c);
                     campIdActTypeSet.get(propBasedPfr.CampaignId).add(propBasedPfr.Core_MDF_Activity_Types__c);
                     cmpToActClassificationMap.get(propBasedPfr.CampaignId).add(propBasedPfr.Core_MDF_Activity_Classification_nm__c);
+                    //Tactics for IPA Approval
                     populateCampIdActTacticsSet(propBasedPfr.CampaignId, propBasedPfr.Core_MDF_ActivityCategory__c, propBasedPfr.Core_MDF_Tactics_nm__c);
     
                 } else {
@@ -107,16 +112,19 @@ public without sharing class Core_MDF_Proposal_Based_Campaign_Process {
                     campIdActTypeSet.put(propBasedPfr.CampaignId, new set<String>{propBasedPfr.Core_MDF_Activity_Types__c});
                     budgetAmtMap.put(propBasedPfr.CampaignId,propBasedPfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c);
                     cmpToActClassificationMap.put(propBasedPfr.CampaignId, new List<String>{propBasedPfr.Core_MDF_Activity_Classification_nm__c});
+                    //Tactics for IPA Approval
                     populateCampIdActTacticsSet(propBasedPfr.CampaignId, propBasedPfr.Core_MDF_ActivityCategory__c, propBasedPfr.Core_MDF_Tactics_nm__c);
                 }
             } else if (propBasedPfr.Core_MDF_Fund_Request_Status__c == 'Closed') {
                 if(propBasedCampIdClosedPfrListIdMap.containsKey(propBasedPfr.CampaignId)) {
                     propBasedCampIdClosedPfrListIdMap.get(propBasedPfr.CampaignId).add(propBasedPfr);
                     campIdActCatTypesSet.get(propBasedPfr.CampaignId).add(propBasedPfr.Core_MDF_ActivityCategory__c+'->'+propBasedPfr.Core_MDF_Activity_Types__c);
+                    //Tactics for IPA Approval
                     populateCampIdActTacticsSet(propBasedPfr.CampaignId, propBasedPfr.Core_MDF_ActivityCategory__c, propBasedPfr.Core_MDF_Tactics_nm__c);
                 } else {
                     propBasedCampIdClosedPfrListIdMap.put(propBasedPfr.CampaignId, new List<PartnerFundRequest>{propBasedPfr});
                     campIdActCatTypesSet.put(propBasedPfr.CampaignId, new set<String>{propBasedPfr.Core_MDF_ActivityCategory__c+'->'+propBasedPfr.Core_MDF_Activity_Types__c});
+                    //Tactics for IPA Approval
                     populateCampIdActTacticsSet(propBasedPfr.CampaignId, propBasedPfr.Core_MDF_ActivityCategory__c, propBasedPfr.Core_MDF_Tactics_nm__c);
                 }
             } else {
@@ -130,7 +138,7 @@ public without sharing class Core_MDF_Proposal_Based_Campaign_Process {
         }    
     }
 
-    //Roshan - Tactics for IPA Approval
+    //Tactics for IPA Approval
     public static void populateCampIdActTacticsSet(Id campaignId, String activityCategory, String tacticsField) {
         if (String.isNotBlank(tacticsField)) {
             if (!campIdActTacticsSet.containsKey(campaignId)) {
@@ -151,12 +159,15 @@ public without sharing class Core_MDF_Proposal_Based_Campaign_Process {
         List<PartnerFundClaim> propBasedPfcList = [Select Id, Title, Core_MDF_Campaign_Id__c, Core_MDF_Status__c FROM PartnerFundClaim WHERE Core_MDF_Campaign_Id__c IN :newCampList];
         for(PartnerFundClaim propBasedPfc : propBasedPfcList) {
             if(propBasedPfc.Core_MDF_Status__c != Label.Core_MDF_Status_Cancelled && propBasedPfc.Core_MDF_Status__c != Label.Core_MDF_Claim_Status_Resubmission_Window_Closed) {
+                System.debug('Inside 146 if');
                 if(propBasedCampIdPfcListIdMap.containsKey(propBasedPfc.Core_MDF_Campaign_Id__c)) {
+                    
                     propBasedCampIdPfcListIdMap.get(propBasedPfc.Core_MDF_Campaign_Id__c).add(propBasedPfc);
                 } else {
                     propBasedCampIdPfcListIdMap.put(propBasedPfc.Core_MDF_Campaign_Id__c, new List<PartnerFundClaim>{propBasedPfc});
                 }
             } else {
+                System.debug('Inside 146 else');
                 if(propBasedCampIdCancelledPfcListIdMap.containsKey(propBasedPfc.Core_MDF_Campaign_Id__c)) {
                     propBasedCampIdCancelledPfcListIdMap.get(propBasedPfc.Core_MDF_Campaign_Id__c).add(propBasedPfc);
                 } else {
@@ -243,7 +254,7 @@ public without sharing class Core_MDF_Proposal_Based_Campaign_Process {
         List<string> validStatuses = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Campaign_RR_ValidStatuses').split(';');
         List<Campaign> campaignsToProcess = new List<Campaign>();    //List to store inprogress and cancelled campaigns
 
-        List<Campaign> coGtmCampList = new List<Campaign>();  //Roshan - Co-GTM campaign setup
+        List<Campaign> coGtmCampList = new List<Campaign>();  //Co-GTM campaign setup
         List<Campaign> proposalBasedCampaignList = new List<Campaign>();  //To store both IPA and CoGTM campaigns
         
         try{
@@ -267,11 +278,11 @@ public without sharing class Core_MDF_Proposal_Based_Campaign_Process {
                 }
                 
                 //Query all PFCs for the Campaigns
-           	    if (Core_MDF_CCP_ConstantClass.CAMPAIGN_STATUSES_TO_QUERY_CLAIMS.contains(cmp.Status)) {
+                if (Core_MDF_CCP_ConstantClass.CAMPAIGN_STATUSES_TO_QUERY_CLAIMS.contains(cmp.Status)) {
                     campaignsToProcess.add(cmp);
                 }
                 
-                // Roshan - Removed IPA check as this is also needed for CoGTM
+                //Removed IPA check as this is also needed for CoGTM
                 if(isUpdate && cmp.Core_MDF_Total_Campaign_Cost_Amt__c <= 0) {  
                     if(propBasedCampIdPfrListIdMap.containsKey(cmp.id)) {
                         cmp.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Proposal_TotalCost_Error'));
@@ -296,6 +307,11 @@ public without sharing class Core_MDF_Proposal_Based_Campaign_Process {
                       isStageChange = true;
                 }
 
+                system.debug('campIdActTacticsSet@@@' + campIdActTacticsSet);
+                system.debug('campIdActCatTypesSet@@@' + campIdActCatTypesSet);
+
+                // Guard clause - skip non-IPA campaigns
+                // ATHR fix - TWC3117-17752
                 if(cmp.Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.IPA_PROGRAM) {
                     continue;
                 }
@@ -306,12 +322,13 @@ public without sharing class Core_MDF_Proposal_Based_Campaign_Process {
                             geoList.add(cmp.Core_MDF_Host_Region_cd__c);
                             budgetList.add(cmp.Core_MDF_Budget_Type_txt__c);
                         }
+
                         if(campIdActCatTypesSet.containsKey(cmp.Id) && campIdActCatTypesSet.get(cmp.Id) != null){
                             String strVal = String.join(new List<String>(campIdActCatTypesSet.get(cmp.Id)), ';');
                             cmp.Core_MDF_Activity_Category_Type__c = strVal;
                         }
 
-                        //Roshan - Tactics for IPA Approval
+                        //Tactics for IPA Approval
                         List<String> finalRecordsToEvaluate = new List<String>();
                         //Set<String> allEntries = new Set<String>();
 
@@ -321,28 +338,56 @@ public without sharing class Core_MDF_Proposal_Based_Campaign_Process {
                         if (campIdActTacticsSet.containsKey(cmp.Id)) {
                             finalRecordsToEvaluate.addAll(campIdActTacticsSet.get(cmp.Id));
                         }
-                            //Invoke method to check for SPIF/Non-SPIF approvals
+
+                        system.debug('finalRecordsToEvaluate@@@' + finalRecordsToEvaluate);
+                        //Invoke method to check for SPIF/Non-SPIF approvals
+                        //Map<string,boolean> mapSpifAppr = updateSPIFApprInd(new List<String>(campIdActCatTypesSet.get(cmp.Id)));
                         Map<string,boolean> mapSpifAppr = updateSPIFApprInd(finalRecordsToEvaluate, skipCampPCTApprovalMap.get(cmp.Id));//16853
-                            if(mapSpifAppr!=null && mapSpifAppr.size()>0){
+                        system.debug('mapSpifAppr@@@' + mapSpifAppr);
+                    
+                        if(mapSpifAppr!=null && mapSpifAppr.size()>0){
                                 cmp.Core_MDF_IPA_SPIF_Apprval_Ind__c = mapSpifAppr.get('SPIF');
                                 cmp.Core_MDF_IPA_NonSPIF_Apprval_Ind__c = mapSpifAppr.get('NonSPIF');
-                            } 
-                        }
+                            }
+
+                            //Gayathri-New finance SOX control on Date Changes START
+                            // Check for POR indicator from activities (handles quarter changes from start date updates)
+                            /*if(propBasedCampIdPfrListIdMap.containsKey(cmp.Id)) {
+                                boolean hasNonSpifActivityType = cmp.Core_MDF_IPA_NonSPIF_Apprval_Ind__c; // Value from activity types check above
+                                boolean hasPorIndicator = false;
+                                
+                                // Check if any activity has POR indicator true (from quarter changes)
+                                for(PartnerFundRequest pfr : propBasedCampIdPfrListIdMap.get(cmp.Id)) {
+                                    if(pfr.Core_MDF_Program_Office_Check_ind__c == true) {
+                                        hasPorIndicator = true;
+                                        break;
+                                    }
+                                }
+                                
+                                // Set final value: true if either activity types require NonSPIF OR any activity has POR indicator true
+                                cmp.Core_MDF_IPA_NonSPIF_Apprval_Ind__c = hasNonSpifActivityType || hasPorIndicator;
+                        }*/ 
+                        //Gayathri-New finance SOX control on Date Changes END
+                    }
                     if(isUpdate && oldCampMap != null && oldCampMap.get(cmp.Id).Status != cmp.Status && (cmp.Status == 'Revision Required' || cmp.Status == 'Pending Review' || cmp.Status == 'Pending Approval') && cmp.Core_MDF_Outcome_Detail_Edited_Ind__c){
                         cmp.Core_MDF_Outcome_Detail_Edited_Ind__c = false;
                     }
 
-                    // Roshan - IPA (budget cap code)
+                    //IPA (budget cap code)
                     if (cmp.Core_MDF_Budget_Cap__c == null ||(oldCampMap!=null &&(  cmp.Core_MDF_Opal_Budget_Type_Txt__c != oldCampMap.get(cmp.Id).Core_MDF_Opal_Budget_Type_Txt__c || cmp.startDate!=oldCampMap.get(cmp.Id).startDate||cmp.EndDate!=oldCampMap.get(cmp.Id).EndDate))) {
                         budgetTypeSet.add(cmp.Core_MDF_Opal_Budget_Type_Txt__c);
+                       // Guard clause flattens nested date comparison 
+                       // ATHR Fix - TWC3117-17752
                         if(cmp.StartDate < CampEarliestFutureStartDate && cmp.StartDate < CampEarliestStartDate) {
-                      
+                     // if(cmp.StartDate < CampEarliestStartDate ) {   
                             CampEarliestStartDate = cmp.StartDate;
-                     
+                     // }
                         } 
-                        if(cmp.StartDate >= CampEarliestFutureStartDate){
+                       else if(cmp.StartDate >= CampEarliestFutureStartDate){
                             CampEarliestFutureStartDate = cmp.StartDate;
-                          
+                          /*if(cmp.StartDate < CampEarliestFutureStartDate) {   
+                                CampEarliestFutureStartDate =cmp.StartDate;    //dead code will never execute 
+                            }*/
                         }
                         campToBeUpdatedIPA.add(cmp);
                     }
@@ -360,7 +405,7 @@ public without sharing class Core_MDF_Proposal_Based_Campaign_Process {
                 
             }
 
-            //Roshan - IPACampList will contain only IPA campaigns
+            //IPACampList will contain only IPA campaigns
             //Added by Saikat
             if(IPACampList != NULL && IPACampList.Size() > 0 && Core_MDF_CampaignPFR_Controller.isCustomPermissionAssigned('Core_MDF_CCP_Int_IPA_ProposalL1_Approver')) {
                 String role = 'Core_MDF_CCP_Int_IPA_ProposalL1_Approver';
@@ -448,7 +493,7 @@ public without sharing class Core_MDF_Proposal_Based_Campaign_Process {
                     // IPA approval flow
                     processIPACampaignApproval(cmp, iupgmUserMap, oldCampMap, isStageChange, cmpToActClassificationMap, setOfValidMarketingActivity);
                 }
-                // Roshan -  Logic for Co-GTM campaign setup
+                //Logic for Co-GTM campaign setup
                 else if (cmp.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.Co_GTM_TECHNICAL_PROGRAM) {
                     populateCoGTMFields(cmp, oldCampMap, isInsert, isUpdate);
                     // CoGTM approval flow
@@ -459,10 +504,11 @@ public without sharing class Core_MDF_Proposal_Based_Campaign_Process {
             // IPA: ipaCampaignList
             // CoGTM: coGtmCampList
 
-            if(proposalBasedCampaignList.size()>0) {  //Roshan - Segregating logic later based on program list
+            if(proposalBasedCampaignList.size()>0) {  //Segregating logic later based on program list
 
                 //Campaign Before Insert
-                //Roshan - IPA specific logic
+                //IPA specific logic
+                // ATHR fix - TWC3117-17752
                 if((isInsert && ipaCampaignList.size()>0) && (mapFunctionalityNameTriggerExecution != null && mapFunctionalityNameTriggerExecution.containsKey('BypassCampaignBenefitValidation') && !mapFunctionalityNameTriggerExecution.get('BypassCampaignBenefitValidation').Core_Active__c)){
                         isMDFBenefitApplicable(ipaCampToacctIdMap);  //ipaCampToacctIdMap will be populated only for ipa
                     }
@@ -484,32 +530,32 @@ public without sharing class Core_MDF_Proposal_Based_Campaign_Process {
                     
                     Map<String, Schema.SObjectField> fieldMap = Schema.getGlobalDescribe().get('Campaign').getDescribe().fields.getMap();
 
-                    //Roshan - IPA specific logic: added ipaCampaignList check
+                    //IPA specific logic: added ipaCampaignList check
                     //Added by Ealisha: US635575: Determine if an account is eligible for MDF benefit
                     if(ipaCampaignList.size()>0 && ipaCampToacctIdMap != NULL && ipaCampToacctIdMap.Size() > 0 && mapFunctionalityNameTriggerExecution != null && mapFunctionalityNameTriggerExecution.containsKey('BypassCampaignBenefitValidation') && !mapFunctionalityNameTriggerExecution.get('BypassCampaignBenefitValidation').Core_Active__c){
-                        isMDFBenefitApplicable(ipaCampToacctIdMap);  //Roshan - ipaCampToacctIdMap will be populated only for ipa (method logic is specifc to ipa)
+                        isMDFBenefitApplicable(ipaCampToacctIdMap);  //ipaCampToacctIdMap will be populated only for ipa (method logic is specifc to ipa)
                     }
                     
                     //Check if Date, Amount, Geo are changed and if Date and Amount comply with the activities
                     if(proposalBasedCampaignList.size()>0) {
-                        checkCampaignFieldChanges(newCampMap,oldCampMap);  //Roshan - needs to be handled for coGTM also as part of edit scenario
+                        checkCampaignFieldChanges(newCampMap,oldCampMap);  //needs to be handled for coGTM also as part of edit scenario
                     }
 
-                    // Roshan - method called for both IPA and CoGTM (determineCampaignAttributes)
+                    //method called for both IPA and CoGTM (determineCampaignAttributes)
                     if (!proposalBasedCampaignList.isEmpty()) {
                         determinePropBasedCampaignAttributes(proposalBasedCampaignList, oldCampMap, newCampMap);
                     }
 
-                    //Roshan - Logic specific to ipa uses ipa fieldset
+                    //Logic specific to ipa uses ipa fieldset
                     if(proposalBasedCampaignList.size()>0) {
-                        checkIfCampaignNeedsStatusChange(proposalBasedCampaignList, oldCampMap);  //Roshan - needs to be handled for coGTM also as part of edit scenario
+                        checkIfCampaignNeedsStatusChange(proposalBasedCampaignList, oldCampMap);  // needs to be handled for coGTM also as part of edit scenario
                     }
 
                     //US946767 :: [IPA - Budget CAP]  - [OOC - P8] - L2 Approver - Terminate Approvals if Reimbursement amount exceeds Budget Cap
                     //checkifCampaignReimbursementAmountExceedsBudgetCap(ipaCampaignList,oldCampMap, isStageChange);
                     //NP - WW33 Do not allow removal of country if used in an active activity
                     
-                    //Roshan - Below logic is needed for CoGTM as part of edit scenario
+                    //Below logic is needed for CoGTM as part of edit scenario
                     for(Core_MDF_ChannelProgram__mdt cp : [Select Id, Core_MDF_Technical_Program_Name__c,Core_MDF_Campaign_Picklist_Fields__c,
                                                Core_MDF_Campaign_Text_Fields__c,Core_MDF_CampNotEditFieldsWhenPFRExists__c
                                                FROM Core_MDF_ChannelProgram__mdt LIMIT 1000]) {
@@ -546,14 +592,14 @@ public without sharing class Core_MDF_Proposal_Based_Campaign_Process {
 
         }
         catch(Exception e) {
-		    Core_MDF_CCP_UtilityClass.logError(e);
-	    }   
+            Core_MDF_CCP_UtilityClass.logError(e);
+        }   
     }
     
     public static void populateCoGTMFields(Campaign newCampaign, Map<Id, Campaign> oldCampaignMap, Boolean isInsert, Boolean isUpdate) {
         TimeZone userTz = UserInfo.getTimeZone();
-    	String formattedDate = System.now().format('yyyy-MM-dd', userTz.getID());
-    	Date userTodayDate = Date.valueOf(formattedDate); // today's date in the user's time zone
+        String formattedDate = System.now().format('yyyy-MM-dd', userTz.getID());
+        Date userTodayDate = Date.valueOf(formattedDate); // today's date in the user's time zone
         
         newCampaign.Core_MDF_Activity_Category_Type__c = Core_MDF_CCP_ConstantClass.CO_ENGINEERING_DEFAULT_ACT_CAT_TYPE;
         List<String> parts = Core_MDF_CCP_ConstantClass.CO_ENGINEERING_DEFAULT_ACT_CAT_TYPE.split('->');
@@ -577,7 +623,7 @@ public without sharing class Core_MDF_Proposal_Based_Campaign_Process {
         if (isUpdate && oldCampaignMap != null && oldCampaignMap.containsKey(newCampaign.Id)) {
             Campaign oldCampaign = oldCampaignMap.get(newCampaign.Id);
             boolean isStartDateChangedOrBackDated = newCampaign.StartDate != oldCampaign.StartDate || !String.isEmpty(newCampaign.Core_MDF_Reason_for_Back_Dating_Nm__c);
-              
+                // ATHR fix - TWC3117-17752
                 if (isStartDateChangedOrBackDated && newCampaign.StartDate != null && newCampaign.StartDate < userTodayDate) {
                     newCampaign.Core_MDF_ATF_Flag_Nm__c = Core_MDF_CCP_ConstantClass.CAMPAIGN_ATF_DATE;
                 } else if (isStartDateChangedOrBackDated && oldCampaign.StartDate != null && oldCampaign.StartDate < userTodayDate && newCampaign.StartDate != null && newCampaign.StartDate >= userTodayDate) {
@@ -686,13 +732,14 @@ public without sharing class Core_MDF_Proposal_Based_Campaign_Process {
         
         
         List<Campaign> cmpToBeSendForApproval = new List<Campaign>();
+
         try{
             //Query all PFRs for the Campaigns
             if(propBasedCampIdPfrListIdMap.isEmpty()){
                 queryPFRRecords(newCampMap.values());
             }
             
-            List<Campaign> propBasedCampList = newCampMap.values();  //Roshan - updated variable name
+            List<Campaign> propBasedCampList = newCampMap.values();  //updated variable name
             
             if(propBasedCampList.size()>0){                     
                 
@@ -716,10 +763,11 @@ public without sharing class Core_MDF_Proposal_Based_Campaign_Process {
                 
                 //Once Approved, check if the field change requires Campaign Status change
                 for(Campaign cmp: propBasedCampList){
+
                    //if(cmp.Status == 'Pending Review' || cmp.Status == 'Pending Approval'){ 
                      if((cmp.Status != oldCampMap.get(cmp.Id).Status && (cmp.Status == 'Pending Approval' || cmp.Status == 'Pending Review')) 
                      || ((cmp.Status == 'Pending Approval' || cmp.Status == 'Pending Review') && cmp.Core_MDF_Approval_Step_Counter_nbr__c != oldCampMap.get(cmp.Id).Core_MDF_Approval_Step_Counter_nbr__c 
-                            && ((cmp.Core_MDF_Program__c == 'Intel Partner Alliance' && cmp.Core_MDF_IPA_Approval_Status_nm__c !='Pending Approval') || cmp.Core_MDF_Program__c == 'CoGTM'))  // Roshan - program check added to include CoGTM
+                            && ((cmp.Core_MDF_Program__c == 'Intel Partner Alliance' && cmp.Core_MDF_IPA_Approval_Status_nm__c !='Pending Approval') || cmp.Core_MDF_Program__c == 'CoGTM'))  //program check added to include CoGTM
                      || (cmp.Status == 'Pending Review' && cmp.Core_MDF_IPA_Approval_Status_nm__c =='Pending Approval' && cmp.Core_MDF_Approval_Stage_nm__c =='L1 Approval' 
                             && cmp.Core_MDF_Approval_Stage_nm__c != oldCampMap.get(cmp.Id).Core_MDF_Approval_Stage_nm__c)) {
 
@@ -761,8 +809,8 @@ public without sharing class Core_MDF_Proposal_Based_Campaign_Process {
                     geo= geo.replace('ASMO-NAR','ASMO'); 
                 }
                 
-		    Set<String> geoSet = new Set<String>(geo.split(';'));
-		    geo = String.join(new List<String>(geoSet), ';');
+            Set<String> geoSet = new Set<String>(geo.split(';'));
+            geo = String.join(new List<String>(geoSet), ';');
                 //multiipashare
                 String region = '';
                 
@@ -836,15 +884,17 @@ public without sharing class Core_MDF_Proposal_Based_Campaign_Process {
                      if (budgetCapListMap.containsKey(cmp.Core_MDF_Opal_Budget_Type_Txt__c))
                      {
                         Id budgetCapId = null;
-                        for( Core_MDF_Budget_Cap__c budgetCap : budgetCapListMap.get(cmp.Core_MDF_Opal_Budget_Type_Txt__c) ){
-                            boolean isMatchingBudgetType = cmp.Core_MDF_Opal_Budget_Type_Txt__c == budgetCap.Core_MDF_Budget_Type_nm__c && cmp.StartDate >= budgetCap.Core_MDF_Effective_Start_Date_Dt__c && cmp.StartDate <= budgetCap.Core_MDF_Effective_End_Date_Dt__c;
-
-							boolean isMatchingRegion = cmp.Core_MDF_Host_Region_cd__c == budgetCap.Core_MDF_Region_nm__c || budgetCap.Core_MDF_Region_nm__c == 'WW';
+                        for( Core_MDF_Budget_Cap__c budgetCap : budgetCapListMap.get(cmp.Core_MDF_Opal_Budget_Type_Txt__c) )
+                         {
+                           // ATHR fix - TWC3117-17752
+                           boolean isMatchingBudgetType = cmp.Core_MDF_Opal_Budget_Type_Txt__c == budgetCap.Core_MDF_Budget_Type_nm__c && cmp.StartDate >= budgetCap.Core_MDF_Effective_Start_Date_Dt__c && cmp.StartDate <= budgetCap.Core_MDF_Effective_End_Date_Dt__c;
+                            
+                            boolean isMatchingRegion = cmp.Core_MDF_Host_Region_cd__c == budgetCap.Core_MDF_Region_nm__c || budgetCap.Core_MDF_Region_nm__c == 'WW';
                             if(isMatchingBudgetType && isMatchingRegion)
-								{
+                                {
                                     budgetCapId = budgetCap.Id;
-									cmp.Core_MDF_Budget_Cap__c = budgetCap.Id;
-								}
+                                    cmp.Core_MDF_Budget_Cap__c = budgetCap.Id;
+                                }
                             
                             
                         }
@@ -1058,7 +1108,7 @@ public without sharing class Core_MDF_Proposal_Based_Campaign_Process {
             //multiipashare 
             if(!geoLst.isEmpty()){
             for(String geo : geoLst){
-			region = geo;
+            region = geo;
                     
                 
              //multiipashare   
@@ -1156,7 +1206,7 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
             //US774498: [IPA] : Validation for edits made to Total Campaign cost WW46
             for(Campaign camp:newCampMap.values()) {
 
-                if(camp.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM) { //Roshan - added program check for ipa
+                if(camp.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM) { //added program check for ipa
                                     
                     if(oldCampMap.get(camp.ID).startDate != camp.startDate || oldCampMap.get(camp.ID).endDate != camp.endDate 
                             || oldCampMap.get(camp.ID).Core_MDF_Market__c != camp.Core_MDF_Market__c || oldCampMap.get(camp.ID).Core_MDF_Reimbursement_Amt__c != camp.Core_MDF_Reimbursement_Amt__c) {
@@ -1213,6 +1263,8 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
                 if(activeAndClosedPfrList != NULL && activeAndClosedPfrList.size()>0){
                     for(PartnerFundRequest pfr : activeAndClosedPfrList){
                         //Check for date validation
+                        //Aditya
+                        // ATHR fix - TWC3117-17752
                     boolean isCoGTM = newCampMap.get(CampaignId).Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.Co_GTM_TECHNICAL_PROGRAM;
                     boolean isStartDateChanged = oldCampMap.get(CampaignId).startDate != newCampMap.get(CampaignId).startDate;
                     boolean isCoGTMEndDateOutOfRange = newCampMap.get(CampaignId).startDate > pfr.Core_MDF_End_Date__c || newCampMap.get(CampaignId).endDate < pfr.Core_MDF_End_Date__c;
@@ -1229,7 +1281,10 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
                    if(!(isCoGTM && isStartDateChanged) && isNonCoGTMDateOutOfRange) { 
                         newCampMap.get(CampaignId).addError(Label.Core_MDF_Campaign_Date_Check_Error);
                     }
-                      
+                        /*if(newCampMap.get(CampaignId).Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.Co_GTM_TECHNICAL_PROGRAM && newCampMap.get(CampaignId).startDate != oldCampMap.get(CampaignId).startDate &&
+                        (pfr.Budget.StartDate > newCampMap.get(CampaignId).startDate || pfr.Budget.EndDate < newCampMap.get(CampaignId).startDate)) {
+                            newCampMap.get(CampaignId).addError('Start Date Range does not comply with Budget"s Date Range selected on Activity');
+                        }*/
                     }
                 }
             } 
@@ -1247,8 +1302,8 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
             for(Campaign cmp: newCmpList){               
                 
                 switch on cmp.Status {
-	            when 'Proposal Accepted', 'Campaign Accepted' {  // Roshan - CoGTM Intermediate status
-		   	campaignIdStatusMap.put(cmp.id,cmp);
+                    when 'Proposal Accepted', 'Campaign Accepted' {  //CoGTM Intermediate status
+                        campaignIdStatusMap.put(cmp.id,cmp);
                         if(cmp.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM) {
                             campaignsForBudgetCreation.add(cmp);   
                         }                         
@@ -1267,7 +1322,7 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
             
             //When Campaign is Proposal Accepted/Revision Required
             if(campaignIdStatusMap.size()>0){
-                campaignUpdates(campaignIdStatusMap);  //Roshan - Terminal Rejection (not needed for CoGTM)
+                campaignUpdates(campaignIdStatusMap);  //Terminal Rejection (not needed for CoGTM)
                 pfrUpdates(campaignIdStatusMap, false);
             }
             
@@ -1276,7 +1331,7 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
                 onSubmitForApproval(onSubmitForApprovalCampaignList, campOldMap);
             }
 
-            //Roshan - not needed for now for CoGTM
+            //not needed for now for CoGTM
             //When Campaign is cancelled
             if(cancelledCampaignList.size()>0) {
                 queryEscalationRecords(cancelledCampaignList);  //query escalation records to populate campsWithActiveEscalations
@@ -1307,7 +1362,8 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
         boolean isActiveClaimExist=false;
         //campList : List of Campaign Ids which are marked for terminal rejection
         List<Id> campList = new List<Id>();
-	    List<Campaign> campDeclinedStatusList = new List<Campaign>();
+        List<Campaign> campDeclinedStatusList = new List<Campaign>();
+        List<Campaign> approvedCoGTMCampaigns = new List<Campaign>();  //Roshan - Notfiy CoGTM Business Approvers
         for(Campaign campId:campaignIdStatusMap.values()){
             if(campId.Core_MDF_Terminal_Rejection_Ind__c && campId.Status == revisionRequiredStatus){
                 campList.add(campId.Id);
@@ -1316,8 +1372,14 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
         Map<Id,List<PartnerFundClaim>> campClaimAssocMap =  checkClaimsAssociatedToCampaign(campList);
         try{
             for(Campaign campId:campaignIdStatusMap.values()){
-                if(campId.Status == proposalAccepted || campId.Status == campaignAccepted){  // Roshan - CoGTM Intermediate status
+                if(campId.Status == proposalAccepted || campId.Status == campaignAccepted){  //CoGTM Intermediate status
                     campId.Status = campId.StartDate <= system.today() ? inProgressStatus: plannedStatus;
+
+                    //Roshan - Notfiy CoGTM Business Approvers
+                    if(campId.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.Co_GTM_TECHNICAL_PROGRAM){
+                        approvedCoGTMCampaigns.add(campId);
+                    }
+
                 }
                 if(campId.Status == revisionRequiredStatus && campId.Core_MDF_Terminal_Rejection_Ind__c){
                     //campClaimAssocMap => If it contains the respective campId, there's an active claim association
@@ -1329,13 +1391,18 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
                         campId.Status = declinedStatus;
                         if(campId.Core_MDF_Budget__c != null) {
                             campDeclinedStatusList.add(campId);
-						}
+                        }
                     }
                 }         
             }
             if(campDeclinedStatusList != null && !campDeclinedStatusList.isEmpty()) {
                 Core_MDF_Create_Budget.cancelBudget(campDeclinedStatusList);
-			}
+            }
+
+            //Roshan - Notfiy CoGTM Business Approvers
+            if(approvedCoGTMCampaigns.size() > 0) {
+                // Core_MDF_CampaignUtility.notifyCoGTMBusinessApproversOnApproval(approvedCoGTMCampaigns);
+            }
         }
         catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}
     }
@@ -1347,7 +1414,7 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
         Map<Id,List<PartnerFundClaim>> campClaimAssociationMap = new Map<Id,List<PartnerFundClaim>>();
         try{
             //Querying if there's any active PartnerFundClaim is associated with the list of campaign Ids
-            List<PartnerFundClaim> pfcList=[Select Id, Request.CampaignId from PartnerFundClaim where Core_MDF_Status__c !=:cancelledStatus and Core_MDF_Campaign_Id__c in :campList];
+            List<PartnerFundClaim> pfcList=[Select Id, Request.CampaignId,Core_MDF_Status__c from PartnerFundClaim where Core_MDF_Status__c !=:cancelledStatus and Core_MDF_Campaign_Id__c in :campList];
             if(pfcList!=null && pfcList.size()>0){
             for(PartnerFundClaim pfc:pfcList){
                 if(campClaimAssociationMap.containsKey(pfc.Request.CampaignId)){
@@ -1363,7 +1430,7 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
         return campClaimAssociationMap;
     }
       
-    //Roshan - edit scenario for CoGTM - needs to be updated as part of edit
+    //edit scenario for CoGTM - needs to be updated as part of edit
     public static void pfrUpdates(Map<id, Campaign> campaignIdStatusMap, boolean pfrFieldSync){
         
         List<PartnerFundRequest> pfrListToBeUpdated = new List<PartnerFundRequest>();
@@ -1371,19 +1438,23 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
             if(campaignIdStatusMap != NULL && campaignIdStatusMap.size() > 0){
                 for(id cmpid: campaignIdStatusMap.keyset()){
                    if(!propBasedCampIdPfrListIdMap.containsKey(cmpid) || propBasedCampIdPfrListIdMap.get(cmpid) == NULL) {
-                    continue;   
+                    continue;   // ATHR fix - TWC3117-17752
                     }
                         for(PartnerFundRequest pfr: propBasedCampIdPfrListIdMap.get(cmpid)){                  
+                            //Pending Review Activities - On Accept
                             if(pfr.Core_MDF_Fund_Request_Status__c == 'Pending Approval' || (pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM && pfr.Core_MDF_Fund_Request_Status__c == 'In-Progress Pending Approval')){
+                                //for Approval
                                 if(campaignIdStatusMap.get(pfr.CampaignId).Status == 'Planned' || campaignIdStatusMap.get(pfr.CampaignId).Status == 'In Progress'){
                                    pfr.Core_MDF_Fund_Request_Status__c = pfr.Core_MDF_Fund_Request_Status__c == 'In-Progress Pending Approval' ? 'In-Progress' : 'Planned';
                                     pfrListToBeUpdated.add(pfr);
                                 }
+                                //For Pending Approval reject
                                 else if(campaignIdStatusMap.get(pfr.CampaignId).Status == 'Revision Required'){
                                      pfr.Core_MDF_Fund_Request_Status__c = (pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM && pfr.Core_MDF_Fund_Request_Status__c == 'In-Progress Pending Approval') ? 'In-Progress Revision Required' : 'Revision Required';
                                     pfrListToBeUpdated.add(pfr);
                                 }
                             }
+                            //When Campaign goes to Revision Required because of Field changes
                             else{ 
                                     if(campaignIdStatusMap.get(pfr.CampaignId).Status == 'Revision Required' && pfr.Core_MDF_Fund_Request_Status__c != 'Revision Required' && pfr.Core_MDF_Fund_Request_Status__c != 'In-Progress Revision Required' &&
                                     pfr.Core_MDF_Fund_Request_Status__c != 'In-Progress' && pfr.Core_MDF_Fund_Request_Status__c != 'Closed'){  
@@ -1400,10 +1471,10 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
                             if(pfrFieldSync){
                                 pfr.Core_MDF_Country_nm__c = campaignIdStatusMap.get(pfr.CampaignId).Core_MDF_Market__c;
                                 if(pfr.Core_MDF_Program__c != 'Intel Partner Alliance' && pfr.Core_MDF_Program__c != Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM){
-                                	pfr.Core_MDF_Reimbursement_Rate_txt__c  = campaignIdStatusMap.get(pfr.CampaignId).Core_MDF_ReimbursementRate_pct__c;
+                                    pfr.Core_MDF_Reimbursement_Rate_txt__c  = campaignIdStatusMap.get(pfr.CampaignId).Core_MDF_ReimbursementRate_pct__c;
                                 }
                                 if(pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM) {
-                                	pfr.Core_MDF_Start_Date__c  = campaignIdStatusMap.get(pfr.CampaignId).StartDate;
+                                    pfr.Core_MDF_Start_Date__c  = campaignIdStatusMap.get(pfr.CampaignId).StartDate;
                                 }
                                 //Updating new Activty Budget type field as part of defect DE119207 fix
                                 pfr.Core_MDF_Budget_Type_nm__c = campaignIdStatusMap.get(pfr.CampaignId).Core_MDF_Opal_Budget_Type_Txt__c;
@@ -1424,25 +1495,28 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
     private static Map<string,boolean> updateSPIFApprInd(List<String> actCatTypeLst, Boolean skipCampPCTApproval){//added boolean flag for 16853
         string strNonSpif = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_NonSPIF_Approval');
         string strSpif = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_SPIF_Approval');
-        String outcomeBasedSpif = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_OutcomeBased_SPIF_Approval');  //Roshan - Tactics for IPA Approval
+        String outcomeBasedSpif = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_OutcomeBased_SPIF_Approval');  //Tactics for IPA Approval
         Map<string,boolean> mapApprvFlag = new Map<string,boolean>();
         boolean isNonSPIFApproval = false;
         boolean isSPIFApproval = false;      
         
+        //Buyer Incentive 2025->Offer - Other;Audio 2025->Podcast;Outcome-Based->Incentive;Outcome-Based->Legacy Media
+
         if(actCatTypeLst!=null && actCatTypeLst.size()>0){
             for(integer i=0;i<actCatTypeLst.size();i++){
+                system.debug('camprecord@@@' + actCatTypeLst[i]);
                 if(strNonSpif.containsIgnoreCase(actCatTypeLst[i])){isNonSPIFApproval = true; 
                 }
                 if(!skipCampPCTApproval && (strSpif.containsIgnoreCase(actCatTypeLst[i]) || outcomeBasedSpif.containsIgnoreCase(actCatTypeLst[i]))){ //16853
-                    isSPIFApproval = true;
-				}
+                    isSPIFApproval = true;  //Tactics for IPA Approval
+                }
                 if(isNonSPIFApproval && isSPIFApproval){break;}
             }
         }
                 
         mapApprvFlag.put('NonSPIF',isNonSPIFApproval);
         mapApprvFlag.put('SPIF',isSPIFApproval);
-        
+        system.debug('mapApprvFlag@@@' + mapApprvFlag);
         return mapApprvFlag;
     }    
     
@@ -1451,6 +1525,7 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
     try {
         List<String> supportedSpifTypes = Label.Core_MDF_SPIF_Activity_Types.split(';');
 
+        //Tactics for IPA Approval
         Set<String> supportedOutcomeBasedSpifTactics = new Set<String>();
         Core_MDF_Custom_Label_Configration__mdt mdtRec = [SELECT Core_MDF_Value2_Txt__c FROM Core_MDF_Custom_Label_Configration__mdt WHERE DeveloperName = 'Core_MDF_IPA_OutcomeBased_SPIF_Approval' LIMIT 1];
         if(mdtRec != null && String.isNotBlank(mdtRec.Core_MDF_Value2_Txt__c)) {
@@ -1459,9 +1534,9 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
             }
         }
         
-        for(Campaign cmp: cmpList) {
-            
-            if(cmp.Status != 'Pending Review' || (campOldMap.get(cmp.Id).Status == 'Planned' || campOldMap.get(cmp.Id).Status == 'In Progress')){
+        for(Campaign cmp : cmpList) {
+             // ATHR fix - TWC3117-17752
+            if(cmp.Status != 'Pending Review' || (campOldMap.get(cmp.Id).Status == 'Planned' || campOldMap.get(cmp.Id).Status == 'In Progress')) {
                 cmp.addError(Label.Core_MDF_IPA_Campaign_Status_Check_Error1 + ' \'' + campOldMap.get(cmp.Id).Status + '\' ' + Label.Core_MDF_IPA_Campaign_Status_Check_Error2);
             } else {
 
@@ -1476,58 +1551,64 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
 
                         for(PartnerFundRequest pfr : propBasedCampIdPfrListIdMap.get(cmp.Id)) {
 
+                            //Tactics for IPA Approval
                             Boolean tacticMatched = false;
-                            if (String.isNotBlank(pfr.Core_MDF_Tactics_nm__c)) {
+                            if(String.isNotBlank(pfr.Core_MDF_Tactics_nm__c)) {
                                 List<String> pfrTacticsList = pfr.Core_MDF_Tactics_nm__c.split(';');
                                 
-                                for (String tactic : pfrTacticsList) {
-                                    if (supportedOutcomeBasedSpifTactics.contains(tactic)){
+                                for(String tactic : pfrTacticsList) {
+                                    if(supportedOutcomeBasedSpifTactics.contains(tactic)) {
                                         tacticMatched = true;
                                         break;
                                     }
                                 }
                             }
+                            system.debug('tacticMatched@@@' + tacticMatched);
 
                             if(((supportedSpifTypes.contains(pfr.Core_MDF_Activity_Types__c) || tacticMatched) && !pfr.Core_MDF_SPIF_Segments_Available_ind__c) && pfr.Core_MDF_SPIF_Modified_ind__c == false) {
                                 actNameLst.add(pfr.Title);
                             }
-                        } 
+                        }
                     }
+                    system.debug('actNameLst@@@' + actNameLst);
 
-                        if(actNameLst!= null && actNameLst.size()>0){ String actNm = String.join(actNameLst, ', ');
+                    if(actNameLst != null && actNameLst.size() > 0) {
+                        String actNm = String.join(actNameLst, ', ');
                         cmp.addError(Label.Core_MDF_NoSpif_Validation + ' \'' + actNm + '\' ');
                     }
                 }
-            } 
-                if (cmp.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM) {  // Roshan - added ipa check
+            } // end of else
 
-                    if(campIdActSubTypeSet.containsKey(cmp.Id) && campIdActSubTypeSet.get(cmp.Id) != null){
-                        String strVal = String.join(new List<String>(campIdActSubTypeSet.get(cmp.Id)), ';');
-                        cmp.Core_MDF_Activity_Sub_Type_nm__c = strVal;
-                    }
-                    
-                    if(campIdActCatSet.containsKey(cmp.Id) && campIdActCatSet.get(cmp.Id) != null){
-                        String strVal = String.join(new List<String>(campIdActCatSet.get(cmp.Id)), ';');
-                        cmp.Core_MDF_Activity_Category__c = strVal;
-                    }
-                    
-                    if(campIdActTypeSet.containsKey(cmp.Id) && campIdActTypeSet.get(cmp.Id) != null){
-                        String strVal = String.join(new List<String>(campIdActTypeSet.get(cmp.Id)), ';');
-                        cmp.Core_MDF_Activity_Type__c = strVal;
-                    }
-                    
-                    if(budgetAmtMap.containsKey(cmp.Id) && budgetAmtMap.get(cmp.Id) != null){
-                        cmp.Core_MDF_Activity_Budget_Amount_amt__c = budgetAmtMap.get(cmp.Id);
-                    }
+            if(cmp.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM) {
+
+                if(campIdActSubTypeSet.containsKey(cmp.Id) && campIdActSubTypeSet.get(cmp.Id) != null) {
+                    String strVal = String.join(new List<String>(campIdActSubTypeSet.get(cmp.Id)), ';');
+                    cmp.Core_MDF_Activity_Sub_Type_nm__c = strVal;
                 }
-
-                if(campOldMap != null && campOldMap.size() > 0 && (campOldMap.get(cmp.Id).Status =='Revision Required' || campOldMap.get(cmp.Id).Status =='Draft')){
-                    cmp.Core_MDF_Comments_Appvr_Only_txt__c = '';
-                    cmp.Core_MDF_No_of_Reapprovals_nbr__c = cmp.Core_MDF_No_of_Reapprovals_nbr__c == null ? 1 : cmp.Core_MDF_No_of_Reapprovals_nbr__c + 1;
+                
+                if(campIdActCatSet.containsKey(cmp.Id) && campIdActCatSet.get(cmp.Id) != null) {
+                    String strVal = String.join(new List<String>(campIdActCatSet.get(cmp.Id)), ';');
+                    cmp.Core_MDF_Activity_Category__c = strVal;
+                }
+                
+                if(campIdActTypeSet.containsKey(cmp.Id) && campIdActTypeSet.get(cmp.Id) != null) {
+                    String strVal = String.join(new List<String>(campIdActTypeSet.get(cmp.Id)), ';');
+                    cmp.Core_MDF_Activity_Type__c = strVal;
+                }
+                
+                if(budgetAmtMap.containsKey(cmp.Id) && budgetAmtMap.get(cmp.Id) != null) {
+                    cmp.Core_MDF_Activity_Budget_Amount_amt__c = budgetAmtMap.get(cmp.Id);
                 }
             }
-        }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}  
-    }
+
+            if(campOldMap != null && campOldMap.size() > 0 && (campOldMap.get(cmp.Id).Status == 'Revision Required' || campOldMap.get(cmp.Id).Status == 'Draft')) {
+                cmp.Core_MDF_Comments_Appvr_Only_txt__c = '';
+                cmp.Core_MDF_No_of_Reapprovals_nbr__c = cmp.Core_MDF_No_of_Reapprovals_nbr__c == null ? 1 : cmp.Core_MDF_No_of_Reapprovals_nbr__c + 1;
+            }
+
+        } // end of for
+    } catch(Exception e) { Core_MDF_CCP_UtilityClass.logError(e); }
+}
     
     //Campaign cancellation logic starts
     public static void onCampaignCancel(List<Campaign> campList,Map<Id,Campaign> campOldMap){
@@ -1653,22 +1734,27 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
         List<String> budgetTypeList = new List<String>();
         List<Campaign> pendingCustomerAcceptanceApproval = new List<Campaign>();
         Boolean isSetApprovers = false;
-        String pctRole;
+
+        String pctRole; //Aditya
         try{
             
             //added by Sarah
             for(Campaign cmp : cmpList){
-                // ROshan - added ipa and cogtm check
+                //added ipa and cogtm check
                 if(cmp.Status == 'Pending Review' && (cmp.Core_MDF_Approval_Stage_nm__c == 'Price Reviewer' || cmp.Core_MDF_Approval_Stage_nm__c == 'Business Approver' ) && ((cmp.Core_MDF_Program__c == 'Intel Partner Alliance' && cmp.Core_MDF_IPA_SPIF_Apprval_Ind__c) || cmp.Core_MDF_Program__c == 'CoGTM') && !priceReviewer ){
                     pendingPCTApprovalCamp.add(cmp);
                     accntList.add(cmp.Core_MDF_Ultimate_Account_txt__c);
                     programList.add(cmp.Core_MDF_Program__c);
                     geoList.addAll(getGeoRegions(cmp));
+
+                    //Aditya
                     if(cmp.Core_MDF_Program__c == 'Intel Partner Alliance' && cmp.Core_MDF_Proposal_Based_Ind__c == true) {
                         pctRole = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Price_Reviewer_Roles');
                     } else if(cmp.Core_MDF_Program__c == 'CoGTM') {
                         pctRole = 'Core_MDF_CCP_Internal_Co_GTM_Business_Approver';
                     }
+
+                    system.debug('pctRole@@@' + pctRole);
 
                 }
                 //added by Saikat //Navneet added change// will add the new Approval Stage Name for POR since it is budget type based
@@ -1676,23 +1762,24 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
                                                             || cmp.Core_MDF_Approval_Stage_nm__c == 'L2 Regional Marketing' 
                                                             || cmp.Core_MDF_Approval_Stage_nm__c == 'L2 Regional Sales' 
                                                             || cmp.Core_MDF_Approval_Stage_nm__c == 'Program Office Reviewer'
-                                                            //Roshan - added Legal Reviewer and L2 for Cogtm
+                                                            //added Legal Reviewer and L2 for Cogtm
                                                             || cmp.Core_MDF_Approval_Stage_nm__c == 'Legal Reviewer' 
                                                             || cmp.Core_MDF_Approval_Stage_nm__c == 'L2 Approval' )){
                     pendingApprovalCamp.add(cmp);
                     accntList.add(cmp.Core_MDF_Ultimate_Account_txt__c);
                     programList.add(cmp.Core_MDF_Program__c);
                     
+                    //geoList.add(cmp.Core_MDF_Host_Region_cd__c);
                     geoList.addAll(getGeoRegions(cmp));
-
+                                                                    
                     approvalStageStatusList.add(cmp.Core_MDF_Approval_Stage_nm__c);
 
                     //budgetTypeList.add(cmp.Core_MDF_Budget_Type_txt__c);
-                    // Roshan - added for CoGTM as Core_MDF_Budget_Type_txt__c is not populated
+                    //added for CoGTM as Core_MDF_Budget_Type_txt__c is not populated
                     if(cmp.Core_MDF_Program__c == 'Intel Partner Alliance' && cmp.Core_MDF_Proposal_Based_Ind__c == true) {
                         budgetTypeList.add(cmp.Core_MDF_Budget_Type_txt__c);
                     } else if(cmp.Core_MDF_Program__c == 'CoGTM') {
-                        budgetTypeList.add(cmp.Core_MDF_Opal_Budget_Type_Txt__c);  //Roshan - Using OPAL budget type for CoGTM
+                        budgetTypeList.add(cmp.Core_MDF_Opal_Budget_Type_Txt__c);  //Using OPAL budget type for CoGTM
                     }
 
                     
@@ -1701,9 +1788,12 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
                     pendingCustomerAcceptanceApproval.add(cmp);
                 }
             }
-            if(pendingPCTApprovalCamp != NULL && pendingPCTApprovalCamp.Size() > 0){
+            if(pendingPCTApprovalCamp != NULL && pendingPCTApprovalCamp.Size() > 0){ 
+                //String pctRole = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Price_Reviewer_Roles');
                 Core_MDF_CampaignUtility.notificationWrapper wrapper = new Core_MDF_CampaignUtility.notificationWrapper(pendingPCTApprovalCamp, accntList, geoList, programList);
+                system.debug('wrapper@@@' + wrapper);
                 Core_MDF_CampaignUtility.notifyPCTApprovers(wrapper,pctRole);
+
             }
             if(pendingApprovalCamp != NULL && pendingApprovalCamp.Size() > 0){
              
@@ -1717,7 +1807,7 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
         }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);} 
     }
 
-    // Roshan - WW24 - Get applicable Geo based on program
+    //WW24 - Get applicable Geo based on program
     public static List<String> getGeoRegions(Campaign cmp) {
         List<String> geoRegions = new List<String>();
         
@@ -1734,7 +1824,7 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
         return geoRegions;
     }
     
-    // Roshan - need to be edited for cogtm
+    //need to be edited for cogtm
     public static void checkIfCampaignNeedsStatusChange(List<Campaign> campaignNewList, Map<Id, Campaign> campaignOldMap) {
         
         set<String> ipaFieldSet = new Set<String>();
@@ -1744,6 +1834,9 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
         List<string> ipaInternalFieldsEditNotForReApproval = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_IntFldEdit_NotForReApproval').split(';');
         List<String> coGTMInternalFieldsEditNotForReApproval = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_GTM_IntFldEdit_NotForReApproval').split(';');
         Boolean hasIntAcctManagerPS  = FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Co_GTM_Account_Manager');
+        Boolean hasCoGTMBusinessApproverPS  = FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Co_GTM_Business_Approver');
+        Boolean hasCoGTML2ApproverPS  = FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Co_GTM_L2_Approver');
+        Boolean hasCoGTMLegalReviewerPS  = FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Co_GTM_Legal_Reviewer');
         Map<id, Campaign> campaignIdCampaignMap = new Map<id, Campaign>();
         Map<String, Set<String>>  programToFieldsListMap = new Map<String, Set<String>>();
      
@@ -1762,35 +1855,57 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
             if(coGTMFieldSet != null && coGTMFieldSet.size() > 0) {
                 programToFieldsListMap.put(Core_MDF_CCP_ConstantClass.Co_GTM_TECHNICAL_PROGRAM, coGTMFieldSet);
             }
-
-
-         
+            system.debug('programToFieldsListMap@@@' + programToFieldsListMap);
+            System.debug('campaignNewList'+campaignNewList);
+            System.debug('campaignOldMap'+campaignOldMap);
             for(Campaign cmp: campaignNewList){
+                    // Guard clause - skip non-proposal based campaigns
+                    // ATHR fix - TWC3117-17752
                     if(cmp.Core_MDF_Proposal_Based_Ind__c != true) {
                         continue;
                     }  //added ipa check
                     if(cmp.status == 'Planned' || cmp.status == 'In Progress') {
                         boolean ischanged =false;
                         Set<String> fieldSet = programToFieldsListMap.get(cmp.Core_MDF_Program__c);
+                        system.debug('fieldSet@@@' + fieldSet);
                         for(string s: fieldSet){
+                            System.debug('Field: ' + s + ' | Old: ' + campaignOldMap.get(cmp.Id).get(s) + ' | New: ' + cmp.get(s) + ' | Changed: ' + (cmp.get(s) != campaignOldMap.get(cmp.Id).get(s)));
                             if(cmp.get(s) != campaignOldMap.get(cmp.Id).get(s)) {
-				if(cmp.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM && ((s == 'Description' && cmp.status == 'In Progress') || ((UserInfo.getUserType() != 'PowerPartner') && ipaInternalFieldsEditNotForReApproval.contains(s)))) {
-                                    Continue;
+                                system.debug('here@@@');
+                                //if((cmp.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM && (s == 'Description' && cmp.status == 'In Progress')) || ((UserInfo.getUserType() != 'PowerPartner') && ipaInternalFieldsEditNotForReApproval.contains(s)))) {
+                                if(cmp.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM && ((s == 'Description' && cmp.status == 'In Progress') || ((UserInfo.getUserType() != 'PowerPartner') && 
+                                ipaInternalFieldsEditNotForReApproval.contains(s)))) {
+                                        continue;
                                 }
+                                //Leela - Co-GTM check for Internal approvers
+                                 //if(cmp.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.Co_GTM_TECHNICAL_PROGRAM && cmp.status == 'In Progress' && !checkIfActiveClaimsExists(cmp.Id)
+                                 //&& ((UserInfo.getUserType() != 'PowerPartner' && !hasIntAcctManagerPS) 
+                                 //&& coGTMInternalFieldsEditNotForReApproval.contains(s))) {
+                                   // system.debug('coGTMInternalFieldsEditNotForReApproval @@@' +coGTMInternalFieldsEditNotForReApproval); 
+                                     // system.debug('userType @@@' +UserInfo.getUserType());
+                                     // system.debug('hasIntAcctManagerPS @@@' +hasIntAcctManagerPS);
+                                      //system.debug('checkIfActiveClaimsExists @@@' +checkIfActiveClaimsExists(cmp.Id));
+                                       // continue;
+                                      
+                               // }
                                 ischanged = true;
+                                System.debug('entered inside 1540');
                             }
                         }
                         if(ischanged){
+                            System.debug('campaignsThatNeedStatusChange 1528'+campaignsThatNeedStatusChange);
                             campaignsThatNeedStatusChange.add(cmp);
                         } 
                     }
-                    
+                    //to be checked Later for COGTM - after claim implementation
                     if(cmp.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.IPA_PROGRAM && cmp.status == 'In Progress' && checkIfActiveClaimsExists(cmp.Id) && cmp.EndDate != campaignOldMap.get(cmp.Id).EndDate) {
+                        system.debug('here2@@@');
                         campaignsThatNeedStatusChange.add(cmp);
                     }
                 
             }
-         
+            
+            System.debug('campaignsThatNeedStatusChange'+campaignsThatNeedStatusChange);
             if(campaignsThatNeedStatusChange.size()>0) {
                 for(Campaign cmp: campaignsThatNeedStatusChange) {
                     cmp.Status='Revision Required';
@@ -1812,59 +1927,95 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
     private static Map<Campaign,Set<String>> checkMDFBenefits(Map<Campaign,Id> ipaCampToacctIdMap){
         
         Map<Campaign,Set<String>> benefitsApplicable = new Map<Campaign,Set<String>>{};
-            Map<Id,Id> coMktAcctToIntelAcctMap = new Map<Id,Id>{};
-                Map<Id,Id> intelAcctToCoMktAcctMap = new Map<Id,Id>{};  
-                Set<String> unifiedIdSet =new Set<String>();//changed from primeIdSet to unifiedIdSet
+        Map<Id,Id> coMktAcctToIntelAcctMap = new Map<Id,Id>{};
+        Map<Id,Id> intelAcctToCoMktAcctMap = new Map<Id,Id>{};  
+        Set<String> unifiedIdSet =new Set<String>();//changed from primeIdSet to unifiedIdSet
         Set<Id> setOfAccIds=new Set<Id>();
         Map<Id,String> coMktAcctToUnifiedIdMap = new Map<Id,String>();//changed from coMktAcctToPrimeIdMap to coMktAcctToUnifiedIdMap
         Map<Campaign,Boolean> containsBenefit = new Map<Campaign,Boolean>{};
-            Map<String,Set<String>> unifiedIdToBenefitList = new Map<String,Set<String>>();//changed from primeIdToBenefitList to unifiedIdToBenefitList
+        Map<String,Set<String>> unifiedIdToBenefitList = new Map<String,Set<String>>();//changed from primeIdToBenefitList to unifiedIdToBenefitList
         Map<Id,String> mapOfIntelAccountandUnifiedId = new Map<Id,String>();//changed from mapOfIntelAccountandPrimeId to mapOfIntelAccountandUnifiedId
         //Map of Unified Id and related List of Intel Accounts
         Map<String, Set<Id>> mapOfUnifiedIdSetofAccountId = new Map<String, Set<Id>>();//changed from mapOfPrimeIdSetofAccountId to mapOfUnifiedIdSetofAccountId
+
+        Boolean optAccountBenefitAssociation = Core_MDF_CustomLabelConfig.getBooleanValues('Core_MDF_OptAccountBenefitAssoc'); 
+        Set<Id> setOfOnePartnerIds = new Set<Id>();
+        Map<Id, Set<Id>> mapOfOPIDtoSetofAccountId = new Map<Id, Set<Id>>();  
         
         for(Campaign cmp:ipaCampToacctIdMap.keySet()){
             coMktAcctToIntelAcctMap.put(ipaCampToacctIdMap.get(cmp),cmp.Core_MDF_Ultimate_Account_txt__c);
             intelAcctToCoMktAcctMap.put(cmp.Core_MDF_Ultimate_Account_txt__c,ipaCampToacctIdMap.get(cmp));                
-        } 
+        }
+
         //added by JK to replace prime id field
-       Set<Id> accountId = new Set<Id>(ipaCampToacctIdMap.values());
-       String unifiedIdOrPrimeIdField =  ' AND Core_MDF_CoMarketing_Ultimate_Account__r.Core_Unified_Global_Customer_BP_Id__c!= null';
-       String accIdListQuery = '(\''+String.join(new List<Id>(accountId), '\', \'') + '\')';
+        Set<Id> accountId = new Set<Id>(ipaCampToacctIdMap.values());
+        String unifiedIdOrPrimeIdField = isUnifiedIdEnabled?' AND Core_MDF_CoMarketing_Ultimate_Account__r.Core_Unified_Global_Customer_BP_Id__c!= null':' AND Core_MDF_CoMarketing_Ultimate_Account__r.Core_Prime_Id__c != null';
+        String accIdListQuery = '(\''+String.join(new List<Id>(accountId), '\', \'') + '\')';
         String whereClause = ' Id IN '+accIdListQuery+unifiedIdOrPrimeIdField;
-       List<Account> accounts = Core_MDF_Account_Utility.fetchAccounts(whereClause);  
+        List<Account> accounts = Core_MDF_Account_Utility.fetchAccounts(whereClause);  
                    
-    for(Account acc : accounts/*Database.Query(ultiAccountQuery)/*[SELECT Id,Name, Core_MDF_CoMarketing_Ultimate_Account__c,Core_MDF_CoMarketing_Ultimate_Account__r.Core_Prime_Id__c FROM Account WHERE Id IN :ipaCampToacctIdMap.values() AND Core_MDF_CoMarketing_Ultimate_Account__r.Core_Prime_Id__c != null]*/){
+        for(Account acc : accounts/*Database.Query(ultiAccountQuery)/*[SELECT Id,Name, Core_MDF_CoMarketing_Ultimate_Account__c,Core_MDF_CoMarketing_Ultimate_Account__r.Core_Prime_Id__c FROM Account WHERE Id IN :ipaCampToacctIdMap.values() AND Core_MDF_CoMarketing_Ultimate_Account__r.Core_Prime_Id__c != null]*/){
             //String accIsPrimeIdOrUnifiedField = isUnifiedIdEnabled?acc.Core_MDF_CoMarketing_Ultimate_Account__r.Core_Unified_Global_Customer_BP_Id__c:acc.Core_MDF_CoMarketing_Ultimate_Account__r.Core_Prime_Id__c;
             String accIsPrimeIdOrUnifiedField = acc.Core_MDF_CoMarketing_Ultimate_Account__r.Core_Unified_Global_Customer_BP_Id__c;
             coMktAcctToUnifiedIdMap.put(acc.Id, accIsPrimeIdOrUnifiedField);
             unifiedIdSet.add(accIsPrimeIdOrUnifiedField/*acc.Core_MDF_CoMarketing_Ultimate_Account__r.Core_Prime_Id__c*/);    
         }
-        if(!unifiedIdSet.isEmpty())
-        {
-        
+
+        if(!unifiedIdSet.isEmpty()){
             List<Account> unifiedIdAccounts = Core_MDF_Account_Utility.fetchUnifiedIdAccounts(unifiedIdSet);
-            for(Account acc : unifiedIdAccounts/*Database.Query(accountQuery) /*[SELECT Id,Core_Prime_Id__c,Core_MDF_CoMarketingActive__c from Account WHERE Core_Prime_Id__c IN: primeIdSet 
-               AND ((RecordType.DeveloperName =: 'Mastered_Account' AND Core_Intel_Partner_Alliance_PartnerGroup__c = TRUE)
-               OR RecordType.DeveloperName =: 'Core_Partner_Account_Group' )]*/){
+            for(Account acc : unifiedIdAccounts){
                 //String IsPrimeIdOrUnifiedField = isUnifiedIdEnabled?acc.Core_Unified_Global_Customer_BP_Id__c:acc.Core_Prime_Id__c;
                 String IsPrimeIdOrUnifiedField = acc.Core_Unified_Global_Customer_BP_Id__c;
                 //creating a map of Intel Account Id/OPID Account Ids and Prime Ids
-                mapOfIntelAccountandUnifiedId.put(acc.Id,IsPrimeIdOrUnifiedField/*acc.Core_Prime_Id__c*/);
+                mapOfIntelAccountandUnifiedId.put(acc.Id,IsPrimeIdOrUnifiedField);
                 setOfAccIds.add(acc.Id);
-                                   }
-                //Get the select benefits for all accounts in Unified ID
-                //for(PRM_AccountBenefitAssociation__c benefit : [SELECT Id,PRM_Partner_Benefit_Id__r.name, PRM_Account_Id__c,PRM_Account_Id__r.name FROM PRM_AccountBenefitAssociation__c WHERE PRM_Account_Id__c in : allAccIdsSet AND PRM_Status_Nm__c='Active']){
-        for(PRM_Account_Specialty_Association__c asa : [SELECT ID, PRM_Account_Id__c, PRM_Specialty_Id__r.name from PRM_Account_Specialty_Association__c 
-                                                                WHERE PRM_Account_Id__c IN:setOfAccIds and PRM_InActive_Ind__c = FALSE ]){
-                                                                    
-                                                                    if(mapOfIntelAccountandUnifiedId.containsKey(asa.PRM_Account_Id__c) && mapOfIntelAccountandUnifiedId.get(asa.PRM_Account_Id__c) != NULL && unifiedIdToBenefitList.containsKey(mapOfIntelAccountandUnifiedId.get(asa.PRM_Account_Id__c))){
-                                                                        unifiedIdToBenefitList.get(mapOfIntelAccountandUnifiedId.get(asa.PRM_Account_Id__c)).add(asa.PRM_Specialty_Id__r.name);
-                    }else{
-                                                                        unifiedIdToBenefitList.put(mapOfIntelAccountandUnifiedId.get(asa.PRM_Account_Id__c), new Set<String> {asa.PRM_Specialty_Id__r.name});
+
+                if (acc.Core_IPA_One_Partner_Id__c != null) {
+                    setOfOnePartnerIds.add(acc.Core_IPA_One_Partner_Id__c);
+                    if (!mapOfOPIDtoSetofAccountId.containsKey(acc.Core_IPA_One_Partner_Id__c)) {
+                        mapOfOPIDtoSetofAccountId.put(acc.Core_IPA_One_Partner_Id__c, new Set<Id>());
                     }
-                                                            
-                                                                }
+                    mapOfOPIDtoSetofAccountId.get(acc.Core_IPA_One_Partner_Id__c).add(acc.Id);
+                }
+            }
+
+            //Get the select benefits for all accounts in Unified ID
+            //for(PRM_AccountBenefitAssociation__c benefit : [SELECT Id,PRM_Partner_Benefit_Id__r.name, PRM_Account_Id__c,PRM_Account_Id__r.name FROM PRM_AccountBenefitAssociation__c WHERE PRM_Account_Id__c in : allAccIdsSet AND PRM_Status_Nm__c='Active']){
+            // for(PRM_Account_Specialty_Association__c asa : [SELECT ID, PRM_Account_Id__c, PRM_Specialty_Id__r.name from PRM_Account_Specialty_Association__c 
+            //                                                         WHERE PRM_Account_Id__c IN:setOfAccIds and PRM_InActive_Ind__c = FALSE ]){
+                                                                        
+            //                                                             if(mapOfIntelAccountandUnifiedId.containsKey(asa.PRM_Account_Id__c) && mapOfIntelAccountandUnifiedId.get(asa.PRM_Account_Id__c) != NULL && unifiedIdToBenefitList.containsKey(mapOfIntelAccountandUnifiedId.get(asa.PRM_Account_Id__c))){
+            //                                                                 unifiedIdToBenefitList.get(mapOfIntelAccountandUnifiedId.get(asa.PRM_Account_Id__c)).add(asa.PRM_Specialty_Id__r.name);
+            //             }else{
+            //                                                                 unifiedIdToBenefitList.put(mapOfIntelAccountandUnifiedId.get(asa.PRM_Account_Id__c), new Set<String> {asa.PRM_Specialty_Id__r.name});
+            //             }
+                                                                
+            //                                                         }
+
+            String setOfGeneralizedAccountds = optAccountBenefitAssociation ? '(\'' + String.join(new List<Id>(setOfOnePartnerIds), '\', \'') + '\')' : '(\'' + String.join(new List<Id>(setOfAccIds), '\', \'') + '\')';
+            Map<Id, Set<String>> accountIdToBenefitMap = Core_MDF_CampaignCreatePage.getAccountToBenefitsMap(optAccountBenefitAssociation, setOfGeneralizedAccountds);
+
+            if (optAccountBenefitAssociation) {
+                for (Id opid : accountIdToBenefitMap.keySet()) {
+                    if (mapOfOPIDtoSetofAccountId.containsKey(opid)) {
+                        Set<String> benefits = accountIdToBenefitMap.get(opid);
+                        for (Id intelAccId : mapOfOPIDtoSetofAccountId.get(opid)) {
+                            accountIdToBenefitMap.put(intelAccId, new Set<String>(benefits));
+                        }
+                    }
+                }
+            }
+
+            for (Id accId : accountIdToBenefitMap.keySet()) {
+                String unifiedId = mapOfIntelAccountandUnifiedId.get(accId);
+                if (String.isNotBlank(unifiedId)) {
+                    if (!unifiedIdToBenefitList.containsKey(unifiedId)) {
+                        unifiedIdToBenefitList.put(unifiedId, new Set<String>());
+                    }
+                    unifiedIdToBenefitList.get(unifiedId).addAll(accountIdToBenefitMap.get(accId));
+                }
+            }
+            system.debug('unifiedIdToBenefitList@@@' + unifiedIdToBenefitList);
         }        
         for(Campaign c:ipaCampToacctIdMap.keySet()){
           
@@ -1886,11 +2037,12 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
     public static void isMDFBenefitApplicable(Map<Campaign,Id> ipaCampToacctIdMap){
         Map<Id,String> ipaCampToacctNameMap = new Map<Id,String>{};
         Map<Campaign,Boolean> containsBenefit = new Map<Campaign,Boolean>{};
+
         Map<String,Set<String>> applicableBenefitsFromMdt = new Map<String,Set<String>>{};
         
-            for(Account acc:[Select id,Name from Account where id in :ipaCampToacctIdMap.values()]){
-                ipaCampToacctNameMap.put(acc.Id,acc.Name);
-            }
+        for(Account acc:[Select id,Name from Account where id in :ipaCampToacctIdMap.values()]){
+            ipaCampToacctNameMap.put(acc.Id,acc.Name);
+        }
         
         String program = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name');
         String whereClauseForBudgetType = ' Core_MDF_Program_Nm__c =\''+program+'\' '+' AND Core_MDF_IsActive__c=true';
@@ -1904,33 +2056,29 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
                 applicableBenefitsFromMdt.get(budToBenMdt.Core_MDF_Budget_Type__c).add(budToBenMdt.Core_MDF_Partner_Benefit__c);
             } else {
                 applicableBenefitsFromMdt.put(budToBenMdt.Core_MDF_Budget_Type__c,new Set<String> {budToBenMdt.Core_MDF_Partner_Benefit__c});
-            }    
+            }
             
         }
     
         Map<Campaign,Set<String>> benefitsApplicable = checkMDFBenefits(ipaCampToacctIdMap);
-     
-        if(benefitsApplicable!=null && !benefitsApplicable.isEmpty()){
-        for(Campaign c:benefitsApplicable.keySet()){
-            Set<String> benFromQuery = benefitsApplicable.get(c);
-          
-            Set<String> benFromMdt = applicableBenefitsFromMdt.get(c.Core_MDF_Opal_Budget_Type_Txt__c) != null ? applicableBenefitsFromMdt.get(c.Core_MDF_Opal_Budget_Type_Txt__c) : new Set<String>();
-            for(String ben:benFromMdt){
-                            
-                if(benFromQuery.contains(ben)){
-                
-                    containsBenefit.put(c,true);
-                    break;
+
+        if(benefitsApplicable!=null && !benefitsApplicable.isEmpty()) {
+            for(Campaign c:benefitsApplicable.keySet()){
+                Set<String> benFromQuery = benefitsApplicable.get(c);
+            
+                Set<String> benFromMdt = applicableBenefitsFromMdt.get(c.Core_MDF_Opal_Budget_Type_Txt__c) != null ? applicableBenefitsFromMdt.get(c.Core_MDF_Opal_Budget_Type_Txt__c) : new Set<String>();
+                for(String ben:benFromMdt){
                                 
-                }
-                else{
-                    
-                    containsBenefit.put(c,false);
+                    if(benFromQuery.contains(ben)){  // prop 1, prop 2, acc plan
+                        containsBenefit.put(c,true);
+                        break;           
+                    } else {
+                        containsBenefit.put(c,false);
+                    }
                 }
             }
         }
-
-        }
+        
         for(Campaign cmp:ipaCampToacctIdMap.keySet()){
             if((containsBenefit==null || containsBenefit.isEmpty() || !containsBenefit.containsKey(cmp) ||
               (containsBenefit.containsKey(cmp) && !containsBenefit.get(cmp))) && cmp.Core_MDF_Proposal_Based_Ind__c == true){
@@ -1966,13 +2114,14 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
             Map<Id,Campaign> cmpWithoutBudgetCapMap = new Map<Id,Campaign>();
             List<Campaign> campaignList = new List<Campaign>();
             if(cmpList != null && cmpList.size() > 0 && hasL2ProposalApproverPS){
-	    	campaignList = reCalculateCampaignFormulaFields(cmpList);              
+            campaignList = reCalculateCampaignFormulaFields(cmpList);              
                 for(Campaign cmp: campaignList){                    
                     if(oldCmpMap != null && oldCmpMap.size() > 0){
                         //To validate Campaign with Budget Cap Amt and Reimbursement Amt  
-                       
+                        // ATHR fix - TWC3117-17752
                         if((String.isNotBlank(cmp.Core_MDF_Budget_Cap__c) && cmp.Core_MDF_Available_BudgetCap_amt__c != null)
-
+                           // Decimal cmpReimbursementAmount = cmp.Core_MDF_Reimbursement_Amt__c;
+                           // Decimal budgetCapAmount = cmp.Core_MDF_Available_BudgetCap_amt__c;
          
                             && (cmp.Core_MDF_Reimbursement_Amt__c > cmp.Core_MDF_Available_BudgetCap_amt__c
                                && cmp.Core_MDF_Approval_Stage_nm__c == Core_MDF_CCP_ConstantClass.CUSTOMER_ACCEPTANCE && cmp.Core_MDF_Completed_Approval_Level_Nm__c == Core_MDF_CCP_ConstantClass.L2_REGIONAL_SALES && (cmp.Status == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS && oldCmpMap.get(cmp.Id).Status == Core_MDF_CCP_ConstantClass.PFR_PENDING_REVIEW_STATUS))){
@@ -1981,7 +2130,7 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
                                }
                         //new if: To validate Campaign without Budget Cap 
                         //US1055998: [IPA - Budget CAP]  - L1 Approver - Terminate Approvals if Budget CAP is not loaded 
-                        //Roshan - added cogtm check
+                        //added cogtm check
                         else if(String.isBlank(cmp.Core_MDF_Budget_Cap__c) && cmp.Core_MDF_Program__c != 'CoGTM' && (cmp.Status == Core_MDF_CCP_ConstantClass.PFR_PENDING_APPROVAL_STATUS && oldCmpMap.get(cmp.Id).Status == Core_MDF_CCP_ConstantClass.PFR_PENDING_REVIEW_STATUS) 
                                  && cmp.Core_MDF_Completed_Approval_Level_Nm__c == Core_MDF_CCP_ConstantClass.L2_REGIONAL_SALES && cmp.Core_MDF_Approval_Stage_nm__c == Core_MDF_CCP_ConstantClass.CUSTOMER_ACCEPTANCE){
                                     cmpWithoutBudgetCapMap.put(cmp.Id, cmp);
@@ -2029,9 +2178,9 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
                 }
             }
         }catch(Exception e){
-		Core_MDF_CCP_UtilityClass.logError(e);
-		throw new CustomException(e);
-	}
+        Core_MDF_CCP_UtilityClass.logError(e);
+        throw new CustomException(e);
+    }
     }
     
     public static List<Campaign> reCalculateCampaignFormulaFields(List<Campaign> cmpList) {
@@ -2061,7 +2210,7 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
                         when 'Planned', 'In Progress', 'Completed', 'Pending Review' {
                             if((campaignOldMap.get(cmpObj.Id).Core_MDF_Reimbursement_Amt__c != cmpObj.Core_MDF_Reimbursement_Amt__c 
                                 && cmpObj.Core_MDF_Budget__c != null) 
-                                && (String.isNotBlank(cmpObj.Core_MDF_Budget_Cap__c))) {  
+                                && (String.isNotBlank(cmpObj.Core_MDF_Budget_Cap__c))) {  // ATHR fix - TWC3117-17752
                                     budgetCapIdSet.add(cmpObj.Core_MDF_Budget_Cap__c);
                                 }
                             
@@ -2072,23 +2221,23 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
                             if(((campaignOldMap.get(cmpObj.Id).Status != cmpObj.Status || campaignOldMap.get(cmpObj.Id).Core_MDF_Reimbursement_Amt__c != cmpObj.Core_MDF_Reimbursement_Amt__c) 
                             && (cmpObj.Core_MDF_Budget__c != null || (cmpObj.Core_MDF_Budget__c == null && cmpObj.Core_MDF_Completed_Approval_Level_Nm__c == Core_MDF_CCP_ConstantClass.L2_REGIONAL_SALES))) 
                                     
-                                    && (String.isNotBlank(cmpObj.Core_MDF_Budget_Cap__c))){  
+                                    && (String.isNotBlank(cmpObj.Core_MDF_Budget_Cap__c))){   // ATHR fix - TWC3117-17752
                                         budgetCapIdSet.add(cmpObj.Core_MDF_Budget_Cap__c);
-                            }
+                                }
                             
                         }
                         
                         when 'Cancelled' { 
                             if((campaignOldMap.get(cmpObj.Id).Status != cmpObj.Status && cmpObj.Core_MDF_Budget__c != null)  
-                                && (String.isNotBlank(campaignOldMap.get(cmpObj.Id).Core_MDF_Budget_Cap__c))) {    
+                                && (String.isNotBlank(campaignOldMap.get(cmpObj.Id).Core_MDF_Budget_Cap__c))) {    // ATHR fix - TWC3117-17752
                                     budgetCapIdSet.add(campaignOldMap.get(cmpObj.Id).Core_MDF_Budget_Cap__c);
-                            }
+                                }
                             
                         }
                         
                         when 'Pending Approval' {
                             if((campaignOldMap.get(cmpObj.Id).Status != cmpObj.Status) 
-                                && (String.isNotBlank(cmpObj.Core_MDF_Budget_Cap__c))) {   
+                                && (String.isNotBlank(cmpObj.Core_MDF_Budget_Cap__c))) {    // ATHR fix - TWC3117-17752
                                     budgetCapIdSet.add(cmpObj.Core_MDF_Budget_Cap__c);
                                 }
                                
@@ -2096,9 +2245,9 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
 
                         when 'Declined' {
                             if ((campaignOldMap.get(cmpObj.Id).Status != cmpObj.Status && cmpObj.Core_MDF_Budget__c != null) 
-                                && (String.isNotBlank(cmpObj.Core_MDF_Budget_Cap__c))){    
+                                && (String.isNotBlank(cmpObj.Core_MDF_Budget_Cap__c))){    // ATHR fix - TWC3117-17752
                                     budgetCapIdSet.add(cmpObj.Core_MDF_Budget_Cap__c);
-                            }
+                                }
                             
                         }
                     } 
@@ -2202,7 +2351,7 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
             }
             if(userIdSet != NULL  && userIdSet.size() > 0){
                 List<String> extPermSetsList = new List<String>();
-                String extPermSet = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Extrnl_Prposl_Mgr_Prmsn_Set');  //Roshan - added CoGTM PS
+                String extPermSet = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Extrnl_Prposl_Mgr_Prmsn_Set');  //added CoGTM PS
                 if(extPermSet != null){
                     extPermSetsList = extPermSet.split(','); 
                 }
@@ -2212,15 +2361,15 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
                                                           externalUsersIdMap.put(usrPer.AssigneeId, usrPer.AssigneeId);
                                                       }
             }
-          
-          
+            // Guard clause
+            //ATHR fix - TWC3117-17752
             if(campaignList == null || campaignList.size() == 0) {
                 return;
             }
                 for(Campaign camp : campaignList){
                     List<Id> extUserIdList = new List<Id>();
 
-                    //Roshan - added CoGTM program check for sending email to Member Acceptor only
+                    //added CoGTM program check for sending email to Member Acceptor only
                     if (camp.Core_MDF_Program__c == 'CoGTM') {
                         if (camp.Core_MDF_Member_Acceptor_id__c != null && pnumAccountIdUserIdsMap.containsKey(camp.Core_MDF_Account__c) && pnumAccountIdUserIdsMap.get(camp.Core_MDF_Account__c) != null 
                             && pnumAccountIdUserIdsMap.get(camp.Core_MDF_Account__c).contains(camp.Core_MDF_Member_Acceptor_id__c) && externalUsersIdMap.containsKey(camp.Core_MDF_Member_Acceptor_id__c)) {
@@ -2251,7 +2400,7 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
                         }     
                     }     
                 }
-                //system.debug('inputList@@@' + inputList);   //ATHR
+                system.debug('inputList@@@' + inputList);   
                 if(inputList != NULL && inputList.size() >0){
                     Core_MDF_GenericClassToSendMail.sendEmailMethod(inputList);
                 }
@@ -2259,7 +2408,7 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
         }
         catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}
     }
-	//NP - WW33 Do not allow removal of country if used in an active activity
+    //NP - WW33 Do not allow removal of country if used in an active activity
     public static boolean checkIfFieldsUsedInActivityNotRemoved(List<Campaign> newCmpList, Map<Id,Campaign> campOldMap,string program, Map<String, String> cmpProgWithPLfieldsMap,Map<String, Schema.DisplayType> cmpFieldtoFieldDataType,Map<String, String> cmpFieldtoFieldLabel,Map<String, String> cmpProgWithCampNotEditFieldsMap){
         List<Core_MDF_ProcessCCP_Campaign.campaignEditWrapper> wrapperList = new List<Core_MDF_ProcessCCP_Campaign.campaignEditWrapper>();
          Map<Id,List<String>> cmpIdfieldListMap = new Map<Id,List<String>>();
@@ -2285,116 +2434,118 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
                 cmpListwithoutPRF.add(cmp);
             }
         }
+        // Guard clause: nothing to process if JSON map is empty
+        // ATHR fix - TWC3117-17752
         if (campFieldAPINameAndActivityFieldAPINameJSON.isEmpty()) {
             return error;
         }
-        for(String strKey: campFieldAPINameAndActivityFieldAPINameJSON.keyset())
-        {
-            campFieldAPINameAndActivityFieldAPINameMap.put(strKey, String.valueof(campFieldAPINameAndActivityFieldAPINameJSON.get(strKey)));
-        }
-        
-        // check if PFR record is already query
-        if(cmpListwithoutPRF != NULL && cmpListwithoutPRF.Size() > 0){
-        	queryPFRRecords(cmpListwithoutPRF);
-        }
-        
-        
-        for(Campaign cmp: newCmpList){
-           // System.debug('@@@v1'+program); System.debug('@@@v2'+cmpProgWithPLfieldsMap); System.debug('@@@v3'+cmpProgWithPLfieldsMap.get(program)); //ATHR
-            for(String strField: cmpProgWithPLfieldsMap.get(program).Split(',')){
-                if(campOldMap.get(cmp.Id).get(strField) != cmp.get(strField)){
-                    Core_MDF_ProcessCCP_Campaign.campaignEditWrapper wrapper = new Core_MDF_ProcessCCP_Campaign.campaignEditWrapper();
-                    wrapper.field = strField;
-                    wrapper.newCmp = cmp;
-                    wrapper.oldCmp = campOldMap.get(cmp.Id);
-                    wrapperList.add(wrapper);
-                }    
+            for(String strKey: campFieldAPINameAndActivityFieldAPINameJSON.keyset())
+            {
+                campFieldAPINameAndActivityFieldAPINameMap.put(strKey, String.valueof(campFieldAPINameAndActivityFieldAPINameJSON.get(strKey)));
             }
-        }
-        
-        if(wrapperList != NULL && wrapperList.Size() > 0){
             
-            for(Core_MDF_ProcessCCP_Campaign.campaignEditWrapper wrapper : wrapperList){
-                Boolean isRemoved = Core_MDF_ProcessCCP_Campaign.checkEdit(wrapper.newCmp, wrapper.oldCmp, wrapper.field);
-               
-                String labelValue = cmpFieldtoFieldLabel.get(wrapper.field); //fieldMap.get(wrapper.field).getDescribe().getLabel();
-                if(isRemoved){
-                    campIdSet.add(wrapper.newCmp.Id);
-                    if(campIdAndCampFieldMap.containsKey(wrapper.newCmp.Id)){
-                        //cmpIdfieldListMap.get(wrapper.newCmp.Id).add(labelValue);
-                        campIdAndCampFieldMap.get(wrapper.newCmp.Id).add(wrapper.field);
-                    }else{
-                        //cmpIdfieldListMap.put(wrapper.newCmp.Id, new List<String>{labelValue});
-                        campIdAndCampFieldMap.put(wrapper.newCmp.Id, new List<String>{wrapper.field});
+            // check if PFR record is already query
+            if(cmpListwithoutPRF != NULL && cmpListwithoutPRF.Size() > 0){
+                queryPFRRecords(cmpListwithoutPRF);
+            }
+            
+            
+            for(Campaign cmp: newCmpList){
+                System.debug('@@@v1'+program); System.debug('@@@v2'+cmpProgWithPLfieldsMap); System.debug('@@@v3'+cmpProgWithPLfieldsMap.get(program));
+                for(String strField: cmpProgWithPLfieldsMap.get(program).Split(',')){
+                    if(campOldMap.get(cmp.Id).get(strField) != cmp.get(strField)){
+                        Core_MDF_ProcessCCP_Campaign.campaignEditWrapper wrapper = new Core_MDF_ProcessCCP_Campaign.campaignEditWrapper();
+                        wrapper.field = strField;
+                        wrapper.newCmp = cmp;
+                        wrapper.oldCmp = campOldMap.get(cmp.Id);
+                        wrapperList.add(wrapper);
+                    }    
+                }
+            }
+            
+            if(wrapperList != NULL && wrapperList.Size() > 0){
+                
+                for(Core_MDF_ProcessCCP_Campaign.campaignEditWrapper wrapper : wrapperList){
+                    Boolean isRemoved = Core_MDF_ProcessCCP_Campaign.checkEdit(wrapper.newCmp, wrapper.oldCmp, wrapper.field);
+                    
+                    String labelValue = cmpFieldtoFieldLabel.get(wrapper.field); //fieldMap.get(wrapper.field).getDescribe().getLabel();
+                    if(isRemoved){
+                        campIdSet.add(wrapper.newCmp.Id);
+                        if(campIdAndCampFieldMap.containsKey(wrapper.newCmp.Id)){
+                            //cmpIdfieldListMap.get(wrapper.newCmp.Id).add(labelValue);
+                            campIdAndCampFieldMap.get(wrapper.newCmp.Id).add(wrapper.field);
+                        }else{
+                            //cmpIdfieldListMap.put(wrapper.newCmp.Id, new List<String>{labelValue});
+                            campIdAndCampFieldMap.put(wrapper.newCmp.Id, new List<String>{wrapper.field});
+                        }
                     }
                 }
             }
-        }
-        
-        
-        
-        for(campaign cmp: newCmpList) {
-            //Integer newCampYear = cmp.startDate.year();
-            //Integer oldCampYear = campOldMap.get(cmp.Id).startDate.year();
-  
+            
+            
+            
+            for(campaign cmp: newCmpList) {
+                //Integer newCampYear = cmp.startDate.year();
+                //Integer oldCampYear = campOldMap.get(cmp.Id).startDate.year();
+                
                 Boolean hasPfr = propBasedCampIdPfrListIdMap.containsKey(cmp.Id) || propBasedCampIdClosedPfrListIdMap.containsKey(cmp.Id);
-                 
+                 // ATHR fix - TWC3117-17752
                     if (!hasPfr || !campIdAndCampFieldMap.containsKey(cmp.Id)) {
                         continue;
                     }
-             
-                for(String campField : campIdAndCampFieldMap.get(cmp.Id)) {
-                    String labelValue = cmpFieldtoFieldLabel.get(campField); //fieldMap.get(campField).getDescribe().getLabel();
-                    Schema.DisplayType campFieldDataType = cmpFieldtoFieldDataType.get(campField); //fieldMap.get(campField).getDescribe().getType();
-                    if(campFieldDataType == Schema.DisplayType.MULTIPICKLIST && !campFieldAPINameAndActivityFieldAPINameMap.isEmpty()) {
-                        if(campFieldAPINameAndActivityFieldAPINameMap.get(campField) != null) {
-                            Set<string> actPicklistValues = new Set<string>();
-                            String campPicklistValues = (String)cmp.get(campField);
-                            //check if field Acivity Category Type as its using '->'
+                    
+                    for(String campField : campIdAndCampFieldMap.get(cmp.Id)) {
+                        String labelValue = cmpFieldtoFieldLabel.get(campField); //fieldMap.get(campField).getDescribe().getLabel();
+                        Schema.DisplayType campFieldDataType = cmpFieldtoFieldDataType.get(campField); //fieldMap.get(campField).getDescribe().getType();
+                        if(campFieldDataType == Schema.DisplayType.MULTIPICKLIST && !campFieldAPINameAndActivityFieldAPINameMap.isEmpty()) {
+                            if(campFieldAPINameAndActivityFieldAPINameMap.get(campField) != null) {
+                                Set<string> actPicklistValues = new Set<string>();
+                                String campPicklistValues = (String)cmp.get(campField);
+                                //check if field Acivity Category Type as its using '->'
                                 if((campField == 'Core_MDF_Activity_Category_Type__c')
-                                // if(oldCampYear == newCampYear) {
-                                    && (campIdActCatTypesSet != null && campIdActCatTypesSet.size() > 0)) {  
-                                    for(String actCatType: campIdActCatTypesSet.get(cmp.Id)){
-                                        if(String.isNotBlank(actCatType)){
-                                        actPicklistValues.addAll(new Set<string>(actCatType.split(';')));
-                                     }
+                                    // if(oldCampYear == newCampYear) {
+                                    && (campIdActCatTypesSet != null && campIdActCatTypesSet.size() > 0)) {  // ATHR fix - TWC3117-17752
+                                        for(String actCatType: campIdActCatTypesSet.get(cmp.Id)){
+                                            if(String.isNotBlank(actCatType)){
+                                                actPicklistValues.addAll(new Set<string>(actCatType.split(';')));
+                                            }
+                                        }
                                     }
+                                
+                                else if (campField != 'Core_MDF_Activity_Category_Type__c'){   // ATHR fix - TWC3117-17752
+                                    /*for(PartnerFundRequest pfr: propBasedCampIdPfrListIdMap.get(cmp.Id))
+{   String valuesFromActivityAsString = (String)pfr.get(campFieldAPINameAndActivityFieldAPINameMap.get(campField));
+if(String.isNotBlank(valuesFromActivityAsString)){
+actPicklistValues.addAll(new Set<string>(valuesFromActivityAsString.split(';')));
+}
+}*/
+                                    actPicklistValues.addAll(getSelectedPickValFromAct(campFieldAPINameAndActivityFieldAPINameMap, campField, cmp.Id));
                                 }
-                                
-                                else if (campField != 'Core_MDF_Activity_Category_Type__c'){  
-                                /*for(PartnerFundRequest pfr: propBasedCampIdPfrListIdMap.get(cmp.Id))
-                                {	String valuesFromActivityAsString = (String)pfr.get(campFieldAPINameAndActivityFieldAPINameMap.get(campField));
-                                 if(String.isNotBlank(valuesFromActivityAsString)){
-                                     actPicklistValues.addAll(new Set<string>(valuesFromActivityAsString.split(';')));
-                                 }
-                                }*/
-                                actPicklistValues.addAll(getSelectedPickValFromAct(campFieldAPINameAndActivityFieldAPINameMap, campField, cmp.Id));
-                            }
-                            if(actPicklistValues.size() > 0){
-                                
+                                if(actPicklistValues.size() > 0){
+                                    
                                     errorpickfields = errorpickfields == '' ? getRemovedPicklistValue(campPicklistValues, actPicklistValues, labelValue, program) : errorpickfields + '<br>' + getRemovedPicklistValue(campPicklistValues,actPicklistValues, labelValue, program);
-                                
-                        	}
-                        }
-                    } else {
-                        Campaign oldCamp = campOldMap.get(cmp.Id);
-                       String campPicklistValues = (String)oldCamp.get(campField);
-                        if(cmpProgWithCampNotEditFieldsMap.containsKey(program) && cmpProgWithCampNotEditFieldsMap.get(program) != null && cmpProgWithCampNotEditFieldsMap.get(program).contains(campField)){
-                             //errorpickfields = errorpickfields == ''  ? labelValue + ' - '+ campField : errorpickfields + '<br>' + labelValue + ' - '+ campField;
-                              errorpickfields = errorpickfields == ''  ? labelValue + ' - '+ campPicklistValues : errorpickfields + '<br>' + labelValue + ' - '+ campPicklistValues;
-
-                        }else{
-                       
-                       Set<string> actPicklistValues = new Set<string>();
-                            /*for(PartnerFundRequest pfr: propBasedCampIdPfrListIdMap.get(cmp.Id)){
-                                String valuesFromActivityAsString = (String)pfr.get(campFieldAPINameAndActivityFieldAPINameMap.get(campField));
-                                if(String.isNotBlank(valuesFromActivityAsString)){
-                                    actPicklistValues.addAll(new Set<string>(valuesFromActivityAsString.split(';')));
+                                    
                                 }
-                            }*/
-                            actPicklistValues.addAll(getSelectedPickValFromAct(campFieldAPINameAndActivityFieldAPINameMap, campField, cmp.Id));
+                            }
+                        } else {
+                            Campaign oldCamp = campOldMap.get(cmp.Id);
+                            String campPicklistValues = (String)oldCamp.get(campField);
+                            if(cmpProgWithCampNotEditFieldsMap.containsKey(program) && cmpProgWithCampNotEditFieldsMap.get(program) != null && cmpProgWithCampNotEditFieldsMap.get(program).contains(campField)){
+                                //errorpickfields = errorpickfields == ''  ? labelValue + ' - '+ campField : errorpickfields + '<br>' + labelValue + ' - '+ campField;
+                                errorpickfields = errorpickfields == ''  ? labelValue + ' - '+ campPicklistValues : errorpickfields + '<br>' + labelValue + ' - '+ campPicklistValues;
+                                
+                            }else{
+                                
+                                Set<string> actPicklistValues = new Set<string>();
+                                    /*for(PartnerFundRequest pfr: propBasedCampIdPfrListIdMap.get(cmp.Id)){
+                                    String valuesFromActivityAsString = (String)pfr.get(campFieldAPINameAndActivityFieldAPINameMap.get(campField));
+                                    if(String.isNotBlank(valuesFromActivityAsString)){
+                                    actPicklistValues.addAll(new Set<string>(valuesFromActivityAsString.split(';')));
+                                    }
+                                    */
+                                        actPicklistValues.addAll(getSelectedPickValFromAct(campFieldAPINameAndActivityFieldAPINameMap, campField, cmp.Id));
                                 if((String.isNotBlank(campPicklistValues) && actPicklistValues.size() > 0)
-                                    && (actPicklistValues.contains(campPicklistValues))){  
+                                    && (actPicklistValues.contains(campPicklistValues))){   // ATHR fix - TWC3117-17752
                                         
                                         errorpickfields = errorpickfields == ''  ? labelValue + ' - '+ campPicklistValues : errorpickfields + '<br>' + labelValue + ' - '+ campPicklistValues;
                                         
@@ -2429,7 +2580,7 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
         String removedPickListValueFromCampaign = '';
         String errorpickfields = '';
 
-       	List<string> valuesofCampList = new List<string>();
+        List<string> valuesofCampList = new List<string>();
         if(String.isNotBlank(valuesFromCampaign)){
             valuesofCampList = valuesFromCampaign.split(';');
         }
@@ -2447,7 +2598,7 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
         
         if(String.isNotBlank(removedPickListValueFromCampaign)){
 
-        	errorpickfields =  labelValue + ' - '+ removedPickListValueFromCampaign +'<br>';  
+            errorpickfields =  labelValue + ' - '+ removedPickListValueFromCampaign +'<br>';  
         }
         return errorpickfields;
     }
@@ -2467,9 +2618,9 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
                 || String.isBlank((String) pfr.get(campFieldAPINameAndActivityFieldAPINameMap.get(campField)))) { continue; }
 
             String valuesFromActivityAsString = (String) pfr.get(campFieldAPINameAndActivityFieldAPINameMap.get(campField));
-            // if (String.isNotBlank(valuesFromActivityAsString)) {
+          //  if (String.isNotBlank(valuesFromActivityAsString)) {
                 actPicklistValues.addAll(new Set<String>(valuesFromActivityAsString.split(';')));
-            // }
+         //   }
         }
         return actPicklistValues;
     }
@@ -2485,7 +2636,7 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
         return selActPicklistValues;
     }
 
-    //Roshan - IPA campaign approval
+    //IPA campaign approval
     public static void processIPACampaignApproval(Campaign cmp, Map<String, List<String>> iupgmUserMap, Map<Id, Campaign> oldCampMap, Boolean isStageChange, Map<String, List<String>> cmpToActClassificationMap, Set<Id> setOfValidMarketingActivity) {
 
         if(cmp.Core_MDF_Host_Region_cd__c !=null) {
@@ -2551,12 +2702,12 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
         }
     }
     
-    //Roshan - Co-GTM campaign setup
+    //Co-GTM campaign setup
     public static void processProjectBasedApproval(Campaign cmp, Map<Id, Campaign> oldCampMap) {
         Campaign oldCmp = oldCampMap != null ? oldCampMap.get(cmp.Id) : null;
         Boolean isStepChanged = oldCmp != null && oldCmp.Core_MDF_Approval_Step_Counter_nbr__c != cmp.Core_MDF_Approval_Step_Counter_nbr__c;
         Boolean hasContract = campaignIdToContractsMap.containsKey(cmp.Id) && !campaignIdToContractsMap.get(cmp.Id).isEmpty();
-      
+            // ATHR fix - TWC3117-17752
             if (cmp.Status != 'Pending Review') {
                 return;
             }
@@ -2571,6 +2722,7 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
 
             if (isStepChanged && cmp.Core_MDF_Approval_Step_Counter_nbr__c > 0) {
                     if (cmp.Core_MDF_Approval_Step_Counter_nbr__c == 1 && cmp.Core_MDF_Approval_Stage_nm__c != 'Business Approver') {
+                        //cmp.Core_MDF_Approval_Stage_nm__c = 'Price Reviewer';
                         cmp.Core_MDF_Approval_Stage_nm__c = 'Business Approver';
                     } else if ((cmp.Core_MDF_Approval_Step_Counter_nbr__c == 1 || cmp.Core_MDF_Approval_Step_Counter_nbr__c == 2) 
                                 && cmp.Core_MDF_Reimbursement_Amt__c >= Core_MDF_CustomLabelConfig.getDoubleValues('Core_MDF_CoGTM_Camp_Reimb_Amt_Limit') 
@@ -2578,7 +2730,7 @@ cmpShareList.add(createCampaignShare(cmp.Id, geoGroupIdMap.get(accCPBudgetType))
                         cmp.Core_MDF_Approval_Stage_nm__c = 'L2 Approval';
                     } else if (cmp.Core_MDF_Approval_Step_Counter_nbr__c >= 1) {
                         cmp.Core_MDF_Approval_Stage_nm__c = 'Customer Acceptance';
-                        cmp.Status = 'Pending Approval';
+                        cmp.Status = 'Pending Approval';                        
                     }
 
             }

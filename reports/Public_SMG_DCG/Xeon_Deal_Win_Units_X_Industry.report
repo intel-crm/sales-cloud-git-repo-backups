@@ -12,10 +12,40 @@
                 <sourceValue>Agriculture</sourceValue>
             </sourceValues>
             <sourceValues>
+                <sourceValue>Apparel</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Biotechnology</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Chemicals</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>Construction</sourceValue>
             </sourceValues>
             <sourceValues>
                 <sourceValue>Consulting</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Electronics</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Engineering</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Entertainment</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Environmental</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Food &amp; Beverage</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hospitality</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Machinery</sourceValue>
             </sourceValues>
             <sourceValues>
                 <sourceValue>Manufacturing</sourceValue>
@@ -26,14 +56,32 @@
             <sourceValues>
                 <sourceValue>Not For Profit</sourceValue>
             </sourceValues>
+            <sourceValues>
+                <sourceValue>Others</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Recreation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Shipping</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Utilities</sourceValue>
+            </sourceValues>
             <value>E&amp;G Other</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Technology</sourceValue>
+            </sourceValues>
             <value>Cloud</value>
         </values>
         <values>
             <sourceValues>
                 <sourceValue>Telecommunications</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Communications</sourceValue>
             </sourceValues>
             <value>Comms</value>
         </values>
@@ -143,7 +191,7 @@
             <value>lost,cancelled,deleted</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>

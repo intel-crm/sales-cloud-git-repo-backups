@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Batch Apex Error Log</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Batch Apex Error Logs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Apex Class --></label>
+        <name>Core_MDF_Apex_Class_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Counter --></label>
+        <name>Core_MDF_Counter_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Details --></label>
+        <name>Core_MDF_Details_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Exception Message --></label>
+        <name>Core_MDF_Exception_Message_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Job Id --></label>
+        <name>Core_MDF_Job_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Scope --></label>
+        <name>Core_MDF_Scope_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_MDF_Status_nm__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Success</masterLabel>
+            <translation><!-- Success --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Type of Exception --></label>
+        <name>Core_MDF_Type_of_exception_txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

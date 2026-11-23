@@ -4,7 +4,6 @@ public without sharing class Core_MDF_CCP_GetFieldsList {
 public static List < Map < String, String >> getObjectFields (String objName)
 {
     List < Map < String, String >> options = new List < Map < String, String >> ();
-    //Added as part of WW05 Unhandled Exception fix
     if(objName != null){
     Map<String, Schema.SObjectField> fieldMap = Schema.getGlobalDescribe().get(objName).getDescribe().fields.getMap();
     Map<String,String> fieldAPIToLabelMap = new Map<String,String>();
@@ -19,7 +18,8 @@ public static List < Map < String, String >> getObjectFields (String objName)
         apiSortedList.add(fieldAPIToLabelMap.get(fieldname));
     }
     
-
+   
+	
     for (String fieldName: apiSortedList)
     { 
         string fieldType = String.ValueOf(fieldMap.get(fieldName).getDescribe().getType());
@@ -69,7 +69,8 @@ public static List < Map < String, String >> getFieldsType (String objName)
     @AuraEnabled
      public static List < Map < String, String >> getPickListValues(String objApiName, String fieldName) {
       List < Map < String, String >> options = new List < Map < String, String >> ();
-
+     // Highlight: Unused Local Variable - 14285
+     // Map < String, Schema.SObjectType > objGlobalMap = Schema.getGlobalDescribe();
       Map < String, String > pListMap = new Map <String, String>();
       List<String> sortedPlist = new List<String>();
       Schema.SObjectType objType = Schema.getGlobalDescribe().get(objApiName);

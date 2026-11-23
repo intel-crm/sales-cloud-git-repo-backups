@@ -37,6 +37,9 @@ export default class EcosystemPartnerAllocation extends LightningElement {
         } else if (this.mode === 'clone') {
             this.isReadOnly = false;
             this.isEditMode = false;
+        } else if (this.mode === 'create') {
+            this.isReadOnly = false;
+            this.isEditMode = false;
         } else if (this.mode === '' && !this.recordId) {
             this.isReadOnly = false;
             this.isEditMode = false;
@@ -84,6 +87,7 @@ export default class EcosystemPartnerAllocation extends LightningElement {
     
         switch(this.mode) {
             case 'clone':
+            case 'create':
                 return false;
             case 'edit':
             case '':
@@ -192,6 +196,7 @@ export default class EcosystemPartnerAllocation extends LightningElement {
             this.updateComponentVisibility();
             return;
         }
+        
         const validPartners = this.selectedEcosystemPartners?.filter(partner => this.isValidPartner(partner)) || [];
         if (validPartners.length === 0) {
             this.ecosystemRows = [];
@@ -199,6 +204,7 @@ export default class EcosystemPartnerAllocation extends LightningElement {
             this.updateComponentVisibility();
             return;
         }
+        
         const newRows = [];
         validPartners.forEach((partner, index) => {
             const partnerName = typeof partner === 'string' ? partner : (partner.label || partner.value);
@@ -206,6 +212,7 @@ export default class EcosystemPartnerAllocation extends LightningElement {
             const savedAllocation = this.savedAllocations.find(allocation => 
                 allocation.ecosystemPartner === partnerName
             );
+            
             let initialPercent = 0;
             if (savedAllocation) {
                 initialPercent = savedAllocation.percent || 0;
@@ -213,6 +220,7 @@ export default class EcosystemPartnerAllocation extends LightningElement {
                 initialPercent = existingRow.percent || 0;
             } else if (validPartners.length === 1) {
             }
+            
             if (existingRow && !savedAllocation) {
                 newRows.push(existingRow);
             } else {
@@ -243,6 +251,7 @@ export default class EcosystemPartnerAllocation extends LightningElement {
         if (this.isInitialLoad || this.mode === 'edit') {
             this.originalRows = JSON.parse(JSON.stringify(this.ecosystemRows));
         }
+        
         this.calculateTotalPercentage();
         this.validatePercentages();
         this.updateFormattedValues();
@@ -301,6 +310,7 @@ validatePercentages() {
     if (!this.hasUserInteraction && this.touchedFields.size === 0) {
         return true;
     }
+    
     const totalPercentage = this.totalPercentage;
     const isTotalValid = totalPercentage === 0 || (totalPercentage >= 99 && totalPercentage <= 101);
     const hasMultiplePartners = this.ecosystemRows.length > 1;
@@ -329,7 +339,6 @@ validatePercentages() {
                 row.rowClass = 'error-row';
                 hasErrors = true;
             }
-            
         }
         
         const isLastRow = index === this.ecosystemRows.length - 1;
@@ -343,6 +352,7 @@ validatePercentages() {
             hasErrors = true;
         }
     });
+    
     this.updateRowErrorDisplay();
     return !hasErrors;
 }
@@ -452,14 +462,12 @@ updateFormattedValues(index = null) {
         const hasFieldErrors = this.ecosystemRows.some(row =>
             row.errorPercent || row.errorOverPercent || row.errorZeroPercent
         );
-        
         if (hasFieldErrors) {
             return false;
         }
-        
+
         const totalPercentage = this.totalPercentage;
         const isTotalValid = totalPercentage === 0 || (totalPercentage >= 99 && totalPercentage <= 101);
-        
         return isTotalValid;
     }
 

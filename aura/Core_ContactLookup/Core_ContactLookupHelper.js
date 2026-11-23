@@ -1,21 +1,15 @@
 ({
      SearchHelper: function(component, event , userId) {
-         console.log('Inside searchHelper method');
      var action = component.get("c.fetchContactbyEmail");
      var searchKeyWord = (component.get("v.searchKeyword")).trim();
-         component.set("v.searchKeyword",searchKeyWord);
          //alert(searchKeyWord);
      action.setParams({
      	'searchKeyWord': searchKeyWord,
         'userId': userId
      });
      action.setCallback(this, function(response) {
-        // debugger;
          var state = response.getState();
-         console.log('state > '+state);
-        // var state= "SUCCESS";   // remove before deployment
          if (state === "SUCCESS") {
-             console.log('Inside searchHelper method state === "SUCCESS" >');
             var storeResponse = response.getReturnValue();
             var cmpTargetCreateConBtn = component.find('creatContactBtn');
             var cmpTargetEntitlementBtn = component.find('entitlementLoaderBtn');
@@ -65,8 +59,6 @@
              component.set("v.numberOfRecord", storeResponse.length);
              // set searchResult list with return value from server.
              component.set("v.searchResult", storeResponse);
-             component.set("v.isShowSpinner",false);
-             component.set("v.isNewContact",false);
          }
          else{
              console.log('error');

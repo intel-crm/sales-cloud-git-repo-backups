@@ -6,8 +6,7 @@ public class Core_MDF_ProcessEntitlements_Test{
         /*
         List<String> bypassFunctionKeys = new List<String>(); 
             bypassFunctionKeys.add('checkDuplicateAccount');
-            bypassFunctionKeys.add('MergeContactEntitlements');
-            
+            bypassFunctionKeys.add('MergeContactEntitlements');            
             Set<String> myset1 = new Set<String>();
             List<String> result1 = new List<String>();
             myset1.addAll(bypassFunctionKeys);
@@ -36,17 +35,17 @@ public class Core_MDF_ProcessEntitlements_Test{
         
         Core_Contact_Entitlement__c validateIPAUser = [select id,Core_Selected__c,Core_Status__c from Core_Contact_Entitlement__c where Core_Entitlement_Nm__c='IPA MDF USER'];
         validateIPAUser.Core_Selected__c = true;
-        test.startTest();
+        Test.startTest();
         ceList.add(validateAdditionToGroup);
         ceList.add(validateDeletionFromGroup);
         ceList.add(validateMultipleAgency);
         ceList.add(validateAdditionFallout);
         celist.add(validateDeletionFallout);
         ceList.add(validateMarketingUser);
-        
+        Test.stopTest(); 
         
         Database.update(ceList);  
-        test.stopTest(); 
+        
         
         Core_MDF_ProcessEntitlementsSchedulable test = new Core_MDF_ProcessEntitlementsSchedulable();
         test.execute(null);
@@ -54,7 +53,8 @@ public class Core_MDF_ProcessEntitlements_Test{
         List<Core_MDF_UserGroupMapping_Log__c> logrecords= [select id,Core_MDF_Action_nm__c from Core_MDF_UserGroupMapping_Log__c where Core_MDF_Status_nm__c='Action Required'];
        
         system.assertEquals(0, logrecords.size());
-        Core_MDF_UGMLog controller = new Core_MDF_UGMLog(logrecords);
+       // Highlight: Unused Local Variable - Indira
+      //  Core_MDF_UGMLog controller = new Core_MDF_UGMLog(logrecords);
 
     }
 
@@ -89,8 +89,9 @@ public class Core_MDF_ProcessEntitlements_Test{
             //Create Channel Program
             ChannelProgram ccf = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
             ChannelProgram dcf = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.DCF_PROGRAM,'Data Center CoMarketing Fund', true);
-            ChannelProgram ccfb = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCFB_PROGRAM,'Client CoMarketing Fund Boost', true);
-            ChannelProgram spcf = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.SPCF_PROGRAM,'Service Provider CoMarketing Fund', true);
+           // Highlight: Unused Local Variable - Indira
+           // ChannelProgram ccfb = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCFB_PROGRAM,'Client CoMarketing Fund Boost', true);
+           // ChannelProgram spcf = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.SPCF_PROGRAM,'Service Provider CoMarketing Fund', true);
             ChannelProgram rmf = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.RMF_PROGRAM,'Retail Marketing Funds', true);
             ChannelProgram ipa = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.IPA_PROGRAM,'Intel Partner Alliance', true);
             
@@ -230,8 +231,8 @@ public class Core_MDF_ProcessEntitlements_Test{
             starkCCFPGM.Core_MDF_Channel_Program__c = ccf.Id; 
             starkCCFPGM.Core_MDF_Type_of_Access__c = 'External';
             starkCCFPGM.Core_MDF_Group_Name__c = 'Core_MDF_Stark_CCF_Group_External';
-            
-            Group starkExt = [select id from Group where Name = 'Stark DCF Group External'];
+            // Highlight: Unused Local Variable - Indira
+           // Group starkExt = [select id from Group where Name = 'Stark DCF Group External'];
             
             
 
@@ -339,8 +340,8 @@ public class Core_MDF_ProcessEntitlements_Test{
             triggerExecutionList.add(execution6);
 
             Database.insert(triggerExecutionList);
-            
-            Core_MDF_Partner_Node_User_Mapping__c starkPNUM = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(starkDCFAccount.id,starkUser.id, true);
+            // Highlight: Unused Local Variable - Indira
+           // Core_MDF_Partner_Node_User_Mapping__c starkPNUM = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(starkDCFAccount.id,starkUser.id, true);
         }   
     } 
 }

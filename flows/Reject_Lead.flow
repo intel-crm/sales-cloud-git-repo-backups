@@ -9,83 +9,23 @@
             <stringValue>Please Enter The Rejection Reason</stringValue>
         </value>
     </constants>
-    <constants>
-        <name>Reject_Lead_Validation_Error</name>
-        <dataType>String</dataType>
-        <value>
-            <stringValue>Hi there!!! Unfortunately you cannot claim or make changes to a rejected lead. But there are many other unrejected leads to choose from.</stringValue>
-        </value>
-    </constants>
-    <constants>
-        <name>Rejection_Success</name>
-        <dataType>String</dataType>
-        <value>
-            <stringValue>Lead is rejected successfully.</stringValue>
-        </value>
-    </constants>
-    <decisions>
-        <name>IsValidLead</name>
-        <label>IsValidLead</label>
-        <locationX>518</locationX>
-        <locationY>138</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>If_Yes</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>LeadState</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <stringValue>Terminated</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Update_rejection_reason</targetReference>
-            </connector>
-            <label>Yes</label>
-        </rules>
-        <rules>
-            <name>If_No</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>LeadState</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Terminated</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Reject_Lead_Validation</targetReference>
-            </connector>
-            <label>No</label>
-        </rules>
-    </decisions>
     <description>Flow to Reject a Lead used by Partner Users. It asks for Rejection Reason, Rejection Comments. Updates Lead Stage to &apos;Partner Qualified Lead, Lead State to &apos;Rejected&apos;, Partner Lead Owner to current user, Rejection Reason, Rejection Comments on the Lead record.</description>
     <dynamicChoiceSets>
         <name>RejectionReasonPicklist</name>
         <dataType>Picklist</dataType>
         <displayField xsi:nil="true"/>
         <object xsi:nil="true"/>
-        <picklistField>Core_Rejection__c</picklistField>
+        <picklistField>Core_System_Partner_Rejection_Reason__c</picklistField>
         <picklistObject>Lead</picklistObject>
     </dynamicChoiceSets>
     <interviewLabel>Reject Lead {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Reject Lead</label>
-    <processMetadataValues>
-        <name>BuilderType</name>
-        <value>
-            <stringValue>LightningFlowBuilder</stringValue>
-        </value>
-    </processMetadataValues>
     <processType>Flow</processType>
     <recordUpdates>
         <name>Update_rejection_reason</name>
         <label>Update rejection reason</label>
-        <locationX>691</locationX>
-        <locationY>266</locationY>
-        <connector>
-            <targetReference>Rejection_Successful</targetReference>
-        </connector>
+        <locationX>488</locationX>
+        <locationY>281</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -97,7 +37,13 @@
         <inputAssignments>
             <field>Core_Lead_State__c</field>
             <value>
-                <stringValue>Terminated</stringValue>
+                <stringValue>Rejected</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Partner_Lead_Owner__c</field>
+            <value>
+                <elementReference>Currentuser</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -112,42 +58,24 @@
                 <elementReference>Rejection_reasons</elementReference>
             </value>
         </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Partner Qualified Lead</stringValue>
+            </value>
+        </inputAssignments>
         <object>Lead</object>
     </recordUpdates>
     <screens>
-        <name>Reject_Lead_Validation</name>
-        <label>Reject Lead Validation</label>
-        <locationX>698</locationX>
-        <locationY>45</locationY>
-        <allowBack>false</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <fields>
-            <name>Reject_Lead_Validation_Error_Msg</name>
-            <fieldText>&lt;p&gt;{!Reject_Lead_Validation_Error}&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-            <styleProperties>
-                <verticalAlignment>
-                    <stringValue>top</stringValue>
-                </verticalAlignment>
-                <width>
-                    <stringValue>12</stringValue>
-                </width>
-            </styleProperties>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
         <name>Rejection_reasons_Popup_Screen</name>
         <label>Rejection reasons Popup Screen</label>
-        <locationX>343</locationX>
-        <locationY>136</locationY>
+        <locationX>494</locationX>
+        <locationY>160</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
+        <allowPause>true</allowPause>
         <connector>
-            <targetReference>IsValidLead</targetReference>
+            <targetReference>Update_rejection_reason</targetReference>
         </connector>
         <fields>
             <name>Displaytext</name>
@@ -168,7 +96,7 @@
             <dataType>String</dataType>
             <fieldText>Rejection reasons</fieldText>
             <fieldType>DropdownBox</fieldType>
-            <isRequired>true</isRequired>
+            <isRequired>false</isRequired>
             <styleProperties>
                 <verticalAlignment>
                     <stringValue>top</stringValue>
@@ -195,41 +123,10 @@
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>
-    <screens>
-        <name>Rejection_Successful</name>
-        <label>Rejection Successful</label>
-        <locationX>840</locationX>
-        <locationY>266</locationY>
-        <allowBack>false</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <fields>
-            <name>Rejected</name>
-            <fieldText>&lt;p&gt;{!Rejection_Success}&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-            <styleProperties>
-                <verticalAlignment>
-                    <stringValue>top</stringValue>
-                </verticalAlignment>
-                <width>
-                    <stringValue>12</stringValue>
-                </width>
-            </styleProperties>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
     <startElementReference>Rejection_reasons_Popup_Screen</startElementReference>
     <status>Active</status>
     <variables>
         <name>Currentuser</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
-    </variables>
-    <variables>
-        <name>LeadState</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>true</isInput>

@@ -10,7 +10,6 @@
 public class Core_MDF_BulkTransactionTriggerHandler extends TriggerHandler {
     
     public override void afterInsert() {
-        
     	Core_MDF_Bulk_TransactionServiceHandler.upsertRecords(Trigger.New);    
     } 
 }

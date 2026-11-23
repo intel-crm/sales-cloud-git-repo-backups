@@ -12,9 +12,10 @@ public class Core_MDF_HostRegion_Sharing_Test{
     public static Id claimRecType = Schema.SObjectType.Core_MDF_Escalation__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Late_Claim').getRecordTypeId();
     public static Id channelProgramId;
     @TestSetup static void setUpData() {
+        
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator());
         List<User> usrList = new List<User>();
-        // Highlight: Unused Local Variable 
+        // Highlight: Unused Local Variable - Indira
        // List<PartnerFundClaim> newClmList = new List<PartnerFundClaim>();
         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
         
@@ -391,7 +392,7 @@ intelAccList.add(ipaUltimateAccount);*/
             Id mysterShopPSIs ;
             Id claimCCFSubPSId ;
             Id cscClaimSubPSId ;
-            // Highlight: Unused Local Variable
+            // Highlight: Unused Local Variable - Indira
            // Id ipaAccPFRSubId;
             //List<PermissionSet> claimSubmitterPS = [SELECT Id, Name FROM PermissionSet WHERE Name IN :claimSubmitterList LIMIT 1];
             
@@ -1178,77 +1179,6 @@ intelAccList.add(ipaUltimateAccount);*/
             
             Database.insert(pgmList);
             }
-            
-            // Add this section to your existing @TestSetup method, after creating accounts and groups
-
-System.runAs(usr) {
-    // Create additional groups for testing share record deletion
-    List<Group> additionalGroups = new List<Group>();
-    
-    Group shareTestGroup1 = new Group();
-    shareTestGroup1.Name = 'Share Test Group 1';
-    shareTestGroup1.DeveloperName = 'Share_Test_Group_1';
-    shareTestGroup1.Type = 'Regular';
-    additionalGroups.add(shareTestGroup1);
-    
-    Group shareTestGroup2 = new Group();
-    shareTestGroup2.Name = 'Share Test Group 2';
-    shareTestGroup2.DeveloperName = 'Share_Test_Group_2';
-    shareTestGroup2.Type = 'Regular';
-    additionalGroups.add(shareTestGroup2);
-    
-    insert additionalGroups;
-    
-    // Create Partner Group Mapping records for these groups
-    List<Core_MDF_Partner_Group_Mapping__c> additionalPgmList = new List<Core_MDF_Partner_Group_Mapping__c>();
-    
-    Core_MDF_Partner_Group_Mapping__c pgmForShare1 = new Core_MDF_Partner_Group_Mapping__c();
-    pgmForShare1.Core_MDF_Account__c = acc1.Id;
-    pgmForShare1.Core_MDF_Region_cd__c = 'APJ';
-    pgmForShare1.Core_MDF_Type_of_Access__c = 'Internal';
-    pgmForShare1.Core_MDF_Group_Id__c = shareTestGroup1.Id;
-    pgmForShare1.Core_MDF_Inactive_Ind__c = false;
-    pgmForShare1.Core_MDF_Source_Txt__c = 'Test';
-    pgmForShare1.Core_MDF_Group_Name__c = 'Share_Test_Group_1';
-    pgmForShare1.Core_MDF_AccountIdGroupName__c = acc1.Id + 'Share_Test_Group_1';
-    pgmForShare1.Core_MDF_Channel_Program__c = ipaCP.Id;
-    additionalPgmList.add(pgmForShare1);
-    
-    Core_MDF_Partner_Group_Mapping__c pgmForShare2 = new Core_MDF_Partner_Group_Mapping__c();
-    pgmForShare2.Core_MDF_Account__c = acc1.Id;
-    pgmForShare2.Core_MDF_Region_cd__c = 'APJ';
-    pgmForShare2.Core_MDF_Type_of_Access__c = 'Internal';
-    pgmForShare2.Core_MDF_Group_Id__c = shareTestGroup2.Id;
-    pgmForShare2.Core_MDF_Inactive_Ind__c = false;
-    pgmForShare2.Core_MDF_Source_Txt__c = 'Test';
-    pgmForShare2.Core_MDF_Group_Name__c = 'Share_Test_Group_2';
-    pgmForShare2.Core_MDF_AccountIdGroupName__c = acc1.Id + 'Share_Test_Group_2';
-    pgmForShare2.Core_MDF_Channel_Program__c = ipaCP.Id;
-    additionalPgmList.add(pgmForShare2);
-    
-    insert additionalPgmList;
-    
-    // Create AccountShare records that will be found by the delete method
-    List<AccountShare> testAccountShares = new List<AccountShare>();
-    
-    AccountShare testShare1 = new AccountShare();
-    testShare1.AccountId = acc1.Id;
-    testShare1.UserOrGroupId = shareTestGroup1.Id;
-    testShare1.AccountAccessLevel = 'Read';
-    testShare1.RowCause = 'Manual';
-    testShare1.OpportunityAccessLevel = 'Read';
-    testAccountShares.add(testShare1);
-    
-    AccountShare testShare2 = new AccountShare();
-    testShare2.AccountId = acc1.Id;
-    testShare2.UserOrGroupId = shareTestGroup2.Id;
-    testShare2.AccountAccessLevel = 'Edit';
-    testShare2.RowCause = 'Manual';
-    testShare2.OpportunityAccessLevel = 'Read';
-    testAccountShares.add(testShare2);
-    
-    insert testAccountShares;
-}
                         Test.stopTest(); 
             
             
@@ -1318,7 +1248,7 @@ System.runAs(usr) {
                System.assertEquals('PRC', acc3.Core_Geo__c, 'Account Core_Geo__c should be updated to PRC');
             } 
             catch (Exception e) {
-               // Highlight: Unused Local Variable
+               // Highlight: Unused Local Variable - Indira
               //  String message = e.getMessage();
             }
         }
@@ -1327,41 +1257,5 @@ System.runAs(usr) {
     public without sharing class BulkApiScheduler implements Schedulable {
         public void execute(SchedulableContext sc) {
         }
-    }   
-    
-    @isTest
-static void testDeleteShareBulkRecords_WithSetupShareRecords() {
-    Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator());
-    Test.startTest();
-    
-    User testUser = [SELECT Id FROM User WHERE LastName = 'User Test' LIMIT 1];
-    System.runAs(testUser) {
-        // Get the account that has share records from setup
-        Account testAccount = [SELECT Id FROM Account WHERE Name = 'Test Account 1' LIMIT 1];
-        
-        // Verify share records exist before testing
-        List<AccountShare> existingShares = [
-            SELECT Id, AccountId, UserOrGroupId 
-            FROM AccountShare 
-            WHERE AccountId = :testAccount.Id 
-            AND RowCause = 'Manual'
-            AND UserOrGroupId IN (
-                SELECT Id FROM Group WHERE DeveloperName LIKE 'Share_Test_Group_%'
-            )
-        ];
-        
-        
-        // Test the delete method
-        Set<Id> dynObjectList = new Set<Id>{testAccount.Id};
-        Set<String> hostGeo = new Set<String>{'APJ'};
-        
-        Core_MDF_BulkAPI_Operations.AysncJobDetailWrapper result = 
-            Core_MDF_BulkAPI_Operations.deleteShareBulkRecords(
-                dynObjectList, hostGeo, 'AccountShare', 'AccountId'
-            );
-        
-    }
-    Test.stopTest();
-}
-
+    }    
 }

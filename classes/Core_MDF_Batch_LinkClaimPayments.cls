@@ -3,6 +3,7 @@
 * Version     : 1.0
 * Created By  : Accenture-Vikas Soni
 * Created Date: 24/08/2026
+* Test Class  : Core_MDF_Batch_LinkClaimPaymentsTest
 * Description : Batch to link claims to their payment records via the Core_MDF_Claim_Payment_Link__c junction object.
 *               Queries payments created last quarter, finds associated claims, and creates junction records.
 *               Uses Core_MDF_Unique_Key_Id__c external ID on junction object to prevent duplicate records.
@@ -89,9 +90,7 @@ public without sharing class Core_MDF_Batch_LinkClaimPayments implements Databas
                 String uniqueKey = buildUniqueKey(claim.Core_MDF_Payment_Id__c, claimIdToUse, subClaimId);
 
                 // Skip if junction record already exists for this combination
-                if (existingUniqueKeySet.contains(uniqueKey)) {
-                    continue;
-                }
+                if (existingUniqueKeySet.contains(uniqueKey)) { continue; }
 
                 linkRecordsToInsertList.add(new Core_MDF_Claim_Payment_Link__c(
                     Core_MDF_Claim_Id__c     = claimIdToUse,
@@ -103,16 +102,12 @@ public without sharing class Core_MDF_Batch_LinkClaimPayments implements Databas
                 ));
             }
 
-            if (linkRecordsToInsertList.isEmpty()) {
-                return;
-            }
+            if (linkRecordsToInsertList.isEmpty()) { return; }
 
             // Partial success (false) handles any edge case duplicates from concurrent runs gracefully.
             Database.insert(linkRecordsToInsertList, false);
 
-        } catch (Exception e) {
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
+        } catch (Exception e) { Core_MDF_CCP_UtilityClass.logError(e);}
     }
 
     public void finish(Database.BatchableContext bc) {

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>44.0</apiVersion>
+    <available>true</available>
+    <description>Channel MDF approvers will be notified when proposal is in Pending Approval</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_NotifyCMDFProposalForExt</name>
+    <style>none</style>
+    <subject>Proposal Status Updated</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

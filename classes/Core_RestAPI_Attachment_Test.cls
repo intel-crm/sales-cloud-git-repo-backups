@@ -98,9 +98,11 @@ public class Core_RestAPI_Attachment_Test {
             Core_RestAPI_TestUtilities.getCustomerUsersWithAccountsAndContacts('RestApiUnitTest', 1, 1,0,1,'IPS External Customer', 0);
         }
         
+        System.debug(' Core_RestAPI_Attachment_Test \n Account '+[Select Name FROM Account]+'\n Contact '+[Select Name FROM Contact]);
         
         commUser1 = [Select Name FROM User WHERE ContactId IN (Select Id FROM Contact) ];
         
+        System.debug(' Core_RestAPI_Attachment_Test User \n Comm User obj : '+commUser1+' \n adminUser User obj : '+adminUser);
         System.runAs(adminUser){
             List<Account> lAcc = [SELECT Id, Core_IPS_SFT_Partner_Path__c FROM Account];
             for(Account oAcc : lAcc){
@@ -131,6 +133,7 @@ public class Core_RestAPI_Attachment_Test {
         request.httpMethod = 'POST';
         if(v1_0.equals(version)){
             caseObj = [Select CaseNumber FROM Case where OwnerId =: commUser1.Id Limit 1];
+            System.debug(' Test class caseObj '+caseNbr);
         	request.requestUri ='/v1.0/cases/'+caseNbr+'/attachments'; 
             request.resourcePath ='/services/apexrest/v1.0/cases/'+caseNbr+'/attachments';
 
@@ -168,7 +171,9 @@ public class Core_RestAPI_Attachment_Test {
      //Test doPost method
 	@isTest public static void test_doPost_createAttachment_v1_0_Positive() {
         commUser1  = [Select Name, ContactId FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
+        System.debug(' \n\n Running test method test_doGet_createAttachment_v1_0 as  '+commUser1);  
         Case caseObj = [Select Id, CaseNumber FROM Case where ContactId =:commUser1.ContactId  Limit 1];
+        system.debug(' caseObj.CaseNumber: ' + caseObj.CaseNumber);
         RestContext.request = doGet_createAttachment_VersionRequest(v1_0, caseObj.CaseNumber);
 
         Test.setMock(HttpCalloutMock.class, new Core_RESTAPI_MoveFileMock_Test());
@@ -176,6 +181,7 @@ public class Core_RestAPI_Attachment_Test {
        	Test.startTest();
         System.runAs(commUser1){
             Core_RestAPI_Response apiResponse = Core_RestAPI_CaseAttachmentsV1.doPost(requestParams);
+            System.debug(' test_doPost_createAttachment_v1_0 test_doPost >>>> '+apiResponse); 
             doGet_createAttachment_Asserts(apiResponse, null, v1_0);
         }
         Test.stopTest();
@@ -186,6 +192,7 @@ public class Core_RestAPI_Attachment_Test {
         commUser1  = [Select Name, ContactId FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
         //Negative test case
         commUser1  = [Select Name, ContactId FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
+        System.debug(' \n\n Running test method test_doPost_createAttachment_v1_0 as  '+commUser1);  
         RestContext.request = doGet_createAttachment_VersionRequest(v1_0, 'invalidCasenumber');
         
         Test.setMock(HttpCalloutMock.class, new Core_RESTAPI_MoveFileMock_Test());
@@ -193,6 +200,7 @@ public class Core_RestAPI_Attachment_Test {
        	Test.startTest();
         System.runAs(commUser1){
             Core_RestAPI_Response apiResponse = Core_RestAPI_CaseAttachmentsV1.doPost(requestParams);
+            System.debug(' test_doPost_createAttachment_v1_0 test_doGet >>>> '+apiResponse); 
         }
         Test.stopTest();
     }

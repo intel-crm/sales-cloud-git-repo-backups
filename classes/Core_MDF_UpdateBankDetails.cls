@@ -87,26 +87,33 @@ public with sharing class Core_MDF_UpdateBankDetails{
                     bankListToBeUpdated.addAll(bankSetToBeUpdated);
                 }
 
-                if(bankListToBeUpdated != NULL && bankListToBeUpdated.size() > 0){
+                //if(bankListToBeUpdated != NULL && bankListToBeUpdated.size() > 0){
+                    if (bankListToBeUpdated == null || bankListToBeUpdated.isEmpty()) { //ATHR Fix WW19
+                        return;
+                    }
                     //Database.SaveResult[] srList = Database.update(supplierNumCurrencyBankMapToBeInserted.values(), false);
-                    Database.SaveResult[] srList = Database.update(bankListToBeUpdated, false);
-                    String failedBanksString = '';
-                    // Iterate through each returned result
-                    for(Integer i=0; i < srList.size(); i++) {
-                        if(!srList.get(i).isSuccess()) {Database.Error errors =  srList.get(i).getErrors().get(0);failedBanksString += bankListToBeUpdated[i].Id + ' -> ' + errors.getMessage() + 'Fields: ' + errors.getFields() + ', ';
+                    //US949837 - Added extra condition to fix checkmarx issues
+                    if(Schema.sObjectType.Core_MDF_Bank__c.isCreateable()){
+                        Database.SaveResult[] srList = Database.update(bankListToBeUpdated, false);
+                    
+                        String failedBanksString = '';
+                        // Iterate through each returned result
+                        for(Integer i=0; i < srList.size(); i++) {
+                            if(!srList.get(i).isSuccess()) {Database.Error errors =  srList.get(i).getErrors().get(0);failedBanksString += bankListToBeUpdated[i].Id + ' -> ' + errors.getMessage() + 'Fields: ' + errors.getFields() + ', ';
+                            }
+                        }
+
+                        failedBanksString = failedBanksString.endsWith(', ') ? failedBanksString.substringBeforeLast(', ') : failedBanksString;
+
+                        if(failedBanksString.length() > 0){
+                            String errorDetails = 'Class & Method Name = Core_MDF_UpdateBankDetails -> updateBankRecords;\n' +
+                                                'Exception Message = Failed Bank Ids: ' + failedBanksString + ';\n' +
+                                                'LineNumber = 112' + ';\n' +
+                                                'Logged in user = ' + UserInfo.getName();
+                            logErrorinLogObjectWithReason(errorDetails,Label.Core_MDF_OriginName);
                         }
                     }
-
-                    failedBanksString = failedBanksString.endsWith(', ') ? failedBanksString.substringBeforeLast(', ') : failedBanksString;
-
-                    if(failedBanksString.length() > 0){
-                        String errorDetails = 'Class & Method Name = Core_MDF_UpdateBankDetails -> updateBankRecords;\n' +
-                                              'Exception Message = Failed Bank Ids: ' + failedBanksString + ';\n' +
-                                              'LineNumber = 112' + ';\n' +
-                                              'Logged in user = ' + UserInfo.getName();
-                        logErrorinLogObjectWithReason(errorDetails,Label.Core_MDF_OriginName);
-                    }
-                }
+                //}
             }
             catch(Exception e){errorCnt++;String errorDetails = Core_MDF_CCP_UtilityClass.getErrorDetails(e); logErrorinLogObjectWithReason(errorDetails,Label.Core_MDF_OriginName);updateStatusMap.put(msgId,errorCnt);}
             finally
@@ -127,7 +134,7 @@ public with sharing class Core_MDF_UpdateBankDetails{
                     }
                     ciimList.add(ciim);
                 }
-                if(ciimList.size() > 0){
+                if(ciimList.size() > 0 && Schema.sObjectType.Core_Integration_Inbound_Message__c.isUpdateable()){//US949837 - Added extra condition to fix checkmarx issues
                     update ciimList;
                 }
             }

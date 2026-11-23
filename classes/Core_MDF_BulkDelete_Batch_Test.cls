@@ -30,7 +30,7 @@ public class Core_MDF_BulkDelete_Batch_Test {
             bank1.Core_MDF_Bank_Location__c ='AM';
             insert bank1;
             string budgetType = Core_MDF_CCP_ConstantClass.PR_MDF_BUDGET_TYPE;
-            Campaign ipaCampaignForAP = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Developer', 'Apollo Lake', 'Pending Approval', false);
+            Campaign ipaCampaignForAP = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Developer', '', 'Pending Approval', false);
             ipaCampaignForAP.Core_MDF_Region_cd__c = 'APJ';
             ipaCampaignForAP.Core_MDF_Proposal_Based_Ind__c = true;
             ipaCampaignForAP.Status = 'Pending Review';
@@ -45,7 +45,7 @@ public class Core_MDF_BulkDelete_Batch_Test {
         User systemAdmin = [Select Id from User where LastName = 'SystemAdmin'];
         
         system.runAs(systemAdmin){
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
            // set<Id> pfrIds= new set<Id>();
             List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
             

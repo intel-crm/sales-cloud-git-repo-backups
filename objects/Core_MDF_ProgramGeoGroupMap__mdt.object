@@ -207,6 +207,11 @@
                     <label>Co-Engineering</label>
                 </value>
                 <value>
+                    <fullName>Co-Investment</fullName>
+                    <default>false</default>
+                    <label>Co-Investment</label>
+                </value>
+                <value>
                     <fullName>Business Client Acceleration Automated - MDF</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -229,102 +234,6 @@
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Data Centric Acceleration Managed - MDF</label>
-                </value>
-                <value>
-                    <fullName>Datacenter Market Accelerate</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Datacenter Market Accelerate</label>
-                </value>
-                <value>
-                    <fullName>Intel MDF Proposal Based1</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Intel MDF Proposal Based1</label>
-                </value>
-                <value>
-                    <fullName>Intel MDF Proposal Based2</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Intel MDF Proposal Based2</label>
-                </value>
-                <value>
-                    <fullName>NSP</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>NSP</label>
-                </value>
-                <value>
-                    <fullName>SP AI MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP AI MDF</label>
-                </value>
-                <value>
-                    <fullName>SP Cloud MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP Cloud MDF</label>
-                </value>
-                <value>
-                    <fullName>SP DaaS MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP DaaS MDF</label>
-                </value>
-                <value>
-                    <fullName>SP Enthusiast MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP Enthusiast MDF</label>
-                </value>
-                <value>
-                    <fullName>SP HPC MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP HPC MDF</label>
-                </value>
-                <value>
-                    <fullName>SP Industry SB MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP Industry SB MDF</label>
-                </value>
-                <value>
-                    <fullName>SP MS MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP MS MDF</label>
-                </value>
-                <value>
-                    <fullName>SP Optane Client MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP Optane Client MDF</label>
-                </value>
-                <value>
-                    <fullName>SP Optane DC MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP Optane DC MDF</label>
-                </value>
-                <value>
-                    <fullName>SP Video MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP Video MDF</label>
-                </value>
-                <value>
-                    <fullName>SP Visual Retail MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SP Visual Retail MDF</label>
-                </value>
-                <value>
-                    <fullName>Value Exchange</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Value Exchange</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -350,10 +259,10 @@
     </fields>
     <fields>
         <fullName>Core_MDF_Group_Name__c</fullName>
-        <description>Group Name</description>
+        <description>Group Name for Read/Write sharing</description>
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Group Name</label>
+        <label>Group Name R/W</label>
         <length>255</length>
         <required>false</required>
         <type>Text</type>
@@ -391,12 +300,6 @@
                     <label>Client</label>
                 </value>
                 <value>
-                    <fullName>Client Co-Marketing Fund</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Client Co-Marketing Fund</label>
-                </value>
-                <value>
                     <fullName>Client Co-Marketing Fund Boost</fullName>
                     <default>false</default>
                     <label>Client Co-Marketing Fund Boost</label>
@@ -407,15 +310,14 @@
                     <label>Co-GTM</label>
                 </value>
                 <value>
+                    <fullName>Co-Inv</fullName>
+                    <default>false</default>
+                    <label>Co-Inv</label>
+                </value>
+                <value>
                     <fullName>Datacenter</fullName>
                     <default>false</default>
                     <label>Datacenter</label>
-                </value>
-                <value>
-                    <fullName>Data Center Co-Marketing Fund</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Data Center Co-Marketing Fund</label>
                 </value>
                 <value>
                     <fullName>Ecosystem Extension Fund</fullName>
@@ -525,6 +427,65 @@
         <unique>false</unique>
     </fields>
     <label>CCP ProgramGeoGroupMap</label>
+    <listViews>
+        <fullName>BT_notNULL</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>Core_MDF_Budget_Type_txt__c</columns>
+        <columns>Core_MDF_Check_SubGeo__c</columns>
+        <columns>Core_MDF_Budget_Type_Abbr_txt__c</columns>
+        <columns>Core_MDF_Group_Name__c</columns>
+        <columns>Core_MDF_Group_Name_RO__c</columns>
+        <columns>Core_MDF_Program__c</columns>
+        <columns>Core_MDF_Region__c</columns>
+        <columns>Core_MDF_Sub_Region__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+        </filters>
+        <label>BT_notNULL</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>IPA_All</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>NamespacePrefix</columns>
+        <columns>Core_MDF_Program__c</columns>
+        <columns>Core_MDF_Budget_Type_txt__c</columns>
+        <columns>Core_MDF_Budget_Type_Abbr_txt__c</columns>
+        <columns>Core_MDF_Group_Name__c</columns>
+        <columns>Core_MDF_Group_Name_RO__c</columns>
+        <columns>Core_MDF_Region__c</columns>
+        <columns>Core_MDF_Sub_Region__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Group_Name__c</field>
+            <operation>contains</operation>
+            <value>Core_MDF_Int_IPA_ASMO</value>
+        </filters>
+        <label>IPA_All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>RMF</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>Core_MDF_Program__c</columns>
+        <columns>Core_MDF_Region__c</columns>
+        <columns>Core_MDF_Sub_Region__c</columns>
+        <columns>Core_MDF_Group_Name_RO__c</columns>
+        <columns>Core_MDF_Group_Name__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </filters>
+        <label>RMF</label>
+        <language>en_US</language>
+    </listViews>
     <pluralLabel>CCPProgramGeoGroupMaps</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>

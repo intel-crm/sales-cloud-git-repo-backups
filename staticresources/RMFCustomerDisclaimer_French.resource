@@ -1,0 +1,18 @@
+<p>Voici quelques exemples:</p>
+<ol>
+<li>La divulgation de la propri&eacute;t&eacute; intellectuelle informera les utilisateurs que le contenu, le logo et les autres m&eacute;dias visuels que vous avez cr&eacute;&eacute;s sont votre propri&eacute;t&eacute; et sont prot&eacute;g&eacute;s par les lois sur les droits d'auteur.</li>
+<li>Une clause de r&eacute;siliation informera que les comptes des utilisateurs sur votre site web et votre application mobile ou l'acc&egrave;s des utilisateurs &agrave; votre site web et &agrave; votre mobile (si les utilisateurs ne peuvent pas avoir de compte avec vous) peuvent &ecirc;tre r&eacute;sili&eacute;s en cas d'abus ou &agrave; votre seule discr&eacute;tion.</li>
+<li>Une loi applicable informera les utilisateurs quelles lois r&eacute;gissent le contrat. Cela devrait &ecirc;tre le pays dans lequel votre entreprise a son si&egrave;ge social ou le pays &agrave; partir duquel vous exploitez votre site web et votre application mobile.</li>
+<li>Une clause de liens vers D'autres Sites Web informera les utilisateurs que vous n'&ecirc;tes pas responsable des sites web tiers auxquels vous acc&eacute;dez. Ce type de clause informera g&eacute;n&eacute;ralement les utilisateurs qu'ils sont responsables de lire et d'accepter (ou d'&ecirc;tre en d&eacute;saccord) avec les Termes et conditions ou les politiques de confidentialit&eacute; de ces tiers.</li>
+<li>Si votre site web ou votre application mobile permet aux utilisateurs de cr&eacute;er du contenu et de le rendre public &agrave; d'autres utilisateurs, une section de contenu informera les utilisateurs qu'ils poss&egrave;dent les droits sur le contenu qu'ils ont cr&eacute;&eacute;. La clause" contenu " mentionne g&eacute;n&eacute;ralement que les utilisateurs doivent vous accorder (le site web ou le d&eacute;veloppeur d'applications mobiles) une licence afin que vous puissiez partager ce contenu sur votre site web/application mobile et le mettre &agrave; la disposition d'autres utilisateurs.</li>
+</ol>
+<p>&Eacute;tant donn&eacute; que le contenu cr&eacute;&eacute; par les utilisateurs est public &agrave; d'autres utilisateurs, une clause de notification DMCA (ou violation du droit d'auteur ) section est utile pour informer les utilisateurs et les auteurs de droits d'auteur que, si un contenu est trouv&eacute; comme une violation du droit d'auteur, vous r&eacute;pondrez &agrave; tout avis DMCA takedown re&ccedil;us et vous</p>
+<ol start="6">
+<li>Une clause de limitation de ce que les utilisateurs peuvent faire peut informer les utilisateurs qu'en acceptant d'utiliser votre service, ils acceptent &eacute;galement de ne pas faire certaines choses. Cela peut faire partie d'une liste tr&egrave;s longue et compl&egrave;te dans vos termes et conditions accords afin d'englober le plus grand nombre d'utilisations n&eacute;gatives.</li>
+</ol>
+<p>Voici comment 500px r&eacute;pertorie ses activit&eacute;s interdites:</p>
+<p>&nbsp;</p>
+<p>Vous pouvez &eacute;galement utiliser vos T&amp;C pour informer les utilisateurs des marques, des droits de conception et d'autres droits de propri&eacute;t&eacute; intellectuelle:</p>
+<p>&nbsp;</p>
+<p>Si vous utilisez une application SaaS, une "clause de r&eacute;siliation" sera tr&egrave;s importante. La relation avec vos clients peut prendre fin pour un certain nombre de raisons, d'un client changeant de carri&egrave;re &agrave; une nouvelle et meilleure option SaaS devenant disponible ou tout simplement insatisfaction g&eacute;n&eacute;rale avec un service.</p>
+<p>Mais en tant que propri&eacute;taire de l'application, vous devez avoir un moyen activement &agrave; mettre fin &agrave; une relation avec un client dans certaines circonstances.</p>

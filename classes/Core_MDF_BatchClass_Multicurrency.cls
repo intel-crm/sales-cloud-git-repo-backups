@@ -5,10 +5,11 @@
 * Modification Log :
 * Developer                     Date                          Description
 * --------------------------------------------------------------------------------------------------------------------------------------------------
-* Intel - Narayani Perachi 		11/29/2018					  Batch class to call Multicurrency class which will load data from the Multicurrency API
-* Intel - Narayani Perachi		12/26/2018                    Added Database.AllowsCallouts to allow multiple callouts and added Limit 1 to the query
-* Intel - Narayani Perachi		12/26/2018                    Added Environment Label to the Mail subject to make it more readable
+* Intel - Narayani Perachi      11/29/2018                    Batch class to call Multicurrency class which will load data from the Multicurrency API
+* Intel - Narayani Perachi      12/26/2018                    Added Database.AllowsCallouts to allow multiple callouts and added Limit 1 to the query
+* Intel - Narayani Perachi      12/26/2018                    Added Environment Label to the Mail subject to make it more readable
 **************************************************************************************************************************************************************************************/
+//global class Core_MDF_BatchClass_Multicurrency implements Database.Batchable<sObject>, Database.Stateful, Database.AllowsCallouts{
 //US930209 - Added without sharing keyword to fix checkmarx issues
 global without sharing class Core_MDF_BatchClass_Multicurrency implements Database.Batchable<sObject>, Database.Stateful, Database.AllowsCallouts{
     
@@ -52,7 +53,7 @@ global without sharing class Core_MDF_BatchClass_Multicurrency implements Databa
                 mail.setSubject(Label.Core_MDF_SFDC_Environment + ': Salesforce Multicurrency Job ');
                 mail.setHtmlBody(returnMessage);
                 mail.setOrgWideEmailAddressId(Label.Core_MDF_OrgWideId);//17001
-        		Messaging.sendEmail(new Messaging.SingleEmailMessage[] {mail});                
+                Messaging.sendEmail(new Messaging.SingleEmailMessage[] {mail});                
             }
     }
 }

@@ -28,6 +28,10 @@
         <relationshipLabel><!-- PIC Reviews --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Created By --></label>
+        <name>Core_MDF_CreatedBy_nm__c</name>
+    </fields>
+    <fields>
         <label><!-- Cycle Number --></label>
         <name>Core_MDF_CycleNumber_nbr__c</name>
     </fields>
@@ -44,6 +48,10 @@
         <name>Core_MDF_InternalComments_txt__c</name>
     </fields>
     <fields>
+        <label><!-- Last Modified By --></label>
+        <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
+    </fields>
+    <fields>
         <label><!-- Overall AI Confidence Score --></label>
         <name>Core_MDF_Overall_AI_Confidence_Score_Nm__c</name>
         <picklistValues>
@@ -58,6 +66,10 @@
             <masterLabel>Medium</masterLabel>
             <translation><!-- Medium --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Recommend for Review Flag --></label>
+        <name>Core_MDF_Recommend_for_Review_Flag_ind__c</name>
     </fields>
     <fields>
         <label><!-- Review Date --></label>
@@ -95,6 +107,10 @@
         <label><!-- Reviewed By --></label>
         <name>Core_MDF_ReviewedBy_id__c</name>
         <relationshipLabel><!-- PIC Reviews --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Reviewed By --></label>
+        <name>Core_MDF_Reviewed_By_nm__c</name>
     </fields>
     <fields>
         <label><!-- Start Time --></label>

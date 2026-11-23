@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Code Compare Tool (CCT)</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Code Compare Tool (CCT)</value>
+    </caseValues>
+    <fields>
+        <label><!-- CodeCompareResult --></label>
+        <name>CodeCompareResult__c</name>
+    </fields>
+    <fields>
+        <label><!-- ComdeCamprereport --></label>
+        <name>ComdeCamprereport__c</name>
+    </fields>
+    <fields>
+        <label><!-- Component Names --></label>
+        <name>Component_Names__c</name>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCP_Error_Notification</masterLabel>
+            <translation><!-- Core_MDF_CCP_Error_Notification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_ClaimInsert_Batch</masterLabel>
+            <translation><!-- Core_MDF_ClaimInsert_Batch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Create_Budget</masterLabel>
+            <translation><!-- Core_MDF_Create_Budget --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Customer_Notification</masterLabel>
+            <translation><!-- Core_MDF_Customer_Notification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Escalation_ServiceHandler</masterLabel>
+            <translation><!-- Core_MDF_Escalation_ServiceHandler --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_IPA_Campaign_Functionality</masterLabel>
+            <translation><!-- Core_MDF_IPA_Campaign_Functionality --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFC_Sharing</masterLabel>
+            <translation><!-- Core_MDF_PFC_Sharing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Partner_Node_User_Mapping__c</masterLabel>
+            <translation><!-- Core_MDF_Partner_Node_User_Mapping__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Partnership_Score__c</masterLabel>
+            <translation><!-- Core_MDF_Partnership_Score__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Recovery_Request__c</masterLabel>
+            <translation><!-- Core_MDF_Recovery_Request__c --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Component Type (Metadata) --></label>
+        <name>Component__c</name>
+        <picklistValues>
+            <masterLabel>Apex Classes</masterLabel>
+            <translation><!-- Apex Classes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Custom Objects</masterLabel>
+            <translation><!-- Custom Objects --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Flows</masterLabel>
+            <translation><!-- Flows --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Destination Org --></label>
+        <name>Destination_Org__c</name>
+        <picklistValues>
+            <masterLabel>Devint3</masterLabel>
+            <translation><!-- Devint3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qa6</masterLabel>
+            <translation><!-- Qa6 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Source Org --></label>
+        <name>Source_Org__c</name>
+        <picklistValues>
+            <masterLabel>DevCCP</masterLabel>
+            <translation><!-- DevCCP --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

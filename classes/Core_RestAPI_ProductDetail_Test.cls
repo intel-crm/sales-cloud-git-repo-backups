@@ -55,13 +55,12 @@
             objIPSProj.Core_Status__c = 'Active';
             update objIPSProj;
             
-            string accountId = [Select Id FROM Account Limit 1].Id;
             for(Integer i =0;i<assetList.size()/2;i++){
                 Asset objAsset = assetList [i];
                 // objAsset.Core_IPS_Project_Name__c= objIPSProj.Name;
                 objAsset.OwnerId = adminUser.Id;
                 objAsset.Core_Supported_Product__c=objSP.Id;
-                objAsset.AccountId = accountId;
+                objAsset.AccountId = [Select Id FROM Account Limit 1].Id;
             }
             for(Integer i =assetList.size()/2;i< 10;i++){
                 Asset objAsset = assetList [i];

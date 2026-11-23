@@ -1,0 +1,61 @@
+<template>
+    <!-- data table -->
+    <lightning-card>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-p-left_xx-large slds-size_1-of-4">
+                <lightning-formatted-text value="Enter days for old data"></lightning-formatted-text>
+            </div>
+            <div class="slds-p-horizontal_none slds-size_1-of-4">
+                <lightning-input value="0" label="Enter days for old data" type="number" class="inpwidth"
+                    variant="label-hidden" onchange={handleDuration}></lightning-input>
+            </div>
+            <div class="slds-p-horizontal_none slds-size_1-of-4">
+                <lightning-button variant="brand" label="Derive Traildata" onclick={getusertrail}>
+                    <!-- <lightning-button variant="brand" label="Derive Traildata"> -->
+                </lightning-button>
+            </div>
+            <div class="slds-p-right_xx-large slds-size_1-of-4">
+                <a target="_self" variant="brand" download="ExportToCSV.csv" href={hrefdata} onclick={exportToCSV}
+                    style="margin-left: 80%;">Export</a>
+                <!-- <div style="height: 300px;"> -->
+            </div>
+        </div>
+
+        <lightning-layout horizontal-align="center" multiple-rows="true">
+            <lightning-layout-item flexibility="grow" size="12" small-device-size="12" medium-device-size="12"
+                large-device-size="12" padding="around-small">
+            </lightning-layout-item>
+        </lightning-layout>
+
+
+        <lightning-datatable data={userTrailList} columns={reportColumns} column-widths-mode="auto" key-field="id"
+            hide-checkbox-column="true">
+        </lightning-datatable>
+        <!-- </div> -->
+
+
+    </lightning-card>
+    <!-- data table -->
+    <!-- <article class="slds-card slds-card_boundary related_list_card_border_top forceRelatedListCardDesktop">
+        <div class="related_list_themed_border_top"></div>
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media--center slds-has-flexi-truncate">
+                <div class="slds-media__body">
+                    <h2 class="slds-text-title_bold">
+                        <span class="slds-card__header-title slds-truncate slds-m-right--xx-small" title="">History
+                            Data</span>
+                    </h2>
+                </div>
+            </header>
+            <div class="slds-no-flex">
+                <div class="actionsContainer"></div>
+            </div>
+        </div>
+
+        <div style="height: 300px;">
+            <lightning-datatable data={data} columns={reportColumns} column-widths-mode="auto" key-field="id"
+                hide-checkbox-column="true">
+            </lightning-datatable>
+        </div>
+    </article> -->
+</template>

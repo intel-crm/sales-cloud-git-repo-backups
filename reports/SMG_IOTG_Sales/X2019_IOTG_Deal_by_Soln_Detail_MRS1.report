@@ -132,27 +132,6 @@
             <operator>notEqual</operator>
             <value>Not Applicable</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Solution_Detail__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Other (Deployment not based on an MRS or RRK);Not Applicable</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Solution_Detail__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Not Applicable;Other</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Solution_Detail__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>RRK: Flextronics-Edge Compute Engine;RRK: BOE&gt;Retail Vending Machine Suite*;RRK: ADLINK&gt;MCM-100 (Machine conditioning monitoring solution);RRK: Advantech&gt;iFactory SRP-FPV-220AE;RRK: Flextronics / Intel&gt;Intel® Health Application Platform*;RRK: AAEON&gt;Embedded Vision*;RRK: Advantech&gt;UShop Store Traffic Analytics*;RRK: Episensor&gt;Episensor Energy Management;RRK: IP3&gt;Smart Lighting;RRK: Nexcom&gt;ICS Smart Retail Solution*</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>

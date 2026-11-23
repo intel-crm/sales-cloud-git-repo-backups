@@ -9,10 +9,10 @@ Accenture SS        19-06-2019          Exception Trigger Handler which handles 
 public with sharing class Core_MDF_Exception_TriggerHandler extends TriggerHandler  {
     
     /**
-	* @description              : Method for processing the Exception before Insert
-	* @param Trigger.new        : new List of Exception that have been Inserted
-	* @param Trigger.isInsert   : execute while Insert
-	*/
+    * @description              : Method for processing the Exception before Insert
+    * @param Trigger.new        : new List of Exception that have been Inserted
+    * @param Trigger.isInsert   : execute while Insert
+    */
     public override void beforeInsert(){
         if (isActive('Core_MDF_ExceptionBeforeInsert')) {
             
@@ -31,10 +31,10 @@ public with sharing class Core_MDF_Exception_TriggerHandler extends TriggerHandl
     }
     
     /**
-	* @description              : Method for processing the Exception before Update
-	* @param Trigger.oldMap     : old Map of Exception that have been Updated
-	* @param Trigger.newMap     : new Map of Exception that have been Updated  
-	*/
+    * @description              : Method for processing the Exception before Update
+    * @param Trigger.oldMap     : old Map of Exception that have been Updated
+    * @param Trigger.newMap     : new Map of Exception that have been Updated  
+    */
     public override void beforeUpdate(){
         
         if (isActive('Core_MDF_ExceptionBeforeUpdate')) {
@@ -54,28 +54,27 @@ public with sharing class Core_MDF_Exception_TriggerHandler extends TriggerHandl
     }
     
     /**
-	* @description              : Method for processing the Exception after their Insertion
-	* @param Trigger.newMap     : Map of Exception that have been Inserted
-	**/
+    * @description              : Method for processing the Exception after their Insertion
+    * @param Trigger.newMap     : Map of Exception that have been Inserted
+    **/
     public override void afterInsert(){
         if (isActive('Core_MDF_ExceptionAfterInsert')) {
             if(!Core_MDF_Utility.byPassFeature('Core_MDF_ByPassAccountTypeMap_Excep')){
                 Core_MDF_Exception_TriggerServiceHandler.prepareAccountTypeForException((List<Core_MDF_Exception__c>) Trigger.new, (Map<Id, Core_MDF_Exception__c>) Trigger.oldMap);
             }
             Core_MDF_ExceptionEmailHandler.sendEmailToExceptionReviewer((List<Core_MDF_Exception__c>) Trigger.new);
-            
-             
         }
     }
     /**
-	* @description              : Method for processing the Exception after Update
-	* @param Trigger.newMap     : Map of Exception that have been Updated  
-	*/
+    * @description              : Method for processing the Exception after Update
+    * @param Trigger.newMap     : Map of Exception that have been Updated  
+    */
     public override void afterUpdate(){
         if (isActive('Core_MDF_ExceptionAfterUpdate')) {        
             if(!Core_MDF_Utility.byPassFeature('Core_MDF_ByPassAccountTypeMap_Excep')){
             Core_MDF_Exception_TriggerServiceHandler.prepareAccountTypeForException((List<Core_MDF_Exception__c>) Trigger.new, (Map<Id, Core_MDF_Exception__c>) Trigger.oldMap);
         }
+            
             Core_MDF_Exception_TriggerServiceHandler.shareExceptionRecordsWithUsersForUpdate( (Map<Id,Core_MDF_Exception__c>) Trigger.newMap,(Map<Id,Core_MDF_Exception__c>) Trigger.oldMap );
             
             if(!Core_MDF_Utility.byPassFeature('Core_MDF_ByPass_ExptSharingto_ExtUser')){

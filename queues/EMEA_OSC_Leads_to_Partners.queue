@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>EMEA OSC Leads to Partners</name>
+    <queueMembers>
+        <users>
+            <user>11495252@intel.com.crm</user>
+            <user>10640830@intel.com.crm</user>
+            <user>11379856@intel.com.crm</user>
+            <user>11722261@intel.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+</Queue>

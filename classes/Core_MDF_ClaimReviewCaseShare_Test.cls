@@ -60,7 +60,7 @@ Accenture – Shridhar K      01/08/2019                   Updated testCaseShare
             
             Core_AGS_Role__c agsRoleRMF = Core_MDF_CCP_TestDataUtility.createAgsRole('Co-Marketing(Salesforce)-RMF User', 'Co-Marketing(Salesforce)-RMF User', true, true);
             Core_ERPM_Engagement__c erpmEngagementRMF = Core_MDF_CCP_TestDataUtility.createErpmEngagement('RPS_Retailer', 'RPS_Retailer', 'DEDUPGPRET', 'SEC', true, true);
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
           //  Core_Entitlement__c entitlementRMF = Core_MDF_CCP_TestDataUtility.createEntitlement('RMF User',agsRoleRMF.Id ,'Consolidated Co-marketing Platform','RMF User',erpmEngagementRMF.Id , true,'Retail Marketing Funds (RMF)',true);
             
             // Creating Contact with utility class
@@ -136,8 +136,8 @@ Accenture – Shridhar K      01/08/2019                   Updated testCaseShare
             ceeList.add(cee1);
             insert ceeList;
             List<Core_Entitlement__c> entitleList = new List<Core_Entitlement__c>();
-            Core_Entitlement__c entitle = new Core_Entitlement__c (name ='DCF User', Core_Category__c='Intel® Partner Investment Center',Core_Sub_Category__c='Datacenter',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee.id,Core_Display_Name__c='DCF User',Core_IsActive__c=true);
-            Core_Entitlement__c entitle2 = new Core_Entitlement__c (name ='CCF User', Core_Category__c='Intel® Partner Investment Center',Core_Sub_Category__c='Client',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee1.id,Core_Display_Name__c='CCF User',Core_IsActive__c=true);
+            Core_Entitlement__c entitle = new Core_Entitlement__c (name ='DCF User', Core_Category__c='Consolidated Co-marketing Platform',Core_Sub_Category__c='Datacenter',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee.id,Core_Display_Name__c='DCF User',Core_IsActive__c=true);
+            Core_Entitlement__c entitle2 = new Core_Entitlement__c (name ='CCF User', Core_Category__c='Consolidated Co-marketing Platform',Core_Sub_Category__c='Client',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee1.id,Core_Display_Name__c='CCF User',Core_IsActive__c=true);
             entitleList.add(entitle);
             entitleList.add(entitle2);
             insert entitleList;
@@ -253,8 +253,8 @@ Accenture – Shridhar K      01/08/2019                   Updated testCaseShare
             }
                         
            
-            //System.assert(!userOrGroupIdList.contains(grp.Id));
-            //System.assert(!userOrGroupIdList.contains(grp2.Id));
+            System.assert(userOrGroupIdList.contains(grp.Id));
+            System.assert(userOrGroupIdList.contains(grp2.Id));
             System.assert(!userOrGroupIdList.contains(grp1.Id));            
             System.assert(!userOrGroupIdList.contains(grp3.Id));
             

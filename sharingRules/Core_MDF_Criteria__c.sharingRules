@@ -1,6 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
+        <fullName>Approval_Criteria_Sharing_for_Boost_Users</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sharing of Approval Criteria to Boost users</description>
+        <label>Approval Criteria Sharing for Boost Users</label>
+        <sharedTo>
+            <group>CORE_MDF_CCP_CCFB_All</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Sub_Type__c</field>
+            <operation>contains</operation>
+            <value>Boost</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Approval_Criteria_Sharing_for_DCF_Users</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sharing of Approval Criteria for DCF Users</description>
+        <label>Approval Criteria Sharing for DCF Users</label>
+        <sharedTo>
+            <group>CORE_MDF_CCP_DCF_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Sub_Type__c</field>
+            <operation>contains</operation>
+            <value>DCF</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Approval_Criteria_Sharing_for_IPA</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sharing of Approval Criteria with IPA Users.</description>
+        <label>Approval Criteria Sharing for IPA</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_IPA_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Sub_Type__c</field>
+            <operation>contains</operation>
+            <value>IPA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Approval_Criteria_Sharing_for_Retail</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sharing of Approval Criteria with Retail Users.</description>
+        <label>Approval Criteria Sharing for Retail</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Retail_All</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Sub_Type__c</field>
+            <operation>contains</operation>
+            <value>Retail</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Approval_Criteria_Sharing_for_SPCF_Users</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sharing of Approval Criteria for SPCF Users</description>
+        <label>Approval Criteria Sharing for SPCF Users</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_SPCF_All</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Sub_Type__c</field>
+            <operation>contains</operation>
+            <value>SPCF</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Approval_Criteria_Sharing_to_CCF_Users</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sharing of Approval Criteria to CCF Users</description>
+        <label>Approval Criteria Sharing to CCF Users</label>
+        <sharedTo>
+            <group>CORE_MDF_CCP_CCF_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Sub_Type__c</field>
+            <operation>contains</operation>
+            <value>CCF</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Approval_Criteria_Sharing_to_All_Users_CCP_Internal</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This shares all the Approval Criteria Records to All Users CCP Internal group members.</description>
+        <label>Approval Criteria Sharing to All Users CCP Internal</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>NULL</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Core_MDF_Approval_Criteria_Sharing_to_CCP_Claim_Case_Reviewer_Internal</fullName>
         <accessLevel>Edit</accessLevel>
         <description>Approval Criteria Sharing to CCP Claim Case Reviewer Internal</description>

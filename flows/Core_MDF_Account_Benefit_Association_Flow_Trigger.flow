@@ -267,7 +267,7 @@
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>Core_MDF_BudgetType_Benefit_Mappings__c</object>
+        <object>Core_MDF_BudgetType_Benefit_Mapping__mdt</object>
         <queriedFields>Id</queriedFields>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>

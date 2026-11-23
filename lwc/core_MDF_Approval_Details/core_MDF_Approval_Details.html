@@ -1,0 +1,56 @@
+<template>
+  <!-- <template if:true={phoneOrDesktop}>
+    
+      </template>--> 
+
+   <!--  <template if:false={phoneOrDesktop}> --> 
+        <div class="slds-card">
+            <lightning-layout class="slds-page-header slds-page-header--object-home">
+              <div class="slds-tabs_default">
+                <ul class="slds-tabs_default__nav" role="tablist">
+                  <li class="slds-tabs_default__item slds-is-active" title="Item One" role="presentation">
+                    <a class="slds-tabs_default__link" href="#" role="tab" tabindex="0" aria-selected="true"
+                      aria-controls="tab-default-1" id="tab-default-1__item">
+                      <dd class="slds-item_detail slds-truncate slds-text-heading_small"><b>Details</b></dd>
+                    </a>
+                  </li>
+                </ul>
+                <br />
+                <div class="c-container">
+                  <div class="slds-card">
+                    <lightning-layout horizontalalign="space">
+                      <lightning-layout-Item padding="around-small">
+                        <div class="custom-box">
+                          <dd class="slds-item_detail slds-truncate slds-text-heading_small"><b>Approval Details</b></dd>
+                        </div>
+                      </lightning-layout-Item>
+                    </lightning-layout>
+                  </div>
+                </div>
+                <template for:each={fieldsToDisplay} for:item="rec">
+                  <div class="slds-form slds-form_stacked" key={rec.name}>
+                    <template for:each={rec.fields} for:item="recfield">
+        
+                      <div class="slds-grid slds-gutters_small full cols-4 forcePageBlockSectionView" key={recfield.fieldLabel}>
+                        <div class="slds-col slds-grid slds-has-flexi-truncate full forcePageBlockItem forcePageBlockItemView">
+                          <div class="slds-form_horizontal slds-form slds-grid slds-wrap">
+                            <div class="slds-form-element__label">
+                              <span class="test-id__field-label slds-form-element__label">{recfield.fieldLabel}</span>
+                            </div>
+                            <div class="slds-form-element__control slds-grid">
+                              <span class="slds-form-element__static slds-grow">{recfield.fieldValue}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+        
+        
+                    </template>
+                  </div>
+                </template>
+              </div>
+            </lightning-layout>
+        
+          </div>
+   <!-- </template>--> 
+</template>

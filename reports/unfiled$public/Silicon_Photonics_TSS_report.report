@@ -69,7 +69,7 @@
     </columns>
     <description>Bengt Nissars report to find all Silicon Photonics opportunities</description>
     <filter>
-        <booleanFilter>(1 OR 2 OR 4 OR 5) AND 3</booleanFilter>
+        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
         <criteriaItems>
             <column>PRODUCT_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -90,20 +90,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>HAMAMATSU PHOTONICS</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OPPORTUNITY_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>SiPh</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PRODUCT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>SiPh</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -130,7 +116,7 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>ACCOUNT_NAME</sortColumn>
+    <sortColumn>PRODUCT_NAME</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>

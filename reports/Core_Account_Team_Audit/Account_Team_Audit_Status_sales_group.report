@@ -42,19 +42,19 @@
         <field>Account.Core_Sales_Groups__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Account Team Audit Status by Sales Group</name>
+    <name>Account Team Audit Status sales group</name>
     <params>
         <name>co</name>
         <value>1</value>
     </params>
     <reportType>AccountList</reportType>
-    <scope>team</scope>
+    <scope>organization</scope>
     <showDetails>false</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Account.Core_Account_Team_Audit_Due_Date__c</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2020-04-14</startDate>
+        <startDate>2019-04-17</startDate>
     </timeFrameFilter>
 </Report>

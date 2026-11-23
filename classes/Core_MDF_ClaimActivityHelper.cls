@@ -8,6 +8,18 @@
 *******************************************************************************************************/
 public without sharing class Core_MDF_ClaimActivityHelper {
 
+    // ── Governor-limit helper ──────────────────────────────────────────────────
+    private static void logLimits(String location) {
+        System.debug('### [LIMITS] ' + location
+            + ' | SOQL: '    + Limits.getQueries()         + '/' + Limits.getLimitQueries()
+            + ' | DML: '     + Limits.getDmlStatements()   + '/' + Limits.getLimitDmlStatements()
+            + ' | DML rows: '+ Limits.getDmlRows()         + '/' + Limits.getLimitDmlRows()
+            + ' | CPU(ms): ' + Limits.getCpuTime()         + '/' + Limits.getLimitCpuTime()
+            + ' | Heap(B): ' + Limits.getHeapSize()        + '/' + Limits.getLimitHeapSize()
+        );
+    }
+    // ──────────────────────────────────────────────────────────────────────────
+
     //Global - Map of RequestId as key and List of corresponding claims as values
     private static Map<ID,List<PartnerFundClaim>> mapOfReqIdToClaims = new Map<ID,List<PartnerFundClaim>>();
     //Global - Map of RequestId as key and List of corresponding request object as value
@@ -42,6 +54,7 @@ Added By:           Accenture - AD - 11/29/2018
 Modified By:        Date:       Changes: 
 *******************************************************************************************************/
     public static void generateClaimRefNumber(List<PartnerFundClaim> claimsToBeProcessed){
+        logLimits('generateClaimRefNumber >> START (claims=' + claimsToBeProcessed.size() + ')');
         String newClaimNumber = '';
         String newClaimRefNo = '';
         //creating map of request id and correcponding claims DB
@@ -103,11 +116,9 @@ pfc.OwnerId = pfc.Core_MDF_Claim_Submitter_Id__c;
 pfc.Core_MDF_owner_swapped_withsubmitter_ind__c = true;  
 }*/
         }
-        
+        logLimits('generateClaimRefNumber >> END');
     }
-    
-    /****************************************************************************************************** 
-Method Name:        createActivityClaimMap
+/****
 @return  :          Map<ID,List<PartnerFundClaim>>
 @parameters:        List<PartnerFundClaim> List of processed claims
 Description:        This method is used to create map of request Id as key 
@@ -116,6 +127,7 @@ Added By:           Accenture - AD - 12/04/2018
 Modified By:        Date:       Changes: 
 *******************************************************************************************************/
     public static Map<ID,List<PartnerFundClaim>> createActivityClaimMap(List<PartnerFundClaim> claimsToBeProcessed){
+        logLimits('createActivityClaimMap >> START');
         //Set of request ids
         Set<ID> setRequestIds = new Set<ID>();
         //Map of RequestId as key and List of corresponding claims as values>
@@ -130,12 +142,14 @@ Modified By:        Date:       Changes:
         List<PartnerFundClaim> existingClaimsList = new  List<PartnerFundClaim>();
         if(test.isRunningTest()){
             existingClaimsList = [Select RequestId,request.Core_MDF_Budget_Type_nm__c,Request.Core_MDF_Activity_Number__c,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_Claim_Ref_Number__c,Core_MDF_Escalation_Id__r.Core_MDF_Claim_Submitter_Id__c,Core_MDF_Escalation_Id__r.Core_MDF_Escalation_Type_nm__c,Core_MDF_Escalation_Id__c,Core_MDF_Escalation_Id__r.RecordTypeId,OwnerId,Core_MDF_owner_swapped_withsubmitter_ind__c,Core_MDF_Claim_Submitter_Id__c from PartnerFundClaim  limit  1] ;
-            
+            logLimits('createActivityClaimMap >> after SOQL#1 PartnerFundClaim (test path)');
         }else{
             existingClaimsList = [Select RequestId,request.Core_MDF_Budget_Type_nm__c,Request.Core_MDF_Activity_Number__c,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_Claim_Ref_Number__c,Core_MDF_Escalation_Id__r.Core_MDF_Claim_Submitter_Id__c,Core_MDF_Escalation_Id__r.Core_MDF_Escalation_Type_nm__c,Core_MDF_Escalation_Id__c,Core_MDF_Escalation_Id__r.RecordTypeId,OwnerId,Core_MDF_owner_swapped_withsubmitter_ind__c,Core_MDF_Claim_Submitter_Id__c from PartnerFundClaim where RequestId IN:setRequestIds];
+            logLimits('createActivityClaimMap >> after SOQL#1 PartnerFundClaim (prod path, rows=' + existingClaimsList.size() + ')');
         }
         //fetching list of activity based on request ids and creating Map of request ID as key and activity as value
         existingRequests = new Map<Id,PartnerFundRequest>([Select Id,Core_MDF_Activity_Number__c,Core_MDF_Budget_Type_Nm__c,Core_MDF_Fund_Request_Status__c,CampaignId from PartnerFundRequest where Id IN:setRequestIds]);
+        logLimits('createActivityClaimMap >> after SOQL#2 PartnerFundRequest (rows=' + existingRequests.size() + ')');
         for(ID reqId : setRequestIds){         
             for(PartnerFundClaim claim : existingClaimsList){
                 
@@ -152,6 +166,7 @@ Modified By:        Date:       Changes:
         } 
         //List of processed claims and Map of existingRequests as parameters
         populateButgetTypeOnClaim(claimsToBeProcessed,existingRequests);
+        logLimits('createActivityClaimMap >> END');
         return mapOfReqIdToClaimsTemp;
     }  
     
@@ -198,6 +213,7 @@ Modified By:        Date:       Changes:
 Sarah Intel
 *******************************************************************************************************/
     public static void processActivityOnClaims(List<PartnerFundClaim> claimsToBeProcessed){
+        logLimits('processActivityOnClaims >> START (claims=' + claimsToBeProcessed.size() + ')');
         Set<Id> pfrIds = new Set<Id>();
         Set<Id> campaignIdsForIPAAndProposalBased = new Set<Id>();
         Set<Id> ipaPfrIds = new Set<Id>();
@@ -221,8 +237,9 @@ Sarah Intel
                    ipaPfrIds.add(pfc.RequestId);
                    
                }
-            //Legacy
-            if(pfc.Core_MDF_Legacy_Claim_Ind__c ){
+            //Legacy and RSA MD 
+            
+            if(pfc.Core_MDF_Legacy_Claim_Ind__c ){   //|| (pfc.Core_MDF_Program__c == Label.Core_MDF_Retail_Program_Name && pfc.Core_MDF_Budget_Type_Nm__c == Label.Core_MDF_Retail_RSA_MD_Budget_Type)
                 pfcListForLegacy.add(pfc);
                 legacyPfrIds.add(pfc.RequestId);
             }
@@ -233,18 +250,29 @@ Sarah Intel
             partnerFundRequestListMap = new Map<Id,PartnerFundRequest>([Select Id, Status, Core_MDF_Fund_Request_Status__c, AllocationId, BudgetId, CampaignId, Core_MDF_Start_Date__c, Core_MDF_End_Date__c, RecordTypeId,ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c, 
                                                                         ChannelPartner.Core_MDF_Channel_Program__c, RecordType.DeveloperName, Core_MDF_Program__c, Core_MDF_Budget_Type_nm__c, ChannelPartnerId
                                                                         from PartnerFundRequest where Id IN : pfrIds and Core_MDF_Fund_Request_Status__c not in  ('In-Progress', 'In-Progress Pending Review', 'In-Progress Pending Approval','In-Progress Revision Required')]);
+            logLimits('processActivityOnClaims >> after SOQL#1 PartnerFundRequest (rows=' + partnerFundRequestListMap.size() + ')');
         }
-        
-        if(!partnerFundRequestListMap.isEmpty()) {
+        //ATHR - Deeply Nested if 16209
+        if(partnerFundRequestListMap == null || partnerFundRequestListMap.isEmpty()) {
+            return;
+        }
+        //if(!partnerFundRequestListMap.isEmpty()) {
             for(PartnerFundRequest pfr : partnerFundRequestListMap.values()) {
                 List<String> cmpBudgetTypes = new List<String>();
                 cmpBudgetTypes = Core_MDF_CustomLabelConfig.getTextList('Core_MDF_CMP_BudgetType');
                 //This If is executed when BudgetId and AllocationId are stamped on Activity during activity creation - OPAL budget Types, Retail MDF, Channel MDF(Account Based Ones)
-                if(String.isNotBlank(String.valueOf(pfr.BudgetId)) && String.isNotBlank(String.valueOf(pfr.AllocationId))) {
+                //ATHR - Deeply Nested if 16209
+                if(String.isBlank(String.valueOf(pfr.BudgetId)) || String.isBlank(String.valueOf(pfr.AllocationId))) {
+                    continue;
+                }
+                //if(String.isNotBlank(String.valueOf(pfr.BudgetId)) && String.isNotBlank(String.valueOf(pfr.AllocationId))) {
+                  /*  if(pfr.Core_MDF_Fund_Request_Status__c != closedStatus) {
+                        pfrIdToPfrRecordMapForUpdate.put(pfr.Id, new PartnerFundRequest(Id = pfr.Id, Core_MDF_Fund_Request_Status__c = InProgressStatus));
+                         }*/
                     if(pfr.Core_MDF_Fund_Request_Status__c != closedStatus) {
                         if(pfr.Status == Label.Core_MDF_PFR_Status_Draft_IPA && (cmpBudgetTypes != null && cmpBudgetTypes.contains(pfr.Core_MDF_Budget_Type_nm__c))){                       
                             pfrIdToPfrRecordMapForUpdate.put(pfr.Id,new PartnerFundRequest(Id = pfr.Id,Status=approvedStatus,Core_MDF_Fund_Request_Status__c = InProgressStatus));
-                        }else if(pfr.Status == approvedStatus) {
+                        }else if(pfr.Status == approvedStatus ) {
                             pfrIdToPfrRecordMapForUpdate.put(pfr.Id, new PartnerFundRequest(Id = pfr.Id, Core_MDF_Fund_Request_Status__c = InProgressStatus));
                         }
                     }else{
@@ -252,7 +280,7 @@ Sarah Intel
                             pfrIdToPfrRecordMapForUpdate.put(pfr.Id,new PartnerFundRequest(Id = pfr.Id,Status=approvedStatus));
                         }
                     }
-                }
+                //}
             }
             
             //Proposal Based Ones
@@ -266,12 +294,14 @@ Sarah Intel
                 Map<String, PartnerFundAllocation> allocationMap = new Map<String, PartnerFundAllocation>();
                 //CampaignList
                 campaignList = [Select Id, Core_MDF_Budget__c, Core_MDF_Account__c from Campaign  where Id IN : campaignIdsForIPAAndProposalBased];
+                logLimits('processActivityOnClaims >> after SOQL#2 Campaign (IPA path, rows=' + campaignList.size() + ')');
                 for(Campaign camp : campaignList) {
                     pmbIds.add(camp.Core_MDF_Budget__c);
                     campIdTocampAccBudMap.put(camp.Id, camp.Core_MDF_Account__c+'_'+camp.Core_MDF_Budget__c);
                 }
-                if(pmbIds.size() > 0 && !campIdTocampAccBudMap.isEmpty()) {
+                if(!pmbIds.isEmpty() && !campIdTocampAccBudMap.isEmpty()) {
                     allocationList = [select Id, BudgetId, ChannelPartnerId from PartnerFundAllocation where budgetId IN: pmbIds];
+                    logLimits('processActivityOnClaims >> after SOQL#3 PartnerFundAllocation (IPA path, rows=' + allocationList.size() + ')');
                     for(PartnerFundAllocation pfa : allocationList) {
                         allocationMap.put(pfa.ChannelPartnerId+'_'+pfa.BudgetId, pfa);
                     }
@@ -280,7 +310,11 @@ Sarah Intel
                 //IPA, proposal based ones
                 //Budget transfer scenario - add post unit testing
                 for(Id pfrId : ipaPfrIds) {
-                    if(partnerFundRequestListMap.containsKey(pfrId)) {
+                    //ATHR - Deeply Nested if 16209
+                    if(!partnerFundRequestListMap.containsKey(pfrId)) {
+                        continue;
+                    }
+                    //if(partnerFundRequestListMap.containsKey(pfrId)) {
                         // status - Draft, Fund request status - planned
                         if(partnerFundRequestListMap.get(pfrId).Status == Label.Core_MDF_PFR_Status_Draft_IPA) {
                             if(allocationMap.containsKey(campIdTocampAccBudMap.get(partnerFundRequestListMap.get(pfrId).CampaignId)) && allocationMap.get(campIdTocampAccBudMap.get(partnerFundRequestListMap.get(pfrId).CampaignId)) != null) {//containsKey
@@ -300,7 +334,7 @@ Sarah Intel
                                 }
                             }
                         }
-                    }
+                    //}
                 }
                 
             }
@@ -314,32 +348,105 @@ Sarah Intel
                 Map<Id,PartnerFundRequest> pfrDetailsAfterCheckingPFA = new Map<Id,PartnerFundRequest>();
                 List<PartnerFundRequest> partnerFundRequestList = new List<PartnerFundRequest>();
                 //fetch partnerFundRequestList of CCF 1.0, DCF 1.0, CCFB, SPCF, RSA MD
-                if(legacyPfrIds.size() > 0) {
+                //ATHR - Deeply Nested if 16209
+                if(legacyPfrIds.isEmpty()) {
+                    return;
+                }
+                //if(!legacyPfrIds.isEmpty()) {
                     for(Id pfrId : legacyPfrIds) {
                         if(partnerFundRequestListMap.containsKey(pfrId)) {
                             partnerFundRequestList.add(partnerFundRequestListMap.get(pfrId));
                         }
                     }
-                }
+                //}
                 checkIfBudgetExistsForActivity(pfcListForLegacy, partnerFundRequestList);
                 pfrDetailsAfterCheckingPFA = checkAllocationOnActivityAndUpdateActivityStatus(pfcListForLegacy);
-                if(pfrDetailsAfterCheckingPFA.size() > 0) {
+                if(!pfrDetailsAfterCheckingPFA.isEmpty()) {
                     for(PartnerFundRequest activity : pfrDetailsAfterCheckingPFA.values()) {
                         pfrIdToPfrRecordMapForUpdate.put(activity.Id, activity);
                     }
                 }
             }
-        }
+        //}
         
-        if(pfrIdToPfrRecordMapForUpdate.size() > 0) {
+        if(!pfrIdToPfrRecordMapForUpdate.isEmpty()) {
             try {
                 Database.update(pfrIdToPfrRecordMapForUpdate.values(), true);
-            } catch(Exception ex) {Core_MDF_CCP_UtilityClass.logError(ex);}
+            } catch(Exception ex) {
+                Core_MDF_CCP_UtilityClass.logError(ex);
+            }
         }
-        
+        logLimits('processActivityOnClaims >> END');
     }
     
     
+    /*public static Map<Id,PartnerFundRequest> updateBudgetAllocForIPAActivity(List<PartnerFundClaim> claimsToBeProcessed, Set<Id> campSet, Set<Id> pfrSet)
+    {
+        // Final PFR Map to be Updated
+        List<PartnerFundRequest> pfrToBeUpdated = new List<PartnerFundRequest>();
+        Map<Id,PartnerFundRequest> pfrMapToBeUpdated = new Map<Id,PartnerFundRequest>();
+        //Map of pfrId and PFR record itself
+        /*   pFRIdPFRMap = new Map<Id,PartnerFundRequest>([SELECT Id,Core_MDF_Fund_Request_Status__c,Status,ChannelPartnerId
+FROM PartnerFundRequest
+WHERE Id IN: pfrSet AND Status != :approvedStatus]);
+        if(Test.isRunningTest()){
+            pFRIdPFRMap = new Map<Id,PartnerFundRequest>([SELECT Id,Core_MDF_Fund_Request_Status__c,Status,ChannelPartnerId FROM PartnerFundRequest limit 5]); 
+        } else{
+            pFRIdPFRMap = new Map<Id,PartnerFundRequest>([SELECT Id,Core_MDF_Fund_Request_Status__c,Status,ChannelPartnerId
+                                                          FROM PartnerFundRequest
+                                                          WHERE Id IN: pfrSet AND Status != :approvedStatus]);
+        }
+        Map<Id,String> campBudgetMap = new Map<Id,String>();
+        Set<Id> budgetIdSet = new Set<Id>();
+        if(pFRIdPFRMap != NULL && pFRIdPFRMap.size() > 0)
+        {
+            List<Campaign> campList = new List<Campaign>([Select Core_MDF_Budget__c,Core_MDF_Account__c from Campaign where Id IN : campSet]);
+            for(Campaign camp : campList)
+            {
+                campBudgetMap.put(camp.Id,camp.Core_MDF_Budget__c+'_'+camp.Core_MDF_Account__c);  
+                budgetIdSet.add(camp.Core_MDF_Budget__c);
+            }
+             //to store budget id and allocation record mapping
+            Map<String,PartnerFundAllocation> allocMap = new Map<String,PartnerFundAllocation>();
+            if(test.isRunningTest()){
+                for(PartnerFundAllocation pfa: [Select BudgetId, Amount,ChannelPartnerId from PartnerFundAllocation limit 1])
+                {
+                    allocMap.put(pfa.BudgetId+'_'+pfa.ChannelPartnerId, pfa);
+                }
+                
+            }else{
+                for(PartnerFundAllocation pfa: [Select BudgetId, Amount,ChannelPartnerId from PartnerFundAllocation Where BudgetId IN :budgetIdSet])
+                {
+                    allocMap.put(pfa.BudgetId+'_'+pfa.ChannelPartnerId, pfa);
+                } 
+                
+            }
+  //            for(PartnerFundAllocation pfa: [Select BudgetId, Amount,ChannelPartnerId from PartnerFundAllocation Where BudgetId IN :budgetIdSet])
+//{
+//allocMap.put(pfa.BudgetId+'_'+pfa.ChannelPartnerId, pfa);
+//}
+            try{
+                for(PartnerFundClaim pfc :claimsToBeProcessed){
+                    PartnerFundRequest pfr = pFRIdPFRMap.get(pfc.RequestId);
+                    
+                    if(pfr.Status != approvedStatus)
+                    {
+                        if(pfr.Core_MDF_Fund_Request_Status__c != closedStatus & allocMap.get(campBudgetMap.get(pfc.Core_MDF_Campaign_Id__c)) != null ||test.isRunningTest()){
+                            pfrMapToBeUpdated.put(pfr.Id,new PartnerFundRequest(Id = pfr.Id, AllocationId = allocMap.get(campBudgetMap.get(pfc.Core_MDF_Campaign_Id__c)).Id,Status=approvedStatus,Core_MDF_Fund_Request_Status__c=InProgressStatus));
+                        }
+                        
+                        else if(allocMap.get(campBudgetMap.get(pfc.Core_MDF_Campaign_Id__c)) != null){
+                            pfrMapToBeUpdated.put(pfr.Id,new PartnerFundRequest(Id = pfr.Id, AllocationId = allocMap.get(campBudgetMap.get(pfc.Core_MDF_Campaign_Id__c)).Id,Status=approvedStatus));
+                        }   
+                    }  
+                }
+            }catch(Exception e){}
+            
+        }
+        
+        
+        return pfrMapToBeUpdated;
+    }*/
     
     /****************************************************************************************************** 
 Method Name:        checkIfBudgetExistsForActivity
@@ -351,11 +458,12 @@ Added By:           Accenture - JV - 22/01/2019
 Modified By:        Date:       Changes: 
 *******************************************************************************************************/
     public static Map<Id,PartnerMarketingBudget> checkIfBudgetExistsForActivity(List<PartnerFundClaim> claimsToBeProcessed, List<PartnerFundRequest> partnerFundRequestList){
-        //Map of pfrId and CampaignId
+        logLimits('checkIfBudgetExistsForActivity >> START (claims=' + claimsToBeProcessed.size() + ')');
         Map<Id,Id> pfrIdCampaignIdMap = new Map<Id,Id>();
         
         // PartnerFundRequest Set to be prepared from claimsToBeProcessed
         Set<Id> pfrSet = new Set<Id>();
+        //Map<Id, PartnerFundRequest> pfrIdsToPfrMap = new Map<Id, PartnerFundRequest>();
         Map<Id, Id> pfrIdToPfrUltiAccId = new Map<Id, Id>();
         Map<String, Id> ultimateAccToVirtualCorpId = new Map<String, Id>();
         Map<String, Id> pfrProgramToPfrUltiAccId = new Map<String, Id>();
@@ -386,8 +494,11 @@ Modified By:        Date:       Changes:
                 pfrProgramIdsList.add(pfrRecord.ChannelPartner.Core_MDF_Channel_Program__c); // Program Ids  from activity
             }
         }
-        
-        if(!pfrIdToPfrUltiAccId.isEmpty()) {
+        //ATHR - Deeply Nested if 16209
+        if(pfrIdToPfrUltiAccId.isEmpty()){
+            return pFRIdPMBMap;
+        }
+        //if(!pfrIdToPfrUltiAccId.isEmpty()) {
             //query the Virtual Corp Account based on Ultimate Account and program
             for(Account acc: [select Id, Name, Core_MDF_Parent_Fund_Account__c, Core_MDF_Channel_Program__c, Core_MDF_Channel_Program__r.Name from Account where Core_MDF_Parent_Fund_Account__c  IN : pfrIdToPfrUltiAccId.values() and Core_MDF_Channel_Program__c IN : pfrProgramIdsList]) {
                 String ultimateAccountAndProgramId = acc.Core_MDF_Parent_Fund_Account__c+'_'+acc.Core_MDF_Channel_Program__c;
@@ -395,6 +506,7 @@ Modified By:        Date:       Changes:
                 //Map of 'ultimateAccount+Program' as Key and corresponding virtual Corp as key
                 ultimateAccToVirtualCorpId.put(ultimateAccountAndProgramId, acc.Id);
             }
+            logLimits('checkIfBudgetExistsForActivity >> after SOQL#1 Account (virtualCorps=' + ultimateAccToVirtualCorpId.size() + ')');
             
             
             if(!ultimateAccToVirtualCorpId.isEmpty())
@@ -416,6 +528,7 @@ Modified By:        Date:       Changes:
                         accountIdPMBsMap.put(pmb.Core_MDF_Budget_Partner__c, new List<PartnerMarketingBudget>{pmb});
                     }
                 }
+                logLimits('checkIfBudgetExistsForActivity >> after SOQL#2 PartnerMarketingBudget (accountBuckets=' + accountIdPMBsMap.size() + ')');
                 Set<PartnerFundClaim> noBudgetClaims = new Set<PartnerFundClaim>();
                 
                 //populate pFRIdPMBMap and pMBIdPFRsMap
@@ -484,16 +597,21 @@ Modified By:        Date:       Changes:
                 
             }else{
                 //If there is no account
-                if(claimsToBeProcessed!=null){
+                //ATHR - Deeply Nested if 16209
+                if(claimsToBeProcessed==null){
+                    return pFRIdPMBMap;
+                }
+                //if(claimsToBeProcessed!=null){
                     for(PartnerFundClaim pfcRecord :claimsToBeProcessed){
                         if(!Core_MDF_Claim_Utility.isType(pfcRecord, isclaimAdjustmentType))
                         {
                             pfcRecord.addError(System.Label.Core_MDF_No_Budget_Exist);
                         }
                     }
-                }
+                //}
             }
-        } 
+        //} 
+        logLimits('checkIfBudgetExistsForActivity >> END');
         return pFRIdPMBMap;
     }
     
@@ -522,18 +640,21 @@ Accenture - VD      05-02-2019  Added SPCF recordtype in PFA and PFR
     
     public static Map<Id,PartnerFundRequest> checkAllocationOnActivityAndUpdateActivityStatus(List<PartnerFundClaim> claimList)
     {
+        logLimits('checkAllocationOnActivityAndUpdateActivityStatus >> START (claims=' + claimList.size() + ')');
         // Map<AcitivityId,AllocationId>
         Map<Id,Id> pFRIdPFAIdMap = new Map<Id,Id>();
         String pFRIdPFA;
         // Final PFR Map to be Updated
         Map<Id,PartnerFundRequest> pfrMapToBeUpdated = new Map<Id,PartnerFundRequest>();
-        
+        //To get - fund reuqest status
+        Map<Id,PartnerFundRequest> pfrMapToUpdatePfrStatus = new Map<Id,PartnerFundRequest>();
         //Map of pfrId and AllocationId
         Map<Id,Id> pfrIdAllocationIdMap = new Map<Id,Id>();
         String pftIdAll;
         //Assign all record type meta data
         Map<String,Core_MDF_ObjRecType_Budget_FieldSetMap__mdt> recTypeMetaDataMap = Core_MDF_Claim_Utility.mapOfRecTypeMetadata; //TWC3117-18333
-        if(pMBIdPFRsMap != null && pMBIdPFRsMap.size() > 0){
+        System.debug('MDT OPtimisation recTypeMetaDataMap '+ recTypeMetaDataMap);
+        if(!pMBIdPFRsMap.isEmpty()){
             for(PartnerFundAllocation pfa : [SELECT Id, BudgetId, ChannelPartnerId
                                              FROM PartnerFundAllocation
                                              WHERE BudgetId IN: pMBIdPFRsMap.keySet() AND
@@ -542,8 +663,10 @@ Accenture - VD      05-02-2019  Added SPCF recordtype in PFA and PFR
             {
                 for(PartnerFundRequest pfr : pMBIdPFRsMap.get(pfa.BudgetId))
                 {
-                    if(pfa.ChannelPartnerId == pfr.ChannelPartnerId)
-                    {
+                    //ATHR - Deeply Nested if 16209
+                    if(pfa.ChannelPartnerId != pfr.ChannelPartnerId) continue;
+                    //if(pfa.ChannelPartnerId == pfr.ChannelPartnerId)
+                    //{
                         if(pfr.Status == Label.Core_MDF_PFR_Status_Draft_IPA)
                         {   
                             if(pfr.Core_MDF_Fund_Request_Status__c != closedStatus) {
@@ -559,10 +682,11 @@ Accenture - VD      05-02-2019  Added SPCF recordtype in PFA and PFR
                         pfrIdAllocationIdMap.put(pfr.Id, pfa.Id);
                         pFRIdPMBMap.remove(pfr.Id);
                         pFRIdPFRMap.remove(pfr.Id);
-                    }
+                    //}
                 }
             }
         }
+        logLimits('checkAllocationOnActivityAndUpdateActivityStatus >> after SOQL#1 PartnerFundAllocation (existing allocs)');
         Map<Id,PartnerFundAllocation> pFRIdPFAMap = new Map<Id,PartnerFundAllocation>();
         Map<String,PartnerFundAllocation> budgetIdAccountIdPFAMap = new Map<String,PartnerFundAllocation>();
         Map<String,List<PartnerFundRequest>> budgetIdAccountIdPFRListMap = new Map<String,List<PartnerFundRequest>>();
@@ -581,7 +705,11 @@ Accenture - VD      05-02-2019  Added SPCF recordtype in PFA and PFR
                             if(allocationRecTypeDevName!=null){
                                 Id pfaRecordTypeId= allocationRecordTypeMap.get(allocationRecTypeDevName).getRecordTypeId();
                                 budgetIdAccountIdPFAMap.put(budgetIdAccountIdStr, 
-                                                            new PartnerFundAllocation(Title = pFRIdPMBMap.get(pfrId).Title,Amount = 0,BudgetId = pFRIdPMBMap.get(pfrId).Id,ChannelPartnerId = pfrRecord.ChannelPartnerId,RecordTypeId = pfaRecordTypeId));
+                                                            new PartnerFundAllocation(Title = pFRIdPMBMap.get(pfrId).Title,
+                                                                                      Amount = 0,
+                                                                                      BudgetId = pFRIdPMBMap.get(pfrId).Id,
+                                                                                      ChannelPartnerId = pfrRecord.ChannelPartnerId,
+                                                                                      RecordTypeId = pfaRecordTypeId));
                             }
                         }
                     }
@@ -596,7 +724,9 @@ Accenture - VD      05-02-2019  Added SPCF recordtype in PFA and PFR
                 for(String budgetIdAccountIdStr : budgetIdAccountIdPFAMap.keySet()){
                     for(PartnerFundRequest pfrRecord : budgetIdAccountIdPFRListMap.get(budgetIdAccountIdStr)){
                         if(pfrRecord.Core_MDF_Fund_Request_Status__c != closedStatus){
-                            pfrMapToBeUpdated.put(pfrRecord.Id,new PartnerFundRequest(Id = pfrRecord.Id,AllocationId = budgetIdAccountIdPFAMap.get(budgetIdAccountIdStr).Id,Status = approvedStatus,Core_MDF_Fund_Request_Status__c=InProgressStatus));
+                            pfrMapToBeUpdated.put(pfrRecord.Id,new PartnerFundRequest(Id = pfrRecord.Id, 
+                                                                                      AllocationId = budgetIdAccountIdPFAMap.get(budgetIdAccountIdStr).Id,
+                                                                                      Status = approvedStatus,Core_MDF_Fund_Request_Status__c=InProgressStatus));
                         }
                         else
                         {
@@ -611,10 +741,56 @@ Accenture - VD      05-02-2019  Added SPCF recordtype in PFA and PFR
                 budgetIdAccountIdPFRListMap = NULL;
             }
         }        
+        logLimits('checkAllocationOnActivityAndUpdateActivityStatus >> END');
        return pfrMapToBeUpdated;
     }   
     
     
+    /****************************************************************************************************** 
+Method Name:        updateActivityStatusInProgress
+@return  :          void
+@parameters:        List<PartnerFundClaim>
+Description:        This method is used to update the status of the PFR's to In-Progress after claim insertion
+Added By:           SM - 19/08/20
+Modified By:        Date:       Changes: 
+Accenture - VD      05-02-2019  Added SPCF recordtype in PFA and PFR
+*******************************************************************************************************/    
+   /* public static Map<Id,PartnerFundRequest> updateActivityStatusInProgress(List<PartnerFundClaim> newClaimList, Set<Id> pfrSet)
+    {
+        Map<Id,PartnerFundRequest> pfrMapToBeUpdated = new Map<Id,PartnerFundRequest>();
+        String partnerFund;
+        Map<Id,PartnerFundRequest> pfrMap = new Map<Id,PartnerFundRequest>();
+        Map<Id,String> pfrMDFStatusMap = new Map<Id,String>();
+        Map<Id,String> pfrStatusMap = new Map<Id,String>();
+        Map<Id, List<PartnerFundClaim>> pfrClaimMap = new Map<Id,List<PartnerFundClaim>>();
+        for(PartnerFundClaim claim : [Select RequestId, Request.Status, Request.Core_MDF_Fund_Request_Status__c, Id from PartnerFundClaim 
+                                      where RequestId IN :pfrSet
+                                      and Request.Core_MDF_Fund_Request_Status__c!= :InProgressStatus])
+        {
+            pfrMDFStatusMap.put(claim.RequestId, claim.Request.Core_MDF_Fund_Request_Status__c);
+            pfrStatusMap.put(claim.RequestId, claim.Request.Status);
+        }
+        //to change the status of activity to In-Progress
+        for(PartnerFundClaim claim : newClaimList)
+        {
+            if(pfrMDFStatusMap.containsKey(claim.RequestId) && pfrMDFStatusMap.get(claim.RequestId) != closedStatus 
+               && pfrStatusMap.containsKey(claim.RequestId) && pfrStatusMap.get(claim.RequestId) == approvedStatus){
+                   if(!pfrMapToBeUpdated.containsKey(claim.RequestId))
+                   { 
+                       pfrMapToBeUpdated.put(claim.RequestId,new PartnerFundRequest(Id = claim.RequestId,Core_MDF_Fund_Request_Status__c=InProgressStatus));
+                   }  
+               } 
+        }
+       //if(pfrMapToBeUpdated != NULL && pfrMapToBeUpdated.size() > 0){
+        //Database.update(pfrMapToBeUpdated.values()); 
+        //callPFRUpdateBatch(pfrMapToBeUpdated.keySet());
+        //
+        //  Core_MDF_Batch_ActInProgressUpdate actUpdatebatch = new Core_MDF_Batch_ActInProgressUpdate(pfrMapToBeUpdated.keySet());
+        //Parameters of ExecuteBatch(context,BatchSize)
+        //database.executebatch(actUpdatebatch,30);
+        //}
+        return pfrMapToBeUpdated;
+    }*/
     
     /****************************************************************************************************** 
 Method Name:        updateClaimOwner
@@ -625,6 +801,7 @@ Added By:           HA
 Modified By:        Date:    19-07-2021   Changes: 
 *******************************************************************************************************/ 
     public static void updateClaimOwner(List<PartnerFundClaim> claimsToBeProcessed){
+        logLimits('updateClaimOwner >> START (claims=' + claimsToBeProcessed.size() + ')');
         Set<Id> escalationIdSet = new Set<Id>();
         //This list contains the escalation type values: Late Claim , Claim Case Review Result
         List<String> escalationTypeList = Core_MDF_CustomLabelConfig.getTextList('Core_MDF_EscalationTypes',',');
@@ -638,6 +815,7 @@ Modified By:        Date:    19-07-2021   Changes:
         if(!escalationIdSet.isEmpty()){
             //Query on escalation to get the context of the escalation fields such as claim submitter field and escalation type field.
             escalationMap = new Map<Id, Core_MDF_Escalation__c>([SELECT ID, Core_MDF_Claim_Submitter_Id__c, Core_MDF_Escalation_Type_nm__c, Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Activity_Level_nm__c FROM Core_MDF_Escalation__c WHERE ID IN: escalationIdSet]);
+            logLimits('updateClaimOwner >> after SOQL#1 Core_MDF_Escalation__c (rows=' + escalationMap.size() + ')');
         }
         
         for(PartnerFundClaim claimObj: claimsToBeProcessed){
@@ -653,7 +831,8 @@ Modified By:        Date:    19-07-2021   Changes:
                 //Claim Owner assignment
                 //Based on US843424: added check for Case Type of Escalation and checkbox true
                 if(claimObj.Core_MDF_Escalation_Id__c != NULL && escalationMap!= NULL && escalationMap.containsKey(claimObj.Core_MDF_Escalation_Id__c) &&
-                   escalationMap.get(claimObj.Core_MDF_Escalation_Id__c).Core_MDF_Claim_Submitter_Id__c != NULL && escalationTypeList.contains(escalationMap.get(claimObj.Core_MDF_Escalation_Id__c).Core_MDF_Escalation_Type_nm__c)){
+                   escalationMap.get(claimObj.Core_MDF_Escalation_Id__c).Core_MDF_Claim_Submitter_Id__c != NULL &&
+                   escalationTypeList.contains(escalationMap.get(claimObj.Core_MDF_Escalation_Id__c).Core_MDF_Escalation_Type_nm__c)){
                        claimObj.OwnerId = escalationMap.get(claimObj.Core_MDF_Escalation_Id__c).Core_MDF_Claim_Submitter_Id__c;
                    }                   
                 else if(claimObj.Core_MDF_Escalation_Id__c == NULL 
@@ -665,6 +844,23 @@ Modified By:        Date:    19-07-2021   Changes:
                         }
             }
         }
+        logLimits('updateClaimOwner >> END');
     }
+    
+ /*   @future
+    public static void callPFRUpdateBatch(Set<ID> pfrId)
+    {
+        List<PartnerFundRequest> pfrToBeUpdated = new List<PartnerFundRequest>();
+        for(PartnerFundRequest pfr :[Select Id, Core_MDF_Fund_Request_Status__c
+                                     From PartnerFundRequest where Id in :pfrId])
+        {
+            pfr.Core_MDF_Fund_Request_Status__c = InProgressStatus;
+            pfrToBeUpdated.add(pfr);
+        }
+        if(pfrToBeUpdated != NULL && pfrToBeUpdated.size() > 0){
+            Database.update(pfrToBeUpdated); 
+        }
+    } */
+    
     
 }

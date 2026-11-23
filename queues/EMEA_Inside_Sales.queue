@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>EMEA Inside Sales</name>
+    <queueMembers>
+        <users>
+            <user>11882434@intel.com.crm</user>
+            <user>11501136@intel.com.crm</user>
+            <user>11118187@intel.com.crm</user>
+            <user>11775670@intel.com.crm</user>
+            <user>11815910@intel.com.crm</user>
+            <user>10695453@intel.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+</Queue>

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
     <fieldOverrides>
+        <field>Core_MDF_Campaign_IPA_Path_Status__c</field>
+        <literalValue>Pending Review</literalValue>
+    </fieldOverrides>
+    <fieldOverrides>
         <field>Status</field>
         <literalValue>Pending Review</literalValue>
     </fieldOverrides>

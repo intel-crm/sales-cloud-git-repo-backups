@@ -1,0 +1,54 @@
+<!--dualListBox.html-->
+<template>
+        <template if:true={loaded}>
+        <div class="backgroundDiv"> <!--customLookupCmpDiv removed-->
+
+            <!--<div>
+            <c-custom-lookup-v1 onselectedrec={selectedRecord}></c-custom-lookup-v1>
+            </div>-->
+        
+            <div> <!--class="slds-modal__container"-->
+                    <div class="slds-p-around--medium slds-p-right_x-large slds-m-right_xx-large" style="padding-top: 0;"> <!--class="slds-p-around--medium" slds-modal__content   style="margin-top: -7rem;"  removed-->
+                    <div class="slds-grid slds-wrap">
+                
+                    <div class="slds-col slds-size_1-of-2 slds-align_absolute-center" style="font-weight: bold;
+                    font-size: medium;"><!--slds-p-around_small  removed-->
+                    <label class="slds-form-element__label" for="unique-id-of-input">Select User</label>
+                    </div> 
+                    <div class="slds-col slds-size_1-of-2"><!--slds-p-around_small removed-->
+                        <!--<c-custom-lookup-v2 onselectedrec={selectedRecord}></c-custom-lookup-v2>-->
+                        <c-lwc-custom-lookup-user onremove={selectedRecord} onselected={selectedRecord}></c-lwc-custom-lookup-user>
+                </div>               
+                </div>
+
+                 <div class="slds-col slds-p-left_x-large slds-m-left_x-large"> 
+                        <lightning-input value={accountSearchKey} onchange={onAccountSearch} type="search" placeholder="search account"></lightning-input>
+                        <!--<lightning-button label="Find" onclick={onUserSearch}></lightning-button>-->
+                        </div>
+                <div class="slds-col slds-p-left_x-large slds-m-left_x-large">
+                        <lightning-dual-listbox name="languages"
+                        disable-reordering="True" 
+                        source-label="Available"
+                        selected-label="Selected"
+                        options={mapData}
+                        value={availableMapData}
+                        onchange={handleChange}></lightning-dual-listbox>
+                </div>
+
+                <div class="slds-list_horizontal slds-align_absolute-center slds-p-top_medium slds-p-left_xx-large"> 
+                        <lightning-button label="Cancel" onclick={onCancel}></lightning-button>
+                        <lightning-button variant="brand" class="slds-m-horizontal--x-small" label="Save" onclick={onSave}></lightning-button>
+                    </div>
+
+                    </div>
+
+                    
+
+                </div>
+        
+            </div>
+</template>
+<template if:false={loaded}>
+        <lightning-spinner alternative-text="Loading"></lightning-spinner>
+</template>
+</template>

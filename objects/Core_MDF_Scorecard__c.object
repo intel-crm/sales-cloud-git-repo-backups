@@ -128,14 +128,11 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Core_MDF_Scorecard</content>
-        <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
+        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -161,11 +158,76 @@
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
-    <enableReports>false</enableReports>
+    <enableReports>true</enableReports>
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fieldSets>
+        <fullName>Core_MDF_AI_Scorecard_Fieldset</fullName>
+        <description>It is used in Audit AI Integration</description>
+        <displayedFields>
+            <field>Core_MDF_AI_Comments_Txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_MDF_AI_Processing_Status_Nm__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_MDF_AI_Audit_Summary_Txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_MDF_AI_Attribution_Comments_Txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_MDF_AI_Attribution_Score_Nm__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_MDF_AI_Engagement_Score_Nm__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_MDF_AI_POP_Score_Nm__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_MDF_AI_Engagement_Comments_Txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_MDF_AI_POP_Comments_Txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_MDF_AI_PII_Present_Nm__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_MDF_AI_POC_Strength_Nm__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_MDF_AI_Recommend_Investigation_Ind__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>AI Scorecard Fieldset</label>
+    </fieldSets>
     <fields>
         <fullName>Core_MDF_3rd_Party_Ind__c</fullName>
         <defaultValue>false</defaultValue>
@@ -233,6 +295,36 @@
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_AI_Compliant_Status_Nm__c</fullName>
+        <description>Holds overall AI Status</description>
+        <label>AI Compliant Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AI Compliant</fullName>
+                    <default>false</default>
+                    <label>AI Compliant</label>
+                </value>
+                <value>
+                    <fullName>AI Non-Compliant</fullName>
+                    <default>false</default>
+                    <label>AI Non-Compliant</label>
+                </value>
+                <value>
+                    <fullName>AI Processing Failed</fullName>
+                    <default>false</default>
+                    <label>AI Processing Failed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Core_MDF_AI_Engagement_Comments_Txt__c</fullName>
@@ -391,6 +483,11 @@
                     <default>false</default>
                     <label>AI Processing Failed</label>
                 </value>
+                <value>
+                    <fullName>AI In Progress</fullName>
+                    <default>false</default>
+                    <label>AI In Progress</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -426,6 +523,15 @@
                 </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Anti_Corruption_Question_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Field to store Anti-Corruption Question on Scorecard</description>
+        <label>Z:Anti-Corruption Question</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_MDF_Attribution_Comments_Txt__c</fullName>
@@ -465,7 +571,7 @@
     <fields>
         <fullName>Core_MDF_Baseline_Ind__c</fullName>
         <defaultValue>false</defaultValue>
-        <label>Baseline</label>
+        <label>Z:Baseline</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
@@ -489,11 +595,10 @@
             <isOptional>false</isOptional>
         </lookupFilter>
         <referenceTo>Case</referenceTo>
-        <relationshipLabel>Scorecards</relationshipLabel>
         <relationshipName>Scorecards</relationshipName>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
@@ -510,6 +615,15 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Competitor_Requirement_Met_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Checkbox to indicate Competitor Requirement Met on Scorecard</description>
+        <label>Z:Competitor Requirement Met</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_MDF_Confirmed_Irregularity_Ind__c</fullName>
@@ -552,6 +666,15 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Core_MDF_Embargo_countries_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Field to store Embargo countries on Scorecard</description>
+        <label>Z:Embargo countries</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Engagement_Comments_Txt__c</fullName>
         <description>Engagement Comments on Scorecard</description>
         <label>Engagement Comments</label>
@@ -587,12 +710,124 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Core_MDF_FV_Percent_Recovery__c</fullName>
+        <description>Recovery % for full value 8 score.</description>
+        <externalId>false</externalId>
+        <label>FV Percent Recovery</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_GMET_Compliant_Nm__c</fullName>
+        <description>Field to store GMET Compliant on Scorecard</description>
+        <label>Z:GMET Compliant</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Good_Taste_Compliant_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Field to store Good Taste Compliant on Scorecard</description>
+        <label>Z:Good Taste Compliant</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Highlight_Partner_Review_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Highlight in Partnership Review</label>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Intel_Mention_Compliant_Nm__c</fullName>
+        <description>Scorecard field to store Intel Mention Compliant</description>
+        <label>Z:Intel Mention Compliant</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Intel_logo_Sig_ID_Compliant_Nm__c</fullName>
+        <description>Scorecard Field to indicate Intel logo/Sig ID Compliant</description>
+        <label>Z:Intel logo/Sig ID Compliant</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Core_MDF_Manual_Recovery_Amount_USD_Amt__c</fullName>
@@ -625,6 +860,15 @@
         <defaultValue>false</defaultValue>
         <label>Modified</label>
         <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Non_Reimbursable_Cost_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Field to store Non Reimbursable Cost on Scorecard</description>
+        <label>Z:Non Reimbursable Cost</label>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -743,6 +987,86 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Core_MDF_PV1_Percent_Recovery__c</fullName>
+        <description>Recovery % for partial value 1 score.</description>
+        <externalId>false</externalId>
+        <label>PV1 Percent Recovery</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_PV2_Percent_Recovery__c</fullName>
+        <description>Recovery % for partial value 2 score.</description>
+        <externalId>false</externalId>
+        <label>PV2 Percent Recovery</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_PV4_Percent_Recovery__c</fullName>
+        <description>Recovery % for partial value 4 score.</description>
+        <externalId>false</externalId>
+        <label>PV4 Percent Recovery</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Partner_Response_Zone__c</fullName>
+        <description>Needed for Recovery. Denotes Quarterly partner categorization.</description>
+        <externalId>false</externalId>
+        <label>Partner Response Zone</label>
+        <length>2</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Pre_Event_Requirement_Met_Ind__c</fullName>
+        <description>Field to store Pre Event Requirement Met on Scorecard</description>
+        <label>Z:Pre Event Requirement Met</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Previous_Closed_Quarter_nm__c</fullName>
         <description>This field stores the quarter on which the previous closed date lies</description>
         <externalId>false</externalId>
@@ -769,6 +1093,32 @@ IF(TEXT(YEAR(DATEVALUE(Core_MDF_Case_Id__r.Core_MDF_Previous_Closed_Dt__c))) &lt
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Product_Solution_Prominent_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Field to store Eligible Product/Solution Prominent on Scorecard</description>
+        <label>Z: Eligible Product/Solution Prominent</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Quarter_Test__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( MONTH(DATEVALUE(TEXT(Core_MDF_Case_Id__r.Core_MDF_Previous_Closed_Dt__c))) == 1 || MONTH(DATEVALUE(TEXT(Core_MDF_Case_Id__r.Core_MDF_Previous_Closed_Dt__c))) == 2 || MONTH(DATEVALUE(TEXT(Core_MDF_Case_Id__r.Core_MDF_Previous_Closed_Dt__c))) == 3 ,
+&apos;Q1 &apos;+  TEXT(YEAR(DATEVALUE(TEXT(Core_MDF_Case_Id__r.Core_MDF_Previous_Closed_Dt__c))))  , 
+IF( MONTH( DATEVALUE(TEXT(Core_MDF_Case_Id__r.Core_MDF_Previous_Closed_Dt__c)) ) == 4 || MONTH( DATEVALUE(TEXT(Core_MDF_Case_Id__r.Core_MDF_Previous_Closed_Dt__c) )) == 5 || MONTH( DATEVALUE(TEXT(Core_MDF_Case_Id__r.Core_MDF_Previous_Closed_Dt__c)) ) == 6 ,
+&apos;Q2 &apos;+ TEXT(YEAR(DATEVALUE(TEXT(Core_MDF_Case_Id__r.Core_MDF_Previous_Closed_Dt__c))))  , 
+IF( MONTH( DATEVALUE(TEXT(Core_MDF_Case_Id__r.Core_MDF_Previous_Closed_Dt__c)) ) == 7 || MONTH( DATEVALUE(TEXT(Core_MDF_Case_Id__r.Core_MDF_Previous_Closed_Dt__c)) ) == 8 || MONTH( DATEVALUE(TEXT(Core_MDF_Case_Id__r.Core_MDF_Previous_Closed_Dt__c)) ) == 9 ,
+&apos;Q3 &apos;+ TEXT(YEAR(DATEVALUE(TEXT(Core_MDF_Case_Id__r.Core_MDF_Previous_Closed_Dt__c))))  , 
+IF(TEXT(YEAR(DATEVALUE(TEXT(Core_MDF_Case_Id__r.Core_MDF_Previous_Closed_Dt__c))))  &lt;&gt; &apos;&apos; , &apos;Q4 &apos;+ TEXT(YEAR(DATEVALUE(TEXT(Core_MDF_Case_Id__r.Core_MDF_Previous_Closed_Dt__c)))) , &apos;&apos;))))</formula>
+        <label>Quarter_Test</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_Quarter__c</fullName>
@@ -856,6 +1206,36 @@ IF(TEXT(YEAR(DATEVALUE(TEXT(Core_MDF_Case_Id__r.ClosedDate))))  &lt;&gt; &apos;&
         </valueSet>
     </fields>
     <fields>
+        <fullName>Core_MDF_Unsupported_Domain_Nm__c</fullName>
+        <description>Field to store Unsupported Domain on Scorecard</description>
+        <label>Unsupported Domain</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Variance_Nm__c</fullName>
         <description>Variance field on Scorecard</description>
         <label>Variance</label>
@@ -928,7 +1308,59 @@ IF(ISPICKVAL(  Core_MDF_Engagement_Nbr__c  , &apos;1&apos; ), (IF( (ISPICKVAL( C
         <type>Number</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>Core_MDF_ZV_Percent_Recovery__c</fullName>
+        <description>Recovery % for zero value score.</description>
+        <externalId>false</externalId>
+        <label>ZV Percent Recovery</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_product_solution_promoted_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Scorecard to indicate Eligible product/solution promoted on Scorecard</description>
+        <label>Z:Eligible product/solution promoted</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>TEST_POP_NA__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(TEXT(Core_MDF_POP__c)),&apos;NA&apos;,TEXT(Core_MDF_POP__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>TEST POP NA</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Test_Recovery_Issue__c</fullName>
+        <externalId>false</externalId>
+        <formula>MONTH( DATEVALUE(DATETIMEVALUE( Core_MDF_Case_Id__r.Core_MDF_Earlier_Quarter_Closed_Dt__c)) )</formula>
+        <label>Test Recovery Issue</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
     <label>Scorecard</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>ScoreCard-{00000}</displayFormat>
         <label>Scorecard Name</label>

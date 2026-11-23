@@ -5,7 +5,7 @@ public without sharing class Core_MDF_CCP_Multicurrency {
     public static integer retryCount = 0;
     public static exception ex;
 
-    public static string callHttp()
+    public static string callHttp()  
     {
         integer valuesUpdated;
         string apiKey = Label.Core_MDF_Multicurrency_APIKey;
@@ -46,7 +46,7 @@ public without sharing class Core_MDF_CCP_Multicurrency {
         }
         catch(exception ex){
             logEntryMsg += Core_MDF_CCP_UtilityClass.getErrorDetails(ex);
-           
+            //system.debug('logEntryMsg' + logEntryMsg );
             
             if(retryIndicator && retryCount < 3 && !Test.isRunningTest()){
                 callHttp();
@@ -60,7 +60,7 @@ public without sharing class Core_MDF_CCP_Multicurrency {
         }
         else{
             string errorMessage = 'Error from Multicurrency method:' + logEntryMsg; 
-            
+            system.debug('errorMessage' + errorMessage);
             return errorMessage; 
         }
     }
@@ -120,7 +120,6 @@ public without sharing class Core_MDF_CCP_Multicurrency {
     }
 
 
-    
     public static Map<string,getExchangeRateAndAmount> getUSDExchangeRateBasedOnDate(List<getExchangeRateAndAmount> inputList){
         
         List<string> allInputUniqueKeys = new List<string>();       
@@ -208,7 +207,9 @@ public without sharing class Core_MDF_CCP_Multicurrency {
                 }
             } 
         }
-        catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);} 
+        catch(exception ex){//Core_MDF_CCP_UtilityClass.logError(ex);
+            throw new AuraHandledException(ex.getMessage());
+        } 
 
         return outputList;
     }
@@ -249,9 +250,10 @@ public without sharing class Core_MDF_CCP_Multicurrency {
         string workWeek;
         try{
             Datetime dt = inputDate.addHours(12);
+            //system.debug('dt' + dt.formatGmt('YYYY'));
             Integer week = Integer.valueOf(dt.formatGmt('w'));
             workWeek = 'WW' + appendDigitsToInputValue(string.valueof(week),2) + dt.formatGmt('YYYY');
-                              
+            //system.debug(workWeek);                     
         }
         
         catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}
@@ -283,13 +285,14 @@ public without sharing class Core_MDF_CCP_Multicurrency {
         public string marketDate {get;set;}       
     }
     
+    //Roshan - added AuraEnabled
     public class getExchangeRateAndAmount{
-     @AuraEnabled   public decimal inputAmount{get;set;}
-     @AuraEnabled   public string inputCurrency{get;set;}
-     @AuraEnabled   public string outputCurrency{get;set;}
-     @AuraEnabled   public date inputDate{get;set;}
-     @AuraEnabled   public decimal conversionRate {get;set;}
-     @AuraEnabled   public decimal convertedAmount{get;set;}
+        @AuraEnabled public decimal inputAmount{get;set;}
+        @AuraEnabled public string inputCurrency{get;set;}
+        @AuraEnabled public string outputCurrency{get;set;}
+        @AuraEnabled public date inputDate{get;set;}
+        @AuraEnabled public decimal conversionRate {get;set;}
+        @AuraEnabled public decimal convertedAmount{get;set;}
     }
     
     public class errorHandling{

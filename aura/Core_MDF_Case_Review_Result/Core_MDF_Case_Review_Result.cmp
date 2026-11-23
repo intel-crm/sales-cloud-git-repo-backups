@@ -25,7 +25,7 @@
                     <td>
                         <div class="slds-grow slds-cell-wrap">
                                 <ul class="slds-list--dotted">
-                                <li> {#item.Core_MDF_Claim_Case_Review_Findings__c} </li> 
+                                <li> {!item.Core_MDF_Claim_Case_Review_Findings__c} </li> 
                                 </ul>
                             </div>
 

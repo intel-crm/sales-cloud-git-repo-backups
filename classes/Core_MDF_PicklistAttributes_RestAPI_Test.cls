@@ -2,11 +2,18 @@
 private class Core_MDF_PicklistAttributes_RestAPI_Test {
     static final String URI = '/services/apexrest/v1.0/partnercenter/attributesbyprogram';
     
+    // Enhanced mock with:
+    // 1. Core_MDF_Program__c field (to trigger isDependentOnProg)
+    // 2. Fields dependent on Core_MDF_Controlling_Field_nm__c with validFor (triggers getFldDependencyInfo, isValValidForCntrFld)
+    // 3. Chained dependencies for deep coverage
+    // 4. controllingFields array (triggers extractControllingFldFromMdt)
+    // 5. Empty validFor with controllerValues (triggers schema fallback)
     public class PicklistMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
             res.setHeader('Content-Type', 'application/json');
             String body = '{"picklistFieldValues":{' +
+                // Controlling field (Budget Type)
                 '"Core_MDF_Controlling_Field_nm__c":{' +
                     '"controllerValues":{},' +
                     '"controllingFields":[],' +
@@ -17,6 +24,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
                         '{"value":"MDF+","label":"MDF Plus Budget","active":true,"validFor":[]}' +
                     ']' +
                 '},' +
+                // Program field (to trigger isDependentOnProg path)
                 '"Core_MDF_Program__c":{' +
                     '"controllerValues":{},' +
                     '"controllingFields":[],' +
@@ -28,6 +36,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
                         '{"value":"Data Center CoMarketing Fund","label":"Datacenter","active":true,"validFor":[]}' +
                     ']' +
                 '},' +
+                // Activity Category - DEPENDENT ON Core_MDF_Controlling_Field_nm__c
+                // This triggers getFldDependencyInfo and isValValidForCntrFld
                 '"Core_MDF_Activity_Category__c":{' +
                     '"controllerValues":{"MDF":0,"OEM CMP":1,"MDF+":2},' +
                     '"controllingFields":["Core_MDF_Controlling_Field_nm__c"],' +
@@ -40,6 +50,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
                         '{"value":"InactiveVal","label":"Inactive Value","active":false,"validFor":[0]}' +
                     ']' +
                 '},' +
+                // Activity Sub Category - dependent on Activity Category (field-to-field)
+                // Has controllingFields to trigger extractControllingFldFromMdt
                 '"Core_MDF_Activity_Sub_Category__c":{' +
                     '"controllerValues":{"Demand Gen":0,"Marketing":1,"Training":2,"Events":3},' +
                     '"controllingFields":["Core_MDF_Activity_Category__c"],' +
@@ -52,6 +64,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
                         '{"value":"Social","label":"Social Media","active":true,"validFor":[0,1,3]}' +
                     ']' +
                 '},' +
+                // Tactic - chained dependency on Sub Category with controllingFields
                 '"Core_MDF_Tactic__c":{' +
                     '"controllerValues":{"Digital":0,"Print":1,"Online":2,"Webinar":3,"Social":4},' +
                     '"controllingFields":["Core_MDF_Activity_Sub_Category__c"],' +
@@ -64,6 +77,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
                         '{"value":"Email","label":"Email Campaign","active":true,"validFor":[0,4]}' +
                     ']' +
                 '},' +
+                // Program Specific Field - DEPENDENT ON Core_MDF_Program__c (triggers isDependentOnProg)
                 '"Core_MDF_Program_Specific__c":{' +
                     '"controllerValues":{"Client":0,"Intel Partner Alliance":1,"Retail Marketing Funds":2,"Data Center CoMarketing Fund":3},' +
                     '"controllingFields":["Core_MDF_Program__c"],' +
@@ -76,6 +90,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
                         '{"value":"DCOpt1","label":"DC Option 1","active":true,"validFor":[3]}' +
                     ']' +
                 '},' +
+                // Field with empty validFor but controllerValues (triggers schema fallback buildDependencyValFromSchema)
+                // Using controllingFields as string instead of array to test that path
                 '"Core_MDF_Schema_Dep_Field__c":{' +
                     '"controllerValues":{"Demand Gen":0,"Marketing":1},' +
                     '"controllingFields":"Core_MDF_Activity_Category__c",' +
@@ -85,6 +101,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
                         '{"value":"SchemaVal2","label":"Schema Value 2","active":true,"validFor":[]}' +
                     ']' +
                 '},' +
+                // Test field - no dependencies
                 '"Core_MDF_Test_Field__c":{' +
                     '"controllerValues":{},' +
                     '"defaultValue":"Default",' +
@@ -179,6 +196,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Core_MDF_PicklistAttributes_RestAPI.getPicklistValues();
         return RestContext.response;
     }
+
+    // ===== BASIC ERROR TESTS =====
     
     @IsTest static void testNullParams() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
@@ -220,6 +239,9 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
 
+    // ===== FIELDDISPLAY=LABEL TESTS - covers useFieldLabels=true paths =====
+    // These cover: applyLabelsToAttrMap, applyLabelsToDepMdt, getFldApiFromDepMdt, getFldLabels
+    
     @IsTest static void testFieldDisplayLabelWithValidProgram() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         String p = prog();
@@ -259,6 +281,9 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
 
+    // ===== CONTROLLING FIELD VALUE TESTS =====
+    // These cover: resolveCtrlFldVal, resolveCanonicalCtrlFldVal, buildValueCandidates
+    
     @IsTest static void testControllingFieldValueBasic() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         Test.startTest();
@@ -282,6 +307,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         String p = prog();
         Test.startTest();
+        // Space/plus variants for buildValueCandidates
         get(new Map<String,String>{'programName'=>p,'controllingFieldValue'=>'MDF '});
         get(new Map<String,String>{'programName'=>p,'controllingFieldValue'=>'Value&Part'});
         get(new Map<String,String>{'programName'=>p,'controllingFieldValue'=>'%26encoded'});
@@ -299,6 +325,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
 
+    // ===== URI PATH EXTRACTION TESTS =====
+    
     @IsTest static void testUriPathExtraction() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         Test.startTest();
@@ -334,6 +362,9 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Core_MDF_PicklistAttributes_RestAPI.getPicklistValues();
         Test.stopTest();
     }
+
+    // ===== DEEP PROCESSING TESTS =====
+    // These cover: processAttributes, mergeFldValues, sortMergedValByFld, injectDepIntoAttr
     
     @IsTest static void testValidProgramProcessing() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
@@ -365,6 +396,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
 
+    // ===== SPECIFIC PROGRAM TESTS =====
+    
     @IsTest static void testClientProgram() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         Test.startTest();
@@ -413,6 +446,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
 
+    // ===== ERROR HANDLING TESTS =====
+    
     @IsTest static void testHttpError() {
         Test.setMock(HttpCalloutMock.class, new ErrorMock());
         String p = prog();
@@ -447,6 +482,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         System.assertNotEquals(null, RestContext.response);
     }
 
+    // ===== PROGRAM EDGE CASES =====
+    
     @IsTest static void testProgramNotInCMDT() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         insert new ChannelProgram(Name='NewTestProg',Core_MDF_Project_Platform__c='Y');
@@ -473,6 +510,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
 
+    // ===== MIXED PARAMS TESTS =====
+    
     @IsTest static void testMixedParams() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         Test.startTest();
@@ -494,6 +533,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
 
+    // ===== PATH WITH SPECIAL CHARACTERS =====
+    
     @IsTest static void testPathSpecialChars() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         Test.startTest();
@@ -504,6 +545,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
 
+    // ===== CONSTANTS TESTS =====
+    
     @IsTest static void testConstants() {
         Test.startTest();
         System.assertEquals(Core_MDF_Attributes_RestAPIConstants.HTTP_200, Core_MDF_Attributes_RestAPIConstants.getHttpStatusByApiCode(Core_MDF_Attributes_RestAPIConstants.CODE_200));
@@ -522,10 +565,14 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
 
+    // ===== FULL COMBINATIONS WITH FIELDDISPLAY=LABEL =====
+    // These specifically cover the useFieldLabels=true code paths
+    
     @IsTest static void testFullCombinationsWithLabel() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         String p = prog();
         Test.startTest();
+        // These trigger applyLabelsToAttrMap, getFldLabels, getFldApiFromDepMdt, applyLabelsToDepMdt
         get(new Map<String,String>{'programName'=>p,'fielddisplay'=>'label'});
         get(new Map<String,String>{'programName'=>p,'fielddisplay'=>'label','controllingFieldValue'=>'MDF'});
         get(new Map<String,String>{'programName'=>p,'fielddisplay'=>'label','controllingFieldValue'=>'OEM CMP'});
@@ -555,6 +602,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
 
+    // ===== PATH TESTS WITH LABEL =====
+    
     @IsTest static void testPathWithLabel() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         String p = prog();
@@ -566,6 +615,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
 
+    // ===== MULTIPLE CONTROLLING VALUES TEST =====
+    
     @IsTest static void testMultipleCtrlValues() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         String p = prog();
@@ -579,9 +630,14 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
 
+    // ===== PROGRAM DEPENDENCY TESTS =====
+    // These trigger isDependentOnProg, getFldDependencyInfo, isValValidForCntrFld
+    
     @IsTest static void testProgramDependencyPaths() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         Test.startTest();
+        // These requests trigger fields dependent on Core_MDF_Program__c
+        // The mock now includes Core_MDF_Program_Specific__c which depends on Core_MDF_Program__c
         get(new Map<String,String>{'programName'=>'Client'});
         get(new Map<String,String>{'programName'=>'Intel Partner Alliance'});
         get(new Map<String,String>{'programName'=>'Retail Marketing Funds'});
@@ -592,6 +648,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
     @IsTest static void testProgramDependencyWithControllingField() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         Test.startTest();
+        // Trigger both program dependency and controllingFieldValue filtering
         get(new Map<String,String>{'programName'=>'Client','controllingFieldValue'=>'MDF'});
         get(new Map<String,String>{'programName'=>'Intel Partner Alliance','controllingFieldValue'=>'OEM CMP'});
         get(new Map<String,String>{'programName'=>'Retail Marketing Funds','controllingFieldValue'=>'MDF+'});
@@ -602,15 +659,21 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
     @IsTest static void testProgramDependencyWithLabels() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         Test.startTest();
+        // Combined: program dependency + label display + controlling filter
         get(new Map<String,String>{'programName'=>'Client','fielddisplay'=>'label','controllingFieldValue'=>'MDF'});
         get(new Map<String,String>{'programName'=>'Intel Partner Alliance','fielddisplay'=>'label','controllingFieldValue'=>'OEM CMP'});
         Test.stopTest();
     }
     
+    // ===== FIELD-TO-FIELD DEPENDENCY TESTS =====
+    // These trigger buildDependencyMdtForFld, buildControllerIndexToDisplayValueMap, buildControllerRawToDisplayValueMap
+    
     @IsTest static void testFieldToFieldDependency() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         String p = prog();
         Test.startTest();
+        // The mock has Activity Sub Category -> Activity Category -> Core_MDF_Controlling_Field_nm__c chain
+        // And Tactic -> Sub Category -> Activity Category chain
         get(new Map<String,String>{'programName'=>p});
         get(new Map<String,String>{'programName'=>p,'fielddisplay'=>'label'});
         Test.stopTest();
@@ -619,14 +682,20 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
     @IsTest static void testChainedDependencies() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         Test.startTest();
+        // Test with programs that should trigger all dependency chains
         get(new Map<String,String>{'programName'=>'Client','controllingFieldValue'=>'MDF'});
         get(new Map<String,String>{'programName'=>'Client','controllingFieldValue'=>'MDF','fielddisplay'=>'label'});
         Test.stopTest();
     }
     
+    // ===== SCHEMA FALLBACK TESTS =====
+    // These trigger buildDependencyValFromSchema, getSchemaDependencyMap, addDependencyEntry
+    
     @IsTest static void testSchemaFallback() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         Test.startTest();
+        // The mock has Core_MDF_Schema_Dep_Field__c with empty validFor arrays
+        // This should trigger schema fallback path
         get(new Map<String,String>{'programName'=>'Client'});
         get(new Map<String,String>{'programName'=>'Intel Partner Alliance'});
         Test.stopTest();
@@ -640,10 +709,15 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
     
+    // ===== VALIDFOR FILTERING TESTS =====
+    // These trigger extractEncodedValidForFromPicklistEntry, buildDependentRawToDisplayValueMap
+    
     @IsTest static void testValidForFiltering() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         String p = prog();
         Test.startTest();
+        // Activity Category depends on Core_MDF_Controlling_Field_nm__c with validFor arrays
+        // Different controlling values should yield different filtered values
         get(new Map<String,String>{'programName'=>p,'controllingFieldValue'=>'MDF'});
         get(new Map<String,String>{'programName'=>p,'controllingFieldValue'=>'OEM CMP'});
         get(new Map<String,String>{'programName'=>p,'controllingFieldValue'=>'MDF+'});
@@ -660,9 +734,13 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
     
+    // ===== DEPENDENCY INDEX RESOLUTION TESTS =====
+    // These trigger inferCntrFldByControllerIndexMap, resolveControllingFldApi
+    
     @IsTest static void testDependencyIndexResolution() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         Test.startTest();
+        // Test all programs to cover different index resolution paths
         for (String prog : new List<String>{'Client','Intel Partner Alliance','Retail Marketing Funds','Co-GTM','Datacenter'}) {
             get(new Map<String,String>{'programName'=>prog});
             get(new Map<String,String>{'programName'=>prog,'controllingFieldValue'=>'MDF'});
@@ -670,15 +748,22 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
     
+    // ===== EDGE CASES FOR DEPENDENCY PROCESSING =====
+    
     @IsTest static void testDependencyEdgeCases() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         String p = prog();
         Test.startTest();
+        // Empty controlling value (still valid parameter)
         get(new Map<String,String>{'programName'=>p,'controllingFieldValue'=>''});
+        // Whitespace controlling value
         get(new Map<String,String>{'programName'=>p,'controllingFieldValue'=>'  '});
+        // Mixed case
         get(new Map<String,String>{'programName'=>p,'controllingFieldValue'=>'mdf'});
         Test.stopTest();
     }
+    
+    // ===== ALL PROGRAMS WITH ALL CONTROLLING VALUES =====
     
     @IsTest static void testAllProgramsAllCtrlValues() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
@@ -706,6 +791,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
     
+    // ===== PATH-BASED DEPENDENCY TESTS =====
+    
     @IsTest static void testPathDependencyProcessing() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         Test.startTest();
@@ -725,38 +812,52 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
     
+    // ===== CONTROLLING FIELDS METADATA EXTRACTION TESTS =====
+    // These trigger extractControllingFldFromMdt path
+    
     @IsTest static void testControllingFieldsMetadataArray() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         String p = prog();
         Test.startTest();
+        // Activity Sub Category has controllingFields: ["Core_MDF_Activity_Category__c"]
+        // This should trigger extractControllingFldFromMdt with array format
         get(new Map<String,String>{'programName'=>p,'controllingFieldValue'=>'MDF'});
         get(new Map<String,String>{'programName'=>p,'controllingFieldValue'=>'OEM CMP','fielddisplay'=>'label'});
         Test.stopTest();
     }
     
     @IsTest static void testControllingFieldsMetadataString() {
+        // Mock with controllingFields as string to test that path
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         String p = prog();
         Test.startTest();
+        // Core_MDF_Schema_Dep_Field__c has controllingFields as string
         get(new Map<String,String>{'programName'=>p});
         get(new Map<String,String>{'programName'=>p,'fielddisplay'=>'label'});
         Test.stopTest();
     }
     
+    // ===== SCHEMA DEPENDENCY MAP TESTS =====
+    // These trigger getSchemaDependencyMap, buildDependencyValFromSchema
+    // Uses mock with real field names to maximize schema coverage
+    
     @IsTest static void testSchemaDepMapWithRealFields() {
         Test.setMock(HttpCalloutMock.class, new RealFieldMock());
         String p = prog();
         Test.startTest();
+        // Use mock with fields that have empty validFor but real field references
         get(new Map<String,String>{'programName'=>p});
         get(new Map<String,String>{'programName'=>p,'controllingFieldValue'=>'MDF'});
         get(new Map<String,String>{'programName'=>p,'fielddisplay'=>'label'});
         Test.stopTest();
     }
     
+    // Mock that references actual Core_MDF_Custom_Picklist__c field names for schema describe path
     public class RealFieldMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
             res.setHeader('Content-Type', 'application/json');
+            // Use actual field API names from the object to trigger schema describe
             String body = '{"picklistFieldValues":{' +
                 '"Core_MDF_Controlling_Field_nm__c":{' +
                     '"controllerValues":{},' +
@@ -767,6 +868,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
                         '{"value":"OEM CMP","label":"OEM CMP","active":true,"validFor":[]}' +
                     ']' +
                 '},' +
+                // Activity Category depends on Controlling Field with empty validFor to trigger schema fallback
                 '"Core_MDF_Activity_Category__c":{' +
                     '"controllerValues":{"MDF":0,"OEM CMP":1},' +
                     '"controllingFields":["Core_MDF_Controlling_Field_nm__c"],' +
@@ -776,6 +878,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
                         '{"value":"Marketing","label":"Marketing","active":true,"validFor":[]}' +
                     ']' +
                 '},' +
+                // Activity Sub Category - empty validFor triggers buildDependencyValFromSchema
                 '"Core_MDF_Activity_Sub_Category__c":{' +
                     '"controllerValues":{"Demand Gen":0,"Marketing":1},' +
                     '"controllingFields":["Core_MDF_Activity_Category__c"],' +
@@ -796,6 +899,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.setMock(HttpCalloutMock.class, new ControllerMapMock());
         String p = prog();
         Test.startTest();
+        // This mock has complex controller value mappings to trigger
+        // buildControllerIndexToDisplayValueMap and buildControllerIndexToDisplayValMapFromCntrVal
         get(new Map<String,String>{'programName'=>p});
         get(new Map<String,String>{'programName'=>p,'controllingFieldValue'=>'Alpha'});
         get(new Map<String,String>{'programName'=>p,'controllingFieldValue'=>'Beta'});
@@ -803,6 +908,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
     
+    // Mock with active/inactive value mix for controller map building
     public class ControllerMapMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -842,11 +948,14 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.setMock(HttpCalloutMock.class, new InferenceMock());
         String p = prog();
         Test.startTest();
+        // This mock has ambiguous controller relationships to trigger
+        // inferCntrFldByControllerIndexMap matching logic
         get(new Map<String,String>{'programName'=>p});
         get(new Map<String,String>{'programName'=>p,'controllingFieldValue'=>'Val1'});
         Test.stopTest();
     }
     
+    // Mock for controller field inference (no controllingFields, must infer)
     public class InferenceMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -861,6 +970,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
                         '{"value":"Val3","label":"Value 3","active":true,"validFor":[]}' +
                     ']' +
                 '},' +
+                // No controllingFields - must use inferCntrFldByControllerIndexMap
                 '"Core_MDF_Activity_Category__c":{' +
                     '"controllerValues":{"Val1":0,"Val2":1,"Val3":2},' +
                     '"defaultValue":null,' +
@@ -881,11 +991,13 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.setMock(HttpCalloutMock.class, new MultiCandidateMock());
         String p = prog();
         Test.startTest();
+        // Multiple fields could be controllers, tests strict matching logic
         get(new Map<String,String>{'programName'=>p});
         get(new Map<String,String>{'programName'=>p,'controllingFieldValue'=>'X1'});
         Test.stopTest();
     }
     
+    // Mock with multiple controller candidates for ambiguous matching
     public class MultiCandidateMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -907,6 +1019,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
                         '{"value":"Y2","label":"Y Two","active":true,"validFor":[]}' +
                     ']' +
                 '},' +
+                // Dependent field - controllerValues match Core_MDF_Controlling_Field_nm__c
                 '"Core_MDF_Activity_Category__c":{' +
                     '"controllerValues":{"X1":0,"X2":1},' +
                     '"defaultValue":null,' +
@@ -926,12 +1039,14 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.setMock(HttpCalloutMock.class, new HtmlEncodedMock());
         String p = prog();
         Test.startTest();
+        // Test HTML entity decoding in picklist values
         get(new Map<String,String>{'programName'=>p});
         get(new Map<String,String>{'programName'=>p,'controllingFieldValue'=>'Value&Amp'});
         get(new Map<String,String>{'programName'=>p,'controllingFieldValue'=>'Value<Less'});
         Test.stopTest();
     }
     
+    // Mock with HTML entities in picklist values
     public class HtmlEncodedMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -966,11 +1081,13 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.setMock(HttpCalloutMock.class, new MissingValueMock());
         String p = prog();
         Test.startTest();
+        // Test handling of malformed values without 'value' key
         get(new Map<String,String>{'programName'=>p});
         get(new Map<String,String>{'programName'=>p,'fielddisplay'=>'label'});
         Test.stopTest();
     }
     
+    // Mock with some values missing 'value' key
     public class MissingValueMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -1002,6 +1119,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
     
+    // Mock with null controllerValues
     public class NullControllerMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -1029,6 +1147,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
     
+    // Mock with empty values array
     public class EmptyValuesMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -1055,11 +1174,13 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.setMock(HttpCalloutMock.class, new IndexMismatchMock());
         String p = prog();
         Test.startTest();
+        // Tests inferCntrFldByControllerIndexMap when indexes don't match perfectly
         get(new Map<String,String>{'programName'=>p});
         get(new Map<String,String>{'programName'=>p,'controllingFieldValue'=>'MDF'});
         Test.stopTest();
     }
     
+    // Mock with index values that don't exactly match candidate positions
     public class IndexMismatchMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -1082,6 +1203,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
                         '{"value":"Prog2","label":"Program 2","active":true,"validFor":[]}' +
                     ']' +
                 '},' +
+                // controllerValues keys don't match exactly with any candidate
                 '"Core_MDF_Activity_Category__c":{' +
                     '"controllerValues":{"MDF":0,"OEM":1,"IPA":2},' +
                     '"defaultValue":null,' +
@@ -1097,20 +1219,26 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         }
     }
     
+    // ===== STRING-BASED VALIDFOR TESTS =====
+    // Tests the bit-decoding path for string validFor values
+    
     @IsTest static void testStringBasedValidFor() {
         Test.setMock(HttpCalloutMock.class, new StringValidForMock());
         String p = prog();
         Test.startTest();
+        // Mock has string-encoded validFor to trigger buildControllerIndexToDisplayValueMap
         get(new Map<String,String>{'programName'=>p});
         get(new Map<String,String>{'programName'=>p,'controllingFieldValue'=>'Ctrl1'});
         get(new Map<String,String>{'programName'=>p,'fielddisplay'=>'label'});
         Test.stopTest();
     }
     
+    // Mock with string-encoded validFor (base64 bitfield style)
     public class StringValidForMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
             res.setHeader('Content-Type', 'application/json');
+            // Using string validFor to trigger bit-decoding path
             String body = '{"picklistFieldValues":{' +
                 '"Core_MDF_Controlling_Field_nm__c":{' +
                     '"controllerValues":{},' +
@@ -1145,12 +1273,14 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.setMock(HttpCalloutMock.class, new MixedValidForMock());
         String p = prog();
         Test.startTest();
+        // Mix of array and string validFor types
         get(new Map<String,String>{'programName'=>p});
         get(new Map<String,String>{'programName'=>p,'controllingFieldValue'=>'C1'});
         get(new Map<String,String>{'programName'=>p,'controllingFieldValue'=>'C2'});
         Test.stopTest();
     }
     
+    // Mock with mixed validFor types
     public class MixedValidForMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -1182,6 +1312,9 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         }
     }
     
+    // ===== LARGE CONTROLLER VALUE SET TEST =====
+    // Tests with many controlling values to exercise bit operations
+    
     @IsTest static void testLargeControllerSet() {
         Test.setMock(HttpCalloutMock.class, new LargeControllerMock());
         String p = prog();
@@ -1192,6 +1325,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
     
+    // Mock with 8+ controlling values to test bit indexing
     public class LargeControllerMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -1235,11 +1369,13 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.setMock(HttpCalloutMock.class, new NullActiveMock());
         String p = prog();
         Test.startTest();
+        // When active is null, defaults to true
         get(new Map<String,String>{'programName'=>p});
         get(new Map<String,String>{'programName'=>p,'fielddisplay'=>'label'});
         Test.stopTest();
     }
     
+    // Mock with null active flags (should default to true)
     public class NullActiveMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -1274,11 +1410,13 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.startTest();
         List<String> progs = new List<String>{'Client','Intel Partner Alliance','Retail Marketing Funds','Co-GTM','Datacenter'};
         
+        // Test with RealFieldMock
         Test.setMock(HttpCalloutMock.class, new RealFieldMock());
         for (String p : progs) {
             get(new Map<String,String>{'programName'=>p});
         }
         
+        // Test with InferenceMock  
         Test.setMock(HttpCalloutMock.class, new InferenceMock());
         for (String p : progs) {
             get(new Map<String,String>{'programName'=>p,'controllingFieldValue'=>'Val1'});
@@ -1295,6 +1433,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
     
+    // Mock with null values in controllingFields array
     public class NullInControllingFieldsMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -1331,10 +1470,12 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
     
+    // Mock with invalid types in controllerValues
     public class InvalidControllerValuesMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
             res.setHeader('Content-Type', 'application/json');
+            // controllerValues with string index (should be parsed as integer)
             String body = '{"picklistFieldValues":{' +
                 '"Core_MDF_Controlling_Field_nm__c":{' +
                     '"controllerValues":{},' +
@@ -1359,6 +1500,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         }
     }
     
+    // ===== ADDITIONAL HTML ENTITY TESTS =====
+    
     @IsTest static void testAllHtmlEntities() {
         Test.setMock(HttpCalloutMock.class, new AllHtmlEntitiesMock());
         String p = prog();
@@ -1370,6 +1513,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
     
+    // Mock with all HTML entity types
     public class AllHtmlEntitiesMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -1401,6 +1545,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         }
     }
     
+    // ===== NULL/BLANK EDGE CASES =====
+    
     @IsTest static void testNullFieldDetails() {
         Test.setMock(HttpCalloutMock.class, new NullFieldDetailsMock());
         String p = prog();
@@ -1409,6 +1555,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
     
+    // Mock with null nested structures
     public class NullFieldDetailsMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -1435,6 +1582,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
     
+    // Mock with null picklistFieldValues
     public class NullPicklistFieldValuesMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -1444,6 +1592,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
             return res;
         }
     }
+    
+    // ===== DEEP DEPENDENCY CHAIN TEST =====
     
     @IsTest static void testDeepDependencyChain() {
         Test.setMock(HttpCalloutMock.class, new DeepChainMock());
@@ -1455,6 +1605,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
     
+    // Mock with 4-level dependency chain
     public class DeepChainMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -1469,6 +1620,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
                         '{"value":"Root2","label":"Root Two","active":true,"validFor":[]}' +
                     ']' +
                 '},' +
+                // Level 1 - depends on Controlling Field
                 '"Core_MDF_Activity_Category__c":{' +
                     '"controllerValues":{"Root1":0,"Root2":1},' +
                     '"controllingFields":["Core_MDF_Controlling_Field_nm__c"],' +
@@ -1479,6 +1631,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
                         '{"value":"L1C","label":"Level 1 C","active":true,"validFor":[1]}' +
                     ']' +
                 '},' +
+                // Level 2 - depends on Activity Category (field-to-field)
                 '"Core_MDF_Activity_Sub_Category__c":{' +
                     '"controllerValues":{"L1A":0,"L1B":1,"L1C":2},' +
                     '"controllingFields":["Core_MDF_Activity_Category__c"],' +
@@ -1489,6 +1642,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
                         '{"value":"L2C","label":"Level 2 C","active":true,"validFor":[0,2]}' +
                     ']' +
                 '},' +
+                // Level 3 - depends on Sub Category (deeper chain)
                 '"Core_MDF_Tactic__c":{' +
                     '"controllerValues":{"L2A":0,"L2B":1,"L2C":2},' +
                     '"controllingFields":["Core_MDF_Activity_Sub_Category__c"],' +
@@ -1500,6 +1654,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
                         '{"value":"L3D","label":"Level 3 D","active":true,"validFor":[2]}' +
                     ']' +
                 '},' +
+                // Level 4 - depends on Tactic (deepest)
                 '"Core_MDF_Sub_Tactic__c":{' +
                     '"controllerValues":{"L3A":0,"L3B":1,"L3C":2,"L3D":3},' +
                     '"controllingFields":["Core_MDF_Tactic__c"],' +
@@ -1516,6 +1671,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         }
     }
     
+    // ===== MALFORMED JSON RESPONSE =====
+    
     @IsTest static void testMalformedJsonResponse() {
         Test.setMock(HttpCalloutMock.class, new MalformedJsonMock());
         String p = prog();
@@ -1524,6 +1681,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
     
+    // Mock with malformed JSON
     public class MalformedJsonMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -1534,9 +1692,12 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         }
     }
     
+    // ===== PROGRAM DEPENDENCY SPECIFIC =====
+    
     @IsTest static void testProgramDependencyWithMDFValue() {
         Test.setMock(HttpCalloutMock.class, new ProgramDepMock());
         Test.startTest();
+        // Test field dependent on Core_MDF_Program__c with specific program values
         get(new Map<String,String>{'programName'=>'Client'});
         get(new Map<String,String>{'programName'=>'Intel Partner Alliance'});
         get(new Map<String,String>{'programName'=>'Client','controllingFieldValue'=>'MDF'});
@@ -1544,6 +1705,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
     
+    // Mock focused on program dependency
     public class ProgramDepMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -1566,6 +1728,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
                         '{"value":"Retail Marketing Funds","label":"Retail Program","active":true,"validFor":[]}' +
                     ']' +
                 '},' +
+                // This field depends on Program (triggers isDependentOnProg)
                 '"Core_MDF_Program_Option__c":{' +
                     '"controllerValues":{"Client":0,"Intel Partner Alliance":1,"Retail Marketing Funds":2},' +
                     '"controllingFields":["Core_MDF_Program__c"],' +
@@ -1577,6 +1740,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
                         '{"value":"AllPrograms","label":"All Programs Option","active":true,"validFor":[0,1,2]}' +
                     ']' +
                 '},' +
+                // Regular dependency on Controlling Field
                 '"Core_MDF_Activity_Category__c":{' +
                     '"controllerValues":{"MDF":0,"OEM CMP":1},' +
                     '"controllingFields":["Core_MDF_Controlling_Field_nm__c"],' +
@@ -1594,6 +1758,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         }
     }
     
+    // ===== DEFAULT VALUE TEST =====
+    
     @IsTest static void testDefaultValueProcessing() {
         Test.setMock(HttpCalloutMock.class, new DefaultValueMock());
         String p = prog();
@@ -1603,6 +1769,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
     
+    // Mock with various default value formats
     public class DefaultValueMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -1631,6 +1798,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         }
     }
     
+    // ===== CONTROLLER VALUE INDEX EDGE CASES =====
+    
     @IsTest static void testControllerIndexEdgeCases() {
         Test.setMock(HttpCalloutMock.class, new IndexEdgeMock());
         String p = prog();
@@ -1640,6 +1809,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
     
+    // Mock with index edge cases (gaps, high numbers)
     public class IndexEdgeMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -1673,6 +1843,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         }
     }
     
+    // ===== BLANK/WHITESPACE IN VALUES =====
+    
     @IsTest static void testBlankWhitespaceValues() {
         Test.setMock(HttpCalloutMock.class, new BlankValuesMock());
         String p = prog();
@@ -1683,6 +1855,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
     
+    // Mock with blank/whitespace values
     public class BlankValuesMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -1704,6 +1877,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         }
     }
     
+    // ===== CASE SENSITIVITY TESTS =====
+    
     @IsTest static void testCaseSensitivity() {
         Test.setMock(HttpCalloutMock.class, new CaseSensitiveMock());
         String p = prog();
@@ -1714,6 +1889,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
     
+    // Mock with mixed case values
     public class CaseSensitiveMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -1745,13 +1921,17 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         }
     }
     
+    // ===== COMPREHENSIVE ALL-PATH TEST =====
+    
     @IsTest static void testComprehensivePaths() {
         Test.setMock(HttpCalloutMock.class, new PicklistMock());
         Test.startTest();
+        // Test with all combinations of parameters across all programs
         List<String> allProgs = new List<String>{'Client','Intel Partner Alliance','Retail Marketing Funds','Co-GTM','Datacenter'};
         List<String> allCtrls = new List<String>{'MDF','OEM CMP','MDF+'};
         List<String> allDisplays = new List<String>{'label','technicalname',''};
         
+        // Iterate through combinations (limited to avoid governor limits)
         for (Integer i = 0; i < allProgs.size(); i++) {
             String prog = allProgs[i];
             String ctrl = allCtrls[Math.mod(i, allCtrls.size())];
@@ -1765,7 +1945,9 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         }
         Test.stopTest();
     }
-        
+    
+    // ===== NULL IN VALIDFOR ARRAY =====
+    
     @IsTest static void testNullInValidForArray() {
         Test.setMock(HttpCalloutMock.class, new NullValidForMock());
         String p = prog();
@@ -1775,6 +1957,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
     
+    // Mock with null values inside validFor arrays
     public class NullValidForMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -1805,6 +1988,8 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         }
     }
     
+    // ===== DUPLICATE VALUES TEST =====
+    
     @IsTest static void testDuplicateValues() {
         Test.setMock(HttpCalloutMock.class, new DuplicateValuesMock());
         String p = prog();
@@ -1814,6 +1999,7 @@ private class Core_MDF_PicklistAttributes_RestAPI_Test {
         Test.stopTest();
     }
     
+    // Mock with duplicate/similar values
     public class DuplicateValuesMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PIC Calculation (DNU)</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PIC Calculation (DNU)</value>
+    </caseValues>
+    <fields>
+        <label><!-- Count --></label>
+        <name>Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Direct_MSP_WW_ValidFromDate --></label>
+        <name>Direct_MSP_WW_ValidFromDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Direct_MSP_WW_ValidToDate --></label>
+        <name>Direct_MSP_WW_ValidToDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Direct_MSP_WW --></label>
+        <name>Direct_MSP_WW__c</name>
+    </fields>
+    <fields>
+        <label><!-- DivisionName --></label>
+        <name>DivisionName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Family ALP Price --></label>
+        <name>Family_ALP_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Family Org UnitPrice --></label>
+        <name>Family_Org_UnitPrice__c</name>
+    </fields>
+    <fields>
+        <label><!-- LOB (based on PC) --></label>
+        <name>LOB_based_on_PC__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMID --></label>
+        <name>MMID__c</name>
+    </fields>
+    <fields>
+        <label><!-- OperationCode --></label>
+        <name>OperationCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- ProductFamilyEPMId --></label>
+        <name>ProductFamilyEPMId__c</name>
+    </fields>
+    <fields>
+        <label><!-- ProductSeriesEPMId --></label>
+        <name>ProductSeriesEPMId__c</name>
+    </fields>
+    <fields>
+        <label><!-- ProductSeriesGroupEPMId --></label>
+        <name>ProductSeriesGroupEPMId__c</name>
+    </fields>
+    <fields>
+        <label><!-- ProductType --></label>
+        <name>ProductType__c</name>
+    </fields>
+    <fields>
+        <label><!-- ProfitCenterCode --></label>
+        <name>ProfitCenterCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- SeriesGroup ALP Price --></label>
+        <name>SeriesGroup_ALP_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- SeriesGroup Org UnitPrice --></label>
+        <name>SeriesGroup_Org_UnitPrice__c</name>
+    </fields>
+    <fields>
+        <label><!-- Series ALP Price --></label>
+        <name>Series_ALP_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Series Org Unit Price --></label>
+        <name>Series_Org_Unit_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- ShippingMediaCode --></label>
+        <name>ShippingMediaCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- VerticalSegmentCode --></label>
+        <name>VerticalSegmentCode__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -5,9 +5,6 @@
         <field>AMOUNT</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Sales_Groups__c</field>
-    </columns>
-    <columns>
         <field>EXP_AMOUNT</field>
     </columns>
     <columns>
@@ -90,13 +87,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Smart &amp; Connected Home</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Sales_Groups__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Taiwan</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>CCP Retail ASMO LAR Fin Mgr Escl L1 Que</name>
+    <queueSobject>
+        <sobjectType>Core_MDF_Escalation__c</sobjectType>
+    </queueSobject>
+</Queue>

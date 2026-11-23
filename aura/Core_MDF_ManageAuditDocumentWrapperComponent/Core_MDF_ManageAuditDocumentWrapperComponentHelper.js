@@ -3,7 +3,7 @@
     -> If all the mandatory document types are submitted and any change on the audit document list
     (on upload of new doc/change in document types of existing documents), then 'checkForPOPDocSubmissionRequired' is executed
     * If all the amandatory document types are not submitted, on click of submit 'Please Upload mandatory Document Types' toast message is displayed
-    */
+    */    
     checkForNewlyUploadedOrEditedAuditDocuments: function (component, event, helper) {
         component.set("v.spinner", true);
         let manageAuditComponent = component.find("manageAuditComponent");
@@ -20,8 +20,12 @@
             //isClaimEligibleForPICReview -> true when the claim is any of the following statuses - resubmission required, pending documents, paid and pending documents, paid and resubmission required
             let isClaimEligibleForPICReview = manageAuditComponent.get("v.isClaimEligibleForPICReview");
             component.set("v.isClaimEligibleForPICReview", isClaimEligibleForPICReview);
+            //Aditya
+            // let isOutComeBased = manageAuditComponent.get("v.isOutComeBased");
+			// component.set("v.isOutComeBased", isOutComeBased);
             let isOutcomeBasedAccountBasedAct = manageAuditComponent.get("v.isOutcomeBasedAccountBasedAct");
             component.set("v.isOutcomeBasedAccountBasedAct", isOutcomeBasedAccountBasedAct);
+            console.log("isOutcomeBasedAccountBasedAct==>", isOutcomeBasedAccountBasedAct)
             //isDocSubmissionMandatory - true for non legacy claims and legacy claims(with only PIC Pending and paid and PIC Pending status)
             let isDocSubmissionMandatory = manageAuditComponent.get("v.isDocSubmissionMandatory");
             component.set("v.isDocSubmissionMandatory", isDocSubmissionMandatory);
@@ -34,7 +38,12 @@
              */
             if (isDocSubmissionMandatory && !isAllMandatoryDocumentTypesSubmitted && manageAuditComponent.get("v.auditDocumentDetailsWrapper") != null && manageAuditComponent.get("v.auditDocumentDetailsWrapper.enableDocumentUploadSection")) {
                 component.set("v.spinner", false);
-                this.displayToastMesage($A.get("$Label.c.Core_MDF_Mandatory_Document_Types_Error_Message"), "Error");
+                //this.displayToastMesage($A.get("$Label.c.Core_MDF_Mandatory_Document_Types_Error_Message"), "Error");
+                this.displayToastMesage("from wrapper component", "Error");
+                console.log("isDocSubmissionMandatory", isDocSubmissionMandatory);
+                console.log("isAllMandatoryDocumentTypesSubmitted", isAllMandatoryDocumentTypesSubmitted);
+                console.log("auditDocumentDetailsWrapper null check", manageAuditComponent.get("v.auditDocumentDetailsWrapper"));
+				console.log("enableDocumentUploadSection", manageAuditComponent.get("v.auditDocumentDetailsWrapper.enableDocumentUploadSection"))
             } else if (component.get("v.auditDocumentListToInsertOrUpdate").length > 0) {
                 //component.set("v.auditDocumentListToInsertOrUpdate", auditDocumentListToInsertOrUpdate);
                 this.isClaimEligibleForPICReview(component);
@@ -62,7 +71,7 @@
     //To display the document submission confirmation popup on click of yes from 'Submit for PIC' for Non-Legacy claims
     checkForPOPDocSubmissionRequired: function (component) {
         let isDocSubmissionMandatory = component.get("v.isDocSubmissionMandatory");
-        let isLegacyClaim = component.get("v.isLegacyClaim");
+        let isLegacyClaim = component.get("v.isLegacyClaim");        
         if (isDocSubmissionMandatory) {
             if (!isLegacyClaim) {
                 component.set("v.showConfirmationPopupForPIC", false);
@@ -97,7 +106,7 @@
             if (state.toLowerCase() === "success") {
                 component.set("v.isDocSubmissionPopupVisible", false);
                 component.set("v.openManageAuditDocPopup", false);
-                component.set("v.spinner", false);
+                component.set("v.spinner", false);                
                 this.displayToastMesage($A.get("$Label.c.Core_MDF_Manage_Document_Submit_Success_Message"), "Success");
                 $A.get('e.force:refreshView').fire();
                 var navEvt = $A.get("e.force:navigateToSObject");

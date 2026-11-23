@@ -23,8 +23,8 @@
     <actionCalls>
         <name>Core_MDF_NotifyCampaign_Owner_On_Terminal_Rejection</name>
         <label>Core MDF NotifyCampaign Owner On Terminal Rejection</label>
-        <locationX>1986</locationX>
-        <locationY>2495</locationY>
+        <locationX>1810</locationX>
+        <locationY>2987</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -75,18 +75,21 @@
         <inputParameters>
             <name>notificationName</name>
             <value>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
                 <stringValue>ProjectAcceptance</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
             <name>objectName</name>
             <value>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
                 <stringValue>CAMP - Campaign</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
             <name>permissionSetName</name>
             <value>
+                <inputConfiguratorMode>Custom</inputConfiguratorMode>
                 <stringValue>Core_MDF_CCP_Internal_Co_GTM_Business_Approver</stringValue>
             </value>
         </inputParameters>
@@ -111,6 +114,7 @@
         <inputParameters>
             <name>region</name>
             <value>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
                 <stringValue>WW</stringValue>
             </value>
         </inputParameters>
@@ -130,6 +134,7 @@
             <name>ultimateAccountId</name>
             <value>
                 <elementReference>$Record.Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
             </value>
         </inputParameters>
         <nameSegment>Core_MDF_DetermineEmailRecipients</nameSegment>
@@ -158,7 +163,7 @@
     <actionCalls>
         <name>SendEmail_To_Proposal_Owner_On_Acceptance</name>
         <label>SendEmail To Proposal Owner On Acceptance</label>
-        <locationX>1458</locationX>
+        <locationX>1590</locationX>
         <locationY>2279</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
@@ -202,8 +207,8 @@
     <actionCalls>
         <name>SendEmail_To_Proposal_Owner_On_Rejection</name>
         <label>SendEmail To Proposal Owner On Rejection</label>
-        <locationX>1722</locationX>
-        <locationY>2387</locationY>
+        <locationX>1546</locationX>
+        <locationY>2879</locationY>
         <actionName>Core_MDF_GenericClassToSendMail</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -243,7 +248,7 @@
     <actionCalls>
         <name>Submit_CoGTM_Campaign_For_Approval_process</name>
         <label>Submit CoGTM Campaign For Approval process</label>
-        <locationX>1309</locationX>
+        <locationX>1337</locationX>
         <locationY>1655</locationY>
         <actionName>submit</actionName>
         <actionType>submit</actionType>
@@ -276,7 +281,7 @@
     <actionCalls>
         <name>Submit_IPA_Campaign_For_Approval_process</name>
         <label>Submit IPA Campaign For Approval process</label>
-        <locationX>1309</locationX>
+        <locationX>1337</locationX>
         <locationY>647</locationY>
         <actionName>submit</actionName>
         <actionType>submit</actionType>
@@ -334,7 +339,7 @@
     <assignments>
         <name>In_Progress_Pending_Review_PFR_records</name>
         <label>In-Progress Pending Review PFR records</label>
-        <locationX>1397</locationX>
+        <locationX>1425</locationX>
         <locationY>1079</locationY>
         <assignmentItems>
             <assignToReference>Loop_PFR_records.Core_MDF_Fund_Request_Status__c</assignToReference>
@@ -380,7 +385,7 @@
     <assignments>
         <name>Pending_review_PFR_records</name>
         <label>Pending review PFR records</label>
-        <locationX>1661</locationX>
+        <locationX>1689</locationX>
         <locationY>1079</locationY>
         <assignmentItems>
             <assignToReference>Loop_PFR_records.Core_MDF_Fund_Request_Status__c</assignToReference>
@@ -403,7 +408,7 @@
     <assignments>
         <name>Recipient_Id_assignment</name>
         <label>Recipient Id assignment</label>
-        <locationX>1689</locationX>
+        <locationX>1744</locationX>
         <locationY>2063</locationY>
         <assignmentItems>
             <assignToReference>RecipientId</assignToReference>
@@ -419,7 +424,7 @@
     <decisions>
         <name>Cancel_MDF_RMF_Campaigns</name>
         <label>Cancel MDF/RMF Campaigns</label>
-        <locationX>463</locationX>
+        <locationX>470</locationX>
         <locationY>323</locationY>
         <defaultConnector>
             <targetReference>Cancel_Proposalbased_Projectbased_campaign</targetReference>
@@ -486,7 +491,7 @@
     <decisions>
         <name>Cancel_Proposalbased_Projectbased_campaign</name>
         <label>Cancel Proposal based/Project based campaign</label>
-        <locationX>877</locationX>
+        <locationX>891</locationX>
         <locationY>431</locationY>
         <defaultConnector>
             <targetReference>Submit_IPA_Campaign_for_Approval</targetReference>
@@ -557,7 +562,7 @@
     <decisions>
         <name>Check_PFR_Status</name>
         <label>Check PFR Status</label>
-        <locationX>1661</locationX>
+        <locationX>1689</locationX>
         <locationY>971</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -638,8 +643,8 @@
     <decisions>
         <name>Core_MDF_Check_Terminal_Rejection</name>
         <label>Check Terminal Rejection</label>
-        <locationX>2118</locationX>
-        <locationY>2387</locationY>
+        <locationX>1942</locationX>
+        <locationY>2879</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_Proposal_is_Rejected_Terminally</name>
@@ -674,7 +679,7 @@
     <decisions>
         <name>Notify_Proposal_based_project_based_Users_on_Proposal_Acceptance</name>
         <label>Notify Proposal based/project based Users on Proposal Acceptance</label>
-        <locationX>1689</locationX>
+        <locationX>1744</locationX>
         <locationY>2171</locationY>
         <defaultConnector>
             <targetReference>Notify_proposal_based_project_based_Users_on_Proposal_Rejection</targetReference>
@@ -755,8 +760,8 @@
     <decisions>
         <name>Notify_proposal_based_project_based_Users_on_Proposal_Rejection</name>
         <label>Notify proposal based/project based Users on Proposal Rejection</label>
-        <locationX>1920</locationX>
-        <locationY>2279</locationY>
+        <locationX>1744</locationX>
+        <locationY>2771</locationY>
         <defaultConnector>
             <targetReference>Core_MDF_Check_Terminal_Rejection</targetReference>
         </defaultConnector>
@@ -794,7 +799,7 @@
     <decisions>
         <name>Pending_Approval_Proposal_based_Project_based_Campaign</name>
         <label>Pending Approval Proposal based/Project based Campaign</label>
-        <locationX>1441</locationX>
+        <locationX>1469</locationX>
         <locationY>1955</locationY>
         <defaultConnector>
             <targetReference>Recipient_Id_assignment</targetReference>
@@ -819,7 +824,7 @@
     <decisions>
         <name>Submit_Co_GTM_Campaign_for_Approval</name>
         <label>Submit Co-GTM Campaign for Approval</label>
-        <locationX>1441</locationX>
+        <locationX>1469</locationX>
         <locationY>1547</locationY>
         <defaultConnector>
             <targetReference>Pending_Approval_Proposal_based_Project_based_Campaign</targetReference>
@@ -844,7 +849,7 @@
     <decisions>
         <name>Submit_IPA_Campaign_for_Approval</name>
         <label>Submit IPA Campaign for Approval</label>
-        <locationX>1441</locationX>
+        <locationX>1469</locationX>
         <locationY>539</locationY>
         <defaultConnector>
             <targetReference>Submit_Co_GTM_Campaign_for_Approval</targetReference>
@@ -940,7 +945,7 @@ ISPICKVAL({!$Record.Status , &apos;Revision Required&apos;}) &amp;&amp;
     <loops>
         <name>Loop_PFR_records</name>
         <label>Loop PFR records</label>
-        <locationX>1309</locationX>
+        <locationX>1337</locationX>
         <locationY>863</locationY>
         <collectionReference>PFRrecordList</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -987,7 +992,7 @@ ISPICKVAL({!$Record.Status , &apos;Revision Required&apos;}) &amp;&amp;
     <recordLookups>
         <name>Get_PFR_records</name>
         <label>Get PFR records</label>
-        <locationX>1309</locationX>
+        <locationX>1337</locationX>
         <locationY>755</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1150,7 +1155,7 @@ ISPICKVAL({!$Record.Status , &apos;Revision Required&apos;}) &amp;&amp;
     <recordUpdates>
         <name>update_PendingReview_CoGTM_records</name>
         <label>update PendingReview CoGTM records</label>
-        <locationX>1309</locationX>
+        <locationX>1337</locationX>
         <locationY>1763</locationY>
         <connector>
             <targetReference>Pending_Approval_Proposal_based_Project_based_Campaign</targetReference>
@@ -1209,7 +1214,7 @@ ISPICKVAL({!$Record.Status , &apos;Revision Required&apos;}) &amp;&amp;
     <recordUpdates>
         <name>Update_PFR_status</name>
         <label>Update PFR status</label>
-        <locationX>1309</locationX>
+        <locationX>1337</locationX>
         <locationY>1355</locationY>
         <connector>
             <targetReference>Submit_Co_GTM_Campaign_for_Approval</targetReference>
@@ -1224,7 +1229,7 @@ ISPICKVAL({!$Record.Status , &apos;Revision Required&apos;}) &amp;&amp;
         <inputReference>PendingApprovalPFRList</inputReference>
     </recordUpdates>
     <start>
-        <locationX>337</locationX>
+        <locationX>344</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Cancel_MDF_RMF_Campaigns</targetReference>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnalyticSnapshot xmlns="http://soap.sforce.com/2006/04/metadata">
+    <mappings>
+        <sourceField>PartnerFundRequest$Core_MDF_Fund_Request_Status__c</sourceField>
+        <sourceType>tabular</sourceType>
+        <targetField>Activity_Status_Changed__e.Core_MDF_Activity_Status_txt__c</targetField>
+    </mappings>
+    <mappings>
+        <sourceField>PartnerFundRequest$Id</sourceField>
+        <sourceType>tabular</sourceType>
+        <targetField>Activity_Status_Changed__e.Core_MDF_Activity_Id_txt__c</targetField>
+    </mappings>
+    <mappings>
+        <sourceField>PartnerFundRequest$Core_MDF_Program__c</sourceField>
+        <sourceType>tabular</sourceType>
+        <targetField>Activity_Status_Changed__e.Core_MDF_Program_txt__c</targetField>
+    </mappings>
+    <name>test</name>
+    <runningUser>12101607@intel.com.crm</runningUser>
+    <sourceReport>Core_MDF_Activity_Module/Core_MDF_ATFActivities_with_Intel_Contri_mismatch</sourceReport>
+    <targetObject>Activity_Status_Changed__e</targetObject>
+</AnalyticSnapshot>

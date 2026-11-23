@@ -13,6 +13,7 @@ global class Core_UserFieldTrackerRecordDeleter implements Database.Batchable<sO
         Integer strtToIntvalue = Integer.valueOf(customLabelValue.trim());
         Date dateVal= System.today()-strtToIntvalue;
         Date dateLimit = dateVal+1;
+       List<Core_User_Field_Change_History__c> query = new List<Core_User_Field_Change_History__c>();
         
        //Getting those records older than number of days stored in the custom label
        return Database.getQueryLocator('SELECT ID FROM Core_User_Field_Change_History__c WHERE  CreatedDate>=:dateVal AND CreatedDate<:dateLimit');

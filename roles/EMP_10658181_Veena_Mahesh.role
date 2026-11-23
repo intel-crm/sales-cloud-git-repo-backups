@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Inactive account</description>
+    <description>EMP of Julie Whitcraft</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_10658181_Veena_Mahesh</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>Inactive_Accounts_Role</parentRole>
+    <parentRole>EMP_10523892_Julie_Whitcraft</parentRole>
 </Role>

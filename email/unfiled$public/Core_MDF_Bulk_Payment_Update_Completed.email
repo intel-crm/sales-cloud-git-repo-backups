@@ -1,0 +1,10 @@
+<div>
+<p>Dear Intel User,</p>
+<p>Your requested bulk status update for payment records has completed successfully.</p>
+<p>Details:<br/>- Payment Run: {{PAYMENT_RUN}}</p>
+<p>Processing Summary:<br/>
+- Total Records Processed: {{TOTAL_COUNT}}<br/>
+- Successfully Updated: {{SUCCESS_COUNT}}<br/>
+- Failed Updates: {{FAILED_COUNT}}</p>
+<p>You can view the updated records in the portal here: <a href="{{PAYMENT_RUN_URL}}">{{PAYMENT_RUN}}</a></p>
+</div>

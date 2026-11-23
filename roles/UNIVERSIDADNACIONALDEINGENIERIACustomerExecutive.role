@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>UNIVERSIDAD NACIONAL DE INGENIERIA Customer Executive</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>UNIVERSIDAD NACIONAL DE INGENIERIA Customer Executive</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_11645640_Farzad_Yousefi</parentRole>
+</Role>

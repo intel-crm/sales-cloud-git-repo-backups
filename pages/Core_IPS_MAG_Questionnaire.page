@@ -7,7 +7,7 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Sugandha                   17/08/2018               Created (US# US148915 I15)
 ------------------------------------------------------------------------------------------------------------>
-<apex:page standardController="Case" extensions="Core_IPS_MAG_Questionnaire_Controller" sidebar="false" lightningStyleSheets="true"> 
+<apex:page standardController="Case" extensions="Core_IPS_MAG_Questionnaire_Controller" sidebar="false" >
     <script>function setFocusOnLoad() {}
     </script>
     <apex:includeScript value="{!$Resource.Core_IPS_Jquery11}"/>
@@ -60,7 +60,7 @@ Modification Log :
                 
                 this.input = $( "<input>" )
                 .appendTo( this.wrapper )
-                .val( {!JSENCODE('value')} )  //Added by Nagendra for client potential xss 14/11/22
+                .val( value )
                 .attr( "title", "" )
                 .attr( "placeholder", "--Select--" )
                 .addClass( "custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left" )
@@ -269,12 +269,11 @@ Modification Log :
                         <apex:commandButton action="{!CancelOperation}" value="Cancel" status="status1" rendered="{!isEditable}" />
                         <apex:commandButton action="{!CancelOperation}" value="Return" status="status1" rendered="{!!isEditable}" />
                     </apex:pageBlockButtons>
-                    <!-- MINDS Questionnaire section -->
-                    <!-- Modified Title US253171-->
-                    <apex:pageblockSection title="MINDS Questionnaire" columns="1" > 
+                    <!-- MAG Questionnaire section -->
+                    <apex:pageblockSection title="MAG Questionnaire" columns="1" > 
                         <apex:repeat var="magQ" value="{!lstQuestions}">
                             <apex:pageBlockSectionItem id="section1" labelStyle="width:30%" dataStyle="width50%" rendered="{!!magQ.dependentQues}">
-                                <apex:outputLabel value="{!JSENCODE(magQ.question)}" escape="true" rendered="{!!magQ.dependentQues}" ></apex:outputLabel>
+                                <apex:outputLabel value="{!magQ.question}" escape="true" rendered="{!!magQ.dependentQues}" ></apex:outputLabel>
                                 <apex:outputPanel id="panel" >
                                     <!-- Picklist -->
                                     <apex:outputPanel rendered="{!magQ.answerType = 'picklist' && !magQ.dependentQues}">                          

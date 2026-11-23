@@ -554,7 +554,9 @@ Modified By:        Date:       Changes:
         Map<string,Core_MDF_CCP_Custom_Metadata_Utility__c> costCenterkeyMap = new Map<String,Core_MDF_CCP_Custom_Metadata_Utility__c>();  
         try{
             List<Core_MDF_CCP_Custom_Metadata_Utility__c> mdtList=[Select id, Core_MDF_Sub_Category__c,Core_MDF_Region_Country__c, Core_MDF_Name_Criteria__c, Core_MDF_Value__c from Core_MDF_CCP_Custom_Metadata_Utility__c where Core_MDF_Category__c = 'Payment' and Core_MDF_Program__c =: program order by Name];
-            if(mdtList !=null){
+            //ATHR - Deeply Nested if 16209
+            if(mdtList ==null) return paymentSubCatWrapper;
+            //if(mdtList !=null){
               for(Core_MDF_CCP_Custom_Metadata_Utility__c mdt : mdtList){
                   String paymentSubCategoryKey = mdt.Core_MDF_Sub_Category__c;
                 if(paymentSubCategoryKey == 'GEO_APPR' && mdt.Core_MDF_Region_Country__c == geo){
@@ -571,7 +573,7 @@ Modified By:        Date:       Changes:
               }
               paymentSubCatWrapper.paymentApproverKeyValueMap = paymentApproverKeyMap; 
               paymentSubCatWrapper.costCenterKeyValueMap = costCenterkeyMap;
-            }
+            //}
         }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}  
       return paymentSubCatWrapper;
 

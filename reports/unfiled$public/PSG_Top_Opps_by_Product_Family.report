@@ -115,7 +115,7 @@
         <chartType>VerticalColumn</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>Opportunity.Core_Intel_Platform__c</groupingColumn>
+        <groupingColumn>BucketField_82354991</groupingColumn>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -158,16 +158,13 @@
         <field>Opportunity.Core_Opportunity_Products__c</field>
     </columns>
     <columns>
+        <field>Product2.Core_Product_Series__c</field>
+    </columns>
+    <columns>
         <field>OpportunityLineItem.Core_KPI_Product_Group__c</field>
     </columns>
     <columns>
         <field>BucketField_96858621</field>
-    </columns>
-    <columns>
-        <field>BucketField_82354991</field>
-    </columns>
-    <columns>
-        <field>Product2.Core_Product_Series__c</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -195,9 +192,12 @@
     </filter>
     <format>Summary</format>
     <groupingsDown>
+        <aggregateType>Sum</aggregateType>
         <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Intel_Platform__c</field>
-        <sortOrder>Asc</sortOrder>
+        <field>BucketField_82354991</field>
+        <sortByName>TOTAL_PRICE</sortByName>
+        <sortOrder>Desc</sortOrder>
+        <sortType>Aggregate</sortType>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>

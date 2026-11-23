@@ -1,0 +1,41 @@
+<template> 
+    Desktop
+    <!-- <template if:true={phoneOrDesktop}>
+        <p> Desktop </p> --> 
+      <template for:each={recordsToRender} for:item="rec"> 
+        <div class="slds-card" key={rec.name}>
+        <lightning-layout class="slds-page-header slds-page-header--object-home">
+            <lightning-layout-item>
+                <lightning-icon icon-name="standard:approval"></lightning-icon>
+                
+            </lightning-layout-item>
+            <lightning-layout-item size="11" padding="horizontal-small">
+              <h1 class="slds-text-heading--label">Approval Request</h1>
+            <dd class="slds-item_detail slds-truncate slds-text-heading_medium" key={rec.name}><b>{rec.name}</b></dd>
+            </lightning-layout-item>
+          </lightning-layout>
+            </div>
+          
+            <div class="slds-card slds-p-around_small" key={rec.name}>
+            <div class="c-container" key={rec.name}>
+              <lightning-layout>
+            <template for:each={rec.fields} for:item="recfield">
+             
+              <div class="slds-grid slds-wrap" key={recfield.fieldLabel}>
+                <div class="slds-col">
+                 <lightning-layout-item padding="around-small" size="12" medium-device-size="4"> 
+                  
+                  <div class="header-column slds-size_1-of-1 slds-max-small-size_1-of-5" >
+                      <p class="field-title">{recfield.fieldLabel}</p>
+                      <p>{recfield.fieldValue}</p>
+                  </div>
+                </lightning-layout-item>
+                </div>
+              </div>
+          </template>
+        </lightning-layout> 
+        </div>
+      </div>
+    </template>
+     <!--</template> -->
+    </template>

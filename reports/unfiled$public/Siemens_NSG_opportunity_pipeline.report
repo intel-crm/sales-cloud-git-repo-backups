@@ -39,7 +39,7 @@
         <chartType>HorizontalBarStacked</chartType>
         <enableHoverLabels>true</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
+        <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_TOP</location>
         <secondaryGroupingColumn>STAGE_NAME</secondaryGroupingColumn>
@@ -106,10 +106,10 @@
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Siemens opportunities - by Intel BU</name>
+    <name>Siemens BU opportunity pipeline</name>
     <params>
         <name>terr</name>
         <value>all</value>

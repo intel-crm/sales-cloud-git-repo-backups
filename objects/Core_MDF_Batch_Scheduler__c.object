@@ -308,7 +308,7 @@
     <fields>
         <fullName>Core_MDF_Enable_Email_Notification__c</fullName>
         <defaultValue>false</defaultValue>
-        <description>Field to enable Email notifications to intended users. Default recipient is user who configures the Batch Scheduler for a batch job.</description>
+        <description>Field to enable Email notifications to intended users. Default recipient is user who configures the Batch Scheduler for a batch job</description>
         <inlineHelpText>The email template need to be configured per Program/Batch Job.</inlineHelpText>
         <label>Enable Email Notification</label>
         <trackHistory>false</trackHistory>
@@ -692,11 +692,6 @@
             <valueSetDefinition>
                 <sorted>true</sorted>
                 <value>
-                    <fullName>A&amp;E</fullName>
-                    <default>false</default>
-                    <label>A&amp;E</label>
-                </value>
-                <value>
                     <fullName>ACM</fullName>
                     <default>false</default>
                     <label>ACM</label>
@@ -808,39 +803,12 @@ IF( Core_MDF_Completed_Item_Count_Nbr__c &gt;0,&apos;Finished&apos;,&apos;Failed
         <columns>Core_MDF_Job_Frequency__c</columns>
         <columns>Core_MDF_Priority__c</columns>
         <columns>Core_MDF_Scheduler_Status_Txt__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_MDF_Batch_Class_Name_Txt__c</field>
-            <operation>equals</operation>
-            <value>Core_Account_B2B_Flag_Cleanup_Batch</value>
-        </filters>
-        <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>All_IPA_Batches</fullName>
-        <columns>NAME</columns>
-        <columns>Core_MDF_Program_Txt__c</columns>
-        <columns>Core_MDF_Batch_Class_Name_Txt__c</columns>
-        <columns>Core_MDF_Batch_Size_Nbr__c</columns>
-        <columns>Core_MDF_Job_Frequency__c</columns>
-        <columns>Core_MDF_Priority__c</columns>
-        <columns>Core_MDF_Scheduler_Status_Txt__c</columns>
-        <columns>Core_MDF_Effective_Start_Time_Dt__c</columns>
-        <columns>Core_MDF_Effective_End_Time_Dt__c</columns>
+        <columns>Core_MDF_Object_JSON_Txt__c</columns>
         <columns>Core_MDF_Inactive__c</columns>
-        <columns>Core_MDF_Next_Batch_Run_Time_Txt__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>CREATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_MDF_Program_Txt__c</field>
-            <operation>equals</operation>
-            <value>IPA</value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Scheduler_Status_Txt__c</field>
-            <operation>notEqual</operation>
-            <value>Cancelled</value>
-        </filters>
-        <label>All IPA Batches</label>
+        <label>All</label>
     </listViews>
     <listViews>
         <fullName>Completed_Batches</fullName>
@@ -856,50 +824,6 @@ IF( Core_MDF_Completed_Item_Count_Nbr__c &gt;0,&apos;Finished&apos;,&apos;Failed
             <value>Failed,Finished</value>
         </filters>
         <label>Completed Batches</label>
-    </listViews>
-    <listViews>
-        <fullName>Core_MDF_Recovery_Batch</fullName>
-        <columns>NAME</columns>
-        <columns>Core_MDF_Scheduler_Status_Txt__c</columns>
-        <columns>Scheduled_Time_Dt__c</columns>
-        <columns>Core_MDF_Status_Txt__c</columns>
-        <columns>Core_MDF_Next_Batch_Run_Time_Txt__c</columns>
-        <columns>Core_MDF_Object_JSON_Txt__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_MDF_Batch_Class_Name_Txt__c</field>
-            <operation>equals</operation>
-            <value>Core_MDF_Recovery_Batch</value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Scheduler_Status_Txt__c</field>
-            <operation>equals</operation>
-            <value>Scheduled</value>
-        </filters>
-        <label>Core_MDF_Recovery_Batch</label>
-    </listViews>
-    <listViews>
-        <fullName>PCC_Jobs</fullName>
-        <booleanFilter>1 OR 2</booleanFilter>
-        <columns>NAME</columns>
-        <columns>Core_MDF_Program_Txt__c</columns>
-        <columns>Core_MDF_Batch_Class_Name_Txt__c</columns>
-        <columns>Core_MDF_Batch_Size_Nbr__c</columns>
-        <columns>Core_MDF_Job_Frequency__c</columns>
-        <columns>Core_MDF_Priority__c</columns>
-        <columns>Core_MDF_Scheduler_Status_Txt__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_MDF_Batch_Class_Name_Txt__c</field>
-            <operation>contains</operation>
-            <value>PCC</value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Batch_Class_Name_Txt__c</field>
-            <operation>contains</operation>
-            <value>DDR</value>
-        </filters>
-        <label>PCC Jobs</label>
     </listViews>
     <listViews>
         <fullName>Pending_Batches</fullName>
@@ -918,37 +842,23 @@ IF( Core_MDF_Completed_Item_Count_Nbr__c &gt;0,&apos;Finished&apos;,&apos;Failed
         <label>Pending Batches</label>
     </listViews>
     <listViews>
-        <fullName>Sales_CRM</fullName>
-        <columns>NAME</columns>
-        <columns>Core_MDF_Program_Txt__c</columns>
-        <columns>Core_MDF_Batch_Class_Name_Txt__c</columns>
-        <columns>Core_MDF_Batch_Size_Nbr__c</columns>
-        <columns>Core_MDF_Job_Frequency__c</columns>
-        <columns>Core_MDF_Priority__c</columns>
-        <columns>Core_MDF_Scheduler_Status_Txt__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_MDF_Program_Txt__c</field>
-            <operation>equals</operation>
-            <value>Sales Pipeline</value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Inactive__c</field>
-            <operation>equals</operation>
-            <value>0</value>
-        </filters>
-        <label>Sales CRM</label>
-    </listViews>
-    <listViews>
         <fullName>Scheduled_Batches</fullName>
         <columns>NAME</columns>
         <columns>Core_MDF_Batch_Class_Name_Txt__c</columns>
         <columns>Core_MDF_Scheduler_Status_Txt__c</columns>
         <columns>Core_MDF_Batch_Size_Nbr__c</columns>
         <columns>Core_MDF_Job_Frequency__c</columns>
-        <columns>Core_MDF_Program_Txt__c</columns>
         <columns>Core_MDF_Next_Batch_Run_Time_Txt__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>Core_MDF_Program_Txt__c</columns>
+        <columns>Core_MDF_Status_Txt__c</columns>
+        <columns>Scheduled_Time_Dt__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Scheduler_Status_Txt__c</field>
+            <operation>equals</operation>
+            <value>Scheduled</value>
+        </filters>
         <label>Scheduled Batches</label>
     </listViews>
     <nameField>
@@ -1038,11 +948,29 @@ IF( Core_MDF_Completed_Item_Count_Nbr__c &gt;0,&apos;Finished&apos;,&apos;Failed
         <errorMessage>Effective Start Time cannot be in past</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Core_MDF_Restrict_Time_Change</fullName>
+        <active>false</active>
+        <description>time cannot be changed</description>
+        <errorConditionFormula>ISCHANGED( Core_MDF_Time__c )</errorConditionFormula>
+        <errorDisplayField>Core_MDF_Time__c</errorDisplayField>
+        <errorMessage>Batch Schedule Time cannot be modified. Please create a new job.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Core_MDF_Start_Date_Less_Than_End_Date</fullName>
         <active>true</active>
         <description>End date cannot be less than start date</description>
         <errorConditionFormula>Core_MDF_Effective_End_Time_Dt__c  &lt;  Core_MDF_Effective_Start_Time_Dt__c</errorConditionFormula>
         <errorMessage>Please select an End date greater than Start date.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>To_allow_only_Once_option_for_Job_Freq</fullName>
+        <active>false</active>
+        <description>Validation to allow only Once option for Job Frequency until other features are enabled</description>
+        <errorConditionFormula>OR(ISPICKVAL(Core_MDF_Job_Frequency__c, &apos;Every X Minute&apos;),
+ISPICKVAL(Core_MDF_Job_Frequency__c, &apos;Every X Hour&apos;),
+ISPICKVAL(Core_MDF_Job_Frequency__c, &apos;Daily&apos;),
+ISPICKVAL(Core_MDF_Job_Frequency__c, &apos;Days of Week&apos;))</errorConditionFormula>
+        <errorMessage>This is feature is not available at the moment. The Job frequency can be set to only Once.</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

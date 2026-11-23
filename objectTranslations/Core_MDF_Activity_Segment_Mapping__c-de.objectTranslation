@@ -53,6 +53,7 @@
         <name>Core_MDF_Activity_Type_txt__c</name>
     </fields>
     <fields>
+        <help><!-- Estimated --></help>
         <label>Geschätzter Anteil von SPIF</label>
         <name>Core_MDF_Estimated_Share_of_SPIF_amt__c</name>
     </fields>
@@ -67,6 +68,14 @@
     <fields>
         <label>Vorhersehbares Mindest-Volume</label>
         <name>Core_MDF_Minimum_Forecast_Volume_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Expected Participants --></label>
+        <name>Core_MDF_Num_of_Expected_Participants__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Potential Winners --></label>
+        <name>Core_MDF_Num_of_Potential_Winners__c</name>
     </fields>
     <fields>
         <label><!-- Activity --></label>

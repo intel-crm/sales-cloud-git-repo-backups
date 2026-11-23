@@ -108,7 +108,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>Service Provider,Telco/Service Provider,Comm Service Provider (CoSP)</value>
+            <value>Service Provider,Telco/Service Provider</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_Opp_FC_Prod_Schedule__c.Core_FC_BU_Short_Name__c</column>
@@ -123,13 +123,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Approved</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>nokia,genesys,ringcentral,everyware</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -173,8 +166,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter_Date__c</dateColumn>
-        <endDate>2021-12-25</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2018-12-29</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

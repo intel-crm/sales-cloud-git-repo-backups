@@ -135,11 +135,9 @@ public with sharing class Core_DealSupportHomeController {
                 mapStringToCS.put(sobjCS.Name,sobjCS);
             
             //Get the OpportunityID using the parameter passed through the URL
-            if (String.isNotBlank(ApexPages.currentPage().getParameters().get(system.label.Core_OpportunityID)) ) {
-                //escapeHtml4() method added for security scan.
-                sCimId = ApexPages.currentPage().getParameters().get(system.label.Core_CIMID).escapeHtml4();
-                system.debug('the sCimId is===>'+sCimId);
-                recordId = ApexPages.currentPage().getParameters().get(system.label.Core_OpportunityID).escapeHtml4();
+            if (String.isNotBlank(ApexPages.currentPage().getParameters().get(system.label.Core_OpportunityID))) {
+                sCimId = ApexPages.currentPage().getParameters().get(system.label.Core_CIMID);
+                recordId = ApexPages.currentPage().getParameters().get(system.label.Core_OpportunityID);
                 sOppRecName=ApexPages.currentPage().getParameters().get(system.label.Core_OpportunityName);
                 if(!String.isEmpty(sOppRecName))
                     sOppRecName = sOppRecName.replace('+',' ');
@@ -160,11 +158,10 @@ public with sharing class Core_DealSupportHomeController {
             //Get the CIMID using the parameter passed through the URL
             else if (String.isNotBlank(ApexPages.currentPage().getParameters().get(system.label.Core_AccountName))) 
             {
-                //escapeHtml4() method added for security scan.
-                sCimId = ApexPages.currentPage().getParameters().get(system.label.Core_CIMID).escapeHtml4();
-                sAcctRecName=ApexPages.currentPage().getParameters().get(system.label.Core_AccountName).escapeHtml4();
-                sAcctRecName = sAcctRecName.replace('+',' '); 
-                sAccntId = ApexPages.currentPage().getParameters().get(system.label.Core_AccountID).escapeHtml4();
+                sCimId = ApexPages.currentPage().getParameters().get(system.label.Core_CIMID);
+                sAcctRecName=ApexPages.currentPage().getParameters().get(system.label.Core_AccountName);
+                sAcctRecName = sAcctRecName.replace('+',' ');   
+                sAccntId = ApexPages.currentPage().getParameters().get(system.label.Core_AccountID);
                 
                 List<UserRecordAccess> lstUserRecordAccess = new List<UserRecordAccess>();
                 lstUserRecordAccess = [SELECT RecordId, HasReadAccess,HasEditAccess FROM UserRecordAccess
@@ -236,7 +233,7 @@ public with sharing class Core_DealSupportHomeController {
             coreGetSeeds(); 
         }
         else  if(bUserHasAccess){
-            if(String.isNotBlank(recordId) || String.isNotBlank(sAcctRecName) || Test.isRunningTest()){
+            if(String.isNotBlank(recordId) || String.isNotBlank(sAcctRecName)){
                 //Throw the error saying no records are present
                 ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.INFO, System.Label.Core_NoRecordsError);
                 ApexPages.addMessage(myMsg);
@@ -335,14 +332,12 @@ public with sharing class Core_DealSupportHomeController {
             
             //If the page is navigated from the tab
             if(String.isNotEmpty(sWWID))
-               // httpResp = Core_WebServiceUtility.restServiceCallout('',mapStringToCS.get(System.Label.Core_SeedsWebservice).Core_End_Point_URL__c+System.Label.Core_SeedsURL+sWWID+'/ALL','Get',System.Label.Core_TimeOut,System.Label.Core_SeedsWebservice);
-                httpResp = Core_WebServiceUtility.restServiceCallout('','callout:SalesCRM_Apigee'+System.Label.Core_SeedsURL+sWWID+'/ALL','Get',System.Label.Core_TimeOut,System.Label.Core_SeedsWebservice);
+                httpResp = Core_WebServiceUtility.restServiceCallout('',mapStringToCS.get(System.Label.Core_SeedsWebservice).Core_End_Point_URL__c+System.Label.Core_SeedsURL+sWWID+'/ALL','Get',System.Label.Core_TimeOut,System.Label.Core_SeedsWebservice);
             else if(String.isNotEmpty(sAcctRecName))//If the page is NOT navigated from the tab
-               // httpResp = Core_WebServiceUtility.restServiceCallout('',mapStringToCS.get(System.Label.Core_SeedsWebservice).Core_End_Point_URL__c+System.Label.Core_SeedsURLAccount+sCimId+'/ALL','Get',System.Label.Core_TimeOut,System.Label.Core_SeedsWebservice);
-                httpResp = Core_WebServiceUtility.restServiceCallout('','callout:SalesCRM_Apigee'+System.Label.Core_SeedsURLAccount+sCimId+'/ALL','Get',System.Label.Core_TimeOut,System.Label.Core_SeedsWebservice);
+                httpResp = Core_WebServiceUtility.restServiceCallout('',mapStringToCS.get(System.Label.Core_SeedsWebservice).Core_End_Point_URL__c+System.Label.Core_SeedsURLAccount+sCimId+'/ALL','Get',System.Label.Core_TimeOut,System.Label.Core_SeedsWebservice);
             else //If the page is NOT navigated from the tab
-               // httpResp = Core_WebServiceUtility.restServiceCallout('',mapStringToCS.get(System.Label.Core_SeedsWebservice).Core_End_Point_URL__c+System.Label.Core_SeedsURLOpp+recordID+'/ALL','Get',System.Label.Core_TimeOut,System.Label.Core_SeedsWebservice);                   
-                httpResp = Core_WebServiceUtility.restServiceCallout('','callout:SalesCRM_Apigee'+System.Label.Core_SeedsURLOpp+recordID+'/ALL','Get',System.Label.Core_TimeOut,System.Label.Core_SeedsWebservice);                   
+                httpResp = Core_WebServiceUtility.restServiceCallout('',mapStringToCS.get(System.Label.Core_SeedsWebservice).Core_End_Point_URL__c+System.Label.Core_SeedsURLOpp+recordID+'/ALL','Get',System.Label.Core_TimeOut,System.Label.Core_SeedsWebservice);                   
+
             system.debug('------**'+httpResp);
             
             //Until the actual service is up & running. This piece of code is to ensure testing purpose
@@ -355,7 +350,7 @@ public with sharing class Core_DealSupportHomeController {
             }
             
             //Use the parser to get the response as JSONParser type
-            System.JSONParser parser = JSON.createParser(httpResp.getbody());
+            JSONParser parser = JSON.createParser(httpResp.getbody());
             
             while (parser.nextToken() != NULL) {
                 // Start at the array of Records.
@@ -373,7 +368,7 @@ public with sharing class Core_DealSupportHomeController {
                     }
                 }
             }
-            boolean ucdSwitch = Core_CRM_Utility.isUCDSwitchOn(); //TWC4767-3431 - implementation of UCD and CIM logic switch
+            
             // If the list of the Apex Object records to be rendered is empty, throw up an error on the screen
             if (!lstseedWebserviceWrapperInstance.isEmpty()){
                 for(seedWebserviceWrapper seedWrap : lstseedWebserviceWrapperInstance){
@@ -387,14 +382,8 @@ public with sharing class Core_DealSupportHomeController {
                     }
                 }
                 if(!lstAccntID.isEmpty()){
-                    if(ucdSwitch == true){ //TWC4767-3431
-                        for(Account sObjAccnt : [select Core_Business_Party_Id__c,name from Account where Core_Business_Party_Id__c in :lstAccntID])
-                            mapAccntNametoID.put(sObjAccnt.Core_Business_Party_Id__c,sObjAccnt.Name);
-                    }
-                    else { //TWC4767-3431
-                       for(Account sObjAccnt : [select Core_CIM_ID__c,name from Account where Core_CIM_ID__c in :lstAccntID])
-                            mapAccntNametoID.put(sObjAccnt.Core_CIM_ID__c,sObjAccnt.Name); 
-                    }
+                    for(Account sObjAccnt : [select Core_CIM_ID__c,name from Account where Core_CIM_ID__c in :lstAccntID])
+                        mapAccntNametoID.put(sObjAccnt.Core_CIM_ID__c,sObjAccnt.Name);
                 }   
             }
             
@@ -414,9 +403,9 @@ public with sharing class Core_DealSupportHomeController {
                     mk.ReturnPickupDate = dateDt.format();
                 }
                 
-                if(mapOppNametoID.containsKey(mk.OpportunityID) || Test.isRunningTest())
+                if(mapOppNametoID.containsKey(mk.OpportunityID))
                     mk.OpportunityName = mapOppNametoID.get(mk.OpportunityID);
-                if(mapAccntNametoID.containsKey(mk.AccountID) || Test.isRunningTest())
+                if(mapAccntNametoID.containsKey(mk.AccountID))
                     mk.AccountName = mapAccntNametoID.get(mk.AccountID);
                     
                 lstOrderNo.add(mk.OrderNumber+mk.productname);

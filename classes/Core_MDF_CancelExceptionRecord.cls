@@ -33,8 +33,6 @@ public without sharing class Core_MDF_CancelExceptionRecord {
         public Boolean isUserEligibleToCancel=false;
         @AuraEnabled
         public Boolean isSubmitterCancellingApproved=false;
-        @AuraEnabled
-        public Boolean isDraft=false;
     } 
 
     /****************************************************************************************************** 
@@ -115,36 +113,40 @@ public without sharing class Core_MDF_CancelExceptionRecord {
                 }
                 else if(((Label.Core_MDF_Exception_Approved_Status).containsIgnoreCase(exceptionVar.Core_MDF_Exception_Status_nm__c)) && exceptionWrap.isSubmitter){
                     exceptionWrap.isSubmitterCancellingApproved = true;
-                }
-                else if(exceptionVar.Core_MDF_Exception_Status_nm__c=='Draft'){
-                    exceptionWrap.isDraft= true;
-                }
+                }    
             }
-            
             if((!exceptionWrap.isDenied) && (!exceptionWrap.isCancelled) && (!exceptionWrap.isSubmitterCancellingApproved)){
                 if((exceptionWrap.isPendingReview) && ((exceptionWrap.isSubmitter) || (exceptionWrap.isReviewer))){
                     
                     List<ProcessInstanceWorkitem>  piList = new List<ProcessInstanceWorkitem>();
                     
-                    //Unlocking the record
-                    Approval.UnlockResult[] urList = Approval.unlock(exceptionList, false);
+                    // Highlight: Unused Local Variable - 14285
+                    // Approval.UnlockResult[] urList = Approval.unlock(exceptionList, false);
+                    
+                    // Unlocking the record
+                    Approval.unlock(exceptionList, false);
+                    
                     //Removing the record from the Approval Process
                     for(ProcessInstance pi : [SELECT Id, TargetObjectId,(SELECT Id FROM Workitems)
                                               FROM ProcessInstance
                                               WHERE TargetObjectId =: exceptionId]){
-                    //Avoid Deeply Nested IF Statements       
-                    piList.addAll((pi.Workitems.size() > 0) ? pi.Workitems : null);
+                    //Avoid Deeply Nested IF Statements
+                    
+                    piList.addAll((pi.Workitems.size() > 0) ? pi.Workitems : null);   
+                        // if(pi.Workitems.size() > 0){
+                            
+                        //     piList.addAll(pi.Workitems);
+                        // }
                     }
                     //Avoid Deeply Nested IF Statements
                     List<Database.DeleteResult> deleteResults = (piList.size() > 0) ? Database.delete(piList) : null;
+                    // if(piList.size() > 0){Database.delete(piList);
+                    // }
 
                     exceptionVar.Core_MDF_Exception_Status_nm__c = 'Cancelled';
                     Database.update (exceptionVar);
                 }
                 else if(exceptionWrap.isApproved){
-                    exceptionVar.Core_MDF_Exception_Status_nm__c = 'Cancelled';
-                    Database.update (exceptionVar);
-                }else if (exceptionWrap.isDraft){
                     exceptionVar.Core_MDF_Exception_Status_nm__c = 'Cancelled';
                     Database.update (exceptionVar);
                 }   

@@ -5,7 +5,8 @@ public class Core_MDF_Target_Setting_Utility_Test {
     public static Id CCF_RecordType = Schema.SObjectType.Core_MDF_Int_Users_Partner_Geo_Mapping__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Client_Co_Marketing_Fund').getRecordTypeId();
     public static Id DCF_RecordType = Schema.SObjectType.Core_MDF_Int_Users_Partner_Geo_Mapping__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Data_Center_Co_Marketing_Fund').getRecordTypeId();
     @TestSetup static void setUpData(){
-
+        // Highlight unused local variable - 14285 - Suma
+        // List<User> usrList = new List<User>();
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
         usr.LastName = 'User Test11';
         usr.IsActive = true;

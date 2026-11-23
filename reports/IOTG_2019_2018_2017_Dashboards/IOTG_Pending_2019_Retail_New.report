@@ -36,16 +36,10 @@
     </columns>
     <crossFilters>
         <criteriaItems>
-            <column>Core_BU_Short_Name_Old__c</column>
+            <column>Core_BU_Short_Name__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>IOTG</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_BU_Product_Segment_Old__c</column>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>IoT-Retail</value>
         </criteriaItems>
         <operation>with</operation>
         <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
@@ -82,11 +76,11 @@
             <value>Graham Copperwheat</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <column>Opportunity.Core_Consumption_Market__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
+            <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Design: Original,Design: Secondary</value>
+            <value>Retail</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

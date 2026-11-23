@@ -1,0 +1,44 @@
+<aura:component>
+
+    <aura:attribute name="parentComponent" type="Object"/>
+    <aura:attribute name="userCreationPermissions" type="Object"/>
+    <aura:attribute name="selectedType" type="String" default=""/>
+    <aura:attribute name="showIPAOption" type="Boolean" default="true"/>
+    <aura:attribute name="showClientOption" type="Boolean" default="true"/>
+    <aura:attribute name="showDatacenterOption" type="Boolean" default="true"/>
+
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <div class="slds-modal__content slds-p-around--medium">
+        <div class="slds-grid slds-wrap">
+            <lightning:layout horizontalAlign="center" verticalAlign="center">
+                <lightning:layoutItem flexibility="auto" padding="around-small">
+                    <lightning:select aura:id="campaignTypePickList" name="selectCampaignType"
+                                       label="Select a Record Type"
+                                       onchange="{!c.handleTypeChange}">
+                        <option value="" text="--None--"/>
+                        <aura:if isTrue="{!v.showClientOption}">
+                            <option value="Client" text="Client"/>
+                        </aura:if>
+                        <aura:if isTrue="{!v.showDatacenterOption}">
+                            <option value="CoInv" text="Co-Inv"/>
+                        </aura:if>
+                        <aura:if isTrue="{!v.showIPAOption}">
+                            <option value="IntelPartnerAlliance" text="Intel Partner Alliance"/>
+                        </aura:if>
+                    </lightning:select>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </div>
+    </div>
+
+    <div class="slds-modal__footer">
+        <lightning:button class="slds-button slds-button--neutral" onclick="{!c.handleCancel}">
+            {!$Label.c.Core_MDF_Cancel}</lightning:button>
+        <lightning:button class="slds-button slds-button--brand" onclick="{!c.handleNext}">
+            {!$Label.c.Core_MDF_Next}</lightning:button>
+    </div>
+
+</aura:component>

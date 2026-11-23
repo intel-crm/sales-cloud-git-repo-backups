@@ -28,6 +28,11 @@
                     <label>Cancel Claim</label>
                 </value>
                 <value>
+                    <fullName>Cancel VAT</fullName>
+                    <default>false</default>
+                    <label>Cancel VAT</label>
+                </value>
+                <value>
                     <fullName>Change Owner</fullName>
                     <default>false</default>
                     <label>Change Owner</label>
@@ -93,6 +98,11 @@
                     <label>Notify Partner</label>
                 </value>
                 <value>
+                    <fullName>Recall to Payment Clearance</fullName>
+                    <default>false</default>
+                    <label>Recall to Payment Clearance</label>
+                </value>
+                <value>
                     <fullName>Release Hold</fullName>
                     <default>false</default>
                     <label>Release Hold</label>
@@ -123,6 +133,11 @@
                     <default>false</default>
                     <label>Submit For PIC</label>
                 </value>
+                <value>
+                    <fullName>Summary</fullName>
+                    <default>false</default>
+                    <label>Summary</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -137,9 +152,19 @@
             <valueSetDefinition>
                 <sorted>true</sorted>
                 <value>
+                    <fullName>Flow</fullName>
+                    <default>false</default>
+                    <label>Flow</label>
+                </value>
+                <value>
                     <fullName>LightningComponent</fullName>
                     <default>true</default>
                     <label>LightningComponent</label>
+                </value>
+                <value>
+                    <fullName>LightningWebComponent</fullName>
+                    <default>false</default>
+                    <label>LightningWebComponent</label>
                 </value>
                 <value>
                     <fullName>Update a Record</fullName>

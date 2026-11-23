@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Dynamic Approver</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Dynamic Approvers</value>
+    </caseValues>
+    <fields>
+        <label><!-- Object Type --></label>
+        <name>Core_MDF_Objtyp__c</name>
+        <picklistValues>
+            <masterLabel>Partner Fund Request</masterLabel>
+            <translation><!-- Partner Fund Request --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- User --></label>
+        <name>Core_MDF_Usr__c</name>
+        <relationshipLabel><!-- Dynamic Approvers --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

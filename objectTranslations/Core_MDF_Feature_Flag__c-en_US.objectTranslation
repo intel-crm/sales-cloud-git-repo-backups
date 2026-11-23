@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Feature Flag</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Feature Flag</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Effective Date --></label>
+        <name>Core_MDF_Effective_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ineffective Date --></label>
+        <name>Core_MDF_Ineffective_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Required Permission --></label>
+        <name>Core_MDF_Required_Permission__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Geo --></label>
+        <name>Core_MDF_User_Geo__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Type --></label>
+        <name>Core_MDF_User_Type__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

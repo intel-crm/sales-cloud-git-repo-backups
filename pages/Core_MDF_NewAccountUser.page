@@ -1,0 +1,17 @@
+<apex:page standardController="Core_MDF_Partner_Node_User_Mapping__c" recordSetVar="accountusers">
+    <apex:includeLightning />
+    <div id="lightning" />
+    <script>
+     console.log('gggg');
+        $Lightning.use("c:Core_MDF_NewAccUserApp", function() {
+          $Lightning.createComponent("c:Core_MDF_AccountUserContainer",
+              { label : "New" },
+              "lightning",
+              function(cmp) {
+                console.log("button was created");
+                // do some stuff
+              }
+          );
+        });
+    </script>
+</apex:page>

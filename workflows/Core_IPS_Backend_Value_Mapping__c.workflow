@@ -16,7 +16,7 @@
             <name>Core_IPS_Case_BK_FieldVal_Map_UniqueKey</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>Core_IPS_Target_Value__c &lt;&gt; null</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>

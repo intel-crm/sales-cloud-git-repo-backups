@@ -32,7 +32,7 @@
         }))
         .then(subscription => {
             // Subscription response received.
-            console.log('Subscription request sent to: ', subscription.channel);
+            console.log('Subscription request sent to: 2', subscription.channel);
         });
     },
     callServer: function (component, method, callback, params) {
@@ -45,6 +45,7 @@
             if (state === "SUCCESS") {
                 callback.call(this, response.getReturnValue());
                 var result = response.getReturnValue();
+                console.log('RESULT SCORECARD:'+result);
                 if(result && result.scorecardRec) {
                     component.set("v.scoreCardId", result.scorecardRec.Id);
                     component.set("v.editFlag", result.editability);

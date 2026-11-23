@@ -21,28 +21,14 @@ public class Core_MDF_Batch_UpdateCampaigns implements Database.Batchable<sObjec
         return listOfCampaigns;
     }	
     public void execute(Database.BatchableContext bc, List<Campaign> campaignList) {
-        List<Id> campIds = new List<Id>();
         try{
             // List of campaigns that are unlocked temporarily for updation; It will be locked after dml
             List<Campaign> listOfLockedCampaigns = new List<Campaign>();
-            Map<Id,Campaign> campIdtoCampMap = new  Map<Id,Campaign>();
             // Looping over the List of campaigns in the method scope
             for(Campaign campaign : campaignList){
-                campIds.add(campaign.Id);
-                campIdtoCampMap.put(campaign.Id,campaign);
                 // Add the locked records in a list which needs to be unlocked and locked again after dml
-               /* if(Approval.isLocked(campaign)){                    
+                if(Approval.isLocked(campaign)){                    
                     listOfLockedCampaigns.add(campaign);
-                }*/
-            }
-            if(!campIds.isEmpty()) {
-                Map<Id,boolean> campApprovalResult = Approval.isLocked(campIds);
-                if(campApprovalResult != null && !campApprovalResult.isEmpty()) {
-                    for(Id campId : campApprovalResult.keySet()){
-                        if(campApprovalResult.get(campId)){
-                            listOfLockedCampaigns.add(campIdtoCampMap.get(campId));
-                        }
-                    }
                 }
             }
             Approval.unlock(listOfLockedCampaigns, true);
@@ -54,7 +40,8 @@ public class Core_MDF_Batch_UpdateCampaigns implements Database.Batchable<sObjec
                 // looping over the saveresults
                 for (Integer index = 0; index < srList.size(); index++) {
                     // if the campaign update got failed ,add the corresponding budget cap Ids in a failed budget caps set
-                    if(!srList[index].isSuccess()){failedBudgetCapIds.add(campaignList[index].Core_MDF_Budget_Cap__c);
+                    if(!srList[index].isSuccess() && campaignList[index].Core_MDF_Budget_Cap__c != null) {
+                        failedBudgetCapIds.add(campaignList[index].Core_MDF_Budget_Cap__c);
                     }
                 }
             }

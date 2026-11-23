@@ -22,7 +22,7 @@
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Required</behavior>
+                <behavior>Readonly</behavior>
                 <field>Core_MDF_Channel_Program__c</field>
             </layoutItems>
             <layoutItems>

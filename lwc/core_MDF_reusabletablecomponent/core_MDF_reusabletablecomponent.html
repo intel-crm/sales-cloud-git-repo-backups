@@ -1,0 +1,23 @@
+<template>
+    <lightning-card title={title}>
+        <!-- Display errors if any -->
+        <template if:true={hasErrors}>
+            <div class="slds-text-color_error">
+                <ul>
+                    <template for:each={errorMessages} for:item="error">
+                        <li key={error}>{error}</li>
+                    </template>
+                </ul>
+            </div>
+        </template>
+
+        <lightning-datatable
+            key-field="id"
+            data={rows}
+            columns={columns}
+            hide-checkbox-column={hidecheckbox}
+            suppress-bottom-bar={hidebottombar}
+            oncellchange={handleCellChange}>
+        </lightning-datatable>
+    </lightning-card>
+</template>

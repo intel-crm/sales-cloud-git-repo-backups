@@ -4,25 +4,19 @@
         <calculatedFormula>TASK:SUM</calculatedFormula>
         <datatype>number</datatype>
         <developerName>FORMULA1</developerName>
-        <isActive>false</isActive>
+        <isActive>true</isActive>
         <isCrossBlock>false</isCrossBlock>
         <masterLabel>New Formula</masterLabel>
         <scale>2</scale>
     </aggregates>
     <columns>
-        <field>DUE_DATE</field>
-    </columns>
-    <columns>
-        <field>ACCOUNT</field>
+        <field>ACCOWNER</field>
     </columns>
     <columns>
         <field>WHAT_NAME</field>
     </columns>
     <columns>
         <field>SUBJECT</field>
-    </columns>
-    <columns>
-        <field>Activity.Core_Task_Type__c</field>
     </columns>
     <columns>
         <field>FULL_DESCRIPTION</field>
@@ -34,8 +28,10 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>TASK</field>
     </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
     <filter>
-        <booleanFilter>((1 AND 3 AND (2 OR 4)) AND 5) AND 6</booleanFilter>
         <criteriaItems>
             <column>SUBJECT</column>
             <columnToColumn>false</columnToColumn>
@@ -48,43 +44,11 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Natalia Radtke,Andrzej Taraszkiewicz,Antoine Guinebault,Barbara Barusova Maliszewska,Bene Cazzamali,Bruno Le Gallou,Dawid Studzinski,Dilip James,Dmitry Matchin,Dorian Witkowski,Dorota Prokopowicz,Ekaterina Kotelnikova,Emmanuel Le Roux,Galin Dimov,Hesham Elsaid,Joe Martin,Karim Ghatwary,Katarzyna Makowska,Korcan Erguder,Lukasz Balas,Lukasz Chrzanowski,Maciek Osiecki,Magdalena Dunska-Glowka,Magdalena Witke,Marcin Sochacki,Marek Lesiewski,Marta Muszynska,Martin Opara,Michela Adamo,Milosz Cieszynski,Nikolay Panov,Ozkan Ozdikici,Roberto Lipari,Roksana Dylewska,Stephy Savier,Tomasz Czajko,Vladimir Fedorov,Aaron Voelker,Alexey Belogortsev,Ariel Hako,Bartlomiej Olik-Gajewski,Bartłomiej Olik-Gajewski,Kamil Guzik,Katarzyna Bielak,Michal Nowak,Tim Olszewski,Maciej Hoffman,Julia Samoilov,Michal Wrzosek,Maciej Hoffmann,Daria Serzysko,Wiktor Aleksander Wiszorowski,Filip Ostojski,Joanna Pytlowska,Katarzyna Kubica</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>DUE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_FISCAL_QUARTER</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ROLLUP_DESCRIPTION</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Katarzyna Bielak,Gosia Dzul,Jaroslaw Tomala,Jadwiszczok,Galin Dimov,Eran Gal,Alexis Garea</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>DUE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_FISCAL_QUARTER</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>DUE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_FISCAL_QUARTER</value>
+            <value>Natalia Radtke,Andrzej Taraszkiewicz,Antoine Guinebault,Barbara Barusova Maliszewska,Bene Cazzamali,Bruno Le Gallou,Dawid Studzinski,Dilip James,Dmitry Matchin,Dorian Witkowski,Dorota Prokopowicz,Ekaterina Kotelnikova,Emmanuel Le Roux,Galin Dimov,Hesham Elsaid,Joanna Momont,Joe Martin,Karim Ghatwary,Katarzyna Makowska,Korcan Erguder,Lukasz Balas,Lukasz Chrzanowski,Maciek Osiecki,Magdalena Dunska-Glowka,Magdalena Witke,Marcin Sochacki,Marek Lesiewski,Marta Muszynska,Martin Opara,Michela Adamo,Milosz Cieszynski,Nikolay Panov,Ozkan Ozdikici,Roberto Lipari,Roksana Dylewska,Stephy Savier,Tomasz Czajko,Vladimir Fedorov,Aaron Voelker,Alexey Belogortsev,Ariel Hako,Bartlomiej Olik-Gajewski,Bartłomiej Olik-Gajewski,Kamil Guzik,Katarzyna Bielak,Michal Nowak,Tim Olszewski</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
-    <groupingsDown>
-        <field>CREATED_DATE</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>ROLLUP_DESCRIPTION</field>
@@ -95,10 +59,15 @@
         <field>ASSIGNED</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <name>Customer activity report Current FQ</name>
     <params>
         <name>closed</name>
-        <value>all</value>
+        <value>closed</value>
     </params>
     <params>
         <name>type</name>
@@ -112,9 +81,11 @@
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
-    <showSubTotals>false</showSubTotals>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>STATUS</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
-        <dateColumn>DUE_DATE</dateColumn>
-        <interval>INTERVAL_CURPREV1</interval>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
     </timeFrameFilter>
 </Report>

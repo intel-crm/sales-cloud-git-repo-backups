@@ -25,6 +25,7 @@ private static final String v1_0 = 'v1.0';
         requestObj.requestUri ='/v1.0/cases/*/attachments';
         requestObj.httpMethod = 'GET';
         RestContext.request = requestObj;
+        System.debug(' RestContext.request '+RestContext.request);
         
     }
      //Setup the data required for tesing the use cases
@@ -32,6 +33,7 @@ private static final String v1_0 = 'v1.0';
         
         Core_RestAPI_TestUtilities.setUpCustomSettingCaseAttachment();
         adminUser = [Select Id, email, Profile.id  FROM User where Profile.Name = 'System Administrator' AND isActive = true Limit 1];
+        System.debug(' >>> '+adminUser);
         List<Profile> dataMigProfList = [Select Id FROM Profile where Name ='IPS Data Migration']; 
         List<Core_IPS_Labels__c> settings = new List<Core_IPS_Labels__c>();
         Core_IPS_Labels__c custSetng = new Core_IPS_Labels__c();
@@ -39,12 +41,6 @@ private static final String v1_0 = 'v1.0';
         settings.add(new Core_IPS_Labels__c(Name = 'COMPLETE', Value__c = 'COMPLETE'));
         settings.add(new Core_IPS_Labels__c(Name = 'Agent', Value__c = 'Agent'));
         settings.add(new Core_IPS_Labels__c(Name = 'PUBLIC_TO_CUSTOMERS', Value__c = 'Public to Customers'));
-        //Added by Sowmya - Start - 17/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
-        settings.add(new Core_IPS_Labels__c(Name = 'PRIVATE_TO_PARTNERS', Value__c = 'Private to Partner'));
-        settings.add(new Core_IPS_Labels__c(Name = 'PRIVATE_TO_INTEL', Value__c = 'Private to Intel'));
-		settings.add(new Core_IPS_Labels__c(Name = 'Backend Integration', Value__c = 'Backend Integration'));
- 		//Sowmya End - 17/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
-           
         insert settings;
          
         System.runAs(adminUser){
@@ -62,9 +58,11 @@ private static final String v1_0 = 'v1.0';
         List<Account> allAccounts = [Select Name FROM Account];
         Contact nonIpsContact = [Select Name, Core_IPS_Active__c FROM Contact where Core_IPS_Active__c = false Limit 1] ;
         
+        System.debug(' Core_RestAPI_CaseAttachments_Test \n Account '+allAccounts+'\n IPS Contacts '+allIPSContacts +'\n Non Contact '+nonIpsContact + ' \n All CommUsers '+allCommUsers);
         
         commUser1 = allCommUsers[0];
         commUser2 = allCommUsers[1];
+        System.debug(' \n allCommUsers  '+allCommUsers);
         
         
         System.runAs(adminUser){
@@ -103,11 +101,13 @@ private static final String v1_0 = 'v1.0';
             Insert lstattachments;
             
             caseObj = [Select CaseNumber FROM Case where OwnerId =: commUser1.Id Limit 1];
+            System.debug('caseObj.CaseNumber --->'+caseObj.CaseNumber);
             RestRequest requestObj = (RestRequest)System.jSON.deserialize(requestTemplate, RestRequest.class);
             requestObj.resourcePath ='/services/apexrest/v1.0/cases/'+caseObj.CaseNumber+'/attachments';
             requestObj.requestUri ='/v1.0/cases/'+caseObj.CaseNumber+'/attachments';
             requestObj.httpMethod = 'GET';
             RestContext.request = requestObj;
+            System.debug(' RestContext.request '+RestContext.request);
             
             Core_RestAPI_CaseAttachmentV1_Handler handler = new Core_RestAPI_CaseAttachmentV1_Handler(System.now(), 'Core_RestAPI_CaseAttachmentsV1'); 
             Core_RestAPI_Response finalResponse = null;
@@ -126,6 +126,7 @@ private static final String v1_0 = 'v1.0';
         Core_RestAPI_CaseAttachmentV1_Handler handler = new Core_RestAPI_CaseAttachmentV1_Handler(System.now(), 'Core_RestAPI_CaseAttachmentsV1'); 
         Core_RestAPI_Response response = handler.getCaseAttachments();  
         System.assertNotEquals(null, response);
+        System.debug(' >>> response '+response);
 
     }
      //Test error case: 

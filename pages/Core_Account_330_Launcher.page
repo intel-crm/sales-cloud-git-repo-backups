@@ -1,5 +1,5 @@
-<apex:page standardController="Account" >
-    <!--  <apex:pageMessages />
+<apex:page standardController="Account" extensions="Core_Account_330_URL">
+    <apex:pageMessages />
     <apex:Form id="thePage" rendered="{!isAccessAllowed}">
         <apex:outputPanel id="thePanel" rendered="{!isNotBlankCpmId && isStandardOffset}">
             <apex:iframe src="{!iframeSource}" scrolling="true" height="600px" width="100%" 
@@ -38,5 +38,5 @@
             <apex:commandButton style="width:100px" value="Branded Revenue" action="{!loadBrandedRevenue}"  reRender="thePage"/>
             <apex:commandButton style="width:100px" value="Membership"      action="{!loadMembership}"      reRender="thePage"/>
         </apex:pageBlock>
-    </apex:Form>-->
+    </apex:Form>
 </apex:page>

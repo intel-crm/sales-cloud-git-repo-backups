@@ -1,0 +1,42 @@
+<template>
+    <!--<div class="slds-align_absolute-center">-->
+        <!--<div role="dialog" class="slds-modal slds-modal_medium slds-fade-in-open">-->
+        
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="backgroundDiv slds-m-top_large">
+        <div> <!--class="slds-modal__container"-->
+            <div class="slds-modal__header">
+                <!--button onclick={onCancel} class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse slds-m-top_x-large" title="Close">
+                    <lightning-icon icon-name="utility:close" size="small"></lightning-icon>
+                </button-->
+                <b><h2 id="header43" class="slds-text-heading--medium">Bulk Account User</h2></b>
+            </div> 
+    
+        <div class="slds-p-around--medium slds-p-right_xx-large slds-m-right_xx-large"> <!--slds-modal__content   removed-->
+        <div class="slds-grid slds-wrap">
+    
+        <div class="slds-col slds-size_1-of-2 slds-align_absolute-center" style="font-weight: bold;
+        font-size: medium;"><!--slds-p-around_small  removed-->
+        <label class="slds-form-element__label" for="unique-id-of-input">Select Action</label>
+        </div> 
+        <div class="slds-col slds-size_1-of-2"><!--slds-p-around_small removed-->
+    <select class="slds-select" name = "pnumOption" onchange={onPnumOptionChange}>
+        <option value="A2U">Select Account and Map One or More Users to an Account</option>
+        <option value="U2A">Select User and Map One or More Accounts to the User</option>
+    </select>
+    </div>
+    </div>
+        </div>
+    </div>
+    <div>
+    <template if:true={isAccountToUserSelected}>
+        <c-dual-list-box-v2></c-dual-list-box-v2>
+    </template>
+    <template if:false={isAccountToUserSelected}>
+            <c-dual-list-box-v1></c-dual-list-box-v1>
+    </template>
+    </div>
+    </div>
+    <!--</div>   --> 
+    </section>
+    </template>

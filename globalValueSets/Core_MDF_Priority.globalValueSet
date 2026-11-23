@@ -111,16 +111,6 @@
         <label>Commercial - SMB</label>
     </customValue>
     <customValue>
-        <fullName>Commercial vPro</fullName>
-        <default>false</default>
-        <label>Commercial vPro</label>
-    </customValue>
-    <customValue>
-        <fullName>Commercial vPro Evo</fullName>
-        <default>false</default>
-        <label>Commercial vPro Evo</label>
-    </customValue>
-    <customValue>
         <fullName>Consumer Chromebook</fullName>
         <default>false</default>
         <label>Consumer Chromebook</label>
@@ -546,14 +536,24 @@
         <label>Consumer</label>
     </customValue>
     <customValue>
+        <fullName>Commercial</fullName>
+        <default>false</default>
+        <label>Commercial</label>
+    </customValue>
+    <customValue>
+        <fullName>Commercial vPro</fullName>
+        <default>false</default>
+        <label>Commercial vPro</label>
+    </customValue>
+    <customValue>
+        <fullName>Commercial vPro Evo</fullName>
+        <default>false</default>
+        <label>Commercial vPro Evo</label>
+    </customValue>
+    <customValue>
         <fullName>AI PC - Commercial</fullName>
         <default>false</default>
         <label>AI PC - Commercial</label>
-    </customValue>
-    <customValue>
-        <fullName>AI PC &amp; Consumer</fullName>
-        <default>false</default>
-        <label>AI PC &amp; Consumer</label>
     </customValue>
     <customValue>
         <fullName>Enterprise AI</fullName>
@@ -566,14 +566,9 @@
         <label>Infrastructure Optimization</label>
     </customValue>
     <customValue>
-        <fullName>Commercial</fullName>
+        <fullName>AI PC &amp; Consumer</fullName>
         <default>false</default>
-        <label>Commercial</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital Transformation</fullName>
-        <default>false</default>
-        <label>Digital Transformation</label>
+        <label>AI PC &amp; Consumer</label>
     </customValue>
     <customValue>
         <fullName>Gen-Over-Gen Ramp</fullName>
@@ -601,22 +596,29 @@
         <label>Design Win vs. Comp</label>
     </customValue>
     <customValue>
-        <fullName>Server Refresh</fullName>
+        <fullName>Physical AI</fullName>
         <default>false</default>
-        <isActive>false</isActive>
-        <label>Server Refresh</label>
+        <label>Physical AI</label>
     </customValue>
     <customValue>
-        <fullName>Edge Computing </fullName>
+        <fullName>Commercial Client</fullName>
         <default>false</default>
-        <isActive>false</isActive>
-        <label>Edge Computing </label>
+        <label>Commercial Client</label>
     </customValue>
     <customValue>
-        <fullName>Test1</fullName>
+        <fullName>Premium Client</fullName>
         <default>false</default>
-        <isActive>false</isActive>
-        <label>Test1</label>
+        <label>Premium Client</label>
+    </customValue>
+    <customValue>
+        <fullName>Mainstream Client</fullName>
+        <default>false</default>
+        <label>Mainstream Client</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital Transformation</fullName>
+        <default>false</default>
+        <label>Digital Transformation</label>
     </customValue>
     <customValue>
         <fullName>AI PC - Consumer</fullName>
@@ -625,10 +627,10 @@
         <label>AI PC - Consumer</label>
     </customValue>
     <customValue>
-        <fullName>AI</fullName>
+        <fullName>Server Refresh</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>AI</label>
+        <label>Server Refresh</label>
     </customValue>
     <customValue>
         <fullName>Hybrid Cloud</fullName>
@@ -638,5 +640,5 @@
     </customValue>
     <description>Store Priority values</description>
     <masterLabel>Priority</masterLabel>
-    <sorted>true</sorted>
+    <sorted>false</sorted>
 </GlobalValueSet>

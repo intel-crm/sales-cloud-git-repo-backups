@@ -15,7 +15,7 @@ Modified By:        Date:      Changes:
         WrapperDocs docId;
         try {
             
-			if (unsaveddocs.size() > 0 && unsaveddocs != NULL) // Select the documents which are not associated to activity
+      if (unsaveddocs.size() > 0 && unsaveddocs != NULL) // Select the documents which are not associated to activity
             {
                 for (ContentDocument contentDocId:[SELECT Title,Id,FileExtension FROM ContentDocument WHERE Id IN: unsaveddocs
                           order by Title])
@@ -94,8 +94,8 @@ Modified By:        Date:      Changes:
         public string userType {get;set;}
         
         public WrapperDocs(){
-         	Title='';
-         	ContentDocumentId='';
+           Title='';
+           ContentDocumentId='';
        }
     }
 }

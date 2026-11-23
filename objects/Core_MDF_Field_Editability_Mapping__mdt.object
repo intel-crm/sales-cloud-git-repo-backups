@@ -107,6 +107,29 @@
         <unique>false</unique>
     </fields>
     <label>Field Editability Mapping</label>
+    <listViews>
+        <fullName>My_View_prashant</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>Active__c</columns>
+        <columns>Core_MDF_Permission_Set_API_Name__c</columns>
+        <columns>Core_MDF_Status__c</columns>
+        <columns>Core_MDF_Record_Type_Developer_Name__c</columns>
+        <columns>Core_MDF_Proposal_Based_Ind__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Record_Type_Developer_Name__c</field>
+            <operation>equals</operation>
+            <value>Core_MDF_Data_Center_CoMarketing_Fund</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Object_API_Name__c</field>
+            <operation>equals</operation>
+            <value>Campaign</value>
+        </filters>
+        <label>My View</label>
+        <language>en_US</language>
+    </listViews>
     <pluralLabel>Field Editability Mappings</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>HGH SYSTEMES INFRAROUGES Customer Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>HGH SYSTEMES INFRAROUGES Customer Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>HGHSYSTEMESINFRAROUGESCustomerExecutive</parentRole>
+</Role>

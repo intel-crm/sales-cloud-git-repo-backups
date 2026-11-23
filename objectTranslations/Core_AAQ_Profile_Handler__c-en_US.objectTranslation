@@ -32,9 +32,5 @@
         <label><!-- Core_Profile_Url --></label>
         <name>Core_Profile_Url__c</name>
     </fields>
-    <fields>
-        <label><!-- Run As Flow --></label>
-        <name>Core_Run_As_Flow__c</name>
-    </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

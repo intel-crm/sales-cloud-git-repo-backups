@@ -3,3 +3,11 @@
     grid-template-columns: auto auto;
     column-gap: 50px;
 }
+
+.slds-section__title {
+    cursor: pointer;
+}
+
+.slds-section__content {
+    padding: 1rem;
+}

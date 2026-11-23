@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Sonja Pierer</description>
+    <description>EMP of Christian Roth</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11485759_Florian_Ranner</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_12035524_Sonja_Pierer</parentRole>
+    <parentRole>EMP_10594792_Christian_Roth</parentRole>
 </Role>

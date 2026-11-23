@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
-        <fullName>Accenture</fullName>
-        <default>false</default>
-        <label>Accenture</label>
-    </customValue>
-    <customValue>
         <fullName>Acer</fullName>
         <default>false</default>
         <label>Acer</label>
-    </customValue>
-    <customValue>
-        <fullName>ACER INCORPORATED</fullName>
-        <default>false</default>
-        <label>ACER INCORPORATED</label>
     </customValue>
     <customValue>
         <fullName>Alibaba</fullName>
@@ -21,24 +11,9 @@
         <label>Alibaba</label>
     </customValue>
     <customValue>
-        <fullName>Amazon</fullName>
-        <default>false</default>
-        <label>Amazon</label>
-    </customValue>
-    <customValue>
-        <fullName>ARROW</fullName>
-        <default>false</default>
-        <label>ARROW</label>
-    </customValue>
-    <customValue>
         <fullName>Asus</fullName>
         <default>false</default>
         <label>Asus</label>
-    </customValue>
-    <customValue>
-        <fullName>ASUSTEK COMPUTER INCORPORATION</fullName>
-        <default>false</default>
-        <label>ASUSTEK COMPUTER INCORPORATION</label>
     </customValue>
     <customValue>
         <fullName>Atea</fullName>
@@ -69,11 +44,6 @@
         <fullName>Bechtle</fullName>
         <default>false</default>
         <label>Bechtle</label>
-    </customValue>
-    <customValue>
-        <fullName>Braemec</fullName>
-        <default>false</default>
-        <label>Braemec</label>
     </customValue>
     <customValue>
         <fullName>Cancom</fullName>
@@ -116,16 +86,6 @@
         <label>Deloitte</label>
     </customValue>
     <customValue>
-        <fullName>Digikey</fullName>
-        <default>false</default>
-        <label>Digikey</label>
-    </customValue>
-    <customValue>
-        <fullName>Eastronics</fullName>
-        <default>false</default>
-        <label>Eastronics</label>
-    </customValue>
-    <customValue>
         <fullName>ePlus Technology Inc</fullName>
         <default>false</default>
         <label>ePlus Technology Inc</label>
@@ -151,11 +111,6 @@
         <label>Fujitsu</label>
     </customValue>
     <customValue>
-        <fullName>Google</fullName>
-        <default>false</default>
-        <label>Google</label>
-    </customValue>
-    <customValue>
         <fullName>Google Cloud Platform (GCP)</fullName>
         <default>false</default>
         <label>Google Cloud Platform (GCP)</label>
@@ -166,19 +121,9 @@
         <label>HCL</label>
     </customValue>
     <customValue>
-        <fullName>Hewlett Packard Enterprise Company</fullName>
-        <default>false</default>
-        <label>Hewlett Packard Enterprise Company</label>
-    </customValue>
-    <customValue>
         <fullName>HP</fullName>
         <default>false</default>
         <label>HP</label>
-    </customValue>
-    <customValue>
-        <fullName>HP INC.</fullName>
-        <default>false</default>
-        <label>HP INC.</label>
     </customValue>
     <customValue>
         <fullName>IBM</fullName>
@@ -211,19 +156,9 @@
         <label>Lenovo</label>
     </customValue>
     <customValue>
-        <fullName>Macnica</fullName>
-        <default>false</default>
-        <label>Macnica</label>
-    </customValue>
-    <customValue>
         <fullName>Microsoft</fullName>
         <default>false</default>
         <label>Microsoft</label>
-    </customValue>
-    <customValue>
-        <fullName>Mouser</fullName>
-        <default>false</default>
-        <label>Mouser</label>
     </customValue>
     <customValue>
         <fullName>None</fullName>
@@ -301,11 +236,6 @@
         <label>Toshiba</label>
     </customValue>
     <customValue>
-        <fullName>Uniquest</fullName>
-        <default>false</default>
-        <label>Uniquest</label>
-    </customValue>
-    <customValue>
         <fullName>VMWare</fullName>
         <default>false</default>
         <label>VMWare</label>
@@ -326,11 +256,81 @@
         <label>Zones</label>
     </customValue>
     <customValue>
+        <fullName>Accenture</fullName>
+        <default>false</default>
+        <label>Accenture</label>
+    </customValue>
+    <customValue>
+        <fullName>Amazon</fullName>
+        <default>false</default>
+        <label>Amazon</label>
+    </customValue>
+    <customValue>
+        <fullName>Google</fullName>
+        <default>false</default>
+        <label>Google</label>
+    </customValue>
+    <customValue>
+        <fullName>ARROW</fullName>
+        <default>false</default>
+        <label>ARROW</label>
+    </customValue>
+    <customValue>
+        <fullName>Macnica</fullName>
+        <default>false</default>
+        <label>Macnica</label>
+    </customValue>
+    <customValue>
+        <fullName>Braemec</fullName>
+        <default>false</default>
+        <label>Braemec</label>
+    </customValue>
+    <customValue>
+        <fullName>Uniquest</fullName>
+        <default>false</default>
+        <label>Uniquest</label>
+    </customValue>
+    <customValue>
+        <fullName>Eastronics</fullName>
+        <default>false</default>
+        <label>Eastronics</label>
+    </customValue>
+    <customValue>
+        <fullName>Digikey</fullName>
+        <default>false</default>
+        <label>Digikey</label>
+    </customValue>
+    <customValue>
+        <fullName>Mouser</fullName>
+        <default>false</default>
+        <label>Mouser</label>
+    </customValue>
+    <customValue>
+        <fullName>ASUSTEK COMPUTER INCORPORATION</fullName>
+        <default>false</default>
+        <label>ASUSTEK COMPUTER INCORPORATION</label>
+    </customValue>
+    <customValue>
+        <fullName>Hewlett Packard Enterprise Company</fullName>
+        <default>false</default>
+        <label>Hewlett Packard Enterprise Company</label>
+    </customValue>
+    <customValue>
+        <fullName>HP INC.</fullName>
+        <default>false</default>
+        <label>HP INC.</label>
+    </customValue>
+    <customValue>
+        <fullName>ACER INCORPORATED</fullName>
+        <default>false</default>
+        <label>ACER INCORPORATED</label>
+    </customValue>
+    <customValue>
         <fullName>BRACK.CH AG</fullName>
         <default>false</default>
         <label>BRACK.CH AG</label>
     </customValue>
     <description>Stores value for Ecosystem Partner</description>
     <masterLabel>Ecosystem Partner</masterLabel>
-    <sorted>true</sorted>
+    <sorted>false</sorted>
 </GlobalValueSet>

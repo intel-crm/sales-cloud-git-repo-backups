@@ -60,7 +60,7 @@ public class Core_MDF_CCP_MassOwnerUpdate_Test {
           acc1.Industry='Agriculture';
           //acc1.Core_Sub_Industry__c= 'Crop Production';
           acc1.BillingPostalCode = '12345';
-          acc1.Core_Sales_Groups__c=Core_CRM_Utility.getSalesGroupAPI();
+          //acc1.Core_Sales_Groups__c=Core_CRM_Utility.getSalesGroupAPI();
           insert acc1;
         ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true); 
         Account acc2 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Acc New 2', cp.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, acc1.Id, true);
@@ -87,12 +87,21 @@ public class Core_MDF_CCP_MassOwnerUpdate_Test {
         Core_MDF_Partner_Group_Mapping__c ccfPgm = new Core_MDF_Partner_Group_Mapping__c();
             ccfPgm.Core_MDF_Account__c = acc1.Id;
             ccfPgm.Core_MDF_Group_Name__c = 'Core_MDF_CCP_TESTACCTTEMP_CCF_EMEA_INTERNAL';
-            ccfPgm.Core_MDF_Type_of_Access__c = 'External';           
+            ccfPgm.Core_MDF_Type_of_Access__c = 'Internal';           
             ccfPgm.Core_MDF_Channel_Program__c = cp.Id;
             ccfPgm.Core_MDF_Region_cd__c = 'EMEA';
             ccfPgm.Core_MDF_Source_Txt__c = 'Test';  
             ccfPgm.Core_MDF_Virtual_Corp_nm__c = acc2.id;        
             Database.insert(ccfPgm);
+           
+            List<String> bypassFunctionKeys = new List<String>();
+            Set<String> myset1 = new Set<String>();
+            List<String> result1 = new List<String>();
+            bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation');
+            myset1.addAll(bypassFunctionKeys);
+            result1.addAll(myset1);
+            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
+            
         Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
         iupgm.Core_MDF_Account_id__c = acc1.Id;
         iupgm.Core_MDF_Program_nm__c = 'Client CoMarketing Fund';
@@ -112,6 +121,7 @@ public class Core_MDF_CCP_MassOwnerUpdate_Test {
               insert opp;
 
           }
+          
            Core_MDF_Error_Logging__e errorEvent = new Core_MDF_Error_Logging__e(
             Core_MDF_Apex_Class_Name_Txt__c = 'TestClass',
             Core_MDF_Exception_Message_Txt__c = 'Test Exception Message'
@@ -128,7 +138,7 @@ public class Core_MDF_CCP_MassOwnerUpdate_Test {
          User usr = [Select ID,name from User where Email ='testuser@intel.com' Limit 1];
         Account acc = [Select Id from Account where Name ='Test Acc New 1'];
          Account acc2 = [Select Id from Account where Name ='Test Acc New 2'];
-       // Highlight: Unused Local Variable 
+       // Highlight: Unused Local Variable - Indira
        // User usr2 = [Select ID,name from User where Email ='testsalesuser@intel.com' Limit 1];
        // User extUser =[Select Id,name from User where UserType='PowerPartner' Limit 1];
 
@@ -138,7 +148,7 @@ public class Core_MDF_CCP_MassOwnerUpdate_Test {
         selIds.add(camp.Id);
         selIds.add(acc2.Id);
         List<Id> selOppId = new List<Id>();
-        Core_MDF_CCP_MassOwnerUpdate.MassOwnerMdtWrapper wrp = new Core_MDF_CCP_MassOwnerUpdate.MassOwnerMdtWrapper();
+        Core_MDF_CCP_MassOwnerUpdate.MassOwnerMdtWrapper wrp =  new Core_MDF_CCP_MassOwnerUpdate.MassOwnerMdtWrapper();
         system.runAS(usr) {
             List<Core_MDF_Custom_Utility_Config__c> configList = new List<Core_MDF_Custom_Utility_Config__c>();
              Core_MDF_Custom_Utility_Config__c  config = new Core_MDF_Custom_Utility_Config__c ();
@@ -198,20 +208,19 @@ public class Core_MDF_CCP_MassOwnerUpdate_Test {
             insert configList;
         
             wrp = Core_MDF_CCP_MassOwnerUpdate.getAppValues();
-            // Highlight: Unused Local Variables 
+            // Highlight: Unused Local Variables - Indira
            /* List<Core_MDF_CCP_MassOwnerUpdate.sObjectResult> accList = */ Core_MDF_CCP_MassOwnerUpdate.getAccounts(config.Core_MDF_Program_nm__c,'Test');
            /* List<Core_MDF_CCP_MassOwnerUpdate.sObjectResult> accListForCRM = */ Core_MDF_CCP_MassOwnerUpdate.getAccounts('','Test');
            /* List<Core_MDF_CCP_MassOwnerUpdate.SObjectResult> fromUser = */ Core_MDF_CCP_MassOwnerUpdate.getUser('testUser', 'Internal User', null, config);
            /* List<Core_MDF_CCP_MassOwnerUpdate.SObjectResult> fromSysUser = */ Core_MDF_CCP_MassOwnerUpdate.getUser('User', 'System User', null, config);
            /* List<Core_MDF_CCP_MassOwnerUpdate.SObjectResult> fromSalesUser = */ Core_MDF_CCP_MassOwnerUpdate.getUser('user', null, null, config2);
-			List<Core_MDF_CCP_MassOwnerUpdate.SObjectResult> fromExternalUser = Core_MDF_CCP_MassOwnerUpdate.getUser('user', 'External User', acc2.id, config);
 
-            // Highlight: Unused Local Variables
+            // Highlight: Unused Local Variables - Indira
            /* List<Core_MDF_CCP_MassOwnerUpdate.SObjectResult> toUser = */ Core_MDF_CCP_MassOwnerUpdate.getToUser('testUser', 'Internal User',acc2.Id,acc.id,config);
            /* List<Core_MDF_CCP_MassOwnerUpdate.SObjectResult> toUserSales = */ Core_MDF_CCP_MassOwnerUpdate.getToUser('user', null,null,null,config2);
            /* List<Core_MDF_CCP_MassOwnerUpdate.SObjectResult> toSystemUser = */ Core_MDF_CCP_MassOwnerUpdate.getToUser('User', 'System User',acc2.Id,acc.id,config);
             
-           // Highlight: Unused Local Variables 
+           // Highlight: Unused Local Variables - Indira
           /*  Map<Id,String> nodeAcc = */ Core_MDF_CCP_MassOwnerUpdate.getAccountNodes(acc.Id,'Client');
           /*  Map<Id,String> nodeAcc1 = */Core_MDF_CCP_MassOwnerUpdate.getAccountNodes(acc2.Id,'test');
           /*  Map<String,List<Core_MDF_CCP_MassOwnerUpdate.filterCriteriaWrapper>> fltWrap = */ Core_MDF_CCP_MassOwnerUpdate.getFilterFieldWrapper(config2.Core_MDF_Filter_Criteria_txt__c);
@@ -223,10 +232,10 @@ public class Core_MDF_CCP_MassOwnerUpdate_Test {
              camp.Core_MDF_External_Visibility_Date__c=System.today()+5;
             sObjectsToUpdate.add(camp);
             sObjectsToUpdate.add(opp);
-            // Unit Test Method should include System.Assert 
+            // Unit Test Method should include System.Assert - Indira
             System.assert(sObjectsToUpdate.size() == 2,'Two sObjects should be prepared for update');
             
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
           /*  Core_MDF_CCP_MassOwnerUpdate.saveResWarpper res =  */ Core_MDF_CCP_MassOwnerUpdate.saveResult(sObjectsToUpdate);
             Core_MDF_CCP_MassOwnerUpdate.FilterFieldsWrapper fltFldWrapper =  new Core_MDF_CCP_MassOwnerUpdate.FilterFieldsWrapper();
             Core_MDF_CCP_MassOwnerUpdate.picklistFilterFldWrapper pickListFldWrap = new  Core_MDF_CCP_MassOwnerUpdate.picklistFilterFldWrapper();
@@ -239,20 +248,39 @@ public class Core_MDF_CCP_MassOwnerUpdate_Test {
             Core_MDF_CCP_MassOwnerUpdate.txtFilterFldWrapper txtFilterFldWrapper=new Core_MDF_CCP_MassOwnerUpdate.txtFilterFldWrapper();
 			txtFilterFldWrapper.apiName = 'Name';
             txtFilterFldWrapper.value='Test';
-            fltFldWrapper.dtFiltFldWrapList = new List<Core_MDF_CCP_MassOwnerUpdate.dtFilterFldWrapper>{dtFilterFldWrapper};
-            fltFldWrapper.picklistFiltFldWrapList = new List<Core_MDF_CCP_MassOwnerUpdate.picklistFilterFldWrapper>{pickListFldWrap};
-                fltFldWrapper.txtFiltFldWrapList=new List<Core_MDF_CCP_MassOwnerUpdate.txtFilterFldWrapper>{txtFilterFldWrapper};
-           // Highlight: Unused Local Variable 
+            fltFldWrapper.dtFiltFldWrapList =  new List<Core_MDF_CCP_MassOwnerUpdate.dtFilterFldWrapper>{dtFilterFldWrapper};
+            fltFldWrapper.picklistFiltFldWrapList =  new List<Core_MDF_CCP_MassOwnerUpdate.picklistFilterFldWrapper>{pickListFldWrap};
+            fltFldWrapper.txtFiltFldWrapList=  new List<Core_MDF_CCP_MassOwnerUpdate.txtFilterFldWrapper>{txtFilterFldWrapper};
+           // Highlight: Unused Local Variable - Indira
           /*  List<Object> oppRecList = */ Core_MDF_CCP_MassOwnerUpdate.getObjectTransactions(null,null,null,usr.id,null,'Internal User',fltFldWrapper,config2,null);
 
             
         }
              try{
-             Integer num = Integer.valueOf('NotANumber'); 
+             Integer num =  Integer.valueOf('NotANumber'); 
         }
     
         catch(exception ex){
-             Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical','CCP','Campaign','Mass Access and Ownership transfer',null);
+            //Core_MDF_CCP_UtilityClass.logError(ex);
+            //ATHR Avoid long parameter lists BY Anjali US- 15023
+            // Create a map to hold all parameters
+    Map<String, Object> parameterMap = new Map<String, Object>();
+    
+    // Add all parameters to the map
+    parameterMap.put('exception', ex);
+    parameterMap.put('severity', 'Critical');
+    parameterMap.put('projectName', 'CCP');
+    parameterMap.put('objectName', 'Campaign');
+    parameterMap.put('operation', 'Mass Access and Ownership transfer');
+    parameterMap.put('additionalInfo', null);
+    
+    // Call the method with the parameter map
+    Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(parameterMap);
+
+            
+           // Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical',projectName,objectName,'Mass Access Ownership Transfer',null); 
+     //END ATHR Avoid long Parameters 
+            // Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical','CCP','Campaign','Mass Access and Ownership transfer',null);
         }       
         
     }
@@ -260,13 +288,32 @@ public class Core_MDF_CCP_MassOwnerUpdate_Test {
     public static void testgetAccountsExceptionHandle() {
         Test.startTest();
         try {
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
           /*  List<Core_MDF_CCP_MassOwnerUpdate.sObjectResult> result = */ Core_MDF_CCP_MassOwnerUpdate.getAccounts(null, null);
         } catch (Exception ex) {
-           Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical','test','test','Mass Access Ownership Transfer',null);     
+//Core_MDF_CCP_UtilityClass.logError(ex);
+            //ATHR Avoid long parameter lists BY Anjali US- 15023
+            // Create a map to hold all parameters
+    Map<String, Object> parameterMap = new Map<String, Object>();
+    
+    // Add all parameters to the map
+    parameterMap.put('exception', ex);
+    parameterMap.put('severity', 'Critical');
+    parameterMap.put('projectName', 'test');
+    parameterMap.put('objectName', 'test');
+    parameterMap.put('operation', 'Mass Access Ownership Transfer');
+    parameterMap.put('additionalInfo', null);
+    
+    // Call the method with the parameter map
+    Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(parameterMap);
+
+            
+           // Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical',projectName,objectName,'Mass Access Ownership Transfer',null); 
+     //END ATHR Avoid long Parameters 
+         //  Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical','test','test','Mass Access Ownership Transfer',null);     
         }
         Test.stopTest();
-        // Unit Test Method should include System.Assert 
+        // Unit Test Method should include System.Assert - Indira
         System.assert(true,'getAccounts executed and exception handling block was reached successfully');
     }
      @isTest
@@ -276,7 +323,26 @@ public class Core_MDF_CCP_MassOwnerUpdate_Test {
             Map<Id,String> result = Core_MDF_CCP_MassOwnerUpdate.getAccountNodes(null, null);
             System.assertNotEquals(result, null, 'Result should not be null');
         } catch (Exception ex) {
-           Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical','test','test','Mass Access Ownership Transfer',null);     
+            //Core_MDF_CCP_UtilityClass.logError(ex);
+            //ATHR Avoid long parameter lists BY Anjali US- 15023
+            // Create a map to hold all parameters
+    Map<String, Object> parameterMap = new Map<String, Object>();
+    
+    // Add all parameters to the map
+    parameterMap.put('exception', ex);
+    parameterMap.put('severity', 'Critical');
+    parameterMap.put('projectName', 'test');
+    parameterMap.put('objectName', 'test');
+    parameterMap.put('operation', 'Mass Access Ownership Transfer');
+    parameterMap.put('additionalInfo', null);
+    
+    // Call the method with the parameter map
+    Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(parameterMap);
+
+            
+           // Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical',projectName,objectName,'Mass Access Ownership Transfer',null); 
+     //END ATHR Avoid long Parameters 
+           //Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical','test','test','Mass Access Ownership Transfer',null);     
         }
         Test.stopTest();
     }
@@ -287,7 +353,27 @@ public class Core_MDF_CCP_MassOwnerUpdate_Test {
              List<Core_MDF_CCP_MassOwnerUpdate.SObjectResult> fromSysUser = Core_MDF_CCP_MassOwnerUpdate.getUser(null,null,null,null);
                System.assertNotEquals(fromSysUser, null, 'fromSysUser should not be null');
         } catch (Exception ex) {
-           Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical','test','test','Mass Access Ownership Transfer',null);  
+             //Core_MDF_CCP_UtilityClass.logError(ex);
+            //ATHR Avoid long parameter lists BY Anjali US- 15023
+            // Create a map to hold all parameters
+    Map<String, Object> parameterMap = new Map<String, Object>();
+    
+    // Add all parameters to the map
+    parameterMap.put('exception', ex);
+    parameterMap.put('severity', 'Critical');
+    parameterMap.put('projectName', 'test');
+    parameterMap.put('objectName', 'test');
+    parameterMap.put('operation', 'Mass Access Ownership Transfer');
+    parameterMap.put('additionalInfo', null);
+    
+    // Call the method with the parameter map
+    Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(parameterMap);
+
+            
+           // Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical',projectName,objectName,'Mass Access Ownership Transfer',null); 
+     //END ATHR Avoid long Parameters 
+            
+         //  Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical','test','test','Mass Access Ownership Transfer',null);  
              
         }
         Test.stopTest();
@@ -299,7 +385,26 @@ public class Core_MDF_CCP_MassOwnerUpdate_Test {
              List<Core_MDF_CCP_MassOwnerUpdate.SObjectResult> fromToUser = Core_MDF_CCP_MassOwnerUpdate.getToUser(null, null, null, null, null);
              System.assertNotEquals(fromToUser, null, 'fromToUser should not be null');
         } catch (Exception ex) {
-           Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical','test','test','Mass Access Ownership Transfer',null); 
+             //Core_MDF_CCP_UtilityClass.logError(ex);
+            //ATHR Avoid long parameter lists BY Anjali US- 15023
+            // Create a map to hold all parameters
+    Map<String, Object> parameterMap = new Map<String, Object>();
+    
+    // Add all parameters to the map
+    parameterMap.put('exception', ex);
+    parameterMap.put('severity', 'Critical');
+    parameterMap.put('projectName', 'test');
+    parameterMap.put('objectName', 'test');
+    parameterMap.put('operation', 'Mass Access Ownership Transfer');
+    parameterMap.put('additionalInfo', null);
+    
+    // Call the method with the parameter map
+    Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(parameterMap);
+
+            
+           // Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical',projectName,objectName,'Mass Access Ownership Transfer',null); 
+     //END ATHR Avoid long Parameters 
+          // Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical','test','test','Mass Access Ownership Transfer',null); 
              
         }
         Test.stopTest();

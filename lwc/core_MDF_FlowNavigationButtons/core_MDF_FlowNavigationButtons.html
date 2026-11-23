@@ -1,0 +1,19 @@
+<template>
+    <div class="slds-grid slds-grid_align-end slds-gutters_x-small">
+        <template if:true={isBackVisible}>
+            <lightning-button
+                label={backLabel}
+                onclick={handleBack}
+                variant="neutral">
+            </lightning-button>
+        </template>
+        <template if:true={isNextVisible}>
+            <lightning-button
+                label={nextLabel}
+                onclick={handleNext}
+                disabled={disableNext}
+                variant="brand">
+            </lightning-button>
+        </template>
+    </div>
+</template>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dashboard xmlns="http://soap.sforce.com/2006/04/metadata">
+    <backgroundEndColor>#FFFFFF</backgroundEndColor>
+    <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
+    <backgroundStartColor>#FFFFFF</backgroundStartColor>
+    <dashboardType>SpecifiedUser</dashboardType>
+    <description>*** 18Q3 COMMIT ***</description>
+    <isGridLayout>false</isGridLayout>
+    <leftSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <componentType>Gauge</componentType>
+            <displayUnits>Millions</displayUnits>
+            <footer>18Q3 Commit $30.2M</footer>
+            <gaugeMax>3.02E7</gaugeMax>
+            <gaugeMin>0.0</gaugeMin>
+            <groupingSortProperties/>
+            <header>HALVERSEN TEAM</header>
+            <indicatorBreakpoint1>2.265E7</indicatorBreakpoint1>
+            <indicatorBreakpoint2>2.57E7</indicatorBreakpoint2>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <report>ASMO_OSC/HALVERSEN_Commit_18Q3</report>
+            <showPercentage>true</showPercentage>
+            <showRange>false</showRange>
+            <showTotal>true</showTotal>
+            <showValues>false</showValues>
+            <title>HALVERSEN Commit</title>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>FORMULA1</column>
+            </chartSummary>
+            <componentType>Gauge</componentType>
+            <displayUnits>Auto</displayUnits>
+            <gaugeMax>100.0</gaugeMax>
+            <gaugeMin>0.0</gaugeMin>
+            <groupingSortProperties/>
+            <indicatorBreakpoint1>75.0</indicatorBreakpoint1>
+            <indicatorBreakpoint2>85.0</indicatorBreakpoint2>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <report>US_OSC_CCG/Pipeline_Quality_HALVERSEN</report>
+            <showPercentage>false</showPercentage>
+            <showRange>false</showRange>
+            <showTotal>true</showTotal>
+            <showValues>false</showValues>
+            <title>HALVERSENT Pipeline Quality</title>
+        </components>
+    </leftSection>
+    <middleSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <componentType>Gauge</componentType>
+            <displayUnits>Auto</displayUnits>
+            <footer>18Q3 Commit $45M</footer>
+            <gaugeMax>4.5E7</gaugeMax>
+            <gaugeMin>0.0</gaugeMin>
+            <groupingSortProperties/>
+            <header>SWYERS TEAM</header>
+            <indicatorBreakpoint1>3.375E7</indicatorBreakpoint1>
+            <indicatorBreakpoint2>3.83E7</indicatorBreakpoint2>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <report>ASMO_OSC/SWYERS_Commit_18Q3</report>
+            <showPercentage>true</showPercentage>
+            <showRange>false</showRange>
+            <showTotal>true</showTotal>
+            <showValues>false</showValues>
+            <title>SWYERS Commit</title>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>FORMULA1</column>
+            </chartSummary>
+            <componentType>Gauge</componentType>
+            <displayUnits>Auto</displayUnits>
+            <gaugeMax>100.0</gaugeMax>
+            <gaugeMin>0.0</gaugeMin>
+            <groupingSortProperties/>
+            <indicatorBreakpoint1>75.0</indicatorBreakpoint1>
+            <indicatorBreakpoint2>85.0</indicatorBreakpoint2>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <report>US_OSC_IoTG/Pipeline_Quality_SWYERS</report>
+            <showPercentage>false</showPercentage>
+            <showRange>false</showRange>
+            <showTotal>true</showTotal>
+            <showValues>false</showValues>
+            <title>SWYERS Pipeline Quality</title>
+        </components>
+    </middleSection>
+    <owner>10166818@intel.com.crm</owner>
+    <rightSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <componentType>Gauge</componentType>
+            <displayUnits>Auto</displayUnits>
+            <footer>18Q3 Commit $80M</footer>
+            <gaugeMax>8.0E7</gaugeMax>
+            <gaugeMin>0.0</gaugeMin>
+            <groupingSortProperties/>
+            <header>WOOD TEAM</header>
+            <indicatorBreakpoint1>6.0E7</indicatorBreakpoint1>
+            <indicatorBreakpoint2>6.8E7</indicatorBreakpoint2>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <report>ASMO_OSC/WOOD_Commit_18Q3</report>
+            <showPercentage>true</showPercentage>
+            <showRange>false</showRange>
+            <showTotal>true</showTotal>
+            <showValues>false</showValues>
+            <title>WOOD Commit</title>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>FORMULA1</column>
+            </chartSummary>
+            <componentType>Gauge</componentType>
+            <displayUnits>Auto</displayUnits>
+            <gaugeMax>100.0</gaugeMax>
+            <gaugeMin>0.0</gaugeMin>
+            <groupingSortProperties/>
+            <indicatorBreakpoint1>75.0</indicatorBreakpoint1>
+            <indicatorBreakpoint2>85.0</indicatorBreakpoint2>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <report>US_OSC_DCG/Pipeline_Quality_WOOD</report>
+            <showPercentage>false</showPercentage>
+            <showRange>false</showRange>
+            <showTotal>true</showTotal>
+            <showValues>false</showValues>
+            <title>WOOD Pipeline Quality</title>
+        </components>
+    </rightSection>
+    <runningUser>10166818@intel.com.crm</runningUser>
+    <textColor>#000000</textColor>
+    <title>US OSC COMMIT &amp; Pipeline Quality %</title>
+    <titleColor>#000000</titleColor>
+    <titleSize>12</titleSize>
+</Dashboard>
